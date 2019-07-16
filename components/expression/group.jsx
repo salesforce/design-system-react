@@ -15,8 +15,14 @@ import { EXPRESSION_GROUP } from '../../utilities/constants';
 import Combobox from '../combobox';
 import Button from '../button';
 
-
 const propTypes = {
+	/**
+	 *  **Assistive text for accessibility.**
+	 * * `title` : For users of assistive technology, assistive text for the expression group.
+	 */
+	assistiveText: PropTypes.shape({
+		title: PropTypes.string,
+	}),
 	/**
 	 * HTML id for component.
 	 */
@@ -34,22 +40,30 @@ const propTypes = {
 		PropTypes.string,
 	]),
 
-	triggerType: PropTypes.oneOf(["all", "any", "custom", "always", "formula"]),
+	labels: PropTypes.shape({
+		condition: PropTypes.string,
+		takeAction: PropTypes.string,
+		addCondition: PropTypes.string,
+		addGroup: PropTypes.string,
+	}),
+	/**
+	 * Whether the group is a child
+	 */
+	isChild: PropTypes.bool,
+
+	triggerType: PropTypes.oneOf(['all', 'any', 'custom', 'always', 'formula']),
 	onChangeTrigger: PropTypes.func,
+
+	customLogic: PropTypes.string,
+	onChangeCustomLogic: PropTypes.func,
 
 	onAddCondition: PropTypes.func,
 	onAddGroup: PropTypes.func,
-
-	labels: PropTypes.shape({
-		takeAction: PropTypes.string,
-		addCondition: PropTypes.string,
-		addGroup: PropTypes.string
-	})
-
 };
 
 const defaultProps = {
-	triggerType: "all"
+	triggerType: 'all',
+	isChild: true
 };
 
 const Triggers = [
@@ -75,12 +89,10 @@ const Triggers = [
 	},
 ];
 
-
 /**
  * Expression Group Component
  */
 class ExpressionGroup extends React.Component {
-
 	componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
@@ -92,8 +104,7 @@ class ExpressionGroup extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
-	getTriggerSelection()
-	{
+	getTriggerSelection() {
 		const selection = this.props.triggerType;
 		const t = [];
 		if (selection === 'all') {
@@ -110,109 +121,129 @@ class ExpressionGroup extends React.Component {
 		return t;
 	}
 
-	triggerChange(event, data)
-	{
+	triggerChange(event, data) {
 		const selection = data.selection[0].id;
-		let trigger = "";
-		if(selection === '1') {
-				trigger = "all"
-		} else if(selection === '2'){
-				trigger = "any"
-		} else if(selection === '3'){
-			  trigger = "custom"
-		} else if(selection === '4'){
-			  trigger = "always"
-		} else if(selection === '5'){
-			trigger = "formula"
+		let trigger = '';
+		if (selection === '1') {
+			trigger = 'all';
+		} else if (selection === '2') {
+			trigger = 'any';
+		} else if (selection === '3') {
+			trigger = 'custom';
+		} else if (selection === '4') {
+			trigger = 'always';
+		} else if (selection === '5') {
+			trigger = 'formula';
 		}
-		// eslint-disable-next-line no-unused-expressions
-		typeof this.props.onChangeTrigger === "function" ? this.props.onChangeTrigger(trigger) : null;
+		this.props.onChangeTrigger(trigger);
 	}
 
 	render() {
-
-		const triggerCombobox = (<Combobox
-			events={{
-				onSelect: (event, data) => this.triggerChange(event, data)
-			}}
-			multiple={false}
-			options={Triggers}
-			variant="readonly"
-			labels={{ label: this.props.labels ? this.props.labels.takeAction : "Take Action When" }}
-			selection={this.getTriggerSelection()}
-		/>);
-
-		const buttons = (<div className="slds-expression__buttons">
-			<Button
-				iconCategory="utility"
-				iconName="add"
-				iconPosition="left"
-				label={this.props.labels ? this.props.labels.addCondition : "Add Condition" }
-				onClick={() => {
-					// eslint-disable-next-line no-unused-expressions
-					typeof this.props.onAddCondition === "function" ? this.props.onAddCondition() : null;
+		const triggerCombobox = (
+			<Combobox
+				events={{
+					onSelect: (event, data) => this.triggerChange(event, data),
 				}}
+				multiple={false}
+				options={Triggers}
+				variant="readonly"
+				labels={{
+					label:
+						this.props.labels && this.props.labels.takeAction
+							? this.props.labels.takeAction
+							: 'Take Action When',
+				}}
+				selection={this.getTriggerSelection()}
 			/>
-			{ !this.props.child ? (
+		);
+
+		const buttons = (
+			<div className="slds-expression__buttons">
 				<Button
 					iconCategory="utility"
 					iconName="add"
 					iconPosition="left"
-					label={this.props.labels ? this.props.labels.addGroup : "Add Group" }
+					label={
+						this.props.labels && this.props.labels.addCondition
+							? this.props.labels.addCondition
+							: 'Add Condition'
+					}
 					onClick={() => {
-						// eslint-disable-next-line no-unused-expressions
-						typeof this.props.onAddGroup === "function" ? this.props.onAddGroup() : null;
+						this.props.onAddCondition();
 					}}
-				/>) : null
-			}
-		</div>);
+				/>
+				{!this.props.isChild ? (
+					<Button
+						iconCategory="utility"
+						iconName="add"
+						iconPosition="left"
+						label={
+							this.props.labels && this.props.labels.addGroup
+								? this.props.labels.addGroup
+								: 'Add Group'
+						}
+						onClick={() => {
+							this.props.onAddGroup();
+						}}
+					/>
+				) : null}
+			</div>
+		);
 
 		const body = (
 			<>
-				{this.props.triggerType === "custom" ? (
+				{this.props.triggerType === 'custom' ? (
 					<div className="slds-expression__custom-logic">
 						<div className="slds-form-element">
-							<label className="slds-form-element__label" htmlFor="text-input-id-43">Custom Logic</label>
+							<label
+								className="slds-form-element__label"
+								htmlFor="text-input-id-43"
+							>
+								Custom Logic
+							</label>
 							<div className="slds-form-element__control">
 								<input
 									className="slds-input"
 									type="text"
-									value="1 AND 2" />
-								</div>
+									value={this.props.customLogic}
+									onChange={(e) =>
+										this.props.onChangeCustomLogic(e.target.value)
+									}
+								/>
+							</div>
 						</div>
 					</div>
-				) : null }
-				<ul>
-					{this.props.children}
-				</ul>
+				) : null}
+				<ul>{this.props.children}</ul>
 			</>
 		);
 
-		return (
-			 this.props.child ? (
-				 <li className={classNames('slds-expression__group', this.props.className)} id={this.getId()}>
-					 <fieldset>
-						 <legend className="slds-expression__legend slds-expression__legend_group">
-							<span>AND</span>
-							<span className="slds-assistive-text">Condition Group 1</span>
-						 </legend>
-						 <div className="slds-expression__options">
-							 {triggerCombobox}
-						 </div>
-						 {body}
-						 {buttons}
-					 </fieldset>
-				 </li>
-				) : (
-					<div className={classNames(this.props.className)} id={this.getId()}>
-						<div className="slds-expression__options">
-							{triggerCombobox}
-						</div>
-						{body}
-						{buttons}
-					</div>
-				)
-		)
+		return this.props.isChild ? (
+			<li
+				className={classNames('slds-expression__group', this.props.className)}
+				id={this.getId()}
+			>
+				<fieldset>
+					<legend className="slds-expression__legend slds-expression__legend_group">
+						<span>
+							{this.props.labels && this.props.labels.condition
+								? this.props.labels.condition
+								: null}
+						</span>
+						<span className="slds-assistive-text">{this.props.assistiveText.title}</span>
+					</legend>
+					<div className="slds-expression__options">{triggerCombobox}</div>
+					<ul>{body}</ul>
+					{buttons}
+				</fieldset>
+			</li>
+		) : (
+			<div className={classNames(this.props.className)} id={this.getId()}>
+				<div className="slds-expression__options">{triggerCombobox}</div>
+				{body}
+				{buttons}
+			</div>
+		);
 	}
 }
 

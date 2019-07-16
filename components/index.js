@@ -89,6 +89,15 @@ export ColorPicker from './color-picker';
 export SLDSCombobox from './combobox';
 export Combobox from './combobox';
 
+export SLDSExpression from './expression';
+export Expression from './expression';
+
+export SLDSExpressionCondition from './expression/condition';
+export ExpressionCondition from './expression/condition';
+
+export SLDSExpressionGroup from './expression/group';
+export ExpressionGroup from './expression/group';
+
 export SLDSExpandableSection from './expandable-section';
 export ExpandableSection from './expandable-section';
 

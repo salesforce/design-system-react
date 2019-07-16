@@ -11,6 +11,7 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 import { EXPRESSION } from '../../utilities/constants';
+import ExpressionGroup from './group';
 
 const propTypes = {
 	/**
@@ -30,6 +31,14 @@ const propTypes = {
 		PropTypes.string,
 	]),
 
+	onAddCondition: PropTypes.func,
+	onAddGroup: PropTypes.func,
+
+	triggerType: PropTypes.oneOf(['all', 'any', 'custom', 'always', 'formula']),
+	onChangeTrigger: PropTypes.func,
+
+	customLogic: PropTypes.string,
+	onChangeCustomLogic: PropTypes.func,
 };
 
 /**
@@ -49,11 +58,23 @@ class Expression extends React.Component {
 
 	render() {
 		return (
-			<div className={classNames('slds-expression', this.props.className)} id={this.getId()}>
+			<div
+				className={classNames('slds-expression', this.props.className)}
+				id={this.getId()}
+			>
 				<h2 className="slds-expression__title">Conditions</h2>
-				{this.props.children}
+				<ExpressionGroup
+					customLogic={this.props.customLogic}
+					onChangeCustomLogic={this.props.onChangeCustomLogic}
+					triggerType={this.props.triggerType}
+					onChangeTrigger={this.props.onChangeTrigger}
+					onAddCondition={this.props.onAddCondition}
+					onAddGroup={this.props.onAddGroup}
+				>
+					{this.props.children}
+				</ExpressionGroup>
 			</div>
-		)
+		);
 	}
 }
 
