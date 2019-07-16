@@ -190,7 +190,7 @@
 		"react-dom": "^16.8",
 		"react-hot-loader": "^1.2.7",
 		"react-test-renderer": "^16.8",
-		"regenerator-runtime": "^0.11.1",
+		"regenerator-runtime": "^0.13.2",
 		"sinon": "^4.5.0",
 		"sinon-chai": "^2.14.0",
 		"string-replace-webpack-plugin": "^0.1.2",
