@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '~/components/button';
 import WelcomeMat from '~/components/welcome-mat';
 import WelcomeMatTile from '~/components/welcome-mat/tile';
 import Icon from '~/components/icon';
@@ -7,9 +8,21 @@ import IconSettings from '~/components/icon-settings';
 class Example extends React.Component {
 	static displayName = 'welcomeMatExample';
 
+	state = {
+		isOpen: this.props.isOpen || false,
+	};
+
+	toggleOpen = () => {
+		this.setState({ isOpen: !this.state.isOpen });
+	};
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
+				<Button
+					label="Open Steps Complete WelcomeMat"
+					onClick={this.toggleOpen}
+				/>
 				<div style={{ position: 'relative', height: '5rem' }}>
 					<div style={{ width: '20rem' }}>
 						<WelcomeMat
@@ -19,6 +32,8 @@ class Example extends React.Component {
 									'Welcome to Lightning Experience, the modern, beautiful user experience from Salesforce. With a sales-and service-centric mindset, we focused on reinventing the desktop environment to better support your business processes.',
 							}}
 							id="welcome-mat-steps-complete-example"
+							isOpen={this.state.isOpen}
+							onRequestClose={this.toggleOpen}
 							variant="steps"
 						>
 							<WelcomeMatTile

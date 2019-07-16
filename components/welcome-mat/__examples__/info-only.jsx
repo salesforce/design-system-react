@@ -9,9 +9,18 @@ import Checkbox from '~/components/checkbox';
 class Example extends React.Component {
 	static displayName = 'welcomeMatInfoExample';
 
+	state = {
+		isOpen: this.props.isOpen || false,
+	};
+
+	toggleOpen = () => {
+		this.setState({ isOpen: !this.state.isOpen });
+	};
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
+				<Button label="Open Info Only WelcomeMat" onClick={this.toggleOpen} />
 				<div style={{ position: 'relative', height: '5rem' }}>
 					<div style={{ width: '20rem' }}>
 						<WelcomeMat
@@ -41,6 +50,8 @@ class Example extends React.Component {
 									id="welcome-mat-button"
 								/>
 							)}
+							isOpen={this.state.isOpen}
+							onRequestClose={this.toggleOpen}
 							variant="info-only"
 						>
 							<WelcomeMatTile
