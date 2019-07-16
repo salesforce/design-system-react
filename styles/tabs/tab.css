@@ -1,0 +1,24 @@
+.slds-tabs--default .slds-tabs--default__item.slds-disabled,
+.slds-tabs--scoped .slds-tabs--scoped__item.slds-disabled {
+  opacity: 0.5;
+}
+.slds-tabs--default .slds-tabs--default__item.slds-disabled > a:hover,
+.slds-tabs--scoped .slds-tabs--scoped__item.slds-disabled > a:hover,
+.slds-tabs--default .slds-tabs--default__item.slds-disabled > a.slds-tabs--default__link:focus,
+.slds-tabs--scoped .slds-tabs--scoped__item.slds-disabled > a.slds-tabs--scoped__link:focus {
+  cursor: not-allowed;
+  text-decoration: none;
+  border-color: transparent;
+  color: inherit;
+}
+.slds-tabs--default .slds-tabs--default__item.slds-disabled.slds-active a.slds-tabs--default__link,
+.slds-tabs--scoped .slds-tabs--scoped__item.slds-disabled.slds-active a.slds-tabs--scoped__link {
+  cursor: not-allowed;
+  border-color: transparent;
+  color: inherit;
+}
+.slds-tabs--default .slds-tabs--default__item.slds-disabled.slds-active a.slds-tabs--default__link:focus,
+.slds-tabs--scoped .slds-tabs--scoped__item.slds-disabled.slds-active a.slds-tabs--scoped__link:focus {
+  cursor: not-allowed;
+  color: inherit;
+}

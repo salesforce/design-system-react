@@ -1,0 +1,7 @@
+{
+    "component": "slider",
+    "status": "prod",
+    "display-name": "Slider",
+    "SLDS-component-path": "/components/slider",
+    "url-slug": "slider"
+}
