@@ -125,7 +125,7 @@ module.exports = {
 		'no-underscore-dangle': ['error', { allowAfterThis: true }],
 		//
 		'prefer-object-spread/prefer-object-spread': [2, 'always'],
-
+		'react/jsx-fragments': ['error', 'element'],
 		'max-lines': [
 			'error',
 			{ max: 500, skipBlankLines: true, skipComments: true },
