@@ -29,6 +29,8 @@ class Example extends React.Component {
 								iconCategory="utility"
 								iconName="down"
 								iconVariant="bare"
+								align="right"
+								menuStyle={{ minWidth: '50px', width: '125px' }}
 								onSelect={(value) => {
 									console.log('selected: ', value);
 								}}
@@ -57,6 +59,8 @@ class Example extends React.Component {
 								iconCategory="utility"
 								iconName="down"
 								iconVariant="bare"
+								align="right"
+								menuStyle={{ minWidth: '50px', width: '125px' }}
 								onSelect={(value) => {
 									console.log('selected: ', value);
 								}}

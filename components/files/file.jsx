@@ -19,6 +19,10 @@ import FileActions from './private/file-actions';
 const displayName = FILES_FILE;
 
 const propTypes = {
+	/**
+	 * **Assistive text for accessibility**
+	 *  * image - description for the file image
+	 */
 	assistiveText: PropTypes.shape({
 		image: PropTypes.string,
 	}),
@@ -65,6 +69,9 @@ const propTypes = {
 	labels: PropTypes.shape({
 		title: PropTypes.string.isRequired,
 	}),
+	/**
+	 *  Whether the file's title should be visible
+	 */
 	hasNoVisibleTitle: PropTypes.bool,
 };
 
