@@ -14,7 +14,7 @@ class Example extends React.Component {
 
 	render() {
 		const actions = () => (
-			<>
+			<React.Fragment>
 				<PageHeaderControl>
 					<ButtonStateful
 						key="PageHeaderFollowButton"
@@ -46,7 +46,7 @@ class Example extends React.Component {
 						/>
 					</ButtonGroup>
 				</PageHeaderControl>
-			</>
+			</React.Fragment>
 		);
 
 		const details = [

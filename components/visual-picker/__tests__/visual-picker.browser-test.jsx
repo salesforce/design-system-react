@@ -40,7 +40,7 @@ class VisualPickerExample extends React.Component {
 					coverable
 				>
 					{this.props.type === 'radio' ? (
-						<>
+						<React.Fragment>
 							<Radio
 								labels={{
 									label: 'Connected App',
@@ -93,9 +93,9 @@ class VisualPickerExample extends React.Component {
 									/>
 								)}
 							/>
-						</>
+						</React.Fragment>
 					) : (
-						<>
+						<React.Fragment>
 							<Checkbox
 								labels={{
 									label: 'Account',
@@ -200,7 +200,7 @@ class VisualPickerExample extends React.Component {
 									/>
 								)}
 							/>
-						</>
+						</React.Fragment>
 					)}
 				</VisualPicker>
 			</IconSettings>

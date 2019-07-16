@@ -66,12 +66,12 @@ const Base = (props) => {
 			<div className="slds-page-header__col-title">
 				<MediaObject
 					body={
-						<>
+						<React.Fragment>
 							<div className="slds-page-header__name">
 								<Title content={props.title} />
 							</div>
 							<Info content={props.info} variant={props.variant} />
-						</>
+						</React.Fragment>
 					}
 					figure={icon}
 				/>

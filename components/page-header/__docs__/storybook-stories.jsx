@@ -101,7 +101,7 @@ class DemoPageHeader extends React.Component {
 const getPageHeader = (props) => <SLDSPageHeader {...props} />;
 
 const recordHomeActions = () => (
-	<>
+	<React.Fragment>
 		<SLDSPageHeaderControl>
 			<SLDSButtonStateful
 				key="PageHeaderFollowButton"
@@ -154,7 +154,7 @@ const recordHomeActions = () => (
 				/>
 			</SLDSButtonGroup>
 		</SLDSPageHeaderControl>
-	</>
+	</React.Fragment>
 );
 
 const customTooltip = () => {
@@ -197,7 +197,7 @@ const recordHomeDetails = [
 ];
 
 const baseControls = () => (
-	<>
+	<React.Fragment>
 		<SLDSPageHeaderControl>
 			<SLDSButton
 				iconCategory="utility"
@@ -273,7 +273,7 @@ const baseControls = () => (
 				/>
 			</SLDSButtonGroup>
 		</SLDSPageHeaderControl>
-	</>
+	</React.Fragment>
 );
 
 const relatedListActions = () => (
@@ -312,7 +312,7 @@ const relatedListActions = () => (
 );
 
 const relatedListControls = () => (
-	<>
+	<React.Fragment>
 		<SLDSPageHeaderControl>
 			<SLDSButton
 				iconCategory="utility"
@@ -377,7 +377,7 @@ const relatedListControls = () => (
 				/>
 			</SLDSButtonGroup>
 		</SLDSPageHeaderControl>
-	</>
+	</React.Fragment>
 );
 
 const relatedListTrail = [

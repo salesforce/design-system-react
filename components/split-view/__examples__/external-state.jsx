@@ -99,7 +99,7 @@ const headerActions = () => (
 );
 
 const headerControls = () => (
-	<>
+	<React.Fragment>
 		<PageHeaderControl>
 			<Dropdown
 				id="header-right-refresh"
@@ -145,7 +145,7 @@ const headerControls = () => (
 				variant="icon"
 			/>
 		</PageHeaderControl>
-	</>
+	</React.Fragment>
 );
 
 const headerTitle = (
