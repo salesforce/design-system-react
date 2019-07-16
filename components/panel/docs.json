@@ -1,0 +1,18 @@
+{
+    "component": "panel",
+    "status": "prototype",
+    "display-name": "Panels",
+    "SLDS-component-path": "/components/panels",
+    "dependencies": [
+        {
+            "component": "filtering/group"
+        },
+        {
+            "component": "filtering/list-heading"
+        },
+        {
+            "component": "filtering/list"
+        }
+    ],
+    "url-slug": "panels"
+}
