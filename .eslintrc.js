@@ -21,6 +21,12 @@ module.exports = {
 	env: {
 		browser: true,
 	},
+	settings: {
+		react: {
+			pragma: 'React',
+			version: 'detect',
+		},
+	},
 	overrides: [
 		{
 			// Storybook and site examples
