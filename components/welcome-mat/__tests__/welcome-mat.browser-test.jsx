@@ -287,7 +287,7 @@ describe('SLDSWelcomeMat: ', function() {
 					<WelcomeMatInfoBadge
 						image="/assets/images/welcome-mat/trailhead_badge@2x.png"
 						onCompleteRenderActions={() => (
-							<>
+							<React.Fragment>
 								<p>Cha-ching! You earned the badge.</p>
 								<SLDSButton
 									className="slds-m-top_medium"
@@ -296,7 +296,7 @@ describe('SLDSWelcomeMat: ', function() {
 									title="View on your Trailblazer Profile"
 									label="View on your Trailblazer Profile"
 								/>
-							</>
+							</React.Fragment>
 						)}
 					>
 						<p>

@@ -47,7 +47,7 @@ const propTypes = {
 const defaultProps = {};
 
 const RelatedList = (props) => (
-	<>
+	<React.Fragment>
 		<div className="slds-page-header__row">
 			<div className="slds-page-header__col-title">
 				<Label content={props.label} trail={props.trail} />
@@ -75,7 +75,7 @@ const RelatedList = (props) => (
 				type="controls"
 			/>
 		</div>
-	</>
+	</React.Fragment>
 );
 
 RelatedList.displayName = displayName;

@@ -37,7 +37,7 @@ class Example extends React.Component {
 		);
 
 		const controls = () => (
-			<>
+			<React.Fragment>
 				<PageHeaderControl>
 					<Dropdown
 						align="right"
@@ -123,7 +123,7 @@ class Example extends React.Component {
 						/>
 					</ButtonGroup>
 				</PageHeaderControl>
-			</>
+			</React.Fragment>
 		);
 
 		return (

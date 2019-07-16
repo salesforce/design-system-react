@@ -170,7 +170,7 @@ class WelcomeMat extends React.Component {
 								: null}
 							{this.state.completedSteps !== this.state.totalSteps ||
 							this.props.variant !== 'trailhead-connected' ? (
-								<>
+								<React.Fragment>
 									{this.props.variant === 'trailhead-connected' ? (
 										<p>
 											{this.state.completedSteps}/{this.state.totalSteps} units
@@ -185,7 +185,7 @@ class WelcomeMat extends React.Component {
 										</p>
 									)}
 									<ProgressBar value={this.state.progress} radius="circular" />
-								</>
+								</React.Fragment>
 							) : null}
 						</div>
 					</React.Fragment>

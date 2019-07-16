@@ -15,7 +15,7 @@ import SLDSMenuDropdown from '../../menu-dropdown';
 chai.use(chaiEnzyme());
 
 const recordHomeActions = () => (
-	<>
+	<React.Fragment>
 		<PageHeaderControl>
 			<SLDSButtonStateful
 				key="PageHeaderFollowButton"
@@ -58,7 +58,7 @@ const recordHomeActions = () => (
 				/>
 			</SLDSButtonGroup>
 		</PageHeaderControl>
-	</>
+	</React.Fragment>
 );
 
 const recordHomeDetails = [
