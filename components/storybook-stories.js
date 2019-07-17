@@ -67,6 +67,7 @@ export TimePicker from '../components/time-picker/__docs__/storybook-stories';
 export Toast from '../components/toast/__docs__/storybook-stories';
 export Tooltip from '../components/tooltip/__docs__/storybook-stories';
 export Tree from '../components/tree/__docs__/storybook-stories';
+export TreeGrid from '../components/tree-grid/__docs__/storybook-stories';
 export TrialBar from '../components/trial-bar/__docs__/storybook-stories';
 export VerticalNavigation from '../components/vertical-navigation/__docs__/storybook-stories';
 export VisualPicker from '../components/visual-picker/__docs__/storybook-stories';

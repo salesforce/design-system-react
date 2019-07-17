@@ -1,0 +1,7 @@
+{
+	"component": "tree-grid",
+	"status": "prod",
+	"display-name": "Tree Grid",
+	"SLDS-component-path": "/components/tree-grid",
+	"url-slug": "tree-grid"
+}
