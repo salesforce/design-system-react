@@ -3,17 +3,11 @@
 
 import React from 'react';
 
-import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { normalize, schema } from 'normalizr';
 
-import IconSettings from '../../icon-settings';
 import { TREE } from '../../../utilities/constants';
 import sampleNodesDynamicHashMap from './dynamic-hashmap';
-
-import Tree from '../../tree';
-import Search from '../../input/search';
 
 import DefaultExample from '../__examples__/default';
 

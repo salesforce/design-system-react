@@ -9,9 +9,18 @@ import IconSettings from '~/components/icon-settings';
 class Example extends React.Component {
 	static displayName = 'welcomeMatExample';
 
+	state = {
+		isOpen: this.props.isOpen || false,
+	};
+
+	toggleOpen = () => {
+		this.setState({ isOpen: !this.state.isOpen });
+	};
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
+				<Button label="Open Trailhead WelcomeMat" onClick={this.toggleOpen} />
 				<div style={{ position: 'relative', height: '5rem' }}>
 					<div style={{ width: '20rem' }}>
 						<WelcomeMat
@@ -19,14 +28,14 @@ class Example extends React.Component {
 							labels={{
 								title: 'The Lightning Experience is here!',
 								description:
-									'Welcome to Lightning Experience, the modern, beautiful user experience from Salesforce. With a sales-and service-centric mindset, we focused on reinventing the desktop environment to better support your business processes."',
+									'Welcome to Lightning Experience, the modern, beautiful user experience from Salesforce. With a sales-and service-centric mindset, we focused on reinventing the desktop environment to better support your business processes.',
 							}}
 							infoBadge={
 								<WelcomeMatInfoBadge
 									image="/assets/images/welcome-mat/trailhead_badge@2x.png"
 									id="welcome-mat-info-badge"
 									onCompleteRenderActions={() => (
-										<>
+										<React.Fragment>
 											<p>Cha-ching! You earned the badge.</p>
 											<Button
 												className="slds-m-top_medium"
@@ -35,7 +44,7 @@ class Example extends React.Component {
 												title="View on your Trailblazer Profile"
 												label="View on your Trailblazer Profile"
 											/>
-										</>
+										</React.Fragment>
 									)}
 								>
 									<p>
@@ -43,6 +52,8 @@ class Example extends React.Component {
 									</p>
 								</WelcomeMatInfoBadge>
 							}
+							isOpen={this.state.isOpen}
+							onRequestClose={this.toggleOpen}
 							variant="trailhead-connected"
 						>
 							<WelcomeMatTile

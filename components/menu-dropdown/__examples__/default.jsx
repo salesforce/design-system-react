@@ -23,6 +23,10 @@ class Example extends React.Component {
 						{ label: 'Menu Item Three', value: 'C0' },
 						{ type: 'divider' },
 						{ label: 'Menu Item Four', value: 'D0' },
+						{ label: 'Menu Item Five', value: 'E0' },
+						{ label: 'Menu Item Six', value: 'F0' },
+						{ type: 'divider' },
+						{ label: 'Menu Item Seven', value: 'G0' },
 					]}
 				/>
 			</IconSettings>

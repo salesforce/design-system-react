@@ -1,6 +1,6 @@
 {
     "component": "illustration",
-    "status": "prod",
+    "status": "prototype",
     "display-name": "Illustrations",
     "SLDS-component-path": "/components/illustration",
     "url-slug": "illustrations"

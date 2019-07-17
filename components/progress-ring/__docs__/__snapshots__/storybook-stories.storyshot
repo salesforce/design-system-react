@@ -19,7 +19,11 @@ exports[`DOM snapshots SLDSProgressRing Base 1`] = `
           aria-valuenow={0}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -49,7 +53,11 @@ exports[`DOM snapshots SLDSProgressRing Base 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -81,6 +89,7 @@ exports[`DOM snapshots SLDSProgressRing Base 1`] = `
           role="progressbar"
           style={
             Object {
+              "height": "2rem",
               "transform": "scaleX(1) rotate(-90deg)",
             }
           }
@@ -113,7 +122,11 @@ exports[`DOM snapshots SLDSProgressRing Base 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "2rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -154,7 +167,11 @@ exports[`DOM snapshots SLDSProgressRing Custom Icon 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -196,6 +213,7 @@ exports[`DOM snapshots SLDSProgressRing Custom Icon 1`] = `
           role="progressbar"
           style={
             Object {
+              "height": "1.5rem",
               "transform": "scaleX(1) rotate(-90deg)",
             }
           }
@@ -249,7 +267,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={0}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -281,6 +303,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           role="progressbar"
           style={
             Object {
+              "height": "1.5rem",
               "transform": "scaleX(1) rotate(-90deg)",
             }
           }
@@ -313,7 +336,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={0}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -353,7 +380,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={0}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -393,7 +424,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -425,6 +460,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           role="progressbar"
           style={
             Object {
+              "height": "1.5rem",
               "transform": "scaleX(1) rotate(-90deg)",
             }
           }
@@ -457,7 +493,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -499,7 +539,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -529,7 +573,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -561,6 +609,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           role="progressbar"
           style={
             Object {
+              "height": "1.5rem",
               "transform": "scaleX(1) rotate(-90deg)",
             }
           }
@@ -593,7 +642,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -635,7 +688,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -665,7 +722,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -697,6 +758,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           role="progressbar"
           style={
             Object {
+              "height": "1.5rem",
               "transform": "scaleX(1) rotate(-90deg)",
             }
           }
@@ -729,7 +791,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -771,7 +837,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -801,7 +871,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -833,6 +907,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           role="progressbar"
           style={
             Object {
+              "height": "1.5rem",
               "transform": "scaleX(1) rotate(-90deg)",
             }
           }
@@ -867,6 +942,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           role="progressbar"
           style={
             Object {
+              "height": "1.5rem",
               "transform": "scaleX(1) rotate(-90deg)",
             }
           }
@@ -899,7 +975,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -929,7 +1009,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "2rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -961,6 +1045,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           role="progressbar"
           style={
             Object {
+              "height": "2rem",
               "transform": "scaleX(1) rotate(-90deg)",
             }
           }
@@ -995,6 +1080,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           role="progressbar"
           style={
             Object {
+              "height": "2rem",
               "transform": "scaleX(1) rotate(-90deg)",
             }
           }
@@ -1039,7 +1125,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "2rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -1082,6 +1172,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Active 1`] = `
           role="progressbar"
           style={
             Object {
+              "height": "1.5rem",
               "transform": "scaleX(1) rotate(-90deg)",
             }
           }
@@ -1114,7 +1205,11 @@ exports[`DOM snapshots SLDSProgressRing Theme: Active 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -1155,7 +1250,11 @@ exports[`DOM snapshots SLDSProgressRing Theme: Complete 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -1185,7 +1284,11 @@ exports[`DOM snapshots SLDSProgressRing Theme: Complete 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -1241,7 +1344,11 @@ exports[`DOM snapshots SLDSProgressRing Theme: Expired 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -1271,7 +1378,11 @@ exports[`DOM snapshots SLDSProgressRing Theme: Expired 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -1315,6 +1426,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Expired 1`] = `
           role="progressbar"
           style={
             Object {
+              "height": "1.5rem",
               "transform": "scaleX(1) rotate(-90deg)",
             }
           }
@@ -1359,7 +1471,11 @@ exports[`DOM snapshots SLDSProgressRing Theme: Expired 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -1400,7 +1516,11 @@ exports[`DOM snapshots SLDSProgressRing Theme: Warning 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -1430,7 +1550,11 @@ exports[`DOM snapshots SLDSProgressRing Theme: Warning 1`] = `
           aria-valuenow={20}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"
@@ -1474,6 +1598,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Warning 1`] = `
           role="progressbar"
           style={
             Object {
+              "height": "1.5rem",
               "transform": "scaleX(1) rotate(-90deg)",
             }
           }
@@ -1518,7 +1643,11 @@ exports[`DOM snapshots SLDSProgressRing Theme: Warning 1`] = `
           aria-valuenow={100}
           className="slds-progress-ring__progress"
           role="progressbar"
-          style={Object {}}
+          style={
+            Object {
+              "height": "1.5rem",
+            }
+          }
         >
           <svg
             viewBox="-1 -1 2 2"

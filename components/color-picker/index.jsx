@@ -295,7 +295,11 @@ class ColorPicker extends React.Component {
 	getInput({ labels }) {
 		return this.props.hideInput ? null : (
 			<Input
-				aria-describedby={`color-picker-summary-error-${this.generatedId}`}
+				aria-describedby={
+					!this.state.isOpen && this.state.colorErrorMessage
+						? `color-picker-summary-error-${this.generatedId}`
+						: undefined
+				}
 				className={classNames(
 					'slds-color-picker__summary-input',
 					'slds-align-top',
@@ -601,7 +605,11 @@ class ColorPicker extends React.Component {
 							'slds-color-picker__summary-label',
 							this.props.assistiveText.label ? 'slds-assistive-text' : ''
 						)}
-						htmlFor={`color-picker-summary-input-${this.generatedId}`}
+						htmlFor={
+							!this.props.hideInput
+								? `color-picker-summary-input-${this.generatedId}`
+								: undefined
+						}
 						id={`color-picker-label-${this.generatedId}`}
 					>
 						{this.props.assistiveText.label

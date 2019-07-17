@@ -12,9 +12,9 @@ storiesOf(WELCOME_MAT, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">{getStory()}</div>
 	))
-	.add('Default', () => <Default />)
-	.add('Steps Complete', () => <StepsComplete />)
-	.add('Info Only', () => <InfoOnly />)
-	.add('Splash', () => <Splash />)
-	.add('Trailhead', () => <TrailHead />)
-	.add('Trailhead Complete', () => <TrailHeadComplete />);
+	.add('Default', () => <Default isOpen />)
+	.add('Steps Complete', () => <StepsComplete isOpen />)
+	.add('Info Only', () => <InfoOnly isOpen />)
+	.add('Splash', () => <Splash isOpen />)
+	.add('Trailhead', () => <TrailHead isOpen />)
+	.add('Trailhead Complete', () => <TrailHeadComplete isOpen />);
