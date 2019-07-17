@@ -534,7 +534,7 @@ Dialog.contextTypes = {
 	customSprite: PropTypes.string,
 	doctypeSprite: PropTypes.string,
 	standardSprite: PropTypes.string,
-	utilitySprite: PropTypes.string
+	utilitySprite: PropTypes.string,
 };
 
 export default LanguageDirection(Dialog);
