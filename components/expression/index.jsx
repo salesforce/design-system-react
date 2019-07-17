@@ -19,7 +19,7 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * Visual Picker accepts `Checkbox`, `Radio` and `VisualPickerLink` components as children. Please see `Checkbox`, `Radio` and `VisualPickerLink` for props.
+	 * ExpressionGroup accepts `ExpressionCondition` & `ExpressionGroup`
 	 */
 	children: PropTypes.node,
 	/**
@@ -64,6 +64,7 @@ class Expression extends React.Component {
 			>
 				<h2 className="slds-expression__title">Conditions</h2>
 				<ExpressionGroup
+					isChild={false}
 					customLogic={this.props.customLogic}
 					onChangeCustomLogic={this.props.onChangeCustomLogic}
 					triggerType={this.props.triggerType}

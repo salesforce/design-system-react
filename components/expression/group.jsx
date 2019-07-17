@@ -28,7 +28,7 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * Visual Picker accepts `Checkbox`, `Radio` and `VisualPickerLink` components as children. Please see `Checkbox`, `Radio` and `VisualPickerLink` for props.
+	 * ExpressionGroup accepts `ExpressionCondition`
 	 */
 	children: PropTypes.node,
 	/**
@@ -63,7 +63,7 @@ const propTypes = {
 
 const defaultProps = {
 	triggerType: 'all',
-	isChild: true
+	isChild: true,
 };
 
 const Triggers = [
@@ -230,7 +230,11 @@ class ExpressionGroup extends React.Component {
 								? this.props.labels.condition
 								: null}
 						</span>
-						<span className="slds-assistive-text">{this.props.assistiveText.title}</span>
+						<span className="slds-assistive-text">
+							{this.props.assistiveText
+								? this.props.assistiveText.title
+								: 'Condition Group'}
+						</span>
 					</legend>
 					<div className="slds-expression__options">{triggerCombobox}</div>
 					<ul>{body}</ul>

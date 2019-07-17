@@ -230,6 +230,8 @@ class Example extends React.Component {
 									{condition.triggerType !== 'always'
 										? condition.conditions.map((c, j) => (
 												<ExpressionCondition
+													/* eslint-disable-next-line react/no-array-index-key */
+													key={j}
 													isChild
 													labels={{
 														condition: Example.getTriggerType(
