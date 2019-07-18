@@ -1,4 +1,5 @@
 import React from 'react';
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import { FILES } from '../../../utilities/constants';
 import Default from '../__examples__/default';
@@ -15,7 +16,7 @@ storiesOf(FILES, module)
 	))
 	.add('Default', () => <Default />)
 	.add('w/o Image', () => <NoImage />)
-	.add('w/o Title', () => <NoTitle />)
+	.add('w/o Title', () => <NoTitle action={action} />)
 	.add('w/ External Icon', () => <ExternalIcon />)
 	.add('w/ Actions', () => <Actions />)
 	.add('Loading', () => <Loading />)

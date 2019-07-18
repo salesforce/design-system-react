@@ -34,43 +34,55 @@ const propTypes = {
 		PropTypes.object,
 		PropTypes.string,
 	]),
+	/**
+	 * Controls different cropping aspect ratios for the component
+	 */
 	crop: PropTypes.oneOf(['16-by-9', '4-by-3', '1-by-1']),
 	/**
 	 * HTML id for component.
 	 */
 	id: PropTypes.string,
 	/**
-	 *  Action to be done on clicking download button; doesnt show download button if empty
+	 * Action to be done on clicking download button; doesn't show download button if empty
 	 */
 	onClickDownload: PropTypes.func,
 	/**
-	 *  Dropdown for More Actions doesn't show More actions button if empty
+	 * Function that is called when image is clicked; can be used instead of href for more advanced event handling
+	 */
+	onClickImage: PropTypes.func,
+	/**
+	 * Dropdown for more actions button; doesn't show more actions button if empty
 	 */
 	moreActionsDropdown: PropTypes.node,
 	/**
-	 *  Link to External Icon
+	 * Icon associated with the file. Accepts an Icon component
+	 */
+	icon: PropTypes.node,
+	/**
+	 * Icon to be shown in top left corner of File component. Accepts an Icon component
 	 */
 	externalIcon: PropTypes.node,
 	/**
-	 *  Link to File Thumbnail
+	 * Link to thumbnail image
 	 */
 	image: PropTypes.string,
 	/**
-	 *  Whether file preview is loading
+	 * Controls whether file preview is loading
 	 */
 	isLoading: PropTypes.bool,
 	/**
-	 *  Action to be taken on clicking on image
+	 * Href attribute for image
 	 */
 	href: PropTypes.string,
 	/**
-	 *  Labels for the File Component
+	 * Labels for the File Component
+	 * * image - title for the file. Required.
 	 */
 	labels: PropTypes.shape({
 		title: PropTypes.string.isRequired,
 	}),
 	/**
-	 *  Whether the file's title should be visible
+	 *  Controls whether the file's title should be visible
 	 */
 	hasNoVisibleTitle: PropTypes.bool,
 };
@@ -127,6 +139,7 @@ class File extends React.Component {
 							'slds-file__crop',
 							this.props.crop ? `slds-file__crop_${this.props.crop}` : null
 						)}
+						onClick={this.props.onClickImage}
 					>
 						<FileFigure
 							assistiveText={{

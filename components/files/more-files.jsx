@@ -28,12 +28,20 @@ const propTypes = {
 	 * HTML id for component.
 	 */
 	id: PropTypes.string,
+	/**
+	 * Controls different cropping aspect ratios for the component
+	 */
 	crop: PropTypes.oneOf(['16-by-9', '4-by-3', '1-by-1']),
-
+	/**
+	 * Link to thumbnail image
+	 */
 	image: PropTypes.string,
+	/**
+	 * Controls the number of additional files that is displayed
+	 */
 	count: PropTypes.string,
 	/**
-	 *  Action to be taken on clicking on image
+	 * Href attribute for image
 	 */
 	href: PropTypes.string,
 };
