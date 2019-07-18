@@ -54,7 +54,6 @@ const data = {
 		},
 		{
 			id: '2',
-			childOpen: true,
 			cols: [
 				{
 					label: 'Acme Corporation',
@@ -73,31 +72,10 @@ const data = {
 					label: 'San Francisco, CA',
 				},
 			],
-			subRows: [
-				{
-					cols: [
-						{
-							label: 'Acme Corporation (Oakland)',
-						},
-						{
-							label: '745',
-						},
-						{
-							label: '837-555-1212',
-						},
-						{
-							label: 'Jane Doe',
-							href: 'javascript:void(0);',
-						},
-						{
-							label: 'New York, NY',
-						},
-					],
-				},
-			],
 		},
 		{
 			id: '3',
+			isSelected: true,
 			cols: [
 				{
 					label: 'Rohde Enterprises',
@@ -142,7 +120,7 @@ const data = {
 };
 
 class Example extends React.Component {
-	static displayName = 'treeGridNestedExample';
+	static displayName = 'treeGridPreSelectedExample';
 
 	render() {
 		return (

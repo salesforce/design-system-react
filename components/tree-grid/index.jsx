@@ -38,6 +38,8 @@ const propTypes = {
 	}),
 
 	data: PropTypes.object.isRequired,
+
+	isSingleSelect: PropTypes.bool,
 };
 
 /**
@@ -73,39 +75,42 @@ class TreeGrid extends React.Component {
 			>
 				<thead>
 					<tr className="slds-line-height_reset">
-						<th
-							className="slds-text-align_right"
-							scope="col"
-							style={{ width: '3.5rem' }}
-						>
-							<span id="column-group-header" className="slds-assistive-text">
-								Choose a row
-							</span>
-							<div className="slds-th__action slds-th__action_form">
-								<div className="slds-checkbox">
-									<input
-										type="checkbox"
-										name="options"
-										id="checkbox-177"
-										value="checkbox-177"
-										tabIndex="-1"
-										aria-labelledby="check-select-all-label column-group-header"
-									/>
-									<label
-										className="slds-checkbox__label"
-										htmlFor="checkbox-177"
-										id="check-select-all-label"
-									>
-										<span className="slds-checkbox_faux" />
-										<span className="slds-form-element__label slds-assistive-text">
-											Select All
-										</span>
-									</label>
+						{ !this.props.isSingleSelect ? (
+							<th
+								className="slds-text-align_right"
+								scope="col"
+								style={{ width: '3.5rem' }}
+							>
+								<span id="column-group-header" className="slds-assistive-text">
+									Choose a row
+								</span>
+								<div className="slds-th__action slds-th__action_form">
+									<div className="slds-checkbox">
+										<input
+											type="checkbox"
+											name="options"
+											id="checkbox-177"
+											value="checkbox-177"
+											tabIndex="-1"
+											aria-labelledby="check-select-all-label column-group-header"
+										/>
+										<label
+											className="slds-checkbox__label"
+											htmlFor="checkbox-177"
+											id="check-select-all-label"
+										>
+											<span className="slds-checkbox_faux" />
+											<span className="slds-form-element__label slds-assistive-text">
+												Select All
+											</span>
+										</label>
+									</div>
 								</div>
-							</div>
-						</th>
+							</th>) : null
+						}
 						{this.props.data.cols.map((col) => (
 							<th
+								key={col.id}
 								aria-label={col.label}
 								aria-sort="none"
 								className="slds-has-button-menu slds-is-resizable slds-is-sortable"
@@ -159,12 +164,25 @@ class TreeGrid extends React.Component {
 				<tbody>
 					{this.props.data.rows
 						? this.props.data.rows.map((row) => (
-								<>
-									<Row data={row} />
+								<React.Fragment key={row.id}>
+									<Row
+										data={row}
+										cols={this.props.data.cols}
+										isSelected={row.isSelected}
+										childOpen={row.childOpen}
+										isSingleSelect={this.props.isSingleSelect}
+									/>
 									{row.subRows
-										? row.subRows.map((r) => <Row level={2} data={r} />)
+										? row.subRows.map((r) =>
+											<Row
+												key={r.id}
+												level={2}
+												data={r}
+												isSingleSelect={this.props.isSingleSelect}
+												cols={this.props.data.cols}
+											/>)
 										: null}
-								</>
+								</React.Fragment>
 							))
 						: null}
 				</tbody>
