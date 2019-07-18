@@ -21,10 +21,18 @@ const displayName = FILES_FILE;
 const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
+	 *  * download - description for the download button if present
 	 *  * image - description for the file image
+	 *  * link - description for the file link
+	 *  * loading - description for the loading spinner if present
+	 *  * moreActions - description for the more actions dropdown if present
 	 */
 	assistiveText: PropTypes.shape({
+		download: PropTypes.string,
 		image: PropTypes.string,
+		link: PropTypes.string,
+		loading: PropTypes.string,
+		moreActions: PropTypes.string,
 	}),
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
@@ -88,6 +96,12 @@ const propTypes = {
 };
 
 const defaultProps = {
+	assistiveText: {
+		download: 'download',
+		link: 'Preview:',
+		loading: 'loading',
+		moreActions: 'more actions',
+	},
 	crop: '16-by-9',
 	href: 'javascript:void(0);',
 	isLoading: false,
@@ -100,11 +114,11 @@ class File extends React.Component {
 	static injectMoreActionsStyles() {
 		return (
 			<style>{`
-					.files-more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item > a:before
+					.dsr-file__more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item > a:before
 					{ background: none; }
-					.files-more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item > a:after
+					.dsr-file__more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item > a:after
 					{ background: none; }
-					.files-more-actions > button:first-child
+					.dsr-file__more-actions > button:first-child
 					{ border-radius: 0 0.25rem 0.25rem 0!important;}
 			`}</style>
 		);
@@ -122,6 +136,11 @@ class File extends React.Component {
 	}
 
 	render() {
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
+
 		return (
 			<div
 				id={this.getId()}
@@ -142,11 +161,7 @@ class File extends React.Component {
 						onClick={this.props.onClickImage}
 					>
 						<FileFigure
-							assistiveText={{
-								image: this.props.assistiveText
-									? this.props.assistiveText.image
-									: null,
-							}}
+							assistiveText={assistiveText}
 							labels={{
 								title: this.props.labels.title,
 							}}
@@ -184,6 +199,7 @@ class File extends React.Component {
 				) : null}
 				{this.props.moreActionsDropdown ? File.injectMoreActionsStyles() : null}
 				<FileActions
+					assistiveText={assistiveText}
 					hasNoVisibleTitle={this.props.hasNoVisibleTitle}
 					onClickDownload={this.props.onClickDownload}
 					moreActionsDropdown={this.props.moreActionsDropdown}

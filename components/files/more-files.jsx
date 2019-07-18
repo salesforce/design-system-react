@@ -17,6 +17,17 @@ const displayName = FILES_MORE;
 
 const propTypes = {
 	/**
+	 * **Assistive text for accessibility**
+	 *  * count - description for the more files count
+	 *  * image - description for the image
+	 *  * link - description for the more files link
+	 */
+	assistiveText: PropTypes.shape({
+		count: PropTypes.string,
+		image: PropTypes.string,
+		link: PropTypes.string,
+	}),
+	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
 	className: PropTypes.oneOfType([
@@ -47,6 +58,11 @@ const propTypes = {
 };
 
 const defaultProps = {
+	assistiveText: {
+		count: 'more files',
+		image: 'Show more files',
+		link: 'Preview:',
+	},
 	crop: '16-by-9',
 	href: 'javascript:void(0);',
 };
@@ -61,6 +77,11 @@ class MoreFiles extends React.Component {
 	}
 
 	render() {
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
+
 		return (
 			<div
 				className={classNames(`slds-file slds-file_card`, this.props.className)}
@@ -75,8 +96,8 @@ class MoreFiles extends React.Component {
 						)}
 					>
 						<div className="slds-file_overlay" />
-						<span className="slds-assistive-text">Preview:</span>
-						<img src={this.props.image} alt="Show more files" />
+						<span className="slds-assistive-text">{assistiveText.link}</span>
+						<img src={this.props.image} alt={assistiveText.image} />
 					</a>
 					<figcaption className="slds-file__title slds-file__title_overlay slds-align_absolute-center slds-text-heading_large">
 						<div className="slds-media slds-media_small slds-media_center">
@@ -87,7 +108,9 @@ class MoreFiles extends React.Component {
 									title={this.props.count}
 								>
 									<span>{this.props.count}</span>
-									<span className="slds-assistive-text">more files</span>
+									<span className="slds-assistive-text">
+										{assistiveText.count}
+									</span>
 								</span>
 							</div>
 						</div>

@@ -26,7 +26,7 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
               Preview:
             </span>
             <img
-              alt={null}
+              alt="Proposal.pdf"
               src="/assets/images/placeholder-img@16x9.jpg"
             />
           </a>
@@ -82,7 +82,7 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
               Preview:
             </span>
             <img
-              alt={null}
+              alt="Proposal.pdf"
               src="/assets/images/placeholder-img@16x9.jpg"
             />
           </a>
@@ -138,7 +138,7 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
               Preview:
             </span>
             <img
-              alt={null}
+              alt="Proposal.pdf"
               src="/assets/images/placeholder-img@16x9.jpg"
             />
           </a>
@@ -268,6 +268,11 @@ exports[`DOM snapshots SLDSFiles Loading 1`] = `
             className="slds-file__crop slds-file__crop_16-by-9"
             href="javascript:void(0);"
           >
+            <span
+              className="slds-assistive-text"
+            >
+              Preview:
+            </span>
             <div
               className="slds-spinner_container"
               style={
@@ -284,7 +289,7 @@ exports[`DOM snapshots SLDSFiles Loading 1`] = `
                 <span
                   className="slds-assistive-text"
                 >
-                  Loading
+                  loading
                 </span>
                 <div
                   className="slds-spinner__dot-a"
@@ -310,6 +315,11 @@ exports[`DOM snapshots SLDSFiles Loading 1`] = `
             className="slds-file__crop slds-file__crop_16-by-9"
             href="javascript:void(0);"
           >
+            <span
+              className="slds-assistive-text"
+            >
+              Preview:
+            </span>
             <div
               className="slds-spinner_container"
               style={
@@ -326,7 +336,7 @@ exports[`DOM snapshots SLDSFiles Loading 1`] = `
                 <span
                   className="slds-assistive-text"
                 >
-                  Loading
+                  loading
                 </span>
                 <div
                   className="slds-spinner__dot-a"
@@ -401,18 +411,18 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
               Preview:
             </span>
             <img
-              alt={null}
+              alt="Proposal.pdf"
               src="/assets/images/placeholder-img@16x9.jpg"
             />
           </a>
         </figure>
         <style>
           
-					.files-more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item &gt; a:before
+					.dsr-file__more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item &gt; a:before
 					{ background: none; }
-					.files-more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item &gt; a:after
+					.dsr-file__more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item &gt; a:after
 					{ background: none; }
-					.files-more-actions &gt; button:first-child
+					.dsr-file__more-actions &gt; button:first-child
 					{ border-radius: 0 0.25rem 0.25rem 0!important;}
 			
         </style>
@@ -450,7 +460,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                 </span>
               </button>
               <div
-                className="slds-dropdown-trigger slds-dropdown-trigger_click files-more-actions"
+                className="slds-dropdown-trigger slds-dropdown-trigger_click dsr-file__more-actions"
                 id="file-more-actions"
                 onClick={[Function]}
                 onFocus={null}
@@ -475,6 +485,11 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
                     />
                   </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    more actions
+                  </span>
                 </button>
               </div>
             </div>
@@ -500,7 +515,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
               Preview:
             </span>
             <img
-              alt={null}
+              alt="Proposal.pdf"
               src="/assets/images/placeholder-img@16x9.jpg"
             />
           </a>
@@ -538,11 +553,11 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
         </figure>
         <style>
           
-					.files-more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item &gt; a:before
+					.dsr-file__more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item &gt; a:before
 					{ background: none; }
-					.files-more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item &gt; a:after
+					.dsr-file__more-actions-dropdown  ul.dropdown__list li.slds-dropdown__item &gt; a:after
 					{ background: none; }
-					.files-more-actions &gt; button:first-child
+					.dsr-file__more-actions &gt; button:first-child
 					{ border-radius: 0 0.25rem 0.25rem 0!important;}
 			
         </style>
@@ -577,7 +592,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
               </span>
             </button>
             <div
-              className="slds-dropdown-trigger slds-dropdown-trigger_click files-more-actions"
+              className="slds-dropdown-trigger slds-dropdown-trigger_click dsr-file__more-actions"
               id="file-with-title-more-actions"
               onClick={[Function]}
               onFocus={null}
@@ -602,6 +617,11 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
                   />
                 </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  more actions
+                </span>
               </button>
             </div>
           </div>
@@ -868,6 +888,7 @@ exports[`DOM snapshots SLDSFiles w/o Title 1`] = `
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
             href="javascript:void(0);"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -875,7 +896,7 @@ exports[`DOM snapshots SLDSFiles w/o Title 1`] = `
               Preview:
             </span>
             <img
-              alt={null}
+              alt="Proposal.pdf"
               src="/assets/images/placeholder-img@16x9.jpg"
             />
           </a>

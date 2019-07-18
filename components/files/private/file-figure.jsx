@@ -18,30 +18,31 @@ import Spinner from '../../spinner';
 const FileFigure = (props) => {
 	if (props.isLoading) {
 		return (
-			<Spinner
-				size="medium"
-				variant="base"
-				assistiveText={{ label: 'Loading' }}
-				containerStyle={{ zIndex: '1' }}
-			/>
+			<React.Fragment>
+				<span className="slds-assistive-text">{props.assistiveText.link}</span>
+				<Spinner
+					size="medium"
+					variant="base"
+					assistiveText={{ label: props.assistiveText.loading }}
+					containerStyle={{ zIndex: '1' }}
+				/>
+			</React.Fragment>
 		);
 	}
 	if (props.image) {
 		return (
 			<React.Fragment>
-				<span className="slds-assistive-text">Preview:</span>
+				<span className="slds-assistive-text">{props.assistiveText.link}</span>
 				<img
+					alt={props.assistiveText.image || props.labels.title}
 					src={props.image}
-					alt={
-						props.assistiveText ? props.assistiveText.image : props.labels.title
-					}
 				/>
 			</React.Fragment>
 		);
 	}
 	return (
 		<React.Fragment>
-			<span className="slds-assistive-text">Preview:</span>
+			<span className="slds-assistive-text">{props.assistiveText.link}</span>
 			<span
 				className="slds-file__icon slds-icon_container"
 				title={props.labels.title}

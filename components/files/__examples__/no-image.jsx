@@ -16,9 +16,6 @@ class Example extends React.Component {
 						labels={{
 							title: 'Proposal.pdf',
 						}}
-						assistiveText={{
-							image: 'Placeholder image',
-						}}
 						icon={<Icon category="doctype" name="pdf" />}
 					/>
 				</Files>

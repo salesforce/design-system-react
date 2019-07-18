@@ -28,7 +28,7 @@ const FileActions = (props) => {
 						title="Download"
 					>
 						<Icon
-							assistiveText={{ label: 'download' }}
+							assistiveText={{ label: props.assistiveText.download }}
 							category="utility"
 							name="download"
 							size="xx-small"
@@ -38,11 +38,12 @@ const FileActions = (props) => {
 				) : null}
 				{props.moreActionsDropdown
 					? React.cloneElement(props.moreActionsDropdown, {
+							assistiveText: { icon: props.assistiveText.moreActions },
 							overlay: false,
 							buttonVariant: 'icon',
 							buttonInverse: props.hasNoVisibleTitle,
-							className: 'files-more-actions-dropdown',
-							triggerClassName: 'files-more-actions',
+							className: 'dsr-file__more-actions-dropdown ',
+							triggerClassName: 'dsr-file__more-actions',
 						})
 					: null}
 			</div>
