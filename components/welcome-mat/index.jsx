@@ -32,7 +32,7 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * whether the modal is open
+	 * Whether the modal is open
 	 */
 	isOpen: PropTypes.bool,
 	/**
@@ -58,6 +58,10 @@ const propTypes = {
 	 * Link to learn more button
 	 */
 	onRenderInfoActions: PropTypes.func,
+	/**
+	 * Callback to fire when modal is dismissed
+	 */
+	onRequestClose: PropTypes.func,
 	/**
 	 *  Accepts a single WelcomeMatInfoBadge component, to be used with the trailhead variant
 	 */
@@ -166,7 +170,7 @@ class WelcomeMat extends React.Component {
 								: null}
 							{this.state.completedSteps !== this.state.totalSteps ||
 							this.props.variant !== 'trailhead-connected' ? (
-								<>
+								<React.Fragment>
 									{this.props.variant === 'trailhead-connected' ? (
 										<p>
 											{this.state.completedSteps}/{this.state.totalSteps} units
@@ -181,7 +185,7 @@ class WelcomeMat extends React.Component {
 										</p>
 									)}
 									<ProgressBar value={this.state.progress} radius="circular" />
-								</>
+								</React.Fragment>
 							) : null}
 						</div>
 					</React.Fragment>
@@ -195,6 +199,7 @@ class WelcomeMat extends React.Component {
 					dialogLabelledBy: `${this.getId()}-label`,
 				}}
 				isOpen={this.props.isOpen}
+				onRequestClose={this.props.onRequestClose}
 				size="small"
 				id={`${this.getId()}-modal`}
 			>

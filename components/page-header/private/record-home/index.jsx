@@ -62,16 +62,16 @@ const RecordHome = (props) => {
 	}
 
 	return (
-		<>
+		<React.Fragment>
 			<div className="slds-page-header__row">
 				<div className="slds-page-header__col-title">
 					<MediaObject
 						body={
-							<>
+							<React.Fragment>
 								<div className="slds-page-header__name">
 									<Title content={props.title} label={props.label} />
 								</div>
-							</>
+							</React.Fragment>
 						}
 						figure={icon}
 					/>
@@ -89,7 +89,7 @@ const RecordHome = (props) => {
 					</div>
 				</div>
 			) : null}
-		</>
+		</React.Fragment>
 	);
 };
 

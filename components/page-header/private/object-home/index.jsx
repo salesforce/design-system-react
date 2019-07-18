@@ -81,12 +81,12 @@ const ObjectHome = (props) => {
 	}
 
 	return (
-		<>
+		<React.Fragment>
 			<div className="slds-page-header__row">
 				<div className="slds-page-header__col-title">
 					<MediaObject
 						body={
-							<>
+							<React.Fragment>
 								{props.trail ? (
 									<Label style={{ lineHeight: '1.3' }} trail={props.trail} />
 								) : null}
@@ -101,7 +101,7 @@ const ObjectHome = (props) => {
 										</div>
 									) : null}
 								</div>
-							</>
+							</React.Fragment>
 						}
 						figure={icon}
 					/>
@@ -129,7 +129,7 @@ const ObjectHome = (props) => {
 					type="controls"
 				/>
 			</div>
-		</>
+		</React.Fragment>
 	);
 };
 

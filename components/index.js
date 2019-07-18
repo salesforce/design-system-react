@@ -224,6 +224,8 @@ export PanelFilterListHeading from './panel/filtering/list-heading';
 
 export SLDSPageHeader from './page-header';
 export PageHeader from './page-header';
+export SLDSPageHeaderControl from './page-header/control';
+export PageHeaderControl from './page-header/control';
 
 export SLDSPill from './pill';
 export Pill from './pill';
