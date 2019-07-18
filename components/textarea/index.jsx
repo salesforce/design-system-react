@@ -284,7 +284,7 @@ class Textarea extends React.Component {
 					>
 						{required && (
 							<abbr className="slds-required" title="required">
-								*
+								{'*'}
 							</abbr>
 						)}
 						{labelText}

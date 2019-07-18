@@ -95,6 +95,8 @@ class Manager extends React.Component {
 						onClick={this.closeModal}
 					>
 						<Icon name="close" category="utility" size="small" />
+						{/* This file is an example file and should not be used */}
+						{/* eslint-disable-next-line react/jsx-no-literals */}
 						<span className="slds-assistive-text">Close</span>
 					</Button>
 				</div>

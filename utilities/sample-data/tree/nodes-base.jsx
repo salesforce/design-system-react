@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-literals */
 import React from 'react';
 
 const sampleNodesDefault = {
