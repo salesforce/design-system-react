@@ -27,7 +27,7 @@ const propTypes = {
 	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
 		addCondition: PropTypes.string,
-		addGroup: PropTypes.string
+		addGroup: PropTypes.string,
 	}),
 	/**
 	 * HTML id for ExpressionGroup component.
@@ -103,7 +103,6 @@ const defaultProps = {
  * Expression Group Component
  */
 class ExpressionGroup extends React.Component {
-
 	/**
 	 *  Return triggerType selected, processing the triggerType objects generated
 	 */
@@ -192,7 +191,8 @@ class ExpressionGroup extends React.Component {
 		);
 
 		const buttons =
-			this.props.triggerType !== 'always' ? (
+			this.props.triggerType !== 'always' &&
+			this.props.triggerType !== 'formula' ? (
 				<div className="slds-expression__buttons">
 					<Button
 						iconCategory="utility"
@@ -215,33 +215,33 @@ class ExpressionGroup extends React.Component {
 				</div>
 			) : null;
 
-		const body = (
-			this.props.triggerType !== "always" ? (
-			<>
-				{this.props.triggerType === 'custom' ? (
-					<div className="slds-expression__custom-logic">
-						<div className="slds-form-element">
-							<label
-								className="slds-form-element__label"
-								htmlFor={`text-input-id-${this.getId()}`}
-							>
-								{labels.customLogic}
-							</label>
-							<div className="slds-form-element__control">
-								<input
-									className="slds-input"
-									type="text"
-									id={`text-input-id-${this.getId()}`}
-									value={this.props.customLogicValue}
-									onChange={this.props.events.onChangeCustomLogicValue}
-								/>
+		const body =
+			this.props.triggerType !== 'always' ? (
+				<>
+					{this.props.triggerType === 'custom' ? (
+						<div className="slds-expression__custom-logic">
+							<div className="slds-form-element">
+								<label
+									className="slds-form-element__label"
+									htmlFor={`text-input-id-${this.getId()}`}
+								>
+									{labels.customLogic}
+								</label>
+								<div className="slds-form-element__control">
+									<input
+										className="slds-input"
+										type="text"
+										id={`text-input-id-${this.getId()}`}
+										value={this.props.customLogicValue}
+										onChange={this.props.events.onChangeCustomLogicValue}
+									/>
+								</div>
 							</div>
 						</div>
-					</div>
-				) : null}
-				<ul>{this.props.children}</ul>
-			</>) : null
-		);
+					) : null}
+					<ul>{this.props.children}</ul>
+				</>
+			) : null;
 
 		return !this.props.isRoot ? (
 			<li

@@ -19,7 +19,6 @@ import Input from '../input';
 import Button from '../button';
 
 const propTypes = {
-
 	assistiveText: PropTypes.shape({
 		deleteIcon: PropTypes.string,
 	}),
@@ -98,74 +97,74 @@ class ExpressionCondition extends React.Component {
 		);
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 		return (
-				<li
-					className={classNames(
-						`slds-expression__row`,
-						this.props.isSubCondition ? 'slds-expression__row_group' : null,
-						this.props.className
-					)}
-					id={this.getId()}
-				>
-					<fieldset>
-						<legend className="slds-expression__legend">
-							<span>{labels.label}</span>
-							<span className="slds-assistive-text">{assistiveText.title}</span>
-						</legend>
-						<div className="slds-grid slds-gutters_xx-small">
-							<div className="slds-col">
-								<Combobox
-									events={{
-										onSelect: this.props.events.onChangeResource,
-									}}
-									multiple={false}
-									variant="readonly"
-									labels={{ label: labels.resource }}
-									options={this.props.resourcesList}
-									selection={[this.props.resourceSelected]}
-								/>
-							</div>
-							<div className="slds-col slds-grow-none">
-								<Combobox
-									events={{
-										onSelect: this.props.events.onChangeOperator,
-									}}
-									multiple={false}
-									variant="readonly"
-									labels={{ label: labels.operator }}
-									options={this.props.operatorsList}
-									selection={[this.props.operatorSelected]}
-									singleInputDisabled={!this.props.resourceSelected}
-								/>
-							</div>
-							<div className="slds-col">
-								<Input
-									label={labels.value}
-									value={this.props.value}
-									onChange={this.props.events.onChangeValue}
-									disabled={!this.props.resourceSelected}
-								/>
-							</div>
-							<div className="slds-col slds-grow-none">
-								<div className="slds-form-element">
-									<span className="slds-form-element__label">&nbsp;</span>
-									<div className="slds-form-element__control">
-										<Button
-											variant="outline-brand"
-											iconCategory="utility"
-											iconName="delete"
-											iconVariant="border-filled"
-											onClick={this.props.events.onDelete}
-											assistiveText={{
-												icon: assistiveText.deleteIcon,
-											}}
-											title={labels.deleteCondition}
-										/>
-									</div>
+			<li
+				className={classNames(
+					`slds-expression__row`,
+					this.props.isSubCondition ? 'slds-expression__row_group' : null,
+					this.props.className
+				)}
+				id={this.getId()}
+			>
+				<fieldset>
+					<legend className="slds-expression__legend">
+						<span>{labels.label}</span>
+						<span className="slds-assistive-text">{assistiveText.title}</span>
+					</legend>
+					<div className="slds-grid slds-gutters_xx-small">
+						<div className="slds-col">
+							<Combobox
+								events={{
+									onSelect: this.props.events.onChangeResource,
+								}}
+								multiple={false}
+								variant="readonly"
+								labels={{ label: labels.resource }}
+								options={this.props.resourcesList}
+								selection={[this.props.resourceSelected]}
+							/>
+						</div>
+						<div className="slds-col slds-grow-none">
+							<Combobox
+								events={{
+									onSelect: this.props.events.onChangeOperator,
+								}}
+								multiple={false}
+								variant="readonly"
+								labels={{ label: labels.operator }}
+								options={this.props.operatorsList}
+								selection={[this.props.operatorSelected]}
+								singleInputDisabled={!this.props.resourceSelected}
+							/>
+						</div>
+						<div className="slds-col">
+							<Input
+								label={labels.value}
+								value={this.props.value}
+								onChange={this.props.events.onChangeValue}
+								disabled={!this.props.resourceSelected}
+							/>
+						</div>
+						<div className="slds-col slds-grow-none">
+							<div className="slds-form-element">
+								<span className="slds-form-element__label">&nbsp;</span>
+								<div className="slds-form-element__control">
+									<Button
+										variant="outline-brand"
+										iconCategory="utility"
+										iconName="delete"
+										iconVariant="border-filled"
+										onClick={this.props.events.onDelete}
+										assistiveText={{
+											icon: assistiveText.deleteIcon,
+										}}
+										title={labels.deleteCondition}
+									/>
 								</div>
 							</div>
 						</div>
-					</fieldset>
-				</li>
+					</div>
+				</fieldset>
+			</li>
 		);
 	}
 }

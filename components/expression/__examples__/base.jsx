@@ -3,9 +3,12 @@ import find from 'lodash.find';
 
 // `~` is replaced with design-system-react at runtime
 import IconSettings from '~/components/icon-settings';
+import Combobox from '~/components/combobox';
+import Input from '~/components/input';
 import Expression from '~/components/expression';
 import ExpressionGroup from '~/components/expression/group';
 import ExpressionCondition from '~/components/expression/condition';
+import ExpressionFormula from '~/components/expression/formula';
 
 const ResourcesList = [
 	{
@@ -137,7 +140,7 @@ class Example extends React.Component {
 				value: '',
 			};
 			conditions[i].conditions = [newCondition];
-			this.setState({ conditions});
+			this.setState({ conditions });
 		}
 	}
 
@@ -180,58 +183,114 @@ class Example extends React.Component {
 					triggerType={this.state.triggerType}
 					customLogicValue={this.state.customLogic}
 				>
-					{this.state.conditions.map(
-						(condition, i) =>
-							!condition.isGroup ? (
-								<ExpressionCondition
-									/* eslint-disable-next-line react/no-array-index-key */
-									key={i}
+					{this.state.triggerType === 'formula' ? (
+						<ExpressionFormula
+							resourceCombobox={
+								<Combobox
 									labels={{
-										label: Example.getTriggerType(
-											i,
-											this.state.triggerType
-										),
+										placeholder: 'Insert a Resource',
 									}}
-									events={{
-										onChangeOperator: (e, obj) =>
-											this.updateData(i, obj, 'operator'),
-										onChangeResource: (e, obj) =>
-											this.updateData(i, obj, 'resource'),
-										onChangeValue: (e) =>
-											this.updateData(i, e.target.value, 'value'),
-										onDelete: () => this.deleteCondition(i),
-									}}
-									resourcesList={ResourcesList}
-									resourceSelected={find(ResourcesList, {
-										id: condition.resource,
-									})}
-									operatorsList={OperatorsList}
-									operatorSelected={find(OperatorsList, {
-										id: condition.operator,
-									})}
-									value={condition.value}
+									options={ResourcesList}
+									variant="inline-listbox"
 								/>
-							) : (
-								<ExpressionGroup
-									/* eslint-disable-next-line react/no-array-index-key */
-									key={i}
+							}
+							onClickCheckSyntax={() => console.log('Check Syntax')}
+							onClickHelp={() => console.log('Get Help')}
+							functionCombobox={
+								<Combobox
 									labels={{
-										label: Example.getTriggerType(
-											i,
-											this.state.triggerType
-										),
+										placeholder: 'Insert a Function',
 									}}
-									events={{
-										onChangeCustomLogicValue: (e, val) =>
-											this.updateGroupData(i, val, 'customLogic'),
-										onChangeTrigger: (val) =>
-											this.updateGroupData(i, val, 'triggerType'),
-										onAddCondition: () => this.addSubCondition(i),
-									}}
-									customLogicValue={condition.customLogic}
-									triggerType={condition.triggerType}
-								>
-									{condition.conditions.map((c, j) => (
+									options={ResourcesList}
+									variant="inline-listbox"
+								/>
+							}
+							operatorInput={
+								<Input
+									assistiveText={{ label: 'Insert a Operator' }}
+									id="insert-operator-formula"
+									placeholder="Insert a Operator"
+								/>
+							}
+						/>
+					) : (
+						this.state.conditions.map(
+							(condition, i) =>
+								!condition.isGroup ? (
+									<ExpressionCondition
+										/* eslint-disable-next-line react/no-array-index-key */
+										key={i}
+										labels={{
+											label: Example.getTriggerType(i, this.state.triggerType),
+										}}
+										events={{
+											onChangeOperator: (e, obj) =>
+												this.updateData(i, obj, 'operator'),
+											onChangeResource: (e, obj) =>
+												this.updateData(i, obj, 'resource'),
+											onChangeValue: (e) =>
+												this.updateData(i, e.target.value, 'value'),
+											onDelete: () => this.deleteCondition(i),
+										}}
+										resourcesList={ResourcesList}
+										resourceSelected={find(ResourcesList, {
+											id: condition.resource,
+										})}
+										operatorsList={OperatorsList}
+										operatorSelected={find(OperatorsList, {
+											id: condition.operator,
+										})}
+										value={condition.value}
+									/>
+								) : (
+									<ExpressionGroup
+										/* eslint-disable-next-line react/no-array-index-key */
+										key={i}
+										labels={{
+											label: Example.getTriggerType(i, this.state.triggerType),
+										}}
+										events={{
+											onChangeCustomLogicValue: (e, val) =>
+												this.updateGroupData(i, val, 'customLogic'),
+											onChangeTrigger: (val) =>
+												this.updateGroupData(i, val, 'triggerType'),
+											onAddCondition: () => this.addSubCondition(i),
+										}}
+										customLogicValue={condition.customLogic}
+										triggerType={condition.triggerType}
+									>
+										{condition.triggerType === 'formula' ? (
+											<ExpressionFormula
+												resourceCombobox={
+													<Combobox
+														labels={{
+															placeholder: 'Insert a Resource',
+														}}
+														options={ResourcesList}
+														variant="inline-listbox"
+													/>
+												}
+												onClickCheckSyntax={() => console.log('Check Syntax')}
+												onClickHelp={() => console.log('Get Help')}
+												functionCombobox={
+													<Combobox
+														labels={{
+															placeholder: 'Insert a Function',
+														}}
+														options={ResourcesList}
+														variant="inline-listbox"
+													/>
+												}
+												operatorInput={
+													<Input
+														assistiveText={{ label: 'Insert a Operator' }}
+														id={`insert-operator-formula-${i}`}
+														placeholder="Insert a Operator"
+													/>
+												}
+											/>
+										) : (
+											condition.conditions.map((c, j) => (
 												<ExpressionCondition
 													/* eslint-disable-next-line react/no-array-index-key */
 													key={j}
@@ -262,9 +321,10 @@ class Example extends React.Component {
 													value={c.value}
 												/>
 											))
-										}
-								</ExpressionGroup>
-							)
+										)}
+									</ExpressionGroup>
+								)
+						)
 					)}
 				</Expression>
 			</IconSettings>

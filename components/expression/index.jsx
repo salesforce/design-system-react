@@ -10,9 +10,9 @@ import classNames from 'classnames';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+import assign from 'lodash.assign';
 import { EXPRESSION } from '../../utilities/constants';
 import ExpressionGroup from './group';
-import assign from 'lodash.assign';
 
 const propTypes = {
 	/**
@@ -55,9 +55,9 @@ const propTypes = {
 };
 
 const defaultProps = {
-		labels: {
-			title: 'Conditions'
-		}
+	labels: {
+		title: 'Conditions',
+	},
 };
 
 /**
@@ -76,7 +76,6 @@ class Expression extends React.Component {
 	}
 
 	render() {
-
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 
 		return (
