@@ -138,7 +138,7 @@ const DatepickerCalendarDay = (props) => {
 			{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 			<span className="slds-day">
 				{isToday ? (
-					<span className="slds-assistive-text">{props.todayLabel}: </span>
+					<span className="slds-assistive-text">{`${props.todayLabel}: `}</span>
 				) : null}
 				{props.date.getDate()}
 			</span>

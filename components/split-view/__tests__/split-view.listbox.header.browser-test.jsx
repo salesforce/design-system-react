@@ -102,7 +102,7 @@ describe('SLDSSplitView - Listbox header', () => {
 				.find('.slds-split-view__list-header > span > span')
 				.at(0)
 				.text()
-		).to.equal('test sort by:');
+		).to.equal('test sort by: ');
 	});
 
 	describe('sort', () => {

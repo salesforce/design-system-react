@@ -20,6 +20,7 @@ const documentationSiteLiveExamples = {
 	carousel: require('@salesforce/design-system-react/components/carousel/__docs__/site-stories.js'),
 	combobox: require('@salesforce/design-system-react/components/combobox/__docs__/site-stories.js'),
 	'color-picker': require('@salesforce/design-system-react/components/color-picker/__docs__/site-stories.js'),
+	files: require('@salesforce/design-system-react/components/files/__docs__/site-stories.js'),
 	filter: require('@salesforce/design-system-react/components/filter/__docs__/site-stories.js'),
 	checkbox: require('@salesforce/design-system-react/components/checkbox/__docs__/site-stories.js'),
 	'data-table': require('@salesforce/design-system-react/components/data-table/__docs__/site-stories.js'),

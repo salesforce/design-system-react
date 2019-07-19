@@ -137,7 +137,8 @@ const defaultProps = {
 		triggerLearnMoreIcon: 'Help',
 	},
 	align: 'top',
-	content: <span>Tooltip</span>,
+	// eslint-disable-next-line react/jsx-curly-brace-presence
+	content: <span>{'Tooltip'}</span>,
 	labels: {
 		learnMoreAfter: 'to learn more.',
 		learnMoreBefore: 'Click',
