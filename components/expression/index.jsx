@@ -36,6 +36,7 @@ const propTypes = {
 	events: PropTypes.shape({
 		onChangeTrigger: PropTypes.func,
 		onAddGroup: PropTypes.func,
+		onAddCondition: PropTypes.func,
 		onChangeCustomLogicValue: PropTypes.func,
 	}),
 	/**
@@ -47,7 +48,6 @@ const propTypes = {
 		PropTypes.string,
 	]),
 
-	onAddCondition: PropTypes.func,
 
 	triggerType: PropTypes.oneOf(['all', 'any', 'custom', 'always', 'formula']),
 
@@ -86,13 +86,7 @@ class Expression extends React.Component {
 				<h2 className="slds-expression__title">{labels.title}</h2>
 				<ExpressionGroup
 					isRoot
-					events={{
-						onChangeCustomLogicValue: this.props.events
-							.onChangeCustomLogicValue,
-						onChangeTrigger: this.props.events.onChangeTrigger,
-						onAddCondition: this.props.events.onAddCondition,
-						onAddGroup: this.props.events.onAddGroup,
-					}}
+					events={this.props.events}
 					labels={labels}
 					customLogicValue={this.props.customLogicValue}
 					triggerType={this.props.triggerType}
