@@ -618,8 +618,9 @@ class MenuDropdown extends React.Component {
 		this.isHover = true;
 
 		if (!isOpen && this.props.openOn === 'hover') {
-			this.handleOpen();
-			this.setFocus();
+			this.handleClick();
+			// this.handleOpen();
+			// this.setFocus();
 		} else {
 			// we want this clear when openOn is hover or hybrid
 			clearTimeout(this.isClosing);
@@ -634,6 +635,7 @@ class MenuDropdown extends React.Component {
 		const isOpen = this.getIsOpen();
 
 		if (isOpen) {
+			this.handleClick();
 			this.isClosing = setTimeout(() => {
 				this.handleClose();
 			}, this.props.hoverCloseDelay);
@@ -663,7 +665,7 @@ class MenuDropdown extends React.Component {
 		const isOpen = this.getIsOpen();
 
 		if (!isOpen) {
-			this.handleOpen();
+			// this.handleOpen();
 		}
 
 		if (this.props.onFocus) {
