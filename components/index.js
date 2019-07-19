@@ -22,14 +22,32 @@ export AlertContainer from './alert/container';
 export SLDSAppLauncher from './app-launcher';
 export AppLauncher from './app-launcher';
 
+export SLDSAppLauncherExpandableSection from './app-launcher/expandable-section';
+export AppLauncherExpandableSection from './app-launcher/expandable-section';
+
+export SLDSAppLauncherLink from './app-launcher/link';
+export AppLauncherLink from './app-launcher/link';
+
 export SLDSAppLauncherTile from './app-launcher/tile';
 export AppLauncherTile from './app-launcher/tile';
 
-export SLDSAppLauncherSection from './app-launcher/section';
-export AppLauncherSection from './app-launcher/section';
-
 export SLDSAvatar from './avatar';
 export Avatar from './avatar';
+
+export SLDSBuilderHeader from './builder-header';
+export BuilderHeader from './builder-header';
+
+export SLDSBuilderHeaderNav from './builder-header/nav';
+export BuilderHeaderNav from './builder-header/nav';
+
+export SLDSBuilderHeaderNavDropdown from './builder-header/nav-dropdown';
+export BuilderHeaderNavDropdown from './builder-header/nav-dropdown';
+
+export SLDSBuilderHeaderNavLink from './builder-header/nav-link';
+export BuilderHeaderNavLink from './builder-header/nav-link';
+
+export SLDSBuilderHeaderToolbar from './builder-header/toolbar';
+export BuilderHeaderToolbar from './builder-header/toolbar';
 
 export SLDSBrandBand from './brand-band';
 export BrandBand from './brand-band';
@@ -70,6 +88,16 @@ export ColorPicker from './color-picker';
 
 export SLDSCombobox from './combobox';
 export Combobox from './combobox';
+
+export SLDSExpandableSection from './expandable-section';
+export ExpandableSection from './expandable-section';
+
+export SLDSFiles from './files';
+export Files from './files';
+export SLDSFile from './files/file';
+export File from './files/file';
+export SLDSMoreFiles from './files/more-files';
+export MoreFiles from './files/more-files';
 
 export SLDSComboboxFilterAndLimit from './combobox/filter';
 export comboboxFilterAndLimit from './combobox/filter';
@@ -203,6 +231,8 @@ export PanelFilterListHeading from './panel/filtering/list-heading';
 
 export SLDSPageHeader from './page-header';
 export PageHeader from './page-header';
+export SLDSPageHeaderControl from './page-header/control';
+export PageHeaderControl from './page-header/control';
 
 export SLDSPill from './pill';
 export Pill from './pill';
@@ -217,6 +247,11 @@ export SLDSPopoverTooltip from './tooltip';
 export PopoverTooltip from './tooltip';
 export SLDSTooltip from './tooltip';
 export Tooltip from './tooltip';
+export SLDSEditDialog from './popover/edit-dialog';
+export EditDialog from './popover/edit-dialog';
+
+export SLDSProgressBar from './progress-bar';
+export ProgressBar from './progress-bar';
 
 export SLDSProgressIndicator from './progress-indicator';
 export ProgressIndicator from './progress-indicator';
@@ -232,6 +267,15 @@ export RadioButtonGroup from './radio-button-group';
 
 export SLDSRadioGroup from './radio-group';
 export RadioGroup from './radio-group';
+
+export SLDSScopedNotification from './scoped-notification';
+export ScopedNotification from './scoped-notification';
+
+export SLDSSetupAssistant from './setup-assistant';
+export SetupAssistant from './setup-assistant';
+
+export SLDSSetupAssistantStep from './setup-assistant/step';
+export SetupAssistantStep from './setup-assistant/step';
 
 export SLDSSlider from './slider';
 export Slider from './slider';
@@ -274,8 +318,37 @@ export UtilityIcon from './utilities/utility-icon';
 export SLDSTree from './tree';
 export Tree from './tree';
 
+export SLDSTrialBar from './trial-bar';
+export TrialBar from './trial-bar';
+
+export SLDSTrialBarDropdown from './trial-bar/dropdown';
+export TrialBarDropdown from './trial-bar/dropdown';
+export SLDSTrialBarButton from './trial-bar/button';
+export TrialBarButton from './trial-bar/button';
+
 export SLDSVerticalNavigation from './vertical-navigation';
 export VerticalNavigation from './vertical-navigation';
 
+export SLDSVisualPicker from './visual-picker';
+export VisualPicker from './visual-picker';
+
+export SLDSVisualPickerLink from './visual-picker/link';
+export VisualPickerLink from './visual-picker/link';
+
+export SLDSWelcomeMat from './welcome-mat';
+export WelcomeMat from './welcome-mat';
+
+export SLDSWelcomeMatInfoBadge from './welcome-mat/info-badge';
+export WelcomeMatInfoBadge from './welcome-mat/info-badge';
+
+export SLDSWelcomeMatTile from './welcome-mat/tile';
+export WelcomeMatTile from './welcome-mat/tile';
+
+export SLDSDynamicIcon from './dynamic-icon';
+export DynamicIcon from './dynamic-icon';
+
 // Library utilities
 export log from '../utilities/log';
+
+// eslint-disable-next-line camelcase
+export UNSAFE_DirectionSettings from './utilities/UNSAFE_direction';

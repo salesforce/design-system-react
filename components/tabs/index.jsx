@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -37,7 +38,7 @@ import EventUtil from '../../utilities/event';
 function isTabNode(node) {
 	return (
 		(node.nodeName === 'A' && node.getAttribute('role') === 'tab') ||
-		(node.nodeName === 'LI' && node.getAttribute('role') === 'tab')
+		(node.nodeName === 'LI' && node.getAttribute('role') === 'presentation')
 	);
 }
 
@@ -139,12 +140,6 @@ class Tabs extends React.Component {
 		this.flavor = this.getVariant();
 		this.setState({
 			selectedIndex: this.props.defaultSelectedIndex,
-		});
-	}
-
-	componentWillUnmount() {
-		this.setState({
-			focus: false,
 		});
 	}
 
@@ -261,7 +256,14 @@ class Tabs extends React.Component {
 					return;
 				}
 
-				const index = [].slice.call(node.parentNode.children).indexOf(node);
+				let parentNode = node.parentNode; // eslint-disable-line prefer-destructuring
+
+				if (parentNode.nodeName === 'LI') {
+					node = node.parentNode;
+					parentNode = node.parentNode; // eslint-disable-line prefer-destructuring
+				}
+
+				const index = [].slice.call(parentNode.children).indexOf(node);
 				this.setSelected(index);
 				return;
 			}
@@ -309,7 +311,6 @@ class Tabs extends React.Component {
 		do {
 			if (nodeAncestor === this.tabsNode) return true;
 			else if (nodeAncestor.getAttribute('data-tabs')) break;
-
 			nodeAncestor = nodeAncestor.parentElement;
 		} while (nodeAncestor);
 

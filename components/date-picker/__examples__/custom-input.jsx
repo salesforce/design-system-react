@@ -14,6 +14,9 @@ class Example extends React.Component {
 	render() {
 		return (
 			<Datepicker
+				labels={{
+					label: 'Date',
+				}}
 				input={<Input placeholder="With custom Input" />}
 				isOpen={this.state.isOpen}
 				onRequestClose={() => {

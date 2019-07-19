@@ -120,7 +120,9 @@ const defaultProps = {
  */
 class SplitViewListbox extends React.Component {
 	static displayName = SPLIT_VIEW_LISTBOX;
+
 	static propTypes = propTypes;
+
 	static defaultProps = defaultProps;
 
 	constructor(props) {
@@ -320,14 +322,15 @@ class SplitViewListbox extends React.Component {
 			? this.headerWrapper(
 					<span>
 						<span className="slds-assistive-text">
-							{this.props.assistiveText.sort.sortedBy}:
+							{this.props.assistiveText.sort.sortedBy}
+							{': '}
 						</span>
 						<span>
 							{this.props.labels.header}
 							{this.sortDirection()}
 						</span>
 						<span className="slds-assistive-text">
-							-{' '}
+							{'- '}
 							{this.props.sortDirection === SORT_OPTIONS.DOWN
 								? this.props.assistiveText.sort.descending
 								: this.props.assistiveText.sort.ascending}
@@ -342,7 +345,7 @@ class SplitViewListbox extends React.Component {
 	}
 
 	listItems() {
-		const ListItemWithContent = this.ListItemWithContent;
+		const { ListItemWithContent } = this;
 
 		return this.props.options.map((item, index) => (
 			<ListItemWithContent

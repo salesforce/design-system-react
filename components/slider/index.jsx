@@ -116,7 +116,9 @@ const defaultProps = {
  */
 class Slider extends React.Component {
 	static displayName = SLIDER;
+
 	static propTypes = propTypes;
+
 	static defaultProps = defaultProps;
 
 	constructor(props) {
@@ -176,7 +178,9 @@ class Slider extends React.Component {
 							<span className="slds-slider-label__label">{labelText}</span>
 						) : null}
 						<span className="slds-slider-label__range">
-							{this.props.min} - {this.props.max}
+							{this.props.min}
+							{' - '}
+							{this.props.max}
 						</span>
 					</span>
 				</label>
@@ -195,15 +199,17 @@ class Slider extends React.Component {
 							id={this.getId()}
 							name={this.props.name}
 							className="slds-slider__range"
-							defaultValue={this.props.defaultValue}
 							min={this.props.min}
 							max={this.props.max}
 							step={this.props.step}
 							aria-describedby={this.getErrorId()}
-							value={this.props.value}
 							disabled={this.props.disabled}
 							onChange={this.handleChange}
 							onInput={this.handleInput}
+							/* A form element should not have both value and defaultValue props. */
+							{...(this.props.value !== undefined
+								? { value: this.props.value }
+								: { defaultValue: this.props.defaultValue })}
 						/>
 						<span className="slds-slider__value" aria-hidden="true">
 							{this.props.value || this.props.defaultValue || '0'}

@@ -72,7 +72,9 @@ const listItemWithContent = (ListItemContent) => {
 		static displayName = `${DISPLAY_NAME}(${ListItemContent.displayName ||
 			ListItemContent.name ||
 			'Component'})`;
+
 		static propTypes = propsTypes;
+
 		static defaultProps = defaultProps;
 
 		onClick(event) {
@@ -90,7 +92,8 @@ const listItemWithContent = (ListItemContent) => {
 					title={this.props.assistiveText.unreadItem}
 					aria-label={this.props.assistiveText.unreadItem}
 				>
-					<span className="slds-assistive-text">●</span>
+					{/* eslint-disable-next-line react/jsx-curly-brace-presence */}
+					<span className="slds-assistive-text">{'●'}</span>
 				</abbr>
 			) : null;
 		}

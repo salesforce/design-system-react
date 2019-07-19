@@ -1,4 +1,8 @@
 /* eslint-disable max-lines */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable no-param-reassign */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable max-lines */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -669,7 +673,8 @@ const MenuPicklist = createReactClass({
 		const { className, errorText, label, required } = this.props;
 
 		const requiredElem = required ? (
-			<span style={{ color: 'red' }}>* </span>
+			// eslint-disable-next-line react/jsx-curly-brace-presence
+			<span style={{ color: 'red' }}>{'* '}</span>
 		) : null;
 
 		return (

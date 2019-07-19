@@ -15,6 +15,7 @@ storiesOf(TEXTAREA, module)
 	))
 	.add('Standard', () => (
 		<Textarea
+			id="text-area-standard"
 			label="Textarea Label"
 			name="standard-textarea"
 			placeholder="Placeholder Text"
@@ -22,6 +23,7 @@ storiesOf(TEXTAREA, module)
 	))
 	.add('Disabled', () => (
 		<Textarea
+			id="text-area-disabled"
 			name="disabled"
 			label="Textarea Label"
 			disabled
@@ -31,6 +33,7 @@ storiesOf(TEXTAREA, module)
 	.add('Required', () => (
 		<Textarea
 			aria-describedby="required-1"
+			id="text-area-required"
 			name="required-textarea"
 			assistiveText={{
 				label: 'Textarea Label',
@@ -42,6 +45,7 @@ storiesOf(TEXTAREA, module)
 	.add('Error', () => (
 		<Textarea
 			aria-describedby="error-1"
+			id="text-area-error"
 			name="required-textarea-error"
 			label="Textarea Label"
 			required

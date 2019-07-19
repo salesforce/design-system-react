@@ -17,6 +17,7 @@ import { POPOVER_TOOLTIP } from '../../utilities/constants';
 
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
+// eslint-disable-next-line import/no-cycle
 import Button from '../button';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -127,7 +128,7 @@ const propTypes = {
 	/**
 	 * Determines the type of the tooltip.
 	 */
-	variant: PropTypes.oneOf(['base', 'learnMore']),
+	variant: PropTypes.oneOf(['base', 'learnMore', 'list-item']),
 };
 
 const defaultProps = {
@@ -136,7 +137,8 @@ const defaultProps = {
 		triggerLearnMoreIcon: 'Help',
 	},
 	align: 'top',
-	content: <span>Tooltip</span>,
+	// eslint-disable-next-line react/jsx-curly-brace-presence
+	content: <span>{'Tooltip'}</span>,
 	labels: {
 		learnMoreAfter: 'to learn more.',
 		learnMoreBefore: 'Click',
@@ -201,13 +203,14 @@ class Tooltip extends React.Component {
 				/>,
 			];
 		} else {
+			// eslint-disable-next-line prefer-destructuring
 			children = this.props.children;
 		}
 
 		return React.Children.map(children, (child, i) =>
 			React.cloneElement(child, {
 				key: i, // eslint-disable-line react/no-array-index-key
-				'aria-describedby': this.getId(),
+				'aria-describedby': this.getIsOpen() ? this.getId() : undefined,
 				onBlur: this.handleMouseLeave,
 				onFocus: this.handleMouseEnter,
 				onMouseEnter: this.handleMouseEnter,
@@ -220,10 +223,15 @@ class Tooltip extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
+	getIsOpen() {
+		return this.props.isOpen === undefined
+			? this.state.isOpen
+			: this.props.isOpen;
+	}
+
 	getTooltip() {
-		const isOpen =
-			this.props.isOpen === undefined ? this.state.isOpen : this.props.isOpen;
-		const align = this.props.align;
+		const isOpen = this.getIsOpen();
+		const { align } = this.props;
 
 		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)
 		const deprecatedWay = this.props.variant === 'error';

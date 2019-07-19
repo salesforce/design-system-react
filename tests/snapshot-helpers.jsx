@@ -25,8 +25,7 @@ const renderMarkup = (Component, props) =>
 				React.createElement(Component, props)
 			),
 			Settings.jsBeautify
-		),
-		'utf-8'
+		)
 	);
 
 const testDOMandHTML = ({ name, test, Component, props }) => {

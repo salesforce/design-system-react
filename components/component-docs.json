@@ -329,8 +329,15 @@
         ]
     },
     "app-launcher": {
-        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n\t<AppLauncherSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
+        "description": "The App Launcher allows the user to quickly access all the apps and functionality with their organization.\nThe App Launcher should generally only be used as a sub-component of the [Global Navigation Bar](/components/global-navigation-bar)\n\nUSAGE EXAMPLE:\n```\n<AppLauncher>\n\t<AppLauncherExpandableSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherExpandableSection>\n\t<AppLauncherExpandableSection>\n\t\t<AppLauncherTile />\n\t\t<AppLauncherTile />\n\t</AppLauncherExpandableSection>\n</AppLauncher>\n```\n\nBy default, `Modal`, a child component of App Launcher, will add `aria-hidden=true` to the `body` tag, but this disables some assistive technologies. To prevent this you can add the following to your application with `#mount` being the root node of your application that you would like to hide from assistive technologies when the `Modal` is open.\n```\nimport settings from 'design-system-react/components/settings';\nsettings.setAppElement('#mount');\n```",
         "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
             {
                 "name": "openAppLauncher",
                 "docblock": null,
@@ -397,7 +404,14 @@
                     "name": "node"
                 },
                 "required": true,
-                "description": "One or more `<AppLauncherSection />`s each containing one or more `<AppLauncherTile />`s"
+                "description": "One or more `<AppLauncherExpandableSection />`s, each containing one or more `<AppLauncherTile />`s or `<AppLauncherLink />`s"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The app launcher id. If not provided, one will be generated for accessibility"
             },
             "isOpen": {
                 "type": {
@@ -480,14 +494,181 @@
         },
         "route": "app-launcher",
         "display-name": "App Launcher",
-        "SLDS-component-path": "/components/app-launcher/#flavor-default",
+        "SLDS-component-path": "/components/app-launcher",
         "dependencies": [
             {
-                "section": {
-                    "description": "App Launcher Sections allow users to categorize App Tiles as well as toggle their display",
+                "expandable-section": {
+                    "description": "App Launcher Sections allow users to categorize App Tiles & Links as well as toggle their display. It is a superset of components/expandable-section with content formatting.\nAll Expandable Section props are compatible with props passed to this component.",
                     "methods": [
                         {
                             "name": "toggleOpen",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                },
+                                {
+                                    "name": "data",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        }
+                    ],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "toggleSection": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\n* `toggleSection`: Label for the icon that expands / collapses the section"
+                        },
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Contents of the section"
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Class names to be added to the `slds-section` classed node"
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Unique identifier for the expandable section. The id is automatically generated if not provided"
+                        },
+                        "isOpen": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Specifies whether the section is expanded or collapsed. If not provided, component will use its own state to manage this itself"
+                        },
+                        "nonCollapsible": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Specifies whether the section can be expanded or collapsed. Defaults to `false`"
+                        },
+                        "onToggleOpen": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Callback for when the section is expanded or collapsed. Passes event object and data object with `isOpen` bool."
+                        },
+                        "title": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": true,
+                            "description": "The title for the section"
+                        }
+                    },
+                    "name": "expandable-section",
+                    "source": "/components/app-launcher/expandable-section.jsx"
+                }
+            },
+            {
+                "link": {
+                    "description": "App Launcher Link component creates simple links to be used in \"All Items\" sections",
+                    "methods": [],
+                    "props": {
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Contents of the link"
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Classes to be applied to the link"
+                        },
+                        "href": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The `href` attribute of the link. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.",
+                            "defaultValue": {
+                                "value": "'javascript:void(0);'",
+                                "computed": false
+                            }
+                        },
+                        "onClick": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Callback for when the link is clicked. Passes back event and data object with href prop. Prevents click from changing browser's location if set."
+                        },
+                        "search": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Text used to highlight content in link"
+                        },
+                        "title": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The title for the link. If not provided it will attempt to use child content if that content is a string."
+                        }
+                    },
+                    "name": "link",
+                    "source": "/components/app-launcher/link.jsx"
+                }
+            },
+            {
+                "tile": {
+                    "description": "App Launcher Tiles provide information and links to a user's apps",
+                    "methods": [
+                        {
+                            "name": "handleClick",
                             "docblock": null,
                             "modifiers": [],
                             "params": [
@@ -504,132 +685,16 @@
                             "type": {
                                 "name": "shape",
                                 "value": {
-                                    "collapseSection": {
+                                    "dragIconText": {
                                         "name": "string",
                                         "required": false
                                     }
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `collapseSection`: The assistive text for the section collapse icons.",
+                            "description": "**Assistive text for accessibility.**\n* `dragIconText`: Text that describes the purpose of the drag handle icon.",
                             "defaultValue": {
-                                "value": "{\n    collapseSection: 'Toggle visibility of section',\n}",
-                                "computed": false
-                            }
-                        },
-                        "title": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": true,
-                            "description": "The title for this section of apps"
-                        },
-                        "toggleable": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "Allows the user to show/hide the section"
-                        },
-                        "children": {
-                            "type": {
-                                "name": "node"
-                            },
-                            "required": true,
-                            "description": "An array of applications to display"
-                        },
-                        "isOpen": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "Controls the open/closed state of the section"
-                        },
-                        "onToggleClick": {
-                            "type": {
-                                "name": "func"
-                            },
-                            "required": false,
-                            "description": "Callback for when section is toggled. Passes \"isOpen\" bool. Forces `toggleable` to true"
-                        }
-                    },
-                    "name": "section",
-                    "source": "/components/app-launcher/section.jsx"
-                }
-            },
-            {
-                "tile": {
-                    "description": "App Launcher Tiles provide information and links to a user's apps",
-                    "methods": [],
-                    "props": {
-                        "title": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": true,
-                            "description": "App name for the tile's title."
-                        },
-                        "size": {
-                            "type": {
-                                "name": "enum",
-                                "value": [
-                                    {
-                                        "value": "'default'",
-                                        "computed": false
-                                    },
-                                    {
-                                        "value": "'small'",
-                                        "computed": false
-                                    }
-                                ]
-                            },
-                            "required": false,
-                            "description": "Size of the rendered tile.",
-                            "defaultValue": {
-                                "value": "'default'",
-                                "computed": false
-                            }
-                        },
-                        "description": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The description of the app. Not visible on small tiles."
-                        },
-                        "descriptionHeading": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "Heading for app description"
-                        },
-                        "href": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The `href` attribute of the tile. Please pass in bookmarkable URLs from your routing library. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.",
-                            "defaultValue": {
-                                "value": "'javascript:void(0);'",
-                                "computed": false
-                            }
-                        },
-                        "isOpenTooltip": {
-                            "type": {
-                                "name": "bool"
-                            },
-                            "required": false,
-                            "description": "Open the More Tooltip"
-                        },
-                        "moreLabel": {
-                            "type": {
-                                "name": "string"
-                            },
-                            "required": false,
-                            "description": "The localized text for the \"More information\" tooltip.",
-                            "defaultValue": {
-                                "value": "' More'",
+                                "value": "{\n    dragIconText: 'Reorder',\n}",
                                 "computed": false
                             }
                         },
@@ -651,12 +716,37 @@
                             "required": false,
                             "description": "Class names to be added to the tile."
                         },
-                        "onClick": {
+                        "description": {
                             "type": {
-                                "name": "func"
+                                "name": "string"
                             },
                             "required": false,
-                            "description": "Function that will be executed when clicking on a tile"
+                            "description": "The description of the app. Not visible on small tiles."
+                        },
+                        "descriptionHeading": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Heading for app description. NOTE: this prop is DEPRECATED and use should be avoided"
+                        },
+                        "href": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The `href` attribute of the tile. Please pass in bookmarkable URLs from your routing library. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.",
+                            "defaultValue": {
+                                "value": "'javascript:void(0);'",
+                                "computed": false
+                            }
+                        },
+                        "iconBackgroundColor": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Background color to be used on the icon. Only applied if iconNode is undefined"
                         },
                         "iconNode": {
                             "type": {
@@ -672,12 +762,44 @@
                             "required": false,
                             "description": "Text to be used as an icon. Only renders if iconNode is undefined"
                         },
+                        "isOpenTooltip": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Open the More Tooltip"
+                        },
+                        "moreLabel": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "The localized text for the \"More information\" tooltip.",
+                            "defaultValue": {
+                                "value": "' More'",
+                                "computed": false
+                            }
+                        },
+                        "onClick": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function that will be executed when clicking on a tile"
+                        },
                         "search": {
                             "type": {
                                 "name": "string"
                             },
                             "required": false,
                             "description": "Text used to highlight content in app tiles"
+                        },
+                        "title": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": true,
+                            "description": "App name for the tile's title."
                         }
                     },
                     "name": "tile",
@@ -1031,12 +1153,33 @@
                     "computed": false
                 }
             },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button."
+            },
+            "overflowDropdownMenu": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Overflow menu of the type [Dropdown](/components/menu-dropdowns)"
+            },
+            "styleContainer": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the containing `nav` tag"
+            },
             "trail": {
                 "type": {
                     "name": "array"
                 },
-                "required": false,
-                "description": "An array of react elements presumably anchor elements."
+                "required": true,
+                "description": "An array of anchor elements that define the path to the current record."
             }
         },
         "route": "breadcrumbs",
@@ -1044,8 +1187,271 @@
         "SLDS-component-path": "/components/breadcrumbs",
         "dependencies": []
     },
+    "builder-header": {
+        "description": "Every builder needs a builder header, which contains basic navigation elements. It also shows the builder type and content name.",
+        "methods": [],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "backIcon": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "helpIcon": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `backIcon`: Used for the back icon.\n* `helpIcon`: Used for the help icon.\n* `icon`: Used for the main icon next to the header title.\n* _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    backIcon: 'Back',\n    helpIcon: 'Help',\n    icon: 'Builder',\n}",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Provide children of the types `<BuilderHeaderNav />` or `<BuilderHeaderToolbar />` to define the structure of the header.\n```\n<BuilderHeader>\n  <BuilderHeaderNav />\n  <BuilderHeaderToolbar />\n</BuilderHeader>\n```"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-builder-header_container`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._"
+            },
+            "events": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "onClickBack": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onClickHelp": {
+                            "name": "func",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Event Callbacks\n* `onClickBack`: Called when the Back link is clicked.\n* `onClickHelp`: Called when the Help link is clicked.\n_Tested with Mocha testing._"
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "back": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "help": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "pageType": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "title": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `back`: The label for the Back link.\n* `help`: The label for the Help link.\n* `pageType`: The label that describes the page type.\n* `title`: The label for the page title.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    back: 'Back',\n    help: 'Help',\n    pageType: 'Page Type',\n    title: 'App Name',\n}",
+                    "computed": false
+                }
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles applied to the `.slds-builder-header_container` element."
+            }
+        },
+        "route": "builder-header",
+        "display-name": "Builder Header",
+        "SLDS-component-path": "/components/builder-header",
+        "dependencies": [
+            {
+                "nav": {
+                    "description": "The navigation section of the header.",
+                    "methods": [],
+                    "props": {
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Provide children of the types `<BuilderHeaderNavLink />` or `<BuilderHeaderNavDropdown />` to define the structure of the navigation section.\n```\n<BuilderHeader>\n  <BuilderHeaderNav>\n    <BuilderHeaderNavLink />\n    <BuilderHeaderNavDropdown />\n  </BuilderHeaderNav>\n</BuilderHeader>\n```"
+                        }
+                    },
+                    "name": "nav",
+                    "source": "/components/builder-header/nav.jsx"
+                }
+            },
+            {
+                "nav-dropdown": {
+                    "description": "A dropdown within the navigation section of the header.",
+                    "methods": [],
+                    "composes": [
+                        "../menu-dropdown/menu-dropdown"
+                    ],
+                    "name": "nav-dropdown",
+                    "source": "/components/builder-header/nav-dropdown.jsx"
+                }
+            },
+            {
+                "nav-link": {
+                    "description": "A link within the navigation section of the header.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "icon": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `icon`: Used for the icon next to the link text.\n* _Tested with snapshot testing._"
+                        },
+                        "iconCategory": {
+                            "type": {
+                                "name": "enum",
+                                "value": [
+                                    {
+                                        "value": "'action'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'custom'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'doctype'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'standard'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'utility'",
+                                        "computed": false
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Name of the icon category. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon categories."
+                        },
+                        "iconName": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
+                        },
+                        "iconPath": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Path to the icon. This will override any global icon settings."
+                        },
+                        "label": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Text for the link."
+                        },
+                        "onClick": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Triggered when the link is clicked."
+                        }
+                    },
+                    "name": "nav-link",
+                    "source": "/components/builder-header/nav-link.jsx"
+                }
+            },
+            {
+                "toolbar": {
+                    "description": "The toolbar section of the header.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "actions": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `actions`: Used for the aria-label for the actions section of the toolbar.\n* _Tested with snapshot testing._",
+                            "defaultValue": {
+                                "value": "{\n    actions: 'Actions',\n}",
+                                "computed": false
+                            }
+                        },
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Provide children of the type `<ButtonGroup />` to define the structure of the toolbar section.\n```\n<BuilderHeader>\n  <BuilderHeaderToolbar>\n    <ButtonGroup />\n    <ButtonGroup />\n  </BuilderHeaderToolbar>\n</BuilderHeader>\n```"
+                        },
+                        "onRenderActions": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Renders the actions section of the header."
+                        }
+                    },
+                    "name": "toolbar",
+                    "source": "/components/builder-header/toolbar.jsx"
+                }
+            }
+        ]
+    },
     "button": {
-        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\nAlthough not listed in the prop table, all `aria-*` props will be added to the `button` element if passed in.",
+        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\nAlthough not listed in the prop table, all `aria-*` and `form*` props will be added to the `button` element if passed in.",
         "methods": [
             {
                 "name": "getClassName",
@@ -1748,6 +2154,10 @@
                         {
                             "value": "'icon'",
                             "computed": false
+                        },
+                        {
+                            "value": "'icon-filled'",
+                            "computed": false
                         }
                     ]
                 },
@@ -1816,6 +2226,10 @@
                     "value": [
                         {
                             "value": "'checkbox'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'list'",
                             "computed": false
                         }
                     ]
@@ -2043,11 +2457,28 @@
                 "name": "onNextPanelHandler",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
                 "name": "onPreviousPanelHandler",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "onIndicatorBlur",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -2059,6 +2490,10 @@
                 "modifiers": [],
                 "params": [
                     {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
                         "name": "panel",
                         "type": null
                     }
@@ -2066,7 +2501,38 @@
                 "returns": null
             },
             {
-                "name": "onAutoPlayBtnClick",
+                "name": "onIndicatorFocus",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "onAutoplayBtnClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getCurrentPanel",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getIsAutoplayOn",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -2101,6 +2567,10 @@
                 "modifiers": [],
                 "params": [
                     {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
                         "name": "amount",
                         "type": null
                     },
@@ -2115,14 +2585,28 @@
                 "name": "startAutoplay",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
                 "name": "stopAutoplay",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "ignoreCallbacksAndStateUpdates",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -2167,7 +2651,7 @@
                 "required": false,
                 "description": "Description of the carousel items for screen-readers.",
                 "defaultValue": {
-                    "value": "{\n    autoPlayButton: 'Start / Stop auto-play',\n    nextPanel: 'Next Panel',\n    previousPanel: 'Previous Panel',\n}",
+                    "value": "{\n    autoplayButton: 'Start / Stop auto-play',\n    nextPanel: 'Next Panel',\n    previousPanel: 'Previous Panel',\n}",
                     "computed": false
                 }
             },
@@ -2200,12 +2684,19 @@
                 "required": false,
                 "description": "CSS classes that are applied to the main 'slds-carousel' classed component container"
             },
+            "currentPanel": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Dictates the currently active/visible carousel panel. Use with `onRequestPanelChange` for a controlled carousel component. If not provided, the carousel will manage this itself via state."
+            },
             "hasAutoplay": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Boolean showing whether the autoplay feature is available or not",
+                "description": "Boolean showing whether the autoplay button is available or not",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
@@ -2229,19 +2720,19 @@
                 "required": false,
                 "description": "Id of component, if desired. If not provided an id is automatically generated"
             },
-            "indicatorStyles": {
+            "isAutoplayOn": {
                 "type": {
-                    "name": "object"
+                    "name": "bool"
                 },
                 "required": false,
-                "description": "CSS that is applied to carousel indicators"
+                "description": "Boolean that dictates whether autoplay is active or not. Use with `onRequestAutoplayToggle` for a controlled carousel component."
             },
             "isInfinite": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Boolean for infinite loop navigation",
+                "description": "Boolean for infinite loop navigation. Note: if not true autoplay will stop automatically at the last panel.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
@@ -2271,6 +2762,20 @@
                 },
                 "required": false,
                 "description": "Accepts a custom carousel item rendering function"
+            },
+            "onRequestAutoplayToggle": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Called whenever `isAutoplayOn` is requested to be toggled on or off. Use with `isAutoplayOn` prop for a controlled carousel component. Passes an event object and a data object with the current `isAutoplayOn` value as an attribute."
+            },
+            "onRequestPanelChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Called whenever the panel is requested to change due to user interaction or auto-play. Use with `currentPanel` for a controlled carousel component. Passes an event object and a data object with `currentPanel` and `requestedPanel` attributes."
             },
             "onItemClick": {
                 "type": {
@@ -2378,6 +2883,22 @@
                     }
                 ],
                 "returns": null
+            },
+            {
+                "name": "renderVisualPickerVariant",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "props",
+                        "type": null
+                    },
+                    {
+                        "name": "assistiveText",
+                        "type": null
+                    }
+                ],
+                "returns": null
             }
         ],
         "props": {
@@ -2413,6 +2934,10 @@
                 "type": {
                     "name": "shape",
                     "value": {
+                        "heading": {
+                            "name": "string",
+                            "required": false
+                        },
                         "label": {
                             "name": "string",
                             "required": false
@@ -2420,7 +2945,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `heading`: This is used as a visually hidden label if, no `labels.heading` is provided.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -2490,6 +3015,10 @@
                 "type": {
                     "name": "shape",
                     "value": {
+                        "heading": {
+                            "name": "string",
+                            "required": false
+                        },
                         "label": {
                             "name": "string",
                             "required": false
@@ -2505,7 +3034,7 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".\n* `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to \"Disabled\". Note that this uses SLDS language, and meaning, of \"Enabled\" and \"Disabled\"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.\n* `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: Heading for the visual picker variant\n* `label`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".\n* `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to \"Disabled\". Note that this uses SLDS language, and meaning, of \"Enabled\" and \"Disabled\"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.\n* `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".",
                 "defaultValue": {
                     "value": "{\n    toggleDisabled: 'Disabled',\n    toggleEnabled: 'Enabled',\n}",
                     "computed": false
@@ -2596,6 +3125,10 @@
                         {
                             "value": "'button-group'",
                             "computed": false
+                        },
+                        {
+                            "value": "'visual-picker'",
+                            "computed": false
                         }
                     ]
                 },
@@ -2605,6 +3138,58 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "coverable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Determines whether visual picker is coverable when selected (only for visual picker variant)"
+            },
+            "vertical": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Determines whether the visual picker should be vertical or horizontal (only for visual picker variant)"
+            },
+            "onRenderVisualPicker": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Allows icon to shown with checkbox (only for non-coverable visual picker variant)"
+            },
+            "onRenderVisualPickerSelected": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Allows icon to shown if checkbox is not selected (only for visual picker variant)"
+            },
+            "onRenderVisualPickerNotSelected": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Allows icon to shown if checkbox is not selected (only for visual picker variant)"
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size of checkbox in case of visual composer variant"
             }
         },
         "route": "checkboxes",
@@ -4185,7 +4770,7 @@
         "dependencies": []
     },
     "data-table": {
-        "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.",
+        "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.\n\nNOTE: for horizontal scrolling with `fixedHeader`-enabled DataTables, see the `style` property description",
         "methods": [
             {
                 "name": "getId",
@@ -4362,6 +4947,13 @@
                 "required": true,
                 "description": "The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`."
             },
+            "joined": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Makes DataTable joinable with PageHeader by adding appropriate classes/styling"
+            },
             "noRowHover": {
                 "type": {
                     "name": "bool"
@@ -4453,6 +5045,13 @@
                 },
                 "required": false,
                 "description": "A variant which adds stripes to alternating rows."
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the table.\nNOTE: for horizontal scrolling in `fixedHeader`-enabled DataTables, apply a `minWidth` style here. If the containing element width is less than the `minWidth` value, horizontal scrolling will occur"
             },
             "unborderedRow": {
                 "type": {
@@ -5122,7 +5721,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "A [Dropdown](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology."
+                "description": "An [Input](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology."
             },
             "isOpen": {
                 "type": {
@@ -5212,7 +5811,7 @@
                 "required": false,
                 "description": "Custom function to parse date string from the `input` value and returns a `Date` object.  Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date parsing and internationalization. The default `parser` passes the input value to ECMAScript `Date()` and _prays_ for a miracle. **Do not use the default parsing function in production.** _Tested with snapshot testing._\nThe default `parser function is:\n```\nparser(str) {\n  return new Date(str);\n}\n```",
                 "defaultValue": {
-                    "value": "function(str) {\n    return new Date(str);\n}",
+                    "value": "function(str) {\n    lowPriorityWarning(\n        false,\n        `Please use an external library for date parsing and internationalization like MomentJS (https://github.com/moment/moment/) instead of the default parser.`\n    );\n    return new Date(str);\n}",
                     "computed": false
                 }
             },
@@ -5276,6 +5875,327 @@
         "route": "datepickers",
         "display-name": "Datepickers",
         "SLDS-component-path": "/components/datepickers",
+        "dependencies": []
+    },
+    "dynamic-icon": {
+        "description": "A set of delightful animated icons.",
+        "methods": [
+            {
+                "name": "getIconChildren",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `label`: Used as a visually hidden label to describe the dynamic icon."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added to the icon."
+            },
+            "isPaused": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Pauses the icon animation if the value is true."
+            },
+            "isStatic": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables icon animation if set to true"
+            },
+            "scorePolarity": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'positive'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'negative'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Polarity values for the 'score' variant. Defaults to 'positive'"
+            },
+            "strengthLevel": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'-3'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'-2'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'-1'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'0'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'1'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'2'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'3'",
+                            "computed": false
+                        },
+                        {
+                            "value": "-3",
+                            "computed": true
+                        },
+                        {
+                            "value": "-2",
+                            "computed": true
+                        },
+                        {
+                            "value": "-1",
+                            "computed": true
+                        },
+                        {
+                            "value": "0",
+                            "computed": false
+                        },
+                        {
+                            "value": "1",
+                            "computed": false
+                        },
+                        {
+                            "value": "2",
+                            "computed": false
+                        },
+                        {
+                            "value": "3",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Range of strength values for the 'strength' variant. Defaults to '0'."
+            },
+            "title": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "HTML title attribute."
+            },
+            "trendDirection": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'down'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'up'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'neutral'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Signals direction for the 'trend' variant. The default value 'neutral' points to the east."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'ellie'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'eq'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'score'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'strength'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'trend'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'typing'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'waffle'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "Different types of dynamic icons. Possible variants:\n\n`ellie` - Displays a pulsing blue circle, which pulses and stops after one animation cycle.\n`eq` - Displays an animated graph with three bars that rise and fall randomly.\n`score` - Displays a green filled circle or a red unfilled circle.\n`strength` - Displays three animated horizontal circles that are colored green or red.\n`trend` - Displays animated arrows that point up, down, or straight.\n`waffle` - Displays a 3x3 grid of dots that animates on hover."
+            }
+        },
+        "route": "dynamic-icon",
+        "display-name": "Dynamic Icon",
+        "SLDS-component-path": "/components/dynamic-icon",
+        "dependencies": []
+    },
+    "expandable-section": {
+        "description": "Toggle visibility of section content with the Expandable Section",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "toggleOpen",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "toggleSection": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\n* `toggleSection`: Label for the icon that expands / collapses the section",
+                "defaultValue": {
+                    "value": "{\n    toggleSection: 'Toggle visibility of section',\n}",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Contents of the section"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Class names to be added to the `slds-section` classed node"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Unique identifier for the expandable section. The id is automatically generated if not provided"
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Specifies whether the section is expanded or collapsed. If not provided, component will use its own state to manage this itself"
+            },
+            "nonCollapsible": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Specifies whether the section can be expanded or collapsed. Defaults to `false`",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "onToggleOpen": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Callback for when the section is expanded or collapsed. Passes event object and data object with `isOpen` bool."
+            },
+            "title": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "The title for the section"
+            }
+        },
+        "route": "expandable-section",
+        "display-name": "Expandable Section",
+        "SLDS-component-path": "/components/expandable-section",
         "dependencies": []
     },
     "filter": {
@@ -6570,11 +7490,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Typically the cloud name (e.g.- \"sales\" or \"marketing\"). This primarily changes the background color.",
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
+                "description": "Typically the cloud name (e.g.- \"sales\" or \"marketing\"). This primarily changes the background color."
             },
             "theme": {
                 "type": {
@@ -6591,11 +7507,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Transforms text and interactions (such as hover) to be more visually accessible.",
-                "defaultValue": {
-                    "value": "'dark'",
-                    "computed": false
-                }
+                "description": "Transforms text and interactions (such as hover) to be more visually accessible."
             }
         },
         "route": "global-navigation-bar",
@@ -6892,6 +7804,23 @@
                             "required": false,
                             "description": "Allows alignment of active item with active application background color. If application background is dark, text color may need to be `#fff`. This can be done with the style prop."
                         },
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "activeDescriptor": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\n* `activeDescriptor`: The text that appears alongside a link that is currently active.",
+                            "defaultValue": {
+                                "value": "{\n    activeDescriptor: 'Current page:',\n}",
+                                "computed": false
+                            }
+                        },
                         "className": {
                             "type": {
                                 "name": "union",
@@ -7093,7 +8022,7 @@
                                 ]
                             },
                             "required": true,
-                            "description": "Region wrap children in styling specific to that region."
+                            "description": "Region wrap children in styling specific to that region. When `tertiary`\nregion is used, secondary region only supports four list items."
                         }
                     },
                     "name": "region",
@@ -7252,6 +8181,47 @@
                 },
                 "required": false,
                 "description": "Path to the icon. This will override any global icon settings"
+            },
+            "productTheme": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'global-setup'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'service-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'industry-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'sales-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'commerce-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'community-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'marketing-cloud'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'quip'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Background theme color for the icon. **Only compatible with icon category `standard`**"
             },
             "size": {
                 "type": {
@@ -7948,7 +8918,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "By default, any children passed into this component will be rendered inside the dropdown menu. If you only need a standard menu, use `options`. If you need custom list items markup, use `listItemRenderer` and `options`. `children` with a `List` should _only_ used if you have a listbox and additional content.\n\nIf you need to modify the trigger button, import the module `design-system-react/dropdown/button-trigger` and render a grandchild of the element type `Button`. Any `props` specified on that `Button` will be assigned to the trigger button. Any `id` prop or event hanlders (`onBlur`, `onClick`, etc.) set on the button grandchild will be overwritten by `MenuDropdown` to enable functionality and accessibility. A custom trigger child will not be considered content for the dropdown menu.\n\n**List as a child is an experimental API.** If you need custom content _and_ a list, import 'design-system-react/components/menu-list/list' and pass in `<List>`.\n```\n<Dropdown>\n  <Trigger>\n  <Button iconCategory=\"utility\" iconName=\"settings\" />\n  </Trigger>\n  <div>Look ma! This is Custom Content.</div>\n  <List options={[myArray]}/>\n</Dropdown>\n```"
+                "description": "If you need custom content _and_ a list, use a `<Popover>` instead."
             },
             "className": {
                 "type": {
@@ -8114,6 +9084,17 @@
                 },
                 "required": false,
                 "description": "A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the dropdown to the triggering button."
+            },
+            "inverse": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Adds inverse class to the dropdown",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "isOpen": {
                 "type": {
@@ -8430,6 +9411,43 @@
                 },
                 "required": false,
                 "description": "Whether this dropdown supports multi select."
+            },
+            "width": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'xx-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'bottom'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "To adjust the width of the menu dropdown",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
             }
         },
         "context": {
@@ -8608,6 +9626,13 @@
                 "returns": null
             },
             {
+                "name": "getBorderRadius",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getModal",
                 "docblock": null,
                 "modifiers": [],
@@ -8738,6 +9763,10 @@
                             "name": "string",
                             "required": false
                         },
+                        "dialogLabelledBy": {
+                            "name": "string",
+                            "required": false
+                        },
                         "closeButton": {
                             "name": "string",
                             "required": false
@@ -8745,9 +9774,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `title` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.\n* `dialogLabelledBy`: This describes which node labels the dialog. If not provided and dialogLabel is unavailable, `id` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
-                    "value": "{\n    dialogLabel: '',\n    closeButton: 'Close',\n}",
+                    "value": "{\n    dialogLabel: '',\n    dialogLabelledBy: '',\n    closeButton: 'Close',\n}",
                     "computed": false
                 }
             },
@@ -8757,6 +9786,24 @@
                 },
                 "required": true,
                 "description": "Modal content."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Custom CSS classes for the modal `section` node classed `.slds-modal` and the parent of `.slds-modal__container`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
             "containerClassName": {
                 "type": {
@@ -8774,7 +9821,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Custom CSS classes for the modal's container. This is the element with `.slds-modal__container`. Use `classNames` [API](https://github.com/JedWatson/classnames)."
+                "description": "Custom CSS classes for the modal's container. This is the child element of `.slds-modal` with class `.slds-modal__container`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
             "contentClassName": {
                 "type": {
@@ -8849,7 +9896,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Allows for a custom modal header that does not scroll with modal content. If this is defined, `title` and `tagline` will be ignored. The close button will still be present."
+                "description": "Allows for a custom modal header that does not scroll with modal content. If this is defined, `heading` and `tagline` will be ignored. The close button will still be present."
             },
             "headerClassName": {
                 "type": {
@@ -8868,6 +9915,13 @@
                 },
                 "required": false,
                 "description": "Adds CSS classes to the container surrounding the modal header and the close button. Use `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Unique identifier for the modal. The id is automatically generated if not provided"
             },
             "isOpen": {
                 "type": {
@@ -8939,6 +9993,10 @@
                     "name": "enum",
                     "value": [
                         {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
                             "value": "'medium'",
                             "computed": false
                         },
@@ -8949,16 +10007,23 @@
                     ]
                 },
                 "required": false,
-                "description": "Specifiies the modal's width. May be deprecated in favor of `width` in the future."
+                "description": "Specifies the modal's width. May be deprecated in favor of `width` in the future."
             },
             "tagline": {
                 "type": {
                     "name": "node"
                 },
                 "required": false,
-                "description": "Content underneath the title in the modal header."
+                "description": "Content underneath the heading in the modal header."
             },
             "title": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Content underneath the title in the modal header."
+            },
+            "heading": {
                 "type": {
                     "name": "node"
                 },
@@ -10161,7 +11226,7 @@
                 "required": true,
                 "description": "The contents of the popover. This should also accept arrays."
             },
-            "className": {
+            "classNameBody": {
                 "type": {
                     "name": "union",
                     "value": [
@@ -10177,7 +11242,25 @@
                     ]
                 },
                 "required": false,
-                "description": "CSS classes to be added to the popover. That is the element with `.slds-popover` on it."
+                "description": "CSS classes to be added to the popover footer. That is the element with `.slds-popover__body` on it."
+            },
+            "classNameFooter": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the popover footer. That is the element with `.slds-popover__footer` on it."
             },
             "disabled": {
                 "type": {
@@ -10193,23 +11276,12 @@
                 "required": false,
                 "description": "A footer is an optional. Buttons are often placed here."
             },
-            "footerClassName": {
+            "footerStyle": {
                 "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
+                    "name": "object"
                 },
                 "required": false,
-                "description": "CSS classes to be added to the `footer` of the popover."
+                "description": "An object of CSS styles that are applied to the `slds-popover__footer` DOM element."
             },
             "footerWalkthroughActions": {
                 "type": {
@@ -10229,6 +11301,28 @@
                 "required": false,
                 "description": "Used with `walkthrough` variant to provide action buttons (ex: \"Next\" / \"Skip\" / etc) for a walkthrough popover footer. Accepts either a single node or array of nodes for multiple buttons."
             },
+            "hasNoCloseButton": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Determines if the popover has a close button or not. Default is `false`",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "hasNoNubbin": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Determines if the popover has a nubbin or not. Default is `false`",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
             "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
@@ -10242,13 +11336,6 @@
                 },
                 "required": false,
                 "description": "Removes `display:inline-block` from the trigger button."
-            },
-            "hasNoNubbin": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled."
             },
             "heading": {
                 "type": {
@@ -10463,42 +11550,32 @@
     },
     "page-header": {
         "description": "The PageHeader component adds PageHeader, PageHeader.Info, PageHeader.Title, PageHeader.DetailRow, and PageHeader.DetailBlock.",
-        "methods": [
-            {
-                "name": "_getClassNames",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "className",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            }
-        ],
+        "methods": [],
         "props": {
             "className": {
                 "type": {
-                    "name": "string"
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "Optional class name",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": "Optional class name"
             },
-            "variant": {
+            "details": {
                 "type": {
-                    "name": "string"
+                    "name": "array"
                 },
                 "required": false,
-                "description": "The type of component",
-                "defaultValue": {
-                    "value": "'base'",
-                    "computed": false
-                }
+                "description": "An array of detail blocks (used in \"recordHome\" variant)"
             },
             "label": {
                 "type": {
@@ -10513,22 +11590,14 @@
                     ]
                 },
                 "required": false,
-                "description": "The info property can be a string or a React element"
+                "description": "The label property can be a string or a React element"
             },
-            "title": {
+            "icon": {
                 "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
+                    "name": "element"
                 },
                 "required": false,
-                "description": "The title property can be a string or a React element"
+                "description": "The page header icon. Expects an Icon component"
             },
             "info": {
                 "type": {
@@ -10545,121 +11614,35 @@
                 "required": false,
                 "description": "The info property can be a string or a React element"
             },
-            "icon": {
+            "joined": {
                 "type": {
-                    "name": "element"
+                    "name": "bool"
                 },
                 "required": false,
-                "description": "The page header icon"
+                "description": "Makes PageHeader joinable with DataTable by adding appropriate classes/styling"
             },
-            "iconName": {
+            "nameSwitcherDropdown": {
                 "type": {
-                    "name": "string"
+                    "name": "node"
                 },
                 "required": false,
-                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
+                "description": "Used with the `object-home` variant. Accepts a node, typically a Dropdown component"
             },
-            "iconCategory": {
+            "onRenderActions": {
                 "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'action'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'custom'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'doctype'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'standard'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'utility'",
-                            "computed": false
-                        }
-                    ]
+                    "name": "func"
                 },
                 "required": false,
-                "description": "The icons category"
+                "description": "Actions content to appear on the upper right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'contentRight' will be deprecated soon, use 'onRenderActions' instead."
             },
-            "iconPosition": {
+            "onRenderControls": {
                 "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'left'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'right'",
-                            "computed": false
-                        }
-                    ]
+                    "name": "func"
                 },
                 "required": false,
-                "description": "If omitted, icon position is centered."
+                "description": "Controls content to appear on the lower right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'navRight' will be deprecated soon, use 'onRenderControls' instead."
             },
-            "iconSize": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'x-small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'medium'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'large'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines the size of the icon."
-            },
-            "iconVariant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'container'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'border'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'border-filled'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'more'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>."
-            },
-            "contentRight": {
+            "title": {
                 "type": {
                     "name": "union",
                     "value": [
@@ -10672,50 +11655,41 @@
                     ]
                 },
                 "required": false,
-                "description": "Content to appear on the right hand side of the page header",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
-            },
-            "details": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "An array of buttons which appear on the component's right hand side.",
-                "defaultValue": {
-                    "value": "[]",
-                    "computed": false
-                }
-            },
-            "navRight": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Nav content which appears in the upper right hand corner.",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": "The title property can be a string or a React element"
             },
             "trail": {
                 "type": {
                     "name": "array"
                 },
                 "required": false,
-                "description": "An array of react elements presumably anchor <a> elements.",
+                "description": "An array of react elements presumably anchor <a> elements."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'object-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'record-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'related-list'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The type of component\nNote: Extra options are added to make the version backward compatible",
                 "defaultValue": {
-                    "value": "[]",
+                    "value": "'base'",
                     "computed": false
                 }
             }
@@ -10911,6 +11885,10 @@
                         {
                             "value": "'modal'",
                             "computed": false
+                        },
+                        {
+                            "value": "'setup-assistant'",
+                            "computed": false
                         }
                     ]
                 },
@@ -10946,6 +11924,199 @@
         "route": "progress-indicators",
         "display-name": "Progress Indicators",
         "SLDS-component-path": "/components/progress-indicator",
+        "dependencies": []
+    },
+    "progress-bar": {
+        "description": "A progress bar component communicates to the user the progress of a particular process",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "ID as a string\n@returns {string} id",
+                "modifiers": [],
+                "params": [],
+                "returns": {
+                    "description": "id",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "ID as a string"
+            },
+            {
+                "name": "getDescription",
+                "docblock": "Enables Descriptive Progress Bar if label is provided\n@returns {string} description",
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ labels }"
+                    }
+                ],
+                "returns": {
+                    "description": "description",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "Enables Descriptive Progress Bar if label is provided"
+            }
+        ],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-progress-bar`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        },
+                        "complete": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Label for the progress bar",
+                "defaultValue": {
+                    "value": "{\n    complete: 'Complete',\n}",
+                    "computed": false
+                }
+            },
+            "radius": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'circular'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set radius of progress bar"
+            },
+            "color": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'success'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set fill of progress bar"
+            },
+            "thickness": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set progress bar thickness"
+            },
+            "value": {
+                "type": {
+                    "name": "number"
+                },
+                "required": true,
+                "description": "Percentage of progress completion, ranging [0, 100]."
+            },
+            "orientation": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'horizontal'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'vertical'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Orientation of the progress bar to be used",
+                "defaultValue": {
+                    "value": "'horizontal'",
+                    "computed": false
+                }
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component",
+                "defaultValue": {
+                    "value": "{\n    height: '100%',\n}",
+                    "computed": false
+                }
+            }
+        },
+        "route": "progress-bars",
+        "display-name": "Progress Bars",
+        "SLDS-component-path": "/components/progress-bar",
         "dependencies": []
     },
     "progress-ring": {
@@ -11022,6 +12193,10 @@
                     "name": "enum",
                     "value": [
                         {
+                            "value": "'active'",
+                            "computed": false
+                        },
+                        {
                             "value": "'warning'",
                             "computed": false
                         },
@@ -11058,6 +12233,48 @@
                 },
                 "required": true,
                 "description": "Percentage of progress completion, ranging [0, 100]."
+            },
+            "flowDirection": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'drain'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'fill'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Direction that the progress ring \"flows.\" Default is counter-clockwise, or `drain`. For clockwise flow, use `fill`",
+                "defaultValue": {
+                    "value": "'drain'",
+                    "computed": false
+                }
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size of the progress ring. Default is 'medium'",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
             }
         },
         "route": "progress-rings",
@@ -11146,20 +12363,22 @@
                 "required": false,
                 "description": "A unique ID that is used to associating a label to the `input` element. This ID is added to the `input` element."
             },
-            "label": {
+            "labels": {
                 "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "heading": {
+                            "name": "string",
+                            "required": false
                         },
-                        {
-                            "name": "element"
+                        "label": {
+                            "name": "string",
+                            "required": false
                         }
-                    ]
+                    }
                 },
-                "required": true,
-                "description": "The string or element that is shown as both the title and the label for this radio input."
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: Heading for the visual picker variant\n* `label`: Label for the radio input"
             },
             "name": {
                 "type": {
@@ -11197,6 +12416,10 @@
                         {
                             "value": "'swatch'",
                             "computed": false
+                        },
+                        {
+                            "value": "'visual-picker'",
+                            "computed": false
                         }
                     ]
                 },
@@ -11206,6 +12429,69 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "coverable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Determines whether visual picker is coverable when selected (only for visual picker variant)",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "vertical": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Determines whether the visual picker should be vertical or horizontal (only for visual picker variant)"
+            },
+            "onRenderVisualPicker": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Allows icon to shown if radio is not selected (only for non-coverable visual picker variant)"
+            },
+            "onRenderVisualPickerSelected": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Allows icon to shown if radio is not selected (only for visual picker variant)"
+            },
+            "onRenderVisualPickerNotSelected": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Allows icon to shown if radio is not selected (only for visual picker variant)"
+            },
+            "description": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Shows description for radio option (only for visual picker variant)"
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Allows icon to shown if radio is not selected (only for visual picker variant)"
             },
             "refs": {
                 "type": {
@@ -11225,6 +12511,265 @@
         "display-name": "Radios",
         "SLDS-component-path": "/components/radio-group/",
         "dependencies": []
+    },
+    "setup-assistant": {
+        "description": "Setup Assistant provides Administrators with a centralized list of tasks for\nonboarding organizations, clouds, or features within the Salesforce Platform.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "ID as a string\n@returns {string} id",
+                "modifiers": [],
+                "params": [],
+                "returns": {
+                    "description": "id",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "ID as a string"
+            }
+        ],
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Accepts SetupAssistantStep components only as children."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-progress-bar`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "isCard": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Dictates whether this setup assistant has card wrappings and styling",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "onStepToggleIsOpen": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function to handle opening / closing of steps when the step is expandable. Passes event object and step `index`, `isOpen`, and `step` props as data."
+            },
+            "progressBar": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Accepts a progress bar component, which will only be visible if `isCard` is enabled"
+            }
+        },
+        "route": "setup-assistant",
+        "display-name": "Setup Assistant",
+        "SLDS-component-path": "/components/setup-assistant",
+        "dependencies": [
+            {
+                "step": {
+                    "description": "Setup Assistant Step component is used to specify individual items within the Setup Assistant\nfilled with learning and task links along with a recommended sequence that may have progress tracking",
+                    "methods": [
+                        {
+                            "name": "getId",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        },
+                        {
+                            "name": "getIsOpen",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        },
+                        {
+                            "name": "toggleIsOpen",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        },
+                        {
+                            "name": "renderMediaContent",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        },
+                        {
+                            "name": "renderSummary",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        }
+                    ],
+                    "props": {
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS class names to be added to the container element. `array`, `object`, or `string` are accepted."
+                        },
+                        "description": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "string"
+                                    },
+                                    {
+                                        "name": "node"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Detailed description of the step"
+                        },
+                        "estimatedTime": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "string"
+                                    },
+                                    {
+                                        "name": "node"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Estimated time for completing the step"
+                        },
+                        "heading": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "string"
+                                    },
+                                    {
+                                        "name": "node"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Heading for the step"
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML id for component."
+                        },
+                        "index": {
+                            "type": {
+                                "name": "number"
+                            },
+                            "required": false,
+                            "description": "Index of the step within the step array"
+                        },
+                        "isExpandable": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Dictates whether the step can be expanded / collapsed"
+                        },
+                        "isOpen": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "If `isExpandable` is true, this prop can be used to control the expanded state. If not provided state will be used instead"
+                        },
+                        "onRenderAction": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function that is called to render a step's available action(s). Typically returns a Button, Button of variant \"link,\" or Checkbox of variant \"toggle\""
+                        },
+                        "onRenderContent": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function that is called to render step content. Typically returns a ProgressIndicator and/or ScopedNotification component"
+                        },
+                        "onToggleIsOpen": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function to handle requests to expand / collapse the step"
+                        },
+                        "progress": {
+                            "type": {
+                                "name": "number"
+                            },
+                            "required": false,
+                            "description": "Percentage of step completed. No progress indicator will be shown for the step unless this is provided"
+                        },
+                        "stepNumber": {
+                            "type": {
+                                "name": "number"
+                            },
+                            "required": false,
+                            "description": "Display number for the step. Only appears if progress indicator is enabled. Determined automatically by parent if not provided."
+                        }
+                    },
+                    "name": "step",
+                    "source": "/components/setup-assistant/step.jsx"
+                }
+            }
+        ]
     },
     "split-view": {
         "description": "Split view is used to navigate between records in a list while staying on the same screen.",
@@ -11827,6 +13372,23 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
             "children": {
                 "type": {
                     "name": "node"
@@ -11907,6 +13469,27 @@
                 },
                 "required": false,
                 "description": "The ID of the error message, for linking to radio inputs with aria-describedby."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'button-group'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Variants of radio groups such as Radio Button Group",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
             }
         },
         "route": "radio-groups",
@@ -11916,29 +13499,7 @@
     },
     "radio-button-group": {
         "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.",
-        "methods": [
-            {
-                "name": "getErrorId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getName",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "hasError",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
+        "methods": [],
         "props": {
             "assistiveText": {
                 "type": {
@@ -12042,6 +13603,62 @@
         "route": "radio-button-groups",
         "display-name": "Radio Button Groups",
         "SLDS-component-path": "/components/radio-button-group",
+        "dependencies": []
+    },
+    "scoped-notification": {
+        "description": "A Scoped Notification Component serve advisory information for the user that is not important enough to justify an alert.",
+        "methods": [],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-scoped-notification`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "theme": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'dark'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'light'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Theme for the scoped notification"
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Icon for the scoped notification. This is currently limited to the utility set of icons.",
+                "defaultValue": {
+                    "value": "'info'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "scoped-notifications",
+        "display-name": "Scoped Notifications",
+        "SLDS-component-path": "/components/scoped-notification",
         "dependencies": []
     },
     "slider": {
@@ -12286,6 +13903,13 @@
                 },
                 "required": false,
                 "description": "Custom css classes applied to Spinner container"
+            },
+            "containerStyle": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom css properties applied to Spinner container"
             },
             "id": {
                 "type": {
@@ -13439,6 +15063,13 @@
                 "returns": null
             },
             {
+                "name": "getIsOpen",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getTooltip",
                 "docblock": null,
                 "modifiers": [],
@@ -13747,6 +15378,10 @@
                         {
                             "value": "'learnMore'",
                             "computed": false
+                        },
+                        {
+                            "value": "'list-item'",
+                            "computed": false
                         }
                     ]
                 },
@@ -14005,6 +15640,74 @@
         "SLDS-component-path": "/components/trees",
         "dependencies": []
     },
+    "trial-bar": {
+        "description": "Trial bar components are used to provide an interactive and educational prospect experience for setup.",
+        "methods": [],
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Provide children of the types `<TrialBarButton />` or `<TrialBarDropdown />` to define the structure of the trial bar.\n```\n<TrialBar>\n  <TrialBarButton />\n  <TrialBarDropdown />\n</TrialBar>\n```"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the component. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "timeLeft": {
+                            "name": "string",
+                            "description": "Amount of time left in trial, e.g. `30`",
+                            "required": false
+                        },
+                        "timeLeftUnit": {
+                            "name": "string",
+                            "description": "Unit of the amount of time left, e.g. `days`",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Renders the labels in the trial bar."
+            },
+            "onRenderActions": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Renders the actions section of the trial bar."
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Customs styles to be applied to the component."
+            }
+        },
+        "route": "trial-bars",
+        "display-name": "Trial Bars",
+        "SLDS-component-path": "/components/trial-bar",
+        "dependencies": []
+    },
     "vertical-navigation": {
         "description": "Vertical Navigation represents a list of links that either take the user to another page or parts of the page the user is in.",
         "methods": [
@@ -14075,5 +15778,466 @@
         "display-name": "Vertical Navigation",
         "SLDS-component-path": "/components/vertical-navigation",
         "dependencies": []
+    },
+    "visual-picker": {
+        "description": "Visual Picker Component",
+        "methods": [],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Visual Picker accepts `Checkbox`, `Radio` and `VisualPickerLink` components as children. Please see `Checkbox`, `Radio` and `VisualPickerLink` for props."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-form-element`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Label for the visual picker"
+            },
+            "coverable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Whether the visual picker is coverable on selection"
+            },
+            "vertical": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Whether the visual picker has a vertical layout",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "links": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Whether the visual picker has links as children",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size for visual picker",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "visual-pickers",
+        "display-name": "Visual Pickers",
+        "SLDS-component-path": "/components/visual-picker",
+        "dependencies": []
+    },
+    "welcome-mat": {
+        "description": "A Welcome Mat provides a series of unordered items a user can click to learn about a thematic topic.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "Get the WelcomeMat's HTML id. Generate a new one if no ID present.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Get the WelcomeMat's HTML id. Generate a new one if no ID present."
+            },
+            {
+                "name": "getCount",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added to the container element. `array`, `object`, or `string` are accepted."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Whether the modal is open",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "title": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "description": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Weclome Mat labels for internationalization**\nThis object is merged with the default props object on every render.\n* `title`: Title for the Welcome Mat\n* `description`: Label for the radio input"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'steps'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'info-only'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'splash'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'trailhead-connected'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Variant of the WelcomeMat",
+                "defaultValue": {
+                    "value": "'steps'",
+                    "computed": false
+                }
+            },
+            "onRenderInfoActions": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Link to learn more button"
+            },
+            "onRequestClose": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Callback to fire when modal is dismissed"
+            },
+            "infoBadge": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Accepts a single WelcomeMatInfoBadge component, to be used with the trailhead variant"
+            },
+            "doNotShowAgainCheckbox": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Do not show again checkbox for info-only variant"
+            }
+        },
+        "route": "welcome-mat",
+        "display-name": "Welcome Mat",
+        "SLDS-component-path": "/components/welcome-mat",
+        "dependencies": [
+            {
+                "info-badge": {
+                    "description": "InfoBadge component item represents a tile in a Welcome Mat",
+                    "methods": [
+                        {
+                            "name": "getId",
+                            "docblock": "Get the Welcome Mat Info Badge's HTML id. Generate a new one if no ID present.",
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null,
+                            "description": "Get the Welcome Mat Info Badge's HTML id. Generate a new one if no ID present."
+                        },
+                        {
+                            "name": "getCompletedText",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        }
+                    ],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "completed": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\n* `completed` : For users of assistive technology, assistive text for completed icon."
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS class names to be added to the container element. `array`, `object`, or `string` are accepted."
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML id for component."
+                        },
+                        "image": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Icon for the tile"
+                        },
+                        "isComplete": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Whether the trail is completed",
+                            "defaultValue": {
+                                "value": "false",
+                                "computed": false
+                            }
+                        },
+                        "onCompleteRenderActions": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Actions to be rendered on completion of the trail"
+                        },
+                        "variant": {
+                            "defaultValue": {
+                                "value": "'steps'",
+                                "computed": false
+                            },
+                            "required": false
+                        }
+                    },
+                    "name": "info-badge",
+                    "source": "/components/welcome-mat/info-badge.jsx"
+                }
+            },
+            {
+                "tile": {
+                    "description": "Tile component item represents a tile in a Welcome Mat",
+                    "methods": [
+                        {
+                            "name": "getId",
+                            "docblock": "Get the Welcome Mat Tile's HTML id. Generate a new one if no ID present.",
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null,
+                            "description": "Get the Welcome Mat Tile's HTML id. Generate a new one if no ID present."
+                        }
+                    ],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "completedIcon": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `completeIcon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the complete icon means.",
+                            "defaultValue": {
+                                "value": "{\n    completedIcon: 'Completed',\n}",
+                                "computed": false
+                            }
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS class names to be added to the container element. `array`, `object`, or `string` are accepted."
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML id for component."
+                        },
+                        "title": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Title for the tile component."
+                        },
+                        "description": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Description for the tile component."
+                        },
+                        "href": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Href for the tile link"
+                        },
+                        "icon": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Icon for the tile"
+                        },
+                        "isComplete": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Whether the tile is completed",
+                            "defaultValue": {
+                                "value": "false",
+                                "computed": false
+                            }
+                        },
+                        "variant": {
+                            "type": {
+                                "name": "enum",
+                                "value": [
+                                    {
+                                        "value": "'steps'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'info-only'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'splash'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'trailhead-connected'",
+                                        "computed": false
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Variant of the Welcome Mat Tile",
+                            "defaultValue": {
+                                "value": "'steps'",
+                                "computed": false
+                            }
+                        }
+                    },
+                    "name": "tile",
+                    "source": "/components/welcome-mat/tile.jsx"
+                }
+            }
+        ]
     }
 }

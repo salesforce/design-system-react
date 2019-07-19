@@ -19,6 +19,7 @@ Testing is done using Mocha, Jest, and Storybook. Roughly speaking: Jest tests D
   * Browse to [http://localhost:8001](http://localhost:8001)
 * Run snapshot tests with `npm run test:snapshot` or, for just a specific file:
   `npm run test:snapshot components/button/`.
+* The entire test suite may take up to 10 minutes to run. To update Jest snapshots for a single component, use `npm run test:snapshot:update -- -t=popover` where the test name contains `popover`.
 
 ### React Storybook
 
@@ -56,8 +57,9 @@ Use Jest to test the presence of:
 
 Snapshot test suite source files that run stories present in `/components/story-based-tests.js`:
 
-* `/tests/story-based-tests.snapshot-test.js`
-* `/tests/story-based-accessibility-tests.js`
+* `/tests/story-based.accessibility-test.js`
+* `/tests/story-based.image-test.js`
+* `/tests/story-based.snapshot-test.js`
 
 #### Story removal from test suite
 

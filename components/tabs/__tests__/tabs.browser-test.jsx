@@ -2,7 +2,6 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import TestUtils from 'react-dom/test-utils';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import classNames from 'classnames';
@@ -24,8 +23,6 @@ import {
  * https://github.com/producthunt/chai-enzyme
  */
 chai.use(chaiEnzyme());
-
-const { Simulate } = TestUtils;
 
 const COMPONENT_CSS_CLASSES = {
 	wrapper: 'slds-tabs_default_wrapper',
@@ -240,7 +237,7 @@ describe('Tabs', () => {
 
 		it('Tab components have proper "aria-controls" attribute because they inherit Tabs ID property and append "-slds-tabs_panel-<index>" to it.', function() {
 			this.wrapper
-				.find(`.${COMPONENT_CSS_CLASSES.item}`)
+				.find(`.${COMPONENT_CSS_CLASSES.link}`)
 				.forEach(function(node, index) {
 					expect(node).to.have.attr(
 						'aria-controls',
@@ -262,7 +259,7 @@ describe('Tabs', () => {
 
 		it('Has the aria-disabled attribute on the second tab.', function() {
 			const myTabsListItem = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`
+				`.${COMPONENT_CSS_CLASSES.link}.slds-disabled`
 			);
 			expect(myTabsListItem)
 				.to.have.attr('aria-disabled')

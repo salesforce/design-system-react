@@ -1,4 +1,7 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/no-access-state-in-setstate */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
+
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // # App Launcher Section Component
@@ -37,6 +40,7 @@ const defaultProps = {
 /**
  * App Launcher Sections allow users to categorize App Tiles as well as toggle their display
  */
+
 class AppLauncherSection extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
@@ -49,28 +53,34 @@ class AppLauncherSection extends React.Component {
 		 * This object is merged with the default props object on every render.
 		 * * `collapseSection`: The assistive text for the section collapse icons.
 		 */
+
 		assistiveText: PropTypes.shape({
 			collapseSection: PropTypes.string,
 		}),
 		/**
 		 * The title for this section of apps
 		 */
+
 		title: PropTypes.string.isRequired,
 		/**
 		 * Allows the user to show/hide the section
 		 */
+
 		toggleable: PropTypes.bool,
 		/**
 		 * An array of applications to display
 		 */
+
 		children: PropTypes.node.isRequired,
 		/**
 		 * Controls the open/closed state of the section
 		 */
+
 		isOpen: PropTypes.bool,
 		/**
 		 * Callback for when section is toggled. Passes "isOpen" bool. Forces `toggleable` to true
 		 */
+
 		onToggleClick: PropTypes.func,
 	};
 

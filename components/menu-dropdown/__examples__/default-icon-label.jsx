@@ -1,8 +1,6 @@
 import React from 'react';
 
 import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
-import DropdownTrigger from '~/components/menu-dropdown/button-trigger'; // `~` is replaced with design-system-react at runtime
-import Button from '~/components/button/'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
 	static displayName = 'DropdownExample';
@@ -21,6 +19,10 @@ class Example extends React.Component {
 					{ label: 'Menu Item Three', value: 'C0' },
 					{ type: 'divider' },
 					{ label: 'Menu Item Four', value: 'D0' },
+					{ label: 'Menu Item Five', value: 'E0' },
+					{ label: 'Menu Item Six', value: 'F0' },
+					{ type: 'divider' },
+					{ label: 'Menu Item Seven', value: 'G0' },
 				]}
 			/>
 		);

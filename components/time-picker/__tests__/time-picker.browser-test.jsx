@@ -1,22 +1,10 @@
 /* eslint-disable react/no-string-refs */
 
 import React, { createFactory } from 'react';
-
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
-import { expect } from 'chai';
-import assign from 'lodash.assign';
 
 import SLDSTimepicker from '../../time-picker';
 import IconSettings from '../../icon-settings';
-
-const {
-	Simulate,
-	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
-
-const mockCallback = sinon.spy();
 
 const formatter = (date) =>
 	date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });

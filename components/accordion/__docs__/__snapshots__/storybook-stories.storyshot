@@ -46,7 +46,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           </h3>
           <div
             className="slds-dropdown-trigger slds-dropdown-trigger_click"
-            id="ButtonGroupExampleDropdown"
+            id="1"
             onClick={[Function]}
             onFocus={null}
             onKeyDown={[Function]}
@@ -56,7 +56,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
+              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-1 slds-shrink-none"
               disabled={false}
               onClick={[Function]}
               tabIndex="0"
@@ -125,7 +125,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           </h3>
           <div
             className="slds-dropdown-trigger slds-dropdown-trigger_click"
-            id="ButtonGroupExampleDropdown"
+            id="2"
             onClick={[Function]}
             onFocus={null}
             onKeyDown={[Function]}
@@ -135,7 +135,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
+              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-2 slds-shrink-none"
               disabled={false}
               onClick={[Function]}
               tabIndex="0"
@@ -204,7 +204,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           </h3>
           <div
             className="slds-dropdown-trigger slds-dropdown-trigger_click"
-            id="ButtonGroupExampleDropdown"
+            id="3"
             onClick={[Function]}
             onFocus={null}
             onKeyDown={[Function]}
@@ -214,7 +214,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-ButtonGroupExampleDropdown slds-shrink-none"
+              className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-3 slds-shrink-none"
               disabled={false}
               onClick={[Function]}
               tabIndex="0"
@@ -346,6 +346,52 @@ exports[`DOM snapshots SLDSAccordion Base Open 1`] = `
           id="2-accordion-panel"
         >
           Accordion details - B
+        </div>
+      </section>
+    </li>
+    <li
+      className="slds-accordion__list-item"
+    >
+      <section
+        className="slds-accordion__section slds-is-open"
+      >
+        <div
+          className="slds-accordion__summary"
+        >
+          <h3
+            className="slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate"
+          >
+            <button
+              aria-controls="3-accordion-panel"
+              aria-expanded={true}
+              className="slds-button slds-button_reset slds-accordion__summary-action"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                />
+              </svg>
+              <span
+                className="slds-truncate"
+                title="Accordion Summary"
+              >
+                Accordion Summary
+              </span>
+            </button>
+          </h3>
+        </div>
+        <div
+          aria-hidden={false}
+          className="slds-accordion__content"
+          id="3-accordion-panel"
+        >
+          Accordion details - C
         </div>
       </section>
     </li>

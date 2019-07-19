@@ -10,7 +10,7 @@ import Button from '~/components/button';
 import Icon from '~/components/icon';
 
 import AppLauncher from '~/components/app-launcher';
-import AppLauncherSection from '~/components/app-launcher/section';
+import AppLauncherExpandableSection from '~/components/app-launcher/expandable-section';
 import AppLauncherTile from '~/components/app-launcher/tile';
 
 class Example extends React.Component {
@@ -46,13 +46,14 @@ class Example extends React.Component {
 				<GlobalNavigationBar>
 					<GlobalNavigationBarRegion region="primary">
 						<AppLauncher
+							id="app-launcher-trigger"
 							triggerName="App Name"
 							onSearch={() => {
 								console.log('Search term:', event.target.value);
 							}}
 							modalHeaderButton={<Button label="App Exchange" />}
 						>
-							<AppLauncherSection title="Tile Section">
+							<AppLauncherExpandableSection title="Tile Section">
 								<AppLauncherTile
 									title="Marketing Cloud"
 									iconText="MC"
@@ -64,8 +65,8 @@ class Example extends React.Component {
 									descriptionHeading="Call Center"
 									iconText="CC"
 								/>
-							</AppLauncherSection>
-							<AppLauncherSection title="Small Tile Section">
+							</AppLauncherExpandableSection>
+							<AppLauncherExpandableSection title="Small Tile Section">
 								<AppLauncherTile
 									title="Journey Builder"
 									iconText="JB"
@@ -78,32 +79,20 @@ class Example extends React.Component {
 									}
 									size="small"
 								/>
-							</AppLauncherSection>
+							</AppLauncherExpandableSection>
 						</AppLauncher>
 					</GlobalNavigationBarRegion>
 					<GlobalNavigationBarRegion region="secondary" navigation>
-						<GlobalNavigationBarLink
-							href="javascript:void(0);"
-							label="Home"
-							id="home-link"
-						/>
+						<GlobalNavigationBarLink active label="Home" id="home-link" />
 						<GlobalNavigationBarDropdown
+							assistiveText={{ icon: 'Open menu item submenu' }}
 							id="primaryDropdown"
-							assistiveText={{ icon: 'Context Menu Item 1' }}
-							label="Context Menu Item"
+							label="Menu Item"
 							options={dropdownCollection}
 						/>
-						<GlobalNavigationBarLink
-							href="javascript:void(0);"
-							label="Context Menu Item 2"
-							active
-						/>
-					</GlobalNavigationBarRegion>
-					<GlobalNavigationBarRegion region="tertiary">
-						<GlobalNavigationBarLink
-							href="javascript:void(0);"
-							label="Actions"
-						/>
+						<GlobalNavigationBarLink label="Menu Item" />
+						<GlobalNavigationBarLink label="Menu Item" />
+						<GlobalNavigationBarLink label="Menu Item" />
 					</GlobalNavigationBarRegion>
 				</GlobalNavigationBar>
 			</IconSettings>

@@ -26,7 +26,8 @@ import {
 	canUseDOM,
 	canUseEventListeners,
 } from '../../utilities/execution-environment';
-import paletteColorsCommon from '../../utilities/design-tokens/dist/palette-colors.common';
+import { colorGray5 } from '../../utilities/design-tokens/dist/palette-colors.common';
+import { tableBorderRadius } from '../../utilities/design-tokens/dist/salesforce-skin.common';
 
 // ## Children
 import DataTableCell from './cell';
@@ -60,6 +61,7 @@ const defaultProps = {
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  *
+ * NOTE: for horizontal scrolling with `fixedHeader`-enabled DataTables, see the `style` property description
  */
 class DataTable extends React.Component {
 	// ### Display Name
@@ -140,6 +142,10 @@ class DataTable extends React.Component {
 			})
 		).isRequired,
 		/**
+		 * Makes DataTable joinable with PageHeader by adding appropriate classes/styling
+		 */
+		joined: PropTypes.bool,
+		/**
 		 * A variant which removes hover style on rows
 		 */
 		noRowHover: PropTypes.bool,
@@ -187,6 +193,11 @@ class DataTable extends React.Component {
 		 * A variant which adds stripes to alternating rows.
 		 */
 		striped: PropTypes.bool,
+		/**
+		 * Custom styles to be passed to the table.
+		 * NOTE: for horizontal scrolling in `fixedHeader`-enabled DataTables, apply a `minWidth` style here. If the containing element width is less than the `minWidth` value, horizontal scrolling will occur
+		 */
+		style: PropTypes.object,
 		/**
 		 * Tables have horizontal borders by default. This removes them.
 		 */
@@ -317,14 +328,10 @@ class DataTable extends React.Component {
 					}
 
 					const cellFixed = column.querySelector('.slds-cell-fixed');
-					const linkFixed = cellFixed.firstChild;
 
 					if (cellFixed) {
 						cellFixed.style.left = `${columnLeft - wrapperLeft}px`;
-					}
-
-					if (linkFixed) {
-						linkFixed.style.width = `${column.offsetWidth}px`;
+						cellFixed.style.width = `${column.offsetWidth}px`;
 					}
 				}
 			});
@@ -390,7 +397,7 @@ class DataTable extends React.Component {
 				child &&
 				child.type.displayName === DataTableRowActions.displayName
 			) {
-				const dropdown = child.props.dropdown;
+				const { dropdown } = child.props;
 				const dropdownPropOverrides = {};
 				if (this.props.fixedHeader) {
 					dropdownPropOverrides.menuPosition = 'overflowBoundaryElement';
@@ -460,6 +467,7 @@ class DataTable extends React.Component {
 				)}
 				id={this.getId()}
 				role={this.props.fixedLayout ? 'grid' : null}
+				style={this.props.style}
 			>
 				<DataTableHead
 					assistiveText={assistiveText}
@@ -514,12 +522,33 @@ class DataTable extends React.Component {
 		);
 
 		if (this.props.fixedHeader) {
+			const border = `1px solid ${colorGray5}`;
+			const styles = {
+				borderTop: border,
+				height: '100%',
+			};
+
+			if (this.props.joined) {
+				styles.borderBottom = border;
+				styles.borderLeft = border;
+				styles.borderRight = border;
+				styles.borderTop = 'none';
+				styles.borderRadius = tableBorderRadius;
+			}
+
 			component = (
 				<div
 					className="slds-table_header-fixed_container"
-					style={{
-						borderTop: `1px solid ${paletteColorsCommon.colorGray5}`,
-						height: '100%',
+					style={styles}
+					onScroll={(e) => {
+						const containerScrollLeft = e.target.scrollLeft;
+
+						if (containerScrollLeft > 0) {
+							e.target.scrollLeft = 0;
+							if (this.scrollerRef) {
+								this.scrollerRef.scrollLeft = containerScrollLeft;
+							}
+						}
 					}}
 				>
 					<div

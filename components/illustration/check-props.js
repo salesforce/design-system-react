@@ -2,16 +2,19 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
+import isPrototype from '../../utilities/warning/component-is-prototype';
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
 /* import deprecatedPropertyValue from '../../utilities/warning/deprecated-property-value'; */
 
-let checkProps = function() {};
+let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function(COMPONENT, props, jsonDoc) {
+	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		isPrototype(COMPONENT);
 
 		/**
 		 * If illustration SVGs are added to SLDS in the future, we will deprecate the value

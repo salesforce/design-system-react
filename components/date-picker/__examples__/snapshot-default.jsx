@@ -12,6 +12,9 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Datepicker
+					labels={{
+						label: 'Date',
+					}}
 					id="sample-datepicker"
 					isOpen
 					menuPosition="relative"
