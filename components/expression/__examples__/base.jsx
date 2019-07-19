@@ -96,7 +96,7 @@ class Example extends React.Component {
 			value: '',
 		};
 		conditions.push(newCondition);
-		this.setState({ conditions, update: true });
+		this.setState({ conditions });
 	}
 
 	addSubCondition(i) {
@@ -107,21 +107,21 @@ class Example extends React.Component {
 			value: '',
 		};
 		conditions[i].conditions.push(newCondition);
-		this.setState({ conditions, update: true });
+		this.setState({ conditions });
 	}
 
 	deleteCondition(i) {
 		const { conditions } = this.state;
 		if (conditions.length > 1) {
 			conditions.splice(i, 1);
-			this.setState({ conditions, update: true });
+			this.setState({ conditions });
 		} else {
 			const newCondition = {
 				resource: '',
 				operator: '',
 				value: '',
 			};
-			this.setState({ conditions: [newCondition], update: true });
+			this.setState({ conditions: [newCondition] });
 		}
 	}
 
@@ -129,7 +129,7 @@ class Example extends React.Component {
 		const { conditions } = this.state;
 		if (conditions[i].conditions.length > 1) {
 			conditions[i].conditions.splice(j, 1);
-			this.setState({ conditions, update: true });
+			this.setState({ conditions });
 		} else {
 			const newCondition = {
 				resource: '',
@@ -137,7 +137,7 @@ class Example extends React.Component {
 				value: '',
 			};
 			conditions[i].conditions = [newCondition];
-			this.setState({ conditions, update: true });
+			this.setState({ conditions});
 		}
 	}
 
@@ -155,7 +155,7 @@ class Example extends React.Component {
 				conditions: [newCondition],
 			};
 			conditions.push(newGroup);
-			this.setState({ conditions, update: true });
+			this.setState({ conditions });
 		}
 	}
 
@@ -170,12 +170,15 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Expression
+					events={{
+						onChangeTrigger: (val) => this.setState({ triggerType: val }),
+						onChangeCustomLogicValue: (e, val) =>
+							this.setState({ customLogic: val }),
+						onAddCondition: () => this.addCondition(),
+						onAddGroup: () => this.addGroup(),
+					}}
 					triggerType={this.state.triggerType}
-					onChangeTrigger={(val) => this.setState({ triggerType: val })}
-					customLogic={this.state.customLogic}
-					onChangeCustomLogic={(val) => this.setState({ customLogic: val })}
-					onAddCondition={() => this.addCondition()}
-					onAddGroup={() => this.addGroup()}
+					customLogicValue={this.state.customLogic}
 				>
 					{this.state.conditions.map(
 						(condition, i) =>
@@ -184,10 +187,19 @@ class Example extends React.Component {
 									/* eslint-disable-next-line react/no-array-index-key */
 									key={i}
 									labels={{
-										condition: Example.getTriggerType(
+										label: Example.getTriggerType(
 											i,
 											this.state.triggerType
 										),
+									}}
+									events={{
+										onChangeOperator: (e, obj) =>
+											this.updateData(i, obj, 'operator'),
+										onChangeResource: (e, obj) =>
+											this.updateData(i, obj, 'resource'),
+										onChangeValue: (e) =>
+											this.updateData(i, e.target.value, 'value'),
+										onDelete: () => this.deleteCondition(i),
 									}}
 									resourcesList={ResourcesList}
 									resourceSelected={find(ResourcesList, {
@@ -198,46 +210,46 @@ class Example extends React.Component {
 										id: condition.operator,
 									})}
 									value={condition.value}
-									onChangeOperator={(e, obj) =>
-										this.updateData(i, obj, 'operator')
-									}
-									onChangeResource={(e, obj) =>
-										this.updateData(i, obj, 'resource')
-									}
-									onChangeValue={(val) => this.updateData(i, val, 'value')}
-									onDelete={() => this.deleteCondition(i)}
 								/>
 							) : (
 								<ExpressionGroup
 									/* eslint-disable-next-line react/no-array-index-key */
 									key={i}
 									labels={{
-										condition: Example.getTriggerType(
+										label: Example.getTriggerType(
 											i,
 											this.state.triggerType
 										),
 									}}
-									customLogic={condition.customLogic}
-									onChangeCustomLogic={(val) =>
-										this.updateGroupData(i, val, 'customLogic')
-									}
+									events={{
+										onChangeCustomLogicValue: (e, val) =>
+											this.updateGroupData(i, val, 'customLogic'),
+										onChangeTrigger: (val) =>
+											this.updateGroupData(i, val, 'triggerType'),
+										onAddCondition: () => this.addSubCondition(i),
+									}}
+									customLogicValue={condition.customLogic}
 									triggerType={condition.triggerType}
-									onChangeTrigger={(val) =>
-										this.updateGroupData(i, val, 'triggerType')
-									}
-									onAddCondition={() => this.addSubCondition(i)}
 								>
-									{condition.triggerType !== 'always'
-										? condition.conditions.map((c, j) => (
+									{condition.conditions.map((c, j) => (
 												<ExpressionCondition
 													/* eslint-disable-next-line react/no-array-index-key */
 													key={j}
-													isChild
+													isSubCondition
 													labels={{
-														condition: Example.getTriggerType(
+														label: Example.getTriggerType(
 															j,
 															condition.triggerType
 														),
+													}}
+													events={{
+														onChangeOperator: (e, obj) =>
+															this.updateSubData(i, j, obj, 'operator'),
+														onChangeResource: (e, obj) =>
+															this.updateSubData(i, j, obj, 'resource'),
+														onChangeValue: (e) =>
+															this.updateSubData(i, j, e.target.value, 'value'),
+														onDelete: () => this.deleteSubCondition(i, j),
 													}}
 													resourcesList={ResourcesList}
 													resourceSelected={find(ResourcesList, {
@@ -248,19 +260,9 @@ class Example extends React.Component {
 														id: c.operator,
 													})}
 													value={c.value}
-													onChangeOperator={(e, obj) =>
-														this.updateSubData(i, j, obj, 'operator')
-													}
-													onChangeResource={(e, obj) =>
-														this.updateSubData(i, j, obj, 'resource')
-													}
-													onChangeValue={(val) =>
-														this.updateSubData(i, j, val, 'value')
-													}
-													onDelete={() => this.deleteSubCondition(i, j)}
 												/>
 											))
-										: null}
+										}
 								</ExpressionGroup>
 							)
 					)}

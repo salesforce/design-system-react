@@ -5,11 +5,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import assign from 'lodash.assign';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
 import { EXPRESSION_CONDITION } from '../../utilities/constants';
 
 import Combobox from '../combobox';
@@ -17,9 +19,9 @@ import Input from '../input';
 import Button from '../button';
 
 const propTypes = {
+
 	assistiveText: PropTypes.shape({
-		title: PropTypes.string,
-		delete: PropTypes.string,
+		deleteIcon: PropTypes.string,
 	}),
 	/**
 	 * HTML id for component.
@@ -34,6 +36,13 @@ const propTypes = {
 		PropTypes.string,
 	]),
 
+	events: PropTypes.shape({
+		onChangeResource: PropTypes.func,
+		onChangeOperator: PropTypes.func,
+		onChangeValue: PropTypes.func,
+		onDelete: PropTypes.func,
+	}),
+
 	labels: PropTypes.shape({
 		condition: PropTypes.string,
 		resource: PropTypes.string,
@@ -41,22 +50,31 @@ const propTypes = {
 		value: PropTypes.string,
 	}),
 
-	isChild: PropTypes.bool,
+	isSubCondition: PropTypes.bool,
 
 	resourcesList: PropTypes.arrayOf(PropTypes.object),
 	resourceSelected: PropTypes.object,
-	onChangeResource: PropTypes.func,
 
 	operatorsList: PropTypes.arrayOf(PropTypes.object),
 	operatorSelected: PropTypes.object,
-	onChangeOperator: PropTypes.func,
 
 	value: PropTypes.string,
-	onChangeValue: PropTypes.func,
-
-	onDelete: PropTypes.func,
 };
 
+const defaultProps = {
+	assistiveText: {
+		title: 'Condition',
+		deleteIcon: 'Delete Condition',
+	},
+	isSubCondition: false,
+	labels: {
+		label: '',
+		resource: 'Resource',
+		operator: 'Operator',
+		value: 'Value',
+		deleteCondition: 'Delete Condition',
+	},
+};
 /**
  * Expression Condition Component
  */
@@ -73,114 +91,87 @@ class ExpressionCondition extends React.Component {
 	}
 
 	render() {
+		const assistiveText = assign(
+			{},
+			defaultProps.assistiveText,
+			this.props.assistiveText
+		);
+		const labels = assign({}, defaultProps.labels, this.props.labels);
 		return (
-			<li
-				className={classNames(
-					`slds-expression__row`,
-					this.props.isChild ? 'slds-expression__row_group' : null,
-					this.props.className
-				)}
-				id={this.getId()}
-			>
-				<fieldset>
-					<legend className="slds-expression__legend">
-						<span>
-							{this.props.labels && this.props.labels.condition
-								? this.props.labels.condition
-								: null}
-						</span>
-						<span className="slds-assistive-text">
-							{this.props.assistiveText
-								? this.props.assistiveText.title
-								: 'Condition'}
-						</span>
-					</legend>
-					<div className="slds-grid slds-gutters_xx-small">
-						<div className="slds-col">
-							<Combobox
-								events={{
-									onSelect: (event, data) => {
-										this.props.onChangeResource(event, data);
-									},
-								}}
-								multiple={false}
-								variant="readonly"
-								labels={{
-									label:
-										this.props.labels && this.props.labels.resource
-											? this.props.labels.resource
-											: 'Resource',
-								}}
-								options={this.props.resourcesList}
-								selection={[this.props.resourceSelected]}
-							/>
-						</div>
-						<div className="slds-col slds-grow-none">
-							<Combobox
-								events={{
-									onSelect: (event, data) => {
-										this.props.onChangeOperator(event, data);
-									},
-								}}
-								multiple={false}
-								variant="readonly"
-								labels={{
-									label:
-										this.props.labels && this.props.labels.operator
-											? this.props.labels.operator
-											: 'Operator',
-								}}
-								options={this.props.operatorsList}
-								selection={[this.props.operatorSelected]}
-								singleInputDisabled={!this.props.resourceSelected}
-							/>
-						</div>
-						<div className="slds-col">
-							<Input
-								label={
-									this.props.labels && this.props.labels.value
-										? this.props.labels.value
-										: 'Value'
-								}
-								value={this.props.value}
-								onChange={(e, obj) => this.props.onChangeValue(obj.value)}
-								disabled={!this.props.resourceSelected}
-							/>
-						</div>
-						<div className="slds-col slds-grow-none">
-							<div className="slds-form-element">
-								<span className="slds-form-element__label">&nbsp;</span>
-								<div className="slds-form-element__control">
-									<Button
-										variant="outline-brand"
-										iconCategory="utility"
-										iconName="delete"
-										iconVariant="border-filled"
-										onClick={() => {
-											this.props.onDelete();
-										}}
-										assistiveText={{
-											icon: this.props.assistiveText
-												? this.props.assistiveText.delete
-												: 'Delete Condition',
-										}}
-										title={
-											this.props.assistiveText
-												? this.props.assistiveText.delete
-												: 'Delete Condition'
-										}
-									/>
+				<li
+					className={classNames(
+						`slds-expression__row`,
+						this.props.isSubCondition ? 'slds-expression__row_group' : null,
+						this.props.className
+					)}
+					id={this.getId()}
+				>
+					<fieldset>
+						<legend className="slds-expression__legend">
+							<span>{labels.label}</span>
+							<span className="slds-assistive-text">{assistiveText.title}</span>
+						</legend>
+						<div className="slds-grid slds-gutters_xx-small">
+							<div className="slds-col">
+								<Combobox
+									events={{
+										onSelect: this.props.events.onChangeResource,
+									}}
+									multiple={false}
+									variant="readonly"
+									labels={{ label: labels.resource }}
+									options={this.props.resourcesList}
+									selection={[this.props.resourceSelected]}
+								/>
+							</div>
+							<div className="slds-col slds-grow-none">
+								<Combobox
+									events={{
+										onSelect: this.props.events.onChangeOperator,
+									}}
+									multiple={false}
+									variant="readonly"
+									labels={{ label: labels.operator }}
+									options={this.props.operatorsList}
+									selection={[this.props.operatorSelected]}
+									singleInputDisabled={!this.props.resourceSelected}
+								/>
+							</div>
+							<div className="slds-col">
+								<Input
+									label={labels.value}
+									value={this.props.value}
+									onChange={this.props.events.onChangeValue}
+									disabled={!this.props.resourceSelected}
+								/>
+							</div>
+							<div className="slds-col slds-grow-none">
+								<div className="slds-form-element">
+									<span className="slds-form-element__label">&nbsp;</span>
+									<div className="slds-form-element__control">
+										<Button
+											variant="outline-brand"
+											iconCategory="utility"
+											iconName="delete"
+											iconVariant="border-filled"
+											onClick={this.props.events.onDelete}
+											assistiveText={{
+												icon: assistiveText.deleteIcon,
+											}}
+											title={labels.deleteCondition}
+										/>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</fieldset>
-			</li>
+					</fieldset>
+				</li>
 		);
 	}
 }
 
 ExpressionCondition.displayName = EXPRESSION_CONDITION;
 ExpressionCondition.propTypes = propTypes;
+ExpressionCondition.defaultProps = defaultProps;
 
 export default ExpressionCondition;

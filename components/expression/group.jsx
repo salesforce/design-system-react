@@ -5,11 +5,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import assign from 'lodash.assign';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+
 import { EXPRESSION_GROUP } from '../../utilities/constants';
 
 import Combobox from '../combobox';
@@ -18,17 +20,21 @@ import Button from '../button';
 const propTypes = {
 	/**
 	 *  **Assistive text for accessibility.**
-	 * * `title` : For users of assistive technology, assistive text for the expression group.
+	 * * `label`: For users of assistive technology, assistive text for the expression group's label.
+	 * * `addCondition`: For users of assistive technology, assistive text for the Add Condition button's icon.
+	 * * `addGroup`: For users of assistive technology, assistive text for the Add Group button's icon.
 	 */
 	assistiveText: PropTypes.shape({
-		title: PropTypes.string,
+		label: PropTypes.string,
+		addCondition: PropTypes.string,
+		addGroup: PropTypes.string
 	}),
 	/**
-	 * HTML id for component.
+	 * HTML id for ExpressionGroup component.
 	 */
 	id: PropTypes.string,
 	/**
-	 * ExpressionGroup accepts `ExpressionCondition`
+	 * ExpressionGroup accepts `ExpressionCondition`. (Also accepts sub-`ExpressionGroup` if `isRoot`)
 	 */
 	children: PropTypes.node,
 	/**
@@ -40,59 +46,84 @@ const propTypes = {
 		PropTypes.string,
 	]),
 
-	labels: PropTypes.shape({
-		condition: PropTypes.string,
-		takeAction: PropTypes.string,
-		addCondition: PropTypes.string,
-		addGroup: PropTypes.string,
+	events: PropTypes.shape({
+		onChangeTrigger: PropTypes.func,
+		onChangeCustomLogicValue: PropTypes.func,
+		onAddCondition: PropTypes.func,
+		onAddGroup: PropTypes.func,
 	}),
 	/**
-	 * Whether the group is a child
+	 * **Text labels for internationalization**
+	 * This object is merged with the default props object on every render.
+	 * * `addCondition`: Label for the Add Condition Button. Defaults to "Add Condition"
+	 * * `addGroup`: Label for the Add Group Button. Defaults to "Add Group"
+	 * * `customLogic`: Label for the text box for inputting `customLogicValue`, if the `triggerType` is `custom`. Defaults to "Custom Logic"
+	 * * `label`: Label for the expression group, to indicate condition connectors based on the parent's trigger-type chosen. Defaults to ""
+	 * * `takeAction`: Label for the `triggerType` selector. Defaults to "Take Action When"
 	 */
-	isChild: PropTypes.bool,
-
+	labels: PropTypes.shape({
+		addCondition: PropTypes.string,
+		addGroup: PropTypes.string,
+		customLogic: PropTypes.string,
+		label: PropTypes.string,
+		takeAction: PropTypes.string,
+	}),
+	/**
+	 * Whether the group is at root level
+	 */
+	isRoot: PropTypes.bool,
+	/**
+	 * Trigger type for the Group
+	 */
 	triggerType: PropTypes.oneOf(['all', 'any', 'custom', 'always', 'formula']),
-	onChangeTrigger: PropTypes.func,
-
-	customLogic: PropTypes.string,
-	onChangeCustomLogic: PropTypes.func,
-
-	onAddCondition: PropTypes.func,
-	onAddGroup: PropTypes.func,
+	/**
+	 * Custom trigger logic for the Group, if the `triggerType` is set to custom
+	 */
+	customLogicValue: PropTypes.string,
 };
 
 const defaultProps = {
 	triggerType: 'all',
-	isChild: true,
+	isRoot: false,
+	labels: {
+		label: '',
+		takeAction: 'Take Action When',
+		customLogic: 'Custom Logic',
+		addCondition: 'Add Condition',
+		addGroup: 'Add Group',
+		triggerAll: 'All Conditions Are Met',
+		triggerAny: 'Any Condition Is Met',
+		triggerCustom: 'Custom Logic Is Met',
+		triggerAlways: 'Always (No Criteria)',
+		triggerFormula: 'Formula Evaluates To True',
+	},
 };
-
-const Triggers = [
-	{
-		id: '1',
-		label: 'All Conditions Are Met',
-	},
-	{
-		id: '2',
-		label: 'Any Condition Is Met',
-	},
-	{
-		id: '3',
-		label: 'Custom Logic Is Met',
-	},
-	{
-		id: '4',
-		label: 'Always (No Criteria)',
-	},
-	{
-		id: '5',
-		label: 'Formula Evaluates To True',
-	},
-];
 
 /**
  * Expression Group Component
  */
 class ExpressionGroup extends React.Component {
+
+	/**
+	 *  Return triggerType selected, processing the triggerType objects generated
+	 */
+	static triggerChange(event, data) {
+		const selection = data.selection[0].id;
+		let trigger = '';
+		if (selection === '1') {
+			trigger = 'all';
+		} else if (selection === '2') {
+			trigger = 'any';
+		} else if (selection === '3') {
+			trigger = 'custom';
+		} else if (selection === '4') {
+			trigger = 'always';
+		} else if (selection === '5') {
+			trigger = 'formula';
+		}
+		return trigger;
+	}
+
 	componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
@@ -104,8 +135,23 @@ class ExpressionGroup extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
+	/**
+	 * Generate and return trigger type objects, with labels either sent as props or using default props.
+	 */
+	getTriggers() {
+		const labels = assign({}, defaultProps.labels, this.props.labels);
+		return [
+			{ id: '1', label: labels.triggerAll },
+			{ id: '2', label: labels.triggerAny },
+			{ id: '3', label: labels.triggerCustom },
+			{ id: '4', label: labels.triggerAlways },
+			{ id: '5', label: labels.triggerFormula },
+		];
+	}
+
 	getTriggerSelection() {
 		const selection = this.props.triggerType;
+		const Triggers = this.getTriggers();
 		const t = [];
 		if (selection === 'all') {
 			t.push(Triggers[0]);
@@ -121,120 +167,91 @@ class ExpressionGroup extends React.Component {
 		return t;
 	}
 
-	triggerChange(event, data) {
-		const selection = data.selection[0].id;
-		let trigger = '';
-		if (selection === '1') {
-			trigger = 'all';
-		} else if (selection === '2') {
-			trigger = 'any';
-		} else if (selection === '3') {
-			trigger = 'custom';
-		} else if (selection === '4') {
-			trigger = 'always';
-		} else if (selection === '5') {
-			trigger = 'formula';
-		}
-		this.props.onChangeTrigger(trigger);
-	}
-
 	render() {
+		const assistiveText = assign(
+			{},
+			defaultProps.assistiveText,
+			this.props.assistiveText
+		);
+		const labels = assign({}, defaultProps.labels, this.props.labels);
+
 		const triggerCombobox = (
 			<Combobox
 				events={{
-					onSelect: (event, data) => this.triggerChange(event, data),
+					onSelect: (event, data) =>
+						this.props.events.onChangeTrigger(
+							ExpressionGroup.triggerChange(event, data)
+						),
 				}}
 				multiple={false}
-				options={Triggers}
+				options={this.getTriggers()}
 				variant="readonly"
-				labels={{
-					label:
-						this.props.labels && this.props.labels.takeAction
-							? this.props.labels.takeAction
-							: 'Take Action When',
-				}}
+				labels={{ label: labels.takeAction }}
 				selection={this.getTriggerSelection()}
 			/>
 		);
 
-		const buttons = (
-			<div className="slds-expression__buttons">
-				<Button
-					iconCategory="utility"
-					iconName="add"
-					iconPosition="left"
-					label={
-						this.props.labels && this.props.labels.addCondition
-							? this.props.labels.addCondition
-							: 'Add Condition'
-					}
-					onClick={() => {
-						this.props.onAddCondition();
-					}}
-				/>
-				{!this.props.isChild ? (
+		const buttons =
+			this.props.triggerType !== 'always' ? (
+				<div className="slds-expression__buttons">
 					<Button
 						iconCategory="utility"
 						iconName="add"
 						iconPosition="left"
-						label={
-							this.props.labels && this.props.labels.addGroup
-								? this.props.labels.addGroup
-								: 'Add Group'
-						}
-						onClick={() => {
-							this.props.onAddGroup();
-						}}
+						label={labels.addCondition}
+						assistiveText={{ icon: assistiveText.addCondition }}
+						onClick={this.props.events.onAddCondition}
 					/>
-				) : null}
-			</div>
-		);
+					{this.props.isRoot ? (
+						<Button
+							iconCategory="utility"
+							iconName="add"
+							iconPosition="left"
+							label={labels.addGroup}
+							assistiveText={{ icon: assistiveText.addGroup }}
+							onClick={this.props.events.onAddGroup}
+						/>
+					) : null}
+				</div>
+			) : null;
 
 		const body = (
+			this.props.triggerType !== "always" ? (
 			<>
 				{this.props.triggerType === 'custom' ? (
 					<div className="slds-expression__custom-logic">
 						<div className="slds-form-element">
 							<label
 								className="slds-form-element__label"
-								htmlFor="text-input-id-43"
+								htmlFor={`text-input-id-${this.getId()}`}
 							>
-								Custom Logic
+								{labels.customLogic}
 							</label>
 							<div className="slds-form-element__control">
 								<input
 									className="slds-input"
 									type="text"
-									value={this.props.customLogic}
-									onChange={(e) =>
-										this.props.onChangeCustomLogic(e.target.value)
-									}
+									id={`text-input-id-${this.getId()}`}
+									value={this.props.customLogicValue}
+									onChange={this.props.events.onChangeCustomLogicValue}
 								/>
 							</div>
 						</div>
 					</div>
 				) : null}
 				<ul>{this.props.children}</ul>
-			</>
+			</>) : null
 		);
 
-		return this.props.isChild ? (
+		return !this.props.isRoot ? (
 			<li
 				className={classNames('slds-expression__group', this.props.className)}
 				id={this.getId()}
 			>
 				<fieldset>
 					<legend className="slds-expression__legend slds-expression__legend_group">
-						<span>
-							{this.props.labels && this.props.labels.condition
-								? this.props.labels.condition
-								: null}
-						</span>
-						<span className="slds-assistive-text">
-							{this.props.assistiveText
-								? this.props.assistiveText.title
-								: 'Condition Group'}
-						</span>
+						<span>{labels.label}</span>
+						<span className="slds-assistive-text">{assistiveText.label}</span>
 					</legend>
 					<div className="slds-expression__options">{triggerCombobox}</div>
 					<ul>{body}</ul>

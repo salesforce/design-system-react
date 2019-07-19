@@ -12,6 +12,7 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 import { EXPRESSION } from '../../utilities/constants';
 import ExpressionGroup from './group';
+import assign from 'lodash.assign';
 
 const propTypes = {
 	/**
@@ -22,6 +23,21 @@ const propTypes = {
 	 * ExpressionGroup accepts `ExpressionCondition` & `ExpressionGroup`
 	 */
 	children: PropTypes.node,
+
+	labels: PropTypes.shape({
+		title: PropTypes.string,
+		label: PropTypes.string,
+		customLogic: PropTypes.string,
+		takeAction: PropTypes.string,
+		addCondition: PropTypes.string,
+		addGroup: PropTypes.string,
+	}),
+
+	events: PropTypes.shape({
+		onChangeTrigger: PropTypes.func,
+		onAddGroup: PropTypes.func,
+		onChangeCustomLogicValue: PropTypes.func,
+	}),
 	/**
 	 * CSS classes to be added to tag with `.slds-expression`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
@@ -32,13 +48,16 @@ const propTypes = {
 	]),
 
 	onAddCondition: PropTypes.func,
-	onAddGroup: PropTypes.func,
 
 	triggerType: PropTypes.oneOf(['all', 'any', 'custom', 'always', 'formula']),
-	onChangeTrigger: PropTypes.func,
 
-	customLogic: PropTypes.string,
-	onChangeCustomLogic: PropTypes.func,
+	customLogicValue: PropTypes.string,
+};
+
+const defaultProps = {
+		labels: {
+			title: 'Conditions'
+		}
 };
 
 /**
@@ -57,20 +76,27 @@ class Expression extends React.Component {
 	}
 
 	render() {
+
+		const labels = assign({}, defaultProps.labels, this.props.labels);
+
 		return (
 			<div
 				className={classNames('slds-expression', this.props.className)}
 				id={this.getId()}
 			>
-				<h2 className="slds-expression__title">Conditions</h2>
+				<h2 className="slds-expression__title">{labels.title}</h2>
 				<ExpressionGroup
-					isChild={false}
-					customLogic={this.props.customLogic}
-					onChangeCustomLogic={this.props.onChangeCustomLogic}
+					isRoot
+					events={{
+						onChangeCustomLogicValue: this.props.events
+							.onChangeCustomLogicValue,
+						onChangeTrigger: this.props.events.onChangeTrigger,
+						onAddCondition: this.props.events.onAddCondition,
+						onAddGroup: this.props.events.onAddGroup,
+					}}
+					labels={labels}
+					customLogicValue={this.props.customLogicValue}
 					triggerType={this.props.triggerType}
-					onChangeTrigger={this.props.onChangeTrigger}
-					onAddCondition={this.props.onAddCondition}
-					onAddGroup={this.props.onAddGroup}
 				>
 					{this.props.children}
 				</ExpressionGroup>
@@ -81,5 +107,6 @@ class Expression extends React.Component {
 
 Expression.displayName = EXPRESSION;
 Expression.propTypes = propTypes;
+Expression.defaultProps = defaultProps;
 
 export default Expression;
