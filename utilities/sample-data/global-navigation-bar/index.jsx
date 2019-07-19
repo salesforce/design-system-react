@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-literals */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/display-name */
 

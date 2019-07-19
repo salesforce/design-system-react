@@ -275,7 +275,7 @@ class Checkbox extends React.Component {
 				<span className="slds-checkbox">
 					{props.required ? (
 						<abbr className="slds-required" title="required">
-							*
+							{'*'}
 						</abbr>
 					) : null}
 					<input
@@ -338,7 +338,7 @@ class Checkbox extends React.Component {
 			<label className="slds-checkbox_toggle slds-grid" htmlFor={this.getId()}>
 				{props.required ? (
 					<abbr className="slds-required" title="required">
-						*
+						{'*'}
 					</abbr>
 				) : null}
 				{labels.label ? (
