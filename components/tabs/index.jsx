@@ -38,7 +38,8 @@ import EventUtil from '../../utilities/event';
 function isTabNode(node) {
 	return (
 		(node.nodeName === 'A' && node.getAttribute('role') === 'tab') ||
-		(node.nodeName === 'LI' && node.getAttribute('role') === 'presentation')
+		(node.nodeName === 'LI' &&
+			node.classList.contains('slds-tabs_default__item'))
 	);
 }
 
