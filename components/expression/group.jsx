@@ -16,6 +16,7 @@ import { EXPRESSION_GROUP } from '../../utilities/constants';
 
 import Combobox from '../combobox';
 import Button from '../button';
+import Input from '../input';
 
 const propTypes = {
 	/**
@@ -85,6 +86,7 @@ const propTypes = {
 const defaultProps = {
 	triggerType: 'all',
 	isRoot: false,
+	customLogicValue: '',
 	labels: {
 		label: '',
 		takeAction: 'Take Action When',
@@ -219,25 +221,14 @@ class ExpressionGroup extends React.Component {
 			this.props.triggerType !== 'always' ? (
 				<>
 					{this.props.triggerType === 'custom' ? (
-						<div className="slds-expression__custom-logic">
-							<div className="slds-form-element">
-								<label
-									className="slds-form-element__label"
-									htmlFor={`text-input-id-${this.getId()}`}
-								>
-									{labels.customLogic}
-								</label>
-								<div className="slds-form-element__control">
-									<input
-										className="slds-input"
-										type="text"
-										id={`text-input-id-${this.getId()}`}
-										value={this.props.customLogicValue}
-										onChange={this.props.events.onChangeCustomLogicValue}
-									/>
-								</div>
-							</div>
-						</div>
+						<Input
+							label={labels.customLogic}
+							className="slds-expression__custom-logic"
+							id={`text-input-id-${this.getId()}`}
+							value={this.props.customLogicValue}
+							variant="base"
+							onChange={this.props.events.onChangeCustomLogicValue}
+						/>
 					) : null}
 					<ul>{this.props.children}</ul>
 				</>

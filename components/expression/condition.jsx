@@ -73,6 +73,7 @@ const defaultProps = {
 		value: 'Value',
 		deleteCondition: 'Delete Condition',
 	},
+	value: '',
 };
 /**
  * Expression Condition Component

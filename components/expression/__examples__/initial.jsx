@@ -1,8 +1,8 @@
 import React from 'react';
 import Example from './example';
 
-class Base extends React.Component {
-	static displayName = 'ExpressionResourceSelectedExample';
+class Initial extends React.Component {
+	static displayName = 'ExpressionInitialStateExample';
 
 	render() {
 		return (
@@ -10,7 +10,7 @@ class Base extends React.Component {
 				action={this.props.action}
 				conditions={[
 					{
-						resource: '111',
+						resource: '',
 					},
 				]}
 				triggerType="all"
@@ -19,4 +19,4 @@ class Base extends React.Component {
 	}
 }
 
-export default Base;
+export default Initial;

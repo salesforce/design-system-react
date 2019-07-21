@@ -1,8 +1,8 @@
 import React from 'react';
 import Example from './example';
 
-class Base extends React.Component {
-	static displayName = 'ExpressionResourceSelectedExample';
+class MultipleConditions extends React.Component {
+	static displayName = 'ExpressionMultipleConditionsExample';
 
 	render() {
 		return (
@@ -12,11 +12,14 @@ class Base extends React.Component {
 					{
 						resource: '111',
 					},
+					{
+						resource: '112',
+					},
 				]}
-				triggerType="all"
+				triggerType="any"
 			/>
 		);
 	}
 }
 
-export default Base;
+export default MultipleConditions;

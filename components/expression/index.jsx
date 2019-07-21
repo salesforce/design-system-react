@@ -48,7 +48,6 @@ const propTypes = {
 		PropTypes.string,
 	]),
 
-
 	triggerType: PropTypes.oneOf(['all', 'any', 'custom', 'always', 'formula']),
 
 	customLogicValue: PropTypes.string,
