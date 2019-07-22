@@ -60,6 +60,8 @@ import Button from '@salesforce/design-system-react/components/button';
 }
 ```
 
+The current preset version is only compatible with Babel 6. Please see this [issue comment for Babel 7](https://github.com/salesforce/design-system-react/issues/1621#issuecomment-513590273).
+
 ### Styling
 
 This library does not contain any Cascading Style Sheets (CSS). You will need to add `<link rel="stylesheet" type="text/css" href="/node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css" />` to your page and serve that file from a publicly available folder.
