@@ -11,7 +11,8 @@
 
 // If you are looking for DOM markup snapshots, see story-based-tests.dom-snapshot-test.js
 
-import initStoryshots, { imageSnapshot } from '@storybook/addon-storyshots';
+import initStoryshots from '@storybook/addon-storyshots';
+import { imageSnapshot } from '@storybook/addon-storyshots-puppeteer';
 import express from 'express';
 import path from 'path';
 

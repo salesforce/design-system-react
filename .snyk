@@ -1,0 +1,13 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  'snyk:lic:npm:axe-core:MPL-2.0':
+    - '*':
+        reason: devtool
+        expires: 2029-06-16T00:29:25.488Z
+  'snyk:lic:npm:axe-puppeteer:MPL-2.0':
+    - '*':
+        reason: devtool
+        expires: 2029-06-16T00:29:25.488Z
+patch: {}
