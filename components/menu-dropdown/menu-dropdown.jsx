@@ -942,12 +942,6 @@ class MenuDropdown extends React.Component {
 				offset={this.props.offset}
 				onClose={this.handleClose}
 				onKeyDown={this.handleKeyDown}
-				onMouseEnter={
-					this.props.openOn === 'hover' ? this.handleMouseEnter : null
-				}
-				onMouseLeave={
-					this.props.openOn === 'hover' ? this.handleMouseLeave : null
-				}
 				outsideClickIgnoreClass={outsideClickIgnoreClass}
 				position={menuPosition}
 				style={this.props.menuStyle}
