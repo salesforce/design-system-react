@@ -1,0 +1,13 @@
+{
+    "component": "button-group",
+    "status": "prod",
+    "display-name": "Button Groups",
+	"classKey": "ButtonGroup",
+    "SLDS-component-path": "/components/button-group",
+	"site-stories": [
+		"/__examples__/more-icon.jsx",
+		"/__examples__/icon-group.jsx",
+		"/__examples__/list-variant.jsx"
+	],
+    "url-slug": "button-groups"
+}

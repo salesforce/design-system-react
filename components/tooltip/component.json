@@ -1,0 +1,14 @@
+{
+    "component": "tooltip",
+    "status": "prod",
+    "display-name": "Tooltips",
+	"classKey": "Tooltip",
+    "SLDS-component-path": "/components/tooltips",
+	"site-stories": [
+		"/__examples__/base.jsx",
+		"/__examples__/button.jsx",
+		"/__examples__/button-group.jsx",
+		"/__examples__/learn-more.jsx"
+	],
+    "url-slug": "tooltips"
+}

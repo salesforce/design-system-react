@@ -80,8 +80,8 @@ export CardFilter from './card/filter';
 export SLDSCarousel from './carousel';
 export Carousel from './carousel';
 
-export SLDSCheckbox from './forms/checkbox';
-export Checkbox from './forms/checkbox';
+export SLDSCheckbox from './checkbox';
+export Checkbox from './checkbox';
 
 export SLDSColorPicker from './color-picker';
 export ColorPicker from './color-picker';
@@ -89,19 +89,24 @@ export ColorPicker from './color-picker';
 export SLDSCombobox from './combobox';
 export Combobox from './combobox';
 
+export SLDSComboboxFilterAndLimit from './combobox/filter';
+export comboboxFilterAndLimit from './combobox/filter';
+export comboboxAddSubheadings from './combobox/add-subheadings';
+
 export SLDSExpandableSection from './expandable-section';
 export ExpandableSection from './expandable-section';
 
 export SLDSFiles from './files';
 export Files from './files';
+export SLDSFilesFile from './files/file';
+export FilesFile from './files/file';
+export SLDSFilesMoreFiles from './files/more-files';
+export FilesMoreFiles from './files/more-files';
+
 export SLDSFile from './files/file';
 export File from './files/file';
 export SLDSMoreFiles from './files/more-files';
 export MoreFiles from './files/more-files';
-
-export SLDSComboboxFilterAndLimit from './combobox/filter';
-export comboboxFilterAndLimit from './combobox/filter';
-export comboboxAddSubheadings from './combobox/add-subheadings';
 
 export SLDSGlobalHeader from './global-header';
 export GlobalHeader from './global-header';
@@ -139,6 +144,12 @@ export GlobalNavigationBar from './global-navigation-bar';
 export SLDSGlobalNavigationBarRegion from './global-navigation-bar/region';
 export GlobalNavigationBarRegion from './global-navigation-bar/region';
 
+export SLDSGlobalNavigationBarButton from './global-navigation-bar/button';
+export GlobalNavigationBarButton from './global-navigation-bar/button';
+
+export SLDSGlobalNavigationBarLabel from './global-navigation-bar/label';
+export GlobalNavigationBarLabel from './global-navigation-bar/label';
+
 export SLDSGlobalNavigationBarLink from './global-navigation-bar/link';
 export GlobalNavigationBarLink from './global-navigation-bar/link';
 
@@ -162,6 +173,8 @@ export DataTableRowActions from './data-table/row-actions';
 
 export SLDSDatepicker from './date-picker';
 export Datepicker from './date-picker';
+export SLDSDatePicker from './date-picker';
+export DatePicker from './date-picker';
 
 export SLDSIcon from './icon';
 export Icon from './icon';
@@ -181,6 +194,8 @@ export InlineEdit from './forms/input/inline';
 
 export SLDSInput from './input';
 export Input from './input';
+export SLDSInputSearch from './input/search';
+export InputSearch from './input/search';
 
 export SLDSSearch from './input/search';
 export Search from './input/search';
@@ -201,6 +216,10 @@ export SLDSMediaObject from './media-object';
 export MediaObject from './media-object';
 
 export SLDSMenuDropdown from './menu-dropdown';
+export MenuDropdown from './menu-dropdown';
+export SLDSMenuDropdownButtonTrigger from './menu-dropdown/button-trigger';
+export MenuDropdownButtonTrigger from './menu-dropdown/button-trigger';
+
 export Dropdown from './menu-dropdown';
 export SLDSDropdownTrigger from './menu-dropdown/button-trigger';
 export DropdownTrigger from './menu-dropdown/button-trigger';
@@ -301,6 +320,8 @@ export Textarea from './textarea';
 
 export SLDSTimepicker from './time-picker';
 export Timepicker from './time-picker';
+export SLDSTimePicker from './time-picker';
+export TimePicker from './time-picker';
 
 export SLDSTabs from './tabs';
 export Tabs from './tabs';
