@@ -6,10 +6,10 @@
 /* eslint-disable import/no-unresolved */
 
 const documentationSiteLiveExamples = {
-	'accordion': [
+	accordion: [
 		require('raw-loader!@salesforce/design-system-react/components/accordion/__examples__/base.jsx'),
 	],
-	'alert': [
+	alert: [
 		require('raw-loader!@salesforce/design-system-react/components/alert/__examples__/info.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/alert/__examples__/warning.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/alert/__examples__/offline.jsx'),
@@ -19,7 +19,7 @@ const documentationSiteLiveExamples = {
 	'app-launcher': [
 		require('raw-loader!@salesforce/design-system-react/components/app-launcher/__examples__/default.jsx'),
 	],
-	'avatar': [
+	avatar: [
 		require('raw-loader!@salesforce/design-system-react/components/avatar/__examples__/base.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/avatar/__examples__/user-initials.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/avatar/__examples__/user-icon.jsx'),
@@ -33,7 +33,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/large.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/no-image.jsx'),
 	],
-	'breadcrumb': [
+	breadcrumb: [
 		require('raw-loader!@salesforce/design-system-react/components/breadcrumb/__examples__/base.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/breadcrumb/__examples__/one-item.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/breadcrumb/__examples__/base-with-overflow-menu.jsx'),
@@ -54,20 +54,20 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/button-stateful/__examples__/icon.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/button-stateful/__examples__/icon-text.jsx'),
 	],
-	'button': [
+	button: [
 		require('raw-loader!@salesforce/design-system-react/components/button/__examples__/base-neutral.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/button/__examples__/brand-disabled-destructive-inverse.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/button/__examples__/button-icons.jsx'),
 	],
-	'card': [
+	card: [
 		require('raw-loader!@salesforce/design-system-react/components/card/__examples__/related-list-with-table.jsx'),
 	],
-	'carousel': [
+	carousel: [
 		require('raw-loader!@salesforce/design-system-react/components/carousel/__examples__/three-items.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/carousel/__examples__/default.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/carousel/__examples__/default-with-navigation.jsx'),
 	],
-	'checkbox': [
+	checkbox: [
 		require('raw-loader!@salesforce/design-system-react/components/checkbox/__examples__/default.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/checkbox/__examples__/error.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/checkbox/__examples__/toggle.jsx'),
@@ -75,7 +75,7 @@ const documentationSiteLiveExamples = {
 	'color-picker': [
 		require('raw-loader!@salesforce/design-system-react/components/color-picker/__examples__/default.jsx'),
 	],
-	'combobox': [
+	combobox: [
 		require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/base.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/base-menu-subheader.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/base-inherit-menu-width.jsx'),
@@ -116,7 +116,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/expandable-section/__examples__/controlled.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/expandable-section/__examples__/non-collapsible.jsx'),
 	],
-	'files': [
+	files: [
 		require('raw-loader!@salesforce/design-system-react/components/files/__examples__/default.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/files/__examples__/crops.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/files/__examples__/loading.jsx'),
@@ -125,7 +125,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/files/__examples__/no-image.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/files/__examples__/actions.jsx'),
 	],
-	'filter': [
+	filter: [
 		require('raw-loader!@salesforce/design-system-react/components/filter/__examples__/default.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/filter/__examples__/new.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/filter/__examples__/error.jsx'),
@@ -137,19 +137,19 @@ const documentationSiteLiveExamples = {
 	'global-navigation-bar': [
 		require('raw-loader!@salesforce/design-system-react/components/global-navigation-bar/__examples__/default.jsx'),
 	],
-	'icon': [
+	icon: [
 		require('raw-loader!@salesforce/design-system-react/components/icon/__examples__/categories.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/icon/__examples__/colors.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/icon/__examples__/sizes.jsx'),
 	],
-	'illustration': [
+	illustration: [
 		require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/small-image-text.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/large-image-text.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/heading-message.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/heading-only.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/message-only.jsx'),
 	],
-	'input': [
+	input: [
 		require('raw-loader!@salesforce/design-system-react/components/input/__examples__/default.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/input/__examples__/icons.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/input/__examples__/error.jsx'),
@@ -170,7 +170,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/custom-trigger.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/checkmark.jsx'),
 	],
-	'modal': [
+	modal: [
 		require('raw-loader!@salesforce/design-system-react/components/modal/__examples__/menu-contents.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/modal/__examples__/header-footer.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/modal/__examples__/taglines.jsx'),
@@ -183,7 +183,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/page-header/__examples__/related-list.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/page-header/__examples__/setup.jsx'),
 	],
-	'panel': [
+	panel: [
 		require('raw-loader!@salesforce/design-system-react/components/panel/__examples__/filtering.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/panel/__examples__/filtering-locked.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/panel/__examples__/filtering-error.jsx'),
@@ -194,11 +194,11 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/pill-container/__examples__/avatars.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/pill-container/__examples__/bare.jsx'),
 	],
-	'pill': [
+	pill: [
 		require('raw-loader!@salesforce/design-system-react/components/pill/__examples__/base.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/pill/__examples__/icon.jsx'),
 	],
-	'popover': [
+	popover: [
 		require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/header.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/alternative-header.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/controlled-with-footer.jsx'),
@@ -235,7 +235,7 @@ const documentationSiteLiveExamples = {
 	'radio-group': [
 		require('raw-loader!@salesforce/design-system-react/components/radio-group/__examples__/base.jsx'),
 	],
-	'radio': [
+	radio: [
 		require('raw-loader!@salesforce/design-system-react/components/radio/__examples__/default.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/radio/__examples__/disabled.jsx'),
 	],
@@ -249,14 +249,14 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/setup-assistant/__examples__/hub-expandable-steps.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/setup-assistant/__examples__/card.jsx'),
 	],
-	'slider': [
+	slider: [
 		require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/base.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/disabled.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/error.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/sizes.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/slider/__examples__/vertical.jsx'),
 	],
-	'spinner': [
+	spinner: [
 		require('raw-loader!@salesforce/design-system-react/components/spinner/__examples__/default.jsx'),
 	],
 	'split-view': [
@@ -265,11 +265,11 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/external-state.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/custom-item-list.jsx'),
 	],
-	'tabs': [
+	tabs: [
 		require('raw-loader!@salesforce/design-system-react/components/tabs/__examples__/default.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/tabs/__examples__/scoped.jsx'),
 	],
-	'textarea': [
+	textarea: [
 		require('raw-loader!@salesforce/design-system-react/components/textarea/__examples__/default.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/textarea/__examples__/error.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/textarea/__examples__/disabled.jsx'),
@@ -277,20 +277,20 @@ const documentationSiteLiveExamples = {
 	'time-picker': [
 		require('raw-loader!@salesforce/design-system-react/components/time-picker/__examples__/default.jsx'),
 	],
-	'toast': [
+	toast: [
 		require('raw-loader!@salesforce/design-system-react/components/toast/__examples__/info.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/toast/__examples__/success.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/toast/__examples__/warning.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/toast/__examples__/error.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/toast/__examples__/error-with-details.jsx'),
 	],
-	'tooltip': [
+	tooltip: [
 		require('raw-loader!@salesforce/design-system-react/components/tooltip/__examples__/base.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/tooltip/__examples__/button.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/tooltip/__examples__/button-group.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/tooltip/__examples__/learn-more.jsx'),
 	],
-	'tree': [
+	tree: [
 		require('raw-loader!@salesforce/design-system-react/components/tree/__examples__/default.jsx'),
 	],
 	'trial-bar': [

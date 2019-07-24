@@ -155,7 +155,11 @@ const generateSiteStoriesListings = (config) => {
 		config['site-stories'] &&
 		config['site-stories'].length > 0
 	) {
-		additions = `\t'${config.component}': [\n`;
+		additions = `\t${
+			config.component.search(/-/g) >= 0
+				? `'${config.component}'`
+				: config.component
+		}: [\n`;
 
 		config['site-stories'].forEach((storyPath) => {
 			additions += `\t\trequire('raw-loader!@salesforce/design-system-react/components/${
@@ -198,5 +202,5 @@ fs.writeFileSync(
 );
 fs.writeFileSync(
 	path.join(__dirname, '../package.json'),
-	JSON.stringify(packageJsonFile, null, '\t')
+	`${JSON.stringify(packageJsonFile, null, '\t')}\n`
 );
