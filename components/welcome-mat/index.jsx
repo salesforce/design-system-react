@@ -218,6 +218,9 @@ class WelcomeMat extends React.Component {
 				<div
 					className={classNames(
 						'slds-welcome-mat',
+						{
+							'slds-welcome-mat_info-only': this.props.variant === 'info-only',
+						},
 						this.props.children ? null : 'slds-welcome-mat_splash'
 					)}
 					id={this.getId()}
