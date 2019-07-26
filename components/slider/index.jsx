@@ -178,7 +178,9 @@ class Slider extends React.Component {
 							<span className="slds-slider-label__label">{labelText}</span>
 						) : null}
 						<span className="slds-slider-label__range">
-							{this.props.min} - {this.props.max}
+							{this.props.min}
+							{' - '}
+							{this.props.max}
 						</span>
 					</span>
 				</label>

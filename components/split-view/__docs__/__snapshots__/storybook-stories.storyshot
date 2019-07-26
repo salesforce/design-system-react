@@ -420,7 +420,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                   className="slds-assistive-text"
                 >
                   Sorted by
-                  :
+                  : 
                 </span>
                 <span>
                   Lead Score
@@ -439,8 +439,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                 <span
                   className="slds-assistive-text"
                 >
-                  -
-                   
+                  - 
                   Descending
                 </span>
               </span>
@@ -1274,7 +1273,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                   className="slds-assistive-text"
                 >
                   Sorted by
-                  :
+                  : 
                 </span>
                 <span>
                   Lead Score
@@ -1293,8 +1292,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                 <span
                   className="slds-assistive-text"
                 >
-                  -
-                   
+                  - 
                   Descending
                 </span>
               </span>
@@ -2127,7 +2125,7 @@ exports[`DOM snapshots SLDSSplitView Custom List 1`] = `
                   className="slds-assistive-text"
                 >
                   Sorted by
-                  :
+                  : 
                 </span>
                 <span>
                   Lead Score
@@ -2146,8 +2144,7 @@ exports[`DOM snapshots SLDSSplitView Custom List 1`] = `
                 <span
                   className="slds-assistive-text"
                 >
-                  -
-                   
+                  - 
                   Descending
                 </span>
               </span>
@@ -2744,7 +2741,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                     className="slds-assistive-text"
                   >
                     Sorted by
-                    :
+                    : 
                   </span>
                   <span>
                     Lead Score
@@ -2763,8 +2760,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                   <span
                     className="slds-assistive-text"
                   >
-                    -
-                     
+                    - 
                     Descending
                   </span>
                 </span>
