@@ -85,9 +85,11 @@ class VerticalNavigation extends React.Component {
 	getId = () => this.props.id || this.generatedId;
 
 	getQuickfinder = (props) => {
-		const className = classNames(props.className, 'slds-p-horizontal_large');
-		props = { ...props, className };
-		return <Search {...props} />;
+		const newProps = {
+			...props,
+			className: classNames(props.className, 'slds-p-horizontal_large'),
+		};
+		return <Search {...newProps} />;
 	};
 
 	getSelectedId = () => {

@@ -784,7 +784,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Quickfind 1`] = `
           </svg>
           <input
             className="slds-input"
-            id="qf7sponVLItv"
+            id="vertical-nav-quick-find"
             onChange={[Function]}
             onKeyDown={null}
             placeholder="Quick Find"

@@ -43,7 +43,9 @@ class Example extends React.Component {
 						id="sample-navigation"
 						categories={sampleReportCategories}
 						selectedId={this.state.selectedId}
-						quickfind={<Search placeholder="Quick Find" />}
+						quickfind={
+							<Search placeholder="Quick Find" id="vertical-nav-quick-find" />
+						}
 						onSelect={(event, data) => {
 							this.setState({ selectedId: data.item.id });
 							if (this.props.action) {
