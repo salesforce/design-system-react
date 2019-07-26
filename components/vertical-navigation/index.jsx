@@ -123,6 +123,7 @@ class VerticalNavigation extends React.Component {
 							<ul key={categoryId}>
 								{category.items.map((item) => (
 									<Item
+										assistiveText={item.assistiveText}
 										key={item.id}
 										item={item}
 										isSelected={item.id === selectedId}

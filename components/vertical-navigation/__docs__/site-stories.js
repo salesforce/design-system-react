@@ -7,6 +7,8 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/default.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/compact.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/shaded.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/notification.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/icon.jsx'),
 ];
 
 module.exports = siteStories;
