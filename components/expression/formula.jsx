@@ -6,6 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import assign from 'lodash.assign';
+import ContentEditable from 'react-contenteditable';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
@@ -33,32 +34,45 @@ const propTypes = {
 		PropTypes.string,
 	]),
 
+	events: PropTypes.shape({
+		onChangeTextEditor: PropTypes.func,
+		onClickHelp: PropTypes.func,
+		onClickCheckSyntax: PropTypes.func
+	}),
+
 	labels: PropTypes.shape({
 		label: PropTypes.string,
 		checkSyntax: PropTypes.string,
+		composeFormula: PropTypes.string,
+		textArea: PropTypes.string
 	}),
 
 	resourceCombobox: PropTypes.node,
 	functionCombobox: PropTypes.node,
 	operatorInput: PropTypes.node,
-
-	onClickHelp: PropTypes.func,
-	onClickCheckSyntax: PropTypes.func,
+	textEditorValue: PropTypes.node,
 };
 
 const defaultProps = {
 	labels: {
 		label: 'Formula',
 		checkSyntax: 'Check Syntax',
+		composeFormula: 'Compose Formula',
+		textArea: 'Text Area'
 	},
 };
 /**
  * Expression Formula Component
  */
 class ExpressionFormula extends React.Component {
-	componentWillMount() {
+	constructor() {
+		super();
+		this.textEditorRef = React.createRef();
+		this.state = {
+			textEditorValue: 'Compose formula...'	// default is set here to preserve functionality if not controlled by props.textEditorValue
+		};
 		this.generatedId = shortid.generate();
-	}
+	};
 
 	/**
 	 * Get the Expression Condition's HTML id. Generate a new one if no ID present.
@@ -66,6 +80,18 @@ class ExpressionFormula extends React.Component {
 	getId() {
 		return this.props.id || this.generatedId;
 	}
+
+	handleTextEditorChange = (event) => {
+		const textEditorValue = event.target.value;
+
+		if (this.props.textEditorValue === undefined) {
+			this.setState({ textEditorValue });
+		}
+
+		if (this.props.events && this.props.events.onChangeTextEditor) {
+			this.props.events.onChangeTextEditor(event, { textEditorValue });
+		}
+	};
 
 	render() {
 		const assistiveText = assign(
@@ -108,17 +134,19 @@ class ExpressionFormula extends React.Component {
 											variant="icon"
 											iconCategory="utility"
 											iconName="help"
-											onClick={this.props.onClickHelp}
+											onClick={this.props.events.onClickHelp}
 										/>
 									</div>
 								</div>
 								<div className="slds-rich-text-editor__textarea slds-grid">
-									<div
-										aria-label="Compose formula"
+									<ContentEditable
+										aria-label={this.props.labels.textArea}
 										className="slds-rich-text-area__content slds-text-color_weak slds-grow"
-									>
-										Compose formula...
-									</div>
+										innerRef={this.textEditorRef}
+										html={this.props.textEditorValue !== undefined ? this.props.textEditorValue : this.state.textEditorValue}
+										onChange={this.handleTextEditorChange}
+									 	disabled={false}
+									/>
 								</div>
 							</div>
 						</div>
@@ -128,7 +156,7 @@ class ExpressionFormula extends React.Component {
 					<Button
 						variant="neutral"
 						label={labels.checkSyntax}
-						onClick={this.props.onClickCheckSyntax}
+						onClick={this.props.events.onClickCheckSyntax}
 					/>
 				</div>
 			</>

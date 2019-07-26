@@ -215,8 +215,20 @@ class Example extends React.Component {
 									variant="inline-listbox"
 								/>
 							}
-							onClickCheckSyntax={() => console.log('Check Syntax')}
-							onClickHelp={() => console.log('Get Help')}
+							events={{
+								onClickCheckSyntax: () => log({
+									action: this.props.action,
+									event,
+									eventName: `Check Syntax Button Clicked`,
+									data: null
+								}),
+								onClickHelp: () => log({
+									action: this.props.action,
+									event,
+									eventName: `Get Help Button Clicked`,
+									data: null
+								}),
+							}}
 							functionCombobox={
 								<Combobox
 									labels={{
@@ -342,8 +354,20 @@ class Example extends React.Component {
 														variant="inline-listbox"
 													/>
 												}
-												onClickCheckSyntax={() => console.log('Check Syntax')}
-												onClickHelp={() => console.log('Get Help')}
+												events={{
+													onClickCheckSyntax: log({
+														action: this.props.action,
+														event,
+														eventName: `Check Syntax Button Clicked`,
+														data: null
+													}),
+													onClickHelp: log({
+														action: this.props.action,
+														event,
+														eventName: `Get Help Button Clicked`,
+														data: null
+													}),
+												}}
 												functionCombobox={
 													<Combobox
 														labels={{
