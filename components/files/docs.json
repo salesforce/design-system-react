@@ -1,0 +1,15 @@
+{
+	"component": "files",
+	"dependencies": [
+		{
+			"component": "file"
+		},
+		{
+			"component": "more-files"
+		}
+	],
+	"status": "prod",
+	"display-name": "Files",
+	"SLDS-component-path": "/components/files",
+	"url-slug": "files"
+}

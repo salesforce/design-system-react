@@ -11,6 +11,8 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
+import assign from 'lodash.assign';
+
 import Modal from '../modal';
 import ProgressBar from '../progress-bar';
 
@@ -32,7 +34,7 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * whether the modal is open
+	 * Whether the modal is open
 	 */
 	isOpen: PropTypes.bool,
 	/**
@@ -40,10 +42,12 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `title`: Title for the Welcome Mat
 	 * * `description`: Label for the radio input
+	 * * `unitsCompletedAfter`: Label for the radio input
 	 */
 	labels: PropTypes.shape({
 		title: PropTypes.string,
 		description: PropTypes.string,
+		unitsCompletedAfter: PropTypes.string,
 	}),
 	/**
 	 *	Variant of the WelcomeMat
@@ -59,6 +63,10 @@ const propTypes = {
 	 */
 	onRenderInfoActions: PropTypes.func,
 	/**
+	 * Callback to fire when modal is dismissed
+	 */
+	onRequestClose: PropTypes.func,
+	/**
 	 *  Accepts a single WelcomeMatInfoBadge component, to be used with the trailhead variant
 	 */
 	infoBadge: PropTypes.node,
@@ -69,6 +77,9 @@ const propTypes = {
 };
 
 const defaultProps = {
+	labels: {
+		unitsCompletedAfter: 'units completed',
+	},
 	variant: 'steps',
 	isOpen: true,
 };
@@ -112,6 +123,7 @@ class WelcomeMat extends React.Component {
 	}
 
 	render() {
+		const labels = assign({}, defaultProps.labels, this.props.labels);
 		const splash = (
 			<div
 				className={classNames(
@@ -124,10 +136,10 @@ class WelcomeMat extends React.Component {
 					className="slds-welcome-mat__info-title"
 					id={`${this.getId()}-label`}
 				>
-					{this.props.labels.title}
+					{labels.title}
 				</h2>
 				<div className="slds-welcome-mat__info-description slds-text-longform">
-					<p>{this.props.labels.description}</p>
+					<p>{labels.description}</p>
 				</div>
 				{this.props.variant === 'info-only' ||
 				this.props.variant === 'splash' ? (
@@ -166,22 +178,26 @@ class WelcomeMat extends React.Component {
 								: null}
 							{this.state.completedSteps !== this.state.totalSteps ||
 							this.props.variant !== 'trailhead-connected' ? (
-								<>
+								<React.Fragment>
 									{this.props.variant === 'trailhead-connected' ? (
 										<p>
-											{this.state.completedSteps}/{this.state.totalSteps} units
-											completed
+											{this.state.completedSteps}
+											{`/`}
+											{this.state.totalSteps}
+											{` ${labels.unitsCompletedAfter}`}
 										</p>
 									) : (
 										<p>
 											<strong>
-												{this.state.completedSteps}/{this.state.totalSteps}{' '}
-												units completed
+												{this.state.completedSteps}
+												{`/`}
+												{this.state.totalSteps}
+												{` ${labels.unitsCompletedAfter}`}
 											</strong>
 										</p>
 									)}
 									<ProgressBar value={this.state.progress} radius="circular" />
-								</>
+								</React.Fragment>
 							) : null}
 						</div>
 					</React.Fragment>
@@ -195,12 +211,16 @@ class WelcomeMat extends React.Component {
 					dialogLabelledBy: `${this.getId()}-label`,
 				}}
 				isOpen={this.props.isOpen}
+				onRequestClose={this.props.onRequestClose}
 				size="small"
 				id={`${this.getId()}-modal`}
 			>
 				<div
 					className={classNames(
 						'slds-welcome-mat',
+						{
+							'slds-welcome-mat_info-only': this.props.variant === 'info-only',
+						},
 						this.props.children ? null : 'slds-welcome-mat_splash'
 					)}
 					id={this.getId()}

@@ -1,5 +1,4 @@
 /* eslint-disable react/display-name */ import React from 'react';
-import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 import Default from '../__examples__/default';

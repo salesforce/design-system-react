@@ -16,6 +16,8 @@ import classNames from '../../utilities/class-names';
 // ## Children
 import UtilityIcon from '../utilities/utility-icon';
 
+import IconBackgrounds from '../../utilities/product-tokens/icon-backgrounds';
+
 import { ICON } from '../../utilities/constants';
 
 const defaultProps = {
@@ -40,9 +42,14 @@ const Icon = (props) => {
 		name,
 		path,
 		size,
-		style,
 		title,
+		productTheme,
 	} = props;
+
+	let { style } = props;
+	if (productTheme) {
+		style = { backgroundColor: IconBackgrounds[productTheme], ...style };
+	}
 	const assistiveText =
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
@@ -167,6 +174,19 @@ Icon.propTypes = {
 	 * Path to the icon. This will override any global icon settings
 	 */
 	path: PropTypes.string,
+	/**
+	 * Background theme color for the icon. **Only compatible with icon category `standard`**
+	 */
+	productTheme: PropTypes.oneOf([
+		'global-setup',
+		'service-cloud',
+		'industry-cloud',
+		'sales-cloud',
+		'commerce-cloud',
+		'community-cloud',
+		'marketing-cloud',
+		'quip',
+	]),
 	/**
 	 * Size of the icon. Visit [lightningdesignsystem.com/components/icons/#flavor-sizes](https://www.lightningdesignsystem.com/components/icons/#flavor-sizes)
 	 */

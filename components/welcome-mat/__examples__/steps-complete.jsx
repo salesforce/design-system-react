@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '~/components/button';
 import WelcomeMat from '~/components/welcome-mat';
 import WelcomeMatTile from '~/components/welcome-mat/tile';
 import Icon from '~/components/icon';
@@ -7,18 +8,32 @@ import IconSettings from '~/components/icon-settings';
 class Example extends React.Component {
 	static displayName = 'welcomeMatExample';
 
+	state = {
+		isOpen: this.props.isOpen || false,
+	};
+
+	toggleOpen = () => {
+		this.setState({ isOpen: !this.state.isOpen });
+	};
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
+				<Button
+					label="Open Steps Complete WelcomeMat"
+					onClick={this.toggleOpen}
+				/>
 				<div style={{ position: 'relative', height: '5rem' }}>
 					<div style={{ width: '20rem' }}>
 						<WelcomeMat
 							labels={{
 								title: 'The Lightning Experience is here!',
 								description:
-									'Welcome to Lightning Experience, the modern, beautiful user experience from Salesforce. With a sales-and service-centric mindset, we focused on reinventing the desktop environment to better support your business processes."',
+									'Welcome to Lightning Experience, the modern, beautiful user experience from Salesforce. With a sales-and service-centric mindset, we focused on reinventing the desktop environment to better support your business processes.',
 							}}
 							id="welcome-mat-steps-complete-example"
+							isOpen={this.state.isOpen}
+							onRequestClose={this.toggleOpen}
 							variant="steps"
 						>
 							<WelcomeMatTile
@@ -42,7 +57,7 @@ class Example extends React.Component {
 								description="Tap into case history or share notes with fellow agents—it all happens on the utility bar."
 								href="javascript:void(0);"
 								id="welcome-mat-steps-tile-3"
-								icon={<Icon category="utility" name="call" />}
+								icon={<Icon category="utility" name="upload" />}
 								isComplete
 							/>
 							<WelcomeMatTile
@@ -50,7 +65,7 @@ class Example extends React.Component {
 								description="Tailor your cases to your team&#x27;s workflow with custom list views."
 								href="javascript:void(0);"
 								id="welcome-mat-steps-tile-4"
-								icon={<Icon category="utility" name="upload" />}
+								icon={<Icon category="utility" name="magicwand" />}
 								isComplete
 							/>
 							<WelcomeMatTile

@@ -6,7 +6,6 @@ import IconSettings from '~/components/icon-settings';
 import Filter from '~/components/filter';
 
 import Combobox from '~/components/combobox';
-import Picklist from '~/components/menu-picklist';
 
 const options = {
 	'show-me': [

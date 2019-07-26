@@ -28,7 +28,6 @@ const excludeFromTests = {
 			'SLDSAvatar',
 			'SLDSBreadcrumb',
 			'SLDSCarousel',
-			'SLDSColorPicker',
 			'SLDSCombobox',
 			'SLDSDataTable',
 			'SLDSFilter',
@@ -46,7 +45,6 @@ const excludeFromTests = {
 			'SLDSSlider',
 			'SLDSSplitView',
 			'SLDSRadioButtonGroup',
-			'SLDSTabs',
 			'SLDSTimepicker',
 
 			'SLDSGlobalNavigationBar',

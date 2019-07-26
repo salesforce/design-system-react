@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import BuilderHeaderBase from '../__examples__/base';
 import BuilderHeaderBaseWithToolbar from '../__examples__/base-with-toolbar';

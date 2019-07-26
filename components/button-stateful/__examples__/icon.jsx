@@ -23,7 +23,7 @@ class Example extends React.Component {
 					assistiveText={{ icon: this.state.isActive ? 'liked' : 'not liked' }}
 					iconName="like"
 					iconSize="large"
-					variant="icon"
+					variant="icon-filled"
 				/>
 			</IconSettings>
 		);

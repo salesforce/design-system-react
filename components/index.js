@@ -92,6 +92,13 @@ export Combobox from './combobox';
 export SLDSExpandableSection from './expandable-section';
 export ExpandableSection from './expandable-section';
 
+export SLDSFiles from './files';
+export Files from './files';
+export SLDSFile from './files/file';
+export File from './files/file';
+export SLDSMoreFiles from './files/more-files';
+export MoreFiles from './files/more-files';
+
 export SLDSComboboxFilterAndLimit from './combobox/filter';
 export comboboxFilterAndLimit from './combobox/filter';
 export comboboxAddSubheadings from './combobox/add-subheadings';
@@ -224,6 +231,8 @@ export PanelFilterListHeading from './panel/filtering/list-heading';
 
 export SLDSPageHeader from './page-header';
 export PageHeader from './page-header';
+export SLDSPageHeaderControl from './page-header/control';
+export PageHeaderControl from './page-header/control';
 
 export SLDSPill from './pill';
 export Pill from './pill';
