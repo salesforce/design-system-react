@@ -57,10 +57,9 @@ const Item = (props) => {
 				{icon}
 				{props.item.label}
 				{props.item.notification && (
-					<span class="slds-badge slds-col_bump-left">
-						<span class="slds-assistive-text">:</span>
+					<span className="slds-badge slds-col_bump-left">
 						{props.item.notification}
-						<span class="slds-assistive-text">
+						<span className="slds-assistive-text">
 							{props.assistiveText.notificationLabel}
 						</span>
 					</span>
