@@ -632,20 +632,187 @@ exports[`DOM snapshots SLDSVerticalNavigation Notification 1`] = `
             >
               Recent
               <span
-                class="slds-badge slds-col_bump-left"
+                className="slds-badge slds-col_bump-left"
               >
-                <span
-                  class="slds-assistive-text"
-                >
-                  :
-                </span>
                 3
                 <span
-                  class="slds-assistive-text"
+                  className="slds-assistive-text"
                 >
                   New Value
                 </span>
               </span>
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="my_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Created by Me
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="private_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Private Reports
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="public_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Public Reports
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="all_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              All Reports
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="slds-nav-vertical__section"
+      >
+        <h2
+          className="slds-nav-vertical__title"
+          id="sample-navigation-folders"
+        >
+          Folders
+        </h2>
+        <ul>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-folders"
+              className="slds-nav-vertical__action"
+              data-id="my_folders"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Created by Me
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-folders"
+              className="slds-nav-vertical__action"
+              data-id="shared_folders"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Shared with Me
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-folders"
+              className="slds-nav-vertical__action"
+              data-id="all_folders"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              All Folders
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSVerticalNavigation Quickfind 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "width": "320px",
+      }
+    }
+  >
+    <nav
+      className="slds-nav-vertical"
+      id="sample-navigation"
+    >
+      <div
+        className="slds-form-element slds-p-horizontal_large"
+      >
+        <div
+          className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+        >
+          <svg
+            aria-hidden={true}
+            className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+            />
+          </svg>
+          <input
+            className="slds-input"
+            id="qf7sponVLItv"
+            onChange={[Function]}
+            onKeyDown={null}
+            placeholder="Quick Find"
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        className="slds-nav-vertical__section"
+      >
+        <h2
+          className="slds-nav-vertical__title"
+          id="sample-navigation-reports"
+        >
+          Reports
+        </h2>
+        <ul>
+          <li
+            className="slds-nav-vertical__item slds-is-active"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="recent_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Recent
             </a>
           </li>
           <li
