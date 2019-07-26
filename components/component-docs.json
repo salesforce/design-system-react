@@ -11961,6 +11961,23 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "progress": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `progress`: This is a visually hidden label for the percent of progress.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    progress: 'Progress',\n}",
+                    "computed": false
+                }
+            },
             "id": {
                 "type": {
                     "name": "string"
@@ -15221,7 +15238,7 @@
                 "required": false,
                 "description": "Content inside Tooltip.",
                 "defaultValue": {
-                    "value": "<span>Tooltip</span>",
+                    "value": "<span>{'Tooltip'}</span>",
                     "computed": false
                 }
             },
@@ -15675,18 +15692,24 @@
                     "value": {
                         "timeLeft": {
                             "name": "string",
-                            "description": "Amount of time left in trial, e.g. `30`",
                             "required": false
                         },
                         "timeLeftUnit": {
                             "name": "string",
-                            "description": "Unit of the amount of time left, e.g. `days`",
+                            "required": false
+                        },
+                        "timeLeftUnitAfter": {
+                            "name": "string",
                             "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "Renders the labels in the trial bar."
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `learnMoreAfter`: Amount of time left in trial, e.g. `30`\n* `learnMoreBefore`: Unit of the amount of time left, e.g. `days`\n* `timeLeftUnitAfter`: String after `timeLeftUnit`",
+                "defaultValue": {
+                    "value": "{\n    timeLeftUnitAfter: 'left in trial',\n}",
+                    "computed": false
+                }
             },
             "onRenderActions": {
                 "type": {
@@ -15716,6 +15739,18 @@
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
+                "returns": null
+            },
+            {
+                "name": "getQuickfinder",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "props",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -15794,6 +15829,13 @@
                 },
                 "required": false,
                 "description": "Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._"
+            },
+            "quickfind": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Object of type `Search` which is a type of `Input` to be passed for rendering quickfinder."
             }
         },
         "route": "vertical-navigation",
@@ -15967,11 +16009,19 @@
                         "description": {
                             "name": "string",
                             "required": false
+                        },
+                        "unitsCompletedAfter": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Weclome Mat labels for internationalization**\nThis object is merged with the default props object on every render.\n* `title`: Title for the Welcome Mat\n* `description`: Label for the radio input"
+                "description": "**Weclome Mat labels for internationalization**\nThis object is merged with the default props object on every render.\n* `title`: Title for the Welcome Mat\n* `description`: Label for the radio input\n* `unitsCompletedAfter`: Label for the radio input",
+                "defaultValue": {
+                    "value": "{\n    unitsCompletedAfter: 'units completed',\n}",
+                    "computed": false
+                }
             },
             "variant": {
                 "type": {
