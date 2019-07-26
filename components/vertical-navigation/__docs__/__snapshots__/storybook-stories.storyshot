@@ -436,6 +436,328 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSVerticalNavigation IconStory 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "width": "320px",
+      }
+    }
+  >
+    <nav
+      className="slds-nav-vertical"
+      id="sample-navigation"
+    >
+      <div
+        className="slds-nav-vertical__section"
+      >
+        <h2
+          className="slds-nav-vertical__title"
+          id="sample-navigation-reports"
+        >
+          Reports
+        </h2>
+        <ul>
+          <li
+            className="slds-nav-vertical__item slds-is-active"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="recent_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Recent
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="my_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Created by Me
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="private_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Private Reports
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="public_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Public Reports
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="all_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              All Reports
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="slds-nav-vertical__section"
+      >
+        <h2
+          className="slds-nav-vertical__title"
+          id="sample-navigation-folders"
+        >
+          Folders
+        </h2>
+        <ul>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-folders"
+              className="slds-nav-vertical__action"
+              data-id="my_folders"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              <span>
+                <svg
+                  aria-hidden="true"
+                  className="slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#open_folder"
+                  />
+                </svg>
+                
+              </span>
+              Created by Me
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-folders"
+              className="slds-nav-vertical__action"
+              data-id="shared_folders"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Shared with Me
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-folders"
+              className="slds-nav-vertical__action"
+              data-id="all_folders"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              All Folders
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSVerticalNavigation Notification 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "width": "320px",
+      }
+    }
+  >
+    <nav
+      className="slds-nav-vertical"
+      id="sample-navigation"
+    >
+      <div
+        className="slds-nav-vertical__section"
+      >
+        <h2
+          className="slds-nav-vertical__title"
+          id="sample-navigation-reports"
+        >
+          Reports
+        </h2>
+        <ul>
+          <li
+            className="slds-nav-vertical__item slds-is-active"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="recent_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Recent
+              <span
+                class="slds-badge slds-col_bump-left"
+              >
+                <span
+                  class="slds-assistive-text"
+                >
+                  :
+                </span>
+                3
+                <span
+                  class="slds-assistive-text"
+                >
+                  New Value
+                </span>
+              </span>
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="my_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Created by Me
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="private_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Private Reports
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="public_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Public Reports
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-reports"
+              className="slds-nav-vertical__action"
+              data-id="all_reports"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              All Reports
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="slds-nav-vertical__section"
+      >
+        <h2
+          className="slds-nav-vertical__title"
+          id="sample-navigation-folders"
+        >
+          Folders
+        </h2>
+        <ul>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-folders"
+              className="slds-nav-vertical__action"
+              data-id="my_folders"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Created by Me
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-folders"
+              className="slds-nav-vertical__action"
+              data-id="shared_folders"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              Shared with Me
+            </a>
+          </li>
+          <li
+            className="slds-nav-vertical__item"
+          >
+            <a
+              aria-describedby="sample-navigation-folders"
+              className="slds-nav-vertical__action"
+              data-id="all_folders"
+              href="javascript:void(0);"
+              onClick={[Function]}
+            >
+              All Folders
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSVerticalNavigation Shaded 1`] = `
 <div
   className="slds-p-around_medium"
