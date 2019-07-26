@@ -7,9 +7,10 @@ import { VERTICAL_NAVIGATION } from '../../../utilities/constants';
 
 import Compact from '../__examples__/compact';
 import Default from '../__examples__/default';
-import Shaded from '../__examples__/shaded';
 import IconStory from '../__examples__/icon';
 import Notification from '../__examples__/notification';
+import Quickfind from '../__examples__/quickfind';
+import Shaded from '../__examples__/shaded';
 import SnaphotDefault from '../__examples__/snapshot-default';
 
 storiesOf(VERTICAL_NAVIGATION, module)
@@ -22,5 +23,6 @@ storiesOf(VERTICAL_NAVIGATION, module)
 	.add('Compact', () => <Compact action={action} />)
 	.add('IconStory', () => <IconStory action={action} />)
 	.add('Notification', () => <Notification action={action} />)
+	.add('Quickfind', () => <Quickfind action={action} />)
 	.add('Shaded', () => <Shaded action={action} />)
 	.add('DOM Snapshot', () => <SnaphotDefault />);

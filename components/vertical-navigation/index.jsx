@@ -22,6 +22,7 @@ import componentDoc from './docs.json';
 import checkProps from './check-props';
 
 import { VERTICAL_NAVIGATION } from '../../utilities/constants';
+import Search from '../input/search';
 
 // Child components
 import Item from './private/item';
@@ -65,6 +66,10 @@ class VerticalNavigation extends React.Component {
 		 * Triggered when the selection changes. It receives an event and an item object in the shape: `event, {item: [object] }`. _Tested with Mocha framework._
 		 */
 		onSelect: PropTypes.func,
+		/**
+		 * Object of type `Search` which is a type of `Input` to be passed for rendering quickfinder.
+		 */
+		quickfind: PropTypes.node,
 	};
 
 	static defaultProps = {
@@ -78,6 +83,12 @@ class VerticalNavigation extends React.Component {
 	}
 
 	getId = () => this.props.id || this.generatedId;
+
+	getQuickfinder = (props) => {
+		const className = classNames(props.className, 'slds-p-horizontal_large');
+		props = { ...props, className };
+		return <Search {...props} />;
+	};
 
 	getSelectedId = () => {
 		const { categories } = this.props;
@@ -109,6 +120,8 @@ class VerticalNavigation extends React.Component {
 					this.props.className
 				)}
 			>
+				{this.props.quickfind &&
+					this.getQuickfinder(this.props.quickfind.props)}
 				{this.props.categories.map((category) => {
 					const categoryId = `${rootId}-${category.id}`;
 					const selectedId = this.getSelectedId();

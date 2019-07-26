@@ -86,6 +86,9 @@ Item.propTypes = {
 	 * Item to be rendered.
 	 */
 	item: PropTypes.shape({
+		/**
+		 * Object of type `Icon` can be passed for rendering.
+		 */
 		icon: PropTypes.node,
 		id: PropTypes.string.isRequired,
 		label: PropTypes.string.isRequired,
