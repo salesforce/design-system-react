@@ -500,11 +500,7 @@ class MenuDropdown extends React.Component {
 	};
 
 	setFocus = () => {
-		if (
-			(!this.isHover || this.props.openOn === 'hover') &&
-			!this.isUnmounting &&
-			this.trigger
-		) {
+		if (!this.isHover && !this.isUnmounting && this.trigger) {
 			ReactDOM.findDOMNode(this.trigger).focus(); // eslint-disable-line react/no-find-dom-node
 		}
 	};
@@ -647,6 +643,8 @@ class MenuDropdown extends React.Component {
 		}
 	};
 
+	// Special handlers for openOn === hover
+	// calling onClick inside onMouseEnter/Leave used to cause double clicking the trigger on hover which caused closing and reopening of the dropdown
 	handleCloseForHover = () => {
 		const isOpen = this.getIsOpen();
 		if (isOpen) {
@@ -679,12 +677,6 @@ class MenuDropdown extends React.Component {
 	};
 
 	handleFocus = (event) => {
-		const isOpen = this.getIsOpen();
-
-		if (!isOpen) {
-			// this.handleOpen();
-		}
-
 		if (this.props.onFocus) {
 			this.props.onFocus(event);
 		}
