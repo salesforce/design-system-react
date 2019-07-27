@@ -49,6 +49,7 @@ export const DATA_TABLE_ROW_ACTIONS = 'SLDSDataTableRowActions';
 export const DATA_TABLE_ROW = 'SLDSDataTableRow';
 export const DATE_PICKER = 'SLDSDatePicker';
 export const DEPRECATED_WARNING = 'SLDSDeprecatedWarning';
+export const DOCKED_COMPOSER = 'SLDSDockedComposer';
 export const DYNAMIC_ICON = 'SLDSDynamicIcon';
 export const DIALOG = 'SLDSDialog';
 export const FILES = 'SLDSFiles';
