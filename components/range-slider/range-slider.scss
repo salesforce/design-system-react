@@ -1,0 +1,30 @@
+.range-slider {
+  display: inline-block;
+  vertical-align: top;
+  &::-moz-range-track {
+    border-color: transparent;
+  }
+  &.original {
+    position: absolute;
+    &::-webkit-slider-thumb {
+      position: relative;
+      z-index: 2;
+    }
+    &::-moz-range-thumb {
+      transform: scale(1);
+      z-index: 1;
+    }
+  }
+  &.ghost {
+    position: relative;
+    background: var(--track-background);
+    --track-background: linear-gradient(to right, #ecebea var(--low), var(--range-color) 0, var(--range-color) var(--high), #ecebea 0);
+    --range-color: #{$color-brand-dark};
+    &::-webkit-slider-runnable-track {
+      background: var(--track-background);
+    }
+    &::-moz-range-track {
+      background: var(--track-background);
+    }
+  }
+}

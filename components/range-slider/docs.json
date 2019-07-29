@@ -1,0 +1,7 @@
+{
+    "component": "range-slider",
+    "status": "prod",
+    "display-name": "RangeSlider",
+    "SLDS-component-path": "/components/range-slider",
+    "url-slug": "range-slider"
+}
