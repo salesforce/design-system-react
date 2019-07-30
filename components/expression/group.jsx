@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// Implements the [Visual Picker design pattern](https://lightningdesignsystem.com/components/visual-picker/) in React.
+// Implements the [Expression Group design pattern](https://lightningdesignsystem.com/components/expression/) in React.
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -39,14 +39,16 @@ const propTypes = {
 	 */
 	children: PropTypes.node,
 	/**
-	 * CSS classes to be added to tag with `.slds-form-element`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 * CSS classes to be added to tag with `.slds-expression__group`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string,
 	]),
-
+	/*
+	 * Callbacks for various expression group events such as trigger-change, add condition etc
+	 */
 	events: PropTypes.shape({
 		onChangeTrigger: PropTypes.func,
 		onChangeCustomLogicValue: PropTypes.func,
@@ -68,6 +70,11 @@ const propTypes = {
 		customLogic: PropTypes.string,
 		label: PropTypes.string,
 		takeAction: PropTypes.string,
+		triggerAll: PropTypes.string,
+		triggerAlways: PropTypes.string,
+		triggerAny: PropTypes.string,
+		triggerCustom: PropTypes.string,
+		triggerFormula: PropTypes.string,
 	}),
 	/**
 	 * Whether the group is at root level
@@ -78,7 +85,7 @@ const propTypes = {
 	 */
 	triggerType: PropTypes.oneOf(['all', 'any', 'custom', 'always', 'formula']),
 	/**
-	 * Custom trigger logic for the Group, if the `triggerType` is set to custom
+	 * Sets the input for the custom logic value input box, shown if the `triggerType` is set to `custom`.
 	 */
 	customLogicValue: PropTypes.string,
 };
@@ -150,6 +157,9 @@ class ExpressionGroup extends React.Component {
 		];
 	}
 
+	/**
+	 *  Returns object of trigger from trigger passed as prop
+	 */
 	getTriggerSelection() {
 		const selection = this.props.triggerType;
 		const Triggers = this.getTriggers();

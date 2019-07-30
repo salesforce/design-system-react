@@ -5,7 +5,17 @@ class FormulaLogic extends React.Component {
 	static displayName = 'ExpressionWithFormulaLogicExample';
 
 	render() {
-		return <Example action={this.props.action} triggerType="formula" />;
+		return (
+			<Example
+				action={this.props.action}
+				conditions={[
+					{
+						resource: '',
+					},
+				]}
+				triggerType="formula"
+			/>
+		);
 	}
 }
 

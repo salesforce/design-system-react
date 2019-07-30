@@ -85,6 +85,12 @@ class Example extends React.Component {
 		this.setState({ conditions });
 	}
 
+	updateFormula(data, type) {
+		const { conditions } = this.state;
+		conditions[type] = data;
+		this.setState({ conditions });
+	}
+
 	addCondition() {
 		const { conditions } = this.state;
 		const newCondition = {
@@ -211,23 +217,53 @@ class Example extends React.Component {
 									labels={{
 										placeholder: 'Insert a Resource',
 									}}
+									multiple={false}
 									options={ResourcesList}
+									selection={
+										this.state.conditions.resource
+											? [
+													find(ResourcesList, {
+														id: this.state.conditions.resource,
+													}),
+												]
+											: []
+									}
+									events={{
+										onSelect: (event, data) => {
+											this.updateFormula(data.selection[0].id, 'resource');
+											log({
+												action: this.props.action,
+												event,
+												eventName: `Formula Resource Changed`,
+												data,
+											});
+										},
+									}}
 									variant="inline-listbox"
 								/>
 							}
 							events={{
-								onClickCheckSyntax: () => log({
-									action: this.props.action,
-									event,
-									eventName: `Check Syntax Button Clicked`,
-									data: null
-								}),
-								onClickHelp: () => log({
-									action: this.props.action,
-									event,
-									eventName: `Get Help Button Clicked`,
-									data: null
-								}),
+								onChangeTextEditor: (event, data) =>
+									log({
+										action: this.props.action,
+										event,
+										eventName: `Formula updated in Text Editor`,
+										data,
+									}),
+								onClickCheckSyntax: () =>
+									log({
+										action: this.props.action,
+										event,
+										eventName: `Check Syntax Button Clicked`,
+										data: null,
+									}),
+								onClickHelp: () =>
+									log({
+										action: this.props.action,
+										event,
+										eventName: `Get Help Button Clicked`,
+										data: null,
+									}),
 							}}
 							functionCombobox={
 								<Combobox
@@ -235,6 +271,26 @@ class Example extends React.Component {
 										placeholder: 'Insert a Function',
 									}}
 									options={ResourcesList}
+									selection={
+										this.state.conditions.function
+											? [
+													find(ResourcesList, {
+														id: this.state.conditions.function,
+													}),
+												]
+											: []
+									}
+									events={{
+										onSelect: (event, data) => {
+											this.updateFormula(data.selection[0].id, 'function');
+											log({
+												action: this.props.action,
+												event,
+												eventName: `Formula Function Changed`,
+												data,
+											});
+										},
+									}}
 									variant="inline-listbox"
 								/>
 							}
@@ -359,13 +415,13 @@ class Example extends React.Component {
 														action: this.props.action,
 														event,
 														eventName: `Check Syntax Button Clicked`,
-														data: null
+														data: null,
 													}),
 													onClickHelp: log({
 														action: this.props.action,
 														event,
 														eventName: `Get Help Button Clicked`,
-														data: null
+														data: null,
 													}),
 												}}
 												functionCombobox={

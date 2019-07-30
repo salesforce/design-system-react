@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// Implements the [Expression Condition design pattern](https://lightningdesignsystem.com/components/visual-picker/) in React.
+// Implements the [Expression Condition design pattern](https://lightningdesignsystem.com/components/expression/) in React.
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -19,7 +19,13 @@ import Input from '../input';
 import Button from '../button';
 
 const propTypes = {
+	/**
+	 *  **Assistive text for accessibility.**
+	 * * `title`: For users of assistive technology, title for the condition fieldset. Defaults to 'Condition'
+	 * * `deleteIcon`: For users of assistive technology, assistive text for the Delete Condition button's icon. Defaults to 'Delete Condition'
+	 */
 	assistiveText: PropTypes.shape({
+		title: PropTypes.string,
 		deleteIcon: PropTypes.string,
 	}),
 	/**
@@ -27,36 +33,87 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * CSS classes to be added to tag with `.slds-form-element`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 * CSS classes to be added to tag with `.slds-expression__row`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string,
 	]),
-
+	/*
+ * Callbacks for various expression condition events such as value change, delete etc
+ */
 	events: PropTypes.shape({
 		onChangeResource: PropTypes.func,
 		onChangeOperator: PropTypes.func,
 		onChangeValue: PropTypes.func,
 		onDelete: PropTypes.func,
 	}),
-
+	/**
+	 * **Text labels for internationalization**
+	 * This object is merged with the default props object on every
+	 * * `deleteCondition`: Title for the delete condition button. Defaults to "Delete Condition".
+	 * * `label`: Label for the condition, shown left-most in the row. Left empty on default.
+	 * * `operator`: Label for the operator selection dropdown. Defaults to "Operator"
+	 * * `resource`: Label for the resource selection dropdown. Defaults to "Resource"
+	 * * `value`: Label for the value input box. Defaults to "Value"
+	 */
 	labels: PropTypes.shape({
-		condition: PropTypes.string,
-		resource: PropTypes.string,
+		deleteCondition: PropTypes.string,
+		label: PropTypes.string,
 		operator: PropTypes.string,
+		resource: PropTypes.string,
 		value: PropTypes.string,
 	}),
-
+	/**
+	 * Controls whether the condition is a sub-condition inside a ExpressionGroup
+	 */
 	isSubCondition: PropTypes.bool,
-
+	/**
+	 * **Array of item objects that are options in the resource selection dropdown menu.**
+	 * Each object can contain:
+	 * * `id`: A unique identifier string.
+	 * * `label`: A primary string of text for a menu item.
+	 * ```
+	 * {
+	 * 	id: '1',
+	 * 	label: 'Resource 1',
+	 * },
+	 * ```
+	 * Note: The dropdown uses the Combobox Component, and `resourcesList` is
+	 * passed as `options` props to it, and hence shall also support more
+	 * custom objects. Please refer to the Combobox documentation.
+	 */
 	resourcesList: PropTypes.arrayOf(PropTypes.object),
+	/**
+	 *  Accepts an object from the `resourcesList` which needs to be selected
+	 *  for the resource dropdown menu,
+	 */
 	resourceSelected: PropTypes.object,
-
+	/**
+	 * **Array of item objects that are options in the operator selection dropdown menu.**
+	 * Each object can contain:
+	 * * `id`: A unique identifier string.
+	 * * `label`: A primary string of text for a menu item.
+	 * ```
+	 * {
+	 * 	id: '1',
+	 * 	label: 'Operator 1',
+	 * },
+	 * ```
+	 * Note: The dropdown uses the Combobox Component, and `operatorList` is
+	 * passed as `options` props to it, and hence shall also support more
+	 * custom objects. Please refer to the Combobox documentation.
+	 */
 	operatorsList: PropTypes.arrayOf(PropTypes.object),
+	/**
+	 *  Accepts an object from the `operatorSelected` which needs to be selected
+	 *  for the operator dropdown menu,
+	 */
 	operatorSelected: PropTypes.object,
-
+	/**
+	 *   Sets the input value for the value input.
+	 */
 	value: PropTypes.string,
 };
 
@@ -68,8 +125,8 @@ const defaultProps = {
 	isSubCondition: false,
 	labels: {
 		label: '',
-		resource: 'Resource',
 		operator: 'Operator',
+		resource: 'Resource',
 		value: 'Value',
 		deleteCondition: 'Delete Condition',
 	},

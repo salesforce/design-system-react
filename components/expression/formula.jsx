@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// Implements the [Expression Condition design pattern](https://lightningdesignsystem.com/components/visual-picker/) in React.
+// Implements the [Expression Formula design pattern](https://lightningdesignsystem.com/components/expression/) in React.
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -33,23 +33,42 @@ const propTypes = {
 		PropTypes.object,
 		PropTypes.string,
 	]),
-
+	/*
+	 * Callbacks for various expression formula events such as  onChange Text Editor, check syntax etc
+	 */
 	events: PropTypes.shape({
 		onChangeTextEditor: PropTypes.func,
 		onClickHelp: PropTypes.func,
-		onClickCheckSyntax: PropTypes.func
+		onClickCheckSyntax: PropTypes.func,
 	}),
-
+	/**
+	 * **Text labels for internationalization**
+	 * This object is merged with the default props object on every render.
+	 * * `label`: Label for the Expression Formula group.Defaults to "Formula"
+	 * * `checkSyntax`: Label for the Check Syntax Button. Defaults to "Check Syntax"
+	 * * `takeAction`: Label for the `triggerType` selector. Defaults to "Take Action When"
+	 * * `textArea`: Label for the `triggerType` selector. Defaults to "Take Action When"
+	 */
 	labels: PropTypes.shape({
 		label: PropTypes.string,
 		checkSyntax: PropTypes.string,
-		composeFormula: PropTypes.string,
-		textArea: PropTypes.string
+		textArea: PropTypes.string,
 	}),
-
+	/**
+	 *  Accepts a single combobox component, to select resource in the expression formula editor
+	 */
 	resourceCombobox: PropTypes.node,
+	/**
+	 *  Accepts a single combobox component, to select function in the expression formula editor
+	 */
 	functionCombobox: PropTypes.node,
+	/**
+	 *  Accepts a single input component, to enter operator in the expression formula editor
+	 */
 	operatorInput: PropTypes.node,
+	/**
+	 *  Value for the text editor in expression formula editor
+	 */
 	textEditorValue: PropTypes.node,
 };
 
@@ -57,8 +76,7 @@ const defaultProps = {
 	labels: {
 		label: 'Formula',
 		checkSyntax: 'Check Syntax',
-		composeFormula: 'Compose Formula',
-		textArea: 'Text Area'
+		textArea: 'Text Area',
 	},
 };
 /**
@@ -69,10 +87,10 @@ class ExpressionFormula extends React.Component {
 		super();
 		this.textEditorRef = React.createRef();
 		this.state = {
-			textEditorValue: 'Compose formula...'	// default is set here to preserve functionality if not controlled by props.textEditorValue
+			textEditorValue: 'Compose formula...', // default is set here to preserve functionality if not controlled by props.textEditorValue
 		};
 		this.generatedId = shortid.generate();
-	};
+	}
 
 	/**
 	 * Get the Expression Condition's HTML id. Generate a new one if no ID present.
@@ -143,9 +161,13 @@ class ExpressionFormula extends React.Component {
 										aria-label={this.props.labels.textArea}
 										className="slds-rich-text-area__content slds-text-color_weak slds-grow"
 										innerRef={this.textEditorRef}
-										html={this.props.textEditorValue !== undefined ? this.props.textEditorValue : this.state.textEditorValue}
+										html={
+											this.props.textEditorValue !== undefined
+												? this.props.textEditorValue
+												: this.state.textEditorValue
+										}
 										onChange={this.handleTextEditorChange}
-									 	disabled={false}
+										disabled={false}
 									/>
 								</div>
 							</div>

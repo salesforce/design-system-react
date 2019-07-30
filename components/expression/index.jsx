@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// Implements the [Visual Picker design pattern](https://lightningdesignsystem.com/components/visual-picker/) in React.
+// Implements the [Expression design pattern](https://lightningdesignsystem.com/components/expression/) in React.
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -23,21 +23,35 @@ const propTypes = {
 	 * ExpressionGroup accepts `ExpressionCondition` & `ExpressionGroup`
 	 */
 	children: PropTypes.node,
-
-	labels: PropTypes.shape({
-		title: PropTypes.string,
-		label: PropTypes.string,
-		customLogic: PropTypes.string,
-		takeAction: PropTypes.string,
-		addCondition: PropTypes.string,
-		addGroup: PropTypes.string,
-	}),
-
+	/*
+ * Callbacks for various expression events such as trigger change, add group etc
+ */
 	events: PropTypes.shape({
 		onChangeTrigger: PropTypes.func,
 		onAddGroup: PropTypes.func,
 		onAddCondition: PropTypes.func,
 		onChangeCustomLogicValue: PropTypes.func,
+	}),
+	/**
+	 * **Text labels for internationalization**
+	 * This object is merged with the default props object on every render.
+	 * * `addCondition`: Label for the Add Condition Button. Defaults to "Add Condition"
+	 * * `addGroup`: Label for the Add Group Button. Defaults to "Add Group"
+	 * * `customLogic`: Label for the text box for inputting `customLogicValue`, if the `triggerType` is `custom`. Defaults to "Custom Logic"
+	 * * `takeAction`: Label for the `triggerType` selector. Defaults to "Take Action When"
+	 * * `title` : Title for the Expression. Defaults to "Conditions"
+	 */
+	labels: PropTypes.shape({
+		addCondition: PropTypes.string,
+		addGroup: PropTypes.string,
+		customLogic: PropTypes.string,
+		takeAction: PropTypes.string,
+		title: PropTypes.string,
+		triggerAll: PropTypes.string,
+		triggerAlways: PropTypes.string,
+		triggerAny: PropTypes.string,
+		triggerCustom: PropTypes.string,
+		triggerFormula: PropTypes.string,
 	}),
 	/**
 	 * CSS classes to be added to tag with `.slds-expression`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
@@ -47,9 +61,13 @@ const propTypes = {
 		PropTypes.object,
 		PropTypes.string,
 	]),
-
+	/**
+	 * Sets the trigger type for the expression.
+	 */
 	triggerType: PropTypes.oneOf(['all', 'any', 'custom', 'always', 'formula']),
-
+	/**
+	 * Sets the input for the custom logic value input box, shown if the `triggerType` is set to `custom`.
+	 */
 	customLogicValue: PropTypes.string,
 };
 
