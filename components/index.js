@@ -95,6 +95,9 @@ export Expression from './expression';
 export SLDSExpressionCondition from './expression/condition';
 export ExpressionCondition from './expression/condition';
 
+export SLDSExpressionFormula from './expression/formula';
+export ExpressionFormula from './expression/formula';
+
 export SLDSExpressionGroup from './expression/group';
 export ExpressionGroup from './expression/group';
 

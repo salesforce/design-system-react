@@ -158,7 +158,7 @@ class ExpressionCondition extends React.Component {
 			<li
 				className={classNames(
 					`slds-expression__row`,
-					this.props.isSubCondition ? 'slds-expression__row_group' : null,
+					{ 'slds-expression__row_group': this.props.isSubCondition },
 					this.props.className
 				)}
 				id={this.getId()}

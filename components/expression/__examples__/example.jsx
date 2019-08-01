@@ -169,6 +169,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Expression
+					id="expression-example"
 					events={{
 						onChangeTrigger: (val) => {
 							log({
@@ -212,6 +213,7 @@ class Example extends React.Component {
 				>
 					{this.state.triggerType === 'formula' ? (
 						<ExpressionFormula
+							id="expression-formula"
 							resourceCombobox={
 								<Combobox
 									labels={{
@@ -309,6 +311,7 @@ class Example extends React.Component {
 									<ExpressionCondition
 										/* eslint-disable-next-line react/no-array-index-key */
 										key={i}
+										id={`expression-condition-${i}`}
 										labels={{
 											label: Example.getTriggerType(i, this.state.triggerType),
 										}}
@@ -364,6 +367,7 @@ class Example extends React.Component {
 									<ExpressionGroup
 										/* eslint-disable-next-line react/no-array-index-key */
 										key={i}
+										id={`expression-group-${i}`}
 										labels={{
 											label: Example.getTriggerType(i, this.state.triggerType),
 										}}
@@ -401,6 +405,7 @@ class Example extends React.Component {
 									>
 										{condition.triggerType === 'formula' ? (
 											<ExpressionFormula
+												id={`expression-group-${i}-formula`}
 												resourceCombobox={
 													<Combobox
 														labels={{
@@ -446,6 +451,7 @@ class Example extends React.Component {
 												<ExpressionCondition
 													/* eslint-disable-next-line react/no-array-index-key */
 													key={j}
+													id={`expression-group-${i}-condition-${j}`}
 													isSubCondition
 													labels={{
 														label: Example.getTriggerType(

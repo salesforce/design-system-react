@@ -78,7 +78,9 @@ const defaultProps = {
 };
 
 /**
- * Expression Component
+ * Expression builders help users declaratively construct logical expressions.
+ * These expressions can be used when querying for a filtered set of records,
+ * creating rules to control when something executes, or any other conditional logic.
  */
 class Expression extends React.Component {
 	componentWillMount() {
