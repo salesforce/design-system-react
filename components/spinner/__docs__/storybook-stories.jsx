@@ -8,7 +8,7 @@ import Default from '../__examples__/default';
 const getSpinner = (props) => <Spinner {...props} />;
 
 const inverseContainerStyle = {
-	backgroundColor: '#4bca81',
+	backgroundColor: '#16325c',
 	position: 'absolute',
 	width: '100%',
 	height: '100%',
