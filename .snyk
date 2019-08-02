@@ -10,4 +10,16 @@ ignore:
     - '*':
         reason: devtool
         expires: 2029-06-16T00:29:25.488Z
+  SNYK-JS-LODASHMERGE-173732:
+    - jest-axe > lodash.merge:
+        reason: None given
+        expires: '2019-09-01T20:52:27.743Z'
+  SNYK-JS-LODASHMERGE-173733:
+    - jest-axe > lodash.merge:
+        reason: None given
+        expires: '2019-09-01T20:52:27.743Z'
+  'npm:chownr:20180731':
+    - chownr:
+        reason: None given
+        expires: '2019-09-01T21:03:30.863Z'
 patch: {}
