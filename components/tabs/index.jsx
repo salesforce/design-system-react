@@ -37,8 +37,8 @@ import EventUtil from '../../utilities/event';
 // Determine if a node from event.target is a Tab element
 function isTabNode(node) {
 	return (
-		(node.nodeName === 'A' && node.getAttribute('role') === 'tab') ||
-		(node.nodeName === 'LI' && node.getAttribute('role') === 'presentation')
+		(node.nodeName === 'A' && node.getAttribute('role') === 'tab')// ||
+		// (node.nodeName === 'LI' && node.getAttribute('role') === 'presentation')
 	);
 }
 
