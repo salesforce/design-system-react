@@ -9,6 +9,9 @@ import classNames from 'classnames';
 
 import Icon from '../icon';
 
+import componentDoc from './docs.json';
+import checkProps from './check-props';
+
 import { SCOPED_NOTIFICATION } from '../../utilities/constants';
 
 const propTypes = {
@@ -21,24 +24,31 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
+	 *  The icon to be displayed in the scoped notification. Accepts an `Icon` component
+	 */
+	icon: PropTypes.node,
+	/**
 	 *  Theme for the scoped notification
 	 */
 	theme: PropTypes.oneOf(['dark', 'light']),
-	/**
-	 *  Icon for the scoped notification. This is currently limited to the utility set of icons.
-	 */
-	iconName: PropTypes.string,
 };
 
-const defaultProps = {
-	iconName: 'info',
-};
+const defaultProps = {};
 
 /**
  * A Scoped Notification Component serve advisory information for the user that is not important enough to justify an alert.
  */
 class ScopedNotification extends React.Component {
+	constructor(props) {
+		super(props);
+		checkProps(SCOPED_NOTIFICATION, props, componentDoc);
+	}
+
 	render() {
+		// For backwards compatibility
+		const iconAssistiveText =
+			(this.props.assistiveText && this.props.assistiveText.icon) || 'Info';
+
 		return (
 			<div
 				className={classNames(
@@ -54,15 +64,19 @@ class ScopedNotification extends React.Component {
 				role="status"
 			>
 				<div className="slds-media__figure">
-					<Icon
-						assistiveText={{
-							icon: this.props.assistiveText && this.props.assistiveText.icon,
-						}}
-						category="utility"
-						name={this.props.iconName}
-						colorVariant={this.props.theme === 'dark' ? 'base' : undefined}
-						size="small"
-					/>
+					{this.props.icon ? (
+						this.props.icon
+					) : (
+						<Icon
+							assistiveText={{
+								label: iconAssistiveText,
+							}}
+							category="utility"
+							name={this.props.iconName || 'info'}
+							colorVariant={this.props.theme === 'dark' ? 'base' : undefined}
+							size="small"
+						/>
+					)}
 				</div>
 				<div className="slds-media__body">{this.props.children}</div>
 			</div>

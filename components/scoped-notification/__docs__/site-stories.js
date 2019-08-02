@@ -4,8 +4,10 @@
 /* eslint-disable global-require */
 
 const siteStories = [
+	require('raw-loader!@salesforce/design-system-react/components/scoped-notification/__examples__/base.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/scoped-notification/__examples__/light.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/scoped-notification/__examples__/dark.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/scoped-notification/__examples__/custom-icon.jsx'),
 ];
 
 module.exports = siteStories;
