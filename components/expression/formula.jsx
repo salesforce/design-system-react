@@ -149,6 +149,7 @@ class ExpressionFormula extends React.Component {
 											assistiveText={{
 												icon: assistiveText.help,
 											}}
+											id={`${this.getId()}-help-button`}
 											variant="icon"
 											iconCategory="utility"
 											iconName="help"
@@ -158,6 +159,7 @@ class ExpressionFormula extends React.Component {
 								</div>
 								<div className="slds-rich-text-editor__textarea slds-grid">
 									<ContentEditable
+										id={`${this.getId()}-content-editor`}
 										aria-label={this.props.labels.textArea}
 										className="slds-rich-text-area__content slds-text-color_weak slds-grow"
 										innerRef={this.textEditorRef}
@@ -176,6 +178,7 @@ class ExpressionFormula extends React.Component {
 				</div>
 				<div className="slds-m-top_small">
 					<Button
+						id={`${this.getId()}-check-syntax-button`}
 						variant="neutral"
 						label={labels.checkSyntax}
 						onClick={this.props.events.onClickCheckSyntax}

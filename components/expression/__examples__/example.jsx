@@ -1,9 +1,6 @@
 import React from 'react';
 import find from 'lodash.find';
-
 import log from '~/utilities/log';
-
-// `~` is replaced with design-system-react at runtime
 import IconSettings from '~/components/icon-settings';
 import Combobox from '~/components/combobox';
 import Input from '~/components/input';
@@ -13,41 +10,17 @@ import ExpressionCondition from '~/components/expression/condition';
 import ExpressionFormula from '~/components/expression/formula';
 
 const ResourcesList = [
-	{
-		id: '111',
-		label: 'Resource 1',
-	},
-	{
-		id: '112',
-		label: 'Resource 2',
-	},
-	{
-		id: '113',
-		label: 'Resource 3',
-	},
-	{
-		id: '114',
-		label: 'Resource 4',
-	},
+	{ id: '111', label: 'Resource 1' },
+	{ id: '112', label: 'Resource 2' },
+	{ id: '113', label: 'Resource 3' },
+	{ id: '114', label: 'Resource 4' },
 ];
 
 const OperatorsList = [
-	{
-		id: '1',
-		label: 'Equals',
-	},
-	{
-		id: '2',
-		label: 'Does Not Equals',
-	},
-	{
-		id: '3',
-		label: 'Greater Than',
-	},
-	{
-		id: '4',
-		label: 'Less Than',
-	},
+	{ id: '1', label: 'Equals' },
+	{ id: '2', label: 'Does Not Equals' },
+	{ id: '3', label: 'Greater Than' },
+	{ id: '4', label: 'Less Than' },
 ];
 
 class Example extends React.Component {
@@ -218,6 +191,7 @@ class Example extends React.Component {
 									labels={{
 										placeholder: 'Insert a Resource',
 									}}
+									id="expression-formula-insert-resource"
 									multiple={false}
 									options={ResourcesList}
 									selection={
@@ -271,6 +245,7 @@ class Example extends React.Component {
 									labels={{
 										placeholder: 'Insert a Function',
 									}}
+									id="expression-formula-insert-function"
 									options={ResourcesList}
 									selection={
 										this.state.conditions.function
@@ -410,6 +385,7 @@ class Example extends React.Component {
 														labels={{
 															placeholder: 'Insert a Resource',
 														}}
+														id={`expression-group-${i}-formula-resource`}
 														options={ResourcesList}
 														variant="inline-listbox"
 													/>
@@ -433,6 +409,7 @@ class Example extends React.Component {
 														labels={{
 															placeholder: 'Insert a Function',
 														}}
+														id={`expression-group-${i}-formula-function`}
 														options={ResourcesList}
 														variant="inline-listbox"
 													/>

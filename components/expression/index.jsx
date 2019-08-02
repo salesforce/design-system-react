@@ -105,6 +105,7 @@ class Expression extends React.Component {
 				<h2 className="slds-expression__title">{labels.title}</h2>
 				<ExpressionGroup
 					isRoot
+					id={`${this.getId()}-group`}
 					events={this.props.events}
 					labels={labels}
 					customLogicValue={this.props.customLogicValue}

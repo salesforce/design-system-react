@@ -174,6 +174,7 @@ class ExpressionCondition extends React.Component {
 								events={{
 									onSelect: this.props.events.onChangeResource,
 								}}
+								id={`${this.getId()}-resource-selector`}
 								multiple={false}
 								variant="readonly"
 								labels={{ label: labels.resource }}
@@ -186,6 +187,7 @@ class ExpressionCondition extends React.Component {
 								events={{
 									onSelect: this.props.events.onChangeOperator,
 								}}
+								id={`${this.getId()}-operator-selector`}
 								multiple={false}
 								variant="readonly"
 								labels={{ label: labels.operator }}
@@ -196,6 +198,7 @@ class ExpressionCondition extends React.Component {
 						</div>
 						<div className="slds-col">
 							<Input
+								id={`${this.getId()}-input`}
 								label={labels.value}
 								value={this.props.value}
 								onChange={this.props.events.onChangeValue}
@@ -207,6 +210,7 @@ class ExpressionCondition extends React.Component {
 								<span className="slds-form-element__label">&nbsp;</span>
 								<div className="slds-form-element__control">
 									<Button
+										id={`${this.getId()}-delete-button`}
 										variant="outline-brand"
 										iconCategory="utility"
 										iconName="delete"

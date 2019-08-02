@@ -194,6 +194,7 @@ class ExpressionGroup extends React.Component {
 							ExpressionGroup.triggerChange(event, data)
 						),
 				}}
+				id={`${this.getId()}-take-action-trigger`}
 				multiple={false}
 				options={this.getTriggers()}
 				variant="readonly"
@@ -210,6 +211,7 @@ class ExpressionGroup extends React.Component {
 						iconCategory="utility"
 						iconName="add"
 						iconPosition="left"
+						id={`${this.getId()}-add-condition-button`}
 						label={labels.addCondition}
 						assistiveText={{ icon: assistiveText.addCondition }}
 						onClick={this.props.events.onAddCondition}
@@ -219,6 +221,7 @@ class ExpressionGroup extends React.Component {
 							iconCategory="utility"
 							iconName="add"
 							iconPosition="left"
+							id={`${this.getId()}-add-group-button`}
 							label={labels.addGroup}
 							assistiveText={{ icon: assistiveText.addGroup }}
 							onClick={this.props.events.onAddGroup}
@@ -234,7 +237,7 @@ class ExpressionGroup extends React.Component {
 						<Input
 							label={labels.customLogic}
 							className="slds-expression__custom-logic"
-							id={`text-input-id-${this.getId()}`}
+							id={`${this.getId()}-custom-logic-input`}
 							value={this.props.customLogicValue}
 							variant="base"
 							onChange={this.props.events.onChangeCustomLogicValue}

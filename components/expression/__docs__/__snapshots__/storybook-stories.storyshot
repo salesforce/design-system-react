@@ -15,7 +15,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
     </h2>
     <div
       className=""
-      id="kMmo06cNbHB"
+      id="expression-example-group"
     >
       <div
         className="slds-expression__options"
@@ -25,7 +25,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
         >
           <label
             className="slds-form-element__label"
-            htmlFor="kK86Xtrr6Gu"
+            htmlFor="expression-example-group-take-action-trigger"
           >
             Take Action When
           </label>
@@ -51,7 +51,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     disabled={false}
-                    id="kK86Xtrr6Gu"
+                    id="expression-example-group-take-action-trigger"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onClick={[Function]}
@@ -111,7 +111,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="Zh9tSt0w8OJ"
+                    htmlFor="expression-condition-0-resource-selector"
                   >
                     Resource
                   </label>
@@ -137,7 +137,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={false}
-                            id="Zh9tSt0w8OJ"
+                            id="expression-condition-0-resource-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -176,7 +176,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="prt2XWL2Gez"
+                    htmlFor="expression-condition-0-operator-selector"
                   >
                     Operator
                   </label>
@@ -202,7 +202,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={true}
-                            id="prt2XWL2Gez"
+                            id="expression-condition-0-operator-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -241,7 +241,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="a6h5pJm0eSz"
+                    htmlFor="expression-condition-0-input"
                   >
                     Value
                   </label>
@@ -251,7 +251,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                     <input
                       className="slds-input"
                       disabled={true}
-                      id="a6h5pJm0eSz"
+                      id="expression-condition-0-input"
                       onChange={[Function]}
                       type="text"
                       value=""
@@ -276,6 +276,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                     <button
                       className="slds-button slds-button_icon-border-filled"
                       disabled={false}
+                      id="expression-condition-0-delete-button"
                       onClick={[Function]}
                       title="Delete Condition"
                       type="button"
@@ -307,6 +308,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
         <button
           className="slds-button slds-button_neutral"
           disabled={false}
+          id="expression-example-group-add-condition-button"
           onClick={[Function]}
           type="button"
         >
@@ -323,6 +325,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
         <button
           className="slds-button slds-button_neutral"
           disabled={false}
+          id="expression-example-group-add-group-button"
           onClick={[Function]}
           type="button"
         >
@@ -357,7 +360,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
     </h2>
     <div
       className=""
-      id="h3i_URZh8D"
+      id="expression-example-group"
     >
       <div
         className="slds-expression__options"
@@ -367,7 +370,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
         >
           <label
             className="slds-form-element__label"
-            htmlFor="NM2D766sck"
+            htmlFor="expression-example-group-take-action-trigger"
           >
             Take Action When
           </label>
@@ -393,7 +396,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     disabled={false}
-                    id="NM2D766sck"
+                    id="expression-example-group-take-action-trigger"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onClick={[Function]}
@@ -429,7 +432,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
       >
         <label
           className="slds-form-element__label"
-          htmlFor="text-input-id-h3i_URZh8D"
+          htmlFor="expression-example-group-custom-logic-input"
         >
           Custom Logic
         </label>
@@ -438,7 +441,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
         >
           <input
             className="slds-input"
-            id="text-input-id-h3i_URZh8D"
+            id="expression-example-group-custom-logic-input"
             onChange={[Function]}
             type="text"
             value="1 AND 2"
@@ -474,7 +477,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="J-8bIkoMOH"
+                    htmlFor="expression-condition-0-resource-selector"
                   >
                     Resource
                   </label>
@@ -500,7 +503,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={false}
-                            id="J-8bIkoMOH"
+                            id="expression-condition-0-resource-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -539,7 +542,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="bO6ZKXcwAP"
+                    htmlFor="expression-condition-0-operator-selector"
                   >
                     Operator
                   </label>
@@ -565,7 +568,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={false}
-                            id="bO6ZKXcwAP"
+                            id="expression-condition-0-operator-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -604,7 +607,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="nWnFcUquof"
+                    htmlFor="expression-condition-0-input"
                   >
                     Value
                   </label>
@@ -614,7 +617,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                     <input
                       className="slds-input"
                       disabled={false}
-                      id="nWnFcUquof"
+                      id="expression-condition-0-input"
                       onChange={[Function]}
                       type="text"
                       value=""
@@ -639,6 +642,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                     <button
                       className="slds-button slds-button_icon-border-filled"
                       disabled={false}
+                      id="expression-condition-0-delete-button"
                       onClick={[Function]}
                       title="Delete Condition"
                       type="button"
@@ -691,7 +695,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="VTC--mJB_F"
+                    htmlFor="expression-condition-1-resource-selector"
                   >
                     Resource
                   </label>
@@ -717,7 +721,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={false}
-                            id="VTC--mJB_F"
+                            id="expression-condition-1-resource-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -756,7 +760,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="S2_HwgRViO"
+                    htmlFor="expression-condition-1-operator-selector"
                   >
                     Operator
                   </label>
@@ -782,7 +786,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={true}
-                            id="S2_HwgRViO"
+                            id="expression-condition-1-operator-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -821,7 +825,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="MpCEtIcSAfb"
+                    htmlFor="expression-condition-1-input"
                   >
                     Value
                   </label>
@@ -831,7 +835,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                     <input
                       className="slds-input"
                       disabled={true}
-                      id="MpCEtIcSAfb"
+                      id="expression-condition-1-input"
                       onChange={[Function]}
                       type="text"
                       value=""
@@ -856,6 +860,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                     <button
                       className="slds-button slds-button_icon-border-filled"
                       disabled={false}
+                      id="expression-condition-1-delete-button"
                       onClick={[Function]}
                       title="Delete Condition"
                       type="button"
@@ -887,6 +892,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
         <button
           className="slds-button slds-button_neutral"
           disabled={false}
+          id="expression-example-group-add-condition-button"
           onClick={[Function]}
           type="button"
         >
@@ -903,6 +909,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
         <button
           className="slds-button slds-button_neutral"
           disabled={false}
+          id="expression-example-group-add-group-button"
           onClick={[Function]}
           type="button"
         >
@@ -937,7 +944,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
     </h2>
     <div
       className=""
-      id="-2ETyogiI0u"
+      id="expression-example-group"
     >
       <div
         className="slds-expression__options"
@@ -947,7 +954,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
         >
           <label
             className="slds-form-element__label"
-            htmlFor="O4vBlIIiOt1"
+            htmlFor="expression-example-group-take-action-trigger"
           >
             Take Action When
           </label>
@@ -973,7 +980,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     disabled={false}
-                    id="O4vBlIIiOt1"
+                    id="expression-example-group-take-action-trigger"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onClick={[Function]}
@@ -1055,7 +1062,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
                                 autoComplete="off"
                                 className="slds-input slds-combobox__input"
                                 disabled={false}
-                                id="Dg_Jm3nRPiK"
+                                id="expression-formula-insert-resource"
                                 onBlur={[Function]}
                                 onChange={[Function]}
                                 onClick={[Function]}
@@ -1109,7 +1116,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
                                 autoComplete="off"
                                 className="slds-input slds-combobox__input"
                                 disabled={false}
-                                id="B2ZrWzWxOva"
+                                id="expression-formula-insert-function"
                                 onBlur={[Function]}
                                 onChange={[Function]}
                                 onClick={[Function]}
@@ -1166,6 +1173,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
                     <button
                       className="slds-button slds-button_icon"
                       disabled={false}
+                      id="expression-formula-help-button"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1193,6 +1201,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
                       }
                     }
                     disabled={false}
+                    id="expression-formula-content-editor"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onInput={[Function]}
@@ -1210,6 +1219,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
           <button
             className="slds-button slds-button_neutral"
             disabled={false}
+            id="expression-formula-check-syntax-button"
             onClick={[Function]}
             type="button"
           >
@@ -1237,7 +1247,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
     </h2>
     <div
       className=""
-      id="VmHdd2f165Z"
+      id="expression-example-group"
     >
       <div
         className="slds-expression__options"
@@ -1247,7 +1257,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
         >
           <label
             className="slds-form-element__label"
-            htmlFor="F6fln0SQ4z1"
+            htmlFor="expression-example-group-take-action-trigger"
           >
             Take Action When
           </label>
@@ -1273,7 +1283,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     disabled={false}
-                    id="F6fln0SQ4z1"
+                    id="expression-example-group-take-action-trigger"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onClick={[Function]}
@@ -1333,7 +1343,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="XMf_MlFvaXq"
+                    htmlFor="expression-condition-0-resource-selector"
                   >
                     Resource
                   </label>
@@ -1359,7 +1369,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={false}
-                            id="XMf_MlFvaXq"
+                            id="expression-condition-0-resource-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -1398,7 +1408,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="QXUTZfwV4sm"
+                    htmlFor="expression-condition-0-operator-selector"
                   >
                     Operator
                   </label>
@@ -1424,7 +1434,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={false}
-                            id="QXUTZfwV4sm"
+                            id="expression-condition-0-operator-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -1463,7 +1473,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="w8nQTNxYcs3"
+                    htmlFor="expression-condition-0-input"
                   >
                     Value
                   </label>
@@ -1473,7 +1483,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                     <input
                       className="slds-input"
                       disabled={false}
-                      id="w8nQTNxYcs3"
+                      id="expression-condition-0-input"
                       onChange={[Function]}
                       type="text"
                       value=""
@@ -1498,6 +1508,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                     <button
                       className="slds-button slds-button_icon-border-filled"
                       disabled={false}
+                      id="expression-condition-0-delete-button"
                       onClick={[Function]}
                       title="Delete Condition"
                       type="button"
@@ -1545,7 +1556,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
               >
                 <label
                   className="slds-form-element__label"
-                  htmlFor="2329iNLUpff"
+                  htmlFor="expression-group-1-take-action-trigger"
                 >
                   Take Action When
                 </label>
@@ -1571,7 +1582,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                           autoComplete="off"
                           className="slds-input slds-combobox__input"
                           disabled={false}
-                          id="2329iNLUpff"
+                          id="expression-group-1-take-action-trigger"
                           onBlur={[Function]}
                           onChange={[Function]}
                           onClick={[Function]}
@@ -1632,7 +1643,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                         >
                           <label
                             className="slds-form-element__label"
-                            htmlFor="N3-Y_Oh6vH9"
+                            htmlFor="expression-group-1-condition-0-resource-selector"
                           >
                             Resource
                           </label>
@@ -1658,7 +1669,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                                     autoComplete="off"
                                     className="slds-input slds-combobox__input"
                                     disabled={false}
-                                    id="N3-Y_Oh6vH9"
+                                    id="expression-group-1-condition-0-resource-selector"
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     onClick={[Function]}
@@ -1697,7 +1708,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                         >
                           <label
                             className="slds-form-element__label"
-                            htmlFor="DKuMygPG2OA"
+                            htmlFor="expression-group-1-condition-0-operator-selector"
                           >
                             Operator
                           </label>
@@ -1723,7 +1734,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                                     autoComplete="off"
                                     className="slds-input slds-combobox__input"
                                     disabled={false}
-                                    id="DKuMygPG2OA"
+                                    id="expression-group-1-condition-0-operator-selector"
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     onClick={[Function]}
@@ -1762,7 +1773,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                         >
                           <label
                             className="slds-form-element__label"
-                            htmlFor="iebLVRyILP_"
+                            htmlFor="expression-group-1-condition-0-input"
                           >
                             Value
                           </label>
@@ -1772,7 +1783,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                             <input
                               className="slds-input"
                               disabled={false}
-                              id="iebLVRyILP_"
+                              id="expression-group-1-condition-0-input"
                               onChange={[Function]}
                               type="text"
                               value=""
@@ -1797,6 +1808,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                             <button
                               className="slds-button slds-button_icon-border-filled"
                               disabled={false}
+                              id="expression-group-1-condition-0-delete-button"
                               onClick={[Function]}
                               title="Delete Condition"
                               type="button"
@@ -1849,7 +1861,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                         >
                           <label
                             className="slds-form-element__label"
-                            htmlFor="8eoyqP67WlT"
+                            htmlFor="expression-group-1-condition-1-resource-selector"
                           >
                             Resource
                           </label>
@@ -1875,7 +1887,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                                     autoComplete="off"
                                     className="slds-input slds-combobox__input"
                                     disabled={false}
-                                    id="8eoyqP67WlT"
+                                    id="expression-group-1-condition-1-resource-selector"
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     onClick={[Function]}
@@ -1914,7 +1926,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                         >
                           <label
                             className="slds-form-element__label"
-                            htmlFor="GTZ6nqF0is-"
+                            htmlFor="expression-group-1-condition-1-operator-selector"
                           >
                             Operator
                           </label>
@@ -1940,7 +1952,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                                     autoComplete="off"
                                     className="slds-input slds-combobox__input"
                                     disabled={true}
-                                    id="GTZ6nqF0is-"
+                                    id="expression-group-1-condition-1-operator-selector"
                                     onBlur={[Function]}
                                     onChange={[Function]}
                                     onClick={[Function]}
@@ -1979,7 +1991,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                         >
                           <label
                             className="slds-form-element__label"
-                            htmlFor="HRWkn1y0iqj"
+                            htmlFor="expression-group-1-condition-1-input"
                           >
                             Value
                           </label>
@@ -1989,7 +2001,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                             <input
                               className="slds-input"
                               disabled={true}
-                              id="HRWkn1y0iqj"
+                              id="expression-group-1-condition-1-input"
                               onChange={[Function]}
                               type="text"
                               value=""
@@ -2014,6 +2026,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                             <button
                               className="slds-button slds-button_icon-border-filled"
                               disabled={false}
+                              id="expression-group-1-condition-1-delete-button"
                               onClick={[Function]}
                               title="Delete Condition"
                               type="button"
@@ -2046,6 +2059,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
               <button
                 className="slds-button slds-button_neutral"
                 disabled={false}
+                id="expression-group-1-add-condition-button"
                 onClick={[Function]}
                 type="button"
               >
@@ -2069,6 +2083,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
         <button
           className="slds-button slds-button_neutral"
           disabled={false}
+          id="expression-example-group-add-condition-button"
           onClick={[Function]}
           type="button"
         >
@@ -2085,6 +2100,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
         <button
           className="slds-button slds-button_neutral"
           disabled={false}
+          id="expression-example-group-add-group-button"
           onClick={[Function]}
           type="button"
         >
@@ -2119,7 +2135,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
     </h2>
     <div
       className=""
-      id="3ODu2dKTuFn"
+      id="expression-example-group"
     >
       <div
         className="slds-expression__options"
@@ -2129,7 +2145,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
         >
           <label
             className="slds-form-element__label"
-            htmlFor="C4oPhXGge6I"
+            htmlFor="expression-example-group-take-action-trigger"
           >
             Take Action When
           </label>
@@ -2155,7 +2171,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     disabled={false}
-                    id="C4oPhXGge6I"
+                    id="expression-example-group-take-action-trigger"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onClick={[Function]}
@@ -2215,7 +2231,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="8d_OaPqIn_X"
+                    htmlFor="expression-condition-0-resource-selector"
                   >
                     Resource
                   </label>
@@ -2241,7 +2257,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={false}
-                            id="8d_OaPqIn_X"
+                            id="expression-condition-0-resource-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -2280,7 +2296,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="jwUVTuowXPH"
+                    htmlFor="expression-condition-0-operator-selector"
                   >
                     Operator
                   </label>
@@ -2306,7 +2322,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={false}
-                            id="jwUVTuowXPH"
+                            id="expression-condition-0-operator-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -2345,7 +2361,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="s0TU0SDi-Yv"
+                    htmlFor="expression-condition-0-input"
                   >
                     Value
                   </label>
@@ -2355,7 +2371,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                     <input
                       className="slds-input"
                       disabled={false}
-                      id="s0TU0SDi-Yv"
+                      id="expression-condition-0-input"
                       onChange={[Function]}
                       type="text"
                       value=""
@@ -2380,6 +2396,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                     <button
                       className="slds-button slds-button_icon-border-filled"
                       disabled={false}
+                      id="expression-condition-0-delete-button"
                       onClick={[Function]}
                       title="Delete Condition"
                       type="button"
@@ -2432,7 +2449,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="G8UmEiNcSwB"
+                    htmlFor="expression-condition-1-resource-selector"
                   >
                     Resource
                   </label>
@@ -2458,7 +2475,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={false}
-                            id="G8UmEiNcSwB"
+                            id="expression-condition-1-resource-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -2497,7 +2514,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="hXuE2b7o48y"
+                    htmlFor="expression-condition-1-operator-selector"
                   >
                     Operator
                   </label>
@@ -2523,7 +2540,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={false}
-                            id="hXuE2b7o48y"
+                            id="expression-condition-1-operator-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -2562,7 +2579,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="LfEvhpce7ee"
+                    htmlFor="expression-condition-1-input"
                   >
                     Value
                   </label>
@@ -2572,7 +2589,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                     <input
                       className="slds-input"
                       disabled={false}
-                      id="LfEvhpce7ee"
+                      id="expression-condition-1-input"
                       onChange={[Function]}
                       type="text"
                       value=""
@@ -2597,6 +2614,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                     <button
                       className="slds-button slds-button_icon-border-filled"
                       disabled={false}
+                      id="expression-condition-1-delete-button"
                       onClick={[Function]}
                       title="Delete Condition"
                       type="button"
@@ -2628,6 +2646,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
         <button
           className="slds-button slds-button_neutral"
           disabled={false}
+          id="expression-example-group-add-condition-button"
           onClick={[Function]}
           type="button"
         >
@@ -2644,6 +2663,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
         <button
           className="slds-button slds-button_neutral"
           disabled={false}
+          id="expression-example-group-add-group-button"
           onClick={[Function]}
           type="button"
         >
@@ -2678,7 +2698,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
     </h2>
     <div
       className=""
-      id="DFJR1iVT-DG"
+      id="expression-example-group"
     >
       <div
         className="slds-expression__options"
@@ -2688,7 +2708,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
         >
           <label
             className="slds-form-element__label"
-            htmlFor="FzF4h65ZnFZ"
+            htmlFor="expression-example-group-take-action-trigger"
           >
             Take Action When
           </label>
@@ -2714,7 +2734,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     disabled={false}
-                    id="FzF4h65ZnFZ"
+                    id="expression-example-group-take-action-trigger"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onClick={[Function]}
@@ -2774,7 +2794,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="33abyvmkJ5t"
+                    htmlFor="expression-condition-0-resource-selector"
                   >
                     Resource
                   </label>
@@ -2800,7 +2820,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={false}
-                            id="33abyvmkJ5t"
+                            id="expression-condition-0-resource-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -2839,7 +2859,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="xWbHpyYf4mz"
+                    htmlFor="expression-condition-0-operator-selector"
                   >
                     Operator
                   </label>
@@ -2865,7 +2885,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                             autoComplete="off"
                             className="slds-input slds-combobox__input"
                             disabled={false}
-                            id="xWbHpyYf4mz"
+                            id="expression-condition-0-operator-selector"
                             onBlur={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -2904,7 +2924,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                 >
                   <label
                     className="slds-form-element__label"
-                    htmlFor="50611d0vAC0"
+                    htmlFor="expression-condition-0-input"
                   >
                     Value
                   </label>
@@ -2914,7 +2934,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                     <input
                       className="slds-input"
                       disabled={false}
-                      id="50611d0vAC0"
+                      id="expression-condition-0-input"
                       onChange={[Function]}
                       type="text"
                       value=""
@@ -2939,6 +2959,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                     <button
                       className="slds-button slds-button_icon-border-filled"
                       disabled={false}
+                      id="expression-condition-0-delete-button"
                       onClick={[Function]}
                       title="Delete Condition"
                       type="button"
@@ -2970,6 +2991,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
         <button
           className="slds-button slds-button_neutral"
           disabled={false}
+          id="expression-example-group-add-condition-button"
           onClick={[Function]}
           type="button"
         >
@@ -2986,6 +3008,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
         <button
           className="slds-button slds-button_neutral"
           disabled={false}
+          id="expression-example-group-add-group-button"
           onClick={[Function]}
           type="button"
         >

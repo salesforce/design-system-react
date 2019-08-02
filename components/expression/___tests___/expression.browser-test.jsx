@@ -1,51 +1,26 @@
-/* eslint-disable max-lines */
 import React from 'react';
-import chai, { expect } from 'chai';
-import chaiEnzyme from 'chai-enzyme';
 import { mount } from 'enzyme';
+import chai from 'chai';
 import assign from 'lodash.assign';
+
 import ExpressionCondition from '../../expression/condition';
 import IconSettings from '../../icon-settings';
 
+const { expect } = chai;
 const should = chai.should();
-chai.use(chaiEnzyme());
 
 const ResourcesList = [
-	{
-		id: '111',
-		label: 'Resource 1',
-	},
-	{
-		id: '112',
-		label: 'Resource 2',
-	},
-	{
-		id: '113',
-		label: 'Resource 3',
-	},
-	{
-		id: '114',
-		label: 'Resource 4',
-	},
+	{ id: '111', label: 'Resource 1' },
+	{ id: '112', label: 'Resource 2' },
+	{ id: '113', label: 'Resource 3' },
+	{ id: '114', label: 'Resource 4' },
 ];
 
 const OperatorsList = [
-	{
-		id: '1',
-		label: 'Equals',
-	},
-	{
-		id: '2',
-		label: 'Does Not Equals',
-	},
-	{
-		id: '3',
-		label: 'Greater Than',
-	},
-	{
-		id: '4',
-		label: 'Less Than',
-	},
+	{ id: '1', label: 'Equals' },
+	{ id: '2', label: 'Does Not Equals' },
+	{ id: '3', label: 'Greater Than' },
+	{ id: '4', label: 'Less Than' },
 ];
 
 describe('SLDSExpression', () => {
