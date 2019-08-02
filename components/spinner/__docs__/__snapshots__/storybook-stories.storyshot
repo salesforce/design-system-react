@@ -128,7 +128,7 @@ exports[`DOM snapshots SLDSSpinner Inverse Large 1`] = `
   <div
     style={
       Object {
-        "backgroundColor": "#4bca81",
+        "backgroundColor": "#16325c",
         "height": "100%",
         "position": "absolute",
         "width": "100%",
@@ -167,7 +167,7 @@ exports[`DOM snapshots SLDSSpinner Inverse Medium 1`] = `
   <div
     style={
       Object {
-        "backgroundColor": "#4bca81",
+        "backgroundColor": "#16325c",
         "height": "100%",
         "position": "absolute",
         "width": "100%",
@@ -206,7 +206,7 @@ exports[`DOM snapshots SLDSSpinner Inverse Small 1`] = `
   <div
     style={
       Object {
-        "backgroundColor": "#4bca81",
+        "backgroundColor": "#16325c",
         "height": "100%",
         "position": "absolute",
         "width": "100%",
