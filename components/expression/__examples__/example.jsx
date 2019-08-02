@@ -165,7 +165,6 @@ class Example extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.conditions);
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Expression

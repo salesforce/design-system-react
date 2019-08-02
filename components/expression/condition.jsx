@@ -48,7 +48,7 @@ const propTypes = {
 		onChangeOperator: PropTypes.func,
 		onChangeValue: PropTypes.func,
 		onDelete: PropTypes.func,
-	}),
+	}).isRequired,
 	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every
