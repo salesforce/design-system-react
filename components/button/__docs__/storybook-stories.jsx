@@ -16,6 +16,12 @@ const getButton = (props) => <Button {...props} onClick={action('click')} />;
 
 const getIconButton = (props) => getButton({ variant: 'icon', ...props });
 
+const blueBackground = (getStory) => (
+	<div className="slds-hint-parent" style={{ backgroundColor: '#16325c' }}>
+		{getStory()}
+	</div>
+);
+
 storiesOf(BUTTON, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">
@@ -55,52 +61,56 @@ storiesOf(BUTTON, module)
 			title: 'announcement',
 		})
 	)
-	.addDecorator((getStory) => (
-		<div
-			className="slds-p-around_medium slds-hint-parent"
-			style={{ backgroundColor: '#16325c' }}
-		>
-			{getStory()}
-		</div>
-	))
-	.add('Small Icon Hint inverse', () =>
-		getIconButton({
-			assistiveText: 'Hint',
-			iconCategory: 'utility',
-			iconName: 'down',
-			iconVariant: 'border',
-			iconSize: 'small',
-			hint: true,
-			inverse: true,
-		})
+	.add(
+		'Small Icon Hint inverse',
+		() =>
+			getIconButton({
+				assistiveText: 'Hint',
+				iconCategory: 'utility',
+				iconName: 'down',
+				iconVariant: 'border',
+				iconSize: 'small',
+				hint: true,
+				inverse: true,
+			}),
+		{ decorators: [blueBackground] }
 	)
-	.add('Icon Container Small', () =>
-		getIconButton({
-			assistiveText: { icon: 'Icon border container small' },
-			iconCategory: 'utility',
-			iconName: 'settings',
-			iconSize: 'large',
-			iconVariant: 'border',
-			inverse: true,
-		})
+	.add(
+		'Icon Container Small',
+		() =>
+			getIconButton({
+				assistiveText: { icon: 'Icon border container small' },
+				iconCategory: 'utility',
+				iconName: 'settings',
+				iconSize: 'large',
+				iconVariant: 'border',
+				inverse: true,
+			}),
+		{ decorators: [blueBackground] }
 	)
-	.add('Dropdown Icon inverse', () =>
-		getIconButton({
-			'aria-haspopup': true,
-			assistiveText: {
-				icon: 'Dropdown Icon inverse',
-			},
-			iconCategory: 'utility',
-			iconName: 'settings',
-			iconVariant: 'more',
-			inverse: true,
-		})
+	.add(
+		'Dropdown Icon inverse',
+		() =>
+			getIconButton({
+				'aria-haspopup': true,
+				assistiveText: {
+					icon: 'Dropdown Icon inverse',
+				},
+				iconCategory: 'utility',
+				iconName: 'settings',
+				iconVariant: 'more',
+				inverse: true,
+			}),
+		{ decorators: [blueBackground] }
 	)
-	.add('Outline brand button', () =>
-		getButton({
-			label: 'Outline brand button',
-			variant: 'outline-brand',
-		})
+	.add(
+		'Outline brand button',
+		() =>
+			getButton({
+				label: 'Outline brand button',
+				variant: 'outline-brand',
+			}),
+		{ decorators: [blueBackground] }
 	)
 	.add('Doc site Base Neutral', () => <BaseNeutral />)
 	.add('Doc site Brand Disabled', () => <BrandDisabled />)

@@ -154,7 +154,6 @@ describe('SLDSSplitView - Listbox header', () => {
 
 			it('should call onSort when the header is clicked', () => {
 				component.find('a.slds-split-view__list-header').simulate('click');
-
 				expect(props.events.onSort.called).to.be.true;
 			});
 
