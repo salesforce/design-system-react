@@ -101,11 +101,11 @@ class ProgressBar extends React.Component {
 	 * @returns {string} description
 	 */
 	getDescription({ labels }) {
-		if (this.props.labels.label) {
+		if (labels.label) {
 			return (
 				<div
 					className="slds-grid slds-grid_align-spread slds-p-bottom_x-small"
-					id="progress-bar-label-id-4"
+					id={`progress-bar-label-${this.getId()}`}
 				>
 					<span>{labels.label}</span>
 					<span aria-hidden="true">
