@@ -16,6 +16,13 @@ import { SCOPED_NOTIFICATION } from '../../utilities/constants';
 
 const propTypes = {
 	/**
+	 * **Assistive text for accessibility.**
+	 * * `icon`: The assistive text for the icon. Is overridden by `label` assistive text passed directly to an `Icon` component via the `icon` prop
+	 */
+	assistiveText: PropTypes.shape({
+		icon: PropTypes.string,
+	}),
+	/**
 	 * CSS classes to be added to tag with `.slds-scoped-notification`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	className: PropTypes.oneOfType([
@@ -45,9 +52,41 @@ class ScopedNotification extends React.Component {
 	}
 
 	render() {
-		// For backwards compatibility
-		const iconAssistiveText =
-			(this.props.assistiveText && this.props.assistiveText.icon) || 'Info';
+		let icon;
+
+		if (this.props.icon) {
+			let iconAssistiveText = {};
+
+			if (this.props.assistiveText && this.props.assistiveText.icon) {
+				iconAssistiveText.label = this.props.assistiveText.icon;
+			}
+
+			if (this.props.icon.props.assistiveText) {
+				iconAssistiveText = {
+					...iconAssistiveText,
+					...this.props.icon.props.assistiveText,
+				};
+			}
+
+			icon = React.cloneElement(this.props.icon, {
+				...this.props.icon.props,
+				assistiveText: iconAssistiveText,
+			});
+		} else {
+			icon = (
+				<Icon
+					assistiveText={{
+						label:
+							(this.props.assistiveText && this.props.assistiveText.icon) ||
+							'Info',
+					}}
+					category="utility"
+					name={this.props.iconName || 'info'}
+					colorVariant={this.props.theme === 'dark' ? 'base' : undefined}
+					size="small"
+				/>
+			);
+		}
 
 		return (
 			<div
@@ -63,21 +102,7 @@ class ScopedNotification extends React.Component {
 				)}
 				role="status"
 			>
-				<div className="slds-media__figure">
-					{this.props.icon ? (
-						this.props.icon
-					) : (
-						<Icon
-							assistiveText={{
-								label: iconAssistiveText,
-							}}
-							category="utility"
-							name={this.props.iconName || 'info'}
-							colorVariant={this.props.theme === 'dark' ? 'base' : undefined}
-							size="small"
-						/>
-					)}
-				</div>
+				<div className="slds-media__figure">{icon}</div>
 				<div className="slds-media__body">{this.props.children}</div>
 			</div>
 		);

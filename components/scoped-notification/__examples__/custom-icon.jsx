@@ -11,7 +11,7 @@ class Example extends React.Component {
 					icon={
 						<Icon
 							assistiveText={{
-								icon: 'Warning',
+								label: 'Warning',
 							}}
 							category="utility"
 							colorVariant="warning"

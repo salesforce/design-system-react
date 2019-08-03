@@ -65,7 +65,11 @@ exports[`DOM snapshots SLDSScopedNotification Custom Icon 1`] = `
             xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
           />
         </svg>
-        
+        <span
+          className="slds-assistive-text"
+        >
+          Warning
+        </span>
       </span>
     </div>
     <div

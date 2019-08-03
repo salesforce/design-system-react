@@ -13626,6 +13626,19 @@
         "description": "A Scoped Notification Component serve advisory information for the user that is not important enough to justify an alert.",
         "methods": [],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\n* `icon`: The assistive text for the icon. Is overridden by `label` assistive text passed directly to an `Icon` component via the `icon` prop"
+            },
             "className": {
                 "type": {
                     "name": "union",
