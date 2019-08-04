@@ -278,7 +278,8 @@ class Textarea extends React.Component {
 				{labelText && (
 					<label
 						className={classNames('slds-form-element__label', {
-							'slds-assistive-text': assistiveText && !label,
+							'slds-assistive-text':
+								assistiveText && assistiveText.label && !label,
 						})}
 						htmlFor={this.getId()}
 					>
