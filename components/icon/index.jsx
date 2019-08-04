@@ -37,6 +37,7 @@ const Icon = (props) => {
 		className,
 		colorVariant,
 		containerClassName,
+		containerStyle,
 		icon,
 		inverse,
 		name,
@@ -71,6 +72,7 @@ const Icon = (props) => {
 				},
 				containerClassName
 			)}
+			style={containerStyle}
 			title={title}
 		>
 			<UtilityIcon
@@ -148,6 +150,10 @@ Icon.propTypes = {
 		PropTypes.object,
 		PropTypes.string,
 	]),
+	/**
+	 * Styles that are applied to the span.
+	 */
+	containerStyle: PropTypes.object,
 	/**
 	 * Icon color variants
 	 */

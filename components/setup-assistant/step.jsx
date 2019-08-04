@@ -10,10 +10,15 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
+// This component's `checkProps` which issues warnings to developers about properties
+// when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+import componentDoc from './docs.json';
+
 import Button from '../button';
 import ProgressRing from '../progress-ring';
 
-import { SETUP_ASSISTANT_STEP } from '../../utilities/constants';
+import { ICON, SETUP_ASSISTANT_STEP } from '../../utilities/constants';
 
 const propTypes = {
 	/**
@@ -61,6 +66,10 @@ const propTypes = {
 	 */
 	onRenderContent: PropTypes.func,
 	/**
+	 * Function that is called to render content within the media figure. Expects to be returned an Icon or ProgressRing component
+	 */
+	onRenderFigure: PropTypes.func,
+	/**
 	 * Function to handle requests to expand / collapse the step
 	 */
 	onToggleIsOpen: PropTypes.func,
@@ -87,6 +96,7 @@ class Step extends React.Component {
 		this.state = {
 			isOpen: props.isOpen || false,
 		};
+		checkProps(SETUP_ASSISTANT_STEP, this.props, componentDoc);
 	}
 
 	getId() {
@@ -151,6 +161,7 @@ class Step extends React.Component {
 	}
 
 	renderSummary() {
+		let figure;
 		let progressRingTheme;
 
 		if (this.props.progress > 0 && this.props.progress < 100) {
@@ -159,23 +170,50 @@ class Step extends React.Component {
 			progressRingTheme = 'complete';
 		}
 
+		if (this.props.onRenderFigure) {
+			figure = this.props.onRenderFigure();
+
+			if (figure && figure.type && figure.type.displayName === ICON) {
+				let containerStyle = {
+					position: 'relative',
+					top: (this.props.isExpandable) ? '5px' : '-3px'
+				};
+
+				if (figure.props.containerStyle) {
+					containerStyle = {
+						...containerStyle,
+						...figure.props.containerStyle
+					};
+				}
+
+				figure = React.cloneElement(figure, {
+					...figure.props,
+					containerStyle,
+					size: 'small'
+				});
+				figure = (<div className="slds-media__figure">{figure}</div>);
+			}
+		} else if (this.props.progress !== undefined) {
+			figure = (
+				<div className="slds-media__figure">
+					<ProgressRing
+						hasIcon
+						icon={
+							this.props.progress === 100 ? null : this.props.stepNumber
+						}
+						flowDirection="fill"
+						size="large"
+						theme={progressRingTheme}
+						value={this.props.progress}
+					/>
+				</div>
+			);
+		}
+
 		return (
 			<div className="slds-setup-assistant__step-summary">
 				<div className="slds-media">
-					{this.props.progress !== undefined ? (
-						<div className="slds-media__figure">
-							<ProgressRing
-								hasIcon
-								icon={
-									this.props.progress === 100 ? null : this.props.stepNumber
-								}
-								flowDirection="fill"
-								size="large"
-								theme={progressRingTheme}
-								value={this.props.progress}
-							/>
-						</div>
-					) : null}
+					{figure}
 					{this.props.isExpandable || this.props.progress !== undefined ? (
 						<div className="slds-media__body slds-m-top_x-small">
 							<div className="slds-media">{this.renderMediaContent()}</div>

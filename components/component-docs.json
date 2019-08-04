@@ -8121,6 +8121,13 @@
                 "required": false,
                 "description": "CSS classes that are applied to the span."
             },
+            "containerStyle": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Styles that are applied to the span."
+            },
             "colorVariant": {
                 "type": {
                     "name": "enum",
@@ -11961,6 +11968,23 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "progress": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `progress`: This is a visually hidden label for the percent of progress.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    progress: 'Progress',\n}",
+                    "computed": false
+                }
+            },
             "id": {
                 "type": {
                     "name": "string"
@@ -12742,6 +12766,13 @@
                             },
                             "required": false,
                             "description": "Function that is called to render step content. Typically returns a ProgressIndicator and/or ScopedNotification component"
+                        },
+                        "onRenderFigure": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function that is called to render content within the media figure. Expects to be returned an Icon or ProgressRing component"
                         },
                         "onToggleIsOpen": {
                             "type": {
@@ -15221,7 +15252,7 @@
                 "required": false,
                 "description": "Content inside Tooltip.",
                 "defaultValue": {
-                    "value": "<span>Tooltip</span>",
+                    "value": "<span>{'Tooltip'}</span>",
                     "computed": false
                 }
             },
@@ -15675,18 +15706,24 @@
                     "value": {
                         "timeLeft": {
                             "name": "string",
-                            "description": "Amount of time left in trial, e.g. `30`",
                             "required": false
                         },
                         "timeLeftUnit": {
                             "name": "string",
-                            "description": "Unit of the amount of time left, e.g. `days`",
+                            "required": false
+                        },
+                        "timeLeftUnitAfter": {
+                            "name": "string",
                             "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "Renders the labels in the trial bar."
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `learnMoreAfter`: Amount of time left in trial, e.g. `30`\n* `learnMoreBefore`: Unit of the amount of time left, e.g. `days`\n* `timeLeftUnitAfter`: String after `timeLeftUnit`",
+                "defaultValue": {
+                    "value": "{\n    timeLeftUnitAfter: 'left in trial',\n}",
+                    "computed": false
+                }
             },
             "onRenderActions": {
                 "type": {
@@ -15945,11 +15982,19 @@
                         "description": {
                             "name": "string",
                             "required": false
+                        },
+                        "unitsCompletedAfter": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Weclome Mat labels for internationalization**\nThis object is merged with the default props object on every render.\n* `title`: Title for the Welcome Mat\n* `description`: Label for the radio input"
+                "description": "**Weclome Mat labels for internationalization**\nThis object is merged with the default props object on every render.\n* `title`: Title for the Welcome Mat\n* `description`: Label for the radio input\n* `unitsCompletedAfter`: Label for the radio input",
+                "defaultValue": {
+                    "value": "{\n    unitsCompletedAfter: 'units completed',\n}",
+                    "computed": false
+                }
             },
             "variant": {
                 "type": {
