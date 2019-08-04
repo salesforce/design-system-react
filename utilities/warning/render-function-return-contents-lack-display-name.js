@@ -17,8 +17,8 @@ if (process.env.NODE_ENV !== 'production') {
 		control,
 		propName,
 		renderFunctionReturnContents,
-		displayNames,	// array of allowed displayName strings
-		checkChildren,	// if true children of the render function return main node will be checked for displayNames matches
+		displayNames, // array of allowed displayName strings
+		checkChildren, // if true children of the render function return main node will be checked for displayNames matches
 		comment
 	) {
 		const additionalComment = comment ? ` ${comment}` : '';
@@ -59,10 +59,10 @@ if (process.env.NODE_ENV !== 'production') {
 			displayNames.forEach((displayName, index) => {
 				allowedDisplayNames += displayName;
 
-				if (displayNames.length > (index + 2)) {
+				if (displayNames.length > index + 2) {
 					allowedDisplayNames += ', ';
-				} else if (displayNames.length > (index + 1)) {
-					allowedDisplayNames += (displayNames.length > 2) ? ', or ' : ' or ';
+				} else if (displayNames.length > index + 1) {
+					allowedDisplayNames += displayNames.length > 2 ? ', or ' : ' or ';
 				}
 			});
 

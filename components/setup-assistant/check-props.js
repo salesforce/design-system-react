@@ -6,7 +6,12 @@ import hasChildrenWithoutDisplayNameof from '../../utilities/warning/has-childre
 import getComponentDocFn from '../../utilities/get-component-doc';
 import renderFunctionReturnContentsLackDisplayName from '../../utilities/warning/render-function-return-contents-lack-display-name';
 
-import { ICON, PROGRESS_INDICATOR, SETUP_ASSISTANT, SETUP_ASSISTANT_STEP } from '../../utilities/constants';
+import {
+	ICON,
+	PROGRESS_INDICATOR,
+	SETUP_ASSISTANT,
+	SETUP_ASSISTANT_STEP,
+} from '../../utilities/constants';
 
 let checkProps = () => {};
 

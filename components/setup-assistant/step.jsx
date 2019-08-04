@@ -176,31 +176,29 @@ class Step extends React.Component {
 			if (figure && figure.type && figure.type.displayName === ICON) {
 				let containerStyle = {
 					position: 'relative',
-					top: (this.props.isExpandable) ? '5px' : '-3px'
+					top: this.props.isExpandable ? '5px' : '-3px',
 				};
 
 				if (figure.props.containerStyle) {
 					containerStyle = {
 						...containerStyle,
-						...figure.props.containerStyle
+						...figure.props.containerStyle,
 					};
 				}
 
 				figure = React.cloneElement(figure, {
 					...figure.props,
 					containerStyle,
-					size: 'small'
+					size: 'small',
 				});
-				figure = (<div className="slds-media__figure">{figure}</div>);
+				figure = <div className="slds-media__figure">{figure}</div>;
 			}
 		} else if (this.props.progress !== undefined) {
 			figure = (
 				<div className="slds-media__figure">
 					<ProgressRing
 						hasIcon
-						icon={
-							this.props.progress === 100 ? null : this.props.stepNumber
-						}
+						icon={this.props.progress === 100 ? null : this.props.stepNumber}
 						flowDirection="fill"
 						size="large"
 						theme={progressRingTheme}

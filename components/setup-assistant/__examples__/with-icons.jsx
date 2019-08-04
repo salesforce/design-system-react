@@ -29,7 +29,7 @@ class Example extends React.Component {
 						onRenderFigure={() => (
 							<Icon
 								assistiveText={{
-									label: 'User'
+									label: 'User',
 								}}
 								category="standard"
 								name="user"
@@ -52,7 +52,7 @@ class Example extends React.Component {
 						onRenderFigure={() => (
 							<Icon
 								assistiveText={{
-									label: 'User'
+									label: 'User',
 								}}
 								category="standard"
 								name="user"
@@ -76,7 +76,7 @@ class Example extends React.Component {
 						onRenderFigure={() => (
 							<Icon
 								assistiveText={{
-									label: 'User'
+									label: 'User',
 								}}
 								category="standard"
 								name="user"
@@ -99,7 +99,7 @@ class Example extends React.Component {
 						onRenderFigure={() => (
 							<Icon
 								assistiveText={{
-									label: 'User'
+									label: 'User',
 								}}
 								category="standard"
 								name="user"
@@ -122,7 +122,7 @@ class Example extends React.Component {
 						onRenderFigure={() => (
 							<Icon
 								assistiveText={{
-									label: 'User'
+									label: 'User',
 								}}
 								category="standard"
 								name="user"
