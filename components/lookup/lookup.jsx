@@ -723,7 +723,8 @@ const Lookup = class extends React.Component {
 	renderLabel = () => {
 		let inputLabel;
 		const required = this.props.required ? (
-			<span className="slds-required">*</span>
+			// eslint-disable-next-line react/jsx-curly-brace-presence
+			<span className="slds-required">{'*'}</span>
 		) : null;
 		if (this.isSelected()) {
 			// inline style override

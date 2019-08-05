@@ -1570,7 +1570,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
       >
         <div
           className="slds-grid slds-grid_align-spread slds-p-bottom_x-small"
-          id="progress-bar-label-id-4"
+          id="progress-bar-label-card-setup-assistant-progress-bar"
         >
           <span>
             Complete all the steps below to finish setting up Einstein Visibility

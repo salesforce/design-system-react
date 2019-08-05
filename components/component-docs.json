@@ -13904,6 +13904,13 @@
                 "required": false,
                 "description": "Custom css classes applied to Spinner container"
             },
+            "containerStyle": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom css properties applied to Spinner container"
+            },
             "id": {
                 "type": {
                     "name": "string"

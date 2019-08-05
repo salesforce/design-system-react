@@ -529,6 +529,12 @@ class Dialog extends React.Component {
 
 Dialog.contextTypes = {
 	iconPath: PropTypes.string,
+	onRequestIconPath: PropTypes.func,
+	actionSprite: PropTypes.string,
+	customSprite: PropTypes.string,
+	doctypeSprite: PropTypes.string,
+	standardSprite: PropTypes.string,
+	utilitySprite: PropTypes.string,
 };
 
 export default LanguageDirection(Dialog);

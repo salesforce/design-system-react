@@ -7,6 +7,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import assign from 'lodash.assign';
+
 import { TRIAL_BAR } from '../../utilities/constants';
 
 const propTypes = {
@@ -30,13 +32,16 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
-	 * Renders the labels in the trial bar.
+	 * **Text labels for internationalization**
+	 * This object is merged with the default props object on every render.
+	 * * `learnMoreAfter`: Amount of time left in trial, e.g. `30`
+	 * * `learnMoreBefore`: Unit of the amount of time left, e.g. `days`
+	 * * `timeLeftUnitAfter`: String after `timeLeftUnit`
 	 */
 	labels: PropTypes.shape({
-		/** Amount of time left in trial, e.g. `30` */
 		timeLeft: PropTypes.string,
-		/** Unit of the amount of time left, e.g. `days` */
 		timeLeftUnit: PropTypes.string,
+		timeLeftUnitAfter: PropTypes.string,
 	}),
 	/**
 	 * Renders the actions section of the trial bar.
@@ -48,28 +53,39 @@ const propTypes = {
 	style: PropTypes.object,
 };
 
+const defaultProps = {
+	labels: {
+		timeLeftUnitAfter: 'left in trial',
+	},
+};
+
 /**
  * Trial bar components are used to provide an interactive and educational prospect experience for setup.
  */
-const TrialBar = (props) => (
-	<div
-		className={classNames('slds-trial-header slds-grid', props.className)}
-		style={props.style}
-	>
-		<div className="slds-grid">{props.children}</div>
-		<div className="slds-grid slds-grid_vertical-align-center slds-col_bump-left">
-			<span className="slds-box slds-box_xx-small slds-theme_default">
-				{props.labels.timeLeft}
-			</span>
-			<span className="slds-m-horizontal_x-small">
-				{props.labels.timeLeftUnit} left in trial
-			</span>
-			{props.onRenderActions()}
+const TrialBar = (props) => {
+	const labels = assign({}, defaultProps.labels, props.labels);
+	return (
+		<div
+			className={classNames('slds-trial-header slds-grid', props.className)}
+			style={props.style}
+		>
+			<div className="slds-grid">{props.children}</div>
+			<div className="slds-grid slds-grid_vertical-align-center slds-col_bump-left">
+				<span className="slds-box slds-box_xx-small slds-theme_default">
+					{labels.timeLeft}
+				</span>
+				<span className="slds-m-horizontal_x-small">
+					{labels.timeLeftUnit}
+					{` ${labels.timeLeftUnitAfter}`}
+				</span>
+				{props.onRenderActions()}
+			</div>
 		</div>
-	</div>
-);
+	);
+};
 
 TrialBar.displayName = TRIAL_BAR;
 TrialBar.propTypes = propTypes;
+TrialBar.defaultProps = defaultProps;
 
 export default TrialBar;
