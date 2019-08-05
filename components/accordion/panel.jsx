@@ -33,7 +33,7 @@ const propTypes = {
 	/**
 	 * Callback that will run whenever there is a keydown on the panel button. Function doesn't change the state of the component.
 	 */
-	onKeyDown: PropTypes.func.isRequired,
+	onKeyDown: PropTypes.func,
 	/**
 	 * Callback that will run whenever a panel is toggled. Function should handle state to toggle `expanded` prop. _Tested with Mocha framework._
 	 */
