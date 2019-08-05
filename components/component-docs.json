@@ -11961,6 +11961,23 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "progress": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `progress`: This is a visually hidden label for the percent of progress.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    progress: 'Progress',\n}",
+                    "computed": false
+                }
+            },
             "id": {
                 "type": {
                     "name": "string"
@@ -13609,6 +13626,19 @@
         "description": "A Scoped Notification Component serve advisory information for the user that is not important enough to justify an alert.",
         "methods": [],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\n* `icon`: The assistive text for the icon. Is overridden by `label` assistive text passed directly to an `Icon` component via the `icon` prop"
+            },
             "className": {
                 "type": {
                     "name": "union",
@@ -13627,6 +13657,13 @@
                 "required": false,
                 "description": "CSS classes to be added to tag with `.slds-scoped-notification`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
+            "icon": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "The icon to be displayed in the scoped notification. Accepts an `Icon` component"
+            },
             "theme": {
                 "type": {
                     "name": "enum",
@@ -13643,17 +13680,6 @@
                 },
                 "required": false,
                 "description": "Theme for the scoped notification"
-            },
-            "iconName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Icon for the scoped notification. This is currently limited to the utility set of icons.",
-                "defaultValue": {
-                    "value": "'info'",
-                    "computed": false
-                }
             }
         },
         "route": "scoped-notifications",
@@ -15221,7 +15247,7 @@
                 "required": false,
                 "description": "Content inside Tooltip.",
                 "defaultValue": {
-                    "value": "<span>Tooltip</span>",
+                    "value": "<span>{'Tooltip'}</span>",
                     "computed": false
                 }
             },
@@ -15675,18 +15701,24 @@
                     "value": {
                         "timeLeft": {
                             "name": "string",
-                            "description": "Amount of time left in trial, e.g. `30`",
                             "required": false
                         },
                         "timeLeftUnit": {
                             "name": "string",
-                            "description": "Unit of the amount of time left, e.g. `days`",
+                            "required": false
+                        },
+                        "timeLeftUnitAfter": {
+                            "name": "string",
                             "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "Renders the labels in the trial bar."
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `learnMoreAfter`: Amount of time left in trial, e.g. `30`\n* `learnMoreBefore`: Unit of the amount of time left, e.g. `days`\n* `timeLeftUnitAfter`: String after `timeLeftUnit`",
+                "defaultValue": {
+                    "value": "{\n    timeLeftUnitAfter: 'left in trial',\n}",
+                    "computed": false
+                }
             },
             "onRenderActions": {
                 "type": {
@@ -15945,11 +15977,19 @@
                         "description": {
                             "name": "string",
                             "required": false
+                        },
+                        "unitsCompletedAfter": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Weclome Mat labels for internationalization**\nThis object is merged with the default props object on every render.\n* `title`: Title for the Welcome Mat\n* `description`: Label for the radio input"
+                "description": "**Weclome Mat labels for internationalization**\nThis object is merged with the default props object on every render.\n* `title`: Title for the Welcome Mat\n* `description`: Label for the radio input\n* `unitsCompletedAfter`: Label for the radio input",
+                "defaultValue": {
+                    "value": "{\n    unitsCompletedAfter: 'units completed',\n}",
+                    "computed": false
+                }
             },
             "variant": {
                 "type": {
