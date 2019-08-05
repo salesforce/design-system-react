@@ -119,7 +119,7 @@ class ExpressionFormula extends React.Component {
 		);
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 		return (
-			<>
+			<React.Fragment>
 				<div
 					id={this.getId()}
 					className={classNames(
@@ -184,7 +184,7 @@ class ExpressionFormula extends React.Component {
 						onClick={this.props.events.onClickCheckSyntax}
 					/>
 				</div>
-			</>
+			</React.Fragment>
 		);
 	}
 }

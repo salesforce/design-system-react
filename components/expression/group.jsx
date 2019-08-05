@@ -232,7 +232,7 @@ class ExpressionGroup extends React.Component {
 
 		const body =
 			this.props.triggerType !== 'always' ? (
-				<>
+				<React.Fragment>
 					{this.props.triggerType === 'custom' ? (
 						<Input
 							label={labels.customLogic}
@@ -244,7 +244,7 @@ class ExpressionGroup extends React.Component {
 						/>
 					) : null}
 					<ul>{this.props.children}</ul>
-				</>
+				</React.Fragment>
 			) : null;
 
 		return !this.props.isRoot ? (
