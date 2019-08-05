@@ -45,17 +45,35 @@ const propTypes = {
  * The accordion component wraps accordion panels that can be selected and expanded. It accepts children to define the content displayed within.
  */
 class Accordion extends Component {
+	constructor(props) {
+		super(props);
+		this.state = { currButtonIndex: 0 }
+	}
+
 	componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
 
+	componentDidUpdate(prevState) {
+		if (this.state.currButtonIndex !== prevState.currButtonIndex) {
+			const id = this.props.children[this.state.currButtonIndex].props.id;
+			document.getElementById(`${id}-accordion-button`).focus();
+		}
+	}
+
 	onKeyDown(e) {
-		console.log('whaddup')
+		let newIndex = this.state.currButtonIndex;
 		if (e.key === 'ArrowDown') {
 			e.preventDefault();
+			newIndex++;
+			if (newIndex > this.props.children.length - 1) newIndex = 0;
 		} else if (e.key === 'ArrowUp') {
 			e.preventDefault();
+			newIndex--;
+			if (newIndex < 0) newIndex = this.props.children.length - 1;
 		}
+
+		this.setState({ currButtonIndex: newIndex });
 	}
 
 	render() {
@@ -72,7 +90,6 @@ class Accordion extends Component {
 						)
 					})
 				}
-				{/* {this.props.children} */}
 			</ul>
 		);
 	}
