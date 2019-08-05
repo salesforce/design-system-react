@@ -2525,6 +2525,18 @@
                 "returns": null
             },
             {
+                "name": "getPanelId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ carouselId, itemId }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "getCurrentPanel",
                 "docblock": null,
                 "modifiers": [],
@@ -2915,6 +2927,13 @@
                 },
                 "required": false,
                 "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
+            },
+            "aria-labelledby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The aria-labelledby attribute establishes relationships between objects and their label(s), and its value should be one or more element IDs, which refer to elements that have the text needed for labeling. List multiple element IDs in a space delimited fashion."
             },
             "aria-owns": {
                 "type": {
@@ -4868,13 +4887,17 @@
                         "selectRow": {
                             "name": "string",
                             "required": false
+                        },
+                        "selectRowGroup": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `actionsHeader`: Text for heading of actions column\n* `columnSort`: Text for sort action on table column header\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\n* `selectAllRows`: Text for select all checkbox within the table header\n* `selectRow`: Text for select row",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `actionsHeader`: Text for heading of actions column\n* `columnSort`: Text for sort action on table column header\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\n* `selectAllRows`: Text for select all checkbox within the table header\n* `selectRow`: Text for select row. Default: \"Select row 1\"\n* `selectRowGroup`: This is an input group label and is attached to each checkbox or radio. Default is \"Choose a row to select\"",
                 "defaultValue": {
-                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n}",
+                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n    selectRowGroup: 'Choose a row to select',\n}",
                     "computed": false
                 }
             },
@@ -5580,13 +5603,17 @@
                         "previousMonth": {
                             "name": "string",
                             "required": false
+                        },
+                        "year": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `nextMonth`: Label for button to go to the next month _Tested with snapshot testing._\n* `openCalendar`: Call to action label for calendar dialog trigger _Tested with snapshot testing._\n* `previousMonth`: Label for button to go to the previous month _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    nextMonth: 'Next month',\n    openCalendar: 'Open Calendar',\n    previousMonth: 'Previous month',\n}",
+                    "value": "{\n    nextMonth: 'Next month',\n    openCalendar: 'Open Calendar',\n    previousMonth: 'Previous month',\n    year: 'Year',\n}",
                     "computed": false
                 }
             },
@@ -11961,6 +11988,23 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "progress": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `progress`: This is a visually hidden label for the percent of progress.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    progress: 'Progress',\n}",
+                    "computed": false
+                }
+            },
             "id": {
                 "type": {
                     "name": "string"
@@ -12310,12 +12354,36 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
             "aria-describedby": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
                 "description": "The ID of an element that describes this radio input. Often used for error messages."
+            },
+            "aria-labelledby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The aria-labelledby attribute establishes relationships between objects and their label(s), and its value should be one or more element IDs, which refer to elements that have the text needed for labeling. List multiple element IDs in a space delimited fashion."
             },
             "checked": {
                 "type": {
@@ -12638,6 +12706,23 @@
                         }
                     ],
                     "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "expandStep": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `expandStep`: Button that examples a step\n_Tested with snapshot testing._",
+                            "defaultValue": {
+                                "value": "{ expandStep: 'Expand Step' }",
+                                "computed": false
+                            }
+                        },
                         "className": {
                             "type": {
                                 "name": "union",
@@ -15221,7 +15306,7 @@
                 "required": false,
                 "description": "Content inside Tooltip.",
                 "defaultValue": {
-                    "value": "<span>Tooltip</span>",
+                    "value": "<span>{'Tooltip'}</span>",
                     "computed": false
                 }
             },
@@ -15675,18 +15760,24 @@
                     "value": {
                         "timeLeft": {
                             "name": "string",
-                            "description": "Amount of time left in trial, e.g. `30`",
                             "required": false
                         },
                         "timeLeftUnit": {
                             "name": "string",
-                            "description": "Unit of the amount of time left, e.g. `days`",
+                            "required": false
+                        },
+                        "timeLeftUnitAfter": {
+                            "name": "string",
                             "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "Renders the labels in the trial bar."
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `learnMoreAfter`: Amount of time left in trial, e.g. `30`\n* `learnMoreBefore`: Unit of the amount of time left, e.g. `days`\n* `timeLeftUnitAfter`: String after `timeLeftUnit`",
+                "defaultValue": {
+                    "value": "{\n    timeLeftUnitAfter: 'left in trial',\n}",
+                    "computed": false
+                }
             },
             "onRenderActions": {
                 "type": {
@@ -15945,11 +16036,19 @@
                         "description": {
                             "name": "string",
                             "required": false
+                        },
+                        "unitsCompletedAfter": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Weclome Mat labels for internationalization**\nThis object is merged with the default props object on every render.\n* `title`: Title for the Welcome Mat\n* `description`: Label for the radio input"
+                "description": "**Weclome Mat labels for internationalization**\nThis object is merged with the default props object on every render.\n* `title`: Title for the Welcome Mat\n* `description`: Label for the radio input\n* `unitsCompletedAfter`: Label for the radio input",
+                "defaultValue": {
+                    "value": "{\n    unitsCompletedAfter: 'units completed',\n}",
+                    "computed": false
+                }
             },
             "variant": {
                 "type": {
