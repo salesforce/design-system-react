@@ -375,7 +375,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      select this row 1
+                      Select this row 1
                     </span>
                   </label>
                 </span>
@@ -570,7 +570,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      select this row 2
+                      Select this row 2
                     </span>
                   </label>
                 </span>
@@ -765,7 +765,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      select this row 3
+                      Select this row 3
                     </span>
                   </label>
                 </span>
@@ -2095,7 +2095,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                 <span
                   className="slds-assistive-text"
                 >
-                  select this row 1
+                  Select this row 1
                 </span>
               </label>
             </span>
@@ -2287,7 +2287,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                 <span
                   className="slds-assistive-text"
                 >
-                  select this row 2
+                  Select this row 2
                 </span>
               </label>
             </span>
@@ -2479,7 +2479,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                 <span
                   className="slds-assistive-text"
                 >
-                  select this row 3
+                  Select this row 3
                 </span>
               </label>
             </span>
@@ -5741,7 +5741,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 1
+                          Select this row 1
                         </span>
                       </label>
                     </span>
@@ -5928,7 +5928,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 2
+                          Select this row 2
                         </span>
                       </label>
                     </span>
@@ -6115,7 +6115,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 3
+                          Select this row 3
                         </span>
                       </label>
                     </span>
@@ -6302,7 +6302,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 4
+                          Select this row 4
                         </span>
                       </label>
                     </span>
@@ -6489,7 +6489,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 5
+                          Select this row 5
                         </span>
                       </label>
                     </span>
@@ -6676,7 +6676,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 6
+                          Select this row 6
                         </span>
                       </label>
                     </span>
@@ -6863,7 +6863,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 7
+                          Select this row 7
                         </span>
                       </label>
                     </span>
@@ -7050,7 +7050,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 8
+                          Select this row 8
                         </span>
                       </label>
                     </span>
@@ -7237,7 +7237,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 9
+                          Select this row 9
                         </span>
                       </label>
                     </span>
@@ -7424,7 +7424,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 10
+                          Select this row 10
                         </span>
                       </label>
                     </span>
@@ -7611,7 +7611,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 11
+                          Select this row 11
                         </span>
                       </label>
                     </span>
@@ -7798,7 +7798,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 12
+                          Select this row 12
                         </span>
                       </label>
                     </span>
@@ -8768,7 +8768,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 1
+                          Select this row 1
                         </span>
                       </label>
                     </span>
@@ -8955,7 +8955,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 2
+                          Select this row 2
                         </span>
                       </label>
                     </span>
@@ -9142,7 +9142,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 3
+                          Select this row 3
                         </span>
                       </label>
                     </span>
@@ -9329,7 +9329,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 4
+                          Select this row 4
                         </span>
                       </label>
                     </span>
@@ -9516,7 +9516,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 5
+                          Select this row 5
                         </span>
                       </label>
                     </span>
@@ -9703,7 +9703,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 6
+                          Select this row 6
                         </span>
                       </label>
                     </span>
@@ -9890,7 +9890,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 7
+                          Select this row 7
                         </span>
                       </label>
                     </span>
@@ -10077,7 +10077,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 8
+                          Select this row 8
                         </span>
                       </label>
                     </span>
@@ -10264,7 +10264,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 9
+                          Select this row 9
                         </span>
                       </label>
                     </span>
@@ -10451,7 +10451,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 10
+                          Select this row 10
                         </span>
                       </label>
                     </span>
@@ -10638,7 +10638,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 11
+                          Select this row 11
                         </span>
                       </label>
                     </span>
@@ -10825,7 +10825,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row 12
+                          Select this row 12
                         </span>
                       </label>
                     </span>
