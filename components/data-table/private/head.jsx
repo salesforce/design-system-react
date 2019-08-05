@@ -115,9 +115,9 @@ class DataTableHead extends React.Component {
 					<div
 						className="slds-truncate slds-assistive-text"
 						id={`${this.props.id}-column-group-header-row-select`}
-						title="Choose a row to select"
+						title={this.props.assistiveText.selectRowGroup}
 					>
-						Choose a row to select
+						{this.props.assistiveText.selectRowGroup}
 					</div>
 				);
 			} else if (canSelectRows === 'checkbox') {
