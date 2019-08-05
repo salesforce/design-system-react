@@ -1,0 +1,33 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  'snyk:lic:npm:axe-core:MPL-2.0':
+    - '*':
+        reason: devtool
+        expires: 2029-06-16T00:29:25.488Z
+  'snyk:lic:npm:axe-puppeteer:MPL-2.0':
+    - '*':
+        reason: devtool
+        expires: 2029-06-16T00:29:25.488Z
+  SNYK-JS-LODASHMERGE-173732:
+    - jest-axe > lodash.merge:
+        reason: None given
+        expires: '2029-06-16T00:29:25.488Z'
+  SNYK-JS-LODASHMERGE-173733:
+    - jest-axe > lodash.merge:
+        reason: None given
+        expires: '2029-06-16T00:29:25.488Z'
+  'npm:chownr:20180731':
+    - chownr:
+        reason: None given
+        expires: '2029-06-16T00:29:25.488Z'
+  SNYK-JS-MIXINDEEP-450212:
+    - '*':
+        reason: None Given
+        expires: '2029-06-16T00:29:25.488Z'
+  SNYK-JS-SETVALUE-450213:
+    - '*':
+        reason: None Given
+        expires: '2029-06-16T00:29:25.488Z'
+patch: {}
