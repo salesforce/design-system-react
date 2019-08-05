@@ -112,7 +112,7 @@
 		"@babel/plugin-proposal-export-default-from": "^7.2.0",
 		"@babel/plugin-proposal-export-namespace-from": "^7.2.0",
 		"@babel/plugin-transform-modules-amd": "^7.2.0",
-		"@babel/plugin-transform-modules-commonjs": "^7.2.0",
+		"@babel/plugin-transform-modules-commonjs": "^7.5.0",
 		"@babel/polyfill": "^7.2.5",
 		"@babel/preset-env": "^7.4.5",
 		"@babel/preset-react": "^7.0.0",
