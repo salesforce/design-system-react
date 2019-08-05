@@ -494,7 +494,7 @@ class DataTable extends React.Component {
 				/>
 				<tbody>
 					{numRows > 0
-						? this.props.items.map((item) => {
+						? this.props.items.map((item, index) => {
 								const rowId =
 									this.getId() && item.id
 										? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
@@ -506,6 +506,7 @@ class DataTable extends React.Component {
 										columns={columns}
 										fixedLayout={this.props.fixedLayout}
 										id={rowId}
+										index={index}
 										item={item}
 										key={rowId}
 										onToggle={this.handleRowToggle}
