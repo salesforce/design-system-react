@@ -49,13 +49,30 @@ class Accordion extends Component {
 		this.generatedId = shortid.generate();
 	}
 
+	onKeyDown(e) {
+		console.log('whaddup')
+		if (e.key === 'ArrowDown') {
+			e.preventDefault();
+		} else if (e.key === 'ArrowUp') {
+			e.preventDefault();
+		}
+	}
+
 	render() {
 		return (
 			<ul
 				name={this.props.id || this.generatedId}
 				className={classNames('slds-accordion', this.props.className)}
 			>
-				{this.props.children}
+				{
+					this.props.children.map((child, i) => {
+						return React.cloneElement(
+							child,
+							{ onKeyDown: this.onKeyDown.bind(this) }
+						)
+					})
+				}
+				{/* {this.props.children} */}
 			</ul>
 		);
 	}
