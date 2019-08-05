@@ -120,7 +120,7 @@ class DataTableHead extends React.Component {
 						{this.props.assistiveText.selectRowGroup}
 					</div>
 				);
-			} else if (canSelectRows === 'checkbox') {
+			} else if (canSelectRows === true || canSelectRows === 'checkbox') {
 				render = (
 					<div
 						className="slds-th__action slds-th__action_form"
