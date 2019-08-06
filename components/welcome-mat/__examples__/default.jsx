@@ -54,14 +54,14 @@ class Example extends React.Component {
 								description="Tap into case history or share notes with fellow agents—it all happens on the utility bar."
 								id="welcome-mat-tile-3"
 								href="javascript:void(0);"
-								icon={<Icon category="utility" name="call" />}
+								icon={<Icon category="utility" name="upload" />}
 							/>
 							<WelcomeMatTile
 								title="Customize your view"
 								description="Tailor your cases to your team&#x27;s workflow with custom list views."
 								id="welcome-mat-tile-4"
 								href="javascript:void(0);"
-								icon={<Icon category="utility" name="upload" />}
+								icon={<Icon category="utility" name="magicwand" />}
 							/>
 							<WelcomeMatTile
 								title="Share the Knowledge"
