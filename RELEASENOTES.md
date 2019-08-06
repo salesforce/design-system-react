@@ -43,7 +43,7 @@ These are changes that have backwards-compatible solutions present and that comp
 
 **Bugfixes**
 
-* `Colorpicker`: Made 100% accessible
+* `Colorpicker`: Pass aXe static markup accessibility testing
 * `ProgressBar`: Use `getId` for id instead of hard-coded strings
 * `Tabs`: prevent panel children clicks from changing tabs at unexpected times
 * `WelcomeMat`: Add `slds-welcome-mat_info-only` class to container
