@@ -445,6 +445,21 @@
 			"url-slug": "expandable-section"
 		},
 		{
+			"component": "files",
+			"dependencies": [
+				{
+					"component": "file"
+				},
+				{
+					"component": "more-files"
+				}
+			],
+			"status": "prod",
+			"display-name": "Files",
+			"SLDS-component-path": "/components/files",
+			"url-slug": "files"
+		},
+		{
 			"component": "filter",
 			"status": "prototype",
 			"display-name": "Filters",
