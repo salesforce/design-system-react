@@ -1,0 +1,7 @@
+{
+    "component": "filter",
+    "status": "prototype",
+    "display-name": "Filters",
+    "SLDS-component-path": "/components/filter",
+    "url-slug": "filters"
+}

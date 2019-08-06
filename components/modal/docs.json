@@ -1,0 +1,7 @@
+{
+    "component": "modal",
+    "status": "prod",
+    "display-name": "Modals and Prompts",
+    "SLDS-component-path": "/components/modals",
+    "url-slug": "modals"
+}
