@@ -6198,6 +6198,400 @@
         "SLDS-component-path": "/components/expandable-section",
         "dependencies": []
     },
+    "files": {
+        "description": "Files is a component that wraps multiple file components that represent an attachment",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "Get the File's HTML id. Generate a new one if no ID present.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Get the File's HTML id. Generate a new one if no ID present."
+            }
+        ],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added to the container element. `array`, `object`, or `string` are accepted."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "crop": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'16-by-9'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'4-by-3'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'1-by-1'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Crop ratio for the file preview image",
+                "defaultValue": {
+                    "value": "'4-by-3'",
+                    "computed": false
+                }
+            },
+            "columnClassName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Column class names to be added each file in the grid"
+            }
+        },
+        "route": "files",
+        "display-name": "Files",
+        "SLDS-component-path": "/components/files",
+        "dependencies": [
+            {
+                "file": {
+                    "description": "File is a component that represents content uploaded as an attachment.",
+                    "methods": [
+                        {
+                            "name": "injectMoreActionsStyles",
+                            "docblock": null,
+                            "modifiers": [
+                                "static"
+                            ],
+                            "params": [],
+                            "returns": null
+                        },
+                        {
+                            "name": "getId",
+                            "docblock": "Get the File's HTML id. Generate a new one if no ID present.",
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null,
+                            "description": "Get the File's HTML id. Generate a new one if no ID present."
+                        }
+                    ],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "download": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "image": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "link": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "loading": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "moreActions": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\n * download - description for the download button if present\n * image - description for the file image\n * link - description for the file link\n * loading - description for the loading spinner if present\n * moreActions - description for the more actions dropdown if present",
+                            "defaultValue": {
+                                "value": "{\n    download: 'download',\n    link: 'Preview:',\n    loading: 'loading',\n    moreActions: 'more actions',\n}",
+                                "computed": false
+                            }
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS class names to be added to the container element. `array`, `object`, or `string` are accepted."
+                        },
+                        "crop": {
+                            "type": {
+                                "name": "enum",
+                                "value": [
+                                    {
+                                        "value": "'16-by-9'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'4-by-3'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'1-by-1'",
+                                        "computed": false
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Controls different cropping aspect ratios for the component",
+                            "defaultValue": {
+                                "value": "'16-by-9'",
+                                "computed": false
+                            }
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML id for component."
+                        },
+                        "onClickDownload": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Action to be done on clicking download button; doesn't show download button if empty"
+                        },
+                        "onClickImage": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function that is called when image is clicked; can be used instead of href for more advanced event handling"
+                        },
+                        "moreActionsDropdown": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Dropdown for more actions button; doesn't show more actions button if empty"
+                        },
+                        "icon": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Icon associated with the file. Accepts an Icon component"
+                        },
+                        "externalIcon": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Icon to be shown in top left corner of File component. Accepts an Icon component"
+                        },
+                        "image": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Link to thumbnail image"
+                        },
+                        "isLoading": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Controls whether file preview is loading",
+                            "defaultValue": {
+                                "value": "false",
+                                "computed": false
+                            }
+                        },
+                        "href": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Href attribute for image",
+                            "defaultValue": {
+                                "value": "'javascript:void(0);'",
+                                "computed": false
+                            }
+                        },
+                        "labels": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "title": {
+                                        "name": "string",
+                                        "required": true
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "Labels for the File Component\n* image - title for the file. Required."
+                        },
+                        "hasNoVisibleTitle": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Controls whether the file's title should be visible",
+                            "defaultValue": {
+                                "value": "false",
+                                "computed": false
+                            }
+                        }
+                    },
+                    "name": "file",
+                    "source": "/components/files/file.jsx"
+                }
+            },
+            {
+                "more-files": {
+                    "description": "",
+                    "methods": [
+                        {
+                            "name": "getId",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null
+                        }
+                    ],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "count": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "image": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "link": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\n * count - description for the more files count\n * image - description for the image\n * link - description for the more files link",
+                            "defaultValue": {
+                                "value": "{\n    count: 'more files',\n    image: 'Show more files',\n    link: 'Preview:',\n}",
+                                "computed": false
+                            }
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS class names to be added to the container element. `array`, `object`, or `string` are accepted."
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML id for component."
+                        },
+                        "crop": {
+                            "type": {
+                                "name": "enum",
+                                "value": [
+                                    {
+                                        "value": "'16-by-9'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'4-by-3'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'1-by-1'",
+                                        "computed": false
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Controls different cropping aspect ratios for the component",
+                            "defaultValue": {
+                                "value": "'16-by-9'",
+                                "computed": false
+                            }
+                        },
+                        "image": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Link to thumbnail image"
+                        },
+                        "count": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Controls the number of additional files that is displayed"
+                        },
+                        "href": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Href attribute for image",
+                            "defaultValue": {
+                                "value": "'javascript:void(0);'",
+                                "computed": false
+                            }
+                        }
+                    },
+                    "name": "more-files",
+                    "source": "/components/files/more-files.jsx"
+                }
+            }
+        ]
+    },
     "filter": {
         "description": "A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have \"portal mounts\" and be inline.",
         "methods": [
