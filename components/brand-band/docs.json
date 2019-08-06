@@ -1,0 +1,11 @@
+{
+    "component": "brand-band",
+    "status": "prod",
+    "display-name": "BrandBand",
+    "last-accessibility-review": {
+        "date-iso-8601": "2018/08/27",
+        "commit-sha": "aef31ce8daf993b59ca94c656c5efd9f2e3266f7"
+    },
+    "SLDS-component-path": "/components/brand-band",
+    "url-slug": "brand-band"
+}
