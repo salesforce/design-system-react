@@ -178,7 +178,9 @@ describe('Accordion', function describeFunction() {
 
 		it('focuses the next accordion button on arrow down', () => {
 			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
-			const accordionButtons = wrapper.find('button.slds-accordion__summary-action');
+			const accordionButtons = wrapper.find(
+				'button.slds-accordion__summary-action'
+			);
 
 			accordionButtons.at(0).simulate('keyDown', {
 				key: 'ArrowDown',
@@ -186,12 +188,16 @@ describe('Accordion', function describeFunction() {
 				which: 40,
 			});
 
-			expect(accordionButtons.at(1).getDOMNode() === document.activeElement).to.equal(true)
+			expect(
+				accordionButtons.at(1).getDOMNode() === document.activeElement
+			).to.equal(true);
 		});
 
 		it('focuses the previous accordion button on arrow up', () => {
 			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
-			const accordionButtons = wrapper.find('button.slds-accordion__summary-action');
+			const accordionButtons = wrapper.find(
+				'button.slds-accordion__summary-action'
+			);
 
 			accordionButtons.at(0).simulate('keyDown', {
 				key: 'ArrowUp',
@@ -199,8 +205,12 @@ describe('Accordion', function describeFunction() {
 				which: 38,
 			});
 
-			const lastAccordionButton = accordionButtons.at(accordionButtons.length - 1);
-			expect(lastAccordionButton.getDOMNode() === document.activeElement).to.equal(true)
+			const lastAccordionButton = accordionButtons.at(
+				accordionButtons.length - 1
+			);
+			expect(
+				lastAccordionButton.getDOMNode() === document.activeElement
+			).to.equal(true);
 		});
 	});
 
