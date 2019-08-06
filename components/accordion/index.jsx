@@ -47,7 +47,7 @@ const propTypes = {
 class Accordion extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { currButtonIndex: 0 }
+		this.state = { currButtonIndex: 0 };
 	}
 
 	componentWillMount() {
@@ -56,24 +56,31 @@ class Accordion extends Component {
 
 	componentDidUpdate(prevState) {
 		if (this.state.currButtonIndex !== prevState.currButtonIndex) {
-			const id = this.props.children[this.state.currButtonIndex].props.id;
+			const { id } = this.props.children[this.state.currButtonIndex].props;
 			document.getElementById(`${id}-accordion-button`).focus();
 		}
 	}
 
 	onKeyDown(e) {
-		let newIndex = this.state.currButtonIndex;
 		if (e.key === 'ArrowDown') {
 			e.preventDefault();
-			newIndex++;
-			if (newIndex > this.props.children.length - 1) newIndex = 0;
+			if (this.state.currButtonIndex < this.props.children.length - 1) {
+				this.setState((prevState) => ({
+					currButtonIndex: prevState.currButtonIndex + 1,
+				}));
+			} else {
+				this.setState({ currButtonIndex: 0 });
+			}
 		} else if (e.key === 'ArrowUp') {
 			e.preventDefault();
-			newIndex--;
-			if (newIndex < 0) newIndex = this.props.children.length - 1;
+			if (this.state.currButtonIndex > 0) {
+				this.setState((prevState) => ({
+					currButtonIndex: prevState.currButtonIndex - 1,
+				}));
+			} else {
+				this.setState({ currButtonIndex: this.props.children.length - 1 });
+			}
 		}
-
-		this.setState({ currButtonIndex: newIndex });
 	}
 
 	render() {
@@ -82,14 +89,11 @@ class Accordion extends Component {
 				name={this.props.id || this.generatedId}
 				className={classNames('slds-accordion', this.props.className)}
 			>
-				{
-					this.props.children.map((child, i) => {
-						return React.cloneElement(
-							child,
-							{ onKeyDown: this.onKeyDown.bind(this) }
-						)
+				{this.props.children.map((child) =>
+					React.cloneElement(child, {
+						onKeyDown: this.onKeyDown.bind(this),
 					})
-				}
+				)}
 			</ul>
 		);
 	}
