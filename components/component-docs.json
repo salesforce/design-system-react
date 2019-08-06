@@ -1,7 +1,20 @@
 {
     "accordion": {
         "description": "An accordion allows a user to toggle the display of sections of content.\nThe accordion component wraps accordion panels that can be selected and expanded. It accepts children to define the content displayed within.",
-        "methods": [],
+        "methods": [
+            {
+                "name": "onKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "e",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
         "props": {
             "className": {
                 "type": {
@@ -88,6 +101,13 @@
                             },
                             "required": false,
                             "description": "Component that can be passed as prop to `<Panel />`. As an example, a menu dropdown could be used here to handle additional actions for each accordion panel. _Tested with Mocha framework._"
+                        },
+                        "onKeyDown": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Callback that will run whenever there is a keydown on the panel button. Function doesn't change the state of the component."
                         },
                         "onTogglePanel": {
                             "type": {
