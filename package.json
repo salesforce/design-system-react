@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.10.8",
+	"version": "0.10.9",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -112,7 +112,7 @@
 		"@babel/plugin-proposal-export-default-from": "^7.2.0",
 		"@babel/plugin-proposal-export-namespace-from": "^7.2.0",
 		"@babel/plugin-transform-modules-amd": "^7.2.0",
-		"@babel/plugin-transform-modules-commonjs": "^7.2.0",
+		"@babel/plugin-transform-modules-commonjs": "^7.5.0",
 		"@babel/polyfill": "^7.2.5",
 		"@babel/preset-env": "^7.4.5",
 		"@babel/preset-react": "^7.0.0",
@@ -443,6 +443,21 @@
 			"display-name": "Expandable Section",
 			"SLDS-component-path": "/components/expandable-section",
 			"url-slug": "expandable-section"
+		},
+		{
+			"component": "files",
+			"dependencies": [
+				{
+					"component": "file"
+				},
+				{
+					"component": "more-files"
+				}
+			],
+			"status": "prod",
+			"display-name": "Files",
+			"SLDS-component-path": "/components/files",
+			"url-slug": "files"
 		},
 		{
 			"component": "filter",
