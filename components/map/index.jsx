@@ -39,6 +39,10 @@ const propTypes = {
 	 */
 	title: PropTypes.string,
 	/**
+	 * Accepts a single Map location
+	 */
+	location: PropTypes.string,
+	/**
 	 * Accepts Map locations as an array of Objects
 	 */
 	locations: PropTypes.arrayOf(PropTypes.object),
@@ -86,7 +90,7 @@ class Map extends React.Component {
 				id={this.getId()}
 				className={classNames(
 					`slds-grid`,
-					`slds-has-coordinates`,
+					{'slds-has-coordinates' : this.props.locations},
 					this.props.className
 				)}
 			>
@@ -97,12 +101,14 @@ class Map extends React.Component {
 							title="Google Maps iframe"
 							src={`https://www.google.com/maps/embed/v1/place?key=${
 								this.props.googleAPIKey
-							}&q=${encodeURIComponent(
-								this.props.locations[this.state.selected].address
-							)}`}
+							}&q=${ this.props.locations ?
+								encodeURIComponent(this.props.locations[this.state.selected].address)
+								: encodeURIComponent(this.props.location)
+							}`}
 						/>
 					</div>
 				</div>
+				{ this.props.locations ? (
 				<div className="slds-coordinates">
 					<div className="slds-coordinates__header">
 						<h2 className="slds-coordinates__title">{`${this.props.title} (${
@@ -111,7 +117,7 @@ class Map extends React.Component {
 					</div>
 					<ul className="slds-coordinates__list">
 						{this.props.locations.map((location, i) => (
-							<li className="slds-coordinates__item">
+							<li key={location.name} className="slds-coordinates__item">
 								<span className="slds-assistive-text" aria-live="polite" />
 								<button
 									type="button"
@@ -130,7 +136,7 @@ class Map extends React.Component {
 							</li>
 						))}
 					</ul>
-				</div>
+				</div>) : null }
 			</div>
 		);
 
@@ -140,7 +146,7 @@ class Map extends React.Component {
 			<Modal
 				isOpen={this.props.isModalOpen}
 				size="medium"
-				title={`${this.props.title} (${this.props.locations.length})`}
+				title={`${this.props.title}${this.props.locations ? ` (${this.props.locations.length})` : ''}`}
 				footer={this.props.modalFooter}
 			>
 				{mapContainer}

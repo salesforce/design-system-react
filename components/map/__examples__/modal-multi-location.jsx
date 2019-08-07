@@ -44,7 +44,7 @@ const data = [
 ];
 
 class Example extends React.Component {
-	static displayName = 'MapExampleInsideModal';
+	static displayName = 'ModalMapExampleMultipleLocations';
 
 	render() {
 		return (
