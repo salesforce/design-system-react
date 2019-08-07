@@ -57,6 +57,7 @@ const documentationSiteLiveExamples = {
 	slider: require('@salesforce/design-system-react/components/slider/__docs__/site-stories.js'),
 	spinner: require('@salesforce/design-system-react/components/spinner/__docs__/site-stories.js'),
 	'split-view': require('@salesforce/design-system-react/components/split-view/__docs__/site-stories.js'),
+	'summary-detail': require('@salesforce/design-system-react/components/summary-detail/__docs__/site-stories.js'),
 	'time-picker': require('@salesforce/design-system-react/components/time-picker/__docs__/site-stories.js'),
 	toast: require('@salesforce/design-system-react/components/toast/__docs__/site-stories.js'),
 	tooltip: require('@salesforce/design-system-react/components/tooltip/__docs__/site-stories.js'),

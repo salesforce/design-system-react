@@ -125,6 +125,7 @@ export const SPINNER = 'SLDSSpinner';
 export const SPLIT_VIEW = 'SLDSSplitView';
 export const SPLIT_VIEW_HEADER = 'SLDSSplitViewHeader';
 export const SPLIT_VIEW_LISTBOX = 'SLDSSplitViewListbox';
+export const SUMMARY_DETAIL = 'SLDSSummaryDetail';
 export const RADIO = 'SLDSRadio';
 export const RADIO_GROUP = 'SLDSRadioGroup';
 export const RADIO_BUTTON_GROUP = 'SLDSRadioButtonGroup';
