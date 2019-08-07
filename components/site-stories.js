@@ -35,6 +35,7 @@ const documentationSiteLiveExamples = {
 	'global-navigation-bar': require('@salesforce/design-system-react/components/global-navigation-bar/__docs__/site-stories.js'),
 	'icon-settings': require('@salesforce/design-system-react/components/icon-settings/__docs__/site-stories.js'),
 	lookup: require('@salesforce/design-system-react/components/lookup/__docs__/site-stories.js'),
+	map: require('@salesforce/design-system-react/components/map/__docs__/site-stories.js'),
 	'media-object': require('@salesforce/design-system-react/components/media-object/__docs__/site-stories.js'),
 	'menu-dropdown': require('@salesforce/design-system-react/components/menu-dropdown/__docs__/site-stories.js'),
 	'menu-picklist': require('@salesforce/design-system-react/components/menu-picklist/__docs__/site-stories.js'),

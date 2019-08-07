@@ -205,6 +205,9 @@ export Dropdown from './menu-dropdown';
 export SLDSDropdownTrigger from './menu-dropdown/button-trigger';
 export DropdownTrigger from './menu-dropdown/button-trigger';
 
+export SLDSMap from './map';
+export Map from './map';
+
 export SLDSMenuPicklist from './menu-picklist';
 export Picklist from './menu-picklist';
 
