@@ -8,6 +8,7 @@ import classNames from 'classnames';
 
 import KEYS from '../../utilities/key-code';
 import { RADIO } from '../../utilities/constants';
+import getAriaProps from '../../utilities/get-aria-props';
 import getDataProps from '../../utilities/get-data-props';
 import Swatch from '../../components/color-picker/private/swatch';
 import Icon from '../icon';
@@ -147,6 +148,7 @@ class Radio extends React.Component {
 	};
 
 	render() {
+		const ariaProps = getAriaProps(this.props);
 		const dataProps = getDataProps(this.props);
 
 		let radio;
@@ -193,10 +195,10 @@ class Radio extends React.Component {
 							</span>
 						</div>
 					) : (
-						<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
-							{this.props.onRenderVisualPicker()}
-						</span>
-					)}
+							<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
+								{this.props.onRenderVisualPicker()}
+							</span>
+						)}
 					{!this.props.vertical ? (
 						<span className="slds-visual-picker__body">
 							{labels.heading ? (
@@ -281,8 +283,8 @@ class Radio extends React.Component {
 							this.handleChange(event);
 						}
 					}}
-					aria-describedby={this.props['aria-describedby']}
 					disabled={this.props.disabled}
+					{...ariaProps}
 					{...dataProps}
 					ref={(input) => {
 						if (this.props.refs && this.props.refs.input) {
