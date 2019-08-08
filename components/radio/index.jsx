@@ -195,10 +195,10 @@ class Radio extends React.Component {
 							</span>
 						</div>
 					) : (
-							<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
-								{this.props.onRenderVisualPicker()}
-							</span>
-						)}
+						<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
+							{this.props.onRenderVisualPicker()}
+						</span>
+					)}
 					{!this.props.vertical ? (
 						<span className="slds-visual-picker__body">
 							{labels.heading ? (

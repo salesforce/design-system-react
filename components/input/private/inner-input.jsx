@@ -312,8 +312,8 @@ const InnerInput = (props) => {
 					{props.iconRight && props.iconRight}
 				</div>
 			) : (
-					props.iconRight && props.iconRight
-				)}
+				props.iconRight && props.iconRight
+			)}
 
 			{props.fixedTextRight && (
 				<span className="slds-form-element__addon">{props.fixedTextRight}</span>

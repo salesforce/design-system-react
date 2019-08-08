@@ -262,8 +262,8 @@ class Textarea extends React.Component {
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
 				: {
-					...this.props.assistiveText,
-				}.label;
+						...this.props.assistiveText,
+					}.label;
 
 		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
 
