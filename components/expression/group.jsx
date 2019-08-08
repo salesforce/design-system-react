@@ -190,9 +190,9 @@ class ExpressionGroup extends React.Component {
 			<Combobox
 				events={{
 					onSelect: (event, data) =>
-						this.props.events.onChangeTrigger(
-							ExpressionGroup.triggerChange(event, data)
-						),
+						this.props.events.onChangeTrigger(event, {
+							triggerType: ExpressionGroup.triggerChange(event, data),
+						}),
 				}}
 				id={`${this.getId()}-take-action-trigger`}
 				multiple={false}

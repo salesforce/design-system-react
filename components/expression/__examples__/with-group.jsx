@@ -24,6 +24,16 @@ class WithGroup extends React.Component {
 							},
 						],
 					},
+					{
+						isGroup: true,
+						triggerType: 'custom',
+						customLogic: '1 & 2',
+						conditions: [
+							{
+								resource: '111',
+							},
+						],
+					},
 				]}
 				triggerType="all"
 			/>

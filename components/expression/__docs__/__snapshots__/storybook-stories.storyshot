@@ -2076,6 +2076,352 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
             </div>
           </fieldset>
         </li>
+        <li
+          className="slds-expression__group"
+          id="expression-group-2"
+        >
+          <fieldset>
+            <legend
+              className="slds-expression__legend slds-expression__legend_group"
+            >
+              <span>
+                AND
+              </span>
+              <span
+                className="slds-assistive-text"
+              />
+            </legend>
+            <div
+              className="slds-expression__options"
+            >
+              <div
+                className="slds-form-element"
+              >
+                <label
+                  className="slds-form-element__label"
+                  htmlFor="expression-group-2-take-action-trigger"
+                >
+                  Take Action When
+                </label>
+                <div
+                  className="slds-form-element__control"
+                >
+                  <div
+                    className="slds-combobox_container"
+                  >
+                    <div
+                      aria-expanded={false}
+                      aria-haspopup="listbox"
+                      className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                      role="combobox"
+                    >
+                      <div
+                        className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                        role="none"
+                      >
+                        <input
+                          aria-activedescendant={null}
+                          aria-autocomplete="list"
+                          autoComplete="off"
+                          className="slds-input slds-combobox__input"
+                          disabled={false}
+                          id="expression-group-2-take-action-trigger"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          placeholder="Select an Option"
+                          readOnly={true}
+                          required={false}
+                          role="textbox"
+                          type="text"
+                          value="Custom Logic Is Met"
+                        />
+                        <span
+                          className="slds-icon_container slds-input__icon slds-input__icon_right"
+                        >
+                          <svg
+                            aria-hidden={true}
+                            className="slds-icon slds-icon_x-small slds-icon-text-default"
+                          >
+                            <use
+                              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ul>
+              <div
+                className="slds-form-element slds-expression__custom-logic"
+              >
+                <label
+                  className="slds-form-element__label"
+                  htmlFor="expression-group-2-custom-logic-input"
+                >
+                  Custom Logic
+                </label>
+                <div
+                  className="slds-form-element__control"
+                >
+                  <input
+                    className="slds-input"
+                    id="expression-group-2-custom-logic-input"
+                    onChange={[Function]}
+                    type="text"
+                    value="1 & 2"
+                  />
+                </div>
+              </div>
+              <ul>
+                <li
+                  className="slds-expression__row slds-expression__row_group"
+                  id="expression-group-2-condition-0"
+                >
+                  <fieldset>
+                    <legend
+                      className="slds-expression__legend"
+                    >
+                      <span>
+                        1
+                      </span>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Condition
+                      </span>
+                    </legend>
+                    <div
+                      className="slds-grid slds-gutters_xx-small"
+                    >
+                      <div
+                        className="slds-col"
+                      >
+                        <div
+                          className="slds-form-element"
+                        >
+                          <label
+                            className="slds-form-element__label"
+                            htmlFor="expression-group-2-condition-0-resource-selector"
+                          >
+                            Resource
+                          </label>
+                          <div
+                            className="slds-form-element__control"
+                          >
+                            <div
+                              className="slds-combobox_container"
+                            >
+                              <div
+                                aria-expanded={false}
+                                aria-haspopup="listbox"
+                                className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                                role="combobox"
+                              >
+                                <div
+                                  className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                  role="none"
+                                >
+                                  <input
+                                    aria-activedescendant={null}
+                                    aria-autocomplete="list"
+                                    autoComplete="off"
+                                    className="slds-input slds-combobox__input"
+                                    disabled={false}
+                                    id="expression-group-2-condition-0-resource-selector"
+                                    onBlur={[Function]}
+                                    onChange={[Function]}
+                                    onClick={[Function]}
+                                    onFocus={[Function]}
+                                    onKeyDown={[Function]}
+                                    placeholder="Select an Option"
+                                    readOnly={true}
+                                    required={false}
+                                    role="textbox"
+                                    type="text"
+                                    value="Resource 1"
+                                  />
+                                  <span
+                                    className="slds-icon_container slds-input__icon slds-input__icon_right"
+                                  >
+                                    <svg
+                                      aria-hidden={true}
+                                      className="slds-icon slds-icon_x-small slds-icon-text-default"
+                                    >
+                                      <use
+                                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                      />
+                                    </svg>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        className="slds-col slds-grow-none"
+                      >
+                        <div
+                          className="slds-form-element"
+                        >
+                          <label
+                            className="slds-form-element__label"
+                            htmlFor="expression-group-2-condition-0-operator-selector"
+                          >
+                            Operator
+                          </label>
+                          <div
+                            className="slds-form-element__control"
+                          >
+                            <div
+                              className="slds-combobox_container"
+                            >
+                              <div
+                                aria-expanded={false}
+                                aria-haspopup="listbox"
+                                className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                                role="combobox"
+                              >
+                                <div
+                                  className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                  role="none"
+                                >
+                                  <input
+                                    aria-activedescendant={null}
+                                    aria-autocomplete="list"
+                                    autoComplete="off"
+                                    className="slds-input slds-combobox__input"
+                                    disabled={false}
+                                    id="expression-group-2-condition-0-operator-selector"
+                                    onBlur={[Function]}
+                                    onChange={[Function]}
+                                    onClick={[Function]}
+                                    onFocus={[Function]}
+                                    onKeyDown={[Function]}
+                                    placeholder="Select an Option"
+                                    readOnly={true}
+                                    required={false}
+                                    role="textbox"
+                                    type="text"
+                                    value=""
+                                  />
+                                  <span
+                                    className="slds-icon_container slds-input__icon slds-input__icon_right"
+                                  >
+                                    <svg
+                                      aria-hidden={true}
+                                      className="slds-icon slds-icon_x-small slds-icon-text-default"
+                                    >
+                                      <use
+                                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                      />
+                                    </svg>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        className="slds-col"
+                      >
+                        <div
+                          className="slds-form-element"
+                        >
+                          <label
+                            className="slds-form-element__label"
+                            htmlFor="expression-group-2-condition-0-input"
+                          >
+                            Value
+                          </label>
+                          <div
+                            className="slds-form-element__control"
+                          >
+                            <input
+                              className="slds-input"
+                              disabled={false}
+                              id="expression-group-2-condition-0-input"
+                              onChange={[Function]}
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        className="slds-col slds-grow-none"
+                      >
+                        <div
+                          className="slds-form-element"
+                        >
+                          <span
+                            className="slds-form-element__label"
+                          >
+                             
+                          </span>
+                          <div
+                            className="slds-form-element__control"
+                          >
+                            <button
+                              className="slds-button slds-button_icon-border-filled"
+                              disabled={false}
+                              id="expression-group-2-condition-0-delete-button"
+                              onClick={[Function]}
+                              title="Delete Condition"
+                              type="button"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                className="slds-button__icon"
+                              >
+                                <use
+                                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                                />
+                              </svg>
+                              <span
+                                className="slds-assistive-text"
+                              >
+                                Delete Condition
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </li>
+              </ul>
+            </ul>
+            <div
+              className="slds-expression__buttons"
+            >
+              <button
+                className="slds-button slds-button_neutral"
+                disabled={false}
+                id="expression-group-2-add-condition-button"
+                onClick={[Function]}
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon slds-button__icon_left"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                  />
+                </svg>
+                Add Condition
+              </button>
+            </div>
+          </fieldset>
+        </li>
       </ul>
       <div
         className="slds-expression__buttons"

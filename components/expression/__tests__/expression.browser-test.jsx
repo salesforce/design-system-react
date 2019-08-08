@@ -30,33 +30,23 @@ const OperatorsList = [
 ];
 
 const DemoCondition = (props) => (
-		<ExpressionCondition
-			resourcesList={ResourcesList}
-			operatorsList={OperatorsList}
-			{...props}
-			id="test"
-		/>
-);
-
-const DemoGroup = (props) => (
-		<ExpressionGroup
-			{...props}
-			id="test"
-		/>
-);
-
-const DemoFormula = (props) => (
-	<ExpressionFormula
+	<ExpressionCondition
+		resourcesList={ResourcesList}
+		operatorsList={OperatorsList}
 		{...props}
 		id="test"
 	/>
 );
 
+const DemoGroup = (props) => <ExpressionGroup {...props} id="test" />;
+
+const DemoFormula = (props) => <ExpressionFormula {...props} id="test" />;
+
 describe('SLDSExpression', function describeFunction() {
 	const handles = {
 		condition: null,
 		group: null,
-		formula: null
+		formula: null,
 	};
 
 	function mountCondition(props) {
@@ -69,17 +59,13 @@ describe('SLDSExpression', function describeFunction() {
 
 	function mountGroup(props) {
 		handles.group = mount(
-			<IconSettings iconPath="/assets/icons">
-				{DemoGroup(props)}
-			</IconSettings>
+			<IconSettings iconPath="/assets/icons">{DemoGroup(props)}</IconSettings>
 		);
 	}
 
 	function mountFormula(props) {
 		handles.formula = mount(
-			<IconSettings iconPath="/assets/icons">
-				{DemoFormula(props)}
-			</IconSettings>
+			<IconSettings iconPath="/assets/icons">{DemoFormula(props)}</IconSettings>
 		);
 	}
 
@@ -99,7 +85,7 @@ describe('SLDSExpression', function describeFunction() {
 		beforeEach(() => {
 			mountCondition({
 				events: {
-					onChangeResource:  (event, data) => {
+					onChangeResource: (event, data) => {
 						resourceChange = { event, data };
 					},
 					onChangeOperator: (event, data) => {
@@ -109,9 +95,9 @@ describe('SLDSExpression', function describeFunction() {
 						valueChange = { event, data };
 					},
 					onDelete: (event, data) => {
-						 deleteClicked = { event, data };
-					}
-				}
+						deleteClicked = { event, data };
+					},
+				},
 			});
 		});
 
@@ -119,22 +105,26 @@ describe('SLDSExpression', function describeFunction() {
 			const node = getNodes(handles.condition);
 			expect(node.resourceSelector).attr('value', '');
 			node.resourceSelector.simulate('focus');
-			node.resourceSelector.simulate('change', {
-				target: { value: ResourcesList[0].label },
-			});
 			node.resourceSelector.simulate('keyDown', keyObjects.DOWN);
-			expect(node.resourceSelector).attr('value', ResourcesList[0].label);
+			node.resourceSelector.simulate('keyDown', keyObjects.DOWN);
+			node.resourceSelector.simulate('keyDown', keyObjects.ENTER);
+			expect(resourceChange !== undefined).to.eql(true);
+			expect(typeof resourceChange.event).to.eql('object');
+			expect(typeof resourceChange.data).to.eql('object');
+			expect(resourceChange.data.selection[0]).to.equal(ResourcesList[1]);
 		});
 
 		it('Operator selector works', function() {
 			const node = getNodes(handles.condition);
 			expect(node.operatorSelector).attr('value', '');
 			node.operatorSelector.simulate('focus');
-			node.operatorSelector.simulate('change', {
-				target: { value: OperatorsList[0].label },
-			});
 			node.operatorSelector.simulate('keyDown', keyObjects.DOWN);
-			expect(node.operatorSelector).attr('value', OperatorsList[0].label);
+			node.operatorSelector.simulate('keyDown', keyObjects.DOWN);
+			node.operatorSelector.simulate('keyDown', keyObjects.ENTER);
+			expect(operatorChange !== undefined).to.eql(true);
+			expect(typeof operatorChange.event).to.eql('object');
+			expect(typeof operatorChange.data).to.eql('object');
+			expect(operatorChange.data.selection[0]).to.equal(OperatorsList[1]);
 		});
 
 		it('Value input works', function() {
@@ -163,35 +153,48 @@ describe('SLDSExpression', function describeFunction() {
 			trigger: wrapper.find('input[id="test-take-action-trigger"]'),
 			addGroup: wrapper.find('button[id="test-add-group-button"]'),
 			addCondition: wrapper.find('button[id="test-add-condition-button"]'),
+			customLogicInput: wrapper.find('input[id="test-custom-logic-input"]'),
 		});
 
 		beforeEach(() => {
 			mountGroup({
 				isRoot: true,
+				triggerType: 'custom',
 				events: {
-						onChangeTrigger: (event, data) => {
-							triggerChange = { event, data };
-						},
-						onAddGroup: (event, data) => {
-							addGroup = { event, data };
-						},
-						onAddCondition: (event, data) => {
-							addCondition = { event, data };
-						},
-						onChangeCustomLogicValue: (event,data) => {
-							customLogic = { event, data };
-						}
-				}
+					onChangeTrigger: (event, data) => {
+						triggerChange = { event, data };
+					},
+					onAddGroup: (event, data) => {
+						addGroup = { event, data };
+					},
+					onAddCondition: (event, data) => {
+						addCondition = { event, data };
+					},
+					onChangeCustomLogicValue: (event, data) => {
+						customLogic = { event, data };
+					},
+				},
 			});
 		});
 
-		it('trigger change works', function() {
+		it('Trigger change button works', function() {
 			const node = getNodes(handles.group);
-			expect(node.trigger).attr('value', 'All Conditions Are Met');
-			node.trigger.simulate('focus');
-			node.trigger.simulate('change', { target: { value: 'Custom Logic Is Met' } });
-			node.trigger.simulate('keyDown', keyObjects.DOWN);
 			expect(node.trigger).attr('value', 'Custom Logic Is Met');
+			node.trigger.simulate('focus');
+			node.trigger.simulate('keyDown', keyObjects.DOWN);
+			node.trigger.simulate('keyDown', keyObjects.ENTER);
+			expect(triggerChange !== undefined).to.eql(true);
+			expect(typeof triggerChange.event).to.eql('object');
+			expect(typeof triggerChange.data).to.eql('object');
+			expect(triggerChange.data.triggerType).to.eql('all');
+		});
+
+		it('Custom logic input works', function() {
+			const node = getNodes(handles.group);
+			expect(node.customLogicInput).attr('value', '');
+			node.customLogicInput.simulate('focus');
+			node.customLogicInput.simulate('change', { target: { value: '1 + 2' } });
+			expect(customLogic.data.value).to.equal('1 + 2');
 		});
 
 		it('Add group button works', function() {
@@ -207,33 +210,28 @@ describe('SLDSExpression', function describeFunction() {
 			node.addCondition.simulate('click');
 			expect(addCondition === undefined).to.equal(false);
 		});
-
 	});
 
 	describe('Expression Formula', () => {
-		let textChanged;
 		let helpClicked;
 		let checkSyntaxClicked;
 
 		const getNodes = (wrapper) => ({
 			helpButton: wrapper.find('button[id="test-help-button"]'),
 			checkSyntax: wrapper.find('button[id="test-check-syntax-button"]'),
-			contentEditor: wrapper.find('div[id="test-content-editor"]')
+			contentEditor: wrapper.find('div[id="test-content-editor"]'),
 		});
 
 		beforeEach(() => {
 			mountFormula({
 				events: {
-					onChangeTextEditor: (event, data) => {
-						 textChanged = { event, data };
-					},
 					onClickHelp: (event, data) => {
-							helpClicked = { event, data };
+						helpClicked = { event, data };
 					},
 					onClickCheckSyntax: (event, data) => {
-							checkSyntaxClicked = { event, data };
-					}
-				}
+						checkSyntaxClicked = { event, data };
+					},
+				},
 			});
 		});
 
@@ -250,17 +248,5 @@ describe('SLDSExpression', function describeFunction() {
 			node.checkSyntax.simulate('click');
 			expect(checkSyntaxClicked === undefined).to.equal(false);
 		});
-
-		it('Content Editor', function() {
-			const node = getNodes(handles.formula);
-			console.log(node.contentEditor.getDOMNode());
-			node.contentEditor.simulate('change');
-			console.log(node.contentEditor.getDOMNode());
-			// expect(checkSyntaxClicked === undefined).to.equal(false);
-		});
-
 	});
-
-
-
 });
