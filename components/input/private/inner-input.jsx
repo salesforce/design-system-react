@@ -15,6 +15,27 @@ import getAriaProps from '../../../utilities/get-aria-props';
 const COUNTER = 'counter';
 
 const propTypes = {
+	'aria-activedescendant': PropTypes.string,
+	'aria-autocomplete': PropTypes.string,
+	/**
+	 * An HTML ID that is shared with ARIA-supported devices with the
+	 * `aria-controls` attribute in order to relate the input with
+	 * another region of the page. An example would be a select box
+	 * that shows or hides a panel.
+	 */
+	'aria-controls': PropTypes.string,
+	'aria-describedby': PropTypes.string,
+	'aria-expanded': PropTypes.bool,
+	'aria-haspopup': PropTypes.bool,
+	'aria-labelledby': PropTypes.string,
+	/**
+	 * An HTML ID that is shared with ARIA-supported devices with the
+	 * `aria-controls` attribute in order to relate the input with
+	 * another region of the page. An example would be a search field
+	 * that shows search results.
+	 */
+	'aria-owns': PropTypes.string,
+	'aria-required': PropTypes.bool,
 	/**
 	 * **Assistive text for accessibility.**
 	 * This object is merged with the default props object on every render.
