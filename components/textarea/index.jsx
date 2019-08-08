@@ -30,6 +30,7 @@ import shortid from 'shortid';
 import checkProps from './check-props';
 
 import { TEXTAREA } from '../../utilities/constants';
+import getAriaProps from '../../utilities/get-aria-props';
 
 import componentDoc from './docs.json';
 
@@ -256,12 +257,13 @@ class Textarea extends React.Component {
 			// ...props // Uncomment this if you actually need to send the rest of the props to other elements
 		} = this.props;
 
+		const ariaProps = getAriaProps(this.props);
 		const assistiveText =
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
 				: {
-						...this.props.assistiveText,
-					}.label;
+					...this.props.assistiveText,
+				}.label;
 
 		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
 
@@ -292,13 +294,6 @@ class Textarea extends React.Component {
 				)}
 				<div className={classNames('slds-form-element__control')}>
 					<textarea
-						aria-activedescendant={this.props['aria-activedescendant']}
-						aria-controls={this.props['aria-controls']}
-						aria-labelledby={this.props['aria-labelledby']}
-						aria-describedby={this.getErrorId()}
-						aria-expanded={this.props['aria-expanded']}
-						aria-owns={this.props['aria-owns']}
-						aria-required={this.props['aria-required']}
 						className={classNames('slds-textarea', className)}
 						autoFocus={autoFocus}
 						disabled={disabled}
@@ -323,6 +318,7 @@ class Textarea extends React.Component {
 						wrap={wrap}
 						value={value}
 						defaultValue={defaultValue}
+						{...ariaProps}
 					/>
 				</div>
 				{errorText && (
