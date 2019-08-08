@@ -199,6 +199,9 @@ const defaultProps = {
  */
 const InnerInput = (props) => {
 	const ariaProps = getAriaProps(props);
+	ariaProps['aria-describedby'] = props.hasSpinner
+		? `loading-status-icon ${props['aria-describedby']}`
+		: props['aria-describedby'];
 
 	const {
 		className: containerClassName,
@@ -232,12 +235,6 @@ const InnerInput = (props) => {
 
 			{!props.isStatic && (
 				<input
-					{...ariaProps}
-					aria-describedby={
-						props.hasSpinner
-							? `loading-status-icon ${props['aria-describedby']}`
-							: props['aria-describedby']
-					}
 					autoComplete={props.autoComplete}
 					className={classNames(
 						'slds-input',
@@ -274,6 +271,7 @@ const InnerInput = (props) => {
 					style={props.style}
 					tabIndex={props.tabIndex}
 					type={props.type}
+					{...ariaProps}
 					/* A form element should not have both value and defaultValue props. */
 					{...(props.value !== undefined
 						? { value: props.value }
