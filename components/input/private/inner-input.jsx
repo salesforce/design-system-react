@@ -10,30 +10,11 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Spinner from '../../../components/spinner';
 
+import getAriaProps from '../../../utilities/get-aria-props';
+
 const COUNTER = 'counter';
 
 const propTypes = {
-	'aria-activedescendant': PropTypes.string,
-	'aria-autocomplete': PropTypes.string,
-	/**
-	 * An HTML ID that is shared with ARIA-supported devices with the
-	 * `aria-controls` attribute in order to relate the input with
-	 * another region of the page. An example would be a select box
-	 * that shows or hides a panel.
-	 */
-	'aria-controls': PropTypes.string,
-	'aria-describedby': PropTypes.string,
-	'aria-expanded': PropTypes.bool,
-	'aria-haspopup': PropTypes.bool,
-	'aria-labelledby': PropTypes.string,
-	/**
-	 * An HTML ID that is shared with ARIA-supported devices with the
-	 * `aria-controls` attribute in order to relate the input with
-	 * another region of the page. An example would be a search field
-	 * that shows search results.
-	 */
-	'aria-owns': PropTypes.string,
-	'aria-required': PropTypes.bool,
 	/**
 	 * **Assistive text for accessibility.**
 	 * This object is merged with the default props object on every render.
@@ -217,6 +198,8 @@ const defaultProps = {
  * This component was created to allow the DIV wrapped input to be used within other components such as combobox. This components API is not public.
  */
 const InnerInput = (props) => {
+	const ariaProps = getAriaProps(props);
+
 	const {
 		className: containerClassName,
 		...containerProps
@@ -249,18 +232,12 @@ const InnerInput = (props) => {
 
 			{!props.isStatic && (
 				<input
-					aria-activedescendant={props['aria-activedescendant']}
-					aria-autocomplete={props['aria-autocomplete']}
-					aria-controls={props['aria-controls']}
-					aria-labelledby={props['aria-labelledby']}
+					{...ariaProps}
 					aria-describedby={
 						props.hasSpinner
 							? `loading-status-icon ${props['aria-describedby']}`
 							: props['aria-describedby']
 					}
-					aria-expanded={props['aria-expanded']}
-					aria-owns={props['aria-owns']}
-					aria-required={props['aria-required']}
 					autoComplete={props.autoComplete}
 					className={classNames(
 						'slds-input',
@@ -316,8 +293,8 @@ const InnerInput = (props) => {
 					{props.iconRight && props.iconRight}
 				</div>
 			) : (
-				props.iconRight && props.iconRight
-			)}
+					props.iconRight && props.iconRight
+				)}
 
 			{props.fixedTextRight && (
 				<span className="slds-form-element__addon">{props.fixedTextRight}</span>
