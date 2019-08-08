@@ -26,6 +26,8 @@ import componentDoc from './docs.json';
 import { CHECKBOX } from '../../utilities/constants';
 import Icon from '../icon';
 
+import getAriaProps from '../../utilities/get-aria-props';
+
 const propTypes = {
 	/**
 	 * An HTML ID that is shared with ARIA-supported devices with the
@@ -224,13 +226,9 @@ class Checkbox extends React.Component {
 		}
 	};
 
-	renderButtonGroupVariant = (props, assistiveText, labels) => (
+	renderButtonGroupVariant = (props, ariaProps, assistiveText, labels) => (
 		<span className="slds-button slds-checkbox_button">
 			<input
-				aria-controls={this.props['aria-controls']}
-				aria-describedby={this.props['aria-describedby']}
-				aria-owns={this.props['aria-owns']}
-				aria-required={this.props['aria-required']}
 				disabled={props.disabled}
 				/* A form element should not have both checked and defaultChecked props. */
 				{...(props.checked !== undefined
@@ -250,6 +248,7 @@ class Checkbox extends React.Component {
 				role={props.role}
 				required={props.required}
 				type="checkbox"
+				{...ariaProps}
 			/>
 			<label className="slds-checkbox_button__label" htmlFor={this.getId()}>
 				<span className="slds-checkbox_faux">{labels.label}</span>
@@ -260,7 +259,7 @@ class Checkbox extends React.Component {
 		</span>
 	);
 
-	renderBaseVariant = (props, assistiveText, labels) => (
+	renderBaseVariant = (props, ariaProps, assistiveText, labels) => (
 		<div
 			className={classNames(
 				'slds-form-element',
@@ -279,10 +278,6 @@ class Checkbox extends React.Component {
 						</abbr>
 					) : null}
 					<input
-						aria-controls={this.props['aria-controls']}
-						aria-describedby={this.props['aria-describedby']}
-						aria-owns={this.props['aria-owns']}
-						aria-required={this.props['aria-required']}
 						disabled={props.disabled}
 						/* A form element should not have both checked and defaultChecked props. */
 						{...(props.checked !== undefined
@@ -306,6 +301,7 @@ class Checkbox extends React.Component {
 						role={props.role}
 						required={props.required}
 						type="checkbox"
+						{...ariaProps}
 					/>
 					<label className="slds-checkbox__label" htmlFor={this.getId()}>
 						<span className="slds-checkbox_faux" />
@@ -324,7 +320,7 @@ class Checkbox extends React.Component {
 		</div>
 	);
 
-	renderToggleVariant = (props, assistiveText, labels) => (
+	renderToggleVariant = (props, ariaProps, assistiveText, labels) => (
 		<div
 			className={classNames(
 				'slds-form-element',
@@ -350,10 +346,6 @@ class Checkbox extends React.Component {
 					<span className="slds-assistive-text">{assistiveText.label}</span>
 				) : null}
 				<input
-					aria-controls={this.props['aria-controls']}
-					aria-describedby={`${this.getId()}-desc`}
-					aria-owns={this.props['aria-owns']}
-					aria-required={this.props['aria-required']}
 					disabled={props.disabled}
 					id={this.getId()}
 					/* A form element should not have both checked and defaultChecked props. */
@@ -373,6 +365,7 @@ class Checkbox extends React.Component {
 					role={props.role}
 					required={props.required}
 					type="checkbox"
+					{...ariaProps}
 				/>
 				<span
 					id={`${this.getId()}-desc`}
@@ -390,7 +383,7 @@ class Checkbox extends React.Component {
 		</div>
 	);
 
-	renderVisualPickerVariant = (props, assistiveText) => (
+	renderVisualPickerVariant = (props, ariaProps, assistiveText) => (
 		<span
 			className={classNames(
 				'slds-visual-picker',
@@ -399,10 +392,6 @@ class Checkbox extends React.Component {
 			)}
 		>
 			<input
-				aria-controls={this.props['aria-controls']}
-				aria-describedby={this.props['aria-describedby']}
-				aria-owns={this.props['aria-owns']}
-				aria-required={this.props['aria-required']}
 				disabled={props.disabled}
 				/* A form element should not have both checked and defaultChecked props. */
 				{...(props.checked !== undefined
@@ -422,6 +411,7 @@ class Checkbox extends React.Component {
 				role={props.role}
 				required={props.required}
 				type="checkbox"
+				{...ariaProps}
 			/>
 			<label className="slds-checkbox_button__label" htmlFor={this.getId()}>
 				{this.props.coverable ? (
@@ -434,10 +424,10 @@ class Checkbox extends React.Component {
 						</span>
 					</div>
 				) : (
-					<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
-						{this.props.onRenderVisualPicker()}
-					</span>
-				)}
+						<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
+							{this.props.onRenderVisualPicker()}
+						</span>
+					)}
 				{!this.props.vertical ? (
 					<span className="slds-visual-picker__body">
 						{this.props.labels.heading ? (
@@ -469,6 +459,7 @@ class Checkbox extends React.Component {
 	);
 
 	render() {
+		const ariaProps = getAriaProps(this.props);
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			/* Remove backward compatibility at next breaking change */
@@ -495,8 +486,8 @@ class Checkbox extends React.Component {
 		const variantExists = subRenders[this.props.variant];
 
 		return variantExists
-			? subRenders[this.props.variant](this.props, assistiveText, labels)
-			: subRenders.base(this.props, assistiveText, labels);
+			? subRenders[this.props.variant](this.props, ariaProps, assistiveText, labels)
+			: subRenders.base(this.props, ariaProps, assistiveText, labels);
 	}
 }
 
