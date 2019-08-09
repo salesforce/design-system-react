@@ -318,6 +318,9 @@ export UtilityIcon from './utilities/utility-icon';
 export SLDSTree from './tree';
 export Tree from './tree';
 
+export SLDSTreeGrid from './tree-grid';
+export TreeGrid from './tree-grid';
+
 export SLDSTrialBar from './trial-bar';
 export TrialBar from './trial-bar';
 

@@ -9,16 +9,33 @@ import classNames from 'classnames';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
-
-import Row from './private/row';
-import Icon from '../icon';
-import Button from '../button';
+import assign from 'lodash.assign';
 
 import { TREE_GRID } from '../../utilities/constants';
+import TreeGridRow from './private/row';
+import TreeGridColumn from './column';
 
 const displayName = TREE_GRID;
 
 const propTypes = {
+	/**
+	 * **Assistive text for accessibility.**
+	 * This object is merged with the default props object on every render.
+	 * * `actionsHeader`: Text for heading of actions column
+	 * * `columnSort`: Text for sort action on table column header
+	 * * `columnSortedAscending`: Text announced once a column is sorted in ascending order
+	 * * `columnSortedDescending`: Text announced once a column is sorted in descending order
+	 * * `selectAllRows`: Text for select all checkbox within the table header
+	 * * `selectRow`: Text for select row
+	 */
+	assistiveText: PropTypes.shape({
+		actionsHeader: PropTypes.string,
+		// columnSort: PropTypes.string,
+		// columnSortedAscending: PropTypes.string,
+		// columnSortedDescending: PropTypes.string,
+		selectAllRows: PropTypes.string,
+		selectRow: PropTypes.string,
+	}),
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
@@ -37,7 +54,27 @@ const propTypes = {
 		selectAll: PropTypes.string,
 	}),
 
-	data: PropTypes.object.isRequired,
+	/**
+	 * This function triggers when a row is expanded
+	 */
+	onExpandRow: PropTypes.func.isRequired,
+	/**
+	 * This function fires when the selection of rows changes. This component passes in `event, { selection }` to the function. `selection` is an array of objects from the `items` prop.
+	 */
+	onRowChange: PropTypes.func,
+	/**
+	 * Specifies a row selection UX pattern.
+	 * * `multiple`: This is the default
+	 * * `single`: Single row selection.
+	 * _This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility._
+	 */
+	selectRows: PropTypes.oneOf(['single', 'multiple']),
+	/**
+	 * TreeGrids have horizontal borders by default. This removes them.
+	 */
+	unborderedRow: PropTypes.bool,
+
+	items: PropTypes.arrayOf(PropTypes.object).isRequired,
 
 	isSingleSelect: PropTypes.bool,
 };
@@ -58,6 +95,22 @@ class TreeGrid extends React.Component {
 	}
 
 	render() {
+		const columns = [];
+		React.Children.forEach(this.props.children, (child) => {
+			if (child && child.type.displayName === TreeGridColumn.displayName) {
+				const { children, ...columnProps } = child.props;
+
+				const props = assign({}, this.props);
+				delete props.children;
+				assign(props, columnProps);
+
+				columns.push({
+					props,
+					dataTableProps: this.props,
+				});
+			}
+		});
+
 		return (
 			<table
 				id={this.getId()}
@@ -67,7 +120,6 @@ class TreeGrid extends React.Component {
 					'slds-table_bordered',
 					'slds-table_edit',
 					'slds-table_fixed-layout',
-					'slds-table_resizable-cols',
 					'slds-tree slds-table_tree',
 					this.props.className
 				)}
@@ -75,7 +127,7 @@ class TreeGrid extends React.Component {
 			>
 				<thead>
 					<tr className="slds-line-height_reset">
-						{ !this.props.isSingleSelect ? (
+						{!this.props.isSingleSelect ? (
 							<th
 								className="slds-text-align_right"
 								scope="col"
@@ -106,85 +158,20 @@ class TreeGrid extends React.Component {
 										</label>
 									</div>
 								</div>
-							</th>) : null
-						}
-						{this.props.data.cols.map((col) => (
-							<th
-								key={col.id}
-								aria-label={col.label}
-								aria-sort="none"
-								className="slds-has-button-menu slds-is-resizable slds-is-sortable"
-								scope="col"
-							>
-								<a
-									className="slds-th__action slds-text-link_reset"
-									href={col.href}
-									role="button"
-									tabIndex="-1"
-								>
-									<span className="slds-assistive-text">Sort by: </span>
-									<div className="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
-										<span className="slds-truncate" title="Account Name">
-											{col.label}
-										</span>
-										<Icon
-											category="utility"
-											name="arrowdown"
-											className="slds-is-sortable__icon"
-										/>
-									</div>
-								</a>
-								<Button
-									variant="base"
-									className="slds-th__action-button"
-									iconSize="small"
-									iconCategory="utility"
-									iconName="chevrondown"
-									assistiveText={{
-										icon: `Show ${col.label} column actions`,
-									}}
-								/>
-								<div className="slds-resizable">
-									<input
-										type="range"
-										aria-label={`${col.label} column width`}
-										className="slds-resizable__input slds-assistive-text"
-										max="1000"
-										min="20"
-										tabIndex="-1"
-									/>
-									<span className="slds-resizable__handle">
-										<span className="slds-resizable__divider" />
-									</span>
-								</div>
 							</th>
-						))}
+						) : null}
+						{this.props.children}
 					</tr>
 				</thead>
 				<tbody>
-					{this.props.data.rows
-						? this.props.data.rows.map((row) => (
-								<React.Fragment key={row.id}>
-									<Row
-										data={row}
-										cols={this.props.data.cols}
-										isSelected={row.isSelected}
-										childOpen={row.childOpen}
-										isSingleSelect={this.props.isSingleSelect}
-									/>
-									{row.subRows
-										? row.subRows.map((r) =>
-											<Row
-												key={r.id}
-												level={2}
-												data={r}
-												isSingleSelect={this.props.isSingleSelect}
-												cols={this.props.data.cols}
-											/>)
-										: null}
-								</React.Fragment>
-							))
-						: null}
+					{this.props.items.map((row, i) => (
+						<TreeGridRow
+							key={`${this.props.id}-row-${i}`}
+							id={`${this.props.id}-row-${i}`}
+							columns={columns}
+							row={row}
+						/>
+					))}
 				</tbody>
 			</table>
 		);
@@ -193,6 +180,5 @@ class TreeGrid extends React.Component {
 
 TreeGrid.displayName = displayName;
 TreeGrid.propTypes = propTypes;
-// TreeGrid.defaultProps = defaultProps;
 
 export default TreeGrid;

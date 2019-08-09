@@ -1,130 +1,206 @@
 import React from 'react';
+
 import TreeGrid from '~/components/tree-grid';
+import TreeGridColumn from '~/components/tree-grid/column';
 import IconSettings from '~/components/icon-settings';
 
-const data = {
-	cols: [
-		{
-			id: '1',
-			label: 'Account Name',
-			href: 'javascript:void(0);',
-		},
-		{
-			id: '2',
-			label: 'Employees',
-			href: 'javascript:void(0);',
-		},
-		{
-			id: '3',
-			label: 'Phone Number',
-			href: 'javascript:void(0);',
-		},
-		{
-			id: '4',
-			label: 'Account Owner',
-			href: 'javascript:void(0);',
-		},
-		{
-			id: '5',
-			label: 'Billing City',
-			href: 'javascript:void(0);',
-		},
-	],
-	rows: [
-		{
-			id: '1',
-			cols: [
-				{
-					label: 'Rewis Inc',
-				},
-				{
-					label: '3100',
-				},
-				{
-					label: '837-555-1212',
-				},
-				{
-					label: 'Jane Doe',
-					href: 'javascript:void(0);',
-				},
-				{
-					label: 'Phoenix, AZ',
-				},
-			],
-		},
-		{
-			id: '2',
-			cols: [
-				{
-					label: 'Acme Corporation',
-				},
-				{
-					label: '10000',
-				},
-				{
-					label: '837-555-1212',
-				},
-				{
-					label: 'Jane Doe',
-					href: 'javascript:void(0);',
-				},
-				{
-					label: 'San Francisco, CA',
-				},
-			],
-		},
-		{
-			id: '3',
-			cols: [
-				{
-					label: 'Rohde Enterprises',
-				},
-				{
-					label: '6000',
-				},
-				{
-					label: '837-555-1212',
-				},
-				{
-					label: 'Jane Doe',
-					href: 'javascript:void(0);',
-				},
-				{
-					label: 'New York, NY',
-				},
-			],
-		},
-		{
-			id: '4',
-			cols: [
-				{
-					label: 'Cheese Corp',
-				},
-				{
-					label: '1234',
-				},
-				{
-					label: '837-555-1212',
-				},
-				{
-					label: 'Jane Doe',
-					href: 'javascript:void(0);',
-				},
-				{
-					label: 'Paris, France',
-				},
-			],
-		},
-	],
-};
+const columns = [
+	<TreeGridColumn
+		type="text"
+		key="account"
+		label="Account Name"
+		property="accountName"
+		initialWidth={300}
+		isPrimaryColumn
+	/>,
+	<TreeGridColumn
+		type="number"
+		key="employees"
+		label="Employees"
+		property="employees"
+		initialWidth={150}
+	/>,
+	<TreeGridColumn
+		type="phone"
+		key="phone"
+		label="Phone Number"
+		property="phone"
+		initialWidth={200}
+	/>,
+	<TreeGridColumn
+		type="url"
+		key="owner"
+		label="Account Owner"
+		property="accountOwner"
+		initialWidth={150}
+		typeAttributes={{
+			label: { fieldName: 'accountOwnerName' },
+		}}
+	/>,
+	<TreeGridColumn
+		type="text"
+		key="city"
+		label="Billing City"
+		property="billingCity"
+		initialWidth={200}
+	/>,
+];
 
 class Example extends React.Component {
-	static displayName = 'treeGridExample';
+	static displayName = 'TreeGridExample';
+
+	state = {
+		items: [
+			{
+				name: '123555',
+				accountName: 'Rewis Inc',
+				employees: 3100,
+				phone: '837-555-1212',
+				accountOwner: 'http://example.com/jane-doe',
+				accountOwnerName: 'Jane Doe',
+				billingCity: 'Phoeniz, AZ',
+			},
+			{
+				name: '123556',
+				accountName: 'Acme Corporation',
+				employees: 10000,
+				phone: '837-555-1212',
+				accountOwner: 'http://example.com/john-doe',
+				accountOwnerName: 'John Doe',
+				billingCity: 'San Francisco, CA',
+				nodes: [
+					{
+						name: '123556-A',
+						accountName: 'Acme Corporation (Bay Area)',
+						employees: 3000,
+						phone: '837-555-1212',
+						accountOwner: 'http://example.com/john-doe',
+						accountOwnerName: 'John Doe',
+						billingCity: 'New York, NY',
+						_children: [
+							{
+								name: '123556-A-A',
+								accountName: 'Acme Corporation (Oakland)',
+								employees: 745,
+								phone: '837-555-1212',
+								accountOwner: 'http://example.com/john-doe',
+								accountOwnerName: 'John Doe',
+								billingCity: 'New York, NY',
+							},
+							{
+								name: '123556-A-B',
+								accountName: 'Acme Corporation (San Francisco)',
+								employees: 578,
+								phone: '837-555-1212',
+								accountOwner: 'http://example.com/jane-doe',
+								accountOwnerName: 'Jane Doe',
+								billingCity: 'Los Angeles, CA',
+							},
+						],
+					},
+					{
+						name: '123556-B',
+						accountName: 'Acme Corporation (East)',
+						employees: 430,
+						phone: '837-555-1212',
+						accountOwner: 'http://example.com/john-doe',
+						accountOwnerName: 'John Doe',
+						billingCity: 'San Francisco, CA',
+						nodes: [
+							{
+								name: '123556-B-A',
+								accountName: 'Acme Corporation (NY)',
+								employees: 1210,
+								phone: '837-555-1212',
+								accountOwner: 'http://example.com/jane-doe',
+								accountOwnerName: 'Jane Doe',
+								billingCity: 'New York, NY',
+							},
+							{
+								name: '123556-B-B',
+								accountName: 'Acme Corporation (VA)',
+								employees: 410,
+								phone: '837-555-1212',
+								accountOwner: 'http://example.com/john-doe',
+								accountOwnerName: 'John Doe',
+								billingCity: 'New York, NY',
+								nodes: [
+									{
+										name: '123556-B-B-A',
+										accountName: 'Allied Technologies',
+										employees: 390,
+										phone: '837-555-1212',
+										accountOwner: 'http://example.com/jane-doe',
+										accountOwnerName: 'Jane Doe',
+										billingCity: 'Los Angeles, CA',
+										nodes: [
+											{
+												name: '123556-B-B-A-A',
+												accountName: 'Allied Technologies (UV)',
+												employees: 270,
+												phone: '837-555-1212',
+												accountOwner: 'http://example.com/john-doe',
+												accountOwnerName: 'John Doe',
+												billingCity: 'San Francisco, CA',
+											},
+										],
+									},
+								],
+							},
+						],
+					},
+				],
+			},
+
+			{
+				name: '123557',
+				accountName: 'Rhode Enterprises',
+				employees: 6000,
+				phone: '837-555-1212',
+				accountOwner: 'http://example.com/john-doe',
+				accountOwnerName: 'John Doe',
+				billingCity: 'New York, NY',
+				nodes: [
+					{
+						name: '123557-A',
+						accountName: 'Rhode Enterprises (UCA)',
+						employees: 2540,
+						phone: '837-555-1212',
+						accountOwner: 'http://example.com/john-doe',
+						accountOwnerName: 'John Doe',
+						billingCity: 'New York, NY',
+					},
+				],
+			},
+			{
+				name: '123558',
+				accountName: 'Tech Labs',
+				employees: 1856,
+				phone: '837-555-1212',
+				accountOwner: 'http://example.com/john-doe',
+				accountOwnerName: 'John Doe',
+				billingCity: 'New York, NY',
+				nodes: [
+					{
+						name: '123558-A',
+						accountName: 'Opportunity Resources Inc',
+						employees: 1934,
+						phone: '837-555-1212',
+						accountOwner: 'http://example.com/john-doe',
+						accountOwnerName: 'John Doe',
+						billingCity: 'Los Angeles, CA',
+					},
+				],
+			},
+		],
+	};
 
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<TreeGrid data={data} />
+				<div style={{ overflow: 'auto' }}>
+					<TreeGrid items={this.state.items}>{columns}</TreeGrid>
+				</div>
 			</IconSettings>
 		);
 	}
