@@ -4,10 +4,32 @@ import classNames from 'classnames';
 
 import { TREE_GRID_ROW } from '../../../utilities/constants';
 import Button from '../../button';
+import Checkbox from '../../checkbox';
 import TreeGridCell from './cell';
 
 const TreeGridRow = (props) => {
 	const [isOpen, setExpansion] = useState(false);
+	const [isSelected, setSelection] = useState(props.isSelected);
+
+	const children = props.row.nodes
+		? props.row.nodes.map((row, i) => (
+				<TreeGridRow
+					id={`${props.id}-sub-row-${i}`}
+					level={props.level + 1}
+					columns={props.columns}
+					row={row}
+					isSelected={isSelected}
+					isOpen={false}
+					onClickMoreActions={(e, o) => props.onClickMoreActions(e, o)}
+				/>
+			))
+		: null;
+
+	const triggerSelection = (event, object) => {
+		if (props.onClickSelect) props.onClickSelect(event, object);
+		setSelection(!isSelected);
+	};
+
 	return (
 		<React.Fragment>
 			<tr
@@ -16,8 +38,8 @@ const TreeGridRow = (props) => {
 				aria-selected="false"
 				aria-setsize="4"
 				className={classNames(
-					`slds-hint-parent`
-					// props.isSelected ? `slds-is-selected` : null
+					`slds-hint-parent`,
+					isSelected ? `slds-is-selected` : null
 				)}
 				tabIndex="0"
 			>
@@ -27,28 +49,15 @@ const TreeGridRow = (props) => {
 						role="gridcell"
 						style={{ width: '3.25rem' }}
 					>
-						<div className="slds-checkbox">
-							<input
-								type="checkbox"
-								name="options"
-								id={`${props.id}-checkbox`}
-								value={`${props.id}-checkbox`}
-								checked={props.isSelected}
-								aria-labelledby={`${
-									props.id
-								}-check-button-label column-group-header`}
-							/>
-							<label
-								className="slds-checkbox__label"
-								htmlFor={`${props.id}-checkbox`}
-								id={`${props.id}-check-button-label`}
-							>
-								<span className="slds-checkbox_faux" />
-								<span className="slds-form-element__label slds-assistive-text">
-									Select item {props.id}
-								</span>
-							</label>
-						</div>
+						<Checkbox
+							name="options"
+							assistiveText={{
+								label: `Select item ${props.id}`,
+							}}
+							id={`${props.id}-checkbox`}
+							checked={isSelected}
+							onChange={(event, object) => triggerSelection(event, object)}
+						/>
 					</td>
 				) : null}
 				{props.columns.map((col, i) => (
@@ -74,20 +83,11 @@ const TreeGridRow = (props) => {
 						assistiveText={{
 							icon: `More actions for`,
 						}}
+						onClick={(e, o) => props.onClickMoreActions(e, o)}
 					/>
 				</td>
 			</tr>
-			{isOpen && props.row.nodes
-				? props.row.nodes.map((row, i) => (
-						<TreeGridRow
-							id={`${props.id}-sub-row-${i}`}
-							level={props.level + 1}
-							columns={props.columns}
-							row={row}
-							isOpen={false}
-						/>
-					))
-				: null}
+			{isOpen ? children : null}
 		</React.Fragment>
 	);
 };

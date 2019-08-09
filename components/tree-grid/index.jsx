@@ -14,6 +14,7 @@ import assign from 'lodash.assign';
 import { TREE_GRID } from '../../utilities/constants';
 import TreeGridRow from './private/row';
 import TreeGridColumn from './column';
+import Checkbox from '../checkbox';
 
 const displayName = TREE_GRID;
 
@@ -29,11 +30,12 @@ const propTypes = {
 	 * * `selectRow`: Text for select row
 	 */
 	assistiveText: PropTypes.shape({
+		actions: PropTypes.string,
 		actionsHeader: PropTypes.string,
 		// columnSort: PropTypes.string,
 		// columnSortedAscending: PropTypes.string,
 		// columnSortedDescending: PropTypes.string,
-		selectAllRows: PropTypes.string,
+		selectAll: PropTypes.string,
 		selectRow: PropTypes.string,
 	}),
 	/**
@@ -48,6 +50,8 @@ const propTypes = {
 	 * HTML id for component.
 	 */
 	id: PropTypes.string,
+
+	events: PropTypes.shape({}),
 
 	labels: PropTypes.shape({
 		chooseRow: PropTypes.string,
@@ -77,13 +81,29 @@ const propTypes = {
 	items: PropTypes.arrayOf(PropTypes.object).isRequired,
 
 	isSingleSelect: PropTypes.bool,
+
+	isHeadless: PropTypes.bool,
+	isBorderless: PropTypes.bool,
+};
+
+const defaultProps = {
+	assistiveText: {
+		actions: 'Actions',
+		actionsHeader: 'Action Header',
+		selectAll: 'Select All',
+		selectRow: 'Select Row',
+	},
 };
 
 /**
  * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed.
  */
 class TreeGrid extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+		this.state = {
+			selectAll: false,
+		};
 		this.generatedId = shortid.generate();
 	}
 
@@ -94,7 +114,18 @@ class TreeGrid extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
+	selectAll() {
+		const curr = this.state.selectAll;
+		this.setState({ selectAll: !curr });
+	}
+
 	render() {
+		const assistiveText = assign(
+			{},
+			defaultProps.assistiveText,
+			this.props.assistiveText
+		);
+
 		const columns = [];
 		React.Children.forEach(this.props.children, (child) => {
 			if (child && child.type.displayName === TreeGridColumn.displayName) {
@@ -111,68 +142,72 @@ class TreeGrid extends React.Component {
 			}
 		});
 
+		const rows = this.props.items.map((row, i) => (
+			<TreeGridRow
+				key={`${this.props.id}-row-${i}`}
+				id={`${this.props.id}-row-${i}`}
+				columns={columns}
+				isSelected={this.state.selectAll}
+				row={row}
+				onClickMoreActions={this.props.events.onClickMoreActions}
+			/>
+		));
+
 		return (
 			<table
 				id={this.getId()}
 				aria-multiselectable="true"
 				className={classNames(
 					'slds-table',
-					'slds-table_bordered',
 					'slds-table_edit',
 					'slds-table_fixed-layout',
 					'slds-tree slds-table_tree',
+					{ 'slds-table_bordered': !this.props.isBorderless },
+					{ 'slds-table_header-hidden': this.props.isHeadless },
 					this.props.className
 				)}
 				role="treegrid"
 			>
-				<thead>
-					<tr className="slds-line-height_reset">
-						{!this.props.isSingleSelect ? (
-							<th
-								className="slds-text-align_right"
-								scope="col"
-								style={{ width: '3.5rem' }}
-							>
-								<span id="column-group-header" className="slds-assistive-text">
-									Choose a row
-								</span>
-								<div className="slds-th__action slds-th__action_form">
-									<div className="slds-checkbox">
-										<input
-											type="checkbox"
+				{this.props.isHeadless ? null : (
+					<thead>
+						<tr className="slds-line-height_reset">
+							{!this.props.isSingleSelect ? (
+								<th
+									className="slds-text-align_right"
+									scope="col"
+									style={{ width: '3.5rem' }}
+								>
+									<span
+										id="column-group-header"
+										className="slds-assistive-text"
+									>
+										{assistiveText.selectRow}
+									</span>
+									<div className="slds-th__action slds-th__action_form">
+										<Checkbox
+											assistiveText={{
+												label: assistiveText.selectAll,
+											}}
 											name="options"
-											id="checkbox-177"
-											value="checkbox-177"
-											tabIndex="-1"
-											aria-labelledby="check-select-all-label column-group-header"
+											checked={this.state.selectAll}
+											onChange={() => this.selectAll()}
 										/>
-										<label
-											className="slds-checkbox__label"
-											htmlFor="checkbox-177"
-											id="check-select-all-label"
-										>
-											<span className="slds-checkbox_faux" />
-											<span className="slds-form-element__label slds-assistive-text">
-												Select All
-											</span>
-										</label>
 									</div>
+								</th>
+							) : null}
+							{this.props.children}
+							<th className="" scope="col" style={{ width: '3.25rem' }}>
+								<div
+									className="slds-truncate slds-assistive-text"
+									title={assistiveText.actions}
+								>
+									{assistiveText.actions}
 								</div>
 							</th>
-						) : null}
-						{this.props.children}
-					</tr>
-				</thead>
-				<tbody>
-					{this.props.items.map((row, i) => (
-						<TreeGridRow
-							key={`${this.props.id}-row-${i}`}
-							id={`${this.props.id}-row-${i}`}
-							columns={columns}
-							row={row}
-						/>
-					))}
-				</tbody>
+						</tr>
+					</thead>
+				)}
+				<tbody>{rows}</tbody>
 			</table>
 		);
 	}
@@ -180,5 +215,6 @@ class TreeGrid extends React.Component {
 
 TreeGrid.displayName = displayName;
 TreeGrid.propTypes = propTypes;
+TreeGrid.defaultProps = defaultProps;
 
 export default TreeGrid;

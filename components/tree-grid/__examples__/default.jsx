@@ -4,6 +4,8 @@ import TreeGrid from '~/components/tree-grid';
 import TreeGridColumn from '~/components/tree-grid/column';
 import IconSettings from '~/components/icon-settings';
 
+import log from '~/utilities/log';
+
 const columns = [
 	<TreeGridColumn
 		type="text"
@@ -77,7 +79,7 @@ class Example extends React.Component {
 						accountOwner: 'http://example.com/john-doe',
 						accountOwnerName: 'John Doe',
 						billingCity: 'New York, NY',
-						_children: [
+						nodes: [
 							{
 								name: '123556-A-A',
 								accountName: 'Acme Corporation (Oakland)',
@@ -199,7 +201,20 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ overflow: 'auto' }}>
-					<TreeGrid items={this.state.items}>{columns}</TreeGrid>
+					<TreeGrid
+						items={this.state.items}
+						events={{
+							onClickMoreActions: (event, value) =>
+								log({
+									action: this.props.action,
+									event,
+									eventName: 'More Actions Button Clicked',
+									data: value,
+								}),
+						}}
+					>
+						{columns}
+					</TreeGrid>
 				</div>
 			</IconSettings>
 		);
