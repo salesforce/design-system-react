@@ -92,7 +92,6 @@ const propTypes = {
 
 const defaultProps = {
 	triggerType: 'all',
-	isRoot: false,
 	customLogicValue: '',
 	labels: {
 		label: '',

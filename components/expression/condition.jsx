@@ -122,7 +122,6 @@ const defaultProps = {
 		title: 'Condition',
 		deleteIcon: 'Delete Condition',
 	},
-	isSubCondition: false,
 	labels: {
 		label: '',
 		operator: 'Operator',

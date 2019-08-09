@@ -143,14 +143,14 @@ class Example extends React.Component {
 				<Expression
 					id="expression-example"
 					events={{
-						onChangeTrigger: (val) => {
+						onChangeTrigger: (event, data) => {
 							log({
 								action: this.props.action,
 								event,
 								eventName: 'Trigger Changed',
-								data: val,
+								data,
 							});
-							this.setState({ triggerType: val });
+							this.setState({ triggerType: data.triggerType });
 						},
 						onChangeCustomLogicValue: (event, data) => {
 							log({
@@ -164,7 +164,7 @@ class Example extends React.Component {
 						onAddCondition: () => {
 							log({
 								action: this.props.action,
-								event,
+								event: null,
 								eventName: 'New Condition Added',
 								data: null,
 							});
@@ -173,7 +173,7 @@ class Example extends React.Component {
 						onAddGroup: () => {
 							log({
 								action: this.props.action,
-								event,
+								event: null,
 								eventName: 'New Group Added',
 								data: null,
 							});
@@ -228,14 +228,14 @@ class Example extends React.Component {
 								onClickCheckSyntax: () =>
 									log({
 										action: this.props.action,
-										event,
+										event: null,
 										eventName: `Check Syntax Button Clicked`,
 										data: null,
 									}),
 								onClickHelp: () =>
 									log({
 										action: this.props.action,
-										event,
+										event: null,
 										eventName: `Get Help Button Clicked`,
 										data: null,
 									}),
@@ -320,7 +320,7 @@ class Example extends React.Component {
 											onDelete: () => {
 												log({
 													action: this.props.action,
-													event,
+													event: null,
 													eventName: `Condition ${i} Deleted`,
 													data: null,
 												});
@@ -358,7 +358,7 @@ class Example extends React.Component {
 											onChangeTrigger: (val) => {
 												log({
 													action: this.props.action,
-													event,
+													event: null,
 													eventName: `Trigger of Condition Group ${i} Changed`,
 													data: val,
 												});
@@ -367,7 +367,7 @@ class Example extends React.Component {
 											onAddCondition: () => {
 												log({
 													action: this.props.action,
-													event,
+													event: null,
 													eventName: `New Condition added to Condition Group ${i}`,
 													data: null,
 												});
@@ -393,13 +393,13 @@ class Example extends React.Component {
 												events={{
 													onClickCheckSyntax: log({
 														action: this.props.action,
-														event,
+														event: null,
 														eventName: `Check Syntax Button Clicked`,
 														data: null,
 													}),
 													onClickHelp: log({
 														action: this.props.action,
-														event,
+														event: null,
 														eventName: `Get Help Button Clicked`,
 														data: null,
 													}),
@@ -466,7 +466,7 @@ class Example extends React.Component {
 														onDelete: () => {
 															log({
 																action: this.props.action,
-																event,
+																event: null,
 																eventName: `Condition [${i},${j}] deleted`,
 																data: null,
 															});
