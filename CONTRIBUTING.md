@@ -67,9 +67,8 @@ If you are adding or changing component props, the first step is to propose the 
    1. Create snapshot tests from Storybook examples. Most props that don't involve user events can be tested here instead of with Mocha. `npm run test:dom-snapshot -- --watchAll` will run DOM snapshot tests interactively and watch changed files. `npm run test:dom-snapshot:update` will update snapshots.
    1. Add callback prop tests in Mocha test framework to `/components/[COMPONENT]/__tests__/`. Mocha tests are a last resort and should not be used for simple markup queries. These tests can be viewed at `http://localhost:8001`
 1. All components should have a comment description of the component before the class declaration in the source code. This should be copied from the subtitle or "lead" of the SLDS website component page. All props should have `propType` with a prop description comment before it that will be used on the documentation site. `npm test` will audit that these source code comments exist or warn with `components/component-docs.json has an empty string in it` error if they do not.
-1. Run `npm run prepare-components` in the terminal and look over the changes afterwards. (NOTE: this is also ran when running `npm test`) This will automatically perform the following:
+1. Run `npm run prepare-components` in the terminal and look over the changes afterwards. (NOTE: this is also ran first when running `npm test`) This will automatically perform the following:
    1. Adds public component exports to `/components/index.js` if not already present
-   1. Adds import of `__docs__/storybook-stories.jsx` to `/components/storybook-stories.js` if not already present to make the component appear in Storybook
    1. Generates updated `/components/site-stories.js` file with examples listed in `"site-stories"` section of `component.json` for use in the documentation site
    1. Copies contents of `component.json` into the `"components"` section of `package.json`
 1. Push to your username's forked repository.
