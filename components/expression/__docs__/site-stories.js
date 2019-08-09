@@ -4,7 +4,7 @@
 /* eslint-disable global-require */
 
 const siteStories = [
-	require('raw-loader!@salesforce/design-system-react/components/expression/__examples__/base.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/expression/__examples__/resource-selected.jsx'),
 ];
 
 module.exports = siteStories;
