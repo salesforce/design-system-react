@@ -20,14 +20,19 @@ export default (tableContext, cellContext, fixedLayout) => {
 		}
 	};
 
-	const handleKeyDown = () => {
-		if (fixedLayout) {
+	const handleKeyDown = (event) => {
+		if (fixedLayout && tableContext.allowKeyboardNavigation) {
 			tableContext.handleKeyDown(event);
 		}
 	};
 
 	const tabIndex =
-		fixedLayout && isActive && !tableContext.activeElement ? '0' : undefined;
+		fixedLayout &&
+		isActive &&
+		!tableContext.activeElement &&
+		tableContext.allowKeyboardNavigation
+			? '0'
+			: undefined;
 
 	return { tabIndex, hasFocus, handleFocus, handleKeyDown };
 };

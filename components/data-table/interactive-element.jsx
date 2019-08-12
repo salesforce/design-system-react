@@ -1,6 +1,6 @@
 import React from 'react';
 import shortid from 'shortid';
-import { Mode } from './index';
+import Mode from './private/mode';
 import CellContext from './private/cell-context';
 import TableContext from './private/table-context';
 
@@ -62,11 +62,7 @@ export default (WrappedElement) => {
 		}
 
 		render() {
-			const onFocus = this.onFocus;
-			const onBlur = this.onBlur;
-			const onRequestFocus = this.onRequestFocus;
-			const onOpen = this.onOpen;
-			const onClose = this.onClose;
+			const { onFocus, onBlur, onRequestFocus, onOpen, onClose } = this;
 			return (
 				<TableContext.Consumer>
 					{(tableContext) => (
@@ -113,6 +109,8 @@ export default (WrappedElement) => {
 			);
 		}
 	}
-	InteractiveElement.displayName = `InteractiveElement${WrappedElement.displayName}`;
+	InteractiveElement.displayName = `InteractiveElement${
+		WrappedElement.displayName
+	}`;
 	return InteractiveElement;
 };

@@ -36,6 +36,7 @@ import DataTableHead from './private/head';
 import DataTableRow from './private/row';
 import DataTableRowActions from './row-actions';
 import TableContext from './private/table-context';
+import Mode from './private/mode';
 
 import KEYS from '../../utilities/key-code';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
@@ -46,11 +47,6 @@ import {
 	DATA_TABLE_HEAD,
 	DATA_TABLE_ROW,
 } from '../../utilities/constants';
-
-export const Mode = Object.freeze({
-	NAVIGATION: 'navigation',
-	ACTIONABLE: 'actionable',
-});
 
 // Safely get the length of an array, returning 0 for invalid input.
 const count = (array) => (Array.isArray(array) ? array.length : 0);
@@ -137,7 +133,7 @@ class DataTable extends React.Component {
 		/**
 		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling.
 		 *
-		 * The advanced table implements keyboard navigation as described in [Data Tables](https://www.lightningdesignsystem.com/components/data-tables/).
+		 * When `keyboardNavigation` is enabled, the advanced table implements keyboard navigation as described in [Data Tables](https://www.lightningdesignsystem.com/components/data-tables/).
 		 * Wrap interactive elements in the table with `<DataTableInteractiveElement>` so that it can control the element's focus and `tabIndex` behavior:
 		 * ```
 		 * const InteractiveButton = DataTableInteractiveElement(Button);
@@ -172,6 +168,10 @@ class DataTable extends React.Component {
 		 * Makes DataTable joinable with PageHeader by adding appropriate classes/styling
 		 */
 		joined: PropTypes.bool,
+		/**
+		 * Enables keyboard navigation when this is an advanced table.
+		 */
+		keyboardNavigation: PropTypes.bool.isRequired,
 		/**
 		 * A variant which removes hover style on rows
 		 */
@@ -261,7 +261,7 @@ class DataTable extends React.Component {
 			tableHasFocus: false,
 			// Allows for keyboard navigation. This is useful for temporarily disabling keyboard navigation
 			// when another component requires its own focus behavior (e.g. menu dropdown).
-			allowKeyboardNavigation: true,
+			allowKeyboardNavigation: props.keyboardNavigation,
 		};
 		// Map of cells to interactive elements within that cell
 		this.interactiveElements = {};
@@ -311,137 +311,6 @@ class DataTable extends React.Component {
 			return this.interactiveElements[rowIndex][columnIndex][0];
 		}
 		return null;
-	}
-
-	changeActiveCell(rowIndex, columnIndex) {
-		this.setState({
-			tableHasFocus: true,
-			activeCell: { rowIndex, columnIndex },
-		});
-	}
-
-	changeActiveElement(activeElement) {
-		this.setState({ activeElement });
-	}
-
-	handleKeyDown(event) {
-		mapKeyEventCallbacks(event, {
-			callbacks: {
-				[KEYS.UP]: { callback: (evt) => this.handleKeyDownUp(evt) },
-				[KEYS.DOWN]: { callback: (evt) => this.handleKeyDownDown(evt) },
-				[KEYS.LEFT]: { callback: (evt) => this.handleKeyDownLeft(evt) },
-				[KEYS.RIGHT]: { callback: (evt) => this.handleKeyDownRight(evt) },
-				[KEYS.ENTER]: { callback: (evt) => this.handleKeyDownEnter(evt) },
-				[KEYS.ESCAPE]: { callback: (evt) => this.handleKeyDownEscape(evt) },
-			},
-		});
-	}
-
-	handleKeyDownUp() {
-		const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
-		const activeElement = this.getFirstInteractiveElement(
-			newRowIndex,
-			this.state.activeCell.columnIndex
-		);
-		if (newRowIndex !== this.state.activeCell.newRowIndex) {
-			this.setState({
-				activeCell: {
-					rowIndex: newRowIndex,
-					columnIndex: this.state.activeCell.columnIndex,
-				},
-				activeElement,
-			});
-		}
-	}
-
-	handleKeyDownDown() {
-		const newRowIndex = Math.min(
-			this.state.activeCell.rowIndex + 1,
-			this.props.items.length
-		);
-		const activeElement = this.getFirstInteractiveElement(
-			newRowIndex,
-			this.state.activeCell.columnIndex
-		);
-		if (newRowIndex !== this.state.activeCell.newRowIndex) {
-			this.setState({
-				activeCell: {
-					rowIndex: newRowIndex,
-					columnIndex: this.state.activeCell.columnIndex,
-				},
-				activeElement,
-			});
-		}
-	}
-
-	handleKeyDownLeft() {
-		const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
-		const activeElement = this.getFirstInteractiveElement(
-			this.state.activeCell.rowIndex,
-			newColumnIndex
-		);
-		if (newColumnIndex !== this.state.activeCell.columnIndex) {
-			this.setState({
-				activeCell: {
-					rowIndex: this.state.activeCell.rowIndex,
-					columnIndex: newColumnIndex,
-				},
-				activeElement,
-			});
-		}
-	}
-
-	handleKeyDownRight() {
-		const newColumnIndex = Math.min(
-			this.state.activeCell.columnIndex + 1,
-			this.props.children.length
-		);
-		const activeElement = this.getFirstInteractiveElement(
-			this.state.activeCell.rowIndex,
-			newColumnIndex
-		);
-		if (newColumnIndex !== this.state.activeCell.columnIndex) {
-			this.setState({
-				activeCell: {
-					rowIndex: this.state.activeCell.rowIndex,
-					columnIndex: newColumnIndex,
-				},
-				activeElement,
-			});
-		}
-	}
-
-	handleKeyDownEnter() {
-		if (this.state.mode === Mode.NAVIGATION) {
-			const { rowIndex, columnIndex } = this.state.activeCell;
-			let activeElement = null;
-			if (this.interactiveElements[rowIndex][columnIndex]) {
-				activeElement = this.interactiveElements[rowIndex][columnIndex][0];
-			}
-			this.setState({
-				mode: Mode.ACTIONABLE,
-				activeElement,
-			});
-		}
-	}
-
-	handleKeyDownEscape() {
-		if (this.state.mode === Mode.ACTIONABLE) {
-			this.setState({
-				mode: Mode.NAVIGATION,
-				activeElement: null,
-			});
-		}
-	}
-
-	registerInteractiveElement(rowIndex, columnIndex, elementId) {
-		if (!this.interactiveElements[rowIndex]) {
-			this.interactiveElements[rowIndex] = {};
-		}
-		if (!this.interactiveElements[rowIndex][columnIndex]) {
-			this.interactiveElements[rowIndex][columnIndex] = [];
-		}
-		this.interactiveElements[rowIndex][columnIndex].push(elementId);
 	}
 
 	handleToggleAll = (e, { checked }) => {
@@ -555,6 +424,137 @@ class DataTable extends React.Component {
 			}
 		}
 	};
+
+	changeActiveCell(rowIndex, columnIndex) {
+		this.setState({
+			tableHasFocus: true,
+			activeCell: { rowIndex, columnIndex },
+		});
+	}
+
+	changeActiveElement(activeElement) {
+		this.setState({ activeElement });
+	}
+
+	handleKeyDown(event) {
+		mapKeyEventCallbacks(event, {
+			callbacks: {
+				[KEYS.UP]: { callback: (evt) => this.handleKeyDownUp(evt) },
+				[KEYS.DOWN]: { callback: (evt) => this.handleKeyDownDown(evt) },
+				[KEYS.LEFT]: { callback: (evt) => this.handleKeyDownLeft(evt) },
+				[KEYS.RIGHT]: { callback: (evt) => this.handleKeyDownRight(evt) },
+				[KEYS.ENTER]: { callback: (evt) => this.handleKeyDownEnter(evt) },
+				[KEYS.ESCAPE]: { callback: (evt) => this.handleKeyDownEscape(evt) },
+			},
+		});
+	}
+
+	handleKeyDownUp() {
+		const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
+		const activeElement = this.getFirstInteractiveElement(
+			newRowIndex,
+			this.state.activeCell.columnIndex
+		);
+		if (newRowIndex !== this.state.activeCell.newRowIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: newRowIndex,
+					columnIndex: prevState.activeCell.columnIndex,
+				},
+				activeElement,
+			}));
+		}
+	}
+
+	handleKeyDownDown() {
+		const newRowIndex = Math.min(
+			this.state.activeCell.rowIndex + 1,
+			this.props.items.length
+		);
+		const activeElement = this.getFirstInteractiveElement(
+			newRowIndex,
+			this.state.activeCell.columnIndex
+		);
+		if (newRowIndex !== this.state.activeCell.newRowIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: newRowIndex,
+					columnIndex: prevState.activeCell.columnIndex,
+				},
+				activeElement,
+			}));
+		}
+	}
+
+	handleKeyDownLeft() {
+		const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
+		const activeElement = this.getFirstInteractiveElement(
+			this.state.activeCell.rowIndex,
+			newColumnIndex
+		);
+		if (newColumnIndex !== this.state.activeCell.columnIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: prevState.activeCell.rowIndex,
+					columnIndex: newColumnIndex,
+				},
+				activeElement,
+			}));
+		}
+	}
+
+	handleKeyDownRight() {
+		const newColumnIndex = Math.min(
+			this.state.activeCell.columnIndex + 1,
+			this.props.children.length
+		);
+		const activeElement = this.getFirstInteractiveElement(
+			this.state.activeCell.rowIndex,
+			newColumnIndex
+		);
+		if (newColumnIndex !== this.state.activeCell.columnIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: prevState.activeCell.rowIndex,
+					columnIndex: newColumnIndex,
+				},
+				activeElement,
+			}));
+		}
+	}
+
+	handleKeyDownEnter() {
+		if (this.state.mode === Mode.NAVIGATION) {
+			const { rowIndex, columnIndex } = this.state.activeCell;
+			let activeElement = null;
+			if (this.interactiveElements[rowIndex][columnIndex]) {
+				[activeElement] = this.interactiveElements[rowIndex][columnIndex];
+			}
+			this.setState({
+				mode: Mode.ACTIONABLE,
+				activeElement,
+			});
+		}
+	}
+
+	handleKeyDownEscape() {
+		if (this.state.mode === Mode.ACTIONABLE) {
+			this.setState({
+				mode: Mode.NAVIGATION,
+				activeElement: null,
+			});
+		}
+	}
+
+	registerInteractiveElement(rowIndex, columnIndex, elementId) {
+		if (!this.interactiveElements[rowIndex]) {
+			this.interactiveElements[rowIndex] = {};
+		}
+		if (!this.interactiveElements[rowIndex][columnIndex]) {
+			this.interactiveElements[rowIndex][columnIndex] = [];
+		}
+		this.interactiveElements[rowIndex][columnIndex].push(elementId);
+	}
 
 	// ### Render
 	render() {
@@ -681,6 +681,7 @@ class DataTable extends React.Component {
 					)}
 					id={this.getId()}
 					role={this.props.fixedLayout ? 'grid' : null}
+					style={this.props.style}
 					onBlur={() => this.setState({ tableHasFocus: false })}
 					style={this.props.style}
 				>

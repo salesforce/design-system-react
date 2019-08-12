@@ -3,6 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import deprecatedPropertyValue from '../../utilities/warning/deprecated-property-value';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 
@@ -48,6 +49,15 @@ if (process.env.NODE_ENV !== 'production') {
 			'onDeselect',
 			'onChange',
 			createDocUrl('onChange')
+		);
+		deprecatedPropertyValue(
+			COMPONENT,
+			{
+				propAsString: 'keyboardNavigation',
+				propValue: props.keyboardNavigation,
+				deprecatedPropValue: false,
+			},
+			'Use `true` instead, and ensure that interactive elements in the table are wrapped inside a `DataTableInteractiveElement`.'
 		);
 		sunsetProperty(
 			COMPONENT,

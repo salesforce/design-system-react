@@ -12,17 +12,21 @@ const InteractiveButton = DataTableInteractiveElement(Button);
 const InteractiveCheckBox = DataTableInteractiveElement(Checkbox);
 
 let index = 0;
-const CustomDataTableCell = ({ children, ...props }) => (
-	<DataTableCell {...props}>
-		<InteractiveCheckBox id={`${index++}`} label="Option" />
-		<InteractiveButton
-			onClick={(event) => {
-				event.preventDefault();
-			}}
-			label="Open"
-		/>
-	</DataTableCell>
-);
+const CustomDataTableCell = ({ children, ...props }) => {
+	const cell = (
+		<DataTableCell {...props}>
+			<InteractiveCheckBox id={`${index}`} labels={{ label: 'Option' }} />
+			<InteractiveButton
+				onClick={(event) => {
+					event.preventDefault();
+				}}
+				label="Open"
+			/>
+		</DataTableCell>
+	);
+	index += 1;
+	return cell;
+};
 CustomDataTableCell.displayName = DataTableCell.displayName;
 
 const columns = [
@@ -97,6 +101,7 @@ class Example extends React.Component {
 						items={this.state.items}
 						id="DataTableExample-1-default"
 						fixedLayout
+						keyboardNavigation
 					>
 						{columns}
 					</DataTable>
@@ -110,6 +115,7 @@ class Example extends React.Component {
 						id="DataTableExample-1-striped"
 						striped
 						fixedLayout
+						keyboardNavigation
 					>
 						{columns}
 					</DataTable>
@@ -123,6 +129,7 @@ class Example extends React.Component {
 						id="DataTableExample-noRowHover"
 						noRowHover
 						fixedLayout
+						keyboardNavigation
 					>
 						{columns}
 					</DataTable>
@@ -136,6 +143,7 @@ class Example extends React.Component {
 						items={this.state.items}
 						id="DataTableExample-columnBordered"
 						fixedLayout
+						keyboardNavigation
 					>
 						{columns}
 					</DataTable>
