@@ -456,8 +456,8 @@ class Input extends React.Component {
 	performStep = (direction, event) => {
 		clearTimeout(this.stepping.timeout);
 
-		const maxValue = this.props.maxValue;
-		const minValue = this.props.minValue;
+		const { maxValue } = this.props;
+		const { minValue } = this.props;
 		const step = this.props.step !== undefined ? Number(this.props.step) : 1;
 		let value = this.getValueAsNumber();
 		let valueChanged = false;

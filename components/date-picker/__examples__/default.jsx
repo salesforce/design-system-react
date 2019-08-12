@@ -11,6 +11,9 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Datepicker
+					labels={{
+						label: 'Date',
+					}}
 					onChange={(event, data) => {
 						if (this.props.action) {
 							const dataAsArray = Object.keys(data).map((key) => data[key]);

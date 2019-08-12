@@ -9,11 +9,7 @@ import { expect } from 'chai';
 import SLDSMenuPicklist from '../../menu-picklist';
 import IconSettings from '../../icon-settings';
 
-const {
-	Simulate,
-	scryRenderedDOMComponentsWithTag,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
+const { Simulate, findRenderedDOMComponentWithClass } = TestUtils;
 
 describe('SLDSMenuPicklist: ', function() {
 	let body;
@@ -56,11 +52,6 @@ describe('SLDSMenuPicklist: ', function() {
 
 	const getPicklist = (props) => renderPicklist(createPicklist(props));
 	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
-
-	const clickOnItem = (cmp, index) => {
-		const items = scryRenderedDOMComponentsWithTag(cmp, 'a');
-		Simulate.click(items[index]);
-	};
 
 	describe('in modal mode', () => {
 		let cmp;
@@ -129,7 +120,6 @@ describe('SLDSMenuPicklist: ', function() {
 	describe('expanded with onSelect', () => {
 		let cmp;
 		let btn;
-		let clicked;
 		let selected;
 
 		beforeEach(() => {
@@ -190,16 +180,9 @@ describe('SLDSMenuPicklist: ', function() {
 	describe('accessible markup', () => {
 		let cmp;
 		let btn;
-		let clicked;
-		let selected;
 
 		beforeEach(() => {
-			selected = false;
-			cmp = getPicklist({
-				onSelect: (i) => {
-					selected = i;
-				},
-			});
+			cmp = getPicklist({});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 

@@ -19,6 +19,7 @@ Testing is done using Mocha, Jest, and Storybook. Roughly speaking: Jest tests D
   * Browse to [http://localhost:8001](http://localhost:8001)
 * Run snapshot tests with `npm run test:snapshot` or, for just a specific file:
   `npm run test:snapshot components/button/`.
+* The entire test suite may take up to 10 minutes to run. To update Jest snapshots for a single component, use `npm run test:snapshot:update -- -t=popover` where the test name contains `popover`.
 
 ### React Storybook
 
@@ -52,12 +53,17 @@ Use Jest to test the presence of:
 
 * Mouse/keyboard user interaction (event callbacks)
 
+#### How to add new suites of tests
+
+Suites such as DOM snanpshot tests or accessibility tests should be added to all stories and the whole library at once. Stories that do not pass, should be exluded from continuous integration tests and an issue should be created to remove the component from exlusion. In short, add types of testing to all new components by excluding existing components that fail instead of adding existing components to a list of components to test. This forces new components to meet the requirements of the new tests and creates a list of components that need to be worked on instead of a list of components that currently pass.
+
 #### Source files
 
 Snapshot test suite source files that run stories present in `/components/story-based-tests.js`:
 
-* `/tests/story-based-tests.snapshot-test.js`
-* `/tests/story-based-accessibility-tests.js`
+* `/tests/story-based.accessibility-test.js`
+* `/tests/story-based.image-test.js`
+* `/tests/story-based.snapshot-test.js`
 
 #### Story removal from test suite
 

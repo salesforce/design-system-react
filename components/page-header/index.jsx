@@ -13,6 +13,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+import componentDoc from './docs.json';
+
 import Info from './private/info';
 import Title from './private/title';
 import DetailRow from './private/detail-row';
@@ -21,8 +26,6 @@ import Base from './private/base';
 import RecordHome from './private/record-home';
 import ObjectHome from './private/object-home';
 import RelatedList from './private/related-list';
-import Icon from '../icon';
-import Breadcrumb from '../breadcrumb';
 
 // ## Constants
 import { PAGE_HEADER } from '../../utilities/constants';
@@ -32,226 +35,105 @@ const propTypes = {
 	/**
 	 * Optional class name
 	 */
-	className: PropTypes.string,
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
 	/**
-	 * The type of component
+	 * An array of detail blocks (used in "recordHome" variant)
 	 */
-	variant: PropTypes.string,
+	details: PropTypes.array,
 	/**
-	 * The info property can be a string or a React element
+	 * The label property can be a string or a React element
 	 */
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
-	 * The title property can be a string or a React element
+	 * The page header icon. Expects an Icon component
 	 */
-	title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	icon: PropTypes.element,
 	/**
 	 * The info property can be a string or a React element
 	 */
 	info: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
-	 * The page header icon
+	 * Makes PageHeader joinable with DataTable by adding appropriate classes/styling
 	 */
-	icon: PropTypes.element,
+	joined: PropTypes.bool,
 	/**
-	 * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
+	 * Used with the `object-home` variant. Accepts a node, typically a Dropdown component
 	 */
-	iconName: PropTypes.string,
+	nameSwitcherDropdown: PropTypes.node,
 	/**
-	 * The icons category
+	 * Actions content to appear on the upper right side of the page header.
+	 * Returned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.
+	 * Prop 'contentRight' will be deprecated soon, use 'onRenderActions' instead.
 	 */
-	iconCategory: PropTypes.oneOf([
-		'action',
-		'custom',
-		'doctype',
-		'standard',
-		'utility',
-	]),
+	onRenderActions: PropTypes.func,
 	/**
-	 * If omitted, icon position is centered.
+	 * Controls content to appear on the lower right side of the page header.
+	 * Returned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.
+	 * Prop 'navRight' will be deprecated soon, use 'onRenderControls' instead.
 	 */
-	iconPosition: PropTypes.oneOf(['left', 'right']),
+	onRenderControls: PropTypes.func,
 	/**
-	 * Determines the size of the icon.
+	 * The title property can be a string or a React element
 	 */
-	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-	/**
-	 * For icon variants, please reference <a href='http://www.lightningdesignsystem.com/components/buttons/#icon'>Lightning Design System Icons</a>.
-	 */
-	iconVariant: PropTypes.oneOf([
-		'container',
-		'border',
-		'border-filled',
-		'small',
-		'more',
-	]),
-	/**
-	 * Content to appear on the right hand side of the page header
-	 */
-	contentRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	/**
-	 * An array of buttons which appear on the component's right hand side.
-	 */
-	details: PropTypes.array,
-	/**
-	 * Nav content which appears in the upper right hand corner.
-	 */
-	navRight: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**
 	 * An array of react elements presumably anchor <a> elements.
 	 */
 	trail: PropTypes.array,
+	/**
+	 * The type of component
+	 * Note: Extra options are added to make the version backward compatible
+	 */
+	variant: PropTypes.oneOf([
+		'base',
+		'object-home',
+		'record-home',
+		'related-list',
+	]),
 };
 
 const defaultProps = {
-	className: '',
 	variant: 'base',
-	navRight: '',
-	contentRight: '',
-	details: [],
-	trail: [],
 };
 
 /**
  * The PageHeader component adds PageHeader, PageHeader.Info, PageHeader.Title, PageHeader.DetailRow, and PageHeader.DetailBlock.
  */
 class PageHeader extends Component {
-	_getClassNames(className) {
-		return classnames(
-			'slds-page-header',
-			{
-				'slds-page-header_object-home': this.props.variant === 'objectHome',
-			},
-			className
-		);
+	componentDidMount() {
+		checkProps(PAGE_HEADER, this.props, componentDoc);
 	}
 
 	render() {
-		/**
-		 * OPTIMIZE ES7 style object destructuring removes the need for _.omit.
-		 * Example: const {foo, ...bar} = this.props;
-		 */
-		const {
-			className,
-			contentRight,
-			details,
-			icon,
-			iconCategory,
-			iconName,
-			iconPosition,
-			iconSize,
-			iconVariant,
-			info,
-			label,
-			navRight,
-			title,
-			trail,
-			variant,
-		} = this.props;
-
-		const classes = this._getClassNames(className);
-
-		/**
-		 * Render the icon
-		 */
-		const renderIcon = () => {
-			if (iconName) {
-				return (
-					<Icon
-						name={iconName}
-						category={iconCategory}
-						position={iconPosition}
-						size={iconSize}
-						variant={iconVariant}
-					/>
-				);
-			}
-			return icon;
-		};
-
-		/**
-		 * Render the label
-		 */
-		const renderLabel = () => {
-			const type = typeof label;
-
-			if (trail.length > 0) {
-				return (
-					<nav className="slds-m-bottom_xx-small" role="navigation">
-						<Breadcrumb trail={trail} />
-					</nav>
-				);
-			}
-			if (type === 'string') {
-				return (
-					<p className="slds-text-title_caps slds-line-height_reset">{label}</p>
-				);
-			}
-			return label;
-		};
-
-		/**
-		 * Render the title
-		 */
-		const renderTitle = () => {
-			const type = typeof title;
-
-			if (type === 'string') {
-				return <Title title={title} />;
-			}
-			return title;
-		};
-
-		/**
-		 * Render info
-		 */
-		const renderInfo = () => {
-			const type = typeof info;
-
-			if (type === 'string') {
-				return <Info>{info}</Info>;
-			}
-			return info;
-		};
-
-		/**
-		 * Steal contentRight's children
-		 */
-		const renderNavRight = () => {
-			const type = typeof navRight;
-
-			if (type !== 'string') {
-				return (
-					<div
-						className="slds-col slds-no-flex slds-grid slds-align-top"
-						{...navRight.props}
-					/>
-				);
-			}
-			return navRight;
-		};
-
-		/**
-		 * Steal contentRight's children
-		 */
-		const renderContentRight = () => {
-			const type = typeof contentRight;
-
-			if (type !== 'string') {
-				return <div className="slds-grid" {...contentRight.props} />;
-			}
-			return contentRight;
-		};
-
+		const { className, variant } = this.props;
+		const classes = classnames(
+			'slds-page-header',
+			{
+				'slds-page-header_record-home':
+					variant === 'record-home' || variant === 'recordHome',
+				'slds-page-header_related-list':
+					variant === 'related-list' || variant === 'relatedList',
+				'slds-page-header_joined': this.props.joined,
+			},
+			className
+		);
 		let Variant;
+
 		switch (variant) {
-			case 'objectHome':
+			case 'object-home':
+			case 'objectHome': // For backward compatibility
 				Variant = ObjectHome;
 				break;
-			case 'recordHome':
+			case 'record-home':
+			case 'recordHome': // For backward compatibility
 				Variant = RecordHome;
 				break;
-			case 'relatedList':
+			case 'related-list':
+			case 'relatedList': // For backward compatibility
 				Variant = RelatedList;
 				break;
 			default:
@@ -260,15 +142,7 @@ class PageHeader extends Component {
 
 		return (
 			<div className={classes}>
-				<Variant
-					label={renderLabel()}
-					icon={renderIcon()}
-					title={renderTitle()}
-					info={renderInfo()}
-					contentRight={renderContentRight()}
-					navRight={renderNavRight()}
-					details={details}
-				/>
+				<Variant {...this.props} />
 			</div>
 		);
 	}
@@ -279,4 +153,7 @@ PageHeader.propTypes = propTypes;
 PageHeader.defaultProps = defaultProps;
 
 export default PageHeader;
+
+// NOTE: these are private components and are prone to breaking changes.
+// Do not use these in your app! These exports are for legacy use only.
 export { Info, Title, DetailRow, DetailBlock };

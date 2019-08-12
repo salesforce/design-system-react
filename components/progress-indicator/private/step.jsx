@@ -159,6 +159,7 @@ class Step extends React.Component {
 				aria-describedby={`progress-indicator-tooltip-${this.props.step.id ||
 					this.props.index}`}
 				aria-current={this.props.isSelected ? 'step' : null}
+				type="button"
 			>
 				{icon}
 				<span className="slds-assistive-text">

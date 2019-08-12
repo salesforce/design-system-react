@@ -50,7 +50,7 @@ class Example extends React.Component {
 							<Button label="Save" variant="brand" onClick={this.toggleOpen} />,
 						]}
 						onRequestClose={this.toggleOpen}
-						title="New Opportunity"
+						heading="New Opportunity"
 					>
 						<section className="slds-p-around_large">
 							<div className="slds-form-element slds-m-bottom_large">

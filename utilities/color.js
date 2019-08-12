@@ -12,7 +12,7 @@ const ColorUtils = {
 			) {
 				return assign({}, oldColor, {
 					hex: options.hex,
-					errors: assign({}, oldColor && oldColor.errors, {
+					errors: assign({}, oldColor.errors, {
 						hex: true,
 					}),
 					hsv: {
@@ -42,7 +42,7 @@ const ColorUtils = {
 			if (Object.values(errors).includes(true)) {
 				return assign({}, oldColor, {
 					rgb,
-					errors: assign({}, oldColor && oldColor.errors, errors),
+					errors: assign({}, oldColor.errors, errors),
 				});
 			}
 
@@ -104,6 +104,7 @@ const ColorUtils = {
 			value >= 256;
 
 		return Object.entries(rgb).reduce((errors, keyValue) => {
+			// eslint-disable-next-line no-param-reassign
 			errors[keyValue[0]] = hasError(keyValue[1]);
 			return errors;
 		}, {});

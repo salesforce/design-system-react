@@ -1,6 +1,4 @@
 import React from 'react';
-import { normalize, schema } from 'normalizr';
-import PropTypes from 'prop-types';
 
 import IconSettings from '~/components/icon-settings';
 import Tree from '~/components/tree';

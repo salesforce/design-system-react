@@ -12,6 +12,16 @@ import Datepicker from '../../date-picker';
 import Input from '../../input';
 import KEYS from '../../../utilities/key-code';
 
+// eslint-disable-next-line camelcase
+import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
+
+const makeRtl = (component) => (
+	// eslint-disable-next-line
+	<UNSAFE_DirectionSettings.Provider value="rtl">
+		<div dir="rtl">{component}</div>
+	</UNSAFE_DirectionSettings.Provider>
+);
+
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
  */
@@ -32,19 +42,23 @@ class DemoComponent extends React.Component {
 
 	static propTypes = {
 		isOpen: PropTypes.bool,
+		isRtl: PropTypes.bool,
 	};
 
 	static defaultProps = defaultProps;
+
 	state = {};
 
 	// event handlers
 
 	render() {
-		return (
+		const component = (
 			<IconSettings iconPath="/assets/icons">
 				<Datepicker {...this.props} />
 			</IconSettings>
 		);
+
+		return this.props.isRtl ? makeRtl(component) : component;
 	}
 }
 
@@ -57,7 +71,7 @@ class DemoComponent extends React.Component {
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSDatepicker', function() {
+describe('SLDSDatepicker', function describeFunction() {
 	let wrapper;
 
 	const triggerClassSelector = 'button.slds-input__icon';
@@ -98,7 +112,7 @@ describe('SLDSDatepicker', function() {
 
 	// EVENTS
 
-	describe('onClose, onRequestClose, onOpen callbacks are set', function() {
+	describe('onClose, onRequestClose, onOpen callbacks are set', function describeFunction2() {
 		afterEach(() => wrapper.unmount());
 
 		it('onOpen is executed when trigger is clicked, onClose is executed when date is selected', function(done) {
@@ -252,6 +266,31 @@ describe('SLDSDatepicker', function() {
 				});
 			});
 
+			it('navigates to next day with the opposite button for RTL', function(done) {
+				wrapper = mount(
+					<DemoComponent
+						isRtl
+						isOpen
+						menuPosition="relative"
+						onCalendarFocus={(event, data) => {
+							expect(data.date.getTime()).to.equal(
+								new Date(2007, 0, 7).getTime()
+							);
+							done();
+						}}
+					/>
+				);
+
+				const selectedDay = wrapper.find(
+					'.datepicker__month [aria-selected=true]'
+				);
+				selectedDay.simulate('keyDown', {
+					key: 'Left',
+					keyCode: KEYS.LEFT,
+					which: KEYS.LEFT,
+				});
+			});
+
 			it('navigates to previous week (that is of a previous month)', function(done) {
 				wrapper = mount(
 					<DemoComponent
@@ -297,6 +336,31 @@ describe('SLDSDatepicker', function() {
 					key: 'Left',
 					keyCode: KEYS.LEFT,
 					which: KEYS.LEFT,
+				});
+			});
+
+			it('navigates to previous day with the opposite button for RTL', function(done) {
+				wrapper = mount(
+					<DemoComponent
+						isRtl
+						isOpen
+						menuPosition="relative"
+						onCalendarFocus={(event, data) => {
+							expect(data.date.getTime()).to.equal(
+								new Date(2007, 0, 5).getTime()
+							);
+							done();
+						}}
+					/>
+				);
+
+				const selectedDay = wrapper.find(
+					'.datepicker__month [aria-selected=true]'
+				);
+				selectedDay.simulate('keyDown', {
+					key: 'Right',
+					keyCode: KEYS.RIGHT,
+					which: KEYS.RIGHT,
 				});
 			});
 
@@ -347,7 +411,7 @@ describe('SLDSDatepicker', function() {
 		});
 	});
 
-	describe('Disabled', function() {
+	describe('Disabled', function describeFunction2() {
 		const triggerClicked = sinon.spy();
 		const dialogOpened = sinon.spy();
 

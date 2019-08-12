@@ -4,10 +4,10 @@
 
 import ifOneThenBothRequiredProperty from '../../utilities/warning/if-one-then-both-required-property';
 
-let checkProps = function() {};
+let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function(COMPONENT, props) {
+	checkProps = function checkPropsFunction(COMPONENT, props) {
 		/* eslint-disable max-len */
 		// Deprecated and changed to another property
 		ifOneThenBothRequiredProperty(COMPONENT, props, {

@@ -19,6 +19,11 @@ class Example extends React.Component {
 					summary: 'Accordion Summary',
 					details: 'Accordion details - B',
 				},
+				{
+					id: '3',
+					summary: 'Accordion Summary',
+					details: 'Accordion details - C',
+				},
 			],
 		};
 	}

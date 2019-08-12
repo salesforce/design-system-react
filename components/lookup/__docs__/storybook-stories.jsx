@@ -15,6 +15,7 @@ import DeprecatedWarning from '../../utilities/deprecated-warning';
 
 class DemoLookup extends React.Component {
 	static displayName = 'DemoLookup';
+
 	state = {
 		options: [
 			{
@@ -31,11 +32,13 @@ class DemoLookup extends React.Component {
 			},
 		],
 	};
+
 	clearSelected = () => {
 		this.setState({
 			currentSelected: -1,
 		});
 	};
+
 	handleSelect = (selectedItem, ...rest) => {
 		action('select')(selectedItem, ...rest);
 		this.setState({
@@ -63,6 +66,7 @@ class DemoLookup extends React.Component {
 
 class DemoLookupAccounts extends React.Component {
 	static displayName = 'DemoLookupAccounts';
+
 	state = {
 		options: [
 			{
@@ -90,6 +94,7 @@ class DemoLookupAccounts extends React.Component {
 			},
 		],
 	};
+
 	handleSelect = (selectedItem, ...rest) => {
 		action('select')(selectedItem, ...rest);
 		this.setState({

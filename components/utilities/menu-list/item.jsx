@@ -156,7 +156,7 @@ class ListItem extends React.Component {
 						onMouseDown={this.handleMouseDown}
 						role="separator"
 					>
-						<span className="slds-text-title_caps">{this.props.label}</span>
+						<span>{this.props.label}</span>
 					</li>
 				);
 			}

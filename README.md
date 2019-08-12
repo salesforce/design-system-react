@@ -1,9 +1,12 @@
-# Design System for React
+# Lightning Design System _for_ React
 
 ### Accessible, localization-friendly, presentational React components
 
-[![Build Status](https://api.travis-ci.org/salesforce/design-system-react.svg?branch=master)](https://travis-ci.org/salesforce/design-system-react) [![DeepScan Grade](https://deepscan.io/api/projects/1475/branches/4666/badge/grade.svg)](https://deepscan.io/dashboard/#view=project&pid=1475&bid=4666)
-[![Known Vulnerabilities](https://snyk.io/test/github/salesforce/design-system-react/badge.svg?targetFile=package.json)](https://snyk.io/test/github/salesforce/design-system-react?targetFile=package.json)
+[![Build Status](https://api.travis-ci.org/salesforce/design-system-react.svg?branch=master)](https://travis-ci.org/salesforce/design-system-react) [![DeepScan grade](https://deepscan.io/api/teams/616/projects/5798/branches/46037/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=616&pid=5798&bid=46037)
+[![Known Vulnerabilities](https://snyk.io/test/github/salesforce/design-system-react/badge.svg?targetFile=package.json)](https://snyk.io/test/github/salesforce/design-system-react?targetFile=package.json) [![Join the chat at https://gitter.im/salesforce/design-system-react](https://badges.gitter.im/salesforce/design-system-react.svg)](https://gitter.im/salesforce/design-system-react?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Monthly NPM downloads](https://img.shields.io/npm/dm/@salesforce/design-system-react.svg)](https://www.npmjs.com/package/@salesforce/design-system-react)
+
+
+
 
 ## Install
 
@@ -13,7 +16,7 @@ $ npm install @salesforce-ux/design-system @salesforce/design-system-react
 
 ## Getting Started
 
-Welcome to the project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). This library has a peer dependency on `@salesforce-ux/design-system`, `react`, and `react-dom`. It is tested with React 16 and has a stable API despite its version number. Please [polyfill](https://github.com/salesforce/design-system-react/blob/master/docs/browser-compatibility.md) this library in order to meet your target environment needs.
+Welcome to this community-supported project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). This library has a peer dependency on `@salesforce-ux/design-system`, `react`, and `react-dom`. It is tested with React 16 and has a stable API despite its version number. Please [polyfill](https://github.com/salesforce/design-system-react/blob/master/docs/browser-compatibility.md) this library in order to meet your target environment needs.
 
 * [Usage](#usage)
 * [Getting started](https://react.lightningdesignsystem.com/getting-started/)
@@ -27,9 +30,9 @@ Welcome to the project! :wave: This library is the [React](https://facebook.gith
 
 ## Usage
 
-### Quick Setup (CommonJS)
+### Quick Setup (ES6 and CJS modules)
 
-For a no hassle setup and compatibility with Create React App v1, a CommonJS version has been included within the NPM package. If using this setup, please re-write the `import` statement in the documentation site examples. Use the following named `import` syntax to access CommonJS components from `/lib/index.js`:
+For a no hassle setup and compatibility with Create React App, transpiled ES6 and CommonJS module versions have been included within the NPM package. If using this setup, please re-write the `import` statement in the documentation site examples. Use the following named `import` syntax to access the transpiled components from `/lib/index.js`:
 
 ```
 import { Button } from '@salesforce/design-system-react';
@@ -56,6 +59,8 @@ import Button from '@salesforce/design-system-react/components/button';
 	"presets": ["@salesforce/babel-preset-design-system-react"]
 }
 ```
+
+The current preset version is only compatible with Babel 6. Please see this [issue comment for Babel 7](https://github.com/salesforce/design-system-react/issues/1621#issuecomment-513590273).
 
 ### Styling
 

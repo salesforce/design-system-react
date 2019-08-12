@@ -46,7 +46,7 @@ describe('Card: ', () => {
 	};
 
 	const renderCard = (instance) =>
-		function() {
+		function renderCardFunction() {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
 			this.component = ReactDOM.render(

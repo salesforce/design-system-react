@@ -6,12 +6,12 @@
 // This function will deliver an error message to the browser console about the removal of a property.
 import warning from 'warning';
 
-let sunset = function() {};
+let sunset = function sunsetFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	sunset = function(control, propValue, oldProp, comment) {
+	sunset = function sunsetFunction(control, propValue, oldProp, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		if (!hasWarned[control + oldProp]) {
 			/* eslint-disable max-len */
