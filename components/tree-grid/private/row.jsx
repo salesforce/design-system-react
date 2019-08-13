@@ -7,90 +7,99 @@ import Button from '../../button';
 import Checkbox from '../../checkbox';
 import TreeGridCell from './cell';
 
-const TreeGridRow = (props) => {
-	const [isOpen, setExpansion] = useState(false);
-	const [isSelected, setSelection] = useState(props.isSelected);
+class TreeGridRow extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isOpen: false,
+			isSelected: this.props.isSelected,
+		};
+	}
 
-	const children = props.row.nodes
-		? props.row.nodes.map((row, i) => (
+	render()
+	{
+		const children = this.props.row.nodes
+			? this.props.row.nodes.map((row, i) => (
 				<TreeGridRow
-					id={`${props.id}-sub-row-${i}`}
-					level={props.level + 1}
-					columns={props.columns}
+					id={`${this.props.id}-sub-row-${i}`}
+					level={this.props.level + 1}
+					columns={this.props.columns}
 					row={row}
-					isSelected={isSelected}
+					isSelected={this.state.isSelected}
 					isOpen={false}
-					onClickMoreActions={(e, o) => props.onClickMoreActions(e, o)}
+					onClickMoreActions={(e, o) => this.props.onClickMoreActions(e, o)}
 				/>
 			))
-		: null;
+			: null;
 
-	const triggerSelection = (event, object) => {
-		if (props.onClickSelect) props.onClickSelect(event, object);
-		setSelection(!isSelected);
-	};
+		const triggerSelection = (event, object) => {
+			const selection = this.state.isSelected;
+			this.setState({isSelected: !selection});
+			if (this.props.onClickSelect) this.props.onClickSelect(event, object);
+		};
 
-	return (
-		<React.Fragment>
-			<tr
-				aria-level={props.level}
-				aria-posinset="1"
-				aria-selected="false"
-				aria-setsize="4"
-				className={classNames(
-					`slds-hint-parent`,
-					isSelected ? `slds-is-selected` : null
-				)}
-				tabIndex="0"
-			>
-				{!props.isSingleSelect ? (
-					<td
-						className="slds-text-align_right"
-						role="gridcell"
-						style={{ width: '3.25rem' }}
-					>
-						<Checkbox
-							name="options"
+		return (
+			<React.Fragment>
+				<tr
+					aria-level={this.props.level}
+					aria-posinset="1"
+					aria-selected="false"
+					aria-setsize="4"
+					className={classNames(
+						`slds-hint-parent`,
+						this.state.isSelected ? `slds-is-selected` : null
+					)}
+					tabIndex="0"
+				>
+					{!this.props.isSingleSelect ? (
+						<td
+							className="slds-text-align_right"
+							role="gridcell"
+							style={{ width: '3.25rem' }}
+						>
+							<Checkbox
+								name="options"
+								assistiveText={{
+									label: `Select item ${this.props.id}`,
+								}}
+								id={`${this.props.id}-checkbox`}
+								checked={this.state.isSelected}
+								onChange={(event, object) => triggerSelection(event, object)}
+							/>
+						</td>
+					) : null}
+					{this.props.columns.map((col, i) => (
+						<TreeGridCell
+							id={`${this.props.id}-col-${i}`}
+							isPrimaryColumn={col.props.isPrimaryColumn}
+							isChildOpen={this.state.isOpen}
+							hasChildren={this.props.row.nodes !== undefined}
+							onClickExpand={() => this.setState({ isOpen: !this.state.isOpen})}
+						>
+							{col.props.typeAttributes
+								? this.props.row[col.props.typeAttributes.label.fieldName]
+								: this.props.row[col.props.property]}
+						</TreeGridCell>
+					))}
+					<td role="gridcell" style={{ width: '3.25rem' }}>
+						<Button
+							variant="icon"
+							className="slds-button_icon-border-filled"
+							iconSize="x-small"
+							iconCategory="utility"
+							iconName="down"
 							assistiveText={{
-								label: `Select item ${props.id}`,
+								icon: `More actions for`,
 							}}
-							id={`${props.id}-checkbox`}
-							checked={isSelected}
-							onChange={(event, object) => triggerSelection(event, object)}
+							onClick={(e, o) => this.props.onClickMoreActions(e, o)}
 						/>
 					</td>
-				) : null}
-				{props.columns.map((col, i) => (
-					<TreeGridCell
-						id={`${props.id}-col-${i}`}
-						isPrimaryColumn={col.props.isPrimaryColumn}
-						isChildOpen={isOpen}
-						hasChildren={props.row.nodes !== undefined}
-						onClickExpand={() => setExpansion(!isOpen)}
-					>
-						{col.props.typeAttributes
-							? props.row[col.props.typeAttributes.label.fieldName]
-							: props.row[col.props.property]}
-					</TreeGridCell>
-				))}
-				<td role="gridcell" style={{ width: '3.25rem' }}>
-					<Button
-						variant="icon"
-						className="slds-button_icon-border-filled"
-						iconSize="x-small"
-						iconCategory="utility"
-						iconName="down"
-						assistiveText={{
-							icon: `More actions for`,
-						}}
-						onClick={(e, o) => props.onClickMoreActions(e, o)}
-					/>
-				</td>
-			</tr>
-			{isOpen ? children : null}
-		</React.Fragment>
-	);
-};
+				</tr>
+				{this.state.isOpen ? children : null}
+			</React.Fragment>
+		);
+	}
+}
 
 TreeGridRow.displayName = TREE_GRID_ROW;
 

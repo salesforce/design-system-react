@@ -126,6 +126,8 @@ class TreeGrid extends React.Component {
 			this.props.assistiveText
 		);
 
+		console.log(this.state.selectAll);
+
 		const columns = [];
 		React.Children.forEach(this.props.children, (child) => {
 			if (child && child.type.displayName === TreeGridColumn.displayName) {
@@ -141,17 +143,6 @@ class TreeGrid extends React.Component {
 				});
 			}
 		});
-
-		const rows = this.props.items.map((row, i) => (
-			<TreeGridRow
-				key={`${this.props.id}-row-${i}`}
-				id={`${this.props.id}-row-${i}`}
-				columns={columns}
-				isSelected={this.state.selectAll}
-				row={row}
-				onClickMoreActions={this.props.events.onClickMoreActions}
-			/>
-		));
 
 		return (
 			<table
@@ -207,7 +198,18 @@ class TreeGrid extends React.Component {
 						</tr>
 					</thead>
 				)}
-				<tbody>{rows}</tbody>
+				<tbody>{
+					this.props.items.map((row, i) => (
+						<TreeGridRow
+							key={`${this.props.id}-row-${i}`}
+							id={`${this.props.id}-${this.state.selectAll}-${i}`}
+							columns={columns}
+							isSelected={this.state.selectAll}
+							row={row}
+							onClickMoreActions={this.props.events.onClickMoreActions}
+						/>
+					))
+				}</tbody>
 			</table>
 		);
 	}

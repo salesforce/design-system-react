@@ -4,6 +4,8 @@ import TreeGrid from '~/components/tree-grid';
 import TreeGridColumn from '~/components/tree-grid/column';
 import IconSettings from '~/components/icon-settings';
 
+import log from '~/utilities/log';
+
 const columns = [
 	<TreeGridColumn
 		type="text"
@@ -67,6 +69,15 @@ class Example extends React.Component {
 						items={this.state.items}
 						isHeadless
 						isBorderless={this.props.isBorderless}
+						events={{
+							onClickMoreActions: (event, value) =>
+								log({
+									action: this.props.action,
+									event,
+									eventName: 'More Actions Button Clicked',
+									data: value,
+								}),
+						}}
 					>
 						{columns}
 					</TreeGrid>
