@@ -162,7 +162,6 @@ class Tooltip extends React.Component {
 		super(props);
 
 		this.state = {
-			isClosing: false,
 			isOpen: false,
 		};
 
@@ -301,9 +300,10 @@ class Tooltip extends React.Component {
 	}
 
 	handleCancel = () => {
+		clearTimeout(this.tooltipTimeout);
+
 		this.setState({
 			isOpen: false,
-			isClosing: false,
 		});
 	};
 
@@ -311,23 +311,21 @@ class Tooltip extends React.Component {
 		clearTimeout(this.tooltipTimeout);
 
 		this.tooltipTimeout = setTimeout(() => {
-			this.setState({
-				isOpen: true,
-				isClosing: false,
-			});
+			if (!this.isUnmounting) {
+				this.setState({
+					isOpen: true,
+				});
+			}
 		}, this.props.hoverOpenDelay);
 	};
 
 	handleMouseLeave = () => {
-		this.setState({ isClosing: true });
-
 		clearTimeout(this.tooltipTimeout);
 
 		this.tooltipTimeout = setTimeout(() => {
-			if (!this.isUnmounting && this.state.isClosing) {
+			if (!this.isUnmounting) {
 				this.setState({
 					isOpen: false,
-					isClosing: false,
 				});
 			}
 		}, this.props.hoverCloseDelay);
