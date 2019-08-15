@@ -8,6 +8,7 @@ const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/tooltip/__examples__/button.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/tooltip/__examples__/button-group.jsx'),
 	require('raw-loader!@salesforce/design-system-react/components/tooltip/__examples__/learn-more.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/tooltip/__examples__/with-delay.jsx'),
 ];
 
 module.exports = siteStories;

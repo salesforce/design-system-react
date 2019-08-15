@@ -77,9 +77,13 @@ const propTypes = {
 	 */
 	hasStaticAlignment: PropTypes.bool,
 	/**
-	 * Delay on Tooltip closing.
+	 * Delay on Tooltip closing in milliseconds. Defaults to 50
 	 */
 	hoverCloseDelay: PropTypes.number,
+	/**
+	 * Delay on Tooltip opening in milliseconds. Defaults to 0
+	 */
+	hoverOpenDelay: PropTypes.number,
 	/**
 	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering element.
 	 */
@@ -144,6 +148,7 @@ const defaultProps = {
 		learnMoreBefore: 'Click',
 	},
 	hoverCloseDelay: 50,
+	hoverOpenDelay: 0,
 	position: 'absolute',
 	theme: 'info',
 	variant: 'base',
@@ -160,6 +165,8 @@ class Tooltip extends React.Component {
 			isClosing: false,
 			isOpen: false,
 		};
+
+		this.tooltipTimeout = {};
 	}
 
 	componentWillMount() {
@@ -301,16 +308,22 @@ class Tooltip extends React.Component {
 	};
 
 	handleMouseEnter = () => {
-		this.setState({
-			isOpen: true,
-			isClosing: false,
-		});
+		clearTimeout(this.tooltipTimeout);
+
+		this.tooltipTimeout = setTimeout(() => {
+			this.setState({
+				isOpen: true,
+				isClosing: false,
+			});
+		}, this.props.hoverOpenDelay);
 	};
 
 	handleMouseLeave = () => {
 		this.setState({ isClosing: true });
 
-		setTimeout(() => {
+		clearTimeout(this.tooltipTimeout);
+
+		this.tooltipTimeout = setTimeout(() => {
 			if (!this.isUnmounting && this.state.isClosing) {
 				this.setState({
 					isOpen: false,
