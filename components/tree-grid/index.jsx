@@ -10,6 +10,8 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 import assign from 'lodash.assign';
+import reject from 'lodash.reject';
+import find from 'lodash.find';
 
 import { TREE_GRID } from '../../utilities/constants';
 import TreeGridRow from './private/row';
@@ -50,22 +52,23 @@ const propTypes = {
 	 * HTML id for component.
 	 */
 	id: PropTypes.string,
-
-	events: PropTypes.shape({}),
+	/**
+	 * 	onSelectAll:  function triggers when
+	 * 	onExpandRow: function triggers when a row is expanded
+	 * 	onCollapseRow: function triggers when a row is collapsed
+	 */
+	events: PropTypes.shape({
+		onSelectAll: PropTypes.func,
+		onDeselectAll: PropTypes.func,
+		onRowChange: PropTypes.func,
+		onExpandRow: PropTypes.func,
+		onCollapseRow: PropTypes.func,
+	}),
 
 	labels: PropTypes.shape({
 		chooseRow: PropTypes.string,
 		selectAll: PropTypes.string,
 	}),
-
-	/**
-	 * This function triggers when a row is expanded
-	 */
-	onExpandRow: PropTypes.func.isRequired,
-	/**
-	 * This function fires when the selection of rows changes. This component passes in `event, { selection }` to the function. `selection` is an array of objects from the `items` prop.
-	 */
-	onRowChange: PropTypes.func,
 	/**
 	 * Specifies a row selection UX pattern.
 	 * * `multiple`: This is the default
@@ -80,8 +83,6 @@ const propTypes = {
 
 	items: PropTypes.arrayOf(PropTypes.object).isRequired,
 
-	isSingleSelect: PropTypes.bool,
-
 	isHeadless: PropTypes.bool,
 	isBorderless: PropTypes.bool,
 };
@@ -93,6 +94,7 @@ const defaultProps = {
 		selectAll: 'Select All',
 		selectRow: 'Select Row',
 	},
+	selectRows: 'multiple'
 };
 
 /**
@@ -102,7 +104,8 @@ class TreeGrid extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectAll: false,
+			isSelectAll: false,
+			selection: [],
 		};
 		this.generatedId = shortid.generate();
 	}
@@ -114,10 +117,42 @@ class TreeGrid extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
-	selectAll() {
-		const curr = this.state.selectAll;
-		this.setState({ selectAll: !curr });
-	}
+	handleSelectAll = (event) => {
+		const { isSelectAll } = this.state;
+		if (!isSelectAll) {
+			this.props.events.onSelectAll(event);
+			this.setState({ isSelectAll: true, selection: this.props.items });
+		} else {
+			this.props.events.onDeselectAll(event);
+			this.setState({ isSelectAll: false, selection: [] });
+		}
+	};
+
+	handleSelection = (event, row) => {
+		let { selection } = this.state;
+		if(this.props.selectRows === "multiple")
+		{
+			if (find(selection, row)) {
+				selection = reject(selection, row);
+				const obj = { selection, row, selected: false };
+				this.props.events.onRowChange(event, obj);
+				this.setState({ selection, isSelectAll: false });
+			} else {
+				selection.push(row);
+				const obj = { selection, row, selected: true };
+				this.props.events.onRowChange(event, obj);
+				if (selection.length === this.props.items.length)
+					this.setState({ selection, isSelectAll: true });
+				else this.setState({ selection });
+			}
+		} else {
+			this.props.events.onRowChange(event, row);
+			if(this.state.selection!==row)
+				this.setState({ selection: row });
+			else
+				this.setState({ selection: null });
+		}
+	};
 
 	render() {
 		const assistiveText = assign(
@@ -126,7 +161,7 @@ class TreeGrid extends React.Component {
 			this.props.assistiveText
 		);
 
-		console.log(this.state.selectAll);
+		console.log(this.state.selection);
 
 		const columns = [];
 		React.Children.forEach(this.props.children, (child) => {
@@ -147,7 +182,7 @@ class TreeGrid extends React.Component {
 		return (
 			<table
 				id={this.getId()}
-				aria-multiselectable="true"
+				aria-multiselectable={this.props.selectRows==="multiple"}
 				className={classNames(
 					'slds-table',
 					'slds-table_edit',
@@ -162,7 +197,7 @@ class TreeGrid extends React.Component {
 				{this.props.isHeadless ? null : (
 					<thead>
 						<tr className="slds-line-height_reset">
-							{!this.props.isSingleSelect ? (
+							{this.props.selectRows === 'multiple' ? (
 								<th
 									className="slds-text-align_right"
 									scope="col"
@@ -180,14 +215,18 @@ class TreeGrid extends React.Component {
 												label: assistiveText.selectAll,
 											}}
 											name="options"
-											checked={this.state.selectAll}
-											onChange={() => this.selectAll()}
+											indeterminate={
+												this.state.selection.length > 0 &&
+												!this.state.isSelectAll
+											}
+											checked={this.state.isSelectAll}
+											onChange={this.handleSelectAll}
 										/>
 									</div>
 								</th>
 							) : null}
 							{this.props.children}
-							<th className="" scope="col" style={{ width: '3.25rem' }}>
+							<th scope="col" style={{ width: '3.25rem' }}>
 								<div
 									className="slds-truncate slds-assistive-text"
 									title={assistiveText.actions}
@@ -198,18 +237,26 @@ class TreeGrid extends React.Component {
 						</tr>
 					</thead>
 				)}
-				<tbody>{
-					this.props.items.map((row, i) => (
+				<tbody>
+					{this.props.items.map((row, i) => (
 						<TreeGridRow
 							key={`${this.props.id}-row-${i}`}
-							id={`${this.props.id}-${this.state.selectAll}-${i}`}
+							id={`${this.props.id}-row-${i}`}
 							columns={columns}
-							isSelected={this.state.selectAll}
 							row={row}
-							onClickMoreActions={this.props.events.onClickMoreActions}
+							isSelected={find(this.state.selection, row)}
+							isSingleSelect={this.props.selectRows==="single"}
+							events={this.props.events}
+							onExpand={(event, obj) =>
+								this.props.events.onExpandRow(event, obj)
+							}
+							onCollapse={(event, obj) =>
+								this.props.events.onCollapseRow(event, obj)
+							}
+							onSelect={(event) => this.handleSelection(event, row)}
 						/>
-					))
-				}</tbody>
+					))}
+				</tbody>
 			</table>
 		);
 	}

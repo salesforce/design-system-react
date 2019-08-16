@@ -70,12 +70,26 @@ class Example extends React.Component {
 						isHeadless
 						isBorderless={this.props.isBorderless}
 						events={{
-							onClickMoreActions: (event, value) =>
+							onRowChange: (event, data) =>
 								log({
 									action: this.props.action,
 									event,
-									eventName: 'More Actions Button Clicked',
-									data: value,
+									eventName: 'Row selection changed',
+									data,
+								}),
+							onExpandRow: (event, data) =>
+								log({
+									action: this.props.action,
+									event,
+									eventName: `Row Expanded`,
+									data,
+								}),
+							onCollapseRow: (event, data) =>
+								log({
+									action: this.props.action,
+									event,
+									eventName: `Row Collapsed`,
+									data,
 								}),
 						}}
 					>

@@ -2,51 +2,10 @@ import React from 'react';
 
 import TreeGrid from '~/components/tree-grid';
 import TreeGridColumn from '~/components/tree-grid/column';
+import Dropdown from '~/components/menu-dropdown';
 import IconSettings from '~/components/icon-settings';
 
 import log from '~/utilities/log';
-
-const columns = [
-	<TreeGridColumn
-		type="text"
-		key="account"
-		label="Account Name"
-		property="accountName"
-		initialWidth={300}
-		isPrimaryColumn
-	/>,
-	<TreeGridColumn
-		type="number"
-		key="employees"
-		label="Employees"
-		property="employees"
-		initialWidth={150}
-	/>,
-	<TreeGridColumn
-		type="phone"
-		key="phone"
-		label="Phone Number"
-		property="phone"
-		initialWidth={200}
-	/>,
-	<TreeGridColumn
-		type="url"
-		key="owner"
-		label="Account Owner"
-		property="accountOwner"
-		initialWidth={150}
-		typeAttributes={{
-			label: { fieldName: 'accountOwnerName' },
-		}}
-	/>,
-	<TreeGridColumn
-		type="text"
-		key="city"
-		label="Billing City"
-		property="billingCity"
-		initialWidth={200}
-	/>,
-];
 
 class Example extends React.Component {
 	static displayName = 'TreeGridExample';
@@ -203,17 +162,213 @@ class Example extends React.Component {
 				<div style={{ overflow: 'auto' }}>
 					<TreeGrid
 						items={this.state.items}
+						selectRows={this.props.selectRows}
 						events={{
-							onClickMoreActions: (event, value) =>
+							onSelectAll: (event) =>
 								log({
 									action: this.props.action,
 									event,
-									eventName: 'More Actions Button Clicked',
-									data: value,
+									eventName: 'All rows selected',
+									data: null,
+								}),
+							onDeselectAll: (event) =>
+								log({
+									action: this.props.action,
+									event,
+									eventName: 'All rows diselected',
+									data: null,
+								}),
+							onRowChange: (event, data) =>
+								log({
+									action: this.props.action,
+									event,
+									eventName: 'Row selection changed',
+									data,
+								}),
+							onExpandRow: (event, data) =>
+								log({
+									action: this.props.action,
+									event,
+									eventName: `Row Expanded`,
+									data,
+								}),
+							onCollapseRow: (event, data) =>
+								log({
+									action: this.props.action,
+									event,
+									eventName: `Row Collapsed`,
+									data,
 								}),
 						}}
+						moreActionsDropdown={
+							<Dropdown
+								iconCategory="utility"
+								iconName="down"
+								iconVariant="bare"
+								align="right"
+								variant="icon"
+								menuStyle={{ minWidth: '50px', width: '125px' }}
+								onSelect={(event, data) => {
+									console.log('selected: ', data.id);
+								}}
+								options={[
+									{ label: 'Menu Item One', value: 'A0' },
+									{ label: 'Menu Item Two', value: 'B0' },
+								]}
+								value="A0"
+							/>
+						}
 					>
-						{columns}
+						<TreeGridColumn
+							type="text"
+							key="account"
+							label="Account Name"
+							property="accountName"
+							initialWidth={300}
+							isPrimaryColumn
+							moreActionsDropdown={
+								<Dropdown
+									id="file-more-actions"
+									iconCategory="utility"
+									iconName="down"
+									iconVariant="bare"
+									align="right"
+									variant="icon"
+									menuStyle={{ minWidth: '50px', width: '125px' }}
+									onSelect={(value) => {
+										console.log('selected: ', value);
+									}}
+									options={[
+										{ label: 'Menu Item One', value: 'A0' },
+										{ label: 'Menu Item Two', value: 'B0' },
+									]}
+									value="A0"
+								/>
+							}
+						/>
+						<TreeGridColumn
+							type="number"
+							key="employees"
+							label="Employees"
+							property="employees"
+							initialWidth={150}
+							variant="icon"
+							moreActionsDropdown={
+								<Dropdown
+									id="file-more-actions"
+									iconCategory="utility"
+									iconName="down"
+									iconVariant="bare"
+									align="right"
+									menuStyle={{ minWidth: '50px', width: '125px' }}
+									onSelect={(value) => {
+										console.log('selected: ', value);
+									}}
+									options={[
+										{ label: 'Menu Item One', value: 'A0' },
+										{ label: 'Menu Item Two', value: 'B0' },
+									]}
+									value="A0"
+								/>
+							}
+						/>
+						<TreeGridColumn
+							type="phone"
+							key="phone"
+							label="Phone Number"
+							property="phone"
+							initialWidth={200}
+							variant="icon"
+							moreActionsDropdown={
+								<Dropdown
+									id="file-more-actions"
+									iconCategory="utility"
+									iconName="down"
+									iconVariant="bare"
+									align="right"
+									menuStyle={{ minWidth: '50px', width: '125px' }}
+									onSelect={(value) => {
+										console.log('selected: ', value);
+									}}
+									options={[
+										{ label: 'Menu Item One', value: 'A0' },
+										{ label: 'Menu Item Two', value: 'B0' },
+									]}
+									value="A0"
+								/>
+							}
+						/>
+						<TreeGridColumn
+							type="url"
+							key="owner"
+							label="Account Owner"
+							property="accountOwner"
+							variant="icon"
+							initialWidth={150}
+							typeAttributes={{
+								label: { fieldName: 'accountOwnerName' },
+							}}
+							onClickMoreActions={(event) =>
+								log({
+									action: this.props.action,
+									event,
+									eventName: 'More Actions Button of owner column clicked',
+									data: null,
+								})
+							}
+							moreActionsDropdown={
+								<Dropdown
+									id="file-more-actions"
+									iconCategory="utility"
+									iconName="down"
+									iconVariant="bare"
+									align="right"
+									menuStyle={{ minWidth: '50px', width: '125px' }}
+									onSelect={(value) => {
+										console.log('selected: ', value);
+									}}
+									options={[
+										{ label: 'Menu Item One', value: 'A0' },
+										{ label: 'Menu Item Two', value: 'B0' },
+									]}
+									value="A0"
+								/>
+							}
+						/>
+						<TreeGridColumn
+							type="text"
+							key="city"
+							label="Billing City"
+							property="billingCity"
+							initialWidth={200}
+							variant="icon"
+							onClickMoreActions={(event) =>
+								log({
+									action: this.props.action,
+									event,
+									eventName: 'More Actions Button of city column clicked',
+									data: null,
+								})
+							}
+							moreActionsDropdown={
+								<Dropdown
+									id="file-more-actions"
+									iconCategory="utility"
+									iconName="down"
+									iconVariant="bare"
+									align="right"
+									menuStyle={{ minWidth: '50px', width: '125px' }}
+									onSelect={(value) => {
+										console.log('selected: ', value);
+									}}
+									options={[
+										{ label: 'Menu Item One', value: 'A0' },
+										{ label: 'Menu Item Two', value: 'B0' },
+									]}
+									value="A0"
+								/>
+							}
+						/>
 					</TreeGrid>
 				</div>
 			</IconSettings>

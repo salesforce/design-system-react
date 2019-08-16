@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import find from 'lodash.find';
+import reject from 'lodash.reject';
 
 import { TREE_GRID_ROW } from '../../../utilities/constants';
 import Button from '../../button';
@@ -12,32 +14,63 @@ class TreeGridRow extends React.Component {
 		super(props);
 		this.state = {
 			isOpen: false,
-			isSelected: this.props.isSelected,
+			isSelectAll: this.props.isSelected,
+			selection: []
 		};
 	}
 
-	render()
-	{
-		const children = this.props.row.nodes
-			? this.props.row.nodes.map((row, i) => (
-				<TreeGridRow
-					id={`${this.props.id}-sub-row-${i}`}
-					level={this.props.level + 1}
-					columns={this.props.columns}
-					row={row}
-					isSelected={this.state.isSelected}
-					isOpen={false}
-					onClickMoreActions={(e, o) => this.props.onClickMoreActions(e, o)}
-				/>
-			))
-			: null;
+	handleExpansion = (event) => {
+		const { isOpen } = this.state;
+		if (!isOpen) this.props.onExpand(event, this.props.row);
+		else this.props.onCollapse(event, this.props.row);
+		this.setState({ isOpen: !isOpen });
+	};
 
-		const triggerSelection = (event, object) => {
-			const selection = this.state.isSelected;
-			this.setState({isSelected: !selection});
-			if (this.props.onClickSelect) this.props.onClickSelect(event, object);
-		};
+	handleSelectAll = (event) => {
+		const { isSelectAll } = this.state;
+		if(this.props.row.nodes)
+		{
+			if (!isSelectAll) {
+				this.props.onSelect(event);
+				this.setState({ isSelectAll: true, selection: this.props.row.nodes });
+			} else {
+				this.props.onSelect(event);
+				this.setState({ isSelectAll: false, selection: [] });
+			}
+		}
+		else {
+			this.props.onSelect(event);
+		}
+	};
 
+	handleSelection = (event, row) => {
+		let { selection } = this.state;
+		if(!this.props.isSingleSelect)
+		{
+			if (find(selection, row)) {
+				selection = reject(selection, row);
+				const obj = { selection, row, selected: false };
+				this.props.events.onRowChange(event, obj);
+				this.props.onSelect(event,this.props.row);
+				this.setState({ selection, isSelectAll: false });
+			} else {
+				selection.push(row);
+				const obj = { selection, row, selected: true };
+				this.props.events.onRowChange(event, obj);
+				if (selection.length === this.props.row.nodes.length)
+					this.setState({ selection, isSelectAll: true });
+				else this.setState({ selection });
+			}
+		} else {
+			this.props.events.onRowChange(event, row);
+			if(this.state.selection!==row)
+				this.setState({ selection: row });
+			else
+				this.setState({ selection: null });
+		}
+	};
+
+	render() {
 		return (
 			<React.Fragment>
 				<tr
@@ -47,8 +80,9 @@ class TreeGridRow extends React.Component {
 					aria-setsize="4"
 					className={classNames(
 						`slds-hint-parent`,
-						this.state.isSelected ? `slds-is-selected` : null
+						this.state.isSelectAll ? `slds-is-selected` : null
 					)}
+					onClick={() => this.props.isSingleSelect ? this.props.onSelect() : null}
 					tabIndex="0"
 				>
 					{!this.props.isSingleSelect ? (
@@ -63,8 +97,12 @@ class TreeGridRow extends React.Component {
 									label: `Select item ${this.props.id}`,
 								}}
 								id={`${this.props.id}-checkbox`}
-								checked={this.state.isSelected}
-								onChange={(event, object) => triggerSelection(event, object)}
+								indeterminate={
+									this.state.selection.length > 0 &&
+									!this.state.isSelectAll
+								}
+								checked={this.props.isSelected}
+								onChange={() => this.handleSelectAll()}
 							/>
 						</td>
 					) : null}
@@ -74,7 +112,7 @@ class TreeGridRow extends React.Component {
 							isPrimaryColumn={col.props.isPrimaryColumn}
 							isChildOpen={this.state.isOpen}
 							hasChildren={this.props.row.nodes !== undefined}
-							onClickExpand={() => this.setState({ isOpen: !this.state.isOpen})}
+							onClickExpand={this.handleExpansion}
 						>
 							{col.props.typeAttributes
 								? this.props.row[col.props.typeAttributes.label.fieldName]
@@ -91,11 +129,25 @@ class TreeGridRow extends React.Component {
 							assistiveText={{
 								icon: `More actions for`,
 							}}
-							onClick={(e, o) => this.props.onClickMoreActions(e, o)}
 						/>
 					</td>
 				</tr>
-				{this.state.isOpen ? children : null}
+				{this.state.isOpen && this.props.row.nodes
+					? this.props.row.nodes.map((row, i) => (
+							<TreeGridRow
+								id={`${this.props.id}-sub-row-${i}`}
+								level={this.props.level + 1}
+								columns={this.props.columns}
+								row={row}
+								isOpen={false}
+								isSingleSelect={this.props.isSingleSelect}
+								onExpand={this.props.onExpand}
+								onCollapse={this.props.onCollapse}
+								isSelected={find(this.state.selection, row)}
+								onSelect={(event) => this.handleSelection(event, row)}
+							/>
+						))
+					: null}
 			</React.Fragment>
 		);
 	}
@@ -108,7 +160,8 @@ TreeGridRow.propTypes = {
 	level: PropTypes.number,
 	columns: PropTypes.arrayOf(PropTypes.object),
 	row: PropTypes.object,
-	isOpen: PropTypes.bool,
+	onSelect: PropTypes.func,
+	onCollapse: PropTypes.func,
 };
 
 TreeGridRow.defaultProps = {
