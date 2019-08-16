@@ -14,9 +14,16 @@ class TreeGridRow extends React.Component {
 		super(props);
 		this.state = {
 			isOpen: false,
-			isSelectAll: this.props.isSelected,
+			isSelected: this.props.isSelected,
 			selection: []
 		};
+	}
+
+	static getDerivedStateFromProps(nextProps, prevState){
+		if (nextProps.isSelected !== prevState.isSelected) {
+			return { isSelected: nextProps.isSelected };
+		}
+		return null;
 	}
 
 	handleExpansion = (event) => {
@@ -27,15 +34,15 @@ class TreeGridRow extends React.Component {
 	};
 
 	handleSelectAll = (event) => {
-		const { isSelectAll } = this.state;
+		const { isSelected } = this.state;
 		if(this.props.row.nodes)
 		{
-			if (!isSelectAll) {
+			if (!isSelected) {
 				this.props.onSelect(event);
-				this.setState({ isSelectAll: true, selection: this.props.row.nodes });
+				this.setState({ isSelected: true, selection: this.props.row.nodes });
 			} else {
 				this.props.onSelect(event);
-				this.setState({ isSelectAll: false, selection: [] });
+				this.setState({ isSelected: false, selection: [] });
 			}
 		}
 		else {
@@ -45,32 +52,19 @@ class TreeGridRow extends React.Component {
 
 	handleSelection = (event, row) => {
 		let { selection } = this.state;
-		if(!this.props.isSingleSelect)
-		{
-			if (find(selection, row)) {
-				selection = reject(selection, row);
-				const obj = { selection, row, selected: false };
-				this.props.events.onRowChange(event, obj);
-				this.props.onSelect(event,this.props.row);
-				this.setState({ selection, isSelectAll: false });
-			} else {
-				selection.push(row);
-				const obj = { selection, row, selected: true };
-				this.props.events.onRowChange(event, obj);
-				if (selection.length === this.props.row.nodes.length)
-					this.setState({ selection, isSelectAll: true });
-				else this.setState({ selection });
-			}
+		if (find(selection, row)) {
+			selection = reject(selection, row);
+			this.props.onSelect(event);
+			this.setState({ selection, isSelected: false });
 		} else {
-			this.props.events.onRowChange(event, row);
-			if(this.state.selection!==row)
-				this.setState({ selection: row });
-			else
-				this.setState({ selection: null });
+			selection.push(row);
+			this.props.onSelect(event);
+			this.setState({ selection, isSelected: false });
 		}
 	};
 
 	render() {
+		console.log(this.state.selection);
 		return (
 			<React.Fragment>
 				<tr
@@ -80,7 +74,7 @@ class TreeGridRow extends React.Component {
 					aria-setsize="4"
 					className={classNames(
 						`slds-hint-parent`,
-						this.state.isSelectAll ? `slds-is-selected` : null
+						this.props.isSelected ? `slds-is-selected` : null
 					)}
 					onClick={() => this.props.isSingleSelect ? this.props.onSelect() : null}
 					tabIndex="0"
@@ -99,7 +93,7 @@ class TreeGridRow extends React.Component {
 								id={`${this.props.id}-checkbox`}
 								indeterminate={
 									this.state.selection.length > 0 &&
-									!this.state.isSelectAll
+									!this.state.isSelected
 								}
 								checked={this.props.isSelected}
 								onChange={() => this.handleSelectAll()}
