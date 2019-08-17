@@ -12,16 +12,23 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 
 import Icon from '../icon';
-import Modal from '../modal';
 import { MAP } from '../../utilities/constants';
 
 const displayName = MAP;
 
 const propTypes = {
 	/**
-	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
+	 * CSS class names to be added with `slds-map` class. `array`, `object`, or `string` are accepted.
 	 */
 	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
+	 */
+	classNameContainer: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string,
@@ -31,38 +38,44 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * Whether the modal containing the map is open. Only for `modal` variant
+	 *  Labels
+	 *  * `title` - Title for the Map component.
 	 */
-	isModalOpen: PropTypes.bool,
+	labels: PropTypes.shape({
+		title: PropTypes.string,
+	}),
 	/**
-	 * Title for the Map component.
+	 * **Array of locations objects for the Map component.**
+	 * Each location object can contain:
+	 *  * `id` : A unique identifier string for the location
+	 *  * `name` : Name of the location
+	 *  * `address` : Address of the location
 	 */
-	title: PropTypes.string,
+	locations: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			name: PropTypes.string.isRequired,
+			address: PropTypes.string.isRequired,
+		})
+	).isRequired,
 	/**
-	 * Accepts a single Map location
+	 * Callback function triggered when a location is selected
 	 */
-	location: PropTypes.string,
-	/**
-	 * Accepts Map locations as an array of Objects
-	 */
-	locations: PropTypes.arrayOf(PropTypes.object),
+	onClickLocation: PropTypes.func,
 	/**
 	 * Accepts a Google Map API Key that will be used for showing the map
 	 */
 	googleAPIKey: PropTypes.string.isRequired,
-	/**
-	 * Accepts a node that will be shown at the footer of the modal containing the map. Only for `modal` variant
+	/*  Accepts location object that will be selected to shown on load
+	 *  * `id` : A unique identifier string for the location
+	 *  * `name` : Name of the location
+	 *  * `address` : Address of the location
 	 */
-	modalFooter: PropTypes.node,
-	/**
-	 * Selects the variant of Map component
-	 */
-	variant: PropTypes.oneOf(['standalone', 'modal']),
-};
-
-const defaultProps = {
-	isModalOpen: true,
-	variant: 'standalone',
+	selection: PropTypes.shape({
+		id: PropTypes.string.isRequired,
+		name: PropTypes.string.isRequired,
+		address: PropTypes.string.isRequired,
+	}),
 };
 
 /**
@@ -71,9 +84,14 @@ const defaultProps = {
 class Map extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			selected: 0,
-		};
+		if (this.props.selection)
+			this.state = {
+				selected: this.props.locations.indexOf(this.props.selection),
+			};
+		else
+			this.state = {
+				selected: 0,
+			};
 		this.generatedId = shortid.generate();
 	}
 
@@ -84,79 +102,76 @@ class Map extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
+	/**
+	 * Handles clicking of a location
+	 */
+	handleClick = (event, i) => {
+		if (typeof this.props.onClickLocation === 'function')
+			this.props.onClickLocation(event, this.props.locations[i]);
+		this.setState({ selected: i });
+	};
+
 	render() {
-		const mapContainer = (
+		return (
 			<div
 				id={this.getId()}
 				className={classNames(
 					`slds-grid`,
-					{'slds-has-coordinates' : this.props.locations},
-					this.props.className
+					{ 'slds-has-coordinates': this.props.locations },
+					this.props.classNameContainer
 				)}
 			>
 				<div className="slds-map_container">
-					<div className="slds-map">
+					<div className={classNames(`slds-map`, this.props.className)}>
 						<iframe
 							id={`${this.getId()}-google-map`}
-							title="Google Maps iframe"
+							title={this.props.labels.title}
 							src={`https://www.google.com/maps/embed/v1/place?key=${
 								this.props.googleAPIKey
-							}&q=${ this.props.locations ?
-								encodeURIComponent(this.props.locations[this.state.selected].address)
-								: encodeURIComponent(this.props.location)
-							}`}
+							}&q=${encodeURIComponent(
+								this.props.locations[this.state.selected].address
+							)}`}
 						/>
 					</div>
 				</div>
-				{ this.props.locations ? (
-				<div className="slds-coordinates">
-					<div className="slds-coordinates__header">
-						<h2 className="slds-coordinates__title">{`${this.props.title} (${
-							this.props.locations.length
-						})`}</h2>
+				{this.props.locations.length > 1 ? (
+					<div className="slds-coordinates">
+						<div className="slds-coordinates__header">
+							<h2 className="slds-coordinates__title">
+								{`${this.props.labels.title} (${this.props.locations.length})`}
+							</h2>
+						</div>
+						<ul className="slds-coordinates__list">
+							{this.props.locations.map((location, i) => (
+								<li key={location.id} className="slds-coordinates__item">
+									<span className="slds-assistive-text" aria-live="polite">
+										{`${location.name} is currently selected`}
+									</span>
+									<button
+										type="button"
+										onClick={(event) => this.handleClick(event, i)}
+										className="slds-coordinates__item-action slds-button_reset slds-media"
+										aria-pressed={this.state.selected === i}
+									>
+										<span className="slds-media__figure">
+											<Icon category="standard" name="account" />
+										</span>
+										<span className="slds-media__body">
+											<span className="slds-text-link">{location.name}</span>
+											<span>{location.address}</span>
+										</span>
+									</button>
+								</li>
+							))}
+						</ul>
 					</div>
-					<ul className="slds-coordinates__list">
-						{this.props.locations.map((location, i) => (
-							<li key={location.name} className="slds-coordinates__item">
-								<span className="slds-assistive-text" aria-live="polite" />
-								<button
-									type="button"
-									onClick={() => this.setState({ selected: i })}
-									className="slds-coordinates__item-action slds-button_reset slds-media"
-									aria-pressed={this.state.selected === i}
-								>
-									<span className="slds-media__figure">
-										<Icon category="standard" name="account" />
-									</span>
-									<span className="slds-media__body">
-										<span className="slds-text-link">{location.name}</span>
-										<span>{location.address}</span>
-									</span>
-								</button>
-							</li>
-						))}
-					</ul>
-				</div>) : null }
+				) : null}
 			</div>
-		);
-
-		return this.props.variant === 'standalone' ? (
-			mapContainer
-		) : (
-			<Modal
-				isOpen={this.props.isModalOpen}
-				size="medium"
-				title={`${this.props.title}${this.props.locations ? ` (${this.props.locations.length})` : ''}`}
-				footer={this.props.modalFooter}
-			>
-				{mapContainer}
-			</Modal>
 		);
 	}
 }
 
 Map.displayName = displayName;
 Map.propTypes = propTypes;
-Map.defaultProps = defaultProps;
 
 export default Map;

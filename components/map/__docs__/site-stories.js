@@ -5,8 +5,7 @@
 
 const siteStories = [
 	require('raw-loader!@salesforce/design-system-react/components/map/__examples__/multiple-locations.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/map/__examples__/modal-multi-location.jsx'),
-	require('raw-loader!@salesforce/design-system-react/components/map/__examples__/modal-single-location.jsx'),
+	require('raw-loader!@salesforce/design-system-react/components/map/__examples__/single-location.jsx'),
 ];
 
 module.exports = siteStories;
