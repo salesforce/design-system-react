@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSSummaryDetail Base 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-summary-detail"
+    id="GqMs-7uk5Q5r"
+  >
+    <button
+      aria-controls="GqMs-7uk5Q5r-details"
+      aria-expanded={false}
+      className="slds-button slds-button_icon slds-m-right_x-small"
+      onClick={[Function]}
+      title="Toggle details for Summary Title"
+      type="button"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-summary-detail__action-icon slds-icon slds-icon_x-small slds-icon-text-default"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Toggle details for Summary Title
+        </span>
+      </span>
+    </button>
+    <div>
+      <div
+        className="slds-summary-detail__title"
+      >
+        <h3
+          className="slds-text-heading_small slds-truncate"
+          title="Summary Title"
+        >
+          Summary Title
+        </h3>
+      </div>
+      <div
+        aria-hidden={true}
+        className="slds-summary-detail__content"
+        id="GqMs-7uk5Q5r-details"
+      >
+        <p>
+          Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSSummaryDetail w/ Complex Title 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-summary-detail"
+    id="yvcMpRYcTrV4"
+  >
+    <button
+      aria-controls="yvcMpRYcTrV4-details"
+      aria-expanded={false}
+      className="slds-button slds-button_icon slds-m-right_x-small"
+      onClick={[Function]}
+      title="Toggle details for Summary Title"
+      type="button"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-summary-detail__action-icon slds-icon slds-icon_x-small slds-icon-text-default"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Toggle details for Summary Title
+        </span>
+      </span>
+    </button>
+    <div>
+      <div
+        className="slds-summary-detail__title"
+      >
+        <div
+          className="slds-grid"
+        >
+          <h3
+            className="slds-text-heading_small slds-truncate slds-p-right_small"
+            title="Summary Title"
+          >
+            Summary Title
+          </h3>
+          <span
+            className="slds-badge"
+          >
+            In Progress
+          </span>
+        </div>
+        <p>
+          Additional information about this step
+        </p>
+      </div>
+      <div
+        aria-hidden={true}
+        className="slds-summary-detail__content"
+        id="yvcMpRYcTrV4-details"
+      >
+        <p>
+          Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

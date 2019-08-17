@@ -38,23 +38,27 @@ const propTypes = {
 	/**
 	 * Title for the summary
 	 */
-	title: PropTypes.string,
+	title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	/**
 	 * Summary in detail
 	 */
-	detail: PropTypes.string,
+	detail: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	/**
 	 * Sub-title for the summary.
 	 */
-	subTitle: PropTypes.string,
+	subTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	/**
-	 * Text to be shown on badge on right of the title
+	 * Accepts a badge that will be shown on right of the title
 	 */
-	badgeText: PropTypes.string,
+	badge: PropTypes.node,
 	/**
 	 * Whether summary details are visible
 	 */
 	isOpen: PropTypes.bool,
+	/**
+	 * Callback function to be triggered when details is toggled
+	 */
+	onToggleDetails: PropTypes.func,
 };
 
 const defaultProps = {
@@ -83,6 +87,13 @@ class SummaryDetail extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
+	handleToggle = (event) => {
+		if (typeof this.props.onToggleDetails === 'function')
+			this.props.onToggleDetails(event);
+		const curr = this.state.isOpen;
+		this.setState({ isOpen: !curr });
+	};
+
 	render() {
 		const assistiveText = assign(
 			{},
@@ -93,7 +104,7 @@ class SummaryDetail extends React.Component {
 		const title = (
 			<h3
 				className={classNames(`slds-text-heading_small`, `slds-truncate`, {
-					'slds-p-right_small': this.props.badgeText,
+					'slds-p-right_small': this.props.badge,
 				})}
 				title={this.props.title}
 			>
@@ -115,7 +126,7 @@ class SummaryDetail extends React.Component {
 					type="button"
 					className="slds-button slds-button_icon slds-m-right_x-small"
 					title={assistiveText.toggleButton}
-					onClick={() => this.setState({ isOpen: isNotOpen })}
+					onClick={(event) => this.handleToggle(event)}
 					aria-controls={`${this.getId()}-details`}
 					aria-expanded={!isNotOpen}
 				>
@@ -131,13 +142,11 @@ class SummaryDetail extends React.Component {
 				</button>
 				<div>
 					<div className="slds-summary-detail__title">
-						{this.props.subTitle || this.props.badgeText ? (
+						{this.props.subTitle || this.props.badge ? (
 							<React.Fragment>
 								<div className="slds-grid">
 									{title}
-									{this.props.badgeText ? (
-										<span className="slds-badge">{this.props.badgeText}</span>
-									) : null}
+									{this.props.badge}
 								</div>
 								{this.props.subTitle ? <p>{this.props.subTitle}</p> : null}
 							</React.Fragment>
