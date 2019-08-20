@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.10.9",
+	"version": "0.10.8",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -20,6 +20,7 @@
 		"lint:fix": "cross-env NODE_ENV=test npx prettier --write \"**/*.{js,jsx}\" && npx prettylint \"*.json\" --fix && npx eslint --fix \"**/*.{js,jsx,json}\" --max-warnings=0",
 		"lint:style": "npx concurrently \"npx prettier --list-different \"**/*.{js,jsx}\"\" \"npx prettylint \"*.json\"\"",
 		"lint:quality": "npx eslint \"**/*.{jsx,js,json}\" --max-warnings=0",
+		"prepare-components": "node ./scripts/prepare-components.js",
 		"publish:origin": "npx babel-node scripts/publish-to-git.js",
 		"publish:edge": "npx babel-node scripts/publish-to-git.js --tag=edge",
 		"publish:upstream": "npx babel-node scripts/publish-to-git.js --remote=upstream",
@@ -28,7 +29,7 @@
 		"start": "npx start-storybook -p 9001 --ci -s ./node_modules & node tests/browser-tests-app",
 		"static:start": "node app",
 		"static:build": "npx build-storybook -o ./storybook",
-		"test": "npm run test:banner && npx concurrently \"npm:lint\" \"npm:test:unit\" \"npm:test:dom-snapshot\" \"npm:test:accessibility\" \"npm run build:docs && npm run test:docs\"",
+		"test": "npm run prepare-components; npm run test:banner && npx concurrently \"npm:lint\" \"npm:test:unit\" \"npm:test:dom-snapshot\" \"npm:test:accessibility\" \"npm run build:docs && npm run test:docs\"",
 		"test:banner": "node ./scripts/print-tests-top-banner.js",
 		"test:docs": "npx babel-node ./tests/component-docs-test.js",
 		"test:fix": "npm run lint:fix && npm run test",
@@ -160,7 +161,7 @@
 		"file-loader": "^1.1.11",
 		"find-remove": "^1.1.0",
 		"fs-extra": "^3.0.0",
-		"glob": "^7.1.3",
+		"glob": "^7.1.4",
 		"istanbul-instrumenter-loader": "^3.0.1",
 		"jest": "^23.1.0",
 		"jest-axe": "https://github.com/interactivellama/jest-axe.git#v3.1.1-alpha.1",
@@ -213,6 +214,7 @@
 			"component": "accordion",
 			"status": "prod",
 			"display-name": "Accordions",
+			"classKey": "Accordion",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
@@ -220,8 +222,12 @@
 			"SLDS-component-path": "/components/accordion",
 			"dependencies": [
 				{
-					"component": "panel"
+					"component": "panel",
+					"classKey": "AccordionPanel"
 				}
+			],
+			"site-stories": [
+				"/__examples__/base.jsx"
 			],
 			"url-slug": "accordions"
 		},
@@ -229,6 +235,7 @@
 			"component": "alert",
 			"status": "prod",
 			"display-name": "Alerts",
+			"classKey": "Alert",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
@@ -236,8 +243,16 @@
 			"SLDS-component-path": "/components/alert",
 			"dependencies": [
 				{
-					"component": "container"
+					"component": "container",
+					"classKey": "AlertContainer"
 				}
+			],
+			"site-stories": [
+				"/__examples__/info.jsx",
+				"/__examples__/warning.jsx",
+				"/__examples__/offline.jsx",
+				"/__examples__/error.jsx",
+				"/__examples__/dismissable.jsx"
 			],
 			"url-slug": "alerts"
 		},
@@ -245,103 +260,162 @@
 			"component": "app-launcher",
 			"status": "prod",
 			"display-name": "App Launcher",
+			"classKey": "AppLauncher",
 			"SLDS-component-path": "/components/app-launcher",
 			"dependencies": [
 				{
-					"component": "expandable-section"
+					"component": "expandable-section",
+					"classKey": "AppLauncherExpandableSection"
 				},
 				{
-					"component": "link"
+					"component": "link",
+					"classKey": "AppLauncherLink"
 				},
 				{
-					"component": "tile"
+					"component": "tile",
+					"classKey": "AppLauncherTile"
 				}
 			],
-			"url-slug": "app-launchers"
+			"site-stories": [
+				"/__examples__/default.jsx"
+			],
+			"url-slug": "app-launcher"
 		},
 		{
 			"component": "avatar",
 			"status": "prod",
 			"display-name": "Avatars",
+			"classKey": "Avatar",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
 			"SLDS-component-path": "/components/avatar",
+			"site-stories": [
+				"/__examples__/base.jsx",
+				"/__examples__/user-initials.jsx",
+				"/__examples__/user-icon.jsx",
+				"/__examples__/entity-initials.jsx",
+				"/__examples__/entity-icon.jsx"
+			],
 			"url-slug": "avatars"
 		},
 		{
 			"component": "brand-band",
 			"status": "prod",
-			"display-name": "BrandBand",
+			"display-name": "Brand Band",
+			"classKey": "BrandBand",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/08/27",
 				"commit-sha": "aef31ce8daf993b59ca94c656c5efd9f2e3266f7"
 			},
 			"SLDS-component-path": "/components/brand-band",
+			"site-stories": [
+				"/__examples__/lightning-blue-theme.jsx",
+				"/__examples__/default.jsx",
+				"/__examples__/small.jsx",
+				"/__examples__/large.jsx",
+				"/__examples__/no-image.jsx"
+			],
 			"url-slug": "brand-band"
 		},
 		{
 			"component": "breadcrumb",
 			"status": "prod",
 			"display-name": "Breadcrumbs",
+			"classKey": "Breadcrumb",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
-			"SLDS-component-path": "/components/breadcrumbs",
+			"SLDS-component-path": "/components/breadcrumb",
+			"site-stories": [
+				"/__examples__/base.jsx",
+				"/__examples__/one-item.jsx",
+				"/__examples__/base-with-overflow-menu.jsx"
+			],
 			"url-slug": "breadcrumbs"
 		},
 		{
 			"component": "builder-header",
-			"status": "prod",
+			"status": "prototype",
 			"display-name": "Builder Header",
+			"classKey": "BuilderHeader",
 			"SLDS-component-path": "/components/builder-header",
 			"dependencies": [
 				{
-					"component": "nav"
+					"component": "nav",
+					"classKey": "BuilderHeaderNav"
 				},
 				{
-					"component": "nav-dropdown"
+					"component": "nav-dropdown",
+					"classKey": "BuilderHeaderNavDropdown"
 				},
 				{
-					"component": "nav-link"
+					"component": "nav-link",
+					"classKey": "BuilderHeaderNavLink"
 				},
 				{
-					"component": "toolbar"
+					"component": "toolbar",
+					"classKey": "BuilderHeaderToolbar"
 				}
 			],
+			"site-stories": [
+				"/__examples__/base.jsx",
+				"/__examples__/base-with-toolbar.jsx",
+				"/__examples__/successful-save.jsx",
+				"/__examples__/after-successful-save.jsx",
+				"/__examples__/failed-save.jsx"
+			],
 			"url-slug": "builder-header"
-		},
-		{
-			"component": "button",
-			"status": "prod",
-			"display-name": "Buttons",
-			"last-accessibility-review": {
-				"date-iso-8601": "2018/01/18",
-				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-			},
-			"SLDS-component-path": "/components/buttons",
-			"url-slug": "buttons"
-		},
-		{
-			"component": "button-stateful",
-			"status": "prod",
-			"display-name": "Stateful Buttons",
-			"SLDS-component-path": "/components/button/#flavor-stateful",
-			"url-slug": "stateful-buttons"
 		},
 		{
 			"component": "button-group",
 			"status": "prod",
 			"display-name": "Button Groups",
-			"SLDS-component-path": "/components/button-groups",
+			"classKey": "ButtonGroup",
+			"SLDS-component-path": "/components/button-group",
+			"site-stories": [
+				"/__examples__/more-icon.jsx",
+				"/__examples__/icon-group.jsx",
+				"/__examples__/list-variant.jsx"
+			],
 			"url-slug": "button-groups"
+		},
+		{
+			"component": "button-stateful",
+			"status": "prod",
+			"display-name": "Stateful Buttons",
+			"classKey": "ButtonStateful",
+			"SLDS-component-path": "/components/button/#flavor-stateful",
+			"site-stories": [
+				"/__examples__/icon.jsx",
+				"/__examples__/icon-text.jsx"
+			],
+			"url-slug": "stateful-buttons"
+		},
+		{
+			"component": "button",
+			"status": "prod",
+			"display-name": "Buttons",
+			"classKey": "Button",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/buttons",
+			"site-stories": [
+				"/__examples__/base-neutral.jsx",
+				"/__examples__/brand-disabled-destructive-inverse.jsx",
+				"/__examples__/button-icons.jsx"
+			],
+			"url-slug": "buttons"
 		},
 		{
 			"component": "card",
 			"status": "prod",
 			"display-name": "Cards",
+			"classKey": "Card",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
@@ -349,11 +423,16 @@
 			"SLDS-component-path": "/components/cards",
 			"dependencies": [
 				{
-					"component": "empty"
+					"component": "empty",
+					"classKey": "CardEmpty"
 				},
 				{
-					"component": "filter"
+					"component": "filter",
+					"classKey": "CardFilter"
 				}
+			],
+			"site-stories": [
+				"/__examples__/related-list-with-table.jsx"
 			],
 			"url-slug": "cards"
 		},
@@ -361,42 +440,73 @@
 			"component": "carousel",
 			"status": "prod",
 			"display-name": "Carousel",
+			"classKey": "Carousel",
 			"SLDS-component-path": "/components/carousel",
+			"site-stories": [
+				"/__examples__/three-items.jsx",
+				"/__examples__/default.jsx",
+				"/__examples__/default-with-navigation.jsx"
+			],
 			"url-slug": "carousel"
 		},
 		{
 			"component": "checkbox",
 			"status": "prod",
 			"display-name": "Checkboxes",
+			"classKey": "Checkbox",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
 			"SLDS-component-path": "/components/checkbox",
+			"site-stories": [
+				"/__examples__/default.jsx",
+				"/__examples__/error.jsx",
+				"/__examples__/toggle.jsx"
+			],
 			"url-slug": "checkboxes"
 		},
 		{
 			"component": "color-picker",
 			"status": "prod",
 			"display-name": "Color Pickers",
+			"classKey": "ColorPicker",
 			"SLDS-component-path": "/components/color-picker",
+			"site-stories": [
+				"/__examples__/default.jsx"
+			],
 			"url-slug": "color-picker"
 		},
 		{
 			"component": "combobox",
 			"status": "prod",
 			"display-name": "Comboboxes",
+			"classKey": "Combobox",
 			"last-accessibility-review": {
-				"date-iso-8601": "2019/01/10",
-				"commit-sha": "ad49735c8055420c4c95872299986f5fbbb2236e"
+				"date-iso-8601": "2017/08/21",
+				"commit-sha": "295a4766f712a5f93743c4ecd3ba62d91c1fc153"
 			},
 			"SLDS-component-path": "/components/combobox",
+			"site-stories": [
+				"/__examples__/base.jsx",
+				"/__examples__/base-menu-subheader.jsx",
+				"/__examples__/base-inherit-menu-width.jsx",
+				"/__examples__/base-predefined-options-only.jsx",
+				"/__examples__/dialog.jsx",
+				"/__examples__/inline-multiple.jsx",
+				"/__examples__/inline-single.jsx",
+				"/__examples__/readonly-single.jsx",
+				"/__examples__/readonly-multiple.jsx",
+				"/__examples__/required-input-error-state.jsx",
+				"/__examples__/dialog.jsx"
+			],
 			"url-slug": "comboboxes"
 		},
 		{
 			"component": "data-table",
 			"status": "prod",
 			"display-name": "Data Tables",
+			"classKey": "DataTable",
 			"last-accessibility-review": {
 				"date-iso-8601": "2017/01/01",
 				"deprecated-accessibility": "true",
@@ -405,112 +515,167 @@
 			"SLDS-component-path": "/components/data-tables",
 			"dependencies": [
 				{
-					"component": "cell"
+					"component": "cell",
+					"classKey": "DataTableCell"
 				},
 				{
-					"component": "column"
+					"component": "column",
+					"classKey": "DataTableColumn"
 				},
 				{
-					"component": "highlight-cell"
+					"component": "highlight-cell",
+					"classKey": "DataTableHighlightCell"
 				},
 				{
-					"component": "row-actions"
+					"component": "row-actions",
+					"classKey": "DataTableRowActions"
 				}
 			],
-			"url-slug": "data-table"
+			"site-stories": [
+				"/__examples__/basic-fluid.jsx",
+				"/__examples__/basic-fluid-striped.jsx",
+				"/__examples__/basic-fluid-no-row-hover.jsx",
+				"/__examples__/basic-fluid-column-bordered.jsx",
+				"/__examples__/basic-fixed-layout.jsx",
+				"/__examples__/advanced.jsx",
+				"/__examples__/advanced-single-select.jsx",
+				"/__examples__/fixed-header.jsx",
+				"/__examples__/joined-with-page-header.jsx"
+			],
+			"url-slug": "data-tables"
 		},
 		{
 			"component": "date-picker",
 			"status": "prod",
 			"display-name": "Datepickers",
+			"classKey": "DatePicker",
 			"last-accessibility-review": {
 				"date-iso-8601": "2017/01/20",
 				"commit-sha": "568f503b19ddc039207e4b5c2636461de937f5f0"
 			},
 			"SLDS-component-path": "/components/datepickers",
+			"site-stories": [
+				"/__examples__/default.jsx"
+			],
 			"url-slug": "date-pickers"
 		},
 		{
 			"component": "dynamic-icon",
 			"status": "prod",
 			"display-name": "Dynamic Icon",
+			"classKey": "DynamicIcon",
 			"SLDS-component-path": "/components/dynamic-icon",
+			"site-stories": [
+				"/__examples__/ellie.jsx",
+				"/__examples__/eq.jsx",
+				"/__examples__/score.jsx",
+				"/__examples__/strength.jsx",
+				"/__examples__/trend.jsx",
+				"/__examples__/typing.jsx",
+				"/__examples__/waffle.jsx"
+			],
 			"url-slug": "dynamic-icon"
 		},
 		{
 			"component": "expandable-section",
 			"status": "prod",
 			"display-name": "Expandable Section",
+			"classKey": "ExpandableSection",
 			"SLDS-component-path": "/components/expandable-section",
+			"site-stories": [
+				"/__examples__/default.jsx",
+				"/__examples__/controlled.jsx",
+				"/__examples__/non-collapsible.jsx"
+			],
 			"url-slug": "expandable-section"
 		},
 		{
 			"component": "files",
-			"dependencies": [
-				{
-					"component": "file"
-				},
-				{
-					"component": "more-files"
-				}
-			],
 			"status": "prod",
 			"display-name": "Files",
+			"classKey": "Files",
+			"dependencies": [
+				{
+					"component": "file",
+					"classKey": "FilesFile"
+				},
+				{
+					"component": "more-files",
+					"classKey": "FilesMoreFiles"
+				}
+			],
 			"SLDS-component-path": "/components/files",
+			"site-stories": [
+				"/__examples__/default.jsx",
+				"/__examples__/crops.jsx",
+				"/__examples__/loading.jsx",
+				"/__examples__/no-title.jsx",
+				"/__examples__/with-external-icon.jsx",
+				"/__examples__/no-image.jsx",
+				"/__examples__/actions.jsx"
+			],
 			"url-slug": "files"
 		},
 		{
 			"component": "filter",
 			"status": "prototype",
 			"display-name": "Filters",
+			"classKey": "Filter",
 			"SLDS-component-path": "/components/filter",
+			"site-stories": [
+				"/__examples__/default.jsx",
+				"/__examples__/new.jsx",
+				"/__examples__/error.jsx",
+				"/__examples__/locked.jsx"
+			],
 			"url-slug": "filters"
-		},
-		{
-			"component": "input",
-			"status": "prod",
-			"display-name": "Inputs",
-			"last-accessibility-review": {
-				"date-iso-8601": "2017/09/22",
-				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-			},
-			"SLDS-component-path": "/components/input",
-			"url-slug": "inputs"
 		},
 		{
 			"component": "global-header",
 			"status": "prod",
 			"display-name": "Global Header",
+			"classKey": "GlobalHeader",
 			"SLDS-component-path": "/components/global-header#flavor-base",
 			"dependencies": [
 				{
-					"component": "favorites"
+					"component": "favorites",
+					"classKey": "GlobalHeaderFavorites"
 				},
 				{
-					"component": "help"
+					"component": "help",
+					"classKey": "GlobalHeaderHelp"
 				},
 				{
-					"component": "notifications"
+					"component": "notifications",
+					"classKey": "GlobalHeaderNotifications"
 				},
 				{
-					"component": "profile"
+					"component": "profile",
+					"classKey": "GlobalHeaderProfile"
 				},
 				{
-					"component": "search"
+					"component": "search",
+					"classKey": "GlobalHeaderSearch"
 				},
 				{
-					"component": "setup"
+					"component": "setup",
+					"classKey": "GlobalHeaderSetup"
 				},
 				{
-					"component": "task"
+					"component": "task",
+					"classKey": "GlobalHeaderTask"
 				}
+			],
+			"site-stories": [
+				"/__examples__/default.jsx"
 			],
 			"url-slug": "global-headers"
 		},
 		{
 			"component": "global-navigation-bar",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Global Navigation Bar",
+			"classKey": "GlobalNavigationBar",
 			"last-accessibility-review": {
 				"date-iso-8601": "2017/05/02",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
@@ -518,56 +683,118 @@
 			"SLDS-component-path": "/components/global-navigation",
 			"dependencies": [
 				{
-					"component": "button"
+					"component": "button",
+					"classKey": "GlobalNavigationBarButton"
 				},
 				{
-					"component": "dropdown"
+					"component": "dropdown",
+					"classKey": "GlobalNavigationBarDropdown"
 				},
 				{
-					"component": "label"
+					"component": "label",
+					"classKey": "GlobalNavigationBarLabel"
 				},
 				{
-					"component": "link"
+					"component": "link",
+					"classKey": "GlobalNavigationBarLink"
 				},
 				{
-					"component": "region"
+					"component": "region",
+					"classKey": "GlobalNavigationBarRegion"
 				}
 			],
-			"url-slug": "global-navigation-bars"
+			"site-stories": [
+				"/__examples__/default.jsx"
+			],
+			"url-slug": "global-navigation-bar"
+		},
+		{
+			"component": "icon-settings",
+			"status": "prod",
+			"display-name": "Icon Settings",
+			"classKey": "IconSettings",
+			"url-slug": "icon-settings"
 		},
 		{
 			"component": "icon",
 			"status": "prod",
 			"display-name": "Icons",
+			"classKey": "Icon",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
 			"SLDS-component-path": "/components/icons",
+			"site-stories": [
+				"/__examples__/categories.jsx",
+				"/__examples__/colors.jsx",
+				"/__examples__/sizes.jsx"
+			],
 			"url-slug": "icons"
 		},
 		{
 			"component": "illustration",
-			"status": "prod",
+			"status": "prototype",
 			"display-name": "Illustrations",
+			"classKey": "Illustration",
 			"SLDS-component-path": "/components/illustration",
+			"site-stories": [
+				"/__examples__/small-image-text.jsx",
+				"/__examples__/large-image-text.jsx",
+				"/__examples__/heading-message.jsx",
+				"/__examples__/heading-only.jsx",
+				"/__examples__/message-only.jsx"
+			],
 			"url-slug": "illustrations"
+		},
+		{
+			"component": "input",
+			"status": "prod",
+			"display-name": "Inputs",
+			"classKey": "Input",
+			"last-accessibility-review": {
+				"date-iso-8601": "2017/09/22",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"dependencies": [
+				{
+					"component": "search",
+					"classKey": "InputSearch"
+				}
+			],
+			"SLDS-component-path": "/components/input",
+			"site-stories": [
+				"/__examples__/default.jsx",
+				"/__examples__/icons.jsx",
+				"/__examples__/error.jsx",
+				"/__examples__/inactiveInputs.jsx",
+				"/__examples__/inline-help.jsx",
+				"/__examples__/field-level-help.jsx",
+				"/__examples__/counter-input.jsx"
+			],
+			"url-slug": "inputs"
 		},
 		{
 			"component": "media-object",
 			"status": "prod",
 			"display-name": "Media Objects",
+			"classKey": "MediaObject",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
 			"SLDS-component-path": "/components/utilities/media-object",
+			"site-stories": [
+				"/__examples__/default.jsx",
+				"/__examples__/vertically-centered.jsx"
+			],
 			"url-slug": "media-objects"
 		},
 		{
 			"component": "menu-dropdown",
 			"status": "prod",
 			"display-name": "Dropdown Menus",
+			"classKey": "MenuDropdown",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
@@ -575,8 +802,17 @@
 			"SLDS-component-path": "/components/menus#flavor-dropdown",
 			"dependencies": [
 				{
-					"component": "button-trigger"
+					"component": "button-trigger",
+					"classKey": "MenuDropdownButtonTrigger"
 				}
+			],
+			"site-stories": [
+				"/__examples__/default.jsx",
+				"/__examples__/default-icon-label.jsx",
+				"/__examples__/default-right-to-left.jsx",
+				"/__examples__/sub-heading.jsx",
+				"/__examples__/custom-trigger.jsx",
+				"/__examples__/checkmark.jsx"
 			],
 			"url-slug": "menu-dropdowns"
 		},
@@ -584,63 +820,134 @@
 			"component": "modal",
 			"status": "prod",
 			"display-name": "Modals and Prompts",
+			"classKey": "Modal",
 			"SLDS-component-path": "/components/modals",
-			"url-slug": "modals"
-		},
-		{
-			"component": "panel",
-			"status": "prototype",
-			"display-name": "Panels",
-			"SLDS-component-path": "/components/panels",
-			"dependencies": [
-				{
-					"component": "filtering/group"
-				},
-				{
-					"component": "filtering/list-heading"
-				},
-				{
-					"component": "filtering/list"
-				}
+			"site-stories": [
+				"/__examples__/menu-contents.jsx",
+				"/__examples__/header-footer.jsx",
+				"/__examples__/taglines.jsx",
+				"/__examples__/prompt.jsx",
+				"/__examples__/sizes.jsx"
 			],
-			"url-slug": "panels"
-		},
-		{
-			"component": "pill",
-			"status": "prod",
-			"display-name": "Pills",
-			"SLDS-component-path": "/components/pills",
-			"url-slug": "pills"
-		},
-		{
-			"component": "pill-container",
-			"status": "prod",
-			"display-name": "Pill Container",
-			"SLDS-component-path": "/components/pill-container",
-			"url-slug": "pill-container"
-		},
-		{
-			"component": "popover",
-			"status": "prod",
-			"display-name": "Popovers",
-			"last-accessibility-review": {
-				"date-iso-8601": "2018/01/18",
-				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-			},
-			"SLDS-component-path": "/components/popovers",
-			"url-slug": "popovers"
+			"url-slug": "modals"
 		},
 		{
 			"component": "page-header",
 			"status": "prod",
 			"display-name": "Page Headers",
+			"classKey": "PageHeader",
 			"SLDS-component-path": "/components/page-headers",
+			"dependencies": [
+				{
+					"component": "control",
+					"classKey": "PageHeaderControl"
+				}
+			],
+			"site-stories": [
+				"/__examples__/record-home.jsx",
+				"/__examples__/object-home.jsx",
+				"/__examples__/related-list.jsx",
+				"/__examples__/setup.jsx"
+			],
 			"url-slug": "page-headers"
+		},
+		{
+			"component": "panel",
+			"status": "prototype",
+			"display-name": "Panels",
+			"classKey": "Panel",
+			"SLDS-component-path": "/components/panels",
+			"dependencies": [
+				{
+					"component": "filtering/group",
+					"classKey": "PanelFilterGroup"
+				},
+				{
+					"component": "filtering/list-heading",
+					"classKey": "PanelFilterListHeading"
+				},
+				{
+					"component": "filtering/list",
+					"classKey": "PanelFilterList"
+				}
+			],
+			"site-stories": [
+				"/__examples__/filtering.jsx",
+				"/__examples__/filtering-locked.jsx",
+				"/__examples__/filtering-error.jsx"
+			],
+			"url-slug": "panels"
+		},
+		{
+			"component": "pill-container",
+			"status": "prod",
+			"display-name": "Pill Container",
+			"classKey": "PillContainer",
+			"SLDS-component-path": "/components/pill-container",
+			"site-stories": [
+				"/__examples__/base.jsx",
+				"/__examples__/icons.jsx",
+				"/__examples__/avatars.jsx",
+				"/__examples__/bare.jsx"
+			],
+			"url-slug": "pill-container"
+		},
+		{
+			"component": "pill",
+			"status": "prod",
+			"display-name": "Pills",
+			"classKey": "Pill",
+			"SLDS-component-path": "/components/pills",
+			"site-stories": [
+				"/__examples__/base.jsx",
+				"/__examples__/icon.jsx"
+			],
+			"url-slug": "pills"
+		},
+		{
+			"component": "popover",
+			"status": "prod",
+			"display-name": "Popovers",
+			"classKey": "Popover",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/popovers",
+			"site-stories": [
+				"/__examples__/header.jsx",
+				"/__examples__/alternative-header.jsx",
+				"/__examples__/controlled-with-footer.jsx",
+				"/__examples__/custom-target.jsx",
+				"/__examples__/error.jsx",
+				"/__examples__/walkthrough.jsx",
+				"/__examples__/walkthrough-action.jsx",
+				"/__examples__/warning.jsx",
+				"/__examples__/edit-dialog.jsx"
+			],
+			"url-slug": "popovers"
+		},
+		{
+			"component": "progress-bar",
+			"status": "prod",
+			"display-name": "Progress Bars",
+			"classKey": "ProgressBar",
+			"SLDS-component-path": "/components/progress-bar",
+			"site-stories": [
+				"/__examples__/default.jsx",
+				"/__examples__/descriptive.jsx",
+				"/__examples__/color.jsx",
+				"/__examples__/radius.jsx",
+				"/__examples__/thickness.jsx",
+				"/__examples__/vertical.jsx"
+			],
+			"url-slug": "progress-bars"
 		},
 		{
 			"component": "progress-indicator",
 			"status": "prod",
 			"display-name": "Progress Indicators",
+			"classKey": "ProgressIndicator",
 			"SLDS-component-path": "/components/progress-indicator",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/07/25",
@@ -650,19 +957,17 @@
 				"date-iso-8601": "2018/07/25",
 				"commit-sha": "473c75bf424f69bf0ff66fde6b1e604c21d2835c"
 			},
+			"site-stories": [
+				"/__examples__/default.jsx",
+				"/__examples__/vertical.jsx"
+			],
 			"url-slug": "progress-indicators"
-		},
-		{
-			"component": "progress-bar",
-			"status": "prod",
-			"display-name": "Progress Bars",
-			"SLDS-component-path": "/components/progress-bar",
-			"url-slug": "progress-bars"
 		},
 		{
 			"component": "progress-ring",
 			"status": "prod",
 			"display-name": "Progress Rings",
+			"classKey": "ProgressRing",
 			"last-accessibility-review": {
 				"date-iso-8601": "2017/11/28",
 				"commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
@@ -672,35 +977,127 @@
 				"commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
 			},
 			"SLDS-component-path": "/components/progress-ring",
+			"site-stories": [
+				"/__examples__/base.jsx",
+				"/__examples__/complete.jsx",
+				"/__examples__/warning.jsx",
+				"/__examples__/expired.jsx",
+				"/__examples__/active.jsx",
+				"/__examples__/customIcon.jsx"
+			],
 			"url-slug": "progress-rings"
+		},
+		{
+			"component": "radio-button-group",
+			"status": "prod",
+			"display-name": "Radio Button Groups",
+			"classKey": "RadioButtonGroup",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/radio-button-group",
+			"site-stories": [
+				"/__examples__/base.jsx"
+			],
+			"url-slug": "radio-button-groups"
+		},
+		{
+			"component": "radio-group",
+			"status": "prod",
+			"display-name": "Radio Groups",
+			"classKey": "RadioGroup",
+			"last-accessibility-review": {
+				"date-iso-8601": "2018/01/18",
+				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+			},
+			"SLDS-component-path": "/components/radio-group",
+			"site-stories": [
+				"/__examples__/base.jsx"
+			],
+			"url-slug": "radio-groups"
 		},
 		{
 			"component": "radio",
 			"status": "prod",
 			"display-name": "Radios",
+			"classKey": "Radio",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
+			"site-stories": [
+				"/__examples__/default.jsx",
+				"/__examples__/disabled.jsx"
+			],
 			"SLDS-component-path": "/components/radio-group/",
 			"url-slug": "radios"
+		},
+		{
+			"component": "scoped-notification",
+			"status": "prod",
+			"display-name": "Scoped Notifications",
+			"classKey": "ScopedNotification",
+			"SLDS-component-path": "/components/scoped-notification",
+			"site-stories": [
+				"/__examples__/base.jsx",
+				"/__examples__/light.jsx",
+				"/__examples__/dark.jsx",
+				"/__examples__/custom-icon.jsx"
+			],
+			"url-slug": "scoped-notifications"
 		},
 		{
 			"component": "setup-assistant",
 			"status": "prototype",
 			"display-name": "Setup Assistant",
+			"classKey": "SetupAssistant",
 			"SLDS-component-path": "/components/setup-assistant",
 			"dependencies": [
 				{
-					"component": "step"
+					"component": "step",
+					"classKey": "SetupAssistantStep"
 				}
 			],
+			"site-stories": [
+				"/__examples__/base.jsx",
+				"/__examples__/step-progress.jsx",
+				"/__examples__/hub-expandable-steps.jsx",
+				"/__examples__/card.jsx"
+			],
 			"url-slug": "setup-assistant"
+		},
+		{
+			"component": "slider",
+			"status": "prod",
+			"display-name": "Slider",
+			"classKey": "Slider",
+			"SLDS-component-path": "/components/slider",
+			"site-stories": [
+				"/__examples__/base.jsx",
+				"/__examples__/disabled.jsx",
+				"/__examples__/error.jsx",
+				"/__examples__/sizes.jsx",
+				"/__examples__/vertical.jsx"
+			],
+			"url-slug": "slider"
+		},
+		{
+			"component": "spinner",
+			"status": "prod",
+			"display-name": "Spinners",
+			"classKey": "Spinner",
+			"SLDS-component-path": "/components/spinner",
+			"site-stories": [
+				"/__examples__/default.jsx"
+			],
+			"url-slug": "spinners"
 		},
 		{
 			"component": "split-view",
 			"status": "prod",
 			"display-name": "Split View",
+			"classKey": "SplitView",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
@@ -712,61 +1109,27 @@
 			"SLDS-component-path": "/components/split-view",
 			"dependencies": [
 				{
-					"component": "header"
+					"component": "header",
+					"classKey": "SplitViewHeader"
 				},
 				{
-					"component": "listbox"
+					"component": "listbox",
+					"classKey": "SplitViewListbox"
 				}
 			],
-			"url-slug": "split-views"
-		},
-		{
-			"component": "radio-group",
-			"status": "prod",
-			"display-name": "Radio Groups",
-			"last-accessibility-review": {
-				"date-iso-8601": "2018/01/18",
-				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-			},
-			"SLDS-component-path": "/components/radio-group",
-			"url-slug": "radio-groups"
-		},
-		{
-			"component": "radio-button-group",
-			"status": "prod",
-			"display-name": "Radio Button Groups",
-			"last-accessibility-review": {
-				"date-iso-8601": "2018/01/18",
-				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
-			},
-			"SLDS-component-path": "/components/radio-button-group",
-			"url-slug": "radio-button-groups"
-		},
-		{
-			"component": "scoped-notification",
-			"status": "prod",
-			"display-name": "Scoped Notifications",
-			"SLDS-component-path": "/components/scoped-notification",
-			"url-slug": "scoped-notifications"
-		},
-		{
-			"component": "slider",
-			"status": "prod",
-			"display-name": "Slider",
-			"SLDS-component-path": "/components/slider",
-			"url-slug": "sliders"
-		},
-		{
-			"component": "spinner",
-			"status": "prod",
-			"display-name": "Spinners",
-			"SLDS-component-path": "/components/spinner",
-			"url-slug": "spinners"
+			"site-stories": [
+				"/__examples__/base.jsx",
+				"/__examples__/base-multiple.jsx",
+				"/__examples__/external-state.jsx",
+				"/__examples__/custom-item-list.jsx"
+			],
+			"url-slug": "split-view"
 		},
 		{
 			"component": "tabs",
 			"status": "prod",
 			"display-name": "Tabs",
+			"classKey": "Tabs",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
@@ -774,8 +1137,13 @@
 			"SLDS-component-path": "/components/tabs",
 			"dependencies": [
 				{
-					"component": "panel"
+					"component": "panel",
+					"classKey": "TabsPanel"
 				}
+			],
+			"site-stories": [
+				"/__examples__/default.jsx",
+				"/__examples__/scoped.jsx"
 			],
 			"url-slug": "tabs"
 		},
@@ -783,20 +1151,31 @@
 			"component": "textarea",
 			"status": "prod",
 			"display-name": "Textareas",
+			"classKey": "Textarea",
 			"SLDS-component-path": "/components/forms#flavor-textarea",
+			"site-stories": [
+				"/__examples__/default.jsx",
+				"/__examples__/error.jsx",
+				"/__examples__/disabled.jsx"
+			],
 			"url-slug": "textareas"
 		},
 		{
 			"component": "time-picker",
 			"status": "prod",
 			"display-name": "Timepickers",
+			"classKey": "TimePicker",
 			"SLDS-component-path": "/components/timepicker",
-			"url-slug": "time-pickers"
+			"site-stories": [
+				"/__examples__/default.jsx"
+			],
+			"url-slug": "timepickers"
 		},
 		{
 			"component": "toast",
 			"status": "prod",
 			"display-name": "Toasts",
+			"classKey": "Toast",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/01/18",
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
@@ -804,8 +1183,16 @@
 			"SLDS-component-path": "/components/toast",
 			"dependencies": [
 				{
-					"component": "container"
+					"component": "container",
+					"classKey": "ToastContainer"
 				}
+			],
+			"site-stories": [
+				"/__examples__/info.jsx",
+				"/__examples__/success.jsx",
+				"/__examples__/warning.jsx",
+				"/__examples__/error.jsx",
+				"/__examples__/error-with-details.jsx"
 			],
 			"url-slug": "toasts"
 		},
@@ -813,13 +1200,21 @@
 			"component": "tooltip",
 			"status": "prod",
 			"display-name": "Tooltips",
+			"classKey": "Tooltip",
 			"SLDS-component-path": "/components/tooltips",
+			"site-stories": [
+				"/__examples__/base.jsx",
+				"/__examples__/button.jsx",
+				"/__examples__/button-group.jsx",
+				"/__examples__/learn-more.jsx"
+			],
 			"url-slug": "tooltips"
 		},
 		{
 			"component": "tree",
 			"status": "prod",
 			"display-name": "Tree",
+			"classKey": "Tree",
 			"last-accessibility-review": {
 				"date-iso-8601": "2018/05/04",
 				"commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
@@ -829,43 +1224,87 @@
 				"commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
 			},
 			"SLDS-component-path": "/components/trees",
-			"url-slug": "trees"
+			"site-stories": [
+				"/__examples__/default.jsx"
+			],
+			"url-slug": "tree"
 		},
 		{
 			"component": "trial-bar",
 			"status": "prototype",
 			"display-name": "Trial Bars",
+			"classKey": "TrialBar",
 			"SLDS-component-path": "/components/trial-bar",
+			"dependencies": [
+				{
+					"component": "button",
+					"classKey": "TrialBarButton"
+				},
+				{
+					"component": "dropdown",
+					"classKey": "TrialBarDropdown"
+				}
+			],
+			"site-stories": [
+				"/__examples__/default.jsx"
+			],
 			"url-slug": "trial-bars"
 		},
 		{
 			"component": "vertical-navigation",
 			"status": "prod",
 			"display-name": "Vertical Navigation",
+			"classKey": "VerticalNavigation",
 			"SLDS-component-path": "/components/vertical-navigation",
+			"site-stories": [
+				"/__examples__/default.jsx"
+			],
 			"url-slug": "vertical-navigation"
 		},
 		{
 			"component": "visual-picker",
 			"status": "prod",
 			"display-name": "Visual Pickers",
+			"classKey": "VisualPicker",
 			"SLDS-component-path": "/components/visual-picker",
+			"dependencies": [
+				{
+					"component": "link",
+					"classKey": "VisualPickerLink"
+				}
+			],
+			"site-stories": [
+				"/__examples__/coverable.jsx",
+				"/__examples__/non-coverable.jsx",
+				"/__examples__/vertical.jsx"
+			],
 			"url-slug": "visual-pickers"
 		},
 		{
 			"component": "welcome-mat",
 			"status": "prod",
 			"display-name": "Welcome Mat",
+			"classKey": "WelcomeMat",
 			"SLDS-component-path": "/components/welcome-mat",
-			"url-slug": "welcome-mat",
 			"dependencies": [
 				{
-					"component": "info-badge"
+					"component": "info-badge",
+					"classKey": "WelcomeMatInfoBadge"
 				},
 				{
-					"component": "tile"
+					"component": "tile",
+					"classKey": "WelcomeMatTile"
 				}
-			]
+			],
+			"site-stories": [
+				"/__examples__/default.jsx",
+				"/__examples__/steps-complete.jsx",
+				"/__examples__/info-only.jsx",
+				"/__examples__/splash.jsx",
+				"/__examples__/trailhead.jsx",
+				"/__examples__/trailhead-complete.jsx"
+			],
+			"url-slug": "welcome-mat"
 		}
 	],
 	"documentation": {

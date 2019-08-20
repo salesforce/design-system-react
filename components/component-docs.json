@@ -1128,7 +1128,7 @@
             }
         },
         "route": "brand-band",
-        "display-name": "BrandBand",
+        "display-name": "Brand Band",
         "SLDS-component-path": "/components/brand-band",
         "dependencies": []
     },
@@ -1184,7 +1184,7 @@
         },
         "route": "breadcrumbs",
         "display-name": "Breadcrumbs",
-        "SLDS-component-path": "/components/breadcrumbs",
+        "SLDS-component-path": "/components/breadcrumb",
         "dependencies": []
     },
     "builder-header": {
@@ -1449,6 +1449,337 @@
                 }
             }
         ]
+    },
+    "button-group": {
+        "description": "The ButtonGroup component wraps other components (ie. Button, MenuDropdown, PopoverTooltip, Checkboxes, etc).",
+        "methods": [],
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Children are expected to be components. If last button triggers a dropdown menu, use Dropdown instead of Button. _Tested with snapshot testing._"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes added to `slds-button-group` or `slds-checkbox_button-group` tag"
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "error": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state. _Tested with snapshot testing._\n* `label`: This label appears above the button group. _Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'checkbox'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'list'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Use checkbox variant for \"Checkbox Button Group\" styling and add Checkbox components as children _Tested with snapshot testing._"
+            }
+        },
+        "route": "button-groups",
+        "display-name": "Button Groups",
+        "SLDS-component-path": "/components/button-group",
+        "dependencies": []
+    },
+    "button-stateful": {
+        "description": "The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).",
+        "methods": [
+            {
+                "name": "getClassName",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "active",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleBlur",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "e",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "e",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "active": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Specifies the current state of the button. If set, the button will act as a ['controlled' component](https://facebook.github.io/react/docs/forms.html#controlled-components)."
+            },
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button. If the button has an icon and a visible label, you can omit the <code>icon</code> prop and use the <code>label</code> prop.",
+                "defaultValue": {
+                    "value": "{ icon: '' }",
+                    "computed": false
+                }
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the button and adds disabled styling.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names."
+            },
+            "iconSize": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the size of the icon.",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
+            },
+            "onBlur": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when focus is removed."
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when the button is clicked."
+            },
+            "onFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when component is focused."
+            },
+            "onKeyDown": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a key is pressed down"
+            },
+            "onKeyPress": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a key is pressed and released"
+            },
+            "onKeyUp": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a key is released"
+            },
+            "onMouseDown": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a mouse button is pressed down"
+            },
+            "onMouseEnter": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a mouse arrow hovers"
+            },
+            "responsive": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, button scales to 100% width on small form factors.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "stateOne": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Initial label and icon (optional) of button.",
+                "defaultValue": {
+                    "value": "{ iconName: 'add', label: 'Follow' }",
+                    "computed": false
+                }
+            },
+            "stateTwo": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Selected label and icon (optional) of button.",
+                "defaultValue": {
+                    "value": "{ iconName: 'check', label: 'Following' }",
+                    "computed": false
+                }
+            },
+            "stateThree": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Deselect label and icon (optional) of button.",
+                "defaultValue": {
+                    "value": "{ iconName: 'close', label: 'Unfollow' }",
+                    "computed": false
+                }
+            },
+            "tabIndex": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Write \"-1\" if you don't want the user to tab to the button."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'neutral'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'brand'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'destructive'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'icon'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'icon-filled'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Different types of buttons"
+            }
+        },
+        "route": "stateful-buttons",
+        "display-name": "Stateful Buttons",
+        "SLDS-component-path": "/components/button/#flavor-stateful",
+        "dependencies": []
     },
     "button": {
         "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\nAlthough not listed in the prop table, all `aria-*` and `form*` props will be added to the `button` element if passed in.",
@@ -1910,337 +2241,6 @@
         "route": "buttons",
         "display-name": "Buttons",
         "SLDS-component-path": "/components/buttons",
-        "dependencies": []
-    },
-    "button-stateful": {
-        "description": "The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).",
-        "methods": [
-            {
-                "name": "getClassName",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "active",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleBlur",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "e",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleClick",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "e",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            }
-        ],
-        "props": {
-            "active": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Specifies the current state of the button. If set, the button will act as a ['controlled' component](https://facebook.github.io/react/docs/forms.html#controlled-components)."
-            },
-            "assistiveText": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "icon": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. This should also include the state of the button. If the button has an icon and a visible label, you can omit the <code>icon</code> prop and use the <code>label</code> prop.",
-                "defaultValue": {
-                    "value": "{ icon: '' }",
-                    "computed": false
-                }
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Disables the button and adds disabled styling.",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "iconName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names."
-            },
-            "iconSize": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'x-small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'medium'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'large'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines the size of the icon.",
-                "defaultValue": {
-                    "value": "'medium'",
-                    "computed": false
-                }
-            },
-            "onBlur": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when focus is removed."
-            },
-            "onClick": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when the button is clicked."
-            },
-            "onFocus": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when component is focused."
-            },
-            "onKeyDown": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a key is pressed down"
-            },
-            "onKeyPress": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a key is pressed and released"
-            },
-            "onKeyUp": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a key is released"
-            },
-            "onMouseDown": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a mouse button is pressed down"
-            },
-            "onMouseEnter": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a mouse arrow hovers"
-            },
-            "responsive": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, button scales to 100% width on small form factors.",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "stateOne": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "Initial label and icon (optional) of button.",
-                "defaultValue": {
-                    "value": "{ iconName: 'add', label: 'Follow' }",
-                    "computed": false
-                }
-            },
-            "stateTwo": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "Selected label and icon (optional) of button.",
-                "defaultValue": {
-                    "value": "{ iconName: 'check', label: 'Following' }",
-                    "computed": false
-                }
-            },
-            "stateThree": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "Deselect label and icon (optional) of button.",
-                "defaultValue": {
-                    "value": "{ iconName: 'close', label: 'Unfollow' }",
-                    "computed": false
-                }
-            },
-            "tabIndex": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Write \"-1\" if you don't want the user to tab to the button."
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'base'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'neutral'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'brand'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'destructive'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'icon'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'icon-filled'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Different types of buttons"
-            }
-        },
-        "route": "stateful-buttons",
-        "display-name": "Stateful Buttons",
-        "SLDS-component-path": "/components/button/#flavor-stateful",
-        "dependencies": []
-    },
-    "button-group": {
-        "description": "The ButtonGroup component wraps other components (ie. Button, MenuDropdown, PopoverTooltip, Checkboxes, etc).",
-        "methods": [],
-        "props": {
-            "children": {
-                "type": {
-                    "name": "node"
-                },
-                "required": true,
-                "description": "Children are expected to be components. If last button triggers a dropdown menu, use Dropdown instead of Button. _Tested with snapshot testing._"
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "CSS classes added to `slds-button-group` or `slds-checkbox_button-group` tag"
-            },
-            "labels": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "error": {
-                            "name": "string",
-                            "required": false
-                        },
-                        "label": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state. _Tested with snapshot testing._\n* `label`: This label appears above the button group. _Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "{}",
-                    "computed": false
-                }
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'checkbox'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'list'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Use checkbox variant for \"Checkbox Button Group\" styling and add Checkbox components as children _Tested with snapshot testing._"
-            }
-        },
-        "route": "button-groups",
-        "display-name": "Button Groups",
-        "SLDS-component-path": "/components/button-groups",
         "dependencies": []
     },
     "card": {
@@ -6474,7 +6474,7 @@
             },
             {
                 "more-files": {
-                    "description": "",
+                    "description": "MoreFiles is a component that represents a number of file contents uploaded as an attachment.",
                     "methods": [
                         {
                             "name": "getId",
@@ -6810,629 +6810,6 @@
         "route": "filters",
         "display-name": "Filters",
         "SLDS-component-path": "/components/filter",
-        "dependencies": []
-    },
-    "input": {
-        "description": "The HTML `input` with a label and error messaging.",
-        "methods": [
-            {
-                "name": "getId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getErrorId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getValueAsNumber",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getCounterButtonIcon",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "direction",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "getIconRender",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "position",
-                        "type": null
-                    },
-                    {
-                        "name": "iconPositionProp",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "setInputRef",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "ref",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleChange",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "performStep",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "direction",
-                        "type": null
-                    },
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "stopStepping",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
-        "props": {
-            "aria-activedescendant": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget."
-            },
-            "aria-autocomplete": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Indicates if the suggestions in a composite widget are values that complete the current textbox input."
-            },
-            "aria-controls": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a select box\nthat shows or hides a panel."
-            },
-            "aria-describedby": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
-            },
-            "aria-expanded": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Use the `aria-expanded` state to indicate whether regions of the content are collapsible, and to expose whether a region is currently expanded or collapsed."
-            },
-            "aria-haspopup": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Indicates that the element has a popup context menu or sub-level menu."
-            },
-            "aria-labelledby": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The aria-labelledby attribute contains the element IDs of labels in objects such as input elements, widgets, and groups. The attribute establishes relationships between objects and their labels. Assistive technology, such as screen readers, use this attribute to catalog the objects in a document so that users can navigate between them. Without an element ID, the assistive technology cannot catalog the object."
-            },
-            "aria-owns": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a search field\nthat shows search results."
-            },
-            "aria-required": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted."
-            },
-            "assistiveText": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "label": {
-                            "name": "string",
-                            "required": false
-                        },
-                        "spinner": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon.",
-                "defaultValue": {
-                    "value": "{\n    decrement: `${DECREMENT} ${COUNTER}`,\n    increment: `${INCREMENT} ${COUNTER}`,\n}",
-                    "computed": false
-                }
-            },
-            "autoComplete": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Disabled brower's autocomplete when \"off\" is used."
-            },
-            "children": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Elements are added after the `input`."
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Class names to be added to the outer container of the input."
-            },
-            "defaultValue": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "number"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "This is the initial value of an uncontrolled form element and\nis present only to provide compatibility with hybrid framework\napplications that are not entirely React. It should only be used\nin an application without centralized state (Redux, Flux).\n\"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Disables the input and prevents editing the contents."
-            },
-            "errorText": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "node"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error."
-            },
-            "fieldLevelHelpTooltip": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the label."
-            },
-            "fixedTextLeft": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "node"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Displays text or node to the left of the input. This follows the fixed text input UX pattern."
-            },
-            "fixedTextRight": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "node"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Displays text or node to the right of the input. This follows the fixed text input UX pattern."
-            },
-            "hasSpinner": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, loading spinner appears inside input on right hand side."
-            },
-            "iconLeft": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Left aligned icon, must be instace of `design-system-react/components/icon/input-icon`"
-            },
-            "iconRight": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Right aligned icon, must be instace of `design-system-react/components/icon/input-icon`"
-            },
-            "id": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Every input must have a unique ID in order to support keyboard navigation and ARIA support."
-            },
-            "inlineHelpText": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "node"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Displays help text under the input."
-            },
-            "inputRef": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />"
-            },
-            "isStatic": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Displays the value of the input statically. This follows the static input UX pattern."
-            },
-            "label": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "This label appears above the input."
-            },
-            "onBlur": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when focus is removed."
-            },
-            "onChange": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This callback fires when the input changes. Passes in `event, { value }`."
-            },
-            "onClick": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This event fires when the input is clicked."
-            },
-            "onFocus": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when component is focused."
-            },
-            "onInput": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Similar to `onchange`. Triggered when an element gets user input."
-            },
-            "onInvalid": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a submittable `<input>` element is invalid."
-            },
-            "onKeyDown": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a key is pressed down"
-            },
-            "onKeyPress": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a key is pressed and released"
-            },
-            "onKeyUp": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered when a key is released"
-            },
-            "onSelect": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Triggered after some text has been selected in an element."
-            },
-            "onSubmit": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Fires when a form is submitted."
-            },
-            "placeholder": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Text that will appear in an empty input."
-            },
-            "minLength": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Sets the minimum number of characters that an `<input>` can accept."
-            },
-            "minValue": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "Specifies minimum accepted value for a counter input"
-            },
-            "maxLength": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Sets the maximum number of characters that an `<input>` can accept."
-            },
-            "maxValue": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "Specifies maximum accepted value for a counter input"
-            },
-            "name": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the submitted form parameter."
-            },
-            "readOnly": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Displays the value of the input as read-only. This is used in the inline edit UX pattern."
-            },
-            "required": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Highlights the input as a required field (does not perform any validation)."
-            },
-            "role": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "ARIA role"
-            },
-            "step": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "Determines the step size upon increment or decrement. Can be set to decimal values."
-            },
-            "styleInput": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "styles to be added to input"
-            },
-            "styleContainer": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "Custom styles to be passed to the component container"
-            },
-            "type": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'text'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'password'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'datetime'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'datetime-local'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'date'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'month'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'time'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'week'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'number'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'email'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'url'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'search'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'tel'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'color'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The `<Input>` element includes support for all HTML5 types.",
-                "defaultValue": {
-                    "value": "'text'",
-                    "computed": false
-                }
-            },
-            "value": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "number"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The input is a controlled component, and will always display this value."
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'base'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'counter'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Which UX pattern of input? The default is `base` while other option is `counter`"
-            }
-        },
-        "route": "inputs",
-        "display-name": "Inputs",
-        "SLDS-component-path": "/components/input",
         "dependencies": []
     },
     "global-header": {
@@ -8425,6 +7802,108 @@
             }
         ]
     },
+    "icon-settings": {
+        "description": "The Icon Settings component allows for the path to the icons to be specified in all child components and is recommended to be used at the root of the application. It's render function is `return this.props.children`, so it can only have one child node.\n\n**Individual sprites**\nIf you are using webpack it is advised to use the sprite properties\n{actionSprite, standardSprite...} to specify the individual sprite paths so that webpack can\neasily re-write the paths.\n```\nimport actionSprite from '......';\n\n<IconSettings actionSprite={actionSprite} ......>\n```\n**Root icon path**\nOtherwise use the iconPath to specify the root path to where the icon files will be located in you application\nsuch as `/assets/icons`.",
+        "methods": [],
+        "props": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the root icon folder\nexample: `/assets/icons`"
+            },
+            "onRequestIconPath": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function to allow developers to return a custom icon path--for instance, on the same page with a local anchor (`#down`). This is helpful for when there are Cross-Origin Resource Sharing (CORS) issues with SVGs that are located on another domain such as a CDN. `({category, name}) => { return \\`#${name}\\` }`"
+            },
+            "actionSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the action sprite\nexample: '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';"
+            },
+            "customSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the custom sprite\nexample: '@salesforce-ux/design-system/assets/icons/custom-sprite/svg/symbols.svg';"
+            },
+            "doctypeSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the doctype sprite\nexample: '@salesforce-ux/design-system/assets/icons/doctype-sprite/svg/symbols.svg';"
+            },
+            "standardSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the standard sprite\nexample: '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';"
+            },
+            "utilitySprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the utility sprite\nexample: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';"
+            }
+        },
+        "childContext": {
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "onRequestIconPath": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false
+            },
+            "actionSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "customSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "doctypeSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "standardSprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            },
+            "utilitySprite": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false
+            }
+        },
+        "route": "icon-settings",
+        "display-name": "Icon Settings",
+        "dependencies": []
+    },
     "icon": {
         "description": "The Icon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href='/components/buttons/'>Button component</a> component with <code>variant='icon'</code>.",
         "methods": [],
@@ -8783,6 +8262,685 @@
         "display-name": "Illustrations",
         "SLDS-component-path": "/components/illustration",
         "dependencies": []
+    },
+    "input": {
+        "description": "The HTML `input` with a label and error messaging.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getValueAsNumber",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getCounterButtonIcon",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "direction",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "getIconRender",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "position",
+                        "type": null
+                    },
+                    {
+                        "name": "iconPositionProp",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "setInputRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "ref",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "performStep",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "direction",
+                        "type": null
+                    },
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "stopStepping",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "aria-activedescendant": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget."
+            },
+            "aria-autocomplete": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Indicates if the suggestions in a composite widget are values that complete the current textbox input."
+            },
+            "aria-controls": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a select box\nthat shows or hides a panel."
+            },
+            "aria-describedby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
+            },
+            "aria-expanded": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Use the `aria-expanded` state to indicate whether regions of the content are collapsible, and to expose whether a region is currently expanded or collapsed."
+            },
+            "aria-haspopup": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Indicates that the element has a popup context menu or sub-level menu."
+            },
+            "aria-labelledby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The aria-labelledby attribute contains the element IDs of labels in objects such as input elements, widgets, and groups. The attribute establishes relationships between objects and their labels. Assistive technology, such as screen readers, use this attribute to catalog the objects in a document so that users can navigate between them. Without an element ID, the assistive technology cannot catalog the object."
+            },
+            "aria-owns": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "An HTML ID that is shared with ARIA-supported devices with the\n`aria-controls` attribute in order to relate the input with\nanother region of the page. An example would be a search field\nthat shows search results."
+            },
+            "aria-required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted."
+            },
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "spinner": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon.",
+                "defaultValue": {
+                    "value": "{\n    decrement: `${DECREMENT} ${COUNTER}`,\n    increment: `${INCREMENT} ${COUNTER}`,\n}",
+                    "computed": false
+                }
+            },
+            "autoComplete": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Disabled brower's autocomplete when \"off\" is used."
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Elements are added after the `input`."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Class names to be added to the outer container of the input."
+            },
+            "defaultValue": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "number"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and\nis present only to provide compatibility with hybrid framework\napplications that are not entirely React. It should only be used\nin an application without centralized state (Redux, Flux).\n\"Controlled components\" with centralized state is highly recommended.\nSee [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the input and prevents editing the contents."
+            },
+            "errorText": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Message to display when the input is in an error state. When this is present, also visually highlights the component as in error."
+            },
+            "fieldLevelHelpTooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the label."
+            },
+            "fixedTextLeft": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Displays text or node to the left of the input. This follows the fixed text input UX pattern."
+            },
+            "fixedTextRight": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Displays text or node to the right of the input. This follows the fixed text input UX pattern."
+            },
+            "hasSpinner": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, loading spinner appears inside input on right hand side."
+            },
+            "iconLeft": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Left aligned icon, must be instace of `design-system-react/components/icon/input-icon`"
+            },
+            "iconRight": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Right aligned icon, must be instace of `design-system-react/components/icon/input-icon`"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Every input must have a unique ID in order to support keyboard navigation and ARIA support."
+            },
+            "inlineHelpText": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "node"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Displays help text under the input."
+            },
+            "inputRef": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />"
+            },
+            "isStatic": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Displays the value of the input statically. This follows the static input UX pattern."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "This label appears above the input."
+            },
+            "onBlur": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when focus is removed."
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This callback fires when the input changes. Passes in `event, { value }`."
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the input is clicked."
+            },
+            "onFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when component is focused."
+            },
+            "onInput": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Similar to `onchange`. Triggered when an element gets user input."
+            },
+            "onInvalid": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a submittable `<input>` element is invalid."
+            },
+            "onKeyDown": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a key is pressed down"
+            },
+            "onKeyPress": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a key is pressed and released"
+            },
+            "onKeyUp": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered when a key is released"
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered after some text has been selected in an element."
+            },
+            "onSubmit": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Fires when a form is submitted."
+            },
+            "placeholder": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text that will appear in an empty input."
+            },
+            "minLength": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Sets the minimum number of characters that an `<input>` can accept."
+            },
+            "minValue": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Specifies minimum accepted value for a counter input"
+            },
+            "maxLength": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Sets the maximum number of characters that an `<input>` can accept."
+            },
+            "maxValue": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Specifies maximum accepted value for a counter input"
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the submitted form parameter."
+            },
+            "readOnly": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Displays the value of the input as read-only. This is used in the inline edit UX pattern."
+            },
+            "required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Highlights the input as a required field (does not perform any validation)."
+            },
+            "role": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "ARIA role"
+            },
+            "step": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Determines the step size upon increment or decrement. Can be set to decimal values."
+            },
+            "styleInput": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "styles to be added to input"
+            },
+            "styleContainer": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component container"
+            },
+            "type": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'text'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'password'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'datetime'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'datetime-local'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'date'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'month'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'time'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'week'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'number'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'email'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'url'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'search'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'tel'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'color'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The `<Input>` element includes support for all HTML5 types.",
+                "defaultValue": {
+                    "value": "'text'",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "number"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The input is a controlled component, and will always display this value."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'counter'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Which UX pattern of input? The default is `base` while other option is `counter`"
+            }
+        },
+        "route": "inputs",
+        "display-name": "Inputs",
+        "SLDS-component-path": "/components/input",
+        "dependencies": [
+            {
+                "search": {
+                    "description": "A `Search` is an `Input` which renders the search icon by default. It can be cleared, too. All `Input` props not specified as props already may be used with this component and will override defaults.",
+                    "methods": [],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "label": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: Assistive text to search input",
+                            "defaultValue": {
+                                "value": "{}",
+                                "computed": false
+                            }
+                        },
+                        "clearable": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Adds a clear button to right side of the input"
+                        },
+                        "onClear": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Triggers when the clear button is clicked"
+                        },
+                        "onSearch": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "This event fires when enter is pressed in the `input` or the search button is clicked."
+                        },
+                        "placeholder": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Placeholder for the input"
+                        }
+                    },
+                    "name": "search",
+                    "source": "/components/input/search.jsx"
+                }
+            }
+        ]
     },
     "media-object": {
         "description": "When you need text and a figure next to each other, use a media object.",
@@ -10437,6 +10595,186 @@
         "SLDS-component-path": "/components/modals",
         "dependencies": []
     },
+    "page-header": {
+        "description": "The PageHeader component adds PageHeader, PageHeader.Info, PageHeader.Title, PageHeader.DetailRow, and PageHeader.DetailBlock.",
+        "methods": [],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Optional class name"
+            },
+            "details": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "An array of detail blocks (used in \"recordHome\" variant)"
+            },
+            "label": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The label property can be a string or a React element"
+            },
+            "icon": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "The page header icon. Expects an Icon component"
+            },
+            "info": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The info property can be a string or a React element"
+            },
+            "joined": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Makes PageHeader joinable with DataTable by adding appropriate classes/styling"
+            },
+            "nameSwitcherDropdown": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Used with the `object-home` variant. Accepts a node, typically a Dropdown component"
+            },
+            "onRenderActions": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Actions content to appear on the upper right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'contentRight' will be deprecated soon, use 'onRenderActions' instead."
+            },
+            "onRenderControls": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Controls content to appear on the lower right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'navRight' will be deprecated soon, use 'onRenderControls' instead."
+            },
+            "title": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "element"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The title property can be a string or a React element"
+            },
+            "trail": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "An array of react elements presumably anchor <a> elements."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'object-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'record-home'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'related-list'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "The type of component\nNote: Extra options are added to make the version backward compatible",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "page-headers",
+        "display-name": "Page Headers",
+        "SLDS-component-path": "/components/page-headers",
+        "dependencies": [
+            {
+                "control": {
+                    "description": "The PageHeaderControl component is used to wrap individual controls within PageHeader 'actions' and 'controls' sections.",
+                    "methods": [],
+                    "props": {
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Optional class name"
+                        }
+                    },
+                    "name": "control",
+                    "source": "/components/page-header/control.jsx"
+                }
+            }
+        ]
+    },
     "panel": {
         "description": "A panel provides detailed contextual information or contextual filtering options. [Filter](/components/filters/) component should be used as children. Menus within a Filter Popover will need to not have \"portal mounts\" and be inline.",
         "methods": [],
@@ -10735,255 +11073,6 @@
                 }
             }
         ]
-    },
-    "pill": {
-        "description": "A pill displays a label that can contain links and can be removed from view. Use `PillContainer` for a list of pills in a container that resembles an `input` form field. A pill is useful for displaying read-only text that can be added and removed on demand.",
-        "methods": [
-            {
-                "name": "getHref",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "blur",
-                "docblock": "Removes focus from the component.",
-                "modifiers": [],
-                "params": [],
-                "returns": null,
-                "description": "Removes focus from the component."
-            },
-            {
-                "name": "focus",
-                "docblock": "Give focus to the Pill component.",
-                "modifiers": [],
-                "params": [],
-                "returns": null,
-                "description": "Give focus to the Pill component."
-            },
-            {
-                "name": "handleKeyDown",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    },
-                    {
-                        "name": "...rest",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleRef",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "root",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "restProps",
-                "docblock": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.",
-                "modifiers": [],
-                "params": [],
-                "returns": null,
-                "description": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component."
-            },
-            {
-                "name": "renderIcon",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderLabel",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "renderRemoveIcon",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
-        "props": {
-            "assistiveText": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "remove": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `remove`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "{}",
-                    "computed": false
-                }
-            },
-            "avatar": {
-                "type": {
-                    "name": "element"
-                },
-                "required": false,
-                "description": "SLDSAvatar component to show on the left of the pill.\n_Tested with Mocha framework._"
-            },
-            "bare": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Applies the bare style to the component.\n_Tested with Mocha framework._"
-            },
-            "children": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "This is a way to specify custom contents for the pill in the case a simple text label is not enough.\n_Tested with Mocha framework._"
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "CSS classes to be added to tag with `.slds-pill`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\n_Tested with Mocha framework._"
-            },
-            "hasError": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Applies the error style to the component.\n_Tested with Mocha framework._"
-            },
-            "href": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "An href to use if the pill is shown as a link.\n_Tested with Mocha framework._"
-            },
-            "icon": {
-                "type": {
-                    "name": "element"
-                },
-                "required": false,
-                "description": "SLDSIcon component to show on the left of the pill.\n_Tested with Mocha framework._"
-            },
-            "labels": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "label": {
-                            "name": "string",
-                            "required": false
-                        },
-                        "title": {
-                            "name": "string",
-                            "required": false
-                        },
-                        "removeTitle": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: Pill's label.\n* `title`: Pill's title.\n* `removeTitle`: A title to use for the remove icon.\n\n_Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "{}",
-                    "computed": false
-                }
-            },
-            "onBlur": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "`onBlur` callback executes when the component loses focus.\n_Tested with Mocha framework._"
-            },
-            "onClick": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "`onClick` callback executes when a user clicks on the pill or presses the Enter key.\n_Tested with Mocha framework._"
-            },
-            "onFocus": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "`onFocus` callback executes when the component receives focus.\n_Tested with Mocha framework._"
-            },
-            "onKeyDown": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "`onKeyDown` callback executes when a user presses a key.\n_Tested with Mocha framework._"
-            },
-            "onRemove": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "`onRemove` callback executes when a user clicks on the pill's remove icon or presses the delete or the backspace keys.\n_Tested with Mocha framework._"
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'link'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'option'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "A variant of a pill\n_Tested with Mocha framework._",
-                "defaultValue": {
-                    "value": "'link'",
-                    "computed": false
-                }
-            }
-        },
-        "route": "pills",
-        "display-name": "Pills",
-        "SLDS-component-path": "/components/pills",
-        "dependencies": []
     },
     "pill-container": {
         "description": "A `PillContainer` is a container that holds one or more pills. Use it for a list of pills in a container that resembles an `input` form field. It is not intended for navigation.",
@@ -11287,6 +11376,255 @@
         "route": "pill-container",
         "display-name": "Pill Container",
         "SLDS-component-path": "/components/pill-container",
+        "dependencies": []
+    },
+    "pill": {
+        "description": "A pill displays a label that can contain links and can be removed from view. Use `PillContainer` for a list of pills in a container that resembles an `input` form field. A pill is useful for displaying read-only text that can be added and removed on demand.",
+        "methods": [
+            {
+                "name": "getHref",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "blur",
+                "docblock": "Removes focus from the component.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Removes focus from the component."
+            },
+            {
+                "name": "focus",
+                "docblock": "Give focus to the Pill component.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Give focus to the Pill component."
+            },
+            {
+                "name": "handleKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "...rest",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleRef",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "root",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "restProps",
+                "docblock": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component."
+            },
+            {
+                "name": "renderIcon",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "renderLabel",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "renderRemoveIcon",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "remove": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `remove`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "avatar": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "SLDSAvatar component to show on the left of the pill.\n_Tested with Mocha framework._"
+            },
+            "bare": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Applies the bare style to the component.\n_Tested with Mocha framework._"
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "This is a way to specify custom contents for the pill in the case a simple text label is not enough.\n_Tested with Mocha framework._"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-pill`. Uses `classNames` [API](https://github.com/JedWatson/classnames).\n_Tested with Mocha framework._"
+            },
+            "hasError": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Applies the error style to the component.\n_Tested with Mocha framework._"
+            },
+            "href": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "An href to use if the pill is shown as a link.\n_Tested with Mocha framework._"
+            },
+            "icon": {
+                "type": {
+                    "name": "element"
+                },
+                "required": false,
+                "description": "SLDSIcon component to show on the left of the pill.\n_Tested with Mocha framework._"
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "title": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "removeTitle": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: Pill's label.\n* `title`: Pill's title.\n* `removeTitle`: A title to use for the remove icon.\n\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "onBlur": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "`onBlur` callback executes when the component loses focus.\n_Tested with Mocha framework._"
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "`onClick` callback executes when a user clicks on the pill or presses the Enter key.\n_Tested with Mocha framework._"
+            },
+            "onFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "`onFocus` callback executes when the component receives focus.\n_Tested with Mocha framework._"
+            },
+            "onKeyDown": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "`onKeyDown` callback executes when a user presses a key.\n_Tested with Mocha framework._"
+            },
+            "onRemove": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "`onRemove` callback executes when a user clicks on the pill's remove icon or presses the delete or the backspace keys.\n_Tested with Mocha framework._"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'link'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'option'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "A variant of a pill\n_Tested with Mocha framework._",
+                "defaultValue": {
+                    "value": "'link'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "pills",
+        "display-name": "Pills",
+        "SLDS-component-path": "/components/pills",
         "dependencies": []
     },
     "popover": {
@@ -11942,10 +12280,65 @@
         "SLDS-component-path": "/components/popovers",
         "dependencies": []
     },
-    "page-header": {
-        "description": "The PageHeader component adds PageHeader, PageHeader.Info, PageHeader.Title, PageHeader.DetailRow, and PageHeader.DetailBlock.",
-        "methods": [],
+    "progress-bar": {
+        "description": "A progress bar component communicates to the user the progress of a particular process",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "ID as a string\n@returns {string} id",
+                "modifiers": [],
+                "params": [],
+                "returns": {
+                    "description": "id",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "ID as a string"
+            },
+            {
+                "name": "getDescription",
+                "docblock": "Enables Descriptive Progress Bar if label is provided\n@returns {string} description",
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ labels }"
+                    }
+                ],
+                "returns": {
+                    "description": "description",
+                    "type": {
+                        "name": "string"
+                    }
+                },
+                "description": "Enables Descriptive Progress Bar if label is provided"
+            }
+        ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "progress": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `progress`: This is a visually hidden label for the percent of progress.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n    progress: 'Progress',\n}",
+                    "computed": false
+                }
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
             "className": {
                 "type": {
                     "name": "union",
@@ -11962,135 +12355,139 @@
                     ]
                 },
                 "required": false,
-                "description": "Optional class name"
+                "description": "CSS classes to be added to tag with `.slds-progress-bar`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
             },
-            "details": {
+            "labels": {
                 "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "An array of detail blocks (used in \"recordHome\" variant)"
-            },
-            "label": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
                         },
-                        {
-                            "name": "element"
+                        "complete": {
+                            "name": "union",
+                            "value": [
+                                {
+                                    "name": "string"
+                                },
+                                {
+                                    "name": "node"
+                                }
+                            ],
+                            "required": false
                         }
-                    ]
+                    }
                 },
                 "required": false,
-                "description": "The label property can be a string or a React element"
+                "description": "Label for the progress bar",
+                "defaultValue": {
+                    "value": "{\n    complete: 'Complete',\n}",
+                    "computed": false
+                }
             },
-            "icon": {
-                "type": {
-                    "name": "element"
-                },
-                "required": false,
-                "description": "The page header icon. Expects an Icon component"
-            },
-            "info": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The info property can be a string or a React element"
-            },
-            "joined": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Makes PageHeader joinable with DataTable by adding appropriate classes/styling"
-            },
-            "nameSwitcherDropdown": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Used with the `object-home` variant. Accepts a node, typically a Dropdown component"
-            },
-            "onRenderActions": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Actions content to appear on the upper right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'contentRight' will be deprecated soon, use 'onRenderActions' instead."
-            },
-            "onRenderControls": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Controls content to appear on the lower right side of the page header.\nReturned content must be either a SLDSPageHeaderControl component or an element/fragment with children that are all SLDSPageHeaderControl components.\nProp 'navRight' will be deprecated soon, use 'onRenderControls' instead."
-            },
-            "title": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "element"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "The title property can be a string or a React element"
-            },
-            "trail": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "An array of react elements presumably anchor <a> elements."
-            },
-            "variant": {
+            "radius": {
                 "type": {
                     "name": "enum",
                     "value": [
                         {
-                            "value": "'base'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'object-home'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'record-home'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'related-list'",
+                            "value": "'circular'",
                             "computed": false
                         }
                     ]
                 },
                 "required": false,
-                "description": "The type of component\nNote: Extra options are added to make the version backward compatible",
+                "description": "Set radius of progress bar"
+            },
+            "color": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'success'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set fill of progress bar"
+            },
+            "thickness": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Set progress bar thickness"
+            },
+            "value": {
+                "type": {
+                    "name": "number"
+                },
+                "required": true,
+                "description": "Percentage of progress completion, ranging [0, 100]."
+            },
+            "orientation": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'horizontal'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'vertical'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Orientation of the progress bar to be used",
                 "defaultValue": {
-                    "value": "'base'",
+                    "value": "'horizontal'",
+                    "computed": false
+                }
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component",
+                "defaultValue": {
+                    "value": "{\n    height: '100%',\n}",
                     "computed": false
                 }
             }
         },
-        "route": "page-headers",
-        "display-name": "Page Headers",
-        "SLDS-component-path": "/components/page-headers",
+        "route": "progress-bars",
+        "display-name": "Progress Bars",
+        "SLDS-component-path": "/components/progress-bar",
         "dependencies": []
     },
     "progress-indicator": {
@@ -12320,216 +12717,6 @@
         "SLDS-component-path": "/components/progress-indicator",
         "dependencies": []
     },
-    "progress-bar": {
-        "description": "A progress bar component communicates to the user the progress of a particular process",
-        "methods": [
-            {
-                "name": "getId",
-                "docblock": "ID as a string\n@returns {string} id",
-                "modifiers": [],
-                "params": [],
-                "returns": {
-                    "description": "id",
-                    "type": {
-                        "name": "string"
-                    }
-                },
-                "description": "ID as a string"
-            },
-            {
-                "name": "getDescription",
-                "docblock": "Enables Descriptive Progress Bar if label is provided\n@returns {string} description",
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "{ labels }"
-                    }
-                ],
-                "returns": {
-                    "description": "description",
-                    "type": {
-                        "name": "string"
-                    }
-                },
-                "description": "Enables Descriptive Progress Bar if label is provided"
-            }
-        ],
-        "props": {
-            "assistiveText": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "progress": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `progress`: This is a visually hidden label for the percent of progress.\n_Tested with snapshot testing._",
-                "defaultValue": {
-                    "value": "{\n    progress: 'Progress',\n}",
-                    "computed": false
-                }
-            },
-            "id": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "HTML id for component."
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "CSS classes to be added to tag with `.slds-progress-bar`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
-            },
-            "labels": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "label": {
-                            "name": "union",
-                            "value": [
-                                {
-                                    "name": "string"
-                                },
-                                {
-                                    "name": "node"
-                                }
-                            ],
-                            "required": false
-                        },
-                        "complete": {
-                            "name": "union",
-                            "value": [
-                                {
-                                    "name": "string"
-                                },
-                                {
-                                    "name": "node"
-                                }
-                            ],
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "Label for the progress bar",
-                "defaultValue": {
-                    "value": "{\n    complete: 'Complete',\n}",
-                    "computed": false
-                }
-            },
-            "radius": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'circular'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Set radius of progress bar"
-            },
-            "color": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'success'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Set fill of progress bar"
-            },
-            "thickness": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'x-small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'medium'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'large'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Set progress bar thickness"
-            },
-            "value": {
-                "type": {
-                    "name": "number"
-                },
-                "required": true,
-                "description": "Percentage of progress completion, ranging [0, 100]."
-            },
-            "orientation": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'horizontal'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'vertical'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Orientation of the progress bar to be used",
-                "defaultValue": {
-                    "value": "'horizontal'",
-                    "computed": false
-                }
-            },
-            "style": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "Custom styles to be passed to the component",
-                "defaultValue": {
-                    "value": "{\n    height: '100%',\n}",
-                    "computed": false
-                }
-            }
-        },
-        "route": "progress-bars",
-        "display-name": "Progress Bars",
-        "SLDS-component-path": "/components/progress-bar",
-        "dependencies": []
-    },
     "progress-ring": {
         "description": "Customizable and configurable progress ring. Will display progress in a circular progress bar factor, and is capable of displaying iconography inside of the ring structure.",
         "methods": [
@@ -12691,6 +12878,265 @@
         "route": "progress-rings",
         "display-name": "Progress Rings",
         "SLDS-component-path": "/components/progress-ring",
+        "dependencies": []
+    },
+    "radio-button-group": {
+        "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.",
+        "methods": [],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Children are expected to be Radio components."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Custom CSS classes added to `slds-radio_button-group` node."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "error": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state.\n* `label`: This label appears above the button group.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the radio selection changes."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disable all radio inputs."
+            },
+            "required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Adds an indicator that this field is required."
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The name of this radio group."
+            },
+            "errorId": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The ID of the error message, for linking to radio inputs with aria-describedby."
+            }
+        },
+        "route": "radio-button-groups",
+        "display-name": "Radio Button Groups",
+        "SLDS-component-path": "/components/radio-button-group",
+        "dependencies": []
+    },
+    "radio-group": {
+        "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioGroup component wraps [Radio](/components/radios) components, which should be used as children.",
+        "methods": [
+            {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getName",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "hasError",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Children are expected to be Radio components."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Custom CSS classes added to the node."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "error": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state.\n* `label`: This label appears above the radio group.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the radio selection changes."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disable all radio inputs."
+            },
+            "required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Adds an indicator that this field is required."
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The name of this radio group."
+            },
+            "errorId": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The ID of the error message, for linking to radio inputs with aria-describedby."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'button-group'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Variants of radio groups such as Radio Button Group",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "radio-groups",
+        "display-name": "Radio Groups",
+        "SLDS-component-path": "/components/radio-group",
         "dependencies": []
     },
     "radio": {
@@ -12921,6 +13367,71 @@
         "route": "radios",
         "display-name": "Radios",
         "SLDS-component-path": "/components/radio-group/",
+        "dependencies": []
+    },
+    "scoped-notification": {
+        "description": "A Scoped Notification Component serve advisory information for the user that is not important enough to justify an alert.",
+        "methods": [],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "icon": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\n* `icon`: The assistive text for the icon. Is overridden by `label` assistive text passed directly to an `Icon` component via the `icon` prop"
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to tag with `.slds-scoped-notification`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "icon": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "The icon to be displayed in the scoped notification. Accepts an `Icon` component"
+            },
+            "theme": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'dark'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'light'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Theme for the scoped notification"
+            }
+        },
+        "route": "scoped-notifications",
+        "display-name": "Scoped Notifications",
+        "SLDS-component-path": "/components/scoped-notification",
         "dependencies": []
     },
     "setup-assistant": {
@@ -13181,6 +13692,341 @@
                 }
             }
         ]
+    },
+    "slider": {
+        "description": "The ability to style sliders with CSS varies across browsers. Using this component ensures sliders look the same everywhere.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleChange",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleInput",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "aria-describedby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
+            },
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Assistive text for accessibility**\n`label`: Visually hidden label but read out loud by screen readers."
+            },
+            "classNameContainer": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Class names to be added to the outer container of the Slider."
+            },
+            "defaultValue": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "This is the initial value of an uncontrolled form element and is present\nonly to provide compatibility with hybrid framework applications that\nare not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized\nstate is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the Slider and prevents clicking it. Only available on the horizontal view."
+            },
+            "errorText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Message to display when the Slider is in an error state. When this is present, also visually highlights the component as in error."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Set the HTML `id` of the slider."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "This label appears above the Slider."
+            },
+            "max": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Maximum value of a specified range. Defaults to 100.",
+                "defaultValue": {
+                    "value": "100",
+                    "computed": false
+                }
+            },
+            "min": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Minimum value of a specified range. Defaults to 0.",
+                "defaultValue": {
+                    "value": "0",
+                    "computed": false
+                }
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the submitted form parameter."
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires whenever the user has modified the data of the control. This callback recieves the following parameters `event, { value: [string] }`."
+            },
+            "onInput": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the value is committed. This callback recieves the following parameters `event, { value: [string] }`."
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Size of the slider."
+            },
+            "step": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "By default, the granularity is 1 and the value is always an integer. For example, If you need a value between 5 and 10, accurate to two decimal places, you should set the value of step to 0.01",
+                "defaultValue": {
+                    "value": "1",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "The Slider should be a controlled component, and will always display this value. This should always be used if you are using a Flux/Redux framework."
+            },
+            "vertical": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Modifier that makes the slider vertical"
+            }
+        },
+        "route": "slider",
+        "display-name": "Slider",
+        "SLDS-component-path": "/components/slider",
+        "dependencies": []
+    },
+    "spinner": {
+        "description": "Spinners are CSS loading indicators that should be shown when retrieving data or performing slow computations. In some cases, the first time a parent component loads, a stencil is preferred to indicate network activity.",
+        "methods": [],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: Assistive text that is read out loud to screen readers.",
+                "defaultValue": {
+                    "value": "{ label: 'Loading...' }",
+                    "computed": false
+                }
+            },
+            "containerClassName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Custom css classes applied to Spinner container"
+            },
+            "containerStyle": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom css properties applied to Spinner container"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Unique html id placed on div with role=\"status\"."
+            },
+            "isDelayed": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Adds delay of 300ms to the spinner",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "isInput": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Add styling to support a spinner inside an input field."
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the size of the spinner",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'base'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'brand'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'inverse'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.",
+                "defaultValue": {
+                    "value": "'base'",
+                    "computed": false
+                }
+            }
+        },
+        "route": "spinners",
+        "display-name": "Spinners",
+        "SLDS-component-path": "/components/spinner",
+        "dependencies": []
     },
     "split-view": {
         "description": "Split view is used to navigate between records in a list while staying on the same screen.",
@@ -13756,665 +14602,6 @@
                 }
             }
         ]
-    },
-    "radio-group": {
-        "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioGroup component wraps [Radio](/components/radios) components, which should be used as children.",
-        "methods": [
-            {
-                "name": "getErrorId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getName",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "hasError",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            }
-        ],
-        "props": {
-            "assistiveText": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "label": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.",
-                "defaultValue": {
-                    "value": "{}",
-                    "computed": false
-                }
-            },
-            "children": {
-                "type": {
-                    "name": "node"
-                },
-                "required": true,
-                "description": "Children are expected to be Radio components."
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Custom CSS classes added to the node."
-            },
-            "labels": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "error": {
-                            "name": "string",
-                            "required": false
-                        },
-                        "label": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state.\n* `label`: This label appears above the radio group.",
-                "defaultValue": {
-                    "value": "{}",
-                    "computed": false
-                }
-            },
-            "onChange": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This event fires when the radio selection changes."
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Disable all radio inputs."
-            },
-            "required": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Adds an indicator that this field is required."
-            },
-            "name": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The name of this radio group."
-            },
-            "errorId": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The ID of the error message, for linking to radio inputs with aria-describedby."
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'base'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'button-group'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Variants of radio groups such as Radio Button Group",
-                "defaultValue": {
-                    "value": "'base'",
-                    "computed": false
-                }
-            }
-        },
-        "route": "radio-groups",
-        "display-name": "Radio Groups",
-        "SLDS-component-path": "/components/radio-group",
-        "dependencies": []
-    },
-    "radio-button-group": {
-        "description": "A styled select list that can have a single entry checked at any one time.\nThe RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.",
-        "methods": [],
-        "props": {
-            "assistiveText": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "label": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.",
-                "defaultValue": {
-                    "value": "{}",
-                    "computed": false
-                }
-            },
-            "children": {
-                "type": {
-                    "name": "node"
-                },
-                "required": true,
-                "description": "Children are expected to be Radio components."
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Custom CSS classes added to `slds-radio_button-group` node."
-            },
-            "labels": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "error": {
-                            "name": "string",
-                            "required": false
-                        },
-                        "label": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `error`: Message to display when any of Checkboxes are in an error state.\n* `label`: This label appears above the button group.",
-                "defaultValue": {
-                    "value": "{}",
-                    "computed": false
-                }
-            },
-            "onChange": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This event fires when the radio selection changes."
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Disable all radio inputs."
-            },
-            "required": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Adds an indicator that this field is required."
-            },
-            "name": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The name of this radio group."
-            },
-            "errorId": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The ID of the error message, for linking to radio inputs with aria-describedby."
-            }
-        },
-        "route": "radio-button-groups",
-        "display-name": "Radio Button Groups",
-        "SLDS-component-path": "/components/radio-button-group",
-        "dependencies": []
-    },
-    "scoped-notification": {
-        "description": "A Scoped Notification Component serve advisory information for the user that is not important enough to justify an alert.",
-        "methods": [],
-        "props": {
-            "assistiveText": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "icon": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Assistive text for accessibility.**\n* `icon`: The assistive text for the icon. Is overridden by `label` assistive text passed directly to an `Icon` component via the `icon` prop"
-            },
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "CSS classes to be added to tag with `.slds-scoped-notification`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
-            },
-            "icon": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "The icon to be displayed in the scoped notification. Accepts an `Icon` component"
-            },
-            "theme": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'dark'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'light'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Theme for the scoped notification"
-            }
-        },
-        "route": "scoped-notifications",
-        "display-name": "Scoped Notifications",
-        "SLDS-component-path": "/components/scoped-notification",
-        "dependencies": []
-    },
-    "slider": {
-        "description": "The ability to style sliders with CSS varies across browsers. Using this component ensures sliders look the same everywhere.",
-        "methods": [
-            {
-                "name": "getId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "getErrorId",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
-                "returns": null
-            },
-            {
-                "name": "handleChange",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
-                "name": "handleInput",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "event",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            }
-        ],
-        "props": {
-            "aria-describedby": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
-            },
-            "assistiveText": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "label": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "Assistive text for accessibility**\n`label`: Visually hidden label but read out loud by screen readers."
-            },
-            "classNameContainer": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Class names to be added to the outer container of the Slider."
-            },
-            "defaultValue": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "This is the initial value of an uncontrolled form element and is present\nonly to provide compatibility with hybrid framework applications that\nare not entirely React. It should only be used in an application without\ncentralized state (Redux, Flux). \"Controlled components\" with centralized\nstate is highly recommended. See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information."
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Disables the Slider and prevents clicking it. Only available on the horizontal view."
-            },
-            "errorText": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Message to display when the Slider is in an error state. When this is present, also visually highlights the component as in error."
-            },
-            "id": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Set the HTML `id` of the slider."
-            },
-            "label": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "This label appears above the Slider."
-            },
-            "max": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "Maximum value of a specified range. Defaults to 100.",
-                "defaultValue": {
-                    "value": "100",
-                    "computed": false
-                }
-            },
-            "min": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "Minimum value of a specified range. Defaults to 0.",
-                "defaultValue": {
-                    "value": "0",
-                    "computed": false
-                }
-            },
-            "name": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the submitted form parameter."
-            },
-            "onChange": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This event fires whenever the user has modified the data of the control. This callback recieves the following parameters `event, { value: [string] }`."
-            },
-            "onInput": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "This event fires when the value is committed. This callback recieves the following parameters `event, { value: [string] }`."
-            },
-            "size": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'x-small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'medium'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'large'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Size of the slider."
-            },
-            "step": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "By default, the granularity is 1 and the value is always an integer. For example, If you need a value between 5 and 10, accurate to two decimal places, you should set the value of step to 0.01",
-                "defaultValue": {
-                    "value": "1",
-                    "computed": false
-                }
-            },
-            "value": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "The Slider should be a controlled component, and will always display this value. This should always be used if you are using a Flux/Redux framework."
-            },
-            "vertical": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Modifier that makes the slider vertical"
-            }
-        },
-        "route": "slider",
-        "display-name": "Slider",
-        "SLDS-component-path": "/components/slider",
-        "dependencies": []
-    },
-    "spinner": {
-        "description": "Spinners are CSS loading indicators that should be shown when retrieving data or performing slow computations. In some cases, the first time a parent component loads, a stencil is preferred to indicate network activity.",
-        "methods": [],
-        "props": {
-            "assistiveText": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "label": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: Assistive text that is read out loud to screen readers.",
-                "defaultValue": {
-                    "value": "{ label: 'Loading...' }",
-                    "computed": false
-                }
-            },
-            "containerClassName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Custom css classes applied to Spinner container"
-            },
-            "containerStyle": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "Custom css properties applied to Spinner container"
-            },
-            "id": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Unique html id placed on div with role=\"status\"."
-            },
-            "isDelayed": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Adds delay of 300ms to the spinner",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "isInput": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Add styling to support a spinner inside an input field."
-            },
-            "size": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'x-small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'medium'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'large'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines the size of the spinner",
-                "defaultValue": {
-                    "value": "'medium'",
-                    "computed": false
-                }
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'base'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'brand'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'inverse'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.",
-                "defaultValue": {
-                    "value": "'base'",
-                    "computed": false
-                }
-            }
-        },
-        "route": "spinners",
-        "display-name": "Spinners",
-        "SLDS-component-path": "/components/spinner",
-        "dependencies": []
     },
     "tabs": {
         "description": "A tab keeps related content in a single container that is shown and hidden through navigation.",
@@ -16132,7 +16319,30 @@
         "route": "trial-bars",
         "display-name": "Trial Bars",
         "SLDS-component-path": "/components/trial-bar",
-        "dependencies": []
+        "dependencies": [
+            {
+                "button": {
+                    "description": "A [Button](/components/buttons/) within the Trial Bar.",
+                    "methods": [],
+                    "composes": [
+                        "../button"
+                    ],
+                    "name": "button",
+                    "source": "/components/trial-bar/button.jsx"
+                }
+            },
+            {
+                "dropdown": {
+                    "description": "A [Dropdown](/components/menu-dropdowns/) within the Trial Bar.",
+                    "methods": [],
+                    "composes": [
+                        "../menu-dropdown/menu-dropdown"
+                    ],
+                    "name": "dropdown",
+                    "source": "/components/trial-bar/dropdown.jsx"
+                }
+            }
+        ]
     },
     "vertical-navigation": {
         "description": "Vertical Navigation represents a list of links that either take the user to another page or parts of the page the user is in.",
@@ -16302,7 +16512,71 @@
         "route": "visual-pickers",
         "display-name": "Visual Pickers",
         "SLDS-component-path": "/components/visual-picker",
-        "dependencies": []
+        "dependencies": [
+            {
+                "link": {
+                    "description": "Visual Picker Link Component",
+                    "methods": [],
+                    "props": {
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML id for component."
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS classes to be added to tag with `.slds-form-element`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+                        },
+                        "href": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "URL for the Link"
+                        },
+                        "icon": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Icon node for the Link"
+                        },
+                        "title": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Title for the Link"
+                        },
+                        "description": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Description for the Link"
+                        }
+                    },
+                    "name": "link",
+                    "source": "/components/visual-picker/link.jsx"
+                }
+            }
+        ]
     },
     "welcome-mat": {
         "description": "A Welcome Mat provides a series of unordered items a user can click to learn about a thematic topic.",
