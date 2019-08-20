@@ -72,13 +72,6 @@ class Example extends React.Component {
 								/>
 							),
 							label: 'Search in Salesforce',
-							onClick: (event) => {
-								if (this.props.action) {
-									this.props.action('onClick')(event);
-								} else if (console) {
-									console.log('onClick', event);
-								}
-							},
 						},
 						{
 							id: 'search-in-account-id',
@@ -98,13 +91,6 @@ class Example extends React.Component {
 								),
 								'in Accounts',
 							],
-							onClick: (event) => {
-								if (this.props.action) {
-									this.props.action('onClick')(event);
-								} else if (console) {
-									console.log('onClick', event);
-								}
-							},
 						},
 					]}
 					optionsAddItem={[
@@ -119,13 +105,6 @@ class Example extends React.Component {
 								/>
 							),
 							label: 'New Entity',
-							onClick: (event) => {
-								if (this.props.action) {
-									this.props.action('onClick')(event);
-								} else if (console) {
-									console.log('onClick', event);
-								}
-							},
 						},
 					]}
 					events={{
@@ -151,19 +130,6 @@ class Example extends React.Component {
 							}
 							this.setState({
 								inputValue: '',
-								selection: [
-									...this.state.selection,
-									{
-										label: value,
-										icon: (
-											<Icon
-												assistiveText="Account"
-												category="standard"
-												name="account"
-											/>
-										),
-									},
-								],
 							});
 						},
 						onSelect: (event, data) => {
@@ -177,7 +143,6 @@ class Example extends React.Component {
 							}
 							this.setState({
 								inputValue: '',
-								selection: data.selection,
 							});
 						},
 					}}

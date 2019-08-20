@@ -48,6 +48,7 @@ const propTypes = {
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
+	 * * `loading`: Text added to loading spinner.
 	 * * `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.
 	 * * `popoverLabel`: Used by popover variant, assistive text for the Popover aria-label.
 	 * * `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.
@@ -57,6 +58,7 @@ const propTypes = {
 	 */
 	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
+		loading: PropTypes.string,
 		optionSelectedInMenu: PropTypes.string,
 		popoverLabel: PropTypes.string,
 		removeSingleSelectedOption: PropTypes.string,
@@ -300,9 +302,9 @@ const propTypes = {
 	 */
 	defaultValue: PropTypes.string,
 	/**
-	 * Add loading spiner below the options
+	 * Add loading spinner below the options
 	 */
-	loading: PropTypes.bool,
+	isLoading: PropTypes.bool,
 	/**
 	 * **Array of item objects in the dropdown menu that is displayed below the list of `options`.**
 	 * Each object can contain:
@@ -378,6 +380,7 @@ const propTypes = {
 
 const defaultProps = {
 	assistiveText: {
+		loading: 'Loading',
 		optionSelectedInMenu: 'Current Selection:',
 		removeSingleSelectedOption: 'Remove selected option',
 		removePill: ', Press delete or backspace to remove',
@@ -1407,7 +1410,7 @@ class Combobox extends React.Component {
 						: null
 				}
 				labels={labels}
-				loading={this.props.loading}
+				isLoading={this.props.isLoading}
 				menuItem={this.props.menuItem}
 				menuPosition={this.props.menuPosition}
 				menuRef={(ref) => {

@@ -101,9 +101,9 @@ const propTypes = {
 	 */
 	selection: PropTypes.array,
 	/*
-	 * Adds loading spiner below the options
+	 * Adds loading spinner below the options
 	 */
-	loading: PropTypes.bool,
+	isLoading: PropTypes.bool,
 	/*
 	 * Object for creating Add item below the options
 	 */
@@ -473,33 +473,35 @@ const Menu = (props) => {
 				position: props.menuPosition !== 'relative' ? 'relative' : undefined,
 			}}
 		>
-			{menuOptions.length ? (
-				menuOptions
-			) : (
-				<li
-					className="slds-listbox__item slds-listbox__status"
-					role="status"
-					aria-live="polite"
-				>
-					<span className="slds-m-left_x-large slds-p-vertical_medium">
-						{props.labels.noOptionsFound}
-					</span>
-				</li>
-			)}
-			{props.loading ? (
+			{menuOptions.length
+				? menuOptions
+				: !props.isLoading && (
+						<li
+							className="slds-listbox__item slds-listbox__status"
+							role="status"
+							aria-live="polite"
+						>
+							<span className="slds-m-left_x-large slds-p-vertical_medium">
+								{props.labels.noOptionsFound}
+							</span>
+						</li>
+					)}
+			{props.isLoading && (
 				<li role="presentation" className="slds-listbox__item">
 					<div className="slds-align_absolute-center slds-p-top_medium">
 						<div
 							role="status"
 							className="slds-spinner slds-spinner_x-small slds-spinner_inline"
 						>
-							<span className="slds-assistive-text">Loading</span>
+							<span className="slds-assistive-text">
+								{props.assistiveText.loading}
+							</span>
 							<div className="slds-spinner__dot-a" />
 							<div className="slds-spinner__dot-b" />
 						</div>
 					</div>
 				</li>
-			) : null}
+			)}
 		</ul>
 	);
 };

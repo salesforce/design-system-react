@@ -70,9 +70,17 @@ class Example extends React.Component {
 
 		this.state = {
 			inputValue: '',
+			isLoading: false,
 			selection: [],
 		};
 	}
+
+	delayOptionsLoad = () => {
+		// A promise should be used here for asynchronous callbacks
+		setTimeout(() => {
+			this.setState({ isLoading: false });
+		}, 1000);
+	};
 
 	render() {
 		return (
@@ -83,7 +91,8 @@ class Example extends React.Component {
 					events={{
 						onChange: (event, { value }) => {
 							this.props.action('onChange')(event, value);
-							this.setState({ inputValue: value });
+							this.setState({ inputValue: value, isLoading: true });
+							this.delayOptionsLoad();
 						},
 						onRequestRemoveSelectedOption: (event, data) => {
 							this.setState({
@@ -123,15 +132,11 @@ class Example extends React.Component {
 						placeholder: 'Search Salesforce',
 					}}
 					multiple
-					options={comboboxFilterAndLimit({
-						inputValue: this.state.inputValue,
-						options: accountsWithIcon,
-						selection: this.state.selection,
-					})}
+					options={[]}
 					selection={this.state.selection}
 					value={this.state.inputValue}
 					variant="inline-listbox"
-					loading
+					isLoading
 				/>
 			</IconSettings>
 		);
