@@ -36,19 +36,6 @@ const accounts = [
 		subTitle: 'Account • Beloit, WI',
 		type: 'account',
 	},
-	{
-		id: '6',
-		label: 'Nakatomi Investments',
-		subTitle: 'Account • Chicago, IL',
-		type: 'account',
-	},
-	{ id: '7', label: 'Acme Landscaping', type: 'account' },
-	{
-		id: '8',
-		label: 'Acme Construction',
-		subTitle: 'Account • Grand Marais, MN',
-		type: 'account',
-	},
 ];
 
 const accountsWithIcon = accounts.map((elem) => ({
@@ -70,7 +57,7 @@ class Example extends React.Component {
 
 		this.state = {
 			inputValue: '',
-			isLoading: false,
+			isLoadingMenuItems: false,
 			selection: [],
 		};
 	}
@@ -78,7 +65,7 @@ class Example extends React.Component {
 	delayOptionsLoad = () => {
 		// A promise should be used here for asynchronous callbacks
 		setTimeout(() => {
-			this.setState({ isLoading: false });
+			this.setState({ isLoadingMenuItems: false });
 		}, 1000);
 	};
 
@@ -132,11 +119,15 @@ class Example extends React.Component {
 						placeholder: 'Search Salesforce',
 					}}
 					multiple
-					options={[]}
+					options={comboboxFilterAndLimit({
+						inputValue: this.state.inputValue,
+						options: accountsWithIcon,
+						selection: this.state.selection,
+					})}
 					selection={this.state.selection}
 					value={this.state.inputValue}
 					variant="inline-listbox"
-					isLoading
+					isLoadingMenuItems
 				/>
 			</IconSettings>
 		);

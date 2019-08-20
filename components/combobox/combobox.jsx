@@ -58,7 +58,7 @@ const propTypes = {
 	 */
 	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
-		loading: PropTypes.string,
+		loadingMenuItems: PropTypes.string,
 		optionSelectedInMenu: PropTypes.string,
 		popoverLabel: PropTypes.string,
 		removeSingleSelectedOption: PropTypes.string,
@@ -304,7 +304,7 @@ const propTypes = {
 	/**
 	 * Add loading spinner below the options
 	 */
-	isLoading: PropTypes.bool,
+	isLoadingMenuItems: PropTypes.bool,
 	/**
 	 * **Array of item objects in the dropdown menu that is displayed below the list of `options`. `onSelect` fires when selected.**
 	 * Each object can contain:
@@ -374,7 +374,7 @@ const propTypes = {
 
 const defaultProps = {
 	assistiveText: {
-		loading: 'Loading',
+		loadingMenuItems: 'Loading',
 		optionSelectedInMenu: 'Current Selection:',
 		removeSingleSelectedOption: 'Remove selected option',
 		removePill: ', Press delete or backspace to remove',
@@ -1404,7 +1404,7 @@ class Combobox extends React.Component {
 						: null
 				}
 				labels={labels}
-				isLoading={this.props.isLoading}
+				isLoadingMenuItems={this.props.isLoadingMenuItems}
 				menuItem={this.props.menuItem}
 				menuPosition={this.props.menuPosition}
 				menuRef={(ref) => {

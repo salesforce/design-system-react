@@ -69,7 +69,7 @@ class Example extends React.Component {
 
 		this.state = {
 			inputValue: '',
-			isLoading: false,
+			isLoadingMenuItems: false,
 			selection: [],
 		};
 	}
@@ -77,7 +77,7 @@ class Example extends React.Component {
 	delayOptionsLoad = () => {
 		// A promise should be used here for asynchronous callbacks
 		setTimeout(() => {
-			this.setState({ isLoading: false });
+			this.setState({ isLoadingMenuItems: false });
 		}, 1000);
 	};
 
@@ -89,7 +89,7 @@ class Example extends React.Component {
 					events={{
 						onChange: (event, { value }) => {
 							this.props.action('onChange')(event, value);
-							this.setState({ inputValue: value, isLoading: true });
+							this.setState({ inputValue: value, isLoadingMenuItems: true });
 							this.delayOptionsLoad();
 						},
 						onRequestRemoveSelectedOption: (event, data) => {
@@ -153,7 +153,7 @@ class Example extends React.Component {
 					selection={this.state.selection}
 					value={this.state.inputValue}
 					variant="inline-listbox"
-					isLoading={this.state.isLoading}
+					isLoadingMenuItems={this.state.isLoadingMenuItems}
 				/>
 			</IconSettings>
 		);
