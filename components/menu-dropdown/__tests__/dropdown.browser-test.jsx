@@ -24,6 +24,7 @@ import {
 // Import your internal dependencies (for example):
 import Dropdown from '../../menu-dropdown';
 import IconSettings from '../../icon-settings';
+import Tooltip from '../../tooltip';
 import List from '../../utilities/menu-list';
 import { keyObjects } from '../../../utilities/key-code';
 
@@ -546,6 +547,39 @@ describe('SLDSMenuDropdown', function() {
 				expect(getMenu(body)).to.equal(null);
 				done();
 			}, 2);
+		});
+	});
+
+	describe('Tooltips function as expected', () => {
+		beforeEach(
+			mountComponent(
+				<DemoComponent
+					options={[
+						{ label: 'Test item A', value: 'A0' },
+						{
+							label: 'Test item B',
+							value: 'B0',
+							tooltipContent: 'Testing tooltip content',
+						},
+						{ label: 'Test item C', value: 'C0' },
+					]}
+					tooltipMenuItem={<Tooltip />}
+				/>
+			)
+		);
+
+		afterEach(unmountComponent);
+
+		it('Tooltip component shows when focused on menu item.', function() {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.trigger.simulate('focus');
+			nodes.trigger.simulate('keyDown', keyObjects.ENTER);
+			nodes.trigger.simulate('keyDown', keyObjects.DOWN);
+
+			const tooltip = this.wrapper
+				.find('#sample-dropdown-item-1-tooltip')
+				.hostNodes();
+			expect(tooltip.length).to.equal(1);
 		});
 	});
 });
