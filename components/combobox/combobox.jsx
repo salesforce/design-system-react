@@ -112,7 +112,7 @@ const propTypes = {
 	 * * `onRequestClose`: Function called when the menu would like to hide. Please use with `isOpen`.
 	 * * `onRequestOpen`:  Function called when the menu would like to show. Please use with `isOpen`.
 	 * * `onRequestRemoveSelectedOption`: Function called when a single selection option is to be removed.
-	 * * `onSelect`: Function called when a menu item is selected
+	 * * `onSelect`: Function called when a menu item is selected. This includes header and footer items.
 	 * * `onSubmit`: Function called when user presses enter or submits the `input`
 	 * _Tested with Mocha testing._
 	 */
@@ -306,12 +306,11 @@ const propTypes = {
 	 */
 	isLoading: PropTypes.bool,
 	/**
-	 * **Array of item objects in the dropdown menu that is displayed below the list of `options`.**
+	 * **Array of item objects in the dropdown menu that is displayed below the list of `options`. `onSelect` fires when selected.**
 	 * Each object can contain:
 	 * * `id`: A unique identifier string.
 	 * * `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.
 	 * * `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.
-	 * * `onClick`: Callback triggered when selecting menu item.
 	 * ```
 	 * {
 	 * 	id: '1',
@@ -324,7 +323,6 @@ const propTypes = {
 	 * 		/>
 	 * 	),
 	 * 	label: 'New Entity'
-	 * 	onClick: (event) => console.log('onClick', event),
 	 * }
 	 * ```
 	 * _Tested with snapshot testing._
@@ -334,16 +332,14 @@ const propTypes = {
 			id: PropTypes.string,
 			icon: PropTypes.node,
 			label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-			onClick: PropTypes.func,
 		})
 	),
 	/**
-	 * **Array of item objects in the dropdown menu that is displayed above the list of `options`.**
+	 * **Array of item objects in the dropdown menu that is displayed above the list of `options`. `onSelect` fires when selected. **
 	 * Each object can contain:
 	 * * `id`: A unique identifier string.
 	 * * `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.
 	 * * `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.
-	 * * `onClick`: Callback triggered when selecting menu item.
 	 * ```
 	 * {
 	 *	id: '1',
@@ -358,7 +354,6 @@ const propTypes = {
 	 *	label: (searchTerm) => {
 	 *		return `${searchTerm} in Accounts`;
 	 *	},
-	 *	onClick: (event) => console.log('onClick', event),
 	 * }
 	 * ```
 	 * _Tested with snapshot testing._
@@ -368,7 +363,6 @@ const propTypes = {
 			id: PropTypes.string,
 			icon: PropTypes.node,
 			label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-			onClick: PropTypes.func,
 		})
 	),
 	/**

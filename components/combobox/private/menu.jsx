@@ -112,7 +112,6 @@ const propTypes = {
 			id: PropTypes.string,
 			icon: PropTypes.node,
 			label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-			onClick: PropTypes.func,
 		})
 	),
 	/*
@@ -123,7 +122,6 @@ const propTypes = {
 			id: PropTypes.string,
 			icon: PropTypes.node,
 			label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-			onClick: PropTypes.func,
 		})
 	),
 	/**
@@ -146,6 +144,7 @@ const defaultProps = {
 };
 
 const getOptions = (props) => {
+	// use of array.push() is OK, because the array is created on each render
 	const options = [];
 	if (props.optionsSearchEntity.length > 0) {
 		const localOptionsSearchEntity = props.optionsSearchEntity.map(
@@ -244,7 +243,13 @@ const Menu = (props) => {
 					className="slds-listbox__item"
 				>
 					<div
-						onClick={(event) => optionData.onClick(event)}
+						onClick={
+							optionData.disabled
+								? null
+								: (event) => {
+										props.onSelect(event, { option: optionData });
+									}
+						}
 						aria-selected="false"
 						id={optionData.id}
 						className={classNames(
@@ -273,7 +278,13 @@ const Menu = (props) => {
 				>
 					<div
 						aria-selected="false"
-						onClick={(event) => optionData.onClick(event)}
+						onClick={
+							optionData.disabled
+								? null
+								: (event) => {
+										props.onSelect(event, { option: optionData });
+									}
+						}
 						id={optionData.id}
 						className={classNames(
 							'slds-media slds-listbox__option',
