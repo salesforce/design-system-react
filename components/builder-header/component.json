@@ -1,0 +1,33 @@
+{
+	"component": "builder-header",
+	"status": "prototype",
+	"display-name": "Builder Header",
+	"classKey": "BuilderHeader",
+	"SLDS-component-path": "/components/builder-header",
+	"dependencies": [
+		{
+			"component": "nav",
+			"classKey": "BuilderHeaderNav"
+		},
+		{
+			"component": "nav-dropdown",
+			"classKey": "BuilderHeaderNavDropdown"
+		},
+		{
+			"component": "nav-link",
+			"classKey": "BuilderHeaderNavLink"
+		},
+		{
+			"component": "toolbar",
+			"classKey": "BuilderHeaderToolbar"
+		}
+	],
+	"site-stories": [
+		"/__examples__/base.jsx",
+		"/__examples__/base-with-toolbar.jsx",
+		"/__examples__/successful-save.jsx",
+		"/__examples__/after-successful-save.jsx",
+		"/__examples__/failed-save.jsx"
+	],
+	"url-slug": "builder-header"
+}

@@ -73,7 +73,7 @@ echo "## Transpiling with Babel"
 # NODE_ENV=amd \
 # ./node_modules/.bin/babel \
 #     .tmp-es/components \
-#	  --config-file ./.babelrc \
+#	  --config-file ./babel.config.js \
 #     --plugins @babel/plugin-transform-modules-amd \
 #     --out-dir .tmp-amd/components \
 #     --ignore site-stories.js,__docs__,__examples__,__tests__
@@ -82,14 +82,14 @@ echo "## Transpiling with Babel"
 
 # ./node_modules/.bin/babel \
 #     .tmp-es/icons \
-#	  --config-file ./.babelrc \
+#	  --config-file ./babel.config.js \
 #     --plugins @babel/plugin-transform-modules-amd \
 #     --out-dir .tmp-amd/icons
 
 # NODE_ENV=amd \
 # ./node_modules/.bin/babel \
 #     .tmp-es/utilities \
-#	  --config-file ./.babelrc \
+#	  --config-file ./babel.config.js \
 #     --plugins @babel/plugin-transform-modules-amd \
 #     --out-dir .tmp-amd/utilities
 
@@ -97,18 +97,18 @@ echo "## Transpiling with Babel"
 NODE_ENV=commonjs \
 npx babel \
     .tmp-es/components \
-    --config-file ./.babelrc \
+    --config-file ./babel.config.js \
     --out-dir .tmp-commonjs/components \
     --copy-files \
     --plugins @babel/plugin-transform-modules-commonjs \
-    --ignore site-stories.js,__docs__,__examples__,__tests__
+    --ignore "site-stories.js","**/__docs__","**/__examples__","**/__tests__"
 
 cp -r assets .tmp-commonjs/assets
 cp -r styles .tmp-commonjs/styles
 
 npx babel \
     .tmp-es/icons \
-    --config-file ./.babelrc \
+    --config-file ./babel.config.js \
     --out-dir .tmp-commonjs/icons \
     --copy-files \
     --plugins @babel/plugin-transform-modules-commonjs
@@ -116,7 +116,7 @@ npx babel \
 NODE_ENV=commonjs \
 npx babel \
     .tmp-es/utilities \
-    --config-file ./.babelrc \
+    --config-file ./babel.config.js \
     --out-dir .tmp-commonjs/utilities \
     --copy-files \
     --plugins @babel/plugin-transform-modules-commonjs
@@ -125,7 +125,7 @@ npx babel \
 NODE_ENV=esm \
 npx babel \
     .tmp-es/components \
-    --config-file ./.babelrc \
+    --config-file ./babel.config.js \
     --out-dir .tmp-esm/components \
     --copy-files \
     --source-maps \
@@ -140,7 +140,7 @@ cp -r icons .tmp-esm/icons
 NODE_ENV=esm \
 npx babel \
     .tmp-es/utilities \
-    --config-file ./.babelrc \
+    --config-file ./babel.config.js \
     --out-dir .tmp-esm/utilities \
     --copy-files \
     --source-maps
@@ -148,7 +148,7 @@ npx babel \
 NODE_ENV=esm \
 npx babel \
     .tmp-es/icons \
-    --config-file ./.babelrc \
+    --config-file ./babel.config.js \
     --out-dir .tmp-esm/icons \
     --copy-files
 

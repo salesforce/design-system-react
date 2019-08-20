@@ -31,7 +31,7 @@ import checkProps from './check-props';
 
 import { TEXTAREA } from '../../utilities/constants';
 
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 /**
  * A multi-line plain-text editing control.
@@ -284,7 +284,7 @@ class Textarea extends React.Component {
 					>
 						{required && (
 							<abbr className="slds-required" title="required">
-								*
+								{'*'}
 							</abbr>
 						)}
 						{labelText}
