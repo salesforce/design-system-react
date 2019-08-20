@@ -10,13 +10,11 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 import assign from 'lodash.assign';
-import reject from 'lodash.reject';
-import find from 'lodash.find';
 
 import { TREE_GRID } from '../../utilities/constants';
-import TreeGridRow from './private/row';
 import TreeGridColumn from './column';
 import Checkbox from '../checkbox';
+import Branch from './private/branch';
 
 const displayName = TREE_GRID;
 
@@ -81,7 +79,16 @@ const propTypes = {
 	 */
 	unborderedRow: PropTypes.bool,
 
-	items: PropTypes.arrayOf(PropTypes.object).isRequired,
+	items: PropTypes.arrayOf(
+		PropTypes.shape({
+			expanded: PropTypes.bool,
+			id: PropTypes.string,
+			label: PropTypes.oneOfType(PropTypes.string, PropTypes.node),
+			selected: PropTypes.bool,
+			type: PropTypes.type,
+			nodes: PropTypes.array,
+		})
+	).isRequired,
 
 	isHeadless: PropTypes.bool,
 	isBorderless: PropTypes.bool,
@@ -94,7 +101,7 @@ const defaultProps = {
 		selectAll: 'Select All',
 		selectRow: 'Select Row',
 	},
-	selectRows: 'multiple'
+	selectRows: 'multiple',
 };
 
 /**
@@ -103,11 +110,26 @@ const defaultProps = {
 class TreeGrid extends React.Component {
 	constructor(props) {
 		super(props);
+
+		const flattenedNodes = this.flattenTree({
+			nodes: this.props.getNodes({ nodes: this.props.nodes }),
+			expanded: true,
+		}).slice(1);
+
 		this.state = {
-			isSelectAll: false,
-			selection: [],
+			flattenedNodes,
 		};
+
 		this.generatedId = shortid.generate();
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.setState({
+			flattenedNodes: this.flattenTree({
+				nodes: this.props.getNodes({ nodes: nextProps.nodes }),
+				expanded: true,
+			}).slice(1),
+		});
 	}
 
 	/**
@@ -117,41 +139,26 @@ class TreeGrid extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
-	handleSelectAll = (event) => {
-		const { isSelectAll } = this.state;
-		if (!isSelectAll) {
-			this.props.events.onSelectAll(event);
-			this.setState({ isSelectAll: true, selection: this.props.items });
-		} else {
-			this.props.events.onDeselectAll(event);
-			this.setState({ isSelectAll: false, selection: [] });
+	flattenTree = (root, treeIndex = '', firstLevel = true) => {
+		if (!root.nodes) {
+			return [{ node: root, treeIndex }];
 		}
-	};
-
-	handleSelection = (event, row) => {
-		let { selection } = this.state;
-		if(this.props.selectRows === "multiple")
-		{
-			if (find(selection, row)) {
-				selection = reject(selection, row);
-				const obj = { selection, row, selected: false };
-				this.props.events.onRowChange(event, obj);
-				this.setState({ selection, isSelectAll: false });
-			} else {
-				selection.push(row);
-				const obj = { selection, row, selected: true };
-				this.props.events.onRowChange(event, obj);
-				if (selection.length === this.props.items.length)
-					this.setState({ selection, isSelectAll: true });
-				else this.setState({ selection });
+		let nodes = [{ node: root, treeIndex }];
+		if (root.expanded) {
+			for (let index = 0; index < root.nodes.length; index += 1) {
+				const curNode = firstLevel
+					? root.nodes[index]
+					: this.props.getNodes(root)[index];
+				nodes = nodes.concat(
+					this.flattenTree(
+						curNode,
+						treeIndex ? `${treeIndex}-${index}` : `${index}`,
+						false
+					)
+				);
 			}
-		} else {
-			this.props.events.onRowChange(event, row);
-			if(this.state.selection!==row)
-				this.setState({ selection: row });
-			else
-				this.setState({ selection: null });
 		}
+		return nodes;
 	};
 
 	render() {
@@ -160,8 +167,6 @@ class TreeGrid extends React.Component {
 			defaultProps.assistiveText,
 			this.props.assistiveText
 		);
-
-		console.log(this.state.selection);
 
 		const columns = [];
 		React.Children.forEach(this.props.children, (child) => {
@@ -182,7 +187,7 @@ class TreeGrid extends React.Component {
 		return (
 			<table
 				id={this.getId()}
-				aria-multiselectable={this.props.selectRows==="multiple"}
+				aria-multiselectable={this.props.selectRows === 'multiple'}
 				className={classNames(
 					'slds-table',
 					'slds-table_edit',
@@ -215,10 +220,10 @@ class TreeGrid extends React.Component {
 												label: assistiveText.selectAll,
 											}}
 											name="options"
-											indeterminate={
-												this.state.selection.length > 0 &&
-												!this.state.isSelectAll
-											}
+											// indeterminate={
+											// 	// this.state.selection.length > 0 &&
+											// 	// !this.state.isSelectAll
+											// }
 											checked={this.state.isSelectAll}
 											onChange={this.handleSelectAll}
 										/>
@@ -238,24 +243,17 @@ class TreeGrid extends React.Component {
 					</thead>
 				)}
 				<tbody>
-					{this.props.items.map((row, i) => (
-						<TreeGridRow
-							key={`${this.props.id}-row-${i}`}
-							id={`${this.props.id}-row-${i}`}
+					{
+						<Branch
+							level={0}
+							getNodes={this.props.getNodes}
+							node={{ nodes: this.props.nodes }}
+							flattenedNodes={this.state.flattenedNodes}
 							columns={columns}
-							row={row}
-							isSelected={find(this.state.selection, row)}
-							isSingleSelect={this.props.selectRows==="single"}
-							events={this.props.events}
-							onExpand={(event, obj) =>
-								this.props.events.onExpandRow(event, obj)
-							}
-							onCollapse={(event, obj) =>
-								this.props.events.onCollapseRow(event, obj)
-							}
-							onSelect={(event) => this.handleSelection(event, row)}
+							onSelect={this.props.onSelect}
+							onExpand={this.props.onExpand}
 						/>
-					))}
+					}
 				</tbody>
 			</table>
 		);
