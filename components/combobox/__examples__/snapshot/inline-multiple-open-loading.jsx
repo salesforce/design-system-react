@@ -78,7 +78,7 @@ class Example extends React.Component {
 					events={{
 						onChange: (event, { value }) => {
 							this.props.action('onChange')(event, value);
-							this.setState({ inputValue: value, isLoading: true });
+							this.setState({ inputValue: value, isLoadingMenuItems: true });
 							this.delayOptionsLoad();
 						},
 						onRequestRemoveSelectedOption: (event, data) => {
@@ -119,15 +119,23 @@ class Example extends React.Component {
 						placeholder: 'Search Salesforce',
 					}}
 					multiple
-					options={comboboxFilterAndLimit({
-						inputValue: this.state.inputValue,
-						options: accountsWithIcon,
-						selection: this.state.selection,
-					})}
+					options={
+						this.state.isLoadingMenuItems
+							? comboboxFilterAndLimit({
+									inputValue: this.state.inputValue,
+									options: accountsWithIcon.slice(0, 3),
+									selection: this.state.selection,
+								})
+							: comboboxFilterAndLimit({
+									inputValue: this.state.inputValue,
+									options: accountsWithIcon,
+									selection: this.state.selection,
+								})
+					}
 					selection={this.state.selection}
 					value={this.state.inputValue}
 					variant="inline-listbox"
-					isLoadingMenuItems
+					hasMenuSpinner
 				/>
 			</IconSettings>
 		);

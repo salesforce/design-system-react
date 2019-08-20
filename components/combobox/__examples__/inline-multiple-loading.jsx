@@ -142,8 +142,12 @@ class Example extends React.Component {
 					}}
 					multiple
 					options={
-						this.state.isLoading
-							? []
+						this.state.isLoadingMenuItems
+							? comboboxFilterAndLimit({
+									inputValue: this.state.inputValue,
+									options: accountsWithIcon.slice(0, 3),
+									selection: this.state.selection,
+								})
 							: comboboxFilterAndLimit({
 									inputValue: this.state.inputValue,
 									options: accountsWithIcon,
@@ -153,7 +157,7 @@ class Example extends React.Component {
 					selection={this.state.selection}
 					value={this.state.inputValue}
 					variant="inline-listbox"
-					isLoadingMenuItems={this.state.isLoadingMenuItems}
+					hasMenuSpinner={this.state.isLoadingMenuItems}
 				/>
 			</IconSettings>
 		);

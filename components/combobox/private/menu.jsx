@@ -103,7 +103,7 @@ const propTypes = {
 	/*
 	 * Adds loading spinner below the options
 	 */
-	isLoadingMenuItems: PropTypes.bool,
+	hasMenuSpinner: PropTypes.bool,
 	/*
 	 * Object for creating Add item below the options
 	 */
@@ -497,7 +497,7 @@ const Menu = (props) => {
 					</span>
 				</li>
 			)}
-			{props.isLoadingMenuItems && (
+			{props.hasMenuSpinner && (
 				<li role="presentation" className="slds-listbox__item">
 					<div className="slds-align_absolute-center slds-p-top_medium">
 						<div

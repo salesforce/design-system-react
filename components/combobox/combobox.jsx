@@ -137,6 +137,14 @@ const propTypes = {
 	 */
 	fieldLevelHelpTooltip: PropTypes.node,
 	/**
+	 * If true, loading spinner appears inside input on right hand side.
+	 */
+	hasInputSpinner: PropTypes.bool,
+	/**
+	 * Add loading spinner below the options
+	 */
+	hasMenuSpinner: PropTypes.bool,
+	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
 	hasStaticAlignment: PropTypes.bool,
@@ -301,10 +309,6 @@ const propTypes = {
 	 * Default value of input. Provide uncontroled behaviour
 	 */
 	defaultValue: PropTypes.string,
-	/**
-	 * Add loading spinner below the options
-	 */
-	isLoadingMenuItems: PropTypes.bool,
 	/**
 	 * **Array of item objects in the dropdown menu that is displayed below the list of `options`. `onSelect` fires when selected.**
 	 * Each object can contain:
@@ -1073,6 +1077,7 @@ class Combobox extends React.Component {
 							className: 'slds-combobox__form-element',
 							role: 'none',
 						}}
+						hasSpinner={this.props.hasInputSpinner}
 						iconRight={
 							<InputIcon
 								category="utility"
@@ -1210,6 +1215,7 @@ class Combobox extends React.Component {
 							className: 'slds-combobox__form-element',
 							role: 'none',
 						}}
+						hasSpinner={this.props.hasInputSpinner}
 						iconRight={
 							<InputIcon
 								category="utility"
@@ -1313,6 +1319,7 @@ class Combobox extends React.Component {
 								role: 'none',
 							}}
 							disabled={this.props.singleInputDisabled}
+							hasSpinner={this.props.hasInputSpinner}
 							iconRight={
 								props.selection.length ? (
 									<InputIcon
@@ -1404,7 +1411,7 @@ class Combobox extends React.Component {
 						: null
 				}
 				labels={labels}
-				isLoadingMenuItems={this.props.isLoadingMenuItems}
+				hasMenuSpinner={this.props.hasMenuSpinner}
 				menuItem={this.props.menuItem}
 				menuPosition={this.props.menuPosition}
 				menuRef={(ref) => {

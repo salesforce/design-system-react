@@ -51,15 +51,24 @@ class Example extends React.Component {
 
 		this.state = {
 			inputValue: '',
+			isLoadingMenuItems: false,
 			selection: [],
 		};
 	}
+
+	delayOptionsLoad = () => {
+		// A promise should be used here for asynchronous callbacks
+		setTimeout(() => {
+			this.setState({ isLoadingMenuItems: false });
+		}, 1000);
+	};
 
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
 					id="combobox-unique-id"
+					hasInputSpinner={this.state.isLoadingMenuItems}
 					optionsSearchEntity={[
 						{
 							id: 'options-search-id-1',
@@ -114,7 +123,8 @@ class Example extends React.Component {
 							} else if (console) {
 								console.log('onChange', event, value);
 							}
-							this.setState({ inputValue: value });
+							this.setState({ inputValue: value, isLoadingMenuItems: true });
+							this.delayOptionsLoad();
 						},
 						onRequestRemoveSelectedOption: (event, data) => {
 							this.setState({
@@ -150,11 +160,15 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholder: 'Search Salesforce',
 					}}
-					options={comboboxFilterAndLimit({
-						inputValue: this.state.inputValue,
-						options: accountsWithIcon,
-						selection: this.state.selection,
-					})}
+					options={
+						this.state.isLoadingMenuItems
+							? []
+							: comboboxFilterAndLimit({
+									inputValue: this.state.inputValue,
+									options: accountsWithIcon,
+									selection: this.state.selection,
+								})
+					}
 					selection={this.state.selection}
 					value={
 						this.state.selectedOption
