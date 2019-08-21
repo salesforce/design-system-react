@@ -9,7 +9,7 @@ import classNames from 'classnames';
 
 import Icon from '../icon';
 
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 import checkProps from './check-props';
 
 import { SCOPED_NOTIFICATION } from '../../utilities/constants';

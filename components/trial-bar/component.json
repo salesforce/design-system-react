@@ -1,0 +1,21 @@
+{
+	"component": "trial-bar",
+	"status": "prototype",
+	"display-name": "Trial Bars",
+	"classKey": "TrialBar",
+	"SLDS-component-path": "/components/trial-bar",
+	"dependencies": [
+		{
+			"component": "button",
+			"classKey": "TrialBarButton"
+		},
+		{
+			"component": "dropdown",
+			"classKey": "TrialBarDropdown"
+		}
+	],
+	"site-stories": [
+		"/__examples__/default.jsx"
+	],
+	"url-slug": "trial-bars"
+}
