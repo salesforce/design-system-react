@@ -33,16 +33,16 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * CSS classes to be added to tag with `.slds-expression__row`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 * CSS classes to be added to the element with class `.slds-expression__row`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string,
 	]),
-	/*
- * Callbacks for various expression condition events such as value change, delete etc
- */
+	/**
+	 * Callbacks for various expression condition events such as value change, delete etc
+	 */
 	events: PropTypes.shape({
 		onChangeResource: PropTypes.func,
 		onChangeOperator: PropTypes.func,
@@ -112,7 +112,7 @@ const propTypes = {
 	 */
 	operatorSelected: PropTypes.object,
 	/**
-	 *   Sets the input value for the value input.
+	 *  Sets the input value for the Value input field.
 	 */
 	value: PropTypes.string,
 };

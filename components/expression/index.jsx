@@ -20,12 +20,12 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * ExpressionGroup accepts `ExpressionCondition` & `ExpressionGroup`
+	 * `Expression` children, accepts `ExpressionCondition` & `ExpressionGroup`
 	 */
 	children: PropTypes.node,
-	/*
- * Callbacks for various expression events such as trigger change, add group etc
- */
+	/**
+	 * Callbacks for various expression events such as trigger change, add group etc
+	 */
 	events: PropTypes.shape({
 		onChangeTrigger: PropTypes.func,
 		onAddGroup: PropTypes.func,
@@ -40,6 +40,11 @@ const propTypes = {
 	 * * `customLogic`: Label for the text box for inputting `customLogicValue`, if the `triggerType` is `custom`. Defaults to "Custom Logic"
 	 * * `takeAction`: Label for the `triggerType` selector. Defaults to "Take Action When"
 	 * * `title` : Title for the Expression. Defaults to "Conditions"
+	 * * `triggerAll`: Label for the `all` value within the trigger selector
+	 * * `triggerAlways`: Label for the `always` value within the trigger selector
+	 * * `triggerAny`: Label for the `any` value within the trigger selector
+	 * * `triggerCustom`: Label for the `custom` value within the trigger selector
+	 * * `triggerFormula`: Label for the `formula` value within the trigger selector
 	 */
 	labels: PropTypes.shape({
 		addCondition: PropTypes.string,
@@ -54,7 +59,7 @@ const propTypes = {
 		triggerFormula: PropTypes.string,
 	}),
 	/**
-	 * CSS classes to be added to tag with `.slds-expression`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 * CSS classes to be added to the element with class `.slds-expression`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,

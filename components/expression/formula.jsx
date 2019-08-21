@@ -18,6 +18,10 @@ import { EXPRESSION_FORMULA } from '../../utilities/constants';
 import Button from '../button';
 
 const propTypes = {
+	/**
+	 *  **Assistive text for accessibility.**
+	 * * `help`: Assistive text for help icon
+	 */
 	assistiveText: PropTypes.shape({
 		help: PropTypes.string,
 	}),
@@ -26,15 +30,15 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * CSS classes to be added to tag with `.slds-form-element`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 * CSS classes to be added to the element with class `.slds-form-element`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string,
 	]),
-	/*
-	 * Callbacks for various expression formula events such as  onChange Text Editor, check syntax etc
+	/**
+	 * Callbacks for various expression formula events such as text editor change, check syntax etc
 	 */
 	events: PropTypes.shape({
 		onChangeTextEditor: PropTypes.func,
@@ -46,7 +50,6 @@ const propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `label`: Label for the Expression Formula group.Defaults to "Formula"
 	 * * `checkSyntax`: Label for the Check Syntax Button. Defaults to "Check Syntax"
-	 * * `takeAction`: Label for the `triggerType` selector. Defaults to "Take Action When"
 	 * * `textArea`: Label for the `triggerType` selector. Defaults to "Take Action When"
 	 */
 	labels: PropTypes.shape({

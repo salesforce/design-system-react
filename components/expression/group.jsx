@@ -35,19 +35,19 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * ExpressionGroup accepts `ExpressionCondition`. (Also accepts sub-`ExpressionGroup` if `isRoot`)
+	 * `ExpressionGroup` children, accepts `ExpressionCondition`. (Also accepts sub-`ExpressionGroup` if `isRoot`)
 	 */
 	children: PropTypes.node,
 	/**
-	 * CSS classes to be added to tag with `.slds-expression__group`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 * CSS classes to be added to the element with class `.slds-expression__group`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	className: PropTypes.oneOfType([
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string,
 	]),
-	/*
-	 * Callbacks for various expression group events such as trigger-change, add condition etc
+	/**
+	 * Callbacks for various expression group events such as trigger change, add condition etc
 	 */
 	events: PropTypes.shape({
 		onChangeTrigger: PropTypes.func,
@@ -63,6 +63,11 @@ const propTypes = {
 	 * * `customLogic`: Label for the text box for inputting `customLogicValue`, if the `triggerType` is `custom`. Defaults to "Custom Logic"
 	 * * `label`: Label for the expression group, to indicate condition connectors based on the parent's trigger-type chosen. Defaults to ""
 	 * * `takeAction`: Label for the `triggerType` selector. Defaults to "Take Action When"
+	 * * `triggerAll`: Label for the `all` value within the trigger selector
+	 * * `triggerAlways`: Label for the `always` value within the trigger selector
+	 * * `triggerAny`: Label for the `any` value within the trigger selector
+	 * * `triggerCustom`: Label for the `custom` value within the trigger selector
+	 * * `triggerFormula`: Label for the `formula` value within the trigger selector
 	 */
 	labels: PropTypes.shape({
 		addCondition: PropTypes.string,
