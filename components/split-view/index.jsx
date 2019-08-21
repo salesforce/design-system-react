@@ -90,9 +90,7 @@ class SplitView extends React.Component {
 		super(props);
 
 		this.state = {
-			isOpen: (typeof props.isOpen === 'boolean')
-				? props.isOpen
-				: true,
+			isOpen: typeof props.isOpen === 'boolean' ? props.isOpen : true,
 		};
 
 		this.generatedId = shortid.generate();

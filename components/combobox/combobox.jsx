@@ -341,9 +341,7 @@ class Combobox extends React.Component {
 				(this.props.selection && this.props.selection[0]) || undefined,
 			activeSelectedOptionIndex: 0,
 			listboxHasFocus: false,
-			isOpen: (typeof props.isOpen === 'boolean')
-				? props.isOpen
-				: false
+			isOpen: typeof props.isOpen === 'boolean' ? props.isOpen : false,
 		};
 
 		this.menuKeyBuffer = new KeyBuffer();

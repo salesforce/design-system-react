@@ -429,7 +429,7 @@ class MenuDropdown extends React.Component {
 			focusedIndex: -1,
 			selectedIndex: -1,
 			selectedIndices: [],
-			...currentSelectedIndices
+			...currentSelectedIndices,
 		};
 
 		this.navigableItems = getNavigableItems(props.options);
@@ -531,12 +531,12 @@ class MenuDropdown extends React.Component {
 			);
 
 			return {
-				selectedIndices: currentIndices
+				selectedIndices: currentIndices,
 			};
 		}
 
 		return {
-			selectedIndex: this.getIndexByValue(nextProps.value, nextProps.options)
+			selectedIndex: this.getIndexByValue(nextProps.value, nextProps.options),
 		};
 	};
 
