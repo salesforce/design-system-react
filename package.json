@@ -90,6 +90,7 @@
 		"lodash.reject": "^4.3.0",
 		"popper.js": "^1.10.8",
 		"prop-types": ">=15.5.8",
+		"react-contenteditable": "^3.3.1",
 		"react-highlighter": "^0.4.3",
 		"react-modal": "3.8.1",
 		"react-onclickoutside": "^6.8.0",
@@ -588,6 +589,31 @@
 				"/__examples__/non-collapsible.jsx"
 			],
 			"url-slug": "expandable-section"
+		},
+		{
+			"component": "expression",
+			"status": "prod",
+			"display-name": "Expression",
+			"classKey": "Expression",
+			"SLDS-component-path": "/components/expression",
+			"dependencies": [
+				{
+					"component": "condition",
+					"classKey": "ExpressionCondition"
+				},
+				{
+					"component": "formula",
+					"classKey": "ExpressionFormula"
+				},
+				{
+					"component": "group",
+					"classKey": "ExpressionGroup"
+				}
+			],
+			"site-stories": [
+				"/__examples__/resource-selected.jsx"
+			],
+			"url-slug": "expression"
 		},
 		{
 			"component": "files",

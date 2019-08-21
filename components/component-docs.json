@@ -6198,6 +6198,724 @@
         "SLDS-component-path": "/components/expandable-section",
         "dependencies": []
     },
+    "expression": {
+        "description": "Expression builders help users declaratively construct logical expressions.\nThese expressions can be used when querying for a filtered set of records,\ncreating rules to control when something executes, or any other conditional logic.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "Get the Expression Group's HTML id. Generate a new one if no ID present.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Get the Expression Group's HTML id. Generate a new one if no ID present."
+            }
+        ],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "`Expression` children, accepts `ExpressionCondition` & `ExpressionGroup`"
+            },
+            "events": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "onChangeTrigger": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onAddGroup": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onAddCondition": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onChangeCustomLogicValue": {
+                            "name": "func",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Callbacks for various expression events such as trigger change, add group etc"
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "addCondition": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "addGroup": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "customLogic": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "takeAction": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "title": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "triggerAll": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "triggerAlways": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "triggerAny": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "triggerCustom": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "triggerFormula": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `addCondition`: Label for the Add Condition Button. Defaults to \"Add Condition\"\n* `addGroup`: Label for the Add Group Button. Defaults to \"Add Group\"\n* `customLogic`: Label for the text box for inputting `customLogicValue`, if the `triggerType` is `custom`. Defaults to \"Custom Logic\"\n* `takeAction`: Label for the `triggerType` selector. Defaults to \"Take Action When\"\n* `title` : Title for the Expression. Defaults to \"Conditions\"\n* `triggerAll`: Label for the `all` value within the trigger selector\n* `triggerAlways`: Label for the `always` value within the trigger selector\n* `triggerAny`: Label for the `any` value within the trigger selector\n* `triggerCustom`: Label for the `custom` value within the trigger selector\n* `triggerFormula`: Label for the `formula` value within the trigger selector",
+                "defaultValue": {
+                    "value": "{\n    title: 'Conditions',\n}",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes to be added to the element with class `.slds-expression`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "triggerType": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'all'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'any'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'custom'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'always'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'formula'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Sets the trigger type for the expression."
+            },
+            "customLogicValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Sets the input for the custom logic value input box, shown if the `triggerType` is set to `custom`."
+            }
+        },
+        "route": "expression",
+        "display-name": "Expression",
+        "SLDS-component-path": "/components/expression",
+        "dependencies": [
+            {
+                "condition": {
+                    "description": "Expression Condition Component",
+                    "methods": [
+                        {
+                            "name": "getId",
+                            "docblock": "Get the Expression Condition's HTML id. Generate a new one if no ID present.",
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null,
+                            "description": "Get the Expression Condition's HTML id. Generate a new one if no ID present."
+                        }
+                    ],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "title": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "deleteIcon": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\n* `title`: For users of assistive technology, title for the condition fieldset. Defaults to 'Condition'\n* `deleteIcon`: For users of assistive technology, assistive text for the Delete Condition button's icon. Defaults to 'Delete Condition'",
+                            "defaultValue": {
+                                "value": "{\n    title: 'Condition',\n    deleteIcon: 'Delete Condition',\n}",
+                                "computed": false
+                            }
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML id for component."
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS classes to be added to the element with class `.slds-expression__row`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+                        },
+                        "events": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "onChangeResource": {
+                                        "name": "func",
+                                        "required": false
+                                    },
+                                    "onChangeOperator": {
+                                        "name": "func",
+                                        "required": false
+                                    },
+                                    "onChangeValue": {
+                                        "name": "func",
+                                        "required": false
+                                    },
+                                    "onDelete": {
+                                        "name": "func",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": true,
+                            "description": "Callbacks for various expression condition events such as value change, delete etc"
+                        },
+                        "labels": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "deleteCondition": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "label": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "operator": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "resource": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "value": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every\n* `deleteCondition`: Title for the delete condition button. Defaults to \"Delete Condition\".\n* `label`: Label for the condition, shown left-most in the row. Left empty on default.\n* `operator`: Label for the operator selection dropdown. Defaults to \"Operator\"\n* `resource`: Label for the resource selection dropdown. Defaults to \"Resource\"\n* `value`: Label for the value input box. Defaults to \"Value\"",
+                            "defaultValue": {
+                                "value": "{\n    label: '',\n    operator: 'Operator',\n    resource: 'Resource',\n    value: 'Value',\n    deleteCondition: 'Delete Condition',\n}",
+                                "computed": false
+                            }
+                        },
+                        "isSubCondition": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Controls whether the condition is a sub-condition inside a ExpressionGroup"
+                        },
+                        "resourcesList": {
+                            "type": {
+                                "name": "arrayOf",
+                                "value": {
+                                    "name": "object"
+                                }
+                            },
+                            "required": false,
+                            "description": "**Array of item objects that are options in the resource selection dropdown menu.**\nEach object can contain:\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item.\n```\n{\n\tid: '1',\n\tlabel: 'Resource 1',\n},\n```\nNote: The dropdown uses the Combobox Component, and `resourcesList` is\npassed as `options` props to it, and hence shall also support more\ncustom objects. Please refer to the Combobox documentation."
+                        },
+                        "resourceSelected": {
+                            "type": {
+                                "name": "object"
+                            },
+                            "required": false,
+                            "description": "Accepts an object from the `resourcesList` which needs to be selected\n for the resource dropdown menu,"
+                        },
+                        "operatorsList": {
+                            "type": {
+                                "name": "arrayOf",
+                                "value": {
+                                    "name": "object"
+                                }
+                            },
+                            "required": false,
+                            "description": "**Array of item objects that are options in the operator selection dropdown menu.**\nEach object can contain:\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item.\n```\n{\n\tid: '1',\n\tlabel: 'Operator 1',\n},\n```\nNote: The dropdown uses the Combobox Component, and `operatorList` is\npassed as `options` props to it, and hence shall also support more\ncustom objects. Please refer to the Combobox documentation."
+                        },
+                        "operatorSelected": {
+                            "type": {
+                                "name": "object"
+                            },
+                            "required": false,
+                            "description": "Accepts an object from the `operatorSelected` which needs to be selected\n for the operator dropdown menu,"
+                        },
+                        "value": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Sets the input value for the Value input field.",
+                            "defaultValue": {
+                                "value": "''",
+                                "computed": false
+                            }
+                        }
+                    },
+                    "name": "condition",
+                    "source": "/components/expression/condition.jsx"
+                }
+            },
+            {
+                "formula": {
+                    "description": "Expression Formula Component",
+                    "methods": [
+                        {
+                            "name": "getId",
+                            "docblock": "Get the Expression Condition's HTML id. Generate a new one if no ID present.",
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null,
+                            "description": "Get the Expression Condition's HTML id. Generate a new one if no ID present."
+                        },
+                        {
+                            "name": "handleTextEditorChange",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
+                        }
+                    ],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "help": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\n* `help`: Assistive text for help icon"
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML id for component."
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS classes to be added to the element with class `.slds-form-element`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+                        },
+                        "events": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "onChangeTextEditor": {
+                                        "name": "func",
+                                        "required": false
+                                    },
+                                    "onClickHelp": {
+                                        "name": "func",
+                                        "required": false
+                                    },
+                                    "onClickCheckSyntax": {
+                                        "name": "func",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "Callbacks for various expression formula events such as text editor change, check syntax etc"
+                        },
+                        "labels": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "label": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "checkSyntax": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "textArea": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: Label for the Expression Formula group.Defaults to \"Formula\"\n* `checkSyntax`: Label for the Check Syntax Button. Defaults to \"Check Syntax\"\n* `textArea`: Label for the `triggerType` selector. Defaults to \"Take Action When\"",
+                            "defaultValue": {
+                                "value": "{\n    label: 'Formula',\n    checkSyntax: 'Check Syntax',\n    textArea: 'Text Area',\n}",
+                                "computed": false
+                            }
+                        },
+                        "resourceCombobox": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Accepts a single combobox component, to select resource in the expression formula editor"
+                        },
+                        "functionCombobox": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Accepts a single combobox component, to select function in the expression formula editor"
+                        },
+                        "operatorInput": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Accepts a single input component, to enter operator in the expression formula editor"
+                        },
+                        "textEditorValue": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Value for the text editor in expression formula editor"
+                        }
+                    },
+                    "name": "formula",
+                    "source": "/components/expression/formula.jsx"
+                }
+            },
+            {
+                "group": {
+                    "description": "Expression Group Component",
+                    "methods": [
+                        {
+                            "name": "triggerChange",
+                            "docblock": "Return triggerType selected, processing the triggerType objects generated",
+                            "modifiers": [
+                                "static"
+                            ],
+                            "params": [
+                                {
+                                    "name": "event"
+                                },
+                                {
+                                    "name": "data"
+                                }
+                            ],
+                            "returns": null,
+                            "description": "Return triggerType selected, processing the triggerType objects generated"
+                        },
+                        {
+                            "name": "getId",
+                            "docblock": "Get the Expression Group's HTML id. Generate a new one if no ID present.",
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null,
+                            "description": "Get the Expression Group's HTML id. Generate a new one if no ID present."
+                        },
+                        {
+                            "name": "getTriggers",
+                            "docblock": "Generate and return trigger type objects, with labels either sent as props or using default props.",
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null,
+                            "description": "Generate and return trigger type objects, with labels either sent as props or using default props."
+                        },
+                        {
+                            "name": "getTriggerSelection",
+                            "docblock": "Returns object of trigger from trigger passed as prop",
+                            "modifiers": [],
+                            "params": [],
+                            "returns": null,
+                            "description": "Returns object of trigger from trigger passed as prop"
+                        }
+                    ],
+                    "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "label": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "addCondition": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "addGroup": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility.**\n* `label`: For users of assistive technology, assistive text for the expression group's label.\n* `addCondition`: For users of assistive technology, assistive text for the Add Condition button's icon.\n* `addGroup`: For users of assistive technology, assistive text for the Add Group button's icon."
+                        },
+                        "id": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "HTML id for ExpressionGroup component."
+                        },
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "`ExpressionGroup` children, accepts `ExpressionCondition`. (Also accepts sub-`ExpressionGroup` if `isRoot`)"
+                        },
+                        "className": {
+                            "type": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "array"
+                                    },
+                                    {
+                                        "name": "object"
+                                    },
+                                    {
+                                        "name": "string"
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "CSS classes to be added to the element with class `.slds-expression__group`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+                        },
+                        "events": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "onChangeTrigger": {
+                                        "name": "func",
+                                        "required": false
+                                    },
+                                    "onChangeCustomLogicValue": {
+                                        "name": "func",
+                                        "required": false
+                                    },
+                                    "onAddCondition": {
+                                        "name": "func",
+                                        "required": false
+                                    },
+                                    "onAddGroup": {
+                                        "name": "func",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "Callbacks for various expression group events such as trigger change, add condition etc"
+                        },
+                        "labels": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "addCondition": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "addGroup": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "customLogic": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "label": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "takeAction": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "triggerAll": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "triggerAlways": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "triggerAny": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "triggerCustom": {
+                                        "name": "string",
+                                        "required": false
+                                    },
+                                    "triggerFormula": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `addCondition`: Label for the Add Condition Button. Defaults to \"Add Condition\"\n* `addGroup`: Label for the Add Group Button. Defaults to \"Add Group\"\n* `customLogic`: Label for the text box for inputting `customLogicValue`, if the `triggerType` is `custom`. Defaults to \"Custom Logic\"\n* `label`: Label for the expression group, to indicate condition connectors based on the parent's trigger-type chosen. Defaults to \"\"\n* `takeAction`: Label for the `triggerType` selector. Defaults to \"Take Action When\"\n* `triggerAll`: Label for the `all` value within the trigger selector\n* `triggerAlways`: Label for the `always` value within the trigger selector\n* `triggerAny`: Label for the `any` value within the trigger selector\n* `triggerCustom`: Label for the `custom` value within the trigger selector\n* `triggerFormula`: Label for the `formula` value within the trigger selector",
+                            "defaultValue": {
+                                "value": "{\n    label: '',\n    takeAction: 'Take Action When',\n    customLogic: 'Custom Logic',\n    addCondition: 'Add Condition',\n    addGroup: 'Add Group',\n    triggerAll: 'All Conditions Are Met',\n    triggerAny: 'Any Condition Is Met',\n    triggerCustom: 'Custom Logic Is Met',\n    triggerAlways: 'Always (No Criteria)',\n    triggerFormula: 'Formula Evaluates To True',\n}",
+                                "computed": false
+                            }
+                        },
+                        "isRoot": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Whether the group is at root level"
+                        },
+                        "triggerType": {
+                            "type": {
+                                "name": "enum",
+                                "value": [
+                                    {
+                                        "value": "'all'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'any'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'custom'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'always'",
+                                        "computed": false
+                                    },
+                                    {
+                                        "value": "'formula'",
+                                        "computed": false
+                                    }
+                                ]
+                            },
+                            "required": false,
+                            "description": "Trigger type for the Group",
+                            "defaultValue": {
+                                "value": "'all'",
+                                "computed": false
+                            }
+                        },
+                        "customLogicValue": {
+                            "type": {
+                                "name": "string"
+                            },
+                            "required": false,
+                            "description": "Sets the input for the custom logic value input box, shown if the `triggerType` is set to `custom`.",
+                            "defaultValue": {
+                                "value": "''",
+                                "computed": false
+                            }
+                        }
+                    },
+                    "name": "group",
+                    "source": "/components/expression/group.jsx"
+                }
+            }
+        ]
+    },
     "files": {
         "description": "Files is a component that wraps multiple file components that represent an attachment",
         "methods": [
