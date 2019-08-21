@@ -12,6 +12,10 @@ const TreeGridCell = (props) =>
 			className="slds-tree__item"
 			// data-label={label}
 			scope="row"
+			style={{
+				paddingTop: '0.5rem',
+				paddingBottom: '0.5rem',
+			}}
 		>
 			<Button
 				variant="icon"

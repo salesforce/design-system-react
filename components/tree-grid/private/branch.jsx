@@ -11,7 +11,7 @@ const Branch = (props) => {
 	const { getNodes, node, level } = props;
 
 	if (Array.isArray(getNodes(node))) {
-		children = getNodes(node).map((n, i) => {
+		children = getNodes(node).map((n) => {
 			let child;
 			if (n.type === 'branch') {
 				child = (
@@ -23,6 +23,8 @@ const Branch = (props) => {
 						node={n}
 						onExpand={props.onExpand}
 						onSelect={props.onSelect}
+						selectRows={props.selectRows}
+						moreActionsDropdown={props.moreActionsDropdown}
 					/>
 				);
 			} else {
@@ -35,6 +37,8 @@ const Branch = (props) => {
 						columns={props.columns}
 						onExpand={props.onExpand}
 						onSelect={props.onSelect}
+						selectRows={props.selectRows}
+						moreActionsDropdown={props.moreActionsDropdown}
 					/>
 				);
 			}
@@ -46,12 +50,15 @@ const Branch = (props) => {
 		<React.Fragment>
 			{props.level !== 0 ? (
 				<Item
+					key={shortid.generate()}
 					level={props.level}
 					row={node}
 					columns={props.columns}
 					parent={props.parent}
 					onExpand={props.onExpand}
 					onSelect={props.onSelect}
+					selectRows={props.selectRows}
+					moreActionsDropdown={props.moreActionsDropdown}
 				/>
 			) : null}
 			{node.expanded || props.level === 0 ? children : null}

@@ -50,18 +50,6 @@ const propTypes = {
 	 * HTML id for component.
 	 */
 	id: PropTypes.string,
-	/**
-	 * 	onSelectAll:  function triggers when
-	 * 	onExpandRow: function triggers when a row is expanded
-	 * 	onCollapseRow: function triggers when a row is collapsed
-	 */
-	events: PropTypes.shape({
-		onSelectAll: PropTypes.func,
-		onDeselectAll: PropTypes.func,
-		onRowChange: PropTypes.func,
-		onExpandRow: PropTypes.func,
-		onCollapseRow: PropTypes.func,
-	}),
 
 	labels: PropTypes.shape({
 		chooseRow: PropTypes.string,
@@ -79,18 +67,26 @@ const propTypes = {
 	 */
 	unborderedRow: PropTypes.bool,
 
-	items: PropTypes.arrayOf(
-		PropTypes.shape({
-			expanded: PropTypes.bool,
-			id: PropTypes.string,
-			label: PropTypes.oneOfType(PropTypes.string, PropTypes.node),
-			selected: PropTypes.bool,
-			type: PropTypes.type,
-			nodes: PropTypes.array,
-		})
+	nodes: PropTypes.arrayOf(
+		PropTypes.oneOfType([
+			PropTypes.number,
+			PropTypes.string,
+			PropTypes.shape({
+				id: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+					.isRequired,
+				label: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
+					.isRequired,
+				type: PropTypes.string.isRequired,
+			}),
+		])
 	).isRequired,
 
+	onSelect: PropTypes.func.isRequired,
+
+	onExpand: PropTypes.func.isRequired,
+
 	isHeadless: PropTypes.bool,
+
 	isBorderless: PropTypes.bool,
 };
 
@@ -224,8 +220,8 @@ class TreeGrid extends React.Component {
 											// 	// this.state.selection.length > 0 &&
 											// 	// !this.state.isSelectAll
 											// }
-											checked={this.state.isSelectAll}
-											onChange={this.handleSelectAll}
+											// checked={this.props.isSelectAll}
+											onChange={this.props.onSelectAll}
 										/>
 									</div>
 								</th>
@@ -252,6 +248,8 @@ class TreeGrid extends React.Component {
 							columns={columns}
 							onSelect={this.props.onSelect}
 							onExpand={this.props.onExpand}
+							selectRows={this.props.selectRows}
+							moreActionsDropdown={this.props.moreActionsDropdown}
 						/>
 					}
 				</tbody>

@@ -189,7 +189,7 @@ class Example extends React.Component {
 		log({
 			action: this.props.action,
 			event,
-			eventName: 'Expand Branch',
+			eventName: `${data.expanded ? 'Expand' : 'Collapse'} Branch`,
 			data,
 		});
 		const { nodes } = this.state;
@@ -225,9 +225,26 @@ class Example extends React.Component {
 		}));
 	};
 
-	render() {
-		console.log(this.state.nodes);
+	handleSelectAll = (event) => {
+		const selected = this.state.nodes;
+		const curr = this.state.allSelect;
+		for (let [key, value] of Object.entries(selected)) {
+			if (key) {
+				value = { ...value, selected: !curr };
+				selected[key] = value;
+			}
+		}
+		const presentState = { nodes: selected, allSelect: !curr };
+		log({
+			action: this.props.action,
+			event,
+			eventName: 'Selected All',
+			data: presentState,
+		});
+		this.setState(presentState);
+	};
 
+	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ overflow: 'auto' }}>
@@ -237,6 +254,31 @@ class Example extends React.Component {
 						getNodes={this.getNodes}
 						onExpand={this.handleExpansion}
 						onSelect={this.handleSelection}
+						onSelectAll={this.handleSelectAll}
+						selectRows={this.props.selectRows}
+						moreActionsDropdown={
+							<Dropdown
+								id="file-more-actions"
+								iconCategory="utility"
+								iconName="down"
+								iconVariant="border-filled"
+								iconSize="x-small"
+								align="right"
+								onSelect={(event, data) => {
+									log({
+										action: this.props.action,
+										event,
+										eventName: 'More actions button of row clicked',
+										data,
+									});
+								}}
+								options={[
+									{ label: 'Menu Item One', value: 'A0' },
+									{ label: 'Menu Item Two', value: 'B0' },
+								]}
+								value="A0"
+							/>
+						}
 					>
 						<TreeGridColumn
 							type="text"
@@ -253,8 +295,14 @@ class Example extends React.Component {
 									iconVariant="small"
 									iconSize="x-small"
 									align="right"
-									onSelect={(value) => {
-										console.log('selected: ', value);
+									onSelect={(event, data) => {
+										log({
+											action: this.props.action,
+											event,
+											eventName:
+												'More Actions Button of accountName column clicked',
+											data,
+										});
 									}}
 									options={[
 										{ label: 'Menu Item One', value: 'A0' },
@@ -279,8 +327,14 @@ class Example extends React.Component {
 									iconVariant="small"
 									iconSize="x-small"
 									align="right"
-									onSelect={(value) => {
-										console.log('selected: ', value);
+									onSelect={(event, data) => {
+										log({
+											action: this.props.action,
+											event,
+											eventName:
+												'More Actions Button of employees column clicked',
+											data,
+										});
 									}}
 									options={[
 										{ label: 'Menu Item One', value: 'A0' },
@@ -305,8 +359,13 @@ class Example extends React.Component {
 									iconVariant="small"
 									iconSize="x-small"
 									align="right"
-									onSelect={(value) => {
-										console.log('selected: ', value);
+									onSelect={(event, data) => {
+										log({
+											action: this.props.action,
+											event,
+											eventName: 'More Actions Button of phone column clicked',
+											data,
+										});
 									}}
 									options={[
 										{ label: 'Menu Item One', value: 'A0' },
@@ -327,14 +386,6 @@ class Example extends React.Component {
 							typeAttributes={{
 								label: { fieldName: 'accountOwnerName' },
 							}}
-							onClickMoreActions={(event) =>
-								log({
-									action: this.props.action,
-									event,
-									eventName: 'More Actions Button of owner column clicked',
-									data: null,
-								})
-							}
 							moreActionsDropdown={
 								<Dropdown
 									id="file-more-actions"
@@ -343,8 +394,14 @@ class Example extends React.Component {
 									iconVariant="small"
 									iconSize="x-small"
 									align="right"
-									onSelect={(value) => {
-										console.log('selected: ', value);
+									onSelect={(event, data) => {
+										log({
+											action: this.props.action,
+											event,
+											eventName:
+												'More Actions Button of accountOwner column clicked',
+											data,
+										});
 									}}
 									options={[
 										{ label: 'Menu Item One', value: 'A0' },
@@ -361,14 +418,6 @@ class Example extends React.Component {
 							property="billingCity"
 							initialWidth={200}
 							variant="icon"
-							onClickMoreActions={(event) =>
-								log({
-									action: this.props.action,
-									event,
-									eventName: 'More Actions Button of city column clicked',
-									data: null,
-								})
-							}
 							moreActionsDropdown={
 								<Dropdown
 									id="file-more-actions"
@@ -377,8 +426,13 @@ class Example extends React.Component {
 									iconVariant="small"
 									iconSize="x-small"
 									align="right"
-									onSelect={(value) => {
-										console.log('selected: ', value);
+									onSelect={(event, data) => {
+										log({
+											action: this.props.action,
+											event,
+											eventName: 'More Actions Button of city column clicked',
+											data,
+										});
 									}}
 									options={[
 										{ label: 'Menu Item One', value: 'A0' },

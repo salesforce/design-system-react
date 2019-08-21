@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import shortid from 'shortid';
 
 import { TREE_GRID_ITEM } from '../../../utilities/constants';
 import Button from '../../button';
@@ -9,6 +10,7 @@ import TreeGridCell from './cell';
 
 class Item extends React.Component {
 	handleExpansion = (event) => {
+		console.log('expand', this.props.row);
 		const obj = {
 			node: this.props.row,
 			expanded: !this.props.row.expanded,
@@ -17,6 +19,7 @@ class Item extends React.Component {
 	};
 
 	handleSelection = (event) => {
+		console.log('select', this.props.row);
 		const obj = {
 			node: this.props.row,
 			selected: !this.props.row.selected,
@@ -37,11 +40,11 @@ class Item extends React.Component {
 						this.props.isSelected ? `slds-is-selected` : null
 					)}
 					onClick={() =>
-						this.props.isSingleSelect ? this.props.onSelect() : null
+						this.props.selectRows === 'single' ? this.props.onSelect() : null
 					}
 					tabIndex="0"
 				>
-					{!this.props.isSingleSelect ? (
+					{this.props.selectRows === 'multiple' ? (
 						<td
 							className="slds-text-align_right"
 							role="gridcell"
@@ -60,6 +63,7 @@ class Item extends React.Component {
 					) : null}
 					{this.props.columns.map((col, i) => (
 						<TreeGridCell
+							key={shortid.generate()}
 							id={`${this.props.id}-col-${i}`}
 							isPrimaryColumn={col.props.isPrimaryColumn}
 							isChildOpen={this.props.row.expanded}
@@ -72,16 +76,12 @@ class Item extends React.Component {
 						</TreeGridCell>
 					))}
 					<td role="gridcell" style={{ width: '3.25rem' }}>
-						<Button
-							variant="icon"
-							className="slds-button_icon-border-filled"
-							iconSize="x-small"
-							iconCategory="utility"
-							iconName="down"
-							assistiveText={{
-								icon: `More actions for`,
-							}}
-						/>
+						{React.cloneElement(this.props.moreActionsDropdown, {
+							onSelect: (event, obj) => {
+								const object = { selection: obj, row: this.props.row };
+								this.props.moreActionsDropdown.props.onSelect(event, object);
+							},
+						})}
 					</td>
 				</tr>
 			</React.Fragment>
@@ -97,12 +97,7 @@ Item.propTypes = {
 	columns: PropTypes.arrayOf(PropTypes.object),
 	row: PropTypes.object,
 	onSelect: PropTypes.func,
-	onCollapse: PropTypes.func,
-};
-
-Item.defaultProps = {
-	level: 1,
-	isOpen: false,
+	onExpand: PropTypes.func,
 };
 
 export default Item;

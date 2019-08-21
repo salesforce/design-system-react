@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TreeGrid from '~/components/tree-grid';
+import Dropdown from '~/components/menu-dropdown';
 import TreeGridColumn from '~/components/tree-grid/column';
 import IconSettings from '~/components/icon-settings';
 
@@ -165,6 +166,29 @@ class Example extends React.Component {
 						getNodes={this.getNodes}
 						onExpand={this.handleExpansion}
 						onSelect={this.handleSelection}
+						moreActionsDropdown={
+							<Dropdown
+								id="file-more-actions"
+								iconCategory="utility"
+								iconName="down"
+								iconVariant="border-filled"
+								iconSize="x-small"
+								align="right"
+								onSelect={(event, data) => {
+									log({
+										action: this.props.action,
+										event,
+										eventName: 'More actions button of row clicked',
+										data,
+									});
+								}}
+								options={[
+									{ label: 'Menu Item One', value: 'A0' },
+									{ label: 'Menu Item Two', value: 'B0' },
+								]}
+								value="A0"
+							/>
+						}
 					>
 						<TreeGridColumn
 							type="text"
