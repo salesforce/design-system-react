@@ -269,10 +269,12 @@ class Popover extends React.Component {
 		isOpen: false,
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(POPOVER, this.props, componentDoc);
+		checkProps(POPOVER, props, componentDoc);
 	}
 
 	componentWillUnmount() {

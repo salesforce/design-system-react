@@ -99,9 +99,11 @@ const defaultProps = {
  * App Launcher Tiles provide information and links to a user's apps
  */
 class AppLauncherTile extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(APP_LAUNCHER_TILE, this.props, componentDoc);
+		checkProps(APP_LAUNCHER_TILE, props, componentDoc);
 	}
 
 	handleClick = (event) => {

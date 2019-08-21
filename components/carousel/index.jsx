@@ -154,9 +154,7 @@ class Carousel extends React.Component {
 			stageWidth: 0,
 			translateX: -1000000,
 		};
-	}
 
-	componentWillMount() {
 		this.generatedId = shortid.generate();
 		checkProps(CAROUSEL, componentDoc);
 	}

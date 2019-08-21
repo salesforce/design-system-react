@@ -129,7 +129,9 @@ class Filter extends React.Component {
 		popoverIsOpen: this.props.popover ? this.props.popover.props.isOpen : false,
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 		checkProps(FILTER, componentDoc);
 	}

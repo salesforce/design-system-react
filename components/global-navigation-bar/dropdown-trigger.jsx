@@ -114,9 +114,12 @@ class GlobalNavigationDropdownTrigger extends React.Component {
 		triggerRef: PropTypes.func,
 	};
 
-	componentWillMount() {
-		checkProps(MENU_DROPDOWN_TRIGGER, this.props, componentDoc);
+	constructor(props) {
+		super(props);
+
+		checkProps(MENU_DROPDOWN_TRIGGER, props, componentDoc);
 	}
+
 
 	// ### Render
 	render() {

@@ -202,12 +202,10 @@ class Modal extends React.Component {
 		this.dismissModalOnClickOutside = this.dismissModalOnClickOutside.bind(
 			this
 		);
-	}
 
-	componentWillMount() {
 		this.generatedId = shortid.generate();
-		checkProps(MODAL, this.props, componentDoc);
-		if (this.props.ariaHideApp) {
+		checkProps(MODAL, props, componentDoc);
+		if (props.ariaHideApp) {
 			checkAppElementIsSet();
 		}
 	}

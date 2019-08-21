@@ -159,11 +159,9 @@ class Tooltip extends React.Component {
 			isClosing: false,
 			isOpen: false,
 		};
-	}
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(POPOVER_TOOLTIP, this.props, componentDoc);
+		checkProps(POPOVER_TOOLTIP, props, componentDoc);
 
 		this.generatedId = shortid.generate();
 	}

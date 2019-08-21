@@ -247,25 +247,23 @@ class ColorPicker extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.generatedId = this.props.id || shortid.generate();
+		this.generatedId = props.id || shortid.generate();
 		const workingColor = ColorUtils.getNewColor(
 			{
-				hex: this.props.valueWorking || this.props.value,
+				hex: props.valueWorking || props.value,
 			},
-			this.props.events.onValidateWorkingColor
+			props.events.onValidateWorkingColor
 		);
 		this.state = {
-			currentColor: this.props.value != null ? this.props.value : '',
-			disabled: this.props.disabled,
-			isOpen: this.props.isOpen,
+			currentColor: props.value != null ? props.value : '',
+			disabled: props.disabled,
+			isOpen: props.isOpen,
 			workingColor,
 			previousWorkingColor: workingColor,
-			colorErrorMessage: this.props.errorText,
+			colorErrorMessage: props.errorText,
 		};
-	}
 
-	componentWillMount() {
-		checkProps(COLOR_PICKER, this.props, componentDoc);
+		checkProps(COLOR_PICKER, props, componentDoc);
 	}
 
 	// use getDerivedStateFromProps when available

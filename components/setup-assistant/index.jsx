@@ -62,7 +62,9 @@ const defaultProps = {
  * onboarding organizations, clouds, or features within the Salesforce Platform.
  */
 class SetupAssistant extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 

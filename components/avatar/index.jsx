@@ -94,10 +94,8 @@ class Avatar extends React.Component {
 		this.state = {
 			imgLoadError: false,
 		};
-	}
 
-	componentWillMount() {
-		checkProps(AVATAR, this.props, componentDoc);
+		checkProps(AVATAR, props, componentDoc);
 	}
 
 	buildInitials() {

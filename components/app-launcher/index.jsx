@@ -131,11 +131,9 @@ class AppLauncher extends React.Component {
 		this.state = {
 			isOpen: false,
 		};
-	}
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(APP_LAUNCHER, this.props, componentDoc);
+		checkProps(APP_LAUNCHER, props, componentDoc);
 	}
 
 	getId() {

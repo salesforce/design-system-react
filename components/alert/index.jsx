@@ -98,11 +98,9 @@ class Alert extends React.Component {
 		this.state = {
 			isInitialRender: true,
 		};
-	}
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(ALERT, this.props, componentDoc);
+		checkProps(ALERT, props, componentDoc);
 	}
 
 	componentWillUnmount() {

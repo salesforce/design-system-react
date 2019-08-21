@@ -90,8 +90,10 @@ class AppLauncherSection extends React.Component {
 		isOpen: true,
 	};
 
-	componentWillMount() {
-		checkProps(APP_LAUNCHER_SECTION, this.props, componentDoc);
+	constructor(props) {
+		super(props);
+
+		checkProps(APP_LAUNCHER_SECTION, props, componentDoc);
 	}
 
 	toggleOpen = (event) => {

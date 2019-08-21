@@ -51,8 +51,6 @@ class DataTableHead extends React.Component {
 		showRowActions: PropTypes.bool,
 	};
 
-	componentWillMount() {}
-
 	getActionsHeader = () => {
 		const { fixedHeader } = this.props;
 		const getContent = (style) => (
