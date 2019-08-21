@@ -116,6 +116,9 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/expandable-section/__examples__/controlled.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/expandable-section/__examples__/non-collapsible.jsx'),
 	],
+	expression: [
+		require('raw-loader!@salesforce/design-system-react/components/expression/__examples__/resource-selected.jsx'),
+	],
 	files: [
 		require('raw-loader!@salesforce/design-system-react/components/files/__examples__/default.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/files/__examples__/crops.jsx'),

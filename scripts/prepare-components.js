@@ -224,7 +224,7 @@ if (indexFile && indexFile.program && indexFile.program.body) {
 	});
 }
 
-// Convert indexFile back into a string and add finalize with comments
+// Convert indexFile back into a string and finalize with comments
 indexFile = babelGenerator.default(indexFile, { quotes: 'single' }).code;
 indexFile = `/* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
