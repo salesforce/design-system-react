@@ -127,7 +127,7 @@ exports[`DOM snapshots SLDSButtonStateful Doc site Icon Button 1`] = `
   >
     <svg
       aria-hidden="true"
-      className="slds-button__icon slds-button__icon_large slds-button__icon_stateful"
+      className="slds-button__icon slds-button__icon_stateful"
     >
       <use
         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#like"
