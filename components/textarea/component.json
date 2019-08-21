@@ -1,0 +1,13 @@
+{
+    "component": "textarea",
+    "status": "prod",
+    "display-name": "Textareas",
+	"classKey": "Textarea",
+    "SLDS-component-path": "/components/forms#flavor-textarea",
+	"site-stories": [
+		"/__examples__/default.jsx",
+		"/__examples__/error.jsx",
+		"/__examples__/disabled.jsx"
+	],
+    "url-slug": "textareas"
+}

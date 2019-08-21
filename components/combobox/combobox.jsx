@@ -39,7 +39,7 @@ import menuItemSelectScroll from '../../utilities/menu-item-select-scroll';
 import checkProps from './check-props';
 
 import { COMBOBOX } from '../../utilities/constants';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 let currentOpenDropdown;
 const documentDefined = typeof document !== 'undefined';
