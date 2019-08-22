@@ -270,7 +270,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/external-state.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/custom-item-list.jsx'),
 	],
-	'summary-detail' : [
+	'summary-detail': [
 		require('raw-loader!@salesforce/design-system-react/components/summary-detail/__examples__/base.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/summary-detail/__examples__/with-complex-title.jsx'),
 	],

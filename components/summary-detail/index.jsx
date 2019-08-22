@@ -90,8 +90,7 @@ class SummaryDetail extends React.Component {
 	handleToggle = (event) => {
 		if (typeof this.props.onToggleDetails === 'function')
 			this.props.onToggleDetails(event);
-		const curr = this.state.isOpen;
-		this.setState({ isOpen: !curr });
+		this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
 	};
 
 	render() {
