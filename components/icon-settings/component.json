@@ -1,0 +1,7 @@
+{
+    "component": "icon-settings",
+    "status": "prod",
+    "display-name": "Icon Settings",
+	"classKey": "IconSettings",
+    "url-slug": "icon-settings"
+}
