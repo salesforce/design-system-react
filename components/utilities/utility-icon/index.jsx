@@ -16,6 +16,9 @@ import SLDS_ICONS_CUSTOM from '../../../icons/custom';
 import SLDS_ICONS_DOCTYPE from '../../../icons/doctype';
 import SLDS_ICONS_STANDARD from '../../../icons/standard';
 
+import { DIRECTIONS } from '../UNSAFE_direction';
+import LanguageDirection from '../UNSAFE_direction/private/language-direction';
+
 /*
  * If inline icons are present and icon bundle imports are not just an empty object, then inline icons will be used instead of external icons that require HTTP access.
  */
@@ -26,6 +29,7 @@ const UtilityIcon = (
 		category,
 		icon,
 		path,
+		direction,
 		...rest
 	},
 	context
@@ -62,9 +66,11 @@ const UtilityIcon = (
 		modifiedPath = `${context[`${category}Sprite`]}#${name}`;
 	} else {
 		// Otherwise, use external URLs for icons
+		const svgAssetName =
+			direction === DIRECTIONS.RTL ? 'symbols-rtl.svg' : 'symbols.svg';
 		modifiedPath =
 			context.iconPath &&
-			`${context.iconPath}/${category}-sprite/svg/symbols.svg#${name}`;
+			`${context.iconPath}/${category}-sprite/svg/${svgAssetName}#${name}`;
 	}
 
 	return inlineData ? (
@@ -115,4 +121,4 @@ UtilityIcon.contextTypes = {
 	utilitySprite: PropTypes.string,
 };
 
-export default UtilityIcon;
+export default LanguageDirection(UtilityIcon);

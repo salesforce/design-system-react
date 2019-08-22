@@ -95,7 +95,7 @@ exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown left-aligned, r
           className="slds-button__icon slds-button__icon_right"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
           />
         </svg>
       </button>
@@ -171,7 +171,7 @@ exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown right-aligned, 
           className="slds-button__icon slds-button__icon_right"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
           />
         </svg>
       </button>
@@ -250,7 +250,7 @@ exports[`DOM snapshots SLDSMenuDropdown Checkmark, right-to-left 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
           />
         </svg>
         <span
@@ -2636,7 +2636,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                 />
               </svg>
               top left
@@ -2731,7 +2731,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                           className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                           />
                         </svg>
                         
@@ -2744,7 +2744,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                         className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                         />
                       </svg>
                       
@@ -2967,7 +2967,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                 />
               </svg>
               top
@@ -3062,7 +3062,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                           className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                           />
                         </svg>
                         
@@ -3075,7 +3075,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                         className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                         />
                       </svg>
                       
@@ -3298,7 +3298,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                 />
               </svg>
               top right
@@ -3393,7 +3393,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                           className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                           />
                         </svg>
                         
@@ -3406,7 +3406,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                         className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                         />
                       </svg>
                       
@@ -3629,7 +3629,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                 />
               </svg>
               bottom left
@@ -3724,7 +3724,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                           className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                           />
                         </svg>
                         
@@ -3737,7 +3737,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                         className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                         />
                       </svg>
                       
@@ -3960,7 +3960,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                 />
               </svg>
               bottom
@@ -4055,7 +4055,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                           className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                           />
                         </svg>
                         
@@ -4068,7 +4068,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                         className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                         />
                       </svg>
                       
@@ -4291,7 +4291,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                 />
               </svg>
               bottom right
@@ -4386,7 +4386,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                           className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                           />
                         </svg>
                         
@@ -4399,7 +4399,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                         className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                         />
                       </svg>
                       
@@ -4623,7 +4623,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
               />
             </svg>
             <span

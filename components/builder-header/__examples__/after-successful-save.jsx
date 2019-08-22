@@ -2,7 +2,6 @@ import React from 'react';
 import IconSettings from '../../icon-settings';
 import Button from '../../button';
 import ButtonGroup from '../../button-group';
-import Dropdown from '../../menu-dropdown';
 import Tooltip from '../../tooltip';
 import BuilderHeader from '..';
 import BuilderHeaderNav from '../nav';

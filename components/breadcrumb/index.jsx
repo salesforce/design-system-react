@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ## Constants
 import { BREADCRUMB } from '../../utilities/constants';
@@ -39,6 +39,10 @@ const propTypes = {
 	 * Overflow menu of the type [Dropdown](/components/menu-dropdowns)
 	 */
 	overflowDropdownMenu: PropTypes.node,
+	/**
+	 * Custom styles to be passed to the containing `nav` tag
+	 */
+	styleContainer: PropTypes.object,
 	/**
 	 * An array of anchor elements that define the path to the current record.
 	 */
@@ -82,7 +86,11 @@ const Breadcrumb = (props) => {
 				}.label;
 
 	return (
-		<nav role="navigation" aria-label={assistiveText}>
+		<nav
+			role="navigation"
+			aria-label={assistiveText}
+			style={props.styleContainer}
+		>
 			<ol className="slds-breadcrumb slds-list_horizontal">
 				{overflowDropdownMenu &&
 					getBreadcrumbDropdown(overflowDropdownMenu, props)}

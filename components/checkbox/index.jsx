@@ -21,7 +21,7 @@ import EventUtil from '../../utilities/event';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import { CHECKBOX } from '../../utilities/constants';
 import Icon from '../icon';
@@ -275,7 +275,7 @@ class Checkbox extends React.Component {
 				<span className="slds-checkbox">
 					{props.required ? (
 						<abbr className="slds-required" title="required">
-							*
+							{'*'}
 						</abbr>
 					) : null}
 					<input
@@ -338,7 +338,7 @@ class Checkbox extends React.Component {
 			<label className="slds-checkbox_toggle slds-grid" htmlFor={this.getId()}>
 				{props.required ? (
 					<abbr className="slds-required" title="required">
-						*
+						{'*'}
 					</abbr>
 				) : null}
 				{labels.label ? (

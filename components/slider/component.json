@@ -1,0 +1,15 @@
+{
+    "component": "slider",
+    "status": "prod",
+    "display-name": "Slider",
+	"classKey": "Slider",
+    "SLDS-component-path": "/components/slider",
+	"site-stories": [
+		"/__examples__/base.jsx",
+		"/__examples__/disabled.jsx",
+		"/__examples__/error.jsx",
+		"/__examples__/sizes.jsx",
+		"/__examples__/vertical.jsx"
+	],
+    "url-slug": "slider"
+}

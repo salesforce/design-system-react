@@ -1,0 +1,26 @@
+{
+	"component": "welcome-mat",
+	"status": "prod",
+	"display-name": "Welcome Mat",
+	"classKey": "WelcomeMat",
+	"SLDS-component-path": "/components/welcome-mat",
+	"dependencies": [
+		{
+			"component": "info-badge",
+			"classKey": "WelcomeMatInfoBadge"
+		},
+		{
+			"component": "tile",
+			"classKey": "WelcomeMatTile"
+		}
+	],
+	"site-stories": [
+		"/__examples__/default.jsx",
+		"/__examples__/steps-complete.jsx",
+		"/__examples__/info-only.jsx",
+		"/__examples__/splash.jsx",
+		"/__examples__/trailhead.jsx",
+		"/__examples__/trailhead-complete.jsx"
+	],
+	"url-slug": "welcome-mat"
+}

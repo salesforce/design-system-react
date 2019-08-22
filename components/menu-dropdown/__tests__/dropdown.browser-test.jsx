@@ -441,7 +441,7 @@ describe('SLDSMenuDropdown', function() {
 		afterEach((done) => {
 			// due to hover-close delay, removal from DOM must be delayed
 			setTimeout(() => {
-				removeDropdownTrigger(btn);
+				removeDropdownTrigger();
 				done();
 			}, 100);
 		});
@@ -509,8 +509,7 @@ describe('SLDSMenuDropdown', function() {
 			React.createElement(Dropdown, assign({}, defaultProps, props));
 		createDropdown.displayName = 'createDropdown';
 
-		const dropItDown = (props, children) =>
-			renderDropdown(createDropdown(props, children));
+		const dropItDown = (props) => renderDropdown(createDropdown(props));
 
 		const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
@@ -524,7 +523,7 @@ describe('SLDSMenuDropdown', function() {
 		});
 
 		afterEach(() => {
-			removeDropdownTrigger(btn);
+			removeDropdownTrigger();
 		});
 
 		it('doesnt expand on hover', () => {

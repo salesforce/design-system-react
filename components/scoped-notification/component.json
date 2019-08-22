@@ -1,0 +1,14 @@
+{
+	"component": "scoped-notification",
+	"status": "prod",
+	"display-name": "Scoped Notifications",
+	"classKey": "ScopedNotification",
+	"SLDS-component-path": "/components/scoped-notification",
+	"site-stories": [
+		"/__examples__/base.jsx",
+		"/__examples__/light.jsx",
+		"/__examples__/dark.jsx",
+		"/__examples__/custom-icon.jsx"
+	],
+	"url-slug": "scoped-notifications"
+}
