@@ -1,0 +1,20 @@
+{
+	"component": "setup-assistant",
+	"status": "prototype",
+	"display-name": "Setup Assistant",
+	"classKey": "SetupAssistant",
+	"SLDS-component-path": "/components/setup-assistant",
+	"dependencies": [
+		{
+			"component": "step",
+			"classKey": "SetupAssistantStep"
+		}
+	],
+	"site-stories": [
+		"/__examples__/base.jsx",
+		"/__examples__/step-progress.jsx",
+		"/__examples__/hub-expandable-steps.jsx",
+		"/__examples__/card.jsx"
+	],
+	"url-slug": "setup-assistant"
+}
