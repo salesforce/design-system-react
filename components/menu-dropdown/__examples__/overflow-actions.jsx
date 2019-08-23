@@ -21,13 +21,13 @@ class Example extends React.Component {
 						iconCategory="utility"
 						iconName="down"
 						iconVariant="border-filled"
+						isAction
 						onSelect={(item) => console.log('selected', item)}
 						options={[
 							{ label: 'A Option', value: 'A0' },
 							{ label: 'B Option', value: 'B0' },
 							{ label: 'C Option', value: 'C0' },
 						]}
-						variant="action"
 					/>
 				</ButtonGroup>
 			</IconSettings>

@@ -488,10 +488,10 @@ storiesOf(MENU_DROPDOWN, module)
 			iconName: 'down',
 			iconVariant: 'border-filled',
 			id: 'checkmark',
+			isAction: true,
 			onSelect: (...rest) => {
 				action('Selected')(...rest);
 			},
 			options: actionOptions,
-			variant: 'action',
 		})
 	);
