@@ -39,7 +39,7 @@
 		"test:image-snapshot": "cross-env NODE_ENV=testwithrequirehook npx jest --runInBand --config=tests/story-based-tests.snapshot-test.config.json",
 		"test:dom-snapshot:update": "cross-env NODE_ENV=test npx jest --updateSnapshot --config=tests/story-based-tests.dom-snapshot-test.config.json",
 		"test:image-snapshot:update": "cross-env NODE_ENV=test npm run static:build && npx jest --updateSnapshot --config=tests/story-based-tests.snapshot-test.config.json",
-		"test:accessibility": "cross-env NODE_ENV=test PORT=8002 npm run static:build && npx jest --runInBand --config=tests/story-based-tests.accessibility-test.config.json",
+		"test:accessibility": "cross-env NODE_ENV=testwithrequirehook PORT=8002 npm run static:build && npx jest --runInBand --config=tests/story-based-tests.accessibility-test.config.json",
 		"test:a11y": "npm run test:accessibility",
 		"travis-ci": "cross-env NODE_ENV=test scripts/travis-ci.sh",
 		"upload-diffs": "scripts/upload-diffs.sh",

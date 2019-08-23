@@ -6,6 +6,7 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
 >
   <div
     className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+    role="listbox"
   >
     <div
       className="slds-col_padded"

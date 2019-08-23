@@ -42,7 +42,11 @@ const getPopoverTooltipAlign = (props) => {
 
 	align.forEach((value) => {
 		children.push(
-			<div key={value} style={{ margin: '100px auto' }}>
+			<div
+				key={value}
+				data-ignore-axe-duplicate-id-aria
+				style={{ margin: '100px auto' }}
+			>
 				<Tooltip {...props} align={value}>
 					{props.trigger}
 				</Tooltip>
