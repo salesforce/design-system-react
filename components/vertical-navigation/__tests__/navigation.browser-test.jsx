@@ -26,11 +26,6 @@ import {
 import { sampleReportCategories } from '../../../utilities/sample-data/vertical-navigation';
 import VerticalNavigation from '../../vertical-navigation';
 
-// shim for PhantomJS
-if (!Object.entries) {
-	entries.shim();
-}
-
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
  */
