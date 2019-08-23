@@ -237,6 +237,10 @@ const propTypes = {
 	 */
 	inverse: PropTypes.bool,
 	/**
+	 * This prop triggers the use of `action` styling for the dropdown.
+	 */
+	isAction: PropTypes.bool,
+	/**
 	 * Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices)
 	 */
 	isOpen: PropTypes.bool,
@@ -371,10 +375,6 @@ const propTypes = {
 		PropTypes.array,
 	]),
 	/**
-	 * Sets the variant to be used for the dropdown.
-	 */
-	variant: PropTypes.oneOf(['base', 'action']),
-	/**
 	 * This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided.
 	 */
 	tooltip: PropTypes.node,
@@ -406,10 +406,10 @@ const propTypes = {
 const defaultProps = {
 	align: 'left',
 	hoverCloseDelay: 300,
+	isAction: false,
 	length: '5',
 	menuPosition: 'absolute',
 	openOn: 'click',
-	variant: 'base',
 	width: 'medium',
 	inverse: false,
 };
@@ -914,7 +914,7 @@ class MenuDropdown extends React.Component {
 		const positions = DropdownToDialogNubbinMapping[align].split(' ');
 		positionClassName = classNames(
 			positions.map((position) => `slds-dropdown_${position}`),
-			{ 'slds-dropdown_actions': this.props.variant === 'action' }
+			{ 'slds-dropdown_actions': this.props.isAction }
 		);
 
 		// FOR BACKWARDS COMPATIBILITY

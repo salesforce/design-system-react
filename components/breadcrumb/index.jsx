@@ -20,7 +20,6 @@ import componentDoc from './component.json';
 
 // ## Constants
 import { BREADCRUMB } from '../../utilities/constants';
-import Dropdown from './../menu-dropdown';
 
 const propTypes = {
 	/**
@@ -56,18 +55,17 @@ const defaultProps = {
 };
 
 const getBreadcrumbDropdown = (overflowDropdownMenu, props) => {
-	const overflowDropdownMenuProps = {
-		...overflowDropdownMenu.props,
+	const dropdown = React.cloneElement(overflowDropdownMenu, {
 		id: `${props.id}-dropdown`,
 		buttonVariant: 'icon',
 		iconCategory: 'utility',
 		iconName: 'threedots',
 		iconSize: 'x-small',
 		iconVariant: 'border-filled',
+		isAction: true,
 		threedots: true,
-		variant: 'action',
-	};
-	return <Dropdown {...overflowDropdownMenuProps} />;
+	});
+	return dropdown;
 };
 
 /**

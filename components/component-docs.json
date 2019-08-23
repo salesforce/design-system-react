@@ -2220,10 +2220,6 @@
                         {
                             "value": "'icon'",
                             "computed": false
-                        },
-                        {
-                            "value": "'icon-filled'",
-                            "computed": false
                         }
                     ]
                 },
@@ -10365,6 +10361,17 @@
                 },
                 "required": false,
                 "description": "Adds inverse class to the dropdown",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "isAction": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "This prop triggers the use of `action` styling for the dropdown.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
