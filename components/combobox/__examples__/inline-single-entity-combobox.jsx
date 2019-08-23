@@ -52,19 +52,25 @@ const accounts = [
 ];
 const entities = [
 	{
+		id: '0',
+		label: 'Suggested for you',
+		type: 'separator',
+	},
+	{
 		id: '1',
-		label: 'entity one',
-		type: 'socialshare',
+		label: 'All',
 	},
 	{
 		id: '2',
-		label: 'entity two',
-		type: 'socialshare',
+		label: 'Accounts',
 	},
 	{
 		id: '3',
-		label: 'entity three',
-		type: 'socialshare',
+		label: 'Analytics',
+	},
+	{
+		id: '4',
+		label: 'Approvals',
 	},
 ];
 
@@ -101,7 +107,7 @@ class Example extends React.Component {
 			inputValue: '',
 			entityInputValue: '',
 			selection: [],
-			entitySelection: [],
+			entitySelection: [entities[1]],
 		};
 	}
 
@@ -157,9 +163,6 @@ class Example extends React.Component {
 					});
 				},
 			}}
-			labels={{
-				placeholder: 'entity',
-			}}
 			options={comboboxFilterAndLimit({
 				inputValue: this.state.entityInputValue,
 				options: entityWithIcon,
@@ -167,7 +170,7 @@ class Example extends React.Component {
 			})}
 			selection={this.state.entitySelection}
 			value={this.state.entityInputValue}
-			variant="inline-listbox"
+			variant="readonly"
 		/>
 	);
 

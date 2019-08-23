@@ -2874,21 +2874,25 @@ exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
                       onClick={[Function]}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
-                      placeholder="entity"
-                      readOnly={false}
+                      placeholder="Select an Option"
+                      readOnly={true}
                       required={false}
                       role="textbox"
                       type="text"
-                      value=""
+                      value="All"
                     />
-                    <svg
-                      aria-hidden={true}
-                      className="slds-input__icon slds-icon-text-default"
+                    <span
+                      className="slds-icon_container slds-input__icon slds-input__icon_right"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
-                      />
-                    </svg>
+                      <svg
+                        aria-hidden={true}
+                        className="slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        />
+                      </svg>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -5205,148 +5209,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
                     >
                       Account • Beloit, WI
-                    </span>
-                  </span>
-                </span>
-              </li>
-              <li
-                className="slds-listbox__item"
-                role="presentation"
-              >
-                <span
-                  aria-selected={false}
-                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
-                  id="combobox-unique-id-listbox-option-6"
-                  onClick={[Function]}
-                  role="option"
-                >
-                  <span
-                    className="slds-media__figure"
-                  >
-                    <span
-                      className="slds-icon_container slds-icon-standard-account"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="slds-icon"
-                      >
-                        <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
-                        />
-                      </svg>
-                      <span
-                        className="slds-assistive-text"
-                      >
-                        Account
-                      </span>
-                    </span>
-                  </span>
-                  <span
-                    className="slds-media__body"
-                  >
-                    <span
-                      className="slds-listbox__option-text slds-listbox__option-text_entity"
-                    >
-                      Nakatomi Investments
-                    </span>
-                    <span
-                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
-                    >
-                      Account • Chicago, IL
-                    </span>
-                  </span>
-                </span>
-              </li>
-              <li
-                className="slds-listbox__item"
-                role="presentation"
-              >
-                <span
-                  aria-selected={false}
-                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
-                  id="combobox-unique-id-listbox-option-7"
-                  onClick={[Function]}
-                  role="option"
-                >
-                  <span
-                    className="slds-media__figure"
-                  >
-                    <span
-                      className="slds-icon_container slds-icon-standard-account"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="slds-icon"
-                      >
-                        <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
-                        />
-                      </svg>
-                      <span
-                        className="slds-assistive-text"
-                      >
-                        Account
-                      </span>
-                    </span>
-                  </span>
-                  <span
-                    className="slds-media__body"
-                  >
-                    <span
-                      className="slds-listbox__option-text slds-listbox__option-text_entity"
-                    >
-                      Acme Landscaping
-                    </span>
-                    <span
-                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
-                    />
-                  </span>
-                </span>
-              </li>
-              <li
-                className="slds-listbox__item"
-                role="presentation"
-              >
-                <span
-                  aria-selected={false}
-                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
-                  id="combobox-unique-id-listbox-option-8"
-                  onClick={[Function]}
-                  role="option"
-                >
-                  <span
-                    className="slds-media__figure"
-                  >
-                    <span
-                      className="slds-icon_container slds-icon-standard-account"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="slds-icon"
-                      >
-                        <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
-                        />
-                      </svg>
-                      <span
-                        className="slds-assistive-text"
-                      >
-                        Account
-                      </span>
-                    </span>
-                  </span>
-                  <span
-                    className="slds-media__body"
-                  >
-                    <span
-                      className="slds-listbox__option-text slds-listbox__option-text_entity"
-                    >
-                      Acme Construction
-                    </span>
-                    <span
-                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
-                    >
-                      Account • Grand Marais, MN
                     </span>
                   </span>
                 </span>
