@@ -1,0 +1,12 @@
+{
+	"component": "map",
+	"status": "prod",
+	"display-name": "Map",
+	"classKey": "Map",
+	"SLDS-component-path": "/components/map",
+	"site-stories": [
+		"/__examples__/multiple-locations.jsx",
+		"/__examples__/single-location.jsx"
+	],
+	"url-slug": "map"
+}

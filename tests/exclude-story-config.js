@@ -55,6 +55,7 @@ const excludeFromTests = {
 			'SLDSGlobalNavigationBar',
 			'SLDSDatePicker',
 			'SLDSIconSettings',
+			'SLDSMap',
 			'SLDSModal',
 			'SLDSPanel',
 			'SLDSTimepicker',
