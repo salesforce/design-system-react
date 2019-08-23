@@ -128,6 +128,7 @@ class Example extends React.Component {
 					<GlobalHeaderSearch
 						combobox={
 							<Combobox
+								assistiveText={{ label: 'Search' }}
 								events={{
 									onSelect: () => {
 										console.log('>>> onSelect');

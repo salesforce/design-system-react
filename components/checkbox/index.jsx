@@ -39,6 +39,10 @@ const propTypes = {
 	 */
 	'aria-describedby': PropTypes.string,
 	/**
+	 * The aria-labelledby attribute establishes relationships between objects and their label(s), and its value should be one or more element IDs, which refer to elements that have the text needed for labeling. List multiple element IDs in a space delimited fashion.
+	 */
+	'aria-labelledby': PropTypes.string,
+	/**
 	 * `aria-owns` indicate that an element depends on the current one when the relation can't be determined by the hierarchy structure.
 	 */
 	'aria-owns': PropTypes.string,
@@ -229,6 +233,7 @@ class Checkbox extends React.Component {
 			<input
 				aria-controls={this.props['aria-controls']}
 				aria-describedby={this.props['aria-describedby']}
+				aria-labelledby={this.props['aria-labelledby']}
 				aria-owns={this.props['aria-owns']}
 				aria-required={this.props['aria-required']}
 				disabled={props.disabled}
@@ -281,6 +286,7 @@ class Checkbox extends React.Component {
 					<input
 						aria-controls={this.props['aria-controls']}
 						aria-describedby={this.props['aria-describedby']}
+						aria-labelledby={this.props['aria-labelledby']}
 						aria-owns={this.props['aria-owns']}
 						aria-required={this.props['aria-required']}
 						disabled={props.disabled}
@@ -307,7 +313,11 @@ class Checkbox extends React.Component {
 						required={props.required}
 						type="checkbox"
 					/>
-					<label className="slds-checkbox__label" htmlFor={this.getId()}>
+					<label
+						className="slds-checkbox__label"
+						htmlFor={this.getId()}
+						id={props.labelId}
+					>
 						<span className="slds-checkbox_faux" />
 						{labels.label ? (
 							<span className="slds-form-element__label">{labels.label}</span>
@@ -352,6 +362,7 @@ class Checkbox extends React.Component {
 				<input
 					aria-controls={this.props['aria-controls']}
 					aria-describedby={`${this.getId()}-desc`}
+					aria-labelledby={this.props['aria-labelledby']}
 					aria-owns={this.props['aria-owns']}
 					aria-required={this.props['aria-required']}
 					disabled={props.disabled}
@@ -401,6 +412,7 @@ class Checkbox extends React.Component {
 			<input
 				aria-controls={this.props['aria-controls']}
 				aria-describedby={this.props['aria-describedby']}
+				aria-labelledby={this.props['aria-labelledby']}
 				aria-owns={this.props['aria-owns']}
 				aria-required={this.props['aria-required']}
 				disabled={props.disabled}

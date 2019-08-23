@@ -32,7 +32,6 @@ storiesOf(TEXTAREA, module)
 	))
 	.add('Required', () => (
 		<Textarea
-			aria-describedby="required-1"
 			id="text-area-required"
 			name="required-textarea"
 			assistiveText={{
