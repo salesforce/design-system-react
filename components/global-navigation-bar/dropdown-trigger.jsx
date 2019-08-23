@@ -18,7 +18,7 @@ import classNames from 'classnames';
 import colors from '../../utilities/design-tokens/dist/salesforce-skin.common.js';
 
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import Button from '../button';
 

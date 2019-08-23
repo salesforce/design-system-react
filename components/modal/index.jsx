@@ -26,7 +26,7 @@ import checkAppElementIsSet from '../../utilities/warning/check-app-element-set'
 import Button from '../button';
 
 import { MODAL } from '../../utilities/constants';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 const documentDefined = typeof document !== 'undefined';
 const windowDefined = typeof window !== 'undefined';

@@ -40,6 +40,9 @@ const propTypes = {
 	description: PropTypes.string,
 };
 
+/**
+ * Visual Picker Link Component
+ */
 class VisualPickerLink extends React.Component {
 	render() {
 		return (
