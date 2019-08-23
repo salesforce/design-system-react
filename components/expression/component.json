@@ -1,8 +1,8 @@
 {
 	"component": "expression",
-	"status": "prod",
+	"status": "prototype",
 	"display-name": "Expression",
-  	"classKey": "Expression",
+	"classKey": "Expression",
 	"SLDS-component-path": "/components/expression",
 	"dependencies": [
 		{
@@ -18,8 +18,6 @@
 			"classKey": "ExpressionGroup"
 		}
 	],
-	"site-stories": [
-	  "/__examples__/resource-selected.jsx"
-	],
+	"site-stories": ["/__examples__/resource-selected.jsx"],
 	"url-slug": "expression"
 }
