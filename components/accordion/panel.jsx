@@ -33,7 +33,7 @@ const propTypes = {
 	/**
 	 * Callback that will run whenever there is a keydown on the panel button. Function doesn't change the state of the component.
 	 */
-	onKeyDown: PropTypes.func,
+	onKeyDownSummary: PropTypes.func,
 	/**
 	 * Callback that will run whenever a panel is toggled. Function should handle state to toggle `expanded` prop. _Tested with Mocha framework._
 	 */
@@ -58,46 +58,46 @@ const AccordionPanel = ({
 	panelContentActions,
 	summary,
 	title,
-	onKeyDown,
+	onKeyDownSummary,
 	onTogglePanel,
 }) => (
-	<li className="slds-accordion__list-item">
-		<section
-			className={classNames('slds-accordion__section', {
-				'slds-is-open': expanded,
-			})}
-		>
-			<div className="slds-accordion__summary">
-				<h3 className="slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate">
-					<Button
-						aria-controls={`${id}-accordion-panel`}
-						aria-expanded={expanded}
-						className="slds-button_reset slds-accordion__summary-action"
-						iconCategory="utility"
-						iconClassName="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
-						iconName="switch"
-						id={`${id}-accordion-button`}
-						onKeyDown={onKeyDown}
-						onClick={onTogglePanel}
-						variant="base"
-					>
-						<span className="slds-truncate" title={title || summary}>
-							{summary}
-						</span>
-					</Button>
-				</h3>
-				{panelContentActions}
-			</div>
-			<div
-				aria-hidden={!expanded}
-				className="slds-accordion__content"
-				id={`${id}-accordion-panel`}
+		<li className="slds-accordion__list-item">
+			<section
+				className={classNames('slds-accordion__section', {
+					'slds-is-open': expanded,
+				})}
 			>
-				{children}
-			</div>
-		</section>
-	</li>
-);
+				<div className="slds-accordion__summary">
+					<h3 className="slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate">
+						<Button
+							aria-controls={`${id}-accordion-panel`}
+							aria-expanded={expanded}
+							className="slds-button_reset slds-accordion__summary-action"
+							iconCategory="utility"
+							iconClassName="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
+							iconName="switch"
+							id={`${id}-accordion-button`}
+							onKeyDown={onKeyDownSummary}
+							onClick={onTogglePanel}
+							variant="base"
+						>
+							<span className="slds-truncate" title={title || summary}>
+								{summary}
+							</span>
+						</Button>
+					</h3>
+					{panelContentActions}
+				</div>
+				<div
+					aria-hidden={!expanded}
+					className="slds-accordion__content"
+					id={`${id}-accordion-panel`}
+				>
+					{children}
+				</div>
+			</section>
+		</li>
+	);
 
 export default AccordionPanel;
 

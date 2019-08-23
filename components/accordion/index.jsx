@@ -61,7 +61,7 @@ class Accordion extends Component {
 		}
 	}
 
-	onKeyDown(e) {
+	onKeyDownSummary(e) {
 		if (e.key === 'ArrowDown') {
 			e.preventDefault();
 			if (this.state.currButtonIndex < this.props.children.length - 1) {
@@ -91,7 +91,7 @@ class Accordion extends Component {
 			>
 				{this.props.children.map((child) =>
 					React.cloneElement(child, {
-						onKeyDown: this.onKeyDown.bind(this),
+						onKeyDownSummary: this.onKeyDownSummary.bind(this),
 					})
 				)}
 			</ul>
