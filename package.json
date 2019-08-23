@@ -77,7 +77,7 @@
 		"@storybook/router": "^5.1.9",
 		"axe-puppeteer": "^1.0.0",
 		"babel-plugin-require-context-hook": "^1.0.0",
-		"classnames": "^2.2.5",
+		"classnames": "^2.2.6",
 		"create-react-class": "^15.6.0",
 		"lodash.assign": "^4.0.9",
 		"lodash.escaperegexp": "^4.1.1",
