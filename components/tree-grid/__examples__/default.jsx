@@ -205,6 +205,18 @@ class Example extends React.Component {
 		this.setState({ nodes: updated });
 	};
 
+	findChildren = (node) => {
+		if (node.type === 'branch') {
+			let list = [];
+			node.nodes.forEach((child) => {
+				const c = this.findChildren(this.state.nodes[child]);
+				list = [...c, child, ...list];
+			});
+			return list;
+		}
+		return [];
+	};
+
 	handleSelection = (event, data) => {
 		log({
 			action: this.props.action,
@@ -212,17 +224,13 @@ class Example extends React.Component {
 			eventName: 'Select Branch',
 			data,
 		});
-		this.setState((prevState) => ({
-			nodes: {
-				...prevState.nodes,
-				...{
-					[data.node.id]: {
-						...data.node,
-						selected: data.selected,
-					},
-				},
-			},
-		}));
+		const curr = this.state.nodes;
+		curr[data.node.id].selected = data.selected;
+		const children = this.findChildren(data.node);
+		children.forEach((child) => {
+			curr[child].selected = data.selected;
+		});
+		this.setState({ nodes: curr });
 	};
 
 	handleSelectAll = (event) => {

@@ -142,17 +142,13 @@ class Example extends React.Component {
 			eventName: 'Select Branch',
 			data,
 		});
-		this.setState((prevState) => ({
-			nodes: {
-				...prevState.nodes,
-				...{
-					[data.node.id]: {
-						...data.node,
-						selected: data.selected,
-					},
-				},
-			},
-		}));
+		const curr = this.state.nodes;
+		curr[data.node.id].selected = data.selected;
+		const children = this.findChildren(data.node);
+		children.forEach((child) => {
+			curr[child].selected = data.selected;
+		});
+		this.setState({ nodes: curr });
 	};
 
 	render() {

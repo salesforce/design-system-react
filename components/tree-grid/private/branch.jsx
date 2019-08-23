@@ -31,6 +31,7 @@ const Branch = (props) => {
 				child = (
 					<Item
 						key={shortid.generate()}
+						id={shortid.generate()}
 						level={level + 1}
 						row={n}
 						parent={node}
@@ -51,6 +52,7 @@ const Branch = (props) => {
 			{props.level !== 0 ? (
 				<Item
 					key={shortid.generate()}
+					id={shortid.generate()}
 					level={props.level}
 					row={node}
 					columns={props.columns}

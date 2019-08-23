@@ -4,13 +4,11 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 
 import { TREE_GRID_ITEM } from '../../../utilities/constants';
-import Button from '../../button';
 import Checkbox from '../../checkbox';
 import TreeGridCell from './cell';
 
 class Item extends React.Component {
 	handleExpansion = (event) => {
-		console.log('expand', this.props.row);
 		const obj = {
 			node: this.props.row,
 			expanded: !this.props.row.expanded,
@@ -19,7 +17,6 @@ class Item extends React.Component {
 	};
 
 	handleSelection = (event) => {
-		console.log('select', this.props.row);
 		const obj = {
 			node: this.props.row,
 			selected: !this.props.row.selected,
