@@ -1,7 +1,0 @@
-{
-    "component": "button-stateful",
-    "status": "prod",
-    "display-name": "Stateful Buttons",
-    "SLDS-component-path": "/components/button/#flavor-stateful",
-    "url-slug": "stateful-buttons"
-}

@@ -802,7 +802,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
                         />
                       </svg>
-                      
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Info
+                      </span>
                     </span>
                   </div>
                   <div
@@ -2164,7 +2168,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                             xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
                           />
                         </svg>
-                        
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Info
+                        </span>
                       </span>
                     </div>
                     <div
