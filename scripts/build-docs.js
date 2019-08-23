@@ -51,7 +51,7 @@ components.map((node) => {
 	console.log(`[ ${inputPath.replace(dirName, '.')} ] `);
 
 	const src = fs.readFileSync(inputPath, 'utf8');
-	const doc = parse(src);
+	const doc = parse(src, undefined, undefined, { filename: inputPath });
 	const ast = bParse(src, {
 		// parse in strict mode and allow module declarations
 		sourceType: 'module',
@@ -90,7 +90,7 @@ components.map((node) => {
 
 			let depDoc = {};
 			try {
-				depDoc = parse(depSrc);
+				depDoc = parse(depSrc, undefined, undefined, { filename: inputPath });
 				depDoc.name = dependency.component;
 				depDoc.source = depInputPathToUse.replace(`${dirName}`, '');
 				toReturn[dependency.component] = depDoc;
@@ -150,6 +150,9 @@ fs.writeFile(outputPath, JSON.stringify(output, null, 4), (err) => {
 // const outputAstPath = path.join(__dirname, '../examples/components-ast.json');
 // fs.writeFile(outputAstPath, JSON.stringify(outputAst, null, 4), (err) => {
 // 	if (err) {
-// 		console.log('  [ ERROR AT ./scripts/build-docs.js:145 ] err: ', util.inspect(err, { showHidden: true, depth: null, colors: true }));
+// 		console.log(
+// 			'  [ ERROR AT ./scripts/build-docs.js:145 ] err: ',
+// 			util.inspect(err, { showHidden: true, depth: null, colors: true })
+// 		);
 // 	}
 // });

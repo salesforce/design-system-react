@@ -45,7 +45,7 @@ storiesOf(TREE, module)
 			assistiveText={{ label: 'Miscellaneous Foods' }}
 		/>
 	))
-	.add('Overflow Hidden', () => (
+	.add('Overflow Hidden NoTest', () => (
 		<DefaultExample
 			action={action}
 			listStyle={{

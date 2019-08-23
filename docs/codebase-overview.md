@@ -43,6 +43,7 @@ If you want to [contribute](/CONTRIBUTING.md), we hope that this overview will h
   * [Limit component state](#limit-component-state)
   * [Use controlled components](#use-controlled-components)
   * [React component can differ from DOM hierarchy](#react-component-can-differ-from-dom-hierarchy)
+  * [Group form elements in the same component](#group-form-elements-in-the-same-component)
   * [Use loose coupling and weak connascence](#use-loose-coupling-and-weak-connascence)
   * [Use a single return](#use-a-single-return)
   * [Define defaults in one location](#define-defaults-in-one-location)
@@ -372,6 +373,10 @@ _from [Controlled Components](https://facebook.github.io/react/docs/forms.html#c
 #### React component can differ from DOM hierarchy
 
 React component hierarchy doesn't always mean HTML tag hierarchy. Sometimes children become the wrapping component.
+
+#### Group form elements in the same component
+
+Unless only style changes are needed, variants of form elements types such as checkboxes, radios, and inputs should be grouped in the same component. The underlying structure of a radio or checkbox do not change. All input `type=checkbox` nodes should be in the Checkbox component as a variant. This should be done, so that implementations of the same form elements that have different visual design can more easily be debugged. Bugs in one visual design of a form element are often found in another visual design.
 
 #### Use loose coupling and weak connascence
 

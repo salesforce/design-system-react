@@ -26,7 +26,7 @@ import Input from '../input';
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
