@@ -46,6 +46,7 @@ const propTypes = {
 		nextMonth: PropTypes.string,
 		openCalendar: PropTypes.string,
 		previousMonth: PropTypes.string,
+		year: PropTypes.string,
 	}),
 	/**
 	 * Aligns the right or left side of the menu with the respective side of the trigger. _Tested with snapshot testing._
@@ -194,6 +195,7 @@ const defaultProps = {
 		nextMonth: 'Next month',
 		openCalendar: 'Open Calendar',
 		previousMonth: 'Previous month',
+		year: 'Year',
 	},
 	formatter(date) {
 		return date
@@ -308,6 +310,7 @@ class Datepicker extends React.Component {
 				assistiveTextPreviousMonth={
 					this.props.assistiveTextPreviousMonth || assistiveText.previousMonth // eslint-disable-line react/prop-types
 				}
+				assistiveTextYear={assistiveText.year}
 				id={this.getId()}
 				isIsoWeekday={this.props.isIsoWeekday}
 				monthLabels={

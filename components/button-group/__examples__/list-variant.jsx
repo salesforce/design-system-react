@@ -12,10 +12,34 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<ButtonGroup variant="list">
-					<Button id="refresh-button" label="Refresh" />
-					<Button label="Edit" id="edit-button" />
+					<Button id="refresh-button-1" label="Refresh" />
+					<Button label="Edit" id="edit-button-1" />
 					<Dropdown
-						id="options"
+						id="options-1"
+						assistiveText={{ icon: 'More Options' }}
+						buttonVariant="icon"
+						iconCategory="utility"
+						iconName="down"
+						iconVariant="border-filled"
+						onSelect={(item) => console.log('selected', item)}
+						options={[
+							{ label: 'A Option', value: 'A0' },
+							{ label: 'B Option', value: 'B0' },
+							{ label: 'C Option', value: 'C0' },
+						]}
+					/>
+				</ButtonGroup>
+				<br />
+				<br />
+				<ButtonGroup
+					classNameContainer="custom-container-class"
+					labels={{ label: 'Actions' }}
+					variant="list"
+				>
+					<Button id="refresh-button-2" label="Refresh" />
+					<Button label="Edit" id="edit-button-2" />
+					<Dropdown
+						id="options-2"
 						assistiveText={{ icon: 'More Options' }}
 						buttonVariant="icon"
 						iconCategory="utility"

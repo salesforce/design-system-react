@@ -65,7 +65,8 @@ const getBreadcrumbDropdown = (overflowDropdownMenu, props) => {
 		isAction: true,
 		threedots: true,
 	});
-	return dropdown;
+
+	return <li className="slds-breadcrumb__item">{dropdown}</li>;
 };
 
 /**

@@ -12,6 +12,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
 >
   <div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -61,6 +62,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -110,6 +112,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -159,6 +162,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -208,6 +212,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -257,6 +262,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -306,6 +312,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -355,6 +362,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -404,6 +412,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -453,6 +462,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -502,6 +512,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -551,6 +562,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -615,6 +627,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
 >
   <div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -670,6 +683,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -725,6 +739,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -780,6 +795,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -835,6 +851,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -890,6 +907,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -945,6 +963,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1000,6 +1019,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1055,6 +1075,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1110,6 +1131,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1165,6 +1187,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1220,6 +1243,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1290,6 +1314,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
 >
   <div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1336,6 +1361,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1382,6 +1408,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1428,6 +1455,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1474,6 +1502,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1520,6 +1549,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1566,6 +1596,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1612,6 +1643,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1658,6 +1690,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1704,6 +1737,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1750,6 +1784,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1796,6 +1831,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
