@@ -1617,6 +1617,13 @@
                     "computed": false
                 }
             },
+            "icon": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Icon associated with the stateful button. Accepts an Icon component"
+            },
             "iconName": {
                 "type": {
                     "name": "string"
