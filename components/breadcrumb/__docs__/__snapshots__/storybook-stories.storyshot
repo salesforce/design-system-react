@@ -86,7 +86,7 @@ exports[`DOM snapshots SLDSBreadcrumb Base with overflow menu 1`] = `
           <button
             aria-expanded={false}
             aria-haspopup={true}
-            className="slds-button slds-button_neutral slds-button_icon-bare ignore-click-ADFA34_-dropdown"
+            className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-ADFA34_-dropdown"
             disabled={false}
             onClick={[Function]}
             tabIndex="0"
