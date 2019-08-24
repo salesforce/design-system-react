@@ -2846,6 +2846,12 @@ exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
           <div
             className="slds-form-element"
           >
+            <label
+              className="slds-form-element__label slds-assistive-text"
+              htmlFor="combobox-new-unique-id"
+            >
+              Filter Search by:
+            </label>
             <div
               className="slds-form-element__control"
             >
@@ -5544,6 +5550,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Entity Selection 1`] 
           <div
             className="slds-form-element"
           >
+            <label
+              className="slds-form-element__label slds-assistive-text"
+              htmlFor="combobox-new-unique-id"
+            >
+              Filter Search by:
+            </label>
             <div
               className="slds-form-element__control"
             >
