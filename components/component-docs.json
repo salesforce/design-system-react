@@ -3843,6 +3843,18 @@
                 "returns": null
             },
             {
+                "name": "getOptions",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "props",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "getTargetElement",
                 "docblock": null,
                 "modifiers": [],
@@ -4751,6 +4763,107 @@
                 "required": false,
                 "description": "Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._"
             },
+            "defaultValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Default value of input. Provide uncontroled behaviour"
+            },
+            "loading": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Add loading spiner below the options"
+            },
+            "optionsAddItem": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "id": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "icon": {
+                                "name": "node",
+                                "required": false
+                            },
+                            "label": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "string"
+                                    },
+                                    {
+                                        "name": "func"
+                                    }
+                                ],
+                                "required": false
+                            },
+                            "onClick": {
+                                "name": "func",
+                                "required": false
+                            }
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Array of item objects in the dropdown menu that is displayed below the list of `options`.**\nEach object can contain:\n* `id`: A unique identifier string.\n* `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.\n* `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.\n* `onClick`: Callback triggered when selecting menu item.\n```\n{\n\tid: '1',\n\ticon: (\n \t<Icon\n\t\t\tassistiveText={{ label: 'add' }}\n\t\t\tcategory=\"utility\"\n\t\t\tsize=\"x-small\"\n\t\t\tname=\"add\"\n\t\t/>\n\t),\n\tlabel: 'New Entity'\n\tonClick: (event) => console.log('onClick', event),\n}\n```\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "optionsSearchEntity": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "id": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "icon": {
+                                "name": "node",
+                                "required": false
+                            },
+                            "label": {
+                                "name": "union",
+                                "value": [
+                                    {
+                                        "name": "string"
+                                    },
+                                    {
+                                        "name": "func"
+                                    }
+                                ],
+                                "required": false
+                            },
+                            "onClick": {
+                                "name": "func",
+                                "required": false
+                            }
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Array of item objects in the dropdown menu that is displayed above the list of `options`.**\nEach object can contain:\n* `id`: A unique identifier string.\n* `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.\n* `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.\n* `onClick`: Callback triggered when selecting menu item.\n```\n{\nid: '1',\nicon: (\n\t<Icon\n\t\tassistiveText={{ label: 'Add in Accounts' }}\n\t\tsize=\"x-small\"\n\t\tcategory=\"utility\"\n\t\tname=\"search\"\n\t/>\n),\nlabel: (searchTerm) => {\n\treturn `${searchTerm} in Accounts`;\n},\nonClick: (event) => console.log('onClick', event),\n}\n```\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "entityCombobox": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Node of type [Combobox](/components/comboboxes/) for creating grouped comboboxes."
+            },
             "variant": {
                 "type": {
                     "name": "enum",
@@ -4774,7 +4887,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Changes styles of the input and menu. Currently `entity` is not supported.\nThe options are:\n* `base`: An autocomplete Combobox also allows a user to select an option from a list, but that list can be affected by what the user types into the input of the Combobox. The SLDS website used to call the autocomplete Combobox its `base` variant.\n* `inline-listbox`: An Entity Autocomplete Combobox or Lookup, is used to search for and select Salesforce Entities.\n* `popover`: A dialog Combobox is best used when a listbox, tree, grid, or tree-grid is not the best solution. This variant allows custom content.\n* `readonly`: A readonly text input that allows a user to select an option from a pre-defined list of options. It does not allow free form user input, nor does it allow the user to modify the selected value.\n\n _Tested with snapshot testing._",
+                "description": "",
                 "defaultValue": {
                     "value": "'base'",
                     "computed": false
