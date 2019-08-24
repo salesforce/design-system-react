@@ -43,17 +43,9 @@ const propTypes = {
 	 */
 	disabled: PropTypes.bool,
 	/**
-	 * Icon associated with the stateful button. Accepts an Icon component
+	 * Icon associated with the stateful button. Accepts an `Icon` component
 	 */
 	icon: PropTypes.node,
-	/**
-	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
-	 */
-	iconName: PropTypes.string,
-	/**
-	 * Determines the size of the icon.
-	 */
-	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 	/**
 	 * Triggered when focus is removed.
 	 */
