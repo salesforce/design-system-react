@@ -107,6 +107,7 @@ class Example extends React.Component {
 
 	entityCombobox = () => (
 		<Combobox
+			assistiveText={{ label: 'Filter Search by:' }}
 			id="combobox-new-unique-id"
 			events={{
 				onChange: (event, { value }) => {
