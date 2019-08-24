@@ -1479,6 +1479,24 @@
                 "required": false,
                 "description": "CSS classes added to `slds-button-group` or `slds-checkbox_button-group` tag"
             },
+            "classNameContainer": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "If the `labels.label` prop is set, a `.slds-form-element` classed fieldset element is added as a container. This prop applies classes to that element"
+            },
             "labels": {
                 "type": {
                     "name": "shape",
