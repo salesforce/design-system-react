@@ -11,8 +11,6 @@ import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 
-import entries from 'object.entries';
-
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
  * context [full source here](tests/enzyme-helpers.js). `this` can
