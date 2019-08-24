@@ -130,7 +130,9 @@ class Trigger extends React.Component {
 			triggerClassName,
 			...deprecatedPropsFromMenuDropdown
 		} = this.props;
-		let { openOn } = this.props;
+
+		const openOn = this.props.openOn === 'hover' ? 'click' : this.props.openOn;
+
 		// Trigger manipulation
 		let propsFromGrandchildButton = {};
 		// if there are no children, render the default button
@@ -141,7 +143,7 @@ class Trigger extends React.Component {
 				}
 			});
 		}
-		openOn = openOn === 'hover' ? 'click' : openOn;
+
 		// If Trigger has a Button child, then use the explicitly declared child's props layered on top of those passed down by dropdown's props to allow manual override
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
