@@ -496,6 +496,9 @@
 				"/__examples__/dialog.jsx",
 				"/__examples__/inline-multiple.jsx",
 				"/__examples__/inline-single.jsx",
+				"/__examples__/inline-single-entity-combobox.jsx",
+				"/__examples__/inline-single-search-add-entities.jsx",
+				"/__examples__/inline-multiple-loading.jsx",
 				"/__examples__/readonly-single.jsx",
 				"/__examples__/readonly-multiple.jsx",
 				"/__examples__/required-input-error-state.jsx",
@@ -592,7 +595,7 @@
 		},
 		{
 			"component": "expression",
-			"status": "prod",
+			"status": "prototype",
 			"display-name": "Expression",
 			"classKey": "Expression",
 			"SLDS-component-path": "/components/expression",
