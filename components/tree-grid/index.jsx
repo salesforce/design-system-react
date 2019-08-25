@@ -116,8 +116,11 @@ class TreeGrid extends React.Component {
 			expanded: true,
 		}).slice(1);
 
+		let focusedNodeIndex;
+
 		this.state = {
 			flattenedNodes,
+			focusedNodeIndex,
 		};
 
 		this.generatedId = shortid.generate();
@@ -161,6 +164,20 @@ class TreeGrid extends React.Component {
 		return nodes;
 	};
 
+	handleFocus = (event, data) => {
+		this.setState({
+			focusedNodeIndex: data.treeIndex,
+		});
+	};
+
+	handleSelection = (event, data) => {
+		this.props.onSelect(event, data);
+	};
+
+	handleExpansion = (event, data) => {
+		this.props.onExpand(event, data);
+	};
+
 	render() {
 		const assistiveText = assign(
 			{},
@@ -187,7 +204,9 @@ class TreeGrid extends React.Component {
 		return (
 			<table
 				id={this.getId()}
+				aria-readonly="true"
 				aria-multiselectable={this.props.selectRows === 'multiple'}
+				role="treegrid"
 				className={classNames(
 					'slds-table',
 					'slds-table_edit',
@@ -197,7 +216,6 @@ class TreeGrid extends React.Component {
 					{ 'slds-table_header-hidden': this.props.isHeadless },
 					this.props.className
 				)}
-				role="treegrid"
 			>
 				{this.props.isHeadless ? null : (
 					<thead>
@@ -214,7 +232,10 @@ class TreeGrid extends React.Component {
 									>
 										{assistiveText.selectRow}
 									</span>
-									<div className="slds-th__action slds-th__action_form">
+									<div
+										className="slds-th__action slds-th__action_form"
+										tabIndex="-1"
+									>
 										<Checkbox
 											assistiveText={{
 												label: assistiveText.selectAll,
@@ -246,12 +267,15 @@ class TreeGrid extends React.Component {
 					{
 						<Branch
 							level={0}
+							treeId={this.getId()}
 							getNodes={this.props.getNodes}
 							node={{ nodes: this.props.nodes }}
 							flattenedNodes={this.state.flattenedNodes}
+							focusedNodeIndex={this.state.focusedNodeIndex}
 							columns={columns}
-							onSelect={this.props.onSelect}
-							onExpand={this.props.onExpand}
+							onSelect={this.handleSelection}
+							onExpand={this.handleExpansion}
+							onFocus={this.handleFocus}
 							selectRows={this.props.selectRows}
 							moreActionsDropdown={this.props.moreActionsDropdown}
 						/>

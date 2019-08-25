@@ -236,7 +236,7 @@ class Example extends React.Component {
 	handleSelectAll = (event) => {
 		const selected = this.state.nodes;
 		const curr = this.state.allSelect;
-		for (let [key, value] of Object.entries(selected)) {
+		for (const [key, value] of Object.entries(selected)) {
 			if (key) {
 				value = { ...value, selected: !curr };
 				selected[key] = value;

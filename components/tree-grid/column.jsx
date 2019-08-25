@@ -57,6 +57,7 @@ const TreeGridColumn = (props) => {
 			</a>
 			{React.cloneElement(props.moreActionsDropdown, {
 				triggerClassName: 'slds-th__action-button',
+				tabIndex: '-1',
 			})}
 		</th>
 	);
