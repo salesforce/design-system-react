@@ -1,6 +1,7 @@
 import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
+import ButtonIcon from '~/components/icon/button-icon';
 import ButtonStateful from '~/components/button-stateful'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
@@ -10,7 +11,7 @@ class Example extends React.Component {
 		isActive: false,
 	};
 
-	handleOnclick = () => {
+	handleOnClick = () => {
 		this.setState({
 			isActive: !this.state.isActive,
 		});
@@ -21,8 +22,8 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<ButtonStateful
 					assistiveText={{ icon: this.state.isActive ? 'liked' : 'not liked' }}
-					iconName="like"
-					iconSize="large"
+					icon={<ButtonIcon name="like" />}
+					onClick={this.handleOnClick}
 					variant="icon-filled"
 				/>
 			</IconSettings>

@@ -35,6 +35,12 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               className="slds-th__action slds-th__action_form"
               style={null}
             >
+              <span
+                className="slds-assistive-text"
+                id="DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
+              >
+                all rows
+              </span>
               <div
                 className="slds-form-element"
               >
@@ -46,14 +52,14 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                   >
                     <input
                       checked={false}
-                      id="DataTableExample-2-SLDSDataTableHead-SelectAll"
+                      id="DataTableExample-2-SLDSDataTableHead-SelectAll-fixed-header"
                       name="SelectAll"
                       onChange={[Function]}
                       type="checkbox"
                     />
                     <label
                       className="slds-checkbox__label"
-                      htmlFor="DataTableExample-2-SLDSDataTableHead-SelectAll"
+                      htmlFor="DataTableExample-2-SLDSDataTableHead-SelectAll-fixed-header"
                     >
                       <span
                         className="slds-checkbox_faux"
@@ -351,6 +357,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                   className="slds-checkbox"
                 >
                   <input
+                    aria-labelledby="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
                     checked={false}
                     id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow"
                     name="SelectRow"
@@ -360,6 +367,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                   <label
                     className="slds-checkbox__label"
                     htmlFor="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                    id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow-label"
                   >
                     <span
                       className="slds-checkbox_faux"
@@ -367,7 +375,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      select this row
+                      Select this row 1
                     </span>
                   </label>
                 </span>
@@ -544,6 +552,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                   className="slds-checkbox"
                 >
                   <input
+                    aria-labelledby="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
                     checked={false}
                     id="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
                     name="SelectRow"
@@ -553,6 +562,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                   <label
                     className="slds-checkbox__label"
                     htmlFor="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                    id="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label"
                   >
                     <span
                       className="slds-checkbox_faux"
@@ -560,7 +570,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      select this row
+                      Select this row 2
                     </span>
                   </label>
                 </span>
@@ -737,6 +747,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                   className="slds-checkbox"
                 >
                   <input
+                    aria-labelledby="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
                     checked={true}
                     id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow"
                     name="SelectRow"
@@ -746,6 +757,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                   <label
                     className="slds-checkbox__label"
                     htmlFor="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow"
+                    id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow-label"
                   >
                     <span
                       className="slds-checkbox_faux"
@@ -753,7 +765,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      select this row
+                      Select this row 3
                     </span>
                   </label>
                 </span>
@@ -942,7 +954,15 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 "width": "3.25rem",
               }
             }
-          />
+          >
+            <div
+              className="slds-truncate slds-assistive-text"
+              id="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+              title="Choose a row to select"
+            >
+              Choose a row to select
+            </div>
+          </th>
           <th
             aria-label="Name"
             aria-sort="ascending"
@@ -1196,6 +1216,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               className="slds-radio slds-m-right_x-small"
             >
               <input
+                aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
                 checked={false}
                 id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
                 name="DataTableExample-SingleRequiredSelect-SelectRow"
@@ -1207,6 +1228,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               <label
                 className="slds-radio__label"
                 htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label"
               >
                 <span
                   className="slds-radio_faux"
@@ -1214,6 +1236,11 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 <span
                   className="slds-form-element__label"
                 />
+                <span
+                  className="slds-assistive-text"
+                >
+                  Select this row 1
+                </span>
               </label>
             </span>
           </td>
@@ -1381,6 +1408,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               className="slds-radio slds-m-right_x-small"
             >
               <input
+                aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
                 checked={false}
                 id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
                 name="DataTableExample-SingleRequiredSelect-SelectRow"
@@ -1392,6 +1420,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               <label
                 className="slds-radio__label"
                 htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label"
               >
                 <span
                   className="slds-radio_faux"
@@ -1399,6 +1428,11 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 <span
                   className="slds-form-element__label"
                 />
+                <span
+                  className="slds-assistive-text"
+                >
+                  Select this row 2
+                </span>
               </label>
             </span>
           </td>
@@ -1566,6 +1600,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               className="slds-radio slds-m-right_x-small"
             >
               <input
+                aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
                 checked={false}
                 id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
                 name="DataTableExample-SingleRequiredSelect-SelectRow"
@@ -1577,6 +1612,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               <label
                 className="slds-radio__label"
                 htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
+                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label"
               >
                 <span
                   className="slds-radio_faux"
@@ -1584,6 +1620,11 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 <span
                   className="slds-form-element__label"
                 />
+                <span
+                  className="slds-assistive-text"
+                >
+                  Select this row 3
+                </span>
               </label>
             </span>
           </td>
@@ -1769,7 +1810,15 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                 "width": "3.25rem",
               }
             }
-          />
+          >
+            <div
+              className="slds-truncate slds-assistive-text"
+              id="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+              title="Choose a row to select"
+            >
+              Choose a row to select
+            </div>
+          </th>
           <th
             aria-label="Name"
             aria-sort="ascending"
@@ -2023,6 +2072,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               className="slds-radio slds-m-right_x-small"
             >
               <input
+                aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
                 checked={false}
                 id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
                 name="DataTableExample-SingleRequiredSelect-SelectRow"
@@ -2034,6 +2084,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               <label
                 className="slds-radio__label"
                 htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label"
               >
                 <span
                   className="slds-radio_faux"
@@ -2041,6 +2092,11 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                 <span
                   className="slds-form-element__label"
                 />
+                <span
+                  className="slds-assistive-text"
+                >
+                  Select this row 1
+                </span>
               </label>
             </span>
           </td>
@@ -2208,6 +2264,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               className="slds-radio slds-m-right_x-small"
             >
               <input
+                aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
                 checked={false}
                 id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
                 name="DataTableExample-SingleRequiredSelect-SelectRow"
@@ -2219,6 +2276,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               <label
                 className="slds-radio__label"
                 htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label"
               >
                 <span
                   className="slds-radio_faux"
@@ -2226,6 +2284,11 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                 <span
                   className="slds-form-element__label"
                 />
+                <span
+                  className="slds-assistive-text"
+                >
+                  Select this row 2
+                </span>
               </label>
             </span>
           </td>
@@ -2393,6 +2456,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               className="slds-radio slds-m-right_x-small"
             >
               <input
+                aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
                 checked={false}
                 id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
                 name="DataTableExample-SingleRequiredSelect-SelectRow"
@@ -2404,6 +2468,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               <label
                 className="slds-radio__label"
                 htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
+                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label"
               >
                 <span
                   className="slds-radio_faux"
@@ -2411,6 +2476,11 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                 <span
                   className="slds-form-element__label"
                 />
+                <span
+                  className="slds-assistive-text"
+                >
+                  Select this row 3
+                </span>
               </label>
             </span>
           </td>
@@ -4913,6 +4983,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 }
               >
                 <div
+                  aria-hidden={true}
                   className="slds-th__action slds-th__action_form"
                   style={
                     Object {
@@ -4936,14 +5007,14 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       >
                         <input
                           checked={false}
-                          id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
-                          name="SelectAll"
+                          id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixed-header"
+                          name={false}
                           onChange={[Function]}
                           type="checkbox"
                         />
                         <label
                           className="slds-checkbox__label"
-                          htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
+                          htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixed-header"
                         >
                           <span
                             className="slds-checkbox_faux"
@@ -4979,6 +5050,12 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       }
                     }
                   >
+                    <span
+                      className="slds-assistive-text"
+                      id="DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                    >
+                      all rows
+                    </span>
                     <div
                       className="slds-form-element"
                     >
@@ -4990,14 +5067,14 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         >
                           <input
                             checked={false}
-                            id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixedHeader"
+                            id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
                             name="SelectAll"
                             onChange={[Function]}
                             type="checkbox"
                           />
                           <label
                             className="slds-checkbox__label"
-                            htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixedHeader"
+                            htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
                           >
                             <span
                               className="slds-checkbox_faux"
@@ -5646,6 +5723,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
                         name="SelectRow"
@@ -5655,6 +5733,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -5662,7 +5741,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 1
                         </span>
                       </label>
                     </span>
@@ -5831,6 +5910,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
                         name="SelectRow"
@@ -5840,6 +5920,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -5847,7 +5928,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 2
                         </span>
                       </label>
                     </span>
@@ -6016,6 +6097,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
                         name="SelectRow"
@@ -6025,6 +6107,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -6032,7 +6115,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 3
                         </span>
                       </label>
                     </span>
@@ -6201,6 +6284,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
                         name="SelectRow"
@@ -6210,6 +6294,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -6217,7 +6302,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 4
                         </span>
                       </label>
                     </span>
@@ -6386,6 +6471,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
                         name="SelectRow"
@@ -6395,6 +6481,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -6402,7 +6489,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 5
                         </span>
                       </label>
                     </span>
@@ -6571,6 +6658,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
                         name="SelectRow"
@@ -6580,6 +6668,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -6587,7 +6676,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 6
                         </span>
                       </label>
                     </span>
@@ -6756,6 +6845,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
                         name="SelectRow"
@@ -6765,6 +6855,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -6772,7 +6863,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 7
                         </span>
                       </label>
                     </span>
@@ -6941,6 +7032,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
                         name="SelectRow"
@@ -6950,6 +7042,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -6957,7 +7050,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 8
                         </span>
                       </label>
                     </span>
@@ -7126,6 +7219,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
                         name="SelectRow"
@@ -7135,6 +7229,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -7142,7 +7237,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 9
                         </span>
                       </label>
                     </span>
@@ -7311,6 +7406,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
                         name="SelectRow"
@@ -7320,6 +7416,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -7327,7 +7424,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 10
                         </span>
                       </label>
                     </span>
@@ -7496,6 +7593,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
                         name="SelectRow"
@@ -7505,6 +7603,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -7512,7 +7611,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 11
                         </span>
                       </label>
                     </span>
@@ -7681,6 +7780,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
                         name="SelectRow"
@@ -7690,6 +7790,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -7697,7 +7798,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 12
                         </span>
                       </label>
                     </span>
@@ -7909,6 +8010,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 }
               >
                 <div
+                  aria-hidden={true}
                   className="slds-th__action slds-th__action_form"
                   style={
                     Object {
@@ -7932,14 +8034,14 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       >
                         <input
                           checked={false}
-                          id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
-                          name="SelectAll"
+                          id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixed-header"
+                          name={false}
                           onChange={[Function]}
                           type="checkbox"
                         />
                         <label
                           className="slds-checkbox__label"
-                          htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
+                          htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixed-header"
                         >
                           <span
                             className="slds-checkbox_faux"
@@ -7975,6 +8077,12 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       }
                     }
                   >
+                    <span
+                      className="slds-assistive-text"
+                      id="DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                    >
+                      all rows
+                    </span>
                     <div
                       className="slds-form-element"
                     >
@@ -7986,14 +8094,14 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         >
                           <input
                             checked={false}
-                            id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixedHeader"
+                            id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
                             name="SelectAll"
                             onChange={[Function]}
                             type="checkbox"
                           />
                           <label
                             className="slds-checkbox__label"
-                            htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixedHeader"
+                            htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
                           >
                             <span
                               className="slds-checkbox_faux"
@@ -8642,6 +8750,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
                         name="SelectRow"
@@ -8651,6 +8760,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -8658,7 +8768,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 1
                         </span>
                       </label>
                     </span>
@@ -8827,6 +8937,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
                         name="SelectRow"
@@ -8836,6 +8947,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -8843,7 +8955,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 2
                         </span>
                       </label>
                     </span>
@@ -9012,6 +9124,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
                         name="SelectRow"
@@ -9021,6 +9134,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -9028,7 +9142,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 3
                         </span>
                       </label>
                     </span>
@@ -9197,6 +9311,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
                         name="SelectRow"
@@ -9206,6 +9321,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -9213,7 +9329,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 4
                         </span>
                       </label>
                     </span>
@@ -9382,6 +9498,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
                         name="SelectRow"
@@ -9391,6 +9508,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -9398,7 +9516,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 5
                         </span>
                       </label>
                     </span>
@@ -9567,6 +9685,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
                         name="SelectRow"
@@ -9576,6 +9695,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -9583,7 +9703,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 6
                         </span>
                       </label>
                     </span>
@@ -9752,6 +9872,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
                         name="SelectRow"
@@ -9761,6 +9882,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -9768,7 +9890,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 7
                         </span>
                       </label>
                     </span>
@@ -9937,6 +10059,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
                         name="SelectRow"
@@ -9946,6 +10069,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -9953,7 +10077,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 8
                         </span>
                       </label>
                     </span>
@@ -10122,6 +10246,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
                         name="SelectRow"
@@ -10131,6 +10256,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -10138,7 +10264,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 9
                         </span>
                       </label>
                     </span>
@@ -10307,6 +10433,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
                         name="SelectRow"
@@ -10316,6 +10443,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -10323,7 +10451,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 10
                         </span>
                       </label>
                     </span>
@@ -10492,6 +10620,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
                         name="SelectRow"
@@ -10501,6 +10630,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -10508,7 +10638,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 11
                         </span>
                       </label>
                     </span>
@@ -10677,6 +10807,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
                         name="SelectRow"
@@ -10686,6 +10817,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -10693,7 +10825,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 12
                         </span>
                       </label>
                     </span>
@@ -11271,6 +11403,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 }
               >
                 <div
+                  aria-hidden={true}
                   className="slds-th__action slds-th__action_form"
                   style={
                     Object {
@@ -11294,14 +11427,14 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       >
                         <input
                           checked={false}
-                          id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
-                          name="SelectAll"
+                          id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixed-header"
+                          name={false}
                           onChange={[Function]}
                           type="checkbox"
                         />
                         <label
                           className="slds-checkbox__label"
-                          htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
+                          htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixed-header"
                         >
                           <span
                             className="slds-checkbox_faux"
@@ -11337,6 +11470,12 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       }
                     }
                   >
+                    <span
+                      className="slds-assistive-text"
+                      id="DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                    >
+                      all rows
+                    </span>
                     <div
                       className="slds-form-element"
                     >
@@ -11348,14 +11487,14 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         >
                           <input
                             checked={false}
-                            id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixedHeader"
+                            id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
                             name="SelectAll"
                             onChange={[Function]}
                             type="checkbox"
                           />
                           <label
                             className="slds-checkbox__label"
-                            htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixedHeader"
+                            htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
                           >
                             <span
                               className="slds-checkbox_faux"
@@ -12004,6 +12143,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
                         name="SelectRow"
@@ -12013,6 +12153,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -12020,7 +12161,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 1
                         </span>
                       </label>
                     </span>
@@ -12189,6 +12330,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
                         name="SelectRow"
@@ -12198,6 +12340,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -12205,7 +12348,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 2
                         </span>
                       </label>
                     </span>
@@ -12374,6 +12517,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
                         name="SelectRow"
@@ -12383,6 +12527,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -12390,7 +12535,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 3
                         </span>
                       </label>
                     </span>
@@ -12559,6 +12704,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
                         name="SelectRow"
@@ -12568,6 +12714,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -12575,7 +12722,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 4
                         </span>
                       </label>
                     </span>
@@ -12744,6 +12891,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
                         name="SelectRow"
@@ -12753,6 +12901,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -12760,7 +12909,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 5
                         </span>
                       </label>
                     </span>
@@ -12929,6 +13078,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
                         name="SelectRow"
@@ -12938,6 +13088,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -12945,7 +13096,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 6
                         </span>
                       </label>
                     </span>
@@ -13114,6 +13265,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
                         name="SelectRow"
@@ -13123,6 +13275,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -13130,7 +13283,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 7
                         </span>
                       </label>
                     </span>
@@ -13299,6 +13452,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
                         name="SelectRow"
@@ -13308,6 +13462,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -13315,7 +13470,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 8
                         </span>
                       </label>
                     </span>
@@ -13484,6 +13639,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
                         name="SelectRow"
@@ -13493,6 +13649,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -13500,7 +13657,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 9
                         </span>
                       </label>
                     </span>
@@ -13669,6 +13826,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
                         name="SelectRow"
@@ -13678,6 +13836,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -13685,7 +13844,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 10
                         </span>
                       </label>
                     </span>
@@ -13854,6 +14013,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
                         name="SelectRow"
@@ -13863,6 +14023,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -13870,7 +14031,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 11
                         </span>
                       </label>
                     </span>
@@ -14039,6 +14200,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
+                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
                         name="SelectRow"
@@ -14048,6 +14210,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <label
                         className="slds-checkbox__label"
                         htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
+                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -14055,7 +14218,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          select this row
+                          Select this row 12
                         </span>
                       </label>
                     </span>

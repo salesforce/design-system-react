@@ -50,8 +50,12 @@ class CarouselIndicators extends React.Component {
 					);
 					let assistiveText = `${index}`;
 					let title = `${index}`;
+					let id = '';
 
 					if (props.items && props.items.length > 0) {
+						// eslint-disable-next-line prefer-destructuring
+						id = props.items[index].id;
+
 						const startItemIndex = index * props.itemsPerPanel;
 						let autoIndicatorText = '';
 
@@ -90,7 +94,10 @@ class CarouselIndicators extends React.Component {
 								role="tab"
 								tabIndex={isSelectedPanel ? '0' : '-1'}
 								aria-selected={isSelectedPanel}
-								aria-controls={`panel-${index}`}
+								aria-controls={props.getPanelId({
+									carouselId: props.carouselId,
+									itemId: id,
+								})}
 								title={title}
 								onBlur={props.onBlur}
 								onClick={(event) => props.onClick(event, index)}

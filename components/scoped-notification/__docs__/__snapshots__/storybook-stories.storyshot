@@ -20,7 +20,11 @@ exports[`DOM snapshots SLDSScopedNotification Base 1`] = `
             xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
-        
+        <span
+          className="slds-assistive-text"
+        >
+          Info
+        </span>
       </span>
     </div>
     <div
@@ -36,6 +40,42 @@ exports[`DOM snapshots SLDSScopedNotification Base 1`] = `
         </a>
          
       </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSScopedNotification Custom Icon 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-scoped-notification slds-media slds-media_center slds-scoped-notification_light"
+    role="status"
+  >
+    <div
+      className="slds-media__figure"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small slds-icon-text-warning"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Warning
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-media__body"
+    >
+      Einstein needs more data to prepare your results. Check back later.
     </div>
   </div>
 </div>
@@ -61,7 +101,11 @@ exports[`DOM snapshots SLDSScopedNotification Dark 1`] = `
             xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
-        
+        <span
+          className="slds-assistive-text"
+        >
+          Info
+        </span>
       </span>
     </div>
     <div
@@ -101,7 +145,11 @@ exports[`DOM snapshots SLDSScopedNotification Light 1`] = `
             xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
-        
+        <span
+          className="slds-assistive-text"
+        >
+          Info
+        </span>
       </span>
     </div>
     <div

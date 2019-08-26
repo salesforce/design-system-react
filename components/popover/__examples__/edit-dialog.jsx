@@ -64,6 +64,9 @@ class Example extends React.Component {
 		// Body of Edit Dialog that is shown when clicking on edit button (pencil icon)
 		const editDialogPopoverBody = (
 			<div className="slds-form slds-form_stacked slds-p-top_medium slds-p-right_small slds-p-left_small">
+				<h2 id="edit-name" className="slds-assistive-text">
+					Edit Name
+				</h2>
 				<Input
 					id="first-name"
 					label="First Name"
@@ -85,7 +88,7 @@ class Example extends React.Component {
 						{this.state.prevFirstName} {this.state.prevLastName}
 					</span>
 					<EditDialog
-						ariaLabelledby="Edit Name"
+						ariaLabelledby="edit-name"
 						body={editDialogPopoverBody}
 						isModified={
 							this.state.firstName !== this.state.prevFirstName ||

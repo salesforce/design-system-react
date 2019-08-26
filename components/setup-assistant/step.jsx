@@ -9,6 +9,7 @@ import classNames from 'classnames';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+import assign from 'lodash.assign';
 
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
@@ -21,6 +22,15 @@ import ProgressRing from '../progress-ring';
 import { ICON, SETUP_ASSISTANT_STEP } from '../../utilities/constants';
 
 const propTypes = {
+	/**
+	 * **Assistive text for accessibility**
+	 * This object is merged with the default props object on every render.
+	 * * `expandStep`: Button that examples a step
+	 * _Tested with snapshot testing._
+	 */
+	assistiveText: PropTypes.shape({
+		expandStep: PropTypes.string,
+	}),
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
@@ -83,7 +93,9 @@ const propTypes = {
 	stepNumber: PropTypes.number,
 };
 
-const defaultProps = {};
+const defaultProps = {
+	assistiveText: { expandStep: 'Expand Step' },
+};
 
 /**
  * Setup Assistant Step component is used to specify individual items within the Setup Assistant
@@ -225,6 +237,11 @@ class Step extends React.Component {
 	}
 
 	render() {
+		const assistiveText = assign(
+			{},
+			defaultProps.assistiveText,
+			this.props.assistiveText
+		);
 		return (
 			<li
 				className={classNames(
@@ -241,6 +258,7 @@ class Step extends React.Component {
 							})}
 						>
 							<Button
+								assistiveText={{ icon: assistiveText.expandStep }}
 								aria-controls={`${this.getId()}-detail-content`}
 								className="slds-m-right_x-small slds-m-top_x-small"
 								iconCategory="utility"
