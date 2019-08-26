@@ -1252,7 +1252,7 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                   <span
                     className="slds-assistive-text"
                   >
-                    connected_apps_checked
+                    Connected Apps
                   </span>
                 </span>
               </span>
@@ -1268,7 +1268,11 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#connected_apps"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Connected Apps
+                  </span>
                 </span>
               </span>
             </div>
@@ -1306,7 +1310,7 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                   <span
                     className="slds-assistive-text"
                   >
-                    custom_apps_checked
+                    Custom Apps
                   </span>
                 </span>
               </span>
@@ -1322,7 +1326,11 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#custom_apps"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Custom Apps
+                  </span>
                 </span>
               </span>
             </div>
@@ -1377,7 +1385,7 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                   <span
                     className="slds-assistive-text"
                   >
-                    account_checked
+                    Account
                   </span>
                 </span>
               </span>
@@ -1395,7 +1403,11 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                       xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Account
+                  </span>
                 </span>
               </span>
             </div>
@@ -1432,7 +1444,7 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                   <span
                     className="slds-assistive-text"
                   >
-                    lead_checked
+                    Lead
                   </span>
                 </span>
               </span>
@@ -1450,7 +1462,11 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                       xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Lead
+                  </span>
                 </span>
               </span>
             </div>
@@ -1487,7 +1503,7 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                   <span
                     className="slds-assistive-text"
                   >
-                    orders_checked
+                    Orders
                   </span>
                 </span>
               </span>
@@ -1505,7 +1521,11 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                       xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#orders"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Orders
+                  </span>
                 </span>
               </span>
             </div>

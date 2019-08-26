@@ -151,6 +151,12 @@ exports[`Datepicker
           <div
             className="slds-form-element"
           >
+            <label
+              className="slds-form-element__label slds-assistive-text"
+              htmlFor="CUSTOM-ID-year-picklist"
+            >
+              Year
+            </label>
             <div
               className="slds-form-element__control"
             >
@@ -1003,6 +1009,12 @@ exports[`Datepicker
             <div
               className="slds-form-element"
             >
+              <label
+                className="slds-form-element__label slds-assistive-text"
+                htmlFor="CUSTOM-ID-year-picklist"
+              >
+                Year
+              </label>
               <div
                 className="slds-form-element__control"
               >
@@ -1860,6 +1872,12 @@ exports[`Datepicker
           <div
             className="slds-form-element"
           >
+            <label
+              className="slds-form-element__label slds-assistive-text"
+              htmlFor="sample-datepicker-year-picklist"
+            >
+              Year
+            </label>
             <div
               className="slds-form-element__control"
             >
@@ -2714,6 +2732,12 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
           <div
             className="slds-form-element"
           >
+            <label
+              className="slds-form-element__label slds-assistive-text"
+              htmlFor="sample-datepicker-year-picklist"
+            >
+              Year
+            </label>
             <div
               className="slds-form-element__control"
             >
@@ -3441,7 +3465,7 @@ exports[`Datepicker Default HTML Snapshot 1`] = `
             <div class=\\"slds-align-middle\\"><button class=\\"slds-button slds-button_icon-container\\" type=\\"button\\"><svg aria-hidden=\\"true\\" class=\\"slds-button__icon\\"><use xlink:href=\\"/assets/icons/utility-sprite/svg/symbols.svg#right\\"></use></svg><span class=\\"slds-assistive-text\\">Next month</span></button></div>
         </div>
         <div class=\\"slds-form-element slds-align-content-center\\">
-          <div class=\\"slds-form-element\\">
+          <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label slds-assistive-text\\" for=\\"sample-datepicker-year-picklist\\">Year</label>
             <div class=\\"slds-form-element__control\\">
               <div class=\\"slds-combobox_container\\">
                 <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-shrink-none\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" role=\\"combobox\\">

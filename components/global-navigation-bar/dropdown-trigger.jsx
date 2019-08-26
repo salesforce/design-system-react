@@ -114,6 +114,8 @@ class GlobalNavigationDropdownTrigger extends React.Component {
 		triggerRef: PropTypes.func,
 	};
 
+	static defaultProps = { assistiveText: { icon: 'Open menu item submenu' } };
+
 	componentWillMount() {
 		checkProps(MENU_DROPDOWN_TRIGGER, this.props, componentDoc);
 	}

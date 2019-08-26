@@ -11,7 +11,7 @@ class Example extends React.Component {
 				id="error-id"
 				label="Slider Label"
 				errorText="There is a problem with this field"
-				aria-describedby="error message"
+				aria-describedby="slider-error-message"
 			/>
 		);
 	}

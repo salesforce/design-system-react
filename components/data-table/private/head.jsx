@@ -107,21 +107,52 @@ class DataTableHead extends React.Component {
 
 	getSelectHeader = () => {
 		const { canSelectRows, fixedHeader } = this.props;
-		const getContent = (idSuffix, style) =>
-			canSelectRows !== 'radio' ? (
-				<div className="slds-th__action slds-th__action_form" style={style}>
-					<Checkbox
-						assistiveText={{
-							label: this.props.assistiveText.selectAllRows,
-						}}
-						checked={this.props.allSelected}
-						indeterminate={this.props.indeterminateSelected}
-						id={`${this.props.id}-${idSuffix}`}
-						name="SelectAll"
-						onChange={this.props.onToggleAll}
-					/>
-				</div>
-			) : null;
+		const getContent = (idSuffix, style, ariaHidden) => {
+			let render = null;
+
+			if (canSelectRows === 'radio') {
+				render = (
+					<div
+						className="slds-truncate slds-assistive-text"
+						id={`${this.props.id}-column-group-header-row-select`}
+						title={this.props.assistiveText.selectRowGroup}
+					>
+						{this.props.assistiveText.selectRowGroup}
+					</div>
+				);
+			} else if (canSelectRows === true || canSelectRows === 'checkbox') {
+				render = (
+					<div
+						className="slds-th__action slds-th__action_form"
+						aria-hidden={ariaHidden && true}
+						style={style}
+					>
+						{!ariaHidden ? (
+							<span
+								id={`${this.props.id}-column-group-header-row-select`}
+								className="slds-assistive-text"
+							>
+								{this.props.assistiveText.selectAllRows}
+							</span>
+						) : null}
+						<Checkbox
+							assistiveText={{
+								label: this.props.assistiveText.selectAllRows,
+							}}
+							checked={this.props.allSelected}
+							indeterminate={this.props.indeterminateSelected}
+							id={`${this.props.id}-${idSuffix}`}
+							// There is a checkbox for user interaction and a checkbox for positioning. ariaHidden is for the checkbox for positioning and it should be removed from the accessibility tree.
+							name={!ariaHidden && 'SelectAll'}
+							onChange={this.props.onToggleAll}
+						/>
+					</div>
+				);
+			}
+
+			return render;
+		};
+
 		let selectHeader = null;
 
 		if (canSelectRows) {
@@ -141,7 +172,7 @@ class DataTableHead extends React.Component {
 					}}
 				>
 					{getContent(
-						'SelectAll',
+						'SelectAll-fixed-header',
 						fixedHeader
 							? {
 									display: 'flex',
@@ -151,11 +182,12 @@ class DataTableHead extends React.Component {
 									paddingTop: 0,
 									visibility: 'hidden',
 								}
-							: null
+							: null,
+						fixedHeader && 'ariaHidden'
 					)}
 					{fixedHeader ? (
 						<CellFixed>
-							{getContent('SelectAll-fixedHeader', {
+							{getContent('SelectAll', {
 								display: 'flex',
 								justifyContent: 'flex-end',
 								lineHeight: 1,

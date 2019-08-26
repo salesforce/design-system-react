@@ -41,6 +41,13 @@ class Textarea extends React.Component {
 
 	static propTypes = {
 		/**
+		 * **Assistive text for accessibility.**
+		 * * `label`: If present, the label associated with this `textarea` is overwritten by this text and is visually not shown.
+		 */
+		assistiveText: PropTypes.shape({
+			label: PropTypes.string,
+		}),
+		/**
 		 * The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget.
 		 */
 		'aria-activedescendant': PropTypes.string,
@@ -86,13 +93,6 @@ class Textarea extends React.Component {
 		 * Specifies is the textarea should automatically get focus when the page loads. This is typically a poor user experience.
 		 */
 		autoFocus: PropTypes.bool,
-		/**
-		 * **Assistive text for accessibility.**
-		 * * `label`: If present, the label associated with this `textarea` is overwritten by this text and is visually not shown.
-		 */
-		assistiveText: PropTypes.shape({
-			label: PropTypes.string,
-		}),
 		/**
 		 * Elements are added after the `textarea`.
 		 */
@@ -256,14 +256,14 @@ class Textarea extends React.Component {
 			// ...props // Uncomment this if you actually need to send the rest of the props to other elements
 		} = this.props;
 
-		const assistiveText =
+		const assistiveTextLabel =
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
 				: {
 						...this.props.assistiveText,
 					}.label;
 
-		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
+		const labelText = label || assistiveTextLabel; // One of these is required to pass accessibility tests
 
 		return (
 			<div
@@ -278,7 +278,7 @@ class Textarea extends React.Component {
 				{labelText && (
 					<label
 						className={classNames('slds-form-element__label', {
-							'slds-assistive-text': assistiveText && !label,
+							'slds-assistive-text': assistiveTextLabel && !label,
 						})}
 						htmlFor={this.getId()}
 					>
