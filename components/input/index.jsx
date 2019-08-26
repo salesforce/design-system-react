@@ -35,7 +35,7 @@ import Label from '../utilities/label';
 import checkProps from './check-props';
 
 import { INPUT } from '../../utilities/constants';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
 
 const COUNTER = 'counter';

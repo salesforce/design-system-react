@@ -131,7 +131,11 @@ const getDropdownPositioned = (props) => {
 	const positionedDropdowns = [];
 	DropdownNubbinPositions.forEach((position) => {
 		positionedDropdowns.push(
-			<div className="slds-col slds-size_1-of-3" style={{ minHeight: '500px' }}>
+			<div
+				className="slds-col slds-size_1-of-3"
+				style={{ minHeight: '500px' }}
+				data-ignore-axe-duplicate-id
+			>
 				<Dropdown
 					{...props}
 					isOpen
@@ -179,7 +183,11 @@ const getDropdownPositioned = (props) => {
 const getDropdownCustomTrigger = (props) => (
 	<Dropdown {...props} onClose={action('Closed')} onOpen={action('Opened')}>
 		<Trigger>
-			<Button iconCategory="utility" iconName="settings" />
+			<Button
+				assistiveText={{ icon: props.assistiveText.icon }}
+				iconCategory="utility"
+				iconName="settings"
+			/>
 		</Trigger>
 	</Dropdown>
 );

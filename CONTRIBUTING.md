@@ -39,34 +39,38 @@ If you are adding or changing component props, the first step is to propose the 
 1. Build out the component file structure
    1. Add a new folder to `/components` with `index.jsx`. All component files in this folder are public. Non-public subcomponents should be in a `private` subfolder.
 1. Connect the newly created files
-   1. Add public component exports to `/components/index.js`.
+   1. Add a `component.json` file beneath the new folder. This will serve as the component's primary configuration file and looks like the below example:
+      ```js
+      {
+         "component": "accordion",
+         "status": "prod",
+         "display-name": "Accordions",
+         "classKey": "Accordion",
+         "SLDS-component-path": "/components/accordion",
+         "dependencies": [
+            {
+               "component": "panel",
+               "classKey": "AccordionPanel"
+            }
+         ],
+         "site-stories": [
+            "/__examples__/base.jsx"
+         ],
+         "url-slug": "accordions"
+      }
+      ```
    1. Add the component's name to `/utilities/constants.js`
-   1. [Create dev storybook stories](https://design-system-react-components.herokuapp.com/) in `/components/[COMPONENT]/__examples__/` and [documentation site examples](https://react.lightningdesignsystem.com/).
-   1. Add Storybook and site examples in `/components/[COMPONENT]/__docs__/`.
-   1. Then import `__docs__` examples file into Storybook by adding them to `/components/storybook-stories.js`.
-   1. Then import `__docs__` examples file into the documentation site by adding them to `/components/site-stories.js` respectively. Site examples only have access to variables exported in `/components/index.js`, so you should limit your component's site example imports to these variables. See [#1192](https://github.com/salesforce/design-system-react/issues/1192) for more information.
+   1. [Create dev storybook stories](https://design-system-react-components.herokuapp.com/) and [documentation site examples](https://react.lightningdesignsystem.com/) in `/components/[COMPONENT]/__examples__/`.
+   1. Add Storybook examples in `/components/[COMPONENT]/__docs__/storybook-stories.jsx`.
+   1. List examples to be used for the documentation site under the `"site-stories"` array in `component.json` as shown in the above example.
    1. Review the [tests readme](/tests/README.md)
    1. Create snapshot tests from Storybook examples. Most props that don't involve user events can be tested here instead of with Mocha. `npm run test:dom-snapshot -- --watchAll` will run DOM snapshot tests interactively and watch changed files. `npm run test:dom-snapshot:update` will update snapshots.
    1. Add callback prop tests in Mocha test framework to `/components/[COMPONENT]/__tests__/`. Mocha tests are a last resort and should not be used for simple markup queries. These tests can be viewed at `http://localhost:8001`
-   1. Add your component's meta description in `package.json`, under the `"components"` key. An example is shown below.
-      ```js
-      {
-        "component": "split-view",
-        "status": "prod",
-        "display-name": "Split View",
-        "SLDS-component-path": "/components/split-view",
-        "dependencies": [
-          {
-            "component": "header"
-          },
-          {
-            "component": "listbox"
-          }
-        ],
-        "url-slug": "split-views"
-      },
-      ```
 1. All components should have a comment description of the component before the class declaration in the source code. This should be copied from the subtitle or "lead" of the SLDS website component page. All props should have `propType` with a prop description comment before it that will be used on the documentation site. `npm test` will audit that these source code comments exist or warn with `components/component-docs.json has an empty string in it` error if they do not.
+1. Run `npm run prepare-components` in the terminal and look over the changes afterwards. (NOTE: this is also ran first when running `npm test`) This will automatically perform the following:
+   1. Adds public component exports to `/components/index.js` if not already present
+   1. Generates updated `/components/site-stories.js` file with examples listed in `"site-stories"` section of `component.json` for use in the documentation site
+   1. Copies contents of `component.json` into the `"components"` section of `package.json`
 1. Push to your username's forked repository.
 1. Submit a well-documented pull request targeting `master` from your forked repository. GitHub pull requests should have a descriptive title, a brief summary, @mention several relevant people to review the code, add helpful GitHub comments on lines where you have questions or concerns. All contributors must sign a [Contributor License Agreement](https://cla.salesforce.com/sign-cla).
 1. For large additions, make sure your tests pass, then mention @interactivellama and request a view, and we'll review your code, suggest any needed changes, and hopefully merge it in soon. Thank you!

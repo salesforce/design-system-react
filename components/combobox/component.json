@@ -1,0 +1,28 @@
+{
+	"component": "combobox",
+	"status": "prod",
+	"display-name": "Comboboxes",
+	"classKey": "Combobox",
+	"last-accessibility-review": {
+		"date-iso-8601": "2017/08/21",
+		"commit-sha": "295a4766f712a5f93743c4ecd3ba62d91c1fc153"
+	},
+	"SLDS-component-path": "/components/combobox",
+	"site-stories": [
+		"/__examples__/base.jsx",
+		"/__examples__/base-menu-subheader.jsx",
+		"/__examples__/base-inherit-menu-width.jsx",
+		"/__examples__/base-predefined-options-only.jsx",
+		"/__examples__/dialog.jsx",
+		"/__examples__/inline-multiple.jsx",
+		"/__examples__/inline-single.jsx",
+		"/__examples__/inline-single-entity-combobox.jsx",
+		"/__examples__/inline-single-search-add-entities.jsx",
+		"/__examples__/inline-multiple-loading.jsx",
+		"/__examples__/readonly-single.jsx",
+		"/__examples__/readonly-multiple.jsx",
+		"/__examples__/required-input-error-state.jsx",
+		"/__examples__/dialog.jsx"
+	],
+	"url-slug": "comboboxes"
+}

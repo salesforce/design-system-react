@@ -6,6 +6,11 @@ const axeConfig = {
 	rules: [
 		// Added due to autocomplete bug in browsers. Invalid value of "test" is passed into `autoComplete` intentionally.
 		{
+			id: 'aria-hidden-focus',
+			enabled: false,
+			selector: '#root',
+		},
+		{
 			id: 'autocomplete-valid',
 			enabled: false,
 		},
@@ -14,7 +19,7 @@ const axeConfig = {
 		{
 			id: 'aria-required-children',
 			enabled: false,
-			selector: '.slds-combobox[aria-haspopup="dialog"',
+			selector: '.slds-combobox[aria-haspopup="dialog"]',
 		},
 		{
 			id: 'color-contrast',
@@ -31,6 +36,22 @@ const axeConfig = {
 		{
 			id: 'region',
 			enabled: false,
+		},
+		// Exclude specific examples in Storybook Stories
+		{
+			id: 'duplicate-id',
+			enabled: false,
+			selector: '.div[data-ignore-axe-duplicate-id="true"]',
+		},
+		{
+			id: 'duplicate-id-active',
+			enabled: false,
+			selector: '.div[data-ignore-axe-duplicate-id-active="true"]',
+		},
+		{
+			id: 'duplicate-id-aria',
+			enabled: false,
+			selector: '.div[data-ignore-axe-duplicate-id-aria="true"]',
 		},
 	],
 };

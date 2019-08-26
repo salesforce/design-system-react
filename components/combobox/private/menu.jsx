@@ -100,8 +100,32 @@ const propTypes = {
 	 * Selected options
 	 */
 	selection: PropTypes.array,
+	/*
+	 * Adds loading spinner below the options
+	 */
+	hasMenuSpinner: PropTypes.bool,
+	/*
+	 * Object for creating Add item below the options
+	 */
+	optionsAddItem: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string,
+			icon: PropTypes.node,
+			label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+		})
+	),
+	/*
+	 * Object for creating Search item on top of the options
+	 */
+	optionsSearchEntity: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string,
+			icon: PropTypes.node,
+			label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+		})
+	),
 	/**
-	 * Acepts a tooltip that is displayed when hovering on disabled menu items.
+	 * Accepts a tooltip that is displayed when hovering on disabled menu items.
 	 */
 	tooltipMenuItemDisabled: PropTypes.element,
 	/**
@@ -113,7 +137,56 @@ const propTypes = {
 };
 
 const defaultProps = {
+	inputValue: '',
 	menuRef: () => {},
+	optionsAddItem: [],
+	optionsSearchEntity: [],
+};
+
+const getOptions = (props) => {
+	// use of array.push() is OK, because the array is created on each render
+	const options = [];
+	if (props.optionsSearchEntity.length > 0) {
+		const localOptionsSearchEntity = props.optionsSearchEntity.map(
+			(entity) => ({ ...entity, type: 'header' })
+		);
+		options.push(...localOptionsSearchEntity);
+	}
+	options.push(...props.options);
+	if (props.optionsAddItem.length > 0) {
+		const localOptionsAddItem = props.optionsAddItem.map((entity) => ({
+			...entity,
+			type: 'footer',
+		}));
+		options.push(...localOptionsAddItem);
+	}
+	return options;
+};
+
+const setBold = (label, searchTerm) => {
+	if (!label || label.length === 0 || !searchTerm || searchTerm.length === 0) {
+		return label;
+	}
+	const position = label.toLowerCase().indexOf(searchTerm.toLowerCase());
+	if (position > -1) {
+		return [
+			label.substr(0, position),
+			<span className="slds-text-title_bold">{`${label.substr(
+				position,
+				searchTerm.length
+			)}`}</span>,
+			label.substr(position + searchTerm.length),
+		];
+	}
+	return label;
+};
+
+const renderLabel = (labelProp, searchTerm) => {
+	if (labelProp == null || typeof labelProp === 'string') {
+		return labelProp;
+	}
+
+	return labelProp(searchTerm);
 };
 
 const Menu = (props) => {
@@ -124,14 +197,17 @@ const Menu = (props) => {
 			: maxWidth;
 
 	// .slds-dropdown sets the menu to absolute positioning, since it has a relative parent. Absolute positioning removes clientHeight and clientWidth which Popper.js needs to absolute position the menu's wrapping div. Absolute positioning an already absolute positioned element doesn't work. Setting the menu's position to relative allows PopperJS to work it's magic.
-	const menuOptions = props.options.map((optionData, index) => {
+	const menuOptions = getOptions(props).map((optionData, index) => {
 		const active =
 			index === props.activeOptionIndex &&
-			isEqual(optionData, props.activeOption);
-		const selected = props.isSelected({
-			selection: props.selection,
-			option: optionData,
-		});
+			props.activeOption &&
+			isEqual(optionData.id, props.activeOption.id);
+		const selected =
+			props.isSelected({
+				selection: props.selection,
+				option: optionData,
+			}) &&
+			(optionData.type !== 'header' || optionData.type === 'footer');
 		const MenuItem = props.onRenderMenuItem;
 
 		if (optionData.type === 'separator') {
@@ -157,6 +233,74 @@ const Menu = (props) => {
 					role="separator"
 					key={`menu-separator-${optionData.id}`}
 				/>
+			);
+		}
+		if (optionData.type === 'header') {
+			return (
+				<li
+					key={`menu-header-${optionData.id}}`}
+					role="presentation"
+					className="slds-listbox__item"
+				>
+					<div
+						onClick={
+							optionData.disabled
+								? null
+								: (event) => {
+										props.onSelect(event, { option: optionData });
+									}
+						}
+						aria-selected="false"
+						id={optionData.id}
+						className={classNames(
+							'slds-media slds-listbox__option',
+							'slds-listbox__option_entity slds-listbox__option_term',
+							{ 'slds-has-focus': active }
+						)}
+						role="option"
+					>
+						<span className="slds-media__figure slds-listbox__option-icon">
+							{optionData.icon}
+						</span>
+						<span className="slds-media__body">
+							{renderLabel(optionData.label, props.inputValue)}
+						</span>
+					</div>
+				</li>
+			);
+		}
+		if (optionData.type === 'footer') {
+			return (
+				<li
+					key={`menu-header-${optionData.id}}`}
+					role="presentation"
+					className="slds-listbox__item"
+				>
+					<div
+						aria-selected="false"
+						onClick={
+							optionData.disabled
+								? null
+								: (event) => {
+										props.onSelect(event, { option: optionData });
+									}
+						}
+						id={optionData.id}
+						className={classNames(
+							'slds-media slds-listbox__option',
+							'slds-listbox__option_entity slds-listbox__option_term',
+							{ 'slds-has-focus': active }
+						)}
+						role="option"
+					>
+						<span className="slds-media__figure slds-listbox__option-icon">
+							{optionData.icon}
+						</span>
+						<span className="slds-media__body">
+							{renderLabel(optionData.label, props.inputValue)}
+						</span>
+					</div>
+				</li>
 			);
 		}
 
@@ -209,7 +353,7 @@ const Menu = (props) => {
 									{ 'slds-disabled-text': optionData.disabled }
 								)}
 							>
-								{optionData.label}
+								{setBold(optionData.label, props.inputValue)}
 							</span>
 							<span
 								className={classNames(
@@ -351,6 +495,22 @@ const Menu = (props) => {
 					<span className="slds-m-left_x-large slds-p-vertical_medium">
 						{props.labels.noOptionsFound}
 					</span>
+				</li>
+			)}
+			{props.hasMenuSpinner && (
+				<li role="presentation" className="slds-listbox__item">
+					<div className="slds-align_absolute-center slds-p-top_medium">
+						<div
+							role="status"
+							className="slds-spinner slds-spinner_x-small slds-spinner_inline"
+						>
+							<span className="slds-assistive-text">
+								{props.assistiveText.loadingMenuItems}
+							</span>
+							<div className="slds-spinner__dot-a" />
+							<div className="slds-spinner__dot-b" />
+						</div>
+					</div>
 				</li>
 			)}
 		</ul>

@@ -282,7 +282,7 @@ describe('Global Navigation Bar: ', () => {
 		afterEach(unmountComponent);
 
 		it('has appropriate attributes', function() {
-			expect(dropdownTrigger.text()).to.equal('Test');
+			expect(dropdownTrigger.text()).to.equal('TestOpen menu item submenu');
 		});
 
 		it('calls onClick handler properly', function() {
