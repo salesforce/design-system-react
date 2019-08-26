@@ -1,8 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// Implements the [Welcome Mat design pattern](https://lightningdesignsystem.com/components/welcome-mat/) in React.
-// Based on SLDS v2.4.0
+// Implements the [Summary Detail design pattern](https://lightningdesignsystem.com/components/summary-detail/) in React.
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';

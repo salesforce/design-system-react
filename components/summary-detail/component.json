@@ -1,0 +1,12 @@
+{
+	"component": "summary-detail",
+	"status": "prod",
+	"display-name": "Summary Detail",
+	"classKey": "SummaryDetail",
+	"SLDS-component-path": "/components/summary-detail",
+	"site-stories": [
+		"/__examples__/base.jsx",
+		"/__examples__/with-complex-title.jsx"
+	],
+	"url-slug": "summary-detail"
+}
