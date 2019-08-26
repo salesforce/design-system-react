@@ -112,7 +112,7 @@ exports[`DOM snapshots SLDSButtonStateful Disabled 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSButtonStateful Doc site Icon Button 1`] = `
+exports[`DOM snapshots SLDSButtonStateful Icon Button 1`] = `
 <div
   className="slds-p-around_medium"
 >
@@ -127,7 +127,7 @@ exports[`DOM snapshots SLDSButtonStateful Doc site Icon Button 1`] = `
   >
     <svg
       aria-hidden="true"
-      className="slds-button__icon slds-button__icon_large slds-button__icon_stateful"
+      className="slds-button__icon slds-button__icon_stateful"
     >
       <use
         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#like"
@@ -142,7 +142,7 @@ exports[`DOM snapshots SLDSButtonStateful Doc site Icon Button 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSButtonStateful Doc site Icon Text Button 1`] = `
+exports[`DOM snapshots SLDSButtonStateful Icon Text Button 1`] = `
 <div
   className="slds-p-around_medium"
 >
@@ -259,37 +259,5 @@ exports[`DOM snapshots SLDSButtonStateful Doc site Icon Text Button 1`] = `
       </button>
     </div>
   </div>
-</div>
-`;
-
-exports[`DOM snapshots SLDSButtonStateful Icon 1`] = `
-<div
-  className="slds-p-around_medium"
->
-  <button
-    aria-live="polite"
-    className="slds-button slds-not-selected slds-button_icon-border-filled"
-    disabled={false}
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    type="button"
-  >
-    <svg
-      aria-hidden="true"
-      className="slds-button__icon slds-button__icon_stateful"
-    >
-      <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-      />
-    </svg>
-    <span
-      className="slds-assistive-text"
-    >
-      Icon button
-    </span>
-  </button>
 </div>
 `;

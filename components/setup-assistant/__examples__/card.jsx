@@ -9,13 +9,13 @@ import SetupAssistantStep from '~/components/setup-assistant/step';
 import ProgressBar from '~/components/progress-bar';
 import ProgressIndicator from '~/components/progress-indicator';
 
-const subSteps = [
+const subSteps = (step) => [
 	{
-		id: 0,
+		id: `step-${step}-substep0`,
 		label: 'Turn on Lightning for all users.',
 		onRenderSetupAssistantAction: (
 			<Checkbox
-				id="substep-0-action"
+				id={`step-${step}-substep0-action`}
 				checked
 				oldEventParameterOrder={false}
 				variant="toggle"
@@ -23,42 +23,50 @@ const subSteps = [
 		),
 	},
 	{
-		id: 1,
-		label:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-		onRenderSetupAssistantAction: (
-			<Button id="substep-1-action" label="View in Trailhead" variant="link" />
-		),
-	},
-	{
-		id: 2,
-		label: 'Lorem ipsum dolor sit amet, lorem ipsum dolor.',
-		onRenderSetupAssistantAction: (
-			<Button id="substep-2-action" label="Add Users" variant="outline-brand" />
-		),
-	},
-];
-
-const subStepsComplete = [
-	{
-		id: 0,
-		label: 'Turn on Lightning for all users.',
-		onRenderSetupAssistantAction: (
-			<Checkbox
-				id="substep-complete-0-action"
-				checked
-				oldEventParameterOrder={false}
-				variant="toggle"
-			/>
-		),
-	},
-	{
-		id: 1,
+		id: `step-${step}-substep1`,
 		label:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		onRenderSetupAssistantAction: (
 			<Button
-				id="substep-complete-1-action"
+				id={`step-${step}-substep1-action`}
+				label="View in Trailhead"
+				variant="link"
+			/>
+		),
+	},
+	{
+		id: `step-${step}-substep2`,
+		label: 'Lorem ipsum dolor sit amet, lorem ipsum dolor.',
+		onRenderSetupAssistantAction: (
+			<Button
+				id={`step-${step}-substep2-action`}
+				label="Add Users"
+				variant="outline-brand"
+			/>
+		),
+	},
+];
+
+const subStepsComplete = (step) => [
+	{
+		id: `step-${step}-substep0`,
+		label: 'Turn on Lightning for all users.',
+		onRenderSetupAssistantAction: (
+			<Checkbox
+				id={`step-${step}-substep0-action`}
+				checked
+				oldEventParameterOrder={false}
+				variant="toggle"
+			/>
+		),
+	},
+	{
+		id: `step-${step}-substep1`,
+		label:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		onRenderSetupAssistantAction: (
+			<Button
+				id={`step-${step}-substep1-action`}
 				label="View in Trailhead"
 				variant="link"
 			/>
@@ -66,25 +74,25 @@ const subStepsComplete = [
 	},
 ];
 
-const subStepsIncomplete = [
+const subStepsIncomplete = (step) => [
 	{
-		id: 0,
+		id: `step-${step}-substep0`,
 		label: 'Turn on Lightning for all users.',
 		onRenderSetupAssistantAction: (
 			<Checkbox
-				id="substep-incomplete-0-action"
+				id={`step-${step}-substep0-action`}
 				oldEventParameterOrder={false}
 				variant="toggle"
 			/>
 		),
 	},
 	{
-		id: 1,
+		id: `step-${step}-substep1`,
 		label:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		onRenderSetupAssistantAction: (
 			<Button
-				id="substep-incomplete-1-action"
+				id={`step-${step}-substep1-action`}
 				label="View in Trailhead"
 				variant="link"
 			/>
@@ -123,10 +131,10 @@ class Example extends React.Component {
 						isExpandable
 						onRenderContent={() => (
 							<ProgressIndicator
-								completedSteps={subStepsComplete}
+								completedSteps={subStepsComplete('complete')}
 								id="card-step-1-progress-indicator"
 								orientation="vertical"
-								steps={subStepsComplete}
+								steps={subStepsComplete('complete')}
 								variant="setup-assistant"
 							/>
 						)}
@@ -141,11 +149,11 @@ class Example extends React.Component {
 						onRenderContent={() => (
 							<React.Fragment>
 								<ProgressIndicator
-									completedSteps={[subSteps[0]]}
+									completedSteps={[subSteps('2')[0]]}
 									id="card-step-2-progress-indicator"
 									orientation="vertical"
-									steps={subSteps}
-									selectedStep={subSteps[1]}
+									steps={subSteps('2')}
+									selectedStep={subSteps('2')[1]}
 									variant="setup-assistant"
 								/>
 								<ScopedNotification
@@ -169,10 +177,10 @@ class Example extends React.Component {
 						isExpandable
 						onRenderContent={() => (
 							<ProgressIndicator
-								completedSteps={subStepsComplete}
+								completedSteps={subStepsComplete('complete2')}
 								id="card-step-3-progress-indicator"
 								orientation="vertical"
-								steps={subStepsComplete}
+								steps={subStepsComplete('complete2')}
 								variant="setup-assistant"
 							/>
 						)}
@@ -188,8 +196,8 @@ class Example extends React.Component {
 							<ProgressIndicator
 								id="card-step-4-progress-indicator"
 								orientation="vertical"
-								steps={subStepsIncomplete}
-								selectedStep={subStepsIncomplete[0]}
+								steps={subStepsIncomplete('incomplete1')}
+								selectedStep={subStepsIncomplete('incomplete1')[0]}
 								variant="setup-assistant"
 							/>
 						)}
@@ -205,8 +213,8 @@ class Example extends React.Component {
 							<ProgressIndicator
 								id="card-step-5-progress-indicator"
 								orientation="vertical"
-								steps={subStepsIncomplete}
-								selectedStep={subStepsIncomplete[0]}
+								steps={subStepsIncomplete('incomplete2')}
+								selectedStep={subStepsIncomplete('incomplete2')[0]}
 								variant="setup-assistant"
 							/>
 						)}

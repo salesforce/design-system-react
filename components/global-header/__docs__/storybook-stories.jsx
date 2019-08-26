@@ -134,6 +134,7 @@ class GlobalHeaderDemo extends React.Component {
 				<GlobalHeaderSearch
 					combobox={
 						<Combobox
+							assistiveText={{ label: 'Search' }}
 							events={{
 								onSelect: action('Search Selected'),
 							}}
