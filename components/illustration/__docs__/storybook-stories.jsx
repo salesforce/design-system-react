@@ -3,8 +3,6 @@ import { storiesOf } from '@storybook/react';
 
 import { ILLUSTRATION } from '../../../utilities/constants';
 
-import Illustration from '../../illustration';
-
 import SmallImageWithText from '../__examples__/small-image-text.jsx';
 import LargeImageWithText from '../__examples__/large-image-text.jsx';
 import HeadingOnly from '../__examples__/heading-only.jsx';

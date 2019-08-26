@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 // eslint-disable-next-line camelcase
 import UNSAFE_DirectionSettings from '..';
 
@@ -9,13 +8,17 @@ const LanguageDirectionHOC = (WrappedComponent) => {
 	return class LanguageDirection extends Component {
 		static displayName = `LanguageDirection(${componentName})`;
 
-		// eslint-disable-next-line camelcase
-		static contextType = UNSAFE_DirectionSettings;
+		getWrappedComponent = (value) => (
+			<WrappedComponent {...this.props} direction={value} />
+		);
 
 		render() {
-			const props = { ...this.props };
-			props.direction = this.context;
-			return React.createElement(WrappedComponent, props);
+			return (
+				// eslint-disable-next-line react/jsx-pascal-case
+				<UNSAFE_DirectionSettings.Consumer>
+					{this.getWrappedComponent}
+				</UNSAFE_DirectionSettings.Consumer>
+			);
 		}
 	};
 };

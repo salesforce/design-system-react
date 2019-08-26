@@ -128,7 +128,7 @@ class RadioGroup extends React.Component {
 				>
 					{this.props.required ? (
 						<abbr className="slds-required" title="required">
-							*
+							{'*'}
 						</abbr>
 					) : null}
 					{this.props.assistiveText.label

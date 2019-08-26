@@ -13,7 +13,7 @@ import classNames from 'classnames';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ## Children
 import Button from '../button';

@@ -24,7 +24,7 @@ import TimepickerDropdownTrigger from './private/dropdown-trigger';
 // ## Constants
 import { TIME_PICKER } from '../../utilities/constants';
 
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 const getOptions = ({ props }) => {
 	const baseDate = new Date();
@@ -176,6 +176,9 @@ class Timepicker extends React.Component {
 					strValue: this.props.formatter(nextProps.value),
 				});
 			}
+		}
+		if (nextProps.strValue !== this.props.value) {
+			this.setState({ strValue: nextProps.strValue });
 		}
 	}
 

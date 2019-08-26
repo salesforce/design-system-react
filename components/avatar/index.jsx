@@ -18,7 +18,7 @@ import checkProps from './check-props';
 import classNames from '../../utilities/class-names';
 import { AVATAR } from '../../utilities/constants';
 import UtilityIcon from '../icon';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ### Display Name Always use the canonical component name as the React display
 // name.

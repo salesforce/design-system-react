@@ -3,7 +3,6 @@ import IconSettings from '../../icon-settings';
 import Button from '../../button';
 import ButtonGroup from '../../button-group';
 import Icon from '../../icon';
-import Dropdown from '../../menu-dropdown';
 import Tooltip from '../../tooltip';
 import BuilderHeader from '..';
 import BuilderHeaderNav from '../nav';

@@ -1,9 +1,8 @@
 import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
-import EditDialogPopover from '~/components/popover/edit-dialog'; // `~` is replaced with design-system-react at runtime
+import EditDialog from '~/components/popover/edit-dialog'; // `~` is replaced with design-system-react at runtime
 import Input from '~/components/input'; // `~` is replaced with design-system-react at runtime
-import Button from '~/components/button';
 
 const DEFAULT_FIRST_NAME = 'John';
 const DEFAULT_LAST_NAME = 'Smith';
@@ -13,8 +12,6 @@ class Example extends React.Component {
 
 	constructor(props) {
 		super(props);
-		const defaultFirstName = 'John';
-		const defaultLastName = 'Smith';
 		this.state = {
 			isOpen: this.props.isOpen,
 			firstName: DEFAULT_FIRST_NAME, // stores firstName in edit input field
@@ -67,6 +64,9 @@ class Example extends React.Component {
 		// Body of Edit Dialog that is shown when clicking on edit button (pencil icon)
 		const editDialogPopoverBody = (
 			<div className="slds-form slds-form_stacked slds-p-top_medium slds-p-right_small slds-p-left_small">
+				<h2 id="edit-name" className="slds-assistive-text">
+					Edit Name
+				</h2>
 				<Input
 					id="first-name"
 					label="First Name"
@@ -87,8 +87,8 @@ class Example extends React.Component {
 					<span className="slds-p-right_x-small">
 						{this.state.prevFirstName} {this.state.prevLastName}
 					</span>
-					<EditDialogPopover
-						ariaLabelledby="Edit Name"
+					<EditDialog
+						ariaLabelledby="edit-name"
 						body={editDialogPopoverBody}
 						isModified={
 							this.state.firstName !== this.state.prevFirstName ||

@@ -13,7 +13,7 @@ import Branch from './private/branch';
 
 // Similar to React's PropTypes check. When in development mode, it issues errors in the console about properties.
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ## Constants
 import { TREE } from '../../utilities/constants';

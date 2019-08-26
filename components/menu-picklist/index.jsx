@@ -673,7 +673,8 @@ const MenuPicklist = createReactClass({
 		const { className, errorText, label, required } = this.props;
 
 		const requiredElem = required ? (
-			<span style={{ color: 'red' }}>* </span>
+			// eslint-disable-next-line react/jsx-curly-brace-presence
+			<span style={{ color: 'red' }}>{'* '}</span>
 		) : null;
 
 		return (

@@ -22,7 +22,7 @@ import Button from '../button';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
@@ -137,7 +137,8 @@ const defaultProps = {
 		triggerLearnMoreIcon: 'Help',
 	},
 	align: 'top',
-	content: <span>Tooltip</span>,
+	// eslint-disable-next-line react/jsx-curly-brace-presence
+	content: <span>{'Tooltip'}</span>,
 	labels: {
 		learnMoreAfter: 'to learn more.',
 		learnMoreBefore: 'Click',
@@ -207,7 +208,7 @@ class Tooltip extends React.Component {
 		return React.Children.map(children, (child, i) =>
 			React.cloneElement(child, {
 				key: i, // eslint-disable-line react/no-array-index-key
-				'aria-describedby': this.getId(),
+				'aria-describedby': this.getIsOpen() ? this.getId() : undefined,
 				onBlur: this.handleMouseLeave,
 				onFocus: this.handleMouseEnter,
 				onMouseEnter: this.handleMouseEnter,
@@ -220,9 +221,14 @@ class Tooltip extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
+	getIsOpen() {
+		return this.props.isOpen === undefined
+			? this.state.isOpen
+			: this.props.isOpen;
+	}
+
 	getTooltip() {
-		const isOpen =
-			this.props.isOpen === undefined ? this.state.isOpen : this.props.isOpen;
+		const isOpen = this.getIsOpen();
 		const { align } = this.props;
 
 		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)

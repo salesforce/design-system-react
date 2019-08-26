@@ -1,0 +1,25 @@
+{
+    "component": "alert",
+    "status": "prod",
+  	"display-name": "Alerts",
+    "classKey": "Alert",
+    "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+    },
+    "SLDS-component-path": "/components/alert",
+    "dependencies": [
+        {
+            "component": "container",
+            "classKey": "AlertContainer"
+        }
+    ],
+    "site-stories": [
+		"/__examples__/info.jsx",
+		"/__examples__/warning.jsx",
+		"/__examples__/offline.jsx",
+		"/__examples__/error.jsx",
+		"/__examples__/dismissable.jsx"
+	],
+    "url-slug": "alerts"
+}

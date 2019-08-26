@@ -1,0 +1,23 @@
+{
+	"component": "expression",
+	"status": "prototype",
+	"display-name": "Expression",
+	"classKey": "Expression",
+	"SLDS-component-path": "/components/expression",
+	"dependencies": [
+		{
+			"component": "condition",
+			"classKey": "ExpressionCondition"
+		},
+		{
+			"component": "formula",
+			"classKey": "ExpressionFormula"
+		},
+		{
+			"component": "group",
+			"classKey": "ExpressionGroup"
+		}
+	],
+	"site-stories": ["/__examples__/resource-selected.jsx"],
+	"url-slug": "expression"
+}

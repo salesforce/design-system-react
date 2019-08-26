@@ -18,7 +18,7 @@ import classNames from 'classnames';
 import colors from '../../utilities/design-tokens/dist/salesforce-skin.common.js';
 
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import Button from '../button';
 
@@ -114,10 +114,11 @@ class GlobalNavigationDropdownTrigger extends React.Component {
 		triggerRef: PropTypes.func,
 	};
 
+	static defaultProps = { assistiveText: { icon: 'Open menu item submenu' } };
+
 	constructor(props) {
 		super(props);
-
-		checkProps(MENU_DROPDOWN_TRIGGER, props, componentDoc);
+		checkProps(MENU_DROPDOWN_TRIGGER, this.props, componentDoc);
 	}
 
 	// ### Render

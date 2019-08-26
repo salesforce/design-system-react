@@ -22,7 +22,6 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -33,7 +32,6 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base"
@@ -233,7 +231,6 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-custom-menu-item-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -244,7 +241,6 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-custom-menu-item-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-custom-menu-item"
@@ -298,7 +294,6 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item Disabled 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-unique-id-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -309,7 +304,6 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item Disabled 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -414,11 +408,11 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                 className="slds-input__icon slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#search"
                 />
               </svg>
             </div>
-            <section
+            <div
               className="absolute-positioned"
               id="combobox-base-inherit-menu-width-listbox"
               onKeyDown={[Function]}
@@ -465,7 +459,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -513,7 +507,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -561,7 +555,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -609,7 +603,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -657,7 +651,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#opportunity"
                           />
                         </svg>
                         <span
@@ -705,7 +699,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -753,7 +747,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#opportunity"
                           />
                         </svg>
                         <span
@@ -780,7 +774,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                   </span>
                 </li>
               </ul>
-            </section>
+            </div>
           </div>
         </div>
       </div>
@@ -811,7 +805,6 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-inherit-menu-width-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -822,7 +815,6 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-inherit-menu-width-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-inherit-menu-width"
@@ -883,7 +875,6 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
         }
       >
         <button
-          aria-describedby="field-level-help-tooltip"
           aria-disabled={true}
           className="slds-button slds-button_icon"
           disabled={false}
@@ -919,7 +910,6 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
           <div
             aria-expanded={false}
             aria-haspopup="listbox"
-            aria-owns="combobox-base-inline-help-listbox"
             className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
             role="combobox"
           >
@@ -930,7 +920,6 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
               <input
                 aria-activedescendant={null}
                 aria-autocomplete="list"
-                aria-controls="combobox-base-inline-help-listbox"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 id="combobox-base-inline-help"
@@ -1131,7 +1120,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -1142,7 +1130,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base"
@@ -1344,7 +1331,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -1355,7 +1341,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base"
@@ -1593,7 +1578,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
               />
             </svg>
           </div>
-          <section
+          <div
             className="absolute-positioned"
             id="combobox-base-listbox"
             onKeyDown={[Function]}
@@ -1739,7 +1724,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                       </span>
                     </span>
                   </span>
-                  <section
+                  <div
                     className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
                     id="combobox-base-listbox-option-help-4"
                     onKeyDown={[Function]}
@@ -1757,7 +1742,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     >
                       This account has been removed from the system.
                     </div>
-                  </section>
+                  </div>
                 </div>
               </li>
               <li
@@ -1881,7 +1866,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                       </span>
                     </span>
                   </span>
-                  <section
+                  <div
                     className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
                     id="combobox-base-listbox-option-help-6"
                     onKeyDown={[Function]}
@@ -1899,7 +1884,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     >
                       You don't have permission to access this account.
                     </div>
-                  </section>
+                  </div>
                 </div>
               </li>
               <li
@@ -2001,7 +1986,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
       <div
@@ -2179,7 +2164,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Separator 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-menu-separator-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -2190,7 +2174,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Separator 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-menu-separator-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-menu-separator"
@@ -2244,7 +2227,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Sub Headers 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-menu-subheader-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -2255,7 +2237,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Sub Headers 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-menu-subheader-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-menu-subheader"
@@ -2309,7 +2290,6 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-base-predefined-options-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -2320,7 +2300,6 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-base-predefined-options-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-predefined-options"
@@ -2520,7 +2499,6 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="dialog"
-          aria-owns="combobox-dialog"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -2537,7 +2515,6 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
             >
               <input
                 aria-autocomplete="none"
-                aria-controls="combobox-dialog"
                 aria-describedby={null}
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
@@ -2744,18 +2721,286 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-inline-multiple-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-inline-multiple"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Search Salesforce"
+              readOnly={false}
+              required={false}
+              role="textbox"
+              type="text"
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCombobox Inline Multiple Selection Loading 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="listbox"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              id="combobox-unique-id"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Search Salesforce"
+              readOnly={false}
+              required={false}
+              role="textbox"
+              type="text"
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox-group"
+      >
+        <div
+          className="slds-combobox_object-switcher slds-combobox-addon_start"
+        >
+          <div
+            className="slds-form-element"
+          >
+            <label
+              className="slds-form-element__label slds-assistive-text"
+              htmlFor="combobox-new-unique-id"
+            >
+              Filter Search by:
+            </label>
+            <div
+              className="slds-form-element__control"
+            >
+              <div
+                className="slds-combobox_container"
+              >
+                <div
+                  aria-expanded={false}
+                  aria-haspopup="listbox"
+                  className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                  role="combobox"
+                >
+                  <div
+                    className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                    role="none"
+                  >
+                    <input
+                      aria-activedescendant={null}
+                      aria-autocomplete="list"
+                      autoComplete="off"
+                      className="slds-input slds-combobox__input"
+                      disabled={false}
+                      id="combobox-new-unique-id"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="Select an Option"
+                      readOnly={true}
+                      required={false}
+                      role="textbox"
+                      type="text"
+                      value="All"
+                    />
+                    <span
+                      className="slds-icon_container slds-input__icon slds-input__icon_right"
+                    >
+                      <svg
+                        aria-hidden={true}
+                        className="slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-combobox_container slds-combobox-addon_end"
+        >
+          <div
+            className="slds-form-element"
+          >
+            <div
+              className="slds-form-element__control"
+            >
+              <div
+                className="slds-combobox_container"
+              >
+                <div
+                  aria-expanded={false}
+                  aria-haspopup="listbox"
+                  className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                  role="combobox"
+                >
+                  <div
+                    className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                    role="none"
+                  >
+                    <input
+                      aria-activedescendant={null}
+                      aria-autocomplete="list"
+                      autoComplete="off"
+                      className="slds-input slds-combobox__input"
+                      id="combobox-unique-id"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="Search Salesforce"
+                      readOnly={false}
+                      required={false}
+                      role="textbox"
+                      type="text"
+                      value=""
+                    />
+                    <svg
+                      aria-hidden={true}
+                      className="slds-input__icon slds-icon-text-default"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="listbox"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              disabled={false}
+              id="combobox-unique-id"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -2816,7 +3061,6 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-inline-single-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -2871,7 +3115,6 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-input-prop-example-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -2882,10 +3125,9 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-input-prop-example-listbox"
               autoComplete="test"
               className="slds-input slds-combobox__input"
-              id="id_from_input_prop"
+              id="combobox-input-prop-example"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -3086,15 +3328,12 @@ exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-readonly-multiple-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-readonly-multiple"
@@ -3156,15 +3395,12 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Menu Item Disabled 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-readonly-single-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -3251,15 +3487,12 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection - Right to Left (R
             role="combobox"
           >
             <div
-              aria-expanded={false}
-              aria-haspopup="listbox"
               className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
               role="none"
             >
               <input
                 aria-activedescendant={null}
                 aria-autocomplete="list"
-                aria-controls="combobox-readonly-single-listbox"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 disabled={false}
@@ -3284,7 +3517,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection - Right to Left (R
                   className="slds-icon slds-icon_x-small slds-icon-text-default"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
                   />
                 </svg>
               </span>
@@ -3323,15 +3556,12 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-readonly-single-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -3394,15 +3624,12 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Custom Menu Item 1
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-readonly-single-custom-item-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -3465,15 +3692,12 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Disabled 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={true}
@@ -3538,7 +3762,6 @@ exports[`DOM snapshots SLDSCombobox Required Input in Error State 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-required-error-state-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error"
           role="combobox"
         >
@@ -3549,7 +3772,6 @@ exports[`DOM snapshots SLDSCombobox Required Input in Error State 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-required-error-state-listbox"
               aria-describedby="description-unique-id"
               autoComplete="off"
               className="slds-input slds-combobox__input"
@@ -3650,7 +3872,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
               />
             </svg>
           </div>
-          <section
+          <div
             id="combobox-base-custom-menu-item-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -3869,7 +4091,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
     </div>
@@ -3905,7 +4127,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Label Required 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-required-error-state-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error"
           role="combobox"
         >
@@ -3916,7 +4137,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Label Required 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-required-error-state-listbox"
               aria-describedby="description-unique-id"
               autoComplete="off"
               className="slds-input slds-combobox__input"
@@ -4017,7 +4237,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
               />
             </svg>
           </div>
-          <section
+          <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -4132,7 +4352,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
     </div>
@@ -4198,7 +4418,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
               />
             </svg>
           </div>
-          <section
+          <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -4255,7 +4475,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
     </div>
@@ -4321,7 +4541,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
               />
             </svg>
           </div>
-          <section
+          <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -4378,7 +4598,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
     </div>
@@ -4393,6 +4613,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
   <div
     className="slds-form-element"
   >
+    <label
+      className="slds-form-element__label slds-assistive-text"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
     <div
       className="slds-form-element__control"
     >
@@ -4402,7 +4628,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
         <div
           aria-expanded={false}
           aria-haspopup="listbox"
-          aria-owns="combobox-unique-id-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -4413,7 +4638,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -4546,7 +4770,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
         <div
           aria-expanded={true}
           aria-haspopup="dialog"
-          aria-owns="combobox-unique-id"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
           role="combobox"
         >
@@ -4563,7 +4786,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
             >
               <input
                 aria-autocomplete="none"
-                aria-controls="combobox-unique-id"
+                aria-controls="combobox-unique-id-popover"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 id="combobox-unique-id"
@@ -4674,6 +4897,362 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          aria-expanded={true}
+          aria-haspopup="listbox"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              aria-controls="combobox-unique-id-listbox"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              id="combobox-unique-id"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Search Salesforce"
+              readOnly={false}
+              required={false}
+              role="textbox"
+              type="text"
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+          </div>
+          <div
+            className="absolute-positioned"
+            id="combobox-unique-id-listbox"
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            role="listbox"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
+          >
+            <ul
+              className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
+              role="presentation"
+              style={
+                Object {
+                  "maxWidth": undefined,
+                  "position": "relative",
+                  "width": undefined,
+                }
+              }
+            >
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                  id="combobox-unique-id-listbox-option-1"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-account"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Account
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-listbox__option-text slds-listbox__option-text_entity"
+                    >
+                      Acme
+                    </span>
+                    <span
+                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                    >
+                      Account • San Francisco
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                  id="combobox-unique-id-listbox-option-2"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-account"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Account
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-listbox__option-text slds-listbox__option-text_entity"
+                    >
+                      Salesforce.com, Inc.
+                    </span>
+                    <span
+                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                    >
+                      Account • San Francisco
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                  id="combobox-unique-id-listbox-option-3"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-account"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Account
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-listbox__option-text slds-listbox__option-text_entity"
+                    >
+                      Paddy's Pub
+                    </span>
+                    <span
+                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                    >
+                      Account • Boston, MA
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                  id="combobox-unique-id-listbox-option-4"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-account"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Account
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-listbox__option-text slds-listbox__option-text_entity"
+                    >
+                      Tyrell Corp
+                    </span>
+                    <span
+                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                    >
+                      Account • San Francisco, CA
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                  id="combobox-unique-id-listbox-option-5"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-account"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Account
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-listbox__option-text slds-listbox__option-text_entity"
+                    >
+                      Paper St. Soap Company
+                    </span>
+                    <span
+                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                    >
+                      Account • Beloit, WI
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-align_absolute-center slds-p-top_medium"
+                >
+                  <div
+                    className="slds-spinner slds-spinner_x-small slds-spinner_inline"
+                    role="status"
+                  >
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Loading
+                    </span>
+                    <div
+                      className="slds-spinner__dot-a"
+                    />
+                    <div
+                      className="slds-spinner__dot-b"
+                    />
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection 1`] = `
 <div
   className="slds-p-around_medium"
@@ -4700,15 +5279,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -4912,15 +5488,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -4944,6 +5517,456 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Entity Selection 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox-group"
+      >
+        <div
+          className="slds-combobox_object-switcher slds-combobox-addon_start"
+        >
+          <div
+            className="slds-form-element"
+          >
+            <label
+              className="slds-form-element__label slds-assistive-text"
+              htmlFor="combobox-new-unique-id"
+            >
+              Filter Search by:
+            </label>
+            <div
+              className="slds-form-element__control"
+            >
+              <div
+                className="slds-combobox_container"
+              >
+                <div
+                  aria-expanded={false}
+                  aria-haspopup="listbox"
+                  className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                  role="combobox"
+                >
+                  <div
+                    className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                    role="none"
+                  >
+                    <input
+                      aria-activedescendant={null}
+                      aria-autocomplete="list"
+                      autoComplete="off"
+                      className="slds-input slds-combobox__input"
+                      disabled={false}
+                      id="combobox-new-unique-id"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="entity"
+                      readOnly={false}
+                      required={false}
+                      role="textbox"
+                      type="text"
+                      value=""
+                    />
+                    <svg
+                      aria-hidden={true}
+                      className="slds-input__icon slds-icon-text-default"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-combobox_container slds-combobox-addon_end"
+        >
+          <div
+            className="slds-form-element"
+          >
+            <div
+              className="slds-form-element__control"
+            >
+              <div
+                className="slds-combobox_container"
+              >
+                <div
+                  aria-expanded={false}
+                  aria-haspopup="listbox"
+                  className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                  role="combobox"
+                >
+                  <div
+                    className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                    role="none"
+                  >
+                    <input
+                      aria-activedescendant={null}
+                      aria-autocomplete="list"
+                      autoComplete="off"
+                      className="slds-input slds-combobox__input"
+                      id="combobox-unique-id"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      placeholder="Search Salesforce"
+                      readOnly={false}
+                      required={false}
+                      role="textbox"
+                      type="text"
+                      value=""
+                    />
+                    <svg
+                      aria-hidden={true}
+                      className="slds-input__icon slds-icon-text-default"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities Open 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          aria-expanded={true}
+          aria-haspopup="listbox"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              aria-controls="combobox-unique-id-listbox"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              disabled={false}
+              id="combobox-unique-id"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Search Salesforce"
+              readOnly={false}
+              required={false}
+              role="textbox"
+              type="text"
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+          </div>
+          <div
+            className="absolute-positioned"
+            id="combobox-unique-id-listbox"
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            role="listbox"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
+          >
+            <ul
+              className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
+              role="presentation"
+              style={
+                Object {
+                  "maxWidth": undefined,
+                  "position": "relative",
+                  "width": undefined,
+                }
+              }
+            >
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected="false"
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
+                  id="my-new-id"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure slds-listbox__option-icon"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        add
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    salesforce
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                  id="combobox-unique-id-listbox-option-1"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-account"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Account
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-listbox__option-text slds-listbox__option-text_entity"
+                    >
+                      Acme
+                    </span>
+                    <span
+                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                    >
+                      Account • San Francisco
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                  id="combobox-unique-id-listbox-option-2"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-account"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Account
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-listbox__option-text slds-listbox__option-text_entity"
+                    >
+                      Salesforce.com, Inc.
+                    </span>
+                    <span
+                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                    >
+                      Account • San Francisco
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                  id="combobox-unique-id-listbox-option-3"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-account"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Account
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-listbox__option-text slds-listbox__option-text_entity"
+                    >
+                      Paddy's Pub
+                    </span>
+                    <span
+                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                    >
+                      Account • Boston, MA
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected="false"
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
+                  id="my-new-id"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure slds-listbox__option-icon"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        add
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    New Entity
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -4984,7 +6007,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -5066,7 +6088,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection Selected 1`
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -5137,15 +6158,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -5207,15 +6225,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Multipl
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -5381,15 +6396,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Single 
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -5451,15 +6463,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection 1`] = `
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -5522,8 +6531,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
           role="combobox"
         >
           <div
-            aria-expanded={true}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
@@ -5560,7 +6567,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
               </svg>
             </span>
           </div>
-          <section
+          <div
             id="combobox-readonly-single-custom-item-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -6123,7 +7130,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
     </div>
@@ -6157,15 +7164,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Disabled 
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={true}
@@ -6228,15 +7232,12 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
           role="combobox"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-controls="combobox-unique-id-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -6299,8 +7300,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
           role="combobox"
         >
           <div
-            aria-expanded={true}
-            aria-haspopup="listbox"
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
             role="none"
           >
@@ -6337,7 +7336,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
               </svg>
             </span>
           </div>
-          <section
+          <div
             id="combobox-unique-id-listbox"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
@@ -6673,7 +7672,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                 </span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
     </div>

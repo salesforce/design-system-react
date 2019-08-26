@@ -4,6 +4,7 @@ const StringReplacePlugin = require('string-replace-webpack-plugin');
 const packageJson = require('./package.json');
 
 const config = {
+	mode: 'development',
 	entry: {
 		'design-system-react': ['./components'],
 	},
@@ -40,10 +41,6 @@ const config = {
 				],
 			},
 			{
-				test: /\.json$/,
-				loader: 'json-loader',
-			},
-			{
 				test: /\.css$/,
 				loaders: ['style-loader', 'css-loader'],
 			},
@@ -56,6 +53,9 @@ const config = {
 				loader: 'file-loader?limit=30&name=fonts/webfonts/[name].[ext]',
 			},
 		],
+	},
+	performance: {
+		hints: false,
 	},
 	plugins: [new StringReplacePlugin()],
 };

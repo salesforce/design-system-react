@@ -18,7 +18,7 @@ import classNames from 'classnames';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 import checkProps from './check-props';
 
 import { VERTICAL_NAVIGATION } from '../../utilities/constants';

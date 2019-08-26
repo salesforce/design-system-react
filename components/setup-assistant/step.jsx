@@ -9,6 +9,7 @@ import classNames from 'classnames';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
+import assign from 'lodash.assign';
 
 import Button from '../button';
 import ProgressRing from '../progress-ring';
@@ -16,6 +17,15 @@ import ProgressRing from '../progress-ring';
 import { SETUP_ASSISTANT_STEP } from '../../utilities/constants';
 
 const propTypes = {
+	/**
+	 * **Assistive text for accessibility**
+	 * This object is merged with the default props object on every render.
+	 * * `expandStep`: Button that examples a step
+	 * _Tested with snapshot testing._
+	 */
+	assistiveText: PropTypes.shape({
+		expandStep: PropTypes.string,
+	}),
 	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
@@ -74,8 +84,14 @@ const propTypes = {
 	stepNumber: PropTypes.number,
 };
 
-const defaultProps = {};
+const defaultProps = {
+	assistiveText: { expandStep: 'Expand Step' },
+};
 
+/**
+ * Setup Assistant Step component is used to specify individual items within the Setup Assistant
+ * filled with learning and task links along with a recommended sequence that may have progress tracking
+ */
 class Step extends React.Component {
 	constructor(props) {
 		super(props);
@@ -109,7 +125,7 @@ class Step extends React.Component {
 
 	renderMediaContent() {
 		return (
-			<>
+			<React.Fragment>
 				<div className="slds-setup-assistant__step-summary-content slds-media__body">
 					<h3 className="slds-setup-assistant__step-summary-title slds-text-heading_small">
 						{this.props.isExpandable ? (
@@ -142,18 +158,14 @@ class Step extends React.Component {
 						</p>
 					) : null}
 				</div>
-			</>
+			</React.Fragment>
 		);
 	}
 
 	renderSummary() {
 		let progressRingTheme;
 
-		if (
-			this.props.progress > 0 &&
-			this.props.progress < 100 &&
-			this.getIsOpen()
-		) {
+		if (this.props.progress > 0 && this.props.progress < 100) {
 			progressRingTheme = 'active';
 		} else if (this.props.progress === 100) {
 			progressRingTheme = 'complete';
@@ -189,6 +201,11 @@ class Step extends React.Component {
 	}
 
 	render() {
+		const assistiveText = assign(
+			{},
+			defaultProps.assistiveText,
+			this.props.assistiveText
+		);
 		return (
 			<li
 				className={classNames(
@@ -205,6 +222,7 @@ class Step extends React.Component {
 							})}
 						>
 							<Button
+								assistiveText={{ icon: assistiveText.expandStep }}
 								aria-controls={`${this.getId()}-detail-content`}
 								className="slds-m-right_x-small slds-m-top_x-small"
 								iconCategory="utility"

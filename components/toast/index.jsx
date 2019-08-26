@@ -16,7 +16,7 @@ import Icon from '../icon';
 import checkProps from './check-props';
 import { TOAST } from '../../utilities/constants';
 import DOMElementFocus from '../../utilities/dom-element-focus';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 const propTypes = {
 	/**

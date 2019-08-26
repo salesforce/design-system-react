@@ -19,7 +19,7 @@ const defaultProps = {
 		save: 'Save',
 	},
 };
-class EditDialogPopover extends React.Component {
+class EditDialog extends React.Component {
 	// ### Display Name
 	// Always use the canonical component name as the React display name.
 	static displayName = POPOVER_EDIT_DIALOG;
@@ -60,6 +60,14 @@ class EditDialogPopover extends React.Component {
 		popover: PropTypes.node,
 	};
 
+	handleOpen = () => {
+		this.setState({ isOpen: true });
+	};
+
+	handleClose = () => {
+		this.setState({ isOpen: false });
+	};
+
 	render() {
 		const { onCancel, onSave, ...restProps } = this.props;
 
@@ -69,7 +77,6 @@ class EditDialogPopover extends React.Component {
 		) : (
 			<Button
 				assistiveText={{ icon: 'Edit: Status' }}
-				aria-controls={`${this.props.id}-edit-button`}
 				className="slds-button_reset"
 				iconCategory="utility"
 				iconClassName="slds-button__icon slds-button__icon_hint"
@@ -102,6 +109,9 @@ class EditDialogPopover extends React.Component {
 					</div>
 				}
 				footerStyle={{ borderTop: '0px' }}
+				onClose={this.handleClose}
+				onRequestClose={this.handleClose}
+				onOpen={this.handleOpen}
 				{...restProps}
 			>
 				{children}
@@ -110,6 +120,6 @@ class EditDialogPopover extends React.Component {
 	}
 }
 
-EditDialogPopover.defaultProps = defaultProps;
+EditDialog.defaultProps = defaultProps;
 
-export default EditDialogPopover;
+export default EditDialog;

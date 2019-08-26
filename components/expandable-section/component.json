@@ -1,0 +1,13 @@
+{
+    "component": "expandable-section",
+    "status": "prod",
+    "display-name": "Expandable Section",
+	"classKey": "ExpandableSection",
+    "SLDS-component-path": "/components/expandable-section",
+	"site-stories": [
+		"/__examples__/default.jsx",
+		"/__examples__/controlled.jsx",
+		"/__examples__/non-collapsible.jsx"
+	],
+    "url-slug": "expandable-section"
+}
