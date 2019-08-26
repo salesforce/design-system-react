@@ -10,7 +10,9 @@ exports[`DOM snapshots SLDSPopover Alignment (Button) 1`] = `
     }
   }
 >
-  <div>
+  <div
+    data-ignore-axe-duplicate-id-active={true}
+  >
     <div
       style={
         Object {
@@ -373,7 +375,9 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
     }
   }
 >
-  <div>
+  <div
+    data-ignore-axe-duplicate-id-active={true}
+  >
     <div
       style={
         Object {
@@ -1141,7 +1145,6 @@ exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
       }
     >
       <button
-        aria-controls="edit-dialog-popover-edit-button"
         className="slds-button slds-button_icon slds-button_reset"
         disabled={false}
         id="edit-dialog-popover"
@@ -1173,7 +1176,7 @@ exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
       </button>
       <section
         aria-describedby="edit-dialog-popover-dialog-body"
-        aria-labelledby="Edit Name"
+        aria-labelledby="edit-name"
         className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover"
         id="edit-dialog-popover-popover"
         onKeyDown={[Function]}
@@ -1216,6 +1219,12 @@ exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
           <div
             className="slds-form slds-form_stacked slds-p-top_medium slds-p-right_small slds-p-left_small"
           >
+            <h2
+              className="slds-assistive-text"
+              id="edit-name"
+            >
+              Edit Name
+            </h2>
             <div
               className="slds-form-element"
             >
@@ -1321,7 +1330,6 @@ exports[`DOM snapshots SLDSPopover Edit Dialog 1`] = `
       }
     >
       <button
-        aria-controls="edit-dialog-popover-edit-button"
         className="slds-button slds-button_icon slds-button_reset"
         disabled={false}
         id="edit-dialog-popover"
@@ -1451,6 +1459,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
           >
             <h2
               className="slds-truncate slds-text-heading_medium"
+              id="popover-error-dialog-heading"
               title="Resolve error"
             >
               Resolve error
@@ -1925,6 +1934,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough Action - Open 1`] = `
           >
             <h2
               className="slds-text-heading_small"
+              id="popover-walkthrough-dialog-heading"
             >
               Title
             </h2>
@@ -2073,6 +2083,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
           >
             <h2
               className="slds-truncate slds-text-heading_medium"
+              id="popover-error-dialog-heading"
               title="Review warning"
             >
               Review warning
