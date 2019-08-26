@@ -10,13 +10,13 @@ import ProgressIndicator from '~/components/progress-indicator';
 
 import log from '~/utilities/log';
 
-const subStepsComplete = [
+const subStepsComplete = (step) => [
 	{
-		id: 0,
+		id: `step-${step}-substep0`,
 		label: 'Turn on Lightning for all users.',
 		onRenderSetupAssistantAction: (
 			<Checkbox
-				id="substep-complete-0-action"
+				id={`step-${step}-substep0-action`}
 				checked
 				oldEventParameterOrder={false}
 				variant="toggle"
@@ -24,12 +24,12 @@ const subStepsComplete = [
 		),
 	},
 	{
-		id: 1,
+		id: `step-${step}-substep1`,
 		label:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		onRenderSetupAssistantAction: (
 			<Button
-				id="substep-complete-1-action"
+				id={`step-${step}-substep1-action`}
 				label="View in Trailhead"
 				variant="link"
 			/>
@@ -37,25 +37,25 @@ const subStepsComplete = [
 	},
 ];
 
-const subStepsIncomplete = [
+const subStepsIncomplete = (step) => [
 	{
-		id: 0,
+		id: `step-${step}-substep0`,
 		label: 'Turn on Lightning for all users.',
 		onRenderSetupAssistantAction: (
 			<Checkbox
-				id="substep-incomplete-0-action"
+				id={`step-${step}-substep0-action`}
 				oldEventParameterOrder={false}
 				variant="toggle"
 			/>
 		),
 	},
 	{
-		id: 1,
+		id: `step-${step}-substep1`,
 		label:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		onRenderSetupAssistantAction: (
 			<Button
-				id="substep-incomplete-1-action"
+				id={`step-${step}-substep1-action`}
 				label="View in Trailhead"
 				variant="link"
 			/>
@@ -202,10 +202,10 @@ class Example extends React.Component {
 						isOpen={this.state.expandedSteps[0] || false}
 						onRenderContent={() => (
 							<ProgressIndicator
-								completedSteps={subStepsComplete}
+								completedSteps={subStepsComplete('complete1')}
 								id="hub-expandable-step-1-progress-indicator"
 								orientation="vertical"
-								steps={subStepsComplete}
+								steps={subStepsComplete('complete1')}
 								variant="setup-assistant"
 							/>
 						)}
@@ -250,10 +250,10 @@ class Example extends React.Component {
 						isOpen={this.state.expandedSteps[2] || false}
 						onRenderContent={() => (
 							<ProgressIndicator
-								completedSteps={subStepsComplete}
+								completedSteps={subStepsComplete('complete2')}
 								id="hub-expandable-step-3-progress-indicator"
 								orientation="vertical"
-								steps={subStepsComplete}
+								steps={subStepsComplete('complete2')}
 								variant="setup-assistant"
 							/>
 						)}
@@ -270,8 +270,8 @@ class Example extends React.Component {
 							<ProgressIndicator
 								id="hub-expandable-step-4-progress-indicator"
 								orientation="vertical"
-								steps={subStepsIncomplete}
-								selectedStep={subStepsIncomplete[0]}
+								steps={subStepsIncomplete('incomplete1')}
+								selectedStep={subStepsIncomplete('incomplete1')[0]}
 								variant="setup-assistant"
 							/>
 						)}
@@ -288,8 +288,8 @@ class Example extends React.Component {
 							<ProgressIndicator
 								id="hub-expandable-step-5-progress-indicator"
 								orientation="vertical"
-								steps={subStepsIncomplete}
-								selectedStep={subStepsIncomplete[0]}
+								steps={subStepsIncomplete('incomplete2')}
+								selectedStep={subStepsIncomplete('incomplete2')[0]}
 								variant="setup-assistant"
 							/>
 						)}

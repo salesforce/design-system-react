@@ -43,13 +43,9 @@ const propTypes = {
 	 */
 	disabled: PropTypes.bool,
 	/**
-	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+	 * Icon associated with the stateful button. Accepts an `Icon` component
 	 */
-	iconName: PropTypes.string,
-	/**
-	 * Determines the size of the icon.
-	 */
-	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+	icon: PropTypes.node,
 	/**
 	 * Triggered when focus is removed.
 	 */
@@ -169,6 +165,7 @@ class ButtonStateful extends React.Component {
 		const {
 			active,
 			disabled,
+			icon,
 			iconName,
 			iconSize,
 			id,
@@ -186,6 +183,11 @@ class ButtonStateful extends React.Component {
 			variant,
 		} = this.props;
 
+		const defaultIconProps = {
+			disabled,
+			size: 'small',
+			className: 'slds-button__icon_stateful',
+		};
 		const iconAssistiveText =
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
@@ -215,18 +217,27 @@ class ButtonStateful extends React.Component {
 					tabIndex={tabIndex}
 					type="button"
 				>
-					<ButtonIcon
-						disabled={disabled}
-						name={iconName}
-						size={iconSize}
-						className="slds-button__icon_stateful"
-					/>
+					{icon ? (
+						React.cloneElement(icon, {
+							...defaultIconProps,
+							...icon.props,
+						})
+					) : (
+						<ButtonIcon
+							disabled={disabled}
+							name={iconName}
+							size={iconSize}
+							className="slds-button__icon_stateful"
+						/>
+					)}
 					{iconAssistiveText ? (
 						<span className="slds-assistive-text">{iconAssistiveText}</span>
 					) : null}
 				</button>
 			);
 		}
+
+		defaultIconProps.position = 'left';
 
 		return (
 			<button
@@ -246,33 +257,57 @@ class ButtonStateful extends React.Component {
 				type="button"
 			>
 				<span className="slds-text-not-selected">
-					<ButtonIcon
-						disabled={disabled}
-						name={stateOne.iconName}
-						size="small"
-						position="left"
-						className="slds-button__icon_stateful"
-					/>
+					{stateOne.icon ? (
+						React.cloneElement(stateOne.icon, {
+							...defaultIconProps,
+							...stateOne.icon.props,
+							size: 'small',
+						})
+					) : (
+						<ButtonIcon
+							disabled={disabled}
+							name={stateOne.iconName}
+							size="small"
+							position="left"
+							className="slds-button__icon_stateful"
+						/>
+					)}
 					{stateOne.label}
 				</span>
 				<span className="slds-text-selected">
-					<ButtonIcon
-						disabled={disabled}
-						name={stateTwo.iconName}
-						size="small"
-						position="left"
-						className="slds-button__icon_stateful"
-					/>
+					{stateTwo.icon ? (
+						React.cloneElement(stateTwo.icon, {
+							...defaultIconProps,
+							...stateTwo.icon.props,
+							size: 'small',
+						})
+					) : (
+						<ButtonIcon
+							disabled={disabled}
+							name={stateTwo.iconName}
+							size="small"
+							position="left"
+							className="slds-button__icon_stateful"
+						/>
+					)}
 					{stateTwo.label}
 				</span>
 				<span className="slds-text-selected-focus">
-					<ButtonIcon
-						disabled={disabled}
-						name={stateThree.iconName}
-						size="small"
-						position="left"
-						className="slds-button__icon_stateful"
-					/>
+					{stateThree.icon ? (
+						React.cloneElement(stateThree.icon, {
+							...defaultIconProps,
+							...stateThree.icon.props,
+							size: 'small',
+						})
+					) : (
+						<ButtonIcon
+							disabled={disabled}
+							name={stateThree.iconName}
+							size="small"
+							position="left"
+							className="slds-button__icon_stateful"
+						/>
+					)}
 					{stateThree.label}
 				</span>
 			</button>

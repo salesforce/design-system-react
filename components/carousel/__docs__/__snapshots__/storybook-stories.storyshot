@@ -607,7 +607,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-0"
+            aria-controls="content-id-carousel-three-items-example-1"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
             id="indicator-id-carousel-three-items-example-0"
@@ -636,7 +636,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="content-id-carousel-three-items-example-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-three-items-example-1"
@@ -665,7 +665,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="content-id-carousel-three-items-example-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-three-items-example-2"
@@ -1325,7 +1325,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
           }
         >
           <a
-            aria-controls="panel-0"
+            aria-controls="content-id-carousel-three-items-controlled-example-1"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-three-items-controlled-example-0"
@@ -1354,7 +1354,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="content-id-carousel-three-items-controlled-example-2"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
             id="indicator-id-carousel-three-items-controlled-example-1"
@@ -1383,7 +1383,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="content-id-carousel-three-items-controlled-example-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-three-items-controlled-example-2"
@@ -2014,7 +2014,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-0"
+            aria-controls="content-id-carousel-five-items-example-1"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
             id="indicator-id-carousel-five-items-example-0"
@@ -2043,7 +2043,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="content-id-carousel-five-items-example-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-five-items-example-1"
@@ -2544,7 +2544,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-0"
+            aria-controls="content-id-carousel-default-example-1"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
             id="indicator-id-carousel-default-example-0"
@@ -2573,7 +2573,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="content-id-carousel-default-example-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-example-1"
@@ -2602,7 +2602,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="content-id-carousel-default-example-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-example-2"
@@ -2631,7 +2631,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-3"
+            aria-controls="content-id-carousel-default-example-4"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-example-3"
@@ -2660,7 +2660,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-4"
+            aria-controls="content-id-carousel-default-example-5"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-example-4"
@@ -2689,7 +2689,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-5"
+            aria-controls="content-id-carousel-default-example-6"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-example-5"
@@ -2718,7 +2718,7 @@ exports[`DOM snapshots SLDSCarousel Default (1 item) NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-6"
+            aria-controls="content-id-carousel-default-example-7"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-example-6"
@@ -3248,7 +3248,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-0"
+            aria-controls="content-id-carousel-default-with-auto-play-example-1"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
             id="indicator-id-carousel-default-with-auto-play-example-0"
@@ -3277,7 +3277,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="content-id-carousel-default-with-auto-play-example-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-with-auto-play-example-1"
@@ -3306,7 +3306,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="content-id-carousel-default-with-auto-play-example-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-with-auto-play-example-2"
@@ -3335,7 +3335,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-3"
+            aria-controls="content-id-carousel-default-with-auto-play-example-4"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-with-auto-play-example-3"
@@ -3364,7 +3364,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-4"
+            aria-controls="content-id-carousel-default-with-auto-play-example-5"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-with-auto-play-example-4"
@@ -3393,7 +3393,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-5"
+            aria-controls="content-id-carousel-default-with-auto-play-example-6"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-with-auto-play-example-5"
@@ -3422,7 +3422,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
           }
         >
           <a
-            aria-controls="panel-6"
+            aria-controls="content-id-carousel-default-with-auto-play-example-7"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-with-auto-play-example-6"
@@ -3990,7 +3990,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-0"
+            aria-controls="content-id-carousel-default-with-navigation-example-1"
             aria-selected={true}
             className="slds-carousel__indicator-action slds-is-active"
             id="indicator-id-carousel-default-with-navigation-example-0"
@@ -4019,7 +4019,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-1"
+            aria-controls="content-id-carousel-default-with-navigation-example-2"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-with-navigation-example-1"
@@ -4048,7 +4048,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-2"
+            aria-controls="content-id-carousel-default-with-navigation-example-3"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-with-navigation-example-2"
@@ -4077,7 +4077,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-3"
+            aria-controls="content-id-carousel-default-with-navigation-example-4"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-with-navigation-example-3"
@@ -4106,7 +4106,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-4"
+            aria-controls="content-id-carousel-default-with-navigation-example-5"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-with-navigation-example-4"
@@ -4135,7 +4135,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-5"
+            aria-controls="content-id-carousel-default-with-navigation-example-6"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-with-navigation-example-5"
@@ -4164,7 +4164,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           }
         >
           <a
-            aria-controls="panel-6"
+            aria-controls="content-id-carousel-default-with-navigation-example-7"
             aria-selected={false}
             className="slds-carousel__indicator-action"
             id="indicator-id-carousel-default-with-navigation-example-6"
@@ -4715,7 +4715,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             }
           >
             <a
-              aria-controls="panel-0"
+              aria-controls="content-id-carousel-with-custom-items-example-1"
               aria-selected={true}
               className="slds-carousel__indicator-action slds-is-active"
               id="indicator-id-carousel-with-custom-items-example-0"
@@ -4744,7 +4744,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             }
           >
             <a
-              aria-controls="panel-1"
+              aria-controls="content-id-carousel-with-custom-items-example-2"
               aria-selected={false}
               className="slds-carousel__indicator-action"
               id="indicator-id-carousel-with-custom-items-example-1"
@@ -4773,7 +4773,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             }
           >
             <a
-              aria-controls="panel-2"
+              aria-controls="content-id-carousel-with-custom-items-example-3"
               aria-selected={false}
               className="slds-carousel__indicator-action"
               id="indicator-id-carousel-with-custom-items-example-2"

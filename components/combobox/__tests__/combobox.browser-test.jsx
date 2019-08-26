@@ -237,12 +237,69 @@ describe('SLDSCombobox', function describeFunction() {
 		});
 
 		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', function() {
-			wrapper = mount(<DemoComponent multiple isOpen />, {
-				attachTo: mountNode,
-			});
+			wrapper = mount(
+				<DemoComponent
+					multiple
+					isOpen
+					optionsSearchEntity={[
+						{
+							id: 'options-search-id-1',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add' }}
+									size="x-small"
+									category="utility"
+									name="search"
+								/>
+							),
+							label: 'Search in Salesforce',
+						},
+						{
+							id: 'search-in-account-id',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add in Accounts' }}
+									size="x-small"
+									category="utility"
+									name="search"
+								/>
+							),
+							label: (searchTerm) => [
+								searchTerm && searchTerm.length > 0 ? (
+									<span className="slds-text-title_bold">{`"${searchTerm}" `}</span>
+								) : (
+									'Search '
+								),
+								'in Accounts',
+							],
+						},
+					]}
+					optionsAddItem={[
+						{
+							id: 'options-add-id-1',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add' }}
+									category="utility"
+									size="x-small"
+									name="add"
+								/>
+							),
+							label: 'New Entity',
+						},
+					]}
+				/>,
+				{
+					attachTo: mountNode,
+				}
+			);
 			let nodes = getNodes({ wrapper });
 			nodes.input.simulate('focus');
 			nodes.input.simulate('change', { target: { value: accounts[1].label } });
+			// pass over header item 1
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
+			// pass  over header item 2
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
 			nodes.input.simulate('keyDown', keyObjects.DOWN);
 			expect(
 				nodes.menuListbox.find('#combobox-unique-id-listbox-option-2')

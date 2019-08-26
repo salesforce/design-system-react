@@ -42,6 +42,12 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
         <div
           className="slds-form-element"
         >
+          <label
+            className="slds-form-element__label slds-assistive-text"
+            htmlFor="header-search-custom-id"
+          >
+            Search
+          </label>
           <div
             className="slds-form-element__control"
           >
@@ -526,6 +532,12 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
         <div
           className="slds-form-element"
         >
+          <label
+            className="slds-form-element__label slds-assistive-text"
+            htmlFor="header-search-custom-id"
+          >
+            Search
+          </label>
           <div
             className="slds-form-element__control"
           >
@@ -901,6 +913,12 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
         <div
           className="slds-form-element"
         >
+          <label
+            className="slds-form-element__label slds-assistive-text"
+            htmlFor="header-search-custom-id"
+          >
+            Search
+          </label>
           <div
             className="slds-form-element__control"
           >

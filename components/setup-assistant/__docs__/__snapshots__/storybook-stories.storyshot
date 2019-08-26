@@ -290,6 +290,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
               />
             </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Expand Step
+            </span>
           </button>
           <div
             className="slds-container_fluid"
@@ -405,7 +410,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
-                      className="slds-progress__item slds-is-completed slds-is-active"
+                      className="slds-progress__item slds-is-completed"
                     >
                       <span
                         className="slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
@@ -424,7 +429,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                       </span>
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                        id="progress-indicator-vertical-label-0"
+                        id="progress-indicator-vertical-label-step-complete1-substep0"
                       >
                         <div
                           className="slds-size_3-of-4"
@@ -442,19 +447,19 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             >
                               <label
                                 className="slds-checkbox_toggle slds-grid"
-                                htmlFor="substep-complete-0-action"
+                                htmlFor="step-complete1-substep0-action"
                               >
                                 <input
-                                  aria-describedby="substep-complete-0-action-desc"
+                                  aria-describedby="step-complete1-substep0-action-desc"
                                   checked={true}
-                                  id="substep-complete-0-action"
+                                  id="step-complete1-substep0-action"
                                   onChange={[Function]}
                                   type="checkbox"
                                 />
                                 <span
                                   aria-live="assertive"
                                   className="slds-checkbox_faux_container"
-                                  id="substep-complete-0-action-desc"
+                                  id="step-complete1-substep0-action-desc"
                                 >
                                   <span
                                     className="slds-checkbox_faux"
@@ -496,7 +501,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                       </span>
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                        id="progress-indicator-vertical-label-1"
+                        id="progress-indicator-vertical-label-step-complete1-substep1"
                       >
                         <div
                           className="slds-size_3-of-4"
@@ -512,7 +517,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             <button
                               className="slds-button_reset slds-text-link"
                               disabled={false}
-                              id="substep-complete-1-action"
+                              id="step-complete1-substep1-action"
                               onClick={[Function]}
                               type="button"
                             >
@@ -555,6 +560,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
               />
             </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Expand Step
+            </span>
           </button>
           <div
             className="slds-container_fluid"
@@ -854,6 +864,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
               />
             </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Expand Step
+            </span>
           </button>
           <div
             className="slds-container_fluid"
@@ -969,7 +984,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     className="slds-progress__list slds-progress__list-bordered"
                   >
                     <li
-                      className="slds-progress__item slds-is-completed slds-is-active"
+                      className="slds-progress__item slds-is-completed"
                     >
                       <span
                         className="slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
@@ -988,7 +1003,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                       </span>
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                        id="progress-indicator-vertical-label-0"
+                        id="progress-indicator-vertical-label-step-complete2-substep0"
                       >
                         <div
                           className="slds-size_3-of-4"
@@ -1006,19 +1021,19 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             >
                               <label
                                 className="slds-checkbox_toggle slds-grid"
-                                htmlFor="substep-complete-0-action"
+                                htmlFor="step-complete2-substep0-action"
                               >
                                 <input
-                                  aria-describedby="substep-complete-0-action-desc"
+                                  aria-describedby="step-complete2-substep0-action-desc"
                                   checked={true}
-                                  id="substep-complete-0-action"
+                                  id="step-complete2-substep0-action"
                                   onChange={[Function]}
                                   type="checkbox"
                                 />
                                 <span
                                   aria-live="assertive"
                                   className="slds-checkbox_faux_container"
-                                  id="substep-complete-0-action-desc"
+                                  id="step-complete2-substep0-action-desc"
                                 >
                                   <span
                                     className="slds-checkbox_faux"
@@ -1060,7 +1075,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                       </span>
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                        id="progress-indicator-vertical-label-1"
+                        id="progress-indicator-vertical-label-step-complete2-substep1"
                       >
                         <div
                           className="slds-size_3-of-4"
@@ -1076,7 +1091,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             <button
                               className="slds-button_reset slds-text-link"
                               disabled={false}
-                              id="substep-complete-1-action"
+                              id="step-complete2-substep1-action"
                               onClick={[Function]}
                               type="button"
                             >
@@ -1119,6 +1134,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
               />
             </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Expand Step
+            </span>
           </button>
           <div
             className="slds-container_fluid"
@@ -1229,7 +1249,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                       />
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                        id="progress-indicator-vertical-label-0"
+                        id="progress-indicator-vertical-label-step-incomplete1-substep0"
                       >
                         <div
                           className="slds-size_3-of-4"
@@ -1247,18 +1267,18 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             >
                               <label
                                 className="slds-checkbox_toggle slds-grid"
-                                htmlFor="substep-incomplete-0-action"
+                                htmlFor="step-incomplete1-substep0-action"
                               >
                                 <input
-                                  aria-describedby="substep-incomplete-0-action-desc"
-                                  id="substep-incomplete-0-action"
+                                  aria-describedby="step-incomplete1-substep0-action-desc"
+                                  id="step-incomplete1-substep0-action"
                                   onChange={[Function]}
                                   type="checkbox"
                                 />
                                 <span
                                   aria-live="assertive"
                                   className="slds-checkbox_faux_container"
-                                  id="substep-incomplete-0-action-desc"
+                                  id="step-incomplete1-substep0-action-desc"
                                 >
                                   <span
                                     className="slds-checkbox_faux"
@@ -1288,7 +1308,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                       />
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                        id="progress-indicator-vertical-label-1"
+                        id="progress-indicator-vertical-label-step-incomplete1-substep1"
                       >
                         <div
                           className="slds-size_3-of-4"
@@ -1304,7 +1324,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             <button
                               className="slds-button_reset slds-text-link"
                               disabled={false}
-                              id="substep-incomplete-1-action"
+                              id="step-incomplete1-substep1-action"
                               onClick={[Function]}
                               type="button"
                             >
@@ -1347,6 +1367,11 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
               />
             </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Expand Step
+            </span>
           </button>
           <div
             className="slds-container_fluid"
@@ -1457,7 +1482,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                       />
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                        id="progress-indicator-vertical-label-0"
+                        id="progress-indicator-vertical-label-step-incomplete2-substep0"
                       >
                         <div
                           className="slds-size_3-of-4"
@@ -1475,18 +1500,18 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             >
                               <label
                                 className="slds-checkbox_toggle slds-grid"
-                                htmlFor="substep-incomplete-0-action"
+                                htmlFor="step-incomplete2-substep0-action"
                               >
                                 <input
-                                  aria-describedby="substep-incomplete-0-action-desc"
-                                  id="substep-incomplete-0-action"
+                                  aria-describedby="step-incomplete2-substep0-action-desc"
+                                  id="step-incomplete2-substep0-action"
                                   onChange={[Function]}
                                   type="checkbox"
                                 />
                                 <span
                                   aria-live="assertive"
                                   className="slds-checkbox_faux_container"
-                                  id="substep-incomplete-0-action-desc"
+                                  id="step-incomplete2-substep0-action-desc"
                                 >
                                   <span
                                     className="slds-checkbox_faux"
@@ -1516,7 +1541,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                       />
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                        id="progress-indicator-vertical-label-1"
+                        id="progress-indicator-vertical-label-step-incomplete2-substep1"
                       >
                         <div
                           className="slds-size_3-of-4"
@@ -1532,7 +1557,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             <button
                               className="slds-button_reset slds-text-link"
                               disabled={false}
-                              id="substep-incomplete-1-action"
+                              id="step-incomplete2-substep1-action"
                               onClick={[Function]}
                               type="button"
                             >
@@ -1643,6 +1668,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                   xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Step
+              </span>
             </button>
             <div
               className="slds-container_fluid"
@@ -1758,7 +1788,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
-                        className="slds-progress__item slds-is-completed slds-is-active"
+                        className="slds-progress__item slds-is-completed"
                       >
                         <span
                           className="slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
@@ -1777,7 +1807,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                         </span>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                          id="progress-indicator-vertical-label-0"
+                          id="progress-indicator-vertical-label-step-complete-substep0"
                         >
                           <div
                             className="slds-size_3-of-4"
@@ -1795,19 +1825,19 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               >
                                 <label
                                   className="slds-checkbox_toggle slds-grid"
-                                  htmlFor="substep-complete-0-action"
+                                  htmlFor="step-complete-substep0-action"
                                 >
                                   <input
-                                    aria-describedby="substep-complete-0-action-desc"
+                                    aria-describedby="step-complete-substep0-action-desc"
                                     checked={true}
-                                    id="substep-complete-0-action"
+                                    id="step-complete-substep0-action"
                                     onChange={[Function]}
                                     type="checkbox"
                                   />
                                   <span
                                     aria-live="assertive"
                                     className="slds-checkbox_faux_container"
-                                    id="substep-complete-0-action-desc"
+                                    id="step-complete-substep0-action-desc"
                                   >
                                     <span
                                       className="slds-checkbox_faux"
@@ -1849,7 +1879,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                         </span>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                          id="progress-indicator-vertical-label-1"
+                          id="progress-indicator-vertical-label-step-complete-substep1"
                         >
                           <div
                             className="slds-size_3-of-4"
@@ -1865,7 +1895,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               <button
                                 className="slds-button_reset slds-text-link"
                                 disabled={false}
-                                id="substep-complete-1-action"
+                                id="step-complete-substep1-action"
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -1908,6 +1938,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                   xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Step
+              </span>
             </button>
             <div
               className="slds-container_fluid"
@@ -2030,7 +2065,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                         </span>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                          id="progress-indicator-vertical-label-0"
+                          id="progress-indicator-vertical-label-step-2-substep0"
                         >
                           <div
                             className="slds-size_3-of-4"
@@ -2048,19 +2083,19 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               >
                                 <label
                                   className="slds-checkbox_toggle slds-grid"
-                                  htmlFor="substep-0-action"
+                                  htmlFor="step-2-substep0-action"
                                 >
                                   <input
-                                    aria-describedby="substep-0-action-desc"
+                                    aria-describedby="step-2-substep0-action-desc"
                                     checked={true}
-                                    id="substep-0-action"
+                                    id="step-2-substep0-action"
                                     onChange={[Function]}
                                     type="checkbox"
                                   />
                                   <span
                                     aria-live="assertive"
                                     className="slds-checkbox_faux_container"
-                                    id="substep-0-action-desc"
+                                    id="step-2-substep0-action-desc"
                                   >
                                     <span
                                       className="slds-checkbox_faux"
@@ -2090,7 +2125,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                         />
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                          id="progress-indicator-vertical-label-1"
+                          id="progress-indicator-vertical-label-step-2-substep1"
                         >
                           <div
                             className="slds-size_3-of-4"
@@ -2106,7 +2141,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               <button
                                 className="slds-button_reset slds-text-link"
                                 disabled={false}
-                                id="substep-1-action"
+                                id="step-2-substep1-action"
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -2124,7 +2159,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                         />
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                          id="progress-indicator-vertical-label-2"
+                          id="progress-indicator-vertical-label-step-2-substep2"
                         >
                           <div
                             className="slds-size_3-of-4"
@@ -2140,7 +2175,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               <button
                                 className="slds-button slds-button_outline-brand"
                                 disabled={false}
-                                id="substep-2-action"
+                                id="step-2-substep2-action"
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -2220,6 +2255,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                   xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Step
+              </span>
             </button>
             <div
               className="slds-container_fluid"
@@ -2335,7 +2375,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       className="slds-progress__list slds-progress__list-bordered"
                     >
                       <li
-                        className="slds-progress__item slds-is-completed slds-is-active"
+                        className="slds-progress__item slds-is-completed"
                       >
                         <span
                           className="slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
@@ -2354,7 +2394,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                         </span>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                          id="progress-indicator-vertical-label-0"
+                          id="progress-indicator-vertical-label-step-complete2-substep0"
                         >
                           <div
                             className="slds-size_3-of-4"
@@ -2372,19 +2412,19 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               >
                                 <label
                                   className="slds-checkbox_toggle slds-grid"
-                                  htmlFor="substep-complete-0-action"
+                                  htmlFor="step-complete2-substep0-action"
                                 >
                                   <input
-                                    aria-describedby="substep-complete-0-action-desc"
+                                    aria-describedby="step-complete2-substep0-action-desc"
                                     checked={true}
-                                    id="substep-complete-0-action"
+                                    id="step-complete2-substep0-action"
                                     onChange={[Function]}
                                     type="checkbox"
                                   />
                                   <span
                                     aria-live="assertive"
                                     className="slds-checkbox_faux_container"
-                                    id="substep-complete-0-action-desc"
+                                    id="step-complete2-substep0-action-desc"
                                   >
                                     <span
                                       className="slds-checkbox_faux"
@@ -2426,7 +2466,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                         </span>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                          id="progress-indicator-vertical-label-1"
+                          id="progress-indicator-vertical-label-step-complete2-substep1"
                         >
                           <div
                             className="slds-size_3-of-4"
@@ -2442,7 +2482,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               <button
                                 className="slds-button_reset slds-text-link"
                                 disabled={false}
-                                id="substep-complete-1-action"
+                                id="step-complete2-substep1-action"
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -2485,6 +2525,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                   xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Step
+              </span>
             </button>
             <div
               className="slds-container_fluid"
@@ -2595,7 +2640,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                         />
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                          id="progress-indicator-vertical-label-0"
+                          id="progress-indicator-vertical-label-step-incomplete1-substep0"
                         >
                           <div
                             className="slds-size_3-of-4"
@@ -2613,18 +2658,18 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               >
                                 <label
                                   className="slds-checkbox_toggle slds-grid"
-                                  htmlFor="substep-incomplete-0-action"
+                                  htmlFor="step-incomplete1-substep0-action"
                                 >
                                   <input
-                                    aria-describedby="substep-incomplete-0-action-desc"
-                                    id="substep-incomplete-0-action"
+                                    aria-describedby="step-incomplete1-substep0-action-desc"
+                                    id="step-incomplete1-substep0-action"
                                     onChange={[Function]}
                                     type="checkbox"
                                   />
                                   <span
                                     aria-live="assertive"
                                     className="slds-checkbox_faux_container"
-                                    id="substep-incomplete-0-action-desc"
+                                    id="step-incomplete1-substep0-action-desc"
                                   >
                                     <span
                                       className="slds-checkbox_faux"
@@ -2654,7 +2699,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                         />
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                          id="progress-indicator-vertical-label-1"
+                          id="progress-indicator-vertical-label-step-incomplete1-substep1"
                         >
                           <div
                             className="slds-size_3-of-4"
@@ -2670,7 +2715,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               <button
                                 className="slds-button_reset slds-text-link"
                                 disabled={false}
-                                id="substep-incomplete-1-action"
+                                id="step-incomplete1-substep1-action"
                                 onClick={[Function]}
                                 type="button"
                               >
@@ -2713,6 +2758,11 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                   xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Step
+              </span>
             </button>
             <div
               className="slds-container_fluid"
@@ -2823,7 +2873,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                         />
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                          id="progress-indicator-vertical-label-0"
+                          id="progress-indicator-vertical-label-step-incomplete2-substep0"
                         >
                           <div
                             className="slds-size_3-of-4"
@@ -2841,18 +2891,18 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               >
                                 <label
                                   className="slds-checkbox_toggle slds-grid"
-                                  htmlFor="substep-incomplete-0-action"
+                                  htmlFor="step-incomplete2-substep0-action"
                                 >
                                   <input
-                                    aria-describedby="substep-incomplete-0-action-desc"
-                                    id="substep-incomplete-0-action"
+                                    aria-describedby="step-incomplete2-substep0-action-desc"
+                                    id="step-incomplete2-substep0-action"
                                     onChange={[Function]}
                                     type="checkbox"
                                   />
                                   <span
                                     aria-live="assertive"
                                     className="slds-checkbox_faux_container"
-                                    id="substep-incomplete-0-action-desc"
+                                    id="step-incomplete2-substep0-action-desc"
                                   >
                                     <span
                                       className="slds-checkbox_faux"
@@ -2882,7 +2932,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                         />
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
-                          id="progress-indicator-vertical-label-1"
+                          id="progress-indicator-vertical-label-step-incomplete2-substep1"
                         >
                           <div
                             className="slds-size_3-of-4"
@@ -2898,7 +2948,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               <button
                                 className="slds-button_reset slds-text-link"
                                 disabled={false}
-                                id="substep-incomplete-1-action"
+                                id="step-incomplete2-substep1-action"
                                 onClick={[Function]}
                                 type="button"
                               >
