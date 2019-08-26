@@ -55,7 +55,7 @@ class Example extends React.Component {
 									label: 'User',
 								}}
 								category="standard"
-								name="user"
+								name="user_role"
 								size="small"
 								title="User"
 							/>
@@ -79,7 +79,7 @@ class Example extends React.Component {
 									label: 'User',
 								}}
 								category="standard"
-								name="user"
+								name="knowledge"
 								size="small"
 								title="User"
 							/>
@@ -102,7 +102,7 @@ class Example extends React.Component {
 									label: 'User',
 								}}
 								category="standard"
-								name="user"
+								name="record"
 								size="small"
 								title="User"
 							/>
@@ -125,7 +125,7 @@ class Example extends React.Component {
 									label: 'User',
 								}}
 								category="standard"
-								name="user"
+								name="lightning_usage"
 								size="small"
 								title="User"
 							/>

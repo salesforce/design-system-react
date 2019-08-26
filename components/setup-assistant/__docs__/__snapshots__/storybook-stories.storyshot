@@ -3071,7 +3071,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
               className="slds-media__figure"
             >
               <span
-                className="slds-icon_container slds-icon-standard-user"
+                className="slds-icon_container slds-icon-standard-user-role"
                 style={
                   Object {
                     "position": "relative",
@@ -3085,7 +3085,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
                   className="slds-icon slds-icon_small"
                 >
                   <use
-                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user_role"
                   />
                 </svg>
                 <span
@@ -3141,7 +3141,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
               className="slds-media__figure"
             >
               <span
-                className="slds-icon_container slds-icon-standard-user"
+                className="slds-icon_container slds-icon-standard-knowledge"
                 style={
                   Object {
                     "position": "relative",
@@ -3155,7 +3155,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
                   className="slds-icon slds-icon_small"
                 >
                   <use
-                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#knowledge"
                   />
                 </svg>
                 <span
@@ -3216,7 +3216,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
               className="slds-media__figure"
             >
               <span
-                className="slds-icon_container slds-icon-standard-user"
+                className="slds-icon_container slds-icon-standard-record"
                 style={
                   Object {
                     "position": "relative",
@@ -3230,7 +3230,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
                   className="slds-icon slds-icon_small"
                 >
                   <use
-                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#record"
                   />
                 </svg>
                 <span
@@ -3311,7 +3311,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
               className="slds-media__figure"
             >
               <span
-                className="slds-icon_container slds-icon-standard-user"
+                className="slds-icon_container slds-icon-standard-lightning-usage"
                 style={
                   Object {
                     "position": "relative",
@@ -3325,7 +3325,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
                   className="slds-icon slds-icon_small"
                 >
                   <use
-                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lightning_usage"
                   />
                 </svg>
                 <span
