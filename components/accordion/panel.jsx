@@ -39,6 +39,12 @@ const propTypes = {
 	 */
 	onTogglePanel: PropTypes.func.isRequired,
 	/**
+	 * Ref callback that will pass in panel's `input` tag
+	 */
+	refs: PropTypes.shape({
+		summaryButton: PropTypes.func,
+	}),
+	/**
 	 * Summary in the span element in the header of this panel. The summary is truncated and so the title element should contain the full text so that it is accessible on hover. _Tested with snapshot testing._
 	 */
 	summary: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
@@ -60,6 +66,7 @@ const AccordionPanel = ({
 	title,
 	onKeyDownSummary,
 	onTogglePanel,
+	refs,
 }) => (
 		<li className="slds-accordion__list-item">
 			<section
@@ -72,6 +79,7 @@ const AccordionPanel = ({
 						<Button
 							aria-controls={`${id}-accordion-panel`}
 							aria-expanded={expanded}
+							buttonRef={refs.summaryButton}
 							className="slds-button_reset slds-accordion__summary-action"
 							iconCategory="utility"
 							iconClassName="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"

@@ -48,6 +48,7 @@ class Accordion extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { currButtonIndex: 0 };
+		this.summaryButtons = [];
 	}
 
 	componentWillMount() {
@@ -56,8 +57,7 @@ class Accordion extends Component {
 
 	componentDidUpdate(prevState) {
 		if (this.state.currButtonIndex !== prevState.currButtonIndex) {
-			const { id } = this.props.children[this.state.currButtonIndex].props;
-			document.getElementById(`${id}-accordion-button`).focus();
+			this.summaryButtons[this.state.currButtonIndex].focus();
 		}
 	}
 
@@ -83,6 +83,12 @@ class Accordion extends Component {
 		}
 	}
 
+	addSummaryButton(button) {
+		if (button !== null && !this.summaryButtons.includes(button)) {
+			this.summaryButtons.push(button);
+		}
+	}
+
 	render() {
 		return (
 			<ul
@@ -91,6 +97,7 @@ class Accordion extends Component {
 			>
 				{this.props.children.map((child) =>
 					React.cloneElement(child, {
+						refs: { summaryButton: this.addSummaryButton.bind(this) },
 						onKeyDownSummary: this.onKeyDownSummary.bind(this),
 					})
 				)}
