@@ -971,6 +971,118 @@
         "SLDS-component-path": "/components/avatar",
         "dependencies": []
     },
+    "badge": {
+        "description": "Badges are labels which hold small amounts of information.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "Get the Badge's HTML id. Generate a new one if no ID present.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Get the Badge's HTML id. Generate a new one if no ID present."
+            }
+        ],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the component"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Id of component, if desired. If not provided an id is automatically generated"
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component"
+            },
+            "color": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'default'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'inverse'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'light'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Color variant for the badge component",
+                "defaultValue": {
+                    "value": "'default'",
+                    "computed": false
+                }
+            },
+            "iconAlignment": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'left'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'right'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Icon alignment for the badge component",
+                "defaultValue": {
+                    "value": "'left'",
+                    "computed": false
+                }
+            },
+            "content": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "node"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Content to be placed inside the badge component"
+            }
+        },
+        "route": "badge",
+        "display-name": "Badge",
+        "SLDS-component-path": "/components/badges",
+        "dependencies": []
+    },
     "brand-band": {
         "description": "The brand band provides theming capability that adds personality and improves information density and contrast.\n\nNOTE: you may find that themes other than 'default' fail to load the appropriate styling in your application.\nIf this occurs the cause is very likely to be CSP settings on the server hosting your application protecting against style injections.\nChanging these settings is not recommended. Instead, add the following styles to any stylesheet provided by the server itself (such as an external stylesheet):\n\nWhen using 'lightning-theme':\n.slds-brand-band.dsr-brand-band_lightning-blue:before {\n    background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);\n}\n.slds-brand-band.dsr-brand-band_lightning-blue:after {\n    background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);\n}\n\nFor more information on the problem, [see this Stack Overflow question](https://stackoverflow.com/questions/17766817/refused-to-apply-inline-style-because-it-violates-the-following-content-security)",
         "methods": [
@@ -1622,43 +1734,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Icon associated with the stateful button. Accepts an Icon component"
-            },
-            "iconName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names."
-            },
-            "iconSize": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'x-small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'medium'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'large'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines the size of the icon.",
-                "defaultValue": {
-                    "value": "'medium'",
-                    "computed": false
-                }
+                "description": "Icon associated with the stateful button. Accepts an `Icon` component"
             },
             "onBlur": {
                 "type": {
@@ -1799,6 +1875,13 @@
                 },
                 "required": false,
                 "description": "Different types of buttons"
+            },
+            "iconSize": {
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                },
+                "required": false
             }
         },
         "route": "stateful-buttons",
@@ -2550,6 +2633,18 @@
                 "returns": null
             },
             {
+                "name": "getPanelId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ carouselId, itemId }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "getCurrentPanel",
                 "docblock": null,
                 "modifiers": [],
@@ -2940,6 +3035,13 @@
                 },
                 "required": false,
                 "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
+            },
+            "aria-labelledby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The aria-labelledby attribute establishes relationships between objects and their label(s), and its value should be one or more element IDs, which refer to elements that have the text needed for labeling. List multiple element IDs in a space delimited fashion."
             },
             "aria-owns": {
                 "type": {
@@ -4277,6 +4379,10 @@
                             "name": "string",
                             "required": false
                         },
+                        "loadingMenuItems": {
+                            "name": "string",
+                            "required": false
+                        },
                         "optionSelectedInMenu": {
                             "name": "string",
                             "required": false
@@ -4300,9 +4406,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `popoverLabel`: Used by popover variant, assistive text for the Popover aria-label.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `loading`: Text added to loading spinner.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `popoverLabel`: Used by popover variant, assistive text for the Popover aria-label.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove',\n    selectedListboxLabel: 'Selected Options:',\n}",
+                    "value": "{\n    loadingMenuItems: 'Loading',\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove',\n    selectedListboxLabel: 'Selected Options:',\n}",
                     "computed": false
                 }
             },
@@ -4432,7 +4538,7 @@
                     }
                 },
                 "required": false,
-                "description": "Event Callbacks\n* `onBlur`: Called when `input` removes focus.\n* `onChange`: Called when keyboard events occur within `input`\n* `onClose`: Triggered when the menu has closed.\n* `onFocus`: Called when `input` receives focus.\n* `onOpen`: Triggered when the menu has opened.\n* `onRequestClose`: Function called when the menu would like to hide. Please use with `isOpen`.\n* `onRequestOpen`:  Function called when the menu would like to show. Please use with `isOpen`.\n* `onRequestRemoveSelectedOption`: Function called when a single selection option is to be removed.\n* `onSelect`: Function called when a menu item is selected\n* `onSubmit`: Function called when user presses enter or submits the `input`\n_Tested with Mocha testing._",
+                "description": "Event Callbacks\n* `onBlur`: Called when `input` removes focus.\n* `onChange`: Called when keyboard events occur within `input`\n* `onClose`: Triggered when the menu has closed.\n* `onFocus`: Called when `input` receives focus.\n* `onOpen`: Triggered when the menu has opened.\n* `onRequestClose`: Function called when the menu would like to hide. Please use with `isOpen`.\n* `onRequestOpen`:  Function called when the menu would like to show. Please use with `isOpen`.\n* `onRequestRemoveSelectedOption`: Function called when a single selection option is to be removed.\n* `onSelect`: Function called when a menu item is selected. This includes header and footer items.\n* `onSubmit`: Function called when user presses enter or submits the `input`\n_Tested with Mocha testing._",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -4451,6 +4557,20 @@
                 },
                 "required": false,
                 "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props."
+            },
+            "hasInputSpinner": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, loading spinner appears inside input on right hand side."
+            },
+            "hasMenuSpinner": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Add loading spinner below the options"
             },
             "hasStaticAlignment": {
                 "type": {
@@ -4770,13 +4890,6 @@
                 "required": false,
                 "description": "Default value of input. Provide uncontroled behaviour"
             },
-            "loading": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Add loading spiner below the options"
-            },
             "optionsAddItem": {
                 "type": {
                     "name": "arrayOf",
@@ -4802,16 +4915,12 @@
                                     }
                                 ],
                                 "required": false
-                            },
-                            "onClick": {
-                                "name": "func",
-                                "required": false
                             }
                         }
                     }
                 },
                 "required": false,
-                "description": "**Array of item objects in the dropdown menu that is displayed below the list of `options`.**\nEach object can contain:\n* `id`: A unique identifier string.\n* `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.\n* `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.\n* `onClick`: Callback triggered when selecting menu item.\n```\n{\n\tid: '1',\n\ticon: (\n \t<Icon\n\t\t\tassistiveText={{ label: 'add' }}\n\t\t\tcategory=\"utility\"\n\t\t\tsize=\"x-small\"\n\t\t\tname=\"add\"\n\t\t/>\n\t),\n\tlabel: 'New Entity'\n\tonClick: (event) => console.log('onClick', event),\n}\n```\n_Tested with snapshot testing._",
+                "description": "**Array of item objects in the dropdown menu that is displayed below the list of `options`. `onSelect` fires when selected.**\nEach object can contain:\n* `id`: A unique identifier string.\n* `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.\n* `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.\n```\n{\n\tid: '1',\n\ticon: (\n \t<Icon\n\t\t\tassistiveText={{ label: 'add' }}\n\t\t\tcategory=\"utility\"\n\t\t\tsize=\"x-small\"\n\t\t\tname=\"add\"\n\t\t/>\n\t),\n\tlabel: 'New Entity'\n}\n```\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
@@ -4842,16 +4951,12 @@
                                     }
                                 ],
                                 "required": false
-                            },
-                            "onClick": {
-                                "name": "func",
-                                "required": false
                             }
                         }
                     }
                 },
                 "required": false,
-                "description": "**Array of item objects in the dropdown menu that is displayed above the list of `options`.**\nEach object can contain:\n* `id`: A unique identifier string.\n* `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.\n* `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.\n* `onClick`: Callback triggered when selecting menu item.\n```\n{\nid: '1',\nicon: (\n\t<Icon\n\t\tassistiveText={{ label: 'Add in Accounts' }}\n\t\tsize=\"x-small\"\n\t\tcategory=\"utility\"\n\t\tname=\"search\"\n\t/>\n),\nlabel: (searchTerm) => {\n\treturn `${searchTerm} in Accounts`;\n},\nonClick: (event) => console.log('onClick', event),\n}\n```\n_Tested with snapshot testing._",
+                "description": "**Array of item objects in the dropdown menu that is displayed above the list of `options`. `onSelect` fires when selected. **\nEach object can contain:\n* `id`: A unique identifier string.\n* `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.\n* `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.\n```\n{\nid: '1',\nicon: (\n\t<Icon\n\t\tassistiveText={{ label: 'Add in Accounts' }}\n\t\tsize=\"x-small\"\n\t\tcategory=\"utility\"\n\t\tname=\"search\"\n\t/>\n),\nlabel: (searchTerm) => {\n\treturn `${searchTerm} in Accounts`;\n},\n}\n```\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
@@ -4887,7 +4992,7 @@
                     ]
                 },
                 "required": false,
-                "description": "",
+                "description": "Defines Combobox variant styling and functionality",
                 "defaultValue": {
                     "value": "'base'",
                     "computed": false
@@ -5006,13 +5111,17 @@
                         "selectRow": {
                             "name": "string",
                             "required": false
+                        },
+                        "selectRowGroup": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `actionsHeader`: Text for heading of actions column\n* `columnSort`: Text for sort action on table column header\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\n* `selectAllRows`: Text for select all checkbox within the table header\n* `selectRow`: Text for select row",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `actionsHeader`: Text for heading of actions column\n* `columnSort`: Text for sort action on table column header\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\n* `selectAllRows`: Text for select all checkbox within the table header\n* `selectRow`: Text for select row. Default: \"Select row 1\"\n* `selectRowGroup`: This is an input group label and is attached to each checkbox or radio. Default is \"Choose a row to select\"",
                 "defaultValue": {
-                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n}",
+                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n    selectRowGroup: 'Choose a row to select',\n}",
                     "computed": false
                 }
             },
@@ -5718,13 +5827,17 @@
                         "previousMonth": {
                             "name": "string",
                             "required": false
+                        },
+                        "year": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `nextMonth`: Label for button to go to the next month _Tested with snapshot testing._\n* `openCalendar`: Call to action label for calendar dialog trigger _Tested with snapshot testing._\n* `previousMonth`: Label for button to go to the previous month _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    nextMonth: 'Next month',\n    openCalendar: 'Open Calendar',\n    previousMonth: 'Previous month',\n}",
+                    "value": "{\n    nextMonth: 'Next month',\n    openCalendar: 'Open Calendar',\n    previousMonth: 'Previous month',\n    year: 'Year',\n}",
                     "computed": false
                 }
             },
@@ -14023,12 +14136,36 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
             "aria-describedby": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
                 "description": "The ID of an element that describes this radio input. Often used for error messages."
+            },
+            "aria-labelledby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The aria-labelledby attribute establishes relationships between objects and their label(s), and its value should be one or more element IDs, which refer to elements that have the text needed for labeling. List multiple element IDs in a space delimited fashion."
             },
             "checked": {
                 "type": {
@@ -14416,6 +14553,23 @@
                         }
                     ],
                     "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "expandStep": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `expandStep`: Button that examples a step\n_Tested with snapshot testing._",
+                            "defaultValue": {
+                                "value": "{ expandStep: 'Expand Step' }",
+                                "computed": false
+                            }
+                        },
                         "className": {
                             "type": {
                                 "name": "union",
@@ -15780,6 +15934,19 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\n* `label`: If present, the label associated with this `textarea` is overwritten by this text and is visually not shown."
+            },
             "aria-activedescendant": {
                 "type": {
                     "name": "string"
@@ -15849,19 +16016,6 @@
                 },
                 "required": false,
                 "description": "Specifies is the textarea should automatically get focus when the page loads. This is typically a poor user experience."
-            },
-            "assistiveText": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "label": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Assistive text for accessibility.**\n* `label`: If present, the label associated with this `textarea` is overwritten by this text and is visually not shown."
             },
             "children": {
                 "type": {
