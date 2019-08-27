@@ -1,0 +1,13 @@
+{
+	"component": "badge",
+	"status": "prod",
+	"display-name": "Badge",
+	"classKey": "Badge",
+	"SLDS-component-path": "/components/badges",
+	"site-stories": [
+		"/__examples__/color-variants.jsx",
+		"/__examples__/default.jsx",
+		"/__examples__/with-icon.jsx"
+	],
+	"url-slug": "badges"
+}

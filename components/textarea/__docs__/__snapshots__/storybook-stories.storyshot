@@ -186,7 +186,6 @@ exports[`DOM snapshots SLDSTextarea Required 1`] = `
       className="slds-form-element__control"
     >
       <textarea
-        aria-describedby="required-1"
         className="slds-textarea"
         id="text-area-required"
         name="required-textarea"

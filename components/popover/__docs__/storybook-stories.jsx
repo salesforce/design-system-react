@@ -68,7 +68,11 @@ const getPopoverNubbins = (props) => {
 		);
 	});
 
-	return <div key="container">{children}</div>;
+	return (
+		<div key="container" data-ignore-axe-duplicate-id-active>
+			{children}
+		</div>
+	);
 };
 
 const bodyContent =

@@ -87,46 +87,34 @@ exports[`DOM snapshots SLDSSpinner Brand Small 1`] = `
 exports[`DOM snapshots SLDSSpinner Docs site Default 1`] = `
 <div
   className="slds-p-around_medium"
-  style={
-    Object {
-      "backgroundColor": "#4bca81",
-      "height": "100%",
-      "position": "absolute",
-      "width": "100%",
-    }
-  }
 >
   <div
-    className="slds-p-around_medium"
+    style={
+      Object {
+        "height": "5rem",
+        "position": "relative",
+      }
+    }
   >
     <div
-      style={
-        Object {
-          "height": "5rem",
-          "position": "relative",
-        }
-      }
+      className="slds-spinner_container"
     >
       <div
-        className="slds-spinner_container"
+        aria-hidden="false"
+        className="slds-spinner slds-spinner_small"
+        role="status"
       >
-        <div
-          aria-hidden="false"
-          className="slds-spinner slds-spinner_small"
-          role="status"
+        <span
+          className="slds-assistive-text"
         >
-          <span
-            className="slds-assistive-text"
-          >
-            Small spinner
-          </span>
-          <div
-            className="slds-spinner__dot-a"
-          />
-          <div
-            className="slds-spinner__dot-b"
-          />
-        </div>
+          Small spinner
+        </span>
+        <div
+          className="slds-spinner__dot-a"
+        />
+        <div
+          className="slds-spinner__dot-b"
+        />
       </div>
     </div>
   </div>
@@ -136,17 +124,16 @@ exports[`DOM snapshots SLDSSpinner Docs site Default 1`] = `
 exports[`DOM snapshots SLDSSpinner Inverse Large 1`] = `
 <div
   className="slds-p-around_medium"
-  style={
-    Object {
-      "backgroundColor": "#4bca81",
-      "height": "100%",
-      "position": "absolute",
-      "width": "100%",
-    }
-  }
 >
   <div
-    className="slds-p-around_medium"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+        "height": "100%",
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
   >
     <div
       className="slds-spinner_container"
@@ -176,17 +163,16 @@ exports[`DOM snapshots SLDSSpinner Inverse Large 1`] = `
 exports[`DOM snapshots SLDSSpinner Inverse Medium 1`] = `
 <div
   className="slds-p-around_medium"
-  style={
-    Object {
-      "backgroundColor": "#4bca81",
-      "height": "100%",
-      "position": "absolute",
-      "width": "100%",
-    }
-  }
 >
   <div
-    className="slds-p-around_medium"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+        "height": "100%",
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
   >
     <div
       className="slds-spinner_container"
@@ -216,17 +202,16 @@ exports[`DOM snapshots SLDSSpinner Inverse Medium 1`] = `
 exports[`DOM snapshots SLDSSpinner Inverse Small 1`] = `
 <div
   className="slds-p-around_medium"
-  style={
-    Object {
-      "backgroundColor": "#4bca81",
-      "height": "100%",
-      "position": "absolute",
-      "width": "100%",
-    }
-  }
 >
   <div
-    className="slds-p-around_medium"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+        "height": "100%",
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
   >
     <div
       className="slds-spinner_container"

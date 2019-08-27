@@ -21,6 +21,12 @@ module.exports = {
 	env: {
 		browser: true,
 	},
+	settings: {
+		react: {
+			pragma: 'React',
+			version: 'detect',
+		},
+	},
 	overrides: [
 		{
 			// Storybook and site examples
@@ -121,7 +127,7 @@ module.exports = {
 		'no-underscore-dangle': ['error', { allowAfterThis: true }],
 		//
 		'prefer-object-spread/prefer-object-spread': [2, 'always'],
-
+		'react/jsx-fragments': ['error', 'element'],
 		'max-lines': [
 			'error',
 			{ max: 500, skipBlankLines: true, skipComments: true },

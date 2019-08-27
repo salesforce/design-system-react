@@ -164,7 +164,9 @@ class SplitView extends React.Component {
 				>
 					<ToggleButton
 						assistiveText={this.props.assistiveText}
-						ariaControls={this.getMasterViewId()}
+						ariaControls={
+							this.state.isOpen ? this.getMasterViewId() : undefined
+						}
 						isOpen={this.state.isOpen}
 						events={{
 							onClick: (event) => this.toggle(event),
