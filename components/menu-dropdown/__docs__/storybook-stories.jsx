@@ -10,6 +10,7 @@ import IconSettings from '../../icon-settings';
 import { MENU_DROPDOWN } from '../../../utilities/constants';
 import Dropdown from '../../menu-dropdown';
 import { DropdownNubbinPositions } from '../../menu-dropdown/menu-dropdown';
+import DropdownWithTooltips from '../__examples__/with-tooltips';
 import List from '../../utilities/menu-list';
 import Button from '../../button';
 import Trigger from '../../menu-dropdown/button-trigger';
@@ -480,4 +481,5 @@ storiesOf(MENU_DROPDOWN, module)
 			label="Dropdown Click"
 			options={options}
 		/>
-	));
+	))
+	.add('With tooltips', () => <DropdownWithTooltips />);

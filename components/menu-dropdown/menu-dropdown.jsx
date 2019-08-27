@@ -345,6 +345,7 @@ const propTypes = {
 	 *     type: 'item',
 	 *     value: 'B0'
 	 *  }, {
+	 *   tooltipContent: 'Displays a tooltip when hovered over with this content. The `tooltipMenuItem` prop must be set for this to work.'
 	 *   type: 'divider'
 	 * }]
 	 * ```
@@ -374,6 +375,10 @@ const propTypes = {
 	 * This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided.
 	 */
 	tooltip: PropTypes.node,
+	/**
+	 * Accepts a `Tooltip` component to be used as the template for menu item tooltips that appear via the `tooltipContent` options object attribute. Must be present for `tooltipContent` to work
+	 */
+	tooltipMenuItem: PropTypes.node,
 	/**
 	 * CSS classes to be added to wrapping trigger `div` around the button.
 	 */
@@ -848,6 +853,7 @@ class MenuDropdown extends React.Component {
 			selectedIndices={
 				this.props.multiple ? this.state.selectedIndices : undefined
 			}
+			tooltipMenuItem={this.props.tooltipMenuItem}
 			triggerId={this.getId()}
 			length={this.props.length}
 			{...customListProps}

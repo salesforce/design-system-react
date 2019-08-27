@@ -180,6 +180,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/sub-heading.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/custom-trigger.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/checkmark.jsx'),
+		require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/with-tooltips.jsx'),
 	],
 	modal: [
 		require('raw-loader!@salesforce/design-system-react/components/modal/__examples__/menu-contents.jsx'),
