@@ -7443,7 +7443,7 @@
             },
             {
                 "more-files": {
-                    "description": "MoreFiles is a component that represents a number of file contents uploaded as an attachment.",
+                    "description": "MoreFiles is a component that represents multiple uploaded attachments",
                     "methods": [
                         {
                             "name": "getId",
@@ -16879,9 +16879,20 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "Delay on Tooltip closing.",
+                "description": "Delay on Tooltip closing in milliseconds. Defaults to 50",
                 "defaultValue": {
                     "value": "50",
+                    "computed": false
+                }
+            },
+            "hoverOpenDelay": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Delay on Tooltip opening in milliseconds. Defaults to 0",
+                "defaultValue": {
+                    "value": "0",
                     "computed": false
                 }
             },
