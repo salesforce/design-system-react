@@ -246,6 +246,20 @@ storiesOf(MENU_DROPDOWN, module)
 			options,
 		})
 	)
+	.add('Base center-aligned', () =>
+		getDropdown({
+			align: 'center',
+			id: 'base-center',
+			label: 'Dropdown Click',
+			onClick: (...rest) => {
+				action('Clicked')(...rest);
+			},
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options,
+		})
+	)
 	.add('Base with icon, dropdown right-aligned', () =>
 		getDropdown({
 			align: 'right',

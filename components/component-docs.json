@@ -10350,6 +10350,10 @@
                     "name": "enum",
                     "value": [
                         {
+                            "value": "'center'",
+                            "computed": false
+                        },
+                        {
                             "value": "'left'",
                             "computed": false
                         },
@@ -10360,7 +10364,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.",
+                "description": "Aligns the menu center, right, or left respective to the trigger. This is not intended for use with `nubbinPosition`.",
                 "defaultValue": {
                     "value": "'left'",
                     "computed": false

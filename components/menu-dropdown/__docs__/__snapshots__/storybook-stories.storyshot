@@ -28,6 +28,34 @@ exports[`DOM snapshots SLDSMenuDropdown Base 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSMenuDropdown Base center-aligned 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="base-center"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_neutral ignore-click-base-center"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      Dropdown Click
+    </button>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown left-aligned 1`] = `
 <div
   className="slds-p-around_medium slds-text-align_center"
