@@ -373,6 +373,9 @@ const propTypes = {
 	 * Node of type [Combobox](/components/comboboxes/) for creating grouped comboboxes.
 	 */
 	entityCombobox: PropTypes.node,
+	/**
+	 * Defines Combobox variant styling and functionality
+	 */
 	variant: PropTypes.oneOf(['base', 'inline-listbox', 'popover', 'readonly']),
 };
 

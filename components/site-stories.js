@@ -27,9 +27,9 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/avatar/__examples__/entity-icon.jsx'),
 	],
 	badge: [
+		require('raw-loader!@salesforce/design-system-react/components/badge/__examples__/color-variants.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/badge/__examples__/default.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/badge/__examples__/with-icon.jsx'),
-		require('raw-loader!@salesforce/design-system-react/components/badge/__examples__/color-variants.jsx'),
 	],
 	'brand-band': [
 		require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/lightning-blue-theme.jsx'),

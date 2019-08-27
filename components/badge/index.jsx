@@ -18,6 +18,9 @@ import shortid from 'shortid';
 // ## Constants
 import { BADGE } from '../../utilities/constants';
 
+/**
+ * Badges are labels which hold small amounts of information.
+ */
 class Badge extends React.Component {
 	constructor(props) {
 		super(props);
@@ -29,15 +32,6 @@ class Badge extends React.Component {
 	 */
 	getId() {
 		return this.props.id || this.generatedId;
-	}
-
-	/**
-	 * Based on the color variant of the badge, returns a appropriate className
-	 */
-	getColor() {
-		if (this.props.color === 'inverse') return 'slds-badge_inverse';
-		if (this.props.color === 'light') return 'slds-badge_lightest';
-		return null;
 	}
 
 	render() {
@@ -58,7 +52,10 @@ class Badge extends React.Component {
 				id={this.getId()}
 				className={classNames(
 					'slds-badge',
-					this.getColor(),
+					{
+						'slds-badge_inverse': this.props.color === 'inverse',
+						'slds-badge_lightest': this.props.color === 'light',
+					},
 					this.props.className
 				)}
 			>
