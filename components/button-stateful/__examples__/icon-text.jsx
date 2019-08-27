@@ -1,6 +1,7 @@
 import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
+import ButtonIcon from '~/components/icon/button-icon';
 import ButtonStateful from '~/components/button-stateful'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
@@ -22,9 +23,9 @@ class Example extends React.Component {
 					>
 						<ButtonStateful
 							inverse
-							stateOne={{ iconName: 'add', label: 'Join' }}
-							stateTwo={{ iconName: 'check', label: 'Member' }}
-							stateThree={{ iconName: 'close', label: 'Leave' }}
+							stateOne={{ icon: <ButtonIcon name="add" />, label: 'Join' }}
+							stateTwo={{ icon: <ButtonIcon name="check" />, label: 'Member' }}
+							stateThree={{ icon: <ButtonIcon name="close" />, label: 'Leave' }}
 						/>
 					</div>
 				</div>

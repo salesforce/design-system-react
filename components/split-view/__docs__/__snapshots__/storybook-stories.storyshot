@@ -29,7 +29,6 @@ exports[`DOM snapshots SLDSSplitView Base: Closed 1`] = `
         }
       >
         <button
-          aria-controls="master_view_base-example"
           aria-expanded={false}
           className="slds-button slds-button slds-button_icon slds-split-view__toggle-button"
           disabled={false}

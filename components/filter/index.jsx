@@ -28,7 +28,7 @@ import shortid from 'shortid';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import Button from '../button';
 import Popover from '../popover';

@@ -1,0 +1,14 @@
+{
+    "component": "filter",
+    "status": "prototype",
+    "display-name": "Filters",
+	"classKey": "Filter",
+    "SLDS-component-path": "/components/filter",
+	"site-stories": [
+		"/__examples__/default.jsx",
+		"/__examples__/new.jsx",
+		"/__examples__/error.jsx",
+		"/__examples__/locked.jsx"
+	],
+    "url-slug": "filters"
+}
