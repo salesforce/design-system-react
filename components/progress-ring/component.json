@@ -1,0 +1,24 @@
+{
+    "component": "progress-ring",
+    "status": "prod",
+    "display-name": "Progress Rings",
+	"classKey": "ProgressRing",
+    "last-accessibility-review": {
+        "date-iso-8601": "2017/11/28",
+        "commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
+    },
+    "last-slds-markup-review": {
+        "date-iso-8601": "2017/11/28",
+        "commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
+    },
+    "SLDS-component-path": "/components/progress-ring",
+	"site-stories": [
+		"/__examples__/base.jsx",
+		"/__examples__/complete.jsx",
+		"/__examples__/warning.jsx",
+		"/__examples__/expired.jsx",
+		"/__examples__/active.jsx",
+		"/__examples__/customIcon.jsx"
+	],
+    "url-slug": "progress-rings"
+}

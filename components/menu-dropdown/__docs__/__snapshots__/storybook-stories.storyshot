@@ -394,6 +394,11 @@ exports[`DOM snapshots SLDSMenuDropdown Custom Trigger 1`] = `
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
         />
       </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Custom Dropdown Trigger
+      </span>
     </button>
   </div>
 </div>
@@ -523,6 +528,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
     >
       <div
         className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
         style={
           Object {
             "minHeight": "500px",
@@ -854,6 +860,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
       </div>
       <div
         className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
         style={
           Object {
             "minHeight": "500px",
@@ -1185,6 +1192,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
       </div>
       <div
         className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
         style={
           Object {
             "minHeight": "500px",
@@ -1516,6 +1524,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
       </div>
       <div
         className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
         style={
           Object {
             "minHeight": "500px",
@@ -1847,6 +1856,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
       </div>
       <div
         className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
         style={
           Object {
             "minHeight": "500px",
@@ -2178,6 +2188,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
       </div>
       <div
         className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
         style={
           Object {
             "minHeight": "500px",
@@ -2567,6 +2578,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
       >
         <div
           className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
           style={
             Object {
               "minHeight": "500px",
@@ -2898,6 +2910,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
         </div>
         <div
           className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
           style={
             Object {
               "minHeight": "500px",
@@ -3229,6 +3242,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
         </div>
         <div
           className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
           style={
             Object {
               "minHeight": "500px",
@@ -3560,6 +3574,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
         </div>
         <div
           className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
           style={
             Object {
               "minHeight": "500px",
@@ -3891,6 +3906,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
         </div>
         <div
           className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
           style={
             Object {
               "minHeight": "500px",
@@ -4222,6 +4238,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
         </div>
         <div
           className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
           style={
             Object {
               "minHeight": "500px",

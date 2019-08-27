@@ -21,7 +21,7 @@ import EventUtil from '../../utilities/event';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import { CHECKBOX } from '../../utilities/constants';
 import Icon from '../icon';
@@ -40,6 +40,10 @@ const propTypes = {
 	 * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need.
 	 */
 	'aria-describedby': PropTypes.string,
+	/**
+	 * The aria-labelledby attribute establishes relationships between objects and their label(s), and its value should be one or more element IDs, which refer to elements that have the text needed for labeling. List multiple element IDs in a space delimited fashion.
+	 */
+	'aria-labelledby': PropTypes.string,
 	/**
 	 * `aria-owns` indicate that an element depends on the current one when the relation can't be determined by the hierarchy structure.
 	 */
@@ -303,7 +307,11 @@ class Checkbox extends React.Component {
 						type="checkbox"
 						{...ariaProps}
 					/>
-					<label className="slds-checkbox__label" htmlFor={this.getId()}>
+					<label
+						className="slds-checkbox__label"
+						htmlFor={this.getId()}
+						id={props.labelId}
+					>
 						<span className="slds-checkbox_faux" />
 						{labels.label ? (
 							<span className="slds-form-element__label">{labels.label}</span>

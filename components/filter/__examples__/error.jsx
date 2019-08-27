@@ -9,8 +9,8 @@ import Combobox from '~/components/combobox';
 
 const options = {
 	'show-me': [
-		{ id: 1, label: 'All Products', value: 'all-products' },
-		{ id: 2, label: 'All Wackamoles', value: 'all-Wackamoles' },
+		{ id: '1', label: 'All Products', value: 'all-products' },
+		{ id: '2', label: 'All Wackamoles', value: 'all-Wackamoles' },
 	],
 };
 
@@ -55,36 +55,45 @@ class Example extends React.Component {
 		return (
 			this.state['show-me'].isActive && (
 				<IconSettings iconPath="/assets/icons">
-					<Filter
-						align={this.props.align}
-						id="sample-panel-filtering-show-me"
-						isError
-						onChange={this.onChangePredicate}
-						onRemove={this.onRemove}
-						property="Show Me"
-						predicate={this.state['show-me'].selectedItem.label}
-					>
-						<Combobox
-							events={{
-								onSelect: (event, data) => {
-									this.setState({
-										'show-me': {
-											...this.state['show-me'],
-											comboboxSelection: data.selection,
-										},
-									});
-								},
-							}}
-							labels={{
-								label: 'Show Me',
-								placeholder: 'Select record type',
-							}}
-							menuPosition="relative"
-							options={options['show-me']}
-							selection={this.state['show-me'].comboboxSelection}
-							variant="readonly"
-						/>
-					</Filter>
+					<div>
+						<Filter
+							errorLabel="Error Message"
+							align={this.props.align}
+							id="sample-panel-filtering-show-me"
+							isError
+							onChange={this.onChangePredicate}
+							onRemove={this.onRemove}
+							property="Show Me"
+							predicate={this.state['show-me'].selectedItem.label}
+						>
+							<Combobox
+								events={{
+									onSelect: (event, data) => {
+										this.setState({
+											'show-me': {
+												...this.state['show-me'],
+												comboboxSelection: data.selection,
+											},
+										});
+									},
+								}}
+								labels={{
+									label: 'Show Me',
+									placeholder: 'Select record type',
+								}}
+								menuPosition="relative"
+								options={options['show-me']}
+								selection={this.state['show-me'].comboboxSelection}
+								variant="readonly"
+							/>
+						</Filter>
+						<p
+							id="sample-panel-filtering-show-me-error"
+							className="slds-text-color_error slds-m-top_xx-small"
+						>
+							Error Message
+						</p>
+					</div>
 				</IconSettings>
 			)
 		);

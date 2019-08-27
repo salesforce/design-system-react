@@ -32,7 +32,7 @@ import checkProps from './check-props';
 import { TEXTAREA } from '../../utilities/constants';
 import getAriaProps from '../../utilities/get-aria-props';
 
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 /**
  * A multi-line plain-text editing control.
@@ -262,8 +262,8 @@ class Textarea extends React.Component {
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
 				: {
-						...this.props.assistiveText,
-					}.label;
+					...this.props.assistiveText,
+				}.label;
 
 		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
 

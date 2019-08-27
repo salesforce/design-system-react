@@ -15,13 +15,25 @@ import Icon from '../icon';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 const propTypes = {
+	/**
+	 * **Assistive text for accessibility**
+	 * This object is merged with the default props object on every render.
+	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
+	 */
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
 	/**
 	 * The ID of an element that describes this radio input. Often used for error messages.
 	 */
 	'aria-describedby': PropTypes.string,
+	/**
+	 * The aria-labelledby attribute establishes relationships between objects and their label(s), and its value should be one or more element IDs, which refer to elements that have the text needed for labeling. List multiple element IDs in a space delimited fashion.
+	 */
+	'aria-labelledby': PropTypes.string,
 	/**
 	 * This is a controlled component. This radio is checked according to this value.
 	 */
@@ -111,6 +123,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+	assistiveText: {},
 	variant: 'base',
 	coverable: false,
 };
@@ -195,10 +208,10 @@ class Radio extends React.Component {
 							</span>
 						</div>
 					) : (
-						<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
-							{this.props.onRenderVisualPicker()}
-						</span>
-					)}
+							<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
+								{this.props.onRenderVisualPicker()}
+							</span>
+						)}
 					{!this.props.vertical ? (
 						<span className="slds-visual-picker__body">
 							{labels.heading ? (
@@ -224,9 +237,18 @@ class Radio extends React.Component {
 			);
 		} else {
 			radio = (
-				<label className="slds-radio__label" htmlFor={this.getId()}>
+				<label
+					className="slds-radio__label"
+					htmlFor={this.getId()}
+					id={this.props.labelId}
+				>
 					<span className="slds-radio_faux" />
 					<span className="slds-form-element__label">{labels.label}</span>
+					{this.props.assistiveText.label ? (
+						<span className="slds-assistive-text">
+							{this.props.assistiveText.label}
+						</span>
+					) : null}
 				</label>
 			);
 		}

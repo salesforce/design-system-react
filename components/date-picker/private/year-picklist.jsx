@@ -11,6 +11,10 @@ class DatepickerYearSelector extends React.Component {
 
 	static propTypes = {
 		/**
+		 * Label for year picklist/combobox
+		 */
+		assistiveTextYear: PropTypes.string.isRequired,
+		/**
 		 * HTML id for component
 		 */
 		id: PropTypes.string,
@@ -68,6 +72,7 @@ class DatepickerYearSelector extends React.Component {
 		return (
 			<div className="slds-form-element slds-align-content-center">
 				<Combobox
+					assistiveText={{ label: this.props.assistiveTextYear }}
 					className="slds-shrink-none"
 					classNameMenu="slds-datepicker"
 					events={{

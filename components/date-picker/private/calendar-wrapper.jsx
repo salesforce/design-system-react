@@ -34,8 +34,11 @@ class DatepickerCalendarWrapper extends React.Component {
 		 */
 		assistiveTextPreviousMonth: PropTypes.string.isRequired,
 		/**
-		 * One letter abbreviations of the days of the week, starting on Sunday.
+		 * Label for year picklist/combobox
 		 */
+		assistiveTextYear: PropTypes.string.isRequired /**
+		 * One letter abbreviations of the days of the week, starting on Sunday.
+		 */,
 		abbreviatedWeekDayLabels: PropTypes.array.isRequired,
 		/**
 		 * CSS classes to be added to tag with `slds-datepicker`.
@@ -195,6 +198,7 @@ class DatepickerCalendarWrapper extends React.Component {
 				<CalendarNavigation
 					assistiveTextNextMonth={this.props.assistiveTextNextMonth}
 					assistiveTextPreviousMonth={this.props.assistiveTextPreviousMonth}
+					assistiveTextYear={this.props.assistiveTextYear}
 					id={this.props.id}
 					initialDateForCalendarRender={this.state.initialDateForCalendarRender}
 					monthLabels={this.props.monthLabels}
