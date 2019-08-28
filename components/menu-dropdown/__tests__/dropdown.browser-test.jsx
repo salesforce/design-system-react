@@ -576,9 +576,7 @@ describe('SLDSMenuDropdown', function() {
 			nodes.trigger.simulate('keyDown', keyObjects.ENTER);
 			nodes.trigger.simulate('keyDown', keyObjects.DOWN);
 
-			const tooltip = this.wrapper
-				.find('#sample-dropdown-item-1-tooltip')
-				.hostNodes();
+			const tooltip = this.wrapper.find('#sample-dropdown-item-1-tooltip');
 			expect(tooltip.length).to.equal(1);
 		});
 	});
