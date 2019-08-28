@@ -16399,11 +16399,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Text that will appear in an empty input.",
-                "defaultValue": {
-                    "value": "'Pick Time'",
-                    "computed": false
-                }
+                "description": "Text that will appear in an empty input."
             },
             "required": {
                 "type": {
