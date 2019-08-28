@@ -137,7 +137,7 @@
 		"babel-plugin-import-noop": "^1.0.1",
 		"babel-plugin-istanbul": "^5.1.4",
 		"babel-plugin-root-import": "^6.1.0",
-		"basic-auth": "^1.0.4",
+		"basic-auth": "^2.0.1",
 		"chai": "^4.2.0",
 		"chai-enzyme": "^1.0.0-beta.1",
 		"chownr": "^1.1.0",
