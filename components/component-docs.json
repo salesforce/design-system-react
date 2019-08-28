@@ -2921,6 +2921,25 @@
                 "returns": null
             },
             {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getAriaDescribedBy",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ idArray = [] }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleChange",
                 "docblock": null,
                 "modifiers": [],
