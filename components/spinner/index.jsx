@@ -16,7 +16,7 @@ import checkProps from './check-props';
 // ## Constants
 import { SPINNER } from '../../utilities/constants';
 
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ### Prop Types
 const propTypes = {

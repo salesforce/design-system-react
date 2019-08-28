@@ -322,14 +322,15 @@ class SplitViewListbox extends React.Component {
 			? this.headerWrapper(
 					<span>
 						<span className="slds-assistive-text">
-							{this.props.assistiveText.sort.sortedBy}:
+							{this.props.assistiveText.sort.sortedBy}
+							{': '}
 						</span>
 						<span>
 							{this.props.labels.header}
 							{this.sortDirection()}
 						</span>
 						<span className="slds-assistive-text">
-							-{' '}
+							{'- '}
 							{this.props.sortDirection === SORT_OPTIONS.DOWN
 								? this.props.assistiveText.sort.descending
 								: this.props.assistiveText.sort.ascending}

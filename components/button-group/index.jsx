@@ -26,6 +26,14 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
+	 * If the `labels.label` prop is set, a `.slds-form-element` classed fieldset element is added as a container. This prop applies classes to that element
+	 */
+	classNameContainer: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `error`: Message to display when any of Checkboxes are in an error state. _Tested with snapshot testing._
@@ -46,76 +54,91 @@ const defaultProps = { labels: {} };
 /**
  * The ButtonGroup component wraps other components (ie. Button, MenuDropdown, PopoverTooltip, Checkboxes, etc).
  */
-const ButtonGroup = (props = {}) => {
-	// Merge objects of strings with their default object
-	const labels = assign({}, defaultProps.labels, props.labels);
+class ButtonGroup extends React.Component {
+	render() {
+		// Merge objects of strings with their default object
+		const labels = assign({}, defaultProps.labels, this.props.labels);
 
-	const zeroIndexLength = React.Children.count(props.children) - 1;
-	let { children } = props;
-	if (zeroIndexLength > 0) {
-		children = React.Children.map(props.children, (child, index) => {
-			let newChild;
-			if (index === zeroIndexLength) {
-				newChild = React.cloneElement(child, {
-					triggerClassName: 'slds-button_last',
-				});
-			}
+		const zeroIndexLength = React.Children.count(this.props.children) - 1;
+		let { children } = this.props;
+		if (zeroIndexLength > 0) {
+			children = React.Children.map(this.props.children, (child, index) => {
+				let newChild;
+				if (index === zeroIndexLength) {
+					newChild = React.cloneElement(child, {
+						triggerClassName: 'slds-button_last',
+					});
+				}
 
-			return newChild || child;
-		});
-	}
+				return newChild || child;
+			});
+		}
 
-	if (props.variant === 'checkbox') {
-		children = React.Children.map(props.children, (child) =>
-			React.cloneElement(child, {
-				variant: 'button-group',
-			})
-		);
+		let component;
 
-		return (
-			<fieldset
-				className={classNames('slds-form-element', {
-					'slds-has-error': labels.error,
-				})}
-			>
-				<legend className="slds-form-element__legend slds-form-element__label">
-					{props.labels.label}
-				</legend>
-				<div className="slds-form-element__control">
-					<div
-						className={classNames(
-							'slds-checkbox_button-group',
-							props.className
-						)}
-					>
-						{children}
-					</div>
-					{labels.error ? (
-						<div className="slds-form-element__help">{labels.error}</div>
-					) : null}
+		if (this.props.variant === 'checkbox') {
+			children = React.Children.map(this.props.children, (child) =>
+				React.cloneElement(child, {
+					variant: 'button-group',
+				})
+			);
+
+			component = (
+				<div
+					className={classNames(
+						'slds-checkbox_button-group',
+						this.props.className
+					)}
+				>
+					{children}
 				</div>
-			</fieldset>
-		);
-	}
+			);
+		} else if (this.props.variant === 'list') {
+			component = (
+				<ul
+					className={classNames('slds-button-group-list', this.props.className)}
+				>
+					{React.Children.map(this.props.children, (child) => <li>{child}</li>)}
+				</ul>
+			);
+		} else {
+			component = (
+				<div
+					className={classNames('slds-button-group', this.props.className)}
+					role="group"
+				>
+					{children}
+				</div>
+			);
+		}
 
-	if (props.variant === 'list') {
-		return (
-			<ul className={classNames('slds-button-group-list', props.className)}>
-				{React.Children.map(props.children, (child) => <li>{child}</li>)}
-			</ul>
-		);
-	}
+		if (this.props.variant === 'checkbox' || this.props.labels.label) {
+			component = (
+				<fieldset
+					className={classNames(
+						'slds-form-element',
+						{
+							'slds-has-error': labels.error,
+						},
+						this.props.classNameContainer
+					)}
+				>
+					<legend className="slds-form-element__legend slds-form-element__label">
+						{this.props.labels.label}
+					</legend>
+					<div className="slds-form-element__control">
+						{component}
+						{labels.error ? (
+							<div className="slds-form-element__help">{labels.error}</div>
+						) : null}
+					</div>
+				</fieldset>
+			);
+		}
 
-	// default
-	return (
-		<div
-			className={classNames('slds-button-group', props.className)}
-			role="group"
-		>
-			{children}
-		</div>
-	);
-};
+		return component;
+	}
+}
 
 ButtonGroup.displayName = BUTTON_GROUP;
 ButtonGroup.propTypes = propTypes;

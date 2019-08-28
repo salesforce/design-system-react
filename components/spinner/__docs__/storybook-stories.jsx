@@ -7,12 +7,17 @@ import Default from '../__examples__/default';
 
 const getSpinner = (props) => <Spinner {...props} />;
 
-const inverseContainer = {
-	backgroundColor: '#4bca81',
+const inverseContainerStyle = {
+	backgroundColor: '#16325c',
 	position: 'absolute',
 	width: '100%',
 	height: '100%',
 };
+
+const inverseContainer = (getStory) => (
+	<div style={inverseContainerStyle}>{getStory()}</div>
+);
+
 storiesOf(SPINNER, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">
@@ -66,27 +71,31 @@ storiesOf(SPINNER, module)
 			isDelayed: true,
 		})
 	)
-	.addDecorator((getStory) => (
-		<div className="slds-p-around_medium" style={inverseContainer}>
-			{getStory()}
-		</div>
-	))
-	.add('Inverse Small', () =>
-		getSpinner({
-			size: 'small',
-			variant: 'inverse',
-		})
+	.add(
+		'Inverse Small',
+		() =>
+			getSpinner({
+				size: 'small',
+				variant: 'inverse',
+			}),
+		{ decorators: [inverseContainer] }
 	)
-	.add('Inverse Medium', () =>
-		getSpinner({
-			size: 'medium',
-			variant: 'inverse',
-		})
+	.add(
+		'Inverse Medium',
+		() =>
+			getSpinner({
+				size: 'medium',
+				variant: 'inverse',
+			}),
+		{ decorators: [inverseContainer] }
 	)
-	.add('Inverse Large', () =>
-		getSpinner({
-			size: 'large',
-			variant: 'inverse',
-		})
+	.add(
+		'Inverse Large',
+		() =>
+			getSpinner({
+				size: 'large',
+				variant: 'inverse',
+			}),
+		{ decorators: [inverseContainer] }
 	)
 	.add('Docs site Default', () => <Default />);

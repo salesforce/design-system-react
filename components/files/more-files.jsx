@@ -67,6 +67,9 @@ const defaultProps = {
 	href: 'javascript:void(0);',
 };
 
+/**
+ * MoreFiles is a component that represents multiple uploaded attachments
+ */
 class MoreFiles extends React.Component {
 	componentWillMount() {
 		this.generatedId = shortid.generate();

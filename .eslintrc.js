@@ -21,6 +21,12 @@ module.exports = {
 	env: {
 		browser: true,
 	},
+	settings: {
+		react: {
+			pragma: 'React',
+			version: 'detect',
+		},
+	},
 	overrides: [
 		{
 			// Storybook and site examples
@@ -37,6 +43,7 @@ module.exports = {
 				// TODO: This should be removed.
 				'no-unused-vars': 'off',
 				'react/no-access-state-in-setstate': 'off',
+				'react/jsx-no-literals': ['off'],
 			},
 		},
 		{
@@ -77,6 +84,7 @@ module.exports = {
 				// TODO: This should be removed.
 				'react/display-name': 'off',
 				'react/no-access-state-in-setstate': 'off',
+				'react/jsx-no-literals': ['off'],
 			},
 		},
 		{
@@ -119,7 +127,7 @@ module.exports = {
 		'no-underscore-dangle': ['error', { allowAfterThis: true }],
 		//
 		'prefer-object-spread/prefer-object-spread': [2, 'always'],
-
+		'react/jsx-fragments': ['error', 'element'],
 		'max-lines': [
 			'error',
 			{ max: 500, skipBlankLines: true, skipComments: true },
@@ -127,6 +135,11 @@ module.exports = {
 
 		// Can't be used because it doesn't currently recognize props used in functions
 		'react/no-unused-prop-types': 'off',
+
+		// https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-literals.md
+		// All text should be able to be changed by the consumer due to internationalisation
+		// See https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#rendered-text-needs-a-prop-group-assistive-text-and-labels
+		'react/jsx-no-literals': ['error', { noStrings: false }],
 
 		//
 		// THE FOLLOWING RULES NEED REVIEW IN THE FUTURE (and possibly removed)

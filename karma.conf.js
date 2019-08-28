@@ -72,7 +72,7 @@ const configExport = function configExportFunction(config) {
 		},
 
 		coverageReporter: {
-			reporters: [{ type: 'html', dir: 'coverage/' }, { type: 'text' }],
+			reporters: [{ type: 'text' }],
 		},
 
 		// web server port
@@ -90,7 +90,7 @@ const configExport = function configExportFunction(config) {
 
 		// start these browsers
 		// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-		browsers: ['ChromeHeadless', 'ChromeHeadlessNoSandbox'],
+		browsers: ['ChromeHeadlessNoSandbox'],
 
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits

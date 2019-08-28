@@ -23,38 +23,7 @@ const deprecatedComponents = [
 
 const excludeFromTests = {
 	accessibility: {
-		storyKind: [
-			'SLDSAppLauncher',
-			'SLDSAvatar',
-			'SLDSBreadcrumb',
-			'SLDSCarousel',
-			'SLDSCombobox',
-			'SLDSDataTable',
-			'SLDSFilter',
-			'SLDSTextarea',
-			'SLDSGlobalHeader',
-			'SLDSMenuDropdown',
-			'SLDSModal',
-			'SLDSPanel',
-			'SLDSPageHeader',
-			'SLDSFilterGroup',
-			'SLDSPill',
-			'SLDSPopover',
-			'SLDSPopoverTooltip',
-			'SLDSSetupAssistant',
-			'SLDSSlider',
-			'SLDSSplitView',
-			'SLDSRadioButtonGroup',
-			'SLDSTimepicker',
-
-			'SLDSGlobalNavigationBar',
-			'SLDSDatePicker',
-			'SLDSIconSettings',
-			'SLDSModal',
-			'SLDSPanel',
-			'SLDSTimepicker',
-			...deprecatedComponents,
-		],
+		storyKind: ['SLDSExpression', ...deprecatedComponents],
 	},
 	domSnapshot: {
 		storyKind: [

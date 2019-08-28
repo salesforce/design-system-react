@@ -12,6 +12,8 @@ export const APP_LAUNCHER_LINK = 'SLDSAppLauncherLink';
 export const APP_LAUNCHER_TILE = 'SLDSAppLauncherTile';
 export const APP_LAUNCHER_HEADER = 'SLDSAppLauncherHeader';
 export const AVATAR = 'SLDSAvatar';
+export const BADGE = 'SLDSBadge';
+
 export const BRAND_BAND = 'SLDSBrandBand';
 
 /* Remove at next breaking change */
@@ -57,6 +59,10 @@ export const FILES_MORE = `SLDSFilesMore`;
 export const FILES_FIGURE = 'SLDSFilesFigure';
 export const FILES_ACTIONS = 'SLDSFilesActions';
 export const EXPANDABLE_SECTION = 'SLDSExpandableSection';
+export const EXPRESSION = 'SLDSExpression';
+export const EXPRESSION_GROUP = 'SLDSExpressionGroup';
+export const EXPRESSION_CONDITION = 'SLDSExpressionCondition';
+export const EXPRESSION_FORMULA = 'SLDSExpressionFormula';
 export const FILTER = 'SLDSFilter';
 export const CHECKBOX = 'SLDSCheckbox';
 export const FORMS_INLINE_EDIT = 'SLDSInlineEdit';
