@@ -159,7 +159,7 @@
 		"eslint-plugin-prefer-object-spread": "^1.2.1",
 		"eslint-plugin-react": "^7.14.3",
 		"express": "^4.17.1",
-		"file-loader": "^1.1.11",
+		"file-loader": "^4.2.0",
 		"find-remove": "^1.1.0",
 		"fs-extra": "^3.0.0",
 		"glob": "^7.1.4",
