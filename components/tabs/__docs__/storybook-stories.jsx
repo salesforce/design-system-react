@@ -16,7 +16,6 @@ import Panel from '../../tabs/panel';
 
 // Used in the Nested story
 import Input from '../../input';
-import InputIcon from '../../icon/input-icon';
 
 // Used in the Conditinal story
 import Checkbox from '../../checkbox';
@@ -61,7 +60,7 @@ const getTabs = () => (
 const getTabsMoreThanOneAllowGeneratedID = () => (
 	<div>
 		<h2 className="slds-text-heading_large">Generated Unique IDs Demo</h2>
-		<Tabs>
+		<Tabs id="tabs-demo-id-1">
 			<Panel label="Only 1 Tab">
 				<h2 className="slds-text-heading_medium">About this story</h2>
 				<p>
@@ -70,7 +69,7 @@ const getTabsMoreThanOneAllowGeneratedID = () => (
 				</p>
 			</Panel>
 		</Tabs>
-		<Tabs>
+		<Tabs id="tabs-demo-id-2">
 			<Panel label="Only 1 Tab">
 				<h2 className="slds-text-heading_medium">About this story</h2>
 				<p>
@@ -90,9 +89,7 @@ const getTabsNested = () => (
 		<Tabs id="nested-tabs-demo">
 			<Panel label="Tab 1">
 				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
-				<p>
-					And they&rsquo;re <a href="#amazing">amazing</a>.
-				</p>
+				<p>And they&rsquo;re amazing.</p>
 			</Panel>
 			<Panel label="Tab 2">
 				<h2 className="slds-text-heading_medium">This is my tab 2 contents!</h2>
@@ -100,15 +97,8 @@ const getTabsNested = () => (
 
 				<Input
 					id="unique-id-123"
-					name="left-clickable-icon"
+					name="tab-input-example"
 					label="Input Label"
-					iconLeft={
-						<InputIcon
-							name="search"
-							category="utility"
-							onClick={action('search icon clicked')}
-						/>
-					}
 					placeholder="You can tab onto this to focus it."
 				/>
 			</Panel>
@@ -116,7 +106,7 @@ const getTabsNested = () => (
 				<h2 className="slds-text-heading_medium">This is my tab 3 contents!</h2>
 				<p>And they&rsquo;re tabceptionish.</p>
 				<div className="slds-box slds-m-vertical_large">
-					<Tabs defaultSelectedIndex={0}>
+					<Tabs id="nested-second-layer" defaultSelectedIndex={0}>
 						<Panel label="Tab 1">
 							<h2 className="slds-text-heading_medium">
 								This is my tab 1 contents!
@@ -137,7 +127,7 @@ const getTabsNested = () => (
 								And they&rsquo;re even <em>more</em> tabceptionish.
 							</p>
 							<div className="slds-box slds-m-vertical_large">
-								<Tabs defaultSelectedIndex={0}>
+								<Tabs id="nested-third-layer" defaultSelectedIndex={0}>
 									<Panel label="Tab 1 (no children!)">
 										<h2 className="slds-text-heading_medium">
 											This is my tab 1 contents!
@@ -229,6 +219,7 @@ class DemoTabsConditional extends React.Component {
 				<Checkbox
 					assistiveText={{ label: 'Disable tab B' }}
 					checked={this.state.disableB}
+					id="tabs-checkbox-pane-a-1"
 					onChange={this.handleCheckClickedDisable}
 					label="Disable tab B"
 					name="disableB"
@@ -236,6 +227,7 @@ class DemoTabsConditional extends React.Component {
 				<Checkbox
 					assistiveText={{ label: 'Disable tab C' }}
 					checked={this.state.disableC}
+					id="tabs-checkbox-pane-a-2"
 					onChange={this.handleCheckClickedDisable}
 					label="Disable tab C"
 					name="disableC"
@@ -252,6 +244,7 @@ class DemoTabsConditional extends React.Component {
 				<Checkbox
 					assistiveText={{ label: 'Show tab A' }}
 					checked={this.state.showA}
+					id="tabs-checkbox-tab-a-1"
 					onChange={this.handleCheckClicked}
 					label="Show tab A"
 					name="showA"
@@ -259,6 +252,7 @@ class DemoTabsConditional extends React.Component {
 				<Checkbox
 					assistiveText={{ label: 'Show tab B' }}
 					checked={this.state.showB}
+					id="tabs-checkbox-tab-b-1"
 					onChange={this.handleCheckClicked}
 					label="Show tab B"
 					name="showB"
@@ -266,6 +260,7 @@ class DemoTabsConditional extends React.Component {
 
 				<Checkbox
 					checked={this.state.showC}
+					id="tabs-checkbox-tab-c-1"
 					onChange={this.handleCheckClicked}
 					assistiveText={{ label: 'Show tab C' }}
 					label="Show tab C"
@@ -274,6 +269,7 @@ class DemoTabsConditional extends React.Component {
 
 				<Tabs
 					className={classNames('slds-m-top_large', this.props.className)}
+					id="tabs-checkbox-tabs-1"
 					onSelect={this.handleSelectNopesOnThree}
 				>
 					{this.state.showA && this.renderPaneA(this.state.disableA)}
@@ -438,6 +434,7 @@ class DemoTabsOutsideControl extends React.Component {
 
 				<Tabs
 					className={classNames('slds-m-top_large', this.props.className)}
+					id="DemoTabsOutsideControlTabs"
 					selectedIndex={this.state.whichOneSelectedYo}
 					onSelect={this.handleSelect}
 				>
@@ -475,7 +472,7 @@ const getTabsDisabled = () => (
 			<Panel label="Tab 1">
 				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
 				<p>And they&rsquo;re amazing.</p>
-				<p>It&quot;s awesome.</p>
+				<p>It&rsquo;s awesome.</p>
 				<p>
 					You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate
 					around. Try it!
@@ -521,7 +518,7 @@ const getCustomContentTabs = () => {
 	return (
 		<div>
 			<h2 className="slds-text-heading_large">Custom Tab Contents Demo</h2>
-			<Tabs>
+			<Tabs id="getCustomContentTabs">
 				<Panel label={tab1Label}>
 					<h2 className="slds-text-heading_medium">
 						This is my first custom content tab!
@@ -554,7 +551,7 @@ class DemoTabsInterceptSelect extends React.Component {
 	render() {
 		return (
 			<div>
-				<Tabs onSelect={this.handleTabSelect}>
+				<Tabs id="DemoTabsInterceptSelect" onSelect={this.handleTabSelect}>
 					<Panel label="Panel with intercept">
 						<p>Default Panel</p>
 						{this.state.intercepts > 0 && (
@@ -572,7 +569,7 @@ class DemoTabsInterceptSelect extends React.Component {
 
 				<div style={{ height: '20px' }} />
 
-				<Tabs>
+				<Tabs id="DemoTabsInterceptSelect2">
 					<Panel label="Panel still working as intended">
 						<p>Default Panel</p>
 					</Panel>

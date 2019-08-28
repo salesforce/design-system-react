@@ -20,13 +20,14 @@ import reject from 'lodash.reject';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import {
 	canUseDOM,
 	canUseEventListeners,
 } from '../../utilities/execution-environment';
-import paletteColorsCommon from '../../utilities/design-tokens/dist/palette-colors.common';
+import { colorGray5 } from '../../utilities/design-tokens/dist/palette-colors.common';
+import { tableBorderRadius } from '../../utilities/design-tokens/dist/salesforce-skin.common';
 
 // ## Children
 import DataTableCell from './cell';
@@ -53,6 +54,7 @@ const defaultProps = {
 		columnSortedDescending: 'Sorted Descending',
 		selectAllRows: 'Select all rows',
 		selectRow: 'Select row',
+		selectRowGroup: 'Choose a row to select',
 	},
 	selection: [],
 };
@@ -77,7 +79,8 @@ class DataTable extends React.Component {
 		 * * `columnSortedAscending`: Text announced once a column is sorted in ascending order
 		 * * `columnSortedDescending`: Text announced once a column is sorted in descending order
 		 * * `selectAllRows`: Text for select all checkbox within the table header
-		 * * `selectRow`: Text for select row
+		 * * `selectRow`: Text for select row. Default: "Select row 1"
+		 * * `selectRowGroup`: This is an input group label and is attached to each checkbox or radio. Default is "Choose a row to select"
 		 */
 		assistiveText: PropTypes.shape({
 			actionsHeader: PropTypes.string,
@@ -86,6 +89,7 @@ class DataTable extends React.Component {
 			columnSortedDescending: PropTypes.string,
 			selectAllRows: PropTypes.string,
 			selectRow: PropTypes.string,
+			selectRowGroup: PropTypes.string,
 		}),
 		/**
 		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.
@@ -140,6 +144,10 @@ class DataTable extends React.Component {
 				id: PropTypes.string.isRequired,
 			})
 		).isRequired,
+		/**
+		 * Makes DataTable joinable with PageHeader by adding appropriate classes/styling
+		 */
+		joined: PropTypes.bool,
 		/**
 		 * A variant which removes hover style on rows
 		 */
@@ -489,7 +497,7 @@ class DataTable extends React.Component {
 				/>
 				<tbody>
 					{numRows > 0
-						? this.props.items.map((item) => {
+						? this.props.items.map((item, index) => {
 								const rowId =
 									this.getId() && item.id
 										? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
@@ -501,6 +509,7 @@ class DataTable extends React.Component {
 										columns={columns}
 										fixedLayout={this.props.fixedLayout}
 										id={rowId}
+										index={index}
 										item={item}
 										key={rowId}
 										onToggle={this.handleRowToggle}
@@ -517,13 +526,24 @@ class DataTable extends React.Component {
 		);
 
 		if (this.props.fixedHeader) {
+			const border = `1px solid ${colorGray5}`;
+			const styles = {
+				borderTop: border,
+				height: '100%',
+			};
+
+			if (this.props.joined) {
+				styles.borderBottom = border;
+				styles.borderLeft = border;
+				styles.borderRight = border;
+				styles.borderTop = 'none';
+				styles.borderRadius = tableBorderRadius;
+			}
+
 			component = (
 				<div
 					className="slds-table_header-fixed_container"
-					style={{
-						borderTop: `1px solid ${paletteColorsCommon.colorGray5}`,
-						height: '100%',
-					}}
+					style={styles}
 					onScroll={(e) => {
 						const containerScrollLeft = e.target.scrollLeft;
 

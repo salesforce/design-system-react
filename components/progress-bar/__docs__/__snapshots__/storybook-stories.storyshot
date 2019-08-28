@@ -102,7 +102,7 @@ exports[`DOM snapshots SLDSProgressBar Descriptive 1`] = `
     >
       <div
         className="slds-grid slds-grid_align-spread slds-p-bottom_x-small"
-        id="progress-bar-label-id-4"
+        id="progress-bar-label-setup-progress-bar"
       >
         <span>
           Einstein Setup Assistant

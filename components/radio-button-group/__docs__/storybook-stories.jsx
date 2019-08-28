@@ -32,7 +32,13 @@ class RadioButtonGroupExample extends React.Component {
 					{this.props.heading}
 				</h1>
 				<RadioButtonGroup
+					errorId={
+						this.props.labels && this.props.labels.error
+							? 'error-id'
+							: undefined
+					}
 					labels={this.props.labels}
+					name="radio-button-group-name"
 					onChange={this.onChange}
 					disabled={this.props.disabled}
 					required={this.props.required}
@@ -40,6 +46,7 @@ class RadioButtonGroupExample extends React.Component {
 					{days.map((day) => (
 						<Radio
 							key={day}
+							id={day}
 							label={day}
 							value={day}
 							checked={this.state.checked === day}
@@ -85,4 +92,4 @@ storiesOf(RADIO_BUTTON_GROUP, module)
 			}}
 		/>
 	))
-	.add('Docs site Base', () => <Base />);
+	.add('Docs site Base', () => <Base name="doc-site-base" />);

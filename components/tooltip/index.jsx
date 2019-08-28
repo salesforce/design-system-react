@@ -22,7 +22,7 @@ import Button from '../button';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
@@ -77,9 +77,13 @@ const propTypes = {
 	 */
 	hasStaticAlignment: PropTypes.bool,
 	/**
-	 * Delay on Tooltip closing.
+	 * Delay on Tooltip closing in milliseconds. Defaults to 50
 	 */
 	hoverCloseDelay: PropTypes.number,
+	/**
+	 * Delay on Tooltip opening in milliseconds. Defaults to 0
+	 */
+	hoverOpenDelay: PropTypes.number,
 	/**
 	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering element.
 	 */
@@ -137,12 +141,14 @@ const defaultProps = {
 		triggerLearnMoreIcon: 'Help',
 	},
 	align: 'top',
-	content: <span>Tooltip</span>,
+	// eslint-disable-next-line react/jsx-curly-brace-presence
+	content: <span>{'Tooltip'}</span>,
 	labels: {
 		learnMoreAfter: 'to learn more.',
 		learnMoreBefore: 'Click',
 	},
 	hoverCloseDelay: 50,
+	hoverOpenDelay: 0,
 	position: 'absolute',
 	theme: 'info',
 	variant: 'base',
@@ -156,9 +162,10 @@ class Tooltip extends React.Component {
 		super(props);
 
 		this.state = {
-			isClosing: false,
 			isOpen: false,
 		};
+
+		this.tooltipTimeout = {};
 	}
 
 	componentWillMount() {
@@ -209,7 +216,7 @@ class Tooltip extends React.Component {
 		return React.Children.map(children, (child, i) =>
 			React.cloneElement(child, {
 				key: i, // eslint-disable-line react/no-array-index-key
-				'aria-describedby': this.getId(),
+				'aria-describedby': this.getIsOpen() ? this.getId() : undefined,
 				onBlur: this.handleMouseLeave,
 				onFocus: this.handleMouseEnter,
 				onMouseEnter: this.handleMouseEnter,
@@ -222,9 +229,14 @@ class Tooltip extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
+	getIsOpen() {
+		return this.props.isOpen === undefined
+			? this.state.isOpen
+			: this.props.isOpen;
+	}
+
 	getTooltip() {
-		const isOpen =
-			this.props.isOpen === undefined ? this.state.isOpen : this.props.isOpen;
+		const isOpen = this.getIsOpen();
 		const { align } = this.props;
 
 		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)
@@ -288,27 +300,32 @@ class Tooltip extends React.Component {
 	}
 
 	handleCancel = () => {
+		clearTimeout(this.tooltipTimeout);
+
 		this.setState({
 			isOpen: false,
-			isClosing: false,
 		});
 	};
 
 	handleMouseEnter = () => {
-		this.setState({
-			isOpen: true,
-			isClosing: false,
-		});
+		clearTimeout(this.tooltipTimeout);
+
+		this.tooltipTimeout = setTimeout(() => {
+			if (!this.isUnmounting) {
+				this.setState({
+					isOpen: true,
+				});
+			}
+		}, this.props.hoverOpenDelay);
 	};
 
 	handleMouseLeave = () => {
-		this.setState({ isClosing: true });
+		clearTimeout(this.tooltipTimeout);
 
-		setTimeout(() => {
-			if (!this.isUnmounting && this.state.isClosing) {
+		this.tooltipTimeout = setTimeout(() => {
+			if (!this.isUnmounting) {
 				this.setState({
 					isOpen: false,
-					isClosing: false,
 				});
 			}
 		}, this.props.hoverCloseDelay);

@@ -61,7 +61,7 @@ const Label = (props) => {
 			>
 				{props.required && (
 					<abbr className="slds-required" title="required">
-						*
+						{'*'}
 					</abbr>
 				)}
 				{labelText}

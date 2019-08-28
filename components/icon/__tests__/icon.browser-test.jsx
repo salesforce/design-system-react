@@ -5,8 +5,6 @@
 
 import React from 'react';
 
-import PropTypes from 'prop-types';
-
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
@@ -187,8 +185,6 @@ describe('SLDSIcon: ', function describeFunction() {
 	});
 
 	describe('Icon with external path renders', function describeFunction() {
-		let use;
-
 		beforeEach(
 			mountComponent(
 				<IconSettings iconPath="/assets/icons">

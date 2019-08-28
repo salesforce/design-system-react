@@ -12,6 +12,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
 >
   <div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -39,7 +40,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         >
           Trigger Tooltip
         </button>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -57,10 +58,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -88,7 +90,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         >
           Trigger Tooltip
         </button>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -106,10 +108,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -137,7 +140,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         >
           Trigger Tooltip
         </button>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_bottom-right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -155,10 +158,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -186,7 +190,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         >
           Trigger Tooltip
         </button>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -204,10 +208,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -235,7 +240,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         >
           Trigger Tooltip
         </button>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_left-top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -253,10 +258,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -284,7 +290,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         >
           Trigger Tooltip
         </button>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_left-bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -302,10 +308,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -333,7 +340,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         >
           Trigger Tooltip
         </button>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -351,10 +358,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -382,7 +390,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         >
           Trigger Tooltip
         </button>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_top-left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -400,10 +408,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -431,7 +440,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         >
           Trigger Tooltip
         </button>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -449,10 +458,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -480,7 +490,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         >
           Trigger Tooltip
         </button>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -498,10 +508,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -529,7 +540,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         >
           Trigger Tooltip
         </button>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_right-top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -547,10 +558,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -578,7 +590,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         >
           Trigger Tooltip
         </button>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_right-bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -596,7 +608,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
   </div>
@@ -615,6 +627,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
 >
   <div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -646,7 +659,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             Case Icon
           </span>
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -666,10 +679,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
               Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
             </span>
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -701,7 +715,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             Case Icon
           </span>
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -721,10 +735,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
               Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
             </span>
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -756,7 +771,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             Case Icon
           </span>
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_bottom-right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -776,10 +791,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
               Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
             </span>
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -811,7 +827,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             Case Icon
           </span>
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -831,10 +847,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
               Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
             </span>
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -866,7 +883,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             Case Icon
           </span>
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_left-top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -886,10 +903,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
               Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
             </span>
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -921,7 +939,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             Case Icon
           </span>
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_left-bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -941,10 +959,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
               Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
             </span>
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -976,7 +995,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             Case Icon
           </span>
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -996,10 +1015,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
               Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
             </span>
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1031,7 +1051,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             Case Icon
           </span>
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_top-left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1051,10 +1071,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
               Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
             </span>
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1086,7 +1107,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             Case Icon
           </span>
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1106,10 +1127,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
               Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
             </span>
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1141,7 +1163,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             Case Icon
           </span>
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1161,10 +1183,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
               Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
             </span>
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1196,7 +1219,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             Case Icon
           </span>
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_right-top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1216,10 +1239,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
               Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
             </span>
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1251,7 +1275,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             Case Icon
           </span>
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_right-bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1271,7 +1295,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
               Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
             </span>
           </div>
-        </section>
+        </div>
       </div>
     </div>
   </div>
@@ -1290,6 +1314,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
 >
   <div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1314,7 +1339,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         >
           Trigger Tooltip
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1332,10 +1357,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1360,7 +1386,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         >
           Trigger Tooltip
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1378,10 +1404,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1406,7 +1433,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         >
           Trigger Tooltip
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_bottom-right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1424,10 +1451,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1452,7 +1480,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         >
           Trigger Tooltip
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1470,10 +1498,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1498,7 +1527,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         >
           Trigger Tooltip
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_left-top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1516,10 +1545,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1544,7 +1574,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         >
           Trigger Tooltip
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_left-bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1562,10 +1592,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1590,7 +1621,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         >
           Trigger Tooltip
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1608,10 +1639,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1636,7 +1668,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         >
           Trigger Tooltip
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_top-left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1654,10 +1686,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1682,7 +1715,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         >
           Trigger Tooltip
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1700,10 +1733,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1728,7 +1762,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         >
           Trigger Tooltip
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1746,10 +1780,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1774,7 +1809,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         >
           Trigger Tooltip
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_right-top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1792,10 +1827,11 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1820,7 +1856,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         >
           Trigger Tooltip
         </span>
-        <section
+        <div
           className="absolute-positioned slds-nubbin_right-bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
@@ -1838,7 +1874,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
           </div>
-        </section>
+        </div>
       </div>
     </div>
   </div>
@@ -1864,7 +1900,6 @@ exports[`DOM snapshots SLDSPopoverTooltip Base 1`] = `
     }
   >
     <button
-      aria-describedby="base"
       aria-disabled={true}
       className="slds-button slds-button_icon"
       disabled={false}
@@ -1913,7 +1948,6 @@ exports[`DOM snapshots SLDSPopoverTooltip Button 1`] = `
     }
   >
     <button
-      aria-describedby="tooltip"
       className="slds-button slds-button_neutral"
       disabled={false}
       id="button"
@@ -1954,7 +1988,6 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
         }
       >
         <button
-          aria-describedby="refresh-tooltip"
           className="slds-button slds-button_neutral"
           disabled={false}
           id="refresh-button"
@@ -1980,7 +2013,6 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
         }
       >
         <button
-          aria-describedby="edit-tooltip"
           className="slds-button slds-button_neutral"
           disabled={false}
           id="edit-button"
@@ -2065,7 +2097,6 @@ exports[`DOM snapshots SLDSPopoverTooltip Learn More 1`] = `
     }
   >
     <a
-      aria-describedby="tooltip"
       href="javascript:void(0)"
       onBlur={[Function]}
       onClick={[Function]}
@@ -2125,7 +2156,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Open 1`] = `
     >
       Trigger Tooltip
     </button>
-    <section
+    <div
       className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip dialog-classname"
       id="myPopoverId"
       onKeyDown={[Function]}
@@ -2143,7 +2174,55 @@ exports[`DOM snapshots SLDSPopoverTooltip Open 1`] = `
       >
         Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
       </div>
-    </section>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopoverTooltip With Delay 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "150px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    className="slds-tooltip-trigger"
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-disabled={true}
+      className="slds-button slds-button_icon"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Help
+      </span>
+    </button>
+    <span />
   </div>
 </div>
 `;

@@ -1,0 +1,15 @@
+{
+    "component": "illustration",
+    "status": "prototype",
+    "display-name": "Illustrations",
+	"classKey": "Illustration",
+    "SLDS-component-path": "/components/illustration",
+	"site-stories": [
+		"/__examples__/small-image-text.jsx",
+		"/__examples__/large-image-text.jsx",
+		"/__examples__/heading-message.jsx",
+		"/__examples__/heading-only.jsx",
+		"/__examples__/message-only.jsx"
+	],
+    "url-slug": "illustrations"
+}
