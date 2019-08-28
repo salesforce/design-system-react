@@ -2,6 +2,7 @@
 const fs = require('fs');
 const webpack = require('webpack');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const packageJson = require('./package.json');
 
 const header = `${packageJson.name}\nv${packageJson.version}\n`;
@@ -11,6 +12,7 @@ const baseConfig = require('./webpack.config');
 
 // eslint-disable-next-line prefer-object-spread/prefer-object-spread
 const config = Object.assign({}, baseConfig, {
+	mode: 'production',
 	externals: {
 		react: {
 			amd: 'react',
@@ -35,16 +37,16 @@ const config = Object.assign({}, baseConfig, {
 
 let FILENAME = process.env.INCLUDE_ICONS ? '[name].js' : '[name]-components.js';
 if (process.env.MINIFY) {
-	config.plugins.push(
-		new webpack.optimize.UglifyJsPlugin({
-			mangle: {
-				except: ['$', 'exports', 'require'],
-			},
-		})
-	);
+	config.optimization = {
+		minimizer: [new UglifyJsPlugin()],
+	};
 	FILENAME = process.env.INCLUDE_ICONS
 		? '[name].min.js'
 		: '[name]-components.min.js';
+} else {
+	config.optimization = {
+		minimize: false,
+	};
 }
 
 config.output.filename = FILENAME;

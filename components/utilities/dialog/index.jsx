@@ -27,7 +27,8 @@ import { DIALOG } from '../../../utilities/constants';
 
 // #### Dialog doesn't pass down <IconSettings> context so repassing it here.
 import IconSettings from '../../icon-settings';
-import { DIRECTIONS } from '../UNSAFE_direction';
+// eslint-disable-next-line camelcase
+import UNSAFE_DirectionSettings, { DIRECTIONS } from '../UNSAFE_direction';
 import LanguageDirection from '../UNSAFE_direction/private/language-direction';
 
 /*
@@ -55,7 +56,9 @@ class Dialog extends React.Component {
 
 	static propTypes = {
 		/**
-		 * Aligns the right or left side of the dialog with the respective side of the target.
+		 * Alignment of the dialog with respect to the target (assuming left-to-right language direction). For example,
+		 * a value of 'left bottom' indicates that the dialog will be rendered below and left-aligned with the target.
+		 * Note that setting the direction prop to "rtl" will flip the resulting dialog alignment.
 		 */
 		align: PropTypes.oneOf([
 			'top',
@@ -279,14 +282,11 @@ class Dialog extends React.Component {
 		// A Dropdown with overflowBoundaryElement position and 'align=right' uses max-width instead of inherited children width
 		const right = 'inherit';
 
-		const leftValue = this.props.direction === DIRECTIONS.RTL ? right : left;
-		const rightValue = this.props.direction === DIRECTIONS.RTL ? 0 : right;
-
 		return {
 			...popperData.style,
-			left: leftValue,
+			left,
 			top,
-			right: rightValue,
+			right,
 			position,
 		};
 	};
@@ -361,7 +361,10 @@ class Dialog extends React.Component {
 	createPopper = () => {
 		const reference = this.props.onRequestTargetElement(); // eslint-disable-line react/no-find-dom-node
 		const popper = this.dialogContent;
-		const placement = mapPropToPopperPlacement(this.props.align);
+		const placement = mapPropToPopperPlacement(
+			this.props.align,
+			this.props.direction
+		);
 		const eventsEnabled = true; // Lets popper listen to events (resize, scroll, etc.)
 		const modifiers = {
 			applyStyle: { enabled: false },
@@ -504,11 +507,17 @@ class Dialog extends React.Component {
 						}),
 						{}
 					);
-				return (
-					<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
+				const wrapped = (
+					// eslint-disable-next-line
+					<UNSAFE_DirectionSettings.Provider value={this.props.direction}>
 						<IconSettings {...truthyIconSettingsContext}>
 							{contents}
 						</IconSettings>
+					</UNSAFE_DirectionSettings.Provider>
+				);
+				return (
+					<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
+						{wrapped}
 					</Portal>
 				);
 			},
@@ -520,6 +529,12 @@ class Dialog extends React.Component {
 
 Dialog.contextTypes = {
 	iconPath: PropTypes.string,
+	onRequestIconPath: PropTypes.func,
+	actionSprite: PropTypes.string,
+	customSprite: PropTypes.string,
+	doctypeSprite: PropTypes.string,
+	standardSprite: PropTypes.string,
+	utilitySprite: PropTypes.string,
 };
 
 export default LanguageDirection(Dialog);

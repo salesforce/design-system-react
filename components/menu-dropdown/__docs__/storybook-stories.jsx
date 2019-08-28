@@ -10,9 +10,12 @@ import IconSettings from '../../icon-settings';
 import { MENU_DROPDOWN } from '../../../utilities/constants';
 import Dropdown from '../../menu-dropdown';
 import { DropdownNubbinPositions } from '../../menu-dropdown/menu-dropdown';
+import DropdownWithTooltips from '../__examples__/with-tooltips';
 import List from '../../utilities/menu-list';
 import Button from '../../button';
 import Trigger from '../../menu-dropdown/button-trigger';
+// eslint-disable-next-line camelcase
+import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
 
 const options = [
 	{
@@ -53,6 +56,13 @@ const options = [
 
 const getDropdown = (props) => (
 	<Dropdown {...props} onClose={action('Closed')} onOpen={action('Opened')} />
+);
+
+const makeRtl = (component) => (
+	// eslint-disable-next-line
+	<UNSAFE_DirectionSettings.Provider value="rtl">
+		<div dir="rtl">{component}</div>
+	</UNSAFE_DirectionSettings.Provider>
 );
 
 class DropdownControlled extends React.Component {
@@ -122,7 +132,11 @@ const getDropdownPositioned = (props) => {
 	const positionedDropdowns = [];
 	DropdownNubbinPositions.forEach((position) => {
 		positionedDropdowns.push(
-			<div className="slds-col slds-size_1-of-3" style={{ minHeight: '500px' }}>
+			<div
+				className="slds-col slds-size_1-of-3"
+				style={{ minHeight: '500px' }}
+				data-ignore-axe-duplicate-id
+			>
 				<Dropdown
 					{...props}
 					isOpen
@@ -170,7 +184,11 @@ const getDropdownPositioned = (props) => {
 const getDropdownCustomTrigger = (props) => (
 	<Dropdown {...props} onClose={action('Closed')} onOpen={action('Opened')}>
 		<Trigger>
-			<Button iconCategory="utility" iconName="settings" />
+			<Button
+				assistiveText={{ icon: props.assistiveText.icon }}
+				iconCategory="utility"
+				iconName="settings"
+			/>
 		</Trigger>
 	</Dropdown>
 );
@@ -228,10 +246,24 @@ storiesOf(MENU_DROPDOWN, module)
 			options,
 		})
 	)
-	.add('Base with icon', () =>
+	.add('Base center-aligned', () =>
+		getDropdown({
+			align: 'center',
+			id: 'base-center',
+			label: 'Dropdown Click',
+			onClick: (...rest) => {
+				action('Clicked')(...rest);
+			},
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options,
+		})
+	)
+	.add('Base with icon, dropdown right-aligned', () =>
 		getDropdown({
 			align: 'right',
-			id: 'base-with-icon',
+			id: 'right-align-with-icon',
 			label: 'Dropdown Click',
 			iconCategory: 'utility',
 			iconName: 'down',
@@ -244,6 +276,61 @@ storiesOf(MENU_DROPDOWN, module)
 			},
 			options,
 		})
+	)
+	.add('Base with icon, dropdown right-aligned, right-to-left', () =>
+		makeRtl(
+			getDropdown({
+				align: 'right',
+				label: 'Dropdown Click',
+				iconCategory: 'utility',
+				iconName: 'down',
+				iconPosition: 'right',
+				id: 'right-align-with-icon-rtl',
+				onClick: (...rest) => {
+					action('Clicked')(...rest);
+				},
+				onSelect: (...rest) => {
+					action('Selected')(...rest);
+				},
+				options,
+			})
+		)
+	)
+	.add('Base with icon, dropdown left-aligned', () =>
+		getDropdown({
+			align: 'left',
+			label: 'Dropdown Click',
+			iconCategory: 'utility',
+			iconName: 'down',
+			iconPosition: 'right',
+			id: 'left-align-with-icon',
+			onClick: (...rest) => {
+				action('Clicked')(...rest);
+			},
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options,
+		})
+	)
+	.add('Base with icon, dropdown left-aligned, right-to-left', () =>
+		makeRtl(
+			getDropdown({
+				align: 'left',
+				label: 'Dropdown Click',
+				iconCategory: 'utility',
+				iconName: 'down',
+				iconPosition: 'right',
+				id: 'left-align-with-icon-rtl',
+				onClick: (...rest) => {
+					action('Clicked')(...rest);
+				},
+				onSelect: (...rest) => {
+					action('Selected')(...rest);
+				},
+				options,
+			})
+		)
 	)
 	.add('Render inline', () =>
 		getDropdown({
@@ -269,6 +356,18 @@ storiesOf(MENU_DROPDOWN, module)
 			},
 			options,
 		})
+	)
+	.add('Render inline w/ Nubbins, right-to-left', () =>
+		makeRtl(
+			getDropdownPositioned({
+				id: 'render-inline-nubbins-rtl',
+				menuPosition: 'relative',
+				onSelect: (...rest) => {
+					action('Selected')(...rest);
+				},
+				options,
+			})
+		)
 	)
 	.add('Custom Trigger', () =>
 		getDropdownCustomTrigger({
@@ -352,6 +451,24 @@ storiesOf(MENU_DROPDOWN, module)
 			value: 'C0',
 		})
 	)
+	.add('Checkmark, right-to-left', () =>
+		makeRtl(
+			getDropdown({
+				assistiveText: { icon: 'More Options' },
+				buttonVariant: 'icon',
+				checkmark: true,
+				iconCategory: 'utility',
+				iconName: 'down',
+				iconVariant: 'border-filled',
+				id: 'checkmark-rtl',
+				onSelect: (...rest) => {
+					action('Selected')(...rest);
+				},
+				options,
+				value: 'C0',
+			})
+		)
+	)
 	.add('Hover with Checkmark', () =>
 		getDropdown({
 			assistiveText: { icon: 'More Options' },
@@ -371,11 +488,12 @@ storiesOf(MENU_DROPDOWN, module)
 			value: 'C0',
 		})
 	)
-	.add('Controled w/ isOpen', () => (
+	.add('Controlled w/ isOpen', () => (
 		<DropdownControlled
 			align="right"
 			id="controlled-is-open"
 			label="Dropdown Click"
 			options={options}
 		/>
-	));
+	))
+	.add('With tooltips', () => <DropdownWithTooltips />);

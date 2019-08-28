@@ -299,7 +299,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
     </button>
     <div
       className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
-      id="icon-dropdown-example"
+      id="icon-dropdown-example-1"
       onClick={[Function]}
       onFocus={null}
       onKeyDown={[Function]}
@@ -309,7 +309,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
       <button
         aria-expanded={false}
         aria-haspopup={true}
-        className="slds-button slds-button_icon-more ignore-click-icon-dropdown-example"
+        className="slds-button slds-button_icon-more ignore-click-icon-dropdown-example-1"
         disabled={false}
         onClick={[Function]}
         tabIndex="0"
@@ -339,6 +339,113 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
       </button>
     </div>
   </div>
+  <br />
+  <br />
+  <fieldset
+    className="slds-form-element"
+  >
+    <legend
+      className="slds-form-element__legend slds-form-element__label"
+    >
+      Actions
+    </legend>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-button-group"
+        role="group"
+      >
+        <button
+          aria-live="polite"
+          className="slds-button slds-not-selected slds-button_icon-border"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onMouseLeave={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_stateful"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Show Chart
+          </span>
+        </button>
+        <button
+          aria-live="polite"
+          className="slds-button slds-not-selected slds-button_icon-border"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onMouseLeave={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_stateful"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Filter List
+          </span>
+        </button>
+        <div
+          className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
+          id="icon-dropdown-example-2"
+          onClick={[Function]}
+          onFocus={null}
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+        >
+          <button
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="slds-button slds-button_icon-more ignore-click-icon-dropdown-example-2"
+            disabled={false}
+            onClick={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+              />
+            </svg>
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon slds-button__icon_x-small"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Settings
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </fieldset>
 </div>
 `;
 
@@ -353,7 +460,7 @@ exports[`DOM snapshots SLDSButtonGroup List Variant 1`] = `
       <button
         className="slds-button slds-button_neutral"
         disabled={false}
-        id="refresh-button"
+        id="refresh-button-1"
         onClick={[Function]}
         type="button"
       >
@@ -364,7 +471,7 @@ exports[`DOM snapshots SLDSButtonGroup List Variant 1`] = `
       <button
         className="slds-button slds-button_neutral"
         disabled={false}
-        id="edit-button"
+        id="edit-button-1"
         onClick={[Function]}
         type="button"
       >
@@ -374,7 +481,7 @@ exports[`DOM snapshots SLDSButtonGroup List Variant 1`] = `
     <li>
       <div
         className="slds-dropdown-trigger slds-dropdown-trigger_click"
-        id="options"
+        id="options-1"
         onClick={[Function]}
         onFocus={null}
         onKeyDown={[Function]}
@@ -384,7 +491,7 @@ exports[`DOM snapshots SLDSButtonGroup List Variant 1`] = `
         <button
           aria-expanded={false}
           aria-haspopup={true}
-          className="slds-button slds-button_icon-border-filled ignore-click-options"
+          className="slds-button slds-button_icon-border-filled ignore-click-options-1"
           disabled={false}
           onClick={[Function]}
           tabIndex="0"
@@ -407,6 +514,82 @@ exports[`DOM snapshots SLDSButtonGroup List Variant 1`] = `
       </div>
     </li>
   </ul>
+  <br />
+  <br />
+  <fieldset
+    className="slds-form-element custom-container-class"
+  >
+    <legend
+      className="slds-form-element__legend slds-form-element__label"
+    >
+      Actions
+    </legend>
+    <div
+      className="slds-form-element__control"
+    >
+      <ul
+        className="slds-button-group-list"
+      >
+        <li>
+          <button
+            className="slds-button slds-button_neutral"
+            disabled={false}
+            id="refresh-button-2"
+            onClick={[Function]}
+            type="button"
+          >
+            Refresh
+          </button>
+        </li>
+        <li>
+          <button
+            className="slds-button slds-button_neutral"
+            disabled={false}
+            id="edit-button-2"
+            onClick={[Function]}
+            type="button"
+          >
+            Edit
+          </button>
+        </li>
+        <li>
+          <div
+            className="slds-dropdown-trigger slds-dropdown-trigger_click"
+            id="options-2"
+            onClick={[Function]}
+            onFocus={null}
+            onKeyDown={[Function]}
+            onMouseEnter={null}
+            onMouseLeave={null}
+          >
+            <button
+              aria-expanded={false}
+              aria-haspopup={true}
+              className="slds-button slds-button_icon-border-filled ignore-click-options-2"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                More Options
+              </span>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </fieldset>
 </div>
 `;
 

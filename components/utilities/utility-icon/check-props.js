@@ -3,6 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 
 import urlExists from '../../../utilities/warning/url-exists';
+import { DIRECTIONS } from '../UNSAFE_direction';
 
 let checkProps = function checkPropsFunction() {};
 
@@ -13,9 +14,13 @@ if (process.env.NODE_ENV !== 'production') {
 			!props.context.onRequestIconPath
 		) {
 			const modifiedPath = props.path || props.context.iconPath;
+			const svgAssetName =
+				props.direction === DIRECTIONS.RTL ? 'symbols-rtl.svg' : 'symbols.svg';
 			urlExists(
 				COMPONENT,
-				`${modifiedPath}/${props.category}-sprite/svg/symbols.svg#${props.name}`
+				`${modifiedPath}/${props.category}-sprite/svg/${svgAssetName}#${
+					props.name
+				}`
 			);
 		}
 	};

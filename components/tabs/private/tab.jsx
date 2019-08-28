@@ -130,13 +130,10 @@ class Tab extends React.Component {
 					'slds-tabs_default__item': variant === 'default',
 					'slds-tabs_scoped__item': variant === 'scoped',
 				})}
-				role="tab"
+				role="presentation"
 				ref={(node) => {
 					this.node = node;
 				}}
-				aria-selected={selected ? 'true' : 'false'}
-				aria-disabled={disabled}
-				aria-controls={panelId}
 				tabIndex={tabIndex}
 				id={id}
 				title={typeof children === 'string' ? children : null}
@@ -149,9 +146,11 @@ class Tab extends React.Component {
 						'slds-tabs_scoped__link': variant === 'scoped',
 					})}
 					href="javascript:void(0);" // eslint-disable-line no-script-url
-					role="presentation"
+					role="tab"
 					tabIndex="-1"
+					aria-controls={panelId}
 					aria-disabled={disabled}
+					aria-selected={selected ? 'true' : 'false'}
 				>
 					{children}
 				</a>
