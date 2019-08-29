@@ -437,7 +437,7 @@ exports[`DOM snapshots SLDSMenuDropdown Hover 1`] = `
   className="slds-p-around_medium slds-text-align_center"
 >
   <div
-    className="slds-dropdown-trigger slds-dropdown-trigger_hover"
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
     id="hover"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -484,7 +484,7 @@ exports[`DOM snapshots SLDSMenuDropdown Hover with Checkmark 1`] = `
   className="slds-p-around_medium slds-text-align_center"
 >
   <div
-    className="slds-dropdown-trigger slds-dropdown-trigger_hover"
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
     id="hover-with-checkmark"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -594,8 +594,6 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
           <div
             className="slds-nubbin_top-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
             onKeyDown={[Function]}
-            onMouseEnter={null}
-            onMouseLeave={null}
             style={Object {}}
           >
             <ul
@@ -926,8 +924,6 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
           <div
             className="slds-nubbin_top slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top"
             onKeyDown={[Function]}
-            onMouseEnter={null}
-            onMouseLeave={null}
             style={Object {}}
           >
             <ul
@@ -1258,8 +1254,6 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
           <div
             className="slds-nubbin_top-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_right"
             onKeyDown={[Function]}
-            onMouseEnter={null}
-            onMouseLeave={null}
             style={Object {}}
           >
             <ul
@@ -1590,8 +1584,6 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
           <div
             className="slds-nubbin_bottom-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_left"
             onKeyDown={[Function]}
-            onMouseEnter={null}
-            onMouseLeave={null}
             style={Object {}}
           >
             <ul
@@ -1922,8 +1914,6 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
           <div
             className="slds-nubbin_bottom slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom"
             onKeyDown={[Function]}
-            onMouseEnter={null}
-            onMouseLeave={null}
             style={Object {}}
           >
             <ul
@@ -2254,8 +2244,6 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
           <div
             className="slds-nubbin_bottom-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_right"
             onKeyDown={[Function]}
-            onMouseEnter={null}
-            onMouseLeave={null}
             style={Object {}}
           >
             <ul
@@ -2644,8 +2632,6 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
             <div
               className="slds-nubbin_top-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
               onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
               style={Object {}}
             >
               <ul
@@ -2976,8 +2962,6 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
             <div
               className="slds-nubbin_top slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top"
               onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
               style={Object {}}
             >
               <ul
@@ -3308,8 +3292,6 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
             <div
               className="slds-nubbin_top-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_right"
               onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
               style={Object {}}
             >
               <ul
@@ -3640,8 +3622,6 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
             <div
               className="slds-nubbin_bottom-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_left"
               onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
               style={Object {}}
             >
               <ul
@@ -3972,8 +3952,6 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
             <div
               className="slds-nubbin_bottom slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom"
               onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
               style={Object {}}
             >
               <ul
@@ -4304,8 +4282,6 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
             <div
               className="slds-nubbin_bottom-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_right"
               onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
               style={Object {}}
             >
               <ul
@@ -4650,7 +4626,7 @@ exports[`DOM snapshots SLDSMenuDropdown Two Hovers 1`] = `
 >
   <div>
     <div
-      className="slds-dropdown-trigger slds-dropdown-trigger_hover"
+      className="slds-dropdown-trigger slds-dropdown-trigger_click"
       id="hover-1"
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -4691,7 +4667,7 @@ exports[`DOM snapshots SLDSMenuDropdown Two Hovers 1`] = `
     </div>
      
     <div
-      className="slds-dropdown-trigger slds-dropdown-trigger_hover"
+      className="slds-dropdown-trigger slds-dropdown-trigger_click"
       id="hover-2"
       onFocus={[Function]}
       onKeyDown={[Function]}

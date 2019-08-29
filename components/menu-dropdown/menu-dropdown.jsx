@@ -623,7 +623,7 @@ class MenuDropdown extends React.Component {
 		this.isHover = true;
 
 		if (!isOpen && this.props.openOn === 'hover') {
-			this.handleOpen();
+			this.handleOpenForHover();
 		} else {
 			// we want this clear when openOn is hover or hybrid
 			clearTimeout(this.isClosing);
@@ -639,12 +639,30 @@ class MenuDropdown extends React.Component {
 
 		if (isOpen) {
 			this.isClosing = setTimeout(() => {
-				this.handleClose();
+				this.handleCloseForHover();
 			}, this.props.hoverCloseDelay);
 		}
 
 		if (this.props.onMouseLeave) {
 			this.props.onMouseLeave(event);
+		}
+	};
+
+	// Special handlers for openOn === hover
+	// calling onClick inside onMouseEnter/Leave used to cause double clicking the trigger on hover which caused closing and reopening of the dropdown
+	handleCloseForHover = () => {
+		const isOpen = this.getIsOpen();
+		if (isOpen) {
+			this.handleClose();
+		}
+	};
+
+	handleOpenForHover = () => {
+		const isOpen = this.getIsOpen();
+
+		if (!isOpen) {
+			this.handleOpen();
+			this.setFocus();
 		}
 	};
 
@@ -664,12 +682,6 @@ class MenuDropdown extends React.Component {
 	};
 
 	handleFocus = (event) => {
-		const isOpen = this.getIsOpen();
-
-		if (!isOpen) {
-			this.handleOpen();
-		}
-
 		if (this.props.onFocus) {
 			this.props.onFocus(event);
 		}
@@ -950,12 +962,6 @@ class MenuDropdown extends React.Component {
 				offset={this.props.offset}
 				onClose={this.handleClose}
 				onKeyDown={this.handleKeyDown}
-				onMouseEnter={
-					this.props.openOn === 'hover' ? this.handleMouseEnter : null
-				}
-				onMouseLeave={
-					this.props.openOn === 'hover' ? this.handleMouseLeave : null
-				}
 				outsideClickIgnoreClass={outsideClickIgnoreClass}
 				position={menuPosition}
 				style={{
