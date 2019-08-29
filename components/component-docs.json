@@ -2921,6 +2921,25 @@
                 "returns": null
             },
             {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getAriaDescribedBy",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ idArray = [] }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleChange",
                 "docblock": null,
                 "modifiers": [],
@@ -7443,7 +7462,7 @@
             },
             {
                 "more-files": {
-                    "description": "MoreFiles is a component that represents a number of file contents uploaded as an attachment.",
+                    "description": "MoreFiles is a component that represents multiple uploaded attachments",
                     "methods": [
                         {
                             "name": "getId",
@@ -10350,6 +10369,10 @@
                     "name": "enum",
                     "value": [
                         {
+                            "value": "'center'",
+                            "computed": false
+                        },
+                        {
                             "value": "'left'",
                             "computed": false
                         },
@@ -10360,7 +10383,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.",
+                "description": "Aligns the menu center, right, or left respective to the trigger. This is not intended for use with `nubbinPosition`.",
                 "defaultValue": {
                     "value": "'left'",
                     "computed": false
@@ -10852,7 +10875,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:\n```\n[{\n  className: 'custom-li-class',\n    divider: 'bottom',\n    label: 'A Header',\n    type: 'header'\n }, {\n    href: 'http://sfdc.co/',\n    id: 'custom-li-id',\n    label: 'Has a value',\n  leftIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n  rightIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n    type: 'item',\n    value: 'B0'\n }, {\n  type: 'divider'\n}]\n```"
+                "description": "An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:\n```\n[{\n  className: 'custom-li-class',\n    divider: 'bottom',\n    label: 'A Header',\n    type: 'header'\n }, {\n    href: 'http://sfdc.co/',\n    id: 'custom-li-id',\n    label: 'Has a value',\n  leftIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n  rightIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n    type: 'item',\n    value: 'B0'\n }, {\n  tooltipContent: 'Displays a tooltip when hovered over with this content. The `tooltipMenuItem` prop must be set for this to work.'\n  type: 'divider'\n}]\n```"
             },
             "style": {
                 "type": {
@@ -10907,6 +10930,13 @@
                 },
                 "required": false,
                 "description": "This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided."
+            },
+            "tooltipMenuItem": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Accepts a `Tooltip` component to be used as the template for menu item tooltips that appear via the `tooltipContent` options object attribute. Must be present for `tooltipContent` to work"
             },
             "triggerClassName": {
                 "type": {
@@ -16872,9 +16902,20 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "Delay on Tooltip closing.",
+                "description": "Delay on Tooltip closing in milliseconds. Defaults to 50",
                 "defaultValue": {
                     "value": "50",
+                    "computed": false
+                }
+            },
+            "hoverOpenDelay": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Delay on Tooltip opening in milliseconds. Defaults to 0",
+                "defaultValue": {
+                    "value": "0",
                     "computed": false
                 }
             },

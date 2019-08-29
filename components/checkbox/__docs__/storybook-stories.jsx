@@ -82,7 +82,9 @@ class CheckboxIndeterminate extends React.Component {
 						label: 'Checkbox (indeterminate)',
 					}}
 					id="checkbox-example-standard-indeterminate"
-					label="Checkbox Label"
+					labels={{
+						label: 'Checkbox label',
+					}}
 					name="checkbox-example-standard-indeterminate"
 					checked={this.state.checked}
 					indeterminate={this.state.indeterminate}
@@ -134,7 +136,9 @@ storiesOf(CHECKBOX, module)
 							I must make it truer than my radio button who is trying to... `,
 				}}
 				id="checkbox-example-base-assistiveText"
-				label="Checkbox Label"
+				labels={{
+					label: 'Checkbox label',
+				}}
 				name="checkbox-example-base-assistiveText"
 				onChange={action('change')}
 			/>
@@ -157,7 +161,9 @@ storiesOf(CHECKBOX, module)
 		<Checkbox
 			checked
 			id="checkbox-example-base-checked"
-			label="Checkbox Label"
+			labels={{
+				label: 'Checkbox label',
+			}}
 			name="checkbox-example-base-checked"
 			onChange={action('change')}
 		/>
@@ -166,7 +172,9 @@ storiesOf(CHECKBOX, module)
 	.add('Checkbox Toggle', () => (
 		<Checkbox
 			id="checkbox-example-toggle"
-			label="Checkbox Toggle Label"
+			labels={{
+				label: 'Checkbox Toggle label',
+			}}
 			name="checkbox-example-toggle"
 			onChange={action('change')}
 			onBlur={(e) => {
@@ -178,7 +186,9 @@ storiesOf(CHECKBOX, module)
 	.add('Checkbox Toggle (with error)', () => (
 		<Checkbox
 			id="checkbox-example-toggle-error"
-			label="Checkbox Toggle Label"
+			labels={{
+				label: 'Checkbox Toggle label',
+			}}
 			name="checkbox-example-toggle-error"
 			errorText="This field has an error."
 			onChange={action('change')}
@@ -191,7 +201,9 @@ storiesOf(CHECKBOX, module)
 	.add('Checkbox Toggle (required)', () => (
 		<Checkbox
 			id="checkbox-example-toggle-required"
-			label="Checkbox Toggle Label"
+			labels={{
+				label: 'Checkbox Toggle label',
+			}}
 			name="checkbox-example-toggle-required"
 			onChange={action('change')}
 			onBlur={(e) => {
@@ -204,7 +216,9 @@ storiesOf(CHECKBOX, module)
 	.add('Checkbox Toggle (disabled)', () => (
 		<Checkbox
 			id="checkbox-example-toggle-disabled"
-			label="Checkbox Toggle Label"
+			labels={{
+				label: 'Checkbox Toggle label',
+			}}
 			name="checkbox-example-toggle-disabled"
 			onChange={action('change')}
 			onBlur={(e) => {
@@ -228,7 +242,9 @@ storiesOf(CHECKBOX, module)
 							I must make it truer than my radio button who is trying to... `,
 				}}
 				id="checkbox-example-base-assistiveText"
-				label="Checkbox Label"
+				labels={{
+					label: 'Checkbox label',
+				}}
 				name="checkbox-example-base-assistiveText"
 				onChange={action('change')}
 				variant="toggle"
@@ -252,7 +268,9 @@ storiesOf(CHECKBOX, module)
 		<Checkbox
 			checked
 			id="checkbox-example-toggle-checked"
-			label="Checkbox Label"
+			labels={{
+				label: 'Checkbox label',
+			}}
 			name="checkbox-example-toggle-checked"
 			onChange={action('change')}
 			variant="toggle"
