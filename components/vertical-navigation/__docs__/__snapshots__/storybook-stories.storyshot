@@ -771,6 +771,12 @@ exports[`DOM snapshots SLDSVerticalNavigation Quickfind 1`] = `
       <div
         className="slds-form-element slds-p-horizontal_large"
       >
+        <label
+          className="slds-form-element__label slds-assistive-text"
+          htmlFor="vertical-nav-quick-find"
+        >
+          Quickfind
+        </label>
         <div
           className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
         >
@@ -785,6 +791,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Quickfind 1`] = `
           <input
             className="slds-input"
             id="vertical-nav-quick-find"
+            name="quickfind"
             onChange={[Function]}
             onKeyDown={null}
             placeholder="Quick Find"
