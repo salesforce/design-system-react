@@ -199,6 +199,15 @@ class Checkbox extends React.Component {
 
 	getId = () => this.props.id || this.generatedId;
 
+	getErrorId = () =>
+		this.props.errorText ? `${this.getId()}-error-text` : undefined;
+
+	getAriaDescribedBy = ({ idArray = [] } = {}) =>
+		idArray
+			.concat(this.props['aria-describedby'], this.getErrorId())
+			.filter(Boolean)
+			.join(' ') || undefined;
+
 	handleChange = (event) => {
 		const { checked, indeterminate, onChange } = this.props;
 
@@ -232,7 +241,7 @@ class Checkbox extends React.Component {
 		<span className="slds-button slds-checkbox_button">
 			<input
 				aria-controls={this.props['aria-controls']}
-				aria-describedby={this.props['aria-describedby']}
+				aria-describedby={this.getAriaDescribedBy()}
 				aria-labelledby={this.props['aria-labelledby']}
 				aria-owns={this.props['aria-owns']}
 				aria-required={this.props['aria-required']}
@@ -285,7 +294,7 @@ class Checkbox extends React.Component {
 					) : null}
 					<input
 						aria-controls={this.props['aria-controls']}
-						aria-describedby={this.props['aria-describedby']}
+						aria-describedby={this.getAriaDescribedBy()}
 						aria-labelledby={this.props['aria-labelledby']}
 						aria-owns={this.props['aria-owns']}
 						aria-required={this.props['aria-required']}
@@ -329,7 +338,9 @@ class Checkbox extends React.Component {
 				</span>
 			</div>
 			{props.errorText ? (
-				<div className="slds-form-element__help">{props.errorText}</div>
+				<div className="slds-form-element__help" id={this.getErrorId()}>
+					{props.errorText}
+				</div>
 			) : null}
 		</div>
 	);
@@ -361,7 +372,9 @@ class Checkbox extends React.Component {
 				) : null}
 				<input
 					aria-controls={this.props['aria-controls']}
-					aria-describedby={`${this.getId()}-desc`}
+					aria-describedby={this.getAriaDescribedBy({
+						idArray: [`${this.getId()}-desc`],
+					})}
 					aria-labelledby={this.props['aria-labelledby']}
 					aria-owns={this.props['aria-owns']}
 					aria-required={this.props['aria-required']}
@@ -396,7 +409,9 @@ class Checkbox extends React.Component {
 				</span>
 			</label>
 			{props.errorText ? (
-				<div className="slds-form-element__help">{props.errorText}</div>
+				<div className="slds-form-element__help" id={this.getErrorId()}>
+					{props.errorText}
+				</div>
 			) : null}
 		</div>
 	);
@@ -411,7 +426,7 @@ class Checkbox extends React.Component {
 		>
 			<input
 				aria-controls={this.props['aria-controls']}
-				aria-describedby={this.props['aria-describedby']}
+				aria-describedby={this.getAriaDescribedBy()}
 				aria-labelledby={this.props['aria-labelledby']}
 				aria-owns={this.props['aria-owns']}
 				aria-required={this.props['aria-required']}

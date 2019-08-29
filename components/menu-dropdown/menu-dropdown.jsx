@@ -129,9 +129,9 @@ const DropdownToDialogNubbinMapping = {
 
 const propTypes = {
 	/**
-	 * Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.
+	 * Aligns the menu center, right, or left respective to the trigger. This is not intended for use with `nubbinPosition`.
 	 */
-	align: PropTypes.oneOf(['left', 'right']),
+	align: PropTypes.oneOf(['center', 'left', 'right']),
 	/**
 	 * This prop is passed onto the triggering `Button`. Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. You can omit this prop if you are using the `label` prop.
 	 */
@@ -349,6 +349,7 @@ const propTypes = {
 	 *     type: 'item',
 	 *     value: 'B0'
 	 *  }, {
+	 *   tooltipContent: 'Displays a tooltip when hovered over with this content. The `tooltipMenuItem` prop must be set for this to work.'
 	 *   type: 'divider'
 	 * }]
 	 * ```
@@ -378,6 +379,10 @@ const propTypes = {
 	 * This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided.
 	 */
 	tooltip: PropTypes.node,
+	/**
+	 * Accepts a `Tooltip` component to be used as the template for menu item tooltips that appear via the `tooltipContent` options object attribute. Must be present for `tooltipContent` to work
+	 */
+	tooltipMenuItem: PropTypes.node,
 	/**
 	 * CSS classes to be added to wrapping trigger `div` around the button.
 	 */
@@ -853,6 +858,7 @@ class MenuDropdown extends React.Component {
 			selectedIndices={
 				this.props.multiple ? this.state.selectedIndices : undefined
 			}
+			tooltipMenuItem={this.props.tooltipMenuItem}
 			triggerId={this.getId()}
 			length={this.props.length}
 			{...customListProps}
@@ -908,7 +914,8 @@ class MenuDropdown extends React.Component {
 			hasNubbin = true;
 			align = DropdownToDialogNubbinMapping[this.props.nubbinPosition];
 		} else if (this.props.align) {
-			align = `bottom ${this.props.align}`;
+			align =
+				this.props.align === 'center' ? 'bottom' : `bottom ${this.props.align}`;
 		}
 
 		const positions = DropdownToDialogNubbinMapping[align].split(' ');
@@ -921,6 +928,11 @@ class MenuDropdown extends React.Component {
 		const menuPosition = this.props.isInline
 			? 'relative'
 			: this.props.menuPosition; // eslint-disable-line react/prop-types
+
+		const menuStylesBase = {};
+		if (this.props.align === 'center' && !hasNubbin) {
+			menuStylesBase.transform = 'none';
+		}
 
 		return isOpen ? (
 			<Dialog
@@ -952,7 +964,10 @@ class MenuDropdown extends React.Component {
 				}
 				outsideClickIgnoreClass={outsideClickIgnoreClass}
 				position={menuPosition}
-				style={this.props.menuStyle}
+				style={{
+					...menuStylesBase,
+					...this.props.menuStyle,
+				}}
 				onRequestTargetElement={() => this.trigger}
 			>
 				{this.renderMenuContent(customContent)}
