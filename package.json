@@ -205,7 +205,7 @@
 		"string-replace-webpack-plugin": "^0.1.2",
 		"style-loader": "^0.17.0",
 		"uglifyjs-webpack-plugin": "^2.0.1",
-		"webpack": "^4.36.1",
+		"webpack": "^4.39.3",
 		"webpack-dev-middleware": "^3.7.0",
 		"webpack-hot-middleware": "^2.25.0",
 		"xml2js": "^0.4.19"
