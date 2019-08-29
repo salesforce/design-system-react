@@ -8,25 +8,36 @@ class Example extends React.Component {
 			<div>
 				<div className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
 					<div className="slds-col_padded">
-						<Checkbox label="Checkbox" id="checkbox-base-example" />
+						<Checkbox
+							labels={{
+								label: 'Checkbox',
+							}}
+							id="checkbox-base-example"
+						/>
 					</div>
 					<div className="slds-col_padded">
 						<Checkbox
-							label="Checkbox"
+							labels={{
+								label: 'Checkbox',
+							}}
 							id="checkbox-base-example--error"
 							errorText="This field has an error"
 						/>
 					</div>
 					<div className="slds-col_padded">
 						<Checkbox
-							label="Checkbox (disabled)"
+							labels={{
+								label: 'Checkbox (disabled)',
+							}}
 							id="checkbox-base-example--disabled"
 							disabled
 						/>
 					</div>
 					<div className="slds-col_padded">
 						<Checkbox
-							label="Checkbox (required)"
+							labels={{
+								label: 'Checkbox (required)',
+							}}
 							id="checkbox-base-example--required"
 							required
 						/>
@@ -43,14 +54,18 @@ class Example extends React.Component {
 					</div>
 					<div className="slds-col_padded">
 						<Checkbox
-							label="Checkbox (checked)"
+							labels={{
+								label: 'Checkbox (checked)',
+							}}
 							id="checkbox-base-example--checked"
 							checked
 						/>
 					</div>
 					<div className="slds-col_padded">
 						<Checkbox
-							label="Checkbox (checked + disabled)"
+							labels={{
+								label: 'Checkbox (checked + disabled)',
+							}}
 							id="checkbox-base-example--checked-disabled"
 							checked
 							disabled
@@ -58,7 +73,9 @@ class Example extends React.Component {
 					</div>
 					<div className="slds-col_padded">
 						<Checkbox
-							label="Checkbox (indeterminate)"
+							labels={{
+								label: 'Checkbox (indeterminate)',
+							}}
 							id="checkbox-base-example--indeterminate"
 							indeterminate
 						/>
