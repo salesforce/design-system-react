@@ -149,7 +149,7 @@
 		"enzyme-adapter-react-16": "^1.14.0",
 		"eslint": "^4.19.1",
 		"eslint-config-airbnb": "^17.1.0",
-		"eslint-config-prettier": "^3.0.1",
+		"eslint-config-prettier": "^6.1.0",
 		"eslint-find-rules": "^3.3.1",
 		"eslint-loader": "^2.1.2",
 		"eslint-plugin-filenames": "^1.2.0",
