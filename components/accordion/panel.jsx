@@ -64,6 +64,7 @@ const AccordionPanel = ({
 	panelContentActions,
 	summary,
 	title,
+	onClickSummary,
 	onKeyDownSummary,
 	onTogglePanel,
 	refs,
@@ -86,7 +87,10 @@ const AccordionPanel = ({
 							iconName="switch"
 							id={`${id}-accordion-button`}
 							onKeyDown={onKeyDownSummary}
-							onClick={onTogglePanel}
+							onClick={(e) => {
+								onClickSummary();
+								onTogglePanel(e);
+							}}
 							variant="base"
 						>
 							<span className="slds-truncate" title={title || summary}>
