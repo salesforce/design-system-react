@@ -184,7 +184,7 @@
 		"lodash.trim": "^4.0.1",
 		"minimist": "^1.2.0",
 		"mocha": "^6.1.4",
-		"mocha-loader": "^2.0.1",
+		"mocha-loader": "^3.0.0",
 		"node-sass": "^4.5.0",
 		"normalizr": "^3.2.4",
 		"object.entries": "^1.1.0",
