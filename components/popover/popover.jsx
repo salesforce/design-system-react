@@ -537,7 +537,11 @@ class Popover extends React.Component {
 		};
 		let header = null;
 
-		if (hasDefinedHeader && props.variant !== 'walkthrough-action') {
+		if (
+			hasDefinedHeader &&
+			props.variant !== 'walkthrough-action' &&
+			props.variant !== 'feature'
+		) {
 			header = headerVariants[hasThemedHeader ? 'themed' : 'base'];
 		}
 
@@ -580,7 +584,10 @@ class Popover extends React.Component {
 					/>
 				</div>
 			);
-		} else if (props.variant === 'walkthrough-action') {
+		} else if (
+			props.variant === 'walkthrough-action' ||
+			props.variant === 'feature'
+		) {
 			body = (
 				<div
 					className={classNames('slds-popover__body', this.props.classNameBody)}
@@ -590,7 +597,11 @@ class Popover extends React.Component {
 						<div className="slds-media__figure">
 							<Icon
 								category="utility"
-								name="touch_action"
+								name={
+									props.variant === 'walkthrough-action'
+										? 'touch_action'
+										: this.props.utilityIconName
+								}
 								size="small"
 								inverse
 							/>
@@ -681,12 +692,14 @@ class Popover extends React.Component {
 					{
 						'slds-popover_walkthrough':
 							props.variant === 'walkthrough' ||
-							props.variant === 'walkthrough-action',
+							props.variant === 'walkthrough-action' ||
+							props.variant === 'feature',
 					},
 					{
 						'slds-popover_walkthrough-alt':
 							props.variant === 'walkthrough-action',
 					},
+					{ 'slds-popover_feature': props.variant === 'feature' },
 					{ 'slds-popover_warning': props.variant === 'warning' },
 					props.className
 				)}
@@ -722,7 +735,8 @@ class Popover extends React.Component {
 							{
 								'slds-button_icon-inverse':
 									props.variant === 'walkthrough' ||
-									props.variant === 'walkthrough-action',
+									props.variant === 'walkthrough-action' ||
+									props.variant === 'feature',
 							}
 						)}
 						onClick={this.handleCancel}
