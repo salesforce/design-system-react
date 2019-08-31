@@ -1,0 +1,15 @@
+{
+    "component": "modal",
+    "status": "prod",
+    "display-name": "Modals and Prompts",
+	"classKey": "Modal",
+    "SLDS-component-path": "/components/modals",
+	"site-stories": [
+		"/__examples__/menu-contents.jsx",
+		"/__examples__/header-footer.jsx",
+		"/__examples__/taglines.jsx",
+		"/__examples__/prompt.jsx",
+		"/__examples__/sizes.jsx"
+	],
+    "url-slug": "modals"
+}
