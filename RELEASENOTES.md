@@ -31,7 +31,7 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
-## Release 0.10.10
+## Release 0.10.11
 
 **Major Features**
 
@@ -71,6 +71,9 @@ These are changes that have backwards-compatible solutions present and that comp
 * `@storybook/addon-storyshots` update from 5.1.10 to 5.1.11
 * `eslint-config-prettier` update from 3.0.1 to 6.1.0
 * `mixin-deep` update from 1.3.1 to 1.3.2 (security)
+
+# Release 0.10.10
+**Bug with release script caused this version to be skipped. Please use 0.10.11**
 
 ## Release 0.10.9
 
