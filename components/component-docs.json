@@ -10179,6 +10179,20 @@
                 "returns": null
             },
             {
+                "name": "handleCloseForHover",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleOpenForHover",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "handleClick",
                 "docblock": null,
                 "modifiers": [],
