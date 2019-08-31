@@ -1,0 +1,4751 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSMenuDropdown Base 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="base"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_neutral ignore-click-base"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      Dropdown Click
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Base center-aligned 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="base-center"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_neutral ignore-click-base-center"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      Dropdown Click
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown left-aligned 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="left-align-with-icon"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_neutral ignore-click-left-align-with-icon"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      Dropdown Click
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon_right"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown left-aligned, right-to-left 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    dir="rtl"
+  >
+    <div
+      className="slds-dropdown-trigger slds-dropdown-trigger_click"
+      id="left-align-with-icon-rtl"
+      onClick={[Function]}
+      onFocus={null}
+      onKeyDown={[Function]}
+      onMouseEnter={null}
+      onMouseLeave={null}
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="slds-button slds-button_neutral ignore-click-left-align-with-icon-rtl"
+        disabled={false}
+        onClick={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        Dropdown Click
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_right"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown right-aligned 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="right-align-with-icon"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_neutral ignore-click-right-align-with-icon"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      Dropdown Click
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon_right"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown right-aligned, right-to-left 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    dir="rtl"
+  >
+    <div
+      className="slds-dropdown-trigger slds-dropdown-trigger_click"
+      id="right-align-with-icon-rtl"
+      onClick={[Function]}
+      onFocus={null}
+      onKeyDown={[Function]}
+      onMouseEnter={null}
+      onMouseLeave={null}
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="slds-button slds-button_neutral ignore-click-right-align-with-icon-rtl"
+        disabled={false}
+        onClick={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        Dropdown Click
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_right"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Checkmark 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="checkmark"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_icon-border-filled ignore-click-checkmark"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        More Options
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Checkmark, right-to-left 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    dir="rtl"
+  >
+    <div
+      className="slds-dropdown-trigger slds-dropdown-trigger_click"
+      id="checkmark-rtl"
+      onClick={[Function]}
+      onFocus={null}
+      onKeyDown={[Function]}
+      onMouseEnter={null}
+      onMouseLeave={null}
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="slds-button slds-button_icon-border-filled ignore-click-checkmark-rtl"
+        disabled={false}
+        onClick={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          More Options
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Controlled w/ isOpen 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-grid"
+  >
+    <div
+      className="slds-col"
+    >
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click"
+        id="controlled-is-open"
+        onClick={[Function]}
+        onFocus={null}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="slds-button slds-button_neutral ignore-click-controlled-is-open"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          Dropdown Click
+        </button>
+      </div>
+    </div>
+    <div
+      className="slds-col"
+    >
+      <button
+        className="slds-button slds-button_neutral"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        Force Open Dropdown
+      </button>
+      <button
+        className="slds-button slds-button_neutral"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        Force Close Dropdown
+      </button>
+      <button
+        className="slds-button slds-button_neutral"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        Reset Dropdown
+      </button>
+      <button
+        className="slds-button slds-button_neutral"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        Toggle Option A disabled
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Custom Content 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="custom-content"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_neutral ignore-click-custom-content"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      Custom Content Dropdown Click
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Custom Trigger 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="custom-trigger"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_neutral ignore-click-custom-trigger"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="-1"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Custom Dropdown Trigger
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Hover 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="hover"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_icon-more ignore-click-hover"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon_x-small"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Icon More large
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Hover with Checkmark 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="hover-with-checkmark"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_icon-border-filled ignore-click-hover-with-checkmark"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        More Options
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Render inline 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="render-inline"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_neutral ignore-click-render-inline"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      Dropdown Click
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div>
+    <div
+      className="slds-grid slds-wrap"
+    >
+      <div
+        className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
+        style={
+          Object {
+            "minHeight": "500px",
+          }
+        }
+      >
+        <div
+          className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+          id="render-inline-nubbins"
+          onClick={[Function]}
+          onFocus={null}
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+        >
+          <button
+            aria-expanded={true}
+            aria-haspopup={true}
+            className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins"
+            disabled={false}
+            onClick={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+              />
+            </svg>
+            top left
+          </button>
+          <div
+            className="slds-nubbin_top-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
+            onKeyDown={[Function]}
+            style={Object {}}
+          >
+            <ul
+              aria-labelledby="render-inline-nubbins"
+              className="dropdown__list slds-dropdown_length-5"
+              role="menu"
+            >
+              <li
+                className="slds-dropdown__header slds-has-divider_bottom-space custom-li-class"
+                onMouseDown={[Function]}
+                role="separator"
+              >
+                <span>
+                  A Header
+                </span>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-1"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  aria-disabled={true}
+                  data-index={1}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="An option that is Super Super Long"
+                  >
+                    An option that is Super Super Long
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item custom-item-class"
+                id="render-inline-nubbins-item-2"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={2}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Custom Class"
+                  >
+                    Custom Class
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-3"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={3}
+                  href="http://sfdc.co/"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Has a value"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                        />
+                      </svg>
+                      
+                    </span>
+                    Has a value
+                  </span>
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                      />
+                    </svg>
+                    
+                  </span>
+                </a>
+              </li>
+              <li
+                className="slds-has-divider"
+                onMouseDown={[Function]}
+                role="separator"
+              />
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-5"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={5}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="C Option"
+                  >
+                    C Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-6"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={6}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="D Option"
+                  >
+                    D Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-7"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={7}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="E Option"
+                  >
+                    E Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-8"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={8}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="A1 Option"
+                  >
+                    A1 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-9"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={9}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="B2 Option"
+                  >
+                    B2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-10"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={10}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="C2 Option"
+                  >
+                    C2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-11"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={11}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="D2 Option"
+                  >
+                    D2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-12"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={12}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="E2 Option Super Super Long"
+                  >
+                    E2 Option Super Super Long
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
+        style={
+          Object {
+            "minHeight": "500px",
+          }
+        }
+      >
+        <div
+          className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+          id="render-inline-nubbins"
+          onClick={[Function]}
+          onFocus={null}
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+        >
+          <button
+            aria-expanded={true}
+            aria-haspopup={true}
+            className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins"
+            disabled={false}
+            onClick={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+              />
+            </svg>
+            top
+          </button>
+          <div
+            className="slds-nubbin_top slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top"
+            onKeyDown={[Function]}
+            style={Object {}}
+          >
+            <ul
+              aria-labelledby="render-inline-nubbins"
+              className="dropdown__list slds-dropdown_length-5"
+              role="menu"
+            >
+              <li
+                className="slds-dropdown__header slds-has-divider_bottom-space custom-li-class"
+                onMouseDown={[Function]}
+                role="separator"
+              >
+                <span>
+                  A Header
+                </span>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-1"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  aria-disabled={true}
+                  data-index={1}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="An option that is Super Super Long"
+                  >
+                    An option that is Super Super Long
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item custom-item-class"
+                id="render-inline-nubbins-item-2"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={2}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Custom Class"
+                  >
+                    Custom Class
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-3"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={3}
+                  href="http://sfdc.co/"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Has a value"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                        />
+                      </svg>
+                      
+                    </span>
+                    Has a value
+                  </span>
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                      />
+                    </svg>
+                    
+                  </span>
+                </a>
+              </li>
+              <li
+                className="slds-has-divider"
+                onMouseDown={[Function]}
+                role="separator"
+              />
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-5"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={5}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="C Option"
+                  >
+                    C Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-6"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={6}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="D Option"
+                  >
+                    D Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-7"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={7}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="E Option"
+                  >
+                    E Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-8"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={8}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="A1 Option"
+                  >
+                    A1 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-9"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={9}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="B2 Option"
+                  >
+                    B2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-10"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={10}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="C2 Option"
+                  >
+                    C2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-11"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={11}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="D2 Option"
+                  >
+                    D2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-12"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={12}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="E2 Option Super Super Long"
+                  >
+                    E2 Option Super Super Long
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
+        style={
+          Object {
+            "minHeight": "500px",
+          }
+        }
+      >
+        <div
+          className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+          id="render-inline-nubbins"
+          onClick={[Function]}
+          onFocus={null}
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+        >
+          <button
+            aria-expanded={true}
+            aria-haspopup={true}
+            className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins"
+            disabled={false}
+            onClick={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+              />
+            </svg>
+            top right
+          </button>
+          <div
+            className="slds-nubbin_top-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_right"
+            onKeyDown={[Function]}
+            style={Object {}}
+          >
+            <ul
+              aria-labelledby="render-inline-nubbins"
+              className="dropdown__list slds-dropdown_length-5"
+              role="menu"
+            >
+              <li
+                className="slds-dropdown__header slds-has-divider_bottom-space custom-li-class"
+                onMouseDown={[Function]}
+                role="separator"
+              >
+                <span>
+                  A Header
+                </span>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-1"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  aria-disabled={true}
+                  data-index={1}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="An option that is Super Super Long"
+                  >
+                    An option that is Super Super Long
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item custom-item-class"
+                id="render-inline-nubbins-item-2"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={2}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Custom Class"
+                  >
+                    Custom Class
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-3"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={3}
+                  href="http://sfdc.co/"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Has a value"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                        />
+                      </svg>
+                      
+                    </span>
+                    Has a value
+                  </span>
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                      />
+                    </svg>
+                    
+                  </span>
+                </a>
+              </li>
+              <li
+                className="slds-has-divider"
+                onMouseDown={[Function]}
+                role="separator"
+              />
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-5"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={5}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="C Option"
+                  >
+                    C Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-6"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={6}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="D Option"
+                  >
+                    D Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-7"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={7}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="E Option"
+                  >
+                    E Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-8"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={8}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="A1 Option"
+                  >
+                    A1 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-9"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={9}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="B2 Option"
+                  >
+                    B2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-10"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={10}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="C2 Option"
+                  >
+                    C2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-11"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={11}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="D2 Option"
+                  >
+                    D2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-12"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={12}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="E2 Option Super Super Long"
+                  >
+                    E2 Option Super Super Long
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
+        style={
+          Object {
+            "minHeight": "500px",
+          }
+        }
+      >
+        <div
+          className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+          id="render-inline-nubbins"
+          onClick={[Function]}
+          onFocus={null}
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+        >
+          <button
+            aria-expanded={true}
+            aria-haspopup={true}
+            className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins"
+            disabled={false}
+            onClick={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+              />
+            </svg>
+            bottom left
+          </button>
+          <div
+            className="slds-nubbin_bottom-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_left"
+            onKeyDown={[Function]}
+            style={Object {}}
+          >
+            <ul
+              aria-labelledby="render-inline-nubbins"
+              className="dropdown__list slds-dropdown_length-5"
+              role="menu"
+            >
+              <li
+                className="slds-dropdown__header slds-has-divider_bottom-space custom-li-class"
+                onMouseDown={[Function]}
+                role="separator"
+              >
+                <span>
+                  A Header
+                </span>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-1"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  aria-disabled={true}
+                  data-index={1}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="An option that is Super Super Long"
+                  >
+                    An option that is Super Super Long
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item custom-item-class"
+                id="render-inline-nubbins-item-2"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={2}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Custom Class"
+                  >
+                    Custom Class
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-3"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={3}
+                  href="http://sfdc.co/"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Has a value"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                        />
+                      </svg>
+                      
+                    </span>
+                    Has a value
+                  </span>
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                      />
+                    </svg>
+                    
+                  </span>
+                </a>
+              </li>
+              <li
+                className="slds-has-divider"
+                onMouseDown={[Function]}
+                role="separator"
+              />
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-5"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={5}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="C Option"
+                  >
+                    C Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-6"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={6}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="D Option"
+                  >
+                    D Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-7"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={7}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="E Option"
+                  >
+                    E Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-8"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={8}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="A1 Option"
+                  >
+                    A1 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-9"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={9}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="B2 Option"
+                  >
+                    B2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-10"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={10}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="C2 Option"
+                  >
+                    C2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-11"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={11}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="D2 Option"
+                  >
+                    D2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-12"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={12}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="E2 Option Super Super Long"
+                  >
+                    E2 Option Super Super Long
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
+        style={
+          Object {
+            "minHeight": "500px",
+          }
+        }
+      >
+        <div
+          className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+          id="render-inline-nubbins"
+          onClick={[Function]}
+          onFocus={null}
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+        >
+          <button
+            aria-expanded={true}
+            aria-haspopup={true}
+            className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins"
+            disabled={false}
+            onClick={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+              />
+            </svg>
+            bottom
+          </button>
+          <div
+            className="slds-nubbin_bottom slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom"
+            onKeyDown={[Function]}
+            style={Object {}}
+          >
+            <ul
+              aria-labelledby="render-inline-nubbins"
+              className="dropdown__list slds-dropdown_length-5"
+              role="menu"
+            >
+              <li
+                className="slds-dropdown__header slds-has-divider_bottom-space custom-li-class"
+                onMouseDown={[Function]}
+                role="separator"
+              >
+                <span>
+                  A Header
+                </span>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-1"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  aria-disabled={true}
+                  data-index={1}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="An option that is Super Super Long"
+                  >
+                    An option that is Super Super Long
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item custom-item-class"
+                id="render-inline-nubbins-item-2"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={2}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Custom Class"
+                  >
+                    Custom Class
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-3"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={3}
+                  href="http://sfdc.co/"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Has a value"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                        />
+                      </svg>
+                      
+                    </span>
+                    Has a value
+                  </span>
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                      />
+                    </svg>
+                    
+                  </span>
+                </a>
+              </li>
+              <li
+                className="slds-has-divider"
+                onMouseDown={[Function]}
+                role="separator"
+              />
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-5"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={5}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="C Option"
+                  >
+                    C Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-6"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={6}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="D Option"
+                  >
+                    D Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-7"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={7}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="E Option"
+                  >
+                    E Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-8"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={8}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="A1 Option"
+                  >
+                    A1 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-9"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={9}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="B2 Option"
+                  >
+                    B2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-10"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={10}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="C2 Option"
+                  >
+                    C2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-11"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={11}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="D2 Option"
+                  >
+                    D2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-12"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={12}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="E2 Option Super Super Long"
+                  >
+                    E2 Option Super Super Long
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
+        style={
+          Object {
+            "minHeight": "500px",
+          }
+        }
+      >
+        <div
+          className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+          id="render-inline-nubbins"
+          onClick={[Function]}
+          onFocus={null}
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+        >
+          <button
+            aria-expanded={true}
+            aria-haspopup={true}
+            className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins"
+            disabled={false}
+            onClick={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+              />
+            </svg>
+            bottom right
+          </button>
+          <div
+            className="slds-nubbin_bottom-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_right"
+            onKeyDown={[Function]}
+            style={Object {}}
+          >
+            <ul
+              aria-labelledby="render-inline-nubbins"
+              className="dropdown__list slds-dropdown_length-5"
+              role="menu"
+            >
+              <li
+                className="slds-dropdown__header slds-has-divider_bottom-space custom-li-class"
+                onMouseDown={[Function]}
+                role="separator"
+              >
+                <span>
+                  A Header
+                </span>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-1"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  aria-disabled={true}
+                  data-index={1}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="An option that is Super Super Long"
+                  >
+                    An option that is Super Super Long
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item custom-item-class"
+                id="render-inline-nubbins-item-2"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={2}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Custom Class"
+                  >
+                    Custom Class
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-3"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={3}
+                  href="http://sfdc.co/"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Has a value"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                        />
+                      </svg>
+                      
+                    </span>
+                    Has a value
+                  </span>
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                      />
+                    </svg>
+                    
+                  </span>
+                </a>
+              </li>
+              <li
+                className="slds-has-divider"
+                onMouseDown={[Function]}
+                role="separator"
+              />
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-5"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={5}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="C Option"
+                  >
+                    C Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-6"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={6}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="D Option"
+                  >
+                    D Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-7"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={7}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="E Option"
+                  >
+                    E Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-8"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={8}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="A1 Option"
+                  >
+                    A1 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-9"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={9}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="B2 Option"
+                  >
+                    B2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-10"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={10}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="C2 Option"
+                  >
+                    C2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-11"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={11}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="D2 Option"
+                  >
+                    D2 Option
+                  </span>
+                </a>
+              </li>
+              <li
+                aria-selected={null}
+                className="slds-dropdown__item"
+                id="render-inline-nubbins-item-12"
+                onMouseDown={[Function]}
+                role="presentation"
+              >
+                <a
+                  data-index={12}
+                  href="javascript:void(0);"
+                  onClick={[Function]}
+                  role="menuitem"
+                  tabIndex="-1"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="E2 Option Super Super Long"
+                  >
+                    E2 Option Super Super Long
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col"
+      style={
+        Object {
+          "minHeight": "500px",
+        }
+      }
+    >
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click"
+        id="render-inline-nubbins"
+        onClick={[Function]}
+        onFocus={null}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            top right
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    dir="rtl"
+  >
+    <div>
+      <div
+        className="slds-grid slds-wrap"
+      >
+        <div
+          className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
+          style={
+            Object {
+              "minHeight": "500px",
+            }
+          }
+        >
+          <div
+            className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+            id="render-inline-nubbins-rtl"
+            onClick={[Function]}
+            onFocus={null}
+            onKeyDown={[Function]}
+            onMouseEnter={null}
+            onMouseLeave={null}
+          >
+            <button
+              aria-expanded={true}
+              aria-haspopup={true}
+              className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins-rtl"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                />
+              </svg>
+              top left
+            </button>
+            <div
+              className="slds-nubbin_top-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
+              onKeyDown={[Function]}
+              style={Object {}}
+            >
+              <ul
+                aria-labelledby="render-inline-nubbins-rtl"
+                className="dropdown__list slds-dropdown_length-5"
+                role="menu"
+              >
+                <li
+                  className="slds-dropdown__header slds-has-divider_bottom-space custom-li-class"
+                  onMouseDown={[Function]}
+                  role="separator"
+                >
+                  <span>
+                    A Header
+                  </span>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-1"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    aria-disabled={true}
+                    data-index={1}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="An option that is Super Super Long"
+                    >
+                      An option that is Super Super Long
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item custom-item-class"
+                  id="render-inline-nubbins-rtl-item-2"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={2}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Custom Class"
+                    >
+                      Custom Class
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-3"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={3}
+                    href="http://sfdc.co/"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Has a value"
+                    >
+                      <span>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                          />
+                        </svg>
+                        
+                      </span>
+                      Has a value
+                    </span>
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </a>
+                </li>
+                <li
+                  className="slds-has-divider"
+                  onMouseDown={[Function]}
+                  role="separator"
+                />
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-5"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={5}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="C Option"
+                    >
+                      C Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-6"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={6}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="D Option"
+                    >
+                      D Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-7"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={7}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="E Option"
+                    >
+                      E Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-8"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={8}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="A1 Option"
+                    >
+                      A1 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-9"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={9}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="B2 Option"
+                    >
+                      B2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-10"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={10}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="C2 Option"
+                    >
+                      C2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-11"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={11}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="D2 Option"
+                    >
+                      D2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-12"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={12}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="E2 Option Super Super Long"
+                    >
+                      E2 Option Super Super Long
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
+          style={
+            Object {
+              "minHeight": "500px",
+            }
+          }
+        >
+          <div
+            className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+            id="render-inline-nubbins-rtl"
+            onClick={[Function]}
+            onFocus={null}
+            onKeyDown={[Function]}
+            onMouseEnter={null}
+            onMouseLeave={null}
+          >
+            <button
+              aria-expanded={true}
+              aria-haspopup={true}
+              className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins-rtl"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                />
+              </svg>
+              top
+            </button>
+            <div
+              className="slds-nubbin_top slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top"
+              onKeyDown={[Function]}
+              style={Object {}}
+            >
+              <ul
+                aria-labelledby="render-inline-nubbins-rtl"
+                className="dropdown__list slds-dropdown_length-5"
+                role="menu"
+              >
+                <li
+                  className="slds-dropdown__header slds-has-divider_bottom-space custom-li-class"
+                  onMouseDown={[Function]}
+                  role="separator"
+                >
+                  <span>
+                    A Header
+                  </span>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-1"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    aria-disabled={true}
+                    data-index={1}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="An option that is Super Super Long"
+                    >
+                      An option that is Super Super Long
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item custom-item-class"
+                  id="render-inline-nubbins-rtl-item-2"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={2}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Custom Class"
+                    >
+                      Custom Class
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-3"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={3}
+                    href="http://sfdc.co/"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Has a value"
+                    >
+                      <span>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                          />
+                        </svg>
+                        
+                      </span>
+                      Has a value
+                    </span>
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </a>
+                </li>
+                <li
+                  className="slds-has-divider"
+                  onMouseDown={[Function]}
+                  role="separator"
+                />
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-5"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={5}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="C Option"
+                    >
+                      C Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-6"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={6}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="D Option"
+                    >
+                      D Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-7"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={7}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="E Option"
+                    >
+                      E Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-8"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={8}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="A1 Option"
+                    >
+                      A1 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-9"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={9}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="B2 Option"
+                    >
+                      B2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-10"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={10}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="C2 Option"
+                    >
+                      C2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-11"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={11}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="D2 Option"
+                    >
+                      D2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-12"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={12}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="E2 Option Super Super Long"
+                    >
+                      E2 Option Super Super Long
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
+          style={
+            Object {
+              "minHeight": "500px",
+            }
+          }
+        >
+          <div
+            className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+            id="render-inline-nubbins-rtl"
+            onClick={[Function]}
+            onFocus={null}
+            onKeyDown={[Function]}
+            onMouseEnter={null}
+            onMouseLeave={null}
+          >
+            <button
+              aria-expanded={true}
+              aria-haspopup={true}
+              className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins-rtl"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                />
+              </svg>
+              top right
+            </button>
+            <div
+              className="slds-nubbin_top-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_right"
+              onKeyDown={[Function]}
+              style={Object {}}
+            >
+              <ul
+                aria-labelledby="render-inline-nubbins-rtl"
+                className="dropdown__list slds-dropdown_length-5"
+                role="menu"
+              >
+                <li
+                  className="slds-dropdown__header slds-has-divider_bottom-space custom-li-class"
+                  onMouseDown={[Function]}
+                  role="separator"
+                >
+                  <span>
+                    A Header
+                  </span>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-1"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    aria-disabled={true}
+                    data-index={1}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="An option that is Super Super Long"
+                    >
+                      An option that is Super Super Long
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item custom-item-class"
+                  id="render-inline-nubbins-rtl-item-2"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={2}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Custom Class"
+                    >
+                      Custom Class
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-3"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={3}
+                    href="http://sfdc.co/"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Has a value"
+                    >
+                      <span>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                          />
+                        </svg>
+                        
+                      </span>
+                      Has a value
+                    </span>
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </a>
+                </li>
+                <li
+                  className="slds-has-divider"
+                  onMouseDown={[Function]}
+                  role="separator"
+                />
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-5"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={5}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="C Option"
+                    >
+                      C Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-6"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={6}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="D Option"
+                    >
+                      D Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-7"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={7}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="E Option"
+                    >
+                      E Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-8"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={8}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="A1 Option"
+                    >
+                      A1 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-9"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={9}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="B2 Option"
+                    >
+                      B2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-10"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={10}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="C2 Option"
+                    >
+                      C2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-11"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={11}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="D2 Option"
+                    >
+                      D2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-12"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={12}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="E2 Option Super Super Long"
+                    >
+                      E2 Option Super Super Long
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
+          style={
+            Object {
+              "minHeight": "500px",
+            }
+          }
+        >
+          <div
+            className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+            id="render-inline-nubbins-rtl"
+            onClick={[Function]}
+            onFocus={null}
+            onKeyDown={[Function]}
+            onMouseEnter={null}
+            onMouseLeave={null}
+          >
+            <button
+              aria-expanded={true}
+              aria-haspopup={true}
+              className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins-rtl"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                />
+              </svg>
+              bottom left
+            </button>
+            <div
+              className="slds-nubbin_bottom-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_left"
+              onKeyDown={[Function]}
+              style={Object {}}
+            >
+              <ul
+                aria-labelledby="render-inline-nubbins-rtl"
+                className="dropdown__list slds-dropdown_length-5"
+                role="menu"
+              >
+                <li
+                  className="slds-dropdown__header slds-has-divider_bottom-space custom-li-class"
+                  onMouseDown={[Function]}
+                  role="separator"
+                >
+                  <span>
+                    A Header
+                  </span>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-1"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    aria-disabled={true}
+                    data-index={1}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="An option that is Super Super Long"
+                    >
+                      An option that is Super Super Long
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item custom-item-class"
+                  id="render-inline-nubbins-rtl-item-2"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={2}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Custom Class"
+                    >
+                      Custom Class
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-3"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={3}
+                    href="http://sfdc.co/"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Has a value"
+                    >
+                      <span>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                          />
+                        </svg>
+                        
+                      </span>
+                      Has a value
+                    </span>
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </a>
+                </li>
+                <li
+                  className="slds-has-divider"
+                  onMouseDown={[Function]}
+                  role="separator"
+                />
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-5"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={5}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="C Option"
+                    >
+                      C Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-6"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={6}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="D Option"
+                    >
+                      D Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-7"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={7}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="E Option"
+                    >
+                      E Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-8"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={8}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="A1 Option"
+                    >
+                      A1 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-9"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={9}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="B2 Option"
+                    >
+                      B2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-10"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={10}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="C2 Option"
+                    >
+                      C2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-11"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={11}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="D2 Option"
+                    >
+                      D2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-12"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={12}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="E2 Option Super Super Long"
+                    >
+                      E2 Option Super Super Long
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
+          style={
+            Object {
+              "minHeight": "500px",
+            }
+          }
+        >
+          <div
+            className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+            id="render-inline-nubbins-rtl"
+            onClick={[Function]}
+            onFocus={null}
+            onKeyDown={[Function]}
+            onMouseEnter={null}
+            onMouseLeave={null}
+          >
+            <button
+              aria-expanded={true}
+              aria-haspopup={true}
+              className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins-rtl"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                />
+              </svg>
+              bottom
+            </button>
+            <div
+              className="slds-nubbin_bottom slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom"
+              onKeyDown={[Function]}
+              style={Object {}}
+            >
+              <ul
+                aria-labelledby="render-inline-nubbins-rtl"
+                className="dropdown__list slds-dropdown_length-5"
+                role="menu"
+              >
+                <li
+                  className="slds-dropdown__header slds-has-divider_bottom-space custom-li-class"
+                  onMouseDown={[Function]}
+                  role="separator"
+                >
+                  <span>
+                    A Header
+                  </span>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-1"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    aria-disabled={true}
+                    data-index={1}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="An option that is Super Super Long"
+                    >
+                      An option that is Super Super Long
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item custom-item-class"
+                  id="render-inline-nubbins-rtl-item-2"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={2}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Custom Class"
+                    >
+                      Custom Class
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-3"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={3}
+                    href="http://sfdc.co/"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Has a value"
+                    >
+                      <span>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                          />
+                        </svg>
+                        
+                      </span>
+                      Has a value
+                    </span>
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </a>
+                </li>
+                <li
+                  className="slds-has-divider"
+                  onMouseDown={[Function]}
+                  role="separator"
+                />
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-5"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={5}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="C Option"
+                    >
+                      C Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-6"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={6}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="D Option"
+                    >
+                      D Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-7"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={7}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="E Option"
+                    >
+                      E Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-8"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={8}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="A1 Option"
+                    >
+                      A1 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-9"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={9}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="B2 Option"
+                    >
+                      B2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-10"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={10}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="C2 Option"
+                    >
+                      C2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-11"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={11}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="D2 Option"
+                    >
+                      D2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-12"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={12}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="E2 Option Super Super Long"
+                    >
+                      E2 Option Super Super Long
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
+          style={
+            Object {
+              "minHeight": "500px",
+            }
+          }
+        >
+          <div
+            className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+            id="render-inline-nubbins-rtl"
+            onClick={[Function]}
+            onFocus={null}
+            onKeyDown={[Function]}
+            onMouseEnter={null}
+            onMouseLeave={null}
+          >
+            <button
+              aria-expanded={true}
+              aria-haspopup={true}
+              className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins-rtl"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                />
+              </svg>
+              bottom right
+            </button>
+            <div
+              className="slds-nubbin_bottom-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_right"
+              onKeyDown={[Function]}
+              style={Object {}}
+            >
+              <ul
+                aria-labelledby="render-inline-nubbins-rtl"
+                className="dropdown__list slds-dropdown_length-5"
+                role="menu"
+              >
+                <li
+                  className="slds-dropdown__header slds-has-divider_bottom-space custom-li-class"
+                  onMouseDown={[Function]}
+                  role="separator"
+                >
+                  <span>
+                    A Header
+                  </span>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-1"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    aria-disabled={true}
+                    data-index={1}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="An option that is Super Super Long"
+                    >
+                      An option that is Super Super Long
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item custom-item-class"
+                  id="render-inline-nubbins-rtl-item-2"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={2}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Custom Class"
+                    >
+                      Custom Class
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-3"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={3}
+                    href="http://sfdc.co/"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Has a value"
+                    >
+                      <span>
+                        <svg
+                          aria-hidden="true"
+                          className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                        >
+                          <use
+                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                          />
+                        </svg>
+                        
+                      </span>
+                      Has a value
+                    </span>
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </a>
+                </li>
+                <li
+                  className="slds-has-divider"
+                  onMouseDown={[Function]}
+                  role="separator"
+                />
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-5"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={5}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="C Option"
+                    >
+                      C Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-6"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={6}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="D Option"
+                    >
+                      D Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-7"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={7}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="E Option"
+                    >
+                      E Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-8"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={8}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="A1 Option"
+                    >
+                      A1 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-9"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={9}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="B2 Option"
+                    >
+                      B2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-10"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={10}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="C2 Option"
+                    >
+                      C2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-11"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={11}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="D2 Option"
+                    >
+                      D2 Option
+                    </span>
+                  </a>
+                </li>
+                <li
+                  aria-selected={null}
+                  className="slds-dropdown__item"
+                  id="render-inline-nubbins-rtl-item-12"
+                  onMouseDown={[Function]}
+                  role="presentation"
+                >
+                  <a
+                    data-index={12}
+                    href="javascript:void(0);"
+                    onClick={[Function]}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="E2 Option Super Super Long"
+                    >
+                      E2 Option Super Super Long
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-col"
+        style={
+          Object {
+            "minHeight": "500px",
+          }
+        }
+      >
+        <div
+          className="slds-dropdown-trigger slds-dropdown-trigger_click"
+          id="render-inline-nubbins-rtl"
+          onClick={[Function]}
+          onFocus={null}
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+        >
+          <button
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="slds-button slds-button_icon-container ignore-click-render-inline-nubbins-rtl"
+            disabled={false}
+            onClick={[Function]}
+            tabIndex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              top right
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Two Hovers 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div>
+    <div
+      className="slds-dropdown-trigger slds-dropdown-trigger_click"
+      id="hover-1"
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="slds-button slds-button_icon-more ignore-click-hover-1"
+        disabled={false}
+        onClick={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          />
+        </svg>
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_x-small"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Icon More large
+        </span>
+      </button>
+    </div>
+     
+    <div
+      className="slds-dropdown-trigger slds-dropdown-trigger_click"
+      id="hover-2"
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="slds-button slds-button_icon-more ignore-click-hover-2"
+        disabled={false}
+        onClick={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          />
+        </svg>
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_x-small"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Icon More large
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown With tooltips 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="dropdown-with-tooltips"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_icon-border-filled ignore-click-dropdown-with-tooltips"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        More Options
+      </span>
+    </button>
+  </div>
+</div>
+`;

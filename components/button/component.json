@@ -1,0 +1,17 @@
+{
+    "component": "button",
+    "status": "prod",
+    "display-name": "Buttons",
+	"classKey": "Button",
+    "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+    },
+    "SLDS-component-path": "/components/buttons",
+	"site-stories": [
+		"/__examples__/base-neutral.jsx",
+		"/__examples__/brand-disabled-destructive-inverse.jsx",
+		"/__examples__/button-icons.jsx"
+	],
+    "url-slug": "buttons"
+}
