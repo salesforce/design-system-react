@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Icon from '../../icon';
+
 import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
@@ -38,7 +40,14 @@ class Example extends React.Component {
 					}
 					heading="Title"
 					id="popover-feature"
-					utilityIconName="description"
+					icon={
+						<Icon
+							category="utility"
+							name={'description'}
+							size="small"
+							inverse
+						/>
+					}
 					variant="feature"
 					{...this.props}
 				>

@@ -185,6 +185,10 @@ class Popover extends React.Component {
 		 */
 		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		/**
+		 * Icon displayed in the `feature` variant
+		 */
+		icon: PropTypes.node,
+		/**
 		 * By default, a unique ID will be created at render to support keyboard navigation, ARIA roles, and connect the popover to the triggering button. This ID will be applied to the triggering element. `${id}-popover`, `${id}-dialog-heading`, `${id}-dialog-body` are also created.
 		 */
 		id: PropTypes.string,
@@ -595,16 +599,16 @@ class Popover extends React.Component {
 				>
 					<div className="slds-media">
 						<div className="slds-media__figure">
-							<Icon
-								category="utility"
-								name={
-									props.variant === 'walkthrough-action'
-										? 'touch_action'
-										: this.props.utilityIconName
-								}
-								size="small"
-								inverse
-							/>
+							{props.variant === 'walkthrough-action' ? (
+								<Icon
+									category="utility"
+									name={'touch_action'}
+									size="small"
+									inverse
+								/>
+							) : (
+								this.props.icon
+							)}
 						</div>
 						<div className="slds-media__body">
 							{props.heading ? (
