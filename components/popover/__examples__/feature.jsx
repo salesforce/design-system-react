@@ -41,12 +41,7 @@ class Example extends React.Component {
 					heading="Title"
 					id="popover-feature"
 					icon={
-						<Icon
-							category="utility"
-							name='description'
-							size="small"
-							inverse
-						/>
+						<Icon category="utility" name="description" size="small" inverse />
 					}
 					variant="feature"
 					{...this.props}
