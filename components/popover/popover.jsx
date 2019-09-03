@@ -603,7 +603,7 @@ class Popover extends React.Component {
 							{props.variant === 'walkthrough-action' ? (
 								<Icon
 									category="utility"
-									name={'touch_action'}
+									name='touch_action'
 									size="small"
 									inverse
 								/>

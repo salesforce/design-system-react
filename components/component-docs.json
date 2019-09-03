@@ -13064,6 +13064,13 @@
                 "required": false,
                 "description": "All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag, or in an h2 within the popover body if used with `variant=\"walkthrough-action\"`. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop."
             },
+            "icon": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Icon displayed in the `feature` variant"
+            },
             "id": {
                 "type": {
                     "name": "string"
@@ -13209,6 +13216,10 @@
                         },
                         {
                             "value": "'error'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'feature'",
                             "computed": false
                         },
                         {

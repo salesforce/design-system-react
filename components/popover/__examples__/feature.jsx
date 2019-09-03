@@ -43,7 +43,7 @@ class Example extends React.Component {
 					icon={
 						<Icon
 							category="utility"
-							name={'description'}
+							name='description'
 							size="small"
 							inverse
 						/>
