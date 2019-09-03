@@ -261,6 +261,7 @@ class Popover extends React.Component {
 		variant: PropTypes.oneOf([
 			'base',
 			'error',
+			'feature',
 			'walkthrough',
 			'walkthrough-action',
 			'warning',
