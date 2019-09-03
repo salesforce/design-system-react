@@ -8,6 +8,7 @@ import {
 	BUILDER_HEADER,
 	BUILDER_HEADER_NAV,
 	BUILDER_HEADER_TOOLBAR,
+	BUILDER_HEADER_MISC
 } from '../../utilities/constants';
 
 const propTypes = {
@@ -106,6 +107,7 @@ const BuilderHeader = (props) => {
 
 	let nav;
 	let toolbar;
+	const misc = [];
 	React.Children.forEach(props.children, (child) => {
 		if (child) {
 			switch (child.type.displayName) {
@@ -114,6 +116,9 @@ const BuilderHeader = (props) => {
 					break;
 				case BUILDER_HEADER_TOOLBAR:
 					toolbar = child;
+					break;
+				case BUILDER_HEADER_MISC:
+					misc.push(child);
 					break;
 				default:
 			}
@@ -142,12 +147,13 @@ const BuilderHeader = (props) => {
 						</div>
 					</div>
 					{nav}
+					
 					<div className="slds-builder-header__item slds-has-flexi-truncate">
-						<h1 className="slds-builder-header__item-label">
+						{(misc.length > 0) ? misc : (<h1 className="slds-builder-header__item-label">
 							<span className="slds-truncate" title={labels.pageType}>
 								{labels.pageType}
 							</span>
-						</h1>
+						</h1>)}
 					</div>
 					<div className="slds-builder-header__item slds-builder-header__utilities">
 						<div className="slds-builder-header__utilities-item">

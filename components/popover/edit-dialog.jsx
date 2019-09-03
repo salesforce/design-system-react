@@ -72,8 +72,8 @@ class EditDialog extends React.Component {
 		const { onCancel, onSave, ...restProps } = this.props;
 
 		// trigger button will either be passed in children or defaults to an edit button.
-		const children = this.children ? (
-			this.children
+		const children = this.props.children ? (
+			this.props.children
 		) : (
 			<Button
 				assistiveText={{ icon: 'Edit: Status' }}
