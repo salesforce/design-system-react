@@ -3,6 +3,7 @@ import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
+import log from '~/utilities/log';
 
 class Example extends React.Component {
 	static displayName = 'PopoverExample';
