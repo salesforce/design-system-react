@@ -101,7 +101,7 @@
 		"webpack-cli": "^3.x"
 	},
 	"peerDependencies": {
-		"@salesforce-ux/design-system": "^2.9.3",
+		"@salesforce-ux/design-system": "^2.9.4",
 		"react": ">=16.3 <17",
 		"react-dom": ">=16.3 <17"
 	},
@@ -118,7 +118,7 @@
 		"@babel/polyfill": "^7.2.5",
 		"@babel/preset-env": "^7.4.5",
 		"@babel/preset-react": "^7.0.0",
-		"@salesforce-ux/design-system": "^2.9.3",
+		"@salesforce-ux/design-system": "^2.9.4",
 		"@salesforce-ux/icons": "9.x",
 		"@salesforce/eslint-plugin-slds-react": "^0.0.1",
 		"@storybook/addon-a11y": "^5.1.9",
