@@ -140,10 +140,8 @@ class Tree extends React.Component {
 			selectedNodeIndexes,
 			focusedNodeIndex,
 		};
-	}
 
-	componentWillMount() {
-		checkProps(TREE, this.props, componentDoc);
+		checkProps(TREE, props, componentDoc);
 	}
 
 	componentWillReceiveProps(nextProps) {
