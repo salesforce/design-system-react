@@ -222,11 +222,9 @@ class DataTable extends React.Component {
 			select: [],
 		};
 		this.scrollerRef = null;
-	}
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(DATA_TABLE, this.props, componentDoc);
+		checkProps(DATA_TABLE, props, componentDoc);
 	}
 
 	componentDidMount() {

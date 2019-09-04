@@ -158,9 +158,11 @@ class Timepicker extends React.Component {
 		options: getOptions({ props: this.props }),
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(TIME_PICKER, this.props, componentDoc);
+		checkProps(TIME_PICKER, props, componentDoc);
 	}
 
 	componentWillReceiveProps(nextProps) {

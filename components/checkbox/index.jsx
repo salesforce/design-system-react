@@ -192,7 +192,9 @@ const defaultProps = {
  * The ability to style checkboxes with CSS varies across browsers. Using this component ensures checkboxes look the same everywhere.
  */
 class Checkbox extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		checkProps(CHECKBOX, this.props, componentDoc);
 		this.generatedId = shortid.generate();
 	}

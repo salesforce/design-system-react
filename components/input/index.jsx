@@ -317,14 +317,12 @@ class Input extends React.Component {
 			speedDelay: 75,
 			timeout: {},
 		};
-	}
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(INPUT, this.props, componentDoc);
+		checkProps(INPUT, props, componentDoc);
 
 		this.generatedId = shortid.generate();
-		if (this.props.errorText) {
+		if (props.errorText) {
 			this.generatedErrorId = shortid.generate();
 		}
 	}

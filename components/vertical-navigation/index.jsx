@@ -61,9 +61,11 @@ class VerticalNavigation extends React.Component {
 
 	static defaultProps = {};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
-		checkProps(VERTICAL_NAVIGATION, this.props, componentDoc);
+		checkProps(VERTICAL_NAVIGATION, props, componentDoc);
 	}
 
 	getId = () => this.props.id || this.generatedId;

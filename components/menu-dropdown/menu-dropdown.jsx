@@ -425,26 +425,30 @@ const defaultProps = {
 class MenuDropdown extends React.Component {
 	static displayName = MENU_DROPDOWN;
 
-	state = {
-		focusedIndex: -1,
-		selectedIndex: -1,
-		selectedIndices: [],
-	};
+	constructor(props) {
+		super(props);
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(MENU_DROPDOWN, this.props, componentDoc);
+		checkProps(MENU_DROPDOWN, props, componentDoc);
 
 		this.generatedId = shortid.generate();
 
-		this.setCurrentSelectedIndices(this.props);
+		const currentSelectedIndices = this.getCurrentSelectedIndices(props);
 
-		this.navigableItems = getNavigableItems(this.props.options);
+		this.state = {
+			focusedIndex: -1,
+			selectedIndex: -1,
+			selectedIndices: [],
+			...currentSelectedIndices,
+		};
+
+		this.navigableItems = getNavigableItems(props.options);
 	}
 
 	componentWillReceiveProps(nextProps, prevProps) {
 		if (prevProps.value !== nextProps.value) {
-			this.setCurrentSelectedIndices(nextProps);
+			const nextState = this.getCurrentSelectedIndices(nextProps);
+			this.setState(nextState);
 		}
 
 		if (prevProps.isOpen !== nextProps.isOpen) {
@@ -520,12 +524,8 @@ class MenuDropdown extends React.Component {
 		return undefined;
 	};
 
-	setCurrentSelectedIndices = (nextProps) => {
-		if (this.props.multiple !== true) {
-			this.setState({
-				selectedIndex: this.getIndexByValue(nextProps.value, nextProps.options),
-			});
-		} else {
+	getCurrentSelectedIndices = (nextProps) => {
+		if (this.props.multiple === true) {
 			let values = [];
 			let currentIndices = [];
 			if (!Array.isArray(nextProps.value)) {
@@ -540,10 +540,14 @@ class MenuDropdown extends React.Component {
 				this.getIndexByValue(value, nextProps.options)
 			);
 
-			this.setState({
+			return {
 				selectedIndices: currentIndices,
-			});
+			};
 		}
+
+		return {
+			selectedIndex: this.getIndexByValue(nextProps.value, nextProps.options),
+		};
 	};
 
 	// Trigger opens, closes, and recieves focus on close
