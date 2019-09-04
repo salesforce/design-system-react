@@ -5,7 +5,7 @@ import { SPLIT_VIEW } from '../../../utilities/constants';
 import Base from '../__examples__/base';
 import BaseMultiple from '../__examples__/base-multiple';
 import ExternalState from '../__examples__/external-state';
-import CustomItemList from '../__examples__/custom-Item-list';
+import CustomItemList from '../__examples__/custom-item-list';
 
 storiesOf(SPLIT_VIEW, module)
 	.addDecorator((getStory) => (
