@@ -1164,7 +1164,7 @@
 				"/__examples__/base.jsx",
 				"/__examples__/base-multiple.jsx",
 				"/__examples__/external-state.jsx",
-				"/__examples__/custom-item-list.jsx"
+				"/__examples__/custom-items-list.jsx"
 			],
 			"url-slug": "split-view"
 		},

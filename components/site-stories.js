@@ -277,7 +277,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/base.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/base-multiple.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/external-state.jsx'),
-		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/custom-item-list.jsx'),
+		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/custom-items-list.jsx'),
 	],
 	tabs: [
 		require('raw-loader!@salesforce/design-system-react/components/tabs/__examples__/default.jsx'),
