@@ -8,7 +8,7 @@ import {
 	BUILDER_HEADER,
 	BUILDER_HEADER_NAV,
 	BUILDER_HEADER_TOOLBAR,
-	BUILDER_HEADER_MISC
+	BUILDER_HEADER_MISC,
 } from '../../utilities/constants';
 
 const propTypes = {
@@ -147,13 +147,17 @@ const BuilderHeader = (props) => {
 						</div>
 					</div>
 					{nav}
-					
+
 					<div className="slds-builder-header__item slds-has-flexi-truncate">
-						{(misc.length > 0) ? misc : (<h1 className="slds-builder-header__item-label">
-							<span className="slds-truncate" title={labels.pageType}>
-								{labels.pageType}
-							</span>
-						</h1>)}
+						{misc.length > 0 ? (
+							misc
+						) : (
+							<h1 className="slds-builder-header__item-label">
+								<span className="slds-truncate" title={labels.pageType}>
+									{labels.pageType}
+								</span>
+							</h1>
+						)}
 					</div>
 					<div className="slds-builder-header__item slds-builder-header__utilities">
 						<div className="slds-builder-header__utilities-item">

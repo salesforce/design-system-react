@@ -51,11 +51,11 @@ class Example extends React.Component {
 	handleSave = (event, data) => {
 		if (this.state.pageType.length === 0) {
 			this.setState({
-				errorText: "Required field."
+				errorText: 'Required field.',
 			});
 		} else if (this.state.pageType.length > 255) {
 			this.setState({
-				errorText: "Shorten this value to 255 or fewer characters."
+				errorText: 'Shorten this value to 255 or fewer characters.',
 			});
 		} else {
 			this.setState({
@@ -74,7 +74,7 @@ class Example extends React.Component {
 
 	handleEnter = () => {
 		this.setState({
-			opacity: 1
+			opacity: 1,
 		});
 	};
 
@@ -98,7 +98,7 @@ class Example extends React.Component {
 					label="Page Type"
 					value={this.state.pageType}
 					onChange={this.onChange('page-type')}
-					required='true'
+					required="true"
 					errorText={this.state.errorText}
 				/>
 			</div>
@@ -140,25 +140,23 @@ class Example extends React.Component {
 					</BuilderHeaderNav>
 					<BuilderHeaderMisc>
 						<IconSettings iconPath="/assets/icons">
-							<div 
+							<div
 								style={{
 									width: '100%',
 									display: 'flex',
 									alignItems: 'center',
 								}}
 							>
-								<span 
+								<span
 									className="slds-p-right_x-small slds-truncate"
-									style={{display: 'inline-block'}}
+									style={{ display: 'inline-block' }}
 								>
 									{this.state.prevPageType}
 								</span>
 								<EditDialog
 									ariaLabelledby="Edit Name"
 									body={editDialogPopoverBody}
-									isModified={
-										this.state.pageType !== this.state.prevPageType
-									}
+									isModified={this.state.pageType !== this.state.prevPageType}
 									onCancel={this.handleRequestClose}
 									onClose={this.handleClose}
 									onRequestClose={this.handleRequestClose}
@@ -170,7 +168,7 @@ class Example extends React.Component {
 									id="edit-dialog-popover"
 									isOpen={this.state.isOpen}
 									style={{ color: 'initial' }}
-									labels={{save: 'Done'}}
+									labels={{ save: 'Done' }}
 								>
 									<Tooltip
 										id="page-type-tooltip"
