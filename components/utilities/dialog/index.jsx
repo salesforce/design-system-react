@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import Popper from 'popper.js';
 import isEqual from 'lodash.isequal';
 import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -498,12 +499,14 @@ class Dialog extends React.Component {
 						</IconSettings>
 					</UNSAFE_DirectionSettings.Provider>
 				);
-				const container =
-					this.props.onRequestTargetElement() ||
-					(typeof document !== 'undefined'
-						? document.createElement('div')
-						: {});
-				return ReactDOM.createPortal(wrapped, container);
+
+				if (process.browser) {
+					const container =
+						this.props.onRequestTargetElement() ||
+						document.createElement('div');
+					return ReactDOM.createPortal(wrapped, container);
+				}
+				return null;
 			},
 		};
 
