@@ -179,7 +179,6 @@ class Example extends React.Component {
 									>
 										<Button
 											assistiveText={{ icon: 'Edit: Status' }}
-											aria-controls={`${this.id}-edit-button`}
 											className="slds-button_reset"
 											iconCategory="utility"
 											iconClassName="slds-button slds-button_icon slds-button_icon-inverse slds-button__icon_hint"
