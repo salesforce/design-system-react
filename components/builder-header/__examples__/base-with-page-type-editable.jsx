@@ -14,6 +14,7 @@ import BuilderHeaderMisc from '../misc';
 const DEFAULT_PAGE_TYPE = 'Page Type';
 const DEFAULT_ERROR_TEXT = '';
 
+
 class Example extends React.Component {
 	static displayName = 'PopoverExample';
 
