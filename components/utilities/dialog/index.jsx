@@ -498,9 +498,9 @@ class Dialog extends React.Component {
 						</IconSettings>
 					</UNSAFE_DirectionSettings.Provider>
 				);
-				const targetElement = this.props.onRequestTargetElement();
 				const container =
-					targetElement || document.createElement(this.renderTag);
+					this.props.onRequestTargetElement() ||
+					document.createElement(this.renderTag);
 				return ReactDOM.createPortal(wrapped, container);
 			},
 		};
