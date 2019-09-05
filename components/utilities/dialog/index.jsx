@@ -499,7 +499,10 @@ class Dialog extends React.Component {
 					</UNSAFE_DirectionSettings.Provider>
 				);
 				const container =
-					this.props.onRequestTargetElement() || document.createElement('div');
+					this.props.onRequestTargetElement() ||
+					(typeof document !== 'undefined'
+						? document.createElement('div')
+						: {});
 				return ReactDOM.createPortal(wrapped, container);
 			},
 		};
