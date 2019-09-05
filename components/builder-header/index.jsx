@@ -148,13 +148,13 @@ const BuilderHeader = (props) => {
 					</div>
 					{nav}
 					
-					{<div className="slds-builder-header__item slds-has-flexi-truncate">
-						{misc || (<h1 className="slds-builder-header__item-label">
+					<div className="slds-builder-header__item slds-has-flexi-truncate">
+						{(misc.length > 0) ? misc : (<h1 className="slds-builder-header__item-label">
 							<span className="slds-truncate" title={labels.pageType}>
 								{labels.pageType}
 							</span>
 						</h1>)}
-					</div>}
+					</div>
 					<div className="slds-builder-header__item slds-builder-header__utilities">
 						<div className="slds-builder-header__utilities-item">
 							<a
