@@ -500,7 +500,7 @@ class Dialog extends React.Component {
 				);
 				const container =
 					this.props.onRequestTargetElement() ||
-					document.createElement(this.renderTag);
+					document.createElement('div');
 				return ReactDOM.createPortal(wrapped, container);
 			},
 		};
