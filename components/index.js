@@ -31,6 +31,8 @@ export Breadcrumb from './breadcrumb';
 export SLDSBreadcrumb from './breadcrumb';
 export BuilderHeader from './builder-header';
 export SLDSBuilderHeader from './builder-header';
+export BuilderHeaderMisc from './builder-header/misc';
+export SLDSBuilderHeaderMisc from './builder-header/misc';
 export BuilderHeaderNav from './builder-header/nav';
 export SLDSBuilderHeaderNav from './builder-header/nav';
 export BuilderHeaderNavDropdown from './builder-header/nav-dropdown';
