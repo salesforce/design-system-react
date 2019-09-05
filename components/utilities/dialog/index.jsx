@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import Popper from 'popper.js';
 import isEqual from 'lodash.isequal';
 import ReactDOM from 'react-dom';
-import ReactDOMServer from 'react-dom/server';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
