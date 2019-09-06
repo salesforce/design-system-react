@@ -30,7 +30,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox (assistive text) 1`] = `
             <span
               className="slds-form-element__label"
             >
-              Checkbox Label
+              Checkbox label
             </span>
             <span
               className="slds-assistive-text"
@@ -100,7 +100,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox (checked) 1`] = `
           <span
             className="slds-form-element__label"
           >
-            Checkbox Label
+            Checkbox label
           </span>
         </label>
       </span>
@@ -346,7 +346,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox (indeterminate) 1`] = `
             <span
               className="slds-form-element__label"
             >
-              Checkbox Label
+              Checkbox label
             </span>
             <span
               className="slds-assistive-text"
@@ -415,7 +415,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (assistive text) 1`] = `
         <span
           className="slds-form-element__label slds-m-bottom_none"
         >
-          Checkbox Label
+          Checkbox label
         </span>
         <span
           className="slds-assistive-text"
@@ -493,7 +493,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (checked) 1`] = `
       <span
         className="slds-form-element__label slds-m-bottom_none"
       >
-        Checkbox Label
+        Checkbox label
       </span>
       <input
         aria-describedby="checkbox-example-toggle-checked-desc"
@@ -541,7 +541,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (disabled) 1`] = `
       <span
         className="slds-form-element__label slds-m-bottom_none"
       >
-        Checkbox Toggle Label
+        Checkbox Toggle label
       </span>
       <input
         aria-describedby="checkbox-example-toggle-disabled-desc"
@@ -596,7 +596,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (required) 1`] = `
       <span
         className="slds-form-element__label slds-m-bottom_none"
       >
-        Checkbox Toggle Label
+        Checkbox Toggle label
       </span>
       <input
         aria-describedby="checkbox-example-toggle-required-desc"
@@ -645,10 +645,10 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (with error) 1`] = `
       <span
         className="slds-form-element__label slds-m-bottom_none"
       >
-        Checkbox Toggle Label
+        Checkbox Toggle label
       </span>
       <input
-        aria-describedby="checkbox-example-toggle-error-desc"
+        aria-describedby="checkbox-example-toggle-error-desc checkbox-example-toggle-error-error-text"
         id="checkbox-example-toggle-error"
         name="checkbox-example-toggle-error"
         onBlur={[Function]}
@@ -677,6 +677,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle (with error) 1`] = `
     </label>
     <div
       className="slds-form-element__help"
+      id="checkbox-example-toggle-error-error-text"
     >
       This field has an error.
     </div>
@@ -698,7 +699,7 @@ exports[`DOM snapshots SLDSCheckbox Checkbox Toggle 1`] = `
       <span
         className="slds-form-element__label slds-m-bottom_none"
       >
-        Checkbox Toggle Label
+        Checkbox Toggle label
       </span>
       <input
         aria-describedby="checkbox-example-toggle-desc"
@@ -752,6 +753,7 @@ exports[`DOM snapshots SLDSCheckbox Doc site Error 1`] = `
             className="slds-checkbox"
           >
             <input
+              aria-describedby="checkbox-error-example-error-text"
               id="checkbox-error-example"
               onChange={[Function]}
               type="checkbox"
@@ -766,7 +768,7 @@ exports[`DOM snapshots SLDSCheckbox Doc site Error 1`] = `
               <span
                 className="slds-form-element__label"
               >
-                Checkbox Label
+                Checkbox label
               </span>
               <span
                 className="slds-assistive-text"
@@ -778,6 +780,7 @@ exports[`DOM snapshots SLDSCheckbox Doc site Error 1`] = `
         </div>
         <div
           className="slds-form-element__help"
+          id="checkbox-error-example-error-text"
         >
           This field is required
         </div>
@@ -967,6 +970,7 @@ exports[`DOM snapshots SLDSCheckbox Doc site Snapshot Base 1`] = `
               className="slds-checkbox"
             >
               <input
+                aria-describedby="checkbox-base-example--error-error-text"
                 id="checkbox-base-example--error"
                 onChange={[Function]}
                 type="checkbox"
@@ -988,6 +992,7 @@ exports[`DOM snapshots SLDSCheckbox Doc site Snapshot Base 1`] = `
           </div>
           <div
             className="slds-form-element__help"
+            id="checkbox-base-example--error-error-text"
           >
             This field has an error
           </div>
@@ -1284,7 +1289,7 @@ exports[`DOM snapshots SLDSCheckbox Doc site Snapshot Toggle 1`] = `
               Toggle
             </span>
             <input
-              aria-describedby="checkbox-toggle-example--error-desc"
+              aria-describedby="checkbox-toggle-example--error-desc checkbox-toggle-example--error-error-text"
               id="checkbox-toggle-example--error"
               onChange={[Function]}
               type="checkbox"
@@ -1311,6 +1316,7 @@ exports[`DOM snapshots SLDSCheckbox Doc site Snapshot Toggle 1`] = `
           </label>
           <div
             className="slds-form-element__help"
+            id="checkbox-toggle-example--error-error-text"
           >
             This field has an error
           </div>
@@ -1618,7 +1624,7 @@ exports[`DOM snapshots SLDSCheckbox Doc site Toggle 1`] = `
               Toggle
             </span>
             <input
-              aria-describedby="checkbox-toggle-example--error-desc"
+              aria-describedby="checkbox-toggle-example--error-desc checkbox-toggle-example--error-error-text"
               id="checkbox-toggle-example--error"
               onChange={[Function]}
               type="checkbox"
@@ -1645,6 +1651,7 @@ exports[`DOM snapshots SLDSCheckbox Doc site Toggle 1`] = `
           </label>
           <div
             className="slds-form-element__help"
+            id="checkbox-toggle-example--error-error-text"
           >
             This field has an error
           </div>

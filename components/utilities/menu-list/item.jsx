@@ -59,6 +59,8 @@ class ListItem extends React.Component {
 			category: PropTypes.string,
 			name: PropTypes.string,
 		}),
+		tooltipContent: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+		tooltipTemplate: PropTypes.node,
 		type: PropTypes.string,
 		value: PropTypes.any,
 	};
@@ -172,6 +174,41 @@ class ListItem extends React.Component {
 			case 'link':
 			case 'item':
 			default: {
+				/* eslint-disable jsx-a11y/role-supports-aria-props */
+				let itemContents = (
+					<a
+						aria-checked={this.props.checkmark && this.props.isSelected}
+						aria-disabled={this.props['aria-disabled']}
+						href={this.props.href}
+						data-index={this.props.index}
+						onClick={this.handleClick}
+						role={this.props.checkmark ? 'menuitemcheckbox' : 'menuitem'}
+						tabIndex="-1"
+					>
+						{this.getLabel()}
+						{this.getIcon('right')}
+					</a>
+				);
+
+				if (this.props.tooltipContent && this.props.tooltipTemplate) {
+					const {
+						...userDefinedTooltipProps
+					} = this.props.tooltipTemplate.props;
+					const tooltipProps = {
+						align: 'top',
+						content: this.props.tooltipContent, // either use specific content defined on option or content defined on tooltip component.
+						id: `${this.props.id}-tooltip`,
+						position: 'absolute',
+						triggerStyle: { width: '100%' },
+						...userDefinedTooltipProps, // we want to allow user defined tooltip pros to overwrite default props, if need be.
+					};
+					itemContents = React.cloneElement(
+						this.props.tooltipTemplate,
+						tooltipProps,
+						itemContents
+					);
+				}
+
 				return (
 					/* eslint-disable jsx-a11y/role-supports-aria-props */
 					// disabled eslint, but using aria-selected on presentation role seems suspicious...
@@ -190,19 +227,7 @@ class ListItem extends React.Component {
 						onMouseDown={this.handleMouseDown}
 						role="presentation"
 					>
-						{/* eslint-disable jsx-a11y/role-supports-aria-props */}
-						<a
-							aria-checked={this.props.checkmark && this.props.isSelected}
-							aria-disabled={this.props['aria-disabled']}
-							href={this.props.href}
-							data-index={this.props.index}
-							onClick={this.handleClick}
-							role={this.props.checkmark ? 'menuitemcheckbox' : 'menuitem'}
-							tabIndex="-1"
-						>
-							{this.getLabel()}
-							{this.getIcon('right')}
-						</a>
+						{itemContents}
 					</li>
 				);
 			}

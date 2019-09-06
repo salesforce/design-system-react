@@ -194,12 +194,23 @@ const defaultProps = {
  * The ability to style checkboxes with CSS varies across browsers. Using this component ensures checkboxes look the same everywhere.
  */
 class Checkbox extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		checkProps(CHECKBOX, this.props, componentDoc);
 		this.generatedId = shortid.generate();
 	}
 
 	getId = () => this.props.id || this.generatedId;
+
+	getErrorId = () =>
+		this.props.errorText ? `${this.getId()}-error-text` : undefined;
+
+	getAriaDescribedBy = ({ idArray = [] } = {}) =>
+		idArray
+			.concat(this.props['aria-describedby'], this.getErrorId())
+			.filter(Boolean)
+			.join(' ') || undefined;
 
 	handleChange = (event) => {
 		const { checked, indeterminate, onChange } = this.props;
@@ -323,7 +334,9 @@ class Checkbox extends React.Component {
 				</span>
 			</div>
 			{props.errorText ? (
-				<div className="slds-form-element__help">{props.errorText}</div>
+				<div className="slds-form-element__help" id={this.getErrorId()}>
+					{props.errorText}
+				</div>
 			) : null}
 		</div>
 	);
@@ -386,7 +399,9 @@ class Checkbox extends React.Component {
 				</span>
 			</label>
 			{props.errorText ? (
-				<div className="slds-form-element__help">{props.errorText}</div>
+				<div className="slds-form-element__help" id={this.getErrorId()}>
+					{props.errorText}
+				</div>
 			) : null}
 		</div>
 	);

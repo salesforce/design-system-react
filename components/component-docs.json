@@ -2921,6 +2921,25 @@
                 "returns": null
             },
             {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getAriaDescribedBy",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ idArray = [] }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleChange",
                 "docblock": null,
                 "modifiers": [],
@@ -7443,7 +7462,7 @@
             },
             {
                 "more-files": {
-                    "description": "MoreFiles is a component that represents a number of file contents uploaded as an attachment.",
+                    "description": "MoreFiles is a component that represents multiple uploaded attachments",
                     "methods": [
                         {
                             "name": "getId",
@@ -8887,6 +8906,27 @@
                         }
                     }
                 },
+                "required": false
+            }
+        },
+        "route": "icon-settings",
+        "display-name": "Icon Settings",
+        "dependencies": []
+    },
+    "icon": {
+        "description": "The Icon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href='/components/buttons/'>Button component</a> component with <code>variant='icon'</code>.",
+        "methods": [],
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
                 "required": false,
                 "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. Naked icons must have assistive text, however, if you also have visible descriptive text with the icon, declare this prop as <code>assistiveText=''</code>.",
                 "defaultValue": {
@@ -9005,7 +9045,7 @@
             },
             "inverse": {
                 "type": {
-                    "name": "bool"
+                    "name": "object"
                 },
                 "required": false,
                 "description": "Setting `inverse` to true will switch the color of the icon: light to dark, dark to light."
@@ -10160,6 +10200,20 @@
                 "returns": null
             },
             {
+                "name": "handleCloseForHover",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleOpenForHover",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "handleClick",
                 "docblock": null,
                 "modifiers": [],
@@ -10208,7 +10262,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "event",
+                        "name": "customContent",
                         "type": null
                     }
                 ],
@@ -10218,7 +10272,20 @@
                 "name": "handleCancel",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "customContent",
+                        "type": null
+                    },
+                    {
+                        "name": "isOpen",
+                        "type": null
+                    },
+                    {
+                        "name": "outsideClickIgnoreClass",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -10284,8 +10351,36 @@
                 "name": "toggleOpen",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "isOpen",
+                        "type": null
+                    }
+                ],
                 "returns": null
+            }
+        ],
+        "props": {
+            "align": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'left'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'right'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.",
+                "defaultValue": {
+                    "value": "'left'",
+                    "computed": false
+                }
             },
             {
                 "name": "renderDefaultMenuContent",
@@ -10350,6 +10445,10 @@
                     "name": "enum",
                     "value": [
                         {
+                            "value": "'center'",
+                            "computed": false
+                        },
+                        {
                             "value": "'left'",
                             "computed": false
                         },
@@ -10360,7 +10459,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.",
+                "description": "Aligns the menu center, right, or left respective to the trigger. This is not intended for use with `nubbinPosition`.",
                 "defaultValue": {
                     "value": "'left'",
                     "computed": false
@@ -10852,7 +10951,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:\n```\n[{\n  className: 'custom-li-class',\n    divider: 'bottom',\n    label: 'A Header',\n    type: 'header'\n }, {\n    href: 'http://sfdc.co/',\n    id: 'custom-li-id',\n    label: 'Has a value',\n  leftIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n  rightIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n    type: 'item',\n    value: 'B0'\n }, {\n  type: 'divider'\n}]\n```"
+                "description": "An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:\n```\n[{\n  className: 'custom-li-class',\n    divider: 'bottom',\n    label: 'A Header',\n    type: 'header'\n }, {\n    href: 'http://sfdc.co/',\n    id: 'custom-li-id',\n    label: 'Has a value',\n  leftIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n  rightIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n    type: 'item',\n    value: 'B0'\n }, {\n  tooltipContent: 'Displays a tooltip when hovered over with this content. The `tooltipMenuItem` prop must be set for this to work.'\n  type: 'divider'\n}]\n```"
             },
             "style": {
                 "type": {
@@ -10908,6 +11007,13 @@
                 "required": false,
                 "description": "This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided."
             },
+            "tooltipMenuItem": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Accepts a `Tooltip` component to be used as the template for menu item tooltips that appear via the `tooltipContent` options object attribute. Must be present for `tooltipContent` to work"
+            },
             "triggerClassName": {
                 "type": {
                     "name": "union",
@@ -10950,7 +11056,7 @@
                             "computed": false
                         },
                         {
-                            "value": "'medium'",
+                            "value": "'bottom'",
                             "computed": false
                         },
                         {
@@ -11234,6 +11340,240 @@
                 "modifiers": [],
                 "params": [],
                 "returns": null
+            }
+        ],
+        "props": {
+            "align": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'top'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'center'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Vertical alignment of Modal.",
+                "defaultValue": {
+                    "value": "'center'",
+                    "computed": false
+                }
+            },
+            "ariaHideApp": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Boolean indicating if the appElement should be hidden.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "dialogLabel": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "dialogLabelledBy": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "closeButton": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.\n* `dialogLabelledBy`: This describes which node labels the dialog. If not provided and dialogLabel is unavailable, `id` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
+                "defaultValue": {
+                    "value": "{\n    dialogLabel: '',\n    dialogLabelledBy: '',\n    closeButton: 'Close',\n}",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Modal content."
+            },
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Custom CSS classes for the modal `section` node classed `.slds-modal` and the parent of `.slds-modal__container`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "containerClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Custom CSS classes for the modal's container. This is the child element of `.slds-modal` with class `.slds-modal__container`. Uses `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "contentClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Custom CSS classes for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired. Use `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "contentStyle": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles for the modal's body. This is the element that has overflow rules and should be used to set a static height if desired."
+            },
+            "directional": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, modal footer buttons render left and right. An example use case would be for \"back\" and \"next\" buttons."
+            },
+            "disableClose": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key."
+            },
+            "dismissOnClickOutside": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to disableClose."
+            },
+            "onRequestClose": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Callback to fire with Modal is dismissed"
+            },
+            "footer": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "node"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Accepts a node or array of nodes that are typically a `Button` or `ProgressIndicator`. If an array, the nodes render on the right side first but are then floated left and right if <code>directional</code> prop is `true`."
+            },
+            "header": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Allows for a custom modal header that does not scroll with modal content. If this is defined, `heading` and `tagline` will be ignored. The close button will still be present."
+            },
+            "headerClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Adds CSS classes to the container surrounding the modal header and the close button. Use `classNames` [API](https://github.com/JedWatson/classnames)."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Unique identifier for the modal. The id is automatically generated if not provided"
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": true,
+                "description": "Forces the modal to be open or closed."
+            },
+            "parentSelector": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function whose return value is the mount node to insert the Modal element into. The default is `() => document.body`."
+            },
+            "portalClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Custom CSS classes for the portal DOM node. This node is a direct descendant of the `body` and is the parent of `ReactModal__Overlay`. Use `classNames` [API](https://github.com/JedWatson/classnames)."
             },
             {
                 "name": "updateBodyScroll",
@@ -13946,7 +14286,17 @@
             },
             "errorId": {
                 "type": {
-                    "name": "string"
+                    "name": "shape",
+                    "value": {
+                        "error": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
                 },
                 "required": false,
                 "description": "The ID of the error message, for linking to radio inputs with aria-describedby."
@@ -14112,7 +14462,7 @@
         "description": "A radio input that can have a single input checked at any one time. Radios should be wrapped with\na [RadioGroup](/components/radio-group) or [RadioButtonGroup](/components/radio-button-group)",
         "methods": [
             {
-                "name": "getId",
+                "name": "getErrorId",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -14125,6 +14475,10 @@
                 "params": [
                     {
                         "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "preventDuplicateChangeEvent",
                         "type": null
                     },
                     {
@@ -14841,9 +15195,9 @@
                     "computed": false
                 }
             },
-            "name": {
+            "onChange": {
                 "type": {
-                    "name": "string"
+                    "name": "func"
                 },
                 "required": false,
                 "description": "Name of the submitted form parameter."
@@ -16872,9 +17226,20 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "Delay on Tooltip closing.",
+                "description": "Delay on Tooltip closing in milliseconds. Defaults to 50",
                 "defaultValue": {
                     "value": "50",
+                    "computed": false
+                }
+            },
+            "hoverOpenDelay": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Delay on Tooltip opening in milliseconds. Defaults to 0",
+                "defaultValue": {
+                    "value": "0",
                     "computed": false
                 }
             },
