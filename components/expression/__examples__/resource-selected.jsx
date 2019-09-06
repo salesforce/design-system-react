@@ -402,97 +402,202 @@ class Example extends React.Component {
 															onClickCheckSyntax: log({
 																action: this.props.action,
 																event,
+																eventName: `Condition ${i} Operator Changed`,
+																data: obj,
+															});
+															this.updateData(i, obj, 'operator');
+														},
+													onChangeResource: (event, obj) => {
+														log({
+															action: this.props.action,
+															event,
+															eventName: `Condition ${i} Resource Changed`,
+															data: obj,
+														});
+														this.updateData(i, obj, 'resource');
+													},
+												onChangeValue: (event, data) => {
+													log({
+														action: this.props.action,
+														event,
+														eventName: `Condition ${i} Value Changed`,
+														data,
+													});
+												this.updateData(i, data.value, 'value');
+											},
+												onDelete: () => {
+													log({
+														action: this.props.action,
+														event,
+														eventName: `Condition ${i} Deleted`,
+														data: null,
+													});
+												this.deleteCondition(i);
+											},
+										}}
+											resourcesList={ResourcesList}
+												resourceSelected={find(ResourcesList, {
+													id: condition.resource,
+												})}
+												operatorsList={OperatorsList}
+												operatorSelected={find(OperatorsList, {
+													id: condition.operator,
+												})}
+												value={condition.value}
+												/>
+											) : (
+											<ExpressionGroup
+													/* eslint-disable-next-line react/no-array-index-key */
+													key={i}
+													id={`expression-group-${i}`}
+													labels={{
+														label: Example.getTriggerType(i, this.state.triggerType),
+													}}
+													functionCombobox={
+														<Combobox
+															labels={{
+																placeholder: 'Insert a Function',
+															}}
+															id={`expression-group-${i}-formula-function`}
+															options={ResourcesList}
+															variant="inline-listbox"
+														/>
+													}
+													operatorInput={
+														<Input
+															assistiveText={{ label: 'Insert a Operator' }}
+															id={`insert-operator-formula-${i}`}
+															placeholder="Insert a Operator"
+														/>
+													}
+												/>
+												) : (
+													condition.conditions.map((c, j) => (
+												<ExpressionCondition
+													/* eslint-disable-next-line react/no-array-index-key */
+													key={j}
+													id={`expression-group-${i}-condition-${j}`}
+													isSubCondition
+													labels={{
+														label: Example.getTriggerType(
+															j,
+															condition.triggerType
+														),
+													}}
+													events={{
+														onChangeOperator: (event, obj) => {
+															log({
+																action: this.props.action,
+																event,
+																eventName: `Operator of Condition ${j} of Group ${i} Changed`,
+																data: obj,
+															});
+															this.updateSubData(i, j, obj, 'operator');
+														},
+														onChangeResource: (event, obj) => {
+															log({
+																action: this.props.action,
+																event,
+																eventName: `Resource of Condition [${i},${j}] Changed`,
+																data: obj,
+															});
+															this.updateSubData(i, j, obj, 'resource');
+														},
+														onChangeValue: (event, data) => {
+															log({
+																action: this.props.action,
+																event,
 																eventName: `Check Syntax Button Clicked`,
 																data: null,
 															}),
-															onClickHelp: log({
+																onClickHelp: log({
+													action: this.props.action,
+												event,
+												eventName: `Get Help Button Clicked`,
+												data: null,
+											}),
+										}}
+														functionCombobox={
+													<Combobox
+														labels={{
+															placeholder: 'Insert a Function',
+														}}
+														id={`expression-group-${i}-formula-function`}
+														options={ResourcesList}
+														variant="inline-listbox"
+													/>
+												}
+												operatorInput={
+													<Input
+														assistiveText={{ label: 'Insert a Operator' }}
+														id={`insert-operator-formula-${i}`}
+														placeholder="Insert a Operator"
+													/>
+												}
+												/>
+											) : (
+													condition.conditions.map((c, j) => (
+															<ExpressionCondition
+													/* eslint-disable-next-line react/no-array-index-key */
+													key={j}
+													id={`expression-group-${i}-condition-${j}`}
+													isSubCondition
+													labels={{
+														label: Example.getTriggerType(
+															j,
+															condition.triggerType
+														),
+													}}
+													events={{
+														onChangeOperator: (event, obj) => {
+															log({
 																action: this.props.action,
 																event,
-																eventName: `Get Help Button Clicked`,
+																eventName: `Operator of Condition ${j} of Group ${i} Changed`,
+																data: obj,
+															});
+															this.updateSubData(i, j, obj, 'operator');
+														},
+														onChangeResource: (event, obj) => {
+															log({
+																action: this.props.action,
+																event,
+																eventName: `Resource of Condition [${i},${j}] Changed`,
+																data: obj,
+															});
+															this.updateSubData(i, j, obj, 'resource');
+														},
+														onChangeValue: (event, data) => {
+															log({
+																action: this.props.action,
+																event,
+																eventName: `Value of Condition [${i},${j}] Changed`,
+																data,
+															});
+															this.updateSubData(i, j, data.value, 'value');
+														},
+														onDelete: () => {
+															log({
+																action: this.props.action,
+																event,
+																eventName: `Condition [${i},${j}] deleted`,
 																data: null,
-															}),
-														}}
-														functionCombobox={
-															<Combobox
-																labels={{
-																	placeholder: 'Insert a Function',
-																}}
-																id={`expression-group-${i}-formula-function`}
-																options={ResourcesList}
-																variant="inline-listbox"
-															/>
-														}
-														operatorInput={
-															<Input
-																assistiveText={{ label: 'Insert a Operator' }}
-																id={`insert-operator-formula-${i}`}
-																placeholder="Insert a Operator"
-															/>
-														}
-													/>
-												) : (
-														condition.conditions.map((c, j) => (
-															<ExpressionCondition
-																/* eslint-disable-next-line react/no-array-index-key */
-																key={j}
-																id={`expression-group-${i}-condition-${j}`}
-																isSubCondition
-																labels={{
-																	label: Example.getTriggerType(
-																		j,
-																		condition.triggerType
-																	),
-																}}
-																events={{
-																	onChangeOperator: (event, obj) => {
-																		log({
-																			action: this.props.action,
-																			event,
-																			eventName: `Operator of Condition ${j} of Group ${i} Changed`,
-																			data: obj,
-																		});
-																		this.updateSubData(i, j, obj, 'operator');
-																	},
-																	onChangeResource: (event, obj) => {
-																		log({
-																			action: this.props.action,
-																			event,
-																			eventName: `Resource of Condition [${i},${j}] Changed`,
-																			data: obj,
-																		});
-																		this.updateSubData(i, j, obj, 'resource');
-																	},
-																	onChangeValue: (event, data) => {
-																		log({
-																			action: this.props.action,
-																			event,
-																			eventName: `Value of Condition [${i},${j}] Changed`,
-																			data,
-																		});
-																		this.updateSubData(i, j, data.value, 'value');
-																	},
-																	onDelete: () => {
-																		log({
-																			action: this.props.action,
-																			event,
-																			eventName: `Condition [${i},${j}] deleted`,
-																			data: null,
-																		});
-																		this.deleteSubCondition(i, j);
-																	},
-																}}
-																resourcesList={ResourcesList}
-																resourceSelected={find(ResourcesList, {
-																	id: c.resource,
-																})}
-																operatorsList={OperatorsList}
-																operatorSelected={find(OperatorsList, {
-																	id: c.operator,
-																})}
-																value={c.value}
-															/>
-														))
-													)}
+															});
+															this.deleteSubCondition(i, j);
+														},
+													}}
+													resourcesList={ResourcesList}
+													resourceSelected={find(ResourcesList, {
+														id: c.resource,
+													})}
+													operatorsList={OperatorsList}
+													operatorSelected={find(OperatorsList, {
+														id: c.operator,
+													})}
+													value={c.value}
+												/>
+												))
+											)}
 											</ExpressionGroup>
 										)
 							)

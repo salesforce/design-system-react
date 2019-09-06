@@ -264,6 +264,7 @@ class Checkbox extends React.Component {
 				required={props.required}
 				type="checkbox"
 				{...ariaProps}
+				aria-describedby={this.getAriaDescribedBy()}
 			/>
 			<label className="slds-checkbox_button__label" htmlFor={this.getId()}>
 				<span className="slds-checkbox_faux">{labels.label}</span>
@@ -317,6 +318,7 @@ class Checkbox extends React.Component {
 						required={props.required}
 						type="checkbox"
 						{...ariaProps}
+						aria-describedby={this.getAriaDescribedBy()}
 					/>
 					<label
 						className="slds-checkbox__label"
@@ -387,6 +389,9 @@ class Checkbox extends React.Component {
 					required={props.required}
 					type="checkbox"
 					{...ariaProps}
+					aria-describedby={this.getAriaDescribedBy({
+						idArray: [`${this.getId()}-desc`],
+					})}
 				/>
 				<span
 					id={`${this.getId()}-desc`}
@@ -435,6 +440,7 @@ class Checkbox extends React.Component {
 				required={props.required}
 				type="checkbox"
 				{...ariaProps}
+				aria-describedby={this.getAriaDescribedBy()}
 			/>
 			<label className="slds-checkbox_button__label" htmlFor={this.getId()}>
 				{this.props.coverable ? (
@@ -447,10 +453,10 @@ class Checkbox extends React.Component {
 						</span>
 					</div>
 				) : (
-						<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
-							{this.props.onRenderVisualPicker()}
-						</span>
-					)}
+					<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
+						{this.props.onRenderVisualPicker()}
+					</span>
+				)}
 				{!this.props.vertical ? (
 					<span className="slds-visual-picker__body">
 						{this.props.labels.heading ? (
@@ -515,11 +521,11 @@ class Checkbox extends React.Component {
 
 		return variantExists
 			? subRenders[this.props.variant](
-				this.props,
-				ariaProps,
-				assistiveText,
-				labels
-			)
+					this.props,
+					ariaProps,
+					assistiveText,
+					labels
+				)
 			: subRenders.base(this.props, ariaProps, assistiveText, labels);
 	}
 }

@@ -2,7 +2,7 @@
     "component": "split-view",
     "status": "prod",
     "display-name": "Split View",
-	"classKey": "SplitView",
+    "classKey": "SplitView",
     "last-accessibility-review": {
         "date-iso-8601": "2018/01/18",
         "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
@@ -15,18 +15,18 @@
     "dependencies": [
         {
             "component": "header",
-			"classKey": "SplitViewHeader"
-		},
+            "classKey": "SplitViewHeader"
+        },
         {
             "component": "listbox",
-			"classKey": "SplitViewListbox"
-		}
+            "classKey": "SplitViewListbox"
+        }
     ],
-	"site-stories": [
-		"/__examples__/base.jsx",
-		"/__examples__/base-multiple.jsx",
-		"/__examples__/external-state.jsx",
-		"/__examples__/custom-item-list.jsx"
-	],
+    "site-stories": [
+        "/__examples__/base.jsx",
+        "/__examples__/base-multiple.jsx",
+        "/__examples__/external-state.jsx",
+        "/__examples__/custom-items-list.jsx"
+    ],
     "url-slug": "split-view"
 }
