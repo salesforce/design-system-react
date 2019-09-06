@@ -285,9 +285,7 @@ class DemoComponent extends React.Component {
 
 		// initial state
 		this.state = {};
-	}
 
-	componentWillMount() {
 		// Not required. This function issues console warnings to developers about props and is helpful in upgrading. All breaking changes to props must have a warning for developers when they upgrade.
 		checkProps(EXTERNAL_CONSTANT, this.props);
 	}

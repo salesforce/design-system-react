@@ -49,9 +49,6 @@ class Accordion extends Component {
 		super(props);
 		this.state = { currButtonIndex: 0 };
 		this.summaryButtons = [];
-	}
-
-	componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
 

@@ -13,7 +13,9 @@ class Example extends React.Component {
 							assistiveText={{ label: 'Error state' }}
 							errorText="This field is required"
 							id="checkbox-error-example"
-							label="Checkbox Label"
+							labels={{
+								label: 'Checkbox label',
+							}}
 						/>
 					</div>
 					<div className="slds-col_padded">
@@ -23,14 +25,18 @@ class Example extends React.Component {
 							}}
 							id="checkbox-indeterminate-example"
 							indeterminate
-							label="Indeterminate"
+							labels={{
+								label: 'Indeterminate',
+							}}
 						/>
 					</div>
 					<div className="slds-col_padded">
 						<Checkbox
 							assistiveText={{ label: 'Indeterminate' }}
 							id="checkbox-indeterminate-required-example"
-							label="Required"
+							labels={{
+								label: 'Required',
+							}}
 							required
 						/>
 					</div>
@@ -38,7 +44,9 @@ class Example extends React.Component {
 						<Checkbox
 							assistiveText={{ label: 'Disabled' }}
 							id="checkbox-disabled-example"
-							label="Disabled"
+							labels={{
+								label: 'Disabled',
+							}}
 							disabled
 						/>
 					</div>

@@ -106,10 +106,8 @@ class InlineEdit extends React.Component {
 			isEditing: false,
 			value: null,
 		};
-	}
 
-	componentWillMount() {
-		checkProps(FORMS_INLINE_EDIT, this.props);
+		checkProps(FORMS_INLINE_EDIT, props);
 	}
 
 	componentDidUpdate() {

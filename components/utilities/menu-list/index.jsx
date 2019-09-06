@@ -63,6 +63,10 @@ class List extends React.Component {
 		 */
 		selectedIndex: PropTypes.number,
 		/**
+		 * Accepts a `Tooltip` component to be used as the template for menu item tooltips that appear via the `tooltipContent` options object attribute
+		 */
+		tooltipMenuItem: PropTypes.node,
+		/**
 		 * The id of the element which triggered this list (in a menu context).
 		 */
 		triggerId: PropTypes.string,
@@ -76,10 +80,13 @@ class List extends React.Component {
 
 	render() {
 		let lengthClassName;
+		let list;
+
 		if (this.props.length) {
 			lengthClassName = `slds-dropdown_length-${this.props.length}`;
 		}
-		return (
+
+		list = (
 			<ul
 				aria-labelledby={this.props.triggerId}
 				className={classNames(
@@ -110,11 +117,54 @@ class List extends React.Component {
 							labelRenderer={this.props.itemRenderer}
 							onSelect={this.props.onSelect}
 							ref={(listItem) => this.props.itemRefs(listItem, index)}
+							tooltipTemplate={this.props.tooltipMenuItem}
 						/>
 					);
 				})}
 			</ul>
 		);
+
+		if (this.props.tooltipMenuItem) {
+			/* eslint-disable react/no-danger */
+			list = (
+				<React.Fragment>
+					<style
+						dangerouslySetInnerHTML={{
+							__html: `.slds-dropdown__item > .slds-tooltip-trigger > a {
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 0.5rem 0.75rem;
+	color: #080707;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.slds-dropdown__item > .slds-tooltip-trigger > a:active {
+    text-decoration: none;
+    background-color: #ecebea;
+}
+
+.slds-dropdown__item > .slds-tooltip-trigger > a:hover,
+.slds-dropdown__item > .slds-tooltip-trigger > a:focus {
+    outline: 0;
+    text-decoration: none;
+    background-color: #f3f2f2;
+}
+`,
+						}}
+					/>
+					{list}
+				</React.Fragment>
+			);
+			/* eslint-enable react/no-danger */
+		}
+
+		return list;
 	}
 }
 

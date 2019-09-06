@@ -129,9 +129,9 @@ const DropdownToDialogNubbinMapping = {
 
 const propTypes = {
 	/**
-	 * Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.
+	 * Aligns the menu center, right, or left respective to the trigger. This is not intended for use with `nubbinPosition`.
 	 */
-	align: PropTypes.oneOf(['left', 'right']),
+	align: PropTypes.oneOf(['center', 'left', 'right']),
 	/**
 	 * This prop is passed onto the triggering `Button`. Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. You can omit this prop if you are using the `label` prop.
 	 */
@@ -345,6 +345,7 @@ const propTypes = {
 	 *     type: 'item',
 	 *     value: 'B0'
 	 *  }, {
+	 *   tooltipContent: 'Displays a tooltip when hovered over with this content. The `tooltipMenuItem` prop must be set for this to work.'
 	 *   type: 'divider'
 	 * }]
 	 * ```
@@ -374,6 +375,10 @@ const propTypes = {
 	 * This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided.
 	 */
 	tooltip: PropTypes.node,
+	/**
+	 * Accepts a `Tooltip` component to be used as the template for menu item tooltips that appear via the `tooltipContent` options object attribute. Must be present for `tooltipContent` to work
+	 */
+	tooltipMenuItem: PropTypes.node,
 	/**
 	 * CSS classes to be added to wrapping trigger `div` around the button.
 	 */
@@ -420,26 +425,30 @@ const defaultProps = {
 class MenuDropdown extends React.Component {
 	static displayName = MENU_DROPDOWN;
 
-	state = {
-		focusedIndex: -1,
-		selectedIndex: -1,
-		selectedIndices: [],
-	};
+	constructor(props) {
+		super(props);
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(MENU_DROPDOWN, this.props, componentDoc);
+		checkProps(MENU_DROPDOWN, props, componentDoc);
 
 		this.generatedId = shortid.generate();
 
-		this.setCurrentSelectedIndices(this.props);
+		const currentSelectedIndices = this.getCurrentSelectedIndices(props);
 
-		this.navigableItems = getNavigableItems(this.props.options);
+		this.state = {
+			focusedIndex: -1,
+			selectedIndex: -1,
+			selectedIndices: [],
+			...currentSelectedIndices,
+		};
+
+		this.navigableItems = getNavigableItems(props.options);
 	}
 
 	componentWillReceiveProps(nextProps, prevProps) {
 		if (prevProps.value !== nextProps.value) {
-			this.setCurrentSelectedIndices(nextProps);
+			const nextState = this.getCurrentSelectedIndices(nextProps);
+			this.setState(nextState);
 		}
 
 		if (prevProps.isOpen !== nextProps.isOpen) {
@@ -515,12 +524,8 @@ class MenuDropdown extends React.Component {
 		return undefined;
 	};
 
-	setCurrentSelectedIndices = (nextProps) => {
-		if (this.props.multiple !== true) {
-			this.setState({
-				selectedIndex: this.getIndexByValue(nextProps.value, nextProps.options),
-			});
-		} else {
+	getCurrentSelectedIndices = (nextProps) => {
+		if (this.props.multiple === true) {
 			let values = [];
 			let currentIndices = [];
 			if (!Array.isArray(nextProps.value)) {
@@ -535,10 +540,14 @@ class MenuDropdown extends React.Component {
 				this.getIndexByValue(value, nextProps.options)
 			);
 
-			this.setState({
+			return {
 				selectedIndices: currentIndices,
-			});
+			};
 		}
+
+		return {
+			selectedIndex: this.getIndexByValue(nextProps.value, nextProps.options),
+		};
 	};
 
 	// Trigger opens, closes, and recieves focus on close
@@ -618,7 +627,7 @@ class MenuDropdown extends React.Component {
 		this.isHover = true;
 
 		if (!isOpen && this.props.openOn === 'hover') {
-			this.handleOpen();
+			this.handleOpenForHover();
 		} else {
 			// we want this clear when openOn is hover or hybrid
 			clearTimeout(this.isClosing);
@@ -634,12 +643,30 @@ class MenuDropdown extends React.Component {
 
 		if (isOpen) {
 			this.isClosing = setTimeout(() => {
-				this.handleClose();
+				this.handleCloseForHover();
 			}, this.props.hoverCloseDelay);
 		}
 
 		if (this.props.onMouseLeave) {
 			this.props.onMouseLeave(event);
+		}
+	};
+
+	// Special handlers for openOn === hover
+	// calling onClick inside onMouseEnter/Leave used to cause double clicking the trigger on hover which caused closing and reopening of the dropdown
+	handleCloseForHover = () => {
+		const isOpen = this.getIsOpen();
+		if (isOpen) {
+			this.handleClose();
+		}
+	};
+
+	handleOpenForHover = () => {
+		const isOpen = this.getIsOpen();
+
+		if (!isOpen) {
+			this.handleOpen();
+			this.setFocus();
 		}
 	};
 
@@ -659,12 +686,6 @@ class MenuDropdown extends React.Component {
 	};
 
 	handleFocus = (event) => {
-		const isOpen = this.getIsOpen();
-
-		if (!isOpen) {
-			this.handleOpen();
-		}
-
 		if (this.props.onFocus) {
 			this.props.onFocus(event);
 		}
@@ -848,6 +869,7 @@ class MenuDropdown extends React.Component {
 			selectedIndices={
 				this.props.multiple ? this.state.selectedIndices : undefined
 			}
+			tooltipMenuItem={this.props.tooltipMenuItem}
 			triggerId={this.getId()}
 			length={this.props.length}
 			{...customListProps}
@@ -903,7 +925,8 @@ class MenuDropdown extends React.Component {
 			hasNubbin = true;
 			align = DropdownToDialogNubbinMapping[this.props.nubbinPosition];
 		} else if (this.props.align) {
-			align = `bottom ${this.props.align}`;
+			align =
+				this.props.align === 'center' ? 'bottom' : `bottom ${this.props.align}`;
 		}
 
 		const positions = DropdownToDialogNubbinMapping[align].split(' ');
@@ -915,6 +938,11 @@ class MenuDropdown extends React.Component {
 		const menuPosition = this.props.isInline
 			? 'relative'
 			: this.props.menuPosition; // eslint-disable-line react/prop-types
+
+		const menuStylesBase = {};
+		if (this.props.align === 'center' && !hasNubbin) {
+			menuStylesBase.transform = 'none';
+		}
 
 		return isOpen ? (
 			<Dialog
@@ -938,15 +966,12 @@ class MenuDropdown extends React.Component {
 				offset={this.props.offset}
 				onClose={this.handleClose}
 				onKeyDown={this.handleKeyDown}
-				onMouseEnter={
-					this.props.openOn === 'hover' ? this.handleMouseEnter : null
-				}
-				onMouseLeave={
-					this.props.openOn === 'hover' ? this.handleMouseLeave : null
-				}
 				outsideClickIgnoreClass={outsideClickIgnoreClass}
 				position={menuPosition}
-				style={this.props.menuStyle}
+				style={{
+					...menuStylesBase,
+					...this.props.menuStyle,
+				}}
 				onRequestTargetElement={() => this.trigger}
 			>
 				{this.renderMenuContent(customContent)}
