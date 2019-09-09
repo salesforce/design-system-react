@@ -51,15 +51,10 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 
-	labels: PropTypes.shape({
-		chooseRow: PropTypes.string,
-		selectAll: PropTypes.string,
-	}),
 	/**
 	 * Specifies a row selection UX pattern.
 	 * * `multiple`: This is the default
 	 * * `single`: Single row selection.
-	 * _This prop used to be a `boolean`, a `true` value will be considered `checkbox` for backwards compatibility._
 	 */
 	selectRows: PropTypes.oneOf(['single', 'multiple']),
 	/**
