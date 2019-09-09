@@ -95,22 +95,33 @@ class DataTableRow extends React.Component {
 						{this.props.canSelectRows === 'radio' ? (
 							<Radio
 								assistiveText={{
-									label: this.props.assistiveText.selectRow,
+									label: `${this.props.assistiveText.selectRow} ${Number(
+										this.props.index
+									) + 1}`,
 								}}
+								aria-labelledby={`${this.props.id}-SelectRow-label ${
+									this.props.tableId
+								}-SLDSDataTableHead-column-group-header-row-select`}
 								checked={isSelected}
 								className="slds-m-right_x-small"
 								id={`${this.props.id}-SelectRow`}
-								label=""
+								labelId={`${this.props.id}-SelectRow-label`}
 								name={`${this.props.tableId}-SelectRow`}
 								onChange={this.handleToggle}
 							/>
 						) : (
 							<Checkbox
 								assistiveText={{
-									label: this.props.assistiveText.selectRow,
+									label: `${this.props.assistiveText.selectRow} ${Number(
+										this.props.index
+									) + 1}`,
 								}}
+								aria-labelledby={`${this.props.id}-SelectRow-label ${
+									this.props.tableId
+								}-SLDSDataTableHead-column-group-header-row-select`}
 								checked={isSelected}
 								id={`${this.props.id}-SelectRow`}
+								labelId={`${this.props.id}-SelectRow-label`}
 								name="SelectRow"
 								onChange={this.handleToggle}
 							/>

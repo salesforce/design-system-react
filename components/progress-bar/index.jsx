@@ -84,7 +84,9 @@ const defaultProps = {
  * A progress bar component communicates to the user the progress of a particular process
  */
 class ProgressBar extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 

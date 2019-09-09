@@ -154,9 +154,7 @@ class Carousel extends React.Component {
 			stageWidth: 0,
 			translateX: -1000000,
 		};
-	}
 
-	componentWillMount() {
 		this.generatedId = shortid.generate();
 		checkProps(CAROUSEL, componentDoc);
 	}
@@ -267,6 +265,8 @@ class Carousel extends React.Component {
 			actionToTake(event);
 		}
 	};
+
+	getPanelId = ({ carouselId, itemId }) => `content-id-${carouselId}-${itemId}`;
 
 	getCurrentPanel() {
 		return this.props.currentPanel !== undefined
@@ -432,6 +432,7 @@ class Carousel extends React.Component {
 								{this.props.items.map((item, index) => (
 									<CarouselItem
 										carouselId={id}
+										getPanelId={this.getPanelId}
 										onClick={(event) => {
 											this.props.onItemClick(event, { item });
 										}}
@@ -476,6 +477,7 @@ class Carousel extends React.Component {
 						noOfIndicators={this.nrOfPanels}
 						carouselId={id}
 						currentIndex={currentPanel}
+						getPanelId={this.getPanelId}
 						hasFocus={this.state.indicatorsHaveFocus}
 						onBlur={this.onIndicatorBlur}
 						onClick={this.onIndicatorClickHandler}

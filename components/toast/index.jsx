@@ -101,11 +101,9 @@ class Toast extends React.Component {
 			isInitialRender: true,
 		};
 		this.timeout = null;
-	}
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(TOAST, this.props, componentDoc);
+		checkProps(TOAST, props, componentDoc);
 	}
 
 	componentDidMount() {

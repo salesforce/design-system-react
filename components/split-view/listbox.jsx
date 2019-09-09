@@ -137,12 +137,10 @@ class SplitViewListbox extends React.Component {
 				item: null,
 			},
 		};
-	}
 
-	componentWillMount() {
 		// Generates the list item template
 		this.ListItemWithContent = listItemWithContent(
-			this.props.listItem || SplitViewListItemContent
+			props.listItem || SplitViewListItemContent
 		);
 	}
 

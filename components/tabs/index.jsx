@@ -39,8 +39,7 @@ function isTabNode(node) {
 	return (
 		(node.nodeName === 'A' && node.getAttribute('role') === 'tab') ||
 		(node.nodeName === 'LI' &&
-			node.getAttribute('role') === 'presentation' &&
-			node.parentNode.getAttribute('role') === 'tablist')
+			node.classList.contains('slds-tabs_default__item'))
 	);
 }
 
@@ -134,15 +133,13 @@ class Tabs extends React.Component {
 	constructor(props) {
 		super(props);
 		this.tabs = [];
-	}
 
-	componentWillMount() {
 		// If no `id` is supplied in the props we generate one. An HTML ID is _required_ for several elements in a tabs component in order to leverage ARIA attributes for accessibility.
 		this.generatedId = shortid.generate();
 		this.flavor = this.getVariant();
-		this.setState({
-			selectedIndex: this.props.defaultSelectedIndex,
-		});
+		this.state = {
+			selectedIndex: props.defaultSelectedIndex,
+		};
 	}
 
 	getNextTab(index) {

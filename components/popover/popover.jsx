@@ -269,10 +269,12 @@ class Popover extends React.Component {
 		isOpen: false,
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(POPOVER, this.props, componentDoc);
+		checkProps(POPOVER, props, componentDoc);
 	}
 
 	componentWillUnmount() {
@@ -505,7 +507,7 @@ class Popover extends React.Component {
 					})}
 				>
 					<h2
-						id={`${this.getId()}-dialog-heading`}
+						id={this.props.ariaLabelledby || `${this.getId()}-dialog-heading`}
 						className={classNames({
 							'slds-text-heading_small': props.variant !== 'walkthrough',
 							'slds-text-heading_medium': props.variant === 'walkthrough',
@@ -520,6 +522,9 @@ class Popover extends React.Component {
 					<MediaObject
 						body={
 							<h2
+								id={
+									this.props.ariaLabelledby || `${this.getId()}-dialog-heading`
+								}
 								className="slds-truncate slds-text-heading_medium"
 								title={props.heading}
 							>
@@ -594,7 +599,15 @@ class Popover extends React.Component {
 						</div>
 						<div className="slds-media__body">
 							{props.heading ? (
-								<h2 className="slds-text-heading_small">{props.heading}</h2>
+								<h2
+									id={
+										this.props.ariaLabelledby ||
+										`${this.getId()}-dialog-heading`
+									}
+									className="slds-text-heading_small"
+								>
+									{props.heading}
+								</h2>
 							) : null}
 							{props.body}
 							{props.stepText ? (
