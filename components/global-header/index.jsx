@@ -129,6 +129,7 @@ class GlobalHeader extends React.Component {
 				if (child.type.displayName === GLOBAL_HEADER_SEARCH) {
 					search = child;
 				} else if (actions[child.type.displayName]) {
+					// eslint-disable-next-line fp/no-mutating-methods
 					actions[child.type.displayName].push(child);
 				}
 			}

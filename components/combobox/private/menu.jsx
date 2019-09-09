@@ -150,14 +150,17 @@ const getOptions = (props) => {
 		const localOptionsSearchEntity = props.optionsSearchEntity.map(
 			(entity) => ({ ...entity, type: 'header' })
 		);
+		// eslint-disable-next-line fp/no-mutating-methods
 		options.push(...localOptionsSearchEntity);
 	}
+	// eslint-disable-next-line fp/no-mutating-methods
 	options.push(...props.options);
 	if (props.optionsAddItem.length > 0) {
 		const localOptionsAddItem = props.optionsAddItem.map((entity) => ({
 			...entity,
 			type: 'footer',
 		}));
+		// eslint-disable-next-line fp/no-mutating-methods
 		options.push(...localOptionsAddItem);
 	}
 	return options;

@@ -42,7 +42,9 @@ class DatepickerYearSelector extends React.Component {
 		const toYear = now.getFullYear() + this.props.relativeYearTo;
 		const opts = [];
 
+		// eslint-disable-next-line fp/no-loops
 		for (let year = fromYear; year < toYear; year += 1) {
+			// eslint-disable-next-line fp/no-mutating-methods
 			opts.push({ label: `${year}`, value: year, id: String(opts.length) });
 		}
 		return opts;
