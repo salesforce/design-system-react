@@ -59,6 +59,7 @@ class CarouselIndicators extends React.Component {
 						const startItemIndex = index * props.itemsPerPanel;
 						let autoIndicatorText = '';
 
+						// eslint-disable-next-line fp/no-loops
 						for (
 							let i = startItemIndex;
 							i < startItemIndex + props.itemsPerPanel;

@@ -32,6 +32,7 @@ const auditChildren = (children) => {
 			if (child.props.region === 'primary') {
 				primaryRegion = child;
 			} else if (child.props.region === 'secondary') {
+				// eslint-disable-next-line fp/no-mutating-methods
 				secondaryRegions.push(child);
 			} else if (child.props.region === 'tertiary') {
 				tertiaryRegion = child;

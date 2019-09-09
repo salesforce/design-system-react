@@ -13,6 +13,7 @@
 		// polyfill it whenever this module is required.
 		Fp.bind = function(context) {
 			const func = this;
+			// eslint-disable-next-line fp/no-arguments
 			const args = slice.call(arguments, 1);
 
 			function bound() {
@@ -23,6 +24,7 @@
 					// invocations using the new keyword but also calls to base class
 					// constructors such as BaseClass.call(this, ...) or super(...).
 					(!invokedAsConstructor && context) || this,
+					// eslint-disable-next-line fp/no-arguments
 					args.concat(slice.call(arguments))
 				);
 			}

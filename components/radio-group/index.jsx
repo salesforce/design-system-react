@@ -76,7 +76,9 @@ const defaultProps = { assistiveText: {}, labels: {}, variant: 'base' };
  * The RadioGroup component wraps [Radio](/components/radios) components, which should be used as children.
  */
 class RadioGroup extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedName = shortid.generate();
 		this.generatedErrorId = shortid.generate();
 	}

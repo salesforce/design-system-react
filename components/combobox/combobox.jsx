@@ -422,29 +422,23 @@ class Combobox extends React.Component {
 				(this.props.selection && this.props.selection[0]) || undefined,
 			activeSelectedOptionIndex: 0,
 			listboxHasFocus: false,
-			isOpen: false,
+			isOpen: typeof props.isOpen === 'boolean' ? props.isOpen : false,
 		};
 
 		this.menuKeyBuffer = new KeyBuffer();
 		this.menuRef = undefined;
 		this.selectedListboxRef = null;
+
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(COMBOBOX, props, componentDoc);
+
+		this.generatedId = shortid.generate();
+		this.generatedErrorId = shortid.generate();
 	}
 
 	/**
 	 * Lifecycle methods
 	 */
-
-	componentWillMount() {
-		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(COMBOBOX, this.props, componentDoc);
-
-		this.generatedId = shortid.generate();
-		this.generatedErrorId = shortid.generate();
-
-		if (this.props.isOpen) {
-			this.setState({ isOpen: this.props.isOpen });
-		}
-	}
 
 	componentWillReceiveProps(nextProps) {
 		// This logic will maintain the active highlight even when the
@@ -538,6 +532,7 @@ class Combobox extends React.Component {
 		);
 		popoverProps.body = popoverBody;
 
+		// eslint-disable-next-line fp/no-delete
 		delete popoverProps.children;
 		return popoverProps;
 	};
@@ -609,10 +604,13 @@ class Combobox extends React.Component {
 		const localProps = props;
 		const options = [];
 		if (localProps.optionsSearchEntity.length > 0) {
+			// eslint-disable-next-line fp/no-mutating-methods
 			options.push(...localProps.optionsSearchEntity);
 		}
+		// eslint-disable-next-line fp/no-mutating-methods
 		options.push(...localProps.options);
 		if (localProps.optionsAddItem.length > 0) {
+			// eslint-disable-next-line fp/no-mutating-methods
 			options.push(...localProps.optionsAddItem);
 		}
 		return options;

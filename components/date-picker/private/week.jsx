@@ -12,7 +12,9 @@ const DatepickerWeek = (props) => {
 	const days = [];
 	let date = props.firstDayOfWeek;
 
+	// eslint-disable-next-line fp/no-loops
 	for (let i = 0; i < 7; i += 1) {
+		// eslint-disable-next-line fp/no-mutating-methods
 		days.push(
 			<Day
 				calendarHasFocus={props.calendarHasFocus}

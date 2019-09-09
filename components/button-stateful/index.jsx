@@ -130,10 +130,8 @@ class ButtonStateful extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { active: false };
-	}
 
-	componentWillMount() {
-		checkProps(BUTTON_STATEFUL, this.props, componentDoc);
+		checkProps(BUTTON_STATEFUL, props, componentDoc);
 	}
 
 	getClassName(active) {
