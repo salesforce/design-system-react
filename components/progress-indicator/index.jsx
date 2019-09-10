@@ -179,7 +179,9 @@ function findStep(item, items) {
  * Progress Indicator is a component that communicates to the user the progress of a particular process.
  */
 class ProgressIndicator extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 
@@ -217,6 +219,7 @@ class ProgressIndicator extends React.Component {
 
 		let currentStep = 0;
 		// find index for the current step
+		// eslint-disable-next-line fp/no-loops
 		for (let i = 0; i < allSteps.length; i += 1) {
 			// assign step an id if it does not have one
 			if (allSteps[i].id === undefined) {

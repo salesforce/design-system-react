@@ -206,12 +206,14 @@ class Textarea extends React.Component {
 		wrap: PropTypes.oneOf(['soft', 'hard']),
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(TEXTAREA, this.props, componentDoc);
+		checkProps(TEXTAREA, props, componentDoc);
 
 		this.generatedId = shortid.generate();
-		if (this.props.errorText) {
+		if (props.errorText) {
 			this.generatedErrorId = shortid.generate();
 		}
 	}

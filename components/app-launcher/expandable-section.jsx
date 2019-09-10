@@ -83,8 +83,10 @@ class AppLauncherExpandableSection extends React.Component {
 		isOpen: true,
 	};
 
-	componentWillMount() {
-		checkProps(APP_LAUNCHER_EXPANDABLE_SECTION, this.props, componentDoc);
+	constructor(props) {
+		super(props);
+
+		checkProps(APP_LAUNCHER_EXPANDABLE_SECTION, props, componentDoc);
 	}
 
 	toggleOpen = (event, data) => {

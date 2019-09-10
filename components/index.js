@@ -21,6 +21,8 @@ export AppLauncherTile from './app-launcher/tile';
 export SLDSAppLauncherTile from './app-launcher/tile';
 export Avatar from './avatar';
 export SLDSAvatar from './avatar';
+export Badge from './badge';
+export SLDSBadge from './badge';
 export BrandBand from './brand-band';
 export SLDSBrandBand from './brand-band';
 export BreadCrumb from './breadcrumb';

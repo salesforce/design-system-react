@@ -225,9 +225,11 @@ const Lookup = class extends React.Component {
 		selectedIndex: this.props.selectedItem,
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(LOOKUP, this.props);
+		checkProps(LOOKUP, props);
 
 		// Keeps track of references of children for keyboard navigation
 		this.pills = [];

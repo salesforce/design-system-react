@@ -45,7 +45,9 @@ const propTypes = {
  * The accordion component wraps accordion panels that can be selected and expanded. It accepts children to define the content displayed within.
  */
 class Accordion extends Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 

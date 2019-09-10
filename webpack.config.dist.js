@@ -62,6 +62,7 @@ const replacementsArr = [
 
 // This string replacement includes icons in the bundle and affects `icons/**/index.js` which are built by `npm run icons`. The default condition is an equality comparison of two constants, `'__EXCLUDE_SLDS_ICONS__' === '__INCLUDE_SLDS_ICONS__'`, which will allow minification to remove the inline icons and save 100KBs in size when bundling for production. The following makes the condition equal.
 if (process.env.INCLUDE_ICONS) {
+	// eslint-disable-next-line fp/no-mutating-methods
 	replacementsArr.push({
 		pattern: /__EXCLUDE_SLDS_ICONS__/g,
 		replacement: () => '__INCLUDE_SLDS_ICONS__',
@@ -75,7 +76,9 @@ config.module.rules[0].loaders = [
 	}),
 ];
 
+// eslint-disable-next-line fp/no-mutating-methods
 config.plugins.push(new webpack.BannerPlugin(header + license));
+// eslint-disable-next-line fp/no-mutating-methods
 config.plugins.push(
 	new webpack.DefinePlugin({
 		'process.env': { NODE_ENV: JSON.stringify('production') },

@@ -10,6 +10,7 @@ import IconSettings from '../../icon-settings';
 import { MENU_DROPDOWN } from '../../../utilities/constants';
 import Dropdown from '../../menu-dropdown';
 import { DropdownNubbinPositions } from '../../menu-dropdown/menu-dropdown';
+import DropdownWithTooltips from '../__examples__/with-tooltips';
 import List from '../../utilities/menu-list';
 import Button from '../../button';
 import Trigger from '../../menu-dropdown/button-trigger';
@@ -235,6 +236,20 @@ storiesOf(MENU_DROPDOWN, module)
 		getDropdown({
 			align: 'right',
 			id: 'base',
+			label: 'Dropdown Click',
+			onClick: (...rest) => {
+				action('Clicked')(...rest);
+			},
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options,
+		})
+	)
+	.add('Base center-aligned', () =>
+		getDropdown({
+			align: 'center',
+			id: 'base-center',
 			label: 'Dropdown Click',
 			onClick: (...rest) => {
 				action('Clicked')(...rest);
@@ -480,4 +495,5 @@ storiesOf(MENU_DROPDOWN, module)
 			label="Dropdown Click"
 			options={options}
 		/>
-	));
+	))
+	.add('With tooltips', () => <DropdownWithTooltips />);

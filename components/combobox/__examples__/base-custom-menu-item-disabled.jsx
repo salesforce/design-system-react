@@ -1,10 +1,10 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
+import classNames from 'classnames';
 import Combobox from '~/components/combobox';
 import Icon from '~/components/icon';
 import comboboxFilterAndLimit from '~/components/combobox/filter';
 import IconSettings from '~/components/icon-settings';
-import classNames from 'classnames';
 
 const accounts = [
 	{

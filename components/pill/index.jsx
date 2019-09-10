@@ -130,6 +130,7 @@ class Pill extends React.Component {
 		this.root.focus();
 	};
 
+	// eslint-disable-next-line fp/no-rest-parameters
 	handleKeyDown = (event, ...rest) => {
 		if (typeof this.props.onKeyDown === 'function') {
 			// Make a callback to onKeyDown.

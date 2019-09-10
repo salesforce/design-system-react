@@ -26,6 +26,11 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/avatar/__examples__/entity-initials.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/avatar/__examples__/entity-icon.jsx'),
 	],
+	badge: [
+		require('raw-loader!@salesforce/design-system-react/components/badge/__examples__/color-variants.jsx'),
+		require('raw-loader!@salesforce/design-system-react/components/badge/__examples__/default.jsx'),
+		require('raw-loader!@salesforce/design-system-react/components/badge/__examples__/with-icon.jsx'),
+	],
 	'brand-band': [
 		require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/lightning-blue-theme.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/default.jsx'),
@@ -175,6 +180,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/sub-heading.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/custom-trigger.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/checkmark.jsx'),
+		require('raw-loader!@salesforce/design-system-react/components/menu-dropdown/__examples__/with-tooltips.jsx'),
 	],
 	modal: [
 		require('raw-loader!@salesforce/design-system-react/components/modal/__examples__/menu-contents.jsx'),
@@ -271,7 +277,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/base.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/base-multiple.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/external-state.jsx'),
-		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/custom-item-list.jsx'),
+		require('raw-loader!@salesforce/design-system-react/components/split-view/__examples__/custom-items-list.jsx'),
 	],
 	tabs: [
 		require('raw-loader!@salesforce/design-system-react/components/tabs/__examples__/default.jsx'),

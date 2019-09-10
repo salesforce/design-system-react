@@ -23,7 +23,7 @@ const OperatorsList = [
 	{ id: '4', label: 'Less Than' },
 ];
 
-class ResourceSelected extends React.Component {
+class Example extends React.Component {
 	static displayName = 'ExpressionResourceSelectedExample';
 
 	constructor(props) {
@@ -291,10 +291,7 @@ class ResourceSelected extends React.Component {
 										key={i}
 										id={`expression-condition-${i}`}
 										labels={{
-											label: ResourceSelected.getTriggerType(
-												i,
-												this.state.triggerType
-											),
+											label: Example.getTriggerType(i, this.state.triggerType),
 										}}
 										events={{
 											onChangeOperator: (event, obj) => {
@@ -350,10 +347,7 @@ class ResourceSelected extends React.Component {
 										key={i}
 										id={`expression-group-${i}`}
 										labels={{
-											label: ResourceSelected.getTriggerType(
-												i,
-												this.state.triggerType
-											),
+											label: Example.getTriggerType(i, this.state.triggerType),
 										}}
 										events={{
 											onChangeCustomLogicValue: (event, data) => {
@@ -444,7 +438,7 @@ class ResourceSelected extends React.Component {
 													id={`expression-group-${i}-condition-${j}`}
 													isSubCondition
 													labels={{
-														label: ResourceSelected.getTriggerType(
+														label: Example.getTriggerType(
 															j,
 															condition.triggerType
 														),
@@ -509,4 +503,4 @@ class ResourceSelected extends React.Component {
 	}
 }
 
-export default ResourceSelected;
+export default Example;

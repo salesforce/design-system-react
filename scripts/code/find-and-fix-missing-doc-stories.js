@@ -27,6 +27,7 @@ const generator = require('babel-generator');
 const path = require('path');
 const babelRC = require('../../babel.config.js');
 
+// eslint-disable-next-line fp/no-delete
 delete babelRC.ignore;
 const babelOpts = babel.loadOptions(babelRC);
 
