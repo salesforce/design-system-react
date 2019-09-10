@@ -22,6 +22,8 @@ import shortid from 'shortid';
 
 import { SLIDER } from '../../utilities/constants';
 
+import getAriaProps from '../../utilities/get-aria-props';
+
 const propTypes = {
 	/**
 	 * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need.
@@ -152,6 +154,9 @@ class Slider extends React.Component {
 	};
 
 	render() {
+		const ariaProps = getAriaProps(this.props);
+		ariaProps['aria-describedby'] = this.getErrorId();
+
 		const labelText =
 			this.props.label ||
 			(this.props.assistiveText && this.props.assistiveText.label);
@@ -202,10 +207,10 @@ class Slider extends React.Component {
 							min={this.props.min}
 							max={this.props.max}
 							step={this.props.step}
-							aria-describedby={this.getErrorId()}
 							disabled={this.props.disabled}
 							onChange={this.handleChange}
 							onInput={this.handleInput}
+							{...ariaProps}
 							/* A form element should not have both value and defaultValue props. */
 							{...(this.props.value !== undefined
 								? { value: this.props.value }

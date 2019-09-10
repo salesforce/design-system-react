@@ -2993,6 +2993,10 @@
                         "type": null
                     },
                     {
+                        "name": "ariaProps",
+                        "type": null
+                    },
+                    {
                         "name": "assistiveText",
                         "type": null
                     },
@@ -3010,6 +3014,10 @@
                 "params": [
                     {
                         "name": "props",
+                        "type": null
+                    },
+                    {
+                        "name": "ariaProps",
                         "type": null
                     },
                     {
@@ -3033,6 +3041,10 @@
                         "type": null
                     },
                     {
+                        "name": "ariaProps",
+                        "type": null
+                    },
+                    {
                         "name": "assistiveText",
                         "type": null
                     },
@@ -3050,6 +3062,10 @@
                 "params": [
                     {
                         "name": "props",
+                        "type": null
+                    },
+                    {
+                        "name": "ariaProps",
                         "type": null
                     },
                     {
@@ -7482,7 +7498,7 @@
             },
             {
                 "more-files": {
-                    "description": "MoreFiles is a component that represents multiple uploaded attachments",
+                    "description": "MoreFiles is a component that represents a number of file contents uploaded as an attachment.",
                     "methods": [
                         {
                             "name": "getId",
@@ -10104,7 +10120,7 @@
                 "returns": null
             },
             {
-                "name": "setCurrentSelectedIndices",
+                "name": "getCurrentSelectedIndices",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -10603,40 +10619,11 @@
                     ]
                 },
                 "required": false,
-                "description": "If omitted, icon position is centered."
-            },
-            "iconVariant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'bare'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'container'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'border'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'border-filled'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'more'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "For icon variants, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons/#icon\">Lightning Design System Icons</a>."
+                "description": "Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.",
+                "defaultValue": {
+                    "value": "'left'",
+                    "computed": false
+                }
             },
             "iconSize": {
                 "type": {

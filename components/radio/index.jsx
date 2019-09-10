@@ -8,6 +8,7 @@ import classNames from 'classnames';
 
 import KEYS from '../../utilities/key-code';
 import { RADIO } from '../../utilities/constants';
+import getAriaProps from '../../utilities/get-aria-props';
 import getDataProps from '../../utilities/get-data-props';
 import Swatch from '../../components/color-picker/private/swatch';
 import Icon from '../icon';
@@ -160,6 +161,7 @@ class Radio extends React.Component {
 	};
 
 	render() {
+		const ariaProps = getAriaProps(this.props);
 		const dataProps = getDataProps(this.props);
 
 		let radio;
@@ -303,9 +305,8 @@ class Radio extends React.Component {
 							this.handleChange(event);
 						}
 					}}
-					aria-describedby={this.props['aria-describedby']}
-					aria-labelledby={this.props['aria-labelledby']}
 					disabled={this.props.disabled}
+					{...ariaProps}
 					{...dataProps}
 					ref={(input) => {
 						if (this.props.refs && this.props.refs.input) {
