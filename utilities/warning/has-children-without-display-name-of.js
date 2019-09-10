@@ -26,6 +26,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 			React.Children.forEach(children, (child) => {
 				if (child && child.type && child.type.displayName !== displayName) {
+					// eslint-disable-next-line fp/no-mutating-methods
 					childrenWithoutSelectedDisplayName.push(child);
 				}
 			});

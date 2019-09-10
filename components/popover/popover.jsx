@@ -185,6 +185,10 @@ class Popover extends React.Component {
 		 */
 		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 		/**
+		 * Icon displayed in the `feature` variant
+		 */
+		icon: PropTypes.node,
+		/**
 		 * By default, a unique ID will be created at render to support keyboard navigation, ARIA roles, and connect the popover to the triggering button. This ID will be applied to the triggering element. `${id}-popover`, `${id}-dialog-heading`, `${id}-dialog-body` are also created.
 		 */
 		id: PropTypes.string,
@@ -257,6 +261,7 @@ class Popover extends React.Component {
 		variant: PropTypes.oneOf([
 			'base',
 			'error',
+			'feature',
 			'walkthrough',
 			'walkthrough-action',
 			'warning',
@@ -539,7 +544,11 @@ class Popover extends React.Component {
 		};
 		let header = null;
 
-		if (hasDefinedHeader && props.variant !== 'walkthrough-action') {
+		if (
+			hasDefinedHeader &&
+			props.variant !== 'walkthrough-action' &&
+			props.variant !== 'feature'
+		) {
 			header = headerVariants[hasThemedHeader ? 'themed' : 'base'];
 		}
 
@@ -582,7 +591,10 @@ class Popover extends React.Component {
 					/>
 				</div>
 			);
-		} else if (props.variant === 'walkthrough-action') {
+		} else if (
+			props.variant === 'walkthrough-action' ||
+			props.variant === 'feature'
+		) {
 			body = (
 				<div
 					className={classNames('slds-popover__body', this.props.classNameBody)}
@@ -590,12 +602,16 @@ class Popover extends React.Component {
 				>
 					<div className="slds-media">
 						<div className="slds-media__figure">
-							<Icon
-								category="utility"
-								name="touch_action"
-								size="small"
-								inverse
-							/>
+							{props.variant === 'walkthrough-action' ? (
+								<Icon
+									category="utility"
+									name="touch_action"
+									size="small"
+									inverse
+								/>
+							) : (
+								this.props.icon
+							)}
 						</div>
 						<div className="slds-media__body">
 							{props.heading ? (
@@ -683,12 +699,14 @@ class Popover extends React.Component {
 					{
 						'slds-popover_walkthrough':
 							props.variant === 'walkthrough' ||
-							props.variant === 'walkthrough-action',
+							props.variant === 'walkthrough-action' ||
+							props.variant === 'feature',
 					},
 					{
 						'slds-popover_walkthrough-alt':
 							props.variant === 'walkthrough-action',
 					},
+					{ 'slds-popover_feature': props.variant === 'feature' },
 					{ 'slds-popover_warning': props.variant === 'warning' },
 					props.className
 				)}
@@ -724,7 +742,8 @@ class Popover extends React.Component {
 							{
 								'slds-button_icon-inverse':
 									props.variant === 'walkthrough' ||
-									props.variant === 'walkthrough-action',
+									props.variant === 'walkthrough-action' ||
+									props.variant === 'feature',
 							}
 						)}
 						onClick={this.handleCancel}
@@ -789,6 +808,7 @@ class Popover extends React.Component {
 					...child.props,
 				});
 			} else {
+				// eslint-disable-next-line fp/no-mutating-methods
 				otherChildren.push(child);
 			}
 		});

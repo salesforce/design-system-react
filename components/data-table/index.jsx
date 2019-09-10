@@ -378,6 +378,7 @@ class DataTable extends React.Component {
 				const { children, ...columnProps } = child.props;
 
 				const props = assign({}, this.props);
+				// eslint-disable-next-line fp/no-delete
 				delete props.children;
 				assign(props, columnProps);
 
@@ -389,6 +390,7 @@ class DataTable extends React.Component {
 					Cell = DataTableCell;
 				}
 
+				// eslint-disable-next-line fp/no-mutating-methods
 				columns.push({
 					Cell,
 					props,

@@ -76,10 +76,12 @@ class Menu extends React.Component {
 				if (index + 1 < items.length) {
 					const nextItem = items[index + 1];
 					if (nextItem.data && nextItem.data.type !== 'section') {
+						// eslint-disable-next-line fp/no-mutating-methods
 						result.push(item);
 					}
 				}
 			} else {
+				// eslint-disable-next-line fp/no-mutating-methods
 				result.push(item);
 			}
 		});

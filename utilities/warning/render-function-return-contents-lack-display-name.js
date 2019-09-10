@@ -17,16 +17,18 @@ if (process.env.NODE_ENV !== 'production') {
 		control,
 		propName,
 		renderFunctionReturnContents,
-		displayName,
-		checkChildren, // if true children of the render function return main node will be checked for displayName matches
+		displayNames, // array of allowed displayName strings
+		checkChildren, // if true children of the render function return main node will be checked for displayNames matches
 		comment
 	) {
 		const additionalComment = comment ? ` ${comment}` : '';
+		const displayNamesJoined = displayNames.join(',');
 		let foundDiscrepancy = false;
 
 		if (
 			!renderFunctionReturnContents.type ||
-			renderFunctionReturnContents.type.displayName !== displayName
+			!renderFunctionReturnContents.type.displayName ||
+			!displayNamesJoined.match(renderFunctionReturnContents.type.displayName)
 		) {
 			if (
 				checkChildren &&
@@ -39,7 +41,8 @@ if (process.env.NODE_ENV !== 'production') {
 						if (
 							!child ||
 							!child.type ||
-							child.type.displayName !== displayName
+							!child.type.displayName ||
+							!displayNamesJoined.match(child.type.displayName)
 						) {
 							foundDiscrepancy = true;
 						}
@@ -51,12 +54,24 @@ if (process.env.NODE_ENV !== 'production') {
 		}
 
 		if (foundDiscrepancy && !hasWarned[control]) {
+			let allowedDisplayNames = '';
+
+			displayNames.forEach((displayName, index) => {
+				allowedDisplayNames += displayName;
+
+				if (displayNames.length > index + 2) {
+					allowedDisplayNames += ', ';
+				} else if (displayNames.length > index + 1) {
+					allowedDisplayNames += displayNames.length > 2 ? ', or ' : ' or ';
+				}
+			});
+
 			/* eslint-disable max-len */
 			warning(
 				false,
-				`[Design System React] Content provided by \`${propName}\` for ${control} must have a \`displayName\` property value of ${displayName}${
+				`[Design System React] Content provided by \`${propName}\` for ${control} must have a \`displayName\` property value of ${allowedDisplayNames}${
 					checkChildren
-						? ` or be an element/fragment with children all having the \`displayName\` property value of ${displayName}.`
+						? ` or be an element/fragment with children all having the \`displayName\` property value of ${allowedDisplayNames}.`
 						: '.'
 				} Please review ${propName} prop documentation.${additionalComment}`
 			);

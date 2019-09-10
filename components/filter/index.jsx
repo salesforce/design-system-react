@@ -181,6 +181,7 @@ class Filter extends React.Component {
 			defaultPopoverProps,
 			this.props.popover ? this.props.popover.props : {}
 		);
+		// eslint-disable-next-line fp/no-delete
 		delete popoverProps.children;
 		return popoverProps;
 	};
