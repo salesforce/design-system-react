@@ -37,9 +37,11 @@ const getOptions = ({ props }) => {
 
 	const curDate = new Date(baseDate);
 
+	// eslint-disable-next-line fp/no-loops
 	while (baseDate.getDate() === curDate.getDate()) {
 		const formatted = props.formatter(curDate);
 
+		// eslint-disable-next-line fp/no-mutating-methods
 		options.push({
 			label: formatted,
 			value: new Date(curDate),
@@ -147,7 +149,6 @@ class Timepicker extends React.Component {
 			return new Date(`${dateStr} ${timeStr}`);
 		},
 		menuPosition: 'absolute',
-		placeholder: 'Pick Time',
 		value: null,
 		stepInMinutes: 30,
 	};

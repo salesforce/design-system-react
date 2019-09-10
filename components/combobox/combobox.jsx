@@ -532,6 +532,7 @@ class Combobox extends React.Component {
 		);
 		popoverProps.body = popoverBody;
 
+		// eslint-disable-next-line fp/no-delete
 		delete popoverProps.children;
 		return popoverProps;
 	};
@@ -603,10 +604,13 @@ class Combobox extends React.Component {
 		const localProps = props;
 		const options = [];
 		if (localProps.optionsSearchEntity.length > 0) {
+			// eslint-disable-next-line fp/no-mutating-methods
 			options.push(...localProps.optionsSearchEntity);
 		}
+		// eslint-disable-next-line fp/no-mutating-methods
 		options.push(...localProps.options);
 		if (localProps.optionsAddItem.length > 0) {
+			// eslint-disable-next-line fp/no-mutating-methods
 			options.push(...localProps.optionsAddItem);
 		}
 		return options;

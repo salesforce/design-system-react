@@ -97,6 +97,7 @@ class ListItem extends React.Component {
 
 		if (position === 'left') {
 			if (this.props.checkmark) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				classnames.push('slds-icon_selected');
 				iconProps = {
 					category: 'utility',
@@ -104,8 +105,10 @@ class ListItem extends React.Component {
 				};
 			}
 
+			// eslint-disable-next-line fp/no-mutating-methods
 			classnames.push('slds-m-right_x-small');
 		} else {
+			// eslint-disable-next-line fp/no-mutating-methods
 			classnames.push('slds-m-left_small');
 		}
 
