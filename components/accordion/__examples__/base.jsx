@@ -68,7 +68,7 @@ class Example extends React.Component {
 			/>
 		);
 	}
-
+	
 	togglePanel(event, data) {
 		this.setState((state) => ({
 			...state,
