@@ -53,7 +53,10 @@ class Accordion extends Component {
 	}
 
 	componentDidUpdate(prevState) {
-		if (this.state.currButtonIndex !== null && this.state.currButtonIndex !== prevState.currButtonIndex) {
+		if (
+			this.state.currButtonIndex !== null &&
+			this.state.currButtonIndex !== prevState.currButtonIndex
+		) {
 			this.summaryButtons[this.state.currButtonIndex].focus();
 		}
 	}
@@ -65,9 +68,9 @@ class Accordion extends Component {
 	onKeyDownSummary(e) {
 		let buttonIndex = this.state.currButtonIndex;
 		if (buttonIndex === null) {
-			buttonIndex = this.summaryButtons.findIndex((el) => (
-				el.id === e.target.id
-			));
+			buttonIndex = this.summaryButtons.findIndex(
+				(el) => el.id === e.target.id
+			);
 		}
 
 		if (e.key === 'ArrowDown') {
@@ -92,8 +95,9 @@ class Accordion extends Component {
 	}
 
 	addSummaryButton(button) {
-		const btnInArr = this.summaryButtons.find((el) => (button === el));
+		const btnInArr = this.summaryButtons.find((el) => button === el);
 		if (button !== null && btnInArr === undefined) {
+			// eslint-disable-next-line fp/no-mutating-methods
 			this.summaryButtons.push(button);
 		}
 	}
