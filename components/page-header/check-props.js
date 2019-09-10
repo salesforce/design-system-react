@@ -121,7 +121,7 @@ if (process.env.NODE_ENV !== 'production') {
 				COMPONENT,
 				'onRenderActions',
 				props.onRenderActions(),
-				PAGE_HEADER_CONTROL,
+				[PAGE_HEADER_CONTROL],
 				true
 			);
 		} else if (props.contentRight) {
@@ -129,7 +129,7 @@ if (process.env.NODE_ENV !== 'production') {
 				COMPONENT,
 				'contentRight',
 				props.contentRight,
-				PAGE_HEADER_CONTROL,
+				[PAGE_HEADER_CONTROL],
 				true
 			);
 		}
@@ -139,7 +139,7 @@ if (process.env.NODE_ENV !== 'production') {
 				COMPONENT,
 				'onRenderControls',
 				props.onRenderControls(),
-				PAGE_HEADER_CONTROL,
+				[PAGE_HEADER_CONTROL],
 				true
 			);
 		} else if (props.navRight) {
@@ -147,7 +147,7 @@ if (process.env.NODE_ENV !== 'production') {
 				COMPONENT,
 				'navRight',
 				props.navRight,
-				PAGE_HEADER_CONTROL,
+				[PAGE_HEADER_CONTROL],
 				true
 			);
 		}

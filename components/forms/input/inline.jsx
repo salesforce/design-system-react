@@ -106,10 +106,8 @@ class InlineEdit extends React.Component {
 			isEditing: false,
 			value: null,
 		};
-	}
 
-	componentWillMount() {
-		checkProps(FORMS_INLINE_EDIT, this.props);
+		checkProps(FORMS_INLINE_EDIT, props);
 	}
 
 	componentDidUpdate() {
@@ -125,6 +123,7 @@ class InlineEdit extends React.Component {
 	endEditMode = (option) => {
 		if (this.willSave) {
 			clearTimeout(this.willSave);
+			// eslint-disable-next-line fp/no-delete
 			delete this.willSave;
 		}
 

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
-import IconSettings from '~/components/icon-settings';
-
 import action from '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';
 import custom from '@salesforce-ux/design-system/assets/icons/custom-sprite/svg/symbols.svg';
 import utility from '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';
 import standard from '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';
 import doctype from '@salesforce-ux/design-system/assets/icons/doctype-sprite/svg/symbols.svg';
+
+import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
+import IconSettings from '~/components/icon-settings';
 
 const sprites = {
 	action,

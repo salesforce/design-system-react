@@ -60,11 +60,13 @@ const getNavigableItems = (items) => {
 	if (Array.isArray(items)) {
 		items.forEach((item, index) => {
 			if (itemIsSelectable(item)) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				navigableItems.push({
 					index,
 					text: `${item.label}`.toLowerCase(),
 				});
 
+				// eslint-disable-next-line fp/no-mutating-methods
 				navigableItems.indexes.push(index);
 			}
 		});
@@ -213,6 +215,7 @@ const MenuPicklist = createReactClass({
 			const currentSelectedIndex = this.getIndexByValue(this.props);
 			const currentIndices = this.state.selectedIndices;
 			if (currentSelectedIndex !== -1) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				currentIndices.push(currentSelectedIndex);
 			}
 			this.setState({
@@ -322,6 +325,7 @@ const MenuPicklist = createReactClass({
 			} else {
 				const deselectIndex = this.state.selectedIndices.indexOf(index);
 				currentIndices = this.state.selectedIndices;
+				// eslint-disable-next-line fp/no-mutating-methods
 				currentIndices.splice(deselectIndex, 1);
 			}
 
@@ -633,6 +637,7 @@ const MenuPicklist = createReactClass({
 							onRequestRemove: (event, data) => {
 								const newData = this.state.selectedIndices;
 								const index = data.index;
+								// eslint-disable-next-line fp/no-mutating-methods
 								newData.splice(this.state.selectedIndices.indexOf(index), 1);
 								this.setState({ selectedIndices: newData });
 

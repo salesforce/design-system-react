@@ -25,7 +25,9 @@ import { PANEL } from '../../utilities/constants';
 /**
  * A panel provides detailed contextual information or contextual filtering options. [Filter](/components/filters/) component should be used as children. Menus within a Filter Popover will need to not have "portal mounts" and be inline. */
 class Panel extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		checkProps(PANEL, componentDoc);
 	}
 

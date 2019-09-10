@@ -2921,6 +2921,25 @@
                 "returns": null
             },
             {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getAriaDescribedBy",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ idArray = [] }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleChange",
                 "docblock": null,
                 "modifiers": [],
@@ -8963,6 +8982,13 @@
                 "required": false,
                 "description": "CSS classes that are applied to the span."
             },
+            "containerStyle": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Styles that are applied to the span."
+            },
             "colorVariant": {
                 "type": {
                     "name": "enum",
@@ -10157,6 +10183,20 @@
                         "type": null
                     }
                 ],
+                "returns": null
+            },
+            {
+                "name": "handleCloseForHover",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleOpenForHover",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
                 "returns": null
             },
             {
@@ -14697,6 +14737,13 @@
                             "required": false,
                             "description": "Function that is called to render step content. Typically returns a ProgressIndicator and/or ScopedNotification component"
                         },
+                        "onRenderFigure": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function that is called to render content within the media figure. Expects to be returned an Icon or ProgressRing component"
+                        },
                         "onToggleIsOpen": {
                             "type": {
                                 "name": "func"
@@ -16410,11 +16457,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Text that will appear in an empty input.",
-                "defaultValue": {
-                    "value": "'Pick Time'",
-                    "computed": false
-                }
+                "description": "Text that will appear in an empty input."
             },
             "required": {
                 "type": {
