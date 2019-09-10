@@ -99,6 +99,7 @@ export const LIST_ITEM = 'SLDSListItem';
 export const LIST_ITEM_LABEL = 'SLDSListItemLabel';
 export const LISTBOX_OF_PILL_OPTIONS = 'SLDSListboxOfPillOptions';
 export const LOOKUP = 'SLDSLookup';
+export const MAP = 'SLDSMap';
 export const MEDIA_OBJECT = 'SLDSMediaObject';
 export const MENU_DROPDOWN = 'SLDSMenuDropdown';
 export const MENU_DROPDOWN_TRIGGER = 'SLDSMenuDropdownTrigger';

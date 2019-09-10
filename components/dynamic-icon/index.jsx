@@ -220,6 +220,7 @@ class DynamicIcon extends React.Component {
 			}
 		}
 
+		// eslint-disable-next-line fp/no-mutating-methods
 		children.push(
 			<span className="slds-assistive-text">
 				{this.props.assistiveText && this.props.assistiveText.label
@@ -245,9 +246,11 @@ class DynamicIcon extends React.Component {
 		let element = 'span';
 
 		if (this.props.variant === 'waffle') {
+			// eslint-disable-next-line fp/no-mutating-methods
 			classes.unshift('slds-button', 'slds-icon-waffle_container');
 			element = 'button';
 		} else {
+			// eslint-disable-next-line fp/no-mutating-methods
 			classes.unshift(`slds-icon-${this.props.variant}`);
 
 			if (this.props.variant === 'eq') {
