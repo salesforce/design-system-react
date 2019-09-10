@@ -1,15 +1,15 @@
 import React from 'react';
 
-import IconSettings from '../../icon-settings';
+import IconSettings from '~/components/icon-settings';
 import EditDialog from '~/components/popover/edit-dialog'; // `~` is replaced with design-system-react at runtime
 import Input from '~/components/input'; // `~` is replaced with design-system-react at runtime
 import Tooltip from '~/components/tooltip'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
-import BuilderHeader from '../../builder-header';
-import BuilderHeaderNav from '../../builder-header/nav';
-import BuilderHeaderNavDropdown from '../../builder-header/nav-dropdown';
-import BuilderHeaderNavLink from '../../builder-header/nav-link';
-import BuilderHeaderMisc from '../misc';
+import BuilderHeader from '~/components/builder-header';
+import BuilderHeaderNav from '~/components/builder-header/nav';
+import BuilderHeaderNavDropdown from '~/components/builder-header/nav-dropdown';
+import BuilderHeaderNavLink from '~/components/builder-header/nav-link';
+import BuilderHeaderMisc from '~/components/builder-header/misc';
 
 const DEFAULT_PAGE_TYPE = 'Page Type';
 const DEFAULT_ERROR_TEXT = '';
