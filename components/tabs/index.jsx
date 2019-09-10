@@ -147,6 +147,7 @@ class Tabs extends React.Component {
 
 		// Look for non-disabled tab from index to the last tab on the right
 		// eslint-disable-next-line no-plusplus
+		// eslint-disable-next-line no-plusplus, fp/no-loops
 		for (let i = index + 1; i < count; i++) {
 			const tab = this.getTab(i);
 			if (!isTabDisabled(tab)) {
@@ -155,7 +156,7 @@ class Tabs extends React.Component {
 		}
 
 		// If no tab found, continue searching from first on left to index
-		// eslint-disable-next-line no-plusplus
+		// eslint-disable-next-line no-plusplus, fp/no-loops
 		for (let i = 0; i < index; i++) {
 			const tab = this.getTab(i);
 			if (!isTabDisabled(tab)) {
@@ -175,7 +176,7 @@ class Tabs extends React.Component {
 		let i = index;
 
 		// Look for non-disabled tab from index to first tab on the left
-		// eslint-disable-next-line no-plusplus
+		// eslint-disable-next-line fp/no-loops, no-plusplus
 		while (i--) {
 			const tab = this.getTab(i);
 			if (!isTabDisabled(tab)) {
@@ -185,7 +186,7 @@ class Tabs extends React.Component {
 
 		// If no tab found, continue searching from last tab on right to index
 		i = this.getTabsCount();
-		// eslint-disable-next-line no-plusplus
+		// eslint-disable-next-line fp/no-loops, no-plusplus
 		while (i-- > index) {
 			const tab = this.getTab(i);
 			if (!isTabDisabled(tab)) {
@@ -248,7 +249,7 @@ class Tabs extends React.Component {
 
 	handleClick = (e) => {
 		let node = e.target;
-		/* eslint-disable no-cond-assign */
+		/* eslint-disable no-cond-assign, fp/no-loops */
 		do {
 			if (this.isTabFromContainer(node)) {
 				if (isTabDisabled(node)) {

@@ -47,8 +47,59 @@ const propTypes = {
 class Accordion extends Component {
 	constructor(props) {
 		super(props);
-
+		this.state = { currButtonIndex: 0 };
+		this.summaryButtons = [];
 		this.generatedId = shortid.generate();
+	}
+
+	componentDidUpdate(prevState) {
+		if (
+			this.state.currButtonIndex !== null &&
+			this.state.currButtonIndex !== prevState.currButtonIndex
+		) {
+			this.summaryButtons[this.state.currButtonIndex].focus();
+		}
+	}
+
+	onClickSummary() {
+		this.setState({ currButtonIndex: null });
+	}
+
+	onKeyDownSummary(e) {
+		let buttonIndex = this.state.currButtonIndex;
+		if (buttonIndex === null) {
+			buttonIndex = this.summaryButtons.findIndex(
+				(el) => el.id === e.target.id
+			);
+		}
+
+		if (e.key === 'ArrowDown') {
+			e.preventDefault();
+			if (buttonIndex < this.props.children.length - 1) {
+				this.setState({
+					currButtonIndex: buttonIndex + 1,
+				});
+			} else {
+				this.setState({ currButtonIndex: 0 });
+			}
+		} else if (e.key === 'ArrowUp') {
+			e.preventDefault();
+			if (buttonIndex > 0) {
+				this.setState({
+					currButtonIndex: buttonIndex - 1,
+				});
+			} else {
+				this.setState({ currButtonIndex: this.props.children.length - 1 });
+			}
+		}
+	}
+
+	addSummaryButton(button) {
+		const btnInArr = this.summaryButtons.find((el) => button === el);
+		if (button !== null && btnInArr === undefined) {
+			// eslint-disable-next-line fp/no-mutating-methods
+			this.summaryButtons.push(button);
+		}
 	}
 
 	render() {
@@ -57,7 +108,13 @@ class Accordion extends Component {
 				name={this.props.id || this.generatedId}
 				className={classNames('slds-accordion', this.props.className)}
 			>
-				{this.props.children}
+				{this.props.children.map((child) =>
+					React.cloneElement(child, {
+						refs: { summaryButton: this.addSummaryButton.bind(this) },
+						onClickSummary: this.onClickSummary.bind(this),
+						onKeyDownSummary: this.onKeyDownSummary.bind(this),
+					})
+				)}
 			</ul>
 		);
 	}

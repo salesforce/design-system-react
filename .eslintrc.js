@@ -14,6 +14,7 @@ module.exports = {
 	},
 	plugins: [
 		'filenames',
+		'fp',
 		'json',
 		'prefer-object-spread',
 		'@salesforce/slds-react',
@@ -44,6 +45,18 @@ module.exports = {
 				'no-unused-vars': 'off',
 				'react/no-access-state-in-setstate': 'off',
 				'react/jsx-no-literals': ['off'],
+				// FUNTIONAL RULES
+				'fp/no-arguments': 'off',
+				'fp/no-delete': 'off',
+				'fp/no-events': 'off',
+				'fp/no-get-set': 'off',
+				'fp/no-loops': 'off',
+				'fp/no-mutating-assign': 'off',
+				'fp/no-mutating-methods': 'off',
+				'fp/no-proxy': 'off',
+				'fp/no-rest-parameters': 'off',
+				'fp/no-throw': 'off',
+				'fp/no-valueof-field': 'off',
 			},
 		},
 		{
@@ -56,6 +69,18 @@ module.exports = {
 				'import/no-webpack-loader-syntax': 'off',
 				// console is used in scripts
 				'no-console': 'off',
+				// FUNTIONAL RULES
+				'fp/no-arguments': 'off',
+				'fp/no-delete': 'off',
+				'fp/no-events': 'off',
+				'fp/no-get-set': 'off',
+				'fp/no-loops': 'off',
+				'fp/no-mutating-assign': 'off',
+				'fp/no-mutating-methods': 'off',
+				'fp/no-proxy': 'off',
+				'fp/no-rest-parameters': 'off',
+				'fp/no-throw': 'off',
+				'fp/no-valueof-field': 'off',
 			},
 		},
 		{
@@ -85,6 +110,18 @@ module.exports = {
 				'react/display-name': 'off',
 				'react/no-access-state-in-setstate': 'off',
 				'react/jsx-no-literals': ['off'],
+				// FUNTIONAL RULES
+				'fp/no-arguments': 'off',
+				'fp/no-delete': 'off',
+				'fp/no-events': 'off',
+				'fp/no-get-set': 'off',
+				'fp/no-loops': 'off',
+				'fp/no-mutating-assign': 'off',
+				'fp/no-mutating-methods': 'off',
+				'fp/no-proxy': 'off',
+				'fp/no-rest-parameters': 'off',
+				'fp/no-throw': 'off',
+				'fp/no-valueof-field': 'off',
 			},
 		},
 		{
@@ -140,6 +177,25 @@ module.exports = {
 		// All text should be able to be changed by the consumer due to internationalisation
 		// See https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#rendered-text-needs-a-prop-group-assistive-text-and-labels
 		'react/jsx-no-literals': ['error', { noStrings: false }],
+
+		// FUNTIONAL RULES
+		'fp/no-arguments': 'error',
+		// 'fp/no-class': 'error',
+		'fp/no-delete': 'error',
+		'fp/no-events': 'error',
+		'fp/no-get-set': 'error',
+		// 'fp/no-let': 'error',
+		'fp/no-loops': 'error',
+		'fp/no-mutating-assign': 'error',
+		'fp/no-mutating-methods': 'error',
+		// 'fp/no-mutation': 'error',
+		// 'fp/no-nil': 'error',
+		'fp/no-proxy': 'error',
+		'fp/no-rest-parameters': 'error',
+		// 'fp/no-this': 'error',
+		'fp/no-throw': 'error',
+		// 'fp/no-unused-expression': 'error',
+		'fp/no-valueof-field': 'error',
 
 		//
 		// THE FOLLOWING RULES NEED REVIEW IN THE FUTURE (and possibly removed)

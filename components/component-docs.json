@@ -1,7 +1,20 @@
 {
     "accordion": {
         "description": "An accordion allows a user to toggle the display of sections of content.\nThe accordion component wraps accordion panels that can be selected and expanded. It accepts children to define the content displayed within.",
-        "methods": [],
+        "methods": [
+            {
+                "name": "onKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "e",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
         "props": {
             "className": {
                 "type": {
@@ -88,6 +101,13 @@
                             },
                             "required": false,
                             "description": "Component that can be passed as prop to `<Panel />`. As an example, a menu dropdown could be used here to handle additional actions for each accordion panel. _Tested with Mocha framework._"
+                        },
+                        "onKeyDown": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Callback that will run whenever there is a keydown on the panel button. Function doesn't change the state of the component."
                         },
                         "onTogglePanel": {
                             "type": {
@@ -2973,6 +2993,10 @@
                         "type": null
                     },
                     {
+                        "name": "ariaProps",
+                        "type": null
+                    },
+                    {
                         "name": "assistiveText",
                         "type": null
                     },
@@ -2990,6 +3014,10 @@
                 "params": [
                     {
                         "name": "props",
+                        "type": null
+                    },
+                    {
+                        "name": "ariaProps",
                         "type": null
                     },
                     {
@@ -3013,6 +3041,10 @@
                         "type": null
                     },
                     {
+                        "name": "ariaProps",
+                        "type": null
+                    },
+                    {
                         "name": "assistiveText",
                         "type": null
                     },
@@ -3030,6 +3062,10 @@
                 "params": [
                     {
                         "name": "props",
+                        "type": null
+                    },
+                    {
+                        "name": "ariaProps",
                         "type": null
                     },
                     {
@@ -7462,7 +7498,7 @@
             },
             {
                 "more-files": {
-                    "description": "MoreFiles is a component that represents multiple uploaded attachments",
+                    "description": "MoreFiles is a component that represents a number of file contents uploaded as an attachment.",
                     "methods": [
                         {
                             "name": "getId",
@@ -8982,6 +9018,13 @@
                 "required": false,
                 "description": "CSS classes that are applied to the span."
             },
+            "containerStyle": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Styles that are applied to the span."
+            },
             "colorVariant": {
                 "type": {
                     "name": "enum",
@@ -10077,7 +10120,7 @@
                 "returns": null
             },
             {
-                "name": "setCurrentSelectedIndices",
+                "name": "getCurrentSelectedIndices",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -10576,40 +10619,11 @@
                     ]
                 },
                 "required": false,
-                "description": "If omitted, icon position is centered."
-            },
-            "iconVariant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'bare'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'container'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'border'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'border-filled'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'more'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "For icon variants, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons/#icon\">Lightning Design System Icons</a>."
+                "description": "Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.",
+                "defaultValue": {
+                    "value": "'left'",
+                    "computed": false
+                }
             },
             "iconSize": {
                 "type": {
@@ -13097,6 +13111,13 @@
                 "required": false,
                 "description": "All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag, or in an h2 within the popover body if used with `variant=\"walkthrough-action\"`. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop."
             },
+            "icon": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Icon displayed in the `feature` variant"
+            },
             "id": {
                 "type": {
                     "name": "string"
@@ -13242,6 +13263,10 @@
                         },
                         {
                             "value": "'error'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'feature'",
                             "computed": false
                         },
                         {
@@ -14718,6 +14743,13 @@
                             },
                             "required": false,
                             "description": "Function that is called to render step content. Typically returns a ProgressIndicator and/or ScopedNotification component"
+                        },
+                        "onRenderFigure": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function that is called to render content within the media figure. Expects to be returned an Icon or ProgressRing component"
                         },
                         "onToggleIsOpen": {
                             "type": {
@@ -16432,11 +16464,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Text that will appear in an empty input.",
-                "defaultValue": {
-                    "value": "'Pick Time'",
-                    "computed": false
-                }
+                "description": "Text that will appear in an empty input."
             },
             "required": {
                 "type": {

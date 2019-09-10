@@ -169,14 +169,19 @@ class ExpressionGroup extends React.Component {
 		const Triggers = this.getTriggers();
 		const t = [];
 		if (selection === 'all') {
+			// eslint-disable-next-line fp/no-mutating-methods
 			t.push(Triggers[0]);
 		} else if (selection === 'any') {
+			// eslint-disable-next-line fp/no-mutating-methods
 			t.push(Triggers[1]);
 		} else if (selection === 'custom') {
+			// eslint-disable-next-line fp/no-mutating-methods
 			t.push(Triggers[2]);
 		} else if (selection === 'always') {
+			// eslint-disable-next-line fp/no-mutating-methods
 			t.push(Triggers[3]);
 		} else if (selection === 'formula') {
+			// eslint-disable-next-line fp/no-mutating-methods
 			t.push(Triggers[4]);
 		}
 		return t;
