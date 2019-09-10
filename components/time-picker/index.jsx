@@ -149,7 +149,6 @@ class Timepicker extends React.Component {
 			return new Date(`${dateStr} ${timeStr}`);
 		},
 		menuPosition: 'absolute',
-		placeholder: 'Pick Time',
 		value: null,
 		stepInMinutes: 30,
 	};
