@@ -68,11 +68,7 @@ const defaultProps = {
 };
 
 /**
-<<<<<<< HEAD
- * MoreFiles is a component that represents multiple uploaded attachments
-=======
  * MoreFiles is a component that represents a number of file contents uploaded as an attachment.
->>>>>>> 044d8d78b08c297ef9d24afe00815f4f0981a8b7
  */
 class MoreFiles extends React.Component {
 	componentWillMount() {
