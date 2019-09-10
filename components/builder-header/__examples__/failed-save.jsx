@@ -2,7 +2,6 @@ import React from 'react';
 import IconSettings from '../../icon-settings';
 import Button from '../../button';
 import ButtonGroup from '../../button-group';
-import Icon from '../../icon';
 import Tooltip from '../../tooltip';
 import BuilderHeader from '..';
 import BuilderHeaderNav from '../nav';
@@ -56,24 +55,29 @@ const Example = (props) => (
 							align="bottom"
 							content="Last modified on June 1, 2018 by SysAdmin"
 						>
-							<span className="slds-color__text_gray-10 slds-align-middle slds-m-right_x-small">
+							<button
+								type="button"
+								className="slds-button slds-color__text_gray-10 slds-align-middle slds-m-right_x-small"
+							>
 								Saved 45 mins ago
-							</span>
+							</button>
 						</Tooltip>
-						<Icon
-							category="utility"
-							className="slds-m-right_xx-small"
-							name="warning"
-							size="x-small"
-							style={{ fill: '#FFB75D' }}
-						/>
-						<Icon
-							category="utility"
-							className="slds-m-right_small"
-							name="error"
-							size="x-small"
-							style={{ fill: '#C23A34' }}
-						/>
+						<Tooltip
+							id="error-tooltip"
+							align="bottom"
+							content="There has been an error."
+						>
+							<Button
+								assistiveText={{ icon: 'Error' }}
+								iconCategory="utility"
+								iconClassName="slds-icon-text-error"
+								iconName="error"
+								iconSize="medium"
+								iconVariant="container"
+								colorVariant="error"
+								variant="icon"
+							/>
+						</Tooltip>
 						<Button
 							iconCategory="utility"
 							iconName="right"
