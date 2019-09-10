@@ -18,7 +18,7 @@ import classNames from 'classnames';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 import checkProps from './check-props';
 
 import { VERTICAL_NAVIGATION } from '../../utilities/constants';
@@ -61,9 +61,11 @@ class VerticalNavigation extends React.Component {
 
 	static defaultProps = {};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
-		checkProps(VERTICAL_NAVIGATION, this.props, componentDoc);
+		checkProps(VERTICAL_NAVIGATION, props, componentDoc);
 	}
 
 	getId = () => this.props.id || this.generatedId;

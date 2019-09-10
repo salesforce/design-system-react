@@ -102,7 +102,7 @@ describe('SLDSSplitView - Listbox header', () => {
 				.find('.slds-split-view__list-header > span > span')
 				.at(0)
 				.text()
-		).to.equal('test sort by:');
+		).to.equal('test sort by: ');
 	});
 
 	describe('sort', () => {
@@ -154,7 +154,6 @@ describe('SLDSSplitView - Listbox header', () => {
 
 			it('should call onSort when the header is clicked', () => {
 				component.find('a.slds-split-view__list-header').simulate('click');
-
 				expect(props.events.onSort.called).to.be.true;
 			});
 

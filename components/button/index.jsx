@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ButtonIcon from '../icon/button-icon';
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 // eslint-disable-next-line import/no-cycle
 import Tooltip from '../tooltip';
 
@@ -204,9 +204,11 @@ class Button extends React.Component {
 
 	static defaultProps = defaultProps;
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(BUTTON, this.props, componentDoc);
+		checkProps(BUTTON, props, componentDoc);
 	}
 
 	getClassName = () => {

@@ -137,12 +137,10 @@ class SplitViewListbox extends React.Component {
 				item: null,
 			},
 		};
-	}
 
-	componentWillMount() {
 		// Generates the list item template
 		this.ListItemWithContent = listItemWithContent(
-			this.props.listItem || SplitViewListItemContent
+			props.listItem || SplitViewListItemContent
 		);
 	}
 
@@ -257,6 +255,7 @@ class SplitViewListbox extends React.Component {
 					? this.props.selection.filter((i) => i !== item)
 					: [item, ...this.props.selection];
 			} else if (event.shiftKey) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				const [begin, end] = [
 					this.props.options.indexOf(this.state.currentSelectedItem),
 					this.props.options.indexOf(item),
@@ -322,14 +321,15 @@ class SplitViewListbox extends React.Component {
 			? this.headerWrapper(
 					<span>
 						<span className="slds-assistive-text">
-							{this.props.assistiveText.sort.sortedBy}:
+							{this.props.assistiveText.sort.sortedBy}
+							{': '}
 						</span>
 						<span>
 							{this.props.labels.header}
 							{this.sortDirection()}
 						</span>
 						<span className="slds-assistive-text">
-							-{' '}
+							{'- '}
 							{this.props.sortDirection === SORT_OPTIONS.DOWN
 								? this.props.assistiveText.sort.descending
 								: this.props.assistiveText.sort.ascending}

@@ -217,7 +217,7 @@ class Example extends React.Component {
 							columnSortedAscending: 'asc',
 							columnSortedDescending: 'desc',
 							selectAllRows: 'all rows',
-							selectRow: 'select this row',
+							selectRow: 'Select this row',
 						}}
 						fixedHeader
 						fixedLayout

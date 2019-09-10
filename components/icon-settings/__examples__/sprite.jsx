@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
-import IconSettings from '~/components/icon-settings';
-
 import actionSprite from '@salesforce-ux/design-system/assets/icons/action-sprite/svg/symbols.svg';
 import customSprite from '@salesforce-ux/design-system/assets/icons/custom-sprite/svg/symbols.svg';
 import utilitySprite from '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';
 import standardSprite from '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';
 import doctypeSprite from '@salesforce-ux/design-system/assets/icons/doctype-sprite/svg/symbols.svg';
+
+import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
+import IconSettings from '~/components/icon-settings';
 
 class Example extends React.Component {
 	static displayName = 'IconSettingsExample';

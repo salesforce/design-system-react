@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ### Event Helpers
 import EventUtil from '../../utilities/event';
@@ -92,8 +92,10 @@ class GlobalHeader extends React.Component {
 
 	static defaultProps = defaultProps;
 
-	componentWillMount() {
-		checkProps(GLOBAL_HEADER, this.props, componentDoc);
+	constructor(props) {
+		super(props);
+
+		checkProps(GLOBAL_HEADER, props, componentDoc);
 	}
 
 	handleSkipToContent = (e) => {
@@ -127,6 +129,7 @@ class GlobalHeader extends React.Component {
 				if (child.type.displayName === GLOBAL_HEADER_SEARCH) {
 					search = child;
 				} else if (actions[child.type.displayName]) {
+					// eslint-disable-next-line fp/no-mutating-methods
 					actions[child.type.displayName].push(child);
 				}
 			}

@@ -13,7 +13,7 @@ Testing is done using Mocha, Jest, and Storybook. Roughly speaking: Jest tests D
 
 ### Running tests
 
-* Run lint, Karma/PhantomJS environment, and snapshot tests with `npm test`.
+* Run lint, Karma/Chromium environment, and snapshot tests with `npm test`.
 * Test Mocha tests interactively in your browser.
   * Start server from terminal with `npm start`
   * Browse to [http://localhost:8001](http://localhost:8001)
@@ -53,6 +53,10 @@ Use Jest to test the presence of:
 
 * Mouse/keyboard user interaction (event callbacks)
 
+#### How to add new suites of tests
+
+Suites such as DOM snanpshot tests or accessibility tests should be added to all stories and the whole library at once. Stories that do not pass, should be exluded from continuous integration tests and an issue should be created to remove the component from exlusion. In short, add types of testing to all new components by excluding existing components that fail instead of adding existing components to a list of components to test. This forces new components to meet the requirements of the new tests and creates a list of components that need to be worked on instead of a list of components that currently pass.
+
 #### Source files
 
 Snapshot test suite source files that run stories present in `/components/story-based-tests.js`:
@@ -85,7 +89,7 @@ If a Storybook story should not be tested by Storyshots, please add the suffix `
 ## General test requirements
 
 * Tests need to simulate user interactions as closely as possible.
-* Tests must work in both PhantomJS via the CLI and in your local browser at [http://localhost:8001](http://localhost:8001).
+* Tests must work in both Chromium via the CLI and in your local browser at [http://localhost:8001](http://localhost:8001).
 * All pull requests must contain unit testing of:
   * All components not in a `private` folder
   * All props. This includes `children`, but only to check if `children` rendered.

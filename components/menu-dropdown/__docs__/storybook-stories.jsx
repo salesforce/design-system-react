@@ -10,6 +10,7 @@ import IconSettings from '../../icon-settings';
 import { MENU_DROPDOWN } from '../../../utilities/constants';
 import Dropdown from '../../menu-dropdown';
 import { DropdownNubbinPositions } from '../../menu-dropdown/menu-dropdown';
+import DropdownWithTooltips from '../__examples__/with-tooltips';
 import List from '../../utilities/menu-list';
 import Button from '../../button';
 import Trigger from '../../menu-dropdown/button-trigger';
@@ -131,7 +132,11 @@ const getDropdownPositioned = (props) => {
 	const positionedDropdowns = [];
 	DropdownNubbinPositions.forEach((position) => {
 		positionedDropdowns.push(
-			<div className="slds-col slds-size_1-of-3" style={{ minHeight: '500px' }}>
+			<div
+				className="slds-col slds-size_1-of-3"
+				style={{ minHeight: '500px' }}
+				data-ignore-axe-duplicate-id
+			>
 				<Dropdown
 					{...props}
 					isOpen
@@ -179,7 +184,11 @@ const getDropdownPositioned = (props) => {
 const getDropdownCustomTrigger = (props) => (
 	<Dropdown {...props} onClose={action('Closed')} onOpen={action('Opened')}>
 		<Trigger>
-			<Button iconCategory="utility" iconName="settings" />
+			<Button
+				assistiveText={{ icon: props.assistiveText.icon }}
+				iconCategory="utility"
+				iconName="settings"
+			/>
 		</Trigger>
 	</Dropdown>
 );
@@ -227,6 +236,20 @@ storiesOf(MENU_DROPDOWN, module)
 		getDropdown({
 			align: 'right',
 			id: 'base',
+			label: 'Dropdown Click',
+			onClick: (...rest) => {
+				action('Clicked')(...rest);
+			},
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options,
+		})
+	)
+	.add('Base center-aligned', () =>
+		getDropdown({
+			align: 'center',
+			id: 'base-center',
 			label: 'Dropdown Click',
 			onClick: (...rest) => {
 				action('Clicked')(...rest);
@@ -472,4 +495,5 @@ storiesOf(MENU_DROPDOWN, module)
 			label="Dropdown Click"
 			options={options}
 		/>
-	));
+	))
+	.add('With tooltips', () => <DropdownWithTooltips />);

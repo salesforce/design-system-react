@@ -15,7 +15,7 @@ import shortid from 'shortid';
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import {
 	SETUP_ASSISTANT,
@@ -62,7 +62,9 @@ const defaultProps = {
  * onboarding organizations, clouds, or features within the Salesforce Platform.
  */
 class SetupAssistant extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 

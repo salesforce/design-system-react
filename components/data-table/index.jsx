@@ -20,7 +20,7 @@ import reject from 'lodash.reject';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import {
 	canUseDOM,
@@ -54,6 +54,7 @@ const defaultProps = {
 		columnSortedDescending: 'Sorted Descending',
 		selectAllRows: 'Select all rows',
 		selectRow: 'Select row',
+		selectRowGroup: 'Choose a row to select',
 	},
 	selection: [],
 };
@@ -78,7 +79,8 @@ class DataTable extends React.Component {
 		 * * `columnSortedAscending`: Text announced once a column is sorted in ascending order
 		 * * `columnSortedDescending`: Text announced once a column is sorted in descending order
 		 * * `selectAllRows`: Text for select all checkbox within the table header
-		 * * `selectRow`: Text for select row
+		 * * `selectRow`: Text for select row. Default: "Select row 1"
+		 * * `selectRowGroup`: This is an input group label and is attached to each checkbox or radio. Default is "Choose a row to select"
 		 */
 		assistiveText: PropTypes.shape({
 			actionsHeader: PropTypes.string,
@@ -87,6 +89,7 @@ class DataTable extends React.Component {
 			columnSortedDescending: PropTypes.string,
 			selectAllRows: PropTypes.string,
 			selectRow: PropTypes.string,
+			selectRowGroup: PropTypes.string,
 		}),
 		/**
 		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.
@@ -219,11 +222,9 @@ class DataTable extends React.Component {
 			select: [],
 		};
 		this.scrollerRef = null;
-	}
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(DATA_TABLE, this.props, componentDoc);
+		checkProps(DATA_TABLE, props, componentDoc);
 	}
 
 	componentDidMount() {
@@ -377,6 +378,7 @@ class DataTable extends React.Component {
 				const { children, ...columnProps } = child.props;
 
 				const props = assign({}, this.props);
+				// eslint-disable-next-line fp/no-delete
 				delete props.children;
 				assign(props, columnProps);
 
@@ -388,6 +390,7 @@ class DataTable extends React.Component {
 					Cell = DataTableCell;
 				}
 
+				// eslint-disable-next-line fp/no-mutating-methods
 				columns.push({
 					Cell,
 					props,
@@ -494,7 +497,7 @@ class DataTable extends React.Component {
 				/>
 				<tbody>
 					{numRows > 0
-						? this.props.items.map((item) => {
+						? this.props.items.map((item, index) => {
 								const rowId =
 									this.getId() && item.id
 										? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
@@ -506,6 +509,7 @@ class DataTable extends React.Component {
 										columns={columns}
 										fixedLayout={this.props.fixedLayout}
 										id={rowId}
+										index={index}
 										item={item}
 										key={rowId}
 										onToggle={this.handleRowToggle}

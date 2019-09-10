@@ -14,7 +14,7 @@ import shortid from 'shortid';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ## Children
 import Modal from '../modal';
@@ -131,11 +131,9 @@ class AppLauncher extends React.Component {
 		this.state = {
 			isOpen: false,
 		};
-	}
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(APP_LAUNCHER, this.props, componentDoc);
+		checkProps(APP_LAUNCHER, props, componentDoc);
 	}
 
 	getId() {

@@ -126,11 +126,12 @@ class Trigger extends React.Component {
 			onMouseDown,
 			onMouseEnter,
 			onMouseLeave,
-			openOn,
 			triggerRef,
 			triggerClassName,
 			...deprecatedPropsFromMenuDropdown
 		} = this.props;
+
+		const openOn = this.props.openOn === 'hover' ? 'click' : this.props.openOn;
 
 		// Trigger manipulation
 		let propsFromGrandchildButton = {};

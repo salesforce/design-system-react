@@ -32,7 +32,7 @@ import EventUtil from '../../utilities/event';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
@@ -154,9 +154,7 @@ class Carousel extends React.Component {
 			stageWidth: 0,
 			translateX: -1000000,
 		};
-	}
 
-	componentWillMount() {
 		this.generatedId = shortid.generate();
 		checkProps(CAROUSEL, componentDoc);
 	}
@@ -267,6 +265,8 @@ class Carousel extends React.Component {
 			actionToTake(event);
 		}
 	};
+
+	getPanelId = ({ carouselId, itemId }) => `content-id-${carouselId}-${itemId}`;
 
 	getCurrentPanel() {
 		return this.props.currentPanel !== undefined
@@ -432,6 +432,7 @@ class Carousel extends React.Component {
 								{this.props.items.map((item, index) => (
 									<CarouselItem
 										carouselId={id}
+										getPanelId={this.getPanelId}
 										onClick={(event) => {
 											this.props.onItemClick(event, { item });
 										}}
@@ -476,6 +477,7 @@ class Carousel extends React.Component {
 						noOfIndicators={this.nrOfPanels}
 						carouselId={id}
 						currentIndex={currentPanel}
+						getPanelId={this.getPanelId}
 						hasFocus={this.state.indicatorsHaveFocus}
 						onBlur={this.onIndicatorBlur}
 						onClick={this.onIndicatorClickHandler}

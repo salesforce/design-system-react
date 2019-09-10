@@ -60,16 +60,23 @@ class EditDialog extends React.Component {
 		popover: PropTypes.node,
 	};
 
+	handleOpen = () => {
+		this.setState({ isOpen: true });
+	};
+
+	handleClose = () => {
+		this.setState({ isOpen: false });
+	};
+
 	render() {
 		const { onCancel, onSave, ...restProps } = this.props;
 
 		// trigger button will either be passed in children or defaults to an edit button.
-		const children = this.children ? (
-			this.children
+		const children = this.props.children ? (
+			this.props.children
 		) : (
 			<Button
 				assistiveText={{ icon: 'Edit: Status' }}
-				aria-controls={`${this.props.id}-edit-button`}
 				className="slds-button_reset"
 				iconCategory="utility"
 				iconClassName="slds-button__icon slds-button__icon_hint"
@@ -102,6 +109,9 @@ class EditDialog extends React.Component {
 					</div>
 				}
 				footerStyle={{ borderTop: '0px' }}
+				onClose={this.handleClose}
+				onRequestClose={this.handleClose}
+				onOpen={this.handleOpen}
 				{...restProps}
 			>
 				{children}

@@ -1,15 +1,25 @@
 import React from 'react';
 import WelcomeMat from '~/components/welcome-mat';
 import WelcomeMatTile from '~/components/welcome-mat/tile';
+import Button from '~/components/button';
 import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 
 class Example extends React.Component {
 	static displayName = 'welcomeMatExample';
 
+	state = {
+		isOpen: this.props.isOpen || false,
+	};
+
+	toggleOpen = () => {
+		this.setState({ isOpen: !this.state.isOpen });
+	};
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
+				<Button label="Open Default WelcomeMat" onClick={this.toggleOpen} />
 				<div style={{ position: 'relative', height: '5rem' }}>
 					<div style={{ width: '20rem' }}>
 						<WelcomeMat
@@ -17,8 +27,10 @@ class Example extends React.Component {
 							labels={{
 								title: 'The Lightning Experience is here!',
 								description:
-									'Welcome to Lightning Experience, the modern, beautiful user experience from Salesforce. With a sales-and service-centric mindset, we focused on reinventing the desktop environment to better support your business processes."',
+									'Welcome to Lightning Experience, the modern, beautiful user experience from Salesforce. With a sales-and service-centric mindset, we focused on reinventing the desktop environment to better support your business processes.',
 							}}
+							isOpen={this.state.isOpen}
+							onRequestClose={this.toggleOpen}
 							variant="steps"
 						>
 							<WelcomeMatTile
@@ -42,14 +54,14 @@ class Example extends React.Component {
 								description="Tap into case history or share notes with fellow agents—it all happens on the utility bar."
 								id="welcome-mat-tile-3"
 								href="javascript:void(0);"
-								icon={<Icon category="utility" name="call" />}
+								icon={<Icon category="utility" name="upload" />}
 							/>
 							<WelcomeMatTile
 								title="Customize your view"
 								description="Tailor your cases to your team&#x27;s workflow with custom list views."
 								id="welcome-mat-tile-4"
 								href="javascript:void(0);"
-								icon={<Icon category="utility" name="upload" />}
+								icon={<Icon category="utility" name="magicwand" />}
 							/>
 							<WelcomeMatTile
 								title="Share the Knowledge"

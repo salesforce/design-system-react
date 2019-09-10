@@ -16,6 +16,13 @@ import { PROGRESS_BAR } from '../../utilities/constants';
 
 const propTypes = {
 	/**
+	 * **Assistive text for accessibility**
+	 * This object is merged with the default props object on every render.
+	 * * `progress`: This is a visually hidden label for the percent of progress.
+	 * _Tested with snapshot testing._
+	 */
+	assistiveText: PropTypes.shape({ progress: PropTypes.string }),
+	/**
 	 * HTML id for component.
 	 */
 	id: PropTypes.string,
@@ -61,6 +68,9 @@ const propTypes = {
 };
 
 const defaultProps = {
+	assistiveText: {
+		progress: 'Progress',
+	},
 	labels: {
 		complete: 'Complete',
 	},
@@ -74,7 +84,9 @@ const defaultProps = {
  * A progress bar component communicates to the user the progress of a particular process
  */
 class ProgressBar extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 
@@ -91,16 +103,18 @@ class ProgressBar extends React.Component {
 	 * @returns {string} description
 	 */
 	getDescription({ labels }) {
-		if (this.props.labels.label) {
+		if (labels.label) {
 			return (
 				<div
 					className="slds-grid slds-grid_align-spread slds-p-bottom_x-small"
-					id="progress-bar-label-id-4"
+					id={`progress-bar-label-${this.getId()}`}
 				>
 					<span>{labels.label}</span>
 					<span aria-hidden="true">
 						<strong>
-							{this.props.value}% {labels.complete}
+							{this.props.value}
+							{'% '}
+							{labels.complete}
 						</strong>
 					</span>
 				</div>
@@ -111,6 +125,11 @@ class ProgressBar extends React.Component {
 
 	render() {
 		const labels = assign({}, defaultProps.labels, this.props.labels);
+		const assistiveText = assign(
+			{},
+			defaultProps.assistiveText,
+			this.props.assistiveText
+		);
 		const style = assign({}, defaultProps.style, this.props.style);
 		return (
 			<div id={this.getId()} style={style}>
@@ -152,7 +171,8 @@ class ProgressBar extends React.Component {
 						}
 					>
 						<span className="slds-assistive-text">
-							Progress: {`${this.props.value}%`}
+							{`${assistiveText.progress}: `}
+							{`${this.props.value}%`}
 						</span>
 					</span>
 				</div>

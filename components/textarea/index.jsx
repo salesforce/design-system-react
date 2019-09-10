@@ -30,8 +30,9 @@ import shortid from 'shortid';
 import checkProps from './check-props';
 
 import { TEXTAREA } from '../../utilities/constants';
+import getAriaProps from '../../utilities/get-aria-props';
 
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 /**
  * A multi-line plain-text editing control.
@@ -40,6 +41,13 @@ class Textarea extends React.Component {
 	static displayName = TEXTAREA;
 
 	static propTypes = {
+		/**
+		 * **Assistive text for accessibility.**
+		 * * `label`: If present, the label associated with this `textarea` is overwritten by this text and is visually not shown.
+		 */
+		assistiveText: PropTypes.shape({
+			label: PropTypes.string,
+		}),
 		/**
 		 * The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget.
 		 */
@@ -86,13 +94,6 @@ class Textarea extends React.Component {
 		 * Specifies is the textarea should automatically get focus when the page loads. This is typically a poor user experience.
 		 */
 		autoFocus: PropTypes.bool,
-		/**
-		 * **Assistive text for accessibility.**
-		 * * `label`: If present, the label associated with this `textarea` is overwritten by this text and is visually not shown.
-		 */
-		assistiveText: PropTypes.shape({
-			label: PropTypes.string,
-		}),
 		/**
 		 * Elements are added after the `textarea`.
 		 */
@@ -206,12 +207,14 @@ class Textarea extends React.Component {
 		wrap: PropTypes.oneOf(['soft', 'hard']),
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(TEXTAREA, this.props, componentDoc);
+		checkProps(TEXTAREA, props, componentDoc);
 
 		this.generatedId = shortid.generate();
-		if (this.props.errorText) {
+		if (props.errorText) {
 			this.generatedErrorId = shortid.generate();
 		}
 	}
@@ -256,14 +259,15 @@ class Textarea extends React.Component {
 			// ...props // Uncomment this if you actually need to send the rest of the props to other elements
 		} = this.props;
 
-		const assistiveText =
+		const ariaProps = getAriaProps(this.props);
+		const assistiveTextLabel =
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
 				: {
 						...this.props.assistiveText,
 					}.label;
 
-		const labelText = label || assistiveText; // One of these is required to pass accessibility tests
+		const labelText = label || assistiveTextLabel; // One of these is required to pass accessibility tests
 
 		return (
 			<div
@@ -278,13 +282,13 @@ class Textarea extends React.Component {
 				{labelText && (
 					<label
 						className={classNames('slds-form-element__label', {
-							'slds-assistive-text': assistiveText && !label,
+							'slds-assistive-text': assistiveTextLabel && !label,
 						})}
 						htmlFor={this.getId()}
 					>
 						{required && (
 							<abbr className="slds-required" title="required">
-								*
+								{'*'}
 							</abbr>
 						)}
 						{labelText}
@@ -292,13 +296,6 @@ class Textarea extends React.Component {
 				)}
 				<div className={classNames('slds-form-element__control')}>
 					<textarea
-						aria-activedescendant={this.props['aria-activedescendant']}
-						aria-controls={this.props['aria-controls']}
-						aria-labelledby={this.props['aria-labelledby']}
-						aria-describedby={this.getErrorId()}
-						aria-expanded={this.props['aria-expanded']}
-						aria-owns={this.props['aria-owns']}
-						aria-required={this.props['aria-required']}
 						className={classNames('slds-textarea', className)}
 						autoFocus={autoFocus}
 						disabled={disabled}
@@ -323,6 +320,7 @@ class Textarea extends React.Component {
 						wrap={wrap}
 						value={value}
 						defaultValue={defaultValue}
+						{...ariaProps}
 					/>
 				</div>
 				{errorText && (

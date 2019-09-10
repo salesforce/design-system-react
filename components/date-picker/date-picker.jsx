@@ -26,7 +26,7 @@ import Input from '../input';
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
@@ -46,6 +46,7 @@ const propTypes = {
 		nextMonth: PropTypes.string,
 		openCalendar: PropTypes.string,
 		previousMonth: PropTypes.string,
+		year: PropTypes.string,
 	}),
 	/**
 	 * Aligns the right or left side of the menu with the respective side of the trigger. _Tested with snapshot testing._
@@ -194,6 +195,7 @@ const defaultProps = {
 		nextMonth: 'Next month',
 		openCalendar: 'Open Calendar',
 		previousMonth: 'Previous month',
+		year: 'Year',
 	},
 	formatter(date) {
 		return date
@@ -264,13 +266,11 @@ class Datepicker extends React.Component {
 			formattedValue: initDate || '',
 			inputValue: initDate || '',
 		};
-	}
 
-	componentWillMount() {
 		this.generatedId = shortid.generate();
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(DATE_PICKER, this.props, componentDoc);
+		checkProps(DATE_PICKER, props, componentDoc);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -308,6 +308,7 @@ class Datepicker extends React.Component {
 				assistiveTextPreviousMonth={
 					this.props.assistiveTextPreviousMonth || assistiveText.previousMonth // eslint-disable-line react/prop-types
 				}
+				assistiveTextYear={assistiveText.year}
 				id={this.getId()}
 				isIsoWeekday={this.props.isIsoWeekday}
 				monthLabels={

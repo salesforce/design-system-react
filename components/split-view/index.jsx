@@ -90,14 +90,10 @@ class SplitView extends React.Component {
 		super(props);
 
 		this.state = {
-			isOpen: true,
+			isOpen: typeof props.isOpen === 'boolean' ? props.isOpen : true,
 		};
-	}
 
-	componentWillMount() {
 		this.generatedId = shortid.generate();
-
-		this.setIsOpen({ isOpen: this.props.isOpen });
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -164,7 +160,9 @@ class SplitView extends React.Component {
 				>
 					<ToggleButton
 						assistiveText={this.props.assistiveText}
-						ariaControls={this.getMasterViewId()}
+						ariaControls={
+							this.state.isOpen ? this.getMasterViewId() : undefined
+						}
 						isOpen={this.state.isOpen}
 						events={{
 							onClick: (event) => this.toggle(event),

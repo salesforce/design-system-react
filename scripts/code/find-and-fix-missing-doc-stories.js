@@ -24,14 +24,14 @@ const babel = require('@babel/core');
 const t = require('babel-types');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const generator = require('babel-generator');
+const path = require('path');
+const babelRC = require('../../babel.config.js');
 
-const babelRC = JSON.parse(fs.readFileSync('.babelrc'));
+// eslint-disable-next-line fp/no-delete
 delete babelRC.ignore;
 const babelOpts = babel.loadOptions(babelRC);
 
 babelOpts.ast = true;
-
-const path = require('path');
 
 // Storybook stories
 const storiesFor = (p) => path.join(p, '__docs__/storybook-stories.jsx');

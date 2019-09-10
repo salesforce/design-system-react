@@ -25,7 +25,7 @@ class Example extends React.Component {
 							id="visual-picker-vertical-coverable-radio-1"
 							onRenderVisualPickerSelected={() => (
 								<Icon
-									assistiveText={{ label: 'connected_apps_checked' }}
+									assistiveText={{ label: 'Connected Apps' }}
 									category="utility"
 									name="check"
 									colorVariant="base"
@@ -34,7 +34,7 @@ class Example extends React.Component {
 							)}
 							onRenderVisualPickerNotSelected={() => (
 								<Icon
-									assistiveText={this.props.assistiveText}
+									assistiveText={{ label: 'Connected Apps' }}
 									category="utility"
 									name="connected_apps"
 									size="large"
@@ -45,7 +45,7 @@ class Example extends React.Component {
 							id="visual-picker-vertical-coverable-radio-2"
 							onRenderVisualPickerSelected={() => (
 								<Icon
-									assistiveText={{ label: 'custom_apps_checked' }}
+									assistiveText={{ label: 'Custom Apps' }}
 									category="utility"
 									name="check"
 									colorVariant="base"
@@ -54,7 +54,7 @@ class Example extends React.Component {
 							)}
 							onRenderVisualPickerNotSelected={() => (
 								<Icon
-									assistiveText={this.props.assistiveText}
+									assistiveText={{ label: 'Custom Apps' }}
 									category="utility"
 									name="custom_apps"
 									size="large"
@@ -75,7 +75,7 @@ class Example extends React.Component {
 							id="visual-picker-vertical-coverable-checkbox-1"
 							onRenderVisualPickerSelected={() => (
 								<Icon
-									assistiveText={{ label: 'account_checked' }}
+									assistiveText={{ label: 'Account' }}
 									category="utility"
 									name="check"
 									colorVariant="base"
@@ -84,7 +84,7 @@ class Example extends React.Component {
 							)}
 							onRenderVisualPickerNotSelected={() => (
 								<Icon
-									assistiveText={this.props.assistiveText}
+									assistiveText={{ label: 'Account' }}
 									category="standard"
 									name="account"
 									size="large"
@@ -96,7 +96,7 @@ class Example extends React.Component {
 							id="visual-picker-vertical-coverable-checkbox-2"
 							onRenderVisualPickerSelected={() => (
 								<Icon
-									assistiveText={{ label: 'lead_checked' }}
+									assistiveText={{ label: 'Lead' }}
 									category="utility"
 									name="check"
 									colorVariant="base"
@@ -105,7 +105,7 @@ class Example extends React.Component {
 							)}
 							onRenderVisualPickerNotSelected={() => (
 								<Icon
-									assistiveText={this.props.assistiveText}
+									assistiveText={{ label: 'Lead' }}
 									category="standard"
 									name="lead"
 									size="large"
@@ -117,7 +117,7 @@ class Example extends React.Component {
 							id="visual-picker-vertical-coverable-checkbox-3"
 							onRenderVisualPickerSelected={() => (
 								<Icon
-									assistiveText={{ label: 'orders_checked' }}
+									assistiveText={{ label: 'Orders' }}
 									category="utility"
 									name="check"
 									colorVariant="base"
@@ -126,7 +126,7 @@ class Example extends React.Component {
 							)}
 							onRenderVisualPickerNotSelected={() => (
 								<Icon
-									assistiveText={this.props.assistiveText}
+									assistiveText={{ label: 'Orders' }}
 									category="standard"
 									name="orders"
 									size="large"

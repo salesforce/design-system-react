@@ -23,17 +23,5 @@ storiesOf(BUTTON_STATEFUL, module)
 	))
 	.add('Base', () => getButtonStateful())
 	.add('Disabled', () => getButtonStateful({ disabled: true }))
-	.add('Icon', () =>
-		getButtonStateful({
-			assistiveText: { icon: 'Icon button' },
-			variant: 'icon-filled',
-			label: 'Neutral Icon',
-			iconName: 'check',
-			onFocus: action('hover'),
-			onMouseEnter: (e) => {
-				console.log('target is ', e.target);
-			},
-		})
-	)
-	.add('Doc site Icon Text Button', () => <IconTextButton />)
-	.add('Doc site Icon Button', () => <IconButton />);
+	.add('Icon Text Button', () => <IconTextButton />)
+	.add('Icon Button', () => <IconButton />);

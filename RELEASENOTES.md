@@ -31,6 +31,135 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.11
+
+**Major Features**
+
+* `Badges`: Add component
+* `Expression`: Add component
+
+**Minor Features**
+
+* `ButtonGroup`: Add label support for all variants
+* `ButtonStateful`: Add icon prop
+* `Combobox`: Add header and footer items
+* `MenuDropdown`: Add "center" `align` prop value
+* `MenuDropdown`: Add tooltip menu item
+* `MenuDropdown`: Add hover capabilities with keyboard interactions
+* `Tooltip`: Add `hoverOpenDelay` prop
+
+**Bugfixes**
+
+* `Checkbox`: Fix error text ids
+* `Tabs`: Use class name instead of presentation role for event conditional
+* `TimePicker`: Fix issue with `strValue` not updating `value` correctly
+* Fix all existing aXe issues
+
+**Maintainance**
+
+* Automate `package.json`, `index.js`, and `site-stories.js` creation
+* `classnames` update from 2.2.5 to 2.2.6
+* `sinon-chai` update from 2.14.0 to 3.3.0
+* `fstream` update from 1.0.11 to 1.0.12
+* `regenerator-runtime` update from 0.11.1 to 0.13.3
+* `eslint-plugin-react` update from 7.13.0 to 7.14.3
+* `react-onclickoutside` update from 6.8.0 to 6.9.0
+* `chai` update from 4.1.2 to 4.2.0
+* `file-loader` update from 1.1.11 to 4.2.0
+* `basic-auth` update from 1.1.0 to 2.0.1
+* `webpack` update from 4.36.1 to 4.39.3
+* `@storybook/addon-storyshots` update from 5.1.10 to 5.1.11
+* `eslint-config-prettier` update from 3.0.1 to 6.1.0
+* `mixin-deep` update from 1.3.1 to 1.3.2 (security)
+
+# Release 0.10.10
+**Bug with release script caused this version to be skipped. Please use 0.10.11**
+
+## Release 0.10.9
+
+**Major Features**
+
+* `Files`: Add new component
+
+**Minor Features**
+
+* `ScopedNotification`: Add icon prop
+
+**Bugfixes**
+
+* `Colorpicker`: Pass aXe static markup accessibility testing
+* `ProgressBar`: Use `getId` for id instead of hard-coded strings
+* `Tabs`: prevent panel children clicks from changing tabs at unexpected times
+* `WelcomeMat`: Add `slds-welcome-mat_info-only` class to container
+* Add additional context types to components with portals
+
+**Documentation**
+
+* `WelcomeMat`: update icons
+
+**Maintainance**
+
+* Upgrade to Storybook 5
+* Add accessibility tests to continuous integration
+* Prevent literal strings in component code
+* Add React fragment rule
+* `@babel/plugin-transform-modules-commonjs` update from 7.4.4 to 7.5.0
+* `@storybook/addon-actions` update from 5.1.9 to 5.1.10
+* `@storybook/addon-storyshots` update from 5.1.9 to 5.1.10
+
+## Release 0.10.8
+
+**Major Features**
+
+* `WelcomeMat`: Add new component
+* `Colorpicker`: Add right to left language support
+* `Datepicker`: Add right to left language support
+* `Dropdown`: Add right to left language support
+* `Icon`: Add right to left language support
+
+**Minor Features**
+
+* `PageHeader`: Update markup
+* `PageHeader`: Add support for custom icons
+* `PageHeader`: Add support for `Breadcrumbs`
+* `PageHeader`: Support joined styling with `DataTable`
+
+**Bugfixes**
+
+* `ProgressRing`: Fix for layout issue in IE11
+* `Dialog`: Fix for "invalid prop `direction` of value `[object Object]` supplied
+* `BuilderHeader`: Fix type
+* Remove unneeded imports (fixing DeepScan issues)
+* Update jest config to include all snapshots
+
+**Documentation**
+
+* Update `create-react-app.md`
+* Update `CONTRIBUTING.md` readme to new Jest script process
+* Update `release.md` readme
+
+**Maintainance**
+
+* Add Storybook stories to DOM, image, and a11y tests by default unless excluded
+* Limit use of root `~` babel alias to example files
+* Divide image snapshots into chunks, then remove them from standard tests (for now)
+* `@salesforce-ux/design-system` update from 2.8.3 to 2.9.3 (SLDS)
+* `@salesforce-ux/icons` update from 7.34.0 to 9.27.0
+* `webpack-dev-middleware` update from 1.12.2 to 2.0.6
+* `babel-loader` update from 8.0.0-beta.3 to 8.0.6
+* `react-test-renderer` update from 16.4.2 to 16.8.6
+* `warning` update from 3.0.0 to 4.0.3
+* `eslint-loader` update from 1.9.0 to 2.1.2
+* `enzyme-adapter-react-16` update from 1.12.1 to 1.14.0
+* `karma-cli` update from 1.0.1 to 2.0.0
+* `object.entries` update from 1.0.4 to 1.1.0
+* `babel-eslint` update from 8.2.3 to 10.0.2
+* `babel-plugin-instabul` update from 4.1.6 to 5.1.4
+* `mocha` update from 3.5.3 to 6.1.4
+* `react-onclickoutside` update from 6.7.1 to 6.8.0
+* `react-highlighter` update from 0.4.2 to 0.4.3
+* `express` update from 4.16.2 to 4.17.1
+
 ## Release 0.10.7
 
 **Major Features**

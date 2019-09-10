@@ -315,7 +315,7 @@ exports[`DOM snapshots SLDSSlider Error 1`] = `
         className="slds-slider"
       >
         <input
-          aria-describedby="error message"
+          aria-describedby="slider-error-message"
           className="slds-slider__range"
           id="error-id"
           max={100}
@@ -334,7 +334,7 @@ exports[`DOM snapshots SLDSSlider Error 1`] = `
       </div>
       <div
         className="slds-form-element__help"
-        id="error message"
+        id="slider-error-message"
       >
         There is a problem with this field
       </div>
