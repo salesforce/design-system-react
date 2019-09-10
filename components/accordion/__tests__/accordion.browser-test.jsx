@@ -164,6 +164,56 @@ describe('Accordion', function describeFunction() {
 		});
 	});
 
+	describe('Interactions keyboard', () => {
+		let mountNode;
+		let wrapper;
+
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('focuses the next accordion button on arrow down', () => {
+			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
+			const accordionButtons = wrapper.find(
+				'button.slds-accordion__summary-action'
+			);
+
+			accordionButtons.at(0).simulate('keyDown', {
+				key: 'ArrowDown',
+				keyCode: 40,
+				which: 40,
+			});
+
+			expect(
+				accordionButtons.at(1).getDOMNode() === document.activeElement
+			).to.equal(true);
+		});
+
+		it('focuses the previous accordion button on arrow up', () => {
+			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
+			const accordionButtons = wrapper.find(
+				'button.slds-accordion__summary-action'
+			);
+
+			accordionButtons.at(0).simulate('keyDown', {
+				key: 'ArrowUp',
+				keyCode: 38,
+				which: 38,
+			});
+
+			const lastAccordionButton = accordionButtons.at(
+				accordionButtons.length - 1
+			);
+			expect(
+				lastAccordionButton.getDOMNode() === document.activeElement
+			).to.equal(true);
+		});
+	});
+
 	describe('Open panel', () => {
 		let mountNode;
 		let wrapper;

@@ -31,9 +31,19 @@ const propTypes = {
 	 */
 	panelContentActions: PropTypes.node,
 	/**
+	 * Callback that will run whenever there is a keydown on the panel button. Function doesn't change the state of the component.
+	 */
+	onKeyDownSummary: PropTypes.func,
+	/**
 	 * Callback that will run whenever a panel is toggled. Function should handle state to toggle `expanded` prop. _Tested with Mocha framework._
 	 */
 	onTogglePanel: PropTypes.func.isRequired,
+	/**
+	 * Ref callback that will pass in panel's `input` tag
+	 */
+	refs: PropTypes.shape({
+		summaryButton: PropTypes.func,
+	}),
 	/**
 	 * Summary in the span element in the header of this panel. The summary is truncated and so the title element should contain the full text so that it is accessible on hover. _Tested with snapshot testing._
 	 */
@@ -54,7 +64,10 @@ const AccordionPanel = ({
 	panelContentActions,
 	summary,
 	title,
+	onClickSummary,
+	onKeyDownSummary,
 	onTogglePanel,
+	refs,
 }) => (
 	<li className="slds-accordion__list-item">
 		<section
@@ -67,11 +80,17 @@ const AccordionPanel = ({
 					<Button
 						aria-controls={`${id}-accordion-panel`}
 						aria-expanded={expanded}
+						buttonRef={refs.summaryButton}
 						className="slds-button_reset slds-accordion__summary-action"
 						iconCategory="utility"
 						iconClassName="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
 						iconName="switch"
-						onClick={onTogglePanel}
+						id={`${id}-accordion-button`}
+						onKeyDown={onKeyDownSummary}
+						onClick={(e) => {
+							onClickSummary();
+							onTogglePanel(e);
+						}}
 						variant="base"
 					>
 						<span className="slds-truncate" title={title || summary}>
