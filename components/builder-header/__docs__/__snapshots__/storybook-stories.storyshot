@@ -879,84 +879,160 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
           </ul>
         </nav>
         <div
-          className="slds-builder-header__item slds-has-flexi-truncate"
+          className="slds-builder-header__item"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
         >
           <div
-            className="slds-builder-header__item"
-            style={
-              Object {
-                "width": "100%",
-              }
-            }
+            className="slds-builder-header__item-label"
           >
             <div
-              className="slds-builder-header__item-label"
+              style={
+                Object {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "width": "100%",
+                }
+              }
             >
-              <div
+              <span
+                className="slds-p-right_x-small slds-truncate"
                 style={
                   Object {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "width": "100%",
+                    "display": "inline-block",
                   }
                 }
               >
-                <span
-                  className="slds-p-right_x-small slds-truncate"
-                  style={
-                    Object {
-                      "display": "inline-block",
-                    }
+                Page Type
+              </span>
+              <div
+                style={
+                  Object {
+                    "display": "inline-block",
                   }
-                >
-                  Page Type
-                </span>
+                }
+              >
                 <div
+                  className="slds-tooltip-trigger"
                   style={
                     Object {
                       "display": "inline-block",
                     }
                   }
                 >
-                  <div
-                    className="slds-tooltip-trigger"
+                  <button
+                    className="slds-button slds-button_icon-inverse slds-button_reset"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
                     style={
                       Object {
-                        "display": "inline-block",
+                        "verticalAlign": "middle",
                       }
                     }
+                    type="button"
                   >
-                    <button
-                      className="slds-button slds-button_icon slds-button_reset"
-                      disabled={false}
-                      onBlur={[Function]}
-                      onClick={[Function]}
-                      onFocus={[Function]}
-                      onMouseEnter={[Function]}
-                      onMouseLeave={[Function]}
-                      style={
-                        Object {
-                          "verticalAlign": "middle",
-                        }
-                      }
-                      type="button"
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
                     >
-                      <svg
-                        aria-hidden="true"
-                        className="slds-button__icon slds-button slds-button_icon slds-button_icon-inverse slds-button__icon_hint"
-                      >
-                        <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
-                        />
-                      </svg>
-                      <span
-                        className="slds-assistive-text"
-                      >
-                        Edit: Status
-                      </span>
-                    </button>
-                    <span />
-                  </div>
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Edit: Status
+                    </span>
+                  </button>
+                  <span />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="slds-builder-header__item"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            className="slds-builder-header__item-label"
+          >
+            <div
+              style={
+                Object {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "width": "100%",
+                }
+              }
+            >
+              <span
+                className="slds-p-right_x-small slds-truncate"
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                Page Type
+              </span>
+              <div
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <div
+                  className="slds-tooltip-trigger"
+                  style={
+                    Object {
+                      "display": "inline-block",
+                    }
+                  }
+                >
+                  <button
+                    className="slds-button slds-button_icon-inverse slds-button_reset"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    style={
+                      Object {
+                        "verticalAlign": "middle",
+                      }
+                    }
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Edit: Status
+                    </span>
+                  </button>
+                  <span />
                 </div>
               </div>
             </div>

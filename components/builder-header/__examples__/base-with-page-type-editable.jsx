@@ -139,57 +139,106 @@ class Example extends React.Component {
 						/>
 					</BuilderHeaderNav>
 					<BuilderHeaderMisc>
-						<IconSettings iconPath="/assets/icons">
-							<div
-								style={{
-									width: '100%',
-									display: 'flex',
-									alignItems: 'center',
-								}}
+						<div
+							style={{
+								width: '100%',
+								display: 'flex',
+								alignItems: 'center',
+							}}
+						>
+							<span
+								className="slds-p-right_x-small slds-truncate"
+								style={{ display: 'inline-block' }}
 							>
-								<span
-									className="slds-p-right_x-small slds-truncate"
-									style={{ display: 'inline-block' }}
+								{this.state.prevPageType}
+							</span>
+							<EditDialog
+								ariaLabelledby="Edit Name"
+								body={editDialogPopoverBody}
+								isModified={this.state.pageType !== this.state.prevPageType}
+								onCancel={this.handleRequestClose}
+								onClose={this.handleClose}
+								onRequestClose={this.handleRequestClose}
+								onSave={this.handleSave}
+								handleOpen={this.handleOpen}
+								onOpen={this.onOpen}
+								position="absolute"
+								align="top left"
+								id="edit-dialog-popover"
+								isOpen={this.state.isOpen}
+								style={{ color: 'initial' }}
+								labels={{ save: 'Done' }}
+							>
+								<Tooltip
+									id="page-type-tooltip"
+									align="bottom"
+									content="Edit Page Type"
 								>
-									{this.state.prevPageType}
-								</span>
-								<EditDialog
-									ariaLabelledby="Edit Name"
-									body={editDialogPopoverBody}
-									isModified={this.state.pageType !== this.state.prevPageType}
-									onCancel={this.handleRequestClose}
-									onClose={this.handleClose}
-									onRequestClose={this.handleRequestClose}
-									onSave={this.handleSave}
-									handleOpen={this.handleOpen}
-									onOpen={this.onOpen}
-									position="absolute"
-									align="top left"
-									id="edit-dialog-popover"
-									isOpen={this.state.isOpen}
-									style={{ color: 'initial' }}
-									labels={{ save: 'Done' }}
+									<Button
+										assistiveText={{ icon: 'Edit: Status' }}
+										className="slds-button_reset"
+										iconCategory="utility"
+										iconName="edit"
+										inverse
+										onClick={this.handleOpen}
+										variant="icon"
+										style={{ verticalAlign: 'middle' }}
+										onMouseEnter={this.handleEnter}
+									/>
+								</Tooltip>
+							</EditDialog>
+						</div>
+					</BuilderHeaderMisc>
+					<BuilderHeaderMisc>
+						<div
+							style={{
+								width: '100%',
+								display: 'flex',
+								alignItems: 'center',
+							}}
+						>
+							<span
+								className="slds-p-right_x-small slds-truncate"
+								style={{ display: 'inline-block' }}
+							>
+								{this.state.prevPageType}
+							</span>
+							<EditDialog
+								ariaLabelledby="Edit Name"
+								body={editDialogPopoverBody}
+								isModified={this.state.pageType !== this.state.prevPageType}
+								onCancel={this.handleRequestClose}
+								onClose={this.handleClose}
+								onRequestClose={this.handleRequestClose}
+								onSave={this.handleSave}
+								handleOpen={this.handleOpen}
+								onOpen={this.onOpen}
+								position="absolute"
+								align="top left"
+								id="edit-dialog-popover"
+								isOpen={this.state.isOpen}
+								style={{ color: 'initial' }}
+								labels={{ save: 'Done' }}
+							>
+								<Tooltip
+									id="page-type-tooltip"
+									align="bottom"
+									content="Edit Page Type"
 								>
-									<Tooltip
-										id="page-type-tooltip"
-										align="bottom"
-										content="Edit Page Type"
-									>
-										<Button
-											assistiveText={{ icon: 'Edit: Status' }}
-											className="slds-button_reset"
-											iconCategory="utility"
-											iconName="edit"
-											inverse
-											onClick={this.handleOpen}
-											variant="icon"
-											style={{ verticalAlign: 'middle' }}
-											onMouseEnter={this.handleEnter}
-										/>
-									</Tooltip>
-								</EditDialog>
-							</div>
-						</IconSettings>
+									<Button
+										assistiveText={{ icon: 'Edit: Status' }}
+										className="slds-button_reset"
+										iconCategory="utility"
+										iconName="edit"
+										inverse
+										onClick={this.handleOpen}
+										variant="icon"
+										style={{ verticalAlign: 'middle' }}
+										onMouseEnter={this.handleEnter}
+									/>
+								</Tooltip>
+							</EditDialog>
+						</div>
 					</BuilderHeaderMisc>
 				</BuilderHeader>
 			</IconSettings>
