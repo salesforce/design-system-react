@@ -70,20 +70,12 @@ class Example extends React.Component {
 	}
 
 	togglePanel(event, data) {
-		this.setState(
-			{
-				expandedPanels: {},
+		this.setState((state) => ({
+			...state,
+			expandedPanels: {
+				[data.id]: !state.expandedPanels[data.id],
 			},
-			() => {
-				this.setState((state) => ({
-					...state,
-					expandedPanels: {
-						...state.expandedPanels,
-						[data.id]: !state.expandedPanels[data.id],
-					},
-				}));
-			}
-		);
+		}));
 		if (this.props.action) {
 			const dataAsArray = Object.keys(data).map((id) => data[id]);
 			this.props.action('onClick')(event, ...dataAsArray);
@@ -98,7 +90,7 @@ class Example extends React.Component {
 				<Accordion id="base-example-accordion">
 					{this.state.items.map((item, i) => (
 						<AccordionPanel
-							expanded={!!this.state.expandedPanels[item.id]}
+							expanded={this.state.expandedPanels[item.id]}
 							id={item.id}
 							panelContentActions={this.menuDropdown(item)}
 							key={item.id}

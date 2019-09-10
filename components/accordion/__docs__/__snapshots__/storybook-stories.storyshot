@@ -22,7 +22,6 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           >
             <button
               aria-controls="1-accordion-panel"
-              aria-expanded={false}
               className="slds-button slds-button_reset slds-accordion__summary-action"
               disabled={false}
               id="1-accordion-button"
@@ -103,7 +102,6 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           >
             <button
               aria-controls="2-accordion-panel"
-              aria-expanded={false}
               className="slds-button slds-button_reset slds-accordion__summary-action"
               disabled={false}
               id="2-accordion-button"
@@ -184,7 +182,6 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
           >
             <button
               aria-controls="3-accordion-panel"
-              aria-expanded={false}
               className="slds-button slds-button_reset slds-accordion__summary-action"
               disabled={false}
               id="3-accordion-button"
