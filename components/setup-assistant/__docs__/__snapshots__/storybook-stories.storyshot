@@ -2971,6 +2971,403 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <ol
+    className="slds-setup-assistant"
+    id="step-progress-setup-assistant"
+  >
+    <li
+      className="slds-setup-assistant__item"
+      id="step-progress-step-1"
+    >
+      <article
+        className="slds-setup-assistant__step"
+      >
+        <div
+          className="slds-setup-assistant__step-summary"
+        >
+          <div
+            className="slds-media"
+          >
+            <div
+              className="slds-media__figure"
+            >
+              <span
+                className="slds-icon_container slds-icon-standard-user"
+                style={
+                  Object {
+                    "position": "relative",
+                    "top": "-3px",
+                  }
+                }
+                title="User"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-icon slds-icon_small"
+                >
+                  <use
+                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  User
+                </span>
+              </span>
+            </div>
+            <div
+              className="slds-setup-assistant__step-summary-content slds-media__body"
+            >
+              <h3
+                className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+              >
+                Add Users to Your Org
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+            <div
+              className="slds-media__figure slds-media__figure_reverse"
+            >
+              <button
+                className="slds-button slds-button_outline-brand"
+                disabled={false}
+                id="step-progress-step-1-action"
+                onClick={[Function]}
+                type="button"
+              >
+                Add Users
+              </button>
+              <p
+                className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+              >
+                4 mins
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </li>
+    <li
+      className="slds-setup-assistant__item"
+      id="step-progress-step-2"
+    >
+      <article
+        className="slds-setup-assistant__step"
+      >
+        <div
+          className="slds-setup-assistant__step-summary"
+        >
+          <div
+            className="slds-media"
+          >
+            <div
+              className="slds-media__figure"
+            >
+              <span
+                className="slds-icon_container slds-icon-standard-user-role"
+                style={
+                  Object {
+                    "position": "relative",
+                    "top": "-3px",
+                  }
+                }
+                title="User"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-icon slds-icon_small"
+                >
+                  <use
+                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user_role"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  User
+                </span>
+              </span>
+            </div>
+            <div
+              className="slds-setup-assistant__step-summary-content slds-media__body"
+            >
+              <h3
+                className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+              >
+                Create Profiles for Your Users
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+            <div
+              className="slds-media__figure slds-media__figure_reverse"
+            >
+              <button
+                className="slds-button slds-button_outline-brand"
+                disabled={false}
+                id="step-progress-step-2-action"
+                onClick={[Function]}
+                type="button"
+              >
+                Add Profiles
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </li>
+    <li
+      className="slds-setup-assistant__item"
+      id="step-progress-step-3"
+    >
+      <article
+        className="slds-setup-assistant__step"
+      >
+        <div
+          className="slds-setup-assistant__step-summary"
+        >
+          <div
+            className="slds-media"
+          >
+            <div
+              className="slds-media__figure"
+            >
+              <span
+                className="slds-icon_container slds-icon-standard-knowledge"
+                style={
+                  Object {
+                    "position": "relative",
+                    "top": "-3px",
+                  }
+                }
+                title="User"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-icon slds-icon_small"
+                >
+                  <use
+                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#knowledge"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  User
+                </span>
+              </span>
+            </div>
+            <div
+              className="slds-setup-assistant__step-summary-content slds-media__body"
+            >
+              <h3
+                className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+              >
+                Learn How to Use Profiles to control Visibility
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+            <div
+              className="slds-media__figure slds-media__figure_reverse"
+            >
+              <button
+                className="slds-button_reset slds-text-link"
+                disabled={false}
+                id="step-progress-step-3-action"
+                onClick={[Function]}
+                type="button"
+              >
+                View on Trailhead
+              </button>
+              <p
+                className="slds-text-align_right slds-text-color_weak slds-p-top_medium"
+              >
+                15 mins
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </li>
+    <li
+      className="slds-setup-assistant__item"
+      id="step-progress-step-4"
+    >
+      <article
+        className="slds-setup-assistant__step"
+      >
+        <div
+          className="slds-setup-assistant__step-summary"
+        >
+          <div
+            className="slds-media"
+          >
+            <div
+              className="slds-media__figure"
+            >
+              <span
+                className="slds-icon_container slds-icon-standard-record"
+                style={
+                  Object {
+                    "position": "relative",
+                    "top": "-3px",
+                  }
+                }
+                title="User"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-icon slds-icon_small"
+                >
+                  <use
+                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#record"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  User
+                </span>
+              </span>
+            </div>
+            <div
+              className="slds-setup-assistant__step-summary-content slds-media__body"
+            >
+              <h3
+                className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+              >
+                Turn on tracking for profiles
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+            <div
+              className="slds-media__figure slds-media__figure_reverse"
+            >
+              <div
+                className="slds-form-element"
+              >
+                <label
+                  className="slds-checkbox_toggle slds-grid"
+                  htmlFor="step-progress-step-4-action"
+                >
+                  <input
+                    aria-describedby="step-progress-step-4-action-desc"
+                    id="step-progress-step-4-action"
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                  <span
+                    aria-live="assertive"
+                    className="slds-checkbox_faux_container"
+                    id="step-progress-step-4-action-desc"
+                  >
+                    <span
+                      className="slds-checkbox_faux"
+                    />
+                    <span
+                      className="slds-checkbox_on"
+                    >
+                      Enabled
+                    </span>
+                    <span
+                      className="slds-checkbox_off"
+                    >
+                      Disabled
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </li>
+    <li
+      className="slds-setup-assistant__item"
+      id="step-progress-step-5"
+    >
+      <article
+        className="slds-setup-assistant__step"
+      >
+        <div
+          className="slds-setup-assistant__step-summary"
+        >
+          <div
+            className="slds-media"
+          >
+            <div
+              className="slds-media__figure"
+            >
+              <span
+                className="slds-icon_container slds-icon-standard-lightning-usage"
+                style={
+                  Object {
+                    "position": "relative",
+                    "top": "-3px",
+                  }
+                }
+                title="User"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-icon slds-icon_small"
+                >
+                  <use
+                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lightning_usage"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  User
+                </span>
+              </span>
+            </div>
+            <div
+              className="slds-setup-assistant__step-summary-content slds-media__body"
+            >
+              <h3
+                className="slds-setup-assistant__step-summary-title slds-text-heading_small"
+              >
+                Setup Einstein Visibility for Admins
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+            <div
+              className="slds-media__figure slds-media__figure_reverse"
+            >
+              <button
+                className="slds-button_reset slds-text-link"
+                disabled={false}
+                id="step-progress-step-5-action"
+                onClick={[Function]}
+                type="button"
+              >
+                Watch Video
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </li>
+  </ol>
+</div>
+`;
+
 exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
 <div
   className="slds-p-around_medium"
