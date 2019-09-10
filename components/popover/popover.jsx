@@ -789,6 +789,7 @@ class Popover extends React.Component {
 					...child.props,
 				});
 			} else {
+				// eslint-disable-next-line fp/no-mutating-methods
 				otherChildren.push(child);
 			}
 		});

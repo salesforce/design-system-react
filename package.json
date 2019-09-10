@@ -124,7 +124,7 @@
 		"@storybook/addon-a11y": "^5.1.9",
 		"@storybook/addon-actions": "^5.1.10",
 		"@storybook/addon-storyshots": "^5.1.11",
-		"@storybook/addon-storyshots-puppeteer": "^5.1.9",
+		"@storybook/addon-storyshots-puppeteer": "^5.1.11",
 		"@storybook/addons": "^5.1.9",
 		"@storybook/react": "^5.1.9",
 		"async": "^2.0.0-rc.5",
@@ -140,7 +140,7 @@
 		"basic-auth": "^2.0.1",
 		"chai": "^4.2.0",
 		"chai-enzyme": "^1.0.0-beta.1",
-		"chownr": "^1.1.0",
+		"chownr": "^1.1.2",
 		"compression": "^1.7.4",
 		"concurrently": "^4.1.0",
 		"cross-env": "^5.2.0",
@@ -153,7 +153,8 @@
 		"eslint-find-rules": "^3.3.1",
 		"eslint-loader": "^2.1.2",
 		"eslint-plugin-filenames": "^1.2.0",
-		"eslint-plugin-import": "^2.17.3",
+		"eslint-plugin-fp": "^2.3.0",
+		"eslint-plugin-import": "^2.18.2",
 		"eslint-plugin-json": "^1.4.0",
 		"eslint-plugin-jsx-a11y": "^6.2.1",
 		"eslint-plugin-prefer-object-spread": "^1.2.1",
@@ -186,10 +187,8 @@
 		"mocha": "^6.1.4",
 		"mocha-loader": "^3.0.0",
 		"node-sass": "^4.5.0",
-		"normalizr": "^3.2.4",
+		"normalizr": "^3.4.1",
 		"object.entries": "^1.1.0",
-		"phantomjs-polyfill-find-index": "^1.0.1",
-		"phantomjs-polyfill-includes": "^1.0.2",
 		"prettier": "1.9.2",
 		"prettylint": "^1.0.0",
 		"prompt": "^1.0.0",
@@ -815,6 +814,18 @@
 				"/__examples__/counter-input.jsx"
 			],
 			"url-slug": "inputs"
+		},
+		{
+			"component": "map",
+			"status": "prod",
+			"display-name": "Map",
+			"classKey": "Map",
+			"SLDS-component-path": "/components/map",
+			"site-stories": [
+				"/__examples__/multiple-locations.jsx",
+				"/__examples__/single-location.jsx"
+			],
+			"url-slug": "map"
 		},
 		{
 			"component": "media-object",

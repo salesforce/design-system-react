@@ -81,11 +81,13 @@ const getNavigableItems = (items) => {
 	if (Array.isArray(items)) {
 		items.forEach((item, index) => {
 			if (itemIsSelectable(item)) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				navigableItems.push({
 					index,
 					text: `${item.label}`.toLowerCase(),
 				});
 
+				// eslint-disable-next-line fp/no-mutating-methods
 				navigableItems.indexes.push(index);
 			}
 		});
@@ -529,6 +531,7 @@ class MenuDropdown extends React.Component {
 			let values = [];
 			let currentIndices = [];
 			if (!Array.isArray(nextProps.value)) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				values.push(nextProps.value);
 			} else {
 				values = nextProps.value;
@@ -718,6 +721,7 @@ class MenuDropdown extends React.Component {
 			const deselectIndex = this.state.selectedIndices.indexOf(index);
 			// eslint-disable-next-line react/no-access-state-in-setstate
 			const currentSelected = this.state.selectedIndices;
+			// eslint-disable-next-line fp/no-mutating-methods
 			currentSelected.splice(deselectIndex, 1);
 			this.setState({
 				selectedIndices: currentSelected,
@@ -895,6 +899,7 @@ class MenuDropdown extends React.Component {
 		// Dropdown can take a Trigger component as a child and then return it as the parent DOM element.
 		React.Children.forEach(customContent, (child) => {
 			if (child && child.type.displayName === LIST) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				customContentWithListPropInjection.push(
 					this.renderDefaultMenuContent(child.props)
 				);
@@ -903,6 +908,7 @@ class MenuDropdown extends React.Component {
 					onClick: this.handleClickCustomContent,
 					key: shortid.generate(),
 				});
+				// eslint-disable-next-line fp/no-mutating-methods
 				customContentWithListPropInjection.push(clonedCustomContent);
 			}
 		});
@@ -1012,6 +1018,7 @@ class MenuDropdown extends React.Component {
 				CustomTriggerChildProps = child.props;
 				CurrentTrigger = child.type;
 			} else if (child) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				customContent.push(child);
 			}
 		});

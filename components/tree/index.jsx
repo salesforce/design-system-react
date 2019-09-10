@@ -131,6 +131,7 @@ class Tree extends React.Component {
 		let focusedNodeIndex;
 
 		if (selectedNode) {
+			// eslint-disable-next-line fp/no-mutating-methods
 			selectedNodeIndexes.push(selectedNode.treeIndex);
 			focusedNodeIndex = selectedNode.treeIndex;
 		}
@@ -165,6 +166,7 @@ class Tree extends React.Component {
 		}
 		let nodes = [{ node: root, treeIndex }];
 		if (root.expanded) {
+			// eslint-disable-next-line fp/no-loops
 			for (let index = 0; index < root.nodes.length; index += 1) {
 				const curNode = firstLevel
 					? root.nodes[index]

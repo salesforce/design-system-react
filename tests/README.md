@@ -13,7 +13,7 @@ Testing is done using Mocha, Jest, and Storybook. Roughly speaking: Jest tests D
 
 ### Running tests
 
-* Run lint, Karma/PhantomJS environment, and snapshot tests with `npm test`.
+* Run lint, Karma/Chromium environment, and snapshot tests with `npm test`.
 * Test Mocha tests interactively in your browser.
   * Start server from terminal with `npm start`
   * Browse to [http://localhost:8001](http://localhost:8001)
@@ -89,7 +89,7 @@ If a Storybook story should not be tested by Storyshots, please add the suffix `
 ## General test requirements
 
 * Tests need to simulate user interactions as closely as possible.
-* Tests must work in both PhantomJS via the CLI and in your local browser at [http://localhost:8001](http://localhost:8001).
+* Tests must work in both Chromium via the CLI and in your local browser at [http://localhost:8001](http://localhost:8001).
 * All pull requests must contain unit testing of:
   * All components not in a `private` folder
   * All props. This includes `children`, but only to check if `children` rendered.
