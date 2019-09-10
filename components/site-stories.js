@@ -220,6 +220,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/controlled-with-footer.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/custom-target.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/error.jsx'),
+		require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/feature.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/walkthrough.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/walkthrough-action.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/popover/__examples__/warning.jsx'),
