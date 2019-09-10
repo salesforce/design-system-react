@@ -204,9 +204,11 @@ class Button extends React.Component {
 
 	static defaultProps = defaultProps;
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(BUTTON, this.props, componentDoc);
+		checkProps(BUTTON, props, componentDoc);
 	}
 
 	getClassName = () => {

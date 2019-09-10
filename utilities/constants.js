@@ -12,6 +12,8 @@ export const APP_LAUNCHER_LINK = 'SLDSAppLauncherLink';
 export const APP_LAUNCHER_TILE = 'SLDSAppLauncherTile';
 export const APP_LAUNCHER_HEADER = 'SLDSAppLauncherHeader';
 export const AVATAR = 'SLDSAvatar';
+export const BADGE = 'SLDSBadge';
+
 export const BRAND_BAND = 'SLDSBrandBand';
 
 /* Remove at next breaking change */

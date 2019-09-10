@@ -20,7 +20,8 @@
 		"/__examples__/default-right-to-left.jsx",
 		"/__examples__/sub-heading.jsx",
 		"/__examples__/custom-trigger.jsx",
-		"/__examples__/checkmark.jsx"
+		"/__examples__/checkmark.jsx",
+		"/__examples__/with-tooltips.jsx"
 	],
     "url-slug": "menu-dropdowns"
 }

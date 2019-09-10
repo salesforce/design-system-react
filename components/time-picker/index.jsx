@@ -37,9 +37,11 @@ const getOptions = ({ props }) => {
 
 	const curDate = new Date(baseDate);
 
+	// eslint-disable-next-line fp/no-loops
 	while (baseDate.getDate() === curDate.getDate()) {
 		const formatted = props.formatter(curDate);
 
+		// eslint-disable-next-line fp/no-mutating-methods
 		options.push({
 			label: formatted,
 			value: new Date(curDate),
@@ -158,9 +160,11 @@ class Timepicker extends React.Component {
 		options: getOptions({ props: this.props }),
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(TIME_PICKER, this.props, componentDoc);
+		checkProps(TIME_PICKER, props, componentDoc);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -174,6 +178,9 @@ class Timepicker extends React.Component {
 					strValue: this.props.formatter(nextProps.value),
 				});
 			}
+		}
+		if (nextProps.strValue !== this.props.value) {
+			this.setState({ strValue: nextProps.strValue });
 		}
 	}
 

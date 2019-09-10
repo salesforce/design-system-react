@@ -43,6 +43,7 @@ class GlobalHeaderHelp extends React.Component {
 			this.props.popover ? this.props.popover.props : {}
 		);
 
+		// eslint-disable-next-line fp/no-delete
 		delete popoverProps.children;
 
 		return (

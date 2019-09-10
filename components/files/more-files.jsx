@@ -66,8 +66,9 @@ const defaultProps = {
 	crop: '16-by-9',
 	href: 'javascript:void(0);',
 };
+
 /**
- * MoreFiles is a component that represents a number of file contents uploaded as an attachment.
+ * MoreFiles is a component that represents multiple uploaded attachments
  */
 class MoreFiles extends React.Component {
 	componentWillMount() {
