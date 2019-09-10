@@ -179,8 +179,8 @@ class Example extends React.Component {
 											assistiveText={{ icon: 'Edit: Status' }}
 											className="slds-button_reset"
 											iconCategory="utility"
-											iconClassName="slds-button slds-button_icon slds-button_icon-inverse slds-button__icon_hint"
 											iconName="edit"
+											inverse
 											onClick={this.handleOpen}
 											variant="icon"
 											style={{ verticalAlign: 'middle' }}
