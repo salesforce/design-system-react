@@ -1,10 +1,9 @@
 import React from 'react';
 
-import Icon from '../../icon';
-
 import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
+import Icon from '~/components/icon';
 import log from '~/utilities/log';
 
 class Example extends React.Component {
