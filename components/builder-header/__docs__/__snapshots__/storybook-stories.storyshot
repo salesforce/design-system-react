@@ -1940,49 +1940,52 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
                 }
               }
             >
-              <span
-                className="slds-color__text_gray-10 slds-align-middle slds-m-right_x-small"
+              <button
+                className="slds-button slds-color__text_gray-10 slds-align-middle slds-m-right_x-small"
                 onBlur={[Function]}
                 onFocus={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
+                type="button"
               >
                 Saved 45 mins ago
-              </span>
+              </button>
               <span />
             </div>
-            <span>
-              <svg
-                aria-hidden="true"
-                className="slds-m-right_xx-small slds-icon slds-icon_x-small slds-icon-text-default"
-                style={
-                  Object {
-                    "fill": "#FFB75D",
-                  }
+            <div
+              className="slds-tooltip-trigger"
+              style={
+                Object {
+                  "display": "inline-block",
                 }
+              }
+            >
+              <button
+                className="slds-button slds-button_icon-container"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                type="button"
               >
-                <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
-                />
-              </svg>
-              
-            </span>
-            <span>
-              <svg
-                aria-hidden="true"
-                className="slds-m-right_small slds-icon slds-icon_x-small slds-icon-text-default"
-                style={
-                  Object {
-                    "fill": "#C23A34",
-                  }
-                }
-              >
-                <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
-                />
-              </svg>
-              
-            </span>
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon slds-icon-text-error"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Error
+                </span>
+              </button>
+              <span />
+            </div>
             <button
               className="slds-button slds-button_neutral"
               disabled={false}
