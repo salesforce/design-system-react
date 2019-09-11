@@ -1953,7 +1953,6 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
               <span />
             </div>
             <div
-              className="slds-tooltip-trigger"
               style={
                 Object {
                   "display": "inline-block",
@@ -1963,11 +1962,12 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
               <button
                 className="slds-button slds-button_icon-container"
                 disabled={false}
-                onBlur={[Function]}
+                id="popover-error"
                 onClick={[Function]}
-                onFocus={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
+                onFocus={null}
+                onMouseEnter={null}
+                onMouseLeave={null}
+                tabIndex="0"
                 type="button"
               >
                 <svg
@@ -1984,7 +1984,6 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
                   Error
                 </span>
               </button>
-              <span />
             </div>
             <button
               className="slds-button slds-button_neutral"
