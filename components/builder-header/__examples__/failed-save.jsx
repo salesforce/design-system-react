@@ -1,13 +1,14 @@
 import React from 'react';
-import IconSettings from '../../icon-settings';
-import Button from '../../button';
-import ButtonGroup from '../../button-group';
-import Tooltip from '../../tooltip';
-import BuilderHeader from '..';
-import BuilderHeaderNav from '../nav';
-import BuilderHeaderNavLink from '../nav-link';
-import BuilderHeaderNavDropdown from '../nav-dropdown';
-import BuilderHeaderToolbar from '../toolbar';
+import IconSettings from '~/components/icon-settings';
+import Button from '~/components/button';
+import ButtonGroup from '~/components/button-group';
+import Popover from '~/components/popover'; // `~` is replaced with design-system-react at runtime
+import Tooltip from '~/components/tooltip';
+import BuilderHeader from '~/components/builder-header';
+import BuilderHeaderNav from '~/components/builder-header/nav';
+import BuilderHeaderNavLink from '~/components/builder-header/nav-link';
+import BuilderHeaderNavDropdown from '~/components/builder-header/nav-dropdown';
+import BuilderHeaderToolbar from '~/components/builder-header/toolbar';
 
 const Example = (props) => (
 	<IconSettings iconPath="/assets/icons">
@@ -62,10 +63,22 @@ const Example = (props) => (
 								Saved 45 mins ago
 							</button>
 						</Tooltip>
-						<Tooltip
-							id="error-tooltip"
-							align="bottom"
-							content="There has been an error."
+						<Popover
+							align="top left"
+							body={
+								<div>
+									<p className="slds-p-bottom_x-small">
+										Pellentesque magna tellus, dapibus vitae placerat nec,
+										viverra vel mi.{' '}
+										<a href="javascript:void(0);" title="Learn More">
+											Learn More
+										</a>
+									</p>
+								</div>
+							}
+							heading="Review warning"
+							id="popover-error"
+							variant="error"
 						>
 							<Button
 								assistiveText={{ icon: 'Error' }}
@@ -77,7 +90,7 @@ const Example = (props) => (
 								colorVariant="error"
 								variant="icon"
 							/>
-						</Tooltip>
+						</Popover>
 						<Button
 							iconCategory="utility"
 							iconName="right"
