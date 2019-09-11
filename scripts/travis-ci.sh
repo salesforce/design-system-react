@@ -4,7 +4,8 @@
 # Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license
 
 # Jest markup & image snapshot tests (this is here so this variable can be used in runTest & elsewhere)
-SNAPSHOT_TESTS='npm run test:stories'
+SNAPSHOT_TESTS='npm run test:dom-snapshot'
+ACCESSIBILITY_TESTS='npm run test:accessibility'
 SKIP_SNAPSHOT_TESTS=false
 
 function runTests() {
@@ -117,6 +118,7 @@ if (( numArgs >= 0 )); then
 			# Prettier by itself will not work.
 			# Prettier ONLY on JSON and markdown files.
 			RUN_LINT='npm run lint:fix'
+		[ "$SKIP_LINT_TESTS" == "true" ] ||
 		[ "$1" == "--skip-prettier" ] ||
 		[ "$1" == "--no-prettier" ] ||
 		[ "$1" == "--skip-lint" ] ||
@@ -124,14 +126,21 @@ if (( numArgs >= 0 )); then
 		[ "$1" == "--skip-eslint" ] ||
 		[ "$1" == "--no-eslint" ] &&
 			RUN_LINT="echo ✂    ︎ skipping ${RUN_LINT}" &&
+		[ "$SKIP_KARMA_TESTS" == "true" ] ||
 		[ "$1" == "--skip-karma" ] ||
 		[ "$1" == "--no-karma" ]  &&
 			START_KARMA="echo ✂    ︎ skipping ${START_KARMA}"
+		[ "$SKIP_SNAPSHOT_TESTS" == "true" ] ||
 		[ "$1" == "--skip-snapshot" ] ||
 		[ "$1" == "--no-snapshot" ] ||
 		[ "$1" == "--skip-jest" ] ||
 		[ "$1" == "--no-jest" ]  &&
 			SNAPSHOT_TESTS="echo ✂    ︎ skipping ${SNAPSHOT_TESTS}"
+		[ "$SKIP_ACCESSIBILITY_TESTS" == "true" ] ||
+		[ "$1" == "--skip-accessibility" ] ||
+		[ "$1" == "--no-accessibility" ] &&
+			ACCESSIBILITY_TESTS="echo ✂    ︎ skipping ${ACCESSIBILITY_TESTS}"
+		[ "$SKIP_DOCGEN" == "true" ] ||
 		[ "$1" == "--skip-docgen" ] ||
 		[ "$1" == "--no-docgen" ] ||
 		[ "$1" == "--skip-docs" ] ||
@@ -141,7 +150,7 @@ if (( numArgs >= 0 )); then
 	done
 fi
 
-declare -a COMMANDS=("${RUN_LINT}" "${START_KARMA}" "${SNAPSHOT_TESTS}" "${DOCGEN}")
+declare -a COMMANDS=("${RUN_LINT}" "${START_KARMA}" "${SNAPSHOT_TESTS}" "${ACCESSIBILITY_TESTS}" "${DOCGEN}")
 
 printf "
 Running DSR Travis-CI QA Scripts

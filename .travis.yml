@@ -10,7 +10,8 @@ install:
 script:
   - npm run travis-ci
 env:
-  - CXX=g++-4.8
+  - CXX=g++-4.8 SKIP_ACCESSIBILITY_TESTS=true
+  - CXX=g++-4.8 SKIP_LINT_TESTS=true SKIP_KARMA_TESTS=true SKIP_SNAPSHOT_TESTS=true SKIP_DOCGEN=true
 addons:
   chrome: stable
   apt:
