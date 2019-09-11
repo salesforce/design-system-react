@@ -2,11 +2,11 @@ sudo: required
 language: node_js
 node_js:
   - '8'
-cache: npm
+cache:
+  directories:
+  - "$HOME/.npm"
 install:
-  - npm install npm -g
-  - npm config set audit false
-  - npm install
+  - npm ci
 script:
   - npm run travis-ci
 env:
