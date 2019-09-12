@@ -182,6 +182,7 @@ class Example extends React.Component {
 		nodes: this.props.nodes || sampleData,
 		isIndeterminate: false,
 		allSelect: false,
+		selectedNode: null
 	};
 
 	getNodes = (node) =>
@@ -250,6 +251,12 @@ class Example extends React.Component {
 			}
 			this.setState({ nodes: curr, isIndeterminate, allSelect });
 		}
+		else {
+			const { nodes, selectedNode } = this.state;
+			nodes[data.node.id].selected = true;
+			if(selectedNode != null) { nodes[selectedNode].selected = false; }
+			this.setState({ nodes, selectedNode: data.node.id })
+		}
 	};
 
 	handleSelectAll = (event) => {
@@ -285,6 +292,7 @@ class Example extends React.Component {
 					<TreeGrid
 						id="example"
 						nodes={this.state.nodes['0'].nodes}
+						isBorderless={this.props.isBorderless}
 						getNodes={this.getNodes}
 						onExpand={this.handleExpansion}
 						onSelect={this.handleSelection}

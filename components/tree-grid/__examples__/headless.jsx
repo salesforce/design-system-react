@@ -158,6 +158,7 @@ class Example extends React.Component {
 					<TreeGrid
 						isHeadless
 						isBorderless={this.props.isBorderless}
+						selectRows={this.props.selectRows}
 						nodes={this.state.nodes['0'].nodes}
 						getNodes={this.getNodes}
 						onExpand={this.handleExpansion}

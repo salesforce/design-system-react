@@ -102,7 +102,7 @@ const Item = (props) => {
 					props.row.selected ? `slds-is-selected` : null
 				)}
 				onClick={(event) =>
-					props.selectRows === 'single' ? props.onSelect(event,props.row) : null
+					props.selectRows === 'single' ? handleSelection(event) : null
 				}
 				onKeyDown={handleKeyDown}
 				ref={(component) => {
