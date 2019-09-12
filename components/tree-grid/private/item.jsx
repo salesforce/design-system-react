@@ -101,8 +101,8 @@ const Item = (props) => {
 					`slds-hint-parent`,
 					props.row.selected ? `slds-is-selected` : null
 				)}
-				onClick={() =>
-					props.selectRows === 'single' ? props.onSelect() : null
+				onClick={(event) =>
+					props.selectRows === 'single' ? props.onSelect(event,props.row) : null
 				}
 				onKeyDown={handleKeyDown}
 				ref={(component) => {

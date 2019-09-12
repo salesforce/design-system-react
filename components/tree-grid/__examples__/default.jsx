@@ -180,6 +180,8 @@ class Example extends React.Component {
 
 	state = {
 		nodes: this.props.nodes || sampleData,
+		isIndeterminate: false,
+		allSelect: false,
 	};
 
 	getNodes = (node) =>
@@ -217,6 +219,15 @@ class Example extends React.Component {
 		return [];
 	};
 
+	countSelected = (branch) => {
+		const { nodes } = this.state;
+		let selected = 0;
+		branch.forEach((node) => {
+			if (nodes[node].selected === true) selected += 1;
+		});
+		return selected;
+	};
+
 	handleSelection = (event, data) => {
 		log({
 			action: this.props.action,
@@ -224,25 +235,34 @@ class Example extends React.Component {
 			eventName: 'Select Branch',
 			data,
 		});
-		const curr = this.state.nodes;
-		curr[data.node.id].selected = data.selected;
-		const children = this.findChildren(data.node);
-		children.forEach((child) => {
-			curr[child].selected = data.selected;
-		});
-		this.setState({ nodes: curr });
+		if(this.props.selectRows !== "single")
+		{
+			const curr = this.state.nodes;
+			curr[data.node.id].selected = data.selected;
+			const selectedCount = this.countSelected(curr['0'].nodes);
+			let isIndeterminate = true;
+			let allSelect = false;
+			if (selectedCount === curr['0'].nodes.length) {
+				isIndeterminate = false;
+				allSelect = true;
+			} else if (selectedCount === 0) {
+				isIndeterminate = null;
+			}
+			this.setState({ nodes: curr, isIndeterminate, allSelect });
+		}
 	};
 
 	handleSelectAll = (event) => {
 		const selected = this.state.nodes;
 		const curr = this.state.allSelect;
-		for (const [key, value] of Object.entries(selected)) {
-			if (key) {
-				value = { ...value, selected: !curr };
-				selected[key] = value;
-			}
-		}
-		const presentState = { nodes: selected, allSelect: !curr };
+		selected['0'].nodes.forEach((node) => {
+			selected[node].selected = !curr;
+		});
+		const presentState = {
+			nodes: selected,
+			allSelect: !curr,
+			isIndeterminate: null,
+		};
 		log({
 			action: this.props.action,
 			event,
@@ -250,6 +270,12 @@ class Example extends React.Component {
 			data: presentState,
 		});
 		this.setState(presentState);
+	};
+
+	getCheckedState = () => {
+		if (this.state.allSelect && !this.state.isIndeterminate) return true;
+		if (!this.state.allSelect && !this.state.isIndeterminate) return false;
+		return null;
 	};
 
 	render() {
@@ -263,6 +289,7 @@ class Example extends React.Component {
 						onExpand={this.handleExpansion}
 						onSelect={this.handleSelection}
 						onSelectAll={this.handleSelectAll}
+						checked={this.getCheckedState()}
 						selectRows={this.props.selectRows}
 						moreActionsDropdown={
 							<Dropdown

@@ -23,18 +23,12 @@ const propTypes = {
 	 * **Assistive text for accessibility.**
 	 * This object is merged with the default props object on every render.
 	 * * `actionsHeader`: Text for heading of actions column
-	 * * `columnSort`: Text for sort action on table column header
-	 * * `columnSortedAscending`: Text announced once a column is sorted in ascending order
-	 * * `columnSortedDescending`: Text announced once a column is sorted in descending order
 	 * * `selectAllRows`: Text for select all checkbox within the table header
 	 * * `selectRow`: Text for select row
 	 */
 	assistiveText: PropTypes.shape({
 		actions: PropTypes.string,
 		actionsHeader: PropTypes.string,
-		// columnSort: PropTypes.string,
-		// columnSortedAscending: PropTypes.string,
-		// columnSortedDescending: PropTypes.string,
 		selectAll: PropTypes.string,
 		selectRow: PropTypes.string,
 	}),
@@ -50,17 +44,16 @@ const propTypes = {
 	 * HTML id for component.
 	 */
 	id: PropTypes.string,
-
+	/**
+	 *  State of the checkbox
+	 */
+	checked: PropTypes.bool,
 	/**
 	 * Specifies a row selection UX pattern.
 	 * * `multiple`: This is the default
 	 * * `single`: Single row selection.
 	 */
 	selectRows: PropTypes.oneOf(['single', 'multiple']),
-	/**
-	 * TreeGrids have horizontal borders by default. This removes them.
-	 */
-	unborderedRow: PropTypes.bool,
 
 	nodes: PropTypes.arrayOf(
 		PropTypes.oneOfType([
@@ -72,12 +65,22 @@ const propTypes = {
 				label: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
 					.isRequired,
 				type: PropTypes.string.isRequired,
+				selected: PropTypes.bool,
+				expanded: PropTypes.bool,
 			}),
 		])
 	).isRequired,
-
+	/**
+	 * Callback function for selection of rows
+	 */
 	onSelect: PropTypes.func.isRequired,
-
+	/**
+	 * Callback function for selection of all rows
+	 */
+	onSelectAll: PropTypes.func.isRequired,
+	/**
+	 * Callback function for expansion of rows
+	 */
 	onExpand: PropTypes.func.isRequired,
 	/**
 	 * Whether the TreeGrid is headless
@@ -169,6 +172,10 @@ class TreeGrid extends React.Component {
 		this.props.onSelect(event, data);
 	};
 
+	handleSelectAll = (event, data) => {
+		this.props.onSelectAll(event, data);
+	};
+
 	handleExpansion = (event, data) => {
 		this.props.onExpand(event, data);
 	};
@@ -236,12 +243,9 @@ class TreeGrid extends React.Component {
 												label: assistiveText.selectAll,
 											}}
 											name="options"
-											// indeterminate={
-											// 	// this.state.selection.length > 0 &&
-											// 	// !this.state.isSelectAll
-											// }
-											// checked={this.props.isSelectAll}
-											onChange={this.props.onSelectAll}
+											indeterminate={this.props.checked === null}
+											checked={this.props.checked}
+											onChange={this.handleSelectAll}
 										/>
 									</div>
 								</th>
