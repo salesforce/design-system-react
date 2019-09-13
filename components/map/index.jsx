@@ -46,7 +46,7 @@ const propTypes = {
 	}),
 	/**
 	 * **Array of locations objects for the Map component.**
-	 * Each location object can contain:
+	 *  Each location object can contain:
 	 *  * `id` : A unique identifier string for the location
 	 *  * `name` : Name of the location
 	 *  * `address` : Address of the location
@@ -66,7 +66,8 @@ const propTypes = {
 	 * Accepts a Google Map API Key that will be used for showing the map
 	 */
 	googleAPIKey: PropTypes.string.isRequired,
-	/*  Accepts location object that will be selected to shown on load
+	/**
+	 *  Accepts location object that will be selected to shown on load
 	 *  * `id` : A unique identifier string for the location
 	 *  * `name` : Name of the location
 	 *  * `address` : Address of the location
