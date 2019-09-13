@@ -197,7 +197,7 @@ class ListItem extends React.Component {
 					const { ...tooltipTemplateProps } = this.props.tooltipTemplate.props;
 					const tooltipProps = {
 						...tooltipTemplateProps,
-						content: this.props.tooltipContent || tooltipTemplateProps.content, // either use specific content defined on option or content defined on tooltip template component.
+						content: this.props.tooltipContent,
 						id: `${this.props.id}-tooltip`,
 						triggerStyle: {
 							width: '100%',
