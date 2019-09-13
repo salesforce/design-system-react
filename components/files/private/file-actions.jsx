@@ -26,6 +26,7 @@ const FileActions = (props) => {
 						iconSize="x-small"
 						onClick={props.onClickDownload}
 						title="Download"
+						className="slds-button_icon-inverse"
 					>
 						<Icon
 							assistiveText={{ label: props.assistiveText.download }}
