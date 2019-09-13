@@ -96,47 +96,34 @@ class SplitView extends React.Component {
 		this.generatedId = shortid.generate();
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.isOpen !== this.props.isOpen) {
-			this.setIsOpen({ isOpen: nextProps.isOpen });
-		}
-	}
-
 	getId() {
 		return this.props.id || this.generatedId;
+	}
+
+	getIsOpen() {
+		return typeof this.props.isOpen === 'boolean'
+			? this.props.isOpen
+			: this.state.isOpen;
 	}
 
 	getMasterViewId() {
 		return `master_view_${this.getId()}`;
 	}
 
-	setIsOpen({ isOpen }) {
-		if (typeof this.props.isOpen === 'boolean') {
-			this.setState({
-				isOpen,
-			});
-		}
-	}
-
 	toggle(event) {
-		this.setIsOpen({ isOpen: !this.state.isOpen });
+		if (typeof this.props.isOpen !== 'boolean') {
+			this.setState((prevState) => ({
+				isOpen: !prevState.isOpen,
+			}));
+		}
 
-		if (this.state.isOpen && this.props.events.onClose) {
+		const isOpen = this.getIsOpen();
+
+		if (isOpen && this.props.events.onClose) {
 			this.props.events.onClose(event);
-		} else if (!this.state.isOpen && this.props.events.onOpen) {
+		} else if (!isOpen && this.props.events.onOpen) {
 			this.props.events.onOpen(event);
 		}
-	}
-
-	masterContent() {
-		return this.state.isOpen ? (
-			<article
-				id={this.getMasterViewId()}
-				className="slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none"
-			>
-				{this.props.master}
-			</article>
-		) : null;
 	}
 
 	render() {
@@ -150,25 +137,29 @@ class SplitView extends React.Component {
 			>
 				<div
 					style={{
-						maxWidth: this.state.isOpen ? this.props.masterWidth : '0',
+						maxWidth: this.getIsOpen() ? this.props.masterWidth : '0',
+						minWidth: this.getIsOpen() ? this.props.masterWidth : '0',
 					}}
 					className={classNames(
 						'slds-split-view_container',
-						{ 'slds-is-open': this.state.isOpen },
-						{ 'slds-is-closed': !this.state.isOpen }
+						{ 'slds-is-open': this.getIsOpen() },
+						{ 'slds-is-closed': !this.getIsOpen() }
 					)}
 				>
 					<ToggleButton
 						assistiveText={this.props.assistiveText}
-						ariaControls={
-							this.state.isOpen ? this.getMasterViewId() : undefined
-						}
-						isOpen={this.state.isOpen}
+						ariaControls={this.getMasterViewId()}
+						isOpen={this.getIsOpen()}
 						events={{
 							onClick: (event) => this.toggle(event),
 						}}
 					/>
-					{this.masterContent()}
+					<article
+						id={this.getMasterViewId()}
+						className="slds-split-view slds-grid slds-grid_vertical slds-grow slds-scrollable_none"
+					>
+						{this.getIsOpen() ? this.props.master : null}
+					</article>
 				</div>
 				<div
 					style={{
