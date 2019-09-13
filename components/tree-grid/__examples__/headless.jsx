@@ -135,6 +135,18 @@ class Example extends React.Component {
 		this.setState({ nodes: updated });
 	};
 
+	findChildren = (node) => {
+		if (node.type === 'branch') {
+			let list = [];
+			node.nodes.forEach((child) => {
+				const c = this.findChildren(this.state.nodes[child]);
+				list = [...c, child, ...list];
+			});
+			return list;
+		}
+		return [];
+	};
+
 	handleSelection = (event, data) => {
 		log({
 			action: this.props.action,

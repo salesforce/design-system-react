@@ -3,30 +3,18 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import shortid from 'shortid';
 import findIndex from 'lodash.findindex';
+import isFunction from 'lodash.isfunction';
 
 import { TREE_GRID_ITEM } from '../../../utilities/constants';
 import Checkbox from '../../checkbox';
 import TreeGridCell from './cell';
 
+import EventUtil from '../../../utilities/event';
 import KEYS from '../../../utilities/key-code';
 import mapKeyEventCallbacks from '../../../utilities/key-callbacks';
 
 const Item = (props) => {
 	const isFocused = props.treeIndex === props.focusedNodeIndex;
-
-	const handleExpansion = (event) => {
-		props.onExpand(event, {
-			node: props.row,
-			expanded: !props.row.expanded,
-		});
-	};
-
-	const handleSelection = (event) => {
-		props.onSelect(event, {
-			node: props.row,
-			selected: !props.row.selected,
-		});
-	};
 
 	const findNextNode = (flattenedNodes, node) => {
 		const nodes = flattenedNodes.map((flattenedNode) => flattenedNode.node);
@@ -43,6 +31,26 @@ const Item = (props) => {
 		return flattenedNodes[index];
 	};
 
+	const handleExpansion = (event) => {
+		if (isFunction(props.onExpand)) {
+			EventUtil.trap(event);
+			props.onExpand(event, {
+				node: props.row,
+				expanded: !props.row.expanded,
+			});
+		}
+	};
+
+	const handleSelection = (event) => {
+		if (isFunction(props.onSelect)) {
+			EventUtil.trap(event);
+			props.onSelect(event, {
+				node: props.row,
+				selected: !props.row.selected,
+			});
+		}
+	};
+
 	const handleKeyDownDown = (event) => {
 		const flattenedNode = findNextNode(props.flattenedNodes, props.row);
 		props.onFocus(event, flattenedNode);
@@ -54,21 +62,25 @@ const Item = (props) => {
 	};
 
 	const handleKeyDownLeft = (event) => {
-		props.onExpand(event, {
-			node: props.row,
-			expanded: false,
-		});
+		if (props.row.nodes !== undefined) {
+			if (isFunction(props.onExpand)) {
+				props.onExpand(event, {
+					node: props.row,
+					expanded: false,
+				});
+			}
+		}
 	};
 
 	const handleKeyDownRight = (event) => {
-		props.onExpand(event, {
-			node: props.row,
-			expanded: true,
-		});
-	};
-
-	const handleKeyDownEnter = (event) => {
-		handleSelection(event);
+		if (props.row.nodes !== undefined) {
+			if (isFunction(props.onExpand)) {
+				props.onExpand(event, {
+					node: props.row,
+					expanded: true,
+				});
+			}
+		}
 	};
 
 	const handleKeyDown = (event) => {
@@ -78,7 +90,7 @@ const Item = (props) => {
 				[KEYS.UP]: { callback: (e) => handleKeyDownUp(e) },
 				[KEYS.LEFT]: { callback: (e) => handleKeyDownLeft(e) },
 				[KEYS.RIGHT]: { callback: (e) => handleKeyDownRight(e) },
-				[KEYS.ENTER]: { callback: (e) => handleKeyDownEnter(e) },
+				[KEYS.ENTER]: { callback: (e) => handleSelection(e) },
 			},
 		});
 	};

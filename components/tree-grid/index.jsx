@@ -10,6 +10,7 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 import assign from 'lodash.assign';
+import isFunction from 'lodash.isfunction';
 
 import { TREE_GRID } from '../../utilities/constants';
 import TreeGridColumn from './column';
@@ -73,15 +74,15 @@ const propTypes = {
 	/**
 	 * Callback function for selection of rows
 	 */
-	onSelect: PropTypes.func.isRequired,
+	onSelect: PropTypes.func,
 	/**
 	 * Callback function for selection of all rows
 	 */
-	onSelectAll: PropTypes.func.isRequired,
+	onSelectAll: PropTypes.func,
 	/**
 	 * Callback function for expansion of rows
 	 */
-	onExpand: PropTypes.func.isRequired,
+	onExpand: PropTypes.func,
 	/**
 	 * Whether the TreeGrid is headless
 	 */
@@ -168,16 +169,10 @@ class TreeGrid extends React.Component {
 		});
 	};
 
-	handleSelection = (event, data) => {
-		this.props.onSelect(event, data);
-	};
-
 	handleSelectAll = (event, data) => {
-		this.props.onSelectAll(event, data);
-	};
-
-	handleExpansion = (event, data) => {
-		this.props.onExpand(event, data);
+		if (isFunction(this.props.onSelectAll)) {
+			this.props.onSelectAll(event, data);
+		}
 	};
 
 	render() {
@@ -193,7 +188,6 @@ class TreeGrid extends React.Component {
 				const { children, ...columnProps } = child.props;
 
 				const props = assign({}, this.props);
-				delete props.children;
 				assign(props, columnProps);
 
 				columns.push({
@@ -208,6 +202,7 @@ class TreeGrid extends React.Component {
 				id={this.getId()}
 				aria-readonly="true"
 				aria-multiselectable={this.props.selectRows === 'multiple'}
+				/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role */
 				role="treegrid"
 				className={classNames(
 					'slds-table',
@@ -272,8 +267,8 @@ class TreeGrid extends React.Component {
 							flattenedNodes={this.state.flattenedNodes}
 							focusedNodeIndex={this.state.focusedNodeIndex}
 							columns={columns}
-							onSelect={this.handleSelection}
-							onExpand={this.handleExpansion}
+							onSelect={this.props.onSelect}
+							onExpand={this.props.onExpand}
 							onFocus={this.handleFocus}
 							selectRows={this.props.selectRows}
 							moreActionsDropdown={this.props.moreActionsDropdown}

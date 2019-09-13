@@ -182,7 +182,7 @@ class Example extends React.Component {
 		nodes: this.props.nodes || sampleData,
 		isIndeterminate: false,
 		allSelect: false,
-		selectedNode: null
+		selectedNode: null,
 	};
 
 	getNodes = (node) =>
@@ -236,8 +236,7 @@ class Example extends React.Component {
 			eventName: 'Select Branch',
 			data,
 		});
-		if(this.props.selectRows !== "single")
-		{
+		if (this.props.selectRows !== 'single') {
 			const curr = this.state.nodes;
 			curr[data.node.id].selected = data.selected;
 			const selectedCount = this.countSelected(curr['0'].nodes);
@@ -250,12 +249,13 @@ class Example extends React.Component {
 				isIndeterminate = null;
 			}
 			this.setState({ nodes: curr, isIndeterminate, allSelect });
-		}
-		else {
+		} else {
 			const { nodes, selectedNode } = this.state;
 			nodes[data.node.id].selected = true;
-			if(selectedNode != null) { nodes[selectedNode].selected = false; }
-			this.setState({ nodes, selectedNode: data.node.id })
+			if (selectedNode != null) {
+				nodes[selectedNode].selected = false;
+			}
+			this.setState({ nodes, selectedNode: data.node.id });
 		}
 	};
 
@@ -290,7 +290,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ overflow: 'auto' }}>
 					<TreeGrid
-						id="example"
+						id="example-tree-grid"
 						nodes={this.state.nodes['0'].nodes}
 						isBorderless={this.props.isBorderless}
 						getNodes={this.getNodes}
@@ -335,7 +335,7 @@ class Example extends React.Component {
 									id="file-more-actions"
 									iconCategory="utility"
 									iconName="chevrondown"
-									iconVariant="small"
+									iconVariant="container"
 									iconSize="x-small"
 									align="right"
 									onSelect={(event, data) => {
@@ -367,7 +367,7 @@ class Example extends React.Component {
 									id="file-more-actions"
 									iconCategory="utility"
 									iconName="chevrondown"
-									iconVariant="small"
+									iconVariant="container"
 									iconSize="x-small"
 									align="right"
 									onSelect={(event, data) => {
@@ -399,7 +399,7 @@ class Example extends React.Component {
 									id="file-more-actions"
 									iconCategory="utility"
 									iconName="chevrondown"
-									iconVariant="small"
+									iconVariant="container"
 									iconSize="x-small"
 									align="right"
 									onSelect={(event, data) => {
@@ -434,7 +434,7 @@ class Example extends React.Component {
 									id="file-more-actions"
 									iconCategory="utility"
 									iconName="chevrondown"
-									iconVariant="small"
+									iconVariant="container"
 									iconSize="x-small"
 									align="right"
 									onSelect={(event, data) => {
@@ -466,7 +466,7 @@ class Example extends React.Component {
 									id="file-more-actions"
 									iconCategory="utility"
 									iconName="chevrondown"
-									iconVariant="small"
+									iconVariant="container"
 									iconSize="x-small"
 									align="right"
 									onSelect={(event, data) => {

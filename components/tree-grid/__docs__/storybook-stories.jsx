@@ -11,9 +11,7 @@ storiesOf(TREE_GRID, module)
 		<div className="slds-p-around_medium">{getStory()}</div>
 	))
 	.add('Default', () => <Default action={action} />)
-	.add('Single Select', () => (
-		<Default action={action} selectRows="single" />
-	))
+	.add('Single Select', () => <Default action={action} selectRows="single" />)
 	.add('w/o Border', () => <Default action={action} isBorderless />)
 	.add('Single Select w/o Border', () => (
 		<Default action={action} selectRows="single" isBorderless />
