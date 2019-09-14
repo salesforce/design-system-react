@@ -188,6 +188,9 @@ class Example extends React.Component {
 							id="expression-formula"
 							resourceCombobox={
 								<Combobox
+									assistiveText={{
+										label: 'Insert a Resource',
+									}}
 									labels={{
 										placeholder: 'Insert a Resource',
 									}}
@@ -242,6 +245,9 @@ class Example extends React.Component {
 							}}
 							functionCombobox={
 								<Combobox
+									assistiveText={{
+										label: 'Insert a Function',
+									}}
 									labels={{
 										placeholder: 'Insert a Function',
 									}}
@@ -355,14 +361,18 @@ class Example extends React.Component {
 												});
 												this.updateGroupData(i, data.value, 'customLogic');
 											},
-											onChangeTrigger: (val) => {
+											onChangeTrigger: (event, data) => {
 												log({
 													action: this.props.action,
-													event: null,
+													event,
 													eventName: `Trigger of Condition Group ${i} Changed`,
-													data: val,
+													data,
 												});
-												this.updateGroupData(i, val, 'triggerType');
+												this.updateGroupData(
+													i,
+													data.triggerType,
+													'triggerType'
+												);
 											},
 											onAddCondition: () => {
 												log({
@@ -382,6 +392,9 @@ class Example extends React.Component {
 												id={`expression-group-${i}-formula`}
 												resourceCombobox={
 													<Combobox
+														assistiveText={{
+															label: 'Insert a Resource',
+														}}
 														labels={{
 															placeholder: 'Insert a Resource',
 														}}
@@ -406,6 +419,9 @@ class Example extends React.Component {
 												}}
 												functionCombobox={
 													<Combobox
+														assistiveText={{
+															label: 'Insert a Function',
+														}}
 														labels={{
 															placeholder: 'Insert a Function',
 														}}
