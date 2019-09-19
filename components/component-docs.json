@@ -6912,7 +6912,11 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility.**\n* `help`: Assistive text for help icon"
+                            "description": "**Assistive text for accessibility.**\n* `help`: Assistive text for help icon",
+                            "defaultValue": {
+                                "value": "{\n    help: 'Help',\n}",
+                                "computed": false
+                            }
                         },
                         "id": {
                             "type": {
@@ -10111,7 +10115,7 @@
                     }
                 },
                 "required": true,
-                "description": "**Array of locations objects for the Map component.**\nEach location object can contain:\n * `id` : A unique identifier string for the location\n * `name` : Name of the location\n * `address` : Address of the location"
+                "description": "**Array of locations objects for the Map component.**\n Each location object can contain:\n * `id` : A unique identifier string for the location\n * `name` : Name of the location\n * `address` : Address of the location"
             },
             "onClickLocation": {
                 "type": {

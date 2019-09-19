@@ -76,6 +76,9 @@ const propTypes = {
 };
 
 const defaultProps = {
+	assistiveText: {
+		help: 'Help',
+	},
 	labels: {
 		label: 'Formula',
 		checkSyntax: 'Check Syntax',
@@ -121,6 +124,7 @@ class ExpressionFormula extends React.Component {
 			this.props.assistiveText
 		);
 		const labels = assign({}, defaultProps.labels, this.props.labels);
+
 		return (
 			<React.Fragment>
 				<div
@@ -152,11 +156,13 @@ class ExpressionFormula extends React.Component {
 											assistiveText={{
 												icon: assistiveText.help,
 											}}
+											className="slds-button_icon-container"
 											id={`${this.getId()}-help-button`}
 											variant="icon"
 											iconCategory="utility"
 											iconName="help"
 											onClick={this.props.events.onClickHelp}
+											title={assistiveText.help}
 										/>
 									</div>
 								</div>
