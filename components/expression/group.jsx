@@ -239,24 +239,50 @@ class ExpressionGroup extends React.Component {
 				</div>
 			) : null;
 
-		const body =
-			this.props.triggerType !== 'always' ? (
-				<React.Fragment>
-					{this.props.triggerType === 'custom' ? (
-						<Input
-							label={labels.customLogic}
-							className="slds-expression__custom-logic"
-							id={`${this.getId()}-custom-logic-input`}
-							value={this.props.customLogicValue}
-							variant="base"
-							onChange={this.props.events.onChangeCustomLogicValue}
-						/>
-					) : null}
-					<ul>{this.props.children}</ul>
-				</React.Fragment>
-			) : null;
+		let body = null;
 
-		return !this.props.isRoot ? (
+		if (this.props.triggerType !== 'always') {
+			if (this.props.isRoot && this.props.triggerType === 'formula') {
+				body = this.props.children;
+			} else {
+				body = (
+					<React.Fragment>
+						{this.props.triggerType === 'custom' ? (
+							<Input
+								label={labels.customLogic}
+								className="slds-expression__custom-logic"
+								id={`${this.getId()}-custom-logic-input`}
+								value={this.props.customLogicValue}
+								variant="base"
+								onChange={this.props.events.onChangeCustomLogicValue}
+							/>
+						) : null}
+						<ul>{this.props.children}</ul>
+					</React.Fragment>
+				);
+			}
+		}
+
+		if (this.props.isRoot) {
+			if (this.props.triggerType === 'formula') {
+				return (
+					<React.Fragment>
+						<div className="slds-expression__options">{triggerCombobox}</div>
+						{body}
+					</React.Fragment>
+				);
+			}
+
+			return (
+				<div className={classNames(this.props.className)} id={this.getId()}>
+					<div className="slds-expression__options">{triggerCombobox}</div>
+					{body}
+					{buttons}
+				</div>
+			);
+		}
+
+		return (
 			<li
 				className={classNames('slds-expression__group', this.props.className)}
 				id={this.getId()}
@@ -267,16 +293,10 @@ class ExpressionGroup extends React.Component {
 						<span className="slds-assistive-text">{assistiveText.label}</span>
 					</legend>
 					<div className="slds-expression__options">{triggerCombobox}</div>
-					<ul>{body}</ul>
+					{body}
 					{buttons}
 				</fieldset>
 			</li>
-		) : (
-			<div className={classNames(this.props.className)} id={this.getId()}>
-				<div className="slds-expression__options">{triggerCombobox}</div>
-				{body}
-				{buttons}
-			</div>
 		);
 	}
 }

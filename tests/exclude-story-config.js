@@ -23,7 +23,7 @@ const deprecatedComponents = [
 
 const excludeFromTests = {
 	accessibility: {
-		storyKind: ['SLDSExpression', ...deprecatedComponents],
+		storyKind: [...deprecatedComponents],
 	},
 	domSnapshot: {
 		storyKind: [
