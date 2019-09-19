@@ -496,4 +496,7 @@ storiesOf(MENU_DROPDOWN, module)
 			options={options}
 		/>
 	))
-	.add('With tooltips', () => <DropdownWithTooltips />);
+	.add('With tooltips', () => <DropdownWithTooltips />)
+	.add('With tooltips (open)', () => (
+		<DropdownWithTooltips isOpenAllTooltips />
+	));

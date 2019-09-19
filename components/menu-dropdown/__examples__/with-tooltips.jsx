@@ -16,6 +16,7 @@ class Example extends React.Component {
 					iconName="down"
 					iconVariant="border-filled"
 					id="dropdown-with-tooltips"
+					isOpen={this.props.isOpenAllTooltips}
 					options={[
 						{ label: 'Header', type: 'header' },
 						{ label: 'Menu Item One', value: 'A0' },
@@ -26,17 +27,20 @@ class Example extends React.Component {
 						},
 						{ label: 'Menu Item Three', value: 'C0' },
 						{ type: 'divider' },
-						{ label: 'Menu Item Four', value: 'D0' },
+						{
+							label: 'Menu Item Four',
+							value: 'D0',
+							tooltipContent: 'Another friendly tooltip',
+						},
 						{ label: 'Menu Item Five', value: 'E0' },
 						{
 							label: 'Menu Item Six',
 							value: 'F0',
-							tooltipContent: 'Another friendly tooltip',
 						},
 						{ type: 'divider' },
 						{ label: 'Menu Item Seven', value: 'G0' },
 					]}
-					tooltipMenuItem={<Tooltip />}
+					tooltipMenuItem={<Tooltip isOpen={this.props.isOpenAllTooltips} />}
 					{...this.props}
 				/>
 			</IconSettings>
