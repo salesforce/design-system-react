@@ -45,8 +45,8 @@ const propTypes = {
 		title: PropTypes.string,
 	}),
 	/**
-	 * **Array of locations objects for the Map component.**
-	 *  Each location object can contain:
+	 * Array of locations objects for the Map component.**
+	 * Each location object can contain:
 	 *  * `id` : A unique identifier string for the location
 	 *  * `name` : Name of the location
 	 *  * `address` : Address of the location
