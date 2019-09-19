@@ -4710,6 +4710,337 @@ exports[`DOM snapshots SLDSMenuDropdown Two Hovers 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+    id="dropdown-with-tooltips"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={true}
+      aria-haspopup={true}
+      className="slds-button slds-button_icon-border-filled ignore-click-dropdown-with-tooltips"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="-1"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        More Options
+      </span>
+    </button>
+    <div
+      className="absolute-positioned slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
+      onKeyDown={[Function]}
+      style={
+        Object {
+          "outline": 0,
+          "pointerEvents": "none",
+          "position": "absolute",
+        }
+      }
+    >
+      <style
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": ".slds-dropdown__item > .slds-tooltip-trigger > a {
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 0.5rem 0.75rem;
+	color: #080707;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.slds-dropdown__item > .slds-tooltip-trigger > a:active {
+    text-decoration: none;
+    background-color: #ecebea;
+}
+
+.slds-dropdown__item > .slds-tooltip-trigger > a:hover,
+.slds-dropdown__item > .slds-tooltip-trigger > a:focus {
+    outline: 0;
+    text-decoration: none;
+    background-color: #f3f2f2;
+}
+",
+          }
+        }
+      />
+      <ul
+        aria-labelledby="dropdown-with-tooltips"
+        className="dropdown__list slds-dropdown_length-5"
+        role="menu"
+      >
+        <li
+          className="slds-dropdown__header"
+          onMouseDown={[Function]}
+          role="separator"
+        >
+          <span>
+            Header
+          </span>
+        </li>
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-1"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <a
+            data-index={1}
+            href="javascript:void(0);"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            <span
+              className="slds-truncate"
+              title="Menu Item One"
+            >
+              Menu Item One
+            </span>
+          </a>
+        </li>
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-2"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <div
+            className="slds-tooltip-trigger"
+            style={
+              Object {
+                "display": "inline-block",
+                "width": "100%",
+              }
+            }
+          >
+            <a
+              aria-describedby="dropdown-with-tooltips-item-2-tooltip"
+              data-index={2}
+              href="javascript:void(0);"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              role="menuitem"
+              tabIndex="-1"
+            >
+              <span
+                className="slds-truncate"
+                title="Menu Item Two"
+              >
+                Menu Item Two
+              </span>
+            </a>
+            <div
+              className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
+              id="dropdown-with-tooltips-item-2-tooltip"
+              onKeyDown={[Function]}
+              role="tooltip"
+              style={
+                Object {
+                  "outline": 0,
+                  "pointerEvents": "none",
+                  "position": "absolute",
+                }
+              }
+            >
+              <div
+                className="slds-popover__body"
+              >
+                Just a friendly tooltip
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-3"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <a
+            data-index={3}
+            href="javascript:void(0);"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            <span
+              className="slds-truncate"
+              title="Menu Item Three"
+            >
+              Menu Item Three
+            </span>
+          </a>
+        </li>
+        <li
+          className="slds-has-divider"
+          onMouseDown={[Function]}
+          role="separator"
+        />
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-5"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <div
+            className="slds-tooltip-trigger"
+            style={
+              Object {
+                "display": "inline-block",
+                "width": "100%",
+              }
+            }
+          >
+            <a
+              aria-describedby="dropdown-with-tooltips-item-5-tooltip"
+              data-index={5}
+              href="javascript:void(0);"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              role="menuitem"
+              tabIndex="-1"
+            >
+              <span
+                className="slds-truncate"
+                title="Menu Item Four"
+              >
+                Menu Item Four
+              </span>
+            </a>
+            <div
+              className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
+              id="dropdown-with-tooltips-item-5-tooltip"
+              onKeyDown={[Function]}
+              role="tooltip"
+              style={
+                Object {
+                  "outline": 0,
+                  "pointerEvents": "none",
+                  "position": "absolute",
+                }
+              }
+            >
+              <div
+                className="slds-popover__body"
+              >
+                Another friendly tooltip
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-6"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <a
+            data-index={6}
+            href="javascript:void(0);"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            <span
+              className="slds-truncate"
+              title="Menu Item Five"
+            >
+              Menu Item Five
+            </span>
+          </a>
+        </li>
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-7"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <a
+            data-index={7}
+            href="javascript:void(0);"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            <span
+              className="slds-truncate"
+              title="Menu Item Six"
+            >
+              Menu Item Six
+            </span>
+          </a>
+        </li>
+        <li
+          className="slds-has-divider"
+          onMouseDown={[Function]}
+          role="separator"
+        />
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-9"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <a
+            data-index={9}
+            href="javascript:void(0);"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            <span
+              className="slds-truncate"
+              title="Menu Item Seven"
+            >
+              Menu Item Seven
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSMenuDropdown With tooltips 1`] = `
 <div
   className="slds-p-around_medium slds-text-align_center"

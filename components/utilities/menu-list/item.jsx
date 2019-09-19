@@ -194,16 +194,15 @@ class ListItem extends React.Component {
 				);
 
 				if (this.props.tooltipContent && this.props.tooltipTemplate) {
-					const {
-						...userDefinedTooltipProps
-					} = this.props.tooltipTemplate.props;
+					const { ...tooltipTemplateProps } = this.props.tooltipTemplate.props;
 					const tooltipProps = {
-						align: 'top',
-						content: this.props.tooltipContent, // either use specific content defined on option or content defined on tooltip component.
+						...tooltipTemplateProps,
+						content: this.props.tooltipContent,
 						id: `${this.props.id}-tooltip`,
-						position: 'absolute',
-						triggerStyle: { width: '100%' },
-						...userDefinedTooltipProps, // we want to allow user defined tooltip pros to overwrite default props, if need be.
+						triggerStyle: {
+							width: '100%',
+							...(tooltipTemplateProps.triggerStyle || {}),
+						},
 					};
 					itemContents = React.cloneElement(
 						this.props.tooltipTemplate,

@@ -437,7 +437,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
               role="group"
             >
               <button
-                className="slds-button slds-button_icon"
+                className="slds-button slds-button_icon slds-button_icon-inverse"
                 disabled={false}
                 onClick={[Function]}
                 title="Download"
@@ -569,7 +569,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
             role="group"
           >
             <button
-              className="slds-button slds-button_icon"
+              className="slds-button slds-button_icon slds-button_icon-inverse"
               disabled={false}
               onClick={[Function]}
               title="Download"
