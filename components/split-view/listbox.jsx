@@ -47,7 +47,7 @@ const propTypes = {
 	]),
 	/**
 	 * Event Callbacks
-	 * * `onSelect`: Called when a list item is selected.
+	 * * `onSelect`: Called when a list item is selected. Previously, this event was called when an item was focused. The UX pattern has changed and this event is now called on pressing enter or mouse click.
 	 *    * event {object} List item click event
 	 *    * Meta {object}
 	 *       * selectedItems {array} List of selected items.
