@@ -124,7 +124,7 @@
 		"@storybook/addon-storyshots-puppeteer": "^5.1.11",
 		"@storybook/addons": "^5.1.9",
 		"@storybook/react": "^5.1.9",
-		"@storybook/router": "^5.1.11",
+		"@storybook/router": "^5.1.9",
 		"axe-puppeteer": "^1.0.0",
 		"babel-plugin-require-context-hook": "^1.0.0",
 		"async": "^2.0.0-rc.5",
