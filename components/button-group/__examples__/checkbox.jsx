@@ -12,6 +12,7 @@ class Example extends React.Component {
 				labels={{
 					label: 'Scheduled Day(s)',
 				}}
+				id="button-group-checkbox"
 				variant="checkbox"
 			>
 				<Checkbox id="ButtonGroupExampleMon" label="Mon" />

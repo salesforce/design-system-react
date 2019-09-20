@@ -13,6 +13,7 @@ class Example extends React.Component {
 					error: 'This field is required',
 					label: 'Scheduled Day(s)',
 				}}
+				id="button-group-checkbox-error"
 				variant="checkbox"
 			>
 				<Checkbox id="ButtonGroupExampleMon" label="Mon" />

@@ -28,7 +28,7 @@ CustomDataTableCell.displayName = DataTableCell.displayName;
 
 const actions = () => (
 	<PageHeaderControl>
-		<ButtonGroup>
+		<ButtonGroup id="button-group-page-header-actions">
 			<Button label="New Lead" />
 			<Button label="Import Leads" />
 			<Dropdown
@@ -120,7 +120,7 @@ const controls = () => (
 			/>
 		</PageHeaderControl>
 		<PageHeaderControl>
-			<ButtonGroup>
+			<ButtonGroup id="button-group-page-header-controls">
 				<Button
 					assistiveText={{ icon: 'Charts' }}
 					iconCategory="utility"

@@ -125,7 +125,7 @@ const recordHomeActions = () => (
 			/>
 		</SLDSPageHeaderControl>
 		<SLDSPageHeaderControl>
-			<SLDSButtonGroup variant="list">
+			<SLDSButtonGroup variant="list" id="button-group-1">
 				<SLDSButton label="Edit" />
 				<SLDSButton label="Delete" />
 				<SLDSButton label="Clone" />
@@ -221,7 +221,7 @@ const baseControls = () => (
 			/>
 		</SLDSPageHeaderControl>
 		<SLDSPageHeaderControl>
-			<SLDSButtonGroup variant="list">
+			<SLDSButtonGroup variant="list" id="button-group-2">
 				<SLDSButton
 					iconCategory="utility"
 					iconName="chart"
@@ -278,7 +278,7 @@ const baseControls = () => (
 
 const relatedListActions = () => (
 	<SLDSPageHeaderControl>
-		<SLDSButtonGroup variant="list">
+		<SLDSButtonGroup variant="list" id="button-group-3">
 			<SLDSButton label="Add Contact" variant="neutral" />
 			<SLDSMenuDropdown
 				assistiveText={{
@@ -325,7 +325,7 @@ const relatedListControls = () => (
 			/>
 		</SLDSPageHeaderControl>
 		<SLDSPageHeaderControl>
-			<SLDSButtonGroup variant="list">
+			<SLDSButtonGroup variant="list" id="button-group-4">
 				<SLDSButton
 					iconCategory="utility"
 					iconName="chart"

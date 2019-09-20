@@ -11093,6 +11093,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
             >
               <div
                 className="slds-button-group"
+                id="button-group-page-header-actions"
                 role="group"
               >
                 <button
@@ -11310,6 +11311,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
             >
               <div
                 className="slds-button-group"
+                id="button-group-page-header-controls"
                 role="group"
               >
                 <button

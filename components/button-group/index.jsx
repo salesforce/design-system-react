@@ -10,6 +10,11 @@ import classNames from 'classnames';
 
 import assign from 'lodash.assign';
 
+// ### shortid
+// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
+// shortid is a short, non-sequential, url-friendly, unique id generator
+import shortid from 'shortid';
+
 import { BUTTON_GROUP } from '../../utilities/constants';
 
 const propTypes = {
@@ -34,6 +39,10 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
+	 * HTML id for component.
+	 */
+	id: PropTypes.string,
+	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `error`: Message to display when any of Checkboxes are in an error state. _Tested with snapshot testing._
@@ -55,6 +64,15 @@ const defaultProps = { labels: {} };
  * The ButtonGroup component wraps other components (ie. Button, MenuDropdown, PopoverTooltip, Checkboxes, etc).
  */
 class ButtonGroup extends React.Component {
+	constructor(props) {
+		super(props);
+		this.generatedId = shortid.generate();
+	}
+
+	getId() {
+		return this.props.id || this.generatedId;
+	}
+
 	render() {
 		// Merge objects of strings with their default object
 		const labels = assign({}, defaultProps.labels, this.props.labels);
@@ -77,11 +95,15 @@ class ButtonGroup extends React.Component {
 		let component;
 
 		if (this.props.variant === 'checkbox') {
-			children = React.Children.map(this.props.children, (child) =>
-				React.cloneElement(child, {
+			children = React.Children.map(this.props.children, (child) => {
+				const cloneProps = {
 					variant: 'button-group',
-				})
-			);
+				};
+				if (labels.error) {
+					cloneProps['aria-describedby'] = `button-group-error-${this.getId()}`;
+				}
+				return React.cloneElement(child, cloneProps);
+			});
 
 			component = (
 				<div
@@ -89,6 +111,7 @@ class ButtonGroup extends React.Component {
 						'slds-checkbox_button-group',
 						this.props.className
 					)}
+					id={this.getId()}
 				>
 					{children}
 				</div>
@@ -97,6 +120,7 @@ class ButtonGroup extends React.Component {
 			component = (
 				<ul
 					className={classNames('slds-button-group-list', this.props.className)}
+					id={this.getId()}
 				>
 					{React.Children.map(this.props.children, (child) => <li>{child}</li>)}
 				</ul>
@@ -105,6 +129,7 @@ class ButtonGroup extends React.Component {
 			component = (
 				<div
 					className={classNames('slds-button-group', this.props.className)}
+					id={this.getId()}
 					role="group"
 				>
 					{children}
@@ -129,7 +154,12 @@ class ButtonGroup extends React.Component {
 					<div className="slds-form-element__control">
 						{component}
 						{labels.error ? (
-							<div className="slds-form-element__help">{labels.error}</div>
+							<div
+								className="slds-form-element__help"
+								id={`button-group-error-${this.getId()}`}
+							>
+								{labels.error}
+							</div>
 						) : null}
 					</div>
 				</fieldset>

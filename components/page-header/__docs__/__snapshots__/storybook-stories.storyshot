@@ -210,6 +210,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-2"
             >
               <li>
                 <button
@@ -434,6 +435,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-page-header-actions"
             >
               <li>
                 <button
@@ -660,6 +662,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-page-header-actions"
             >
               <li>
                 <button
@@ -779,6 +782,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-page-header-controls"
             >
               <li>
                 <button
@@ -987,6 +991,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-page-header-actions"
             >
               <li>
                 <button
@@ -1199,6 +1204,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-page-header-controls"
             >
               <li>
                 <button
@@ -1518,6 +1524,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-1"
             >
               <li>
                 <button
@@ -1759,6 +1766,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-3"
             >
               <li>
                 <button
@@ -1865,6 +1873,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-4"
             >
               <li>
                 <button
@@ -2063,6 +2072,7 @@ exports[`DOM snapshots SLDSPageHeader Setup 1`] = `
           >
             <ul
               className="slds-button-group-list slds-align-middle"
+              id="button-group-page-header-actions"
             >
               <li>
                 <button

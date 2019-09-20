@@ -70,7 +70,7 @@ const Example = (props) => (
 					</div>
 				)}
 			>
-				<ButtonGroup label="Canvas Actions">
+				<ButtonGroup label="Canvas Actions" id="button-group-canvas-actions">
 					<Button
 						assistiveText={{ icon: 'Undo' }}
 						iconCategory="utility"
@@ -86,7 +86,7 @@ const Example = (props) => (
 						variant="icon"
 					/>
 				</ButtonGroup>
-				<ButtonGroup label="Edit Actions">
+				<ButtonGroup label="Edit Actions" id="button-group-edit-actions">
 					<Button
 						assistiveText={{ icon: 'Cut' }}
 						iconCategory="utility"
