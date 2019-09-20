@@ -10115,7 +10115,7 @@
                     }
                 },
                 "required": true,
-                "description": "**Array of locations objects for the Map component.**\n Each location object can contain:\n * `id` : A unique identifier string for the location\n * `name` : Name of the location\n * `address` : Address of the location"
+                "description": "Array of locations objects for the Map component.**\nEach location object can contain:\n * `id` : A unique identifier string for the location\n * `name` : Name of the location\n * `address` : Address of the location"
             },
             "onClickLocation": {
                 "type": {
@@ -15339,22 +15339,17 @@
                 "returns": null
             },
             {
-                "name": "getMasterViewId",
+                "name": "getIsOpen",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "setIsOpen",
+                "name": "getMasterViewId",
                 "docblock": null,
                 "modifiers": [],
-                "params": [
-                    {
-                        "name": "{ isOpen }",
-                        "type": null
-                    }
-                ],
+                "params": [],
                 "returns": null
             },
             {
@@ -15367,13 +15362,6 @@
                         "type": null
                     }
                 ],
-                "returns": null
-            },
-            {
-                "name": "masterContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
                 "returns": null
             }
         ],
@@ -15806,7 +15794,7 @@
                                 }
                             },
                             "required": false,
-                            "description": "Event Callbacks\n* `onSelect`: Called when a list item is selected.\n   * event {object} List item click event\n   * Meta {object}\n      * selectedItems {array} List of selected items.\n      * item {object} Last selected item.\n* `onSort`: Called when the list is sorted.\n   * event {object} Sort click event",
+                            "description": "Event Callbacks\n* `onSelect`: Called when a list item is selected. Previously, this event was called when an item was focused. The UX pattern has changed and this event is now called on pressing enter or mouse click.\n   * event {object} List item click event\n   * Meta {object}\n      * selectedItems {array} List of selected items.\n      * item {object} Last selected item.\n* `onSort`: Called when the list is sorted.\n   * event {object} Sort click event",
                             "defaultValue": {
                                 "value": "{}",
                                 "computed": false

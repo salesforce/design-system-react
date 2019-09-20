@@ -45,7 +45,9 @@ function isTabNode(node) {
 
 // Determine if a tab node is disabled
 function isTabDisabled(node) {
-	if (node.getAttribute) {
+	if (node.classList && node.classList.contains('slds-disabled')) {
+		return true;
+	} else if (node.getAttribute) {
 		return node.getAttribute('aria-disabled') === 'true';
 	}
 
