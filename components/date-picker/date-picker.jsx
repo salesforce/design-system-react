@@ -432,7 +432,7 @@ class Datepicker extends React.Component {
 		const childrenPropInputProps = {
 			...childrenProps,
 			onClick: () => {
-				this.openDialog();
+				this.preventDefault();
 				if (childrenProps && childrenProps.onClick) {
 					childrenProps.onClick();
 				}
