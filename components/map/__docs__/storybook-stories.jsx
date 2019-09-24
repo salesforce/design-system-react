@@ -12,7 +12,14 @@ storiesOf(MAP, module)
 	))
 	.add('Multi Locations', () => <MultiLocations action={action} />)
 	.add('Multi Locations pre-selected', () => (
-		<MultiLocations isPreSelected action={action} />
+		<MultiLocations
+			selection={{
+				id: '3',
+				name: 'salesforce.com inc Bellevue',
+				address: '929 108th Ave NE, Bellevue, WA',
+			}}
+			action={action}
+		/>
 	))
 	.add('Multi locations inside Modal', () => (
 		<MultiLocations isModal action={action} />

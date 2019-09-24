@@ -86,6 +86,9 @@ storiesOf(COMBOBOX, module)
 	.add('Inline Single Search/Add Entities', () => (
 		<InlineSingleSearchAddEntities action={action} />
 	))
+	.add('Inline Single Search/Add Entities - Open', () => (
+		<InlineSingleSearchAddEntities isOpen action={action} />
+	))
 	.add('Inline Multiple Selection', () => <InlineMultiple action={action} />)
 	.add('Inline Multiple Selection Loading', () => (
 		<InlineMultipleLoading action={action} />

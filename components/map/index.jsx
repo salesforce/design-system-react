@@ -85,14 +85,6 @@ const propTypes = {
 class Map extends React.Component {
 	constructor(props) {
 		super(props);
-		if (this.props.selection)
-			this.state = {
-				selected: this.props.locations.indexOf(this.props.selection),
-			};
-		else
-			this.state = {
-				selected: 0,
-			};
 		this.generatedId = shortid.generate();
 	}
 
@@ -109,7 +101,6 @@ class Map extends React.Component {
 	handleClick = (event, i) => {
 		if (typeof this.props.onClickLocation === 'function')
 			this.props.onClickLocation(event, this.props.locations[i]);
-		this.setState({ selected: i });
 	};
 
 	render() {
@@ -129,9 +120,7 @@ class Map extends React.Component {
 							title={this.props.labels.title}
 							src={`https://www.google.com/maps/embed/v1/place?key=${
 								this.props.googleAPIKey
-							}&q=${encodeURIComponent(
-								this.props.locations[this.state.selected].address
-							)}`}
+							}&q=${encodeURIComponent(this.props.selection.address)}`}
 						/>
 					</div>
 				</div>
@@ -152,7 +141,7 @@ class Map extends React.Component {
 										type="button"
 										onClick={(event) => this.handleClick(event, i)}
 										className="slds-coordinates__item-action slds-button_reset slds-media"
-										aria-pressed={this.state.selected === i}
+										aria-pressed={this.props.selection.id === location.id}
 									>
 										<span className="slds-media__figure">
 											<Icon category="standard" name="account" />
