@@ -15,7 +15,7 @@ class Example extends React.Component {
 					name="required-textarea-error"
 					label="Textarea Label"
 					required
-					errorText="Error Message"
+					errorText="This field is required"
 					placeholder="Placeholder Text"
 				/>
 			</IconSettings>
