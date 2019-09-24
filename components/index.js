@@ -159,8 +159,6 @@ export LookupDefaultHeader from './lookup/menu/default-header';
 export SLDSLookupDefaultHeader from './lookup/menu/default-header';
 export LookupDefaultSectionDivider from './lookup/menu/default-section-divider';
 export SLDSLookupDefaultSectionDivider from './lookup/menu/default-section-divider';
-export Map from './map';
-export SLDSMap from './map';
 export MediaObject from './media-object';
 export SLDSMediaObject from './media-object';
 export MenuDropdown from './menu-dropdown';
