@@ -113,6 +113,12 @@ class Map extends React.Component {
 	};
 
 	render() {
+		let queryParam = '';
+
+		if (this.props.locations && this.props.locations[this.state.selected]) {
+			queryParam = this.props.locations[this.state.selected].address;
+		}
+
 		return (
 			<div
 				id={this.getId()}
@@ -129,9 +135,7 @@ class Map extends React.Component {
 							title={this.props.labels.title}
 							src={`https://www.google.com/maps/embed/v1/place?key=${
 								this.props.googleAPIKey
-							}&q=${encodeURIComponent(
-								this.props.locations[this.state.selected].address
-							)}`}
+							}&q=${encodeURIComponent(queryParam)}`}
 						/>
 					</div>
 				</div>
