@@ -23,11 +23,6 @@ const steps = [
 	{ id: 4, label: 'tooltip label #5' },
 ];
 
-const stepsDisabled = [
-	{ id: 3, label: 'tooltip label #4' },
-	{ id: 4, label: 'tooltip label #5' },
-];
-
 const manySteps = [
 	{ id: 'a', label: 'tooltip label #1' },
 	{ id: 'b', label: 'tooltip label #2' },
@@ -81,7 +76,7 @@ storiesOf(PROGRESS_INDICATOR, module)
 	.add('Base With Disabled Steps', () => (
 		<ExampleProgressIndicator
 			steps={steps}
-			disabledSteps={stepsDisabled}
+			disabledSteps={[steps[3], steps[4]]}
 			selectedStep={steps[2]}
 			completedSteps={steps.slice(0, 2)}
 		/>
