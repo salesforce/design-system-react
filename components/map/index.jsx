@@ -120,7 +120,9 @@ class Map extends React.Component {
 							title={this.props.labels.title}
 							src={`https://www.google.com/maps/embed/v1/place?key=${
 								this.props.googleAPIKey
-							}&q=${encodeURIComponent(this.props.selection.address)}`}
+							}&q=${encodeURIComponent(
+								this.props.selection ? this.props.selection.address : ''
+							)}`}
 						/>
 					</div>
 				</div>

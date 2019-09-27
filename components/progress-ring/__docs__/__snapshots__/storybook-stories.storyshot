@@ -194,7 +194,11 @@ exports[`DOM snapshots SLDSProgressRing Custom Icon 1`] = `
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
               />
             </svg>
-            
+            <span
+              className="slds-assistive-text"
+            >
+              Expired
+            </span>
           </span>
         </div>
       </div>
@@ -239,7 +243,11 @@ exports[`DOM snapshots SLDSProgressRing Custom Icon 1`] = `
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
               />
             </svg>
-            
+            <span
+              className="slds-assistive-text"
+            >
+              Expired
+            </span>
           </span>
         </div>
       </div>
@@ -363,7 +371,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
               />
             </svg>
-            
+            <span
+              className="slds-assistive-text"
+            >
+              Warning
+            </span>
           </span>
         </div>
       </div>
@@ -407,7 +419,11 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
               />
             </svg>
-            
+            <span
+              className="slds-assistive-text"
+            >
+              Expired
+            </span>
           </span>
         </div>
       </div>

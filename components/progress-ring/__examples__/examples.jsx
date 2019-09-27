@@ -20,14 +20,26 @@ class Example extends React.Component {
 						<ProgressRing
 							value={0}
 							hasIcon
-							icon={<Icon category="utility" name="warning" />}
+							icon={
+								<Icon
+									assistiveText={{ label: 'Warning' }}
+									category="utility"
+									name="warning"
+								/>
+							}
 						/>
 					</div>
 					<div className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center">
 						<ProgressRing
 							value={0}
 							hasIcon
-							icon={<Icon category="utility" name="lock" />}
+							icon={
+								<Icon
+									assistiveText={{ label: 'Expired' }}
+									category="utility"
+									name="lock"
+								/>
+							}
 						/>
 					</div>
 					<div className="slds-col_padded slds-m-top_x-large slds-size_1-of-4 slds-align_absolute-center">
