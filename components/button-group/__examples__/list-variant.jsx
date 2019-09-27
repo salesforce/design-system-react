@@ -11,7 +11,7 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<ButtonGroup variant="list">
+				<ButtonGroup id="button-group-list-1" variant="list">
 					<Button id="refresh-button-1" label="Refresh" />
 					<Button label="Edit" id="edit-button-1" />
 					<Dropdown
@@ -33,6 +33,7 @@ class Example extends React.Component {
 				<br />
 				<ButtonGroup
 					classNameContainer="custom-container-class"
+					id="button-group-list-2"
 					labels={{ label: 'Actions' }}
 					variant="list"
 				>

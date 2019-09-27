@@ -17,6 +17,7 @@ exports[`DOM snapshots SLDSButtonGroup Checkbox 1`] = `
     >
       <div
         className="slds-checkbox_button-group"
+        id="button-group-checkbox"
       >
         <span
           className="slds-button slds-checkbox_button"
@@ -136,11 +137,13 @@ exports[`DOM snapshots SLDSButtonGroup Checkbox Error 1`] = `
     >
       <div
         className="slds-checkbox_button-group"
+        id="button-group-checkbox-error"
       >
         <span
           className="slds-button slds-checkbox_button"
         >
           <input
+            aria-describedby="button-group-error-button-group-checkbox-error"
             id="ButtonGroupExampleMon"
             onChange={[Function]}
             type="checkbox"
@@ -160,6 +163,7 @@ exports[`DOM snapshots SLDSButtonGroup Checkbox Error 1`] = `
           className="slds-button slds-checkbox_button"
         >
           <input
+            aria-describedby="button-group-error-button-group-checkbox-error"
             id="ButtonGroupExampleTue"
             onChange={[Function]}
             type="checkbox"
@@ -179,6 +183,7 @@ exports[`DOM snapshots SLDSButtonGroup Checkbox Error 1`] = `
           className="slds-button slds-checkbox_button"
         >
           <input
+            aria-describedby="button-group-error-button-group-checkbox-error"
             id="ButtonGroupExampleWed"
             onChange={[Function]}
             type="checkbox"
@@ -198,6 +203,7 @@ exports[`DOM snapshots SLDSButtonGroup Checkbox Error 1`] = `
           className="slds-button slds-checkbox_button"
         >
           <input
+            aria-describedby="button-group-error-button-group-checkbox-error"
             id="ButtonGroupExampleThu"
             onChange={[Function]}
             type="checkbox"
@@ -217,6 +223,7 @@ exports[`DOM snapshots SLDSButtonGroup Checkbox Error 1`] = `
           className="slds-button slds-checkbox_button"
         >
           <input
+            aria-describedby="button-group-error-button-group-checkbox-error"
             id="ButtonGroupExampleFri"
             onChange={[Function]}
             type="checkbox"
@@ -235,6 +242,7 @@ exports[`DOM snapshots SLDSButtonGroup Checkbox Error 1`] = `
       </div>
       <div
         className="slds-form-element__help"
+        id="button-group-error-button-group-checkbox-error"
       >
         This field is required
       </div>
@@ -249,6 +257,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
 >
   <div
     className="slds-button-group"
+    id="button-group-icon-group-1"
     role="group"
   >
     <button
@@ -354,6 +363,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
     >
       <div
         className="slds-button-group"
+        id="button-group-icon-group-2"
         role="group"
       >
         <button
@@ -455,6 +465,7 @@ exports[`DOM snapshots SLDSButtonGroup List Variant 1`] = `
 >
   <ul
     className="slds-button-group-list"
+    id="button-group-list-1"
   >
     <li>
       <button
@@ -529,6 +540,7 @@ exports[`DOM snapshots SLDSButtonGroup List Variant 1`] = `
     >
       <ul
         className="slds-button-group-list"
+        id="button-group-list-2"
       >
         <li>
           <button
@@ -599,6 +611,7 @@ exports[`DOM snapshots SLDSButtonGroup More Icon 1`] = `
 >
   <div
     className="slds-button-group"
+    id="button-group-more-icon"
     role="group"
   >
     <button

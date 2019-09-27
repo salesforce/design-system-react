@@ -1977,6 +1977,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
 >
   <ul
     className="slds-button-group-list slds-p-bottom_medium"
+    id="button-group-tooltip"
   >
     <li>
       <div

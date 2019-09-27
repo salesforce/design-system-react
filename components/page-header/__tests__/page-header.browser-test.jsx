@@ -36,7 +36,7 @@ const recordHomeActions = () => (
 			/>
 		</PageHeaderControl>
 		<PageHeaderControl>
-			<SLDSButtonGroup variant="list">
+			<SLDSButtonGroup variant="list" id="button-group-page-header-actions">
 				<SLDSButton label="Edit" />
 				<SLDSButton label="Delete" />
 				<SLDSButton label="Clone" />

@@ -12,13 +12,14 @@ class Example extends React.Component {
 				labels={{
 					label: 'Scheduled Day(s)',
 				}}
+				id="button-group-checkbox"
 				variant="checkbox"
 			>
-				<Checkbox id="ButtonGroupExampleMon" label="Mon" />
-				<Checkbox id="ButtonGroupExampleTue" label="Tue" />
-				<Checkbox id="ButtonGroupExampleWed" label="Wed" />
-				<Checkbox id="ButtonGroupExampleThu" label="Thu" />
-				<Checkbox id="ButtonGroupExampleFri" label="Fri" />
+				<Checkbox id="ButtonGroupExampleMon" labels={{ label: 'Mon' }} />
+				<Checkbox id="ButtonGroupExampleTue" labels={{ label: 'Tue' }} />
+				<Checkbox id="ButtonGroupExampleWed" labels={{ label: 'Wed' }} />
+				<Checkbox id="ButtonGroupExampleThu" labels={{ label: 'Thu' }} />
+				<Checkbox id="ButtonGroupExampleFri" labels={{ label: 'Fri' }} />
 			</ButtonGroup>
 		);
 	}
