@@ -116,7 +116,7 @@ exports[`DOM snapshots SLDSTextarea Docs site Error 1`] = `
       className="slds-form-element__help"
       id="error-1"
     >
-      Error Message
+      This field is required
     </div>
   </div>
 </div>
@@ -157,7 +157,7 @@ exports[`DOM snapshots SLDSTextarea Error 1`] = `
       className="slds-form-element__help"
       id="error-1"
     >
-      Error Message
+      This field is required
     </div>
   </div>
 </div>
@@ -171,7 +171,7 @@ exports[`DOM snapshots SLDSTextarea Required 1`] = `
     className="slds-form-element"
   >
     <label
-      className="slds-form-element__label slds-assistive-text"
+      className="slds-form-element__label"
       htmlFor="text-area-required"
     >
       <abbr
