@@ -169,10 +169,6 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/input/__examples__/field-level-help.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/input/__examples__/counter-input.jsx'),
 	],
-	map: [
-		require('raw-loader!@salesforce/design-system-react/components/map/__examples__/multiple-locations.jsx'),
-		require('raw-loader!@salesforce/design-system-react/components/map/__examples__/single-location.jsx'),
-	],
 	'media-object': [
 		require('raw-loader!@salesforce/design-system-react/components/media-object/__examples__/default.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/media-object/__examples__/vertically-centered.jsx'),

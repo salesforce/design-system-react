@@ -176,6 +176,7 @@ class Example extends React.Component {
 							: this.state.inputValue
 					}
 					variant="inline-listbox"
+					{...this.props}
 				/>
 			</IconSettings>
 		);

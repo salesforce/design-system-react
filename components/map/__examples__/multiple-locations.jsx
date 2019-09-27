@@ -58,6 +58,13 @@ const locations = [
 class Example extends React.Component {
 	static displayName = 'MapExampleMultipleLocations';
 
+	constructor(props) {
+		super(props);
+		this.state = {
+			selection: this.props.selection || locations[1],
+		};
+	}
+
 	render() {
 		const map = (
 			<Map
@@ -65,7 +72,7 @@ class Example extends React.Component {
 				googleAPIKey="AIzaSyDliLquGXGts9S8YtkWVolSQEJdBL1ZuWc"
 				labels={{ title: 'Salesforce Locations In United States' }}
 				locations={locations}
-				selection={this.props.isPreSelected ? locations[2] : null}
+				selection={this.state.selection}
 				onClickLocation={(event, data) =>
 					log({
 						action: this.props.action,
