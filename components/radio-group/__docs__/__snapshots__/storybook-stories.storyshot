@@ -350,6 +350,12 @@ exports[`DOM snapshots SLDSRadioGroup Required 1`] = `
           title="required"
         >
           *
+          <div
+            className="slds-assistive-text"
+          >
+            Required
+             
+          </div>
         </abbr>
         Radio Group Label
       </legend>

@@ -14124,13 +14124,17 @@
                         "label": {
                             "name": "string",
                             "required": false
+                        },
+                        "required": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.",
+                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.\n* `required`: Text to help identify the group as required",
                 "defaultValue": {
-                    "value": "{}",
+                    "value": "{ required: 'Required' }",
                     "computed": false
                 }
             },
@@ -14898,6 +14902,10 @@
                 "type": {
                     "name": "shape",
                     "value": {
+                        "disabled": {
+                            "name": "string",
+                            "required": false
+                        },
                         "label": {
                             "name": "string",
                             "required": false
@@ -14905,7 +14913,11 @@
                     }
                 },
                 "required": false,
-                "description": "Assistive text for accessibility**\n`label`: Visually hidden label but read out loud by screen readers."
+                "description": "Assistive text for accessibility**\n`disabled`: Read by screen readers to indicate a disabled slider\n`label`: Visually hidden label but read out loud by screen readers.",
+                "defaultValue": {
+                    "value": "{ disabled: 'Disabled' }",
+                    "computed": false
+                }
             },
             "classNameContainer": {
                 "type": {
@@ -16612,9 +16624,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n* `error`: This is a visually hidden label to mark the toast as an error variant\n* `info`: This is a visually hidden label to mark the toast as an info variant\n* `success`: This is a visually hidden label to mark the toast as an success variant\n* `warning`: This is a visually hidden label to mark the toast as an warning variant\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    closeButton: 'Close',\n}",
+                    "value": "{\n    closeButton: 'Close',\n    error: 'error',\n    info: 'info',\n    success: 'success',\n    warning: 'warning',\n}",
                     "computed": false
                 }
             },

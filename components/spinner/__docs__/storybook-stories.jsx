@@ -29,7 +29,7 @@ storiesOf(SPINNER, module)
 			size: 'small',
 			variant: 'base',
 			assistiveText: {
-				label: 'Small spinner',
+				label: 'Main Frame Loading...',
 			},
 		})
 	)
