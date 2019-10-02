@@ -52,7 +52,7 @@ class Accordion extends Component {
 		this.generatedId = shortid.generate();
 	}
 
-	componentDidUpdate(prevState) {
+	componentDidUpdate(prevProps, prevState) {
 		if (
 			this.state.currButtonIndex !== null &&
 			this.state.currButtonIndex !== prevState.currButtonIndex
