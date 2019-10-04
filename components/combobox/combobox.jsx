@@ -605,10 +605,12 @@ class Combobox extends React.Component {
 		const options = [];
 		if (localProps.optionsSearchEntity.length > 0) {
 			// eslint-disable-next-line fp/no-mutating-methods
-			options.push(...localProps.optionsSearchEntity);
+			options.push(...localProps.optionsSearchEntity && localProps.optionsSearchEntity);
 		}
 		// eslint-disable-next-line fp/no-mutating-methods
+		if(localProps.options){
 		options.push(...localProps.options);
+		}
 		if (localProps.optionsAddItem.length > 0) {
 			// eslint-disable-next-line fp/no-mutating-methods
 			options.push(...localProps.optionsAddItem);
@@ -1476,7 +1478,7 @@ class Combobox extends React.Component {
 									className: 'slds-combobox__form-element',
 									role: 'none',
 								}}
-								iconRight={<InputIcon category="utility" name="down" />}
+								iconRight={<InputIcon category="utility" name="down" variant="combobox"/>}
 								id={this.getId()}
 								onFocus={this.handleInputFocus}
 								onBlur={this.handleInputBlur}
