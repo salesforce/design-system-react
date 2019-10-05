@@ -108,7 +108,7 @@ describe('RadioButtonGroup', function() {
 			attachTo: mountNode,
 		});
 		const abbr = wrapper.find('abbr');
-		expect(abbr.text()).to.equal('*', 'there is a required indicator');
+		expect(abbr.text()).to.equal('*Required ', 'there is a required indicator');
 	});
 
 	it('triggers a change callback', () => {
