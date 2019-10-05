@@ -592,7 +592,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
             top left
           </button>
           <div
-            className="slds-nubbin_top-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
+            className="slds-nubbin_top-left slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
             onKeyDown={[Function]}
             style={Object {}}
           >
@@ -922,7 +922,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
             top
           </button>
           <div
-            className="slds-nubbin_top slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top"
+            className="slds-nubbin_top slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top"
             onKeyDown={[Function]}
             style={Object {}}
           >
@@ -1252,7 +1252,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
             top right
           </button>
           <div
-            className="slds-nubbin_top-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_right"
+            className="slds-nubbin_top-right slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top slds-dropdown_right"
             onKeyDown={[Function]}
             style={Object {}}
           >
@@ -1582,7 +1582,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
             bottom left
           </button>
           <div
-            className="slds-nubbin_bottom-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_left"
+            className="slds-nubbin_bottom-left slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_left"
             onKeyDown={[Function]}
             style={Object {}}
           >
@@ -1912,7 +1912,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
             bottom
           </button>
           <div
-            className="slds-nubbin_bottom slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom"
+            className="slds-nubbin_bottom slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_bottom"
             onKeyDown={[Function]}
             style={Object {}}
           >
@@ -2242,7 +2242,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
             bottom right
           </button>
           <div
-            className="slds-nubbin_bottom-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_right"
+            className="slds-nubbin_bottom-right slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_right"
             onKeyDown={[Function]}
             style={Object {}}
           >
@@ -2630,7 +2630,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
               top left
             </button>
             <div
-              className="slds-nubbin_top-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
+              className="slds-nubbin_top-left slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
               onKeyDown={[Function]}
               style={Object {}}
             >
@@ -2960,7 +2960,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
               top
             </button>
             <div
-              className="slds-nubbin_top slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top"
+              className="slds-nubbin_top slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top"
               onKeyDown={[Function]}
               style={Object {}}
             >
@@ -3290,7 +3290,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
               top right
             </button>
             <div
-              className="slds-nubbin_top-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_right"
+              className="slds-nubbin_top-right slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top slds-dropdown_right"
               onKeyDown={[Function]}
               style={Object {}}
             >
@@ -3620,7 +3620,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
               bottom left
             </button>
             <div
-              className="slds-nubbin_bottom-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_left"
+              className="slds-nubbin_bottom-left slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_left"
               onKeyDown={[Function]}
               style={Object {}}
             >
@@ -3950,7 +3950,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
               bottom
             </button>
             <div
-              className="slds-nubbin_bottom slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom"
+              className="slds-nubbin_bottom slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_bottom"
               onKeyDown={[Function]}
               style={Object {}}
             >
@@ -4280,7 +4280,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
               bottom right
             </button>
             <div
-              className="slds-nubbin_bottom-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_right"
+              className="slds-nubbin_bottom-right slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_right"
               onKeyDown={[Function]}
               style={Object {}}
             >
@@ -4747,7 +4747,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
       </span>
     </button>
     <div
-      className="absolute-positioned slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
+      className="absolute-positioned slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
       onKeyDown={[Function]}
       style={
         Object {

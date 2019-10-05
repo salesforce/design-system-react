@@ -3057,9 +3057,9 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                 role="presentation"
               >
                 <div
-                  aria-selected="false"
+                  aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
-                  id="options-search-id-1"
+                  id="combobox-unique-id-listbox-option-options-search-id-1"
                   onClick={[Function]}
                   role="option"
                 >
@@ -3078,7 +3078,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                       <span
                         className="slds-assistive-text"
                       >
-                        add
+                        Search
                       </span>
                     </span>
                   </span>
@@ -3094,9 +3094,9 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                 role="presentation"
               >
                 <div
-                  aria-selected="false"
+                  aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
-                  id="search-in-account-id"
+                  id="combobox-unique-id-listbox-option-search-in-account-id"
                   onClick={[Function]}
                   role="option"
                 >
@@ -3115,7 +3115,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                       <span
                         className="slds-assistive-text"
                       >
-                        add in Accounts
+                        Search in Accounts
                       </span>
                     </span>
                   </span>
@@ -3324,9 +3324,9 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                 role="presentation"
               >
                 <div
-                  aria-selected="false"
+                  aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
-                  id="options-add-id-1"
+                  id="combobox-unique-id-listbox-option-options-add-id-1"
                   onClick={[Function]}
                   role="option"
                 >
@@ -3345,7 +3345,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                       <span
                         className="slds-assistive-text"
                       >
-                        add
+                        Add
                       </span>
                     </span>
                   </span>
@@ -6157,9 +6157,9 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                 role="presentation"
               >
                 <div
-                  aria-selected="false"
+                  aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
-                  id="my-new-id"
+                  id="combobox-unique-id-listbox-option-my-new-id"
                   onClick={[Function]}
                   role="option"
                 >
@@ -6178,7 +6178,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                       <span
                         className="slds-assistive-text"
                       >
-                        add
+                        Search
                       </span>
                     </span>
                   </span>
@@ -6338,9 +6338,9 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                 role="presentation"
               >
                 <div
-                  aria-selected="false"
+                  aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
-                  id="my-new-id"
+                  id="combobox-unique-id-listbox-option-my-new-id"
                   onClick={[Function]}
                   role="option"
                 >
@@ -6359,7 +6359,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                       <span
                         className="slds-assistive-text"
                       >
-                        add
+                        Add
                       </span>
                     </span>
                   </span>

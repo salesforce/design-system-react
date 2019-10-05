@@ -168,11 +168,7 @@ class DataTableHeaderCell extends React.Component {
 						size="x-small"
 					/>
 					{sortDirection ? (
-						<span
-							className="slds-assistive-text"
-							aria-live="assertive"
-							aria-atomic="true"
-						>
+						<span className="slds-assistive-text" aria-atomic="true">
 							{sortDirection === 'asc'
 								? this.props.assistiveTextForColumnSortedAscending ||
 									this.props.assistiveText.columnSortedAscending
