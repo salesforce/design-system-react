@@ -472,6 +472,22 @@ class Combobox extends React.Component {
 				activeSelectedOptionIndex: 0,
 			});
 		}
+
+		// changes pill focus to last item in the list if the selection length has changed
+		if (nextProps.selection.length > this.props.selection.length) {
+			if (nextProps.selection.length < 1) {
+				this.setState({
+					activeSelectedOption: undefined,
+					activeSelectedOptionIndex: 0,
+				});
+			} else {
+				this.setState({
+					activeSelectedOption:
+						nextProps.selection[nextProps.selection.length - 1],
+					activeSelectedOptionIndex: nextProps.selection.length - 1,
+				});
+			}
+		}
 	}
 
 	componentWillUnmount() {

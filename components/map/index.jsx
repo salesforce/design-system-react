@@ -79,6 +79,12 @@ const propTypes = {
 	}),
 };
 
+const defaultProps = {
+	labels: {
+		title: 'Interactive Map',
+	},
+};
+
 /**
  * A map component is used to find a location
  */
@@ -101,9 +107,14 @@ class Map extends React.Component {
 	handleClick = (event, i) => {
 		if (typeof this.props.onClickLocation === 'function')
 			this.props.onClickLocation(event, this.props.locations[i]);
+		if (this.iframe) {
+			this.iframe.focus();
+		}
 	};
 
 	render() {
+		const labels = { ...defaultProps.labels, ...this.props.labels };
+
 		return (
 			<div
 				id={this.getId()}
@@ -117,7 +128,11 @@ class Map extends React.Component {
 					<div className={classNames(`slds-map`, this.props.className)}>
 						<iframe
 							id={`${this.getId()}-google-map`}
-							title={this.props.labels.title}
+							ref={(iframe) => {
+								this.iframe = iframe;
+							}}
+							tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+							title={labels.title}
 							src={`https://www.google.com/maps/embed/v1/place?key=${
 								this.props.googleAPIKey
 							}&q=${encodeURIComponent(
@@ -130,7 +145,7 @@ class Map extends React.Component {
 					<div className="slds-coordinates">
 						<div className="slds-coordinates__header">
 							<h2 className="slds-coordinates__title">
-								{`${this.props.labels.title} (${this.props.locations.length})`}
+								{`${labels.title} (${this.props.locations.length})`}
 							</h2>
 						</div>
 						<ul className="slds-coordinates__list">
