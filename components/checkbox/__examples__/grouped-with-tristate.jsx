@@ -18,25 +18,25 @@ class Example extends React.Component {
 	}
 
 	getAllCondimentsStatus() {
+		let status = 'mixed';
+
 		if (
 			this.state.mayonnaiseChecked &&
 			this.state.mustardChecked &&
 			this.state.oilChecked &&
 			this.state.vinegarChecked
 		) {
-			return true;
-		}
-
-		if (
+			status = true;
+		} else if (
 			!this.state.mayonnaiseChecked &&
 			!this.state.mustardChecked &&
 			!this.state.oilChecked &&
 			!this.state.vinegarChecked
 		) {
-			return false;
+			status = false;
 		}
 
-		return 'mixed';
+		return status;
 	}
 
 	handleSubCheckboxChange(attribute) {
