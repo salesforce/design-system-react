@@ -27,6 +27,7 @@ exports[`DOM snapshots SLDSFilter AssistiveTextFilter 1`] = `
           }
         >
           <button
+            aria-haspopup="dialog"
             className="slds-button_reset slds-grow slds-has-blur-focus"
             id="sample-panel-filtering-show-me"
             onClick={[Function]}
@@ -107,6 +108,7 @@ exports[`DOM snapshots SLDSFilter ErrorFilter 1`] = `
           >
             <button
               aria-describedby="sample-panel-filtering-show-me-error"
+              aria-haspopup="dialog"
               className="slds-button_reset slds-grow slds-has-blur-focus"
               id="sample-panel-filtering-show-me"
               onClick={[Function]}
@@ -192,6 +194,7 @@ exports[`DOM snapshots SLDSFilter Filter 1`] = `
           }
         >
           <button
+            aria-haspopup="dialog"
             className="slds-button_reset slds-grow slds-has-blur-focus"
             id="sample-panel-filtering-show-me"
             onClick={[Function]}
@@ -270,6 +273,7 @@ exports[`DOM snapshots SLDSFilter Filter Align Right 1`] = `
           }
         >
           <button
+            aria-haspopup="dialog"
             className="slds-button_reset slds-grow slds-has-blur-focus"
             id="sample-panel-filtering-show-me"
             onClick={[Function]}
@@ -386,6 +390,7 @@ exports[`DOM snapshots SLDSFilter New Filter 1`] = `
           }
         >
           <button
+            aria-haspopup="dialog"
             className="slds-button_reset slds-grow slds-has-blur-focus"
             id="sample-panel-filtering-show-me"
             onClick={[Function]}
@@ -464,6 +469,7 @@ exports[`DOM snapshots SLDSFilter Permanant Filter 1`] = `
           }
         >
           <button
+            aria-haspopup="dialog"
             className="slds-button_reset slds-grow slds-has-blur-focus"
             id="sample-panel-filtering-show-me"
             onClick={[Function]}
