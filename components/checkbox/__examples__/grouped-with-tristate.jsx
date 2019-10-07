@@ -25,7 +25,9 @@ class Example extends React.Component {
 			this.state.vinegarChecked
 		) {
 			return true;
-		} if (
+		}
+
+		if (
 			!this.state.mayonnaiseChecked &&
 			!this.state.mustardChecked &&
 			!this.state.oilChecked &&
@@ -33,6 +35,7 @@ class Example extends React.Component {
 		) {
 			return false;
 		}
+
 		return 'mixed';
 	}
 
