@@ -1897,7 +1897,9 @@ exports[`DOM snapshots SLDSCheckbox Grouped with Tristate 1`] = `
   className="slds-p-around_medium"
 >
   <fieldset>
-    <legend>
+    <legend
+      className="slds-p-bottom_xx-small"
+    >
       Grouped with Tristate
     </legend>
     <div
@@ -1938,11 +1940,7 @@ exports[`DOM snapshots SLDSCheckbox Grouped with Tristate 1`] = `
       </div>
     </div>
     <ul
-      style={
-        Object {
-          "margin": "6px 0 0 24px",
-        }
-      }
+      className="slds-p-left_large slds-p-top_xx-small"
     >
       <li>
         <div

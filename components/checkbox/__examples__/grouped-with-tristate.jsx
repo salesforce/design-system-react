@@ -49,7 +49,9 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<fieldset>
-					<legend>Grouped with Tristate</legend>
+					<legend className="slds-p-bottom_xx-small">
+						Grouped with Tristate
+					</legend>
 					<Checkbox
 						aria-checked={allCondimentsStatus}
 						aria-controls="checkbox-mayonnaise checkbox-mustard checkbox-oil checkbox-vinegar"
@@ -99,7 +101,7 @@ class Example extends React.Component {
 							}
 						}}
 					/>
-					<ul style={{ margin: '6px 0 0 24px' }}>
+					<ul className="slds-p-left_large slds-p-top_xx-small">
 						<li>
 							<Checkbox
 								assistiveText={{
