@@ -2516,6 +2516,7 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
               <input
                 aria-autocomplete="none"
                 aria-describedby={null}
+                aria-haspopup="dialog"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 id="combobox-dialog"
@@ -5187,6 +5188,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
               <input
                 aria-autocomplete="none"
                 aria-controls="combobox-unique-id-popover"
+                aria-haspopup="dialog"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 id="combobox-unique-id"
