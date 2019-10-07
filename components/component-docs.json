@@ -1616,7 +1616,15 @@
     },
     "button-group": {
         "description": "The ButtonGroup component wraps other components (ie. Button, MenuDropdown, PopoverTooltip, Checkboxes, etc).",
-        "methods": [],
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
         "props": {
             "children": {
                 "type": {
@@ -1660,6 +1668,13 @@
                 },
                 "required": false,
                 "description": "If the `labels.label` prop is set, a `.slds-form-element` classed fieldset element is added as a container. This prop applies classes to that element"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
             },
             "labels": {
                 "type": {
