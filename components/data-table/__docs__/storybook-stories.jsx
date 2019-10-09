@@ -19,28 +19,30 @@ import FixedHeaderHorizontalScroller from '../__examples__/fixed-header-horizont
 import JoinedWithPageHeader from '../__examples__/joined-with-page-header';
 
 storiesOf(DATA_TABLE, module)
-    .addDecorator((getStory) => (
-        <div className="slds-p-around_medium">
-            <IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
-        </div>
-    ))
-    .add('Basic Fluid Layout (Default)', () => <BasicFluid />)
-    .add('Basic Fluid Layout - Striped', () => <BasicFluidStriped />)
-    .add('Basic Fluid Layout - No Row Hover', () => <BasicFluidNoRowHover />)
-    .add('Basic Fluid Layout - Column Bordered', () => (
-        <BasicFluidColumnBordered />
-    ))
-    .add('Basic Fixed Layout', () => <BasicFixedLayout />)
-    .add('Advanced (Fixed Layout)', () => <Advanced log={action} />)
-    .add('Custom Cell (User Quicklfow)', () => <CustomCellUserQuickflow log={action} />)
-    .add('Advanced Single Select (Fixed Layout)', () => (
-        <AdvancedSingleSelect log={action} />
-    ))
-    .add('Advanced Single Select (Fixed Header)', () => (
-        <AdvancedSingleSelectFixedHeader log={action} />
-    ))
-    .add('Fixed Header', () => <FixedHeader />)
-    .add('Fixed Header Horizontal Scrolling', () => (
-        <FixedHeaderHorizontalScroller />
-    ))
-    .add('Joined with Page Header', () => <JoinedWithPageHeader />);
+	.addDecorator((getStory) => (
+		<div className="slds-p-around_medium">
+			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+		</div>
+	))
+	.add('Basic Fluid Layout (Default)', () => <BasicFluid />)
+	.add('Basic Fluid Layout - Striped', () => <BasicFluidStriped />)
+	.add('Basic Fluid Layout - No Row Hover', () => <BasicFluidNoRowHover />)
+	.add('Basic Fluid Layout - Column Bordered', () => (
+		<BasicFluidColumnBordered />
+	))
+	.add('Basic Fixed Layout', () => <BasicFixedLayout />)
+	.add('Advanced (Fixed Layout)', () => <Advanced log={action} />)
+	.add('Custom Cell (User Quicklfow)', () => (
+		<CustomCellUserQuickflow log={action} />
+	))
+	.add('Advanced Single Select (Fixed Layout)', () => (
+		<AdvancedSingleSelect log={action} />
+	))
+	.add('Advanced Single Select (Fixed Header)', () => (
+		<AdvancedSingleSelectFixedHeader log={action} />
+	))
+	.add('Fixed Header', () => <FixedHeader />)
+	.add('Fixed Header Horizontal Scrolling', () => (
+		<FixedHeaderHorizontalScroller />
+	))
+	.add('Joined with Page Header', () => <JoinedWithPageHeader />);
