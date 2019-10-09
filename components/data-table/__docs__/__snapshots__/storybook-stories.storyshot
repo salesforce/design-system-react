@@ -4926,6 +4926,546 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSDataTable Custom Cell (User Quicklfow) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h3
+      className="slds-text-heading_medium slds-m-vertical_medium"
+    >
+      Custom Cell (User Quickflow)
+    </h3>
+    <div
+      className="slds-table_header-fixed_container"
+      onScroll={[Function]}
+      style={
+        Object {
+          "borderTop": "1px solid rgb(221, 219, 218)",
+          "height": "100%",
+        }
+      }
+    >
+      <div
+        className="slds-table_header-fixed_scroller"
+        style={
+          Object {
+            "height": "100%",
+            "overflow": "auto",
+          }
+        }
+      >
+        <table
+          className="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered slds-no-row-hover slds-text-body_small"
+          id="QuickFlowUserRoles"
+          role="grid"
+        >
+          <thead>
+            <tr
+              className="slds-line-height_reset"
+            >
+              <th
+                aria-label=""
+                aria-sort="none"
+                className=""
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "4rem",
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title=""
+                  >
+                    
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title=""
+                    >
+                      
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Role"
+                aria-sort="none"
+                className=""
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "10rem",
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Role"
+                  >
+                    Role
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Role"
+                    >
+                      Role
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Description"
+                aria-sort="none"
+                className=""
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Description"
+                  >
+                    Description
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Description"
+                    >
+                      Description
+                    </span>
+                  </span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              className=""
+            >
+              <td
+                role={null}
+                style={null}
+              >
+                <div
+                  className=""
+                  title="Administrator}"
+                >
+                  <div
+                    className="slds-grid_vertical slds-align_absolute-center slds-checkbox_add-button"
+                  >
+                    <input
+                      checked={false}
+                      className="slds-assistive-text"
+                      id="1"
+                      onChange={[Function]}
+                      tabIndex="-1"
+                      type="checkbox"
+                      value="add-checkbox-1}"
+                    />
+                    <label
+                      className="slds-checkbox_faux"
+                      htmlFor="1"
+                    >
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Administrator
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Administrator"
+                >
+                  Administrator
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Administrator"
+                >
+                  <div
+                    style={
+                      Object {
+                        "whiteSpace": "normal",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    Administrator
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                role={null}
+                style={null}
+              >
+                <div
+                  className=""
+                  title="Analyst}"
+                >
+                  <div
+                    className="slds-grid_vertical slds-align_absolute-center slds-checkbox_add-button"
+                  >
+                    <input
+                      checked={false}
+                      className="slds-assistive-text"
+                      id="4e8b466e-279f-e911-80f1-1402ec6b9528"
+                      onChange={[Function]}
+                      tabIndex="-1"
+                      type="checkbox"
+                      value="add-checkbox-4e8b466e-279f-e911-80f1-1402ec6b9528}"
+                    />
+                    <label
+                      className="slds-checkbox_faux"
+                      htmlFor="4e8b466e-279f-e911-80f1-1402ec6b9528"
+                    >
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Analyst
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Analyst"
+                >
+                  Analyst
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Analyst"
+                >
+                  <div
+                    style={
+                      Object {
+                        "whiteSpace": "normal",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    Analyst
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                role={null}
+                style={null}
+              >
+                <div
+                  className=""
+                  title="CDP Admin}"
+                >
+                  <div
+                    className="slds-grid_vertical slds-align_absolute-center slds-checkbox_add-button"
+                  >
+                    <input
+                      checked={false}
+                      className="slds-assistive-text"
+                      id="5fe58259-ad6d-e911-80ef-1402ec6b9529"
+                      onChange={[Function]}
+                      tabIndex="-1"
+                      type="checkbox"
+                      value="add-checkbox-5fe58259-ad6d-e911-80ef-1402ec6b9529}"
+                    />
+                    <label
+                      className="slds-checkbox_faux"
+                      htmlFor="5fe58259-ad6d-e911-80ef-1402ec6b9529"
+                    >
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        CDP Admin
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="CDP Admin"
+                >
+                  CDP Admin
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Has all permissions - for View ,Create and Delete"
+                >
+                  <div
+                    style={
+                      Object {
+                        "whiteSpace": "normal",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    Has all permissions - for View ,Create and Delete
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                role={null}
+                style={null}
+              >
+                <div
+                  className=""
+                  title="Data Manager}"
+                >
+                  <div
+                    className="slds-grid_vertical slds-align_absolute-center slds-checkbox_add-button"
+                  >
+                    <input
+                      checked={false}
+                      className="slds-assistive-text"
+                      id="4d8b466e-279f-e911-80f1-1402ec6b9528"
+                      onChange={[Function]}
+                      tabIndex="-1"
+                      type="checkbox"
+                      value="add-checkbox-4d8b466e-279f-e911-80f1-1402ec6b9528}"
+                    />
+                    <label
+                      className="slds-checkbox_faux"
+                      htmlFor="4d8b466e-279f-e911-80f1-1402ec6b9528"
+                    >
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Data Manager
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </td>
+              <th
+                className={null}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="Data Manager"
+                >
+                  Data Manager
+                </div>
+              </th>
+              <td
+                className={null}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Data Manager"
+                >
+                  <div
+                    style={
+                      Object {
+                        "whiteSpace": "normal",
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    Data Manager
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
 <div
   className="slds-p-around_medium"
