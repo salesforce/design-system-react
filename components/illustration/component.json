@@ -1,5 +1,6 @@
 {
     "component": "illustration",
+	"isDeprecated": true,
     "status": "prototype",
     "display-name": "Illustrations",
 	"classKey": "Illustration",
