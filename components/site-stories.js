@@ -153,13 +153,6 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/icon/__examples__/colors.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/icon/__examples__/sizes.jsx'),
 	],
-	illustration: [
-		require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/small-image-text.jsx'),
-		require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/large-image-text.jsx'),
-		require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/heading-message.jsx'),
-		require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/heading-only.jsx'),
-		require('raw-loader!@salesforce/design-system-react/components/illustration/__examples__/message-only.jsx'),
-	],
 	input: [
 		require('raw-loader!@salesforce/design-system-react/components/input/__examples__/default.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/input/__examples__/icons.jsx'),
