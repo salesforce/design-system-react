@@ -23,6 +23,10 @@ const propTypes = {
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
 	 * * `closeButton`: This is a visually hidden label for the close button.
+	 * * `error`: This is a visually hidden label to mark the toast as an error variant
+	 * * `info`: This is a visually hidden label to mark the toast as an info variant
+	 * * `success`: This is a visually hidden label to mark the toast as an success variant
+	 * * `warning`: This is a visually hidden label to mark the toast as an warning variant
 	 * _Tested with snapshot testing._
 	 */
 	assistiveText: PropTypes.shape({
@@ -86,6 +90,10 @@ const propTypes = {
 const defaultProps = {
 	assistiveText: {
 		closeButton: 'Close',
+		error: 'error',
+		info: 'info',
+		success: 'success',
+		warning: 'warning',
 	},
 	variant: 'info',
 };
@@ -156,10 +164,10 @@ class Toast extends React.Component {
 		const heading = labels.heading || this.props.content; // eslint-disable-line react/prop-types
 
 		const assistiveTextVariant = {
-			info: 'info',
-			success: 'success',
-			warning: 'warning',
-			error: 'error',
+			info: assistiveText.info,
+			success: assistiveText.success,
+			warning: assistiveText.warning,
+			error: assistiveText.error,
 		};
 
 		const defaultIcons = {

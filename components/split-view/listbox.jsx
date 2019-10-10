@@ -295,6 +295,7 @@ class SplitViewListbox extends React.Component {
 	headerWrapper(children) {
 		return this.props.events.onSort ? (
 			<a
+				aria-live="polite"
 				style={{ borderTop: '0' }}
 				href="javascript:void(0);" // eslint-disable-line no-script-url
 				role="button"
@@ -316,7 +317,13 @@ class SplitViewListbox extends React.Component {
 	header() {
 		return this.props.labels.header
 			? this.headerWrapper(
-					<span>
+					<span
+						aria-sort={
+							this.props.sortDirection === SORT_OPTIONS.DOWN
+								? this.props.assistiveText.sort.descending
+								: this.props.assistiveText.sort.ascending
+						}
+					>
 						<span className="slds-assistive-text">
 							{this.props.assistiveText.sort.sortedBy}
 							{': '}

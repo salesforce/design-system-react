@@ -107,7 +107,7 @@ exports[`DOM snapshots SLDSSpinner Docs site Default 1`] = `
         <span
           className="slds-assistive-text"
         >
-          Small spinner
+          Main Frame Loading...
         </span>
         <div
           className="slds-spinner__dot-a"
@@ -337,7 +337,7 @@ exports[`DOM snapshots SLDSSpinner Small 1`] = `
       <span
         className="slds-assistive-text"
       >
-        Small spinner
+        Main Frame Loading...
       </span>
       <div
         className="slds-spinner__dot-a"

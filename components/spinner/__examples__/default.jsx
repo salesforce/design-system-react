@@ -10,7 +10,7 @@ class Example extends React.Component {
 				<Spinner
 					size="small"
 					variant="base"
-					assistiveText={{ label: 'Small spinner' }}
+					assistiveText={{ label: 'Main Frame Loading...' }}
 				/>
 			</div>
 		);
