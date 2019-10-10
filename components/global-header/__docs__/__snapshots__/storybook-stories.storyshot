@@ -141,6 +141,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   }
                 >
                   <button
+                    aria-haspopup="dialog"
                     className="slds-button slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-more"
                     disabled={false}
                     id="header-favorites-popover-id"
@@ -304,6 +305,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
               }
             >
               <button
+                aria-haspopup="dialog"
                 aria-live="assertive"
                 className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
                 disabled={false}
@@ -631,6 +633,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   }
                 >
                   <button
+                    aria-haspopup="dialog"
                     className="slds-button slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-more"
                     disabled={false}
                     id="header-favorites-popover-id"
@@ -794,6 +797,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               }
             >
               <button
+                aria-haspopup="dialog"
                 aria-live="assertive"
                 className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
                 disabled={false}
@@ -1012,6 +1016,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   }
                 >
                   <button
+                    aria-haspopup="dialog"
                     className="slds-button slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-more"
                     disabled={false}
                     id="header-favorites-popover-id"
@@ -1175,6 +1180,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               }
             >
               <button
+                aria-haspopup="dialog"
                 aria-live="assertive"
                 className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
                 disabled={false}

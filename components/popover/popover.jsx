@@ -785,6 +785,7 @@ class Popover extends React.Component {
 		React.Children.forEach(this.props.children, (child, index) => {
 			if (index === 0) {
 				clonedTrigger = React.cloneElement(child, {
+					'aria-haspopup': 'dialog',
 					id: this.getId(),
 					onClick:
 						this.props.openOn === 'click' || this.props.openOn === 'hybrid'

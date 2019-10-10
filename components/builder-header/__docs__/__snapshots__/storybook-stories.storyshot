@@ -1966,6 +1966,7 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
               }
             >
               <button
+                aria-haspopup="dialog"
                 className="slds-button slds-button_icon-container"
                 disabled={false}
                 id="popover-error"
