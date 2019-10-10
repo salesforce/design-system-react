@@ -136,7 +136,7 @@ configFiles.forEach((config) => {
 		});
 	}
 
-	if (!config.isDeprecated) {
+	if (!config['is-deprecated']) {
 		// Copy config over to package.json
 		packageJsonFile.components.push(config);
 
