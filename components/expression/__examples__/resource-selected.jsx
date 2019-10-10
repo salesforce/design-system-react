@@ -287,6 +287,7 @@ class Example extends React.Component {
 							(condition, i) =>
 								!condition.isGroup ? (
 									<ExpressionCondition
+										focusOnMount
 										/* eslint-disable-next-line react/no-array-index-key */
 										key={i}
 										id={`expression-condition-${i}`}
@@ -343,6 +344,7 @@ class Example extends React.Component {
 									/>
 								) : (
 									<ExpressionGroup
+										focusOnMount
 										/* eslint-disable-next-line react/no-array-index-key */
 										key={i}
 										id={`expression-group-${i}`}
@@ -433,6 +435,7 @@ class Example extends React.Component {
 										) : (
 											condition.conditions.map((c, j) => (
 												<ExpressionCondition
+													focusOnMount
 													/* eslint-disable-next-line react/no-array-index-key */
 													key={j}
 													id={`expression-group-${i}-condition-${j}`}
