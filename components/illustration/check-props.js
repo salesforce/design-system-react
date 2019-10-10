@@ -2,45 +2,16 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
-import isPrototype from '../../utilities/warning/component-is-prototype';
-import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
-import getComponentDocFn from '../../utilities/get-component-doc';
-
-/* import deprecatedPropertyValue from '../../utilities/warning/deprecated-property-value'; */
+import componentIsDeprecated from '../../utilities/warning/component-is-deprecated';
 
 let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
-		const createDocUrl = getComponentDocFn(jsonDoc);
-
-		isPrototype(COMPONENT);
-
-		/**
-		 * If illustration SVGs are added to SLDS in the future, we will deprecate the value
-		 * of internalIllustration being true and give a warning.
-		 *
-		if (props.internalIllustration) {
- 			deprecatedPropertyValue(COMPONENT, {
- 				propAsString: 'internalIllustration',
- 				propValue: props.internalIllustration,
- 				deprecatedPropValue: true,
- 				replacementPropAsValue: false,
- 			},
- 			'Using illustration SVGs from inside this repo is deprecated. Please update your assets/images path to use the SVGs found in the @salesforce/design-system npm module.');
- 		}
-		 */
-
-		if (props.illustration || props.path) {
-			// An illustration image must be accompanied with a heading text
-			oneOfRequiredProperty(
-				COMPONENT,
-				{
-					heading: props.heading,
-				},
-				createDocUrl('heading')
-			);
-		}
+	checkProps = function checkPropsFunction(COMPONENT) {
+		componentIsDeprecated(
+			COMPONENT,
+			'This was decided due to issues with shadow DOM preventing imported SVG files from detecting SLDS styles. Please visit https://www.lightningdesignsystem.com/components/illustration/ to copy the provided example code for use in your application.'
+		);
 	};
 }
 
