@@ -2532,14 +2532,18 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
                 type="text"
                 value="Select an option"
               />
-              <svg
-                aria-hidden={true}
-                className="slds-input__icon slds-icon-text-default"
+              <span
+                className="slds-icon_container slds-input__icon slds-input__icon_right"
               >
-                <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                />
-              </svg>
+                <svg
+                  aria-hidden={true}
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  />
+                </svg>
+              </span>
             </div>
           </div>
         </div>
@@ -5199,14 +5203,18 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
                 type="text"
                 value="Select an option"
               />
-              <svg
-                aria-hidden={true}
-                className="slds-input__icon slds-icon-text-default"
+              <span
+                className="slds-icon_container slds-input__icon slds-input__icon_right"
               >
-                <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                />
-              </svg>
+                <svg
+                  aria-hidden={true}
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  />
+                </svg>
+              </span>
             </div>
             <section
               aria-describedby="combobox-unique-id-dialog-body"
