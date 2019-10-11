@@ -74,7 +74,7 @@ class Example extends React.Component {
 							id: 'options-search-id-1',
 							icon: (
 								<Icon
-									assistiveText={{ label: 'add' }}
+									assistiveText={{ label: 'Search' }}
 									size="x-small"
 									category="utility"
 									name="search"
@@ -86,7 +86,7 @@ class Example extends React.Component {
 							id: 'search-in-account-id',
 							icon: (
 								<Icon
-									assistiveText={{ label: 'add in Accounts' }}
+									assistiveText={{ label: 'Search in Accounts' }}
 									size="x-small"
 									category="utility"
 									name="search"
@@ -107,7 +107,7 @@ class Example extends React.Component {
 							id: 'options-add-id-1',
 							icon: (
 								<Icon
-									assistiveText={{ label: 'add' }}
+									assistiveText={{ label: 'Add' }}
 									category="utility"
 									size="x-small"
 									name="add"

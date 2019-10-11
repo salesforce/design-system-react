@@ -17,9 +17,11 @@ const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
 	 * * `label`: This label appears in the legend.
+	 * * `required`: Text to help identify the group as required
 	 */
 	assistiveText: PropTypes.shape({
 		label: PropTypes.string,
+		required: PropTypes.string,
 	}),
 	/**
 	 * Children are expected to be Radio components.
@@ -69,7 +71,11 @@ const propTypes = {
 	variant: PropTypes.oneOf(['base', 'button-group']),
 };
 
-const defaultProps = { assistiveText: {}, labels: {}, variant: 'base' };
+const defaultProps = {
+	assistiveText: { required: 'Required' },
+	labels: {},
+	variant: 'base',
+};
 
 /**
  * A styled select list that can have a single entry checked at any one time.
@@ -104,6 +110,10 @@ class RadioGroup extends React.Component {
 			? assign({}, defaultProps.labels, this.props.labels)
 			: defaultProps.labels;
 
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
 		const children = React.Children.map(this.props.children, (child) =>
 			React.cloneElement(child, {
 				name: this.getName(),
@@ -123,17 +133,18 @@ class RadioGroup extends React.Component {
 					className={classNames(
 						'slds-form-element__legend',
 						'slds-form-element__label',
-						this.props.assistiveText.label ? 'slds-assistive-text' : ''
+						assistiveText.label ? 'slds-assistive-text' : ''
 					)}
 				>
 					{this.props.required ? (
 						<abbr className="slds-required" title="required">
 							{'*'}
+							<div className="slds-assistive-text">
+								{assistiveText.required}{' '}
+							</div>
 						</abbr>
 					) : null}
-					{this.props.assistiveText.label
-						? this.props.assistiveText.label
-						: this.labels.label}
+					{assistiveText.label ? assistiveText.label : this.labels.label}
 				</legend>
 				<div
 					className={classNames(

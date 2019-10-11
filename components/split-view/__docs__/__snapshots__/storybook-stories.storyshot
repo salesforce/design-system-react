@@ -411,6 +411,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
             className="slds-grid slds-grid_vertical slds-scrollable_none"
           >
             <a
+              aria-live="polite"
               className="slds-split-view__list-header slds-grid slds-text-link_reset"
               href="javascript:void(0);"
               onClick={[Function]}
@@ -421,7 +422,9 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                 }
               }
             >
-              <span>
+              <span
+                aria-sort="Descending"
+              >
                 <span
                   className="slds-assistive-text"
                 >
@@ -1265,6 +1268,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
             className="slds-grid slds-grid_vertical slds-scrollable_none"
           >
             <a
+              aria-live="polite"
               className="slds-split-view__list-header slds-grid slds-text-link_reset"
               href="javascript:void(0);"
               onClick={[Function]}
@@ -1275,7 +1279,9 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                 }
               }
             >
-              <span>
+              <span
+                aria-sort="Descending"
+              >
                 <span
                   className="slds-assistive-text"
                 >
@@ -2118,6 +2124,7 @@ exports[`DOM snapshots SLDSSplitView Custom List 1`] = `
             className="slds-grid slds-grid_vertical slds-scrollable_none"
           >
             <a
+              aria-live="polite"
               className="slds-split-view__list-header slds-grid slds-text-link_reset"
               href="javascript:void(0);"
               onClick={[Function]}
@@ -2128,7 +2135,9 @@ exports[`DOM snapshots SLDSSplitView Custom List 1`] = `
                 }
               }
             >
-              <span>
+              <span
+                aria-sort="Descending"
+              >
                 <span
                   className="slds-assistive-text"
                 >
@@ -2735,6 +2744,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
               className="slds-grid slds-grid_vertical slds-scrollable_none"
             >
               <a
+                aria-live="polite"
                 className="slds-split-view__list-header slds-grid slds-text-link_reset"
                 href="javascript:void(0);"
                 onClick={[Function]}
@@ -2745,7 +2755,9 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                   }
                 }
               >
-                <span>
+                <span
+                  aria-sort="Descending"
+                >
                   <span
                     className="slds-assistive-text"
                   >

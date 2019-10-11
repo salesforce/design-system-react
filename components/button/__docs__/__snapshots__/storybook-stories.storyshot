@@ -126,6 +126,7 @@ exports[`DOM snapshots SLDSButton Doc site Brand Disabled 1`] = `
         Object {
           "backgroundColor": "#16325c",
           "display": "inline-block",
+          "marginLeft": "5px",
           "padding": "10px",
         }
       }
