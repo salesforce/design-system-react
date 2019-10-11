@@ -1,6 +1,6 @@
 {
 	"component": "trial-bar",
-	"status": "prototype",
+	"status": "prod",
 	"display-name": "Trial Bars",
 	"classKey": "TrialBar",
 	"SLDS-component-path": "/components/trial-bar",

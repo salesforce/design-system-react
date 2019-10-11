@@ -1,6 +1,6 @@
 {
     "component": "filter",
-    "status": "prototype",
+    "status": "prod",
     "display-name": "Filters",
 	"classKey": "Filter",
     "SLDS-component-path": "/components/filter",
