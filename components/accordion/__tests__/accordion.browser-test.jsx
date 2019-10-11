@@ -177,7 +177,8 @@ class AccordionWithOnePanelExample extends React.Component {
 	}
 }
 
-AccordionWithOnePanelExample.displayName = 'AccordionWithOnePanelExampleComponent';
+AccordionWithOnePanelExample.displayName =
+	'AccordionWithOnePanelExampleComponent';
 AccordionWithOnePanelExample.propTypes = propTypes;
 AccordionWithOnePanelExample.defaultProps = defaultProps;
 
@@ -212,7 +213,9 @@ describe('Accordion', function describeFunction() {
 		});
 
 		it('renders accordion with only one panel', () => {
-			wrapper = mount(<AccordionWithOnePanelExample />, { attachTo: mountNode });
+			wrapper = mount(<AccordionWithOnePanelExample />, {
+				attachTo: mountNode,
+			});
 			const accordion = wrapper.find(Accordion);
 			expect(accordion).to.be.present;
 		});
