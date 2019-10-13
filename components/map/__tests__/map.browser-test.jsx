@@ -54,13 +54,16 @@ describe('SLDSMap: ', function() {
 
 	describe('Single Location', () => {
 		beforeEach(() => {
+			const locations = [
+				{
+					name: 'Worldwide Corporate Headquarters',
+					address: 'The Landmark @ One Market, San Francisco, CA',
+				},
+			];
+
 			getMap({
-				locations: [
-					{
-						name: 'Worldwide Corporate Headquarters',
-						address: 'The Landmark @ One Market, San Francisco, CA',
-					},
-				],
+				defaultLocation: locations[0],
+				locations,
 				labels: {
 					title: 'Geo Code: 37°48&#x27;08.3&quot;N 122°15&#x27;55.2W',
 				},
@@ -109,6 +112,7 @@ describe('SLDSMap: ', function() {
 
 		beforeEach(() => {
 			getMap({
+				defaultLocation: locations[0],
 				locations,
 				labels: {
 					title: 'Salesforce Locations In United States',
