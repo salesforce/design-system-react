@@ -56,6 +56,10 @@ const propTypes = {
 		onAddGroup: PropTypes.func,
 	}),
 	/**
+	 * If set to true, the component will focus on the first focusable input upon mounting. This is useful for accessibility when adding new groups.
+	 */
+	focusOnMount: PropTypes.bool,
+	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `addCondition`: Label for the Add Condition Button. Defaults to "Add Condition"
@@ -136,8 +140,18 @@ class ExpressionGroup extends React.Component {
 		return trigger;
 	}
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
 		this.generatedId = shortid.generate();
+	}
+
+	componentDidMount() {
+		if (this.props.focusOnMount && this.rootNode) {
+			const input = this.rootNode.querySelector('input');
+			if (input) {
+				input.focus();
+			}
+		}
 	}
 
 	/**
@@ -286,6 +300,9 @@ class ExpressionGroup extends React.Component {
 			<li
 				className={classNames('slds-expression__group', this.props.className)}
 				id={this.getId()}
+				ref={(rootNode) => {
+					this.rootNode = rootNode;
+				}}
 			>
 				<fieldset>
 					<legend className="slds-expression__legend slds-expression__legend_group">

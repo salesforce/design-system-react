@@ -958,6 +958,7 @@ class MenuDropdown extends React.Component {
 				contentsClassName={classNames(
 					'slds-dropdown',
 					`slds-dropdown_${this.props.width}`,
+					'slds-text-align_left',
 					'ignore-react-onclickoutside',
 					this.props.className,
 					positionClassName,

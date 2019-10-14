@@ -26,6 +26,12 @@ exports[`DOM snapshots SLDSSlider Disabled 1`] = `
            - 
           100
         </span>
+        <span
+          className="slds-assistive-text"
+        >
+           
+          Disabled
+        </span>
       </span>
     </label>
     <div

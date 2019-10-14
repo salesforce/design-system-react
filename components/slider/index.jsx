@@ -31,10 +31,11 @@ const propTypes = {
 	'aria-describedby': PropTypes.string,
 	/**
 	 * Assistive text for accessibility**
+	 * `disabled`: Read by screen readers to indicate a disabled slider
 	 * `label`: Visually hidden label but read out loud by screen readers.
-	 *
 	 */
 	assistiveText: PropTypes.shape({
+		disabled: PropTypes.string,
 		label: PropTypes.string,
 	}),
 	/**
@@ -108,6 +109,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+	assistiveText: { disabled: 'Disabled' },
 	min: 0,
 	max: 100,
 	step: 1,
@@ -157,6 +159,10 @@ class Slider extends React.Component {
 		const ariaProps = getAriaProps(this.props);
 		ariaProps['aria-describedby'] = this.getErrorId();
 
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
 		const labelText =
 			this.props.label ||
 			(this.props.assistiveText && this.props.assistiveText.label);
@@ -187,6 +193,12 @@ class Slider extends React.Component {
 							{' - '}
 							{this.props.max}
 						</span>
+						{this.props.disabled ? (
+							<span className="slds-assistive-text">
+								{' '}
+								{assistiveText.disabled}
+							</span>
+						) : null}
 					</span>
 				</label>
 				<div className="slds-form-element__control">

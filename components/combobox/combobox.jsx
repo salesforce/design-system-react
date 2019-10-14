@@ -472,6 +472,22 @@ class Combobox extends React.Component {
 				activeSelectedOptionIndex: 0,
 			});
 		}
+
+		// changes pill focus to last item in the list if the selection length has changed
+		if (nextProps.selection.length > this.props.selection.length) {
+			if (nextProps.selection.length < 1) {
+				this.setState({
+					activeSelectedOption: undefined,
+					activeSelectedOptionIndex: 0,
+				});
+			} else {
+				this.setState({
+					activeSelectedOption:
+						nextProps.selection[nextProps.selection.length - 1],
+					activeSelectedOptionIndex: nextProps.selection.length - 1,
+				});
+			}
+		}
 	}
 
 	componentWillUnmount() {
@@ -607,8 +623,11 @@ class Combobox extends React.Component {
 			// eslint-disable-next-line fp/no-mutating-methods
 			options.push(...localProps.optionsSearchEntity);
 		}
-		// eslint-disable-next-line fp/no-mutating-methods
-		options.push(...localProps.options);
+
+		if (localProps.options) {
+			// eslint-disable-next-line fp/no-mutating-methods
+			options.push(...localProps.options);
+		}
 		if (localProps.optionsAddItem.length > 0) {
 			// eslint-disable-next-line fp/no-mutating-methods
 			options.push(...localProps.optionsAddItem);
@@ -1476,7 +1495,13 @@ class Combobox extends React.Component {
 									className: 'slds-combobox__form-element',
 									role: 'none',
 								}}
-								iconRight={<InputIcon category="utility" name="down" />}
+								iconRight={
+									<InputIcon
+										category="utility"
+										name="down"
+										variant="combobox"
+									/>
+								}
 								id={this.getId()}
 								onFocus={this.handleInputFocus}
 								onBlur={this.handleInputBlur}

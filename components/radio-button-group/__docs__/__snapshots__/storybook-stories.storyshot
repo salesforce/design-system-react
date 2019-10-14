@@ -636,6 +636,12 @@ exports[`DOM snapshots SLDSRadioButtonGroup Required 1`] = `
           title="required"
         >
           *
+          <div
+            className="slds-assistive-text"
+          >
+            Required
+             
+          </div>
         </abbr>
         Day of week
       </legend>

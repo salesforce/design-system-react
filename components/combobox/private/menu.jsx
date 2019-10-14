@@ -253,8 +253,8 @@ const Menu = (props) => {
 										props.onSelect(event, { option: optionData });
 									}
 						}
-						aria-selected="false"
-						id={optionData.id}
+						aria-selected={active}
+						id={`${props.inputId}-listbox-option-${optionData.id}`}
 						className={classNames(
 							'slds-media slds-listbox__option',
 							'slds-listbox__option_entity slds-listbox__option_term',
@@ -280,7 +280,7 @@ const Menu = (props) => {
 					className="slds-listbox__item"
 				>
 					<div
-						aria-selected="false"
+						aria-selected={active}
 						onClick={
 							optionData.disabled
 								? null
@@ -288,7 +288,7 @@ const Menu = (props) => {
 										props.onSelect(event, { option: optionData });
 									}
 						}
-						id={optionData.id}
+						id={`${props.inputId}-listbox-option-${optionData.id}`}
 						className={classNames(
 							'slds-media slds-listbox__option',
 							'slds-listbox__option_entity slds-listbox__option_term',

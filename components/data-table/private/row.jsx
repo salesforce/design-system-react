@@ -122,7 +122,7 @@ class DataTableRow extends React.Component {
 								checked={isSelected}
 								id={`${this.props.id}-SelectRow`}
 								labelId={`${this.props.id}-SelectRow-label`}
-								name="SelectRow"
+								name={`SelectRow${this.props.index + 1}`}
 								onChange={this.handleToggle}
 							/>
 						)}

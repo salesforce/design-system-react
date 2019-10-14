@@ -6800,6 +6800,13 @@
                             "required": true,
                             "description": "Callbacks for various expression condition events such as value change, delete etc"
                         },
+                        "focusOnMount": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "If set to true, the component will focus on the first focusable input upon mounting. This is useful for accessibility when adding new conditions."
+                        },
                         "labels": {
                             "type": {
                                 "name": "shape",
@@ -7161,6 +7168,13 @@
                             },
                             "required": false,
                             "description": "Callbacks for various expression group events such as trigger change, add condition etc"
+                        },
+                        "focusOnMount": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "If set to true, the component will focus on the first focusable input upon mounting. This is useful for accessibility when adding new groups."
                         },
                         "labels": {
                             "type": {
@@ -9229,120 +9243,6 @@
         "route": "icons",
         "display-name": "Icons",
         "SLDS-component-path": "/components/icons",
-        "dependencies": []
-    },
-    "illustration": {
-        "description": "An illustration is an image and inline text that work in tandem to communicate a state in a more friendly way.",
-        "methods": [],
-        "props": {
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "CSS classes that are applied to the SVG. _Tested with Mocha testing._"
-            },
-            "heading": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "A heading text. It is required if illustration is present. _Tested with snapshot testing._ _Tested with Mocha testing._"
-            },
-            "illustration": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/icons` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._"
-            },
-            "internalIllustration": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Indicates whether the illustration SVGs are from the design-system-react repo. If yes, set to true.",
-                "defaultValue": {
-                    "value": "true",
-                    "computed": false
-                }
-            },
-            "messageBody": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "node"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "A message body below the heading to further communicate the state of the component. _Tested with snapshot testing._ _Tested with Mocha testing._"
-            },
-            "name": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the illustration. Visit <a href='https://lightningdesignsystem.com/components/illustration/'>Lightning Design System Illustration</a> to reference illustration names. _Tested with snapshot testing._ _Tested with Mocha testing._"
-            },
-            "path": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the illustration SVG image. _Tested with snapshot testing._"
-            },
-            "size": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'large'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Size of the illustration. _Tested with snapshot testing._ _Tested with Mocha testing._",
-                "defaultValue": {
-                    "value": "'small'",
-                    "computed": false
-                }
-            },
-            "style": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "Custom styles to be passed to the illustration SVG. _Tested with Mocha testing._",
-                "defaultValue": {
-                    "value": "{}",
-                    "computed": false
-                }
-            }
-        },
-        "route": "illustrations",
-        "display-name": "Illustrations",
-        "SLDS-component-path": "/components/illustration",
         "dependencies": []
     },
     "input": {
@@ -14139,13 +14039,17 @@
                         "label": {
                             "name": "string",
                             "required": false
+                        },
+                        "required": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.",
+                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.\n* `required`: Text to help identify the group as required",
                 "defaultValue": {
-                    "value": "{}",
+                    "value": "{ required: 'Required' }",
                     "computed": false
                 }
             },
@@ -14913,6 +14817,10 @@
                 "type": {
                     "name": "shape",
                     "value": {
+                        "disabled": {
+                            "name": "string",
+                            "required": false
+                        },
                         "label": {
                             "name": "string",
                             "required": false
@@ -14920,7 +14828,11 @@
                     }
                 },
                 "required": false,
-                "description": "Assistive text for accessibility**\n`label`: Visually hidden label but read out loud by screen readers."
+                "description": "Assistive text for accessibility**\n`disabled`: Read by screen readers to indicate a disabled slider\n`label`: Visually hidden label but read out loud by screen readers.",
+                "defaultValue": {
+                    "value": "{ disabled: 'Disabled' }",
+                    "computed": false
+                }
             },
             "classNameContainer": {
                 "type": {
@@ -16627,9 +16539,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n* `error`: This is a visually hidden label to mark the toast as an error variant\n* `info`: This is a visually hidden label to mark the toast as an info variant\n* `success`: This is a visually hidden label to mark the toast as an success variant\n* `warning`: This is a visually hidden label to mark the toast as an warning variant\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    closeButton: 'Close',\n}",
+                    "value": "{\n    closeButton: 'Close',\n    error: 'error',\n    info: 'info',\n    success: 'success',\n    warning: 'warning',\n}",
                     "computed": false
                 }
             },
