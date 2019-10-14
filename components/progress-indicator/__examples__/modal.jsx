@@ -57,7 +57,7 @@ class Example extends React.Component {
 					title: 'Modal Header',
 					children: modalContent,
 					onRequestClose: action('modal closed'),
-					footer: modalFooter(this.props),
+					footer: modalFooter(),
 					size: 'large',
 					footerClassNames: 'slds-grid slds-grid_align-spread',
 				})}
