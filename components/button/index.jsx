@@ -262,10 +262,6 @@ class Button extends React.Component {
 	};
 
 	renderIcon = (name) => {
-		const iconSize =
-			this.props.iconSize === '' || this.props.iconVariant
-				? null
-				: this.props.iconSize;
 		return (
 			<ButtonIcon
 				category={this.props.iconCategory || 'utility'} // BREAKING CHANGE we will introduce in 1.0. For the moment, set default prop here if none specified.
@@ -281,7 +277,7 @@ class Button extends React.Component {
 				name={name}
 				path={this.props.iconPath}
 				position={this.props.iconPosition}
-				size={iconSize}
+				size={this.props.iconSize}
 			/>
 		);
 	};

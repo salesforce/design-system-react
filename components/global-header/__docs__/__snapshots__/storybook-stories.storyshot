@@ -120,7 +120,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    className="slds-button__icon"
+                    className="slds-button__icon slds-button__icon_small"
                   >
                     <use
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
@@ -161,7 +161,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon"
+                      className="slds-button__icon slds-button__icon_small"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -201,7 +201,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon"
+                  className="slds-button__icon slds-button__icon_small"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
@@ -241,7 +241,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-global-header__icon"
+                  className="slds-button__icon slds-button__icon_small slds-global-header__icon"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#question"
@@ -279,7 +279,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-global-header__icon"
+                  className="slds-button__icon slds-button__icon_small slds-global-header__icon"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#setup"
@@ -320,7 +320,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-global-header__icon"
+                  className="slds-button__icon slds-button__icon_small slds-global-header__icon"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
@@ -435,7 +435,7 @@ exports[`DOM snapshots SLDSGlobalHeader Fewer Elements 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-global-header__icon"
+                  className="slds-button__icon slds-button__icon_small slds-global-header__icon"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#setup"
@@ -612,7 +612,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    className="slds-button__icon"
+                    className="slds-button__icon slds-button__icon_small"
                   >
                     <use
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
@@ -653,7 +653,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon"
+                      className="slds-button__icon slds-button__icon_small"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -693,7 +693,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon"
+                  className="slds-button__icon slds-button__icon_small"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
@@ -733,7 +733,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-global-header__icon"
+                  className="slds-button__icon slds-button__icon_small slds-global-header__icon"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#question"
@@ -771,7 +771,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-global-header__icon"
+                  className="slds-button__icon slds-button__icon_small slds-global-header__icon"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#setup"
@@ -812,7 +812,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-global-header__icon"
+                  className="slds-button__icon slds-button__icon_small slds-global-header__icon"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
@@ -995,7 +995,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                 >
                   <svg
                     aria-hidden="true"
-                    className="slds-button__icon"
+                    className="slds-button__icon slds-button__icon_small"
                   >
                     <use
                       xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
@@ -1036,7 +1036,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon"
+                      className="slds-button__icon slds-button__icon_small"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -1076,7 +1076,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon"
+                  className="slds-button__icon slds-button__icon_small"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
@@ -1116,7 +1116,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-global-header__icon"
+                  className="slds-button__icon slds-button__icon_small slds-global-header__icon"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#question"
@@ -1154,7 +1154,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-global-header__icon"
+                  className="slds-button__icon slds-button__icon_small slds-global-header__icon"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#setup"
@@ -1195,7 +1195,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-global-header__icon"
+                  className="slds-button__icon slds-button__icon_small slds-global-header__icon"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"

@@ -418,7 +418,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
@@ -460,7 +460,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
@@ -502,7 +502,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
@@ -544,7 +544,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
@@ -586,7 +586,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
@@ -628,7 +628,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
@@ -670,7 +670,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
@@ -712,7 +712,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
@@ -754,7 +754,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
@@ -796,7 +796,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
@@ -838,7 +838,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
@@ -880,7 +880,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"

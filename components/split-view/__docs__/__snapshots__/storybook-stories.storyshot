@@ -357,7 +357,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          className="slds-button__icon"
+                          className="slds-button__icon slds-button__icon_large"
                         >
                           <use
                             xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#side_list"
@@ -1214,7 +1214,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          className="slds-button__icon"
+                          className="slds-button__icon slds-button__icon_large"
                         >
                           <use
                             xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#side_list"
@@ -2070,7 +2070,7 @@ exports[`DOM snapshots SLDSSplitView Custom List 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          className="slds-button__icon"
+                          className="slds-button__icon slds-button__icon_large"
                         >
                           <use
                             xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#side_list"
@@ -2690,7 +2690,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                         >
                           <svg
                             aria-hidden="true"
-                            className="slds-button__icon"
+                            className="slds-button__icon slds-button__icon_large"
                           >
                             <use
                               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#side_list"

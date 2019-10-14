@@ -44,7 +44,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="slds-button__icon"
+              className="slds-button__icon slds-button__icon_small"
             >
               <use
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"
@@ -578,7 +578,7 @@ exports[`DOM snapshots SLDSCarousel 3 items NoImageTest 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="slds-button__icon"
+              className="slds-button__icon slds-button__icon_small"
             >
               <use
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
@@ -722,7 +722,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_x-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#play"
@@ -762,7 +762,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
           >
             <svg
               aria-hidden="true"
-              className="slds-button__icon"
+              className="slds-button__icon slds-button__icon_small"
             >
               <use
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"
@@ -1296,7 +1296,7 @@ exports[`DOM snapshots SLDSCarousel 3 items controlled isInfinite NoImageTest 1`
           >
             <svg
               aria-hidden="true"
-              className="slds-button__icon"
+              className="slds-button__icon slds-button__icon_small"
             >
               <use
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
@@ -1451,7 +1451,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="slds-button__icon"
+              className="slds-button__icon slds-button__icon_small"
             >
               <use
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"
@@ -1985,7 +1985,7 @@ exports[`DOM snapshots SLDSCarousel 5 items NoImageTest 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="slds-button__icon"
+              className="slds-button__icon slds-button__icon_small"
             >
               <use
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
@@ -2775,7 +2775,7 @@ exports[`DOM snapshots SLDSCarousel Default with Autoplay NoImageTest 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon"
+            className="slds-button__icon slds-button__icon_x-small"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#pause"
@@ -3490,7 +3490,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           >
             <svg
               aria-hidden="true"
-              className="slds-button__icon"
+              className="slds-button__icon slds-button__icon_small"
             >
               <use
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"
@@ -3961,7 +3961,7 @@ exports[`DOM snapshots SLDSCarousel Default with navigation indicators NoImageTe
           >
             <svg
               aria-hidden="true"
-              className="slds-button__icon"
+              className="slds-button__icon slds-button__icon_small"
             >
               <use
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
@@ -4243,7 +4243,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             >
               <svg
                 aria-hidden="true"
-                className="slds-button__icon"
+                className="slds-button__icon slds-button__icon_small"
               >
                 <use
                   xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronleft"
@@ -4686,7 +4686,7 @@ exports[`DOM snapshots SLDSCarousel With custom items NoImageTest 1`] = `
             >
               <svg
                 aria-hidden="true"
-                className="slds-button__icon"
+                className="slds-button__icon slds-button__icon_small"
               >
                 <use
                   xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"

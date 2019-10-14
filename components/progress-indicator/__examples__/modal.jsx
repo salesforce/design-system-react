@@ -25,7 +25,7 @@ const handleStepEvent = function handleStepEventFunction(event, data) {
 
 const getModal = (props) => <Modal {...props} />;
 
-const modalFooter = (props) => [
+const modalFooter = () => [
 	<Button key="modalBCancel" label="Cancel" />,
 	<ProgressIndicator
 		key="modal-progress-indicator"

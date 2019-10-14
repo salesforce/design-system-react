@@ -159,7 +159,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-button__icon"
+        className="slds-button__icon slds-button__icon_small"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
@@ -179,7 +179,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-button__icon"
+        className="slds-button__icon slds-button__icon_small"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
@@ -250,7 +250,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-button__icon"
+        className="slds-button__icon slds-button__icon_large"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
@@ -401,7 +401,7 @@ exports[`DOM snapshots SLDSButton Icon Container Small 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-button__icon"
+        className="slds-button__icon slds-button__icon_large"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
@@ -573,7 +573,7 @@ exports[`DOM snapshots SLDSButton Small Icon Hint inverse 1`] = `
     >
       <svg
         aria-hidden="true"
-        className="slds-button__icon slds-button__icon_inverse-hint"
+        className="slds-button__icon slds-button__icon_small slds-button__icon_inverse-hint"
       >
         <use
           xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
