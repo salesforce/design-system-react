@@ -108,7 +108,7 @@ class Accordion extends Component {
 				name={this.props.id || this.generatedId}
 				className={classNames('slds-accordion', this.props.className)}
 			>
-				{this.props.children.map((child) =>
+				{React.Children.map(this.props.children, (child) =>
 					React.cloneElement(child, {
 						refs: { summaryButton: this.addSummaryButton.bind(this) },
 						onClickSummary: this.onClickSummary.bind(this),
