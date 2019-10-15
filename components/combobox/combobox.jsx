@@ -254,7 +254,7 @@ const propTypes = {
 	/**
 	 * Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.
 	 */
-	readOnlyMenuItemVisibleLength: PropTypes.oneOf([5, 7, 10]),
+	menuItemVisibleLength: PropTypes.oneOf([5, 7, 10]),
 	/**
 	 * Limits auto-complete input submission to one of the provided options. _Tested with mocha testing._
 	 */
@@ -400,7 +400,6 @@ const defaultProps = {
 	menuPosition: 'absolute',
 	optionsSearchEntity: [],
 	optionsAddItem: [],
-	readOnlyMenuItemVisibleLength: 5,
 	required: false,
 	selection: [],
 	singleInputDisabled: false,
@@ -1411,7 +1410,9 @@ class Combobox extends React.Component {
 			base: 'icon-title-subtitle',
 			'inline-listbox': 'icon-title-subtitle',
 			readonly: 'checkbox',
-		};
+        };
+        
+        const readonlyItemVisibleLength = this.props.variant === "readonly" ? 5 : null;
 
 		return (
 			<Menu
@@ -1425,11 +1426,7 @@ class Combobox extends React.Component {
 				inputId={this.getId()}
 				inputValue={this.props.value}
 				isSelected={this.isSelected}
-				itemVisibleLength={
-					this.props.variant === 'readonly'
-						? this.props.readOnlyMenuItemVisibleLength
-						: null
-				}
+				itemVisibleLength={ this.props.menuItemVisibleLength || readonlyItemVisibleLength }
 				labels={labels}
 				hasMenuSpinner={this.props.hasMenuSpinner}
 				menuItem={this.props.menuItem}
