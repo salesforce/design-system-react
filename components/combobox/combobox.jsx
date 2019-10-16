@@ -1410,9 +1410,10 @@ class Combobox extends React.Component {
 			base: 'icon-title-subtitle',
 			'inline-listbox': 'icon-title-subtitle',
 			readonly: 'checkbox',
-        };
-        
-        const readonlyItemVisibleLength = this.props.variant === "readonly" ? 5 : null;
+		};
+
+		const readonlyItemVisibleLength =
+			this.props.variant === 'readonly' ? 5 : null;
 
 		return (
 			<Menu
@@ -1426,7 +1427,9 @@ class Combobox extends React.Component {
 				inputId={this.getId()}
 				inputValue={this.props.value}
 				isSelected={this.isSelected}
-				itemVisibleLength={ this.props.menuItemVisibleLength || readonlyItemVisibleLength }
+				itemVisibleLength={
+					this.props.menuItemVisibleLength || readonlyItemVisibleLength
+				}
 				labels={labels}
 				hasMenuSpinner={this.props.hasMenuSpinner}
 				menuItem={this.props.menuItem}
