@@ -7,9 +7,10 @@ import componentIsDeprecated from '../../utilities/warning/component-is-deprecat
 let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function checkPropsFunction(COMPONENT) {
+	checkProps = function checkPropsFunction(COMPONENT, props) {
 		componentIsDeprecated(
 			COMPONENT,
+			props,
 			'Please use Alert or Toast in the future. Notications is not the same component in SLDS any longer.'
 		);
 	};

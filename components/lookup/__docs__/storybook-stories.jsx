@@ -58,6 +58,7 @@ class DemoLookup extends React.Component {
 					onSelect={this.handleSelect}
 					options={this.state.options}
 					selectedItem={this.state.currentSelected}
+					silenceDeprecationWarning
 				/>
 			</div>
 		);
@@ -111,6 +112,7 @@ class DemoLookupAccounts extends React.Component {
 				onChange={action('change')}
 				onSelect={this.handleSelect}
 				options={this.state.options}
+				silenceDeprecationWarning
 			/>
 		);
 	}

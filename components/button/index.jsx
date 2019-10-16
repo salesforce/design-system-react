@@ -263,7 +263,7 @@ class Button extends React.Component {
 
 	renderIcon = (name) => {
 		const iconSize =
-			this.props.iconSize === '' || this.props.iconVariant
+			!this.props.iconSize || this.props.iconVariant
 				? null
 				: this.props.iconSize;
 		return (

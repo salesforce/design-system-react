@@ -141,7 +141,7 @@ class DataTableHead extends React.Component {
 							indeterminate={this.props.indeterminateSelected}
 							id={`${this.props.id}-${idSuffix}`}
 							// There is a checkbox for user interaction and a checkbox for positioning. ariaHidden is for the checkbox for positioning and it should be removed from the accessibility tree.
-							name={!ariaHidden && 'SelectAll'}
+							name={!ariaHidden ? 'SelectAll' : undefined}
 							onChange={this.props.onToggleAll}
 						/>
 					</div>

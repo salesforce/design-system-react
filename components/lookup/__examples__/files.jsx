@@ -25,6 +25,7 @@ class Example extends React.Component {
 						{ label: 'File 3' },
 						{ label: 'File 4' },
 					]}
+					silenceDeprecationWarning
 				/>
 			</IconSettings>
 		);

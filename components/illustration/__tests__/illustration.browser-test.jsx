@@ -21,7 +21,7 @@ class DemoIllustration extends React.Component {
 	static displayName = 'DemoIllustration';
 
 	render() {
-		return <Illustration {...this.props} />;
+		return <Illustration {...this.props} silenceDeprecationWarning />;
 	}
 }
 

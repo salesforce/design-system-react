@@ -1,6 +1,6 @@
 {
 	"component": "setup-assistant",
-	"status": "prototype",
+	"status": "prod",
 	"display-name": "Setup Assistant",
 	"classKey": "SetupAssistant",
 	"SLDS-component-path": "/components/setup-assistant",

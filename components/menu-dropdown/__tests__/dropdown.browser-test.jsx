@@ -219,7 +219,7 @@ describe('SLDSMenuDropdown', function() {
 		});
 
 		it('preserves click behavior', function() {
-			onClick.reset();
+			onClick.resetHistory();
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			expect(onClick.calledOnce);

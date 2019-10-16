@@ -45,7 +45,7 @@ class RadioGroupExample extends React.Component {
 						<Radio
 							key={value}
 							id={value}
-							label={value}
+							labels={{ label: value }}
 							value={value}
 							checked={this.state.checked === value}
 							variant="base"

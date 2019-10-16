@@ -25,6 +25,7 @@ class Example extends React.Component {
 								{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' },
 							]}
 							placeholder="Select a contact"
+							silenceDeprecationWarning
 						/>
 					</div>
 					<div className="slds-col_padded">
@@ -43,6 +44,7 @@ class Example extends React.Component {
 							]}
 							placeholder="Select a contact"
 							value="C0"
+							silenceDeprecationWarning
 						/>
 					</div>
 					<div className="slds-col_padded">
@@ -62,6 +64,7 @@ class Example extends React.Component {
 							]}
 							placeholder="Select a contact"
 							value="C0"
+							silenceDeprecationWarning
 						/>
 					</div>
 				</div>

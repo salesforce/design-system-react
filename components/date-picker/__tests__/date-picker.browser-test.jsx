@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
+import moment from 'moment';
 import { mount } from 'enzyme';
 import IconSettings from '../../icon-settings';
 
@@ -54,7 +55,15 @@ class DemoComponent extends React.Component {
 	render() {
 		const component = (
 			<IconSettings iconPath="/assets/icons">
-				<Datepicker {...this.props} />
+				<Datepicker
+					formatter={(date) => {
+						return date ? moment(date).format('M/D/YYYY') : '';
+					}}
+					parser={(dateString) => {
+						return moment(dateString, 'MM-DD-YYYY').toDate();
+					}}
+					{...this.props}
+				/>
 			</IconSettings>
 		);
 

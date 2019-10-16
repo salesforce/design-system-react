@@ -1,6 +1,6 @@
 {
 	"component": "builder-header",
-	"status": "prototype",
+	"status": "prod",
 	"display-name": "Builder Header",
 	"classKey": "BuilderHeader",
 	"SLDS-component-path": "/components/builder-header",

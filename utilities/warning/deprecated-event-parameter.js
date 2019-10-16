@@ -23,16 +23,16 @@ if (process.env.NODE_ENV !== 'production') {
 	) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		const warnOnFirstOccurrenceKey = control + propAsString;
-		const triggerWarning = oldEventParameterOrder !== undefined;
+		const triggerWarning = Boolean(oldEventParameterOrder);
 
 		if (!hasWarned[warnOnFirstOccurrenceKey]) {
 			const message = `[Design System React] ${additionalComment}`;
 
 			if (triggerWarning && log) {
 				log({ message });
-			} else {
+			} else if (triggerWarning) {
 				lowPriorityWarning(
-					!triggerWarning, // false value triggers warning
+					false, // false value triggers warning
 					message
 				);
 			}

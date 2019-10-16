@@ -26,7 +26,7 @@ const propTypes = {
 	'aria-controls': PropTypes.string,
 	'aria-describedby': PropTypes.string,
 	'aria-expanded': PropTypes.bool,
-	'aria-haspopup': PropTypes.bool,
+	'aria-haspopup': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 	'aria-labelledby': PropTypes.string,
 	/**
 	 * An HTML ID that is shared with ARIA-supported devices with the

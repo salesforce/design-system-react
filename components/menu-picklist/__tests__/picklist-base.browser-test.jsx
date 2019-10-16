@@ -45,6 +45,7 @@ describe('SLDSMenuPicklist: ', function() {
 		options,
 		placeholder: 'Select a contact',
 		value: 'C0',
+		silenceDeprecationWarning: true,
 	};
 
 	const createPicklist = (props) =>

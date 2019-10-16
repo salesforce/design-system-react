@@ -133,6 +133,55 @@ AccordionExample.displayName = 'AccordionExampleComponent';
 AccordionExample.propTypes = propTypes;
 AccordionExample.defaultProps = defaultProps;
 
+class AccordionWithOnePanelExample extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			expandedPanels: {},
+			item: {
+				id: '1',
+				summary: 'Accordion Summary',
+				details: 'Accordion Details',
+			},
+		};
+	}
+
+	togglePanel(id) {
+		this.setState((state) => ({
+			...state,
+			expandedPanels: {
+				...state.expandedPanels,
+				[id]: !state.expandedPanels[id],
+			},
+		}));
+	}
+
+	render() {
+		const { item } = this.state;
+
+		return (
+			<IconSettings iconPath="/assets/icons">
+				<Accordion id="base-example-accordion">
+					<Panel
+						expanded={!!this.state.expandedPanels[item.id]}
+						id={item.id}
+						key={item.id}
+						onTogglePanel={() => this.togglePanel(item.id)}
+						summary={item.summary}
+					>
+						{item.details}
+					</Panel>
+				</Accordion>
+			</IconSettings>
+		);
+	}
+}
+
+AccordionWithOnePanelExample.displayName =
+	'AccordionWithOnePanelExampleComponent';
+AccordionWithOnePanelExample.propTypes = propTypes;
+AccordionWithOnePanelExample.defaultProps = defaultProps;
+
 /* Accordion rendering tests
  */
 
@@ -161,6 +210,14 @@ describe('Accordion', function describeFunction() {
 			});
 			const panelContentActions = wrapper.find('div .slds-dropdown-trigger');
 			expect(panelContentActions, 'panel dropdown component exists').to.exist;
+		});
+
+		it('renders accordion with only one panel', () => {
+			wrapper = mount(<AccordionWithOnePanelExample />, {
+				attachTo: mountNode,
+			});
+			const accordion = wrapper.find(Accordion);
+			expect(accordion).to.be.present;
 		});
 	});
 

@@ -1,5 +1,6 @@
 /* eslint-disable react/display-name */
 import React from 'react';
+import moment from 'moment';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
@@ -118,6 +119,12 @@ const modalContent = (
 			<Datepicker
 				onDateChange={() => {
 					action('date is selected');
+				}}
+				formatter={(date) => {
+					return date ? moment(date).format('M/D/YYYY') : '';
+				}}
+				parser={(dateString) => {
+					return moment(dateString, 'MM-DD-YYYY').toDate();
 				}}
 			/>
 		</div>

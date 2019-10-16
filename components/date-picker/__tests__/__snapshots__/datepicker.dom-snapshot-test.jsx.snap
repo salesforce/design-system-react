@@ -22,6 +22,12 @@ exports[`Datepicker
   <div
     className="slds-form-element"
   >
+    <label
+      className="slds-form-element__label"
+      htmlFor="CUSTOM-ID"
+    >
+      Date
+    </label>
     <div
       className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
     >
@@ -880,6 +886,12 @@ exports[`Datepicker
     <div
       className="slds-form-element"
     >
+      <label
+        className="slds-form-element__label"
+        htmlFor="CUSTOM-ID"
+      >
+        Date
+      </label>
       <div
         className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
       >

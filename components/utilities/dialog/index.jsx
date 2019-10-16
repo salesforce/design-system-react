@@ -284,8 +284,8 @@ class Dialog extends React.Component {
 
 		return {
 			...popperData.style,
-			left,
-			top,
+			left: isNaN(left) ? 0 : left,
+			top: isNaN(top) ? 0 : top,
 			right,
 			position,
 		};

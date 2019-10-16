@@ -11,9 +11,9 @@ let isPrototype = function isPrototypeFunction() {};
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	isPrototype = function isPrototypeFunction(control, comment) {
+	isPrototype = function isPrototypeFunction(control, props, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';
-		if (!hasWarned[control]) {
+		if (!props.silenceDeprecationWarning && !hasWarned[control]) {
 			/* eslint-disable max-len */
 			lowPriorityWarning(
 				false,

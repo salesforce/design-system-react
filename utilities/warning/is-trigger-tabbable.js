@@ -14,6 +14,7 @@ import {
 	DATE_PICKER,
 	INPUT,
 	LOOKUP,
+	MENU_DROPDOWN,
 	TIME_PICKER,
 } from '../../utilities/constants';
 
@@ -48,6 +49,7 @@ if (process.env.NODE_ENV !== 'production') {
 			trigger.type.displayName !== DATE_PICKER &&
 			trigger.type.displayName !== INPUT &&
 			trigger.type.displayName !== LOOKUP &&
+			trigger.type.displayName !== MENU_DROPDOWN &&
 			trigger.type.displayName !== TIME_PICKER
 		) {
 			// if it's not one of the above, then check to see if it has a tabIndex

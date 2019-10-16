@@ -1,5 +1,6 @@
 /* eslint-env jest */
 import React from 'react';
+import moment from 'moment';
 import renderer from 'react-test-renderer';
 import { renderMarkup } from '../../../tests/snapshot-helpers';
 
@@ -38,6 +39,7 @@ const customProps = {
 	id: 'CUSTOM-ID',
 	labels: {
 		abbreviatedWeekDays: ['ONE', 'TWO', 'THR', 'FOU', 'FIV', 'SIX', 'SEV'],
+		label: 'Date',
 		months: [
 			'MONTH 1',
 			'MONTH 2',
@@ -57,7 +59,7 @@ const customProps = {
 		weekDays: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
 	},
 	parser() {
-		return new Date(2007, 0, 6);
+		return moment('1/6/2007', 'MM-DD-YYYY').toDate();
 	},
 	relativeYearFrom: -20,
 	relativeYearTo: 20,

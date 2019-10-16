@@ -390,9 +390,9 @@ describe('SLDSColorPicker', function describeFunction() {
 				});
 
 				describe('saturation-value grid', function describeFunction5() {
-					it('click sets color using coordinates', function() {
-						this.skip('too dependent on browser calculations');
-					});
+					// it('click sets color using coordinates', function() {
+					// 	this.skip('too dependent on browser calculations');
+					// });
 
 					it('up key causes color value to go up', function(done) {
 						wrapper = mount(
