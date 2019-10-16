@@ -98,7 +98,7 @@ class Example extends React.Component {
 					label="Page Type"
 					value={this.state.pageType}
 					onChange={this.onChange('page-type')}
-					required="true"
+					required
 					errorText={this.state.errorText}
 				/>
 			</div>

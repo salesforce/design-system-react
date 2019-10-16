@@ -35,6 +35,7 @@ class Example extends React.Component {
 							this.toggleOpen(event, 'base');
 						}}
 						variant="toast"
+						silenceDeprecationWarning
 					/>
 					<span />
 					<Button
@@ -57,6 +58,7 @@ class Example extends React.Component {
 						}}
 						theme="success"
 						variant="toast"
+						silenceDeprecationWarning
 					/>
 					<span />
 					<Button
@@ -77,6 +79,7 @@ class Example extends React.Component {
 						}}
 						theme="warning"
 						variant="toast"
+						silenceDeprecationWarning
 					/>
 					<span />
 					<Button
@@ -99,6 +102,7 @@ class Example extends React.Component {
 						}}
 						theme="error"
 						variant="toast"
+						silenceDeprecationWarning
 					/>
 				</div>
 			</IconSettings>

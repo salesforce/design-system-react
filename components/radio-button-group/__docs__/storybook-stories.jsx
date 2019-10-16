@@ -47,7 +47,7 @@ class RadioButtonGroupExample extends React.Component {
 						<Radio
 							key={day}
 							id={day}
-							label={day}
+							labels={{ label: day }}
 							value={day}
 							checked={this.state.checked === day}
 							variant="button-group"

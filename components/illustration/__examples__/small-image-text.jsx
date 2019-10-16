@@ -10,6 +10,7 @@ class Example extends React.Component {
 				messageBody="Lorem ipsum dolor sit amet, consectetur"
 				name="No Access"
 				path="/assets/images/illustrations/empty-state-no-access.svg#no-access"
+				silenceDeprecationWarning
 			/>
 		);
 	}

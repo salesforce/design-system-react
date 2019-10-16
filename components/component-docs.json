@@ -6001,7 +6001,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Date formatting function that formats the `value` prop (`value` is an ECMAScript `Date()` object) before rendering the `input` value. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and internationalization. _Tested with snapshot testing._\nThe default `formatter` function is:\n```\nformatter(date) {\n  return date\n   ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`\n   : '';\n}\n```",
+                "description": "Date formatting function that formats the `value` prop (`value` is an ECMAScript `Date()` object) and returns a string to be rendered as the `input` value. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and internationalization. _Tested with snapshot testing._\nThe default `formatter` function is:\n```\nformatter(date) {\n  return date\n   ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`\n   : '';\n}\n```",
                 "defaultValue": {
                     "value": "function(date) {\n    return date\n        ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`\n        : '';\n}",
                     "computed": false
@@ -6158,7 +6158,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Custom function to parse date string from the `input` value and returns a `Date` object.  Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date parsing and internationalization. The default `parser` passes the input value to ECMAScript `Date()` and _prays_ for a miracle. **Do not use the default parsing function in production.** _Tested with snapshot testing._\nThe default `parser function is:\n```\nparser(str) {\n  return new Date(str);\n}\n```",
+                "description": "Custom function to parse date string from the `input` value, which must return an ECMAScript `Date()` object.  Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date parsing and internationalization. The default `parser` passes the input value to ECMAScript `Date()` and _prays_ for a miracle. **Do not use the default parsing function in production.** _Tested with snapshot testing._\nThe default `parser function is:\n```\nparser(str) {\n  return new Date(str);\n}\n```",
                 "defaultValue": {
                     "value": "function(str) {\n    lowPriorityWarning(\n        false,\n        `Please use an external library for date parsing and internationalization like MomentJS (https://github.com/moment/moment/) instead of the default parser.`\n    );\n    return new Date(str);\n}",
                     "computed": false

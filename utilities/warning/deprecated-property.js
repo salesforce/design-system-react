@@ -16,12 +16,13 @@ if (process.env.NODE_ENV !== 'production') {
 		propValue,
 		oldProp,
 		newProp,
-		comment
+		comment,
+		silenceDeprecatedPropertyWarning
 	) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		const newProperty = newProp ? `Use \`${newProp}\`` : '';
 		const newPropertySentence = newProp ? ` ${newProperty} instead.` : '';
-		if (!hasWarned[control + oldProp]) {
+		if (!silenceDeprecatedPropertyWarning && !hasWarned[control + oldProp]) {
 			/* eslint-disable max-len */
 			warning(
 				propValue === undefined,

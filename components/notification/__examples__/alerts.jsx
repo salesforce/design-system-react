@@ -36,6 +36,7 @@ class Example extends React.Component {
 						}}
 						texture
 						variant="alert"
+						silenceDeprecationWarning
 					/>
 					<span />
 					<Button
@@ -59,6 +60,7 @@ class Example extends React.Component {
 						texture
 						theme="success"
 						variant="alert"
+						silenceDeprecationWarning
 					/>
 					<span />
 					<Button
@@ -82,6 +84,7 @@ class Example extends React.Component {
 						texture
 						theme="error"
 						variant="alert"
+						silenceDeprecationWarning
 					/>
 					<span />
 					<Button
@@ -105,6 +108,7 @@ class Example extends React.Component {
 						texture
 						theme="offline"
 						variant="alert"
+						silenceDeprecationWarning
 					/>
 				</div>
 			</IconSettings>

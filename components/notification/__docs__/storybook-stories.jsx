@@ -30,6 +30,7 @@ storiesOf(NOTIFICATION, module)
 			texture
 			theme="success"
 			variant="alert"
+			silenceDeprecationWarning
 		/>
 	))
 	.add('Base: Toast', () => (
@@ -43,6 +44,7 @@ storiesOf(NOTIFICATION, module)
 			}}
 			theme="error"
 			variant="toast"
+			silenceDeprecationWarning
 		/>
 	))
 	.add('Docs site Alerts', () => <Alerts />)

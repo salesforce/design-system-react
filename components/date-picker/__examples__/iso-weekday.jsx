@@ -1,5 +1,6 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
+import moment from 'moment';
 
 import Datepicker from '~/components/date-picker';
 
@@ -20,6 +21,12 @@ class Example extends React.Component {
 					} else if (console) {
 						console.log('onChange', event, data);
 					}
+				}}
+				formatter={(date) => {
+					return date ? moment(date).format('M/D/YYYY') : '';
+				}}
+				parser={(dateString) => {
+					return moment(dateString, 'MM-DD-YYYY').toDate();
 				}}
 			/>
 		);

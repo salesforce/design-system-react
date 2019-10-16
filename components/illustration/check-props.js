@@ -7,9 +7,10 @@ import componentIsDeprecated from '../../utilities/warning/component-is-deprecat
 let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function checkPropsFunction(COMPONENT) {
+	checkProps = function checkPropsFunction(COMPONENT, props) {
 		componentIsDeprecated(
 			COMPONENT,
+			props,
 			'This was decided due to issues with shadow DOM preventing imported SVG files from detecting SLDS styles. Please visit https://www.lightningdesignsystem.com/components/illustration/ to copy the provided example code for use in your application.'
 		);
 	};

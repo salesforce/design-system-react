@@ -102,6 +102,7 @@ class MultipleExample extends React.Component {
 					);
 					this.handleSelect(removedItem, data);
 				}}
+				silenceDeprecationWarning
 			/>
 		);
 	}

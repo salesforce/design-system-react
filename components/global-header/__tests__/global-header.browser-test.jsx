@@ -2,6 +2,7 @@
 import React from 'react';
 import { expect } from 'chai';
 
+import SLDSCombobox from '../../combobox';
 import SLDSIconSettings from '../../icon-settings';
 import SLDSGlobalHeader from '../../global-header';
 import SLDSGlobalHeaderFavorites from '../../global-header/favorites';
@@ -28,7 +29,16 @@ describe('SLDSGlobalHeader', () => {
 						<SLDSGlobalHeaderFavorites />
 						<SLDSGlobalHeaderTask />
 						<SLDSGlobalHeaderNotifications />
-						<SLDSGlobalHeaderSearch options={[]} />
+						<SLDSGlobalHeaderSearch
+							combobox={
+								<SLDSCombobox
+									assistiveText={{ label: 'Search' }}
+									id="global-header-search-combobox-test"
+									labels={{ placeholder: 'Search Salesforce' }}
+									options={[]}
+								/>
+							}
+						/>
 						<SLDSGlobalHeaderHelp />
 					</SLDSGlobalHeader>
 				</SLDSIconSettings>

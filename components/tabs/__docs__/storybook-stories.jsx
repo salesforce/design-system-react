@@ -221,7 +221,7 @@ class DemoTabsConditional extends React.Component {
 					checked={this.state.disableB}
 					id="tabs-checkbox-pane-a-1"
 					onChange={this.handleCheckClickedDisable}
-					label="Disable tab B"
+					labels={{ label: 'Disable tab B' }}
 					name="disableB"
 				/>
 				<Checkbox
@@ -229,7 +229,7 @@ class DemoTabsConditional extends React.Component {
 					checked={this.state.disableC}
 					id="tabs-checkbox-pane-a-2"
 					onChange={this.handleCheckClickedDisable}
-					label="Disable tab C"
+					labels={{ label: 'Disable tab C' }}
 					name="disableC"
 				/>
 			</div>
@@ -246,7 +246,7 @@ class DemoTabsConditional extends React.Component {
 					checked={this.state.showA}
 					id="tabs-checkbox-tab-a-1"
 					onChange={this.handleCheckClicked}
-					label="Show tab A"
+					labels={{ label: 'Show tab A' }}
 					name="showA"
 				/>
 				<Checkbox
@@ -254,7 +254,7 @@ class DemoTabsConditional extends React.Component {
 					checked={this.state.showB}
 					id="tabs-checkbox-tab-b-1"
 					onChange={this.handleCheckClicked}
-					label="Show tab B"
+					labels={{ label: 'Show tab B' }}
 					name="showB"
 				/>
 
@@ -263,7 +263,7 @@ class DemoTabsConditional extends React.Component {
 					id="tabs-checkbox-tab-c-1"
 					onChange={this.handleCheckClicked}
 					assistiveText={{ label: 'Show tab C' }}
-					label="Show tab C"
+					labels={{ label: 'Show tab C' }}
 					name="showC"
 				/>
 

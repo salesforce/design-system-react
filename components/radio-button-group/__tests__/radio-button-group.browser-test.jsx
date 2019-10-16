@@ -39,7 +39,7 @@ class RadioButtonGroupExample extends React.Component {
 				{days.map((day) => (
 					<Radio
 						key={day}
-						label={day}
+						labels={{ label: day }}
 						value={day}
 						checked={this.state.checked === day}
 						variant="button-group"
@@ -84,7 +84,7 @@ describe('RadioButtonGroup', function() {
 		radios.forEach((radioWrapper, index) => {
 			const radio = radios.get(index);
 			expect(radio.props.checked).to.equal(
-				radio.props.label === 'Tue',
+				radio.props.labels.label === 'Tue',
 				'the second radio input is checked'
 			);
 		});

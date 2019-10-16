@@ -37,7 +37,11 @@ describe('Inline Edit: ', function describeFunction() {
 	describe('Structure', function describeFunction2() {
 		beforeEach(
 			renderInlineEdit(
-				<InlineEdit id="inline-edit-standard" value={sampleValue} />
+				<InlineEdit
+					id="inline-edit-standard"
+					value={sampleValue}
+					silenceDeprecationWarning
+				/>
 			)
 		);
 
