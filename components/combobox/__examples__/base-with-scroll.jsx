@@ -136,8 +136,8 @@ class Example extends React.Component {
 					labels={{
 						label: 'Search',
 						placeholder: 'Search Salesforce',
-                    }}
-                    menuItemVisibleLength={5}
+					}}
+					menuItemVisibleLength={5}
 					multiple
 					options={comboboxFilterAndLimit({
 						inputValue: this.state.inputValue,

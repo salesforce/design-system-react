@@ -105,10 +105,8 @@ storiesOf(COMBOBOX, module)
 	))
 	.add('Base Inherit Menu Width - Right to Left (RTL)', () => (
 		<BaseInheritMenuWidthRTL action={action} />
-    ))
-    .add('Base With Scroll', () => (
-		<BaseWithScroll action={action} />
-    ))
+	))
+	.add('Base With Scroll', () => <BaseWithScroll action={action} />)
 	.add('Dialog', () => <Dialog action={action} />)
 	.add('Readonly Single Selection', () => <ReadOnly action={action} />)
 	.add('Readonly Single Selection - Right to Left (RTL)', () => (
