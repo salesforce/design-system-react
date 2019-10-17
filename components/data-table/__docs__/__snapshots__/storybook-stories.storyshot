@@ -512,7 +512,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                  className="slds-button__icon slds-button__icon_hint"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -707,7 +707,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                  className="slds-button__icon slds-button__icon_hint"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -902,7 +902,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                  className="slds-button__icon slds-button__icon_hint"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -1373,7 +1373,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                  className="slds-button__icon slds-button__icon_hint"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -1565,7 +1565,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                  className="slds-button__icon slds-button__icon_hint"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -1757,7 +1757,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                  className="slds-button__icon slds-button__icon_hint"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -2228,7 +2228,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                  className="slds-button__icon slds-button__icon_hint"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -2420,7 +2420,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                  className="slds-button__icon slds-button__icon_hint"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -2612,7 +2612,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               >
                 <svg
                   aria-hidden="true"
-                  className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                  className="slds-button__icon slds-button__icon_hint"
                 >
                   <use
                     xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -5866,7 +5866,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -6053,7 +6053,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -6240,7 +6240,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -6427,7 +6427,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -6614,7 +6614,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -6801,7 +6801,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -6988,7 +6988,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -7175,7 +7175,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -7362,7 +7362,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -7549,7 +7549,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -7736,7 +7736,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -7923,7 +7923,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -8891,7 +8891,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -9078,7 +9078,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -9265,7 +9265,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -9452,7 +9452,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -9639,7 +9639,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -9826,7 +9826,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -10013,7 +10013,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -10200,7 +10200,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -10387,7 +10387,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -10574,7 +10574,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -10761,7 +10761,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -10948,7 +10948,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -12284,7 +12284,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -12471,7 +12471,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -12658,7 +12658,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -12845,7 +12845,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -13032,7 +13032,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -13219,7 +13219,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -13406,7 +13406,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -13593,7 +13593,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -13780,7 +13780,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -13967,7 +13967,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -14154,7 +14154,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -14341,7 +14341,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   >
                     <svg
                       aria-hidden="true"
-                      className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+                      className="slds-button__icon slds-button__icon_hint"
                     >
                       <use
                         xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"

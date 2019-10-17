@@ -61,7 +61,7 @@ exports[`DOM snapshots SLDSFilter AssistiveTextFilter 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+            className="slds-button__icon slds-button__icon_hint"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
@@ -142,7 +142,7 @@ exports[`DOM snapshots SLDSFilter ErrorFilter 1`] = `
           >
             <svg
               aria-hidden="true"
-              className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+              className="slds-button__icon slds-button__icon_hint"
             >
               <use
                 xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
@@ -228,7 +228,7 @@ exports[`DOM snapshots SLDSFilter Filter 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+            className="slds-button__icon slds-button__icon_hint"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
@@ -307,7 +307,7 @@ exports[`DOM snapshots SLDSFilter Filter Align Right 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+            className="slds-button__icon slds-button__icon_hint"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
@@ -424,7 +424,7 @@ exports[`DOM snapshots SLDSFilter New Filter 1`] = `
         >
           <svg
             aria-hidden="true"
-            className="slds-button__icon slds-button__icon_small slds-button__icon_hint"
+            className="slds-button__icon slds-button__icon_hint"
           >
             <use
               xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"

@@ -65,7 +65,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
             >
               <svg
                 aria-hidden="true"
-                className="slds-button__icon slds-button__icon_x-small"
+                className="slds-button__icon"
               >
                 <use
                   xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -145,7 +145,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
             >
               <svg
                 aria-hidden="true"
-                className="slds-button__icon slds-button__icon_x-small"
+                className="slds-button__icon"
               >
                 <use
                   xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
@@ -225,7 +225,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
             >
               <svg
                 aria-hidden="true"
-                className="slds-button__icon slds-button__icon_x-small"
+                className="slds-button__icon"
               >
                 <use
                   xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
