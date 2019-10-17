@@ -1,6 +1,6 @@
 {
     "component": "panel",
-    "status": "prototype",
+    "status": "prod",
     "display-name": "Panels",
 	"classKey": "Panel",
     "SLDS-component-path": "/components/panels",

@@ -25,7 +25,7 @@ const handleStepEvent = function handleStepEventFunction(event, data) {
 
 const getModal = (props) => <Modal {...props} />;
 
-const modalFooter = (props) => [
+const modalFooter = () => [
 	<Button key="modalBCancel" label="Cancel" />,
 	<ProgressIndicator
 		key="modal-progress-indicator"
@@ -57,7 +57,7 @@ class Example extends React.Component {
 					title: 'Modal Header',
 					children: modalContent,
 					onRequestClose: action('modal closed'),
-					footer: modalFooter(this.props),
+					footer: modalFooter(),
 					size: 'large',
 					footerClassNames: 'slds-grid slds-grid_align-spread',
 				})}
