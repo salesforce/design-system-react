@@ -118,8 +118,8 @@ class Map extends React.Component {
 	handleClick = (event, i) => {
 		if (typeof this.props.onClickLocation === 'function')
 			this.props.onClickLocation(event, this.props.locations[i]);
-		if (this.iframe) {
-			this.iframe.focus();
+		if (this.map) {
+			this.map.focus();
 		}
 	};
 
@@ -135,15 +135,20 @@ class Map extends React.Component {
 					this.props.classNameContainer
 				)}
 			>
-				<div className="slds-map_container">
-					<div className={classNames(`slds-map`, this.props.className)}>
+				<div
+					className="slds-map_container"
+					style={{ padding: '4px' }}
+				>
+					<div
+						className={classNames(`slds-map`, this.props.className)}
+						ref={(map) => {
+							this.map = map;
+						}}
+						tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+						title={labels.title}
+					>
 						<iframe
 							id={`${this.getId()}-google-map`}
-							ref={(iframe) => {
-								this.iframe = iframe;
-							}}
-							tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
-							title={labels.title}
 							src={`https://www.google.com/maps/embed/v1/place?key=${
 								this.props.googleAPIKey
 							}&q=${encodeURIComponent(
@@ -151,6 +156,7 @@ class Map extends React.Component {
 									? this.props.selection.address
 									: this.props.defaultLocation.address
 							)}`}
+							title={labels.title}
 						/>
 					</div>
 				</div>
