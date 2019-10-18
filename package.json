@@ -351,7 +351,7 @@
 		},
 		{
 			"component": "builder-header",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Builder Header",
 			"classKey": "BuilderHeader",
 			"SLDS-component-path": "/components/builder-header",
@@ -607,7 +607,7 @@
 		},
 		{
 			"component": "expression",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Expression",
 			"classKey": "Expression",
 			"SLDS-component-path": "/components/expression",
@@ -659,7 +659,7 @@
 		},
 		{
 			"component": "filter",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Filters",
 			"classKey": "Filter",
 			"SLDS-component-path": "/components/filter",
@@ -879,7 +879,7 @@
 		},
 		{
 			"component": "panel",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Panels",
 			"classKey": "Panel",
 			"SLDS-component-path": "/components/panels",
@@ -1076,7 +1076,7 @@
 		},
 		{
 			"component": "setup-assistant",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Setup Assistant",
 			"classKey": "SetupAssistant",
 			"SLDS-component-path": "/components/setup-assistant",
@@ -1258,7 +1258,7 @@
 		},
 		{
 			"component": "trial-bar",
-			"status": "prototype",
+			"status": "prod",
 			"display-name": "Trial Bars",
 			"classKey": "TrialBar",
 			"SLDS-component-path": "/components/trial-bar",
