@@ -16507,12 +16507,12 @@
                 "returns": null
             },
             {
-                "name": "saveButtonRef",
+                "name": "saveToastRef",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "component",
+                        "name": "toast",
                         "type": null
                     }
                 ],
