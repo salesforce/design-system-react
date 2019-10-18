@@ -135,10 +135,7 @@ class Map extends React.Component {
 					this.props.classNameContainer
 				)}
 			>
-				<div
-					className="slds-map_container"
-					style={{ padding: '4px' }}
-				>
+				<div className="slds-map_container" style={{ padding: '4px' }}>
 					<div
 						className={classNames(`slds-map`, this.props.className)}
 						ref={(map) => {
