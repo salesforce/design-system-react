@@ -40,7 +40,29 @@ const configExport = function configExportFunction(config) {
 			'tests/browser-tests.js',
 			{
 				pattern:
-					'./node_modules/@salesforce-ux/design-system/assets/icons/**/*.svg',
+					'./node_modules/@salesforce-ux/design-system/assets/images/**/*.jpg',
+				watched: false,
+				included: false,
+				served: true,
+				nocache: false,
+			},
+			{
+				pattern:
+					'./node_modules/@salesforce-ux/design-system/assets/images/**/*.png',
+				watched: false,
+				included: false,
+				served: true,
+				nocache: false,
+			},
+			{
+				pattern: './node_modules/@salesforce-ux/design-system/assets/**/*.svg',
+				watched: false,
+				included: false,
+				served: true,
+				nocache: false,
+			},
+			{
+				pattern: './assets/**/*.svg',
 				watched: false,
 				included: false,
 				served: true,
@@ -48,6 +70,10 @@ const configExport = function configExportFunction(config) {
 			},
 		],
 		proxies: {
+			'/assets/images/global-header/logo.svg':
+				'http://localhost:9876/base/assets/images/global-header/logo.svg',
+			'/assets/images/illustrations/empty-state-no-access.svg':
+				'http://localhost:9876/base/assets/images/illustrations/empty-state-no-access.svg',
 			'/assets/':
 				'http://localhost:9876/base/node_modules/@salesforce-ux/design-system/assets/',
 		},
