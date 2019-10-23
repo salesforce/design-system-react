@@ -252,7 +252,7 @@ const propTypes = {
 		})
 	),
 	/**
-	 * Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.
+	 * Determines the height of the menu based on SLDS CSS classes. This is a `number`. The default for a `readonly` variant is `5`.
 	 */
 	menuItemVisibleLength: PropTypes.oneOf([5, 7, 10]),
 	/**
