@@ -4867,7 +4867,7 @@
                 "required": false,
                 "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n* `disabled`: Set to true to disable this menu item.\n* `tooltipContent`: Content that is displayed in tooltip when item is disabled\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n disabled: true,\n tooltipContent: \"You don't have permission to select this item.\"\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
             },
-            "readOnlyMenuItemVisibleLength": {
+            "menuItemVisibleLength": {
                 "type": {
                     "name": "enum",
                     "value": [
@@ -4886,11 +4886,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.",
-                "defaultValue": {
-                    "value": "5",
-                    "computed": false
-                }
+                "description": "Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`."
             },
             "predefinedOptionsOnly": {
                 "type": {
