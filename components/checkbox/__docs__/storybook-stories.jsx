@@ -9,6 +9,7 @@ import Button from '../../button';
 
 import DefaultCheckbox from '../__examples__/default';
 import Error from '../__examples__/error';
+import GroupedWithTristate from '../__examples__/grouped-with-tristate';
 import SnapshotBase from '../__examples__/snapshot-base';
 import SnapshotToggle from '../__examples__/snapshot-toggle';
 import Toggle from '../__examples__/toggle';
@@ -279,4 +280,5 @@ storiesOf(CHECKBOX, module)
 	.add('Doc site Error', () => <Error />)
 	.add('Doc site Snapshot Base', () => <SnapshotBase />)
 	.add('Doc site Snapshot Toggle', () => <SnapshotToggle />)
-	.add('Doc site Toggle', () => <Toggle />);
+	.add('Doc site Toggle', () => <Toggle />)
+	.add('Grouped with Tristate', () => <GroupedWithTristate />);
