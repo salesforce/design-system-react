@@ -76,6 +76,7 @@ const documentationSiteLiveExamples = {
 		require('raw-loader!@salesforce/design-system-react/components/checkbox/__examples__/default.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/checkbox/__examples__/error.jsx'),
 		require('raw-loader!@salesforce/design-system-react/components/checkbox/__examples__/toggle.jsx'),
+		require('raw-loader!@salesforce/design-system-react/components/checkbox/__examples__/grouped-with-tristate.jsx'),
 	],
 	'color-picker': [
 		require('raw-loader!@salesforce/design-system-react/components/color-picker/__examples__/default.jsx'),

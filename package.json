@@ -475,7 +475,8 @@
 			"site-stories": [
 				"/__examples__/default.jsx",
 				"/__examples__/error.jsx",
-				"/__examples__/toggle.jsx"
+				"/__examples__/toggle.jsx",
+				"/__examples__/grouped-with-tristate.jsx"
 			],
 			"url-slug": "checkboxes"
 		},
