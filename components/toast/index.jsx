@@ -109,6 +109,7 @@ class Toast extends React.Component {
 			isInitialRender: true,
 		};
 		this.timeout = null;
+		this.toast = null;
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(TOAST, props, componentDoc);
@@ -142,12 +143,12 @@ class Toast extends React.Component {
 		}
 	};
 
-	saveButtonRef = (component) => {
-		this.closeButton = component;
+	saveToastRef = (toast) => {
+		this.toast = toast;
 		if (this.state.isInitialRender) {
 			DOMElementFocus.storeActiveElement();
-			if (this.closeButton) {
-				this.closeButton.focus();
+			if (this.toast) {
+				this.toast.focus();
 			}
 			this.setState({ isInitialRender: false });
 		}
@@ -200,8 +201,10 @@ class Toast extends React.Component {
 					},
 					this.props.className
 				)}
+				ref={this.saveToastRef}
 				role="status"
 				style={this.props.style}
+				tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
 			>
 				<span className="slds-assistive-text">
 					{assistiveTextVariant[this.props.variant]}
@@ -223,7 +226,6 @@ class Toast extends React.Component {
 				</div>
 				<Button
 					assistiveText={{ icon: assistiveText.closeButton }}
-					buttonRef={this.saveButtonRef}
 					className="slds-notify__close"
 					iconCategory="utility"
 					iconName="close"
