@@ -26,6 +26,13 @@ if (process.env.NODE_ENV !== 'production') {
 			'onRenderMenuItem',
 			createDocUrl('onRenderItem')
 		);
+		deprecatedProperty(
+			COMPONENT,
+			props.readOnlyMenuItemVisibleLength,
+			'readOnlyMenuItemVisibleLength',
+			'menuItemVisibleLength',
+			createDocUrl('menuItemVisibleLength')
+		);
 		/* eslint-enable max-len */
 
 		if (props.variant !== 'popover') {

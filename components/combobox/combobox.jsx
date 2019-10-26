@@ -252,9 +252,9 @@ const propTypes = {
 		})
 	),
 	/**
-	 * Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.
+	 * Determines the height of the menu based on SLDS CSS classes. This is a `number`. The default for a `readonly` variant is `5`.
 	 */
-	readOnlyMenuItemVisibleLength: PropTypes.oneOf([5, 7, 10]),
+	menuItemVisibleLength: PropTypes.oneOf([5, 7, 10]),
 	/**
 	 * Limits auto-complete input submission to one of the provided options. _Tested with mocha testing._
 	 */
@@ -373,6 +373,9 @@ const propTypes = {
 	 * Node of type [Combobox](/components/comboboxes/) for creating grouped comboboxes.
 	 */
 	entityCombobox: PropTypes.node,
+	/**
+	 * Defines Combobox variant styling and functionality
+	 */
 	variant: PropTypes.oneOf(['base', 'inline-listbox', 'popover', 'readonly']),
 };
 
@@ -397,7 +400,6 @@ const defaultProps = {
 	menuPosition: 'absolute',
 	optionsSearchEntity: [],
 	optionsAddItem: [],
-	readOnlyMenuItemVisibleLength: 5,
 	required: false,
 	selection: [],
 	singleInputDisabled: false,
@@ -419,29 +421,23 @@ class Combobox extends React.Component {
 				(this.props.selection && this.props.selection[0]) || undefined,
 			activeSelectedOptionIndex: 0,
 			listboxHasFocus: false,
-			isOpen: false,
+			isOpen: typeof props.isOpen === 'boolean' ? props.isOpen : false,
 		};
 
 		this.menuKeyBuffer = new KeyBuffer();
 		this.menuRef = undefined;
 		this.selectedListboxRef = null;
+
+		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
+		checkProps(COMBOBOX, props, componentDoc);
+
+		this.generatedId = shortid.generate();
+		this.generatedErrorId = shortid.generate();
 	}
 
 	/**
 	 * Lifecycle methods
 	 */
-
-	componentWillMount() {
-		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(COMBOBOX, this.props, componentDoc);
-
-		this.generatedId = shortid.generate();
-		this.generatedErrorId = shortid.generate();
-
-		if (this.props.isOpen) {
-			this.setState({ isOpen: this.props.isOpen });
-		}
-	}
 
 	componentWillReceiveProps(nextProps) {
 		// This logic will maintain the active highlight even when the
@@ -474,6 +470,22 @@ class Combobox extends React.Component {
 				activeSelectedOption: nextProps.selection[0],
 				activeSelectedOptionIndex: 0,
 			});
+		}
+
+		// changes pill focus to last item in the list if the selection length has changed
+		if (nextProps.selection.length > this.props.selection.length) {
+			if (nextProps.selection.length < 1) {
+				this.setState({
+					activeSelectedOption: undefined,
+					activeSelectedOptionIndex: 0,
+				});
+			} else {
+				this.setState({
+					activeSelectedOption:
+						nextProps.selection[nextProps.selection.length - 1],
+					activeSelectedOptionIndex: nextProps.selection.length - 1,
+				});
+			}
 		}
 	}
 
@@ -535,6 +547,7 @@ class Combobox extends React.Component {
 		);
 		popoverProps.body = popoverBody;
 
+		// eslint-disable-next-line fp/no-delete
 		delete popoverProps.children;
 		return popoverProps;
 	};
@@ -606,10 +619,16 @@ class Combobox extends React.Component {
 		const localProps = props;
 		const options = [];
 		if (localProps.optionsSearchEntity.length > 0) {
+			// eslint-disable-next-line fp/no-mutating-methods
 			options.push(...localProps.optionsSearchEntity);
 		}
-		options.push(...localProps.options);
+
+		if (localProps.options) {
+			// eslint-disable-next-line fp/no-mutating-methods
+			options.push(...localProps.options);
+		}
 		if (localProps.optionsAddItem.length > 0) {
+			// eslint-disable-next-line fp/no-mutating-methods
 			options.push(...localProps.optionsAddItem);
 		}
 		return options;
@@ -1393,6 +1412,9 @@ class Combobox extends React.Component {
 			readonly: 'checkbox',
 		};
 
+		const readonlyItemVisibleLength =
+			this.props.variant === 'readonly' ? 5 : null;
+
 		return (
 			<Menu
 				assistiveText={assistiveText}
@@ -1406,9 +1428,7 @@ class Combobox extends React.Component {
 				inputValue={this.props.value}
 				isSelected={this.isSelected}
 				itemVisibleLength={
-					this.props.variant === 'readonly'
-						? this.props.readOnlyMenuItemVisibleLength
-						: null
+					this.props.menuItemVisibleLength || readonlyItemVisibleLength
 				}
 				labels={labels}
 				hasMenuSpinner={this.props.hasMenuSpinner}
@@ -1475,7 +1495,13 @@ class Combobox extends React.Component {
 									className: 'slds-combobox__form-element',
 									role: 'none',
 								}}
-								iconRight={<InputIcon category="utility" name="down" />}
+								iconRight={
+									<InputIcon
+										category="utility"
+										name="down"
+										variant="combobox"
+									/>
+								}
 								id={this.getId()}
 								onFocus={this.handleInputFocus}
 								onBlur={this.handleInputBlur}

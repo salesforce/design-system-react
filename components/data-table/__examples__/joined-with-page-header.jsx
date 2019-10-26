@@ -28,7 +28,7 @@ CustomDataTableCell.displayName = DataTableCell.displayName;
 
 const actions = () => (
 	<PageHeaderControl>
-		<ButtonGroup>
+		<ButtonGroup id="button-group-page-header-actions">
 			<Button label="New Lead" />
 			<Button label="Import Leads" />
 			<Dropdown
@@ -120,7 +120,7 @@ const controls = () => (
 			/>
 		</PageHeaderControl>
 		<PageHeaderControl>
-			<ButtonGroup>
+			<ButtonGroup id="button-group-page-header-controls">
 				<Button
 					assistiveText={{ icon: 'Charts' }}
 					iconCategory="utility"
@@ -373,7 +373,7 @@ class Example extends React.Component {
 							columnSort: 'sort this column',
 							columnSortedAscending: 'asc',
 							columnSortedDescending: 'desc',
-							selectAllRows: 'all rows',
+							selectAllRows: 'Select all rows',
 							selectRow: 'Select this row',
 						}}
 						fixedHeader

@@ -31,6 +31,96 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.12
+
+**Minor Features**
+
+* `Popover`: Add feature variant
+* `SplitView`: `onSelect` now called with `enter` key
+* `BuilderHeader`: Add miscellaneous section sub-component
+* `BuilderHeader`: Use Error Popover in Utility Bar example
+* `Accordion`: Update Base example to allow a panel to be toggled
+* Add ARIA attributes to all `input` tags in library in order to enable increased accessibility support for consumers
+* `SetupAssistant`: Add capacity to pass Icons into a `SetupAssistantStep`
+* `Dropdown`: Adds `hover` capabilities w/ keyboard interactions
+* `Accordion`: Add arrow key panel support (accessibility)
+
+**Bugfixes**
+
+* `Dropdown`: Menu Tooltip content now works with `options` array
+* `Tabs`: White space around words in disabled tabs no longer trigger tab change. Disabled Tab style `import '!style-loader!css-loader!@salesforce/design-system-react/styles/tabs/tab.css';` updated to SLDS's modified BEM.
+* `Expression`: Static markup accessibility violations fixed.
+* `Files`: Add inverse classname to download button
+* `BuilderHeader`: Make Tooltips in example accessible
+* `TimePicker`: Remove default time-picker placeholder text
+
+**Maintainance**
+
+* `SplitView` Example: File name change
+* Add functional programming eslint rules to increase maintainability
+* `TravisCI`: Enable matrix build to speed up CI time
+* Remove `PhantomJS` legacy code and instructions
+* Bump `eslint-plugin-filenames` from 1.2.0 to 1.3.2
+* Bump `babel-plugin-istanbul` from 5.1.4 to 5.2.0
+* Bump `karma-chrome-launcher` from 2.2.0 to 3.1.0
+* Bump `react` from 16.8.6 to 16.9.0
+* Bump `@babel/polyfill` from 7.4.4 to 7.6.0
+* Bump `cross-env` from 5.2.0 to 5.2.1
+* Bump `fs-extra` from 3.0.1 to 8.1.0
+* Bump `@storybook/addon-storyshots-puppeteer` from 5.1.9 to 5.1.11
+* Bump `normalizr` from 3.2.4 to 3.4.1
+* Bump `chownr` from 1.1.0 to 1.1.2
+* Bump `eslint-plugin-import` from 2.17.3 to 2.18.2
+* Bump `mocha-loader` from 2.0.1 to 3.0.0
+* Bump `babel-eslint` from 10.0.2 to 10.0.3
+* Bump `karma-coverage` from 1.1.2 to 2.0.1
+* Bump `eslint-config-prettier` from 3.0.1 to 6.1.0
+
+## Release 0.10.11
+
+**Major Features**
+
+* `Badges`: Add component
+* `Expression`: Add component
+
+**Minor Features**
+
+* `ButtonGroup`: Add label support for all variants
+* `ButtonStateful`: Add icon prop
+* `Combobox`: Add header and footer items
+* `MenuDropdown`: Add "center" `align` prop value
+* `MenuDropdown`: Add tooltip menu item
+* `MenuDropdown`: Add hover capabilities with keyboard interactions
+* `Tooltip`: Add `hoverOpenDelay` prop
+
+**Bugfixes**
+
+* `Checkbox`: Fix error text ids
+* `Tabs`: Use class name instead of presentation role for event conditional
+* `TimePicker`: Fix issue with `strValue` not updating `value` correctly
+* Fix all existing aXe issues
+
+**Maintainance**
+
+* Automate `package.json`, `index.js`, and `site-stories.js` creation
+* `classnames` update from 2.2.5 to 2.2.6
+* `sinon-chai` update from 2.14.0 to 3.3.0
+* `fstream` update from 1.0.11 to 1.0.12
+* `regenerator-runtime` update from 0.11.1 to 0.13.3
+* `eslint-plugin-react` update from 7.13.0 to 7.14.3
+* `react-onclickoutside` update from 6.8.0 to 6.9.0
+* `chai` update from 4.1.2 to 4.2.0
+* `file-loader` update from 1.1.11 to 4.2.0
+* `basic-auth` update from 1.1.0 to 2.0.1
+* `webpack` update from 4.36.1 to 4.39.3
+* `@storybook/addon-storyshots` update from 5.1.10 to 5.1.11
+* `eslint-config-prettier` update from 3.0.1 to 6.1.0
+* `mixin-deep` update from 1.3.1 to 1.3.2 (security)
+
+# Release 0.10.10
+
+**Bug with release script caused this version to be skipped. Please use 0.10.11**
+
 ## Release 0.10.9
 
 **Major Features**
@@ -150,11 +240,11 @@ These are changes that have backwards-compatible solutions present and that comp
 * `enzyme` update from 3.9.0 to 3.10.0
 * `react-text-truncate` update from 0.12.1 to 0.14.1
 * `react-modal` update from 3.4.4 to 3.8.1
-* `@babel/preset-env` update from 7.4.4 to 7.4.5 
+* `@babel/preset-env` update from 7.4.4 to 7.4.5
 * `karma-coverage` update from 1.1.1 to 1.1.2
-* `webpack-hot-middleware` update from 2.21.0 to 2.25.0 
+* `webpack-hot-middleware` update from 2.21.0 to 2.25.0
 * `eslint-plugin-import` update from 2.17.2 to 2.17.3
-* `eslint-plugin-json` update from 1.2.0 to 1.4.0 
+* `eslint-plugin-json` update from 1.2.0 to 1.4.0
 * `shortid` update from 2.2.8 to 2.2.14
 * `concurrently` update from 4.0.1 to 4.1.0
 * `lint-staged` update from 3.6.1 to 8.2.0

@@ -266,13 +266,11 @@ class Datepicker extends React.Component {
 			formattedValue: initDate || '',
 			inputValue: initDate || '',
 		};
-	}
 
-	componentWillMount() {
 		this.generatedId = shortid.generate();
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(DATE_PICKER, this.props, componentDoc);
+		checkProps(DATE_PICKER, props, componentDoc);
 	}
 
 	componentWillReceiveProps(nextProps) {

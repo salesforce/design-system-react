@@ -204,9 +204,11 @@ class Button extends React.Component {
 
 	static defaultProps = defaultProps;
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(BUTTON, this.props, componentDoc);
+		checkProps(BUTTON, props, componentDoc);
 	}
 
 	getClassName = () => {
@@ -261,7 +263,7 @@ class Button extends React.Component {
 
 	renderIcon = (name) => {
 		const iconSize =
-			this.props.iconSize === '' || this.props.iconVariant
+			!this.props.iconSize || this.props.iconVariant
 				? null
 				: this.props.iconSize;
 		return (

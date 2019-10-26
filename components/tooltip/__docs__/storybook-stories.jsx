@@ -11,6 +11,7 @@ import Base from '../__examples__/base';
 import ButtonGroupExample from '../__examples__/button-group';
 import ButtonExample from '../__examples__/button';
 import LearnMoreExample from '../__examples__/learn-more';
+import WithDelay from '../__examples__/with-delay';
 
 import Icon from '../../icon';
 import Button from '../../button';
@@ -120,4 +121,5 @@ storiesOf(POPOVER_TOOLTIP, module)
 				/>
 			),
 		})
-	);
+	)
+	.add('With Delay', () => <WithDelay />);

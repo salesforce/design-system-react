@@ -4,8 +4,14 @@
 
 import hasChildrenWithoutDisplayNameof from '../../utilities/warning/has-children-without-display-name-of';
 import getComponentDocFn from '../../utilities/get-component-doc';
+import renderFunctionReturnContentsLackDisplayName from '../../utilities/warning/render-function-return-contents-lack-display-name';
 
-import { SETUP_ASSISTANT_STEP } from '../../utilities/constants';
+import {
+	ICON,
+	PROGRESS_INDICATOR,
+	SETUP_ASSISTANT,
+	SETUP_ASSISTANT_STEP,
+} from '../../utilities/constants';
 
 let checkProps = () => {};
 
@@ -13,12 +19,23 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = (COMPONENT, props, jsonDoc) => {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
-		hasChildrenWithoutDisplayNameof(
-			COMPONENT,
-			props.children,
-			SETUP_ASSISTANT_STEP,
-			createDocUrl()
-		);
+		if (COMPONENT === SETUP_ASSISTANT) {
+			hasChildrenWithoutDisplayNameof(
+				COMPONENT,
+				props.children,
+				SETUP_ASSISTANT_STEP,
+				createDocUrl()
+			);
+		}
+
+		if (COMPONENT === SETUP_ASSISTANT_STEP && props.onRenderFigure) {
+			renderFunctionReturnContentsLackDisplayName(
+				COMPONENT,
+				'onRenderFigure',
+				props.onRenderFigure(),
+				[ICON, PROGRESS_INDICATOR]
+			);
+		}
 	};
 }
 

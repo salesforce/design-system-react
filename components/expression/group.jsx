@@ -56,6 +56,10 @@ const propTypes = {
 		onAddGroup: PropTypes.func,
 	}),
 	/**
+	 * If set to true, the component will focus on the first focusable input upon mounting. This is useful for accessibility when adding new groups.
+	 */
+	focusOnMount: PropTypes.bool,
+	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `addCondition`: Label for the Add Condition Button. Defaults to "Add Condition"
@@ -136,8 +140,18 @@ class ExpressionGroup extends React.Component {
 		return trigger;
 	}
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
 		this.generatedId = shortid.generate();
+	}
+
+	componentDidMount() {
+		if (this.props.focusOnMount && this.rootNode) {
+			const input = this.rootNode.querySelector('input');
+			if (input) {
+				input.focus();
+			}
+		}
 	}
 
 	/**
@@ -169,14 +183,19 @@ class ExpressionGroup extends React.Component {
 		const Triggers = this.getTriggers();
 		const t = [];
 		if (selection === 'all') {
+			// eslint-disable-next-line fp/no-mutating-methods
 			t.push(Triggers[0]);
 		} else if (selection === 'any') {
+			// eslint-disable-next-line fp/no-mutating-methods
 			t.push(Triggers[1]);
 		} else if (selection === 'custom') {
+			// eslint-disable-next-line fp/no-mutating-methods
 			t.push(Triggers[2]);
 		} else if (selection === 'always') {
+			// eslint-disable-next-line fp/no-mutating-methods
 			t.push(Triggers[3]);
 		} else if (selection === 'formula') {
+			// eslint-disable-next-line fp/no-mutating-methods
 			t.push(Triggers[4]);
 		}
 		return t;
@@ -234,27 +253,56 @@ class ExpressionGroup extends React.Component {
 				</div>
 			) : null;
 
-		const body =
-			this.props.triggerType !== 'always' ? (
-				<React.Fragment>
-					{this.props.triggerType === 'custom' ? (
-						<Input
-							label={labels.customLogic}
-							className="slds-expression__custom-logic"
-							id={`${this.getId()}-custom-logic-input`}
-							value={this.props.customLogicValue}
-							variant="base"
-							onChange={this.props.events.onChangeCustomLogicValue}
-						/>
-					) : null}
-					<ul>{this.props.children}</ul>
-				</React.Fragment>
-			) : null;
+		let body = null;
 
-		return !this.props.isRoot ? (
+		if (this.props.triggerType !== 'always') {
+			if (this.props.isRoot && this.props.triggerType === 'formula') {
+				body = this.props.children;
+			} else {
+				body = (
+					<React.Fragment>
+						{this.props.triggerType === 'custom' ? (
+							<Input
+								label={labels.customLogic}
+								className="slds-expression__custom-logic"
+								id={`${this.getId()}-custom-logic-input`}
+								value={this.props.customLogicValue}
+								variant="base"
+								onChange={this.props.events.onChangeCustomLogicValue}
+							/>
+						) : null}
+						<ul>{this.props.children}</ul>
+					</React.Fragment>
+				);
+			}
+		}
+
+		if (this.props.isRoot) {
+			if (this.props.triggerType === 'formula') {
+				return (
+					<React.Fragment>
+						<div className="slds-expression__options">{triggerCombobox}</div>
+						{body}
+					</React.Fragment>
+				);
+			}
+
+			return (
+				<div className={classNames(this.props.className)} id={this.getId()}>
+					<div className="slds-expression__options">{triggerCombobox}</div>
+					{body}
+					{buttons}
+				</div>
+			);
+		}
+
+		return (
 			<li
 				className={classNames('slds-expression__group', this.props.className)}
 				id={this.getId()}
+				ref={(rootNode) => {
+					this.rootNode = rootNode;
+				}}
 			>
 				<fieldset>
 					<legend className="slds-expression__legend slds-expression__legend_group">
@@ -262,16 +310,10 @@ class ExpressionGroup extends React.Component {
 						<span className="slds-assistive-text">{assistiveText.label}</span>
 					</legend>
 					<div className="slds-expression__options">{triggerCombobox}</div>
-					<ul>{body}</ul>
+					{body}
 					{buttons}
 				</fieldset>
 			</li>
-		) : (
-			<div className={classNames(this.props.className)} id={this.getId()}>
-				<div className="slds-expression__options">{triggerCombobox}</div>
-				{body}
-				{buttons}
-			</div>
 		);
 	}
 }

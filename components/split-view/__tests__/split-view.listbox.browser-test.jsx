@@ -167,13 +167,21 @@ describe('SLDSSplitView - Listbox', () => {
 					expectItemFocused(2);
 				});
 
-				it('and arrow key up it should select the previous item', () => {
+				it('and arrow key up followed by click/enter should select the previous item', () => {
 					component.find('ul').simulate('keyDown', { key: 'ArrowUp' });
+					component
+						.find('ul li a')
+						.at(0)
+						.simulate('click');
 					expectItemSelected(0);
 				});
 
-				it('and arrow key down it should select the next item', () => {
+				it('and arrow key down followed by click/enter should select the next item', () => {
 					component.find('ul').simulate('keyDown', { key: 'ArrowDown' });
+					component
+						.find('ul li a')
+						.at(2)
+						.simulate('click');
 					expectItemSelected(2);
 				});
 			});

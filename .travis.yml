@@ -2,15 +2,16 @@ sudo: required
 language: node_js
 node_js:
   - '8'
-cache: npm
+cache:
+  directories:
+  - "$HOME/.npm"
 install:
-  - npm install npm -g
-  - npm config set audit false
-  - npm install
+  - npm ci
 script:
   - npm run travis-ci
 env:
-  - CXX=g++-4.8
+  - CXX=g++-4.8 SKIP_LINT_TESTS=true SKIP_KARMA_TESTS=true SKIP_SNAPSHOT_TESTS=true SKIP_DOCGEN=true
+  - CXX=g++-4.8 SKIP_ACCESSIBILITY_TESTS=true
 addons:
   chrome: stable
   apt:

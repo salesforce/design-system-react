@@ -50,6 +50,10 @@ const propTypes = {
 		onDelete: PropTypes.func,
 	}).isRequired,
 	/**
+	 * If set to true, the component will focus on the first focusable input upon mounting. This is useful for accessibility when adding new conditions.
+	 */
+	focusOnMount: PropTypes.bool,
+	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every
 	 * * `deleteCondition`: Title for the delete condition button. Defaults to "Delete Condition".
@@ -135,8 +139,18 @@ const defaultProps = {
  * Expression Condition Component
  */
 class ExpressionCondition extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
 		this.generatedId = shortid.generate();
+	}
+
+	componentDidMount() {
+		if (this.props.focusOnMount && this.rootNode) {
+			const input = this.rootNode.querySelector('input');
+			if (input) {
+				input.focus();
+			}
+		}
 	}
 
 	/**
@@ -161,6 +175,9 @@ class ExpressionCondition extends React.Component {
 					this.props.className
 				)}
 				id={this.getId()}
+				ref={(rootNode) => {
+					this.rootNode = rootNode;
+				}}
 			>
 				<fieldset>
 					<legend className="slds-expression__legend">

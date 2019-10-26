@@ -1977,6 +1977,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
 >
   <ul
     className="slds-button-group-list slds-p-bottom_medium"
+    id="button-group-tooltip"
   >
     <li>
       <div
@@ -2175,6 +2176,54 @@ exports[`DOM snapshots SLDSPopoverTooltip Open 1`] = `
         Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
       </div>
     </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopoverTooltip With Delay 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "150px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    className="slds-tooltip-trigger"
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-disabled={true}
+      className="slds-button slds-button_icon"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Help
+      </span>
+    </button>
+    <span />
   </div>
 </div>
 `;

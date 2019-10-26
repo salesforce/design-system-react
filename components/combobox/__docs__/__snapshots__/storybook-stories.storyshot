@@ -2477,6 +2477,215 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSCombobox Base With Scroll 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-base"
+    >
+      Search
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="listbox"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              id="combobox-base"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Search Salesforce"
+              readOnly={false}
+              required={false}
+              role="textbox"
+              type="text"
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-orientation="horizontal"
+        id="combobox-base-selected-listbox"
+        role="listbox"
+      >
+        <ul
+          aria-label="Selected Options:"
+          className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
+          role="group"
+        >
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex="0"
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <span
+                  className="slds-icon_container slds-icon-standard-account"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Account
+                  </span>
+                </span>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Acme"
+              >
+                Acme
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  , Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+          <li
+            className="slds-listbox__item"
+            role="presentation"
+          >
+            <span
+              aria-selected="true"
+              className="slds-pill"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="option"
+              tabIndex={-1}
+            >
+              <span
+                className="slds-pill__icon_container"
+              >
+                <span
+                  className="slds-icon_container slds-icon-standard-account"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon"
+                  >
+                    <use
+                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Account
+                  </span>
+                </span>
+              </span>
+              <span
+                className="slds-pill__label"
+                title="Salesforce.com, Inc."
+              >
+                Salesforce.com, Inc.
+              </span>
+              <span
+                className="slds-icon_container slds-pill__remove"
+                onClick={[Function]}
+                role="button"
+                title="Remove"
+              >
+                <svg
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "cursor": "pointer",
+                    }
+                  }
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  , Press delete or backspace to remove
+                </span>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
 <div
   className="slds-p-around_medium"
@@ -2516,6 +2725,7 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
               <input
                 aria-autocomplete="none"
                 aria-describedby={null}
+                aria-haspopup="dialog"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 id="combobox-dialog"
@@ -2532,14 +2742,18 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
                 type="text"
                 value="Select an option"
               />
-              <svg
-                aria-hidden={true}
-                className="slds-input__icon slds-icon-text-default"
+              <span
+                className="slds-icon_container slds-input__icon slds-input__icon_right"
               >
-                <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                />
-              </svg>
+                <svg
+                  aria-hidden={true}
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  />
+                </svg>
+              </span>
             </div>
           </div>
         </div>
@@ -2957,6 +3171,402 @@ exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-unique-id"
+    >
+      Search
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          aria-expanded={true}
+          aria-haspopup="listbox"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              aria-controls="combobox-unique-id-listbox"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              disabled={false}
+              id="combobox-unique-id"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Search Salesforce"
+              readOnly={false}
+              required={false}
+              role="textbox"
+              type="text"
+              value=""
+            />
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default"
+            >
+              <use
+                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+          </div>
+          <div
+            className="absolute-positioned"
+            id="combobox-unique-id-listbox"
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            role="listbox"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
+          >
+            <ul
+              className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
+              role="presentation"
+              style={
+                Object {
+                  "maxWidth": undefined,
+                  "position": "relative",
+                  "width": undefined,
+                }
+              }
+            >
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
+                  id="combobox-unique-id-listbox-option-options-search-id-1"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure slds-listbox__option-icon"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Search
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    Search in Salesforce
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
+                  id="combobox-unique-id-listbox-option-search-in-account-id"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure slds-listbox__option-icon"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Search in Accounts
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    Search 
+                    in Accounts
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                  id="combobox-unique-id-listbox-option-1"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-account"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Account
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-listbox__option-text slds-listbox__option-text_entity"
+                    >
+                      Acme
+                    </span>
+                    <span
+                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                    >
+                      Account • San Francisco
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                  id="combobox-unique-id-listbox-option-2"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-account"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Account
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-listbox__option-text slds-listbox__option-text_entity"
+                    >
+                      Salesforce.com, Inc.
+                    </span>
+                    <span
+                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                    >
+                      Account • San Francisco
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                  id="combobox-unique-id-listbox-option-3"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-account"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Account
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-listbox__option-text slds-listbox__option-text_entity"
+                    >
+                      Paddy's Pub
+                    </span>
+                    <span
+                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                    >
+                      Account • Boston, MA
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                  id="combobox-unique-id-listbox-option-4"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-standard-account"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Account
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-listbox__option-text slds-listbox__option-text_entity"
+                    >
+                      Tyrell Corp
+                    </span>
+                    <span
+                      className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                    >
+                      Account • San Francisco, CA
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
+                  id="combobox-unique-id-listbox-option-options-add-id-1"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure slds-listbox__option-icon"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Add
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    New Entity
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -4787,6 +5397,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
               <input
                 aria-autocomplete="none"
                 aria-controls="combobox-unique-id-popover"
+                aria-haspopup="dialog"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 id="combobox-unique-id"
@@ -4803,14 +5414,18 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
                 type="text"
                 value="Select an option"
               />
-              <svg
-                aria-hidden={true}
-                className="slds-input__icon slds-icon-text-default"
+              <span
+                className="slds-icon_container slds-input__icon slds-input__icon_right"
               >
-                <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-                />
-              </svg>
+                <svg
+                  aria-hidden={true}
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                >
+                  <use
+                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  />
+                </svg>
+              </span>
             </div>
             <section
               aria-describedby="combobox-unique-id-dialog-body"
@@ -5753,9 +6368,9 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                 role="presentation"
               >
                 <div
-                  aria-selected="false"
+                  aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
-                  id="my-new-id"
+                  id="combobox-unique-id-listbox-option-my-new-id"
                   onClick={[Function]}
                   role="option"
                 >
@@ -5774,7 +6389,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                       <span
                         className="slds-assistive-text"
                       >
-                        add
+                        Search
                       </span>
                     </span>
                   </span>
@@ -5934,9 +6549,9 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                 role="presentation"
               >
                 <div
-                  aria-selected="false"
+                  aria-selected={false}
                   className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term"
-                  id="my-new-id"
+                  id="combobox-unique-id-listbox-option-my-new-id"
                   onClick={[Function]}
                   role="option"
                 >
@@ -5955,7 +6570,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                       <span
                         className="slds-assistive-text"
                       >
-                        add
+                        Add
                       </span>
                     </span>
                   </span>

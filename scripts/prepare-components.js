@@ -118,9 +118,6 @@ const generateSiteStoriesListings = (config) => {
 
 // Iterate over configFiles
 configFiles.forEach((config) => {
-	// Copy config over to package.json
-	packageJsonFile.components.push(config);
-
 	// Add config items to indexFileRequirements
 	if (config.component && config.classKey) {
 		indexFileRequirements[`${config.classKey}`] = `./${config.component}`;
@@ -139,8 +136,13 @@ configFiles.forEach((config) => {
 		});
 	}
 
-	// Add to site stories
-	generateSiteStoriesListings(config);
+	if (!config['is-deprecated']) {
+		// Copy config over to package.json
+		packageJsonFile.components.push(config);
+
+		// Add to site stories
+		generateSiteStoriesListings(config);
+	}
 });
 
 // Traverse over the parsed index file

@@ -150,14 +150,17 @@ const getOptions = (props) => {
 		const localOptionsSearchEntity = props.optionsSearchEntity.map(
 			(entity) => ({ ...entity, type: 'header' })
 		);
+		// eslint-disable-next-line fp/no-mutating-methods
 		options.push(...localOptionsSearchEntity);
 	}
+	// eslint-disable-next-line fp/no-mutating-methods
 	options.push(...props.options);
 	if (props.optionsAddItem.length > 0) {
 		const localOptionsAddItem = props.optionsAddItem.map((entity) => ({
 			...entity,
 			type: 'footer',
 		}));
+		// eslint-disable-next-line fp/no-mutating-methods
 		options.push(...localOptionsAddItem);
 	}
 	return options;
@@ -250,8 +253,8 @@ const Menu = (props) => {
 										props.onSelect(event, { option: optionData });
 									}
 						}
-						aria-selected="false"
-						id={optionData.id}
+						aria-selected={active}
+						id={`${props.inputId}-listbox-option-${optionData.id}`}
 						className={classNames(
 							'slds-media slds-listbox__option',
 							'slds-listbox__option_entity slds-listbox__option_term',
@@ -277,7 +280,7 @@ const Menu = (props) => {
 					className="slds-listbox__item"
 				>
 					<div
-						aria-selected="false"
+						aria-selected={active}
 						onClick={
 							optionData.disabled
 								? null
@@ -285,7 +288,7 @@ const Menu = (props) => {
 										props.onSelect(event, { option: optionData });
 									}
 						}
-						id={optionData.id}
+						id={`${props.inputId}-listbox-option-${optionData.id}`}
 						className={classNames(
 							'slds-media slds-listbox__option',
 							'slds-listbox__option_entity slds-listbox__option_term',

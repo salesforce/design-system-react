@@ -131,19 +131,25 @@ class Step extends React.Component {
 					'slds-button',
 					{ 'slds-button_icon': renderIcon },
 					'slds-progress__marker',
-					{ 'slds-progress__marker_icon': renderIcon }
+					{ 'slds-progress__marker_icon': renderIcon },
+					'slds-is-disabled'
 				)}
+				aria-disabled
 				aria-describedby={`progress-indicator-tooltip-${this.props.step.id ||
 					this.props.index}`}
+				style={{ cursor: 'not-allowed' }}
 				tabIndex={0}
 				role="button"
 			>
 				{icon}
 				<span className="slds-assistive-text">
-					{this.props.step.assistiveText ||
-						`${props.assistiveText.step} ${props.index + 1}: ${
-							props.step.label
-						} - ${status}`}
+					{this.props.step.assistiveText || (
+						<React.Fragment>
+							{`${props.assistiveText.step} ${props.index + 1}: `}
+							{props.step.label}
+							{`- ${status}`}
+						</React.Fragment>
+					)}
 				</span>
 			</a>
 		) : (
@@ -163,10 +169,13 @@ class Step extends React.Component {
 			>
 				{icon}
 				<span className="slds-assistive-text">
-					{this.props.step.assistiveText ||
-						`${props.assistiveText.step} ${props.index + 1}: ${
-							props.step.label
-						}${status ? ` - ${status}` : ''}`}
+					{this.props.step.assistiveText || (
+						<React.Fragment>
+							{`${props.assistiveText.step} ${props.index + 1}: `}
+							{props.step.label}
+							{status ? ` - ${status}` : ''}
+						</React.Fragment>
+					)}
 				</span>
 			</button>
 		);

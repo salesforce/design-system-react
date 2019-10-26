@@ -1,7 +1,39 @@
 {
     "accordion": {
         "description": "An accordion allows a user to toggle the display of sections of content.\nThe accordion component wraps accordion panels that can be selected and expanded. It accepts children to define the content displayed within.",
-        "methods": [],
+        "methods": [
+            {
+                "name": "onClickSummary",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "onKeyDownSummary",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "e",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "addSummaryButton",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "button",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
         "props": {
             "className": {
                 "type": {
@@ -89,12 +121,32 @@
                             "required": false,
                             "description": "Component that can be passed as prop to `<Panel />`. As an example, a menu dropdown could be used here to handle additional actions for each accordion panel. _Tested with Mocha framework._"
                         },
+                        "onKeyDownSummary": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Callback that will run whenever there is a keydown on the panel button. Function doesn't change the state of the component."
+                        },
                         "onTogglePanel": {
                             "type": {
                                 "name": "func"
                             },
                             "required": true,
                             "description": "Callback that will run whenever a panel is toggled. Function should handle state to toggle `expanded` prop. _Tested with Mocha framework._"
+                        },
+                        "refs": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "summaryButton": {
+                                        "name": "func",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "Ref callback that will pass in panel's `input` tag"
                         },
                         "summary": {
                             "type": {
@@ -971,6 +1023,118 @@
         "SLDS-component-path": "/components/avatar",
         "dependencies": []
     },
+    "badge": {
+        "description": "Badges are labels which hold small amounts of information.",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "Get the Badge's HTML id. Generate a new one if no ID present.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Get the Badge's HTML id. Generate a new one if no ID present."
+            }
+        ],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the component"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Id of component, if desired. If not provided an id is automatically generated"
+            },
+            "style": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Custom styles to be passed to the component"
+            },
+            "color": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'default'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'inverse'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'light'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Color variant for the badge component",
+                "defaultValue": {
+                    "value": "'default'",
+                    "computed": false
+                }
+            },
+            "iconAlignment": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'left'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'right'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Icon alignment for the badge component",
+                "defaultValue": {
+                    "value": "'left'",
+                    "computed": false
+                }
+            },
+            "content": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "node"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Content to be placed inside the badge component"
+            }
+        },
+        "route": "badge",
+        "display-name": "Badge",
+        "SLDS-component-path": "/components/badges",
+        "dependencies": []
+    },
     "brand-band": {
         "description": "The brand band provides theming capability that adds personality and improves information density and contrast.\n\nNOTE: you may find that themes other than 'default' fail to load the appropriate styling in your application.\nIf this occurs the cause is very likely to be CSP settings on the server hosting your application protecting against style injections.\nChanging these settings is not recommended. Instead, add the following styles to any stylesheet provided by the server itself (such as an external stylesheet):\n\nWhen using 'lightning-theme':\n.slds-brand-band.dsr-brand-band_lightning-blue:before {\n    background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);\n}\n.slds-brand-band.dsr-brand-band_lightning-blue:after {\n    background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);\n}\n\nFor more information on the problem, [see this Stack Overflow question](https://stackoverflow.com/questions/17766817/refused-to-apply-inline-style-because-it-violates-the-following-content-security)",
         "methods": [
@@ -1452,7 +1616,15 @@
     },
     "button-group": {
         "description": "The ButtonGroup component wraps other components (ie. Button, MenuDropdown, PopoverTooltip, Checkboxes, etc).",
-        "methods": [],
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
         "props": {
             "children": {
                 "type": {
@@ -1496,6 +1668,13 @@
                 },
                 "required": false,
                 "description": "If the `labels.label` prop is set, a `.slds-form-element` classed fieldset element is added as a container. This prop applies classes to that element"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
             },
             "labels": {
                 "type": {
@@ -1622,43 +1801,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Icon associated with the stateful button. Accepts an Icon component"
-            },
-            "iconName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names."
-            },
-            "iconSize": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'x-small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'medium'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'large'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines the size of the icon.",
-                "defaultValue": {
-                    "value": "'medium'",
-                    "computed": false
-                }
+                "description": "Icon associated with the stateful button. Accepts an `Icon` component"
             },
             "onBlur": {
                 "type": {
@@ -1799,6 +1942,13 @@
                 },
                 "required": false,
                 "description": "Different types of buttons"
+            },
+            "iconSize": {
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                },
+                "required": false
             }
         },
         "route": "stateful-buttons",
@@ -2550,6 +2700,18 @@
                 "returns": null
             },
             {
+                "name": "getPanelId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ carouselId, itemId }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "getCurrentPanel",
                 "docblock": null,
                 "modifiers": [],
@@ -2826,6 +2988,25 @@
                 "returns": null
             },
             {
+                "name": "getErrorId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getAriaDescribedBy",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "{ idArray = [] }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleChange",
                 "docblock": null,
                 "modifiers": [],
@@ -2859,6 +3040,10 @@
                         "type": null
                     },
                     {
+                        "name": "ariaProps",
+                        "type": null
+                    },
+                    {
                         "name": "assistiveText",
                         "type": null
                     },
@@ -2876,6 +3061,10 @@
                 "params": [
                     {
                         "name": "props",
+                        "type": null
+                    },
+                    {
+                        "name": "ariaProps",
                         "type": null
                     },
                     {
@@ -2899,6 +3088,10 @@
                         "type": null
                     },
                     {
+                        "name": "ariaProps",
+                        "type": null
+                    },
+                    {
                         "name": "assistiveText",
                         "type": null
                     },
@@ -2916,6 +3109,10 @@
                 "params": [
                     {
                         "name": "props",
+                        "type": null
+                    },
+                    {
+                        "name": "ariaProps",
                         "type": null
                     },
                     {
@@ -2940,6 +3137,13 @@
                 },
                 "required": false,
                 "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need."
+            },
+            "aria-labelledby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The aria-labelledby attribute establishes relationships between objects and their label(s), and its value should be one or more element IDs, which refer to elements that have the text needed for labeling. List multiple element IDs in a space delimited fashion."
             },
             "aria-owns": {
                 "type": {
@@ -4277,6 +4481,10 @@
                             "name": "string",
                             "required": false
                         },
+                        "loadingMenuItems": {
+                            "name": "string",
+                            "required": false
+                        },
                         "optionSelectedInMenu": {
                             "name": "string",
                             "required": false
@@ -4300,9 +4508,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `popoverLabel`: Used by popover variant, assistive text for the Popover aria-label.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `loading`: Text added to loading spinner.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `popoverLabel`: Used by popover variant, assistive text for the Popover aria-label.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove',\n    selectedListboxLabel: 'Selected Options:',\n}",
+                    "value": "{\n    loadingMenuItems: 'Loading',\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove',\n    selectedListboxLabel: 'Selected Options:',\n}",
                     "computed": false
                 }
             },
@@ -4432,7 +4640,7 @@
                     }
                 },
                 "required": false,
-                "description": "Event Callbacks\n* `onBlur`: Called when `input` removes focus.\n* `onChange`: Called when keyboard events occur within `input`\n* `onClose`: Triggered when the menu has closed.\n* `onFocus`: Called when `input` receives focus.\n* `onOpen`: Triggered when the menu has opened.\n* `onRequestClose`: Function called when the menu would like to hide. Please use with `isOpen`.\n* `onRequestOpen`:  Function called when the menu would like to show. Please use with `isOpen`.\n* `onRequestRemoveSelectedOption`: Function called when a single selection option is to be removed.\n* `onSelect`: Function called when a menu item is selected\n* `onSubmit`: Function called when user presses enter or submits the `input`\n_Tested with Mocha testing._",
+                "description": "Event Callbacks\n* `onBlur`: Called when `input` removes focus.\n* `onChange`: Called when keyboard events occur within `input`\n* `onClose`: Triggered when the menu has closed.\n* `onFocus`: Called when `input` receives focus.\n* `onOpen`: Triggered when the menu has opened.\n* `onRequestClose`: Function called when the menu would like to hide. Please use with `isOpen`.\n* `onRequestOpen`:  Function called when the menu would like to show. Please use with `isOpen`.\n* `onRequestRemoveSelectedOption`: Function called when a single selection option is to be removed.\n* `onSelect`: Function called when a menu item is selected. This includes header and footer items.\n* `onSubmit`: Function called when user presses enter or submits the `input`\n_Tested with Mocha testing._",
                 "defaultValue": {
                     "value": "{}",
                     "computed": false
@@ -4451,6 +4659,20 @@
                 },
                 "required": false,
                 "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props."
+            },
+            "hasInputSpinner": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, loading spinner appears inside input on right hand side."
+            },
+            "hasMenuSpinner": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Add loading spinner below the options"
             },
             "hasStaticAlignment": {
                 "type": {
@@ -4645,7 +4867,7 @@
                 "required": false,
                 "description": "**Array of item objects in the dropdown menu.**\nEach object can contain:\n* `icon`: An `Icon` component. (not used in read-only variant)\n* `id`: A unique identifier string.\n* `label`: A primary string of text for a menu item or group separator.\n* `subTitle`: A secondary string of text added for clarity. (optional)\n* `type`: 'separator' is the only type currently used\n* `disabled`: Set to true to disable this menu item.\n* `tooltipContent`: Content that is displayed in tooltip when item is disabled\n```\n{\n\tid: '2',\n\tlabel: 'Salesforce.com, Inc.',\n\tsubTitle: 'Account • San Francisco',\n\ttype: 'account',\n disabled: true,\n tooltipContent: \"You don't have permission to select this item.\"\n},\n```\nNote: At the moment, Combobox does not support two consecutive separators. _Tested with snapshot testing._"
             },
-            "readOnlyMenuItemVisibleLength": {
+            "menuItemVisibleLength": {
                 "type": {
                     "name": "enum",
                     "value": [
@@ -4664,11 +4886,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`.",
-                "defaultValue": {
-                    "value": "5",
-                    "computed": false
-                }
+                "description": "Determines the height of the menu based on SLDS CSS classes. This only applies to the readonly variant. This is a `number`."
             },
             "predefinedOptionsOnly": {
                 "type": {
@@ -4770,13 +4988,6 @@
                 "required": false,
                 "description": "Default value of input. Provide uncontroled behaviour"
             },
-            "loading": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Add loading spiner below the options"
-            },
             "optionsAddItem": {
                 "type": {
                     "name": "arrayOf",
@@ -4802,16 +5013,12 @@
                                     }
                                 ],
                                 "required": false
-                            },
-                            "onClick": {
-                                "name": "func",
-                                "required": false
                             }
                         }
                     }
                 },
                 "required": false,
-                "description": "**Array of item objects in the dropdown menu that is displayed below the list of `options`.**\nEach object can contain:\n* `id`: A unique identifier string.\n* `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.\n* `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.\n* `onClick`: Callback triggered when selecting menu item.\n```\n{\n\tid: '1',\n\ticon: (\n \t<Icon\n\t\t\tassistiveText={{ label: 'add' }}\n\t\t\tcategory=\"utility\"\n\t\t\tsize=\"x-small\"\n\t\t\tname=\"add\"\n\t\t/>\n\t),\n\tlabel: 'New Entity'\n\tonClick: (event) => console.log('onClick', event),\n}\n```\n_Tested with snapshot testing._",
+                "description": "**Array of item objects in the dropdown menu that is displayed below the list of `options`. `onSelect` fires when selected.**\nEach object can contain:\n* `id`: A unique identifier string.\n* `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.\n* `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.\n```\n{\n\tid: '1',\n\ticon: (\n \t<Icon\n\t\t\tassistiveText={{ label: 'add' }}\n\t\t\tcategory=\"utility\"\n\t\t\tsize=\"x-small\"\n\t\t\tname=\"add\"\n\t\t/>\n\t),\n\tlabel: 'New Entity'\n}\n```\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
@@ -4842,16 +5049,12 @@
                                     }
                                 ],
                                 "required": false
-                            },
-                            "onClick": {
-                                "name": "func",
-                                "required": false
                             }
                         }
                     }
                 },
                 "required": false,
-                "description": "**Array of item objects in the dropdown menu that is displayed above the list of `options`.**\nEach object can contain:\n* `id`: A unique identifier string.\n* `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.\n* `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.\n* `onClick`: Callback triggered when selecting menu item.\n```\n{\nid: '1',\nicon: (\n\t<Icon\n\t\tassistiveText={{ label: 'Add in Accounts' }}\n\t\tsize=\"x-small\"\n\t\tcategory=\"utility\"\n\t\tname=\"search\"\n\t/>\n),\nlabel: (searchTerm) => {\n\treturn `${searchTerm} in Accounts`;\n},\nonClick: (event) => console.log('onClick', event),\n}\n```\n_Tested with snapshot testing._",
+                "description": "**Array of item objects in the dropdown menu that is displayed above the list of `options`. `onSelect` fires when selected. **\nEach object can contain:\n* `id`: A unique identifier string.\n* `icon`: An [Icon](/components/icons/) component to be displayed to the left of the menu item `label`.\n* `label`: A primary string of text for a menu item or a function that receives `inputValue` as function parameter and returns text to be displayed in for a menu item.\n```\n{\nid: '1',\nicon: (\n\t<Icon\n\t\tassistiveText={{ label: 'Add in Accounts' }}\n\t\tsize=\"x-small\"\n\t\tcategory=\"utility\"\n\t\tname=\"search\"\n\t/>\n),\nlabel: (searchTerm) => {\n\treturn `${searchTerm} in Accounts`;\n},\n}\n```\n_Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
@@ -4887,7 +5090,7 @@
                     ]
                 },
                 "required": false,
-                "description": "",
+                "description": "Defines Combobox variant styling and functionality",
                 "defaultValue": {
                     "value": "'base'",
                     "computed": false
@@ -5006,13 +5209,17 @@
                         "selectRow": {
                             "name": "string",
                             "required": false
+                        },
+                        "selectRowGroup": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `actionsHeader`: Text for heading of actions column\n* `columnSort`: Text for sort action on table column header\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\n* `selectAllRows`: Text for select all checkbox within the table header\n* `selectRow`: Text for select row",
+                "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `actionsHeader`: Text for heading of actions column\n* `columnSort`: Text for sort action on table column header\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\n* `selectAllRows`: Text for select all checkbox within the table header\n* `selectRow`: Text for select row. Default: \"Select row 1\"\n* `selectRowGroup`: This is an input group label and is attached to each checkbox or radio. Default is \"Choose a row to select\"",
                 "defaultValue": {
-                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n}",
+                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n    selectRowGroup: 'Choose a row to select',\n}",
                     "computed": false
                 }
             },
@@ -5718,13 +5925,17 @@
                         "previousMonth": {
                             "name": "string",
                             "required": false
+                        },
+                        "year": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `nextMonth`: Label for button to go to the next month _Tested with snapshot testing._\n* `openCalendar`: Call to action label for calendar dialog trigger _Tested with snapshot testing._\n* `previousMonth`: Label for button to go to the previous month _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    nextMonth: 'Next month',\n    openCalendar: 'Open Calendar',\n    previousMonth: 'Previous month',\n}",
+                    "value": "{\n    nextMonth: 'Next month',\n    openCalendar: 'Open Calendar',\n    previousMonth: 'Previous month',\n    year: 'Year',\n}",
                     "computed": false
                 }
             },
@@ -6585,6 +6796,13 @@
                             "required": true,
                             "description": "Callbacks for various expression condition events such as value change, delete etc"
                         },
+                        "focusOnMount": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "If set to true, the component will focus on the first focusable input upon mounting. This is useful for accessibility when adding new conditions."
+                        },
                         "labels": {
                             "type": {
                                 "name": "shape",
@@ -6712,7 +6930,11 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility.**\n* `help`: Assistive text for help icon"
+                            "description": "**Assistive text for accessibility.**\n* `help`: Assistive text for help icon",
+                            "defaultValue": {
+                                "value": "{\n    help: 'Help',\n}",
+                                "computed": false
+                            }
                         },
                         "id": {
                             "type": {
@@ -6942,6 +7164,13 @@
                             },
                             "required": false,
                             "description": "Callbacks for various expression group events such as trigger change, add condition etc"
+                        },
+                        "focusOnMount": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "If set to true, the component will focus on the first focusable input upon mounting. This is useful for accessibility when adding new groups."
                         },
                         "labels": {
                             "type": {
@@ -8850,6 +9079,13 @@
                 "required": false,
                 "description": "CSS classes that are applied to the span."
             },
+            "containerStyle": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Styles that are applied to the span."
+            },
             "colorVariant": {
                 "type": {
                     "name": "enum",
@@ -9003,120 +9239,6 @@
         "route": "icons",
         "display-name": "Icons",
         "SLDS-component-path": "/components/icons",
-        "dependencies": []
-    },
-    "illustration": {
-        "description": "An illustration is an image and inline text that work in tandem to communicate a state in a more friendly way.",
-        "methods": [],
-        "props": {
-            "className": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "array"
-                        },
-                        {
-                            "name": "object"
-                        },
-                        {
-                            "name": "string"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "CSS classes that are applied to the SVG. _Tested with Mocha testing._"
-            },
-            "heading": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "A heading text. It is required if illustration is present. _Tested with snapshot testing._ _Tested with Mocha testing._"
-            },
-            "illustration": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "A custom SVG object to use instead of the supplied SLDS illustrations, look in `design-system-react/icons` for examples and syntax. _Tested with snapshot testing._ _Tested with Mocha testing._"
-            },
-            "internalIllustration": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "Indicates whether the illustration SVGs are from the design-system-react repo. If yes, set to true.",
-                "defaultValue": {
-                    "value": "true",
-                    "computed": false
-                }
-            },
-            "messageBody": {
-                "type": {
-                    "name": "union",
-                    "value": [
-                        {
-                            "name": "string"
-                        },
-                        {
-                            "name": "node"
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "A message body below the heading to further communicate the state of the component. _Tested with snapshot testing._ _Tested with Mocha testing._"
-            },
-            "name": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Name of the illustration. Visit <a href='https://lightningdesignsystem.com/components/illustration/'>Lightning Design System Illustration</a> to reference illustration names. _Tested with snapshot testing._ _Tested with Mocha testing._"
-            },
-            "path": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Path to the illustration SVG image. _Tested with snapshot testing._"
-            },
-            "size": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "'small'",
-                            "computed": false
-                        },
-                        {
-                            "value": "'large'",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Size of the illustration. _Tested with snapshot testing._ _Tested with Mocha testing._",
-                "defaultValue": {
-                    "value": "'small'",
-                    "computed": false
-                }
-            },
-            "style": {
-                "type": {
-                    "name": "object"
-                },
-                "required": false,
-                "description": "Custom styles to be passed to the illustration SVG. _Tested with Mocha testing._",
-                "defaultValue": {
-                    "value": "{}",
-                    "computed": false
-                }
-            }
-        },
-        "route": "illustrations",
-        "display-name": "Illustrations",
-        "SLDS-component-path": "/components/illustration",
         "dependencies": []
     },
     "input": {
@@ -9945,7 +10067,7 @@
                 "returns": null
             },
             {
-                "name": "setCurrentSelectedIndices",
+                "name": "getCurrentSelectedIndices",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -10044,6 +10166,20 @@
                         "type": null
                     }
                 ],
+                "returns": null
+            },
+            {
+                "name": "handleCloseForHover",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleOpenForHover",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
                 "returns": null
             },
             {
@@ -10237,6 +10373,10 @@
                     "name": "enum",
                     "value": [
                         {
+                            "value": "'center'",
+                            "computed": false
+                        },
+                        {
                             "value": "'left'",
                             "computed": false
                         },
@@ -10247,7 +10387,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Aligns the right or left side of the menu with the respective side of the trigger. This is not intended for use with `nubbinPosition`.",
+                "description": "Aligns the menu center, right, or left respective to the trigger. This is not intended for use with `nubbinPosition`.",
                 "defaultValue": {
                     "value": "'left'",
                     "computed": false
@@ -10739,7 +10879,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:\n```\n[{\n  className: 'custom-li-class',\n    divider: 'bottom',\n    label: 'A Header',\n    type: 'header'\n }, {\n    href: 'http://sfdc.co/',\n    id: 'custom-li-id',\n    label: 'Has a value',\n  leftIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n  rightIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n    type: 'item',\n    value: 'B0'\n }, {\n  type: 'divider'\n}]\n```"
+                "description": "An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:\n```\n[{\n  className: 'custom-li-class',\n    divider: 'bottom',\n    label: 'A Header',\n    type: 'header'\n }, {\n    href: 'http://sfdc.co/',\n    id: 'custom-li-id',\n    label: 'Has a value',\n  leftIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n  rightIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n    type: 'item',\n    value: 'B0'\n }, {\n  tooltipContent: 'Displays a tooltip when hovered over with this content. The `tooltipMenuItem` prop must be set for this to work.'\n  type: 'divider'\n}]\n```"
             },
             "style": {
                 "type": {
@@ -10794,6 +10934,13 @@
                 },
                 "required": false,
                 "description": "This prop is passed onto the triggering `Button`. It creates a tooltip with the content of the `node` provided."
+            },
+            "tooltipMenuItem": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Accepts a `Tooltip` component to be used as the template for menu item tooltips that appear via the `tooltipContent` options object attribute. Must be present for `tooltipContent` to work"
             },
             "triggerClassName": {
                 "type": {
@@ -12940,6 +13087,13 @@
                 "required": false,
                 "description": "All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag, or in an h2 within the popover body if used with `variant=\"walkthrough-action\"`. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop."
             },
+            "icon": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Icon displayed in the `feature` variant"
+            },
             "id": {
                 "type": {
                     "name": "string"
@@ -13085,6 +13239,10 @@
                         },
                         {
                             "value": "'error'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'feature'",
                             "computed": false
                         },
                         {
@@ -13877,13 +14035,17 @@
                         "label": {
                             "name": "string",
                             "required": false
+                        },
+                        "required": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.",
+                "description": "**Assistive text for accessibility**\n* `label`: This label appears in the legend.\n* `required`: Text to help identify the group as required",
                 "defaultValue": {
-                    "value": "{}",
+                    "value": "{ required: 'Required' }",
                     "computed": false
                 }
             },
@@ -14023,12 +14185,36 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
+            },
             "aria-describedby": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
                 "description": "The ID of an element that describes this radio input. Often used for error messages."
+            },
+            "aria-labelledby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The aria-labelledby attribute establishes relationships between objects and their label(s), and its value should be one or more element IDs, which refer to elements that have the text needed for labeling. List multiple element IDs in a space delimited fashion."
             },
             "checked": {
                 "type": {
@@ -14416,6 +14602,23 @@
                         }
                     ],
                     "props": {
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "expandStep": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `expandStep`: Button that examples a step\n_Tested with snapshot testing._",
+                            "defaultValue": {
+                                "value": "{ expandStep: 'Expand Step' }",
+                                "computed": false
+                            }
+                        },
                         "className": {
                             "type": {
                                 "name": "union",
@@ -14521,6 +14724,13 @@
                             "required": false,
                             "description": "Function that is called to render step content. Typically returns a ProgressIndicator and/or ScopedNotification component"
                         },
+                        "onRenderFigure": {
+                            "type": {
+                                "name": "func"
+                            },
+                            "required": false,
+                            "description": "Function that is called to render content within the media figure. Expects to be returned an Icon or ProgressRing component"
+                        },
                         "onToggleIsOpen": {
                             "type": {
                                 "name": "func"
@@ -14603,6 +14813,10 @@
                 "type": {
                     "name": "shape",
                     "value": {
+                        "disabled": {
+                            "name": "string",
+                            "required": false
+                        },
                         "label": {
                             "name": "string",
                             "required": false
@@ -14610,7 +14824,11 @@
                     }
                 },
                 "required": false,
-                "description": "Assistive text for accessibility**\n`label`: Visually hidden label but read out loud by screen readers."
+                "description": "Assistive text for accessibility**\n`disabled`: Read by screen readers to indicate a disabled slider\n`label`: Visually hidden label but read out loud by screen readers.",
+                "defaultValue": {
+                    "value": "{ disabled: 'Disabled' }",
+                    "computed": false
+                }
             },
             "classNameContainer": {
                 "type": {
@@ -14895,22 +15113,17 @@
                 "returns": null
             },
             {
-                "name": "getMasterViewId",
+                "name": "getIsOpen",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
                 "returns": null
             },
             {
-                "name": "setIsOpen",
+                "name": "getMasterViewId",
                 "docblock": null,
                 "modifiers": [],
-                "params": [
-                    {
-                        "name": "{ isOpen }",
-                        "type": null
-                    }
-                ],
+                "params": [],
                 "returns": null
             },
             {
@@ -14923,13 +15136,6 @@
                         "type": null
                     }
                 ],
-                "returns": null
-            },
-            {
-                "name": "masterContent",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
                 "returns": null
             }
         ],
@@ -15362,7 +15568,7 @@
                                 }
                             },
                             "required": false,
-                            "description": "Event Callbacks\n* `onSelect`: Called when a list item is selected.\n   * event {object} List item click event\n   * Meta {object}\n      * selectedItems {array} List of selected items.\n      * item {object} Last selected item.\n* `onSort`: Called when the list is sorted.\n   * event {object} Sort click event",
+                            "description": "Event Callbacks\n* `onSelect`: Called when a list item is selected. Previously, this event was called when an item was focused. The UX pattern has changed and this event is now called on pressing enter or mouse click.\n   * event {object} List item click event\n   * Meta {object}\n      * selectedItems {array} List of selected items.\n      * item {object} Last selected item.\n* `onSort`: Called when the list is sorted.\n   * event {object} Sort click event",
                             "defaultValue": {
                                 "value": "{}",
                                 "computed": false
@@ -15780,6 +15986,19 @@
             }
         ],
         "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility.**\n* `label`: If present, the label associated with this `textarea` is overwritten by this text and is visually not shown."
+            },
             "aria-activedescendant": {
                 "type": {
                     "name": "string"
@@ -15849,19 +16068,6 @@
                 },
                 "required": false,
                 "description": "Specifies is the textarea should automatically get focus when the page loads. This is typically a poor user experience."
-            },
-            "assistiveText": {
-                "type": {
-                    "name": "shape",
-                    "value": {
-                        "label": {
-                            "name": "string",
-                            "required": false
-                        }
-                    }
-                },
-                "required": false,
-                "description": "**Assistive text for accessibility.**\n* `label`: If present, the label associated with this `textarea` is overwritten by this text and is visually not shown."
             },
             "children": {
                 "type": {
@@ -16234,11 +16440,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Text that will appear in an empty input.",
-                "defaultValue": {
-                    "value": "'Pick Time'",
-                    "computed": false
-                }
+                "description": "Text that will appear in an empty input."
             },
             "required": {
                 "type": {
@@ -16301,12 +16503,12 @@
                 "returns": null
             },
             {
-                "name": "saveButtonRef",
+                "name": "saveToastRef",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "component",
+                        "name": "toast",
                         "type": null
                     }
                 ],
@@ -16333,9 +16535,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n* `error`: This is a visually hidden label to mark the toast as an error variant\n* `info`: This is a visually hidden label to mark the toast as an info variant\n* `success`: This is a visually hidden label to mark the toast as an success variant\n* `warning`: This is a visually hidden label to mark the toast as an warning variant\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    closeButton: 'Close',\n}",
+                    "value": "{\n    closeButton: 'Close',\n    error: 'error',\n    info: 'info',\n    success: 'success',\n    warning: 'warning',\n}",
                     "computed": false
                 }
             },
@@ -16718,9 +16920,20 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "Delay on Tooltip closing.",
+                "description": "Delay on Tooltip closing in milliseconds. Defaults to 50",
                 "defaultValue": {
                     "value": "50",
+                    "computed": false
+                }
+            },
+            "hoverOpenDelay": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Delay on Tooltip opening in milliseconds. Defaults to 0",
+                "defaultValue": {
+                    "value": "0",
                     "computed": false
                 }
             },

@@ -11,7 +11,7 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<ButtonGroup>
+				<ButtonGroup id="button-group-icon-group-1">
 					<ButtonStateful
 						assistiveText={{ icon: 'Show Chart' }}
 						buttonVariant="icon"
@@ -46,7 +46,10 @@ class Example extends React.Component {
 				</ButtonGroup>
 				<br />
 				<br />
-				<ButtonGroup labels={{ label: 'Actions' }}>
+				<ButtonGroup
+					id="button-group-icon-group-2"
+					labels={{ label: 'Actions' }}
+				>
 					<ButtonStateful
 						assistiveText={{ icon: 'Show Chart' }}
 						buttonVariant="icon"

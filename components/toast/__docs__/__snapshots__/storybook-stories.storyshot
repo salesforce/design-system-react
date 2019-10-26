@@ -30,6 +30,7 @@ exports[`DOM snapshots SLDSToast Custom Class Names 1`] = `
     <div
       className="slds-notify slds-notify_toast slds-theme_info this-is-the-alert"
       role="status"
+      tabIndex={0}
     >
       <span
         className="slds-assistive-text"
@@ -105,6 +106,7 @@ exports[`DOM snapshots SLDSToast Custom Style 1`] = `
           "backgroundColor": "rgb(18, 49, 35)",
         }
       }
+      tabIndex={0}
     >
       <span
         className="slds-assistive-text"
@@ -176,6 +178,7 @@ exports[`DOM snapshots SLDSToast Duration Toast 1`] = `
       <div
         className="slds-notify slds-notify_toast slds-theme_info"
         role="status"
+        tabIndex={0}
       >
         <span
           className="slds-assistive-text"
@@ -256,6 +259,7 @@ exports[`DOM snapshots SLDSToast Error 1`] = `
     <div
       className="slds-notify slds-notify_toast slds-theme_error"
       role="status"
+      tabIndex={0}
     >
       <span
         className="slds-assistive-text"
@@ -321,6 +325,7 @@ exports[`DOM snapshots SLDSToast Error With Details 1`] = `
     <div
       className="slds-notify slds-notify_toast slds-theme_error"
       role="status"
+      tabIndex={0}
     >
       <span
         className="slds-assistive-text"
@@ -389,6 +394,7 @@ exports[`DOM snapshots SLDSToast Info 1`] = `
     <div
       className="slds-notify slds-notify_toast slds-theme_info"
       role="status"
+      tabIndex={0}
     >
       <span
         className="slds-assistive-text"
@@ -460,6 +466,7 @@ exports[`DOM snapshots SLDSToast Success 1`] = `
     <div
       className="slds-notify slds-notify_toast slds-theme_success"
       role="status"
+      tabIndex={0}
     >
       <span
         className="slds-assistive-text"
@@ -531,6 +538,7 @@ exports[`DOM snapshots SLDSToast Warning 1`] = `
     <div
       className="slds-notify slds-notify_toast slds-theme_warning"
       role="status"
+      tabIndex={0}
     >
       <span
         className="slds-assistive-text"
