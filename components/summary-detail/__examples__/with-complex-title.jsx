@@ -9,7 +9,7 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<SummaryDetail
-					id="sumamry-detail-example-with-complex-title"
+					id="summary-detail-example-with-complex-title"
 					title="Summary Title"
 					subTitle="Additional information about this step"
 					badge={<span className="slds-badge">In Progress</span>}

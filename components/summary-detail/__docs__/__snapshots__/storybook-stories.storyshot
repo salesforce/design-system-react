@@ -6,10 +6,10 @@ exports[`DOM snapshots SLDSSummaryDetail Base 1`] = `
 >
   <div
     className="slds-summary-detail"
-    id="sumamry-detail-base-example"
+    id="summary-detail-base-example"
   >
     <button
-      aria-controls="sumamry-detail-base-example-details"
+      aria-controls="summary-detail-base-example-details"
       aria-expanded={false}
       className="slds-button slds-button_icon slds-m-right_x-small"
       onClick={[Function]}
@@ -46,7 +46,7 @@ exports[`DOM snapshots SLDSSummaryDetail Base 1`] = `
       <div
         aria-hidden={true}
         className="slds-summary-detail__content"
-        id="sumamry-detail-base-example-details"
+        id="summary-detail-base-example-details"
       >
         <p>
           Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.
@@ -63,10 +63,10 @@ exports[`DOM snapshots SLDSSummaryDetail w/ Complex Title 1`] = `
 >
   <div
     className="slds-summary-detail"
-    id="sumamry-detail-example-with-complex-title"
+    id="summary-detail-example-with-complex-title"
   >
     <button
-      aria-controls="sumamry-detail-example-with-complex-title-details"
+      aria-controls="summary-detail-example-with-complex-title-details"
       aria-expanded={false}
       className="slds-button slds-button_icon slds-m-right_x-small"
       onClick={[Function]}
@@ -115,7 +115,7 @@ exports[`DOM snapshots SLDSSummaryDetail w/ Complex Title 1`] = `
       <div
         aria-hidden={true}
         className="slds-summary-detail__content"
-        id="sumamry-detail-example-with-complex-title-details"
+        id="summary-detail-example-with-complex-title-details"
       >
         <p>
           Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.

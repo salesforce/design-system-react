@@ -64,7 +64,6 @@ const defaultProps = {
 	assistiveText: {
 		toggleButton: 'Toggle details for Summary Title',
 	},
-	isOpen: false,
 };
 
 /**
@@ -74,7 +73,7 @@ class SummaryDetail extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isOpen: this.props.isOpen,
+			isOpen: false,
 		};
 		this.generatedId = shortid.generate();
 	}
@@ -82,14 +81,26 @@ class SummaryDetail extends React.Component {
 	/**
 	 * Get the Summary Detail Component's HTML id. Generate a new one if no ID present.
 	 */
-	getId() {
+	getId = () => {
 		return this.props.id || this.generatedId;
-	}
+	};
 
+	/**
+	 * Function that checks if toggling is controlled or uncontrolled,
+	 * and accordingly returns if the details section is open
+	 */
+	getIsOpen = () => {
+		if (typeof this.props.isOpen === 'boolean') return this.props.isOpen;
+		return this.state.isOpen;
+	};
+
+	/**
+	 * Function to handle opening and closing of details section
+	 */
 	handleToggle = (event) => {
 		if (typeof this.props.onToggleDetails === 'function')
 			this.props.onToggleDetails(event);
-		this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
+		this.setState({ isOpen: !this.getIsOpen() });
 	};
 
 	render() {
@@ -110,13 +121,12 @@ class SummaryDetail extends React.Component {
 			</h3>
 		);
 
-		const isNotOpen = !this.state.isOpen;
 		return (
 			<div
 				id={this.getId()}
 				className={classNames(
 					`slds-summary-detail`,
-					{ 'slds-is-open': this.state.isOpen },
+					{ 'slds-is-open': this.getIsOpen() },
 					this.props.className
 				)}
 			>
@@ -126,7 +136,7 @@ class SummaryDetail extends React.Component {
 					title={assistiveText.toggleButton}
 					onClick={(event) => this.handleToggle(event)}
 					aria-controls={`${this.getId()}-details`}
-					aria-expanded={!isNotOpen}
+					aria-expanded={this.getIsOpen()}
 				>
 					<Icon
 						assistiveText={{
@@ -153,11 +163,15 @@ class SummaryDetail extends React.Component {
 						)}
 					</div>
 					<div
-						aria-hidden={isNotOpen}
+						aria-hidden={!this.getIsOpen()}
 						className="slds-summary-detail__content"
 						id={`${this.getId()}-details`}
 					>
-						<p>{this.props.detail}</p>
+						{typeof this.props.detail === 'string' ? (
+							<p>{this.props.detail}</p>
+						) : (
+							this.props.detail
+						)}
 					</div>
 				</div>
 			</div>
