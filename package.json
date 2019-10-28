@@ -196,7 +196,7 @@
 		"react": "^16.9",
 		"react-docgen": "^4.1.1",
 		"react-dom": "^16.8",
-		"react-hot-loader": "^1.2.7",
+		"react-hot-loader": "^4.12.15",
 		"react-test-renderer": "^16.8",
 		"regenerator-runtime": "^0.13.3",
 		"sinon": "^4.5.0",
