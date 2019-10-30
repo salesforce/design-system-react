@@ -5,12 +5,12 @@ import ProgressIndicator from '~/components/progress-indicator'; // `~` is repla
 const steps = [
 	{
 		id: 0,
-		label: 'tooltip label #1',
+		label: 'label #1',
 	},
-	{ id: 1, label: 'tooltip label #2' },
-	{ id: 2, label: 'tooltip label #3' },
-	{ id: 3, label: 'tooltip label #4' },
-	{ id: 4, label: 'tooltip label #5' },
+	{ id: 1, label: 'label #2' },
+	{ id: 2, label: 'label #3' },
+	{ id: 3, label: 'label #4' },
+	{ id: 4, label: 'label #5' },
 ];
 
 /*

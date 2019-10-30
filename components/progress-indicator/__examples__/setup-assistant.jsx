@@ -7,28 +7,21 @@ import Checkbox from '~/components/checkbox';
 const steps = [
 	{
 		id: 0,
-		label: 'tooltip label #1',
+		label: 'label #1',
 		onRenderSetupAssistantAction: <Button label="Brand" variant="brand" />,
 		setupAssistantEstimatedTime: '4 min',
 	},
 	{
 		id: 1,
-		label: 'tooltip label #2',
+		label: 'label #2',
 		onRenderSetupAssistantAction: (
-			<Button
-				disabled
-				label="Disabled"
-				onClick={() => {
-					console.log('Disabled Button Clicked');
-				}}
-				variant="brand"
-			/>
+			<Button disabled label="Disabled" variant="brand" />
 		),
 		setupAssistantEstimatedTime: '40 min',
 	},
 	{
 		id: 2,
-		label: 'tooltip label #3',
+		label: 'label #3',
 		onRenderSetupAssistantAction: (
 			<Button
 				iconCategory="utility"
@@ -40,14 +33,14 @@ const steps = [
 	},
 	{
 		id: 3,
-		label: 'tooltip label #4',
+		label: 'label #4',
 		onRenderSetupAssistantAction: (
 			<Checkbox id="checkbox-toggle-example--error" variant="toggle" />
 		),
 	},
 	{
 		id: 4,
-		label: 'tooltip label #5',
+		label: 'label #5',
 		onRenderSetupAssistantAction: <Button label="Done" />,
 		setupAssistantEstimatedTime: '14 min',
 	},

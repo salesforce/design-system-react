@@ -20,7 +20,7 @@ class Example extends React.Component {
 					<ToastContainer>
 						{this.state.isOpen ? (
 							<Toast
-								duration={10000}
+								duration={15000}
 								labels={{
 									heading: '26 potential duplicate leads were found.',
 									headingLink: 'Select Leads to Merge',
