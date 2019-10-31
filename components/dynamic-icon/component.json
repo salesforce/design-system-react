@@ -1,0 +1,17 @@
+{
+	"component": "dynamic-icon",
+	"status": "prod",
+	"display-name": "Dynamic Icon",
+	"classKey": "DynamicIcon",
+	"SLDS-component-path": "/components/dynamic-icon",
+	"site-stories": [
+		"/__examples__/ellie.jsx",
+		"/__examples__/eq.jsx",
+		"/__examples__/score.jsx",
+		"/__examples__/strength.jsx",
+		"/__examples__/trend.jsx",
+		"/__examples__/typing.jsx",
+		"/__examples__/waffle.jsx"
+	],
+	"url-slug": "dynamic-icon"
+}
