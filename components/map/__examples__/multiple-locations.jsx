@@ -61,26 +61,28 @@ class Example extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selection: this.props.selection || locations[1],
+			selection: this.props.selection || undefined,
 		};
 	}
 
 	render() {
 		const map = (
 			<Map
+				defaultLocation={locations[0]}
 				id="map-multiple-locations-example"
 				googleAPIKey="AIzaSyDliLquGXGts9S8YtkWVolSQEJdBL1ZuWc"
 				labels={{ title: 'Salesforce Locations In United States' }}
 				locations={locations}
-				selection={this.state.selection}
-				onClickLocation={(event, data) =>
+				onClickLocation={(event, data) => {
 					log({
 						action: this.props.action,
 						event,
 						eventName: 'Location is selected',
 						data,
-					})
-				}
+					});
+					this.setState({ selection: data });
+				}}
+				selection={this.state.selection}
 			/>
 		);
 

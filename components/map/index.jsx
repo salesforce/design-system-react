@@ -34,6 +34,17 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
+	 *  Accepts location object that will be shown if no location has been selected. Required
+	 *  * `id` : A unique identifier string for the location
+	 *  * `name` : Name of the location
+	 *  * `address` : Address of the location
+	 */
+	defaultLocation: PropTypes.shape({
+		id: PropTypes.string.isRequired,
+		name: PropTypes.string.isRequired,
+		address: PropTypes.string.isRequired,
+	}).isRequired,
+	/**
 	 * HTML id for component.
 	 */
 	id: PropTypes.string,
@@ -67,7 +78,7 @@ const propTypes = {
 	 */
 	googleAPIKey: PropTypes.string.isRequired,
 	/**
-	 *  Accepts location object that will be selected to shown on load
+	 *  Accepts location object that will be shown when selected
 	 *  * `id` : A unique identifier string for the location
 	 *  * `name` : Name of the location
 	 *  * `address` : Address of the location
@@ -107,8 +118,8 @@ class Map extends React.Component {
 	handleClick = (event, i) => {
 		if (typeof this.props.onClickLocation === 'function')
 			this.props.onClickLocation(event, this.props.locations[i]);
-		if (this.iframe) {
-			this.iframe.focus();
+		if (this.map) {
+			this.map.focus();
 		}
 	};
 
@@ -124,20 +135,25 @@ class Map extends React.Component {
 					this.props.classNameContainer
 				)}
 			>
-				<div className="slds-map_container">
-					<div className={classNames(`slds-map`, this.props.className)}>
+				<div className="slds-map_container" style={{ padding: '4px' }}>
+					<div
+						className={classNames(`slds-map`, this.props.className)}
+						ref={(map) => {
+							this.map = map;
+						}}
+						tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+						title={labels.title}
+					>
 						<iframe
 							id={`${this.getId()}-google-map`}
-							ref={(iframe) => {
-								this.iframe = iframe;
-							}}
-							tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
-							title={labels.title}
 							src={`https://www.google.com/maps/embed/v1/place?key=${
 								this.props.googleAPIKey
 							}&q=${encodeURIComponent(
-								this.props.selection ? this.props.selection.address : ''
+								this.props.selection
+									? this.props.selection.address
+									: this.props.defaultLocation.address
 							)}`}
+							title={labels.title}
 						/>
 					</div>
 				</div>
@@ -158,7 +174,10 @@ class Map extends React.Component {
 										type="button"
 										onClick={(event) => this.handleClick(event, i)}
 										className="slds-coordinates__item-action slds-button_reset slds-media"
-										aria-pressed={this.props.selection.id === location.id}
+										aria-pressed={
+											this.props.selection &&
+											this.props.selection.id === location.id
+										}
 									>
 										<span className="slds-media__figure">
 											<Icon category="standard" name="account" />

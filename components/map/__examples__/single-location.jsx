@@ -5,6 +5,13 @@ import Map from '~/components/map';
 import Button from '~/components/button';
 import Modal from '~/components/modal';
 
+const locations = [
+	{
+		name: 'Worldwide Corporate Headquarters',
+		address: 'The Landmark @ One Market, San Francisco, CA',
+	},
+];
+
 class Example extends React.Component {
 	static displayName = 'MapExampleSingleLocation';
 
@@ -24,17 +31,13 @@ class Example extends React.Component {
 					}
 				>
 					<Map
+						defaultLocation={locations[0]}
 						id="map-single-location-example"
 						googleAPIKey="AIzaSyDliLquGXGts9S8YtkWVolSQEJdBL1ZuWc"
 						labels={{
 							title: 'Geo Code: 37°48&#x27;08.3&quot;N 122°15&#x27;55.2W',
 						}}
-						locations={[
-							{
-								name: 'Worldwide Corporate Headquarters',
-								address: 'The Landmark @ One Market, San Francisco, CA',
-							},
-						]}
+						locations={locations}
 					/>
 				</Modal>
 			</IconSettings>
