@@ -28,13 +28,16 @@ if (process.env.NODE_ENV !== 'production') {
 	isTriggerTabbable = function isTriggerTabbableFunction(
 		COMPONENT,
 		trigger,
-		comment
+		comment,
+		silenceTriggerTabbableWarning
 	) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		const childTabIndex = trigger.props.tabIndex;
 		let elementIsTabbable = true;
 
 		if (
+			// Silencing prop for special cases
+			!silenceTriggerTabbableWarning &&
 			// List of "native" HTML elements that are tabbable by default
 			trigger.type !== 'button' &&
 			trigger.type !== 'input' &&

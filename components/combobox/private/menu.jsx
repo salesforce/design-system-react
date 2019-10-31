@@ -445,6 +445,7 @@ const Menu = (props) => {
 				content: optionData.tooltipContent || content, // either use specific content defined on option or content defined on tooltip component.
 				id: tooltipId,
 				position: 'absolute',
+				silenceTriggerTabbableWarning: true,
 				triggerStyle: { width: '100%' },
 				...userDefinedTooltipProps, // we want to allow user defined tooltip pros to overwrite default props, if need be.
 			};
@@ -455,7 +456,7 @@ const Menu = (props) => {
 			item = React.cloneElement(
 				props.tooltipMenuItemDisabled,
 				tooltipProps,
-				React.cloneElement(menuItem[props.variant], { tabIndex: 0 })
+				menuItem[props.variant]
 			);
 		} else {
 			item = menuItem[props.variant];

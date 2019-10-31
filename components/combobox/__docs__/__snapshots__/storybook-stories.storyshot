@@ -1682,7 +1682,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                         "cursor": "default",
                       }
                     }
-                    tabIndex={0}
                   >
                     <span
                       className="slds-media__figure"
@@ -1825,7 +1824,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                         "cursor": "default",
                       }
                     }
-                    tabIndex={0}
                   >
                     <span
                       className="slds-media__figure"
