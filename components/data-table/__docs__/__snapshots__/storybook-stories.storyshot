@@ -5004,7 +5004,6 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         <input
                           checked={false}
                           id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixed-header"
-                          name={false}
                           onChange={[Function]}
                           type="checkbox"
                         />
@@ -8029,7 +8028,6 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         <input
                           checked={false}
                           id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixed-header"
-                          name={false}
                           onChange={[Function]}
                           type="checkbox"
                         />
@@ -11422,7 +11420,6 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <input
                           checked={false}
                           id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixed-header"
-                          name={false}
                           onChange={[Function]}
                           type="checkbox"
                         />
