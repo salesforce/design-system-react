@@ -174,7 +174,7 @@ const setBold = (label, searchTerm) => {
 	if (position > -1) {
 		return [
 			label.substr(0, position),
-			<span className="slds-text-title_bold">{`${label.substr(
+			<span key="bold" className="slds-text-title_bold">{`${label.substr(
 				position,
 				searchTerm.length
 			)}`}</span>,
