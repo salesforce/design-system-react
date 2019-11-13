@@ -1,0 +1,27 @@
+{
+	"component": "files",
+	"status": "prod",
+	"display-name": "Files",
+	"classKey": "Files",
+	"dependencies": [
+		{
+			"component": "file",
+			"classKey": "FilesFile"
+		},
+		{
+			"component": "more-files",
+			"classKey": "FilesMoreFiles"
+		}
+	],
+	"SLDS-component-path": "/components/files",
+	"site-stories": [
+		"/__examples__/default.jsx",
+		"/__examples__/crops.jsx",
+		"/__examples__/loading.jsx",
+		"/__examples__/no-title.jsx",
+		"/__examples__/with-external-icon.jsx",
+		"/__examples__/no-image.jsx",
+		"/__examples__/actions.jsx"
+	],
+	"url-slug": "files"
+}
