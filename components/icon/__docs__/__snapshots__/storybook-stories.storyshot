@@ -1,0 +1,984 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSIcon Base: Imported 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span>
+    <svg
+      aria-hidden="true"
+      className="slds-icon slds-icon-text-default"
+      name=""
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M22.4 14.3H21c-.4 0-.7.3-.7.7v4.6c0 .4-.3.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V15c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6.2c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9V15c0-.4-.3-.7-.7-.7zm-10.9 3.1c.3.2.7.2 1 0l6.2-6.3c.3-.3.3-.7 0-.9l-.9-1c-.3-.3-.7-.3-1 0l-2.6 2.6c-.3.2-.8.1-.8-.4V1.6c0-.4-.4-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v9.8c0 .4-.5.6-.8.3L7.2 9.1c-.2-.2-.6-.2-.9 0l-1 1.1c-.3.2-.3.6 0 .9l6.2 6.3z"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Download
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Base: Standard (custom styles) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    className="slds-icon_container slds-icon-standard-account"
+    title="This is a title"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon"
+      style={
+        Object {
+          "backgroundColor": "#aceace",
+          "fill": "orangered",
+        }
+      }
+    >
+      <use
+        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Account
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Category: Action 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    className="slds-icon_container slds-icon_container_circle slds-icon-action-description"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon slds-icon_small"
+    >
+      <use
+        xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#description"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Category: Custom 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    className="slds-icon_container slds-icon-custom-custom5"
+    title="description of icon when needed"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon"
+    >
+      <use
+        xlinkHref="/assets/icons/custom-sprite/svg/symbols.svg#custom5"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Category: Doctype 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    className="slds-icon_container"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon"
+    >
+      <use
+        xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#xml"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Category: External Path 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    className="slds-icon_container"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon slds-icon-text-default"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      We got news!
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Category: Standard - Right to Left (RTL) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    dir="rtl"
+  >
+    <span
+      className="slds-icon_container slds-icon-standard-branch-merge"
+      title="description of icon"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon"
+      >
+        <use
+          xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#branch_merge"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Description of icon
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Category: Standard 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    className="slds-icon_container slds-icon-standard-branch-merge"
+    title="description of icon"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon"
+    >
+      <use
+        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#branch_merge"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Category: Utility 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    title="description of icon when needed"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon slds-icon_small slds-icon-text-default"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Color: Base 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "backgroundColor": "goldenrod",
+        "padding": "10px",
+      }
+    }
+  >
+    <span
+      title="description of icon when needed"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-icon"
+      >
+        <use
+          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Description of icon
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Color: Default 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    title="This is a title"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon slds-icon-text-default"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Color: Error 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    title="description of icon"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon slds-icon-text-error"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Color: Light 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    title="description of icon"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon slds-icon-text-light"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Color: Warning 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    title="description of icon"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon slds-icon-text-warning"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Docs site Categories 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-account"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Account
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small slds-icon-text-default"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Announcement
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon_container_circle slds-icon-action-description"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#description"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Description
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#xml"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          XML
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-custom-custom5"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            xlinkHref="/assets/icons/custom-sprite/svg/symbols.svg#custom5"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          custom5
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Docs site Colors 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-lead"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Lead
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon-text-default"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Lock
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon-text-light"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Lock
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon-text-warning"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Warning
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon-text-error"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+          />
+        </svg>
+        
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Docs site Sizes 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_x-small slds-icon-text-default"
+        >
+          <use
+            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Warning
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-case"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Case
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-case"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Case
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-case"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_large"
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Case
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Product Themes 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-account"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#2A739E",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Global Setup
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-address"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#7f2443",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#address"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Service Cloud
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-answer-best"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#4c2248",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#answer_best"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Industry Cloud
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-canvas"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#00857d",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#canvas"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Sales Cloud
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-choice"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#41693d",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#choice"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Commerce Cloud
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-choice"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#ffc20e",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#choice"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Community Cloud
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-choice"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#ea7600",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#choice"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Marketing Cloud
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span
+        className="slds-icon_container slds-icon-standard-choice"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon"
+          style={
+            Object {
+              "backgroundColor": "#cf451d",
+            }
+          }
+        >
+          <use
+            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#choice"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Quip
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Size: Large 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    className="slds-icon_container slds-icon-standard-case"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon slds-icon_large"
+    >
+      <use
+        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Size: Medium (default) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    className="slds-icon_container slds-icon-standard-case"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon"
+    >
+      <use
+        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Size: Small 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    className="slds-icon_container slds-icon-standard-case"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon slds-icon_small"
+    >
+      <use
+        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSIcon Size: X-Small 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span>
+    <svg
+      aria-hidden="true"
+      className="slds-icon slds-icon_x-small slds-icon-text-default"
+    >
+      <use
+        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;

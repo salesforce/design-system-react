@@ -1,0 +1,16 @@
+{
+    "component": "progress-bar",
+    "status": "prod",
+    "display-name": "Progress Bars",
+	"classKey": "ProgressBar",
+    "SLDS-component-path": "/components/progress-bar",
+	"site-stories": [
+		"/__examples__/default.jsx",
+		"/__examples__/descriptive.jsx",
+		"/__examples__/color.jsx",
+		"/__examples__/radius.jsx",
+		"/__examples__/thickness.jsx",
+		"/__examples__/vertical.jsx"
+	],
+    "url-slug": "progress-bars"
+}
