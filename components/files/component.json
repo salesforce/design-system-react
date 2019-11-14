@@ -15,13 +15,34 @@
 	],
 	"SLDS-component-path": "/components/files",
 	"site-stories": [
-		"/__examples__/default.jsx",
-		"/__examples__/crops.jsx",
-		"/__examples__/loading.jsx",
-		"/__examples__/no-title.jsx",
-		"/__examples__/with-external-icon.jsx",
-		"/__examples__/no-image.jsx",
-		"/__examples__/actions.jsx"
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "Cropped",
+			"path": "/__examples__/crops.jsx"
+		},
+		{
+			"heading": "Loading",
+			"path": "/__examples__/loading.jsx"
+		},
+		{
+			"heading": "No Title",
+			"path": "/__examples__/no-title.jsx"
+		},
+		{
+			"heading": "With External Icon",
+			"path": "/__examples__/with-external-icon.jsx"
+		},
+		{
+			"heading": "No Image",
+			"path": "/__examples__/no-image.jsx"
+		},
+		{
+			"heading": "Actions",
+			"path": "/__examples__/actions.jsx"
+		}
 	],
 	"url-slug": "files"
 }

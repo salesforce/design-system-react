@@ -1,16 +1,34 @@
 {
-    "component": "progress-bar",
-    "status": "prod",
-    "display-name": "Progress Bars",
+	"component": "progress-bar",
+	"status": "prod",
+	"display-name": "Progress Bars",
 	"classKey": "ProgressBar",
-    "SLDS-component-path": "/components/progress-bar",
+	"SLDS-component-path": "/components/progress-bar",
 	"site-stories": [
-		"/__examples__/default.jsx",
-		"/__examples__/descriptive.jsx",
-		"/__examples__/color.jsx",
-		"/__examples__/radius.jsx",
-		"/__examples__/thickness.jsx",
-		"/__examples__/vertical.jsx"
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "Descriptive",
+			"path": "/__examples__/descriptive.jsx"
+		},
+		{
+			"heading": "Success",
+			"path": "/__examples__/color.jsx"
+		},
+		{
+			"heading": "Circular Radius",
+			"path": "/__examples__/radius.jsx"
+		},
+		{
+			"heading": "Thickness Variants",
+			"path": "/__examples__/thickness.jsx"
+		},
+		{
+			"heading": "Vertical",
+			"path": "/__examples__/vertical.jsx"
+		}
 	],
-    "url-slug": "progress-bars"
+	"url-slug": "progress-bars"
 }

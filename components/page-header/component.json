@@ -11,10 +11,22 @@
 		}
 	],
 	"site-stories": [
-		"/__examples__/record-home.jsx",
-		"/__examples__/object-home.jsx",
-		"/__examples__/related-list.jsx",
-		"/__examples__/setup.jsx"
+		{
+			"heading": "Record Home",
+			"path": "/__examples__/record-home.jsx"
+		},
+		{
+			"heading": "Object Home",
+			"path": "/__examples__/object-home.jsx"
+		},
+		{
+			"heading": "Related list",
+			"path": "/__examples__/related-list.jsx"
+		},
+		{
+			"heading": "Setup",
+			"path": "/__examples__/setup.jsx"
+		}
 	],
 	"url-slug": "page-headers"
 }

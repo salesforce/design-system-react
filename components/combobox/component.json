@@ -9,21 +9,58 @@
 	},
 	"SLDS-component-path": "/components/combobox",
 	"site-stories": [
-		"/__examples__/base.jsx",
-		"/__examples__/base-menu-subheader.jsx",
-		"/__examples__/base-inherit-menu-width.jsx",
-        "/__examples__/base-predefined-options-only.jsx",
-        "/__examples__/base-with-scroll.jsx",
-		"/__examples__/dialog.jsx",
-		"/__examples__/inline-multiple.jsx",
-		"/__examples__/inline-single.jsx",
-		"/__examples__/inline-single-entity-combobox.jsx",
-		"/__examples__/inline-single-search-add-entities.jsx",
-		"/__examples__/inline-multiple-loading.jsx",
-		"/__examples__/readonly-single.jsx",
-		"/__examples__/readonly-multiple.jsx",
-		"/__examples__/required-input-error-state.jsx",
-		"/__examples__/dialog.jsx"
+		{
+			"heading": "Base",
+			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "Base: With subheader",
+			"path": "/__examples__/base-menu-subheader.jsx"
+		},
+		{
+			"heading": "Base: Inherit Menu Width",
+			"path": "/__examples__/base-inherit-menu-width.jsx"
+		},
+		{
+			"heading": "Base: Predefined options only",
+			"path": "/__examples__/base-predefined-options-only.jsx"
+		},
+		{
+			"heading": "Base With Scroll",
+			"path": "/__examples__/base-with-scroll.jsx"
+		},
+		{
+			"heading": "Base: With dialog",
+			"path": "/__examples__/dialog.jsx"
+		},
+		{
+			"heading": "Inline single selection",
+			"path": "/__examples__/inline-single.jsx"
+		},
+		{
+			"heading": "Inline: Single Selection with Entity Selection",
+			"path": "/__examples__/inline-single-entity-combobox.jsx"
+		},
+		{
+			"heading": "Inline: Single Selection with Search and Add Menu Items",
+			"path": "/__examples__/inline-single-search-add-entities.jsx"
+		},
+		{
+			"heading": "Inline: Multiple Selection with Loading State",
+			"path": "/__examples__/inline-multiple-loading.jsx"
+		},
+		{
+			"heading": "Read-only: Single Selection (Picklist)",
+			"path": "/__examples__/readonly-single.jsx"
+		},
+		{
+			"heading": "Read-only: Multiple Selection (Picklist)",
+			"path": "/__examples__/readonly-multiple.jsx"
+		},
+		{
+			"heading": "Required Input and Error State",
+			"path": "/__examples__/required-input-error-state.jsx"
+		}
 	],
 	"url-slug": "comboboxes"
 }

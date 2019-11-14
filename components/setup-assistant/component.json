@@ -11,10 +11,22 @@
 		}
 	],
 	"site-stories": [
-		"/__examples__/base.jsx",
-		"/__examples__/step-progress.jsx",
-		"/__examples__/hub-expandable-steps.jsx",
-		"/__examples__/card.jsx"
+		{
+			"heading": "Base",
+			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "Step Progress Indicator",
+			"path": "/__examples__/step-progress.jsx"
+		},
+		{
+			"heading": "Expandable Steps",
+			"path": "/__examples__/hub-expandable-steps.jsx"
+		},
+		{
+			"heading": "With Card",
+			"path": "/__examples__/card.jsx"
+		}
 	],
 	"url-slug": "setup-assistant"
 }

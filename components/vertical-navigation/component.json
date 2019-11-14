@@ -1,11 +1,14 @@
 {
-    "component": "vertical-navigation",
-    "status": "prod",
-    "display-name": "Vertical Navigation",
+	"component": "vertical-navigation",
+	"status": "prod",
+	"display-name": "Vertical Navigation",
 	"classKey": "VerticalNavigation",
-    "SLDS-component-path": "/components/vertical-navigation",
+	"SLDS-component-path": "/components/vertical-navigation",
 	"site-stories": [
-		"/__examples__/default.jsx"
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		}
 	],
-    "url-slug": "vertical-navigation"
+	"url-slug": "vertical-navigation"
 }

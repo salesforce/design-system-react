@@ -18,6 +18,11 @@
 			"classKey": "ExpressionGroup"
 		}
 	],
-	"site-stories": ["/__examples__/resource-selected.jsx"],
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/resource-selected.jsx"
+		}
+	],
 	"url-slug": "expression"
 }

@@ -5,9 +5,18 @@
 	"classKey": "Badge",
 	"SLDS-component-path": "/components/badges",
 	"site-stories": [
-		"/__examples__/color-variants.jsx",
-		"/__examples__/default.jsx",
-		"/__examples__/with-icon.jsx"
+		{
+			"heading": "Color Variants",
+			"path": "/__examples__/color-variants.jsx"
+		},
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "With Icon",
+			"path": "/__examples__/with-icon.jsx"
+		}
 	],
 	"url-slug": "badges"
 }

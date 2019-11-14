@@ -5,8 +5,14 @@
 	"classKey": "Pill",
 	"SLDS-component-path": "/components/pills",
 	"site-stories": [
-		"/__examples__/base.jsx",
-		"/__examples__/icon.jsx"
+		{
+			"heading": "Base",
+			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "With Icons",
+			"path": "/__examples__/icon.jsx"
+		}
 	],
 	"url-slug": "pills"
 }

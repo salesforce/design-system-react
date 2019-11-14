@@ -5,7 +5,10 @@
 	"classKey": "ColorPicker",
 	"SLDS-component-path": "/components/color-picker",
 	"site-stories": [
-		"/__examples__/default.jsx"
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		}
 	],
 	"url-slug": "color-picker"
 }

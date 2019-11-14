@@ -5,8 +5,14 @@
 	"classKey": "Map",
 	"SLDS-component-path": "/components/map",
 	"site-stories": [
-		"/__examples__/multiple-locations.jsx",
-		"/__examples__/single-location.jsx"
+		{
+			"heading": "Multiple Locations",
+			"path": "/__examples__/multiple-locations.jsx"
+		},
+		{
+			"heading": "Single location",
+			"path": "/__examples__/single-location.jsx"
+		}
 	],
 	"url-slug": "map"
 }
