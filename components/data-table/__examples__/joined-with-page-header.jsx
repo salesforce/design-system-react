@@ -326,9 +326,6 @@ class Example extends React.Component {
 				}}
 			>
 				<IconSettings iconPath="/assets/icons">
-					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
-						Fixed Header Layout
-					</h3>
 					<PageHeader
 						onRenderActions={actions}
 						iconAssistiveText="User"
