@@ -318,19 +318,19 @@
 					"path": "/__examples__/base.jsx"
 				},
 				{
-					"heading": "Base",
+					"heading": "User Initials",
 					"path": "/__examples__/user-initials.jsx"
 				},
 				{
-					"heading": "Base",
+					"heading": "User Icon",
 					"path": "/__examples__/user-icon.jsx"
 				},
 				{
-					"heading": "Base",
+					"heading": "Entity Initials",
 					"path": "/__examples__/entity-initials.jsx"
 				},
 				{
-					"heading": "Base",
+					"heading": "Entity Icon",
 					"path": "/__examples__/entity-icon.jsx"
 				}
 			],
@@ -456,7 +456,7 @@
 					"path": "/__examples__/successful-save.jsx"
 				},
 				{
-					"heading": "After Successful Sace",
+					"heading": "After Successful Save",
 					"path": "/__examples__/after-successful-save.jsx"
 				},
 				{
@@ -654,7 +654,7 @@
 					"path": "/__examples__/base-predefined-options-only.jsx"
 				},
 				{
-					"heading": "BaseL With Scroll",
+					"heading": "Base With Scroll",
 					"path": "/__examples__/base-with-scroll.jsx"
 				},
 				{
@@ -1536,15 +1536,15 @@
 					"path": "/__examples__/base.jsx"
 				},
 				{
-					"heading": "Base",
+					"heading": "Light",
 					"path": "/__examples__/light.jsx"
 				},
 				{
-					"heading": "Base",
+					"heading": "Dark",
 					"path": "/__examples__/dark.jsx"
 				},
 				{
-					"heading": "Base",
+					"heading": "With Custom Icon",
 					"path": "/__examples__/custom-icon.jsx"
 				}
 			],
