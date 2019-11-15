@@ -323,6 +323,7 @@ class Example extends React.Component {
 				style={{
 					height: '200px',
 					width: '100%',
+					marginBottom: '150px',
 				}}
 			>
 				<IconSettings iconPath="/assets/icons">
