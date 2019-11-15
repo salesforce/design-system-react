@@ -31,6 +31,13 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.14
+
+**Bugfixes**
+
+*  Remove console warnings in DataTable and Combobox
+
+
 ## Release 0.10.13
 
 **Minor Features**

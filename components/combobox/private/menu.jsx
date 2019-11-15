@@ -175,7 +175,7 @@ const setBold = (label, searchTerm) => {
 		return (
 			<React.Fragment>
 				{label.substr(0, position)}
-				<span className="slds-text-title_bold">{`${label.substr(
+				<span key="bold" className="slds-text-title_bold">{`${label.substr(
 					position,
 					searchTerm.length
 				)}`}</span>
