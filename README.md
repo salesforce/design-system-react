@@ -5,9 +5,6 @@
 [![Build Status](https://api.travis-ci.org/salesforce/design-system-react.svg?branch=master)](https://travis-ci.org/salesforce/design-system-react) [![DeepScan grade](https://deepscan.io/api/teams/616/projects/5798/branches/46037/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=616&pid=5798&bid=46037)
 [![Known Vulnerabilities](https://snyk.io/test/github/salesforce/design-system-react/badge.svg?targetFile=package.json)](https://snyk.io/test/github/salesforce/design-system-react?targetFile=package.json) [![Join the chat at https://gitter.im/salesforce/design-system-react](https://badges.gitter.im/salesforce/design-system-react.svg)](https://gitter.im/salesforce/design-system-react?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Monthly NPM downloads](https://img.shields.io/npm/dm/@salesforce/design-system-react.svg)](https://www.npmjs.com/package/@salesforce/design-system-react)
 
-
-
-
 ## Install
 
 ```
@@ -18,15 +15,15 @@ $ npm install @salesforce-ux/design-system @salesforce/design-system-react
 
 Welcome to this community-supported project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). This library has a peer dependency on `@salesforce-ux/design-system`, `react`, and `react-dom`. It is tested with React 16 and has a stable API despite its version number. Please [polyfill](https://github.com/salesforce/design-system-react/blob/master/docs/browser-compatibility.md) this library in order to meet your target environment needs.
 
-* [Usage](#usage)
-* [Getting started](https://react.lightningdesignsystem.com/getting-started/)
-* [Documentation and interactive examples](https://react.lightningdesignsystem.com)
-* [Contributing](CONTRIBUTING.md)
-* [Codebase overview](docs/codebase-overview.md)
-* [Create React App setup](docs/create-react-app.md)
-* [Browser compatibility and polyfills](docs/browser-compatibility.md)
-* [Usage with Webpack](docs/webpack.md)
-* [Open Sourcing Design System React](https://engineering.salesforce.com/open-sourcing-design-system-react-9be45b8bb127) - Medium article
+- [Usage](#usage)
+- [Getting started](https://react.lightningdesignsystem.com/getting-started/)
+- [Documentation and interactive examples](https://react.lightningdesignsystem.com)
+- [Contributing](CONTRIBUTING.md)
+- [Codebase overview](docs/codebase-overview.md)
+- [Create React App setup](docs/create-react-app.md)
+- [Browser compatibility and polyfills](docs/browser-compatibility.md)
+- [Usage with Webpack](docs/webpack.md)
+- [Open Sourcing Design System React](https://engineering.salesforce.com/open-sourcing-design-system-react-9be45b8bb127) - Medium article
 
 ## Usage
 
@@ -115,8 +112,8 @@ Prior to v0.7.0, SLDS icons were bundled with the JavaScript. The 400KB+ icons b
 
 Bundled script files are provided _only_ for convenience. Do not use in production.
 
-* `design-system-react.min.js` (700KB+) - includes icons in the JavaScript
-* `design-system-react-components.min.js` (~400KB) - no icons.
+- `design-system-react.min.js` (700KB+) - includes icons in the JavaScript
+- `design-system-react-components.min.js` (~400KB) - no icons.
 
 ## Contributing to the code base
 
@@ -132,6 +129,20 @@ open http://localhost:9001 http://localhost:8001
 
 Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. Then, create an issue to tell others you are working on a bug. If you would like to contribute a new component, create an issue with a list of proposed props to discuss with maintainers. Issues not addressed with pull requests may be closed eventually. Check out [who's contributing](https://github.com/salesforce/design-system-react/graphs/contributors) to the project.
 
+## Accessibility
+
+Audit conducted in November, 2019 on all current component examples not intended solely for testing by Salesforce Marketing Cloud (MC) Accessibility Specialist and project team.
+
+- Methods: Automated testing with axe; Manual testing with keyboard, JAWS, and NVDA
+- Results: 100% accessibility
+
+Quarterly audits will be conducted beginning Feb 1, 2020 on any new or updated components by MC Accessibility Specialist.
+
+- Methods: Automated testing with axe; Manual testing with keyboard, JAWS, and NVDA
+- Goal: 100% accessibility
+
+Project team will conduct internal accessibility testing in development process for new and updated components.
+
 ## Got feedback?
 
 If you have support questions, please post a question to [StackOverflow](https://stackoverflow.com/questions/tagged/design-system-react) and tag with `design-system-react`. If you find any bugs, create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues).
@@ -146,19 +157,19 @@ Thank you to all the contributors to this one of [many open source projects at S
 
 ### Active Key Contributors
 
-* [@davidlygagnon](https://github.com/davidlygagnon) David Ly-Gagnon
-* [@futuremint](https://github.com/futuremint) David Woodward
-* [@garygong](https://github.com/garygong) Gary Gong
-* [@interactivellama](https://github.com/interactivellama) Stephen James
+- [@garygong](https://github.com/garygong) Gary Gong
+- [@interactivellama](https://github.com/interactivellama) Stephen James
 
 ### Former Key Contributors
 
-* [@donnieberg](https://github.com/donnieberg) Donielle Berg
-* [@tweettypography](https://github.com/tweettypography) David Brainer
-* [@ivanbogdanov](https://github.com/ivanbogdanov) Ivan Bogdanov
+- [@davidlygagnon](https://github.com/davidlygagnon) David Ly-Gagnon
+- [@futuremint](https://github.com/futuremint) David Woodward
+- [@donnieberg](https://github.com/donnieberg) Donielle Berg
+- [@tweettypography](https://github.com/tweettypography) David Brainer
+- [@ivanbogdanov](https://github.com/ivanbogdanov) Ivan Bogdanov
 
 ## Licenses
 
-* Source code is licensed under [BSD 3-Clause](https://git.io/sfdc-license)
-* All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](https://github.com/salesforce/licenses/blob/master/LICENSE-icons-images.txt)
-* The Salesforce Sans font is licensed under our [font license](https://github.com/salesforce/licenses/blob/master/LICENSE-font.txt)
+- Source code is licensed under [BSD 3-Clause](https://git.io/sfdc-license)
+- All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](https://github.com/salesforce/licenses/blob/master/LICENSE-icons-images.txt)
+- The Salesforce Sans font is licensed under our [font license](https://github.com/salesforce/licenses/blob/master/LICENSE-font.txt)
