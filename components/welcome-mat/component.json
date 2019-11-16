@@ -15,12 +15,30 @@
 		}
 	],
 	"site-stories": [
-		"/__examples__/default.jsx",
-		"/__examples__/steps-complete.jsx",
-		"/__examples__/info-only.jsx",
-		"/__examples__/splash.jsx",
-		"/__examples__/trailhead.jsx",
-		"/__examples__/trailhead-complete.jsx"
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "With Steps Completed",
+			"path": "/__examples__/steps-complete.jsx"
+		},
+		{
+			"heading": "Info-Only",
+			"path": "/__examples__/info-only.jsx"
+		},
+		{
+			"heading": "Splash",
+			"path": "/__examples__/splash.jsx"
+		},
+		{
+			"heading": "Trailhead",
+			"path": "/__examples__/trailhead.jsx"
+		},
+		{
+			"heading": "Trailhead - Complete",
+			"path": "/__examples__/trailhead-complete.jsx"
+		}
 	],
 	"url-slug": "welcome-mat"
 }

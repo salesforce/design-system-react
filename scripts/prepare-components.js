@@ -79,7 +79,7 @@ if (indexFile) {
 const indexFileRequirements = {};
 
 // Create initial site-stories string
-let siteStoriesFile = `// This object is imported into the documentation site. An example for the documentation site should be part of the pull request for the component. The object key is the component value listed in the component's component.json file. The following uses webpack's raw-loader plugin to get "text files" that will be eval()'d by CodeMirror within the documentation site on page load.
+let siteStoriesFile = `/* eslint-disable max-lines */ // This object is imported into the documentation site. An example for the documentation site should be part of the pull request for the component. The object key is the component value listed in the component's component.json file. The following uses webpack's raw-loader plugin to get "text files" that will be eval()'d by CodeMirror within the documentation site on page load.
 
 /* eslint-env node */
 /* eslint-disable global-require */
@@ -105,9 +105,12 @@ const generateSiteStoriesListings = (config) => {
 		}: [\n`;
 
 		config['site-stories'].forEach((storyPath) => {
-			additions += `\t\trequire('raw-loader!@salesforce/design-system-react/components/${
+			additions += `\t\t{\n`;
+			additions += `\t\t\theading: '${storyPath.heading}',\n`;
+			additions += `\t\t\tpath: require('raw-loader!@salesforce/design-system-react/components/${
 				config.component
-			}${storyPath}'),\n`;
+			}${storyPath.path}'),\n`;
+			additions += `\t\t},\n`;
 		});
 
 		additions += `\t],\n`;

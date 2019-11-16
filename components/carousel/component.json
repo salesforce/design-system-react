@@ -5,9 +5,18 @@
 	"classKey": "Carousel",
 	"SLDS-component-path": "/components/carousel",
 	"site-stories": [
-		"/__examples__/three-items.jsx",
-		"/__examples__/default.jsx",
-		"/__examples__/default-with-navigation.jsx"
+		{
+			"heading": "Three Items",
+			"path": "/__examples__/three-items.jsx"
+		},
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "With Navigation",
+			"path": "/__examples__/default-with-navigation.jsx"
+		}
 	],
 	"url-slug": "carousel"
 }

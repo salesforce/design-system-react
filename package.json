@@ -228,7 +228,10 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/base.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				}
 			],
 			"url-slug": "accordions"
 		},
@@ -249,11 +252,26 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/info.jsx",
-				"/__examples__/warning.jsx",
-				"/__examples__/offline.jsx",
-				"/__examples__/error.jsx",
-				"/__examples__/dismissable.jsx"
+				{
+					"heading": "Informational",
+					"path": "/__examples__/info.jsx"
+				},
+				{
+					"heading": "Warning",
+					"path": "/__examples__/warning.jsx"
+				},
+				{
+					"heading": "System Status",
+					"path": "/__examples__/offline.jsx"
+				},
+				{
+					"heading": "Error",
+					"path": "/__examples__/error.jsx"
+				},
+				{
+					"heading": "Dismissable",
+					"path": "/__examples__/dismissable.jsx"
+				}
 			],
 			"url-slug": "alerts"
 		},
@@ -278,7 +296,10 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/default.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				}
 			],
 			"url-slug": "app-launcher"
 		},
@@ -293,11 +314,26 @@
 			},
 			"SLDS-component-path": "/components/avatar",
 			"site-stories": [
-				"/__examples__/base.jsx",
-				"/__examples__/user-initials.jsx",
-				"/__examples__/user-icon.jsx",
-				"/__examples__/entity-initials.jsx",
-				"/__examples__/entity-icon.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				},
+				{
+					"heading": "User Initials",
+					"path": "/__examples__/user-initials.jsx"
+				},
+				{
+					"heading": "User Icon",
+					"path": "/__examples__/user-icon.jsx"
+				},
+				{
+					"heading": "Entity Initials",
+					"path": "/__examples__/entity-initials.jsx"
+				},
+				{
+					"heading": "Entity Icon",
+					"path": "/__examples__/entity-icon.jsx"
+				}
 			],
 			"url-slug": "avatars"
 		},
@@ -308,9 +344,18 @@
 			"classKey": "Badge",
 			"SLDS-component-path": "/components/badges",
 			"site-stories": [
-				"/__examples__/color-variants.jsx",
-				"/__examples__/default.jsx",
-				"/__examples__/with-icon.jsx"
+				{
+					"heading": "Color Variants",
+					"path": "/__examples__/color-variants.jsx"
+				},
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "With Icon",
+					"path": "/__examples__/with-icon.jsx"
+				}
 			],
 			"url-slug": "badges"
 		},
@@ -325,11 +370,26 @@
 			},
 			"SLDS-component-path": "/components/brand-band",
 			"site-stories": [
-				"/__examples__/lightning-blue-theme.jsx",
-				"/__examples__/default.jsx",
-				"/__examples__/small.jsx",
-				"/__examples__/large.jsx",
-				"/__examples__/no-image.jsx"
+				{
+					"heading": "Lightning Blue",
+					"path": "/__examples__/lightning-blue-theme.jsx"
+				},
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "Small",
+					"path": "/__examples__/small.jsx"
+				},
+				{
+					"heading": "large",
+					"path": "/__examples__/large.jsx"
+				},
+				{
+					"heading": "No Image",
+					"path": "/__examples__/no-image.jsx"
+				}
 			],
 			"url-slug": "brand-band"
 		},
@@ -344,9 +404,18 @@
 			},
 			"SLDS-component-path": "/components/breadcrumb",
 			"site-stories": [
-				"/__examples__/base.jsx",
-				"/__examples__/one-item.jsx",
-				"/__examples__/base-with-overflow-menu.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				},
+				{
+					"heading": "One Item",
+					"path": "/__examples__/one-item.jsx"
+				},
+				{
+					"heading": "With Overflow Menu",
+					"path": "/__examples__/base-with-overflow-menu.jsx"
+				}
 			],
 			"url-slug": "breadcrumbs"
 		},
@@ -375,11 +444,26 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/base.jsx",
-				"/__examples__/base-with-toolbar.jsx",
-				"/__examples__/successful-save.jsx",
-				"/__examples__/after-successful-save.jsx",
-				"/__examples__/failed-save.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				},
+				{
+					"heading": "Base with Toolbar",
+					"path": "/__examples__/base-with-toolbar.jsx"
+				},
+				{
+					"heading": "Successful Save",
+					"path": "/__examples__/successful-save.jsx"
+				},
+				{
+					"heading": "After Successful Save",
+					"path": "/__examples__/after-successful-save.jsx"
+				},
+				{
+					"heading": "Save Error",
+					"path": "/__examples__/failed-save.jsx"
+				}
 			],
 			"url-slug": "builder-header"
 		},
@@ -390,9 +474,18 @@
 			"classKey": "ButtonGroup",
 			"SLDS-component-path": "/components/button-group",
 			"site-stories": [
-				"/__examples__/more-icon.jsx",
-				"/__examples__/icon-group.jsx",
-				"/__examples__/list-variant.jsx"
+				{
+					"heading": "With More Icon",
+					"path": "/__examples__/more-icon.jsx"
+				},
+				{
+					"heading": "Icon Group",
+					"path": "/__examples__/icon-group.jsx"
+				},
+				{
+					"heading": "List variant",
+					"path": "/__examples__/list-variant.jsx"
+				}
 			],
 			"url-slug": "button-groups"
 		},
@@ -403,8 +496,14 @@
 			"classKey": "ButtonStateful",
 			"SLDS-component-path": "/components/button/#flavor-stateful",
 			"site-stories": [
-				"/__examples__/icon.jsx",
-				"/__examples__/icon-text.jsx"
+				{
+					"heading": "Icon Only",
+					"path": "/__examples__/icon.jsx"
+				},
+				{
+					"heading": "Icon and Text",
+					"path": "/__examples__/icon-text.jsx"
+				}
 			],
 			"url-slug": "stateful-buttons"
 		},
@@ -419,9 +518,18 @@
 			},
 			"SLDS-component-path": "/components/buttons",
 			"site-stories": [
-				"/__examples__/base-neutral.jsx",
-				"/__examples__/brand-disabled-destructive-inverse.jsx",
-				"/__examples__/button-icons.jsx"
+				{
+					"heading": "Base Neutral",
+					"path": "/__examples__/base-neutral.jsx"
+				},
+				{
+					"heading": "Variants",
+					"path": "/__examples__/brand-disabled-destructive-inverse.jsx"
+				},
+				{
+					"heading": "Button Icons",
+					"path": "/__examples__/button-icons.jsx"
+				}
 			],
 			"url-slug": "buttons"
 		},
@@ -446,7 +554,10 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/related-list-with-table.jsx"
+				{
+					"heading": "Card with Data Table",
+					"path": "/__examples__/related-list-with-table.jsx"
+				}
 			],
 			"url-slug": "cards"
 		},
@@ -457,9 +568,18 @@
 			"classKey": "Carousel",
 			"SLDS-component-path": "/components/carousel",
 			"site-stories": [
-				"/__examples__/three-items.jsx",
-				"/__examples__/default.jsx",
-				"/__examples__/default-with-navigation.jsx"
+				{
+					"heading": "Three Items",
+					"path": "/__examples__/three-items.jsx"
+				},
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "With Navigation",
+					"path": "/__examples__/default-with-navigation.jsx"
+				}
 			],
 			"url-slug": "carousel"
 		},
@@ -474,10 +594,22 @@
 			},
 			"SLDS-component-path": "/components/checkbox",
 			"site-stories": [
-				"/__examples__/default.jsx",
-				"/__examples__/error.jsx",
-				"/__examples__/toggle.jsx",
-				"/__examples__/grouped-with-tristate.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "Error State",
+					"path": "/__examples__/error.jsx"
+				},
+				{
+					"heading": "Toggle",
+					"path": "/__examples__/toggle.jsx"
+				},
+				{
+					"heading": "Grouped with Tri-State",
+					"path": "/__examples__/grouped-with-tristate.jsx"
+				}
 			],
 			"url-slug": "checkboxes"
 		},
@@ -488,7 +620,10 @@
 			"classKey": "ColorPicker",
 			"SLDS-component-path": "/components/color-picker",
 			"site-stories": [
-				"/__examples__/default.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				}
 			],
 			"url-slug": "color-picker"
 		},
@@ -503,21 +638,58 @@
 			},
 			"SLDS-component-path": "/components/combobox",
 			"site-stories": [
-				"/__examples__/base.jsx",
-				"/__examples__/base-menu-subheader.jsx",
-				"/__examples__/base-inherit-menu-width.jsx",
-				"/__examples__/base-predefined-options-only.jsx",
-				"/__examples__/base-with-scroll.jsx",
-				"/__examples__/dialog.jsx",
-				"/__examples__/inline-multiple.jsx",
-				"/__examples__/inline-single.jsx",
-				"/__examples__/inline-single-entity-combobox.jsx",
-				"/__examples__/inline-single-search-add-entities.jsx",
-				"/__examples__/inline-multiple-loading.jsx",
-				"/__examples__/readonly-single.jsx",
-				"/__examples__/readonly-multiple.jsx",
-				"/__examples__/required-input-error-state.jsx",
-				"/__examples__/dialog.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				},
+				{
+					"heading": "Base: With subheader",
+					"path": "/__examples__/base-menu-subheader.jsx"
+				},
+				{
+					"heading": "Base: Inherit Menu Width",
+					"path": "/__examples__/base-inherit-menu-width.jsx"
+				},
+				{
+					"heading": "Base: Predefined options only",
+					"path": "/__examples__/base-predefined-options-only.jsx"
+				},
+				{
+					"heading": "Base With Scroll",
+					"path": "/__examples__/base-with-scroll.jsx"
+				},
+				{
+					"heading": "Base: With dialog",
+					"path": "/__examples__/dialog.jsx"
+				},
+				{
+					"heading": "Inline single selection",
+					"path": "/__examples__/inline-single.jsx"
+				},
+				{
+					"heading": "Inline: Single Selection with Entity Selection",
+					"path": "/__examples__/inline-single-entity-combobox.jsx"
+				},
+				{
+					"heading": "Inline: Single Selection with Search and Add Menu Items",
+					"path": "/__examples__/inline-single-search-add-entities.jsx"
+				},
+				{
+					"heading": "Inline: Multiple Selection with Loading State",
+					"path": "/__examples__/inline-multiple-loading.jsx"
+				},
+				{
+					"heading": "Read-only: Single Selection (Picklist)",
+					"path": "/__examples__/readonly-single.jsx"
+				},
+				{
+					"heading": "Read-only: Multiple Selection (Picklist)",
+					"path": "/__examples__/readonly-multiple.jsx"
+				},
+				{
+					"heading": "Required Input and Error State",
+					"path": "/__examples__/required-input-error-state.jsx"
+				}
 			],
 			"url-slug": "comboboxes"
 		},
@@ -551,15 +723,42 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/basic-fluid.jsx",
-				"/__examples__/basic-fluid-striped.jsx",
-				"/__examples__/basic-fluid-no-row-hover.jsx",
-				"/__examples__/basic-fluid-column-bordered.jsx",
-				"/__examples__/basic-fixed-layout.jsx",
-				"/__examples__/advanced.jsx",
-				"/__examples__/advanced-single-select.jsx",
-				"/__examples__/fixed-header.jsx",
-				"/__examples__/joined-with-page-header.jsx"
+				{
+					"heading": "Basic",
+					"path": "/__examples__/basic-fluid.jsx"
+				},
+				{
+					"heading": "Basic: Fluid and Striped",
+					"path": "/__examples__/basic-fluid-striped.jsx"
+				},
+				{
+					"heading": "Basic: No row hover",
+					"path": "/__examples__/basic-fluid-no-row-hover.jsx"
+				},
+				{
+					"heading": "Basic: Columns bordered",
+					"path": "/__examples__/basic-fluid-column-bordered.jsx"
+				},
+				{
+					"heading": "Fixed Layout",
+					"path": "/__examples__/basic-fixed-layout.jsx"
+				},
+				{
+					"heading": "Advanced",
+					"path": "/__examples__/advanced.jsx"
+				},
+				{
+					"heading": "Advanced: Single Selection",
+					"path": "/__examples__/advanced-single-select.jsx"
+				},
+				{
+					"heading": "Advanced: Fixed Header",
+					"path": "/__examples__/fixed-header.jsx"
+				},
+				{
+					"heading": "Advanced: Joined with Page Header",
+					"path": "/__examples__/joined-with-page-header.jsx"
+				}
 			],
 			"url-slug": "data-tables"
 		},
@@ -574,7 +773,10 @@
 			},
 			"SLDS-component-path": "/components/datepickers",
 			"site-stories": [
-				"/__examples__/default.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				}
 			],
 			"url-slug": "date-pickers"
 		},
@@ -585,13 +787,34 @@
 			"classKey": "DynamicIcon",
 			"SLDS-component-path": "/components/dynamic-icon",
 			"site-stories": [
-				"/__examples__/ellie.jsx",
-				"/__examples__/eq.jsx",
-				"/__examples__/score.jsx",
-				"/__examples__/strength.jsx",
-				"/__examples__/trend.jsx",
-				"/__examples__/typing.jsx",
-				"/__examples__/waffle.jsx"
+				{
+					"heading": "Ellie",
+					"path": "/__examples__/ellie.jsx"
+				},
+				{
+					"heading": "Eq",
+					"path": "/__examples__/eq.jsx"
+				},
+				{
+					"heading": "Score",
+					"path": "/__examples__/score.jsx"
+				},
+				{
+					"heading": "Strength",
+					"path": "/__examples__/strength.jsx"
+				},
+				{
+					"heading": "Trend",
+					"path": "/__examples__/trend.jsx"
+				},
+				{
+					"heading": "Typing",
+					"path": "/__examples__/typing.jsx"
+				},
+				{
+					"heading": "Waffle",
+					"path": "/__examples__/waffle.jsx"
+				}
 			],
 			"url-slug": "dynamic-icon"
 		},
@@ -602,9 +825,18 @@
 			"classKey": "ExpandableSection",
 			"SLDS-component-path": "/components/expandable-section",
 			"site-stories": [
-				"/__examples__/default.jsx",
-				"/__examples__/controlled.jsx",
-				"/__examples__/non-collapsible.jsx"
+				{
+					"heading": "Deault",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "Controlled",
+					"path": "/__examples__/controlled.jsx"
+				},
+				{
+					"heading": "Non-collapsible",
+					"path": "/__examples__/non-collapsible.jsx"
+				}
 			],
 			"url-slug": "expandable-section"
 		},
@@ -629,7 +861,10 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/resource-selected.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/resource-selected.jsx"
+				}
 			],
 			"url-slug": "expression"
 		},
@@ -650,13 +885,34 @@
 			],
 			"SLDS-component-path": "/components/files",
 			"site-stories": [
-				"/__examples__/default.jsx",
-				"/__examples__/crops.jsx",
-				"/__examples__/loading.jsx",
-				"/__examples__/no-title.jsx",
-				"/__examples__/with-external-icon.jsx",
-				"/__examples__/no-image.jsx",
-				"/__examples__/actions.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "Cropped",
+					"path": "/__examples__/crops.jsx"
+				},
+				{
+					"heading": "Loading",
+					"path": "/__examples__/loading.jsx"
+				},
+				{
+					"heading": "No Title",
+					"path": "/__examples__/no-title.jsx"
+				},
+				{
+					"heading": "With External Icon",
+					"path": "/__examples__/with-external-icon.jsx"
+				},
+				{
+					"heading": "No Image",
+					"path": "/__examples__/no-image.jsx"
+				},
+				{
+					"heading": "Actions",
+					"path": "/__examples__/actions.jsx"
+				}
 			],
 			"url-slug": "files"
 		},
@@ -667,10 +923,22 @@
 			"classKey": "Filter",
 			"SLDS-component-path": "/components/filter",
 			"site-stories": [
-				"/__examples__/default.jsx",
-				"/__examples__/new.jsx",
-				"/__examples__/error.jsx",
-				"/__examples__/locked.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "New",
+					"path": "/__examples__/new.jsx"
+				},
+				{
+					"heading": "Error",
+					"path": "/__examples__/error.jsx"
+				},
+				{
+					"heading": "Locked",
+					"path": "/__examples__/locked.jsx"
+				}
 			],
 			"url-slug": "filters"
 		},
@@ -711,7 +979,10 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/default.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				}
 			],
 			"url-slug": "global-headers"
 		},
@@ -748,7 +1019,10 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/default.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				}
 			],
 			"url-slug": "global-navigation-bar"
 		},
@@ -770,9 +1044,18 @@
 			},
 			"SLDS-component-path": "/components/icons",
 			"site-stories": [
-				"/__examples__/categories.jsx",
-				"/__examples__/colors.jsx",
-				"/__examples__/sizes.jsx"
+				{
+					"heading": "Category Options",
+					"path": "/__examples__/categories.jsx"
+				},
+				{
+					"heading": "Color Options",
+					"path": "/__examples__/colors.jsx"
+				},
+				{
+					"heading": "Size Options",
+					"path": "/__examples__/sizes.jsx"
+				}
 			],
 			"url-slug": "icons"
 		},
@@ -793,13 +1076,34 @@
 			],
 			"SLDS-component-path": "/components/input",
 			"site-stories": [
-				"/__examples__/default.jsx",
-				"/__examples__/icons.jsx",
-				"/__examples__/error.jsx",
-				"/__examples__/inactiveInputs.jsx",
-				"/__examples__/inline-help.jsx",
-				"/__examples__/field-level-help.jsx",
-				"/__examples__/counter-input.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "With Icons",
+					"path": "/__examples__/icons.jsx"
+				},
+				{
+					"heading": "Error State",
+					"path": "/__examples__/error.jsx"
+				},
+				{
+					"heading": "Disabled",
+					"path": "/__examples__/inactiveInputs.jsx"
+				},
+				{
+					"heading": "With Inline Help",
+					"path": "/__examples__/inline-help.jsx"
+				},
+				{
+					"heading": "With Field Level Help",
+					"path": "/__examples__/field-level-help.jsx"
+				},
+				{
+					"heading": "Counter",
+					"path": "/__examples__/counter-input.jsx"
+				}
 			],
 			"url-slug": "inputs"
 		},
@@ -814,8 +1118,14 @@
 			},
 			"SLDS-component-path": "/components/utilities/media-object",
 			"site-stories": [
-				"/__examples__/default.jsx",
-				"/__examples__/vertically-centered.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "Vertically Centered",
+					"path": "/__examples__/vertically-centered.jsx"
+				}
 			],
 			"url-slug": "media-objects"
 		},
@@ -836,12 +1146,26 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/default.jsx",
-				"/__examples__/default-icon-label.jsx",
-				"/__examples__/default-right-to-left.jsx",
-				"/__examples__/sub-heading.jsx",
-				"/__examples__/custom-trigger.jsx",
-				"/__examples__/checkmark.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "With Icon Label",
+					"path": "/__examples__/default-icon-label.jsx"
+				},
+				{
+					"heading": "With Subheadings",
+					"path": "/__examples__/sub-heading.jsx"
+				},
+				{
+					"heading": "Custom trigger",
+					"path": "/__examples__/custom-trigger.jsx"
+				},
+				{
+					"heading": "Checkmark Selection",
+					"path": "/__examples__/checkmark.jsx"
+				}
 			],
 			"url-slug": "menu-dropdowns"
 		},
@@ -852,11 +1176,26 @@
 			"classKey": "Modal",
 			"SLDS-component-path": "/components/modals",
 			"site-stories": [
-				"/__examples__/menu-contents.jsx",
-				"/__examples__/header-footer.jsx",
-				"/__examples__/taglines.jsx",
-				"/__examples__/prompt.jsx",
-				"/__examples__/sizes.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/menu-contents.jsx"
+				},
+				{
+					"heading": "With header and footer",
+					"path": "/__examples__/header-footer.jsx"
+				},
+				{
+					"heading": "With Tagline",
+					"path": "/__examples__/taglines.jsx"
+				},
+				{
+					"heading": "Prompt",
+					"path": "/__examples__/prompt.jsx"
+				},
+				{
+					"heading": "Various sizes",
+					"path": "/__examples__/sizes.jsx"
+				}
 			],
 			"url-slug": "modals"
 		},
@@ -873,10 +1212,22 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/record-home.jsx",
-				"/__examples__/object-home.jsx",
-				"/__examples__/related-list.jsx",
-				"/__examples__/setup.jsx"
+				{
+					"heading": "Record Home",
+					"path": "/__examples__/record-home.jsx"
+				},
+				{
+					"heading": "Object Home",
+					"path": "/__examples__/object-home.jsx"
+				},
+				{
+					"heading": "Related list",
+					"path": "/__examples__/related-list.jsx"
+				},
+				{
+					"heading": "Setup",
+					"path": "/__examples__/setup.jsx"
+				}
 			],
 			"url-slug": "page-headers"
 		},
@@ -901,9 +1252,18 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/filtering.jsx",
-				"/__examples__/filtering-locked.jsx",
-				"/__examples__/filtering-error.jsx"
+				{
+					"heading": "Filtering",
+					"path": "/__examples__/filtering.jsx"
+				},
+				{
+					"heading": "Filtering: Locked",
+					"path": "/__examples__/filtering-locked.jsx"
+				},
+				{
+					"heading": "Filtering: Error",
+					"path": "/__examples__/filtering-error.jsx"
+				}
 			],
 			"url-slug": "panels"
 		},
@@ -914,10 +1274,22 @@
 			"classKey": "PillContainer",
 			"SLDS-component-path": "/components/pill-container",
 			"site-stories": [
-				"/__examples__/base.jsx",
-				"/__examples__/icons.jsx",
-				"/__examples__/avatars.jsx",
-				"/__examples__/bare.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				},
+				{
+					"heading": "With Icons",
+					"path": "/__examples__/icons.jsx"
+				},
+				{
+					"heading": "With Avatars",
+					"path": "/__examples__/avatars.jsx"
+				},
+				{
+					"heading": "Bare",
+					"path": "/__examples__/bare.jsx"
+				}
 			],
 			"url-slug": "pill-container"
 		},
@@ -928,8 +1300,14 @@
 			"classKey": "Pill",
 			"SLDS-component-path": "/components/pills",
 			"site-stories": [
-				"/__examples__/base.jsx",
-				"/__examples__/icon.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				},
+				{
+					"heading": "With Icons",
+					"path": "/__examples__/icon.jsx"
+				}
 			],
 			"url-slug": "pills"
 		},
@@ -944,16 +1322,46 @@
 			},
 			"SLDS-component-path": "/components/popovers",
 			"site-stories": [
-				"/__examples__/header.jsx",
-				"/__examples__/alternative-header.jsx",
-				"/__examples__/controlled-with-footer.jsx",
-				"/__examples__/custom-target.jsx",
-				"/__examples__/error.jsx",
-				"/__examples__/feature.jsx",
-				"/__examples__/walkthrough.jsx",
-				"/__examples__/walkthrough-action.jsx",
-				"/__examples__/warning.jsx",
-				"/__examples__/edit-dialog.jsx"
+				{
+					"heading": "With Header",
+					"path": "/__examples__/header.jsx"
+				},
+				{
+					"heading": "With Alternative Header",
+					"path": "/__examples__/alternative-header.jsx"
+				},
+				{
+					"heading": "Controlled State with Footer",
+					"path": "/__examples__/controlled-with-footer.jsx"
+				},
+				{
+					"heading": "Custom Target",
+					"path": "/__examples__/custom-target.jsx"
+				},
+				{
+					"heading": "Error Theme",
+					"path": "/__examples__/error.jsx"
+				},
+				{
+					"heading": "Feature",
+					"path": "/__examples__/feature.jsx"
+				},
+				{
+					"heading": "Walkthrough",
+					"path": "/__examples__/walkthrough.jsx"
+				},
+				{
+					"heading": "Walkthrough Action",
+					"path": "/__examples__/walkthrough-action.jsx"
+				},
+				{
+					"heading": "Warning",
+					"path": "/__examples__/warning.jsx"
+				},
+				{
+					"heading": "Edit Dialog",
+					"path": "/__examples__/edit-dialog.jsx"
+				}
 			],
 			"url-slug": "popovers"
 		},
@@ -964,12 +1372,30 @@
 			"classKey": "ProgressBar",
 			"SLDS-component-path": "/components/progress-bar",
 			"site-stories": [
-				"/__examples__/default.jsx",
-				"/__examples__/descriptive.jsx",
-				"/__examples__/color.jsx",
-				"/__examples__/radius.jsx",
-				"/__examples__/thickness.jsx",
-				"/__examples__/vertical.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "Descriptive",
+					"path": "/__examples__/descriptive.jsx"
+				},
+				{
+					"heading": "Success",
+					"path": "/__examples__/color.jsx"
+				},
+				{
+					"heading": "Circular Radius",
+					"path": "/__examples__/radius.jsx"
+				},
+				{
+					"heading": "Thickness Variants",
+					"path": "/__examples__/thickness.jsx"
+				},
+				{
+					"heading": "Vertical",
+					"path": "/__examples__/vertical.jsx"
+				}
 			],
 			"url-slug": "progress-bars"
 		},
@@ -988,8 +1414,14 @@
 				"commit-sha": "473c75bf424f69bf0ff66fde6b1e604c21d2835c"
 			},
 			"site-stories": [
-				"/__examples__/default.jsx",
-				"/__examples__/vertical.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "Vertical",
+					"path": "/__examples__/vertical.jsx"
+				}
 			],
 			"url-slug": "progress-indicators"
 		},
@@ -1008,12 +1440,30 @@
 			},
 			"SLDS-component-path": "/components/progress-ring",
 			"site-stories": [
-				"/__examples__/base.jsx",
-				"/__examples__/complete.jsx",
-				"/__examples__/warning.jsx",
-				"/__examples__/expired.jsx",
-				"/__examples__/active.jsx",
-				"/__examples__/customIcon.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				},
+				{
+					"heading": "Complete",
+					"path": "/__examples__/complete.jsx"
+				},
+				{
+					"heading": "Warning",
+					"path": "/__examples__/warning.jsx"
+				},
+				{
+					"heading": "Expired",
+					"path": "/__examples__/expired.jsx"
+				},
+				{
+					"heading": "Active",
+					"path": "/__examples__/active.jsx"
+				},
+				{
+					"heading": "With Custom Icon",
+					"path": "/__examples__/customIcon.jsx"
+				}
 			],
 			"url-slug": "progress-rings"
 		},
@@ -1028,7 +1478,10 @@
 			},
 			"SLDS-component-path": "/components/radio-button-group",
 			"site-stories": [
-				"/__examples__/base.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				}
 			],
 			"url-slug": "radio-button-groups"
 		},
@@ -1043,7 +1496,10 @@
 			},
 			"SLDS-component-path": "/components/radio-group",
 			"site-stories": [
-				"/__examples__/base.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				}
 			],
 			"url-slug": "radio-groups"
 		},
@@ -1057,8 +1513,14 @@
 				"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
 			},
 			"site-stories": [
-				"/__examples__/default.jsx",
-				"/__examples__/disabled.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "Disabled",
+					"path": "/__examples__/disabled.jsx"
+				}
 			],
 			"SLDS-component-path": "/components/radio-group/",
 			"url-slug": "radios"
@@ -1070,10 +1532,22 @@
 			"classKey": "ScopedNotification",
 			"SLDS-component-path": "/components/scoped-notification",
 			"site-stories": [
-				"/__examples__/base.jsx",
-				"/__examples__/light.jsx",
-				"/__examples__/dark.jsx",
-				"/__examples__/custom-icon.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				},
+				{
+					"heading": "Light",
+					"path": "/__examples__/light.jsx"
+				},
+				{
+					"heading": "Dark",
+					"path": "/__examples__/dark.jsx"
+				},
+				{
+					"heading": "With Custom Icon",
+					"path": "/__examples__/custom-icon.jsx"
+				}
 			],
 			"url-slug": "scoped-notifications"
 		},
@@ -1090,10 +1564,22 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/base.jsx",
-				"/__examples__/step-progress.jsx",
-				"/__examples__/hub-expandable-steps.jsx",
-				"/__examples__/card.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				},
+				{
+					"heading": "Step Progress Indicator",
+					"path": "/__examples__/step-progress.jsx"
+				},
+				{
+					"heading": "Expandable Steps",
+					"path": "/__examples__/hub-expandable-steps.jsx"
+				},
+				{
+					"heading": "With Card",
+					"path": "/__examples__/card.jsx"
+				}
 			],
 			"url-slug": "setup-assistant"
 		},
@@ -1104,11 +1590,26 @@
 			"classKey": "Slider",
 			"SLDS-component-path": "/components/slider",
 			"site-stories": [
-				"/__examples__/base.jsx",
-				"/__examples__/disabled.jsx",
-				"/__examples__/error.jsx",
-				"/__examples__/sizes.jsx",
-				"/__examples__/vertical.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				},
+				{
+					"heading": "Disabled",
+					"path": "/__examples__/disabled.jsx"
+				},
+				{
+					"heading": "Error",
+					"path": "/__examples__/error.jsx"
+				},
+				{
+					"heading": "Size Variants",
+					"path": "/__examples__/sizes.jsx"
+				},
+				{
+					"heading": "Vertical",
+					"path": "/__examples__/vertical.jsx"
+				}
 			],
 			"url-slug": "slider"
 		},
@@ -1119,7 +1620,10 @@
 			"classKey": "Spinner",
 			"SLDS-component-path": "/components/spinner",
 			"site-stories": [
-				"/__examples__/default.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				}
 			],
 			"url-slug": "spinners"
 		},
@@ -1148,10 +1652,22 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/base.jsx",
-				"/__examples__/base-multiple.jsx",
-				"/__examples__/external-state.jsx",
-				"/__examples__/custom-items-list.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				},
+				{
+					"heading": "Multiple",
+					"path": "/__examples__/base-multiple.jsx"
+				},
+				{
+					"heading": "With External State",
+					"path": "/__examples__/external-state.jsx"
+				},
+				{
+					"heading": "Custom Items List",
+					"path": "/__examples__/custom-items-list.jsx"
+				}
 			],
 			"url-slug": "split-view"
 		},
@@ -1172,8 +1688,14 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/default.jsx",
-				"/__examples__/scoped.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "Scoped",
+					"path": "/__examples__/scoped.jsx"
+				}
 			],
 			"url-slug": "tabs"
 		},
@@ -1184,9 +1706,18 @@
 			"classKey": "Textarea",
 			"SLDS-component-path": "/components/forms#flavor-textarea",
 			"site-stories": [
-				"/__examples__/default.jsx",
-				"/__examples__/error.jsx",
-				"/__examples__/disabled.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "Error",
+					"path": "/__examples__/error.jsx"
+				},
+				{
+					"heading": "Disabled",
+					"path": "/__examples__/disabled.jsx"
+				}
 			],
 			"url-slug": "textareas"
 		},
@@ -1197,7 +1728,10 @@
 			"classKey": "TimePicker",
 			"SLDS-component-path": "/components/timepicker",
 			"site-stories": [
-				"/__examples__/default.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				}
 			],
 			"url-slug": "timepickers"
 		},
@@ -1218,11 +1752,26 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/info.jsx",
-				"/__examples__/success.jsx",
-				"/__examples__/warning.jsx",
-				"/__examples__/error.jsx",
-				"/__examples__/error-with-details.jsx"
+				{
+					"heading": "Informational",
+					"path": "/__examples__/info.jsx"
+				},
+				{
+					"heading": "Success",
+					"path": "/__examples__/success.jsx"
+				},
+				{
+					"heading": "Warning",
+					"path": "/__examples__/warning.jsx"
+				},
+				{
+					"heading": "Error",
+					"path": "/__examples__/error.jsx"
+				},
+				{
+					"heading": "Error with Details",
+					"path": "/__examples__/error-with-details.jsx"
+				}
 			],
 			"url-slug": "toasts"
 		},
@@ -1233,10 +1782,22 @@
 			"classKey": "Tooltip",
 			"SLDS-component-path": "/components/tooltips",
 			"site-stories": [
-				"/__examples__/base.jsx",
-				"/__examples__/button.jsx",
-				"/__examples__/button-group.jsx",
-				"/__examples__/learn-more.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/base.jsx"
+				},
+				{
+					"heading": "Button Trigger",
+					"path": "/__examples__/button.jsx"
+				},
+				{
+					"heading": "Button Group Trigger",
+					"path": "/__examples__/button-group.jsx"
+				},
+				{
+					"heading": "Learn more",
+					"path": "/__examples__/learn-more.jsx"
+				}
 			],
 			"url-slug": "tooltips"
 		},
@@ -1255,7 +1816,10 @@
 			},
 			"SLDS-component-path": "/components/trees",
 			"site-stories": [
-				"/__examples__/default.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				}
 			],
 			"url-slug": "tree"
 		},
@@ -1276,7 +1840,10 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/default.jsx"
+				{
+					"heading": "Base",
+					"path": "/__examples__/default.jsx"
+				}
 			],
 			"url-slug": "trial-bars"
 		},
@@ -1287,7 +1854,10 @@
 			"classKey": "VerticalNavigation",
 			"SLDS-component-path": "/components/vertical-navigation",
 			"site-stories": [
-				"/__examples__/default.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				}
 			],
 			"url-slug": "vertical-navigation"
 		},
@@ -1304,9 +1874,18 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/coverable.jsx",
-				"/__examples__/non-coverable.jsx",
-				"/__examples__/vertical.jsx"
+				{
+					"heading": "Coverable",
+					"path": "/__examples__/coverable.jsx"
+				},
+				{
+					"heading": "Non-coverable",
+					"path": "/__examples__/non-coverable.jsx"
+				},
+				{
+					"heading": "Vertical",
+					"path": "/__examples__/vertical.jsx"
+				}
 			],
 			"url-slug": "visual-pickers"
 		},
@@ -1327,12 +1906,30 @@
 				}
 			],
 			"site-stories": [
-				"/__examples__/default.jsx",
-				"/__examples__/steps-complete.jsx",
-				"/__examples__/info-only.jsx",
-				"/__examples__/splash.jsx",
-				"/__examples__/trailhead.jsx",
-				"/__examples__/trailhead-complete.jsx"
+				{
+					"heading": "Default",
+					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "With Steps Completed",
+					"path": "/__examples__/steps-complete.jsx"
+				},
+				{
+					"heading": "Info-Only",
+					"path": "/__examples__/info-only.jsx"
+				},
+				{
+					"heading": "Splash",
+					"path": "/__examples__/splash.jsx"
+				},
+				{
+					"heading": "Trailhead",
+					"path": "/__examples__/trailhead.jsx"
+				},
+				{
+					"heading": "Trailhead - Complete",
+					"path": "/__examples__/trailhead-complete.jsx"
+				}
 			],
 			"url-slug": "welcome-mat"
 		}

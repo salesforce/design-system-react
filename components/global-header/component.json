@@ -35,7 +35,10 @@
 		}
 	],
 	"site-stories": [
-		"/__examples__/default.jsx"
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		}
 	],
 	"url-slug": "global-headers"
 }

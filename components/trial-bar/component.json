@@ -15,7 +15,10 @@
 		}
 	],
 	"site-stories": [
-		"/__examples__/default.jsx"
+		{
+			"heading": "Base",
+			"path": "/__examples__/default.jsx"
+		}
 	],
 	"url-slug": "trial-bars"
 }

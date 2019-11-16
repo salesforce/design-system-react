@@ -23,11 +23,26 @@
 		}
 	],
 	"site-stories": [
-		"/__examples__/base.jsx",
-		"/__examples__/base-with-toolbar.jsx",
-		"/__examples__/successful-save.jsx",
-		"/__examples__/after-successful-save.jsx",
-		"/__examples__/failed-save.jsx"
+		{
+			"heading": "Base",
+			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "Base with Toolbar",
+			"path": "/__examples__/base-with-toolbar.jsx"
+		},
+		{
+			"heading": "Successful Save",
+			"path": "/__examples__/successful-save.jsx"
+		},
+		{
+			"heading": "After Successful Save",
+			"path": "/__examples__/after-successful-save.jsx"
+		},
+		{
+			"heading": "Save Error",
+			"path": "/__examples__/failed-save.jsx"
+		}
 	],
 	"url-slug": "builder-header"
 }

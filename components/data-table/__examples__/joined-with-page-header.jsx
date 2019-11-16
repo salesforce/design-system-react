@@ -324,12 +324,10 @@ class Example extends React.Component {
 				style={{
 					height: '200px',
 					width: '100%',
+					marginBottom: '150px',
 				}}
 			>
 				<IconSettings iconPath="/assets/icons">
-					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
-						Fixed Header Layout
-					</h3>
 					<PageHeader
 						onRenderActions={actions}
 						icon={
