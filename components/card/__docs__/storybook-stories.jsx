@@ -192,6 +192,7 @@ storiesOf(CARD, module)
 							name="inline-edit-standard"
 							value="Write your own heading"
 							id="inline-edit-standard"
+							silenceDeprecationWarning
 						/>
 					}
 				/>

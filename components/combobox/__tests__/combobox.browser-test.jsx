@@ -264,14 +264,16 @@ describe('SLDSCombobox', function describeFunction() {
 									name="search"
 								/>
 							),
-							label: (searchTerm) => [
-								searchTerm && searchTerm.length > 0 ? (
-									<span className="slds-text-title_bold">{`"${searchTerm}" `}</span>
-								) : (
-									'Search '
-								),
-								'in Accounts',
-							],
+							label: (searchTerm) => (
+								<React.Fragment>
+									{searchTerm && searchTerm.length > 0 ? (
+										<span className="slds-text-title_bold">{`"${searchTerm}" `}</span>
+									) : (
+										'Search '
+									)}
+									in Accounts
+								</React.Fragment>
+							),
 						},
 					]}
 					optionsAddItem={[

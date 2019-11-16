@@ -38,7 +38,7 @@ describe('SLDSMap: ', function() {
 			<IconSettings iconPath="/assets/icons">{mapInstance}</IconSettings>
 		);
 		document.body.appendChild(container);
-		renderedNode = ReactDOM.hydrate(opener, container);
+		renderedNode = ReactDOM.render(opener, container);
 		return renderedNode;
 	};
 
@@ -56,6 +56,7 @@ describe('SLDSMap: ', function() {
 		beforeEach(() => {
 			const locations = [
 				{
+					id: '1',
 					name: 'Worldwide Corporate Headquarters',
 					address: 'The Landmark @ One Market, San Francisco, CA',
 				},

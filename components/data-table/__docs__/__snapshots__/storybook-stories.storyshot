@@ -11012,7 +11012,11 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
                   />
                 </svg>
-                
+                <span
+                  className="slds-assistive-text"
+                >
+                  User
+                </span>
               </span>
                
             </div>

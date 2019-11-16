@@ -403,6 +403,7 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
                 onFocus={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
+                tabIndex={0}
               >
                 Saved 5 mins ago
               </span>

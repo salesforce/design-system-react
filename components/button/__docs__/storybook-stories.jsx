@@ -65,7 +65,7 @@ storiesOf(BUTTON, module)
 		'Small Icon Hint inverse',
 		() =>
 			getIconButton({
-				assistiveText: 'Hint',
+				assistiveText: { icon: 'Hint' },
 				iconCategory: 'utility',
 				iconName: 'down',
 				iconVariant: 'border',

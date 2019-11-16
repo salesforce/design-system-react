@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
@@ -40,6 +41,12 @@ storiesOf(DATE_PICKER, module)
 				label: 'Date',
 			}}
 			menuPosition="relative"
+			formatter={(date) => {
+				return date ? moment(date).format('M/D/YYYY') : '';
+			}}
+			parser={(dateString) => {
+				return moment(dateString, 'MM-DD-YYYY').toDate();
+			}}
 		/>
 	))
 	.add('DOM Snapshot', () => <SnaphotDefault />)

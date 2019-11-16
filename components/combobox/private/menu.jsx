@@ -172,14 +172,16 @@ const setBold = (label, searchTerm) => {
 	}
 	const position = label.toLowerCase().indexOf(searchTerm.toLowerCase());
 	if (position > -1) {
-		return [
-			label.substr(0, position),
-			<span key="bold" className="slds-text-title_bold">{`${label.substr(
-				position,
-				searchTerm.length
-			)}`}</span>,
-			label.substr(position + searchTerm.length),
-		];
+		return (
+			<React.Fragment>
+				{label.substr(0, position)}
+				<span key="bold" className="slds-text-title_bold">{`${label.substr(
+					position,
+					searchTerm.length
+				)}`}</span>
+				{label.substr(position + searchTerm.length)}
+			</React.Fragment>
+		);
 	}
 	return label;
 };
@@ -275,7 +277,7 @@ const Menu = (props) => {
 		if (optionData.type === 'footer') {
 			return (
 				<li
-					key={`menu-header-${optionData.id}}`}
+					key={`menu-footer-${optionData.id}}`}
 					role="presentation"
 					className="slds-listbox__item"
 				>
@@ -323,6 +325,7 @@ const Menu = (props) => {
 					aria-selected={active}
 					{...disabledProps}
 					id={`${props.inputId}-listbox-option-${optionData.id}`}
+					key={`menu-subtitle-${optionData.id}`}
 					className={classNames(
 						'slds-media slds-listbox__option',
 						'slds-listbox__option_entity slds-listbox__option_has-meta',
@@ -375,6 +378,7 @@ const Menu = (props) => {
 					aria-selected={active}
 					{...disabledProps}
 					id={`${props.inputId}-listbox-option-${optionData.id}`}
+					key={`menu-checkbox-${optionData.id}`}
 					className={classNames(
 						'slds-media slds-listbox__option',
 						' slds-listbox__option_plain slds-media_small slds-media_center',
@@ -441,6 +445,7 @@ const Menu = (props) => {
 				content: optionData.tooltipContent || content, // either use specific content defined on option or content defined on tooltip component.
 				id: tooltipId,
 				position: 'absolute',
+				silenceTriggerTabbableWarning: true,
 				triggerStyle: { width: '100%' },
 				...userDefinedTooltipProps, // we want to allow user defined tooltip pros to overwrite default props, if need be.
 			};

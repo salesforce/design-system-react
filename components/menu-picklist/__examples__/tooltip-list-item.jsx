@@ -10,7 +10,12 @@ const ListItemRenderer = (props) => (
 		align="bottom left"
 		content={`${props.label} tooltip on bottom left`}
 	>
-		<p className="slds-truncate">{props.label} (Hover for tooltip)</p>
+		<p
+			className="slds-truncate"
+			tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+		>
+			{props.label} (Hover for tooltip)
+		</p>
 	</Tooltip>
 );
 
@@ -36,6 +41,7 @@ class Example extends React.Component {
 					]}
 					placeholder="Select a contact"
 					value="C0"
+					silenceDeprecationWarning
 				/>
 			</IconSettings>
 		);

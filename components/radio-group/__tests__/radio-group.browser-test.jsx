@@ -39,7 +39,7 @@ class RadioGroupExample extends React.Component {
 				{values.map((value) => (
 					<Radio
 						key={value}
-						label={value}
+						labels={{ label: value }}
 						value={value}
 						checked={this.state.checked === value}
 						variant="base"
@@ -84,7 +84,7 @@ describe('RadioGroup', function() {
 		radios.forEach((radioWrapper, index) => {
 			const radio = radios.get(index);
 			expect(radio.props.checked).to.equal(
-				radio.props.label === 'Radio Label One',
+				radio.props.labels.label === 'Radio Label One',
 				'the second radio input is checked'
 			);
 		});

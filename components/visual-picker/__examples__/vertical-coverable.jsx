@@ -71,7 +71,7 @@ class Example extends React.Component {
 						id="visual-picker-vertical-coverable-checkbox"
 					>
 						<Checkbox
-							label="Account"
+							labels={{ label: 'Account' }}
 							id="visual-picker-vertical-coverable-checkbox-1"
 							onRenderVisualPickerSelected={() => (
 								<Icon
@@ -92,7 +92,7 @@ class Example extends React.Component {
 							)}
 						/>
 						<Checkbox
-							label="Lead"
+							labels={{ label: 'Lead' }}
 							id="visual-picker-vertical-coverable-checkbox-2"
 							onRenderVisualPickerSelected={() => (
 								<Icon
@@ -113,7 +113,7 @@ class Example extends React.Component {
 							)}
 						/>
 						<Checkbox
-							label="Orders"
+							labels={{ label: 'Orders' }}
 							id="visual-picker-vertical-coverable-checkbox-3"
 							onRenderVisualPickerSelected={() => (
 								<Icon

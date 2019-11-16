@@ -50,6 +50,7 @@ class Example extends React.Component {
 								onDismiss={this.toggleToast}
 								theme="warning"
 								variant="toast"
+								silenceDeprecationWarning
 							/>
 						}
 					>

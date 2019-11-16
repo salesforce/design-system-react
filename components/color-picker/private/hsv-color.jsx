@@ -154,7 +154,9 @@ class HsvColor extends React.Component {
 							checked={!this.isTransparent()}
 							id={`color-picker-active-working-color-swatch-${this.props.id}`}
 							key="working-color"
-							label={this.props.labels.customTabActiveWorkingColorSwatch}
+							labels={{
+								label: this.props.labels.customTabActiveWorkingColorSwatch,
+							}}
 							style={swatchStyle}
 							value={workingColor.hex}
 							variant="swatch"
@@ -163,7 +165,7 @@ class HsvColor extends React.Component {
 							checked={this.isTransparent()}
 							id={`color-picker-transparent-swatch-${this.props.id}`}
 							key="transparent"
-							label={this.props.labels.customTabTransparentSwatch}
+							labels={{ label: this.props.labels.customTabTransparentSwatch }}
 							style={transparentSwatchStyle}
 							value="" // transparent
 							variant="swatch"

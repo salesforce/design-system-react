@@ -134,6 +134,7 @@ const getDropdownPositioned = (props) => {
 		positionedDropdowns.push(
 			<div
 				className="slds-col slds-size_1-of-3"
+				key={`positioned-dropdown-${position.replace(' ', '')}`}
 				style={{ minHeight: '500px' }}
 				data-ignore-axe-duplicate-id
 			>

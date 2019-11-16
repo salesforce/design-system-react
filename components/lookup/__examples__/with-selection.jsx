@@ -32,6 +32,7 @@ class Example extends React.Component {
 						{ label: 'Acme Construction' },
 					]}
 					selectedItem={1}
+					silenceDeprecationWarning
 				/>
 			</IconSettings>
 		);

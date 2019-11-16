@@ -239,7 +239,7 @@ class Filter extends React.Component {
 				)}
 			>
 				{!this.props.isLocked && (this.props.children || this.props.popover) ? (
-					<Popover {...popoverProps}>
+					<Popover {...popoverProps} silenceDeprecatedPropertyWarning>
 						<button
 							className="slds-button_reset slds-grow slds-has-blur-focus"
 							onClick={this.handleFilterClick}

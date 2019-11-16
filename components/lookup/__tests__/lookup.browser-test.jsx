@@ -47,6 +47,7 @@ describe('SLDSLookup: ', () => {
 			{ label: 'Acme Landscaping' },
 			{ label: 'Acme Construction' },
 		],
+		silenceDeprecationWarning: true,
 	};
 
 	const getLookup = (props = {}) =>

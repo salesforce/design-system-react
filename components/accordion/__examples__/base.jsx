@@ -88,18 +88,20 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Accordion id="base-example-accordion">
-					{this.state.items.map((item, i) => (
-						<AccordionPanel
-							expanded={this.state.expandedPanels[item.id]}
-							id={item.id}
-							panelContentActions={this.menuDropdown(item)}
-							key={item.id}
-							onTogglePanel={(event) => this.togglePanel(event, item)}
-							summary={item.summary}
-						>
-							{item.details}
-						</AccordionPanel>
-					))}
+					{this.state.items.map((item, i) => {
+						return (
+							<AccordionPanel
+								expanded={!!this.state.expandedPanels[item.id]}
+								id={item.id}
+								panelContentActions={this.menuDropdown(item)}
+								key={item.id}
+								onTogglePanel={(event) => this.togglePanel(event, item)}
+								summary={item.summary}
+							>
+								{item.details}
+							</AccordionPanel>
+						);
+					})}
 				</Accordion>
 			</IconSettings>
 		);
