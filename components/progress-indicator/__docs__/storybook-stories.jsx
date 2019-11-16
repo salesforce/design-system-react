@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 
@@ -11,11 +12,13 @@ import StepError from '../__examples__/step-error';
 import VerticalProgressIndicator from '../__examples__/vertical';
 import SetupAssistant from '../__examples__/setup-assistant';
 
-const steps = [
+import log from '../../../utilities/log';
+
+const exampleSteps = [
 	{
 		id: 0,
 		label: <i>tooltip label #1</i>,
-		assistiveText: 'This is custom text in the assistive text key',
+		assistiveText: 'This is custom text in the assistive text key - Completed',
 	},
 	{ id: 1, label: 'tooltip label #2' },
 	{ id: 2, label: <strong>tooltip label #3</strong> },
@@ -24,33 +27,84 @@ const steps = [
 ];
 
 const manySteps = [
-	{ id: 'a', label: 'tooltip label #1' },
-	{ id: 'b', label: 'tooltip label #2' },
-	{ id: 'c', label: 'tooltip label #3' },
-	{ id: 'd', label: 'tooltip label #4' },
-	{ id: 'e', label: 'tooltip label #5' },
-	{ id: 'f', label: 'tooltip label #6' },
-	{ id: 'g', label: 'tooltip label #7' },
-	{ id: 'h', label: 'tooltip label #8' },
-	{ id: 'i', label: 'tooltip label #9' },
+	{ id: 0, label: 'tooltip label #1' },
+	{ id: 1, label: 'tooltip label #2' },
+	{ id: 2, label: 'tooltip label #3' },
+	{ id: 3, label: 'tooltip label #4' },
+	{ id: 4, label: 'tooltip label #5' },
+	{ id: 5, label: 'tooltip label #6' },
+	{ id: 6, label: 'tooltip label #7' },
+	{ id: 7, label: 'tooltip label #8' },
+	{ id: 8, label: 'tooltip label #9' },
+];
+
+const manyStepsVertical = [
+	{ id: 0, label: 'label #1' },
+	{ id: 1, label: 'label #2' },
+	{ id: 2, label: 'label #3' },
+	{ id: 3, label: 'label #4' },
+	{ id: 4, label: 'label #5' },
+	{ id: 5, label: 'label #6' },
+	{ id: 6, label: 'label #7' },
+	{ id: 7, label: 'label #8' },
+	{ id: 8, label: 'label #9' },
 ];
 
 class ExampleProgressIndicator extends React.Component {
 	static displayName = 'ProgressIndicatorDefault';
+
+	constructor(props) {
+		super(props);
+
+		const steps = props.steps || exampleSteps;
+
+		this.state = {
+			completedSteps: props.completedSteps,
+			selectedStep: props.selectedStep,
+			steps,
+		};
+	}
 
 	render() {
 		return (
 			<div style={{ padding: '4rem 1rem 0px' }}>
 				<ProgressIndicator
 					id="example-progress-indicator"
-					steps={this.props.steps}
-					selectedStep={this.props.selectedStep}
+					steps={this.state.steps}
+					selectedStep={this.state.selectedStep}
 					disabledSteps={this.props.disabledSteps}
-					completedSteps={this.props.completedSteps}
+					completedSteps={this.state.completedSteps}
 					orientation={this.props.orientation}
 					assistiveText={this.props.assistiveText}
 					onStepClick={(event, data) => {
-						console.log(data);
+						const { steps } = this.state;
+						const completedSteps = steps.slice(0, data.step.id);
+
+						if (steps[0].assistiveText) {
+							if (completedSteps.length > 0) {
+								steps[0].assistiveText = `${
+									steps[0].assistiveText
+								} - Completed`;
+							} else {
+								steps[0].assistiveText = steps[0].assistiveText.replace(
+									' - Completed',
+									''
+								);
+							}
+						}
+
+						this.setState({
+							completedSteps,
+							selectedStep: data.step,
+							steps,
+						});
+
+						log({
+							action,
+							event,
+							eventName: 'On Step Click',
+							data,
+						});
 					}}
 				/>
 			</div>
@@ -75,19 +129,20 @@ storiesOf(PROGRESS_INDICATOR, module)
 	))
 	.add('Base With Disabled Steps', () => (
 		<ExampleProgressIndicator
-			steps={steps}
-			disabledSteps={[steps[3], steps[4]]}
-			selectedStep={steps[2]}
-			completedSteps={steps.slice(0, 2)}
+			steps={exampleSteps}
+			disabledSteps={[exampleSteps[3], exampleSteps[4]]}
+			selectedStep={exampleSteps[2]}
+			completedSteps={exampleSteps.slice(0, 2)}
 		/>
 	))
 	.add('Step Error', () => (
 		<StepError
 			id="example-progress-indicator"
-			steps={steps}
-			selectedStep={steps[1]}
-			completedSteps={steps.slice(0, 1)}
-			errorSteps={steps.slice(1, 2)}
+			steps={exampleSteps}
+			selectedStep={exampleSteps[1]}
+			completedSteps={exampleSteps.slice(0, 1)}
+			disabledSteps={exampleSteps.slice(2, 5)}
+			errorSteps={exampleSteps.slice(1, 2)}
 		/>
 	))
 	.add(
@@ -96,9 +151,9 @@ storiesOf(PROGRESS_INDICATOR, module)
 	)
 	.add('Completed Progress', () => (
 		<ExampleProgressIndicator
-			steps={steps}
-			selectedStep={steps[steps.length - 2]}
-			completedSteps={steps.slice(0, steps.length - 2)}
+			steps={exampleSteps}
+			selectedStep={exampleSteps[exampleSteps.length - 2]}
+			completedSteps={exampleSteps.slice(0, exampleSteps.length - 2)}
 			assistiveText={{
 				completedStep: 'Finished this step.',
 				disabledStep: 'Unable to proceed on this step.',
@@ -109,9 +164,9 @@ storiesOf(PROGRESS_INDICATOR, module)
 	.add('VerticalStepError', () => (
 		<StepError
 			id="example-progress-indicator"
-			steps={manySteps}
-			completedSteps={manySteps.slice(0, 4)}
-			errorSteps={manySteps.slice(4, 5)}
+			steps={manyStepsVertical}
+			completedSteps={manyStepsVertical.slice(0, 4)}
+			errorSteps={manyStepsVertical.slice(4, 5)}
 			orientation="vertical"
 		/>
 	))

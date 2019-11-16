@@ -109,9 +109,7 @@ exports[`DOM snapshots SLDSProgressBar Descriptive 1`] = `
         <span>
           Einstein Setup Assistant
         </span>
-        <span
-          aria-hidden="true"
-        >
+        <span>
           <strong>
             90
             % 

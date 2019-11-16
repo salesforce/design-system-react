@@ -1604,9 +1604,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
           <span>
             Complete all the steps below to finish setting up Einstein Visibility
           </span>
-          <span
-            aria-hidden="true"
-          >
+          <span>
             <strong>
               50
               % 

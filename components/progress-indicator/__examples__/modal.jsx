@@ -7,11 +7,13 @@ import Modal from '~/components/modal';
 
 import Button from '~/components/button';
 
+import log from '../../../utilities/log';
+
 const steps = [
 	{
 		id: 0,
 		label: <i>tooltip label #1</i>,
-		assistiveText: 'This is custom text in the assistive text key',
+		assistiveText: 'This is custom text in the assistive text key - Completed',
 	},
 	{ id: 1, label: 'tooltip label #2' },
 	{ id: 2, label: <strong>tooltip label #3</strong> },
@@ -20,7 +22,12 @@ const steps = [
 ];
 
 const handleStepEvent = function handleStepEventFunction(event, data) {
-	console.log(data);
+	log({
+		action,
+		event,
+		eventName: 'On Step Click',
+		data,
+	});
 };
 
 const getModal = (props) => <Modal {...props} />;
@@ -33,6 +40,7 @@ const modalFooter = () => [
 		steps={steps}
 		selectedStep={steps[2]}
 		completedSteps={steps.slice(0, 2)}
+		disabledSteps={steps.slice(3, 5)}
 		errorSteps={steps.slice(2, 3)}
 		onStepClick={handleStepEvent}
 	/>,

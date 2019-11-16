@@ -272,7 +272,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                This is custom text in the assistive text key
+                This is custom text in the assistive text key - Completed
               </span>
             </button>
             <span />
@@ -870,7 +870,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                This is custom text in the assistive text key
+                This is custom text in the assistive text key - Completed
               </span>
             </button>
             <span />
@@ -1088,7 +1088,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-size_3-of-4"
             >
-              tooltip label #1
+              label #1
             </div>
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
@@ -1126,7 +1126,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-size_3-of-4"
             >
-              tooltip label #2
+              label #2
             </div>
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
@@ -1164,7 +1164,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-size_3-of-4"
             >
-              tooltip label #3
+              label #3
             </div>
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
@@ -1205,7 +1205,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-size_3-of-4"
             >
-              tooltip label #4
+              label #4
             </div>
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
@@ -1264,7 +1264,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-size_3-of-4"
             >
-              tooltip label #5
+              label #5
             </div>
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
@@ -1345,7 +1345,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                This is custom text in the assistive text key
+                This is custom text in the assistive text key - Completed
               </span>
             </button>
             <span />
@@ -1402,15 +1402,20 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
               }
             }
           >
-            <button
-              aria-current={null}
-              className="slds-button slds-progress__marker"
+            <a
+              aria-disabled={true}
+              className="slds-button slds-progress__marker slds-is-disabled"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
-              type="button"
+              role="button"
+              style={
+                Object {
+                  "cursor": "not-allowed",
+                }
+              }
+              tabIndex={0}
             >
               <span
                 className="slds-assistive-text"
@@ -1419,9 +1424,9 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
                 <strong>
                   tooltip label #3
                 </strong>
-                
+                - Disabled
               </span>
-            </button>
+            </a>
             <span />
           </div>
         </li>
@@ -1436,24 +1441,29 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
               }
             }
           >
-            <button
-              aria-current={null}
-              className="slds-button slds-progress__marker"
+            <a
+              aria-disabled={true}
+              className="slds-button slds-progress__marker slds-is-disabled"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
-              type="button"
+              role="button"
+              style={
+                Object {
+                  "cursor": "not-allowed",
+                }
+              }
+              tabIndex={0}
             >
               <span
                 className="slds-assistive-text"
               >
                 Step 4: 
                 tooltip label #4
-                
+                - Disabled
               </span>
-            </button>
+            </a>
             <span />
           </div>
         </li>
@@ -1468,24 +1478,29 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
               }
             }
           >
-            <button
-              aria-current={null}
-              className="slds-button slds-progress__marker"
+            <a
+              aria-disabled={true}
+              className="slds-button slds-progress__marker slds-is-disabled"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
-              type="button"
+              role="button"
+              style={
+                Object {
+                  "cursor": "not-allowed",
+                }
+              }
+              tabIndex={0}
             >
               <span
                 className="slds-assistive-text"
               >
                 Step 5: 
                 tooltip label #5
-                
+                - Disabled
               </span>
-            </button>
+            </a>
             <span />
           </div>
         </li>
@@ -1546,7 +1561,7 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-0"
           >
-            tooltip label #1
+            label #1
           </div>
         </li>
         <li
@@ -1559,7 +1574,7 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-1"
           >
-            tooltip label #2
+            label #2
           </div>
         </li>
         <li
@@ -1572,7 +1587,7 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-2"
           >
-            tooltip label #3
+            label #3
           </div>
         </li>
         <li
@@ -1585,7 +1600,7 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-3"
           >
-            tooltip label #4
+            label #4
           </div>
         </li>
         <li
@@ -1598,7 +1613,7 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-4"
           >
-            tooltip label #5
+            label #5
           </div>
         </li>
       </ol>
@@ -1626,7 +1641,7 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
         className="slds-progress__list"
       >
         <li
-          className="slds-progress__item slds-is-completed"
+          className="slds-progress__item slds-is-completed slds-is-active"
         >
           <span
             className="slds-progress__marker slds-progress__marker_icon"
@@ -1645,9 +1660,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
           </span>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-a"
+            id="progress-indicator-vertical-label-0"
           >
-            tooltip label #1
+            label #1
           </div>
         </li>
         <li
@@ -1670,9 +1685,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
           </span>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-b"
+            id="progress-indicator-vertical-label-1"
           >
-            tooltip label #2
+            label #2
           </div>
         </li>
         <li
@@ -1695,9 +1710,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
           </span>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-c"
+            id="progress-indicator-vertical-label-2"
           >
-            tooltip label #3
+            label #3
           </div>
         </li>
         <li
@@ -1720,9 +1735,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
           </span>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-d"
+            id="progress-indicator-vertical-label-3"
           >
-            tooltip label #4
+            label #4
           </div>
         </li>
         <li
@@ -1745,9 +1760,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
           </span>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-e"
+            id="progress-indicator-vertical-label-4"
           >
-            tooltip label #5
+            label #5
           </div>
         </li>
         <li
@@ -1758,9 +1773,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-f"
+            id="progress-indicator-vertical-label-5"
           >
-            tooltip label #6
+            label #6
           </div>
         </li>
         <li
@@ -1771,9 +1786,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-g"
+            id="progress-indicator-vertical-label-6"
           >
-            tooltip label #7
+            label #7
           </div>
         </li>
         <li
@@ -1784,9 +1799,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-h"
+            id="progress-indicator-vertical-label-7"
           >
-            tooltip label #8
+            label #8
           </div>
         </li>
         <li
@@ -1797,9 +1812,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-i"
+            id="progress-indicator-vertical-label-8"
           >
-            tooltip label #9
+            label #9
           </div>
         </li>
       </ol>

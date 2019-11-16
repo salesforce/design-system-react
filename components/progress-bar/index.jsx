@@ -110,7 +110,7 @@ class ProgressBar extends React.Component {
 					id={`progress-bar-label-${this.getId()}`}
 				>
 					<span>{labels.label}</span>
-					<span aria-hidden="true">
+					<span>
 						<strong>
 							{this.props.value}
 							{'% '}
