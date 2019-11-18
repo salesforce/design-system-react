@@ -9920,6 +9920,176 @@
             }
         ]
     },
+    "location-map": {
+        "description": "A location map component is used to find and show locations",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": "Get the LocationMap's HTML id. Generate a new one if no ID present.",
+                "modifiers": [],
+                "params": [],
+                "returns": null,
+                "description": "Get the LocationMap's HTML id. Generate a new one if no ID present."
+            },
+            {
+                "name": "handleClick",
+                "docblock": "Handles clicking of a location",
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event"
+                    },
+                    {
+                        "name": "i"
+                    }
+                ],
+                "returns": null,
+                "description": "Handles clicking of a location"
+            }
+        ],
+        "props": {
+            "className": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added with `slds-map` class. `array`, `object`, or `string` are accepted."
+            },
+            "classNameContainer": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS class names to be added to the container element. `array`, `object`, or `string` are accepted."
+            },
+            "defaultLocation": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "id": {
+                            "name": "string",
+                            "required": true
+                        },
+                        "name": {
+                            "name": "string",
+                            "required": true
+                        },
+                        "address": {
+                            "name": "string",
+                            "required": true
+                        }
+                    }
+                },
+                "required": true,
+                "description": "Accepts location object that will be shown if no location has been selected. Required\n * `id` : A unique identifier string for the location\n * `name` : Name of the location\n * `address` : Address of the location"
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "title": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Labels\n * `title` - Title for the LocationMap component."
+            },
+            "locations": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "id": {
+                                "name": "string",
+                                "required": true
+                            },
+                            "name": {
+                                "name": "string",
+                                "required": true
+                            },
+                            "address": {
+                                "name": "string",
+                                "required": true
+                            }
+                        }
+                    }
+                },
+                "required": true,
+                "description": "Array of locations objects for the LocationMap component.**\nEach location object can contain:\n * `id` : A unique identifier string for the location\n * `name` : Name of the location\n * `address` : Address of the location"
+            },
+            "onClickLocation": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Callback function triggered when a location is selected"
+            },
+            "googleAPIKey": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "Accepts a Google Map API Key that will be used for showing the map"
+            },
+            "selection": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "id": {
+                            "name": "string",
+                            "required": true
+                        },
+                        "name": {
+                            "name": "string",
+                            "required": true
+                        },
+                        "address": {
+                            "name": "string",
+                            "required": true
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Accepts location object that will be shown when selected\n * `id` : A unique identifier string for the location\n * `name` : Name of the location\n * `address` : Address of the location"
+            }
+        },
+        "route": "location-map",
+        "display-name": "Location Map",
+        "SLDS-component-path": "/components/location-map",
+        "dependencies": []
+    },
     "media-object": {
         "description": "When you need text and a figure next to each other, use a media object.",
         "methods": [],

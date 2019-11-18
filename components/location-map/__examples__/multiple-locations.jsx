@@ -1,7 +1,7 @@
 import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
-import Map from '~/components/map';
+import LocationMap from '~/components/location-map';
 import Button from '~/components/button';
 import Modal from '~/components/modal';
 
@@ -56,7 +56,7 @@ const locations = [
 ];
 
 class Example extends React.Component {
-	static displayName = 'MapExampleMultipleLocations';
+	static displayName = 'LocationMapExampleMultipleLocations';
 
 	constructor(props) {
 		super(props);
@@ -66,10 +66,10 @@ class Example extends React.Component {
 	}
 
 	render() {
-		const map = (
-			<Map
+		const locationMap = (
+			<LocationMap
 				defaultLocation={locations[0]}
-				id="map-multiple-locations-example"
+				id="location-map-multiple-locations-example"
 				googleAPIKey="AIzaSyDliLquGXGts9S8YtkWVolSQEJdBL1ZuWc"
 				labels={{ title: 'Salesforce Locations In United States' }}
 				locations={locations}
@@ -101,10 +101,10 @@ class Example extends React.Component {
 							/>
 						}
 					>
-						{map}
+						{locationMap}
 					</Modal>
 				) : (
-					<React.Fragment>{map}</React.Fragment>
+					<React.Fragment>{locationMap}</React.Fragment>
 				)}
 			</IconSettings>
 		);

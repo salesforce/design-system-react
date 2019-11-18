@@ -12,9 +12,9 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 
 import Icon from '../icon';
-import { MAP } from '../../utilities/constants';
+import { LOCATION_MAP } from '../../utilities/constants';
 
-const displayName = MAP;
+const displayName = LOCATION_MAP;
 
 const propTypes = {
 	/**
@@ -50,13 +50,13 @@ const propTypes = {
 	id: PropTypes.string,
 	/**
 	 *  Labels
-	 *  * `title` - Title for the Map component.
+	 *  * `title` - Title for the LocationMap component.
 	 */
 	labels: PropTypes.shape({
 		title: PropTypes.string,
 	}),
 	/**
-	 * Array of locations objects for the Map component.**
+	 * Array of locations objects for the LocationMap component.**
 	 * Each location object can contain:
 	 *  * `id` : A unique identifier string for the location
 	 *  * `name` : Name of the location
@@ -97,16 +97,16 @@ const defaultProps = {
 };
 
 /**
- * A map component is used to find a location
+ * A location map component is used to find and show locations
  */
-class Map extends React.Component {
+class LocationMap extends React.Component {
 	constructor(props) {
 		super(props);
 		this.generatedId = shortid.generate();
 	}
 
 	/**
-	 * Get the Map's HTML id. Generate a new one if no ID present.
+	 * Get the LocationMap's HTML id. Generate a new one if no ID present.
 	 */
 	getId() {
 		return this.props.id || this.generatedId;
@@ -197,7 +197,7 @@ class Map extends React.Component {
 	}
 }
 
-Map.displayName = displayName;
-Map.propTypes = propTypes;
+LocationMap.displayName = displayName;
+LocationMap.propTypes = propTypes;
 
-export default Map;
+export default LocationMap;

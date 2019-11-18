@@ -151,6 +151,8 @@ export InputIcon from './icon/input-icon';
 export SLDSInputIcon from './icon/input-icon';
 export InputSearch from './input/search';
 export SLDSInputSearch from './input/search';
+export LocationMap from './location-map';
+export SLDSLocationMap from './location-map';
 export Lookup from './lookup';
 export SLDSLookup from './lookup';
 export LookupDefaultFooter from './lookup/menu/default-footer';

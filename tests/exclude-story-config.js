@@ -31,7 +31,7 @@ const excludeFromTests = {
 			'SLDSGlobalNavigationBar',
 			'SLDSDatePicker',
 			'SLDSIconSettings',
-			'SLDSMap',
+			'SLDSLocationMap',
 			'SLDSModal',
 			'SLDSPanel',
 			'SLDSTimepicker',
