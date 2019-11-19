@@ -35,7 +35,9 @@ describe('SLDSLocationMap: ', function() {
 		container = document.createElement('div');
 
 		const opener = (
-			<IconSettings iconPath="/assets/icons">{locationMapInstance}</IconSettings>
+			<IconSettings iconPath="/assets/icons">
+				{locationMapInstance}
+			</IconSettings>
 		);
 		document.body.appendChild(container);
 		renderedNode = ReactDOM.render(opener, container);
@@ -123,22 +125,26 @@ describe('SLDSLocationMap: ', function() {
 			});
 		});
 		it('renders map correctly', () => {
-			const LocationMapContainer = getLocationMapNode(document.body).querySelector('.slds-map');
+			const LocationMapContainer = getLocationMapNode(
+				document.body
+			).querySelector('.slds-map');
 			expect(LocationMapContainer).to.exist;
 			expect(LocationMapContainer.querySelector('iframe').title).to.equal(
 				'Salesforce Locations In United States'
 			);
 		});
 		it('renders map coordinates correctly', () => {
-			const LocationMapCoordinates = getLocationMapNode(document.body).querySelector(
-				'.slds-coordinates'
-			);
+			const LocationMapCoordinates = getLocationMapNode(
+				document.body
+			).querySelector('.slds-coordinates');
 			expect(LocationMapCoordinates).to.exist;
 			expect(
-				LocationMapCoordinates.querySelector('.slds-coordinates__title').textContent
+				LocationMapCoordinates.querySelector('.slds-coordinates__title')
+					.textContent
 			).to.equal('Salesforce Locations In United States (5)');
-			const loc = LocationMapCoordinates.querySelector('.slds-coordinates__list')
-				.children;
+			const loc = LocationMapCoordinates.querySelector(
+				'.slds-coordinates__list'
+			).children;
 			expect(loc.length).to.equal(5);
 			expect(loc[0].querySelector('.slds-text-link').textContent).to.equal(
 				'Worldwide Corporate Headquarters'
