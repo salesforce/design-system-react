@@ -407,11 +407,13 @@ describe('SLDSMenuDropdown', function() {
 		const renderDropdown = (inst) => {
 			body = document.createElement('div');
 			document.body.appendChild(body);
+			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			// eslint-disable-next-line react/no-render-return-value
 			return ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
 				body
 			);
+			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
 		};
 
 		function removeDropdownTrigger() {
@@ -494,11 +496,13 @@ describe('SLDSMenuDropdown', function() {
 		const renderDropdown = (inst) => {
 			body = document.createElement('div');
 			document.body.appendChild(body);
+			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			// eslint-disable-next-line react/no-render-return-value
 			return ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
 				body
 			);
+			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
 		};
 
 		function removeDropdownTrigger() {

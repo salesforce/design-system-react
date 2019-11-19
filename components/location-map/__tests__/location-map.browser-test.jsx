@@ -40,7 +40,7 @@ describe('SLDSLocationMap: ', function() {
 			</IconSettings>
 		);
 		document.body.appendChild(container);
-		renderedNode = ReactDOM.render(opener, container);
+		renderedNode = ReactDOM.render(opener, container);	// deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 		return renderedNode;
 	};
 
