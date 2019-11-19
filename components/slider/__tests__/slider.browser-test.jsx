@@ -39,7 +39,7 @@ describe('SLDSSlider', () => {
 	const renderSlider = (instance) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
-		return ReactDOM.render(instance, body);	// deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
+		return ReactDOM.render(instance, body); // deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 	};
 
 	const renderSecondSlider = (instance) => {
