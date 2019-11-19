@@ -27,10 +27,12 @@ describe('SLDSInput', () => {
 	const renderInput = (instance) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
+		/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 		return ReactDOM.render(
 			<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
 			body
 		);
+		/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
 	};
 
 	function removeInput() {

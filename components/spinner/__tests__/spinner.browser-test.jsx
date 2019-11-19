@@ -12,7 +12,7 @@ describe('Spinner: ', () => {
 		function() {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
-			this.component = ReactDOM.render(instance, this.dom);
+			this.component = ReactDOM.render(instance, this.dom); // deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 		};
 
 	function removeSpinner() {

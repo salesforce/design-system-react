@@ -49,7 +49,7 @@ describe('SLDSTooltip: ', function() {
 		document.body.appendChild(body);
 	};
 
-	const renderTooltip = (inst) => ReactDOM.render(inst, body);
+	const renderTooltip = (inst) => ReactDOM.render(inst, body); // deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 
 	const createTooltip = (props, kids) =>
 		React.createElement(SLDSTooltip, props, kids);

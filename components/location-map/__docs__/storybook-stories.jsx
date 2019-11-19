@@ -2,11 +2,11 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 
-import { MAP } from '../../../utilities/constants';
-import MultiLocations from '../../map/__examples__/multiple-locations';
-import SingleLocation from '../../map/__examples__/single-location';
+import { LOCATION_MAP } from '../../../utilities/constants';
+import MultiLocations from '../../location-map/__examples__/multiple-locations';
+import SingleLocation from '../../location-map/__examples__/single-location';
 
-storiesOf(MAP, module)
+storiesOf(LOCATION_MAP, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">{getStory()}</div>
 	))

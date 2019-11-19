@@ -49,10 +49,12 @@ describe('Card: ', () => {
 		function renderCardFunction() {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
+			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			this.component = ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
 				this.dom
 			);
+			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
 		};
 
 	function removeCard() {

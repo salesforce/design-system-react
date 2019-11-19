@@ -6,11 +6,11 @@ import chaiEnzyme from 'chai-enzyme';
 
 import IconSettings from '../../icon-settings';
 import Settings from '../../settings';
-import SLDSMap from '../../map';
+import SLDSLocationMap from '../../location-map';
 
 chai.use(chaiEnzyme());
 
-describe('SLDSMap: ', function() {
+describe('SLDSLocationMap: ', function() {
 	let container;
 	let renderedNode;
 
@@ -31,26 +31,28 @@ describe('SLDSMap: ', function() {
 		container = null;
 	});
 
-	const renderMap = (mapInstance) => {
+	const renderLocationMap = (locationMapInstance) => {
 		container = document.createElement('div');
 
 		const opener = (
-			<IconSettings iconPath="/assets/icons">{mapInstance}</IconSettings>
+			<IconSettings iconPath="/assets/icons">
+				{locationMapInstance}
+			</IconSettings>
 		);
 		document.body.appendChild(container);
-		renderedNode = ReactDOM.render(opener, container);
+		renderedNode = ReactDOM.render(opener, container); // deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 		return renderedNode;
 	};
 
 	const defaultProps = {
 		googleAPIKey: 'AIzaSyDliLquGXGts9S8YtkWVolSQEJdBL1ZuWc',
 	};
-	const createMap = (props) =>
-		React.createElement(SLDSMap, assign({}, defaultProps, props));
+	const createLocationMap = (props) =>
+		React.createElement(SLDSLocationMap, assign({}, defaultProps, props));
 
-	const getMap = (props) => renderMap(createMap(props));
+	const getLocationMap = (props) => renderLocationMap(createLocationMap(props));
 
-	const getMapNode = (dom) => dom.querySelector('.slds-grid');
+	const getLocationMapNode = (dom) => dom.querySelector('.slds-grid');
 
 	describe('Single Location', () => {
 		beforeEach(() => {
@@ -62,7 +64,7 @@ describe('SLDSMap: ', function() {
 				},
 			];
 
-			getMap({
+			getLocationMap({
 				defaultLocation: locations[0],
 				locations,
 				labels: {
@@ -72,7 +74,7 @@ describe('SLDSMap: ', function() {
 			});
 		});
 		it('renders map correctly', () => {
-			const Container = getMapNode(document.body);
+			const Container = getLocationMapNode(document.body);
 			expect(Container.childElementCount).to.equal(1);
 			const MapContainer = Container.querySelector('.slds-map');
 			expect(MapContainer).to.exist;
@@ -112,7 +114,7 @@ describe('SLDSMap: ', function() {
 		];
 
 		beforeEach(() => {
-			getMap({
+			getLocationMap({
 				defaultLocation: locations[0],
 				locations,
 				labels: {
@@ -123,22 +125,26 @@ describe('SLDSMap: ', function() {
 			});
 		});
 		it('renders map correctly', () => {
-			const MapContainer = getMapNode(document.body).querySelector('.slds-map');
-			expect(MapContainer).to.exist;
-			expect(MapContainer.querySelector('iframe').title).to.equal(
+			const LocationMapContainer = getLocationMapNode(
+				document.body
+			).querySelector('.slds-map');
+			expect(LocationMapContainer).to.exist;
+			expect(LocationMapContainer.querySelector('iframe').title).to.equal(
 				'Salesforce Locations In United States'
 			);
 		});
 		it('renders map coordinates correctly', () => {
-			const MapCoordinates = getMapNode(document.body).querySelector(
-				'.slds-coordinates'
-			);
-			expect(MapCoordinates).to.exist;
+			const LocationMapCoordinates = getLocationMapNode(
+				document.body
+			).querySelector('.slds-coordinates');
+			expect(LocationMapCoordinates).to.exist;
 			expect(
-				MapCoordinates.querySelector('.slds-coordinates__title').textContent
+				LocationMapCoordinates.querySelector('.slds-coordinates__title')
+					.textContent
 			).to.equal('Salesforce Locations In United States (5)');
-			const loc = MapCoordinates.querySelector('.slds-coordinates__list')
-				.children;
+			const loc = LocationMapCoordinates.querySelector(
+				'.slds-coordinates__list'
+			).children;
 			expect(loc.length).to.equal(5);
 			expect(loc[0].querySelector('.slds-text-link').textContent).to.equal(
 				'Worldwide Corporate Headquarters'

@@ -1,12 +1,13 @@
 import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
-import Map from '~/components/map';
+import LocationMap from '~/components/location-map';
 import Button from '~/components/button';
 import Modal from '~/components/modal';
 
 const locations = [
 	{
+		id: '1',
 		name: 'Worldwide Corporate Headquarters',
 		address: 'The Landmark @ One Market, San Francisco, CA',
 	},
@@ -30,7 +31,7 @@ class Example extends React.Component {
 						/>
 					}
 				>
-					<Map
+					<LocationMap
 						defaultLocation={locations[0]}
 						id="map-single-location-example"
 						googleAPIKey="AIzaSyDliLquGXGts9S8YtkWVolSQEJdBL1ZuWc"

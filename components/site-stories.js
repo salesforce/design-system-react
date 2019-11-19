@@ -468,6 +468,12 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/input/__examples__/counter-input.jsx'),
 		},
 	],
+	'location-map': [
+		{
+			heading: 'Multiple Locations',
+			path: require('raw-loader!@salesforce/design-system-react/components/location-map/__examples__/multiple-locations.jsx'),
+		},
+	],
 	'media-object': [
 		{
 			heading: 'Default',
