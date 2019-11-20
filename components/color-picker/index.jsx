@@ -495,14 +495,21 @@ class ColorPicker extends React.Component {
 
 	handleHexInputChange = (event, { labels }) => {
 		const currentColor = event.target.value;
-		const isValid = this.props.events.onValidateColor
-			? this.props.events.onValidateColor(event.target.value)
-			: ColorUtils.isValidHex(event.target.value);
+		const namedColorHex = ColorUtils.getHexFromNamedColor(currentColor);
+		let isValid = false;
+
+		if (this.props.events.onValidateColor) {
+			isValid = this.props.events.onValidateColor(currentColor);
+		} else {
+			isValid = namedColorHex ? true : ColorUtils.isValidHex(currentColor);
+		}
+
 		this.setState({
 			currentColor,
 			workingColor: ColorUtils.getNewColor(
 				{
-					hex: currentColor,
+					hex: namedColorHex || currentColor,
+					name: namedColorHex ? currentColor.toLowerCase() : null,
 				},
 				this.props.events.onValidateWorkingColor
 			),
