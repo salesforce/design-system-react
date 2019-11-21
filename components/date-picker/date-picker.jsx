@@ -53,10 +53,6 @@ const propTypes = {
 	 */
 	align: PropTypes.oneOf(['left', 'right']),
 	/**
-	 * When `true`, clicking or typing in `Input` will not result in focus shifting away from `Input`
-	 */
-	canInputMaintainFocus: PropTypes.bool,
-	/**
 	 * CSS classes to be added to tag with `slds-datepicker`. If you are looking for the outer DOM node (slds-dropdown-trigger), please review `triggerClassName`. _Tested with snapshot testing._
 	 */
 	className: PropTypes.oneOfType([
@@ -201,7 +197,6 @@ const defaultProps = {
 		previousMonth: 'Previous month',
 		year: 'Year',
 	},
-	canInputMaintainFocus: false,
 	formatter(date) {
 		return date
 			? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
@@ -267,6 +262,7 @@ class Datepicker extends React.Component {
 
 		this.state = {
 			isOpen: false,
+			isOpenFromIcon: false,
 			value: props.value,
 			formattedValue: initDate || '',
 			inputValue: initDate || '',
@@ -314,7 +310,7 @@ class Datepicker extends React.Component {
 					this.props.assistiveTextPreviousMonth || assistiveText.previousMonth // eslint-disable-line react/prop-types
 				}
 				assistiveTextYear={assistiveText.year}
-				canStealFocus={!this.props.canInputMaintainFocus}
+				canFocusCalendar={this.state.isOpenFromIcon}
 				id={this.getId()}
 				isIsoWeekday={this.props.isIsoWeekday}
 				monthLabels={
@@ -407,7 +403,9 @@ class Datepicker extends React.Component {
 					aria-expanded={this.getIsOpen()}
 					category="utility"
 					name="event"
-					onClick={this.openDialog}
+					onClick={() => {
+						this.openDialogFromIcon();
+					}}
 					type="button"
 				/>
 			),
@@ -548,7 +546,7 @@ class Datepicker extends React.Component {
 			this.props.onOpen(event, { portal });
 		}
 
-		if (this.selectedDateCell && !this.props.canInputMaintainFocus) {
+		if (this.selectedDateCell && this.state.isOpenFromIcon) {
 			this.selectedDateCell.focus();
 		}
 	};
@@ -559,7 +557,7 @@ class Datepicker extends React.Component {
 		}
 
 		if (this.getIsOpen()) {
-			this.setState({ isOpen: false });
+			this.setState({ isOpen: false, isOpenFromIcon: false });
 
 			if (this.inputRef) {
 				this.inputRef.focus();
@@ -567,7 +565,15 @@ class Datepicker extends React.Component {
 		}
 	};
 
-	openDialog = () => {
+	openDialogFromIcon = () => {
+		this.setState({ isOpenFromIcon: true });
+		this.openDialog(true);
+	};
+
+	openDialog = (isRequestFromIcon = false) => {
+		if (!isRequestFromIcon) {
+			this.setState({ isOpenFromIcon: false });
+		}
 		if (this.props.onRequestOpen) {
 			this.props.onRequestOpen();
 		} else {

@@ -5890,10 +5890,22 @@
                 "returns": null
             },
             {
-                "name": "openDialog",
+                "name": "openDialogFromIcon",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
+                "returns": null
+            },
+            {
+                "name": "openDialog",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "isRequestFromIcon",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -5957,17 +5969,6 @@
                 "description": "Aligns the right or left side of the menu with the respective side of the trigger. _Tested with snapshot testing._",
                 "defaultValue": {
                     "value": "'left'",
-                    "computed": false
-                }
-            },
-            "canInputMaintainFocus": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "When `true`, clicking or typing in `Input` will not result in focus shifting away from `Input`",
-                "defaultValue": {
-                    "value": "false",
                     "computed": false
                 }
             },

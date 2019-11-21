@@ -8,7 +8,6 @@ import Datepicker from '../../date-picker';
 import { DATE_PICKER } from '../../../utilities/constants';
 
 import Default from '../__examples__/default';
-import MaintainInputFocus from '../__examples__/maintain-input-focus'
 import IsoWeekdays from '../__examples__/iso-weekday';
 import CustomInput from '../__examples__/custom-input';
 import SnaphotDefault from '../__examples__/snapshot-default';
@@ -34,7 +33,6 @@ storiesOf(DATE_PICKER, module)
 	.add('Default - Right to Left (RTL)', () =>
 		makeRtl(<Default action={action} />)
 	)
-	.add('Maintain Input Focus', () => <MaintainInputFocus action={action} canInputMaintainFocus />)
 	.add('ISO weekdays', () => <IsoWeekdays action={action} />)
 	.add('Custom Input', () => <CustomInput action={action} />)
 	.add('Inline menu', () => (
