@@ -143,6 +143,7 @@ export const TABS = 'SLDSTabs';
 export const TABS_LIST = 'SLDSTabsList';
 export const TABS_PANEL = 'SLDSTabsPanel';
 export const TIME_PICKER = 'SLDSTimepicker';
+export const TIME_PICKER_COMBOBOX = 'SLDSTimepickerCombobox';
 export const TOAST = 'SLDSToast';
 export const TOAST_CONTAINER = 'SLDSToastContainer';
 export const TREE = 'SLDSTree';
