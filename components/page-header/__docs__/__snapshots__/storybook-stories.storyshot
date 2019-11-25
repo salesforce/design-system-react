@@ -1651,6 +1651,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
               style={
                 Object {
                   "display": "inline",
+                  "lineHeight": "1",
                 }
               }
             >
