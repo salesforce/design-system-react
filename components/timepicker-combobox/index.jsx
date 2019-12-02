@@ -139,11 +139,12 @@ class TimepickerCombobox extends React.Component {
     return (
       <Combobox
         {...this.props}
-        options={this.state.options}
-        menuItemVisibleLength={5}
-        id={this.getId()}
-        variant="readonly"
         events={{ onSelect: this.handleSelect }}
+        id={this.getId()}
+        inputIcon="clock"
+        menuItemVisibleLength={5}
+        options={this.state.options}
+        variant="readonly"
       />
     );
   }
