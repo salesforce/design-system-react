@@ -9,7 +9,7 @@ class Example extends React.Component {
 
 		this.state = {
 			selection: [],
-		}
+		};
 	}
 
 	render() {
@@ -23,7 +23,7 @@ class Example extends React.Component {
 							this.setState({
 								selection: data.selection,
 							});
-						}
+						},
 					}}
 					stepInMinutes={30}
 					selection={this.state.selection}

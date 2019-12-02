@@ -15,4 +15,4 @@ storiesOf(TIME_PICKER_COMBOBOX, module)
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
-	.add('Base', () => <Default />)
+	.add('Base', () => <Default />);
