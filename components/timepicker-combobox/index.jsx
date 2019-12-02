@@ -3,8 +3,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import classNames from 'classnames';
-// import isDate from 'lodash.isdate';
 
 import shortid from 'shortid';
 
@@ -26,13 +24,49 @@ const propTypes = {
    */
   formatter: PropTypes.func,
   /**
+   * A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props.
+   */
+  fieldLevelHelpTooltip: PropTypes.node,
+  /**
 	 * HTML id for component.
 	 */
   id: PropTypes.string,
+  /**
+	 * **Text labels for internationalization**
+	 * This object is merged with the default props object on every render.
+	 * * `label`: This label appears above the input.
+	 * * `placeholderReadOnly`: Placeholder for Picklist-like Combobox
+	 */
   labels: PropTypes.shape({
     label: PropTypes.string,
+    placeholderReadOnly: PropTypes.string,
   }),
+  /**
+   * Function called when a new time is selected.
+   */
+  onSelect: PropTypes.func,
+  /**
+   * Applies label styling for a required form element.
+   */
   required: PropTypes.bool,
+  /**
+	 * Accepts an array of item objects. For single selection, pass in an array of one object.
+	 */
+  selection: PropTypes.arrayOf(
+    PropTypes.PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string,
+      value: PropTypes.date,
+    })
+  ).isRequired,
+  /**
+   * Frequency of options
+   */
+  stepInMinutes: PropTypes.number,
+  /**
+	 * Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._
+	 */
+  value: PropTypes.string,
 };
 
 const defaultProps = {
@@ -43,13 +77,15 @@ const defaultProps = {
         minute: '2-digit',
       });
     }
-
     return null;
   },
+  events: {},
   labels: {
     label: 'Time',
     placeholderReadOnly: '',
   },
+  selection: [],
+  stepInMinutes: 30,
 };
 
 const getOptions = ({ props }) => {
@@ -93,17 +129,21 @@ class TimepickerCombobox extends React.Component {
 
   getId = () => this.props.id || this.generatedId;
 
+  handleSelect = (event, { selection }) => {
+    if (this.props.events.onSelect) {
+      this.props.events.onSelect(event, { selection });
+    }
+  };
+
   render() {
     return (
       <Combobox
-        disabled={this.props.disabled}
-        required={this.props.required}
-        labels={this.props.labels}
+        {...this.props}
         options={this.state.options}
         menuItemVisibleLength={5}
-        // predefinedOptionsOnly
         id={this.getId()}
         variant="readonly"
+        events={{ onSelect: this.handleSelect }}
       />
     );
   }
