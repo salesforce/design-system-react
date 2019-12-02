@@ -15,12 +15,4 @@ storiesOf(TIME_PICKER_COMBOBOX, module)
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
-	.add('Base', () =>
-		getTimepicker({
-			label: 'Time',
-			required: true,
-			stepInMinutes: 30,
-			onDateChange: action('onDateChange'),
-		})
-	)
-	.add('Docs site Default', () => <Default />);
+	.add('Base', () => <Default />)
