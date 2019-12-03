@@ -32,6 +32,10 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
+	 * the initial date that the options are created from
+	 */
+	initialDate: PropTypes.instanceOf(Date),
+	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
 	 * * `label`: This label appears above the input.
@@ -63,10 +67,6 @@ const propTypes = {
 	 * Frequency of options
 	 */
 	stepInMinutes: PropTypes.number,
-	/**
-	 * Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._
-	 */
-	value: PropTypes.string,
 };
 
 const defaultProps = {
@@ -80,6 +80,7 @@ const defaultProps = {
 		return null;
 	},
 	events: {},
+	initialDate: new Date(),
 	labels: {
 		label: 'Time',
 		placeholderReadOnly: '',
@@ -89,7 +90,7 @@ const defaultProps = {
 };
 
 const getOptions = ({ props }) => {
-	const baseDate = new Date();
+	const baseDate = new Date(props.initialDate);
 	const options = [];
 
 	baseDate.setHours(0);
