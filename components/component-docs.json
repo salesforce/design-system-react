@@ -5890,10 +5890,22 @@
                 "returns": null
             },
             {
-                "name": "openDialog",
+                "name": "openDialogFromIcon",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
+                "returns": null
+            },
+            {
+                "name": "openDialog",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "isRequestFromIcon",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
