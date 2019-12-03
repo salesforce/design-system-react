@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 import { TIME_PICKER_COMBOBOX } from '../../../utilities/constants';
-import TimepickerCombobox from '../../timepicker-combobox';
+import TimepickerCombobox from '../../time-picker-combobox';
 
 import Default from '../__examples__/default';
 

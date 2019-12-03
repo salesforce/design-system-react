@@ -1,7 +1,7 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
 import IconSettings from '~/components/icon-settings';
-import TimepickerCombobox from '~/components/timepicker-combobox'; // `~` is replaced with design-system-react at runtime
+import TimepickerCombobox from '~/components/time-picker-combobox'; // `~` is replaced with design-system-react at runtime
 
 class Example extends React.Component {
 	constructor(props) {

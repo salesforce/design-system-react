@@ -820,6 +820,12 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/textarea/__examples__/disabled.jsx'),
 		},
 	],
+	'time-picker-combobox': [
+		{
+			heading: 'Default',
+			path: require('raw-loader!@salesforce/design-system-react/components/time-picker-combobox/__examples__/default.jsx'),
+		},
+	],
 	'time-picker': [
 		{
 			heading: 'Default',

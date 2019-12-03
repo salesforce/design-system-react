@@ -4755,6 +4755,13 @@
                 "required": false,
                 "description": "Forces the dropdown to be open or closed. See controlled/uncontrolled callback/prop pattern for more on suggested use view [Concepts and Best Practices](https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md#concepts-and-best-practices) _Tested with snapshot testing._"
             },
+            "inputIcon": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Changes the icon in the input. The default is the down icon."
+            },
             "inheritWidthOf": {
                 "type": {
                     "name": "enum",
@@ -16457,6 +16464,168 @@
         "route": "textareas",
         "display-name": "Textareas",
         "SLDS-component-path": "/components/forms#flavor-textarea",
+        "dependencies": []
+    },
+    "time-picker-combobox": {
+        "description": "",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleSelect",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ selection }",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            }
+        ],
+        "props": {
+            "aria-describedby": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them.\nThis is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need. _Tested with snapshot testing._"
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Disables the input and prevents editing the contents."
+            },
+            "formatter": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Time formatting function",
+                "defaultValue": {
+                    "value": "function(date) {\n    if (date) {\n        return date.toLocaleTimeString(navigator.language, {\n            hour: '2-digit',\n            minute: '2-digit',\n        });\n    }\n    return null;\n}",
+                    "computed": false
+                }
+            },
+            "fieldLevelHelpTooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props."
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component."
+            },
+            "labels": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "label": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "placeholderReadOnly": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox",
+                "defaultValue": {
+                    "value": "{\n    label: 'Time',\n    placeholderReadOnly: '',\n}",
+                    "computed": false
+                }
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Function called when a new time is selected."
+            },
+            "required": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Applies label styling for a required form element."
+            },
+            "selection": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "id": {
+                                "name": "string",
+                                "required": true
+                            },
+                            "label": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "value": {
+                                "name": "custom",
+                                "raw": "PropTypes.date",
+                                "required": false
+                            }
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Accepts an array of item objects. For single selection, pass in an array of one object.",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "stepInMinutes": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Frequency of options",
+                "defaultValue": {
+                    "value": "30",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._"
+            },
+            "events": {
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                },
+                "required": false
+            }
+        },
+        "route": "timepicker-combobox",
+        "display-name": "TimepickerCombobox",
+        "SLDS-component-path": "/components/timepicker",
         "dependencies": []
     },
     "time-picker": {
