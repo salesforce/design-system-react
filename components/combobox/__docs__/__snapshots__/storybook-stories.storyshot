@@ -870,6 +870,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
             "position": "static",
           }
         }
@@ -1661,6 +1662,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                   style={
                     Object {
                       "display": "inline-block",
+                      "lineHeight": "1",
                       "width": "100%",
                     }
                   }
@@ -1803,6 +1805,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                   style={
                     Object {
                       "display": "inline-block",
+                      "lineHeight": "1",
                       "width": "100%",
                     }
                   }

@@ -1611,6 +1611,7 @@ exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
             "position": "static",
           }
         }
@@ -1681,6 +1682,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
             "position": "static",
           }
         }
