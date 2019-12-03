@@ -16533,6 +16533,18 @@
                 "required": false,
                 "description": "HTML id for component."
             },
+            "initialDate": {
+                "type": {
+                    "name": "custom",
+                    "raw": "PropTypes.date"
+                },
+                "required": false,
+                "description": "the initial date that the options are created from",
+                "defaultValue": {
+                    "value": "new Date()",
+                    "computed": false
+                }
+            },
             "labels": {
                 "type": {
                     "name": "shape",
@@ -16607,13 +16619,6 @@
                     "value": "30",
                     "computed": false
                 }
-            },
-            "value": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Value of input. _This is a controlled component,_ so you will need to control the input value by passing the `value` from `onChange` to a parent component or state manager, and then pass it back into the componet with this prop. Please see examples for more clarification. _Tested with snapshot testing._"
             },
             "events": {
                 "defaultValue": {
