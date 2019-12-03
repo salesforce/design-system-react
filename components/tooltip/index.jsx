@@ -73,7 +73,7 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
-	 * Enabling this hides the default nubbin, replacing it with one attached directly to the tooltip trigger.
+	 * Enabling this hides the default nubbin, replacing it with one attached directly to the tooltip trigger. Note: `hasStaticAlignment` should be set to `true` if using this feature as auto-flipping anchored nubbins are not currently supported.
 	 */
 	hasAnchoredNubbin: PropTypes.bool,
 	/**
