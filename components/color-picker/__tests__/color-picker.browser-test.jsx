@@ -80,6 +80,28 @@ describe('SLDSColorPicker', function describeFunction() {
 			});
 		});
 
+		it('fires onChange with named value and isValid set to true when valid', function() {
+			wrapper = mount(
+				<ColorPicker
+					events={{
+						onChange: (event, { color, isValid }) => {
+							expect(color).to.equal('red');
+							expect(isValid).to.be.true;
+						},
+					}}
+				/>,
+				{ attachTo: mountNode }
+			);
+
+			const input = wrapper.find(selectors.summaryInput).first();
+
+			input.simulate('change', {
+				target: {
+					value: 'red',
+				},
+			});
+		});
+
 		it('fires onChange with value and isValid set to false when invalid', function() {
 			wrapper = mount(
 				<ColorPicker
