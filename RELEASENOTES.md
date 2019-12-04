@@ -36,7 +36,6 @@ These are changes that have backwards-compatible solutions present and that comp
 **Minor Features**
 
 - `Datepicker`: Add `canInputMaintainFocus` prop
-- `Datepicker`: Add right-to-left language support
 - `Tooltip`: Add `onRequestTargetElement` callback
 - `Tooltip`: Add `hasAnchoredNubbin` prop
 
