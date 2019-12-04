@@ -1,0 +1,26 @@
+{
+	"component": "tooltip",
+	"status": "prod",
+	"display-name": "Tooltips",
+	"classKey": "Tooltip",
+	"SLDS-component-path": "/components/tooltips",
+	"site-stories": [
+		{
+			"heading": "Base",
+			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "Button Trigger",
+			"path": "/__examples__/button.jsx"
+		},
+		{
+			"heading": "Button Group Trigger",
+			"path": "/__examples__/button-group.jsx"
+		},
+		{
+			"heading": "Learn more",
+			"path": "/__examples__/learn-more.jsx"
+		}
+	],
+	"url-slug": "tooltips"
+}
