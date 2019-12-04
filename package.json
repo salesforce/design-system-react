@@ -92,7 +92,7 @@
 		"react-modal": "3.8.1",
 		"react-onclickoutside": "^6.9.0",
 		"react-required-if": "^1.0.3",
-		"react-text-truncate": "^0.14.1",
+		"react-text-truncate": "^0.15.0",
 		"shortid": "^2.2.14",
 		"warning": "^4.0.3",
 		"webpack-cli": "^3.x"
