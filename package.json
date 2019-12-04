@@ -1737,7 +1737,6 @@
 		},
 		{
 			"component": "time-picker-combobox",
-			"status": "dev",
 			"display-name": "TimepickerCombobox",
 			"classKey": "TimePicker",
 			"SLDS-component-path": "/components/timepicker",

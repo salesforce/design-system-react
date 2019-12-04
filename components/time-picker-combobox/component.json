@@ -1,8 +1,8 @@
 {
 	"component": "time-picker-combobox",
-	"status": "",
-	"display-name": "TimepickerCombobox",
-	"classKey": "TimePicker",
+	"status": "prod",
+	"display-name": "TimepickerComboboxes",
+	"classKey": "TimePickerCombobox",
 	"SLDS-component-path": "/components/timepicker",
 	"site-stories": [
 		{
@@ -10,5 +10,5 @@
 			"path": "/__examples__/default.jsx"
 		}
 	],
-	"url-slug": "timepickers-combobox"
+	"url-slug": "timepicker-comboboxes"
 }

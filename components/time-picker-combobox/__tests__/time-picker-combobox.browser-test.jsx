@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { mount } from 'enzyme';
@@ -10,8 +11,8 @@ import { mount } from 'enzyme';
  */
 
 import {
-	createMountNode,
-	destroyMountNode,
+  createMountNode,
+  destroyMountNode,
 } from '../../../tests/enzyme-helpers';
 
 import TimepickerCombobox from '..';
@@ -19,74 +20,82 @@ import IconSettings from '../../../components/icon-settings';
 
 chai.use(chaiEnzyme());
 
+const propTypes = {
+  initialDate: PropTypes.instanceOf(Date),
+  stepInMinutes: PropTypes.number,
+};
+
+class DemoComponent extends React.Component {
+  render() {
+    return (
+      <IconSettings iconPath="/assets/icons">
+        <TimepickerCombobox {...this.props} />
+      </IconSettings>
+    );
+  }
+}
+
+DemoComponent.displayName = 'DemoComponent';
+DemoComponent.propTypes = propTypes;
+
 describe('Timepicker Combobox: ', function describeFunction() {
-	describe('Default', () => {
-		let mountNode;
-		let wrapper;
+  describe('Default', () => {
+    let mountNode;
+    let wrapper;
 
-		beforeEach(() => {
-			mountNode = createMountNode({ context: this });
-			wrapper = mount(
-				<IconSettings iconPath="/assets/icons">
-					<TimepickerCombobox />
-				</IconSettings>,
-				{ attachTo: mountNode }
-			);
-		});
+    beforeEach(() => {
+      mountNode = createMountNode({ context: this });
+      wrapper = mount(<DemoComponent />, { attachTo: mountNode });
+    });
 
-		afterEach(() => {
-			destroyMountNode({ wrapper, mountNode });
-		});
+    afterEach(() => {
+      destroyMountNode({ wrapper, mountNode });
+    });
 
-		it('renders a timepicker', () => {
-			const timepicker = wrapper.find(TimepickerCombobox);
-			expect(timepicker).to.be.present;
-		});
+    it('renders a timepicker', () => {
+      const timepicker = wrapper.find(TimepickerCombobox);
+      expect(timepicker).to.be.present;
+    });
 
-		it('generates default number of options', () => {
-			const timepicker = wrapper.find(TimepickerCombobox);
-			expect(timepicker.state('options')).to.have.lengthOf(48);
-		});
-	});
+    it('generates default number of options', () => {
+      const timepicker = wrapper.find(TimepickerCombobox);
+      expect(timepicker.state('options')).to.have.lengthOf(48);
+    });
+  });
 
-	describe('Timepicker Optional Props', () => {
-		let mountNode;
-		let wrapper;
+  describe('Timepicker Optional Props', () => {
+    let mountNode;
+    let wrapper;
 
-		const futureDateTime = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-		futureDateTime.setHours(0);
-		futureDateTime.setMinutes(0);
-		futureDateTime.setSeconds(0);
-		futureDateTime.setMilliseconds(0);
+    const futureDateTime = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+    futureDateTime.setHours(0);
+    futureDateTime.setMinutes(0);
+    futureDateTime.setSeconds(0);
+    futureDateTime.setMilliseconds(0);
 
-		const customProps = {
-			initialDate: futureDateTime,
-			stepInMinutes: 60,
-		};
+    const customProps = {
+      initialDate: futureDateTime,
+      stepInMinutes: 60,
+    };
 
-		beforeEach(() => {
-			mountNode = createMountNode({ context: this });
-			wrapper = mount(
-				<IconSettings iconPath="/assets/icons">
-					<TimepickerCombobox {...customProps} />
-				</IconSettings>,
-				{ attachTo: mountNode }
-			);
-		});
+    beforeEach(() => {
+      mountNode = createMountNode({ context: this });
+      wrapper = mount(<DemoComponent {...customProps} />, { attachTo: mountNode });
+    });
 
-		afterEach(() => {
-			destroyMountNode({ wrapper, mountNode });
-		});
+    afterEach(() => {
+      destroyMountNode({ wrapper, mountNode });
+    });
 
-		it('stepInMinutes changes the number of options', () => {
-			const timepicker = wrapper.find(TimepickerCombobox);
-			expect(timepicker.state('options')).to.have.lengthOf(24);
-		});
+    it('stepInMinutes changes the number of options', () => {
+      const timepicker = wrapper.find(TimepickerCombobox);
+      expect(timepicker.state('options')).to.have.lengthOf(24);
+    });
 
-		it('initialDate changes the date of the options', () => {
-			const timepicker = wrapper.find(TimepickerCombobox);
-			const firstValue = timepicker.state('options')[0].value;
-			expect(firstValue.getTime()).to.equal(futureDateTime.getTime());
-		});
-	});
+    it('initialDate changes the date of the options', () => {
+      const timepicker = wrapper.find(TimepickerCombobox);
+      const firstValue = timepicker.state('options')[0].value;
+      expect(firstValue.getTime()).to.equal(futureDateTime.getTime());
+    });
+  });
 });

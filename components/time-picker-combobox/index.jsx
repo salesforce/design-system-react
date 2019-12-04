@@ -6,8 +6,9 @@ import PropTypes from 'prop-types';
 
 import shortid from 'shortid';
 
-import Combobox from '../combobox';
 import { TIME_PICKER_COMBOBOX } from '../../utilities/constants';
+
+import Combobox from '../combobox';
 
 const propTypes = {
 	/**
@@ -32,7 +33,7 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
-	 * the initial date that the options are created from
+	 * the initial date that the options are created from. _Tested with Mocha testing._
 	 */
 	initialDate: PropTypes.instanceOf(Date),
 	/**
@@ -64,7 +65,7 @@ const propTypes = {
 		})
 	).isRequired,
 	/**
-	 * Frequency of options
+	 * Frequency of options. _Tested with Mocha testing._
 	 */
 	stepInMinutes: PropTypes.number,
 };
