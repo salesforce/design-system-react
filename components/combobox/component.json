@@ -1,0 +1,66 @@
+{
+	"component": "combobox",
+	"status": "prod",
+	"display-name": "Comboboxes",
+	"classKey": "Combobox",
+	"last-accessibility-review": {
+		"date-iso-8601": "2017/08/21",
+		"commit-sha": "295a4766f712a5f93743c4ecd3ba62d91c1fc153"
+	},
+	"SLDS-component-path": "/components/combobox",
+	"site-stories": [
+		{
+			"heading": "Base",
+			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "Base: With subheader",
+			"path": "/__examples__/base-menu-subheader.jsx"
+		},
+		{
+			"heading": "Base: Inherit Menu Width",
+			"path": "/__examples__/base-inherit-menu-width.jsx"
+		},
+		{
+			"heading": "Base: Predefined options only",
+			"path": "/__examples__/base-predefined-options-only.jsx"
+		},
+		{
+			"heading": "Base With Scroll",
+			"path": "/__examples__/base-with-scroll.jsx"
+		},
+		{
+			"heading": "Base: With dialog",
+			"path": "/__examples__/dialog.jsx"
+		},
+		{
+			"heading": "Inline single selection",
+			"path": "/__examples__/inline-single.jsx"
+		},
+		{
+			"heading": "Inline: Single Selection with Entity Selection",
+			"path": "/__examples__/inline-single-entity-combobox.jsx"
+		},
+		{
+			"heading": "Inline: Single Selection with Search and Add Menu Items",
+			"path": "/__examples__/inline-single-search-add-entities.jsx"
+		},
+		{
+			"heading": "Inline: Multiple Selection with Loading State",
+			"path": "/__examples__/inline-multiple-loading.jsx"
+		},
+		{
+			"heading": "Read-only: Single Selection (Picklist)",
+			"path": "/__examples__/readonly-single.jsx"
+		},
+		{
+			"heading": "Read-only: Multiple Selection (Picklist)",
+			"path": "/__examples__/readonly-multiple.jsx"
+		},
+		{
+			"heading": "Required Input and Error State",
+			"path": "/__examples__/required-input-error-state.jsx"
+		}
+	],
+	"url-slug": "comboboxes"
+}
