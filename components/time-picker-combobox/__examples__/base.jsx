@@ -6,10 +6,7 @@ import TimepickerCombobox from '~/components/time-picker-combobox'; // `~` is re
 class Example extends React.Component {
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			selection: [],
-		};
+		this.state = { selection: [] };
 	}
 
 	render() {
@@ -25,7 +22,6 @@ class Example extends React.Component {
 							});
 						},
 					}}
-					stepInMinutes={30}
 					selection={this.state.selection}
 				/>
 			</IconSettings>
