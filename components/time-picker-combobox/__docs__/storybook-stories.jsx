@@ -4,7 +4,9 @@ import { storiesOf } from '@storybook/react';
 import IconSettings from '../../icon-settings';
 import { TIME_PICKER_COMBOBOX } from '../../../utilities/constants';
 
-import Default from '../__examples__/default';
+import Base from '../__examples__/base';
+import CustomOptions from '../__examples__/base-custom-options';
+import SnapshotBaseOpen from '../__examples__/snapshot/base-open';
 
 storiesOf(TIME_PICKER_COMBOBOX, module)
 	.addDecorator((getStory) => (
@@ -12,4 +14,6 @@ storiesOf(TIME_PICKER_COMBOBOX, module)
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
-	.add('Base', () => <Default />);
+	.add('Base', () => <Base />)
+	.add('Custom Options', () => <CustomOptions />)
+	.add('Snapshot Base Open', () => <SnapshotBaseOpen />);
