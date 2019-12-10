@@ -35,7 +35,8 @@ class DemoComponent extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<TimepickerCombobox {...this.props}
+				<TimepickerCombobox
+					{...this.props}
 					id="test-timepicker"
 					isOpen
 					events={{
@@ -45,7 +46,8 @@ class DemoComponent extends React.Component {
 								selection: data.selection,
 							});
 						},
-					}} />
+					}}
+				/>
 			</IconSettings>
 		);
 	}
@@ -62,7 +64,7 @@ const customFormatter = (date) => {
 		});
 	}
 	return null;
-}
+};
 
 const getCustomOptions = () => {
 	const options = [];
@@ -88,7 +90,7 @@ const getCustomOptions = () => {
 		index += 1;
 	}
 	return options;
-}
+};
 
 const resetTime = (date) => {
 	date.setHours(1);
@@ -96,7 +98,7 @@ const resetTime = (date) => {
 	date.setSeconds(0);
 	date.setMilliseconds(0);
 	return date;
-}
+};
 
 describe('Timepicker Combobox: ', function describeFunction() {
 	let mountNode;
@@ -132,17 +134,17 @@ describe('Timepicker Combobox: ', function describeFunction() {
 		});
 
 		it('changes the number of options when pass stepInMinutes', () => {
-			wrapper = mount(
-				<DemoComponent stepInMinutes={60} />, { attachTo: mountNode }
-			);
+			wrapper = mount(<DemoComponent stepInMinutes={60} />, {
+				attachTo: mountNode,
+			});
 			const listElements = wrapper.find('.slds-listbox__option');
 			expect(listElements).to.have.lengthOf(24);
 		});
 
 		it('changes the format of options when pass formatter', () => {
-			wrapper = mount(
-				<DemoComponent formatter={customFormatter} />, { attachTo: mountNode }
-			);
+			wrapper = mount(<DemoComponent formatter={customFormatter} />, {
+				attachTo: mountNode,
+			});
 			const baseDate = resetTime(new Date());
 			const formattedDate = customFormatter(baseDate);
 			wrapper.find('#test-timepicker-listbox-option-2').simulate('click');
@@ -151,10 +153,12 @@ describe('Timepicker Combobox: ', function describeFunction() {
 		});
 
 		it('changes the day when pass initialDate', () => {
-			const futureDate = resetTime(new Date(new Date().getTime() + 24 * 60 * 60 * 1000));
-			wrapper = mount(
-				<DemoComponent initialDate={futureDate} />, { attachTo: mountNode }
+			const futureDate = resetTime(
+				new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
 			);
+			wrapper = mount(<DemoComponent initialDate={futureDate} />, {
+				attachTo: mountNode,
+			});
 			wrapper.find('#test-timepicker-listbox-option-2').simulate('click');
 			const selectedTime = wrapper.state('selection')[0].value.getTime();
 			expect(selectedTime).to.equal(futureDate.getTime());
@@ -167,7 +171,7 @@ describe('Timepicker Combobox: ', function describeFunction() {
 			});
 			wrapper.find('#test-timepicker-listbox-option-2').simulate('click');
 			const selectedTime = wrapper.state('selection')[0].value.getTime();
-			expect(selectedTime).to.equal(customOptions[2].value.getTime())
+			expect(selectedTime).to.equal(customOptions[2].value.getTime());
 		});
 	});
 });

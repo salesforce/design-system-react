@@ -198,7 +198,8 @@ class TimepickerCombobox extends React.Component {
 
 	getId = () => this.props.id || this.generatedId;
 
-	getOptions = () => this.props.options || getDefaultOptions({ props: this.props });
+	getOptions = () =>
+		this.props.options || getDefaultOptions({ props: this.props });
 
 	render() {
 		return (
