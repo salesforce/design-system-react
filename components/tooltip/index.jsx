@@ -73,6 +73,10 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
+	 * Enabling this hides the default nubbin, replacing it with one attached directly to the tooltip trigger. Note: `hasStaticAlignment` should be set to `true` if using this feature as auto-flipping anchored nubbins are not currently supported.
+	 */
+	hasAnchoredNubbin: PropTypes.bool,
+	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
 	hasStaticAlignment: PropTypes.bool,
@@ -102,6 +106,10 @@ const propTypes = {
 	 * Forces tooltip to be open. A value of `false` will disable any interaction with the tooltip.
 	 */
 	isOpen: PropTypes.bool,
+	/**
+	 * Callback that returns an element or React `ref` to align the Tooltip with.
+	 */
+	onRequestTargetElement: PropTypes.func,
 	/**
 	 * CSS classes to be added to tag with `slds-tooltip-trigger`.
 	 */
@@ -175,6 +183,74 @@ class Tooltip extends React.Component {
 
 	componentWillUnmount() {
 		this.isUnmounting = true;
+	}
+
+	getAnchoredNubbinStyles() {
+		if (this.props.hasAnchoredNubbin) {
+			const alignment = this.props.align.split(' ')[0];
+			const nubbinContainerStyles = {
+				height: '0',
+				position: 'relative',
+				width: '0',
+			};
+			const nubbinStyles = {
+				backgroundColor: '#16325c',
+				content: '',
+				height: '1rem',
+				position: 'absolute',
+				transform: 'rotate(45deg)',
+				width: '1rem',
+			};
+			const triggerDimensions = {
+				height: this.trigger ? this.trigger.getBoundingClientRect().height : 0,
+				width: this.trigger ? this.trigger.getBoundingClientRect().width : 0,
+			};
+
+			switch (alignment) {
+				case 'bottom': {
+					nubbinContainerStyles.left = `${triggerDimensions.width / 2}px`;
+					nubbinContainerStyles.top = `${triggerDimensions.height}px`;
+					nubbinStyles.left = '-8px';
+					nubbinStyles.top = '3px';
+					break;
+				}
+				case 'left': {
+					nubbinContainerStyles.left = '0';
+					nubbinContainerStyles.top = `${triggerDimensions.height / 2}px`;
+					nubbinStyles.left = '-19px';
+					nubbinStyles.top = '-9px';
+					break;
+				}
+				case 'right': {
+					nubbinContainerStyles.left = `${triggerDimensions.width}px`;
+					nubbinContainerStyles.top = `${triggerDimensions.height / 2}px`;
+					nubbinStyles.left = '3px';
+					nubbinStyles.top = '-9px';
+					break;
+				}
+				default: {
+					nubbinContainerStyles.left = `${triggerDimensions.width / 2}px`;
+					nubbinContainerStyles.top = '0';
+					nubbinStyles.left = '-8px';
+					nubbinStyles.top = '-19px';
+				}
+			}
+
+			return (
+				<React.Fragment>
+					<style>{`#${this.getId()}:after, #${this.getId()}:before {
+	display: none;
+}`}</style>
+					{this.state.isOpen ? (
+						<div style={nubbinContainerStyles}>
+							<div style={nubbinStyles} />
+						</div>
+					) : null}
+				</React.Fragment>
+			);
+		}
+
+		return null;
 	}
 
 	getContent() {
@@ -294,7 +370,16 @@ class Tooltip extends React.Component {
 	}
 
 	getTooltipTarget() {
-		return this.props.target ? this.props.target : this.trigger;
+		if (this.props.onRequestTargetElement) {
+			return this.props.onRequestTargetElement();
+		}
+
+		// for backwards compatibility
+		if (this.props.target) {
+			return this.props.target;
+		}
+
+		return this.trigger;
 	}
 
 	handleCancel = () => {
@@ -344,6 +429,7 @@ class Tooltip extends React.Component {
 	render() {
 		const containerStyles = {
 			display: 'inline-block',
+			lineHeight: '1',
 			...this.props.triggerStyle,
 		};
 
@@ -356,6 +442,7 @@ class Tooltip extends React.Component {
 				style={containerStyles}
 				ref={this.saveTriggerRef}
 			>
+				{this.getAnchoredNubbinStyles()}
 				{this.getContent()}
 				{this.getTooltip()}
 			</div>

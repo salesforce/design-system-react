@@ -394,6 +394,7 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
               style={
                 Object {
                   "display": "inline-block",
+                  "lineHeight": "1",
                 }
               }
             >
@@ -923,6 +924,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
                   style={
                     Object {
                       "display": "inline-block",
+                      "lineHeight": "1",
                     }
                   }
                 >
@@ -1003,6 +1005,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
                   style={
                     Object {
                       "display": "inline-block",
+                      "lineHeight": "1",
                     }
                   }
                 >
@@ -1944,6 +1947,7 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
               style={
                 Object {
                   "display": "inline-block",
+                  "lineHeight": "1",
                 }
               }
             >

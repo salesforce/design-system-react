@@ -7,6 +7,7 @@ import IconSettings from '../../icon-settings';
 import { POPOVER_TOOLTIP } from '../../../utilities/constants';
 import Tooltip from '../../tooltip';
 
+import AnchoredNubbin from '../__examples__/anchored-nubbin';
 import Base from '../__examples__/base';
 import ButtonGroupExample from '../__examples__/button-group';
 import ButtonExample from '../__examples__/button';
@@ -122,4 +123,5 @@ storiesOf(POPOVER_TOOLTIP, module)
 			),
 		})
 	)
-	.add('With Delay', () => <WithDelay />);
+	.add('With Delay', () => <WithDelay />)
+	.add('With Anchored Nubbin', () => <AnchoredNubbin />);

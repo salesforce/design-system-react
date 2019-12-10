@@ -4837,6 +4837,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
             style={
               Object {
                 "display": "inline-block",
+                "lineHeight": "1",
                 "width": "100%",
               }
             }
@@ -4920,6 +4921,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
             style={
               Object {
                 "display": "inline-block",
+                "lineHeight": "1",
                 "width": "100%",
               }
             }

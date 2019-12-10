@@ -41,6 +41,10 @@ class DatepickerCalendarWrapper extends React.Component {
 		 */,
 		abbreviatedWeekDayLabels: PropTypes.array.isRequired,
 		/**
+		 * Whether or not the `CalendarWrapper` can steal focus from the main `Input`
+		 */
+		canFocusCalendar: PropTypes.bool.isRequired,
+		/**
 		 * CSS classes to be added to tag with `slds-datepicker`.
 		 */
 		className: PropTypes.oneOfType([
@@ -108,26 +112,21 @@ class DatepickerCalendarWrapper extends React.Component {
 
 	state = {
 		initialDateForCalendarRender: this.props.selectedDate,
-		isCalendarFocused: true,
 	};
 
 	handleCalendarBlur = (event, { direction }) => {
 		if (direction === 'next' && this.previousMonthRef) {
-			this.setState({ isCalendarFocused: false });
 			if (this.props.onCalendarFocus) {
 				this.props.onCalendarFocus(event, {
 					direction,
-					isCalendarFocused: false,
 					ref: this.previousMonthRef,
 				});
 			}
 			this.previousMonthRef.focus();
 		} else if (direction === 'previous' && this.todayRef) {
-			this.setState({ isCalendarFocused: false });
 			if (this.props.onCalendarFocus) {
 				this.props.onCalendarFocus(event, {
 					direction,
-					isCalendarFocused: false,
 					ref: this.todayRef,
 				});
 			}
@@ -138,7 +137,6 @@ class DatepickerCalendarWrapper extends React.Component {
 	handleFirstFocusableNodeKeyDown = (event) => {
 		if (event.shiftKey && event.keyCode === KEYS.TAB) {
 			EventUtil.trapEvent(event);
-			this.setState({ isCalendarFocused: true });
 		}
 	};
 
@@ -159,7 +157,6 @@ class DatepickerCalendarWrapper extends React.Component {
 	handleLastFocusableNodeKeyDown = (event) => {
 		if (!event.shiftKey && event.keyCode === KEYS.TAB) {
 			EventUtil.trapEvent(event);
-			this.setState({ isCalendarFocused: true });
 		}
 	};
 
@@ -171,7 +168,7 @@ class DatepickerCalendarWrapper extends React.Component {
 
 	handleRequestFocusDate = (event, data) => {
 		// will be called three times, due to re-render
-		if (data.ref && this.state.isCalendarFocused) {
+		if (data.ref && this.props.canFocusCalendar) {
 			data.ref.focus();
 		}
 
