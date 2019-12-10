@@ -20,6 +20,142 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
         className="slds-combobox_container"
       >
         <div
+          aria-expanded={false}
+          aria-haspopup="listbox"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-timepicker"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              disabled={false}
+              id="timepicker-combobox"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder=""
+              readOnly={true}
+              required={false}
+              role="textbox"
+              type="text"
+              value=""
+            />
+            <span
+              className="slds-icon_container slds-input__icon slds-input__icon_right"
+            >
+              <svg
+                aria-hidden={true}
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clock"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTimepickerCombobox Custom Options 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="timepicker-combobox"
+    >
+      Time
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          aria-expanded={false}
+          aria-haspopup="listbox"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-timepicker"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              disabled={false}
+              id="timepicker-combobox"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder=""
+              readOnly={true}
+              required={false}
+              role="textbox"
+              type="text"
+              value=""
+            />
+            <span
+              className="slds-icon_container slds-input__icon slds-input__icon_right"
+            >
+              <svg
+                aria-hidden={true}
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clock"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTimepickerCombobox Snapshot Base Open 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="timepicker-combobox"
+    >
+      Time
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
           aria-expanded={true}
           aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open slds-timepicker"
@@ -30,13 +166,24 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
             role="none"
           >
             <input
+              aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-controls="timepicker-combobox-listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
+              disabled={false}
               id="timepicker-combobox"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
               placeholder=""
+              readOnly={true}
+              required={false}
               role="textbox"
               type="text"
+              value=""
             />
             <span
               className="slds-icon_container slds-input__icon slds-input__icon_right"
@@ -52,34 +199,55 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
             </span>
           </div>
           <div
-            className="slds-dropdown slds-dropdown_fluid slds-dropdown_length-5"
-            id="listbox-unique-id"
+            className="absolute-positioned"
+            id="timepicker-combobox-listbox"
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
             role="listbox"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
             <ul
-              className="slds-listbox slds-listbox_vertical"
+              className="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-with-icon-5"
               role="presentation"
+              style={
+                Object {
+                  "maxWidth": undefined,
+                  "position": "relative",
+                  "width": undefined,
+                }
+              }
             >
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-0"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
-                    >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -88,31 +256,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="12:00 AM"
                     >
+                       
                       12:00 AM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-1"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="12:30 AM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      12:30 AM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-2"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -121,31 +334,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="1:00 AM"
                     >
+                       
                       1:00 AM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-3"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="1:30 AM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      1:30 AM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-4"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -154,31 +412,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="2:00 AM"
                     >
+                       
                       2:00 AM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-5"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="2:30 AM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      2:30 AM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-6"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -187,31 +490,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="3:00 AM"
                     >
+                       
                       3:00 AM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-7"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="3:30 AM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      3:30 AM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-8"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -220,31 +568,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="4:00 AM"
                     >
+                       
                       4:00 AM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-9"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="4:30 AM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      4:30 AM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-10"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -253,31 +646,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="5:00 AM"
                     >
+                       
                       5:00 AM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-01"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-11"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="5:30 AM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      5:30 AM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-12"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -286,31 +724,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="6:00 AM"
                     >
+                       
                       6:00 AM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-02"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-13"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="6:30 AM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      6:30 AM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-14"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -319,31 +802,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="7:00 AM"
                     >
+                       
                       7:00 AM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-15"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="7:30 AM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      7:30 AM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-16"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -352,31 +880,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="8:00 AM"
                     >
+                       
                       8:00 AM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-04"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-17"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="8:30 AM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      8:30 AM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-18"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -385,31 +958,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="9:00 AM"
                     >
+                       
                       9:00 AM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-05"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-19"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="9:30 AM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      9:30 AM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-20"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -418,31 +1036,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="10:00 AM"
                     >
+                       
                       10:00 AM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-06"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-21"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="10:30 AM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      10:30 AM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-22"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -451,31 +1114,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="11:00 AM"
                     >
+                       
                       11:00 AM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-07"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-23"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="11:30 AM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      11:30 AM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-24"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -484,31 +1192,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="12:00 PM"
                     >
+                       
                       12:00 PM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-08"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-25"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="12:30 PM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      12:30 PM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-26"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -517,31 +1270,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="1:00 PM"
                     >
+                       
                       1:00 PM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-09"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-27"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="1:30 PM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      1:30 PM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-28"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -550,31 +1348,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="2:00 PM"
                     >
+                       
                       2:00 PM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-10"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-29"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="2:30 PM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      2:30 PM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-30"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -583,31 +1426,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="3:00 PM"
                     >
+                       
                       3:00 PM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-11"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-31"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="3:30 PM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      3:30 PM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-32"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -616,31 +1504,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="4:00 PM"
                     >
+                       
                       4:00 PM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-33"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="4:30 PM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      4:30 PM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-34"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -649,31 +1582,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="5:00 PM"
                     >
+                       
                       5:00 PM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-35"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="5:30 PM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      5:30 PM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-36"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -682,31 +1660,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="6:00 PM"
                     >
+                       
                       6:00 PM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-37"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="6:30 PM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      6:30 PM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-38"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -715,31 +1738,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="7:00 PM"
                     >
+                       
                       7:00 PM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-39"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="7:30 PM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      7:30 PM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-40"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -748,31 +1816,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="8:00 PM"
                     >
+                       
                       8:00 PM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-41"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="8:30 PM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      8:30 PM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-42"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -781,31 +1894,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="9:00 PM"
                     >
+                       
                       9:00 PM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-43"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="9:30 PM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      9:30 PM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-44"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -814,31 +1972,76 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="10:00 PM"
                     >
+                       
                       10:00 PM
                     </span>
                   </span>
-                </div>
+                </span>
               </li>
               <li
                 className="slds-listbox__item"
                 role="presentation"
               >
-                <div
-                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                  id="listbox-option-unique-id-12"
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-45"
+                  onClick={[Function]}
                   role="option"
                 >
                   <span
                     className="slds-media__figure"
                   >
-                    <svg
-                      aria-hidden={true}
-                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="10:30 PM"
                     >
-                      <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
-                      />
-                    </svg>
+                       
+                      10:30 PM
+                    </span>
+                  </span>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-46"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
                   </span>
                   <span
                     className="slds-media__body"
@@ -847,10 +2050,50 @@ exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
                       className="slds-truncate"
                       title="11:00 PM"
                     >
+                       
                       11:00 PM
                     </span>
                   </span>
-                </div>
+                </span>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <span
+                  aria-selected={false}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="timepicker-combobox-listbox-option-47"
+                  onClick={[Function]}
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="11:30 PM"
+                    >
+                       
+                      11:30 PM
+                    </span>
+                  </span>
+                </span>
               </li>
             </ul>
           </div>
