@@ -131,22 +131,6 @@ const propTypes = {
 	stepInMinutes: PropTypes.number,
 };
 
-const defaultFormatter = (date) => {
-	if (date) {
-		if (typeof navigator !== 'undefined') {
-			return date.toLocaleTimeString(navigator.language, {
-				hour: '2-digit',
-				minute: '2-digit',
-			});
-		}
-		return date.toLocaleTimeString('en', {
-			hour: '2-digit',
-			minute: '2-digit',
-		});
-	}
-	return null;
-};
-
 const getDefaultOptions = ({ props }) => {
 	const baseDate = new Date(props.initialDate);
 	const options = [];
@@ -179,7 +163,21 @@ const getDefaultOptions = ({ props }) => {
 };
 
 const defaultProps = {
-	formatter: defaultFormatter,
+	formatter: (date) => {
+		if (date) {
+			if (typeof navigator !== 'undefined') {
+				return date.toLocaleTimeString(navigator.language, {
+					hour: '2-digit',
+					minute: '2-digit',
+				});
+			}
+			return date.toLocaleTimeString('en', {
+				hour: '2-digit',
+				minute: '2-digit',
+			});
+		}
+		return null;
+	},
 	events: {},
 	initialDate: new Date(),
 	labels: {
