@@ -1,0 +1,862 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSTimepickerCombobox Base 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="timepicker-combobox"
+    >
+      Time
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          aria-expanded={true}
+          aria-haspopup="listbox"
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open slds-timepicker"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-autocomplete="list"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              id="timepicker-combobox"
+              placeholder=""
+              role="textbox"
+              type="text"
+            />
+            <span
+              className="slds-icon_container slds-input__icon slds-input__icon_right"
+            >
+              <svg
+                aria-hidden={true}
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clock"
+                />
+              </svg>
+            </span>
+          </div>
+          <div
+            className="slds-dropdown slds-dropdown_fluid slds-dropdown_length-5"
+            id="listbox-unique-id"
+            role="listbox"
+          >
+            <ul
+              className="slds-listbox slds-listbox_vertical"
+              role="presentation"
+            >
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="12:00 AM"
+                    >
+                      12:00 AM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="1:00 AM"
+                    >
+                      1:00 AM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="2:00 AM"
+                    >
+                      2:00 AM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="3:00 AM"
+                    >
+                      3:00 AM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="4:00 AM"
+                    >
+                      4:00 AM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="5:00 AM"
+                    >
+                      5:00 AM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-01"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="6:00 AM"
+                    >
+                      6:00 AM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-02"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="7:00 AM"
+                    >
+                      7:00 AM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="8:00 AM"
+                    >
+                      8:00 AM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-04"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="9:00 AM"
+                    >
+                      9:00 AM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-05"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="10:00 AM"
+                    >
+                      10:00 AM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-06"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="11:00 AM"
+                    >
+                      11:00 AM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-07"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="12:00 PM"
+                    >
+                      12:00 PM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-08"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="1:00 PM"
+                    >
+                      1:00 PM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-09"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="2:00 PM"
+                    >
+                      2:00 PM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-10"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="3:00 PM"
+                    >
+                      3:00 PM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-11"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="4:00 PM"
+                    >
+                      4:00 PM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="5:00 PM"
+                    >
+                      5:00 PM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="6:00 PM"
+                    >
+                      6:00 PM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="7:00 PM"
+                    >
+                      7:00 PM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="8:00 PM"
+                    >
+                      8:00 PM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="9:00 PM"
+                    >
+                      9:00 PM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="10:00 PM"
+                    >
+                      10:00 PM
+                    </span>
+                  </span>
+                </div>
+              </li>
+              <li
+                className="slds-listbox__item"
+                role="presentation"
+              >
+                <div
+                  className="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                  id="listbox-option-unique-id-12"
+                  role="option"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <svg
+                      aria-hidden={true}
+                      className="slds-icon slds-icon_x-small slds-listbox__icon-selected"
+                    >
+                      <use
+                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="11:00 PM"
+                    >
+                      11:00 PM
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
