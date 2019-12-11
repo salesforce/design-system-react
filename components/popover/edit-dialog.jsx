@@ -93,8 +93,7 @@ class EditDialog extends React.Component {
 			<Popover
 				classNameFooter={[
 					'slds-p-top_xxx-small',
-					'slds-p-bottom_xx-small',
-					'slds-p-right_large',
+					'slds-p-bottom_xx-small'
 				]}
 				classNameBody={['slds-p-bottom_xx-small']}
 				footer={
