@@ -2248,6 +2248,32 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
 	display: none;
 }
       </style>
+      <div
+        style={
+          Object {
+            "height": "0",
+            "left": "0px",
+            "position": "relative",
+            "top": "0",
+            "width": "0",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "backgroundColor": "#16325c",
+              "content": "",
+              "height": "1rem",
+              "left": "-8px",
+              "position": "absolute",
+              "top": "-19px",
+              "transform": "rotate(45deg)",
+              "width": "1rem",
+            }
+          }
+        />
+      </div>
       <button
         aria-describedby="anchored-nubbin-top"
         aria-disabled={true}
@@ -2316,6 +2342,32 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
 	display: none;
 }
       </style>
+      <div
+        style={
+          Object {
+            "height": "0",
+            "left": "0px",
+            "position": "relative",
+            "top": "0px",
+            "width": "0",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "backgroundColor": "#16325c",
+              "content": "",
+              "height": "1rem",
+              "left": "3px",
+              "position": "absolute",
+              "top": "-9px",
+              "transform": "rotate(45deg)",
+              "width": "1rem",
+            }
+          }
+        />
+      </div>
       <button
         aria-describedby="anchored-nubbin-right"
         aria-disabled={true}
@@ -2384,6 +2436,32 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
 	display: none;
 }
       </style>
+      <div
+        style={
+          Object {
+            "height": "0",
+            "left": "0",
+            "position": "relative",
+            "top": "0px",
+            "width": "0",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "backgroundColor": "#16325c",
+              "content": "",
+              "height": "1rem",
+              "left": "-19px",
+              "position": "absolute",
+              "top": "-9px",
+              "transform": "rotate(45deg)",
+              "width": "1rem",
+            }
+          }
+        />
+      </div>
       <button
         aria-describedby="anchored-nubbin-left"
         aria-disabled={true}
@@ -2452,6 +2530,32 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
 	display: none;
 }
       </style>
+      <div
+        style={
+          Object {
+            "height": "0",
+            "left": "0px",
+            "position": "relative",
+            "top": "0px",
+            "width": "0",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "backgroundColor": "#16325c",
+              "content": "",
+              "height": "1rem",
+              "left": "-8px",
+              "position": "absolute",
+              "top": "3px",
+              "transform": "rotate(45deg)",
+              "width": "1rem",
+            }
+          }
+        />
+      </div>
       <button
         aria-describedby="anchored-nubbin-bottom"
         aria-disabled={true}

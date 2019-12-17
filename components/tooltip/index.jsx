@@ -241,7 +241,7 @@ class Tooltip extends React.Component {
 					<style>{`#${this.getId()}:after, #${this.getId()}:before {
 	display: none;
 }`}</style>
-					{this.state.isOpen ? (
+					{this.getIsOpen() ? (
 						<div style={nubbinContainerStyles}>
 							<div style={nubbinStyles} />
 						</div>
