@@ -6,7 +6,7 @@ import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import componentIsDeprecated from '../../utilities/warning/component-is-deprecated';
 
-let checkProps = function checkPropsFunction() { };
+let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
