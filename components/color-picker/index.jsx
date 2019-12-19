@@ -266,9 +266,9 @@ class ColorPicker extends React.Component {
 		checkProps(COLOR_PICKER, props, componentDoc);
 	}
 
-  componentDidUpdate(prevProps) {
-    // The following are only present to allow props to update the state if they get out of sync (for instance, the external store is updated).
-    const nextState = {};
+	componentDidUpdate(prevProps) {
+		// The following are only present to allow props to update the state if they get out of sync (for instance, the external store is updated).
+		const nextState = {};
 
 		if (this.props.value !== prevProps.value) {
 			nextState.currentColor = this.props.value;
@@ -285,14 +285,13 @@ class ColorPicker extends React.Component {
 
 		if (this.props.disabled !== prevProps.disabled) {
 			nextState.disabled = this.props.disabled;
-    }
+		}
 
-    if(Object.entries(nextState).length !== 0) {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState(nextState);
-    }
-    
-  }
+		if (Object.entries(nextState).length !== 0) {
+			// eslint-disable-next-line react/no-did-update-set-state
+			this.setState(nextState);
+		}
+	}
 
 	getInput({ labels }) {
 		return this.props.hideInput ? null : (
@@ -558,7 +557,7 @@ class ColorPicker extends React.Component {
 	};
 
 	handleSubmitButtonClick = (event) => {
-    this.setState({
+		this.setState({
 			isOpen: false,
 			// eslint-disable-next-line react/no-access-state-in-setstate
 			currentColor: this.state.workingColor.hex,
@@ -599,7 +598,6 @@ class ColorPicker extends React.Component {
 	};
 
 	render() {
-
 		const labels = assign({}, defaultProps.labels, this.props.labels);
 
 		return (

@@ -52,9 +52,9 @@ class TextTruncate extends React.Component {
 	}
 
 	componentDidUpdate(nextProps) {
-    if(nextProps.text !== this.props.text) {
-      this.update(nextProps);
-    }
+		if (nextProps.text !== this.props.text) {
+			this.update(nextProps);
+		}
 	}
 
 	componentWillUnmount() {

@@ -117,27 +117,25 @@ const defaultProps = {
   * should use `getNodes()` to access the correct nodes.
 */
 const flattenTree = (root, getNodes, treeIndex = '', firstLevel = true) => {
-  if (!root.nodes) {
-    return [{ node: root, treeIndex }];
-  }
-  let nodes = [{ node: root, treeIndex }];
-  if (root.expanded) {
-    // eslint-disable-next-line fp/no-loops
-    for (let index = 0; index < root.nodes.length; index += 1) {
-      const curNode = firstLevel
-        ? root.nodes[index]
-        : getNodes(root)[index];
-      nodes = nodes.concat(
-        flattenTree(
-          curNode,
-          getNodes,
-          treeIndex ? `${treeIndex}-${index}` : `${index}`,
-          false
-        )
-      );
-    }
-  }
-  return nodes;
+	if (!root.nodes) {
+		return [{ node: root, treeIndex }];
+	}
+	let nodes = [{ node: root, treeIndex }];
+	if (root.expanded) {
+		// eslint-disable-next-line fp/no-loops
+		for (let index = 0; index < root.nodes.length; index += 1) {
+			const curNode = firstLevel ? root.nodes[index] : getNodes(root)[index];
+			nodes = nodes.concat(
+				flattenTree(
+					curNode,
+					getNodes,
+					treeIndex ? `${treeIndex}-${index}` : `${index}`,
+					false
+				)
+			);
+		}
+	}
+	return nodes;
 };
 
 /**
@@ -148,10 +146,13 @@ class Tree extends React.Component {
 		super(props);
 
 		// Find the first selected node and initialize it properly so that can be tabbed to. If no node is selected, it will be selected upon first focus.
-		const flattenedNodes = flattenTree({
-			nodes: this.props.getNodes({ nodes: this.props.nodes }),
-			expanded: true,
-		}, this.props.getNodes).slice(1);
+		const flattenedNodes = flattenTree(
+			{
+				nodes: this.props.getNodes({ nodes: this.props.nodes }),
+				expanded: true,
+			},
+			this.props.getNodes
+		).slice(1);
 
 		const selectedNode = find(
 			flattenedNodes,
@@ -176,11 +177,14 @@ class Tree extends React.Component {
 	}
 
 	static getDerivedStateFromProps(nextProps) {
-    return {
-			flattenedNodes: flattenTree({
-				nodes: nextProps.getNodes({ nodes: nextProps.nodes }),
-				expanded: true,
-			}, nextProps.getNodes).slice(1),
+		return {
+			flattenedNodes: flattenTree(
+				{
+					nodes: nextProps.getNodes({ nodes: nextProps.nodes }),
+					expanded: true,
+				},
+				nextProps.getNodes
+			).slice(1),
 		};
 	}
 

@@ -166,7 +166,7 @@ class Timepicker extends React.Component {
 		checkProps(TIME_PICKER, props, componentDoc);
 	}
 
-  // eslint-disable-next-line camelcase, react/sort-comp
+	// eslint-disable-next-line camelcase, react/sort-comp
 	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (nextProps.value && this.props.value) {
 			const currentTime = this.props.value.getTime();
