@@ -558,7 +558,6 @@ class ColorPicker extends React.Component {
 	};
 
 	handleSubmitButtonClick = (event) => {
-    console.log(this.state.workingColor.hex);
     this.setState({
 			isOpen: false,
 			// eslint-disable-next-line react/no-access-state-in-setstate

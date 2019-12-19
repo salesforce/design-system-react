@@ -107,7 +107,7 @@ const propTypes = {
 
 const defaultProps = {
 	assistiveText: {},
-	getNodes: (node) => {console.log(node.nodes); return node.nodes},
+	getNodes: (node) => node.nodes,
 };
 
 /* Flattens hierarchical tree structure into a flat array. The
