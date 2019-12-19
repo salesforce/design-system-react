@@ -303,7 +303,7 @@ class DatepickerCalendar extends React.Component {
 						<tr>
 							<td colSpan="7" role="gridcell">
 								<a
-									href="javascript:void(0)" // eslint-disable-line no-script-url
+									href="javascript:void(0)" //eslint-disable-line no-script-url
 									tabIndex="0"
 									className="slds-show_inline-block slds-p-bottom_x-small"
 									onClick={(event) => {
