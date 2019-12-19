@@ -17289,26 +17289,6 @@
         "description": "A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.",
         "methods": [
             {
-                "name": "flattenTree",
-                "docblock": null,
-                "modifiers": [],
-                "params": [
-                    {
-                        "name": "root",
-                        "type": null
-                    },
-                    {
-                        "name": "treeIndex",
-                        "type": null
-                    },
-                    {
-                        "name": "firstLevel",
-                        "type": null
-                    }
-                ],
-                "returns": null
-            },
-            {
                 "name": "handleSelect",
                 "docblock": null,
                 "modifiers": [],
@@ -17401,7 +17381,7 @@
                 "required": false,
                 "description": "A function that will be called by every branch to receive its child nodes. The parent `node` object with the branch data is passed into this function: `getNodes(node)`. If your state engine is Flux or Redux, then your tree data structure will probably be flattened or normalized within the store. This will allow you to build out your tree without transversing an actual tree of data and may be more performant.",
                 "defaultValue": {
-                    "value": "(node) => node.nodes",
+                    "value": "(node) => {console.log(node.nodes); return node.nodes}",
                     "computed": false
                 }
             },

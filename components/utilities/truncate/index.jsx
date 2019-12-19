@@ -51,8 +51,10 @@ class TextTruncate extends React.Component {
 		window.addEventListener('resize', this.onResize, false);
 	}
 
-	componentWillReceiveProps(nextProps) {
-		this.update(nextProps);
+	componentDidUpdate(nextProps) {
+		if (nextProps.text !== this.props.text) {
+			this.update(nextProps);
+		}
 	}
 
 	componentWillUnmount() {

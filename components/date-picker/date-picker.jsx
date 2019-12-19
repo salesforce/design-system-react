@@ -274,12 +274,13 @@ class Datepicker extends React.Component {
 		checkProps(DATE_PICKER, props, componentDoc);
 	}
 
-	componentWillReceiveProps(nextProps) {
+	componentDidUpdate(nextProps) {
 		if (nextProps.value && this.props.value) {
 			const currentDate = this.props.value.getTime();
 			const nextDate = nextProps.value.getTime();
 
 			if (currentDate !== nextDate) {
+				// eslint-disable-next-line react/no-did-update-set-state
 				this.setState({
 					value: nextProps.value,
 					formattedValue: this.props.formatter(nextProps.value),

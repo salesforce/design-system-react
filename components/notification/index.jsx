@@ -73,7 +73,8 @@ class Notification extends React.Component {
 		}
 	}
 
-	componentWillReceiveProps(nextProps) {
+	// eslint-disable-next-line camelcase, react/sort-comp
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (nextProps.duration) {
 			if (this.timeout) {
 				clearTimeout(this.timeout);

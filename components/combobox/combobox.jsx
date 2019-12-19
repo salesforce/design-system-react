@@ -439,7 +439,7 @@ class Combobox extends React.Component {
 	 * Lifecycle methods
 	 */
 
-	componentWillReceiveProps(nextProps) {
+	componentDidUpdate(nextProps) {
 		// This logic will maintain the active highlight even when the
 		// option order changes. One example would be the server pushes
 		// data out as the user has the menu open. This logic clears
@@ -451,11 +451,14 @@ class Combobox extends React.Component {
 				isEqual(item, this.state.activeOption)
 			);
 			if (index !== -1) {
+				// eslint-disable-next-line react/no-did-update-set-state
 				this.setState({ activeOptionIndex: index });
 			} else {
+				// eslint-disable-next-line react/no-did-update-set-state
 				this.setState({ activeOption: undefined, activeOptionIndex: -1 });
 			}
 		} else if (this.props.isOpen !== nextProps.isOpen) {
+			// eslint-disable-next-line react/no-did-update-set-state
 			this.setState({ isOpen: nextProps.isOpen });
 		}
 
@@ -466,26 +469,11 @@ class Combobox extends React.Component {
 			this.props.selection.length === 0 &&
 			nextProps.selection.length > 0;
 		if (selectedOptionsRenderIsInitialRender) {
+			// eslint-disable-next-line react/no-did-update-set-state
 			this.setState({
 				activeSelectedOption: nextProps.selection[0],
 				activeSelectedOptionIndex: 0,
 			});
-		}
-
-		// changes pill focus to last item in the list if the selection length has changed
-		if (nextProps.selection.length > this.props.selection.length) {
-			if (nextProps.selection.length < 1) {
-				this.setState({
-					activeSelectedOption: undefined,
-					activeSelectedOptionIndex: 0,
-				});
-			} else {
-				this.setState({
-					activeSelectedOption:
-						nextProps.selection[nextProps.selection.length - 1],
-					activeSelectedOptionIndex: nextProps.selection.length - 1,
-				});
-			}
 		}
 	}
 

@@ -27,7 +27,8 @@ const propTypes = {
 };
 
 class Item extends React.Component {
-	componentWillReceiveProps(nextProps) {
+	// eslint-disable-next-line camelcase, react/sort-comp
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (
 			nextProps.isActive !== this.props.isActive &&
 			nextProps.isActive === true
