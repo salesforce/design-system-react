@@ -262,39 +262,6 @@ describe('Tree: ', () => {
 		});
 	});
 
-	describe('getNodes is called correctly on initial tree', () => {
-		const getNodes = (node) =>
-			node.nodes
-				? node.nodes.map(
-						(id) => sampleNodesDynamicHashMap.initialExpandedSelected[id]
-					)
-				: [];
-		const getNodesSpy = sinon.spy(getNodes);
-
-		beforeEach(
-			mountComponent(
-				<DefaultExample
-					getNodes={getNodesSpy}
-					log={() => {}}
-					nodes={sampleNodesDynamicHashMap.initialExpandedSelected}
-				/>
-			)
-		);
-
-		afterEach(unmountComponent);
-
-		it('getNodes passes in correct node and is called 18 times (all branches twice + root branch) on initial tree', () => {
-			const nodeCallbackParameter = getNodesSpy.args[0][0];
-			expect(
-				isEqual(
-					nodeCallbackParameter.nodes,
-					sampleNodesDynamicHashMap.initialExpandedSelected[0].nodes
-				)
-			).is.true;
-			expect(getNodesSpy.callCount).to.equal(18);
-		});
-	});
-
 	describe('Search term is highlighted', () => {
 		beforeEach(
 			mountComponent(<DefaultExample log={() => {}} searchTerm="fruit" />)

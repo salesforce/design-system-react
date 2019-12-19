@@ -107,39 +107,38 @@ const propTypes = {
 
 const defaultProps = {
 	assistiveText: {},
-	getNodes: (node) => node.nodes,
+	getNodes: (node) => {console.log(node.nodes); return node.nodes},
 };
 
-	/* Flattens hierarchical tree structure into a flat array. The
-	 * first item in the array is the whole tree and therefore should be
-	 * removed with `slice(1)`.` This means that root cannot call `getNodes()`
-	 * and should directly reference the `nodes` key. All level after that
-	 * should use `getNodes()` to access the correct nodes.
-	*/
-	const flattenTree = (root, getNodes, treeIndex = '', firstLevel = true) => {
-    console.log(getNodes);
-    if (!root.nodes) {
-			return [{ node: root, treeIndex }];
-		}
-		let nodes = [{ node: root, treeIndex }];
-		if (root.expanded) {
-			// eslint-disable-next-line fp/no-loops
-			for (let index = 0; index < root.nodes.length; index += 1) {
-				const curNode = firstLevel
-					? root.nodes[index]
-					: getNodes(root)[index];
-				nodes = nodes.concat(
-					flattenTree(
-            curNode,
-            getNodes,
-						treeIndex ? `${treeIndex}-${index}` : `${index}`,
-						false
-					)
-				);
-			}
-		}
-		return nodes;
-	};
+/* Flattens hierarchical tree structure into a flat array. The
+  * first item in the array is the whole tree and therefore should be
+  * removed with `slice(1)`.` This means that root cannot call `getNodes()`
+  * and should directly reference the `nodes` key. All level after that
+  * should use `getNodes()` to access the correct nodes.
+*/
+const flattenTree = (root, getNodes, treeIndex = '', firstLevel = true) => {
+  if (!root.nodes) {
+    return [{ node: root, treeIndex }];
+  }
+  let nodes = [{ node: root, treeIndex }];
+  if (root.expanded) {
+    // eslint-disable-next-line fp/no-loops
+    for (let index = 0; index < root.nodes.length; index += 1) {
+      const curNode = firstLevel
+        ? root.nodes[index]
+        : getNodes(root)[index];
+      nodes = nodes.concat(
+        flattenTree(
+          curNode,
+          getNodes,
+          treeIndex ? `${treeIndex}-${index}` : `${index}`,
+          false
+        )
+      );
+    }
+  }
+  return nodes;
+};
 
 /**
  * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.
