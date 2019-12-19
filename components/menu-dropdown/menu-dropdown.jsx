@@ -13,6 +13,7 @@ import classNames from 'classnames';
 
 // ### isFunction
 import isFunction from 'lodash.isfunction';
+import isEqual from 'lodash.isequal';
 
 import shortid from 'shortid';
 
@@ -447,18 +448,19 @@ class MenuDropdown extends React.Component {
 		this.navigableItems = getNavigableItems(props.options);
 	}
 
-	componentWillReceiveProps(nextProps, prevProps) {
-		if (prevProps.value !== nextProps.value) {
-			const nextState = this.getCurrentSelectedIndices(nextProps);
+	componentDidUpdate(prevProps) {
+		if (prevProps.value !== this.props.value) {
+			const nextState = this.getCurrentSelectedIndices(prevProps);
+			// eslint-disable-next-line react/no-did-update-set-state
 			this.setState(nextState);
 		}
 
-		if (prevProps.isOpen !== nextProps.isOpen) {
+		if (prevProps.isOpen !== this.props.isOpen) {
 			this.setFocus();
 		}
 
-		if (nextProps.options) {
-			this.navigableItems = getNavigableItems(nextProps.options);
+		if (!isEqual(prevProps.options, this.props.options)) {
+			this.navigableItems = getNavigableItems(prevProps.options);
 		}
 	}
 
