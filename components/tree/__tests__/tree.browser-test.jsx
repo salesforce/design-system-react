@@ -5,7 +5,6 @@
 
 import React from 'react';
 
-import isEqual from 'lodash.isequal';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
