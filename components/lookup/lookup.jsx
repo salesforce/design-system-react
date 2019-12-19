@@ -239,7 +239,8 @@ const Lookup = class extends React.Component {
 		this.modifyItems(this.props.options);
 	}
 
-	componentWillReceiveProps(newProps) {
+	// eslint-disable-next-line camelcase, react/sort-comp
+	UNSAFE_componentWillReceiveProps(newProps) {
 		if (newProps.options) {
 			this.modifyItems(newProps.options);
 		}

@@ -13,7 +13,8 @@ const propTypes = {};
 const defaultProps = {};
 
 class DefaultFooter extends React.Component {
-	componentWillReceiveProps(nextProps) {
+	// eslint-disable-next-line react/sort-comp
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (
 			nextProps.isActive !== this.props.isActive &&
 			nextProps.isActive === true
