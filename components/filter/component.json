@@ -1,0 +1,26 @@
+{
+	"component": "filter",
+	"status": "prod",
+	"display-name": "Filters",
+	"classKey": "Filter",
+	"SLDS-component-path": "/components/filter",
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "New",
+			"path": "/__examples__/new.jsx"
+		},
+		{
+			"heading": "Error",
+			"path": "/__examples__/error.jsx"
+		},
+		{
+			"heading": "Locked",
+			"path": "/__examples__/locked.jsx"
+		}
+	],
+	"url-slug": "filters"
+}
