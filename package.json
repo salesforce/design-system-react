@@ -126,7 +126,7 @@
 		"@storybook/react": "^5.1.9",
 		"@storybook/router": "^5.1.9",
 		"async": "^2.0.0-rc.5",
-		"axe-core": "3.2.2",
+		"axe-core": "3.4.1",
 		"axe-puppeteer": "^1.0.0",
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-eslint": "^10.0.3",
