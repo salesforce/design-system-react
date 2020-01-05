@@ -1246,7 +1246,7 @@ exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
           id="edit-dialog-popover-dialog-body"
         >
           <div
-            className="slds-form slds-form_stacked slds-p-top_medium slds-p-right_small slds-p-left_small"
+            className="slds-form slds-form_stacked slds-p-top_medium"
           >
             <h2
               className="slds-assistive-text"
@@ -1299,7 +1299,7 @@ exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
           </div>
         </div>
         <footer
-          className="slds-popover__footer slds-p-top_xxx-small slds-p-bottom_xx-small slds-p-right_large"
+          className="slds-popover__footer slds-p-top_xxx-small slds-p-bottom_xx-small"
           style={
             Object {
               "borderTop": "0px",
