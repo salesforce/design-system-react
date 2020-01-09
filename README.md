@@ -158,6 +158,7 @@ Thank you to all the contributors to this one of [many open source projects at S
 ### Active Key Contributors
 
 - [@garygong](https://github.com/garygong) Gary Gong
+- [@kevinparkerson](https://github.com/kevinparkerson) Kevin Parkerson
 - [@interactivellama](https://github.com/interactivellama) Stephen James
 
 ### Former Key Contributors
