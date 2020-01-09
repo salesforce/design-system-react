@@ -6,7 +6,18 @@ import IconSettings from '~/components/icon-settings';
 import Datepicker from '~/components/date-picker';
 
 class Example extends React.Component {
-	static displayName = 'DatepickerExample';
+  static displayName = 'DatepickerExample';
+
+  constructor() {
+    super();
+		this.state = {
+      value: undefined
+    }
+  }
+  
+  handleChange = (event, data) => {
+    this.setState({value: data.date })
+  }
 
 	render() {
 		return (
@@ -16,7 +27,9 @@ class Example extends React.Component {
 						label: 'Date',
 					}}
 					onChange={(event, data) => {
-						if (this.props.action) {
+            this.handleChange(event, data);
+
+            if (this.props.action) {
 							const dataAsArray = Object.keys(data).map((key) => data[key]);
 							this.props.action('onChange')(event, data, ...dataAsArray);
 						} else if (console) {
@@ -36,7 +49,8 @@ class Example extends React.Component {
 					}}
 					parser={(dateString) => {
 						return moment(dateString, 'MM-DD-YYYY').toDate();
-					}}
+          }} 
+          value={this.state.value}
 				/>
 			</IconSettings>
 		);
