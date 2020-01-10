@@ -275,18 +275,17 @@ class Datepicker extends React.Component {
 	}
 
 	getDatePicker = ({ labels, assistiveText }) => {
-    let date;
-    // Use props if present. Otherwise, use state.
-    if(this.props.value) {
-      date = this.props.formatter(this.props.value)
-      ? this.parseDate(this.props.formatter(this.props.value))
-      : this.props.value;
-    }
-    else {
-      date = this.state.formattedValue
-      ? this.parseDate(this.state.formattedValue)
-      : this.state.value;
-    }
+		let date;
+		// Use props if present. Otherwise, use state.
+		if (this.props.value) {
+			date = this.props.formatter(this.props.value)
+				? this.parseDate(this.props.formatter(this.props.value))
+				: this.props.value;
+		} else {
+			date = this.state.formattedValue
+				? this.parseDate(this.state.formattedValue)
+				: this.state.value;
+		}
 
 		return (
 			<CalendarWrapper
@@ -412,7 +411,9 @@ class Datepicker extends React.Component {
 				this.openDialog();
 			},
 			onKeyDown: this.handleKeyDown,
-			value: this.props.value ? this.props.formatter(this.props.value) : this.state.inputValue,
+			value: this.props.value
+				? this.props.formatter(this.props.value)
+				: this.state.inputValue,
 		};
 
 		// eslint-disable react/prop-types
@@ -460,13 +461,13 @@ class Datepicker extends React.Component {
 	};
 
 	handleCalendarChange = (event, { date }) => {
-    if(!this.props.value) {
-      this.setState({
-        value: date,
-        formattedValue: this.props.formatter(date),
-        inputValue: this.props.formatter(date),
-      });
-    }
+		if (!this.props.value) {
+			this.setState({
+				value: date,
+				formattedValue: this.props.formatter(date),
+				inputValue: this.props.formatter(date),
+			});
+		}
 
 		this.handleRequestClose();
 
