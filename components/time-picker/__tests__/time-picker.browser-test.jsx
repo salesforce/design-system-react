@@ -15,6 +15,7 @@ const defaultProps = {
 	onDateChange: () => {},
 	value: dateTimeNow,
 	strValue: defaultStrValue,
+	silenceDeprecationWarning: true,
 };
 
 describe('SLDSTimepicker: ', () => {

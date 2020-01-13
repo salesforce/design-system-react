@@ -19,6 +19,7 @@ const deprecatedComponents = [
 	'SLDSLookup',
 	'SLDSNotification',
 	'SLDSMenuPicklist',
+	'SLDSTimepicker',
 ];
 
 const excludeFromTests = {
@@ -34,7 +35,6 @@ const excludeFromTests = {
 			'SLDSLocationMap',
 			'SLDSModal',
 			'SLDSPanel',
-			'SLDSTimepicker',
 			'SLDSWelcomeMat',
 			...deprecatedComponents,
 		],
