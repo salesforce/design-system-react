@@ -274,26 +274,18 @@ class Datepicker extends React.Component {
 		checkProps(DATE_PICKER, props, componentDoc);
 	}
 
-	componentDidUpdate(nextProps) {
-		if (nextProps.value && this.props.value) {
-			const currentDate = this.props.value.getTime();
-			const nextDate = nextProps.value.getTime();
-
-			if (currentDate !== nextDate) {
-				// eslint-disable-next-line react/no-did-update-set-state
-				this.setState({
-					value: nextProps.value,
-					formattedValue: this.props.formatter(nextProps.value),
-					inputValue: this.props.formatter(nextProps.value),
-				});
-			}
-		}
-	}
-
 	getDatePicker = ({ labels, assistiveText }) => {
-		const date = this.state.formattedValue
-			? this.parseDate(this.state.formattedValue)
-			: this.state.value;
+		let date;
+		// Use props if present. Otherwise, use state.
+		if (this.props.value) {
+			date = this.props.formatter(this.props.value)
+				? this.parseDate(this.props.formatter(this.props.value))
+				: this.props.value;
+		} else {
+			date = this.state.formattedValue
+				? this.parseDate(this.state.formattedValue)
+				: this.state.value;
+		}
 
 		return (
 			<CalendarWrapper
@@ -419,7 +411,9 @@ class Datepicker extends React.Component {
 				this.openDialog();
 			},
 			onKeyDown: this.handleKeyDown,
-			value: this.state.inputValue,
+			value: this.props.value
+				? this.props.formatter(this.props.value)
+				: this.state.inputValue,
 		};
 
 		// eslint-disable react/prop-types
@@ -467,11 +461,13 @@ class Datepicker extends React.Component {
 	};
 
 	handleCalendarChange = (event, { date }) => {
-		this.setState({
-			value: date,
-			formattedValue: this.props.formatter(date),
-			inputValue: this.props.formatter(date),
-		});
+		if (!this.props.value) {
+			this.setState({
+				value: date,
+				formattedValue: this.props.formatter(date),
+				inputValue: this.props.formatter(date),
+			});
+		}
 
 		this.handleRequestClose();
 

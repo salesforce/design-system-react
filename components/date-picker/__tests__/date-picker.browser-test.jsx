@@ -161,9 +161,6 @@ describe('SLDSDatepicker', function describeFunction() {
 					menuPosition="relative"
 					onChange={(event, data) => {
 						setTimeout(() => {
-							const input = wrapper.find('input');
-							expect(input).to.have.value('1/1/2007');
-
 							// test callback parameters
 							expect(data.date.getTime()).to.equal(
 								new Date('1/1/2007').getTime()
@@ -446,12 +443,15 @@ describe('SLDSDatepicker', function describeFunction() {
 		afterEach(() => wrapper.unmount());
 
 		it('disable weekends', (done) => {
+			// this only tests if onChange fires
+			const handleChangeSpy = sinon.spy();
 			wrapper = mount(
 				<DemoComponent
 					isOpen
 					menuPosition="relative"
 					value={new Date(2007, 0, 5)}
 					dateDisabled={({ date }) => date.getDay() > 5 || date.getDay() < 1}
+					onChange={handleChangeSpy}
 				/>
 			);
 
@@ -463,14 +463,14 @@ describe('SLDSDatepicker', function describeFunction() {
 				.first();
 			disabledDay.simulate('click', {});
 
-			expect(input).to.have.value('1/5/2007');
+			expect(handleChangeSpy.calledOnce).to.equal(false);
 
 			const day = wrapper
 				.find('.datepicker__month [aria-disabled=false]')
 				.first();
 			day.simulate('click', {});
 
-			expect(input).to.have.value('1/1/2007');
+			expect(handleChangeSpy.calledOnce).to.equal(true);
 			done();
 
 			const trigger = wrapper.find(triggerClassSelector);
