@@ -222,6 +222,7 @@ class DataTable extends React.Component {
 			select: [],
 		};
 		this.scrollerRef = null;
+		this.scrollerRefScrollTop = 0;
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATA_TABLE, props, componentDoc);
@@ -357,6 +358,23 @@ class DataTable extends React.Component {
 			if (canUseEventListeners && this.scrollerRef) {
 				this.scrollerRef[action]('scroll', this.resizeFixedHeaders);
 			}
+		}
+	};
+
+	handleScroll = (event) => {
+		if (this.previousScrollerRefScrollTop !== event.target.scrollTop) {
+			const percentage =
+				event.target.scrollTop /
+				(event.target.scrollHeight - event.target.clientHeight) *
+				100;
+
+			if (this.props.onScrollVertical) {
+				this.props.onScrollVertical(event, {
+					percentage,
+				});
+			}
+
+			this.previousScrollerRefScrollTop = event.target.scrollTop;
 		}
 	};
 
@@ -560,6 +578,7 @@ class DataTable extends React.Component {
 						ref={(ref) => {
 							this.scrollerRef = ref;
 						}}
+						onScroll={this.handleScroll}
 						style={{
 							height: '100%',
 							overflow: 'auto',
