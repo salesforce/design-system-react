@@ -4905,6 +4905,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
     >
       <div
         className="slds-table_header-fixed_scroller"
+        onScroll={[Function]}
         style={
           Object {
             "height": "100%",
@@ -7924,6 +7925,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
     >
       <div
         className="slds-table_header-fixed_scroller"
+        onScroll={[Function]}
         style={
           Object {
             "height": "100%",
@@ -11321,6 +11323,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
     >
       <div
         className="slds-table_header-fixed_scroller"
+        onScroll={[Function]}
         style={
           Object {
             "height": "100%",
