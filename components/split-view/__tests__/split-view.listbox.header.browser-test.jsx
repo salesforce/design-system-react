@@ -111,7 +111,7 @@ describe('SLDSSplitView - Listbox header', () => {
 				expect(
 					component
 						.find('.slds-split-view__list-header svg > use')
-						.prop('xlinkHref')
+						.prop('href')
 				).to.have.string('arrowdown');
 			});
 
@@ -130,7 +130,7 @@ describe('SLDSSplitView - Listbox header', () => {
 				expect(
 					component
 						.find('.slds-split-view__list-header svg > use')
-						.prop('xlinkHref')
+						.prop('href')
 				).to.have.string('arrowup');
 			});
 
