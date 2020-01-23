@@ -206,7 +206,7 @@ describe('SLDSIcon: ', function describeFunction() {
 
 		it('path prop is passed to svg', function() {
 			expect(this.wrapper.find('use')).to.have.attr(
-				'xlink:href',
+				'href',
 				'/assets/icons/utility-sprite/svg/symbols.svg#announcement'
 			);
 		});

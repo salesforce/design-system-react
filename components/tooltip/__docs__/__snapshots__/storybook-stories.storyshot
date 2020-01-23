@@ -663,7 +663,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -720,7 +720,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -777,7 +777,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -834,7 +834,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -891,7 +891,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -948,7 +948,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -1005,7 +1005,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -1062,7 +1062,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -1119,7 +1119,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -1176,7 +1176,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -1233,7 +1233,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -1290,7 +1290,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -1952,7 +1952,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Base 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#info"
         />
       </svg>
       <span
@@ -2103,7 +2103,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
               />
             </svg>
             <span
@@ -2153,7 +2153,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Learn More 1`] = `
           className="slds-icon slds-icon_x-small slds-icon-text-default"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
         <span
@@ -2291,7 +2291,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
         <span
@@ -2385,7 +2385,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
         <span
@@ -2479,7 +2479,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
         <span
@@ -2573,7 +2573,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
         <span
@@ -2641,7 +2641,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Delay 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#info"
         />
       </svg>
       <span

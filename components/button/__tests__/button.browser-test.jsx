@@ -200,7 +200,7 @@ describe('SLDSButton: ', () => {
 				iconVariant: 'bare',
 			});
 			use = findRenderedDOMComponentWithTag(cmp, 'use');
-			svgHref = use.getAttribute('xlink:href');
+			svgHref = use.getAttribute('href');
 		});
 
 		after(() => {

@@ -72,7 +72,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                       className="slds-icon slds-icon_x-small slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                   </span>
@@ -158,7 +158,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -223,7 +223,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -286,7 +286,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                         className="slds-button__icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
                         />
                       </svg>
                       <span
@@ -317,7 +317,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
             className="slds-button__icon slds-button__icon_left"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#add"
             />
           </svg>
           Add Condition
@@ -334,7 +334,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
             className="slds-button__icon slds-button__icon_left"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#add"
             />
           </svg>
           Add Group
@@ -417,7 +417,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                       className="slds-icon slds-icon_x-small slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                   </span>
@@ -524,7 +524,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -589,7 +589,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -652,7 +652,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                         className="slds-button__icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
                         />
                       </svg>
                       <span
@@ -742,7 +742,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -807,7 +807,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -870,7 +870,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                         className="slds-button__icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
                         />
                       </svg>
                       <span
@@ -901,7 +901,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
             className="slds-button__icon slds-button__icon_left"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#add"
             />
           </svg>
           Add Condition
@@ -918,7 +918,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
             className="slds-button__icon slds-button__icon_left"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#add"
             />
           </svg>
           Add Group
@@ -997,7 +997,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
                     className="slds-icon slds-icon_x-small slds-icon-text-default"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                     />
                   </svg>
                 </span>
@@ -1080,7 +1080,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
                             className="slds-input__icon slds-icon-text-default"
                           >
                             <use
-                              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                              href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                             />
                           </svg>
                         </div>
@@ -1140,7 +1140,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
                             className="slds-input__icon slds-icon-text-default"
                           >
                             <use
-                              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                              href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                             />
                           </svg>
                         </div>
@@ -1190,7 +1190,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#help"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#help"
                     />
                   </svg>
                   <span
@@ -1315,7 +1315,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                       className="slds-icon slds-icon_x-small slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                   </span>
@@ -1401,7 +1401,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -1466,7 +1466,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -1529,7 +1529,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                         className="slds-button__icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
                         />
                       </svg>
                       <span
@@ -1614,7 +1614,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                             className="slds-icon slds-icon_x-small slds-icon-text-default"
                           >
                             <use
-                              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                             />
                           </svg>
                         </span>
@@ -1700,7 +1700,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                                     className="slds-icon slds-icon_x-small slds-icon-text-default"
                                   >
                                     <use
-                                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                      href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                                     />
                                   </svg>
                                 </span>
@@ -1765,7 +1765,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                                     className="slds-icon slds-icon_x-small slds-icon-text-default"
                                   >
                                     <use
-                                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                      href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                                     />
                                   </svg>
                                 </span>
@@ -1828,7 +1828,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                               className="slds-button__icon"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
                               />
                             </svg>
                             <span
@@ -1918,7 +1918,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                                     className="slds-icon slds-icon_x-small slds-icon-text-default"
                                   >
                                     <use
-                                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                      href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                                     />
                                   </svg>
                                 </span>
@@ -1983,7 +1983,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                                     className="slds-icon slds-icon_x-small slds-icon-text-default"
                                   >
                                     <use
-                                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                      href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                                     />
                                   </svg>
                                 </span>
@@ -2046,7 +2046,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                               className="slds-button__icon"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
                               />
                             </svg>
                             <span
@@ -2077,7 +2077,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                   className="slds-button__icon slds-button__icon_left"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#add"
                   />
                 </svg>
                 Add Condition
@@ -2155,7 +2155,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                             className="slds-icon slds-icon_x-small slds-icon-text-default"
                           >
                             <use
-                              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                             />
                           </svg>
                         </span>
@@ -2262,7 +2262,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                                     className="slds-icon slds-icon_x-small slds-icon-text-default"
                                   >
                                     <use
-                                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                      href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                                     />
                                   </svg>
                                 </span>
@@ -2327,7 +2327,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                                     className="slds-icon slds-icon_x-small slds-icon-text-default"
                                   >
                                     <use
-                                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                      href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                                     />
                                   </svg>
                                 </span>
@@ -2390,7 +2390,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                               className="slds-button__icon"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
                               />
                             </svg>
                             <span
@@ -2421,7 +2421,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                   className="slds-button__icon slds-button__icon_left"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#add"
                   />
                 </svg>
                 Add Condition
@@ -2445,7 +2445,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
             className="slds-button__icon slds-button__icon_left"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#add"
             />
           </svg>
           Add Condition
@@ -2462,7 +2462,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
             className="slds-button__icon slds-button__icon_left"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#add"
             />
           </svg>
           Add Group
@@ -2545,7 +2545,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                       className="slds-icon slds-icon_x-small slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                   </span>
@@ -2631,7 +2631,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -2696,7 +2696,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -2759,7 +2759,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                         className="slds-button__icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
                         />
                       </svg>
                       <span
@@ -2849,7 +2849,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -2914,7 +2914,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -2977,7 +2977,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                         className="slds-button__icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
                         />
                       </svg>
                       <span
@@ -3008,7 +3008,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
             className="slds-button__icon slds-button__icon_left"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#add"
             />
           </svg>
           Add Condition
@@ -3025,7 +3025,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
             className="slds-button__icon slds-button__icon_left"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#add"
             />
           </svg>
           Add Group
@@ -3108,7 +3108,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                       className="slds-icon slds-icon_x-small slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                   </span>
@@ -3194,7 +3194,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -3259,7 +3259,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                               />
                             </svg>
                           </span>
@@ -3322,7 +3322,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                         className="slds-button__icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
                         />
                       </svg>
                       <span
@@ -3353,7 +3353,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
             className="slds-button__icon slds-button__icon_left"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#add"
             />
           </svg>
           Add Condition
@@ -3370,7 +3370,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
             className="slds-button__icon slds-button__icon_left"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#add"
             />
           </svg>
           Add Group

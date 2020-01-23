@@ -287,7 +287,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
               className="slds-button__icon slds-summary-detail__action-icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
               />
             </svg>
             <span
@@ -347,7 +347,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             className="slds-icon slds-icon-text-default"
                           >
                             <use
-                              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                              href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                             />
                           </svg>
                           
@@ -421,7 +421,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             className="slds-icon slds-icon_x-small slds-icon-text-default"
                           >
                             <use
-                              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                              href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                             />
                           </svg>
                           
@@ -493,7 +493,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             className="slds-icon slds-icon_x-small slds-icon-text-default"
                           >
                             <use
-                              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                              href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                             />
                           </svg>
                           
@@ -557,7 +557,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
               className="slds-button__icon slds-summary-detail__action-icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
               />
             </svg>
             <span
@@ -809,7 +809,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-icon slds-icon_small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#info"
                         />
                       </svg>
                       <span
@@ -861,7 +861,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
               className="slds-button__icon slds-summary-detail__action-icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
               />
             </svg>
             <span
@@ -921,7 +921,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             className="slds-icon slds-icon-text-default"
                           >
                             <use
-                              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                              href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                             />
                           </svg>
                           
@@ -995,7 +995,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             className="slds-icon slds-icon_x-small slds-icon-text-default"
                           >
                             <use
-                              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                              href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                             />
                           </svg>
                           
@@ -1067,7 +1067,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             className="slds-icon slds-icon_x-small slds-icon-text-default"
                           >
                             <use
-                              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                              href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                             />
                           </svg>
                           
@@ -1131,7 +1131,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
               className="slds-button__icon slds-summary-detail__action-icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
               />
             </svg>
             <span
@@ -1364,7 +1364,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
               className="slds-button__icon slds-summary-detail__action-icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
               />
             </svg>
             <span
@@ -1665,7 +1665,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                 className="slds-button__icon slds-summary-detail__action-icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -1725,7 +1725,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               className="slds-icon slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                               />
                             </svg>
                             
@@ -1799,7 +1799,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                               />
                             </svg>
                             
@@ -1871,7 +1871,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                               />
                             </svg>
                             
@@ -1935,7 +1935,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                 className="slds-button__icon slds-summary-detail__action-icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -2057,7 +2057,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                               />
                             </svg>
                             
@@ -2200,7 +2200,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-icon slds-icon_small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+                            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
                           />
                         </svg>
                         <span
@@ -2252,7 +2252,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                 className="slds-button__icon slds-summary-detail__action-icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -2312,7 +2312,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               className="slds-icon slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                               />
                             </svg>
                             
@@ -2386,7 +2386,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                               />
                             </svg>
                             
@@ -2458,7 +2458,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               className="slds-icon slds-icon_x-small slds-icon-text-default"
                             >
                               <use
-                                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                                href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                               />
                             </svg>
                             
@@ -2522,7 +2522,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                 className="slds-button__icon slds-summary-detail__action-icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -2755,7 +2755,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                 className="slds-button__icon slds-summary-detail__action-icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -3010,7 +3010,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
                   className="slds-icon slds-icon_small"
                 >
                   <use
-                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+                    href="/assets/icons/standard-sprite/svg/symbols.svg#user"
                   />
                 </svg>
                 <span
@@ -3085,7 +3085,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
                   className="slds-icon slds-icon_small"
                 >
                   <use
-                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user_role"
+                    href="/assets/icons/standard-sprite/svg/symbols.svg#user_role"
                   />
                 </svg>
                 <span
@@ -3155,7 +3155,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
                   className="slds-icon slds-icon_small"
                 >
                   <use
-                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#knowledge"
+                    href="/assets/icons/standard-sprite/svg/symbols.svg#knowledge"
                   />
                 </svg>
                 <span
@@ -3230,7 +3230,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
                   className="slds-icon slds-icon_small"
                 >
                   <use
-                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#record"
+                    href="/assets/icons/standard-sprite/svg/symbols.svg#record"
                   />
                 </svg>
                 <span
@@ -3325,7 +3325,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Icons 1`] = `
                   className="slds-icon slds-icon_small"
                 >
                   <use
-                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lightning_usage"
+                    href="/assets/icons/standard-sprite/svg/symbols.svg#lightning_usage"
                   />
                 </svg>
                 <span
@@ -3428,7 +3428,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                       className="slds-icon slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                       />
                     </svg>
                     
@@ -3615,7 +3615,7 @@ exports[`DOM snapshots SLDSSetupAssistant With Step Progress 1`] = `
                       className="slds-icon slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                       />
                     </svg>
                     

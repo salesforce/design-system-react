@@ -86,7 +86,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                     className="slds-input__icon slds-icon-text-default"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                     />
                   </svg>
                 </div>
@@ -123,7 +123,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
                     />
                   </svg>
                   <span
@@ -164,7 +164,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -204,7 +204,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#add"
                   />
                 </svg>
                 <span
@@ -244,7 +244,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#question"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#question"
                   />
                 </svg>
                 <span
@@ -282,7 +282,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#setup"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#setup"
                   />
                 </svg>
                 <span
@@ -323,7 +323,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#notification"
                   />
                 </svg>
                 <span
@@ -438,7 +438,7 @@ exports[`DOM snapshots SLDSGlobalHeader Fewer Elements 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#setup"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#setup"
                   />
                 </svg>
                 <span
@@ -578,7 +578,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                     className="slds-input__icon slds-icon-text-default"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                     />
                   </svg>
                 </div>
@@ -615,7 +615,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
                     />
                   </svg>
                   <span
@@ -656,7 +656,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -696,7 +696,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#add"
                   />
                 </svg>
                 <span
@@ -736,7 +736,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#question"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#question"
                   />
                 </svg>
                 <span
@@ -774,7 +774,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#setup"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#setup"
                   />
                 </svg>
                 <span
@@ -815,7 +815,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#notification"
                   />
                 </svg>
                 <span
@@ -961,7 +961,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                     className="slds-input__icon slds-icon-text-default"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                     />
                   </svg>
                 </div>
@@ -998,7 +998,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
                     />
                   </svg>
                   <span
@@ -1039,7 +1039,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -1079,7 +1079,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#add"
                   />
                 </svg>
                 <span
@@ -1119,7 +1119,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#question"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#question"
                   />
                 </svg>
                 <span
@@ -1157,7 +1157,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#setup"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#setup"
                   />
                 </svg>
                 <span
@@ -1198,7 +1198,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#notification"
                   />
                 </svg>
                 <span

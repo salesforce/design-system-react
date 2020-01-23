@@ -274,7 +274,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
         className="slds-button__icon slds-button__icon_stateful"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#chart"
         />
       </svg>
       <span
@@ -297,7 +297,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
         className="slds-button__icon slds-button__icon_stateful"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
         />
       </svg>
       <span
@@ -329,7 +329,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
           />
         </svg>
         <svg
@@ -337,7 +337,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
           className="slds-button__icon slds-button__icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#down"
           />
         </svg>
         <span
@@ -380,7 +380,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
             className="slds-button__icon slds-button__icon_stateful"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#chart"
             />
           </svg>
           <span
@@ -403,7 +403,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
             className="slds-button__icon slds-button__icon_stateful"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
             />
           </svg>
           <span
@@ -435,7 +435,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
               />
             </svg>
             <svg
@@ -443,7 +443,7 @@ exports[`DOM snapshots SLDSButtonGroup Icon Group 1`] = `
               className="slds-button__icon slds-button__icon_x-small"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
               />
             </svg>
             <span
@@ -513,7 +513,7 @@ exports[`DOM snapshots SLDSButtonGroup List Variant 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
           <span
@@ -588,7 +588,7 @@ exports[`DOM snapshots SLDSButtonGroup List Variant 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
               <span
@@ -661,7 +661,7 @@ exports[`DOM snapshots SLDSButtonGroup More Icon 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#down"
           />
         </svg>
         <span

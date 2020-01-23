@@ -28,7 +28,7 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
                 className="slds-icon slds-icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#document"
+                  href="/assets/icons/standard-sprite/svg/symbols.svg#document"
                 />
               </svg>
               
@@ -65,7 +65,7 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
                       className="slds-button__icon slds-button__icon_small slds-button__icon_right"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
                       />
                     </svg>
                   </button>
@@ -94,7 +94,7 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
                 className="slds-input__icon slds-icon-text-default slds-input__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                 />
               </svg>
               <input
@@ -252,7 +252,7 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
                 className="slds-icon slds-icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#document"
+                  href="/assets/icons/standard-sprite/svg/symbols.svg#document"
                 />
               </svg>
               
@@ -299,7 +299,7 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
                 className="slds-input__icon slds-icon-text-default slds-input__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                 />
               </svg>
               <input
@@ -457,7 +457,7 @@ exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
                 className="slds-icon slds-icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#document"
+                  href="/assets/icons/standard-sprite/svg/symbols.svg#document"
                 />
               </svg>
               
@@ -496,7 +496,7 @@ exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
                 className="slds-input__icon slds-icon-text-default slds-input__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                 />
               </svg>
               <input
@@ -637,7 +637,7 @@ exports[`DOM snapshots SLDSCard Empty 1`] = `
                 className="slds-icon slds-icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#document"
+                  href="/assets/icons/standard-sprite/svg/symbols.svg#document"
                 />
               </svg>
               
@@ -727,7 +727,7 @@ exports[`DOM snapshots SLDSCard Set height card 1`] = `
               className="slds-icon slds-icon_small"
             >
               <use
-                xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#document"
+                href="/assets/icons/standard-sprite/svg/symbols.svg#document"
               />
             </svg>
             
@@ -840,7 +840,7 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
                 className="slds-icon slds-icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#document"
+                  href="/assets/icons/standard-sprite/svg/symbols.svg#document"
                 />
               </svg>
               
@@ -879,7 +879,7 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
                 className="slds-input__icon slds-icon-text-default slds-input__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                 />
               </svg>
               <input

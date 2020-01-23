@@ -21,7 +21,7 @@ exports[`DOM snapshots SLDSButtonStateful Base 1`] = `
         className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#add"
         />
       </svg>
       Follow
@@ -34,7 +34,7 @@ exports[`DOM snapshots SLDSButtonStateful Base 1`] = `
         className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
         />
       </svg>
       Following
@@ -47,7 +47,7 @@ exports[`DOM snapshots SLDSButtonStateful Base 1`] = `
         className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#close"
         />
       </svg>
       Unfollow
@@ -77,7 +77,7 @@ exports[`DOM snapshots SLDSButtonStateful Disabled 1`] = `
         className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#add"
         />
       </svg>
       Follow
@@ -90,7 +90,7 @@ exports[`DOM snapshots SLDSButtonStateful Disabled 1`] = `
         className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
         />
       </svg>
       Following
@@ -103,7 +103,7 @@ exports[`DOM snapshots SLDSButtonStateful Disabled 1`] = `
         className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#close"
         />
       </svg>
       Unfollow
@@ -130,7 +130,7 @@ exports[`DOM snapshots SLDSButtonStateful Icon Button 1`] = `
       className="slds-button__icon slds-button__icon_stateful"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#like"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#like"
       />
     </svg>
     <span
@@ -166,7 +166,7 @@ exports[`DOM snapshots SLDSButtonStateful Icon Text Button 1`] = `
           className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#add"
           />
         </svg>
         Follow
@@ -179,7 +179,7 @@ exports[`DOM snapshots SLDSButtonStateful Icon Text Button 1`] = `
           className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#check"
           />
         </svg>
         Following
@@ -192,7 +192,7 @@ exports[`DOM snapshots SLDSButtonStateful Icon Text Button 1`] = `
           className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         Unfollow
@@ -225,7 +225,7 @@ exports[`DOM snapshots SLDSButtonStateful Icon Text Button 1`] = `
             className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#add"
             />
           </svg>
           Join
@@ -238,7 +238,7 @@ exports[`DOM snapshots SLDSButtonStateful Icon Text Button 1`] = `
             className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#check"
             />
           </svg>
           Member
@@ -251,7 +251,7 @@ exports[`DOM snapshots SLDSButtonStateful Icon Text Button 1`] = `
             className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           Leave

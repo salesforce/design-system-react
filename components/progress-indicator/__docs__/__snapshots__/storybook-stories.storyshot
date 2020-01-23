@@ -272,7 +272,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
@@ -311,7 +311,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
@@ -509,7 +509,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
@@ -550,7 +550,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
@@ -591,7 +591,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
@@ -632,7 +632,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
@@ -884,7 +884,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
@@ -923,7 +923,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
@@ -964,7 +964,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
@@ -1207,7 +1207,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
                     className="slds-button__icon slds-button__icon_left"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#download"
                     />
                   </svg>
                   Download
@@ -1364,7 +1364,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
@@ -1403,7 +1403,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#error"
                 />
               </svg>
               <span
@@ -1681,7 +1681,7 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               
@@ -1706,7 +1706,7 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               
@@ -1731,7 +1731,7 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               
@@ -1756,7 +1756,7 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               
@@ -1781,7 +1781,7 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#error"
                 />
               </svg>
               

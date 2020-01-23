@@ -17,7 +17,7 @@ exports[`DOM snapshots SLDSScopedNotification Base 1`] = `
           className="slds-icon slds-icon_small slds-icon-text-default"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
         <span
@@ -62,7 +62,7 @@ exports[`DOM snapshots SLDSScopedNotification Custom Icon 1`] = `
           className="slds-icon slds-icon_small slds-icon-text-warning"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
           />
         </svg>
         <span
@@ -98,7 +98,7 @@ exports[`DOM snapshots SLDSScopedNotification Dark 1`] = `
           className="slds-icon slds-icon_small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
         <span
@@ -142,7 +142,7 @@ exports[`DOM snapshots SLDSScopedNotification Light 1`] = `
           className="slds-icon slds-icon_small slds-icon-text-default"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
         <span

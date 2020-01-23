@@ -97,7 +97,7 @@ exports[`DOM snapshots SLDSBreadcrumb Base with overflow menu 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#threedots"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#threedots"
               />
             </svg>
             <span

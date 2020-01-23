@@ -35,7 +35,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
                 className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -69,7 +69,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
               <span
@@ -116,7 +116,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
                 className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -150,7 +150,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
               <span
@@ -197,7 +197,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
                 className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -231,7 +231,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
               <span
@@ -290,7 +290,7 @@ exports[`DOM snapshots SLDSAccordion Base Open 1`] = `
                 className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -338,7 +338,7 @@ exports[`DOM snapshots SLDSAccordion Base Open 1`] = `
                 className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -386,7 +386,7 @@ exports[`DOM snapshots SLDSAccordion Base Open 1`] = `
                 className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span

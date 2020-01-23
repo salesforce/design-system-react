@@ -27,7 +27,7 @@ exports[`DOM snapshots SLDSSearch Standard 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#search"
           />
         </svg>
         <span
