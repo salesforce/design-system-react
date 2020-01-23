@@ -74,7 +74,9 @@ const propTypes = {
 	 */
 	icon: PropTypes.node,
 	/**
-	 * Triggered by close button. _Tested with Mocha testing._
+	 * Triggered by close button. If duration prop is set, onRequestClose will also be called when the Toast closes.
+	 *
+	 * _Tested with Mocha testing._
 	 */
 	onRequestClose: PropTypes.func,
 	/**
