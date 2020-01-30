@@ -64,7 +64,6 @@ const AccordionPanel = ({
 	panelContentActions,
 	summary,
 	title,
-	onClickSummary,
 	onKeyDownSummary,
 	onTogglePanel,
 	refs,
@@ -80,17 +79,14 @@ const AccordionPanel = ({
 					<Button
 						aria-controls={`${id}-accordion-panel`}
 						aria-expanded={expanded}
-						buttonRef={refs.summaryButton}
+						buttonRef={refs?refs.summaryButton:null}
 						className="slds-button_reset slds-accordion__summary-action"
 						iconCategory="utility"
 						iconClassName="slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
 						iconName="switch"
 						id={`${id}-accordion-button`}
 						onKeyDown={onKeyDownSummary}
-						onClick={(e) => {
-							onClickSummary();
-							onTogglePanel(e);
-						}}
+						onClick={onTogglePanel}
 						variant="base"
 					>
 						<span className="slds-truncate" title={title || summary}>
