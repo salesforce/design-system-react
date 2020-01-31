@@ -7,10 +7,12 @@
  */
 
 const addSubheadings = ({ subheadings, filteredOptions }) => {
+	// Let's not mutate things we don't own.
+	const subheadingsCopy = [...subheadings];
 	const sortedOptions = { noSubHeaderType: [] };
 
 	// populate an object with subheader ID as the keys
-	subheadings.forEach((subH) => {
+	subheadingsCopy.forEach((subH) => {
 		if (subH.id) {
 			sortedOptions[subH.id] = [subH];
 		}
