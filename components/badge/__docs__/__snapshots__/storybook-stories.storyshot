@@ -21,7 +21,7 @@ exports[`DOM snapshots SLDSBadge Color Variants 1`] = `
           className="slds-icon slds-icon_xx-small slds-icon-text-default"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
           />
         </svg>
         
@@ -42,7 +42,7 @@ exports[`DOM snapshots SLDSBadge Color Variants 1`] = `
           className="slds-icon slds-icon_xx-small slds-icon-text-default"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
           />
         </svg>
         
@@ -63,7 +63,7 @@ exports[`DOM snapshots SLDSBadge Color Variants 1`] = `
           className="slds-icon slds-icon_xx-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
           />
         </svg>
         
@@ -115,7 +115,7 @@ exports[`DOM snapshots SLDSBadge w/ Icons 1`] = `
           className="slds-icon slds-icon_xx-small slds-icon-text-default"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
           />
         </svg>
         
@@ -137,7 +137,7 @@ exports[`DOM snapshots SLDSBadge w/ Icons 1`] = `
           className="slds-icon slds-icon_xx-small slds-icon-text-default"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
           />
         </svg>
         

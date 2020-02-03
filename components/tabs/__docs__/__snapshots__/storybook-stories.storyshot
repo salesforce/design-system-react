@@ -499,7 +499,7 @@ exports[`DOM snapshots SLDSTabs Custom Tab Contents 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#list"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#list"
                   />
                 </svg>
                 

@@ -52,7 +52,7 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -93,7 +93,7 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -124,7 +124,7 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -160,7 +160,7 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -191,7 +191,7 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -261,7 +261,7 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -324,7 +324,7 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item Disabled 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -408,7 +408,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                 className="slds-input__icon slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#search"
+                  href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#search"
                 />
               </svg>
             </div>
@@ -459,7 +459,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
+                            href="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -507,7 +507,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
+                            href="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -555,7 +555,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
+                            href="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -603,7 +603,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
+                            href="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -651,7 +651,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#opportunity"
+                            href="/assets/icons/standard-sprite/svg/symbols-rtl.svg#opportunity"
                           />
                         </svg>
                         <span
@@ -699,7 +699,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
+                            href="/assets/icons/standard-sprite/svg/symbols-rtl.svg#account"
                           />
                         </svg>
                         <span
@@ -747,7 +747,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                           className="slds-icon"
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#opportunity"
+                            href="/assets/icons/standard-sprite/svg/symbols-rtl.svg#opportunity"
                           />
                         </svg>
                         <span
@@ -835,7 +835,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -891,7 +891,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#info"
             />
           </svg>
           <span
@@ -941,7 +941,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
                 className="slds-input__icon slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                 />
               </svg>
             </div>
@@ -982,7 +982,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
                       className="slds-icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                       />
                     </svg>
                     <span
@@ -1013,7 +1013,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
                     }
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                     />
                   </svg>
                   <span
@@ -1049,7 +1049,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
                       className="slds-icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                       />
                     </svg>
                     <span
@@ -1080,7 +1080,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
                     }
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                     />
                   </svg>
                   <span
@@ -1151,7 +1151,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -1193,7 +1193,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
                     style={Object {}}
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -1224,7 +1224,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -1261,7 +1261,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
                     style={Object {}}
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -1292,7 +1292,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -1362,7 +1362,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -1404,7 +1404,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
                     style={Object {}}
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -1435,7 +1435,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -1472,7 +1472,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
                     style={Object {}}
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -1503,7 +1503,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -1575,7 +1575,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -1627,7 +1627,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                         style={Object {}}
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -1701,7 +1701,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                           }
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                            href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                           />
                         </svg>
                         <span
@@ -1770,7 +1770,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                         style={Object {}}
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -1844,7 +1844,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                           }
                         >
                           <use
-                            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                            href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                           />
                         </svg>
                         <span
@@ -1913,7 +1913,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                         style={Object {}}
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -1962,7 +1962,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                         style={Object {}}
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -2028,7 +2028,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     style={Object {}}
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -2059,7 +2059,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -2096,7 +2096,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     style={Object {}}
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -2127,7 +2127,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -2197,7 +2197,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Separator 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -2260,7 +2260,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Sub Headers 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -2323,7 +2323,7 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -2364,7 +2364,7 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -2395,7 +2395,7 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -2431,7 +2431,7 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -2462,7 +2462,7 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -2532,7 +2532,7 @@ exports[`DOM snapshots SLDSCombobox Base With Scroll 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -2573,7 +2573,7 @@ exports[`DOM snapshots SLDSCombobox Base With Scroll 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -2604,7 +2604,7 @@ exports[`DOM snapshots SLDSCombobox Base With Scroll 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -2640,7 +2640,7 @@ exports[`DOM snapshots SLDSCombobox Base With Scroll 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -2671,7 +2671,7 @@ exports[`DOM snapshots SLDSCombobox Base With Scroll 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -2753,7 +2753,7 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
                   className="slds-icon slds-icon_x-small slds-icon-text-default"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                   />
                 </svg>
               </span>
@@ -2820,7 +2820,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
                       className="slds-icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                       />
                     </svg>
                     <span
@@ -2851,7 +2851,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
                     }
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                     />
                   </svg>
                   <span
@@ -2887,7 +2887,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
                       className="slds-icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                       />
                     </svg>
                     <span
@@ -2918,7 +2918,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
                     }
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                     />
                   </svg>
                   <span
@@ -2964,7 +2964,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -3027,7 +3027,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection Loading 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -3112,7 +3112,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
                         className="slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                         />
                       </svg>
                     </span>
@@ -3167,7 +3167,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
                       className="slds-input__icon slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                       />
                     </svg>
                   </div>
@@ -3236,7 +3236,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -3285,7 +3285,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                         className="slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                         />
                       </svg>
                       <span
@@ -3322,7 +3322,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                         className="slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                         />
                       </svg>
                       <span
@@ -3362,7 +3362,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -3410,7 +3410,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -3458,7 +3458,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -3506,7 +3506,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -3552,7 +3552,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                         className="slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#add"
                         />
                       </svg>
                       <span
@@ -3631,7 +3631,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -3695,7 +3695,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -3758,7 +3758,7 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -3799,7 +3799,7 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -3830,7 +3830,7 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -3866,7 +3866,7 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -3897,7 +3897,7 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -3970,7 +3970,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
             </span>
@@ -4038,7 +4038,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Menu Item Disabled 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
             </span>
@@ -4130,7 +4130,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection - Right to Left (R
                   className="slds-icon slds-icon_x-small slds-icon-text-default"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
+                    href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
                   />
                 </svg>
               </span>
@@ -4199,7 +4199,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
             </span>
@@ -4267,7 +4267,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Custom Menu Item 1
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
             </span>
@@ -4335,7 +4335,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Disabled 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
             </span>
@@ -4406,7 +4406,7 @@ exports[`DOM snapshots SLDSCombobox Required Input in Error State 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -4481,7 +4481,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -4771,7 +4771,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Label Required 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -4846,7 +4846,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -4890,7 +4890,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -4938,7 +4938,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -5027,7 +5027,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -5150,7 +5150,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -5271,7 +5271,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -5312,7 +5312,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   <span
@@ -5343,7 +5343,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -5425,7 +5425,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
                   className="slds-icon slds-icon_x-small slds-icon-text-default"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                   />
                 </svg>
               </span>
@@ -5459,7 +5459,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -5568,7 +5568,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -5619,7 +5619,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -5667,7 +5667,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -5715,7 +5715,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -5763,7 +5763,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -5811,7 +5811,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -5923,7 +5923,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -5988,7 +5988,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
                       className="slds-icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                       />
                     </svg>
                     <span
@@ -6019,7 +6019,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
                     }
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                     />
                   </svg>
                   <span
@@ -6055,7 +6055,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
                       className="slds-icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                        href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                       />
                     </svg>
                     <span
@@ -6086,7 +6086,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
                     }
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                     />
                   </svg>
                   <span
@@ -6132,7 +6132,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -6214,7 +6214,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Entity Selection 1`] 
                       className="slds-input__icon slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                       />
                     </svg>
                   </div>
@@ -6268,7 +6268,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Entity Selection 1`] 
                       className="slds-input__icon slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                       />
                     </svg>
                   </div>
@@ -6337,7 +6337,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -6386,7 +6386,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                         className="slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                         />
                       </svg>
                       <span
@@ -6425,7 +6425,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -6473,7 +6473,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -6521,7 +6521,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                         className="slds-icon"
                       >
                         <use
-                          xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                          href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                         />
                       </svg>
                       <span
@@ -6567,7 +6567,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                         className="slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#add"
                         />
                       </svg>
                       <span
@@ -6646,7 +6646,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection 1`] = `
               className="slds-input__icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -6694,7 +6694,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection Selected 1`
                 className="slds-icon"
               >
                 <use
-                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                  href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                 />
               </svg>
               <span
@@ -6733,7 +6733,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection Selected 1`
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                 />
               </svg>
               <span
@@ -6805,7 +6805,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
             </span>
@@ -6872,7 +6872,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Multipl
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
             </span>
@@ -6924,7 +6924,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Multipl
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -6970,7 +6970,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Multipl
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -7043,7 +7043,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Single 
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
             </span>
@@ -7111,7 +7111,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
             </span>
@@ -7180,7 +7180,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
             </span>
@@ -7223,7 +7223,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -7246,7 +7246,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                             className="slds-icon slds-icon_x-small"
                           >
                             <use
-                              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                              href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                             />
                           </svg>
                           <span
@@ -7291,7 +7291,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -7314,7 +7314,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                             className="slds-icon slds-icon_x-small"
                           >
                             <use
-                              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                              href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                             />
                           </svg>
                           <span
@@ -7359,7 +7359,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -7382,7 +7382,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                             className="slds-icon slds-icon_x-small"
                           >
                             <use
-                              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                              href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                             />
                           </svg>
                           <span
@@ -7427,7 +7427,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -7450,7 +7450,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                             className="slds-icon slds-icon_x-small"
                           >
                             <use
-                              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                              href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                             />
                           </svg>
                           <span
@@ -7495,7 +7495,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -7518,7 +7518,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                             className="slds-icon slds-icon_x-small"
                           >
                             <use
-                              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                              href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                             />
                           </svg>
                           <span
@@ -7563,7 +7563,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -7586,7 +7586,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                             className="slds-icon slds-icon_x-small"
                           >
                             <use
-                              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                              href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                             />
                           </svg>
                           <span
@@ -7631,7 +7631,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -7654,7 +7654,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                             className="slds-icon slds-icon_x-small"
                           >
                             <use
-                              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                              href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                             />
                           </svg>
                           <span
@@ -7699,7 +7699,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -7722,7 +7722,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
                             className="slds-icon slds-icon_x-small"
                           >
                             <use
-                              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                              href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                             />
                           </svg>
                           <span
@@ -7812,7 +7812,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Disabled 
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
             </span>
@@ -7880,7 +7880,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
             </span>
@@ -7949,7 +7949,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
             </span>
@@ -7992,7 +7992,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -8036,7 +8036,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -8075,7 +8075,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -8114,7 +8114,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -8153,7 +8153,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -8192,7 +8192,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -8231,7 +8231,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       
@@ -8270,7 +8270,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                         className="slds-listbox__icon-selected slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                         />
                       </svg>
                       

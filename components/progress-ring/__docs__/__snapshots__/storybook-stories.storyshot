@@ -191,7 +191,7 @@ exports[`DOM snapshots SLDSProgressRing Custom Icon 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#lock"
               />
             </svg>
             <span
@@ -240,7 +240,7 @@ exports[`DOM snapshots SLDSProgressRing Custom Icon 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#lock"
               />
             </svg>
             <span
@@ -368,7 +368,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
               />
             </svg>
             <span
@@ -416,7 +416,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#lock"
               />
             </svg>
             <span
@@ -535,7 +535,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#check"
               />
             </svg>
             
@@ -684,7 +684,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
               />
             </svg>
             
@@ -833,7 +833,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#error"
               />
             </svg>
             
@@ -1121,7 +1121,7 @@ exports[`DOM snapshots SLDSProgressRing Snapshot Test Examples 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#error"
               />
             </svg>
             
@@ -1326,7 +1326,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Complete 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#check"
               />
             </svg>
             
@@ -1420,7 +1420,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Expired 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#error"
               />
             </svg>
             
@@ -1467,7 +1467,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Expired 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#error"
               />
             </svg>
             
@@ -1592,7 +1592,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Warning 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
               />
             </svg>
             
@@ -1639,7 +1639,7 @@ exports[`DOM snapshots SLDSProgressRing Theme: Warning 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
               />
             </svg>
             

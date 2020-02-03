@@ -64,7 +64,7 @@ exports[`DOM snapshots SLDSFilter AssistiveTextFilter 1`] = `
             className="slds-button__icon slds-button__icon_hint"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -145,7 +145,7 @@ exports[`DOM snapshots SLDSFilter ErrorFilter 1`] = `
               className="slds-button__icon slds-button__icon_hint"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#close"
               />
             </svg>
             <span
@@ -231,7 +231,7 @@ exports[`DOM snapshots SLDSFilter Filter 1`] = `
             className="slds-button__icon slds-button__icon_hint"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -310,7 +310,7 @@ exports[`DOM snapshots SLDSFilter Filter Align Right 1`] = `
             className="slds-button__icon slds-button__icon_hint"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -427,7 +427,7 @@ exports[`DOM snapshots SLDSFilter New Filter 1`] = `
             className="slds-button__icon slds-button__icon_hint"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span

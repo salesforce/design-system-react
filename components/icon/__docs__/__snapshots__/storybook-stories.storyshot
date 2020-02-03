@@ -43,7 +43,7 @@ exports[`DOM snapshots SLDSIcon Base: Standard (custom styles) 1`] = `
       }
     >
       <use
-        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+        href="/assets/icons/standard-sprite/svg/symbols.svg#account"
       />
     </svg>
     <span
@@ -67,7 +67,7 @@ exports[`DOM snapshots SLDSIcon Category: Action 1`] = `
       className="slds-icon slds-icon_small"
     >
       <use
-        xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#description"
+        href="/assets/icons/action-sprite/svg/symbols.svg#description"
       />
     </svg>
     <span
@@ -92,7 +92,7 @@ exports[`DOM snapshots SLDSIcon Category: Custom 1`] = `
       className="slds-icon"
     >
       <use
-        xlinkHref="/assets/icons/custom-sprite/svg/symbols.svg#custom5"
+        href="/assets/icons/custom-sprite/svg/symbols.svg#custom5"
       />
     </svg>
     <span
@@ -116,7 +116,7 @@ exports[`DOM snapshots SLDSIcon Category: Doctype 1`] = `
       className="slds-icon"
     >
       <use
-        xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#xml"
+        href="/assets/icons/doctype-sprite/svg/symbols.svg#xml"
       />
     </svg>
     <span
@@ -140,7 +140,7 @@ exports[`DOM snapshots SLDSIcon Category: External Path 1`] = `
       className="slds-icon slds-icon-text-default"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
       />
     </svg>
     <span
@@ -168,7 +168,7 @@ exports[`DOM snapshots SLDSIcon Category: Standard - Right to Left (RTL) 1`] = `
         className="slds-icon"
       >
         <use
-          xlinkHref="/assets/icons/standard-sprite/svg/symbols-rtl.svg#branch_merge"
+          href="/assets/icons/standard-sprite/svg/symbols-rtl.svg#branch_merge"
         />
       </svg>
       <span
@@ -194,7 +194,7 @@ exports[`DOM snapshots SLDSIcon Category: Standard 1`] = `
       className="slds-icon"
     >
       <use
-        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#branch_merge"
+        href="/assets/icons/standard-sprite/svg/symbols.svg#branch_merge"
       />
     </svg>
     <span
@@ -218,7 +218,7 @@ exports[`DOM snapshots SLDSIcon Category: Utility 1`] = `
       className="slds-icon slds-icon_small slds-icon-text-default"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
       />
     </svg>
     <span
@@ -250,7 +250,7 @@ exports[`DOM snapshots SLDSIcon Color: Base 1`] = `
         className="slds-icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
         />
       </svg>
       <span
@@ -275,7 +275,7 @@ exports[`DOM snapshots SLDSIcon Color: Default 1`] = `
       className="slds-icon slds-icon-text-default"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
       />
     </svg>
     <span
@@ -299,7 +299,7 @@ exports[`DOM snapshots SLDSIcon Color: Error 1`] = `
       className="slds-icon slds-icon-text-error"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
       />
     </svg>
     <span
@@ -323,7 +323,7 @@ exports[`DOM snapshots SLDSIcon Color: Light 1`] = `
       className="slds-icon slds-icon-text-light"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
       />
     </svg>
     <span
@@ -347,7 +347,7 @@ exports[`DOM snapshots SLDSIcon Color: Warning 1`] = `
       className="slds-icon slds-icon-text-warning"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
       />
     </svg>
     <span
@@ -377,7 +377,7 @@ exports[`DOM snapshots SLDSIcon Docs site Categories 1`] = `
           className="slds-icon slds-icon_small"
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#account"
           />
         </svg>
         <span
@@ -396,7 +396,7 @@ exports[`DOM snapshots SLDSIcon Docs site Categories 1`] = `
           className="slds-icon slds-icon_small slds-icon-text-default"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
           />
         </svg>
         <span
@@ -417,7 +417,7 @@ exports[`DOM snapshots SLDSIcon Docs site Categories 1`] = `
           className="slds-icon slds-icon_small"
         >
           <use
-            xlinkHref="/assets/icons/action-sprite/svg/symbols.svg#description"
+            href="/assets/icons/action-sprite/svg/symbols.svg#description"
           />
         </svg>
         <span
@@ -438,7 +438,7 @@ exports[`DOM snapshots SLDSIcon Docs site Categories 1`] = `
           className="slds-icon slds-icon_small"
         >
           <use
-            xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#xml"
+            href="/assets/icons/doctype-sprite/svg/symbols.svg#xml"
           />
         </svg>
         <span
@@ -459,7 +459,7 @@ exports[`DOM snapshots SLDSIcon Docs site Categories 1`] = `
           className="slds-icon slds-icon_small"
         >
           <use
-            xlinkHref="/assets/icons/custom-sprite/svg/symbols.svg#custom5"
+            href="/assets/icons/custom-sprite/svg/symbols.svg#custom5"
           />
         </svg>
         <span
@@ -491,7 +491,7 @@ exports[`DOM snapshots SLDSIcon Docs site Colors 1`] = `
           className="slds-icon"
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#lead"
           />
         </svg>
         <span
@@ -510,7 +510,7 @@ exports[`DOM snapshots SLDSIcon Docs site Colors 1`] = `
           className="slds-icon slds-icon-text-default"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#lock"
           />
         </svg>
         <span
@@ -529,7 +529,7 @@ exports[`DOM snapshots SLDSIcon Docs site Colors 1`] = `
           className="slds-icon slds-icon-text-light"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#lock"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#lock"
           />
         </svg>
         <span
@@ -548,7 +548,7 @@ exports[`DOM snapshots SLDSIcon Docs site Colors 1`] = `
           className="slds-icon slds-icon-text-warning"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
           />
         </svg>
         <span
@@ -567,7 +567,7 @@ exports[`DOM snapshots SLDSIcon Docs site Colors 1`] = `
           className="slds-icon slds-icon-text-error"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
           />
         </svg>
         
@@ -593,7 +593,7 @@ exports[`DOM snapshots SLDSIcon Docs site Sizes 1`] = `
           className="slds-icon slds-icon_x-small slds-icon-text-default"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
           />
         </svg>
         <span
@@ -614,7 +614,7 @@ exports[`DOM snapshots SLDSIcon Docs site Sizes 1`] = `
           className="slds-icon slds-icon_small"
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#case"
           />
         </svg>
         <span
@@ -635,7 +635,7 @@ exports[`DOM snapshots SLDSIcon Docs site Sizes 1`] = `
           className="slds-icon"
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#case"
           />
         </svg>
         <span
@@ -656,7 +656,7 @@ exports[`DOM snapshots SLDSIcon Docs site Sizes 1`] = `
           className="slds-icon slds-icon_large"
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#case"
           />
         </svg>
         <span
@@ -693,7 +693,7 @@ exports[`DOM snapshots SLDSIcon Product Themes 1`] = `
           }
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#account"
           />
         </svg>
         <span
@@ -719,7 +719,7 @@ exports[`DOM snapshots SLDSIcon Product Themes 1`] = `
           }
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#address"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#address"
           />
         </svg>
         <span
@@ -745,7 +745,7 @@ exports[`DOM snapshots SLDSIcon Product Themes 1`] = `
           }
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#answer_best"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#answer_best"
           />
         </svg>
         <span
@@ -771,7 +771,7 @@ exports[`DOM snapshots SLDSIcon Product Themes 1`] = `
           }
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#canvas"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#canvas"
           />
         </svg>
         <span
@@ -797,7 +797,7 @@ exports[`DOM snapshots SLDSIcon Product Themes 1`] = `
           }
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#choice"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#choice"
           />
         </svg>
         <span
@@ -823,7 +823,7 @@ exports[`DOM snapshots SLDSIcon Product Themes 1`] = `
           }
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#choice"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#choice"
           />
         </svg>
         <span
@@ -849,7 +849,7 @@ exports[`DOM snapshots SLDSIcon Product Themes 1`] = `
           }
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#choice"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#choice"
           />
         </svg>
         <span
@@ -875,7 +875,7 @@ exports[`DOM snapshots SLDSIcon Product Themes 1`] = `
           }
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#choice"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#choice"
           />
         </svg>
         <span
@@ -901,7 +901,7 @@ exports[`DOM snapshots SLDSIcon Size: Large 1`] = `
       className="slds-icon slds-icon_large"
     >
       <use
-        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+        href="/assets/icons/standard-sprite/svg/symbols.svg#case"
       />
     </svg>
     <span
@@ -925,7 +925,7 @@ exports[`DOM snapshots SLDSIcon Size: Medium (default) 1`] = `
       className="slds-icon"
     >
       <use
-        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+        href="/assets/icons/standard-sprite/svg/symbols.svg#case"
       />
     </svg>
     <span
@@ -949,7 +949,7 @@ exports[`DOM snapshots SLDSIcon Size: Small 1`] = `
       className="slds-icon slds-icon_small"
     >
       <use
-        xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+        href="/assets/icons/standard-sprite/svg/symbols.svg#case"
       />
     </svg>
     <span
@@ -971,7 +971,7 @@ exports[`DOM snapshots SLDSIcon Size: X-Small 1`] = `
       className="slds-icon slds-icon_x-small slds-icon-text-default"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
       />
     </svg>
     <span

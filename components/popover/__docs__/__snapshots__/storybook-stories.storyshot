@@ -421,7 +421,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
             />
           </svg>
           <span
@@ -463,7 +463,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
             />
           </svg>
           <span
@@ -505,7 +505,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
             />
           </svg>
           <span
@@ -547,7 +547,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
             />
           </svg>
           <span
@@ -589,7 +589,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
             />
           </svg>
           <span
@@ -631,7 +631,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
             />
           </svg>
           <span
@@ -673,7 +673,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
             />
           </svg>
           <span
@@ -715,7 +715,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
             />
           </svg>
           <span
@@ -757,7 +757,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
             />
           </svg>
           <span
@@ -799,7 +799,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
             />
           </svg>
           <span
@@ -841,7 +841,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
             />
           </svg>
           <span
@@ -883,7 +883,7 @@ exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
             />
           </svg>
           <span
@@ -1039,7 +1039,7 @@ exports[`DOM snapshots SLDSPopover Custom Target - Open 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -1194,7 +1194,7 @@ exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
           className="slds-button__icon slds-button__icon slds-button__icon_hint"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
           />
         </svg>
         <span
@@ -1232,7 +1232,7 @@ exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -1380,7 +1380,7 @@ exports[`DOM snapshots SLDSPopover Edit Dialog 1`] = `
           className="slds-button__icon slds-button__icon slds-button__icon_hint"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
           />
         </svg>
         <span
@@ -1454,7 +1454,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span
@@ -1478,7 +1478,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
                 className="slds-icon slds-icon_x-small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#error"
                 />
               </svg>
               
@@ -1648,7 +1648,7 @@ exports[`DOM snapshots SLDSPopover Feature - Open 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span
@@ -1673,7 +1673,7 @@ exports[`DOM snapshots SLDSPopover Feature - Open 1`] = `
                 className="slds-icon slds-icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#description"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#description"
                 />
               </svg>
               
@@ -1862,7 +1862,7 @@ exports[`DOM snapshots SLDSPopover Styling (dev-only) 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -1953,7 +1953,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough - Open 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span
@@ -2110,7 +2110,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough Action - Open 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span
@@ -2135,7 +2135,7 @@ exports[`DOM snapshots SLDSPopover Walkthrough Action - Open 1`] = `
                 className="slds-icon slds-icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#touch_action"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#touch_action"
                 />
               </svg>
               
@@ -2261,7 +2261,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span
@@ -2285,7 +2285,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
                 className="slds-icon slds-icon_x-small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
                 />
               </svg>
               

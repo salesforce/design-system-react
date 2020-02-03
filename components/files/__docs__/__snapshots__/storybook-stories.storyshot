@@ -44,7 +44,7 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -100,7 +100,7 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -156,7 +156,7 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -224,7 +224,7 @@ exports[`DOM snapshots SLDSFiles Default 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -361,7 +361,7 @@ exports[`DOM snapshots SLDSFiles Loading 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#image"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#image"
                   />
                 </svg>
                 
@@ -449,7 +449,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                     className="slds-icon slds-icon_xx-small"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#download"
                     />
                   </svg>
                   <span
@@ -482,7 +482,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                     />
                   </svg>
                   <span
@@ -533,7 +533,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -581,7 +581,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                   className="slds-icon slds-icon_xx-small slds-icon-text-default"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#download"
                   />
                 </svg>
                 <span
@@ -614,7 +614,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                   />
                 </svg>
                 <span
@@ -725,7 +725,7 @@ exports[`DOM snapshots SLDSFiles w/ External Icon 1`] = `
                   className="slds-icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -746,7 +746,7 @@ exports[`DOM snapshots SLDSFiles w/ External Icon 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -775,7 +775,7 @@ exports[`DOM snapshots SLDSFiles w/ External Icon 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#salesforce1"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#salesforce1"
               />
             </svg>
             
@@ -824,7 +824,7 @@ exports[`DOM snapshots SLDSFiles w/o Image 1`] = `
                   className="slds-icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -845,7 +845,7 @@ exports[`DOM snapshots SLDSFiles w/o Image 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 

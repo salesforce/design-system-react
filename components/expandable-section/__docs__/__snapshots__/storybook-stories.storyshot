@@ -23,7 +23,7 @@ exports[`DOM snapshots SLDSExpandableSection Controlled 1`] = `
           className="slds-button__icon slds-section__title-action-icon slds-button__icon_left"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
           />
         </svg>
         <span
@@ -75,7 +75,7 @@ exports[`DOM snapshots SLDSExpandableSection Default 1`] = `
           className="slds-button__icon slds-section__title-action-icon slds-button__icon_left"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
           />
         </svg>
         <span

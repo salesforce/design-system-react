@@ -63,7 +63,7 @@ exports[`DOM snapshots SLDSPillContainer Bare Pill Container 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -109,7 +109,7 @@ exports[`DOM snapshots SLDSPillContainer Bare Pill Container 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -190,7 +190,7 @@ exports[`DOM snapshots SLDSPillContainer Base Pill Container 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -236,7 +236,7 @@ exports[`DOM snapshots SLDSPillContainer Base Pill Container 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -333,7 +333,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Avatars 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -395,7 +395,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Avatars 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -467,7 +467,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   
@@ -494,7 +494,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -531,7 +531,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#case"
                     />
                   </svg>
                   
@@ -558,7 +558,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -594,7 +594,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                     className="slds-icon slds-icon-text-default"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#retweet"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#retweet"
                     />
                   </svg>
                   
@@ -621,7 +621,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -658,7 +658,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#solution"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#solution"
                     />
                   </svg>
                   
@@ -685,7 +685,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -722,7 +722,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#custom_notification"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#custom_notification"
                     />
                   </svg>
                   
@@ -749,7 +749,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -786,7 +786,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#email"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#email"
                     />
                   </svg>
                   
@@ -813,7 +813,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -850,7 +850,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#endorsement"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#endorsement"
                     />
                   </svg>
                   
@@ -877,7 +877,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -914,7 +914,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#recent"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#recent"
                     />
                   </svg>
                   
@@ -941,7 +941,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span
@@ -978,7 +978,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                     className="slds-icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/custom-sprite/svg/symbols.svg#custom31"
+                      href="/assets/icons/custom-sprite/svg/symbols.svg#custom31"
                     />
                   </svg>
                   
@@ -1005,7 +1005,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
                   }
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 <span

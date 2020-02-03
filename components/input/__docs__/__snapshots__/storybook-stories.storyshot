@@ -102,7 +102,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input__icon slds-icon-text-default slds-input__icon_left"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
             <input
@@ -146,7 +146,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                 />
               </svg>
               <span
@@ -197,7 +197,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input__icon slds-icon-text-default slds-input__icon_right"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -241,7 +241,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
                 />
               </svg>
               <span
@@ -278,7 +278,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input__icon slds-icon-text-default slds-input__icon_left"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
             <input
@@ -293,7 +293,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input__icon slds-icon-text-default slds-input__icon_right"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
               />
             </svg>
           </div>
@@ -330,7 +330,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                 />
               </svg>
               <span
@@ -357,7 +357,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
                 />
               </svg>
               <span
@@ -394,7 +394,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input__icon slds-icon-text-default slds-input__icon_left"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
             <input
@@ -415,7 +415,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
                 />
               </svg>
               <span
@@ -452,7 +452,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input__icon slds-icon-text-default slds-input__icon_left"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
             <input
@@ -500,7 +500,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
                   />
                 </svg>
                 <span
@@ -557,7 +557,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
               />
             </svg>
             <span
@@ -588,7 +588,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
               />
             </svg>
             <span
@@ -634,7 +634,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
               />
             </svg>
             <span
@@ -666,7 +666,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
               />
             </svg>
             <span
@@ -712,7 +712,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
               />
             </svg>
             <span
@@ -747,7 +747,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
               />
             </svg>
             <span
@@ -793,7 +793,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
               />
             </svg>
             <span
@@ -826,7 +826,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
               />
             </svg>
             <span
@@ -872,7 +872,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
               />
             </svg>
             <span
@@ -905,7 +905,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
               />
             </svg>
             <span
@@ -1252,7 +1252,7 @@ exports[`DOM snapshots SLDSInput Docs site Error 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#error"
               />
             </svg>
             <span
@@ -1315,7 +1315,7 @@ exports[`DOM snapshots SLDSInput Docs site Icons 1`] = `
             className="slds-input__icon slds-icon-text-default slds-input__icon_left"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#search"
             />
           </svg>
           <input
@@ -1354,7 +1354,7 @@ exports[`DOM snapshots SLDSInput Docs site Icons 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
             <span
@@ -1381,7 +1381,7 @@ exports[`DOM snapshots SLDSInput Docs site Icons 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
               />
             </svg>
             <span
@@ -1426,7 +1426,7 @@ exports[`DOM snapshots SLDSInput Docs site Icons 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
               />
             </svg>
             <span
@@ -1497,7 +1497,7 @@ exports[`DOM snapshots SLDSInput Docs site Icons 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
                 />
               </svg>
               <span
@@ -1632,7 +1632,7 @@ exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#info"
             />
           </svg>
           <span
@@ -1704,7 +1704,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#info"
             />
           </svg>
           <span

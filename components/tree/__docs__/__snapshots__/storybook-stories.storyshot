@@ -48,7 +48,7 @@ exports[`DOM snapshots SLDSTree Assistive Heading 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
             </button>
@@ -93,7 +93,7 @@ exports[`DOM snapshots SLDSTree Assistive Heading 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -149,7 +149,7 @@ exports[`DOM snapshots SLDSTree Assistive Heading 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -205,7 +205,7 @@ exports[`DOM snapshots SLDSTree Assistive Heading 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -286,7 +286,7 @@ exports[`DOM snapshots SLDSTree Base 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
             </button>
@@ -331,7 +331,7 @@ exports[`DOM snapshots SLDSTree Base 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -387,7 +387,7 @@ exports[`DOM snapshots SLDSTree Base 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -443,7 +443,7 @@ exports[`DOM snapshots SLDSTree Base 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -524,7 +524,7 @@ exports[`DOM snapshots SLDSTree Base with stencil 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
             </button>
@@ -569,7 +569,7 @@ exports[`DOM snapshots SLDSTree Base with stencil 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -625,7 +625,7 @@ exports[`DOM snapshots SLDSTree Base with stencil 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -681,7 +681,7 @@ exports[`DOM snapshots SLDSTree Base with stencil 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -737,7 +737,7 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
             className="slds-input__icon slds-icon-text-default slds-input__icon_left"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#search"
             />
           </svg>
           <input
@@ -795,7 +795,7 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
             </button>
@@ -844,7 +844,7 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -910,7 +910,7 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -970,7 +970,7 @@ exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -1055,7 +1055,7 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
             </button>
@@ -1100,7 +1100,7 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -1155,7 +1155,7 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                     className="slds-button__icon slds-button__icon_small"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                     />
                   </svg>
                   <span
@@ -1208,7 +1208,7 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                         className="slds-button__icon slds-button__icon_small"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                         />
                       </svg>
                     </button>
@@ -1251,7 +1251,7 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                         className="slds-button__icon slds-button__icon_small"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                         />
                       </svg>
                     </button>
@@ -1294,7 +1294,7 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                         className="slds-button__icon slds-button__icon_small"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                         />
                       </svg>
                     </button>
@@ -1341,7 +1341,7 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                     className="slds-button__icon slds-button__icon_small"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                     />
                   </svg>
                   <span
@@ -1399,7 +1399,7 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -1455,7 +1455,7 @@ exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -1536,7 +1536,7 @@ exports[`DOM snapshots SLDSTree Multiple Selection 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
             </button>
@@ -1581,7 +1581,7 @@ exports[`DOM snapshots SLDSTree Multiple Selection 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -1637,7 +1637,7 @@ exports[`DOM snapshots SLDSTree Multiple Selection 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -1693,7 +1693,7 @@ exports[`DOM snapshots SLDSTree Multiple Selection 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -1774,7 +1774,7 @@ exports[`DOM snapshots SLDSTree No Branch Select 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
             </button>
@@ -1819,7 +1819,7 @@ exports[`DOM snapshots SLDSTree No Branch Select 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -1875,7 +1875,7 @@ exports[`DOM snapshots SLDSTree No Branch Select 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span
@@ -1931,7 +1931,7 @@ exports[`DOM snapshots SLDSTree No Branch Select 1`] = `
                 className="slds-button__icon slds-button__icon_small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
                 />
               </svg>
               <span

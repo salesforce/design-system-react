@@ -45,7 +45,7 @@ exports[`DOM snapshots SLDSToast Custom Class Names 1`] = `
           className="slds-icon slds-icon_small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
         
@@ -77,7 +77,7 @@ exports[`DOM snapshots SLDSToast Custom Class Names 1`] = `
           className="slds-button__icon slds-button__icon_large"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span
@@ -121,7 +121,7 @@ exports[`DOM snapshots SLDSToast Custom Style 1`] = `
           className="slds-icon slds-icon_small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
         
@@ -153,7 +153,7 @@ exports[`DOM snapshots SLDSToast Custom Style 1`] = `
           className="slds-button__icon slds-button__icon_large"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span
@@ -193,7 +193,7 @@ exports[`DOM snapshots SLDSToast Duration Toast 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#info"
             />
           </svg>
           
@@ -226,7 +226,7 @@ exports[`DOM snapshots SLDSToast Duration Toast 1`] = `
             className="slds-button__icon slds-button__icon_large"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -274,7 +274,7 @@ exports[`DOM snapshots SLDSToast Error 1`] = `
           className="slds-icon slds-icon_small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#error"
           />
         </svg>
         
@@ -301,7 +301,7 @@ exports[`DOM snapshots SLDSToast Error 1`] = `
           className="slds-button__icon slds-button__icon_large"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span
@@ -340,7 +340,7 @@ exports[`DOM snapshots SLDSToast Error With Details 1`] = `
           className="slds-icon slds-icon_small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#error"
           />
         </svg>
         
@@ -370,7 +370,7 @@ exports[`DOM snapshots SLDSToast Error With Details 1`] = `
           className="slds-button__icon slds-button__icon_large"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span
@@ -409,7 +409,7 @@ exports[`DOM snapshots SLDSToast Info 1`] = `
           className="slds-icon slds-icon_small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
         
@@ -442,7 +442,7 @@ exports[`DOM snapshots SLDSToast Info 1`] = `
           className="slds-button__icon slds-button__icon_large"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span
@@ -481,7 +481,7 @@ exports[`DOM snapshots SLDSToast Success 1`] = `
           className="slds-icon slds-icon_small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#success"
           />
         </svg>
         
@@ -514,7 +514,7 @@ exports[`DOM snapshots SLDSToast Success 1`] = `
           className="slds-button__icon slds-button__icon_large"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span
@@ -553,7 +553,7 @@ exports[`DOM snapshots SLDSToast Warning 1`] = `
           className="slds-icon slds-icon_small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
           />
         </svg>
         
@@ -580,7 +580,7 @@ exports[`DOM snapshots SLDSToast Warning 1`] = `
           className="slds-button__icon slds-button__icon_large"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span

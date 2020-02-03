@@ -109,9 +109,7 @@ describe('SLDSSplitView - Listbox header', () => {
 		describe('direction', () => {
 			it('should have a sort direction down icon', () => {
 				expect(
-					component
-						.find('.slds-split-view__list-header svg > use')
-						.prop('xlinkHref')
+					component.find('.slds-split-view__list-header svg > use').prop('href')
 				).to.have.string('arrowdown');
 			});
 
@@ -128,9 +126,7 @@ describe('SLDSSplitView - Listbox header', () => {
 				component.setProps({ sortDirection: SORT_OPTIONS.UP });
 
 				expect(
-					component
-						.find('.slds-split-view__list-header svg > use')
-						.prop('xlinkHref')
+					component.find('.slds-split-view__list-header svg > use').prop('href')
 				).to.have.string('arrowup');
 			});
 

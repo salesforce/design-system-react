@@ -56,7 +56,7 @@ exports[`DOM snapshots SLDSColorPicker Color Picker Disabled 1`] = `
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
         </button>
@@ -139,7 +139,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
         </button>
@@ -1454,7 +1454,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Only 1`] = `
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
         </button>
@@ -1536,7 +1536,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Tab Selected 1`] = `
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
         </button>
@@ -1618,7 +1618,7 @@ exports[`DOM snapshots SLDSColorPicker Custom Validator 1`] = `
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
         </button>
@@ -1703,7 +1703,7 @@ exports[`DOM snapshots SLDSColorPicker Default - Right to Left (RTL) 1`] = `
               className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
+                href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
               />
             </svg>
           </button>
@@ -1786,7 +1786,7 @@ exports[`DOM snapshots SLDSColorPicker Default 1`] = `
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
         </button>
@@ -1868,7 +1868,7 @@ exports[`DOM snapshots SLDSColorPicker Doc site Default 1`] = `
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
         </button>
@@ -1949,7 +1949,7 @@ exports[`DOM snapshots SLDSColorPicker Hidden Input 1`] = `
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
         </button>
@@ -2015,7 +2015,7 @@ exports[`DOM snapshots SLDSColorPicker Outer Input in Error State 1`] = `
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
         </button>
@@ -2102,7 +2102,7 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors 1`] = `
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
         </button>
@@ -2183,7 +2183,7 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors Only 1`] = `
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
         </button>
@@ -2265,7 +2265,7 @@ exports[`DOM snapshots SLDSColorPicker Swatch Only 1`] = `
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
         </button>
@@ -2347,7 +2347,7 @@ exports[`DOM snapshots SLDSColorPicker Working Color Input in Error State 1`] = 
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
             />
           </svg>
         </button>

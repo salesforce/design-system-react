@@ -44,7 +44,7 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
             }
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -90,7 +90,7 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
             }
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -122,7 +122,7 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
               className="slds-icon"
             >
               <use
-                xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                href="/assets/icons/standard-sprite/svg/symbols.svg#account"
               />
             </svg>
             
@@ -155,7 +155,7 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
             }
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -218,7 +218,7 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
             }
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -249,7 +249,7 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
               className="slds-icon-text-error slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
               />
             </svg>
             
@@ -282,7 +282,7 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
             }
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -324,7 +324,7 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
             }
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -367,7 +367,7 @@ exports[`DOM snapshots SLDSPill Icon, Avatar, Error 1`] = `
               className="slds-icon"
             >
               <use
-                xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                href="/assets/icons/standard-sprite/svg/symbols.svg#account"
               />
             </svg>
             
@@ -400,7 +400,7 @@ exports[`DOM snapshots SLDSPill Icon, Avatar, Error 1`] = `
             }
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -463,7 +463,7 @@ exports[`DOM snapshots SLDSPill Icon, Avatar, Error 1`] = `
             }
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -494,7 +494,7 @@ exports[`DOM snapshots SLDSPill Icon, Avatar, Error 1`] = `
               className="slds-icon-text-error slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
               />
             </svg>
             
@@ -527,7 +527,7 @@ exports[`DOM snapshots SLDSPill Icon, Avatar, Error 1`] = `
             }
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -585,7 +585,7 @@ exports[`DOM snapshots SLDSPill Linked, Unlinked, Truncated 1`] = `
             }
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -631,7 +631,7 @@ exports[`DOM snapshots SLDSPill Linked, Unlinked, Truncated 1`] = `
             }
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
             />
           </svg>
           <span
@@ -689,7 +689,7 @@ exports[`DOM snapshots SLDSPill Linked, Unlinked, Truncated 1`] = `
                 }
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                 />
               </svg>
               <span

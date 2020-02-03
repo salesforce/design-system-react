@@ -77,7 +77,7 @@ const UtilityIcon = (
 		<Svg data={inlineData} name={name} {...rest} />
 	) : (
 		<svg key={`${name}_${category}`} {...rest}>
-			<use xlinkHref={modifiedPath} />
+			<use href={modifiedPath} />
 		</svg>
 	);
 };
