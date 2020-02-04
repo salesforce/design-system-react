@@ -1577,7 +1577,15 @@ class Combobox extends React.Component {
 								role: 'none',
 							}}
 							iconRight={
-								<InputIcon category="utility" name="down" variant="combobox" />
+								<InputIcon
+									category="utility"
+									name="down"
+									variant="combobox"
+									onClick={() => {
+										this.requestOpenMenu();
+									}}
+									type="button"
+								/>
 							}
 							id={this.getId()}
 							onFocus={this.handleInputFocus}
@@ -1691,7 +1699,15 @@ class Combobox extends React.Component {
 							}}
 							disabled={this.props.singleInputDisabled}
 							iconRight={
-								<InputIcon category="utility" name="down" variant="combobox" />
+								<InputIcon
+									category="utility"
+									name="down"
+									variant="combobox"
+									onClick={() => {
+										this.requestOpenMenu();
+									}}
+									type="button"
+								/>
 							}
 							id={this.getId()}
 							onFocus={this.handleInputFocus}
