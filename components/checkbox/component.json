@@ -1,0 +1,30 @@
+{
+	"component": "checkbox",
+	"status": "prod",
+	"display-name": "Checkboxes",
+	"classKey": "Checkbox",
+	"last-accessibility-review": {
+		"date-iso-8601": "2018/01/18",
+		"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+	},
+	"SLDS-component-path": "/components/checkbox",
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "Error State",
+			"path": "/__examples__/error.jsx"
+		},
+		{
+			"heading": "Toggle",
+			"path": "/__examples__/toggle.jsx"
+		},
+		{
+			"heading": "Grouped with Tri-State",
+			"path": "/__examples__/grouped-with-tristate.jsx"
+		}
+	],
+	"url-slug": "checkboxes"
+}
