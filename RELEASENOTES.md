@@ -31,6 +31,13 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.18
+
+**Bugfixes**
+
+- `Combobox`: Fix issue with subheaders sorting incorrectly
+- `Icon`: Fix issue with icons sometimes disappearing due to `<use xlink:href>`
+
 ## Release 0.10.17
 
 **Bugfixes**
