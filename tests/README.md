@@ -55,7 +55,7 @@ Use Jest to test the presence of:
 
 #### How to add new suites of tests
 
-Suites such as DOM snanpshot tests or accessibility tests should be added to all stories and the whole library at once. Stories that do not pass, should be exluded from continuous integration tests and an issue should be created to remove the component from exlusion. In short, add types of testing to all new components by excluding existing components that fail instead of adding existing components to a list of components to test. This forces new components to meet the requirements of the new tests and creates a list of components that need to be worked on instead of a list of components that currently pass.
+Suites such as DOM snanpshot tests or accessibility tests should be added to all stories and the whole library at once. Stories that do not pass, should be excluded from continuous integration tests and an issue should be created to remove the component from exclusion. In short, add types of testing to all new components by excluding existing components that fail instead of adding existing components to a list of components to test. This forces new components to meet the requirements of the new tests and creates a list of components that need to be worked on instead of a list of components that currently pass.
 
 #### Source files
 
