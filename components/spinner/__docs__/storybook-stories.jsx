@@ -24,6 +24,24 @@ storiesOf(SPINNER, module)
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
+	.add('Xx-Small', () =>
+		getSpinner({
+			size: 'xx-small',
+			variant: 'base',
+			assistiveText: {
+				label: 'Main Frame Loading...',
+			},
+		})
+	)
+	.add('X-Small', () =>
+		getSpinner({
+			size: 'x-small',
+			variant: 'base',
+			assistiveText: {
+				label: 'Main Frame Loading...',
+			},
+		})
+	)
 	.add('Small', () =>
 		getSpinner({
 			size: 'small',
@@ -43,6 +61,18 @@ storiesOf(SPINNER, module)
 		getSpinner({
 			size: 'large',
 			variant: 'base',
+		})
+	)
+	.add('Brand Xx-Small', () =>
+		getSpinner({
+			size: 'xx-small',
+			variant: 'brand',
+		})
+	)
+	.add('Brand X-Small', () =>
+		getSpinner({
+			size: 'x-small',
+			variant: 'brand',
 		})
 	)
 	.add('Brand Small', () =>
@@ -70,6 +100,24 @@ storiesOf(SPINNER, module)
 			variant: 'base',
 			isDelayed: true,
 		})
+	)
+	.add(
+		'Inverse Xx-Small',
+		() =>
+			getSpinner({
+				size: 'xx-small',
+				variant: 'inverse',
+			}),
+		{ decorators: [inverseContainer] }
+	)
+	.add(
+		'Inverse X-Small',
+		() =>
+			getSpinner({
+				size: 'x-small',
+				variant: 'inverse',
+			}),
+		{ decorators: [inverseContainer] }
 	)
 	.add(
 		'Inverse Small',

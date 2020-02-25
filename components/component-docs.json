@@ -15226,6 +15226,10 @@
                     "name": "enum",
                     "value": [
                         {
+                            "value": "'xx-small'",
+                            "computed": false
+                        },
+                        {
                             "value": "'x-small'",
                             "computed": false
                         },
