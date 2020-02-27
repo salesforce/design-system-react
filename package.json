@@ -188,7 +188,7 @@
 		"mocha-loader": "^3.0.0",
 		"moment": "^2.24.0",
 		"node-sass": "^4.5.0",
-		"normalizr": "^3.4.1",
+		"normalizr": "^3.6.0",
 		"object.entries": "^1.1.0",
 		"prettier": "1.9.2",
 		"prettylint": "^1.0.0",
