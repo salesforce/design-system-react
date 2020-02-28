@@ -84,6 +84,62 @@ exports[`DOM snapshots SLDSSpinner Brand Small 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSSpinner Brand X-Small 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-spinner_container"
+  >
+    <div
+      aria-hidden="false"
+      className="slds-spinner slds-spinner_brand slds-spinner_x-small"
+      role="status"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Loading...
+      </span>
+      <div
+        className="slds-spinner__dot-a"
+      />
+      <div
+        className="slds-spinner__dot-b"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSSpinner Brand Xx-Small 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-spinner_container"
+  >
+    <div
+      aria-hidden="false"
+      className="slds-spinner slds-spinner_brand slds-spinner_xx-small"
+      role="status"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Loading...
+      </span>
+      <div
+        className="slds-spinner__dot-a"
+      />
+      <div
+        className="slds-spinner__dot-b"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSSpinner Docs site Default 1`] = `
 <div
   className="slds-p-around_medium"
@@ -238,6 +294,84 @@ exports[`DOM snapshots SLDSSpinner Inverse Small 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSSpinner Inverse X-Small 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+        "height": "100%",
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="slds-spinner_container"
+    >
+      <div
+        aria-hidden="false"
+        className="slds-spinner slds-spinner_inverse slds-spinner_x-small"
+        role="status"
+      >
+        <span
+          className="slds-assistive-text"
+        >
+          Loading...
+        </span>
+        <div
+          className="slds-spinner__dot-a"
+        />
+        <div
+          className="slds-spinner__dot-b"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSSpinner Inverse Xx-Small 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+        "height": "100%",
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="slds-spinner_container"
+    >
+      <div
+        aria-hidden="false"
+        className="slds-spinner slds-spinner_inverse slds-spinner_xx-small"
+        role="status"
+      >
+        <span
+          className="slds-assistive-text"
+        >
+          Loading...
+        </span>
+        <div
+          className="slds-spinner__dot-a"
+        />
+        <div
+          className="slds-spinner__dot-b"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSSpinner Large 1`] = `
 <div
   className="slds-p-around_medium"
@@ -332,6 +466,62 @@ exports[`DOM snapshots SLDSSpinner Small 1`] = `
     <div
       aria-hidden="false"
       className="slds-spinner slds-spinner_small"
+      role="status"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Main Frame Loading...
+      </span>
+      <div
+        className="slds-spinner__dot-a"
+      />
+      <div
+        className="slds-spinner__dot-b"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSSpinner X-Small 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-spinner_container"
+  >
+    <div
+      aria-hidden="false"
+      className="slds-spinner slds-spinner_x-small"
+      role="status"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Main Frame Loading...
+      </span>
+      <div
+        className="slds-spinner__dot-a"
+      />
+      <div
+        className="slds-spinner__dot-b"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSSpinner Xx-Small 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-spinner_container"
+  >
+    <div
+      aria-hidden="false"
+      className="slds-spinner slds-spinner_xx-small"
       role="status"
     >
       <span

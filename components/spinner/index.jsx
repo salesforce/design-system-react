@@ -51,7 +51,7 @@ const propTypes = {
 	/**
 	 * Determines the size of the spinner
 	 */
-	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+	size: PropTypes.oneOf(['xx-small', 'x-small', 'small', 'medium', 'large']),
 	/**
 	 * Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.
 	 */
