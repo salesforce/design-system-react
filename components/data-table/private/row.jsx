@@ -44,6 +44,7 @@ class DataTableRow extends React.Component {
 			PropTypes.bool,
 			PropTypes.oneOf(['checkbox', 'radio']),
 		]),
+		className: PropTypes.string,
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
@@ -80,7 +81,7 @@ class DataTableRow extends React.Component {
 		return (
 			<tr
 				{...ariaProps}
-				className={classNames({
+				className={classNames(this.props.className, {
 					'slds-hint-parent': this.props.rowActions,
 					'slds-is-selected': this.props.canSelectRows && isSelected,
 				})}
@@ -99,9 +100,7 @@ class DataTableRow extends React.Component {
 										this.props.index
 									) + 1}`,
 								}}
-								aria-labelledby={`${this.props.id}-SelectRow-label ${
-									this.props.tableId
-								}-SLDSDataTableHead-column-group-header-row-select`}
+								aria-labelledby={`${this.props.id}-SelectRow-label ${this.props.tableId}-SLDSDataTableHead-column-group-header-row-select`}
 								checked={isSelected}
 								className="slds-m-right_x-small"
 								id={`${this.props.id}-SelectRow`}
@@ -116,9 +115,7 @@ class DataTableRow extends React.Component {
 										this.props.index
 									) + 1}`,
 								}}
-								aria-labelledby={`${this.props.id}-SelectRow-label ${
-									this.props.tableId
-								}-SLDSDataTableHead-column-group-header-row-select`}
+								aria-labelledby={`${this.props.id}-SelectRow-label ${this.props.tableId}-SLDSDataTableHead-column-group-header-row-select`}
 								checked={isSelected}
 								id={`${this.props.id}-SelectRow`}
 								labelId={`${this.props.id}-SelectRow-label`}
@@ -130,9 +127,7 @@ class DataTableRow extends React.Component {
 				) : null}
 				{this.props.columns.map((column) => {
 					const { Cell } = column;
-					const cellId = `${this.props.id}-${DATA_TABLE_CELL}-${
-						column.props.property
-					}`;
+					const cellId = `${this.props.id}-${DATA_TABLE_CELL}-${column.props.property}`;
 
 					return (
 						<Cell
@@ -153,7 +148,7 @@ class DataTableRow extends React.Component {
 					? React.cloneElement(this.props.rowActions, {
 							id: `${this.props.id}-${DATA_TABLE_ROW_ACTIONS}`,
 							item: this.props.item,
-						})
+					  })
 					: null}
 			</tr>
 		);

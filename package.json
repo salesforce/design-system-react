@@ -758,6 +758,10 @@
 				{
 					"heading": "Advanced: Joined with Page Header",
 					"path": "/__examples__/joined-with-page-header.jsx"
+				},
+				{
+					"heading": "Custom Classes",
+					"path": "/__examples__/custom-classes.jsx"
 				}
 			],
 			"url-slug": "data-tables"

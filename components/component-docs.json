@@ -5285,12 +5285,16 @@
                             "id": {
                                 "name": "string",
                                 "required": true
+                            },
+                            "classNameRow": {
+                                "name": "string",
+                                "required": false
                             }
                         }
                     }
                 },
                 "required": true,
-                "description": "The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`."
+                "description": "The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`.\n\nUse the key `classNameRow` to add a custom class to the item's `<tr>` element."
             },
             "joined": {
                 "type": {

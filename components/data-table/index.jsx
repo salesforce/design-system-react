@@ -138,10 +138,13 @@ class DataTable extends React.Component {
 		id: PropTypes.string,
 		/**
 		 * The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`.
+		 *
+		 * Use the key `classNameRow` to add a custom class to the item's `<tr>` element.
 		 */
 		items: PropTypes.arrayOf(
 			PropTypes.shape({
 				id: PropTypes.string.isRequired,
+				classNameRow: PropTypes.string,
 			})
 		).isRequired,
 		/**
@@ -506,6 +509,7 @@ class DataTable extends React.Component {
 									<DataTableRow
 										assistiveText={assistiveText}
 										canSelectRows={canSelectRows}
+										className={item.classNameRow}
 										columns={columns}
 										fixedLayout={this.props.fixedLayout}
 										id={rowId}
