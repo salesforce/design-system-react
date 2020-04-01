@@ -2,7 +2,6 @@ import React from 'react';
 
 import DataTable from '~/components/data-table'; // `~` is replaced with design-system-react at runtime
 import DataTableColumn from '~/components/data-table/column';
-import DataTableCell from '~/components/data-table/cell';
 import IconSettings from '~/components/icon-settings';
 
 const columns = [
