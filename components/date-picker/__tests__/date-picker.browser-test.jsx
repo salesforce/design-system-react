@@ -428,7 +428,7 @@ describe('SLDSDatepicker', function describeFunction() {
 
 				// Changing input value closes the calendar
 				const input = wrapper.find('input#sample-datepicker');
-				input.simulate('change', {target: {value: '1/1/2020'}});
+				input.simulate('change', { target: { value: '1/1/2020' } });
 				expect(wrapper.find('.slds-datepicker').length).to.equal(0);
 			});
 		});
