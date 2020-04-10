@@ -12213,14 +12213,11 @@
                                 "name": "string"
                             },
                             "required": false,
-                            "description": "Heading for a group of filters that are locked"
-                        },
-                        "lockedLabel": {
+                            "description": "Heading for a group of filters that are locked",
                             "defaultValue": {
                                 "value": "'Locked filters'",
                                 "computed": false
-                            },
-                            "required": false
+                            }
                         }
                     },
                     "name": "filtering/list-heading",
