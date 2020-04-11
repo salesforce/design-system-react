@@ -7,6 +7,7 @@ import escapeRegExp from 'lodash.escaperegexp';
  */
 const filter = ({ inputValue, limit = 10, options, selection }) => {
 	const inputValueRegExp = new RegExp(escapeRegExp(inputValue), 'ig');
+	// eslint-disable-next-line fp/no-mutating-methods
 	return options
 		.filter((option) => {
 			const searchTermFound = option.label

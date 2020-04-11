@@ -6,10 +6,10 @@
 // This function will deliver an error message to the browser console when all of the props passed in are undefined (falsey).
 import warning from 'warning';
 
-let incompatibleProps = function() {};
+let incompatibleProps = function incompatiblePropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	incompatibleProps = function(
+	incompatibleProps = function incompatiblePropsFunction(
 		control,
 		props,
 		propOneName,

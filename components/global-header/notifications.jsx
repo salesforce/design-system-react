@@ -42,7 +42,7 @@ class GlobalHeaderNotifications extends React.Component {
 		const buttonAriaProps = {
 			'aria-live': 'assertive',
 		};
-		const notificationCount = this.props.notificationCount;
+		const { notificationCount } = this.props;
 		const popoverProps = assign(
 			{
 				align: 'bottom right',
@@ -53,6 +53,7 @@ class GlobalHeaderNotifications extends React.Component {
 		);
 		let notificationsAssistiveText = this.props.assistiveText.noNotifications;
 
+		// eslint-disable-next-line fp/no-delete
 		delete popoverProps.children;
 
 		if (notificationCount > 0) {

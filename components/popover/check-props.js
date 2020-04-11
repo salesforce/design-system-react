@@ -9,10 +9,10 @@ import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import incompatibleProps from '../../utilities/warning/incompatible-props';
 
-let checkProps = function() {};
+let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function(COMPONENT, props, jsonDoc) {
+	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		oneOfRequiredProperty(
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV !== 'production') {
 					COMPONENT,
 					props,
 					'children[0]',
-					['SLDSButton', 'a', 'button'],
+					['SLDSButton', 'a', 'button', 'SLDSInnerInput', 'SLDSPopoverTooltip'],
 					` Multiple children of any kind are allowed, but the first child must serve as the trigger component. ${createDocUrl()}`,
 					props.children[0]
 				);
@@ -39,7 +39,7 @@ if (process.env.NODE_ENV !== 'production') {
 					COMPONENT,
 					props,
 					'children',
-					['SLDSButton', 'a', 'button'],
+					['SLDSButton', 'a', 'button', 'SLDSInnerInput', 'SLDSPopoverTooltip'],
 					createDocUrl()
 				);
 			}
@@ -50,7 +50,8 @@ if (process.env.NODE_ENV !== 'production') {
 			props.offset,
 			'offset',
 			undefined,
-			`The manual setting of positional offset of dialog components has been deemed unreliable. Position logic has been re-written to deliver better and more reliable positioning. Please create an issue if you have an edge case not covered by the built-in logic. ${createDocUrl()}`
+			`The manual setting of positional offset of dialog components has been deemed unreliable. Position logic has been re-written to deliver better and more reliable positioning. Please create an issue if you have an edge case not covered by the built-in logic. ${createDocUrl()}`,
+			props.silenceDeprecatedPropertyWarning || false
 		);
 
 		deprecatedProperty(

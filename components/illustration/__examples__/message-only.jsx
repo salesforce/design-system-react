@@ -5,7 +5,10 @@ import Illustration from '~/components/illustration'; // `~` is replaced with de
 class Example extends React.Component {
 	render() {
 		return (
-			<Illustration messageBody="Lorem ipsum dolor sit amet, consectetur" />
+			<Illustration
+				messageBody="Lorem ipsum dolor sit amet, consectetur"
+				silenceDeprecationWarning
+			/>
 		);
 	}
 }

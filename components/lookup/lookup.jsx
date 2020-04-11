@@ -1,4 +1,7 @@
 /* eslint-disable max-lines */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable max-lines */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -67,7 +70,7 @@ const Lookup = class extends React.Component {
 		 * If present, the label associated with this `input` is overwritten
 		 * by this text and is visually not shown.
 		 */
-		assistiveText: PropTypes.string,
+		assistiveText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 		/**
 		 * Class names to be added to the tag classed with `slds-lookup`.
 		 */
@@ -222,9 +225,11 @@ const Lookup = class extends React.Component {
 		selectedIndex: this.props.selectedItem,
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(LOOKUP, this.props);
+		checkProps(LOOKUP, props);
 
 		// Keeps track of references of children for keyboard navigation
 		this.pills = [];
@@ -234,7 +239,8 @@ const Lookup = class extends React.Component {
 		this.modifyItems(this.props.options);
 	}
 
-	componentWillReceiveProps(newProps) {
+	// eslint-disable-next-line camelcase, react/sort-comp
+	UNSAFE_componentWillReceiveProps(newProps) {
 		if (newProps.options) {
 			this.modifyItems(newProps.options);
 		}
@@ -720,7 +726,8 @@ const Lookup = class extends React.Component {
 	renderLabel = () => {
 		let inputLabel;
 		const required = this.props.required ? (
-			<span className="slds-required">*</span>
+			// eslint-disable-next-line react/jsx-curly-brace-presence
+			<span className="slds-required">{'*'}</span>
 		) : null;
 		if (this.isSelected()) {
 			// inline style override

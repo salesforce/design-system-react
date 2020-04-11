@@ -11,10 +11,11 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<Textarea
 					aria-describedby="error-1"
+					id="text-area-error"
 					name="required-textarea-error"
 					label="Textarea Label"
 					required
-					errorText="Error Message"
+					errorText="This field is required"
 					placeholder="Placeholder Text"
 				/>
 			</IconSettings>

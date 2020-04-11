@@ -15,6 +15,15 @@ import { RADIO_GROUP } from '../../utilities/constants';
 
 const propTypes = {
 	/**
+	 * **Assistive text for accessibility**
+	 * * `label`: This label appears in the legend.
+	 * * `required`: Text to help identify the group as required
+	 */
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+		required: PropTypes.string,
+	}),
+	/**
 	 * Children are expected to be Radio components.
 	 */
 	children: PropTypes.node.isRequired,
@@ -56,9 +65,17 @@ const propTypes = {
 	 * The ID of the error message, for linking to radio inputs with aria-describedby.
 	 */
 	errorId: PropTypes.string,
+	/**
+	 * Variants of radio groups such as Radio Button Group
+	 */
+	variant: PropTypes.oneOf(['base', 'button-group']),
 };
 
-const defaultProps = { labels: {} };
+const defaultProps = {
+	assistiveText: { required: 'Required' },
+	labels: {},
+	variant: 'base',
+};
 
 /**
  * A styled select list that can have a single entry checked at any one time.
@@ -68,13 +85,8 @@ class RadioGroup extends React.Component {
 	constructor(props) {
 		super(props);
 
-		// Merge objects of strings with their default object
-		this.labels = this.props.labels
-			? assign({}, defaultProps.labels, this.props.labels)
-			: defaultProps.labels;
-
 		this.generatedName = shortid.generate();
-		this.generatedErrorId = this.labels.error ? shortid.generate() : null;
+		this.generatedErrorId = shortid.generate();
 	}
 
 	getErrorId() {
@@ -93,6 +105,15 @@ class RadioGroup extends React.Component {
 	}
 
 	render() {
+		// Merge objects of strings with their default object
+		this.labels = this.props.labels
+			? assign({}, defaultProps.labels, this.props.labels)
+			: defaultProps.labels;
+
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
 		const children = React.Children.map(this.props.children, (child) =>
 			React.cloneElement(child, {
 				name: this.getName(),
@@ -108,13 +129,22 @@ class RadioGroup extends React.Component {
 					'slds-has-error': this.labels.error,
 				})}
 			>
-				<legend className="slds-form-element__legend slds-form-element__label">
+				<legend
+					className={classNames(
+						'slds-form-element__legend',
+						'slds-form-element__label',
+						assistiveText.label ? 'slds-assistive-text' : ''
+					)}
+				>
 					{this.props.required ? (
 						<abbr className="slds-required" title="required">
-							*
+							{'*'}
+							<div className="slds-assistive-text">
+								{assistiveText.required}{' '}
+							</div>
 						</abbr>
 					) : null}
-					{this.labels.label}
+					{assistiveText.label ? assistiveText.label : this.labels.label}
 				</legend>
 				<div
 					className={classNames(
@@ -122,7 +152,14 @@ class RadioGroup extends React.Component {
 						this.props.className
 					)}
 				>
-					{children}
+					{this.props.variant === 'button-group' ? (
+						<div style={this.props.style} className="slds-radio_button-group">
+							{children}
+						</div>
+					) : (
+						children
+					)}
+
 					{this.labels.error ? (
 						<div id={this.getErrorId()} className="slds-form-element__help">
 							{this.labels.error}

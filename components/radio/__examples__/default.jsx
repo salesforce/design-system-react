@@ -6,7 +6,7 @@ class Example extends React.Component {
 	static displayName = 'RadioExample';
 
 	render() {
-		return <Radio id="radioId1" label="Radio Label" />;
+		return <Radio id="radioId1" labels={{ label: 'Radio Label' }} />;
 	}
 }
 

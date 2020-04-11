@@ -1,6 +1,6 @@
 # Create React App
 
-The following tasks will help you get started using Design System React within Create React App 1.x. 
+The following tasks will help you get started using Design System React within Create React App 1.x. If you are using Create React App 2.x, please follow this instruction link https://github.com/salesforce/design-system-react/blob/master/docs/create-react-app-2x.md
 
 Do you have tips to share with other Create React Users users? Please share with the rest of the Create React community and add to the list below.
 

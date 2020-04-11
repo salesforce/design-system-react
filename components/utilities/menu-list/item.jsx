@@ -59,6 +59,8 @@ class ListItem extends React.Component {
 			category: PropTypes.string,
 			name: PropTypes.string,
 		}),
+		tooltipContent: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+		tooltipTemplate: PropTypes.node,
 		type: PropTypes.string,
 		value: PropTypes.any,
 	};
@@ -95,6 +97,7 @@ class ListItem extends React.Component {
 
 		if (position === 'left') {
 			if (this.props.checkmark) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				classnames.push('slds-icon_selected');
 				iconProps = {
 					category: 'utility',
@@ -102,8 +105,10 @@ class ListItem extends React.Component {
 				};
 			}
 
+			// eslint-disable-next-line fp/no-mutating-methods
 			classnames.push('slds-m-right_x-small');
 		} else {
+			// eslint-disable-next-line fp/no-mutating-methods
 			classnames.push('slds-m-left_small');
 		}
 
@@ -156,7 +161,7 @@ class ListItem extends React.Component {
 						onMouseDown={this.handleMouseDown}
 						role="separator"
 					>
-						<span className="slds-text-title_caps">{this.props.label}</span>
+						<span>{this.props.label}</span>
 					</li>
 				);
 			}
@@ -172,6 +177,40 @@ class ListItem extends React.Component {
 			case 'link':
 			case 'item':
 			default: {
+				/* eslint-disable jsx-a11y/role-supports-aria-props */
+				let itemContents = (
+					<a
+						aria-checked={this.props.checkmark && this.props.isSelected}
+						aria-disabled={this.props['aria-disabled']}
+						href={this.props.href}
+						data-index={this.props.index}
+						onClick={this.handleClick}
+						role={this.props.checkmark ? 'menuitemcheckbox' : 'menuitem'}
+						tabIndex="-1"
+					>
+						{this.getLabel()}
+						{this.getIcon('right')}
+					</a>
+				);
+
+				if (this.props.tooltipContent && this.props.tooltipTemplate) {
+					const { ...tooltipTemplateProps } = this.props.tooltipTemplate.props;
+					const tooltipProps = {
+						...tooltipTemplateProps,
+						content: this.props.tooltipContent,
+						id: `${this.props.id}-tooltip`,
+						triggerStyle: {
+							width: '100%',
+							...(tooltipTemplateProps.triggerStyle || {}),
+						},
+					};
+					itemContents = React.cloneElement(
+						this.props.tooltipTemplate,
+						tooltipProps,
+						itemContents
+					);
+				}
+
 				return (
 					/* eslint-disable jsx-a11y/role-supports-aria-props */
 					// disabled eslint, but using aria-selected on presentation role seems suspicious...
@@ -190,19 +229,7 @@ class ListItem extends React.Component {
 						onMouseDown={this.handleMouseDown}
 						role="presentation"
 					>
-						{/* eslint-disable jsx-a11y/role-supports-aria-props */}
-						<a
-							aria-checked={this.props.checkmark && this.props.isSelected}
-							aria-disabled={this.props['aria-disabled']}
-							href={this.props.href}
-							data-index={this.props.index}
-							onClick={this.handleClick}
-							role={this.props.checkmark ? 'menuitemcheckbox' : 'menuitem'}
-							tabIndex="-1"
-						>
-							{this.getLabel()}
-							{this.getIcon('right')}
-						</a>
+						{itemContents}
 					</li>
 				);
 			}

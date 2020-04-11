@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import ProgressIndicator from '~/components/progress-indicator'; // `~` is replaced with design-system-react at runtime
@@ -8,11 +7,13 @@ import Modal from '~/components/modal';
 
 import Button from '~/components/button';
 
+import log from '../../../utilities/log';
+
 const steps = [
 	{
 		id: 0,
 		label: <i>tooltip label #1</i>,
-		assistiveText: 'This is custom text in the assistive text key',
+		assistiveText: 'This is custom text in the assistive text key - Completed',
 	},
 	{ id: 1, label: 'tooltip label #2' },
 	{ id: 2, label: <strong>tooltip label #3</strong> },
@@ -20,13 +21,18 @@ const steps = [
 	{ id: 4, label: 'tooltip label #5' },
 ];
 
-const handleStepEvent = function(event, data) {
-	console.log(data);
+const handleStepEvent = function handleStepEventFunction(event, data) {
+	log({
+		action,
+		event,
+		eventName: 'On Step Click',
+		data,
+	});
 };
 
 const getModal = (props) => <Modal {...props} />;
 
-const modalFooter = (props) => [
+const modalFooter = () => [
 	<Button key="modalBCancel" label="Cancel" />,
 	<ProgressIndicator
 		key="modal-progress-indicator"
@@ -34,6 +40,7 @@ const modalFooter = (props) => [
 		steps={steps}
 		selectedStep={steps[2]}
 		completedSteps={steps.slice(0, 2)}
+		disabledSteps={steps.slice(3, 5)}
 		errorSteps={steps.slice(2, 3)}
 		onStepClick={handleStepEvent}
 	/>,
@@ -58,7 +65,7 @@ class Example extends React.Component {
 					title: 'Modal Header',
 					children: modalContent,
 					onRequestClose: action('modal closed'),
-					footer: modalFooter(this.props),
+					footer: modalFooter(),
 					size: 'large',
 					footerClassNames: 'slds-grid slds-grid_align-spread',
 				})}

@@ -16,7 +16,7 @@ import checkProps from './check-props';
 // ## Constants
 import { SPINNER } from '../../utilities/constants';
 
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ### Prop Types
 const propTypes = {
@@ -33,9 +33,17 @@ const propTypes = {
 	 */
 	containerClassName: PropTypes.string,
 	/**
+	 * Custom css properties applied to Spinner container
+	 */
+	containerStyle: PropTypes.object,
+	/**
 	 * Unique html id placed on div with role="status".
 	 */
 	id: PropTypes.string,
+	/**
+	 * Adds delay of 300ms to the spinner
+	 */
+	isDelayed: PropTypes.bool,
 	/**
 	 * Add styling to support a spinner inside an input field.
 	 */
@@ -43,7 +51,7 @@ const propTypes = {
 	/**
 	 * Determines the size of the spinner
 	 */
-	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+	size: PropTypes.oneOf(['xx-small', 'x-small', 'small', 'medium', 'large']),
 	/**
 	 * Determines the color of the spinner: `base` is gray, `brand` is blue, and `inverse` is white.
 	 */
@@ -52,6 +60,7 @@ const propTypes = {
 
 const defaultProps = {
 	assistiveText: { label: 'Loading...' },
+	isDelayed: false,
 	size: 'medium',
 	variant: 'base',
 };
@@ -61,7 +70,15 @@ const defaultProps = {
  */
 const Spinner = (props) => {
 	checkProps(SPINNER, props, componentDoc);
-	const { containerClassName, id, isInput, size, variant } = props;
+	const {
+		containerClassName,
+		containerStyle,
+		id,
+		isDelayed,
+		isInput,
+		size,
+		variant,
+	} = props;
 	const assistiveText =
 		typeof props.assistiveText === 'string'
 			? props.assistiveText
@@ -74,11 +91,15 @@ const Spinner = (props) => {
 		'slds-input__spinner': isInput,
 		'slds-spinner_brand': variant === 'brand',
 		'slds-spinner_inverse': variant === 'inverse',
+		'slds-spinner_delayed': isDelayed,
 		[`slds-spinner_${size}`]: size,
 	});
 
 	return (
-		<div className={classNames(containerClassName, 'slds-spinner_container')}>
+		<div
+			className={classNames(containerClassName, 'slds-spinner_container')}
+			style={containerStyle}
+		>
 			<div
 				aria-hidden="false"
 				className={spinnerClassName}

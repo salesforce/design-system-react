@@ -1,7 +1,0 @@
-{
-    "component": "textarea",
-    "status": "prod",
-    "display-name": "Textareas",
-    "SLDS-component-path": "/components/forms#flavor-textarea",
-    "url-slug": "textareas"
-}

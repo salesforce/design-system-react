@@ -28,10 +28,12 @@ describe('SLDSButton: ', () => {
 	const renderButton = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
+		/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 		return ReactDOM.render(
 			<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
 			body
 		);
+		/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
 	};
 
 	function removeButton() {
@@ -58,7 +60,7 @@ describe('SLDSButton: ', () => {
 		});
 
 		afterEach(() => {
-			removeButton(btn);
+			removeButton();
 		});
 
 		it('renders correct label', () => {
@@ -75,6 +77,28 @@ describe('SLDSButton: ', () => {
 
 		it('renders custom styles', function() {
 			btn.style.backgroundColor.should.equal('rgb(18, 49, 35)');
+		});
+	});
+
+	describe('Form Props Render ', () => {
+		let cmp;
+		let btn;
+		const formAction = 'http://localhost/some/url';
+
+		beforeEach(() => {
+			cmp = getButton({
+				id: 'custom-id',
+				formAction,
+			});
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+		});
+
+		afterEach(() => {
+			removeButton();
+		});
+
+		it('renders formAction prop', () => {
+			expect(btn.formAction).to.equal(formAction);
 		});
 	});
 
@@ -96,7 +120,7 @@ describe('SLDSButton: ', () => {
 		});
 
 		afterEach(() => {
-			removeButton(btn);
+			removeButton();
 		});
 
 		it('renders label', () => {
@@ -110,7 +134,6 @@ describe('SLDSButton: ', () => {
 
 	describe('Icon Button Props render', () => {
 		let cmp;
-		let btn;
 		let asstText;
 		let svg;
 
@@ -123,13 +146,12 @@ describe('SLDSButton: ', () => {
 				iconSize: 'small',
 				iconVariant: 'bare',
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
 			svg = findRenderedDOMComponentWithTag(cmp, 'svg');
 		});
 
 		afterEach(() => {
-			removeButton(btn);
+			removeButton();
 		});
 
 		it('renders label', () => {
@@ -143,7 +165,6 @@ describe('SLDSButton: ', () => {
 
 	describe('(icon path) Icon Button renders assistive text', () => {
 		let cmp;
-		let btn;
 		let asstText;
 
 		beforeEach(() => {
@@ -153,12 +174,11 @@ describe('SLDSButton: ', () => {
 				iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
 				title: 'announcement',
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
 		});
 
 		afterEach(() => {
-			removeButton(btn);
+			removeButton();
 		});
 
 		it('renders label', () => {
@@ -180,11 +200,11 @@ describe('SLDSButton: ', () => {
 				iconVariant: 'bare',
 			});
 			use = findRenderedDOMComponentWithTag(cmp, 'use');
-			svgHref = use.getAttribute('xlink:href');
+			svgHref = use.getAttribute('href');
 		});
 
 		after(() => {
-			removeButton(use);
+			removeButton();
 		});
 
 		it('renders svg', () => {
@@ -214,7 +234,7 @@ describe('SLDSButton: ', () => {
 		});
 
 		afterEach(() => {
-			removeButton(btn);
+			removeButton();
 		});
 
 		it('can be clicked', () => {

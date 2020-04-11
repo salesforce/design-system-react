@@ -32,140 +32,113 @@ exports[`DOM snapshots SLDSButton Disabled 1`] = `
 
 exports[`DOM snapshots SLDSButton Doc site Base Neutral 1`] = `
 <div
-  className="slds-hint-parent"
-  style={
-    Object {
-      "backgroundColor": "#16325c",
-    }
-  }
+  className="slds-p-around_medium"
 >
   <div
-    className="slds-p-around_medium slds-hint-parent"
-    style={
-      Object {
-        "backgroundColor": "#16325c",
-      }
-    }
+    className="slds-x-small-buttons_horizontal"
   >
-    <div
-      className="slds-p-around_medium"
+    <button
+      className="slds-button"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
     >
-      <div
-        className="-x-small-buttons--horizontal"
+      Base
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Neutral
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon_left"
       >
-        <button
-          className="slds-button"
-          disabled={false}
-          onClick={[Function]}
-          type="button"
-        >
-          Base
-        </button>
-        <button
-          className="slds-button slds-button_neutral"
-          disabled={false}
-          onClick={[Function]}
-          type="button"
-        >
-          Neutral
-        </button>
-        <button
-          className="slds-button slds-button_neutral"
-          disabled={false}
-          onClick={[Function]}
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon slds-button__icon_left"
-          >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
-            />
-          </svg>
-          Neutral Icon
-        </button>
-        <button
-          className="slds-button slds-button_neutral"
-          disabled={false}
-          onClick={[Function]}
-          type="button"
-        >
-          Responsive
-        </button>
-      </div>
-    </div>
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#download"
+        />
+      </svg>
+      Neutral Icon
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Responsive
+    </button>
   </div>
 </div>
 `;
 
 exports[`DOM snapshots SLDSButton Doc site Brand Disabled 1`] = `
 <div
-  className="slds-hint-parent"
-  style={
-    Object {
-      "backgroundColor": "#16325c",
-    }
-  }
+  className="slds-p-around_medium"
 >
   <div
-    className="slds-p-around_medium slds-hint-parent"
-    style={
-      Object {
-        "backgroundColor": "#16325c",
-      }
-    }
+    className="slds-x-small-buttons_horizontal"
   >
-    <div
-      className="slds-p-around_medium"
+    <button
+      className="slds-button slds-button_brand"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
     >
-      <div
-        className="-x-small-buttons--horizontal"
+      Brand
+    </button>
+    <button
+      className="slds-button slds-button_brand"
+      disabled={true}
+      onClick={[Function]}
+      type="button"
+    >
+      Disabled
+    </button>
+    <button
+      className="slds-button slds-button_destructive"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Destructive
+    </button>
+    <button
+      className="slds-button slds-button_outline-brand"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Outline Brand
+    </button>
+    <div
+      className="-m-horizontal--small"
+      style={
+        Object {
+          "backgroundColor": "#16325c",
+          "display": "inline-block",
+          "marginLeft": "5px",
+          "padding": "10px",
+        }
+      }
+    >
+      <button
+        className="slds-button slds-button_inverse"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
       >
-        <button
-          className="slds-button slds-button_brand"
-          disabled={false}
-          onClick={[Function]}
-          type="button"
-        >
-          Brand
-        </button>
-        <button
-          className="slds-button slds-button_brand"
-          disabled={true}
-          onClick={[Function]}
-          type="button"
-        >
-          Disabled
-        </button>
-        <button
-          className="slds-button slds-button_destructive"
-          disabled={false}
-          onClick={[Function]}
-          type="button"
-        >
-          Destructive
-        </button>
-        <div
-          className="-m-horizontal--small"
-          style={
-            Object {
-              "backgroundColor": "#16325c",
-              "display": "inline-block",
-              "padding": "10px",
-            }
-          }
-        >
-          <button
-            className="slds-button slds-button_inverse"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            Inverse
-          </button>
-        </div>
-      </div>
+        Inverse
+      </button>
     </div>
   </div>
 </div>
@@ -173,209 +146,191 @@ exports[`DOM snapshots SLDSButton Doc site Brand Disabled 1`] = `
 
 exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
 <div
-  className="slds-hint-parent"
-  style={
-    Object {
-      "backgroundColor": "#16325c",
-    }
-  }
+  className="slds-p-around_medium"
 >
   <div
-    className="slds-p-around_medium slds-hint-parent"
-    style={
-      Object {
-        "backgroundColor": "#16325c",
-      }
-    }
+    className="slds-x-small-buttons_horizontal"
   >
-    <div
-      className="slds-p-around_medium"
+    <button
+      className="slds-button slds-button_icon slds-button_icon-bare slds-button_icon-small"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
     >
-      <div
-        className="-x-small-buttons--horizontal"
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
       >
-        <button
-          className="slds-button slds-button_icon slds-button_icon-bare slds-button_icon-small"
-          disabled={false}
-          onClick={[Function]}
-          type="button"
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Icon Bare Small
+      </span>
+    </button>
+    <button
+      className="slds-button slds-button_icon-container slds-button_icon-small"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Icon Container Small
+      </span>
+    </button>
+    <div
+      className="-m-horizontal--small"
+      style={
+        Object {
+          "backgroundColor": "#4BC076",
+          "display": "inline-block",
+          "padding": "10px",
+        }
+      }
+    >
+      <button
+        className="slds-button slds-button_icon-border"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
-          >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
-          >
-            Icon Bare Small
-          </span>
-        </button>
-        <button
-          className="slds-button slds-button_icon-container slds-button_icon-small"
-          disabled={false}
-          onClick={[Function]}
-          type="button"
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
-          >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
-          >
-            Icon Container Small
-          </span>
-        </button>
-        <div
-          className="-m-horizontal--small"
-          style={
-            Object {
-              "backgroundColor": "#4BC076",
-              "display": "inline-block",
-              "padding": "10px",
-            }
-          }
+          Icon Border medium
+        </span>
+      </button>
+      <button
+        className="slds-button slds-button_icon-border-filled"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
         >
-          <button
-            className="slds-button slds-button_icon-border"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              className="slds-button__icon"
-            >
-              <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
-              />
-            </svg>
-            <span
-              className="slds-assistive-text"
-            >
-              Icon Border medium
-            </span>
-          </button>
-          <button
-            className="slds-button slds-button_icon-border-filled"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              className="slds-button__icon"
-            >
-              <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
-              />
-            </svg>
-            <span
-              className="slds-assistive-text"
-            >
-              Icon Border-filled medium
-            </span>
-          </button>
-        </div>
-        <button
-          className="slds-button slds-button_icon-more slds-button_icon-large"
-          disabled={false}
-          onClick={[Function]}
-          type="button"
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
-          >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
-            />
-          </svg>
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon slds-button__icon_x-small"
-          >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
-          >
-            Icon More large
-          </span>
-        </button>
-        <div
-          className="-m-horizontal--small"
-          style={
-            Object {
-              "backgroundColor": "#16325c",
-              "display": "inline-block",
-              "padding": "10px",
-            }
-          }
+          Icon Border-filled medium
+        </span>
+      </button>
+    </div>
+    <button
+      className="slds-button slds-button_icon-more slds-button_icon-large"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon_x-small"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Icon More large
+      </span>
+    </button>
+    <div
+      className="-m-horizontal--small"
+      style={
+        Object {
+          "backgroundColor": "#16325c",
+          "display": "inline-block",
+          "padding": "10px",
+        }
+      }
+    >
+      <button
+        className="slds-button slds-button_icon-inverse"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_large"
         >
-          <button
-            className="slds-button slds-button_icon-inverse"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              className="slds-button__icon slds-button__icon_large"
-            >
-              <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
-              />
-            </svg>
-            <span
-              className="slds-assistive-text"
-            >
-              Icon inverse
-            </span>
-          </button>
-        </div>
-        <div
-          className="-hint-parent -m-horizontal--small"
-          style={
-            Object {
-              "backgroundColor": "#FFB75D",
-              "display": "inline-block",
-              "padding": "10px 50px",
-            }
-          }
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
         >
-          <button
-            className="slds-button slds-button_icon"
-            disabled={false}
-            onClick={[Function]}
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              className="slds-button__icon slds-button__icon_large slds-button__icon_hint"
-            >
-              <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
-              />
-            </svg>
-            <span
-              className="slds-assistive-text"
-            >
-              Icon hint large
-            </span>
-          </button>
-        </div>
-      </div>
+          Icon inverse
+        </span>
+      </button>
+    </div>
+    <div
+      className="-hint-parent -m-horizontal--small"
+      style={
+        Object {
+          "backgroundColor": "#FFB75D",
+          "display": "inline-block",
+          "padding": "10px 50px",
+        }
+      }
+    >
+      <button
+        className="slds-button slds-button_icon"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_large slds-button__icon_hint"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Icon hint large
+        </span>
+      </button>
     </div>
   </div>
 </div>
@@ -383,15 +338,15 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
 
 exports[`DOM snapshots SLDSButton Dropdown Icon inverse 1`] = `
 <div
-  className="slds-p-around_medium slds-hint-parent"
-  style={
-    Object {
-      "backgroundColor": "#16325c",
-    }
-  }
+  className="slds-p-around_medium"
 >
   <div
-    className="slds-p-around_medium"
+    className="slds-hint-parent"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+      }
+    }
   >
     <button
       aria-haspopup={true}
@@ -405,7 +360,7 @@ exports[`DOM snapshots SLDSButton Dropdown Icon inverse 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
         />
       </svg>
       <svg
@@ -413,7 +368,7 @@ exports[`DOM snapshots SLDSButton Dropdown Icon inverse 1`] = `
         className="slds-button__icon slds-button__icon_x-small"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
         />
       </svg>
       <span
@@ -428,15 +383,15 @@ exports[`DOM snapshots SLDSButton Dropdown Icon inverse 1`] = `
 
 exports[`DOM snapshots SLDSButton Icon Container Small 1`] = `
 <div
-  className="slds-p-around_medium slds-hint-parent"
-  style={
-    Object {
-      "backgroundColor": "#16325c",
-    }
-  }
+  className="slds-p-around_medium"
 >
   <div
-    className="slds-p-around_medium"
+    className="slds-hint-parent"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+      }
+    }
   >
     <button
       className="slds-button slds-button_icon-border-inverse slds-button_icon-large"
@@ -449,7 +404,7 @@ exports[`DOM snapshots SLDSButton Icon Container Small 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
         />
       </svg>
       <span
@@ -478,7 +433,7 @@ exports[`DOM snapshots SLDSButton Icon large 1`] = `
       className="slds-button__icon slds-button__icon_large"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#answer"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#answer"
       />
     </svg>
     <span
@@ -506,7 +461,7 @@ exports[`DOM snapshots SLDSButton Icon with external path 1`] = `
       className="slds-button__icon slds-button__icon_large"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
       />
     </svg>
     <span
@@ -550,7 +505,7 @@ exports[`DOM snapshots SLDSButton Neutral Icon 1`] = `
       className="slds-button__icon slds-button__icon_left"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#download"
       />
     </svg>
     Neutral Icon
@@ -576,73 +531,60 @@ exports[`DOM snapshots SLDSButton Neutral with id 1`] = `
 
 exports[`DOM snapshots SLDSButton Outline brand button 1`] = `
 <div
-  className="slds-hint-parent"
-  style={
-    Object {
-      "backgroundColor": "#16325c",
-    }
-  }
+  className="slds-p-around_medium"
 >
   <div
-    className="slds-p-around_medium slds-hint-parent"
+    className="slds-hint-parent"
     style={
       Object {
         "backgroundColor": "#16325c",
       }
     }
   >
-    <div
-      className="slds-p-around_medium"
+    <button
+      className="slds-button slds-button_outline-brand"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
     >
-      <button
-        className="slds-button slds-button_outline-brand"
-        disabled={false}
-        onClick={[Function]}
-        type="button"
-      >
-        Outline brand button
-      </button>
-    </div>
+      Outline brand button
+    </button>
   </div>
 </div>
 `;
 
 exports[`DOM snapshots SLDSButton Small Icon Hint inverse 1`] = `
 <div
-  className="slds-hint-parent"
-  style={
-    Object {
-      "backgroundColor": "#16325c",
-    }
-  }
+  className="slds-p-around_medium"
 >
   <div
-    className="slds-p-around_medium slds-hint-parent"
+    className="slds-hint-parent"
     style={
       Object {
         "backgroundColor": "#16325c",
       }
     }
   >
-    <div
-      className="slds-p-around_medium"
+    <button
+      className="slds-button slds-button_icon-border-inverse slds-button_icon-small"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
     >
-      <button
-        className="slds-button slds-button_icon-border-inverse slds-button_icon-small"
-        disabled={false}
-        onClick={[Function]}
-        type="button"
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon_inverse-hint"
       >
-        <svg
-          aria-hidden="true"
-          className="slds-button__icon slds-button__icon_inverse-hint"
-        >
-          <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
-          />
-        </svg>
-      </button>
-    </div>
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Hint
+      </span>
+    </button>
   </div>
 </div>
 `;

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import assign from 'lodash.assign';
 import chai from 'chai';
 
 import Spinner from '../../spinner';
@@ -13,7 +12,7 @@ describe('Spinner: ', () => {
 		function() {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
-			this.component = ReactDOM.render(instance, this.dom);
+			this.component = ReactDOM.render(instance, this.dom); // deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 		};
 
 	function removeSpinner() {
@@ -41,13 +40,17 @@ describe('Spinner: ', () => {
 	});
 
 	describe('Props render proper css classes', () => {
-		beforeEach(renderSpinner(<Spinner size="small" variant="brand" />));
+		beforeEach(
+			renderSpinner(<Spinner size="small" variant="brand" isDelayed />)
+		);
 
 		afterEach(removeSpinner);
 
 		it('renders correct classes when props passed in', function() {
 			const spinner = getSpinner(this.dom);
-			spinner.className.should.include('slds-spinner_brand slds-spinner_small');
+			spinner.className.should.include(
+				'slds-spinner_brand slds-spinner_delayed slds-spinner_small'
+			);
 		});
 	});
 });

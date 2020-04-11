@@ -11,9 +11,11 @@ import SLDSButton from '../../button';
 import Default from '../__examples__/default';
 import Files from '../__examples__/files';
 import WithSelection from '../__examples__/with-selection';
+import DeprecatedWarning from '../../utilities/deprecated-warning';
 
 class DemoLookup extends React.Component {
 	static displayName = 'DemoLookup';
+
 	state = {
 		options: [
 			{
@@ -30,11 +32,13 @@ class DemoLookup extends React.Component {
 			},
 		],
 	};
+
 	clearSelected = () => {
 		this.setState({
 			currentSelected: -1,
 		});
 	};
+
 	handleSelect = (selectedItem, ...rest) => {
 		action('select')(selectedItem, ...rest);
 		this.setState({
@@ -54,6 +58,7 @@ class DemoLookup extends React.Component {
 					onSelect={this.handleSelect}
 					options={this.state.options}
 					selectedItem={this.state.currentSelected}
+					silenceDeprecationWarning
 				/>
 			</div>
 		);
@@ -62,6 +67,7 @@ class DemoLookup extends React.Component {
 
 class DemoLookupAccounts extends React.Component {
 	static displayName = 'DemoLookupAccounts';
+
 	state = {
 		options: [
 			{
@@ -89,6 +95,7 @@ class DemoLookupAccounts extends React.Component {
 			},
 		],
 	};
+
 	handleSelect = (selectedItem, ...rest) => {
 		action('select')(selectedItem, ...rest);
 		this.setState({
@@ -105,6 +112,7 @@ class DemoLookupAccounts extends React.Component {
 				onChange={action('change')}
 				onSelect={this.handleSelect}
 				options={this.state.options}
+				silenceDeprecationWarning
 			/>
 		);
 	}
@@ -112,7 +120,10 @@ class DemoLookupAccounts extends React.Component {
 storiesOf(LOOKUP, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">
-			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
+			<IconSettings iconPath="/assets/icons">
+				{<DeprecatedWarning />}
+				{getStory()}
+			</IconSettings>
 		</div>
 	))
 	.add('Standard', () => (

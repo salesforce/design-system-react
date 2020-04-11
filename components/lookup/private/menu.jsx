@@ -1,3 +1,5 @@
+/* eslint-disable react/sort-comp */
+/* eslint-disable prefer-destructuring */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -74,10 +76,12 @@ class Menu extends React.Component {
 				if (index + 1 < items.length) {
 					const nextItem = items[index + 1];
 					if (nextItem.data && nextItem.data.type !== 'section') {
+						// eslint-disable-next-line fp/no-mutating-methods
 						result.push(item);
 					}
 				}
 			} else {
+				// eslint-disable-next-line fp/no-mutating-methods
 				result.push(item);
 			}
 		});

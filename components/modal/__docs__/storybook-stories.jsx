@@ -1,5 +1,6 @@
 /* eslint-disable react/display-name */
 import React from 'react';
+import moment from 'moment';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
@@ -23,7 +24,7 @@ import { canUseDOM } from '../../../utilities/execution-environment';
 // used by Modal component
 if (canUseDOM && document.querySelector('#root')) {
 	SLDSSettings.setAppElement('#root');
-} else {
+} else if (canUseDOM) {
 	SLDSSettings.setAppElement(document.createElement('div'));
 }
 
@@ -118,6 +119,12 @@ const modalContent = (
 			<Datepicker
 				onDateChange={() => {
 					action('date is selected');
+				}}
+				formatter={(date) => {
+					return date ? moment(date).format('M/D/YYYY') : '';
+				}}
+				parser={(dateString) => {
+					return moment(dateString, 'MM-DD-YYYY').toDate();
 				}}
 			/>
 		</div>
@@ -233,7 +240,7 @@ storiesOf(MODAL, module)
 			},
 			isOpen: true,
 			tagline: 'Enter in details below',
-			title: 'New Opportunity',
+			heading: 'New Opportunity',
 			children: modalContent,
 			onRequestClose: action('modal closed'),
 			portalClassName: 'portal-class-name-test',
@@ -241,10 +248,10 @@ storiesOf(MODAL, module)
 	)
 	.add('Small with footer, not dismissible', () =>
 		getModal({
-			dismissible: false,
+			disableClose: true,
 			isOpen: true,
 			tagline: 'Enter in details below',
-			title: 'New Opportunity',
+			heading: 'New Opportunity',
 			children: modalContent,
 			onRequestClose: action('modal closed'),
 			footer: modalFooter,
@@ -255,7 +262,7 @@ storiesOf(MODAL, module)
 			directional: true,
 			isOpen: true,
 			tagline: 'Enter in details below',
-			title: 'New Opportunity',
+			heading: 'New Opportunity',
 			children: modalContent,
 			onRequestClose: action('modal closed'),
 			footer: (
@@ -275,12 +282,21 @@ storiesOf(MODAL, module)
 			portalClassName: 'portal-class-name-test',
 		})
 	)
+	.add('Small no header and custom footer', () =>
+		getModal({
+			isOpen: true,
+			children: modalContent,
+			onRequestClose: action('modal closed'),
+			portalClassName: 'portal-class-name-test',
+			footer: modalFooter,
+		})
+	)
 	.add('Large with directional footer', () =>
 		getModal({
 			directional: true,
 			isOpen: true,
 			tagline: 'Enter in details below',
-			title: 'New Opportunity',
+			heading: 'New Opportunity',
 			children: modalContent,
 			onRequestClose: action('modal closed'),
 			footer: modalFooter,
@@ -290,7 +306,7 @@ storiesOf(MODAL, module)
 	.add('Prompt', () =>
 		getModal({
 			isOpen: true,
-			title: 'Delete state - Default',
+			heading: 'Delete state - Default',
 			children: (
 				<div className="slds-p-around_medium">
 					Are you sure you want to delete the Default State? This action cannot

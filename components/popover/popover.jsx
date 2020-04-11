@@ -2,7 +2,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-// # Popver Component
+// # Popover Component
 
 // Implements the [Popover design pattern](https://www.lightningdesignsystem.com/components/popovers) in React.
 
@@ -27,7 +27,7 @@ import shortid from 'shortid';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import Button from '../button';
 import MediaObject from '../media-object';
@@ -74,6 +74,8 @@ const defaultProps = {
 	assistiveText: {
 		closeButton: 'Close dialog',
 	},
+	hasNoCloseButton: false,
+	hasNoNubbin: false,
 	hoverCloseDelay: 300,
 	openOn: 'click',
 	position: 'absolute',
@@ -128,9 +130,17 @@ class Popover extends React.Component {
 		 */
 		body: PropTypes.oneOfType([PropTypes.node, PropTypes.array]).isRequired,
 		/**
-		 * CSS classes to be added to the popover. That is the element with `.slds-popover` on it.
+		 * CSS classes to be added to the popover footer. That is the element with `.slds-popover__body` on it.
 		 */
-		className: PropTypes.oneOfType([
+		classNameBody: PropTypes.oneOfType([
+			PropTypes.array,
+			PropTypes.object,
+			PropTypes.string,
+		]),
+		/**
+		 * CSS classes to be added to the popover footer. That is the element with `.slds-popover__footer` on it.
+		 */
+		classNameFooter: PropTypes.oneOfType([
 			PropTypes.array,
 			PropTypes.object,
 			PropTypes.string,
@@ -144,6 +154,10 @@ class Popover extends React.Component {
 		 */
 		footer: PropTypes.node,
 		/**
+		 * An object of CSS styles that are applied to the `slds-popover__footer` DOM element.
+		 */
+		footerStyle: PropTypes.object,
+		/**
 		 * Used with `walkthrough` variant to provide action buttons (ex: "Next" / "Skip" / etc) for a walkthrough popover footer. Accepts either a single node or array of nodes for multiple buttons.
 		 */
 		footerWalkthroughActions: PropTypes.oneOfType([
@@ -151,13 +165,29 @@ class Popover extends React.Component {
 			PropTypes.arrayOf(PropTypes.node),
 		]),
 		/**
+		 * Determines if the popover has a close button or not. Default is `false`
+		 */
+		hasNoCloseButton: PropTypes.bool,
+		/**
+		 * Determines if the popover has a nubbin or not. Default is `false`
+		 */
+		hasNoNubbin: PropTypes.bool,
+		/**
 		 * Prevents the Popover from changing position based on the viewport/window. If set to true your popover can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the popover contents scrollable to fit the menu on the screen. When enabled, `position` `absolute` is used.
 		 */
 		hasStaticAlignment: PropTypes.bool,
 		/**
+		 * Removes `display:inline-block` from the trigger button.
+		 */
+		hasNoTriggerStyles: PropTypes.bool,
+		/**
 		 * All popovers require a heading that labels the popover for assistive technology users. This text will be placed within a heading HTML tag, or in an h2 within the popover body if used with `variant="walkthrough-action"`. A heading is **highly recommended for accessibility reasons.** Please see `ariaLabelledby` prop.
 		 */
 		heading: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+		/**
+		 * Icon displayed in the `feature` variant
+		 */
+		icon: PropTypes.node,
 		/**
 		 * By default, a unique ID will be created at render to support keyboard navigation, ARIA roles, and connect the popover to the triggering button. This ID will be applied to the triggering element. `${id}-popover`, `${id}-dialog-heading`, `${id}-dialog-body` are also created.
 		 */
@@ -231,6 +261,7 @@ class Popover extends React.Component {
 		variant: PropTypes.oneOf([
 			'base',
 			'error',
+			'feature',
 			'walkthrough',
 			'walkthrough-action',
 			'warning',
@@ -243,10 +274,12 @@ class Popover extends React.Component {
 		isOpen: false,
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(POPOVER, this.props, componentDoc);
+		checkProps(POPOVER, props, componentDoc);
 	}
 
 	componentWillUnmount() {
@@ -452,8 +485,8 @@ class Popover extends React.Component {
 	};
 
 	renderDialog = (isOpen, outsideClickIgnoreClass) => {
-		const props = this.props;
-		const offset = props.offset;
+		const { props } = this;
+		const { offset } = props;
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
@@ -479,7 +512,7 @@ class Popover extends React.Component {
 					})}
 				>
 					<h2
-						id={`${this.getId()}-dialog-heading`}
+						id={this.props.ariaLabelledby || `${this.getId()}-dialog-heading`}
 						className={classNames({
 							'slds-text-heading_small': props.variant !== 'walkthrough',
 							'slds-text-heading_medium': props.variant === 'walkthrough',
@@ -494,6 +527,9 @@ class Popover extends React.Component {
 					<MediaObject
 						body={
 							<h2
+								id={
+									this.props.ariaLabelledby || `${this.getId()}-dialog-heading`
+								}
 								className="slds-truncate slds-text-heading_medium"
 								title={props.heading}
 							>
@@ -508,7 +544,11 @@ class Popover extends React.Component {
 		};
 		let header = null;
 
-		if (hasDefinedHeader && props.variant !== 'walkthrough-action') {
+		if (
+			hasDefinedHeader &&
+			props.variant !== 'walkthrough-action' &&
+			props.variant !== 'feature'
+		) {
 			header = headerVariants[hasThemedHeader ? 'themed' : 'base'];
 		}
 
@@ -521,7 +561,10 @@ class Popover extends React.Component {
 				<div>
 					<div
 						id={`${this.getId()}-dialog-body`}
-						className="slds-popover__body slds-popover__body_scrollable"
+						className={classNames(
+							'slds-popover__body slds-popover__body_scrollable',
+							this.props.classNameBody
+						)}
 						// REMOVE IN THE FUTURE: SLDS OVERRIDE
 						// Possible solution in future is to use .slds-popover__body_small
 						style={{
@@ -548,21 +591,39 @@ class Popover extends React.Component {
 					/>
 				</div>
 			);
-		} else if (props.variant === 'walkthrough-action') {
+		} else if (
+			props.variant === 'walkthrough-action' ||
+			props.variant === 'feature'
+		) {
 			body = (
-				<div className="slds-popover__body" id={`${this.getId()}-dialog-body`}>
+				<div
+					className={classNames('slds-popover__body', this.props.classNameBody)}
+					id={`${this.getId()}-dialog-body`}
+				>
 					<div className="slds-media">
 						<div className="slds-media__figure">
-							<Icon
-								category="utility"
-								name="touch_action"
-								size="small"
-								inverse
-							/>
+							{props.variant === 'walkthrough-action' ? (
+								<Icon
+									category="utility"
+									name="touch_action"
+									size="small"
+									inverse
+								/>
+							) : (
+								this.props.icon
+							)}
 						</div>
 						<div className="slds-media__body">
 							{props.heading ? (
-								<h2 className="slds-text-heading_small">{props.heading}</h2>
+								<h2
+									id={
+										this.props.ariaLabelledby ||
+										`${this.getId()}-dialog-heading`
+									}
+									className="slds-text-heading_small"
+								>
+									{props.heading}
+								</h2>
 							) : null}
 							{props.body}
 							{props.stepText ? (
@@ -577,7 +638,10 @@ class Popover extends React.Component {
 		} else {
 			body = (
 				// DEFAULT - NOT SCROLLABLE
-				<div id={`${this.getId()}-dialog-body`} className="slds-popover__body">
+				<div
+					id={`${this.getId()}-dialog-body`}
+					className={classNames('slds-popover__body', this.props.classNameBody)}
+				>
 					{props.body}
 				</div>
 			);
@@ -588,7 +652,16 @@ class Popover extends React.Component {
 
 		if (props.footer) {
 			footer = (
-				<footer className="slds-popover__footer">{this.props.footer}</footer>
+				<footer
+					className={classNames(
+						'slds-popover__footer',
+						this.props.classNameFooter,
+						this.props.footerClassName
+					)}
+					style={this.props.footerStyle}
+				>
+					{this.props.footer}
+				</footer>
 			);
 		} else if (
 			props.variant !== 'walkthrough-action' &&
@@ -616,7 +689,7 @@ class Popover extends React.Component {
 		// MAIN RENDER
 		return isOpen ? (
 			<Dialog
-				hasNubbin
+				hasNubbin={!this.props.hasNoNubbin}
 				align={props.align}
 				contentsClassName={classNames(
 					this.props.contentsClassName,
@@ -626,12 +699,14 @@ class Popover extends React.Component {
 					{
 						'slds-popover_walkthrough':
 							props.variant === 'walkthrough' ||
-							props.variant === 'walkthrough-action',
+							props.variant === 'walkthrough-action' ||
+							props.variant === 'feature',
 					},
 					{
 						'slds-popover_walkthrough-alt':
 							props.variant === 'walkthrough-action',
 					},
+					{ 'slds-popover_feature': props.variant === 'feature' },
 					{ 'slds-popover_warning': props.variant === 'warning' },
 					props.className
 				)}
@@ -657,24 +732,27 @@ class Popover extends React.Component {
 					'aria-describedby': `${this.getId()}-dialog-body`,
 				}}
 			>
-				<Button
-					assistiveText={{ icon: closeButtonAssistiveText }}
-					iconCategory="utility"
-					iconName="close"
-					className={classNames(
-						'slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon',
-						{
-							'slds-button_icon-inverse':
-								props.variant === 'walkthrough' ||
-								props.variant === 'walkthrough-action',
+				{!this.props.hasNoCloseButton && (
+					<Button
+						assistiveText={{ icon: closeButtonAssistiveText }}
+						iconCategory="utility"
+						iconName="close"
+						className={classNames(
+							'slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon',
+							{
+								'slds-button_icon-inverse':
+									props.variant === 'walkthrough' ||
+									props.variant === 'walkthrough-action' ||
+									props.variant === 'feature',
+							}
+						)}
+						onClick={this.handleCancel}
+						variant="icon"
+						inverse={
+							this.props.variant === 'error' || this.props.variant === 'warning'
 						}
-					)}
-					onClick={this.handleCancel}
-					variant="icon"
-					inverse={
-						this.props.variant === 'error' || this.props.variant === 'warning'
-					}
-				/>
+					/>
+				)}
 				{header}
 				{body}
 				{footer}
@@ -707,6 +785,7 @@ class Popover extends React.Component {
 		React.Children.forEach(this.props.children, (child, index) => {
 			if (index === 0) {
 				clonedTrigger = React.cloneElement(child, {
+					'aria-haspopup': 'dialog',
 					id: this.getId(),
 					onClick:
 						this.props.openOn === 'click' || this.props.openOn === 'hybrid'
@@ -730,13 +809,15 @@ class Popover extends React.Component {
 					...child.props,
 				});
 			} else {
+				// eslint-disable-next-line fp/no-mutating-methods
 				otherChildren.push(child);
 			}
 		});
 
 		this.renderOverlay(this.getIsOpen());
-
-		const containerStyles = { display: 'inline-block' };
+		const containerStyles = {
+			display: this.props.hasNoTriggerStyles ? undefined : 'inline-block',
+		};
 		return (
 			<div
 				className={this.props.triggerClassName}

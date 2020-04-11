@@ -1,4 +1,6 @@
 import React from 'react';
+
+import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 import SplitView from '~/components/split-view/index';
 import SplitViewHeader from '~/components/split-view/header';
@@ -6,6 +8,7 @@ import SplitViewListbox from '~/components/split-view/listbox';
 import Button from '~/components/button';
 import Dropdown from '~/components/menu-dropdown';
 import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
+import PageHeaderControl from '~/components/page-header/control';
 
 const SORT_OPTIONS = {
 	UP: 'up',
@@ -78,8 +81,8 @@ const listOptions = [
 	},
 ];
 
-const headerNavRight = (
-	<div>
+const headerActions = () => (
+	<PageHeaderControl>
 		<Dropdown
 			id="header-nav-right-more"
 			align="right"
@@ -92,55 +95,57 @@ const headerNavRight = (
 				{ label: 'Menu Item Two', value: 'B0' },
 			]}
 		/>
-	</div>
+	</PageHeaderControl>
 );
 
-const headerContentRight = (
-	<div>
-		<Dropdown
-			id="header-right-refresh"
-			buttonClassName="slds-m-right_xx-small"
-			assistiveText={{ icon: 'Checkmark with right icon' }}
-			buttonVariant="icon"
-			checkmark
-			iconCategory="utility"
-			iconName="side_list"
-			iconSize="large"
-			iconVariant="more"
-			align="right"
-			onSelect={(value) => {
-				console.log('selected: ', value);
-			}}
-			options={[
-				{ label: 'Display As', type: 'header' },
-				{
-					label: 'Table View',
-					value: 'A0',
-					rightIcon: {
-						category: 'utility',
-						name: 'table',
+const headerControls = () => (
+	<React.Fragment>
+		<PageHeaderControl>
+			<Dropdown
+				id="header-right-refresh"
+				assistiveText={{ icon: 'Checkmark with right icon' }}
+				buttonVariant="icon"
+				checkmark
+				iconCategory="utility"
+				iconName="side_list"
+				iconSize="large"
+				iconVariant="more"
+				align="right"
+				onSelect={(value) => {
+					console.log('selected: ', value);
+				}}
+				options={[
+					{ label: 'Display As', type: 'header' },
+					{
+						label: 'Table View',
+						value: 'A0',
+						rightIcon: {
+							category: 'utility',
+							name: 'table',
+						},
 					},
-				},
-				{
-					label: 'List View',
-					value: 'B0',
-					rightIcon: {
-						category: 'utility',
-						name: 'side_list',
+					{
+						label: 'List View',
+						value: 'B0',
+						rightIcon: {
+							category: 'utility',
+							name: 'side_list',
+						},
 					},
-				},
-			]}
-			value="B0"
-		/>
-
-		<Button
-			assistiveText={{ icon: 'Refresh' }}
-			iconCategory="utility"
-			iconName="refresh"
-			iconVariant="border"
-			variant="icon"
-		/>
-	</div>
+				]}
+				value="B0"
+			/>
+		</PageHeaderControl>
+		<PageHeaderControl>
+			<Button
+				assistiveText={{ icon: 'Refresh' }}
+				iconCategory="utility"
+				iconName="refresh"
+				iconVariant="border"
+				variant="icon"
+			/>
+		</PageHeaderControl>
+	</React.Fragment>
 );
 
 const headerTitle = (
@@ -177,6 +182,7 @@ class Example extends React.Component {
 		super(props);
 
 		this.state = {
+			isOpen: typeof props.isOpen === 'boolean' ? props.isOpen : true,
 			options: listOptions,
 			selected: [listOptions[listOptions.length - 2]],
 			unread: [listOptions[0], listOptions[2]],
@@ -209,15 +215,19 @@ class Example extends React.Component {
 		return [
 			<SplitViewHeader
 				key="1"
-				contentRight={headerContentRight}
-				navRight={headerNavRight}
-				iconAssistiveText="User"
-				iconCategory="standard"
-				iconName="lead"
+				onRenderActions={headerActions}
+				onRenderControls={headerControls}
+				icon={
+					<Icon
+						assistiveText={{ label: 'User' }}
+						category="standard"
+						name="lead"
+					/>
+				}
 				info="42 items • Updated just now"
 				title={headerTitle}
 				truncate
-				variant="objectHome"
+				variant="object-home"
 			/>,
 			<SplitViewListbox
 				key="2"
@@ -305,8 +315,16 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ height: '90vh' }}>
 					<SplitView
+						events={{
+							onClose: () => {
+								this.setState({ isOpen: false });
+							},
+							onOpen: () => {
+								this.setState({ isOpen: true });
+							},
+						}}
 						id="base-example"
-						isOpen={this.props.isOpen}
+						isOpen={this.state.isOpen}
 						master={this.masterView()}
 						detail={this.detailView()}
 					/>

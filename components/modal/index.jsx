@@ -26,7 +26,7 @@ import checkAppElementIsSet from '../../utilities/warning/check-app-element-set'
 import Button from '../button';
 
 import { MODAL } from '../../utilities/constants';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 const documentDefined = typeof document !== 'undefined';
 const windowDefined = typeof window !== 'undefined';
@@ -43,11 +43,13 @@ const propTypes = {
 	/**
 	 * **Assistive text for accessibility.**
 	 * This object is merged with the default props object on every render.
-	 * * `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `title` is used.
+	 * * `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.
+	 * * `dialogLabelledBy`: This describes which node labels the dialog. If not provided and dialogLabel is unavailable, `id` is used.
 	 * * `closeButton`: This is a visually hidden label for the close button.
 	 */
 	assistiveText: PropTypes.shape({
 		dialogLabel: PropTypes.string,
+		dialogLabelledBy: PropTypes.string,
 		closeButton: PropTypes.string,
 	}),
 	/**
@@ -55,7 +57,15 @@ const propTypes = {
 	 */
 	children: PropTypes.node.isRequired,
 	/**
-	 * Custom CSS classes for the modal's container. This is the element with `.slds-modal__container`. Use `classNames` [API](https://github.com/JedWatson/classnames).
+	 * Custom CSS classes for the modal `section` node classed `.slds-modal` and the parent of `.slds-modal__container`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * Custom CSS classes for the modal's container. This is the child element of `.slds-modal` with class `.slds-modal__container`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	containerClassName: PropTypes.oneOfType([
 		PropTypes.array,
@@ -79,11 +89,11 @@ const propTypes = {
 	 */
 	directional: PropTypes.bool,
 	/**
-	 * If true, Modals can be dismissed by clicking on the close icon or pressing esc key.
+	 * If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key.
 	 */
-	dismissible: PropTypes.bool,
+	disableClose: PropTypes.bool,
 	/**
-	 * If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to dismissible.
+	 * If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to disableClose.
 	 */
 	dismissOnClickOutside: PropTypes.bool,
 	/**
@@ -95,7 +105,7 @@ const propTypes = {
 	 */
 	footer: PropTypes.oneOfType([PropTypes.array, PropTypes.node]),
 	/**
-	 * Allows for a custom modal header that does not scroll with modal content. If this is defined, `title` and `tagline` will be ignored. The close button will still be present.
+	 * Allows for a custom modal header that does not scroll with modal content. If this is defined, `heading` and `tagline` will be ignored. The close button will still be present.
 	 */
 	header: PropTypes.node,
 	/**
@@ -106,6 +116,10 @@ const propTypes = {
 		PropTypes.object,
 		PropTypes.string,
 	]),
+	/**
+	 * Unique identifier for the modal. The id is automatically generated if not provided
+	 */
+	id: PropTypes.string,
 	/**
 	 * Forces the modal to be open or closed.
 	 */
@@ -134,17 +148,21 @@ const propTypes = {
 		'info',
 	]),
 	/**
-	 * Specifiies the modal's width. May be deprecated in favor of `width` in the future.
+	 * Specifies the modal's width. May be deprecated in favor of `width` in the future.
 	 */
-	size: PropTypes.oneOf(['medium', 'large']),
+	size: PropTypes.oneOf(['small', 'medium', 'large']),
 	/**
-	 * Content underneath the title in the modal header.
+	 * Content underneath the heading in the modal header.
 	 */
 	tagline: PropTypes.node,
 	/**
-	 * Text heading at the top of a modal.
+	 * Content underneath the title in the modal header.
 	 */
 	title: PropTypes.node,
+	/**
+	 * Text heading at the top of a modal.
+	 */
+	heading: PropTypes.node,
 	/**
 	 * Allows adding additional notifications within the modal.
 	 */
@@ -154,11 +172,11 @@ const propTypes = {
 const defaultProps = {
 	assistiveText: {
 		dialogLabel: '',
+		dialogLabelledBy: '',
 		closeButton: 'Close',
 	},
 	align: 'center',
 	ariaHideApp: true,
-	dismissible: true,
 };
 
 /**
@@ -184,12 +202,10 @@ class Modal extends React.Component {
 		this.dismissModalOnClickOutside = this.dismissModalOnClickOutside.bind(
 			this
 		);
-	}
 
-	componentWillMount() {
 		this.generatedId = shortid.generate();
-		checkProps(MODAL, this.props, componentDoc);
-		if (this.props.ariaHideApp) {
+		checkProps(MODAL, props, componentDoc);
+		if (props.ariaHideApp) {
 			checkAppElementIsSet();
 		}
 	}
@@ -232,34 +248,65 @@ class Modal extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
+	getBorderRadius() {
+		const borderRadiusValue = '.25rem';
+		const borderTopRadius =
+			this.props.title || this.props.heading || this.props.header
+				? {}
+				: {
+						borderTopLeftRadius: borderRadiusValue,
+						borderTopRightRadius: borderRadiusValue,
+					};
+		const borderBottomRadius = this.props.footer
+			? {}
+			: {
+					borderBottomLeftRadius: borderRadiusValue,
+					borderBottomRightRadius: borderRadiusValue,
+				};
+		return {
+			...borderTopRadius,
+			...borderBottomRadius,
+		};
+	}
+
 	getModal() {
 		const modalStyle =
 			this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
-		const borderRadius =
-			this.props.title || this.props.header ? {} : { borderRadius: '.25rem' };
+		const borderRadius = this.getBorderRadius();
 		const contentStyleFromProps = this.props.contentStyle || {};
 		const contentStyle = {
 			...borderRadius,
 			...contentStyleFromProps,
 		};
+		let dialogLabelledBy = null;
+
+		if (this.props.assistiveText.dialogLabelledBy) {
+			// eslint-disable-next-line prefer-destructuring
+			dialogLabelledBy = this.props.assistiveText.dialogLabelledBy;
+		} else if (
+			!this.props.assistiveText.dialogLabel &&
+			(this.props.heading || this.props.title)
+		) {
+			dialogLabelledBy = `${this.getId()}-heading`;
+		}
+
 		return (
 			// temporarily disabling eslint for the onClicks on the div tags
 			/* eslint-disable */
-			<div
+			<section
+				aria-describedby={`${this.getId()}-modal-content`}
 				aria-label={this.props.assistiveText.dialogLabel}
-				aria-labelledby={
-					!this.props.assistiveText.dialogLabel && this.props.title
-						? this.getId()
-						: null
-				}
-				className={classNames({
-					'slds-modal': true,
-					'slds-fade-in-open': true,
-					'slds-modal_large': this.props.size === 'large',
-					'slds-modal_prompt': this.isPrompt(),
-				})}
+				aria-labelledby={dialogLabelledBy}
+				aria-modal={true}
+				className={classNames(
+					'slds-modal',
+					'slds-fade-in-open',
+					this.props.size ? `slds-modal_${this.props.size}` : null,
+					{ 'slds-modal_prompt': this.isPrompt() },
+					this.props.className
+				)}
 				onClick={this.dismissModalOnClickOutside}
-				role={this.props.dismissible ? 'dialog' : 'alertdialog'}
+				role={this.props.disableClose ? 'alertdialog' : 'dialog'}
 			>
 				<div
 					className={classNames(
@@ -274,6 +321,7 @@ class Modal extends React.Component {
 							'slds-modal__content',
 							this.props.contentClassName
 						)}
+						id={`${this.getId()}-modal-content`}
 						style={contentStyle}
 						onClick={this.handleModalClick}
 					>
@@ -281,7 +329,7 @@ class Modal extends React.Component {
 					</div>
 					{this.footerComponent()}
 				</div>
-			</div>
+			</section>
 			/* eslint-enable */
 		);
 	}
@@ -300,7 +348,7 @@ class Modal extends React.Component {
 	}
 
 	closeModal() {
-		if (this.props.dismissible) {
+		if (!this.props.disableClose) {
 			this.dismissModal();
 		}
 	}
@@ -316,10 +364,11 @@ class Modal extends React.Component {
 	}
 
 	dismissModalOnClickOutside() {
-		// if dismissOnClickOutside is not set, default its value to dismissible
-		const dismissOnClickOutside = this.props.dismissOnClickOutside
-			? this.props.dismissOnClickOutside
-			: this.props.dismissible;
+		// if dismissOnClickOutside is not set, default its value to disableClose
+		const dismissOnClickOutside =
+			this.props.dismissOnClickOutside !== undefined
+				? this.props.dismissOnClickOutside
+				: !this.props.disableClose;
 
 		if (dismissOnClickOutside) {
 			this.dismissModal();
@@ -362,7 +411,9 @@ class Modal extends React.Component {
 	headerComponent() {
 		let headerContent = this.props.header;
 		const headerEmpty =
-			!headerContent && !this.props.title && !this.props.tagline;
+			!headerContent &&
+			!(this.props.heading || this.props.title) &&
+			!this.props.tagline;
 		const assistiveText = {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
@@ -376,14 +427,17 @@ class Modal extends React.Component {
 				iconName="close"
 				iconSize="large"
 				inverse
-				className="slds-modal__close"
+				className="slds-button_icon slds-modal__close"
 				onClick={this.closeModal}
 				title={closeButtonAssistiveText}
 				variant="icon"
 			/>
 		);
 
-		if ((!headerContent && this.props.title) || this.props.tagline) {
+		if (
+			(!headerContent && (this.props.heading || this.props.title)) ||
+			this.props.tagline
+		) {
 			headerContent = (
 				<div>
 					{this.props.toast}
@@ -392,9 +446,9 @@ class Modal extends React.Component {
 							'slds-text-heading_small': this.isPrompt(),
 							'slds-text-heading_medium': !this.isPrompt(),
 						})}
-						id={this.getId()}
+						id={`${this.getId()}-heading`}
 					>
-						{this.props.title}
+						{this.props.heading ? this.props.heading : this.props.title}
 					</h2>
 					{this.props.tagline ? (
 						<p className="slds-m-top_x-small">{this.props.tagline}</p>
@@ -417,7 +471,7 @@ class Modal extends React.Component {
 				)}
 				onClick={this.handleModalClick}
 			>
-				{this.props.dismissible ? closeButton : null}
+				{this.props.disableClose ? null : closeButton}
 				{headerContent}
 			</header>
 		);

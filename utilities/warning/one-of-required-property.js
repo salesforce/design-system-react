@@ -11,7 +11,11 @@ let oneOfRequired;
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	oneOfRequired = function(control, selectedProps, comment) {
+	oneOfRequired = function oneOfRequiredFunction(
+		control,
+		selectedProps,
+		comment
+	) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		let atLeastOnePropIsSet = false;
 		const keys = Object.keys(selectedProps);
@@ -32,7 +36,7 @@ if (process.env.NODE_ENV !== 'production') {
 		}
 	};
 } else {
-	oneOfRequired = function() {};
+	oneOfRequired = function oneOfRequiredFunction() {};
 }
 
 export default oneOfRequired;

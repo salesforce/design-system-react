@@ -40,18 +40,22 @@ class Svg extends React.Component {
 
 		if (data) {
 			if (data.g) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				shapes.push(this.getGroups(data.g));
 			}
 
 			if (data.ellipse) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				shapes.push(this.getEllipses(data.ellipse));
 			}
 
 			if (data.circle) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				shapes.push(this.getCircles(data.circle));
 			}
 
 			if (data.path) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				shapes.push(this.getPaths(data.path));
 			}
 		}

@@ -30,7 +30,13 @@ class RadioGroupExample extends React.Component {
 					{this.props.heading}
 				</h1>
 				<RadioGroup
+					errorId={
+						this.props.labels && this.props.labels.error
+							? 'error-id'
+							: undefined
+					}
 					labels={this.props.labels}
+					name="radio-group-example"
 					onChange={this.onChange}
 					disabled={this.props.disabled}
 					required={this.props.required}
@@ -39,7 +45,7 @@ class RadioGroupExample extends React.Component {
 						<Radio
 							key={value}
 							id={value}
-							label={value}
+							labels={{ label: value }}
 							value={value}
 							checked={this.state.checked === value}
 							variant="base"
@@ -80,4 +86,4 @@ storiesOf(RADIO_GROUP, module)
 			}}
 		/>
 	))
-	.add('Docs site Base', () => <Base />);
+	.add('Docs site Base', () => <Base name="base-doc-site" />);

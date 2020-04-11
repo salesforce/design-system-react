@@ -5,7 +5,6 @@ import assign from 'lodash.assign';
 import chai from 'chai';
 
 import IconSettings from '../../icon-settings';
-import Icon from '../../icon';
 import ButtonStateful from '../../button-stateful';
 
 chai.should();
@@ -21,13 +20,15 @@ describe('Button Stateful: ', () => {
 
 	// Setup and takedown
 	const renderButton = (instance) =>
-		function() {
+		function renderButtonFunction() {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
+			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			this.component = ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
 				this.dom
 			);
+			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
 		};
 	function removeButton() {
 		ReactDOM.unmountComponentAtNode(this.dom);

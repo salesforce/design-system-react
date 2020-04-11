@@ -89,9 +89,6 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ overflow: 'auto' }}>
-					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
-						Basic Fluid Layout - Column Bordered
-					</h3>
 					<DataTable
 						columnBordered
 						items={this.state.items}

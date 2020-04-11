@@ -1,4 +1,8 @@
 /* eslint-disable max-lines */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable no-param-reassign */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable max-lines */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -56,11 +60,13 @@ const getNavigableItems = (items) => {
 	if (Array.isArray(items)) {
 		items.forEach((item, index) => {
 			if (itemIsSelectable(item)) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				navigableItems.push({
 					index,
 					text: `${item.label}`.toLowerCase(),
 				});
 
+				// eslint-disable-next-line fp/no-mutating-methods
 				navigableItems.indexes.push(index);
 			}
 		});
@@ -209,6 +215,7 @@ const MenuPicklist = createReactClass({
 			const currentSelectedIndex = this.getIndexByValue(this.props);
 			const currentIndices = this.state.selectedIndices;
 			if (currentSelectedIndex !== -1) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				currentIndices.push(currentSelectedIndex);
 			}
 			this.setState({
@@ -219,7 +226,8 @@ const MenuPicklist = createReactClass({
 		this.navigableItems = getNavigableItems(this.props.options);
 	},
 
-	componentWillReceiveProps(nextProps) {
+	// eslint-disable-next-line camelcase, react/sort-comp
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (
 			this.props.value !== nextProps.value ||
 			this.props.options.length !== nextProps.length
@@ -318,6 +326,7 @@ const MenuPicklist = createReactClass({
 			} else {
 				const deselectIndex = this.state.selectedIndices.indexOf(index);
 				currentIndices = this.state.selectedIndices;
+				// eslint-disable-next-line fp/no-mutating-methods
 				currentIndices.splice(deselectIndex, 1);
 			}
 
@@ -629,6 +638,7 @@ const MenuPicklist = createReactClass({
 							onRequestRemove: (event, data) => {
 								const newData = this.state.selectedIndices;
 								const index = data.index;
+								// eslint-disable-next-line fp/no-mutating-methods
 								newData.splice(this.state.selectedIndices.indexOf(index), 1);
 								this.setState({ selectedIndices: newData });
 
@@ -669,7 +679,8 @@ const MenuPicklist = createReactClass({
 		const { className, errorText, label, required } = this.props;
 
 		const requiredElem = required ? (
-			<span style={{ color: 'red' }}>* </span>
+			// eslint-disable-next-line react/jsx-curly-brace-presence
+			<span style={{ color: 'red' }}>{'* '}</span>
 		) : null;
 
 		return (

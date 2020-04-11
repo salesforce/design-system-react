@@ -21,10 +21,9 @@ import Combobox from '../../../components/combobox';
 import Tooltip from '../../../components/tooltip';
 import Icon from '../../../components/icon';
 import filter from '../../../components/combobox/filter';
-import KEYS, { keyObjects } from '../../../utilities/key-code';
-import LETTERKEYS, {
-	keyObjects as letterKeyObjects,
-} from '../../../utilities/letter-key-code';
+import Popover from '../../../components/popover';
+import { keyObjects } from '../../../utilities/key-code';
+import { keyObjects as letterKeyObjects } from '../../../utilities/letter-key-code';
 import IconSettings from '../../../components/icon-settings';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
@@ -168,7 +167,7 @@ class DemoComponent extends React.Component {
 								selection: data.selection,
 							});
 						},
-						onOpen: (event) => {
+						onOpen: () => {
 							this.props.onOpen();
 						},
 					}}
@@ -198,6 +197,7 @@ const getNodes = ({ wrapper }) => ({
 	selectedListbox: wrapper.find(
 		`#${defaultProps.id}-selected-listbox .slds-listbox`
 	),
+	popover: wrapper.find('.slds-popover'),
 });
 
 /* All tests for component being tested should be wrapped in a root `describe`,
@@ -209,7 +209,7 @@ const getNodes = ({ wrapper }) => ({
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSCombobox', function() {
+describe('SLDSCombobox', function describeFunction() {
 	let mountNode;
 	let wrapper;
 
@@ -237,12 +237,71 @@ describe('SLDSCombobox', function() {
 		});
 
 		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', function() {
-			wrapper = mount(<DemoComponent multiple isOpen />, {
-				attachTo: mountNode,
-			});
+			wrapper = mount(
+				<DemoComponent
+					multiple
+					isOpen
+					optionsSearchEntity={[
+						{
+							id: 'options-search-id-1',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add' }}
+									size="x-small"
+									category="utility"
+									name="search"
+								/>
+							),
+							label: 'Search in Salesforce',
+						},
+						{
+							id: 'search-in-account-id',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add in Accounts' }}
+									size="x-small"
+									category="utility"
+									name="search"
+								/>
+							),
+							label: (searchTerm) => (
+								<React.Fragment>
+									{searchTerm && searchTerm.length > 0 ? (
+										<span className="slds-text-title_bold">{`"${searchTerm}" `}</span>
+									) : (
+										'Search '
+									)}
+									in Accounts
+								</React.Fragment>
+							),
+						},
+					]}
+					optionsAddItem={[
+						{
+							id: 'options-add-id-1',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add' }}
+									category="utility"
+									size="x-small"
+									name="add"
+								/>
+							),
+							label: 'New Entity',
+						},
+					]}
+				/>,
+				{
+					attachTo: mountNode,
+				}
+			);
 			let nodes = getNodes({ wrapper });
 			nodes.input.simulate('focus');
 			nodes.input.simulate('change', { target: { value: accounts[1].label } });
+			// pass over header item 1
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
+			// pass  over header item 2
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
 			nodes.input.simulate('keyDown', keyObjects.DOWN);
 			expect(
 				nodes.menuListbox.find('#combobox-unique-id-listbox-option-2')
@@ -288,7 +347,7 @@ describe('SLDSCombobox', function() {
 				allPillsRemoved: [],
 			};
 			const selectionIndexedStates = Object.keys(selectionKeyedStates).map(
-				(key, index) => selectionKeyedStates[key]
+				(key) => selectionKeyedStates[key]
 			);
 
 			let counter = 0;
@@ -369,7 +428,7 @@ describe('SLDSCombobox', function() {
 
 			nodes.input.simulate('keyDown', keyObjects.DOWN);
 			nodes = getNodes({ wrapper });
-			for (let i = 0; i < 3; i++) {
+			for (let i = 0; i < 3; i += 1) {
 				nodes.input.simulate('keyDown', letterKeyObjects.A);
 			}
 
@@ -380,7 +439,7 @@ describe('SLDSCombobox', function() {
 				menuListItem.instance().className.search('slds-has-focus') > -1
 			).to.eql(true);
 
-			const scrollTop = nodes.menuListbox.instance().scrollTop;
+			const { scrollTop } = nodes.menuListbox.instance();
 			expect(scrollTop === 98 || scrollTop === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
 		});
 
@@ -391,12 +450,11 @@ describe('SLDSCombobox', function() {
 			let nodes = getNodes({ wrapper });
 			let i;
 			let menuListItem;
-			let scrollTop;
 
 			nodes.input.simulate('keyDown', keyObjects.DOWN);
 			nodes = getNodes({ wrapper });
 
-			for (i = 0; i < 8; i++) {
+			for (i = 0; i < 8; i += 1) {
 				nodes.input.simulate('keyDown', keyObjects.DOWN);
 			}
 
@@ -407,10 +465,10 @@ describe('SLDSCombobox', function() {
 				menuListItem.instance().className.search('slds-has-focus') > -1
 			).to.eql(true);
 
-			scrollTop = nodes.menuListbox.instance().scrollTop;
-			expect(scrollTop === 98 || scrollTop === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
+			const { scrollTop: scrollTop1 } = nodes.menuListbox.instance();
+			expect(scrollTop1 === 98 || scrollTop1 === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
 
-			for (i = 0; i < 8; i++) {
+			for (i = 0; i < 8; i += 1) {
 				nodes.input.simulate('keyDown', keyObjects.UP);
 			}
 
@@ -421,8 +479,8 @@ describe('SLDSCombobox', function() {
 				menuListItem.instance().className.search('slds-has-focus') > -1
 			).to.eql(true);
 
-			scrollTop = nodes.menuListbox.instance().scrollTop;
-			expect(scrollTop === 4 || scrollTop === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
+			const { scrollTop: scrollTop2 } = nodes.menuListbox.instance();
+			expect(scrollTop2 === 4 || scrollTop2 === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
 		});
 	});
 
@@ -464,6 +522,38 @@ describe('SLDSCombobox', function() {
 			nodes.removeSingleItem.simulate('click');
 			nodes = getNodes({ wrapper });
 			expect(nodes.input).to.have.value('');
+		});
+	});
+
+	describe('Dialog variant', () => {
+		beforeEach(() => {
+			mountNode = createMountNode({ context: this });
+		});
+
+		afterEach(() => {
+			destroyMountNode({ wrapper, mountNode });
+		});
+
+		it('popover opens when down arrow is pressed', () => {
+			wrapper = mount(
+				<DemoComponent variant="popover" popover={<Popover />} isOpen />
+			);
+
+			let nodes = getNodes({ wrapper });
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
+			nodes = getNodes({ wrapper });
+			expect(nodes.popover).to.be.present;
+		});
+
+		it('onOpen callback is called when dialog variant', () => {
+			wrapper = mount(
+				<DemoComponent variant="popover" popover={<Popover />} isOpen />
+			);
+
+			let nodes = getNodes({ wrapper });
+			nodes.input.simulate('click', {});
+			nodes = getNodes({ wrapper });
+			expect(nodes.popover).to.be.present;
 		});
 	});
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-find-dom-node */
 
 import React from 'react';
@@ -42,12 +43,12 @@ describe('SLDSModal: ', function() {
 		container = document.createElement('div');
 
 		const opener = (
-			<button>
+			<button type="button">
 				<IconSettings iconPath="/assets/icons">{modalInstance}</IconSettings>
 			</button>
 		);
 		document.body.appendChild(container);
-		renderedNode = ReactDOM.render(opener, container);
+		renderedNode = ReactDOM.render(opener, container); // deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 		return renderedNode;
 	};
 
@@ -68,7 +69,6 @@ describe('SLDSModal: ', function() {
 				portalClassName: 'portal-class-name-test',
 			});
 		});
-
 		it('has correct containerClassName, contentClassName, contentStyle, and portalClassName', () => {
 			const modalContainer = getModalNode(document.body).querySelector(
 				'.slds-modal__container.container-class-name-test'
@@ -83,6 +83,33 @@ describe('SLDSModal: ', function() {
 				'body > .portal-class-name-test'
 			);
 			expect(modalPortal).to.exist;
+		});
+	});
+
+	describe('Sizing', () => {
+		it('size is set to small', () => {
+			const cmp = getModal({
+				isOpen: true,
+				size: 'small',
+			});
+			const modal = getModalNode(document.body);
+			expect(modal.className).to.include('slds-modal_small');
+		});
+		it('size is set to medium', () => {
+			const cmp = getModal({
+				isOpen: true,
+				size: 'medium',
+			});
+			const modal = getModalNode(document.body);
+			expect(modal.className).to.include('slds-modal_medium');
+		});
+		it('size is set to large', () => {
+			const cmp = getModal({
+				isOpen: true,
+				size: 'large',
+			});
+			const modal = getModalNode(document.body);
+			expect(modal.className).to.include('slds-modal_large');
 		});
 	});
 
@@ -121,7 +148,7 @@ describe('SLDSModal: ', function() {
 			modal = getModalNode(document.body);
 		});
 
-		it('adds the large class', () => {
+		it('size is set to large', () => {
 			expect(modal.className).to.include('slds-modal_large');
 		});
 
@@ -144,8 +171,10 @@ describe('SLDSModal: ', function() {
 
 	describe('Proper HTML markup', () => {
 		it('dismissible modal has role=dialog', () => {
+			// eslint-disable-next-line no-unused-vars
 			const cmp = getModal({
 				isOpen: true,
+				size: 'medium',
 			});
 			const modal = getModalNode(document.body);
 			const role = modal.getAttribute('role');
@@ -155,7 +184,7 @@ describe('SLDSModal: ', function() {
 		it('non-dismissible modal has role=alertdialog', () => {
 			const cmp = getModal({
 				isOpen: true,
-				dismissible: false,
+				disableClose: true,
 			});
 			const modal = getModalNode(document.body);
 			const role = modal.getAttribute('role');
@@ -195,7 +224,7 @@ describe('SLDSModal: ', function() {
 			getModal({
 				isOpen: true,
 				prompt: 'warning',
-				title: 'are you sure?',
+				heading: 'are you sure?',
 				footer: feet,
 			});
 			modal = getModalNode(document.body);
@@ -252,10 +281,10 @@ describe('SLDSModal: ', function() {
 
 		beforeEach(() => {
 			const feet = [
-				<button key="test-content1" className="cancel">
+				<button type="button" key="test-content1" className="cancel">
 					Cancel
 				</button>,
-				<button key="test-content2" className="save">
+				<button type="button" key="test-content2" className="save">
 					Save
 				</button>,
 			];

@@ -13,12 +13,13 @@ Testing is done using Mocha, Jest, and Storybook. Roughly speaking: Jest tests D
 
 ### Running tests
 
-* Run lint, Karma/PhantomJS environment, and snapshot tests with `npm test`.
+* Run lint, Karma/Chromium environment, and snapshot tests with `npm test`.
 * Test Mocha tests interactively in your browser.
   * Start server from terminal with `npm start`
   * Browse to [http://localhost:8001](http://localhost:8001)
 * Run snapshot tests with `npm run test:snapshot` or, for just a specific file:
   `npm run test:snapshot components/button/`.
+* The entire test suite may take up to 10 minutes to run. To update Jest snapshots for a single component, use `npm run test:snapshot:update -- -t=popover` where the test name contains `popover`.
 
 ### React Storybook
 
@@ -39,7 +40,7 @@ There are two parts to code linting: style and quality. [Prettier](https://prett
 
 Story-based tests use [Jest](https://facebook.github.io/jest/), [React Storybook](https://storybook.js.org/), and [Storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) to automatically create DOM and image snapshots of each story example. Snapshot testing uses the Jest framework to take a snapshot of the state of the DOM when the component is rendered and save it as a string for future comparison. StoryShots utilizes Jest Image Snapshot to test the visual rendering of pages against previously correct versions for visual regression testing. These tests are run without a DOM. Most props that don't involve the user can be tested here.
 
-To create tests automatically, import examples in `/components/storybook-stories.js` into `/components/story-based-tests.js` also. Then, run `npm run test:snapshot`. Markup and image snapshots will be generated within the `tests` folder for each Storybook story. If additional snapshot tests are needed, create a test ending in `.snapshot-test.jsx`.
+To create tests automatically, import examples in `/components/storybook-stories.js` into `/components/story-based-tests.js` also. Then, run `npm run test:snapshot`. Markup and image snapshots will be generated for each Storybook story. To update existing snapshots, please use `npm run test:snapshot:update`.
 
 Use Jest to test the presence of:
 
@@ -52,12 +53,17 @@ Use Jest to test the presence of:
 
 * Mouse/keyboard user interaction (event callbacks)
 
+#### How to add new suites of tests
+
+Suites such as DOM snanpshot tests or accessibility tests should be added to all stories and the whole library at once. Stories that do not pass, should be excluded from continuous integration tests and an issue should be created to remove the component from exclusion. In short, add types of testing to all new components by excluding existing components that fail instead of adding existing components to a list of components to test. This forces new components to meet the requirements of the new tests and creates a list of components that need to be worked on instead of a list of components that currently pass.
+
 #### Source files
 
 Snapshot test suite source files that run stories present in `/components/story-based-tests.js`:
 
-* `/tests/story-based-tests.snapshot-test.js`
-* `/tests/story-based-accessibility-tests.js`
+* `/tests/story-based.accessibility-test.js`
+* `/tests/story-based.image-test.js`
+* `/tests/story-based.snapshot-test.js`
 
 #### Story removal from test suite
 
@@ -83,7 +89,7 @@ If a Storybook story should not be tested by Storyshots, please add the suffix `
 ## General test requirements
 
 * Tests need to simulate user interactions as closely as possible.
-* Tests must work in both PhantomJS via the CLI and in your local browser at [http://localhost:8001](http://localhost:8001).
+* Tests must work in both Chromium via the CLI and in your local browser at [http://localhost:8001](http://localhost:8001).
 * All pull requests must contain unit testing of:
   * All components not in a `private` folder
   * All props. This includes `children`, but only to check if `children` rendered.

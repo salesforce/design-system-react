@@ -3,10 +3,11 @@
 
 /* eslint-disable import/no-mutable-exports */
 
-let lowPriorityWarning = function() {};
+let lowPriorityWarning = function printWarningFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	const printWarning = function(originalMessage, ...args) {
+	// eslint-disable-next-line fp/no-rest-parameters
+	const printWarning = function printWarningFunction(originalMessage, ...args) {
 		let argIndex = 0;
 		const message = `Warning: ${originalMessage.replace(/%s/g, () => {
 			const argument = args[argIndex];
@@ -18,10 +19,12 @@ if (process.env.NODE_ENV !== 'production') {
 		}
 		try {
 			// Throw error to enable tracing the callstack.
+			// eslint-disable-next-line fp/no-throw
 			throw new Error(message);
 		} catch (event) {} // eslint-disable-line no-empty
 	};
 
+	// eslint-disable-next-line fp/no-rest-parameters
 	lowPriorityWarning = (condition, originalMessage, ...args) => {
 		if (!condition && originalMessage) {
 			printWarning(originalMessage, ...args);

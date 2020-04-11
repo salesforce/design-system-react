@@ -26,10 +26,11 @@ import Input from '../input';
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import EventUtil from '../../utilities/event';
 import KEYS from '../../utilities/key-code';
+import lowPriorityWarning from '../../utilities/warning/low-priority-warning';
 
 import { DATE_PICKER } from '../../utilities/constants';
 
@@ -45,6 +46,7 @@ const propTypes = {
 		nextMonth: PropTypes.string,
 		openCalendar: PropTypes.string,
 		previousMonth: PropTypes.string,
+		year: PropTypes.string,
 	}),
 	/**
 	 * Aligns the right or left side of the menu with the respective side of the trigger. _Tested with snapshot testing._
@@ -67,7 +69,7 @@ const propTypes = {
 	 */
 	dateDisabled: PropTypes.func,
 	/**
-	 * Date formatting function that formats the `value` prop (`value` is an ECMAScript `Date()` object) before rendering the `input` value. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and internationalization. _Tested with snapshot testing._
+	 * Date formatting function that formats the `value` prop (`value` is an ECMAScript `Date()` object) and returns a string to be rendered as the `input` value. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and internationalization. _Tested with snapshot testing._
 	 * The default `formatter` function is:
 	 * ```
 	 * formatter(date) {
@@ -109,7 +111,7 @@ const propTypes = {
 		weekDays: PropTypes.array,
 	}),
 	/**
-	 * A [Dropdown](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology.
+	 * An [Input](http://react.lightningdesignsystem.com/components/inputs/) component. The props from this `Input` component will be merged and override any default props. See [Component composition with prop spread](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#component-composition-with-prop-spread) for more information on this methodology.
 	 */
 	input: PropTypes.node,
 	/**
@@ -156,7 +158,7 @@ const propTypes = {
 	 */
 	onRequestOpen: PropTypes.func,
 	/**
-	 * Custom function to parse date string from the `input` value and returns a `Date` object.  Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date parsing and internationalization. The default `parser` passes the input value to ECMAScript `Date()` and _prays_ for a miracle. **Do not use the default parsing function in production.** _Tested with snapshot testing._
+	 * Custom function to parse date string from the `input` value, which must return an ECMAScript `Date()` object.  Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date parsing and internationalization. The default `parser` passes the input value to ECMAScript `Date()` and _prays_ for a miracle. **Do not use the default parsing function in production.** _Tested with snapshot testing._
 	 * The default `parser function is:
 	 * ```
 	 * parser(str) {
@@ -193,6 +195,7 @@ const defaultProps = {
 		nextMonth: 'Next month',
 		openCalendar: 'Open Calendar',
 		previousMonth: 'Previous month',
+		year: 'Year',
 	},
 	formatter(date) {
 		return date
@@ -229,6 +232,10 @@ const defaultProps = {
 	},
 	menuPosition: 'absolute',
 	parser(str) {
+		lowPriorityWarning(
+			false,
+			`Please use an external library for date parsing and internationalization like MomentJS (https://github.com/moment/moment/) instead of the default parser.`
+		);
 		return new Date(str);
 	},
 	relativeYearFrom: -10,
@@ -253,54 +260,32 @@ class Datepicker extends React.Component {
 		const dateString = props.formatter(props.value);
 		const initDate = props.value ? dateString : formattedValue;
 
-		this.getId = this.getId.bind(this);
-		this.getIsOpen = this.getIsOpen.bind(this);
-		this.handleCalendarChange = this.handleCalendarChange.bind(this);
-		this.handleClickOutside = this.handleClickOutside.bind(this);
-		this.handleRequestClose = this.handleRequestClose.bind(this);
-		this.openDialog = this.openDialog.bind(this);
-		this.parseDate = this.parseDate.bind(this);
-		this.handleClose = this.handleClose.bind(this);
-		this.handleOpen = this.handleOpen.bind(this);
-		this.getDialog = this.getDialog.bind(this);
-		this.getDatePicker = this.getDatePicker.bind(this);
-		this.handleInputChange = this.handleInputChange.bind(this);
-		this.handleKeyDown = this.handleKeyDown.bind(this);
-
 		this.state = {
 			isOpen: false,
+			isOpenFromIcon: false,
 			value: props.value,
 			formattedValue: initDate || '',
 			inputValue: initDate || '',
 		};
-	}
 
-	componentWillMount() {
 		this.generatedId = shortid.generate();
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(DATE_PICKER, this.props, componentDoc);
+		checkProps(DATE_PICKER, props, componentDoc);
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.value && this.props.value) {
-			const currentDate = this.props.value.getTime();
-			const nextDate = nextProps.value.getTime();
-
-			if (currentDate !== nextDate) {
-				this.setState({
-					value: nextProps.value,
-					formattedValue: this.props.formatter(nextProps.value),
-					inputValue: this.props.formatter(nextProps.value),
-				});
-			}
+	getDatePicker = ({ labels, assistiveText }) => {
+		let date;
+		// Use props if present. Otherwise, use state.
+		if (this.props.value) {
+			date = this.props.formatter(this.props.value)
+				? this.parseDate(this.props.formatter(this.props.value))
+				: this.props.value;
+		} else {
+			date = this.state.formattedValue
+				? this.parseDate(this.state.formattedValue)
+				: this.state.value;
 		}
-	}
-
-	getDatePicker({ labels, assistiveText }) {
-		const date = this.state.formattedValue
-			? this.parseDate(this.state.formattedValue)
-			: this.state.value;
 
 		return (
 			<CalendarWrapper
@@ -317,6 +302,8 @@ class Datepicker extends React.Component {
 				assistiveTextPreviousMonth={
 					this.props.assistiveTextPreviousMonth || assistiveText.previousMonth // eslint-disable-line react/prop-types
 				}
+				assistiveTextYear={assistiveText.year}
+				canFocusCalendar={this.state.isOpenFromIcon}
 				id={this.getId()}
 				isIsoWeekday={this.props.isIsoWeekday}
 				monthLabels={
@@ -340,9 +327,9 @@ class Datepicker extends React.Component {
 				}
 			/>
 		);
-	}
+	};
 
-	getDialog({ labels, assistiveText }) {
+	getDialog = ({ labels, assistiveText }) => {
 		// FOR BACKWARDS COMPATIBILITY
 		const menuPosition = this.props.isInline
 			? 'relative'
@@ -379,17 +366,14 @@ class Datepicker extends React.Component {
 				{this.getDatePicker({ labels, assistiveText })}
 			</Dialog>
 		) : null;
-	}
+	};
 
-	getId() {
-		return this.props.id || this.generatedId;
-	}
+	getId = () => this.props.id || this.generatedId;
 
-	getIsOpen() {
-		return !!(typeof this.props.isOpen === 'boolean'
+	getIsOpen = () =>
+		!!(typeof this.props.isOpen === 'boolean'
 			? this.props.isOpen
 			: this.state.isOpen);
-	}
 
 	getInputProps = ({ assistiveText, labels }) => {
 		/**
@@ -412,7 +396,9 @@ class Datepicker extends React.Component {
 					aria-expanded={this.getIsOpen()}
 					category="utility"
 					name="event"
-					onClick={this.openDialog}
+					onClick={() => {
+						this.openDialogFromIcon();
+					}}
 					type="button"
 				/>
 			),
@@ -425,7 +411,9 @@ class Datepicker extends React.Component {
 				this.openDialog();
 			},
 			onKeyDown: this.handleKeyDown,
-			value: this.state.inputValue,
+			value: this.props.value
+				? this.props.formatter(this.props.value)
+				: this.state.inputValue,
 		};
 
 		// eslint-disable react/prop-types
@@ -460,7 +448,7 @@ class Datepicker extends React.Component {
 		};
 	};
 
-	setInputRef(component) {
+	setInputRef = (component) => {
 		this.inputRef = component;
 		// yes, this is a re-render triggered by a render.
 		// Dialog/Popper.js cannot place the popover until
@@ -470,14 +458,16 @@ class Datepicker extends React.Component {
 		if (!this.state.inputRendered) {
 			this.setState({ inputRendered: true });
 		}
-	}
+	};
 
-	handleCalendarChange(event, { date }) {
-		this.setState({
-			value: date,
-			formattedValue: this.props.formatter(date),
-			inputValue: this.props.formatter(date),
-		});
+	handleCalendarChange = (event, { date }) => {
+		if (!this.props.value) {
+			this.setState({
+				value: date,
+				formattedValue: this.props.formatter(date),
+				inputValue: this.props.formatter(date),
+			});
+		}
 
 		this.handleRequestClose();
 
@@ -495,19 +485,19 @@ class Datepicker extends React.Component {
 			this.props.onDateChange(date, this.props.formatter(date));
 		}
 		/* eslint-enable react/prop-types */
-	}
+	};
 
-	handleClickOutside() {
+	handleClickOutside = () => {
 		this.handleRequestClose();
-	}
+	};
 
-	handleClose() {
+	handleClose = () => {
 		if (this.props.onClose) {
 			this.props.onClose();
 		}
-	}
+	};
 
-	handleInputChange(event) {
+	handleInputChange = (event) => {
 		this.setState({
 			formattedValue: event.target.value,
 			inputValue: event.target.value,
@@ -522,9 +512,9 @@ class Datepicker extends React.Component {
 				timezoneOffset: date.getTimezoneOffset(),
 			});
 		}
-	}
+	};
 
-	handleKeyDown(event) {
+	handleKeyDown = (event) => {
 		// Don't open if user is selecting text
 		if (
 			event.keyCode &&
@@ -535,47 +525,60 @@ class Datepicker extends React.Component {
 			this.setState({ isOpen: true });
 		}
 
+		if (event.keyCode === KEYS.ESCAPE || event.keyCode === KEYS.ENTER) {
+			EventUtil.trapEvent(event);
+			this.setState({ isOpen: false });
+		}
+
 		// Please remove `onKeyDown` on the next breaking change.
 		/* eslint-disable react/prop-types */
 		if (this.props.onKeyDown) {
 			this.props.onKeyDown(event, {});
 		}
 		/* eslint-enable react/prop-types */
-	}
+	};
 
-	handleOpen(event, { portal }) {
+	handleOpen = (event, { portal }) => {
 		if (this.props.onOpen) {
 			this.props.onOpen(event, { portal });
 		}
 
-		if (this.selectedDateCell) {
+		if (this.selectedDateCell && this.state.isOpenFromIcon) {
 			this.selectedDateCell.focus();
 		}
-	}
+	};
 
-	handleRequestClose() {
+	handleRequestClose = () => {
 		if (this.props.onRequestClose) {
 			this.props.onRequestClose();
 		}
 
 		if (this.getIsOpen()) {
-			this.setState({ isOpen: false });
+			this.setState({ isOpen: false, isOpenFromIcon: false });
 
 			if (this.inputRef) {
 				this.inputRef.focus();
 			}
 		}
-	}
+	};
 
-	openDialog() {
+	openDialogFromIcon = () => {
+		this.setState({ isOpenFromIcon: true });
+		this.openDialog(true);
+	};
+
+	openDialog = (isRequestFromIcon = false) => {
+		if (!isRequestFromIcon) {
+			this.setState({ isOpenFromIcon: false });
+		}
 		if (this.props.onRequestOpen) {
 			this.props.onRequestOpen();
 		} else {
 			this.setState({ isOpen: true });
 		}
-	}
+	};
 
-	parseDate(formattedValue) {
+	parseDate = (formattedValue) => {
 		let parsedDate = this.props.parser(formattedValue);
 		if (
 			Object.prototype.toString.call(parsedDate) !== '[object Date]' ||
@@ -584,7 +587,7 @@ class Datepicker extends React.Component {
 			parsedDate = new Date();
 		}
 		return parsedDate;
-	}
+	};
 
 	render() {
 		// Merge objects of strings with their default object

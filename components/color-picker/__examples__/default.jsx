@@ -5,7 +5,7 @@ import IconSettings from '~/components/icon-settings';
 import ColorPicker from '~/components/color-picker';
 
 class Example extends React.Component {
-	static displayName = 'DatepickerExample';
+	static displayName = 'ColorPickerExample';
 
 	render() {
 		return (

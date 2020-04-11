@@ -12,26 +12,48 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<ButtonGroup className="slds-p-bottom_medium">
-					<Tooltip align="bottom" content="Buttonbar Tooltip">
-						<Button label="Refresh" />
+				<ButtonGroup
+					className="slds-p-bottom_medium"
+					variant="list"
+					id="button-group-tooltip"
+				>
+					<Tooltip
+						id="refresh-tooltip"
+						align="bottom"
+						content="Buttonbar Tooltip"
+						variant="list-item"
+					>
+						<Button id="refresh-button" label="Refresh" />
 					</Tooltip>
-					<Tooltip align="bottom right" content="Buttonbar Tooltip">
-						<Button label="Edit" />
+					<Tooltip
+						id="edit-tooltip"
+						align="bottom right"
+						content="Buttonbar Tooltip"
+						variant="list-item"
+					>
+						<Button label="Edit" id="edit-button" />
 					</Tooltip>
-					<Dropdown
-						assistiveText={{ icon: 'More Options' }}
-						buttonVariant="icon"
-						iconCategory="utility"
-						iconName="down"
-						iconVariant="border-filled"
-						onSelect={(item) => console.log('selected', item)}
-						options={[
-							{ label: 'A Option', value: 'A0' },
-							{ label: 'B Option', value: 'B0' },
-							{ label: 'C Option', value: 'C0' },
-						]}
-					/>
+					<Tooltip
+						id="drop-tooltip"
+						align="bottom right"
+						content="Buttonbar Tooltip"
+						variant="list-item"
+					>
+						<Dropdown
+							id="options"
+							assistiveText={{ icon: 'More Options' }}
+							buttonVariant="icon"
+							iconCategory="utility"
+							iconName="down"
+							iconVariant="border-filled"
+							onSelect={(item) => console.log('selected', item)}
+							options={[
+								{ label: 'A Option', value: 'A0' },
+								{ label: 'B Option', value: 'B0' },
+								{ label: 'C Option', value: 'C0' },
+							]}
+						/>
+					</Tooltip>
 				</ButtonGroup>
 			</IconSettings>
 		);

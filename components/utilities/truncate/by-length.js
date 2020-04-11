@@ -20,6 +20,7 @@ export default function truncateByLength({
 				length += word.length + 1;
 
 				if (length <= maxLength) {
+					// eslint-disable-next-line fp/no-mutating-methods
 					combined.push(word);
 				}
 

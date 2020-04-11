@@ -12,6 +12,8 @@
  * To view `npm start` and open `http://localhost:8001`.
  */
 
+import consoleMessageOverrides from './console-message-overrides'; // eslint-disable-line no-unused-vars
+
 const browserTestsContext = require.context(
 	'../components/',
 	true,

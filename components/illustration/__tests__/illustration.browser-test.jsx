@@ -5,8 +5,6 @@
 
 import React from 'react';
 
-import PropTypes from 'prop-types';
-
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 // `this.wrapper` and `this.dom` is set in the helpers file
@@ -23,12 +21,12 @@ class DemoIllustration extends React.Component {
 	static displayName = 'DemoIllustration';
 
 	render() {
-		return <Illustration {...this.props} />;
+		return <Illustration {...this.props} silenceDeprecationWarning />;
 	}
 }
 
-describe('SLDSIllustration: ', function() {
-	describe('Image with heading and message render', function() {
+describe('SLDSIllustration: ', function describeFunction() {
+	describe('Image with heading and message render', function describeFunction2() {
 		let svg;
 		let heading;
 		let messageBody;
@@ -86,7 +84,7 @@ describe('SLDSIllustration: ', function() {
 		});
 	});
 
-	describe('Heading and message render', function() {
+	describe('Heading and message render', function describeFunction2() {
 		let svg;
 		let heading;
 		let messageBody;
@@ -119,10 +117,9 @@ describe('SLDSIllustration: ', function() {
 		});
 	});
 
-	describe('Heading only renders', function() {
+	describe('Heading only renders', function describeFunction2() {
 		let svg;
 		let heading;
-		let messageBody;
 
 		beforeEach(
 			mountComponent(

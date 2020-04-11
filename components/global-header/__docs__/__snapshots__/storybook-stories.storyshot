@@ -42,6 +42,12 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
         <div
           className="slds-form-element"
         >
+          <label
+            className="slds-form-element__label slds-assistive-text"
+            htmlFor="header-search-custom-id"
+          >
+            Search
+          </label>
           <div
             className="slds-form-element__control"
           >
@@ -51,7 +57,6 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
               <div
                 aria-expanded={false}
                 aria-haspopup="listbox"
-                aria-owns="header-search-custom-id-listbox"
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
                 role="combobox"
               >
@@ -62,7 +67,6 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   <input
                     aria-activedescendant={null}
                     aria-autocomplete="list"
-                    aria-controls="header-search-custom-id-listbox"
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     id="header-search-custom-id"
@@ -82,7 +86,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                     className="slds-input__icon slds-icon-text-default"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                     />
                   </svg>
                 </div>
@@ -119,7 +123,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
                     />
                   </svg>
                   <span
@@ -137,6 +141,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   }
                 >
                   <button
+                    aria-haspopup="dialog"
                     className="slds-button slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-more"
                     disabled={false}
                     id="header-favorites-popover-id"
@@ -159,7 +164,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -199,7 +204,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#add"
                   />
                 </svg>
                 <span
@@ -239,7 +244,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#question"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#question"
                   />
                 </svg>
                 <span
@@ -277,7 +282,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#setup"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#setup"
                   />
                 </svg>
                 <span
@@ -300,6 +305,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
               }
             >
               <button
+                aria-haspopup="dialog"
                 aria-live="assertive"
                 className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
                 disabled={false}
@@ -317,7 +323,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#notification"
                   />
                 </svg>
                 <span
@@ -432,7 +438,7 @@ exports[`DOM snapshots SLDSGlobalHeader Fewer Elements 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#setup"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#setup"
                   />
                 </svg>
                 <span
@@ -528,6 +534,12 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
         <div
           className="slds-form-element"
         >
+          <label
+            className="slds-form-element__label slds-assistive-text"
+            htmlFor="header-search-custom-id"
+          >
+            Search
+          </label>
           <div
             className="slds-form-element__control"
           >
@@ -537,7 +549,6 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               <div
                 aria-expanded={false}
                 aria-haspopup="listbox"
-                aria-owns="header-search-custom-id-listbox"
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
                 role="combobox"
               >
@@ -548,7 +559,6 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   <input
                     aria-activedescendant={null}
                     aria-autocomplete="list"
-                    aria-controls="header-search-custom-id-listbox"
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     id="header-search-custom-id"
@@ -568,7 +578,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                     className="slds-input__icon slds-icon-text-default"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                     />
                   </svg>
                 </div>
@@ -605,7 +615,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
                     />
                   </svg>
                   <span
@@ -623,6 +633,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   }
                 >
                   <button
+                    aria-haspopup="dialog"
                     className="slds-button slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-more"
                     disabled={false}
                     id="header-favorites-popover-id"
@@ -645,7 +656,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -685,7 +696,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#add"
                   />
                 </svg>
                 <span
@@ -725,7 +736,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#question"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#question"
                   />
                 </svg>
                 <span
@@ -763,7 +774,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#setup"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#setup"
                   />
                 </svg>
                 <span
@@ -786,6 +797,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               }
             >
               <button
+                aria-haspopup="dialog"
                 aria-live="assertive"
                 className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
                 disabled={false}
@@ -803,7 +815,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#notification"
                   />
                 </svg>
                 <span
@@ -905,6 +917,12 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
         <div
           className="slds-form-element"
         >
+          <label
+            className="slds-form-element__label slds-assistive-text"
+            htmlFor="header-search-custom-id"
+          >
+            Search
+          </label>
           <div
             className="slds-form-element__control"
           >
@@ -914,7 +932,6 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               <div
                 aria-expanded={false}
                 aria-haspopup="listbox"
-                aria-owns="header-search-custom-id-listbox"
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
                 role="combobox"
               >
@@ -925,7 +942,6 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   <input
                     aria-activedescendant={null}
                     aria-autocomplete="list"
-                    aria-controls="header-search-custom-id-listbox"
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     id="header-search-custom-id"
@@ -945,7 +961,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                     className="slds-input__icon slds-icon-text-default"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                     />
                   </svg>
                 </div>
@@ -982,7 +998,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#favorite"
                     />
                   </svg>
                   <span
@@ -1000,6 +1016,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   }
                 >
                   <button
+                    aria-haspopup="dialog"
                     className="slds-button slds-button_icon-border slds-button_icon-small slds-button_icon slds-global-actions__favorites-more"
                     disabled={false}
                     id="header-favorites-popover-id"
@@ -1022,7 +1039,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -1062,7 +1079,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#add"
                   />
                 </svg>
                 <span
@@ -1102,7 +1119,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#question"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#question"
                   />
                 </svg>
                 <span
@@ -1140,7 +1157,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#setup"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#setup"
                   />
                 </svg>
                 <span
@@ -1163,6 +1180,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               }
             >
               <button
+                aria-haspopup="dialog"
                 aria-live="assertive"
                 className="slds-button slds-button_icon-container slds-button_icon-small slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
                 disabled={false}
@@ -1180,7 +1198,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   className="slds-button__icon slds-global-header__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#notification"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#notification"
                   />
                 </svg>
                 <span

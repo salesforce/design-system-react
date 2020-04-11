@@ -22,6 +22,10 @@ class DatepickerMonthNavigation extends React.Component {
 		 */
 		assistiveTextPreviousMonth: PropTypes.string.isRequired,
 		/**
+		 * Label for year picklist/combobox
+		 */
+		assistiveTextYear: PropTypes.string.isRequired,
+		/**
 		 * HTML id for component
 		 */
 		id: PropTypes.string,
@@ -130,6 +134,7 @@ class DatepickerMonthNavigation extends React.Component {
 					</div>
 				</div>
 				<YearPicklist
+					assistiveTextYear={this.props.assistiveTextYear}
 					id={this.props.id}
 					initialDateForCalendarRender={this.props.initialDateForCalendarRender}
 					onChangeMonth={this.handleYearSelect}

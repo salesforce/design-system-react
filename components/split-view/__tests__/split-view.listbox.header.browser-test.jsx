@@ -1,7 +1,7 @@
 import React from 'react';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import sinon from 'sinon';
 
 import IconSettings from '../../../components/icon-settings';
@@ -102,16 +102,14 @@ describe('SLDSSplitView - Listbox header', () => {
 				.find('.slds-split-view__list-header > span > span')
 				.at(0)
 				.text()
-		).to.equal('test sort by:');
+		).to.equal('test sort by: ');
 	});
 
 	describe('sort', () => {
 		describe('direction', () => {
 			it('should have a sort direction down icon', () => {
 				expect(
-					component
-						.find('.slds-split-view__list-header svg > use')
-						.prop('xlinkHref')
+					component.find('.slds-split-view__list-header svg > use').prop('href')
 				).to.have.string('arrowdown');
 			});
 
@@ -128,9 +126,7 @@ describe('SLDSSplitView - Listbox header', () => {
 				component.setProps({ sortDirection: SORT_OPTIONS.UP });
 
 				expect(
-					component
-						.find('.slds-split-view__list-header svg > use')
-						.prop('xlinkHref')
+					component.find('.slds-split-view__list-header svg > use').prop('href')
 				).to.have.string('arrowup');
 			});
 
@@ -154,7 +150,6 @@ describe('SLDSSplitView - Listbox header', () => {
 
 			it('should call onSort when the header is clicked', () => {
 				component.find('a.slds-split-view__list-header').simulate('click');
-
 				expect(props.events.onSort.called).to.be.true;
 			});
 

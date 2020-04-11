@@ -14,12 +14,19 @@ module.exports = {
 	},
 	plugins: [
 		'filenames',
+		'fp',
 		'json',
 		'prefer-object-spread',
 		'@salesforce/slds-react',
 	],
 	env: {
 		browser: true,
+	},
+	settings: {
+		react: {
+			pragma: 'React',
+			version: 'detect',
+		},
 	},
 	overrides: [
 		{
@@ -36,6 +43,20 @@ module.exports = {
 				'no-console': 'off',
 				// TODO: This should be removed.
 				'no-unused-vars': 'off',
+				'react/no-access-state-in-setstate': 'off',
+				'react/jsx-no-literals': ['off'],
+				// FUNTIONAL RULES
+				'fp/no-arguments': 'off',
+				'fp/no-delete': 'off',
+				'fp/no-events': 'off',
+				'fp/no-get-set': 'off',
+				'fp/no-loops': 'off',
+				'fp/no-mutating-assign': 'off',
+				'fp/no-mutating-methods': 'off',
+				'fp/no-proxy': 'off',
+				'fp/no-rest-parameters': 'off',
+				'fp/no-throw': 'off',
+				'fp/no-valueof-field': 'off',
 			},
 		},
 		{
@@ -48,6 +69,18 @@ module.exports = {
 				'import/no-webpack-loader-syntax': 'off',
 				// console is used in scripts
 				'no-console': 'off',
+				// FUNTIONAL RULES
+				'fp/no-arguments': 'off',
+				'fp/no-delete': 'off',
+				'fp/no-events': 'off',
+				'fp/no-get-set': 'off',
+				'fp/no-loops': 'off',
+				'fp/no-mutating-assign': 'off',
+				'fp/no-mutating-methods': 'off',
+				'fp/no-proxy': 'off',
+				'fp/no-rest-parameters': 'off',
+				'fp/no-throw': 'off',
+				'fp/no-valueof-field': 'off',
 			},
 		},
 		{
@@ -64,6 +97,7 @@ module.exports = {
 				sinon: true,
 			},
 			rules: {
+				'func-names': 'off',
 				// devDependencies are used
 				'import/no-extraneous-dependencies': 'off',
 				// console is used in tests
@@ -71,11 +105,23 @@ module.exports = {
 				// TODO: This should be removed.
 				'no-unused-expressions': 'off',
 				// TODO: This should be removed.
-				'no-unused-vars': 'off',
-				// TODO: This should be removed.
 				'prefer-arrow-callback': 'off',
 				// TODO: This should be removed.
 				'react/display-name': 'off',
+				'react/no-access-state-in-setstate': 'off',
+				'react/jsx-no-literals': ['off'],
+				// FUNTIONAL RULES
+				'fp/no-arguments': 'off',
+				'fp/no-delete': 'off',
+				'fp/no-events': 'off',
+				'fp/no-get-set': 'off',
+				'fp/no-loops': 'off',
+				'fp/no-mutating-assign': 'off',
+				'fp/no-mutating-methods': 'off',
+				'fp/no-proxy': 'off',
+				'fp/no-rest-parameters': 'off',
+				'fp/no-throw': 'off',
+				'fp/no-valueof-field': 'off',
 			},
 		},
 		{
@@ -118,7 +164,7 @@ module.exports = {
 		'no-underscore-dangle': ['error', { allowAfterThis: true }],
 		//
 		'prefer-object-spread/prefer-object-spread': [2, 'always'],
-
+		'react/jsx-fragments': ['error', 'element'],
 		'max-lines': [
 			'error',
 			{ max: 500, skipBlankLines: true, skipComments: true },
@@ -126,6 +172,30 @@ module.exports = {
 
 		// Can't be used because it doesn't currently recognize props used in functions
 		'react/no-unused-prop-types': 'off',
+
+		// https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-literals.md
+		// All text should be able to be changed by the consumer due to internationalisation
+		// See https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#rendered-text-needs-a-prop-group-assistive-text-and-labels
+		'react/jsx-no-literals': ['error', { noStrings: false }],
+
+		// FUNTIONAL RULES
+		'fp/no-arguments': 'error',
+		// 'fp/no-class': 'error',
+		'fp/no-delete': 'error',
+		'fp/no-events': 'error',
+		'fp/no-get-set': 'error',
+		// 'fp/no-let': 'error',
+		'fp/no-loops': 'error',
+		'fp/no-mutating-assign': 'error',
+		'fp/no-mutating-methods': 'error',
+		// 'fp/no-mutation': 'error',
+		// 'fp/no-nil': 'error',
+		'fp/no-proxy': 'error',
+		'fp/no-rest-parameters': 'error',
+		// 'fp/no-this': 'error',
+		'fp/no-throw': 'error',
+		// 'fp/no-unused-expression': 'error',
+		'fp/no-valueof-field': 'error',
 
 		//
 		// THE FOLLOWING RULES NEED REVIEW IN THE FUTURE (and possibly removed)
@@ -135,24 +205,11 @@ module.exports = {
 		// to start appearing. All lint warnings errors should be meaningful, and
 		// therefore, there should never intentionally be any.
 
-		// static class properties/method is still too low of a babel stage
-		'class-methods-use-this': 'warn',
 		// We are open to changing this to always use a trailing comma,
 		// in order to make re-sorting easier
 		'comma-dangle': [2, 'only-multiline'],
-		// TODO: Should be removed
-		'func-names': 'off',
-		// May consider removing
-		'function-paren-newline': 'off',
-		// currently used in older files, this should be removed
-		'no-param-reassign': [
-			2,
-			{
-				props: false,
-			},
-		],
-		// currently used in older files
-		'no-plusplus': 'off',
+
+		'import/no-useless-path-segments': 'off',
 		// Should be removed in the future. `event` is the main global used now.
 		'no-restricted-globals': 'off',
 		// Would prefer all mixed operators as errors, but this conflicts
@@ -170,10 +227,8 @@ module.exports = {
 				allowSamePrecedence: true,
 			},
 		],
-		// May consider removing
-		'object-curly-newline': 'off',
-		// May consider removing
-		'prefer-destructuring': 'off',
+
+		'react/destructuring-assignment': ['error', { ignoreClassFields: true }],
 
 		// May consider removing. Would be unable to test for undefined props.
 		'react/default-props-match-prop-types': 'off',
@@ -189,8 +244,6 @@ module.exports = {
 		'react/require-default-props': 'off',
 		// Components that are top-level should be classes, so the DOM ref exists
 		'react/prefer-stateless-function': 'off',
-		// Prevent multiple component definition per file
-		'react/no-multi-comp': 'off',
 
 		// javascript:void(0) is present in SLDS markup
 		'jsx-a11y/anchor-is-valid': 'off',
@@ -207,6 +260,7 @@ module.exports = {
 		// TODO: Should be removed. All mouse interactions should be able
 		// to be done with the keyboard.
 		'jsx-a11y/click-events-have-key-events': 'off',
+		'jsx-a11y/label-has-associated-control': 'off',
 
 		// Enforce single underscore modifiers for BEM class names
 		'@salesforce/slds-react/no-double-dash-modifier': 'error',

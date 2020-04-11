@@ -9,6 +9,7 @@ configure({ adapter: new Adapter() });
 
 function createMountNode({ context, mountNodeId }) {
 	const internalmountNodeId = mountNodeId || 'mount-node';
+	// eslint-disable-next-line no-param-reassign
 	context.dom = document.createElement('div');
 	const mountNode = document.body.appendChild(context.dom);
 	mountNode.id = internalmountNodeId;
@@ -16,7 +17,7 @@ function createMountNode({ context, mountNodeId }) {
 }
 
 const mountComponent = (instance) =>
-	function() {
+	function mountComponentInside() {
 		this.dom = document.createElement('div');
 		const mountNode = document.body.appendChild(this.dom);
 		mountNode.id = 'mount-node';

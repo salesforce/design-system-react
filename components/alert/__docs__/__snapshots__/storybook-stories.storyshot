@@ -2,7 +2,7 @@
 
 exports[`DOM snapshots SLDSAlert Close alert 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div>
     <button
@@ -22,7 +22,7 @@ exports[`DOM snapshots SLDSAlert Close alert 1`] = `
 
 exports[`DOM snapshots SLDSAlert Custom Class Names 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container this-is-the-container"
@@ -44,7 +44,7 @@ exports[`DOM snapshots SLDSAlert Custom Class Names 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#user"
           />
         </svg>
         
@@ -66,7 +66,7 @@ exports[`DOM snapshots SLDSAlert Custom Class Names 1`] = `
 
 exports[`DOM snapshots SLDSAlert Custom Styles 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container this-is-the-container"
@@ -93,7 +93,7 @@ exports[`DOM snapshots SLDSAlert Custom Styles 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#user"
           />
         </svg>
         
@@ -115,7 +115,7 @@ exports[`DOM snapshots SLDSAlert Custom Styles 1`] = `
 
 exports[`DOM snapshots SLDSAlert Dismissable 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container"
@@ -137,7 +137,7 @@ exports[`DOM snapshots SLDSAlert Dismissable 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#user"
           />
         </svg>
         
@@ -164,7 +164,7 @@ exports[`DOM snapshots SLDSAlert Dismissable 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span
@@ -180,7 +180,7 @@ exports[`DOM snapshots SLDSAlert Dismissable 1`] = `
 
 exports[`DOM snapshots SLDSAlert Error 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container"
@@ -202,7 +202,7 @@ exports[`DOM snapshots SLDSAlert Error 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#error"
           />
         </svg>
         
@@ -224,7 +224,7 @@ exports[`DOM snapshots SLDSAlert Error 1`] = `
 
 exports[`DOM snapshots SLDSAlert Info 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container"
@@ -246,7 +246,7 @@ exports[`DOM snapshots SLDSAlert Info 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#user"
           />
         </svg>
         
@@ -268,7 +268,7 @@ exports[`DOM snapshots SLDSAlert Info 1`] = `
 
 exports[`DOM snapshots SLDSAlert Offline 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container"
@@ -290,7 +290,7 @@ exports[`DOM snapshots SLDSAlert Offline 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#offline"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#offline"
           />
         </svg>
         
@@ -312,7 +312,7 @@ exports[`DOM snapshots SLDSAlert Offline 1`] = `
 
 exports[`DOM snapshots SLDSAlert Warning 1`] = `
 <div
-  className="slds-p-around_medium"
+  className="slds-p-around_medium slds-p-top_xx-large"
 >
   <div
     className="slds-notify-container"
@@ -334,7 +334,7 @@ exports[`DOM snapshots SLDSAlert Warning 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
           />
         </svg>
         

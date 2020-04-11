@@ -32,6 +32,7 @@ class DemoInlineEdit extends React.Component {
 				{...this.props}
 				value={this.state.value}
 				onChange={this.handleChange}
+				silenceDeprecationWarning
 			/>
 		);
 	}

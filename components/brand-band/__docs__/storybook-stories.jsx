@@ -8,6 +8,7 @@ import Large from '../__examples__/large';
 import LightningBlueTheme from '../__examples__/lightning-blue-theme';
 import NoImage from '../__examples__/no-image';
 import Small from '../__examples__/small';
+import BackgroundCover from '../__examples__/background-cover';
 
 storiesOf(BRAND_BAND, module)
 	.addDecorator((getStory) => (
@@ -28,4 +29,5 @@ storiesOf(BRAND_BAND, module)
 	.add('Small', () => <Small />)
 	.add('Large', () => <Large />)
 	.add('No Image', () => <NoImage />)
-	.add('Lightning Blue Theme', () => <LightningBlueTheme />);
+	.add('Lightning Blue Theme', () => <LightningBlueTheme />)
+	.add('Image with background size cover', () => <BackgroundCover />);

@@ -1,11 +1,8 @@
 /* eslint-disable max-lines */
 import React from 'react';
-import createReactClass from 'create-react-class';
-import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { mount } from 'enzyme';
-import IconSettings from '../../icon-settings';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
@@ -20,6 +17,16 @@ import {
 // Import your internal dependencies (for example):
 import ColorPicker from '../index';
 import KEYS from '../../../utilities/key-code';
+
+// eslint-disable-next-line camelcase
+import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
+
+const makeRtl = (component) => (
+	// eslint-disable-next-line
+	<UNSAFE_DirectionSettings.Provider value="rtl">
+		<div dir="rtl">{component}</div>
+	</UNSAFE_DirectionSettings.Provider>
+);
 
 chai.use(chaiEnzyme());
 
@@ -38,7 +45,7 @@ const selectors = {
 	toggle: '.slds-color-picker__summary-button',
 };
 
-describe('SLDSColorPicker', function() {
+describe('SLDSColorPicker', function describeFunction() {
 	let mountNode;
 	let wrapper;
 
@@ -69,6 +76,28 @@ describe('SLDSColorPicker', function() {
 			input.simulate('change', {
 				target: {
 					value: '#ff0000',
+				},
+			});
+		});
+
+		it('fires onChange with named value and isValid set to true when valid', function() {
+			wrapper = mount(
+				<ColorPicker
+					events={{
+						onChange: (event, { color, isValid }) => {
+							expect(color).to.equal('red');
+							expect(isValid).to.be.true;
+						},
+					}}
+				/>,
+				{ attachTo: mountNode }
+			);
+
+			const input = wrapper.find(selectors.summaryInput).first();
+
+			input.simulate('change', {
+				target: {
+					value: 'red',
 				},
 			});
 		});
@@ -129,7 +158,7 @@ describe('SLDSColorPicker', function() {
 	});
 
 	describe('Swatch toggle button', () => {
-		it('opens popover when clicked and expects onRequestOpen and onOpen to be fired once', function() {
+		it('opens popover when clicked and expects onRequestOpen and onOpen to be fired once', function describeFunction2() {
 			const onRequestOpenSpy = sinon.spy();
 			const onOpenSpy = sinon.spy();
 
@@ -158,7 +187,7 @@ describe('SLDSColorPicker', function() {
 		});
 	});
 
-	describe('Popover', function() {
+	describe('Popover', function describeFunction2() {
 		const clickSubmit = (el) => {
 			el
 				.find(selectors.submit)
@@ -166,7 +195,7 @@ describe('SLDSColorPicker', function() {
 				.simulate('click');
 		};
 
-		describe('Swatch tab', function() {
+		describe('Swatch tab', function describeFunction3() {
 			it('clicking a swatch sets that working color', function(done) {
 				wrapper = mount(
 					<ColorPicker
@@ -188,7 +217,105 @@ describe('SLDSColorPicker', function() {
 			});
 		});
 
-		describe('Submit button', function() {
+		describe('Swatch keyboard navigation', function describeFunction3() {
+			it('pressing right will move the color to the next one', function(done) {
+				wrapper = mount(
+					<ColorPicker
+						isOpen
+						value="#ff0000"
+						swatchColors={['#ff0000', '#0000ff']}
+						events={{
+							onWorkingColorChange: (event, { color }) => {
+								expect(color.hex).to.equal('#0000ff');
+								done();
+							},
+						}}
+					/>,
+					{ attachTo: mountNode }
+				);
+
+				const swatch = wrapper.find(selectors.swatch).first();
+				swatch.simulate('keyDown', {
+					keyCode: KEYS.RIGHT,
+					which: KEYS.RIGHT,
+				});
+			});
+
+			it('pressing left will move the color to the previous one', function(done) {
+				wrapper = mount(
+					<ColorPicker
+						isOpen
+						value="#0000ff"
+						swatchColors={['#ff0000', '#0000ff']}
+						events={{
+							onWorkingColorChange: (event, { color }) => {
+								expect(color.hex).to.equal('#ff0000');
+								done();
+							},
+						}}
+					/>,
+					{ attachTo: mountNode }
+				);
+
+				const swatch = wrapper.find(selectors.swatch).first();
+				swatch.simulate('keyDown', {
+					keyCode: KEYS.LEFT,
+					which: KEYS.LEFT,
+				});
+			});
+
+			it('pressing right in RTL will move the color to the previous one', function(done) {
+				wrapper = mount(
+					makeRtl(
+						<ColorPicker
+							isOpen
+							value="#0000ff"
+							swatchColors={['#ff0000', '#0000ff']}
+							events={{
+								onWorkingColorChange: (event, { color }) => {
+									expect(color.hex).to.equal('#ff0000');
+									done();
+								},
+							}}
+						/>
+					),
+					{ attachTo: mountNode }
+				);
+
+				const swatch = wrapper.find(selectors.swatch).first();
+				swatch.simulate('keyDown', {
+					keyCode: KEYS.RIGHT,
+					which: KEYS.RIGHT,
+				});
+			});
+
+			it('pressing left in RTL will move the color to the next one', function(done) {
+				wrapper = mount(
+					makeRtl(
+						<ColorPicker
+							isOpen
+							value="#ff0000"
+							swatchColors={['#ff0000', '#0000ff']}
+							events={{
+								onWorkingColorChange: (event, { color }) => {
+									expect(color.hex).to.equal('#0000ff');
+									done();
+								},
+							}}
+						/>
+					),
+					{ attachTo: mountNode }
+				);
+
+				const swatch = wrapper.find(selectors.swatch).first();
+				swatch.simulate('keyDown', {
+					keyCode: KEYS.LEFT,
+					which: KEYS.LEFT,
+				});
+			});
+		});
+
+		describe('Submit button', function describeFunction3() {
 			it('sets the input color', function() {
 				wrapper = mount(
 					<ColorPicker isOpen value="#000000" swatchColors={['#ff0000']} />,
@@ -226,7 +353,7 @@ describe('SLDSColorPicker', function() {
 			});
 		});
 
-		describe('Cancel button', function() {
+		describe('Cancel button', function describeFunction3() {
 			it('does not trigger onChange but triggers onRequestClose', function() {
 				const onRequestCloseSpy = sinon.spy();
 				wrapper = mount(
@@ -235,7 +362,7 @@ describe('SLDSColorPicker', function() {
 						value="#000000"
 						swatchColors={['#ff0000']}
 						events={{
-							onChange: (event, { color }) => {
+							onChange: () => {
 								expect().fail();
 							},
 						}}
@@ -258,9 +385,9 @@ describe('SLDSColorPicker', function() {
 			});
 		});
 
-		describe('Custom tab', function() {
-			describe('HSV', function() {
-				describe('hue slider', function() {
+		describe('Custom tab', function describeFunction3() {
+			describe('HSV', function describeFunction4() {
+				describe('hue slider', function describeFunction5() {
 					it('change causes color hue to update', function(done) {
 						wrapper = mount(
 							<ColorPicker
@@ -284,10 +411,10 @@ describe('SLDSColorPicker', function() {
 					});
 				});
 
-				describe('saturation-value grid', function() {
-					it('click sets color using coordinates', function(done) {
-						this.skip('too dependent on browser calculations');
-					});
+				describe('saturation-value grid', function describeFunction5() {
+					// it('click sets color using coordinates', function() {
+					// 	this.skip('too dependent on browser calculations');
+					// });
 
 					it('up key causes color value to go up', function(done) {
 						wrapper = mount(
@@ -447,7 +574,7 @@ describe('SLDSColorPicker', function() {
 				});
 			});
 
-			describe('Hex input', function() {
+			describe('Hex input', function describeFunction4() {
 				it('invalid value sets error message', function(done) {
 					wrapper = mount(
 						<ColorPicker
@@ -527,7 +654,7 @@ describe('SLDSColorPicker', function() {
 				});
 			});
 
-			describe('RGB input', function() {
+			describe('RGB input', function describeFunction4() {
 				it('non-number causes error message', function(done) {
 					wrapper = mount(
 						<ColorPicker

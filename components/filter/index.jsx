@@ -26,10 +26,6 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
-import componentDoc from './docs.json';
-
 import Button from '../button';
 import Popover from '../popover';
 
@@ -129,9 +125,10 @@ class Filter extends React.Component {
 		popoverIsOpen: this.props.popover ? this.props.popover.props.isOpen : false,
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
-		checkProps(FILTER, componentDoc);
 	}
 
 	getId = () => this.props.id || this.generatedId;
@@ -179,6 +176,7 @@ class Filter extends React.Component {
 			defaultPopoverProps,
 			this.props.popover ? this.props.popover.props : {}
 		);
+		// eslint-disable-next-line fp/no-delete
 		delete popoverProps.children;
 		return popoverProps;
 	};
@@ -241,13 +239,14 @@ class Filter extends React.Component {
 				)}
 			>
 				{!this.props.isLocked && (this.props.children || this.props.popover) ? (
-					<Popover {...popoverProps}>
+					<Popover {...popoverProps} silenceDeprecatedPropertyWarning>
 						<button
 							className="slds-button_reset slds-grow slds-has-blur-focus"
 							onClick={this.handleFilterClick}
 							aria-describedby={
 								this.props.isError ? `${this.getId()}-error` : undefined
 							}
+							type="button"
 						>
 							<span className="slds-assistive-text">
 								{assistiveText.editFilter}
@@ -265,6 +264,7 @@ class Filter extends React.Component {
 						}
 						className="slds-button_reset slds-grow slds-has-blur-focus"
 						disabled
+						type="button"
 					>
 						<p className="slds-text-body_small">{this.props.property}</p>
 						<p>{this.props.predicate}</p>

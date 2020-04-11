@@ -4,12 +4,13 @@
 
 import componentIsDeprecated from '../../utilities/warning/component-is-deprecated';
 
-let checkProps = function() {};
+let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function(COMPONENT) {
+	checkProps = function checkPropsFunction(COMPONENT, props) {
 		componentIsDeprecated(
 			COMPONENT,
+			props,
 			'Please use an auto-complete Combobox instead. It is more accessible and closer aligned to SLDS.'
 		);
 	};

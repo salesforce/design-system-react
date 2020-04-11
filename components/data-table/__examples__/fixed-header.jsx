@@ -169,7 +169,7 @@ class Example extends React.Component {
 		}
 
 		const sortProperty = sortColumn.property;
-		const sortDirection = sortColumn.sortDirection;
+		const { sortDirection } = sortColumn;
 		const newState = {
 			sortColumn: sortProperty,
 			sortColumnDirection: {
@@ -204,21 +204,17 @@ class Example extends React.Component {
 			<div
 				style={{
 					height: '200px',
-					width: '100%',
 				}}
 			>
 				<IconSettings iconPath="/assets/icons">
-					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
-						Fixed Header Layout
-					</h3>
 					<DataTable
 						assistiveText={{
 							actionsHeader: 'actions',
 							columnSort: 'sort this column',
 							columnSortedAscending: 'asc',
 							columnSortedDescending: 'desc',
-							selectAllRows: 'all rows',
-							selectRow: 'select this row',
+							selectAllRows: 'Select all rows',
+							selectRow: 'Select this row',
 						}}
 						fixedHeader
 						fixedLayout

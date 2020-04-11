@@ -3,10 +3,8 @@
 // Import your external dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { mount } from 'enzyme';
 import assign from 'lodash.assign';
 import {
 	Simulate,
@@ -26,8 +24,9 @@ import {
 // Import your internal dependencies (for example):
 import Dropdown from '../../menu-dropdown';
 import IconSettings from '../../icon-settings';
+import Tooltip from '../../tooltip';
 import List from '../../utilities/menu-list';
-import KEYS, { keyObjects } from '../../../utilities/key-code';
+import { keyObjects } from '../../../utilities/key-code';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -120,11 +119,11 @@ const getNodes = ({ wrapper }) => ({
  * as much as possible/appropriate.`
  */
 describe('SLDSMenuDropdown', function() {
-	let wrapper;
-
 	describe('Styling', () => {
 		beforeEach(
-			mountComponent(<DemoComponent menuStyle={{ height: '500px' }} />)
+			mountComponent(
+				<DemoComponent menuStyle={{ height: '500px' }} width="small" />
+			)
 		);
 
 		afterEach(unmountComponent);
@@ -135,6 +134,20 @@ describe('SLDSMenuDropdown', function() {
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			expect(openNodes.menu).to.exist;
 			expect(openNodes.menu).to.have.style('height', '500px');
+			expect(openNodes.menu.hasClass('slds-dropdown_small')).to.equal(true);
+		});
+	});
+
+	describe('Inverse', () => {
+		beforeEach(mountComponent(<DemoComponent inverse />));
+
+		afterEach(unmountComponent);
+
+		it('has correct CSS class for inverse', function() {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.button.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			expect(openNodes.menu.hasClass('slds-dropdown_inverse')).to.equal(true);
 		});
 	});
 
@@ -206,7 +219,7 @@ describe('SLDSMenuDropdown', function() {
 		});
 
 		it('preserves click behavior', function() {
-			onClick.reset();
+			onClick.resetHistory();
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			expect(onClick.calledOnce);
@@ -394,11 +407,13 @@ describe('SLDSMenuDropdown', function() {
 		const renderDropdown = (inst) => {
 			body = document.createElement('div');
 			document.body.appendChild(body);
+			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			// eslint-disable-next-line react/no-render-return-value
 			return ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
 				body
 			);
+			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
 		};
 
 		function removeDropdownTrigger() {
@@ -410,8 +425,7 @@ describe('SLDSMenuDropdown', function() {
 			React.createElement(Dropdown, assign({}, defaultProps, props));
 		createDropdown.displayName = 'createDropdown';
 
-		const dropItDown = (props, children) =>
-			renderDropdown(createDropdown(props, children));
+		const dropItDown = (props) => renderDropdown(createDropdown(props));
 
 		const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
@@ -430,7 +444,7 @@ describe('SLDSMenuDropdown', function() {
 		afterEach((done) => {
 			// due to hover-close delay, removal from DOM must be delayed
 			setTimeout(() => {
-				removeDropdownTrigger(btn);
+				removeDropdownTrigger();
 				done();
 			}, 100);
 		});
@@ -482,11 +496,13 @@ describe('SLDSMenuDropdown', function() {
 		const renderDropdown = (inst) => {
 			body = document.createElement('div');
 			document.body.appendChild(body);
+			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			// eslint-disable-next-line react/no-render-return-value
 			return ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
 				body
 			);
+			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
 		};
 
 		function removeDropdownTrigger() {
@@ -498,8 +514,7 @@ describe('SLDSMenuDropdown', function() {
 			React.createElement(Dropdown, assign({}, defaultProps, props));
 		createDropdown.displayName = 'createDropdown';
 
-		const dropItDown = (props, children) =>
-			renderDropdown(createDropdown(props, children));
+		const dropItDown = (props) => renderDropdown(createDropdown(props));
 
 		const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
@@ -513,7 +528,7 @@ describe('SLDSMenuDropdown', function() {
 		});
 
 		afterEach(() => {
-			removeDropdownTrigger(btn);
+			removeDropdownTrigger();
 		});
 
 		it('doesnt expand on hover', () => {
@@ -536,6 +551,37 @@ describe('SLDSMenuDropdown', function() {
 				expect(getMenu(body)).to.equal(null);
 				done();
 			}, 2);
+		});
+	});
+
+	describe('Tooltips function as expected', () => {
+		beforeEach(
+			mountComponent(
+				<DemoComponent
+					options={[
+						{ label: 'Test item A', value: 'A0' },
+						{
+							label: 'Test item B',
+							value: 'B0',
+							tooltipContent: 'Testing tooltip content',
+						},
+						{ label: 'Test item C', value: 'C0' },
+					]}
+					tooltipMenuItem={<Tooltip />}
+				/>
+			)
+		);
+
+		afterEach(unmountComponent);
+
+		it('Tooltip component shows when focused on menu item.', function() {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.trigger.simulate('focus');
+			nodes.trigger.simulate('keyDown', keyObjects.ENTER);
+			nodes.trigger.simulate('keyDown', keyObjects.DOWN);
+
+			const tooltip = this.wrapper.find('#sample-dropdown-item-1-tooltip');
+			expect(tooltip.length).to.equal(1);
 		});
 	});
 });

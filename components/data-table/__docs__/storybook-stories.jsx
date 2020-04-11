@@ -14,6 +14,8 @@ import BasicFluidColumnBordered from '../__examples__/basic-fluid-column-bordere
 import BasicFluidNoRowHover from '../__examples__/basic-fluid-no-row-hover';
 import BasicFluidStriped from '../__examples__/basic-fluid-striped';
 import FixedHeader from '../__examples__/fixed-header';
+import FixedHeaderHorizontalScroller from '../__examples__/fixed-header-horizontal-scrolling';
+import JoinedWithPageHeader from '../__examples__/joined-with-page-header';
 
 storiesOf(DATA_TABLE, module)
 	.addDecorator((getStory) => (
@@ -35,4 +37,8 @@ storiesOf(DATA_TABLE, module)
 	.add('Advanced Single Select (Fixed Header)', () => (
 		<AdvancedSingleSelectFixedHeader log={action} />
 	))
-	.add('Fixed Header', () => <FixedHeader />);
+	.add('Fixed Header', () => <FixedHeader />)
+	.add('Fixed Header Horizontal Scrolling', () => (
+		<FixedHeaderHorizontalScroller />
+	))
+	.add('Joined with Page Header', () => <JoinedWithPageHeader />);

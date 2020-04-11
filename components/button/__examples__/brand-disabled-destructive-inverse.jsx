@@ -9,7 +9,7 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<div className="-x-small-buttons--horizontal">
+				<div className="slds-x-small-buttons_horizontal">
 					<Button label="Brand" variant="brand" />
 
 					<Button
@@ -23,10 +23,13 @@ class Example extends React.Component {
 
 					<Button label="Destructive" variant="destructive" />
 
+					<Button label="Outline Brand" variant="outline-brand" />
+
 					<div
 						style={{
 							backgroundColor: '#16325c',
 							padding: '10px',
+							marginLeft: '5px',
 							display: 'inline-block',
 						}}
 						className="-m-horizontal--small"

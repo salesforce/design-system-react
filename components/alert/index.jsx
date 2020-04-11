@@ -12,7 +12,7 @@ import classNames from '../../utilities/class-names';
 import Button from '../button';
 import Icon from '../icon';
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 import { ALERT } from '../../utilities/constants';
 import DOMElementFocus from '../../utilities/dom-element-focus';
 
@@ -98,11 +98,9 @@ class Alert extends React.Component {
 		this.state = {
 			isInitialRender: true,
 		};
-	}
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(ALERT, this.props, componentDoc);
+		checkProps(ALERT, props, componentDoc);
 	}
 
 	componentWillUnmount() {

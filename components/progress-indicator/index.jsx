@@ -17,6 +17,7 @@ import { PROGRESS_INDICATOR } from '../../utilities/constants';
 // Child components
 import Step from './private/step';
 import Progress from './private/progress';
+import StepVertical from './private/step-vertical';
 
 const displayName = PROGRESS_INDICATOR;
 
@@ -62,6 +63,10 @@ const propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
+	 * Determines the orientation of the progress indicator
+	 */
+	orientation: PropTypes.oneOf(['horizontal', 'vertical']),
+	/**
 	 * Triggered when an individual step is clicked. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
 	 * ```
 	 * const handleStepClick = function(event, data) { console.log(data); };
@@ -99,7 +104,7 @@ const propTypes = {
 	/**
 	 * Determines component style.
 	 */
-	variant: PropTypes.oneOf(['base', 'modal']),
+	variant: PropTypes.oneOf(['base', 'modal', 'setup-assistant']),
 	/**
 	 * Please select one of the following:
 	 * * `absolute` - (default if `variant` is `modal`) The dialog will use `position: absolute` and style attributes to position itself. This allows inverted placement or flipping of the dialog.
@@ -131,6 +136,7 @@ const defaultProps = {
 	errorSteps: [],
 	completedSteps: [],
 	disabledSteps: [],
+	orientation: 'horizontal',
 	selectedStep: defaultSteps[0],
 	variant: 'base',
 	// click/focus callbacks by default do nothing
@@ -150,21 +156,32 @@ function checkSteps(steps) {
 }
 
 /**
- * Check if an item is from an array of items when 'items' is an array;
- * Check if an item is equal to the other item after being stringified when 'items' is a JSON object
+ * Check if an item is from an array of items.
+ * If items argument is not an array, it will be treated as an object comparison between item & items.
  */
 function findStep(item, items) {
-	if (Array.isArray(items)) {
-		return !!find(items, item);
-	}
-	return JSON.stringify(item) === JSON.stringify(items);
+	if (!item || !items) return false;
+
+	const itemsArray = !Array.isArray(items) ? [items] : items;
+
+	return !!find(itemsArray, (arrayItem) => {
+		if (arrayItem === item) {
+			return true;
+		}
+		if (arrayItem.id !== undefined && item.id !== undefined) {
+			return arrayItem.id === item.id;
+		}
+		return JSON.stringify(arrayItem) === JSON.stringify(item);
+	});
 }
 
 /**
  * Progress Indicator is a component that communicates to the user the progress of a particular process.
  */
 class ProgressIndicator extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 
@@ -202,6 +219,7 @@ class ProgressIndicator extends React.Component {
 
 		let currentStep = 0;
 		// find index for the current step
+		// eslint-disable-next-line fp/no-loops
 		for (let i = 0; i < allSteps.length; i += 1) {
 			// assign step an id if it does not have one
 			if (allSteps[i].id === undefined) {
@@ -212,16 +230,21 @@ class ProgressIndicator extends React.Component {
 			}
 		}
 
+		const orientation =
+			this.props.variant === 'setup-assistant'
+				? 'vertical'
+				: this.props.orientation;
 		// Set default tooltipPosition
 		const tooltipPosition =
 			this.props.tooltipPosition ||
 			(this.props.variant === 'modal' ? 'absolute' : 'overflowBoundaryElement');
-
+		const StepComponent = orientation === 'vertical' ? StepVertical : Step;
 		/** 2. return DOM */
 		return (
 			<Progress
 				assistiveText={assistiveText}
 				id={this.getId()}
+				orientation={orientation}
 				value={
 					currentStep === 0
 						? '0'
@@ -231,7 +254,7 @@ class ProgressIndicator extends React.Component {
 				className={this.props.className}
 			>
 				{allSteps.map((step, i) => (
-					<Step
+					<StepComponent
 						assistiveText={assistiveText}
 						key={`${this.getId()}-${step.id}`}
 						id={this.getId()}
@@ -245,6 +268,7 @@ class ProgressIndicator extends React.Component {
 						step={step}
 						tooltipIsOpen={findStep(step, this.props.tooltipIsOpenSteps)}
 						tooltipPosition={tooltipPosition}
+						variant={this.props.variant}
 					/>
 				))}
 			</Progress>

@@ -22,6 +22,8 @@ import shortid from 'shortid';
 
 import { SLIDER } from '../../utilities/constants';
 
+import getAriaProps from '../../utilities/get-aria-props';
+
 const propTypes = {
 	/**
 	 * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need.
@@ -29,10 +31,11 @@ const propTypes = {
 	'aria-describedby': PropTypes.string,
 	/**
 	 * Assistive text for accessibility**
+	 * `disabled`: Read by screen readers to indicate a disabled slider
 	 * `label`: Visually hidden label but read out loud by screen readers.
-	 *
 	 */
 	assistiveText: PropTypes.shape({
+		disabled: PropTypes.string,
 		label: PropTypes.string,
 	}),
 	/**
@@ -106,6 +109,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+	assistiveText: { disabled: 'Disabled' },
 	min: 0,
 	max: 100,
 	step: 1,
@@ -116,7 +120,9 @@ const defaultProps = {
  */
 class Slider extends React.Component {
 	static displayName = SLIDER;
+
 	static propTypes = propTypes;
+
 	static defaultProps = defaultProps;
 
 	constructor(props) {
@@ -150,6 +156,13 @@ class Slider extends React.Component {
 	};
 
 	render() {
+		const ariaProps = getAriaProps(this.props);
+		ariaProps['aria-describedby'] = this.getErrorId();
+
+		const assistiveText = {
+			...defaultProps.assistiveText,
+			...this.props.assistiveText,
+		};
 		const labelText =
 			this.props.label ||
 			(this.props.assistiveText && this.props.assistiveText.label);
@@ -176,8 +189,16 @@ class Slider extends React.Component {
 							<span className="slds-slider-label__label">{labelText}</span>
 						) : null}
 						<span className="slds-slider-label__range">
-							{this.props.min} - {this.props.max}
+							{this.props.min}
+							{' - '}
+							{this.props.max}
 						</span>
+						{this.props.disabled ? (
+							<span className="slds-assistive-text">
+								{' '}
+								{assistiveText.disabled}
+							</span>
+						) : null}
 					</span>
 				</label>
 				<div className="slds-form-element__control">
@@ -195,15 +216,17 @@ class Slider extends React.Component {
 							id={this.getId()}
 							name={this.props.name}
 							className="slds-slider__range"
-							defaultValue={this.props.defaultValue}
 							min={this.props.min}
 							max={this.props.max}
 							step={this.props.step}
-							aria-describedby={this.getErrorId()}
-							value={this.props.value}
 							disabled={this.props.disabled}
 							onChange={this.handleChange}
 							onInput={this.handleInput}
+							{...ariaProps}
+							/* A form element should not have both value and defaultValue props. */
+							{...(this.props.value !== undefined
+								? { value: this.props.value }
+								: { defaultValue: this.props.defaultValue })}
 						/>
 						<span className="slds-slider__value" aria-hidden="true">
 							{this.props.value || this.props.defaultValue || '0'}

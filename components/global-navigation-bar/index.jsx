@@ -32,24 +32,13 @@ const auditChildren = (children) => {
 			if (child.props.region === 'primary') {
 				primaryRegion = child;
 			} else if (child.props.region === 'secondary') {
+				// eslint-disable-next-line fp/no-mutating-methods
 				secondaryRegions.push(child);
 			} else if (child.props.region === 'tertiary') {
 				tertiaryRegion = child;
 			}
 		}
 	});
-
-	if (primaryRegion && secondaryRegions.length > 0) {
-		const dividerPosition =
-			primaryRegion.props.dividerPosition === undefined
-				? 'right'
-				: primaryRegion.props.dividerPosition;
-
-		primaryRegion = React.cloneElement(primaryRegion, {
-			dividerPosition,
-			key: 'primary-region',
-		});
-	}
 
 	return [primaryRegion, ...secondaryRegions, tertiaryRegion];
 };
@@ -96,10 +85,7 @@ GlobalNavigationBar.propTypes = {
 	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
-GlobalNavigationBar.defaultProps = {
-	cloud: 'default',
-	theme: 'dark',
-};
+GlobalNavigationBar.defaultProps = {};
 
 GlobalNavigationBar.displayName = GLOBAL_NAVIGATION_BAR;
 

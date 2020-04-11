@@ -2,7 +2,6 @@ import React from 'react';
 
 import DataTable from '~/components/data-table'; // `~` is replaced with design-system-react at runtime
 import DataTableColumn from '~/components/data-table/column';
-import DataTableCell from '~/components/data-table/cell';
 import IconSettings from '~/components/icon-settings';
 
 const columns = [
@@ -88,9 +87,6 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ overflow: 'auto' }}>
-					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
-						Basic Fixed Layout
-					</h3>
 					<DataTable
 						items={this.state.items}
 						id="DataTableExample-1-default"

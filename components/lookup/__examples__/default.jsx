@@ -31,6 +31,7 @@ class Example extends React.Component {
 						{ label: 'Acme Construction' },
 					]}
 					sectionDividerRenderer={Lookup.DefaultSectionDivider}
+					silenceDeprecationWarning
 				/>
 			</IconSettings>
 		);

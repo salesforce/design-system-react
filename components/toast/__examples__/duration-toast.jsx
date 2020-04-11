@@ -1,7 +1,6 @@
 import React from 'react';
 import Toast from '~/components/toast'; // `~` is replaced with design-system-react at runtime
 import ToastContainer from '~/components/toast/container'; // `~` is replaced with design-system-react at runtime
-import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button'; // `~` is replaced with design-system-react at runtime
 import IconSettings from '~/components/icon-settings';
 
@@ -21,7 +20,7 @@ class Example extends React.Component {
 					<ToastContainer>
 						{this.state.isOpen ? (
 							<Toast
-								duration={1000}
+								duration={15000}
 								labels={{
 									heading: '26 potential duplicate leads were found.',
 									headingLink: 'Select Leads to Merge',

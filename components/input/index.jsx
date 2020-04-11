@@ -35,7 +35,7 @@ import Label from '../utilities/label';
 import checkProps from './check-props';
 
 import { INPUT } from '../../utilities/constants';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
 
 const COUNTER = 'counter';
@@ -317,14 +317,12 @@ class Input extends React.Component {
 			speedDelay: 75,
 			timeout: {},
 		};
-	}
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(INPUT, this.props, componentDoc);
+		checkProps(INPUT, props, componentDoc);
 
 		this.generatedId = shortid.generate();
-		if (this.props.errorText) {
+		if (props.errorText) {
 			this.generatedErrorId = shortid.generate();
 		}
 	}
@@ -456,8 +454,8 @@ class Input extends React.Component {
 	performStep = (direction, event) => {
 		clearTimeout(this.stepping.timeout);
 
-		const maxValue = this.props.maxValue;
-		const minValue = this.props.minValue;
+		const { maxValue } = this.props;
+		const { minValue } = this.props;
 		const step = this.props.step !== undefined ? Number(this.props.step) : 1;
 		let value = this.getValueAsNumber();
 		let valueChanged = false;

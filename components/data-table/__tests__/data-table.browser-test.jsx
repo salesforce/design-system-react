@@ -20,7 +20,7 @@ const {
 	findRenderedDOMComponentWithClass,
 } = TestUtils;
 
-describe('DataTable: ', function() {
+describe('DataTable: ', function describeFunction() {
 	const items = [
 		{
 			id: '8IKZHZZV80',
@@ -80,13 +80,15 @@ describe('DataTable: ', function() {
 	};
 
 	const renderTable = (instance) =>
-		function() {
+		function renderTableFunction() {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
+			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			this.component = ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
 				this.dom
 			);
+			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
 		};
 
 	function removeTable() {
@@ -108,7 +110,7 @@ describe('DataTable: ', function() {
 
 	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
 
-	describe('Structure', function() {
+	describe('Structure', function describeFunction2() {
 		beforeEach(
 			renderTable(
 				<DataTable {...defaultProps}>
@@ -188,7 +190,7 @@ describe('DataTable: ', function() {
 		});
 	});
 
-	describe('Selectable - Checkbox', function() {
+	describe('Selectable - Checkbox', function describeFunction2() {
 		const defaultSelection = [
 			{
 				id: '8IKZHZZV80',
@@ -312,7 +314,7 @@ describe('DataTable: ', function() {
 		});
 	});
 
-	describe('Selectable - Radio', function() {
+	describe('Selectable - Radio', function describeFunction2() {
 		const defaultSelection = [
 			{
 				id: '8IKZHZZV80',
@@ -371,7 +373,7 @@ describe('DataTable: ', function() {
 		});
 	});
 
-	describe('Sortable', function() {
+	describe('Sortable', function describeFunction2() {
 		afterEach(removeTable);
 
 		it('first clicked on sortable column header should result in ascending sort by default', function(done) {
@@ -441,7 +443,7 @@ describe('DataTable: ', function() {
 		});
 	});
 
-	describe('w/ RowActions', function() {
+	describe('w/ RowActions', function describeFunction2() {
 		afterEach(removeTable);
 
 		it('renders the RowActions and uses dropdown override property', function() {
@@ -484,11 +486,13 @@ describe('DataTable: ', function() {
 			this.onAction = (item, action) => {
 				item.id.should.equal('8IKZHZZV80');
 				action.value.should.equal('1');
+				// eslint-disable-next-line no-plusplus
 				if (!--expectedCalbacks) done();
 			};
 
 			this.onSelect = (action) => {
 				action.value.should.equal('1');
+				// eslint-disable-next-line no-plusplus
 				if (!--expectedCalbacks) done();
 			};
 
@@ -534,7 +538,7 @@ describe('DataTable: ', function() {
 		});
 	});
 
-	describe('w/ HighlightCell', function() {
+	describe('w/ HighlightCell', function describeFunction2() {
 		afterEach(removeTable);
 
 		it('marks the appropriate text in a cell', function() {
@@ -554,7 +558,7 @@ describe('DataTable: ', function() {
 		});
 	});
 
-	describe('w/ Fixed Headers', function() {
+	describe('w/ Fixed Headers', function describeFunction2() {
 		afterEach(removeTable);
 
 		it('Renders a fixedHeader table as expected', function() {

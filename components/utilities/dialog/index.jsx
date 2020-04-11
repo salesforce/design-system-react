@@ -27,6 +27,9 @@ import { DIALOG } from '../../../utilities/constants';
 
 // #### Dialog doesn't pass down <IconSettings> context so repassing it here.
 import IconSettings from '../../icon-settings';
+// eslint-disable-next-line camelcase
+import UNSAFE_DirectionSettings, { DIRECTIONS } from '../UNSAFE_direction';
+import LanguageDirection from '../UNSAFE_direction/private/language-direction';
 
 /*
  * A Dialog is content that is separate from the typical flow of a page. It typically overlays other elements in the document flow. This is achieved with elevation (`z-index`) and one of the following: relative position, absolute position, or a new top-level React render tree (portal). A boundary element is a scrolling ancestor element or the edge of the browser (window/viewport). This element typically has an overflow (overflow-y/overflow-x) style that is scroll, hidden, or auto. Inverted placement is the flipping of the overlay element from top to bottom or left to right in order stay within a boundary element.
@@ -53,7 +56,9 @@ class Dialog extends React.Component {
 
 	static propTypes = {
 		/**
-		 * Aligns the right or left side of the dialog with the respective side of the target.
+		 * Alignment of the dialog with respect to the target (assuming left-to-right language direction). For example,
+		 * a value of 'left bottom' indicates that the dialog will be rendered below and left-aligned with the target.
+		 * Note that setting the direction prop to "rtl" will flip the resulting dialog alignment.
 		 */
 		align: PropTypes.oneOf([
 			'top',
@@ -97,6 +102,10 @@ class Dialog extends React.Component {
 		 * Props passed along to wrapping div. This allows one less wrapping `div` to be in the markup. dialog children are expected to be wrapper in a single `div`.
 		 */
 		containerProps: PropTypes.object,
+		/**
+		 * Establishes directional context for component. Defaults to left-to-right.
+		 */
+		direction: PropTypes.oneOf([DIRECTIONS.LTR, DIRECTIONS.RTL]),
 		/**
 		 * Will show the nubbin pointing from the dialog to the reference element. Positioning and offsets will be handled.
 		 */
@@ -184,6 +193,7 @@ class Dialog extends React.Component {
 
 	static defaultProps = {
 		align: 'bottom left',
+		direction: DIRECTIONS.LTR,
 		offset: '0px 0px',
 		outsideClickIgnoreClass: 'ignore-react-onclickoutside',
 	};
@@ -271,10 +281,11 @@ class Dialog extends React.Component {
 
 		// A Dropdown with overflowBoundaryElement position and 'align=right' uses max-width instead of inherited children width
 		const right = 'inherit';
+
 		return {
 			...popperData.style,
-			left,
-			top,
+			left: isNaN(left) ? 0 : left,
+			top: isNaN(top) ? 0 : top,
 			right,
 			position,
 		};
@@ -295,8 +306,10 @@ class Dialog extends React.Component {
 		this.handleClose();
 	};
 
-	handleClose = (event, data) => {
-		this.setState({ triggerPopperJS: true });
+	handleClose = (event, data = {}) => {
+		if (!data.componentWillUnmount) {
+			this.setState({ triggerPopperJS: true });
+		}
 		if (this.props.onClose) {
 			this.props.onClose(event, data);
 		}
@@ -348,7 +361,10 @@ class Dialog extends React.Component {
 	createPopper = () => {
 		const reference = this.props.onRequestTargetElement(); // eslint-disable-line react/no-find-dom-node
 		const popper = this.dialogContent;
-		const placement = mapPropToPopperPlacement(this.props.align);
+		const placement = mapPropToPopperPlacement(
+			this.props.align,
+			this.props.direction
+		);
 		const eventsEnabled = true; // Lets popper listen to events (resize, scroll, etc.)
 		const modifiers = {
 			applyStyle: { enabled: false },
@@ -403,7 +419,8 @@ class Dialog extends React.Component {
 
 	render() {
 		let style = {};
-
+		const role =
+			this.props.variant === 'popover' ? 'dialog' : this.props.variant;
 		if (
 			this.props.position === 'absolute' ||
 			this.props.position === 'overflowBoundaryElement'
@@ -438,9 +455,12 @@ class Dialog extends React.Component {
 			...this.props.style,
 		};
 
-		const contents = (
-			<div // eslint-disable-line jsx-a11y/no-static-element-interactions
-				className={
+		const outerTag = this.props.variant === 'popover' ? 'section' : 'div';
+
+		const contents = React.createElement(
+			outerTag,
+			{
+				className:
 					classNames(
 						{
 							'absolute-positioned': this.props.position === 'absolute',
@@ -452,19 +472,20 @@ class Dialog extends React.Component {
 						this.props.hasNubbin &&
 							getNubbinClassName(this.props.align, this.state.popperData),
 						this.props.contentsClassName
-					) || undefined
-				}
-				style={style}
-				onKeyDown={this.handleKeyDown}
-				onMouseEnter={this.props.onMouseEnter}
-				onMouseLeave={this.props.onMouseLeave}
-				ref={this.setDialogContent}
-				role={this.props.variant}
-				tabIndex={this.props.variant === 'popover' ? '-1' : undefined}
-				{...this.props.containerProps}
-			>
-				{this.props.children}
-			</div>
+					) || undefined,
+
+				style,
+				onMouseDown: this.props.onMouseDown,
+				onKeyDown: this.handleKeyDown,
+				onMouseEnter: this.props.onMouseEnter,
+				onMouseLeave: this.props.onMouseLeave,
+				ref: this.setDialogContent,
+				role,
+				tabIndex: this.props.variant === 'popover' ? '-1' : undefined,
+				...this.props.containerProps,
+			},
+
+			this.props.children
 		);
 
 		const subRenders = {
@@ -486,11 +507,17 @@ class Dialog extends React.Component {
 						}),
 						{}
 					);
-				return (
-					<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
+				const wrapped = (
+					// eslint-disable-next-line
+					<UNSAFE_DirectionSettings.Provider value={this.props.direction}>
 						<IconSettings {...truthyIconSettingsContext}>
 							{contents}
 						</IconSettings>
+					</UNSAFE_DirectionSettings.Provider>
+				);
+				return (
+					<Portal onOpen={this.handleOpen} portalMount={this.props.portalMount}>
+						{wrapped}
 					</Portal>
 				);
 			},
@@ -502,6 +529,12 @@ class Dialog extends React.Component {
 
 Dialog.contextTypes = {
 	iconPath: PropTypes.string,
+	onRequestIconPath: PropTypes.func,
+	actionSprite: PropTypes.string,
+	customSprite: PropTypes.string,
+	doctypeSprite: PropTypes.string,
+	standardSprite: PropTypes.string,
+	utilitySprite: PropTypes.string,
 };
 
-export default Dialog;
+export default LanguageDirection(Dialog);

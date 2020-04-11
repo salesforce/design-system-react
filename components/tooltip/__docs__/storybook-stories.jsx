@@ -7,10 +7,12 @@ import IconSettings from '../../icon-settings';
 import { POPOVER_TOOLTIP } from '../../../utilities/constants';
 import Tooltip from '../../tooltip';
 
+import AnchoredNubbin from '../__examples__/anchored-nubbin';
 import Base from '../__examples__/base';
 import ButtonGroupExample from '../__examples__/button-group';
 import ButtonExample from '../__examples__/button';
 import LearnMoreExample from '../__examples__/learn-more';
+import WithDelay from '../__examples__/with-delay';
 
 import Icon from '../../icon';
 import Button from '../../button';
@@ -42,7 +44,11 @@ const getPopoverTooltipAlign = (props) => {
 
 	align.forEach((value) => {
 		children.push(
-			<div key={value} style={{ margin: '100px auto' }}>
+			<div
+				key={value}
+				data-ignore-axe-duplicate-id-aria
+				style={{ margin: '100px auto' }}
+			>
 				<Tooltip {...props} align={value}>
 					{props.trigger}
 				</Tooltip>
@@ -77,6 +83,7 @@ storiesOf(POPOVER_TOOLTIP, module)
 			align: 'bottom',
 			isOpen: true,
 			id: 'myPopoverId',
+			dialogClassName: 'dialog-classname',
 			content,
 		})
 	)
@@ -115,4 +122,6 @@ storiesOf(POPOVER_TOOLTIP, module)
 				/>
 			),
 		})
-	);
+	)
+	.add('With Delay', () => <WithDelay />)
+	.add('With Anchored Nubbin', () => <AnchoredNubbin />);

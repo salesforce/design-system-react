@@ -18,7 +18,7 @@ import checkProps from './check-props';
 import classNames from '../../utilities/class-names';
 import { AVATAR } from '../../utilities/constants';
 import UtilityIcon from '../icon';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ### Display Name Always use the canonical component name as the React display
 // name.
@@ -34,10 +34,6 @@ const propTypes = {
 	assistiveText: PropTypes.shape({
 		icon: PropTypes.string,
 	}),
-	/**
-	 * Class names to be applied to Avatar component.
-	 */
-	className: PropTypes.string,
 	/**
 	 * Alt attribute to be applied to image (base case) element.
 	 */
@@ -98,10 +94,8 @@ class Avatar extends React.Component {
 		this.state = {
 			imgLoadError: false,
 		};
-	}
 
-	componentWillMount() {
-		checkProps(AVATAR, this.props, componentDoc);
+		checkProps(AVATAR, props, componentDoc);
 	}
 
 	buildInitials() {

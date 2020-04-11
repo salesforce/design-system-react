@@ -14,16 +14,17 @@ import {
 	GLOBAL_HEADER_PROFILE,
 } from '../../utilities/constants';
 
-let checkProps = function() {};
+let checkProps = function checkPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
-	checkProps = function(COMPONENT, props, jsonDoc) {
+	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		if (
 			COMPONENT === GLOBAL_HEADER_BUTTON ||
 			COMPONENT === GLOBAL_HEADER_DROPDOWN
 		) {
 			componentIsDeprecated(
 				COMPONENT,
+				props,
 				`${COMPONENT} has been deprecated in favor of more-specific global header subcomponents. Please see docs for updated examples.`
 			);
 		}

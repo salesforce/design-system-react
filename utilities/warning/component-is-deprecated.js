@@ -6,14 +6,14 @@
 // This function will deliver a warning message to the browser console about the component being a deprecated component.
 import lowPriorityWarning from './low-priority-warning';
 
-let isPrototype = function() {};
+let isPrototype = function isPrototypeFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};
 
-	isPrototype = function(control, comment) {
+	isPrototype = function isPrototypeFunction(control, props, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';
-		if (!hasWarned[control]) {
+		if (!props.silenceDeprecationWarning && !hasWarned[control]) {
 			/* eslint-disable max-len */
 			lowPriorityWarning(
 				false,

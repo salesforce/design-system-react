@@ -12,6 +12,7 @@ function flatMapChildren(children, iterator) {
 	const result = [];
 	function go(xs) {
 		return React.Children.map(xs, (child) => {
+			// eslint-disable-next-line fp/no-mutating-methods
 			result.push(iterator(child));
 			if (child.type) go(child.props.children);
 		});

@@ -1,6 +1,5 @@
 /* eslint-env node */
 /* eslint-disable import/no-extraneous-dependencies */
-const webpackConfig = require('./webpack.config');
 const karmaWebpack = require('karma-webpack');
 const karmaMocha = require('karma-mocha');
 const karmaChaiSinon = require('karma-chai-sinon');
@@ -8,6 +7,7 @@ const karmaSourcemapLoader = require('karma-sourcemap-loader');
 const karmaChromeLauncher = require('karma-chrome-launcher');
 const karmaSpecReporter = require('karma-spec-reporter');
 const karmaCoverage = require('karma-coverage');
+const webpackConfig = require('./webpack.config');
 
 webpackConfig.devtool = 'inline-source-map';
 webpackConfig.externals = {
@@ -18,7 +18,7 @@ webpackConfig.externals = {
 };
 
 // Karma configuration
-const configExport = function(config) {
+const configExport = function configExportFunction(config) {
 	config.set({
 		// base path that will be used to resolve all patterns (eg. files, exclude)
 		basePath: '',
@@ -40,7 +40,29 @@ const configExport = function(config) {
 			'tests/browser-tests.js',
 			{
 				pattern:
-					'./node_modules/@salesforce-ux/design-system/assets/icons/**/*.svg',
+					'./node_modules/@salesforce-ux/design-system/assets/images/**/*.jpg',
+				watched: false,
+				included: false,
+				served: true,
+				nocache: false,
+			},
+			{
+				pattern:
+					'./node_modules/@salesforce-ux/design-system/assets/images/**/*.png',
+				watched: false,
+				included: false,
+				served: true,
+				nocache: false,
+			},
+			{
+				pattern: './node_modules/@salesforce-ux/design-system/assets/**/*.svg',
+				watched: false,
+				included: false,
+				served: true,
+				nocache: false,
+			},
+			{
+				pattern: './assets/**/*.svg',
 				watched: false,
 				included: false,
 				served: true,
@@ -48,6 +70,10 @@ const configExport = function(config) {
 			},
 		],
 		proxies: {
+			'/assets/images/global-header/logo.svg':
+				'http://localhost:9876/base/assets/images/global-header/logo.svg',
+			'/assets/images/illustrations/empty-state-no-access.svg':
+				'http://localhost:9876/base/assets/images/illustrations/empty-state-no-access.svg',
 			'/assets/':
 				'http://localhost:9876/base/node_modules/@salesforce-ux/design-system/assets/',
 		},
@@ -72,7 +98,7 @@ const configExport = function(config) {
 		},
 
 		coverageReporter: {
-			reporters: [{ type: 'html', dir: 'coverage/' }, { type: 'text' }],
+			reporters: [{ type: 'text' }],
 		},
 
 		// web server port
@@ -90,7 +116,7 @@ const configExport = function(config) {
 
 		// start these browsers
 		// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-		browsers: ['ChromeHeadless', 'ChromeHeadlessNoSandbox'],
+		browsers: ['ChromeHeadlessNoSandbox'],
 
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits

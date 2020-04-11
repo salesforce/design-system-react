@@ -165,6 +165,7 @@ const Item = (props) => {
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<Button
 					tabIndex="-1"
+					aria-hidden
 					assistiveText={{ icon: '' }}
 					role="presentation"
 					iconCategory="utility"

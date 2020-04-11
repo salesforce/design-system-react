@@ -9,11 +9,7 @@ import { expect } from 'chai';
 import SLDSMenuPicklist from '../../menu-picklist';
 import IconSettings from '../../icon-settings';
 
-const {
-	Simulate,
-	scryRenderedDOMComponentsWithTag,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
+const { Simulate, findRenderedDOMComponentWithClass } = TestUtils;
 
 describe('SLDSMenuPicklist: ', function() {
 	let body;
@@ -33,10 +29,12 @@ describe('SLDSMenuPicklist: ', function() {
 	const renderPicklist = (inst) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
+		/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 		return ReactDOM.render(
 			<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
 			body
 		);
+		/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
 	};
 
 	function removePicklist() {
@@ -49,6 +47,7 @@ describe('SLDSMenuPicklist: ', function() {
 		options,
 		placeholder: 'Select a contact',
 		value: 'C0',
+		silenceDeprecationWarning: true,
 	};
 
 	const createPicklist = (props) =>
@@ -56,11 +55,6 @@ describe('SLDSMenuPicklist: ', function() {
 
 	const getPicklist = (props) => renderPicklist(createPicklist(props));
 	const getMenu = (dom) => dom.querySelector('.slds-dropdown');
-
-	const clickOnItem = (cmp, index) => {
-		const items = scryRenderedDOMComponentsWithTag(cmp, 'a');
-		Simulate.click(items[index]);
-	};
 
 	describe('in modal mode', () => {
 		let cmp;
@@ -129,7 +123,6 @@ describe('SLDSMenuPicklist: ', function() {
 	describe('expanded with onSelect', () => {
 		let cmp;
 		let btn;
-		let clicked;
 		let selected;
 
 		beforeEach(() => {
@@ -190,16 +183,9 @@ describe('SLDSMenuPicklist: ', function() {
 	describe('accessible markup', () => {
 		let cmp;
 		let btn;
-		let clicked;
-		let selected;
 
 		beforeEach(() => {
-			selected = false;
-			cmp = getPicklist({
-				onSelect: (i) => {
-					selected = i;
-				},
-			});
+			cmp = getPicklist({});
 			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
 		});
 

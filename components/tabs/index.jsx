@@ -1,3 +1,4 @@
+/* eslint-disable no-else-return */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -37,13 +38,16 @@ import EventUtil from '../../utilities/event';
 function isTabNode(node) {
 	return (
 		(node.nodeName === 'A' && node.getAttribute('role') === 'tab') ||
-		(node.nodeName === 'LI' && node.getAttribute('role') === 'tab')
+		(node.nodeName === 'LI' &&
+			node.classList.contains('slds-tabs_default__item'))
 	);
 }
 
 // Determine if a tab node is disabled
 function isTabDisabled(node) {
-	if (node.getAttribute) {
+	if (node.classList && node.classList.contains('slds-disabled')) {
+		return true;
+	} else if (node.getAttribute) {
 		return node.getAttribute('aria-disabled') === 'true';
 	}
 
@@ -131,21 +135,13 @@ class Tabs extends React.Component {
 	constructor(props) {
 		super(props);
 		this.tabs = [];
-	}
 
-	componentWillMount() {
 		// If no `id` is supplied in the props we generate one. An HTML ID is _required_ for several elements in a tabs component in order to leverage ARIA attributes for accessibility.
 		this.generatedId = shortid.generate();
 		this.flavor = this.getVariant();
-		this.setState({
-			selectedIndex: this.props.defaultSelectedIndex,
-		});
-	}
-
-	componentWillUnmount() {
-		this.setState({
-			focus: false,
-		});
+		this.state = {
+			selectedIndex: props.defaultSelectedIndex,
+		};
 	}
 
 	getNextTab(index) {
@@ -153,6 +149,7 @@ class Tabs extends React.Component {
 
 		// Look for non-disabled tab from index to the last tab on the right
 		// eslint-disable-next-line no-plusplus
+		// eslint-disable-next-line no-plusplus, fp/no-loops
 		for (let i = index + 1; i < count; i++) {
 			const tab = this.getTab(i);
 			if (!isTabDisabled(tab)) {
@@ -161,7 +158,7 @@ class Tabs extends React.Component {
 		}
 
 		// If no tab found, continue searching from first on left to index
-		// eslint-disable-next-line no-plusplus
+		// eslint-disable-next-line no-plusplus, fp/no-loops
 		for (let i = 0; i < index; i++) {
 			const tab = this.getTab(i);
 			if (!isTabDisabled(tab)) {
@@ -181,7 +178,7 @@ class Tabs extends React.Component {
 		let i = index;
 
 		// Look for non-disabled tab from index to first tab on the left
-		// eslint-disable-next-line no-plusplus
+		// eslint-disable-next-line fp/no-loops, no-plusplus
 		while (i--) {
 			const tab = this.getTab(i);
 			if (!isTabDisabled(tab)) {
@@ -191,7 +188,7 @@ class Tabs extends React.Component {
 
 		// If no tab found, continue searching from last tab on right to index
 		i = this.getTabsCount();
-		// eslint-disable-next-line no-plusplus
+		// eslint-disable-next-line fp/no-loops, no-plusplus
 		while (i-- > index) {
 			const tab = this.getTab(i);
 			if (!isTabDisabled(tab)) {
@@ -254,14 +251,21 @@ class Tabs extends React.Component {
 
 	handleClick = (e) => {
 		let node = e.target;
-		/* eslint-disable no-cond-assign */
+		/* eslint-disable no-cond-assign, fp/no-loops */
 		do {
 			if (this.isTabFromContainer(node)) {
 				if (isTabDisabled(node)) {
 					return;
 				}
 
-				const index = [].slice.call(node.parentNode.children).indexOf(node);
+				let parentNode = node.parentNode; // eslint-disable-line prefer-destructuring
+
+				if (parentNode.nodeName === 'LI') {
+					node = node.parentNode;
+					parentNode = node.parentNode; // eslint-disable-line prefer-destructuring
+				}
+
+				const index = [].slice.call(parentNode.children).indexOf(node);
 				this.setSelected(index);
 				return;
 			}
@@ -309,7 +313,6 @@ class Tabs extends React.Component {
 		do {
 			if (nodeAncestor === this.tabsNode) return true;
 			else if (nodeAncestor.getAttribute('data-tabs')) break;
-
 			nodeAncestor = nodeAncestor.parentElement;
 		} while (nodeAncestor);
 

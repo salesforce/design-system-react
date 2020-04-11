@@ -33,7 +33,7 @@ class Example extends React.Component {
 		return (
 			<Dropdown
 				align="right"
-				id="ButtonGroupExampleDropdown"
+				id={selectedItem.id}
 				assistiveText={{ icon: 'More Options' }}
 				buttonVariant="icon"
 				buttonClassName="slds-shrink-none"
@@ -73,7 +73,6 @@ class Example extends React.Component {
 		this.setState((state) => ({
 			...state,
 			expandedPanels: {
-				...state.expandedPanels,
 				[data.id]: !state.expandedPanels[data.id],
 			},
 		}));
@@ -89,18 +88,20 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Accordion id="base-example-accordion">
-					{this.state.items.map((item, i) => (
-						<AccordionPanel
-							expanded={!!this.state.expandedPanels[item.id]}
-							id={item.id}
-							panelContentActions={this.menuDropdown(item)}
-							key={item.id}
-							onTogglePanel={() => this.togglePanel(event, item)}
-							summary={item.summary}
-						>
-							{item.details}
-						</AccordionPanel>
-					))}
+					{this.state.items.map((item, i) => {
+						return (
+							<AccordionPanel
+								expanded={!!this.state.expandedPanels[item.id]}
+								id={item.id}
+								panelContentActions={this.menuDropdown(item)}
+								key={item.id}
+								onTogglePanel={(event) => this.togglePanel(event, item)}
+								summary={item.summary}
+							>
+								{item.details}
+							</AccordionPanel>
+						);
+					})}
 				</Accordion>
 			</IconSettings>
 		);

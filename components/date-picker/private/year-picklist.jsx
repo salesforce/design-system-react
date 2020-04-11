@@ -11,6 +11,10 @@ class DatepickerYearSelector extends React.Component {
 
 	static propTypes = {
 		/**
+		 * Label for year picklist/combobox
+		 */
+		assistiveTextYear: PropTypes.string.isRequired,
+		/**
 		 * HTML id for component
 		 */
 		id: PropTypes.string,
@@ -30,10 +34,6 @@ class DatepickerYearSelector extends React.Component {
 		 * Offset of year from current year that can be selected in the year selection dropdown. (2017 + 5 = 2012).
 		 */
 		relativeYearTo: PropTypes.number,
-		/**
-		 * Callback that passes in the DOM reference of the `<button>` DOM node within this component. Primary use is to allow `focus` to be called. You should still test if the node exists, since rendering is asynchronous. `buttonRef={(component) => { if(component) console.log(component); }}`
-		 */
-		yearPicklistButtonRef: PropTypes.func,
 	};
 
 	getOptions = () => {
@@ -42,7 +42,9 @@ class DatepickerYearSelector extends React.Component {
 		const toYear = now.getFullYear() + this.props.relativeYearTo;
 		const opts = [];
 
+		// eslint-disable-next-line fp/no-loops
 		for (let year = fromYear; year < toYear; year += 1) {
+			// eslint-disable-next-line fp/no-mutating-methods
 			opts.push({ label: `${year}`, value: year, id: String(opts.length) });
 		}
 		return opts;
@@ -72,6 +74,7 @@ class DatepickerYearSelector extends React.Component {
 		return (
 			<div className="slds-form-element slds-align-content-center">
 				<Combobox
+					assistiveText={{ label: this.props.assistiveTextYear }}
 					className="slds-shrink-none"
 					classNameMenu="slds-datepicker"
 					events={{
