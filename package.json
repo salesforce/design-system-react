@@ -46,6 +46,21 @@
 		"validate": "npm ls",
 		"version": "git add package.json && git commit -m \"Bump package version\""
 	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,jsx}": [
+			"npm run lint:fix",
+			"git add"
+		],
+		"*.{js,jsx,ts,tsx,css,scss}": [
+			"prettier --write",
+			"git add"
+		]
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+ssh://git@github.com/salesforce/design-system-react.git"
@@ -164,6 +179,7 @@
 		"find-remove": "^1.1.0",
 		"fs-extra": "^8.1.0",
 		"glob": "^7.1.4",
+		"husky": "^4.2.5",
 		"istanbul-instrumenter-loader": "^3.0.1",
 		"jest": "^23.1.0",
 		"jest-axe": "https://github.com/interactivellama/jest-axe.git#v3.1.1-alpha.1",
@@ -187,7 +203,7 @@
 		"mocha": "^6.1.4",
 		"mocha-loader": "^3.0.0",
 		"moment": "^2.24.0",
-		"node-sass": "^4.5.0",
+		"node-sass": "^4.13.1",
 		"normalizr": "^3.4.1",
 		"object.entries": "^1.1.0",
 		"prettier": "1.9.2",
