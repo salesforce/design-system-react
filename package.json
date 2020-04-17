@@ -184,7 +184,7 @@
 		"lodash.kebabcase": "^4.0.1",
 		"lodash.trim": "^4.0.1",
 		"minimist": "^1.2.0",
-		"mocha": "^6.1.4",
+		"mocha": "^6.2.3",
 		"mocha-loader": "^3.0.0",
 		"moment": "^2.24.0",
 		"node-sass": "^4.5.0",
