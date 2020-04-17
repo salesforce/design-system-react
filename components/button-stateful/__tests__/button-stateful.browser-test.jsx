@@ -69,13 +69,14 @@ describe('Button Stateful: ', () => {
 	});
 
 	describe('Aria-* is supported', () => {
-
-		const propsWithAria = assign({ 'aria-pressed': true, 'aria-label': 'abc', 'aria-live': null }, requiredProps);
+		const propsWithAria = assign(
+			{ 'aria-pressed': true, 'aria-label': 'abc', 'aria-live': null },
+			requiredProps
+		);
 		beforeEach(renderButton(<ButtonStateful {...propsWithAria} />));
 		afterEach(removeButton);
 
-		it('honors aria override', function () {
-
+		it('honors aria override', function() {
 			const button = getButton(this.dom);
 			button.getAttribute('aria-pressed').should.equal('true');
 			button.getAttribute('aria-label').should.equal('abc');
@@ -84,23 +85,25 @@ describe('Button Stateful: ', () => {
 	});
 
 	describe('Aria default for icon button', () => {
-
 		const propsToUse = assign({ variant: 'icon' }, requiredPropsNoVariant);
 		beforeEach(renderButton(<ButtonStateful {...propsToUse} />));
 		afterEach(removeButton);
 
-		it('gives correct aria default for buttons with icon', function () {
+		it('gives correct aria default for buttons with icon', function() {
 			const button = getButton(this.dom);
 			button.getAttribute('aria-live').should.equal('polite');
 		});
 	});
 
 	describe('Aria default for icon-filled button', () => {
-		const propsToUse = assign({ variant: 'icon-filled' }, requiredPropsNoVariant);
+		const propsToUse = assign(
+			{ variant: 'icon-filled' },
+			requiredPropsNoVariant
+		);
 		beforeEach(renderButton(<ButtonStateful {...propsToUse} />));
 		afterEach(removeButton);
 
-		it('gives correct aria default for buttons with icon-filled', function () {
+		it('gives correct aria default for buttons with icon-filled', function() {
 			const button = getButton(this.dom);
 			button.getAttribute('aria-live').should.equal('polite');
 		});
@@ -111,7 +114,7 @@ describe('Button Stateful: ', () => {
 		beforeEach(renderButton(<ButtonStateful {...propsToUse} />));
 		afterEach(removeButton);
 
-		it('gives correct aria default for non-icon buttons', function () {
+		it('gives correct aria default for non-icon buttons', function() {
 			const button = getButton(this.dom);
 			button.getAttribute('aria-live').should.equal('assertive');
 		});

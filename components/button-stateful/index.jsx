@@ -203,7 +203,6 @@ class ButtonStateful extends React.Component {
 		let ariaProps = getAriaProps(this.props);
 
 		if (variant === 'icon' || variant === 'icon-filled') {
-
 			// Default aria attribute for stateful button with icon, if none is specified
 			if (!ariaProps || Object.keys(ariaProps).length === 0) {
 				ariaProps = { 'aria-live': 'polite' };
