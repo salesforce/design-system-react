@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSBrandBand Default (medium) 1`] = `
+<div
+  style={
+    Object {
+      "bottom": "1rem",
+      "left": "1rem",
+      "overflow": "auto",
+      "position": "absolute",
+      "right": "1rem",
+      "top": "1rem",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "background": "rgb(176, 196, 223)",
+        "height": "100%",
+        "position": "relative",
+        "width": "100%",
+        "zIndex": 1,
+      }
+    }
+  >
+    <style>
+      .slds-brand-band.dsr-brand-band_lightning-blue:before {
+	background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);
+}
+.slds-brand-band.dsr-brand-band_lightning-blue:after {
+	background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);
+}
+    </style>
+    <div
+      className="slds-brand-band slds-brand-band_medium dsr-brand-band_lightning-blue"
+      id="brand-band-default"
+    />
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSBrandBand Image with background size cover 1`] = `
+<div
+  style={
+    Object {
+      "bottom": "1rem",
+      "left": "1rem",
+      "overflow": "auto",
+      "position": "absolute",
+      "right": "1rem",
+      "top": "1rem",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "background": "rgb(176, 196, 223)",
+        "height": "100%",
+        "position": "relative",
+        "width": "100%",
+        "zIndex": 1,
+      }
+    }
+  >
+    <style>
+      .slds-brand-band.dsr-brand-band_lightning-blue:before {
+	background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);
+}
+.slds-brand-band.dsr-brand-band_lightning-blue:after {
+	background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);
+}
+    </style>
+    <div
+      className="slds-brand-band slds-brand-band_large slds-brand-band_cover dsr-brand-band_lightning-blue custom-brand-band-class"
+      id="brand-band-large"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Hello World!
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSBrandBand Large 1`] = `
+<div
+  style={
+    Object {
+      "bottom": "1rem",
+      "left": "1rem",
+      "overflow": "auto",
+      "position": "absolute",
+      "right": "1rem",
+      "top": "1rem",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "background": "rgb(176, 196, 223)",
+        "height": "100%",
+        "position": "relative",
+        "width": "100%",
+        "zIndex": 1,
+      }
+    }
+  >
+    <style>
+      .slds-brand-band.dsr-brand-band_lightning-blue:before {
+	background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);
+}
+.slds-brand-band.dsr-brand-band_lightning-blue:after {
+	background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);
+}
+    </style>
+    <div
+      className="slds-brand-band slds-brand-band_large dsr-brand-band_lightning-blue custom-brand-band-class"
+      id="brand-band-large"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Hello World!
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSBrandBand Lightning Blue Theme 1`] = `
+<div
+  style={
+    Object {
+      "bottom": "1rem",
+      "left": "1rem",
+      "overflow": "auto",
+      "position": "absolute",
+      "right": "1rem",
+      "top": "1rem",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "background": "rgb(176, 196, 223)",
+        "height": "100%",
+        "position": "relative",
+        "width": "100%",
+        "zIndex": 1,
+      }
+    }
+  >
+    <style>
+      .slds-brand-band.dsr-brand-band_lightning-blue:before {
+	background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);
+}
+.slds-brand-band.dsr-brand-band_lightning-blue:after {
+	background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);
+}
+    </style>
+    <div
+      className="slds-brand-band slds-brand-band_medium dsr-brand-band_lightning-blue slds-p-around_small"
+      id="brand-band-lightning-blue"
+    >
+      <div
+        className="slds-box slds-theme_default"
+      >
+        <h3
+          className="slds-text-heading_label slds-truncate"
+        >
+          My App
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSBrandBand No Image 1`] = `
+<div
+  style={
+    Object {
+      "bottom": "1rem",
+      "left": "1rem",
+      "overflow": "auto",
+      "position": "absolute",
+      "right": "1rem",
+      "top": "1rem",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "background": "rgb(176, 196, 223)",
+        "border": "1px solid #eee",
+        "height": "100%",
+        "position": "relative",
+        "width": "100%",
+        "zIndex": 1,
+      }
+    }
+  >
+    <style>
+      .slds-brand-band.dsr-brand-band_lightning-blue:before {
+	background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);
+}
+.slds-brand-band.dsr-brand-band_lightning-blue:after {
+	background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);
+}
+    </style>
+    <div
+      className="slds-brand-band slds-brand-band_medium slds-brand-band_none dsr-brand-band_lightning-blue"
+      id="brand-band-no-image"
+      style={
+        Object {
+          "zIndex": 1,
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSBrandBand Small 1`] = `
+<div
+  style={
+    Object {
+      "bottom": "1rem",
+      "left": "1rem",
+      "overflow": "auto",
+      "position": "absolute",
+      "right": "1rem",
+      "top": "1rem",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "background": "rgb(176, 196, 223)",
+        "height": "100%",
+        "position": "relative",
+        "width": "100%",
+        "zIndex": 1,
+      }
+    }
+  >
+    <style>
+      .slds-brand-band.dsr-brand-band_lightning-blue:before {
+	background-image: url(/assets/images/themes/oneSalesforce/banner-brand-default.png), linear-gradient(to top, rgba(175, 197, 222, 0) 0, #1B5F9E);
+}
+.slds-brand-band.dsr-brand-band_lightning-blue:after {
+	background-image: linear-gradient(to bottom, rgba(175, 197, 222, 0) 60%, #AFC5DE);
+}
+    </style>
+    <div
+      className="slds-brand-band slds-brand-band_small dsr-brand-band_lightning-blue"
+      id="brand-band-small"
+    />
+  </div>
+</div>
+`;
