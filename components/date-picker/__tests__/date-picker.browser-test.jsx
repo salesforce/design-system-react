@@ -414,6 +414,23 @@ describe('SLDSDatepicker', function describeFunction() {
 					which: KEYS.TAB,
 				});
 			});
+
+			it('typing in input closes calendar', function() {
+				wrapper = mount(<DemoComponent menuPosition="relative" />);
+
+				// Calendar is closed
+				expect(wrapper.find('.slds-datepicker').length).to.equal(0);
+
+				// Click on input to open the calendar
+				const trigger = wrapper.find(triggerClassSelector);
+				trigger.simulate('click', {});
+				expect(wrapper.find('.slds-datepicker').length).to.equal(1);
+
+				// Changing input value closes the calendar
+				const input = wrapper.find('input#sample-datepicker');
+				input.simulate('change', { target: { value: '1/1/2020' } });
+				expect(wrapper.find('.slds-datepicker').length).to.equal(0);
+			});
 		});
 	});
 
