@@ -44,6 +44,7 @@ class DataTableRow extends React.Component {
 			PropTypes.bool,
 			PropTypes.oneOf(['checkbox', 'radio']),
 		]),
+		className: PropTypes.string,
 		columns: PropTypes.arrayOf(
 			PropTypes.shape({
 				Cell: PropTypes.func,
@@ -80,7 +81,7 @@ class DataTableRow extends React.Component {
 		return (
 			<tr
 				{...ariaProps}
-				className={classNames({
+				className={classNames(this.props.className, {
 					'slds-hint-parent': this.props.rowActions,
 					'slds-is-selected': this.props.canSelectRows && isSelected,
 				})}
