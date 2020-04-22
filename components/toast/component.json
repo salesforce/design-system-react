@@ -1,0 +1,40 @@
+{
+	"component": "toast",
+	"status": "prod",
+	"display-name": "Toasts",
+	"classKey": "Toast",
+	"last-accessibility-review": {
+		"date-iso-8601": "2018/01/18",
+		"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+	},
+	"SLDS-component-path": "/components/toast",
+	"dependencies": [
+		{
+			"component": "container",
+			"classKey": "ToastContainer"
+		}
+	],
+	"site-stories": [
+		{
+			"heading": "Informational",
+			"path": "/__examples__/info.jsx"
+		},
+		{
+			"heading": "Success",
+			"path": "/__examples__/success.jsx"
+		},
+		{
+			"heading": "Warning",
+			"path": "/__examples__/warning.jsx"
+		},
+		{
+			"heading": "Error",
+			"path": "/__examples__/error.jsx"
+		},
+		{
+			"heading": "Error with Details",
+			"path": "/__examples__/error-with-details.jsx"
+		}
+	],
+	"url-slug": "toasts"
+}
