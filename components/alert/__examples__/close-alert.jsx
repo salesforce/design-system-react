@@ -1,4 +1,6 @@
 import React from 'react';
+import { action } from '@storybook/addon-actions';
+
 import Alert from '~/components/alert'; // `~` is replaced with design-system-react at runtime
 import AlertContainer from '~/components/alert/container'; // `~` is replaced with design-system-react at runtime
 import Icon from '~/components/icon'; // `~` is replaced with design-system-react at runtime
@@ -33,10 +35,9 @@ class Example extends React.Component {
 									heading: 'Logged in as John Smith (johnsmith@acme.com).',
 									headingLink: 'Log out',
 								}}
-								onClickHeadingLink={() => {
-									console.log('Link clicked.');
-								}}
+								onClickHeadingLink={action('onClickHeadingLink')}
 								onRequestClose={() => {
+									action('onRequestClose')();
 									this.setState({ isOpen: false });
 								}}
 							/>
