@@ -706,7 +706,6 @@ const Lookup = class extends React.Component {
 					onClick={(event) => event.preventDefault()}
 					onKeyDown={this.handlePillKeyDown}
 				>
-					{/* eslint-enable no-script-url */}
 					{renderIcon}
 					<span className={labelClassName}>{selectedItem}</span>
 					<Button

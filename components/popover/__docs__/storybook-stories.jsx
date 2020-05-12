@@ -1,5 +1,4 @@
 /* eslint-disable react/display-name */
-/* eslint-disable no-script-url */
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';

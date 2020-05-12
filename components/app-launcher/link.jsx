@@ -74,7 +74,7 @@ class AppLauncherLink extends React.Component {
 
 		return (
 			<a
-				href={this.props.href} // eslint-disable-line no-script-url
+				href={this.props.href}
 				className={classNames('slds-truncate', this.props.className)}
 				onClick={(event) => {
 					if (this.props.href === '#') {

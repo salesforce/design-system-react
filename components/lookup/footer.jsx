@@ -42,7 +42,6 @@ class DefaultFooter extends React.Component {
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
 				<a id="newItem" href="#" onClick={(event) => event.preventDefault()} className={className}>
-					{/* eslint-enable no-script-url */}
 					<span className="lookup__item-action-label">
 						<Icon
 							name="add"

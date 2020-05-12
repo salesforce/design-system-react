@@ -191,7 +191,7 @@ class GlobalHeader extends React.Component {
 				{this.props.navigation}
 			</header>
 		);
-		/* eslint-enable max-len, no-script-url */
+		/* eslint-enable max-len */
 	}
 }
 

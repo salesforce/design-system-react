@@ -164,7 +164,6 @@ class Alert extends React.Component {
 			size: 'x-small',
 		});
 
-		/* eslint-disable no-script-url */
 		return (
 			<div
 				className={classNames(

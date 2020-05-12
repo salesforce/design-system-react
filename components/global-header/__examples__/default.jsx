@@ -15,7 +15,6 @@ import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover';
 
 /* eslint-disable max-len */
-/* eslint-disable no-script-url */
 /* eslint-disable react/prop-types */
 
 const ipsum =

@@ -196,7 +196,6 @@ const getDropdownCustomTrigger = (props) => (
 );
 
 /* eslint-disable react/prop-types */
-/* eslint-disable no-script-url */
 const DropdownCustomContent = (props) => (
 	<div id="custom-dropdown-menu-content">
 		<div className="slds-m-around_medium">

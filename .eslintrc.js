@@ -243,6 +243,7 @@ module.exports = {
 		// Components that are top-level should be classes, so the DOM ref exists
 		'react/prefer-stateless-function': 'off',
 
+		// <a href="#"> is present in SLDS markup
 		'jsx-a11y/anchor-is-valid': 'off',
 		'jsx-a11y/aria-activedescendant-has-tabindex': 2,
 		'jsx-a11y/interactive-supports-focus': 2,

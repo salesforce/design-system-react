@@ -22,7 +22,6 @@ import EventUtil from '../../../utilities/event';
 import Default from '../__examples__/default';
 
 /* eslint-disable max-len */
-/* eslint-disable no-script-url */
 /* eslint-disable react/prop-types */
 
 const ipsum =
