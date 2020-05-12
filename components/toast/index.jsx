@@ -215,7 +215,9 @@ class Toast extends React.Component {
 						{heading}{' '}
 						{labels.headingLink ? (
 							<a
-								onClick={EventUtil.trappedHandler(this.props.onClickHeadingLink)}
+								onClick={EventUtil.trappedHandler(
+									this.props.onClickHeadingLink
+								)}
 								href="#"
 							>
 								{labels.headingLink}

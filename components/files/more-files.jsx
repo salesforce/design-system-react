@@ -97,7 +97,9 @@ class MoreFiles extends React.Component {
 							'slds-file__crop',
 							this.props.crop ? `slds-file__crop_${this.props.crop}` : null
 						)}
-						onClick={(event) => this.props.href === '#' && event.preventDefault()}
+						onClick={(event) =>
+							this.props.href === '#' && event.preventDefault()
+						}
 					>
 						<div className="slds-file_overlay" />
 						<span className="slds-assistive-text">{assistiveText.link}</span>

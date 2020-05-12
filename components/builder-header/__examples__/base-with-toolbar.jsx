@@ -18,10 +18,7 @@ const Example = (props) => (
 				helpIcon: 'Help',
 				icon: 'Builder',
 			}}
-			events={actions(
-				'onClickBack',
-				'onClickHelp',
-			)}
+			events={actions('onClickBack', 'onClickHelp')}
 			labels={{
 				back: 'Back',
 				help: 'Help',

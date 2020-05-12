@@ -41,7 +41,12 @@ class DefaultFooter extends React.Component {
 				onMouseDown={EventUtil.trapImmediate}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
-				<a id="newItem" href="#" onClick={(event) => event.preventDefault()} className={className}>
+				<a
+					id="newItem"
+					href="#"
+					onClick={(event) => event.preventDefault()}
+					className={className}
+				>
 					<span className="lookup__item-action-label">
 						<Icon
 							name="add"

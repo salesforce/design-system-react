@@ -260,7 +260,10 @@ class Tooltip extends React.Component {
 
 		if (noChildrenProvided && this.props.onClickTrigger) {
 			children = [
-				<a href="#" onClick={EventUtil.trappedHandler(this.props.onClickTrigger)}>
+				<a
+					href="#"
+					onClick={EventUtil.trappedHandler(this.props.onClickTrigger)}
+				>
 					<Icon
 						category="utility"
 						name="info"

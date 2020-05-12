@@ -112,10 +112,7 @@ class Example extends React.Component {
 						backIcon: 'Back',
 						helpIcon: 'Help',
 					}}
-					events={actions(
-						'onClickBack',
-						'onClickHelp',
-					)}
+					events={actions('onClickBack', 'onClickHelp')}
 					labels={{
 						back: 'Back',
 						help: 'Help',

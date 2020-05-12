@@ -96,8 +96,7 @@ class Example extends React.Component {
 					<Notification
 						content={[
 							<span key="offline">
-								You are in offline mode{' '}
-								<a href="#">More Information</a>
+								You are in offline mode <a href="#">More Information</a>
 							</span>,
 						]}
 						iconName="offline"

@@ -85,7 +85,7 @@ const listItemWithContent = (ListItemContent) => {
 				isSelected: this.props.isSelected,
 				isUnread: this.props.isUnread,
 			});
-		}
+		};
 
 		unread() {
 			return this.props.isUnread ? (
