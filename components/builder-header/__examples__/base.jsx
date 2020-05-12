@@ -1,4 +1,6 @@
 import React from 'react';
+import { actions, action } from '@storybook/addon-actions';
+
 import IconSettings from '../../icon-settings';
 import BuilderHeader from '../../builder-header';
 import BuilderHeaderNav from '../../builder-header/nav';
@@ -13,6 +15,10 @@ const Example = (props) => (
 				backIcon: 'Back',
 				helpIcon: 'Help',
 			}}
+			events={actions(
+				'onClickBack',
+				'onClickHelp',
+			)}
 			labels={{
 				back: 'Back',
 				help: 'Help',
@@ -27,6 +33,7 @@ const Example = (props) => (
 					iconCategory="utility"
 					iconName="settings"
 					label="Link"
+					onClick={action('link/onClick')}
 				/>
 				<BuilderHeaderNavDropdown
 					assistiveText={{ icon: 'Dropdown' }}
@@ -38,6 +45,7 @@ const Example = (props) => (
 						{ label: 'Menu Item One', value: 'A0' },
 						{ label: 'Menu Item Two', value: 'B0' },
 					]}
+					onSelect={action('dropdown/onSelect')}
 				/>
 			</BuilderHeaderNav>
 		</BuilderHeader>

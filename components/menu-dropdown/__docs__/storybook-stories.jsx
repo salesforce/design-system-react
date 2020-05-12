@@ -6,6 +6,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
+import EventUtil from '../../../utilities/event';
 
 import { MENU_DROPDOWN } from '../../../utilities/constants';
 import Dropdown from '../../menu-dropdown';
@@ -205,12 +206,12 @@ const DropdownCustomContent = (props) => (
 					<p className="slds-truncate">
 						<a
 							className="slds-m-right_medium"
-							href="javascript:void(0)"
-							onClick={props.onClick}
+							href="#"
+							onClick={EventUtil.trappedHandler(props.onClick)}
 						>
 							Settings
 						</a>
-						<a href="javascript:void(0)" onClick={props.onClick}>
+						<a href="#" onClick={EventUtil.trappedHandler(props.onClick)}>
 							Log Out
 						</a>
 					</p>

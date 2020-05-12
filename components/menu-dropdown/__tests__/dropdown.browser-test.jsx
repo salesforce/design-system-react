@@ -27,6 +27,7 @@ import IconSettings from '../../icon-settings';
 import Tooltip from '../../tooltip';
 import List from '../../utilities/menu-list';
 import { keyObjects } from '../../../utilities/key-code';
+import EventUtil from '../../../utilities/event';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -63,12 +64,12 @@ const DropdownCustomContent = (props) => (
 						<a
 							id="custom-dropdown-menu-content-link"
 							className="slds-m-right_medium"
-							href="javascript:void(0);"
-							onClick={props.onClick}
+							href="#"
+							onClick={EventUtil.trappedHandler(props.onClick)}
 						>
 							Settings
 						</a>
-						<a href="javascript:void(0);" onClick={props.onClick}>
+						<a href="#" onClick={EventUtil.trappedHandler(props.onClick)}>
 							Log Out
 						</a>
 					</p>

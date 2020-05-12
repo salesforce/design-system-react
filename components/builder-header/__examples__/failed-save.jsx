@@ -70,7 +70,7 @@ const Example = (props) => (
 									<p className="slds-p-bottom_x-small">
 										Pellentesque magna tellus, dapibus vitae placerat nec,
 										viverra vel mi.{' '}
-										<a href="javascript:void(0);" title="Learn More">
+										<a href="#" title="Learn More">
 											Learn More
 										</a>
 									</p>
