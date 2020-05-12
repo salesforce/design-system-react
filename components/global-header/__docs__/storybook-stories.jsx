@@ -17,6 +17,7 @@ import IconSettings from '../../icon-settings';
 import Popover from '../../popover';
 
 import { GLOBAL_HEADER } from '../../../utilities/constants';
+import EventUtil from '../../../utilities/event';
 
 import Default from '../__examples__/default';
 
