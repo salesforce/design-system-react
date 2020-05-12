@@ -697,13 +697,13 @@ const Lookup = class extends React.Component {
 		// i18n
 		return (
 			<div className="slds-pill__container">
-				{/* eslint-disable no-script-url */}
 				<a
-					href="javascript:void(0)"
+					href="#"
 					className="slds-pill"
 					ref={(pill) => {
 						this.pills[this.state.selectedIndex] = pill;
 					}}
+					onClick={(event) => event.preventDefault()}
 					onKeyDown={this.handlePillKeyDown}
 				>
 					{/* eslint-enable no-script-url */}

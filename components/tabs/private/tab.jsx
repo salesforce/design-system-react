@@ -145,12 +145,13 @@ class Tab extends React.Component {
 						'slds-tabs_default__link': variant === 'default',
 						'slds-tabs_scoped__link': variant === 'scoped',
 					})}
-					href="javascript:void(0);" // eslint-disable-line no-script-url
+					href="#"
 					role="tab"
 					tabIndex="-1"
 					aria-controls={panelId}
 					aria-disabled={disabled}
 					aria-selected={selected ? 'true' : 'false'}
+					onClick={(event) => event.preventDefault()}
 				>
 					{children}
 				</a>

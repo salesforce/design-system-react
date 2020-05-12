@@ -7,6 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
+import EventUtil from '../../utilities/event';
 
 // ### shortid
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
@@ -259,7 +260,7 @@ class Tooltip extends React.Component {
 
 		if (noChildrenProvided && this.props.onClickTrigger) {
 			children = [
-				<a href="javascript:void(0)" onClick={this.props.onClickTrigger}>
+				<a href="#" onClick={EventUtil.trappedHandler(this.props.onClickTrigger)}>
 					<Icon
 						category="utility"
 						name="info"

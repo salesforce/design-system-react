@@ -91,7 +91,7 @@ const defaultProps = {
 	assistiveText: {
 		dragIconText: 'Reorder',
 	},
-	href: 'javascript:void(0);', // eslint-disable-line no-script-url
+	href: '#',
 	moreLabel: ' More',
 };
 
@@ -158,7 +158,8 @@ class AppLauncherTile extends React.Component {
 				</div>
 				<div className="slds-app-launcher__tile-body">
 					<a
-						href={this.props.href} // eslint-disable-line no-script-url
+						href={this.props.href}
+						onClick={(event) => this.props.href === '#' && event.preventDefault() }
 					>
 						<Highlighter search={this.props.search}>
 							{this.props.title}

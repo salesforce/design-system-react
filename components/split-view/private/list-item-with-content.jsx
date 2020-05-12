@@ -77,7 +77,9 @@ const listItemWithContent = (ListItemContent) => {
 
 		static defaultProps = defaultProps;
 
-		onClick(event) {
+		onClick = (event) => {
+			event.preventDefault();
+
 			this.props.events.onClick(event, {
 				item: this.props.item,
 				isSelected: this.props.isSelected,
@@ -116,8 +118,8 @@ const listItemWithContent = (ListItemContent) => {
 								: this.props.isSelected
 						}
 						tabIndex={this.props.isFocused ? 0 : -1}
-						href="javascript:void(0);" // eslint-disable-line no-script-url
-						onClick={(e) => this.onClick(e)}
+						href="#"
+						onClick={this.onClick}
 					>
 						{this.unread()}
 						<ListItemContent {...this.props} />

@@ -41,8 +41,7 @@ class DefaultHeader extends React.Component {
 				onClick={this.handleClick}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
-				{/* eslint-disable no-script-url */}
-				<a id="searchRecords" href="javascript:void(0);" className={className}>
+				<a id="searchRecords" href="#" onClick={(event) => event.preventDefault()} className={className}>
 					{/* eslint-enable no-script-url */}
 					<span className="lookup__item-action-label">
 						<Icon

@@ -297,10 +297,10 @@ class SplitViewListbox extends React.Component {
 			<a
 				aria-live="polite"
 				style={{ borderTop: '0' }}
-				href="javascript:void(0);" // eslint-disable-line no-script-url
+				href="#"
 				role="button"
 				className="slds-split-view__list-header slds-grid slds-text-link_reset"
-				onClick={this.props.events.onSort}
+				onClick={eventUtil.trappedHandler(this.props.events.onSort)}
 			>
 				{children}
 			</a>

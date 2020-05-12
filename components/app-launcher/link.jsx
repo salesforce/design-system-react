@@ -62,7 +62,7 @@ class AppLauncherLink extends React.Component {
 
 	// ### Default Props
 	static defaultProps = {
-		href: 'javascript:void(0);', // eslint-disable-line no-script-url
+		href: '#',
 	};
 
 	render() {
@@ -77,6 +77,9 @@ class AppLauncherLink extends React.Component {
 				href={this.props.href} // eslint-disable-line no-script-url
 				className={classNames('slds-truncate', this.props.className)}
 				onClick={(event) => {
+					if (this.props.href === '#') {
+						event.preventDefault();
+					}
 					if (this.props.onClick) {
 						event.preventDefault();
 						this.props.onClick(event, { href: this.props.href });
