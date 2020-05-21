@@ -1147,7 +1147,7 @@ exports[`DOM snapshots SLDSPopover Custom Target 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
+exports[`DOM snapshots SLDSPopover Edit Dialog - Open 1`] = `
 <div
   className="slds-p-around_medium slds-m-horizontal_x-large"
   style={

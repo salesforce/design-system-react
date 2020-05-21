@@ -149,4 +149,5 @@ storiesOf(POPOVER, module)
 	.add('Walkthrough Action', () => <WalkthroughAction />)
 	.add('Walkthrough Action - Open', () => <WalkthroughAction isOpen />)
 	.add('Edit Dialog', () => <EditDialog />)
-	.add('Edit Dialog  - Open', () => <EditDialog isOpen />);
+	.add('Edit Dialog - Open', () => <EditDialog isOpen />)
+	.add('Edit Dialog - Disabled', () => <EditDialog disabled="true" />);

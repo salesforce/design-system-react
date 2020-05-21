@@ -27,6 +27,10 @@ class EditDialog extends React.Component {
 	// ### Prop Types
 	static propTypes = {
 		/**
+		 * Disables the edit dialog and prevents clicking it.
+		 */
+		disabled: PropTypes.bool,
+		/**
 		 * By default, a unique ID will be created at render to support keyboard navigation, ARIA roles, and connect the popover to the triggering button. This ID will be applied to the triggering element. `${id}-popover`, `${id}-dialog-heading`, `${id}-dialog-body` are also created.
 		 */
 		id: PropTypes.string,
@@ -78,6 +82,7 @@ class EditDialog extends React.Component {
 			<Button
 				assistiveText={{ icon: 'Edit: Status' }}
 				className="slds-button_reset"
+				disabled={this.props.disabled}
 				iconCategory="utility"
 				iconClassName="slds-button__icon slds-button__icon_hint"
 				iconName="edit"
