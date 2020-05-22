@@ -31,6 +31,15 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.19
+
+**Bugfixes**
+
+- `Spinner`: Add `xx-small` variant
+- `Filter` and `Panel`: Minor markup updates
+- `DatePicker`: Typing in input closes the calendar
+- `DataTable`: Add ability to specify a custom class for a row
+
 ## Release 0.10.18
 
 **Bugfixes**
