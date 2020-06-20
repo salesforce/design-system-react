@@ -127,7 +127,8 @@ const defaultProps = {
  * The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.
  * For icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).
  * Although not listed in the prop table, all `aria-*` will be added to the button element if passed in.
- * If no `aria-*` is being passed, <code>aria-live='polite'</code> will be used for `icon` and `icon-filled` variant <code>aria-live='assertive'</code> will be used for other variants.
+ * By default, if no `aria-*` is being passed, <code>aria-live='polite'</code> will be used for `icon` and `icon-filled` variant,
+ * and <code>aria-live='assertive'</code> will be used for other variants.
  */
 class ButtonStateful extends React.Component {
 	constructor(props) {
@@ -204,7 +205,7 @@ class ButtonStateful extends React.Component {
 
 		if (variant === 'icon' || variant === 'icon-filled') {
 			// Default aria attribute for stateful button with icon, if none is specified
-			if (!ariaProps || Object.keys(ariaProps).length === 0) {
+			if (Object.keys(ariaProps).length === 0) {
 				ariaProps = { 'aria-live': 'polite' };
 			}
 
@@ -249,7 +250,7 @@ class ButtonStateful extends React.Component {
 		defaultIconProps.position = 'left';
 
 		// Default aria attribute for stateful button, if none is specified
-		if (!ariaProps || Object.keys(ariaProps).length === 0) {
+		if (Object.keys(ariaProps).length === 0) {
 			ariaProps = { 'aria-live': 'assertive' };
 		}
 
