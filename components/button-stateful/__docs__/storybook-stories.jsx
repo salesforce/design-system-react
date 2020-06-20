@@ -24,7 +24,4 @@ storiesOf(BUTTON_STATEFUL, module)
 	.add('Base', () => getButtonStateful())
 	.add('Disabled', () => getButtonStateful({ disabled: true }))
 	.add('Icon Text Button', () => <IconTextButton />)
-	.add('Icon Button', () => <IconButton />)
-	.add('Base With aria-pressed', () =>
-		getButtonStateful({ 'aria-pressed': true })
-	);
+	.add('Icon Button', () => <IconButton />);
