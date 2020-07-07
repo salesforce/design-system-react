@@ -49,6 +49,10 @@ const propTypes = {
 	 */
 	isInput: PropTypes.bool,
 	/**
+	 * Add styling to support an inline spinner inside of the document flow.
+	 */
+	isInline: PropTypes.bool,
+	/**
 	 * Determines the size of the spinner
 	 */
 	size: PropTypes.oneOf(['xx-small', 'x-small', 'small', 'medium', 'large']),
@@ -61,6 +65,8 @@ const propTypes = {
 const defaultProps = {
 	assistiveText: { label: 'Loading...' },
 	isDelayed: false,
+	isInline: false,
+	isInput: false,
 	size: 'medium',
 	variant: 'base',
 };
@@ -75,6 +81,7 @@ const Spinner = (props) => {
 		containerStyle,
 		id,
 		isDelayed,
+		isInline,
 		isInput,
 		size,
 		variant,
@@ -88,6 +95,7 @@ const Spinner = (props) => {
 				}.label;
 
 	const spinnerClassName = classNames('slds-spinner', {
+		'slds-spinner_inline': isInline,
 		'slds-input__spinner': isInput,
 		'slds-spinner_brand': variant === 'brand',
 		'slds-spinner_inverse': variant === 'inverse',

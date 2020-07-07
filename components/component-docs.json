@@ -15220,7 +15220,22 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Add styling to support a spinner inside an input field."
+                "description": "Add styling to support a spinner inside an input field.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "isInline": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Add styling to support an inline spinner inside of the document flow.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "size": {
                 "type": {
