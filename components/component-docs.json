@@ -1658,23 +1658,6 @@
                     "name": "toolbar",
                     "source": "/components/builder-header/toolbar.jsx"
                 }
-            },
-            {
-                "misc": {
-                    "description": "The miscellaneous section of the header.",
-                    "methods": [],
-                    "props": {
-                        "children": {
-                            "type": {
-                                "name": "node"
-                            },
-                            "required": false,
-                            "description": "Provide custom content in place of Page Type label\n```\n<BuilderHeader>\n  <BuilderHeaderMisc>\n    Custom content\n  </BuilderHeaderMisc>\n</BuilderHeader>\n```"
-                        }
-                    },
-                    "name": "misc",
-                    "source": "/components/builder-header/misc.jsx"
-                }
             }
         ]
     },

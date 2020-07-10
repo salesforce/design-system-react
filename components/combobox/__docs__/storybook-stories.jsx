@@ -83,10 +83,12 @@ storiesOf(COMBOBOX, module)
 		<BaseMenuItemDisabledTooltipOpen action={action} />
 	))
 	.add('Inline Single Selection', () => <InlineSingle action={action} />)
-	.add('Inline Single Selection Predefined Options Only', () =>
-		<InlineSinglePredefinedOnly action={action} />)
-	.add('Inline Single Selection With Custom Open State', () =>
-		<InlineSingleWithCustomOpenState action={action} />)
+	.add('Inline Single Selection Predefined Options Only', () => (
+		<InlineSinglePredefinedOnly action={action} />
+	))
+	.add('Inline Single Selection With Custom Open State', () => (
+		<InlineSingleWithCustomOpenState action={action} />
+	))
 	.add('Inline Single Entity Selection', () => (
 		<InlineSingleEntityCombobox action={action} />
 	))

@@ -443,10 +443,6 @@
 				{
 					"component": "toolbar",
 					"classKey": "BuilderHeaderToolbar"
-				},
-				{
-					"component": "misc",
-					"classKey": "BuilderHeaderMisc"
 				}
 			],
 			"site-stories": [

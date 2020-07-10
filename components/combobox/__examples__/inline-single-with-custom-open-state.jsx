@@ -90,14 +90,14 @@ class Example extends React.Component {
 							this.setState({ inputValue: value });
 						},
 						onRequestClose: () => {
-							this.setState(prevState => ({
+							this.setState((prevState) => ({
 								...prevState,
 								isOpen: false,
 								inputValue: '',
-							}))
+							}));
 						},
 						onRequestOpen: () => {
-							this.setState(prevState => ({...prevState, isOpen: true}))
+							this.setState((prevState) => ({ ...prevState, isOpen: true }));
 						},
 						onRequestRemoveSelectedOption: (event, data) => {
 							this.setState({

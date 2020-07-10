@@ -459,7 +459,11 @@ class Combobox extends React.Component {
 			}
 		} else if (this.props.isOpen !== nextProps.isOpen) {
 			// eslint-disable-next-line react/no-did-update-set-state
-			this.setState({ isOpen: nextProps.isOpen });
+			this.setState({
+				activeOption: undefined,
+				activeOptionIndex: -1,
+				isOpen: nextProps.isOpen,
+			});
 		}
 
 		// there may be issues with tabindex/focus if the app removes an item
@@ -971,9 +975,8 @@ class Combobox extends React.Component {
 		if (this.props.events.onRequestClose) {
 			this.props.events.onRequestClose(event, data);
 		}
-
 		if (this.getIsOpen()) {
-			this.setState({ isOpen: false });
+			this.handleClose(event, { trigger: 'cancel' });
 		}
 	};
 
