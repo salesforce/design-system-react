@@ -797,7 +797,7 @@ class Combobox extends React.Component {
 
 	handleKeyDownUp = (event) => {
 		// Don't open if user is selecting text
-		if (!event.shiftKey && this.state.isOpen) {
+		if (!event.shiftKey && this.getIsOpen()) {
 			this.handleNavigateListboxMenu(event, { direction: 'previous' });
 		}
 	};
@@ -811,7 +811,7 @@ class Combobox extends React.Component {
 		});
 
 		if (activeOptionIndex !== undefined) {
-			if (this.state.isOpen) {
+			if (this.getIsOpen()) {
 				menuItemSelectScroll({
 					container: this.menuRef,
 					focusedIndex: activeOptionIndex,
@@ -836,7 +836,7 @@ class Combobox extends React.Component {
 			});
 
 			// eslint-disable-next-line react/no-access-state-in-setstate
-			if (this.state.isOpen) {
+			if (this.getIsOpen()) {
 				menuItemSelectScroll({
 					container: this.menuRef,
 					focusedIndex: newIndex,

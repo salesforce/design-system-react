@@ -18,6 +18,8 @@ import BaseMenuItemDisabledTooltip from '../__examples__/base-menu-item-disabled
 import BaseWithScroll from '../__examples__/base-with-scroll';
 import Dialog from '../__examples__/dialog.jsx';
 import InlineSingle from '../__examples__/inline-single';
+import InlineSinglePredefinedOnly from '../__examples__/inline-single-predefined-options-only';
+import InlineSingleWithCustomOpenState from '../__examples__/inline-single-with-custom-open-state';
 import InlineSingleEntityCombobox from '../__examples__/inline-single-entity-combobox';
 import InlineSingleSearchAddEntities from '../__examples__/inline-single-search-add-entities';
 import InlineMultiple from '../__examples__/inline-multiple';
@@ -81,6 +83,10 @@ storiesOf(COMBOBOX, module)
 		<BaseMenuItemDisabledTooltipOpen action={action} />
 	))
 	.add('Inline Single Selection', () => <InlineSingle action={action} />)
+	.add('Inline Single Selection Predefined Options Only', () =>
+		<InlineSinglePredefinedOnly action={action} />)
+	.add('Inline Single Selection With Custom Open State', () =>
+		<InlineSingleWithCustomOpenState action={action} />)
 	.add('Inline Single Entity Selection', () => (
 		<InlineSingleEntityCombobox action={action} />
 	))
