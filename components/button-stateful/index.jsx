@@ -23,6 +23,7 @@ import componentDoc from './component.json';
 // ## Children
 import ButtonIcon from '../icon/button-icon';
 
+import getAriaProps from '../../utilities/get-aria-props';
 import { BUTTON_STATEFUL } from '../../utilities/constants';
 
 const propTypes = {
@@ -125,6 +126,9 @@ const defaultProps = {
 /**
  * The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.
  * For icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).
+ * Although not listed in the prop table, all `aria-*` props will be added to the button element if passed in.
+ * If no `aria-*` props are passed in, <code>aria-live='polite'</code> is used for `icon` and `icon-filled` variants,
+ * and <code>aria-live='assertive'</code> is used for the remaining variants.
  */
 class ButtonStateful extends React.Component {
 	constructor(props) {
@@ -196,10 +200,18 @@ class ButtonStateful extends React.Component {
 
 		const isActive = typeof active === 'boolean' ? active : this.state.active;
 
+		// Accept aria-* props
+		let ariaProps = getAriaProps(this.props);
+
 		if (variant === 'icon' || variant === 'icon-filled') {
+			// Default aria attribute for stateful button with icon, if none is specified
+			if (Object.keys(ariaProps).length === 0) {
+				ariaProps = { 'aria-live': 'polite' };
+			}
+
 			return (
 				<button
-					aria-live="polite"
+					{...ariaProps}
 					className={this.getClassName(isActive)}
 					disabled={disabled}
 					id={id}
@@ -237,9 +249,14 @@ class ButtonStateful extends React.Component {
 
 		defaultIconProps.position = 'left';
 
+		// Default aria attribute for stateful button, if none is specified
+		if (Object.keys(ariaProps).length === 0) {
+			ariaProps = { 'aria-live': 'assertive' };
+		}
+
 		return (
 			<button
-				aria-live="assertive"
+				{...ariaProps}
 				className={this.getClassName(isActive)}
 				disabled={disabled}
 				id={id}

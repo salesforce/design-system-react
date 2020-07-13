@@ -1721,7 +1721,7 @@
         "dependencies": []
     },
     "button-stateful": {
-        "description": "The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).",
+        "description": "The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).\nAlthough not listed in the prop table, all `aria-*` props will be added to the button element if passed in.\nIf no `aria-*` props are passed in, <code>aria-live='polite'</code> is used for `icon` and `icon-filled` variants,\nand <code>aria-live='assertive'</code> is used for the remaining variants.",
         "methods": [
             {
                 "name": "getClassName",
