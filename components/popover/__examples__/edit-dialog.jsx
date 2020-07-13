@@ -94,6 +94,7 @@ class Example extends React.Component {
 							this.state.firstName !== this.state.prevFirstName ||
 							this.state.lastName !== this.state.prevLastName
 						}
+						disabled={this.props.disabled}
 						onCancel={this.handleRequestClose}
 						onClose={this.handleClose}
 						onRequestClose={this.handleRequestClose}
