@@ -126,9 +126,9 @@ const defaultProps = {
 /**
  * The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.
  * For icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).
- * Although not listed in the prop table, all `aria-*` will be added to the button element if passed in.
- * By default, if no `aria-*` is being passed, <code>aria-live='polite'</code> will be used for `icon` and `icon-filled` variant,
- * and <code>aria-live='assertive'</code> will be used for other variants.
+ * Although not listed in the prop table, all `aria-*` props will be added to the button element if passed in.
+ * If no `aria-*` props are passed in, <code>aria-live='polite'</code> is used for `icon` and `icon-filled` variants,
+ * and <code>aria-live='assertive'</code> is used for the remaining variants.
  */
 class ButtonStateful extends React.Component {
 	constructor(props) {
