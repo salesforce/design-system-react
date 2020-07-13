@@ -176,7 +176,10 @@ class DatepickerCalendar extends React.Component {
 		);
 
 		let firstDayOfWeek;
-		if (firstDayOfMonth.getDay() > firstDayOfWeekOffset) {
+		if (
+			firstDayOfMonth.getDay() > firstDayOfWeekOffset ||
+			firstDayOfMonth.getDay() < firstDayOfWeekOffset
+		) {
 			const prevWeek = DateUtil.addWeeks(firstDayOfMonth, -1);
 			firstDayOfWeek = DateUtil.nearestWeekDay(prevWeek, firstDayOfWeekOffset);
 		} else {
