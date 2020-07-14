@@ -37,6 +37,10 @@ const propTypes = {
 	 */
 	containerStyle: PropTypes.object,
 	/**
+	 * Render the spinner inside of a container.
+	 */
+	hasContainer: PropTypes.bool,
+	/**
 	 * Unique html id placed on div with role="status".
 	 */
 	id: PropTypes.string,
@@ -67,6 +71,7 @@ const defaultProps = {
 	isDelayed: false,
 	isInline: false,
 	isInput: false,
+	hasContainer: true,
 	size: 'medium',
 	variant: 'base',
 };
@@ -83,6 +88,7 @@ const Spinner = (props) => {
 		isDelayed,
 		isInline,
 		isInput,
+		hasContainer,
 		size,
 		variant,
 	} = props;
@@ -103,24 +109,25 @@ const Spinner = (props) => {
 		[`slds-spinner_${size}`]: size,
 	});
 
-	return (
+	const spinner = (
+		<div aria-hidden="false" className={spinnerClassName} id={id} role="status">
+			{assistiveText && (
+				<span className="slds-assistive-text">{assistiveText}</span>
+			)}
+			<div className="slds-spinner__dot-a" />
+			<div className="slds-spinner__dot-b" />
+		</div>
+	);
+
+	return hasContainer ? (
 		<div
 			className={classNames(containerClassName, 'slds-spinner_container')}
 			style={containerStyle}
 		>
-			<div
-				aria-hidden="false"
-				className={spinnerClassName}
-				id={id}
-				role="status"
-			>
-				{assistiveText && (
-					<span className="slds-assistive-text">{assistiveText}</span>
-				)}
-				<div className="slds-spinner__dot-a" />
-				<div className="slds-spinner__dot-b" />
-			</div>
+			{spinner}
 		</div>
+	) : (
+		spinner
 	);
 };
 

@@ -182,34 +182,29 @@ exports[`DOM snapshots SLDSSpinner Inline 1`] = `
   className="slds-p-around_medium"
 >
   <div
+    className="slds-align_absolute-center"
     style={
       Object {
-        "height": "100%",
-        "position": "absolute",
-        "width": "100%",
+        "height": "4rem",
       }
     }
   >
     <div
-      className="slds-spinner_container"
+      aria-hidden="false"
+      className="slds-spinner slds-spinner_inline slds-spinner_medium"
+      role="status"
     >
-      <div
-        aria-hidden="false"
-        className="slds-spinner slds-spinner_inline slds-spinner_medium"
-        role="status"
+      <span
+        className="slds-assistive-text"
       >
-        <span
-          className="slds-assistive-text"
-        >
-          Loading...
-        </span>
-        <div
-          className="slds-spinner__dot-a"
-        />
-        <div
-          className="slds-spinner__dot-b"
-        />
-      </div>
+        Loading...
+      </span>
+      <div
+        className="slds-spinner__dot-a"
+      />
+      <div
+        className="slds-spinner__dot-b"
+      />
     </div>
   </div>
 </div>
@@ -472,6 +467,39 @@ exports[`DOM snapshots SLDSSpinner Medium 1`] = `
 >
   <div
     className="slds-spinner_container"
+  >
+    <div
+      aria-hidden="false"
+      className="slds-spinner slds-spinner_medium"
+      role="status"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Loading...
+      </span>
+      <div
+        className="slds-spinner__dot-a"
+      />
+      <div
+        className="slds-spinner__dot-b"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSSpinner No Container 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-align_absolute-center"
+    style={
+      Object {
+        "height": "4rem",
+      }
+    }
   >
     <div
       aria-hidden="false"

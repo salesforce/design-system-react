@@ -15197,6 +15197,17 @@
                 "required": false,
                 "description": "Custom css properties applied to Spinner container"
             },
+            "hasContainer": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Render the spinner inside of a container.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
             "id": {
                 "type": {
                     "name": "string"
