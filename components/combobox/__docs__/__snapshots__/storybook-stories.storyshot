@@ -5845,7 +5845,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
                   className="slds-align_absolute-center slds-p-top_medium"
                 >
                   <div
-                    className="slds-spinner slds-spinner_x-small slds-spinner_inline"
+                    aria-hidden="false"
+                    className="slds-spinner slds-spinner_inline slds-spinner_x-small"
                     role="status"
                   >
                     <span
