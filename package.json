@@ -107,7 +107,7 @@
 	"devDependencies": {
 		"@babel/cli": "^7.2.3",
 		"@babel/core": "^7.3.4",
-		"@babel/node": "^7.2.2",
+		"@babel/node": "^7.10.4",
 		"@babel/parser": "^7.4.5",
 		"@babel/plugin-proposal-class-properties": "^7.3.4",
 		"@babel/plugin-proposal-export-default-from": "^7.10.4",
