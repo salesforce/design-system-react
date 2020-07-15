@@ -18,6 +18,16 @@ const inverseContainer = (getStory) => (
 	<div style={inverseContainerStyle}>{getStory()}</div>
 );
 
+const inlineContainerStyle = {
+	height: '4rem',
+};
+
+const inlineContainer = (getStory) => (
+	<div className="slds-align_absolute-center" style={inlineContainerStyle}>
+		{getStory()}
+	</div>
+);
+
 storiesOf(SPINNER, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">
@@ -145,5 +155,22 @@ storiesOf(SPINNER, module)
 				variant: 'inverse',
 			}),
 		{ decorators: [inverseContainer] }
+	)
+	.add(
+		'Inline',
+		() =>
+			getSpinner({
+				isInline: true,
+				hasContainer: false,
+			}),
+		{ decorators: [inlineContainer] }
+	)
+	.add(
+		'No Container',
+		() =>
+			getSpinner({
+				hasContainer: false,
+			}),
+		{ decorators: [inlineContainer] }
 	)
 	.add('Docs site Default', () => <Default />);

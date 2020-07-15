@@ -9,6 +9,7 @@ import isEqual from 'lodash.isequal';
 import classNames from 'classnames';
 
 import Icon from '../../icon';
+import Spinner from '../../spinner';
 
 const propTypes = {
 	/*
@@ -508,16 +509,12 @@ const Menu = (props) => {
 			{props.hasMenuSpinner && (
 				<li role="presentation" className="slds-listbox__item">
 					<div className="slds-align_absolute-center slds-p-top_medium">
-						<div
-							role="status"
-							className="slds-spinner slds-spinner_x-small slds-spinner_inline"
-						>
-							<span className="slds-assistive-text">
-								{props.assistiveText.loadingMenuItems}
-							</span>
-							<div className="slds-spinner__dot-a" />
-							<div className="slds-spinner__dot-b" />
-						</div>
+						<Spinner
+							assistiveText={{ label: props.assistiveText.loadingMenuItems }}
+							hasContainer={false}
+							isInline
+							size="x-small"
+						/>
 					</div>
 				</li>
 			)}

@@ -15197,6 +15197,17 @@
                 "required": false,
                 "description": "Custom css properties applied to Spinner container"
             },
+            "hasContainer": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Render the spinner inside of a container.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
             "id": {
                 "type": {
                     "name": "string"
@@ -15220,7 +15231,22 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Add styling to support a spinner inside an input field."
+                "description": "Add styling to support a spinner inside an input field.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "isInline": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Add styling to support an inline spinner inside of the document flow.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "size": {
                 "type": {
