@@ -164,7 +164,7 @@
 		"express": "^4.17.1",
 		"file-loader": "^4.2.0",
 		"find-remove": "^1.1.0",
-		"fs-extra": "^8.1.0",
+		"fs-extra": "^9.0.1",
 		"glob": "^7.1.4",
 		"istanbul-instrumenter-loader": "^3.0.1",
 		"jest": "^23.1.0",
