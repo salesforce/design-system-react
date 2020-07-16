@@ -142,7 +142,7 @@
 		"basic-auth": "^2.0.1",
 		"chai": "^4.2.0",
 		"chai-enzyme": "^1.0.0-beta.1",
-		"chownr": "^1.1.2",
+		"chownr": "^2.0.0",
 		"compression": "^1.7.4",
 		"concurrently": "^5.2.0",
 		"cross-env": "^7.0.2",
