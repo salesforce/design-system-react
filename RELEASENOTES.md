@@ -41,7 +41,7 @@ These are changes that have backwards-compatible solutions present and that comp
 
 **Bugfixes**
 
-- Correctly determine first day of week when `isIsoWeekday` is true
+- `DatePicker`: Correctly determine first day of week when `isIsoWeekday` is true
 
 **Maintenance**
 
