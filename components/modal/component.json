@@ -1,0 +1,30 @@
+{
+	"component": "modal",
+	"status": "prod",
+	"display-name": "Modals and Prompts",
+	"classKey": "Modal",
+	"SLDS-component-path": "/components/modals",
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/menu-contents.jsx"
+		},
+		{
+			"heading": "With header and footer",
+			"path": "/__examples__/header-footer.jsx"
+		},
+		{
+			"heading": "With Tagline",
+			"path": "/__examples__/taglines.jsx"
+		},
+		{
+			"heading": "Prompt",
+			"path": "/__examples__/prompt.jsx"
+		},
+		{
+			"heading": "Various sizes",
+			"path": "/__examples__/sizes.jsx"
+		}
+	],
+	"url-slug": "modals"
+}
