@@ -57,7 +57,7 @@ These are changes that have backwards-compatible solutions present and that comp
 - Bump `react-contenteditable` from 3.3.2 to 3.3.5
 - Bump `regenerator-runtime` from 0.13.3 to 0.13.5
 - Bump `websocket-extensions` from 0.1.3 to 0.1.4 (security)
-- Change `npm start` to run processes in foreground (xoob)
+- Change `npm start` to run processes in foreground
 
 ## Release 0.10.19
 
