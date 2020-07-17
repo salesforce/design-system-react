@@ -31,6 +31,34 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.20
+
+**Minor Features**
+
+- `Popover`: Add `disabled` prop to `EditDialog`
+- `Spinner`: Add `isInline` and `hasContainer` props
+- `StatefulButton`: Ability to pass in custom `aria-*` attributes
+
+**Bugfixes**
+
+- Correctly determine first day of week when `isIsoWeekday` is true
+
+**Maintenance**
+
+- Bump `@babel/node` from 7.2.2 to 7.10.4
+- Bump `@babel/plugin-proposal-export-default-from` from 7.2.0 to 7.10.4
+- Bump `@babel/plugin-transform-modules-commonjs` from 7.5.0 to 7.10.4
+- Bump `@babel/preset-react` from 7.0.0 to 7.10.4
+- Bump `concurrently` from 4.1.0 to 5.2.0
+- Bump `cross-env` from 5.2.1 to 7.0.2
+- Bump `lint-staged` from 8.2.0 to 10.2.11
+- Bump `object.entries` from 1.1.0 to 1.1.2
+- Bump `prop-types` from 15.6.0 to 15.7.2
+- Bump `react-contenteditable` from 3.3.2 to 3.3.5
+- Bump `regenerator-runtime` from 0.13.3 to 0.13.5
+- Bump `websocket-extensions` from 0.1.3 to 0.1.4 (security)
+- Change `npm start` to run processes in foreground (xoob)
+
 ## Release 0.10.19
 
 **Bugfixes**
