@@ -26,11 +26,12 @@ const propTypes = {
 		icon: PropTypes.string,
 	}),
 	/**
-	 * Provide children of the types `<BuilderHeaderNav />` or `<BuilderHeaderToolbar />` to define the structure of the header.
+	 * Provide children of the types `<BuilderHeaderNav />`, `<BuilderHeaderToolbar />`, or `<BuilderHeaderMisc />` to define the structure of the header.
 	 * ```
 	 * <BuilderHeader>
 	 *   <BuilderHeaderNav />
 	 *   <BuilderHeaderToolbar />
+	 * 	 <BuilderHeaderMisc />
 	 * </BuilderHeader>
 	 * ```
 	 */

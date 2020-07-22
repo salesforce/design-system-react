@@ -1385,7 +1385,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Provide children of the types `<BuilderHeaderNav />` or `<BuilderHeaderToolbar />` to define the structure of the header.\n```\n<BuilderHeader>\n  <BuilderHeaderNav />\n  <BuilderHeaderToolbar />\n</BuilderHeader>\n```"
+                "description": "Provide children of the types `<BuilderHeaderNav />`, `<BuilderHeaderToolbar />`, or `<BuilderHeaderMisc />` to define the structure of the header.\n```\n<BuilderHeader>\n  <BuilderHeaderNav />\n  <BuilderHeaderToolbar />\n\t <BuilderHeaderMisc />\n</BuilderHeader>\n```"
             },
             "className": {
                 "type": {
@@ -1610,6 +1610,23 @@
                     },
                     "name": "toolbar",
                     "source": "/components/builder-header/toolbar.jsx"
+                }
+            },
+            {
+                "misc": {
+                    "description": "The miscellaneous section of the header.",
+                    "methods": [],
+                    "props": {
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Provide custom content in place of Page Type label\n```\n<BuilderHeader>\n  <BuilderHeaderMisc>\n    Custom content\n  </BuilderHeaderMisc>\n</BuilderHeader>\n```"
+                        }
+                    },
+                    "name": "misc",
+                    "source": "/components/builder-header/misc.jsx"
                 }
             }
         ]
