@@ -60,10 +60,10 @@ const propTypes = {
 	 * Array of items starting at the top of the tree. The shape each node in the array is:
 	 * ```
 	 * {
-	 *   expanded: string,
+	 *   expanded: boolean,
 	 *   id: string,
 	 *   label: string or node,
-	 *   selected: string,
+	 *   selected: boolean,
 	 *   type: string,
 	 *   nodes: array
 	 * }

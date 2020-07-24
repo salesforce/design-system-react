@@ -31,7 +31,7 @@ const propTypes = {
 	 * <BuilderHeader>
 	 *   <BuilderHeaderNav />
 	 *   <BuilderHeaderToolbar />
-	 * 	 <BuilderHeaderMisc />
+	 *   <BuilderHeaderMisc />
 	 * </BuilderHeader>
 	 * ```
 	 */
