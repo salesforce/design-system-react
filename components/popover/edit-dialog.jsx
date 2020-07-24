@@ -11,7 +11,7 @@ import assign from 'lodash.assign';
 import { POPOVER_EDIT_DIALOG } from '../../utilities/constants';
 
 import Button from '../button';
-import Popover from './popover';
+import Popover from './index';
 
 const defaultProps = {
 	labels: {

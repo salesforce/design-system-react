@@ -348,7 +348,7 @@ const propTypes = {
 	 *     type: 'item',
 	 *     value: 'B0'
 	 *  }, {
-	 *   tooltipContent: 'Displays a tooltip when hovered over with this content. The `tooltipMenuItem` prop must be set for this to work.'
+	 *   tooltipContent: 'Displays a tooltip when hovered over with this content. The `tooltipMenuItem` prop must be set for this to work.',
 	 *   type: 'divider'
 	 * }]
 	 * ```
