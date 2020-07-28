@@ -1422,6 +1422,53 @@
                 "required": false,
                 "description": "Event Callbacks\n* `onClickBack`: Called when the Back link is clicked.\n* `onClickHelp`: Called when the Help link is clicked.\n_Tested with Mocha testing._"
             },
+            "iconCategory": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Category of the title icon from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)",
+                "defaultValue": {
+                    "value": "'utility'",
+                    "computed": false
+                }
+            },
+            "iconClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the title icon."
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the title icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.",
+                "defaultValue": {
+                    "value": "'builder'",
+                    "computed": false
+                }
+            },
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the title icon. This will override any global icon settings."
+            },
             "labels": {
                 "type": {
                     "name": "shape",
