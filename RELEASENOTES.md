@@ -31,6 +31,20 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.21
+
+**Minor Features**
+
+- `BuilderHeader`: Ability to customize the title icon
+
+**Bugfixes**
+
+- `Popover`: Close `EditDialog` when clicking outside
+
+**Documentation**
+
+- Minor corrections in `BuilderHeader`, `Tooltip`, and `Tree`
+
 ## Release 0.10.20
 
 **Minor Features**
