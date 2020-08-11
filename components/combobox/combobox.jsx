@@ -459,7 +459,11 @@ class Combobox extends React.Component {
 			}
 		} else if (this.props.isOpen !== nextProps.isOpen) {
 			// eslint-disable-next-line react/no-did-update-set-state
-			this.setState({ isOpen: nextProps.isOpen });
+			this.setState({
+				activeOption: undefined,
+				activeOptionIndex: -1,
+				isOpen: nextProps.isOpen,
+			});
 		}
 
 		// there may be issues with tabindex/focus if the app removes an item
@@ -797,7 +801,7 @@ class Combobox extends React.Component {
 
 	handleKeyDownUp = (event) => {
 		// Don't open if user is selecting text
-		if (!event.shiftKey && this.state.isOpen) {
+		if (!event.shiftKey && this.getIsOpen()) {
 			this.handleNavigateListboxMenu(event, { direction: 'previous' });
 		}
 	};
@@ -811,7 +815,7 @@ class Combobox extends React.Component {
 		});
 
 		if (activeOptionIndex !== undefined) {
-			if (this.state.isOpen) {
+			if (this.getIsOpen()) {
 				menuItemSelectScroll({
 					container: this.menuRef,
 					focusedIndex: activeOptionIndex,
@@ -836,7 +840,7 @@ class Combobox extends React.Component {
 			});
 
 			// eslint-disable-next-line react/no-access-state-in-setstate
-			if (this.state.isOpen) {
+			if (this.getIsOpen()) {
 				menuItemSelectScroll({
 					container: this.menuRef,
 					focusedIndex: newIndex,
@@ -971,9 +975,8 @@ class Combobox extends React.Component {
 		if (this.props.events.onRequestClose) {
 			this.props.events.onRequestClose(event, data);
 		}
-
 		if (this.getIsOpen()) {
-			this.setState({ isOpen: false });
+			this.handleClose(event, { trigger: 'cancel' });
 		}
 	};
 
