@@ -502,6 +502,43 @@ const getTabsDisabled = () => (
 /* eslint-enable react/display-name */
 
 /* eslint-disable react/display-name */
+const getTabsError = () => (
+	<div>
+		<h2 className="slds-text-heading_large">Error Tabs Demo</h2>
+		<Tabs id="disabled-tabs-demo">
+			<Panel label="Tab 1">
+				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
+				<p>And they&rsquo;re amazing.</p>
+				<p>It&rsquo;s awesome.</p>
+				<p>
+					You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate
+					around. Try it!
+				</p>
+				<p className="slds-box slds-theme_info slds-m-top_large">
+					(You might have to hit shift+tab to put the focus onto the tab bar ;)
+				</p>
+			</Panel>
+			<Panel label="Tab 2" hasError>
+				<h2 className="slds-text-heading_medium">This is my tab 2 contents!</h2>
+				<p>Tab should have an error icon. Uh oh!</p>
+			</Panel>
+			<Panel label="Tab 3">
+				<h2 className="slds-text-heading_medium">This is my tab 3 contents!</h2>
+				<p>And they&rsquo;re quite spectacular.</p>
+			</Panel>
+			<Panel label="Tab 4">
+				<h2 className="slds-text-heading_medium">This is my tab 3 contents!</h2>
+				<p>
+					Note that using your arrow keys you can loop <em>around the tabs</em>!
+					🎉
+				</p>
+			</Panel>
+		</Tabs>
+	</div>
+);
+/* eslint-enable react/display-name */
+
+/* eslint-disable react/display-name */
 const getCustomContentTabs = () => {
 	const tab1Label = (
 		<div aria-label="test accessibility!">
@@ -588,6 +625,7 @@ storiesOf(TABS, module)
 	))
 	.add('Base', () => getTabs())
 	.add('With disabled tab', () => getTabsDisabled())
+	.add('With error tab', () => getTabsError())
 	.add('Nested', () => getTabsNested())
 	.add('Outside Control', () => (
 		<DemoTabsOutsideControl className="controlled-yo" />

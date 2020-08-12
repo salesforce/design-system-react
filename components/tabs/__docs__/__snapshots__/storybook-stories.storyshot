@@ -1742,3 +1742,207 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
   </div>
 </div>
 `;
+
+exports[`DOM snapshots SLDSTabs With error tab 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h2
+      className="slds-text-heading_large"
+    >
+      Error Tabs Demo
+    </h2>
+    <div
+      className="slds-tabs_default"
+      data-tabs={true}
+      id="disabled-tabs-demo"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        className="slds-tabs_default__nav"
+        id="disabled-tabs-demo-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-active slds-tabs_default__item"
+          id="disabled-tabs-demo-slds-tabs_tab-0"
+          role="presentation"
+          tabIndex="0"
+          title="Tab 1"
+        >
+          <a
+            aria-controls="disabled-tabs-demo-slds-tabs_panel-0"
+            aria-selected="true"
+            className="slds-active slds-tabs_default__link"
+            href="javascript:void(0);"
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 1
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="disabled-tabs-demo-slds-tabs_tab-1"
+          role="presentation"
+          tabIndex={null}
+          title="Tab 2"
+        >
+          <a
+            aria-controls="disabled-tabs-demo-slds-tabs_panel-1"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="javascript:void(0);"
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 2
+            <span
+              className="slds-tabs__right-icon"
+            >
+              <span
+                className="slds-icon_container slds-icon-utility-error"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-icon slds-icon_x-small slds-icon-text-error"
+                >
+                  <use
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  This item has an error
+                </span>
+              </span>
+            </span>
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="disabled-tabs-demo-slds-tabs_tab-2"
+          role="presentation"
+          tabIndex={null}
+          title="Tab 3"
+        >
+          <a
+            aria-controls="disabled-tabs-demo-slds-tabs_panel-2"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="javascript:void(0);"
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 3
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="disabled-tabs-demo-slds-tabs_tab-3"
+          role="presentation"
+          tabIndex={null}
+          title="Tab 4"
+        >
+          <a
+            aria-controls="disabled-tabs-demo-slds-tabs_panel-3"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="javascript:void(0);"
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 4
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="disabled-tabs-demo-slds-tabs_tab-0"
+        className="slds-show slds-tabs_default__content"
+        id="disabled-tabs-demo-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 1 contents!
+        </h2>
+        <p>
+          And they’re amazing.
+        </p>
+        <p>
+          It’s awesome.
+        </p>
+        <p>
+          You can use your 
+          <var>
+            TAB
+          </var>
+           and 
+          <var>
+            ARROW
+          </var>
+           keys to navigate around. Try it!
+        </p>
+        <p
+          className="slds-box slds-theme_info slds-m-top_large"
+        >
+          (You might have to hit shift+tab to put the focus onto the tab bar ;)
+        </p>
+      </div>
+      <div
+        aria-labelledby="disabled-tabs-demo-slds-tabs_tab-1"
+        className="slds-hide slds-tabs_default__content"
+        id="disabled-tabs-demo-slds-tabs_panel-1"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 2 contents!
+        </h2>
+        <p>
+          Tab should have an error icon. Uh oh!
+        </p>
+      </div>
+      <div
+        aria-labelledby="disabled-tabs-demo-slds-tabs_tab-2"
+        className="slds-hide slds-tabs_default__content"
+        id="disabled-tabs-demo-slds-tabs_panel-2"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 3 contents!
+        </h2>
+        <p>
+          And they’re quite spectacular.
+        </p>
+      </div>
+      <div
+        aria-labelledby="disabled-tabs-demo-slds-tabs_tab-3"
+        className="slds-hide slds-tabs_default__content"
+        id="disabled-tabs-demo-slds-tabs_panel-3"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 3 contents!
+        </h2>
+        <p>
+          Note that using your arrow keys you can loop 
+          <em>
+            around the tabs
+          </em>
+          ! 🎉
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
