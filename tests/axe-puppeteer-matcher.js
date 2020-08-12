@@ -2,12 +2,12 @@
  * Jest expect.extend
  *
  * Please add the following to your Jest config.
- * 
+ *
  * setupFilesAfterEnv: ["<rootDir>/tests/axe-puppeteer.js"]
- * 
+ *
  * // Deprecated Jest < 24
  * "setupTestFrameworkScriptFile": "<rootDir>/tests/axe-puppeteer.js",
- * 
+ *
  */
 import AxePuppeteer from 'axe-puppeteer';
 

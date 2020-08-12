@@ -522,9 +522,9 @@ class DataTable extends React.Component {
 										tableId={this.getId()}
 									/>
 								);
-							})
+						  })
 						: // Someday this should be an element to render when the table is empty
-							null}
+						  null}
 				</tbody>
 			</table>
 		);

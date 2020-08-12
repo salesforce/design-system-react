@@ -53,7 +53,7 @@ const GlobalNavigationBarLink = (props) => {
 		? {
 				backgroundColor: activeBackgroundColor,
 				borderBottomColor: activeBackgroundColor,
-			}
+		  }
 		: null;
 
 	return (

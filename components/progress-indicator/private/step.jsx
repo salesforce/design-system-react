@@ -135,8 +135,9 @@ class Step extends React.Component {
 					'slds-is-disabled'
 				)}
 				aria-disabled
-				aria-describedby={`progress-indicator-tooltip-${this.props.step.id ||
-					this.props.index}`}
+				aria-describedby={`progress-indicator-tooltip-${
+					this.props.step.id || this.props.index
+				}`}
 				style={{ cursor: 'not-allowed' }}
 				tabIndex={0}
 				role="button"
@@ -162,8 +163,9 @@ class Step extends React.Component {
 				)}
 				onClick={handleClick}
 				onFocus={handleFocus}
-				aria-describedby={`progress-indicator-tooltip-${this.props.step.id ||
-					this.props.index}`}
+				aria-describedby={`progress-indicator-tooltip-${
+					this.props.step.id || this.props.index
+				}`}
 				aria-current={this.props.isSelected ? 'step' : null}
 				type="button"
 			>
@@ -196,8 +198,9 @@ class Step extends React.Component {
 
 		const tooltipProps = {
 			align: 'top',
-			id: `progress-indicator-tooltip-${this.props.step.id ||
-				this.props.index}`,
+			id: `progress-indicator-tooltip-${
+				this.props.step.id || this.props.index
+			}`,
 			content: this.props.step.label,
 			theme: 'info',
 			position: this.props.tooltipPosition,

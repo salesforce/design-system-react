@@ -10,7 +10,7 @@ import SLDSButton from '../../button';
 
 const { Simulate, findRenderedDOMComponentWithTag } = TestUtils;
 
-describe('SLDSTooltip: ', function() {
+describe('SLDSTooltip: ', function () {
 	let body;
 
 	const defaultTrigger = <SLDSButton label="Hover me for tooltip" />;

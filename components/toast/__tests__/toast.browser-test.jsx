@@ -53,7 +53,7 @@ class DemoComponent extends React.Component {
 
 DemoComponent.displayName = 'ToastExample';
 
-describe('SLDSToast: ', function() {
+describe('SLDSToast: ', function () {
 	const onClickHeadingLink = sinon.spy();
 
 	describe('Dismiss Toast', () => {
@@ -66,7 +66,7 @@ describe('SLDSToast: ', function() {
 		/* Please notice the of `function () {}` and not () => {}.
 		 * It allows access to the Mocha test context via `this`.
 		 */
-		it('calls onRequestClose handler', function() {
+		it('calls onRequestClose handler', function () {
 			const button = this.wrapper.find('button.slds-notify__close');
 			// If applicable, use second parameter to pass the data object
 			expect(this.wrapper.find('.slds-notify').length).to.equal(1);
@@ -74,7 +74,7 @@ describe('SLDSToast: ', function() {
 			expect(this.wrapper.find('.slds-notify').length).to.equal(0);
 		});
 
-		it('calls onClickHeadingLink handler', function() {
+		it('calls onClickHeadingLink handler', function () {
 			const link = this.wrapper.find('a');
 			// If applicable, use second parameter to pass the data object
 			link.simulate('click', {});
@@ -90,7 +90,7 @@ describe('SLDSToast: ', function() {
 		/* Please notice the of `function () {}` and not () => {}.
 		 * It allows access to the Mocha test context via `this`.
 		 */
-		it('it calls onRequestClose after 1ms', function(done) {
+		it('it calls onRequestClose after 1ms', function (done) {
 			expect(this.wrapper).to.have.state('isOpen', true);
 
 			setTimeout(() => {
@@ -100,7 +100,7 @@ describe('SLDSToast: ', function() {
 		});
 	});
 
-	describe('Basic Toast Props Render', function() {
+	describe('Basic Toast Props Render', function () {
 		beforeEach(
 			mountComponent(
 				<DemoComponent style={{ backgroundColor: 'rgb(18, 49, 35)' }} />
@@ -109,7 +109,7 @@ describe('SLDSToast: ', function() {
 
 		afterEach(unmountComponent);
 
-		it('renders custom styles', function() {
+		it('renders custom styles', function () {
 			expect(
 				this.wrapper.find('.slds-notify').prop('style').backgroundColor
 			).to.equal('rgb(18, 49, 35)');

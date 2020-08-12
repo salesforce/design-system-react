@@ -57,9 +57,7 @@ class GlobalHeaderNotifications extends React.Component {
 		delete popoverProps.children;
 
 		if (notificationCount > 0) {
-			notificationsAssistiveText = `${
-				this.props.assistiveText.newNotificationsBefore
-			}${notificationCount}${this.props.assistiveText.newNotificationsAfter}`;
+			notificationsAssistiveText = `${this.props.assistiveText.newNotificationsBefore}${notificationCount}${this.props.assistiveText.newNotificationsAfter}`;
 		} else {
 			buttonAriaProps['aria-atomic'] = true;
 		}

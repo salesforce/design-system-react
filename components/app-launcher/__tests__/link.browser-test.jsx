@@ -63,12 +63,7 @@ describe('SLDS APP LAUNCHER LINK *******************************************', (
 		});
 
 		it('renders link children', () => {
-			expect(
-				handles.link
-					.find('span')
-					.at(0)
-					.text()
-			).to.eql('Accounts');
+			expect(handles.link.find('span').at(0).text()).to.eql('Accounts');
 		});
 
 		it('renders link title', () => {

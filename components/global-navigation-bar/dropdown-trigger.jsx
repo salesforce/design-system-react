@@ -158,6 +158,7 @@ class GlobalNavigationDropdownTrigger extends React.Component {
 		}
 
 		return (
+			// eslint-disable-next-line jsx-a11y/role-supports-aria-props
 			<li
 				aria-haspopup="true"
 				className={classNames(

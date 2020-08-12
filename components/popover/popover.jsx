@@ -793,7 +793,7 @@ class Popover extends React.Component {
 									this.handleClick(event, {
 										triggerOnClickCallback: child.props.onClick,
 									});
-								}
+							  }
 							: child.props.onClick,
 					onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
 					onMouseDown: this.props.onMouseDown,

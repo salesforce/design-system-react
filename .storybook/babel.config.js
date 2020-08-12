@@ -1,3 +1,3 @@
-import babelConfig from '../babel.config.js';
+const babelConfig = require('../babel.config.js');
 
 module.exports = babelConfig;

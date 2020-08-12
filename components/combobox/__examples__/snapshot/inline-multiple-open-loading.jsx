@@ -125,12 +125,12 @@ class Example extends React.Component {
 									inputValue: this.state.inputValue,
 									options: accountsWithIcon.slice(0, 3),
 									selection: this.state.selection,
-								})
+							  })
 							: comboboxFilterAndLimit({
 									inputValue: this.state.inputValue,
 									options: accountsWithIcon,
 									selection: this.state.selection,
-								})
+							  })
 					}
 					selection={this.state.selection}
 					value={this.state.inputValue}

@@ -280,7 +280,7 @@ const ColorUtils = {
 		const min = Math.min(redRatio, greenRatio, blueRatio);
 
 		const delta = max - min;
-		const saturation = max === 0 ? 0 : delta / max * 100;
+		const saturation = max === 0 ? 0 : (delta / max) * 100;
 		const value = max * 100;
 		let hue;
 
@@ -376,9 +376,7 @@ const ColorUtils = {
 		const shortHandHex = /^#([a-f\d])([a-f\d])([a-f\d])$/i;
 		const match = shortHandHex.exec(value);
 		if (match) {
-			return `#${match[1]}${match[1]}${match[2]}${match[2]}${match[3]}${
-				match[3]
-			}`;
+			return `#${match[1]}${match[1]}${match[2]}${match[2]}${match[3]}${match[3]}`;
 		}
 
 		return value;

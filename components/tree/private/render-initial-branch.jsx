@@ -29,8 +29,8 @@ const propTypes = {
 
 const handleScroll = (event, props) => {
 	const percentage =
-		event.target.scrollTop /
-		(event.target.scrollHeight - event.target.clientHeight) *
+		(event.target.scrollTop /
+			(event.target.scrollHeight - event.target.clientHeight)) *
 		100;
 
 	if (isFunction(props.onScroll)) {

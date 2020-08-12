@@ -111,11 +111,11 @@ const defaultProps = {
 };
 
 /* Flattens hierarchical tree structure into a flat array. The
-  * first item in the array is the whole tree and therefore should be
-  * removed with `slice(1)`.` This means that root cannot call `getNodes()`
-  * and should directly reference the `nodes` key. All level after that
-  * should use `getNodes()` to access the correct nodes.
-*/
+ * first item in the array is the whole tree and therefore should be
+ * removed with `slice(1)`.` This means that root cannot call `getNodes()`
+ * and should directly reference the `nodes` key. All level after that
+ * should use `getNodes()` to access the correct nodes.
+ */
 const flattenTree = (root, getNodes, treeIndex = '', firstLevel = true) => {
 	if (!root.nodes) {
 		return [{ node: root, treeIndex }];
@@ -250,7 +250,7 @@ class Tree extends React.Component {
 				: {
 						...defaultProps.assistiveText,
 						...this.props.assistiveText,
-					}.label;
+				  }.label;
 		const headingText = assistiveText || this.props.heading;
 
 		// Start the zero level branch--that is the tree root. There is no label for

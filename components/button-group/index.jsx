@@ -122,7 +122,9 @@ class ButtonGroup extends React.Component {
 					className={classNames('slds-button-group-list', this.props.className)}
 					id={this.getId()}
 				>
-					{React.Children.map(this.props.children, (child) => <li>{child}</li>)}
+					{React.Children.map(this.props.children, (child) => (
+						<li>{child}</li>
+					))}
 				</ul>
 			);
 		} else {

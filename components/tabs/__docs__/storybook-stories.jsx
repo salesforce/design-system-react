@@ -556,9 +556,7 @@ class DemoTabsInterceptSelect extends React.Component {
 						<p>Default Panel</p>
 						{this.state.intercepts > 0 && (
 							<p>
-								{`We've intercepted navigation ${
-									this.state.intercepts
-								} time(s)`}
+								{`We've intercepted navigation ${this.state.intercepts} time(s)`}
 							</p>
 						)}
 					</Panel>

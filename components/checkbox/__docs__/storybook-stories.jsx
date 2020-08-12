@@ -99,14 +99,16 @@ class CheckboxIndeterminate extends React.Component {
 						It is set by providing the <code>indeterminate</code> prop as{' '}
 						<code>
 							<strong>true</strong>
-						</code>.
+						</code>
+						.
 					</p>
 					<p>
 						Once it is clicked, there is no way to make it go <em>back</em> to
 						the indeterminate state,{' '}
 						<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate#Checkbox_radio_button">
 							it must be done programatically, through JavaScript
-						</a>.
+						</a>
+						.
 					</p>
 				</div>
 			</div>

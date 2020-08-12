@@ -10,6 +10,7 @@
 import initStoryshots from '@storybook/addon-storyshots';
 import express from 'express';
 import path from 'path';
+import 'regenerator-runtime/runtime';
 
 import { axeStoryshots } from './axe-storyshots';
 import axeConfig from './axe-config';

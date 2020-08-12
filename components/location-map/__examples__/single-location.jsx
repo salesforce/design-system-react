@@ -22,7 +22,7 @@ class Example extends React.Component {
 				<Modal
 					isOpen
 					size="medium"
-					heading="Geo Code: 37°48&#x27;08.3&quot;N 122°15&#x27;55.2W"
+					heading='Geo Code: 37°48&#x27;08.3"N 122°15&#x27;55.2W'
 					footer={
 						<Button
 							title="Go to Google Maps"

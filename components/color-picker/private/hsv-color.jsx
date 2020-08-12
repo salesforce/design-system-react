@@ -9,8 +9,8 @@ const handleClick = (event, rangeIndicator, { onSaturationValueChange }) => {
 	const rect = event.currentTarget.getBoundingClientRect();
 	rangeIndicator.focus();
 	onSaturationValueChange(event, {
-		saturation: Math.round((event.clientX - rect.left) / rect.width * 100),
-		value: Math.round((rect.bottom - event.clientY) / rect.height * 100),
+		saturation: Math.round(((event.clientX - rect.left) / rect.width) * 100),
+		value: Math.round(((rect.bottom - event.clientY) / rect.height) * 100),
 	});
 };
 
@@ -123,9 +123,7 @@ class HsvColor extends React.Component {
 						}}
 						tabIndex={0}
 					>
-						<span className="slds-assistive-text">{`Saturation ${
-							workingColor.hsv.saturation
-						}% Brightness: ${workingColor.hsv.value}%`}</span>
+						<span className="slds-assistive-text">{`Saturation ${workingColor.hsv.saturation}% Brightness: ${workingColor.hsv.value}%`}</span>
 					</a>
 				</div>
 				<div className="slds-color-picker__hue-and-preview">

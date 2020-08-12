@@ -10,7 +10,7 @@ import SLDSLocationMap from '../../location-map';
 
 chai.use(chaiEnzyme());
 
-describe('SLDSLocationMap: ', function() {
+describe('SLDSLocationMap: ', function () {
 	let container;
 	let renderedNode;
 
@@ -40,6 +40,7 @@ describe('SLDSLocationMap: ', function() {
 			</IconSettings>
 		);
 		document.body.appendChild(container);
+		// eslint-disable-next-line react/no-render-return-value
 		renderedNode = ReactDOM.render(opener, container); // deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 		return renderedNode;
 	};

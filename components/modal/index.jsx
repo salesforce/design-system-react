@@ -256,13 +256,13 @@ class Modal extends React.Component {
 				: {
 						borderTopLeftRadius: borderRadiusValue,
 						borderTopRightRadius: borderRadiusValue,
-					};
+				  };
 		const borderBottomRadius = this.props.footer
 			? {}
 			: {
 					borderBottomLeftRadius: borderRadiusValue,
 					borderBottomRightRadius: borderRadiusValue,
-				};
+			  };
 		return {
 			...borderTopRadius,
 			...borderBottomRadius,

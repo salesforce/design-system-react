@@ -244,6 +244,8 @@ module.exports = {
 		'react/require-default-props': 'off',
 		// Components that are top-level should be classes, so the DOM ref exists
 		'react/prefer-stateless-function': 'off',
+		// TODO: Should be removed
+		'react/no-deprecated': 'off',
 
 		// javascript:void(0) is present in SLDS markup
 		'jsx-a11y/anchor-is-valid': 'off',

@@ -135,7 +135,7 @@ class Avatar extends React.Component {
 				: {
 						...defaultProps.assistiveText,
 						...this.props.assistiveText,
-					}.icon;
+				  }.icon;
 		return (
 			<UtilityIcon
 				assistiveText={{ label: iconAssistiveText }}

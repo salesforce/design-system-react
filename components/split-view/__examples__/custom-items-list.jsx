@@ -197,11 +197,8 @@ class Example extends React.Component {
 				: SORT_OPTIONS.DOWN;
 
 		this.setState({
-			options: this.state.options.sort(
-				(a, b) =>
-					sortDirection === SORT_OPTIONS.DOWN
-						? a.name > b.name
-						: b.name > a.name
+			options: this.state.options.sort((a, b) =>
+				sortDirection === SORT_OPTIONS.DOWN ? a.name > b.name : b.name > a.name
 			),
 			sortDirection,
 		});

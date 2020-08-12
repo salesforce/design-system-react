@@ -47,7 +47,7 @@ const Search = ({ clearable, onClear, onSearch, placeholder, ...props }) => {
 			: {
 					...defaultProps.assistiveText,
 					...props.assistiveText,
-				}.label;
+			  }.label;
 	return (
 		<Input
 			assistiveText={{ label: assistiveText }}

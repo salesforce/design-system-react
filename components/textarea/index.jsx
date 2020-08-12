@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -265,7 +266,7 @@ class Textarea extends React.Component {
 				? this.props.assistiveText
 				: {
 						...this.props.assistiveText,
-					}.label;
+				  }.label;
 
 		const labelText = label || assistiveTextLabel; // One of these is required to pass accessibility tests
 

@@ -107,9 +107,7 @@ const generateSiteStoriesListings = (config) => {
 		config['site-stories'].forEach((storyPath) => {
 			additions += `\t\t{\n`;
 			additions += `\t\t\theading: '${storyPath.heading}',\n`;
-			additions += `\t\t\tpath: require('raw-loader!@salesforce/design-system-react/components/${
-				config.component
-			}${storyPath.path}'),\n`;
+			additions += `\t\t\tpath: require('raw-loader!@salesforce/design-system-react/components/${config.component}${storyPath.path}'),\n`;
 			additions += `\t\t},\n`;
 		});
 
@@ -129,12 +127,12 @@ configFiles.forEach((config) => {
 	if (config.dependencies && config.dependencies.length > 0) {
 		config.dependencies.forEach((dependency) => {
 			if (config.component && dependency.component && dependency.classKey) {
-				indexFileRequirements[`${dependency.classKey}`] = `./${
-					config.component
-				}/${dependency.component}`;
-				indexFileRequirements[`SLDS${dependency.classKey}`] = `./${
-					config.component
-				}/${dependency.component}`;
+				indexFileRequirements[
+					`${dependency.classKey}`
+				] = `./${config.component}/${dependency.component}`;
+				indexFileRequirements[
+					`SLDS${dependency.classKey}`
+				] = `./${config.component}/${dependency.component}`;
 			}
 		});
 	}
