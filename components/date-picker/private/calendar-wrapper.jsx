@@ -31,11 +31,10 @@ class DatepickerCalendarWrapper extends React.Component {
 		/**
 		 * Label for year picklist/combobox
 		 */
-		assistiveTextYear: PropTypes.string.isRequired
+		assistiveTextYear: PropTypes.string.isRequired,
 		/**
 		 * One letter abbreviations of the days of the week, starting on Sunday.
-		 */,
-		abbreviatedWeekDayLabels: PropTypes.array.isRequired,
+		 */ abbreviatedWeekDayLabels: PropTypes.array.isRequired,
 		/**
 		 * Whether or not the `CalendarWrapper` can steal focus from the main `Input`
 		 */
