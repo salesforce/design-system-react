@@ -217,7 +217,7 @@ describe('Tabs', () => {
 			this.wrapper
 				.find(`.${COMPONENT_CSS_CLASSES.link}`)
 				.forEach(function(node, index) {
-					if (index === 1) {
+					if (index === 2) {
 						expect(node).to.have.descendants('.slds-icon-utility-error');
 					} else {
 						expect(node).to.not.have.descendants('.slds-icon-utility-error');
