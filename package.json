@@ -129,7 +129,7 @@
 		"@storybook/react": "^5.3.19",
 		"ajv": "6.12.3",
 		"async": "^3.2.0",
-		"axe-core": "3.5.5",
+		"axe-core": "4.0.1",
 		"axe-puppeteer": "^1.0.0",
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-eslint": "^10.1.0",
