@@ -72,7 +72,7 @@ describe('SLDSFilter', function describeFunction() {
 
 	// BASIC STRUCTURE
 
-	describe('Add custom props to Filter Popover', function() {
+	describe('Add custom props to Filter Popover', function () {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });
 		});
@@ -104,7 +104,7 @@ describe('SLDSFilter', function describeFunction() {
 		});
 	});
 
-	describe('On click handler when clicking on filter', function() {
+	describe('On click handler when clicking on filter', function () {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });
 		});

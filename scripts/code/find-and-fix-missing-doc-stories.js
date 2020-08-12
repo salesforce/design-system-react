@@ -1,17 +1,17 @@
 // WARNING: This script modifies source code! Inspect all of the changes
 // it makes before you commit anything!
 
-/* 
+/*
  * INJECT EXAMPLE FILES INTO STORYBOOK FILES
  *
  * Run this with node to find storybook files that don't import
  * all of the examples from __examples__.
- * 
- * It will rewrite insert import statements and add Storybook "add" 
- * calls to the stories for any that aren't already imported and 
- * write out the file to "storybooks-stories.jsx". 
- * 
- * Be sure to run `npm run lint:fix` to clean up formatting of any 
+ *
+ * It will rewrite insert import statements and add Storybook "add"
+ * calls to the stories for any that aren't already imported and
+ * write out the file to "storybooks-stories.jsx".
+ *
+ * Be sure to run `npm run lint:fix` to clean up formatting of any
  * files this script touched.
  */
 

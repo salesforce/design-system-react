@@ -196,7 +196,7 @@ class ButtonStateful extends React.Component {
 				: {
 						...defaultProps.assistiveText,
 						...this.props.assistiveText,
-					}.icon;
+				  }.icon;
 
 		const isActive = typeof active === 'boolean' ? active : this.state.active;
 

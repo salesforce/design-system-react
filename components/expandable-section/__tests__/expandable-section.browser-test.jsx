@@ -59,10 +59,7 @@ describe('SLDSExpandableSection', () => {
 
 		it('section has custom class', () => {
 			expect(
-				handles.section
-					.find('div')
-					.at(0)
-					.hasClass('this-is-a-custom-class')
+				handles.section.find('div').at(0).hasClass('this-is-a-custom-class')
 			).to.eql(true);
 		});
 

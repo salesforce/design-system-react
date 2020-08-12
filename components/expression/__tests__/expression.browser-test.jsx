@@ -101,7 +101,7 @@ describe('SLDSExpression', function describeFunction() {
 			});
 		});
 
-		it('Resource selector works', function() {
+		it('Resource selector works', function () {
 			const node = getNodes(handles.condition);
 			expect(node.resourceSelector).attr('value', '');
 			node.resourceSelector.simulate('focus');
@@ -114,7 +114,7 @@ describe('SLDSExpression', function describeFunction() {
 			expect(resourceChange.data.selection[0]).to.equal(ResourcesList[1]);
 		});
 
-		it('Operator selector works', function() {
+		it('Operator selector works', function () {
 			const node = getNodes(handles.condition);
 			expect(node.operatorSelector).attr('value', '');
 			node.operatorSelector.simulate('focus');
@@ -127,7 +127,7 @@ describe('SLDSExpression', function describeFunction() {
 			expect(operatorChange.data.selection[0]).to.equal(OperatorsList[1]);
 		});
 
-		it('Value input works', function() {
+		it('Value input works', function () {
 			const node = getNodes(handles.condition);
 			expect(node.valueInput).attr('value', '');
 			node.valueInput.simulate('focus');
@@ -135,7 +135,7 @@ describe('SLDSExpression', function describeFunction() {
 			expect(valueChange.data.value).to.equal('something');
 		});
 
-		it('Delete button works', function() {
+		it('Delete button works', function () {
 			const node = getNodes(handles.condition);
 			expect(deleteClicked === undefined).to.equal(true);
 			node.deleteButton.simulate('click');
@@ -177,7 +177,7 @@ describe('SLDSExpression', function describeFunction() {
 			});
 		});
 
-		it('Trigger change button works', function() {
+		it('Trigger change button works', function () {
 			const node = getNodes(handles.group);
 			expect(node.trigger).attr('value', 'Custom Logic Is Met');
 			node.trigger.simulate('focus');
@@ -189,7 +189,7 @@ describe('SLDSExpression', function describeFunction() {
 			expect(triggerChange.data.triggerType).to.eql('all');
 		});
 
-		it('Custom logic input works', function() {
+		it('Custom logic input works', function () {
 			const node = getNodes(handles.group);
 			expect(node.customLogicInput).attr('value', '');
 			node.customLogicInput.simulate('focus');
@@ -197,14 +197,14 @@ describe('SLDSExpression', function describeFunction() {
 			expect(customLogic.data.value).to.equal('1 + 2');
 		});
 
-		it('Add group button works', function() {
+		it('Add group button works', function () {
 			const node = getNodes(handles.group);
 			expect(addGroup === undefined).to.equal(true);
 			node.addGroup.simulate('click');
 			expect(addGroup === undefined).to.equal(false);
 		});
 
-		it('Add condition button works', function() {
+		it('Add condition button works', function () {
 			const node = getNodes(handles.group);
 			expect(addCondition === undefined).to.equal(true);
 			node.addCondition.simulate('click');
@@ -235,14 +235,14 @@ describe('SLDSExpression', function describeFunction() {
 			});
 		});
 
-		it('Help button works', function() {
+		it('Help button works', function () {
 			const node = getNodes(handles.formula);
 			expect(helpClicked === undefined).to.equal(true);
 			node.helpButton.simulate('click');
 			expect(helpClicked === undefined).to.equal(false);
 		});
 
-		it('Check syntax button works', function() {
+		it('Check syntax button works', function () {
 			const node = getNodes(handles.formula);
 			expect(checkSyntaxClicked === undefined).to.equal(true);
 			node.checkSyntax.simulate('click');

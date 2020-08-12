@@ -65,7 +65,7 @@ RadioButtonGroupExample.defaultProps = {
 
 /* RadioButtonGroup rendering tests
  */
-describe('RadioButtonGroup', function() {
+describe('RadioButtonGroup', function () {
 	let mountNode;
 	let wrapper;
 

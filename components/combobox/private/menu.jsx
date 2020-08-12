@@ -254,7 +254,7 @@ const Menu = (props) => {
 								? null
 								: (event) => {
 										props.onSelect(event, { option: optionData });
-									}
+								  }
 						}
 						aria-selected={active}
 						id={`${props.inputId}-listbox-option-${optionData.id}`}
@@ -289,7 +289,7 @@ const Menu = (props) => {
 								? null
 								: (event) => {
 										props.onSelect(event, { option: optionData });
-									}
+								  }
 						}
 						id={`${props.inputId}-listbox-option-${optionData.id}`}
 						className={classNames(
@@ -337,7 +337,7 @@ const Menu = (props) => {
 							? null
 							: (event) => {
 									props.onSelect(event, { option: optionData });
-								}
+							  }
 					}
 					role="option"
 				>
@@ -396,7 +396,7 @@ const Menu = (props) => {
 										selection: props.selection,
 										option: optionData,
 									});
-								}
+							  }
 					}
 					role="option"
 				>

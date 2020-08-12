@@ -114,7 +114,7 @@ class WelcomeMat extends React.Component {
 		const completedSteps = React.Children.toArray(this.props.children).filter(
 			(c) => c.props.isComplete
 		).length;
-		const progress = completedSteps / totalSteps * 100;
+		const progress = (completedSteps / totalSteps) * 100;
 		this.setState({
 			totalSteps,
 			completedSteps,
@@ -174,7 +174,7 @@ class WelcomeMat extends React.Component {
 													? true
 													: null,
 										})
-									)
+								  )
 								: null}
 							{this.state.completedSteps !== this.state.totalSteps ||
 							this.props.variant !== 'trailhead-connected' ? (

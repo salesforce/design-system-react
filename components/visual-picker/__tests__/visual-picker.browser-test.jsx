@@ -222,7 +222,7 @@ VisualPickerExample.defaultProps = {
 
 /* VisualPicker rendering tests
  */
-describe('SLDS Visual Picker', function() {
+describe('SLDS Visual Picker', function () {
 	let mountNode;
 	let wrapper;
 

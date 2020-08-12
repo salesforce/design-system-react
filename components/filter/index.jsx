@@ -274,20 +274,22 @@ class Filter extends React.Component {
 						<span className="slds-show">{this.props.predicate}</span>
 					</button>
 				)}
-				{// Remove button
-				!this.props.isPermanent && !this.props.isLocked ? (
-					<Button
-						assistiveText={{ icon: assistiveText.removeFilter }}
-						hint
-						iconCategory="utility"
-						iconName="delete"
-						iconSize="small"
-						iconVariant="bare"
-						onClick={this.handleRemove}
-						title={assistiveText.removeFilter}
-						variant="icon"
-					/>
-				) : null}
+				{
+					// Remove button
+					!this.props.isPermanent && !this.props.isLocked ? (
+						<Button
+							assistiveText={{ icon: assistiveText.removeFilter }}
+							hint
+							iconCategory="utility"
+							iconName="delete"
+							iconSize="small"
+							iconVariant="bare"
+							onClick={this.handleRemove}
+							title={assistiveText.removeFilter}
+							variant="icon"
+						/>
+					) : null
+				}
 			</div>
 		);
 	}

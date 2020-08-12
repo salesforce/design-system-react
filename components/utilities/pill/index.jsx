@@ -146,7 +146,7 @@ const Pill = (props) => {
 									...props.eventData,
 								});
 							}
-						}
+					  }
 					: null
 			}
 			onFocus={(event) => {

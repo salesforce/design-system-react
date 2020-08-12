@@ -45,13 +45,13 @@ const propTypes = {
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string,
-	]) /**
+	]),
+	/**
 	 * This is the initial value of an uncontrolled form element and is present only to provide compatibility
 	 * with hybrid framework applications that are not entirely React. It should only be used in an application
 	 * without centralized state (Redux, Flux). "Controlled components" with centralized state is highly recommended.
 	 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
-	 */,
-	defaultChecked: PropTypes.bool,
+	 */ defaultChecked: PropTypes.bool,
 	/**
 	 * Disable this radio input.
 	 */
@@ -299,7 +299,8 @@ class Radio extends React.Component {
 							this.handleChange(event, true);
 						} else if (
 							(charCode === KEYS.ENTER &&
-								(this.props.checked && this.props.deselectable)) ||
+								this.props.checked &&
+								this.props.deselectable) ||
 							!this.props.checked
 						) {
 							this.handleChange(event);

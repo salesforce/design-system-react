@@ -65,9 +65,7 @@ const publish = (done, type) => {
 		actions = [
 			...actions,
 			{
-				command: `git commit -m "Release commit for ${
-					argv.tag
-				}-${type} [ci skip]"`,
+				command: `git commit -m "Release commit for ${argv.tag}-${type} [ci skip]"`,
 				dir: tmpDir,
 				rootPath,
 			},

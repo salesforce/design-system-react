@@ -45,7 +45,7 @@ const FileActions = (props) => {
 							buttonInverse: props.hasNoVisibleTitle,
 							className: 'dsr-file__more-actions-dropdown ',
 							triggerClassName: 'dsr-file__more-actions',
-						})
+					  })
 					: null}
 			</div>
 		</div>

@@ -98,7 +98,7 @@ const Spinner = (props) => {
 			: {
 					...defaultProps.assistiveText,
 					...props.assistiveText,
-				}.label;
+			  }.label;
 
 	const spinnerClassName = classNames('slds-spinner', {
 		'slds-spinner_inline': isInline,

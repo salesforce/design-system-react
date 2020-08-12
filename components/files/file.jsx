@@ -176,7 +176,7 @@ class File extends React.Component {
 								{this.props.icon
 									? React.cloneElement(this.props.icon, {
 											size: 'x-small',
-										})
+									  })
 									: null}
 							</div>
 							<div className="slds-media__body">

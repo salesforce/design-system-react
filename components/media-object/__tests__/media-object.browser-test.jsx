@@ -45,7 +45,7 @@ describe(`${MEDIA_OBJECT}: `, () => {
 
 		afterEach(unmountComponent);
 
-		it('has container class, body and figure', function() {
+		it('has container class, body and figure', function () {
 			const container = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			expect(container.hasClass('this-is-a-container-test')).to.be.true;
 
@@ -74,12 +74,12 @@ describe(`${MEDIA_OBJECT}: `, () => {
 
 		afterEach(unmountComponent);
 
-		it('has media vertical center class', function() {
+		it('has media vertical center class', function () {
 			const container = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			expect(container.hasClass('slds-media_center')).to.be.true;
 		});
 
-		it('can truncate within Flexbox layout', function() {
+		it('can truncate within Flexbox layout', function () {
 			const container = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			expect(container.hasClass('slds-has-flexi-truncate')).to.be.true;
 		});

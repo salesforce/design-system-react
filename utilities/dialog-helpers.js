@@ -87,11 +87,11 @@ const DISTANCE_OFFSET = 1.5; // 'rem'
 const NUBBIN_SIZE = 1; // 'rem'
 const ROTATED_HEIGHT = NUBBIN_SIZE / Math.sqrt(2); // 'rem'
 /*
-*
-*
-*
-*
-*/
+ *
+ *
+ *
+ *
+ */
 // FIXME - still need to account for border shadow of 2px. probably only needs to be added to the rotated height.
 // TODO - should we convert all rem to pixels right from the get go? Keep units consistent. Memoize the values for perf?
 const getNubbinMargins = (popperData = {}) => {

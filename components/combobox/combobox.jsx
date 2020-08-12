@@ -1114,7 +1114,7 @@ class Combobox extends React.Component {
 						value={
 							props.predefinedOptionsOnly
 								? (this.state.activeOption && this.state.activeOption.label) ||
-									props.value
+								  props.value
 								: props.value
 						}
 						{...userDefinedProps.input}
@@ -1251,7 +1251,7 @@ class Combobox extends React.Component {
 						value={
 							props.predefinedOptionsOnly
 								? (this.state.activeOption && this.state.activeOption.label) ||
-									props.value
+								  props.value
 								: props.value
 						}
 						{...userDefinedProps.input}
@@ -1274,7 +1274,7 @@ class Combobox extends React.Component {
 			props.selection[0] && props.selection[0].icon
 				? React.cloneElement(props.selection[0].icon, {
 						containerClassName: 'slds-combobox__input-entity-icon',
-					})
+				  })
 				: null;
 
 		const value =
@@ -1318,7 +1318,7 @@ class Combobox extends React.Component {
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
 											this.state.activeOption.id
-										}`
+									  }`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1377,7 +1377,7 @@ class Combobox extends React.Component {
 								props.predefinedOptionsOnly
 									? (this.state.activeOption &&
 											this.state.activeOption.label) ||
-										props.value
+									  props.value
 									: value
 							}
 							{...userDefinedProps.input}
@@ -1534,7 +1534,7 @@ class Combobox extends React.Component {
 		const value =
 			props.selection.length > 1
 				? labels.multipleOptionsSelected ||
-					`${props.selection.length} options selected`
+				  `${props.selection.length} options selected`
 				: (props.selection[0] && props.selection[0].label) || '';
 
 		/* eslint-disable jsx-a11y/role-supports-aria-props */
@@ -1569,7 +1569,7 @@ class Combobox extends React.Component {
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
 											this.state.activeOption.id
-										}`
+									  }`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1682,7 +1682,7 @@ class Combobox extends React.Component {
 								this.state.activeOption
 									? `${this.getId()}-listbox-option-${
 											this.state.activeOption.id
-										}`
+									  }`
 									: null
 							}
 							aria-describedby={this.getErrorId()}
@@ -1797,7 +1797,7 @@ class Combobox extends React.Component {
 				{variantExists
 					? subRenders[this.props.variant][multipleOrSingle](
 							subRenderParameters
-						)
+					  )
 					: subRenders.base.multiple(subRenderParameters)}
 			</div>
 		);

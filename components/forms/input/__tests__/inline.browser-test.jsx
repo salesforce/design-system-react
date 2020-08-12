@@ -12,10 +12,11 @@ describe('Inline Edit: ', function describeFunction() {
 	const sampleValue = 'Sample value';
 
 	const renderInlineEdit = (instance) =>
-		function() {
+		function () {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
 			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
+			// eslint-disable-next-line react/no-render-return-value
 			this.component = ReactDOM.render(
 				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
 				this.dom
@@ -49,7 +50,7 @@ describe('Inline Edit: ', function describeFunction() {
 
 		afterEach(removeInlineEdit);
 
-		it('renders static by default', function() {
+		it('renders static by default', function () {
 			const wrapper = getWrapper(this.dom);
 			const input = getInput(this.dom);
 			const staticElement = getStatic(this.dom);
@@ -61,7 +62,7 @@ describe('Inline Edit: ', function describeFunction() {
 			should.exist(trigger);
 		});
 
-		it('renders the correct value', function() {
+		it('renders the correct value', function () {
 			const staticElement = getStatic(this.dom);
 			const value = staticElement.textContent;
 

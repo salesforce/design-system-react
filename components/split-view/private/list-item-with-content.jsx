@@ -69,9 +69,9 @@ const defaultProps = {
  */
 const listItemWithContent = (ListItemContent) => {
 	class ListItemWithContent extends React.Component {
-		static displayName = `${DISPLAY_NAME}(${ListItemContent.displayName ||
-			ListItemContent.name ||
-			'Component'})`;
+		static displayName = `${DISPLAY_NAME}(${
+			ListItemContent.displayName || ListItemContent.name || 'Component'
+		})`;
 
 		static propTypes = propsTypes;
 

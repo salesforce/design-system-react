@@ -168,7 +168,7 @@ class Example extends React.Component {
 		this.setState({
 			stepTwoCompletedSubSteps,
 			stepTwoCompletedSubStepsStatus,
-			stepTwoProgress: Math.ceil(stepsCompleted / subSteps.length * 100),
+			stepTwoProgress: Math.ceil((stepsCompleted / subSteps.length) * 100),
 			stepTwoSelectedSubStep,
 		});
 

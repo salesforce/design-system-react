@@ -80,13 +80,13 @@ class DemoComponent extends React.Component {
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSPopover', function() {
+describe('SLDSPopover', function () {
 	let mountNode;
 	let wrapper;
 
 	// BASIC STRUCTURE
 
-	describe('Default structure and css', function() {
+	describe('Default structure and css', function () {
 		beforeEach(() => {
 			mountNode = createMountNode({ context: this });
 		});
@@ -116,7 +116,7 @@ describe('SLDSPopover', function() {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has aria-labelledby/aria-describedby on popover', function() {
+		it('has aria-labelledby/aria-describedby on popover', function () {
 			wrapper = mount(<DemoComponent isOpen />, { attachTo: mountNode });
 
 			const popover = wrapper.find(`#${defaultIds.popover}`);
@@ -150,7 +150,7 @@ describe('SLDSPopover', function() {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has correct className, assistiveText, style, and footer', function() {
+		it('has correct className, assistiveText, style, and footer', function () {
 			wrapper = mount(<DemoComponent {...optionalProps} isOpen />, {
 				attachTo: mountNode,
 			});
@@ -172,7 +172,7 @@ describe('SLDSPopover', function() {
 		/* Test event callback functions using Simulate. For more information, view
 		 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
 		 */
-		describe('onClick', function() {
+		describe('onClick', function () {
 			const triggerClicked = sinon.spy();
 
 			beforeEach(() => {
@@ -183,7 +183,7 @@ describe('SLDSPopover', function() {
 				destroyMountNode({ wrapper, mountNode });
 			});
 
-			it('calls onClick handler on trigger, click on popover close closes', function(done) {
+			it('calls onClick handler on trigger, click on popover close closes', function (done) {
 				wrapper = mount(
 					<DemoComponent
 						onClick={triggerClicked}
@@ -212,7 +212,7 @@ describe('SLDSPopover', function() {
 				trigger.simulate('click');
 			});
 
-			it('opens on click, closes on ESC', function(done) {
+			it('opens on click, closes on ESC', function (done) {
 				wrapper = mount(
 					<DemoComponent
 						onClose={() => {
@@ -241,7 +241,7 @@ describe('SLDSPopover', function() {
 		});
 	});
 
-	describe('focus has moved to dialog', function() {
+	describe('focus has moved to dialog', function () {
 		const triggerClicked = sinon.spy();
 
 		beforeEach(() => {
@@ -252,7 +252,7 @@ describe('SLDSPopover', function() {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('focus moves to correct node on open', function(done) {
+		it('focus moves to correct node on open', function (done) {
 			wrapper = mount(
 				<DemoComponent
 					onClick={triggerClicked}
@@ -269,7 +269,7 @@ describe('SLDSPopover', function() {
 		});
 	});
 
-	describe('Disabled', function() {
+	describe('Disabled', function () {
 		const triggerClicked = sinon.spy();
 		const popoverOpened = sinon.spy();
 
@@ -281,7 +281,7 @@ describe('SLDSPopover', function() {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('onOpen is not called when disabled', function() {
+		it('onOpen is not called when disabled', function () {
 			wrapper = mount(
 				<DemoComponent
 					disabled
