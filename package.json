@@ -196,7 +196,7 @@
 		"prettylint": "^1.0.0",
 		"prompt": "^1.0.0",
 		"puppeteer": "^2.0.0",
-		"react": "^16.9",
+		"react": "^16.13",
 		"react-docgen": "^4.1.1",
 		"react-dom": "^16.8",
 		"react-hot-loader": "^1.2.7",
