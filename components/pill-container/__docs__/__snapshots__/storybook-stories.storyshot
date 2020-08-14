@@ -18,14 +18,15 @@ exports[`DOM snapshots SLDSPillContainer Bare Pill Container 1`] = `
       className="slds-grid slds-grid_vertical-align-start"
     >
       <div
+        aria-orientation="horizontal"
         className="slds-pill_container"
         id="bare-pill-container-listbox-of-pill-options"
+        role="listbox"
       >
         <ul
           aria-label="Selected Options:"
-          aria-orientation="horizontal"
           className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-          role="listbox"
+          role="group"
         >
           <li
             className="slds-listbox__item"
@@ -144,14 +145,15 @@ exports[`DOM snapshots SLDSPillContainer Base Pill Container 1`] = `
       className="slds-grid slds-grid_vertical-align-start"
     >
       <div
+        aria-orientation="horizontal"
         className="slds-pill_container"
         id="base-pill-container-listbox-of-pill-options"
+        role="listbox"
       >
         <ul
           aria-label="Selected Options:"
-          aria-orientation="horizontal"
           className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-          role="listbox"
+          role="group"
         >
           <li
             className="slds-listbox__item"
@@ -270,14 +272,15 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Avatars 1`] = `
       className="slds-grid slds-grid_vertical-align-start"
     >
       <div
+        aria-orientation="horizontal"
         className="slds-pill_container"
         id="pill-container-with-avatars-listbox-of-pill-options"
+        role="listbox"
       >
         <ul
           aria-label="Selected Options:"
-          aria-orientation="horizontal"
           className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-          role="listbox"
+          role="group"
         >
           <li
             className="slds-listbox__item"
@@ -428,14 +431,15 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
       className="slds-grid slds-grid_vertical-align-start"
     >
       <div
+        aria-orientation="horizontal"
         className="slds-pill_container"
         id="pill-container-with-icons-listbox-of-pill-options"
+        role="listbox"
       >
         <ul
           aria-label="Selected Options:"
-          aria-orientation="horizontal"
           className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-          role="listbox"
+          role="group"
         >
           <li
             className="slds-listbox__item"

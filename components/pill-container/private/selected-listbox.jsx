@@ -166,6 +166,9 @@ const SelectedListBox = (props) =>
 				}
 			}}
 			style={props.style}
+			// Remove role and aria-orientation after slds-has-inline-listbox is deprecated in Combobox
+			role={props.isInline ? undefined : 'listbox'}
+			aria-orientation={props.isInline ? undefined : 'horizontal'}
 		>
 			<ul // eslint-disable-line jsx-a11y/role-supports-aria-props
 				className={classNames('slds-listbox', {
@@ -174,8 +177,9 @@ const SelectedListBox = (props) =>
 					'slds-p-top_xxx-small': !props.isInline,
 				})}
 				aria-label={props.assistiveText.selectedListboxLabel}
-				role="listbox"
-				aria-orientation="horizontal"
+				// Update role and aria-orientation after slds-has-inline-listbox is deprecated in Combobox
+				role={props.isInline ? 'listbox' : 'group'}
+				aria-orientation={props.isInline ? 'horizontal' : undefined}
 			>
 				{props.selection.map((option, renderIndex) => {
 					const hasTabIndex = renderIndex === props.activeOptionIndex;
