@@ -1128,6 +1128,7 @@ class Combobox extends React.Component {
 				activeOption={this.state.activeSelectedOption}
 				activeOptionIndex={this.state.activeSelectedOptionIndex}
 				assistiveText={assistiveText}
+				className="slds-listbox_selection__group"
 				events={{
 					onBlurPill: this.handleBlurPill,
 					onClickPill: this.handlePillClickSelectedListbox,
@@ -1173,6 +1174,7 @@ class Combobox extends React.Component {
 						activeOption={this.state.activeSelectedOption}
 						activeOptionIndex={this.state.activeSelectedOptionIndex}
 						assistiveText={assistiveText}
+						className="slds-listbox_selection__group"
 						events={{
 							onBlurPill: this.handleBlurPill,
 							onClickPill: this.handlePillClickSelectedListbox,
@@ -1611,6 +1613,7 @@ class Combobox extends React.Component {
 					activeOption={this.state.activeSelectedOption}
 					activeOptionIndex={this.state.activeSelectedOptionIndex}
 					assistiveText={assistiveText}
+					className="slds-listbox_selection__group"
 					events={{
 						onBlurPill: this.handleBlurPill,
 						onClickPill: this.handlePillClickSelectedListbox,

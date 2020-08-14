@@ -59,14 +59,14 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
         </div>
       </div>
       <div
-        aria-orientation="horizontal"
+        className="slds-listbox_selection__group"
         id="combobox-base-selected-listbox"
-        role="listbox"
       >
         <ul
           aria-label="Selected Options:"
+          aria-orientation="horizontal"
           className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-          role="group"
+          role="listbox"
         >
           <li
             className="slds-listbox__item"
@@ -948,14 +948,14 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
           </div>
         </div>
         <div
-          aria-orientation="horizontal"
+          className="slds-listbox_selection__group"
           id="combobox-base-inline-help-selected-listbox"
-          role="listbox"
         >
           <ul
             aria-label="Selected Options:"
+            aria-orientation="horizontal"
             className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-            role="group"
+            role="listbox"
           >
             <li
               className="slds-listbox__item"
@@ -1158,14 +1158,14 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
         </div>
       </div>
       <div
-        aria-orientation="horizontal"
+        className="slds-listbox_selection__group"
         id="combobox-base-selected-listbox"
-        role="listbox"
       >
         <ul
           aria-label="Selected Options:"
+          aria-orientation="horizontal"
           className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-          role="group"
+          role="listbox"
         >
           <li
             className="slds-listbox__item"
@@ -1369,14 +1369,14 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
         </div>
       </div>
       <div
-        aria-orientation="horizontal"
+        className="slds-listbox_selection__group"
         id="combobox-base-selected-listbox"
-        role="listbox"
       >
         <ul
           aria-label="Selected Options:"
+          aria-orientation="horizontal"
           className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-          role="group"
+          role="listbox"
         >
           <li
             className="slds-listbox__item"
@@ -1993,14 +1993,14 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
         </div>
       </div>
       <div
-        aria-orientation="horizontal"
+        className="slds-listbox_selection__group"
         id="combobox-base-selected-listbox"
-        role="listbox"
       >
         <ul
           aria-label="Selected Options:"
+          aria-orientation="horizontal"
           className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-          role="group"
+          role="listbox"
         >
           <li
             className="slds-listbox__item"
@@ -2330,14 +2330,14 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
         </div>
       </div>
       <div
-        aria-orientation="horizontal"
+        className="slds-listbox_selection__group"
         id="combobox-base-predefined-options-selected-listbox"
-        role="listbox"
       >
         <ul
           aria-label="Selected Options:"
+          aria-orientation="horizontal"
           className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-          role="group"
+          role="listbox"
         >
           <li
             className="slds-listbox__item"
@@ -2539,14 +2539,14 @@ exports[`DOM snapshots SLDSCombobox Base With Scroll 1`] = `
         </div>
       </div>
       <div
-        aria-orientation="horizontal"
+        className="slds-listbox_selection__group"
         id="combobox-base-selected-listbox"
-        role="listbox"
       >
         <ul
           aria-label="Selected Options:"
+          aria-orientation="horizontal"
           className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-          role="group"
+          role="listbox"
         >
           <li
             className="slds-listbox__item"
@@ -2786,14 +2786,14 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
         className="slds-combobox_container slds-has-inline-listbox"
       >
         <div
-          aria-orientation="horizontal"
+          className="slds-listbox_selection__group"
           id="combobox-inline-multiple-selected-listbox"
-          role="listbox"
         >
           <ul
             aria-label="Selected Options:"
+            aria-orientation="horizontal"
             className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-            role="group"
+            role="listbox"
           >
             <li
               className="slds-listbox__item"
@@ -3893,14 +3893,14 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
         </div>
       </div>
       <div
-        aria-orientation="horizontal"
+        className="slds-listbox_selection__group"
         id="combobox-input-prop-example-selected-listbox"
-        role="listbox"
       >
         <ul
           aria-label="Selected Options:"
+          aria-orientation="horizontal"
           className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-          role="group"
+          role="listbox"
         >
           <li
             className="slds-listbox__item"
@@ -5406,14 +5406,14 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
         </div>
       </div>
       <div
-        aria-orientation="horizontal"
+        className="slds-listbox_selection__group"
         id="combobox-unique-id-selected-listbox"
-        role="listbox"
       >
         <ul
           aria-label="Selected Options:"
+          aria-orientation="horizontal"
           className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-          role="group"
+          role="listbox"
         >
           <li
             className="slds-listbox__item"
@@ -6083,14 +6083,14 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
         className="slds-combobox_container slds-has-inline-listbox"
       >
         <div
-          aria-orientation="horizontal"
+          className="slds-listbox_selection__group"
           id="combobox-unique-id-selected-listbox"
-          role="listbox"
         >
           <ul
             aria-label="Selected Options:"
+            aria-orientation="horizontal"
             className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-            role="group"
+            role="listbox"
           >
             <li
               className="slds-listbox__item"
@@ -7009,14 +7009,14 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Multipl
         </div>
       </div>
       <div
-        aria-orientation="horizontal"
+        className="slds-listbox_selection__group"
         id="combobox-unique-id-selected-listbox"
-        role="listbox"
       >
         <ul
           aria-label="Selected Options:"
+          aria-orientation="horizontal"
           className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
-          role="group"
+          role="listbox"
         >
           <li
             className="slds-listbox__item"

@@ -150,7 +150,7 @@ const getIcon = (option) => {
 
 const SelectedListBox = (props) =>
 	props.selection.length >= props.renderAtSelectionLength ? (
-		<div // eslint-disable-line jsx-a11y/role-supports-aria-props
+		<div
 			className={
 				classNames(
 					{
@@ -165,18 +165,17 @@ const SelectedListBox = (props) =>
 					props.selectedListboxRef(ref);
 				}
 			}}
-			role="listbox"
 			style={props.style}
-			aria-orientation="horizontal"
 		>
-			<ul
+			<ul // eslint-disable-line jsx-a11y/role-supports-aria-props
 				className={classNames('slds-listbox', {
 					'slds-listbox_inline': props.isInline,
 					'slds-listbox_horizontal': !props.isInline,
 					'slds-p-top_xxx-small': !props.isInline,
 				})}
-				role="group"
 				aria-label={props.assistiveText.selectedListboxLabel}
+				role="listbox"
+				aria-orientation="horizontal"
 			>
 				{props.selection.map((option, renderIndex) => {
 					const hasTabIndex = renderIndex === props.activeOptionIndex;
