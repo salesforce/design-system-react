@@ -120,7 +120,7 @@
 		"@salesforce-ux/design-system": "^2.9.4",
 		"@salesforce-ux/icons": "9.x",
 		"@salesforce/eslint-plugin-slds-react": "^0.0.1",
-		"@storybook/addon-a11y": "^5.3.19",
+		"@storybook/addon-a11y": "^6.0.10",
 		"@storybook/addon-actions": "^5.3.19",
 		"@storybook/addon-storyshots": "^5.3.19",
 		"@storybook/addon-storyshots-puppeteer": "^5.3.19",
