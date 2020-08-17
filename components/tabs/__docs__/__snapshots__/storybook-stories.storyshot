@@ -1804,6 +1804,7 @@ exports[`DOM snapshots SLDSTabs With error tab 1`] = `
             >
               <span
                 className="slds-icon_container slds-icon-utility-error"
+                title="An error on this Panel needs to be addressed"
               >
                 <svg
                   aria-hidden="true"
@@ -1816,7 +1817,7 @@ exports[`DOM snapshots SLDSTabs With error tab 1`] = `
                 <span
                   className="slds-assistive-text"
                 >
-                  This item has an error
+                  An error on this Panel needs to be addressed
                 </span>
               </span>
             </span>
