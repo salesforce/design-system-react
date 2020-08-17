@@ -42,6 +42,20 @@ Panel.propTypes = {
 		PropTypes.node,
 		PropTypes.element,
 	]).isRequired,
+
+	/**
+	 * Show an icon on the `<Tab />` next to the title that can be used to communicate when a tab contains a validation error that needs attention
+	 */
+	hasError: PropTypes.bool,
+
+	/**
+	 * **Assistive text for accessibility**
+	 * This object is merged with the default props object on every render.
+	 * * `withErrorIcon`: This text is for the error icon that will be placed next to the `<Tab />` title
+	 */
+	assistiveText: PropTypes.shape({
+		withErrorIcon: PropTypes.string,
+	}),
 };
 
 export default Panel;

@@ -373,6 +373,7 @@ class Tabs extends React.Component {
 							disabled={child.props.disabled}
 							variant={variant}
 							hasError={child.props.hasError}
+							assistiveText={child.props.assistiveText}
 						>
 							{child.props.label}
 						</Tab>

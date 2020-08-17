@@ -87,7 +87,7 @@ class Tab extends React.Component {
 		/**
 		 * **Assistive text for accessibility**
 		 * This object is merged with the default props object on every render.
-		 * * `withErrorIcon`: This text is inside the info icon within the tooltip content and exists to "complete the sentence" for assistive tech users.
+		 * * `withErrorIcon`: This text is for the error icon that will be placed next to the `<Tab />` title
 		 */
 		assistiveText: PropTypes.shape({
 			withErrorIcon: PropTypes.string,
@@ -185,6 +185,7 @@ class Tab extends React.Component {
 								size="x-small"
 								name="error"
 								colorVariant="error"
+								title={this.props.assistiveText.withErrorIcon}
 							/>
 						</span>
 					)}
