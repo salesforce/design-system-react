@@ -198,7 +198,7 @@
 		"puppeteer": "^2.0.0",
 		"react": "^16.9",
 		"react-docgen": "^4.1.1",
-		"react-dom": "^16.8",
+		"react-dom": "^16.13",
 		"react-hot-loader": "^1.2.7",
 		"react-test-renderer": "^16.8",
 		"regenerator-runtime": "^0.13.7",
