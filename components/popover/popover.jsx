@@ -562,7 +562,7 @@ class Popover extends React.Component {
 					<div
 						id={`${this.getId()}-dialog-body`}
 						className={classNames(
-							'slds-popover__body slds-popover__body_scrollable',
+							'slds-popover__body',
 							this.props.classNameBody
 						)}
 						// REMOVE IN THE FUTURE: SLDS OVERRIDE

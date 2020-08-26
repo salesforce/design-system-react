@@ -1173,6 +1173,10 @@ class Combobox extends React.Component {
 						activeOption={this.state.activeSelectedOption}
 						activeOptionIndex={this.state.activeSelectedOptionIndex}
 						assistiveText={assistiveText}
+						containerRole="listbox"
+						containerAriaOrientation="horizontal"
+						listboxRole="group"
+						listboxAriaOrientation=""
 						events={{
 							onBlurPill: this.handleBlurPill,
 							onClickPill: this.handlePillClickSelectedListbox,
