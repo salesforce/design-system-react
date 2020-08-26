@@ -1385,7 +1385,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Provide children of the types `<BuilderHeaderNav />` or `<BuilderHeaderToolbar />` to define the structure of the header.\n```\n<BuilderHeader>\n  <BuilderHeaderNav />\n  <BuilderHeaderToolbar />\n</BuilderHeader>\n```"
+                "description": "Provide children of the types `<BuilderHeaderNav />`, `<BuilderHeaderToolbar />`, or `<BuilderHeaderMisc />` to define the structure of the header.\n```\n<BuilderHeader>\n  <BuilderHeaderNav />\n  <BuilderHeaderToolbar />\n  <BuilderHeaderMisc />\n</BuilderHeader>\n```"
             },
             "className": {
                 "type": {
@@ -1421,6 +1421,53 @@
                 },
                 "required": false,
                 "description": "Event Callbacks\n* `onClickBack`: Called when the Back link is clicked.\n* `onClickHelp`: Called when the Help link is clicked.\n_Tested with Mocha testing._"
+            },
+            "iconCategory": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Category of the title icon from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)",
+                "defaultValue": {
+                    "value": "'utility'",
+                    "computed": false
+                }
+            },
+            "iconClassName": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        },
+                        {
+                            "name": "string"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the title icon."
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the title icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.",
+                "defaultValue": {
+                    "value": "'builder'",
+                    "computed": false
+                }
+            },
+            "iconPath": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Path to the title icon. This will override any global icon settings."
             },
             "labels": {
                 "type": {
@@ -1611,6 +1658,23 @@
                     "name": "toolbar",
                     "source": "/components/builder-header/toolbar.jsx"
                 }
+            },
+            {
+                "misc": {
+                    "description": "The miscellaneous section of the header.",
+                    "methods": [],
+                    "props": {
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Provide custom content in place of Page Type label\n```\n<BuilderHeader>\n  <BuilderHeaderMisc>\n    Custom content\n  </BuilderHeaderMisc>\n</BuilderHeader>\n```"
+                        }
+                    },
+                    "name": "misc",
+                    "source": "/components/builder-header/misc.jsx"
+                }
             }
         ]
     },
@@ -1721,7 +1785,7 @@
         "dependencies": []
     },
     "button-stateful": {
-        "description": "The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).",
+        "description": "The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).\nAlthough not listed in the prop table, all `aria-*` props will be added to the button element if passed in.\nIf no `aria-*` props are passed in, <code>aria-live='polite'</code> is used for `icon` and `icon-filled` variants,\nand <code>aria-live='assertive'</code> is used for the remaining variants.",
         "methods": [
             {
                 "name": "getClassName",
@@ -5285,12 +5349,16 @@
                             "id": {
                                 "name": "string",
                                 "required": true
+                            },
+                            "classNameRow": {
+                                "name": "string",
+                                "required": false
                             }
                         }
                     }
                 },
                 "required": true,
-                "description": "The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`."
+                "description": "The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`.\n\nUse the key `classNameRow` to add a custom class to the item's `<tr>` element."
             },
             "joined": {
                 "type": {
@@ -11058,7 +11126,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:\n```\n[{\n  className: 'custom-li-class',\n    divider: 'bottom',\n    label: 'A Header',\n    type: 'header'\n }, {\n    href: 'http://sfdc.co/',\n    id: 'custom-li-id',\n    label: 'Has a value',\n  leftIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n  rightIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n    type: 'item',\n    value: 'B0'\n }, {\n  tooltipContent: 'Displays a tooltip when hovered over with this content. The `tooltipMenuItem` prop must be set for this to work.'\n  type: 'divider'\n}]\n```"
+                "description": "An array of menu item objects. `className` and `id` object keys are applied to the `li` DOM node. `divider` key can have a value of `top` or `bottom`. `rightIcon` and `leftIcon` are not actually `Icon` components, but prop objects that get passed to an `Icon` component. The `href` key will be added to the `a` and its default click event will be prevented. Here is a sample:\n```\n[{\n  className: 'custom-li-class',\n    divider: 'bottom',\n    label: 'A Header',\n    type: 'header'\n }, {\n    href: 'http://sfdc.co/',\n    id: 'custom-li-id',\n    label: 'Has a value',\n  leftIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n  rightIcon: {\n   name: 'settings',\n   category: 'utility'\n  },\n    type: 'item',\n    value: 'B0'\n }, {\n  tooltipContent: 'Displays a tooltip when hovered over with this content. The `tooltipMenuItem` prop must be set for this to work.',\n  type: 'divider'\n}]\n```"
             },
             "style": {
                 "type": {
@@ -12213,14 +12281,11 @@
                                 "name": "string"
                             },
                             "required": false,
-                            "description": "Heading for a group of filters that are locked"
-                        },
-                        "lockedLabel": {
+                            "description": "Heading for a group of filters that are locked",
                             "defaultValue": {
                                 "value": "'Locked filters'",
                                 "computed": false
-                            },
-                            "required": false
+                            }
                         }
                     },
                     "name": "filtering/list-heading",
@@ -15196,6 +15261,17 @@
                 "required": false,
                 "description": "Custom css properties applied to Spinner container"
             },
+            "hasContainer": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Render the spinner inside of a container.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
             "id": {
                 "type": {
                     "name": "string"
@@ -15219,7 +15295,22 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Add styling to support a spinner inside an input field."
+                "description": "Add styling to support a spinner inside an input field.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "isInline": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Add styling to support an inline spinner inside of the document flow.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "size": {
                 "type": {
@@ -16142,6 +16233,26 @@
                             },
                             "required": true,
                             "description": "The `children` are the actual tab panels to be rendered. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabPanels` function.\n\nNote that the `<TabsPanel />` component inserts a `div` element around the children, because React requires exactly one \"parent\" element returned. The `<TabPanel />` component simply dips down into `children` to get the children of this wrapping `div` so that it does not get rendered in the DOM."
+                        },
+                        "hasError": {
+                            "type": {
+                                "name": "bool"
+                            },
+                            "required": false,
+                            "description": "Show an icon on the `<Tab />` next to the title that can be used to communicate when a tab contains a validation error that needs attention"
+                        },
+                        "assistiveText": {
+                            "type": {
+                                "name": "shape",
+                                "value": {
+                                    "withErrorIcon": {
+                                        "name": "string",
+                                        "required": false
+                                    }
+                                }
+                            },
+                            "required": false,
+                            "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `withErrorIcon`: This text is for the error icon that will be placed next to the `<Tab />` title"
                         }
                     },
                     "name": "panel",
@@ -17457,7 +17568,7 @@
                     }
                 },
                 "required": true,
-                "description": "Array of items starting at the top of the tree. The shape each node in the array is:\n```\n{\n  expanded: string,\n  id: string,\n  label: string or node,\n  selected: string,\n  type: string,\n  nodes: array\n}\n```\n`assistiveText: string` is optional and helpful if the label is not a string. Only `id` and `label` are required. Use `type: 'branch'` for folder and categories."
+                "description": "Array of items starting at the top of the tree. The shape each node in the array is:\n```\n{\n  expanded: boolean,\n  id: string,\n  label: string or node,\n  selected: boolean,\n  type: string,\n  nodes: array\n}\n```\n`assistiveText: string` is optional and helpful if the label is not a string. Only `id` and `label` are required. Use `type: 'branch'` for folder and categories."
             },
             "onClick": {
                 "type": {

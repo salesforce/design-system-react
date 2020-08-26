@@ -84,7 +84,7 @@ const Breadcrumb = (props) => {
 			: {
 					...defaultProps.assistiveText,
 					...props.assistiveText,
-				}.label;
+			  }.label;
 
 	return (
 		<nav

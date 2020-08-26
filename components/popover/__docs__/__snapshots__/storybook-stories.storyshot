@@ -1147,7 +1147,68 @@ exports[`DOM snapshots SLDSPopover Custom Target 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSPopover Edit Dialog  - Open 1`] = `
+exports[`DOM snapshots SLDSPopover Edit Dialog - Disabled 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div>
+    <span
+      className="slds-p-right_x-small"
+    >
+      John
+       
+      Smith
+    </span>
+    <div
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        aria-haspopup="dialog"
+        className="slds-button slds-button_icon slds-button_reset"
+        disabled={true}
+        id="edit-dialog-popover"
+        onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }
+        tabIndex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon slds-button__icon_hint"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Edit: Status
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Edit Dialog - Open 1`] = `
 <div
   className="slds-p-around_medium slds-m-horizontal_x-large"
   style={
@@ -1500,7 +1561,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
       </header>
       <div>
         <div
-          className="slds-popover__body slds-popover__body_scrollable"
+          className="slds-popover__body"
           id="popover-error-dialog-body"
           style={
             Object {
@@ -2307,7 +2368,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
       </header>
       <div>
         <div
-          className="slds-popover__body slds-popover__body_scrollable"
+          className="slds-popover__body"
           id="popover-error-dialog-body"
           style={
             Object {

@@ -112,14 +112,14 @@ function getMenuItem(menuItemId, context = document) {
 }
 
 /*
-* Dropdowns with nubbins have a different API from other Dialogs
-*
-* Dialog receives an alignment position and whether it has a nubbin. The nubbin position is inferred from the align.
-* Dropdowns have a nubbinPosition which dictates the align, but in an inverse fashion which then gets inversed back by the Dialog.
-*
-* Since Dialog is the future API and we don't want to break backwards compatability, we currently map to the Dialog api here. Even if Dialog will map it again.
-* TODO - deprecate nubbinPosition in favor for additional `align` values and a flag to show a nubbin.
-*/
+ * Dropdowns with nubbins have a different API from other Dialogs
+ *
+ * Dialog receives an alignment position and whether it has a nubbin. The nubbin position is inferred from the align.
+ * Dropdowns have a nubbinPosition which dictates the align, but in an inverse fashion which then gets inversed back by the Dialog.
+ *
+ * Since Dialog is the future API and we don't want to break backwards compatability, we currently map to the Dialog api here. Even if Dialog will map it again.
+ * TODO - deprecate nubbinPosition in favor for additional `align` values and a flag to show a nubbin.
+ */
 const DropdownToDialogNubbinMapping = {
 	top: 'bottom',
 	'top left': 'bottom left',
@@ -348,7 +348,7 @@ const propTypes = {
 	 *     type: 'item',
 	 *     value: 'B0'
 	 *  }, {
-	 *   tooltipContent: 'Displays a tooltip when hovered over with this content. The `tooltipMenuItem` prop must be set for this to work.'
+	 *   tooltipContent: 'Displays a tooltip when hovered over with this content. The `tooltipMenuItem` prop must be set for this to work.',
 	 *   type: 'divider'
 	 * }]
 	 * ```

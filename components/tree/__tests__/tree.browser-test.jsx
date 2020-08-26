@@ -33,7 +33,7 @@ describe('Tree: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('moves selection up/down with wrapping when using keyboard up/down keys', function() {
+		it('moves selection up/down with wrapping when using keyboard up/down keys', function () {
 			// Initial focus selects the item
 			this.wrapper.find('#example-tree-1').simulate('focus');
 			let itemDiv = this.wrapper
@@ -88,7 +88,7 @@ describe('Tree: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('expands/collapses branches when using right/left keys', function() {
+		it('expands/collapses branches when using right/left keys', function () {
 			// Initial focus selects the item
 			const item = this.wrapper.find('#example-tree-1');
 			item.simulate('focus');
@@ -141,7 +141,7 @@ describe('Tree: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('has tree container class, list class, and heading', function() {
+		it('has tree container class, list class, and heading', function () {
 			const container = this.wrapper.find('.slds-tree_container');
 			expect(container.hasClass('this-is-a-container-test')).to.be.true;
 
@@ -168,7 +168,7 @@ describe('Tree: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('has heading via assistiveText', function() {
+		it('has heading via assistiveText', function () {
 			const heading = this.wrapper.find(
 				'#example-tree__heading.slds-assistive-text'
 			);
@@ -192,7 +192,7 @@ describe('Tree: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('has initial selection', function() {
+		it('has initial selection', function () {
 			let selectedNode = this.wrapper
 				.find('#example-tree-2')
 				.find('.slds-is-selected');
@@ -204,7 +204,7 @@ describe('Tree: ', () => {
 			expect(selectedNode).to.have.length(1);
 		});
 
-		it('has initial expanded branches', function() {
+		it('has initial expanded branches', function () {
 			const expandedBranchList = this.wrapper
 				.find('#example-tree-2')
 				.find('.slds-is-expanded');
@@ -228,7 +228,7 @@ describe('Tree: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('branch calls onExpandClicked and onClick', function() {
+		it('branch calls onExpandClicked and onClick', function () {
 			const branch = this.wrapper
 				.find('#example-tree-2')
 				.find('.slds-tree__item');
@@ -252,7 +252,7 @@ describe('Tree: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('item calls itemClicked', function() {
+		it('item calls itemClicked', function () {
 			const item = this.wrapper
 				.find('#example-tree-1')
 				.find('.slds-tree__item');
@@ -268,7 +268,7 @@ describe('Tree: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('item calls itemClicked', function() {
+		it('item calls itemClicked', function () {
 			const markedItem = this.wrapper.find('mark');
 			expect(markedItem).to.have.length(1);
 		});
@@ -294,7 +294,7 @@ describe('Tree: ', () => {
 
 		afterEach(unmountComponent);
 
-		it('scrolling calls onScroll', function() {
+		it('scrolling calls onScroll', function () {
 			const list = this.wrapper.find(`.${COMPONENT_CSS_CLASSES.base}`);
 			list.simulate('scroll');
 			expect(onScroll.callCount).to.equal(1);

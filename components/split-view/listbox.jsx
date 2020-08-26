@@ -339,7 +339,7 @@ class SplitViewListbox extends React.Component {
 								: this.props.assistiveText.sort.ascending}
 						</span>
 					</span>
-				)
+			  )
 			: null;
 	}
 

@@ -37,6 +37,10 @@ const propTypes = {
 	 */
 	containerStyle: PropTypes.object,
 	/**
+	 * Render the spinner inside of a container.
+	 */
+	hasContainer: PropTypes.bool,
+	/**
 	 * Unique html id placed on div with role="status".
 	 */
 	id: PropTypes.string,
@@ -48,6 +52,10 @@ const propTypes = {
 	 * Add styling to support a spinner inside an input field.
 	 */
 	isInput: PropTypes.bool,
+	/**
+	 * Add styling to support an inline spinner inside of the document flow.
+	 */
+	isInline: PropTypes.bool,
 	/**
 	 * Determines the size of the spinner
 	 */
@@ -61,6 +69,9 @@ const propTypes = {
 const defaultProps = {
 	assistiveText: { label: 'Loading...' },
 	isDelayed: false,
+	isInline: false,
+	isInput: false,
+	hasContainer: true,
 	size: 'medium',
 	variant: 'base',
 };
@@ -75,7 +86,9 @@ const Spinner = (props) => {
 		containerStyle,
 		id,
 		isDelayed,
+		isInline,
 		isInput,
+		hasContainer,
 		size,
 		variant,
 	} = props;
@@ -85,9 +98,10 @@ const Spinner = (props) => {
 			: {
 					...defaultProps.assistiveText,
 					...props.assistiveText,
-				}.label;
+			  }.label;
 
 	const spinnerClassName = classNames('slds-spinner', {
+		'slds-spinner_inline': isInline,
 		'slds-input__spinner': isInput,
 		'slds-spinner_brand': variant === 'brand',
 		'slds-spinner_inverse': variant === 'inverse',
@@ -95,24 +109,25 @@ const Spinner = (props) => {
 		[`slds-spinner_${size}`]: size,
 	});
 
-	return (
+	const spinner = (
+		<div aria-hidden="false" className={spinnerClassName} id={id} role="status">
+			{assistiveText && (
+				<span className="slds-assistive-text">{assistiveText}</span>
+			)}
+			<div className="slds-spinner__dot-a" />
+			<div className="slds-spinner__dot-b" />
+		</div>
+	);
+
+	return hasContainer ? (
 		<div
 			className={classNames(containerClassName, 'slds-spinner_container')}
 			style={containerStyle}
 		>
-			<div
-				aria-hidden="false"
-				className={spinnerClassName}
-				id={id}
-				role="status"
-			>
-				{assistiveText && (
-					<span className="slds-assistive-text">{assistiveText}</span>
-				)}
-				<div className="slds-spinner__dot-a" />
-				<div className="slds-spinner__dot-b" />
-			</div>
+			{spinner}
 		</div>
+	) : (
+		spinner
 	);
 };
 

@@ -1,12 +1,12 @@
-const consoleMessageOverrides = (function(...args) {
+const consoleMessageOverrides = (function (...args) {
 	const { error, warn } = console;
 
-	console.error = function(message) {
+	console.error = function (message) {
 		error.apply(console, args);
 		throw message instanceof Error ? message : new Error(message);
 	};
 
-	console.warn = function(message) {
+	console.warn = function (message) {
 		warn.apply(console, args);
 		throw message instanceof Error ? message : new Error(message);
 	};

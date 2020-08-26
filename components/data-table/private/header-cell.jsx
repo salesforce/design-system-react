@@ -171,9 +171,9 @@ class DataTableHeaderCell extends React.Component {
 						<span className="slds-assistive-text" aria-atomic="true">
 							{sortDirection === 'asc'
 								? this.props.assistiveTextForColumnSortedAscending ||
-									this.props.assistiveText.columnSortedAscending
+								  this.props.assistiveText.columnSortedAscending
 								: this.props.assistiveTextForColumnSortedDescending ||
-									this.props.assistiveText.columnSortedDescending}
+								  this.props.assistiveText.columnSortedDescending}
 						</span>
 					) : null}
 				</a>
@@ -223,7 +223,7 @@ class DataTableHeaderCell extends React.Component {
 								height: fixedHeader ? 0 : null,
 								lineHeight: fixedHeader ? 0 : null,
 								width: width || null,
-							}
+						  }
 						: null
 				}
 			>
@@ -237,7 +237,7 @@ class DataTableHeaderCell extends React.Component {
 								paddingTop: 0,
 								visibility: 'hidden',
 							},
-						})
+					  })
 					: headerCellContent}
 				{fixedHeader ? (
 					<CellFixed>

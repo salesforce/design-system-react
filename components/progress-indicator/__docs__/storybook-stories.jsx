@@ -82,9 +82,7 @@ class ExampleProgressIndicator extends React.Component {
 
 						if (steps[0].assistiveText) {
 							if (completedSteps.length > 0) {
-								steps[0].assistiveText = `${
-									steps[0].assistiveText
-								} - Completed`;
+								steps[0].assistiveText = `${steps[0].assistiveText} - Completed`;
 							} else {
 								steps[0].assistiveText = steps[0].assistiveText.replace(
 									' - Completed',
@@ -145,9 +143,8 @@ storiesOf(PROGRESS_INDICATOR, module)
 			errorSteps={exampleSteps.slice(1, 2)}
 		/>
 	))
-	.add(
-		'In A Modal (With Step Error) - Needs DOM',
-		() => (typeof document !== 'undefined' ? <Modal /> : null)
+	.add('In A Modal (With Step Error) - Needs DOM', () =>
+		typeof document !== 'undefined' ? <Modal /> : null
 	)
 	.add('Completed Progress', () => (
 		<ExampleProgressIndicator

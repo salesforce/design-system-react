@@ -63,34 +63,30 @@ const accountsWithIcon = accounts.map((elem) => ({
 		),
 	},
 }));
+
 class Example extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			inputValue: '',
-			isLoadingMenuItems: false,
 			selection: [],
 		};
 	}
-
-	delayOptionsLoad = () => {
-		// A promise should be used here for asynchronous callbacks
-		setTimeout(() => {
-			this.setState({ isLoadingMenuItems: false });
-		}, 1000);
-	};
 
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id="combobox-unique-id"
+					id="combobox-inline-single"
 					events={{
 						onChange: (event, { value }) => {
-							this.props.action('onChange')(event, value);
-							this.setState({ inputValue: value, isLoadingMenuItems: true });
-							this.delayOptionsLoad();
+							if (this.props.action) {
+								this.props.action('onChange')(event, value);
+							} else if (console) {
+								console.log('onChange', event, value);
+							}
+							this.setState({ inputValue: value });
 						},
 						onRequestRemoveSelectedOption: (event, data) => {
 							this.setState({
@@ -112,7 +108,7 @@ class Example extends React.Component {
 										label: value,
 										icon: (
 											<Icon
-												assistiveText="Account"
+												assistiveText={{ label: 'Account' }}
 												category="standard"
 												name="account"
 											/>
@@ -140,24 +136,19 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholder: 'Search Salesforce',
 					}}
-					multiple
-					options={
-						this.state.isLoadingMenuItems
-							? comboboxFilterAndLimit({
-									inputValue: this.state.inputValue,
-									options: accountsWithIcon.slice(0, 3),
-									selection: this.state.selection,
-							  })
-							: comboboxFilterAndLimit({
-									inputValue: this.state.inputValue,
-									options: accountsWithIcon,
-									selection: this.state.selection,
-							  })
-					}
+					options={comboboxFilterAndLimit({
+						inputValue: this.state.inputValue,
+						options: accountsWithIcon,
+						selection: this.state.selection,
+					})}
+					predefinedOptionsOnly
 					selection={this.state.selection}
-					value={this.state.inputValue}
+					value={
+						this.state.selection.length > 0
+							? this.state.selection[0].label
+							: this.state.inputValue
+					}
 					variant="inline-listbox"
-					hasMenuSpinner={this.state.isLoadingMenuItems}
 				/>
 			</IconSettings>
 		);

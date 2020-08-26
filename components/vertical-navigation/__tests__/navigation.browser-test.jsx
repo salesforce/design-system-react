@@ -66,7 +66,7 @@ describe('SLDSVerticalNavigation', () => {
 
 		afterEach(unmountComponent);
 
-		it('has items described by category headers', function() {
+		it('has items described by category headers', function () {
 			const structure = { reports: 5, folders: 3 };
 			Object.entries(structure).forEach(([categoryId, itemCount]) => {
 				const header = this.wrapper.find(`#sample-navigation-${categoryId}`);
@@ -88,7 +88,7 @@ describe('SLDSVerticalNavigation', () => {
 
 		afterEach(unmountComponent);
 
-		it('is used to select an item', function() {
+		it('is used to select an item', function () {
 			const item = this.wrapper
 				.find('.sample-navigation')
 				.find('li.slds-is-active')
@@ -106,7 +106,7 @@ describe('SLDSVerticalNavigation', () => {
 
 		afterEach(unmountComponent);
 
-		it('calls onSelect', function() {
+		it('calls onSelect', function () {
 			const item = this.wrapper
 				.find('.sample-navigation')
 				.find('a[data-id="my_folders"]');

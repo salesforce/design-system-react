@@ -177,6 +177,39 @@ exports[`DOM snapshots SLDSSpinner Docs site Default 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSSpinner Inline 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-align_absolute-center"
+    style={
+      Object {
+        "height": "4rem",
+      }
+    }
+  >
+    <div
+      aria-hidden="false"
+      className="slds-spinner slds-spinner_inline slds-spinner_medium"
+      role="status"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Loading...
+      </span>
+      <div
+        className="slds-spinner__dot-a"
+      />
+      <div
+        className="slds-spinner__dot-b"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSSpinner Inverse Large 1`] = `
 <div
   className="slds-p-around_medium"
@@ -434,6 +467,39 @@ exports[`DOM snapshots SLDSSpinner Medium 1`] = `
 >
   <div
     className="slds-spinner_container"
+  >
+    <div
+      aria-hidden="false"
+      className="slds-spinner slds-spinner_medium"
+      role="status"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        Loading...
+      </span>
+      <div
+        className="slds-spinner__dot-a"
+      />
+      <div
+        className="slds-spinner__dot-b"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSSpinner No Container 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-align_absolute-center"
+    style={
+      Object {
+        "height": "4rem",
+      }
+    }
   >
     <div
       aria-hidden="false"

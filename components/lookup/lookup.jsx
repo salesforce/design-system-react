@@ -764,9 +764,7 @@ const Lookup = class extends React.Component {
 
 		const formElementControlClasses = {
 			'slds-form-element__control': true,
-			[`slds-input-has-icon slds-input-has-icon_${
-				this.props.iconPosition
-			}`]: !this.isSelected(),
+			[`slds-input-has-icon slds-input-has-icon_${this.props.iconPosition}`]: !this.isSelected(),
 		};
 
 		return (

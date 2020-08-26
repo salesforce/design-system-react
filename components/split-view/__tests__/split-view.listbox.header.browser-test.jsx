@@ -89,19 +89,13 @@ describe('SLDSSplitView - Listbox header', () => {
 
 	it('should have test label', () => {
 		expect(
-			component
-				.find('.slds-split-view__list-header > span > span')
-				.at(1)
-				.text()
+			component.find('.slds-split-view__list-header > span > span').at(1).text()
 		).to.equal('test header');
 	});
 
 	it('should have sort by assistive text', () => {
 		expect(
-			component
-				.find('.slds-split-view__list-header > span > span')
-				.at(0)
-				.text()
+			component.find('.slds-split-view__list-header > span > span').at(0).text()
 		).to.equal('test sort by: ');
 	});
 

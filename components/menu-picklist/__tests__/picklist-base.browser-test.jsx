@@ -11,7 +11,7 @@ import IconSettings from '../../icon-settings';
 
 const { Simulate, findRenderedDOMComponentWithClass } = TestUtils;
 
-describe('SLDSMenuPicklist: ', function() {
+describe('SLDSMenuPicklist: ', function () {
 	let body;
 
 	const options = [
@@ -195,9 +195,7 @@ describe('SLDSMenuPicklist: ', function() {
 
 		it('<ul> has role menu & aria-labelledby', () => {
 			Simulate.click(btn, {});
-			const ulRole = getMenu(body)
-				.querySelector('ul')
-				.getAttribute('role');
+			const ulRole = getMenu(body).querySelector('ul').getAttribute('role');
 			const ulAria = getMenu(body)
 				.querySelector('ul')
 				.getAttribute('aria-labelledby');

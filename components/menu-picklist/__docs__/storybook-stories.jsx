@@ -87,18 +87,14 @@ class MultipleExample extends React.Component {
 			<Picklist
 				label="Contacts"
 				labels={{
-					multipleOptionsSelected: `${
-						this.state.selectedIndexes.size
-					} Contacts Selected`,
+					multipleOptionsSelected: `${this.state.selectedIndexes.size} Contacts Selected`,
 				}}
 				multiple
 				onSelect={this.handleSelect}
 				options={options}
 				onPillRemove={(removedItem, data) => {
 					console.log(
-						`data.option.label: '${data.option.label}' data.option.value: '${
-							data.option.value
-						}'`
+						`data.option.label: '${data.option.label}' data.option.value: '${data.option.value}'`
 					);
 					this.handleSelect(removedItem, data);
 				}}

@@ -61,7 +61,7 @@ PanelFilterListHeading.propTypes = {
 
 PanelFilterListHeading.defaultProps = {
 	heading: 'Matching all these filters',
-	lockedLabel: 'Locked filters',
+	lockedHeading: 'Locked filters',
 };
 
 export default PanelFilterListHeading;

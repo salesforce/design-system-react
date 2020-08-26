@@ -294,7 +294,7 @@ class Button extends React.Component {
 				: {
 						...defaultProps.assistiveText,
 						...this.props.assistiveText,
-					}.icon;
+				  }.icon;
 
 		return iconOnly && assistiveTextIcon ? (
 			<span className="slds-assistive-text">{assistiveTextIcon}</span>
@@ -330,6 +330,7 @@ class Button extends React.Component {
 				}}
 				tabIndex={this.props.tabIndex}
 				title={this.props.title}
+				// eslint-disable-next-line react/button-has-type
 				type={this.props.type || 'button'}
 				style={this.props.style}
 				{...ariaProps}

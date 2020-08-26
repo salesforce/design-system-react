@@ -307,6 +307,10 @@ const documentationSiteLiveExamples = {
 			heading: 'Advanced: Joined with Page Header',
 			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/joined-with-page-header.jsx'),
 		},
+		{
+			heading: 'Custom Classes',
+			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/custom-classes.jsx'),
+		},
 	],
 	'date-picker': [
 		{

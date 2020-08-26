@@ -562,7 +562,7 @@ class Popover extends React.Component {
 					<div
 						id={`${this.getId()}-dialog-body`}
 						className={classNames(
-							'slds-popover__body slds-popover__body_scrollable',
+							'slds-popover__body',
 							this.props.classNameBody
 						)}
 						// REMOVE IN THE FUTURE: SLDS OVERRIDE
@@ -793,7 +793,7 @@ class Popover extends React.Component {
 									this.handleClick(event, {
 										triggerOnClickCallback: child.props.onClick,
 									});
-								}
+							  }
 							: child.props.onClick,
 					onFocus: this.props.openOn === 'hover' ? this.handleFocus : null,
 					onMouseDown: this.props.onMouseDown,

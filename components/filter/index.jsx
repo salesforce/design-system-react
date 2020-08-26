@@ -252,9 +252,11 @@ class Filter extends React.Component {
 								{assistiveText.editFilter}
 							</span>
 							{this.props.property ? (
-								<p className="slds-text-body_small">{this.props.property}</p>
+								<span className="slds-show slds-text-body_small">
+									{this.props.property}
+								</span>
 							) : null}
-							<p>{this.props.predicate}</p>
+							<span className="slds-show">{this.props.predicate}</span>
 						</button>
 					</Popover>
 				) : (
@@ -266,24 +268,28 @@ class Filter extends React.Component {
 						disabled
 						type="button"
 					>
-						<p className="slds-text-body_small">{this.props.property}</p>
-						<p>{this.props.predicate}</p>
+						<span className="slds-show slds-text-body_small">
+							{this.props.property}
+						</span>
+						<span className="slds-show">{this.props.predicate}</span>
 					</button>
 				)}
-				{// Remove button
-				!this.props.isPermanent && !this.props.isLocked ? (
-					<Button
-						assistiveText={{ icon: assistiveText.removeFilter }}
-						hint
-						iconCategory="utility"
-						iconName="close"
-						iconSize="small"
-						iconVariant="bare"
-						onClick={this.handleRemove}
-						title={assistiveText.removeFilter}
-						variant="icon"
-					/>
-				) : null}
+				{
+					// Remove button
+					!this.props.isPermanent && !this.props.isLocked ? (
+						<Button
+							assistiveText={{ icon: assistiveText.removeFilter }}
+							hint
+							iconCategory="utility"
+							iconName="delete"
+							iconSize="small"
+							iconVariant="bare"
+							onClick={this.handleRemove}
+							title={assistiveText.removeFilter}
+							variant="icon"
+						/>
+					) : null
+				}
 			</div>
 		);
 	}

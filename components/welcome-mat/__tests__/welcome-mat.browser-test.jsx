@@ -15,7 +15,7 @@ import SLDSWelcomeMat from '../../welcome-mat';
 import SLDSWelcomeMatTile from '../../welcome-mat/tile';
 import WelcomeMatInfoBadge from '../../welcome-mat/info-badge';
 
-describe('SLDSWelcomeMat: ', function() {
+describe('SLDSWelcomeMat: ', function () {
 	let container;
 	let renderedNode;
 
@@ -43,6 +43,7 @@ describe('SLDSWelcomeMat: ', function() {
 			<IconSettings iconPath="/assets/icons">{welcomeMatInstance}</IconSettings>
 		);
 		document.body.appendChild(container);
+		// eslint-disable-next-line react/no-render-return-value
 		renderedNode = ReactDOM.render(opener, container); // deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 		return renderedNode;
 	};

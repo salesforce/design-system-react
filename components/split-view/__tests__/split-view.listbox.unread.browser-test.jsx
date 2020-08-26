@@ -81,58 +81,34 @@ describe('SLDSSplitView - Listbox header', () => {
 	});
 
 	it('should have unread', () => {
-		expect(
-			component
-				.find('li')
-				.at(0)
-				.prop('className')
-		).to.not.contain('slds-is-unread');
-		expect(
-			component
-				.find('li')
-				.at(1)
-				.prop('className')
-		).to.contain('slds-is-unread');
-		expect(
-			component
-				.find('li')
-				.at(2)
-				.prop('className')
-		).to.not.contain('slds-is-unread');
-		expect(
-			component
-				.find('li')
-				.at(3)
-				.prop('className')
-		).to.contain('slds-is-unread');
+		expect(component.find('li').at(0).prop('className')).to.not.contain(
+			'slds-is-unread'
+		);
+		expect(component.find('li').at(1).prop('className')).to.contain(
+			'slds-is-unread'
+		);
+		expect(component.find('li').at(2).prop('className')).to.not.contain(
+			'slds-is-unread'
+		);
+		expect(component.find('li').at(3).prop('className')).to.contain(
+			'slds-is-unread'
+		);
 
 		expect(component.find('.slds-indicator_unread')).to.have.length(2);
 	});
 
 	it('should have unread assistive text', () => {
 		expect(
-			component
-				.find('.slds-indicator_unread')
-				.at(0)
-				.prop('title')
+			component.find('.slds-indicator_unread').at(0).prop('title')
 		).to.equal('test unread');
 		expect(
-			component
-				.find('.slds-indicator_unread')
-				.at(1)
-				.prop('title')
+			component.find('.slds-indicator_unread').at(1).prop('title')
 		).to.equal('test unread');
 		expect(
-			component
-				.find('.slds-indicator_unread')
-				.at(0)
-				.prop('aria-label')
+			component.find('.slds-indicator_unread').at(0).prop('aria-label')
 		).to.equal('test unread');
 		expect(
-			component
-				.find('.slds-indicator_unread')
-				.at(1)
-				.prop('aria-label')
+			component.find('.slds-indicator_unread').at(1).prop('aria-label')
 		).to.equal('test unread');
 	});
 });

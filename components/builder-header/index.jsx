@@ -26,11 +26,12 @@ const propTypes = {
 		icon: PropTypes.string,
 	}),
 	/**
-	 * Provide children of the types `<BuilderHeaderNav />` or `<BuilderHeaderToolbar />` to define the structure of the header.
+	 * Provide children of the types `<BuilderHeaderNav />`, `<BuilderHeaderToolbar />`, or `<BuilderHeaderMisc />` to define the structure of the header.
 	 * ```
 	 * <BuilderHeader>
 	 *   <BuilderHeaderNav />
 	 *   <BuilderHeaderToolbar />
+	 *   <BuilderHeaderMisc />
 	 * </BuilderHeader>
 	 * ```
 	 */
@@ -53,6 +54,26 @@ const propTypes = {
 		onClickBack: PropTypes.func,
 		onClickHelp: PropTypes.func,
 	}),
+	/**
+	 * Category of the title icon from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)
+	 */
+	iconCategory: PropTypes.string,
+	/**
+	 * CSS classes that are applied to the title icon.
+	 */
+	iconClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * Name of the title icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+	 */
+	iconName: PropTypes.string,
+	/**
+	 * Path to the title icon. This will override any global icon settings.
+	 */
+	iconPath: PropTypes.string,
 	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
@@ -80,6 +101,8 @@ const defaultProps = {
 		helpIcon: 'Help',
 		icon: 'Builder',
 	},
+	iconCategory: 'utility',
+	iconName: 'builder',
 	labels: {
 		back: 'Back',
 		help: 'Help',
@@ -126,6 +149,15 @@ const BuilderHeader = (props) => {
 		}
 	});
 
+	let iconCategory;
+	let iconName;
+	let iconPath;
+	if (props.iconPath) {
+		({ iconPath } = props);
+	} else {
+		({ iconCategory, iconName } = props);
+	}
+
 	return (
 		<div style={{ position: 'relative', height: '100px' }}>
 			<div
@@ -138,9 +170,15 @@ const BuilderHeader = (props) => {
 							<div className="slds-media__figure">
 								<Icon
 									assistiveText={{ label: assistiveText.icon }}
-									category="utility"
-									containerClassName="slds-icon_container slds-icon-utility-builder slds-current-color"
-									name="builder"
+									category={iconCategory}
+									containerClassName={classNames(
+										'slds-icon_container',
+										'slds-icon-utility-builder',
+										'slds-current-color',
+										props.iconClassName
+									)}
+									name={iconName}
+									path={iconPath}
 									size="x-small"
 								/>
 							</div>

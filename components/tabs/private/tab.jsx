@@ -18,6 +18,8 @@ import classNames from 'classnames';
 // ## Constants
 import { TAB } from '../../../utilities/constants';
 
+import Icon from '../../icon';
+
 /*
  * Disabled Tab CSS has been removed. If you'd like to use the styling, please import it in your module bundler.
  */
@@ -76,6 +78,20 @@ class Tab extends React.Component {
 		 * If the Tabs should be scopped, defaults to false
 		 */
 		variant: PropTypes.oneOf(['default', 'scoped']),
+
+		/**
+		 * Show an icon that can be used to communicate when a tab contains a validation error that needs attention
+		 */
+		hasError: PropTypes.bool,
+
+		/**
+		 * **Assistive text for accessibility**
+		 * This object is merged with the default props object on every render.
+		 * * `withErrorIcon`: This text is for the error icon that will be placed next to the `<Tab />` title
+		 */
+		assistiveText: PropTypes.shape({
+			withErrorIcon: PropTypes.string,
+		}),
 	};
 
 	static defaultProps = {
@@ -84,6 +100,10 @@ class Tab extends React.Component {
 		activeTabClassName: 'slds-active',
 		disabledTabClassName: 'slds-disabled',
 		variant: 'default',
+		hasError: false,
+		assistiveText: {
+			withErrorIcon: 'This item has an error',
+		},
 	};
 
 	componentDidMount() {
@@ -111,6 +131,7 @@ class Tab extends React.Component {
 			children,
 			id,
 			variant,
+			hasError,
 		} = this.props;
 		let tabIndex;
 
@@ -153,6 +174,21 @@ class Tab extends React.Component {
 					aria-selected={selected ? 'true' : 'false'}
 				>
 					{children}
+					{hasError && (
+						<span className="slds-tabs__right-icon">
+							<Icon
+								assistiveText={{
+									label: this.props.assistiveText.withErrorIcon,
+								}}
+								category="utility"
+								containerClassName="slds-icon_container slds-icon-utility-error"
+								size="x-small"
+								name="error"
+								colorVariant="error"
+								title={this.props.assistiveText.withErrorIcon}
+							/>
+						</span>
+					)}
 				</a>
 			</li>
 		);

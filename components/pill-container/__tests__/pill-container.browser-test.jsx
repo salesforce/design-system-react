@@ -94,7 +94,7 @@ describe('SLDSPillContainer', () => {
 
 		afterEach(unmountComponent);
 
-		it('Renders the base Pill Container correctly', function() {
+		it('Renders the base Pill Container correctly', function () {
 			let idOfCurrentPill = 1;
 
 			expect(this.wrapper.find('.slds-pill_container').length).to.eql(1);
@@ -130,7 +130,7 @@ describe('SLDSPillContainer', () => {
 			});
 		});
 
-		it('Handles keyboard navigation properly', function() {
+		it('Handles keyboard navigation properly', function () {
 			const getFocusedPillLabel = () =>
 				document.activeElement.querySelector('.slds-pill__label').innerText;
 			let i = 1;
@@ -177,7 +177,7 @@ describe('SLDSPillContainer', () => {
 
 		afterEach(unmountComponent);
 
-		it('Renders the bare Pill Container correctly', function() {
+		it('Renders the bare Pill Container correctly', function () {
 			this.wrapper.find('ul.slds-listbox .slds-pill').forEach((pill) => {
 				expect(pill.find('.slds-pill_bare').length).to.eql(1);
 			});

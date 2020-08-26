@@ -88,7 +88,7 @@ describe('SLDSDatepicker', function describeFunction() {
 	describe('Assistive technology', () => {
 		afterEach(() => wrapper.unmount());
 
-		it('has aria-haspopup, correct aria-expanded on input trigger.', function() {
+		it('has aria-haspopup, correct aria-expanded on input trigger.', function () {
 			wrapper = mount(<DemoComponent isOpen />);
 
 			const inputTrigger = wrapper.find(triggerClassSelector);
@@ -109,7 +109,7 @@ describe('SLDSDatepicker', function describeFunction() {
 
 		afterEach(() => wrapper.unmount());
 
-		it('has custom input with custom placeholder', function() {
+		it('has custom input with custom placeholder', function () {
 			wrapper = mount(<DemoComponent {...optionalProps} />);
 
 			expect(wrapper.find('input')).to.have.attr(
@@ -124,7 +124,7 @@ describe('SLDSDatepicker', function describeFunction() {
 	describe('onClose, onRequestClose, onOpen callbacks are set', function describeFunction2() {
 		afterEach(() => wrapper.unmount());
 
-		it('onOpen is executed when trigger is clicked, onClose is executed when date is selected', function(done) {
+		it('onOpen is executed when trigger is clicked, onClose is executed when date is selected', function (done) {
 			wrapper = mount(
 				<DemoComponent
 					menuPosition="relative"
@@ -155,7 +155,7 @@ describe('SLDSDatepicker', function describeFunction() {
 			trigger.simulate('click', {});
 		});
 
-		it('onChange is triggered when date is selected', function(done) {
+		it('onChange is triggered when date is selected', function (done) {
 			wrapper = mount(
 				<DemoComponent
 					menuPosition="relative"
@@ -191,10 +191,10 @@ describe('SLDSDatepicker', function describeFunction() {
 		/* Test event callback functions using Simulate. For more information, view
 		 * https://github.com/airbnb/enzyme/blob/master/docs/api/ReactWrapper/simulate.md
 		 */
-		describe('Esc when menu is open', function() {
+		describe('Esc when menu is open', function () {
 			afterEach(() => wrapper.unmount());
 
-			it('opens on trigger click, closes on ESC', function(done) {
+			it('opens on trigger click, closes on ESC', function (done) {
 				wrapper = mount(
 					<DemoComponent
 						menuPosition="relative"
@@ -224,7 +224,7 @@ describe('SLDSDatepicker', function describeFunction() {
 				trigger.simulate('click', {});
 			});
 
-			it('navigates to next week', function(done) {
+			it('navigates to next week', function (done) {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
@@ -248,7 +248,7 @@ describe('SLDSDatepicker', function describeFunction() {
 				});
 			});
 
-			it('navigates to next day', function(done) {
+			it('navigates to next day', function (done) {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
@@ -272,7 +272,7 @@ describe('SLDSDatepicker', function describeFunction() {
 				});
 			});
 
-			it('navigates to next day with the opposite button for RTL', function(done) {
+			it('navigates to next day with the opposite button for RTL', function (done) {
 				wrapper = mount(
 					<DemoComponent
 						isRtl
@@ -297,7 +297,7 @@ describe('SLDSDatepicker', function describeFunction() {
 				});
 			});
 
-			it('navigates to previous week (that is of a previous month)', function(done) {
+			it('navigates to previous week (that is of a previous month)', function (done) {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
@@ -321,7 +321,7 @@ describe('SLDSDatepicker', function describeFunction() {
 				});
 			});
 
-			it('navigates to previous day', function(done) {
+			it('navigates to previous day', function (done) {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
@@ -345,7 +345,7 @@ describe('SLDSDatepicker', function describeFunction() {
 				});
 			});
 
-			it('navigates to previous day with the opposite button for RTL', function(done) {
+			it('navigates to previous day with the opposite button for RTL', function (done) {
 				wrapper = mount(
 					<DemoComponent
 						isRtl
@@ -370,7 +370,7 @@ describe('SLDSDatepicker', function describeFunction() {
 				});
 			});
 
-			it('calendar blur, focus on previous month button', function(done) {
+			it('calendar blur, focus on previous month button', function (done) {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
@@ -392,7 +392,7 @@ describe('SLDSDatepicker', function describeFunction() {
 				});
 			});
 
-			it('calendar blur, focus on today', function(done) {
+			it('calendar blur, focus on today', function (done) {
 				wrapper = mount(
 					<DemoComponent
 						isOpen
@@ -414,6 +414,23 @@ describe('SLDSDatepicker', function describeFunction() {
 					which: KEYS.TAB,
 				});
 			});
+
+			it('typing in input closes calendar', function () {
+				wrapper = mount(<DemoComponent menuPosition="relative" />);
+
+				// Calendar is closed
+				expect(wrapper.find('.slds-datepicker').length).to.equal(0);
+
+				// Click on input to open the calendar
+				const trigger = wrapper.find(triggerClassSelector);
+				trigger.simulate('click', {});
+				expect(wrapper.find('.slds-datepicker').length).to.equal(1);
+
+				// Changing input value closes the calendar
+				const input = wrapper.find('input#sample-datepicker');
+				input.simulate('change', { target: { value: '1/1/2020' } });
+				expect(wrapper.find('.slds-datepicker').length).to.equal(0);
+			});
 		});
 	});
 
@@ -423,7 +440,7 @@ describe('SLDSDatepicker', function describeFunction() {
 
 		afterEach(() => wrapper.unmount());
 
-		it('onOpen is not called when disabled', function() {
+		it('onOpen is not called when disabled', function () {
 			wrapper = mount(
 				<DemoComponent
 					disabled

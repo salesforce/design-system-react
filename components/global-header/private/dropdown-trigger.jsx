@@ -141,6 +141,7 @@ class GlobalHeaderDropdownTrigger extends React.Component {
 
 		return (
 			/* eslint-disable jsx-a11y/no-static-element-interactions */
+			// eslint-disable-next-line jsx-a11y/role-supports-aria-props
 			<li
 				aria-haspopup="true"
 				className={classnames(

@@ -57,7 +57,7 @@ const Icon = (props) => {
 			: {
 					...defaultProps.assistiveText,
 					...props.assistiveText,
-				}.label;
+			  }.label;
 
 	const kababCaseName = name ? name.replace(/_/g, '-') : '';
 

@@ -117,7 +117,7 @@ exports[`DOM snapshots SLDSButtonStateful Icon Button 1`] = `
   className="slds-p-around_medium"
 >
   <button
-    aria-live="polite"
+    aria-pressed={false}
     className="slds-button slds-not-selected slds-button_icon-border-filled"
     disabled={false}
     onBlur={[Function]}

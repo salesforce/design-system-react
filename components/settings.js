@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 
 /*
  * The following are component utility methods that aid in global settings.
-*/
+ */
 
 let assetsPath = 'assets/';
 let appRoot;

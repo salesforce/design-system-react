@@ -498,6 +498,11 @@ class Datepicker extends React.Component {
 	};
 
 	handleInputChange = (event) => {
+		// Typing in the input closes the calendar when it's used as an uncontrolled component
+		if (typeof this.props.isOpen !== 'boolean' && this.state.isOpen) {
+			this.setState({ isOpen: false });
+		}
+
 		this.setState({
 			formattedValue: event.target.value,
 			inputValue: event.target.value,

@@ -85,7 +85,7 @@ class DataTableHead extends React.Component {
 									paddingBottom: 0,
 									paddingTop: 0,
 									visibility: 'hidden',
-								}
+							  }
 							: null
 					)}
 					{fixedHeader ? (
@@ -179,7 +179,7 @@ class DataTableHead extends React.Component {
 									paddingBottom: 0,
 									paddingTop: 0,
 									visibility: 'hidden',
-								}
+							  }
 							: null,
 						fixedHeader && 'ariaHidden'
 					)}

@@ -170,10 +170,10 @@ class ProgressBar extends React.Component {
 							this.props.orientation === 'vertical'
 								? {
 										height: `${this.props.value}%`,
-									}
+								  }
 								: {
 										width: `${this.props.value}%`,
-									}
+								  }
 						}
 					>
 						<span className="slds-assistive-text">

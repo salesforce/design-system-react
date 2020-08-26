@@ -27,7 +27,7 @@ class DemoIcon extends React.Component {
 }
 
 describe('SLDSIcon: ', function describeFunction() {
-	describe('Standard Icon Props Render', function() {
+	describe('Standard Icon Props Render', function () {
 		let svg;
 
 		beforeEach(
@@ -46,27 +46,27 @@ describe('SLDSIcon: ', function describeFunction() {
 
 		afterEach(unmountComponent);
 
-		it('renders container class', function() {
+		it('renders container class', function () {
 			expect(this.wrapper).to.have.className('slds-icon_container');
 		});
 
-		it('renders assistive text', function() {
+		it('renders assistive text', function () {
 			expect(this.wrapper.find('.slds-assistive-text')).to.have.text(
 				'Log a Call'
 			);
 		});
 
-		it('renders icon name class on svg', function() {
+		it('renders icon name class on svg', function () {
 			// also tests that all '_' are replaced with '-'
 			expect(this.wrapper).to.have.className('slds-icon-standard-log-a-call');
 		});
 
-		it('renders custom background color', function() {
+		it('renders custom background color', function () {
 			svg = this.wrapper.find('svg');
 			expect(svg).to.have.style('backgroundColor', 'rgb(218, 165, 32)');
 		});
 
-		it('renders icon size class', function() {
+		it('renders icon size class', function () {
 			svg = this.wrapper.find('svg');
 			expect(svg.hasClass('slds-icon_large')).to.be.true;
 		});
@@ -90,20 +90,20 @@ describe('SLDSIcon: ', function describeFunction() {
 
 		afterEach(unmountComponent);
 
-		it('renders container class', function() {
+		it('renders container class', function () {
 			expect(this.wrapper).to.have.className('slds-icon_container');
 		});
 
-		it('renders assistive text', function() {
+		it('renders assistive text', function () {
 			expect(this.wrapper.find('.slds-assistive-text')).to.have.text('Heart');
 		});
 
-		it('renders icon name class on svg', function() {
+		it('renders icon name class on svg', function () {
 			// also tests that all '_' are replaced with '-'
 			expect(this.wrapper).to.have.className('slds-icon-custom-custom1');
 		});
 
-		it('renders icon size class', function() {
+		it('renders icon size class', function () {
 			svg = this.wrapper.find('svg');
 			expect(svg.hasClass('slds-icon_small')).to.be.true;
 		});
@@ -129,31 +129,31 @@ describe('SLDSIcon: ', function describeFunction() {
 
 		afterEach(unmountComponent);
 
-		it('renders container class', function() {
+		it('renders container class', function () {
 			expect(this.wrapper).to.have.className('slds-icon_container');
 		});
 
-		it('renders assistive text', function() {
+		it('renders assistive text', function () {
 			expect(this.wrapper.find('.slds-assistive-text')).to.have.text(
 				'Announcements'
 			);
 		});
 
-		it('renders round container', function() {
+		it('renders round container', function () {
 			expect(this.wrapper).to.have.className('slds-icon_container_circle');
 		});
 
-		it('renders icon name class on svg', function() {
+		it('renders icon name class on svg', function () {
 			// also tests that all '_' are replaced with '-'
 			expect(this.wrapper).to.have.className('slds-icon-action-announcement');
 		});
 
-		it('renders icon size class', function() {
+		it('renders icon size class', function () {
 			svg = this.wrapper.find('svg');
 			expect(svg.hasClass('slds-icon_large')).to.be.true;
 		});
 
-		it('renders title', function() {
+		it('renders title', function () {
 			expect(this.wrapper.find('[title="custom title"]')).to.exist;
 		});
 	});
@@ -169,16 +169,16 @@ describe('SLDSIcon: ', function describeFunction() {
 
 		afterEach(unmountComponent);
 
-		it('does NOT render container class', function() {
+		it('does NOT render container class', function () {
 			expect(this.wrapper.hasClass('slds-icon_container')).to.be.false;
 		});
 
-		it('medium size does not render size class', function() {
+		it('medium size does not render size class', function () {
 			// also tests that all '_' are replaced with '-'
 			expect(this.wrapper.hasClass('slds-icon_medium')).to.be.false;
 		});
 
-		it('utility icons do not render name class on svg', function() {
+		it('utility icons do not render name class on svg', function () {
 			// also tests that all '_' are replaced with '-'
 			expect(this.wrapper.hasClass('slds-icon-text-default')).to.be.false;
 		});
@@ -200,11 +200,11 @@ describe('SLDSIcon: ', function describeFunction() {
 
 		afterEach(unmountComponent);
 
-		it('does NOT render slds-icon-standard class', function() {
+		it('does NOT render slds-icon-standard class', function () {
 			expect(this.wrapper.hasClass('slds-icon-standard-')).to.be.false;
 		});
 
-		it('path prop is passed to svg', function() {
+		it('path prop is passed to svg', function () {
 			expect(this.wrapper.find('use')).to.have.attr(
 				'href',
 				'/assets/icons/utility-sprite/svg/symbols.svg#announcement'

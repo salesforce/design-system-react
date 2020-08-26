@@ -68,6 +68,22 @@ const propTypes = {
 	 * Determines whether component renders as a pill container with associated styling and behavior
 	 */
 	isPillContainer: PropTypes.bool,
+	/**
+	 * The value of `aria-orientation` to use on the listbox element
+	 */
+	listboxAriaOrientation: PropTypes.string,
+	/**
+	 * The value of `role` to use on the listbox element
+	 */
+	listboxRole: PropTypes.string,
+	/**
+	 * The value of `aria-orientation` to use on the container element
+	 */
+	containerAriaOrientation: PropTypes.string,
+	/**
+	 * The value of `role` to use on the container element
+	 */
+	containerRole: PropTypes.string,
 	/*
 	 * Pill Label
 	 */
@@ -103,6 +119,8 @@ const propTypes = {
 };
 
 const defaultProps = {
+	listboxAriaOrientation: 'horizontal',
+	listboxRole: 'listbox',
 	renderAtSelectionLength: 1,
 };
 
@@ -165,9 +183,10 @@ const SelectedListBox = (props) =>
 					props.selectedListboxRef(ref);
 				}
 			}}
-			role="listbox"
 			style={props.style}
-			aria-orientation="horizontal"
+			// Remove role and aria-orientation after slds-has-inline-listbox is deprecated in Combobox
+			role={props.containerRole}
+			aria-orientation={props.containerAriaOrientation}
 		>
 			<ul
 				className={classNames('slds-listbox', {
@@ -175,8 +194,9 @@ const SelectedListBox = (props) =>
 					'slds-listbox_horizontal': !props.isInline,
 					'slds-p-top_xxx-small': !props.isInline,
 				})}
-				role="group"
 				aria-label={props.assistiveText.selectedListboxLabel}
+				role={props.listboxRole}
+				aria-orientation={props.listboxAriaOrientation}
 			>
 				{props.selection.map((option, renderIndex) => {
 					const hasTabIndex = renderIndex === props.activeOptionIndex;
