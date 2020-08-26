@@ -86,8 +86,9 @@ class TabsDemoComponent extends React.Component {
 						<p>This is tab B.</p>
 						<p>It is disabled.</p>
 					</Panel>
-					<Panel label="Tab C">
+					<Panel label="Tab C" hasError>
 						<p>This is tab C</p>
+						<p>It has an error icon next to the tab label.</p>
 					</Panel>
 					<Panel label="Always No">
 						<p>
@@ -210,6 +211,18 @@ describe('Tabs', () => {
 			);
 			expect(myTabsListItems).to.have.length(4);
 			expect(myTabsPanels).to.have.length(4);
+		});
+
+		it('Tab 2 should have an error icon', function () {
+			this.wrapper
+				.find(`.${COMPONENT_CSS_CLASSES.link}`)
+				.forEach(function (node, index) {
+					if (index === 2) {
+						expect(node).to.have.descendants('.slds-icon-utility-error');
+					} else {
+						expect(node).to.not.have.descendants('.slds-icon-utility-error');
+					}
+				});
 		});
 	});
 

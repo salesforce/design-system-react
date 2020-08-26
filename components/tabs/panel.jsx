@@ -42,6 +42,22 @@ Panel.propTypes = {
 		PropTypes.node,
 		PropTypes.element,
 	]).isRequired,
+
+	/**
+	 * Show an icon on the `<Tab />` next to the title that can be used to communicate when a tab contains a validation error that needs attention
+	 */
+	hasError: PropTypes.bool, // deepscan-disable-line REACT_USELESS_PROP_TYPES
+
+	/**
+	 * **Assistive text for accessibility**
+	 * This object is merged with the default props object on every render.
+	 * * `withErrorIcon`: This text is for the error icon that will be placed next to the `<Tab />` title
+	 */
+	/* deepscan-disable REACT_USELESS_PROP_TYPES */
+	assistiveText: PropTypes.shape({
+		withErrorIcon: PropTypes.string,
+	}),
+	/* deepscan-enable REACT_USELESS_PROP_TYPES */
 };
 
 export default Panel;
