@@ -188,7 +188,7 @@ const SelectedListBox = (props) =>
 			role={props.containerRole}
 			aria-orientation={props.containerAriaOrientation}
 		>
-			<ul // eslint-disable-line jsx-a11y/role-supports-aria-props
+			<ul
 				className={classNames('slds-listbox', {
 					'slds-listbox_inline': props.isInline,
 					'slds-listbox_horizontal': !props.isInline,
