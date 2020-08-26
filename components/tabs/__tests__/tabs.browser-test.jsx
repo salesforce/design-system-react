@@ -213,10 +213,10 @@ describe('Tabs', () => {
 			expect(myTabsPanels).to.have.length(4);
 		});
 
-		it('Tab 2 should have an error icon', function() {
+		it('Tab 2 should have an error icon', function () {
 			this.wrapper
 				.find(`.${COMPONENT_CSS_CLASSES.link}`)
-				.forEach(function(node, index) {
+				.forEach(function (node, index) {
 					if (index === 2) {
 						expect(node).to.have.descendants('.slds-icon-utility-error');
 					} else {

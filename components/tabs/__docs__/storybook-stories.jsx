@@ -518,7 +518,13 @@ const getTabsError = () => (
 					(You might have to hit shift+tab to put the focus onto the tab bar ;)
 				</p>
 			</Panel>
-			<Panel label="Tab 2" hasError assistiveText={{ withErrorIcon: 'An error on this Panel needs to be addressed' }}>
+			<Panel
+				label="Tab 2"
+				hasError
+				assistiveText={{
+					withErrorIcon: 'An error on this Panel needs to be addressed',
+				}}
+			>
 				<h2 className="slds-text-heading_medium">This is my tab 2 contents!</h2>
 				<p>Tab should have an error icon. Uh oh!</p>
 			</Panel>
