@@ -68,6 +68,22 @@ const propTypes = {
 	 * Determines whether component renders as a pill container with associated styling and behavior
 	 */
 	isPillContainer: PropTypes.bool,
+	/**
+	 * The value of `aria-orientation` to use on the listbox element
+	 */
+	listboxAriaOrientation: PropTypes.string,
+	/**
+	 * The value of `role` to use on the listbox element
+	 */
+	listboxRole: PropTypes.string,
+	/**
+	 * The value of `aria-orientation` to use on the container element
+	 */
+	containerAriaOrientation: PropTypes.string,
+	/**
+	 * The value of `role` to use on the container element
+	 */
+	containerRole: PropTypes.string,
 	/*
 	 * Pill Label
 	 */
@@ -103,6 +119,8 @@ const propTypes = {
 };
 
 const defaultProps = {
+	listboxAriaOrientation: 'horizontal',
+	listboxRole: 'listbox',
 	renderAtSelectionLength: 1,
 };
 
@@ -150,7 +168,7 @@ const getIcon = (option) => {
 
 const SelectedListBox = (props) =>
 	props.selection.length >= props.renderAtSelectionLength ? (
-		<div
+		<div // eslint-disable-line jsx-a11y/role-supports-aria-props
 			className={
 				classNames(
 					{
@@ -167,8 +185,8 @@ const SelectedListBox = (props) =>
 			}}
 			style={props.style}
 			// Remove role and aria-orientation after slds-has-inline-listbox is deprecated in Combobox
-			role={props.isInline ? undefined : 'listbox'}
-			aria-orientation={props.isInline ? undefined : 'horizontal'}
+			role={props.containerRole}
+			aria-orientation={props.containerAriaOrientation}
 		>
 			<ul // eslint-disable-line jsx-a11y/role-supports-aria-props
 				className={classNames('slds-listbox', {
@@ -177,9 +195,8 @@ const SelectedListBox = (props) =>
 					'slds-p-top_xxx-small': !props.isInline,
 				})}
 				aria-label={props.assistiveText.selectedListboxLabel}
-				// Update role and aria-orientation after slds-has-inline-listbox is deprecated in Combobox
-				role={props.isInline ? 'listbox' : 'group'}
-				aria-orientation={props.isInline ? 'horizontal' : undefined}
+				role={props.listboxRole}
+				aria-orientation={props.listboxAriaOrientation}
 			>
 				{props.selection.map((option, renderIndex) => {
 					const hasTabIndex = renderIndex === props.activeOptionIndex;
