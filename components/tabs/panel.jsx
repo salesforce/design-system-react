@@ -53,10 +53,11 @@ Panel.propTypes = {
 	 * This object is merged with the default props object on every render.
 	 * * `withErrorIcon`: This text is for the error icon that will be placed next to the `<Tab />` title
 	 */
+	/* deepscan-disable REACT_USELESS_PROP_TYPES */
 	assistiveText: PropTypes.shape({
-		// deepscan-disable-line REACT_USELESS_PROP_TYPES
 		withErrorIcon: PropTypes.string,
 	}),
+	/* deepscan-enable REACT_USELESS_PROP_TYPES */
 };
 
 export default Panel;
