@@ -135,7 +135,7 @@
 		"@storybook/addon-actions": "^5.3.19",
 		"@storybook/addon-storyshots": "^5.3.19",
 		"@storybook/addon-storyshots-puppeteer": "^5.3.19",
-		"@storybook/addons": "^5.3.19",
+		"@storybook/addons": "^6.0.20",
 		"@storybook/csf": "^0.0.1",
 		"@storybook/react": "^5.3.19",
 		"ajv": "6.12.4",
