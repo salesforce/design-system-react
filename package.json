@@ -182,7 +182,7 @@
 		"jest": "^24.9.0",
 		"jest-axe": "https://github.com/interactivellama/jest-axe.git#v3.1.1-alpha.1",
 		"jest-svg-transformer": "^1.0.0",
-		"js-beautify": "^1.11.0",
+		"js-beautify": "^1.13.0",
 		"karma": "^5.1.1",
 		"karma-chai-sinon": "^0.1.5",
 		"karma-chrome-launcher": "^3.1.0",
