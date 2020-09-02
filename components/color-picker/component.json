@@ -1,0 +1,14 @@
+{
+	"component": "color-picker",
+	"status": "prod",
+	"display-name": "Color Pickers",
+	"classKey": "ColorPicker",
+	"SLDS-component-path": "/components/color-picker",
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		}
+	],
+	"url-slug": "color-picker"
+}
