@@ -31,6 +31,23 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.22
+
+**Minor Features**
+
+- `Tab`: Add error icon support
+
+**Bugfixes**
+
+- `Combobox`: Clear selection when closing popover
+- `Combobox`: Fix keyboard navigation when used as a controlled component
+- Update `Combobox` and `Popover` markup
+
+**Maintenance**
+
+- Use `lint-staged` to run linters on commit
+- Update project to use Node 12
+
 ## Release 0.10.21
 
 **Minor Features**
