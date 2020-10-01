@@ -21,6 +21,7 @@ const TabsList = ({ id, className, children, variant }) => (
 		className={classNames(className, {
 			'slds-tabs_default__nav': variant === 'default',
 			'slds-tabs_scoped__nav': variant === 'scoped',
+			'slds-vertical-tabs__nav': variant === 'vertical',
 		})}
 		role="tablist"
 	>
@@ -51,9 +52,9 @@ TabsList.propTypes = {
 	children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 
 	/**
-	 * If the Tabs should be scopped, defaults to false
+	 * If the Tabs should be scoped, vertical, or default (default value)
 	 */
-	variant: PropTypes.oneOf(['default', 'scoped']),
+	variant: PropTypes.oneOf(['default', 'scoped', 'vertical']),
 };
 
 export default TabsList;

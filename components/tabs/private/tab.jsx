@@ -75,9 +75,9 @@ class Tab extends React.Component {
 		children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
 		/**
-		 * If the Tabs should be scopped, defaults to false
+		 * If the Tabs should be scoped, vertical, or default (default value)
 		 */
-		variant: PropTypes.oneOf(['default', 'scoped']),
+		variant: PropTypes.oneOf(['default', 'scoped', 'vertical']),
 
 		/**
 		 * Show an icon that can be used to communicate when a tab contains a validation error that needs attention
@@ -97,7 +97,7 @@ class Tab extends React.Component {
 	static defaultProps = {
 		focus: false,
 		selected: false,
-		activeTabClassName: 'slds-active',
+		activeTabClassName: 'slds-is-active',
 		disabledTabClassName: 'slds-disabled',
 		variant: 'default',
 		hasError: false,
@@ -150,6 +150,7 @@ class Tab extends React.Component {
 					[disabledTabClassName]: disabled,
 					'slds-tabs_default__item': variant === 'default',
 					'slds-tabs_scoped__item': variant === 'scoped',
+					'slds-vertical-tabs__nav-item': variant === 'vertical',
 				})}
 				role="presentation"
 				ref={(node) => {
@@ -165,6 +166,7 @@ class Tab extends React.Component {
 						[disabledTabClassName]: disabled,
 						'slds-tabs_default__link': variant === 'default',
 						'slds-tabs_scoped__link': variant === 'scoped',
+						'slds-vertical-tabs__link': variant === 'vertical',
 					})}
 					href="javascript:void(0);" // eslint-disable-line no-script-url
 					role="tab"
@@ -175,7 +177,12 @@ class Tab extends React.Component {
 				>
 					{children}
 					{hasError && (
-						<span className="slds-tabs__right-icon">
+						<span
+							className={classNames({
+								'slds-tabs__right-icon': variant !== 'vertical',
+								'slds-vertical-tabs__right-icon': variant === 'vertical',
+							})}
+						>
 							<Icon
 								assistiveText={{
 									label: this.props.assistiveText.withErrorIcon,

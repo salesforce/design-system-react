@@ -34,6 +34,7 @@ const TabPanel = ({
 			'slds-hide': !selected,
 			'slds-tabs_default__content': variant === 'default',
 			'slds-tabs_scoped__content': variant === 'scoped',
+			'slds-vertical-tabs__content': variant === 'vertical',
 		})}
 		id={id}
 		role="tabpanel"
@@ -90,9 +91,9 @@ TabPanel.propTypes = {
 	selected: PropTypes.bool,
 
 	/**
-	 * If the Tabs should be scopped, defaults to false
+	 * If the Tabs should be scoped, vertical, or default (default value)
 	 */
-	variant: PropTypes.oneOf(['default', 'scoped']),
+	variant: PropTypes.oneOf(['default', 'scoped', 'vertical']),
 
 	/**
 	 * The HTML ID of the `<Tab />` that controls this panel.
