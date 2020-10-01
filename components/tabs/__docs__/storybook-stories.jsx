@@ -174,6 +174,38 @@ const getTabsScoped = () => (
 	</div>
 );
 
+/* eslint-disable react/display-name */
+const getTabsVertical = () => (
+	<div>
+		<h2 className="slds-text-heading_large">Scoped Tabs Demo</h2>
+		<Tabs id="scoped-tabs-demo" variant="vertical">
+			<Panel label="Tab 1">
+				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
+				<p>And they&rsquo;re amazing.</p>
+				<p>It&quot;s awesome.</p>
+				<p>
+					You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate
+					around. Try it!
+				</p>
+				<p className="slds-box slds-theme_info slds-m-top_large">
+					(You might have to hit shift+tab to put the focus onto the tab bar ;)
+				</p>
+			</Panel>
+			<Panel label="Tab 2">
+				<h2 className="slds-text-heading_medium">This is my tab 2 contents!</h2>
+				<p>And they&rsquo;re also amazing.</p>
+			</Panel>
+			<Panel label="Tab 3 (disabled)" disabled>
+				Disabled tab content.
+			</Panel>
+			<Panel label="Tab 4">
+				<h2 className="slds-text-heading_medium">This is my tab 3 contents!</h2>
+				<p>And they&rsquo;re quite spectacular.</p>
+			</Panel>
+		</Tabs>
+	</div>
+);
+
 /* eslint-enable react/display-name */
 
 class DemoTabsConditional extends React.Component {
@@ -639,5 +671,6 @@ storiesOf(TABS, module)
 	.add('Conditional', () => <DemoTabsConditional className="conditional-yo" />)
 	.add('Unique Generated IDs', () => getTabsMoreThanOneAllowGeneratedID())
 	.add('Scoped', () => getTabsScoped())
+	.add('Vertical', () => getTabsVertical())
 	.add('Custom Tab Contents', () => getCustomContentTabs())
 	.add('Tab Intercept Panel Select', () => <DemoTabsInterceptSelect />);
