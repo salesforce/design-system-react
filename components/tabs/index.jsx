@@ -39,7 +39,9 @@ function isTabNode(node) {
 	return (
 		(node.nodeName === 'A' && node.getAttribute('role') === 'tab') ||
 		(node.nodeName === 'LI' &&
-			node.classList.contains('slds-tabs_default__item'))
+			(node.classList.contains('slds-tabs_default__item') ||
+				node.classList.contains('slds-tabs_scoped__item') ||
+				node.classList.contains('slds-vertical-tabs__nav-item')))
 	);
 }
 
