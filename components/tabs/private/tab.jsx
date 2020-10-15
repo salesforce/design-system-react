@@ -45,7 +45,7 @@ class Tab extends React.Component {
 		focus: PropTypes.bool,
 
 		/**
-		 * When `true`, the class `.slds-active` is applied.
+		 * When `true`, the class `.slds-is-active` is applied.
 		 */
 		selected: PropTypes.bool,
 
@@ -55,7 +55,7 @@ class Tab extends React.Component {
 		disabled: PropTypes.bool,
 
 		/**
-		 * The CSS class to be applied when this tab is selected. Defaults to `.slds-active`. If another class is desired, it should be passed in _along with_ `.slds-active`, not _instead_ of it.
+		 * The CSS class to be applied when this tab is selected. Defaults to `.slds-is-active`. If another class is desired, it should be passed in _along with_ `.slds-is-active`, not _instead_ of it.
 		 */
 		activeTabClassName: PropTypes.string,
 

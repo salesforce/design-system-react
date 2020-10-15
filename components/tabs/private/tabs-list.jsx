@@ -24,6 +24,7 @@ const TabsList = ({ id, className, children, variant }) => (
 			'slds-vertical-tabs__nav': variant === 'vertical',
 		})}
 		role="tablist"
+		aria-orientation={variant === 'vertical' ? 'vertical' : undefined}
 	>
 		{children}
 	</ul>

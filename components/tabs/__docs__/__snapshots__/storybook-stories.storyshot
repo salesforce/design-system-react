@@ -1577,6 +1577,7 @@ exports[`DOM snapshots SLDSTabs Vertical 1`] = `
       onKeyDown={[Function]}
     >
       <ul
+        aria-orientation="vertical"
         className="slds-vertical-tabs__nav"
         id="scoped-tabs-demo-slds-tabs__nav"
         role="tablist"

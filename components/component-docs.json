@@ -16171,11 +16171,15 @@
                         {
                             "value": "'scoped'",
                             "computed": false
+                        },
+                        {
+                            "value": "'vertical'",
+                            "computed": false
                         }
                     ]
                 },
                 "required": false,
-                "description": "If the Tabs should be scopped, defaults to false",
+                "description": "If the Tabs should be scoped, vertical, or default (default value)",
                 "defaultValue": {
                     "value": "'default'",
                     "computed": false
