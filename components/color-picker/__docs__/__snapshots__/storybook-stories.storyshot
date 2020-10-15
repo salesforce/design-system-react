@@ -178,7 +178,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                 role="tablist"
               >
                 <li
-                  className="slds-active slds-tabs_default__item"
+                  className="slds-is-active slds-tabs_default__item"
                   id="color-picker-tabs-color-picker-slds-tabs_tab-0"
                   role="presentation"
                   tabIndex="0"
@@ -187,7 +187,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                   <a
                     aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-0"
                     aria-selected="true"
-                    className="slds-active slds-tabs_default__link"
+                    className="slds-is-active slds-tabs_default__link"
                     href="javascript:void(0);"
                     role="tab"
                     tabIndex="-1"

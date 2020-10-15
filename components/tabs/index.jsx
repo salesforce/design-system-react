@@ -39,7 +39,9 @@ function isTabNode(node) {
 	return (
 		(node.nodeName === 'A' && node.getAttribute('role') === 'tab') ||
 		(node.nodeName === 'LI' &&
-			node.classList.contains('slds-tabs_default__item'))
+			(node.classList.contains('slds-tabs_default__item') ||
+				node.classList.contains('slds-tabs_scoped__item') ||
+				node.classList.contains('slds-vertical-tabs__nav-item')))
 	);
 }
 
@@ -114,9 +116,9 @@ const propTypes = {
 	onSelect: PropTypes.func,
 
 	/**
-	 * If the Tabs should be scopped, defaults to false
+	 * If the Tabs should be scoped, vertical, or default (default value)
 	 */
-	variant: PropTypes.oneOf(['default', 'scoped']),
+	variant: PropTypes.oneOf(['default', 'scoped', 'vertical']),
 
 	/**
 	 * The Tab (and corresponding TabPanel) that is currently selected.
@@ -219,7 +221,7 @@ class Tabs extends React.Component {
 	}
 
 	getVariant() {
-		return this.props.variant === 'scoped' ? 'scoped' : 'default';
+		return this.props.variant || 'default';
 	}
 
 	setSelected(index, focus) {
@@ -398,6 +400,7 @@ class Tabs extends React.Component {
 					{
 						'slds-tabs_default': variant === 'default',
 						'slds-tabs_scoped': variant === 'scoped',
+						'slds-vertical-tabs': variant === 'vertical',
 					},
 					className
 				)}
