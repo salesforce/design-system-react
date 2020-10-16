@@ -138,7 +138,7 @@
 		"@storybook/addons": "^5.3.19",
 		"@storybook/csf": "^0.0.1",
 		"@storybook/react": "^5.3.19",
-		"ajv": "6.12.4",
+		"ajv": "6.12.6",
 		"async": "^3.2.0",
 		"axe-core": "3.5.5",
 		"axe-puppeteer": "^1.0.0",
