@@ -56,7 +56,7 @@ const defaultProps = {
 		selectAllRows: 'Select all rows',
 		selectRow: 'Select row',
 		selectRowGroup: 'Choose a row to select',
-		loadingMore: 'Loading',
+		loadingMore: 'Loading more',
 	},
 	selection: [],
 	hasMore: false,
@@ -218,7 +218,7 @@ class DataTable extends React.Component {
 		 */
 		unbufferedCell: PropTypes.bool,
 		/**
-		 * Specifies whether there's more data to be loaded and displays a spinner at the bottom of the table if so. The default is false.
+		 * When fixedHeader is true, specifies whether there's more data to be loaded and displays a spinner at the bottom of the table if so.
 		 */
 		hasMore: PropTypes.bool,
 		/**
@@ -559,7 +559,7 @@ class DataTable extends React.Component {
 							  null}
 					</tbody>
 				</table>
-				{this.props.hasMore && (
+				{this.props.fixedHeader && this.props.hasMore && (
 					<div
 						style={{
 							height: '3rem',

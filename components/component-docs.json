@@ -5294,7 +5294,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `actionsHeader`: Text for heading of actions column\n* `columnSort`: Text for sort action on table column header\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\n* `selectAllRows`: Text for select all checkbox within the table header\n* `selectRow`: Text for select row. Default: \"Select row 1\"\n* `selectRowGroup`: This is an input group label and is attached to each checkbox or radio. Default is \"Choose a row to select\"",
                 "defaultValue": {
-                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n    selectRowGroup: 'Choose a row to select',\n    loadingMore: 'Loading',\n}",
+                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n    selectRowGroup: 'Choose a row to select',\n    loadingMore: 'Loading more',\n}",
                     "computed": false
                 }
             },
@@ -5496,7 +5496,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Specifies whether there's more data to be loaded and displays a spinner at the bottom of the table if so. The default is false.",
+                "description": "When fixedHeader is true, specifies whether there's more data to be loaded and displays a spinner at the bottom of the table if so.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
