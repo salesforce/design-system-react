@@ -5233,6 +5233,13 @@
                 "returns": null
             },
             {
+                "name": "onScrollerScroll",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "toggleFixedHeaderListeners",
                 "docblock": null,
                 "modifiers": [],
@@ -5277,13 +5284,17 @@
                         "selectRowGroup": {
                             "name": "string",
                             "required": false
+                        },
+                        "loadingMore": {
+                            "name": "string",
+                            "required": false
                         }
                     }
                 },
                 "required": false,
                 "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `actionsHeader`: Text for heading of actions column\n* `columnSort`: Text for sort action on table column header\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\n* `selectAllRows`: Text for select all checkbox within the table header\n* `selectRow`: Text for select row. Default: \"Select row 1\"\n* `selectRowGroup`: This is an input group label and is attached to each checkbox or radio. Default is \"Choose a row to select\"",
                 "defaultValue": {
-                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n    selectRowGroup: 'Choose a row to select',\n}",
+                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n    selectRowGroup: 'Choose a row to select',\n    loadingMore: 'Loading',\n}",
                     "computed": false
                 }
             },
@@ -5479,6 +5490,35 @@
                 },
                 "required": false,
                 "description": "A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`."
+            },
+            "hasMore": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Specifies whether there's more data to be loaded and displays a spinner at the bottom of the table if so. The default is false.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "loadMoreOffset": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Determines when to trigger infinite loading based on how many pixels the table's scroll position is from the bottom of the table.",
+                "defaultValue": {
+                    "value": "20",
+                    "computed": false
+                }
+            },
+            "onLoadMore": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "The action triggered when infinite loading loads more data."
             }
         },
         "route": "data-tables",

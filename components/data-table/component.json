@@ -67,6 +67,10 @@
 		{
 			"heading": "Custom Classes",
 			"path": "/__examples__/custom-classes.jsx"
+		},
+		{
+			"heading": "Infinite Scrolling",
+			"path": "/__examples__/infinite-scrolling.jsx"
 		}
 	],
 	"url-slug": "data-tables"
