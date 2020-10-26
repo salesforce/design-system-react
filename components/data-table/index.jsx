@@ -386,6 +386,7 @@ class DataTable extends React.Component {
 			const action = [`${attach ? 'add' : 'remove'}EventListener`];
 			if (canUseEventListeners) {
 				window[action]('resize', this.resizeFixedHeaders);
+				window[action]('resize', this.onScrollerScroll);
 			}
 			if (canUseEventListeners && this.scrollerRef) {
 				this.scrollerRef[action]('scroll', this.resizeFixedHeaders);

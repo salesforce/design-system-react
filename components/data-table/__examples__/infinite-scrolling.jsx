@@ -146,6 +146,7 @@ CustomDataTableCell.displayName = DataTableCell.displayName;
 
 class Example extends React.Component {
 	page = 0;
+	isLoading = false;
 
 	static displayName = 'DataTableExample';
 
@@ -205,17 +206,22 @@ class Example extends React.Component {
 	};
 
 	handleLoadMore = () => {
-		setTimeout(() => {
-			const moreItems = ITEMS.map((item) => {
-				const copy = { ...item };
-				copy.id += this.page.toString();
-				return copy;
-			});
-			this.page = this.page + 1;
-			const items = this.state.items.slice().concat(moreItems);
+		if (!this.isLoading) {
+			setTimeout(() => {
+				const moreItems = ITEMS.map((item) => {
+					const copy = { ...item };
+					copy.id += this.page.toString();
+					return copy;
+				});
+				this.page = this.page + 1;
+				const items = this.state.items.slice().concat(moreItems);
 
-			this.setState({ items, hasMore: this.page !== 5 });
-		}, 1000);
+				this.setState({ items, hasMore: this.page !== 5 }, () => {
+					this.isLoading = false;
+				});
+			}, 1000);
+		}
+		this.isLoading = true;
 	};
 
 	render() {

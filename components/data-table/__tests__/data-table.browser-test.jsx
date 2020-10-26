@@ -681,5 +681,30 @@ describe('DataTable: ', function describeFunction() {
 			);
 			scroller.dispatchEvent(new Event('scroll'));
 		});
+
+		it('onLoadMore callback is called when window is resized', function (done) {
+			let expectedCalbacks = 1;
+
+			this.onLoadMore = () => {
+				// eslint-disable-next-line no-plusplus
+				if (!--expectedCalbacks) done();
+			};
+
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					fixedHeader
+					fixedLayout
+					hasMore
+					onLoadMore={this.onLoadMore}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			window.dispatchEvent(new Event('resize'));
+		});
 	});
 });
