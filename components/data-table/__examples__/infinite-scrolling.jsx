@@ -146,6 +146,7 @@ CustomDataTableCell.displayName = DataTableCell.displayName;
 
 class Example extends React.Component {
 	page = 0;
+
 	isLoading = false;
 
 	static displayName = 'DataTableExample';
