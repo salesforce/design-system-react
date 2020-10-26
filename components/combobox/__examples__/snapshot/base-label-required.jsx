@@ -2,10 +2,8 @@
 import React from 'react';
 import RequiredInputErrorStateComponent from '../required-input-error-state';
 
-class Example extends React.Component {
-	render() {
-		return <RequiredInputErrorStateComponent />;
-	}
+function Example() {
+	return <RequiredInputErrorStateComponent />;
 }
 
 Example.displayName = 'ComboboxExample';

@@ -8,30 +8,28 @@ const propTypes = {
 	tooltipOpen: PropTypes.bool,
 };
 
-class Example extends React.Component {
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<div>
-					<h1 className="slds-text-title_caps slds-p-vertical_medium">
-						Field Level Help
-					</h1>
-					<Input
-						id="field-level-help"
-						label="My Label"
-						fieldLevelHelpTooltip={
-							<Tooltip
-								id="field-level-help-tooltip"
-								align="top left"
-								content="Some helpful information"
-								isOpen={this.props.tooltipOpen}
-							/>
-						}
-					/>
-				</div>
-			</IconSettings>
-		);
-	}
+function Example(props) {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<div>
+				<h1 className="slds-text-title_caps slds-p-vertical_medium">
+					Field Level Help
+				</h1>
+				<Input
+					id="field-level-help"
+					label="My Label"
+					fieldLevelHelpTooltip={
+						<Tooltip
+							id="field-level-help-tooltip"
+							align="top left"
+							content="Some helpful information"
+							isOpen={props.tooltipOpen}
+						/>
+					}
+				/>
+			</div>
+		</IconSettings>
+	);
 }
 
 Example.displayName = 'FieldLevelHelpInputExample';

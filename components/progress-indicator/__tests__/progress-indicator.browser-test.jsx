@@ -35,24 +35,22 @@ const defaultProps = {
 
 const mockCallback = sinon.spy();
 
-class DemoComponent extends React.Component {
-	static displayName = 'ProgressIndicatorDemoComponent';
-
-	static propTypes = {
-		onStepClick: mockCallback,
-		onStepFocus: mockCallback,
-	};
-
-	static defaultProps = defaultProps;
-
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<SLDSProgressIndicator {...this.props} />
-			</IconSettings>
-		);
-	}
+function DemoComponent(props) {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<SLDSProgressIndicator {...props} />
+		</IconSettings>
+	);
 }
+
+DemoComponent.displayName = 'ProgressIndicatorDemoComponent';
+
+DemoComponent.propTypes = {
+	onStepClick: mockCallback,
+	onStepFocus: mockCallback,
+};
+
+DemoComponent.defaultProps = defaultProps;
 
 const steps = [
 	{ id: 0, label: 'tooltip label #1' },

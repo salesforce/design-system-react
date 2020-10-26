@@ -4,19 +4,17 @@ import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import ColorPicker from '~/components/color-picker';
 
-class Example extends React.Component {
-	static displayName = 'ColorPickerExample';
-
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<ColorPicker
-					labels={{ label: 'Choose Color' }}
-					id="default-color-picker"
-				/>
-			</IconSettings>
-		);
-	}
+function Example() {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<ColorPicker
+				labels={{ label: 'Choose Color' }}
+				id="default-color-picker"
+			/>
+		</IconSettings>
+	);
 }
+
+Example.displayName = 'ColorPickerExample';
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

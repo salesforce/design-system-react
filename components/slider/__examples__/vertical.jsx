@@ -2,12 +2,10 @@ import React from 'react';
 
 import Slider from '~/components/slider';
 
-class Example extends React.Component {
-	static displayName = 'SliderExample';
-
-	render() {
-		return <Slider id="vertical-id" label="Slider Label" vertical />;
-	}
+function Example() {
+	return <Slider id="vertical-id" label="Slider Label" vertical />;
 }
+
+Example.displayName = 'SliderExample';
 
 export default Example;

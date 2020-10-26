@@ -4,24 +4,22 @@ import ToastContainer from '~/components/toast/container'; // `~` is replaced wi
 
 import IconSettings from '~/components/icon-settings';
 
-class Example extends React.Component {
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<ToastContainer>
-					<Toast
-						labels={{
-							heading: '26 potential duplicate leads were found.',
-							headingLink: 'Select Leads to Merge',
-						}}
-						onClickHeadingLink={() => {
-							console.log('Link clicked.');
-						}}
-					/>
-				</ToastContainer>
-			</IconSettings>
-		);
-	}
+function Example() {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<ToastContainer>
+				<Toast
+					labels={{
+						heading: '26 potential duplicate leads were found.',
+						headingLink: 'Select Leads to Merge',
+					}}
+					onClickHeadingLink={() => {
+						console.log('Link clicked.');
+					}}
+				/>
+			</ToastContainer>
+		</IconSettings>
+	);
 }
 
 Example.displayName = 'ToastExample';

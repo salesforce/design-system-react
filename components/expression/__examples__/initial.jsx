@@ -1,22 +1,20 @@
 import React from 'react';
 import Example from './example';
 
-class Initial extends React.Component {
-	static displayName = 'ExpressionInitialStateExample';
-
-	render() {
-		return (
-			<Example
-				action={this.props.action}
-				conditions={[
-					{
-						resource: '',
-					},
-				]}
-				triggerType="all"
-			/>
-		);
-	}
+function Initial(props) {
+	return (
+		<Example
+			action={props.action}
+			conditions={[
+				{
+					resource: '',
+				},
+			]}
+			triggerType="all"
+		/>
+	);
 }
+
+Initial.displayName = 'ExpressionInitialStateExample';
 
 export default Initial;

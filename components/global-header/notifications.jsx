@@ -34,61 +34,56 @@ const propTypes = {
 	popover: PropTypes.node,
 };
 
-/**
- * A GlobalHeaderNotifications component. Notifications are a way to notify a user about a global change within the application.
- */
-class GlobalHeaderNotifications extends React.Component {
-	render() {
-		const buttonAriaProps = {
-			'aria-live': 'assertive',
-		};
-		const { notificationCount } = this.props;
-		const popoverProps = assign(
-			{
-				align: 'bottom right',
-				body: <span />,
-				triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click',
-			},
-			this.props.popover ? this.props.popover.props : {}
-		);
-		let notificationsAssistiveText = this.props.assistiveText.noNotifications;
+function GlobalHeaderNotifications(props) {
+	const buttonAriaProps = {
+		'aria-live': 'assertive',
+	};
+	const { notificationCount } = props;
+	const popoverProps = assign(
+		{
+			align: 'bottom right',
+			body: <span />,
+			triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click',
+		},
+		props.popover ? props.popover.props : {}
+	);
+	let notificationsAssistiveText = props.assistiveText.noNotifications;
 
-		// eslint-disable-next-line fp/no-delete
-		delete popoverProps.children;
+	// eslint-disable-next-line fp/no-delete
+	delete popoverProps.children;
 
-		if (notificationCount > 0) {
-			notificationsAssistiveText = `${this.props.assistiveText.newNotificationsBefore}${notificationCount}${this.props.assistiveText.newNotificationsAfter}`;
-		} else {
-			buttonAriaProps['aria-atomic'] = true;
-		}
-
-		return (
-			<Popover {...popoverProps}>
-				<Button
-					assistiveText={{ icon: notificationsAssistiveText }}
-					className="slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
-					iconCategory="utility"
-					iconClassName="slds-global-header__icon"
-					iconName="notification"
-					iconSize="small"
-					iconVariant="container"
-					title={notificationsAssistiveText}
-					variant="icon"
-					{...buttonAriaProps}
-				/>
-				{notificationCount > 0 ? (
-					<span
-						aria-hidden="true"
-						className="slds-notification-badge slds-incoming-notification slds-show-notification"
-					>
-						{notificationCount}
-					</span>
-				) : (
-					<span aria-hidden="true" className="slds-notification-badge" />
-				)}
-			</Popover>
-		);
+	if (notificationCount > 0) {
+		notificationsAssistiveText = `${props.assistiveText.newNotificationsBefore}${notificationCount}${props.assistiveText.newNotificationsAfter}`;
+	} else {
+		buttonAriaProps['aria-atomic'] = true;
 	}
+
+	return (
+		<Popover {...popoverProps}>
+			<Button
+				assistiveText={{ icon: notificationsAssistiveText }}
+				className="slds-button_icon slds-global-actions__notifications slds-global-actions__item-action"
+				iconCategory="utility"
+				iconClassName="slds-global-header__icon"
+				iconName="notification"
+				iconSize="small"
+				iconVariant="container"
+				title={notificationsAssistiveText}
+				variant="icon"
+				{...buttonAriaProps}
+			/>
+			{notificationCount > 0 ? (
+				<span
+					aria-hidden="true"
+					className="slds-notification-badge slds-incoming-notification slds-show-notification"
+				>
+					{notificationCount}
+				</span>
+			) : (
+				<span aria-hidden="true" className="slds-notification-badge" />
+			)}
+		</Popover>
+	);
 }
 
 GlobalHeaderNotifications.displayName = GLOBAL_HEADER_NOTIFICATIONS;

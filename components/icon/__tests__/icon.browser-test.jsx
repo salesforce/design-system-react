@@ -18,13 +18,11 @@ chai.use(chaiEnzyme());
 import Icon from '../../icon';
 import IconSettings from '../../icon-settings';
 
-class DemoIcon extends React.Component {
-	static displayName = 'DemoIcon';
-
-	render() {
-		return <Icon {...this.props} />;
-	}
+function DemoIcon(props) {
+	return <Icon {...props} />;
 }
+
+DemoIcon.displayName = 'DemoIcon';
 
 describe('SLDSIcon: ', function describeFunction() {
 	describe('Standard Icon Props Render', function () {

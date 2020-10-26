@@ -7,20 +7,18 @@ import IconSettings from '~/components/icon-settings';
 
 import { sampleReportCategories } from '~/utilities/sample-data/vertical-navigation';
 
-class Example extends React.Component {
-	static displayName = 'NavigationExample';
-
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<VerticalNavigation
-					id="sample-navigation"
-					categories={sampleReportCategories}
-					{...this.props}
-				/>
-			</IconSettings>
-		);
-	}
+function Example(props) {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<VerticalNavigation
+				id="sample-navigation"
+				categories={sampleReportCategories}
+				{...props}
+			/>
+		</IconSettings>
+	);
 }
+
+Example.displayName = 'NavigationExample';
 
 export default Example;

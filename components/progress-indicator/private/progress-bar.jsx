@@ -17,37 +17,32 @@ const propTypes = {
 	 */
 	value: PropTypes.string.isRequired,
 };
-/**
- * ProgressBar renders the blue/gray progress bar and dynamically updates its completion percentage
- */
-class ProgressBar extends React.Component {
-	render() {
-		return (
-			<div
-				className={classNames('slds-progress-bar slds-progress-bar_x-small', {
-					'slds-progress-bar_vertical': this.props.orientation === 'vertical',
-				})}
-				aria-valuemin="0"
-				aria-valuemax="100"
-				aria-valuenow={this.props.value}
-				role="progressbar"
+
+function ProgressBar(props) {
+	return (
+		<div
+			className={classNames('slds-progress-bar slds-progress-bar_x-small', {
+				'slds-progress-bar_vertical': props.orientation === 'vertical',
+			})}
+			aria-valuemin="0"
+			aria-valuemax="100"
+			aria-valuenow={props.value}
+			role="progressbar"
+		>
+			<span
+				className="slds-progress-bar__value"
+				style={
+					props.orientation === 'vertical'
+						? { height: `${props.value}%` }
+						: { width: `${props.value}%` }
+				}
 			>
-				<span
-					className="slds-progress-bar__value"
-					style={
-						this.props.orientation === 'vertical'
-							? { height: `${this.props.value}%` }
-							: { width: `${this.props.value}%` }
-					}
-				>
-					<span className="slds-assistive-text">
-						{this.props.assistiveText.percentage ||
-							`Progress: ${this.props.value}%`}
-					</span>
+				<span className="slds-assistive-text">
+					{props.assistiveText.percentage || `Progress: ${props.value}%`}
 				</span>
-			</div>
-		);
-	}
+			</span>
+		</div>
+	);
 }
 
 ProgressBar.displayName = 'ProgressBar';

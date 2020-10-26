@@ -72,37 +72,35 @@ const items = [
 	},
 ];
 
-class Example extends React.Component {
-	static displayName = 'ThreeItemsExample';
-
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<div
-					style={{
-						maxWidth: '1280px',
-						padding: '20px',
+function Example(props) {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<div
+				style={{
+					maxWidth: '1280px',
+					padding: '20px',
+				}}
+			>
+				<Carousel
+					hasPreviousNextPanelNavigation
+					id="carousel-three-items-example"
+					items={items}
+					itemsPerPanel={3}
+					onItemClick={(event, data) => {
+						event.preventDefault();
+						log({
+							action: props.action,
+							event,
+							eventName: 'Item Clicked',
+							data,
+						});
 					}}
-				>
-					<Carousel
-						hasPreviousNextPanelNavigation
-						id="carousel-three-items-example"
-						items={items}
-						itemsPerPanel={3}
-						onItemClick={(event, data) => {
-							event.preventDefault();
-							log({
-								action: this.props.action,
-								event,
-								eventName: 'Item Clicked',
-								data,
-							});
-						}}
-					/>
-				</div>
-			</IconSettings>
-		);
-	}
+				/>
+			</div>
+		</IconSettings>
+	);
 }
+
+Example.displayName = 'ThreeItemsExample';
 
 export default Example;

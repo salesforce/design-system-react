@@ -18,29 +18,25 @@ import classNames from 'classnames';
 // ## Constants
 import { PANEL } from '../../utilities/constants';
 
-/**
- * A panel provides detailed contextual information or contextual filtering options. [Filter](/components/filters/) component should be used as children. Menus within a Filter Popover will need to not have "portal mounts" and be inline. */
-class Panel extends React.Component {
-	render() {
-		return (
-			<div
-				className={classNames(
-					'slds-panel',
-					'slds-grid',
-					'slds-grid_vertical',
-					'slds-nowrap',
-					{
-						'slds-panel_filters': this.props.variant === 'filters',
-					},
-					this.props.className
-				)}
-			>
-				<div className="slds-form_stacked slds-grow slds-scrollable_y slds-grid slds-grid_vertical">
-					{this.props.children}
-				</div>
+function Panel(props) {
+	return (
+		<div
+			className={classNames(
+				'slds-panel',
+				'slds-grid',
+				'slds-grid_vertical',
+				'slds-nowrap',
+				{
+					'slds-panel_filters': props.variant === 'filters',
+				},
+				props.className
+			)}
+		>
+			<div className="slds-form_stacked slds-grow slds-scrollable_y slds-grid slds-grid_vertical">
+				{props.children}
 			</div>
-		);
-	}
+		</div>
+	);
 }
 
 Panel.displayName = PANEL;

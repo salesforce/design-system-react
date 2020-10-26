@@ -4,24 +4,22 @@ import ToastContainer from '~/components/toast/container'; // `~` is replaced wi
 
 import IconSettings from '~/components/icon-settings';
 
-class Example extends React.Component {
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<ToastContainer>
-					<Toast
-						labels={{
-							heading:
-								"You've encountered some errors when trying to save edits to Samuel Smith.",
-							details:
-								"Here's some detail of what happened, being very descriptive and transparent.",
-						}}
-						variant="error"
-					/>
-				</ToastContainer>
-			</IconSettings>
-		);
-	}
+function Example() {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<ToastContainer>
+				<Toast
+					labels={{
+						heading:
+							"You've encountered some errors when trying to save edits to Samuel Smith.",
+						details:
+							"Here's some detail of what happened, being very descriptive and transparent.",
+					}}
+					variant="error"
+				/>
+			</ToastContainer>
+		</IconSettings>
+	);
 }
 
 Example.displayName = 'ToastExample';

@@ -2,15 +2,13 @@ import React from 'react';
 
 import Illustration from '~/components/illustration'; // `~` is replaced with design-system-react at runtime
 
-class Example extends React.Component {
-	render() {
-		return (
-			<Illustration
-				messageBody="Lorem ipsum dolor sit amet, consectetur"
-				silenceDeprecationWarning
-			/>
-		);
-	}
+function Example() {
+	return (
+		<Illustration
+			messageBody="Lorem ipsum dolor sit amet, consectetur"
+			silenceDeprecationWarning
+		/>
+	);
 }
 
 Example.displayName = 'IllustrationExample';

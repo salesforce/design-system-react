@@ -67,24 +67,22 @@ const panelContent = (
 	</div>
 );
 
-class Example extends React.Component {
-	static displayName = 'PopoverExample';
-
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<div>
-					<Popover
-						ariaLabelledby="ALTERNATIVE-HEADING"
-						body={panelContent}
-						id="popover-alternative-header"
-					>
-						<Button label="Trigger Popover" />
-					</Popover>
-				</div>
-			</IconSettings>
-		);
-	}
+function Example() {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<div>
+				<Popover
+					ariaLabelledby="ALTERNATIVE-HEADING"
+					body={panelContent}
+					id="popover-alternative-header"
+				>
+					<Button label="Trigger Popover" />
+				</Popover>
+			</div>
+		</IconSettings>
+	);
 }
+
+Example.displayName = 'PopoverExample';
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

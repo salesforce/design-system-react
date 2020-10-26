@@ -2,12 +2,10 @@
 import React from 'react';
 import ReadonlySingleSelectionCustomMenuItem from '../readonly-single-selection-custom-menu-item';
 
-class Example extends React.Component {
-	render() {
-		return (
-			<ReadonlySingleSelectionCustomMenuItem menuPosition="relative" isOpen />
-		);
-	}
+function Example() {
+	return (
+		<ReadonlySingleSelectionCustomMenuItem menuPosition="relative" isOpen />
+	);
 }
 
 Example.displayName = 'ComboboxExample';

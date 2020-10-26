@@ -65,37 +65,35 @@ const items = [
 	},
 ];
 
-class Example extends React.Component {
-	static displayName = 'DefaultWithAutoplayExample';
-
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<div
-					style={{
-						margin: '0 auto',
-						maxWidth: '774px',
+function Example(props) {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<div
+				style={{
+					margin: '0 auto',
+					maxWidth: '774px',
+				}}
+			>
+				<Carousel
+					hasAutoplay
+					id="carousel-default-with-auto-play-example"
+					isInfinite
+					items={items}
+					onItemClick={(event, data) => {
+						event.preventDefault();
+						log({
+							action: props.action,
+							event,
+							eventName: 'Item Clicked',
+							data,
+						});
 					}}
-				>
-					<Carousel
-						hasAutoplay
-						id="carousel-default-with-auto-play-example"
-						isInfinite
-						items={items}
-						onItemClick={(event, data) => {
-							event.preventDefault();
-							log({
-								action: this.props.action,
-								event,
-								eventName: 'Item Clicked',
-								data,
-							});
-						}}
-					/>
-				</div>
-			</IconSettings>
-		);
-	}
+				/>
+			</div>
+		</IconSettings>
+	);
 }
+
+Example.displayName = 'DefaultWithAutoplayExample';
 
 export default Example;

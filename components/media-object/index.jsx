@@ -21,61 +21,53 @@ export const cssClasses = {
 	body: 'slds-media__body',
 };
 
-/**
- * When you need text and a figure next to each other, use a media object.
- */
-class MediaObject extends React.Component {
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
-	static displayName = MEDIA_OBJECT;
-
-	// ### Prop Types
-	static propTypes = {
-		/**
-		 * Often the body may need to be truncated for correct layout. This is only applicable if using the component within a flexbox container.
-		 */
-		canTruncate: PropTypes.bool,
-		/**
-		 * Class names to be added to the component's HTML tag with `slds-media` class.
-		 */
-		className: PropTypes.oneOfType([
-			PropTypes.array,
-			PropTypes.object,
-			PropTypes.string,
-		]),
-		/**
-		 * The body is often text such as a heading or paragraph.
-		 */
-		body: PropTypes.node,
-		/**
-		 * The figure is the optional visualization of the text within the body.
-		 */
-		figure: PropTypes.node,
-		/**
-		 * Vertically centers the body with the middle of the figure.
-		 */
-		verticalCenter: PropTypes.bool,
-	};
-
-	render() {
-		return (
-			<div
-				className={classnames(
-					cssClasses.base,
-					{
-						'slds-media_center': this.props.verticalCenter,
-						'slds-has-flexi-truncate': this.props.canTruncate,
-					},
-					this.props.className
-				)}
-			>
-				{this.props.figure ? (
-					<div className={cssClasses.figure}>{this.props.figure} </div>
-				) : null}
-				<div className={cssClasses.body}>{this.props.body}</div>
-			</div>
-		);
-	}
+function MediaObject(props) {
+	return (
+		<div
+			className={classnames(
+				cssClasses.base,
+				{
+					'slds-media_center': props.verticalCenter,
+					'slds-has-flexi-truncate': props.canTruncate,
+				},
+				props.className
+			)}
+		>
+			{props.figure ? (
+				<div className={cssClasses.figure}>{props.figure} </div>
+			) : null}
+			<div className={cssClasses.body}>{props.body}</div>
+		</div>
+	);
 }
+
+MediaObject.displayName = MEDIA_OBJECT;
+
+MediaObject.propTypes = {
+	/**
+	 * Often the body may need to be truncated for correct layout. This is only applicable if using the component within a flexbox container.
+	 */
+	canTruncate: PropTypes.bool,
+	/**
+	 * Class names to be added to the component's HTML tag with `slds-media` class.
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * The body is often text such as a heading or paragraph.
+	 */
+	body: PropTypes.node,
+	/**
+	 * The figure is the optional visualization of the text within the body.
+	 */
+	figure: PropTypes.node,
+	/**
+	 * Vertically centers the body with the middle of the figure.
+	 */
+	verticalCenter: PropTypes.bool,
+};
 
 export default MediaObject;

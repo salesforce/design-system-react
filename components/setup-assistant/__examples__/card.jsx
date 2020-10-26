@@ -100,130 +100,128 @@ const subStepsIncomplete = (step) => [
 	},
 ];
 
-class Example extends React.Component {
-	static displayName = 'SetupAssistantInACardExample';
-
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<SetupAssistant
-					id="card-setup-assistant"
-					isCard
-					progressBar={
-						<ProgressBar
-							color="success"
-							id="card-setup-assistant-progress-bar"
-							labels={{
-								label:
-									'Complete all the steps below to finish setting up Einstein Visibility',
-							}}
-							radius="circular"
-							value={50}
-							variant="light"
+function Example() {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<SetupAssistant
+				id="card-setup-assistant"
+				isCard
+				progressBar={
+					<ProgressBar
+						color="success"
+						id="card-setup-assistant-progress-bar"
+						labels={{
+							label:
+								'Complete all the steps below to finish setting up Einstein Visibility',
+						}}
+						radius="circular"
+						value={50}
+						variant="light"
+					/>
+				}
+			>
+				<SetupAssistantStep
+					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+					estimatedTime="4 mins"
+					heading="Add Users to Your Org"
+					id="card-step-1"
+					isExpandable
+					onRenderContent={() => (
+						<ProgressIndicator
+							completedSteps={subStepsComplete('complete')}
+							id="card-step-1-progress-indicator"
+							orientation="vertical"
+							steps={subStepsComplete('complete')}
+							variant="setup-assistant"
 						/>
-					}
-				>
-					<SetupAssistantStep
-						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-						estimatedTime="4 mins"
-						heading="Add Users to Your Org"
-						id="card-step-1"
-						isExpandable
-						onRenderContent={() => (
+					)}
+					progress={100}
+				/>
+				<SetupAssistantStep
+					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+					estimatedTime="10 mins"
+					heading="Create Profiles for Your Users"
+					id="card-step-2"
+					isExpandable
+					onRenderContent={() => (
+						<React.Fragment>
 							<ProgressIndicator
-								completedSteps={subStepsComplete('complete')}
-								id="card-step-1-progress-indicator"
+								completedSteps={[subSteps('2')[0]]}
+								id="card-step-2-progress-indicator"
 								orientation="vertical"
-								steps={subStepsComplete('complete')}
+								steps={subSteps('2')}
+								selectedStep={subSteps('2')[1]}
 								variant="setup-assistant"
 							/>
-						)}
-						progress={100}
-					/>
-					<SetupAssistantStep
-						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-						estimatedTime="10 mins"
-						heading="Create Profiles for Your Users"
-						id="card-step-2"
-						isExpandable
-						onRenderContent={() => (
-							<React.Fragment>
-								<ProgressIndicator
-									completedSteps={[subSteps('2')[0]]}
-									id="card-step-2-progress-indicator"
-									orientation="vertical"
-									steps={subSteps('2')}
-									selectedStep={subSteps('2')[1]}
-									variant="setup-assistant"
-								/>
-								<ScopedNotification
-									id="card-step-2-scoped-notification"
-									theme="light"
-								>
-									<p>
-										It looks as if duplicates exist for this lead.{' '}
-										<a href="javascript:void(0);">View Duplicates.</a>
-									</p>
-								</ScopedNotification>
-							</React.Fragment>
-						)}
-						progress={33}
-					/>
-					<SetupAssistantStep
-						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-						estimatedTime="15 mins"
-						heading="Learn How to Use Profiles to control Visibility"
-						id="card-step-3"
-						isExpandable
-						onRenderContent={() => (
-							<ProgressIndicator
-								completedSteps={subStepsComplete('complete2')}
-								id="card-step-3-progress-indicator"
-								orientation="vertical"
-								steps={subStepsComplete('complete2')}
-								variant="setup-assistant"
-							/>
-						)}
-						progress={100}
-					/>
-					<SetupAssistantStep
-						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-						estimatedTime="10 mins"
-						heading="Turn on tracking for profiles"
-						id="card-step-4"
-						isExpandable
-						onRenderContent={() => (
-							<ProgressIndicator
-								id="card-step-4-progress-indicator"
-								orientation="vertical"
-								steps={subStepsIncomplete('incomplete1')}
-								selectedStep={subStepsIncomplete('incomplete1')[0]}
-								variant="setup-assistant"
-							/>
-						)}
-						progress={0}
-					/>
-					<SetupAssistantStep
-						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-						estimatedTime="10 mins"
-						heading="Setup Einstein Visibility for Admins"
-						id="card-step-5"
-						isExpandable
-						onRenderContent={() => (
-							<ProgressIndicator
-								id="card-step-5-progress-indicator"
-								orientation="vertical"
-								steps={subStepsIncomplete('incomplete2')}
-								selectedStep={subStepsIncomplete('incomplete2')[0]}
-								variant="setup-assistant"
-							/>
-						)}
-						progress={0}
-					/>
-				</SetupAssistant>
-			</IconSettings>
-		);
-	}
+							<ScopedNotification
+								id="card-step-2-scoped-notification"
+								theme="light"
+							>
+								<p>
+									It looks as if duplicates exist for this lead.{' '}
+									<a href="javascript:void(0);">View Duplicates.</a>
+								</p>
+							</ScopedNotification>
+						</React.Fragment>
+					)}
+					progress={33}
+				/>
+				<SetupAssistantStep
+					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+					estimatedTime="15 mins"
+					heading="Learn How to Use Profiles to control Visibility"
+					id="card-step-3"
+					isExpandable
+					onRenderContent={() => (
+						<ProgressIndicator
+							completedSteps={subStepsComplete('complete2')}
+							id="card-step-3-progress-indicator"
+							orientation="vertical"
+							steps={subStepsComplete('complete2')}
+							variant="setup-assistant"
+						/>
+					)}
+					progress={100}
+				/>
+				<SetupAssistantStep
+					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+					estimatedTime="10 mins"
+					heading="Turn on tracking for profiles"
+					id="card-step-4"
+					isExpandable
+					onRenderContent={() => (
+						<ProgressIndicator
+							id="card-step-4-progress-indicator"
+							orientation="vertical"
+							steps={subStepsIncomplete('incomplete1')}
+							selectedStep={subStepsIncomplete('incomplete1')[0]}
+							variant="setup-assistant"
+						/>
+					)}
+					progress={0}
+				/>
+				<SetupAssistantStep
+					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+					estimatedTime="10 mins"
+					heading="Setup Einstein Visibility for Admins"
+					id="card-step-5"
+					isExpandable
+					onRenderContent={() => (
+						<ProgressIndicator
+							id="card-step-5-progress-indicator"
+							orientation="vertical"
+							steps={subStepsIncomplete('incomplete2')}
+							selectedStep={subStepsIncomplete('incomplete2')[0]}
+							variant="setup-assistant"
+						/>
+					)}
+					progress={0}
+				/>
+			</SetupAssistant>
+		</IconSettings>
+	);
 }
+
+Example.displayName = 'SetupAssistantInACardExample';
 
 export default Example;

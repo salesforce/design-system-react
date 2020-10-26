@@ -40,41 +40,37 @@ const propTypes = {
 	description: PropTypes.string,
 };
 
-/**
- * Visual Picker Link Component
- */
-class VisualPickerLink extends React.Component {
-	render() {
-		return (
-			<a
-				href={this.props.href}
-				id={this.props.id}
-				className={classNames(
-					'slds-box',
-					'slds-box_link',
-					'slds-theme_default',
-					'slds-box_x-small',
-					'slds-media',
-					'slds-visual-picker_vertical',
-					this.props.className
-				)}
-			>
-				<div className="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small">
-					{this.props.icon}
-				</div>
-				<div className="slds-media__body slds-border_left slds-p-around_small">
-					<h2
-						className="slds-truncate slds-text-heading_small"
-						title={this.props.title}
-					>
-						{this.props.title}
-					</h2>
-					<p className="slds-m-top_small">{this.props.description}</p>
-				</div>
-			</a>
-		);
-	}
+function VisualPickerLink(props) {
+	return (
+		<a
+			href={props.href}
+			id={props.id}
+			className={classNames(
+				'slds-box',
+				'slds-box_link',
+				'slds-theme_default',
+				'slds-box_x-small',
+				'slds-media',
+				'slds-visual-picker_vertical',
+				props.className
+			)}
+		>
+			<div className="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small">
+				{props.icon}
+			</div>
+			<div className="slds-media__body slds-border_left slds-p-around_small">
+				<h2
+					className="slds-truncate slds-text-heading_small"
+					title={props.title}
+				>
+					{props.title}
+				</h2>
+				<p className="slds-m-top_small">{props.description}</p>
+			</div>
+		</a>
+	);
 }
+
 VisualPickerLink.displayName = VISUAL_PICKER_LINK;
 VisualPickerLink.propTypes = propTypes;
 

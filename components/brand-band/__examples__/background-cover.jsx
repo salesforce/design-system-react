@@ -1,19 +1,17 @@
 import React from 'react';
 import BrandBand from '~/components/brand-band'; // `~` is replaced with design-system-react at runtime
 
-class Example extends React.Component {
-	render() {
-		return (
-			<BrandBand
-				className="custom-brand-band-class"
-				id="brand-band-large"
-				size="large"
-				backgroundSize="cover"
-			>
-				<span className="slds-assistive-text">Hello World!</span>
-			</BrandBand>
-		);
-	}
+function Example() {
+	return (
+		<BrandBand
+			className="custom-brand-band-class"
+			id="brand-band-large"
+			size="large"
+			backgroundSize="cover"
+		>
+			<span className="slds-assistive-text">Hello World!</span>
+		</BrandBand>
+	);
 }
 
 Example.displayName = 'BrandBandExample';

@@ -38,106 +38,97 @@ const tileDemoStyles = {
 	paddingRight: '.5rem',
 };
 
-class DemoAppLauncherTile extends React.Component {
-	static displayName = APP_LAUNCHER_TILE;
-
-	static propTypes = {
-		search: PropTypes.string,
-	};
-
-	render() {
-		return (
-			<AppLauncherTile
-				title="Sales Cloud"
-				iconText="SC"
-				description="The primary internal Salesforce org. Used to run our online sales business and manage accounts."
-				href="https://www.salesforce.com/"
-				onClick={action('Tile clicked! Actual href should be ignored')}
-				search={this.props.search}
-			/>
-		);
-	}
+function DemoAppLauncherTile(props) {
+	return (
+		<AppLauncherTile
+			title="Sales Cloud"
+			iconText="SC"
+			description="The primary internal Salesforce org. Used to run our online sales business and manage accounts."
+			href="https://www.salesforce.com/"
+			onClick={action('Tile clicked! Actual href should be ignored')}
+			search={props.search}
+		/>
+	);
 }
+
 DemoAppLauncherTile.displayName = APP_LAUNCHER_TILE;
 
-class DemoAppLauncherTileWithIconNode extends React.Component {
-	static displayName = APP_LAUNCHER_TILE;
+DemoAppLauncherTile.propTypes = {
+	search: PropTypes.string,
+};
 
-	static propTypes = {
-		search: PropTypes.string,
-	};
+DemoAppLauncherTile.displayName = APP_LAUNCHER_TILE;
 
-	render() {
-		const icon = <Icon name="email_chatter" category="standard" size="large" />;
+function DemoAppLauncherTileWithIconNode(props) {
+	const icon = <Icon name="email_chatter" category="standard" size="large" />;
 
-		return (
-			<AppLauncherTile
-				title="Marketing Cloud"
-				description="Salesforce Marketing Cloud lets businesses of any size engage with their customers through multiple channels of messaging."
-				href="https://www.marketingcloud.com/"
-				iconNode={icon}
-				onClick={action('Tile with icon node clicked!')}
-				search={this.props.search}
-			/>
-		);
-	}
+	return (
+		<AppLauncherTile
+			title="Marketing Cloud"
+			description="Salesforce Marketing Cloud lets businesses of any size engage with their customers through multiple channels of messaging."
+			href="https://www.marketingcloud.com/"
+			iconNode={icon}
+			onClick={action('Tile with icon node clicked!')}
+			search={props.search}
+		/>
+	);
 }
 
-class DemoAppLauncherTileWithIconBackgroundColor extends React.Component {
-	static displayName = APP_LAUNCHER_TILE;
+DemoAppLauncherTileWithIconNode.displayName = APP_LAUNCHER_TILE;
 
-	static propTypes = {
-		search: PropTypes.string,
-	};
+DemoAppLauncherTileWithIconNode.propTypes = {
+	search: PropTypes.string,
+};
 
-	render() {
-		return (
-			<AppLauncherTile
-				description="Manage your finances across multiple financial platforms and make the most of your capital."
-				iconBackgroundColor="#73c07b"
-				iconText="MM"
-				search={this.props.search}
-				title="My Money"
-			/>
-		);
-	}
+function DemoAppLauncherTileWithIconBackgroundColor(props) {
+	return (
+		<AppLauncherTile
+			description="Manage your finances across multiple financial platforms and make the most of your capital."
+			iconBackgroundColor="#73c07b"
+			iconText="MM"
+			search={props.search}
+			title="My Money"
+		/>
+	);
 }
 
-class DemoAppLauncherTileWithTruncatedText extends React.Component {
-	static displayName = APP_LAUNCHER_TILE;
+DemoAppLauncherTileWithIconBackgroundColor.displayName = APP_LAUNCHER_TILE;
 
-	static propTypes = {
-		search: PropTypes.string,
-	};
+DemoAppLauncherTileWithIconBackgroundColor.propTypes = {
+	search: PropTypes.string,
+};
 
-	render() {
-		return (
-			<AppLauncherTile
-				title="Call Center"
-				description="The key to call center and contact center management is more simple than you think with this amazing application!"
-				iconText="CC"
-				onClick={action('Tile with icon text clicked!')}
-				search={this.props.search}
-			/>
-		);
-	}
+function DemoAppLauncherTileWithTruncatedText(props) {
+	return (
+		<AppLauncherTile
+			title="Call Center"
+			description="The key to call center and contact center management is more simple than you think with this amazing application!"
+			iconText="CC"
+			onClick={action('Tile with icon text clicked!')}
+			search={props.search}
+		/>
+	);
 }
 
-class DemoAppLauncherTileWithSearchText extends React.Component {
-	static displayName = APP_LAUNCHER_TILE;
+DemoAppLauncherTileWithTruncatedText.displayName = APP_LAUNCHER_TILE;
 
-	static propTypes = {
-		search: PropTypes.string,
-	};
+DemoAppLauncherTileWithTruncatedText.propTypes = {
+	search: PropTypes.string,
+};
 
-	static defaultProps = {
-		search: 'Call',
-	};
-
-	render() {
-		return <DemoAppLauncherTileWithTruncatedText search={this.props.search} />;
-	}
+function DemoAppLauncherTileWithSearchText(props) {
+	return <DemoAppLauncherTileWithTruncatedText search={props.search} />;
 }
+
+DemoAppLauncherTileWithSearchText.displayName = APP_LAUNCHER_TILE;
+
+DemoAppLauncherTileWithSearchText.propTypes = {
+	search: PropTypes.string,
+};
+
+DemoAppLauncherTileWithSearchText.defaultProps = {
+	search: 'Call',
+};
 
 class DemoAppLauncherExpandableSection extends React.Component {
 	static displayName = 'DemoAppLauncherExpandableSection';
@@ -423,43 +414,41 @@ class DemoAppLauncherWithSeveralSections extends React.Component {
 	}
 }
 
-class DemoAppLauncherLink extends React.Component {
-	static displayName = 'DemoAppLauncherLink';
-
-	render() {
-		return (
+function DemoAppLauncherLink() {
+	return (
+		<div>
 			<div>
-				<div>
-					<AppLauncherLink>Accounts</AppLauncherLink>
-				</div>
-				<div>
-					<AppLauncherLink className="custom-class">
-						Announcements
-					</AppLauncherLink>
-				</div>
-				<div>
-					<AppLauncherLink href="http://www.salesforce.com">
-						Approvals
-					</AppLauncherLink>
-				</div>
-				<div>
-					<AppLauncherLink onClick={action('Link clicked!')}>
-						Campaigns
-					</AppLauncherLink>
-				</div>
-				<div>
-					<AppLauncherLink search="se">Cases</AppLauncherLink>
-				</div>
-				<div>
-					<AppLauncherLink title="Custom Title">Coaching</AppLauncherLink>
-				</div>
-				<div>
-					<AppLauncherLink>Contacts</AppLauncherLink>
-				</div>
+				<AppLauncherLink>Accounts</AppLauncherLink>
 			</div>
-		);
-	}
+			<div>
+				<AppLauncherLink className="custom-class">
+					Announcements
+				</AppLauncherLink>
+			</div>
+			<div>
+				<AppLauncherLink href="http://www.salesforce.com">
+					Approvals
+				</AppLauncherLink>
+			</div>
+			<div>
+				<AppLauncherLink onClick={action('Link clicked!')}>
+					Campaigns
+				</AppLauncherLink>
+			</div>
+			<div>
+				<AppLauncherLink search="se">Cases</AppLauncherLink>
+			</div>
+			<div>
+				<AppLauncherLink title="Custom Title">Coaching</AppLauncherLink>
+			</div>
+			<div>
+				<AppLauncherLink>Contacts</AppLauncherLink>
+			</div>
+		</div>
+	);
 }
+
+DemoAppLauncherLink.displayName = 'DemoAppLauncherLink';
 
 storiesOf(APP_LAUNCHER, module)
 	.addDecorator((getStory) => (

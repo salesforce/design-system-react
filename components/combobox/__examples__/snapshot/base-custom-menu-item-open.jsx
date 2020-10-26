@@ -2,10 +2,8 @@
 import React from 'react';
 import BaseCustomMenuItem from '../base-custom-menu-item';
 
-class Example extends React.Component {
-	render() {
-		return <BaseCustomMenuItem menuPosition="relative" isOpen />;
-	}
+function Example() {
+	return <BaseCustomMenuItem menuPosition="relative" isOpen />;
 }
 
 Example.displayName = 'ComboboxExample';

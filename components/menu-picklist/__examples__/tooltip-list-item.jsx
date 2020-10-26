@@ -19,33 +19,31 @@ const ListItemRenderer = (props) => (
 	</Tooltip>
 );
 
-class Example extends React.Component {
-	static displayName = 'PicklistExample';
-
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<Picklist
-					listItemRenderer={ListItemRenderer}
-					label="Contacts"
-					onSelect={(value) => {
-						console.log('selected: ', value);
-					}}
-					options={[
-						{ label: 'Option A', value: 'A0' },
-						{ label: 'Option B', value: 'B0' },
-						{ label: 'Option C', value: 'C0' },
-						{ label: 'Option D', value: 'D0' },
-						{ label: 'Option E', value: 'E0' },
-						{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' },
-					]}
-					placeholder="Select a contact"
-					value="C0"
-					silenceDeprecationWarning
-				/>
-			</IconSettings>
-		);
-	}
+function Example() {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<Picklist
+				listItemRenderer={ListItemRenderer}
+				label="Contacts"
+				onSelect={(value) => {
+					console.log('selected: ', value);
+				}}
+				options={[
+					{ label: 'Option A', value: 'A0' },
+					{ label: 'Option B', value: 'B0' },
+					{ label: 'Option C', value: 'C0' },
+					{ label: 'Option D', value: 'D0' },
+					{ label: 'Option E', value: 'E0' },
+					{ label: 'Option FGHIJKLMNOPQRSTUVWXYZ', value: 'F0' },
+				]}
+				placeholder="Select a contact"
+				value="C0"
+				silenceDeprecationWarning
+			/>
+		</IconSettings>
+	);
 }
+
+Example.displayName = 'PicklistExample';
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

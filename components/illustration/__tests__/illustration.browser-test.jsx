@@ -18,13 +18,11 @@ import Illustration from '../../illustration';
 
 chai.use(chaiEnzyme());
 
-class DemoIllustration extends React.Component {
-	static displayName = 'DemoIllustration';
-
-	render() {
-		return <Illustration {...this.props} silenceDeprecationWarning />;
-	}
+function DemoIllustration(props) {
+	return <Illustration {...props} silenceDeprecationWarning />;
 }
+
+DemoIllustration.displayName = 'DemoIllustration';
 
 describe('SLDSIllustration: ', function describeFunction() {
 	describe('Image with heading and message render', function describeFunction2() {

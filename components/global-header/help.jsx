@@ -26,43 +26,38 @@ const propTypes = {
 	popover: PropTypes.node,
 };
 
-/**
- * A GlobalHeaderHelp component.
- */
-class GlobalHeaderHelp extends React.Component {
-	render() {
-		const buttonAriaProps = {
-			'aria-haspopup': true,
-		};
-		const popoverProps = assign(
-			{
-				align: 'bottom',
-				body: <span />,
-				triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click',
-			},
-			this.props.popover ? this.props.popover.props : {}
-		);
+function GlobalHeaderHelp(props) {
+	const buttonAriaProps = {
+		'aria-haspopup': true,
+	};
+	const popoverProps = assign(
+		{
+			align: 'bottom',
+			body: <span />,
+			triggerClassName: 'slds-dropdown-trigger slds-dropdown-trigger_click',
+		},
+		props.popover ? props.popover.props : {}
+	);
 
-		// eslint-disable-next-line fp/no-delete
-		delete popoverProps.children;
+	// eslint-disable-next-line fp/no-delete
+	delete popoverProps.children;
 
-		return (
-			<Popover {...popoverProps}>
-				<Button
-					assistiveText={{ icon: this.props.assistiveText.triggerButton }}
-					className="slds-button_icon slds-global-actions__help slds-global-actions__item-action"
-					iconCategory="utility"
-					iconClassName="slds-global-header__icon"
-					iconName="question"
-					iconSize="small"
-					iconVariant="container"
-					title={this.props.assistiveText.triggerButton}
-					variant="icon"
-					{...buttonAriaProps}
-				/>
-			</Popover>
-		);
-	}
+	return (
+		<Popover {...popoverProps}>
+			<Button
+				assistiveText={{ icon: props.assistiveText.triggerButton }}
+				className="slds-button_icon slds-global-actions__help slds-global-actions__item-action"
+				iconCategory="utility"
+				iconClassName="slds-global-header__icon"
+				iconName="question"
+				iconSize="small"
+				iconVariant="container"
+				title={props.assistiveText.triggerButton}
+				variant="icon"
+				{...buttonAriaProps}
+			/>
+		</Popover>
+	);
 }
 
 GlobalHeaderHelp.displayName = GLOBAL_HEADER_HELP;

@@ -65,36 +65,34 @@ const items = [
 	},
 ];
 
-class Example extends React.Component {
-	static displayName = 'DefaultWithNavigationExample';
-
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<div
-					style={{
-						margin: '0 auto',
-						maxWidth: '774px',
+function Example(props) {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<div
+				style={{
+					margin: '0 auto',
+					maxWidth: '774px',
+				}}
+			>
+				<Carousel
+					hasPreviousNextPanelNavigation
+					id="carousel-default-with-navigation-example"
+					items={items}
+					onItemClick={(event, data) => {
+						event.preventDefault();
+						log({
+							action: props.action,
+							event,
+							eventName: 'Item Clicked',
+							data,
+						});
 					}}
-				>
-					<Carousel
-						hasPreviousNextPanelNavigation
-						id="carousel-default-with-navigation-example"
-						items={items}
-						onItemClick={(event, data) => {
-							event.preventDefault();
-							log({
-								action: this.props.action,
-								event,
-								eventName: 'Item Clicked',
-								data,
-							});
-						}}
-					/>
-				</div>
-			</IconSettings>
-		);
-	}
+				/>
+			</div>
+		</IconSettings>
+	);
 }
+
+Example.displayName = 'DefaultWithNavigationExample';
 
 export default Example;

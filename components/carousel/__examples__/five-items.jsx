@@ -72,37 +72,35 @@ const items = [
 	},
 ];
 
-class Example extends React.Component {
-	static displayName = 'FiveItemsExample';
-
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<div
-					style={{
-						maxWidth: '1280px',
-						padding: '20px',
+function Example(props) {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<div
+				style={{
+					maxWidth: '1280px',
+					padding: '20px',
+				}}
+			>
+				<Carousel
+					hasPreviousNextPanelNavigation
+					id="carousel-five-items-example"
+					items={items}
+					itemsPerPanel={5}
+					onItemClick={(event, data) => {
+						event.preventDefault();
+						log({
+							action: props.action,
+							event,
+							eventName: 'Item Clicked',
+							data,
+						});
 					}}
-				>
-					<Carousel
-						hasPreviousNextPanelNavigation
-						id="carousel-five-items-example"
-						items={items}
-						itemsPerPanel={5}
-						onItemClick={(event, data) => {
-							event.preventDefault();
-							log({
-								action: this.props.action,
-								event,
-								eventName: 'Item Clicked',
-								data,
-							});
-						}}
-					/>
-				</div>
-			</IconSettings>
-		);
-	}
+				/>
+			</div>
+		</IconSettings>
+	);
 }
+
+Example.displayName = 'FiveItemsExample';
 
 export default Example;

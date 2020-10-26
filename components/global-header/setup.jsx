@@ -27,46 +27,41 @@ const propTypes = {
 	dropdown: PropTypes.node,
 };
 
-/**
- * A GlobalHeaderSetup component.
- */
-class GlobalHeaderSetup extends React.Component {
-	render() {
-		const buttonAriaProps = {
-			'aria-haspopup': true,
-		};
-		const dropdownProps = assign(
-			{
-				align: 'right',
-				nubbinPosition: 'top right',
-			},
-			this.props.dropdown ? this.props.dropdown.props : {}
-		);
-		const dropdownChildren = dropdownProps.children || null;
+function GlobalHeaderSetup(props) {
+	const buttonAriaProps = {
+		'aria-haspopup': true,
+	};
+	const dropdownProps = assign(
+		{
+			align: 'right',
+			nubbinPosition: 'top right',
+		},
+		props.dropdown ? props.dropdown.props : {}
+	);
+	const dropdownChildren = dropdownProps.children || null;
 
-		// eslint-disable-next-line fp/no-delete
-		delete dropdownProps.children;
+	// eslint-disable-next-line fp/no-delete
+	delete dropdownProps.children;
 
-		return (
-			<Dropdown {...dropdownProps}>
-				<DropdownTrigger>
-					<Button
-						assistiveText={{ icon: this.props.assistiveText.triggerButton }}
-						className="slds-button_icon slds-global-actions__setup slds-global-actions__item-action"
-						iconCategory="utility"
-						iconClassName="slds-global-header__icon"
-						iconName="setup"
-						iconSize="small"
-						iconVariant="container"
-						title={this.props.assistiveText.triggerButton}
-						variant="icon"
-						{...buttonAriaProps}
-					/>
-				</DropdownTrigger>
-				{dropdownChildren}
-			</Dropdown>
-		);
-	}
+	return (
+		<Dropdown {...dropdownProps}>
+			<DropdownTrigger>
+				<Button
+					assistiveText={{ icon: props.assistiveText.triggerButton }}
+					className="slds-button_icon slds-global-actions__setup slds-global-actions__item-action"
+					iconCategory="utility"
+					iconClassName="slds-global-header__icon"
+					iconName="setup"
+					iconSize="small"
+					iconVariant="container"
+					title={props.assistiveText.triggerButton}
+					variant="icon"
+					{...buttonAriaProps}
+				/>
+			</DropdownTrigger>
+			{dropdownChildren}
+		</Dropdown>
+	);
 }
 
 GlobalHeaderSetup.displayName = GLOBAL_HEADER_SETUP;

@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -40,37 +40,27 @@ const defaultProps = {
 	truncate: true,
 };
 
-class Title extends Component {
-	render() {
-		if (!this.props.content) return null;
+function Title(props) {
+	if (!props.content) return null;
 
-		const classes = classnames(
-			'slds-page-header__title',
-			this.props.className,
-			{
-				'slds-truncate': this.props.truncate,
-				[`slds-align-${this.props.align}`]: this.props.align,
-			}
-		);
+	const classes = classnames('slds-page-header__title', props.className, {
+		'slds-truncate': props.truncate,
+		[`slds-align-${props.align}`]: props.align,
+	});
 
-		return (
-			<div className="slds-page-header__name-title">
-				<h1>
-					<Label content={this.props.label} />
-					<span
-						className={classes}
-						title={
-							typeof this.props.content === 'string'
-								? this.props.content
-								: undefined
-						}
-					>
-						{this.props.content}
-					</span>
-				</h1>
-			</div>
-		);
-	}
+	return (
+		<div className="slds-page-header__name-title">
+			<h1>
+				<Label content={props.label} />
+				<span
+					className={classes}
+					title={typeof props.content === 'string' ? props.content : undefined}
+				>
+					{props.content}
+				</span>
+			</h1>
+		</div>
+	);
 }
 
 Title.displayName = displayName;

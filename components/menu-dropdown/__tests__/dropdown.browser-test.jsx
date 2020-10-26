@@ -79,21 +79,14 @@ const DropdownCustomContent = (props) => (
 );
 DropdownCustomContent.displayName = 'DropdownCustomContent';
 
-/* A re-usable demo component fixture outside of `describe` sections
- * can accept props within each test and be unmounted after each tests.
- * This wrapping component will be similar to your wrapping component
- * you will create in the React Storybook for manual testing.
- */
-class DemoComponent extends React.Component {
-	render() {
-		return (
-			<IconSettings iconPath="/assets/icons">
-				<Dropdown {...defaultProps} {...this.props}>
-					{this.props.children}
-				</Dropdown>
-			</IconSettings>
-		);
-	}
+function DemoComponent(props) {
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<Dropdown {...defaultProps} {...props}>
+				{props.children}
+			</Dropdown>
+		</IconSettings>
+	);
 }
 
 DemoComponent.displayName = 'DropdownDemoComponent';

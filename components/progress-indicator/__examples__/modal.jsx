@@ -54,24 +54,22 @@ const modalContent = (
 	/>
 );
 
-class Example extends React.Component {
-	static displayName = 'ProgressIndicatorModal';
-
-	render() {
-		return (
-			<div style={{ height: '640px' }}>
-				{getModal({
-					isOpen: true,
-					title: 'Modal Header',
-					children: modalContent,
-					onRequestClose: action('modal closed'),
-					footer: modalFooter(),
-					size: 'large',
-					footerClassNames: 'slds-grid slds-grid_align-spread',
-				})}
-			</div>
-		);
-	}
+function Example() {
+	return (
+		<div style={{ height: '640px' }}>
+			{getModal({
+				isOpen: true,
+				title: 'Modal Header',
+				children: modalContent,
+				onRequestClose: action('modal closed'),
+				footer: modalFooter(),
+				size: 'large',
+				footerClassNames: 'slds-grid slds-grid_align-spread',
+			})}
+		</div>
+	);
 }
+
+Example.displayName = 'ProgressIndicatorModal';
 
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime

@@ -34,85 +34,77 @@ const COMPONENT_CSS_CLASSES = {
 	testClass: 'this-is-a-css-class-name',
 };
 
-/* A re-usable demo component fixture outside of `describe` sections
- * can accept props within each test and be unmounted after each tests.
- * This wrapping component will be similar to your wrapping component
- * you will create in the React Storybook for manual testing.
- */
-class TabsDemoComponent extends React.Component {
-	static displayName = 'TabsDemoComponent';
+function TabsDemoComponent(props) {
+	const { className, id, ...attributes } = props;
 
-	// ### Prop Types
-	static propTypes = {
-		/**
-		 * Class names to be added to the container element and is passed along to its children.
-		 */
-		className: PropTypes.oneOfType([
-			PropTypes.array,
-			PropTypes.object,
-			PropTypes.string,
-		]),
-		/**
-		 * HTML `id` attribute of primary element that has `.slds-tabs_default` on it. Optional: If one is not supplied, a `shortid` will be created.
-		 */
-		id: PropTypes.string,
-		/**
-		 * Function that triggers when a tab is selected.
-		 */
-		onSelect: PropTypes.func,
-	};
+	// Delete all known props, so they don't get added to DOM
+	delete attributes.selectedIndex;
+	delete attributes.onSelect;
+	delete attributes.children;
+	delete attributes.id;
 
-	render() {
-		const { className, id, ...attributes } = this.props;
-
-		// Delete all known props, so they don't get added to DOM
-		delete attributes.selectedIndex;
-		delete attributes.onSelect;
-		delete attributes.children;
-		delete attributes.id;
-
-		return (
-			<div
-				className={classNames(
-					'slds-m-top_large',
-					`${COMPONENT_CSS_CLASSES.wrapper}`
-				)}
-			>
-				<Tabs className={classNames(className)} id={id} {...attributes}>
-					<Panel label="Tab A">
-						<p>This is tab A</p>
-					</Panel>
-					<Panel label="Tab B" disabled>
-						<p>This is tab B.</p>
-						<p>It is disabled.</p>
-					</Panel>
-					<Panel label="Tab C" hasError>
-						<p>This is tab C</p>
-						<p>It has an error icon next to the tab label.</p>
-					</Panel>
-					<Panel label="Always No">
-						<p>
-							This one can not be selected from the tabs list because this
-							example provides a custom <code>onSelct</code> function that
-							retuns false when it is run, preventing the component&rsquo;s
-							built-in handler from running, and thus the tab is never selected.
-						</p>
-						<p>
-							Note that you <em>can</em> still see the panel if you hide the
-							other tabs, because the tab/panel are not <em>disabled</em>.
-						</p>
-						<p>
-							In other words, this should not be taken as an example of how to
-							be sneaky about disabling tab selection, but rather that you can{' '}
-							<strong>do stuff</strong> when a tab is selected by sending it a
-							custom <code>onSelect</code> function.
-						</p>
-					</Panel>
-				</Tabs>
-			</div>
-		);
-	}
+	return (
+		<div
+			className={classNames(
+				'slds-m-top_large',
+				`${COMPONENT_CSS_CLASSES.wrapper}`
+			)}
+		>
+			<Tabs className={classNames(className)} id={id} {...attributes}>
+				<Panel label="Tab A">
+					<p>This is tab A</p>
+				</Panel>
+				<Panel label="Tab B" disabled>
+					<p>This is tab B.</p>
+					<p>It is disabled.</p>
+				</Panel>
+				<Panel label="Tab C" hasError>
+					<p>This is tab C</p>
+					<p>It has an error icon next to the tab label.</p>
+				</Panel>
+				<Panel label="Always No">
+					<p>
+						This one can not be selected from the tabs list because this example
+						provides a custom <code>onSelct</code> function that retuns false
+						when it is run, preventing the component&rsquo;s built-in handler
+						from running, and thus the tab is never selected.
+					</p>
+					<p>
+						Note that you <em>can</em> still see the panel if you hide the other
+						tabs, because the tab/panel are not <em>disabled</em>.
+					</p>
+					<p>
+						In other words, this should not be taken as an example of how to be
+						sneaky about disabling tab selection, but rather that you can{' '}
+						<strong>do stuff</strong> when a tab is selected by sending it a
+						custom <code>onSelect</code> function.
+					</p>
+				</Panel>
+			</Tabs>
+		</div>
+	);
 }
+
+TabsDemoComponent.displayName = 'TabsDemoComponent';
+
+TabsDemoComponent.propTypes = {
+	/**
+	 * Class names to be added to the container element and is passed along to its children.
+	 */
+	className: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * HTML `id` attribute of primary element that has `.slds-tabs_default` on it. Optional: If one is not supplied, a `shortid` will be created.
+	 */
+	id: PropTypes.string,
+	/**
+	 * Function that triggers when a tab is selected.
+	 */
+	onSelect: PropTypes.func,
+};
 
 describe('Tabs', () => {
 	// BASIC STRUCTURE

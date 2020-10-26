@@ -23,20 +23,12 @@ const propTypes = {
 	children: PropTypes.node,
 };
 
-/**
- * A fixed container for toast banners.
- */
-
-class ToastContainer extends React.Component {
-	render() {
-		return (
-			<div
-				className={classNames('slds-notify-container', this.props.className)}
-			>
-				{this.props.children}
-			</div>
-		);
-	}
+function ToastContainer(props) {
+	return (
+		<div className={classNames('slds-notify-container', props.className)}>
+			{props.children}
+		</div>
+	);
 }
 
 ToastContainer.displayName = TOAST_CONTAINER;
