@@ -212,7 +212,7 @@ class Dialog extends React.Component {
 		}
 	}
 
-	componentWillUpdate() {
+	UNSAFE_componentWillUpdate() {
 		if (this.popper) {
 			this.popper.scheduleUpdate();
 		}

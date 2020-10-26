@@ -124,7 +124,7 @@ class File extends React.Component {
 		);
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
 

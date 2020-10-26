@@ -61,7 +61,7 @@ const defaultProps = {
  * Visual Picker Component
  */
 class VisualPicker extends React.Component {
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
 

@@ -81,7 +81,7 @@ const defaultProps = {
  * Tile component item represents a tile in a Welcome Mat
  */
 class Tile extends React.Component {
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
 

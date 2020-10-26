@@ -138,7 +138,7 @@ class Radio extends React.Component {
 		this.preventDuplicateChangeEvent = false;
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		checkProps(RADIO, this.props, componentDoc);
 		this.generatedId = shortid.generate();
 	}

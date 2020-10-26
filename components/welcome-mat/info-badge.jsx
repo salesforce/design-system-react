@@ -59,7 +59,7 @@ const defaultProps = {
  * InfoBadge component item represents a tile in a Welcome Mat
  */
 class InfoBadge extends React.Component {
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
 

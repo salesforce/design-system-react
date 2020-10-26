@@ -101,7 +101,7 @@ const defaultProps = {
 };
 
 const propTypes = {
-	componentWillUpdate: PropTypes.func,
+	UNSAFE_componentWillUpdate: PropTypes.func,
 	initialSelection: PropTypes.array,
 };
 
@@ -120,9 +120,9 @@ class DemoComponent extends React.Component {
 		};
 	}
 
-	componentWillUpdate(nextProps, nextState) {
-		if (this.props.componentWillUpdate) {
-			this.props.componentWillUpdate(nextState);
+	UNSAFE_componentWillUpdate(nextProps, nextState) {
+		if (this.props.UNSAFE_componentWillUpdate) {
+			this.props.UNSAFE_componentWillUpdate(nextState);
 		}
 	}
 
