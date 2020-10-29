@@ -138,6 +138,10 @@ class DataTable extends React.Component {
 		 */
 		fixedLayout: PropTypes.bool,
 		/**
+		 * When fixedHeader is true, specifies whether there's more data to be loaded and displays a spinner at the bottom of the table if so.
+		 */
+		hasMore: PropTypes.bool,
+		/**
 		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string,
@@ -157,6 +161,10 @@ class DataTable extends React.Component {
 		 */
 		joined: PropTypes.bool,
 		/**
+		 * Determines when to trigger infinite loading based on how many pixels the table's scroll position is from the bottom of the table.
+		 */
+		loadMoreOffset: PropTypes.number,
+		/**
 		 * A variant which removes hover style on rows
 		 */
 		noRowHover: PropTypes.bool,
@@ -164,6 +172,12 @@ class DataTable extends React.Component {
 		 * By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with properties `headerRefs`, an array of DOM nodes referencing the `thead th` elements and `scrollerRef`, a DOM node referencing `.slds-table_header-fixed_scroller`
 		 */
 		onFixedHeaderResize: PropTypes.func,
+		/**
+		 * This function fires when infinite loading loads more data.
+		 *
+		 * This will be called multiple times while the table is being scrolled within the `loadMoreOffset`.  Please track whether or not loading is in progress and check it at the start of this function to avoid executing your callback too many times.
+		 */
+		onLoadMore: PropTypes.func,
 		/**
 		 * This function fires when the selection of rows changes. This component passes in `event, { selection }` to the function. `selection` is an array of objects from the `items` prop.
 		 *
@@ -217,18 +231,6 @@ class DataTable extends React.Component {
 		 * A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`.
 		 */
 		unbufferedCell: PropTypes.bool,
-		/**
-		 * When fixedHeader is true, specifies whether there's more data to be loaded and displays a spinner at the bottom of the table if so.
-		 */
-		hasMore: PropTypes.bool,
-		/**
-		 * Determines when to trigger infinite loading based on how many pixels the table's scroll position is from the bottom of the table.
-		 */
-		loadMoreOffset: PropTypes.number,
-		/**
-		 * The action triggered when infinite loading loads more data.
-		 */
-		onLoadMore: PropTypes.func,
 	};
 
 	static defaultProps = defaultProps;
@@ -361,12 +363,8 @@ class DataTable extends React.Component {
 
 	onScrollerScroll = () => {
 		if (this.props.hasMore && this.props.onLoadMore) {
-			const scroller = this.scrollerRef;
-			if (
-				scroller &&
-				scroller.scrollTop + scroller.offsetHeight >
-					scroller.scrollHeight - this.props.loadMoreOffset
-			) {
+			const { scrollTop, offsetHeight, scrollHeight } = this.scrollerRef;
+			if (scrollTop + offsetHeight > scrollHeight - this.props.loadMoreOffset) {
 				this.props.onLoadMore();
 			}
 		}
@@ -561,16 +559,7 @@ class DataTable extends React.Component {
 					</tbody>
 				</table>
 				{this.props.fixedHeader && this.props.hasMore && (
-					<div
-						style={{
-							height: '3rem',
-							position: 'relative',
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'center',
-							backgroundColor: '#ffffff',
-						}}
-					>
+					<div className="slds-is-relative slds-p-around_large">
 						<Spinner
 							assistiveText={{ label: this.props.assistiveText.loadingMore }}
 							hasContainer={false}
