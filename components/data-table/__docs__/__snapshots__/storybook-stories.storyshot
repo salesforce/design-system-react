@@ -14328,16 +14328,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
           </tbody>
         </table>
         <div
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "display": "flex",
-              "height": "3rem",
-              "justifyContent": "center",
-              "position": "relative",
-            }
-          }
+          className="slds-is-relative slds-p-around_large"
         >
           <div
             aria-hidden="false"
