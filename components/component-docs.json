@@ -5344,6 +5344,17 @@
                 "required": false,
                 "description": "Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling."
             },
+            "hasMore": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "When fixedHeader is true, specifies whether there's more data to be loaded and displays a spinner at the bottom of the table if so.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
             "id": {
                 "type": {
                     "name": "string"
@@ -5378,6 +5389,17 @@
                 "required": false,
                 "description": "Makes DataTable joinable with PageHeader by adding appropriate classes/styling"
             },
+            "loadMoreOffset": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Determines when to trigger infinite loading based on how many pixels the table's scroll position is from the bottom of the table.",
+                "defaultValue": {
+                    "value": "20",
+                    "computed": false
+                }
+            },
             "noRowHover": {
                 "type": {
                     "name": "bool"
@@ -5391,6 +5413,13 @@
                 },
                 "required": false,
                 "description": "By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with properties `headerRefs`, an array of DOM nodes referencing the `thead th` elements and `scrollerRef`, a DOM node referencing `.slds-table_header-fixed_scroller`"
+            },
+            "onLoadMore": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This function fires when infinite loading loads more data.\n\nThis will be called multiple times while the table is being scrolled within the `loadMoreOffset`.  Please track whether or not loading is in progress and check it at the start of this function to avoid executing your callback too many times."
             },
             "onRowChange": {
                 "type": {
@@ -5490,35 +5519,6 @@
                 },
                 "required": false,
                 "description": "A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`."
-            },
-            "hasMore": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "When fixedHeader is true, specifies whether there's more data to be loaded and displays a spinner at the bottom of the table if so.",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "loadMoreOffset": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "Determines when to trigger infinite loading based on how many pixels the table's scroll position is from the bottom of the table.",
-                "defaultValue": {
-                    "value": "20",
-                    "computed": false
-                }
-            },
-            "onLoadMore": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "The action triggered when infinite loading loads more data."
             }
         },
         "route": "data-tables",
