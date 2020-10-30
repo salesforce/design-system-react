@@ -1,0 +1,22 @@
+{
+	"component": "tree",
+	"status": "prod",
+	"display-name": "Tree",
+	"classKey": "Tree",
+	"last-accessibility-review": {
+		"date-iso-8601": "2018/05/04",
+		"commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
+	},
+	"last-slds-markup-review": {
+		"date-iso-8601": "2018/05/04",
+		"commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
+	},
+	"SLDS-component-path": "/components/trees",
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		}
+	],
+	"url-slug": "tree"
+}
