@@ -638,4 +638,73 @@ describe('DataTable: ', function describeFunction() {
 			);
 		});
 	});
+
+	describe('w/ Infinite Scrolling', function describeFunction2() {
+		afterEach(removeTable);
+
+		it('renders a spinner as expected', function () {
+			renderTable(
+				<DataTable {...defaultProps} fixedHeader fixedLayout hasMore>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			expect(this.dom.querySelectorAll('.slds-spinner').length).to.eql(1);
+		});
+
+		it('onLoadMore callback is called when scroller is scrolled', function (done) {
+			let expectedCalbacks = 1;
+
+			this.onLoadMore = () => {
+				// eslint-disable-next-line no-plusplus
+				if (!--expectedCalbacks) done();
+			};
+
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					fixedHeader
+					fixedLayout
+					hasMore
+					onLoadMore={this.onLoadMore}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const scroller = this.dom.querySelector(
+				'.slds-table_header-fixed_scroller'
+			);
+			scroller.dispatchEvent(new Event('scroll'));
+		});
+
+		it('onLoadMore callback is called when window is resized', function (done) {
+			let expectedCalbacks = 1;
+
+			this.onLoadMore = () => {
+				// eslint-disable-next-line no-plusplus
+				if (!--expectedCalbacks) done();
+			};
+
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					fixedHeader
+					fixedLayout
+					hasMore
+					onLoadMore={this.onLoadMore}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			window.dispatchEvent(new Event('resize'));
+		});
+	});
 });

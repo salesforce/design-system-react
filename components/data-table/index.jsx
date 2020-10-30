@@ -35,6 +35,7 @@ import DataTableColumn from './column';
 import DataTableHead from './private/head';
 import DataTableRow from './private/row';
 import DataTableRowActions from './row-actions';
+import Spinner from '../spinner';
 
 import {
 	DATA_TABLE,
@@ -55,8 +56,11 @@ const defaultProps = {
 		selectAllRows: 'Select all rows',
 		selectRow: 'Select row',
 		selectRowGroup: 'Choose a row to select',
+		loadingMore: 'Loading more',
 	},
 	selection: [],
+	hasMore: false,
+	loadMoreOffset: 20,
 };
 
 /**
@@ -90,6 +94,7 @@ class DataTable extends React.Component {
 			selectAllRows: PropTypes.string,
 			selectRow: PropTypes.string,
 			selectRowGroup: PropTypes.string,
+			loadingMore: PropTypes.string,
 		}),
 		/**
 		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.
@@ -133,6 +138,10 @@ class DataTable extends React.Component {
 		 */
 		fixedLayout: PropTypes.bool,
 		/**
+		 * When fixedHeader is true, specifies whether there's more data to be loaded and displays a spinner at the bottom of the table if so.
+		 */
+		hasMore: PropTypes.bool,
+		/**
 		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string,
@@ -152,6 +161,10 @@ class DataTable extends React.Component {
 		 */
 		joined: PropTypes.bool,
 		/**
+		 * Determines when to trigger infinite loading based on how many pixels the table's scroll position is from the bottom of the table.
+		 */
+		loadMoreOffset: PropTypes.number,
+		/**
 		 * A variant which removes hover style on rows
 		 */
 		noRowHover: PropTypes.bool,
@@ -159,6 +172,12 @@ class DataTable extends React.Component {
 		 * By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with properties `headerRefs`, an array of DOM nodes referencing the `thead th` elements and `scrollerRef`, a DOM node referencing `.slds-table_header-fixed_scroller`
 		 */
 		onFixedHeaderResize: PropTypes.func,
+		/**
+		 * This function fires when infinite loading loads more data.
+		 *
+		 * This will be called multiple times while the table is being scrolled within the `loadMoreOffset`.  Please track whether or not loading is in progress and check it at the start of this function to avoid executing your callback too many times.
+		 */
+		onLoadMore: PropTypes.func,
 		/**
 		 * This function fires when the selection of rows changes. This component passes in `event, { selection }` to the function. `selection` is an array of objects from the `items` prop.
 		 *
@@ -342,6 +361,15 @@ class DataTable extends React.Component {
 		}
 	};
 
+	onScrollerScroll = () => {
+		if (this.props.hasMore && this.props.onLoadMore) {
+			const { scrollTop, offsetHeight, scrollHeight } = this.scrollerRef;
+			if (scrollTop + offsetHeight > scrollHeight - this.props.loadMoreOffset) {
+				this.props.onLoadMore();
+			}
+		}
+	};
+
 	toggleFixedHeaderListeners = (attach) => {
 		if (this.props.onToggleFixedHeaderListeners) {
 			this.props.onToggleFixedHeaderListeners(
@@ -356,9 +384,11 @@ class DataTable extends React.Component {
 			const action = [`${attach ? 'add' : 'remove'}EventListener`];
 			if (canUseEventListeners) {
 				window[action]('resize', this.resizeFixedHeaders);
+				window[action]('resize', this.onScrollerScroll);
 			}
 			if (canUseEventListeners && this.scrollerRef) {
 				this.scrollerRef[action]('scroll', this.resizeFixedHeaders);
+				this.scrollerRef[action]('scroll', this.onScrollerScroll);
 			}
 		}
 	};
@@ -451,82 +481,94 @@ class DataTable extends React.Component {
 		};
 
 		let component = (
-			<table
-				{...ariaProps}
-				className={classNames(
-					'slds-table',
-					{
-						'slds-table_fixed-layout': this.props.fixedLayout,
-						'slds-table_header-fixed': this.props.fixedHeader,
-						'slds-table_resizable-cols': this.props.fixedLayout,
-						'slds-table_bordered': !this.props.unborderedRow,
-						'slds-table_cell-buffer':
-							!this.props.fixedLayout && !this.props.unbufferedCell,
-						'slds-max-medium-table_stacked': this.props.stacked,
-						'slds-max-medium-table_stacked-horizontal': this.props
-							.stackedHorizontal,
-						'slds-table_striped': this.props.striped,
-						'slds-table_col-bordered': this.props.columnBordered,
-						'slds-no-row-hover': this.props.noRowHover,
-					},
-					this.props.className
-				)}
-				id={this.getId()}
-				role={this.props.fixedLayout ? 'grid' : null}
-				style={this.props.style}
-			>
-				<DataTableHead
-					assistiveText={assistiveText}
-					allSelected={allSelected}
-					fixedHeader={this.props.fixedHeader}
-					headerRefs={(ref, index) => {
-						if (index === 'action' || index === 'select') {
-							if (ref) {
-								this.headerRefs[index][0] = ref;
+			<React.Fragment>
+				<table
+					{...ariaProps}
+					className={classNames(
+						'slds-table',
+						{
+							'slds-table_fixed-layout': this.props.fixedLayout,
+							'slds-table_header-fixed': this.props.fixedHeader,
+							'slds-table_resizable-cols': this.props.fixedLayout,
+							'slds-table_bordered': !this.props.unborderedRow,
+							'slds-table_cell-buffer':
+								!this.props.fixedLayout && !this.props.unbufferedCell,
+							'slds-max-medium-table_stacked': this.props.stacked,
+							'slds-max-medium-table_stacked-horizontal': this.props
+								.stackedHorizontal,
+							'slds-table_striped': this.props.striped,
+							'slds-table_col-bordered': this.props.columnBordered,
+							'slds-no-row-hover': this.props.noRowHover,
+						},
+						this.props.className
+					)}
+					id={this.getId()}
+					role={this.props.fixedLayout ? 'grid' : null}
+					style={this.props.style}
+				>
+					<DataTableHead
+						assistiveText={assistiveText}
+						allSelected={allSelected}
+						fixedHeader={this.props.fixedHeader}
+						headerRefs={(ref, index) => {
+							if (index === 'action' || index === 'select') {
+								if (ref) {
+									this.headerRefs[index][0] = ref;
+								} else {
+									this.headerRefs[index] = [];
+								}
 							} else {
-								this.headerRefs[index] = [];
+								this.headerRefs.column[index] = ref;
 							}
-						} else {
-							this.headerRefs.column[index] = ref;
-						}
-					}}
-					indeterminateSelected={indeterminateSelected}
-					canSelectRows={canSelectRows}
-					columns={columns}
-					id={`${this.getId()}-${DATA_TABLE_HEAD}`}
-					onToggleAll={this.handleToggleAll}
-					onSort={this.props.onSort}
-					showRowActions={!!RowActions}
-				/>
-				<tbody>
-					{numRows > 0
-						? this.props.items.map((item, index) => {
-								const rowId =
-									this.getId() && item.id
-										? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
-										: shortid.generate();
-								return (
-									<DataTableRow
-										assistiveText={assistiveText}
-										canSelectRows={canSelectRows}
-										className={item.classNameRow}
-										columns={columns}
-										fixedLayout={this.props.fixedLayout}
-										id={rowId}
-										index={index}
-										item={item}
-										key={rowId}
-										onToggle={this.handleRowToggle}
-										selection={this.props.selection}
-										rowActions={RowActions}
-										tableId={this.getId()}
-									/>
-								);
-						  })
-						: // Someday this should be an element to render when the table is empty
-						  null}
-				</tbody>
-			</table>
+						}}
+						indeterminateSelected={indeterminateSelected}
+						canSelectRows={canSelectRows}
+						columns={columns}
+						id={`${this.getId()}-${DATA_TABLE_HEAD}`}
+						onToggleAll={this.handleToggleAll}
+						onSort={this.props.onSort}
+						showRowActions={!!RowActions}
+					/>
+					<tbody>
+						{numRows > 0
+							? this.props.items.map((item, index) => {
+									const rowId =
+										this.getId() && item.id
+											? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
+											: shortid.generate();
+									return (
+										<DataTableRow
+											assistiveText={assistiveText}
+											canSelectRows={canSelectRows}
+											className={item.classNameRow}
+											columns={columns}
+											fixedLayout={this.props.fixedLayout}
+											id={rowId}
+											index={index}
+											item={item}
+											key={rowId}
+											onToggle={this.handleRowToggle}
+											selection={this.props.selection}
+											rowActions={RowActions}
+											tableId={this.getId()}
+										/>
+									);
+							  })
+							: // Someday this should be an element to render when the table is empty
+							  null}
+					</tbody>
+				</table>
+				{this.props.fixedHeader && this.props.hasMore && (
+					<div className="slds-is-relative slds-p-around_large">
+						<Spinner
+							assistiveText={{ label: this.props.assistiveText.loadingMore }}
+							hasContainer={false}
+							size="small"
+							variant="brand"
+						/>
+					</div>
+				)}
+			</React.Fragment>
 		);
 
 		if (this.props.fixedHeader) {

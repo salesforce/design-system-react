@@ -311,6 +311,10 @@ const documentationSiteLiveExamples = {
 			heading: 'Custom Classes',
 			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/custom-classes.jsx'),
 		},
+		{
+			heading: 'Infinite Scrolling',
+			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/infinite-scrolling.jsx'),
+		},
 	],
 	'date-picker': [
 		{
