@@ -32,6 +32,7 @@ const DataTableCell = (props) => {
 	let cell = (
 		<td
 			className={props.className}
+			data-label={props.label}
 			role={props.fixedLayout ? 'gridcell' : null}
 			style={props.width ? { width: props.width } : null}
 		>
@@ -43,6 +44,7 @@ const DataTableCell = (props) => {
 		cell = (
 			<th
 				className={props.className}
+				data-label={props.label}
 				role={props.fixedLayout ? 'gridcell' : null}
 				style={props.width ? { width: props.width } : null}
 			>
