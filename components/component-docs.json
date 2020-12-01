@@ -1083,6 +1083,18 @@
                         {
                             "value": "'light'",
                             "computed": false
+                        },
+                        {
+                            "value": "'success'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'warning'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'error'",
+                            "computed": false
                         }
                     ]
                 },
