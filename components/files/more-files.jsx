@@ -71,7 +71,8 @@ const defaultProps = {
  * MoreFiles is a component that represents a number of file contents uploaded as an attachment.
  */
 class MoreFiles extends React.Component {
-	componentWillMount() {
+	// eslint-disable-next-line camelcase, react/sort-comp
+	UNSAFE_componentWillMount() {
 		this.generatedId = shortid.generate();
 	}
 

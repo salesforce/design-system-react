@@ -1176,7 +1176,7 @@ class Combobox extends React.Component {
 						containerRole="listbox"
 						containerAriaOrientation="horizontal"
 						listboxRole="group"
-						listboxAriaOrientation=""
+						listboxAriaOrientation={null}
 						events={{
 							onBlurPill: this.handleBlurPill,
 							onClickPill: this.handlePillClickSelectedListbox,

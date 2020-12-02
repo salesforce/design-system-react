@@ -101,7 +101,7 @@ const defaultProps = {
 };
 
 const propTypes = {
-	componentWillUpdate: PropTypes.func,
+	UNSAFE_componentWillUpdate: PropTypes.func,
 	initialSelection: PropTypes.array,
 };
 
@@ -120,9 +120,10 @@ class DemoComponent extends React.Component {
 		};
 	}
 
-	componentWillUpdate(nextProps, nextState) {
-		if (this.props.componentWillUpdate) {
-			this.props.componentWillUpdate(nextState);
+	// eslint-disable-next-line camelcase
+	UNSAFE_componentWillUpdate(nextProps, nextState) {
+		if (this.props.UNSAFE_componentWillUpdate) {
+			this.props.UNSAFE_componentWillUpdate(nextState);
 		}
 	}
 
@@ -350,7 +351,7 @@ describe('SLDSCombobox', function describeFunction() {
 			let counter = 0;
 			wrapper = mount(
 				<DemoComponent
-					componentWillUpdate={(prevState) => {
+					UNSAFE_componentWillUpdate={(prevState) => {
 						expect(prevState.selection).to.have.members(
 							selectionIndexedStates[counter]
 						);
