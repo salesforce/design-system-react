@@ -35,7 +35,7 @@ class Badge extends React.Component {
 	}
 
 	render() {
-		const icon = (
+		const icon = this.props.icon && (
 			<span
 				className={classNames(
 					'slds-badge__icon',
@@ -55,6 +55,9 @@ class Badge extends React.Component {
 					{
 						'slds-badge_inverse': this.props.color === 'inverse',
 						'slds-badge_lightest': this.props.color === 'light',
+						'slds-theme_success': this.props.color === 'success',
+						'slds-theme_warning': this.props.color === 'warning',
+						'slds-theme_error': this.props.color === 'error',
 					},
 					this.props.className
 				)}
@@ -100,7 +103,14 @@ Badge.propTypes = {
 	/**
 	 * Color variant for the badge component
 	 */
-	color: PropTypes.oneOf(['default', 'inverse', 'light']),
+	color: PropTypes.oneOf([
+		'default',
+		'inverse',
+		'light',
+		'success',
+		'warning',
+		'error',
+	]),
 
 	/**
 	 * Icon alignment for the badge component
