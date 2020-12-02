@@ -377,6 +377,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <th
             className={null}
+            data-label="Name"
             role="gridcell"
             style={
               Object {
@@ -398,6 +399,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </th>
           <td
             className={null}
+            data-label="Account Name"
             role="gridcell"
             style={
               Object {
@@ -414,6 +416,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role="gridcell"
             style={null}
           >
@@ -426,6 +429,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role="gridcell"
             style={null}
           >
@@ -438,6 +442,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role="gridcell"
             style={null}
           >
@@ -450,6 +455,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role="gridcell"
             style={null}
           >
@@ -462,6 +468,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role="gridcell"
             style={null}
           >
@@ -572,6 +579,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <th
             className={null}
+            data-label="Name"
             role="gridcell"
             style={
               Object {
@@ -593,6 +601,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </th>
           <td
             className={null}
+            data-label="Account Name"
             role="gridcell"
             style={
               Object {
@@ -609,6 +618,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role="gridcell"
             style={null}
           >
@@ -621,6 +631,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role="gridcell"
             style={null}
           >
@@ -633,6 +644,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role="gridcell"
             style={null}
           >
@@ -645,6 +657,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role="gridcell"
             style={null}
           >
@@ -657,6 +670,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role="gridcell"
             style={null}
           >
@@ -767,6 +781,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <th
             className={null}
+            data-label="Name"
             role="gridcell"
             style={
               Object {
@@ -788,6 +803,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </th>
           <td
             className={null}
+            data-label="Account Name"
             role="gridcell"
             style={
               Object {
@@ -804,6 +820,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role="gridcell"
             style={null}
           >
@@ -816,6 +833,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role="gridcell"
             style={null}
           >
@@ -828,6 +846,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role="gridcell"
             style={null}
           >
@@ -840,6 +859,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role="gridcell"
             style={null}
           >
@@ -852,6 +872,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role="gridcell"
             style={null}
           >
@@ -1233,6 +1254,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <th
             className={null}
+            data-label="Name"
             role="gridcell"
             style={
               Object {
@@ -1254,6 +1276,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </th>
           <td
             className={null}
+            data-label="Account Name"
             role="gridcell"
             style={
               Object {
@@ -1270,6 +1293,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role="gridcell"
             style={null}
           >
@@ -1282,6 +1306,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Stage"
             role="gridcell"
             style={null}
           >
@@ -1294,6 +1319,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role="gridcell"
             style={null}
           >
@@ -1306,6 +1332,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Amount"
             role="gridcell"
             style={null}
           >
@@ -1318,6 +1345,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Contact"
             role="gridcell"
             style={null}
           >
@@ -1425,6 +1453,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <th
             className={null}
+            data-label="Name"
             role="gridcell"
             style={
               Object {
@@ -1446,6 +1475,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </th>
           <td
             className={null}
+            data-label="Account Name"
             role="gridcell"
             style={
               Object {
@@ -1462,6 +1492,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role="gridcell"
             style={null}
           >
@@ -1474,6 +1505,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Stage"
             role="gridcell"
             style={null}
           >
@@ -1486,6 +1518,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role="gridcell"
             style={null}
           >
@@ -1498,6 +1531,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Amount"
             role="gridcell"
             style={null}
           >
@@ -1510,6 +1544,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Contact"
             role="gridcell"
             style={null}
           >
@@ -1617,6 +1652,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <th
             className={null}
+            data-label="Name"
             role="gridcell"
             style={
               Object {
@@ -1638,6 +1674,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </th>
           <td
             className={null}
+            data-label="Account Name"
             role="gridcell"
             style={
               Object {
@@ -1654,6 +1691,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role="gridcell"
             style={null}
           >
@@ -1666,6 +1704,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Stage"
             role="gridcell"
             style={null}
           >
@@ -1678,6 +1717,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role="gridcell"
             style={null}
           >
@@ -1690,6 +1730,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Amount"
             role="gridcell"
             style={null}
           >
@@ -1702,6 +1743,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           </td>
           <td
             className={null}
+            data-label="Contact"
             role="gridcell"
             style={null}
           >
@@ -2083,6 +2125,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <th
             className={null}
+            data-label="Name"
             role="gridcell"
             style={
               Object {
@@ -2104,6 +2147,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </th>
           <td
             className={null}
+            data-label="Account Name"
             role="gridcell"
             style={
               Object {
@@ -2120,6 +2164,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role="gridcell"
             style={null}
           >
@@ -2132,6 +2177,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Stage"
             role="gridcell"
             style={null}
           >
@@ -2144,6 +2190,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role="gridcell"
             style={null}
           >
@@ -2156,6 +2203,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Amount"
             role="gridcell"
             style={null}
           >
@@ -2168,6 +2216,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Contact"
             role="gridcell"
             style={null}
           >
@@ -2275,6 +2324,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <th
             className={null}
+            data-label="Name"
             role="gridcell"
             style={
               Object {
@@ -2296,6 +2346,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </th>
           <td
             className={null}
+            data-label="Account Name"
             role="gridcell"
             style={
               Object {
@@ -2312,6 +2363,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role="gridcell"
             style={null}
           >
@@ -2324,6 +2376,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Stage"
             role="gridcell"
             style={null}
           >
@@ -2336,6 +2389,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role="gridcell"
             style={null}
           >
@@ -2348,6 +2402,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Amount"
             role="gridcell"
             style={null}
           >
@@ -2360,6 +2415,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Contact"
             role="gridcell"
             style={null}
           >
@@ -2467,6 +2523,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <th
             className={null}
+            data-label="Name"
             role="gridcell"
             style={
               Object {
@@ -2488,6 +2545,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </th>
           <td
             className={null}
+            data-label="Account Name"
             role="gridcell"
             style={
               Object {
@@ -2504,6 +2562,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role="gridcell"
             style={null}
           >
@@ -2516,6 +2575,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Stage"
             role="gridcell"
             style={null}
           >
@@ -2528,6 +2588,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role="gridcell"
             style={null}
           >
@@ -2540,6 +2601,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Amount"
             role="gridcell"
             style={null}
           >
@@ -2552,6 +2614,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           </td>
           <td
             className={null}
+            data-label="Contact"
             role="gridcell"
             style={null}
           >
@@ -2849,6 +2912,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role="gridcell"
             style={
               Object {
@@ -2865,6 +2929,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role="gridcell"
             style={
               Object {
@@ -2881,6 +2946,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role="gridcell"
             style={
               Object {
@@ -2897,6 +2963,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role="gridcell"
             style={
               Object {
@@ -2913,6 +2980,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role="gridcell"
             style={
               Object {
@@ -2929,6 +2997,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role="gridcell"
             style={
               Object {
@@ -2945,6 +3014,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role="gridcell"
             style={
               Object {
@@ -2965,6 +3035,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role="gridcell"
             style={
               Object {
@@ -2981,6 +3052,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role="gridcell"
             style={
               Object {
@@ -2997,6 +3069,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role="gridcell"
             style={
               Object {
@@ -3013,6 +3086,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role="gridcell"
             style={
               Object {
@@ -3029,6 +3103,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role="gridcell"
             style={
               Object {
@@ -3045,6 +3120,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role="gridcell"
             style={
               Object {
@@ -3061,6 +3137,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role="gridcell"
             style={
               Object {
@@ -3081,6 +3158,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role="gridcell"
             style={
               Object {
@@ -3097,6 +3175,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role="gridcell"
             style={
               Object {
@@ -3113,6 +3192,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role="gridcell"
             style={
               Object {
@@ -3129,6 +3209,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role="gridcell"
             style={
               Object {
@@ -3145,6 +3226,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role="gridcell"
             style={
               Object {
@@ -3161,6 +3243,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role="gridcell"
             style={
               Object {
@@ -3177,6 +3260,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role="gridcell"
             style={
               Object {
@@ -3210,7 +3294,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
     }
   >
     <table
-      className="slds-table slds-table_bordered slds-table_cell-buffer"
+      className="slds-table slds-table_bordered slds-table_cell-buffer slds-max-medium-table_stacked"
       id="DataTableExample-1-default"
       role={null}
     >
@@ -3324,6 +3408,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -3341,6 +3426,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -3353,6 +3439,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -3365,6 +3452,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -3377,6 +3465,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -3389,6 +3478,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -3401,6 +3491,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -3422,6 +3513,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -3439,6 +3531,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -3451,6 +3544,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -3463,6 +3557,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -3475,6 +3570,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -3487,6 +3583,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -3499,6 +3596,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -3520,6 +3618,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -3537,6 +3636,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -3549,6 +3649,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -3561,6 +3662,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -3573,6 +3675,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -3585,6 +3688,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -3597,6 +3701,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -3745,6 +3850,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -3762,6 +3868,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -3774,6 +3881,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -3786,6 +3894,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -3798,6 +3907,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -3810,6 +3920,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -3822,6 +3933,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -3843,6 +3955,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -3860,6 +3973,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -3872,6 +3986,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -3884,6 +3999,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -3896,6 +4012,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -3908,6 +4025,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -3920,6 +4038,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -3941,6 +4060,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -3958,6 +4078,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -3970,6 +4091,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -3982,6 +4104,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -3994,6 +4117,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -4006,6 +4130,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -4018,6 +4143,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -4166,6 +4292,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -4183,6 +4310,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -4195,6 +4323,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -4207,6 +4336,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -4219,6 +4349,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -4231,6 +4362,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -4243,6 +4375,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -4264,6 +4397,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -4281,6 +4415,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -4293,6 +4428,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -4305,6 +4441,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -4317,6 +4454,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -4329,6 +4467,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -4341,6 +4480,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -4362,6 +4502,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -4379,6 +4520,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -4391,6 +4533,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -4403,6 +4546,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -4415,6 +4559,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -4427,6 +4572,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -4439,6 +4585,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -4587,6 +4734,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -4604,6 +4752,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -4616,6 +4765,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -4628,6 +4778,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -4640,6 +4791,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -4652,6 +4804,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -4664,6 +4817,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -4685,6 +4839,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -4702,6 +4857,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -4714,6 +4870,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -4726,6 +4883,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -4738,6 +4896,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -4750,6 +4909,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -4762,6 +4922,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -4783,6 +4944,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -4800,6 +4962,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -4812,6 +4975,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -4824,6 +4988,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -4836,6 +5001,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -4848,6 +5014,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -4860,6 +5027,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -5008,6 +5176,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -5020,6 +5189,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -5032,6 +5202,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -5044,6 +5215,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -5056,6 +5228,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -5068,6 +5241,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -5080,6 +5254,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -5096,6 +5271,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -5108,6 +5284,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -5120,6 +5297,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -5132,6 +5310,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -5144,6 +5323,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -5156,6 +5336,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -5168,6 +5349,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -5184,6 +5366,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
         >
           <td
             className={null}
+            data-label="Opportunity Name"
             role={null}
             style={null}
           >
@@ -5196,6 +5379,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Account Name"
             role={null}
             style={null}
           >
@@ -5208,6 +5392,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Close Date"
             role={null}
             style={null}
           >
@@ -5220,6 +5405,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Stage"
             role={null}
             style={null}
           >
@@ -5232,6 +5418,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Confidence"
             role={null}
             style={null}
           >
@@ -5244,6 +5431,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Amount"
             role={null}
             style={null}
           >
@@ -5256,6 +5444,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
           </td>
           <td
             className={null}
+            data-label="Contact"
             role={null}
             style={null}
           >
@@ -6089,6 +6278,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -6106,6 +6296,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -6118,6 +6309,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -6130,6 +6322,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -6142,6 +6335,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -6154,6 +6348,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -6166,6 +6361,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -6276,6 +6472,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -6293,6 +6490,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -6305,6 +6503,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -6317,6 +6516,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -6329,6 +6529,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -6341,6 +6542,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -6353,6 +6555,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -6463,6 +6666,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -6480,6 +6684,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -6492,6 +6697,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -6504,6 +6710,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -6516,6 +6723,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -6528,6 +6736,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -6540,6 +6749,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -6650,6 +6860,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -6667,6 +6878,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -6679,6 +6891,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -6691,6 +6904,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -6703,6 +6917,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -6715,6 +6930,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -6727,6 +6943,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -6837,6 +7054,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -6854,6 +7072,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -6866,6 +7085,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -6878,6 +7098,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -6890,6 +7111,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -6902,6 +7124,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -6914,6 +7137,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -7024,6 +7248,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -7041,6 +7266,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -7053,6 +7279,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -7065,6 +7292,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -7077,6 +7305,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -7089,6 +7318,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -7101,6 +7331,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -7211,6 +7442,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -7228,6 +7460,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -7240,6 +7473,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -7252,6 +7486,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -7264,6 +7499,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -7276,6 +7512,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -7288,6 +7525,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -7398,6 +7636,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -7415,6 +7654,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -7427,6 +7667,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -7439,6 +7680,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -7451,6 +7693,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -7463,6 +7706,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -7475,6 +7719,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -7585,6 +7830,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -7602,6 +7848,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -7614,6 +7861,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -7626,6 +7874,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -7638,6 +7887,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -7650,6 +7900,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -7662,6 +7913,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -7772,6 +8024,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -7789,6 +8042,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -7801,6 +8055,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -7813,6 +8068,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -7825,6 +8081,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -7837,6 +8094,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -7849,6 +8107,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -7959,6 +8218,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -7976,6 +8236,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -7988,6 +8249,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -8000,6 +8262,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -8012,6 +8275,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -8024,6 +8288,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -8036,6 +8301,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -8146,6 +8412,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -8163,6 +8430,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -8175,6 +8443,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -8187,6 +8456,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -8199,6 +8469,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -8211,6 +8482,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -8223,6 +8495,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -9113,6 +9386,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -9130,6 +9404,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -9142,6 +9417,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -9154,6 +9430,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -9166,6 +9443,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -9178,6 +9456,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -9190,6 +9469,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -9300,6 +9580,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -9317,6 +9598,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -9329,6 +9611,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -9341,6 +9624,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -9353,6 +9637,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -9365,6 +9650,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -9377,6 +9663,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -9487,6 +9774,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -9504,6 +9792,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -9516,6 +9805,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -9528,6 +9818,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -9540,6 +9831,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -9552,6 +9844,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -9564,6 +9857,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -9674,6 +9968,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -9691,6 +9986,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -9703,6 +9999,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -9715,6 +10012,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -9727,6 +10025,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -9739,6 +10038,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -9751,6 +10051,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -9861,6 +10162,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -9878,6 +10180,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -9890,6 +10193,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -9902,6 +10206,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -9914,6 +10219,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -9926,6 +10232,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -9938,6 +10245,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -10048,6 +10356,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -10065,6 +10374,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -10077,6 +10387,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -10089,6 +10400,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -10101,6 +10413,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -10113,6 +10426,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -10125,6 +10439,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -10235,6 +10550,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -10252,6 +10568,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -10264,6 +10581,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -10276,6 +10594,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -10288,6 +10607,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -10300,6 +10620,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -10312,6 +10633,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -10422,6 +10744,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -10439,6 +10762,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -10451,6 +10775,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -10463,6 +10788,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -10475,6 +10801,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -10487,6 +10814,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -10499,6 +10827,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -10609,6 +10938,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -10626,6 +10956,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -10638,6 +10969,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -10650,6 +10982,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -10662,6 +10995,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -10674,6 +11008,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -10686,6 +11021,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -10796,6 +11132,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -10813,6 +11150,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -10825,6 +11163,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -10837,6 +11176,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -10849,6 +11189,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -10861,6 +11202,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -10873,6 +11215,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -10983,6 +11326,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -11000,6 +11344,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -11012,6 +11357,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -11024,6 +11370,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -11036,6 +11383,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -11048,6 +11396,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -11060,6 +11409,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -11170,6 +11520,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -11187,6 +11538,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -11199,6 +11551,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -11211,6 +11564,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -11223,6 +11577,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -11235,6 +11590,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -11247,6 +11603,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -12131,6 +12488,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -12148,6 +12506,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -12160,6 +12519,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -12172,6 +12532,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -12184,6 +12545,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -12196,6 +12558,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -12208,6 +12571,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -12318,6 +12682,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -12335,6 +12700,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -12347,6 +12713,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -12359,6 +12726,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -12371,6 +12739,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -12383,6 +12752,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -12395,6 +12765,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -12505,6 +12876,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -12522,6 +12894,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -12534,6 +12907,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -12546,6 +12920,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -12558,6 +12933,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -12570,6 +12946,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -12582,6 +12959,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -12692,6 +13070,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -12709,6 +13088,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -12721,6 +13101,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -12733,6 +13114,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -12745,6 +13127,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -12757,6 +13140,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -12769,6 +13153,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -12879,6 +13264,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -12896,6 +13282,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -12908,6 +13295,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -12920,6 +13308,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -12932,6 +13321,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -12944,6 +13334,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -12956,6 +13347,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -13066,6 +13458,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -13083,6 +13476,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -13095,6 +13489,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -13107,6 +13502,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -13119,6 +13515,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -13131,6 +13528,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -13143,6 +13541,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -13253,6 +13652,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -13270,6 +13670,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -13282,6 +13683,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -13294,6 +13696,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -13306,6 +13709,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -13318,6 +13722,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -13330,6 +13735,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -13440,6 +13846,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -13457,6 +13864,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -13469,6 +13877,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -13481,6 +13890,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -13493,6 +13903,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -13505,6 +13916,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -13517,6 +13929,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -13627,6 +14040,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -13644,6 +14058,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -13656,6 +14071,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -13668,6 +14084,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -13680,6 +14097,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -13692,6 +14110,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -13704,6 +14123,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -13814,6 +14234,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -13831,6 +14252,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -13843,6 +14265,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -13855,6 +14278,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -13867,6 +14291,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -13879,6 +14304,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -13891,6 +14317,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -14001,6 +14428,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -14018,6 +14446,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -14030,6 +14459,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -14042,6 +14472,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -14054,6 +14485,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -14066,6 +14498,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -14078,6 +14511,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -14188,6 +14622,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -14205,6 +14640,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -14217,6 +14653,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -14229,6 +14666,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -14241,6 +14679,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -14253,6 +14692,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -14265,6 +14705,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -15539,6 +15980,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -15556,6 +15998,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -15568,6 +16011,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -15580,6 +16024,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -15592,6 +16037,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -15604,6 +16050,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -15616,6 +16063,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -15726,6 +16174,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -15743,6 +16192,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -15755,6 +16205,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -15767,6 +16218,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -15779,6 +16231,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -15791,6 +16244,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -15803,6 +16257,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -15913,6 +16368,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -15930,6 +16386,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -15942,6 +16399,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -15954,6 +16412,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -15966,6 +16425,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -15978,6 +16438,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -15990,6 +16451,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -16100,6 +16562,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -16117,6 +16580,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -16129,6 +16593,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -16141,6 +16606,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -16153,6 +16619,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -16165,6 +16632,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -16177,6 +16645,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -16287,6 +16756,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -16304,6 +16774,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -16316,6 +16787,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -16328,6 +16800,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -16340,6 +16813,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -16352,6 +16826,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -16364,6 +16839,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -16474,6 +16950,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -16491,6 +16968,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -16503,6 +16981,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -16515,6 +16994,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -16527,6 +17007,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -16539,6 +17020,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -16551,6 +17033,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -16661,6 +17144,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -16678,6 +17162,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -16690,6 +17175,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -16702,6 +17188,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -16714,6 +17201,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -16726,6 +17214,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -16738,6 +17227,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -16848,6 +17338,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -16865,6 +17356,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -16877,6 +17369,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -16889,6 +17382,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -16901,6 +17395,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -16913,6 +17408,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -16925,6 +17421,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -17035,6 +17532,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -17052,6 +17550,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -17064,6 +17563,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -17076,6 +17576,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -17088,6 +17589,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -17100,6 +17602,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -17112,6 +17615,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -17222,6 +17726,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -17239,6 +17744,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -17251,6 +17757,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -17263,6 +17770,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -17275,6 +17783,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -17287,6 +17796,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -17299,6 +17809,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -17409,6 +17920,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -17426,6 +17938,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -17438,6 +17951,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -17450,6 +17964,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -17462,6 +17977,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -17474,6 +17990,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -17486,6 +18003,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >
@@ -17596,6 +18114,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <th
                 className={null}
+                data-label="Name"
                 role="gridcell"
                 style={null}
               >
@@ -17613,6 +18132,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </th>
               <td
                 className={null}
+                data-label="Account Name"
                 role="gridcell"
                 style={null}
               >
@@ -17625,6 +18145,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Close Date"
                 role="gridcell"
                 style={null}
               >
@@ -17637,6 +18158,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Stage"
                 role="gridcell"
                 style={null}
               >
@@ -17649,6 +18171,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Confidence"
                 role="gridcell"
                 style={null}
               >
@@ -17661,6 +18184,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Amount"
                 role="gridcell"
                 style={null}
               >
@@ -17673,6 +18197,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               </td>
               <td
                 className={null}
+                data-label="Contact"
                 role="gridcell"
                 style={null}
               >

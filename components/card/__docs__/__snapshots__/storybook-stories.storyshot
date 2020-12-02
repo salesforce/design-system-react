@@ -156,6 +156,7 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
             >
               <td
                 className="slds-truncate"
+                data-label="Opportunity Name"
                 role={null}
                 style={null}
               >
@@ -176,6 +177,7 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
             >
               <td
                 className="slds-truncate"
+                data-label="Opportunity Name"
                 role={null}
                 style={null}
               >
@@ -196,6 +198,7 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
             >
               <td
                 className="slds-truncate"
+                data-label="Opportunity Name"
                 role={null}
                 style={null}
               >
@@ -361,6 +364,7 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
             >
               <td
                 className="slds-truncate"
+                data-label="Opportunity Name"
                 role={null}
                 style={null}
               >
@@ -381,6 +385,7 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
             >
               <td
                 className="slds-truncate"
+                data-label="Opportunity Name"
                 role={null}
                 style={null}
               >
@@ -401,6 +406,7 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
             >
               <td
                 className="slds-truncate"
+                data-label="Opportunity Name"
                 role={null}
                 style={null}
               >
@@ -558,6 +564,7 @@ exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
             >
               <td
                 className="slds-truncate"
+                data-label="Opportunity Name"
                 role={null}
                 style={null}
               >
@@ -574,6 +581,7 @@ exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
             >
               <td
                 className="slds-truncate"
+                data-label="Opportunity Name"
                 role={null}
                 style={null}
               >
@@ -590,6 +598,7 @@ exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
             >
               <td
                 className="slds-truncate"
+                data-label="Opportunity Name"
                 role={null}
                 style={null}
               >
@@ -941,6 +950,7 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
             >
               <td
                 className="slds-truncate"
+                data-label="Opportunity Name"
                 role={null}
                 style={null}
               >
@@ -961,6 +971,7 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
             >
               <td
                 className="slds-truncate"
+                data-label="Opportunity Name"
                 role={null}
                 style={null}
               >
@@ -981,6 +992,7 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
             >
               <td
                 className="slds-truncate"
+                data-label="Opportunity Name"
                 role={null}
                 style={null}
               >
@@ -1056,6 +1068,7 @@ exports[`DOM snapshots SLDSCard w/o Header 1`] = `
           >
             <td
               className="slds-truncate"
+              data-label="Opportunity Name"
               role={null}
               style={null}
             >
@@ -1076,6 +1089,7 @@ exports[`DOM snapshots SLDSCard w/o Header 1`] = `
           >
             <td
               className="slds-truncate"
+              data-label="Opportunity Name"
               role={null}
               style={null}
             >
@@ -1096,6 +1110,7 @@ exports[`DOM snapshots SLDSCard w/o Header 1`] = `
           >
             <td
               className="slds-truncate"
+              data-label="Opportunity Name"
               role={null}
               style={null}
             >
