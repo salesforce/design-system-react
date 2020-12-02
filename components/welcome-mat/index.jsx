@@ -97,6 +97,7 @@ class WelcomeMat extends React.Component {
 		};
 	}
 
+	// eslint-disable-next-line camelcase, react/sort-comp
 	UNSAFE_componentWillMount() {
 		this.generatedId = shortid.generate();
 		this.getCount();

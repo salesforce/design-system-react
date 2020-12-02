@@ -124,6 +124,7 @@ class File extends React.Component {
 		);
 	}
 
+	// eslint-disable-next-line camelcase, react/sort-comp
 	UNSAFE_componentWillMount() {
 		this.generatedId = shortid.generate();
 	}

@@ -138,6 +138,7 @@ class Radio extends React.Component {
 		this.preventDuplicateChangeEvent = false;
 	}
 
+	// eslint-disable-next-line camelcase, react/sort-comp
 	UNSAFE_componentWillMount() {
 		checkProps(RADIO, this.props, componentDoc);
 		this.generatedId = shortid.generate();

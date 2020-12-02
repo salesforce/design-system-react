@@ -194,6 +194,7 @@ const MenuPicklist = createReactClass({
 		};
 	},
 
+	// eslint-disable-next-line camelcase, react/sort-comp
 	UNSAFE_componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(MENU_PICKLIST, this.props);

@@ -120,6 +120,7 @@ class DemoComponent extends React.Component {
 		};
 	}
 
+	// eslint-disable-next-line camelcase
 	UNSAFE_componentWillUpdate(nextProps, nextState) {
 		if (this.props.UNSAFE_componentWillUpdate) {
 			this.props.UNSAFE_componentWillUpdate(nextState);
