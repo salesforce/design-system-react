@@ -351,7 +351,7 @@ describe('SLDSCombobox', function describeFunction() {
 			let counter = 0;
 			wrapper = mount(
 				<DemoComponent
-					componentWillUpdate={(prevState) => {
+					UNSAFE_componentWillUpdate={(prevState) => {
 						expect(prevState.selection).to.have.members(
 							selectionIndexedStates[counter]
 						);
