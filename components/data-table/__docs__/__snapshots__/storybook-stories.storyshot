@@ -3294,7 +3294,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
     }
   >
     <table
-      className="slds-table slds-table_bordered slds-table_cell-buffer slds-max-medium-table_stacked"
+      className="slds-table slds-table_bordered slds-table_cell-buffer"
       id="DataTableExample-1-default"
       role={null}
     >
