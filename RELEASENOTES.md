@@ -31,6 +31,13 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.23
+
+**Minor Features**
+
+- `DataTable`: Add infinite scrolling support
+- `Tab`: Add vertical tab variant
+
 ## Release 0.10.22
 
 **Minor Features**

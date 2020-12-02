@@ -2785,7 +2785,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
         >
           <ul
             aria-label="Selected Options:"
-            aria-orientation=""
+            aria-orientation={null}
             className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
             role="group"
           >
@@ -6081,7 +6081,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
         >
           <ul
             aria-label="Selected Options:"
-            aria-orientation=""
+            aria-orientation={null}
             className="slds-listbox slds-listbox_horizontal slds-p-top_xxx-small"
             role="group"
           >

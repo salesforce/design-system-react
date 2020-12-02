@@ -17,6 +17,7 @@ import FixedHeader from '../__examples__/fixed-header';
 import FixedHeaderHorizontalScroller from '../__examples__/fixed-header-horizontal-scrolling';
 import JoinedWithPageHeader from '../__examples__/joined-with-page-header';
 import CustomClasses from '../__examples__/custom-classes';
+import InfiniteScrolling from '../__examples__/infinite-scrolling';
 
 storiesOf(DATA_TABLE, module)
 	.addDecorator((getStory) => (
@@ -43,4 +44,5 @@ storiesOf(DATA_TABLE, module)
 		<FixedHeaderHorizontalScroller />
 	))
 	.add('Joined with Page Header', () => <JoinedWithPageHeader />)
-	.add('Custom Classes', () => <CustomClasses />);
+	.add('Custom Classes', () => <CustomClasses />)
+	.add('Infinite Scrolling', () => <InfiniteScrolling />);
