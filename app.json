@@ -1,6 +1,5 @@
 {
 	"name": "design-system-react",
-	"stack": "cedar-14",
 	"scripts": {},
 	"env": {
 		"AUTH_PASSWORD": {
