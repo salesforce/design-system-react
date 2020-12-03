@@ -31,6 +31,22 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.24
+
+**Minor Features**
+
+- `Badge`: Add success, warning, and error colors
+
+**Bugfixes**
+
+- `DataTable`: Properly display column label for `stacked` and `stackedHorizontal` variants
+
+**Maintenance**
+
+- Update Storybook to 6.1
+- Get accessibility tests running again
+- Add UNSAFE_ prefix for deprecated lifecycle hooks
+
 ## Release 0.10.23
 
 **Minor Features**
