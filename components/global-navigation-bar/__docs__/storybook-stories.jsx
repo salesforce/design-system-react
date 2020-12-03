@@ -330,5 +330,3 @@ storiesOf(GLOBAL_NAVIGATION_BAR, module)
 		)
 	)
 	.add('Doc site Default', () => <Default />);
-
-export default getGlobalNavigationBar;
