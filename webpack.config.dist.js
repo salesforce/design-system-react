@@ -2,7 +2,7 @@
 const fs = require('fs');
 const webpack = require('webpack');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const packageJson = require('./package.json');
 
 const header = `${packageJson.name}\nv${packageJson.version}\n`;
@@ -38,7 +38,7 @@ const config = Object.assign({}, baseConfig, {
 let FILENAME = process.env.INCLUDE_ICONS ? '[name].js' : '[name]-components.js';
 if (process.env.MINIFY) {
 	config.optimization = {
-		minimizer: [new UglifyJsPlugin()],
+		minimizer: [new TerserPlugin()],
 	};
 	FILENAME = process.env.INCLUDE_ICONS
 		? '[name].min.js'
