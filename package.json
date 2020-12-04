@@ -138,7 +138,7 @@
 		"@storybook/addon-storyshots-puppeteer": "^6.1.9",
 		"@storybook/addons": "^6.1.9",
 		"@storybook/csf": "^0.0.1",
-		"@storybook/react": "^6.1.9",
+		"@storybook/react": "^6.1.10",
 		"ajv": "6.12.6",
 		"async": "^3.2.0",
 		"axe-core": "3.5.5",
