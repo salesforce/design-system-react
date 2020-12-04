@@ -164,7 +164,7 @@
 		"eslint": "^5.16.0",
 		"eslint-config-airbnb": "^17.1.0",
 		"eslint-config-prettier": "^6.15.0",
-		"eslint-find-rules": "^3.6.0",
+		"eslint-find-rules": "^3.6.1",
 		"eslint-loader": "^3.0.4",
 		"eslint-plugin-filenames": "^1.3.2",
 		"eslint-plugin-fp": "^2.3.0",
