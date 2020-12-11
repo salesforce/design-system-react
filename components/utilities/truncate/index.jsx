@@ -12,17 +12,19 @@ const documentDefined = typeof document !== 'undefined';
 let canvas;
 let docFragment;
 let canvasContext;
-let measureWidth = () => {};
+let measureWidth = () => 0;
 
 if (documentDefined) {
 	canvas = document.createElement('canvas');
-	docFragment = document.createDocumentFragment();
-	docFragment.appendChild(canvas);
-	canvasContext = canvas.getContext('2d');
-	measureWidth = memoize((text, font) => {
-		canvasContext.font = font;
-		return canvasContext.measureText(text).width;
-	});
+	if (canvas.getContext) {
+		docFragment = document.createDocumentFragment();
+		docFragment.appendChild(canvas);
+		canvasContext = canvas.getContext('2d');
+		measureWidth = memoize((text, font) => {
+			canvasContext.font = font;
+			return canvasContext.measureText(text).width;
+		});
+	}
 }
 
 class TextTruncate extends React.Component {
