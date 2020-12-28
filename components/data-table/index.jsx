@@ -142,6 +142,29 @@ class DataTable extends React.Component {
 		 */
 		hasMore: PropTypes.bool,
 		/**
+		 * A render prop for subheadings to describe what the next section of the table is about. This is often a heirarchical data structure and semantic heading levels should be used, but not visually differ. This is not a `role=rowheader` which provides a heading for a row. Basic sorting of columns is not recommended, since this pattern assumes top level groupings. Headings should be visually aligned with selection column when selection pattern is present, so not to be grouped with the previous row.
+     * ```
+     * const CustomHeaderRow = ({ columns, item } ) => (
+     *	<tr>
+     *    <th id={item.id} colSpan={columns.length+1} scope="colgroup">
+     *      <p role="heading" aria-level={item.ariaLevel}>
+     *        {item.heading}
+     *      </p>
+     *    </th>
+     *  </tr>);
+     *CustomHeaderRow.displayName = DataTableCell.displayName;
+     * 
+     * <DataTable items=[{
+        type: 'header-row',
+        id: 'header-row-example-id-3',
+        heading: 'Argentina > Autonomous City of Buenos Aires > Belgrano',
+        ariaLevel: 3,
+     * }],
+     * />
+     * ```
+		 */
+		onRenderSubHeadingRow: PropTypes.func,
+		/**
 		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string,
@@ -536,7 +559,18 @@ class DataTable extends React.Component {
 										this.getId() && item.id
 											? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
 											: shortid.generate();
-									return (
+									return this.props.onRenderSubHeadingRow &&
+										item.type === 'header-row' ? (
+										this.props.onRenderSubHeadingRow({
+											assistiveText,
+											classNameRow: item.classNameRow,
+											columns,
+											key: rowId,
+											id: rowId,
+											tableId: this.getId(),
+											item,
+										})
+									) : (
 										<DataTableRow
 											assistiveText={assistiveText}
 											canSelectRows={canSelectRows}

@@ -35,6 +35,7 @@ const DataTableCell = (props) => {
 			data-label={props.label}
 			role={props.fixedLayout ? 'gridcell' : null}
 			style={props.width ? { width: props.width } : null}
+			headers={props.headerId}
 		>
 			{contents}
 		</td>
