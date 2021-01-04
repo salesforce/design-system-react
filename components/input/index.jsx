@@ -631,7 +631,6 @@ class Input extends React.Component {
 					iconLeft={iconLeft}
 					iconRight={iconRight}
 					inlineEditTrigger={this.props.inlineEditTrigger}
-					inlineHelpText={this.props.inlineHelpText}
 					isStatic={this.props.isStatic}
 					minLength={this.props.minLength}
 					minValue={this.props.minValue}
@@ -661,6 +660,11 @@ class Input extends React.Component {
 					step={this.props.step}
 					style={this.props.styleInput}
 				/>
+				{this.props.inlineHelpText && (
+					<div className="slds-form-element__help">
+						{this.props.inlineHelpText}
+					</div>
+				)}
 				{this.props.errorText && (
 					<div id={this.getErrorId()} className="slds-form-element__help">
 						{this.props.errorText}

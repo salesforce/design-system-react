@@ -46,6 +46,8 @@ const searchIconClickable = (
 		onClick={iconClicked('Search icon clicked')}
 	/>
 );
+const errorIcon = <InputIcon name="error" category="utility" />;
+
 storiesOf(INPUT, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">{getStory()}</div>
@@ -275,23 +277,37 @@ storiesOf(INPUT, module)
 	.add('Required Input in Error State', () => (
 		<IconSettings iconPath="/assets/icons">
 			<section>
-				<h1 className="slds-text-title_caps slds-p-vertical_medium">
-					Example Button
-				</h1>
-				<Button label="Test" />
-
-				<h1 className="slds-text-title_caps slds-p-vertical_medium">
-					Required Input with Error
-				</h1>
-				<Input
-					id="required-input-error"
-					aria-describedby="error-1"
-					name="required-input-error"
-					label="My Label"
-					required
-					errorText="This field is required."
-					placeholder="My placeholder"
-				/>
+				<ol>
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
+							Required Input with Error Text
+						</h1>
+						<Input
+							id="required-input-error"
+							aria-describedby="error-1"
+							name="required-input-error"
+							label="My Label"
+							required
+							errorText="This field is required."
+							placeholder="My placeholder"
+						/>
+					</li>
+					<li className="slds-p-bottom_large">
+						<h1 className="slds-text-title_caps slds-p-vertical_medium">
+							Required Input with Error Text and Icon
+						</h1>
+						<Input
+							id="required-input-error-with-icon"
+							aria-describedby="error-2"
+							name="required-input-error-with-icon"
+							label="My Label"
+							required
+							errorText="This field is required."
+							placeholder="My placeholder"
+							iconLeft={errorIcon}
+						/>
+					</li>
+				</ol>
 			</section>
 		</IconSettings>
 	))
