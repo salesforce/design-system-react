@@ -47,7 +47,10 @@ class Example extends React.Component {
 							</h1>
 							<Input
 								id="inline-help-with-error"
+								aria-describedby="inline-with-error-1"
+								name="inline-help-with-error"
 								label="My Label"
+								required
 								inlineHelpText="ex: (415) 111-2222"
 								errorText="This field is required."
 							/>
@@ -58,7 +61,10 @@ class Example extends React.Component {
 							</h1>
 							<Input
 								id="inline-help-with-error-and-icon"
+								aria-describedby="inline-with-error-2"
+								name="inline-help-with-error-and-icon"
 								label="My Label"
+								required
 								inlineHelpText="ex: (415) 111-2222"
 								errorText="This field is required."
 								iconLeft={<InputIcon name="error" category="utility" />}

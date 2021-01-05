@@ -1928,16 +1928,24 @@ exports[`DOM snapshots SLDSInput Inline Help 1`] = `
             className="slds-form-element__label"
             htmlFor="inline-help-with-error"
           >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
             My Label
           </label>
           <div
             className="slds-form-element__control"
           >
             <input
-              aria-describedby="ozFSBXHiHwJ"
+              aria-describedby="inline-with-error-1"
               className="slds-input"
               id="inline-help-with-error"
+              name="inline-help-with-error"
               onChange={[Function]}
+              required={true}
               type="text"
             />
           </div>
@@ -1948,7 +1956,7 @@ exports[`DOM snapshots SLDSInput Inline Help 1`] = `
           </div>
           <div
             className="slds-form-element__help"
-            id="ozFSBXHiHwJ"
+            id="inline-with-error-1"
           >
             This field is required.
           </div>
@@ -1969,6 +1977,12 @@ exports[`DOM snapshots SLDSInput Inline Help 1`] = `
             className="slds-form-element__label"
             htmlFor="inline-help-with-error-and-icon"
           >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
             My Label
           </label>
           <div
@@ -1983,10 +1997,12 @@ exports[`DOM snapshots SLDSInput Inline Help 1`] = `
               />
             </svg>
             <input
-              aria-describedby="lOp-giCXFdj"
+              aria-describedby="inline-with-error-2"
               className="slds-input"
               id="inline-help-with-error-and-icon"
+              name="inline-help-with-error-and-icon"
               onChange={[Function]}
+              required={true}
               type="text"
             />
           </div>
@@ -1997,7 +2013,7 @@ exports[`DOM snapshots SLDSInput Inline Help 1`] = `
           </div>
           <div
             className="slds-form-element__help"
-            id="lOp-giCXFdj"
+            id="inline-with-error-2"
           >
             This field is required.
           </div>
