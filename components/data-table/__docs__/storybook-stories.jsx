@@ -6,6 +6,7 @@ import IconSettings from '../../icon-settings';
 import { DATA_TABLE } from '../../../utilities/constants';
 
 import Advanced from '../__examples__/advanced';
+import AdvancedHeaderRow from '../__examples__/advanced-header-row';
 import AdvancedSingleSelect from '../__examples__/advanced-single-select';
 import AdvancedSingleSelectFixedHeader from '../__examples__/advanced-single-select-fixed-header';
 import BasicFixedLayout from '../__examples__/basic-fixed-layout';
@@ -39,6 +40,7 @@ storiesOf(DATA_TABLE, module)
 	.add('Advanced Single Select (Fixed Header)', () => (
 		<AdvancedSingleSelectFixedHeader log={action} />
 	))
+	.add('Advanced with Header Row', () => <AdvancedHeaderRow log={action} />)
 	.add('Fixed Header', () => <FixedHeader />)
 	.add('Fixed Header Horizontal Scrolling', () => (
 		<FixedHeaderHorizontalScroller />

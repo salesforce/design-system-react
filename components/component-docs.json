@@ -5367,6 +5367,13 @@
                     "computed": false
                 }
             },
+            "onRenderSubHeadingRow": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "A render prop for subheadings to describe what the next section of the table is about. This is often a heirarchical data structure and semantic heading levels should be used, but not visually differ. This is not a `role=rowheader` which provides a heading for a row. Basic sorting of columns is not recommended, since this pattern assumes top level groupings. Headings should be visually aligned with selection column when selection pattern is present, so not to be grouped with the previous row.\n```\nconst CustomHeaderRow = ({ columns, item } ) => (\n<tr>\n   <th id={item.id} colSpan={columns.length+1} scope=\"colgroup\">\n     <p role=\"heading\" aria-level={item.ariaLevel}>\n       {item.heading}\n     </p>\n   </th>\n </tr>);\nCustomHeaderRow.displayName = DataTableCell.displayName;\n\n<DataTable items=[{\n        type: 'header-row',\n        id: 'header-row-example-id-3',\n        heading: 'Argentina > Autonomous City of Buenos Aires > Belgrano',\n        ariaLevel: 3,\n}],\n/>\n```"
+            },
             "id": {
                 "type": {
                     "name": "string"

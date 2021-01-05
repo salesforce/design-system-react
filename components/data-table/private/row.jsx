@@ -139,6 +139,8 @@ class DataTableRow extends React.Component {
 							item={this.props.item}
 							key={cellId}
 							width={column.props.width}
+							headerId={this.props.item.headerId}
+							columns={this.props.columns}
 						>
 							{this.props.item[column.props.property]}
 						</Cell>

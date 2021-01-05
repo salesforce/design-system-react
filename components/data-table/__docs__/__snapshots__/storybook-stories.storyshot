@@ -2681,6 +2681,1103 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
 </div>
 `;
 
+exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <table
+      aria-multiselectable="true"
+      className="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered"
+      id="DataTableExample-2"
+      role="grid"
+    >
+      <thead>
+        <tr
+          className="slds-line-height_reset"
+        >
+          <th
+            className="slds-text-align_right"
+            scope="col"
+            style={
+              Object {
+                "height": null,
+                "lineHeight": null,
+                "width": "3.25rem",
+              }
+            }
+          >
+            <div
+              className="slds-th__action slds-th__action_form"
+              style={null}
+            >
+              <span
+                className="slds-assistive-text"
+                id="DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
+              >
+                Select all rows
+              </span>
+              <div
+                className="slds-form-element"
+              >
+                <div
+                  className="slds-form-element__control"
+                >
+                  <span
+                    className="slds-checkbox"
+                  >
+                    <input
+                      checked={false}
+                      id="DataTableExample-2-SLDSDataTableHead-SelectAll-fixed-header"
+                      name="SelectAll"
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                    <label
+                      className="slds-checkbox__label"
+                      htmlFor="DataTableExample-2-SLDSDataTableHead-SelectAll-fixed-header"
+                    >
+                      <span
+                        className="slds-checkbox_faux"
+                      />
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Select all rows
+                      </span>
+                    </label>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </th>
+          <th
+            aria-label="Name"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={
+              Object {
+                "height": null,
+                "lineHeight": null,
+                "width": "10rem",
+              }
+            }
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Name"
+              >
+                Name
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Account Name"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={
+              Object {
+                "height": null,
+                "lineHeight": null,
+                "width": "8rem",
+              }
+            }
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Account Name"
+              >
+                Account Name
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Close Date"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Close Date"
+              >
+                Close Date
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Stage"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Stage"
+              >
+                Stage
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Confidence"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Confidence"
+              >
+                Confidence
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Amount"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Amount"
+              >
+                Amount
+              </span>
+            </span>
+          </th>
+          <th
+            aria-label="Contact"
+            aria-sort="none"
+            className=""
+            scope="col"
+            style={null}
+          >
+            <span
+              className="slds-p-horizontal_x-small"
+              style={
+                Object {
+                  "display": "flex",
+                }
+              }
+            >
+              <span
+                className="slds-truncate"
+                title="Contact"
+              >
+                Contact
+              </span>
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th
+            colSpan={8}
+            id="header-row-example-id-1"
+            scope="colgroup"
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "padding": "0.5rem 1.25rem",
+              }
+            }
+          >
+            <p
+              aria-level={1}
+              role="heading"
+              style={
+                Object {
+                  "fontWeight": 700,
+                }
+              }
+            >
+              Argentina
+            </p>
+          </th>
+        </tr>
+        <tr
+          aria-selected="false"
+          className=""
+        >
+          <td
+            className="slds-text-align_right"
+            role="gridcell"
+            style={
+              Object {
+                "width": "3.25rem",
+              }
+            }
+          >
+            <div
+              className="slds-form-element"
+            >
+              <div
+                className="slds-form-element__control"
+              >
+                <span
+                  className="slds-checkbox"
+                >
+                  <input
+                    aria-labelledby="DataTableExample-2-SLDSDataTableRow-8IKSDFZV91-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
+                    checked={false}
+                    id="DataTableExample-2-SLDSDataTableRow-8IKSDFZV91-SelectRow"
+                    name="SelectRow2"
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                  <label
+                    className="slds-checkbox__label"
+                    htmlFor="DataTableExample-2-SLDSDataTableRow-8IKSDFZV91-SelectRow"
+                    id="DataTableExample-2-SLDSDataTableRow-8IKSDFZV91-SelectRow-label"
+                  >
+                    <span
+                      className="slds-checkbox_faux"
+                    />
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Select this row 2
+                    </span>
+                  </label>
+                </span>
+              </div>
+            </div>
+          </td>
+          <th
+            className={null}
+            data-label="Name"
+            role="gridcell"
+            style={
+              Object {
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Mule Systems"
+            >
+              Mule Systems
+            </div>
+          </th>
+          <td
+            className={null}
+            data-label="Account Name"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={
+              Object {
+                "width": "8rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="MuleSoft"
+            >
+              MuleSoft
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Close Date"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="3/31/17 2:05PM"
+            >
+              3/31/17 2:05PM
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Stage"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Processing"
+            >
+              Processing
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Confidence"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="80%"
+            >
+              80%
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Amount"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="$14,000"
+            >
+              $14,000
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Contact"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="bob@mulesoft.com"
+            >
+              bob@mulesoft.com
+            </div>
+          </td>
+        </tr>
+        <tr
+          aria-selected="false"
+          className=""
+        >
+          <td
+            className="slds-text-align_right"
+            role="gridcell"
+            style={
+              Object {
+                "width": "3.25rem",
+              }
+            }
+          >
+            <div
+              className="slds-form-element"
+            >
+              <div
+                className="slds-form-element__control"
+              >
+                <span
+                  className="slds-checkbox"
+                >
+                  <input
+                    aria-labelledby="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
+                    checked={false}
+                    id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                    name="SelectRow3"
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                  <label
+                    className="slds-checkbox__label"
+                    htmlFor="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                    id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow-label"
+                  >
+                    <span
+                      className="slds-checkbox_faux"
+                    />
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Select this row 3
+                    </span>
+                  </label>
+                </span>
+              </div>
+            </div>
+          </td>
+          <th
+            className={null}
+            data-label="Name"
+            role="gridcell"
+            style={
+              Object {
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Acme - 1,200 Widgets"
+            >
+              Acme - 1,200 Widgets
+            </div>
+          </th>
+          <td
+            className={null}
+            data-label="Account Name"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={
+              Object {
+                "width": "8rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Acme"
+            >
+              Acme
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Close Date"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="4/10/15"
+            >
+              4/10/15
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Stage"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Value Proposition"
+            >
+              Value Proposition
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Confidence"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="70%"
+            >
+              70%
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Amount"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="$25,000,000"
+            >
+              $25,000,000
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Contact"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="jrogers@acme.com"
+            >
+              jrogers@acme.com
+            </div>
+          </td>
+        </tr>
+        <tr
+          aria-selected="false"
+          className=""
+        >
+          <td
+            className="slds-text-align_right"
+            role="gridcell"
+            style={
+              Object {
+                "width": "3.25rem",
+              }
+            }
+          >
+            <div
+              className="slds-form-element"
+            >
+              <div
+                className="slds-form-element__control"
+              >
+                <span
+                  className="slds-checkbox"
+                >
+                  <input
+                    aria-labelledby="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
+                    checked={false}
+                    id="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                    name="SelectRow4"
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                  <label
+                    className="slds-checkbox__label"
+                    htmlFor="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                    id="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label"
+                  >
+                    <span
+                      className="slds-checkbox_faux"
+                    />
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Select this row 4
+                    </span>
+                  </label>
+                </span>
+              </div>
+            </div>
+          </td>
+          <th
+            className={null}
+            data-label="Name"
+            role="gridcell"
+            style={
+              Object {
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Acme - 200 Widgets"
+            >
+              Acme - 200 Widgets
+            </div>
+          </th>
+          <td
+            className={null}
+            data-label="Account Name"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={
+              Object {
+                "width": "8rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="Acme"
+            >
+              Acme
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Close Date"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="1/31/15"
+            >
+              1/31/15
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Stage"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Confidence"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="30%"
+            >
+              30%
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Amount"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="$5,000,000"
+            >
+              $5,000,000
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Contact"
+            headers="header-row-example-id-1"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="bob@acme.com"
+            >
+              bob@acme.com
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th
+            colSpan={8}
+            id="header-row-example-id-2"
+            scope="colgroup"
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "padding": "0.5rem 1.25rem",
+              }
+            }
+          >
+            <p
+              aria-level={2}
+              role="heading"
+              style={
+                Object {
+                  "fontWeight": 700,
+                }
+              }
+            >
+              Argentina &gt; Autonomous City of Buenos Aires
+            </p>
+          </th>
+        </tr>
+        <tr
+          aria-selected="false"
+          className=""
+        >
+          <td
+            className="slds-text-align_right"
+            role="gridcell"
+            style={
+              Object {
+                "width": "3.25rem",
+              }
+            }
+          >
+            <div
+              className="slds-form-element"
+            >
+              <div
+                className="slds-form-element__control"
+              >
+                <span
+                  className="slds-checkbox"
+                >
+                  <input
+                    aria-labelledby="DataTableExample-2-SLDSDataTableRow-8SDFDSZHZZV34-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
+                    checked={false}
+                    id="DataTableExample-2-SLDSDataTableRow-8SDFDSZHZZV34-SelectRow"
+                    name="SelectRow6"
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                  <label
+                    className="slds-checkbox__label"
+                    htmlFor="DataTableExample-2-SLDSDataTableRow-8SDFDSZHZZV34-SelectRow"
+                    id="DataTableExample-2-SLDSDataTableRow-8SDFDSZHZZV34-SelectRow-label"
+                  >
+                    <span
+                      className="slds-checkbox_faux"
+                    />
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Select this row 6
+                    </span>
+                  </label>
+                </span>
+              </div>
+            </div>
+          </td>
+          <th
+            className={null}
+            data-label="Name"
+            role="gridcell"
+            style={
+              Object {
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="salesforce.com - 5,000 Widgets"
+            >
+              salesforce.com - 5,000 Widgets
+            </div>
+          </th>
+          <td
+            className={null}
+            data-label="Account Name"
+            headers="header-row-example-id-2"
+            role="gridcell"
+            style={
+              Object {
+                "width": "8rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="MulesSoft"
+            >
+              MulesSoft
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Close Date"
+            headers="header-row-example-id-2"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="10/31/18 4:15AM"
+            >
+              10/31/18 4:15AM
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Stage"
+            headers="header-row-example-id-2"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Id. Decision Makers"
+            >
+              Id. Decision Makers
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Confidence"
+            headers="header-row-example-id-2"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="35%"
+            >
+              35%
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Amount"
+            headers="header-row-example-id-2"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="$50,000"
+            >
+              $50,000
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Contact"
+            headers="header-row-example-id-2"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="chyral@salesforce.com"
+            >
+              chyral@salesforce.com
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th
+            colSpan={8}
+            id="header-row-example-id-3"
+            scope="colgroup"
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "padding": "0.5rem 1.25rem",
+              }
+            }
+          >
+            <p
+              aria-level={3}
+              role="heading"
+              style={
+                Object {
+                  "fontWeight": 700,
+                }
+              }
+            >
+              Argentina &gt; Autonomous City of Buenos Aires &gt; Belgrano
+            </p>
+          </th>
+        </tr>
+        <tr
+          aria-selected="false"
+          className=""
+        >
+          <td
+            className="slds-text-align_right"
+            role="gridcell"
+            style={
+              Object {
+                "width": "3.25rem",
+              }
+            }
+          >
+            <div
+              className="slds-form-element"
+            >
+              <div
+                className="slds-form-element__control"
+              >
+                <span
+                  className="slds-checkbox"
+                >
+                  <input
+                    aria-labelledby="DataTableExample-2-SLDSDataTableRow-8IKZHWERWRV81-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
+                    checked={false}
+                    id="DataTableExample-2-SLDSDataTableRow-8IKZHWERWRV81-SelectRow"
+                    name="SelectRow8"
+                    onChange={[Function]}
+                    type="checkbox"
+                  />
+                  <label
+                    className="slds-checkbox__label"
+                    htmlFor="DataTableExample-2-SLDSDataTableRow-8IKZHWERWRV81-SelectRow"
+                    id="DataTableExample-2-SLDSDataTableRow-8IKZHWERWRV81-SelectRow-label"
+                  >
+                    <span
+                      className="slds-checkbox_faux"
+                    />
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Select this row 8
+                    </span>
+                  </label>
+                </span>
+              </div>
+            </div>
+          </td>
+          <th
+            className={null}
+            data-label="Name"
+            role="gridcell"
+            style={
+              Object {
+                "width": "10rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="salesforce.com - 1,000 Widgets"
+            >
+              salesforce.com - 1,000 Widgets
+            </div>
+          </th>
+          <td
+            className={null}
+            data-label="Account Name"
+            headers="header-row-example-id-3"
+            role="gridcell"
+            style={
+              Object {
+                "width": "8rem",
+              }
+            }
+          >
+            <div
+              className="slds-truncate"
+              title="salesforce.com"
+            >
+              salesforce.com
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Close Date"
+            headers="header-row-example-id-3"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="1/31/15 3:45PM"
+            >
+              1/31/15 3:45PM
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Stage"
+            headers="header-row-example-id-3"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Id. Decision Makers"
+            >
+              Id. Decision Makers
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Confidence"
+            headers="header-row-example-id-3"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="60%"
+            >
+              60%
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Amount"
+            headers="header-row-example-id-3"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="$25,000"
+            >
+              $25,000
+            </div>
+          </td>
+          <td
+            className={null}
+            data-label="Contact"
+            headers="header-row-example-id-3"
+            role="gridcell"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="nathan@salesforce.com"
+            >
+              nathan@salesforce.com
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
 <div
   className="slds-p-around_medium"
