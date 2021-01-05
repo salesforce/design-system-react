@@ -151,7 +151,9 @@ const Pill = (props) => {
 			}
 			onFocus={(event) => {
 				if (props.events.onFocus) {
-					props.events.onFocus(event);
+					props.events.onFocus(event, {
+						...props.eventData,
+					});
 				}
 			}}
 			onRemove={(event) => {

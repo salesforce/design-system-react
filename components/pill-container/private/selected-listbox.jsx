@@ -225,7 +225,12 @@ const SelectedListBox = (props) =>
 											index: renderIndex,
 										});
 									},
-									onFocus: props.events.onPillFocus,
+									onFocus: (event, data) => {
+										props.events.onPillFocus(event, {
+											...data,
+											index: renderIndex,
+										});
+									},
 									onRequestFocusOnNextPill:
 										props.events.onRequestFocusOnNextPill,
 									onRequestFocusOnPreviousPill:

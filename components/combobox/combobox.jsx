@@ -924,9 +924,13 @@ class Combobox extends React.Component {
 		});
 	};
 
-	handlePillFocus = () => {
+	handlePillFocus = (event, { option, index }) => {
 		if (!this.state.listboxHasFocus) {
-			this.setState({ listboxHasFocus: true });
+			this.setState({
+				activeSelectedOption: option,
+				activeSelectedOptionIndex: index,
+				listboxHasFocus: true,
+			});
 		}
 	};
 

@@ -4371,7 +4371,16 @@
                 "name": "handlePillFocus",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "{ option, index }",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
