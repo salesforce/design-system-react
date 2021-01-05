@@ -915,15 +915,6 @@ class Combobox extends React.Component {
 		}
 	};
 
-	handlePillClickSelectedListbox = (event, { option, index }) => {
-		// this is clicking the span, not the remove button
-		this.setState({
-			activeSelectedOption: option,
-			activeSelectedOptionIndex: index,
-			listboxHasFocus: true,
-		});
-	};
-
 	handlePillFocus = (event, { option, index }) => {
 		if (!this.state.listboxHasFocus) {
 			this.setState({
@@ -1134,7 +1125,6 @@ class Combobox extends React.Component {
 				assistiveText={assistiveText}
 				events={{
 					onBlurPill: this.handleBlurPill,
-					onClickPill: this.handlePillClickSelectedListbox,
 					onPillFocus: this.handlePillFocus,
 					onRequestFocus: this.handleRequestFocusSelectedListbox,
 					onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
@@ -1183,7 +1173,6 @@ class Combobox extends React.Component {
 						listboxAriaOrientation={null}
 						events={{
 							onBlurPill: this.handleBlurPill,
-							onClickPill: this.handlePillClickSelectedListbox,
 							onPillFocus: this.handlePillFocus,
 							onRequestFocus: this.handleRequestFocusSelectedListbox,
 							onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
@@ -1621,7 +1610,6 @@ class Combobox extends React.Component {
 					assistiveText={assistiveText}
 					events={{
 						onBlurPill: this.handleBlurPill,
-						onClickPill: this.handlePillClickSelectedListbox,
 						onPillFocus: this.handlePillFocus,
 						onRequestFocus: this.handleRequestFocusSelectedListbox,
 						onRequestFocusOnNextPill: this.handleNavigateSelectedListbox,
