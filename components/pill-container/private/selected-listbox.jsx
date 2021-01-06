@@ -45,6 +45,7 @@ const propTypes = {
 	 * Callbacks for various pill events such as click, focus, etc
 	 */
 	events: PropTypes.shape({
+		onClickPill: PropTypes.func,
 		onPillFocus: PropTypes.func.isRequired,
 		onRequestFocus: PropTypes.func.isRequired,
 		onRequestFocusOnNextPill: PropTypes.func.isRequired,
@@ -218,6 +219,15 @@ const SelectedListBox = (props) =>
 								error={option.error}
 								events={{
 									onBlur: props.events.onBlurPill,
+									onClick:
+										typeof props.events.onClickPill === 'function'
+											? (event, data) => {
+													props.events.onClickPill(event, {
+														...data,
+														index: renderIndex,
+													});
+											  }
+											: null,
 									onFocus: (event, data) => {
 										props.events.onPillFocus(event, {
 											...data,
