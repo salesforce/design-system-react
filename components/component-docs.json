@@ -4352,7 +4352,7 @@
                 "returns": null
             },
             {
-                "name": "handlePillClickSelectedListbox",
+                "name": "handlePillFocus",
                 "docblock": null,
                 "modifiers": [],
                 "params": [
@@ -4365,13 +4365,6 @@
                         "type": null
                     }
                 ],
-                "returns": null
-            },
-            {
-                "name": "handlePillFocus",
-                "docblock": null,
-                "modifiers": [],
-                "params": [],
                 "returns": null
             },
             {
@@ -12429,7 +12422,16 @@
                 "name": "handlePillFocus",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "data",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
