@@ -20,7 +20,11 @@ const filter = ({ inputValue, limit = 10, options, selection }) => {
 			const notAlreadySelected = !selection.some((sel) => sel.id === option.id);
 
 			return (
-				(!inputValue || isSeparator || searchTermFoundInLabel || searchTermFoundInSubtitle) && notAlreadySelected
+				(!inputValue ||
+					isSeparator ||
+					searchTermFoundInLabel ||
+					searchTermFoundInSubtitle) &&
+				notAlreadySelected
 			);
 		})
 		.splice(0, limit);

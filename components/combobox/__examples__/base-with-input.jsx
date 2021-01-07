@@ -145,8 +145,8 @@ class Example extends React.Component {
 						selection: this.state.selection,
 					})}
 					selection={this.state.selection}
-                    value={this.state.inputValue}
-                    isOpen
+					value={this.state.inputValue}
+					isOpen
 				/>
 			</IconSettings>
 		);
