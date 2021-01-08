@@ -368,7 +368,7 @@ const Menu = (props) => {
 									{ 'slds-disabled-text': optionData.disabled }
 								)}
 							>
-								{optionData.subTitle}
+								{setBold(optionData.subTitle, props.inputValue)}
 							</span>
 						</span>
 					)}

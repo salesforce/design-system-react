@@ -16,6 +16,7 @@ import BaseMenuItemDisabled from '../__examples__/base-menu-item-disabled';
 import BaseMenuItemDisabledTooltipOpen from '../__examples__/base-menu-item-disabled-tooltip-open';
 import BaseMenuItemDisabledTooltip from '../__examples__/base-menu-item-disabled-tooltip';
 import BaseWithScroll from '../__examples__/base-with-scroll';
+import BaseWithInput from '../__examples__/base-with-input';
 import Dialog from '../__examples__/dialog.jsx';
 import InlineSingle from '../__examples__/inline-single';
 import InlineSinglePredefinedOnly from '../__examples__/inline-single-predefined-options-only';
@@ -115,6 +116,7 @@ storiesOf(COMBOBOX, module)
 		<BaseInheritMenuWidthRTL action={action} />
 	))
 	.add('Base With Scroll', () => <BaseWithScroll action={action} />)
+	.add('Base With Input', () => <BaseWithInput action={action} />)
 	.add('Dialog', () => <Dialog action={action} />)
 	.add('Readonly Single Selection', () => <ReadOnly action={action} />)
 	.add('Readonly Single Selection - Right to Left (RTL)', () => (
