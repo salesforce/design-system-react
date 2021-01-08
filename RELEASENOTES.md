@@ -31,6 +31,18 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.25
+
+**Minor Features**
+
+- `Combobox`: Match search terms against subtitles
+- `DataTable`: Add support for custom header rows
+
+**Bugfixes**
+
+- `Combobox` and `PillContainer`: Fix focus when clicking on a pill
+- `Input`: Fix alignment of inline help text when Input is used with an icon
+
 ## Release 0.10.24
 
 **Minor Features**
