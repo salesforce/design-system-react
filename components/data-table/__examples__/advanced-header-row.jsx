@@ -105,19 +105,7 @@ class Example extends React.Component {
 				contact: 'nathan@salesforce.com',
 			},
 		],
-		selection: [
-			{
-				id: '8IKZHZZV81',
-				headerId: 'header-row-example-id-3',
-				opportunityName: 'salesforce.com - 1,000 Widgets',
-				accountName: 'salesforce.com',
-				closeDate: '1/31/15 3:45PM',
-				stage: 'Id. Decision Makers',
-				confidence: '60%',
-				amount: '$25,000',
-				contact: 'nathan@salesforce.com',
-			},
-		],
+		selection: [],
 	};
 
 	handleChanged = (event, data) => {
