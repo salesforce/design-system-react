@@ -297,12 +297,16 @@ class DataTable extends React.Component {
 		// REMOVE AT NEXT BREAKING CHANGE
 		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
-			const selection = checked ? [...this.props.items] : [];
+			const selection = (checked ? [...this.props.items] : []).filter(
+				(item) => item.type !== 'header-row'
+			);
 			this.props.onChange(selection, e);
 		}
 
 		if (typeof this.props.onRowChange === 'function') {
-			const selection = checked ? [...this.props.items] : [];
+			const selection = (checked ? [...this.props.items] : []).filter(
+				(item) => item.type !== 'header-row'
+			);
 			this.props.onRowChange(e, { selection });
 		}
 	};
@@ -421,11 +425,16 @@ class DataTable extends React.Component {
 		const ariaProps = {};
 		const numRows = count(this.props.items);
 		const numSelected = count(this.props.selection);
+		const numNonHeaderRows = count(
+			this.props.items.filter((item) => item.type !== 'header-row')
+		);
 		const canSelectRows =
-			this.props.selectRows && numRows > 0 ? this.props.selectRows : false;
-		const allSelected = canSelectRows && numRows === numSelected;
+			this.props.selectRows && numNonHeaderRows > 0
+				? this.props.selectRows
+				: false;
+		const allSelected = canSelectRows && numNonHeaderRows === numSelected;
 		const indeterminateSelected =
-			canSelectRows && numRows !== numSelected && numSelected !== 0;
+			canSelectRows && numNonHeaderRows !== numSelected && numSelected !== 0;
 		const columns = [];
 		let RowActions = null;
 

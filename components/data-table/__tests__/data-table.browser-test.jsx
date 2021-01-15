@@ -60,6 +60,24 @@ describe('DataTable: ', function describeFunction() {
 		},
 	];
 
+	const itemsWithHeaderRows = [
+		{
+			id: 'K6R34GW73J',
+			type: 'header-row',
+			name: 'Address',
+			count: 101210,
+			lastModified: 'Today',
+		},
+		...items,
+		{
+			id: 'KA78KJAY76',
+			type: 'header-row',
+			name: 'Company',
+			count: 101318,
+			lastModified: 'Today',
+		},
+	];
+
 	const columns = [
 		{
 			label: 'Name',
@@ -77,6 +95,11 @@ describe('DataTable: ', function describeFunction() {
 		id: 'DataTableExample-default',
 		items,
 		selectRows: true,
+	};
+
+	const defaultPropsWithHeaderRows = {
+		...defaultProps,
+		items: itemsWithHeaderRows,
 	};
 
 	const renderTable = (instance) =>
@@ -299,6 +322,53 @@ describe('DataTable: ', function describeFunction() {
 			renderTable(
 				<DataTable
 					{...defaultProps}
+					selection={items}
+					onRowChange={this.onRowChange}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const thead = getTable(this.dom).querySelectorAll('thead')[0];
+			const checkAll = thead.querySelectorAll('.slds-checkbox input')[0];
+
+			Simulate.change(checkAll, { target: { checked: false } });
+		});
+
+		it('can select all rows with header-rows present', function (done) {
+			this.onRowChange = (event, { selection }) => {
+				selection.should.have.length(6);
+				done();
+			};
+
+			renderTable(
+				<DataTable
+					{...defaultPropsWithHeaderRows}
+					onRowChange={this.onRowChange}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const thead = getTable(this.dom).querySelectorAll('thead')[0];
+			const checkAll = thead.querySelectorAll('.slds-checkbox input')[0];
+
+			Simulate.change(checkAll, { target: { checked: true } });
+		});
+
+		it('can deselect all rows with header-rows present', function (done) {
+			this.onRowChange = (event, { selection }) => {
+				selection.should.have.length(0);
+				done();
+			};
+
+			renderTable(
+				<DataTable
+					{...defaultPropsWithHeaderRows}
 					selection={items}
 					onRowChange={this.onRowChange}
 				>
