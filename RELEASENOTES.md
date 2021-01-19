@@ -31,6 +31,12 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.26
+
+**Bugfixes**
+
+- `DataTable`: `onRenderSubHeadingRow` de-selecting de-selects all rows
+
 ## Release 0.10.25
 
 **Minor Features**
