@@ -107,7 +107,7 @@
 		"react-text-truncate": "^0.14.1",
 		"shortid": "^2.2.15",
 		"warning": "^4.0.3",
-		"webpack-cli": "^3.x"
+		"webpack-cli": "^4.x"
 	},
 	"peerDependencies": {
 		"@salesforce-ux/design-system": "^2.9.4",
