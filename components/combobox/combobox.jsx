@@ -913,7 +913,7 @@ class Combobox extends React.Component {
 				this.props.events.onOpen(event, data);
 			}
 
-			if (this.props.variant === 'readonly') {
+			if (this.props.variant === 'readonly' && this.menuRef !== null) {
 				const activeOptionIndex = findIndex(this.getOptions(), (item) =>
 					isEqual(item, this.props.selection[0])
 				);
