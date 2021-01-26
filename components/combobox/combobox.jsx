@@ -918,6 +918,10 @@ class Combobox extends React.Component {
 					isEqual(item, this.props.selection[0])
 				);
 
+				this.setState({
+					activeOptionIndex,
+				});
+
 				menuItemSelectScroll({
 					container: this.menuRef,
 					focusedIndex: activeOptionIndex,
