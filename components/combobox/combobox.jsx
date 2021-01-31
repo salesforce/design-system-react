@@ -912,6 +912,21 @@ class Combobox extends React.Component {
 			if (this.props.events.onOpen) {
 				this.props.events.onOpen(event, data);
 			}
+
+			if (this.props.variant === 'readonly' && this.menuRef !== null) {
+				const activeOptionIndex = findIndex(this.getOptions(), (item) =>
+					isEqual(item, this.props.selection[0])
+				);
+
+				this.setState({
+					activeOptionIndex,
+				});
+
+				menuItemSelectScroll({
+					container: this.menuRef,
+					focusedIndex: activeOptionIndex,
+				});
+			}
 		}
 	};
 

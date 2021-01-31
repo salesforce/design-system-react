@@ -111,7 +111,7 @@ describe('SLDSExpression', function describeFunction() {
 			expect(resourceChange !== undefined).to.eql(true);
 			expect(typeof resourceChange.event).to.eql('object');
 			expect(typeof resourceChange.data).to.eql('object');
-			expect(resourceChange.data.selection[0]).to.equal(ResourcesList[1]);
+			expect(resourceChange.data.selection[0]).to.equal(ResourcesList[0]);
 		});
 
 		it('Operator selector works', function () {
@@ -124,7 +124,7 @@ describe('SLDSExpression', function describeFunction() {
 			expect(operatorChange !== undefined).to.eql(true);
 			expect(typeof operatorChange.event).to.eql('object');
 			expect(typeof operatorChange.data).to.eql('object');
-			expect(operatorChange.data.selection[0]).to.equal(OperatorsList[1]);
+			expect(operatorChange.data.selection[0]).to.equal(OperatorsList[0]);
 		});
 
 		it('Value input works', function () {
