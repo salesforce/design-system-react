@@ -22,6 +22,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
           className="slds-nav-vertical__item slds-is-active"
         >
           <a
+            aria-current={true}
             aria-describedby="sample-navigation-reports"
             className="slds-nav-vertical__action"
             data-id="recent_reports"
@@ -35,6 +36,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
           className="slds-nav-vertical__item"
         >
           <a
+            aria-current={null}
             aria-describedby="sample-navigation-reports"
             className="slds-nav-vertical__action"
             data-id="my_reports"
@@ -48,6 +50,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
           className="slds-nav-vertical__item"
         >
           <a
+            aria-current={null}
             aria-describedby="sample-navigation-reports"
             className="slds-nav-vertical__action"
             data-id="private_reports"
@@ -61,6 +64,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
           className="slds-nav-vertical__item"
         >
           <a
+            aria-current={null}
             aria-describedby="sample-navigation-reports"
             className="slds-nav-vertical__action"
             data-id="public_reports"
@@ -74,6 +78,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
           className="slds-nav-vertical__item"
         >
           <a
+            aria-current={null}
             aria-describedby="sample-navigation-reports"
             className="slds-nav-vertical__action"
             data-id="all_reports"
@@ -99,6 +104,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
           className="slds-nav-vertical__item"
         >
           <a
+            aria-current={null}
             aria-describedby="sample-navigation-folders"
             className="slds-nav-vertical__action"
             data-id="my_folders"
@@ -112,6 +118,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
           className="slds-nav-vertical__item"
         >
           <a
+            aria-current={null}
             aria-describedby="sample-navigation-folders"
             className="slds-nav-vertical__action"
             data-id="shared_folders"
@@ -125,6 +132,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
           className="slds-nav-vertical__item"
         >
           <a
+            aria-current={null}
             aria-describedby="sample-navigation-folders"
             className="slds-nav-vertical__action"
             data-id="all_folders"
@@ -169,6 +177,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
             className="slds-nav-vertical__item slds-is-active"
           >
             <a
+              aria-current={true}
               aria-describedby="sample-navigation-reports"
               className="slds-nav-vertical__action"
               data-id="recent_reports"
@@ -182,6 +191,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
             className="slds-nav-vertical__item"
           >
             <a
+              aria-current={null}
               aria-describedby="sample-navigation-reports"
               className="slds-nav-vertical__action"
               data-id="my_reports"
@@ -195,6 +205,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
             className="slds-nav-vertical__item"
           >
             <a
+              aria-current={null}
               aria-describedby="sample-navigation-reports"
               className="slds-nav-vertical__action"
               data-id="private_reports"
@@ -208,6 +219,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
             className="slds-nav-vertical__item"
           >
             <a
+              aria-current={null}
               aria-describedby="sample-navigation-reports"
               className="slds-nav-vertical__action"
               data-id="public_reports"
@@ -221,6 +233,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
             className="slds-nav-vertical__item"
           >
             <a
+              aria-current={null}
               aria-describedby="sample-navigation-reports"
               className="slds-nav-vertical__action"
               data-id="all_reports"
@@ -246,6 +259,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
             className="slds-nav-vertical__item"
           >
             <a
+              aria-current={null}
               aria-describedby="sample-navigation-folders"
               className="slds-nav-vertical__action"
               data-id="my_folders"
@@ -259,6 +273,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
             className="slds-nav-vertical__item"
           >
             <a
+              aria-current={null}
               aria-describedby="sample-navigation-folders"
               className="slds-nav-vertical__action"
               data-id="shared_folders"
@@ -272,6 +287,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
             className="slds-nav-vertical__item"
           >
             <a
+              aria-current={null}
               aria-describedby="sample-navigation-folders"
               className="slds-nav-vertical__action"
               data-id="all_folders"

@@ -34,6 +34,7 @@ const Item = (props) => (
 			href={props.item.url || 'javascript:void(0);'} // eslint-disable-line no-script-url
 			className="slds-nav-vertical__action"
 			aria-describedby={props.categoryId}
+			aria-current={props.isSelected ? true : null}
 			onClick={(event) => {
 				handleClick(event, props);
 			}}
