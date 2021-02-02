@@ -31,6 +31,12 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.27
+
+**Bugfixes**
+
+- `Combobox`: Auto-scroll menu to selected item in listbox
+
 ## Release 0.10.26
 
 **Bugfixes**
