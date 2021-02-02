@@ -116,7 +116,7 @@
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.12.8",
-		"@babel/core": "^7.12.9",
+		"@babel/core": "^7.12.10",
 		"@babel/node": "^7.12.6",
 		"@babel/parser": "^7.12.7",
 		"@babel/plugin-proposal-class-properties": "^7.12.1",
