@@ -118,7 +118,7 @@
 		"@babel/cli": "^7.12.8",
 		"@babel/core": "^7.12.9",
 		"@babel/node": "^7.12.6",
-		"@babel/parser": "^7.12.7",
+		"@babel/parser": "^7.12.11",
 		"@babel/plugin-proposal-class-properties": "^7.12.1",
 		"@babel/plugin-proposal-export-default-from": "^7.12.1",
 		"@babel/plugin-proposal-export-namespace-from": "^7.12.1",
