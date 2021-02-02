@@ -15,6 +15,7 @@ import componentDoc from './component.json';
 import Tooltip from '../tooltip';
 
 import getAriaProps from '../../utilities/get-aria-props';
+import getDataProps from '../../utilities/get-data-props';
 import getFormProps from '../../utilities/get-form-props';
 
 import { BUTTON } from '../../utilities/constants';
@@ -32,7 +33,7 @@ const defaultProps = {
 /**
  * The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.
  * Either a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">ButtonStateful</a> component.
- * Although not listed in the prop table, all `aria-*` and `form*` props will be added to the `button` element if passed in.
+ * Although not listed in the prop table, all `aria-*`, `data-*` and `form*` props will be added to the `button` element if passed in.
  */
 class Button extends React.Component {
 	static displayName = BUTTON;
@@ -305,6 +306,7 @@ class Button extends React.Component {
 
 	renderButton = () => {
 		const ariaProps = getAriaProps(this.props);
+		const dataProps = getDataProps(this.props);
 		const formProps = getFormProps(this.props);
 
 		return (
@@ -334,6 +336,7 @@ class Button extends React.Component {
 				type={this.props.type || 'button'}
 				style={this.props.style}
 				{...ariaProps}
+				{...dataProps}
 				{...formProps}
 			>
 				{this.props.iconPosition === 'right' ? this.renderLabel() : null}
