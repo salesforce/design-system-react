@@ -1078,7 +1078,6 @@ class Combobox extends React.Component {
 					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
 					// used on menu's listbox
 					aria-owns={this.getIsOpen() ? `${this.getId()}-listbox` : undefined} // eslint-disable-line jsx-a11y/aria-proptypes
-					role="combobox"
 				>
 					<InnerInput
 						aria-autocomplete="list"
@@ -1120,7 +1119,7 @@ class Combobox extends React.Component {
 							!!(props.predefinedOptionsOnly && this.state.activeOption)
 						}
 						required={props.required}
-						role="textbox"
+						role="combobox"
 						value={
 							props.predefinedOptionsOnly
 								? (this.state.activeOption && this.state.activeOption.label) ||
