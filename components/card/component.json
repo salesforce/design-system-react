@@ -1,0 +1,28 @@
+{
+	"component": "card",
+	"status": "prod",
+	"display-name": "Cards",
+	"classKey": "Card",
+	"last-accessibility-review": {
+		"date-iso-8601": "2018/01/18",
+		"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+	},
+	"SLDS-component-path": "/components/cards",
+	"dependencies": [
+		{
+			"component": "empty",
+			"classKey": "CardEmpty"
+		},
+		{
+			"component": "filter",
+			"classKey": "CardFilter"
+		}
+	],
+	"site-stories": [
+		{
+			"heading": "Card with Data Table",
+			"path": "/__examples__/related-list-with-table.jsx"
+		}
+	],
+	"url-slug": "cards"
+}

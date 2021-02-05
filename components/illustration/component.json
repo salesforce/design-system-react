@@ -1,0 +1,31 @@
+{
+	"component": "illustration",
+	"is-deprecated": true,
+	"status": "prototype",
+	"display-name": "Illustrations",
+	"classKey": "Illustration",
+	"SLDS-component-path": "/components/illustration",
+	"site-stories": [
+		{
+			"heading": "Small Image with Text",
+			"path": "/__examples__/small-image-text.jsx"
+		},
+		{
+			"heading": "Large Image with Text",
+			"path": "/__examples__/large-image-text.jsx"
+		},
+		{
+			"heading": "With Heading and message",
+			"path": "/__examples__/heading-message.jsx"
+		},
+		{
+			"heading": "Heading Only",
+			"path": "/__examples__/heading-only.jsx"
+		},
+		{
+			"heading": "Message Only",
+			"path": "/__examples__/message-only.jsx"
+		}
+	],
+	"url-slug": "illustrations"
+}

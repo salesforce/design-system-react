@@ -1,0 +1,32 @@
+{
+	"component": "page-header",
+	"status": "prod",
+	"display-name": "Page Headers",
+	"classKey": "PageHeader",
+	"SLDS-component-path": "/components/page-headers",
+	"dependencies": [
+		{
+			"component": "control",
+			"classKey": "PageHeaderControl"
+		}
+	],
+	"site-stories": [
+		{
+			"heading": "Record Home",
+			"path": "/__examples__/record-home.jsx"
+		},
+		{
+			"heading": "Object Home",
+			"path": "/__examples__/object-home.jsx"
+		},
+		{
+			"heading": "Related list",
+			"path": "/__examples__/related-list.jsx"
+		},
+		{
+			"heading": "Setup",
+			"path": "/__examples__/setup.jsx"
+		}
+	],
+	"url-slug": "page-headers"
+}
