@@ -157,7 +157,7 @@
 		"compression": "^1.7.4",
 		"concurrently": "^5.3.0",
 		"cross-env": "^7.0.3",
-		"css-loader": "^4.2.2",
+		"css-loader": "^5.0.1",
 		"enzyme": "^3.11.0",
 		"enzyme-adapter-react-16": "^1.15.4",
 		"eslint": "^5.16.0",
