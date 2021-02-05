@@ -20,10 +20,7 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -32,6 +29,8 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base"
@@ -43,7 +42,7 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -228,10 +227,7 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -240,6 +236,8 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-custom-menu-item"
@@ -251,7 +249,7 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -291,10 +289,7 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item Disabled 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -303,6 +298,8 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item Disabled 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -314,7 +311,7 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item Disabled 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -373,11 +370,8 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
           className="slds-combobox_container"
         >
           <div
-            aria-expanded={true}
-            aria-haspopup="listbox"
             aria-owns="combobox-base-inherit-menu-width-listbox"
             className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
-            role="combobox"
           >
             <div
               className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -387,6 +381,8 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                 aria-activedescendant={null}
                 aria-autocomplete="list"
                 aria-controls="combobox-base-inherit-menu-width-listbox"
+                aria-expanded={true}
+                aria-haspopup="listbox"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 id="combobox-base-inherit-menu-width"
@@ -398,7 +394,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                 placeholder="Search Salesforce"
                 readOnly={false}
                 required={false}
-                role="textbox"
+                role="combobox"
                 type="text"
                 value=""
               />
@@ -802,10 +798,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -814,6 +807,8 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-inherit-menu-width"
@@ -825,7 +820,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -908,10 +903,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
           className="slds-combobox_container"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-            role="combobox"
           >
             <div
               className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -920,6 +912,8 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
               <input
                 aria-activedescendant={null}
                 aria-autocomplete="list"
+                aria-expanded={false}
+                aria-haspopup="listbox"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 id="combobox-base-inline-help"
@@ -931,7 +925,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
                 placeholder="Search Salesforce"
                 readOnly={false}
                 required={false}
-                role="textbox"
+                role="combobox"
                 type="text"
                 value=""
               />
@@ -1117,10 +1111,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1129,6 +1120,8 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base"
@@ -1140,7 +1133,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -1327,10 +1320,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1339,6 +1329,8 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base"
@@ -1350,7 +1342,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -1537,11 +1529,8 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={true}
-          aria-haspopup="listbox"
           aria-owns="combobox-base-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1551,6 +1540,8 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
               aria-activedescendant={null}
               aria-autocomplete="list"
               aria-controls="combobox-base-listbox"
+              aria-expanded={true}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base"
@@ -1562,7 +1553,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -2160,10 +2151,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Separator 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2172,6 +2160,8 @@ exports[`DOM snapshots SLDSCombobox Base Menu Separator 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-menu-separator"
@@ -2183,7 +2173,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Separator 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -2223,10 +2213,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Sub Headers 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2235,6 +2222,8 @@ exports[`DOM snapshots SLDSCombobox Base Menu Sub Headers 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-menu-subheader"
@@ -2246,7 +2235,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Sub Headers 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -2286,10 +2275,7 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2298,6 +2284,8 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-predefined-options"
@@ -2309,7 +2297,7 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -2494,11 +2482,8 @@ exports[`DOM snapshots SLDSCombobox Base With Input 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={true}
-          aria-haspopup="listbox"
           aria-owns="combobox-base-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2508,6 +2493,8 @@ exports[`DOM snapshots SLDSCombobox Base With Input 1`] = `
               aria-activedescendant={null}
               aria-autocomplete="list"
               aria-controls="combobox-base-listbox"
+              aria-expanded={true}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base"
@@ -2519,7 +2506,7 @@ exports[`DOM snapshots SLDSCombobox Base With Input 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value="b"
             />
@@ -2845,10 +2832,7 @@ exports[`DOM snapshots SLDSCombobox Base With Scroll 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2857,6 +2841,8 @@ exports[`DOM snapshots SLDSCombobox Base With Scroll 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base"
@@ -2868,7 +2854,7 @@ exports[`DOM snapshots SLDSCombobox Base With Scroll 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -3053,10 +3039,7 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="dialog"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             style={
@@ -3072,6 +3055,7 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
               <input
                 aria-autocomplete="none"
                 aria-describedby={null}
+                aria-expanded={false}
                 aria-haspopup="dialog"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
@@ -3084,7 +3068,7 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
                 placeholder="Select an option"
                 readOnly={true}
                 required={false}
-                role="textbox"
+                role="combobox"
                 tabIndex="0"
                 type="text"
                 value="Select an option"
@@ -3277,10 +3261,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
           </ul>
         </div>
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3289,6 +3270,8 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-inline-multiple"
@@ -3300,7 +3283,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -3340,10 +3323,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection Loading 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3352,6 +3332,8 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection Loading 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -3363,7 +3345,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection Loading 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -3421,10 +3403,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
                 className="slds-combobox_container"
               >
                 <div
-                  aria-expanded={false}
-                  aria-haspopup="listbox"
                   className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-                  role="combobox"
                 >
                   <div
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3433,6 +3412,8 @@ exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
                     <input
                       aria-activedescendant={null}
                       aria-autocomplete="list"
+                      aria-expanded={false}
+                      aria-haspopup="listbox"
                       autoComplete="off"
                       className="slds-input slds-combobox__input"
                       disabled={false}
@@ -3445,7 +3426,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
                       placeholder="Select an Option"
                       readOnly={true}
                       required={false}
-                      role="textbox"
+                      role="combobox"
                       type="text"
                       value="All"
                     />
@@ -3480,10 +3461,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
                 className="slds-combobox_container"
               >
                 <div
-                  aria-expanded={false}
-                  aria-haspopup="listbox"
                   className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-                  role="combobox"
                 >
                   <div
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3492,6 +3470,8 @@ exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
                     <input
                       aria-activedescendant={null}
                       aria-autocomplete="list"
+                      aria-expanded={false}
+                      aria-haspopup="listbox"
                       autoComplete="off"
                       className="slds-input slds-combobox__input"
                       id="combobox-unique-id"
@@ -3503,7 +3483,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
                       placeholder="Search Salesforce"
                       readOnly={false}
                       required={false}
-                      role="textbox"
+                      role="combobox"
                       type="text"
                       value=""
                     />
@@ -3547,10 +3527,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={true}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3560,6 +3537,8 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
               aria-activedescendant={null}
               aria-autocomplete="list"
               aria-controls="combobox-unique-id-listbox"
+              aria-expanded={true}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -3572,7 +3551,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -3943,10 +3922,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3955,6 +3931,8 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -3967,7 +3945,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -4007,10 +3985,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4019,6 +3994,8 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -4031,7 +4008,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -4071,10 +4048,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection Predefined Options O
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4083,6 +4057,8 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection Predefined Options O
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -4095,7 +4071,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection Predefined Options O
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -4135,10 +4111,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection With Custom Open Sta
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4147,6 +4120,8 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection With Custom Open Sta
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -4159,7 +4134,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection With Custom Open Sta
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -4199,10 +4174,7 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4211,6 +4183,8 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="test"
               className="slds-input slds-combobox__input"
               id="combobox-input-prop-example"
@@ -4222,7 +4196,7 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
               placeholder="My overridden placeholder"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -4407,10 +4381,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4419,6 +4390,8 @@ exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-readonly-multiple"
@@ -4430,7 +4403,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection 1`] = `
               placeholder="Select an Option"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -4474,10 +4447,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Menu Item Disabled 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4486,6 +4456,8 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Menu Item Disabled 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -4498,7 +4470,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Menu Item Disabled 1`] = `
               placeholder="Select an Option"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -4566,10 +4538,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection - Right to Left (R
           className="slds-combobox_container"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-            role="combobox"
           >
             <div
               className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4578,6 +4547,8 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection - Right to Left (R
               <input
                 aria-activedescendant={null}
                 aria-autocomplete="list"
+                aria-expanded={false}
+                aria-haspopup="listbox"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 disabled={false}
@@ -4590,7 +4561,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection - Right to Left (R
                 placeholder="Select an Option"
                 readOnly={true}
                 required={false}
-                role="textbox"
+                role="combobox"
                 type="text"
                 value=""
               />
@@ -4635,10 +4606,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4647,6 +4615,8 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -4659,7 +4629,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection 1`] = `
               placeholder="Select an Option"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -4703,10 +4673,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Custom Menu Item 1
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4715,6 +4682,8 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Custom Menu Item 1
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -4727,7 +4696,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Custom Menu Item 1
               placeholder="Select company"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -4771,10 +4740,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Disabled 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4783,6 +4749,8 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Disabled 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={true}
@@ -4795,7 +4763,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Disabled 1`] = `
               placeholder="Select an Option"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -4845,10 +4813,7 @@ exports[`DOM snapshots SLDSCombobox Required Input in Error State 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4858,6 +4823,8 @@ exports[`DOM snapshots SLDSCombobox Required Input in Error State 1`] = `
               aria-activedescendant={null}
               aria-autocomplete="list"
               aria-describedby="description-unique-id"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-required-error-state"
@@ -4869,7 +4836,7 @@ exports[`DOM snapshots SLDSCombobox Required Input in Error State 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={true}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -4919,11 +4886,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={true}
-          aria-haspopup="listbox"
           aria-owns="combobox-base-custom-menu-item-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4933,6 +4897,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
               aria-activedescendant={null}
               aria-autocomplete="list"
               aria-controls="combobox-base-custom-menu-item-listbox"
+              aria-expanded={true}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base-custom-menu-item"
@@ -4944,7 +4910,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -5210,10 +5176,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Label Required 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -5223,6 +5186,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Label Required 1`] = `
               aria-activedescendant={null}
               aria-autocomplete="list"
               aria-describedby="description-unique-id"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-required-error-state"
@@ -5234,7 +5199,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Label Required 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={true}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -5284,11 +5249,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={true}
-          aria-haspopup="listbox"
           aria-owns="combobox-unique-id-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -5298,6 +5260,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
               aria-activedescendant={null}
               aria-autocomplete="list"
               aria-controls="combobox-unique-id-listbox"
+              aria-expanded={true}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -5309,7 +5273,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -5465,11 +5429,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={true}
-          aria-haspopup="listbox"
           aria-owns="combobox-unique-id-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -5479,6 +5440,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
               aria-activedescendant={null}
               aria-autocomplete="list"
               aria-controls="combobox-unique-id-listbox"
+              aria-expanded={true}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -5490,7 +5453,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -5588,11 +5551,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={true}
-          aria-haspopup="listbox"
           aria-owns="combobox-unique-id-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -5602,6 +5562,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
               aria-activedescendant={null}
               aria-autocomplete="list"
               aria-controls="combobox-unique-id-listbox"
+              aria-expanded={true}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -5613,7 +5575,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -5711,10 +5673,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -5723,6 +5682,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -5734,7 +5695,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -5852,10 +5813,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={true}
-          aria-haspopup="dialog"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
-          role="combobox"
         >
           <div
             style={
@@ -5871,6 +5829,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
               <input
                 aria-autocomplete="none"
                 aria-controls="combobox-unique-id-popover"
+                aria-expanded={true}
                 aria-haspopup="dialog"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
@@ -5883,7 +5842,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
                 placeholder="Select an option"
                 readOnly={true}
                 required={false}
-                role="textbox"
+                role="combobox"
                 tabIndex="0"
                 type="text"
                 value="Select an option"
@@ -6006,10 +5965,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={true}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -6019,6 +5975,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
               aria-activedescendant={null}
               aria-autocomplete="list"
               aria-controls="combobox-unique-id-listbox"
+              aria-expanded={true}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -6030,7 +5988,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -6363,10 +6321,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -6375,6 +6330,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -6386,7 +6343,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -6573,10 +6530,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
           </ul>
         </div>
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -6585,6 +6539,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -6596,7 +6552,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -6654,10 +6610,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Entity Selection 1`] 
                 className="slds-combobox_container"
               >
                 <div
-                  aria-expanded={false}
-                  aria-haspopup="listbox"
                   className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-                  role="combobox"
                 >
                   <div
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -6666,6 +6619,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Entity Selection 1`] 
                     <input
                       aria-activedescendant={null}
                       aria-autocomplete="list"
+                      aria-expanded={false}
+                      aria-haspopup="listbox"
                       autoComplete="off"
                       className="slds-input slds-combobox__input"
                       disabled={false}
@@ -6678,7 +6633,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Entity Selection 1`] 
                       placeholder="entity"
                       readOnly={false}
                       required={false}
-                      role="textbox"
+                      role="combobox"
                       type="text"
                       value=""
                     />
@@ -6709,10 +6664,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Entity Selection 1`] 
                 className="slds-combobox_container"
               >
                 <div
-                  aria-expanded={false}
-                  aria-haspopup="listbox"
                   className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-                  role="combobox"
                 >
                   <div
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -6721,6 +6673,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Entity Selection 1`] 
                     <input
                       aria-activedescendant={null}
                       aria-autocomplete="list"
+                      aria-expanded={false}
+                      aria-haspopup="listbox"
                       autoComplete="off"
                       className="slds-input slds-combobox__input"
                       id="combobox-unique-id"
@@ -6732,7 +6686,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Entity Selection 1`] 
                       placeholder="Search Salesforce"
                       readOnly={false}
                       required={false}
-                      role="textbox"
+                      role="combobox"
                       type="text"
                       value=""
                     />
@@ -6776,10 +6730,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={true}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -6789,6 +6740,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
               aria-activedescendant={null}
               aria-autocomplete="list"
               aria-controls="combobox-unique-id-listbox"
+              aria-expanded={true}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -6801,7 +6754,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -7086,10 +7039,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -7098,6 +7048,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -7110,7 +7062,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -7150,10 +7102,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection Selected 1`
         className="slds-combobox_container slds-has-inline-listbox"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right"
@@ -7179,6 +7128,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection Selected 1`
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -7191,7 +7142,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection Selected 1`
               placeholder="Search Salesforce"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value="Acme"
             />
@@ -7243,10 +7194,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -7255,6 +7203,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -7266,7 +7216,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection 1`] = `
               placeholder="Select an Option"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -7310,10 +7260,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Multipl
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -7322,6 +7269,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Multipl
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -7333,7 +7282,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Multipl
               placeholder="Select an Option"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value="2 options selected"
             />
@@ -7480,10 +7429,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Single 
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -7492,6 +7438,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Single 
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-unique-id"
@@ -7503,7 +7451,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Single 
               placeholder="Select an Option"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value="Acme"
             />
@@ -7547,10 +7495,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -7559,6 +7504,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -7571,7 +7518,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection 1`] = `
               placeholder="Select an Option"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -7615,10 +7562,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={true}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -7628,6 +7572,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
               aria-activedescendant={null}
               aria-autocomplete="list"
               aria-controls="combobox-readonly-single-custom-item-listbox"
+              aria-expanded={true}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -7640,7 +7586,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
               placeholder="Select company"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -8248,10 +8194,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Disabled 
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -8260,6 +8203,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Disabled 
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={true}
@@ -8272,7 +8217,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Disabled 
               placeholder="Select an Option"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -8316,10 +8261,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -8328,6 +8270,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -8340,7 +8284,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
               placeholder="Select an Option"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value="Acme"
             />
@@ -8384,10 +8328,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={true}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
-          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -8397,6 +8338,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
               aria-activedescendant={null}
               aria-autocomplete="list"
               aria-controls="combobox-unique-id-listbox"
+              aria-expanded={true}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
@@ -8409,7 +8352,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
               placeholder="Select an Option"
               readOnly={true}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value="Acme"
             />

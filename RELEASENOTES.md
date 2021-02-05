@@ -31,6 +31,17 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.28
+
+**Bugfixes**
+
+- `Combobox`: Update markup from ARIA 1.1 to ARIA 1.2 to better support assistive technology
+## Release 0.10.27
+
+**Bugfixes**
+
+- `Combobox`: Auto-scroll menu to selected item in listbox
+
 ## Release 0.10.26
 
 **Bugfixes**
