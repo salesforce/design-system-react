@@ -229,13 +229,13 @@ describe('SLDSCombobox', function describeFunction() {
 		it('has aria-haspopup, role is combobox, aria-expanded is false when closed, aria-expanded is true when open', function () {
 			wrapper = mount(<DemoComponent multiple />, { attachTo: mountNode });
 			const nodes = getNodes({ wrapper });
-			expect(nodes.combobox).attr('aria-haspopup', 'listbox');
+			expect(nodes.input).attr('aria-haspopup', 'listbox');
 			expect(nodes.input).attr('role', 'combobox');
 			// closed
-			expect(nodes.combobox).attr('aria-expanded', 'false');
+			expect(nodes.input).attr('aria-expanded', 'false');
 			// open
 			nodes.input.simulate('click', {});
-			expect(nodes.combobox).attr('aria-expanded', 'true');
+			expect(nodes.input).attr('aria-expanded', 'true');
 		});
 
 		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', function () {
