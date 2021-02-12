@@ -215,7 +215,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    closeButton: 'Close',\n}",
+                    "value": "{\n\tcloseButton: 'Close',\n}",
                     "computed": false
                 }
             },
@@ -436,7 +436,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `trigger`: This is a visually hidden label for the app launcher icon.",
                 "defaultValue": {
-                    "value": "{\n    trigger: 'Open App Launcher',\n}",
+                    "value": "{\n\ttrigger: 'Open App Launcher',\n}",
                     "computed": false
                 }
             },
@@ -746,7 +746,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility.**\n* `dragIconText`: Text that describes the purpose of the drag handle icon.",
                             "defaultValue": {
-                                "value": "{\n    dragIconText: 'Reorder',\n}",
+                                "value": "{\n\tdragIconText: 'Reorder',\n}",
                                 "computed": false
                             }
                         },
@@ -913,7 +913,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `icon`: Assistive text for accessibility that labels the icon.",
                 "defaultValue": {
-                    "value": "{\n    icon: 'User or Account Icon',\n}",
+                    "value": "{\n\ticon: 'User or Account Icon',\n}",
                     "computed": false
                 }
             },
@@ -1325,7 +1325,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `label`: The assistive text for the breadcrumb trail.",
                 "defaultValue": {
-                    "value": "{\n    label: 'Breadcrumbs',\n}",
+                    "value": "{\n\tlabel: 'Breadcrumbs',\n}",
                     "computed": false
                 }
             },
@@ -1388,7 +1388,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `backIcon`: Used for the back icon.\n* `helpIcon`: Used for the help icon.\n* `icon`: Used for the main icon next to the header title.\n* _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    backIcon: 'Back',\n    helpIcon: 'Help',\n    icon: 'Builder',\n}",
+                    "value": "{\n\tbackIcon: 'Back',\n\thelpIcon: 'Help',\n\ticon: 'Builder',\n}",
                     "computed": false
                 }
             },
@@ -1506,7 +1506,7 @@
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `back`: The label for the Back link.\n* `help`: The label for the Help link.\n* `pageType`: The label that describes the page type.\n* `title`: The label for the page title.\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    back: 'Back',\n    help: 'Help',\n    pageType: 'Page Type',\n    title: 'App Name',\n}",
+                    "value": "{\n\tback: 'Back',\n\thelp: 'Help',\n\tpageType: 'Page Type',\n\ttitle: 'App Name',\n}",
                     "computed": false
                 }
             },
@@ -1648,7 +1648,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `actions`: Used for the aria-label for the actions section of the toolbar.\n* _Tested with snapshot testing._",
                             "defaultValue": {
-                                "value": "{\n    actions: 'Actions',\n}",
+                                "value": "{\n\tactions: 'Actions',\n}",
                                 "computed": false
                             }
                         },
@@ -2156,7 +2156,7 @@
             "iconCategory": {
                 "type": {
                     "name": "custom",
-                    "raw": "requiredIf(\n    PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),\n    (props) => !!props.iconName\n)"
+                    "raw": "requiredIf(\n\tPropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),\n\t(props) => !!props.iconName\n)"
                 },
                 "required": false,
                 "description": "Name of the icon category. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon categories."
@@ -2914,7 +2914,7 @@
                 "required": false,
                 "description": "Description of the carousel items for screen-readers.",
                 "defaultValue": {
-                    "value": "{\n    autoplayButton: 'Start / Stop auto-play',\n    nextPanel: 'Next Panel',\n    previousPanel: 'Previous Panel',\n}",
+                    "value": "{\n\tautoplayButton: 'Start / Stop auto-play',\n\tnextPanel: 'Next Panel',\n\tpreviousPanel: 'Previous Panel',\n}",
                     "computed": false
                 }
             },
@@ -3341,7 +3341,7 @@
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `heading`: Heading for the visual picker variant\n* `label`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".\n* `toggleDisabled`: Label for the _disabled_ state of the Toggle variant. Defaults to \"Disabled\". Note that this uses SLDS language, and meaning, of \"Enabled\" and \"Disabled\"; referring to the state of whatever the checkbox is _toggling_, not whether the checkbox itself is enabled or disabled.\n* `toggleEnabled`: Label for the _enabled_ state of the Toggle variant. Defaults to \"Enabled\".",
                 "defaultValue": {
-                    "value": "{\n    toggleDisabled: 'Disabled',\n    toggleEnabled: 'Enabled',\n}",
+                    "value": "{\n\ttoggleDisabled: 'Disabled',\n\ttoggleEnabled: 'Enabled',\n}",
                     "computed": false
                 }
             },
@@ -3742,7 +3742,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `hueSlider`: Instructions for hue selection input\n* `saturationValueGrid`: Instructions for using the grid for saturation\nand value selection",
                 "defaultValue": {
-                    "value": "{\n    saturationValueGrid:\n        'Use arrow keys to select a saturation and brightness, on an x and y axis.',\n    hueSlider: 'Select Hue',\n}",
+                    "value": "{\n\tsaturationValueGrid:\n\t\t'Use arrow keys to select a saturation and brightness, on an x and y axis.',\n\thueSlider: 'Select Hue',\n}",
                     "computed": false
                 }
             },
@@ -3941,7 +3941,7 @@
                 "required": false,
                 "description": "**Text labels for internationalization**\n* `blueAbbreviated`: One letter abbreviation of blue color component\n* `cancelButton`: Text for cancel button on popover\n* `customTab`: Text for custom tab of popover\n* `customTabActiveWorkingColorSwatch`: Label for custom tab active working color swatch\n* `customTabTransparentSwatch`: Label for custom tab active transparent swatch\n* `greenAbbreviated`: One letter abbreviation of green color component\n* `hexLabel`: Label for input of hexadecimal color\n* `invalidColor`: Error message when hex color input is invalid\n* `invalidComponent`: Error message when a component input is invalid\n* `label`: An `input` label as for a `form`\n* `redAbbreviated`: One letter abbreviation of red color component\n* `swatchTab`: Label for swatch tab of popover\n* `submitButton`: Text for submit/done button of popover",
                 "defaultValue": {
-                    "value": "{\n    blueAbbreviated: 'B',\n    cancelButton: 'Cancel',\n    customTab: 'Custom',\n    customTabActiveWorkingColorSwatch: 'Working Color',\n    customTabTransparentSwatch: 'Transparent Swatch',\n    greenAbbreviated: 'G',\n    hexLabel: 'Hex',\n    invalidColor: 'The color entered is invalid',\n    invalidComponent: 'The value needs to be an integer from 0-255',\n    redAbbreviated: 'R',\n    submitButton: 'Done',\n    swatchTab: 'Default',\n    swatchTabTransparentSwatch: 'Transparent Swatch',\n}",
+                    "value": "{\n\tblueAbbreviated: 'B',\n\tcancelButton: 'Cancel',\n\tcustomTab: 'Custom',\n\tcustomTabActiveWorkingColorSwatch: 'Working Color',\n\tcustomTabTransparentSwatch: 'Transparent Swatch',\n\tgreenAbbreviated: 'G',\n\thexLabel: 'Hex',\n\tinvalidColor: 'The color entered is invalid',\n\tinvalidComponent: 'The value needs to be an integer from 0-255',\n\tredAbbreviated: 'R',\n\tsubmitButton: 'Done',\n\tswatchTab: 'Default',\n\tswatchTabTransparentSwatch: 'Transparent Swatch',\n}",
                     "computed": false
                 }
             },
@@ -3980,7 +3980,7 @@
                 "required": false,
                 "description": "An array of hex color values which is used to set the options of the\nswatch tab of the colorpicker popover.\nTo specify transparent, use empty string as a value.",
                 "defaultValue": {
-                    "value": "[\n    '#e3abec',\n    '#c2dbf7',\n    '#9fd6ff',\n    '#9de7da',\n    '#9df0c0',\n    '#fff099',\n    '#fed49a',\n    '#d073e0',\n    '#86baf3',\n    '#5ebbff',\n    '#44d8be',\n    '#3be282',\n    '#ffe654',\n    '#ffb758',\n    '#bd35bd',\n    '#5779c1',\n    '#5679c0',\n    '#00aea9',\n    '#3cba4c',\n    '#f5bc25',\n    '#f99221',\n    '#580d8c',\n    '#001970',\n    '#0a2399',\n    '#0b7477',\n    '#0b6b50',\n    '#b67e11',\n    '#b85d0d',\n    '',\n]",
+                    "value": "[\n\t'#e3abec',\n\t'#c2dbf7',\n\t'#9fd6ff',\n\t'#9de7da',\n\t'#9df0c0',\n\t'#fff099',\n\t'#fed49a',\n\t'#d073e0',\n\t'#86baf3',\n\t'#5ebbff',\n\t'#44d8be',\n\t'#3be282',\n\t'#ffe654',\n\t'#ffb758',\n\t'#bd35bd',\n\t'#5779c1',\n\t'#5679c0',\n\t'#00aea9',\n\t'#3cba4c',\n\t'#f5bc25',\n\t'#f99221',\n\t'#580d8c',\n\t'#001970',\n\t'#0a2399',\n\t'#0b7477',\n\t'#0b6b50',\n\t'#b67e11',\n\t'#b85d0d',\n\t'',\n]",
                     "computed": false
                 }
             },
@@ -4474,7 +4474,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{\n    assistiveText,\n    labels,\n    props,\n    userDefinedProps,\n}",
+                        "name": "{\n\tassistiveText,\n\tlabels,\n\tprops,\n\tuserDefinedProps,\n}",
                         "type": null
                     }
                 ],
@@ -4522,7 +4522,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{\n    assistiveText,\n    labels,\n    props,\n    userDefinedProps,\n}",
+                        "name": "{\n\tassistiveText,\n\tlabels,\n\tprops,\n\tuserDefinedProps,\n}",
                         "type": null
                     }
                 ],
@@ -4534,7 +4534,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{\n    assistiveText,\n    labels,\n    props,\n    userDefinedProps,\n}",
+                        "name": "{\n\tassistiveText,\n\tlabels,\n\tprops,\n\tuserDefinedProps,\n}",
                         "type": null
                     }
                 ],
@@ -4579,7 +4579,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `label`: This is used as a visually hidden label if, no `labels.label` is provided.\n* `loading`: Text added to loading spinner.\n* `optionSelectedInMenu`: Added before selected menu items in Read-only variants (Picklists). The default is `Current Selection:`.\n* `popoverLabel`: Used by popover variant, assistive text for the Popover aria-label.\n* `removeSingleSelectedOption`: Used by inline-listbox, single-select variant to remove the selected item (pill). This is a button with focus. The default is `Remove selected option`.\n* `removePill`: Used by multiple selection Comboboxes to remove a selected item (pill). Focus is on the pill. This is not a button. The default  is `, Press delete or backspace to remove`.\n* `selectedListboxLabel`: This is a label for the selected listbox. The grouping of pills for multiple selection Comboboxes. The default is `Selected Options:`.\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    loadingMenuItems: 'Loading',\n    optionSelectedInMenu: 'Current Selection:',\n    removeSingleSelectedOption: 'Remove selected option',\n    removePill: ', Press delete or backspace to remove',\n    selectedListboxLabel: 'Selected Options:',\n}",
+                    "value": "{\n\tloadingMenuItems: 'Loading',\n\toptionSelectedInMenu: 'Current Selection:',\n\tremoveSingleSelectedOption: 'Remove selected option',\n\tremovePill: ', Press delete or backspace to remove',\n\tselectedListboxLabel: 'Selected Options:',\n}",
                     "computed": false
                 }
             },
@@ -4813,7 +4813,7 @@
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `cancelButton`: This label is only used by the dialog variant for the cancel button in the footer of the dialog. The default is `Cancel`\n* `doneButton`: This label is only used by the dialog variant for the done button in the footer of the dialog. The default is `Done`\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    cancelButton: 'Cancel',\n    doneButton: `Done`,\n    noOptionsFound: 'No matches found.',\n    optionDisabledTooltipLabel: 'This option is disabled.',\n    placeholderReadOnly: 'Select an Option',\n    removePillTitle: 'Remove',\n}",
+                    "value": "{\n\tcancelButton: 'Cancel',\n\tdoneButton: `Done`,\n\tnoOptionsFound: 'No matches found.',\n\toptionDisabledTooltipLabel: 'This option is disabled.',\n\tplaceholderReadOnly: 'Select an Option',\n\tremovePillTitle: 'Remove',\n}",
                     "computed": false
                 }
             },
@@ -5299,7 +5299,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `actionsHeader`: Text for heading of actions column\n* `columnSort`: Text for sort action on table column header\n* `columnSortedAscending`: Text announced once a column is sorted in ascending order\n* `columnSortedDescending`: Text announced once a column is sorted in descending order\n* `selectAllRows`: Text for select all checkbox within the table header\n* `selectRow`: Text for select row. Default: \"Select row 1\"\n* `selectRowGroup`: This is an input group label and is attached to each checkbox or radio. Default is \"Choose a row to select\"",
                 "defaultValue": {
-                    "value": "{\n    actionsHeader: 'Actions',\n    columnSort: 'Sort by: ',\n    columnSortedAscending: 'Sorted Ascending',\n    columnSortedDescending: 'Sorted Descending',\n    selectAllRows: 'Select all rows',\n    selectRow: 'Select row',\n    selectRowGroup: 'Choose a row to select',\n    loadingMore: 'Loading more',\n}",
+                    "value": "{\n\tactionsHeader: 'Actions',\n\tcolumnSort: 'Sort by: ',\n\tcolumnSortedAscending: 'Sorted Ascending',\n\tcolumnSortedDescending: 'Sorted Descending',\n\tselectAllRows: 'Select all rows',\n\tselectRow: 'Select row',\n\tselectRowGroup: 'Choose a row to select',\n\tloadingMore: 'Loading more',\n}",
                     "computed": false
                 }
             },
@@ -6064,7 +6064,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `nextMonth`: Label for button to go to the next month _Tested with snapshot testing._\n* `openCalendar`: Call to action label for calendar dialog trigger _Tested with snapshot testing._\n* `previousMonth`: Label for button to go to the previous month _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    nextMonth: 'Next month',\n    openCalendar: 'Open Calendar',\n    previousMonth: 'Previous month',\n    year: 'Year',\n}",
+                    "value": "{\n\tnextMonth: 'Next month',\n\topenCalendar: 'Open Calendar',\n\tpreviousMonth: 'Previous month',\n\tyear: 'Year',\n}",
                     "computed": false
                 }
             },
@@ -6132,7 +6132,7 @@
                 "required": false,
                 "description": "Date formatting function that formats the `value` prop (`value` is an ECMAScript `Date()` object) and returns a string to be rendered as the `input` value. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and internationalization. _Tested with snapshot testing._\nThe default `formatter` function is:\n```\nformatter(date) {\n  return date\n   ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`\n   : '';\n}\n```",
                 "defaultValue": {
-                    "value": "function(date) {\n    return date\n        ? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`\n        : '';\n}",
+                    "value": "(date) {\n\treturn date\n\t\t? `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`\n\t\t: '';\n}",
                     "computed": false
                 }
             },
@@ -6190,7 +6190,7 @@
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `abbreviatedWeekDays`: Three letter abbreviations of the days of the week, starting on Sunday. _Tested with snapshot testing._\n* `months`: Names of the months. _Tested with snapshot testing._\n* `label`: This label appears above the input.\n* `placeholder`: Placeholder text for input. _Tested with snapshot testing._\n* `today`: Label of shortcut to jump to today within the calendar. This is also used for assistive text on today's date. _Tested with snapshot testing._\n* `weekDays`: Full names of the seven days of the week, starting on Sunday. _Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    abbreviatedWeekDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],\n    months: [\n        'January',\n        'February',\n        'March',\n        'April',\n        'May',\n        'June',\n        'July',\n        'August',\n        'September',\n        'October',\n        'November',\n        'December',\n    ],\n    placeholder: 'Pick a Date',\n    today: 'Today',\n    weekDays: [\n        'Sunday',\n        'Monday',\n        'Tuesday',\n        'Wednesday',\n        'Thursday',\n        'Friday',\n        'Saturday',\n    ],\n}",
+                    "value": "{\n\tabbreviatedWeekDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],\n\tmonths: [\n\t\t'January',\n\t\t'February',\n\t\t'March',\n\t\t'April',\n\t\t'May',\n\t\t'June',\n\t\t'July',\n\t\t'August',\n\t\t'September',\n\t\t'October',\n\t\t'November',\n\t\t'December',\n\t],\n\tplaceholder: 'Pick a Date',\n\ttoday: 'Today',\n\tweekDays: [\n\t\t'Sunday',\n\t\t'Monday',\n\t\t'Tuesday',\n\t\t'Wednesday',\n\t\t'Thursday',\n\t\t'Friday',\n\t\t'Saturday',\n\t],\n}",
                     "computed": false
                 }
             },
@@ -6289,7 +6289,7 @@
                 "required": false,
                 "description": "Custom function to parse date string from the `input` value, which must return an ECMAScript `Date()` object.  Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date parsing and internationalization. The default `parser` passes the input value to ECMAScript `Date()` and _prays_ for a miracle. **Do not use the default parsing function in production.** _Tested with snapshot testing._\nThe default `parser function is:\n```\nparser(str) {\n  return new Date(str);\n}\n```",
                 "defaultValue": {
-                    "value": "function(str) {\n    lowPriorityWarning(\n        false,\n        `Please use an external library for date parsing and internationalization like MomentJS (https://github.com/moment/moment/) instead of the default parser.`\n    );\n    return new Date(str);\n}",
+                    "value": "(str) {\n\tlowPriorityWarning(\n\t\tfalse,\n\t\t`Please use an external library for date parsing and internationalization like MomentJS (https://github.com/moment/moment/) instead of the default parser.`\n\t);\n\treturn new Date(str);\n}",
                     "computed": false
                 }
             },
@@ -6602,7 +6602,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility.**\n* `toggleSection`: Label for the icon that expands / collapses the section",
                 "defaultValue": {
-                    "value": "{\n    toggleSection: 'Toggle visibility of section',\n}",
+                    "value": "{\n\ttoggleSection: 'Toggle visibility of section',\n}",
                     "computed": false
                 }
             },
@@ -6777,7 +6777,7 @@
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `addCondition`: Label for the Add Condition Button. Defaults to \"Add Condition\"\n* `addGroup`: Label for the Add Group Button. Defaults to \"Add Group\"\n* `customLogic`: Label for the text box for inputting `customLogicValue`, if the `triggerType` is `custom`. Defaults to \"Custom Logic\"\n* `takeAction`: Label for the `triggerType` selector. Defaults to \"Take Action When\"\n* `title` : Title for the Expression. Defaults to \"Conditions\"\n* `triggerAll`: Label for the `all` value within the trigger selector\n* `triggerAlways`: Label for the `always` value within the trigger selector\n* `triggerAny`: Label for the `any` value within the trigger selector\n* `triggerCustom`: Label for the `custom` value within the trigger selector\n* `triggerFormula`: Label for the `formula` value within the trigger selector",
                 "defaultValue": {
-                    "value": "{\n    title: 'Conditions',\n}",
+                    "value": "{\n\ttitle: 'Conditions',\n}",
                     "computed": false
                 }
             },
@@ -6871,7 +6871,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility.**\n* `title`: For users of assistive technology, title for the condition fieldset. Defaults to 'Condition'\n* `deleteIcon`: For users of assistive technology, assistive text for the Delete Condition button's icon. Defaults to 'Delete Condition'",
                             "defaultValue": {
-                                "value": "{\n    title: 'Condition',\n    deleteIcon: 'Delete Condition',\n}",
+                                "value": "{\n\ttitle: 'Condition',\n\tdeleteIcon: 'Delete Condition',\n}",
                                 "computed": false
                             }
                         },
@@ -6961,7 +6961,7 @@
                             "required": false,
                             "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every\n* `deleteCondition`: Title for the delete condition button. Defaults to \"Delete Condition\".\n* `label`: Label for the condition, shown left-most in the row. Left empty on default.\n* `operator`: Label for the operator selection dropdown. Defaults to \"Operator\"\n* `resource`: Label for the resource selection dropdown. Defaults to \"Resource\"\n* `value`: Label for the value input box. Defaults to \"Value\"",
                             "defaultValue": {
-                                "value": "{\n    label: '',\n    operator: 'Operator',\n    resource: 'Resource',\n    value: 'Value',\n    deleteCondition: 'Delete Condition',\n}",
+                                "value": "{\n\tlabel: '',\n\toperator: 'Operator',\n\tresource: 'Resource',\n\tvalue: 'Value',\n\tdeleteCondition: 'Delete Condition',\n}",
                                 "computed": false
                             }
                         },
@@ -7061,7 +7061,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility.**\n* `help`: Assistive text for help icon",
                             "defaultValue": {
-                                "value": "{\n    help: 'Help',\n}",
+                                "value": "{\n\thelp: 'Help',\n}",
                                 "computed": false
                             }
                         },
@@ -7132,7 +7132,7 @@
                             "required": false,
                             "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: Label for the Expression Formula group.Defaults to \"Formula\"\n* `checkSyntax`: Label for the Check Syntax Button. Defaults to \"Check Syntax\"\n* `textArea`: Label for the `triggerType` selector. Defaults to \"Take Action When\"",
                             "defaultValue": {
-                                "value": "{\n    label: 'Formula',\n    checkSyntax: 'Check Syntax',\n    textArea: 'Text Area',\n}",
+                                "value": "{\n\tlabel: 'Formula',\n\tcheckSyntax: 'Check Syntax',\n\ttextArea: 'Text Area',\n}",
                                 "computed": false
                             }
                         },
@@ -7350,7 +7350,7 @@
                             "required": false,
                             "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `addCondition`: Label for the Add Condition Button. Defaults to \"Add Condition\"\n* `addGroup`: Label for the Add Group Button. Defaults to \"Add Group\"\n* `customLogic`: Label for the text box for inputting `customLogicValue`, if the `triggerType` is `custom`. Defaults to \"Custom Logic\"\n* `label`: Label for the expression group, to indicate condition connectors based on the parent's trigger-type chosen. Defaults to \"\"\n* `takeAction`: Label for the `triggerType` selector. Defaults to \"Take Action When\"\n* `triggerAll`: Label for the `all` value within the trigger selector\n* `triggerAlways`: Label for the `always` value within the trigger selector\n* `triggerAny`: Label for the `any` value within the trigger selector\n* `triggerCustom`: Label for the `custom` value within the trigger selector\n* `triggerFormula`: Label for the `formula` value within the trigger selector",
                             "defaultValue": {
-                                "value": "{\n    label: '',\n    takeAction: 'Take Action When',\n    customLogic: 'Custom Logic',\n    addCondition: 'Add Condition',\n    addGroup: 'Add Group',\n    triggerAll: 'All Conditions Are Met',\n    triggerAny: 'Any Condition Is Met',\n    triggerCustom: 'Custom Logic Is Met',\n    triggerAlways: 'Always (No Criteria)',\n    triggerFormula: 'Formula Evaluates To True',\n}",
+                                "value": "{\n\tlabel: '',\n\ttakeAction: 'Take Action When',\n\tcustomLogic: 'Custom Logic',\n\taddCondition: 'Add Condition',\n\taddGroup: 'Add Group',\n\ttriggerAll: 'All Conditions Are Met',\n\ttriggerAny: 'Any Condition Is Met',\n\ttriggerCustom: 'Custom Logic Is Met',\n\ttriggerAlways: 'Always (No Criteria)',\n\ttriggerFormula: 'Formula Evaluates To True',\n}",
                                 "computed": false
                             }
                         },
@@ -7539,7 +7539,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility**\n * download - description for the download button if present\n * image - description for the file image\n * link - description for the file link\n * loading - description for the loading spinner if present\n * moreActions - description for the more actions dropdown if present",
                             "defaultValue": {
-                                "value": "{\n    download: 'download',\n    link: 'Preview:',\n    loading: 'loading',\n    moreActions: 'more actions',\n}",
+                                "value": "{\n\tdownload: 'download',\n\tlink: 'Preview:',\n\tloading: 'loading',\n\tmoreActions: 'more actions',\n}",
                                 "computed": false
                             }
                         },
@@ -7720,7 +7720,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility**\n * count - description for the more files count\n * image - description for the image\n * link - description for the more files link",
                             "defaultValue": {
-                                "value": "{\n    count: 'more files',\n    image: 'Show more files',\n    link: 'Preview:',\n}",
+                                "value": "{\n\tcount: 'more files',\n\timage: 'Show more files',\n\tlink: 'Preview:',\n}",
                                 "computed": false
                             }
                         },
@@ -7910,7 +7910,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\n* `removeFilter`: Assistive text for removing a filter. The default is `Remove Filter: this.props.property this.props.predicate`.\n* `editFilter`: Assistive text for changing a filter.\n* `editFilterHeading`: Assistive text for Popover heading.",
                 "defaultValue": {
-                    "value": "{\n    editFilter: 'Edit filter:',\n    editFilterHeading: 'Choose filter criteria',\n}",
+                    "value": "{\n\teditFilter: 'Edit filter:',\n\teditFilterHeading: 'Choose filter criteria',\n}",
                     "computed": false
                 }
             },
@@ -8072,7 +8072,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `skipToNav`: The localized text that will be read back for the \"Skip to Navigation\" accessibility link.\n* `skipToContent`: The localized text that will be read back for the \"Skip to Main Content\" accessibility link.",
                 "defaultValue": {
-                    "value": "{\n    skipToNav: 'Skip to Navigation',\n    skipToContent: 'Skip to Main Content',\n}",
+                    "value": "{\n\tskipToNav: 'Skip to Navigation',\n\tskipToContent: 'Skip to Main Content',\n}",
                     "computed": false
                 }
             },
@@ -8155,7 +8155,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility**\n* `action`: Description of star button. Default is \"Toggle Favorite.\"\n* `more`: Description of dropdown menu. Default is \"View Favorites.\"",
                             "defaultValue": {
-                                "value": "{\n    action: 'Toggle Favorite',\n    more: 'View Favorites',\n}",
+                                "value": "{\n\taction: 'Toggle Favorite',\n\tmore: 'View Favorites',\n}",
                                 "computed": false
                             }
                         },
@@ -8210,7 +8210,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderHelp trigger button. The default is `Help and Training`.",
                             "defaultValue": {
-                                "value": "{\n    triggerButton: 'Help and Training',\n}",
+                                "value": "{\n\ttriggerButton: 'Help and Training',\n}",
                                 "computed": false
                             }
                         },
@@ -8252,7 +8252,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility**\n* `newNotificationsAfter`: Assistive text for when there are new notifications, after the notificationCount. The default is ' new notifications'.\n* `newNotificationsBefore`: Assistive text for when there are new notifications, before the notificationCount. The default is ''.\n* `noNotifications`: Assistive text for when there are no new notifications.",
                             "defaultValue": {
-                                "value": "{\n    newNotificationsAfter: ' new notifications',\n    newNotificationsBefore: '',\n    noNotifications: 'No new notifications',\n}",
+                                "value": "{\n\tnewNotificationsAfter: ' new notifications',\n\tnewNotificationsBefore: '',\n\tnoNotifications: 'No new notifications',\n}",
                                 "computed": false
                             }
                         },
@@ -8389,7 +8389,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderSetup trigger button. The default is `Setup`.",
                             "defaultValue": {
-                                "value": "{\n    triggerButton: 'Setup',\n}",
+                                "value": "{\n\ttriggerButton: 'Setup',\n}",
                                 "computed": false
                             }
                         },
@@ -8423,7 +8423,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility**\n* `triggerButton`: Assistive text for the GlobalHeaderTask trigger button. The default is `Global Actions`.",
                             "defaultValue": {
-                                "value": "{\n    triggerButton: 'Global Actions',\n}",
+                                "value": "{\n\ttriggerButton: 'Global Actions',\n}",
                                 "computed": false
                             }
                         },
@@ -8802,7 +8802,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility.**\n* `activeDescriptor`: The text that appears alongside a link that is currently active.",
                             "defaultValue": {
-                                "value": "{\n    activeDescriptor: 'Current page:',\n}",
+                                "value": "{\n\tactiveDescriptor: 'Current page:',\n}",
                                 "computed": false
                             }
                         },
@@ -9551,7 +9551,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\n* `label`: Visually hidden label but read out loud by screen readers.\n* `spinner`: Text for loading spinner icon.",
                 "defaultValue": {
-                    "value": "{\n    decrement: `${DECREMENT} ${COUNTER}`,\n    increment: `${INCREMENT} ${COUNTER}`,\n}",
+                    "value": "{\n\tdecrement: `${DECREMENT} ${COUNTER}`,\n\tincrement: `${INCREMENT} ${COUNTER}`,\n}",
                     "computed": false
                 }
             },
@@ -10556,7 +10556,7 @@
                 "modifiers": [],
                 "params": [
                     {
-                        "name": "{\n    event,\n    isOpen = true,\n    keyCode,\n    onFocus = this.handleKeyboardFocus,\n    onSelect,\n    target,\n    toggleOpen = noop,\n}",
+                        "name": "{\n\tevent,\n\tisOpen = true,\n\tkeyCode,\n\tonFocus = this.handleKeyboardFocus,\n\tonSelect,\n\ttarget,\n\ttoggleOpen = noop,\n}",
                         "type": null
                     }
                 ],
@@ -10838,7 +10838,7 @@
             "iconCategory": {
                 "type": {
                     "name": "custom",
-                    "raw": "requiredIf(\n    PropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),\n    (props) => !!props.iconName\n)"
+                    "raw": "requiredIf(\n\tPropTypes.oneOf(['action', 'custom', 'doctype', 'standard', 'utility']),\n\t(props) => !!props.iconName\n)"
                 },
                 "required": false,
                 "description": "Name of the icon category. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon categories."
@@ -11630,7 +11630,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.\n* `dialogLabelledBy`: This describes which node labels the dialog. If not provided and dialogLabel is unavailable, `id` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
-                    "value": "{\n    dialogLabel: '',\n    dialogLabelledBy: '',\n    closeButton: 'Close',\n}",
+                    "value": "{\n\tdialogLabel: '',\n\tdialogLabelledBy: '',\n\tcloseButton: 'Close',\n}",
                     "computed": false
                 }
             },
@@ -12142,7 +12142,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `closeButton`: Localized description of the close button for the panel for screen readers",
                             "defaultValue": {
-                                "value": "{\n    closeButton: 'Close Filter Panel',\n}",
+                                "value": "{\n\tcloseButton: 'Close Filter Panel',\n}",
                                 "computed": false
                             }
                         },
@@ -12508,7 +12508,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\n* `listboxLabel`: This is a label for the listbox. The default is `Selected Options:`.\n* `removePill`: Used to remove a selected item (pill). Focus is on the pill. This is not a button. The default is `Press delete or backspace to remove`.",
                 "defaultValue": {
-                    "value": "{\n    listboxLabel: 'Selected Options:',\n    removePill: 'Press delete or backspace to remove',\n}",
+                    "value": "{\n\tlistboxLabel: 'Selected Options:',\n\tremovePill: 'Press delete or backspace to remove',\n}",
                     "computed": false
                 }
             },
@@ -12550,7 +12550,7 @@
                 "required": false,
                 "description": "**Text labels for internationalization**\n* `removePillTitle`: Title on `X` icon",
                 "defaultValue": {
-                    "value": "{\n    removePillTitle: 'Remove',\n}",
+                    "value": "{\n\tremovePillTitle: 'Remove',\n}",
                     "computed": false
                 }
             },
@@ -13233,7 +13233,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
-                    "value": "{\n    closeButton: 'Close dialog',\n}",
+                    "value": "{\n\tcloseButton: 'Close dialog',\n}",
                     "computed": false
                 }
             },
@@ -13647,7 +13647,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `progress`: This is a visually hidden label for the percent of progress.\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    progress: 'Progress',\n}",
+                    "value": "{\n\tprogress: 'Progress',\n}",
                     "computed": false
                 }
             },
@@ -13709,7 +13709,7 @@
                 "required": false,
                 "description": "Label for the progress bar",
                 "defaultValue": {
-                    "value": "{\n    complete: 'Complete',\n}",
+                    "value": "{\n\tcomplete: 'Complete',\n}",
                     "computed": false
                 }
             },
@@ -13799,7 +13799,7 @@
                 "required": false,
                 "description": "Custom styles to be passed to the component",
                 "defaultValue": {
-                    "value": "{\n    height: '100%',\n}",
+                    "value": "{\n\theight: '100%',\n}",
                     "computed": false
                 }
             }
@@ -13854,7 +13854,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `completedStep`: Label for a completed step. The default is `Completed Step`\n* `disabledStep`: Label for disabled step. The default is `Disabled Step`\n* `errorStep`: Label for a step with an error. The default is `Error Step`\n* `percentage`: Label for Progress Bar. The default is `Progress: [this.props.value]%`. You will need to calculate the percentage yourself if changing this string.\n* `step`: Label for a step. It will be typically followed by the number of the step such as \"Step 1\".",
                 "defaultValue": {
-                    "value": "{\n    completedStep: 'Completed',\n    disabledStep: 'Disabled',\n    errorStep: 'Error',\n    step: 'Step',\n}",
+                    "value": "{\n\tcompletedStep: 'Completed',\n\tdisabledStep: 'Disabled',\n\terrorStep: 'Error',\n\tstep: 'Step',\n}",
                     "computed": false
                 }
             },
@@ -15492,7 +15492,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\n* `toggleButtonOpen`: The button used to open the split view.\n* `toggleButtonClose`: The button used to close the split view.",
                 "defaultValue": {
-                    "value": "{\n    toggleButtonOpen: 'Close split view',\n    toggleButtonClose: 'Open split view',\n}",
+                    "value": "{\n\ttoggleButtonOpen: 'Close split view',\n\ttoggleButtonClose: 'Open split view',\n}",
                     "computed": false
                 }
             },
@@ -15866,7 +15866,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility**\n* `list`: aria label for the list\n* `sort`\n   * `sortedBy`: Clickable sort header for the list.\n   * `descending`: Descending sorting.\n   * `ascending`: Ascending sorting.",
                             "defaultValue": {
-                                "value": "{\n    list: 'Select an item to open it in a new workspace tab.',\n    sort: {\n        sortedBy: 'Sorted by',\n        descending: 'Descending',\n        ascending: 'Ascending',\n    },\n}",
+                                "value": "{\n\tlist: 'Select an item to open it in a new workspace tab.',\n\tsort: {\n\t\tsortedBy: 'Sorted by',\n\t\tdescending: 'Descending',\n\t\tascending: 'Ascending',\n\t},\n}",
                                 "computed": false
                             }
                         },
@@ -16726,7 +16726,7 @@
                 "required": false,
                 "description": "Time formatting function",
                 "defaultValue": {
-                    "value": "function(date) {\n    if (date) {\n        return date.toLocaleTimeString(navigator.language, {\n            hour: '2-digit',\n            minute: '2-digit',\n        });\n    }\n\n    return null;\n}",
+                    "value": "(date) {\n\tif (date) {\n\t\treturn date.toLocaleTimeString(navigator.language, {\n\t\t\thour: '2-digit',\n\t\t\tminute: '2-digit',\n\t\t});\n\t}\n\n\treturn null;\n}",
                     "computed": false
                 }
             },
@@ -16790,7 +16790,7 @@
                 "required": false,
                 "description": "Parsing date string into Date",
                 "defaultValue": {
-                    "value": "function(timeStr) {\n    const date = new Date();\n    const dateStr = date.toLocaleString(navigator.language, {\n        year: 'numeric',\n        month: 'numeric',\n        day: 'numeric',\n    });\n    return new Date(`${dateStr} ${timeStr}`);\n}",
+                    "value": "(timeStr) {\n\tconst date = new Date();\n\tconst dateStr = date.toLocaleString(navigator.language, {\n\t\tyear: 'numeric',\n\t\tmonth: 'numeric',\n\t\tday: 'numeric',\n\t});\n\treturn new Date(`${dateStr} ${timeStr}`);\n}",
                     "computed": false
                 }
             },
@@ -16896,7 +16896,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `closeButton`: This is a visually hidden label for the close button.\n* `error`: This is a visually hidden label to mark the toast as an error variant\n* `info`: This is a visually hidden label to mark the toast as an info variant\n* `success`: This is a visually hidden label to mark the toast as an success variant\n* `warning`: This is a visually hidden label to mark the toast as an warning variant\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n    closeButton: 'Close',\n    error: 'error',\n    info: 'info',\n    success: 'success',\n    warning: 'warning',\n}",
+                    "value": "{\n\tcloseButton: 'Close',\n\terror: 'error',\n\tinfo: 'info',\n\tsuccess: 'success',\n\twarning: 'warning',\n}",
                     "computed": false
                 }
             },
@@ -17234,7 +17234,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `tooltipTipLearnMoreIcon`: This text is inside the info icon within the tooltip content and exists to \"complete the sentence\" for assistive tech users.\n* `triggerLearnMoreIcon`: This text is inside the info icon that triggers the tooltip in order to have text within the link.",
                 "defaultValue": {
-                    "value": "{\n    tooltipTipLearnMoreIcon: 'this link',\n    triggerLearnMoreIcon: 'Help',\n}",
+                    "value": "{\n\ttooltipTipLearnMoreIcon: 'this link',\n\ttriggerLearnMoreIcon: 'Help',\n}",
                     "computed": false
                 }
             },
@@ -17334,7 +17334,7 @@
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `learnMoreAfter`: This label appears in the tooltip after the info icon.\n* `learnMoreBefore`: This label appears in the tooltip before the info icon.",
                 "defaultValue": {
-                    "value": "{\n    learnMoreAfter: 'to learn more.',\n    learnMoreBefore: 'Click',\n}",
+                    "value": "{\n\tlearnMoreAfter: 'to learn more.',\n\tlearnMoreBefore: 'Click',\n}",
                     "computed": false
                 }
             },
@@ -17726,7 +17726,7 @@
                 "required": false,
                 "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `learnMoreAfter`: Amount of time left in trial, e.g. `30`\n* `learnMoreBefore`: Unit of the amount of time left, e.g. `days`\n* `timeLeftUnitAfter`: String after `timeLeftUnit`",
                 "defaultValue": {
-                    "value": "{\n    timeLeftUnitAfter: 'left in trial',\n}",
+                    "value": "{\n\ttimeLeftUnitAfter: 'left in trial',\n}",
                     "computed": false
                 }
             },
@@ -18084,7 +18084,7 @@
                 "required": false,
                 "description": "**Weclome Mat labels for internationalization**\nThis object is merged with the default props object on every render.\n* `title`: Title for the Welcome Mat\n* `description`: Label for the radio input\n* `unitsCompletedAfter`: Label for the radio input",
                 "defaultValue": {
-                    "value": "{\n    unitsCompletedAfter: 'units completed',\n}",
+                    "value": "{\n\tunitsCompletedAfter: 'units completed',\n}",
                     "computed": false
                 }
             },
@@ -18273,7 +18273,7 @@
                             "required": false,
                             "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `completeIcon`: Text that is visually hidden but read aloud by screenreaders to tell the user what the complete icon means.",
                             "defaultValue": {
-                                "value": "{\n    completedIcon: 'Completed',\n}",
+                                "value": "{\n\tcompletedIcon: 'Completed',\n}",
                                 "computed": false
                             }
                         },
