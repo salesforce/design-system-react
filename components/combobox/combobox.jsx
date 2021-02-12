@@ -1074,6 +1074,7 @@ class Combobox extends React.Component {
 						},
 						props.className
 					)}
+					role="combobox"
 					// used on menu's listbox
 					aria-owns={this.getIsOpen() ? `${this.getId()}-listbox` : undefined} // eslint-disable-line jsx-a11y/aria-proptypes
 				>
@@ -1214,6 +1215,7 @@ class Combobox extends React.Component {
 						},
 						props.className
 					)}
+					role="combobox"
 				>
 					<InnerInput
 						aria-autocomplete="list"
@@ -1314,6 +1316,7 @@ class Combobox extends React.Component {
 							},
 							props.className
 						)}
+						role="combobox"
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
@@ -1478,6 +1481,7 @@ class Combobox extends React.Component {
 							},
 							props.className
 						)}
+						role="combobox"
 					>
 						<Popover {...popoverProps}>
 							<InnerInput
@@ -1563,6 +1567,7 @@ class Combobox extends React.Component {
 							},
 							props.className
 						)}
+						role="combobox"
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
@@ -1674,6 +1679,7 @@ class Combobox extends React.Component {
 							},
 							props.className
 						)}
+						role="combobox"
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}

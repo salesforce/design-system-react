@@ -171,6 +171,7 @@ exports[`Datepicker
               >
                 <div
                   className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-shrink-none"
+                  role="combobox"
                 >
                   <div
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1034,6 +1035,7 @@ exports[`Datepicker
                 >
                   <div
                     className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-shrink-none"
+                    role="combobox"
                   >
                     <div
                       className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1896,6 +1898,7 @@ exports[`Datepicker
               >
                 <div
                   className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-shrink-none"
+                  role="combobox"
                 >
                   <div
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2755,6 +2758,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
               >
                 <div
                   className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-shrink-none"
+                  role="combobox"
                 >
                   <div
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3481,7 +3485,7 @@ exports[`Datepicker Default HTML Snapshot 1`] = `
           <div class=\\"slds-form-element\\"><label class=\\"slds-form-element__label slds-assistive-text\\" for=\\"sample-datepicker-year-picklist\\">Year</label>
             <div class=\\"slds-form-element__control\\">
               <div class=\\"slds-combobox_container\\">
-                <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-shrink-none\\">
+                <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-shrink-none\\" role=\\"combobox\\">
                   <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" autoComplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"sample-datepicker-year-picklist\\" placeholder=\\"Select an Option\\" readonly=\\"\\" role=\\"combobox\\" aria-autocomplete=\\"list\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\" value=\\"2014\\" /><span class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\">
                         <use href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use>
                       </svg></span></div>

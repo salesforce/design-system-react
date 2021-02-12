@@ -21,6 +21,7 @@ exports[`DOM snapshots SLDSCombobox Base 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -228,6 +229,7 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -290,6 +292,7 @@ exports[`DOM snapshots SLDSCombobox Base Custom Menu Item Disabled 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -372,6 +375,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
           <div
             aria-owns="combobox-base-inherit-menu-width-listbox"
             className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+            role="combobox"
           >
             <div
               className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -799,6 +803,7 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -904,6 +909,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
         >
           <div
             className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+            role="combobox"
           >
             <div
               className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1112,6 +1118,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1321,6 +1328,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1531,6 +1539,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
         <div
           aria-owns="combobox-base-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2152,6 +2161,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Separator 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2214,6 +2224,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Sub Headers 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2276,6 +2287,7 @@ exports[`DOM snapshots SLDSCombobox Base Pre-defined Options Only 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2484,6 +2496,7 @@ exports[`DOM snapshots SLDSCombobox Base With Input 1`] = `
         <div
           aria-owns="combobox-base-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2833,6 +2846,7 @@ exports[`DOM snapshots SLDSCombobox Base With Scroll 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3040,6 +3054,7 @@ exports[`DOM snapshots SLDSCombobox Dialog 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             style={
@@ -3262,6 +3277,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection 1`] = `
         </div>
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3324,6 +3340,7 @@ exports[`DOM snapshots SLDSCombobox Inline Multiple Selection Loading 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3404,6 +3421,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
               >
                 <div
                   className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                  role="combobox"
                 >
                   <div
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3462,6 +3480,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Entity Selection 1`] = `
               >
                 <div
                   className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                  role="combobox"
                 >
                   <div
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3528,6 +3547,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3923,6 +3943,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3986,6 +4007,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4049,6 +4071,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection Predefined Options O
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4112,6 +4135,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection With Custom Open Sta
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4175,6 +4199,7 @@ exports[`DOM snapshots SLDSCombobox Input Component as a Prop 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4382,6 +4407,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4448,6 +4474,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Menu Item Disabled 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4539,6 +4566,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection - Right to Left (R
         >
           <div
             className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+            role="combobox"
           >
             <div
               className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4607,6 +4635,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4674,6 +4703,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Custom Menu Item 1
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4741,6 +4771,7 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Disabled 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4814,6 +4845,7 @@ exports[`DOM snapshots SLDSCombobox Required Input in Error State 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -4888,6 +4920,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
         <div
           aria-owns="combobox-base-custom-menu-item-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -5177,6 +5210,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Label Required 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -5251,6 +5285,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
         <div
           aria-owns="combobox-unique-id-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -5431,6 +5466,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
         <div
           aria-owns="combobox-unique-id-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -5553,6 +5589,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
         <div
           aria-owns="combobox-unique-id-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -5674,6 +5711,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Selected 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -5814,6 +5852,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Dialog Open 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
         >
           <div
             style={
@@ -5966,6 +6005,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -6322,6 +6362,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -6531,6 +6572,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Selection Selected 
         </div>
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -6611,6 +6653,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Entity Selection 1`] 
               >
                 <div
                   className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                  role="combobox"
                 >
                   <div
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -6665,6 +6708,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Entity Selection 1`] 
               >
                 <div
                   className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                  role="combobox"
                 >
                   <div
                     className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -6731,6 +6775,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -7040,6 +7085,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -7103,6 +7149,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection Selected 1`
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right"
@@ -7195,6 +7242,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -7261,6 +7309,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Multipl
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -7430,6 +7479,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Multiple Selection Single 
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -7496,6 +7546,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection 1`] = `
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -7563,6 +7614,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Custom Me
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -8195,6 +8247,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Disabled 
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -8262,6 +8315,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -8329,6 +8383,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
       >
         <div
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
+          role="combobox"
         >
           <div
             className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"

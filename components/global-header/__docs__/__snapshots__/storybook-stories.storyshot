@@ -56,6 +56,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
             >
               <div
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                role="combobox"
               >
                 <div
                   className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -547,6 +548,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
             >
               <div
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                role="combobox"
               >
                 <div
                   className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -929,6 +931,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
             >
               <div
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                role="combobox"
               >
                 <div
                   className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"

@@ -37,6 +37,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
             >
               <div
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                role="combobox"
               >
                 <div
                   className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -122,6 +123,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -186,6 +188,7 @@ exports[`DOM snapshots SLDSExpression Initial State 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -379,6 +382,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
             >
               <div
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                role="combobox"
               >
                 <div
                   className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -485,6 +489,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -549,6 +554,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -701,6 +707,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -765,6 +772,7 @@ exports[`DOM snapshots SLDSExpression w/ Custom Logic 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -954,6 +962,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
           >
             <div
               className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+              role="combobox"
             >
               <div
                 className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1040,6 +1049,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1099,6 +1109,7 @@ exports[`DOM snapshots SLDSExpression w/ Formula Logic 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1269,6 +1280,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
             >
               <div
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                role="combobox"
               >
                 <div
                   className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1354,6 +1366,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1418,6 +1431,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1565,6 +1579,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                   >
                     <div
                       className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                      role="combobox"
                     >
                       <div
                         className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1650,6 +1665,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                           >
                             <div
                               className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                              role="combobox"
                             >
                               <div
                                 className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1714,6 +1730,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                           >
                             <div
                               className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                              role="combobox"
                             >
                               <div
                                 className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1866,6 +1883,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                           >
                             <div
                               className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                              role="combobox"
                             >
                               <div
                                 className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -1930,6 +1948,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                           >
                             <div
                               className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                              role="combobox"
                             >
                               <div
                                 className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2101,6 +2120,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                   >
                     <div
                       className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                      role="combobox"
                     >
                       <div
                         className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2207,6 +2227,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                           >
                             <div
                               className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                              role="combobox"
                             >
                               <div
                                 className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2271,6 +2292,7 @@ exports[`DOM snapshots SLDSExpression w/ Group 1`] = `
                           >
                             <div
                               className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                              role="combobox"
                             >
                               <div
                                 className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2488,6 +2510,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
             >
               <div
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                role="combobox"
               >
                 <div
                   className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2573,6 +2596,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2637,6 +2661,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2789,6 +2814,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -2853,6 +2879,7 @@ exports[`DOM snapshots SLDSExpression w/ Multiple Conditions 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3046,6 +3073,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
             >
               <div
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                role="combobox"
               >
                 <div
                   className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3131,6 +3159,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
@@ -3195,6 +3224,7 @@ exports[`DOM snapshots SLDSExpression w/ Resource Selected 1`] = `
                     >
                       <div
                         className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+                        role="combobox"
                       >
                         <div
                           className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
