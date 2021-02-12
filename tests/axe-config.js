@@ -20,7 +20,7 @@ const axeConfig = {
 			enabled: false,
 			selector: '.slds-combobox',
 		},
-    // Not in ARIA 1.2 spec, temporary for SLDS styles
+		// Not in ARIA 1.2 spec, temporary for SLDS styles
 		{
 			id: 'aria-required-children',
 			enabled: false,
