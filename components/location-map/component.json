@@ -1,0 +1,14 @@
+{
+	"component": "location-map",
+	"status": "prod",
+	"display-name": "Location Map",
+	"classKey": "LocationMap",
+	"SLDS-component-path": "/components/location-map",
+	"site-stories": [
+		{
+			"heading": "Multiple Locations",
+			"path": "/__examples__/multiple-locations.jsx"
+		}
+	],
+	"url-slug": "location-map"
+}

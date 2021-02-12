@@ -1,0 +1,44 @@
+{
+	"component": "split-view",
+	"status": "prod",
+	"display-name": "Split View",
+	"classKey": "SplitView",
+	"last-accessibility-review": {
+		"date-iso-8601": "2018/01/18",
+		"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+	},
+	"last-slds-markup-review": {
+		"date-iso-8601": "2018/01/18",
+		"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+	},
+	"SLDS-component-path": "/components/split-view",
+	"dependencies": [
+		{
+			"component": "header",
+			"classKey": "SplitViewHeader"
+		},
+		{
+			"component": "listbox",
+			"classKey": "SplitViewListbox"
+		}
+	],
+	"site-stories": [
+		{
+			"heading": "Base",
+			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "Multiple",
+			"path": "/__examples__/base-multiple.jsx"
+		},
+		{
+			"heading": "With External State",
+			"path": "/__examples__/external-state.jsx"
+		},
+		{
+			"heading": "Custom Items List",
+			"path": "/__examples__/custom-items-list.jsx"
+		}
+	],
+	"url-slug": "split-view"
+}
