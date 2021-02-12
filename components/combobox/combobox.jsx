@@ -2,7 +2,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-/* eslint-disable jsx-a11y/role-has-required-aria-props */
 /* eslint-disable max-lines */
 
 import React from 'react';
@@ -1074,9 +1073,8 @@ class Combobox extends React.Component {
 						},
 						props.className
 					)}
-					role="combobox"
-					// used on menu's listbox
-					aria-owns={this.getIsOpen() ? `${this.getId()}-listbox` : undefined} // eslint-disable-line jsx-a11y/aria-proptypes
+					// Not in ARIA 1.2 spec, temporary for SLDS styles
+					role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 				>
 					<InnerInput
 						aria-autocomplete="list"
@@ -1090,7 +1088,7 @@ class Combobox extends React.Component {
 						}
 						aria-describedby={this.getErrorId()}
 						aria-expanded={this.getIsOpen()}
-						aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+						aria-haspopup="listbox"
 						role="combobox"
 						autoComplete="off"
 						className="slds-combobox__input"
@@ -1215,7 +1213,8 @@ class Combobox extends React.Component {
 						},
 						props.className
 					)}
-					role="combobox"
+					// Not in ARIA 1.2 spec, temporary for SLDS styles
+					role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 				>
 					<InnerInput
 						aria-autocomplete="list"
@@ -1294,7 +1293,6 @@ class Combobox extends React.Component {
 				? props.selection[0].label
 				: props.value;
 
-		/* eslint-disable jsx-a11y/role-supports-aria-props */
 		return (
 			<div className="slds-form-element__control">
 				<div
@@ -1316,7 +1314,8 @@ class Combobox extends React.Component {
 							},
 							props.className
 						)}
-						role="combobox"
+						// Not in ARIA 1.2 spec, temporary for SLDS styles
+						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
@@ -1481,7 +1480,8 @@ class Combobox extends React.Component {
 							},
 							props.className
 						)}
-						role="combobox"
+						// Not in ARIA 1.2 spec, temporary for SLDS styles
+						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 					>
 						<Popover {...popoverProps}>
 							<InnerInput
@@ -1549,7 +1549,6 @@ class Combobox extends React.Component {
 				  `${props.selection.length} options selected`
 				: (props.selection[0] && props.selection[0].label) || '';
 
-		/* eslint-disable jsx-a11y/role-supports-aria-props */
 		return (
 			<div className="slds-form-element__control">
 				<div className="slds-combobox_container">
@@ -1567,7 +1566,8 @@ class Combobox extends React.Component {
 							},
 							props.className
 						)}
-						role="combobox"
+						// Not in ARIA 1.2 spec, temporary for SLDS styles
+						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
@@ -1661,7 +1661,6 @@ class Combobox extends React.Component {
 	}) => {
 		const value = (props.selection[0] && props.selection[0].label) || '';
 
-		/* eslint-disable jsx-a11y/role-supports-aria-props */
 		return (
 			<div className="slds-form-element__control">
 				<div className="slds-combobox_container">
@@ -1679,7 +1678,8 @@ class Combobox extends React.Component {
 							},
 							props.className
 						)}
-						role="combobox"
+						// Not in ARIA 1.2 spec, temporary for SLDS styles
+						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
@@ -1838,7 +1838,6 @@ class Combobox extends React.Component {
 		);
 	}
 }
-/* eslint-enable jsx-a11y/role-supports-aria-props */
 
 Combobox.contextTypes = {
 	iconPath: PropTypes.string,

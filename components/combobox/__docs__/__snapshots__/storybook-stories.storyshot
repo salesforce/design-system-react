@@ -373,7 +373,6 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
           className="slds-combobox_container"
         >
           <div
-            aria-owns="combobox-base-inherit-menu-width-listbox"
             className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
             role="combobox"
           >
@@ -1537,7 +1536,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
         className="slds-combobox_container"
       >
         <div
-          aria-owns="combobox-base-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
           role="combobox"
         >
@@ -2494,7 +2492,6 @@ exports[`DOM snapshots SLDSCombobox Base With Input 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-owns="combobox-base-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
           role="combobox"
         >
@@ -4918,7 +4915,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Custom Menu Item Open 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-owns="combobox-base-custom-menu-item-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
           role="combobox"
         >
@@ -5283,7 +5279,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-owns="combobox-unique-id-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
           role="combobox"
         >
@@ -5464,7 +5459,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
         className="slds-combobox_container"
       >
         <div
-          aria-owns="combobox-unique-id-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
           role="combobox"
         >
@@ -5587,7 +5581,6 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
         className="slds-combobox_container"
       >
         <div
-          aria-owns="combobox-unique-id-listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-is-open"
           role="combobox"
         >
