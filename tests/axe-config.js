@@ -14,12 +14,17 @@ const axeConfig = {
 			id: 'autocomplete-valid',
 			enabled: false,
 		},
-		// .slds-combobox[aria-haspopup="dialog" is not currently supported by aXe-core
-		// See issue https://github.com/dequelabs/axe-core/issues/1009
+		// Not in ARIA 1.2 spec, temporary for SLDS styles
+		{
+			id: 'aria-required-attr',
+			enabled: false,
+			selector: '.slds-combobox',
+		},
+    // Not in ARIA 1.2 spec, temporary for SLDS styles
 		{
 			id: 'aria-required-children',
 			enabled: false,
-			selector: '.slds-combobox[aria-haspopup="dialog"]',
+			selector: '.slds-combobox',
 		},
 		{
 			id: 'color-contrast',
