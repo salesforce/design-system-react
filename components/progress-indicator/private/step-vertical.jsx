@@ -35,6 +35,11 @@ const propTypes = {
 	 */
 	isSelected: PropTypes.bool,
 	/**
+	 * Triggered when click on individual steps. By default, it receives an event and returns all info passed to that step.
+	 * users are able to re-define it by passing a function as a prop
+	 */
+	onClick: PropTypes.func,
+	/**
 	 * Step object. This is passed into event callbacks.
 	 */
 	step: PropTypes.object,
@@ -60,6 +65,8 @@ class StepVertical extends React.Component {
 			/>
 		) : null;
 
+		const handleClick = (event) => props.onClick(event, data);
+
 		return (
 			<span
 				className={classNames('slds-progress__marker', {
@@ -69,6 +76,7 @@ class StepVertical extends React.Component {
 						renderIcon &&
 						!this.props.isError,
 				})}
+				onClick={handleClick}
 			>
 				{icon}
 			</span>
