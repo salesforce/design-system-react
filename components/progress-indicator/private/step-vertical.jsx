@@ -84,6 +84,8 @@ class StepVertical extends React.Component {
 						!this.props.isError,
 				})}
 				onClick={handleClick}
+				tabIndex={0}
+				role="button"
 			>
 				{icon}
 			</span>

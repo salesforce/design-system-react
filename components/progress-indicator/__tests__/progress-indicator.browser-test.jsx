@@ -261,6 +261,35 @@ describe('SLDSProgressIndicator: ', () => {
 		});
 	});
 
+	describe('Click Event for Vertical Orientation', () => {
+		const clickHandler = sinon.spy();
+
+		beforeEach(
+			mountComponent(
+				<DemoComponent
+					steps={steps}
+					selectedStep={steps[2]}
+					completedSteps={steps.slice(0, 2)}
+					onStepClick={clickHandler}
+					orientation="vertical"
+				/>
+			)
+		);
+
+		afterEach(unmountComponent);
+
+		// EVENTS
+		it('calls onStepClick()', function () {
+			const step = this.wrapper
+				.find('.slds-progress')
+				.find('li')
+				.find('span')
+				.first();
+			step.simulate('click'); // <-- this is causing some errors on tab tests
+			expect(clickHandler.callCount).to.equal(1);
+		});
+	});
+
 	describe('Assistive Technology', () => {
 		/* Detect if presence of accessibility features such as ARIA
 		 * roles and screen reader text is present in the DOM.

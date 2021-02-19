@@ -1104,6 +1104,9 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1142,6 +1145,9 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1180,6 +1186,9 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1221,6 +1230,9 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1280,6 +1292,9 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1585,6 +1600,9 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1598,6 +1616,9 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1611,6 +1632,9 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1624,6 +1648,9 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1637,6 +1664,9 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1674,6 +1704,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
         >
           <span
             className="slds-progress__marker slds-progress__marker_icon"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           >
             <span>
               <svg
@@ -1699,6 +1732,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
         >
           <span
             className="slds-progress__marker slds-progress__marker_icon"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           >
             <span>
               <svg
@@ -1724,6 +1760,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
         >
           <span
             className="slds-progress__marker slds-progress__marker_icon"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           >
             <span>
               <svg
@@ -1749,6 +1788,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
         >
           <span
             className="slds-progress__marker slds-progress__marker_icon"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           >
             <span>
               <svg
@@ -1774,6 +1816,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
         >
           <span
             className="slds-progress__marker slds-progress__marker_icon"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           >
             <span>
               <svg
@@ -1799,6 +1844,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1812,6 +1860,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1825,6 +1876,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1838,6 +1892,9 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
         >
           <span
             className="slds-progress__marker"
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"

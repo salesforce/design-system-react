@@ -414,6 +414,9 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     >
                       <span
                         className="slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                        onClick={[Function]}
+                        role="button"
+                        tabIndex={0}
                       >
                         <span>
                           <svg
@@ -486,6 +489,9 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     >
                       <span
                         className="slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                        onClick={[Function]}
+                        role="button"
+                        tabIndex={0}
                       >
                         <span>
                           <svg
@@ -672,6 +678,9 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     >
                       <span
                         className="slds-progress__marker"
+                        onClick={[Function]}
+                        role="button"
+                        tabIndex={0}
                       />
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -731,6 +740,9 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     >
                       <span
                         className="slds-progress__marker"
+                        onClick={[Function]}
+                        role="button"
+                        tabIndex={0}
                       />
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -765,6 +777,9 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     >
                       <span
                         className="slds-progress__marker"
+                        onClick={[Function]}
+                        role="button"
+                        tabIndex={0}
                       />
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -988,6 +1003,9 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     >
                       <span
                         className="slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                        onClick={[Function]}
+                        role="button"
+                        tabIndex={0}
                       >
                         <span>
                           <svg
@@ -1060,6 +1078,9 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     >
                       <span
                         className="slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                        onClick={[Function]}
+                        role="button"
+                        tabIndex={0}
                       >
                         <span>
                           <svg
@@ -1246,6 +1267,9 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     >
                       <span
                         className="slds-progress__marker"
+                        onClick={[Function]}
+                        role="button"
+                        tabIndex={0}
                       />
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1305,6 +1329,9 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     >
                       <span
                         className="slds-progress__marker"
+                        onClick={[Function]}
+                        role="button"
+                        tabIndex={0}
                       />
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1479,6 +1506,9 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     >
                       <span
                         className="slds-progress__marker"
+                        onClick={[Function]}
+                        role="button"
+                        tabIndex={0}
                       />
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1538,6 +1568,9 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                     >
                       <span
                         className="slds-progress__marker"
+                        onClick={[Function]}
+                        role="button"
+                        tabIndex={0}
                       />
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1792,6 +1825,9 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       >
                         <span
                           className="slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                          onClick={[Function]}
+                          role="button"
+                          tabIndex={0}
                         >
                           <span>
                             <svg
@@ -1864,6 +1900,9 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       >
                         <span
                           className="slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                          onClick={[Function]}
+                          role="button"
+                          tabIndex={0}
                         >
                           <span>
                             <svg
@@ -2050,6 +2089,9 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       >
                         <span
                           className="slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                          onClick={[Function]}
+                          role="button"
+                          tabIndex={0}
                         >
                           <span>
                             <svg
@@ -2122,6 +2164,9 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       >
                         <span
                           className="slds-progress__marker"
+                          onClick={[Function]}
+                          role="button"
+                          tabIndex={0}
                         />
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -2156,6 +2201,9 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       >
                         <span
                           className="slds-progress__marker"
+                          onClick={[Function]}
+                          role="button"
+                          tabIndex={0}
                         />
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -2379,6 +2427,9 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       >
                         <span
                           className="slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                          onClick={[Function]}
+                          role="button"
+                          tabIndex={0}
                         >
                           <span>
                             <svg
@@ -2451,6 +2502,9 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       >
                         <span
                           className="slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                          onClick={[Function]}
+                          role="button"
+                          tabIndex={0}
                         >
                           <span>
                             <svg
@@ -2637,6 +2691,9 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       >
                         <span
                           className="slds-progress__marker"
+                          onClick={[Function]}
+                          role="button"
+                          tabIndex={0}
                         />
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -2696,6 +2753,9 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       >
                         <span
                           className="slds-progress__marker"
+                          onClick={[Function]}
+                          role="button"
+                          tabIndex={0}
                         />
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -2870,6 +2930,9 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       >
                         <span
                           className="slds-progress__marker"
+                          onClick={[Function]}
+                          role="button"
+                          tabIndex={0}
                         />
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -2929,6 +2992,9 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                       >
                         <span
                           className="slds-progress__marker"
+                          onClick={[Function]}
+                          role="button"
+                          tabIndex={0}
                         />
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
