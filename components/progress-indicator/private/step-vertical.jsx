@@ -57,6 +57,13 @@ class StepVertical extends React.Component {
 	 * stepIcon represents the icon used for each step.
 	 */
 	stepIcon = (renderIcon) => {
+		const data = {
+			isSelected: this.props.isSelected,
+			isError: this.props.isError,
+			isCompleted: this.props.isCompleted,
+			step: this.props.step,
+		};
+
 		const icon = renderIcon ? (
 			<Icon
 				category="utility"
@@ -65,7 +72,7 @@ class StepVertical extends React.Component {
 			/>
 		) : null;
 
-		const handleClick = (event) => props.onClick(event, data);
+		const handleClick = (event) => this.props.onClick(event, data);
 
 		return (
 			<span
