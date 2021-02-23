@@ -101,7 +101,7 @@
 		"prop-types": ">=15.7.2",
 		"react-contenteditable": "^3.3.5",
 		"react-highlighter": "^0.4.3",
-		"react-modal": "3.8.1",
+		"react-modal": "3.12.1",
 		"react-onclickoutside": "^6.9.0",
 		"react-required-if": "^1.0.3",
 		"react-text-truncate": "^0.14.1",
