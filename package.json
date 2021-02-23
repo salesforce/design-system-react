@@ -215,7 +215,7 @@
 		"style-loader": "^2.0.0",
 		"terser-webpack-plugin": "^4.2.3",
 		"webpack": "^4.44.2",
-		"webpack-cli": "^3.x",
+		"webpack-cli": "^4.x",
 		"webpack-dev-middleware": "^3.7.2",
 		"webpack-hot-middleware": "^2.25.0",
 		"xml2js": "^0.4.23"
