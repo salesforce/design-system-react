@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.10.26",
+	"version": "0.10.29",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -106,8 +106,7 @@
 		"react-required-if": "^1.0.3",
 		"react-text-truncate": "^0.14.1",
 		"shortid": "^2.2.15",
-		"warning": "^4.0.3",
-		"webpack-cli": "^3.x"
+		"warning": "^4.0.3"
 	},
 	"peerDependencies": {
 		"@salesforce-ux/design-system": "^2.9.4",
@@ -216,6 +215,7 @@
 		"style-loader": "^2.0.0",
 		"terser-webpack-plugin": "^4.2.3",
 		"webpack": "^4.44.2",
+		"webpack-cli": "^3.x",
 		"webpack-dev-middleware": "^3.7.2",
 		"webpack-hot-middleware": "^2.25.0",
 		"xml2js": "^0.4.23"

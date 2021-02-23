@@ -31,6 +31,29 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.30
+
+**Bugfixes**
+
+- Move `webpack-cli` to dev dependency
+
+## Release 0.10.29
+
+**Bugfixes**
+
+- `Combobox`: Fix style breakage due to SLDS CSS being on ARIA 1.1. This introduces a “double combobox role” in the component. It is a temporary, non-semantic update. It has been tested in NVDA and VoiceOver with no side effects. If you are using aXe or sa11y testing, please update your configuration until further notice to the following to avoid failing: https://github.com/salesforce/design-system-react/pull/2761/files#diff-93bc89e11753fdb252273d1a27f7bd40c68f6ffb9dad64ad77eba41831477748
+
+## Release 0.10.28
+
+**Bugfixes**
+
+- `Combobox`: Update markup from ARIA 1.1 to ARIA 1.2 to better support assistive technology
+## Release 0.10.27
+
+**Bugfixes**
+
+- `Combobox`: Auto-scroll menu to selected item in listbox
+
 ## Release 0.10.26
 
 **Bugfixes**
