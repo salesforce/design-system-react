@@ -1,7 +1,7 @@
 declare module '@salesforce/design-system-react/components/utilities/menu-list/item' {
 	import React from 'react';
 	type Props = {
-		'aria-disabled': boolean;
+		'aria-disabled'?: boolean;
 		className?: any[] | Record<string, any> | string;
 		checkmark?: boolean;
 		data?: Record<string, any>;

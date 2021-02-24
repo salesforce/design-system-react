@@ -31,6 +31,12 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.30
+
+**Bugfixes**
+
+- Move `webpack-cli` to dev dependency
+
 ## Release 0.10.29
 
 **Bugfixes**

@@ -12,11 +12,11 @@ declare module "@salesforce/design-system-react/components/radio" {
     /**
      * The ID of an element that describes this radio input. Often used for error messages.
      */
-    "aria-describedby": string;
+    "aria-describedby"?: string;
     /**
      * The aria-labelledby attribute establishes relationships between objects and their label(s), and its value should be one or more element IDs, which refer to elements that have the text needed for labeling. List multiple element IDs in a space delimited fashion.
      */
-    "aria-labelledby": string;
+    "aria-labelledby"?: string;
     /**
      * This is a controlled component. This radio is checked according to this value.
      */
