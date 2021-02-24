@@ -11,45 +11,45 @@ declare module '@salesforce/design-system-react/components/textarea' {
     /**
      * The aria-activedescendant attribute contains the ID of the currently active child object that is part of a composite widget within the Document Object Model. It makes do with the overhead of having all or more than one child focusable. As the name specifies, it helps in managing the current active child of the composite widget.
      */
-    'aria-activedescendant': string;
+    'aria-activedescendant'?: string;
     /**
      * Indicates if the suggestions in a composite widget are values that complete the current textbox input.
      */
-    'aria-autocomplete': string;
+    'aria-autocomplete'?: string;
     /**
      * An HTML ID that is shared with ARIA-supported devices with the
      * `aria-controls` attribute in order to relate the input with
      * another region of the page. An example would be a select box
      * that shows or hides a panel.
      */
-    'aria-controls': string;
+    'aria-controls'?: string;
     /**
      * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need.
      */
-    'aria-describedby': string;
+    'aria-describedby'?: string;
     /**
      * Use the `aria-expanded` state to indicate whether regions of the content are collapsible, and to expose whether a region is currently expanded or collapsed.
      */
-    'aria-expanded': boolean;
+    'aria-expanded'?: boolean;
     /**
      * Indicates that the element has a popup context menu or sub-level menu.
      */
-    'aria-haspopup': boolean;
+    'aria-haspopup'?: boolean;
     /**
      * The aria-labelledby attribute contains the element IDs of labels in objects such as input elements, widgets, and groups. The attribute establishes relationships between objects and their labels. Assistive technology, such as screen readers, use this attribute to catalog the objects in a document so that users can navigate between them. Without an element ID, the assistive technology cannot catalog the object.
      */
-    'aria-labelledby': string;
+    'aria-labelledby'?: string;
     /**
      * An HTML ID that is shared with ARIA-supported devices with the
      * `aria-controls` attribute in order to relate the input with
      * another region of the page. An example would be a search field
      * that shows search results.
      */
-    'aria-owns': string;
+    'aria-owns'?: string;
     /**
      * The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted.
      */
-    'aria-required': boolean;
+    'aria-required'?: boolean;
     /**
      * Specifies is the textarea should automatically get focus when the page loads. This is typically a poor user experience.
      */
