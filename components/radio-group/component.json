@@ -1,0 +1,18 @@
+{
+	"component": "radio-group",
+	"status": "prod",
+	"display-name": "Radio Groups",
+	"classKey": "RadioGroup",
+	"last-accessibility-review": {
+		"date-iso-8601": "2018/01/18",
+		"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+	},
+	"SLDS-component-path": "/components/radio-group",
+	"site-stories": [
+		{
+			"heading": "Base",
+			"path": "/__examples__/base.jsx"
+		}
+	],
+	"url-slug": "radio-groups"
+}
