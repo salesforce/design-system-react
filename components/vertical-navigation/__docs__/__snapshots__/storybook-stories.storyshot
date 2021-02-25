@@ -22,6 +22,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
           className="slds-nav-vertical__item slds-is-active"
         >
           <a
+            aria-current={true}
             aria-describedby="sample-navigation-reports"
             className="slds-nav-vertical__action"
             data-id="recent_reports"
@@ -169,6 +170,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
             className="slds-nav-vertical__item slds-is-active"
           >
             <a
+              aria-current={true}
               aria-describedby="sample-navigation-reports"
               className="slds-nav-vertical__action"
               data-id="recent_reports"
