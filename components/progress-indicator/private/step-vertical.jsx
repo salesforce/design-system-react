@@ -74,7 +74,21 @@ class StepVertical extends React.Component {
 
 		const handleClick = (event) => this.props.onClick(event, data);
 
-		return (
+		return this.props.onClick ? (
+			<button
+				className={classNames('slds-button slds-progress__marker', {
+					'slds-progress__marker_icon': renderIcon,
+					'slds-progress__marker_icon-success':
+						this.props.variant === 'setup-assistant' &&
+						renderIcon &&
+						!this.props.isError,
+				})}
+				type="button"
+				onClick={handleClick}
+			>
+				{icon}
+			</button>
+		) : (
 			<span
 				className={classNames('slds-progress__marker', {
 					'slds-progress__marker_icon': renderIcon,
@@ -83,9 +97,6 @@ class StepVertical extends React.Component {
 						renderIcon &&
 						!this.props.isError,
 				})}
-				onClick={handleClick}
-				tabIndex={0}
-				role="button"
 			>
 				{icon}
 			</span>
