@@ -273,7 +273,7 @@ describe('Tabs', () => {
 
 		it('Has a tabindex of -1 on the second tab.', function () {
 			const myTabsListItem = this.wrapper.find(
-				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled`
+				`.${COMPONENT_CSS_CLASSES.item}.slds-disabled a`
 			);
 			expect(myTabsListItem).to.have.attr('tabindex').equal('-1');
 		});
