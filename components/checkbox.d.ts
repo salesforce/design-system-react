@@ -7,23 +7,23 @@ declare module '@salesforce/design-system-react/components/checkbox' {
      * another region of the page. An example would be a select box
      * that shows or hides a panel.
      */
-    'aria-controls': string;
+    'aria-controls'?: string;
     /**
      * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them. This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need.
      */
-    'aria-describedby': string;
+    'aria-describedby'?: string;
     /**
      * The aria-labelledby attribute establishes relationships between objects and their label(s), and its value should be one or more element IDs, which refer to elements that have the text needed for labeling. List multiple element IDs in a space delimited fashion.
      */
-    'aria-labelledby': string;
+    'aria-labelledby'?: string;
     /**
      * `aria-owns` indicate that an element depends on the current one when the relation can't be determined by the hierarchy structure.
      */
-    'aria-owns': string;
+    'aria-owns'?: string;
     /**
      * The `aria-required` attribute is used to indicate that user input is required on an element before a form can be submitted.
      */
-    'aria-required': boolean;
+    'aria-required'?: boolean;
     /**
      * **Assistive text for accessibility**
      * This object is merged with the default props object on every render.
