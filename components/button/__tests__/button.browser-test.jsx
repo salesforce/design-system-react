@@ -102,6 +102,27 @@ describe('SLDSButton: ', () => {
 		});
 	});
 
+	describe('Data Props Render ', () => {
+		let cmp;
+		let btn;
+
+		beforeEach(() => {
+			cmp = getButton({
+				id: 'custom-id',
+				'data-some-attribute': 'some value',
+			});
+			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+		});
+
+		afterEach(() => {
+			removeButton();
+		});
+
+		it('renders data-some-attribute prop', () => {
+			expect(btn.getAttribute('data-some-attribute')).to.equal('some value');
+		});
+	});
+
 	describe('Icon with Label Button Props Render', () => {
 		let cmp;
 		let btn;
