@@ -1,11 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DOM snapshots SLDSButton Aria attribute 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    aria-label="Base"
+    className="slds-button"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Base
+  </button>
+</div>
+`;
+
 exports[`DOM snapshots SLDSButton Base 1`] = `
 <div
   className="slds-p-around_medium"
 >
   <button
     className="slds-button"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Base
+  </button>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Data attribute 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    className="slds-button"
+    data-some-property="Some value"
     disabled={false}
     onClick={[Function]}
     type="button"
