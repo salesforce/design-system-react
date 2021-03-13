@@ -181,7 +181,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                   className="slds-is-active slds-tabs_default__item"
                   id="color-picker-tabs-color-picker-slds-tabs_tab-0"
                   role="presentation"
-                  tabIndex="0"
                   title="Default"
                 >
                   <a
@@ -190,7 +189,7 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                     className="slds-is-active slds-tabs_default__link"
                     href="javascript:void(0);"
                     role="tab"
-                    tabIndex="-1"
+                    tabIndex="0"
                   >
                     Default
                   </a>
@@ -199,7 +198,6 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                   className="slds-tabs_default__item"
                   id="color-picker-tabs-color-picker-slds-tabs_tab-1"
                   role="presentation"
-                  tabIndex={null}
                   title="Custom"
                 >
                   <a
