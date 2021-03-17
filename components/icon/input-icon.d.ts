@@ -27,6 +27,6 @@ declare module '@salesforce/design-system-react/components/icon/input-icon' {
 		variant?: 'base' | 'combobox';
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

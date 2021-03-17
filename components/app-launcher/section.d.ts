@@ -39,6 +39,6 @@ declare module '@salesforce/design-system-react/components/app-launcher/section'
 	/**
 	 * App Launcher Sections allow users to categorize App Tiles as well as toggle their display
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }
