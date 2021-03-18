@@ -31,6 +31,16 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.31
+
+**Bugfixes**
+
+- `Button`: Add support for `data-*` attributes
+- `ProgressIndicator`: Add support for `onClick`
+- `Tabs`: Move `tabIndex` from `<li>` to `<a>`
+- `VerticalNavigation`: Add `aria-current` tag to selected item
+- Adjust TypeScript definitions to make `aria-*` props optional
+
 ## Release 0.10.30
 
 **Bugfixes**
