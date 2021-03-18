@@ -1,0 +1,18 @@
+{
+	"component": "pill",
+	"status": "prod",
+	"display-name": "Pills",
+	"classKey": "Pill",
+	"SLDS-component-path": "/components/pills",
+	"site-stories": [
+		{
+			"heading": "Base",
+			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "With Icons",
+			"path": "/__examples__/icon.jsx"
+		}
+	],
+	"url-slug": "pills"
+}
