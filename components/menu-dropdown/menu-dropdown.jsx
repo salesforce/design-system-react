@@ -460,7 +460,7 @@ class MenuDropdown extends React.Component {
 		}
 
 		if (!isEqual(prevProps.options, this.props.options)) {
-			this.navigableItems = getNavigableItems(prevProps.options);
+			this.navigableItems = getNavigableItems(this.props.options);
 		}
 	}
 
