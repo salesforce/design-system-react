@@ -450,7 +450,7 @@ class MenuDropdown extends React.Component {
 
 	componentDidUpdate(prevProps) {
 		if (prevProps.value !== this.props.value) {
-			const nextState = this.getCurrentSelectedIndices(prevProps);
+			const nextState = this.getCurrentSelectedIndices(this.props);
 			// eslint-disable-next-line react/no-did-update-set-state
 			this.setState(nextState);
 		}
