@@ -22,6 +22,6 @@ declare module '@salesforce/design-system-react/components/tabs/private/tabs-lis
 		variant?: 'default' | 'scoped';
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

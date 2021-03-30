@@ -35,6 +35,6 @@ declare module '@salesforce/design-system-react/components/progress-indicator/pr
 	/**
 	 * Progress renders all step buttons and a container wrapping these buttongs and a progress bar
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

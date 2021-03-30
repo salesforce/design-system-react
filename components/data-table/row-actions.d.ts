@@ -38,6 +38,6 @@ declare module '@salesforce/design-system-react/components/data-table/row-action
 	/**
 	 * RowActions provide a mechanism for defining a menu to display alongside each row in the DataTable.
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

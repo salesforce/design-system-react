@@ -56,6 +56,6 @@ declare module '@salesforce/design-system-react/components/carousel/private/caro
 		src: string /*.isRequired*/;
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

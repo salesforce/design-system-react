@@ -15,6 +15,6 @@ declare module '@salesforce/design-system-react/components/lookup/private/item' 
 		setFocus?: (v: any) => any;
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }
