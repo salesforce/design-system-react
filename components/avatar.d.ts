@@ -1,48 +1,48 @@
 declare module '@salesforce/design-system-react/components/avatar' {
-  import React from 'react';
-  type Props = {
-    /**
-     * **Assistive text for accessibility.**
-     * This object is merged with the default props object on every render.
-     * * `icon`: Assistive text for accessibility that labels the icon.
-     */
-    assistiveText?: Partial<{
-      icon?: string;
-    }>;
-    /**
-     * Alt attribute to be applied to image (base case) element.
-     */
-    imgAlt?: string;
-    /**
-     * Source attribute to be applied to image (base case) element.
-     */
-    imgSrc?: string;
-    /**
-     * Initials attribute to optionally pass in initials directly in case of "initials" fallback case.
-     */
-    initials?: string;
-    /**
-     * Avatar with initials that are dark text on light background
-     */
-    inverse?: boolean;
-    /**
-     * Label attibute to display inside "initials" fallback case. Will be passed as title prop in `abbr` element to provide more specificity.
-     */
-    label?: string;
-    /**
-     * Avatar variants to apply relevant styling (circle: user, square: entity) and icon rendering if applicable.
-     */
-    variant: 'entity' | 'user' /*.isRequired*/;
-    /**
-     * Size of the icon in "icon" fallback case.
-     */
-    size: 'x-small' | 'small' | 'medium' | 'large' /*.isRequired*/;
-    /**
-     * Title attribute for the avatar container.
-     */
-    title?: string;
-  };
-  /**
+	import React from 'react';
+	type Props = {
+		/**
+		 * **Assistive text for accessibility.**
+		 * This object is merged with the default props object on every render.
+		 * * `icon`: Assistive text for accessibility that labels the icon.
+		 */
+		assistiveText?: Partial<{
+			icon?: string;
+		}>;
+		/**
+		 * Alt attribute to be applied to image (base case) element.
+		 */
+		imgAlt?: string;
+		/**
+		 * Source attribute to be applied to image (base case) element.
+		 */
+		imgSrc?: string;
+		/**
+		 * Initials attribute to optionally pass in initials directly in case of "initials" fallback case.
+		 */
+		initials?: string;
+		/**
+		 * Avatar with initials that are dark text on light background
+		 */
+		inverse?: boolean;
+		/**
+		 * Label attibute to display inside "initials" fallback case. Will be passed as title prop in `abbr` element to provide more specificity.
+		 */
+		label?: string;
+		/**
+		 * Avatar variants to apply relevant styling (circle: user, square: entity) and icon rendering if applicable.
+		 */
+		variant: 'entity' | 'user' /*.isRequired*/;
+		/**
+		 * Size of the icon in "icon" fallback case.
+		 */
+		size: 'x-small' | 'small' | 'medium' | 'large' /*.isRequired*/;
+		/**
+		 * Title attribute for the avatar container.
+		 */
+		title?: string;
+	};
+	/**
  * The avatar component represents an object or entity. An image is the preferred format for an avatar.
  If the `imgSrc` prop is undefined, and if a `label` or `initials` prop is available, the fallback avatar will render with initials. If initals are passed in directly in the `initials` prop, this will render in the fallback avatar. If `initals` prop is unavailable but a `label` prop is available, the fallback avatar will render with built initials of the user name or entity name.
 
@@ -51,6 +51,6 @@ declare module '@salesforce/design-system-react/components/avatar' {
  If `initials` or `label` are not available, the fallback avatar will render a standard icon. If `variant='user'`, a user icon will
  render. If `variant='entity'`, an account icon will render.
  */
-  function Component(props: Props): React.ReactElement;
-  export default Component;
+	function Component(props: Props): JSX.Element;
+	export default Component;
 }

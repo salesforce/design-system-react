@@ -17,6 +17,6 @@ declare module '@salesforce/design-system-react/components/tabs/panel' {
 			| React.ReactElement /*.isRequired*/;
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

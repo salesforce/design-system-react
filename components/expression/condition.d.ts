@@ -101,6 +101,6 @@ declare module '@salesforce/design-system-react/components/expression/condition'
 	/**
 	 * Expression Condition Component
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

@@ -48,6 +48,6 @@ declare module '@salesforce/design-system-react/components/data-table/private/he
 	/**
 	 * Used internally, renders each individual column heading.
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

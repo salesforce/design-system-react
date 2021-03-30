@@ -56,6 +56,6 @@ declare module '@salesforce/design-system-react/components/tabs/private/tab' {
 	 */
 	// import '!style-loader!css-loader!../../../styles/tabs/tab.css'; // eslint-disable-line import/no-unresolved
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

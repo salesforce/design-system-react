@@ -15,6 +15,6 @@ declare module '@salesforce/design-system-react/components/card/filter' {
 		placeholder: string /*.isRequired*/;
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }
