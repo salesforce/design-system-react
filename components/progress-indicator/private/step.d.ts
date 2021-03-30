@@ -78,6 +78,6 @@ declare module '@salesforce/design-system-react/components/progress-indicator/pr
 	 * The button is applied with different css classes under different conditions.
 	 * Button icons have 4 types of status: completed (success), active (in progress), error (warning) and uncompleted (not approached)
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

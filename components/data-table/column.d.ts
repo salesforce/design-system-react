@@ -68,6 +68,6 @@ declare module '@salesforce/design-system-react/components/data-table/column' {
 	/**
 	 * Columns define the structure of the data displayed in the DataTable.
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

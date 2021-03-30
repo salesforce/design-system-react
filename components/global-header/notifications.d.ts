@@ -24,6 +24,6 @@ declare module '@salesforce/design-system-react/components/global-header/notific
 	/**
 	 * A GlobalHeaderNotifications component. Notifications are a way to notify a user about a global change within the application.
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

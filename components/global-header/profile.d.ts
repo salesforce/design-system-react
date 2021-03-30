@@ -29,6 +29,6 @@ declare module '@salesforce/design-system-react/components/global-header/profile
 	/**
 	 * This component is an `Avatar` component that opens a `Popover` component when clicked.
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

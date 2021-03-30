@@ -79,6 +79,6 @@ declare module '@salesforce/design-system-react/components/split-view/listbox' {
 	/**
 	 * The menu with the ARIA role of a listbox.
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

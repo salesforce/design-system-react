@@ -46,6 +46,6 @@ declare module '@salesforce/design-system-react/components/carousel/private/caro
 	 * CarouselIndicators is used to display the list of indicators associated to the number of panels
 	 * a carousel has
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

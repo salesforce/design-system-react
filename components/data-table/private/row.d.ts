@@ -29,6 +29,6 @@ declare module '@salesforce/design-system-react/components/data-table/private/ro
 	/**
 	 * Used internally, provides row rendering to the DataTable.
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

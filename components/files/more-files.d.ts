@@ -40,6 +40,6 @@ declare module '@salesforce/design-system-react/components/files/more-files' {
 	/**
 	 * MoreFiles is a component that represents a number of file contents uploaded as an attachment.
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

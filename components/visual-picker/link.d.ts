@@ -29,6 +29,6 @@ declare module '@salesforce/design-system-react/components/visual-picker/link' {
 	/**
 	 * Visual Picker Link Component
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

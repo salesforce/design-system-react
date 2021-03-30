@@ -12,6 +12,6 @@ declare module '@salesforce/design-system-react/components/utilities/highlighter
 		search?: PropTypes.any;
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }
