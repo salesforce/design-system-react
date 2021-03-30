@@ -2,4 +2,4 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 
-export default {"viewBox":"0 0 24 24","xmlns":"http://www.w3.org/2000/svg","path":{"d":"M21.2 3.7H2.8c-.5 0-1 .4-1 .9v14.8c0 .5.5.9 1 .9h18.4c.5 0 1-.4 1-.9V4.6c0-.5-.5-.9-1-.9zm-.9 14.8H3.7v-13h16.6v13zm-1.4-1H5.1c-.3 0-.4-.1-.4-.4v-4.6c0-.3.1-.5.4-.5h13.8c.3 0 .5.2.5.5v4.6c0 .3-.2.4-.5.4z"}};
+export default {"viewBox":"0 0 52 52","xmlns":"http://www.w3.org/2000/svg","path":[{"d":"M46 8H6c-1.1 0-2 .9-2 2v32c0 1.1.9 2 2 2h40c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-2 32H8V12h36v28z"},{"d":"M41 38H11.1c-.6 0-1-.4-1-1V27c0-.6.4-1 1-1H41c.6 0 1 .4 1 1v10c0 .6-.4 1-1 1z"}]};
