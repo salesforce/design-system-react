@@ -17,13 +17,13 @@ class Example extends React.Component {
 					<VisualPicker links>
 						<VisualPickerLink
 							title="Share the knowledge"
-							href="javascript:void(0);"
+							href="https://google.com"
 							description="Harness your team&#x27;s collective know-how with our powerful knowledge base"
 							icon={<Icon name="knowledge_base" category="utility" />}
 						/>
 						<VisualPickerLink
 							title="Share the knowledge"
-							href="javascript:void(0);"
+							href="https://google.com"
 							description="Harness your team&#x27;s collective know-how with our powerful knowledge base"
 							icon={<Icon name="knowledge_base" category="utility" />}
 						/>

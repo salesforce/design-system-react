@@ -102,7 +102,7 @@ class DataTable extends React.Component {
 		 * import DataTableCell from 'design-system-react/data-table/cell';
 		 * const CustomDataTableCell = ({ children, ...props }) => (
 		 *   <DataTableCell {...props} >
-		 *   <a href="javascript:void(0);">{children}</a>
+		 *     <a href="#">{children}</a>
 		 *   </DataTableCell>
 		 * );
 		 * CustomDataTableCell.displayName = DataTableCell.displayName;

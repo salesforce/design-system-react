@@ -28,6 +28,16 @@ const EventUtil = {
 
 		EventUtil.trap(event);
 	},
+
+	trappedHandler: (handler) => {
+		return (event) => {
+			EventUtil.trap(event);
+
+			if (handler) {
+				handler(event);
+			}
+		};
+	},
 };
 
 export default EventUtil;

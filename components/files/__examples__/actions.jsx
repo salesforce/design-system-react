@@ -44,7 +44,7 @@ class Example extends React.Component {
 					/>
 					<File
 						id="file-with-title"
-						href="javascript:void(0);"
+						href="https://example.com"
 						labels={{
 							title: 'Proposal.pdf',
 						}}

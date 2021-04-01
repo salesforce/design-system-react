@@ -175,9 +175,7 @@ const Item = (props) => {
 					className="slds-m-right_small slds-is-disabled"
 					disabled
 				/>
-				{/* eslint-disable no-script-url */}
 				<span className="slds-size_1-of-1">
-					{/* eslint-enable no-script-url */}
 					<Highlighter
 						search={props.searchTerm}
 						className="slds-tree__item-label slds-truncate"

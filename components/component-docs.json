@@ -685,7 +685,7 @@
                             "required": false,
                             "description": "The `href` attribute of the link. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.",
                             "defaultValue": {
-                                "value": "'javascript:void(0);'",
+                                "value": "'#'",
                                 "computed": false
                             }
                         },
@@ -789,7 +789,7 @@
                             "required": false,
                             "description": "The `href` attribute of the tile. Please pass in bookmarkable URLs from your routing library. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.",
                             "defaultValue": {
-                                "value": "'javascript:void(0);'",
+                                "value": "'#'",
                                 "computed": false
                             }
                         },
@@ -3006,7 +3006,7 @@
                     "name": "array"
                 },
                 "required": true,
-                "description": "* **Array of item objects used by the default carousel item renderer.**\nEach object can contain:\n* `id`: The id of the carousel item. [REQUIRED]\n* `heading`: Primary string that will be used as the heading\n* `description`: Secondary string that is used to describe the item\n* `buttonLabel`: If assigned a call to button action will be rendered with this text, if unassigned no button is rendered\n* `imageAssistiveText`: Image alt text, if not present heading will be used instead\n* `href`: Used for item link, if not provided 'javascript:void(0);' is used instead\n* `src`: Item image src value"
+                "description": "* **Array of item objects used by the default carousel item renderer.**\nEach object can contain:\n* `id`: The id of the carousel item. [REQUIRED]\n* `heading`: Primary string that will be used as the heading\n* `description`: Secondary string that is used to describe the item\n* `buttonLabel`: If assigned a call to button action will be rendered with this text, if unassigned no button is rendered\n* `imageAssistiveText`: Image alt text, if not present heading will be used instead\n* `href`: Used for item link, if not provided '#' is used instead\n* `src`: Item image src value"
             },
             "itemsPerPanel": {
                 "type": {
@@ -5308,7 +5308,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n  <a href=\"javascript:void(0);\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n  <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
+                "description": "Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n    <a href=\"#\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n  <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
             },
             "className": {
                 "type": {
@@ -5632,7 +5632,7 @@
                                 "name": "element"
                             },
                             "required": false,
-                            "description": "Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n    <a href=\"javascript:void(0);\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n    <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
+                            "description": "Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n    <a href=\"#\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n    <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
                         },
                         "isDefaultSortDescending": {
                             "type": {
@@ -7507,6 +7507,18 @@
                             "params": [],
                             "returns": null,
                             "description": "Get the File's HTML id. Generate a new one if no ID present."
+                        },
+                        {
+                            "name": "handleOnClickImage",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
                         }
                     ],
                     "props": {
@@ -7653,7 +7665,7 @@
                             "required": false,
                             "description": "Href attribute for image",
                             "defaultValue": {
-                                "value": "'javascript:void(0);'",
+                                "value": "'#'",
                                 "computed": false
                             }
                         },
@@ -7795,7 +7807,7 @@
                             "required": false,
                             "description": "Href attribute for image",
                             "defaultValue": {
-                                "value": "'javascript:void(0);'",
+                                "value": "'#'",
                                 "computed": false
                             }
                         }
@@ -8848,7 +8860,7 @@
                             "required": false,
                             "description": "The `href` attribute of the link. Please pass in bookmarkable URLs from your routing library. Use `GlobalNavigationBarButton` if a \"real URL\" is not desired. If the `onClick` callback is specified this URL will still be prevented from changing the browser's location.",
                             "defaultValue": {
-                                "value": "'javascript:void(0);'",
+                                "value": "'#'",
                                 "computed": false
                             }
                         },
@@ -12742,6 +12754,18 @@
                 "params": [
                     {
                         "name": "root",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleOnClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
                         "type": null
                     }
                 ],
