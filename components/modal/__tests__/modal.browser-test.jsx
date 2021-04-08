@@ -58,6 +58,9 @@ describe('SLDSModal: ', function () {
 
 	const getModal = (props) => renderModal(createModal(props));
 
+	const getModalContainerNode = (dom) =>
+		dom.querySelector('[role="dialog"]') ||
+		dom.querySelector('[role="alertdialog"]');
 	const getModalNode = (dom) => dom.querySelector('.slds-modal');
 
 	describe('Styling', () => {
@@ -177,7 +180,7 @@ describe('SLDSModal: ', function () {
 				isOpen: true,
 				size: 'medium',
 			});
-			const modal = getModalNode(document.body);
+			const modal = getModalContainerNode(document.body);
 			const role = modal.getAttribute('role');
 			expect(role).to.equal('dialog');
 		});
@@ -187,7 +190,7 @@ describe('SLDSModal: ', function () {
 				isOpen: true,
 				disableClose: true,
 			});
-			const modal = getModalNode(document.body);
+			const modal = getModalContainerNode(document.body);
 			const role = modal.getAttribute('role');
 			expect(role).to.equal('alertdialog');
 		});
