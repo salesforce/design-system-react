@@ -171,7 +171,6 @@ const propTypes = {
 
 const defaultProps = {
 	assistiveText: {
-		dialogLabel: '',
 		dialogLabelledBy: '',
 		closeButton: 'Close',
 	},
@@ -244,22 +243,6 @@ class Modal extends React.Component {
 		this.clearBodyScroll();
 	}
 
-	getDescribedBy() {
-		let dialogLabelledBy = null;
-
-		if (this.props.assistiveText.dialogLabelledBy) {
-			// eslint-disable-next-line prefer-destructuring
-			dialogLabelledBy = this.props.assistiveText.dialogLabelledBy;
-		} else if (
-			!this.props.assistiveText.dialogLabel &&
-			(this.props.heading || this.props.title)
-		) {
-			dialogLabelledBy = `${this.getId()}-heading`;
-		}
-
-		return dialogLabelledBy;
-	}
-
 	getId() {
 		return this.props.id || this.generatedId;
 	}
@@ -283,6 +266,31 @@ class Modal extends React.Component {
 			...borderTopRadius,
 			...borderBottomRadius,
 		};
+	}
+
+	getAriaAttributes() {
+		const ariaAttributes = {
+			describedby: `${this.getId()}-modal-content`,
+			modal: 'true',
+		};
+
+		if (this.props.assistiveText.dialogLabel) {
+			ariaAttributes.label = this.props.assistiveText.dialogLabel;
+			return ariaAttributes;
+		}
+
+		let dialogLabelledBy = null;
+
+		if (this.props.assistiveText.dialogLabelledBy) {
+			// eslint-disable-next-line prefer-destructuring
+			dialogLabelledBy = this.props.assistiveText.dialogLabelledBy;
+		} else if (this.props.heading || this.props.title) {
+			dialogLabelledBy = `${this.getId()}-heading`;
+		}
+
+		ariaAttributes.labelledby = dialogLabelledBy;
+
+		return ariaAttributes;
 	}
 
 	getModal() {
@@ -492,6 +500,7 @@ class Modal extends React.Component {
 	}
 
 	render() {
+		const ariaAttributes = this.getAriaAttributes();
 		const customStyles = {
 			content: {
 				position: 'default',
@@ -515,14 +524,8 @@ class Modal extends React.Component {
 
 		return (
 			<ReactModal
-				aria={{
-					describedby: `${this.getId()}-modal-content`,
-					label: this.props.assistiveText.dialogLabel,
-					labelledby: this.getDescribedBy,
-					modal: 'true',
-				}}
+				aria={ariaAttributes}
 				ariaHideApp={this.props.ariaHideApp}
-				contentLabel="Modal"
 				isOpen={this.props.isOpen}
 				onRequestClose={this.closeModal}
 				role={this.props.disableClose ? 'alertdialog' : 'dialog'}
