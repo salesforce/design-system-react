@@ -5166,14 +5166,6 @@
                 }
             }
         },
-        "context": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            }
-        },
         "route": "comboboxes",
         "display-name": "Comboboxes",
         "SLDS-component-path": "/components/combobox",
@@ -6340,14 +6332,6 @@
                 },
                 "required": false,
                 "description": "Sets date with a `Date` ECMAScript object. _Tested with snapshot testing._"
-            }
-        },
-        "context": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
             }
         },
         "route": "datepickers",
@@ -9070,50 +9054,6 @@
                 "description": "Path to the utility sprite\nexample: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';"
             }
         },
-        "childContext": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "onRequestIconPath": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false
-            },
-            "actionSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "customSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "doctypeSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "standardSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "utilitySprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            }
-        },
         "route": "icon-settings",
         "display-name": "Icon Settings",
         "dependencies": []
@@ -11302,14 +11242,6 @@
                     "value": "'medium'",
                     "computed": false
                 }
-            }
-        },
-        "context": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
             }
         },
         "route": "dropdown-menus",
@@ -13582,14 +13514,6 @@
                 "defaultValue": {
                     "value": "'click'",
                     "computed": false
-                },
-                "required": false
-            }
-        },
-        "context": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
                 },
                 "required": false
             }
@@ -17447,14 +17371,6 @@
                     "value": "'base'",
                     "computed": false
                 }
-            }
-        },
-        "context": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
             }
         },
         "route": "tooltips",

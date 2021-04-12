@@ -41,6 +41,7 @@ import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
+import { IconPathContext } from '../icon-settings';
 
 const documentDefined = typeof document !== 'undefined';
 
@@ -832,9 +833,6 @@ class Popover extends React.Component {
 	}
 }
 
-Popover.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+Popover.contextType = IconPathContext;
 export default Popover;
 export { PopoverNubbinPositions };

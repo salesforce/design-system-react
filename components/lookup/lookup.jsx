@@ -40,6 +40,7 @@ import KEYS from '../../utilities/key-code';
 import Menu from './menu';
 
 import { LOOKUP } from '../../utilities/constants';
+import { IconPathContext } from '../icon-settings';
 
 /**
  * A function that takes a term string and an item and returns a truthy value if the item should be kept.
@@ -785,8 +786,5 @@ const Lookup = class extends React.Component {
 	}
 };
 
-Lookup.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+Lookup.contextType = IconPathContext;
 export default Lookup;

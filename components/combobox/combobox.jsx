@@ -38,6 +38,7 @@ import checkProps from './check-props';
 
 import { COMBOBOX } from '../../utilities/constants';
 import componentDoc from './component.json';
+import { IconPathContext } from '../icon-settings';
 
 let currentOpenDropdown;
 const documentDefined = typeof document !== 'undefined';
@@ -1839,10 +1840,7 @@ class Combobox extends React.Component {
 	}
 }
 
-Combobox.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+Combobox.contextType = IconPathContext;
 Combobox.displayName = COMBOBOX;
 Combobox.propTypes = propTypes;
 Combobox.defaultProps = defaultProps;
