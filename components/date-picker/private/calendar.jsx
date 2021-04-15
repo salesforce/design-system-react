@@ -306,10 +306,11 @@ class DatepickerCalendar extends React.Component {
 						<tr>
 							<td colSpan="7" role="gridcell">
 								<a
-									href="javascript:void(0)" // eslint-disable-line no-script-url
+									href="#"
 									tabIndex="0"
 									className="slds-show_inline-block slds-p-bottom_x-small"
 									onClick={(event) => {
+										event.preventDefault();
 										this.handleSelectDate(event, { date: new Date() });
 									}}
 									onKeyDown={this.props.onLastFocusableNodeKeyDown}

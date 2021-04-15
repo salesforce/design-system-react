@@ -96,6 +96,8 @@ class DataTableHeaderCell extends React.Component {
 	}
 
 	handleSort = (e) => {
+		e.preventDefault();
+
 		const oldSortDirection =
 			this.props.sortDirection || this.state.sortDirection;
 		// UX pattern: If sortable, and the DataTable's parent has not defined the sort order, then ascending (that is A->Z) is the default sort order on first click. Some columns, such as "last viewed" or "recently updated," should sort descending first, since that is what the user probably wants. Who wants to see the oldest files first?
@@ -145,7 +147,7 @@ class DataTableHeaderCell extends React.Component {
 		const fixedLayoutSubRenders = {
 			sortable: (
 				<a
-					href="javascript:void(0)" // eslint-disable-line no-script-url
+					href="#"
 					className="slds-th__action slds-text-link_reset"
 					onClick={this.handleSort}
 					role="button"

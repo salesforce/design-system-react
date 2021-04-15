@@ -12,7 +12,7 @@ class Example extends React.Component {
 						labels={{
 							heading: [
 								'Account ',
-								<a key="acme-100" href="javascript:void(0);">
+								<a key="acme-100" href="#">
 									ACME - 100
 								</a>,
 								' widgets was created.',

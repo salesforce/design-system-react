@@ -47,8 +47,8 @@ class Example extends React.Component {
 					<Notification
 						content={[
 							<span key="new-contact">
-								Your new contact <a href="javascript:void(0);">Sara Smith</a>{' '}
-								was successfully created.
+								Your new contact <a href="#">Sara Smith</a> was successfully
+								created.
 							</span>,
 						]}
 						iconName="notification"

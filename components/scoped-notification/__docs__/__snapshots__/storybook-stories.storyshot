@@ -34,7 +34,7 @@ exports[`DOM snapshots SLDSScopedNotification Base 1`] = `
         It looks as if duplicates exist for this lead.
          
         <a
-          href="javascript:void(0);"
+          href="#"
         >
           View Duplicates.
         </a>
@@ -115,7 +115,7 @@ exports[`DOM snapshots SLDSScopedNotification Dark 1`] = `
         It looks as if duplicates exist for this lead.
          
         <a
-          href="javascript:void(0);"
+          href="#"
         >
           View Duplicates.
         </a>
@@ -159,7 +159,7 @@ exports[`DOM snapshots SLDSScopedNotification Light 1`] = `
         It looks as if duplicates exist for this lead.
          
         <a
-          href="javascript:void(0);"
+          href="#"
         >
           View Duplicates.
         </a>

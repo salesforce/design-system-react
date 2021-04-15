@@ -16,6 +16,10 @@ import isFunction from 'lodash.isfunction';
 import { VERTICAL_NAVIGATION_ITEM } from '../../../utilities/constants';
 
 const handleClick = (event, props) => {
+	if (!props.item.url) {
+		event.preventDefault();
+	}
+
 	if (isFunction(props.onSelect)) {
 		props.onSelect(event, {
 			item: props.item,
@@ -31,7 +35,7 @@ const Item = (props) => (
 	>
 		<a
 			data-id={props.item.id}
-			href={props.item.url || 'javascript:void(0);'} // eslint-disable-line no-script-url
+			href={props.item.url || '#'}
 			className="slds-nav-vertical__action"
 			aria-describedby={props.categoryId}
 			aria-current={props.isSelected ? true : undefined}

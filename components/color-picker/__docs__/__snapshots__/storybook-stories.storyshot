@@ -187,7 +187,8 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                     aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-0"
                     aria-selected="true"
                     className="slds-is-active slds-tabs_default__link"
-                    href="javascript:void(0);"
+                    href="#"
+                    onClick={[Function]}
                     role="tab"
                     tabIndex="0"
                   >
@@ -204,7 +205,8 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                     aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-1"
                     aria-selected="false"
                     className="slds-tabs_default__link"
-                    href="javascript:void(0);"
+                    href="#"
+                    onClick={[Function]}
                     role="tab"
                     tabIndex="-1"
                   >

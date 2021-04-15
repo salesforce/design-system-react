@@ -317,17 +317,13 @@ const RenderBranch = (children, props) => {
 					}}
 					tabIndex="-1"
 				/>
-				{/* eslint-disable no-script-url */}
 				<span className="slds-size_1-of-1" id={`${props.htmlId}__label`}>
-					{/* eslint-enable no-script-url */}
-					{
-						<Highlighter
-							search={props.searchTerm}
-							className="slds-tree__item-label slds-truncate"
-						>
-							{props.label}
-						</Highlighter>
-					}
+					<Highlighter
+						search={props.searchTerm}
+						className="slds-tree__item-label slds-truncate"
+					>
+						{props.label}
+					</Highlighter>
 				</span>
 			</div>
 			{isLoading ? loader : null}

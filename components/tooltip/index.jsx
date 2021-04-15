@@ -13,6 +13,7 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
+import EventUtil from '../../utilities/event';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 
 import Dialog from '../utilities/dialog';
@@ -259,7 +260,10 @@ class Tooltip extends React.Component {
 
 		if (noChildrenProvided && this.props.onClickTrigger) {
 			children = [
-				<a href="javascript:void(0)" onClick={this.props.onClickTrigger}>
+				<a
+					href="#"
+					onClick={EventUtil.trappedHandler(this.props.onClickTrigger)}
+				>
 					<Icon
 						category="utility"
 						name="info"

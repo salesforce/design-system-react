@@ -32,7 +32,8 @@ exports[`DOM snapshots SLDSTabs Base 1`] = `
             aria-controls="main-tabs-demo-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="0"
           >
@@ -49,7 +50,8 @@ exports[`DOM snapshots SLDSTabs Base 1`] = `
             aria-controls="main-tabs-demo-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -66,7 +68,8 @@ exports[`DOM snapshots SLDSTabs Base 1`] = `
             aria-controls="main-tabs-demo-slds-tabs_panel-2"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -287,7 +290,8 @@ exports[`DOM snapshots SLDSTabs Conditional 1`] = `
             aria-disabled={false}
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="0"
           >
@@ -305,7 +309,8 @@ exports[`DOM snapshots SLDSTabs Conditional 1`] = `
             aria-disabled={true}
             aria-selected="false"
             className="slds-disabled slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -323,7 +328,8 @@ exports[`DOM snapshots SLDSTabs Conditional 1`] = `
             aria-disabled={true}
             aria-selected="false"
             className="slds-disabled slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -474,7 +480,8 @@ exports[`DOM snapshots SLDSTabs Custom Tab Contents 1`] = `
             aria-controls="getCustomContentTabs-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="0"
           >
@@ -513,7 +520,8 @@ exports[`DOM snapshots SLDSTabs Custom Tab Contents 1`] = `
             aria-controls="getCustomContentTabs-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -590,7 +598,8 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
             aria-controls="nested-tabs-demo-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="0"
           >
@@ -607,7 +616,8 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
             aria-controls="nested-tabs-demo-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -624,7 +634,8 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
             aria-controls="nested-tabs-demo-slds-tabs_panel-2"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -723,7 +734,8 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
                   aria-controls="nested-second-layer-slds-tabs_panel-0"
                   aria-selected="true"
                   className="slds-is-active slds-tabs_default__link"
-                  href="javascript:void(0);"
+                  href="#"
+                  onClick={[Function]}
                   role="tab"
                   tabIndex="0"
                 >
@@ -740,7 +752,8 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
                   aria-controls="nested-second-layer-slds-tabs_panel-1"
                   aria-selected="false"
                   className="slds-tabs_default__link"
-                  href="javascript:void(0);"
+                  href="#"
+                  onClick={[Function]}
                   role="tab"
                   tabIndex="-1"
                 >
@@ -757,7 +770,8 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
                   aria-controls="nested-second-layer-slds-tabs_panel-2"
                   aria-selected="false"
                   className="slds-tabs_default__link"
-                  href="javascript:void(0);"
+                  href="#"
+                  onClick={[Function]}
                   role="tab"
                   tabIndex="-1"
                 >
@@ -838,7 +852,8 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
                         aria-controls="nested-third-layer-slds-tabs_panel-0"
                         aria-selected="true"
                         className="slds-is-active slds-tabs_default__link"
-                        href="javascript:void(0);"
+                        href="#"
+                        onClick={[Function]}
                         role="tab"
                         tabIndex="0"
                       >
@@ -989,7 +1004,8 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
             aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="0"
           >
@@ -1006,7 +1022,8 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
             aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1023,7 +1040,8 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
             aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-2"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1040,7 +1058,8 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
             aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-3"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1057,7 +1076,8 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
             aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-4"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1161,7 +1181,8 @@ exports[`DOM snapshots SLDSTabs Scoped 1`] = `
             aria-controls="scoped-tabs-demo-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_scoped__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="0"
           >
@@ -1178,7 +1199,8 @@ exports[`DOM snapshots SLDSTabs Scoped 1`] = `
             aria-controls="scoped-tabs-demo-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_scoped__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1195,7 +1217,8 @@ exports[`DOM snapshots SLDSTabs Scoped 1`] = `
             aria-controls="scoped-tabs-demo-slds-tabs_panel-2"
             aria-selected="false"
             className="slds-tabs_scoped__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1299,7 +1322,8 @@ exports[`DOM snapshots SLDSTabs Tab Intercept Panel Select 1`] = `
             aria-controls="DemoTabsInterceptSelect-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="0"
           >
@@ -1316,7 +1340,8 @@ exports[`DOM snapshots SLDSTabs Tab Intercept Panel Select 1`] = `
             aria-controls="DemoTabsInterceptSelect-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1374,7 +1399,8 @@ exports[`DOM snapshots SLDSTabs Tab Intercept Panel Select 1`] = `
             aria-controls="DemoTabsInterceptSelect2-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="0"
           >
@@ -1391,7 +1417,8 @@ exports[`DOM snapshots SLDSTabs Tab Intercept Panel Select 1`] = `
             aria-controls="DemoTabsInterceptSelect2-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1456,7 +1483,8 @@ exports[`DOM snapshots SLDSTabs Unique Generated IDs 1`] = `
             aria-controls="tabs-demo-id-1-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="0"
           >
@@ -1502,7 +1530,8 @@ exports[`DOM snapshots SLDSTabs Unique Generated IDs 1`] = `
             aria-controls="tabs-demo-id-2-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="0"
           >
@@ -1563,7 +1592,8 @@ exports[`DOM snapshots SLDSTabs Vertical 1`] = `
             aria-controls="scoped-tabs-demo-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-vertical-tabs__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="0"
           >
@@ -1580,7 +1610,8 @@ exports[`DOM snapshots SLDSTabs Vertical 1`] = `
             aria-controls="scoped-tabs-demo-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-vertical-tabs__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1598,7 +1629,8 @@ exports[`DOM snapshots SLDSTabs Vertical 1`] = `
             aria-disabled={true}
             aria-selected="false"
             className="slds-disabled slds-vertical-tabs__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1615,7 +1647,8 @@ exports[`DOM snapshots SLDSTabs Vertical 1`] = `
             aria-controls="scoped-tabs-demo-slds-tabs_panel-3"
             aria-selected="false"
             className="slds-vertical-tabs__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1732,7 +1765,8 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
             aria-controls="disabled-tabs-demo-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="0"
           >
@@ -1750,7 +1784,8 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
             aria-disabled={true}
             aria-selected="false"
             className="slds-disabled slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1767,7 +1802,8 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
             aria-controls="disabled-tabs-demo-slds-tabs_panel-2"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1784,7 +1820,8 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
             aria-controls="disabled-tabs-demo-slds-tabs_panel-3"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1912,7 +1949,8 @@ exports[`DOM snapshots SLDSTabs With error tab 1`] = `
             aria-controls="disabled-tabs-demo-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="0"
           >
@@ -1929,7 +1967,8 @@ exports[`DOM snapshots SLDSTabs With error tab 1`] = `
             aria-controls="disabled-tabs-demo-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1968,7 +2007,8 @@ exports[`DOM snapshots SLDSTabs With error tab 1`] = `
             aria-controls="disabled-tabs-demo-slds-tabs_panel-2"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1985,7 +2025,8 @@ exports[`DOM snapshots SLDSTabs With error tab 1`] = `
             aria-controls="disabled-tabs-demo-slds-tabs_panel-3"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >

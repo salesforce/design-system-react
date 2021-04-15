@@ -836,7 +836,7 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                       It looks as if duplicates exist for this lead.
                        
                       <a
-                        href="javascript:void(0);"
+                        href="#"
                       >
                         View Duplicates.
                       </a>
@@ -2249,7 +2249,7 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                         It looks as if duplicates exist for this lead.
                          
                         <a
-                          href="javascript:void(0);"
+                          href="#"
                         >
                           View Duplicates.
                         </a>

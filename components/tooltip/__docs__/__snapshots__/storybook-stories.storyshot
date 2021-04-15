@@ -2140,7 +2140,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Learn More 1`] = `
     }
   >
     <a
-      href="javascript:void(0)"
+      href="#"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
