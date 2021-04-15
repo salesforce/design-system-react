@@ -11,6 +11,7 @@ import DataTableColumn from '../../data-table/column';
 import DataTableRowActions from '../../data-table/row-actions';
 import DataTableHighlightCell from '../../data-table/highlight-cell';
 import IconSettings from '../../icon-settings';
+import { mountComponent } from '../../../tests/enzyme-helpers';
 
 chai.should();
 
@@ -775,6 +776,35 @@ describe('DataTable: ', function describeFunction() {
 			).call(this);
 
 			window.dispatchEvent(new Event('resize'));
+		});
+
+		it('onLoadMore callback is called when the component is updated', function (done) {
+			let expectedCallbacks = 1;
+
+			this.onLoadMore = () => {
+				// eslint-disable-next-line no-plusplus
+				if (!--expectedCallbacks) done();
+			};
+
+			mountComponent(
+				<DataTable
+					{...defaultProps}
+					items={[]}
+					fixedHeader
+					fixedLayout
+					hasMore
+					onLoadMore={this.onLoadMore}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			// Simulate the first page loading
+			this.wrapper.setProps({
+				items: [items[0]],
+			});
 		});
 	});
 });

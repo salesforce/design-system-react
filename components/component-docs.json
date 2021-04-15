@@ -5238,7 +5238,7 @@
                 "returns": null
             },
             {
-                "name": "onScrollerScroll",
+                "name": "loadMoreIfNeeded",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
