@@ -40,7 +40,7 @@ import {
 	MENU_DROPDOWN_TRIGGER,
 	LIST,
 } from '../../utilities/constants';
-import { IconPathContext } from '../icon-settings';
+import { IconSettingsContext } from '../icon-settings';
 
 const documentDefined = typeof document !== 'undefined';
 
@@ -1095,7 +1095,7 @@ class MenuDropdown extends React.Component {
 	}
 }
 
-MenuDropdown.contextType = IconPathContext;
+MenuDropdown.contextType = IconSettingsContext;
 MenuDropdown.propTypes = propTypes;
 MenuDropdown.defaultProps = defaultProps;
 
