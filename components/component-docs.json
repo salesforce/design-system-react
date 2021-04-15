@@ -11487,6 +11487,13 @@
                 "returns": null
             },
             {
+                "name": "getAriaAttributes",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getModal",
                 "docblock": null,
                 "modifiers": [],
@@ -11630,7 +11637,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.\n* `dialogLabelledBy`: This describes which node labels the dialog. If not provided and dialogLabel is unavailable, `id` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
-                    "value": "{\n\tdialogLabel: '',\n\tdialogLabelledBy: '',\n\tcloseButton: 'Close',\n}",
+                    "value": "{\n\tdialogLabelledBy: '',\n\tcloseButton: 'Close',\n}",
                     "computed": false
                 }
             },
@@ -11924,7 +11931,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "An array of detail blocks (used in \"recordHome\" variant)"
+                "description": "An array of detail blocks (used in `recordHome` variant)"
             },
             "label": {
                 "type": {
@@ -11961,7 +11968,7 @@
                     ]
                 },
                 "required": false,
-                "description": "The info property can be a string or a React element"
+                "description": "The info property can be a string or a React element. Can't be used with the `record-home` variant."
             },
             "joined": {
                 "type": {
