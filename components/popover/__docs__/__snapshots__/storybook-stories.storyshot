@@ -1586,7 +1586,7 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
               Pellentesque magna tellus, dapibus vitae placerat nec, viverra vel mi.
                
               <a
-                href="javascript:void(0);"
+                href="#"
                 title="Learn More"
               >
                 Learn More
@@ -2393,7 +2393,7 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
               Pellentesque magna tellus, dapibus vitae placerat nec, viverra vel mi.
                
               <a
-                href="javascript:void(0);"
+                href="#"
                 title="Learn More"
               >
                 Learn More

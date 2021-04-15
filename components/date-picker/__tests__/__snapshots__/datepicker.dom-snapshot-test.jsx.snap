@@ -858,7 +858,7 @@ exports[`Datepicker
               >
                 <a
                   className="slds-show_inline-block slds-p-bottom_x-small"
-                  href="javascript:void(0)"
+                  href="#"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   tabIndex="0"
@@ -1722,7 +1722,7 @@ exports[`Datepicker
                 >
                   <a
                     className="slds-show_inline-block slds-p-bottom_x-small"
-                    href="javascript:void(0)"
+                    href="#"
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     tabIndex="0"
@@ -2585,7 +2585,7 @@ exports[`Datepicker
               >
                 <a
                   className="slds-show_inline-block slds-p-bottom_x-small"
-                  href="javascript:void(0)"
+                  href="#"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   tabIndex="0"
@@ -3445,7 +3445,7 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
               >
                 <a
                   className="slds-show_inline-block slds-p-bottom_x-small"
-                  href="javascript:void(0)"
+                  href="#"
                   onClick={[Function]}
                   onKeyDown={[Function]}
                   tabIndex="0"
@@ -3558,7 +3558,7 @@ exports[`Datepicker Default HTML Snapshot 1`] = `
               <td aria-disabled=\\"true\\" aria-selected=\\"false\\" class=\\"slds-disabled-text\\"><span class=\\"slds-day \\"> </span></td>
             </tr>
             <tr>
-              <td colSpan=\\"7\\" role=\\"gridcell\\"><a href=\\"javascript:void(0)\\" tabindex=\\"0\\" class=\\"slds-show_inline-block slds-p-bottom_x-small\\">Today</a></td>
+              <td colSpan=\\"7\\" role=\\"gridcell\\"><a href=\\"#\\" tabindex=\\"0\\" class=\\"slds-show_inline-block slds-p-bottom_x-small\\">Today</a></td>
             </tr>
           </tbody>
         </table>

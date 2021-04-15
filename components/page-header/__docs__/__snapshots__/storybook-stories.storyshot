@@ -558,7 +558,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
               Field 3
             </div>
             <a
-              href="javascript:void(0);"
+              href="#link"
             >
               Hyperlink
             </a>
@@ -610,7 +610,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
               className="slds-breadcrumb__item"
             >
               <a
-                href="javascript:void(0);"
+                href="#accounts"
               >
                 Accounts
               </a>
@@ -619,7 +619,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
               className="slds-breadcrumb__item"
             >
               <a
-                href="javascript:void(0);"
+                href="#company-one"
               >
                 Company One
               </a>
@@ -1715,7 +1715,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
               className="slds-breadcrumb__item"
             >
               <a
-                href="javascript:void(0);"
+                href="#accounts"
               >
                 Accounts
               </a>
@@ -1724,7 +1724,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
               className="slds-breadcrumb__item"
             >
               <a
-                href="javascript:void(0);"
+                href="#company-one"
               >
                 Company One
               </a>
@@ -2036,7 +2036,7 @@ exports[`DOM snapshots SLDSPageHeader Setup 1`] = `
                   className="slds-breadcrumb__item"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#setup"
                   >
                     Setup
                   </a>
