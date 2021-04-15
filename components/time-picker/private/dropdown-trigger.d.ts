@@ -49,6 +49,6 @@ declare module '@salesforce/design-system-react/components/time-picker/private/d
 	/**
 	 *  Component description.
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

@@ -90,6 +90,6 @@ declare module '@salesforce/design-system-react/components/panel/filtering/group
 		variant?: 'panel';
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

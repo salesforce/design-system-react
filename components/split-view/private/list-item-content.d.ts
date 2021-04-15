@@ -16,6 +16,6 @@ declare module '@salesforce/design-system-react/components/split-view/private/li
 		}>;
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

@@ -62,6 +62,6 @@ declare module '@salesforce/design-system-react/components/app-launcher/tile' {
 	/**
 	 * App Launcher Tiles provide information and links to a user's apps
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

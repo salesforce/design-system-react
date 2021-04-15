@@ -15,6 +15,6 @@ declare module '@salesforce/design-system-react/components/panel/filtering/list-
 		lockedHeading?: string;
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

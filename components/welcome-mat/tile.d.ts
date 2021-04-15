@@ -45,6 +45,6 @@ declare module '@salesforce/design-system-react/components/welcome-mat/tile' {
 	/**
 	 * Tile component item represents a tile in a Welcome Mat
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

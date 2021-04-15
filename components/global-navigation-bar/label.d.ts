@@ -19,6 +19,6 @@ declare module '@salesforce/design-system-react/components/global-navigation-bar
 		label?: string;
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }
