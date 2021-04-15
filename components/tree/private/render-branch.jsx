@@ -319,11 +319,11 @@ const RenderBranch = (children, props) => {
 				/>
 				<span className="slds-size_1-of-1" id={`${props.htmlId}__label`}>
 					<Highlighter
-							search={props.searchTerm}
-							className="slds-tree__item-label slds-truncate"
-						>
-							{props.label}
-						</Highlighter>
+						search={props.searchTerm}
+						className="slds-tree__item-label slds-truncate"
+					>
+						{props.label}
+					</Highlighter>
 				</span>
 			</div>
 			{isLoading ? loader : null}
