@@ -322,7 +322,7 @@ describe('SLDSCombobox', function describeFunction() {
 			);
 		});
 
-		it.only('Selected Listbox: remove initial first pill, remove third initial item, cycles focus (first to last), removes last and initial fifth pill, cycles focus (last to first), remove inital second and fourth pill', function (done) {
+		it('Selected Listbox: remove initial first pill, remove third initial item, cycles focus (first to last), removes last and initial fifth pill, cycles focus (last to first), remove inital second and fourth pill', function (done) {
 			const getSelectedListboxPills = ({ nodes, index }) =>
 				nodes.selectedListbox.children().at(index).childAt(0);
 			const getFocusedPillLabel = () =>
