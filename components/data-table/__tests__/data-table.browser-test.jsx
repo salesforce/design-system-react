@@ -15,11 +15,7 @@ import { mountComponent } from '../../../tests/enzyme-helpers';
 
 chai.should();
 
-const {
-	Simulate,
-	scryRenderedComponentsWithType,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
+const { Simulate } = TestUtils;
 
 describe('DataTable: ', function describeFunction() {
 	const items = [
@@ -110,7 +106,9 @@ describe('DataTable: ', function describeFunction() {
 			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			// eslint-disable-next-line react/no-render-return-value
 			this.component = ReactDOM.render(
-				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
+				<div>
+					<IconSettings iconPath="/assets/icons">{instance}</IconSettings>
+				</div>,
 				this.dom
 			);
 			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
@@ -544,11 +542,9 @@ describe('DataTable: ', function describeFunction() {
 					/>
 				</DataTable>
 			).call(this);
-
-			const rowActionMenus = scryRenderedComponentsWithType(
-				this.component,
-				DataTableRowActions
-			);
+			const rowActionMenus = [
+				...this.component.getElementsByTagName('button'),
+			].filter((button) => button.textContent === 'Actions');
 			rowActionMenus.should.have.length(6);
 		});
 
@@ -592,14 +588,9 @@ describe('DataTable: ', function describeFunction() {
 				</DataTable>
 			).call(this);
 
-			const rowActionMenu = scryRenderedComponentsWithType(
-				this.component,
-				DataTableRowActions
+			const trigger = [...this.component.getElementsByTagName('button')].filter(
+				(button) => button.textContent === 'Actions'
 			)[0];
-			const trigger = findRenderedDOMComponentWithClass(
-				rowActionMenu,
-				'slds-button'
-			);
 			Simulate.click(trigger, {});
 
 			setTimeout(() => {

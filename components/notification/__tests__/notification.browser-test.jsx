@@ -13,9 +13,11 @@ import IconSettings from '../../icon-settings';
 describe('SLDSNotification: ', () => {
 	const generateNotification = function (notificationInstance) {
 		const reactCmp = TestUtils.renderIntoDocument(
-			<IconSettings iconPath="/assets/icons">
-				{notificationInstance}
-			</IconSettings>
+			<div>
+				<IconSettings iconPath="/assets/icons">
+					{notificationInstance}
+				</IconSettings>
+			</div>
 		);
 		return ReactDOM.findDOMNode(reactCmp);
 	};
@@ -49,7 +51,7 @@ describe('SLDSNotification: ', () => {
 					silenceDeprecationWarning
 				/>
 			);
-			const alert = notification.getElementsByTagName('div')[0];
+			const alert = notification.getElementsByTagName('div')[1];
 			expect(alert.className).to.include('slds-notify_toast');
 		});
 
@@ -63,7 +65,7 @@ describe('SLDSNotification: ', () => {
 					silenceDeprecationWarning
 				/>
 			);
-			const alert = notification.getElementsByTagName('div')[0];
+			const alert = notification.getElementsByTagName('div')[1];
 			expect(alert.className).to.include('slds-theme_error');
 		});
 

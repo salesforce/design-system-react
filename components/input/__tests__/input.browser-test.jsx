@@ -11,12 +11,6 @@ import Icon from '../../icon';
 import InputIcon from '../../icon/input-icon';
 import IconSettings from '../../icon-settings';
 
-const {
-	findRenderedDOMComponentWithTag,
-	scryRenderedDOMComponentsWithTag,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
-
 describe('SLDSInput', () => {
 	const defaultProps = {
 		placeholder: 'Placeholder Text',
@@ -29,7 +23,9 @@ describe('SLDSInput', () => {
 		document.body.appendChild(body);
 		/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 		return ReactDOM.render(
-			<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
+			<div>
+				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>
+			</div>,
 			body
 		);
 		/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
@@ -52,15 +48,9 @@ describe('SLDSInput', () => {
 
 		beforeEach(() => {
 			component = getInput({ label: 'Input Label', id: 'custom-id' });
-			wrapper = findRenderedDOMComponentWithClass(
-				component,
-				'slds-form-element'
-			);
-			input = findRenderedDOMComponentWithTag(component, 'input');
-			label = findRenderedDOMComponentWithClass(
-				component,
-				'slds-form-element__label'
-			);
+			[wrapper] = component.getElementsByClassName('slds-form-element');
+			[input] = component.getElementsByTagName('input');
+			[label] = component.getElementsByClassName('slds-form-element__label');
 		});
 
 		afterEach(() => {
@@ -105,11 +95,8 @@ describe('SLDSInput', () => {
 
 		beforeEach(() => {
 			component = getInput({ assistiveText: { label: 'Assistive Label' } });
-			label = findRenderedDOMComponentWithClass(
-				component,
-				'slds-form-element__label'
-			);
-			input = findRenderedDOMComponentWithTag(component, 'input');
+			[input] = component.getElementsByTagName('input');
+			[label] = component.getElementsByClassName('slds-form-element__label');
 		});
 
 		afterEach(() => {
@@ -138,8 +125,8 @@ describe('SLDSInput', () => {
 
 		beforeEach(() => {
 			component = getInput({ label: 'Input Label', readOnly: true });
-			label = findRenderedDOMComponentWithTag(component, 'label');
-			input = findRenderedDOMComponentWithTag(component, 'input');
+			[input] = component.getElementsByTagName('input');
+			[label] = component.getElementsByTagName('label');
 		});
 
 		afterEach(() => {
@@ -162,9 +149,9 @@ describe('SLDSInput', () => {
 
 		beforeEach(() => {
 			component = getInput({ label: 'Input Label', isStatic: true });
-			[label] = scryRenderedDOMComponentsWithTag(component, 'span');
+			[label] = component.getElementsByTagName('span');
 			// eslint-disable-next-line prefer-destructuring
-			input = scryRenderedDOMComponentsWithTag(component, 'span')[1];
+			input = component.getElementsByTagName('span')[1];
 		});
 
 		afterEach(() => {
@@ -186,7 +173,7 @@ describe('SLDSInput', () => {
 
 		beforeEach(() => {
 			component = getInput({ label: 'Input Label', disabled: true });
-			input = findRenderedDOMComponentWithTag(component, 'input');
+			[input] = component.getElementsByTagName('input');
 		});
 
 		afterEach(() => {
@@ -210,8 +197,8 @@ describe('SLDSInput', () => {
 				label: 'Input One',
 			});
 			component2 = getInput({ className: 'input-two', label: 'Input Two' });
-			input1 = findRenderedDOMComponentWithTag(component1, 'input');
-			input2 = findRenderedDOMComponentWithTag(component2, 'input');
+			[input1] = component1.getElementsByTagName('input');
+			[input2] = component2.getElementsByTagName('input');
 		});
 
 		afterEach(() => {
@@ -237,15 +224,10 @@ describe('SLDSInput', () => {
 				required: true,
 				errorText: 'Error Message',
 			});
-			wrapper = findRenderedDOMComponentWithClass(
-				component,
-				'slds-form-element'
-			);
-			error = findRenderedDOMComponentWithClass(
-				component,
-				'slds-form-element__help'
-			);
-			input = findRenderedDOMComponentWithTag(component, 'input');
+
+			[wrapper] = component.getElementsByClassName('slds-form-element');
+			[input] = component.getElementsByTagName('input');
+			[error] = component.getElementsByClassName('slds-form-element__help');
 		});
 
 		afterEach(() => {
@@ -253,9 +235,9 @@ describe('SLDSInput', () => {
 		});
 
 		it('input wrapper contains an <abbr> that has class "slds-required"', () => {
-			expect(
-				findRenderedDOMComponentWithTag(component, 'abbr').className
-			).to.include('slds-required');
+			expect(component.getElementsByTagName('abbr')[0].className).to.include(
+				'slds-required'
+			);
 		});
 
 		it('input wrapper has class "slds-has-error"', () => {
@@ -292,13 +274,11 @@ describe('SLDSInput', () => {
 					/>
 				),
 			});
-			leftButton = findRenderedDOMComponentWithTag(component, 'button');
-			iconAssistiveText = findRenderedDOMComponentWithClass(
-				component,
+			[leftButton] = component.getElementsByTagName('button');
+			[iconAssistiveText] = component.getElementsByClassName(
 				'slds-assistive-text'
 			);
-			elementControl = findRenderedDOMComponentWithClass(
-				component,
+			[elementControl] = component.getElementsByClassName(
 				'slds-form-element__control'
 			);
 		});
@@ -346,9 +326,8 @@ describe('SLDSInput', () => {
 					/>
 				),
 			});
-			leftButton = findRenderedDOMComponentWithTag(component, 'button');
-			elementControl = findRenderedDOMComponentWithClass(
-				component,
+			[leftButton] = component.getElementsByTagName('button');
+			[elementControl] = component.getElementsByClassName(
 				'slds-form-element__control'
 			);
 		});
@@ -381,8 +360,7 @@ describe('SLDSInput', () => {
 			component = getInput({
 				iconRight: <Icon name="search" category="utility" />,
 			});
-			elementControl = findRenderedDOMComponentWithClass(
-				component,
+			[elementControl] = component.getElementsByClassName(
 				'slds-form-element__control'
 			);
 		});
@@ -415,8 +393,8 @@ describe('SLDSInput', () => {
 				id: 'unique-id-4',
 				label: 'Input Label',
 			});
-			spinner = findRenderedDOMComponentWithClass(component, 'slds-spinner');
-			input = findRenderedDOMComponentWithTag(component, 'input');
+			[spinner] = component.getElementsByClassName('slds-spinner');
+			[input] = component.getElementsByTagName('input');
 		});
 
 		afterEach(() => {
@@ -462,12 +440,9 @@ describe('SLDSInput', () => {
 				id: 'unique-id-4',
 				label: 'Input Label',
 			});
-			spinner = findRenderedDOMComponentWithClass(component, 'slds-spinner');
-			input = findRenderedDOMComponentWithTag(component, 'input');
-			error = findRenderedDOMComponentWithClass(
-				component,
-				'slds-form-element__help'
-			);
+			[spinner] = component.getElementsByClassName('slds-spinner');
+			[input] = component.getElementsByTagName('input');
+			[error] = component.getElementsByClassName('slds-form-element__help');
 		});
 
 		afterEach(() => {
@@ -492,8 +467,7 @@ describe('SLDSInput', () => {
 				id: 'unique-id-5',
 				label: 'Input Label',
 			});
-			fixedTextLeft = findRenderedDOMComponentWithClass(
-				component,
+			[fixedTextLeft] = component.getElementsByClassName(
 				'slds-form-element__addon'
 			);
 		});
@@ -530,12 +504,10 @@ describe('SLDSInput', () => {
 				value: 1,
 				variant: 'counter',
 			});
-			decrement = findRenderedDOMComponentWithClass(
-				component,
+			[decrement] = component.getElementsByClassName(
 				'slds-input__button_decrement'
 			);
-			increment = findRenderedDOMComponentWithClass(
-				component,
+			[increment] = component.getElementsByClassName(
 				'slds-input__button_increment'
 			);
 
@@ -589,12 +561,10 @@ describe('SLDSInput', () => {
 				value: 1,
 				variant: 'counter',
 			});
-			decrement = findRenderedDOMComponentWithClass(
-				component,
+			[decrement] = component.getElementsByClassName(
 				'slds-input__button_decrement'
 			);
-			increment = findRenderedDOMComponentWithClass(
-				component,
+			[increment] = component.getElementsByClassName(
 				'slds-input__button_increment'
 			);
 
@@ -620,12 +590,10 @@ describe('SLDSInput', () => {
 				value: 1,
 				variant: 'counter',
 			});
-			decrement = findRenderedDOMComponentWithClass(
-				component,
+			[decrement] = component.getElementsByClassName(
 				'slds-input__button_decrement'
 			);
-			increment = findRenderedDOMComponentWithClass(
-				component,
+			[increment] = component.getElementsByClassName(
 				'slds-input__button_increment'
 			);
 

@@ -213,6 +213,9 @@ class Dialog extends React.Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
+		if (this.popper) {
+			this.popper.scheduleUpdate();
+		}
 		if (
 			this.state.triggerPopperJS === true &&
 			prevState.triggerPopperJS === false &&
