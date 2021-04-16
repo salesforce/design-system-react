@@ -6,10 +6,7 @@ import ReactDOM from 'react-dom';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import assign from 'lodash.assign';
-import {
-	Simulate,
-	findRenderedDOMComponentWithClass,
-} from 'react-dom/test-utils';
+import { Simulate } from 'react-dom/test-utils';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
@@ -405,7 +402,9 @@ describe('SLDSMenuDropdown', function () {
 			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			// eslint-disable-next-line react/no-render-return-value
 			return ReactDOM.render(
-				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
+				<div>
+					<IconSettings iconPath="/assets/icons">{inst}</IconSettings>
+				</div>,
 				body
 			);
 			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
@@ -433,7 +432,7 @@ describe('SLDSMenuDropdown', function () {
 				openOn: 'hover',
 				hoverCloseDelay: 2,
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
+			[btn] = cmp.getElementsByClassName('slds-dropdown-trigger');
 		});
 
 		afterEach((done) => {
@@ -494,7 +493,9 @@ describe('SLDSMenuDropdown', function () {
 			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			// eslint-disable-next-line react/no-render-return-value
 			return ReactDOM.render(
-				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
+				<div>
+					<IconSettings iconPath="/assets/icons">{inst}</IconSettings>
+				</div>,
 				body
 			);
 			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
@@ -519,7 +520,7 @@ describe('SLDSMenuDropdown', function () {
 
 		beforeEach(() => {
 			cmp = dropItDown({ openOn: 'hybrid', onClick, hoverCloseDelay: 1 });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
+			[btn] = cmp.getElementsByClassName('slds-dropdown-trigger');
 		});
 
 		afterEach(() => {

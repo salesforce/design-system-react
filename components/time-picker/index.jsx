@@ -54,7 +54,8 @@ const getOptions = ({ props }) => {
 };
 
 /**
- *  Component description.
+ * ** Timepicker is deprecated. Please use an auto-complete Combobox instead.**
+ * A timepicker is an autocomplete text input to capture a time.
  */
 class Timepicker extends React.Component {
 	// ### Display Name

@@ -9,7 +9,7 @@ import { expect } from 'chai';
 import SLDSMenuPicklist from '../../menu-picklist';
 import IconSettings from '../../icon-settings';
 
-const { Simulate, findRenderedDOMComponentWithClass } = TestUtils;
+const { Simulate } = TestUtils;
 
 describe('SLDSMenuPicklist: ', function () {
 	let body;
@@ -31,7 +31,9 @@ describe('SLDSMenuPicklist: ', function () {
 		document.body.appendChild(body);
 		/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 		return ReactDOM.render(
-			<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
+			<div>
+				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>
+			</div>,
 			body
 		);
 		/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
@@ -62,7 +64,7 @@ describe('SLDSMenuPicklist: ', function () {
 
 		beforeEach(() => {
 			cmp = getPicklist({ modal: true });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			[btn] = cmp.getElementsByClassName('slds-button');
 		});
 
 		afterEach(() => {
@@ -90,7 +92,7 @@ describe('SLDSMenuPicklist: ', function () {
 					clicked = true;
 				},
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			[btn] = cmp.getElementsByClassName('slds-button');
 		});
 
 		afterEach(() => {
@@ -132,7 +134,7 @@ describe('SLDSMenuPicklist: ', function () {
 					selected = i;
 				},
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			[btn] = cmp.getElementsByClassName('slds-button');
 			Simulate.click(btn, {});
 		});
 
@@ -161,7 +163,7 @@ describe('SLDSMenuPicklist: ', function () {
 					clicked = true;
 				},
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			[btn] = cmp.getElementsByClassName('slds-button');
 		});
 
 		afterEach(() => {
@@ -186,7 +188,7 @@ describe('SLDSMenuPicklist: ', function () {
 
 		beforeEach(() => {
 			cmp = getPicklist({});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			[btn] = cmp.getElementsByClassName('slds-button');
 		});
 
 		afterEach(() => {
@@ -227,7 +229,7 @@ describe('SLDSMenuPicklist: ', function () {
 					selected = i;
 				},
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
+			[btn] = cmp.getElementsByClassName('slds-button');
 		});
 
 		afterEach(() => {

@@ -13,7 +13,7 @@ const { Simulate } = TestUtils;
 
 const mockCallback = sinon.spy();
 
-describe.only('SLDSButton: ', () => {
+describe('SLDSButton: ', () => {
 	const defaultProps = {
 		label: 'Neutral',
 		onClick: mockCallback,

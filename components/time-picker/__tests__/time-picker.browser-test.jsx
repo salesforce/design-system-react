@@ -1,6 +1,6 @@
 /* eslint-disable react/no-string-refs */
 
-import React, { createFactory } from 'react';
+import React from 'react';
 import TestUtils from 'react-dom/test-utils';
 
 import SLDSTimepicker from '../../time-picker';
@@ -24,25 +24,22 @@ describe('SLDSTimepicker: ', () => {
 				new Date().getTime() + 24 * 60 * 60 * 1000
 			);
 
-			const TestTimepicker = createFactory(
-				class extends React.Component {
-					state = {
-						isOpen: false,
-						value: futureDateTime,
-						strValue: formatter(futureDateTime),
-					};
+			const TestTimepicker = class extends React.Component {
+				state = {
+					isOpen: false,
+					value: futureDateTime,
+					strValue: formatter(futureDateTime),
+				};
 
-					render() {
-						return (
-							<IconSettings iconPath="/assets/icons">
-								<SLDSTimepicker ref="timePicker" {...defaultProps} />
-							</IconSettings>
-						);
-					}
+				render() {
+					return (
+						<IconSettings iconPath="/assets/icons">
+							<SLDSTimepicker ref="timePicker" {...defaultProps} />
+						</IconSettings>
+					);
 				}
-			);
-
-			const parent = TestUtils.renderIntoDocument(TestTimepicker());
+			};
+			const parent = TestUtils.renderIntoDocument(<TestTimepicker />);
 			parent.refs.timePicker.state.strValue.should.eql(defaultStrValue);
 		});
 	});

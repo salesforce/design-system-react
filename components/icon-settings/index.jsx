@@ -88,15 +88,7 @@ IconSettings.propTypes = {
 	utilitySprite: PropTypes.string,
 };
 
-const IconSettingsContext = React.createContext({
-	iconPath: PropTypes.string,
-	onRequestIconPath: PropTypes.func,
-	actionSprite: PropTypes.string,
-	customSprite: PropTypes.string,
-	doctypeSprite: PropTypes.string,
-	standardSprite: PropTypes.string,
-	utilitySprite: PropTypes.string,
-});
+const IconSettingsContext = React.createContext({});
 
 export default IconSettings;
 export { IconSettingsContext };
