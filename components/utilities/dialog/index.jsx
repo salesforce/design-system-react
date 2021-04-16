@@ -26,7 +26,7 @@ import {
 import { DIALOG } from '../../../utilities/constants';
 
 // #### Dialog doesn't pass down <IconSettings> context so repassing it here.
-import IconSettings from '../../icon-settings';
+import IconSettings, { IconSettingsContext } from '../../icon-settings';
 // eslint-disable-next-line camelcase
 import UNSAFE_DirectionSettings, { DIRECTIONS } from '../UNSAFE_direction';
 import LanguageDirection from '../UNSAFE_direction/private/language-direction';
@@ -497,9 +497,7 @@ class Dialog extends React.Component {
 				// truthy values, and pass into Portal's context.
 
 				// TODO: Add test when switched to `ReactDOM.createPortal`
-				const truthyIconSettingsContext = Object.keys(
-					IconSettings.childContextTypes
-				)
+				const truthyIconSettingsContext = Object.keys(this.context)
 					.filter((key) => Boolean(this.context[key]))
 					.reduce(
 						(accumulatedContext, key) => ({
@@ -528,14 +526,6 @@ class Dialog extends React.Component {
 	}
 }
 
-Dialog.contextTypes = {
-	iconPath: PropTypes.string,
-	onRequestIconPath: PropTypes.func,
-	actionSprite: PropTypes.string,
-	customSprite: PropTypes.string,
-	doctypeSprite: PropTypes.string,
-	standardSprite: PropTypes.string,
-	utilitySprite: PropTypes.string,
-};
+Dialog.contextType = IconSettingsContext;
 
 export default LanguageDirection(Dialog);

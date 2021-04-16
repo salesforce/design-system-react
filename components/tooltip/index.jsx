@@ -24,6 +24,7 @@ import Button from '../button';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 import componentDoc from './component.json';
+import { IconSettingsContext } from '../icon-settings';
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
@@ -454,10 +455,7 @@ class Tooltip extends React.Component {
 	}
 }
 
-Tooltip.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+Tooltip.contextType = IconSettingsContext;
 Tooltip.displayName = displayName;
 Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;

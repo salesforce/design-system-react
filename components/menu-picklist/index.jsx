@@ -46,6 +46,7 @@ import KeyBuffer from '../../utilities/key-buffer';
 import keyboardNavigate from '../../utilities/keyboard-navigate';
 import KEYS from '../../utilities/key-code';
 import { MENU_PICKLIST } from '../../utilities/constants';
+import { IconSettingsContext } from '../icon-settings';
 
 const noop = () => {};
 
@@ -717,9 +718,6 @@ const MenuPicklist = createReactClass({
 	},
 });
 
-MenuPicklist.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+MenuPicklist.contextType = IconSettingsContext;
 export default MenuPicklist;
 export { ListItemLabel };
