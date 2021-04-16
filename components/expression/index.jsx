@@ -88,8 +88,9 @@ const defaultProps = {
  * creating rules to control when something executes, or any other conditional logic.
  */
 class Expression extends React.Component {
-	// eslint-disable-next-line camelcase, react/sort-comp
-	UNSAFE_componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 

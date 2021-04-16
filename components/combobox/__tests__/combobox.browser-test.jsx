@@ -101,7 +101,7 @@ const defaultProps = {
 };
 
 const propTypes = {
-	UNSAFE_componentWillUpdate: PropTypes.func,
+	componentDidUpdate: PropTypes.func,
 	initialSelection: PropTypes.array,
 };
 
@@ -121,9 +121,9 @@ class DemoComponent extends React.Component {
 	}
 
 	// eslint-disable-next-line camelcase
-	UNSAFE_componentWillUpdate(nextProps, nextState) {
-		if (this.props.UNSAFE_componentWillUpdate) {
-			this.props.UNSAFE_componentWillUpdate(nextState);
+	componentDidUpdate() {
+		if (this.props.componentDidUpdate) {
+			this.props.componentDidUpdate(this.state);
 		}
 	}
 
@@ -322,7 +322,7 @@ describe('SLDSCombobox', function describeFunction() {
 			);
 		});
 
-		it('Selected Listbox: remove initial first pill, remove third initial item, cycles focus (first to last), removes last and initial fifth pill, cycles focus (last to first), remove inital second and fourth pill', function (done) {
+		it.only('Selected Listbox: remove initial first pill, remove third initial item, cycles focus (first to last), removes last and initial fifth pill, cycles focus (last to first), remove inital second and fourth pill', function (done) {
 			const getSelectedListboxPills = ({ nodes, index }) =>
 				nodes.selectedListbox.children().at(index).childAt(0);
 			const getFocusedPillLabel = () =>
@@ -353,7 +353,7 @@ describe('SLDSCombobox', function describeFunction() {
 			let counter = 0;
 			wrapper = mount(
 				<DemoComponent
-					UNSAFE_componentWillUpdate={(prevState) => {
+					componentDidUpdate={(prevState) => {
 						expect(prevState.selection).to.have.members(
 							selectionIndexedStates[counter]
 						);

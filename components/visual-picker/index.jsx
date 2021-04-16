@@ -61,8 +61,9 @@ const defaultProps = {
  * Visual Picker Component
  */
 class VisualPicker extends React.Component {
-	// eslint-disable-next-line camelcase
-	UNSAFE_componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 

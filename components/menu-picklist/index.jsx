@@ -227,6 +227,7 @@ const MenuPicklist = createReactClass({
 		this.navigableItems = getNavigableItems(this.props.options);
 	},
 
+	// parent changing props ??
 	// eslint-disable-next-line camelcase, react/sort-comp
 	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (

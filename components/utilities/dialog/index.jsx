@@ -212,13 +212,6 @@ class Dialog extends React.Component {
 		}
 	}
 
-	// eslint-disable-next-line camelcase, react/sort-comp
-	UNSAFE_componentWillUpdate() {
-		if (this.popper) {
-			this.popper.scheduleUpdate();
-		}
-	}
-
 	componentDidUpdate(prevProps, prevState) {
 		if (
 			this.state.triggerPopperJS === true &&

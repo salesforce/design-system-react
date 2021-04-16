@@ -81,8 +81,9 @@ const defaultProps = {
  * Tile component item represents a tile in a Welcome Mat
  */
 class Tile extends React.Component {
-	// eslint-disable-next-line camelcase, react/sort-comp
-	UNSAFE_componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 

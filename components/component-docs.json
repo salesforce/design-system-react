@@ -16649,7 +16649,7 @@
         "dependencies": []
     },
     "time-picker": {
-        "description": "Component description.",
+        "description": "** Timepicker is deprecated. Please use an auto-complete Combobox instead.**\nA timepicker is an autocomplete text input to capture a time.",
         "methods": [
             {
                 "name": "parseDate",
