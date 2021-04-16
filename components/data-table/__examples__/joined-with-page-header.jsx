@@ -16,7 +16,7 @@ import PageHeaderControl from '~/components/page-header/control';
 const CustomDataTableCell = ({ children, ...props }) => (
 	<DataTableCell title={children} {...props}>
 		<a
-			href="javascript:void(0);"
+			href="#"
 			onClick={(event) => {
 				event.preventDefault();
 			}}

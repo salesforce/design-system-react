@@ -8,10 +8,10 @@ class Example extends React.Component {
 
 	render() {
 		const trail = [
-			<a id="parent-entity" href="javascript:void(0);">
+			<a id="parent-entity" href="#entity">
 				Parent Entity
 			</a>,
-			<a href="javascript:void(0);">Parent Record Name</a>,
+			<a href="#record">Parent Record Name</a>,
 		];
 
 		return (

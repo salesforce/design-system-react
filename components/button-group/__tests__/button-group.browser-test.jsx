@@ -12,15 +12,14 @@ import SLDSButtonGroup from '../../button-group';
 import SLDSButton from '../../button';
 
 describe('SLDSButtonGroup: ', () => {
-	const generateButtonGroup = function generateButtonGroupFunction(
-		buttonGroupInstance
-	) {
-		const reactCmp = TestUtils.renderIntoDocument(
+	const generateButtonGroup = (buttonGroupInstance) => {
+		const ref = React.createRef();
+		TestUtils.renderIntoDocument(
 			<IconSettings iconPath="/assets/icons">
-				<div>{buttonGroupInstance}</div>
+				<div ref={ref}>{buttonGroupInstance}</div>
 			</IconSettings>
 		);
-		return ReactDOM.findDOMNode(reactCmp).children[0];
+		return ReactDOM.findDOMNode(ref.current);
 	};
 
 	describe('component renders', () => {
@@ -80,8 +79,10 @@ describe('SLDSButtonGroup: ', () => {
 					/>
 				</SLDSButtonGroup>
 			);
-			const buttonGroup = generateButtonGroup(instance);
-			const role = buttonGroup.getAttribute('role');
+			const [buttonGroupElement] = generateButtonGroup(
+				instance
+			).getElementsByClassName('slds-button-group');
+			const role = buttonGroupElement.getAttribute('role');
 			expect(role).to.equal('group');
 		});
 

@@ -7,7 +7,7 @@ class Example extends React.Component {
 	static displayName = 'BreadCrumbExample';
 
 	render() {
-		const trail = [<a href="javascript:void(0);">Parent Entity</a>];
+		const trail = [<a href="#entity">Parent Entity</a>];
 
 		return (
 			<IconSettings iconPath="/assets/icons">

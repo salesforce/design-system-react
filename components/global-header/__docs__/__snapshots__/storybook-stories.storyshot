@@ -9,14 +9,14 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
   >
     <a
       className="slds-assistive-text slds-assistive-text_focus"
-      href="javascript:void(0);"
+      href="#"
       onClick={[Function]}
     >
       Skip to Navigation
     </a>
     <a
       className="slds-assistive-text slds-assistive-text_focus"
-      href="javascript:void(0);"
+      href="#"
       onClick={[Function]}
     >
       Skip to Main Content
@@ -501,14 +501,14 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
   >
     <a
       className="slds-assistive-text slds-assistive-text_focus"
-      href="javascript:void(0);"
+      href="#"
       onClick={[Function]}
     >
       Skip to Navigation
     </a>
     <a
       className="slds-assistive-text slds-assistive-text_focus"
-      href="javascript:void(0);"
+      href="#"
       onClick={[Function]}
     >
       Skip to Main Content
@@ -884,14 +884,14 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
   >
     <a
       className="slds-assistive-text slds-assistive-text_focus"
-      href="javascript:void(0);"
+      href="#"
       onClick={[Function]}
     >
       Skip to Navigation
     </a>
     <a
       className="slds-assistive-text slds-assistive-text_focus"
-      href="javascript:void(0);"
+      href="#"
       onClick={[Function]}
     >
       Skip to Main Content

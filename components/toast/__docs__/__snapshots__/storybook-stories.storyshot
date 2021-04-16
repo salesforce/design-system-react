@@ -59,7 +59,8 @@ exports[`DOM snapshots SLDSToast Custom Class Names 1`] = `
           26 potential duplicate leads were found.
            
           <a
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             Select Leads to Merge
           </a>
@@ -135,7 +136,8 @@ exports[`DOM snapshots SLDSToast Custom Style 1`] = `
           26 potential duplicate leads were found.
            
           <a
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             Select Leads to Merge
           </a>
@@ -207,7 +209,7 @@ exports[`DOM snapshots SLDSToast Duration Toast 1`] = `
             26 potential duplicate leads were found.
              
             <a
-              href="javascript:void(0);"
+              href="#"
               onClick={[Function]}
             >
               Select Leads to Merge
@@ -423,7 +425,7 @@ exports[`DOM snapshots SLDSToast Info 1`] = `
           26 potential duplicate leads were found.
            
           <a
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
           >
             Select Leads to Merge
@@ -494,7 +496,7 @@ exports[`DOM snapshots SLDSToast Success 1`] = `
         >
           Account 
           <a
-            href="javascript:void(0);"
+            href="#"
           >
             ACME - 100
           </a>

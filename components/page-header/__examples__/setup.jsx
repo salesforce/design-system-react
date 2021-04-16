@@ -58,7 +58,7 @@ class Example extends React.Component {
 					}
 					onRenderActions={actions}
 					title="Home"
-					trail={[<a href="javascript:void(0);">Setup</a>]}
+					trail={[<a href="#setup">Setup</a>]}
 					truncate
 					variant="object-home"
 				/>

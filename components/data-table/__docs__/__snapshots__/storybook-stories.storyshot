@@ -85,7 +85,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           >
             <a
               className="slds-th__action slds-text-link_reset"
-              href="javascript:void(0)"
+              href="#"
               onClick={[Function]}
               role="button"
               tabIndex="0"
@@ -159,7 +159,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           >
             <a
               className="slds-th__action slds-text-link_reset"
-              href="javascript:void(0)"
+              href="#"
               onClick={[Function]}
               role="button"
               tabIndex="0"
@@ -227,7 +227,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
           >
             <a
               className="slds-th__action slds-text-link_reset"
-              href="javascript:void(0)"
+              href="#"
               onClick={[Function]}
               role="button"
               tabIndex="0"
@@ -390,7 +390,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               title="Acme - 1,200 Widgets"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Acme - 1,200 Widgets
@@ -477,7 +477,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               title="jrogers@acme.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@acme.com
@@ -592,7 +592,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               title="Acme - 200 Widgets"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Acme - 200 Widgets
@@ -679,7 +679,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               title="bob@acme.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 bob@acme.com
@@ -794,7 +794,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               title="salesforce.com - 1,000 Widgets"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 salesforce.com - 1,000 Widgets
@@ -881,7 +881,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               title="nathan@salesforce.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 nathan@salesforce.com
@@ -987,7 +987,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           >
             <a
               className="slds-th__action slds-text-link_reset"
-              href="javascript:void(0)"
+              href="#"
               onClick={[Function]}
               role="button"
               tabIndex="0"
@@ -1107,7 +1107,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           >
             <a
               className="slds-th__action slds-text-link_reset"
-              href="javascript:void(0)"
+              href="#"
               onClick={[Function]}
               role="button"
               tabIndex="0"
@@ -1267,7 +1267,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               title="Acme - 1,200 Widgets"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Acme - 1,200 Widgets
@@ -1354,7 +1354,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               title="jrogers@acme.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@acme.com
@@ -1466,7 +1466,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               title="Acme - 200 Widgets"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Acme - 200 Widgets
@@ -1553,7 +1553,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               title="bob@acme.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 bob@acme.com
@@ -1665,7 +1665,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               title="salesforce.com - 1,000 Widgets"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 salesforce.com - 1,000 Widgets
@@ -1752,7 +1752,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               title="nathan@salesforce.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 nathan@salesforce.com
@@ -1858,7 +1858,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           >
             <a
               className="slds-th__action slds-text-link_reset"
-              href="javascript:void(0)"
+              href="#"
               onClick={[Function]}
               role="button"
               tabIndex="0"
@@ -1978,7 +1978,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
           >
             <a
               className="slds-th__action slds-text-link_reset"
-              href="javascript:void(0)"
+              href="#"
               onClick={[Function]}
               role="button"
               tabIndex="0"
@@ -2138,7 +2138,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               title="Acme - 1,200 Widgets"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Acme - 1,200 Widgets
@@ -2225,7 +2225,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               title="jrogers@acme.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@acme.com
@@ -2337,7 +2337,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               title="Acme - 200 Widgets"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Acme - 200 Widgets
@@ -2424,7 +2424,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               title="bob@acme.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 bob@acme.com
@@ -2536,7 +2536,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               title="salesforce.com - 1,000 Widgets"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 salesforce.com - 1,000 Widgets
@@ -2623,7 +2623,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               title="nathan@salesforce.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 nathan@salesforce.com
@@ -4514,7 +4514,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
               title="Cloudhub"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Cloudhub
@@ -4597,7 +4597,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
               title="jrogers@cloudhub.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@cloudhub.com
@@ -4619,7 +4619,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
               title="Cloudhub + Anypoint Connectors"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Cloudhub + Anypoint Connectors
@@ -4702,7 +4702,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
               title="jrogers@cloudhub.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@cloudhub.com
@@ -4724,7 +4724,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
               title="Cloudhub"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Cloudhub
@@ -4807,7 +4807,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
               title="jrogers@cloudhub.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@cloudhub.com
@@ -4956,7 +4956,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
               title="Cloudhub"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Cloudhub
@@ -5039,7 +5039,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
               title="jrogers@cloudhub.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@cloudhub.com
@@ -5061,7 +5061,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
               title="Cloudhub + Anypoint Connectors"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Cloudhub + Anypoint Connectors
@@ -5144,7 +5144,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
               title="jrogers@cloudhub.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@cloudhub.com
@@ -5166,7 +5166,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
               title="Cloudhub"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Cloudhub
@@ -5249,7 +5249,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
               title="jrogers@cloudhub.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@cloudhub.com
@@ -5398,7 +5398,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
               title="Cloudhub"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Cloudhub
@@ -5481,7 +5481,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
               title="jrogers@cloudhub.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@cloudhub.com
@@ -5503,7 +5503,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
               title="Cloudhub + Anypoint Connectors"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Cloudhub + Anypoint Connectors
@@ -5586,7 +5586,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
               title="jrogers@cloudhub.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@cloudhub.com
@@ -5608,7 +5608,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
               title="Cloudhub"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Cloudhub
@@ -5691,7 +5691,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
               title="jrogers@cloudhub.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@cloudhub.com
@@ -5840,7 +5840,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
               title="Cloudhub"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Cloudhub
@@ -5923,7 +5923,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
               title="jrogers@cloudhub.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@cloudhub.com
@@ -5945,7 +5945,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
               title="Cloudhub + Anypoint Connectors"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Cloudhub + Anypoint Connectors
@@ -6028,7 +6028,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
               title="jrogers@cloudhub.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@cloudhub.com
@@ -6050,7 +6050,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
               title="Cloudhub"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 Cloudhub
@@ -6133,7 +6133,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
               title="jrogers@cloudhub.com"
             >
               <a
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
               >
                 jrogers@cloudhub.com
@@ -6733,7 +6733,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               >
                 <a
                   className="slds-th__action slds-text-link_reset"
-                  href="javascript:void(0)"
+                  href="#"
                   onClick={[Function]}
                   role="button"
                   style={
@@ -6790,7 +6790,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 >
                   <a
                     className="slds-th__action slds-text-link_reset"
-                    href="javascript:void(0)"
+                    href="#"
                     onClick={[Function]}
                     role="button"
                     style={
@@ -7046,7 +7046,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
               >
                 <a
                   className="slds-th__action slds-text-link_reset"
-                  href="javascript:void(0)"
+                  href="#"
                   onClick={[Function]}
                   role="button"
                   style={
@@ -7097,7 +7097,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 >
                   <a
                     className="slds-th__action slds-text-link_reset"
-                    href="javascript:void(0)"
+                    href="#"
                     onClick={[Function]}
                     role="button"
                     style={
@@ -7384,7 +7384,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 1,200 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 1,200 Widgets
@@ -7467,7 +7467,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -7578,7 +7578,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 200 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 200 Widgets
@@ -7661,7 +7661,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -7772,7 +7772,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="salesforce.com - 1,000 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 1,000 Widgets
@@ -7855,7 +7855,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -7966,7 +7966,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 800 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 800 Widgets
@@ -8049,7 +8049,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -8160,7 +8160,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 744 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 744 Widgets
@@ -8243,7 +8243,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -8354,7 +8354,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="salesforce.com - 847 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 847 Widgets
@@ -8437,7 +8437,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -8548,7 +8548,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 1,621 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 1,621 Widgets
@@ -8631,7 +8631,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -8742,7 +8742,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 430 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 430 Widgets
@@ -8825,7 +8825,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -8936,7 +8936,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="salesforce.com - 677 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 677 Widgets
@@ -9019,7 +9019,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -9130,7 +9130,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 1,444 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 1,444 Widgets
@@ -9213,7 +9213,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -9324,7 +9324,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 320 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 320 Widgets
@@ -9407,7 +9407,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -9518,7 +9518,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="salesforce.com - 4,000 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 4,000 Widgets
@@ -9601,7 +9601,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -9841,7 +9841,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               >
                 <a
                   className="slds-th__action slds-text-link_reset"
-                  href="javascript:void(0)"
+                  href="#"
                   onClick={[Function]}
                   role="button"
                   style={
@@ -9898,7 +9898,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 >
                   <a
                     className="slds-th__action slds-text-link_reset"
-                    href="javascript:void(0)"
+                    href="#"
                     onClick={[Function]}
                     role="button"
                     style={
@@ -10154,7 +10154,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
               >
                 <a
                   className="slds-th__action slds-text-link_reset"
-                  href="javascript:void(0)"
+                  href="#"
                   onClick={[Function]}
                   role="button"
                   style={
@@ -10205,7 +10205,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 >
                   <a
                     className="slds-th__action slds-text-link_reset"
-                    href="javascript:void(0)"
+                    href="#"
                     onClick={[Function]}
                     role="button"
                     style={
@@ -10492,7 +10492,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 1,200 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 1,200 Widgets
@@ -10575,7 +10575,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -10686,7 +10686,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 200 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 200 Widgets
@@ -10769,7 +10769,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -10880,7 +10880,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="salesforce.com - 1,000 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 1,000 Widgets
@@ -10963,7 +10963,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -11074,7 +11074,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 800 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 800 Widgets
@@ -11157,7 +11157,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -11268,7 +11268,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 744 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 744 Widgets
@@ -11351,7 +11351,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -11462,7 +11462,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="salesforce.com - 847 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 847 Widgets
@@ -11545,7 +11545,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -11656,7 +11656,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 1,621 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 1,621 Widgets
@@ -11739,7 +11739,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -11850,7 +11850,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 430 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 430 Widgets
@@ -11933,7 +11933,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -12044,7 +12044,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="salesforce.com - 677 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 677 Widgets
@@ -12127,7 +12127,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -12238,7 +12238,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 1,444 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 1,444 Widgets
@@ -12321,7 +12321,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -12432,7 +12432,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 320 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 320 Widgets
@@ -12515,7 +12515,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -12626,7 +12626,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="salesforce.com - 4,000 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 4,000 Widgets
@@ -12709,7 +12709,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -12943,7 +12943,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               >
                 <a
                   className="slds-th__action slds-text-link_reset"
-                  href="javascript:void(0)"
+                  href="#"
                   onClick={[Function]}
                   role="button"
                   style={
@@ -13000,7 +13000,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 >
                   <a
                     className="slds-th__action slds-text-link_reset"
-                    href="javascript:void(0)"
+                    href="#"
                     onClick={[Function]}
                     role="button"
                     style={
@@ -13256,7 +13256,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
               >
                 <a
                   className="slds-th__action slds-text-link_reset"
-                  href="javascript:void(0)"
+                  href="#"
                   onClick={[Function]}
                   role="button"
                   style={
@@ -13307,7 +13307,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 >
                   <a
                     className="slds-th__action slds-text-link_reset"
-                    href="javascript:void(0)"
+                    href="#"
                     onClick={[Function]}
                     role="button"
                     style={
@@ -13594,7 +13594,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="Acme - 1,200 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 1,200 Widgets
@@ -13677,7 +13677,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -13788,7 +13788,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="Acme - 200 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 200 Widgets
@@ -13871,7 +13871,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -13982,7 +13982,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="salesforce.com - 1,000 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 1,000 Widgets
@@ -14065,7 +14065,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -14176,7 +14176,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="Acme - 800 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 800 Widgets
@@ -14259,7 +14259,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -14370,7 +14370,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="Acme - 744 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 744 Widgets
@@ -14453,7 +14453,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -14564,7 +14564,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="salesforce.com - 847 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 847 Widgets
@@ -14647,7 +14647,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -14758,7 +14758,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="Acme - 1,621 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 1,621 Widgets
@@ -14841,7 +14841,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -14952,7 +14952,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="Acme - 430 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 430 Widgets
@@ -15035,7 +15035,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -15146,7 +15146,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="salesforce.com - 677 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 677 Widgets
@@ -15229,7 +15229,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -15340,7 +15340,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="Acme - 1,444 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 1,444 Widgets
@@ -15423,7 +15423,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -15534,7 +15534,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="Acme - 320 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 320 Widgets
@@ -15617,7 +15617,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -15728,7 +15728,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="salesforce.com - 4,000 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 4,000 Widgets
@@ -15811,7 +15811,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -16435,7 +16435,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <a
                   className="slds-th__action slds-text-link_reset"
-                  href="javascript:void(0)"
+                  href="#"
                   onClick={[Function]}
                   role="button"
                   style={
@@ -16492,7 +16492,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 >
                   <a
                     className="slds-th__action slds-text-link_reset"
-                    href="javascript:void(0)"
+                    href="#"
                     onClick={[Function]}
                     role="button"
                     style={
@@ -16748,7 +16748,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <a
                   className="slds-th__action slds-text-link_reset"
-                  href="javascript:void(0)"
+                  href="#"
                   onClick={[Function]}
                   role="button"
                   style={
@@ -16799,7 +16799,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 >
                   <a
                     className="slds-th__action slds-text-link_reset"
-                    href="javascript:void(0)"
+                    href="#"
                     onClick={[Function]}
                     role="button"
                     style={
@@ -17086,7 +17086,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 1,200 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 1,200 Widgets
@@ -17169,7 +17169,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -17280,7 +17280,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 200 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 200 Widgets
@@ -17363,7 +17363,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -17474,7 +17474,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="salesforce.com - 1,000 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 1,000 Widgets
@@ -17557,7 +17557,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -17668,7 +17668,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 800 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 800 Widgets
@@ -17751,7 +17751,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -17862,7 +17862,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 744 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 744 Widgets
@@ -17945,7 +17945,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -18056,7 +18056,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="salesforce.com - 847 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 847 Widgets
@@ -18139,7 +18139,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -18250,7 +18250,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 1,621 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 1,621 Widgets
@@ -18333,7 +18333,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -18444,7 +18444,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 430 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 430 Widgets
@@ -18527,7 +18527,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -18638,7 +18638,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="salesforce.com - 677 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 677 Widgets
@@ -18721,7 +18721,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com
@@ -18832,7 +18832,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 1,444 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 1,444 Widgets
@@ -18915,7 +18915,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     jrogers@acme.com
@@ -19026,7 +19026,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 320 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     Acme - 320 Widgets
@@ -19109,7 +19109,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     bob@acme.com
@@ -19220,7 +19220,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="salesforce.com - 4,000 Widgets"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     salesforce.com - 4,000 Widgets
@@ -19303,7 +19303,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                   >
                     nathan@salesforce.com

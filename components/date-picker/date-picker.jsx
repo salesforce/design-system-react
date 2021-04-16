@@ -33,6 +33,7 @@ import KEYS from '../../utilities/key-code';
 import lowPriorityWarning from '../../utilities/warning/low-priority-warning';
 
 import { DATE_PICKER } from '../../utilities/constants';
+import { IconSettingsContext } from '../icon-settings';
 
 const propTypes = {
 	/**
@@ -633,10 +634,7 @@ class Datepicker extends React.Component {
 	}
 }
 
-Datepicker.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+Datepicker.contextType = IconSettingsContext;
 Datepicker.displayName = DATE_PICKER;
 Datepicker.propTypes = propTypes;
 Datepicker.defaultProps = defaultProps;

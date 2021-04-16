@@ -413,7 +413,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
             <a
               aria-live="polite"
               className="slds-split-view__list-header slds-grid slds-text-link_reset"
-              href="javascript:void(0);"
+              href="#"
               onClick={[Function]}
               role="button"
               style={
@@ -467,7 +467,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -524,7 +524,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -572,7 +572,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -629,7 +629,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -677,7 +677,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -725,7 +725,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -773,7 +773,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -821,7 +821,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                 <a
                   aria-selected={true}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={0}
@@ -869,7 +869,7 @@ exports[`DOM snapshots SLDSSplitView Base: Multiple 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -1270,7 +1270,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
             <a
               aria-live="polite"
               className="slds-split-view__list-header slds-grid slds-text-link_reset"
-              href="javascript:void(0);"
+              href="#"
               onClick={[Function]}
               role="button"
               style={
@@ -1323,7 +1323,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -1380,7 +1380,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -1428,7 +1428,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -1485,7 +1485,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -1533,7 +1533,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -1581,7 +1581,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -1629,7 +1629,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -1677,7 +1677,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                 <a
                   aria-selected={true}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={0}
@@ -1725,7 +1725,7 @@ exports[`DOM snapshots SLDSSplitView Base: Open 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -2126,7 +2126,7 @@ exports[`DOM snapshots SLDSSplitView Custom List 1`] = `
             <a
               aria-live="polite"
               className="slds-split-view__list-header slds-grid slds-text-link_reset"
-              href="javascript:void(0);"
+              href="#"
               onClick={[Function]}
               role="button"
               style={
@@ -2179,7 +2179,7 @@ exports[`DOM snapshots SLDSSplitView Custom List 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -2222,7 +2222,7 @@ exports[`DOM snapshots SLDSSplitView Custom List 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -2256,7 +2256,7 @@ exports[`DOM snapshots SLDSSplitView Custom List 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -2299,7 +2299,7 @@ exports[`DOM snapshots SLDSSplitView Custom List 1`] = `
                 <a
                   aria-selected={true}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={0}
@@ -2333,7 +2333,7 @@ exports[`DOM snapshots SLDSSplitView Custom List 1`] = `
                 <a
                   aria-selected={false}
                   className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="option"
                   tabIndex={-1}
@@ -2746,7 +2746,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
               <a
                 aria-live="polite"
                 className="slds-split-view__list-header slds-grid slds-text-link_reset"
-                href="javascript:void(0);"
+                href="#"
                 onClick={[Function]}
                 role="button"
                 style={
@@ -2799,7 +2799,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                   <a
                     aria-selected={false}
                     className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="option"
                     tabIndex={-1}
@@ -2856,7 +2856,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                   <a
                     aria-selected={false}
                     className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="option"
                     tabIndex={-1}
@@ -2904,7 +2904,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                   <a
                     aria-selected={false}
                     className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="option"
                     tabIndex={-1}
@@ -2961,7 +2961,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                   <a
                     aria-selected={false}
                     className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="option"
                     tabIndex={-1}
@@ -3009,7 +3009,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                   <a
                     aria-selected={false}
                     className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="option"
                     tabIndex={-1}
@@ -3057,7 +3057,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                   <a
                     aria-selected={false}
                     className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="option"
                     tabIndex={-1}
@@ -3105,7 +3105,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                   <a
                     aria-selected={false}
                     className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="option"
                     tabIndex={-1}
@@ -3153,7 +3153,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                   <a
                     aria-selected={true}
                     className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="option"
                     tabIndex={0}
@@ -3201,7 +3201,7 @@ exports[`DOM snapshots SLDSSplitView External State 1`] = `
                   <a
                     aria-selected={false}
                     className="slds-split-view__list-item-action slds-grow slds-has-flexi-truncate"
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="option"
                     tabIndex={-1}

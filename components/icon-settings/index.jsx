@@ -22,35 +22,34 @@ import { ICON_SETTINGS } from '../../utilities/constants';
  * Otherwise use the iconPath to specify the root path to where the icon files will be located in you application
  * such as `/assets/icons`.
  */
-class IconSettings extends React.Component {
-	getChildContext() {
-		return {
-			iconPath: this.props.iconPath,
-			onRequestIconPath: this.props.onRequestIconPath,
-			actionSprite: this.props.actionSprite,
-			customSprite: this.props.customSprite,
-			doctypeSprite: this.props.doctypeSprite,
-			standardSprite: this.props.standardSprite,
-			utilitySprite: this.props.utilitySprite,
-		};
-	}
-
-	render() {
-		return this.props.children;
-	}
-}
+const IconSettings = ({
+	iconPath,
+	onRequestIconPath,
+	actionSprite,
+	customSprite,
+	doctypeSprite,
+	standardSprite,
+	utilitySprite,
+	children,
+}) => {
+	return (
+		<IconSettingsContext.Provider
+			value={{
+				iconPath,
+				onRequestIconPath,
+				actionSprite,
+				customSprite,
+				doctypeSprite,
+				standardSprite,
+				utilitySprite,
+			}}
+		>
+			{children}
+		</IconSettingsContext.Provider>
+	);
+};
 
 IconSettings.displayName = ICON_SETTINGS;
-
-IconSettings.childContextTypes = {
-	iconPath: PropTypes.string,
-	onRequestIconPath: PropTypes.func,
-	actionSprite: PropTypes.string,
-	customSprite: PropTypes.string,
-	doctypeSprite: PropTypes.string,
-	standardSprite: PropTypes.string,
-	utilitySprite: PropTypes.string,
-};
 
 IconSettings.propTypes = {
 	/**
@@ -89,4 +88,15 @@ IconSettings.propTypes = {
 	utilitySprite: PropTypes.string,
 };
 
+const IconSettingsContext = React.createContext({
+	iconPath: PropTypes.string,
+	onRequestIconPath: PropTypes.func,
+	actionSprite: PropTypes.string,
+	customSprite: PropTypes.string,
+	doctypeSprite: PropTypes.string,
+	standardSprite: PropTypes.string,
+	utilitySprite: PropTypes.string,
+});
+
 export default IconSettings;
+export { IconSettingsContext };

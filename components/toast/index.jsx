@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import assign from 'lodash.assign';
 
 import classNames from '../../utilities/class-names';
+import EventUtil from '../../utilities/event';
 import Button from '../button';
 import Icon from '../icon';
 import checkProps from './check-props';
@@ -188,7 +189,6 @@ class Toast extends React.Component {
 			size: 'small',
 		});
 
-		/* eslint-disable no-script-url */
 		return (
 			<div
 				className={classNames(
@@ -215,8 +215,10 @@ class Toast extends React.Component {
 						{heading}{' '}
 						{labels.headingLink ? (
 							<a
-								onClick={this.props.onClickHeadingLink}
-								href="javascript:void(0);"
+								onClick={EventUtil.trappedHandler(
+									this.props.onClickHeadingLink
+								)}
+								href="#"
 							>
 								{labels.headingLink}
 							</a>

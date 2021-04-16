@@ -41,7 +41,7 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
-	 * An array of detail blocks (used in "recordHome" variant)
+	 * An array of detail blocks (used in `recordHome` variant)
 	 */
 	details: PropTypes.array,
 	/**
@@ -53,7 +53,7 @@ const propTypes = {
 	 */
 	icon: PropTypes.element,
 	/**
-	 * The info property can be a string or a React element
+	 * The info property can be a string or a React element. Can't be used with the `record-home` variant.
 	 */
 	info: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**

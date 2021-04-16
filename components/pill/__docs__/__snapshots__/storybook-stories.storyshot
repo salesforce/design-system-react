@@ -19,7 +19,7 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
       >
         <a
           className="slds-pill__action"
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
           title="Full pill label verbiage mirrored here"
         >
@@ -66,7 +66,8 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
       >
         <a
           className="slds-pill__action"
-          href="javascript:void(0);"
+          href="#"
+          onClick={[Function]}
           title="Full pill label verbiage mirrored here"
         >
           <span
@@ -130,7 +131,7 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
         </span>
         <a
           className="slds-pill__action"
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
           title="Full pill label verbiage mirrored here"
         >
@@ -193,7 +194,7 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
         </span>
         <a
           className="slds-pill__action"
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
           title="Full pill label verbiage mirrored here"
         >
@@ -257,7 +258,7 @@ exports[`DOM snapshots SLDSPill Docs site Snapshot 1`] = `
         </span>
         <a
           className="slds-pill__action"
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
           title="Full pill label verbiage mirrored here"
         >
@@ -375,7 +376,7 @@ exports[`DOM snapshots SLDSPill Icon, Avatar, Error 1`] = `
         </span>
         <a
           className="slds-pill__action"
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
           title="Full pill label verbiage mirrored here"
         >
@@ -438,7 +439,7 @@ exports[`DOM snapshots SLDSPill Icon, Avatar, Error 1`] = `
         </span>
         <a
           className="slds-pill__action"
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
           title="Full pill label verbiage mirrored here"
         >
@@ -502,7 +503,7 @@ exports[`DOM snapshots SLDSPill Icon, Avatar, Error 1`] = `
         </span>
         <a
           className="slds-pill__action"
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
           title="Full pill label verbiage mirrored here"
         >
@@ -560,7 +561,7 @@ exports[`DOM snapshots SLDSPill Linked, Unlinked, Truncated 1`] = `
       >
         <a
           className="slds-pill__action"
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
           title="Full pill label verbiage mirrored here"
         >
@@ -607,7 +608,8 @@ exports[`DOM snapshots SLDSPill Linked, Unlinked, Truncated 1`] = `
       >
         <a
           className="slds-pill__action"
-          href="javascript:void(0);"
+          href="#"
+          onClick={[Function]}
           title="Full pill label verbiage mirrored here"
         >
           <span
@@ -664,7 +666,7 @@ exports[`DOM snapshots SLDSPill Linked, Unlinked, Truncated 1`] = `
           >
             <a
               className="slds-pill__action"
-              href="javascript:void(0);"
+              href="#"
               onClick={[Function]}
               title="Pill label that is longer than the area that contains it"
             >

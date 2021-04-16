@@ -15,6 +15,7 @@ import checkProps from './check-props';
 import componentDoc from './component.json';
 import { ALERT } from '../../utilities/constants';
 import DOMElementFocus from '../../utilities/dom-element-focus';
+import EventUtil from '../../utilities/event';
 
 const propTypes = {
 	/**
@@ -163,7 +164,6 @@ class Alert extends React.Component {
 			size: 'x-small',
 		});
 
-		/* eslint-disable no-script-url */
 		return (
 			<div
 				className={classNames(
@@ -187,8 +187,8 @@ class Alert extends React.Component {
 					{heading}{' '}
 					{labels.headingLink ? (
 						<a
-							onClick={this.props.onClickHeadingLink}
-							href="javascript:void(0);"
+							onClick={EventUtil.trappedHandler(this.props.onClickHeadingLink)}
+							href="#"
 						>
 							{labels.headingLink}
 						</a>

@@ -381,8 +381,8 @@ const relatedListControls = () => (
 );
 
 const relatedListTrail = [
-	<a href="javascript:void(0);">Accounts</a>,
-	<a href="javascript:void(0);">Company One</a>,
+	<a href="#accounts">Accounts</a>,
+	<a href="#company-one">Company One</a>,
 ];
 
 storiesOf(PAGE_HEADER, module)

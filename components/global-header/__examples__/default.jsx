@@ -1,4 +1,5 @@
 import React from 'react';
+import EventUtil from '~/utilities/event';
 
 import Combobox from '~/components/combobox';
 import Dropdown from '~/components/menu-dropdown';
@@ -14,7 +15,6 @@ import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover';
 
 /* eslint-disable max-len */
-/* eslint-disable no-script-url */
 /* eslint-disable react/prop-types */
 
 const ipsum =
@@ -43,8 +43,9 @@ const HeaderNotificationsCustomContent = (props) => (
 					<div className="slds-media__body">
 						<div className="slds-grid slds-grid_align-spread">
 							<a
-								href="javascript:void(0);"
+								href="#"
 								className="slds-text-link_reset slds-has-flexi-truncate"
+								onClick={(event) => event.preventDefault()}
 							>
 								<h3
 									className="slds-truncate"
@@ -87,12 +88,12 @@ const HeaderProfileCustomContent = (props) => (
 					<p className="slds-truncate">
 						<a
 							className="slds-m-right_medium"
-							href="javascript:void(0)"
-							onClick={props.onClick}
+							href="#"
+							onClick={EventUtil.trappedHandler(props.onClick)}
 						>
 							Settings
 						</a>
-						<a href="javascript:void(0)" onClick={props.onClick}>
+						<a href="#" onClick={EventUtil.trappedHandler(props.onClick)}>
 							Log Out
 						</a>
 					</p>
