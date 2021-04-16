@@ -67,7 +67,7 @@ class ListItem extends React.Component {
 
 	static defaultProps = {
 		data: {},
-		href: 'javascript:void(0);', // eslint-disable-line no-script-url
+		href: '#',
 		inverted: false,
 		isSelected: false,
 		label: '',
@@ -129,9 +129,9 @@ class ListItem extends React.Component {
 	handleClick = (event) => {
 		if (
 			this.props.type !== 'link' ||
-			this.props.href === 'javascript:void(0);' // eslint-disable-line no-script-url
+			this.props.href === 'javascript:void(0);' || // eslint-disable-line no-script-url
+			this.props.href === '#'
 		) {
-			// eslint-disable-line no-script-url
 			EventUtil.trapImmediate(event);
 		}
 

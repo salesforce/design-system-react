@@ -171,7 +171,7 @@ class Tab extends React.Component {
 						'slds-tabs_scoped__link': variant === 'scoped',
 						'slds-vertical-tabs__link': variant === 'vertical',
 					})}
-					href="javascript:void(0);" // eslint-disable-line no-script-url
+					href="#"
 					role="tab"
 					ref={(node) => {
 						this.node = node;
@@ -180,6 +180,7 @@ class Tab extends React.Component {
 					aria-controls={panelId}
 					aria-disabled={disabled}
 					aria-selected={selected ? 'true' : 'false'}
+					onClick={(event) => event.preventDefault()}
 				>
 					{children}
 					{hasError && (

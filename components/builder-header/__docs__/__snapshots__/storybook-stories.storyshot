@@ -68,7 +68,8 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -191,7 +192,8 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"
@@ -226,7 +228,8 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"
@@ -518,7 +521,8 @@ exports[`DOM snapshots SLDSBuilderHeader Base 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -641,7 +645,8 @@ exports[`DOM snapshots SLDSBuilderHeader Base 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"
@@ -676,7 +681,8 @@ exports[`DOM snapshots SLDSBuilderHeader Base 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"
@@ -781,7 +787,8 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -1052,7 +1059,8 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"
@@ -1087,7 +1095,8 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"
@@ -1192,7 +1201,8 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -1315,7 +1325,8 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"
@@ -1350,7 +1361,8 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"
@@ -1621,7 +1633,8 @@ exports[`DOM snapshots SLDSBuilderHeader Custom Icon 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -1744,7 +1757,8 @@ exports[`DOM snapshots SLDSBuilderHeader Custom Icon 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"
@@ -1779,7 +1793,8 @@ exports[`DOM snapshots SLDSBuilderHeader Custom Icon 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"
@@ -1884,7 +1899,8 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -2007,7 +2023,8 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"
@@ -2042,7 +2059,8 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"
@@ -2368,7 +2386,8 @@ exports[`DOM snapshots SLDSBuilderHeader Successful Save 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -2491,7 +2510,8 @@ exports[`DOM snapshots SLDSBuilderHeader Successful Save 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"
@@ -2526,7 +2546,8 @@ exports[`DOM snapshots SLDSBuilderHeader Successful Save 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
               <div
                 className="slds-media__figure"

@@ -171,7 +171,6 @@ const propTypes = {
 
 const defaultProps = {
 	assistiveText: {
-		dialogLabel: '',
 		dialogLabelledBy: '',
 		closeButton: 'Close',
 	},
@@ -269,6 +268,31 @@ class Modal extends React.Component {
 		};
 	}
 
+	getAriaAttributes() {
+		const ariaAttributes = {
+			describedby: `${this.getId()}-modal-content`,
+			modal: 'true',
+		};
+
+		if (this.props.assistiveText.dialogLabel) {
+			ariaAttributes.label = this.props.assistiveText.dialogLabel;
+			return ariaAttributes;
+		}
+
+		let dialogLabelledBy = null;
+
+		if (this.props.assistiveText.dialogLabelledBy) {
+			// eslint-disable-next-line prefer-destructuring
+			dialogLabelledBy = this.props.assistiveText.dialogLabelledBy;
+		} else if (this.props.heading || this.props.title) {
+			dialogLabelledBy = `${this.getId()}-heading`;
+		}
+
+		ariaAttributes.labelledby = dialogLabelledBy;
+
+		return ariaAttributes;
+	}
+
 	getModal() {
 		const modalStyle =
 			this.props.align === 'top' ? { justifyContent: 'flex-start' } : null;
@@ -278,26 +302,11 @@ class Modal extends React.Component {
 			...borderRadius,
 			...contentStyleFromProps,
 		};
-		let dialogLabelledBy = null;
-
-		if (this.props.assistiveText.dialogLabelledBy) {
-			// eslint-disable-next-line prefer-destructuring
-			dialogLabelledBy = this.props.assistiveText.dialogLabelledBy;
-		} else if (
-			!this.props.assistiveText.dialogLabel &&
-			(this.props.heading || this.props.title)
-		) {
-			dialogLabelledBy = `${this.getId()}-heading`;
-		}
 
 		return (
 			// temporarily disabling eslint for the onClicks on the div tags
 			/* eslint-disable */
 			<section
-				aria-describedby={`${this.getId()}-modal-content`}
-				aria-label={this.props.assistiveText.dialogLabel}
-				aria-labelledby={dialogLabelledBy}
-				aria-modal={true}
 				className={classNames(
 					'slds-modal',
 					'slds-fade-in-open',
@@ -306,7 +315,6 @@ class Modal extends React.Component {
 					this.props.className
 				)}
 				onClick={this.dismissModalOnClickOutside}
-				role={this.props.disableClose ? 'alertdialog' : 'dialog'}
 			>
 				<div
 					className={classNames(
@@ -492,6 +500,7 @@ class Modal extends React.Component {
 	}
 
 	render() {
+		const ariaAttributes = this.getAriaAttributes();
 		const customStyles = {
 			content: {
 				position: 'default',
@@ -515,10 +524,11 @@ class Modal extends React.Component {
 
 		return (
 			<ReactModal
+				aria={ariaAttributes}
 				ariaHideApp={this.props.ariaHideApp}
-				contentLabel="Modal"
 				isOpen={this.props.isOpen}
 				onRequestClose={this.closeModal}
+				role={this.props.disableClose ? 'alertdialog' : 'dialog'}
 				style={customStyles}
 				parentSelector={this.props.parentSelector}
 				portalClassName={classNames(

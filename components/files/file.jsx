@@ -103,7 +103,7 @@ const defaultProps = {
 		moreActions: 'more actions',
 	},
 	crop: '16-by-9',
-	href: 'javascript:void(0);',
+	href: '#',
 	isLoading: false,
 	hasNoVisibleTitle: false,
 };
@@ -136,6 +136,16 @@ class File extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
+	handleOnClickImage = (event) => {
+		if (this.props.href === '#') {
+			event.preventDefault();
+		}
+
+		if (this.props.onClickImage) {
+			this.props.onClickImage(event);
+		}
+	};
+
 	render() {
 		const assistiveText = {
 			...defaultProps.assistiveText,
@@ -159,7 +169,7 @@ class File extends React.Component {
 							'slds-file__crop',
 							this.props.crop ? `slds-file__crop_${this.props.crop}` : null
 						)}
-						onClick={this.props.onClickImage}
+						onClick={this.handleOnClickImage}
 					>
 						<FileFigure
 							assistiveText={assistiveText}

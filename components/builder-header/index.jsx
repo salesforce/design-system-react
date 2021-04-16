@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import EventUtil from '../../utilities/event';
 
 import Icon from '../icon';
 
@@ -202,9 +203,9 @@ const BuilderHeader = (props) => {
 					<div className="slds-builder-header__item slds-builder-header__utilities">
 						<div className="slds-builder-header__utilities-item">
 							<a
-								href="javascript:void(0);"
+								href="#"
 								className="slds-builder-header__item-action slds-media slds-media_center"
-								onClick={events.onClickBack}
+								onClick={EventUtil.trappedHandler(events.onClickBack)}
 							>
 								<div className="slds-media__figure">
 									<Icon
@@ -220,9 +221,9 @@ const BuilderHeader = (props) => {
 						</div>
 						<div className="slds-builder-header__utilities-item">
 							<a
-								href="javascript:void(0);"
+								href="#"
 								className="slds-builder-header__item-action slds-media slds-media_center"
-								onClick={events.onClickHelp}
+								onClick={EventUtil.trappedHandler(events.onClickHelp)}
 							>
 								<div className="slds-media__figure">
 									<Icon

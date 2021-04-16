@@ -812,7 +812,8 @@ exports[`DOM snapshots SLDSCard Set height card 1`] = `
       className="slds-card__footer"
     >
       <a
-        href="javascript:void(0);"
+        href="#"
+        onClick={[Function]}
       >
         Footer text
       </a>
@@ -1133,7 +1134,8 @@ exports[`DOM snapshots SLDSCard w/o Header 1`] = `
       className="slds-card__footer"
     >
       <a
-        href="javascript:void(0);"
+        href="#"
+        onClick={[Function]}
       >
         Footer text
       </a>

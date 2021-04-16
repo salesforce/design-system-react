@@ -145,12 +145,12 @@ class GlobalHeader extends React.Component {
 			actions[GLOBAL_HEADER_PROFILE]
 		);
 
-		/* eslint-disable max-len, no-script-url */
+		/* eslint-disable max-len */
 		return (
 			<header className="slds-global-header_container">
 				{this.props.onSkipToNav ? (
 					<a
-						href="javascript:void(0);"
+						href="#"
 						className="slds-assistive-text slds-assistive-text_focus"
 						onClick={this.handleSkipToNav}
 					>
@@ -159,7 +159,7 @@ class GlobalHeader extends React.Component {
 				) : null}
 				{this.props.onSkipToContent ? (
 					<a
-						href="javascript:void(0);"
+						href="#"
 						className="slds-assistive-text slds-assistive-text_focus"
 						onClick={this.handleSkipToContent}
 					>
@@ -191,7 +191,7 @@ class GlobalHeader extends React.Component {
 				{this.props.navigation}
 			</header>
 		);
-		/* eslint-enable max-len, no-script-url */
+		/* eslint-enable max-len */
 	}
 }
 

@@ -111,10 +111,7 @@ const propTypes = {
  * A pill displays a label that can contain links and can be removed from view. Use `PillContainer` for a list of pills in a container that resembles an `input` form field. A pill is useful for displaying read-only text that can be added and removed on demand.
  */
 class Pill extends React.Component {
-	getHref = () =>
-		typeof this.props.href === 'string'
-			? this.props.href
-			: 'javascript:void(0);'; // eslint-disable-line no-script-url
+	getHref = () => (typeof this.props.href === 'string' ? this.props.href : '#');
 
 	/**
 	 * Removes focus from the component.
@@ -167,6 +164,16 @@ class Pill extends React.Component {
 		this.root = root;
 	};
 
+	handleOnClick = (event) => {
+		if (this.getHref() === '#') {
+			event.preventDefault();
+		}
+
+		if (this.props.onClick) {
+			this.props.onClick(event);
+		}
+	};
+
 	/**
 	 * Extracts a set of custom properties. A custom property is a property, which is not described in propTypes of a component.
 	 */
@@ -206,7 +213,7 @@ class Pill extends React.Component {
 						href={this.getHref()}
 						className="slds-pill__action"
 						title={this.props.labels.title || this.props.labels.label}
-						onClick={this.props.onClick}
+						onClick={this.handleOnClick}
 					>
 						<span className="slds-pill__label">{this.props.labels.label}</span>
 					</a>

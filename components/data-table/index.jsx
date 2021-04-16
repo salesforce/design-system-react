@@ -102,7 +102,7 @@ class DataTable extends React.Component {
 		 * import DataTableCell from 'design-system-react/data-table/cell';
 		 * const CustomDataTableCell = ({ children, ...props }) => (
 		 *   <DataTableCell {...props} >
-		 *   <a href="javascript:void(0);">{children}</a>
+		 *     <a href="#">{children}</a>
 		 *   </DataTableCell>
 		 * );
 		 * CustomDataTableCell.displayName = DataTableCell.displayName;
@@ -153,7 +153,7 @@ class DataTable extends React.Component {
      *    </th>
      *  </tr>);
      *CustomHeaderRow.displayName = DataTableCell.displayName;
-     * 
+     *
      * <DataTable items=[{
         type: 'header-row',
         id: 'header-row-example-id-3',
@@ -198,7 +198,7 @@ class DataTable extends React.Component {
 		/**
 		 * This function fires when infinite loading loads more data.
 		 *
-		 * This will be called multiple times while the table is being scrolled within the `loadMoreOffset`.  Please track whether or not loading is in progress and check it at the start of this function to avoid executing your callback too many times.
+		 * This will be called multiple times while the table is being scrolled within the `loadMoreOffset`. It'll also continue to be called while `hasMore` is `true` and the table has not yet loaded enough rows to allow a user to scroll.  Please track whether or not loading is in progress and check it at the start of this function to avoid executing your callback too many times.
 		 */
 		onLoadMore: PropTypes.func,
 		/**
@@ -282,6 +282,10 @@ class DataTable extends React.Component {
 	componentDidUpdate() {
 		if (this.props.fixedHeader) {
 			this.resizeFixedHeaders();
+			// If the first page of results isn't enough to allow the user to scroll it causes
+			// the user to get into a state where they cannot load the second page.
+			// Simulating a scroll here will ensure that enough rows are loaded to enable scrolling
+			this.loadMoreIfNeeded();
 		}
 	}
 
@@ -388,7 +392,7 @@ class DataTable extends React.Component {
 		}
 	};
 
-	onScrollerScroll = () => {
+	loadMoreIfNeeded = () => {
 		if (this.props.hasMore && this.props.onLoadMore) {
 			const { scrollTop, offsetHeight, scrollHeight } = this.scrollerRef;
 			if (scrollTop + offsetHeight > scrollHeight - this.props.loadMoreOffset) {
@@ -411,11 +415,11 @@ class DataTable extends React.Component {
 			const action = [`${attach ? 'add' : 'remove'}EventListener`];
 			if (canUseEventListeners) {
 				window[action]('resize', this.resizeFixedHeaders);
-				window[action]('resize', this.onScrollerScroll);
+				window[action]('resize', this.loadMoreIfNeeded);
 			}
 			if (canUseEventListeners && this.scrollerRef) {
 				this.scrollerRef[action]('scroll', this.resizeFixedHeaders);
-				this.scrollerRef[action]('scroll', this.onScrollerScroll);
+				this.scrollerRef[action]('scroll', this.loadMoreIfNeeded);
 			}
 		}
 	};

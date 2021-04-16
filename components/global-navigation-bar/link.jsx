@@ -18,12 +18,6 @@ import isFunction from 'lodash.isfunction';
 // ## Constants
 import { GLOBAL_NAVIGATION_BAR_LINK } from '../../utilities/constants';
 
-function handleClick(event, href, onClick) {
-	event.preventDefault();
-
-	onClick(event, { href });
-}
-
 /**
  * Wraps a link in the proper markup to support use in the GlobalNavigationBar.
  */
@@ -56,6 +50,16 @@ const GlobalNavigationBarLink = (props) => {
 		  }
 		: null;
 
+	function handleOnClick(event) {
+		if (isFunction(onClick) || href === '#') {
+			event.preventDefault();
+		}
+
+		if (isFunction(onClick)) {
+			onClick(event, { href });
+		}
+	}
+
 	return (
 		<li
 			className={classNames('slds-context-bar__item', {
@@ -69,11 +73,7 @@ const GlobalNavigationBarLink = (props) => {
 				href={href}
 				className={classNames('slds-context-bar__label-action', className)}
 				onBlur={onBlur}
-				onClick={
-					isFunction(onClick)
-						? (event) => handleClick(event, href, onClick)
-						: null
-				}
+				onClick={handleOnClick}
 				onFocus={onFocus}
 				onKeyDown={onKeyDown}
 				onKeyPress={onKeyPress}
@@ -181,7 +181,7 @@ GlobalNavigationBarLink.defaultProps = {
 	assistiveText: {
 		activeDescriptor: 'Current page:',
 	},
-	href: 'javascript:void(0);', // eslint-disable-line no-script-url
+	href: '#',
 };
 
 export default GlobalNavigationBarLink;
