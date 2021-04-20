@@ -2,36 +2,16 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 import IconSettings from '~/components/icon-settings';
+import Icon from '~/components/icon';
 
 const accounts = [
 	{
 		id: '1',
-		label: 'Acme',
+		label: 'True',
 	},
 	{
 		id: '2',
-		label: 'Salesforce.com, Inc.',
-	},
-	{
-		id: '3',
-		label: "Paddy's Pub",
-	},
-	{
-		id: '4',
-		label: 'Tyrell Corp',
-	},
-	{
-		id: '5',
-		label: 'Paper St. Soap Company',
-	},
-	{
-		id: '6',
-		label: 'Nakatomi Investments',
-	},
-	{ id: '7', label: 'Acme Landscaping' },
-	{
-		id: '8',
-		label: 'Acme Construction',
+		label: 'False',
 	},
 ];
 
@@ -67,9 +47,9 @@ class Example extends React.Component {
 						},
 					}}
 					labels={{
-						label: 'Search',
-						placeholder: 'Search Salesforce',
+						label: 'Boolean',
 					}}
+					hasDeselect
 					options={accounts}
 					selection={this.state.selection}
 					value={this.state.inputValue}

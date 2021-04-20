@@ -67,6 +67,8 @@ const propTypes = {
 	labels: PropTypes.shape({
 		noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
 			.isRequired,
+		deselectOption: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
+			.isRequired,
 	}),
 	/**
 	 * Accepts a custom menu item rendering function that becomes a custom component and is passed in the following props:
@@ -142,6 +144,7 @@ const defaultProps = {
 	menuRef: () => {},
 	optionsAddItem: [],
 	optionsSearchEntity: [],
+	hasDeselect: false,
 };
 
 const getOptions = (props) => {
@@ -154,8 +157,20 @@ const getOptions = (props) => {
 		// eslint-disable-next-line fp/no-mutating-methods
 		options.push(...localOptionsSearchEntity);
 	}
+
+	if (props.hasDeselect) {
+		// eslint-disable-next-line fp/no-mutating-methods
+		options.push({
+			id: `${props.inputId}-deselect`,
+			label: props.labels.deselectOption,
+			value: '',
+			type: 'deselect',
+		});
+	}
+
 	// eslint-disable-next-line fp/no-mutating-methods
 	options.push(...props.options);
+
 	if (props.optionsAddItem.length > 0) {
 		const localOptionsAddItem = props.optionsAddItem.map((entity) => ({
 			...entity,
@@ -427,7 +442,11 @@ const Menu = (props) => {
 										{props.assistiveText.optionSelectedInMenu}
 									</span>
 								) : null}{' '}
-								{optionData.label}
+								{optionData.type === 'deselect' ? (
+									<em>{optionData.label}</em>
+								) : (
+									optionData.label
+								)}
 							</span>
 						)}
 					</span>

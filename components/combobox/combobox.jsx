@@ -137,6 +137,10 @@ const propTypes = {
 	 */
 	fieldLevelHelpTooltip: PropTypes.node,
 	/**
+	 * If true, `{ label: 'None': value: '' }` will be selected.
+	 */
+	hasDeselect: PropTypes.bool,
+	/**
 	 * If true, loading spinner appears inside input on right hand side.
 	 */
 	hasInputSpinner: PropTypes.bool,
@@ -160,6 +164,7 @@ const propTypes = {
 	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
+	 * * `deselectOption`: This label appears first in the menu items of a read-only, Picklist-like Combobox. Selecting it, deselects any currently selected value.
 	 * * `label`: This label appears above the input.
 	 * * `cancelButton`: This label is only used by the dialog variant for the cancel button in the footer of the dialog. The default is `Cancel`
 	 * * `doneButton`: This label is only used by the dialog variant for the done button in the footer of the dialog. The default is `Done`
@@ -171,6 +176,7 @@ const propTypes = {
 	 * _Tested with snapshot testing._
 	 */
 	labels: PropTypes.shape({
+		deselectOption: PropTypes.string,
 		label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		multipleOptionsSelected: PropTypes.string,
 		noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
@@ -389,6 +395,7 @@ const defaultProps = {
 	},
 	events: {},
 	labels: {
+		deselectOption: 'None',
 		cancelButton: 'Cancel',
 		doneButton: `Done`,
 		noOptionsFound: 'No matches found.',
@@ -613,6 +620,16 @@ class Combobox extends React.Component {
 		if (localProps.optionsSearchEntity.length > 0) {
 			// eslint-disable-next-line fp/no-mutating-methods
 			options.push(...localProps.optionsSearchEntity);
+		}
+
+		if (props.hasDeselect) {
+			// eslint-disable-next-line fp/no-mutating-methods
+			options.push({
+				id: `${this.getId()}-deselect`,
+				label: this.props.labels.deselectOption,
+				value: '',
+				type: 'deselect',
+			});
 		}
 
 		if (localProps.options) {
@@ -913,19 +930,22 @@ class Combobox extends React.Component {
 				this.props.events.onOpen(event, data);
 			}
 
-			if (this.props.variant === 'readonly' && this.menuRef !== null) {
+			if (this.props.variant === 'readonly') {
 				const activeOptionIndex = findIndex(this.getOptions(), (item) =>
 					isEqual(item, this.props.selection[0])
 				);
 
 				this.setState({
 					activeOptionIndex,
+					activeOption: this.props.selection[0],
 				});
 
-				menuItemSelectScroll({
-					container: this.menuRef,
-					focusedIndex: activeOptionIndex,
-				});
+				if (this.menuRef !== null) {
+					menuItemSelectScroll({
+						container: this.menuRef,
+						focusedIndex: activeOptionIndex,
+					});
+				}
 			}
 		}
 	};
@@ -1004,8 +1024,11 @@ class Combobox extends React.Component {
 			!this.props.multiple && !isSelected;
 		const multiSelectAndSelectedWasNotClicked =
 			this.props.multiple && !isSelected;
+		const deselectWasClicked = option.id === `${this.getId()}-deselect`;
 
-		if (singleSelectAndSelectedWasNotClicked) {
+		if (deselectWasClicked) {
+			newSelection = [];
+		} else if (singleSelectAndSelectedWasNotClicked) {
 			newSelection = [option];
 		} else if (multiSelectAndSelectedWasNotClicked) {
 			newSelection = [...this.props.selection, option];
@@ -1435,6 +1458,7 @@ class Combobox extends React.Component {
 				}
 				labels={labels}
 				hasMenuSpinner={this.props.hasMenuSpinner}
+				hasDeselect={this.props.hasDeselect}
 				menuItem={this.props.menuItem}
 				menuPosition={this.props.menuPosition}
 				menuRef={(ref) => {
@@ -1660,7 +1684,14 @@ class Combobox extends React.Component {
 		props,
 		userDefinedProps,
 	}) => {
-		const value = (props.selection[0] && props.selection[0].label) || '';
+		const activeOptionLabel =
+			this.state.activeOption && this.state.activeOption.label;
+		const selectedOptionLabel = props.selection[0] && props.selection[0].label;
+		let inputValue = activeOptionLabel || selectedOptionLabel || '';
+
+		if (props.selection[0] && props.selection[0].value === '') {
+			inputValue = '';
+		}
 
 		return (
 			<div className="slds-form-element__control">
@@ -1725,10 +1756,7 @@ class Combobox extends React.Component {
 							placeholder={labels.placeholderReadOnly}
 							readOnly
 							required={props.required}
-							value={
-								(this.state.activeOption && this.state.activeOption.label) ||
-								value
-							}
+							value={inputValue}
 							{...userDefinedProps.input}
 						/>
 						{this.getDialog({

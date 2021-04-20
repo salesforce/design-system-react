@@ -28,11 +28,13 @@ import InlineMultipleLoading from '../__examples__/inline-multiple-loading';
 import InputProp from '../__examples__/input-prop';
 import PredefinedOptionsOnly from '../__examples__/base-predefined-options-only';
 import ReadOnly from '../__examples__/readonly-single';
+import ReadOnlyDeselect from '../__examples__/readonly-single-deselect';
 import ReadOnlyRTL from '../__examples__/readonly-single-RTL';
 import ReadOnlyDisabled from '../__examples__/readonly-single-disabled';
 import ReadOnlyMenuItemDisabled from '../__examples__/readonly-menu-item-disabled';
 import ReadOnlySingleSelectionCustomMenuItem from '../__examples__/readonly-single-selection-custom-menu-item';
 import ReadOnlyMultiple from '../__examples__/readonly-multiple';
+import ReadOnlyMultipleDeselect from '../__examples__/readonly-multiple-deselect';
 import RequiredInputErrorState from '../__examples__/required-input-error-state';
 
 import SnapshotBaseOpen from '../__examples__/snapshot/base-open';
@@ -119,6 +121,9 @@ storiesOf(COMBOBOX, module)
 	.add('Base With Input', () => <BaseWithInput action={action} />)
 	.add('Dialog', () => <Dialog action={action} />)
 	.add('Readonly Single Selection', () => <ReadOnly action={action} />)
+	.add('Readonly Single Selection Deselect', () => (
+		<ReadOnlyDeselect action={action} />
+	))
 	.add('Readonly Single Selection - Right to Left (RTL)', () => (
 		<ReadOnlyRTL action={action} />
 	))
@@ -130,6 +135,9 @@ storiesOf(COMBOBOX, module)
 	))
 	.add('Readonly Multiple Selection', () => (
 		<ReadOnlyMultiple action={action} />
+	))
+	.add('Readonly Multiple Selection Deselect', () => (
+		<ReadOnlyMultipleDeselect action={action} />
 	))
 	.add('Readonly Single Selection Custom Menu Item', () => (
 		<ReadOnlySingleSelectionCustomMenuItem action={action} />
