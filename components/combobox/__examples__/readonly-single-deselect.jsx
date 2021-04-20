@@ -2,7 +2,6 @@
 import React from 'react';
 import Combobox from '~/components/combobox';
 import IconSettings from '~/components/icon-settings';
-import Icon from '~/components/icon';
 
 const accounts = [
 	{
