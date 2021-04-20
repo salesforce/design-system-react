@@ -4450,6 +4450,73 @@ exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection Deselect 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-readonly-multiple"
+    >
+      Search
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              id="combobox-readonly-multiple"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Select an Option"
+              readOnly={true}
+              required={false}
+              role="combobox"
+              type="text"
+              value=""
+            />
+            <span
+              className="slds-icon_container slds-input__icon slds-input__icon_right"
+            >
+              <svg
+                aria-hidden={true}
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSCombobox Readonly Single Menu Item Disabled 1`] = `
 <div
   className="slds-p-around_medium"
@@ -4721,6 +4788,74 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Custom Menu Item 1
               onFocus={[Function]}
               onKeyDown={[Function]}
               placeholder="Select company"
+              readOnly={true}
+              required={false}
+              role="combobox"
+              type="text"
+              value=""
+            />
+            <span
+              className="slds-icon_container slds-input__icon slds-input__icon_right"
+            >
+              <svg
+                aria-hidden={true}
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCombobox Readonly Single Selection Deselect 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-readonly-single"
+    >
+      Boolean
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              disabled={false}
+              id="combobox-readonly-single"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Select an Option"
               readOnly={true}
               required={false}
               role="combobox"
@@ -8383,7 +8518,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
             role="none"
           >
             <input
-              aria-activedescendant={null}
+              aria-activedescendant="combobox-unique-id-listbox-option-1"
               aria-autocomplete="list"
               aria-controls="combobox-unique-id-listbox"
               aria-expanded={true}
@@ -8440,8 +8575,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                 role="presentation"
               >
                 <span
-                  aria-selected={false}
-                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center slds-is-selected"
+                  aria-selected={true}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center slds-has-focus slds-is-selected"
                   id="combobox-unique-id-listbox-option-1"
                   onClick={[Function]}
                   role="option"
