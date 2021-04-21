@@ -36,6 +36,7 @@ class Example extends React.Component {
 						}}
 						texture
 						variant="alert"
+						silenceDeprecationWarning
 					/>
 					<span />
 					<Button
@@ -48,7 +49,7 @@ class Example extends React.Component {
 						content={[
 							<span key="maintenance">
 								Scheduled Maintenance Notification: Sunday March 15, 8:00
-								AM–10:00 PST <a href="javascript:void(0);">More Information</a>
+								AM–10:00 PST <a href="#">More Information</a>
 							</span>,
 						]}
 						iconName="notification"
@@ -59,6 +60,7 @@ class Example extends React.Component {
 						texture
 						theme="success"
 						variant="alert"
+						silenceDeprecationWarning
 					/>
 					<span />
 					<Button
@@ -71,7 +73,7 @@ class Example extends React.Component {
 						content={[
 							<span key="browser">
 								Your browser is currently not supported. Your Salesforce may be
-								degraded. <a href="javascript:void(0);">More Information</a>
+								degraded. <a href="#">More Information</a>
 							</span>,
 						]}
 						iconName="ban"
@@ -82,6 +84,7 @@ class Example extends React.Component {
 						texture
 						theme="error"
 						variant="alert"
+						silenceDeprecationWarning
 					/>
 					<span />
 					<Button
@@ -93,8 +96,7 @@ class Example extends React.Component {
 					<Notification
 						content={[
 							<span key="offline">
-								You are in offline mode{' '}
-								<a href="javascript:void(0);">More Information</a>
+								You are in offline mode <a href="#">More Information</a>
 							</span>,
 						]}
 						iconName="offline"
@@ -105,6 +107,7 @@ class Example extends React.Component {
 						texture
 						theme="offline"
 						variant="alert"
+						silenceDeprecationWarning
 					/>
 				</div>
 			</IconSettings>

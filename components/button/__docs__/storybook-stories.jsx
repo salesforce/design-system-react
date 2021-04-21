@@ -29,6 +29,16 @@ storiesOf(BUTTON, module)
 		</div>
 	))
 	.add('Base', () => getButton({ label: 'Base', variant: 'base' }))
+	.add('Aria attribute', () =>
+		getButton({ label: 'Base', 'aria-label': 'Base', variant: 'base' })
+	)
+	.add('Data attribute', () =>
+		getButton({
+			label: 'Base',
+			'data-some-property': 'Some value',
+			variant: 'base',
+		})
+	)
 	.add('Neutral', () => getButton({ label: 'Neutral' }))
 	.add('Neutral with id', () =>
 		getButton({ label: 'Neutral', id: 'custom-id' })
@@ -65,7 +75,7 @@ storiesOf(BUTTON, module)
 		'Small Icon Hint inverse',
 		() =>
 			getIconButton({
-				assistiveText: 'Hint',
+				assistiveText: { icon: 'Hint' },
 				iconCategory: 'utility',
 				iconName: 'down',
 				iconVariant: 'border',

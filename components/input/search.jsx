@@ -16,7 +16,7 @@ import Input from './index';
 import InputIcon from '../icon/input-icon';
 
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ### Event Helpers
 import KEYS from '../../utilities/key-code';
@@ -47,7 +47,7 @@ const Search = ({ clearable, onClear, onSearch, placeholder, ...props }) => {
 			: {
 					...defaultProps.assistiveText,
 					...props.assistiveText,
-				}.label;
+			  }.label;
 	return (
 		<Input
 			assistiveText={{ label: assistiveText }}

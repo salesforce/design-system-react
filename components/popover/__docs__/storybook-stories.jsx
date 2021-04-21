@@ -1,5 +1,4 @@
 /* eslint-disable react/display-name */
-/* eslint-disable no-script-url */
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -11,6 +10,7 @@ import { POPOVER } from '../../../utilities/constants';
 import CustomTarget from '../__examples__/custom-target';
 import Header from '../__examples__/header';
 import Error from '../__examples__/error';
+import Feature from '../__examples__/feature';
 import Walkthrough from '../__examples__/walkthrough';
 import EditDialog from '../__examples__/edit-dialog';
 import WalkthroughAction from '../__examples__/walkthrough-action';
@@ -68,7 +68,11 @@ const getPopoverNubbins = (props) => {
 		);
 	});
 
-	return <div key="container">{children}</div>;
+	return (
+		<div key="container" data-ignore-axe-duplicate-id-active>
+			{children}
+		</div>
+	);
 };
 
 const bodyContent =
@@ -134,7 +138,10 @@ storiesOf(POPOVER, module)
 		})
 	)
 	.add('Error', () => <Error />)
+	.add('Error w/ Footer', () => <Error footer="Footer Item" />)
 	.add('Error - Open', () => <Error isOpen />)
+	.add('Feature', () => <Feature action={action} />)
+	.add('Feature - Open', () => <Feature action={action} isOpen />)
 	.add('Warning', () => <Warning />)
 	.add('Warning  - Open', () => <Warning isOpen />)
 	.add('Walkthrough', () => <Walkthrough action={action} />)
@@ -142,4 +149,5 @@ storiesOf(POPOVER, module)
 	.add('Walkthrough Action', () => <WalkthroughAction />)
 	.add('Walkthrough Action - Open', () => <WalkthroughAction isOpen />)
 	.add('Edit Dialog', () => <EditDialog />)
-	.add('Edit Dialog  - Open', () => <EditDialog isOpen />);
+	.add('Edit Dialog - Open', () => <EditDialog isOpen />)
+	.add('Edit Dialog - Disabled', () => <EditDialog disabled />);

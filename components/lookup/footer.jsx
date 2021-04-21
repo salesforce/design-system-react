@@ -13,7 +13,8 @@ const propTypes = {};
 const defaultProps = {};
 
 class DefaultFooter extends React.Component {
-	componentWillReceiveProps(nextProps) {
+	// eslint-disable-next-line react/sort-comp, camelcase
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (
 			nextProps.isActive !== this.props.isActive &&
 			nextProps.isActive === true
@@ -40,9 +41,12 @@ class DefaultFooter extends React.Component {
 				onMouseDown={EventUtil.trapImmediate}
 			>
 				{/* eslint-enable jsx-a11y/no-static-element-interactions */}
-				{/* eslint-disable no-script-url */}
-				<a id="newItem" href="javascript:void(0);" className={className}>
-					{/* eslint-enable no-script-url */}
+				<a
+					id="newItem"
+					href="#"
+					onClick={(event) => event.preventDefault()}
+					className={className}
+				>
 					<span className="lookup__item-action-label">
 						<Icon
 							name="add"

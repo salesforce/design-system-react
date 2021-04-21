@@ -18,7 +18,7 @@ exports[`DOM snapshots SLDSMediaObject Base 1`] = `
           className="slds-icon"
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#user"
           />
         </svg>
         
@@ -52,7 +52,7 @@ exports[`DOM snapshots SLDSMediaObject Docs site Default 1`] = `
           className="slds-icon slds-icon_large"
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#user"
           />
         </svg>
         
@@ -86,7 +86,7 @@ exports[`DOM snapshots SLDSMediaObject Docs site VerticallyCentered 1`] = `
           className="slds-icon slds-icon_large"
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#user"
           />
         </svg>
         
@@ -120,7 +120,7 @@ exports[`DOM snapshots SLDSMediaObject Figure Vertical Center 1`] = `
           className="slds-icon"
         >
           <use
-            xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+            href="/assets/icons/standard-sprite/svg/symbols.svg#user"
           />
         </svg>
         

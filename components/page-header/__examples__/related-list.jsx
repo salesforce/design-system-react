@@ -14,7 +14,7 @@ class Example extends React.Component {
 	render() {
 		const actions = () => (
 			<PageHeaderControl>
-				<ButtonGroup variant="list">
+				<ButtonGroup variant="list" id="button-group-page-header-actions">
 					<Button label="Add Contact" variant="neutral" />
 					<Dropdown
 						assistiveText={{
@@ -76,7 +76,7 @@ class Example extends React.Component {
 					</Dropdown>
 				</PageHeaderControl>
 				<PageHeaderControl>
-					<ButtonGroup variant="list">
+					<ButtonGroup variant="list" id="button-group-page-header-controls">
 						<Button
 							iconCategory="utility"
 							iconName="chart"
@@ -113,8 +113,8 @@ class Example extends React.Component {
 		);
 
 		const trail = [
-			<a href="javascript:void(0);">Accounts</a>,
-			<a href="javascript:void(0);">Company One</a>,
+			<a href="#accounts">Accounts</a>,
+			<a href="#company-one">Company One</a>,
 		];
 
 		return (

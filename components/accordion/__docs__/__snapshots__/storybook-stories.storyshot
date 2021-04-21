@@ -25,7 +25,9 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
               aria-expanded={false}
               className="slds-button slds-button_reset slds-accordion__summary-action"
               disabled={false}
+              id="1-accordion-button"
               onClick={[Function]}
+              onKeyDown={[Function]}
               type="button"
             >
               <svg
@@ -33,7 +35,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
                 className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -67,7 +69,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
               <span
@@ -104,7 +106,9 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
               aria-expanded={false}
               className="slds-button slds-button_reset slds-accordion__summary-action"
               disabled={false}
+              id="2-accordion-button"
               onClick={[Function]}
+              onKeyDown={[Function]}
               type="button"
             >
               <svg
@@ -112,7 +116,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
                 className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -146,7 +150,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
               <span
@@ -183,7 +187,9 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
               aria-expanded={false}
               className="slds-button slds-button_reset slds-accordion__summary-action"
               disabled={false}
+              id="3-accordion-button"
               onClick={[Function]}
+              onKeyDown={[Function]}
               type="button"
             >
               <svg
@@ -191,7 +197,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
                 className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -225,7 +231,7 @@ exports[`DOM snapshots SLDSAccordion Base 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
               <span
@@ -274,7 +280,9 @@ exports[`DOM snapshots SLDSAccordion Base Open 1`] = `
               aria-expanded={true}
               className="slds-button slds-button_reset slds-accordion__summary-action"
               disabled={false}
+              id="1-accordion-button"
               onClick={[Function]}
+              onKeyDown={[Function]}
               type="button"
             >
               <svg
@@ -282,7 +290,7 @@ exports[`DOM snapshots SLDSAccordion Base Open 1`] = `
                 className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -320,7 +328,9 @@ exports[`DOM snapshots SLDSAccordion Base Open 1`] = `
               aria-expanded={true}
               className="slds-button slds-button_reset slds-accordion__summary-action"
               disabled={false}
+              id="2-accordion-button"
               onClick={[Function]}
+              onKeyDown={[Function]}
               type="button"
             >
               <svg
@@ -328,7 +338,7 @@ exports[`DOM snapshots SLDSAccordion Base Open 1`] = `
                 className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span
@@ -366,7 +376,9 @@ exports[`DOM snapshots SLDSAccordion Base Open 1`] = `
               aria-expanded={true}
               className="slds-button slds-button_reset slds-accordion__summary-action"
               disabled={false}
+              id="3-accordion-button"
               onClick={[Function]}
+              onKeyDown={[Function]}
               type="button"
             >
               <svg
@@ -374,7 +386,7 @@ exports[`DOM snapshots SLDSAccordion Base Open 1`] = `
                 className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
                 />
               </svg>
               <span

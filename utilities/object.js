@@ -1,6 +1,6 @@
 /*
- * Remove keys with undefined values. This is useful 
- * for merging object props like `assistiveText` and `labels` 
+ * Remove keys with undefined values. This is useful
+ * for merging object props like `assistiveText` and `labels`
  * and keeping default prop values.
  */
 

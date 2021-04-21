@@ -6,6 +6,7 @@ import IconSettings from '../../icon-settings';
 import { DATA_TABLE } from '../../../utilities/constants';
 
 import Advanced from '../__examples__/advanced';
+import AdvancedHeaderRow from '../__examples__/advanced-header-row';
 import AdvancedSingleSelect from '../__examples__/advanced-single-select';
 import AdvancedSingleSelectFixedHeader from '../__examples__/advanced-single-select-fixed-header';
 import BasicFixedLayout from '../__examples__/basic-fixed-layout';
@@ -17,6 +18,8 @@ import FixedHeader from '../__examples__/fixed-header';
 import InteractiveElements from '../__examples__/interactive-elements';
 import FixedHeaderHorizontalScroller from '../__examples__/fixed-header-horizontal-scrolling';
 import JoinedWithPageHeader from '../__examples__/joined-with-page-header';
+import CustomClasses from '../__examples__/custom-classes';
+import InfiniteScrolling from '../__examples__/infinite-scrolling';
 
 storiesOf(DATA_TABLE, module)
 	.addDecorator((getStory) => (
@@ -38,9 +41,12 @@ storiesOf(DATA_TABLE, module)
 	.add('Advanced Single Select (Fixed Header)', () => (
 		<AdvancedSingleSelectFixedHeader log={action} />
 	))
+	.add('Advanced with Header Row', () => <AdvancedHeaderRow log={action} />)
 	.add('Fixed Header', () => <FixedHeader />)
 	.add('Interactive Elements', () => <InteractiveElements />)
 	.add('Fixed Header Horizontal Scrolling', () => (
 		<FixedHeaderHorizontalScroller />
 	))
-	.add('Joined with Page Header', () => <JoinedWithPageHeader />);
+	.add('Joined with Page Header', () => <JoinedWithPageHeader />)
+	.add('Custom Classes', () => <CustomClasses />)
+	.add('Infinite Scrolling', () => <InfiniteScrolling />);

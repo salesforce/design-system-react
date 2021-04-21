@@ -99,12 +99,9 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 
 		it('renders custom app description', () => {
 			// the .at(1) would only apply when descriptionHeading is set
-			expect(
-				handles.description
-					.find('span')
-					.at(1)
-					.text()
-			).to.equal('Fluffy support');
+			expect(handles.description.find('span').at(1).text()).to.equal(
+				'Fluffy support'
+			);
 		});
 
 		it('has an href attribute', () => {
@@ -120,10 +117,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 		});
 
 		it('clicking tile title link fires callback and ignores href', () => {
-			handles.body
-				.find('a')
-				.at(0)
-				.simulate('click');
+			handles.body.find('a').at(0).simulate('click');
 			expect(onClick.calledOnce).to.be.true; // eslint-disable-line no-unused-expressions
 		});
 
@@ -204,10 +198,7 @@ describe('SLDS APP LAUNCHER TILE *******************************************', (
 			// this is a hack that waits for the tooltip to render through PopperJS
 			setTimeout(function timeoutFunction() {
 				expect(
-					handles.tile
-						.find('.slds-popover__body mark')
-						.at(0)
-						.text()
+					handles.tile.find('.slds-popover__body mark').at(0).text()
 				).to.equal('enter');
 			}, 100);
 		});

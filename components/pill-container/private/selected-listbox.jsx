@@ -45,7 +45,7 @@ const propTypes = {
 	 * Callbacks for various pill events such as click, focus, etc
 	 */
 	events: PropTypes.shape({
-		onClickPill: PropTypes.func.isRequired,
+		onClickPill: PropTypes.func,
 		onPillFocus: PropTypes.func.isRequired,
 		onRequestFocus: PropTypes.func.isRequired,
 		onRequestFocusOnNextPill: PropTypes.func.isRequired,
@@ -68,6 +68,22 @@ const propTypes = {
 	 * Determines whether component renders as a pill container with associated styling and behavior
 	 */
 	isPillContainer: PropTypes.bool,
+	/**
+	 * The value of `aria-orientation` to use on the listbox element
+	 */
+	listboxAriaOrientation: PropTypes.string,
+	/**
+	 * The value of `role` to use on the listbox element
+	 */
+	listboxRole: PropTypes.string,
+	/**
+	 * The value of `aria-orientation` to use on the container element
+	 */
+	containerAriaOrientation: PropTypes.string,
+	/**
+	 * The value of `role` to use on the container element
+	 */
+	containerRole: PropTypes.string,
 	/*
 	 * Pill Label
 	 */
@@ -103,6 +119,8 @@ const propTypes = {
 };
 
 const defaultProps = {
+	listboxAriaOrientation: 'horizontal',
+	listboxRole: 'listbox',
 	renderAtSelectionLength: 1,
 };
 
@@ -165,9 +183,10 @@ const SelectedListBox = (props) =>
 					props.selectedListboxRef(ref);
 				}
 			}}
-			role="listbox"
 			style={props.style}
-			aria-orientation="horizontal"
+			// Remove role and aria-orientation after slds-has-inline-listbox is deprecated in Combobox
+			role={props.containerRole}
+			aria-orientation={props.containerAriaOrientation}
 		>
 			<ul
 				className={classNames('slds-listbox', {
@@ -175,8 +194,9 @@ const SelectedListBox = (props) =>
 					'slds-listbox_horizontal': !props.isInline,
 					'slds-p-top_xxx-small': !props.isInline,
 				})}
-				role="group"
 				aria-label={props.assistiveText.selectedListboxLabel}
+				role={props.listboxRole}
+				aria-orientation={props.listboxAriaOrientation}
 			>
 				{props.selection.map((option, renderIndex) => {
 					const hasTabIndex = renderIndex === props.activeOptionIndex;
@@ -199,13 +219,21 @@ const SelectedListBox = (props) =>
 								error={option.error}
 								events={{
 									onBlur: props.events.onBlurPill,
-									onClick: (event, data) => {
-										props.events.onClickPill(event, {
+									onClick:
+										typeof props.events.onClickPill === 'function'
+											? (event, data) => {
+													props.events.onClickPill(event, {
+														...data,
+														index: renderIndex,
+													});
+											  }
+											: null,
+									onFocus: (event, data) => {
+										props.events.onPillFocus(event, {
 											...data,
 											index: renderIndex,
 										});
 									},
-									onFocus: props.events.onPillFocus,
 									onRequestFocusOnNextPill:
 										props.events.onRequestFocusOnNextPill,
 									onRequestFocusOnPreviousPill:

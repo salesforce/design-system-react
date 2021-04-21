@@ -130,7 +130,11 @@ const SetHeightCard = () => (
 	<Card
 		bodyClassName="slds-grow slds-scrollable_y"
 		className="slds-grid slds-grid_vertical"
-		footer={<a href="javascript:void(0);">Footer text</a>} // eslint-disable-line no-script-url
+		footer={
+			<a href="#" onClick={(event) => event.preventDefault()}>
+				Footer text
+			</a>
+		}
 		heading="Card with set height"
 		icon={<Icon category="standard" name="document" size="small" />}
 		style={{ height: '300px' }}
@@ -159,7 +163,11 @@ const DemoCardWithoutHeader = () => (
 	<Card
 		bodyClassName="slds-grow slds-scrollable_y"
 		className="slds-grid slds-grid_vertical"
-		footer={<a href="javascript:void(0);">Footer text</a>} // eslint-disable-line no-script-url
+		footer={
+			<a href="#" onClick={(event) => event.preventDefault()}>
+				Footer text
+			</a>
+		}
 		hasNoHeader
 		icon={<Icon category="standard" name="document" size="small" />}
 		style={{ height: '300px' }}
@@ -192,6 +200,7 @@ storiesOf(CARD, module)
 							name="inline-edit-standard"
 							value="Write your own heading"
 							id="inline-edit-standard"
+							silenceDeprecationWarning
 						/>
 					}
 				/>

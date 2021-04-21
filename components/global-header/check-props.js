@@ -24,6 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
 		) {
 			componentIsDeprecated(
 				COMPONENT,
+				props,
 				`${COMPONENT} has been deprecated in favor of more-specific global header subcomponents. Please see docs for updated examples.`
 			);
 		}

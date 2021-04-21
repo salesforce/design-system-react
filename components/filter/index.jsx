@@ -1,8 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-/* eslint-disable no-script-url */
-
 // # Filter
 
 // Implements part of the [Panel design pattern](https://www.lightningdesignsystem.com/components/panels) in React.
@@ -25,10 +23,6 @@ import classNames from 'classnames';
 // [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
-
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
-import componentDoc from './docs.json';
 
 import Button from '../button';
 import Popover from '../popover';
@@ -129,9 +123,10 @@ class Filter extends React.Component {
 		popoverIsOpen: this.props.popover ? this.props.popover.props.isOpen : false,
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
-		checkProps(FILTER, componentDoc);
 	}
 
 	getId = () => this.props.id || this.generatedId;
@@ -179,6 +174,7 @@ class Filter extends React.Component {
 			defaultPopoverProps,
 			this.props.popover ? this.props.popover.props : {}
 		);
+		// eslint-disable-next-line fp/no-delete
 		delete popoverProps.children;
 		return popoverProps;
 	};
@@ -241,7 +237,7 @@ class Filter extends React.Component {
 				)}
 			>
 				{!this.props.isLocked && (this.props.children || this.props.popover) ? (
-					<Popover {...popoverProps}>
+					<Popover {...popoverProps} silenceDeprecatedPropertyWarning>
 						<button
 							className="slds-button_reset slds-grow slds-has-blur-focus"
 							onClick={this.handleFilterClick}
@@ -254,9 +250,11 @@ class Filter extends React.Component {
 								{assistiveText.editFilter}
 							</span>
 							{this.props.property ? (
-								<p className="slds-text-body_small">{this.props.property}</p>
+								<span className="slds-show slds-text-body_small">
+									{this.props.property}
+								</span>
 							) : null}
-							<p>{this.props.predicate}</p>
+							<span className="slds-show">{this.props.predicate}</span>
 						</button>
 					</Popover>
 				) : (
@@ -268,24 +266,28 @@ class Filter extends React.Component {
 						disabled
 						type="button"
 					>
-						<p className="slds-text-body_small">{this.props.property}</p>
-						<p>{this.props.predicate}</p>
+						<span className="slds-show slds-text-body_small">
+							{this.props.property}
+						</span>
+						<span className="slds-show">{this.props.predicate}</span>
 					</button>
 				)}
-				{// Remove button
-				!this.props.isPermanent && !this.props.isLocked ? (
-					<Button
-						assistiveText={{ icon: assistiveText.removeFilter }}
-						hint
-						iconCategory="utility"
-						iconName="close"
-						iconSize="small"
-						iconVariant="bare"
-						onClick={this.handleRemove}
-						title={assistiveText.removeFilter}
-						variant="icon"
-					/>
-				) : null}
+				{
+					// Remove button
+					!this.props.isPermanent && !this.props.isLocked ? (
+						<Button
+							assistiveText={{ icon: assistiveText.removeFilter }}
+							hint
+							iconCategory="utility"
+							iconName="delete"
+							iconSize="small"
+							iconVariant="bare"
+							onClick={this.handleRemove}
+							title={assistiveText.removeFilter}
+							variant="icon"
+						/>
+					) : null
+				}
 			</div>
 		);
 	}

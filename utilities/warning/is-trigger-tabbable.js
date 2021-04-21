@@ -14,6 +14,7 @@ import {
 	DATE_PICKER,
 	INPUT,
 	LOOKUP,
+	MENU_DROPDOWN,
 	TIME_PICKER,
 } from '../../utilities/constants';
 
@@ -27,13 +28,16 @@ if (process.env.NODE_ENV !== 'production') {
 	isTriggerTabbable = function isTriggerTabbableFunction(
 		COMPONENT,
 		trigger,
-		comment
+		comment,
+		silenceTriggerTabbableWarning
 	) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		const childTabIndex = trigger.props.tabIndex;
 		let elementIsTabbable = true;
 
 		if (
+			// Silencing prop for special cases
+			!silenceTriggerTabbableWarning &&
 			// List of "native" HTML elements that are tabbable by default
 			trigger.type !== 'button' &&
 			trigger.type !== 'input' &&
@@ -48,6 +52,7 @@ if (process.env.NODE_ENV !== 'production') {
 			trigger.type.displayName !== DATE_PICKER &&
 			trigger.type.displayName !== INPUT &&
 			trigger.type.displayName !== LOOKUP &&
+			trigger.type.displayName !== MENU_DROPDOWN &&
 			trigger.type.displayName !== TIME_PICKER
 		) {
 			// if it's not one of the above, then check to see if it has a tabIndex

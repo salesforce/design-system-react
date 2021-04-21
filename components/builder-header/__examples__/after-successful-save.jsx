@@ -55,7 +55,10 @@ const Example = (props) => (
 							align="bottom"
 							content="Last modified on June 1, 2018 by SysAdmin"
 						>
-							<span className="slds-color__text_gray-10 slds-align-middle slds-m-right_small">
+							<span
+								className="slds-color__text_gray-10 slds-align-middle slds-m-right_small"
+								tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+							>
 								Saved 5 mins ago
 							</span>
 						</Tooltip>
@@ -70,7 +73,7 @@ const Example = (props) => (
 					</div>
 				)}
 			>
-				<ButtonGroup label="Canvas Actions">
+				<ButtonGroup label="Canvas Actions" id="button-group-canvas-actions">
 					<Button
 						assistiveText={{ icon: 'Undo' }}
 						iconCategory="utility"
@@ -86,7 +89,7 @@ const Example = (props) => (
 						variant="icon"
 					/>
 				</ButtonGroup>
-				<ButtonGroup label="Edit Actions">
+				<ButtonGroup label="Edit Actions" id="button-group-edit-actions">
 					<Button
 						assistiveText={{ icon: 'Cut' }}
 						iconCategory="utility"

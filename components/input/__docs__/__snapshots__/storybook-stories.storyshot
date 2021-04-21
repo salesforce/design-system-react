@@ -102,7 +102,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input__icon slds-icon-text-default slds-input__icon_left"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
             <input
@@ -146,7 +146,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                 />
               </svg>
               <span
@@ -197,7 +197,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input__icon slds-icon-text-default slds-input__icon_right"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
           </div>
@@ -241,7 +241,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
                 />
               </svg>
               <span
@@ -278,7 +278,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input__icon slds-icon-text-default slds-input__icon_left"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
             <input
@@ -293,7 +293,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input__icon slds-icon-text-default slds-input__icon_right"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
               />
             </svg>
           </div>
@@ -330,7 +330,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#search"
                 />
               </svg>
               <span
@@ -357,7 +357,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
                 />
               </svg>
               <span
@@ -394,7 +394,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input__icon slds-icon-text-default slds-input__icon_left"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
             <input
@@ -415,7 +415,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
                 />
               </svg>
               <span
@@ -452,7 +452,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
               className="slds-input__icon slds-icon-text-default slds-input__icon_left"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
             <input
@@ -500,7 +500,7 @@ exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
                   />
                 </svg>
                 <span
@@ -557,7 +557,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
               />
             </svg>
             <span
@@ -588,7 +588,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
               />
             </svg>
             <span
@@ -634,7 +634,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
               />
             </svg>
             <span
@@ -666,7 +666,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
               />
             </svg>
             <span
@@ -712,7 +712,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
               />
             </svg>
             <span
@@ -747,7 +747,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
               />
             </svg>
             <span
@@ -793,7 +793,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
               />
             </svg>
             <span
@@ -826,7 +826,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
               />
             </svg>
             <span
@@ -872,7 +872,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
               />
             </svg>
             <span
@@ -905,7 +905,7 @@ exports[`DOM snapshots SLDSInput Counter Input 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#new"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
               />
             </svg>
             <span
@@ -1252,7 +1252,7 @@ exports[`DOM snapshots SLDSInput Docs site Error 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#error"
               />
             </svg>
             <span
@@ -1315,7 +1315,7 @@ exports[`DOM snapshots SLDSInput Docs site Icons 1`] = `
             className="slds-input__icon slds-icon-text-default slds-input__icon_left"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#search"
             />
           </svg>
           <input
@@ -1354,7 +1354,7 @@ exports[`DOM snapshots SLDSInput Docs site Icons 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
               />
             </svg>
             <span
@@ -1381,7 +1381,7 @@ exports[`DOM snapshots SLDSInput Docs site Icons 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
               />
             </svg>
             <span
@@ -1426,7 +1426,7 @@ exports[`DOM snapshots SLDSInput Docs site Icons 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
               />
             </svg>
             <span
@@ -1497,7 +1497,7 @@ exports[`DOM snapshots SLDSInput Docs site Icons 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
                 />
               </svg>
               <span
@@ -1611,6 +1611,7 @@ exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
             "position": "static",
           }
         }
@@ -1631,7 +1632,7 @@ exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#info"
             />
           </svg>
           <span
@@ -1681,6 +1682,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
             "position": "static",
           }
         }
@@ -1702,7 +1704,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#info"
             />
           </svg>
           <span
@@ -1791,38 +1793,234 @@ exports[`DOM snapshots SLDSInput Inline Help 1`] = `
 <div
   className="slds-p-around_medium"
 >
-  <div>
-    <h1
-      className="slds-text-title_caps slds-p-vertical_medium"
-    >
-      Inline Help
-    </h1>
-    <div
-      className="slds-form-element"
-    >
-      <label
-        className="slds-form-element__label"
-        htmlFor="inline-help"
+  <section>
+    <ol>
+      <li
+        className="slds-p-bottom_large"
       >
-        My Label
-      </label>
-      <div
-        className="slds-form-element__control"
-      >
-        <input
-          className="slds-input"
-          id="inline-help"
-          onChange={[Function]}
-          type="text"
-        />
-        <div
-          className="slds-form-element__help"
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
         >
-          ex: (415) 111-2222
+          1. Inline Help
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="inline-help"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              className="slds-input"
+              id="inline-help"
+              onChange={[Function]}
+              type="text"
+            />
+          </div>
+          <div
+            className="slds-form-element__help"
+          >
+            ex: (415) 111-2222
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          2. Inline Help With Left Icon
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="inline-help-with-left-icon"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+          >
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+            <input
+              className="slds-input"
+              id="inline-help-with-left-icon"
+              onChange={[Function]}
+              type="text"
+            />
+          </div>
+          <div
+            className="slds-form-element__help"
+          >
+            ex: (415) 111-2222
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          3. Inline Help With Right Icon
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="inline-help-with-right-icon"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+          >
+            <input
+              className="slds-input"
+              id="inline-help-with-right-icon"
+              onChange={[Function]}
+              type="text"
+            />
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_right"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+          </div>
+          <div
+            className="slds-form-element__help"
+          >
+            ex: (415) 111-2222
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          4. Inline Help With Error Text
+        </h1>
+        <div
+          className="slds-form-element slds-has-error"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="inline-help-with-error"
+          >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              aria-describedby="inline-with-error-1"
+              className="slds-input"
+              id="inline-help-with-error"
+              name="inline-help-with-error"
+              onChange={[Function]}
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="slds-form-element__help"
+          >
+            ex: (415) 111-2222
+          </div>
+          <div
+            className="slds-form-element__help"
+            id="inline-with-error-1"
+          >
+            This field is required.
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          4. Inline Help With Error Text and Icon
+        </h1>
+        <div
+          className="slds-form-element slds-has-error"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="inline-help-with-error-and-icon"
+          >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+          >
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#error"
+              />
+            </svg>
+            <input
+              aria-describedby="inline-with-error-2"
+              className="slds-input"
+              id="inline-help-with-error-and-icon"
+              name="inline-help-with-error-and-icon"
+              onChange={[Function]}
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="slds-form-element__help"
+          >
+            ex: (415) 111-2222
+          </div>
+          <div
+            className="slds-form-element__help"
+            id="inline-with-error-2"
+          >
+            This field is required.
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
 </div>
 `;
 
@@ -1868,60 +2066,106 @@ exports[`DOM snapshots SLDSInput Required Input in Error State 1`] = `
   className="slds-p-around_medium"
 >
   <section>
-    <h1
-      className="slds-text-title_caps slds-p-vertical_medium"
-    >
-      Example Button
-    </h1>
-    <button
-      className="slds-button slds-button_neutral"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      Test
-    </button>
-    <h1
-      className="slds-text-title_caps slds-p-vertical_medium"
-    >
-      Required Input with Error
-    </h1>
-    <div
-      className="slds-form-element slds-has-error"
-    >
-      <label
-        className="slds-form-element__label"
-        htmlFor="required-input-error"
+    <ol>
+      <li
+        className="slds-p-bottom_large"
       >
-        <abbr
-          className="slds-required"
-          title="required"
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
         >
-          *
-        </abbr>
-        My Label
-      </label>
-      <div
-        className="slds-form-element__control"
+          Required Input with Error Text
+        </h1>
+        <div
+          className="slds-form-element slds-has-error"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="required-input-error"
+          >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              aria-describedby="error-1"
+              className="slds-input"
+              id="required-input-error"
+              name="required-input-error"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="slds-form-element__help"
+            id="error-1"
+          >
+            This field is required.
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
       >
-        <input
-          aria-describedby="error-1"
-          className="slds-input"
-          id="required-input-error"
-          name="required-input-error"
-          onChange={[Function]}
-          placeholder="My placeholder"
-          required={true}
-          type="text"
-        />
-      </div>
-      <div
-        className="slds-form-element__help"
-        id="error-1"
-      >
-        This field is required.
-      </div>
-    </div>
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          Required Input with Error Text and Icon
+        </h1>
+        <div
+          className="slds-form-element slds-has-error"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="required-input-error-with-icon"
+          >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+          >
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#error"
+              />
+            </svg>
+            <input
+              aria-describedby="error-2"
+              className="slds-input"
+              id="required-input-error-with-icon"
+              name="required-input-error-with-icon"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="slds-form-element__help"
+            id="error-2"
+          >
+            This field is required.
+          </div>
+        </div>
+      </li>
+    </ol>
   </section>
 </div>
 `;

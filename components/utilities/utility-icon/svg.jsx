@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -8,7 +9,7 @@ class Svg extends React.Component {
 
 	getPaths = (paths) => {
 		if (paths instanceof Array) {
-			return paths.map((item) => <path {...item} />);
+			return paths.map((item, index) => <path key={index} {...item} />);
 		}
 		return <path key="pathSVG" {...paths} />;
 	};
@@ -40,18 +41,22 @@ class Svg extends React.Component {
 
 		if (data) {
 			if (data.g) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				shapes.push(this.getGroups(data.g));
 			}
 
 			if (data.ellipse) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				shapes.push(this.getEllipses(data.ellipse));
 			}
 
 			if (data.circle) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				shapes.push(this.getCircles(data.circle));
 			}
 
 			if (data.path) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				shapes.push(this.getPaths(data.path));
 			}
 		}

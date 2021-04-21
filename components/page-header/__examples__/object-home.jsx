@@ -15,7 +15,7 @@ class Example extends React.Component {
 	render() {
 		const actions = () => (
 			<PageHeaderControl>
-				<ButtonGroup variant="list">
+				<ButtonGroup variant="list" id="button-group-page-header-actions">
 					<Button label="New" />
 					<Dropdown
 						align="right"
@@ -106,7 +106,7 @@ class Example extends React.Component {
 					/>
 				</PageHeaderControl>
 				<PageHeaderControl>
-					<ButtonGroup variant="list">
+					<ButtonGroup variant="list" id="button-group-page-header-controls">
 						<Button
 							assistiveText={{ icon: 'Charts' }}
 							iconCategory="utility"

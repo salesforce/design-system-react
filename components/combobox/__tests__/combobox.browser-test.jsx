@@ -101,7 +101,7 @@ const defaultProps = {
 };
 
 const propTypes = {
-	componentWillUpdate: PropTypes.func,
+	componentDidUpdate: PropTypes.func,
 	initialSelection: PropTypes.array,
 };
 
@@ -120,9 +120,9 @@ class DemoComponent extends React.Component {
 		};
 	}
 
-	componentWillUpdate(nextProps, nextState) {
-		if (this.props.componentWillUpdate) {
-			this.props.componentWillUpdate(nextState);
+	componentDidUpdate() {
+		if (this.props.componentDidUpdate) {
+			this.props.componentDidUpdate(this.state);
 		}
 	}
 
@@ -225,24 +225,85 @@ describe('SLDSCombobox', function describeFunction() {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('has aria-haspopup, aria-expanded is false when closed, aria-expanded is true when open', function() {
+		it('has aria-haspopup, role is combobox, aria-expanded is false when closed, aria-expanded is true when open', function () {
 			wrapper = mount(<DemoComponent multiple />, { attachTo: mountNode });
 			const nodes = getNodes({ wrapper });
-			expect(nodes.combobox).attr('aria-haspopup', 'listbox');
+			expect(nodes.combobox).attr('role', 'combobox');
+			expect(nodes.input).attr('aria-haspopup', 'listbox');
+			expect(nodes.input).attr('role', 'combobox');
 			// closed
-			expect(nodes.combobox).attr('aria-expanded', 'false');
+			expect(nodes.input).attr('aria-expanded', 'false');
 			// open
 			nodes.input.simulate('click', {});
-			expect(nodes.combobox).attr('aria-expanded', 'true');
+			expect(nodes.input).attr('aria-expanded', 'true');
 		});
 
-		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', function() {
-			wrapper = mount(<DemoComponent multiple isOpen />, {
-				attachTo: mountNode,
-			});
+		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', function () {
+			wrapper = mount(
+				<DemoComponent
+					multiple
+					isOpen
+					optionsSearchEntity={[
+						{
+							id: 'options-search-id-1',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add' }}
+									size="x-small"
+									category="utility"
+									name="search"
+								/>
+							),
+							label: 'Search in Salesforce',
+						},
+						{
+							id: 'search-in-account-id',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add in Accounts' }}
+									size="x-small"
+									category="utility"
+									name="search"
+								/>
+							),
+							label: (searchTerm) => (
+								<React.Fragment>
+									{searchTerm && searchTerm.length > 0 ? (
+										<span className="slds-text-title_bold">{`"${searchTerm}" `}</span>
+									) : (
+										'Search '
+									)}
+									in Accounts
+								</React.Fragment>
+							),
+						},
+					]}
+					optionsAddItem={[
+						{
+							id: 'options-add-id-1',
+							icon: (
+								<Icon
+									assistiveText={{ label: 'add' }}
+									category="utility"
+									size="x-small"
+									name="add"
+								/>
+							),
+							label: 'New Entity',
+						},
+					]}
+				/>,
+				{
+					attachTo: mountNode,
+				}
+			);
 			let nodes = getNodes({ wrapper });
 			nodes.input.simulate('focus');
 			nodes.input.simulate('change', { target: { value: accounts[1].label } });
+			// pass over header item 1
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
+			// pass  over header item 2
+			nodes.input.simulate('keyDown', keyObjects.DOWN);
 			nodes.input.simulate('keyDown', keyObjects.DOWN);
 			expect(
 				nodes.menuListbox.find('#combobox-unique-id-listbox-option-2')
@@ -260,12 +321,9 @@ describe('SLDSCombobox', function describeFunction() {
 			);
 		});
 
-		it('Selected Listbox: remove initial first pill, remove third initial item, cycles focus (first to last), removes last and initial fifth pill, cycles focus (last to first), remove inital second and fourth pill', function(done) {
+		it('Selected Listbox: remove initial first pill, remove third initial item, cycles focus (first to last), removes last and initial fifth pill, cycles focus (last to first), remove inital second and fourth pill', function (done) {
 			const getSelectedListboxPills = ({ nodes, index }) =>
-				nodes.selectedListbox
-					.children()
-					.at(index)
-					.childAt(0);
+				nodes.selectedListbox.children().at(index).childAt(0);
 			const getFocusedPillLabel = () =>
 				document.activeElement.querySelector('.slds-pill__label').innerText;
 			const selectionKeyedStates = {
@@ -294,7 +352,7 @@ describe('SLDSCombobox', function describeFunction() {
 			let counter = 0;
 			wrapper = mount(
 				<DemoComponent
-					componentWillUpdate={(prevState) => {
+					componentDidUpdate={(prevState) => {
 						expect(prevState.selection).to.have.members(
 							selectionIndexedStates[counter]
 						);
@@ -434,7 +492,7 @@ describe('SLDSCombobox', function describeFunction() {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('Limit to pre-defined choices', function() {
+		it('Limit to pre-defined choices', function () {
 			wrapper = mount(<DemoComponent multiple predefinedOptionsOnly />, {
 				attachTo: mountNode,
 			});
@@ -446,7 +504,7 @@ describe('SLDSCombobox', function describeFunction() {
 			expect(nodes.selectedListbox).not.to.be.present;
 		});
 
-		it('Inline Single Selection Remove selection', function() {
+		it('Inline Single Selection Remove selection', function () {
 			wrapper = mount(<DemoComponent variant="inline-listbox" />, {
 				attachTo: mountNode,
 			});
@@ -507,7 +565,7 @@ describe('SLDSCombobox', function describeFunction() {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('Displays No match found', function() {
+		it('Displays No match found', function () {
 			wrapper = mount(<DemoComponent isOpen />, { attachTo: mountNode });
 			let nodes = getNodes({ wrapper });
 			nodes.input.simulate('focus');
@@ -532,7 +590,7 @@ describe('SLDSCombobox', function describeFunction() {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('onOpen callback is called', function() {
+		it('onOpen callback is called', function () {
 			wrapper = mount(<DemoComponent onOpen={onOpenCallback} />, {
 				attachTo: mountNode,
 			});
@@ -550,7 +608,7 @@ describe('SLDSCombobox', function describeFunction() {
 		afterEach(() => {
 			destroyMountNode({ wrapper, mountNode });
 		});
-		it('Tooltip component shows when focused on menu item.', function() {
+		it('Tooltip component shows when focused on menu item.', function () {
 			wrapper = mount(
 				<DemoComponent multiple isOpen tooltipMenuItemDisabled={<Tooltip />} />,
 				{

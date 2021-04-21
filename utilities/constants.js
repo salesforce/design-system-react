@@ -12,6 +12,8 @@ export const APP_LAUNCHER_LINK = 'SLDSAppLauncherLink';
 export const APP_LAUNCHER_TILE = 'SLDSAppLauncherTile';
 export const APP_LAUNCHER_HEADER = 'SLDSAppLauncherHeader';
 export const AVATAR = 'SLDSAvatar';
+export const BADGE = 'SLDSBadge';
+
 export const BRAND_BAND = 'SLDSBrandBand';
 
 /* Remove at next breaking change */
@@ -19,6 +21,7 @@ export const BREAD_CRUMB = 'SLDSBreadcrumb';
 
 export const BREADCRUMB = 'SLDSBreadcrumb';
 export const BUILDER_HEADER = 'SLDSBuilderHeader';
+export const BUILDER_HEADER_MISC = 'SLDSBuilderHeaderMisc';
 export const BUILDER_HEADER_NAV = 'SLDSBuilderHeaderNav';
 export const BUILDER_HEADER_NAV_DROPDOWN = 'SLDSBuilderHeaderNavDropdown';
 export const BUILDER_HEADER_NAV_LINK = 'SLDSBuilderHeaderNavLink';
@@ -57,6 +60,10 @@ export const FILES_MORE = `SLDSFilesMore`;
 export const FILES_FIGURE = 'SLDSFilesFigure';
 export const FILES_ACTIONS = 'SLDSFilesActions';
 export const EXPANDABLE_SECTION = 'SLDSExpandableSection';
+export const EXPRESSION = 'SLDSExpression';
+export const EXPRESSION_GROUP = 'SLDSExpressionGroup';
+export const EXPRESSION_CONDITION = 'SLDSExpressionCondition';
+export const EXPRESSION_FORMULA = 'SLDSExpressionFormula';
 export const FILTER = 'SLDSFilter';
 export const CHECKBOX = 'SLDSCheckbox';
 export const FORMS_INLINE_EDIT = 'SLDSInlineEdit';
@@ -92,6 +99,7 @@ export const LIST = 'SLDSList';
 export const LIST_ITEM = 'SLDSListItem';
 export const LIST_ITEM_LABEL = 'SLDSListItemLabel';
 export const LISTBOX_OF_PILL_OPTIONS = 'SLDSListboxOfPillOptions';
+export const LOCATION_MAP = 'SLDSLocationMap';
 export const LOOKUP = 'SLDSLookup';
 export const MEDIA_OBJECT = 'SLDSMediaObject';
 export const MENU_DROPDOWN = 'SLDSMenuDropdown';

@@ -56,7 +56,7 @@ exports[`DOM snapshots SLDSAvatar Entity Icon 1`] = `
             className="slds-icon"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#account"
             />
           </svg>
           <span
@@ -157,7 +157,7 @@ exports[`DOM snapshots SLDSAvatar User Icon 1`] = `
             className="slds-icon"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#user"
             />
           </svg>
           <span

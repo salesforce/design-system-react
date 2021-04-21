@@ -58,7 +58,7 @@ describe('SLDSColorPicker', function describeFunction() {
 	});
 
 	describe('Summary input', () => {
-		it('fires onChange with value and isValid set to true when valid', function() {
+		it('fires onChange with value and isValid set to true when valid', function () {
 			wrapper = mount(
 				<ColorPicker
 					events={{
@@ -80,7 +80,29 @@ describe('SLDSColorPicker', function describeFunction() {
 			});
 		});
 
-		it('fires onChange with value and isValid set to false when invalid', function() {
+		it('fires onChange with named value and isValid set to true when valid', function () {
+			wrapper = mount(
+				<ColorPicker
+					events={{
+						onChange: (event, { color, isValid }) => {
+							expect(color).to.equal('red');
+							expect(isValid).to.be.true;
+						},
+					}}
+				/>,
+				{ attachTo: mountNode }
+			);
+
+			const input = wrapper.find(selectors.summaryInput).first();
+
+			input.simulate('change', {
+				target: {
+					value: 'red',
+				},
+			});
+		});
+
+		it('fires onChange with value and isValid set to false when invalid', function () {
 			wrapper = mount(
 				<ColorPicker
 					events={{
@@ -102,7 +124,7 @@ describe('SLDSColorPicker', function describeFunction() {
 			});
 		});
 
-		it('fires onValidateColor when input changes', function() {
+		it('fires onValidateColor when input changes', function () {
 			const customValidator = sinon.spy();
 
 			wrapper = mount(
@@ -153,7 +175,7 @@ describe('SLDSColorPicker', function describeFunction() {
 			expect(onOpenSpy.calledOnce).to.be.true;
 		});
 
-		it('closes popover when clicked and popover is open', function() {
+		it('closes popover when clicked and popover is open', function () {
 			const onCloseSpy = sinon.spy();
 			wrapper = mount(<ColorPicker isOpen onClose={onCloseSpy} />, {
 				attachTo: mountNode,
@@ -167,14 +189,11 @@ describe('SLDSColorPicker', function describeFunction() {
 
 	describe('Popover', function describeFunction2() {
 		const clickSubmit = (el) => {
-			el
-				.find(selectors.submit)
-				.first()
-				.simulate('click');
+			el.find(selectors.submit).first().simulate('click');
 		};
 
 		describe('Swatch tab', function describeFunction3() {
-			it('clicking a swatch sets that working color', function(done) {
+			it('clicking a swatch sets that working color', function (done) {
 				wrapper = mount(
 					<ColorPicker
 						isOpen
@@ -196,7 +215,7 @@ describe('SLDSColorPicker', function describeFunction() {
 		});
 
 		describe('Swatch keyboard navigation', function describeFunction3() {
-			it('pressing right will move the color to the next one', function(done) {
+			it('pressing right will move the color to the next one', function (done) {
 				wrapper = mount(
 					<ColorPicker
 						isOpen
@@ -219,7 +238,7 @@ describe('SLDSColorPicker', function describeFunction() {
 				});
 			});
 
-			it('pressing left will move the color to the previous one', function(done) {
+			it('pressing left will move the color to the previous one', function (done) {
 				wrapper = mount(
 					<ColorPicker
 						isOpen
@@ -242,7 +261,7 @@ describe('SLDSColorPicker', function describeFunction() {
 				});
 			});
 
-			it('pressing right in RTL will move the color to the previous one', function(done) {
+			it('pressing right in RTL will move the color to the previous one', function (done) {
 				wrapper = mount(
 					makeRtl(
 						<ColorPicker
@@ -267,7 +286,7 @@ describe('SLDSColorPicker', function describeFunction() {
 				});
 			});
 
-			it('pressing left in RTL will move the color to the next one', function(done) {
+			it('pressing left in RTL will move the color to the next one', function (done) {
 				wrapper = mount(
 					makeRtl(
 						<ColorPicker
@@ -294,7 +313,7 @@ describe('SLDSColorPicker', function describeFunction() {
 		});
 
 		describe('Submit button', function describeFunction3() {
-			it('sets the input color', function() {
+			it('sets the input color', function () {
 				wrapper = mount(
 					<ColorPicker isOpen value="#000000" swatchColors={['#ff0000']} />,
 					{ attachTo: mountNode }
@@ -308,7 +327,7 @@ describe('SLDSColorPicker', function describeFunction() {
 				expect(input.props().value).to.equal('#ff0000');
 			});
 
-			it('triggers onChange with value and isValid set to true', function(done) {
+			it('triggers onChange with value and isValid set to true', function (done) {
 				wrapper = mount(
 					<ColorPicker
 						isOpen
@@ -332,7 +351,7 @@ describe('SLDSColorPicker', function describeFunction() {
 		});
 
 		describe('Cancel button', function describeFunction3() {
-			it('does not trigger onChange but triggers onRequestClose', function() {
+			it('does not trigger onChange but triggers onRequestClose', function () {
 				const onRequestCloseSpy = sinon.spy();
 				wrapper = mount(
 					<ColorPicker
@@ -366,7 +385,7 @@ describe('SLDSColorPicker', function describeFunction() {
 		describe('Custom tab', function describeFunction3() {
 			describe('HSV', function describeFunction4() {
 				describe('hue slider', function describeFunction5() {
-					it('change causes color hue to update', function(done) {
+					it('change causes color hue to update', function (done) {
 						wrapper = mount(
 							<ColorPicker
 								isOpen
@@ -390,11 +409,11 @@ describe('SLDSColorPicker', function describeFunction() {
 				});
 
 				describe('saturation-value grid', function describeFunction5() {
-					it('click sets color using coordinates', function() {
-						this.skip('too dependent on browser calculations');
-					});
+					// it('click sets color using coordinates', function() {
+					// 	this.skip('too dependent on browser calculations');
+					// });
 
-					it('up key causes color value to go up', function(done) {
+					it('up key causes color value to go up', function (done) {
 						wrapper = mount(
 							<ColorPicker
 								value="#000000"
@@ -416,7 +435,7 @@ describe('SLDSColorPicker', function describeFunction() {
 						});
 					});
 
-					it('down key causes color value to go down', function(done) {
+					it('down key causes color value to go down', function (done) {
 						wrapper = mount(
 							<ColorPicker
 								value="#ffffff"
@@ -438,7 +457,7 @@ describe('SLDSColorPicker', function describeFunction() {
 						});
 					});
 
-					it('left key causes color sat. to go down 1', function(done) {
+					it('left key causes color sat. to go down 1', function (done) {
 						wrapper = mount(
 							<ColorPicker
 								value="#ff0000"
@@ -460,7 +479,7 @@ describe('SLDSColorPicker', function describeFunction() {
 						});
 					});
 
-					it('right key causes color sat. to go up 1', function(done) {
+					it('right key causes color sat. to go up 1', function (done) {
 						wrapper = mount(
 							<ColorPicker
 								value="#000000"
@@ -482,7 +501,7 @@ describe('SLDSColorPicker', function describeFunction() {
 						});
 					});
 
-					it('shift-up causes color value to go up 10', function(done) {
+					it('shift-up causes color value to go up 10', function (done) {
 						wrapper = mount(
 							<ColorPicker
 								value="#000000"
@@ -505,7 +524,7 @@ describe('SLDSColorPicker', function describeFunction() {
 						});
 					});
 
-					it('up key at value 100 causes no change', function(done) {
+					it('up key at value 100 causes no change', function (done) {
 						wrapper = mount(
 							<ColorPicker
 								value="#ffffff"
@@ -527,7 +546,7 @@ describe('SLDSColorPicker', function describeFunction() {
 						});
 					});
 
-					it('shift-up at value > 90 causes value to be 100', function(done) {
+					it('shift-up at value > 90 causes value to be 100', function (done) {
 						wrapper = mount(
 							<ColorPicker
 								value="#EBEBEB"
@@ -553,7 +572,7 @@ describe('SLDSColorPicker', function describeFunction() {
 			});
 
 			describe('Hex input', function describeFunction4() {
-				it('invalid value sets error message', function(done) {
+				it('invalid value sets error message', function (done) {
 					wrapper = mount(
 						<ColorPicker
 							isOpen
@@ -575,7 +594,7 @@ describe('SLDSColorPicker', function describeFunction() {
 					});
 				});
 
-				it('valid value updates color', function(done) {
+				it('valid value updates color', function (done) {
 					wrapper = mount(
 						<ColorPicker
 							isOpen
@@ -633,7 +652,7 @@ describe('SLDSColorPicker', function describeFunction() {
 			});
 
 			describe('RGB input', function describeFunction4() {
-				it('non-number causes error message', function(done) {
+				it('non-number causes error message', function (done) {
 					wrapper = mount(
 						<ColorPicker
 							isOpen
@@ -655,7 +674,7 @@ describe('SLDSColorPicker', function describeFunction() {
 					});
 				});
 
-				it('non-integer number causes error message', function(done) {
+				it('non-integer number causes error message', function (done) {
 					wrapper = mount(
 						<ColorPicker
 							isOpen
@@ -677,7 +696,7 @@ describe('SLDSColorPicker', function describeFunction() {
 					});
 				});
 
-				it('number greater than 255 causes error message', function(done) {
+				it('number greater than 255 causes error message', function (done) {
 					wrapper = mount(
 						<ColorPicker
 							isOpen
@@ -699,7 +718,7 @@ describe('SLDSColorPicker', function describeFunction() {
 					});
 				});
 
-				it('negative number causes error message', function(done) {
+				it('negative number causes error message', function (done) {
 					wrapper = mount(
 						<ColorPicker
 							isOpen
@@ -721,7 +740,7 @@ describe('SLDSColorPicker', function describeFunction() {
 					});
 				});
 
-				it('valid number updates color', function(done) {
+				it('valid number updates color', function (done) {
 					wrapper = mount(
 						<ColorPicker
 							isOpen

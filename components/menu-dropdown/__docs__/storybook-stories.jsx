@@ -6,10 +6,12 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
+import EventUtil from '../../../utilities/event';
 
 import { MENU_DROPDOWN } from '../../../utilities/constants';
 import Dropdown from '../../menu-dropdown';
 import { DropdownNubbinPositions } from '../../menu-dropdown/menu-dropdown';
+import DropdownWithTooltips from '../__examples__/with-tooltips';
 import List from '../../utilities/menu-list';
 import Button from '../../button';
 import Trigger from '../../menu-dropdown/button-trigger';
@@ -131,7 +133,12 @@ const getDropdownPositioned = (props) => {
 	const positionedDropdowns = [];
 	DropdownNubbinPositions.forEach((position) => {
 		positionedDropdowns.push(
-			<div className="slds-col slds-size_1-of-3" style={{ minHeight: '500px' }}>
+			<div
+				className="slds-col slds-size_1-of-3"
+				key={`positioned-dropdown-${position.replace(' ', '')}`}
+				style={{ minHeight: '500px' }}
+				data-ignore-axe-duplicate-id
+			>
 				<Dropdown
 					{...props}
 					isOpen
@@ -179,13 +186,16 @@ const getDropdownPositioned = (props) => {
 const getDropdownCustomTrigger = (props) => (
 	<Dropdown {...props} onClose={action('Closed')} onOpen={action('Opened')}>
 		<Trigger>
-			<Button iconCategory="utility" iconName="settings" />
+			<Button
+				assistiveText={{ icon: props.assistiveText.icon }}
+				iconCategory="utility"
+				iconName="settings"
+			/>
 		</Trigger>
 	</Dropdown>
 );
 
 /* eslint-disable react/prop-types */
-/* eslint-disable no-script-url */
 const DropdownCustomContent = (props) => (
 	<div id="custom-dropdown-menu-content">
 		<div className="slds-m-around_medium">
@@ -195,12 +205,12 @@ const DropdownCustomContent = (props) => (
 					<p className="slds-truncate">
 						<a
 							className="slds-m-right_medium"
-							href="javascript:void(0)"
-							onClick={props.onClick}
+							href="#"
+							onClick={EventUtil.trappedHandler(props.onClick)}
 						>
 							Settings
 						</a>
-						<a href="javascript:void(0)" onClick={props.onClick}>
+						<a href="#" onClick={EventUtil.trappedHandler(props.onClick)}>
 							Log Out
 						</a>
 					</p>
@@ -227,6 +237,20 @@ storiesOf(MENU_DROPDOWN, module)
 		getDropdown({
 			align: 'right',
 			id: 'base',
+			label: 'Dropdown Click',
+			onClick: (...rest) => {
+				action('Clicked')(...rest);
+			},
+			onSelect: (...rest) => {
+				action('Selected')(...rest);
+			},
+			options,
+		})
+	)
+	.add('Base center-aligned', () =>
+		getDropdown({
+			align: 'center',
+			id: 'base-center',
 			label: 'Dropdown Click',
 			onClick: (...rest) => {
 				action('Clicked')(...rest);
@@ -472,4 +496,8 @@ storiesOf(MENU_DROPDOWN, module)
 			label="Dropdown Click"
 			options={options}
 		/>
+	))
+	.add('With tooltips', () => <DropdownWithTooltips />)
+	.add('With tooltips (open)', () => (
+		<DropdownWithTooltips isOpenAllTooltips />
 	));

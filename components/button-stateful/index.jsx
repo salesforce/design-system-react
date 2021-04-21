@@ -18,11 +18,12 @@ import isFunction from 'lodash.isfunction';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ## Children
 import ButtonIcon from '../icon/button-icon';
 
+import getAriaProps from '../../utilities/get-aria-props';
 import { BUTTON_STATEFUL } from '../../utilities/constants';
 
 const propTypes = {
@@ -43,13 +44,9 @@ const propTypes = {
 	 */
 	disabled: PropTypes.bool,
 	/**
-	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+	 * Icon associated with the stateful button. Accepts an `Icon` component
 	 */
-	iconName: PropTypes.string,
-	/**
-	 * Determines the size of the icon.
-	 */
-	iconSize: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
+	icon: PropTypes.node,
 	/**
 	 * Triggered when focus is removed.
 	 */
@@ -129,15 +126,16 @@ const defaultProps = {
 /**
  * The ButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.
  * For icon buttons, use <code>variant='icon'</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: 'add', label: 'Join'}}</code>).
+ * Although not listed in the prop table, all `aria-*` props will be added to the button element if passed in.
+ * If no `aria-*` props are passed in, <code>aria-live='polite'</code> is used for `icon` and `icon-filled` variants,
+ * and <code>aria-live='assertive'</code> is used for the remaining variants.
  */
 class ButtonStateful extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { active: false };
-	}
 
-	componentWillMount() {
-		checkProps(BUTTON_STATEFUL, this.props, componentDoc);
+		checkProps(BUTTON_STATEFUL, props, componentDoc);
 	}
 
 	getClassName(active) {
@@ -169,6 +167,7 @@ class ButtonStateful extends React.Component {
 		const {
 			active,
 			disabled,
+			icon,
 			iconName,
 			iconSize,
 			id,
@@ -186,20 +185,33 @@ class ButtonStateful extends React.Component {
 			variant,
 		} = this.props;
 
+		const defaultIconProps = {
+			disabled,
+			size: 'small',
+			className: 'slds-button__icon_stateful',
+		};
 		const iconAssistiveText =
 			typeof this.props.assistiveText === 'string'
 				? this.props.assistiveText
 				: {
 						...defaultProps.assistiveText,
 						...this.props.assistiveText,
-					}.icon;
+				  }.icon;
 
 		const isActive = typeof active === 'boolean' ? active : this.state.active;
 
+		// Accept aria-* props
+		let ariaProps = getAriaProps(this.props);
+
 		if (variant === 'icon' || variant === 'icon-filled') {
+			// Default aria attribute for stateful button with icon, if none is specified
+			if (Object.keys(ariaProps).length === 0) {
+				ariaProps = { 'aria-live': 'polite' };
+			}
+
 			return (
 				<button
-					aria-live="polite"
+					{...ariaProps}
 					className={this.getClassName(isActive)}
 					disabled={disabled}
 					id={id}
@@ -215,12 +227,19 @@ class ButtonStateful extends React.Component {
 					tabIndex={tabIndex}
 					type="button"
 				>
-					<ButtonIcon
-						disabled={disabled}
-						name={iconName}
-						size={iconSize}
-						className="slds-button__icon_stateful"
-					/>
+					{icon ? (
+						React.cloneElement(icon, {
+							...defaultIconProps,
+							...icon.props,
+						})
+					) : (
+						<ButtonIcon
+							disabled={disabled}
+							name={iconName}
+							size={iconSize}
+							className="slds-button__icon_stateful"
+						/>
+					)}
 					{iconAssistiveText ? (
 						<span className="slds-assistive-text">{iconAssistiveText}</span>
 					) : null}
@@ -228,9 +247,16 @@ class ButtonStateful extends React.Component {
 			);
 		}
 
+		defaultIconProps.position = 'left';
+
+		// Default aria attribute for stateful button, if none is specified
+		if (Object.keys(ariaProps).length === 0) {
+			ariaProps = { 'aria-live': 'assertive' };
+		}
+
 		return (
 			<button
-				aria-live="assertive"
+				{...ariaProps}
 				className={this.getClassName(isActive)}
 				disabled={disabled}
 				id={id}
@@ -246,33 +272,57 @@ class ButtonStateful extends React.Component {
 				type="button"
 			>
 				<span className="slds-text-not-selected">
-					<ButtonIcon
-						disabled={disabled}
-						name={stateOne.iconName}
-						size="small"
-						position="left"
-						className="slds-button__icon_stateful"
-					/>
+					{stateOne.icon ? (
+						React.cloneElement(stateOne.icon, {
+							...defaultIconProps,
+							...stateOne.icon.props,
+							size: 'small',
+						})
+					) : (
+						<ButtonIcon
+							disabled={disabled}
+							name={stateOne.iconName}
+							size="small"
+							position="left"
+							className="slds-button__icon_stateful"
+						/>
+					)}
 					{stateOne.label}
 				</span>
 				<span className="slds-text-selected">
-					<ButtonIcon
-						disabled={disabled}
-						name={stateTwo.iconName}
-						size="small"
-						position="left"
-						className="slds-button__icon_stateful"
-					/>
+					{stateTwo.icon ? (
+						React.cloneElement(stateTwo.icon, {
+							...defaultIconProps,
+							...stateTwo.icon.props,
+							size: 'small',
+						})
+					) : (
+						<ButtonIcon
+							disabled={disabled}
+							name={stateTwo.iconName}
+							size="small"
+							position="left"
+							className="slds-button__icon_stateful"
+						/>
+					)}
 					{stateTwo.label}
 				</span>
 				<span className="slds-text-selected-focus">
-					<ButtonIcon
-						disabled={disabled}
-						name={stateThree.iconName}
-						size="small"
-						position="left"
-						className="slds-button__icon_stateful"
-					/>
+					{stateThree.icon ? (
+						React.cloneElement(stateThree.icon, {
+							...defaultIconProps,
+							...stateThree.icon.props,
+							size: 'small',
+						})
+					) : (
+						<ButtonIcon
+							disabled={disabled}
+							name={stateThree.iconName}
+							size="small"
+							position="left"
+							className="slds-button__icon_stateful"
+						/>
+					)}
 					{stateThree.label}
 				</span>
 			</button>

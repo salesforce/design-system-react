@@ -6,7 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -37,6 +37,7 @@ const Icon = (props) => {
 		className,
 		colorVariant,
 		containerClassName,
+		containerStyle,
 		icon,
 		inverse,
 		name,
@@ -56,7 +57,7 @@ const Icon = (props) => {
 			: {
 					...defaultProps.assistiveText,
 					...props.assistiveText,
-				}.label;
+			  }.label;
 
 	const kababCaseName = name ? name.replace(/_/g, '-') : '';
 
@@ -71,6 +72,7 @@ const Icon = (props) => {
 				},
 				containerClassName
 			)}
+			style={containerStyle}
 			title={title}
 		>
 			<UtilityIcon
@@ -148,6 +150,10 @@ Icon.propTypes = {
 		PropTypes.object,
 		PropTypes.string,
 	]),
+	/**
+	 * Styles that are applied to the span.
+	 */
+	containerStyle: PropTypes.object,
 	/**
 	 * Icon color variants
 	 */

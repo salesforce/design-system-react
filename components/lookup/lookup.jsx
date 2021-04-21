@@ -40,6 +40,7 @@ import KEYS from '../../utilities/key-code';
 import Menu from './menu';
 
 import { LOOKUP } from '../../utilities/constants';
+import { IconSettingsContext } from '../icon-settings';
 
 /**
  * A function that takes a term string and an item and returns a truthy value if the item should be kept.
@@ -225,9 +226,11 @@ const Lookup = class extends React.Component {
 		selectedIndex: this.props.selectedItem,
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(LOOKUP, this.props);
+		checkProps(LOOKUP, props);
 
 		// Keeps track of references of children for keyboard navigation
 		this.pills = [];
@@ -237,7 +240,8 @@ const Lookup = class extends React.Component {
 		this.modifyItems(this.props.options);
 	}
 
-	componentWillReceiveProps(newProps) {
+	// eslint-disable-next-line camelcase, react/sort-comp
+	UNSAFE_componentWillReceiveProps(newProps) {
 		if (newProps.options) {
 			this.modifyItems(newProps.options);
 		}
@@ -694,16 +698,15 @@ const Lookup = class extends React.Component {
 		// i18n
 		return (
 			<div className="slds-pill__container">
-				{/* eslint-disable no-script-url */}
 				<a
-					href="javascript:void(0)"
+					href="#"
 					className="slds-pill"
 					ref={(pill) => {
 						this.pills[this.state.selectedIndex] = pill;
 					}}
+					onClick={(event) => event.preventDefault()}
 					onKeyDown={this.handlePillKeyDown}
 				>
-					{/* eslint-enable no-script-url */}
 					{renderIcon}
 					<span className={labelClassName}>{selectedItem}</span>
 					<Button
@@ -761,9 +764,7 @@ const Lookup = class extends React.Component {
 
 		const formElementControlClasses = {
 			'slds-form-element__control': true,
-			[`slds-input-has-icon slds-input-has-icon_${
-				this.props.iconPosition
-			}`]: !this.isSelected(),
+			[`slds-input-has-icon slds-input-has-icon_${this.props.iconPosition}`]: !this.isSelected(),
 		};
 
 		return (
@@ -784,8 +785,5 @@ const Lookup = class extends React.Component {
 	}
 };
 
-Lookup.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+Lookup.contextType = IconSettingsContext;
 export default Lookup;

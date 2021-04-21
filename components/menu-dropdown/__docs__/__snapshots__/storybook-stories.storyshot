@@ -28,6 +28,34 @@ exports[`DOM snapshots SLDSMenuDropdown Base 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSMenuDropdown Base center-aligned 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="base-center"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_neutral ignore-click-base-center"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      Dropdown Click
+    </button>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown left-aligned 1`] = `
 <div
   className="slds-p-around_medium slds-text-align_center"
@@ -56,7 +84,7 @@ exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown left-aligned 1`
         className="slds-button__icon slds-button__icon_right"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
         />
       </svg>
     </button>
@@ -95,7 +123,7 @@ exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown left-aligned, r
           className="slds-button__icon slds-button__icon_right"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
+            href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
           />
         </svg>
       </button>
@@ -132,7 +160,7 @@ exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown right-aligned 1
         className="slds-button__icon slds-button__icon_right"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
         />
       </svg>
     </button>
@@ -171,7 +199,7 @@ exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown right-aligned, 
           className="slds-button__icon slds-button__icon_right"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
+            href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
           />
         </svg>
       </button>
@@ -207,7 +235,7 @@ exports[`DOM snapshots SLDSMenuDropdown Checkmark 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
         />
       </svg>
       <span
@@ -250,7 +278,7 @@ exports[`DOM snapshots SLDSMenuDropdown Checkmark, right-to-left 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
+            href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
           />
         </svg>
         <span
@@ -391,9 +419,14 @@ exports[`DOM snapshots SLDSMenuDropdown Custom Trigger 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
         />
       </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Custom Dropdown Trigger
+      </span>
     </button>
   </div>
 </div>
@@ -404,7 +437,7 @@ exports[`DOM snapshots SLDSMenuDropdown Hover 1`] = `
   className="slds-p-around_medium slds-text-align_center"
 >
   <div
-    className="slds-dropdown-trigger slds-dropdown-trigger_hover"
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
     id="hover"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -425,7 +458,7 @@ exports[`DOM snapshots SLDSMenuDropdown Hover 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
         />
       </svg>
       <svg
@@ -433,7 +466,7 @@ exports[`DOM snapshots SLDSMenuDropdown Hover 1`] = `
         className="slds-button__icon slds-button__icon_x-small"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
         />
       </svg>
       <span
@@ -451,7 +484,7 @@ exports[`DOM snapshots SLDSMenuDropdown Hover with Checkmark 1`] = `
   className="slds-p-around_medium slds-text-align_center"
 >
   <div
-    className="slds-dropdown-trigger slds-dropdown-trigger_hover"
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
     id="hover-with-checkmark"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -472,7 +505,7 @@ exports[`DOM snapshots SLDSMenuDropdown Hover with Checkmark 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
         />
       </svg>
       <span
@@ -523,6 +556,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
     >
       <div
         className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
         style={
           Object {
             "minHeight": "500px",
@@ -552,16 +586,14 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
               />
             </svg>
             top left
           </button>
           <div
-            className="slds-nubbin_top-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
+            className="slds-nubbin_top-left slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
             onKeyDown={[Function]}
-            onMouseEnter={null}
-            onMouseLeave={null}
             style={Object {}}
           >
             <ul
@@ -588,7 +620,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                 <a
                   aria-disabled={true}
                   data-index={1}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -610,7 +642,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={2}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -647,7 +679,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                         className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                         />
                       </svg>
                       
@@ -660,7 +692,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                       className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                       />
                     </svg>
                     
@@ -681,7 +713,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={5}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -703,7 +735,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={6}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -725,7 +757,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={7}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -747,7 +779,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={8}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -769,7 +801,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={9}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -791,7 +823,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={10}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -813,7 +845,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={11}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -835,7 +867,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={12}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -854,6 +886,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
       </div>
       <div
         className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
         style={
           Object {
             "minHeight": "500px",
@@ -883,16 +916,14 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
               />
             </svg>
             top
           </button>
           <div
-            className="slds-nubbin_top slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top"
+            className="slds-nubbin_top slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top"
             onKeyDown={[Function]}
-            onMouseEnter={null}
-            onMouseLeave={null}
             style={Object {}}
           >
             <ul
@@ -919,7 +950,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                 <a
                   aria-disabled={true}
                   data-index={1}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -941,7 +972,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={2}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -978,7 +1009,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                         className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                         />
                       </svg>
                       
@@ -991,7 +1022,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                       className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                       />
                     </svg>
                     
@@ -1012,7 +1043,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={5}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1034,7 +1065,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={6}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1056,7 +1087,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={7}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1078,7 +1109,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={8}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1100,7 +1131,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={9}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1122,7 +1153,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={10}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1144,7 +1175,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={11}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1166,7 +1197,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={12}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1185,6 +1216,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
       </div>
       <div
         className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
         style={
           Object {
             "minHeight": "500px",
@@ -1214,16 +1246,14 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
               />
             </svg>
             top right
           </button>
           <div
-            className="slds-nubbin_top-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_right"
+            className="slds-nubbin_top-right slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top slds-dropdown_right"
             onKeyDown={[Function]}
-            onMouseEnter={null}
-            onMouseLeave={null}
             style={Object {}}
           >
             <ul
@@ -1250,7 +1280,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                 <a
                   aria-disabled={true}
                   data-index={1}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1272,7 +1302,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={2}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1309,7 +1339,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                         className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                         />
                       </svg>
                       
@@ -1322,7 +1352,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                       className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                       />
                     </svg>
                     
@@ -1343,7 +1373,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={5}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1365,7 +1395,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={6}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1387,7 +1417,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={7}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1409,7 +1439,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={8}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1431,7 +1461,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={9}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1453,7 +1483,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={10}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1475,7 +1505,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={11}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1497,7 +1527,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={12}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1516,6 +1546,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
       </div>
       <div
         className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
         style={
           Object {
             "minHeight": "500px",
@@ -1545,16 +1576,14 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
               />
             </svg>
             bottom left
           </button>
           <div
-            className="slds-nubbin_bottom-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_left"
+            className="slds-nubbin_bottom-left slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_left"
             onKeyDown={[Function]}
-            onMouseEnter={null}
-            onMouseLeave={null}
             style={Object {}}
           >
             <ul
@@ -1581,7 +1610,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                 <a
                   aria-disabled={true}
                   data-index={1}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1603,7 +1632,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={2}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1640,7 +1669,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                         className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                         />
                       </svg>
                       
@@ -1653,7 +1682,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                       className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                       />
                     </svg>
                     
@@ -1674,7 +1703,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={5}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1696,7 +1725,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={6}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1718,7 +1747,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={7}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1740,7 +1769,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={8}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1762,7 +1791,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={9}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1784,7 +1813,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={10}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1806,7 +1835,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={11}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1828,7 +1857,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={12}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1847,6 +1876,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
       </div>
       <div
         className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
         style={
           Object {
             "minHeight": "500px",
@@ -1876,16 +1906,14 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
               />
             </svg>
             bottom
           </button>
           <div
-            className="slds-nubbin_bottom slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom"
+            className="slds-nubbin_bottom slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_bottom"
             onKeyDown={[Function]}
-            onMouseEnter={null}
-            onMouseLeave={null}
             style={Object {}}
           >
             <ul
@@ -1912,7 +1940,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                 <a
                   aria-disabled={true}
                   data-index={1}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1934,7 +1962,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={2}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1971,7 +1999,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                         className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                         />
                       </svg>
                       
@@ -1984,7 +2012,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                       className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                       />
                     </svg>
                     
@@ -2005,7 +2033,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={5}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2027,7 +2055,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={6}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2049,7 +2077,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={7}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2071,7 +2099,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={8}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2093,7 +2121,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={9}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2115,7 +2143,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={10}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2137,7 +2165,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={11}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2159,7 +2187,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={12}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2178,6 +2206,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
       </div>
       <div
         className="slds-col slds-size_1-of-3"
+        data-ignore-axe-duplicate-id={true}
         style={
           Object {
             "minHeight": "500px",
@@ -2207,16 +2236,14 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
               />
             </svg>
             bottom right
           </button>
           <div
-            className="slds-nubbin_bottom-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_right"
+            className="slds-nubbin_bottom-right slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_right"
             onKeyDown={[Function]}
-            onMouseEnter={null}
-            onMouseLeave={null}
             style={Object {}}
           >
             <ul
@@ -2243,7 +2270,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                 <a
                   aria-disabled={true}
                   data-index={1}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2265,7 +2292,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={2}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2302,7 +2329,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                         className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                         />
                       </svg>
                       
@@ -2315,7 +2342,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                       className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                       />
                     </svg>
                     
@@ -2336,7 +2363,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={5}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2358,7 +2385,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={6}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2380,7 +2407,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={7}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2402,7 +2429,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={8}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2424,7 +2451,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={9}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2446,7 +2473,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={10}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2468,7 +2495,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={11}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2490,7 +2517,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={12}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2539,7 +2566,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
             className="slds-button__icon"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
             />
           </svg>
           <span
@@ -2567,6 +2594,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
       >
         <div
           className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
           style={
             Object {
               "minHeight": "500px",
@@ -2596,16 +2624,14 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                  href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                 />
               </svg>
               top left
             </button>
             <div
-              className="slds-nubbin_top-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
+              className="slds-nubbin_top-left slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
               onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
               style={Object {}}
             >
               <ul
@@ -2632,7 +2658,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                   <a
                     aria-disabled={true}
                     data-index={1}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2654,7 +2680,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={2}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2691,7 +2717,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                           className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                            href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                           />
                         </svg>
                         
@@ -2704,7 +2730,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                         className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                          href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                         />
                       </svg>
                       
@@ -2725,7 +2751,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={5}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2747,7 +2773,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={6}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2769,7 +2795,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={7}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2791,7 +2817,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={8}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2813,7 +2839,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={9}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2835,7 +2861,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={10}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2857,7 +2883,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={11}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2879,7 +2905,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={12}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2898,6 +2924,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
         </div>
         <div
           className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
           style={
             Object {
               "minHeight": "500px",
@@ -2927,16 +2954,14 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                  href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                 />
               </svg>
               top
             </button>
             <div
-              className="slds-nubbin_top slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top"
+              className="slds-nubbin_top slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top"
               onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
               style={Object {}}
             >
               <ul
@@ -2963,7 +2988,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                   <a
                     aria-disabled={true}
                     data-index={1}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2985,7 +3010,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={2}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3022,7 +3047,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                           className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                            href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                           />
                         </svg>
                         
@@ -3035,7 +3060,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                         className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                          href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                         />
                       </svg>
                       
@@ -3056,7 +3081,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={5}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3078,7 +3103,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={6}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3100,7 +3125,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={7}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3122,7 +3147,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={8}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3144,7 +3169,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={9}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3166,7 +3191,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={10}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3188,7 +3213,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={11}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3210,7 +3235,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={12}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3229,6 +3254,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
         </div>
         <div
           className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
           style={
             Object {
               "minHeight": "500px",
@@ -3258,16 +3284,14 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                  href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                 />
               </svg>
               top right
             </button>
             <div
-              className="slds-nubbin_top-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_top slds-dropdown_right"
+              className="slds-nubbin_top-right slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top slds-dropdown_right"
               onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
               style={Object {}}
             >
               <ul
@@ -3294,7 +3318,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                   <a
                     aria-disabled={true}
                     data-index={1}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3316,7 +3340,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={2}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3353,7 +3377,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                           className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                            href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                           />
                         </svg>
                         
@@ -3366,7 +3390,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                         className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                          href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                         />
                       </svg>
                       
@@ -3387,7 +3411,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={5}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3409,7 +3433,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={6}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3431,7 +3455,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={7}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3453,7 +3477,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={8}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3475,7 +3499,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={9}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3497,7 +3521,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={10}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3519,7 +3543,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={11}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3541,7 +3565,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={12}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3560,6 +3584,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
         </div>
         <div
           className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
           style={
             Object {
               "minHeight": "500px",
@@ -3589,16 +3614,14 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                  href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                 />
               </svg>
               bottom left
             </button>
             <div
-              className="slds-nubbin_bottom-left slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_left"
+              className="slds-nubbin_bottom-left slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_left"
               onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
               style={Object {}}
             >
               <ul
@@ -3625,7 +3648,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                   <a
                     aria-disabled={true}
                     data-index={1}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3647,7 +3670,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={2}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3684,7 +3707,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                           className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                            href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                           />
                         </svg>
                         
@@ -3697,7 +3720,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                         className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                          href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                         />
                       </svg>
                       
@@ -3718,7 +3741,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={5}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3740,7 +3763,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={6}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3762,7 +3785,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={7}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3784,7 +3807,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={8}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3806,7 +3829,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={9}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3828,7 +3851,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={10}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3850,7 +3873,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={11}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3872,7 +3895,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={12}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3891,6 +3914,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
         </div>
         <div
           className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
           style={
             Object {
               "minHeight": "500px",
@@ -3920,16 +3944,14 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                  href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                 />
               </svg>
               bottom
             </button>
             <div
-              className="slds-nubbin_bottom slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom"
+              className="slds-nubbin_bottom slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_bottom"
               onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
               style={Object {}}
             >
               <ul
@@ -3956,7 +3978,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                   <a
                     aria-disabled={true}
                     data-index={1}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3978,7 +4000,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={2}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4015,7 +4037,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                           className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                            href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                           />
                         </svg>
                         
@@ -4028,7 +4050,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                         className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                          href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                         />
                       </svg>
                       
@@ -4049,7 +4071,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={5}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4071,7 +4093,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={6}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4093,7 +4115,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={7}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4115,7 +4137,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={8}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4137,7 +4159,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={9}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4159,7 +4181,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={10}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4181,7 +4203,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={11}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4203,7 +4225,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={12}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4222,6 +4244,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
         </div>
         <div
           className="slds-col slds-size_1-of-3"
+          data-ignore-axe-duplicate-id={true}
           style={
             Object {
               "minHeight": "500px",
@@ -4251,16 +4274,14 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                  href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                 />
               </svg>
               bottom right
             </button>
             <div
-              className="slds-nubbin_bottom-right slds-dropdown slds-dropdown_medium ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_right"
+              className="slds-nubbin_bottom-right slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_bottom slds-dropdown_right"
               onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
               style={Object {}}
             >
               <ul
@@ -4287,7 +4308,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                   <a
                     aria-disabled={true}
                     data-index={1}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4309,7 +4330,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={2}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4346,7 +4367,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                           className="slds-icon-text-default slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
                         >
                           <use
-                            xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                            href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                           />
                         </svg>
                         
@@ -4359,7 +4380,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                         className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
                       >
                         <use
-                          xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                          href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
                         />
                       </svg>
                       
@@ -4380,7 +4401,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={5}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4402,7 +4423,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={6}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4424,7 +4445,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={7}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4446,7 +4467,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={8}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4468,7 +4489,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={9}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4490,7 +4511,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={10}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4512,7 +4533,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={11}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4534,7 +4555,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={12}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4583,7 +4604,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
+                href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#settings"
               />
             </svg>
             <span
@@ -4605,7 +4626,7 @@ exports[`DOM snapshots SLDSMenuDropdown Two Hovers 1`] = `
 >
   <div>
     <div
-      className="slds-dropdown-trigger slds-dropdown-trigger_hover"
+      className="slds-dropdown-trigger slds-dropdown-trigger_click"
       id="hover-1"
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -4626,7 +4647,7 @@ exports[`DOM snapshots SLDSMenuDropdown Two Hovers 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
           />
         </svg>
         <svg
@@ -4634,7 +4655,7 @@ exports[`DOM snapshots SLDSMenuDropdown Two Hovers 1`] = `
           className="slds-button__icon slds-button__icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#down"
           />
         </svg>
         <span
@@ -4646,7 +4667,7 @@ exports[`DOM snapshots SLDSMenuDropdown Two Hovers 1`] = `
     </div>
      
     <div
-      className="slds-dropdown-trigger slds-dropdown-trigger_hover"
+      className="slds-dropdown-trigger slds-dropdown-trigger_click"
       id="hover-2"
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -4667,7 +4688,7 @@ exports[`DOM snapshots SLDSMenuDropdown Two Hovers 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
           />
         </svg>
         <svg
@@ -4675,7 +4696,7 @@ exports[`DOM snapshots SLDSMenuDropdown Two Hovers 1`] = `
           className="slds-button__icon slds-button__icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#down"
           />
         </svg>
         <span
@@ -4685,6 +4706,379 @@ exports[`DOM snapshots SLDSMenuDropdown Two Hovers 1`] = `
         </span>
       </button>
     </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+    id="dropdown-with-tooltips"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={true}
+      aria-haspopup={true}
+      className="slds-button slds-button_icon-border-filled ignore-click-dropdown-with-tooltips"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="-1"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        More Options
+      </span>
+    </button>
+    <div
+      className="absolute-positioned slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
+      onKeyDown={[Function]}
+      style={
+        Object {
+          "outline": 0,
+          "pointerEvents": "none",
+          "position": "absolute",
+        }
+      }
+    >
+      <style
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": ".slds-dropdown__item > .slds-tooltip-trigger > a {
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 0.5rem 0.75rem;
+	color: #080707;
+	white-space: nowrap;
+	cursor: pointer;
+}
+
+.slds-dropdown__item > .slds-tooltip-trigger > a:active {
+    text-decoration: none;
+    background-color: #ecebea;
+}
+
+.slds-dropdown__item > .slds-tooltip-trigger > a:hover,
+.slds-dropdown__item > .slds-tooltip-trigger > a:focus {
+    outline: 0;
+    text-decoration: none;
+    background-color: #f3f2f2;
+}
+",
+          }
+        }
+      />
+      <ul
+        aria-labelledby="dropdown-with-tooltips"
+        className="dropdown__list slds-dropdown_length-5"
+        role="menu"
+      >
+        <li
+          className="slds-dropdown__header"
+          onMouseDown={[Function]}
+          role="separator"
+        >
+          <span>
+            Header
+          </span>
+        </li>
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-1"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <a
+            data-index={1}
+            href="#"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            <span
+              className="slds-truncate"
+              title="Menu Item One"
+            >
+              Menu Item One
+            </span>
+          </a>
+        </li>
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-2"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <div
+            className="slds-tooltip-trigger"
+            style={
+              Object {
+                "display": "inline-block",
+                "lineHeight": "1",
+                "width": "100%",
+              }
+            }
+          >
+            <a
+              aria-describedby="dropdown-with-tooltips-item-2-tooltip"
+              data-index={2}
+              href="#"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              role="menuitem"
+              tabIndex="-1"
+            >
+              <span
+                className="slds-truncate"
+                title="Menu Item Two"
+              >
+                Menu Item Two
+              </span>
+            </a>
+            <div
+              className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
+              id="dropdown-with-tooltips-item-2-tooltip"
+              onKeyDown={[Function]}
+              role="tooltip"
+              style={
+                Object {
+                  "outline": 0,
+                  "pointerEvents": "none",
+                  "position": "absolute",
+                }
+              }
+            >
+              <div
+                className="slds-popover__body"
+              >
+                Just a friendly tooltip
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-3"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <a
+            data-index={3}
+            href="#"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            <span
+              className="slds-truncate"
+              title="Menu Item Three"
+            >
+              Menu Item Three
+            </span>
+          </a>
+        </li>
+        <li
+          className="slds-has-divider"
+          onMouseDown={[Function]}
+          role="separator"
+        />
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-5"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <div
+            className="slds-tooltip-trigger"
+            style={
+              Object {
+                "display": "inline-block",
+                "lineHeight": "1",
+                "width": "100%",
+              }
+            }
+          >
+            <a
+              aria-describedby="dropdown-with-tooltips-item-5-tooltip"
+              data-index={5}
+              href="#"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              role="menuitem"
+              tabIndex="-1"
+            >
+              <span
+                className="slds-truncate"
+                title="Menu Item Four"
+              >
+                Menu Item Four
+              </span>
+            </a>
+            <div
+              className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
+              id="dropdown-with-tooltips-item-5-tooltip"
+              onKeyDown={[Function]}
+              role="tooltip"
+              style={
+                Object {
+                  "outline": 0,
+                  "pointerEvents": "none",
+                  "position": "absolute",
+                }
+              }
+            >
+              <div
+                className="slds-popover__body"
+              >
+                Another friendly tooltip
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-6"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <a
+            data-index={6}
+            href="#"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            <span
+              className="slds-truncate"
+              title="Menu Item Five"
+            >
+              Menu Item Five
+            </span>
+          </a>
+        </li>
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-7"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <a
+            data-index={7}
+            href="#"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            <span
+              className="slds-truncate"
+              title="Menu Item Six"
+            >
+              Menu Item Six
+            </span>
+          </a>
+        </li>
+        <li
+          className="slds-has-divider"
+          onMouseDown={[Function]}
+          role="separator"
+        />
+        <li
+          aria-selected={null}
+          className="slds-dropdown__item"
+          id="dropdown-with-tooltips-item-9"
+          onMouseDown={[Function]}
+          role="presentation"
+        >
+          <a
+            data-index={9}
+            href="#"
+            onClick={[Function]}
+            role="menuitem"
+            tabIndex="-1"
+          >
+            <span
+              className="slds-truncate"
+              title="Menu Item Seven"
+            >
+              Menu Item Seven
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown With tooltips 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-dropdown-trigger slds-dropdown-trigger_click"
+    id="dropdown-with-tooltips"
+    onClick={[Function]}
+    onFocus={null}
+    onKeyDown={[Function]}
+    onMouseEnter={null}
+    onMouseLeave={null}
+  >
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      className="slds-button slds-button_icon-border-filled ignore-click-dropdown-with-tooltips"
+      disabled={false}
+      onClick={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        More Options
+      </span>
+    </button>
   </div>
 </div>
 `;

@@ -11,11 +11,13 @@ import SLDSNotification from '../../notification';
 import IconSettings from '../../icon-settings';
 
 describe('SLDSNotification: ', () => {
-	const generateNotification = function(notificationInstance) {
+	const generateNotification = function (notificationInstance) {
 		const reactCmp = TestUtils.renderIntoDocument(
-			<IconSettings iconPath="/assets/icons">
-				{notificationInstance}
-			</IconSettings>
+			<div>
+				<IconSettings iconPath="/assets/icons">
+					{notificationInstance}
+				</IconSettings>
+			</div>
 		);
 		return ReactDOM.findDOMNode(reactCmp);
 	};
@@ -23,7 +25,13 @@ describe('SLDSNotification: ', () => {
 	describe('component renders', () => {
 		it('notification renders', () => {
 			const notification = generateNotification(
-				<SLDSNotification variant="toast" theme="success" isOpen content="hi" />
+				<SLDSNotification
+					variant="toast"
+					theme="success"
+					isOpen
+					content="hi"
+					silenceDeprecationWarning
+				/>
 			);
 			expect(notification).to.not.equal(undefined);
 		});
@@ -40,17 +48,24 @@ describe('SLDSNotification: ', () => {
 					texture
 					animated
 					content="hi"
+					silenceDeprecationWarning
 				/>
 			);
-			const alert = notification.getElementsByTagName('div')[0];
+			const alert = notification.getElementsByTagName('div')[1];
 			expect(alert.className).to.include('slds-notify_toast');
 		});
 
 		it('renders theme', () => {
 			const notification = generateNotification(
-				<SLDSNotification variant="toast" theme="error" isOpen content="hi" />
+				<SLDSNotification
+					variant="toast"
+					theme="error"
+					isOpen
+					content="hi"
+					silenceDeprecationWarning
+				/>
 			);
-			const alert = notification.getElementsByTagName('div')[0];
+			const alert = notification.getElementsByTagName('div')[1];
 			expect(alert.className).to.include('slds-theme_error');
 		});
 
@@ -63,6 +78,7 @@ describe('SLDSNotification: ', () => {
 					isOpen
 					texture
 					content="hi"
+					silenceDeprecationWarning
 				/>
 			);
 
@@ -86,6 +102,7 @@ describe('SLDSNotification: ', () => {
 					onDismiss={onClick}
 					isOpen
 					content="hi"
+					silenceDeprecationWarning
 				/>
 			);
 			const dismissBtn = notification.getElementsByTagName('button')[0];

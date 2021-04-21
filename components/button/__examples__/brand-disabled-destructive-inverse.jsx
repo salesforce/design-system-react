@@ -29,6 +29,7 @@ class Example extends React.Component {
 						style={{
 							backgroundColor: '#16325c',
 							padding: '10px',
+							marginLeft: '5px',
 							display: 'inline-block',
 						}}
 						className="-m-horizontal--small"

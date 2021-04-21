@@ -30,10 +30,6 @@ import AutoplayButton from './private/auto-play-button';
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
 
-// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import checkProps from './check-props';
-import componentDoc from './docs.json';
-
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
 // ### Default Props
@@ -109,7 +105,7 @@ class Carousel extends React.Component {
 		 * * `description`: Secondary string that is used to describe the item
 		 * * `buttonLabel`: If assigned a call to button action will be rendered with this text, if unassigned no button is rendered
 		 * * `imageAssistiveText`: Image alt text, if not present heading will be used instead
-		 * * `href`: Used for item link, if not provided 'javascript:void(0);' is used instead
+		 * * `href`: Used for item link, if not provided '#' is used instead
 		 * * `src`: Item image src value
 		 */
 		items: PropTypes.array.isRequired,
@@ -154,11 +150,8 @@ class Carousel extends React.Component {
 			stageWidth: 0,
 			translateX: -1000000,
 		};
-	}
 
-	componentWillMount() {
 		this.generatedId = shortid.generate();
-		checkProps(CAROUSEL, componentDoc);
 	}
 
 	componentDidMount() {
@@ -267,6 +260,8 @@ class Carousel extends React.Component {
 			actionToTake(event);
 		}
 	};
+
+	getPanelId = ({ carouselId, itemId }) => `content-id-${carouselId}-${itemId}`;
 
 	getCurrentPanel() {
 		return this.props.currentPanel !== undefined
@@ -432,6 +427,7 @@ class Carousel extends React.Component {
 								{this.props.items.map((item, index) => (
 									<CarouselItem
 										carouselId={id}
+										getPanelId={this.getPanelId}
 										onClick={(event) => {
 											this.props.onItemClick(event, { item });
 										}}
@@ -476,6 +472,7 @@ class Carousel extends React.Component {
 						noOfIndicators={this.nrOfPanels}
 						carouselId={id}
 						currentIndex={currentPanel}
+						getPanelId={this.getPanelId}
 						hasFocus={this.state.indicatorsHaveFocus}
 						onBlur={this.onIndicatorBlur}
 						onClick={this.onIndicatorClickHandler}

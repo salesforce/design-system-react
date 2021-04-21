@@ -6,10 +6,7 @@ import ReactDOM from 'react-dom';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import assign from 'lodash.assign';
-import {
-	Simulate,
-	findRenderedDOMComponentWithClass,
-} from 'react-dom/test-utils';
+import { Simulate } from 'react-dom/test-utils';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
@@ -24,8 +21,10 @@ import {
 // Import your internal dependencies (for example):
 import Dropdown from '../../menu-dropdown';
 import IconSettings from '../../icon-settings';
+import Tooltip from '../../tooltip';
 import List from '../../utilities/menu-list';
 import { keyObjects } from '../../../utilities/key-code';
+import EventUtil from '../../../utilities/event';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -62,12 +61,12 @@ const DropdownCustomContent = (props) => (
 						<a
 							id="custom-dropdown-menu-content-link"
 							className="slds-m-right_medium"
-							href="javascript:void(0);"
-							onClick={props.onClick}
+							href="#"
+							onClick={EventUtil.trappedHandler(props.onClick)}
 						>
 							Settings
 						</a>
-						<a href="javascript:void(0);" onClick={props.onClick}>
+						<a href="#" onClick={EventUtil.trappedHandler(props.onClick)}>
 							Log Out
 						</a>
 					</p>
@@ -117,7 +116,7 @@ const getNodes = ({ wrapper }) => ({
  * String provided as first parameter names the `describe` section. Limit to nouns
  * as much as possible/appropriate.`
  */
-describe('SLDSMenuDropdown', function() {
+describe('SLDSMenuDropdown', function () {
 	describe('Styling', () => {
 		beforeEach(
 			mountComponent(
@@ -127,7 +126,7 @@ describe('SLDSMenuDropdown', function() {
 
 		afterEach(unmountComponent);
 
-		it('has correct CSS classes and style', function() {
+		it('has correct CSS classes and style', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
@@ -142,7 +141,7 @@ describe('SLDSMenuDropdown', function() {
 
 		afterEach(unmountComponent);
 
-		it('has correct CSS class for inverse', function() {
+		it('has correct CSS class for inverse', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
@@ -164,14 +163,14 @@ describe('SLDSMenuDropdown', function() {
 
 		afterEach(unmountComponent);
 
-		it('has content with custom ID is present', function() {
+		it('has content with custom ID is present', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
 			expect(openNodes.customContent.length).to.equal(1);
 		});
 
-		it('closes when custom content is clicked', function() {
+		it('closes when custom content is clicked', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.button.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
@@ -180,7 +179,7 @@ describe('SLDSMenuDropdown', function() {
 			expect(closedNodes.customContent.length).to.equal(0);
 		});
 
-		it("has additional ListItem from list child's options prop", function() {
+		it("has additional ListItem from list child's options prop", function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			const buttonId = nodes.trigger.prop('id');
 			nodes.button.simulate('click', {});
@@ -198,7 +197,7 @@ describe('SLDSMenuDropdown', function() {
 
 		afterEach(unmountComponent);
 
-		it('does not expand on hover', function() {
+		it('does not expand on hover', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('mouseEnter', {});
@@ -206,7 +205,7 @@ describe('SLDSMenuDropdown', function() {
 			expect(hoverNodes.menu.length).to.equal(0);
 		});
 
-		it('expands/contracts on click', function() {
+		it('expands/contracts on click', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('click', {});
@@ -217,8 +216,8 @@ describe('SLDSMenuDropdown', function() {
 			expect(closedNodes.menu.length).to.equal(0);
 		});
 
-		it('preserves click behavior', function() {
-			onClick.reset();
+		it('preserves click behavior', function () {
+			onClick.resetHistory();
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			expect(onClick.calledOnce);
@@ -240,15 +239,12 @@ describe('SLDSMenuDropdown', function() {
 
 		afterEach(unmountComponent);
 
-		it('selects an item on click', function() {
+		it('selects an item on click', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			openNodes.menu
-				.find('li a')
-				.first()
-				.simulate('click', {});
+			openNodes.menu.find('li a').first().simulate('click', {});
 			expect(selected.value).to.equal('A0');
 		});
 	});
@@ -258,7 +254,7 @@ describe('SLDSMenuDropdown', function() {
 
 		afterEach(unmountComponent);
 
-		it('<ul> has role menu & aria-labelledby', function() {
+		it('<ul> has role menu & aria-labelledby', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
@@ -267,14 +263,11 @@ describe('SLDSMenuDropdown', function() {
 			expect(openNodes.menu.find('ul')).attr('aria-labelledby', nodeId);
 		});
 
-		it('<a> inside <li> has role menuitem', function() {
+		it('<a> inside <li> has role menuitem', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
-			const anchorRole = openNodes.menu
-				.find('li a')
-				.first()
-				.prop('role');
+			const anchorRole = openNodes.menu.find('li a').first().prop('role');
 			const match =
 				anchorRole === 'menuitem' ||
 				anchorRole === 'menuitemradio' ||
@@ -282,7 +275,7 @@ describe('SLDSMenuDropdown', function() {
 			expect(match).to.be.true;
 		});
 
-		it('if option.disabled, add aria-disabled to <a> that has role menuitem', function() {
+		it('if option.disabled, add aria-disabled to <a> that has role menuitem', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
@@ -310,7 +303,7 @@ describe('SLDSMenuDropdown', function() {
 
 		afterEach(unmountComponent);
 
-		it('<button> has assistiveText', function() {
+		it('<button> has assistiveText', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.button.find('.slds-assistive-text').text()).to.equal(
 				'more options'
@@ -333,7 +326,7 @@ describe('SLDSMenuDropdown', function() {
 
 		afterEach(unmountComponent);
 
-		it('opens menu with enter', function() {
+		it('opens menu with enter', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.menu.length).to.equal(0);
 			nodes.button.simulate('keyDown', keyObjects.ENTER);
@@ -341,7 +334,7 @@ describe('SLDSMenuDropdown', function() {
 			expect(openNodes.menu.length).to.equal(1);
 		});
 
-		it('opens menu with down arrow key', function() {
+		it('opens menu with down arrow key', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.menu.length).to.equal(0);
 			nodes.button.simulate('keyDown', keyObjects.DOWN);
@@ -349,7 +342,7 @@ describe('SLDSMenuDropdown', function() {
 			expect(openNodes.menu.length).to.equal(1);
 		});
 
-		it('selects an item with keyboard', function() {
+		it('selects an item with keyboard', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			const openNodes = getNodes({ wrapper: this.wrapper });
@@ -359,7 +352,7 @@ describe('SLDSMenuDropdown', function() {
 			expect(selected.value).to.equal('B0');
 		});
 
-		it('closes Menu on esc', function() {
+		it('closes Menu on esc', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			expect(nodes.menu.length).to.equal(0);
 			nodes.trigger.simulate('click', {});
@@ -374,12 +367,12 @@ describe('SLDSMenuDropdown', function() {
 		});
 	});
 
-	describe('multiple selection', function() {
+	describe('multiple selection', function () {
 		beforeEach(mountComponent(<DemoComponent multiple checkmark />));
 
 		afterEach(unmountComponent);
 
-		it('selects multiple items and renders checkmarks', function() {
+		it('selects multiple items and renders checkmarks', function () {
 			const nodes = getNodes({ wrapper: this.wrapper });
 			nodes.trigger.simulate('click', {});
 			let openNodes = getNodes({ wrapper: this.wrapper });
@@ -406,11 +399,15 @@ describe('SLDSMenuDropdown', function() {
 		const renderDropdown = (inst) => {
 			body = document.createElement('div');
 			document.body.appendChild(body);
+			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			// eslint-disable-next-line react/no-render-return-value
 			return ReactDOM.render(
-				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
+				<div>
+					<IconSettings iconPath="/assets/icons">{inst}</IconSettings>
+				</div>,
 				body
 			);
+			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
 		};
 
 		function removeDropdownTrigger() {
@@ -435,7 +432,7 @@ describe('SLDSMenuDropdown', function() {
 				openOn: 'hover',
 				hoverCloseDelay: 2,
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
+			[btn] = cmp.getElementsByClassName('slds-dropdown-trigger');
 		});
 
 		afterEach((done) => {
@@ -493,11 +490,15 @@ describe('SLDSMenuDropdown', function() {
 		const renderDropdown = (inst) => {
 			body = document.createElement('div');
 			document.body.appendChild(body);
+			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			// eslint-disable-next-line react/no-render-return-value
 			return ReactDOM.render(
-				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
+				<div>
+					<IconSettings iconPath="/assets/icons">{inst}</IconSettings>
+				</div>,
 				body
 			);
+			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
 		};
 
 		function removeDropdownTrigger() {
@@ -519,7 +520,7 @@ describe('SLDSMenuDropdown', function() {
 
 		beforeEach(() => {
 			cmp = dropItDown({ openOn: 'hybrid', onClick, hoverCloseDelay: 1 });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
+			[btn] = cmp.getElementsByClassName('slds-dropdown-trigger');
 		});
 
 		afterEach(() => {
@@ -546,6 +547,37 @@ describe('SLDSMenuDropdown', function() {
 				expect(getMenu(body)).to.equal(null);
 				done();
 			}, 2);
+		});
+	});
+
+	describe('Tooltips function as expected', () => {
+		beforeEach(
+			mountComponent(
+				<DemoComponent
+					options={[
+						{ label: 'Test item A', value: 'A0' },
+						{
+							label: 'Test item B',
+							value: 'B0',
+							tooltipContent: 'Testing tooltip content',
+						},
+						{ label: 'Test item C', value: 'C0' },
+					]}
+					tooltipMenuItem={<Tooltip />}
+				/>
+			)
+		);
+
+		afterEach(unmountComponent);
+
+		it('Tooltip component shows when focused on menu item.', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.trigger.simulate('focus');
+			nodes.trigger.simulate('keyDown', keyObjects.ENTER);
+			nodes.trigger.simulate('keyDown', keyObjects.DOWN);
+
+			const tooltip = this.wrapper.find('#sample-dropdown-item-1-tooltip');
+			expect(tooltip.length).to.equal(1);
 		});
 	});
 });

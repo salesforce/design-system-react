@@ -16,7 +16,7 @@ import classnames from 'classnames';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import Info from './private/info';
 import Title from './private/title';
@@ -41,7 +41,7 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
-	 * An array of detail blocks (used in "recordHome" variant)
+	 * An array of detail blocks (used in `recordHome` variant)
 	 */
 	details: PropTypes.array,
 	/**
@@ -53,7 +53,7 @@ const propTypes = {
 	 */
 	icon: PropTypes.element,
 	/**
-	 * The info property can be a string or a React element
+	 * The info property can be a string or a React element. Can't be used with the `record-home` variant.
 	 */
 	info: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	/**

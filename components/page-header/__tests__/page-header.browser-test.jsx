@@ -36,7 +36,7 @@ const recordHomeActions = () => (
 			/>
 		</PageHeaderControl>
 		<PageHeaderControl>
-			<SLDSButtonGroup variant="list">
+			<SLDSButtonGroup variant="list" id="button-group-page-header-actions">
 				<SLDSButton label="Edit" />
 				<SLDSButton label="Delete" />
 				<SLDSButton label="Clone" />
@@ -73,7 +73,7 @@ const recordHomeDetails = [
 	{ label: 'Status', content: 'Status of thing you wanna know' },
 ];
 
-describe('PageHeader: ', function() {
+describe('PageHeader: ', function () {
 	const defaultPropsRecordHome = {
 		icon: (
 			<Icon assistiveText={{ label: 'User' }} category="standard" name="user" />
@@ -85,8 +85,8 @@ describe('PageHeader: ', function() {
 		details: recordHomeDetails,
 	};
 
-	describe('Renders basic props', function() {
-		it('renders correct Icon prop', function() {
+	describe('Renders basic props', function () {
+		it('renders correct Icon prop', function () {
 			const wrapper = mount(
 				<IconSettings iconPath="/assets/icons">
 					<PageHeader {...defaultPropsRecordHome} />
@@ -140,12 +140,7 @@ describe('PageHeader: ', function() {
 			);
 			const field1 = wrapper.find('.slds-page-header__detail-block').first();
 			expect(field1.find('.slds-text-title').text()).to.equal('Description');
-			expect(
-				field1
-					.find('.slds-truncate')
-					.last()
-					.text()
-			).to.equal(
+			expect(field1.find('.slds-truncate').last().text()).to.equal(
 				'Description that demonstrates truncation with content. Description that demonstrates truncation with content.'
 			);
 		});

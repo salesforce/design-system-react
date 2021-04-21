@@ -8,19 +8,32 @@ import classNames from 'classnames';
 
 import KEYS from '../../utilities/key-code';
 import { RADIO } from '../../utilities/constants';
+import getAriaProps from '../../utilities/get-aria-props';
 import getDataProps from '../../utilities/get-data-props';
 import Swatch from '../../components/color-picker/private/swatch';
 import Icon from '../icon';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 const propTypes = {
+	/**
+	 * **Assistive text for accessibility**
+	 * This object is merged with the default props object on every render.
+	 * * `label`: This is used as a visually hidden label if, no `labels.label` is provided.
+	 */
+	assistiveText: PropTypes.shape({
+		label: PropTypes.string,
+	}),
 	/**
 	 * The ID of an element that describes this radio input. Often used for error messages.
 	 */
 	'aria-describedby': PropTypes.string,
+	/**
+	 * The aria-labelledby attribute establishes relationships between objects and their label(s), and its value should be one or more element IDs, which refer to elements that have the text needed for labeling. List multiple element IDs in a space delimited fashion.
+	 */
+	'aria-labelledby': PropTypes.string,
 	/**
 	 * This is a controlled component. This radio is checked according to this value.
 	 */
@@ -32,13 +45,13 @@ const propTypes = {
 		PropTypes.array,
 		PropTypes.object,
 		PropTypes.string,
-	]) /**
+	]),
+	/**
 	 * This is the initial value of an uncontrolled form element and is present only to provide compatibility
 	 * with hybrid framework applications that are not entirely React. It should only be used in an application
 	 * without centralized state (Redux, Flux). "Controlled components" with centralized state is highly recommended.
 	 * See [Code Overview](https://github.com/salesforce/design-system-react/blob/master/docs/codebase-overview.md#controlled-and-uncontrolled-components) for more information.
-	 */,
-	defaultChecked: PropTypes.bool,
+	 */ defaultChecked: PropTypes.bool,
 	/**
 	 * Disable this radio input.
 	 */
@@ -61,30 +74,6 @@ const propTypes = {
 	 * The name of the radio input group.
 	 */
 	name: PropTypes.string,
-	/**
-	 * This event fires when the Checkbox looses focus. It passes in `{ event }`.
-	 */
-	onBlur: PropTypes.func,
-	/**
-	 * This event fires when the radio selection changes. Passes in `event, { checked }`.
-	 */
-	onChange: PropTypes.func,
-	/**
-	 * This event fires when the Checkbox is focused. It passes in `{ event }`.
-	 */
-	onFocus: PropTypes.func,
-	/**
-	 * Triggered to indicate that this component should receive focus.
-	 */
-	onRequestFocus: PropTypes.func,
-	/**
-	 * If true, will trigger `onRequestFocus`.
-	 */
-	requestFocus: PropTypes.bool,
-	/**
-	 * Write <code>"-1"</code> if you don't want the user to tab to the button.
-	 */
-	tabIndex: PropTypes.string,
 	/**
 	 * This event fires when the radio selection changes. Passes in `event, { checked }`.
 	 */
@@ -134,6 +123,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+	assistiveText: {},
 	variant: 'base',
 	coverable: false,
 };
@@ -146,9 +136,6 @@ class Radio extends React.Component {
 	constructor(props) {
 		super(props);
 		this.preventDuplicateChangeEvent = false;
-	}
-
-	componentWillMount() {
 		checkProps(RADIO, this.props, componentDoc);
 		this.generatedId = shortid.generate();
 	}
@@ -171,6 +158,7 @@ class Radio extends React.Component {
 	};
 
 	render() {
+		const ariaProps = getAriaProps(this.props);
 		const dataProps = getDataProps(this.props);
 
 		let radio;
@@ -246,9 +234,18 @@ class Radio extends React.Component {
 			);
 		} else {
 			radio = (
-				<label className="slds-radio__label" htmlFor={this.getId()}>
+				<label
+					className="slds-radio__label"
+					htmlFor={this.getId()}
+					id={this.props.labelId}
+				>
 					<span className="slds-radio_faux" />
 					<span className="slds-form-element__label">{labels.label}</span>
+					{this.props.assistiveText.label ? (
+						<span className="slds-assistive-text">
+							{this.props.assistiveText.label}
+						</span>
+					) : null}
 				</label>
 			);
 		}
@@ -280,8 +277,6 @@ class Radio extends React.Component {
 					{...(this.props.checked !== undefined
 						? { checked: this.props.checked }
 						: { defaultChecked: this.props.defaultChecked })}
-					onBlur={this.props.onBlur}
-					onFocus={this.props.onFocus}
 					onChange={(event) => {
 						this.handleChange(event);
 					}}
@@ -301,22 +296,19 @@ class Radio extends React.Component {
 							this.handleChange(event, true);
 						} else if (
 							(charCode === KEYS.ENTER &&
-								(this.props.checked && this.props.deselectable)) ||
+								this.props.checked &&
+								this.props.deselectable) ||
 							!this.props.checked
 						) {
 							this.handleChange(event);
 						}
 					}}
-					tabIndex={this.props.tabIndex}
-					aria-describedby={this.props['aria-describedby']}
 					disabled={this.props.disabled}
+					{...ariaProps}
 					{...dataProps}
 					ref={(input) => {
 						if (this.props.refs && this.props.refs.input) {
 							this.props.refs.input(input);
-						}
-						if (input && this.props.requestFocus && this.props.onRequestFocus) {
-							this.props.onRequestFocus(input);
 						}
 					}}
 				/>

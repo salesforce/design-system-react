@@ -13,7 +13,7 @@ import classNames from 'classnames';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ## Children
 import Button from '../button';
@@ -91,7 +91,7 @@ const defaultProps = {
 	assistiveText: {
 		dragIconText: 'Reorder',
 	},
-	href: 'javascript:void(0);', // eslint-disable-line no-script-url
+	href: '#',
 	moreLabel: ' More',
 };
 
@@ -99,9 +99,11 @@ const defaultProps = {
  * App Launcher Tiles provide information and links to a user's apps
  */
 class AppLauncherTile extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(APP_LAUNCHER_TILE, this.props, componentDoc);
+		checkProps(APP_LAUNCHER_TILE, props, componentDoc);
 	}
 
 	handleClick = (event) => {
@@ -156,7 +158,10 @@ class AppLauncherTile extends React.Component {
 				</div>
 				<div className="slds-app-launcher__tile-body">
 					<a
-						href={this.props.href} // eslint-disable-line no-script-url
+						href={this.props.href}
+						onClick={(event) =>
+							this.props.href === '#' && event.preventDefault()
+						}
 					>
 						<Highlighter search={this.props.search}>
 							{this.props.title}

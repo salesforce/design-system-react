@@ -19,7 +19,12 @@ if (process.env.NODE_ENV !== 'production') {
 			props.variant === 'base' &&
 			React.Children.count(props.children) !== 0
 		) {
-			isTriggerTabbable(COMPONENT, props.children, createDocUrl());
+			isTriggerTabbable(
+				COMPONENT,
+				props.children,
+				createDocUrl(),
+				props.silenceTriggerTabbableWarning
+			);
 		}
 
 		// Deprecated and changed to another property

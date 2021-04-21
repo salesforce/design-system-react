@@ -32,7 +32,7 @@ const ModalTrigger = {
 			</Modal>
 		);
 
-		ReactDOM.render(comp, el);
+		ReactDOM.render(comp, el); // deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 	},
 };
 

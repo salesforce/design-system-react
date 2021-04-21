@@ -53,12 +53,11 @@ class GlobalHeaderNotifications extends React.Component {
 		);
 		let notificationsAssistiveText = this.props.assistiveText.noNotifications;
 
+		// eslint-disable-next-line fp/no-delete
 		delete popoverProps.children;
 
 		if (notificationCount > 0) {
-			notificationsAssistiveText = `${
-				this.props.assistiveText.newNotificationsBefore
-			}${notificationCount}${this.props.assistiveText.newNotificationsAfter}`;
+			notificationsAssistiveText = `${this.props.assistiveText.newNotificationsBefore}${notificationCount}${this.props.assistiveText.newNotificationsAfter}`;
 		} else {
 			buttonAriaProps['aria-atomic'] = true;
 		}

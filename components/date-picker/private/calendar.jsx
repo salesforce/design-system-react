@@ -176,7 +176,10 @@ class DatepickerCalendar extends React.Component {
 		);
 
 		let firstDayOfWeek;
-		if (firstDayOfMonth.getDay() > firstDayOfWeekOffset) {
+		if (
+			firstDayOfMonth.getDay() > firstDayOfWeekOffset ||
+			firstDayOfMonth.getDay() < firstDayOfWeekOffset
+		) {
 			const prevWeek = DateUtil.addWeeks(firstDayOfMonth, -1);
 			firstDayOfWeek = DateUtil.nearestWeekDay(prevWeek, firstDayOfWeekOffset);
 		} else {
@@ -189,7 +192,9 @@ class DatepickerCalendar extends React.Component {
 		let monthIndex = firstDayOfWeek.getMonth();
 		let count = 0;
 
+		// eslint-disable-next-line fp/no-loops
 		while (!done) {
+			// eslint-disable-next-line fp/no-mutating-methods
 			weeks.push(
 				<Week
 					calendarHasFocus={this.state.calendarHasFocus}
@@ -223,8 +228,10 @@ class DatepickerCalendar extends React.Component {
 			monthIndex = firstDayOfWeek.getMonth();
 		}
 		let extraWeeks = 0;
+		// eslint-disable-next-line fp/no-loops
 		while (weeks.length < 6) {
 			extraWeeks += 1;
+			// eslint-disable-next-line fp/no-mutating-methods
 			weeks.push(
 				<tr key={`extra_${extraWeeks}`} className="week">
 					<td
@@ -299,10 +306,11 @@ class DatepickerCalendar extends React.Component {
 						<tr>
 							<td colSpan="7" role="gridcell">
 								<a
-									href="javascript:void(0)" // eslint-disable-line no-script-url
+									href="#"
 									tabIndex="0"
 									className="slds-show_inline-block slds-p-bottom_x-small"
 									onClick={(event) => {
+										event.preventDefault();
 										this.handleSelectDate(event, { date: new Date() });
 									}}
 									onKeyDown={this.props.onLastFocusableNodeKeyDown}

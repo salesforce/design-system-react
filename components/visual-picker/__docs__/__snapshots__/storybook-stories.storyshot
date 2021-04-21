@@ -53,7 +53,7 @@ exports[`DOM snapshots SLDSVisualPicker Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
                   
@@ -68,7 +68,7 @@ exports[`DOM snapshots SLDSVisualPicker Coverable 1`] = `
                     className="slds-icon slds-icon_large slds-icon-text-default"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#connected_apps"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#connected_apps"
                     />
                   </svg>
                   
@@ -112,7 +112,7 @@ exports[`DOM snapshots SLDSVisualPicker Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
                   
@@ -127,7 +127,7 @@ exports[`DOM snapshots SLDSVisualPicker Coverable 1`] = `
                     className="slds-icon slds-icon_large slds-icon-text-default"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#custom_apps"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#custom_apps"
                     />
                   </svg>
                   
@@ -188,7 +188,7 @@ exports[`DOM snapshots SLDSVisualPicker Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
                   
@@ -205,7 +205,7 @@ exports[`DOM snapshots SLDSVisualPicker Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
                   
@@ -248,7 +248,7 @@ exports[`DOM snapshots SLDSVisualPicker Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
                   
@@ -265,7 +265,7 @@ exports[`DOM snapshots SLDSVisualPicker Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#lead"
                     />
                   </svg>
                   
@@ -308,7 +308,7 @@ exports[`DOM snapshots SLDSVisualPicker Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
                   
@@ -325,7 +325,7 @@ exports[`DOM snapshots SLDSVisualPicker Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#orders"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#orders"
                     />
                   </svg>
                   
@@ -366,7 +366,7 @@ exports[`DOM snapshots SLDSVisualPicker Links 1`] = `
     >
       <a
         className="slds-box slds-box_link slds-theme_default slds-box_x-small slds-media slds-visual-picker_vertical"
-        href="javascript:void(0);"
+        href="https://google.com"
       >
         <div
           className="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small"
@@ -377,7 +377,7 @@ exports[`DOM snapshots SLDSVisualPicker Links 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#knowledge_base"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#knowledge_base"
               />
             </svg>
             
@@ -401,7 +401,7 @@ exports[`DOM snapshots SLDSVisualPicker Links 1`] = `
       </a>
       <a
         className="slds-box slds-box_link slds-theme_default slds-box_x-small slds-media slds-visual-picker_vertical"
-        href="javascript:void(0);"
+        href="https://google.com"
       >
         <div
           className="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center slds-m-left_xx-small"
@@ -412,7 +412,7 @@ exports[`DOM snapshots SLDSVisualPicker Links 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#knowledge_base"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#knowledge_base"
               />
             </svg>
             
@@ -520,7 +520,7 @@ exports[`DOM snapshots SLDSVisualPicker Non-Coverable 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 
@@ -582,7 +582,7 @@ exports[`DOM snapshots SLDSVisualPicker Non-Coverable 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 
@@ -645,7 +645,7 @@ exports[`DOM snapshots SLDSVisualPicker Non-Coverable 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 
@@ -723,7 +723,7 @@ exports[`DOM snapshots SLDSVisualPicker Non-Coverable 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 
@@ -783,7 +783,7 @@ exports[`DOM snapshots SLDSVisualPicker Non-Coverable 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 
@@ -844,7 +844,7 @@ exports[`DOM snapshots SLDSVisualPicker Non-Coverable 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 
@@ -925,7 +925,7 @@ exports[`DOM snapshots SLDSVisualPicker Vertical 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 
@@ -973,7 +973,7 @@ exports[`DOM snapshots SLDSVisualPicker Vertical 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 
@@ -1022,7 +1022,7 @@ exports[`DOM snapshots SLDSVisualPicker Vertical 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 
@@ -1086,7 +1086,7 @@ exports[`DOM snapshots SLDSVisualPicker Vertical 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 
@@ -1132,7 +1132,7 @@ exports[`DOM snapshots SLDSVisualPicker Vertical 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 
@@ -1179,7 +1179,7 @@ exports[`DOM snapshots SLDSVisualPicker Vertical 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 
@@ -1246,13 +1246,13 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
                   <span
                     className="slds-assistive-text"
                   >
-                    connected_apps_checked
+                    Connected Apps
                   </span>
                 </span>
               </span>
@@ -1265,10 +1265,14 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                     className="slds-icon slds-icon_large slds-icon-text-default"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#connected_apps"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#connected_apps"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Connected Apps
+                  </span>
                 </span>
               </span>
             </div>
@@ -1300,13 +1304,13 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
                   <span
                     className="slds-assistive-text"
                   >
-                    custom_apps_checked
+                    Custom Apps
                   </span>
                 </span>
               </span>
@@ -1319,10 +1323,14 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                     className="slds-icon slds-icon_large slds-icon-text-default"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#custom_apps"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#custom_apps"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Custom Apps
+                  </span>
                 </span>
               </span>
             </div>
@@ -1371,13 +1379,13 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
                   <span
                     className="slds-assistive-text"
                   >
-                    account_checked
+                    Account
                   </span>
                 </span>
               </span>
@@ -1392,10 +1400,14 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#account"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#account"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Account
+                  </span>
                 </span>
               </span>
             </div>
@@ -1426,13 +1438,13 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
                   <span
                     className="slds-assistive-text"
                   >
-                    lead_checked
+                    Lead
                   </span>
                 </span>
               </span>
@@ -1447,10 +1459,14 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#lead"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#lead"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Lead
+                  </span>
                 </span>
               </span>
             </div>
@@ -1481,13 +1497,13 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                     />
                   </svg>
                   <span
                     className="slds-assistive-text"
                   >
-                    orders_checked
+                    Orders
                   </span>
                 </span>
               </span>
@@ -1502,10 +1518,14 @@ exports[`DOM snapshots SLDSVisualPicker Vertical Coverable 1`] = `
                     className="slds-icon slds-icon_large"
                   >
                     <use
-                      xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#orders"
+                      href="/assets/icons/standard-sprite/svg/symbols.svg#orders"
                     />
                   </svg>
-                  
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Orders
+                  </span>
                 </span>
               </span>
             </div>

@@ -11,7 +11,7 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<ButtonGroup>
+				<ButtonGroup id="button-group-icon-group-1">
 					<ButtonStateful
 						assistiveText={{ icon: 'Show Chart' }}
 						buttonVariant="icon"
@@ -31,7 +31,45 @@ class Example extends React.Component {
 						iconCategory="utility"
 						iconName="settings"
 						iconVariant="more"
-						id="icon-dropdown-example"
+						id="icon-dropdown-example-1"
+						onSelect={(item) => {
+							console.log(item.label, 'selected');
+						}}
+						openOn="click"
+						options={[
+							{ label: 'Bring left panel to front', value: 'A0' },
+							{ label: 'Bring right panel to front', value: 'B0' },
+						]}
+						value="A0"
+						variant="icon"
+					/>
+				</ButtonGroup>
+				<br />
+				<br />
+				<ButtonGroup
+					id="button-group-icon-group-2"
+					labels={{ label: 'Actions' }}
+				>
+					<ButtonStateful
+						assistiveText={{ icon: 'Show Chart' }}
+						buttonVariant="icon"
+						iconName="chart"
+						iconVariant="border"
+						variant="icon"
+					/>
+					<ButtonStateful
+						assistiveText={{ icon: 'Filter List' }}
+						iconName="filterList"
+						iconVariant="border"
+						variant="icon"
+					/>
+					<Dropdown
+						assistiveText={{ icon: 'Settings' }}
+						checkmark
+						iconCategory="utility"
+						iconName="settings"
+						iconVariant="more"
+						id="icon-dropdown-example-2"
 						onSelect={(item) => {
 							console.log(item.label, 'selected');
 						}}

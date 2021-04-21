@@ -15,7 +15,7 @@ exports[`DOM snapshots SLDSBreadcrumb 1 Item 1`] = `
         className="slds-breadcrumb__item"
       >
         <a
-          href="javascript:void(0);"
+          href="#entity"
         >
           Parent Entity
         </a>
@@ -40,7 +40,7 @@ exports[`DOM snapshots SLDSBreadcrumb 2 Items 1`] = `
         className="slds-breadcrumb__item"
       >
         <a
-          href="javascript:void(0);"
+          href="#entity"
           id="parent-entity"
         >
           Parent Entity
@@ -50,7 +50,7 @@ exports[`DOM snapshots SLDSBreadcrumb 2 Items 1`] = `
         className="slds-breadcrumb__item"
       >
         <a
-          href="javascript:void(0);"
+          href="#record"
         >
           Parent Record Name
         </a>
@@ -71,44 +71,48 @@ exports[`DOM snapshots SLDSBreadcrumb Base with overflow menu 1`] = `
     <ol
       className="slds-breadcrumb slds-list_horizontal"
     >
-      <div
-        className="slds-dropdown-trigger slds-dropdown-trigger_click"
-        id="ADFA34_-dropdown"
-        onClick={[Function]}
-        onFocus={null}
-        onKeyDown={[Function]}
-        onMouseEnter={null}
-        onMouseLeave={null}
+      <li
+        className="slds-breadcrumb__item"
       >
-        <button
-          aria-expanded={false}
-          aria-haspopup={true}
-          className="slds-button slds-button_neutral slds-button_icon-bare ignore-click-ADFA34_-dropdown"
-          disabled={false}
+        <div
+          className="slds-dropdown-trigger slds-dropdown-trigger_click"
+          id="ADFA34_-dropdown"
           onClick={[Function]}
-          tabIndex="0"
-          type="button"
+          onFocus={null}
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon"
+          <button
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="slds-button slds-button_neutral slds-button_icon-bare ignore-click-ADFA34_-dropdown"
+            disabled={false}
+            onClick={[Function]}
+            tabIndex="0"
+            type="button"
           >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#threedots"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
-          >
-            More Options
-          </span>
-        </button>
-      </div>
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#threedots"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              More Options
+            </span>
+          </button>
+        </div>
+      </li>
       <li
         className="slds-breadcrumb__item"
       >
         <a
-          href="javascript:void(0);"
+          href="#entity"
         >
           Parent Entity
         </a>
@@ -117,7 +121,7 @@ exports[`DOM snapshots SLDSBreadcrumb Base with overflow menu 1`] = `
         className="slds-breadcrumb__item"
       >
         <a
-          href="javascript:void(0);"
+          href="#record"
         >
           Parent Record Name
         </a>

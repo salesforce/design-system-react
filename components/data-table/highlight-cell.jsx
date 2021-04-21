@@ -30,11 +30,7 @@ DataTableHighlightCell.propTypes = {
 	/**
 	 * The contents of the cell. Equivalent to `props.item[props.property]`
 	 */
-	children: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.number,
-		PropTypes.bool,
-	]),
+	children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * The string of text (or Regular Expression) to highlight.
 	 */

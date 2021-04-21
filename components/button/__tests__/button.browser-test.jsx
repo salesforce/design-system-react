@@ -1,4 +1,5 @@
 /* eslint-disable react/no-render-return-value */
+/* eslint-disable react/no-find-dom-node */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
@@ -8,36 +9,26 @@ import assign from 'lodash.assign';
 import SLDSButton from '../../button';
 import IconSettings from '../../icon-settings';
 
-const {
-	Simulate,
-	findRenderedDOMComponentWithTag,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
+const { Simulate } = TestUtils;
 
 const mockCallback = sinon.spy();
 
 describe('SLDSButton: ', () => {
-	let body;
-
 	const defaultProps = {
 		label: 'Neutral',
 		onClick: mockCallback,
 		variant: 'neutral',
 	};
 
-	const renderButton = (inst) => {
-		body = document.createElement('div');
-		document.body.appendChild(body);
-		return ReactDOM.render(
-			<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
-			body
+	const renderButton = (instance) => {
+		const ref = React.createRef();
+		TestUtils.renderIntoDocument(
+			<IconSettings iconPath="/assets/icons">
+				<div ref={ref}>{instance}</div>
+			</IconSettings>
 		);
+		return ReactDOM.findDOMNode(ref.current);
 	};
-
-	function removeButton() {
-		ReactDOM.unmountComponentAtNode(body);
-		document.body.removeChild(body);
-	}
 
 	const createButton = (props) =>
 		React.createElement(SLDSButton, assign({}, defaultProps, props));
@@ -54,11 +45,8 @@ describe('SLDSButton: ', () => {
 				theme: 'brand',
 				style: { background: 'rgb(18, 49, 35)' },
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		});
-
-		afterEach(() => {
-			removeButton();
+			[btn] = cmp.getElementsByClassName('slds-button');
+			console.log('!!!!!', cmp, btn);
 		});
 
 		it('renders correct label', () => {
@@ -73,7 +61,7 @@ describe('SLDSButton: ', () => {
 			expect(btn.getAttribute('id')).to.equal('custom-id');
 		});
 
-		it('renders custom styles', function() {
+		it('renders custom styles', function () {
 			btn.style.backgroundColor.should.equal('rgb(18, 49, 35)');
 		});
 	});
@@ -88,15 +76,28 @@ describe('SLDSButton: ', () => {
 				id: 'custom-id',
 				formAction,
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		});
-
-		afterEach(() => {
-			removeButton();
+			[btn] = cmp.getElementsByClassName('slds-button');
 		});
 
 		it('renders formAction prop', () => {
 			expect(btn.formAction).to.equal(formAction);
+		});
+	});
+
+	describe('Data Props Render ', () => {
+		let cmp;
+		let btn;
+
+		beforeEach(() => {
+			cmp = getButton({
+				id: 'custom-id',
+				'data-some-attribute': 'some value',
+			});
+			[btn] = cmp.getElementsByClassName('slds-button');
+		});
+
+		it('renders data-some-attribute prop', () => {
+			expect(btn.getAttribute('data-some-attribute')).to.equal('some value');
 		});
 	});
 
@@ -113,12 +114,8 @@ describe('SLDSButton: ', () => {
 				iconPosition: 'right',
 				variant: 'neutral',
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-			svg = findRenderedDOMComponentWithClass(cmp, 'slds-button__icon');
-		});
-
-		afterEach(() => {
-			removeButton();
+			[btn] = cmp.getElementsByClassName('slds-button');
+			[svg] = cmp.getElementsByClassName('slds-button__icon');
 		});
 
 		it('renders label', () => {
@@ -144,12 +141,8 @@ describe('SLDSButton: ', () => {
 				iconSize: 'small',
 				iconVariant: 'bare',
 			});
-			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
-			svg = findRenderedDOMComponentWithTag(cmp, 'svg');
-		});
-
-		afterEach(() => {
-			removeButton();
+			[asstText] = cmp.getElementsByClassName('slds-assistive-text');
+			[svg] = cmp.getElementsByTagName('svg');
 		});
 
 		it('renders label', () => {
@@ -172,11 +165,7 @@ describe('SLDSButton: ', () => {
 				iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
 				title: 'announcement',
 			});
-			asstText = findRenderedDOMComponentWithClass(cmp, 'slds-assistive-text');
-		});
-
-		afterEach(() => {
-			removeButton();
+			[asstText] = cmp.getElementsByClassName('slds-assistive-text');
 		});
 
 		it('renders label', () => {
@@ -197,12 +186,8 @@ describe('SLDSButton: ', () => {
 				iconSize: 'large',
 				iconVariant: 'bare',
 			});
-			use = findRenderedDOMComponentWithTag(cmp, 'use');
-			svgHref = use.getAttribute('xlink:href');
-		});
-
-		after(() => {
-			removeButton();
+			[use] = cmp.getElementsByTagName('use');
+			svgHref = use.getAttribute('href');
 		});
 
 		it('renders svg', () => {
@@ -228,11 +213,7 @@ describe('SLDSButton: ', () => {
 				variant: 'neutral',
 				onClick: setClick,
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-button');
-		});
-
-		afterEach(() => {
-			removeButton();
+			[btn] = cmp.getElementsByClassName('slds-button');
 		});
 
 		it('can be clicked', () => {

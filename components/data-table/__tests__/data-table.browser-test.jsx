@@ -5,27 +5,17 @@ import TestUtils from 'react-dom/test-utils';
 
 import chai, { expect } from 'chai';
 
-import { keyObjects } from '../../../utilities/key-code';
-
 import Dropdown from '../../menu-dropdown';
 import DataTable from '../../data-table';
 import DataTableColumn from '../../data-table/column';
 import DataTableRowActions from '../../data-table/row-actions';
 import DataTableHighlightCell from '../../data-table/highlight-cell';
 import IconSettings from '../../icon-settings';
-
-import {
-	mountComponent,
-	unmountComponent,
-} from '../../../tests/enzyme-helpers';
+import { mountComponent } from '../../../tests/enzyme-helpers';
 
 chai.should();
 
-const {
-	Simulate,
-	scryRenderedComponentsWithType,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
+const { Simulate } = TestUtils;
 
 describe('DataTable: ', function describeFunction() {
 	const items = [
@@ -67,6 +57,24 @@ describe('DataTable: ', function describeFunction() {
 		},
 	];
 
+	const itemsWithHeaderRows = [
+		{
+			id: 'K6R34GW73J',
+			type: 'header-row',
+			name: 'Address',
+			count: 101210,
+			lastModified: 'Today',
+		},
+		...items,
+		{
+			id: 'KA78KJAY76',
+			type: 'header-row',
+			name: 'Company',
+			count: 101318,
+			lastModified: 'Today',
+		},
+	];
+
 	const columns = [
 		{
 			label: 'Name',
@@ -86,14 +94,24 @@ describe('DataTable: ', function describeFunction() {
 		selectRows: true,
 	};
 
+	const defaultPropsWithHeaderRows = {
+		...defaultProps,
+		items: itemsWithHeaderRows,
+	};
+
 	const renderTable = (instance) =>
 		function renderTableFunction() {
 			this.dom = document.createElement('div');
 			document.body.appendChild(this.dom);
+			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
+			// eslint-disable-next-line react/no-render-return-value
 			this.component = ReactDOM.render(
-				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
+				<div>
+					<IconSettings iconPath="/assets/icons">{instance}</IconSettings>
+				</div>,
 				this.dom
 			);
+			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
 		};
 
 	function removeTable() {
@@ -128,19 +146,19 @@ describe('DataTable: ', function describeFunction() {
 
 		afterEach(removeTable);
 
-		it('has a header', function() {
+		it('has a header', function () {
 			const thead = getTable(this.dom).querySelectorAll('thead');
 			thead.should.have.length(1);
 			thead[0].querySelectorAll('th').should.have.length(3);
 		});
 
-		it('has a row for each item', function() {
+		it('has a row for each item', function () {
 			const tbody = getTable(this.dom).querySelectorAll('tbody');
 			tbody.should.have.length(1);
 			tbody[0].querySelectorAll('tr').should.have.length(6);
 		});
 
-		it('renders the correct contents in each cell', function() {
+		it('renders the correct contents in each cell', function () {
 			const firstName = getCell(this.dom, 1, 1);
 			firstName.innerHTML.should.equal(
 				'<div class="" title="Cloudhub">Cloudhub</div>'
@@ -151,7 +169,7 @@ describe('DataTable: ', function describeFunction() {
 			);
 		});
 
-		it('has checkboxes when selectRows is true or "checkbox"', function() {
+		it('has checkboxes when selectRows is true or "checkbox"', function () {
 			let checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
 			checkboxes.should.have.length(7);
 			removeTable.call(this);
@@ -178,7 +196,7 @@ describe('DataTable: ', function describeFunction() {
 			checkboxes.should.have.length(7);
 		});
 
-		it('has radios only when selectRows is "radio"', function() {
+		it('has radios only when selectRows is "radio"', function () {
 			const checkboxes = getTable(this.dom).querySelectorAll('.slds-checkbox');
 			checkboxes.should.have.length(7);
 			removeTable.call(this);
@@ -207,7 +225,7 @@ describe('DataTable: ', function describeFunction() {
 
 		afterEach(removeTable);
 
-		it('can start with a row selected', function() {
+		it('can start with a row selected', function () {
 			renderTable(
 				<DataTable {...defaultProps} selection={defaultSelection}>
 					{columns.map((columnProps) => (
@@ -225,7 +243,7 @@ describe('DataTable: ', function describeFunction() {
 			checkedBoxes.should.have.length(1);
 		});
 
-		it('can deselect a row', function(done) {
+		it('can deselect a row', function (done) {
 			this.onRowChange = (event, { selection }) => {
 				selection.should.have.length(0);
 				done();
@@ -249,7 +267,7 @@ describe('DataTable: ', function describeFunction() {
 			Simulate.change(checkbox, { target: { checked: false } });
 		});
 
-		it('can select a row', function(done) {
+		it('can select a row', function (done) {
 			this.onRowChange = (event, { selection }) => {
 				selection.should.have.length(2);
 				selection[1].id.should.equal('5GJOOOPWU7');
@@ -274,7 +292,7 @@ describe('DataTable: ', function describeFunction() {
 			Simulate.change(checkbox, { target: { checked: true } });
 		});
 
-		it('can select all rows', function(done) {
+		it('can select all rows', function (done) {
 			this.onRowChange = (event, { selection }) => {
 				selection.should.have.length(6);
 				done();
@@ -294,7 +312,7 @@ describe('DataTable: ', function describeFunction() {
 			Simulate.change(checkAll, { target: { checked: true } });
 		});
 
-		it('can deselect all rows', function(done) {
+		it('can deselect all rows', function (done) {
 			this.onRowChange = (event, { selection }) => {
 				selection.should.have.length(0);
 				done();
@@ -303,6 +321,53 @@ describe('DataTable: ', function describeFunction() {
 			renderTable(
 				<DataTable
 					{...defaultProps}
+					selection={items}
+					onRowChange={this.onRowChange}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const thead = getTable(this.dom).querySelectorAll('thead')[0];
+			const checkAll = thead.querySelectorAll('.slds-checkbox input')[0];
+
+			Simulate.change(checkAll, { target: { checked: false } });
+		});
+
+		it('can select all rows with header-rows present', function (done) {
+			this.onRowChange = (event, { selection }) => {
+				selection.should.have.length(6);
+				done();
+			};
+
+			renderTable(
+				<DataTable
+					{...defaultPropsWithHeaderRows}
+					onRowChange={this.onRowChange}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const thead = getTable(this.dom).querySelectorAll('thead')[0];
+			const checkAll = thead.querySelectorAll('.slds-checkbox input')[0];
+
+			Simulate.change(checkAll, { target: { checked: true } });
+		});
+
+		it('can deselect all rows with header-rows present', function (done) {
+			this.onRowChange = (event, { selection }) => {
+				selection.should.have.length(0);
+				done();
+			};
+
+			renderTable(
+				<DataTable
+					{...defaultPropsWithHeaderRows}
 					selection={items}
 					onRowChange={this.onRowChange}
 				>
@@ -331,7 +396,7 @@ describe('DataTable: ', function describeFunction() {
 
 		afterEach(removeTable);
 
-		it('can start with a row selected', function() {
+		it('can start with a row selected', function () {
 			renderTable(
 				<DataTable
 					{...defaultProps}
@@ -351,7 +416,7 @@ describe('DataTable: ', function describeFunction() {
 			radios.should.have.length(1);
 		});
 
-		it('can select a row', function(done) {
+		it('can select a row', function (done) {
 			this.onRowChange = (event, { selection }) => {
 				selection.should.have.length(1);
 				selection[0].id.should.equal('5GJOOOPWU7');
@@ -381,7 +446,7 @@ describe('DataTable: ', function describeFunction() {
 	describe('Sortable', function describeFunction2() {
 		afterEach(removeTable);
 
-		it('first clicked on sortable column header should result in ascending sort by default', function(done) {
+		it('first clicked on sortable column header should result in ascending sort by default', function (done) {
 			this.onSort = (data) => {
 				data.property.should.equal('count');
 				data.sortDirection.should.equal('asc');
@@ -402,7 +467,7 @@ describe('DataTable: ', function describeFunction() {
 			Simulate.click(sortButton, {});
 		});
 
-		it('if isDefaultSortDescending is true, first click on sortable column header should result in descending order', function(done) {
+		it('if isDefaultSortDescending is true, first click on sortable column header should result in descending order', function (done) {
 			this.onSort = (data) => {
 				data.property.should.equal('count');
 				data.sortDirection.should.equal('desc');
@@ -427,7 +492,7 @@ describe('DataTable: ', function describeFunction() {
 			Simulate.click(sortButton, {});
 		});
 
-		it('does not call onSort when a non-sortable column is clicked', function(done) {
+		it('does not call onSort when a non-sortable column is clicked', function (done) {
 			this.onSort = () => {
 				done('sort called');
 			};
@@ -451,7 +516,7 @@ describe('DataTable: ', function describeFunction() {
 	describe('w/ RowActions', function describeFunction2() {
 		afterEach(removeTable);
 
-		it('renders the RowActions and uses dropdown override property', function() {
+		it('renders the RowActions and uses dropdown override property', function () {
 			renderTable(
 				<DataTable {...defaultProps}>
 					{columns.map((columnProps) => (
@@ -477,15 +542,13 @@ describe('DataTable: ', function describeFunction() {
 					/>
 				</DataTable>
 			).call(this);
-
-			const rowActionDropdowns = scryRenderedComponentsWithType(
-				this.component,
-				Dropdown
-			);
-			rowActionDropdowns.should.have.length(6);
+			const rowActionMenus = [
+				...this.component.getElementsByTagName('button'),
+			].filter((button) => button.textContent === 'Actions');
+			rowActionMenus.should.have.length(6);
 		});
 
-		it('calls onAction & onSelect when an action is clicked', function(done) {
+		it('calls onAction & onSelect when an action is clicked', function (done) {
 			let expectedCalbacks = 2;
 
 			this.onAction = (item, action) => {
@@ -525,14 +588,9 @@ describe('DataTable: ', function describeFunction() {
 				</DataTable>
 			).call(this);
 
-			const rowActionDropdown = scryRenderedComponentsWithType(
-				this.component,
-				Dropdown
+			const trigger = [...this.component.getElementsByTagName('button')].filter(
+				(button) => button.textContent === 'Actions'
 			)[0];
-			const trigger = findRenderedDOMComponentWithClass(
-				rowActionDropdown,
-				'slds-button'
-			);
 			Simulate.click(trigger, {});
 
 			setTimeout(() => {
@@ -546,7 +604,7 @@ describe('DataTable: ', function describeFunction() {
 	describe('w/ HighlightCell', function describeFunction2() {
 		afterEach(removeTable);
 
-		it('marks the appropriate text in a cell', function() {
+		it('marks the appropriate text in a cell', function () {
 			renderTable(
 				<DataTable {...defaultProps} search="Cloud">
 					{columns.map((columnProps) => (
@@ -566,7 +624,7 @@ describe('DataTable: ', function describeFunction() {
 	describe('w/ Fixed Headers', function describeFunction2() {
 		afterEach(removeTable);
 
-		it('Renders a fixedHeader table as expected', function() {
+		it('Renders a fixedHeader table as expected', function () {
 			renderTable(
 				<DataTable
 					{...defaultProps}
@@ -643,75 +701,101 @@ describe('DataTable: ', function describeFunction() {
 		});
 	});
 
-	describe('Keyboard Navigation', function describeFunction2() {
-		beforeEach(
-			mountComponent(
-				<DataTable {...defaultProps} fixedLayout keyboardNavigation>
+	describe('w/ Infinite Scrolling', function describeFunction2() {
+		afterEach(removeTable);
+
+		it('renders a spinner as expected', function () {
+			renderTable(
+				<DataTable {...defaultProps} fixedHeader fixedLayout hasMore>
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
 				</DataTable>
-			)
-		);
+			).call(this);
 
-		afterEach(unmountComponent);
-
-		it('moves selection when using keyboard up/down/left/right keys', function() {
-			// Focus the first cell
-			let cell = this.wrapper.find('td').first();
-			cell.simulate('focus');
-			expect(cell.prop('tabIndex')).to.equal('0');
-
-			// Press Right
-			cell.simulate('keyDown', keyObjects.RIGHT);
-			cell = this.wrapper.find('td').at(1);
-			expect(cell.prop('tabIndex')).to.equal('0');
-
-			// Press Down
-			cell.simulate('keyDown', keyObjects.DOWN);
-			cell = this.wrapper.find('td').at(4);
-			expect(cell.prop('tabIndex')).to.equal('0');
-
-			// Press Left
-			cell.simulate('keyDown', keyObjects.LEFT);
-			cell = this.wrapper.find('td').at(3);
-			expect(cell.prop('tabIndex')).to.equal('0');
-
-			// Press Up
-			cell.simulate('keyDown', keyObjects.UP);
-			cell = this.wrapper.find('td').at(0);
-			expect(cell.prop('tabIndex')).to.equal('0');
+			expect(this.dom.querySelectorAll('.slds-spinner').length).to.eql(1);
 		});
 
-		it('enters actionable mode when using keyboard enter key; and enters navigation mode when using keyboard escape key', function() {
-			// Focus the first cell
-			let cell = this.wrapper.find('td').first();
-			cell.simulate('focus');
-			expect(cell.prop('tabIndex')).to.equal('0');
+		it('onLoadMore callback is called when scroller is scrolled', function (done) {
+			let expectedCalbacks = 1;
 
-			// Press Enter
-			cell.simulate('keyDown', keyObjects.ENTER);
+			this.onLoadMore = () => {
+				// eslint-disable-next-line no-plusplus
+				if (!--expectedCalbacks) done();
+			};
 
-			cell = this.wrapper.find('td').first();
-			expect(cell.prop('tabIndex')).to.be.undefined;
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					fixedHeader
+					fixedLayout
+					hasMore
+					onLoadMore={this.onLoadMore}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
 
-			let checkbox = this.wrapper
-				.find('td')
-				.first()
-				.find('input[type="checkbox"]');
-			expect(checkbox.prop('tabIndex')).to.equal('0');
+			const scroller = this.dom.querySelector(
+				'.slds-table_header-fixed_scroller'
+			);
+			scroller.dispatchEvent(new Event('scroll'));
+		});
 
-			// Press Escape
-			cell.simulate('keyDown', keyObjects.ESCAPE);
+		it('onLoadMore callback is called when window is resized', function (done) {
+			let expectedCalbacks = 1;
 
-			cell = this.wrapper.find('td').first();
-			expect(cell.prop('tabIndex')).to.equal('0');
+			this.onLoadMore = () => {
+				// eslint-disable-next-line no-plusplus
+				if (!--expectedCalbacks) done();
+			};
 
-			checkbox = this.wrapper
-				.find('td')
-				.first()
-				.find('input[type="checkbox"]');
-			expect(checkbox.prop('tabIndex')).to.equal('-1');
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					fixedHeader
+					fixedLayout
+					hasMore
+					onLoadMore={this.onLoadMore}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			window.dispatchEvent(new Event('resize'));
+		});
+
+		it('onLoadMore callback is called when the component is updated', function (done) {
+			let expectedCallbacks = 1;
+
+			this.onLoadMore = () => {
+				// eslint-disable-next-line no-plusplus
+				if (!--expectedCallbacks) done();
+			};
+
+			mountComponent(
+				<DataTable
+					{...defaultProps}
+					items={[]}
+					fixedHeader
+					fixedLayout
+					hasMore
+					onLoadMore={this.onLoadMore}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			// Simulate the first page loading
+			this.wrapper.setProps({
+				items: [items[0]],
+			});
 		});
 	});
 });

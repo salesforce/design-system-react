@@ -26,6 +26,7 @@ class Example extends React.Component {
 							id="inline-edit-example-1"
 							value={this.state.value}
 							onChange={this.handleChange}
+							silenceDeprecationWarning
 						/>
 					</div>
 					<div className="slds-col_padded">
@@ -37,6 +38,7 @@ class Example extends React.Component {
 							id="inline-edit-example-2"
 							value={this.state.value}
 							onChange={this.handleChange}
+							silenceDeprecationWarning
 						/>
 					</div>
 				</section>

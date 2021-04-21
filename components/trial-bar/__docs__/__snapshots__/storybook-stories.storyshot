@@ -55,7 +55,7 @@ exports[`DOM snapshots SLDSTrialBar Default 1`] = `
               className="slds-button__icon slds-button__icon_left"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#right"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#right"
               />
             </svg>
             Choose your tour

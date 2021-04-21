@@ -6,7 +6,7 @@
 // This function will deliver an error message to the browser console one property is used but not both that are required. Either use neither or both properties.
 import warning from 'warning';
 
-let ifOneThenBothRequiredProperty = function ifOneThenBothRequiredPropertyFunction() {};
+let ifOneThenBothRequiredProperty;
 
 if (process.env.NODE_ENV !== 'production') {
 	const hasWarned = {};

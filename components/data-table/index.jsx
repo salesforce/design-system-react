@@ -20,7 +20,7 @@ import reject from 'lodash.reject';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import {
 	canUseDOM,
@@ -35,11 +35,7 @@ import DataTableColumn from './column';
 import DataTableHead from './private/head';
 import DataTableRow from './private/row';
 import DataTableRowActions from './row-actions';
-import TableContext from './private/table-context';
-import Mode from './private/mode';
-
-import KEYS from '../../utilities/key-code';
-import mapKeyEventCallbacks from '../../utilities/key-callbacks';
+import Spinner from '../spinner';
 
 import {
 	DATA_TABLE,
@@ -59,8 +55,12 @@ const defaultProps = {
 		columnSortedDescending: 'Sorted Descending',
 		selectAllRows: 'Select all rows',
 		selectRow: 'Select row',
+		selectRowGroup: 'Choose a row to select',
+		loadingMore: 'Loading more',
 	},
 	selection: [],
+	hasMore: false,
+	loadMoreOffset: 20,
 };
 
 /**
@@ -83,7 +83,8 @@ class DataTable extends React.Component {
 		 * * `columnSortedAscending`: Text announced once a column is sorted in ascending order
 		 * * `columnSortedDescending`: Text announced once a column is sorted in descending order
 		 * * `selectAllRows`: Text for select all checkbox within the table header
-		 * * `selectRow`: Text for select row
+		 * * `selectRow`: Text for select row. Default: "Select row 1"
+		 * * `selectRowGroup`: This is an input group label and is attached to each checkbox or radio. Default is "Choose a row to select"
 		 */
 		assistiveText: PropTypes.shape({
 			actionsHeader: PropTypes.string,
@@ -92,6 +93,8 @@ class DataTable extends React.Component {
 			columnSortedDescending: PropTypes.string,
 			selectAllRows: PropTypes.string,
 			selectRow: PropTypes.string,
+			selectRowGroup: PropTypes.string,
+			loadingMore: PropTypes.string,
 		}),
 		/**
 		 * Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.
@@ -99,7 +102,7 @@ class DataTable extends React.Component {
 		 * import DataTableCell from 'design-system-react/data-table/cell';
 		 * const CustomDataTableCell = ({ children, ...props }) => (
 		 *   <DataTableCell {...props} >
-		 *   <a href="javascript:void(0);">{children}</a>
+		 *     <a href="#">{children}</a>
 		 *   </DataTableCell>
 		 * );
 		 * CustomDataTableCell.displayName = DataTableCell.displayName;
@@ -132,36 +135,48 @@ class DataTable extends React.Component {
 		fixedHeader: PropTypes.bool,
 		/**
 		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling.
-		 *
-		 * When `keyboardNavigation` is enabled, the advanced table implements keyboard navigation as described in [Data Tables](https://www.lightningdesignsystem.com/components/data-tables/).
-		 * Wrap interactive elements in the table with `<DataTableInteractiveElement>` so that it can control the element's focus and `tabIndex` behavior:
-		 * ```
-		 * const InteractiveButton = DataTableInteractiveElement(Button);
-		 * const InteractiveCheckBox = DataTableInteractiveElement(Checkbox);
-		 * const CustomDataTableCell = () => (
-		 * 	<DataTableCell>
-		 * 		<InteractiveCheckBox />
-		 * 		<InteractiveButton />
-		 * 	</DataTableCell>
-		 * );
-		 * ```
-		 * The wrapped element must accept the props:
-		 *  * `onFocus`: Callback for when the element is focused.
-		 *  * `onRequestFocus`: Trigger to indicate that this element should be focused.
-		 *  * `requestFocus`: This wrapper overrides the `requestFocus` prop and provides its own value.
-		 *  * `tabIndex`: This wrapper overrides the `tabIndex` prop and provides its own value.
 		 */
 		fixedLayout: PropTypes.bool,
+		/**
+		 * When fixedHeader is true, specifies whether there's more data to be loaded and displays a spinner at the bottom of the table if so.
+		 */
+		hasMore: PropTypes.bool,
+		/**
+		 * A render prop for subheadings to describe what the next section of the table is about. This is often a heirarchical data structure and semantic heading levels should be used, but not visually differ. This is not a `role=rowheader` which provides a heading for a row. Basic sorting of columns is not recommended, since this pattern assumes top level groupings. Headings should be visually aligned with selection column when selection pattern is present, so not to be grouped with the previous row.
+     * ```
+     * const CustomHeaderRow = ({ columns, item } ) => (
+     *	<tr>
+     *    <th id={item.id} colSpan={columns.length+1} scope="colgroup">
+     *      <p role="heading" aria-level={item.ariaLevel}>
+     *        {item.heading}
+     *      </p>
+     *    </th>
+     *  </tr>);
+     *CustomHeaderRow.displayName = DataTableCell.displayName;
+     *
+     * <DataTable items=[{
+        type: 'header-row',
+        id: 'header-row-example-id-3',
+        heading: 'Argentina > Autonomous City of Buenos Aires > Belgrano',
+        ariaLevel: 3,
+     * }],
+     * />
+     * ```
+		 */
+		onRenderSubHeadingRow: PropTypes.func,
 		/**
 		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
 		 */
 		id: PropTypes.string,
 		/**
 		 * The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`.
+		 *
+		 * Use the key `classNameRow` to add a custom class to the item's `<tr>` element.
 		 */
 		items: PropTypes.arrayOf(
 			PropTypes.shape({
 				id: PropTypes.string.isRequired,
+				classNameRow: PropTypes.string,
 			})
 		).isRequired,
 		/**
@@ -169,9 +184,9 @@ class DataTable extends React.Component {
 		 */
 		joined: PropTypes.bool,
 		/**
-		 * Enables keyboard navigation when this is an advanced table.
+		 * Determines when to trigger infinite loading based on how many pixels the table's scroll position is from the bottom of the table.
 		 */
-		keyboardNavigation: PropTypes.bool.isRequired,
+		loadMoreOffset: PropTypes.number,
 		/**
 		 * A variant which removes hover style on rows
 		 */
@@ -180,6 +195,12 @@ class DataTable extends React.Component {
 		 * By default this function resizes the display headers when fixedHeader is `true`, but this behavior can be overridden. Passes an event and a data object with properties `headerRefs`, an array of DOM nodes referencing the `thead th` elements and `scrollerRef`, a DOM node referencing `.slds-table_header-fixed_scroller`
 		 */
 		onFixedHeaderResize: PropTypes.func,
+		/**
+		 * This function fires when infinite loading loads more data.
+		 *
+		 * This will be called multiple times while the table is being scrolled within the `loadMoreOffset`. It'll also continue to be called while `hasMore` is `true` and the table has not yet loaded enough rows to allow a user to scroll.  Please track whether or not loading is in progress and check it at the start of this function to avoid executing your callback too many times.
+		 */
+		onLoadMore: PropTypes.func,
 		/**
 		 * This function fires when the selection of rows changes. This component passes in `event, { selection }` to the function. `selection` is an array of objects from the `items` prop.
 		 *
@@ -246,36 +267,9 @@ class DataTable extends React.Component {
 			select: [],
 		};
 		this.scrollerRef = null;
-		this.state = {
-			// Currently selected cell
-			activeCell: {
-				rowIndex: 1,
-				columnIndex:
-					this.props.selectRows && count(this.props.selection) > 0 ? 1 : 0,
-			},
-			// Interactive element within a cell that receives focus while in actionable mode
-			activeElement: null,
-			// The table can be in navigation or actionable mode
-			mode: Mode.NAVIGATION,
-			// The table currently has focus
-			tableHasFocus: false,
-			// Allows for keyboard navigation. This is useful for temporarily disabling keyboard navigation
-			// when another component requires its own focus behavior (e.g. menu dropdown).
-			allowKeyboardNavigation: props.keyboardNavigation,
-		};
-		// Map of cells to interactive elements within that cell
-		this.interactiveElements = {};
-		this.changeActiveCell = this.changeActiveCell.bind(this);
-		this.changeActiveElement = this.changeActiveElement.bind(this);
-		this.handleKeyDown = this.handleKeyDown.bind(this);
-		this.registerInteractiveElement = this.registerInteractiveElement.bind(
-			this
-		);
-	}
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(DATA_TABLE, this.props, componentDoc);
+		checkProps(DATA_TABLE, props, componentDoc);
 	}
 
 	componentDidMount() {
@@ -285,12 +279,13 @@ class DataTable extends React.Component {
 		}
 	}
 
-	componentDidUpdate(prevProps) {
+	componentDidUpdate() {
 		if (this.props.fixedHeader) {
 			this.resizeFixedHeaders();
-		}
-		if (this.props.items !== prevProps.items) {
-			this.interactiveElements = {};
+			// If the first page of results isn't enough to allow the user to scroll it causes
+			// the user to get into a state where they cannot load the second page.
+			// Simulating a scroll here will ensure that enough rows are loaded to enable scrolling
+			this.loadMoreIfNeeded();
 		}
 	}
 
@@ -302,27 +297,20 @@ class DataTable extends React.Component {
 		return this.props.id || this.generatedId;
 	}
 
-	getFirstInteractiveElement(rowIndex, columnIndex) {
-		if (
-			this.state.mode === Mode.ACTIONABLE &&
-			this.interactiveElements[rowIndex] &&
-			this.interactiveElements[rowIndex][columnIndex]
-		) {
-			return this.interactiveElements[rowIndex][columnIndex][0];
-		}
-		return null;
-	}
-
 	handleToggleAll = (e, { checked }) => {
 		// REMOVE AT NEXT BREAKING CHANGE
 		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
-			const selection = checked ? [...this.props.items] : [];
+			const selection = (checked ? [...this.props.items] : []).filter(
+				(item) => item.type !== 'header-row'
+			);
 			this.props.onChange(selection, e);
 		}
 
 		if (typeof this.props.onRowChange === 'function') {
-			const selection = checked ? [...this.props.items] : [];
+			const selection = (checked ? [...this.props.items] : []).filter(
+				(item) => item.type !== 'header-row'
+			);
 			this.props.onRowChange(e, { selection });
 		}
 	};
@@ -404,6 +392,15 @@ class DataTable extends React.Component {
 		}
 	};
 
+	loadMoreIfNeeded = () => {
+		if (this.props.hasMore && this.props.onLoadMore) {
+			const { scrollTop, offsetHeight, scrollHeight } = this.scrollerRef;
+			if (scrollTop + offsetHeight > scrollHeight - this.props.loadMoreOffset) {
+				this.props.onLoadMore();
+			}
+		}
+	};
+
 	toggleFixedHeaderListeners = (attach) => {
 		if (this.props.onToggleFixedHeaderListeners) {
 			this.props.onToggleFixedHeaderListeners(
@@ -418,155 +415,30 @@ class DataTable extends React.Component {
 			const action = [`${attach ? 'add' : 'remove'}EventListener`];
 			if (canUseEventListeners) {
 				window[action]('resize', this.resizeFixedHeaders);
+				window[action]('resize', this.loadMoreIfNeeded);
 			}
 			if (canUseEventListeners && this.scrollerRef) {
 				this.scrollerRef[action]('scroll', this.resizeFixedHeaders);
+				this.scrollerRef[action]('scroll', this.loadMoreIfNeeded);
 			}
 		}
 	};
 
-	changeActiveCell(rowIndex, columnIndex) {
-		this.setState({
-			tableHasFocus: true,
-			activeCell: { rowIndex, columnIndex },
-		});
-	}
-
-	changeActiveElement(activeElement) {
-		this.setState({ activeElement });
-	}
-
-	handleKeyDown(event) {
-		mapKeyEventCallbacks(event, {
-			callbacks: {
-				[KEYS.UP]: { callback: (evt) => this.handleKeyDownUp(evt) },
-				[KEYS.DOWN]: { callback: (evt) => this.handleKeyDownDown(evt) },
-				[KEYS.LEFT]: { callback: (evt) => this.handleKeyDownLeft(evt) },
-				[KEYS.RIGHT]: { callback: (evt) => this.handleKeyDownRight(evt) },
-				[KEYS.ENTER]: { callback: (evt) => this.handleKeyDownEnter(evt) },
-				[KEYS.ESCAPE]: { callback: (evt) => this.handleKeyDownEscape(evt) },
-			},
-		});
-	}
-
-	handleKeyDownUp() {
-		const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
-		const activeElement = this.getFirstInteractiveElement(
-			newRowIndex,
-			this.state.activeCell.columnIndex
-		);
-		if (newRowIndex !== this.state.activeCell.newRowIndex) {
-			this.setState((prevState) => ({
-				activeCell: {
-					rowIndex: newRowIndex,
-					columnIndex: prevState.activeCell.columnIndex,
-				},
-				activeElement,
-			}));
-		}
-	}
-
-	handleKeyDownDown() {
-		const newRowIndex = Math.min(
-			this.state.activeCell.rowIndex + 1,
-			this.props.items.length
-		);
-		const activeElement = this.getFirstInteractiveElement(
-			newRowIndex,
-			this.state.activeCell.columnIndex
-		);
-		if (newRowIndex !== this.state.activeCell.newRowIndex) {
-			this.setState((prevState) => ({
-				activeCell: {
-					rowIndex: newRowIndex,
-					columnIndex: prevState.activeCell.columnIndex,
-				},
-				activeElement,
-			}));
-		}
-	}
-
-	handleKeyDownLeft() {
-		const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
-		const activeElement = this.getFirstInteractiveElement(
-			this.state.activeCell.rowIndex,
-			newColumnIndex
-		);
-		if (newColumnIndex !== this.state.activeCell.columnIndex) {
-			this.setState((prevState) => ({
-				activeCell: {
-					rowIndex: prevState.activeCell.rowIndex,
-					columnIndex: newColumnIndex,
-				},
-				activeElement,
-			}));
-		}
-	}
-
-	handleKeyDownRight() {
-		const newColumnIndex = Math.min(
-			this.state.activeCell.columnIndex + 1,
-			this.props.children.length
-		);
-		const activeElement = this.getFirstInteractiveElement(
-			this.state.activeCell.rowIndex,
-			newColumnIndex
-		);
-		if (newColumnIndex !== this.state.activeCell.columnIndex) {
-			this.setState((prevState) => ({
-				activeCell: {
-					rowIndex: prevState.activeCell.rowIndex,
-					columnIndex: newColumnIndex,
-				},
-				activeElement,
-			}));
-		}
-	}
-
-	handleKeyDownEnter() {
-		if (this.state.mode === Mode.NAVIGATION) {
-			const { rowIndex, columnIndex } = this.state.activeCell;
-			let activeElement = null;
-			if (this.interactiveElements[rowIndex][columnIndex]) {
-				[activeElement] = this.interactiveElements[rowIndex][columnIndex];
-			}
-			this.setState({
-				mode: Mode.ACTIONABLE,
-				activeElement,
-			});
-		}
-	}
-
-	handleKeyDownEscape() {
-		if (this.state.mode === Mode.ACTIONABLE) {
-			this.setState({
-				mode: Mode.NAVIGATION,
-				activeElement: null,
-			});
-		}
-	}
-
-	registerInteractiveElement(rowIndex, columnIndex, elementId) {
-		if (!this.interactiveElements[rowIndex]) {
-			this.interactiveElements[rowIndex] = {};
-		}
-		if (!this.interactiveElements[rowIndex][columnIndex]) {
-			this.interactiveElements[rowIndex][columnIndex] = [];
-		}
-		this.interactiveElements[rowIndex][columnIndex].push(elementId);
-	}
-
 	// ### Render
 	render() {
 		const ariaProps = {};
-		const numHeaderRows = 1;
 		const numRows = count(this.props.items);
 		const numSelected = count(this.props.selection);
+		const numNonHeaderRows = count(
+			this.props.items.filter((item) => item.type !== 'header-row')
+		);
 		const canSelectRows =
-			this.props.selectRows && numRows > 0 ? this.props.selectRows : false;
-		const allSelected = canSelectRows && numRows === numSelected;
+			this.props.selectRows && numNonHeaderRows > 0
+				? this.props.selectRows
+				: false;
+		const allSelected = canSelectRows && numNonHeaderRows === numSelected;
 		const indeterminateSelected =
-			canSelectRows && numRows !== numSelected && numSelected !== 0;
+			canSelectRows && numNonHeaderRows !== numSelected && numSelected !== 0;
 		const columns = [];
 		let RowActions = null;
 
@@ -575,6 +447,7 @@ class DataTable extends React.Component {
 				const { children, ...columnProps } = child.props;
 
 				const props = assign({}, this.props);
+				// eslint-disable-next-line fp/no-delete
 				delete props.children;
 				assign(props, columnProps);
 
@@ -586,6 +459,7 @@ class DataTable extends React.Component {
 					Cell = DataTableCell;
 				}
 
+				// eslint-disable-next-line fp/no-mutating-methods
 				columns.push({
 					Cell,
 					props,
@@ -642,23 +516,8 @@ class DataTable extends React.Component {
 			select: canSelectRows ? this.headerRefs.select : [],
 		};
 
-		const tableContext = {
-			activeCell: this.state.activeCell,
-			activeElement: this.state.activeElement,
-			mode: this.state.mode,
-			tableHasFocus: this.state.tableHasFocus,
-			changeActiveCell: this.changeActiveCell,
-			changeActiveElement: this.changeActiveElement,
-			handleKeyDown: this.handleKeyDown,
-			registerInteractiveElement: this.registerInteractiveElement,
-			allowKeyboardNavigation: this.state.allowKeyboardNavigation,
-			setAllowKeyboardNavigation: (allowKeyboardNavigation) => {
-				this.setState({ allowKeyboardNavigation });
-			},
-		};
-
 		let component = (
-			<TableContext.Provider value={tableContext}>
+			<React.Fragment>
 				<table
 					{...ariaProps}
 					className={classNames(
@@ -682,14 +541,11 @@ class DataTable extends React.Component {
 					id={this.getId()}
 					role={this.props.fixedLayout ? 'grid' : null}
 					style={this.props.style}
-					onBlur={() => this.setState({ tableHasFocus: false })}
-					style={this.props.style}
 				>
 					<DataTableHead
 						assistiveText={assistiveText}
 						allSelected={allSelected}
 						fixedHeader={this.props.fixedHeader}
-						fixedLayout={this.props.fixedLayout}
 						headerRefs={(ref, index) => {
 							if (index === 'action' || index === 'select') {
 								if (ref) {
@@ -716,28 +572,50 @@ class DataTable extends React.Component {
 										this.getId() && item.id
 											? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
 											: shortid.generate();
-									return (
+									return this.props.onRenderSubHeadingRow &&
+										item.type === 'header-row' ? (
+										this.props.onRenderSubHeadingRow({
+											assistiveText,
+											classNameRow: item.classNameRow,
+											columns,
+											key: rowId,
+											id: rowId,
+											tableId: this.getId(),
+											item,
+										})
+									) : (
 										<DataTableRow
 											assistiveText={assistiveText}
 											canSelectRows={canSelectRows}
+											className={item.classNameRow}
 											columns={columns}
 											fixedLayout={this.props.fixedLayout}
 											id={rowId}
+											index={index}
 											item={item}
 											key={rowId}
 											onToggle={this.handleRowToggle}
 											selection={this.props.selection}
 											rowActions={RowActions}
 											tableId={this.getId()}
-											rowIndex={index + numHeaderRows}
 										/>
 									);
-								})
+							  })
 							: // Someday this should be an element to render when the table is empty
-								null}
+							  null}
 					</tbody>
 				</table>
-			</TableContext.Provider>
+				{this.props.fixedHeader && this.props.hasMore && (
+					<div className="slds-is-relative slds-p-around_large">
+						<Spinner
+							assistiveText={{ label: this.props.assistiveText.loadingMore }}
+							hasContainer={false}
+							size="small"
+							variant="brand"
+						/>
+					</div>
+				)}
+			</React.Fragment>
 		);
 
 		if (this.props.fixedHeader) {

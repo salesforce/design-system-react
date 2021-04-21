@@ -27,7 +27,7 @@ exports[`DOM snapshots SLDSPageHeader Base 1`] = `
                 className="slds-page-header__icon slds-icon"
               >
                 <use
-                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+                  href="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
                 />
               </svg>
               <span
@@ -97,7 +97,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
                 className="slds-page-header__icon slds-icon"
               >
                 <use
-                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+                  href="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
                 />
               </svg>
               <span
@@ -155,7 +155,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                 />
               </svg>
               <svg
@@ -163,7 +163,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
                 className="slds-button__icon slds-button__icon_x-small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
               <span
@@ -187,7 +187,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#table"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#table"
                 />
               </svg>
               <svg
@@ -195,7 +195,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
                 className="slds-button__icon slds-button__icon_x-small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
               <span
@@ -210,6 +210,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-2"
             >
               <li>
                 <button
@@ -223,7 +224,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#chart"
                     />
                   </svg>
                   <span
@@ -245,7 +246,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
                     />
                   </svg>
                   <span
@@ -279,7 +280,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#sort"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#sort"
                       />
                     </svg>
                     <svg
@@ -287,7 +288,7 @@ exports[`DOM snapshots SLDSPageHeader Base with controls 1`] = `
                       className="slds-button__icon slds-button__icon_x-small"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -334,7 +335,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
                 className="slds-page-header__icon slds-icon"
               >
                 <use
-                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+                  href="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
                 />
               </svg>
               <span
@@ -396,7 +397,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
                   className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#add"
                   />
                 </svg>
                 Follow
@@ -409,7 +410,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
                   className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 Following
@@ -422,7 +423,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
                   className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 Unfollow
@@ -434,6 +435,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-page-header-actions"
             >
               <li>
                 <button
@@ -489,7 +491,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -556,7 +558,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RecordHome 1`] = `
               Field 3
             </div>
             <a
-              href="javascript:void(0);"
+              href="#link"
             >
               Hyperlink
             </a>
@@ -608,7 +610,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
               className="slds-breadcrumb__item"
             >
               <a
-                href="javascript:void(0);"
+                href="#accounts"
               >
                 Accounts
               </a>
@@ -617,7 +619,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
               className="slds-breadcrumb__item"
             >
               <a
-                href="javascript:void(0);"
+                href="#company-one"
               >
                 Company One
               </a>
@@ -660,6 +662,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-page-header-actions"
             >
               <li>
                 <button
@@ -695,7 +698,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -755,7 +758,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#table"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#table"
                   />
                 </svg>
                 <svg
@@ -763,7 +766,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                   className="slds-button__icon slds-button__icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                   />
                 </svg>
                 <span
@@ -779,6 +782,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-page-header-controls"
             >
               <li>
                 <button
@@ -792,7 +796,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#chart"
                     />
                   </svg>
                   <span
@@ -814,7 +818,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
                     />
                   </svg>
                   <span
@@ -848,7 +852,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#sort"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#sort"
                       />
                     </svg>
                     <svg
@@ -856,7 +860,7 @@ exports[`DOM snapshots SLDSPageHeader Docs site RelatedList 1`] = `
                       className="slds-button__icon slds-button__icon_x-small"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -903,7 +907,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                 className="slds-page-header__icon slds-icon"
               >
                 <use
-                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+                  href="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
                 />
               </svg>
               <span
@@ -961,7 +965,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -987,6 +991,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-page-header-actions"
             >
               <li>
                 <button
@@ -1022,7 +1027,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -1082,7 +1087,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
                   />
                 </svg>
                 <svg
@@ -1090,7 +1095,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                   className="slds-button__icon slds-button__icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                   />
                 </svg>
                 <span
@@ -1127,7 +1132,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#table"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#table"
                   />
                 </svg>
                 <svg
@@ -1135,7 +1140,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                   className="slds-button__icon slds-button__icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                   />
                 </svg>
                 <span
@@ -1160,7 +1165,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
                 />
               </svg>
               <span
@@ -1184,7 +1189,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#refresh"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#refresh"
                 />
               </svg>
               <span
@@ -1199,6 +1204,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-page-header-controls"
             >
               <li>
                 <button
@@ -1212,7 +1218,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#chart"
                     />
                   </svg>
                   <span
@@ -1234,7 +1240,7 @@ exports[`DOM snapshots SLDSPageHeader Object Home 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
                     />
                   </svg>
                   <span
@@ -1289,7 +1295,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (field updates) 1`] = `
                   className="slds-page-header__icon slds-icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#user"
+                    href="/assets/icons/standard-sprite/svg/symbols.svg#user"
                   />
                 </svg>
                 <span
@@ -1418,7 +1424,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
                 className="slds-page-header__icon slds-icon"
               >
                 <use
-                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
+                  href="/assets/icons/standard-sprite/svg/symbols.svg#opportunity"
                 />
               </svg>
               <span
@@ -1480,7 +1486,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
                   className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#add"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#add"
                   />
                 </svg>
                 Follow
@@ -1493,7 +1499,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
                   className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#check"
                   />
                 </svg>
                 Following
@@ -1506,7 +1512,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
                   className="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#close"
                   />
                 </svg>
                 Unfollow
@@ -1518,6 +1524,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-1"
             >
               <li>
                 <button
@@ -1573,7 +1580,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -1644,6 +1651,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
               style={
                 Object {
                   "display": "inline",
+                  "lineHeight": "1",
                 }
               }
             >
@@ -1707,7 +1715,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
               className="slds-breadcrumb__item"
             >
               <a
-                href="javascript:void(0);"
+                href="#accounts"
               >
                 Accounts
               </a>
@@ -1716,7 +1724,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
               className="slds-breadcrumb__item"
             >
               <a
-                href="javascript:void(0);"
+                href="#company-one"
               >
                 Company One
               </a>
@@ -1759,6 +1767,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-3"
             >
               <li>
                 <button
@@ -1794,7 +1803,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -1842,7 +1851,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#table"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#table"
                 />
               </svg>
               <svg
@@ -1850,7 +1859,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                 className="slds-button__icon slds-button__icon_x-small"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                 />
               </svg>
               <span
@@ -1865,6 +1874,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
           >
             <ul
               className="slds-button-group-list"
+              id="button-group-4"
             >
               <li>
                 <button
@@ -1878,7 +1888,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#chart"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#chart"
                     />
                   </svg>
                   <span
@@ -1900,7 +1910,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#filterList"
                     />
                   </svg>
                   <span
@@ -1934,7 +1944,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#sort"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#sort"
                       />
                     </svg>
                     <svg
@@ -1942,7 +1952,7 @@ exports[`DOM snapshots SLDSPageHeader Related List 1`] = `
                       className="slds-button__icon slds-button__icon_x-small"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span
@@ -1996,7 +2006,7 @@ exports[`DOM snapshots SLDSPageHeader Setup 1`] = `
                 }
               >
                 <use
-                  xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#home"
+                  href="/assets/icons/standard-sprite/svg/symbols.svg#home"
                 />
               </svg>
               <span
@@ -2026,7 +2036,7 @@ exports[`DOM snapshots SLDSPageHeader Setup 1`] = `
                   className="slds-breadcrumb__item"
                 >
                   <a
-                    href="javascript:void(0);"
+                    href="#setup"
                   >
                     Setup
                   </a>
@@ -2063,6 +2073,7 @@ exports[`DOM snapshots SLDSPageHeader Setup 1`] = `
           >
             <ul
               className="slds-button-group-list slds-align-middle"
+              id="button-group-page-header-actions"
             >
               <li>
                 <button
@@ -2098,7 +2109,7 @@ exports[`DOM snapshots SLDSPageHeader Setup 1`] = `
                       className="slds-button__icon"
                     >
                       <use
-                        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                       />
                     </svg>
                     <span

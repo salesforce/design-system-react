@@ -13,7 +13,7 @@ import Branch from './private/branch';
 
 // Similar to React's PropTypes check. When in development mode, it issues errors in the console about properties.
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ## Constants
 import { TREE } from '../../utilities/constants';
@@ -60,10 +60,10 @@ const propTypes = {
 	 * Array of items starting at the top of the tree. The shape each node in the array is:
 	 * ```
 	 * {
-	 *   expanded: string,
+	 *   expanded: boolean,
 	 *   id: string,
 	 *   label: string or node,
-	 *   selected: string,
+	 *   selected: boolean,
 	 *   type: string,
 	 *   nodes: array
 	 * }
@@ -110,6 +110,34 @@ const defaultProps = {
 	getNodes: (node) => node.nodes,
 };
 
+/* Flattens hierarchical tree structure into a flat array. The
+ * first item in the array is the whole tree and therefore should be
+ * removed with `slice(1)`.` This means that root cannot call `getNodes()`
+ * and should directly reference the `nodes` key. All level after that
+ * should use `getNodes()` to access the correct nodes.
+ */
+const flattenTree = (root, getNodes, treeIndex = '', firstLevel = true) => {
+	if (!root.nodes) {
+		return [{ node: root, treeIndex }];
+	}
+	let nodes = [{ node: root, treeIndex }];
+	if (root.expanded) {
+		// eslint-disable-next-line fp/no-loops
+		for (let index = 0; index < root.nodes.length; index += 1) {
+			const curNode = firstLevel ? root.nodes[index] : getNodes(root)[index];
+			nodes = nodes.concat(
+				flattenTree(
+					curNode,
+					getNodes,
+					treeIndex ? `${treeIndex}-${index}` : `${index}`,
+					false
+				)
+			);
+		}
+	}
+	return nodes;
+};
+
 /**
  * A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component, since visual state is present in the `nodes` data.
  */
@@ -118,10 +146,13 @@ class Tree extends React.Component {
 		super(props);
 
 		// Find the first selected node and initialize it properly so that can be tabbed to. If no node is selected, it will be selected upon first focus.
-		const flattenedNodes = this.flattenTree({
-			nodes: this.props.getNodes({ nodes: this.props.nodes }),
-			expanded: true,
-		}).slice(1);
+		const flattenedNodes = flattenTree(
+			{
+				nodes: this.props.getNodes({ nodes: this.props.nodes }),
+				expanded: true,
+			},
+			this.props.getNodes
+		).slice(1);
 
 		const selectedNode = find(
 			flattenedNodes,
@@ -131,6 +162,7 @@ class Tree extends React.Component {
 		let focusedNodeIndex;
 
 		if (selectedNode) {
+			// eslint-disable-next-line fp/no-mutating-methods
 			selectedNodeIndexes.push(selectedNode.treeIndex);
 			focusedNodeIndex = selectedNode.treeIndex;
 		}
@@ -140,48 +172,21 @@ class Tree extends React.Component {
 			selectedNodeIndexes,
 			focusedNodeIndex,
 		};
+
+		checkProps(TREE, props, componentDoc);
 	}
 
-	componentWillMount() {
-		checkProps(TREE, this.props, componentDoc);
+	static getDerivedStateFromProps(nextProps) {
+		return {
+			flattenedNodes: flattenTree(
+				{
+					nodes: nextProps.getNodes({ nodes: nextProps.nodes }),
+					expanded: true,
+				},
+				nextProps.getNodes
+			).slice(1),
+		};
 	}
-
-	componentWillReceiveProps(nextProps) {
-		this.setState({
-			flattenedNodes: this.flattenTree({
-				nodes: this.props.getNodes({ nodes: nextProps.nodes }),
-				expanded: true,
-			}).slice(1),
-		});
-	}
-
-	/* Flattens hierarchical tree structure into a flat array. The
-	 * first item in the array is the whole tree and therefore should be
-	 * removed with `slice(1)`.` This means that root cannot call `getNodes()`
-	 * and should directly reference the `nodes` key. All level after that
-	 * should use `getNodes()` to access the correct nodes.
-	*/
-	flattenTree = (root, treeIndex = '', firstLevel = true) => {
-		if (!root.nodes) {
-			return [{ node: root, treeIndex }];
-		}
-		let nodes = [{ node: root, treeIndex }];
-		if (root.expanded) {
-			for (let index = 0; index < root.nodes.length; index += 1) {
-				const curNode = firstLevel
-					? root.nodes[index]
-					: this.props.getNodes(root)[index];
-				nodes = nodes.concat(
-					this.flattenTree(
-						curNode,
-						treeIndex ? `${treeIndex}-${index}` : `${index}`,
-						false
-					)
-				);
-			}
-		}
-		return nodes;
-	};
 
 	handleSelect = ({ event, data, clearSelectedNodes, fromFocus }) => {
 		// When triggered by a key event, other nodes should be deselected.
@@ -245,7 +250,7 @@ class Tree extends React.Component {
 				: {
 						...defaultProps.assistiveText,
 						...this.props.assistiveText,
-					}.label;
+				  }.label;
 		const headingText = assistiveText || this.props.heading;
 
 		// Start the zero level branch--that is the tree root. There is no label for

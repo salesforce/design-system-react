@@ -39,13 +39,13 @@ describe('SLDSSlider', () => {
 	const renderSlider = (instance) => {
 		body = document.createElement('div');
 		document.body.appendChild(body);
-		return ReactDOM.render(instance, body);
+		return ReactDOM.render(instance, body); // deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 	};
 
 	const renderSecondSlider = (instance) => {
 		body2 = document.createElement('div');
 		document.body.appendChild(body2);
-		return ReactDOM.render(instance, body2);
+		return ReactDOM.render(instance, body2); // deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 	};
 
 	function removeSlider() {
@@ -176,7 +176,7 @@ describe('SLDSSlider', () => {
 		});
 	});
 
-	describe('onInput, onChange callbacks are set', function() {
+	describe('onInput, onChange callbacks are set', function () {
 		let mountNode;
 		let wrapper;
 
@@ -188,7 +188,7 @@ describe('SLDSSlider', () => {
 			destroyMountNode({ wrapper, mountNode });
 		});
 
-		it('onChange trigged callback', function(done) {
+		it('onChange trigged callback', function (done) {
 			wrapper = mount(
 				<Slider
 					value={200}
@@ -206,7 +206,7 @@ describe('SLDSSlider', () => {
 			trigger.simulate('change', { target: { value: 300 } });
 		});
 
-		it('onInput trigged callback', function(done) {
+		it('onInput trigged callback', function (done) {
 			wrapper = mount(
 				<Slider
 					value={200}

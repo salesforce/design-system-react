@@ -26,7 +26,7 @@ import {
 import { DIALOG } from '../../../utilities/constants';
 
 // #### Dialog doesn't pass down <IconSettings> context so repassing it here.
-import IconSettings from '../../icon-settings';
+import IconSettings, { IconSettingsContext } from '../../icon-settings';
 // eslint-disable-next-line camelcase
 import UNSAFE_DirectionSettings, { DIRECTIONS } from '../UNSAFE_direction';
 import LanguageDirection from '../UNSAFE_direction/private/language-direction';
@@ -212,13 +212,10 @@ class Dialog extends React.Component {
 		}
 	}
 
-	componentWillUpdate() {
+	componentDidUpdate(prevProps, prevState) {
 		if (this.popper) {
 			this.popper.scheduleUpdate();
 		}
-	}
-
-	componentDidUpdate(prevProps, prevState) {
 		if (
 			this.state.triggerPopperJS === true &&
 			prevState.triggerPopperJS === false &&
@@ -284,8 +281,8 @@ class Dialog extends React.Component {
 
 		return {
 			...popperData.style,
-			left,
-			top,
+			left: isNaN(left) ? 0 : left,
+			top: isNaN(top) ? 0 : top,
 			right,
 			position,
 		};
@@ -496,9 +493,7 @@ class Dialog extends React.Component {
 				// truthy values, and pass into Portal's context.
 
 				// TODO: Add test when switched to `ReactDOM.createPortal`
-				const truthyIconSettingsContext = Object.keys(
-					IconSettings.childContextTypes
-				)
+				const truthyIconSettingsContext = Object.keys(this.context)
 					.filter((key) => Boolean(this.context[key]))
 					.reduce(
 						(accumulatedContext, key) => ({
@@ -527,14 +522,6 @@ class Dialog extends React.Component {
 	}
 }
 
-Dialog.contextTypes = {
-	iconPath: PropTypes.string,
-	onRequestIconPath: PropTypes.func,
-	actionSprite: PropTypes.string,
-	customSprite: PropTypes.string,
-	doctypeSprite: PropTypes.string,
-	standardSprite: PropTypes.string,
-	utilitySprite: PropTypes.string,
-};
+Dialog.contextType = IconSettingsContext;
 
 export default LanguageDirection(Dialog);

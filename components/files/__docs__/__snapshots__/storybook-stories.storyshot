@@ -18,7 +18,8 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_1-by-1"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -44,7 +45,7 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -74,7 +75,8 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -100,7 +102,7 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -130,7 +132,8 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_4-by-3"
-            href="javascript:void(0);"
+            href="https://example.com"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -156,7 +159,7 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -198,7 +201,8 @@ exports[`DOM snapshots SLDSFiles Default 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -224,7 +228,7 @@ exports[`DOM snapshots SLDSFiles Default 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -266,7 +270,8 @@ exports[`DOM snapshots SLDSFiles Loading 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -313,7 +318,8 @@ exports[`DOM snapshots SLDSFiles Loading 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -361,7 +367,7 @@ exports[`DOM snapshots SLDSFiles Loading 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#image"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#image"
                   />
                 </svg>
                 
@@ -403,7 +409,8 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -437,7 +444,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
               role="group"
             >
               <button
-                className="slds-button slds-button_icon"
+                className="slds-button slds-button_icon slds-button_icon-inverse"
                 disabled={false}
                 onClick={[Function]}
                 title="Download"
@@ -449,7 +456,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                     className="slds-icon slds-icon_xx-small"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#download"
                     />
                   </svg>
                   <span
@@ -482,7 +489,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                     className="slds-button__icon"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                     />
                   </svg>
                   <span
@@ -507,7 +514,8 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="https://example.com"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -533,7 +541,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -569,7 +577,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
             role="group"
           >
             <button
-              className="slds-button slds-button_icon"
+              className="slds-button slds-button_icon slds-button_icon-inverse"
               disabled={false}
               onClick={[Function]}
               title="Download"
@@ -581,7 +589,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                   className="slds-icon slds-icon_xx-small slds-icon-text-default"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#download"
                   />
                 </svg>
                 <span
@@ -614,7 +622,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                   className="slds-button__icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#down"
                   />
                 </svg>
                 <span
@@ -638,7 +646,8 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <div
               className="slds-file_overlay"
@@ -706,7 +715,8 @@ exports[`DOM snapshots SLDSFiles w/ External Icon 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -725,7 +735,7 @@ exports[`DOM snapshots SLDSFiles w/ External Icon 1`] = `
                   className="slds-icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -746,7 +756,7 @@ exports[`DOM snapshots SLDSFiles w/ External Icon 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -775,7 +785,7 @@ exports[`DOM snapshots SLDSFiles w/ External Icon 1`] = `
               className="slds-icon slds-icon-text-default"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#salesforce1"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#salesforce1"
               />
             </svg>
             
@@ -805,7 +815,8 @@ exports[`DOM snapshots SLDSFiles w/o Image 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -824,7 +835,7 @@ exports[`DOM snapshots SLDSFiles w/o Image 1`] = `
                   className="slds-icon"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -845,7 +856,7 @@ exports[`DOM snapshots SLDSFiles w/o Image 1`] = `
                   className="slds-icon slds-icon_x-small"
                 >
                   <use
-                    xlinkHref="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
+                    href="/assets/icons/doctype-sprite/svg/symbols.svg#pdf"
                   />
                 </svg>
                 
@@ -887,7 +898,7 @@ exports[`DOM snapshots SLDSFiles w/o Title 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
           >
             <span

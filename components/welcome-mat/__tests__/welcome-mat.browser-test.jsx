@@ -15,7 +15,7 @@ import SLDSWelcomeMat from '../../welcome-mat';
 import SLDSWelcomeMatTile from '../../welcome-mat/tile';
 import WelcomeMatInfoBadge from '../../welcome-mat/info-badge';
 
-describe('SLDSWelcomeMat: ', function() {
+describe('SLDSWelcomeMat: ', function () {
 	let container;
 	let renderedNode;
 
@@ -43,7 +43,8 @@ describe('SLDSWelcomeMat: ', function() {
 			<IconSettings iconPath="/assets/icons">{welcomeMatInstance}</IconSettings>
 		);
 		document.body.appendChild(container);
-		renderedNode = ReactDOM.hydrate(opener, container);
+		// eslint-disable-next-line react/no-render-return-value
+		renderedNode = ReactDOM.render(opener, container); // deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 		return renderedNode;
 	};
 
@@ -71,32 +72,32 @@ describe('SLDSWelcomeMat: ', function() {
 			title="Welcome to Salesforce!"
 			description="Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet."
 			icon="animal_and_nature"
-			href="javascript:void(0);"
+			href="https://example.com"
 			isComplete
 		/>,
 		<SLDSWelcomeMatTile
 			title="Learn About OpenCTI!"
 			description="Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet."
 			icon="call"
-			href="javascript:void(0);"
+			href="https://example.com"
 			isComplete
 		/>,
 		<SLDSWelcomeMatTile
 			title="Power Up the Utility Bar"
 			description="Tap into case history or share notes with fellow agents—it all happens on the utility bar."
-			href="javascript:void(0);"
+			href="https://example.com"
 			icon="call"
 		/>,
 		<SLDSWelcomeMatTile
 			title="Customize your view"
 			description="Tailor your cases to your team&#x27;s workflow with custom list views."
-			href="javascript:void(0);"
+			href="https://example.com"
 			icon="upload"
 		/>,
 		<SLDSWelcomeMatTile
 			title="Share the Knowledge"
 			description="Harness your team&#x27;s collective know-how with our powerful knowledge base."
-			href="javascript:void(0);"
+			href="https://example.com"
 			icon="knowledge_base"
 		/>,
 	];
@@ -135,7 +136,7 @@ describe('SLDSWelcomeMat: ', function() {
 				'.slds-welcome-mat__tile a'
 			);
 			WelcomeMatTiles.forEach((tile) => {
-				expect(tile.href).to.eql.toString('javascript:void(0)');
+				expect(tile.href).to.eql.toString('https://example.com');
 			});
 		});
 		it('shows labels correctly', () => {

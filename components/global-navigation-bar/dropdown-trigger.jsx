@@ -18,7 +18,7 @@ import classNames from 'classnames';
 import colors from '../../utilities/design-tokens/dist/salesforce-skin.common.js';
 
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 import Button from '../button';
 
@@ -114,7 +114,10 @@ class GlobalNavigationDropdownTrigger extends React.Component {
 		triggerRef: PropTypes.func,
 	};
 
-	componentWillMount() {
+	static defaultProps = { assistiveText: { icon: 'Open menu item submenu' } };
+
+	constructor(props) {
+		super(props);
 		checkProps(MENU_DROPDOWN_TRIGGER, this.props, componentDoc);
 	}
 
@@ -155,6 +158,7 @@ class GlobalNavigationDropdownTrigger extends React.Component {
 		}
 
 		return (
+			// eslint-disable-next-line jsx-a11y/role-supports-aria-props
 			<li
 				aria-haspopup="true"
 				className={classNames(

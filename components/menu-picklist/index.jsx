@@ -46,6 +46,7 @@ import KeyBuffer from '../../utilities/key-buffer';
 import keyboardNavigate from '../../utilities/keyboard-navigate';
 import KEYS from '../../utilities/key-code';
 import { MENU_PICKLIST } from '../../utilities/constants';
+import { IconSettingsContext } from '../icon-settings';
 
 const noop = () => {};
 
@@ -60,11 +61,13 @@ const getNavigableItems = (items) => {
 	if (Array.isArray(items)) {
 		items.forEach((item, index) => {
 			if (itemIsSelectable(item)) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				navigableItems.push({
 					index,
 					text: `${item.label}`.toLowerCase(),
 				});
 
+				// eslint-disable-next-line fp/no-mutating-methods
 				navigableItems.indexes.push(index);
 			}
 		});
@@ -192,7 +195,8 @@ const MenuPicklist = createReactClass({
 		};
 	},
 
-	componentWillMount() {
+	// eslint-disable-next-line camelcase, react/sort-comp
+	UNSAFE_componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(MENU_PICKLIST, this.props);
 
@@ -213,6 +217,7 @@ const MenuPicklist = createReactClass({
 			const currentSelectedIndex = this.getIndexByValue(this.props);
 			const currentIndices = this.state.selectedIndices;
 			if (currentSelectedIndex !== -1) {
+				// eslint-disable-next-line fp/no-mutating-methods
 				currentIndices.push(currentSelectedIndex);
 			}
 			this.setState({
@@ -223,7 +228,8 @@ const MenuPicklist = createReactClass({
 		this.navigableItems = getNavigableItems(this.props.options);
 	},
 
-	componentWillReceiveProps(nextProps) {
+	// eslint-disable-next-line camelcase, react/sort-comp
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (
 			this.props.value !== nextProps.value ||
 			this.props.options.length !== nextProps.length
@@ -322,6 +328,7 @@ const MenuPicklist = createReactClass({
 			} else {
 				const deselectIndex = this.state.selectedIndices.indexOf(index);
 				currentIndices = this.state.selectedIndices;
+				// eslint-disable-next-line fp/no-mutating-methods
 				currentIndices.splice(deselectIndex, 1);
 			}
 
@@ -633,6 +640,7 @@ const MenuPicklist = createReactClass({
 							onRequestRemove: (event, data) => {
 								const newData = this.state.selectedIndices;
 								const index = data.index;
+								// eslint-disable-next-line fp/no-mutating-methods
 								newData.splice(this.state.selectedIndices.indexOf(index), 1);
 								this.setState({ selectedIndices: newData });
 
@@ -710,9 +718,6 @@ const MenuPicklist = createReactClass({
 	},
 });
 
-MenuPicklist.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+MenuPicklist.contextType = IconSettingsContext;
 export default MenuPicklist;
 export { ListItemLabel };

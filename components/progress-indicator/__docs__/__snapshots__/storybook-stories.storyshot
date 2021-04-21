@@ -27,6 +27,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
@@ -57,6 +58,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
@@ -73,7 +75,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Step 2: tooltip label #2
+                Step 2: 
+                tooltip label #2
+                
               </span>
             </button>
             <span />
@@ -87,22 +91,33 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
             <a
-              className="slds-button slds-progress__marker"
+              aria-disabled={true}
+              className="slds-button slds-progress__marker slds-is-disabled"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               role="button"
+              style={
+                Object {
+                  "cursor": "not-allowed",
+                }
+              }
               tabIndex={0}
             >
               <span
                 className="slds-assistive-text"
               >
-                Step 3: [object Object] - Disabled
+                Step 3: 
+                <strong>
+                  tooltip label #3
+                </strong>
+                - Disabled
               </span>
             </a>
             <span />
@@ -116,22 +131,31 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
             <a
-              className="slds-button slds-progress__marker"
+              aria-disabled={true}
+              className="slds-button slds-progress__marker slds-is-disabled"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               role="button"
+              style={
+                Object {
+                  "cursor": "not-allowed",
+                }
+              }
               tabIndex={0}
             >
               <span
                 className="slds-assistive-text"
               >
-                Step 4: tooltip label #4 - Disabled
+                Step 4: 
+                tooltip label #4
+                - Disabled
               </span>
             </a>
             <span />
@@ -145,22 +169,31 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
             <a
-              className="slds-button slds-progress__marker"
+              aria-disabled={true}
+              className="slds-button slds-progress__marker slds-is-disabled"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               role="button"
+              style={
+                Object {
+                  "cursor": "not-allowed",
+                }
+              }
               tabIndex={0}
             >
               <span
                 className="slds-assistive-text"
               >
-                Step 5: tooltip label #5 - Disabled
+                Step 5: 
+                tooltip label #5
+                - Disabled
               </span>
             </a>
             <span />
@@ -220,6 +253,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
             style={
               Object {
                 "display": "",
+                "lineHeight": "1",
               }
             }
           >
@@ -238,13 +272,13 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
                 className="slds-assistive-text"
               >
-                This is custom text in the assistive text key
+                This is custom text in the assistive text key - Completed
               </span>
             </button>
             <span />
@@ -258,6 +292,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
             style={
               Object {
                 "display": "",
+                "lineHeight": "1",
               }
             }
           >
@@ -276,13 +311,15 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
                 className="slds-assistive-text"
               >
-                Step 2: tooltip label #2 - Completed
+                Step 2: 
+                tooltip label #2
+                 - Completed
               </span>
             </button>
             <span />
@@ -296,6 +333,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
@@ -312,7 +350,11 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Step 3: [object Object]
+                Step 3: 
+                <strong>
+                  tooltip label #3
+                </strong>
+                
               </span>
             </button>
             <span />
@@ -326,22 +368,31 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
             <a
-              className="slds-button slds-progress__marker"
+              aria-disabled={true}
+              className="slds-button slds-progress__marker slds-is-disabled"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               role="button"
+              style={
+                Object {
+                  "cursor": "not-allowed",
+                }
+              }
               tabIndex={0}
             >
               <span
                 className="slds-assistive-text"
               >
-                Step 4: tooltip label #4 - Disabled
+                Step 4: 
+                tooltip label #4
+                - Disabled
               </span>
             </a>
             <span />
@@ -355,22 +406,31 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
             <a
-              className="slds-button slds-progress__marker"
+              aria-disabled={true}
+              className="slds-button slds-progress__marker slds-is-disabled"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               role="button"
+              style={
+                Object {
+                  "cursor": "not-allowed",
+                }
+              }
               tabIndex={0}
             >
               <span
                 className="slds-assistive-text"
               >
-                Step 5: tooltip label #5 - Disabled
+                Step 5: 
+                tooltip label #5
+                - Disabled
               </span>
             </a>
             <span />
@@ -430,6 +490,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             style={
               Object {
                 "display": "",
+                "lineHeight": "1",
               }
             }
           >
@@ -448,13 +509,15 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
                 className="slds-assistive-text"
               >
-                Step 1: tooltip label #1 - Completed
+                Step 1: 
+                tooltip label #1
+                 - Completed
               </span>
             </button>
             <span />
@@ -468,6 +531,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             style={
               Object {
                 "display": "",
+                "lineHeight": "1",
               }
             }
           >
@@ -486,13 +550,15 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
                 className="slds-assistive-text"
               >
-                Step 2: tooltip label #2 - Completed
+                Step 2: 
+                tooltip label #2
+                 - Completed
               </span>
             </button>
             <span />
@@ -506,6 +572,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             style={
               Object {
                 "display": "",
+                "lineHeight": "1",
               }
             }
           >
@@ -524,13 +591,15 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
                 className="slds-assistive-text"
               >
-                Step 3: tooltip label #3 - Completed
+                Step 3: 
+                tooltip label #3
+                 - Completed
               </span>
             </button>
             <span />
@@ -544,6 +613,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             style={
               Object {
                 "display": "",
+                "lineHeight": "1",
               }
             }
           >
@@ -562,13 +632,15 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
                 className="slds-assistive-text"
               >
-                Step 4: tooltip label #4 - Completed
+                Step 4: 
+                tooltip label #4
+                 - Completed
               </span>
             </button>
             <span />
@@ -582,6 +654,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
@@ -598,7 +671,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Step 5: tooltip label #5
+                Step 5: 
+                tooltip label #5
+                
               </span>
             </button>
             <span />
@@ -612,6 +687,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
@@ -628,7 +704,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Step 6: tooltip label #6
+                Step 6: 
+                tooltip label #6
+                
               </span>
             </button>
             <span />
@@ -642,6 +720,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
@@ -658,7 +737,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Step 7: tooltip label #7
+                Step 7: 
+                tooltip label #7
+                
               </span>
             </button>
             <span />
@@ -672,6 +753,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
@@ -688,7 +770,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Step 8: tooltip label #8
+                Step 8: 
+                tooltip label #8
+                
               </span>
             </button>
             <span />
@@ -702,6 +786,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
@@ -718,7 +803,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Step 9: tooltip label #9
+                Step 9: 
+                tooltip label #9
+                
               </span>
             </button>
             <span />
@@ -778,6 +865,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
             style={
               Object {
                 "display": "",
+                "lineHeight": "1",
               }
             }
           >
@@ -796,13 +884,13 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
                 className="slds-assistive-text"
               >
-                This is custom text in the assistive text key
+                This is custom text in the assistive text key - Completed
               </span>
             </button>
             <span />
@@ -816,6 +904,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
             style={
               Object {
                 "display": "",
+                "lineHeight": "1",
               }
             }
           >
@@ -834,13 +923,15 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
                 className="slds-assistive-text"
               >
-                Step 2: tooltip label #2 - Finished this step.
+                Step 2: 
+                tooltip label #2
+                 - Finished this step.
               </span>
             </button>
             <span />
@@ -854,6 +945,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
             style={
               Object {
                 "display": "",
+                "lineHeight": "1",
               }
             }
           >
@@ -872,13 +964,17 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
                 className="slds-assistive-text"
               >
-                Step 3: [object Object] - Finished this step.
+                Step 3: 
+                <strong>
+                  tooltip label #3
+                </strong>
+                 - Finished this step.
               </span>
             </button>
             <span />
@@ -892,6 +988,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
@@ -908,7 +1005,9 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Step 4: tooltip label #4
+                Step 4: 
+                tooltip label #4
+                
               </span>
             </button>
             <span />
@@ -922,6 +1021,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
@@ -938,7 +1038,9 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
               <span
                 className="slds-assistive-text"
               >
-                Step 5: tooltip label #5
+                Step 5: 
+                tooltip label #5
+                
               </span>
             </button>
             <span />
@@ -1000,8 +1102,10 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
         <li
           className="slds-progress__item slds-is-active"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1010,7 +1114,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-size_3-of-4"
             >
-              tooltip label #1
+              label #1
             </div>
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
@@ -1038,8 +1142,10 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
         <li
           className="slds-progress__item"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1048,7 +1154,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-size_3-of-4"
             >
-              tooltip label #2
+              label #2
             </div>
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
@@ -1076,8 +1182,10 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
         <li
           className="slds-progress__item"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1086,7 +1194,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-size_3-of-4"
             >
-              tooltip label #3
+              label #3
             </div>
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
@@ -1105,7 +1213,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
                     className="slds-button__icon slds-button__icon_left"
                   >
                     <use
-                      xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#download"
                     />
                   </svg>
                   Download
@@ -1117,8 +1225,10 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
         <li
           className="slds-progress__item"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1127,7 +1237,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-size_3-of-4"
             >
-              tooltip label #4
+              label #4
             </div>
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
@@ -1176,8 +1286,10 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
         <li
           className="slds-progress__item"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1186,7 +1298,7 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             <div
               className="slds-size_3-of-4"
             >
-              tooltip label #5
+              label #5
             </div>
             <div
               className="slds-grid slds-grid_align-end slds-size_1-of-4"
@@ -1243,6 +1355,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
             style={
               Object {
                 "display": "",
+                "lineHeight": "1",
               }
             }
           >
@@ -1261,13 +1374,13 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               <span
                 className="slds-assistive-text"
               >
-                This is custom text in the assistive text key
+                This is custom text in the assistive text key - Completed
               </span>
             </button>
             <span />
@@ -1281,6 +1394,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
             style={
               Object {
                 "display": "",
+                "lineHeight": "1",
               }
             }
           >
@@ -1299,13 +1413,15 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
                 className="slds-button__icon"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#error"
                 />
               </svg>
               <span
                 className="slds-assistive-text"
               >
-                Step 2: tooltip label #2 - Error
+                Step 2: 
+                tooltip label #2
+                 - Error
               </span>
             </button>
             <span />
@@ -1319,25 +1435,35 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
-            <button
-              aria-current={null}
-              className="slds-button slds-progress__marker"
+            <a
+              aria-disabled={true}
+              className="slds-button slds-progress__marker slds-is-disabled"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
-              type="button"
+              role="button"
+              style={
+                Object {
+                  "cursor": "not-allowed",
+                }
+              }
+              tabIndex={0}
             >
               <span
                 className="slds-assistive-text"
               >
-                Step 3: [object Object]
+                Step 3: 
+                <strong>
+                  tooltip label #3
+                </strong>
+                - Disabled
               </span>
-            </button>
+            </a>
             <span />
           </div>
         </li>
@@ -1349,25 +1475,33 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
-            <button
-              aria-current={null}
-              className="slds-button slds-progress__marker"
+            <a
+              aria-disabled={true}
+              className="slds-button slds-progress__marker slds-is-disabled"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
-              type="button"
+              role="button"
+              style={
+                Object {
+                  "cursor": "not-allowed",
+                }
+              }
+              tabIndex={0}
             >
               <span
                 className="slds-assistive-text"
               >
-                Step 4: tooltip label #4
+                Step 4: 
+                tooltip label #4
+                - Disabled
               </span>
-            </button>
+            </a>
             <span />
           </div>
         </li>
@@ -1379,25 +1513,33 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
             style={
               Object {
                 "display": "flex",
+                "lineHeight": "1",
               }
             }
           >
-            <button
-              aria-current={null}
-              className="slds-button slds-progress__marker"
+            <a
+              aria-disabled={true}
+              className="slds-button slds-progress__marker slds-is-disabled"
               onBlur={[Function]}
-              onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
-              type="button"
+              role="button"
+              style={
+                Object {
+                  "cursor": "not-allowed",
+                }
+              }
+              tabIndex={0}
             >
               <span
                 className="slds-assistive-text"
               >
-                Step 5: tooltip label #5
+                Step 5: 
+                tooltip label #5
+                - Disabled
               </span>
-            </button>
+            </a>
             <span />
           </div>
         </li>
@@ -1451,66 +1593,76 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
         <li
           className="slds-progress__item slds-is-active"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-0"
           >
-            tooltip label #1
+            label #1
           </div>
         </li>
         <li
           className="slds-progress__item"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-1"
           >
-            tooltip label #2
+            label #2
           </div>
         </li>
         <li
           className="slds-progress__item"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-2"
           >
-            tooltip label #3
+            label #3
           </div>
         </li>
         <li
           className="slds-progress__item"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-3"
           >
-            tooltip label #4
+            label #4
           </div>
         </li>
         <li
           className="slds-progress__item"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-4"
           >
-            tooltip label #5
+            label #5
           </div>
         </li>
       </ol>
@@ -1538,10 +1690,12 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
         className="slds-progress__list"
       >
         <li
-          className="slds-progress__item slds-is-completed"
+          className="slds-progress__item slds-is-completed slds-is-active"
         >
-          <span
-            className="slds-progress__marker slds-progress__marker_icon"
+          <button
+            className="slds-button slds-progress__marker slds-progress__marker_icon"
+            onClick={[Function]}
+            type="button"
           >
             <span>
               <svg
@@ -1549,24 +1703,26 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               
             </span>
-          </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-a"
+            id="progress-indicator-vertical-label-0"
           >
-            tooltip label #1
+            label #1
           </div>
         </li>
         <li
           className="slds-progress__item slds-is-completed"
         >
-          <span
-            className="slds-progress__marker slds-progress__marker_icon"
+          <button
+            className="slds-button slds-progress__marker slds-progress__marker_icon"
+            onClick={[Function]}
+            type="button"
           >
             <span>
               <svg
@@ -1574,24 +1730,26 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               
             </span>
-          </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-b"
+            id="progress-indicator-vertical-label-1"
           >
-            tooltip label #2
+            label #2
           </div>
         </li>
         <li
           className="slds-progress__item slds-is-completed"
         >
-          <span
-            className="slds-progress__marker slds-progress__marker_icon"
+          <button
+            className="slds-button slds-progress__marker slds-progress__marker_icon"
+            onClick={[Function]}
+            type="button"
           >
             <span>
               <svg
@@ -1599,24 +1757,26 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               
             </span>
-          </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-c"
+            id="progress-indicator-vertical-label-2"
           >
-            tooltip label #3
+            label #3
           </div>
         </li>
         <li
           className="slds-progress__item slds-is-completed"
         >
-          <span
-            className="slds-progress__marker slds-progress__marker_icon"
+          <button
+            className="slds-button slds-progress__marker slds-progress__marker_icon"
+            onClick={[Function]}
+            type="button"
           >
             <span>
               <svg
@@ -1624,24 +1784,26 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#success"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#success"
                 />
               </svg>
               
             </span>
-          </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-d"
+            id="progress-indicator-vertical-label-3"
           >
-            tooltip label #4
+            label #4
           </div>
         </li>
         <li
           className="slds-progress__item slds-has-error"
         >
-          <span
-            className="slds-progress__marker slds-progress__marker_icon"
+          <button
+            className="slds-button slds-progress__marker slds-progress__marker_icon"
+            onClick={[Function]}
+            type="button"
           >
             <span>
               <svg
@@ -1649,69 +1811,77 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
                 className="slds-icon slds-icon_x-small slds-icon-text-default"
               >
                 <use
-                  xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#error"
                 />
               </svg>
               
             </span>
-          </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-e"
+            id="progress-indicator-vertical-label-4"
           >
-            tooltip label #5
+            label #5
           </div>
         </li>
         <li
           className="slds-progress__item"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-f"
+            id="progress-indicator-vertical-label-5"
           >
-            tooltip label #6
+            label #6
           </div>
         </li>
         <li
           className="slds-progress__item"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-g"
+            id="progress-indicator-vertical-label-6"
           >
-            tooltip label #7
+            label #7
           </div>
         </li>
         <li
           className="slds-progress__item"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-h"
+            id="progress-indicator-vertical-label-7"
           >
-            tooltip label #8
+            label #8
           </div>
         </li>
         <li
           className="slds-progress__item"
         >
-          <span
-            className="slds-progress__marker"
+          <button
+            className="slds-button slds-progress__marker"
+            onClick={[Function]}
+            type="button"
           />
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
-            id="progress-indicator-vertical-label-i"
+            id="progress-indicator-vertical-label-8"
           >
-            tooltip label #9
+            label #9
           </div>
         </li>
       </ol>

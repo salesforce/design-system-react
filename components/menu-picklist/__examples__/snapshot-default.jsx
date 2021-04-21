@@ -29,6 +29,7 @@ class Example extends React.Component {
 					]}
 					placeholder="Select a contact"
 					value="C0"
+					silenceDeprecationWarning
 				/>
 			</IconSettings>
 		);

@@ -46,7 +46,9 @@ const defaultProps = {
  * Files is a component that wraps multiple file components that represent an attachment
  */
 class Files extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 

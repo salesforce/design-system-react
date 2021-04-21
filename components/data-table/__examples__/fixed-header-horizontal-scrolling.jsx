@@ -10,7 +10,7 @@ import IconSettings from '~/components/icon-settings';
 const CustomDataTableCell = ({ children, ...props }) => (
 	<DataTableCell title={children} {...props}>
 		<a
-			href="javascript:void(0);"
+			href="#"
 			onClick={(event) => {
 				event.preventDefault();
 			}}
@@ -217,8 +217,8 @@ class Example extends React.Component {
 							columnSort: 'sort this column',
 							columnSortedAscending: 'asc',
 							columnSortedDescending: 'desc',
-							selectAllRows: 'all rows',
-							selectRow: 'select this row',
+							selectAllRows: 'Select all rows',
+							selectRow: 'Select this row',
 						}}
 						fixedHeader
 						fixedLayout

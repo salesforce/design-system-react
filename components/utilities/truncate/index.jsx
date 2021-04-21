@@ -12,17 +12,19 @@ const documentDefined = typeof document !== 'undefined';
 let canvas;
 let docFragment;
 let canvasContext;
-let measureWidth = () => {};
+let measureWidth = () => 0;
 
 if (documentDefined) {
 	canvas = document.createElement('canvas');
-	docFragment = document.createDocumentFragment();
-	docFragment.appendChild(canvas);
-	canvasContext = canvas.getContext('2d');
-	measureWidth = memoize((text, font) => {
-		canvasContext.font = font;
-		return canvasContext.measureText(text).width;
-	});
+	if (canvas.getContext) {
+		docFragment = document.createDocumentFragment();
+		docFragment.appendChild(canvas);
+		canvasContext = canvas.getContext('2d');
+		measureWidth = memoize((text, font) => {
+			canvasContext.font = font;
+			return canvasContext.measureText(text).width;
+		});
+	}
 }
 
 class TextTruncate extends React.Component {
@@ -51,8 +53,10 @@ class TextTruncate extends React.Component {
 		window.addEventListener('resize', this.onResize, false);
 	}
 
-	componentWillReceiveProps(nextProps) {
-		this.update(nextProps);
+	componentDidUpdate(nextProps) {
+		if (nextProps.text !== this.props.text) {
+			this.update(nextProps);
+		}
 	}
 
 	componentWillUnmount() {
@@ -120,6 +124,7 @@ class TextTruncate extends React.Component {
 			let lastIsEng = false;
 			let lastSpaceIndex = -1;
 
+			// eslint-disable-next-line fp/no-loops
 			while (displayLine !== 0) {
 				let ext = '';
 				let extraWidthDueToPrefixStyle = 0;
@@ -138,6 +143,7 @@ class TextTruncate extends React.Component {
 					}
 				}
 
+				// eslint-disable-next-line fp/no-loops
 				while (currentPos <= maxTextLength) {
 					truncatedText = text.substr(startPos, currentPos);
 					width =
@@ -155,6 +161,7 @@ class TextTruncate extends React.Component {
 						}
 					} else {
 						let lastWidth = 0;
+						// eslint-disable-next-line fp/no-loops
 						do {
 							currentPos -= 1;
 							truncatedText = text.substr(startPos, currentPos);

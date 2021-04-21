@@ -84,7 +84,9 @@ const defaultProps = {
  * A progress bar component communicates to the user the progress of a particular process
  */
 class ProgressBar extends React.Component {
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 
@@ -108,7 +110,7 @@ class ProgressBar extends React.Component {
 					id={`progress-bar-label-${this.getId()}`}
 				>
 					<span>{labels.label}</span>
-					<span aria-hidden="true">
+					<span>
 						<strong>
 							{this.props.value}
 							{'% '}
@@ -134,9 +136,15 @@ class ProgressBar extends React.Component {
 				{this.props.orientation === 'horizontal' &&
 					this.getDescription({ labels })}
 				<div
+					aria-labelledby={
+						this.props.orientation === 'horizontal' && labels.label
+							? `progress-bar-label-${this.getId()}`
+							: undefined
+					}
 					aria-valuemin="0"
 					aria-valuemax="100"
 					aria-valuenow={this.props.value}
+					aria-valuetext={`${assistiveText.progress}: ${this.props.value}%`}
 					role="progressbar"
 					className={classNames(
 						'slds-progress-bar',
@@ -162,10 +170,10 @@ class ProgressBar extends React.Component {
 							this.props.orientation === 'vertical'
 								? {
 										height: `${this.props.value}%`,
-									}
+								  }
 								: {
 										width: `${this.props.value}%`,
-									}
+								  }
 						}
 					>
 						<span className="slds-assistive-text">

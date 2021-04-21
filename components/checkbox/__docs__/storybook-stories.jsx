@@ -9,6 +9,7 @@ import Button from '../../button';
 
 import DefaultCheckbox from '../__examples__/default';
 import Error from '../__examples__/error';
+import GroupedWithTristate from '../__examples__/grouped-with-tristate';
 import SnapshotBase from '../__examples__/snapshot-base';
 import SnapshotToggle from '../__examples__/snapshot-toggle';
 import Toggle from '../__examples__/toggle';
@@ -82,7 +83,9 @@ class CheckboxIndeterminate extends React.Component {
 						label: 'Checkbox (indeterminate)',
 					}}
 					id="checkbox-example-standard-indeterminate"
-					label="Checkbox Label"
+					labels={{
+						label: 'Checkbox label',
+					}}
 					name="checkbox-example-standard-indeterminate"
 					checked={this.state.checked}
 					indeterminate={this.state.indeterminate}
@@ -96,14 +99,16 @@ class CheckboxIndeterminate extends React.Component {
 						It is set by providing the <code>indeterminate</code> prop as{' '}
 						<code>
 							<strong>true</strong>
-						</code>.
+						</code>
+						.
 					</p>
 					<p>
 						Once it is clicked, there is no way to make it go <em>back</em> to
 						the indeterminate state,{' '}
 						<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate#Checkbox_radio_button">
 							it must be done programatically, through JavaScript
-						</a>.
+						</a>
+						.
 					</p>
 				</div>
 			</div>
@@ -134,7 +139,9 @@ storiesOf(CHECKBOX, module)
 							I must make it truer than my radio button who is trying to... `,
 				}}
 				id="checkbox-example-base-assistiveText"
-				label="Checkbox Label"
+				labels={{
+					label: 'Checkbox label',
+				}}
 				name="checkbox-example-base-assistiveText"
 				onChange={action('change')}
 			/>
@@ -157,7 +164,9 @@ storiesOf(CHECKBOX, module)
 		<Checkbox
 			checked
 			id="checkbox-example-base-checked"
-			label="Checkbox Label"
+			labels={{
+				label: 'Checkbox label',
+			}}
 			name="checkbox-example-base-checked"
 			onChange={action('change')}
 		/>
@@ -166,7 +175,9 @@ storiesOf(CHECKBOX, module)
 	.add('Checkbox Toggle', () => (
 		<Checkbox
 			id="checkbox-example-toggle"
-			label="Checkbox Toggle Label"
+			labels={{
+				label: 'Checkbox Toggle label',
+			}}
 			name="checkbox-example-toggle"
 			onChange={action('change')}
 			onBlur={(e) => {
@@ -178,7 +189,9 @@ storiesOf(CHECKBOX, module)
 	.add('Checkbox Toggle (with error)', () => (
 		<Checkbox
 			id="checkbox-example-toggle-error"
-			label="Checkbox Toggle Label"
+			labels={{
+				label: 'Checkbox Toggle label',
+			}}
 			name="checkbox-example-toggle-error"
 			errorText="This field has an error."
 			onChange={action('change')}
@@ -191,7 +204,9 @@ storiesOf(CHECKBOX, module)
 	.add('Checkbox Toggle (required)', () => (
 		<Checkbox
 			id="checkbox-example-toggle-required"
-			label="Checkbox Toggle Label"
+			labels={{
+				label: 'Checkbox Toggle label',
+			}}
 			name="checkbox-example-toggle-required"
 			onChange={action('change')}
 			onBlur={(e) => {
@@ -204,7 +219,9 @@ storiesOf(CHECKBOX, module)
 	.add('Checkbox Toggle (disabled)', () => (
 		<Checkbox
 			id="checkbox-example-toggle-disabled"
-			label="Checkbox Toggle Label"
+			labels={{
+				label: 'Checkbox Toggle label',
+			}}
 			name="checkbox-example-toggle-disabled"
 			onChange={action('change')}
 			onBlur={(e) => {
@@ -228,7 +245,9 @@ storiesOf(CHECKBOX, module)
 							I must make it truer than my radio button who is trying to... `,
 				}}
 				id="checkbox-example-base-assistiveText"
-				label="Checkbox Label"
+				labels={{
+					label: 'Checkbox label',
+				}}
 				name="checkbox-example-base-assistiveText"
 				onChange={action('change')}
 				variant="toggle"
@@ -252,7 +271,9 @@ storiesOf(CHECKBOX, module)
 		<Checkbox
 			checked
 			id="checkbox-example-toggle-checked"
-			label="Checkbox Label"
+			labels={{
+				label: 'Checkbox label',
+			}}
 			name="checkbox-example-toggle-checked"
 			onChange={action('change')}
 			variant="toggle"
@@ -261,4 +282,5 @@ storiesOf(CHECKBOX, module)
 	.add('Doc site Error', () => <Error />)
 	.add('Doc site Snapshot Base', () => <SnapshotBase />)
 	.add('Doc site Snapshot Toggle', () => <SnapshotToggle />)
-	.add('Doc site Toggle', () => <Toggle />);
+	.add('Doc site Toggle', () => <Toggle />)
+	.add('Grouped with Tristate', () => <GroupedWithTristate />);

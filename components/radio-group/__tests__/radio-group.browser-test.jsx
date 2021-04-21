@@ -39,7 +39,7 @@ class RadioGroupExample extends React.Component {
 				{values.map((value) => (
 					<Radio
 						key={value}
-						label={value}
+						labels={{ label: value }}
 						value={value}
 						checked={this.state.checked === value}
 						variant="base"
@@ -65,7 +65,7 @@ RadioGroupExample.defaultProps = {
 
 /* RadioGroup rendering tests
  */
-describe('RadioGroup', function() {
+describe('RadioGroup', function () {
 	let mountNode;
 	let wrapper;
 
@@ -84,7 +84,7 @@ describe('RadioGroup', function() {
 		radios.forEach((radioWrapper, index) => {
 			const radio = radios.get(index);
 			expect(radio.props.checked).to.equal(
-				radio.props.label === 'Radio Label One',
+				radio.props.labels.label === 'Radio Label One',
 				'the second radio input is checked'
 			);
 		});
@@ -105,7 +105,7 @@ describe('RadioGroup', function() {
 	it('renders a required indicator', () => {
 		wrapper = mount(<RadioGroupExample required />, { attachTo: mountNode });
 		const abbr = wrapper.find('abbr');
-		expect(abbr.text()).to.equal('*', 'there is a required indicator');
+		expect(abbr.text()).to.equal('*Required ', 'there is a required indicator');
 	});
 
 	it('triggers a change callback', () => {

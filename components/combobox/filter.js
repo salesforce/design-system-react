@@ -7,16 +7,24 @@ import escapeRegExp from 'lodash.escaperegexp';
  */
 const filter = ({ inputValue, limit = 10, options, selection }) => {
 	const inputValueRegExp = new RegExp(escapeRegExp(inputValue), 'ig');
+	// eslint-disable-next-line fp/no-mutating-methods
 	return options
 		.filter((option) => {
-			const searchTermFound = option.label
+			const searchTermFoundInLabel = option.label
 				? option.label.match(inputValueRegExp)
+				: false;
+			const searchTermFoundInSubtitle = option.subTitle
+				? option.subTitle.match(inputValueRegExp)
 				: false;
 			const isSeparator = option.type === 'separator';
 			const notAlreadySelected = !selection.some((sel) => sel.id === option.id);
 
 			return (
-				(!inputValue || isSeparator || searchTermFound) && notAlreadySelected
+				(!inputValue ||
+					isSeparator ||
+					searchTermFoundInLabel ||
+					searchTermFoundInSubtitle) &&
+				notAlreadySelected
 			);
 		})
 		.splice(0, limit);

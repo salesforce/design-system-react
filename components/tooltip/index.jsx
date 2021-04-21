@@ -13,6 +13,7 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
+import EventUtil from '../../utilities/event';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 
 import Dialog from '../utilities/dialog';
@@ -22,7 +23,8 @@ import Button from '../button';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
+import { IconSettingsContext } from '../icon-settings';
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
@@ -73,13 +75,21 @@ const propTypes = {
 		PropTypes.string,
 	]),
 	/**
+	 * Enabling this hides the default nubbin, replacing it with one attached directly to the tooltip trigger. Note: `hasStaticAlignment` should be set to `true` if using this feature as auto-flipping anchored nubbins are not currently supported.
+	 */
+	hasAnchoredNubbin: PropTypes.bool,
+	/**
 	 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
 	hasStaticAlignment: PropTypes.bool,
 	/**
-	 * Delay on Tooltip closing.
+	 * Delay on Tooltip closing in milliseconds. Defaults to 50
 	 */
 	hoverCloseDelay: PropTypes.number,
+	/**
+	 * Delay on Tooltip opening in milliseconds. Defaults to 0
+	 */
+	hoverOpenDelay: PropTypes.number,
 	/**
 	 * A unique ID is needed in order to support keyboard navigation, ARIA support, and connect the popover to the triggering element.
 	 */
@@ -98,6 +108,10 @@ const propTypes = {
 	 * Forces tooltip to be open. A value of `false` will disable any interaction with the tooltip.
 	 */
 	isOpen: PropTypes.bool,
+	/**
+	 * Callback that returns an element or React `ref` to align the Tooltip with.
+	 */
+	onRequestTargetElement: PropTypes.func,
 	/**
 	 * CSS classes to be added to tag with `slds-tooltip-trigger`.
 	 */
@@ -144,6 +158,7 @@ const defaultProps = {
 		learnMoreBefore: 'Click',
 	},
 	hoverCloseDelay: 50,
+	hoverOpenDelay: 0,
 	position: 'absolute',
 	theme: 'info',
 	variant: 'base',
@@ -157,14 +172,13 @@ class Tooltip extends React.Component {
 		super(props);
 
 		this.state = {
-			isClosing: false,
 			isOpen: false,
 		};
-	}
 
-	componentWillMount() {
+		this.tooltipTimeout = {};
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(POPOVER_TOOLTIP, this.props, componentDoc);
+		checkProps(POPOVER_TOOLTIP, props, componentDoc);
 
 		this.generatedId = shortid.generate();
 	}
@@ -173,13 +187,84 @@ class Tooltip extends React.Component {
 		this.isUnmounting = true;
 	}
 
+	getAnchoredNubbinStyles() {
+		if (this.props.hasAnchoredNubbin) {
+			const alignment = this.props.align.split(' ')[0];
+			const nubbinContainerStyles = {
+				height: '0',
+				position: 'relative',
+				width: '0',
+			};
+			const nubbinStyles = {
+				backgroundColor: '#16325c',
+				content: '',
+				height: '1rem',
+				position: 'absolute',
+				transform: 'rotate(45deg)',
+				width: '1rem',
+			};
+			const triggerDimensions = {
+				height: this.trigger ? this.trigger.getBoundingClientRect().height : 0,
+				width: this.trigger ? this.trigger.getBoundingClientRect().width : 0,
+			};
+
+			switch (alignment) {
+				case 'bottom': {
+					nubbinContainerStyles.left = `${triggerDimensions.width / 2}px`;
+					nubbinContainerStyles.top = `${triggerDimensions.height}px`;
+					nubbinStyles.left = '-8px';
+					nubbinStyles.top = '3px';
+					break;
+				}
+				case 'left': {
+					nubbinContainerStyles.left = '0';
+					nubbinContainerStyles.top = `${triggerDimensions.height / 2}px`;
+					nubbinStyles.left = '-19px';
+					nubbinStyles.top = '-9px';
+					break;
+				}
+				case 'right': {
+					nubbinContainerStyles.left = `${triggerDimensions.width}px`;
+					nubbinContainerStyles.top = `${triggerDimensions.height / 2}px`;
+					nubbinStyles.left = '3px';
+					nubbinStyles.top = '-9px';
+					break;
+				}
+				default: {
+					nubbinContainerStyles.left = `${triggerDimensions.width / 2}px`;
+					nubbinContainerStyles.top = '0';
+					nubbinStyles.left = '-8px';
+					nubbinStyles.top = '-19px';
+				}
+			}
+
+			return (
+				<React.Fragment>
+					<style>{`#${this.getId()}:after, #${this.getId()}:before {
+	display: none;
+}`}</style>
+					{this.getIsOpen() ? (
+						<div style={nubbinContainerStyles}>
+							<div style={nubbinStyles} />
+						</div>
+					) : null}
+				</React.Fragment>
+			);
+		}
+
+		return null;
+	}
+
 	getContent() {
 		let children;
 		const noChildrenProvided = React.Children.count(this.props.children) === 0;
 
 		if (noChildrenProvided && this.props.onClickTrigger) {
 			children = [
-				<a href="javascript:void(0)" onClick={this.props.onClickTrigger}>
+				<a
+					href="#"
+					onClick={EventUtil.trappedHandler(this.props.onClickTrigger)}
+				>
 					<Icon
 						category="utility"
 						name="info"
@@ -290,31 +375,45 @@ class Tooltip extends React.Component {
 	}
 
 	getTooltipTarget() {
-		return this.props.target ? this.props.target : this.trigger;
+		if (this.props.onRequestTargetElement) {
+			return this.props.onRequestTargetElement();
+		}
+
+		// for backwards compatibility
+		if (this.props.target) {
+			return this.props.target;
+		}
+
+		return this.trigger;
 	}
 
 	handleCancel = () => {
+		clearTimeout(this.tooltipTimeout);
+
 		this.setState({
 			isOpen: false,
-			isClosing: false,
 		});
 	};
 
 	handleMouseEnter = () => {
-		this.setState({
-			isOpen: true,
-			isClosing: false,
-		});
+		clearTimeout(this.tooltipTimeout);
+
+		this.tooltipTimeout = setTimeout(() => {
+			if (!this.isUnmounting) {
+				this.setState({
+					isOpen: true,
+				});
+			}
+		}, this.props.hoverOpenDelay);
 	};
 
 	handleMouseLeave = () => {
-		this.setState({ isClosing: true });
+		clearTimeout(this.tooltipTimeout);
 
-		setTimeout(() => {
-			if (!this.isUnmounting && this.state.isClosing) {
+		this.tooltipTimeout = setTimeout(() => {
+			if (!this.isUnmounting) {
 				this.setState({
 					isOpen: false,
-					isClosing: false,
 				});
 			}
 		}, this.props.hoverCloseDelay);
@@ -335,6 +434,7 @@ class Tooltip extends React.Component {
 	render() {
 		const containerStyles = {
 			display: 'inline-block',
+			lineHeight: '1',
 			...this.props.triggerStyle,
 		};
 
@@ -347,6 +447,7 @@ class Tooltip extends React.Component {
 				style={containerStyles}
 				ref={this.saveTriggerRef}
 			>
+				{this.getAnchoredNubbinStyles()}
 				{this.getContent()}
 				{this.getTooltip()}
 			</div>
@@ -354,10 +455,7 @@ class Tooltip extends React.Component {
 	}
 }
 
-Tooltip.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+Tooltip.contextType = IconSettingsContext;
 Tooltip.displayName = displayName;
 Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;

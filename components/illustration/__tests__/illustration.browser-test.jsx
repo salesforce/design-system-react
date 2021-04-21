@@ -1,7 +1,8 @@
 /* eslint-env mocha */
-/* global sinon */
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-unused-expressions */
+/* eslint-disable no-unused-vars */
+/* global sinon */
 
 import React from 'react';
 
@@ -21,7 +22,7 @@ class DemoIllustration extends React.Component {
 	static displayName = 'DemoIllustration';
 
 	render() {
-		return <Illustration {...this.props} />;
+		return <Illustration {...this.props} silenceDeprecationWarning />;
 	}
 }
 
@@ -48,35 +49,35 @@ describe('SLDSIllustration: ', function describeFunction() {
 
 		afterEach(unmountComponent);
 
-		it('renders container class', function() {
+		it('renders container class', function () {
 			expect(this.wrapper).to.have.className('slds-illustration');
 			expect(this.wrapper).to.have.className('custom-illustration');
 		});
-		it('renders illustration size class', function() {
+		it('renders illustration size class', function () {
 			expect(this.wrapper).to.have.className('slds-illustration_small');
 		});
-		it('sets svg aria-hidden to true', function() {
+		it('sets svg aria-hidden to true', function () {
 			svg = this.wrapper.find('svg');
 			expect(svg).to.have.attr('aria-hidden', 'true');
 		});
-		it('renders illustration svg class', function() {
+		it('renders illustration svg class', function () {
 			svg = this.wrapper.find('svg');
 			expect(svg.hasClass('slds-illustration__svg')).to.be.true; // chai-enzyme is buggy with an svg
 		});
-		it('renders svg name attribute', function() {
+		it('renders svg name attribute', function () {
 			svg = this.wrapper.find('svg');
 			// also tests that all '_' and ' ' are replaced with '-'
 			expect(svg).to.have.attr('name', 'no-access');
 		});
-		it('renders svg custom background color', function() {
+		it('renders svg custom background color', function () {
 			svg = this.wrapper.find('svg');
 			expect(svg).to.have.style('backgroundColor', 'rgb(218, 165, 32)');
 		});
-		it('renders heading', function() {
+		it('renders heading', function () {
 			heading = this.wrapper.find('.slds-text-heading_medium');
 			expect(heading.text()).to.equal('Lorem ipsum dolor');
 		});
-		it('renders message body', function() {
+		it('renders message body', function () {
 			messageBody = this.wrapper.find('.slds-text-body_regular');
 			expect(messageBody.text()).to.equal(
 				'Lorem ipsum dolor sit amet, consectetur'
@@ -101,15 +102,15 @@ describe('SLDSIllustration: ', function describeFunction() {
 
 		afterEach(unmountComponent);
 
-		it('does not render svg', function() {
+		it('does not render svg', function () {
 			svg = this.wrapper.find('svg');
 			expect(svg).not.to.be.present();
 		});
-		it('renders heading', function() {
+		it('renders heading', function () {
 			heading = this.wrapper.find('.slds-text-heading_medium');
 			expect(heading.text()).to.equal('Lorem ipsum dolor');
 		});
-		it('renders message body', function() {
+		it('renders message body', function () {
 			messageBody = this.wrapper.find('.slds-text-body_regular');
 			expect(messageBody.text()).to.equal(
 				'Lorem ipsum dolor sit amet, consectetur'
@@ -129,20 +130,20 @@ describe('SLDSIllustration: ', function describeFunction() {
 
 		afterEach(unmountComponent);
 
-		it('does not render svg', function() {
+		it('does not render svg', function () {
 			svg = this.wrapper.find('svg');
 			expect(svg).not.to.be.present();
 		});
-		it('renders heading', function() {
+		it('renders heading', function () {
 			heading = this.wrapper.find('.slds-text-heading_medium');
 			expect(heading.text()).to.equal('Lorem ipsum dolor');
 		});
-		it('does not render message body', function() {
+		it('does not render message body', function () {
 			expect(this.wrapper.find('.slds-text-body_regular')).not.to.be.present();
 		});
 	});
 
-	describe('Message only renders', function() {
+	describe('Message only renders', function () {
 		let svg;
 		let heading;
 		let messageBody;
@@ -158,15 +159,15 @@ describe('SLDSIllustration: ', function describeFunction() {
 
 		afterEach(unmountComponent);
 
-		it('does not render svg', function() {
+		it('does not render svg', function () {
 			svg = this.wrapper.find('svg');
 			expect(svg).not.to.be.present();
 		});
-		it('does not render heading', function() {
+		it('does not render heading', function () {
 			heading = this.wrapper.find('.slds-text-heading_medium');
 			expect(heading).not.to.be.present();
 		});
-		it('renders message body', function() {
+		it('renders message body', function () {
 			messageBody = this.wrapper.find('.slds-text-body_regular');
 			expect(messageBody.text()).to.equal(
 				'Lorem ipsum dolor sit amet, consectetur'

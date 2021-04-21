@@ -1,14 +1,14 @@
 import React from 'react';
-import IconSettings from '../../icon-settings';
-import Button from '../../button';
-import ButtonGroup from '../../button-group';
-import Icon from '../../icon';
-import Tooltip from '../../tooltip';
-import BuilderHeader from '..';
-import BuilderHeaderNav from '../nav';
-import BuilderHeaderNavLink from '../nav-link';
-import BuilderHeaderNavDropdown from '../nav-dropdown';
-import BuilderHeaderToolbar from '../toolbar';
+import IconSettings from '~/components/icon-settings';
+import Button from '~/components/button';
+import ButtonGroup from '~/components/button-group';
+import Popover from '~/components/popover'; // `~` is replaced with design-system-react at runtime
+import Tooltip from '~/components/tooltip';
+import BuilderHeader from '~/components/builder-header';
+import BuilderHeaderNav from '~/components/builder-header/nav';
+import BuilderHeaderNavLink from '~/components/builder-header/nav-link';
+import BuilderHeaderNavDropdown from '~/components/builder-header/nav-dropdown';
+import BuilderHeaderToolbar from '~/components/builder-header/toolbar';
 
 const Example = (props) => (
 	<IconSettings iconPath="/assets/icons">
@@ -56,24 +56,41 @@ const Example = (props) => (
 							align="bottom"
 							content="Last modified on June 1, 2018 by SysAdmin"
 						>
-							<span className="slds-color__text_gray-10 slds-align-middle slds-m-right_x-small">
+							<button
+								type="button"
+								className="slds-button slds-color__text_gray-10 slds-align-middle slds-m-right_x-small"
+							>
 								Saved 45 mins ago
-							</span>
+							</button>
 						</Tooltip>
-						<Icon
-							category="utility"
-							className="slds-m-right_xx-small"
-							name="warning"
-							size="x-small"
-							style={{ fill: '#FFB75D' }}
-						/>
-						<Icon
-							category="utility"
-							className="slds-m-right_small"
-							name="error"
-							size="x-small"
-							style={{ fill: '#C23A34' }}
-						/>
+						<Popover
+							align="top left"
+							body={
+								<div>
+									<p className="slds-p-bottom_x-small">
+										Pellentesque magna tellus, dapibus vitae placerat nec,
+										viverra vel mi.{' '}
+										<a href="#" title="Learn More">
+											Learn More
+										</a>
+									</p>
+								</div>
+							}
+							heading="Review warning"
+							id="popover-error"
+							variant="error"
+						>
+							<Button
+								assistiveText={{ icon: 'Error' }}
+								iconCategory="utility"
+								iconClassName="slds-icon-text-error"
+								iconName="error"
+								iconSize="medium"
+								iconVariant="container"
+								colorVariant="error"
+								variant="icon"
+							/>
+						</Popover>
 						<Button
 							iconCategory="utility"
 							iconName="right"
@@ -85,7 +102,7 @@ const Example = (props) => (
 					</div>
 				)}
 			>
-				<ButtonGroup label="Canvas Actions">
+				<ButtonGroup label="Canvas Actions" id="button-group-canvas-actions">
 					<Button
 						assistiveText={{ icon: 'Undo' }}
 						iconCategory="utility"
@@ -101,7 +118,7 @@ const Example = (props) => (
 						variant="icon"
 					/>
 				</ButtonGroup>
-				<ButtonGroup label="Edit Actions">
+				<ButtonGroup label="Edit Actions" id="button-group-edit-actions">
 					<Button
 						assistiveText={{ icon: 'Cut' }}
 						iconCategory="utility"

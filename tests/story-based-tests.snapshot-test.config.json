@@ -6,7 +6,10 @@
 		"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
 			"<rootDir>/tests/__mocks__/file-mock.js"
 	},
-	"setupFiles": ["<rootDir>/.jest/register-context.js"],
+	"setupFiles": [
+		"<rootDir>/.jest/register-context.js",
+		"<rootDir>/tests/console-message-overrides.js"
+	],
 	"testPathIgnorePatterns": [
 		"/node_modules/",
 		"/preset/",

@@ -8,7 +8,7 @@ import IconSettings from '~/components/icon-settings';
 const CustomDataTableCell = ({ children, ...props }) => (
 	<DataTableCell {...props}>
 		<a
-			href="javascript:void(0);"
+			href="#"
 			onClick={(event) => {
 				event.preventDefault();
 			}}
@@ -89,9 +89,6 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ overflow: 'auto' }}>
-					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
-						Basic Fluid Layout - No Row Hover
-					</h3>
 					<DataTable
 						items={this.state.items}
 						id="DataTableExample-noRowHover"

@@ -1,11 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DOM snapshots SLDSButton Aria attribute 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    aria-label="Base"
+    className="slds-button"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Base
+  </button>
+</div>
+`;
+
 exports[`DOM snapshots SLDSButton Base 1`] = `
 <div
   className="slds-p-around_medium"
 >
   <button
     className="slds-button"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Base
+  </button>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Data attribute 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    className="slds-button"
+    data-some-property="Some value"
     disabled={false}
     onClick={[Function]}
     type="button"
@@ -64,7 +96,7 @@ exports[`DOM snapshots SLDSButton Doc site Base Neutral 1`] = `
         className="slds-button__icon slds-button__icon_left"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#download"
         />
       </svg>
       Neutral Icon
@@ -126,6 +158,7 @@ exports[`DOM snapshots SLDSButton Doc site Brand Disabled 1`] = `
         Object {
           "backgroundColor": "#16325c",
           "display": "inline-block",
+          "marginLeft": "5px",
           "padding": "10px",
         }
       }
@@ -161,7 +194,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
         />
       </svg>
       <span
@@ -181,7 +214,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
         />
       </svg>
       <span
@@ -211,7 +244,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
           />
         </svg>
         <span
@@ -231,7 +264,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
           />
         </svg>
         <span
@@ -252,7 +285,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
         />
       </svg>
       <svg
@@ -260,7 +293,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
         className="slds-button__icon slds-button__icon_x-small"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
         />
       </svg>
       <span
@@ -290,7 +323,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
           className="slds-button__icon slds-button__icon_large"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
           />
         </svg>
         <span
@@ -321,7 +354,7 @@ exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
           className="slds-button__icon slds-button__icon_large slds-button__icon_hint"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
           />
         </svg>
         <span
@@ -359,7 +392,7 @@ exports[`DOM snapshots SLDSButton Dropdown Icon inverse 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
         />
       </svg>
       <svg
@@ -367,7 +400,7 @@ exports[`DOM snapshots SLDSButton Dropdown Icon inverse 1`] = `
         className="slds-button__icon slds-button__icon_x-small"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
         />
       </svg>
       <span
@@ -403,7 +436,7 @@ exports[`DOM snapshots SLDSButton Icon Container Small 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
         />
       </svg>
       <span
@@ -432,7 +465,7 @@ exports[`DOM snapshots SLDSButton Icon large 1`] = `
       className="slds-button__icon slds-button__icon_large"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#answer"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#answer"
       />
     </svg>
     <span
@@ -460,7 +493,7 @@ exports[`DOM snapshots SLDSButton Icon with external path 1`] = `
       className="slds-button__icon slds-button__icon_large"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
       />
     </svg>
     <span
@@ -504,7 +537,7 @@ exports[`DOM snapshots SLDSButton Neutral Icon 1`] = `
       className="slds-button__icon slds-button__icon_left"
     >
       <use
-        xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#download"
+        href="/assets/icons/utility-sprite/svg/symbols.svg#download"
       />
     </svg>
     Neutral Icon
@@ -575,7 +608,7 @@ exports[`DOM snapshots SLDSButton Small Icon Hint inverse 1`] = `
         className="slds-button__icon slds-button__icon_inverse-hint"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
         />
       </svg>
       <span

@@ -11,7 +11,7 @@ import assign from 'lodash.assign';
 import { POPOVER_EDIT_DIALOG } from '../../utilities/constants';
 
 import Button from '../button';
-import Popover from './popover';
+import Popover from './index';
 
 const defaultProps = {
 	labels: {
@@ -26,6 +26,10 @@ class EditDialog extends React.Component {
 
 	// ### Prop Types
 	static propTypes = {
+		/**
+		 * Disables the edit dialog and prevents clicking it.
+		 */
+		disabled: PropTypes.bool,
 		/**
 		 * By default, a unique ID will be created at render to support keyboard navigation, ARIA roles, and connect the popover to the triggering button. This ID will be applied to the triggering element. `${id}-popover`, `${id}-dialog-heading`, `${id}-dialog-body` are also created.
 		 */
@@ -60,17 +64,25 @@ class EditDialog extends React.Component {
 		popover: PropTypes.node,
 	};
 
+	handleOpen = () => {
+		this.setState({ isOpen: true });
+	};
+
+	handleClose = () => {
+		this.setState({ isOpen: false });
+	};
+
 	render() {
 		const { onCancel, onSave, ...restProps } = this.props;
 
 		// trigger button will either be passed in children or defaults to an edit button.
-		const children = this.children ? (
-			this.children
+		const children = this.props.children ? (
+			this.props.children
 		) : (
 			<Button
 				assistiveText={{ icon: 'Edit: Status' }}
-				aria-controls={`${this.props.id}-edit-button`}
 				className="slds-button_reset"
+				disabled={this.props.disabled}
 				iconCategory="utility"
 				iconClassName="slds-button__icon slds-button__icon_hint"
 				iconName="edit"
@@ -102,6 +114,9 @@ class EditDialog extends React.Component {
 					</div>
 				}
 				footerStyle={{ borderTop: '0px' }}
+				onClose={this.handleClose}
+				onRequestClose={this.handleClose}
+				onOpen={this.handleOpen}
 				{...restProps}
 			>
 				{children}

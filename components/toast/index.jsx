@@ -11,18 +11,23 @@ import PropTypes from 'prop-types';
 import assign from 'lodash.assign';
 
 import classNames from '../../utilities/class-names';
+import EventUtil from '../../utilities/event';
 import Button from '../button';
 import Icon from '../icon';
 import checkProps from './check-props';
 import { TOAST } from '../../utilities/constants';
 import DOMElementFocus from '../../utilities/dom-element-focus';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 const propTypes = {
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
 	 * * `closeButton`: This is a visually hidden label for the close button.
+	 * * `error`: This is a visually hidden label to mark the toast as an error variant
+	 * * `info`: This is a visually hidden label to mark the toast as an info variant
+	 * * `success`: This is a visually hidden label to mark the toast as an success variant
+	 * * `warning`: This is a visually hidden label to mark the toast as an warning variant
 	 * _Tested with snapshot testing._
 	 */
 	assistiveText: PropTypes.shape({
@@ -86,6 +91,10 @@ const propTypes = {
 const defaultProps = {
 	assistiveText: {
 		closeButton: 'Close',
+		error: 'error',
+		info: 'info',
+		success: 'success',
+		warning: 'warning',
 	},
 	variant: 'info',
 };
@@ -101,11 +110,10 @@ class Toast extends React.Component {
 			isInitialRender: true,
 		};
 		this.timeout = null;
-	}
+		this.toast = null;
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(TOAST, this.props, componentDoc);
+		checkProps(TOAST, props, componentDoc);
 	}
 
 	componentDidMount() {
@@ -136,12 +144,12 @@ class Toast extends React.Component {
 		}
 	};
 
-	saveButtonRef = (component) => {
-		this.closeButton = component;
+	saveToastRef = (toast) => {
+		this.toast = toast;
 		if (this.state.isInitialRender) {
 			DOMElementFocus.storeActiveElement();
-			if (this.closeButton) {
-				this.closeButton.focus();
+			if (this.toast) {
+				this.toast.focus();
 			}
 			this.setState({ isInitialRender: false });
 		}
@@ -158,10 +166,10 @@ class Toast extends React.Component {
 		const heading = labels.heading || this.props.content; // eslint-disable-line react/prop-types
 
 		const assistiveTextVariant = {
-			info: 'info',
-			success: 'success',
-			warning: 'warning',
-			error: 'error',
+			info: assistiveText.info,
+			success: assistiveText.success,
+			warning: assistiveText.warning,
+			error: assistiveText.error,
 		};
 
 		const defaultIcons = {
@@ -181,7 +189,6 @@ class Toast extends React.Component {
 			size: 'small',
 		});
 
-		/* eslint-disable no-script-url */
 		return (
 			<div
 				className={classNames(
@@ -194,8 +201,10 @@ class Toast extends React.Component {
 					},
 					this.props.className
 				)}
+				ref={this.saveToastRef}
 				role="status"
 				style={this.props.style}
+				tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
 			>
 				<span className="slds-assistive-text">
 					{assistiveTextVariant[this.props.variant]}
@@ -206,8 +215,10 @@ class Toast extends React.Component {
 						{heading}{' '}
 						{labels.headingLink ? (
 							<a
-								onClick={this.props.onClickHeadingLink}
-								href="javascript:void(0);"
+								onClick={EventUtil.trappedHandler(
+									this.props.onClickHeadingLink
+								)}
+								href="#"
 							>
 								{labels.headingLink}
 							</a>
@@ -217,7 +228,6 @@ class Toast extends React.Component {
 				</div>
 				<Button
 					assistiveText={{ icon: assistiveText.closeButton }}
-					buttonRef={this.saveButtonRef}
 					className="slds-notify__close"
 					iconCategory="utility"
 					iconName="close"

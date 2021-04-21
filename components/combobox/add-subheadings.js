@@ -1,3 +1,4 @@
+/* eslint-disable fp/no-mutating-methods */
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
@@ -7,40 +8,30 @@
 
 const addSubheadings = ({ subheadings, filteredOptions }) => {
 	// Let's not mutate things we don't own.
-	let subheadingsNotPresent = [...subheadings];
+	const subheadingsCopy = [...subheadings];
+	const sortedOptions = { noSubHeaderType: [] };
 
-	const filteredOptionsWithSubheadings = filteredOptions.map((option) => {
-		let subheadingRelatedToFilteredOption;
-
-		// Remove subheadings that have been found from
-		// `subheadingsNotPresent` and flag if they are
-		// found.
-		subheadingsNotPresent = subheadingsNotPresent.filter((subheading) => {
-			let subheadingNotPresentInFilteredOptions = true;
-			if (option.type === subheading.id) {
-				subheadingRelatedToFilteredOption = subheading;
-				subheadingNotPresentInFilteredOptions = false;
-			}
-			return subheadingNotPresentInFilteredOptions;
-		});
-
-		// So that they can be inserted into the current filtered
-		// options in a child array with the first related option
-		// OUTPUT
-		// Array [
-		//   0: Array [
-		//     0: {id: "account", label: "Accounts", type: "separator"}
-		//     1: {id: "1", label: "Acme", type: "account"}
-		//   ]
-		// ]
-		return subheadingRelatedToFilteredOption
-			? [subheadingRelatedToFilteredOption, option]
-			: [option];
+	// populate an object with subheader ID as the keys
+	subheadingsCopy.forEach((subH) => {
+		if (subH.id) {
+			sortedOptions[subH.id] = [subH];
+		}
 	});
 
+	// sort options into arrays using option type
+	// if option type and subheader ID are equal, add to array, if no option type, add to noSubHeaderType array
+	filteredOptions.forEach((option) => {
+		if (sortedOptions[option.type]) {
+			sortedOptions[option.type].push(option);
+		} else {
+			sortedOptions.noSubHeaderType.push(option);
+		}
+	});
+
+	// get object values by dropping keys
 	// flatten and remove child arrays, so that we have one array
 	// `...` operates on each array item, not the array
-	return [].concat(...filteredOptionsWithSubheadings);
+	return [].concat(...Object.values(sortedOptions));
 };
 
 export default addSubheadings;

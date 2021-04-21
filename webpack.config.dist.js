@@ -2,7 +2,7 @@
 const fs = require('fs');
 const webpack = require('webpack');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const packageJson = require('./package.json');
 
 const header = `${packageJson.name}\nv${packageJson.version}\n`;
@@ -38,7 +38,7 @@ const config = Object.assign({}, baseConfig, {
 let FILENAME = process.env.INCLUDE_ICONS ? '[name].js' : '[name]-components.js';
 if (process.env.MINIFY) {
 	config.optimization = {
-		minimizer: [new UglifyJsPlugin()],
+		minimizer: [new TerserPlugin()],
 	};
 	FILENAME = process.env.INCLUDE_ICONS
 		? '[name].min.js'
@@ -62,6 +62,7 @@ const replacementsArr = [
 
 // This string replacement includes icons in the bundle and affects `icons/**/index.js` which are built by `npm run icons`. The default condition is an equality comparison of two constants, `'__EXCLUDE_SLDS_ICONS__' === '__INCLUDE_SLDS_ICONS__'`, which will allow minification to remove the inline icons and save 100KBs in size when bundling for production. The following makes the condition equal.
 if (process.env.INCLUDE_ICONS) {
+	// eslint-disable-next-line fp/no-mutating-methods
 	replacementsArr.push({
 		pattern: /__EXCLUDE_SLDS_ICONS__/g,
 		replacement: () => '__INCLUDE_SLDS_ICONS__',
@@ -75,7 +76,9 @@ config.module.rules[0].loaders = [
 	}),
 ];
 
+// eslint-disable-next-line fp/no-mutating-methods
 config.plugins.push(new webpack.BannerPlugin(header + license));
+// eslint-disable-next-line fp/no-mutating-methods
 config.plugins.push(
 	new webpack.DefinePlugin({
 		'process.env': { NODE_ENV: JSON.stringify('production') },

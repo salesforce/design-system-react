@@ -2,15 +2,11 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // ### React
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // ### classNames
 import classNames from 'classnames';
-
-import CellContext from './private/cell-context';
-import TableContext from './private/table-context';
-import keyboardNavState from './private/keyboard-nav-state';
 
 // ## Constants
 import { DATA_TABLE_CELL } from '../../utilities/constants';
@@ -19,13 +15,6 @@ import { DATA_TABLE_CELL } from '../../utilities/constants';
  * The default Cell renderer for the DataTable. Pass in any React component with the same `displayName` which takes the same props to provide custom rendering.
  */
 const DataTableCell = (props) => {
-	const tableContext = useContext(TableContext);
-	const cellContext = useContext(CellContext);
-	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = keyboardNavState(
-		tableContext,
-		cellContext,
-		props.fixedLayout
-	);
 	const childText = React.isValidElement(props.children)
 		? props.children.props.children
 		: props.children;
@@ -40,24 +29,13 @@ const DataTableCell = (props) => {
 		</div>
 	);
 
-	const className = classNames(props.className, {
-		'slds-has-focus': hasFocus,
-	});
-	const ref = (node) => {
-		if (node && hasFocus) {
-			node.focus();
-		}
-	};
 	let cell = (
-		// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
 		<td
-			className={className}
-			onFocus={handleFocus}
-			onKeyDown={handleKeyDown}
-			ref={ref}
+			className={props.className}
+			data-label={props.label}
 			role={props.fixedLayout ? 'gridcell' : null}
 			style={props.width ? { width: props.width } : null}
-			tabIndex={tabIndex}
+			headers={props.headerId}
 		>
 			{contents}
 		</td>
@@ -66,13 +44,10 @@ const DataTableCell = (props) => {
 	if (props.primaryColumn) {
 		cell = (
 			<th
-				className={className}
-				ref={ref}
+				className={props.className}
+				data-label={props.label}
 				role={props.fixedLayout ? 'gridcell' : null}
-				tabIndex={tabIndex}
 				style={props.width ? { width: props.width } : null}
-				onFocus={handleFocus}
-				onKeyDown={handleKeyDown}
 			>
 				{contents}
 			</th>

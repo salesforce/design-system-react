@@ -10,6 +10,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Spinner from '../../../components/spinner';
 
+import getAriaProps from '../../../utilities/get-aria-props';
+
 const COUNTER = 'counter';
 
 const propTypes = {
@@ -24,7 +26,7 @@ const propTypes = {
 	'aria-controls': PropTypes.string,
 	'aria-describedby': PropTypes.string,
 	'aria-expanded': PropTypes.bool,
-	'aria-haspopup': PropTypes.bool,
+	'aria-haspopup': PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 	'aria-labelledby': PropTypes.string,
 	/**
 	 * An HTML ID that is shared with ARIA-supported devices with the
@@ -94,10 +96,6 @@ const propTypes = {
 	 * Every input must have a unique ID in order to support keyboard navigation and ARIA support.
 	 */
 	id: PropTypes.string.isRequired,
-	/**
-	 * Displays help text under the input.
-	 */
-	inlineHelpText: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
 	 */
@@ -217,6 +215,11 @@ const defaultProps = {
  * This component was created to allow the DIV wrapped input to be used within other components such as combobox. This components API is not public.
  */
 const InnerInput = (props) => {
+	const ariaProps = getAriaProps(props);
+	ariaProps['aria-describedby'] = props.hasSpinner
+		? `loading-status-icon ${props['aria-describedby']}`
+		: props['aria-describedby'];
+
 	const {
 		className: containerClassName,
 		...containerProps
@@ -249,18 +252,6 @@ const InnerInput = (props) => {
 
 			{!props.isStatic && (
 				<input
-					aria-activedescendant={props['aria-activedescendant']}
-					aria-autocomplete={props['aria-autocomplete']}
-					aria-controls={props['aria-controls']}
-					aria-labelledby={props['aria-labelledby']}
-					aria-describedby={
-						props.hasSpinner
-							? `loading-status-icon ${props['aria-describedby']}`
-							: props['aria-describedby']
-					}
-					aria-expanded={props['aria-expanded']}
-					aria-owns={props['aria-owns']}
-					aria-required={props['aria-required']}
 					autoComplete={props.autoComplete}
 					className={classNames(
 						'slds-input',
@@ -297,6 +288,7 @@ const InnerInput = (props) => {
 					style={props.style}
 					tabIndex={props.tabIndex}
 					type={props.type}
+					{...ariaProps}
 					/* A form element should not have both value and defaultValue props. */
 					{...(props.value !== undefined
 						? { value: props.value }
@@ -336,10 +328,6 @@ const InnerInput = (props) => {
 				</span>
 			)}
 			{/* eslint-enable jsx-a11y/no-static-element-interactions */}
-
-			{props.inlineHelpText && (
-				<div className="slds-form-element__help">{props.inlineHelpText}</div>
-			)}
 		</div>
 	);
 };

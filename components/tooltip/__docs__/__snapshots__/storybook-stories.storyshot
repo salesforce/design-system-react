@@ -12,6 +12,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
 >
   <div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -23,6 +24,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -61,6 +63,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -72,6 +75,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -110,6 +114,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -121,6 +126,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -159,6 +165,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -170,6 +177,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -208,6 +216,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -219,6 +228,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -257,6 +267,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -268,6 +279,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -306,6 +318,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -317,6 +330,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -355,6 +369,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -366,6 +381,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -404,6 +420,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -415,6 +432,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -453,6 +471,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -464,6 +483,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -502,6 +522,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -513,6 +534,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -551,6 +573,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -562,6 +585,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -615,6 +639,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
 >
   <div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -626,6 +651,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -637,7 +663,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -670,6 +696,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -681,6 +708,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -692,7 +720,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -725,6 +753,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -736,6 +765,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -747,7 +777,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -780,6 +810,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -791,6 +822,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -802,7 +834,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -835,6 +867,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -846,6 +879,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -857,7 +891,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -890,6 +924,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -901,6 +936,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -912,7 +948,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -945,6 +981,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -956,6 +993,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -967,7 +1005,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -1000,6 +1038,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1011,6 +1050,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1022,7 +1062,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -1055,6 +1095,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1066,6 +1107,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1077,7 +1119,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -1110,6 +1152,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1121,6 +1164,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1132,7 +1176,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -1165,6 +1209,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1176,6 +1221,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1187,7 +1233,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -1220,6 +1266,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1231,6 +1278,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1242,7 +1290,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
             className="slds-icon slds-icon_small"
           >
             <use
-              xlinkHref="/assets/icons/standard-sprite/svg/symbols.svg#case"
+              href="/assets/icons/standard-sprite/svg/symbols.svg#case"
             />
           </svg>
           <span
@@ -1290,6 +1338,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
 >
   <div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1301,6 +1350,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1336,6 +1386,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1347,6 +1398,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1382,6 +1434,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1393,6 +1446,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1428,6 +1482,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1439,6 +1494,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1474,6 +1530,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1485,6 +1542,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1520,6 +1578,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1531,6 +1590,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1566,6 +1626,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1577,6 +1638,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1612,6 +1674,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1623,6 +1686,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1658,6 +1722,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1669,6 +1734,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1704,6 +1770,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1715,6 +1782,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1750,6 +1818,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1761,6 +1830,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1796,6 +1866,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       </div>
     </div>
     <div
+      data-ignore-axe-duplicate-id-aria={true}
       style={
         Object {
           "margin": "100px auto",
@@ -1807,6 +1878,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1860,6 +1932,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Base 1`] = `
     style={
       Object {
         "display": "inline-block",
+        "lineHeight": "1",
       }
     }
   >
@@ -1879,7 +1952,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Base 1`] = `
         className="slds-button__icon"
       >
         <use
-          xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+          href="/assets/icons/utility-sprite/svg/symbols.svg#info"
         />
       </svg>
       <span
@@ -1908,6 +1981,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button 1`] = `
     style={
       Object {
         "display": "inline-block",
+        "lineHeight": "1",
       }
     }
   >
@@ -1941,6 +2015,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
 >
   <ul
     className="slds-button-group-list slds-p-bottom_medium"
+    id="button-group-tooltip"
   >
     <li>
       <div
@@ -1948,6 +2023,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1973,6 +2049,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -1998,6 +2075,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
         style={
           Object {
             "display": "inline-block",
+            "lineHeight": "1",
           }
         }
       >
@@ -2025,7 +2103,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
               className="slds-button__icon"
             >
               <use
-                xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                href="/assets/icons/utility-sprite/svg/symbols.svg#down"
               />
             </svg>
             <span
@@ -2057,11 +2135,12 @@ exports[`DOM snapshots SLDSPopoverTooltip Learn More 1`] = `
     style={
       Object {
         "display": "inline-block",
+        "lineHeight": "1",
       }
     }
   >
     <a
-      href="javascript:void(0)"
+      href="#"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2074,7 +2153,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Learn More 1`] = `
           className="slds-icon slds-icon_x-small slds-icon-text-default"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
           />
         </svg>
         <span
@@ -2104,6 +2183,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Open 1`] = `
     style={
       Object {
         "display": "inline-block",
+        "lineHeight": "1",
       }
     }
   >
@@ -2139,6 +2219,438 @@ exports[`DOM snapshots SLDSPopoverTooltip Open 1`] = `
         Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
       </div>
     </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "150px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div>
+    <div
+      className="slds-tooltip-trigger"
+      style={
+        Object {
+          "display": "inline-block",
+          "lineHeight": "1",
+        }
+      }
+    >
+      <style>
+        #anchored-nubbin-top:after, #anchored-nubbin-top:before {
+	display: none;
+}
+      </style>
+      <div
+        style={
+          Object {
+            "height": "0",
+            "left": "0px",
+            "position": "relative",
+            "top": "0",
+            "width": "0",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "backgroundColor": "#16325c",
+              "content": "",
+              "height": "1rem",
+              "left": "-8px",
+              "position": "absolute",
+              "top": "-19px",
+              "transform": "rotate(45deg)",
+              "width": "1rem",
+            }
+          }
+        />
+      </div>
+      <button
+        aria-describedby="anchored-nubbin-top"
+        aria-disabled={true}
+        className="slds-button slds-button_icon"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Help
+        </span>
+      </button>
+      <div
+        className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
+        id="anchored-nubbin-top"
+        onKeyDown={[Function]}
+        role="tooltip"
+        style={
+          Object {
+            "outline": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+          }
+        }
+      >
+        <div
+          className="slds-popover__body"
+        >
+          Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "marginTop": "1rem",
+      }
+    }
+  >
+    <div
+      className="slds-tooltip-trigger"
+      style={
+        Object {
+          "display": "inline-block",
+          "lineHeight": "1",
+        }
+      }
+    >
+      <style>
+        #anchored-nubbin-right:after, #anchored-nubbin-right:before {
+	display: none;
+}
+      </style>
+      <div
+        style={
+          Object {
+            "height": "0",
+            "left": "0px",
+            "position": "relative",
+            "top": "0px",
+            "width": "0",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "backgroundColor": "#16325c",
+              "content": "",
+              "height": "1rem",
+              "left": "3px",
+              "position": "absolute",
+              "top": "-9px",
+              "transform": "rotate(45deg)",
+              "width": "1rem",
+            }
+          }
+        />
+      </div>
+      <button
+        aria-describedby="anchored-nubbin-right"
+        aria-disabled={true}
+        className="slds-button slds-button_icon"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Help
+        </span>
+      </button>
+      <div
+        className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
+        id="anchored-nubbin-right"
+        onKeyDown={[Function]}
+        role="tooltip"
+        style={
+          Object {
+            "outline": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+          }
+        }
+      >
+        <div
+          className="slds-popover__body"
+        >
+          Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "marginTop": "1rem",
+      }
+    }
+  >
+    <div
+      className="slds-tooltip-trigger"
+      style={
+        Object {
+          "display": "inline-block",
+          "lineHeight": "1",
+        }
+      }
+    >
+      <style>
+        #anchored-nubbin-left:after, #anchored-nubbin-left:before {
+	display: none;
+}
+      </style>
+      <div
+        style={
+          Object {
+            "height": "0",
+            "left": "0",
+            "position": "relative",
+            "top": "0px",
+            "width": "0",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "backgroundColor": "#16325c",
+              "content": "",
+              "height": "1rem",
+              "left": "-19px",
+              "position": "absolute",
+              "top": "-9px",
+              "transform": "rotate(45deg)",
+              "width": "1rem",
+            }
+          }
+        />
+      </div>
+      <button
+        aria-describedby="anchored-nubbin-left"
+        aria-disabled={true}
+        className="slds-button slds-button_icon"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Help
+        </span>
+      </button>
+      <div
+        className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
+        id="anchored-nubbin-left"
+        onKeyDown={[Function]}
+        role="tooltip"
+        style={
+          Object {
+            "outline": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+          }
+        }
+      >
+        <div
+          className="slds-popover__body"
+        >
+          Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "marginTop": "1rem",
+      }
+    }
+  >
+    <div
+      className="slds-tooltip-trigger"
+      style={
+        Object {
+          "display": "inline-block",
+          "lineHeight": "1",
+        }
+      }
+    >
+      <style>
+        #anchored-nubbin-bottom:after, #anchored-nubbin-bottom:before {
+	display: none;
+}
+      </style>
+      <div
+        style={
+          Object {
+            "height": "0",
+            "left": "0px",
+            "position": "relative",
+            "top": "0px",
+            "width": "0",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "backgroundColor": "#16325c",
+              "content": "",
+              "height": "1rem",
+              "left": "-8px",
+              "position": "absolute",
+              "top": "3px",
+              "transform": "rotate(45deg)",
+              "width": "1rem",
+            }
+          }
+        />
+      </div>
+      <button
+        aria-describedby="anchored-nubbin-bottom"
+        aria-disabled={true}
+        className="slds-button slds-button_icon"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Help
+        </span>
+      </button>
+      <div
+        className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
+        id="anchored-nubbin-bottom"
+        onKeyDown={[Function]}
+        role="tooltip"
+        style={
+          Object {
+            "outline": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+          }
+        }
+      >
+        <div
+          className="slds-popover__body"
+        >
+          Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopoverTooltip With Delay 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "150px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    className="slds-tooltip-trigger"
+    style={
+      Object {
+        "display": "inline-block",
+        "lineHeight": "1",
+      }
+    }
+  >
+    <button
+      aria-disabled={true}
+      className="slds-button slds-button_icon"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#info"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Help
+      </span>
+    </button>
+    <span />
   </div>
 </div>
 `;

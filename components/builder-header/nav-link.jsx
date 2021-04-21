@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import EventUtil from '../../utilities/event';
 
 import Icon from '../icon';
 
@@ -58,12 +59,13 @@ const BuilderHeaderNavLink = (props) => {
 		...defaultProps.assistiveText,
 		...props.assistiveText,
 	};
+
 	return (
 		<li className="slds-builder-header__nav-item">
 			<a
 				className="slds-builder-header__item-action slds-media slds-media_center"
-				href="javascript:void(0)"
-				onClick={props.onClick}
+				href="#"
+				onClick={EventUtil.trappedHandler(props.onClick)}
 			>
 				<span className="slds-media__figure">
 					<Icon

@@ -1,6 +1,6 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
-import Checkbox from '~/components/forms/checkbox';
+import Checkbox from '~/components/checkbox';
 import Combobox from '~/components/combobox';
 import IconSettings from '~/components/icon-settings';
 import Popover from '~/components/popover';
@@ -101,7 +101,7 @@ class Example extends React.Component {
 													id={`checkbox-${i}`}
 													key={`checkbox-${i + 1}`}
 													labels={{ label: language }}
-													onChange={(checked, e) => {
+													onChange={(e, { checked }) => {
 														this.handleCheckboxChange(
 															checked,
 															e.target,

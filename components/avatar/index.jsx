@@ -18,7 +18,7 @@ import checkProps from './check-props';
 import classNames from '../../utilities/class-names';
 import { AVATAR } from '../../utilities/constants';
 import UtilityIcon from '../icon';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ### Display Name Always use the canonical component name as the React display
 // name.
@@ -94,10 +94,8 @@ class Avatar extends React.Component {
 		this.state = {
 			imgLoadError: false,
 		};
-	}
 
-	componentWillMount() {
-		checkProps(AVATAR, this.props, componentDoc);
+		checkProps(AVATAR, props, componentDoc);
 	}
 
 	buildInitials() {
@@ -137,7 +135,7 @@ class Avatar extends React.Component {
 				: {
 						...defaultProps.assistiveText,
 						...this.props.assistiveText,
-					}.icon;
+				  }.icon;
 		return (
 			<UtilityIcon
 				assistiveText={{ label: iconAssistiveText }}

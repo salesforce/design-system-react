@@ -9,7 +9,7 @@ class Example extends React.Component {
 				<ScopedNotification theme="dark">
 					<p>
 						It looks as if duplicates exist for this lead.{' '}
-						<a href="javascript:void(0);">View Duplicates.</a>
+						<a href="#">View Duplicates.</a>
 					</p>
 				</ScopedNotification>
 			</IconSettings>

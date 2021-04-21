@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import EventUtil from '../../utilities/event';
 
 import Icon from '../icon';
 
@@ -8,6 +9,7 @@ import {
 	BUILDER_HEADER,
 	BUILDER_HEADER_NAV,
 	BUILDER_HEADER_TOOLBAR,
+	BUILDER_HEADER_MISC,
 } from '../../utilities/constants';
 
 const propTypes = {
@@ -25,11 +27,12 @@ const propTypes = {
 		icon: PropTypes.string,
 	}),
 	/**
-	 * Provide children of the types `<BuilderHeaderNav />` or `<BuilderHeaderToolbar />` to define the structure of the header.
+	 * Provide children of the types `<BuilderHeaderNav />`, `<BuilderHeaderToolbar />`, or `<BuilderHeaderMisc />` to define the structure of the header.
 	 * ```
 	 * <BuilderHeader>
 	 *   <BuilderHeaderNav />
 	 *   <BuilderHeaderToolbar />
+	 *   <BuilderHeaderMisc />
 	 * </BuilderHeader>
 	 * ```
 	 */
@@ -52,6 +55,26 @@ const propTypes = {
 		onClickBack: PropTypes.func,
 		onClickHelp: PropTypes.func,
 	}),
+	/**
+	 * Category of the title icon from [lightningdesignsystem.com/icons/](https://www.lightningdesignsystem.com/icons/)
+	 */
+	iconCategory: PropTypes.string,
+	/**
+	 * CSS classes that are applied to the title icon.
+	 */
+	iconClassName: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.object,
+		PropTypes.string,
+	]),
+	/**
+	 * Name of the title icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
+	 */
+	iconName: PropTypes.string,
+	/**
+	 * Path to the title icon. This will override any global icon settings.
+	 */
+	iconPath: PropTypes.string,
 	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
@@ -79,6 +102,8 @@ const defaultProps = {
 		helpIcon: 'Help',
 		icon: 'Builder',
 	},
+	iconCategory: 'utility',
+	iconName: 'builder',
 	labels: {
 		back: 'Back',
 		help: 'Help',
@@ -106,6 +131,7 @@ const BuilderHeader = (props) => {
 
 	let nav;
 	let toolbar;
+	const misc = [];
 	React.Children.forEach(props.children, (child) => {
 		if (child) {
 			switch (child.type.displayName) {
@@ -115,10 +141,23 @@ const BuilderHeader = (props) => {
 				case BUILDER_HEADER_TOOLBAR:
 					toolbar = child;
 					break;
+				case BUILDER_HEADER_MISC:
+					// eslint-disable-next-line fp/no-mutating-methods
+					misc.push(child);
+					break;
 				default:
 			}
 		}
 	});
+
+	let iconCategory;
+	let iconName;
+	let iconPath;
+	if (props.iconPath) {
+		({ iconPath } = props);
+	} else {
+		({ iconCategory, iconName } = props);
+	}
 
 	return (
 		<div style={{ position: 'relative', height: '100px' }}>
@@ -132,9 +171,15 @@ const BuilderHeader = (props) => {
 							<div className="slds-media__figure">
 								<Icon
 									assistiveText={{ label: assistiveText.icon }}
-									category="utility"
-									containerClassName="slds-icon_container slds-icon-utility-builder slds-current-color"
-									name="builder"
+									category={iconCategory}
+									containerClassName={classNames(
+										'slds-icon_container',
+										'slds-icon-utility-builder',
+										'slds-current-color',
+										props.iconClassName
+									)}
+									name={iconName}
+									path={iconPath}
 									size="x-small"
 								/>
 							</div>
@@ -142,19 +187,25 @@ const BuilderHeader = (props) => {
 						</div>
 					</div>
 					{nav}
-					<div className="slds-builder-header__item slds-has-flexi-truncate">
-						<h1 className="slds-builder-header__item-label">
-							<span className="slds-truncate" title={labels.pageType}>
-								{labels.pageType}
-							</span>
-						</h1>
-					</div>
+
+					{misc.length > 0 ? (
+						misc
+					) : (
+						<div className="slds-builder-header__item slds-has-flexi-truncate">
+							<h1 className="slds-builder-header__item-label">
+								<span className="slds-truncate" title={labels.pageType}>
+									{labels.pageType}
+								</span>
+							</h1>
+						</div>
+					)}
+
 					<div className="slds-builder-header__item slds-builder-header__utilities">
 						<div className="slds-builder-header__utilities-item">
 							<a
-								href="javascript:void(0);"
+								href="#"
 								className="slds-builder-header__item-action slds-media slds-media_center"
-								onClick={events.onClickBack}
+								onClick={EventUtil.trappedHandler(events.onClickBack)}
 							>
 								<div className="slds-media__figure">
 									<Icon
@@ -170,9 +221,9 @@ const BuilderHeader = (props) => {
 						</div>
 						<div className="slds-builder-header__utilities-item">
 							<a
-								href="javascript:void(0);"
+								href="#"
 								className="slds-builder-header__item-action slds-media slds-media_center"
-								onClick={events.onClickHelp}
+								onClick={EventUtil.trappedHandler(events.onClickHelp)}
 							>
 								<div className="slds-media__figure">
 									<Icon

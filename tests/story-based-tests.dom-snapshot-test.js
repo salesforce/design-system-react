@@ -22,8 +22,8 @@ console.log(`
 QUEUEING: STORY-BASED DOM SNAPSHOT TESTING
 ★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★
 
-EXECUTING /tests/story-based-tests.snapshot-test.js
-BASED ON STORYBOOK STORIES FOUND IN /components/storybook-stories.js
+EXECUTING /tests/story-based-tests.dom.snapshot-test.js
+BASED ON STORYBOOK STORIES FOUND IN /components/
 
 This script uses Jest to call Storyshots 
 https://github.com/storybooks/storybook/tree/next/addons/storyshots on each 

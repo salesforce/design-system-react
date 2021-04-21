@@ -18,6 +18,8 @@ import classNames from 'classnames';
 // ## Constants
 import { TAB } from '../../../utilities/constants';
 
+import Icon from '../../icon';
+
 /*
  * Disabled Tab CSS has been removed. If you'd like to use the styling, please import it in your module bundler.
  */
@@ -43,7 +45,7 @@ class Tab extends React.Component {
 		focus: PropTypes.bool,
 
 		/**
-		 * When `true`, the class `.slds-active` is applied.
+		 * When `true`, the class `.slds-is-active` is applied.
 		 */
 		selected: PropTypes.bool,
 
@@ -53,7 +55,7 @@ class Tab extends React.Component {
 		disabled: PropTypes.bool,
 
 		/**
-		 * The CSS class to be applied when this tab is selected. Defaults to `.slds-active`. If another class is desired, it should be passed in _along with_ `.slds-active`, not _instead_ of it.
+		 * The CSS class to be applied when this tab is selected. Defaults to `.slds-is-active`. If another class is desired, it should be passed in _along with_ `.slds-is-active`, not _instead_ of it.
 		 */
 		activeTabClassName: PropTypes.string,
 
@@ -73,17 +75,35 @@ class Tab extends React.Component {
 		children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
 		/**
-		 * If the Tabs should be scopped, defaults to false
+		 * If the Tabs should be scoped, vertical, or default (default value)
 		 */
-		variant: PropTypes.oneOf(['default', 'scoped']),
+		variant: PropTypes.oneOf(['default', 'scoped', 'vertical']),
+
+		/**
+		 * Show an icon that can be used to communicate when a tab contains a validation error that needs attention
+		 */
+		hasError: PropTypes.bool,
+
+		/**
+		 * **Assistive text for accessibility**
+		 * This object is merged with the default props object on every render.
+		 * * `withErrorIcon`: This text is for the error icon that will be placed next to the `<Tab />` title
+		 */
+		assistiveText: PropTypes.shape({
+			withErrorIcon: PropTypes.string,
+		}),
 	};
 
 	static defaultProps = {
 		focus: false,
 		selected: false,
-		activeTabClassName: 'slds-active',
+		activeTabClassName: 'slds-is-active',
 		disabledTabClassName: 'slds-disabled',
 		variant: 'default',
+		hasError: false,
+		assistiveText: {
+			withErrorIcon: 'This item has an error',
+		},
 	};
 
 	componentDidMount() {
@@ -111,15 +131,23 @@ class Tab extends React.Component {
 			children,
 			id,
 			variant,
+			hasError,
 		} = this.props;
 		let tabIndex;
 
+		/**
+		 * Desired a11y behaviour: The active Tab should get focus when the user presses the
+		 * Tab key. After that, Arrow keys should be used to change the focus from one tab
+		 * to another. Pressing the Tab key one more time should move the focus away from the
+		 * Tab group.
+		 *
+		 * Here, we put the selected Tab in the navigation path (tabIndex = 0) and remove other
+		 * tabs from navigation path (tabIndex = -1).
+		 */
 		if (selected) {
 			tabIndex = '0';
-		} else if (disabled) {
-			tabIndex = '-1';
 		} else {
-			tabIndex = null;
+			tabIndex = '-1';
 		}
 
 		return (
@@ -129,12 +157,9 @@ class Tab extends React.Component {
 					[disabledTabClassName]: disabled,
 					'slds-tabs_default__item': variant === 'default',
 					'slds-tabs_scoped__item': variant === 'scoped',
+					'slds-vertical-tabs__nav-item': variant === 'vertical',
 				})}
 				role="presentation"
-				ref={(node) => {
-					this.node = node;
-				}}
-				tabIndex={tabIndex}
 				id={id}
 				title={typeof children === 'string' ? children : null}
 			>
@@ -144,15 +169,40 @@ class Tab extends React.Component {
 						[disabledTabClassName]: disabled,
 						'slds-tabs_default__link': variant === 'default',
 						'slds-tabs_scoped__link': variant === 'scoped',
+						'slds-vertical-tabs__link': variant === 'vertical',
 					})}
-					href="javascript:void(0);" // eslint-disable-line no-script-url
+					href="#"
 					role="tab"
-					tabIndex="-1"
+					ref={(node) => {
+						this.node = node;
+					}}
+					tabIndex={tabIndex}
 					aria-controls={panelId}
 					aria-disabled={disabled}
 					aria-selected={selected ? 'true' : 'false'}
+					onClick={(event) => event.preventDefault()}
 				>
 					{children}
+					{hasError && (
+						<span
+							className={classNames({
+								'slds-tabs__right-icon': variant !== 'vertical',
+								'slds-vertical-tabs__right-icon': variant === 'vertical',
+							})}
+						>
+							<Icon
+								assistiveText={{
+									label: this.props.assistiveText.withErrorIcon,
+								}}
+								category="utility"
+								containerClassName="slds-icon_container slds-icon-utility-error"
+								size="x-small"
+								name="error"
+								colorVariant="error"
+								title={this.props.assistiveText.withErrorIcon}
+							/>
+						</span>
+					)}
 				</a>
 			</li>
 		);

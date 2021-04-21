@@ -18,18 +18,46 @@ const inverseContainer = (getStory) => (
 	<div style={inverseContainerStyle}>{getStory()}</div>
 );
 
+const inlineContainerStyle = {
+	height: '4rem',
+};
+
+const inlineContainer = (getStory) => (
+	<div className="slds-align_absolute-center" style={inlineContainerStyle}>
+		{getStory()}
+	</div>
+);
+
 storiesOf(SPINNER, module)
 	.addDecorator((getStory) => (
 		<div className="slds-p-around_medium">
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
+	.add('Xx-Small', () =>
+		getSpinner({
+			size: 'xx-small',
+			variant: 'base',
+			assistiveText: {
+				label: 'Main Frame Loading...',
+			},
+		})
+	)
+	.add('X-Small', () =>
+		getSpinner({
+			size: 'x-small',
+			variant: 'base',
+			assistiveText: {
+				label: 'Main Frame Loading...',
+			},
+		})
+	)
 	.add('Small', () =>
 		getSpinner({
 			size: 'small',
 			variant: 'base',
 			assistiveText: {
-				label: 'Small spinner',
+				label: 'Main Frame Loading...',
 			},
 		})
 	)
@@ -43,6 +71,18 @@ storiesOf(SPINNER, module)
 		getSpinner({
 			size: 'large',
 			variant: 'base',
+		})
+	)
+	.add('Brand Xx-Small', () =>
+		getSpinner({
+			size: 'xx-small',
+			variant: 'brand',
+		})
+	)
+	.add('Brand X-Small', () =>
+		getSpinner({
+			size: 'x-small',
+			variant: 'brand',
 		})
 	)
 	.add('Brand Small', () =>
@@ -72,6 +112,24 @@ storiesOf(SPINNER, module)
 		})
 	)
 	.add(
+		'Inverse Xx-Small',
+		() =>
+			getSpinner({
+				size: 'xx-small',
+				variant: 'inverse',
+			}),
+		{ decorators: [inverseContainer] }
+	)
+	.add(
+		'Inverse X-Small',
+		() =>
+			getSpinner({
+				size: 'x-small',
+				variant: 'inverse',
+			}),
+		{ decorators: [inverseContainer] }
+	)
+	.add(
 		'Inverse Small',
 		() =>
 			getSpinner({
@@ -97,5 +155,22 @@ storiesOf(SPINNER, module)
 				variant: 'inverse',
 			}),
 		{ decorators: [inverseContainer] }
+	)
+	.add(
+		'Inline',
+		() =>
+			getSpinner({
+				isInline: true,
+				hasContainer: false,
+			}),
+		{ decorators: [inlineContainer] }
+	)
+	.add(
+		'No Container',
+		() =>
+			getSpinner({
+				hasContainer: false,
+			}),
+		{ decorators: [inlineContainer] }
 	)
 	.add('Docs site Default', () => <Default />);

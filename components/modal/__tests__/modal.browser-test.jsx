@@ -13,7 +13,7 @@ import Settings from '../../settings';
 
 const { Simulate } = TestUtils;
 
-describe('SLDSModal: ', function() {
+describe('SLDSModal: ', function () {
 	let container;
 	let renderedNode;
 
@@ -48,7 +48,8 @@ describe('SLDSModal: ', function() {
 			</button>
 		);
 		document.body.appendChild(container);
-		renderedNode = ReactDOM.render(opener, container);
+		// eslint-disable-next-line react/no-render-return-value
+		renderedNode = ReactDOM.render(opener, container); // deepscan-disable-line REACT_ASYNC_RENDER_RETURN_VALUE
 		return renderedNode;
 	};
 
@@ -57,6 +58,9 @@ describe('SLDSModal: ', function() {
 
 	const getModal = (props) => renderModal(createModal(props));
 
+	const getModalContainerNode = (dom) =>
+		dom.querySelector('[role="dialog"]') ||
+		dom.querySelector('[role="alertdialog"]');
 	const getModalNode = (dom) => dom.querySelector('.slds-modal');
 
 	describe('Styling', () => {
@@ -176,7 +180,7 @@ describe('SLDSModal: ', function() {
 				isOpen: true,
 				size: 'medium',
 			});
-			const modal = getModalNode(document.body);
+			const modal = getModalContainerNode(document.body);
 			const role = modal.getAttribute('role');
 			expect(role).to.equal('dialog');
 		});
@@ -186,7 +190,7 @@ describe('SLDSModal: ', function() {
 				isOpen: true,
 				disableClose: true,
 			});
-			const modal = getModalNode(document.body);
+			const modal = getModalContainerNode(document.body);
 			const role = modal.getAttribute('role');
 			expect(role).to.equal('alertdialog');
 		});

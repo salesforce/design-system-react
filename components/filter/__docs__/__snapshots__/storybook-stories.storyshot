@@ -27,6 +27,7 @@ exports[`DOM snapshots SLDSFilter AssistiveTextFilter 1`] = `
           }
         >
           <button
+            aria-haspopup="dialog"
             className="slds-button_reset slds-grow slds-has-blur-focus"
             id="sample-panel-filtering-show-me"
             onClick={[Function]}
@@ -41,14 +42,16 @@ exports[`DOM snapshots SLDSFilter AssistiveTextFilter 1`] = `
             >
               editFilter-TEST
             </span>
-            <p
-              className="slds-text-body_small"
+            <span
+              className="slds-show slds-text-body_small"
             >
               Show Me
-            </p>
-            <p>
+            </span>
+            <span
+              className="slds-show"
+            >
               All Products
-            </p>
+            </span>
           </button>
         </div>
         <button
@@ -63,7 +66,7 @@ exports[`DOM snapshots SLDSFilter AssistiveTextFilter 1`] = `
             className="slds-button__icon slds-button__icon_hint"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
             />
           </svg>
           <span
@@ -93,64 +96,75 @@ exports[`DOM snapshots SLDSFilter ErrorFilter 1`] = `
         }
       }
     >
-      <div
-        className="slds-filters__item slds-grid slds-grid_vertical-align-center slds-has-error"
-      >
+      <div>
         <div
-          className="slds-grow"
-          style={
-            Object {
-              "display": "inline-block",
-            }
-          }
+          className="slds-filters__item slds-grid slds-grid_vertical-align-center slds-has-error"
         >
+          <div
+            className="slds-grow"
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <button
+              aria-describedby="sample-panel-filtering-show-me-error"
+              aria-haspopup="dialog"
+              className="slds-button_reset slds-grow slds-has-blur-focus"
+              id="sample-panel-filtering-show-me"
+              onClick={[Function]}
+              onFocus={null}
+              onMouseEnter={null}
+              onMouseLeave={null}
+              tabIndex="0"
+              type="button"
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Edit filter:
+              </span>
+              <span
+                className="slds-show slds-text-body_small"
+              >
+                Show Me
+              </span>
+              <span
+                className="slds-show"
+              >
+                All Products
+              </span>
+            </button>
+          </div>
           <button
-            aria-describedby="sample-panel-filtering-show-me-error"
-            className="slds-button_reset slds-grow slds-has-blur-focus"
-            id="sample-panel-filtering-show-me"
+            className="slds-button slds-button_icon slds-button_icon-bare slds-button_icon-small"
+            disabled={false}
             onClick={[Function]}
-            onFocus={null}
-            onMouseEnter={null}
-            onMouseLeave={null}
-            tabIndex="0"
+            title="Remove Filter: Show Me All Products"
             type="button"
           >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon slds-button__icon_hint"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
+              />
+            </svg>
             <span
               className="slds-assistive-text"
             >
-              Edit filter:
+              Remove Filter: Show Me All Products
             </span>
-            <p
-              className="slds-text-body_small"
-            >
-              Show Me
-            </p>
-            <p>
-              All Products
-            </p>
           </button>
         </div>
-        <button
-          className="slds-button slds-button_icon slds-button_icon-bare slds-button_icon-small"
-          disabled={false}
-          onClick={[Function]}
-          title="Remove Filter: Show Me All Products"
-          type="button"
+        <p
+          className="slds-text-color_error slds-m-top_xx-small"
+          id="sample-panel-filtering-show-me-error"
         >
-          <svg
-            aria-hidden="true"
-            className="slds-button__icon slds-button__icon_hint"
-          >
-            <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
-            />
-          </svg>
-          <span
-            className="slds-assistive-text"
-          >
-            Remove Filter: Show Me All Products
-          </span>
-        </button>
+          Error Message
+        </p>
       </div>
     </div>
   </div>
@@ -184,6 +198,7 @@ exports[`DOM snapshots SLDSFilter Filter 1`] = `
           }
         >
           <button
+            aria-haspopup="dialog"
             className="slds-button_reset slds-grow slds-has-blur-focus"
             id="sample-panel-filtering-show-me"
             onClick={[Function]}
@@ -198,14 +213,16 @@ exports[`DOM snapshots SLDSFilter Filter 1`] = `
             >
               Edit filter:
             </span>
-            <p
-              className="slds-text-body_small"
+            <span
+              className="slds-show slds-text-body_small"
             >
               Show Me
-            </p>
-            <p>
+            </span>
+            <span
+              className="slds-show"
+            >
               All Products
-            </p>
+            </span>
           </button>
         </div>
         <button
@@ -220,7 +237,7 @@ exports[`DOM snapshots SLDSFilter Filter 1`] = `
             className="slds-button__icon slds-button__icon_hint"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
             />
           </svg>
           <span
@@ -262,6 +279,7 @@ exports[`DOM snapshots SLDSFilter Filter Align Right 1`] = `
           }
         >
           <button
+            aria-haspopup="dialog"
             className="slds-button_reset slds-grow slds-has-blur-focus"
             id="sample-panel-filtering-show-me"
             onClick={[Function]}
@@ -276,14 +294,16 @@ exports[`DOM snapshots SLDSFilter Filter Align Right 1`] = `
             >
               Edit filter:
             </span>
-            <p
-              className="slds-text-body_small"
+            <span
+              className="slds-show slds-text-body_small"
             >
               Show Me
-            </p>
-            <p>
+            </span>
+            <span
+              className="slds-show"
+            >
               All Products
-            </p>
+            </span>
           </button>
         </div>
         <button
@@ -298,7 +318,7 @@ exports[`DOM snapshots SLDSFilter Filter Align Right 1`] = `
             className="slds-button__icon slds-button__icon_hint"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
             />
           </svg>
           <span
@@ -336,14 +356,16 @@ exports[`DOM snapshots SLDSFilter Locked Filter 1`] = `
           disabled={true}
           type="button"
         >
-          <p
-            className="slds-text-body_small"
+          <span
+            className="slds-show slds-text-body_small"
           >
             Show Me
-          </p>
-          <p>
+          </span>
+          <span
+            className="slds-show"
+          >
             All Products
-          </p>
+          </span>
         </button>
       </div>
     </div>
@@ -378,6 +400,7 @@ exports[`DOM snapshots SLDSFilter New Filter 1`] = `
           }
         >
           <button
+            aria-haspopup="dialog"
             className="slds-button_reset slds-grow slds-has-blur-focus"
             id="sample-panel-filtering-show-me"
             onClick={[Function]}
@@ -392,14 +415,16 @@ exports[`DOM snapshots SLDSFilter New Filter 1`] = `
             >
               Edit filter:
             </span>
-            <p
-              className="slds-text-body_small"
+            <span
+              className="slds-show slds-text-body_small"
             >
               Show Me
-            </p>
-            <p>
+            </span>
+            <span
+              className="slds-show"
+            >
               All Products
-            </p>
+            </span>
           </button>
         </div>
         <button
@@ -414,7 +439,7 @@ exports[`DOM snapshots SLDSFilter New Filter 1`] = `
             className="slds-button__icon slds-button__icon_hint"
           >
             <use
-              xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              href="/assets/icons/utility-sprite/svg/symbols.svg#delete"
             />
           </svg>
           <span
@@ -456,6 +481,7 @@ exports[`DOM snapshots SLDSFilter Permanant Filter 1`] = `
           }
         >
           <button
+            aria-haspopup="dialog"
             className="slds-button_reset slds-grow slds-has-blur-focus"
             id="sample-panel-filtering-show-me"
             onClick={[Function]}
@@ -470,14 +496,16 @@ exports[`DOM snapshots SLDSFilter Permanant Filter 1`] = `
             >
               Edit filter:
             </span>
-            <p
-              className="slds-text-body_small"
+            <span
+              className="slds-show slds-text-body_small"
             >
               Show Me
-            </p>
-            <p>
+            </span>
+            <span
+              className="slds-show"
+            >
               All Products
-            </p>
+            </span>
           </button>
         </div>
       </div>

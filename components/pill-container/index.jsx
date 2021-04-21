@@ -150,11 +150,6 @@ class PillContainer extends React.Component {
 	};
 
 	handleClickPill = (event, data) => {
-		this.setState({
-			activeSelectedOption: data.option,
-			activeSelectedOptionIndex: data.index,
-			listboxHasFocus: true,
-		});
 		if (this.props.onClickPill) {
 			this.props.onClickPill(event, {
 				index: data.index,
@@ -163,9 +158,13 @@ class PillContainer extends React.Component {
 		}
 	};
 
-	handlePillFocus = () => {
+	handlePillFocus = (event, data) => {
 		if (!this.state.listboxHasFocus) {
-			this.setState({ listboxHasFocus: true });
+			this.setState({
+				activeSelectedOption: data.option,
+				activeSelectedOptionIndex: data.index,
+				listboxHasFocus: true,
+			});
 		}
 	};
 

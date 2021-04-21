@@ -25,32 +25,24 @@ import Svg from '../utilities/utility-icon/svg';
 
 // ## Constants
 import { ILLUSTRATION } from '../../utilities/constants';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 /**
  * An illustration is an image and inline text that work in tandem to communicate a state in a more friendly way.
  */
-const Illustration = ({
-	className,
-	illustration,
-	internalIllustration,
-	heading,
-	messageBody,
-	name,
-	path,
-	size,
-	style,
-}) => {
-	checkProps(
-		'Illustration',
-		{
-			illustration,
-			internalIllustration,
-			heading,
-			path,
-		},
-		componentDoc
-	);
+const Illustration = (props) => {
+	const {
+		className,
+		illustration,
+		heading,
+		messageBody,
+		name,
+		path,
+		size,
+		style,
+	} = props;
+
+	checkProps('Illustration', props, componentDoc);
 	const kababCaseName = name ? name.replace(/_| /g, '-').toLowerCase() : '';
 	const styles = { ...style };
 	let illustrationSvg;

@@ -35,7 +35,7 @@ import Label from '../utilities/label';
 import checkProps from './check-props';
 
 import { INPUT } from '../../utilities/constants';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
 
 const COUNTER = 'counter';
@@ -317,14 +317,12 @@ class Input extends React.Component {
 			speedDelay: 75,
 			timeout: {},
 		};
-	}
 
-	componentWillMount() {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(INPUT, this.props, componentDoc);
+		checkProps(INPUT, props, componentDoc);
 
 		this.generatedId = shortid.generate();
-		if (this.props.errorText) {
+		if (props.errorText) {
 			this.generatedErrorId = shortid.generate();
 		}
 	}
@@ -504,8 +502,8 @@ class Input extends React.Component {
 
 		if (valueChanged) {
 			/*
-			* Use of `this.forceUpdate` is an anti-pattern. This code only executes if this `input` element is uncontrolled which this library believes is an anti-pattern, also. This code is only present to allow for the edge case of uncontrolled use of an `input`.
-			*/
+			 * Use of `this.forceUpdate` is an anti-pattern. This code only executes if this `input` element is uncontrolled which this library believes is an anti-pattern, also. This code is only present to allow for the edge case of uncontrolled use of an `input`.
+			 */
 			if (this.props.value === undefined && this.inputRef) {
 				this.inputRef.value = String(value);
 				this.forceUpdate();
@@ -633,7 +631,6 @@ class Input extends React.Component {
 					iconLeft={iconLeft}
 					iconRight={iconRight}
 					inlineEditTrigger={this.props.inlineEditTrigger}
-					inlineHelpText={this.props.inlineHelpText}
 					isStatic={this.props.isStatic}
 					minLength={this.props.minLength}
 					minValue={this.props.minValue}
@@ -663,6 +660,11 @@ class Input extends React.Component {
 					step={this.props.step}
 					style={this.props.styleInput}
 				/>
+				{this.props.inlineHelpText && (
+					<div className="slds-form-element__help">
+						{this.props.inlineHelpText}
+					</div>
+				)}
 				{this.props.errorText && (
 					<div id={this.getErrorId()} className="slds-form-element__help">
 						{this.props.errorText}

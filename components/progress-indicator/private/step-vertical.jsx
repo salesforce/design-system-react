@@ -35,6 +35,11 @@ const propTypes = {
 	 */
 	isSelected: PropTypes.bool,
 	/**
+	 * Triggered when click on individual steps. By default, it receives an event and returns all info passed to that step.
+	 * users are able to re-define it by passing a function as a prop
+	 */
+	onClick: PropTypes.func,
+	/**
 	 * Step object. This is passed into event callbacks.
 	 */
 	step: PropTypes.object,
@@ -52,6 +57,13 @@ class StepVertical extends React.Component {
 	 * stepIcon represents the icon used for each step.
 	 */
 	stepIcon = (renderIcon) => {
+		const data = {
+			isSelected: this.props.isSelected,
+			isError: this.props.isError,
+			isCompleted: this.props.isCompleted,
+			step: this.props.step,
+		};
+
 		const icon = renderIcon ? (
 			<Icon
 				category="utility"
@@ -60,7 +72,23 @@ class StepVertical extends React.Component {
 			/>
 		) : null;
 
-		return (
+		const handleClick = (event) => this.props.onClick(event, data);
+
+		return this.props.onClick ? (
+			<button
+				className={classNames('slds-button slds-progress__marker', {
+					'slds-progress__marker_icon': renderIcon,
+					'slds-progress__marker_icon-success':
+						this.props.variant === 'setup-assistant' &&
+						renderIcon &&
+						!this.props.isError,
+				})}
+				type="button"
+				onClick={handleClick}
+			>
+				{icon}
+			</button>
+		) : (
 			<span
 				className={classNames('slds-progress__marker', {
 					'slds-progress__marker_icon': renderIcon,
@@ -82,8 +110,9 @@ class StepVertical extends React.Component {
 		) {
 			return (
 				<div
-					id={`progress-indicator-vertical-label-${this.props.step.id ||
-						this.props.index}`}
+					id={`progress-indicator-vertical-label-${
+						this.props.step.id || this.props.index
+					}`}
 					className="slds-progress__item_content slds-grid slds-grid_align-spread"
 				>
 					<div className="slds-size_3-of-4">{this.props.step.label}</div>
@@ -102,8 +131,9 @@ class StepVertical extends React.Component {
 		}
 		return (
 			<div
-				id={`progress-indicator-vertical-label-${this.props.step.id ||
-					this.props.index}`}
+				id={`progress-indicator-vertical-label-${
+					this.props.step.id || this.props.index
+				}`}
 				className="slds-progress__item_content slds-grid slds-grid_align-spread"
 			>
 				{this.props.step.label}

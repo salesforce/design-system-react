@@ -174,6 +174,38 @@ const getTabsScoped = () => (
 	</div>
 );
 
+/* eslint-disable react/display-name */
+const getTabsVertical = () => (
+	<div>
+		<h2 className="slds-text-heading_large">Scoped Tabs Demo</h2>
+		<Tabs id="scoped-tabs-demo" variant="vertical">
+			<Panel label="Tab 1">
+				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
+				<p>And they&rsquo;re amazing.</p>
+				<p>It&quot;s awesome.</p>
+				<p>
+					You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate
+					around. Try it!
+				</p>
+				<p className="slds-box slds-theme_info slds-m-top_large">
+					(You might have to hit shift+tab to put the focus onto the tab bar ;)
+				</p>
+			</Panel>
+			<Panel label="Tab 2">
+				<h2 className="slds-text-heading_medium">This is my tab 2 contents!</h2>
+				<p>And they&rsquo;re also amazing.</p>
+			</Panel>
+			<Panel label="Tab 3 (disabled)" disabled>
+				Disabled tab content.
+			</Panel>
+			<Panel label="Tab 4">
+				<h2 className="slds-text-heading_medium">This is my tab 3 contents!</h2>
+				<p>And they&rsquo;re quite spectacular.</p>
+			</Panel>
+		</Tabs>
+	</div>
+);
+
 /* eslint-enable react/display-name */
 
 class DemoTabsConditional extends React.Component {
@@ -221,7 +253,7 @@ class DemoTabsConditional extends React.Component {
 					checked={this.state.disableB}
 					id="tabs-checkbox-pane-a-1"
 					onChange={this.handleCheckClickedDisable}
-					label="Disable tab B"
+					labels={{ label: 'Disable tab B' }}
 					name="disableB"
 				/>
 				<Checkbox
@@ -229,7 +261,7 @@ class DemoTabsConditional extends React.Component {
 					checked={this.state.disableC}
 					id="tabs-checkbox-pane-a-2"
 					onChange={this.handleCheckClickedDisable}
-					label="Disable tab C"
+					labels={{ label: 'Disable tab C' }}
 					name="disableC"
 				/>
 			</div>
@@ -246,7 +278,7 @@ class DemoTabsConditional extends React.Component {
 					checked={this.state.showA}
 					id="tabs-checkbox-tab-a-1"
 					onChange={this.handleCheckClicked}
-					label="Show tab A"
+					labels={{ label: 'Show tab A' }}
 					name="showA"
 				/>
 				<Checkbox
@@ -254,7 +286,7 @@ class DemoTabsConditional extends React.Component {
 					checked={this.state.showB}
 					id="tabs-checkbox-tab-b-1"
 					onChange={this.handleCheckClicked}
-					label="Show tab B"
+					labels={{ label: 'Show tab B' }}
 					name="showB"
 				/>
 
@@ -263,7 +295,7 @@ class DemoTabsConditional extends React.Component {
 					id="tabs-checkbox-tab-c-1"
 					onChange={this.handleCheckClicked}
 					assistiveText={{ label: 'Show tab C' }}
-					label="Show tab C"
+					labels={{ label: 'Show tab C' }}
 					name="showC"
 				/>
 
@@ -502,6 +534,49 @@ const getTabsDisabled = () => (
 /* eslint-enable react/display-name */
 
 /* eslint-disable react/display-name */
+const getTabsError = () => (
+	<div>
+		<h2 className="slds-text-heading_large">Error Tabs Demo</h2>
+		<Tabs id="disabled-tabs-demo">
+			<Panel label="Tab 1">
+				<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
+				<p>And they&rsquo;re amazing.</p>
+				<p>It&rsquo;s awesome.</p>
+				<p>
+					You can use your <var>TAB</var> and <var>ARROW</var> keys to navigate
+					around. Try it!
+				</p>
+				<p className="slds-box slds-theme_info slds-m-top_large">
+					(You might have to hit shift+tab to put the focus onto the tab bar ;)
+				</p>
+			</Panel>
+			<Panel
+				label="Tab 2"
+				hasError
+				assistiveText={{
+					withErrorIcon: 'An error on this Panel needs to be addressed',
+				}}
+			>
+				<h2 className="slds-text-heading_medium">This is my tab 2 contents!</h2>
+				<p>Tab should have an error icon. Uh oh!</p>
+			</Panel>
+			<Panel label="Tab 3">
+				<h2 className="slds-text-heading_medium">This is my tab 3 contents!</h2>
+				<p>And they&rsquo;re quite spectacular.</p>
+			</Panel>
+			<Panel label="Tab 4">
+				<h2 className="slds-text-heading_medium">This is my tab 3 contents!</h2>
+				<p>
+					Note that using your arrow keys you can loop <em>around the tabs</em>!
+					🎉
+				</p>
+			</Panel>
+		</Tabs>
+	</div>
+);
+/* eslint-enable react/display-name */
+
+/* eslint-disable react/display-name */
 const getCustomContentTabs = () => {
 	const tab1Label = (
 		<div aria-label="test accessibility!">
@@ -556,9 +631,7 @@ class DemoTabsInterceptSelect extends React.Component {
 						<p>Default Panel</p>
 						{this.state.intercepts > 0 && (
 							<p>
-								{`We've intercepted navigation ${
-									this.state.intercepts
-								} time(s)`}
+								{`We've intercepted navigation ${this.state.intercepts} time(s)`}
 							</p>
 						)}
 					</Panel>
@@ -590,6 +663,7 @@ storiesOf(TABS, module)
 	))
 	.add('Base', () => getTabs())
 	.add('With disabled tab', () => getTabsDisabled())
+	.add('With error tab', () => getTabsError())
 	.add('Nested', () => getTabsNested())
 	.add('Outside Control', () => (
 		<DemoTabsOutsideControl className="controlled-yo" />
@@ -597,5 +671,6 @@ storiesOf(TABS, module)
 	.add('Conditional', () => <DemoTabsConditional className="conditional-yo" />)
 	.add('Unique Generated IDs', () => getTabsMoreThanOneAllowGeneratedID())
 	.add('Scoped', () => getTabsScoped())
+	.add('Vertical', () => getTabsVertical())
 	.add('Custom Tab Contents', () => getCustomContentTabs())
 	.add('Tab Intercept Panel Select', () => <DemoTabsInterceptSelect />);

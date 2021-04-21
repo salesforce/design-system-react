@@ -36,7 +36,7 @@ class Example extends React.Component {
 						}}
 						icon={<Icon category="doctype" name="pdf" />}
 						image="/assets/images/placeholder-img@16x9.jpg"
-						href="javascript:void(0);"
+						href="https://example.com"
 						crop="4-by-3"
 					/>
 				</Files>

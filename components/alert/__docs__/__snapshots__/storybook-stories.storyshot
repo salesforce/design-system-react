@@ -44,7 +44,7 @@ exports[`DOM snapshots SLDSAlert Custom Class Names 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#user"
           />
         </svg>
         
@@ -53,7 +53,7 @@ exports[`DOM snapshots SLDSAlert Custom Class Names 1`] = `
         Logged in as John Smith (johnsmith@acme.com).
          
         <a
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
         >
           Log out
@@ -93,7 +93,7 @@ exports[`DOM snapshots SLDSAlert Custom Styles 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#user"
           />
         </svg>
         
@@ -102,7 +102,7 @@ exports[`DOM snapshots SLDSAlert Custom Styles 1`] = `
         Logged in as John Smith (johnsmith@acme.com).
          
         <a
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
         >
           Log out
@@ -137,7 +137,7 @@ exports[`DOM snapshots SLDSAlert Dismissable 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#user"
           />
         </svg>
         
@@ -146,7 +146,7 @@ exports[`DOM snapshots SLDSAlert Dismissable 1`] = `
         Logged in as John Smith (johnsmith@acme.com).
          
         <a
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
         >
           Log out
@@ -164,7 +164,7 @@ exports[`DOM snapshots SLDSAlert Dismissable 1`] = `
           className="slds-button__icon"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
           />
         </svg>
         <span
@@ -202,7 +202,7 @@ exports[`DOM snapshots SLDSAlert Error 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#error"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#error"
           />
         </svg>
         
@@ -211,7 +211,7 @@ exports[`DOM snapshots SLDSAlert Error 1`] = `
         Your browser is currently not supported. Your Salesforce may be degraded.
          
         <a
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
         >
           More Information
@@ -246,7 +246,7 @@ exports[`DOM snapshots SLDSAlert Info 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#user"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#user"
           />
         </svg>
         
@@ -255,7 +255,7 @@ exports[`DOM snapshots SLDSAlert Info 1`] = `
         Logged in as John Smith (johnsmith@acme.com).
          
         <a
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
         >
           Log out
@@ -290,7 +290,7 @@ exports[`DOM snapshots SLDSAlert Offline 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#offline"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#offline"
           />
         </svg>
         
@@ -299,7 +299,7 @@ exports[`DOM snapshots SLDSAlert Offline 1`] = `
         You are in offline mode.
          
         <a
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
         >
           More information
@@ -334,7 +334,7 @@ exports[`DOM snapshots SLDSAlert Warning 1`] = `
           className="slds-icon slds-icon_x-small"
         >
           <use
-            xlinkHref="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
           />
         </svg>
         
@@ -343,7 +343,7 @@ exports[`DOM snapshots SLDSAlert Warning 1`] = `
         Your browser is outdated. Your Salesforce experience may be degraded.
          
         <a
-          href="javascript:void(0);"
+          href="#"
           onClick={[Function]}
         >
           More Information

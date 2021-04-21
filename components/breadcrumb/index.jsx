@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 // ## Constants
 import { BREADCRUMB } from '../../utilities/constants';
@@ -64,7 +64,11 @@ const getBreadcrumbDropdown = (overflowDropdownMenu, props) => {
 		iconVariant: 'bare',
 		threedots: true,
 	};
-	return <Dropdown {...overflowDropdownMenuProps} />;
+	return (
+		<li className="slds-breadcrumb__item">
+			<Dropdown {...overflowDropdownMenuProps} />
+		</li>
+	);
 };
 
 /**
@@ -80,7 +84,7 @@ const Breadcrumb = (props) => {
 			: {
 					...defaultProps.assistiveText,
 					...props.assistiveText,
-				}.label;
+			  }.label;
 
 	return (
 		<nav

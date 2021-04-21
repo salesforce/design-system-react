@@ -342,7 +342,7 @@ class Example extends React.Component {
 								...prevState.nodes[prevState.selectedNode.id],
 								selected: false,
 							},
-						}
+					  }
 					: {};
 				return {
 					...prevState,

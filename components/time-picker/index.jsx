@@ -24,7 +24,7 @@ import TimepickerDropdownTrigger from './private/dropdown-trigger';
 // ## Constants
 import { TIME_PICKER } from '../../utilities/constants';
 
-import componentDoc from './docs.json';
+import componentDoc from './component.json';
 
 const getOptions = ({ props }) => {
 	const baseDate = new Date();
@@ -37,9 +37,11 @@ const getOptions = ({ props }) => {
 
 	const curDate = new Date(baseDate);
 
+	// eslint-disable-next-line fp/no-loops
 	while (baseDate.getDate() === curDate.getDate()) {
 		const formatted = props.formatter(curDate);
 
+		// eslint-disable-next-line fp/no-mutating-methods
 		options.push({
 			label: formatted,
 			value: new Date(curDate),
@@ -52,7 +54,8 @@ const getOptions = ({ props }) => {
 };
 
 /**
- *  Component description.
+ * ** Timepicker is deprecated. Please use an auto-complete Combobox instead.**
+ * A timepicker is an autocomplete text input to capture a time.
  */
 class Timepicker extends React.Component {
 	// ### Display Name
@@ -147,7 +150,6 @@ class Timepicker extends React.Component {
 			return new Date(`${dateStr} ${timeStr}`);
 		},
 		menuPosition: 'absolute',
-		placeholder: 'Pick Time',
 		value: null,
 		stepInMinutes: 30,
 	};
@@ -158,12 +160,15 @@ class Timepicker extends React.Component {
 		options: getOptions({ props: this.props }),
 	};
 
-	componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
-		checkProps(TIME_PICKER, this.props, componentDoc);
+		checkProps(TIME_PICKER, props, componentDoc);
 	}
 
-	componentWillReceiveProps(nextProps) {
+	// eslint-disable-next-line camelcase, react/sort-comp
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (nextProps.value && this.props.value) {
 			const currentTime = this.props.value.getTime();
 			const nextTime = nextProps.value.getTime();
@@ -174,6 +179,9 @@ class Timepicker extends React.Component {
 					strValue: this.props.formatter(nextProps.value),
 				});
 			}
+		}
+		if (nextProps.strValue !== this.props.value) {
+			this.setState({ strValue: nextProps.strValue });
 		}
 	}
 

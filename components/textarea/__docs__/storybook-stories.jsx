@@ -32,12 +32,9 @@ storiesOf(TEXTAREA, module)
 	))
 	.add('Required', () => (
 		<Textarea
-			aria-describedby="required-1"
 			id="text-area-required"
 			name="required-textarea"
-			assistiveText={{
-				label: 'Textarea Label',
-			}}
+			label="Textarea Label"
 			required
 			placeholder="Placeholder Text"
 		/>
@@ -49,7 +46,7 @@ storiesOf(TEXTAREA, module)
 			name="required-textarea-error"
 			label="Textarea Label"
 			required
-			errorText="Error Message"
+			errorText="This field is required"
 			placeholder="Placeholder Text"
 		/>
 	))

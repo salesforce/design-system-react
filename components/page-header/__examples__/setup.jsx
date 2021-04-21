@@ -14,7 +14,11 @@ class Example extends React.Component {
 	render() {
 		const actions = () => (
 			<PageHeaderControl>
-				<ButtonGroup className="slds-align-middle" variant="list">
+				<ButtonGroup
+					className="slds-align-middle"
+					variant="list"
+					id="button-group-page-header-actions"
+				>
 					<Button label="Create" />
 					<Dropdown
 						align="right"
@@ -54,7 +58,7 @@ class Example extends React.Component {
 					}
 					onRenderActions={actions}
 					title="Home"
-					trail={[<a href="javascript:void(0);">Setup</a>]}
+					trail={[<a href="#setup">Setup</a>]}
 					truncate
 					variant="object-home"
 				/>

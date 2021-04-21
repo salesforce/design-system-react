@@ -17,7 +17,7 @@ storiesOf(NOTIFICATION, module)
 		<Notification
 			content={[
 				'Your new contact ',
-				<a href="javascript:void(0);" key="0123">
+				<a href="#" key="0123">
 					Sara Smith
 				</a>,
 				' was successfully created.',
@@ -30,6 +30,7 @@ storiesOf(NOTIFICATION, module)
 			texture
 			theme="success"
 			variant="alert"
+			silenceDeprecationWarning
 		/>
 	))
 	.add('Base: Toast', () => (
@@ -43,6 +44,7 @@ storiesOf(NOTIFICATION, module)
 			}}
 			theme="error"
 			variant="toast"
+			silenceDeprecationWarning
 		/>
 	))
 	.add('Docs site Alerts', () => <Alerts />)

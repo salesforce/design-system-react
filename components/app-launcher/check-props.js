@@ -49,6 +49,7 @@ if (process.env.NODE_ENV !== 'production') {
 		} else if (COMPONENT === APP_LAUNCHER_SECTION) {
 			componentIsDeprecated(
 				COMPONENT,
+				props,
 				'App Launcher Section has been deprecated. Please use APP_LAUNCHER_EXPANDABLE_SECTION instead.'
 			);
 		} else if (COMPONENT === APP_LAUNCHER_TILE) {

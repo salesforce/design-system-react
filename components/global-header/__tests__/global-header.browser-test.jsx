@@ -2,6 +2,7 @@
 import React from 'react';
 import { expect } from 'chai';
 
+import SLDSCombobox from '../../combobox';
 import SLDSIconSettings from '../../icon-settings';
 import SLDSGlobalHeader from '../../global-header';
 import SLDSGlobalHeaderFavorites from '../../global-header/favorites';
@@ -28,7 +29,16 @@ describe('SLDSGlobalHeader', () => {
 						<SLDSGlobalHeaderFavorites />
 						<SLDSGlobalHeaderTask />
 						<SLDSGlobalHeaderNotifications />
-						<SLDSGlobalHeaderSearch options={[]} />
+						<SLDSGlobalHeaderSearch
+							combobox={
+								<SLDSCombobox
+									assistiveText={{ label: 'Search' }}
+									id="global-header-search-combobox-test"
+									labels={{ placeholder: 'Search Salesforce' }}
+									options={[]}
+								/>
+							}
+						/>
 						<SLDSGlobalHeaderHelp />
 					</SLDSGlobalHeader>
 				</SLDSIconSettings>
@@ -37,7 +47,7 @@ describe('SLDSGlobalHeader', () => {
 
 		afterEach(unmountComponent);
 
-		it('arranges components correctly even if the developer put them out of order', function() {
+		it('arranges components correctly even if the developer put them out of order', function () {
 			const order = [
 				'div.slds-global-actions__favorites',
 				'button.slds-global-actions__task',
@@ -56,7 +66,7 @@ describe('SLDSGlobalHeader', () => {
 	});
 
 	describe('SLDSGlobalHeaderFavorites', () => {
-		it('handles actionDisabled correctly', function() {
+		it('handles actionDisabled correctly', function () {
 			mountComponent(
 				<SLDSIconSettings iconPath="/assets/icons">
 					<SLDSGlobalHeader>
@@ -78,7 +88,7 @@ describe('SLDSGlobalHeader', () => {
 			unmountComponent.call(this);
 		});
 
-		it('handles actionSelected correctly', function() {
+		it('handles actionSelected correctly', function () {
 			mountComponent(
 				<SLDSIconSettings iconPath="/assets/icons">
 					<SLDSGlobalHeader>
@@ -100,7 +110,7 @@ describe('SLDSGlobalHeader', () => {
 			unmountComponent.call(this);
 		});
 
-		it('handles onToggleActionSelected correctly', function() {
+		it('handles onToggleActionSelected correctly', function () {
 			let args = {};
 
 			mountComponent(
@@ -136,7 +146,7 @@ describe('SLDSGlobalHeader', () => {
 	});
 
 	describe('SLDSGlobalHeaderNotifications', () => {
-		it('handles notificationCount correctly when no value provided', function() {
+		it('handles notificationCount correctly when no value provided', function () {
 			mountComponent(
 				<SLDSIconSettings iconPath="/assets/icons">
 					<SLDSGlobalHeader>
@@ -150,7 +160,7 @@ describe('SLDSGlobalHeader', () => {
 			unmountComponent.call(this);
 		});
 
-		it('handles notificationCount correctly when a value is provided', function() {
+		it('handles notificationCount correctly when a value is provided', function () {
 			mountComponent(
 				<SLDSIconSettings iconPath="/assets/icons">
 					<SLDSGlobalHeader>

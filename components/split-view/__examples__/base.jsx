@@ -182,6 +182,7 @@ class Example extends React.Component {
 		super(props);
 
 		this.state = {
+			isOpen: typeof props.isOpen === 'boolean' ? props.isOpen : true,
 			options: listOptions,
 			selected: [listOptions[listOptions.length - 2]],
 			unread: [listOptions[0], listOptions[2]],
@@ -198,11 +199,10 @@ class Example extends React.Component {
 				: SORT_OPTIONS.DOWN;
 
 		this.setState({
-			options: this.state.options.sort(
-				(a, b) =>
-					sortDirection === SORT_OPTIONS.DOWN
-						? a.label > b.label
-						: b.label > a.label
+			options: this.state.options.sort((a, b) =>
+				sortDirection === SORT_OPTIONS.DOWN
+					? a.label > b.label
+					: b.label > a.label
 			),
 			sortDirection,
 		});
@@ -314,8 +314,16 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ height: '90vh' }}>
 					<SplitView
+						events={{
+							onClose: () => {
+								this.setState({ isOpen: false });
+							},
+							onOpen: () => {
+								this.setState({ isOpen: true });
+							},
+						}}
 						id="base-example"
-						isOpen={this.props.isOpen}
+						isOpen={this.state.isOpen}
 						master={this.masterView()}
 						detail={this.detailView()}
 					/>
