@@ -1,0 +1,48 @@
+{
+	"component": "files",
+	"status": "prod",
+	"display-name": "Files",
+	"classKey": "Files",
+	"dependencies": [
+		{
+			"component": "file",
+			"classKey": "FilesFile"
+		},
+		{
+			"component": "more-files",
+			"classKey": "FilesMoreFiles"
+		}
+	],
+	"SLDS-component-path": "/components/files",
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "Cropped",
+			"path": "/__examples__/crops.jsx"
+		},
+		{
+			"heading": "Loading",
+			"path": "/__examples__/loading.jsx"
+		},
+		{
+			"heading": "No Title",
+			"path": "/__examples__/no-title.jsx"
+		},
+		{
+			"heading": "With External Icon",
+			"path": "/__examples__/with-external-icon.jsx"
+		},
+		{
+			"heading": "No Image",
+			"path": "/__examples__/no-image.jsx"
+		},
+		{
+			"heading": "Actions",
+			"path": "/__examples__/actions.jsx"
+		}
+	],
+	"url-slug": "files"
+}
