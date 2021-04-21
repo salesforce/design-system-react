@@ -5,13 +5,18 @@ import TestUtils from 'react-dom/test-utils';
 
 import chai, { expect } from 'chai';
 
+import { keyObjects } from '../../../utilities/key-code';
+
 import Dropdown from '../../menu-dropdown';
 import DataTable from '../../data-table';
 import DataTableColumn from '../../data-table/column';
 import DataTableRowActions from '../../data-table/row-actions';
 import DataTableHighlightCell from '../../data-table/highlight-cell';
 import IconSettings from '../../icon-settings';
-import { mountComponent } from '../../../tests/enzyme-helpers';
+import {
+	mountComponent,
+	unmountComponent,
+} from '../../../tests/enzyme-helpers';
 
 chai.should();
 
@@ -796,6 +801,75 @@ describe('DataTable: ', function describeFunction() {
 			this.wrapper.setProps({
 				items: [items[0]],
 			});
+		});
+	});
+
+	describe('Keyboard Navigation', function describeFunction2() {
+		beforeEach(
+			mountComponent(
+				<DataTable {...defaultProps} fixedLayout keyboardNavigation>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			)
+		);
+
+		afterEach(unmountComponent);
+
+		it('moves selection when using keyboard up/down/left/right keys', function () {
+			// Focus the first cell
+			let cell = this.wrapper.find('td').first();
+			cell.simulate('focus');
+			expect(cell.prop('tabIndex')).to.equal('0');
+
+			// Press Right
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell = this.wrapper.find('td').at(1);
+			expect(cell.prop('tabIndex')).to.equal('0');
+
+			// Press Down
+			cell.simulate('keyDown', keyObjects.DOWN);
+			cell = this.wrapper.find('td').at(4);
+			expect(cell.prop('tabIndex')).to.equal('0');
+
+			// Press Left
+			cell.simulate('keyDown', keyObjects.LEFT);
+			cell = this.wrapper.find('td').at(3);
+			expect(cell.prop('tabIndex')).to.equal('0');
+
+			// Press Up
+			cell.simulate('keyDown', keyObjects.UP);
+			cell = this.wrapper.find('td').at(0);
+			expect(cell.prop('tabIndex')).to.equal('0');
+		});
+
+		it('enters actionable mode when using keyboard enter key; and enters navigation mode when using keyboard escape key', function () {
+			// Focus the first cell
+			let cell = this.wrapper.find('td').first();
+			cell.simulate('focus');
+			expect(cell.prop('tabIndex')).to.equal('0');
+
+			// Press Enter
+			cell.simulate('keyDown', keyObjects.ENTER);
+
+			cell = this.wrapper.find('td').first();
+			expect(cell.prop('tabIndex')).to.be.undefined;
+
+			let checkbox = this.wrapper
+				.find('td')
+				.first()
+				.find('input[type="checkbox"]');
+			expect(checkbox.prop('tabIndex')).to.equal('0');
+
+			// Press Escape
+			cell.simulate('keyDown', keyObjects.ESCAPE);
+
+			cell = this.wrapper.find('td').first();
+			expect(cell.prop('tabIndex')).to.equal('0');
+
+			checkbox = this.wrapper.find('td').first().find('input[type="checkbox"]');
+			expect(checkbox.prop('tabIndex')).to.equal('-1');
 		});
 	});
 });

@@ -2,7 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 // ### React
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 // ### classNames
@@ -22,139 +22,179 @@ import {
 	DATA_TABLE_CELL,
 } from '../../../utilities/constants';
 
+import InteractiveElement from '../interactive-element';
+import CellContext from '../private/cell-context';
+import TableContext from '../private/table-context';
+import keyboardNavState from '../private/keyboard-nav-state';
+
+const InteractiveCheckbox = InteractiveElement(Checkbox);
+const InteractiveRadio = InteractiveElement(Radio);
+
+const propTypes = {
+	assistiveText: PropTypes.shape({
+		actionsHeader: PropTypes.string,
+		columnSort: PropTypes.string,
+		columnSortedAscending: PropTypes.string,
+		columnSortedDescending: PropTypes.string,
+		selectAllRows: PropTypes.string,
+		selectRow: PropTypes.string,
+	}),
+	canSelectRows: PropTypes.oneOfType([
+		PropTypes.bool,
+		PropTypes.oneOf(['checkbox', 'radio']),
+	]),
+	className: PropTypes.string,
+	columns: PropTypes.arrayOf(
+		PropTypes.shape({
+			Cell: PropTypes.func,
+			props: PropTypes.object,
+		})
+	),
+	/**
+	 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows)
+	 */
+	fixedLayout: PropTypes.bool,
+	id: PropTypes.string.isRequired,
+	item: PropTypes.object.isRequired,
+	onToggle: PropTypes.func,
+	rowActions: PropTypes.element,
+	selection: PropTypes.array,
+	tableId: PropTypes.string,
+};
+
 /**
  * Used internally, provides row rendering to the DataTable.
  */
-class DataTableRow extends React.Component {
-	// ### Display Name
-	// Always use the canonical component name as the React display name.
-	static displayName = DATA_TABLE_ROW;
-
-	// ### Prop Types
-	static propTypes = {
-		assistiveText: PropTypes.shape({
-			actionsHeader: PropTypes.string,
-			columnSort: PropTypes.string,
-			columnSortedAscending: PropTypes.string,
-			columnSortedDescending: PropTypes.string,
-			selectAllRows: PropTypes.string,
-			selectRow: PropTypes.string,
-		}),
-		canSelectRows: PropTypes.oneOfType([
-			PropTypes.bool,
-			PropTypes.oneOf(['checkbox', 'radio']),
-		]),
-		className: PropTypes.string,
-		columns: PropTypes.arrayOf(
-			PropTypes.shape({
-				Cell: PropTypes.func,
-				props: PropTypes.object,
-			})
-		),
-		/**
-		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows)
-		 */
-		fixedLayout: PropTypes.bool,
-		id: PropTypes.string.isRequired,
-		item: PropTypes.object.isRequired,
-		onToggle: PropTypes.func,
-		rowActions: PropTypes.element,
-		selection: PropTypes.array,
-		tableId: PropTypes.string,
+const DataTableRow = (props) => {
+	const tableContext = useContext(TableContext);
+	const selectRowCellContext = {
+		rowIndex: props.rowIndex,
+		columnIndex: 0,
 	};
+	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = keyboardNavState(
+		tableContext,
+		selectRowCellContext,
+		props.fixedLayout
+	);
 
-	isSelected = () => !!find(this.props.selection, this.props.item);
+	const handleToggle = (e, { checked }) =>
+		props.onToggle(props.item, checked, e);
 
-	handleToggle = (e, { checked }) =>
-		this.props.onToggle(this.props.item, checked, e);
+	const ariaProps = {};
+	const isSelected = !!find(props.selection, props.item);
 
-	// ### Render
-	render() {
-		const ariaProps = {};
-		const isSelected = this.isSelected();
+	if (props.canSelectRows) {
+		ariaProps['aria-selected'] = isSelected ? 'true' : 'false';
+	}
 
-		if (this.props.canSelectRows) {
-			ariaProps['aria-selected'] = isSelected ? 'true' : 'false';
-		}
-
-		// i18n
-		return (
-			<tr
-				{...ariaProps}
-				className={classNames(this.props.className, {
-					'slds-hint-parent': this.props.rowActions,
-					'slds-is-selected': this.props.canSelectRows && isSelected,
-				})}
-			>
-				{this.props.canSelectRows ? (
-					<td
-						role={this.props.fixedLayout ? 'gridcell' : null}
-						className="slds-text-align_right"
-						data-label={this.props.stacked ? 'Select Row' : undefined}
-						style={{ width: '3.25rem' }}
-					>
-						{this.props.canSelectRows === 'radio' ? (
-							<Radio
+	// i18n
+	return (
+		<tr
+			{...ariaProps}
+			className={classNames(props.className, {
+				'slds-hint-parent': props.rowActions,
+				'slds-is-selected': props.canSelectRows && isSelected,
+				'slds-has-focus': hasFocus,
+			})}
+		>
+			{props.canSelectRows ? (
+				// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+				<td
+					role={props.fixedLayout ? 'gridcell' : null}
+					className="slds-text-align_right"
+					data-label={props.stacked ? 'Select Row' : undefined}
+					style={{ width: '3.25rem' }}
+					onFocus={handleFocus}
+					onKeyDown={handleKeyDown}
+					ref={(ref) => {
+						if (ref && hasFocus) {
+							ref.focus();
+						}
+					}}
+					tabIndex={tabIndex}
+				>
+					<CellContext.Provider value={selectRowCellContext}>
+						{props.canSelectRows === 'radio' ? (
+							<InteractiveRadio
 								assistiveText={{
-									label: `${this.props.assistiveText.selectRow} ${
-										Number(this.props.index) + 1
+									label: `${props.assistiveText.selectRow} ${
+										Number(props.index) + 1
 									}`,
 								}}
-								aria-labelledby={`${this.props.id}-SelectRow-label ${this.props.tableId}-SLDSDataTableHead-column-group-header-row-select`}
+								aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSDataTableHead-column-group-header-row-select`}
 								checked={isSelected}
 								className="slds-m-right_x-small"
-								id={`${this.props.id}-SelectRow`}
-								labelId={`${this.props.id}-SelectRow-label`}
-								name={`${this.props.tableId}-SelectRow`}
-								onChange={this.handleToggle}
+								id={`${props.id}-SelectRow`}
+								labelId={`${props.id}-SelectRow-label`}
+								name={`${props.tableId}-SelectRow`}
+								onChange={handleToggle}
 							/>
 						) : (
-							<Checkbox
+							<InteractiveCheckbox
 								assistiveText={{
-									label: `${this.props.assistiveText.selectRow} ${
-										Number(this.props.index) + 1
+									label: `${props.assistiveText.selectRow} ${
+										Number(props.index) + 1
 									}`,
 								}}
-								aria-labelledby={`${this.props.id}-SelectRow-label ${this.props.tableId}-SLDSDataTableHead-column-group-header-row-select`}
+								aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSDataTableHead-column-group-header-row-select`}
 								checked={isSelected}
-								id={`${this.props.id}-SelectRow`}
-								labelId={`${this.props.id}-SelectRow-label`}
-								name={`SelectRow${this.props.index + 1}`}
-								onChange={this.handleToggle}
+								id={`${props.id}-SelectRow`}
+								labelId={`${props.id}-SelectRow-label`}
+								name={`SelectRow${props.index + 1}`}
+								onChange={handleToggle}
 							/>
 						)}
-					</td>
-				) : null}
-				{this.props.columns.map((column) => {
-					const { Cell } = column;
-					const cellId = `${this.props.id}-${DATA_TABLE_CELL}-${column.props.property}`;
+					</CellContext.Provider>{' '}
+				</td>
+			) : null}
+			{props.columns.map((column, index) => {
+				const { Cell } = column;
+				const cellId = `${props.id}-${DATA_TABLE_CELL}-${column.props.property}`;
 
-					return (
+				return (
+					<CellContext.Provider
+						key={cellId}
+						value={{
+							columnIndex: props.canSelectRows ? index + 1 : index,
+							rowIndex: props.rowIndex,
+						}}
+					>
 						<Cell
 							{...column.props}
 							className={column.props.truncate ? 'slds-truncate' : null}
-							fixedLayout={this.props.fixedLayout}
+							fixedLayout={props.fixedLayout}
 							rowHeader={column.props.primaryColumn}
 							id={cellId}
-							item={this.props.item}
-							key={cellId}
+							item={props.item}
 							width={column.props.width}
-							headerId={this.props.item.headerId}
-							columns={this.props.columns}
+							headerId={props.item.headerId}
+							columns={props.columns}
 						>
-							{this.props.item[column.props.property]}
+							{props.item[column.props.property]}
 						</Cell>
-					);
-				})}
-				{this.props.rowActions
-					? React.cloneElement(this.props.rowActions, {
-							id: `${this.props.id}-${DATA_TABLE_ROW_ACTIONS}`,
-							item: this.props.item,
+					</CellContext.Provider>
+				);
+			})}
+			<CellContext.Provider
+				value={{
+					columnIndex: props.canSelectRows
+						? props.columns.length + 1
+						: props.columns.length,
+					rowIndex: props.rowIndex,
+				}}
+			>
+				{props.rowActions
+					? React.cloneElement(props.rowActions, {
+							id: `${props.id}-${DATA_TABLE_ROW_ACTIONS}`,
+							item: props.item,
+							fixedLayout: props.fixedLayout,
 					  })
 					: null}
-			</tr>
-		);
-	}
-}
+			</CellContext.Provider>
+		</tr>
+	);
+};
 
+DataTableRow.displayName = DATA_TABLE_ROW;
+DataTableRow.propTypes = propTypes;
 export default DataTableRow;

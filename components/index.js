@@ -72,6 +72,8 @@ export DataTableColumn from './data-table/column';
 export SLDSDataTableColumn from './data-table/column';
 export DataTableHighlightCell from './data-table/highlight-cell';
 export SLDSDataTableHighlightCell from './data-table/highlight-cell';
+export SLDSDataTableInteractiveElement from './data-table/interactive-element';
+export DataTableInteractiveElement from './data-table/interactive-element';
 export DataTableRowActions from './data-table/row-actions';
 export SLDSDataTableRowActions from './data-table/row-actions';
 export DatePicker from './date-picker';

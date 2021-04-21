@@ -35,7 +35,12 @@ import DataTableColumn from './column';
 import DataTableHead from './private/head';
 import DataTableRow from './private/row';
 import DataTableRowActions from './row-actions';
+import TableContext from './private/table-context';
+import Mode from './private/mode';
 import Spinner from '../spinner';
+
+import KEYS from '../../utilities/key-code';
+import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 
 import {
 	DATA_TABLE,
@@ -135,6 +140,24 @@ class DataTable extends React.Component {
 		fixedHeader: PropTypes.bool,
 		/**
 		 * Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling.
+		 *
+		 * When `keyboardNavigation` is enabled, the advanced table implements keyboard navigation as described in [Data Tables](https://www.lightningdesignsystem.com/components/data-tables/).
+		 * Wrap interactive elements in the table with `<DataTableInteractiveElement>` so that it can control the element's focus and `tabIndex` behavior:
+		 * ```
+		 * const InteractiveButton = DataTableInteractiveElement(Button);
+		 * const InteractiveCheckBox = DataTableInteractiveElement(Checkbox);
+		 * const CustomDataTableCell = () => (
+		 * 	<DataTableCell>
+		 * 		<InteractiveCheckBox />
+		 * 		<InteractiveButton />
+		 * 	</DataTableCell>
+		 * );
+		 * ```
+		 * The wrapped element must accept the props:
+		 *  * `onFocus`: Callback for when the element is focused.
+		 *  * `onRequestFocus`: Trigger to indicate that this element should be focused.
+		 *  * `requestFocus`: This wrapper overrides the `requestFocus` prop and provides its own value.
+		 *  * `tabIndex`: This wrapper overrides the `tabIndex` prop and provides its own value.
 		 */
 		fixedLayout: PropTypes.bool,
 		/**
@@ -187,6 +210,10 @@ class DataTable extends React.Component {
 		 * Determines when to trigger infinite loading based on how many pixels the table's scroll position is from the bottom of the table.
 		 */
 		loadMoreOffset: PropTypes.number,
+		/**
+		 * Enables keyboard navigation when this is an advanced table.
+		 */
+		keyboardNavigation: PropTypes.bool.isRequired,
 		/**
 		 * A variant which removes hover style on rows
 		 */
@@ -267,6 +294,31 @@ class DataTable extends React.Component {
 			select: [],
 		};
 		this.scrollerRef = null;
+		this.state = {
+			// Currently selected cell
+			activeCell: {
+				rowIndex: 1,
+				columnIndex:
+					this.props.selectRows && count(this.props.selection) > 0 ? 1 : 0,
+			},
+			// Interactive element within a cell that receives focus when in actionable mode
+			activeElement: null,
+			// The table can be in navigation or actionable mode
+			mode: Mode.NAVIGATION,
+			// The table currently has focus
+			tableHasFocus: false,
+			// Allows for keyboard navigation. This is useful for temporarily disabling keyboard navigation
+			// when another component requires its own focus behavior (e.g. menu dropdown).
+			allowKeyboardNavigation: props.keyboardNavigation,
+		};
+		// Map of cells to interactive elements within that cell
+		this.interactiveElements = {};
+		this.changeActiveCell = this.changeActiveCell.bind(this);
+		this.changeActiveElement = this.changeActiveElement.bind(this);
+		this.handleKeyDown = this.handleKeyDown.bind(this);
+		this.registerInteractiveElement = this.registerInteractiveElement.bind(
+			this
+		);
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATA_TABLE, props, componentDoc);
@@ -279,13 +331,16 @@ class DataTable extends React.Component {
 		}
 	}
 
-	componentDidUpdate() {
+	componentDidUpdate(prevProps) {
 		if (this.props.fixedHeader) {
 			this.resizeFixedHeaders();
 			// If the first page of results isn't enough to allow the user to scroll it causes
 			// the user to get into a state where they cannot load the second page.
 			// Simulating a scroll here will ensure that enough rows are loaded to enable scrolling
 			this.loadMoreIfNeeded();
+		}
+		if (this.props.items !== prevProps.items) {
+			this.interactiveElements = {};
 		}
 	}
 
@@ -295,6 +350,17 @@ class DataTable extends React.Component {
 
 	getId() {
 		return this.props.id || this.generatedId;
+	}
+
+	getFirstInteractiveElement(rowIndex, columnIndex) {
+		if (
+			this.state.mode === Mode.ACTIONABLE &&
+			this.interactiveElements[rowIndex] &&
+			this.interactiveElements[rowIndex][columnIndex]
+		) {
+			return this.interactiveElements[rowIndex][columnIndex][0];
+		}
+		return null;
 	}
 
 	handleToggleAll = (e, { checked }) => {
@@ -424,9 +490,143 @@ class DataTable extends React.Component {
 		}
 	};
 
+	changeActiveCell(rowIndex, columnIndex) {
+		this.setState({
+			tableHasFocus: true,
+			activeCell: { rowIndex, columnIndex },
+		});
+	}
+
+	changeActiveElement(activeElement) {
+		this.setState({ activeElement });
+	}
+
+	handleKeyDown(event) {
+		mapKeyEventCallbacks(event, {
+			callbacks: {
+				[KEYS.UP]: { callback: (evt) => this.handleKeyDownUp(evt) },
+				[KEYS.DOWN]: { callback: (evt) => this.handleKeyDownDown(evt) },
+				[KEYS.LEFT]: { callback: (evt) => this.handleKeyDownLeft(evt) },
+				[KEYS.RIGHT]: { callback: (evt) => this.handleKeyDownRight(evt) },
+				[KEYS.ENTER]: { callback: (evt) => this.handleKeyDownEnter(evt) },
+				[KEYS.ESCAPE]: { callback: (evt) => this.handleKeyDownEscape(evt) },
+			},
+		});
+	}
+
+	handleKeyDownUp() {
+		const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
+		const activeElement = this.getFirstInteractiveElement(
+			newRowIndex,
+			this.state.activeCell.columnIndex
+		);
+		if (newRowIndex !== this.state.activeCell.newRowIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: newRowIndex,
+					columnIndex: prevState.activeCell.columnIndex,
+				},
+				activeElement,
+			}));
+		}
+	}
+
+	handleKeyDownDown() {
+		const newRowIndex = Math.min(
+			this.state.activeCell.rowIndex + 1,
+			this.props.items.length
+		);
+		const activeElement = this.getFirstInteractiveElement(
+			newRowIndex,
+			this.state.activeCell.columnIndex
+		);
+		if (newRowIndex !== this.state.activeCell.newRowIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: newRowIndex,
+					columnIndex: prevState.activeCell.columnIndex,
+				},
+				activeElement,
+			}));
+		}
+	}
+
+	handleKeyDownLeft() {
+		const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
+		const activeElement = this.getFirstInteractiveElement(
+			this.state.activeCell.rowIndex,
+			newColumnIndex
+		);
+		if (newColumnIndex !== this.state.activeCell.columnIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: prevState.activeCell.rowIndex,
+					columnIndex: newColumnIndex,
+				},
+				activeElement,
+			}));
+		}
+	}
+
+	handleKeyDownRight() {
+		const newColumnIndex = Math.min(
+			this.state.activeCell.columnIndex + 1,
+			this.props.children.length
+		);
+		const activeElement = this.getFirstInteractiveElement(
+			this.state.activeCell.rowIndex,
+			newColumnIndex
+		);
+		if (newColumnIndex !== this.state.activeCell.columnIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: prevState.activeCell.rowIndex,
+					columnIndex: newColumnIndex,
+				},
+				activeElement,
+			}));
+		}
+	}
+
+	handleKeyDownEnter() {
+		if (this.state.mode === Mode.NAVIGATION) {
+			const { rowIndex, columnIndex } = this.state.activeCell;
+			let activeElement = null;
+			if (this.interactiveElements[rowIndex][columnIndex]) {
+				[activeElement] = this.interactiveElements[rowIndex][columnIndex];
+			}
+			this.setState({
+				mode: Mode.ACTIONABLE,
+				activeElement,
+			});
+		}
+	}
+
+	handleKeyDownEscape() {
+		if (this.state.mode === Mode.ACTIONABLE) {
+			this.setState({
+				mode: Mode.NAVIGATION,
+				activeElement: null,
+			});
+		}
+	}
+
+	registerInteractiveElement(rowIndex, columnIndex, elementId) {
+		if (!this.interactiveElements[rowIndex]) {
+			this.interactiveElements[rowIndex] = {};
+		}
+		if (!this.interactiveElements[rowIndex][columnIndex]) {
+			this.interactiveElements[rowIndex][columnIndex] = [];
+		}
+		// TODO REWRITE THIS
+		// eslint-disable-next-line fp/no-mutating-methods
+		this.interactiveElements[rowIndex][columnIndex].push(elementId);
+	}
+
 	// ### Render
 	render() {
 		const ariaProps = {};
+		const numHeaderRows = 1;
 		const numRows = count(this.props.items);
 		const numSelected = count(this.props.selection);
 		const numNonHeaderRows = count(
@@ -516,95 +716,114 @@ class DataTable extends React.Component {
 			select: canSelectRows ? this.headerRefs.select : [],
 		};
 
+		const tableContext = {
+			activeCell: this.state.activeCell,
+			activeElement: this.state.activeElement,
+			mode: this.state.mode,
+			tableHasFocus: this.state.tableHasFocus,
+			changeActiveCell: this.changeActiveCell,
+			changeActiveElement: this.changeActiveElement,
+			handleKeyDown: this.handleKeyDown,
+			registerInteractiveElement: this.registerInteractiveElement,
+			allowKeyboardNavigation: this.state.allowKeyboardNavigation,
+			setAllowKeyboardNavigation: (allowKeyboardNavigation) => {
+				this.setState({ allowKeyboardNavigation });
+			},
+		};
+
 		let component = (
 			<React.Fragment>
-				<table
-					{...ariaProps}
-					className={classNames(
-						'slds-table',
-						{
-							'slds-table_fixed-layout': this.props.fixedLayout,
-							'slds-table_header-fixed': this.props.fixedHeader,
-							'slds-table_resizable-cols': this.props.fixedLayout,
-							'slds-table_bordered': !this.props.unborderedRow,
-							'slds-table_cell-buffer':
-								!this.props.fixedLayout && !this.props.unbufferedCell,
-							'slds-max-medium-table_stacked': this.props.stacked,
-							'slds-max-medium-table_stacked-horizontal': this.props
-								.stackedHorizontal,
-							'slds-table_striped': this.props.striped,
-							'slds-table_col-bordered': this.props.columnBordered,
-							'slds-no-row-hover': this.props.noRowHover,
-						},
-						this.props.className
-					)}
-					id={this.getId()}
-					role={this.props.fixedLayout ? 'grid' : null}
-					style={this.props.style}
-				>
-					<DataTableHead
-						assistiveText={assistiveText}
-						allSelected={allSelected}
-						fixedHeader={this.props.fixedHeader}
-						headerRefs={(ref, index) => {
-							if (index === 'action' || index === 'select') {
-								if (ref) {
-									this.headerRefs[index][0] = ref;
+				<TableContext.Provider value={tableContext}>
+					<table
+						{...ariaProps}
+						className={classNames(
+							'slds-table',
+							{
+								'slds-table_fixed-layout': this.props.fixedLayout,
+								'slds-table_header-fixed': this.props.fixedHeader,
+								'slds-table_resizable-cols': this.props.fixedLayout,
+								'slds-table_bordered': !this.props.unborderedRow,
+								'slds-table_cell-buffer':
+									!this.props.fixedLayout && !this.props.unbufferedCell,
+								'slds-max-medium-table_stacked': this.props.stacked,
+								'slds-max-medium-table_stacked-horizontal': this.props
+									.stackedHorizontal,
+								'slds-table_striped': this.props.striped,
+								'slds-table_col-bordered': this.props.columnBordered,
+								'slds-no-row-hover': this.props.noRowHover,
+							},
+							this.props.className
+						)}
+						id={this.getId()}
+						role={this.props.fixedLayout ? 'grid' : null}
+						onBlur={() => this.setState({ tableHasFocus: false })}
+						style={this.props.style}
+					>
+						<DataTableHead
+							assistiveText={assistiveText}
+							allSelected={allSelected}
+							fixedHeader={this.props.fixedHeader}
+							headerRefs={(ref, index) => {
+								if (index === 'action' || index === 'select') {
+									if (ref) {
+										this.headerRefs[index][0] = ref;
+									} else {
+										this.headerRefs[index] = [];
+									}
 								} else {
-									this.headerRefs[index] = [];
+									this.headerRefs.column[index] = ref;
 								}
-							} else {
-								this.headerRefs.column[index] = ref;
-							}
-						}}
-						indeterminateSelected={indeterminateSelected}
-						canSelectRows={canSelectRows}
-						columns={columns}
-						id={`${this.getId()}-${DATA_TABLE_HEAD}`}
-						onToggleAll={this.handleToggleAll}
-						onSort={this.props.onSort}
-						showRowActions={!!RowActions}
-					/>
-					<tbody>
-						{numRows > 0
-							? this.props.items.map((item, index) => {
-									const rowId =
-										this.getId() && item.id
-											? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
-											: shortid.generate();
-									return this.props.onRenderSubHeadingRow &&
-										item.type === 'header-row' ? (
-										this.props.onRenderSubHeadingRow({
-											assistiveText,
-											classNameRow: item.classNameRow,
-											columns,
-											key: rowId,
-											id: rowId,
-											tableId: this.getId(),
-											item,
-										})
-									) : (
-										<DataTableRow
-											assistiveText={assistiveText}
-											canSelectRows={canSelectRows}
-											className={item.classNameRow}
-											columns={columns}
-											fixedLayout={this.props.fixedLayout}
-											id={rowId}
-											index={index}
-											item={item}
-											key={rowId}
-											onToggle={this.handleRowToggle}
-											selection={this.props.selection}
-											rowActions={RowActions}
-											tableId={this.getId()}
-										/>
-									);
-							  })
-							: // Someday this should be an element to render when the table is empty
-							  null}
-					</tbody>
-				</table>
+							}}
+							indeterminateSelected={indeterminateSelected}
+							canSelectRows={canSelectRows}
+							columns={columns}
+							id={`${this.getId()}-${DATA_TABLE_HEAD}`}
+							onToggleAll={this.handleToggleAll}
+							onSort={this.props.onSort}
+							showRowActions={!!RowActions}
+						/>
+						<tbody>
+							{numRows > 0
+								? this.props.items.map((item, index) => {
+										const rowId =
+											this.getId() && item.id
+												? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
+												: shortid.generate();
+										return this.props.onRenderSubHeadingRow &&
+											item.type === 'header-row' ? (
+											this.props.onRenderSubHeadingRow({
+												assistiveText,
+												classNameRow: item.classNameRow,
+												columns,
+												key: rowId,
+												id: rowId,
+												tableId: this.getId(),
+												item,
+											})
+										) : (
+											<DataTableRow
+												assistiveText={assistiveText}
+												canSelectRows={canSelectRows}
+												className={item.classNameRow}
+												columns={columns}
+												fixedLayout={this.props.fixedLayout}
+												id={rowId}
+												index={index}
+												item={item}
+												key={rowId}
+												onToggle={this.handleRowToggle}
+												selection={this.props.selection}
+												rowActions={RowActions}
+												tableId={this.getId()}
+												rowIndex={index + numHeaderRows}
+											/>
+										);
+								  })
+								: // Someday this should be an element to render when the table is empty
+								  null}
+						</tbody>
+					</table>
+				</TableContext.Provider>
 				{this.props.fixedHeader && this.props.hasMore && (
 					<div className="slds-is-relative slds-p-around_large">
 						<Spinner
