@@ -1,0 +1,1822 @@
+{
+  "name": "design-system-react",
+  "version": "0.10.32",
+  "description": "Salesforce Lightning Design System for React",
+  "license": "SEE LICENSE IN README.md",
+  "engines": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/salesforce/design-system-react.git"
+  },
+  "keywords": [
+    "react",
+    "slds",
+    "salesforce",
+    "salesforce-ux",
+    "lightning",
+    "design system",
+    "lightning design system",
+    "salesforce-lightning",
+    "salesforce lightning design system",
+    "interactive components",
+    "interactive",
+    "components"
+  ],
+  "bugs": {
+    "url": "https://github.com/salesforce/design-system-react/issues"
+  },
+  "main": "components/index.js",
+  "homepage": "https://react.lightningdesignsystem.com",
+  "dependencies": {
+    "@salesforce/babel-preset-design-system-react": "^3.0.0",
+    "classnames": "^2.2.6",
+    "create-react-class": "^15.7.0",
+    "lodash.assign": "^4.2.0",
+    "lodash.escaperegexp": "^4.1.2",
+    "lodash.find": "^4.6.0",
+    "lodash.findindex": "^4.6.0",
+    "lodash.isdate": "^4.0.1",
+    "lodash.isequal": "^4.5.0",
+    "lodash.isfunction": "^3.0.9",
+    "lodash.memoize": "^4.1.2",
+    "lodash.reject": "^4.6.0",
+    "popper.js": "^1.10.8",
+    "prop-types": ">=15.7.2",
+    "react-contenteditable": "^3.3.5",
+    "react-highlighter": "^0.4.3",
+    "react-modal": "3.12.1",
+    "react-onclickoutside": "^6.10.0",
+    "react-required-if": "^1.0.3",
+    "react-text-truncate": "^0.16.0",
+    "shortid": "^2.2.15",
+    "warning": "^4.0.3"
+  },
+  "peerDependencies": {
+    "@salesforce-ux/design-system": "^2.9.4",
+    "react": ">=16.3",
+    "react-dom": ">=16.3"
+  },
+  "components": [
+    {
+      "component": "accordion",
+      "status": "prod",
+      "display-name": "Accordions",
+      "classKey": "Accordion",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/accordion",
+      "dependencies": [
+        {
+          "component": "panel",
+          "classKey": "AccordionPanel"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        }
+      ],
+      "url-slug": "accordions"
+    },
+    {
+      "component": "alert",
+      "status": "prod",
+      "display-name": "Alerts",
+      "classKey": "Alert",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/alert",
+      "dependencies": [
+        {
+          "component": "container",
+          "classKey": "AlertContainer"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Informational",
+          "path": "/__examples__/info.jsx"
+        },
+        {
+          "heading": "Warning",
+          "path": "/__examples__/warning.jsx"
+        },
+        {
+          "heading": "System Status",
+          "path": "/__examples__/offline.jsx"
+        },
+        {
+          "heading": "Error",
+          "path": "/__examples__/error.jsx"
+        },
+        {
+          "heading": "Dismissable",
+          "path": "/__examples__/dismissable.jsx"
+        }
+      ],
+      "url-slug": "alerts"
+    },
+    {
+      "component": "app-launcher",
+      "status": "prod",
+      "display-name": "App Launcher",
+      "classKey": "AppLauncher",
+      "SLDS-component-path": "/components/app-launcher",
+      "dependencies": [
+        {
+          "component": "expandable-section",
+          "classKey": "AppLauncherExpandableSection"
+        },
+        {
+          "component": "link",
+          "classKey": "AppLauncherLink"
+        },
+        {
+          "component": "tile",
+          "classKey": "AppLauncherTile"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        }
+      ],
+      "url-slug": "app-launcher"
+    },
+    {
+      "component": "avatar",
+      "status": "prod",
+      "display-name": "Avatars",
+      "classKey": "Avatar",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/avatar",
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        },
+        {
+          "heading": "User Initials",
+          "path": "/__examples__/user-initials.jsx"
+        },
+        {
+          "heading": "User Icon",
+          "path": "/__examples__/user-icon.jsx"
+        },
+        {
+          "heading": "Entity Initials",
+          "path": "/__examples__/entity-initials.jsx"
+        },
+        {
+          "heading": "Entity Icon",
+          "path": "/__examples__/entity-icon.jsx"
+        }
+      ],
+      "url-slug": "avatars"
+    },
+    {
+      "component": "badge",
+      "status": "prod",
+      "display-name": "Badge",
+      "classKey": "Badge",
+      "SLDS-component-path": "/components/badges",
+      "site-stories": [
+        {
+          "heading": "Color Variants",
+          "path": "/__examples__/color-variants.jsx"
+        },
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "With Icon",
+          "path": "/__examples__/with-icon.jsx"
+        }
+      ],
+      "url-slug": "badges"
+    },
+    {
+      "component": "brand-band",
+      "status": "prod",
+      "display-name": "Brand Band",
+      "classKey": "BrandBand",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/08/27",
+        "commit-sha": "aef31ce8daf993b59ca94c656c5efd9f2e3266f7"
+      },
+      "SLDS-component-path": "/components/brand-band",
+      "site-stories": [
+        {
+          "heading": "Lightning Blue",
+          "path": "/__examples__/lightning-blue-theme.jsx"
+        },
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "Small",
+          "path": "/__examples__/small.jsx"
+        },
+        {
+          "heading": "large",
+          "path": "/__examples__/large.jsx"
+        },
+        {
+          "heading": "No Image",
+          "path": "/__examples__/no-image.jsx"
+        }
+      ],
+      "url-slug": "brand-band"
+    },
+    {
+      "component": "breadcrumb",
+      "status": "prod",
+      "display-name": "Breadcrumbs",
+      "classKey": "Breadcrumb",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/breadcrumb",
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        },
+        {
+          "heading": "One Item",
+          "path": "/__examples__/one-item.jsx"
+        },
+        {
+          "heading": "With Overflow Menu",
+          "path": "/__examples__/base-with-overflow-menu.jsx"
+        }
+      ],
+      "url-slug": "breadcrumbs"
+    },
+    {
+      "component": "builder-header",
+      "status": "prod",
+      "display-name": "Builder Header",
+      "classKey": "BuilderHeader",
+      "SLDS-component-path": "/components/builder-header",
+      "dependencies": [
+        {
+          "component": "nav",
+          "classKey": "BuilderHeaderNav"
+        },
+        {
+          "component": "nav-dropdown",
+          "classKey": "BuilderHeaderNavDropdown"
+        },
+        {
+          "component": "nav-link",
+          "classKey": "BuilderHeaderNavLink"
+        },
+        {
+          "component": "toolbar",
+          "classKey": "BuilderHeaderToolbar"
+        },
+        {
+          "component": "misc",
+          "classKey": "BuilderHeaderMisc"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        },
+        {
+          "heading": "Base with Toolbar",
+          "path": "/__examples__/base-with-toolbar.jsx"
+        },
+        {
+          "heading": "Successful Save",
+          "path": "/__examples__/successful-save.jsx"
+        },
+        {
+          "heading": "After Successful Save",
+          "path": "/__examples__/after-successful-save.jsx"
+        },
+        {
+          "heading": "Save Error",
+          "path": "/__examples__/failed-save.jsx"
+        }
+      ],
+      "url-slug": "builder-header"
+    },
+    {
+      "component": "button-group",
+      "status": "prod",
+      "display-name": "Button Groups",
+      "classKey": "ButtonGroup",
+      "SLDS-component-path": "/components/button-group",
+      "site-stories": [
+        {
+          "heading": "With More Icon",
+          "path": "/__examples__/more-icon.jsx"
+        },
+        {
+          "heading": "Icon Group",
+          "path": "/__examples__/icon-group.jsx"
+        },
+        {
+          "heading": "List variant",
+          "path": "/__examples__/list-variant.jsx"
+        }
+      ],
+      "url-slug": "button-groups"
+    },
+    {
+      "component": "button-stateful",
+      "status": "prod",
+      "display-name": "Stateful Buttons",
+      "classKey": "ButtonStateful",
+      "SLDS-component-path": "/components/button/#flavor-stateful",
+      "site-stories": [
+        {
+          "heading": "Icon Only",
+          "path": "/__examples__/icon.jsx"
+        },
+        {
+          "heading": "Icon and Text",
+          "path": "/__examples__/icon-text.jsx"
+        }
+      ],
+      "url-slug": "stateful-buttons"
+    },
+    {
+      "component": "button",
+      "status": "prod",
+      "display-name": "Buttons",
+      "classKey": "Button",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/buttons",
+      "site-stories": [
+        {
+          "heading": "Base Neutral",
+          "path": "/__examples__/base-neutral.jsx"
+        },
+        {
+          "heading": "Variants",
+          "path": "/__examples__/brand-disabled-destructive-inverse.jsx"
+        },
+        {
+          "heading": "Button Icons",
+          "path": "/__examples__/button-icons.jsx"
+        }
+      ],
+      "url-slug": "buttons"
+    },
+    {
+      "component": "card",
+      "status": "prod",
+      "display-name": "Cards",
+      "classKey": "Card",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/cards",
+      "dependencies": [
+        {
+          "component": "empty",
+          "classKey": "CardEmpty"
+        },
+        {
+          "component": "filter",
+          "classKey": "CardFilter"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Card with Data Table",
+          "path": "/__examples__/related-list-with-table.jsx"
+        }
+      ],
+      "url-slug": "cards"
+    },
+    {
+      "component": "carousel",
+      "status": "prod",
+      "display-name": "Carousel",
+      "classKey": "Carousel",
+      "SLDS-component-path": "/components/carousel",
+      "site-stories": [
+        {
+          "heading": "Three Items",
+          "path": "/__examples__/three-items.jsx"
+        },
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "With Navigation",
+          "path": "/__examples__/default-with-navigation.jsx"
+        }
+      ],
+      "url-slug": "carousel"
+    },
+    {
+      "component": "checkbox",
+      "status": "prod",
+      "display-name": "Checkboxes",
+      "classKey": "Checkbox",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/checkbox",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "Error State",
+          "path": "/__examples__/error.jsx"
+        },
+        {
+          "heading": "Toggle",
+          "path": "/__examples__/toggle.jsx"
+        },
+        {
+          "heading": "Grouped with Tri-State",
+          "path": "/__examples__/grouped-with-tristate.jsx"
+        }
+      ],
+      "url-slug": "checkboxes"
+    },
+    {
+      "component": "color-picker",
+      "status": "prod",
+      "display-name": "Color Pickers",
+      "classKey": "ColorPicker",
+      "SLDS-component-path": "/components/color-picker",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        }
+      ],
+      "url-slug": "color-picker"
+    },
+    {
+      "component": "combobox",
+      "status": "prod",
+      "display-name": "Comboboxes",
+      "classKey": "Combobox",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/08/21",
+        "commit-sha": "295a4766f712a5f93743c4ecd3ba62d91c1fc153"
+      },
+      "SLDS-component-path": "/components/combobox",
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        },
+        {
+          "heading": "Base: With subheader",
+          "path": "/__examples__/base-menu-subheader.jsx"
+        },
+        {
+          "heading": "Base: Inherit Menu Width",
+          "path": "/__examples__/base-inherit-menu-width.jsx"
+        },
+        {
+          "heading": "Base: Predefined options only",
+          "path": "/__examples__/base-predefined-options-only.jsx"
+        },
+        {
+          "heading": "Base With Scroll",
+          "path": "/__examples__/base-with-scroll.jsx"
+        },
+        {
+          "heading": "Base: With dialog",
+          "path": "/__examples__/dialog.jsx"
+        },
+        {
+          "heading": "Inline single selection",
+          "path": "/__examples__/inline-single.jsx"
+        },
+        {
+          "heading": "Inline: Single Selection with Entity Selection",
+          "path": "/__examples__/inline-single-entity-combobox.jsx"
+        },
+        {
+          "heading": "Inline: Single Selection with Search and Add Menu Items",
+          "path": "/__examples__/inline-single-search-add-entities.jsx"
+        },
+        {
+          "heading": "Inline: Multiple Selection with Loading State",
+          "path": "/__examples__/inline-multiple-loading.jsx"
+        },
+        {
+          "heading": "Read-only: Single Selection (Picklist)",
+          "path": "/__examples__/readonly-single.jsx"
+        },
+        {
+          "heading": "Read-only: Multiple Selection (Picklist)",
+          "path": "/__examples__/readonly-multiple.jsx"
+        },
+        {
+          "heading": "Required Input and Error State",
+          "path": "/__examples__/required-input-error-state.jsx"
+        }
+      ],
+      "url-slug": "comboboxes"
+    },
+    {
+      "component": "data-table",
+      "status": "prod",
+      "display-name": "Data Tables",
+      "classKey": "DataTable",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/01/01",
+        "deprecated-accessibility": "true",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/data-tables",
+      "dependencies": [
+        {
+          "component": "cell",
+          "classKey": "DataTableCell"
+        },
+        {
+          "component": "column",
+          "classKey": "DataTableColumn"
+        },
+        {
+          "component": "highlight-cell",
+          "classKey": "DataTableHighlightCell"
+        },
+        {
+          "component": "row-actions",
+          "classKey": "DataTableRowActions"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Basic",
+          "path": "/__examples__/basic-fluid.jsx"
+        },
+        {
+          "heading": "Basic: Fluid and Striped",
+          "path": "/__examples__/basic-fluid-striped.jsx"
+        },
+        {
+          "heading": "Basic: No row hover",
+          "path": "/__examples__/basic-fluid-no-row-hover.jsx"
+        },
+        {
+          "heading": "Basic: Columns bordered",
+          "path": "/__examples__/basic-fluid-column-bordered.jsx"
+        },
+        {
+          "heading": "Fixed Layout",
+          "path": "/__examples__/basic-fixed-layout.jsx"
+        },
+        {
+          "heading": "Advanced",
+          "path": "/__examples__/advanced.jsx"
+        },
+        {
+          "heading": "Advanced: Single Selection",
+          "path": "/__examples__/advanced-single-select.jsx"
+        },
+        {
+          "heading": "Advanced: Fixed Header",
+          "path": "/__examples__/fixed-header.jsx"
+        },
+        {
+          "heading": "Advanced: Joined with Page Header",
+          "path": "/__examples__/joined-with-page-header.jsx"
+        },
+        {
+          "heading": "Custom Classes",
+          "path": "/__examples__/custom-classes.jsx"
+        },
+        {
+          "heading": "Infinite Scrolling",
+          "path": "/__examples__/infinite-scrolling.jsx"
+        }
+      ],
+      "url-slug": "data-tables"
+    },
+    {
+      "component": "date-picker",
+      "status": "prod",
+      "display-name": "Datepickers",
+      "classKey": "DatePicker",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/01/20",
+        "commit-sha": "568f503b19ddc039207e4b5c2636461de937f5f0"
+      },
+      "SLDS-component-path": "/components/datepickers",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        }
+      ],
+      "url-slug": "date-pickers"
+    },
+    {
+      "component": "dynamic-icon",
+      "status": "prod",
+      "display-name": "Dynamic Icon",
+      "classKey": "DynamicIcon",
+      "SLDS-component-path": "/components/dynamic-icon",
+      "site-stories": [
+        {
+          "heading": "Ellie",
+          "path": "/__examples__/ellie.jsx"
+        },
+        {
+          "heading": "Eq",
+          "path": "/__examples__/eq.jsx"
+        },
+        {
+          "heading": "Score",
+          "path": "/__examples__/score.jsx"
+        },
+        {
+          "heading": "Strength",
+          "path": "/__examples__/strength.jsx"
+        },
+        {
+          "heading": "Trend",
+          "path": "/__examples__/trend.jsx"
+        },
+        {
+          "heading": "Typing",
+          "path": "/__examples__/typing.jsx"
+        },
+        {
+          "heading": "Waffle",
+          "path": "/__examples__/waffle.jsx"
+        }
+      ],
+      "url-slug": "dynamic-icon"
+    },
+    {
+      "component": "expandable-section",
+      "status": "prod",
+      "display-name": "Expandable Section",
+      "classKey": "ExpandableSection",
+      "SLDS-component-path": "/components/expandable-section",
+      "site-stories": [
+        {
+          "heading": "Deault",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "Controlled",
+          "path": "/__examples__/controlled.jsx"
+        },
+        {
+          "heading": "Non-collapsible",
+          "path": "/__examples__/non-collapsible.jsx"
+        }
+      ],
+      "url-slug": "expandable-section"
+    },
+    {
+      "component": "expression",
+      "status": "prod",
+      "display-name": "Expression",
+      "classKey": "Expression",
+      "SLDS-component-path": "/components/expression",
+      "dependencies": [
+        {
+          "component": "condition",
+          "classKey": "ExpressionCondition"
+        },
+        {
+          "component": "formula",
+          "classKey": "ExpressionFormula"
+        },
+        {
+          "component": "group",
+          "classKey": "ExpressionGroup"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/resource-selected.jsx"
+        }
+      ],
+      "url-slug": "expression"
+    },
+    {
+      "component": "files",
+      "status": "prod",
+      "display-name": "Files",
+      "classKey": "Files",
+      "dependencies": [
+        {
+          "component": "file",
+          "classKey": "FilesFile"
+        },
+        {
+          "component": "more-files",
+          "classKey": "FilesMoreFiles"
+        }
+      ],
+      "SLDS-component-path": "/components/files",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "Cropped",
+          "path": "/__examples__/crops.jsx"
+        },
+        {
+          "heading": "Loading",
+          "path": "/__examples__/loading.jsx"
+        },
+        {
+          "heading": "No Title",
+          "path": "/__examples__/no-title.jsx"
+        },
+        {
+          "heading": "With External Icon",
+          "path": "/__examples__/with-external-icon.jsx"
+        },
+        {
+          "heading": "No Image",
+          "path": "/__examples__/no-image.jsx"
+        },
+        {
+          "heading": "Actions",
+          "path": "/__examples__/actions.jsx"
+        }
+      ],
+      "url-slug": "files"
+    },
+    {
+      "component": "filter",
+      "status": "prod",
+      "display-name": "Filters",
+      "classKey": "Filter",
+      "SLDS-component-path": "/components/filter",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "New",
+          "path": "/__examples__/new.jsx"
+        },
+        {
+          "heading": "Error",
+          "path": "/__examples__/error.jsx"
+        },
+        {
+          "heading": "Locked",
+          "path": "/__examples__/locked.jsx"
+        }
+      ],
+      "url-slug": "filters"
+    },
+    {
+      "component": "global-header",
+      "status": "prod",
+      "display-name": "Global Header",
+      "classKey": "GlobalHeader",
+      "SLDS-component-path": "/components/global-header#flavor-base",
+      "dependencies": [
+        {
+          "component": "favorites",
+          "classKey": "GlobalHeaderFavorites"
+        },
+        {
+          "component": "help",
+          "classKey": "GlobalHeaderHelp"
+        },
+        {
+          "component": "notifications",
+          "classKey": "GlobalHeaderNotifications"
+        },
+        {
+          "component": "profile",
+          "classKey": "GlobalHeaderProfile"
+        },
+        {
+          "component": "search",
+          "classKey": "GlobalHeaderSearch"
+        },
+        {
+          "component": "setup",
+          "classKey": "GlobalHeaderSetup"
+        },
+        {
+          "component": "task",
+          "classKey": "GlobalHeaderTask"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        }
+      ],
+      "url-slug": "global-headers"
+    },
+    {
+      "component": "global-navigation-bar",
+      "status": "prod",
+      "display-name": "Global Navigation Bar",
+      "classKey": "GlobalNavigationBar",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/05/02",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/global-navigation",
+      "dependencies": [
+        {
+          "component": "button",
+          "classKey": "GlobalNavigationBarButton"
+        },
+        {
+          "component": "dropdown",
+          "classKey": "GlobalNavigationBarDropdown"
+        },
+        {
+          "component": "label",
+          "classKey": "GlobalNavigationBarLabel"
+        },
+        {
+          "component": "link",
+          "classKey": "GlobalNavigationBarLink"
+        },
+        {
+          "component": "region",
+          "classKey": "GlobalNavigationBarRegion"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        }
+      ],
+      "url-slug": "global-navigation-bar"
+    },
+    {
+      "component": "icon-settings",
+      "status": "prod",
+      "display-name": "Icon Settings",
+      "classKey": "IconSettings",
+      "url-slug": "icon-settings"
+    },
+    {
+      "component": "icon",
+      "status": "prod",
+      "display-name": "Icons",
+      "classKey": "Icon",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/icons",
+      "site-stories": [
+        {
+          "heading": "Category Options",
+          "path": "/__examples__/categories.jsx"
+        },
+        {
+          "heading": "Color Options",
+          "path": "/__examples__/colors.jsx"
+        },
+        {
+          "heading": "Size Options",
+          "path": "/__examples__/sizes.jsx"
+        }
+      ],
+      "url-slug": "icons"
+    },
+    {
+      "component": "input",
+      "status": "prod",
+      "display-name": "Inputs",
+      "classKey": "Input",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/09/22",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "dependencies": [
+        {
+          "component": "search",
+          "classKey": "InputSearch"
+        }
+      ],
+      "SLDS-component-path": "/components/input",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "With Icons",
+          "path": "/__examples__/icons.jsx"
+        },
+        {
+          "heading": "Error State",
+          "path": "/__examples__/error.jsx"
+        },
+        {
+          "heading": "Disabled",
+          "path": "/__examples__/inactiveInputs.jsx"
+        },
+        {
+          "heading": "With Inline Help",
+          "path": "/__examples__/inline-help.jsx"
+        },
+        {
+          "heading": "With Field Level Help",
+          "path": "/__examples__/field-level-help.jsx"
+        },
+        {
+          "heading": "Counter",
+          "path": "/__examples__/counter-input.jsx"
+        }
+      ],
+      "url-slug": "inputs"
+    },
+    {
+      "component": "location-map",
+      "status": "prod",
+      "display-name": "Location Map",
+      "classKey": "LocationMap",
+      "SLDS-component-path": "/components/location-map",
+      "site-stories": [
+        {
+          "heading": "Multiple Locations",
+          "path": "/__examples__/multiple-locations.jsx"
+        }
+      ],
+      "url-slug": "location-map"
+    },
+    {
+      "component": "media-object",
+      "status": "prod",
+      "display-name": "Media Objects",
+      "classKey": "MediaObject",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/utilities/media-object",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "Vertically Centered",
+          "path": "/__examples__/vertically-centered.jsx"
+        }
+      ],
+      "url-slug": "media-objects"
+    },
+    {
+      "component": "menu-dropdown",
+      "status": "prod",
+      "display-name": "Dropdown Menus",
+      "classKey": "MenuDropdown",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/menus#flavor-dropdown",
+      "dependencies": [
+        {
+          "component": "button-trigger",
+          "classKey": "MenuDropdownButtonTrigger"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "With Icon Label",
+          "path": "/__examples__/default-icon-label.jsx"
+        },
+        {
+          "heading": "With Subheadings",
+          "path": "/__examples__/sub-heading.jsx"
+        },
+        {
+          "heading": "Custom trigger",
+          "path": "/__examples__/custom-trigger.jsx"
+        },
+        {
+          "heading": "Checkmark Selection",
+          "path": "/__examples__/checkmark.jsx"
+        }
+      ],
+      "url-slug": "menu-dropdowns"
+    },
+    {
+      "component": "modal",
+      "status": "prod",
+      "display-name": "Modals and Prompts",
+      "classKey": "Modal",
+      "SLDS-component-path": "/components/modals",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/menu-contents.jsx"
+        },
+        {
+          "heading": "With header and footer",
+          "path": "/__examples__/header-footer.jsx"
+        },
+        {
+          "heading": "With Tagline",
+          "path": "/__examples__/taglines.jsx"
+        },
+        {
+          "heading": "Prompt",
+          "path": "/__examples__/prompt.jsx"
+        },
+        {
+          "heading": "Various sizes",
+          "path": "/__examples__/sizes.jsx"
+        }
+      ],
+      "url-slug": "modals"
+    },
+    {
+      "component": "page-header",
+      "status": "prod",
+      "display-name": "Page Headers",
+      "classKey": "PageHeader",
+      "SLDS-component-path": "/components/page-headers",
+      "dependencies": [
+        {
+          "component": "control",
+          "classKey": "PageHeaderControl"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Record Home",
+          "path": "/__examples__/record-home.jsx"
+        },
+        {
+          "heading": "Object Home",
+          "path": "/__examples__/object-home.jsx"
+        },
+        {
+          "heading": "Related list",
+          "path": "/__examples__/related-list.jsx"
+        },
+        {
+          "heading": "Setup",
+          "path": "/__examples__/setup.jsx"
+        }
+      ],
+      "url-slug": "page-headers"
+    },
+    {
+      "component": "panel",
+      "status": "prod",
+      "display-name": "Panels",
+      "classKey": "Panel",
+      "SLDS-component-path": "/components/panels",
+      "dependencies": [
+        {
+          "component": "filtering/group",
+          "classKey": "PanelFilterGroup"
+        },
+        {
+          "component": "filtering/list-heading",
+          "classKey": "PanelFilterListHeading"
+        },
+        {
+          "component": "filtering/list",
+          "classKey": "PanelFilterList"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Filtering",
+          "path": "/__examples__/filtering.jsx"
+        },
+        {
+          "heading": "Filtering: Locked",
+          "path": "/__examples__/filtering-locked.jsx"
+        },
+        {
+          "heading": "Filtering: Error",
+          "path": "/__examples__/filtering-error.jsx"
+        }
+      ],
+      "url-slug": "panels"
+    },
+    {
+      "component": "pill-container",
+      "status": "prod",
+      "display-name": "Pill Container",
+      "classKey": "PillContainer",
+      "SLDS-component-path": "/components/pill-container",
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        },
+        {
+          "heading": "With Icons",
+          "path": "/__examples__/icons.jsx"
+        },
+        {
+          "heading": "With Avatars",
+          "path": "/__examples__/avatars.jsx"
+        },
+        {
+          "heading": "Bare",
+          "path": "/__examples__/bare.jsx"
+        }
+      ],
+      "url-slug": "pill-container"
+    },
+    {
+      "component": "pill",
+      "status": "prod",
+      "display-name": "Pills",
+      "classKey": "Pill",
+      "SLDS-component-path": "/components/pills",
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        },
+        {
+          "heading": "With Icons",
+          "path": "/__examples__/icon.jsx"
+        }
+      ],
+      "url-slug": "pills"
+    },
+    {
+      "component": "popover",
+      "status": "prod",
+      "display-name": "Popovers",
+      "classKey": "Popover",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/popovers",
+      "site-stories": [
+        {
+          "heading": "With Header",
+          "path": "/__examples__/header.jsx"
+        },
+        {
+          "heading": "With Alternative Header",
+          "path": "/__examples__/alternative-header.jsx"
+        },
+        {
+          "heading": "Controlled State with Footer",
+          "path": "/__examples__/controlled-with-footer.jsx"
+        },
+        {
+          "heading": "Custom Target",
+          "path": "/__examples__/custom-target.jsx"
+        },
+        {
+          "heading": "Error Theme",
+          "path": "/__examples__/error.jsx"
+        },
+        {
+          "heading": "Feature",
+          "path": "/__examples__/feature.jsx"
+        },
+        {
+          "heading": "Walkthrough",
+          "path": "/__examples__/walkthrough.jsx"
+        },
+        {
+          "heading": "Walkthrough Action",
+          "path": "/__examples__/walkthrough-action.jsx"
+        },
+        {
+          "heading": "Warning",
+          "path": "/__examples__/warning.jsx"
+        },
+        {
+          "heading": "Edit Dialog",
+          "path": "/__examples__/edit-dialog.jsx"
+        }
+      ],
+      "url-slug": "popovers"
+    },
+    {
+      "component": "progress-bar",
+      "status": "prod",
+      "display-name": "Progress Bars",
+      "classKey": "ProgressBar",
+      "SLDS-component-path": "/components/progress-bar",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "Descriptive",
+          "path": "/__examples__/descriptive.jsx"
+        },
+        {
+          "heading": "Success",
+          "path": "/__examples__/color.jsx"
+        },
+        {
+          "heading": "Circular Radius",
+          "path": "/__examples__/radius.jsx"
+        },
+        {
+          "heading": "Thickness Variants",
+          "path": "/__examples__/thickness.jsx"
+        },
+        {
+          "heading": "Vertical",
+          "path": "/__examples__/vertical.jsx"
+        }
+      ],
+      "url-slug": "progress-bars"
+    },
+    {
+      "component": "progress-indicator",
+      "status": "prod",
+      "display-name": "Progress Indicators",
+      "classKey": "ProgressIndicator",
+      "SLDS-component-path": "/components/progress-indicator",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/07/25",
+        "commit-sha": "473c75bf424f69bf0ff66fde6b1e604c21d2835c"
+      },
+      "last-slds-markup-review": {
+        "date-iso-8601": "2018/07/25",
+        "commit-sha": "473c75bf424f69bf0ff66fde6b1e604c21d2835c"
+      },
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "Vertical",
+          "path": "/__examples__/vertical.jsx"
+        }
+      ],
+      "url-slug": "progress-indicators"
+    },
+    {
+      "component": "progress-ring",
+      "status": "prod",
+      "display-name": "Progress Rings",
+      "classKey": "ProgressRing",
+      "last-accessibility-review": {
+        "date-iso-8601": "2017/11/28",
+        "commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
+      },
+      "last-slds-markup-review": {
+        "date-iso-8601": "2017/11/28",
+        "commit-sha": "1b7025689af65ff2b92ad359c809970f2afd8439"
+      },
+      "SLDS-component-path": "/components/progress-ring",
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        },
+        {
+          "heading": "Complete",
+          "path": "/__examples__/complete.jsx"
+        },
+        {
+          "heading": "Warning",
+          "path": "/__examples__/warning.jsx"
+        },
+        {
+          "heading": "Expired",
+          "path": "/__examples__/expired.jsx"
+        },
+        {
+          "heading": "Active",
+          "path": "/__examples__/active.jsx"
+        },
+        {
+          "heading": "With Custom Icon",
+          "path": "/__examples__/customIcon.jsx"
+        }
+      ],
+      "url-slug": "progress-rings"
+    },
+    {
+      "component": "radio-button-group",
+      "status": "prod",
+      "display-name": "Radio Button Groups",
+      "classKey": "RadioButtonGroup",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/radio-button-group",
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        }
+      ],
+      "url-slug": "radio-button-groups"
+    },
+    {
+      "component": "radio-group",
+      "status": "prod",
+      "display-name": "Radio Groups",
+      "classKey": "RadioGroup",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/radio-group",
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        }
+      ],
+      "url-slug": "radio-groups"
+    },
+    {
+      "component": "radio",
+      "status": "prod",
+      "display-name": "Radios",
+      "classKey": "Radio",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "Disabled",
+          "path": "/__examples__/disabled.jsx"
+        }
+      ],
+      "SLDS-component-path": "/components/radio-group/",
+      "url-slug": "radios"
+    },
+    {
+      "component": "scoped-notification",
+      "status": "prod",
+      "display-name": "Scoped Notifications",
+      "classKey": "ScopedNotification",
+      "SLDS-component-path": "/components/scoped-notification",
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        },
+        {
+          "heading": "Light",
+          "path": "/__examples__/light.jsx"
+        },
+        {
+          "heading": "Dark",
+          "path": "/__examples__/dark.jsx"
+        },
+        {
+          "heading": "With Custom Icon",
+          "path": "/__examples__/custom-icon.jsx"
+        }
+      ],
+      "url-slug": "scoped-notifications"
+    },
+    {
+      "component": "setup-assistant",
+      "status": "prod",
+      "display-name": "Setup Assistant",
+      "classKey": "SetupAssistant",
+      "SLDS-component-path": "/components/setup-assistant",
+      "dependencies": [
+        {
+          "component": "step",
+          "classKey": "SetupAssistantStep"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        },
+        {
+          "heading": "Step Progress Indicator",
+          "path": "/__examples__/step-progress.jsx"
+        },
+        {
+          "heading": "Expandable Steps",
+          "path": "/__examples__/hub-expandable-steps.jsx"
+        },
+        {
+          "heading": "With Card",
+          "path": "/__examples__/card.jsx"
+        }
+      ],
+      "url-slug": "setup-assistant"
+    },
+    {
+      "component": "slider",
+      "status": "prod",
+      "display-name": "Slider",
+      "classKey": "Slider",
+      "SLDS-component-path": "/components/slider",
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        },
+        {
+          "heading": "Disabled",
+          "path": "/__examples__/disabled.jsx"
+        },
+        {
+          "heading": "Error",
+          "path": "/__examples__/error.jsx"
+        },
+        {
+          "heading": "Size Variants",
+          "path": "/__examples__/sizes.jsx"
+        },
+        {
+          "heading": "Vertical",
+          "path": "/__examples__/vertical.jsx"
+        }
+      ],
+      "url-slug": "slider"
+    },
+    {
+      "component": "spinner",
+      "status": "prod",
+      "display-name": "Spinners",
+      "classKey": "Spinner",
+      "SLDS-component-path": "/components/spinner",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        }
+      ],
+      "url-slug": "spinners"
+    },
+    {
+      "component": "split-view",
+      "status": "prod",
+      "display-name": "Split View",
+      "classKey": "SplitView",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "last-slds-markup-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/split-view",
+      "dependencies": [
+        {
+          "component": "header",
+          "classKey": "SplitViewHeader"
+        },
+        {
+          "component": "listbox",
+          "classKey": "SplitViewListbox"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        },
+        {
+          "heading": "Multiple",
+          "path": "/__examples__/base-multiple.jsx"
+        },
+        {
+          "heading": "With External State",
+          "path": "/__examples__/external-state.jsx"
+        },
+        {
+          "heading": "Custom Items List",
+          "path": "/__examples__/custom-items-list.jsx"
+        }
+      ],
+      "url-slug": "split-view"
+    },
+    {
+      "component": "tabs",
+      "status": "prod",
+      "display-name": "Tabs",
+      "classKey": "Tabs",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/tabs",
+      "dependencies": [
+        {
+          "component": "panel",
+          "classKey": "TabsPanel"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "Scoped",
+          "path": "/__examples__/scoped.jsx"
+        }
+      ],
+      "url-slug": "tabs"
+    },
+    {
+      "component": "textarea",
+      "status": "prod",
+      "display-name": "Textareas",
+      "classKey": "Textarea",
+      "SLDS-component-path": "/components/forms#flavor-textarea",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "Error",
+          "path": "/__examples__/error.jsx"
+        },
+        {
+          "heading": "Disabled",
+          "path": "/__examples__/disabled.jsx"
+        }
+      ],
+      "url-slug": "textareas"
+    },
+    {
+      "component": "time-picker",
+      "status": "prod",
+      "display-name": "Timepickers",
+      "classKey": "TimePicker",
+      "SLDS-component-path": "/components/timepicker",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        }
+      ],
+      "url-slug": "timepickers"
+    },
+    {
+      "component": "toast",
+      "status": "prod",
+      "display-name": "Toasts",
+      "classKey": "Toast",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/01/18",
+        "commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+      },
+      "SLDS-component-path": "/components/toast",
+      "dependencies": [
+        {
+          "component": "container",
+          "classKey": "ToastContainer"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Informational",
+          "path": "/__examples__/info.jsx"
+        },
+        {
+          "heading": "Success",
+          "path": "/__examples__/success.jsx"
+        },
+        {
+          "heading": "Warning",
+          "path": "/__examples__/warning.jsx"
+        },
+        {
+          "heading": "Error",
+          "path": "/__examples__/error.jsx"
+        },
+        {
+          "heading": "Error with Details",
+          "path": "/__examples__/error-with-details.jsx"
+        }
+      ],
+      "url-slug": "toasts"
+    },
+    {
+      "component": "tooltip",
+      "status": "prod",
+      "display-name": "Tooltips",
+      "classKey": "Tooltip",
+      "SLDS-component-path": "/components/tooltips",
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/base.jsx"
+        },
+        {
+          "heading": "Button Trigger",
+          "path": "/__examples__/button.jsx"
+        },
+        {
+          "heading": "Button Group Trigger",
+          "path": "/__examples__/button-group.jsx"
+        },
+        {
+          "heading": "Learn more",
+          "path": "/__examples__/learn-more.jsx"
+        }
+      ],
+      "url-slug": "tooltips"
+    },
+    {
+      "component": "tree",
+      "status": "prod",
+      "display-name": "Tree",
+      "classKey": "Tree",
+      "last-accessibility-review": {
+        "date-iso-8601": "2018/05/04",
+        "commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
+      },
+      "last-slds-markup-review": {
+        "date-iso-8601": "2018/05/04",
+        "commit-sha": "5fdeb31982a42cbd37a70d96d6257142cd7eec72"
+      },
+      "SLDS-component-path": "/components/trees",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        }
+      ],
+      "url-slug": "tree"
+    },
+    {
+      "component": "trial-bar",
+      "status": "prod",
+      "display-name": "Trial Bars",
+      "classKey": "TrialBar",
+      "SLDS-component-path": "/components/trial-bar",
+      "dependencies": [
+        {
+          "component": "button",
+          "classKey": "TrialBarButton"
+        },
+        {
+          "component": "dropdown",
+          "classKey": "TrialBarDropdown"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Base",
+          "path": "/__examples__/default.jsx"
+        }
+      ],
+      "url-slug": "trial-bars"
+    },
+    {
+      "component": "vertical-navigation",
+      "status": "prod",
+      "display-name": "Vertical Navigation",
+      "classKey": "VerticalNavigation",
+      "SLDS-component-path": "/components/vertical-navigation",
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        }
+      ],
+      "url-slug": "vertical-navigation"
+    },
+    {
+      "component": "visual-picker",
+      "status": "prod",
+      "display-name": "Visual Pickers",
+      "classKey": "VisualPicker",
+      "SLDS-component-path": "/components/visual-picker",
+      "dependencies": [
+        {
+          "component": "link",
+          "classKey": "VisualPickerLink"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Coverable",
+          "path": "/__examples__/coverable.jsx"
+        },
+        {
+          "heading": "Non-coverable",
+          "path": "/__examples__/non-coverable.jsx"
+        },
+        {
+          "heading": "Vertical",
+          "path": "/__examples__/vertical.jsx"
+        }
+      ],
+      "url-slug": "visual-pickers"
+    },
+    {
+      "component": "welcome-mat",
+      "status": "prod",
+      "display-name": "Welcome Mat",
+      "classKey": "WelcomeMat",
+      "SLDS-component-path": "/components/welcome-mat",
+      "dependencies": [
+        {
+          "component": "info-badge",
+          "classKey": "WelcomeMatInfoBadge"
+        },
+        {
+          "component": "tile",
+          "classKey": "WelcomeMatTile"
+        }
+      ],
+      "site-stories": [
+        {
+          "heading": "Default",
+          "path": "/__examples__/default.jsx"
+        },
+        {
+          "heading": "With Steps Completed",
+          "path": "/__examples__/steps-complete.jsx"
+        },
+        {
+          "heading": "Info-Only",
+          "path": "/__examples__/info-only.jsx"
+        },
+        {
+          "heading": "Splash",
+          "path": "/__examples__/splash.jsx"
+        },
+        {
+          "heading": "Trailhead",
+          "path": "/__examples__/trailhead.jsx"
+        },
+        {
+          "heading": "Trailhead - Complete",
+          "path": "/__examples__/trailhead-complete.jsx"
+        }
+      ],
+      "url-slug": "welcome-mat"
+    }
+  ],
+  "documentation": {
+    "prototype": {
+      "description": "The following components are prototypes. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS."
+    }
+  },
+  "SLDS": {
+    "gitURL": "^2.9.4"
+  }
+}

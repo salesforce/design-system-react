@@ -1,0 +1,26 @@
+{
+	"component": "breadcrumb",
+	"status": "prod",
+	"display-name": "Breadcrumbs",
+	"classKey": "Breadcrumb",
+	"last-accessibility-review": {
+		"date-iso-8601": "2018/01/18",
+		"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+	},
+	"SLDS-component-path": "/components/breadcrumb",
+	"site-stories": [
+		{
+			"heading": "Base",
+			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "One Item",
+			"path": "/__examples__/one-item.jsx"
+		},
+		{
+			"heading": "With Overflow Menu",
+			"path": "/__examples__/base-with-overflow-menu.jsx"
+		}
+	],
+	"url-slug": "breadcrumbs"
+}
