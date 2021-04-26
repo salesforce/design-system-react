@@ -4729,6 +4729,13 @@
                 "required": false,
                 "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props."
             },
+            "hasDeselect": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, `{ label: 'None': value: '' }` will be selected."
+            },
             "hasInputSpinner": {
                 "type": {
                     "name": "bool"
@@ -4768,6 +4775,10 @@
                 "type": {
                     "name": "shape",
                     "value": {
+                        "deselectOption": {
+                            "name": "string",
+                            "required": false
+                        },
                         "label": {
                             "name": "union",
                             "value": [
@@ -4811,9 +4822,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `cancelButton`: This label is only used by the dialog variant for the cancel button in the footer of the dialog. The default is `Cancel`\n* `doneButton`: This label is only used by the dialog variant for the done button in the footer of the dialog. The default is `Done`\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `deselectOption`: This label appears first in the menu items of a read-only, Picklist-like Combobox. Selecting it, deselects any currently selected value.\n* `label`: This label appears above the input.\n* `cancelButton`: This label is only used by the dialog variant for the cancel button in the footer of the dialog. The default is `Cancel`\n* `doneButton`: This label is only used by the dialog variant for the done button in the footer of the dialog. The default is `Done`\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n\tcancelButton: 'Cancel',\n\tdoneButton: `Done`,\n\tnoOptionsFound: 'No matches found.',\n\toptionDisabledTooltipLabel: 'This option is disabled.',\n\tplaceholderReadOnly: 'Select an Option',\n\tremovePillTitle: 'Remove',\n}",
+                    "value": "{\n\tdeselectOption: 'None',\n\tcancelButton: 'Cancel',\n\tdoneButton: `Done`,\n\tnoOptionsFound: 'No matches found.',\n\toptionDisabledTooltipLabel: 'This option is disabled.',\n\tplaceholderReadOnly: 'Select an Option',\n\tremovePillTitle: 'Remove',\n}",
                     "computed": false
                 }
             },
