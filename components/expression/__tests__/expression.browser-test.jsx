@@ -181,7 +181,10 @@ describe('SLDSExpression', function describeFunction() {
 			const node = getNodes(handles.group);
 			expect(node.trigger).attr('value', 'Custom Logic Is Met');
 			node.trigger.simulate('focus');
+      // Pressing down once would not change the input value
 			node.trigger.simulate('keyDown', keyObjects.DOWN);
+			node.trigger.simulate('keyDown', keyObjects.UP);
+			node.trigger.simulate('keyDown', keyObjects.UP);
 			node.trigger.simulate('keyDown', keyObjects.ENTER);
 			expect(triggerChange !== undefined).to.eql(true);
 			expect(typeof triggerChange.event).to.eql('object');
