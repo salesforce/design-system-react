@@ -298,8 +298,7 @@ class DataTable extends React.Component {
 			// Currently selected cell
 			activeCell: {
 				rowIndex: 1,
-				columnIndex:
-					this.props.selectRows && count(this.props.selection) > 0 ? 1 : 0,
+				columnIndex: this.props.selectRows ? 1 : 0,
 			},
 			// Interactive element within a cell that receives focus when in actionable mode
 			activeElement: null,
@@ -331,7 +330,7 @@ class DataTable extends React.Component {
 		}
 	}
 
-	componentDidUpdate(prevProps) {
+	componentDidUpdate(prevProps, prevState) {
 		if (this.props.fixedHeader) {
 			this.resizeFixedHeaders();
 			// If the first page of results isn't enough to allow the user to scroll it causes
@@ -341,6 +340,13 @@ class DataTable extends React.Component {
 		}
 		if (this.props.items !== prevProps.items) {
 			this.interactiveElements = {};
+		}
+		if (
+			this.state.allowKeyboardNavigation &&
+			!prevState.allowKeyboardNavigation
+		) {
+			// eslint-disable-next-line react/no-did-update-set-state
+			this.setState({ tableHasFocus: true });
 		}
 	}
 
@@ -520,7 +526,7 @@ class DataTable extends React.Component {
 			newRowIndex,
 			this.state.activeCell.columnIndex
 		);
-		if (newRowIndex !== this.state.activeCell.newRowIndex) {
+		if (newRowIndex !== this.state.activeCell.rowIndex) {
 			this.setState((prevState) => ({
 				activeCell: {
 					rowIndex: newRowIndex,
@@ -540,7 +546,7 @@ class DataTable extends React.Component {
 			newRowIndex,
 			this.state.activeCell.columnIndex
 		);
-		if (newRowIndex !== this.state.activeCell.newRowIndex) {
+		if (newRowIndex !== this.state.activeCell.rowIndex) {
 			this.setState((prevState) => ({
 				activeCell: {
 					rowIndex: newRowIndex,
@@ -571,7 +577,7 @@ class DataTable extends React.Component {
 	handleKeyDownRight() {
 		const newColumnIndex = Math.min(
 			this.state.activeCell.columnIndex + 1,
-			this.props.children.length
+			this.props.children.length - (this.props.selectRows ? 0 : 1)
 		);
 		const activeElement = this.getFirstInteractiveElement(
 			this.state.activeCell.rowIndex,
@@ -618,9 +624,12 @@ class DataTable extends React.Component {
 		if (!this.interactiveElements[rowIndex][columnIndex]) {
 			this.interactiveElements[rowIndex][columnIndex] = [];
 		}
-		// TODO REWRITE THIS
-		// eslint-disable-next-line fp/no-mutating-methods
-		this.interactiveElements[rowIndex][columnIndex].push(elementId);
+		const existingElements =
+			this.interactiveElements[rowIndex][columnIndex] || [];
+		this.interactiveElements[rowIndex][columnIndex] = [
+			...existingElements,
+			elementId,
+		];
 	}
 
 	// ### Render
@@ -726,9 +735,8 @@ class DataTable extends React.Component {
 			handleKeyDown: this.handleKeyDown,
 			registerInteractiveElement: this.registerInteractiveElement,
 			allowKeyboardNavigation: this.state.allowKeyboardNavigation,
-			setAllowKeyboardNavigation: (allowKeyboardNavigation) => {
-				this.setState({ allowKeyboardNavigation });
-			},
+			setAllowKeyboardNavigation: (allowKeyboardNavigation) =>
+				this.setState({ allowKeyboardNavigation }),
 		};
 
 		let component = (
@@ -763,6 +771,7 @@ class DataTable extends React.Component {
 							assistiveText={assistiveText}
 							allSelected={allSelected}
 							fixedHeader={this.props.fixedHeader}
+							fixedLayout={this.props.fixedLayout}
 							headerRefs={(ref, index) => {
 								if (index === 'action' || index === 'select') {
 									if (ref) {

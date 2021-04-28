@@ -4,6 +4,7 @@
 /**
  * Calculates data table keyboard navigation state based on currently selected cell
  */
+// TODO RENAME TO context-helper.js
 export default (tableContext, cellContext, fixedLayout) => {
 	const isActive =
 		tableContext.activeCell.rowIndex === cellContext.rowIndex &&

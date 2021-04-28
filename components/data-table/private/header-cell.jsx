@@ -41,12 +41,18 @@ const SortAnchor = (props) => {
 		(key) => delete passThroughProps[key]
 	);
 	return (
+		// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 		<a
 			ref={(node) => {
 				if (node && props.requestFocus && props.onRequestFocus) {
 					props.onRequestFocus(node);
 				}
 			}}
+			onKeyDown={(event) =>
+				event.keyCode === KEYS.ENTER && props.onClick
+					? props.onClick(event)
+					: undefined
+			}
 			{...passThroughProps}
 		>
 			{props.children}
@@ -174,45 +180,45 @@ class DataTableHeaderCell extends React.Component {
 			sortDirection === 'desc' ? 'descending' : 'ascending';
 		const ariaSort = isSorted ? expandedSortDirection : 'none';
 
-		const fixedLayoutSubRenders = {
-			sortable: (
-				<InteractiveSortAnchor
-					href="#"
-					className="slds-th__action slds-text-link_reset"
-					onClick={this.handleSort}
-					onKeyDown={(event) =>
-						event.keyCode === KEYS.ENTER ? this.handleSort(event) : undefined
-					}
-					role="button"
-				>
-					<span className="slds-assistive-text">
-						{this.props.assistiveTextForColumnSort ||
-							this.props.assistiveText.columnSort}{' '}
-					</span>
-					<span
-						className="slds-truncate"
-						title={labelType === 'string' ? label : undefined}
+		const getFixedLayoutSubRenders = (isHidden) => {
+			if (sortable) {
+				const Anchor = isHidden ? SortAnchor : InteractiveSortAnchor;
+				return (
+					<Anchor
+						href="#"
+						className="slds-th__action slds-text-link_reset"
+						onClick={this.handleSort}
+						role="button"
 					>
-						{label}
-					</span>
-					<Icon
-						className="slds-is-sortable__icon"
-						category="utility"
-						name={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
-						size="x-small"
-					/>
-					{sortDirection ? (
-						<span className="slds-assistive-text" aria-atomic="true">
-							{sortDirection === 'asc'
-								? this.props.assistiveTextForColumnSortedAscending ||
-								  this.props.assistiveText.columnSortedAscending
-								: this.props.assistiveTextForColumnSortedDescending ||
-								  this.props.assistiveText.columnSortedDescending}
+						<span className="slds-assistive-text">
+							{this.props.assistiveTextForColumnSort ||
+								this.props.assistiveText.columnSort}{' '}
 						</span>
-					) : null}
-				</InteractiveSortAnchor>
-			),
-			notSortable: (
+						<span
+							className="slds-truncate"
+							title={labelType === 'string' ? label : undefined}
+						>
+							{label}
+						</span>
+						<Icon
+							className="slds-is-sortable__icon"
+							category="utility"
+							name={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
+							size="x-small"
+						/>
+						{sortDirection ? (
+							<span className="slds-assistive-text" aria-atomic="true">
+								{sortDirection === 'asc'
+									? this.props.assistiveTextForColumnSortedAscending ||
+									  this.props.assistiveText.columnSortedAscending
+									: this.props.assistiveTextForColumnSortedDescending ||
+									  this.props.assistiveText.columnSortedDescending}
+							</span>
+						) : null}
+					</Anchor>
+				);
+			}
+			return (
 				<span
 					className="slds-p-horizontal_x-small slds-th__action"
 					style={{ display: 'flex' }}
@@ -224,19 +230,20 @@ class DataTableHeaderCell extends React.Component {
 						{label}
 					</span>
 				</span>
-			),
+			);
 		};
 
-		const headerCellContent = this.props.fixedLayout ? (
-			fixedLayoutSubRenders[sortable ? 'sortable' : 'notSortable']
-		) : (
-			<div
-				className="slds-truncate"
-				title={labelType === 'string' ? label : undefined}
-			>
-				{label}
-			</div>
-		);
+		const getHeaderCellContent = (isHidden) =>
+			this.props.fixedLayout ? (
+				getFixedLayoutSubRenders(isHidden)
+			) : (
+				<div
+					className="slds-truncate"
+					title={labelType === 'string' ? label : undefined}
+				>
+					{label}
+				</div>
+			);
 
 		return (
 			<TableContext.Consumer>
@@ -286,7 +293,7 @@ class DataTableHeaderCell extends React.Component {
 									tabIndex={tabIndex}
 								>
 									{fixedHeader
-										? React.cloneElement(headerCellContent, {
+										? React.cloneElement(getHeaderCellContent(true), {
 												style: {
 													display: 'flex',
 													height: 0,
@@ -296,10 +303,10 @@ class DataTableHeaderCell extends React.Component {
 													visibility: 'hidden',
 												},
 										  })
-										: headerCellContent}
+										: getHeaderCellContent()}
 									{fixedHeader ? (
 										<CellFixed>
-											{React.cloneElement(headerCellContent, {
+											{React.cloneElement(getHeaderCellContent(), {
 												style: {
 													alignItems: 'center',
 													display: 'flex',

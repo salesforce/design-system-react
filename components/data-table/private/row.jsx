@@ -144,7 +144,7 @@ const DataTableRow = (props) => {
 								onChange={handleToggle}
 							/>
 						)}
-					</CellContext.Provider>{' '}
+					</CellContext.Provider>
 				</td>
 			) : null}
 			{props.columns.map((column, index) => {

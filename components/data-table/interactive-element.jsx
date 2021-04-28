@@ -1,3 +1,4 @@
+/* eslint-disable fp/no-rest-parameters */
 import React from 'react';
 import shortid from 'shortid';
 import Mode from './private/mode';
@@ -18,9 +19,12 @@ import TableContext from './private/table-context';
  */
 export default (WrappedElement) => {
 	class InteractiveElement extends React.Component {
+		// TODO FIX THIS WARNING
 		componentWillMount() {
 			this.elementId = shortid.generate();
 		}
+
+		componentWillUnmount() {}
 
 		onFocus(tableContext, ...args) {
 			if (tableContext.activeElement !== this.elementId) {
@@ -32,18 +36,20 @@ export default (WrappedElement) => {
 		}
 
 		onBlur(tableContext, ...args) {
-			if (tableContext.activeElement !== null) {
-				tableContext.changeActiveElement(null);
-			}
+			// if (tableContext.activeElement !== null) {
+			// 	tableContext.changeActiveElement(null);
+			// }
 			if (this.props.onBlur) {
 				this.props.onBlur(...args);
 			}
 		}
 
-		onRequestFocus(node, ...args) {
-			node.focus();
-			if (this.props.onRequestFocus) {
-				this.props.onRequestFocus(...args);
+		onRequestFocus(tableContext, node, ...args) {
+			if (tableContext.tableHasFocus) {
+				node.focus();
+				if (this.props.onRequestFocus) {
+					this.props.onRequestFocus(...args);
+				}
 			}
 		}
 
@@ -68,24 +74,20 @@ export default (WrappedElement) => {
 					{(tableContext) => (
 						<CellContext.Consumer>
 							{(cellContext) => {
+								// TODO
+								// Unregister if already registered
+								// Register the interactive element
 								tableContext.registerInteractiveElement(
 									cellContext.rowIndex,
 									cellContext.columnIndex,
 									this.elementId
 								);
-
-								let requestFocus = false;
-								if (
+								// Remember cell position
+								const requestFocus =
 									tableContext.mode === Mode.ACTIONABLE &&
-									tableContext.activeElement === this.elementId
-								) {
-									requestFocus = true;
-								}
-								let tabIndex = '-1';
-								if (tableContext.mode === Mode.ACTIONABLE) {
-									tabIndex = '0';
-								}
-
+									tableContext.activeElement === this.elementId;
+								const tabIndex =
+									tableContext.mode === Mode.ACTIONABLE ? '0' : '-1';
 								return (
 									<WrappedElement
 										{...{
@@ -93,7 +95,7 @@ export default (WrappedElement) => {
 											...{
 												onFocus: onFocus.bind(this, tableContext),
 												onBlur: onBlur.bind(this, tableContext),
-												onRequestFocus: onRequestFocus.bind(this),
+												onRequestFocus: onRequestFocus.bind(this, tableContext),
 												onOpen: onOpen.bind(this, tableContext),
 												onClose: onClose.bind(this, tableContext),
 												requestFocus,
@@ -109,8 +111,6 @@ export default (WrappedElement) => {
 			);
 		}
 	}
-	InteractiveElement.displayName = `InteractiveElement${
-		WrappedElement.displayName
-	}`;
+	InteractiveElement.displayName = `InteractiveElement${WrappedElement.displayName}`;
 	return InteractiveElement;
 };

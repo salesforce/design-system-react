@@ -11,11 +11,10 @@ import Checkbox from '~/components/checkbox';
 const InteractiveButton = DataTableInteractiveElement(Button);
 const InteractiveCheckBox = DataTableInteractiveElement(Checkbox);
 
-let index = 0;
-const CustomDataTableCell = ({ children, ...props }) => {
+const CustomDataTableCell = ({ id, children, ...props }) => {
 	const cell = (
 		<DataTableCell {...props}>
-			<InteractiveCheckBox id={`${index}`} labels={{ label: 'Option' }} />
+			<InteractiveCheckBox id={`${id}-checkbox`} labels={{ label: 'Option' }} />
 			<InteractiveButton
 				onClick={(event) => {
 					event.preventDefault();
@@ -24,7 +23,6 @@ const CustomDataTableCell = ({ children, ...props }) => {
 			/>
 		</DataTableCell>
 	);
-	index += 1;
 	return cell;
 };
 CustomDataTableCell.displayName = DataTableCell.displayName;
@@ -38,15 +36,12 @@ const columns = [
 	>
 		<CustomDataTableCell />
 	</DataTableColumn>,
-
 	<DataTableColumn
 		key="account-name"
 		label="Account Name"
 		property="accountName"
 	/>,
-
 	<DataTableColumn key="amount" label="Amount" property="amount" />,
-
 	<DataTableColumn key="contact" label="Contact" property="contact">
 		<CustomDataTableCell />
 	</DataTableColumn>,
