@@ -808,9 +808,30 @@ describe('DataTable: ', function describeFunction() {
 		beforeEach(
 			mountComponent(
 				<DataTable {...defaultProps} fixedLayout keyboardNavigation>
-					{columns.map((columnProps) => (
-						<DataTableColumn {...columnProps} key={columnProps.property} />
-					))}
+					{[
+						...columns.map((columnProps) => (
+							<DataTableColumn {...columnProps} key={columnProps.property} />
+						)),
+						...[
+							<DataTableRowActions
+								key="actions"
+								options={[
+									{
+										id: 0,
+										label: 'Add to Group',
+										value: '1',
+									},
+									{
+										id: 1,
+										label: 'Publish',
+										value: '2',
+									},
+								]}
+								onAction={() => {}}
+								dropdown={<Dropdown length="5" />}
+							/>,
+						],
+					]}
 				</DataTable>
 			)
 		);
@@ -830,12 +851,12 @@ describe('DataTable: ', function describeFunction() {
 
 			// Press Down
 			cell.simulate('keyDown', keyObjects.DOWN);
-			cell = this.wrapper.find('td').at(4);
+			cell = this.wrapper.find('td').at(5);
 			expect(cell.prop('tabIndex')).to.equal('0');
 
 			// Press Left
 			cell.simulate('keyDown', keyObjects.LEFT);
-			cell = this.wrapper.find('td').at(3);
+			cell = this.wrapper.find('td').at(4);
 			expect(cell.prop('tabIndex')).to.equal('0');
 
 			// Press Up
@@ -859,9 +880,8 @@ describe('DataTable: ', function describeFunction() {
 			let checkbox = this.wrapper
 				.find('td')
 				.first()
-				.find('input[type="checkbox"]')
-				.prop('tabIndex');
-			expect(checkbox).to.equal('0');
+				.find('input[type="checkbox"]');
+			expect(checkbox.prop('tabIndex')).to.equal('0');
 
 			// Press Escape
 			cell.simulate('keyDown', keyObjects.ESCAPE);
@@ -869,12 +889,30 @@ describe('DataTable: ', function describeFunction() {
 			cell = this.wrapper.find('td').first();
 			expect(cell.prop('tabIndex')).to.equal('0');
 
-			checkbox = this.wrapper
+			checkbox = this.wrapper.find('td').first().find('input[type="checkbox"]');
+			expect(checkbox.prop('tabIndex')).to.equal('-1');
+
+			// Navigate to dropdown
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+
+			// Press Enter
+			cell.simulate('keyDown', keyObjects.ENTER);
+
+			let dropdownTrigger = this.wrapper
 				.find('td')
-				.first()
-				.find('input[type="checkbox"]')
-				.prop('tabIndex');
-			expect(checkbox).to.equal('-1');
+				.at(3)
+				.find('.slds-dropdown-trigger button');
+			expect(dropdownTrigger.prop('tabIndex')).to.equal('0');
+
+			// Press Escape
+			cell.simulate('keyDown', keyObjects.ESCAPE);
+			dropdownTrigger = this.wrapper
+				.find('td')
+				.at(3)
+				.find('.slds-dropdown-trigger button');
+			expect(dropdownTrigger.prop('tabIndex')).to.equal('-1');
 		});
 	});
 });
