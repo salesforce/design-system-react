@@ -75,10 +75,6 @@ const propTypes = {
 	 */
 	name: PropTypes.string,
 	/**
-	 * This event fires when the Checkbox looses focus. It passes in `{ event }`.
-	 */
-	onBlur: PropTypes.func,
-	/**
 	 * This event fires when the radio selection changes. Passes in `event, { checked }`.
 	 */
 	onChange: PropTypes.func,
@@ -297,7 +293,6 @@ class Radio extends React.Component {
 					{...(this.props.checked !== undefined
 						? { checked: this.props.checked }
 						: { defaultChecked: this.props.defaultChecked })}
-					onBlur={this.props.onBlur}
 					onFocus={this.props.onFocus}
 					onChange={(event) => {
 						this.handleChange(event);

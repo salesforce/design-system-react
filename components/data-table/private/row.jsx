@@ -25,7 +25,7 @@ import {
 import InteractiveElement from '../interactive-element';
 import CellContext from '../private/cell-context';
 import TableContext from '../private/table-context';
-import keyboardNavState from '../private/keyboard-nav-state';
+import contextHelper from './context-helper';
 
 const InteractiveCheckbox = InteractiveElement(Checkbox);
 const InteractiveRadio = InteractiveElement(Radio);
@@ -71,7 +71,7 @@ const DataTableRow = (props) => {
 		rowIndex: props.rowIndex,
 		columnIndex: 0,
 	};
-	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = keyboardNavState(
+	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = contextHelper(
 		tableContext,
 		selectRowCellContext,
 		props.fixedLayout

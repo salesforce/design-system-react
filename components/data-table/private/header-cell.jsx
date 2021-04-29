@@ -24,7 +24,7 @@ import KEYS from '../../../utilities/key-code';
 import InteractiveElement from '../interactive-element';
 import CellContext from '../private/cell-context';
 import TableContext from '../private/table-context';
-import keyboardNavState from '../private/keyboard-nav-state';
+import contextHelper from './context-helper';
 
 // ## Constants
 import {
@@ -34,12 +34,17 @@ import {
 
 const SortAnchor = (props) => {
 	// Avoid passing props to <a> that it doesn't understand
-	const passThroughProps = { ...props };
-	['onRequestFocus', 'onOpen', 'onClose', 'requestFocus'].forEach(
-		// TODO REWRITE THIS
-		// eslint-disable-next-line fp/no-delete
-		(key) => delete passThroughProps[key]
-	);
+	const passThroughProps = {};
+	const entries = Object.entries(props);
+	entries.forEach((entry) => {
+		const [key, value] = entry;
+		if (
+			['onRequestFocus', 'onOpen', 'onClose', 'requestFocus'].indexOf(key) ===
+			-1
+		) {
+			passThroughProps[key] = value;
+		}
+	});
 	return (
 		// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 		<a
@@ -182,6 +187,7 @@ class DataTableHeaderCell extends React.Component {
 
 		const getFixedLayoutSubRenders = (isHidden) => {
 			if (sortable) {
+				// Don't make the anchor interactable when it's hidden
 				const Anchor = isHidden ? SortAnchor : InteractiveSortAnchor;
 				return (
 					<Anchor
@@ -255,7 +261,7 @@ class DataTableHeaderCell extends React.Component {
 								hasFocus,
 								handleFocus,
 								handleKeyDown,
-							} = keyboardNavState(
+							} = contextHelper(
 								tableContext,
 								cellContext,
 								this.props.fixedLayout

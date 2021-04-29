@@ -213,7 +213,7 @@ class DataTable extends React.Component {
 		/**
 		 * Enables keyboard navigation when this is an advanced table.
 		 */
-		keyboardNavigation: PropTypes.bool.isRequired,
+		keyboardNavigation: PropTypes.bool,
 		/**
 		 * A variant which removes hover style on rows
 		 */
@@ -345,6 +345,10 @@ class DataTable extends React.Component {
 			this.state.allowKeyboardNavigation &&
 			!prevState.allowKeyboardNavigation
 		) {
+			// When re-enabling keyboard navigation (e.g. when a dropdown closes), mark that
+			// focus has returned to the table. This must wait until after `allowKeyboardNavigation`
+			// is set in `onClose` because the callback could focus the incorrect element (e.g. dropdown
+			// trigger) when it executes.
 			// eslint-disable-next-line react/no-did-update-set-state
 			this.setState({ tableHasFocus: true });
 		}
@@ -620,9 +624,6 @@ class DataTable extends React.Component {
 	registerInteractiveElement(rowIndex, columnIndex, elementId) {
 		if (!this.interactiveElements[rowIndex]) {
 			this.interactiveElements[rowIndex] = {};
-		}
-		if (!this.interactiveElements[rowIndex][columnIndex]) {
-			this.interactiveElements[rowIndex][columnIndex] = [];
 		}
 		const existingElements =
 			this.interactiveElements[rowIndex][columnIndex] || [];

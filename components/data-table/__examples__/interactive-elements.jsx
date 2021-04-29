@@ -104,7 +104,6 @@ class Example extends React.Component {
 					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
 						Striped
 					</h3>
-
 					<DataTable
 						items={this.state.items}
 						id="DataTableExample-1-striped"
@@ -118,7 +117,6 @@ class Example extends React.Component {
 					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
 						No Row Hover
 					</h3>
-
 					<DataTable
 						items={this.state.items}
 						id="DataTableExample-noRowHover"
@@ -132,7 +130,6 @@ class Example extends React.Component {
 					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
 						Column Bordered
 					</h3>
-
 					<DataTable
 						columnBordered
 						items={this.state.items}

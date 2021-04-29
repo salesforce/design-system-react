@@ -19,12 +19,10 @@ import TableContext from './private/table-context';
  */
 export default (WrappedElement) => {
 	class InteractiveElement extends React.Component {
-		// TODO FIX THIS WARNING
-		componentWillMount() {
+		constructor(props) {
+			super(props);
 			this.elementId = shortid.generate();
 		}
-
-		componentWillUnmount() {}
 
 		onFocus(tableContext, ...args) {
 			if (tableContext.activeElement !== this.elementId) {
@@ -32,15 +30,6 @@ export default (WrappedElement) => {
 			}
 			if (this.props.onFocus) {
 				this.props.onFocus(...args);
-			}
-		}
-
-		onBlur(tableContext, ...args) {
-			// if (tableContext.activeElement !== null) {
-			// 	tableContext.changeActiveElement(null);
-			// }
-			if (this.props.onBlur) {
-				this.props.onBlur(...args);
 			}
 		}
 
@@ -67,22 +56,39 @@ export default (WrappedElement) => {
 			}
 		}
 
+		unregisterInteractiveElement(tableContext) {
+			if (this.rowIndex && this.columnIndex) {
+				tableContext.registerInteractiveElement(
+					this.rowIndex,
+					this.columnIndex,
+					undefined
+				);
+			}
+		}
+
+		registerInteractiveElement(tableContext, cellContext) {
+			tableContext.registerInteractiveElement(
+				cellContext.rowIndex,
+				cellContext.columnIndex,
+				this.elementId
+			);
+		}
+
 		render() {
-			const { onFocus, onBlur, onRequestFocus, onOpen, onClose } = this;
+			const { onFocus, onRequestFocus, onOpen, onClose } = this;
 			return (
 				<TableContext.Consumer>
 					{(tableContext) => (
 						<CellContext.Consumer>
 							{(cellContext) => {
-								// TODO
 								// Unregister if already registered
+								this.unregisterInteractiveElement(tableContext);
 								// Register the interactive element
-								tableContext.registerInteractiveElement(
-									cellContext.rowIndex,
-									cellContext.columnIndex,
-									this.elementId
-								);
+								this.registerInteractiveElement(tableContext, cellContext);
 								// Remember cell position
+								this.rowIndex = cellContext.rowIndex;
+								this.columnIndex = cellContext.columnIndex;
+
 								const requestFocus =
 									tableContext.mode === Mode.ACTIONABLE &&
 									tableContext.activeElement === this.elementId;
@@ -94,7 +100,6 @@ export default (WrappedElement) => {
 											...this.props,
 											...{
 												onFocus: onFocus.bind(this, tableContext),
-												onBlur: onBlur.bind(this, tableContext),
 												onRequestFocus: onRequestFocus.bind(this, tableContext),
 												onOpen: onOpen.bind(this, tableContext),
 												onClose: onClose.bind(this, tableContext),

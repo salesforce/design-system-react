@@ -13,7 +13,7 @@ import HeaderCell from './header-cell';
 import InteractiveElement from '../interactive-element';
 import CellContext from '../private/cell-context';
 import TableContext from '../private/table-context';
-import keyboardNavState from '../private/keyboard-nav-state';
+import contextHelper from './context-helper';
 
 // ## Constants
 import { DATA_TABLE_HEAD } from '../../../utilities/constants';
@@ -82,7 +82,7 @@ class DataTableHead extends React.Component {
 							hasFocus,
 							handleFocus,
 							handleKeyDown,
-						} = keyboardNavState(
+						} = contextHelper(
 							tableContext,
 							cellContext,
 							this.props.fixedLayout
@@ -197,7 +197,7 @@ class DataTableHead extends React.Component {
 							hasFocus,
 							handleFocus,
 							handleKeyDown,
-						} = keyboardNavState(
+						} = contextHelper(
 							tableContext,
 							cellContext,
 							this.props.fixedLayout
