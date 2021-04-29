@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.10.31",
+	"version": "0.10.32",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -109,7 +109,7 @@
 		"warning": "^4.0.3"
 	},
 	"peerDependencies": {
-		"@salesforce-ux/design-system": "^2.9.4",
+		"@salesforce-ux/design-system": "^2.14.3",
 		"react": ">=16.3",
 		"react-dom": ">=16.3"
 	},
