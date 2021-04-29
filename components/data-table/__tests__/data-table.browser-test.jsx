@@ -821,7 +821,7 @@ describe('DataTable: ', function describeFunction() {
 			// Focus the first cell
 			let cell = this.wrapper.find('td').first();
 			cell.simulate('focus');
-			expect(cell.prop('tabIndex')).to.equal('0');
+			expect(this.wrapper.find('td').first().prop('tabIndex')).to.equal('0');
 
 			// Press Right
 			cell.simulate('keyDown', keyObjects.RIGHT);
@@ -848,7 +848,7 @@ describe('DataTable: ', function describeFunction() {
 			// Focus the first cell
 			let cell = this.wrapper.find('td').first();
 			cell.simulate('focus');
-			expect(cell.prop('tabIndex')).to.equal('0');
+			expect(this.wrapper.find('td').first().prop('tabIndex')).to.equal('0');
 
 			// Press Enter
 			cell.simulate('keyDown', keyObjects.ENTER);
@@ -859,8 +859,9 @@ describe('DataTable: ', function describeFunction() {
 			let checkbox = this.wrapper
 				.find('td')
 				.first()
-				.find('input[type="checkbox"]');
-			expect(checkbox.prop('tabIndex')).to.equal('0');
+				.find('input[type="checkbox"]')
+				.prop('tabIndex');
+			expect(checkbox).to.equal('0');
 
 			// Press Escape
 			cell.simulate('keyDown', keyObjects.ESCAPE);
@@ -868,8 +869,12 @@ describe('DataTable: ', function describeFunction() {
 			cell = this.wrapper.find('td').first();
 			expect(cell.prop('tabIndex')).to.equal('0');
 
-			checkbox = this.wrapper.find('td').first().find('input[type="checkbox"]');
-			expect(checkbox.prop('tabIndex')).to.equal('-1');
+			checkbox = this.wrapper
+				.find('td')
+				.first()
+				.find('input[type="checkbox"]')
+				.prop('tabIndex');
+			expect(checkbox).to.equal('-1');
 		});
 	});
 });
