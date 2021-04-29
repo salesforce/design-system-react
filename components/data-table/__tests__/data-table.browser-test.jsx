@@ -892,7 +892,7 @@ describe('DataTable: ', function describeFunction() {
 			checkbox = this.wrapper.find('td').first().find('input[type="checkbox"]');
 			expect(checkbox.prop('tabIndex')).to.equal('-1');
 
-			// Navigate to dropdown
+			// Navigate to Dropdown
 			cell.simulate('keyDown', keyObjects.RIGHT);
 			cell.simulate('keyDown', keyObjects.RIGHT);
 			cell.simulate('keyDown', keyObjects.RIGHT);
