@@ -508,7 +508,7 @@ class DataTable extends React.Component {
 	}
 
 	changeActiveElement(activeElement) {
-		this.setState({ activeElement });
+		this.setState({ activeElement, mode: Mode.ACTIONABLE });
 	}
 
 	handleKeyDown(event) {
@@ -602,7 +602,10 @@ class DataTable extends React.Component {
 		if (this.state.mode === Mode.NAVIGATION) {
 			const { rowIndex, columnIndex } = this.state.activeCell;
 			let activeElement = null;
-			if (this.interactiveElements[rowIndex][columnIndex]) {
+			if (
+				this.interactiveElements[rowIndex] &&
+				this.interactiveElements[rowIndex][columnIndex]
+			) {
 				[activeElement] = this.interactiveElements[rowIndex][columnIndex];
 			}
 			this.setState({
@@ -736,8 +739,11 @@ class DataTable extends React.Component {
 			handleKeyDown: this.handleKeyDown,
 			registerInteractiveElement: this.registerInteractiveElement,
 			allowKeyboardNavigation: this.state.allowKeyboardNavigation,
-			setAllowKeyboardNavigation: (allowKeyboardNavigation) =>
-				this.setState({ allowKeyboardNavigation }),
+			setAllowKeyboardNavigation: (allowKeyboardNavigation) => {
+				if (this.props.keyboardNavigation) {
+					this.setState({ allowKeyboardNavigation });
+				}
+			},
 		};
 
 		let component = (

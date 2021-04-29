@@ -94,18 +94,23 @@ export default (WrappedElement) => {
 									tableContext.activeElement === this.elementId;
 								const tabIndex =
 									tableContext.mode === Mode.ACTIONABLE ? '0' : '-1';
+								const keyboardNavProps = tableContext.allowKeyboardNavigation
+									? {
+											onFocus: onFocus.bind(this, tableContext),
+											onRequestFocus: onRequestFocus.bind(this, tableContext),
+											requestFocus,
+											tabIndex,
+									  }
+									: {};
 								return (
 									<WrappedElement
 										{...{
 											...this.props,
 											...{
-												onFocus: onFocus.bind(this, tableContext),
-												onRequestFocus: onRequestFocus.bind(this, tableContext),
 												onOpen: onOpen.bind(this, tableContext),
 												onClose: onClose.bind(this, tableContext),
-												requestFocus,
-												tabIndex,
 											},
+											...keyboardNavProps,
 										}}
 									/>
 								);
