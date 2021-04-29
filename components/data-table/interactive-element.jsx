@@ -56,24 +56,6 @@ export default (WrappedElement) => {
 			}
 		}
 
-		unregisterInteractiveElement(tableContext) {
-			if (this.rowIndex && this.columnIndex) {
-				tableContext.registerInteractiveElement(
-					this.rowIndex,
-					this.columnIndex,
-					undefined
-				);
-			}
-		}
-
-		registerInteractiveElement(tableContext, cellContext) {
-			tableContext.registerInteractiveElement(
-				cellContext.rowIndex,
-				cellContext.columnIndex,
-				this.elementId
-			);
-		}
-
 		render() {
 			const { onFocus, onRequestFocus, onOpen, onClose } = this;
 			return (
@@ -81,14 +63,11 @@ export default (WrappedElement) => {
 					{(tableContext) => (
 						<CellContext.Consumer>
 							{(cellContext) => {
-								// Unregister if already registered
-								this.unregisterInteractiveElement(tableContext);
-								// Register the interactive element
-								this.registerInteractiveElement(tableContext, cellContext);
-								// Remember cell position
-								this.rowIndex = cellContext.rowIndex;
-								this.columnIndex = cellContext.columnIndex;
-
+								tableContext.registerInteractiveElement(
+									cellContext.rowIndex,
+									cellContext.columnIndex,
+									this.elementId
+								);
 								const requestFocus =
 									tableContext.mode === Mode.ACTIONABLE &&
 									tableContext.activeElement === this.elementId;
