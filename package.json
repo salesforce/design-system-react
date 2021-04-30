@@ -151,7 +151,7 @@
 		"babel-plugin-require-context-hook": "^1.0.0",
 		"babel-plugin-root-import": "^6.6.0",
 		"basic-auth": "^2.0.1",
-		"chai": "^4.2.0",
+		"chai": "^4.3.4",
 		"chai-enzyme": "^1.0.0-beta.1",
 		"chownr": "^2.0.0",
 		"compression": "^1.7.4",
