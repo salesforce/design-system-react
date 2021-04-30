@@ -133,7 +133,7 @@
 		"@storybook/addon-a11y": "^6.2.0",
 		"@storybook/addon-actions": "^6.2.0",
 		"@storybook/addon-storyshots": "^6.2.0",
-		"@storybook/addon-storyshots-puppeteer": "^6.2.0",
+		"@storybook/addon-storyshots-puppeteer": "^6.2.9",
 		"@storybook/addons": "^6.2.0",
 		"@storybook/csf": "^0.0.1",
 		"@storybook/react": "^6.2.0",
