@@ -174,7 +174,7 @@
 		"express": "^4.17.1",
 		"file-loader": "^6.1.1",
 		"find-remove": "^2.0.1",
-		"fs-extra": "^9.0.1",
+		"fs-extra": "^10.0.0",
 		"glob": "^7.1.6",
 		"husky": "^4.3.0",
 		"jest": "^24.9.0",
