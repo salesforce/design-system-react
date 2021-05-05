@@ -12,6 +12,7 @@ import IsoWeekdays from '../__examples__/iso-weekday';
 import CustomInput from '../__examples__/custom-input';
 import SnaphotDefault from '../__examples__/snapshot-default';
 import WeekdayPicker from '../__examples__/weekday-picker';
+import ErrorPicker from '../__examples__/error-picker';
 
 // eslint-disable-next-line camelcase
 import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
@@ -50,4 +51,5 @@ storiesOf(DATE_PICKER, module)
 		/>
 	))
 	.add('DOM Snapshot', () => <SnaphotDefault />)
-	.add('Weekday picker', () => <WeekdayPicker />);
+	.add('Weekday picker', () => <WeekdayPicker />)
+	.add('Error', () => <ErrorPicker />);
