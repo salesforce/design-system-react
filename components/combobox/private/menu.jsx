@@ -359,6 +359,7 @@ const Menu = (props) => {
 									'slds-listbox__option-text_entity',
 									{ 'slds-disabled-text': optionData.disabled }
 								)}
+								title={optionData.label}
 							>
 								{setBold(optionData.label, props.inputValue)}
 							</span>
@@ -367,6 +368,7 @@ const Menu = (props) => {
 									'slds-listbox__option-meta slds-listbox__option-meta_entity',
 									{ 'slds-disabled-text': optionData.disabled }
 								)}
+								title={optionData.subTitle}
 							>
 								{setBold(optionData.subTitle, props.inputValue)}
 							</span>
