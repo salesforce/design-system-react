@@ -102,3 +102,8 @@ test(`Datepicker
 	const domTree = renderer.create(<SnapshotDefault isIsoWeekday />).toJSON();
 	expect(domTree).toMatchSnapshot();
 });
+
+test('ErrorPicker', () => {
+	const domTree = renderer.create(<SnapshotDefault hasError />).toJSON();
+	expect(domTree).toMatchSnapshot();
+});
