@@ -17590,6 +17590,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -17635,6 +17642,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </th>
           <td
@@ -17691,6 +17708,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -17736,6 +17760,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </td>
         </tr>
@@ -17766,6 +17800,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -17811,6 +17852,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </th>
           <td
@@ -17867,6 +17918,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -17912,6 +17970,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </td>
         </tr>
@@ -17942,6 +18010,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -17987,6 +18062,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </th>
           <td
@@ -18043,6 +18128,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -18088,6 +18180,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </td>
         </tr>
@@ -18239,6 +18341,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -18284,6 +18393,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </th>
           <td
@@ -18340,6 +18459,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -18385,6 +18511,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </td>
         </tr>
@@ -18415,6 +18551,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -18460,6 +18603,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </th>
           <td
@@ -18516,6 +18669,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -18561,6 +18721,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </td>
         </tr>
@@ -18591,6 +18761,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -18636,6 +18813,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </th>
           <td
@@ -18692,6 +18879,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -18737,6 +18931,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </td>
         </tr>
@@ -18888,6 +19092,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -18933,6 +19144,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </th>
           <td
@@ -18989,6 +19210,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -19034,6 +19262,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </td>
         </tr>
@@ -19064,6 +19302,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -19109,6 +19354,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </th>
           <td
@@ -19165,6 +19420,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -19210,6 +19472,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </td>
         </tr>
@@ -19240,6 +19512,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -19285,6 +19564,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </th>
           <td
@@ -19341,6 +19630,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -19386,6 +19682,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </td>
         </tr>
@@ -19537,6 +19843,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -19582,6 +19895,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </th>
           <td
@@ -19638,6 +19961,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -19683,6 +20013,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </td>
         </tr>
@@ -19713,6 +20053,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -19758,6 +20105,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </th>
           <td
@@ -19814,6 +20171,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -19859,6 +20223,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </td>
         </tr>
@@ -19889,6 +20263,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -19934,6 +20315,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </th>
           <td
@@ -19990,6 +20381,13 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                     label="Open"
                     onClick={[Function]}
                   />,
+                  <div>
+                    <InteractiveElementundefined
+                      onClick={[Function]}
+                    >
+                      Click me
+                    </InteractiveElementundefined>
+                  </div>,
                 ]
               }
             >
@@ -20035,6 +20433,16 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
               >
                 Open
               </button>
+              <div>
+                <a
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  tabIndex="-1"
+                >
+                  Click me
+                </a>
+              </div>
             </div>
           </td>
         </tr>
