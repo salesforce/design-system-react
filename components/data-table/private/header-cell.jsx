@@ -19,9 +19,8 @@ import Icon from '../../icon';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from '../column-check-props';
 
-import KEYS from '../../../utilities/key-code';
-
-import InteractiveElement from '../interactive-element';
+import Link from './link';
+import InteractiveLink from '../interactive-link';
 import CellContext from '../private/cell-context';
 import TableContext from '../private/table-context';
 import contextHelper from './context-helper';
@@ -31,40 +30,6 @@ import {
 	DATA_TABLE_HEADER_CELL,
 	DATA_TABLE_COLUMN,
 } from '../../../utilities/constants';
-
-const SortAnchor = (props) => {
-	// Avoid passing props to <a> that it doesn't understand
-	const passThroughProps = {};
-	const entries = Object.entries(props);
-	entries.forEach((entry) => {
-		const [key, value] = entry;
-		if (
-			['onRequestFocus', 'onOpen', 'onClose', 'requestFocus'].indexOf(key) ===
-			-1
-		) {
-			passThroughProps[key] = value;
-		}
-	});
-	return (
-		// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-		<a
-			ref={(node) => {
-				if (node && props.requestFocus && props.onRequestFocus) {
-					props.onRequestFocus(node);
-				}
-			}}
-			onKeyDown={(event) =>
-				event.keyCode === KEYS.ENTER && props.onClick
-					? props.onClick(event)
-					: undefined
-			}
-			{...passThroughProps}
-		>
-			{props.children}
-		</a>
-	);
-};
-const InteractiveSortAnchor = InteractiveElement(SortAnchor);
 
 /**
  * Used internally, renders each individual column heading.
@@ -188,9 +153,9 @@ class DataTableHeaderCell extends React.Component {
 		const getFixedLayoutSubRenders = (isHidden) => {
 			if (sortable) {
 				// Don't make the anchor interactable when it's hidden
-				const Anchor = isHidden ? SortAnchor : InteractiveSortAnchor;
+				const SortLink = isHidden ? Link : InteractiveLink;
 				return (
-					<Anchor
+					<SortLink
 						href="#"
 						className="slds-th__action slds-text-link_reset"
 						onClick={this.handleSort}
@@ -221,7 +186,7 @@ class DataTableHeaderCell extends React.Component {
 									  this.props.assistiveText.columnSortedDescending}
 							</span>
 						) : null}
-					</Anchor>
+					</SortLink>
 				);
 			}
 			return (

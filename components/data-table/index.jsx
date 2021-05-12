@@ -770,8 +770,24 @@ class DataTable extends React.Component {
 							this.props.className
 						)}
 						id={this.getId()}
+						ref={(node) => {
+							if (node) {
+								this.tableRef = node;
+							}
+						}}
 						role={this.props.fixedLayout ? 'grid' : null}
-						onBlur={() => this.setState({ tableHasFocus: false })}
+						onBlur={(event) => {
+							if (
+								this.tableRef &&
+								!this.tableRef.contains(event.relatedTarget)
+							) {
+								this.setState({
+									tableHasFocus: false,
+									mode: Mode.NAVIGATION,
+									activeElement: null,
+								});
+							}
+						}}
 						style={this.props.style}
 					>
 						<DataTableHead

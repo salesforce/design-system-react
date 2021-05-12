@@ -1,9 +1,11 @@
 import React from 'react';
+import { action } from '@storybook/addon-actions';
 
 import DataTable from '~/components/data-table'; // `~` is replaced with design-system-react at runtime
 import DataTableColumn from '~/components/data-table/column';
 import DataTableCell from '~/components/data-table/cell';
 import DataTableInteractiveElement from '~/components/data-table/interactive-element';
+import DataTableInteractiveLink from '~/components/data-table/interactive-link';
 import IconSettings from '~/components/icon-settings';
 import Button from '~/components/button';
 import Checkbox from '~/components/checkbox';
@@ -15,12 +17,12 @@ const CustomDataTableCell = ({ id, children, ...props }) => {
 	const cell = (
 		<DataTableCell {...props}>
 			<InteractiveCheckBox id={`${id}-checkbox`} labels={{ label: 'Option' }} />
-			<InteractiveButton
-				onClick={(event) => {
-					event.preventDefault();
-				}}
-				label="Open"
-			/>
+			<InteractiveButton onClick={action('button clicked')} label="Open" />
+			<div>
+				<DataTableInteractiveLink onClick={action('link clicked')}>
+					Click me
+				</DataTableInteractiveLink>
+			</div>
 		</DataTableCell>
 	);
 	return cell;
