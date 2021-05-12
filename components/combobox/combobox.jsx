@@ -441,6 +441,7 @@ class Combobox extends React.Component {
 
 		this.generatedId = shortid.generate();
 		this.generatedErrorId = shortid.generate();
+    this.deselectId = `${this.getId()}-deselect`;
 	}
 
 	/**
@@ -617,30 +618,30 @@ class Combobox extends React.Component {
 
 	getOptions = (props = this.props) => {
 		const localProps = props;
-		const options = [];
-		if (localProps.optionsSearchEntity.length > 0) {
-			// eslint-disable-next-line fp/no-mutating-methods
-			options.push(...localProps.optionsSearchEntity);
-		}
+    const labels = assign({}, defaultProps.labels, this.props.labels);
 
-		if (props.hasDeselect) {
-			// eslint-disable-next-line fp/no-mutating-methods
-			options.push({
-				id: `${this.getId()}-deselect`,
-				label: this.props.labels.deselectOption,
-				value: '',
-				type: 'deselect',
-			});
-		}
+    const deselectOption = {
+      id: this.deselectId,
+      label: labels.deselectOption,
+      value: '',
+      type: 'deselect',
+    };
 
-		if (localProps.options) {
-			// eslint-disable-next-line fp/no-mutating-methods
-			options.push(...localProps.options);
-		}
-		if (localProps.optionsAddItem.length > 0) {
-			// eslint-disable-next-line fp/no-mutating-methods
-			options.push(...localProps.optionsAddItem);
-		}
+    const localOptionsSearchEntity = localProps.optionsSearchEntity.map(
+			(entity) => ({ ...entity, type: 'header' })
+		);
+
+    const localOptionsAddItem = props.optionsAddItem.map((entity) => ({
+			...entity,
+			type: 'footer',
+		}));
+
+    const options = [
+      ...(localOptionsSearchEntity.length > 0 ? localOptionsSearchEntity : []),
+      ...(props.hasDeselect ? [deselectOption] : []),
+      ...(localProps.options && localProps.options.length > 0 ? localProps.options : []),
+      ...(localOptionsAddItem.length > 0 ? localOptionsAddItem : [] )
+  ];
 		return options;
 	};
 
@@ -1025,7 +1026,7 @@ class Combobox extends React.Component {
 			!this.props.multiple && !isSelected;
 		const multiSelectAndSelectedWasNotClicked =
 			this.props.multiple && !isSelected;
-		const deselectWasClicked = option.id === `${this.getId()}-deselect`;
+		const deselectWasClicked = option.id === this.deselectId;
 
 		if (deselectWasClicked) {
 			newSelection = [];
@@ -1450,6 +1451,7 @@ class Combobox extends React.Component {
 				classNameMenu={this.props.classNameMenu}
 				classNameMenuSubHeader={this.props.classNameMenuSubHeader}
 				clearActiveOption={this.clearActiveOption}
+        deselectId={this.deselectId}
 				inheritWidthOf={this.props.inheritWidthOf}
 				inputId={this.getId()}
 				inputValue={this.props.value}
@@ -1466,7 +1468,7 @@ class Combobox extends React.Component {
 					this.menuRef = ref;
 				}}
 				maxWidth={this.props.menuMaxWidth}
-				options={this.props.options}
+				options={this.getOptions()}
 				optionsAddItem={this.props.optionsAddItem}
 				optionsSearchEntity={this.props.optionsSearchEntity}
 				onSelect={this.handleSelect}
