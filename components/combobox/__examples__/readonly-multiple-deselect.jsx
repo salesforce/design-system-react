@@ -7,31 +7,38 @@ const accounts = [
 	{
 		id: '1',
 		label: 'Acme',
+		subTitle: 'Account • San Francisco',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
+		subTitle: 'Account • San Francisco',
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
+		subTitle: 'Account • Boston, MA',
 	},
 	{
 		id: '4',
 		label: 'Tyrell Corp',
+		subTitle: 'Account • San Francisco, CA',
 	},
 	{
 		id: '5',
 		label: 'Paper St. Soap Company',
+		subTitle: 'Account • Beloit, WI',
 	},
 	{
 		id: '6',
 		label: 'Nakatomi Investments',
+		subTitle: 'Account • Chicago, IL',
 	},
 	{ id: '7', label: 'Acme Landscaping' },
 	{
 		id: '8',
 		label: 'Acme Construction',
+		subTitle: 'Account • Grand Marais, MN',
 	},
 ];
 
@@ -49,8 +56,14 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id="combobox-readonly-single"
+					id="combobox-readonly-multiple"
 					events={{
+						onRequestRemoveSelectedOption: (event, data) => {
+							this.setState({
+								inputValue: '',
+								selection: data.selection,
+							});
+						},
 						onSelect: (event, data) => {
 							if (this.props.action) {
 								this.props.action('onSelect')(
@@ -66,10 +79,12 @@ class Example extends React.Component {
 							});
 						},
 					}}
+					hasDeselect
 					labels={{
 						label: 'Search',
 						placeholder: 'Search Salesforce',
 					}}
+					multiple
 					options={accounts}
 					selection={this.state.selection}
 					value={this.state.inputValue}
