@@ -441,7 +441,7 @@ class Combobox extends React.Component {
 
 		this.generatedId = shortid.generate();
 		this.generatedErrorId = shortid.generate();
-    this.deselectId = `${this.getId()}-deselect`;
+		this.deselectId = `${this.getId()}-deselect`;
 	}
 
 	/**
@@ -618,30 +618,32 @@ class Combobox extends React.Component {
 
 	getOptions = (props = this.props) => {
 		const localProps = props;
-    const labels = assign({}, defaultProps.labels, this.props.labels);
+		const labels = assign({}, defaultProps.labels, this.props.labels);
 
-    const deselectOption = {
-      id: this.deselectId,
-      label: labels.deselectOption,
-      value: '',
-      type: 'deselect',
-    };
+		const deselectOption = {
+			id: this.deselectId,
+			label: labels.deselectOption,
+			value: '',
+			type: 'deselect',
+		};
 
-    const localOptionsSearchEntity = localProps.optionsSearchEntity.map(
+		const localOptionsSearchEntity = localProps.optionsSearchEntity.map(
 			(entity) => ({ ...entity, type: 'header' })
 		);
 
-    const localOptionsAddItem = props.optionsAddItem.map((entity) => ({
+		const localOptionsAddItem = props.optionsAddItem.map((entity) => ({
 			...entity,
 			type: 'footer',
 		}));
 
-    const options = [
-      ...(localOptionsSearchEntity.length > 0 ? localOptionsSearchEntity : []),
-      ...(props.hasDeselect ? [deselectOption] : []),
-      ...(localProps.options && localProps.options.length > 0 ? localProps.options : []),
-      ...(localOptionsAddItem.length > 0 ? localOptionsAddItem : [] )
-  ];
+		const options = [
+			...(localOptionsSearchEntity.length > 0 ? localOptionsSearchEntity : []),
+			...(props.hasDeselect ? [deselectOption] : []),
+			...(localProps.options && localProps.options.length > 0
+				? localProps.options
+				: []),
+			...(localOptionsAddItem.length > 0 ? localOptionsAddItem : []),
+		];
 		return options;
 	};
 
@@ -1451,7 +1453,7 @@ class Combobox extends React.Component {
 				classNameMenu={this.props.classNameMenu}
 				classNameMenuSubHeader={this.props.classNameMenuSubHeader}
 				clearActiveOption={this.clearActiveOption}
-        deselectId={this.deselectId}
+				deselectId={this.deselectId}
 				inheritWidthOf={this.props.inheritWidthOf}
 				inputId={this.getId()}
 				inputValue={this.props.value}
