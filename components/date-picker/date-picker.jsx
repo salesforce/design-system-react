@@ -86,6 +86,10 @@ const propTypes = {
 	 */
 	formattedValue: PropTypes.string,
 	/**
+	 * Applies the error style to the component.
+	 */
+	hasError: PropTypes.bool,
+	/**
 	 * Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
 	hasStaticAlignment: PropTypes.bool,
@@ -622,6 +626,7 @@ class Datepicker extends React.Component {
 					'slds-dropdown-trigger_click',
 					'ignore-react-onclickoutside',
 					{
+						'slds-has-error': this.props.hasError,
 						'slds-is-open': this.getIsOpen(),
 					},
 					this.props.triggerClassName

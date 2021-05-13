@@ -6153,6 +6153,13 @@
                 "required": false,
                 "description": "Value of input that gets passed to `parser` prop on initial render. This prop is only present for uncontrolled use of Datepicker which is _highly discouraged_. A better name for this prop would be `defaultFormatedValue`. Please use the `value` prop instead. _Not tested._"
             },
+            "hasError": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Applies the error style to the component."
+            },
             "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
