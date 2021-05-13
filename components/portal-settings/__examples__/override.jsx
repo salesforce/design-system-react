@@ -151,12 +151,10 @@ class Example extends React.Component {
 							})}
 							selection={this.state.selection}
 							value={this.state.inputValue}
-							
-							/>
-						</div>
-					</PortalSettings>
+						/>
+					</div>
+				</PortalSettings>
 			</IconSettings>
-				
 		);
 	}
 }

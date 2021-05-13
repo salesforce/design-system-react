@@ -17,14 +17,11 @@ import { PORTAL_SETTINGS } from '../../utilities/constants';
  * ```
  * *
  */
-const PortalSettings = ({
-  renderTo,
-  children
-}) => {
+const PortalSettings = ({ renderTo, children }) => {
 	return (
 		<PortalSettingsContext.Provider
 			value={{
-				renderTo
+				renderTo,
 			}}
 		>
 			{children}

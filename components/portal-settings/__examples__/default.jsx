@@ -78,8 +78,8 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-          id="combobox-base"
-          menuPosition="overflowBoundaryElement"
+					id="combobox-base"
+					menuPosition="overflowBoundaryElement"
 					disabled={this.props.disabled}
 					events={{
 						onChange: (event, { value }) => {
