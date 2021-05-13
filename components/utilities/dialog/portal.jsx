@@ -4,6 +4,7 @@
 import { Component, Children } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+import { PortalSettingsContext }  from '../../portal-settings';
 
 /*
  * This component mounts its children within a disconnected render tree (portal).
@@ -36,9 +37,14 @@ class Portal extends Component {
 	}
 
 	getPortalParentNode() {
-		let element;
+		let element;    
 		if (typeof this.props.renderTo === 'string') {
 			element = document.querySelector(this.props.renderTo);
+		} else if (
+			this.context && typeof this.context.renderTo === 'string' &&
+			document.querySelectorAll(this.context.renderTo) &&
+			document.querySelectorAll(this.context.renderTo)[0]){
+			[element] = document.querySelectorAll(this.context.renderTo);
 		} else {
 			element = this.props.renderTo || (documentDefined && document.body);
 		}
@@ -202,5 +208,5 @@ Portal.defaultProps = {
 	onUpdate: () => null,
 	onUnmount: () => null,
 };
-
+Portal.contextType = PortalSettingsContext;
 export default Portal;

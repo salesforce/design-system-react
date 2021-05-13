@@ -115,6 +115,7 @@ export const PAGE_HEADER = 'SLDSPageHeader';
 export const PAGE_HEADER_CONTROL = 'SLDSPageHeaderControl';
 export const PILL = 'SLDSPill';
 export const PILL_CONTAINER = 'SLDSPillContainer';
+export const PORTAL_SETTINGS = 'SLDSPortalSettings';
 export const POPOVER = 'SLDSPopover';
 export const POPOVER_EDIT_DIALOG = 'SLDSPopoverEditDialog';
 export const POPOVER_TOOLTIP = 'SLDSPopoverTooltip';

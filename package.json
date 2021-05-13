@@ -1402,6 +1402,13 @@
 			"url-slug": "popovers"
 		},
 		{
+			"component": "portal-settings",
+			"status": "prod",
+			"display-name": "Portal Settings",
+			"classKey": "PortalSettings",
+			"url-slug": "portal-settings"
+		},
+		{
 			"component": "progress-bar",
 			"status": "prod",
 			"display-name": "Progress Bars",

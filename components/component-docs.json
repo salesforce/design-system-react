@@ -13561,6 +13561,22 @@
         "SLDS-component-path": "/components/popovers",
         "dependencies": []
     },
+    "portal-settings": {
+        "description": "The Portal Settings component allows for the portal parent node to be specified in all child components and is recommended to be used at the root of the application. It's render function is `return this.props.children`, so it can only have one child node.\n\n**renderTo Selector**\nUse this to specify the portal node using a string that is compatiable with document.querySelector\nie.\n```\n<PortalSettings renderTo=\"#portal-destination\">\n```\n*",
+        "methods": [],
+        "props": {
+            "renderTo": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Selector for the destination container for portal elements\nexample: `#portal-destination`"
+            }
+        },
+        "route": "portal-settings",
+        "display-name": "Portal Settings",
+        "dependencies": []
+    },
     "progress-bar": {
         "description": "A progress bar component communicates to the user the progress of a particular process",
         "methods": [

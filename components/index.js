@@ -199,6 +199,8 @@ export Popover from './popover';
 export SLDSPopover from './popover';
 export PopoverTooltip from './tooltip';
 export SLDSPopoverTooltip from './tooltip';
+export PortalSettings from './portal-settings';
+export SLDSPortalSettings from './portal-settings';
 export ProgressBar from './progress-bar';
 export SLDSProgressBar from './progress-bar';
 export ProgressIndicator from './progress-indicator';
