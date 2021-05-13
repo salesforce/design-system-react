@@ -21,22 +21,6 @@ const propTypes = {
 	 */
 	activeOptionIndex: PropTypes.number,
 	/**
-	 * CSS classes to be added to container `div` tag. Uses `classNames` [API](https://github.com/JedWatson/classnames).
-	 */
-	className: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.object,
-		PropTypes.string,
-	]),
-	/**
-	 * CSS classes to be added to tag with `.slds-dropdown`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
-	 */
-	classNameMenu: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.object,
-		PropTypes.string,
-	]),
-	/**
 	 * CSS classes to be added to menu sub header `span` tag. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	classNameMenuSubHeader: PropTypes.oneOfType([
@@ -93,10 +77,6 @@ const propTypes = {
 	 * Menu options
 	 */
 	options: PropTypes.array,
-	/*
-	 * Callback to remove active descendent
-	 */
-	resetActiveOption: PropTypes.func,
 	/*
 	 * Selected options
 	 */

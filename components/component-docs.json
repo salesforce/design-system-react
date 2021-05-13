@@ -5175,6 +5175,13 @@
                     "value": "'base'",
                     "computed": false
                 }
+            },
+            "deselectOption": {
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                },
+                "required": false
             }
         },
         "route": "comboboxes",
