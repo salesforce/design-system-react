@@ -139,14 +139,14 @@ const BuilderHeader = (props) => {
 	let utilities = (
 		<BuilderHeaderUtilities>
 			<BuilderHeaderNavLink
-				assistiveText={{ label: assistiveText.backIcon }}
+				assistiveText={{ icon: assistiveText.backIcon }}
 				iconCategory="utility"
 				iconName="back"
 				label={labels.back}
 				onClick={EventUtil.trappedHandler(events.onClickBack)}
 			/>
 			<BuilderHeaderNavLink
-				assistiveText={{ label: assistiveText.helpIcon }}
+				assistiveText={{ icon: assistiveText.helpIcon }}
 				iconCategory="utility"
 				iconName="help"
 				label={labels.help}
