@@ -87,5 +87,5 @@ const Example = (props) => (
 	</IconSettings>
 );
 
-Example.displayName = 'BuilderHeaderBase';
+Example.displayName = 'BuilderHeaderBaseWithUtilities';
 export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
