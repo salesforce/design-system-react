@@ -425,8 +425,9 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               title="Acme - 1,200 Widgets"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 Acme - 1,200 Widgets
               </a>
@@ -524,8 +525,9 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               title="jrogers@acme.com"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 jrogers@acme.com
               </a>
@@ -548,7 +550,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -648,8 +650,9 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               title="Acme - 200 Widgets"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 Acme - 200 Widgets
               </a>
@@ -747,8 +750,9 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               title="bob@acme.com"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 bob@acme.com
               </a>
@@ -771,7 +775,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -871,8 +875,9 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               title="salesforce.com - 1,000 Widgets"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 salesforce.com - 1,000 Widgets
               </a>
@@ -970,8 +975,9 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               title="nathan@salesforce.com"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 nathan@salesforce.com
               </a>
@@ -994,7 +1000,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -1390,8 +1396,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               title="Acme - 1,200 Widgets"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 Acme - 1,200 Widgets
               </a>
@@ -1489,8 +1496,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               title="jrogers@acme.com"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 jrogers@acme.com
               </a>
@@ -1513,7 +1521,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -1610,8 +1618,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               title="Acme - 200 Widgets"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 Acme - 200 Widgets
               </a>
@@ -1709,8 +1718,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               title="bob@acme.com"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 bob@acme.com
               </a>
@@ -1733,7 +1743,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -1830,8 +1840,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               title="salesforce.com - 1,000 Widgets"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 salesforce.com - 1,000 Widgets
               </a>
@@ -1929,8 +1940,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               title="nathan@salesforce.com"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 nathan@salesforce.com
               </a>
@@ -1953,7 +1965,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -2349,8 +2361,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               title="Acme - 1,200 Widgets"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 Acme - 1,200 Widgets
               </a>
@@ -2448,8 +2461,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               title="jrogers@acme.com"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 jrogers@acme.com
               </a>
@@ -2472,7 +2486,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -2569,8 +2583,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               title="Acme - 200 Widgets"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 Acme - 200 Widgets
               </a>
@@ -2668,8 +2683,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               title="bob@acme.com"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 bob@acme.com
               </a>
@@ -2692,7 +2708,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -2789,8 +2805,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               title="salesforce.com - 1,000 Widgets"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 salesforce.com - 1,000 Widgets
               </a>
@@ -2888,8 +2905,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               title="nathan@salesforce.com"
             >
               <a
-                href="#"
-                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                tabIndex="-1"
               >
                 nathan@salesforce.com
               </a>
@@ -2912,7 +2930,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -8135,8 +8153,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 1,200 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 1,200 Widgets
                   </a>
@@ -8230,8 +8249,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     jrogers@acme.com
                   </a>
@@ -8254,7 +8274,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -8350,8 +8370,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 200 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 200 Widgets
                   </a>
@@ -8445,8 +8466,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     bob@acme.com
                   </a>
@@ -8469,7 +8491,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -8565,8 +8587,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="salesforce.com - 1,000 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     salesforce.com - 1,000 Widgets
                   </a>
@@ -8660,8 +8683,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     nathan@salesforce.com
                   </a>
@@ -8684,7 +8708,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -8780,8 +8804,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 800 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 800 Widgets
                   </a>
@@ -8875,8 +8900,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     jrogers@acme.com
                   </a>
@@ -8899,7 +8925,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -8995,8 +9021,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 744 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 744 Widgets
                   </a>
@@ -9090,8 +9117,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     bob@acme.com
                   </a>
@@ -9114,7 +9142,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -9210,8 +9238,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="salesforce.com - 847 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     salesforce.com - 847 Widgets
                   </a>
@@ -9305,8 +9334,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     nathan@salesforce.com
                   </a>
@@ -9329,7 +9359,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -9425,8 +9455,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 1,621 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 1,621 Widgets
                   </a>
@@ -9520,8 +9551,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     jrogers@acme.com
                   </a>
@@ -9544,7 +9576,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -9640,8 +9672,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 430 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 430 Widgets
                   </a>
@@ -9735,8 +9768,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     bob@acme.com
                   </a>
@@ -9759,7 +9793,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -9855,8 +9889,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="salesforce.com - 677 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     salesforce.com - 677 Widgets
                   </a>
@@ -9950,8 +9985,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     nathan@salesforce.com
                   </a>
@@ -9974,7 +10010,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -10070,8 +10106,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 1,444 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 1,444 Widgets
                   </a>
@@ -10165,8 +10202,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     jrogers@acme.com
                   </a>
@@ -10189,7 +10227,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -10285,8 +10323,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="Acme - 320 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 320 Widgets
                   </a>
@@ -10380,8 +10419,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     bob@acme.com
                   </a>
@@ -10404,7 +10444,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -10500,8 +10540,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="salesforce.com - 4,000 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     salesforce.com - 4,000 Widgets
                   </a>
@@ -10595,8 +10636,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     nathan@salesforce.com
                   </a>
@@ -10619,7 +10661,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -11533,8 +11575,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 1,200 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 1,200 Widgets
                   </a>
@@ -11628,8 +11671,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     jrogers@acme.com
                   </a>
@@ -11652,7 +11696,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -11748,8 +11792,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 200 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 200 Widgets
                   </a>
@@ -11843,8 +11888,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     bob@acme.com
                   </a>
@@ -11867,7 +11913,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -11963,8 +12009,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="salesforce.com - 1,000 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     salesforce.com - 1,000 Widgets
                   </a>
@@ -12058,8 +12105,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     nathan@salesforce.com
                   </a>
@@ -12082,7 +12130,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -12178,8 +12226,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 800 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 800 Widgets
                   </a>
@@ -12273,8 +12322,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     jrogers@acme.com
                   </a>
@@ -12297,7 +12347,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -12393,8 +12443,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 744 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 744 Widgets
                   </a>
@@ -12488,8 +12539,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     bob@acme.com
                   </a>
@@ -12512,7 +12564,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -12608,8 +12660,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="salesforce.com - 847 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     salesforce.com - 847 Widgets
                   </a>
@@ -12703,8 +12756,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     nathan@salesforce.com
                   </a>
@@ -12727,7 +12781,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -12823,8 +12877,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 1,621 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 1,621 Widgets
                   </a>
@@ -12918,8 +12973,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     jrogers@acme.com
                   </a>
@@ -12942,7 +12998,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -13038,8 +13094,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 430 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 430 Widgets
                   </a>
@@ -13133,8 +13190,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     bob@acme.com
                   </a>
@@ -13157,7 +13215,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -13253,8 +13311,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="salesforce.com - 677 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     salesforce.com - 677 Widgets
                   </a>
@@ -13348,8 +13407,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     nathan@salesforce.com
                   </a>
@@ -13372,7 +13432,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -13468,8 +13528,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 1,444 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 1,444 Widgets
                   </a>
@@ -13563,8 +13624,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     jrogers@acme.com
                   </a>
@@ -13587,7 +13649,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -13683,8 +13745,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="Acme - 320 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 320 Widgets
                   </a>
@@ -13778,8 +13841,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     bob@acme.com
                   </a>
@@ -13802,7 +13866,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -13898,8 +13962,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="salesforce.com - 4,000 Widgets"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     salesforce.com - 4,000 Widgets
                   </a>
@@ -13993,8 +14058,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="#"
-                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     nathan@salesforce.com
                   </a>
@@ -14017,7 +14083,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -15035,7 +15101,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -15248,7 +15314,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -15461,7 +15527,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -15674,7 +15740,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -15887,7 +15953,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -16100,7 +16166,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -16313,7 +16379,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -16526,7 +16592,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -16739,7 +16805,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -16952,7 +17018,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -17165,7 +17231,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -17378,7 +17444,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -20522,7 +20588,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                           className="slds-dropdown-trigger slds-dropdown-trigger_click"
                           id="page-header-dropdown-object-home-header"
                           onClick={[Function]}
-                          onFocus={null}
+                          onFocus={[Function]}
                           onKeyDown={[Function]}
                           onMouseEnter={null}
                           onMouseLeave={null}
@@ -20589,7 +20655,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last"
                   id="page-header-dropdown-object-home-nav-right"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -20648,7 +20714,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 className="slds-dropdown-trigger slds-dropdown-trigger_click"
                 id="page-header-dropdown-object-home-content-right"
                 onClick={[Function]}
-                onFocus={null}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseEnter={null}
                 onMouseLeave={null}
@@ -20693,7 +20759,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 className="slds-dropdown-trigger slds-dropdown-trigger_click"
                 id="page-header-dropdown-object-home-content-right-2"
                 onClick={[Function]}
-                onFocus={null}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseEnter={null}
                 onMouseLeave={null}
@@ -21805,7 +21871,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -22018,7 +22084,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -22231,7 +22297,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -22444,7 +22510,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -22657,7 +22723,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -22870,7 +22936,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -23083,7 +23149,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -23296,7 +23362,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -23509,7 +23575,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -23722,7 +23788,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -23935,7 +24001,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
@@ -24148,7 +24214,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
                   id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SLDSDataTableRowActions"
                   onClick={[Function]}
-                  onFocus={null}
+                  onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseEnter={null}
                   onMouseLeave={null}
