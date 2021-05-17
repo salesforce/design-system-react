@@ -283,7 +283,7 @@ const propTypes = {
 		'bottom right',
 	]),
 	/**
-	 * Is only called when `openOn` is set to `hover` and when the triggering button loses focus.
+	 * Called when the triggering button loses focus.
 	 */
 	onBlur: PropTypes.func,
 	/**
@@ -291,7 +291,7 @@ const propTypes = {
 	 */
 	onClick: PropTypes.func,
 	/**
-	 * Is only called when `openOn` is set to `hover` and when the triggering button gains focus.
+	 * Called when the triggering button gains focus.
 	 */
 	onFocus: PropTypes.func,
 	/**
@@ -1072,7 +1072,7 @@ class MenuDropdown extends React.Component {
 						? this.handleClick
 						: this.props.onClick
 				}
-				onFocus={this.props.openOn === 'hover' ? this.handleFocus : null}
+				onFocus={this.handleFocus}
 				onKeyDown={this.handleKeyDown}
 				onMouseDown={this.props.onMouseDown}
 				onMouseEnter={
