@@ -22,6 +22,7 @@ export const BREAD_CRUMB = 'SLDSBreadcrumb';
 export const BREADCRUMB = 'SLDSBreadcrumb';
 export const BUILDER_HEADER = 'SLDSBuilderHeader';
 export const BUILDER_HEADER_MISC = 'SLDSBuilderHeaderMisc';
+export const BUILDER_HEADER_UTILITIES = 'SLDSBuilderHeaderUtilities';
 export const BUILDER_HEADER_NAV = 'SLDSBuilderHeaderNav';
 export const BUILDER_HEADER_NAV_DROPDOWN = 'SLDSBuilderHeaderNavDropdown';
 export const BUILDER_HEADER_NAV_LINK = 'SLDSBuilderHeaderNavLink';
