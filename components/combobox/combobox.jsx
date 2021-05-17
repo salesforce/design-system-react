@@ -137,6 +137,10 @@ const propTypes = {
 	 */
 	fieldLevelHelpTooltip: PropTypes.node,
 	/**
+	 * If true, `{ label: 'None': value: '' }` will be selected.
+	 */
+	hasDeselect: PropTypes.bool,
+	/**
 	 * If true, loading spinner appears inside input on right hand side.
 	 */
 	hasInputSpinner: PropTypes.bool,
@@ -160,6 +164,7 @@ const propTypes = {
 	/**
 	 * **Text labels for internationalization**
 	 * This object is merged with the default props object on every render.
+	 * * `deselectOption`: This label appears first in the menu items of a read-only, Picklist-like Combobox. Selecting it, deselects any currently selected value.
 	 * * `label`: This label appears above the input.
 	 * * `cancelButton`: This label is only used by the dialog variant for the cancel button in the footer of the dialog. The default is `Cancel`
 	 * * `doneButton`: This label is only used by the dialog variant for the done button in the footer of the dialog. The default is `Done`
@@ -171,6 +176,7 @@ const propTypes = {
 	 * _Tested with snapshot testing._
 	 */
 	labels: PropTypes.shape({
+		deselectOption: PropTypes.string,
 		label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 		multipleOptionsSelected: PropTypes.string,
 		noOptionsFound: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
@@ -387,8 +393,10 @@ const defaultProps = {
 		removePill: ', Press delete or backspace to remove',
 		selectedListboxLabel: 'Selected Options:',
 	},
+	deselectOption: false,
 	events: {},
 	labels: {
+		deselectOption: 'None',
 		cancelButton: 'Cancel',
 		doneButton: `Done`,
 		noOptionsFound: 'No matches found.',
@@ -433,6 +441,7 @@ class Combobox extends React.Component {
 
 		this.generatedId = shortid.generate();
 		this.generatedErrorId = shortid.generate();
+		this.deselectId = `${this.getId()}-deselect`;
 	}
 
 	/**
@@ -609,20 +618,32 @@ class Combobox extends React.Component {
 
 	getOptions = (props = this.props) => {
 		const localProps = props;
-		const options = [];
-		if (localProps.optionsSearchEntity.length > 0) {
-			// eslint-disable-next-line fp/no-mutating-methods
-			options.push(...localProps.optionsSearchEntity);
-		}
+		const labels = assign({}, defaultProps.labels, this.props.labels);
 
-		if (localProps.options) {
-			// eslint-disable-next-line fp/no-mutating-methods
-			options.push(...localProps.options);
-		}
-		if (localProps.optionsAddItem.length > 0) {
-			// eslint-disable-next-line fp/no-mutating-methods
-			options.push(...localProps.optionsAddItem);
-		}
+		const deselectOption = {
+			id: this.deselectId,
+			label: labels.deselectOption,
+			value: '',
+			type: 'deselect',
+		};
+
+		const localOptionsSearchEntity = localProps.optionsSearchEntity.map(
+			(entity) => ({ ...entity, type: 'header' })
+		);
+
+		const localOptionsAddItem = props.optionsAddItem.map((entity) => ({
+			...entity,
+			type: 'footer',
+		}));
+
+		const options = [
+			...(localOptionsSearchEntity.length > 0 ? localOptionsSearchEntity : []),
+			...(props.hasDeselect ? [deselectOption] : []),
+			...(localProps.options && localProps.options.length > 0
+				? localProps.options
+				: []),
+			...(localOptionsAddItem.length > 0 ? localOptionsAddItem : []),
+		];
 		return options;
 	};
 
@@ -913,19 +934,22 @@ class Combobox extends React.Component {
 				this.props.events.onOpen(event, data);
 			}
 
-			if (this.props.variant === 'readonly' && this.menuRef !== null) {
+			if (this.props.variant === 'readonly') {
 				const activeOptionIndex = findIndex(this.getOptions(), (item) =>
 					isEqual(item, this.props.selection[0])
 				);
 
 				this.setState({
 					activeOptionIndex,
+					activeOption: this.props.selection[0],
 				});
 
-				menuItemSelectScroll({
-					container: this.menuRef,
-					focusedIndex: activeOptionIndex,
-				});
+				if (this.menuRef !== null) {
+					menuItemSelectScroll({
+						container: this.menuRef,
+						focusedIndex: activeOptionIndex,
+					});
+				}
 			}
 		}
 	};
@@ -1004,8 +1028,11 @@ class Combobox extends React.Component {
 			!this.props.multiple && !isSelected;
 		const multiSelectAndSelectedWasNotClicked =
 			this.props.multiple && !isSelected;
+		const deselectWasClicked = option.id === this.deselectId;
 
-		if (singleSelectAndSelectedWasNotClicked) {
+		if (deselectWasClicked) {
+			newSelection = [];
+		} else if (singleSelectAndSelectedWasNotClicked) {
 			newSelection = [option];
 		} else if (multiSelectAndSelectedWasNotClicked) {
 			newSelection = [...this.props.selection, option];
@@ -1426,6 +1453,7 @@ class Combobox extends React.Component {
 				classNameMenu={this.props.classNameMenu}
 				classNameMenuSubHeader={this.props.classNameMenuSubHeader}
 				clearActiveOption={this.clearActiveOption}
+				deselectId={this.deselectId}
 				inheritWidthOf={this.props.inheritWidthOf}
 				inputId={this.getId()}
 				inputValue={this.props.value}
@@ -1435,13 +1463,14 @@ class Combobox extends React.Component {
 				}
 				labels={labels}
 				hasMenuSpinner={this.props.hasMenuSpinner}
+				hasDeselect={this.props.hasDeselect}
 				menuItem={this.props.menuItem}
 				menuPosition={this.props.menuPosition}
 				menuRef={(ref) => {
 					this.menuRef = ref;
 				}}
 				maxWidth={this.props.menuMaxWidth}
-				options={this.props.options}
+				options={this.getOptions()}
 				optionsAddItem={this.props.optionsAddItem}
 				optionsSearchEntity={this.props.optionsSearchEntity}
 				onSelect={this.handleSelect}
@@ -1660,7 +1689,14 @@ class Combobox extends React.Component {
 		props,
 		userDefinedProps,
 	}) => {
-		const value = (props.selection[0] && props.selection[0].label) || '';
+		const activeOptionLabel =
+			this.state.activeOption && this.state.activeOption.label;
+		const selectedOptionLabel = props.selection[0] && props.selection[0].label;
+		let inputValue = activeOptionLabel || selectedOptionLabel || '';
+
+		if (props.selection[0] && props.selection[0].value === '') {
+			inputValue = '';
+		}
 
 		return (
 			<div className="slds-form-element__control">
@@ -1725,10 +1761,7 @@ class Combobox extends React.Component {
 							placeholder={labels.placeholderReadOnly}
 							readOnly
 							required={props.required}
-							value={
-								(this.state.activeOption && this.state.activeOption.label) ||
-								value
-							}
+							value={inputValue}
 							{...userDefinedProps.input}
 						/>
 						{this.getDialog({

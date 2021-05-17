@@ -21,22 +21,6 @@ const propTypes = {
 	 */
 	activeOptionIndex: PropTypes.number,
 	/**
-	 * CSS classes to be added to container `div` tag. Uses `classNames` [API](https://github.com/JedWatson/classnames).
-	 */
-	className: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.object,
-		PropTypes.string,
-	]),
-	/**
-	 * CSS classes to be added to tag with `.slds-dropdown`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
-	 */
-	classNameMenu: PropTypes.oneOfType([
-		PropTypes.array,
-		PropTypes.object,
-		PropTypes.string,
-	]),
-	/**
 	 * CSS classes to be added to menu sub header `span` tag. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	classNameMenuSubHeader: PropTypes.oneOfType([
@@ -94,10 +78,6 @@ const propTypes = {
 	 */
 	options: PropTypes.array,
 	/*
-	 * Callback to remove active descendent
-	 */
-	resetActiveOption: PropTypes.func,
-	/*
 	 * Selected options
 	 */
 	selection: PropTypes.array,
@@ -105,26 +85,6 @@ const propTypes = {
 	 * Adds loading spinner below the options
 	 */
 	hasMenuSpinner: PropTypes.bool,
-	/*
-	 * Object for creating Add item below the options
-	 */
-	optionsAddItem: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.string,
-			icon: PropTypes.node,
-			label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-		})
-	),
-	/*
-	 * Object for creating Search item on top of the options
-	 */
-	optionsSearchEntity: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.string,
-			icon: PropTypes.node,
-			label: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-		})
-	),
 	/**
 	 * Accepts a tooltip that is displayed when hovering on disabled menu items.
 	 */
@@ -140,31 +100,6 @@ const propTypes = {
 const defaultProps = {
 	inputValue: '',
 	menuRef: () => {},
-	optionsAddItem: [],
-	optionsSearchEntity: [],
-};
-
-const getOptions = (props) => {
-	// use of array.push() is OK, because the array is created on each render
-	const options = [];
-	if (props.optionsSearchEntity.length > 0) {
-		const localOptionsSearchEntity = props.optionsSearchEntity.map(
-			(entity) => ({ ...entity, type: 'header' })
-		);
-		// eslint-disable-next-line fp/no-mutating-methods
-		options.push(...localOptionsSearchEntity);
-	}
-	// eslint-disable-next-line fp/no-mutating-methods
-	options.push(...props.options);
-	if (props.optionsAddItem.length > 0) {
-		const localOptionsAddItem = props.optionsAddItem.map((entity) => ({
-			...entity,
-			type: 'footer',
-		}));
-		// eslint-disable-next-line fp/no-mutating-methods
-		options.push(...localOptionsAddItem);
-	}
-	return options;
 };
 
 const setBold = (label, searchTerm) => {
@@ -203,7 +138,7 @@ const Menu = (props) => {
 			: maxWidth;
 
 	// .slds-dropdown sets the menu to absolute positioning, since it has a relative parent. Absolute positioning removes clientHeight and clientWidth which Popper.js needs to absolute position the menu's wrapping div. Absolute positioning an already absolute positioned element doesn't work. Setting the menu's position to relative allows PopperJS to work it's magic.
-	const menuOptions = getOptions(props).map((optionData, index) => {
+	const menuOptions = props.options.map((optionData, index) => {
 		const active =
 			index === props.activeOptionIndex &&
 			props.activeOption &&
@@ -429,7 +364,11 @@ const Menu = (props) => {
 										{props.assistiveText.optionSelectedInMenu}
 									</span>
 								) : null}{' '}
-								{optionData.label}
+								{optionData.type === 'deselect' ? (
+									<em>{optionData.label}</em>
+								) : (
+									optionData.label
+								)}
 							</span>
 						)}
 					</span>
