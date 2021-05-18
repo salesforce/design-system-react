@@ -2392,6 +2392,20 @@
                 "required": false,
                 "description": "Triggered when a mouse button is released"
             },
+            "onRequestFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered to indicate that this component should receive focus."
+            },
+            "requestFocus": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, will trigger `onRequestFocus`."
+            },
             "responsive": {
                 "type": {
                     "name": "bool"
@@ -3411,12 +3425,26 @@
                 "required": false,
                 "description": "This event fires when a pressed key is released. It passes in `{ event }`."
             },
+            "onRequestFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered to indicate that this component should receive focus."
+            },
             "readOnly": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
                 "description": "Displays the value of the input, but does not allow changes."
+            },
+            "requestFocus": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, will trigger `onRequestFocus`."
             },
             "required": {
                 "type": {
@@ -3431,6 +3459,13 @@
                 },
                 "required": false,
                 "description": "The aria-role of the checkbox."
+            },
+            "tabIndex": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to the button."
             },
             "variant": {
                 "type": {
@@ -5217,6 +5252,22 @@
                 "returns": null
             },
             {
+                "name": "getFirstInteractiveElement",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "rowIndex",
+                        "type": null
+                    },
+                    {
+                        "name": "columnIndex",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleToggleAll",
                 "docblock": null,
                 "modifiers": [],
@@ -5278,6 +5329,108 @@
                 "params": [
                     {
                         "name": "attach",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "changeActiveCell",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "rowIndex",
+                        "type": null
+                    },
+                    {
+                        "name": "columnIndex",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "changeActiveElement",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "activeElement",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownUp",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownLeft",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownRight",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownEnter",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownEscape",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "registerInteractiveElement",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "rowIndex",
+                        "type": null
+                    },
+                    {
+                        "name": "columnIndex",
+                        "type": null
+                    },
+                    {
+                        "name": "elementId",
                         "type": null
                     }
                 ],
@@ -5374,7 +5527,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling."
+                "description": "Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling.\n\nWhen `keyboardNavigation` is enabled, the advanced table implements keyboard navigation as described in [Data Tables](https://www.lightningdesignsystem.com/components/data-tables/).\nWrap interactive elements in the table with `<DataTableInteractiveElement>` so that it can control the element's focus and `tabIndex` behavior:\n```\nconst InteractiveButton = DataTableInteractiveElement(Button);\nconst InteractiveCheckBox = DataTableInteractiveElement(Checkbox);\nconst CustomDataTableCell = () => (\n\t<DataTableCell>\n\t\t<InteractiveCheckBox />\n\t\t<InteractiveButton />\n\t</DataTableCell>\n);\n```\nThe wrapped element must accept the props:\n * `onFocus`: Callback for when the element is focused.\n * `onRequestFocus`: Trigger to indicate that this element should be focused.\n * `requestFocus`: This wrapper overrides the `requestFocus` prop and provides its own value.\n * `tabIndex`: This wrapper overrides the `tabIndex` prop and provides its own value."
             },
             "hasMore": {
                 "type": {
@@ -5438,6 +5591,13 @@
                     "value": "20",
                     "computed": false
                 }
+            },
+            "keyboardNavigation": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Enables keyboard navigation when this is an advanced table."
             },
             "noRowHover": {
                 "type": {
@@ -5789,32 +5949,7 @@
             {
                 "row-actions": {
                     "description": "RowActions provide a mechanism for defining a menu to display alongside each row in the DataTable.",
-                    "methods": [
-                        {
-                            "name": "handleClick",
-                            "docblock": null,
-                            "modifiers": [],
-                            "params": [
-                                {
-                                    "name": "e",
-                                    "type": null
-                                }
-                            ],
-                            "returns": null
-                        },
-                        {
-                            "name": "handleSelect",
-                            "docblock": null,
-                            "modifiers": [],
-                            "params": [
-                                {
-                                    "name": "selection",
-                                    "type": null
-                                }
-                            ],
-                            "returns": null
-                        }
-                    ],
+                    "methods": [],
                     "props": {
                         "assistiveText": {
                             "type": {
@@ -11077,7 +11212,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Is only called when `openOn` is set to `hover` and when the triggering button loses focus."
+                "description": "Called when the triggering button loses focus."
             },
             "onClick": {
                 "type": {
@@ -11091,7 +11226,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Is only called when `openOn` is set to `hover` and when the triggering button gains focus."
+                "description": "Called when the triggering button gains focus."
             },
             "openOn": {
                 "type": {
@@ -14610,6 +14745,34 @@
                 },
                 "required": false,
                 "description": "This event fires when the radio selection changes. Passes in `event, { checked }`."
+            },
+            "onFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the Checkbox is focused. It passes in `{ event }`."
+            },
+            "onRequestFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered to indicate that this component should receive focus."
+            },
+            "requestFocus": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, will trigger `onRequestFocus`."
+            },
+            "tabIndex": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to the button."
             },
             "value": {
                 "type": {
