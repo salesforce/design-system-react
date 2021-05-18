@@ -35,15 +35,15 @@ These are changes that have backwards-compatible solutions present and that comp
 
 **Minor Features**
 
-`BuilderHeader`: Customizable utilities section
-`Combobox`: Allow "None" selection (read-only variant)
-`DataTable`: Add keyboard navigation support
-`DatePicker`: Add error state
+- `BuilderHeader`: Customizable utilities section
+- `Combobox`: Allow "None" selection (read-only variant)
+- `DataTable`: Add keyboard navigation support
+- `DatePicker`: Add error state
 
 **Bugfixes**
 
-`Combobox`: Add `title` to options
-`RadioGroup`: Allow radios to be disabled individually
+- `Combobox`: Add `title` to options
+- `RadioGroup`: Allow radios to be disabled individually
 
 ## Release 0.10.32
 
