@@ -120,7 +120,7 @@ class RadioGroup extends React.Component {
 				name: this.getName(),
 				onChange: this.props.onChange,
 				'aria-describedby': this.getErrorId(),
-				disabled: this.props.disabled,
+				disabled: this.props.disabled || child.props.disabled,
 			})
 		);
 
