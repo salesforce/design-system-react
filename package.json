@@ -140,7 +140,7 @@
 		"@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
 		"ajv": "6.12.6",
 		"async": "^3.2.0",
-		"axe-core": "3.5.5",
+		"axe-core": "4.2.1",
 		"axe-puppeteer": "^1.0.0",
 		"babel-eslint": "^10.1.0",
 		"babel-generator": "^6.26.1",
