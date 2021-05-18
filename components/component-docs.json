@@ -1672,6 +1672,23 @@
                 }
             },
             {
+                "utilities": {
+                    "description": "The navigation section of the header.",
+                    "methods": [],
+                    "props": {
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Provide children of the types `<BuilderHeaderNavLink />` or `<BuilderHeaderNavDropdown />` to define the structure of the utilities section.\n```\n<BuilderHeader>\n  <BuilderHeaderUtilities>\n    <BuilderHeaderNavLink />\n    <BuilderHeaderNavDropdown />\n  </BuilderHeaderUtilities>\n</BuilderHeader>\n```"
+                        }
+                    },
+                    "name": "utilities",
+                    "source": "/components/builder-header/utilities.jsx"
+                }
+            },
+            {
                 "misc": {
                     "description": "The miscellaneous section of the header.",
                     "methods": [],
