@@ -31,9 +31,23 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.33
+
+**Minor Features**
+
+`BuilderHeader`: Customizable utilities section
+`Combobox`: Allow "None" selection (read-only variant)
+`DataTable`: Add keyboard navigation support
+`DatePicker`: Add error state
+
+**Bugfixes**
+
+`Combobox`: Add `title` to options
+`RadioGroup`: Allow radios to be disabled individually
+
 ## Release 0.10.32
 
-**React 17 compatibility updates** 
+**React 17 compatibility updates**
 
 * Remove legacy 16.x context API
 * Update package to React 17
