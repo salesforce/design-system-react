@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import EventUtil from '../../utilities/event';
 
+import BuilderHeaderUtilities from './utilities';
+import BuilderHeaderNavLink from './nav-link';
+
 import Icon from '../icon';
 
 import {
@@ -10,6 +13,7 @@ import {
 	BUILDER_HEADER_NAV,
 	BUILDER_HEADER_TOOLBAR,
 	BUILDER_HEADER_MISC,
+	BUILDER_HEADER_UTILITIES,
 } from '../../utilities/constants';
 
 const propTypes = {
@@ -131,6 +135,25 @@ const BuilderHeader = (props) => {
 
 	let nav;
 	let toolbar;
+	// Default utilities includes Back and Help links
+	let utilities = (
+		<BuilderHeaderUtilities>
+			<BuilderHeaderNavLink
+				assistiveText={{ icon: assistiveText.backIcon }}
+				iconCategory="utility"
+				iconName="back"
+				label={labels.back}
+				onClick={EventUtil.trappedHandler(events.onClickBack)}
+			/>
+			<BuilderHeaderNavLink
+				assistiveText={{ icon: assistiveText.helpIcon }}
+				iconCategory="utility"
+				iconName="help"
+				label={labels.help}
+				onClick={EventUtil.trappedHandler(events.onClickHelp)}
+			/>
+		</BuilderHeaderUtilities>
+	);
 	const misc = [];
 	React.Children.forEach(props.children, (child) => {
 		if (child) {
@@ -144,6 +167,9 @@ const BuilderHeader = (props) => {
 				case BUILDER_HEADER_MISC:
 					// eslint-disable-next-line fp/no-mutating-methods
 					misc.push(child);
+					break;
+				case BUILDER_HEADER_UTILITIES:
+					utilities = child;
 					break;
 				default:
 			}
@@ -200,44 +226,7 @@ const BuilderHeader = (props) => {
 						</div>
 					)}
 
-					<div className="slds-builder-header__item slds-builder-header__utilities">
-						<div className="slds-builder-header__utilities-item">
-							<a
-								href="#"
-								className="slds-builder-header__item-action slds-media slds-media_center"
-								onClick={EventUtil.trappedHandler(events.onClickBack)}
-							>
-								<div className="slds-media__figure">
-									<Icon
-										assistiveText={{ label: assistiveText.backIcon }}
-										category="utility"
-										containerClassName="slds-icon_container slds-icon-utility-settings slds-current-color"
-										name="back"
-										size="x-small"
-									/>
-								</div>
-								<div className="slds-media__body">{labels.back}</div>
-							</a>
-						</div>
-						<div className="slds-builder-header__utilities-item">
-							<a
-								href="#"
-								className="slds-builder-header__item-action slds-media slds-media_center"
-								onClick={EventUtil.trappedHandler(events.onClickHelp)}
-							>
-								<div className="slds-media__figure">
-									<Icon
-										assistiveText={{ label: assistiveText.helpIcon }}
-										category="utility"
-										containerClassName="slds-icon_container slds-icon-utility-settings slds-current-color"
-										name="help"
-										size="x-small"
-									/>
-								</div>
-								<div className="slds-media__body">{labels.help}</div>
-							</a>
-						</div>
-					</div>
+					{utilities}
 				</header>
 				{toolbar}
 			</div>
