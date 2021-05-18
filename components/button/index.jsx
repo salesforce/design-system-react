@@ -164,6 +164,14 @@ class Button extends React.Component {
 		 */
 		onMouseUp: PropTypes.func,
 		/**
+		 * Triggered to indicate that this component should receive focus.
+		 */
+		onRequestFocus: PropTypes.func,
+		/**
+		 * If true, will trigger `onRequestFocus`.
+		 */
+		requestFocus: PropTypes.bool,
+		/**
 		 * If true, button scales to 100% width on small form factors.
 		 */
 		responsive: PropTypes.bool,
@@ -328,6 +336,13 @@ class Button extends React.Component {
 				ref={(component) => {
 					if (this.props.buttonRef) {
 						this.props.buttonRef(component);
+					}
+					if (
+						component &&
+						this.props.requestFocus &&
+						this.props.onRequestFocus
+					) {
+						this.props.onRequestFocus(component);
 					}
 				}}
 				tabIndex={this.props.tabIndex}

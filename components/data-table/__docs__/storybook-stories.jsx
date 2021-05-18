@@ -15,6 +15,7 @@ import BasicFluidColumnBordered from '../__examples__/basic-fluid-column-bordere
 import BasicFluidNoRowHover from '../__examples__/basic-fluid-no-row-hover';
 import BasicFluidStriped from '../__examples__/basic-fluid-striped';
 import FixedHeader from '../__examples__/fixed-header';
+import InteractiveElements from '../__examples__/interactive-elements';
 import FixedHeaderHorizontalScroller from '../__examples__/fixed-header-horizontal-scrolling';
 import JoinedWithPageHeader from '../__examples__/joined-with-page-header';
 import CustomClasses from '../__examples__/custom-classes';
@@ -42,6 +43,7 @@ storiesOf(DATA_TABLE, module)
 	))
 	.add('Advanced with Header Row', () => <AdvancedHeaderRow log={action} />)
 	.add('Fixed Header', () => <FixedHeader />)
+	.add('Interactive Elements', () => <InteractiveElements />)
 	.add('Fixed Header Horizontal Scrolling', () => (
 		<FixedHeaderHorizontalScroller />
 	))
