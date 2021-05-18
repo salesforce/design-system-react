@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSBadge Color Variants 1`] = `
+<div
+  style={
+    Object {
+      "padding": "1rem",
+    }
+  }
+>
+  <span
+    className="slds-badge"
+    id="badge-base-example-default"
+  >
+    <span
+      className="slds-badge__icon slds-badge__icon_left"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_xx-small slds-icon-text-default"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
+          />
+        </svg>
+        
+      </span>
+    </span>
+    423 Credits Available
+  </span>
+  <span
+    className="slds-badge slds-badge_lightest"
+    id="badge-base-example-light"
+  >
+    <span
+      className="slds-badge__icon slds-badge__icon_left"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_xx-small slds-icon-text-default"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
+          />
+        </svg>
+        
+      </span>
+    </span>
+    423 Credits Available
+  </span>
+  <span
+    className="slds-badge slds-badge_inverse"
+    id="badge-base-example-inverse"
+  >
+    <span
+      className="slds-badge__icon slds-badge__icon_left"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_xx-small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
+          />
+        </svg>
+        
+      </span>
+    </span>
+    423 Credits Available
+  </span>
+  <span
+    className="slds-badge slds-theme_success"
+    id="badge-base-example-success"
+  >
+    <span
+      className="slds-badge__icon slds-badge__icon_left"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_xx-small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
+          />
+        </svg>
+        
+      </span>
+    </span>
+    423 Credits Available
+  </span>
+  <span
+    className="slds-badge slds-theme_warning"
+    id="badge-base-example-warning"
+  >
+    <span
+      className="slds-badge__icon slds-badge__icon_left"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_xx-small slds-icon-text-default"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
+          />
+        </svg>
+        
+      </span>
+    </span>
+    423 Credits Available
+  </span>
+  <span
+    className="slds-badge slds-theme_error"
+    id="badge-base-example-error"
+  >
+    <span
+      className="slds-badge__icon slds-badge__icon_left"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_xx-small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
+          />
+        </svg>
+        
+      </span>
+    </span>
+    423 Credits Available
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSBadge Default 1`] = `
+<div
+  style={
+    Object {
+      "padding": "1rem",
+    }
+  }
+>
+  <span
+    className="slds-badge"
+    id="badge-base-example"
+  >
+    423 Credits Available
+  </span>
+</div>
+`;
+
+exports[`DOM snapshots SLDSBadge w/ Icons 1`] = `
+<div
+  style={
+    Object {
+      "padding": "1rem",
+    }
+  }
+>
+  <span
+    className="slds-badge"
+    id="badge-base-example-icon-left"
+  >
+    <span
+      className="slds-badge__icon slds-badge__icon_left"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_xx-small slds-icon-text-default"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
+          />
+        </svg>
+        
+      </span>
+    </span>
+    423 Credits Available
+  </span>
+  <span
+    className="slds-badge"
+    id="badge-base-example-icon-right"
+  >
+    423 Credits Available
+    <span
+      className="slds-badge__icon slds-badge__icon_right"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_xx-small slds-icon-text-default"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#moneybag"
+          />
+        </svg>
+        
+      </span>
+    </span>
+  </span>
+</div>
+`;

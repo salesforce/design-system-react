@@ -1,0 +1,597 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSToast Close Toast 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-notify-container"
+    />
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Toggle toast
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSToast Custom Class Names 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-notify-container this-is-the-container"
+  >
+    <div
+      className="slds-notify slds-notify_toast slds-theme_info this-is-the-alert"
+      role="status"
+      tabIndex={0}
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        info
+      </span>
+      <span
+        className="slds-m-right_small slds-no-flex slds-align-top"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
+          />
+        </svg>
+        
+      </span>
+      <div
+        className="slds-notify__content"
+      >
+        <h2
+          className="slds-text-heading_small"
+        >
+          26 potential duplicate leads were found.
+           
+          <a
+            href="#"
+            onClick={[Function]}
+          >
+            Select Leads to Merge
+          </a>
+        </h2>
+      </div>
+      <button
+        className="slds-button slds-button_icon-inverse slds-notify__close"
+        disabled={false}
+        onClick={[Function]}
+        title="Close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_large"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Close
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSToast Custom Style 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-notify-container this-is-the-container"
+  >
+    <div
+      className="slds-notify slds-notify_toast slds-theme_info"
+      role="status"
+      style={
+        Object {
+          "backgroundColor": "rgb(18, 49, 35)",
+        }
+      }
+      tabIndex={0}
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        info
+      </span>
+      <span
+        className="slds-m-right_small slds-no-flex slds-align-top"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
+          />
+        </svg>
+        
+      </span>
+      <div
+        className="slds-notify__content"
+      >
+        <h2
+          className="slds-text-heading_small"
+        >
+          26 potential duplicate leads were found.
+           
+          <a
+            href="#"
+            onClick={[Function]}
+          >
+            Select Leads to Merge
+          </a>
+        </h2>
+      </div>
+      <button
+        className="slds-button slds-button_icon-inverse slds-notify__close"
+        disabled={false}
+        onClick={[Function]}
+        title="Close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_large"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Close
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSToast Duration Toast 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-notify-container"
+    >
+      <div
+        className="slds-notify slds-notify_toast slds-theme_info"
+        role="status"
+        tabIndex={0}
+      >
+        <span
+          className="slds-assistive-text"
+        >
+          info
+        </span>
+        <span
+          className="slds-m-right_small slds-no-flex slds-align-top"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-icon slds-icon_small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            />
+          </svg>
+          
+        </span>
+        <div
+          className="slds-notify__content"
+        >
+          <h2
+            className="slds-text-heading_small"
+          >
+            26 potential duplicate leads were found.
+             
+            <a
+              href="#"
+              onClick={[Function]}
+            >
+              Select Leads to Merge
+            </a>
+          </h2>
+        </div>
+        <button
+          className="slds-button slds-button_icon-inverse slds-notify__close"
+          disabled={false}
+          onClick={[Function]}
+          title="Close"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_large"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Close
+          </span>
+        </button>
+      </div>
+    </div>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Toggle toast
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSToast Error 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-notify-container"
+  >
+    <div
+      className="slds-notify slds-notify_toast slds-theme_error"
+      role="status"
+      tabIndex={0}
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        error
+      </span>
+      <span
+        className="slds-m-right_small slds-no-flex slds-align-top"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#error"
+          />
+        </svg>
+        
+      </span>
+      <div
+        className="slds-notify__content"
+      >
+        <h2
+          className="slds-text-heading_small"
+        >
+          Can’t save lead “Sally Wong” because another lead has the same name.
+           
+        </h2>
+      </div>
+      <button
+        className="slds-button slds-button_icon-inverse slds-notify__close"
+        disabled={false}
+        onClick={[Function]}
+        title="Close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_large"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Close
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSToast Error With Details 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-notify-container"
+  >
+    <div
+      className="slds-notify slds-notify_toast slds-theme_error"
+      role="status"
+      tabIndex={0}
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        error
+      </span>
+      <span
+        className="slds-m-right_small slds-no-flex slds-align-top"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#error"
+          />
+        </svg>
+        
+      </span>
+      <div
+        className="slds-notify__content"
+      >
+        <h2
+          className="slds-text-heading_small"
+        >
+          You've encountered some errors when trying to save edits to Samuel Smith.
+           
+        </h2>
+        <p>
+          Here's some detail of what happened, being very descriptive and transparent.
+        </p>
+      </div>
+      <button
+        className="slds-button slds-button_icon-inverse slds-notify__close"
+        disabled={false}
+        onClick={[Function]}
+        title="Close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_large"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Close
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSToast Info 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-notify-container"
+  >
+    <div
+      className="slds-notify slds-notify_toast slds-theme_info"
+      role="status"
+      tabIndex={0}
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        info
+      </span>
+      <span
+        className="slds-m-right_small slds-no-flex slds-align-top"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#info"
+          />
+        </svg>
+        
+      </span>
+      <div
+        className="slds-notify__content"
+      >
+        <h2
+          className="slds-text-heading_small"
+        >
+          26 potential duplicate leads were found.
+           
+          <a
+            href="#"
+            onClick={[Function]}
+          >
+            Select Leads to Merge
+          </a>
+        </h2>
+      </div>
+      <button
+        className="slds-button slds-button_icon-inverse slds-notify__close"
+        disabled={false}
+        onClick={[Function]}
+        title="Close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_large"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Close
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSToast Success 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-notify-container"
+  >
+    <div
+      className="slds-notify slds-notify_toast slds-theme_success"
+      role="status"
+      tabIndex={0}
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        success
+      </span>
+      <span
+        className="slds-m-right_small slds-no-flex slds-align-top"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#success"
+          />
+        </svg>
+        
+      </span>
+      <div
+        className="slds-notify__content"
+      >
+        <h2
+          className="slds-text-heading_small"
+        >
+          Account 
+          <a
+            href="#"
+          >
+            ACME - 100
+          </a>
+           widgets was created.
+           
+        </h2>
+      </div>
+      <button
+        className="slds-button slds-button_icon-inverse slds-notify__close"
+        disabled={false}
+        onClick={[Function]}
+        title="Close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_large"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Close
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSToast Warning 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-notify-container"
+  >
+    <div
+      className="slds-notify slds-notify_toast slds-theme_warning"
+      role="status"
+      tabIndex={0}
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        warning
+      </span>
+      <span
+        className="slds-m-right_small slds-no-flex slds-align-top"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+          />
+        </svg>
+        
+      </span>
+      <div
+        className="slds-notify__content"
+      >
+        <h2
+          className="slds-text-heading_small"
+        >
+          Can’t share file “report-q3.pdf” with the selected users.
+           
+        </h2>
+      </div>
+      <button
+        className="slds-button slds-button_icon-inverse slds-notify__close"
+        disabled={false}
+        onClick={[Function]}
+        title="Close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_large"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Close
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
