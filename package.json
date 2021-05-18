@@ -453,6 +453,10 @@
 					"classKey": "BuilderHeaderToolbar"
 				},
 				{
+					"component": "utilities",
+					"classKey": "BuilderHeaderUtilities"
+				},
+				{
 					"component": "misc",
 					"classKey": "BuilderHeaderMisc"
 				}

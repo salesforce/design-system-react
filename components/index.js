@@ -41,6 +41,8 @@ export BuilderHeaderNavLink from './builder-header/nav-link';
 export SLDSBuilderHeaderNavLink from './builder-header/nav-link';
 export BuilderHeaderToolbar from './builder-header/toolbar';
 export SLDSBuilderHeaderToolbar from './builder-header/toolbar';
+export BuilderHeaderUtilities from './builder-header/utilities';
+export SLDSBuilderHeaderUtilities from './builder-header/utilities';
 export Button from './button';
 export SLDSButton from './button';
 export ButtonGroup from './button-group';

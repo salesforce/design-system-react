@@ -19,39 +19,37 @@ const BuilderHeaderNavDropdown = (props) => {
 	// Separate props we care about in order to pass others along passively to the dropdown component
 	const { iconCategory, iconName, label, assistiveText, ...rest } = props;
 	return (
-		<li className="slds-builder-header__nav-item">
-			<Dropdown {...rest}>
-				<DropdownTrigger>
-					<Button
-						className="slds-builder-header__item-action slds-media slds-media_center"
-						variant="base"
-					>
-						<span className="slds-media__figure">
-							<Icon
-								assistiveText={{
-									label: assistiveText && assistiveText.icon,
-								}}
-								category={iconCategory}
-								containerClassName="slds-icon_container slds-icon-utility-page slds-current-color"
-								name={iconName}
-								size="x-small"
-							/>
+		<Dropdown {...rest}>
+			<DropdownTrigger>
+				<Button
+					className="slds-builder-header__item-action slds-media slds-media_center"
+					variant="base"
+				>
+					<span className="slds-media__figure">
+						<Icon
+							assistiveText={{
+								label: assistiveText && assistiveText.icon,
+							}}
+							category={iconCategory}
+							containerClassName="slds-icon_container slds-icon-utility-page slds-current-color"
+							name={iconName}
+							size="x-small"
+						/>
+					</span>
+					<span className="slds-media__body">
+						<span className="slds-truncate" title={label}>
+							{label}
 						</span>
-						<span className="slds-media__body">
-							<span className="slds-truncate" title={label}>
-								{label}
-							</span>
-							<Icon
-								category="utility"
-								containerClassName="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"
-								name="chevrondown"
-								size="x-small"
-							/>
-						</span>
-					</Button>
-				</DropdownTrigger>
-			</Dropdown>
-		</li>
+						<Icon
+							category="utility"
+							containerClassName="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"
+							name="chevrondown"
+							size="x-small"
+						/>
+					</span>
+				</Button>
+			</DropdownTrigger>
+		</Dropdown>
 	);
 };
 
