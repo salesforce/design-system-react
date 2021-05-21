@@ -471,6 +471,10 @@
 					"path": "/__examples__/base-with-toolbar.jsx"
 				},
 				{
+					"heading": "Base with Utilities",
+					"path": "/__examples__/base-with-utilities.jsx"
+				},
+				{
 					"heading": "Successful Save",
 					"path": "/__examples__/successful-save.jsx"
 				},

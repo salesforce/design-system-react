@@ -1,5 +1,4 @@
 import React from 'react';
-import { actions, action } from '@storybook/addon-actions';
 
 import IconSettings from '../../icon-settings';
 import BuilderHeader from '../../builder-header';
@@ -16,7 +15,10 @@ const Example = (props) => (
 				backIcon: 'Back',
 				helpIcon: 'Help',
 			}}
-			events={actions('onClickBack', 'onClickHelp')}
+			events={{
+				onClickBack: () => console.log('onClickBack'),
+				onClickHelp: () => console.log('onClickHelp'),
+			}}
 			labels={{
 				back: 'Back',
 				help: 'Help',
@@ -31,7 +33,7 @@ const Example = (props) => (
 					iconCategory="utility"
 					iconName="settings"
 					label="Link"
-					onClick={action('link/onClick')}
+					onClick={() => console.log('link/onClick')}
 				/>
 				<BuilderHeaderNavDropdown
 					assistiveText={{ icon: 'Dropdown' }}
@@ -43,7 +45,7 @@ const Example = (props) => (
 						{ label: 'Menu Item One', value: 'A0' },
 						{ label: 'Menu Item Two', value: 'B0' },
 					]}
-					onSelect={action('dropdown/onSelect')}
+					onSelect={() => console.log('dropdown/onSelect')}
 				/>
 			</BuilderHeaderNav>
 			<BuilderHeaderUtilities>
@@ -52,7 +54,7 @@ const Example = (props) => (
 					iconCategory="utility"
 					iconName="back"
 					label="Back"
-					onClick={action('link/onClick')}
+					onClick={() => console.log('link/onClick')}
 				/>
 				<BuilderHeaderNavDropdown
 					assistiveText={{ icon: 'Dropdown' }}
@@ -79,7 +81,7 @@ const Example = (props) => (
 							},
 						},
 					]}
-					onSelect={action('dropdown/onSelect')}
+					onSelect={() => console.log('dropdown/onSelect')}
 					width="x-small"
 				/>
 			</BuilderHeaderUtilities>

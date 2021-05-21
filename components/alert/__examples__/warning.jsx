@@ -1,5 +1,4 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 
 import Alert from '~/components/alert'; // `~` is replaced with design-system-react at runtime
 import AlertContainer from '~/components/alert/container'; // `~` is replaced
@@ -16,7 +15,7 @@ class Example extends React.Component {
 								'Your browser is outdated. Your Salesforce experience may be degraded.',
 							headingLink: 'More Information',
 						}}
-						onClickHeadingLink={action('onClickHeadingLink')}
+						onClickHeadingLink={() => console.log('onClickHeadingLink')}
 						variant="warning"
 					/>
 				</AlertContainer>
