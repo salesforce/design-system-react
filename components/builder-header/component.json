@@ -22,6 +22,10 @@
 			"classKey": "BuilderHeaderToolbar"
 		},
 		{
+			"component": "utilities",
+			"classKey": "BuilderHeaderUtilities"
+		},
+		{
 			"component": "misc",
 			"classKey": "BuilderHeaderMisc"
 		}
@@ -34,6 +38,10 @@
 		{
 			"heading": "Base with Toolbar",
 			"path": "/__examples__/base-with-toolbar.jsx"
+		},
+		{
+			"heading": "Base with Utilities",
+			"path": "/__examples__/base-with-utilities.jsx"
 		},
 		{
 			"heading": "Successful Save",

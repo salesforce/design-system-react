@@ -35,6 +35,7 @@ class Example extends React.Component {
 							assistiveText={{ icon: 'Checkmark with right icon' }}
 							buttonVariant="icon"
 							checkmark
+							iconCategory="utility"
 							iconName="settings"
 							iconSize="large"
 							iconVariant="more"

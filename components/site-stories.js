@@ -122,6 +122,10 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/builder-header/__examples__/base-with-toolbar.jsx'),
 		},
 		{
+			heading: 'Base with Utilities',
+			path: require('raw-loader!@salesforce/design-system-react/components/builder-header/__examples__/base-with-utilities.jsx'),
+		},
+		{
 			heading: 'Successful Save',
 			path: require('raw-loader!@salesforce/design-system-react/components/builder-header/__examples__/successful-save.jsx'),
 		},

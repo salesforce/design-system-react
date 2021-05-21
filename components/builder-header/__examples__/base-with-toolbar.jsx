@@ -1,5 +1,4 @@
 import React from 'react';
-import { actions } from '@storybook/addon-actions';
 
 import IconSettings from '../../icon-settings';
 import Button from '../../button';
@@ -18,7 +17,10 @@ const Example = (props) => (
 				helpIcon: 'Help',
 				icon: 'Builder',
 			}}
-			events={actions('onClickBack', 'onClickHelp')}
+			events={{
+				onClickBack: () => console.log('onClickBack'),
+				onClickHelp: () => console.log('onClickHelp'),
+			}}
 			labels={{
 				back: 'Back',
 				help: 'Help',

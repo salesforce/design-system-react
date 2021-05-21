@@ -1,5 +1,4 @@
 import React from 'react';
-import { actions } from '@storybook/addon-actions';
 
 import IconSettings from '~/components/icon-settings';
 import EditDialog from '~/components/popover/edit-dialog'; // `~` is replaced with design-system-react at runtime
@@ -112,7 +111,10 @@ class Example extends React.Component {
 						backIcon: 'Back',
 						helpIcon: 'Help',
 					}}
-					events={actions('onClickBack', 'onClickHelp')}
+					events={{
+						onClickBack: () => console.log('onClickBack'),
+						onClickHelp: () => console.log('onClickHelp'),
+					}}
 					labels={{
 						back: 'Back',
 						help: 'Help',
