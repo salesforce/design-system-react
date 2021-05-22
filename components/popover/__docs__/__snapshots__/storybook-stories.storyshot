@@ -1,0 +1,2450 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSPopover Alignment (Button) 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    data-ignore-axe-duplicate-id-active={true}
+  >
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="top"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          Trigger Popover
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="top right"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          Trigger Popover
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="top left"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          Trigger Popover
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="right"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          Trigger Popover
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="right top"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          Trigger Popover
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="right bottom"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          Trigger Popover
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="bottom"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          Trigger Popover
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="bottom left"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          Trigger Popover
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="bottom right"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          Trigger Popover
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="left"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          Trigger Popover
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="left top"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          Trigger Popover
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="left bottom"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          Trigger Popover
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Alignment (ButtonIcon) 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    data-ignore-axe-duplicate-id-active={true}
+  >
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-border slds-button_icon-small"
+          disabled={false}
+          id="myPopoverId"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Case Icon
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-border slds-button_icon-small"
+          disabled={false}
+          id="myPopoverId"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Case Icon
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-border slds-button_icon-small"
+          disabled={false}
+          id="myPopoverId"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Case Icon
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-border slds-button_icon-small"
+          disabled={false}
+          id="myPopoverId"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Case Icon
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-border slds-button_icon-small"
+          disabled={false}
+          id="myPopoverId"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Case Icon
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-border slds-button_icon-small"
+          disabled={false}
+          id="myPopoverId"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Case Icon
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-border slds-button_icon-small"
+          disabled={false}
+          id="myPopoverId"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Case Icon
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-border slds-button_icon-small"
+          disabled={false}
+          id="myPopoverId"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Case Icon
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-border slds-button_icon-small"
+          disabled={false}
+          id="myPopoverId"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Case Icon
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-border slds-button_icon-small"
+          disabled={false}
+          id="myPopoverId"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Case Icon
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-border slds-button_icon-small"
+          disabled={false}
+          id="myPopoverId"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Case Icon
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "margin": "150px auto",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-border slds-button_icon-small"
+          disabled={false}
+          id="myPopoverId"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#filter"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Case Icon
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover AlternativeHeader 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div>
+    <div
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        aria-haspopup="dialog"
+        className="slds-button slds-button_neutral"
+        disabled={false}
+        id="popover-alternative-header"
+        onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        tabIndex="0"
+        type="button"
+      >
+        Trigger Popover
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Controlled w/ Footer 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div>
+    <div
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        aria-haspopup="dialog"
+        className="slds-button slds-button_neutral"
+        disabled={false}
+        id="popover-controlled-with-footer"
+        onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        tabIndex="0"
+        type="button"
+      >
+        Trigger Popover
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Custom Target - Open 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        aria-haspopup="dialog"
+        className="slds-button slds-button_neutral"
+        disabled={false}
+        id="popover-custom-target"
+        onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        tabIndex="0"
+        type="button"
+      >
+        Trigger Popover
+      </button>
+      <section
+        aria-describedby="popover-custom-target-dialog-body"
+        aria-labelledby="popover-custom-target-dialog-heading"
+        className="absolute-positioned slds-nubbin_left ignore-react-onclickoutside slds-popover"
+        id="popover-custom-target-popover"
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        role="dialog"
+        style={
+          Object {
+            "outline": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+          }
+        }
+        tabIndex="-1"
+      >
+        <button
+          className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Close dialog
+          </span>
+        </button>
+        <header
+          className="slds-popover__header"
+        >
+          <h2
+            className="slds-text-heading_small"
+            id="popover-custom-target-dialog-heading"
+          >
+            Custom Target
+          </h2>
+        </header>
+        <div
+          className="slds-popover__body"
+          id="popover-custom-target-dialog-body"
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </section>
+    </div>
+    <div
+      style={
+        Object {
+          "background": "#706e6b",
+          "borderRadius": "4px",
+          "color": "#fff",
+          "height": "32px",
+          "margin": "0 0 0 30px",
+          "padding": "6px",
+          "textAlign": "center",
+          "width": "132px",
+        }
+      }
+    >
+      Popover Target
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Custom Target 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        aria-haspopup="dialog"
+        className="slds-button slds-button_neutral"
+        disabled={false}
+        id="popover-custom-target"
+        onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        tabIndex="0"
+        type="button"
+      >
+        Trigger Popover
+      </button>
+    </div>
+    <div
+      style={
+        Object {
+          "background": "#706e6b",
+          "borderRadius": "4px",
+          "color": "#fff",
+          "height": "32px",
+          "margin": "0 0 0 30px",
+          "padding": "6px",
+          "textAlign": "center",
+          "width": "132px",
+        }
+      }
+    >
+      Popover Target
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Edit Dialog - Disabled 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div>
+    <span
+      className="slds-p-right_x-small"
+    >
+      John
+       
+      Smith
+    </span>
+    <div
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        aria-haspopup="dialog"
+        className="slds-button slds-button_icon slds-button_reset"
+        disabled={true}
+        id="edit-dialog-popover"
+        onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }
+        tabIndex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon slds-button__icon_hint"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Edit: Status
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Edit Dialog - Open 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div>
+    <span
+      className="slds-p-right_x-small"
+    >
+      John
+       
+      Smith
+    </span>
+    <div
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        aria-haspopup="dialog"
+        className="slds-button slds-button_icon slds-button_reset"
+        disabled={false}
+        id="edit-dialog-popover"
+        onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }
+        tabIndex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon slds-button__icon_hint"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Edit: Status
+        </span>
+      </button>
+      <section
+        aria-describedby="edit-dialog-popover-dialog-body"
+        aria-labelledby="edit-name"
+        className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover"
+        id="edit-dialog-popover-popover"
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        role="dialog"
+        style={
+          Object {
+            "outline": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+          }
+        }
+        tabIndex="-1"
+      >
+        <button
+          className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Close dialog
+          </span>
+        </button>
+        <div
+          className="slds-popover__body slds-p-bottom_xx-small"
+          id="edit-dialog-popover-dialog-body"
+        >
+          <div
+            className="slds-form slds-form_stacked slds-p-top_medium slds-p-right_small slds-p-left_small"
+          >
+            <h2
+              className="slds-assistive-text"
+              id="edit-name"
+            >
+              Edit Name
+            </h2>
+            <div
+              className="slds-form-element"
+            >
+              <label
+                className="slds-form-element__label"
+                htmlFor="first-name"
+              >
+                First Name
+              </label>
+              <div
+                className="slds-form-element__control"
+              >
+                <input
+                  className="slds-input"
+                  id="first-name"
+                  onChange={[Function]}
+                  type="text"
+                  value="John"
+                />
+              </div>
+            </div>
+            <div
+              className="slds-form-element"
+            >
+              <label
+                className="slds-form-element__label"
+                htmlFor="last-name"
+              >
+                Last Name
+              </label>
+              <div
+                className="slds-form-element__control"
+              >
+                <input
+                  className="slds-input"
+                  id="last-name"
+                  onChange={[Function]}
+                  type="text"
+                  value="Smith"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer
+          className="slds-popover__footer slds-p-top_xxx-small slds-p-bottom_xx-small slds-p-right_large"
+          style={
+            Object {
+              "borderTop": "0px",
+            }
+          }
+        >
+          <div
+            className="slds-text-align_right slds-text-align_right slds-p-bottom_x-small slds-p-right_xx-small"
+          >
+            <button
+              className="slds-button slds-button_neutral"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Cancel
+            </button>
+            <button
+              className="slds-button slds-button_brand"
+              disabled={true}
+              onClick={[Function]}
+              type="button"
+            >
+              Save
+            </button>
+          </div>
+        </footer>
+      </section>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Edit Dialog 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div>
+    <span
+      className="slds-p-right_x-small"
+    >
+      John
+       
+      Smith
+    </span>
+    <div
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        aria-haspopup="dialog"
+        className="slds-button slds-button_icon slds-button_reset"
+        disabled={false}
+        id="edit-dialog-popover"
+        onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        style={
+          Object {
+            "verticalAlign": "middle",
+          }
+        }
+        tabIndex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon slds-button__icon_hint"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#edit"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Edit: Status
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-haspopup="dialog"
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-error"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
+    <section
+      aria-describedby="popover-error-dialog-body"
+      aria-labelledby="popover-error-dialog-heading"
+      className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover slds-popover_error"
+      id="popover-error-popover"
+      onKeyDown={[Function]}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      role="dialog"
+      style={
+        Object {
+          "outline": 0,
+          "pointerEvents": "none",
+          "position": "absolute",
+        }
+      }
+      tabIndex="-1"
+    >
+      <button
+        className="slds-button slds-button_icon-inverse slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Close dialog
+        </span>
+      </button>
+      <header
+        className="slds-popover__header"
+      >
+        <div
+          className="slds-media slds-media_center"
+        >
+          <div
+            className="slds-media__figure"
+          >
+            <span>
+              <svg
+                aria-hidden="true"
+                className="slds-icon slds-icon_x-small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                />
+              </svg>
+              
+            </span>
+             
+          </div>
+          <div
+            className="slds-media__body"
+          >
+            <h2
+              className="slds-truncate slds-text-heading_medium"
+              id="popover-error-dialog-heading"
+              title="Resolve error"
+            >
+              Resolve error
+            </h2>
+          </div>
+        </div>
+      </header>
+      <div
+        className="slds-popover__body"
+        id="popover-error-dialog-body"
+      >
+        <div>
+          <p
+            className="slds-p-bottom_x-small"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in pretium leo. Praesent quis risus eget libero commodo mollis.
+          </p>
+          <p
+            className="slds-p-bottom_x-small"
+          >
+            Quisque tincidunt eleifend pharetra. Etiam condimentum neque nec neque interdum, vitae dapibus est accumsan. Vestibulum rhoncus consectetur mi, sit amet interdum purus. Suspendisse rhoncus, orci a mattis rhoncus, nulla lacus pharetra orci, in eleifend at tristique nisi tristique.
+          </p>
+          <p
+            className="slds-p-bottom_x-small"
+          >
+            Pellentesque magna tellus, dapibus vitae placerat nec, viverra vel mi.
+             
+            <a
+              href="#"
+              title="Learn More"
+            >
+              Learn More
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Error 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-haspopup="dialog"
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-error"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Error w/ Footer 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-haspopup="dialog"
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-error"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Feature - Open 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-haspopup="dialog"
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-feature"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
+    <section
+      aria-describedby="popover-feature-dialog-body"
+      aria-labelledby="popover-feature-dialog-heading"
+      className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover slds-popover_walkthrough slds-popover_feature"
+      id="popover-feature-popover"
+      onKeyDown={[Function]}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      role="dialog"
+      style={
+        Object {
+          "outline": 0,
+          "pointerEvents": "none",
+          "position": "absolute",
+        }
+      }
+      tabIndex="-1"
+    >
+      <button
+        className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon slds-button_icon-inverse"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Close dialog
+        </span>
+      </button>
+      <div
+        className="slds-popover__body"
+        id="popover-feature-dialog-body"
+      >
+        <div
+          className="slds-media"
+        >
+          <div
+            className="slds-media__figure"
+          >
+            <span>
+              <svg
+                aria-hidden="true"
+                className="slds-icon slds-icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#description"
+                />
+              </svg>
+              
+            </span>
+          </div>
+          <div
+            className="slds-media__body"
+          >
+            <h2
+              className="slds-text-heading_small"
+              id="popover-feature-dialog-heading"
+            >
+              Title
+            </h2>
+            <div>
+              <p
+                className="slds-p-bottom_x-small"
+              >
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer
+        className="slds-popover__footer"
+      >
+        <div
+          className="slds-grid slds-grid_vertical-align-center"
+        >
+          <div
+            className="slds-col_bump-left"
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <button
+              className="slds-button slds-button_neutral"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Learn More
+            </button>
+          </div>
+        </div>
+      </footer>
+    </section>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Feature 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-haspopup="dialog"
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-feature"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Header 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div>
+    <div
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        aria-haspopup="dialog"
+        className="slds-button slds-button_neutral"
+        disabled={false}
+        id="popover-heading"
+        onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        tabIndex="0"
+        type="button"
+      >
+        Trigger Popover
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Styling (dev-only) 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div>
+    <div
+      style={
+        Object {
+          "display": "inline-block",
+        }
+      }
+    >
+      <button
+        aria-haspopup="dialog"
+        className="slds-button slds-button_neutral"
+        disabled={false}
+        id="myPopoverId"
+        onClick={[Function]}
+        onFocus={null}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        tabIndex="0"
+        type="button"
+      >
+        Trigger Popover
+      </button>
+      <section
+        aria-describedby="myPopoverId-dialog-body"
+        aria-labelledby="myPopoverId-dialog-heading"
+        className="absolute-positioned slds-nubbin_left ignore-react-onclickoutside slds-popover sample-classname"
+        id="myPopoverId-popover"
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+        role="dialog"
+        style={
+          Object {
+            "background": "rgb(255, 80, 121)",
+            "outline": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+          }
+        }
+        tabIndex="-1"
+      >
+        <button
+          className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Shut it now!
+          </span>
+        </button>
+        <header
+          className="slds-popover__header"
+        >
+          <h2
+            className="slds-text-heading_small"
+            id="myPopoverId-dialog-heading"
+          >
+            My Popover
+          </h2>
+        </header>
+        <div
+          className="slds-popover__body"
+          id="myPopoverId-dialog-body"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Walkthrough - Open 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-haspopup="dialog"
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-walkthrough"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
+    <section
+      aria-describedby="popover-walkthrough-dialog-body"
+      aria-labelledby="popover-walkthrough-dialog-heading"
+      className="absolute-positioned slds-nubbin_left ignore-react-onclickoutside slds-popover slds-popover_walkthrough"
+      id="popover-walkthrough-popover"
+      onKeyDown={[Function]}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      role="dialog"
+      style={
+        Object {
+          "outline": 0,
+          "pointerEvents": "none",
+          "position": "absolute",
+        }
+      }
+      tabIndex="-1"
+    >
+      <button
+        className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon slds-button_icon-inverse"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Close dialog
+        </span>
+      </button>
+      <header
+        className="slds-popover__header slds-p-vertical_medium"
+      >
+        <h2
+          className="slds-text-heading_medium"
+          id="popover-walkthrough-dialog-heading"
+        >
+          Manage your channels
+        </h2>
+      </header>
+      <div
+        className="slds-popover__body"
+        id="popover-walkthrough-dialog-body"
+      >
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
+      <footer
+        className="slds-popover__footer"
+      >
+        <div
+          className="slds-grid slds-grid_vertical-align-center"
+        >
+          <span
+            className="slds-text-title"
+          >
+            Step 2 of 4
+          </span>
+          <div
+            className="slds-col_bump-left"
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <button
+              className="slds-button slds-button_brand"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </footer>
+    </section>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Walkthrough 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-haspopup="dialog"
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-walkthrough"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Walkthrough Action - Open 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-haspopup="dialog"
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-walkthrough"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
+    <section
+      aria-describedby="popover-walkthrough-dialog-body"
+      aria-labelledby="popover-walkthrough-dialog-heading"
+      className="absolute-positioned slds-nubbin_left ignore-react-onclickoutside slds-popover slds-popover_walkthrough slds-popover_walkthrough-alt"
+      id="popover-walkthrough-popover"
+      onKeyDown={[Function]}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      role="dialog"
+      style={
+        Object {
+          "outline": 0,
+          "pointerEvents": "none",
+          "position": "absolute",
+        }
+      }
+      tabIndex="-1"
+    >
+      <button
+        className="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon slds-button_icon-inverse"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Close dialog
+        </span>
+      </button>
+      <div
+        className="slds-popover__body"
+        id="popover-walkthrough-dialog-body"
+      >
+        <div
+          className="slds-media"
+        >
+          <div
+            className="slds-media__figure"
+          >
+            <span>
+              <svg
+                aria-hidden="true"
+                className="slds-icon slds-icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#touch_action"
+                />
+              </svg>
+              
+            </span>
+          </div>
+          <div
+            className="slds-media__body"
+          >
+            <h2
+              className="slds-text-heading_small"
+              id="popover-walkthrough-dialog-heading"
+            >
+              Title
+            </h2>
+            <p>
+              Text that describes the action
+            </p>
+            <p
+              className="slds-m-top_medium slds-text-title"
+            >
+              Step 3 of 4
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Walkthrough Action 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-haspopup="dialog"
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-walkthrough"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-haspopup="dialog"
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-error"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
+    <section
+      aria-describedby="popover-error-dialog-body"
+      aria-labelledby="popover-error-dialog-heading"
+      className="absolute-positioned slds-nubbin_bottom-left ignore-react-onclickoutside slds-popover slds-popover_warning"
+      id="popover-error-popover"
+      onKeyDown={[Function]}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      role="dialog"
+      style={
+        Object {
+          "outline": 0,
+          "pointerEvents": "none",
+          "position": "absolute",
+        }
+      }
+      tabIndex="-1"
+    >
+      <button
+        className="slds-button slds-button_icon-inverse slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Close dialog
+        </span>
+      </button>
+      <header
+        className="slds-popover__header"
+      >
+        <div
+          className="slds-media slds-media_center"
+        >
+          <div
+            className="slds-media__figure"
+          >
+            <span>
+              <svg
+                aria-hidden="true"
+                className="slds-icon slds-icon_x-small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+                />
+              </svg>
+              
+            </span>
+             
+          </div>
+          <div
+            className="slds-media__body"
+          >
+            <h2
+              className="slds-truncate slds-text-heading_medium"
+              id="popover-error-dialog-heading"
+              title="Review warning"
+            >
+              Review warning
+            </h2>
+          </div>
+        </div>
+      </header>
+      <div
+        className="slds-popover__body"
+        id="popover-error-dialog-body"
+      >
+        <div>
+          <p
+            className="slds-p-bottom_x-small"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in pretium leo. Praesent quis risus eget libero commodo mollis.
+          </p>
+          <p
+            className="slds-p-bottom_x-small"
+          >
+            Quisque tincidunt eleifend pharetra. Etiam condimentum neque nec neque interdum, vitae dapibus est accumsan. Vestibulum rhoncus consectetur mi, sit amet interdum purus. Suspendisse rhoncus, orci a mattis rhoncus, nulla lacus pharetra orci, in eleifend at tristique nisi tristique.
+          </p>
+          <p
+            className="slds-p-bottom_x-small"
+          >
+            Pellentesque magna tellus, dapibus vitae placerat nec, viverra vel mi.
+             
+            <a
+              href="#"
+              title="Learn More"
+            >
+              Learn More
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Warning 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-haspopup="dialog"
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-error"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
+  </div>
+</div>
+`;
