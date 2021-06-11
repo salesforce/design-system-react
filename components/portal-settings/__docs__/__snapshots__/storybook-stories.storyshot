@@ -20,8 +20,6 @@ exports[`DOM snapshots SLDSPortalSettings Default, not used 1`] = `
         className="slds-combobox_container"
       >
         <div
-          aria-expanded={false}
-          aria-haspopup="listbox"
           className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
           role="combobox"
         >
@@ -32,6 +30,8 @@ exports[`DOM snapshots SLDSPortalSettings Default, not used 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               id="combobox-base"
@@ -43,7 +43,7 @@ exports[`DOM snapshots SLDSPortalSettings Default, not used 1`] = `
               placeholder="Search Salesforce"
               readOnly={false}
               required={false}
-              role="textbox"
+              role="combobox"
               type="text"
               value=""
             />
@@ -234,8 +234,6 @@ exports[`DOM snapshots SLDSPortalSettings Override 1`] = `
           className="slds-combobox_container"
         >
           <div
-            aria-expanded={false}
-            aria-haspopup="listbox"
             className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
             role="combobox"
           >
@@ -246,6 +244,8 @@ exports[`DOM snapshots SLDSPortalSettings Override 1`] = `
               <input
                 aria-activedescendant={null}
                 aria-autocomplete="list"
+                aria-expanded={false}
+                aria-haspopup="listbox"
                 autoComplete="off"
                 className="slds-input slds-combobox__input"
                 id="combobox-base"
@@ -257,7 +257,7 @@ exports[`DOM snapshots SLDSPortalSettings Override 1`] = `
                 placeholder="Search Salesforce"
                 readOnly={false}
                 required={false}
-                role="textbox"
+                role="combobox"
                 type="text"
                 value=""
               />

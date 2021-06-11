@@ -55,8 +55,6 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
               className="slds-combobox_container"
             >
               <div
-                aria-expanded={false}
-                aria-haspopup="listbox"
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
                 role="combobox"
               >
@@ -67,6 +65,8 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                   <input
                     aria-activedescendant={null}
                     aria-autocomplete="list"
+                    aria-expanded={false}
+                    aria-haspopup="listbox"
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     id="header-search-custom-id"
@@ -78,7 +78,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
                     placeholder="Search Salesforce"
                     readOnly={false}
                     required={false}
-                    role="textbox"
+                    role="combobox"
                     type="text"
                   />
                   <svg
@@ -547,8 +547,6 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               className="slds-combobox_container"
             >
               <div
-                aria-expanded={false}
-                aria-haspopup="listbox"
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
                 role="combobox"
               >
@@ -559,6 +557,8 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                   <input
                     aria-activedescendant={null}
                     aria-autocomplete="list"
+                    aria-expanded={false}
+                    aria-haspopup="listbox"
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     id="header-search-custom-id"
@@ -570,7 +570,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
                     placeholder="Search Salesforce"
                     readOnly={false}
                     required={false}
-                    role="textbox"
+                    role="combobox"
                     type="text"
                   />
                   <svg
@@ -930,8 +930,6 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               className="slds-combobox_container"
             >
               <div
-                aria-expanded={false}
-                aria-haspopup="listbox"
                 className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
                 role="combobox"
               >
@@ -942,6 +940,8 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                   <input
                     aria-activedescendant={null}
                     aria-autocomplete="list"
+                    aria-expanded={false}
+                    aria-haspopup="listbox"
                     autoComplete="off"
                     className="slds-input slds-combobox__input"
                     id="header-search-custom-id"
@@ -953,7 +953,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
                     placeholder="Search Salesforce"
                     readOnly={false}
                     required={false}
-                    role="textbox"
+                    role="combobox"
                     type="text"
                   />
                   <svg

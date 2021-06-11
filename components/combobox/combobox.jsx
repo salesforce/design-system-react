@@ -1109,10 +1109,7 @@ class Combobox extends React.Component {
 						props.className
 					)}
 					// Not in ARIA 1.2 spec, temporary for SLDS styles
-					// eslint-disable-next-line jsx-a11y/role-has-required-aria-props
-					role="combobox"
-					aria-expanded={this.getIsOpen()}
-					aria-haspopup="listbox"
+					role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 				>
 					<InnerInput
 						aria-autocomplete="list"
@@ -1125,7 +1122,9 @@ class Combobox extends React.Component {
 								: null
 						}
 						aria-describedby={this.getErrorId()}
-						role="textbox"
+						aria-expanded={this.getIsOpen()}
+						aria-haspopup="listbox"
+						role="combobox"
 						autoComplete="off"
 						className="slds-combobox__input"
 						containerProps={{
@@ -1250,10 +1249,7 @@ class Combobox extends React.Component {
 						props.className
 					)}
 					// Not in ARIA 1.2 spec, temporary for SLDS styles
-					// eslint-disable-next-line jsx-a11y/role-has-required-aria-props
-					role="combobox"
-					aria-expanded={this.getIsOpen()}
-					aria-haspopup="listbox"
+					role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 				>
 					<InnerInput
 						aria-autocomplete="list"
@@ -1266,7 +1262,9 @@ class Combobox extends React.Component {
 								: null
 						}
 						aria-describedby={this.getErrorId()}
-						role="textbox"
+						aria-expanded={this.getIsOpen()}
+						aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+						role="combobox"
 						defaultValue={props.defaultValue}
 						autoComplete="off"
 						className="slds-combobox__input"
@@ -1352,10 +1350,7 @@ class Combobox extends React.Component {
 							props.className
 						)}
 						// Not in ARIA 1.2 spec, temporary for SLDS styles
-						// eslint-disable-next-line jsx-a11y/role-has-required-aria-props
-						role="combobox"
-						aria-expanded={this.getIsOpen()}
-						aria-haspopup="listbox"
+						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
@@ -1371,7 +1366,9 @@ class Combobox extends React.Component {
 									: null
 							}
 							aria-describedby={this.getErrorId()}
-							role="textbox"
+							aria-expanded={this.getIsOpen()}
+							aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+							role="combobox"
 							autoComplete="off"
 							className="slds-combobox__input"
 							containerProps={{
@@ -1521,10 +1518,7 @@ class Combobox extends React.Component {
 							props.className
 						)}
 						// Not in ARIA 1.2 spec, temporary for SLDS styles
-						// eslint-disable-next-line jsx-a11y/role-has-required-aria-props
-						role="combobox"
-						aria-expanded={this.getIsOpen()}
-						aria-haspopup="dialog"
+						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 					>
 						<Popover {...popoverProps}>
 							<InnerInput
@@ -1533,7 +1527,9 @@ class Combobox extends React.Component {
 									this.getIsOpen() ? `${this.getId()}-popover` : undefined
 								}
 								aria-describedby={this.getErrorId()}
-								role="textbox"
+								aria-expanded={this.getIsOpen()}
+								aria-haspopup="dialog" // eslint-disable-line jsx-a11y/aria-proptypes
+								role="combobox"
 								autoComplete="off"
 								className="slds-combobox__input"
 								containerProps={{
@@ -1608,10 +1604,7 @@ class Combobox extends React.Component {
 							props.className
 						)}
 						// Not in ARIA 1.2 spec, temporary for SLDS styles
-						// eslint-disable-next-line jsx-a11y/role-has-required-aria-props
-						role="combobox"
-						aria-expanded={this.getIsOpen()}
-						aria-haspopup="listbox"
+						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
@@ -1627,7 +1620,9 @@ class Combobox extends React.Component {
 									: null
 							}
 							aria-describedby={this.getErrorId()}
-							role="textbox"
+							aria-expanded={this.getIsOpen()}
+							aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+							role="combobox"
 							autoComplete="off"
 							className="slds-combobox__input"
 							containerProps={{
@@ -1728,10 +1723,7 @@ class Combobox extends React.Component {
 							props.className
 						)}
 						// Not in ARIA 1.2 spec, temporary for SLDS styles
-						// eslint-disable-next-line jsx-a11y/role-has-required-aria-props
-						role="combobox"
-						aria-expanded={this.getIsOpen()}
-						aria-haspopup="listbox"
+						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
@@ -1747,7 +1739,9 @@ class Combobox extends React.Component {
 									: null
 							}
 							aria-describedby={this.getErrorId()}
-							role="textbox"
+							aria-expanded={this.getIsOpen()}
+							aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
+							role="combobox"
 							autoComplete="off"
 							className="slds-combobox__input"
 							containerProps={{
