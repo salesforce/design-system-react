@@ -28,10 +28,16 @@ describe('SLDSModal: ', function () {
 		appNode = null;
 	});
 
-	afterEach(() => {
-		ReactDOM.unmountComponentAtNode(container);
-		document.body.removeChild(container);
-		container = null;
+	afterEach((done) => {
+		// We run into a race condition if we do not have this wait
+		// with the changes to react-modal, we end up trying to set state
+		// on an unmounted component
+		setTimeout(() => {
+			ReactDOM.unmountComponentAtNode(container);
+			document.body.removeChild(container);
+			container = null;
+			done();
+		}, 100);
 	});
 
 	const defaultProps = {
