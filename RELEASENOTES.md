@@ -30,6 +30,15 @@ These are changes that have backwards-compatible solutions present and that comp
 - You can now check this library's dependency on SLDS to make sure you have the CSS that this library is being developed with. The NPM git URL can be found in the published `package.json`. `SLDS: { gitURL: [URL]}`.
 
 ### Latest Release
+
+## Release 0.10.35
+
+**Minor Features**
+- `Combobox`: Add `inputRef` prop
+
+**Maintenance**
+- Update `react-modal` to 3.14.2
+
 ## Release 0.10.34
 
 **Maintenance**
