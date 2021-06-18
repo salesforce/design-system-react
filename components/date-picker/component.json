@@ -1,0 +1,18 @@
+{
+	"component": "date-picker",
+	"status": "prod",
+	"display-name": "Datepickers",
+	"classKey": "DatePicker",
+	"last-accessibility-review": {
+		"date-iso-8601": "2017/01/20",
+		"commit-sha": "568f503b19ddc039207e4b5c2636461de937f5f0"
+	},
+	"SLDS-component-path": "/components/datepickers",
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		}
+	],
+	"url-slug": "date-pickers"
+}
