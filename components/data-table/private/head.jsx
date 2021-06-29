@@ -1,5 +1,5 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
-/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
+/* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license  */
 
 // ### React
 import React from 'react';
@@ -143,7 +143,7 @@ class DataTableHead extends React.Component {
 			let render = null;
 
 			if (canSelectRows === 'radio') {
-				render = (
+				render = !ariaHidden ? (
 					<div
 						className="slds-truncate slds-assistive-text"
 						id={`${this.props.id}-column-group-header-row-select`}
@@ -151,7 +151,7 @@ class DataTableHead extends React.Component {
 					>
 						{this.props.assistiveText.selectRowGroup}
 					</div>
-				);
+				) : null;
 			} else if (canSelectRows === true || canSelectRows === 'checkbox') {
 				render = (
 					<div
