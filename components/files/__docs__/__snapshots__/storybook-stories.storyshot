@@ -18,7 +18,8 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_1-by-1"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -74,7 +75,8 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -130,7 +132,8 @@ exports[`DOM snapshots SLDSFiles Cropped 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_4-by-3"
-            href="javascript:void(0);"
+            href="https://example.com"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -198,7 +201,8 @@ exports[`DOM snapshots SLDSFiles Default 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -266,7 +270,8 @@ exports[`DOM snapshots SLDSFiles Loading 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -313,7 +318,8 @@ exports[`DOM snapshots SLDSFiles Loading 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -403,7 +409,8 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -463,7 +470,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
                 className="slds-dropdown-trigger slds-dropdown-trigger_click dsr-file__more-actions"
                 id="file-more-actions"
                 onClick={[Function]}
-                onFocus={null}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseEnter={null}
                 onMouseLeave={null}
@@ -507,7 +514,8 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="https://example.com"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -595,7 +603,7 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
               className="slds-dropdown-trigger slds-dropdown-trigger_click dsr-file__more-actions"
               id="file-with-title-more-actions"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -638,7 +646,8 @@ exports[`DOM snapshots SLDSFiles w/ Actions 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <div
               className="slds-file_overlay"
@@ -706,7 +715,8 @@ exports[`DOM snapshots SLDSFiles w/ External Icon 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -805,7 +815,8 @@ exports[`DOM snapshots SLDSFiles w/o Image 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
           >
             <span
               className="slds-assistive-text"
@@ -887,7 +898,7 @@ exports[`DOM snapshots SLDSFiles w/o Title 1`] = `
         <figure>
           <a
             className="slds-file__crop slds-file__crop_16-by-9"
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
           >
             <span

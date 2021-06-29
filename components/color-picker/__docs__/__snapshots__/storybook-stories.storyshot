@@ -181,16 +181,16 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                   className="slds-is-active slds-tabs_default__item"
                   id="color-picker-tabs-color-picker-slds-tabs_tab-0"
                   role="presentation"
-                  tabIndex="0"
                   title="Default"
                 >
                   <a
                     aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-0"
                     aria-selected="true"
                     className="slds-is-active slds-tabs_default__link"
-                    href="javascript:void(0);"
+                    href="#"
+                    onClick={[Function]}
                     role="tab"
-                    tabIndex="-1"
+                    tabIndex="0"
                   >
                     Default
                   </a>
@@ -199,14 +199,14 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
                   className="slds-tabs_default__item"
                   id="color-picker-tabs-color-picker-slds-tabs_tab-1"
                   role="presentation"
-                  tabIndex={null}
                   title="Custom"
                 >
                   <a
                     aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-1"
                     aria-selected="false"
                     className="slds-tabs_default__link"
-                    href="javascript:void(0);"
+                    href="#"
+                    onClick={[Function]}
                     role="tab"
                     tabIndex="-1"
                   >

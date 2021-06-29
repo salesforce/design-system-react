@@ -21,7 +21,9 @@ const { Simulate } = TestUtils;
 describe('SLDSLookup: ', () => {
 	const generateLookup = function (lookupInstance) {
 		const reactCmp = TestUtils.renderIntoDocument(
-			<IconSettings iconPath="/assets/icons">{lookupInstance}</IconSettings>
+			<div>
+				<IconSettings iconPath="/assets/icons">{lookupInstance}</IconSettings>
+			</div>
 		);
 		return ReactDOM.findDOMNode(reactCmp);
 	};

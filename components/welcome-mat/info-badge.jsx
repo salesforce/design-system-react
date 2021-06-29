@@ -59,8 +59,9 @@ const defaultProps = {
  * InfoBadge component item represents a tile in a Welcome Mat
  */
 class InfoBadge extends React.Component {
-	// eslint-disable-next-line camelcase, react/sort-comp
-	UNSAFE_componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 

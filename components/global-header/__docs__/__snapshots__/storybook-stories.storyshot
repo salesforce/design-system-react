@@ -9,14 +9,14 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
   >
     <a
       className="slds-assistive-text slds-assistive-text_focus"
-      href="javascript:void(0);"
+      href="#"
       onClick={[Function]}
     >
       Skip to Navigation
     </a>
     <a
       className="slds-assistive-text slds-assistive-text_focus"
-      href="javascript:void(0);"
+      href="#"
       onClick={[Function]}
     >
       Skip to Main Content
@@ -184,7 +184,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="header-task-dropdown-id"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -262,7 +262,7 @@ exports[`DOM snapshots SLDSGlobalHeader Doc site Default 1`] = `
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="header-setup-dropdown-id"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -418,7 +418,7 @@ exports[`DOM snapshots SLDSGlobalHeader Fewer Elements 1`] = `
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="header-setup-dropdown-id"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -501,14 +501,14 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
   >
     <a
       className="slds-assistive-text slds-assistive-text_focus"
-      href="javascript:void(0);"
+      href="#"
       onClick={[Function]}
     >
       Skip to Navigation
     </a>
     <a
       className="slds-assistive-text slds-assistive-text_focus"
-      href="javascript:void(0);"
+      href="#"
       onClick={[Function]}
     >
       Skip to Main Content
@@ -676,7 +676,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="header-task-dropdown-id"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -754,7 +754,7 @@ exports[`DOM snapshots SLDSGlobalHeader Search + Navigation 1`] = `
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="header-setup-dropdown-id"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -884,14 +884,14 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
   >
     <a
       className="slds-assistive-text slds-assistive-text_focus"
-      href="javascript:void(0);"
+      href="#"
       onClick={[Function]}
     >
       Skip to Navigation
     </a>
     <a
       className="slds-assistive-text slds-assistive-text_focus"
-      href="javascript:void(0);"
+      href="#"
       onClick={[Function]}
     >
       Skip to Main Content
@@ -1059,7 +1059,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="header-task-dropdown-id"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}
@@ -1137,7 +1137,7 @@ exports[`DOM snapshots SLDSGlobalHeader With custom <Avatar/> 1`] = `
               className="slds-dropdown-trigger slds-dropdown-trigger_click"
               id="header-setup-dropdown-id"
               onClick={[Function]}
-              onFocus={null}
+              onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseEnter={null}
               onMouseLeave={null}

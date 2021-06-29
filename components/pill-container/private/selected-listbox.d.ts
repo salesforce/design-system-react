@@ -86,6 +86,6 @@ declare module '@salesforce/design-system-react/components/pill-container/privat
 		variant?: 'base' | 'inline-listbox' | 'readonly';
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

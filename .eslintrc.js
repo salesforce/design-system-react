@@ -158,8 +158,6 @@ module.exports = {
 				},
 			},
 		],
-		// javascript:void(0) is present in SLDS markup
-		'no-script-url': 'off',
 		// _ is not really private.
 		'no-underscore-dangle': ['error', { allowAfterThis: true }],
 		//
@@ -247,7 +245,7 @@ module.exports = {
 		// TODO: Should be removed
 		'react/no-deprecated': 'off',
 
-		// javascript:void(0) is present in SLDS markup
+		// <a href="#"> is present in SLDS markup
 		'jsx-a11y/anchor-is-valid': 'off',
 		'jsx-a11y/aria-activedescendant-has-tabindex': 2,
 		'jsx-a11y/interactive-supports-focus': 2,

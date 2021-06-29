@@ -685,7 +685,7 @@
                             "required": false,
                             "description": "The `href` attribute of the link. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.",
                             "defaultValue": {
-                                "value": "'javascript:void(0);'",
+                                "value": "'#'",
                                 "computed": false
                             }
                         },
@@ -789,7 +789,7 @@
                             "required": false,
                             "description": "The `href` attribute of the tile. Please pass in bookmarkable URLs from your routing library. If the `onClick` callback is specified this URL will be prevented from changing the browser's location.",
                             "defaultValue": {
-                                "value": "'javascript:void(0);'",
+                                "value": "'#'",
                                 "computed": false
                             }
                         },
@@ -1672,6 +1672,23 @@
                 }
             },
             {
+                "utilities": {
+                    "description": "The navigation section of the header.",
+                    "methods": [],
+                    "props": {
+                        "children": {
+                            "type": {
+                                "name": "node"
+                            },
+                            "required": false,
+                            "description": "Provide children of the types `<BuilderHeaderNavLink />` or `<BuilderHeaderNavDropdown />` to define the structure of the utilities section.\n```\n<BuilderHeader>\n  <BuilderHeaderUtilities>\n    <BuilderHeaderNavLink />\n    <BuilderHeaderNavDropdown />\n  </BuilderHeaderUtilities>\n</BuilderHeader>\n```"
+                        }
+                    },
+                    "name": "utilities",
+                    "source": "/components/builder-header/utilities.jsx"
+                }
+            },
+            {
                 "misc": {
                     "description": "The miscellaneous section of the header.",
                     "methods": [],
@@ -2033,7 +2050,7 @@
         "dependencies": []
     },
     "button": {
-        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\nAlthough not listed in the prop table, all `aria-*` and `form*` props will be added to the `button` element if passed in.",
+        "description": "The Button component is the Lightning Design System Button component. The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText.icon</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">ButtonStateful</a> component.\nAlthough not listed in the prop table, all `aria-*`, `data-*` and `form*` props will be added to the `button` element if passed in.",
         "methods": [
             {
                 "name": "getClassName",
@@ -2374,6 +2391,20 @@
                 },
                 "required": false,
                 "description": "Triggered when a mouse button is released"
+            },
+            "onRequestFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered to indicate that this component should receive focus."
+            },
+            "requestFocus": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, will trigger `onRequestFocus`."
             },
             "responsive": {
                 "type": {
@@ -3006,7 +3037,7 @@
                     "name": "array"
                 },
                 "required": true,
-                "description": "* **Array of item objects used by the default carousel item renderer.**\nEach object can contain:\n* `id`: The id of the carousel item. [REQUIRED]\n* `heading`: Primary string that will be used as the heading\n* `description`: Secondary string that is used to describe the item\n* `buttonLabel`: If assigned a call to button action will be rendered with this text, if unassigned no button is rendered\n* `imageAssistiveText`: Image alt text, if not present heading will be used instead\n* `href`: Used for item link, if not provided 'javascript:void(0);' is used instead\n* `src`: Item image src value"
+                "description": "* **Array of item objects used by the default carousel item renderer.**\nEach object can contain:\n* `id`: The id of the carousel item. [REQUIRED]\n* `heading`: Primary string that will be used as the heading\n* `description`: Secondary string that is used to describe the item\n* `buttonLabel`: If assigned a call to button action will be rendered with this text, if unassigned no button is rendered\n* `imageAssistiveText`: Image alt text, if not present heading will be used instead\n* `href`: Used for item link, if not provided '#' is used instead\n* `src`: Item image src value"
             },
             "itemsPerPanel": {
                 "type": {
@@ -3394,12 +3425,26 @@
                 "required": false,
                 "description": "This event fires when a pressed key is released. It passes in `{ event }`."
             },
+            "onRequestFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered to indicate that this component should receive focus."
+            },
             "readOnly": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
                 "description": "Displays the value of the input, but does not allow changes."
+            },
+            "requestFocus": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, will trigger `onRequestFocus`."
             },
             "required": {
                 "type": {
@@ -3414,6 +3459,13 @@
                 },
                 "required": false,
                 "description": "The aria-role of the checkbox."
+            },
+            "tabIndex": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to the button."
             },
             "variant": {
                 "type": {
@@ -4729,6 +4781,13 @@
                 "required": false,
                 "description": "A [Tooltip](https://react.lightningdesignsystem.com/components/tooltips/) component that is displayed next to the `labels.label`. The props from the component will be merged and override any default props."
             },
+            "hasDeselect": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, `{ label: 'None': value: '' }` will be selected."
+            },
             "hasInputSpinner": {
                 "type": {
                     "name": "bool"
@@ -4768,6 +4827,10 @@
                 "type": {
                     "name": "shape",
                     "value": {
+                        "deselectOption": {
+                            "name": "string",
+                            "required": false
+                        },
                         "label": {
                             "name": "union",
                             "value": [
@@ -4811,9 +4874,9 @@
                     }
                 },
                 "required": false,
-                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `label`: This label appears above the input.\n* `cancelButton`: This label is only used by the dialog variant for the cancel button in the footer of the dialog. The default is `Cancel`\n* `doneButton`: This label is only used by the dialog variant for the done button in the footer of the dialog. The default is `Done`\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
+                "description": "**Text labels for internationalization**\nThis object is merged with the default props object on every render.\n* `deselectOption`: This label appears first in the menu items of a read-only, Picklist-like Combobox. Selecting it, deselects any currently selected value.\n* `label`: This label appears above the input.\n* `cancelButton`: This label is only used by the dialog variant for the cancel button in the footer of the dialog. The default is `Cancel`\n* `doneButton`: This label is only used by the dialog variant for the done button in the footer of the dialog. The default is `Done`\n* `multipleOptionsSelected`: This label is used by the readonly variant when multiple options are selected. The default is `${props.selection.length} options selected`. This will override the entire string.\n* `noOptionsFound`: Custom message that renders when no matches found. The default empty state is just text that says, 'No matches found.'.\n* `placeholder`: Input placeholder\n* `placeholderReadOnly`: Placeholder for Picklist-like Combobox\n* `removePillTitle`: Title on `X` icon\n_Tested with snapshot testing._",
                 "defaultValue": {
-                    "value": "{\n\tcancelButton: 'Cancel',\n\tdoneButton: `Done`,\n\tnoOptionsFound: 'No matches found.',\n\toptionDisabledTooltipLabel: 'This option is disabled.',\n\tplaceholderReadOnly: 'Select an Option',\n\tremovePillTitle: 'Remove',\n}",
+                    "value": "{\n\tdeselectOption: 'None',\n\tcancelButton: 'Cancel',\n\tdoneButton: `Done`,\n\tnoOptionsFound: 'No matches found.',\n\toptionDisabledTooltipLabel: 'This option is disabled.',\n\tplaceholderReadOnly: 'Select an Option',\n\tremovePillTitle: 'Remove',\n}",
                     "computed": false
                 }
             },
@@ -4855,6 +4918,13 @@
                 },
                 "required": false,
                 "description": "Accepts a custom menu item rendering function that becomes a custom component. It should return a React node. The checkmark is still rendered in readonly variants. This function is passed the following props:\n* `assistiveText`: Object, `assistiveText` prop that is passed into Combobox\n* `option`: Object, option data for item being rendered that is passed into Combobox\n* `selected`: Boolean, allows rendering of `assistiveText.optionSelectedInMenu` in Readonly Combobox\n\n_Tested with snapshot testing._"
+            },
+            "inputRef": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This callback exposes the input reference / DOM node to parent components."
             },
             "menuPosition": {
                 "type": {
@@ -5164,12 +5234,11 @@
                     "value": "'base'",
                     "computed": false
                 }
-            }
-        },
-        "context": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
+            },
+            "deselectOption": {
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
                 },
                 "required": false
             }
@@ -5187,6 +5256,22 @@
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
+                "returns": null
+            },
+            {
+                "name": "getFirstInteractiveElement",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "rowIndex",
+                        "type": null
+                    },
+                    {
+                        "name": "columnIndex",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -5238,7 +5323,7 @@
                 "returns": null
             },
             {
-                "name": "onScrollerScroll",
+                "name": "loadMoreIfNeeded",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -5251,6 +5336,108 @@
                 "params": [
                     {
                         "name": "attach",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "changeActiveCell",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "rowIndex",
+                        "type": null
+                    },
+                    {
+                        "name": "columnIndex",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "changeActiveElement",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "activeElement",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownUp",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownDown",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownLeft",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownRight",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownEnter",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "handleKeyDownEscape",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "registerInteractiveElement",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "rowIndex",
+                        "type": null
+                    },
+                    {
+                        "name": "columnIndex",
+                        "type": null
+                    },
+                    {
+                        "name": "elementId",
                         "type": null
                     }
                 ],
@@ -5308,7 +5495,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n  <a href=\"javascript:void(0);\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n  <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
+                "description": "Provide children of the type `<DataTableColumn />` to define the structure of the data being represented and children of the type `<DataTableRowActions />` to define a menu which will be rendered for each item in the grid. Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n    <a href=\"#\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n  <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
             },
             "className": {
                 "type": {
@@ -5347,7 +5534,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling."
+                "description": "Use this if you are creating an advanced table (selectable, sortable, or resizable rows). Columns widths will be truncate based on width and DOM ancestors. See `fixedHeader` to enable horizontal and vertical scrolling.\n\nWhen `keyboardNavigation` is enabled, the advanced table implements keyboard navigation as described in [Data Tables](https://www.lightningdesignsystem.com/components/data-tables/).\nWrap interactive elements in the table with `<DataTableInteractiveElement>` so that it can control the element's focus and `tabIndex` behavior:\n```\nconst InteractiveButton = DataTableInteractiveElement(Button);\nconst InteractiveCheckBox = DataTableInteractiveElement(Checkbox);\nconst CustomDataTableCell = () => (\n\t<DataTableCell>\n\t\t<InteractiveCheckBox />\n\t\t<InteractiveButton />\n\t</DataTableCell>\n);\n```\nThe wrapped element must accept the props:\n * `onFocus`: Callback for when the element is focused.\n * `onRequestFocus`: Trigger to indicate that this element should be focused.\n * `requestFocus`: This wrapper overrides the `requestFocus` prop and provides its own value.\n * `tabIndex`: This wrapper overrides the `tabIndex` prop and provides its own value."
             },
             "hasMore": {
                 "type": {
@@ -5412,6 +5599,13 @@
                     "computed": false
                 }
             },
+            "keyboardNavigation": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Enables keyboard navigation when this is an advanced table."
+            },
             "noRowHover": {
                 "type": {
                     "name": "bool"
@@ -5431,7 +5625,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "This function fires when infinite loading loads more data.\n\nThis will be called multiple times while the table is being scrolled within the `loadMoreOffset`.  Please track whether or not loading is in progress and check it at the start of this function to avoid executing your callback too many times."
+                "description": "This function fires when infinite loading loads more data.\n\nThis will be called multiple times while the table is being scrolled within the `loadMoreOffset`. It'll also continue to be called while `hasMore` is `true` and the table has not yet loaded enough rows to allow a user to scroll.  Please track whether or not loading is in progress and check it at the start of this function to avoid executing your callback too many times."
             },
             "onRowChange": {
                 "type": {
@@ -5632,7 +5826,7 @@
                                 "name": "element"
                             },
                             "required": false,
-                            "description": "Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n    <a href=\"javascript:void(0);\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n    <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
+                            "description": "Use a _higher-order component_ to customize a data table cell that will override the default cell rendering. `CustomDataTableCell` must have the same `displayName` as `DataTableCell` or it will be ignored. If you want complete control of the HTML, including the wrapping `td`, you don't have to use `DataTableCell`.\n```\nimport DataTableCell from 'design-system-react/data-table/cell';\nconst CustomDataTableCell = ({ children, ...props }) => (\n  <DataTableCell {...props} >\n    <a href=\"#\">{children}</a>\n  </DataTableCell>\n);\nCustomDataTableCell.displayName = DataTableCell.displayName;\n\n<DataTable>\n  <DataTableColumn />\n  <DataTableColumn>\n    <DataTableCustomCell />\n  </DataTableColumn>\n  <DataTableRowActions />\n</DataTable>\n```"
                         },
                         "isDefaultSortDescending": {
                             "type": {
@@ -5762,32 +5956,7 @@
             {
                 "row-actions": {
                     "description": "RowActions provide a mechanism for defining a menu to display alongside each row in the DataTable.",
-                    "methods": [
-                        {
-                            "name": "handleClick",
-                            "docblock": null,
-                            "modifiers": [],
-                            "params": [
-                                {
-                                    "name": "e",
-                                    "type": null
-                                }
-                            ],
-                            "returns": null
-                        },
-                        {
-                            "name": "handleSelect",
-                            "docblock": null,
-                            "modifiers": [],
-                            "params": [
-                                {
-                                    "name": "selection",
-                                    "type": null
-                                }
-                            ],
-                            "returns": null
-                        }
-                    ],
+                    "methods": [],
                     "props": {
                         "assistiveText": {
                             "type": {
@@ -6143,6 +6312,13 @@
                 "required": false,
                 "description": "Value of input that gets passed to `parser` prop on initial render. This prop is only present for uncontrolled use of Datepicker which is _highly discouraged_. A better name for this prop would be `defaultFormatedValue`. Please use the `value` prop instead. _Not tested._"
             },
+            "hasError": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Applies the error style to the component."
+            },
             "hasStaticAlignment": {
                 "type": {
                     "name": "bool"
@@ -6340,14 +6516,6 @@
                 },
                 "required": false,
                 "description": "Sets date with a `Date` ECMAScript object. _Tested with snapshot testing._"
-            }
-        },
-        "context": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
             }
         },
         "route": "datepickers",
@@ -7507,6 +7675,18 @@
                             "params": [],
                             "returns": null,
                             "description": "Get the File's HTML id. Generate a new one if no ID present."
+                        },
+                        {
+                            "name": "handleOnClickImage",
+                            "docblock": null,
+                            "modifiers": [],
+                            "params": [
+                                {
+                                    "name": "event",
+                                    "type": null
+                                }
+                            ],
+                            "returns": null
                         }
                     ],
                     "props": {
@@ -7653,7 +7833,7 @@
                             "required": false,
                             "description": "Href attribute for image",
                             "defaultValue": {
-                                "value": "'javascript:void(0);'",
+                                "value": "'#'",
                                 "computed": false
                             }
                         },
@@ -7795,7 +7975,7 @@
                             "required": false,
                             "description": "Href attribute for image",
                             "defaultValue": {
-                                "value": "'javascript:void(0);'",
+                                "value": "'#'",
                                 "computed": false
                             }
                         }
@@ -8848,7 +9028,7 @@
                             "required": false,
                             "description": "The `href` attribute of the link. Please pass in bookmarkable URLs from your routing library. Use `GlobalNavigationBarButton` if a \"real URL\" is not desired. If the `onClick` callback is specified this URL will still be prevented from changing the browser's location.",
                             "defaultValue": {
-                                "value": "'javascript:void(0);'",
+                                "value": "'#'",
                                 "computed": false
                             }
                         },
@@ -9068,50 +9248,6 @@
                 },
                 "required": false,
                 "description": "Path to the utility sprite\nexample: '@salesforce-ux/design-system/assets/icons/utility-sprite/svg/symbols.svg';"
-            }
-        },
-        "childContext": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "onRequestIconPath": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false
-            },
-            "actionSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "customSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "doctypeSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "standardSprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            },
-            "utilitySprite": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
             }
         },
         "route": "icon-settings",
@@ -11083,7 +11219,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Is only called when `openOn` is set to `hover` and when the triggering button loses focus."
+                "description": "Called when the triggering button loses focus."
             },
             "onClick": {
                 "type": {
@@ -11097,7 +11233,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Is only called when `openOn` is set to `hover` and when the triggering button gains focus."
+                "description": "Called when the triggering button gains focus."
             },
             "openOn": {
                 "type": {
@@ -11304,14 +11440,6 @@
                 }
             }
         },
-        "context": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            }
-        },
         "route": "dropdown-menus",
         "display-name": "Dropdown Menus",
         "SLDS-component-path": "/components/menus#flavor-dropdown",
@@ -11487,6 +11615,13 @@
                 "returns": null
             },
             {
+                "name": "getAriaAttributes",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getModal",
                 "docblock": null,
                 "modifiers": [],
@@ -11630,7 +11765,7 @@
                 "required": false,
                 "description": "**Assistive text for accessibility.**\nThis object is merged with the default props object on every render.\n* `dialogLabel`: This is a visually hidden label for the dialog. If not provided, `heading` is used.\n* `dialogLabelledBy`: This describes which node labels the dialog. If not provided and dialogLabel is unavailable, `id` is used.\n* `closeButton`: This is a visually hidden label for the close button.",
                 "defaultValue": {
-                    "value": "{\n\tdialogLabel: '',\n\tdialogLabelledBy: '',\n\tcloseButton: 'Close',\n}",
+                    "value": "{\n\tdialogLabelledBy: '',\n\tcloseButton: 'Close',\n}",
                     "computed": false
                 }
             },
@@ -11924,7 +12059,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "An array of detail blocks (used in \"recordHome\" variant)"
+                "description": "An array of detail blocks (used in `recordHome` variant)"
             },
             "label": {
                 "type": {
@@ -11961,7 +12096,7 @@
                     ]
                 },
                 "required": false,
-                "description": "The info property can be a string or a React element"
+                "description": "The info property can be a string or a React element. Can't be used with the `record-home` variant."
             },
             "joined": {
                 "type": {
@@ -12735,6 +12870,18 @@
                 "params": [
                     {
                         "name": "root",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleOnClick",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
                         "type": null
                     }
                 ],
@@ -13586,17 +13733,25 @@
                 "required": false
             }
         },
-        "context": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
-            }
-        },
         "route": "popovers",
         "display-name": "Popovers",
         "SLDS-component-path": "/components/popovers",
+        "dependencies": []
+    },
+    "portal-settings": {
+        "description": "The Portal Settings component allows for the portal parent node to be specified in all child components and is recommended to be used at the root of the application. It's render function is `return this.props.children`, so it can only have one child node.\n\n**renderTo Selector**\nUse this to specify the portal node using a string that is compatiable with document.querySelector\nie.\n```\n<PortalSettings renderTo=\"#portal-destination\">\n```\n*",
+        "methods": [],
+        "props": {
+            "renderTo": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Selector for the destination container for portal elements\nexample: `#portal-destination`"
+            }
+        },
+        "route": "portal-settings",
+        "display-name": "Portal Settings",
         "dependencies": []
     },
     "progress-bar": {
@@ -14597,6 +14752,34 @@
                 },
                 "required": false,
                 "description": "This event fires when the radio selection changes. Passes in `event, { checked }`."
+            },
+            "onFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "This event fires when the Checkbox is focused. It passes in `{ event }`."
+            },
+            "onRequestFocus": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Triggered to indicate that this component should receive focus."
+            },
+            "requestFocus": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, will trigger `onRequestFocus`."
+            },
+            "tabIndex": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to the button."
             },
             "value": {
                 "type": {
@@ -16649,7 +16832,7 @@
         "dependencies": []
     },
     "time-picker": {
-        "description": "Component description.",
+        "description": "** Timepicker is deprecated. Please use an auto-complete Combobox instead.**\nA timepicker is an autocomplete text input to capture a time.",
         "methods": [
             {
                 "name": "parseDate",
@@ -17447,14 +17630,6 @@
                     "value": "'base'",
                     "computed": false
                 }
-            }
-        },
-        "context": {
-            "iconPath": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false
             }
         },
         "route": "tooltips",

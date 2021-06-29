@@ -1,4 +1,5 @@
 import React from 'react';
+
 import IconSettings from '../../icon-settings';
 import Button from '../../button';
 import ButtonGroup from '../../button-group';
@@ -15,6 +16,10 @@ const Example = (props) => (
 				backIcon: 'Back',
 				helpIcon: 'Help',
 				icon: 'Builder',
+			}}
+			events={{
+				onClickBack: () => console.log('onClickBack'),
+				onClickHelp: () => console.log('onClickHelp'),
 			}}
 			labels={{
 				back: 'Back',

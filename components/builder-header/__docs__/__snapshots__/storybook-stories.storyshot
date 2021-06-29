@@ -68,7 +68,8 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -106,7 +107,7 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
                 className="slds-dropdown-trigger slds-dropdown-trigger_click"
                 id="dropdown"
                 onClick={[Function]}
-                onFocus={null}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseEnter={null}
                 onMouseLeave={null}
@@ -191,9 +192,10 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
-              <div
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -213,12 +215,17 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
                     Back
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Back
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Back"
+                >
+                  Back
+                </span>
+              </span>
             </a>
           </div>
           <div
@@ -226,9 +233,10 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
-              <div
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -248,12 +256,17 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
                     Help
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Help
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Help"
+                >
+                  Help
+                </span>
+              </span>
             </a>
           </div>
         </div>
@@ -518,7 +531,8 @@ exports[`DOM snapshots SLDSBuilderHeader Base 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -556,7 +570,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base 1`] = `
                 className="slds-dropdown-trigger slds-dropdown-trigger_click"
                 id="dropdown"
                 onClick={[Function]}
-                onFocus={null}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseEnter={null}
                 onMouseLeave={null}
@@ -641,9 +655,10 @@ exports[`DOM snapshots SLDSBuilderHeader Base 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
-              <div
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -663,12 +678,17 @@ exports[`DOM snapshots SLDSBuilderHeader Base 1`] = `
                     Back
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Back
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Back"
+                >
+                  Back
+                </span>
+              </span>
             </a>
           </div>
           <div
@@ -676,9 +696,10 @@ exports[`DOM snapshots SLDSBuilderHeader Base 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
-              <div
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -698,12 +719,17 @@ exports[`DOM snapshots SLDSBuilderHeader Base 1`] = `
                     Help
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Help
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Help"
+                >
+                  Help
+                </span>
+              </span>
             </a>
           </div>
         </div>
@@ -781,7 +807,8 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -819,7 +846,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
                 className="slds-dropdown-trigger slds-dropdown-trigger_click"
                 id="dropdown"
                 onClick={[Function]}
-                onFocus={null}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseEnter={null}
                 onMouseLeave={null}
@@ -1052,9 +1079,10 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
-              <div
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -1074,12 +1102,17 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
                     Back
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Back
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Back"
+                >
+                  Back
+                </span>
+              </span>
             </a>
           </div>
           <div
@@ -1087,9 +1120,10 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
-              <div
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -1109,12 +1143,17 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
                     Help
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Help
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Help"
+                >
+                  Help
+                </span>
+              </span>
             </a>
           </div>
         </div>
@@ -1192,7 +1231,8 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -1230,7 +1270,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
                 className="slds-dropdown-trigger slds-dropdown-trigger_click"
                 id="dropdown"
                 onClick={[Function]}
-                onFocus={null}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseEnter={null}
                 onMouseLeave={null}
@@ -1315,9 +1355,10 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
-              <div
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -1337,12 +1378,17 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
                     Back
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Back
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Back"
+                >
+                  Back
+                </span>
+              </span>
             </a>
           </div>
           <div
@@ -1350,9 +1396,10 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
-              <div
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -1372,12 +1419,17 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
                     Help
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Help
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Help"
+                >
+                  Help
+                </span>
+              </span>
             </a>
           </div>
         </div>
@@ -1553,7 +1605,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Toolbar 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSBuilderHeader Custom Icon 1`] = `
+exports[`DOM snapshots SLDSBuilderHeader Base with Utilities 1`] = `
 <div
   className="slds-p-around_medium"
 >
@@ -1593,7 +1645,7 @@ exports[`DOM snapshots SLDSBuilderHeader Custom Icon 1`] = `
                   className="slds-icon slds-icon_x-small slds-icon-text-default"
                 >
                   <use
-                    href="/assets/icons/utility-sprite/svg/symbols.svg#world"
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#builder"
                   />
                 </svg>
                 <span
@@ -1621,7 +1673,8 @@ exports[`DOM snapshots SLDSBuilderHeader Custom Icon 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -1659,7 +1712,7 @@ exports[`DOM snapshots SLDSBuilderHeader Custom Icon 1`] = `
                 className="slds-dropdown-trigger slds-dropdown-trigger_click"
                 id="dropdown"
                 onClick={[Function]}
-                onFocus={null}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseEnter={null}
                 onMouseLeave={null}
@@ -1744,9 +1797,309 @@ exports[`DOM snapshots SLDSBuilderHeader Custom Icon 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
+            >
+              <span
+                className="slds-media__figure"
+              >
+                <span
+                  className="slds-icon_container slds-icon-utility-settings slds-current-color"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  >
+                    <use
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#back"
+                    />
+                  </svg>
+                  
+                </span>
+              </span>
+              <span
+                className="slds-media__body"
+              >
+                <span
+                  className="slds-truncate"
+                  title="Back"
+                >
+                  Back
+                </span>
+              </span>
+            </a>
+          </div>
+          <div
+            className="slds-builder-header__utilities-item"
+          >
+            <div
+              className="slds-dropdown-trigger slds-dropdown-trigger_click"
+              id="dropdown"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseEnter={null}
+              onMouseLeave={null}
+            >
+              <button
+                aria-expanded={false}
+                aria-haspopup={true}
+                className="slds-button slds-builder-header__item-action slds-media slds-media_center"
+                disabled={false}
+                onClick={[Function]}
+                tabIndex="0"
+                type="button"
+              >
+                <span
+                  className="slds-media__figure"
+                >
+                  <span
+                    className="slds-icon_container slds-icon-utility-page slds-current-color"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#help"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Dropdown
+                    </span>
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Help"
+                  >
+                    Help
+                  </span>
+                  <span
+                    className="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"
+                      />
+                    </svg>
+                    
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSBuilderHeader Custom Icon 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "height": "100px",
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="slds-builder-header_container"
+      style={
+        Object {
+          "position": "relative",
+        }
+      }
+    >
+      <header
+        className="slds-builder-header"
+      >
+        <div
+          className="slds-builder-header__item"
+        >
+          <div
+            className="slds-builder-header__item-label slds-media slds-media_center"
+          >
+            <div
+              className="slds-media__figure"
+            >
+              <span
+                className="slds-icon_container slds-icon-utility-builder slds-current-color"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                >
+                  <use
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#world"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  Builder
+                </span>
+              </span>
+            </div>
+            <div
+              className="slds-media__body"
+            >
+              App Name
+            </div>
+          </div>
+        </div>
+        <nav
+          className="slds-builder-header__item slds-builder-header__nav"
+        >
+          <ul
+            className="slds-builder-header__nav-list"
+          >
+            <li
+              className="slds-builder-header__nav-item"
+            >
+              <a
+                className="slds-builder-header__item-action slds-media slds-media_center"
+                href="#"
+                onClick={[Function]}
+              >
+                <span
+                  className="slds-media__figure"
+                >
+                  <span
+                    className="slds-icon_container slds-icon-utility-settings slds-current-color"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+                      />
+                    </svg>
+                    
+                  </span>
+                </span>
+                <span
+                  className="slds-media__body"
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Link"
+                  >
+                    Link
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li
+              className="slds-builder-header__nav-item"
             >
               <div
+                className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                id="dropdown"
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onMouseEnter={null}
+                onMouseLeave={null}
+              >
+                <button
+                  aria-expanded={false}
+                  aria-haspopup={true}
+                  className="slds-button slds-builder-header__item-action slds-media slds-media_center"
+                  disabled={false}
+                  onClick={[Function]}
+                  tabIndex="0"
+                  type="button"
+                >
+                  <span
+                    className="slds-media__figure"
+                  >
+                    <span
+                      className="slds-icon_container slds-icon-utility-page slds-current-color"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#page"
+                        />
+                      </svg>
+                      <span
+                        className="slds-assistive-text"
+                      >
+                        Dropdown
+                      </span>
+                    </span>
+                  </span>
+                  <span
+                    className="slds-media__body"
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Dropdown"
+                    >
+                      Dropdown
+                    </span>
+                    <span
+                      className="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </span>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <div
+          className="slds-builder-header__item slds-has-flexi-truncate"
+        >
+          <h1
+            className="slds-builder-header__item-label"
+          >
+            <span
+              className="slds-truncate"
+              title="Page Type"
+            >
+              Page Type
+            </span>
+          </h1>
+        </div>
+        <div
+          className="slds-builder-header__item slds-builder-header__utilities"
+        >
+          <div
+            className="slds-builder-header__utilities-item"
+          >
+            <a
+              className="slds-builder-header__item-action slds-media slds-media_center"
+              href="#"
+              onClick={[Function]}
+            >
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -1766,12 +2119,17 @@ exports[`DOM snapshots SLDSBuilderHeader Custom Icon 1`] = `
                     Back
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Back
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Back"
+                >
+                  Back
+                </span>
+              </span>
             </a>
           </div>
           <div
@@ -1779,9 +2137,10 @@ exports[`DOM snapshots SLDSBuilderHeader Custom Icon 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
-              <div
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -1801,12 +2160,17 @@ exports[`DOM snapshots SLDSBuilderHeader Custom Icon 1`] = `
                     Help
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Help
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Help"
+                >
+                  Help
+                </span>
+              </span>
             </a>
           </div>
         </div>
@@ -1884,7 +2248,8 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -1922,7 +2287,7 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
                 className="slds-dropdown-trigger slds-dropdown-trigger_click"
                 id="dropdown"
                 onClick={[Function]}
-                onFocus={null}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseEnter={null}
                 onMouseLeave={null}
@@ -2007,9 +2372,10 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
-              <div
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -2029,12 +2395,17 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
                     Back
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Back
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Back"
+                >
+                  Back
+                </span>
+              </span>
             </a>
           </div>
           <div
@@ -2042,9 +2413,10 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
-              <div
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -2064,12 +2436,17 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
                     Help
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Help
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Help"
+                >
+                  Help
+                </span>
+              </span>
             </a>
           </div>
         </div>
@@ -2368,7 +2745,8 @@ exports[`DOM snapshots SLDSBuilderHeader Successful Save 1`] = `
             >
               <a
                 className="slds-builder-header__item-action slds-media slds-media_center"
-                href="javascript:void(0)"
+                href="#"
+                onClick={[Function]}
               >
                 <span
                   className="slds-media__figure"
@@ -2406,7 +2784,7 @@ exports[`DOM snapshots SLDSBuilderHeader Successful Save 1`] = `
                 className="slds-dropdown-trigger slds-dropdown-trigger_click"
                 id="dropdown"
                 onClick={[Function]}
-                onFocus={null}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseEnter={null}
                 onMouseLeave={null}
@@ -2491,9 +2869,10 @@ exports[`DOM snapshots SLDSBuilderHeader Successful Save 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
-              <div
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -2513,12 +2892,17 @@ exports[`DOM snapshots SLDSBuilderHeader Successful Save 1`] = `
                     Back
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Back
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Back"
+                >
+                  Back
+                </span>
+              </span>
             </a>
           </div>
           <div
@@ -2526,9 +2910,10 @@ exports[`DOM snapshots SLDSBuilderHeader Successful Save 1`] = `
           >
             <a
               className="slds-builder-header__item-action slds-media slds-media_center"
-              href="javascript:void(0);"
+              href="#"
+              onClick={[Function]}
             >
-              <div
+              <span
                 className="slds-media__figure"
               >
                 <span
@@ -2548,12 +2933,17 @@ exports[`DOM snapshots SLDSBuilderHeader Successful Save 1`] = `
                     Help
                   </span>
                 </span>
-              </div>
-              <div
+              </span>
+              <span
                 className="slds-media__body"
               >
-                Help
-              </div>
+                <span
+                  className="slds-truncate"
+                  title="Help"
+                >
+                  Help
+                </span>
+              </span>
             </a>
           </div>
         </div>

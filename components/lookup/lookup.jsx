@@ -40,6 +40,7 @@ import KEYS from '../../utilities/key-code';
 import Menu from './menu';
 
 import { LOOKUP } from '../../utilities/constants';
+import { IconSettingsContext } from '../icon-settings';
 
 /**
  * A function that takes a term string and an item and returns a truthy value if the item should be kept.
@@ -697,16 +698,15 @@ const Lookup = class extends React.Component {
 		// i18n
 		return (
 			<div className="slds-pill__container">
-				{/* eslint-disable no-script-url */}
 				<a
-					href="javascript:void(0)"
+					href="#"
 					className="slds-pill"
 					ref={(pill) => {
 						this.pills[this.state.selectedIndex] = pill;
 					}}
+					onClick={(event) => event.preventDefault()}
 					onKeyDown={this.handlePillKeyDown}
 				>
-					{/* eslint-enable no-script-url */}
 					{renderIcon}
 					<span className={labelClassName}>{selectedItem}</span>
 					<Button
@@ -785,8 +785,5 @@ const Lookup = class extends React.Component {
 	}
 };
 
-Lookup.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+Lookup.contextType = IconSettingsContext;
 export default Lookup;

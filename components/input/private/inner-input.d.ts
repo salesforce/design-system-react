@@ -1,27 +1,27 @@
 declare module '@salesforce/design-system-react/components/input/private/inner-input' {
 	import React from 'react';
 	type Props = {
-		'aria-activedescendant': string;
-		'aria-autocomplete': string;
+		'aria-activedescendant'?: string;
+		'aria-autocomplete'?: string;
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
 		 * `aria-controls` attribute in order to relate the input with
 		 * another region of the page. An example would be a select box
 		 * that shows or hides a panel.
 		 */
-		'aria-controls': string;
-		'aria-describedby': string;
-		'aria-expanded': boolean;
-		'aria-haspopup': boolean | string;
-		'aria-labelledby': string;
+		'aria-controls'?: string;
+		'aria-describedby'?: string;
+		'aria-expanded'?: boolean;
+		'aria-haspopup'?: boolean | string;
+		'aria-labelledby'?: string;
 		/**
 		 * An HTML ID that is shared with ARIA-supported devices with the
 		 * `aria-controls` attribute in order to relate the input with
 		 * another region of the page. An example would be a search field
 		 * that shows search results.
 		 */
-		'aria-owns': string;
-		'aria-required': boolean;
+		'aria-owns'?: string;
+		'aria-required'?: boolean;
 		/**
 		 * **Assistive text for accessibility.**
 		 * This object is merged with the default props object on every render.
@@ -185,6 +185,6 @@ declare module '@salesforce/design-system-react/components/input/private/inner-i
 		defaultValue?: number | string;
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

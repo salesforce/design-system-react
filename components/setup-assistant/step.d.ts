@@ -71,6 +71,6 @@ declare module '@salesforce/design-system-react/components/setup-assistant/step'
 	 * Setup Assistant Step component is used to specify individual items within the Setup Assistant
 	 * filled with learning and task links along with a recommended sequence that may have progress tracking
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

@@ -41,6 +41,6 @@ declare module '@salesforce/design-system-react/components/app-launcher/expandab
 	 * App Launcher Sections allow users to categorize App Tiles & Links as well as toggle their display. It is a superset of components/expandable-section with content formatting.
 	 * All Expandable Section props are compatible with props passed to this component.
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

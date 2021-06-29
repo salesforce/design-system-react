@@ -4,14 +4,21 @@
 // ### React
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 // ## Children
 import CellFixed from './cell-fixed';
 import Checkbox from '../../checkbox';
 import HeaderCell from './header-cell';
+import InteractiveElement from '../interactive-element';
+import CellContext from '../private/cell-context';
+import TableContext from '../private/table-context';
+import contextHelper from './context-helper';
 
 // ## Constants
 import { DATA_TABLE_HEAD } from '../../../utilities/constants';
+
+const InteractiveCheckbox = InteractiveElement(Checkbox);
 
 /**
  * Used internally, provides header row rendering to the DataTable.
@@ -64,39 +71,66 @@ class DataTableHead extends React.Component {
 
 		if (this.props.showRowActions) {
 			actionsHeader = (
-				<th
-					ref={(ref) => {
-						if (this.props.headerRefs) {
-							this.props.headerRefs(ref, 'action');
-						}
+				<TableContext.Consumer>
+					{(tableContext) => {
+						const columnIndex = this.props.canSelectRows
+							? this.props.columns.length + 1
+							: this.props.columns.length;
+						const cellContext = { columnIndex, rowIndex: 0 };
+						const {
+							tabIndex,
+							hasFocus,
+							handleFocus,
+							handleKeyDown,
+						} = contextHelper(
+							tableContext,
+							cellContext,
+							this.props.fixedLayout
+						);
+						return (
+							<th
+								className={classNames({ 'slds-has-focus': hasFocus })}
+								ref={(ref) => {
+									if (this.props.headerRefs) {
+										this.props.headerRefs(ref, 'action');
+									}
+									if (ref && hasFocus) {
+										ref.focus();
+									}
+								}}
+								scope="col"
+								style={{
+									height: fixedHeader ? 0 : null,
+									lineHeight: fixedHeader ? 0 : null,
+									width: '3.25rem',
+								}}
+								onFocus={handleFocus}
+								onKeyDown={handleKeyDown}
+								tabIndex={tabIndex}
+							>
+								{getContent(
+									fixedHeader
+										? {
+												height: 0,
+												overflow: 'hidden',
+												paddingBottom: 0,
+												paddingTop: 0,
+												visibility: 'hidden',
+										  }
+										: null
+								)}
+								{fixedHeader ? (
+									<CellFixed>
+										{getContent({
+											lineHeight: 1,
+											width: '100%',
+										})}
+									</CellFixed>
+								) : null}
+							</th>
+						);
 					}}
-					scope="col"
-					style={{
-						height: fixedHeader ? 0 : null,
-						lineHeight: fixedHeader ? 0 : null,
-						width: '3.25rem',
-					}}
-				>
-					{getContent(
-						fixedHeader
-							? {
-									height: 0,
-									overflow: 'hidden',
-									paddingBottom: 0,
-									paddingTop: 0,
-									visibility: 'hidden',
-							  }
-							: null
-					)}
-					{fixedHeader ? (
-						<CellFixed>
-							{getContent({
-								lineHeight: 1,
-								width: '100%',
-							})}
-						</CellFixed>
-					) : null}
-				</th>
+				</TableContext.Consumer>
 			);
 		}
 
@@ -133,7 +167,7 @@ class DataTableHead extends React.Component {
 								{this.props.assistiveText.selectAllRows}
 							</span>
 						) : null}
-						<Checkbox
+						<InteractiveCheckbox
 							assistiveText={{
 								label: this.props.assistiveText.selectAllRows,
 							}}
@@ -155,45 +189,72 @@ class DataTableHead extends React.Component {
 
 		if (canSelectRows) {
 			selectHeader = (
-				<th
-					className="slds-text-align_right"
-					ref={(ref) => {
-						if (this.props.headerRefs) {
-							this.props.headerRefs(ref, 'select');
-						}
+				<TableContext.Consumer>
+					{(tableContext) => {
+						const cellContext = { columnIndex: 0, rowIndex: 0 };
+						const {
+							tabIndex,
+							hasFocus,
+							handleFocus,
+							handleKeyDown,
+						} = contextHelper(
+							tableContext,
+							cellContext,
+							this.props.fixedLayout
+						);
+						return (
+							<th
+								className={classNames('slds-text-align_right', {
+									'slds-has-focus': hasFocus,
+								})}
+								ref={(ref) => {
+									if (this.props.headerRefs) {
+										this.props.headerRefs(ref, 'select');
+									}
+									if (ref && hasFocus) {
+										ref.focus();
+									}
+								}}
+								scope="col"
+								style={{
+									height: fixedHeader ? 0 : null,
+									lineHeight: fixedHeader ? 0 : null,
+									width: '3.25rem',
+								}}
+								onFocus={handleFocus}
+								onKeyDown={handleKeyDown}
+								tabIndex={tabIndex}
+							>
+								<CellContext.Provider value={cellContext}>
+									{getContent(
+										'SelectAll-fixed-header',
+										fixedHeader
+											? {
+													display: 'flex',
+													height: 0,
+													overflow: 'hidden',
+													paddingBottom: 0,
+													paddingTop: 0,
+													visibility: 'hidden',
+											  }
+											: null,
+										fixedHeader && 'ariaHidden'
+									)}
+									{fixedHeader ? (
+										<CellFixed>
+											{getContent('SelectAll', {
+												display: 'flex',
+												justifyContent: 'flex-end',
+												lineHeight: 1,
+												width: '100%',
+											})}
+										</CellFixed>
+									) : null}
+								</CellContext.Provider>
+							</th>
+						);
 					}}
-					scope="col"
-					style={{
-						height: fixedHeader ? 0 : null,
-						lineHeight: fixedHeader ? 0 : null,
-						width: '3.25rem',
-					}}
-				>
-					{getContent(
-						'SelectAll-fixed-header',
-						fixedHeader
-							? {
-									display: 'flex',
-									height: 0,
-									overflow: 'hidden',
-									paddingBottom: 0,
-									paddingTop: 0,
-									visibility: 'hidden',
-							  }
-							: null,
-						fixedHeader && 'ariaHidden'
-					)}
-					{fixedHeader ? (
-						<CellFixed>
-							{getContent('SelectAll', {
-								display: 'flex',
-								justifyContent: 'flex-end',
-								lineHeight: 1,
-								width: '100%',
-							})}
-						</CellFixed>
-					) : null}
-				</th>
+				</TableContext.Consumer>
 			);
 		}
 
@@ -210,19 +271,26 @@ class DataTableHead extends React.Component {
 				<tr className="slds-line-height_reset">
 					{selectHeader}
 					{this.props.columns.map((column, index) => (
-						<HeaderCell
-							assistiveText={this.props.assistiveText}
-							cellRef={(ref) => {
-								if (this.props.headerRefs) {
-									this.props.headerRefs(ref, index);
-								}
-							}}
-							fixedHeader={this.props.fixedHeader}
-							id={`${this.props.id}-${column.props.property}`}
+						<CellContext.Provider
 							key={`${this.props.id}-${column.props.property}`}
-							onSort={this.props.onSort}
-							{...column.props}
-						/>
+							value={{
+								columnIndex: this.props.canSelectRows ? index + 1 : index,
+								rowIndex: 0,
+							}}
+						>
+							<HeaderCell
+								assistiveText={this.props.assistiveText}
+								cellRef={(ref) => {
+									if (this.props.headerRefs) {
+										this.props.headerRefs(ref, index);
+									}
+								}}
+								fixedHeader={this.props.fixedHeader}
+								id={`${this.props.id}-${column.props.property}`}
+								onSort={this.props.onSort}
+								{...column.props}
+							/>
+						</CellContext.Provider>
 					))}
 					{actionsHeader}
 				</tr>

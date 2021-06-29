@@ -1,5 +1,4 @@
 /* eslint-disable react/display-name */
-/* eslint-disable no-script-url */
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';
@@ -139,6 +138,7 @@ storiesOf(POPOVER, module)
 		})
 	)
 	.add('Error', () => <Error />)
+	.add('Error w/ Footer', () => <Error footer="Footer Item" />)
 	.add('Error - Open', () => <Error isOpen />)
 	.add('Feature', () => <Feature action={action} />)
 	.add('Feature - Open', () => <Feature action={action} isOpen />)

@@ -1559,55 +1559,34 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
           </div>
         </div>
       </header>
-      <div>
-        <div
-          className="slds-popover__body"
-          id="popover-error-dialog-body"
-          style={
-            Object {
-              "borderBottom": "none",
-            }
-          }
-        >
-          <div>
-            <p
-              className="slds-p-bottom_x-small"
+      <div
+        className="slds-popover__body"
+        id="popover-error-dialog-body"
+      >
+        <div>
+          <p
+            className="slds-p-bottom_x-small"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in pretium leo. Praesent quis risus eget libero commodo mollis.
+          </p>
+          <p
+            className="slds-p-bottom_x-small"
+          >
+            Quisque tincidunt eleifend pharetra. Etiam condimentum neque nec neque interdum, vitae dapibus est accumsan. Vestibulum rhoncus consectetur mi, sit amet interdum purus. Suspendisse rhoncus, orci a mattis rhoncus, nulla lacus pharetra orci, in eleifend at tristique nisi tristique.
+          </p>
+          <p
+            className="slds-p-bottom_x-small"
+          >
+            Pellentesque magna tellus, dapibus vitae placerat nec, viverra vel mi.
+             
+            <a
+              href="#"
+              title="Learn More"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in pretium leo. Praesent quis risus eget libero commodo mollis.
-            </p>
-            <p
-              className="slds-p-bottom_x-small"
-            >
-              Quisque tincidunt eleifend pharetra. Etiam condimentum neque nec neque interdum, vitae dapibus est accumsan. Vestibulum rhoncus consectetur mi, sit amet interdum purus. Suspendisse rhoncus, orci a mattis rhoncus, nulla lacus pharetra orci, in eleifend at tristique nisi tristique.
-            </p>
-            <p
-              className="slds-p-bottom_x-small"
-            >
-              Pellentesque magna tellus, dapibus vitae placerat nec, viverra vel mi.
-               
-              <a
-                href="javascript:void(0);"
-                title="Learn More"
-              >
-                Learn More
-              </a>
-            </p>
-          </div>
+              Learn More
+            </a>
+          </p>
         </div>
-        <div
-          style={
-            Object {
-              "backgroundImage": "linear-gradient(to bottom, transparent, rgba(255,255,255,100)",
-              "bottom": 0,
-              "left": 0,
-              "margin": 0,
-              "padding": "5px 0",
-              "position": "absolute",
-              "textAlign": "center",
-              "width": "100%",
-            }
-          }
-        />
       </div>
     </section>
   </div>
@@ -1615,6 +1594,41 @@ exports[`DOM snapshots SLDSPopover Error - Open 1`] = `
 `;
 
 exports[`DOM snapshots SLDSPopover Error 1`] = `
+<div
+  className="slds-p-around_medium slds-m-horizontal_x-large"
+  style={
+    Object {
+      "margin": "300px auto",
+      "width": "500px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <button
+      aria-haspopup="dialog"
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="popover-error"
+      onClick={[Function]}
+      onFocus={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex="0"
+      type="button"
+    >
+      Trigger Popover
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSPopover Error w/ Footer 1`] = `
 <div
   className="slds-p-around_medium slds-m-horizontal_x-large"
   style={
@@ -2366,55 +2380,34 @@ exports[`DOM snapshots SLDSPopover Warning  - Open 1`] = `
           </div>
         </div>
       </header>
-      <div>
-        <div
-          className="slds-popover__body"
-          id="popover-error-dialog-body"
-          style={
-            Object {
-              "borderBottom": "none",
-            }
-          }
-        >
-          <div>
-            <p
-              className="slds-p-bottom_x-small"
+      <div
+        className="slds-popover__body"
+        id="popover-error-dialog-body"
+      >
+        <div>
+          <p
+            className="slds-p-bottom_x-small"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in pretium leo. Praesent quis risus eget libero commodo mollis.
+          </p>
+          <p
+            className="slds-p-bottom_x-small"
+          >
+            Quisque tincidunt eleifend pharetra. Etiam condimentum neque nec neque interdum, vitae dapibus est accumsan. Vestibulum rhoncus consectetur mi, sit amet interdum purus. Suspendisse rhoncus, orci a mattis rhoncus, nulla lacus pharetra orci, in eleifend at tristique nisi tristique.
+          </p>
+          <p
+            className="slds-p-bottom_x-small"
+          >
+            Pellentesque magna tellus, dapibus vitae placerat nec, viverra vel mi.
+             
+            <a
+              href="#"
+              title="Learn More"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in pretium leo. Praesent quis risus eget libero commodo mollis.
-            </p>
-            <p
-              className="slds-p-bottom_x-small"
-            >
-              Quisque tincidunt eleifend pharetra. Etiam condimentum neque nec neque interdum, vitae dapibus est accumsan. Vestibulum rhoncus consectetur mi, sit amet interdum purus. Suspendisse rhoncus, orci a mattis rhoncus, nulla lacus pharetra orci, in eleifend at tristique nisi tristique.
-            </p>
-            <p
-              className="slds-p-bottom_x-small"
-            >
-              Pellentesque magna tellus, dapibus vitae placerat nec, viverra vel mi.
-               
-              <a
-                href="javascript:void(0);"
-                title="Learn More"
-              >
-                Learn More
-              </a>
-            </p>
-          </div>
+              Learn More
+            </a>
+          </p>
         </div>
-        <div
-          style={
-            Object {
-              "backgroundImage": "linear-gradient(to bottom, transparent, rgba(255,255,255,100)",
-              "bottom": 0,
-              "left": 0,
-              "margin": 0,
-              "padding": "5px 0",
-              "position": "absolute",
-              "textAlign": "center",
-              "width": "100%",
-            }
-          }
-        />
       </div>
     </section>
   </div>

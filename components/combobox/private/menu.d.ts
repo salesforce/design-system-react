@@ -110,6 +110,6 @@ declare module '@salesforce/design-system-react/components/combobox/private/menu
 		assistiveText?: Record<string, any>;
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

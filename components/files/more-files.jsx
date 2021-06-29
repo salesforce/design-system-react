@@ -64,15 +64,16 @@ const defaultProps = {
 		link: 'Preview:',
 	},
 	crop: '16-by-9',
-	href: 'javascript:void(0);',
+	href: '#',
 };
 
 /**
  * MoreFiles is a component that represents a number of file contents uploaded as an attachment.
  */
 class MoreFiles extends React.Component {
-	// eslint-disable-next-line camelcase, react/sort-comp
-	UNSAFE_componentWillMount() {
+	constructor(props) {
+		super(props);
+
 		this.generatedId = shortid.generate();
 	}
 
@@ -98,6 +99,9 @@ class MoreFiles extends React.Component {
 							'slds-file__crop',
 							this.props.crop ? `slds-file__crop_${this.props.crop}` : null
 						)}
+						onClick={(event) =>
+							this.props.href === '#' && event.preventDefault()
+						}
 					>
 						<div className="slds-file_overlay" />
 						<span className="slds-assistive-text">{assistiveText.link}</span>

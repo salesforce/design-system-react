@@ -5,20 +5,22 @@ import TestUtils from 'react-dom/test-utils';
 
 import chai, { expect } from 'chai';
 
+import { keyObjects } from '../../../utilities/key-code';
+
 import Dropdown from '../../menu-dropdown';
 import DataTable from '../../data-table';
 import DataTableColumn from '../../data-table/column';
 import DataTableRowActions from '../../data-table/row-actions';
 import DataTableHighlightCell from '../../data-table/highlight-cell';
 import IconSettings from '../../icon-settings';
+import {
+	mountComponent,
+	unmountComponent,
+} from '../../../tests/enzyme-helpers';
 
 chai.should();
 
-const {
-	Simulate,
-	scryRenderedComponentsWithType,
-	findRenderedDOMComponentWithClass,
-} = TestUtils;
+const { Simulate } = TestUtils;
 
 describe('DataTable: ', function describeFunction() {
 	const items = [
@@ -109,7 +111,9 @@ describe('DataTable: ', function describeFunction() {
 			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			// eslint-disable-next-line react/no-render-return-value
 			this.component = ReactDOM.render(
-				<IconSettings iconPath="/assets/icons">{instance}</IconSettings>,
+				<div>
+					<IconSettings iconPath="/assets/icons">{instance}</IconSettings>
+				</div>,
 				this.dom
 			);
 			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
@@ -543,11 +547,9 @@ describe('DataTable: ', function describeFunction() {
 					/>
 				</DataTable>
 			).call(this);
-
-			const rowActionMenus = scryRenderedComponentsWithType(
-				this.component,
-				DataTableRowActions
-			);
+			const rowActionMenus = [
+				...this.component.getElementsByTagName('button'),
+			].filter((button) => button.textContent === 'Actions');
 			rowActionMenus.should.have.length(6);
 		});
 
@@ -591,14 +593,9 @@ describe('DataTable: ', function describeFunction() {
 				</DataTable>
 			).call(this);
 
-			const rowActionMenu = scryRenderedComponentsWithType(
-				this.component,
-				DataTableRowActions
+			const trigger = [...this.component.getElementsByTagName('button')].filter(
+				(button) => button.textContent === 'Actions'
 			)[0];
-			const trigger = findRenderedDOMComponentWithClass(
-				rowActionMenu,
-				'slds-button'
-			);
 			Simulate.click(trigger, {});
 
 			setTimeout(() => {
@@ -775,6 +772,147 @@ describe('DataTable: ', function describeFunction() {
 			).call(this);
 
 			window.dispatchEvent(new Event('resize'));
+		});
+
+		it('onLoadMore callback is called when the component is updated', function (done) {
+			let expectedCallbacks = 1;
+
+			this.onLoadMore = () => {
+				// eslint-disable-next-line no-plusplus
+				if (!--expectedCallbacks) done();
+			};
+
+			mountComponent(
+				<DataTable
+					{...defaultProps}
+					items={[]}
+					fixedHeader
+					fixedLayout
+					hasMore
+					onLoadMore={this.onLoadMore}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			// Simulate the first page loading
+			this.wrapper.setProps({
+				items: [items[0]],
+			});
+		});
+	});
+
+	describe('Keyboard Navigation', function describeFunction2() {
+		beforeEach(
+			mountComponent(
+				<DataTable {...defaultProps} fixedLayout keyboardNavigation>
+					{[
+						...columns.map((columnProps) => (
+							<DataTableColumn {...columnProps} key={columnProps.property} />
+						)),
+						...[
+							<DataTableRowActions
+								key="actions"
+								options={[
+									{
+										id: 0,
+										label: 'Add to Group',
+										value: '1',
+									},
+									{
+										id: 1,
+										label: 'Publish',
+										value: '2',
+									},
+								]}
+								onAction={() => {}}
+								dropdown={<Dropdown length="5" />}
+							/>,
+						],
+					]}
+				</DataTable>
+			)
+		);
+
+		afterEach(unmountComponent);
+
+		it('moves selection when using keyboard up/down/left/right keys', function () {
+			// Focus the first cell
+			let cell = this.wrapper.find('td').first();
+			cell.simulate('focus');
+			expect(this.wrapper.find('td').first().prop('tabIndex')).to.equal('0');
+
+			// Press Right
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell = this.wrapper.find('td').at(1);
+			expect(cell.prop('tabIndex')).to.equal('0');
+
+			// Press Down
+			cell.simulate('keyDown', keyObjects.DOWN);
+			cell = this.wrapper.find('td').at(5);
+			expect(cell.prop('tabIndex')).to.equal('0');
+
+			// Press Left
+			cell.simulate('keyDown', keyObjects.LEFT);
+			cell = this.wrapper.find('td').at(4);
+			expect(cell.prop('tabIndex')).to.equal('0');
+
+			// Press Up
+			cell.simulate('keyDown', keyObjects.UP);
+			cell = this.wrapper.find('td').at(0);
+			expect(cell.prop('tabIndex')).to.equal('0');
+		});
+
+		it('enters actionable mode when using keyboard enter key; and enters navigation mode when using keyboard escape key', function () {
+			// Focus the first cell
+			let cell = this.wrapper.find('td').first();
+			cell.simulate('focus');
+			expect(this.wrapper.find('td').first().prop('tabIndex')).to.equal('0');
+
+			// Press Enter
+			cell.simulate('keyDown', keyObjects.ENTER);
+
+			cell = this.wrapper.find('td').first();
+			expect(cell.prop('tabIndex')).to.be.undefined;
+
+			let checkbox = this.wrapper
+				.find('td')
+				.first()
+				.find('input[type="checkbox"]');
+			expect(checkbox.prop('tabIndex')).to.equal('0');
+
+			// Press Escape
+			cell.simulate('keyDown', keyObjects.ESCAPE);
+
+			cell = this.wrapper.find('td').first();
+			expect(cell.prop('tabIndex')).to.equal('0');
+
+			checkbox = this.wrapper.find('td').first().find('input[type="checkbox"]');
+			expect(checkbox.prop('tabIndex')).to.equal('-1');
+
+			// Navigate to Dropdown
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+
+			// Press Enter
+			cell.simulate('keyDown', keyObjects.ENTER);
+
+			let dropdownTrigger = this.wrapper
+				.find('td')
+				.at(3)
+				.find('.slds-dropdown-trigger button');
+			expect(dropdownTrigger.prop('tabIndex')).to.equal('0');
+
+			// Press Escape
+			cell.simulate('keyDown', keyObjects.ESCAPE);
+			dropdownTrigger = this.wrapper
+				.find('td')
+				.at(3)
+				.find('.slds-dropdown-trigger button');
+			expect(dropdownTrigger.prop('tabIndex')).to.equal('-1');
 		});
 	});
 });

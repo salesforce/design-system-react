@@ -6,10 +6,7 @@ import ReactDOM from 'react-dom';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import assign from 'lodash.assign';
-import {
-	Simulate,
-	findRenderedDOMComponentWithClass,
-} from 'react-dom/test-utils';
+import { Simulate } from 'react-dom/test-utils';
 
 /* Enzyme Helpers that can mount and unmount React component instances to
  * the DOM and set `this.wrapper` and `this.dom` within Mocha's `this`
@@ -27,6 +24,7 @@ import IconSettings from '../../icon-settings';
 import Tooltip from '../../tooltip';
 import List from '../../utilities/menu-list';
 import { keyObjects } from '../../../utilities/key-code';
+import EventUtil from '../../../utilities/event';
 
 /* Set Chai to use chaiEnzyme for enzyme compatible assertions:
  * https://github.com/producthunt/chai-enzyme
@@ -63,12 +61,12 @@ const DropdownCustomContent = (props) => (
 						<a
 							id="custom-dropdown-menu-content-link"
 							className="slds-m-right_medium"
-							href="javascript:void(0);"
-							onClick={props.onClick}
+							href="#"
+							onClick={EventUtil.trappedHandler(props.onClick)}
 						>
 							Settings
 						</a>
-						<a href="javascript:void(0);" onClick={props.onClick}>
+						<a href="#" onClick={EventUtil.trappedHandler(props.onClick)}>
 							Log Out
 						</a>
 					</p>
@@ -404,7 +402,9 @@ describe('SLDSMenuDropdown', function () {
 			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			// eslint-disable-next-line react/no-render-return-value
 			return ReactDOM.render(
-				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
+				<div>
+					<IconSettings iconPath="/assets/icons">{inst}</IconSettings>
+				</div>,
 				body
 			);
 			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
@@ -432,7 +432,7 @@ describe('SLDSMenuDropdown', function () {
 				openOn: 'hover',
 				hoverCloseDelay: 2,
 			});
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
+			[btn] = cmp.getElementsByClassName('slds-dropdown-trigger');
 		});
 
 		afterEach((done) => {
@@ -493,7 +493,9 @@ describe('SLDSMenuDropdown', function () {
 			/* deepscan-disable REACT_ASYNC_RENDER_RETURN_VALUE */
 			// eslint-disable-next-line react/no-render-return-value
 			return ReactDOM.render(
-				<IconSettings iconPath="/assets/icons">{inst}</IconSettings>,
+				<div>
+					<IconSettings iconPath="/assets/icons">{inst}</IconSettings>
+				</div>,
 				body
 			);
 			/* deepscan-enable REACT_ASYNC_RENDER_RETURN_VALUE */
@@ -518,7 +520,7 @@ describe('SLDSMenuDropdown', function () {
 
 		beforeEach(() => {
 			cmp = dropItDown({ openOn: 'hybrid', onClick, hoverCloseDelay: 1 });
-			btn = findRenderedDOMComponentWithClass(cmp, 'slds-dropdown-trigger');
+			[btn] = cmp.getElementsByClassName('slds-dropdown-trigger');
 		});
 
 		afterEach(() => {

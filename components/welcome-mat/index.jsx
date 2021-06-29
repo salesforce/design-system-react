@@ -90,15 +90,7 @@ const defaultProps = {
 class WelcomeMat extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			completedSteps: 0,
-			totalSteps: 0,
-			progress: 0,
-		};
-	}
 
-	// eslint-disable-next-line camelcase, react/sort-comp
-	UNSAFE_componentWillMount() {
 		this.generatedId = shortid.generate();
 		this.getCount();
 	}
@@ -116,11 +108,11 @@ class WelcomeMat extends React.Component {
 			(c) => c.props.isComplete
 		).length;
 		const progress = (completedSteps / totalSteps) * 100;
-		this.setState({
+		this.state = {
 			totalSteps,
 			completedSteps,
 			progress,
-		});
+		};
 	}
 
 	render() {

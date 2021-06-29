@@ -1,7 +1,7 @@
 declare module '@salesforce/design-system-react/components/utilities/menu-list/item' {
 	import React from 'react';
 	type Props = {
-		'aria-disabled': boolean;
+		'aria-disabled'?: boolean;
 		className?: any[] | Record<string, any> | string;
 		checkmark?: boolean;
 		data?: Record<string, any>;
@@ -30,6 +30,6 @@ declare module '@salesforce/design-system-react/components/utilities/menu-list/i
 	/**
 	 * Component description.
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

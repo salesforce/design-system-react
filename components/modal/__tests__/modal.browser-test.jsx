@@ -28,10 +28,16 @@ describe('SLDSModal: ', function () {
 		appNode = null;
 	});
 
-	afterEach(() => {
-		ReactDOM.unmountComponentAtNode(container);
-		document.body.removeChild(container);
-		container = null;
+	afterEach((done) => {
+		// We run into a race condition if we do not have this wait
+		// with the changes to react-modal, we end up trying to set state
+		// on an unmounted component
+		setTimeout(() => {
+			ReactDOM.unmountComponentAtNode(container);
+			document.body.removeChild(container);
+			container = null;
+			done();
+		}, 100);
 	});
 
 	const defaultProps = {
@@ -58,6 +64,9 @@ describe('SLDSModal: ', function () {
 
 	const getModal = (props) => renderModal(createModal(props));
 
+	const getModalContainerNode = (dom) =>
+		dom.querySelector('[role="dialog"]') ||
+		dom.querySelector('[role="alertdialog"]');
 	const getModalNode = (dom) => dom.querySelector('.slds-modal');
 
 	describe('Styling', () => {
@@ -177,7 +186,7 @@ describe('SLDSModal: ', function () {
 				isOpen: true,
 				size: 'medium',
 			});
-			const modal = getModalNode(document.body);
+			const modal = getModalContainerNode(document.body);
 			const role = modal.getAttribute('role');
 			expect(role).to.equal('dialog');
 		});
@@ -187,7 +196,7 @@ describe('SLDSModal: ', function () {
 				isOpen: true,
 				disableClose: true,
 			});
-			const modal = getModalNode(document.body);
+			const modal = getModalContainerNode(document.body);
 			const role = modal.getAttribute('role');
 			expect(role).to.equal('alertdialog');
 		});

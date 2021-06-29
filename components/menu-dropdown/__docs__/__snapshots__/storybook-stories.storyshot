@@ -8,7 +8,7 @@ exports[`DOM snapshots SLDSMenuDropdown Base 1`] = `
     className="slds-dropdown-trigger slds-dropdown-trigger_click"
     id="base"
     onClick={[Function]}
-    onFocus={null}
+    onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseEnter={null}
     onMouseLeave={null}
@@ -36,7 +36,7 @@ exports[`DOM snapshots SLDSMenuDropdown Base center-aligned 1`] = `
     className="slds-dropdown-trigger slds-dropdown-trigger_click"
     id="base-center"
     onClick={[Function]}
-    onFocus={null}
+    onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseEnter={null}
     onMouseLeave={null}
@@ -64,7 +64,7 @@ exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown left-aligned 1`
     className="slds-dropdown-trigger slds-dropdown-trigger_click"
     id="left-align-with-icon"
     onClick={[Function]}
-    onFocus={null}
+    onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseEnter={null}
     onMouseLeave={null}
@@ -103,7 +103,7 @@ exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown left-aligned, r
       className="slds-dropdown-trigger slds-dropdown-trigger_click"
       id="left-align-with-icon-rtl"
       onClick={[Function]}
-      onFocus={null}
+      onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseEnter={null}
       onMouseLeave={null}
@@ -140,7 +140,7 @@ exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown right-aligned 1
     className="slds-dropdown-trigger slds-dropdown-trigger_click"
     id="right-align-with-icon"
     onClick={[Function]}
-    onFocus={null}
+    onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseEnter={null}
     onMouseLeave={null}
@@ -179,7 +179,7 @@ exports[`DOM snapshots SLDSMenuDropdown Base with icon, dropdown right-aligned, 
       className="slds-dropdown-trigger slds-dropdown-trigger_click"
       id="right-align-with-icon-rtl"
       onClick={[Function]}
-      onFocus={null}
+      onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseEnter={null}
       onMouseLeave={null}
@@ -216,7 +216,7 @@ exports[`DOM snapshots SLDSMenuDropdown Checkmark 1`] = `
     className="slds-dropdown-trigger slds-dropdown-trigger_click"
     id="checkmark"
     onClick={[Function]}
-    onFocus={null}
+    onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseEnter={null}
     onMouseLeave={null}
@@ -259,7 +259,7 @@ exports[`DOM snapshots SLDSMenuDropdown Checkmark, right-to-left 1`] = `
       className="slds-dropdown-trigger slds-dropdown-trigger_click"
       id="checkmark-rtl"
       onClick={[Function]}
-      onFocus={null}
+      onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseEnter={null}
       onMouseLeave={null}
@@ -306,7 +306,7 @@ exports[`DOM snapshots SLDSMenuDropdown Controlled w/ isOpen 1`] = `
         className="slds-dropdown-trigger slds-dropdown-trigger_click"
         id="controlled-is-open"
         onClick={[Function]}
-        onFocus={null}
+        onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={null}
         onMouseLeave={null}
@@ -372,7 +372,7 @@ exports[`DOM snapshots SLDSMenuDropdown Custom Content 1`] = `
     className="slds-dropdown-trigger slds-dropdown-trigger_click"
     id="custom-content"
     onClick={[Function]}
-    onFocus={null}
+    onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseEnter={null}
     onMouseLeave={null}
@@ -400,7 +400,7 @@ exports[`DOM snapshots SLDSMenuDropdown Custom Trigger 1`] = `
     className="slds-dropdown-trigger slds-dropdown-trigger_click"
     id="custom-trigger"
     onClick={[Function]}
-    onFocus={null}
+    onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseEnter={null}
     onMouseLeave={null}
@@ -526,7 +526,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline 1`] = `
     className="slds-dropdown-trigger slds-dropdown-trigger_click"
     id="render-inline"
     onClick={[Function]}
-    onFocus={null}
+    onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseEnter={null}
     onMouseLeave={null}
@@ -567,7 +567,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
           className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
           id="render-inline-nubbins"
           onClick={[Function]}
-          onFocus={null}
+          onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseEnter={null}
           onMouseLeave={null}
@@ -620,7 +620,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                 <a
                   aria-disabled={true}
                   data-index={1}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -642,7 +642,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={2}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -713,7 +713,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={5}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -735,7 +735,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={6}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -757,7 +757,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={7}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -779,7 +779,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={8}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -801,7 +801,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={9}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -823,7 +823,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={10}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -845,7 +845,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={11}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -867,7 +867,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={12}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -897,7 +897,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
           className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
           id="render-inline-nubbins"
           onClick={[Function]}
-          onFocus={null}
+          onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseEnter={null}
           onMouseLeave={null}
@@ -950,7 +950,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                 <a
                   aria-disabled={true}
                   data-index={1}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -972,7 +972,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={2}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1043,7 +1043,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={5}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1065,7 +1065,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={6}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1087,7 +1087,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={7}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1109,7 +1109,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={8}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1131,7 +1131,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={9}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1153,7 +1153,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={10}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1175,7 +1175,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={11}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1197,7 +1197,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={12}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1227,7 +1227,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
           className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
           id="render-inline-nubbins"
           onClick={[Function]}
-          onFocus={null}
+          onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseEnter={null}
           onMouseLeave={null}
@@ -1280,7 +1280,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                 <a
                   aria-disabled={true}
                   data-index={1}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1302,7 +1302,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={2}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1373,7 +1373,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={5}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1395,7 +1395,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={6}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1417,7 +1417,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={7}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1439,7 +1439,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={8}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1461,7 +1461,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={9}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1483,7 +1483,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={10}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1505,7 +1505,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={11}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1527,7 +1527,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={12}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1557,7 +1557,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
           className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
           id="render-inline-nubbins"
           onClick={[Function]}
-          onFocus={null}
+          onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseEnter={null}
           onMouseLeave={null}
@@ -1610,7 +1610,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                 <a
                   aria-disabled={true}
                   data-index={1}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1632,7 +1632,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={2}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1703,7 +1703,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={5}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1725,7 +1725,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={6}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1747,7 +1747,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={7}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1769,7 +1769,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={8}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1791,7 +1791,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={9}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1813,7 +1813,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={10}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1835,7 +1835,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={11}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1857,7 +1857,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={12}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1887,7 +1887,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
           className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
           id="render-inline-nubbins"
           onClick={[Function]}
-          onFocus={null}
+          onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseEnter={null}
           onMouseLeave={null}
@@ -1940,7 +1940,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                 <a
                   aria-disabled={true}
                   data-index={1}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -1962,7 +1962,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={2}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2033,7 +2033,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={5}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2055,7 +2055,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={6}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2077,7 +2077,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={7}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2099,7 +2099,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={8}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2121,7 +2121,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={9}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2143,7 +2143,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={10}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2165,7 +2165,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={11}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2187,7 +2187,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={12}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2217,7 +2217,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
           className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
           id="render-inline-nubbins"
           onClick={[Function]}
-          onFocus={null}
+          onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseEnter={null}
           onMouseLeave={null}
@@ -2270,7 +2270,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
                 <a
                   aria-disabled={true}
                   data-index={1}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2292,7 +2292,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={2}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2363,7 +2363,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={5}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2385,7 +2385,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={6}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2407,7 +2407,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={7}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2429,7 +2429,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={8}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2451,7 +2451,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={9}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2473,7 +2473,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={10}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2495,7 +2495,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={11}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2517,7 +2517,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
               >
                 <a
                   data-index={12}
-                  href="javascript:void(0);"
+                  href="#"
                   onClick={[Function]}
                   role="menuitem"
                   tabIndex="-1"
@@ -2547,7 +2547,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins 1`] = `
         className="slds-dropdown-trigger slds-dropdown-trigger_click"
         id="render-inline-nubbins"
         onClick={[Function]}
-        onFocus={null}
+        onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseEnter={null}
         onMouseLeave={null}
@@ -2605,7 +2605,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
             className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
             id="render-inline-nubbins-rtl"
             onClick={[Function]}
-            onFocus={null}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={null}
             onMouseLeave={null}
@@ -2658,7 +2658,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                   <a
                     aria-disabled={true}
                     data-index={1}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2680,7 +2680,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={2}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2751,7 +2751,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={5}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2773,7 +2773,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={6}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2795,7 +2795,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={7}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2817,7 +2817,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={8}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2839,7 +2839,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={9}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2861,7 +2861,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={10}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2883,7 +2883,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={11}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2905,7 +2905,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={12}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -2935,7 +2935,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
             className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
             id="render-inline-nubbins-rtl"
             onClick={[Function]}
-            onFocus={null}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={null}
             onMouseLeave={null}
@@ -2988,7 +2988,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                   <a
                     aria-disabled={true}
                     data-index={1}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3010,7 +3010,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={2}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3081,7 +3081,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={5}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3103,7 +3103,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={6}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3125,7 +3125,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={7}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3147,7 +3147,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={8}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3169,7 +3169,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={9}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3191,7 +3191,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={10}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3213,7 +3213,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={11}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3235,7 +3235,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={12}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3265,7 +3265,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
             className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
             id="render-inline-nubbins-rtl"
             onClick={[Function]}
-            onFocus={null}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={null}
             onMouseLeave={null}
@@ -3318,7 +3318,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                   <a
                     aria-disabled={true}
                     data-index={1}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3340,7 +3340,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={2}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3411,7 +3411,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={5}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3433,7 +3433,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={6}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3455,7 +3455,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={7}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3477,7 +3477,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={8}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3499,7 +3499,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={9}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3521,7 +3521,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={10}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3543,7 +3543,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={11}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3565,7 +3565,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={12}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3595,7 +3595,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
             className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
             id="render-inline-nubbins-rtl"
             onClick={[Function]}
-            onFocus={null}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={null}
             onMouseLeave={null}
@@ -3648,7 +3648,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                   <a
                     aria-disabled={true}
                     data-index={1}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3670,7 +3670,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={2}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3741,7 +3741,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={5}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3763,7 +3763,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={6}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3785,7 +3785,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={7}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3807,7 +3807,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={8}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3829,7 +3829,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={9}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3851,7 +3851,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={10}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3873,7 +3873,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={11}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3895,7 +3895,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={12}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -3925,7 +3925,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
             className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
             id="render-inline-nubbins-rtl"
             onClick={[Function]}
-            onFocus={null}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={null}
             onMouseLeave={null}
@@ -3978,7 +3978,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                   <a
                     aria-disabled={true}
                     data-index={1}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4000,7 +4000,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={2}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4071,7 +4071,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={5}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4093,7 +4093,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={6}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4115,7 +4115,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={7}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4137,7 +4137,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={8}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4159,7 +4159,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={9}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4181,7 +4181,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={10}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4203,7 +4203,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={11}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4225,7 +4225,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={12}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4255,7 +4255,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
             className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
             id="render-inline-nubbins-rtl"
             onClick={[Function]}
-            onFocus={null}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseEnter={null}
             onMouseLeave={null}
@@ -4308,7 +4308,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                   <a
                     aria-disabled={true}
                     data-index={1}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4330,7 +4330,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={2}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4401,7 +4401,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={5}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4423,7 +4423,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={6}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4445,7 +4445,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={7}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4467,7 +4467,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={8}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4489,7 +4489,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={9}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4511,7 +4511,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={10}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4533,7 +4533,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={11}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4555,7 +4555,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
                 >
                   <a
                     data-index={12}
-                    href="javascript:void(0);"
+                    href="#"
                     onClick={[Function]}
                     role="menuitem"
                     tabIndex="-1"
@@ -4585,7 +4585,7 @@ exports[`DOM snapshots SLDSMenuDropdown Render inline w/ Nubbins, right-to-left 
           className="slds-dropdown-trigger slds-dropdown-trigger_click"
           id="render-inline-nubbins-rtl"
           onClick={[Function]}
-          onFocus={null}
+          onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseEnter={null}
           onMouseLeave={null}
@@ -4718,7 +4718,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
     className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
     id="dropdown-with-tooltips"
     onClick={[Function]}
-    onFocus={null}
+    onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseEnter={null}
     onMouseLeave={null}
@@ -4812,7 +4812,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
         >
           <a
             data-index={1}
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
             role="menuitem"
             tabIndex="-1"
@@ -4845,7 +4845,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
             <a
               aria-describedby="dropdown-with-tooltips-item-2-tooltip"
               data-index={2}
-              href="javascript:void(0);"
+              href="#"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -4891,7 +4891,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
         >
           <a
             data-index={3}
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
             role="menuitem"
             tabIndex="-1"
@@ -4929,7 +4929,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
             <a
               aria-describedby="dropdown-with-tooltips-item-5-tooltip"
               data-index={5}
-              href="javascript:void(0);"
+              href="#"
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -4975,7 +4975,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
         >
           <a
             data-index={6}
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
             role="menuitem"
             tabIndex="-1"
@@ -4997,7 +4997,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
         >
           <a
             data-index={7}
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
             role="menuitem"
             tabIndex="-1"
@@ -5024,7 +5024,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
         >
           <a
             data-index={9}
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
             role="menuitem"
             tabIndex="-1"
@@ -5051,7 +5051,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips 1`] = `
     className="slds-dropdown-trigger slds-dropdown-trigger_click"
     id="dropdown-with-tooltips"
     onClick={[Function]}
-    onFocus={null}
+    onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseEnter={null}
     onMouseLeave={null}

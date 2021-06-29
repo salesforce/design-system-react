@@ -26,16 +26,16 @@ exports[`DOM snapshots SLDSTabs Base 1`] = `
           className="slds-is-active slds-tabs_default__item"
           id="main-tabs-demo-slds-tabs_tab-0"
           role="presentation"
-          tabIndex="0"
           title="Tab 1"
         >
           <a
             aria-controls="main-tabs-demo-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
           >
             Tab 1
           </a>
@@ -44,14 +44,14 @@ exports[`DOM snapshots SLDSTabs Base 1`] = `
           className="slds-tabs_default__item"
           id="main-tabs-demo-slds-tabs_tab-1"
           role="presentation"
-          tabIndex={null}
           title="Tab 2"
         >
           <a
             aria-controls="main-tabs-demo-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -62,14 +62,14 @@ exports[`DOM snapshots SLDSTabs Base 1`] = `
           className="slds-tabs_default__item"
           id="main-tabs-demo-slds-tabs_tab-2"
           role="presentation"
-          tabIndex={null}
           title="Tab 3"
         >
           <a
             aria-controls="main-tabs-demo-slds-tabs_panel-2"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -283,7 +283,6 @@ exports[`DOM snapshots SLDSTabs Conditional 1`] = `
           className="slds-is-active slds-tabs_default__item"
           id="tabs-checkbox-tabs-1-slds-tabs_tab-0"
           role="presentation"
-          tabIndex="0"
           title="Tab A"
         >
           <a
@@ -291,9 +290,10 @@ exports[`DOM snapshots SLDSTabs Conditional 1`] = `
             aria-disabled={false}
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
           >
             Tab A
           </a>
@@ -302,7 +302,6 @@ exports[`DOM snapshots SLDSTabs Conditional 1`] = `
           className="slds-disabled slds-tabs_default__item"
           id="tabs-checkbox-tabs-1-slds-tabs_tab-1"
           role="presentation"
-          tabIndex="-1"
           title="Tab B"
         >
           <a
@@ -310,7 +309,8 @@ exports[`DOM snapshots SLDSTabs Conditional 1`] = `
             aria-disabled={true}
             aria-selected="false"
             className="slds-disabled slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -321,7 +321,6 @@ exports[`DOM snapshots SLDSTabs Conditional 1`] = `
           className="slds-disabled slds-tabs_default__item"
           id="tabs-checkbox-tabs-1-slds-tabs_tab-2"
           role="presentation"
-          tabIndex="-1"
           title="Tab C"
         >
           <a
@@ -329,7 +328,8 @@ exports[`DOM snapshots SLDSTabs Conditional 1`] = `
             aria-disabled={true}
             aria-selected="false"
             className="slds-disabled slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -474,16 +474,16 @@ exports[`DOM snapshots SLDSTabs Custom Tab Contents 1`] = `
           className="slds-is-active slds-tabs_default__item"
           id="getCustomContentTabs-slds-tabs_tab-0"
           role="presentation"
-          tabIndex="0"
           title={null}
         >
           <a
             aria-controls="getCustomContentTabs-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
           >
             <div
               aria-label="test accessibility!"
@@ -514,14 +514,14 @@ exports[`DOM snapshots SLDSTabs Custom Tab Contents 1`] = `
           className="slds-tabs_default__item"
           id="getCustomContentTabs-slds-tabs_tab-1"
           role="presentation"
-          tabIndex={null}
           title={null}
         >
           <a
             aria-controls="getCustomContentTabs-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -592,16 +592,16 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
           className="slds-is-active slds-tabs_default__item"
           id="nested-tabs-demo-slds-tabs_tab-0"
           role="presentation"
-          tabIndex="0"
           title="Tab 1"
         >
           <a
             aria-controls="nested-tabs-demo-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
           >
             Tab 1
           </a>
@@ -610,14 +610,14 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
           className="slds-tabs_default__item"
           id="nested-tabs-demo-slds-tabs_tab-1"
           role="presentation"
-          tabIndex={null}
           title="Tab 2"
         >
           <a
             aria-controls="nested-tabs-demo-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -628,14 +628,14 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
           className="slds-tabs_default__item"
           id="nested-tabs-demo-slds-tabs_tab-2"
           role="presentation"
-          tabIndex={null}
           title="Tab 3 (has children)"
         >
           <a
             aria-controls="nested-tabs-demo-slds-tabs_panel-2"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -728,16 +728,16 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
                 className="slds-is-active slds-tabs_default__item"
                 id="nested-second-layer-slds-tabs_tab-0"
                 role="presentation"
-                tabIndex="0"
                 title="Tab 1"
               >
                 <a
                   aria-controls="nested-second-layer-slds-tabs_panel-0"
                   aria-selected="true"
                   className="slds-is-active slds-tabs_default__link"
-                  href="javascript:void(0);"
+                  href="#"
+                  onClick={[Function]}
                   role="tab"
-                  tabIndex="-1"
+                  tabIndex="0"
                 >
                   Tab 1
                 </a>
@@ -746,14 +746,14 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
                 className="slds-tabs_default__item"
                 id="nested-second-layer-slds-tabs_tab-1"
                 role="presentation"
-                tabIndex={null}
                 title="Tab 2"
               >
                 <a
                   aria-controls="nested-second-layer-slds-tabs_panel-1"
                   aria-selected="false"
                   className="slds-tabs_default__link"
-                  href="javascript:void(0);"
+                  href="#"
+                  onClick={[Function]}
                   role="tab"
                   tabIndex="-1"
                 >
@@ -764,14 +764,14 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
                 className="slds-tabs_default__item"
                 id="nested-second-layer-slds-tabs_tab-2"
                 role="presentation"
-                tabIndex={null}
                 title="Tab 3 (Also has children!)"
               >
                 <a
                   aria-controls="nested-second-layer-slds-tabs_panel-2"
                   aria-selected="false"
                   className="slds-tabs_default__link"
-                  href="javascript:void(0);"
+                  href="#"
+                  onClick={[Function]}
                   role="tab"
                   tabIndex="-1"
                 >
@@ -846,16 +846,16 @@ exports[`DOM snapshots SLDSTabs Nested 1`] = `
                       className="slds-is-active slds-tabs_default__item"
                       id="nested-third-layer-slds-tabs_tab-0"
                       role="presentation"
-                      tabIndex="0"
                       title="Tab 1 (no children!)"
                     >
                       <a
                         aria-controls="nested-third-layer-slds-tabs_panel-0"
                         aria-selected="true"
                         className="slds-is-active slds-tabs_default__link"
-                        href="javascript:void(0);"
+                        href="#"
+                        onClick={[Function]}
                         role="tab"
-                        tabIndex="-1"
+                        tabIndex="0"
                       >
                         Tab 1 (no children!)
                       </a>
@@ -998,16 +998,16 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
           className="slds-is-active slds-tabs_default__item"
           id="DemoTabsOutsideControlTabs-slds-tabs_tab-0"
           role="presentation"
-          tabIndex="0"
           title="Monday"
         >
           <a
             aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
           >
             Monday
           </a>
@@ -1016,14 +1016,14 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
           className="slds-tabs_default__item"
           id="DemoTabsOutsideControlTabs-slds-tabs_tab-1"
           role="presentation"
-          tabIndex={null}
           title="Tuesday"
         >
           <a
             aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1034,14 +1034,14 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
           className="slds-tabs_default__item"
           id="DemoTabsOutsideControlTabs-slds-tabs_tab-2"
           role="presentation"
-          tabIndex={null}
           title="Wednesday"
         >
           <a
             aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-2"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1052,14 +1052,14 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
           className="slds-tabs_default__item"
           id="DemoTabsOutsideControlTabs-slds-tabs_tab-3"
           role="presentation"
-          tabIndex={null}
           title="Thursday"
         >
           <a
             aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-3"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1070,14 +1070,14 @@ exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
           className="slds-tabs_default__item"
           id="DemoTabsOutsideControlTabs-slds-tabs_tab-4"
           role="presentation"
-          tabIndex={null}
           title="Friday"
         >
           <a
             aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-4"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1175,16 +1175,16 @@ exports[`DOM snapshots SLDSTabs Scoped 1`] = `
           className="slds-is-active slds-tabs_scoped__item"
           id="scoped-tabs-demo-slds-tabs_tab-0"
           role="presentation"
-          tabIndex="0"
           title="Tab 1"
         >
           <a
             aria-controls="scoped-tabs-demo-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_scoped__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
           >
             Tab 1
           </a>
@@ -1193,14 +1193,14 @@ exports[`DOM snapshots SLDSTabs Scoped 1`] = `
           className="slds-tabs_scoped__item"
           id="scoped-tabs-demo-slds-tabs_tab-1"
           role="presentation"
-          tabIndex={null}
           title="Tab 2"
         >
           <a
             aria-controls="scoped-tabs-demo-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_scoped__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1211,14 +1211,14 @@ exports[`DOM snapshots SLDSTabs Scoped 1`] = `
           className="slds-tabs_scoped__item"
           id="scoped-tabs-demo-slds-tabs_tab-2"
           role="presentation"
-          tabIndex={null}
           title="Tab 3"
         >
           <a
             aria-controls="scoped-tabs-demo-slds-tabs_panel-2"
             aria-selected="false"
             className="slds-tabs_scoped__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1316,16 +1316,16 @@ exports[`DOM snapshots SLDSTabs Tab Intercept Panel Select 1`] = `
           className="slds-is-active slds-tabs_default__item"
           id="DemoTabsInterceptSelect-slds-tabs_tab-0"
           role="presentation"
-          tabIndex="0"
           title="Panel with intercept"
         >
           <a
             aria-controls="DemoTabsInterceptSelect-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
           >
             Panel with intercept
           </a>
@@ -1334,14 +1334,14 @@ exports[`DOM snapshots SLDSTabs Tab Intercept Panel Select 1`] = `
           className="slds-tabs_default__item"
           id="DemoTabsInterceptSelect-slds-tabs_tab-1"
           role="presentation"
-          tabIndex={null}
           title="Unreachable panel"
         >
           <a
             aria-controls="DemoTabsInterceptSelect-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1393,16 +1393,16 @@ exports[`DOM snapshots SLDSTabs Tab Intercept Panel Select 1`] = `
           className="slds-is-active slds-tabs_default__item"
           id="DemoTabsInterceptSelect2-slds-tabs_tab-0"
           role="presentation"
-          tabIndex="0"
           title="Panel still working as intended"
         >
           <a
             aria-controls="DemoTabsInterceptSelect2-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
           >
             Panel still working as intended
           </a>
@@ -1411,14 +1411,14 @@ exports[`DOM snapshots SLDSTabs Tab Intercept Panel Select 1`] = `
           className="slds-tabs_default__item"
           id="DemoTabsInterceptSelect2-slds-tabs_tab-1"
           role="presentation"
-          tabIndex={null}
           title="Destination panel"
         >
           <a
             aria-controls="DemoTabsInterceptSelect2-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1477,16 +1477,16 @@ exports[`DOM snapshots SLDSTabs Unique Generated IDs 1`] = `
           className="slds-is-active slds-tabs_default__item"
           id="tabs-demo-id-1-slds-tabs_tab-0"
           role="presentation"
-          tabIndex="0"
           title="Only 1 Tab"
         >
           <a
             aria-controls="tabs-demo-id-1-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
           >
             Only 1 Tab
           </a>
@@ -1524,16 +1524,16 @@ exports[`DOM snapshots SLDSTabs Unique Generated IDs 1`] = `
           className="slds-is-active slds-tabs_default__item"
           id="tabs-demo-id-2-slds-tabs_tab-0"
           role="presentation"
-          tabIndex="0"
           title="Only 1 Tab"
         >
           <a
             aria-controls="tabs-demo-id-2-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
           >
             Only 1 Tab
           </a>
@@ -1586,16 +1586,16 @@ exports[`DOM snapshots SLDSTabs Vertical 1`] = `
           className="slds-is-active slds-vertical-tabs__nav-item"
           id="scoped-tabs-demo-slds-tabs_tab-0"
           role="presentation"
-          tabIndex="0"
           title="Tab 1"
         >
           <a
             aria-controls="scoped-tabs-demo-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-vertical-tabs__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
           >
             Tab 1
           </a>
@@ -1604,14 +1604,14 @@ exports[`DOM snapshots SLDSTabs Vertical 1`] = `
           className="slds-vertical-tabs__nav-item"
           id="scoped-tabs-demo-slds-tabs_tab-1"
           role="presentation"
-          tabIndex={null}
           title="Tab 2"
         >
           <a
             aria-controls="scoped-tabs-demo-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-vertical-tabs__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1622,7 +1622,6 @@ exports[`DOM snapshots SLDSTabs Vertical 1`] = `
           className="slds-disabled slds-vertical-tabs__nav-item"
           id="scoped-tabs-demo-slds-tabs_tab-2"
           role="presentation"
-          tabIndex="-1"
           title="Tab 3 (disabled)"
         >
           <a
@@ -1630,7 +1629,8 @@ exports[`DOM snapshots SLDSTabs Vertical 1`] = `
             aria-disabled={true}
             aria-selected="false"
             className="slds-disabled slds-vertical-tabs__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1641,14 +1641,14 @@ exports[`DOM snapshots SLDSTabs Vertical 1`] = `
           className="slds-vertical-tabs__nav-item"
           id="scoped-tabs-demo-slds-tabs_tab-3"
           role="presentation"
-          tabIndex={null}
           title="Tab 4"
         >
           <a
             aria-controls="scoped-tabs-demo-slds-tabs_panel-3"
             aria-selected="false"
             className="slds-vertical-tabs__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1759,16 +1759,16 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
           className="slds-is-active slds-tabs_default__item"
           id="disabled-tabs-demo-slds-tabs_tab-0"
           role="presentation"
-          tabIndex="0"
           title="Tab 1"
         >
           <a
             aria-controls="disabled-tabs-demo-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
           >
             Tab 1
           </a>
@@ -1777,7 +1777,6 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
           className="slds-disabled slds-tabs_default__item"
           id="disabled-tabs-demo-slds-tabs_tab-1"
           role="presentation"
-          tabIndex="-1"
           title="Tab 2"
         >
           <a
@@ -1785,7 +1784,8 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
             aria-disabled={true}
             aria-selected="false"
             className="slds-disabled slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1796,14 +1796,14 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
           className="slds-tabs_default__item"
           id="disabled-tabs-demo-slds-tabs_tab-2"
           role="presentation"
-          tabIndex={null}
           title="Tab 3"
         >
           <a
             aria-controls="disabled-tabs-demo-slds-tabs_panel-2"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1814,14 +1814,14 @@ exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
           className="slds-tabs_default__item"
           id="disabled-tabs-demo-slds-tabs_tab-3"
           role="presentation"
-          tabIndex={null}
           title="Tab 4"
         >
           <a
             aria-controls="disabled-tabs-demo-slds-tabs_panel-3"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -1943,16 +1943,16 @@ exports[`DOM snapshots SLDSTabs With error tab 1`] = `
           className="slds-is-active slds-tabs_default__item"
           id="disabled-tabs-demo-slds-tabs_tab-0"
           role="presentation"
-          tabIndex="0"
           title="Tab 1"
         >
           <a
             aria-controls="disabled-tabs-demo-slds-tabs_panel-0"
             aria-selected="true"
             className="slds-is-active slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
-            tabIndex="-1"
+            tabIndex="0"
           >
             Tab 1
           </a>
@@ -1961,14 +1961,14 @@ exports[`DOM snapshots SLDSTabs With error tab 1`] = `
           className="slds-tabs_default__item"
           id="disabled-tabs-demo-slds-tabs_tab-1"
           role="presentation"
-          tabIndex={null}
           title="Tab 2"
         >
           <a
             aria-controls="disabled-tabs-demo-slds-tabs_panel-1"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -2001,14 +2001,14 @@ exports[`DOM snapshots SLDSTabs With error tab 1`] = `
           className="slds-tabs_default__item"
           id="disabled-tabs-demo-slds-tabs_tab-2"
           role="presentation"
-          tabIndex={null}
           title="Tab 3"
         >
           <a
             aria-controls="disabled-tabs-demo-slds-tabs_panel-2"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >
@@ -2019,14 +2019,14 @@ exports[`DOM snapshots SLDSTabs With error tab 1`] = `
           className="slds-tabs_default__item"
           id="disabled-tabs-demo-slds-tabs_tab-3"
           role="presentation"
-          tabIndex={null}
           title="Tab 4"
         >
           <a
             aria-controls="disabled-tabs-demo-slds-tabs_panel-3"
             aria-selected="false"
             className="slds-tabs_default__link"
-            href="javascript:void(0);"
+            href="#"
+            onClick={[Function]}
             role="tab"
             tabIndex="-1"
           >

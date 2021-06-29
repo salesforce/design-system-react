@@ -40,6 +40,7 @@ import {
 	MENU_DROPDOWN_TRIGGER,
 	LIST,
 } from '../../utilities/constants';
+import { IconSettingsContext } from '../icon-settings';
 
 const documentDefined = typeof document !== 'undefined';
 
@@ -282,7 +283,7 @@ const propTypes = {
 		'bottom right',
 	]),
 	/**
-	 * Is only called when `openOn` is set to `hover` and when the triggering button loses focus.
+	 * Called when the triggering button loses focus.
 	 */
 	onBlur: PropTypes.func,
 	/**
@@ -290,7 +291,7 @@ const propTypes = {
 	 */
 	onClick: PropTypes.func,
 	/**
-	 * Is only called when `openOn` is set to `hover` and when the triggering button gains focus.
+	 * Called when the triggering button gains focus.
 	 */
 	onFocus: PropTypes.func,
 	/**
@@ -450,7 +451,7 @@ class MenuDropdown extends React.Component {
 
 	componentDidUpdate(prevProps) {
 		if (prevProps.value !== this.props.value) {
-			const nextState = this.getCurrentSelectedIndices(prevProps);
+			const nextState = this.getCurrentSelectedIndices(this.props);
 			// eslint-disable-next-line react/no-did-update-set-state
 			this.setState(nextState);
 		}
@@ -460,7 +461,7 @@ class MenuDropdown extends React.Component {
 		}
 
 		if (!isEqual(prevProps.options, this.props.options)) {
-			this.navigableItems = getNavigableItems(prevProps.options);
+			this.navigableItems = getNavigableItems(this.props.options);
 		}
 	}
 
@@ -561,6 +562,10 @@ class MenuDropdown extends React.Component {
 
 		if (!this.state.triggerRendered) {
 			this.setState({ triggerRendered: true });
+		}
+
+		if (trigger && this.props.requestFocus && this.props.onRequestFocus) {
+			this.props.onRequestFocus(trigger);
 		}
 	};
 
@@ -1067,7 +1072,7 @@ class MenuDropdown extends React.Component {
 						? this.handleClick
 						: this.props.onClick
 				}
-				onFocus={this.props.openOn === 'hover' ? this.handleFocus : null}
+				onFocus={this.handleFocus}
 				onKeyDown={this.handleKeyDown}
 				onMouseDown={this.props.onMouseDown}
 				onMouseEnter={
@@ -1094,10 +1099,7 @@ class MenuDropdown extends React.Component {
 	}
 }
 
-MenuDropdown.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+MenuDropdown.contextType = IconSettingsContext;
 MenuDropdown.propTypes = propTypes;
 MenuDropdown.defaultProps = defaultProps;
 

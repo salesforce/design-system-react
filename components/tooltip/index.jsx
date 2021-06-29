@@ -13,6 +13,7 @@ import classNames from 'classnames';
 // shortid is a short, non-sequential, url-friendly, unique id generator
 import shortid from 'shortid';
 
+import EventUtil from '../../utilities/event';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 
 import Dialog from '../utilities/dialog';
@@ -23,6 +24,7 @@ import Button from '../button';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 import componentDoc from './component.json';
+import { IconSettingsContext } from '../icon-settings';
 
 // ### Display Name
 // Always use the canonical component name as the React display name.
@@ -259,7 +261,10 @@ class Tooltip extends React.Component {
 
 		if (noChildrenProvided && this.props.onClickTrigger) {
 			children = [
-				<a href="javascript:void(0)" onClick={this.props.onClickTrigger}>
+				<a
+					href="#"
+					onClick={EventUtil.trappedHandler(this.props.onClickTrigger)}
+				>
 					<Icon
 						category="utility"
 						name="info"
@@ -450,10 +455,7 @@ class Tooltip extends React.Component {
 	}
 }
 
-Tooltip.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+Tooltip.contextType = IconSettingsContext;
 Tooltip.displayName = displayName;
 Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;

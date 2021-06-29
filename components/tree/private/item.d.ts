@@ -63,6 +63,6 @@ declare module '@salesforce/design-system-react/components/tree/private/item' {
 		parent?: Record<string, any>;
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

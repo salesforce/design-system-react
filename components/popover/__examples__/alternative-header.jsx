@@ -31,7 +31,7 @@ const panelContent = (
 			</dt>
 			<dd className="slds-tile">
 				<p className="slds-truncate" title="Tesla - Mule ESB">
-					<a href="javascript:void(0);">Tesla - Mule ESB</a>
+					<a href="#">Tesla - Mule ESB</a>
 				</p>
 				<div className="slds-tile__detail">
 					<dl className="slds-dl_horizontal slds-text-body_small">
@@ -59,7 +59,7 @@ const panelContent = (
 				</div>
 			</dd>
 			<dd className="slds-m-top_x-small slds-text-align_right">
-				<a href="javascript:void(0);" title="View all Opportunities">
+				<a href="#" title="View all Opportunities">
 					View All
 				</a>
 			</dd>

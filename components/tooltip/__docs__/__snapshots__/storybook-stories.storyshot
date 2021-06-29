@@ -2084,7 +2084,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
           id="options"
           onBlur={[Function]}
           onClick={[Function]}
-          onFocus={null}
+          onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseEnter={null}
           onMouseLeave={null}
@@ -2140,7 +2140,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Learn More 1`] = `
     }
   >
     <a
-      href="javascript:void(0)"
+      href="#"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}

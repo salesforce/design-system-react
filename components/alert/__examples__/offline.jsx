@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Alert from '~/components/alert'; // `~` is replaced with design-system-react at runtime
 import AlertContainer from '~/components/alert/container'; // `~` is replaced with design-system-react at runtime
 
@@ -14,9 +15,7 @@ class Example extends React.Component {
 							heading: 'You are in offline mode.',
 							headingLink: 'More information',
 						}}
-						onClickHeadingLink={() => {
-							console.log('Link clicked.');
-						}}
+						onClickHeadingLink={() => console.log('onClickHeadingLink')}
 						variant="offline"
 					/>
 				</AlertContainer>

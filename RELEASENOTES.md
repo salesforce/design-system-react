@@ -31,6 +31,66 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.35
+
+**Minor Features**
+- `Combobox`: Add `inputRef` prop
+
+**Maintenance**
+- Update `react-modal` to 3.14.2
+
+## Release 0.10.34
+
+**Maintenance**
+- Update documentation site examples
+
+## Release 0.10.33
+
+**Minor Features**
+
+- `BuilderHeader`: Customizable utilities section
+- `Combobox`: Allow "None" selection (read-only variant)
+- `DataTable`: Add keyboard navigation support
+- `DatePicker`: Add error state
+
+**Bugfixes**
+
+- `Combobox`: Add `title` to options
+- `RadioGroup`: Allow radios to be disabled individually
+
+## Release 0.10.32
+
+**React 17 compatibility updates**
+
+* Remove legacy 16.x context API
+* Update package to React 17
+* Remove deprecated react lifecycle methods
+* Remove javascript:void(0) URLs
+
+**Bug fixes**
+
+* `Modal`: Update structure for accessibility
+* `DataTable`: Fix infinite scroll when items are shorter than table height
+* `Dropdown`: Update selected option state
+* Switch Typescript FC returntype to JSX.Element
+* `Icon`: Fix icon snapshot (after inline icon updates)
+
+**Maintenance**
+
+* `PageHeader`: Add note about info variant and record-home variant to prop description
+* Update @salesforce-ux/icons from 9.27.0 to 9.40.1
+* Update Storybook to 6.2.0
+
+## Release 0.10.31
+
+**Bugfixes**
+
+- `Button`: Add support for `data-*` attributes
+- `ProgressIndicator`: Add support for `onClick`
+- `Tabs`: Move `tabIndex` from `<li>` to `<a>`
+- `VerticalNavigation`: Add `aria-current` tag to selected item
+- Adjust TypeScript definitions to make `aria-*` props optional
+
 ## Release 0.10.30
 
 **Bugfixes**

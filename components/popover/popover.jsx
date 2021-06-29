@@ -41,6 +41,7 @@ import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
+import { IconSettingsContext } from '../icon-settings';
 
 const documentDefined = typeof document !== 'undefined';
 
@@ -557,38 +558,11 @@ class Popover extends React.Component {
 
 		if (props.variant === 'error' || props.variant === 'warning') {
 			body = (
-				// THIS WRAPPING DIV IS NOT IN SLDS MARKUP
-				<div>
-					<div
-						id={`${this.getId()}-dialog-body`}
-						className={classNames(
-							'slds-popover__body',
-							this.props.classNameBody
-						)}
-						// REMOVE IN THE FUTURE: SLDS OVERRIDE
-						// Possible solution in future is to use .slds-popover__body_small
-						style={{
-							borderBottom: 'none',
-						}}
-					>
-						{props.body}
-					</div>
-					<div
-						// GRADIENT FOOTER - SLDS OVERRIDE
-						// REMOVE IN THE FUTURE (HOPEFULLY)
-						style={{
-							position: 'absolute',
-							bottom: 0,
-							left: 0,
-							width: '100%',
-							textAlign: 'center',
-							margin: 0,
-							padding: '5px 0',
-							/* "transparent" only works here because == rgba(0,0,0,0) */
-							backgroundImage:
-								'linear-gradient(to bottom, transparent, rgba(255,255,255,100)',
-						}}
-					/>
+				<div
+					id={`${this.getId()}-dialog-body`}
+					className={classNames('slds-popover__body', this.props.classNameBody)}
+				>
+					{props.body}
 				</div>
 			);
 		} else if (
@@ -832,9 +806,6 @@ class Popover extends React.Component {
 	}
 }
 
-Popover.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+Popover.contextType = IconSettingsContext;
 export default Popover;
 export { PopoverNubbinPositions };

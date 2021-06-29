@@ -15,6 +15,6 @@ declare module '@salesforce/design-system-react/components/progress-indicator/pr
 	/**
 	 * ProgressBar renders the blue/gray progress bar and dynamically updates its completion percentage
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

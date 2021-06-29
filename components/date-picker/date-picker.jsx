@@ -33,6 +33,7 @@ import KEYS from '../../utilities/key-code';
 import lowPriorityWarning from '../../utilities/warning/low-priority-warning';
 
 import { DATE_PICKER } from '../../utilities/constants';
+import { IconSettingsContext } from '../icon-settings';
 
 const propTypes = {
 	/**
@@ -84,6 +85,10 @@ const propTypes = {
 	 * Value of input that gets passed to `parser` prop on initial render. This prop is only present for uncontrolled use of Datepicker which is _highly discouraged_. A better name for this prop would be `defaultFormatedValue`. Please use the `value` prop instead. _Not tested._
 	 */
 	formattedValue: PropTypes.string,
+	/**
+	 * Applies the error style to the component.
+	 */
+	hasError: PropTypes.bool,
 	/**
 	 * Prevents the dropdown from changing position based on the viewport/window. If set to true your dropdowns can extend outside the viewport _and_ overflow outside of a scrolling parent. If this happens, you might want to consider making the dropdowns contents scrollable to fit the menu on the screen. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
 	 */
@@ -621,6 +626,7 @@ class Datepicker extends React.Component {
 					'slds-dropdown-trigger_click',
 					'ignore-react-onclickoutside',
 					{
+						'slds-has-error': this.props.hasError,
 						'slds-is-open': this.getIsOpen(),
 					},
 					this.props.triggerClassName
@@ -633,10 +639,7 @@ class Datepicker extends React.Component {
 	}
 }
 
-Datepicker.contextTypes = {
-	iconPath: PropTypes.string,
-};
-
+Datepicker.contextType = IconSettingsContext;
 Datepicker.displayName = DATE_PICKER;
 Datepicker.propTypes = propTypes;
 Datepicker.defaultProps = defaultProps;

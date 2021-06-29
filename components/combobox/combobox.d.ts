@@ -24,9 +24,9 @@ declare module '@salesforce/design-system-react/components/combobox/combobox' {
 		}>;
 		/**
 		 * The `aria-describedby` attribute is used to indicate the IDs of the elements that describe the object. It is used to establish a relationship between widgets or groups and text that described them.
-		 * This is very similar to aria-labelledby: a label describes the essence of an object, while a description provides more information that the user might need. _Tested with snapshot testing._
+		 * This is very similar to aria-labelledby?: a label describes the essence of an object, while a description provides more information that the user might need. _Tested with snapshot testing._
 		 */
-		'aria-describedby': string;
+		'aria-describedby'?: string;
 		/**
 		 * CSS classes to be added to tag with `.slds-combobox`. Uses `classNames` [API](https://github.com/JedWatson/classnames). _Tested with snapshot testing._
 		 */
@@ -310,6 +310,6 @@ declare module '@salesforce/design-system-react/components/combobox/combobox' {
 	/**
 	 * A widget that provides a user with an input field that is either an autocomplete or readonly, accompanied with a listbox of pre-definfined options.
 	 */
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

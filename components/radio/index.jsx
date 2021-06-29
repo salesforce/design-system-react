@@ -79,6 +79,22 @@ const propTypes = {
 	 */
 	onChange: PropTypes.func,
 	/**
+	 * This event fires when the Checkbox is focused. It passes in `{ event }`.
+	 */
+	onFocus: PropTypes.func,
+	/**
+	 * Triggered to indicate that this component should receive focus.
+	 */
+	onRequestFocus: PropTypes.func,
+	/**
+	 * If true, will trigger `onRequestFocus`.
+	 */
+	requestFocus: PropTypes.bool,
+	/**
+	 * Write <code>"-1"</code> if you don't want the user to tab to the button.
+	 */
+	tabIndex: PropTypes.string,
+	/**
 	 * The value of this radio input.
 	 */
 	value: PropTypes.string,
@@ -136,10 +152,6 @@ class Radio extends React.Component {
 	constructor(props) {
 		super(props);
 		this.preventDuplicateChangeEvent = false;
-	}
-
-	// eslint-disable-next-line camelcase, react/sort-comp
-	UNSAFE_componentWillMount() {
 		checkProps(RADIO, this.props, componentDoc);
 		this.generatedId = shortid.generate();
 	}
@@ -281,6 +293,7 @@ class Radio extends React.Component {
 					{...(this.props.checked !== undefined
 						? { checked: this.props.checked }
 						: { defaultChecked: this.props.defaultChecked })}
+					onFocus={this.props.onFocus}
 					onChange={(event) => {
 						this.handleChange(event);
 					}}
@@ -308,11 +321,15 @@ class Radio extends React.Component {
 						}
 					}}
 					disabled={this.props.disabled}
+					tabIndex={this.props.tabIndex}
 					{...ariaProps}
 					{...dataProps}
 					ref={(input) => {
 						if (this.props.refs && this.props.refs.input) {
 							this.props.refs.input(input);
+						}
+						if (input && this.props.requestFocus && this.props.onRequestFocus) {
+							this.props.onRequestFocus(input);
 						}
 					}}
 				/>

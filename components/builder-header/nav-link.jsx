@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import EventUtil from '../../utilities/event';
 
 import Icon from '../icon';
 
@@ -58,30 +59,29 @@ const BuilderHeaderNavLink = (props) => {
 		...defaultProps.assistiveText,
 		...props.assistiveText,
 	};
+
 	return (
-		<li className="slds-builder-header__nav-item">
-			<a
-				className="slds-builder-header__item-action slds-media slds-media_center"
-				href="javascript:void(0)"
-				onClick={props.onClick}
-			>
-				<span className="slds-media__figure">
-					<Icon
-						assistiveText={{ label: assistiveText.icon }}
-						category={props.iconCategory}
-						containerClassName="slds-icon_container slds-icon-utility-settings slds-current-color"
-						name={props.iconName}
-						path={props.iconPath}
-						size="x-small"
-					/>
+		<a
+			className="slds-builder-header__item-action slds-media slds-media_center"
+			href="#"
+			onClick={EventUtil.trappedHandler(props.onClick)}
+		>
+			<span className="slds-media__figure">
+				<Icon
+					assistiveText={{ label: assistiveText.icon }}
+					category={props.iconCategory}
+					containerClassName="slds-icon_container slds-icon-utility-settings slds-current-color"
+					name={props.iconName}
+					path={props.iconPath}
+					size="x-small"
+				/>
+			</span>
+			<span className="slds-media__body">
+				<span className="slds-truncate" title={props.label}>
+					{props.label}
 				</span>
-				<span className="slds-media__body">
-					<span className="slds-truncate" title={props.label}>
-						{props.label}
-					</span>
-				</span>
-			</a>
-		</li>
+			</span>
+		</a>
 	);
 };
 

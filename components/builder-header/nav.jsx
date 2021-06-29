@@ -33,7 +33,7 @@ const BuilderHeaderNav = (props) => (
 					child.type.displayName === BUILDER_HEADER_NAV_LINK ||
 					child.type.displayName === BUILDER_HEADER_NAV_DROPDOWN
 				) {
-					return child;
+					return <li className="slds-builder-header__nav-item">{child}</li>;
 				}
 				return null;
 			})}

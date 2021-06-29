@@ -7,38 +7,31 @@ const accounts = [
 	{
 		id: '1',
 		label: 'Acme',
-		subTitle: 'Account • San Francisco',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
-		subTitle: 'Account • San Francisco',
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
-		subTitle: 'Account • Boston, MA',
 	},
 	{
 		id: '4',
 		label: 'Tyrell Corp',
-		subTitle: 'Account • San Francisco, CA',
 	},
 	{
 		id: '5',
 		label: 'Paper St. Soap Company',
-		subTitle: 'Account • Beloit, WI',
 	},
 	{
 		id: '6',
 		label: 'Nakatomi Investments',
-		subTitle: 'Account • Chicago, IL',
 	},
 	{ id: '7', label: 'Acme Landscaping' },
 	{
 		id: '8',
 		label: 'Acme Construction',
-		subTitle: 'Account • Grand Marais, MN',
 	},
 ];
 

@@ -4,19 +4,13 @@ import Dropdown from '~/components/menu-dropdown';
 import DataTable from '~/components/data-table'; // `~` is replaced with design-system-react at runtime
 import DataTableColumn from '~/components/data-table/column';
 import DataTableCell from '~/components/data-table/cell';
+import DataTableInteractiveLink from '~/components/data-table/interactive-link';
 import DataTableRowActions from '~/components/data-table/row-actions';
 import IconSettings from '~/components/icon-settings';
 
 const CustomDataTableCell = ({ children, ...props }) => (
 	<DataTableCell title={children} {...props}>
-		<a
-			href="javascript:void(0);"
-			onClick={(event) => {
-				event.preventDefault();
-			}}
-		>
-			{children}
-		</a>
+		<DataTableInteractiveLink>{children}</DataTableInteractiveLink>
 	</DataTableCell>
 );
 CustomDataTableCell.displayName = DataTableCell.displayName;
@@ -218,6 +212,7 @@ class Example extends React.Component {
 						}}
 						fixedHeader
 						fixedLayout
+						keyboardNavigation
 						items={this.state.items}
 						id="DataTableExample-FixedHeaders"
 						onRowChange={this.handleChanged}

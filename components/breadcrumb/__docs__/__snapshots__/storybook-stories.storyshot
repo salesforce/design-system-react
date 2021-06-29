@@ -15,7 +15,7 @@ exports[`DOM snapshots SLDSBreadcrumb 1 Item 1`] = `
         className="slds-breadcrumb__item"
       >
         <a
-          href="javascript:void(0);"
+          href="#entity"
         >
           Parent Entity
         </a>
@@ -40,7 +40,7 @@ exports[`DOM snapshots SLDSBreadcrumb 2 Items 1`] = `
         className="slds-breadcrumb__item"
       >
         <a
-          href="javascript:void(0);"
+          href="#entity"
           id="parent-entity"
         >
           Parent Entity
@@ -50,7 +50,7 @@ exports[`DOM snapshots SLDSBreadcrumb 2 Items 1`] = `
         className="slds-breadcrumb__item"
       >
         <a
-          href="javascript:void(0);"
+          href="#record"
         >
           Parent Record Name
         </a>
@@ -78,7 +78,7 @@ exports[`DOM snapshots SLDSBreadcrumb Base with overflow menu 1`] = `
           className="slds-dropdown-trigger slds-dropdown-trigger_click"
           id="ADFA34_-dropdown"
           onClick={[Function]}
-          onFocus={null}
+          onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseEnter={null}
           onMouseLeave={null}
@@ -112,7 +112,7 @@ exports[`DOM snapshots SLDSBreadcrumb Base with overflow menu 1`] = `
         className="slds-breadcrumb__item"
       >
         <a
-          href="javascript:void(0);"
+          href="#entity"
         >
           Parent Entity
         </a>
@@ -121,7 +121,7 @@ exports[`DOM snapshots SLDSBreadcrumb Base with overflow menu 1`] = `
         className="slds-breadcrumb__item"
       >
         <a
-          href="javascript:void(0);"
+          href="#record"
         >
           Parent Record Name
         </a>

@@ -17,7 +17,7 @@ storiesOf(NOTIFICATION, module)
 		<Notification
 			content={[
 				'Your new contact ',
-				<a href="javascript:void(0);" key="0123">
+				<a href="#" key="0123">
 					Sara Smith
 				</a>,
 				' was successfully created.',

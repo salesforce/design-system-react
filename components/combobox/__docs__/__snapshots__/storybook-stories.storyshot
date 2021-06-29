@@ -472,11 +472,13 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                     >
                       <span
                         className="slds-listbox__option-text slds-listbox__option-text_entity"
+                        title="A very very very very very very very very very very very long title to show how menu width will behave"
                       >
                         A very very very very very very very very very very very long title to show how menu width will behave
                       </span>
                       <span
                         className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                        title="Account • San Francisco "
                       >
                         Account • San Francisco 
                       </span>
@@ -520,11 +522,13 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                     >
                       <span
                         className="slds-listbox__option-text slds-listbox__option-text_entity"
+                        title="Salesforce.com, Inc."
                       >
                         Salesforce.com, Inc.
                       </span>
                       <span
                         className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                        title="Account • San Francisco"
                       >
                         Account • San Francisco
                       </span>
@@ -568,11 +572,13 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                     >
                       <span
                         className="slds-listbox__option-text slds-listbox__option-text_entity"
+                        title="Paddy's Pub"
                       >
                         Paddy's Pub
                       </span>
                       <span
                         className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                        title="Account • Boston, MA"
                       >
                         Account • Boston, MA
                       </span>
@@ -616,11 +622,13 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                     >
                       <span
                         className="slds-listbox__option-text slds-listbox__option-text_entity"
+                        title="Opportunities"
                       >
                         Opportunities
                       </span>
                       <span
                         className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                        title="Opportunity • San Francisco, CA"
                       >
                         Opportunity • San Francisco, CA
                       </span>
@@ -664,11 +672,13 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                     >
                       <span
                         className="slds-listbox__option-text slds-listbox__option-text_entity"
+                        title="Nakatomi Investments"
                       >
                         Nakatomi Investments
                       </span>
                       <span
                         className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                        title="Opportunity • Chicago, IL"
                       >
                         Opportunity • Chicago, IL
                       </span>
@@ -712,11 +722,13 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                     >
                       <span
                         className="slds-listbox__option-text slds-listbox__option-text_entity"
+                        title="Acme Landscaping"
                       >
                         Acme Landscaping
                       </span>
                       <span
                         className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                        title=" "
                       >
                          
                       </span>
@@ -760,11 +772,13 @@ exports[`DOM snapshots SLDSCombobox Base Inherit Menu Width - Right to Left (RTL
                     >
                       <span
                         className="slds-listbox__option-text slds-listbox__option-text_entity"
+                        title="Acme Construction"
                       >
                         Acme Construction
                       </span>
                       <span
                         className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                        title="Opportunity • Grand Marais, MN"
                       >
                         Opportunity • Grand Marais, MN
                       </span>
@@ -1636,11 +1650,13 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Paddy's Pub"
                     >
                       Paddy's Pub
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • Boston, MA"
                     >
                       Account • Boston, MA
                     </span>
@@ -1710,11 +1726,13 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     >
                       <span
                         className="slds-listbox__option-text slds-listbox__option-text_entity slds-disabled-text"
+                        title="Tyrell Corp"
                       >
                         Tyrell Corp
                       </span>
                       <span
                         className="slds-listbox__option-meta slds-listbox__option-meta_entity slds-disabled-text"
+                        title="Account • San Francisco, CA"
                       >
                         Account • San Francisco, CA
                       </span>
@@ -1779,11 +1797,13 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Paper St. Soap Company"
                     >
                       Paper St. Soap Company
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • Beloit, WI"
                     >
                       Account • Beloit, WI
                     </span>
@@ -1853,11 +1873,13 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     >
                       <span
                         className="slds-listbox__option-text slds-listbox__option-text_entity slds-disabled-text"
+                        title="Nakatomi Investments"
                       >
                         Nakatomi Investments
                       </span>
                       <span
                         className="slds-listbox__option-meta slds-listbox__option-meta_entity slds-disabled-text"
+                        title="Account • Chicago, IL"
                       >
                         Account • Chicago, IL
                       </span>
@@ -1922,11 +1944,13 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Acme Landscaping"
                     >
                       Acme Landscaping
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title=" "
                     >
                        
                     </span>
@@ -1971,11 +1995,13 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Acme Construction"
                     >
                       Acme Construction
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • Grand Marais, MN"
                     >
                       Account • Grand Marais, MN
                     </span>
@@ -2591,6 +2617,7 @@ exports[`DOM snapshots SLDSCombobox Base With Input 1`] = `
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Paddy's Pub"
                     >
                       Paddy's Pu
                       <span
@@ -2602,6 +2629,7 @@ exports[`DOM snapshots SLDSCombobox Base With Input 1`] = `
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • Boston, MA"
                     >
                       Account • 
                       <span
@@ -2651,11 +2679,13 @@ exports[`DOM snapshots SLDSCombobox Base With Input 1`] = `
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Paper St. Soap Company"
                     >
                       Paper St. Soap Company
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • Beloit, WI"
                     >
                       Account • 
                       <span
@@ -3718,11 +3748,13 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Acme"
                     >
                       Acme
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • San Francisco"
                     >
                       Account • San Francisco
                     </span>
@@ -3766,11 +3798,13 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Salesforce.com, Inc."
                     >
                       Salesforce.com, Inc.
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • San Francisco"
                     >
                       Account • San Francisco
                     </span>
@@ -3814,11 +3848,13 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Paddy's Pub"
                     >
                       Paddy's Pub
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • Boston, MA"
                     >
                       Account • Boston, MA
                     </span>
@@ -3862,11 +3898,13 @@ exports[`DOM snapshots SLDSCombobox Inline Single Search/Add Entities - Open 1`]
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Tyrell Corp"
                     >
                       Tyrell Corp
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • San Francisco, CA"
                     >
                       Account • San Francisco, CA
                     </span>
@@ -4450,6 +4488,73 @@ exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSCombobox Readonly Multiple Selection Deselect 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-readonly-multiple"
+    >
+      Search
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              id="combobox-readonly-multiple"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Select an Option"
+              readOnly={true}
+              required={false}
+              role="combobox"
+              type="text"
+              value=""
+            />
+            <span
+              className="slds-icon_container slds-input__icon slds-input__icon_right"
+            >
+              <svg
+                aria-hidden={true}
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSCombobox Readonly Single Menu Item Disabled 1`] = `
 <div
   className="slds-p-around_medium"
@@ -4721,6 +4826,74 @@ exports[`DOM snapshots SLDSCombobox Readonly Single Selection Custom Menu Item 1
               onFocus={[Function]}
               onKeyDown={[Function]}
               placeholder="Select company"
+              readOnly={true}
+              required={false}
+              role="combobox"
+              type="text"
+              value=""
+            />
+            <span
+              className="slds-icon_container slds-input__icon slds-input__icon_right"
+            >
+              <svg
+                aria-hidden={true}
+                className="slds-icon slds-icon_x-small slds-icon-text-default"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSCombobox Readonly Single Selection Deselect 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-form-element"
+  >
+    <label
+      className="slds-form-element__label"
+      htmlFor="combobox-readonly-single"
+    >
+      Boolean
+    </label>
+    <div
+      className="slds-form-element__control"
+    >
+      <div
+        className="slds-combobox_container"
+      >
+        <div
+          className="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside"
+          role="combobox"
+        >
+          <div
+            className="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              aria-activedescendant={null}
+              aria-autocomplete="list"
+              aria-expanded={false}
+              aria-haspopup="listbox"
+              autoComplete="off"
+              className="slds-input slds-combobox__input"
+              disabled={false}
+              id="combobox-readonly-single"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Select an Option"
               readOnly={true}
               required={false}
               role="combobox"
@@ -5371,11 +5544,13 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Acme"
                     >
                       Acme
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • San Francisco"
                     >
                       Account • San Francisco
                     </span>
@@ -5419,11 +5594,13 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open 1`] = `
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Salesforce.com, Inc."
                     >
                       Salesforce.com, Inc.
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • San Francisco"
                     >
                       Account • San Francisco
                     </span>
@@ -5541,11 +5718,13 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu Sub Header Separator
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Salesforce.com, Inc."
                     >
                       Salesforce.com, Inc.
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • San Francisco"
                     >
                       Account • San Francisco
                     </span>
@@ -5663,11 +5842,13 @@ exports[`DOM snapshots SLDSCombobox Snapshot Base Open Menu inheritWidthOf prop 
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Salesforce.com, Inc."
                     >
                       Salesforce.com, Inc.
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • San Francisco"
                     >
                       Account • San Francisco
                     </span>
@@ -6096,11 +6277,13 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Acme"
                     >
                       Acme
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • San Francisco"
                     >
                       Account • San Francisco
                     </span>
@@ -6144,11 +6327,13 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Salesforce.com, Inc."
                     >
                       Salesforce.com, Inc.
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • San Francisco"
                     >
                       Account • San Francisco
                     </span>
@@ -6192,11 +6377,13 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Paddy's Pub"
                     >
                       Paddy's Pub
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • Boston, MA"
                     >
                       Account • Boston, MA
                     </span>
@@ -6240,11 +6427,13 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Tyrell Corp"
                     >
                       Tyrell Corp
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • San Francisco, CA"
                     >
                       Account • San Francisco, CA
                     </span>
@@ -6288,11 +6477,13 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Multiple Open Loading 1`] = 
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Paper St. Soap Company"
                     >
                       Paper St. Soap Company
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • Beloit, WI"
                     >
                       Account • Beloit, WI
                     </span>
@@ -6904,11 +7095,13 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Acme"
                     >
                       Acme
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • San Francisco"
                     >
                       Account • San Francisco
                     </span>
@@ -6952,11 +7145,13 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Salesforce.com, Inc."
                     >
                       Salesforce.com, Inc.
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • San Francisco"
                     >
                       Account • San Francisco
                     </span>
@@ -7000,11 +7195,13 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Search/Add Entities O
                   >
                     <span
                       className="slds-listbox__option-text slds-listbox__option-text_entity"
+                      title="Paddy's Pub"
                     >
                       Paddy's Pub
                     </span>
                     <span
                       className="slds-listbox__option-meta slds-listbox__option-meta_entity"
+                      title="Account • Boston, MA"
                     >
                       Account • Boston, MA
                     </span>
@@ -8383,7 +8580,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
             role="none"
           >
             <input
-              aria-activedescendant={null}
+              aria-activedescendant="combobox-unique-id-listbox-option-1"
               aria-autocomplete="list"
               aria-controls="combobox-unique-id-listbox"
               aria-expanded={true}
@@ -8440,8 +8637,8 @@ exports[`DOM snapshots SLDSCombobox Snapshot Readonly Single Selection Selected 
                 role="presentation"
               >
                 <span
-                  aria-selected={false}
-                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center slds-is-selected"
+                  aria-selected={true}
+                  className="slds-media slds-listbox__option  slds-listbox__option_plain slds-media_small slds-media_center slds-has-focus slds-is-selected"
                   id="combobox-unique-id-listbox-option-1"
                   onClick={[Function]}
                   role="option"

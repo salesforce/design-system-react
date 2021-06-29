@@ -11,6 +11,6 @@ declare module '@salesforce/design-system-react/components/utilities/truncate' {
 		wrapper?: (v: any) => any;
 	};
 
-	function Component(props: Props): React.ReactNode;
+	function Component(props: Props): JSX.Element;
 	export default Component;
 }

@@ -19,6 +19,12 @@ import Icon from '../../icon';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from '../column-check-props';
 
+import Link from './link';
+import InteractiveLink from '../interactive-link';
+import CellContext from '../private/cell-context';
+import TableContext from '../private/table-context';
+import contextHelper from './context-helper';
+
 // ## Constants
 import {
 	DATA_TABLE_HEADER_CELL,
@@ -96,6 +102,8 @@ class DataTableHeaderCell extends React.Component {
 	}
 
 	handleSort = (e) => {
+		e.preventDefault();
+
 		const oldSortDirection =
 			this.props.sortDirection || this.state.sortDirection;
 		// UX pattern: If sortable, and the DataTable's parent has not defined the sort order, then ascending (that is A->Z) is the default sort order on first click. Some columns, such as "last viewed" or "recently updated," should sort descending first, since that is what the user probably wants. Who wants to see the oldest files first?
@@ -142,44 +150,50 @@ class DataTableHeaderCell extends React.Component {
 			sortDirection === 'desc' ? 'descending' : 'ascending';
 		const ariaSort = isSorted ? expandedSortDirection : 'none';
 
-		const fixedLayoutSubRenders = {
-			sortable: (
-				<a
-					href="javascript:void(0)" // eslint-disable-line no-script-url
-					className="slds-th__action slds-text-link_reset"
-					onClick={this.handleSort}
-					role="button"
-					tabIndex="0"
-				>
-					<span className="slds-assistive-text">
-						{this.props.assistiveTextForColumnSort ||
-							this.props.assistiveText.columnSort}{' '}
-					</span>
-					<span
-						className="slds-truncate"
-						title={labelType === 'string' ? label : undefined}
+		const getFixedLayoutSubRenders = (isHidden) => {
+			if (sortable) {
+				// Don't make the anchor interactable when it's hidden
+				const SortLink = isHidden ? Link : InteractiveLink;
+				return (
+					<SortLink
+						href="#"
+						className="slds-th__action slds-text-link_reset"
+						onClick={this.handleSort}
+						role="button"
 					>
-						{label}
-					</span>
-					<Icon
-						className="slds-is-sortable__icon"
-						category="utility"
-						name={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
-						size="x-small"
-					/>
-					{sortDirection ? (
-						<span className="slds-assistive-text" aria-atomic="true">
-							{sortDirection === 'asc'
-								? this.props.assistiveTextForColumnSortedAscending ||
-								  this.props.assistiveText.columnSortedAscending
-								: this.props.assistiveTextForColumnSortedDescending ||
-								  this.props.assistiveText.columnSortedDescending}
+						<span className="slds-assistive-text">
+							{this.props.assistiveTextForColumnSort ||
+								this.props.assistiveText.columnSort}{' '}
 						</span>
-					) : null}
-				</a>
-			),
-			notSortable: (
-				<span className="slds-p-horizontal_x-small" style={{ display: 'flex' }}>
+						<span
+							className="slds-truncate"
+							title={labelType === 'string' ? label : undefined}
+						>
+							{label}
+						</span>
+						<Icon
+							className="slds-is-sortable__icon"
+							category="utility"
+							name={sortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
+							size="x-small"
+						/>
+						{sortDirection ? (
+							<span className="slds-assistive-text" aria-atomic="true">
+								{sortDirection === 'asc'
+									? this.props.assistiveTextForColumnSortedAscending ||
+									  this.props.assistiveText.columnSortedAscending
+									: this.props.assistiveTextForColumnSortedDescending ||
+									  this.props.assistiveText.columnSortedDescending}
+							</span>
+						) : null}
+					</SortLink>
+				);
+			}
+			return (
+				<span
+					className="slds-p-horizontal_x-small slds-th__action"
+					style={{ display: 'flex' }}
+				>
 					<span
 						className="slds-truncate"
 						title={labelType === 'string' ? label : undefined}
@@ -187,73 +201,100 @@ class DataTableHeaderCell extends React.Component {
 						{label}
 					</span>
 				</span>
-			),
+			);
 		};
 
-		const headerCellContent = this.props.fixedLayout ? (
-			fixedLayoutSubRenders[sortable ? 'sortable' : 'notSortable']
-		) : (
-			<div
-				className="slds-truncate"
-				title={labelType === 'string' ? label : undefined}
-			>
-				{label}
-			</div>
-		);
+		const getHeaderCellContent = (isHidden) =>
+			this.props.fixedLayout ? (
+				getFixedLayoutSubRenders(isHidden)
+			) : (
+				<div
+					className="slds-truncate"
+					title={labelType === 'string' ? label : undefined}
+				>
+					{label}
+				</div>
+			);
 
 		return (
-			<th
-				aria-label={labelType === 'string' ? label : undefined}
-				aria-sort={ariaSort}
-				className={classNames({
-					'slds-is-sortable': sortable,
-					'slds-is-sorted': isSorted,
-					[`slds-is-sorted_${sortDirection}`]: sortDirection,
-					'slds-is-sorted_asc': isSorted && !sortDirection, // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
-				})}
-				ref={(ref) => {
-					if (this.props.cellRef) {
-						this.props.cellRef(ref);
-					}
-				}}
-				scope="col"
-				style={
-					fixedHeader || width
-						? {
-								height: fixedHeader ? 0 : null,
-								lineHeight: fixedHeader ? 0 : null,
-								width: width || null,
-						  }
-						: null
-				}
-			>
-				{fixedHeader
-					? React.cloneElement(headerCellContent, {
-							style: {
-								display: 'flex',
-								height: 0,
-								overflow: 'hidden',
-								paddingBottom: 0,
-								paddingTop: 0,
-								visibility: 'hidden',
-							},
-					  })
-					: headerCellContent}
-				{fixedHeader ? (
-					<CellFixed>
-						{React.cloneElement(headerCellContent, {
-							style: {
-								alignItems: 'center',
-								display: 'flex',
-								flex: '1 1 auto',
-								lineHeight: 1.25,
-								width: '100%',
-							},
-							tabIndex: sortable ? 0 : null,
-						})}
-					</CellFixed>
-				) : null}
-			</th>
+			<TableContext.Consumer>
+				{(tableContext) => (
+					<CellContext.Consumer>
+						{(cellContext) => {
+							const {
+								tabIndex,
+								hasFocus,
+								handleFocus,
+								handleKeyDown,
+							} = contextHelper(
+								tableContext,
+								cellContext,
+								this.props.fixedLayout
+							);
+							return (
+								<th
+									aria-label={labelType === 'string' ? label : undefined}
+									aria-sort={ariaSort}
+									className={classNames({
+										'slds-is-sortable': sortable,
+										'slds-is-sorted': isSorted,
+										[`slds-is-sorted_${sortDirection}`]: sortDirection,
+										'slds-is-sorted_asc': isSorted && !sortDirection, // default for hover, up arrow is ascending which means A is at the top of the table, and Z is at the bottom. You have to think about row numbers abstracting, and not the visual order on the table.
+									})}
+									onFocus={handleFocus}
+									onKeyDown={handleKeyDown}
+									ref={(ref) => {
+										if (this.props.cellRef) {
+											this.props.cellRef(ref);
+											if (ref && hasFocus) {
+												ref.focus();
+											}
+										}
+									}}
+									scope="col"
+									style={
+										fixedHeader || width
+											? {
+													height: fixedHeader ? 0 : null,
+													lineHeight: fixedHeader ? 0 : null,
+													width: width || null,
+											  }
+											: null
+									}
+									tabIndex={tabIndex}
+								>
+									{fixedHeader
+										? React.cloneElement(getHeaderCellContent(true), {
+												style: {
+													display: 'flex',
+													height: 0,
+													overflow: 'hidden',
+													paddingBottom: 0,
+													paddingTop: 0,
+													visibility: 'hidden',
+												},
+										  })
+										: getHeaderCellContent()}
+									{fixedHeader ? (
+										<CellFixed>
+											{React.cloneElement(getHeaderCellContent(), {
+												style: {
+													alignItems: 'center',
+													display: 'flex',
+													flex: '1 1 auto',
+													lineHeight: 1.25,
+													width: '100%',
+												},
+												tabIndex: sortable ? 0 : null,
+											})}
+										</CellFixed>
+									) : null}
+								</th>
+							);
+						}}
+					</CellContext.Consumer>
+				)}
+			</TableContext.Consumer>
 		);
 	}
 }

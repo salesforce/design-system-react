@@ -26,7 +26,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
             aria-describedby="sample-navigation-reports"
             className="slds-nav-vertical__action"
             data-id="recent_reports"
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
           >
             Recent
@@ -39,7 +39,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
             aria-describedby="sample-navigation-reports"
             className="slds-nav-vertical__action"
             data-id="my_reports"
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
           >
             Created by Me
@@ -52,7 +52,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
             aria-describedby="sample-navigation-reports"
             className="slds-nav-vertical__action"
             data-id="private_reports"
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
           >
             Private Reports
@@ -65,7 +65,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
             aria-describedby="sample-navigation-reports"
             className="slds-nav-vertical__action"
             data-id="public_reports"
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
           >
             Public Reports
@@ -78,7 +78,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
             aria-describedby="sample-navigation-reports"
             className="slds-nav-vertical__action"
             data-id="all_reports"
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
           >
             All Reports
@@ -116,7 +116,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
             aria-describedby="sample-navigation-folders"
             className="slds-nav-vertical__action"
             data-id="shared_folders"
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
           >
             Shared with Me
@@ -129,7 +129,7 @@ exports[`DOM snapshots SLDSVerticalNavigation DOM Snapshot 1`] = `
             aria-describedby="sample-navigation-folders"
             className="slds-nav-vertical__action"
             data-id="all_folders"
-            href="javascript:void(0);"
+            href="#"
             onClick={[Function]}
           >
             All Folders
@@ -174,7 +174,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
               aria-describedby="sample-navigation-reports"
               className="slds-nav-vertical__action"
               data-id="recent_reports"
-              href="javascript:void(0);"
+              href="#"
               onClick={[Function]}
             >
               Recent
@@ -187,7 +187,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
               aria-describedby="sample-navigation-reports"
               className="slds-nav-vertical__action"
               data-id="my_reports"
-              href="javascript:void(0);"
+              href="#"
               onClick={[Function]}
             >
               Created by Me
@@ -200,7 +200,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
               aria-describedby="sample-navigation-reports"
               className="slds-nav-vertical__action"
               data-id="private_reports"
-              href="javascript:void(0);"
+              href="#"
               onClick={[Function]}
             >
               Private Reports
@@ -213,7 +213,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
               aria-describedby="sample-navigation-reports"
               className="slds-nav-vertical__action"
               data-id="public_reports"
-              href="javascript:void(0);"
+              href="#"
               onClick={[Function]}
             >
               Public Reports
@@ -226,7 +226,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
               aria-describedby="sample-navigation-reports"
               className="slds-nav-vertical__action"
               data-id="all_reports"
-              href="javascript:void(0);"
+              href="#"
               onClick={[Function]}
             >
               All Reports
@@ -251,7 +251,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
               aria-describedby="sample-navigation-folders"
               className="slds-nav-vertical__action"
               data-id="my_folders"
-              href="javascript:void(0);"
+              href="#"
               onClick={[Function]}
             >
               Created by Me
@@ -264,7 +264,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
               aria-describedby="sample-navigation-folders"
               className="slds-nav-vertical__action"
               data-id="shared_folders"
-              href="javascript:void(0);"
+              href="#"
               onClick={[Function]}
             >
               Shared with Me
@@ -277,7 +277,7 @@ exports[`DOM snapshots SLDSVerticalNavigation Default 1`] = `
               aria-describedby="sample-navigation-folders"
               className="slds-nav-vertical__action"
               data-id="all_folders"
-              href="javascript:void(0);"
+              href="#"
               onClick={[Function]}
             >
               All Folders
