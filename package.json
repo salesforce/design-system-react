@@ -97,7 +97,7 @@
 		"lodash.isfunction": "^3.0.9",
 		"lodash.memoize": "^4.1.2",
 		"lodash.reject": "^4.6.0",
-		"popper.js": "^1.10.8",
+		"popper.js": "^1.16.1",
 		"prop-types": ">=15.7.2",
 		"react-contenteditable": "^3.3.5",
 		"react-highlighter": "^0.4.3",
