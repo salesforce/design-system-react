@@ -1042,962 +1042,1375 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
   className="slds-p-around_medium"
 >
   <div>
-    <table
-      className="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered"
-      id="DataTableExample-SingleRequiredSelect"
-      onBlur={[Function]}
-      role="grid"
+    <div
+      className="slds-table_header-fixed_container"
+      onScroll={[Function]}
+      style={
+        Object {
+          "borderTop": "1px solid rgb(221, 219, 218)",
+          "height": "100%",
+        }
+      }
     >
-      <thead>
-        <tr
-          className="slds-line-height_reset"
+      <div
+        className="slds-table_header-fixed_scroller"
+        style={
+          Object {
+            "height": "100%",
+            "overflow": "auto",
+          }
+        }
+      >
+        <table
+          className="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered"
+          id="DataTableExample-SingleRequiredSelect"
+          onBlur={[Function]}
+          role="grid"
         >
-          <th
-            className="slds-text-align_right"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={
-              Object {
-                "height": null,
-                "lineHeight": null,
-                "width": "3.25rem",
-              }
-            }
-          >
-            <div
-              className="slds-truncate slds-assistive-text"
-              id="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
-              title="Choose a row to select"
+          <thead>
+            <tr
+              className="slds-line-height_reset"
             >
-              Choose a row to select
-            </div>
-          </th>
-          <th
-            aria-label="Name"
-            aria-sort="ascending"
-            className="slds-is-sortable slds-is-sorted"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={
-              Object {
-                "height": null,
-                "lineHeight": null,
-                "width": "10rem",
-              }
-            }
-          >
-            <a
-              className="slds-th__action slds-text-link_reset"
-              href="#"
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              role="button"
-              tabIndex="-1"
-            >
-              <span
-                className="slds-assistive-text"
-              >
-                sort this column
-                 
-              </span>
-              <span
-                className="slds-truncate"
-                title="Name"
-              >
-                Name
-              </span>
-              <span>
-                <svg
-                  aria-hidden="true"
-                  className="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default"
-                >
-                  <use
-                    href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
-                  />
-                </svg>
-                
-              </span>
-              <span
-                aria-atomic="true"
-                className="slds-assistive-text"
-              >
-                asc
-              </span>
-            </a>
-          </th>
-          <th
-            aria-label="Account Name"
-            aria-sort="none"
-            className=""
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={
-              Object {
-                "height": null,
-                "lineHeight": null,
-                "width": "8rem",
-              }
-            }
-          >
-            <span
-              className="slds-p-horizontal_x-small slds-th__action"
-              style={
-                Object {
-                  "display": "flex",
+              <th
+                className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "3.25rem",
+                  }
                 }
-              }
-            >
-              <span
-                className="slds-truncate"
-                title="Account Name"
               >
-                Account Name
-              </span>
-            </span>
-          </th>
-          <th
-            aria-label="Close Date"
-            aria-sort="none"
-            className=""
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <span
-              className="slds-p-horizontal_x-small slds-th__action"
-              style={
-                Object {
-                  "display": "flex",
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <div
+                    className="slds-truncate slds-assistive-text"
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+                    title="Choose a row to select"
+                  >
+                    Choose a row to select
+                  </div>
+                </div>
+              </th>
+              <th
+                aria-label="Name"
+                aria-sort="ascending"
+                className="slds-is-sortable slds-is-sorted"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "10rem",
+                  }
                 }
-              }
-            >
-              <span
-                className="slds-truncate"
-                title="Close Date"
               >
-                Close Date
-              </span>
-            </span>
-          </th>
-          <th
-            aria-label="Stage"
-            aria-sort="none"
-            className=""
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <span
-              className="slds-p-horizontal_x-small slds-th__action"
-              style={
-                Object {
-                  "display": "flex",
+                <a
+                  className="slds-th__action slds-text-link_reset"
+                  href="#"
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  role="button"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    sort this column
+                     
+                  </span>
+                  <span
+                    className="slds-truncate"
+                    title="Name"
+                  >
+                    Name
+                  </span>
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
+                      />
+                    </svg>
+                    
+                  </span>
+                  <span
+                    aria-atomic="true"
+                    className="slds-assistive-text"
+                  >
+                    asc
+                  </span>
+                </a>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <a
+                    className="slds-th__action slds-text-link_reset"
+                    href="#"
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      sort this column
+                       
+                    </span>
+                    <span
+                      className="slds-truncate"
+                      title="Name"
+                    >
+                      Name
+                    </span>
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
+                        />
+                      </svg>
+                      
+                    </span>
+                    <span
+                      aria-atomic="true"
+                      className="slds-assistive-text"
+                    >
+                      asc
+                    </span>
+                  </a>
+                </div>
+              </th>
+              <th
+                aria-label="Account Name"
+                aria-sort="none"
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "8rem",
+                  }
                 }
-              }
-            >
-              <span
-                className="slds-truncate"
-                title="Stage"
               >
-                Stage
-              </span>
-            </span>
-          </th>
-          <th
-            aria-label="Confidence"
-            aria-sort="none"
-            className="slds-is-sortable"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <a
-              className="slds-th__action slds-text-link_reset"
-              href="#"
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              role="button"
-              tabIndex="-1"
-            >
-              <span
-                className="slds-assistive-text"
-              >
-                sort this column
-                 
-              </span>
-              <span
-                className="slds-truncate"
-                title="Confidence"
-              >
-                Confidence
-              </span>
-              <span>
-                <svg
-                  aria-hidden="true"
-                  className="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default"
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
                 >
-                  <use
-                    href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
-                  />
-                </svg>
-                
-              </span>
-            </a>
-          </th>
-          <th
-            aria-label="Amount"
-            aria-sort="none"
-            className=""
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <span
-              className="slds-p-horizontal_x-small slds-th__action"
-              style={
-                Object {
-                  "display": "flex",
+                  <span
+                    className="slds-truncate"
+                    title="Account Name"
+                  >
+                    Account Name
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Account Name"
+                    >
+                      Account Name
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Close Date"
+                aria-sort="none"
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
                 }
-              }
-            >
-              <span
-                className="slds-truncate"
-                title="Amount"
               >
-                Amount
-              </span>
-            </span>
-          </th>
-          <th
-            aria-label="Contact"
-            aria-sort="none"
-            className=""
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <span
-              className="slds-p-horizontal_x-small slds-th__action"
-              style={
-                Object {
-                  "display": "flex",
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Close Date"
+                  >
+                    Close Date
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Close Date"
+                    >
+                      Close Date
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Stage"
+                aria-sort="none"
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
                 }
-              }
-            >
-              <span
-                className="slds-truncate"
-                title="Contact"
-              >
-                Contact
-              </span>
-            </span>
-          </th>
-          <th
-            className=""
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={
-              Object {
-                "height": null,
-                "lineHeight": null,
-                "width": "3.25rem",
-              }
-            }
-          >
-            <div
-              className="slds-th__action"
-              style={null}
-            >
-              <span
-                className="slds-assistive-text"
-              >
-                actions
-              </span>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          aria-selected="false"
-          className="slds-hint-parent"
-        >
-          <td
-            className="slds-text-align_right"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={
-              Object {
-                "width": "3.25rem",
-              }
-            }
-          >
-            <span
-              className="slds-radio slds-m-right_x-small"
-            >
-              <input
-                aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
-                checked={false}
-                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
-                name="DataTableExample-SingleRequiredSelect-SelectRow"
-                onChange={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyPress={[Function]}
-                tabIndex="-1"
-                type="radio"
-              />
-              <label
-                className="slds-radio__label"
-                htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
-                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label"
               >
                 <span
-                  className="slds-radio_faux"
-                />
-                <span
-                  className="slds-form-element__label"
-                />
-                <span
-                  className="slds-assistive-text"
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
                 >
-                  Select this row 1
+                  <span
+                    className="slds-truncate"
+                    title="Stage"
+                  >
+                    Stage
+                  </span>
                 </span>
-              </label>
-            </span>
-          </td>
-          <th
-            className=""
-            data-label="Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={
-              Object {
-                "width": "10rem",
-              }
-            }
-            tabIndex="0"
-          >
-            <div
-              className="slds-truncate"
-              title="Acme - 1,200 Widgets"
-            >
-              <a
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                tabIndex="-1"
-              >
-                Acme - 1,200 Widgets
-              </a>
-            </div>
-          </th>
-          <td
-            className=""
-            data-label="Account Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={
-              Object {
-                "width": "8rem",
-              }
-            }
-          >
-            <div
-              className="slds-truncate"
-              title="Acme"
-            >
-              Acme
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Close Date"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="4/10/15"
-            >
-              4/10/15
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Stage"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Value Proposition"
-            >
-              Value Proposition
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Confidence"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="70%"
-            >
-              70%
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Amount"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="$25,000,000"
-            >
-              $25,000,000
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Contact"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="jrogers@acme.com"
-            >
-              <a
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                tabIndex="-1"
-              >
-                jrogers@acme.com
-              </a>
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Actions"
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={
-              Object {
-                "width": "3.25rem",
-              }
-            }
-          >
-            <div
-              className="slds-dropdown-trigger slds-dropdown-trigger_click"
-              id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions"
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
-            >
-              <button
-                aria-expanded={false}
-                aria-haspopup={true}
-                className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions slds-button_icon-x-small"
-                disabled={false}
-                onClick={[Function]}
-                tabIndex="-1"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-button__icon slds-button__icon_hint"
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
                 >
-                  <use
-                    href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Stage"
+                    >
+                      Stage
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Confidence"
+                aria-sort="none"
+                className="slds-is-sortable"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <a
+                  className="slds-th__action slds-text-link_reset"
+                  href="#"
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  role="button"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    sort this column
+                     
+                  </span>
+                  <span
+                    className="slds-truncate"
+                    title="Confidence"
+                  >
+                    Confidence
+                  </span>
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
+                      />
+                    </svg>
+                    
+                  </span>
+                </a>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <a
+                    className="slds-th__action slds-text-link_reset"
+                    href="#"
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex="-1"
+                  >
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      sort this column
+                       
+                    </span>
+                    <span
+                      className="slds-truncate"
+                      title="Confidence"
+                    >
+                      Confidence
+                    </span>
+                    <span>
+                      <svg
+                        aria-hidden="true"
+                        className="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default"
+                      >
+                        <use
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
+                        />
+                      </svg>
+                      
+                    </span>
+                  </a>
+                </div>
+              </th>
+              <th
+                aria-label="Amount"
+                aria-sort="none"
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Amount"
+                  >
+                    Amount
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Amount"
+                    >
+                      Amount
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Contact"
+                aria-sort="none"
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Contact"
+                  >
+                    Contact
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Contact"
+                    >
+                      Contact
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                className=""
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-th__action"
+                  style={
+                    Object {
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    actions
+                  </span>
+                </div>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <div
+                    className="slds-th__action"
+                    style={
+                      Object {
+                        "lineHeight": 1,
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      actions
+                    </span>
+                  </div>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <span
+                  className="slds-radio slds-m-right_x-small"
+                >
+                  <input
+                    aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+                    checked={false}
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                    name="DataTableExample-SingleRequiredSelect-SelectRow"
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="-1"
+                    type="radio"
                   />
-                </svg>
-                <span
-                  className="slds-assistive-text"
-                >
-                  Actions
+                  <label
+                    className="slds-radio__label"
+                    htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label"
+                  >
+                    <span
+                      className="slds-radio_faux"
+                    />
+                    <span
+                      className="slds-form-element__label"
+                    />
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Select this row 1
+                    </span>
+                  </label>
                 </span>
-              </button>
-            </div>
-          </td>
-        </tr>
-        <tr
-          aria-selected="false"
-          className="slds-hint-parent"
-        >
-          <td
-            className="slds-text-align_right"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={
-              Object {
-                "width": "3.25rem",
-              }
-            }
-          >
-            <span
-              className="slds-radio slds-m-right_x-small"
-            >
-              <input
-                aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
-                checked={false}
-                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
-                name="DataTableExample-SingleRequiredSelect-SelectRow"
-                onChange={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyPress={[Function]}
-                tabIndex="-1"
-                type="radio"
-              />
-              <label
-                className="slds-radio__label"
-                htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
-                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label"
-              >
-                <span
-                  className="slds-radio_faux"
-                />
-                <span
-                  className="slds-form-element__label"
-                />
-                <span
-                  className="slds-assistive-text"
-                >
-                  Select this row 2
-                </span>
-              </label>
-            </span>
-          </td>
-          <th
-            className=""
-            data-label="Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={
-              Object {
-                "width": "10rem",
-              }
-            }
-          >
-            <div
-              className="slds-truncate"
-              title="Acme - 200 Widgets"
-            >
-              <a
+              </td>
+              <th
+                className=""
+                data-label="Name"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
-                tabIndex="-1"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+                tabIndex="0"
               >
-                Acme - 200 Widgets
-              </a>
-            </div>
-          </th>
-          <td
-            className=""
-            data-label="Account Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={
-              Object {
-                "width": "8rem",
-              }
-            }
-          >
-            <div
-              className="slds-truncate"
-              title="Acme"
-            >
-              Acme
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Close Date"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="1/31/15"
-            >
-              1/31/15
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Stage"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Prospecting"
-            >
-              Prospecting
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Confidence"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="30%"
-            >
-              30%
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Amount"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="$5,000,000"
-            >
-              $5,000,000
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Contact"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="bob@acme.com"
-            >
-              <a
+                <div
+                  className="slds-truncate"
+                  title="Acme - 1,200 Widgets"
+                >
+                  <a
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 1,200 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className=""
+                data-label="Account Name"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
-                tabIndex="-1"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
               >
-                bob@acme.com
-              </a>
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Actions"
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={
-              Object {
-                "width": "3.25rem",
-              }
-            }
-          >
-            <div
-              className="slds-dropdown-trigger slds-dropdown-trigger_click"
-              id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions"
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
-            >
-              <button
-                aria-expanded={false}
-                aria-haspopup={true}
-                className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions slds-button_icon-x-small"
-                disabled={false}
-                onClick={[Function]}
-                tabIndex="-1"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-button__icon slds-button__icon_hint"
+                <div
+                  className="slds-truncate"
+                  title="Acme"
                 >
-                  <use
-                    href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="4/10/15"
+                >
+                  4/10/15
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Value Proposition"
+                >
+                  Value Proposition
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="70%"
+                >
+                  70%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$25,000,000"
+                >
+                  $25,000,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="jrogers@acme.com"
+                >
+                  <a
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    jrogers@acme.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="-1"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <span
+                  className="slds-radio slds-m-right_x-small"
+                >
+                  <input
+                    aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+                    checked={false}
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                    name="DataTableExample-SingleRequiredSelect-SelectRow"
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="-1"
+                    type="radio"
                   />
-                </svg>
-                <span
-                  className="slds-assistive-text"
-                >
-                  Actions
+                  <label
+                    className="slds-radio__label"
+                    htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label"
+                  >
+                    <span
+                      className="slds-radio_faux"
+                    />
+                    <span
+                      className="slds-form-element__label"
+                    />
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Select this row 2
+                    </span>
+                  </label>
                 </span>
-              </button>
-            </div>
-          </td>
-        </tr>
-        <tr
-          aria-selected="false"
-          className="slds-hint-parent"
-        >
-          <td
-            className="slds-text-align_right"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={
-              Object {
-                "width": "3.25rem",
-              }
-            }
-          >
-            <span
-              className="slds-radio slds-m-right_x-small"
-            >
-              <input
-                aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
-                checked={false}
-                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
-                name="DataTableExample-SingleRequiredSelect-SelectRow"
-                onChange={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onKeyPress={[Function]}
-                tabIndex="-1"
-                type="radio"
-              />
-              <label
-                className="slds-radio__label"
-                htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
-                id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label"
-              >
-                <span
-                  className="slds-radio_faux"
-                />
-                <span
-                  className="slds-form-element__label"
-                />
-                <span
-                  className="slds-assistive-text"
-                >
-                  Select this row 3
-                </span>
-              </label>
-            </span>
-          </td>
-          <th
-            className=""
-            data-label="Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={
-              Object {
-                "width": "10rem",
-              }
-            }
-          >
-            <div
-              className="slds-truncate"
-              title="salesforce.com - 1,000 Widgets"
-            >
-              <a
+              </td>
+              <th
+                className=""
+                data-label="Name"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
-                tabIndex="-1"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
               >
-                salesforce.com - 1,000 Widgets
-              </a>
-            </div>
-          </th>
-          <td
-            className=""
-            data-label="Account Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={
-              Object {
-                "width": "8rem",
-              }
-            }
-          >
-            <div
-              className="slds-truncate"
-              title="salesforce.com"
-            >
-              salesforce.com
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Close Date"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="1/31/15 3:45PM"
-            >
-              1/31/15 3:45PM
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Stage"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Id. Decision Makers"
-            >
-              Id. Decision Makers
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Confidence"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="60%"
-            >
-              60%
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Amount"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="$25,000"
-            >
-              $25,000
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Contact"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="nathan@salesforce.com"
-            >
-              <a
+                <div
+                  className="slds-truncate"
+                  title="Acme - 200 Widgets"
+                >
+                  <a
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 200 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className=""
+                data-label="Account Name"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
-                tabIndex="-1"
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
               >
-                nathan@salesforce.com
-              </a>
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Actions"
-            onClick={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={
-              Object {
-                "width": "3.25rem",
-              }
-            }
-          >
-            <div
-              className="slds-dropdown-trigger slds-dropdown-trigger_click"
-              id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions"
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseEnter={null}
-              onMouseLeave={null}
-            >
-              <button
-                aria-expanded={false}
-                aria-haspopup={true}
-                className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions slds-button_icon-x-small"
-                disabled={false}
-                onClick={[Function]}
-                tabIndex="-1"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="slds-button__icon slds-button__icon_hint"
+                <div
+                  className="slds-truncate"
+                  title="Acme"
                 >
-                  <use
-                    href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="1/31/15"
+                >
+                  1/31/15
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Prospecting"
+                >
+                  Prospecting
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="30%"
+                >
+                  30%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$5,000,000"
+                >
+                  $5,000,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="bob@acme.com"
+                >
+                  <a
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    bob@acme.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="-1"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr
+              aria-selected="false"
+              className="slds-hint-parent"
+            >
+              <td
+                className="slds-text-align_right"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <span
+                  className="slds-radio slds-m-right_x-small"
+                >
+                  <input
+                    aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+                    checked={false}
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
+                    name="DataTableExample-SingleRequiredSelect-SelectRow"
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="-1"
+                    type="radio"
                   />
-                </svg>
-                <span
-                  className="slds-assistive-text"
-                >
-                  Actions
+                  <label
+                    className="slds-radio__label"
+                    htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label"
+                  >
+                    <span
+                      className="slds-radio_faux"
+                    />
+                    <span
+                      className="slds-form-element__label"
+                    />
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Select this row 3
+                    </span>
+                  </label>
                 </span>
-              </button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+              </td>
+              <th
+                className=""
+                data-label="Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "10rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com - 1,000 Widgets"
+                >
+                  <a
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    salesforce.com - 1,000 Widgets
+                  </a>
+                </div>
+              </th>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "8rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com"
+                >
+                  salesforce.com
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="1/31/15 3:45PM"
+                >
+                  1/31/15 3:45PM
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Id. Decision Makers"
+                >
+                  Id. Decision Makers
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="60%"
+                >
+                  60%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$25,000"
+                >
+                  $25,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="nathan@salesforce.com"
+                >
+                  <a
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    nathan@salesforce.com
+                  </a>
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Actions"
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={
+                  Object {
+                    "width": "3.25rem",
+                  }
+                }
+              >
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableRowActions slds-button_icon-x-small"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="-1"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-button__icon_hint"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      Actions
+                    </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 `;
