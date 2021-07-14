@@ -74,8 +74,8 @@ NODE_ENV=test ${COMMAND}
   #       else
   #       	echo "COMMAND: ${COMMAND} != SNAPSHOT_TESTS: ${SNAPSHOT_TESTS}"
   #       fi
-	# 	exit $((10#$ERROR_CODE))
-	# fi
+		exit $((10#$ERROR_CODE))
+	fi
 done
 
 echo "
