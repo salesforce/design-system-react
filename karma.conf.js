@@ -8,6 +8,7 @@ const karmaChromeLauncher = require('karma-chrome-launcher');
 const karmaSpecReporter = require('karma-spec-reporter');
 const karmaCoverage = require('karma-coverage');
 const webpackConfig = require('./webpack.config');
+process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 webpackConfig.devtool = 'inline-source-map';
 webpackConfig.externals = {
