@@ -53,7 +53,7 @@ jobs:
         - install
         - run:
             name: Run in-browser unit tests 
-            command: 'npm run test:unit'
+            command: 'CHROME_BIN=/usr/bin/google-chrome npm run test:unit'
   accessibility:
       executor: dsr-executor
       steps:
