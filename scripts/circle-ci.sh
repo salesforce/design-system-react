@@ -6,6 +6,7 @@
 # Jest markup & image snapshot tests (this is here so this variable can be used in runTest & elsewhere)
 SNAPSHOT_TESTS='npm run test:dom-snapshot'
 ACCESSIBILITY_TESTS='npm run test:accessibility'
+CHROME_BIN=/usr/bin/google-chrome
 
 function runTests() {
 COMMANDS=( "$@" )
