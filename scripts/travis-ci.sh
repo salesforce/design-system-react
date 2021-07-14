@@ -33,9 +33,7 @@ do
 	echo "    ${COMMAND}"
 done
 
-echo -en 'travis_fold:start:npm ls\\r'
 npm ls --silent
-echo -en 'travis_fold:end:npm ls\\r'
 
 for COMMAND in "${COMMANDS[@]}"
 do
@@ -147,13 +145,13 @@ fi
 declare -a COMMANDS=("${RUN_LINT}" "${START_KARMA}" "${SNAPSHOT_TESTS}" "${ACCESSIBILITY_TESTS}" "${DOCGEN}")
 
 printf "
-Running DSR Travis-CI QA Scripts
+Running QA Scripts
 "
 runTests "${COMMANDS[@]}"
 EXIT_CODE=$?
 
 printf "
-DSR Travis-CI QA Scripts Completed with exit condition ${EXIT_CODE}
+QA Scripts Completed with exit condition ${EXIT_CODE}
 "
 
 exit $((10#$EXIT_CODE))
