@@ -42,7 +42,7 @@
 		"test:image-snapshot:update": "cross-env NODE_ENV=test npm run static:build && npx jest --updateSnapshot --config=tests/story-based-tests.snapshot-test.config.json",
 		"test:accessibility": "npm run static:build && cross-env NODE_ENV=test PORT=8002 npx jest --runInBand --config=tests/story-based-tests.accessibility-test.config.json",
 		"test:a11y": "npm run test:accessibility",
-		"circle-ci": "cross-env NODE_ENV=test scripts/travis-ci.sh",
+		"circle-ci": "cross-env NODE_ENV=test scripts/circle-ci.sh",
 		"upload-diffs": "scripts/upload-diffs.sh",
 		"validate": "npm ls",
 		"version": "git add package.json && git commit -m \"Bump package version\""

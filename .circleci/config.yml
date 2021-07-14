@@ -30,7 +30,7 @@ jobs:
       #     pkg-manager: yarn 
       - run:
           name: Run tests
-          command: npm test
+          command: npm run circle-ci
 
 workflows:
   # Below is the definition of your workflow.
