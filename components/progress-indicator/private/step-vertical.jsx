@@ -87,6 +87,15 @@ class StepVertical extends React.Component {
 				onClick={handleClick}
 			>
 				{icon}
+        <span className="slds-assistive-text">
+					{this.props.step.assistiveText || (
+						<React.Fragment>
+							{`${this.props.assistiveText.step} ${this.props.index + 1}: `}
+							{this.props.step.label}
+							{status ? ` - ${status}` : ''}
+						</React.Fragment>
+					)}
+				</span>
 			</button>
 		) : (
 			<span
@@ -99,6 +108,15 @@ class StepVertical extends React.Component {
 				})}
 			>
 				{icon}
+        <span className="slds-assistive-text">
+					{this.props.step.assistiveText || (
+						<React.Fragment>
+							{`${props.assistiveText.step} ${props.index + 1}: `}
+							{props.step.label}
+							{status ? ` - ${status}` : ''}
+						</React.Fragment>
+					)}
+				</span>
 			</span>
 		);
 	};
