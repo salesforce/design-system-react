@@ -6,6 +6,7 @@
 # Jest markup & image snapshot tests (this is here so this variable can be used in runTest & elsewhere)
 SNAPSHOT_TESTS='npm run test:dom-snapshot'
 ACCESSIBILITY_TESTS='npm run test:accessibility'
+export CHROME_BIN=/usr/bin/google-chrome
 
 function runTests() {
 COMMANDS=( "$@" )
@@ -33,9 +34,7 @@ do
 	echo "    ${COMMAND}"
 done
 
-echo -en 'travis_fold:start:npm ls\\r'
 npm ls --silent
-echo -en 'travis_fold:end:npm ls\\r'
 
 for COMMAND in "${COMMANDS[@]}"
 do
@@ -70,12 +69,12 @@ NODE_ENV=test ${COMMAND}
                                  ☹︎ Failed ☹︎
 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 "
-		if [ "${COMMAND}" = "${SNAPSHOT_TESTS}" ]; then
-        	echo "uploading diffs"
-        	npm run upload-diffs
-        else
-        	echo "COMMAND: ${COMMAND} != SNAPSHOT_TESTS: ${SNAPSHOT_TESTS}"
-        fi
+	# 	if [ "${COMMAND}" = "${SNAPSHOT_TESTS}" ]; then
+  #       	echo "uploading diffs"
+  #       	npm run upload-diffs
+  #       else
+  #       	echo "COMMAND: ${COMMAND} != SNAPSHOT_TESTS: ${SNAPSHOT_TESTS}"
+  #       fi
 		exit $((10#$ERROR_CODE))
 	fi
 done
@@ -147,13 +146,13 @@ fi
 declare -a COMMANDS=("${RUN_LINT}" "${START_KARMA}" "${SNAPSHOT_TESTS}" "${ACCESSIBILITY_TESTS}" "${DOCGEN}")
 
 printf "
-Running DSR Travis-CI QA Scripts
+Running QA Scripts
 "
 runTests "${COMMANDS[@]}"
 EXIT_CODE=$?
 
 printf "
-DSR Travis-CI QA Scripts Completed with exit condition ${EXIT_CODE}
+QA Scripts Completed with exit condition ${EXIT_CODE}
 "
 
 exit $((10#$EXIT_CODE))

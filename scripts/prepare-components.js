@@ -1,3 +1,5 @@
+// Generates default exports, site stories, and package.json additions
+
 const babel = require('@babel/core'); // eslint-disable-line import/no-extraneous-dependencies
 const babelGenerator = require('babel-generator'); // eslint-disable-line import/no-extraneous-dependencies
 const babelTypes = require('babel-types');
