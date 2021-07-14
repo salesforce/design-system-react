@@ -428,6 +428,13 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                           </svg>
                           
                         </span>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Step 1: 
+                          Turn on Lightning for all users.
+                           - Completed
+                        </span>
                       </button>
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -501,6 +508,13 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             />
                           </svg>
                           
+                        </span>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Step 2: 
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                           - Completed
                         </span>
                       </button>
                       <div
@@ -678,7 +692,15 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-button slds-progress__marker"
                         onClick={[Function]}
                         type="button"
-                      />
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Step 1: 
+                          Turn on Lightning for all users.
+                          
+                        </span>
+                      </button>
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
                         id="progress-indicator-vertical-label-0"
@@ -739,7 +761,15 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-button slds-progress__marker"
                         onClick={[Function]}
                         type="button"
-                      />
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Step 2: 
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                          
+                        </span>
+                      </button>
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
                         id="progress-indicator-vertical-label-1"
@@ -775,7 +805,15 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-button slds-progress__marker"
                         onClick={[Function]}
                         type="button"
-                      />
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Step 3: 
+                          Lorem ipsum dolor sit amet, lorem ipsum dolor.
+                          
+                        </span>
+                      </button>
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
                         id="progress-indicator-vertical-label-2"
@@ -1012,6 +1050,13 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                           </svg>
                           
                         </span>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Step 1: 
+                          Turn on Lightning for all users.
+                           - Completed
+                        </span>
                       </button>
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1085,6 +1130,13 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                             />
                           </svg>
                           
+                        </span>
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Step 2: 
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                           - Completed
                         </span>
                       </button>
                       <div
@@ -1262,7 +1314,15 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-button slds-progress__marker"
                         onClick={[Function]}
                         type="button"
-                      />
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Step 1: 
+                          Turn on Lightning for all users.
+                          
+                        </span>
+                      </button>
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
                         id="progress-indicator-vertical-label-step-incomplete1-substep0"
@@ -1323,7 +1383,15 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-button slds-progress__marker"
                         onClick={[Function]}
                         type="button"
-                      />
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Step 2: 
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                          
+                        </span>
+                      </button>
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
                         id="progress-indicator-vertical-label-step-incomplete1-substep1"
@@ -1499,7 +1567,15 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-button slds-progress__marker"
                         onClick={[Function]}
                         type="button"
-                      />
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Step 1: 
+                          Turn on Lightning for all users.
+                          
+                        </span>
+                      </button>
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
                         id="progress-indicator-vertical-label-step-incomplete2-substep0"
@@ -1560,7 +1636,15 @@ exports[`DOM snapshots SLDSSetupAssistant Hub with Expandable Steps 1`] = `
                         className="slds-button slds-progress__marker"
                         onClick={[Function]}
                         type="button"
-                      />
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Step 2: 
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                          
+                        </span>
+                      </button>
                       <div
                         className="slds-progress__item_content slds-grid slds-grid_align-spread"
                         id="progress-indicator-vertical-label-step-incomplete2-substep1"
@@ -1828,6 +1912,13 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                             </svg>
                             
                           </span>
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            Step 1: 
+                            Turn on Lightning for all users.
+                             - Completed
+                          </span>
                         </button>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1901,6 +1992,13 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               />
                             </svg>
                             
+                          </span>
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            Step 2: 
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                             - Completed
                           </span>
                         </button>
                         <div
@@ -2090,6 +2188,13 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                             </svg>
                             
                           </span>
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            Step 1: 
+                            Turn on Lightning for all users.
+                             - Completed
+                          </span>
                         </button>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -2152,7 +2257,15 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-button slds-progress__marker"
                           onClick={[Function]}
                           type="button"
-                        />
+                        >
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            Step 2: 
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            
+                          </span>
+                        </button>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
                           id="progress-indicator-vertical-label-step-2-substep1"
@@ -2188,7 +2301,15 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-button slds-progress__marker"
                           onClick={[Function]}
                           type="button"
-                        />
+                        >
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            Step 3: 
+                            Lorem ipsum dolor sit amet, lorem ipsum dolor.
+                            
+                          </span>
+                        </button>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
                           id="progress-indicator-vertical-label-step-2-substep2"
@@ -2425,6 +2546,13 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                             </svg>
                             
                           </span>
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            Step 1: 
+                            Turn on Lightning for all users.
+                             - Completed
+                          </span>
                         </button>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -2498,6 +2626,13 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                               />
                             </svg>
                             
+                          </span>
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            Step 2: 
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                             - Completed
                           </span>
                         </button>
                         <div
@@ -2675,7 +2810,15 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-button slds-progress__marker"
                           onClick={[Function]}
                           type="button"
-                        />
+                        >
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            Step 1: 
+                            Turn on Lightning for all users.
+                            
+                          </span>
+                        </button>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
                           id="progress-indicator-vertical-label-step-incomplete1-substep0"
@@ -2736,7 +2879,15 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-button slds-progress__marker"
                           onClick={[Function]}
                           type="button"
-                        />
+                        >
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            Step 2: 
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            
+                          </span>
+                        </button>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
                           id="progress-indicator-vertical-label-step-incomplete1-substep1"
@@ -2912,7 +3063,15 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-button slds-progress__marker"
                           onClick={[Function]}
                           type="button"
-                        />
+                        >
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            Step 1: 
+                            Turn on Lightning for all users.
+                            
+                          </span>
+                        </button>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
                           id="progress-indicator-vertical-label-step-incomplete2-substep0"
@@ -2973,7 +3132,15 @@ exports[`DOM snapshots SLDSSetupAssistant In a Card 1`] = `
                           className="slds-button slds-progress__marker"
                           onClick={[Function]}
                           type="button"
-                        />
+                        >
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            Step 2: 
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            
+                          </span>
+                        </button>
                         <div
                           className="slds-progress__item_content slds-grid slds-grid_align-spread"
                           id="progress-indicator-vertical-label-step-incomplete2-substep1"

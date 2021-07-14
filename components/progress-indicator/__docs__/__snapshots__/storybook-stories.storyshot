@@ -1106,7 +1106,15 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 1: 
+              label #1
+              
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-0"
@@ -1146,7 +1154,15 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 2: 
+              label #2
+              
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-1"
@@ -1186,7 +1202,15 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 3: 
+              label #3
+               - Disabled
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-2"
@@ -1229,7 +1253,15 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 4: 
+              label #4
+               - Disabled
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-3"
@@ -1290,7 +1322,15 @@ exports[`DOM snapshots SLDSProgressIndicator SetupAssistant 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 5: 
+              label #5
+               - Disabled
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-4"
@@ -1597,7 +1637,15 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 1: 
+              label #1
+              
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-0"
@@ -1612,7 +1660,15 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 2: 
+              label #2
+              
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-1"
@@ -1627,7 +1683,15 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 3: 
+              label #3
+               - Disabled
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-2"
@@ -1642,7 +1706,15 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 4: 
+              label #4
+               - Disabled
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-3"
@@ -1657,7 +1729,15 @@ exports[`DOM snapshots SLDSProgressIndicator Vertical 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 5: 
+              label #5
+               - Disabled
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-4"
@@ -1708,6 +1788,13 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
               </svg>
               
             </span>
+            <span
+              className="slds-assistive-text"
+            >
+              Step 1: 
+              label #1
+               - Completed
+            </span>
           </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1734,6 +1821,13 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
                 />
               </svg>
               
+            </span>
+            <span
+              className="slds-assistive-text"
+            >
+              Step 2: 
+              label #2
+               - Completed
             </span>
           </button>
           <div
@@ -1762,6 +1856,13 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
               </svg>
               
             </span>
+            <span
+              className="slds-assistive-text"
+            >
+              Step 3: 
+              label #3
+               - Completed
+            </span>
           </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1788,6 +1889,13 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
                 />
               </svg>
               
+            </span>
+            <span
+              className="slds-assistive-text"
+            >
+              Step 4: 
+              label #4
+               - Completed
             </span>
           </button>
           <div
@@ -1816,6 +1924,13 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
               </svg>
               
             </span>
+            <span
+              className="slds-assistive-text"
+            >
+              Step 5: 
+              label #5
+               - Error
+            </span>
           </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
@@ -1831,7 +1946,15 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 6: 
+              label #6
+              
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-5"
@@ -1846,7 +1969,15 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 7: 
+              label #7
+              
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-6"
@@ -1861,7 +1992,15 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 8: 
+              label #8
+              
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-7"
@@ -1876,7 +2015,15 @@ exports[`DOM snapshots SLDSProgressIndicator VerticalStepError 1`] = `
             className="slds-button slds-progress__marker"
             onClick={[Function]}
             type="button"
-          />
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Step 9: 
+              label #9
+              
+            </span>
+          </button>
           <div
             className="slds-progress__item_content slds-grid slds-grid_align-spread"
             id="progress-indicator-vertical-label-8"
