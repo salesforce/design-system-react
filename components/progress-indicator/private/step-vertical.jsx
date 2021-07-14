@@ -87,7 +87,7 @@ class StepVertical extends React.Component {
 				onClick={handleClick}
 			>
 				{icon}
-        <span className="slds-assistive-text">
+				<span className="slds-assistive-text">
 					{this.props.step.assistiveText || (
 						<React.Fragment>
 							{`${this.props.assistiveText.step} ${this.props.index + 1}: `}
@@ -108,7 +108,7 @@ class StepVertical extends React.Component {
 				})}
 			>
 				{icon}
-        <span className="slds-assistive-text">
+				<span className="slds-assistive-text">
 					{this.props.step.assistiveText || (
 						<React.Fragment>
 							{`${props.assistiveText.step} ${props.index + 1}: `}
