@@ -70,7 +70,6 @@ workflows:
   dsr_build_test: 
     jobs:
       - lint
-      - prepare-components
       - dom-snapshot
       - docs
       - unit
