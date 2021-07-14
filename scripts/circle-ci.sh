@@ -68,14 +68,14 @@ NODE_ENV=test ${COMMAND}
                                  ☹︎ Failed ☹︎
 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 "
-		if [ "${COMMAND}" = "${SNAPSHOT_TESTS}" ]; then
-        	echo "uploading diffs"
-        	npm run upload-diffs
-        else
-        	echo "COMMAND: ${COMMAND} != SNAPSHOT_TESTS: ${SNAPSHOT_TESTS}"
-        fi
-		exit $((10#$ERROR_CODE))
-	fi
+	# 	if [ "${COMMAND}" = "${SNAPSHOT_TESTS}" ]; then
+  #       	echo "uploading diffs"
+  #       	npm run upload-diffs
+  #       else
+  #       	echo "COMMAND: ${COMMAND} != SNAPSHOT_TESTS: ${SNAPSHOT_TESTS}"
+  #       fi
+	# 	exit $((10#$ERROR_CODE))
+	# fi
 done
 
 echo "
