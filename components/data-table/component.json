@@ -45,6 +45,10 @@
 			"path": "/__examples__/basic-fluid-column-bordered.jsx"
 		},
 		{
+			"heading": "Basic: Headless",
+			"path": "/__examples__/basic-fluid-headless.jsx"
+		},
+		{
 			"heading": "Fixed Layout",
 			"path": "/__examples__/basic-fixed-layout.jsx"
 		},

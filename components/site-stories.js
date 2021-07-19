@@ -292,6 +292,10 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-column-bordered.jsx'),
 		},
 		{
+			heading: 'Basic: Headless',
+			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-headless.jsx'),
+		},
+		{
 			heading: 'Fixed Layout',
 			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fixed-layout.jsx'),
 		},
