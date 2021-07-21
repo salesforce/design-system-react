@@ -209,6 +209,10 @@ class DataTable extends React.Component {
 			})
 		).isRequired,
 		/**
+		 * Removes the header from the data table. Tested with snapshot testing
+		 */
+		isHeadless: PropTypes.bool,
+		/**
 		 * Makes DataTable joinable with PageHeader by adding appropriate classes/styling
 		 */
 		joined: PropTypes.bool,
@@ -869,6 +873,7 @@ class DataTable extends React.Component {
 								'slds-table_striped': this.props.striped,
 								'slds-table_col-bordered': this.props.columnBordered,
 								'slds-no-row-hover': this.props.noRowHover,
+								'slds-table_header-hidden': this.props.isHeadless,
 							},
 							this.props.className
 						)}
@@ -909,6 +914,7 @@ class DataTable extends React.Component {
 									this.headerRefs.column[index] = ref;
 								}
 							}}
+							isHidden={this.props.isHeadless}
 							indeterminateSelected={indeterminateSelected}
 							canSelectRows={canSelectRows}
 							columns={columns}

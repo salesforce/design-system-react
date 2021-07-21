@@ -131,7 +131,9 @@ exports[`DOM snapshots SLDSCard Custom Header 1`] = `
           onBlur={[Function]}
           role={null}
         >
-          <thead>
+          <thead
+            className=""
+          >
             <tr
               className="slds-line-height_reset"
             >
@@ -348,7 +350,9 @@ exports[`DOM snapshots SLDSCard Custom Heading 1`] = `
           onBlur={[Function]}
           role={null}
         >
-          <thead>
+          <thead
+            className=""
+          >
             <tr
               className="slds-line-height_reset"
             >
@@ -557,7 +561,9 @@ exports[`DOM snapshots SLDSCard Doc site Related List With Table 1`] = `
           onBlur={[Function]}
           role={null}
         >
-          <thead>
+          <thead
+            className=""
+          >
             <tr
               className="slds-line-height_reset"
             >
@@ -953,7 +959,9 @@ exports[`DOM snapshots SLDSCard w/ Items 1`] = `
           onBlur={[Function]}
           role={null}
         >
-          <thead>
+          <thead
+            className=""
+          >
             <tr
               className="slds-line-height_reset"
             >
@@ -1080,7 +1088,9 @@ exports[`DOM snapshots SLDSCard w/o Header 1`] = `
         onBlur={[Function]}
         role={null}
       >
-        <thead>
+        <thead
+          className=""
+        >
           <tr
             className="slds-line-height_reset"
           >

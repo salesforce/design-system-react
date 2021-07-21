@@ -40,6 +40,7 @@ class DataTableHead extends React.Component {
 		}),
 		allSelected: PropTypes.bool,
 		headerRefs: PropTypes.func,
+		isHidden: PropTypes.bool,
 		indeterminateSelected: PropTypes.bool,
 		canSelectRows: PropTypes.oneOfType([
 			PropTypes.bool,
@@ -267,7 +268,11 @@ class DataTableHead extends React.Component {
 		const selectHeader = this.getSelectHeader();
 
 		return (
-			<thead>
+			<thead
+				className={classNames({
+					'slds-assistive-text': this.props.isHidden,
+				})}
+			>
 				<tr className="slds-line-height_reset">
 					{selectHeader}
 					{this.props.columns.map((column, index) => (
