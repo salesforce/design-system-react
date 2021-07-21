@@ -5304,6 +5304,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Opportunity Name"
             aria-sort="none"
             className=""
+            id="opportunityName"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5320,6 +5321,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Account Name"
             aria-sort="none"
             className=""
+            id="accountName"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5336,6 +5338,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Close Date"
             aria-sort="none"
             className=""
+            id="closeDate"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5352,6 +5355,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Stage"
             aria-sort="none"
             className=""
+            id="stage"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5368,6 +5372,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Confidence"
             aria-sort="none"
             className=""
+            id="confidence"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5384,6 +5389,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Amount"
             aria-sort="none"
             className=""
+            id="amount"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5400,6 +5406,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Contact"
             aria-sort="none"
             className=""
+            id="contact"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -25339,7 +25346,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
       onBlur={[Function]}
       role={null}
     >
-      <thead>
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -25843,7 +25852,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
       onBlur={[Function]}
       role="grid"
     >
-      <thead>
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -26429,7 +26440,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
           onBlur={[Function]}
           role="grid"
         >
-          <thead>
+          <thead
+            className=""
+          >
             <tr
               className="slds-line-height_reset"
             >
