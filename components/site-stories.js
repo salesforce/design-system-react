@@ -319,6 +319,10 @@ const documentationSiteLiveExamples = {
 			heading: 'Infinite Scrolling',
 			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/infinite-scrolling.jsx'),
 		},
+		{
+			heading: 'Resizable Columns',
+			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/resizable-columns.jsx'),
+		},
 	],
 	'date-picker': [
 		{

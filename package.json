@@ -789,6 +789,10 @@
 				{
 					"heading": "Infinite Scrolling",
 					"path": "/__examples__/infinite-scrolling.jsx"
+				},
+				{
+					"heading": "Resizable Columns",
+					"path": "/__examples__/resizable-columns.jsx"
 				}
 			],
 			"url-slug": "data-tables"

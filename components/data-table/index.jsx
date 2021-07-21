@@ -565,35 +565,37 @@ class DataTable extends React.Component {
 	}
 
 	enableResize() {
-		const remoteTable = document.querySelector(`#${this.getId()}`);
-		const { fixedHeader } = this.props;
+		if (canUseDOM) {
+			const remoteTable = document.querySelector(`#${this.getId()}`);
+			const { fixedHeader } = this.props;
 
-		if (!this.resizer) {
-			const options = {
-				...defaultProps.resizerOptions,
-				...this.props.resizerOptions,
-			};
+			if (!this.resizer) {
+				const options = {
+					...defaultProps.resizerOptions,
+					...this.props.resizerOptions,
+				};
 
-			const externalFunction = this.props.resizerOptions.onResize;
-			options.onResize = (e) => {
-				if (fixedHeader) {
-					this.resizeFixedHeaders(e);
-					this.repositionResizers();
+				const externalFunction = this.props.resizerOptions.onResize;
+				options.onResize = (e) => {
+					if (fixedHeader) {
+						this.resizeFixedHeaders(e);
+						this.repositionResizers();
+					}
+
+					const response = this.onResize();
+
+					if (externalFunction) externalFunction(response);
+					this.resizeGrips();
+				};
+
+				if (remoteTable) {
+					this.resizer = new ColumnResizer(remoteTable, options);
+					remoteTable.classList.remove('grip-padding');
+
+					if (fixedHeader) this.resizeFixedHeaders();
+
+					this.resizeGrips();
 				}
-
-				const response = this.onResize();
-
-				if (externalFunction) externalFunction(response);
-				this.resizeGrips();
-			};
-
-			if (remoteTable) {
-				this.resizer = new ColumnResizer(remoteTable, options);
-				remoteTable.classList.remove('grip-padding');
-
-				if (fixedHeader) this.resizeFixedHeaders();
-
-				this.resizeGrips();
 			}
 		}
 	}

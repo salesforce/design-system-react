@@ -51,4 +51,4 @@ storiesOf(DATA_TABLE, module)
 	.add('Joined with Page Header', () => <JoinedWithPageHeader />)
 	.add('Custom Classes', () => <CustomClasses />)
 	.add('Infinite Scrolling', () => <InfiniteScrolling />)
-	.add('Resizable Colums', () => <ResizableColumns />);
+	.add('Resizable Columns', () => <ResizableColumns />);
