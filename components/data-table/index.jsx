@@ -19,6 +19,7 @@ import assign from 'lodash.assign';
 import reject from 'lodash.reject';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import ColumnResizer from 'column-resizer';
 import checkProps from './check-props';
 import componentDoc from './component.json';
 
@@ -66,6 +67,11 @@ const defaultProps = {
 	selection: [],
 	hasMore: false,
 	loadMoreOffset: 20,
+	resizable: false,
+	resizerOptions: {
+		resizeMode: 'flex',
+		draggingClass: 'slds-table-column-resizer',
+	},
 };
 
 /**
@@ -293,6 +299,7 @@ class DataTable extends React.Component {
 			column: [],
 			select: [],
 		};
+		this.gripRefs = [];
 		this.scrollerRef = null;
 		this.state = {
 			// Currently selected cell
@@ -328,6 +335,9 @@ class DataTable extends React.Component {
 			this.toggleFixedHeaderListeners(true);
 			this.resizeFixedHeaders();
 		}
+		if (this.props.resizable) {
+			this.enableResize();
+		}
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -352,10 +362,34 @@ class DataTable extends React.Component {
 			// eslint-disable-next-line react/no-did-update-set-state
 			this.setState({ tableHasFocus: true });
 		}
+		if (this.props.resizable) {
+			this.enableResize();
+		} else if (this.resizer) {
+			this.disableResize();
+		}
 	}
 
 	componentWillUnmount() {
 		this.toggleFixedHeaderListeners(false);
+
+		if (this.props.resizable) {
+			this.disableResize();
+		}
+	}
+
+	onResize() {
+		const table = document.querySelector(`#${this.getId()}`);
+		const columns = this.props.fixedHeader
+			? table.getElementsByClassName('slds-cell-fixed')
+			: table.getElementsByTagName('th');
+		const columnsWidths = Array.from(columns).map(({ id, style }, index) => {
+			return {
+				id,
+				index,
+				width: parseInt(style.width, 10),
+			};
+		});
+		return columnsWidths;
 	}
 
 	getId() {
@@ -424,6 +458,17 @@ class DataTable extends React.Component {
 
 			this.props.onRowChange(e, { selection });
 		}
+	};
+
+	repositionResizers = () => {
+		const headers = this.headerRefs.column;
+
+		this.gripRefs.forEach((grip, index) => {
+			const header = headers[index].getBoundingClientRect();
+			const newPosition = header.left + header.width - 30;
+			// eslint-disable-next-line no-param-reassign
+			grip.style.left = `${newPosition}px`;
+		});
 	};
 
 	resizeFixedHeaders = (event) => {
@@ -496,9 +541,67 @@ class DataTable extends React.Component {
 			if (canUseEventListeners && this.scrollerRef) {
 				this.scrollerRef[action]('scroll', this.resizeFixedHeaders);
 				this.scrollerRef[action]('scroll', this.loadMoreIfNeeded);
+				this.scrollerRef[action]('scroll', this.repositionResizers);
 			}
 		}
 	};
+
+	resizeGrips() {
+		const table = document.getElementsByClassName(
+			`slds-table_header-fixed_container`
+		);
+
+		if (table?.length > 0) {
+			const grips = table[0].getElementsByClassName('grip-handle');
+
+			if (grips) {
+				this.gripRefs = grips;
+				this.gripRefs.forEach((grip) => {
+					// eslint-disable-next-line no-param-reassign
+					grip.style.height = `${parseInt(grip.style.height, 10) + 33}px`;
+				});
+			}
+		}
+	}
+
+	enableResize() {
+		const remoteTable = document.querySelector(`#${this.getId()}`);
+		const { fixedHeader } = this.props;
+
+		if (!this.resizer) {
+			const options = {
+				...defaultProps.resizerOptions,
+				...this.props.resizerOptions,
+			};
+
+			const externalFunction = this.props.resizerOptions.onResize;
+			options.onResize = (e) => {
+				if (fixedHeader) {
+					this.resizeFixedHeaders(e);
+					this.repositionResizers();
+				}
+
+				const response = this.onResize();
+
+				if (externalFunction) externalFunction(response);
+				this.resizeGrips();
+			};
+
+			if (remoteTable) {
+				this.resizer = new ColumnResizer(remoteTable, options);
+				remoteTable.classList.remove('grip-padding');
+
+				if (fixedHeader) this.resizeFixedHeaders();
+
+				this.resizeGrips();
+			}
+		}
+	}
+
+	disableResize() {
+		if (this.resizer) this.resizer.reset({ disable: true });
+		this.gripRefs = [];
+	}
 
 	changeActiveCell(rowIndex, columnIndex) {
 		this.setState({

@@ -5252,6 +5252,13 @@
         "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.\n\nNOTE: for horizontal scrolling with `fixedHeader`-enabled DataTables, see the `style` property description",
         "methods": [
             {
+                "name": "onResize",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getId",
                 "docblock": null,
                 "modifiers": [],
@@ -5311,6 +5318,13 @@
                 "returns": null
             },
             {
+                "name": "repositionResizers",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "resizeFixedHeaders",
                 "docblock": null,
                 "modifiers": [],
@@ -5339,6 +5353,27 @@
                         "type": null
                     }
                 ],
+                "returns": null
+            },
+            {
+                "name": "resizeGrips",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "enableResize",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "disableResize",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
                 "returns": null
             },
             {
@@ -5725,6 +5760,20 @@
                 },
                 "required": false,
                 "description": "A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`."
+            },
+            "resizable": {
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                },
+                "required": false
+            },
+            "resizerOptions": {
+                "defaultValue": {
+                    "value": "{\n\tresizeMode: 'flex',\n\tdraggingClass: 'slds-table-column-resizer',\n}",
+                    "computed": false
+                },
+                "required": false
             }
         },
         "route": "data-tables",

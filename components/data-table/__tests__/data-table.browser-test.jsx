@@ -704,6 +704,47 @@ describe('DataTable: ', function describeFunction() {
 				4
 			);
 		});
+
+		it('Renders a fixedHeader with column resizing functionality table as expected', function () {
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					fixedHeader
+					fixedLayout
+					resizable
+					id="DataTable-resizable-cols-Test"
+				>
+					<DataTableColumn
+						isSorted
+						label="Name"
+						primaryColumn
+						property="name"
+						sortable
+						sortDirection="asc"
+					/>
+					<DataTableColumn label="Count" property="count" />
+					<DataTableRowActions
+						options={[
+							{
+								id: 0,
+								label: 'Add to Group',
+								value: '1',
+							},
+							{
+								id: 1,
+								label: 'Publish',
+								value: '2',
+							},
+						]}
+						onAction={() => {}}
+						dropdown={<Dropdown length="5" />}
+					/>
+				</DataTable>
+			).call(this);
+
+			expect(this.dom.querySelectorAll('.grip-resizable').length).to.eql(5);
+			expect(this.dom.querySelectorAll('.grip-container').length).to.eql(1);
+		});
 	});
 
 	describe('w/ Infinite Scrolling', function describeFunction2() {

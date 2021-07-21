@@ -20,6 +20,7 @@ import FixedHeaderHorizontalScroller from '../__examples__/fixed-header-horizont
 import JoinedWithPageHeader from '../__examples__/joined-with-page-header';
 import CustomClasses from '../__examples__/custom-classes';
 import InfiniteScrolling from '../__examples__/infinite-scrolling';
+import ResizableColumns from '../__examples__/resizable-columns';
 
 storiesOf(DATA_TABLE, module)
 	.addDecorator((getStory) => (
@@ -49,4 +50,5 @@ storiesOf(DATA_TABLE, module)
 	))
 	.add('Joined with Page Header', () => <JoinedWithPageHeader />)
 	.add('Custom Classes', () => <CustomClasses />)
-	.add('Infinite Scrolling', () => <InfiniteScrolling />);
+	.add('Infinite Scrolling', () => <InfiniteScrolling />)
+	.add('Resizable Colums', () => <ResizableColumns />);

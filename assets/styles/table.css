@@ -1,0 +1,23 @@
+.slds-table-column-resizer{
+    border-left: 1px dotted darkgray;
+}
+
+.slds-table_fixed-layout .grip-handle {
+    position: absolute;
+    top: -33px;
+    z-index: 9;
+}
+
+.slds-table_fixed-layout .grip-container {
+    position: absolute;
+}
+
+.slds-table_header-fixed_container .grip-handle {
+    position: absolute;
+    top: -33px;
+    z-index: 9;
+}
+
+.slds-table_header-fixed_container .grip-container {
+    position: absolute;
+}
