@@ -12,7 +12,9 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
       onBlur={[Function]}
       role="grid"
     >
-      <thead>
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -1074,7 +1076,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
           onBlur={[Function]}
           role="grid"
         >
-          <thead>
+          <thead
+            className=""
+          >
             <tr
               className="slds-line-height_reset"
             >
@@ -2440,7 +2444,9 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
       onBlur={[Function]}
       role="grid"
     >
-      <thead>
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -3413,7 +3419,9 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
       onBlur={[Function]}
       role="grid"
     >
-      <thead>
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -4619,7 +4627,9 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
       onBlur={[Function]}
       role="grid"
     >
-      <thead>
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -5284,7 +5294,510 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
       onBlur={[Function]}
       role={null}
     >
-      <thead>
+      <thead
+        className=""
+      >
+        <tr
+          className="slds-line-height_reset"
+        >
+          <th
+            aria-label="Opportunity Name"
+            aria-sort="none"
+            className=""
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Opportunity Name"
+            >
+              Opportunity Name
+            </div>
+          </th>
+          <th
+            aria-label="Account Name"
+            aria-sort="none"
+            className=""
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Account Name"
+            >
+              Account Name
+            </div>
+          </th>
+          <th
+            aria-label="Close Date"
+            aria-sort="none"
+            className=""
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Close Date"
+            >
+              Close Date
+            </div>
+          </th>
+          <th
+            aria-label="Stage"
+            aria-sort="none"
+            className=""
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Stage"
+            >
+              Stage
+            </div>
+          </th>
+          <th
+            aria-label="Confidence"
+            aria-sort="none"
+            className=""
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Confidence"
+            >
+              Confidence
+            </div>
+          </th>
+          <th
+            aria-label="Amount"
+            aria-sort="none"
+            className=""
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Amount"
+            >
+              Amount
+            </div>
+          </th>
+          <th
+            aria-label="Contact"
+            aria-sort="none"
+            className=""
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            scope="col"
+            style={null}
+          >
+            <div
+              className="slds-truncate"
+              title="Contact"
+            >
+              Contact
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          className=""
+        >
+          <td
+            className=""
+            data-label="Opportunity Name"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              <a
+                href="#"
+                onClick={[Function]}
+              >
+                Cloudhub
+              </a>
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Account Name"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Close Date"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="4/14/2015"
+            >
+              4/14/2015
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Stage"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Confidence"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="20%"
+            >
+              20%
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Amount"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="$25k"
+            >
+              $25k
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Contact"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="jrogers@cloudhub.com"
+            >
+              <a
+                href="#"
+                onClick={[Function]}
+              >
+                jrogers@cloudhub.com
+              </a>
+            </div>
+          </td>
+        </tr>
+        <tr
+          className=""
+        >
+          <td
+            className=""
+            data-label="Opportunity Name"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub + Anypoint Connectors"
+            >
+              <a
+                href="#"
+                onClick={[Function]}
+              >
+                Cloudhub + Anypoint Connectors
+              </a>
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Account Name"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Close Date"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="4/14/2015"
+            >
+              4/14/2015
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Stage"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Confidence"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="20%"
+            >
+              20%
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Amount"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="$25k"
+            >
+              $25k
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Contact"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="jrogers@cloudhub.com"
+            >
+              <a
+                href="#"
+                onClick={[Function]}
+              >
+                jrogers@cloudhub.com
+              </a>
+            </div>
+          </td>
+        </tr>
+        <tr
+          className=""
+        >
+          <td
+            className=""
+            data-label="Opportunity Name"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              <a
+                href="#"
+                onClick={[Function]}
+              >
+                Cloudhub
+              </a>
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Account Name"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Cloudhub"
+            >
+              Cloudhub
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Close Date"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="4/14/2015"
+            >
+              4/14/2015
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Stage"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="Prospecting"
+            >
+              Prospecting
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Confidence"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="20%"
+            >
+              20%
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Amount"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="$25k"
+            >
+              $25k
+            </div>
+          </td>
+          <td
+            className=""
+            data-label="Contact"
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role={null}
+            style={null}
+          >
+            <div
+              className=""
+              title="jrogers@cloudhub.com"
+            >
+              <a
+                href="#"
+                onClick={[Function]}
+              >
+                jrogers@cloudhub.com
+              </a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    style={
+      Object {
+        "overflow": "auto",
+      }
+    }
+  >
+    <table
+      className="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered"
+      id="DataTableExample-columnBordered"
+      onBlur={[Function]}
+      role={null}
+    >
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -5773,7 +6286,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
 </div>
 `;
 
-exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = `
+exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Headless 1`] = `
 <div
   className="slds-p-around_medium"
 >
@@ -5785,12 +6298,14 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
     }
   >
     <table
-      className="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered"
-      id="DataTableExample-columnBordered"
+      className="slds-table slds-table_bordered slds-table_cell-buffer slds-table_header-hidden"
+      id="DataTableExample-headless"
       onBlur={[Function]}
       role={null}
     >
-      <thead>
+      <thead
+        className="slds-assistive-text"
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -6296,7 +6811,9 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
       onBlur={[Function]}
       role={null}
     >
-      <thead>
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -6802,7 +7319,9 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
       onBlur={[Function]}
       role={null}
     >
-      <thead>
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -7308,7 +7827,9 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
       onBlur={[Function]}
       role={null}
     >
-      <thead>
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -7804,7 +8325,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
           onBlur={[Function]}
           role="grid"
         >
-          <thead>
+          <thead
+            className=""
+          >
             <tr
               className="slds-line-height_reset"
             >
@@ -11233,7 +11756,9 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
             }
           }
         >
-          <thead>
+          <thead
+            className=""
+          >
             <tr
               className="slds-line-height_reset"
             >
@@ -14656,7 +15181,9 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
           onBlur={[Function]}
           role="grid"
         >
-          <thead>
+          <thead
+            className=""
+          >
             <tr
               className="slds-line-height_reset"
             >
@@ -18025,7 +18552,9 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
       onBlur={[Function]}
       role="grid"
     >
-      <thead>
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -18780,7 +19309,9 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
       onBlur={[Function]}
       role="grid"
     >
-      <thead>
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -19535,7 +20066,9 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
       onBlur={[Function]}
       role="grid"
     >
-      <thead>
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -20290,7 +20823,9 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
       onBlur={[Function]}
       role="grid"
     >
-      <thead>
+      <thead
+        className=""
+      >
         <tr
           className="slds-line-height_reset"
         >
@@ -21449,7 +21984,9 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
           onBlur={[Function]}
           role="grid"
         >
-          <thead>
+          <thead
+            className=""
+          >
             <tr
               className="slds-line-height_reset"
             >

@@ -14,6 +14,7 @@ import BasicFluid from '../__examples__/basic-fluid';
 import BasicFluidColumnBordered from '../__examples__/basic-fluid-column-bordered';
 import BasicFluidNoRowHover from '../__examples__/basic-fluid-no-row-hover';
 import BasicFluidStriped from '../__examples__/basic-fluid-striped';
+import BasicFluidHeadless from '../__examples__/basic-fluid-headless';
 import FixedHeader from '../__examples__/fixed-header';
 import InteractiveElements from '../__examples__/interactive-elements';
 import FixedHeaderHorizontalScroller from '../__examples__/fixed-header-horizontal-scrolling';
@@ -34,6 +35,7 @@ storiesOf(DATA_TABLE, module)
 	.add('Basic Fluid Layout - Column Bordered', () => (
 		<BasicFluidColumnBordered />
 	))
+	.add('Basic Fluid Layout - Headless', () => <BasicFluidHeadless />)
 	.add('Basic Fixed Layout', () => <BasicFixedLayout />)
 	.add('Advanced (Fixed Layout)', () => <Advanced log={action} />)
 	.add('Advanced Single Select (Fixed Layout)', () => (
