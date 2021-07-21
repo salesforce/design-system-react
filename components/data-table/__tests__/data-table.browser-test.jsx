@@ -705,7 +705,7 @@ describe('DataTable: ', function describeFunction() {
 			);
 		});
 
-		it('Renders a fixedHeader with column resizing functionality table as expected', function () {
+		it('Renders a fixedHeader table with column resizing functionality as expected', function () {
 			renderTable(
 				<DataTable
 					{...defaultProps}
