@@ -87,6 +87,7 @@
 	"dependencies": {
 		"@salesforce/babel-preset-design-system-react": "^3.0.0",
 		"classnames": "^2.2.6",
+		"column-resizer": "^1.3.6",
 		"create-react-class": "^15.7.0",
 		"lodash.assign": "^4.2.0",
 		"lodash.escaperegexp": "^4.1.2",
@@ -792,6 +793,10 @@
 				{
 					"heading": "Infinite Scrolling",
 					"path": "/__examples__/infinite-scrolling.jsx"
+				},
+				{
+					"heading": "Resizable Columns",
+					"path": "/__examples__/resizable-columns.jsx"
 				}
 			],
 			"url-slug": "data-tables"
