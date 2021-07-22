@@ -565,7 +565,7 @@ class DataTable extends React.Component {
 			return !!tableFilterd;
 		});
 
-		if (table?.length > 0) {
+		if (table.length > 0) {
 			const grips = table[0].getElementsByClassName('grip-handle');
 
 			if (grips) {
@@ -802,14 +802,14 @@ class DataTable extends React.Component {
 				newColumnIndex = headers.length - 1;
 			}
 		} else if (columnIndex + 1 < headers.length) {
-				newColumnIndex = columnIndex + 1;
-				newRowIndex = rowIndex;
-			} else {
-				if (rowIndex < this.props.items.length) newRowIndex = rowIndex + 1;
-				else newRowIndex = 0;
+			newColumnIndex = columnIndex + 1;
+			newRowIndex = rowIndex;
+		} else {
+			if (rowIndex < this.props.items.length) newRowIndex = rowIndex + 1;
+			else newRowIndex = 0;
 
-				newColumnIndex = 0;
-			}
+			newColumnIndex = 0;
+		}
 
 		this.changeActiveCell(newRowIndex, newColumnIndex);
 	}
