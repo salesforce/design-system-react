@@ -24,7 +24,7 @@ storiesOf(VERTICAL_NAVIGATION, module)
 	.add('With icons', () => (
 		<Default categories={sampleReportWitchIconsCategories} action={action} />
 	))
-	.add('With notificatoin', () => (
+	.add('With notifications', () => (
 		<Default
 			categories={sampleReportWitchNotificationCategories}
 			action={action}
