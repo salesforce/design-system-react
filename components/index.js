@@ -265,6 +265,8 @@ export TrialBarButton from './trial-bar/button';
 export SLDSTrialBarButton from './trial-bar/button';
 export TrialBarDropdown from './trial-bar/dropdown';
 export SLDSTrialBarDropdown from './trial-bar/dropdown';
+export SLDSTreeGrid from './tree-grid';
+export TreeGrid from './tree-grid';
 export UNSAFE_DirectionSettings from './utilities/UNSAFE_direction';
 export UtilityIcon from './utilities/utility-icon';
 export SLDSUtilityIcon from './utilities/utility-icon';

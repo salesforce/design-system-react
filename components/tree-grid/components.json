@@ -1,0 +1,18 @@
+{
+	"component": "tree-grid",
+	"status": "prototype",
+	"display-name": "Tree Grid",
+	"classKey": "TreeGrid",
+	"SLDS-component-path": "/components/tree-grid",
+	"dependencies": [
+		{
+			"component": "column",
+			"classKey": "TreeGridColumn"
+		}
+	],
+	"site-stories": [
+		"/__examples__/default.jsx",
+		"/__examples__/headless.jsx"
+	],
+	"url-slug": "tree-grid"
+}
