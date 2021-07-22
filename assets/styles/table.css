@@ -2,11 +2,11 @@
     border-left: 1px solid #0176d3;
 }
 
-.grip-handle:hover{
+.grip-handle:hover, .grip-handle-active{
     border-left: 1px solid #0176d3;
 }
 
-.grip-handle:hover:before{
+.grip-handle:hover:before, .grip-handle-active:before{
     background-color: #0176d3;
     width: .25rem;
     height: 100%;
@@ -56,4 +56,8 @@
 
 .slds-table_header-fixed_container .grip-container {
     position: absolute;
+}
+
+.slds-table th:focus .slds-cell-fixed, .slds-table th.slds-has-focus .slds-cell-fixed, .slds-table [role="gridcell"]:focus , .slds-table [role="gridcell"].slds-has-focus{
+    box-shadow: #0070d2 0 0 0 1px inset;
 }

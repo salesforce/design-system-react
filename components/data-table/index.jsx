@@ -465,14 +465,20 @@ class DataTable extends React.Component {
 	};
 
 	repositionResizers = () => {
-		const headers = this.headerRefs.column;
+		const headers = [].concat(
+			this.headerRefs.select,
+			this.headerRefs.column,
+			this.headerRefs.action
+		);
 
-		this.gripRefs.forEach((grip, index) => {
-			const header = headers[index].getBoundingClientRect();
-			const newPosition = header.left + header.width - 30;
-			// eslint-disable-next-line no-param-reassign
-			grip.style.left = `${newPosition}px`;
-		});
+		if (this.gripRefs) {
+			this.gripRefs.forEach((grip, index) => {
+				const header = headers[index].getBoundingClientRect();
+				const newPosition = header.left + header.width - 30;
+				// eslint-disable-next-line no-param-reassign
+				grip.style.left = `${newPosition}px`;
+			});
+		}
 	};
 
 	resizeFixedHeaders = (event) => {
@@ -551,9 +557,13 @@ class DataTable extends React.Component {
 	};
 
 	resizeGrips() {
-		const table = document.getElementsByClassName(
-			`slds-table_header-fixed_container`
-		);
+		const table = Array.from(
+			document.getElementsByClassName(`slds-table_header-fixed_container`)
+		).filter((t) => {
+			const id = this.getId();
+			const tableFilterd = t.querySelector(`#${id}`);
+			return !!tableFilterd;
+		});
 
 		if (table?.length > 0) {
 			const grips = table[0].getElementsByClassName('grip-handle');
@@ -599,6 +609,7 @@ class DataTable extends React.Component {
 					if (fixedHeader) this.resizeFixedHeaders();
 
 					this.resizeGrips();
+					this.repositionResizers();
 				}
 			}
 		}
@@ -629,6 +640,7 @@ class DataTable extends React.Component {
 				[KEYS.RIGHT]: { callback: (evt) => this.handleKeyDownRight(evt) },
 				[KEYS.ENTER]: { callback: (evt) => this.handleKeyDownEnter(evt) },
 				[KEYS.ESCAPE]: { callback: (evt) => this.handleKeyDownEscape(evt) },
+				[KEYS.TAB]: { callback: (evt) => this.handleKeyTabPress(evt) },
 			},
 		});
 	}
@@ -670,40 +682,72 @@ class DataTable extends React.Component {
 		}
 	}
 
+	displaceByArrowKey(factor) {
+		if (this.state.mode === Mode.ACTIONABLE) {
+			const { rowIndex, columnIndex } = this.state.activeCell;
+
+			if (rowIndex === 0) {
+				const table = document.querySelector(`#${this.getId()}`);
+				const headers = table.getElementsByTagName('th');
+				headers[columnIndex].style.width = `${
+					parseInt(headers[columnIndex].style.width, 10) + factor
+				}px`;
+				this.resizeFixedHeaders();
+				this.repositionResizers();
+				this.resizeGrips();
+			}
+		}
+	}
+
+	makeGripVisible(newIndex) {
+		this.gripRefs.forEach((grip, index) => {
+			if (index === newIndex) grip.classList.add('grip-handle-active');
+			else grip.classList.remove('grip-handle-active');
+		});
+	}
+
 	handleKeyDownLeft() {
-		const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
-		const activeElement = this.getFirstInteractiveElement(
-			this.state.activeCell.rowIndex,
-			newColumnIndex
-		);
-		if (newColumnIndex !== this.state.activeCell.columnIndex) {
-			this.setState((prevState) => ({
-				activeCell: {
-					rowIndex: prevState.activeCell.rowIndex,
-					columnIndex: newColumnIndex,
-				},
-				activeElement,
-			}));
+		if (this.state.mode === Mode.NAVIGATION) {
+			const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
+			const activeElement = this.getFirstInteractiveElement(
+				this.state.activeCell.rowIndex,
+				newColumnIndex
+			);
+			if (newColumnIndex !== this.state.activeCell.columnIndex) {
+				this.setState((prevState) => ({
+					activeCell: {
+						rowIndex: prevState.activeCell.rowIndex,
+						columnIndex: newColumnIndex,
+					},
+					activeElement,
+				}));
+			}
+		} else {
+			this.displaceByArrowKey(-10);
 		}
 	}
 
 	handleKeyDownRight() {
-		const newColumnIndex = Math.min(
-			this.state.activeCell.columnIndex + 1,
-			this.props.children.length - (this.props.selectRows ? 0 : 1)
-		);
-		const activeElement = this.getFirstInteractiveElement(
-			this.state.activeCell.rowIndex,
-			newColumnIndex
-		);
-		if (newColumnIndex !== this.state.activeCell.columnIndex) {
-			this.setState((prevState) => ({
-				activeCell: {
-					rowIndex: prevState.activeCell.rowIndex,
-					columnIndex: newColumnIndex,
-				},
-				activeElement,
-			}));
+		if (this.state.mode === Mode.NAVIGATION) {
+			const newColumnIndex = Math.min(
+				this.state.activeCell.columnIndex + 1,
+				this.props.children.length - (this.props.selectRows ? 0 : 1)
+			);
+			const activeElement = this.getFirstInteractiveElement(
+				this.state.activeCell.rowIndex,
+				newColumnIndex
+			);
+			if (newColumnIndex !== this.state.activeCell.columnIndex) {
+				this.setState((prevState) => ({
+					activeCell: {
+						rowIndex: prevState.activeCell.rowIndex,
+						columnIndex: newColumnIndex,
+					},
+					activeElement,
+				}));
+			}
+		} else {
+			this.displaceByArrowKey(10);
 		}
 	}
 
@@ -721,6 +765,10 @@ class DataTable extends React.Component {
 				mode: Mode.ACTIONABLE,
 				activeElement,
 			});
+
+			if (rowIndex === 0 && !activeElement) {
+				this.makeGripVisible(columnIndex);
+			}
 		}
 	}
 
@@ -730,6 +778,86 @@ class DataTable extends React.Component {
 				mode: Mode.NAVIGATION,
 				activeElement: null,
 			});
+			this.makeGripVisible(null);
+		}
+	}
+
+	moveNext(event, rowIndex, columnIndex) {
+		const headers = [].concat(
+			this.headerRefs.select,
+			this.headerRefs.column,
+			this.headerRefs.action
+		);
+		let newRowIndex = 0;
+		let newColumnIndex = 0;
+
+		if (event.shiftKey) {
+			if (columnIndex - 1 >= 0) {
+				newColumnIndex = columnIndex - 1;
+				newRowIndex = rowIndex;
+			} else {
+				if (rowIndex > 0) newRowIndex = rowIndex - 1;
+				else newRowIndex = this.props.items.length;
+
+				newColumnIndex = headers.length - 1;
+			}
+		} else if (columnIndex + 1 < headers.length) {
+				newColumnIndex = columnIndex + 1;
+				newRowIndex = rowIndex;
+			} else {
+				if (rowIndex < this.props.items.length) newRowIndex = rowIndex + 1;
+				else newRowIndex = 0;
+
+				newColumnIndex = 0;
+			}
+
+		this.changeActiveCell(newRowIndex, newColumnIndex);
+	}
+
+	handleKeyTabPress(event) {
+		const { rowIndex, columnIndex } = this.state.activeCell;
+
+		if (this.state.mode === Mode.ACTIONABLE) {
+			if (rowIndex === 0) {
+				const headers = [].concat(
+					this.headerRefs.select,
+					this.headerRefs.column,
+					this.headerRefs.action
+				);
+				let newIndex = 0;
+
+				if (!this.state.activeElement) {
+					if (!event.shiftKey)
+						newIndex = columnIndex + 1 < headers.length ? columnIndex + 1 : 0;
+					else
+						newIndex =
+							columnIndex - 1 >= 0 ? columnIndex - 1 : headers.length - 1;
+				} else {
+					newIndex = columnIndex;
+
+					this.setState({
+						mode: Mode.ACTIONABLE,
+						activeElement: null,
+					});
+				}
+
+				// eslint-disable-next-line no-param-reassign
+				headers.forEach((header, index) => {
+					if (index === newIndex) {
+						// eslint-disable-next-line no-param-reassign
+						header.tabIndex = 0;
+						// eslint-disable-next-line no-param-reassign
+						header.focus();
+						// eslint-disable-next-line no-param-reassign
+					} else header.tabIndex = -1;
+				});
+
+				if (this.props.resizable) this.makeGripVisible(newIndex);
+			} else {
+				this.moveNext(event, rowIndex, columnIndex);
+			}
+		} else {
+			this.moveNext(event, rowIndex, columnIndex);
 		}
 	}
 
@@ -896,6 +1024,7 @@ class DataTable extends React.Component {
 									mode: Mode.NAVIGATION,
 									activeElement: null,
 								});
+								this.makeGripVisible(null);
 							}
 						}}
 						style={this.props.style}

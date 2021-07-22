@@ -158,6 +158,31 @@ class Example extends React.Component {
 						</div>
 					</IconSettings>
 				</React.Fragment>
+				<React.Fragment>
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
+						With keyboard navigation
+					</h3>
+					<IconSettings iconPath="/assets/icons">
+						<div style={{ overflow: 'auto' }}>
+							<DataTable
+								items={this.state.items}
+								id="DataTableExample-4-resizable-cols"
+								fixedHeader
+								fixedLayout
+								resizable
+								keyboardNavigation
+								resizerOptions={{
+									resizeMode: 'overflow',
+									onResize: (columnsResized) => {
+										console.log(JSON.stringify(columnsResized));
+									},
+								}}
+							>
+								{columns}
+							</DataTable>
+						</div>
+					</IconSettings>
+				</React.Fragment>
 			</React.Fragment>
 		);
 	}

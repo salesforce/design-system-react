@@ -5431,6 +5431,30 @@
                 "returns": null
             },
             {
+                "name": "displaceByArrowKey",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "factor",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "makeGripVisible",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "newIndex",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleKeyDownLeft",
                 "docblock": null,
                 "modifiers": [],
@@ -5456,6 +5480,38 @@
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
+                "returns": null
+            },
+            {
+                "name": "moveNext",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "rowIndex",
+                        "type": null
+                    },
+                    {
+                        "name": "columnIndex",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyTabPress",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
