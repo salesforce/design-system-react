@@ -44,7 +44,11 @@ export const sampleReportWitchIconsCategories = [
 		id: 'folders',
 		label: 'Folders',
 		items: [
-			{ id: 'my_folders', label: 'Created by Me', icon: <Icon category="utility" name="open_folder" size="x-small"/>},
+			{
+				id: 'my_folders',
+				label: 'Created by Me',
+				icon: <Icon category="utility" name="open_folder" size="x-small" />,
+			},
 			{ id: 'shared_folders', label: 'Shared with Me' },
 			{ id: 'all_folders', label: 'All Folders' },
 		],

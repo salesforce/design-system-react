@@ -43,15 +43,15 @@ const Item = (props) => (
 				handleClick(event, props);
 			}}
 		>
-			{ props.item.icon ? (
+			{props.item.icon ? (
 				<React.Fragment>
-					{ 
-						React.cloneElement(
-							props.item.icon,
-							{className: `slds-m-right_${props.item.icon.props.size || 'medium'}`}
-						) 
-					}
-					{ props.item.label }
+					{React.cloneElement(props.item.icon, {
+						className: classNames(
+							props.item.icon.props.className,
+							`slds-m-right_${props.item.icon.props.size || 'medium'}`
+						),
+					})}
+					{props.item.label}
 				</React.Fragment>
 			) : (
 				props.item.label
