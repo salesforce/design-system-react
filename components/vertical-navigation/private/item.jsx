@@ -56,6 +56,16 @@ const Item = (props) => (
 			) : (
 				props.item.label
 			)}
+			{props.item.notification ? (
+				React.cloneElement(props.item.notification, {
+					className: classNames(
+						props.item.notification.props.className,
+						'slds-col_bump-left'
+					),
+				})
+			) : (
+				<React.Fragment />
+			)}
 		</a>
 	</li>
 );

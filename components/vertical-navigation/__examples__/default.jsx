@@ -4,6 +4,7 @@ import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import VerticalNavigation from '~/components/vertical-navigation';
 import Icon from '~/components/icon';
+import Badge from '~/components/badge';
 
 export const sampleReportCategories = [
 	{
@@ -48,6 +49,37 @@ export const sampleReportWitchIconsCategories = [
 				id: 'my_folders',
 				label: 'Created by Me',
 				icon: <Icon category="utility" name="open_folder" size="x-small" />,
+			},
+			{
+				id: 'shared_folders',
+				label: 'Shared with Me',
+				icon: <Icon category="utility" name="open_folder" size="x-small" />,
+			},
+			{ id: 'all_folders', label: 'All Folders' },
+		],
+	},
+];
+
+export const sampleReportWitchNotificationCategories = [
+	{
+		id: 'reports',
+		label: 'Reports',
+		items: [
+			{ id: 'recent_reports', label: 'Recent' },
+			{ id: 'my_reports', label: 'Created by Me' },
+			{ id: 'private_reports', label: 'Private Reports' },
+			{ id: 'public_reports', label: 'Public Reports' },
+			{ id: 'all_reports', label: 'All Reports' },
+		],
+	},
+	{
+		id: 'folders',
+		label: 'Folders',
+		items: [
+			{
+				id: 'my_folders',
+				label: 'Created by Me',
+				notification: <Badge content="3" />,
 			},
 			{ id: 'shared_folders', label: 'Shared with Me' },
 			{ id: 'all_folders', label: 'All Folders' },

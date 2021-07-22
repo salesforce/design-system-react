@@ -8,6 +8,7 @@ import { VERTICAL_NAVIGATION } from '../../../utilities/constants';
 import Default, {
 	sampleReportCategories,
 	sampleReportWitchIconsCategories,
+	sampleReportWitchNotificationCategories,
 } from '../__examples__/default';
 import SnaphotDefault from '../__examples__/snapshot-default';
 
@@ -22,5 +23,11 @@ storiesOf(VERTICAL_NAVIGATION, module)
 	))
 	.add('With icons', () => (
 		<Default categories={sampleReportWitchIconsCategories} action={action} />
+	))
+	.add('With notificatoin', () => (
+		<Default
+			categories={sampleReportWitchNotificationCategories}
+			action={action}
+		/>
 	))
 	.add('DOM Snapshot', () => <SnaphotDefault />);
