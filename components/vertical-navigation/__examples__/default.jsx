@@ -3,8 +3,9 @@ import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
 import VerticalNavigation from '~/components/vertical-navigation';
+import Icon from '~/components/icon';
 
-const sampleReportCategories = [
+export const sampleReportCategories = [
 	{
 		id: 'reports',
 		label: 'Reports',
@@ -27,6 +28,29 @@ const sampleReportCategories = [
 	},
 ];
 
+export const sampleReportWitchIconsCategories = [
+	{
+		id: 'reports',
+		label: 'Reports',
+		items: [
+			{ id: 'recent_reports', label: 'Recent' },
+			{ id: 'my_reports', label: 'Created by Me' },
+			{ id: 'private_reports', label: 'Private Reports' },
+			{ id: 'public_reports', label: 'Public Reports' },
+			{ id: 'all_reports', label: 'All Reports' },
+		],
+	},
+	{
+		id: 'folders',
+		label: 'Folders',
+		items: [
+			{ id: 'my_folders', label: 'Created by Me', icon: <Icon category="utility" name="open_folder" size="x-small"/>},
+			{ id: 'shared_folders', label: 'Shared with Me' },
+			{ id: 'all_folders', label: 'All Folders' },
+		],
+	},
+];
+
 class Example extends React.Component {
 	static displayName = 'NavigationExample';
 
@@ -40,7 +64,7 @@ class Example extends React.Component {
 				<div style={{ width: '320px' }}>
 					<VerticalNavigation
 						id="sample-navigation"
-						categories={sampleReportCategories}
+						categories={this.props.categories}
 						selectedId={this.state.selectedId}
 						onSelect={(event, data) => {
 							this.setState({ selectedId: data.item.id });
