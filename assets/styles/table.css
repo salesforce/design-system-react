@@ -1,9 +1,45 @@
 .slds-table-column-resizer{
-    border-left: 1px dotted darkgray;
+    border-left: 1px solid #0176d3;
+}
+
+.grip-handle:hover{
+    border-left: 1px solid #0176d3;
+}
+
+.grip-handle:hover:before{
+    background-color: #0176d3;
+    width: .25rem;
+    height: 100%;
+    content: " ";
+    position: absolute;
+    height: 33px;
+    right: -1.4px;
+}
+
+.grip-handle:active:before{
+    background-color: #0176d3;
+    width: .25rem;
+    height: 100%;
+    content: " ";
+    position: absolute;
+    height: 33px;
+    right: -1.4px; 
+}
+
+.grip-handle .grip-resizable  {
+    background-color: #0176d3;
+    width: 1px;
+    height: 100vh;
+    opacity: 0;
 }
 
 .slds-table_fixed-layout .grip-handle {
     position: absolute;
+    z-index: 9;
+    background-color: #0176d3;
+    width: 1px;
+    height: 100vh;
+    opacity: 0;
     top: -33px;
     z-index: 9;
 }
