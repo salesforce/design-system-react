@@ -6,7 +6,7 @@ import VerticalNavigation from '~/components/vertical-navigation';
 import Icon from '~/components/icon';
 import Badge from '~/components/badge';
 
-const sampleReportCategories = [
+const sampleReportWitchIconsCategories = [
 	{
 		id: 'reports',
 		label: 'Reports',
@@ -22,8 +22,16 @@ const sampleReportCategories = [
 		id: 'folders',
 		label: 'Folders',
 		items: [
-			{ id: 'my_folders', label: 'Created by Me' },
-			{ id: 'shared_folders', label: 'Shared with Me' },
+			{
+				id: 'my_folders',
+				label: 'Created by Me',
+				icon: <Icon category="utility" name="open_folder" size="x-small" />,
+			},
+			{
+				id: 'shared_folders',
+				label: 'Shared with Me',
+				icon: <Icon category="utility" name="open_folder" size="x-small" />,
+			},
 			{ id: 'all_folders', label: 'All Folders' },
 		],
 	},
@@ -42,7 +50,7 @@ class Example extends React.Component {
 				<div style={{ width: '320px' }}>
 					<VerticalNavigation
 						id="sample-navigation"
-						categories={sampleReportCategories}
+						categories={sampleReportWitchIconsCategories}
 						selectedId={this.state.selectedId}
 						onSelect={(event, data) => {
 							this.setState({ selectedId: data.item.id });

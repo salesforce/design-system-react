@@ -5,11 +5,9 @@ import IconSettings from '../../icon-settings';
 
 import { VERTICAL_NAVIGATION } from '../../../utilities/constants';
 
-import Default, {
-	sampleReportCategories,
-	sampleReportWitchIconsCategories,
-	sampleReportWitchNotificationCategories,
-} from '../__examples__/default';
+import Default from '../__examples__/default';
+import IconExample from '../__examples__/icons';
+import NotificationExample from '../__examples__/notifications';
 import SnaphotDefault from '../__examples__/snapshot-default';
 
 storiesOf(VERTICAL_NAVIGATION, module)
@@ -18,16 +16,7 @@ storiesOf(VERTICAL_NAVIGATION, module)
 			<IconSettings iconPath="/assets/icons">{getStory()}</IconSettings>
 		</div>
 	))
-	.add('Default', () => (
-		<Default categories={sampleReportCategories} action={action} />
-	))
-	.add('With icons', () => (
-		<Default categories={sampleReportWitchIconsCategories} action={action} />
-	))
-	.add('With notifications', () => (
-		<Default
-			categories={sampleReportWitchNotificationCategories}
-			action={action}
-		/>
-	))
+	.add('Default', () => <Default action={action} />)
+	.add('With icons', () => <IconExample action={action} />)
+	.add('With notifications', () => <NotificationExample action={action} />)
 	.add('DOM Snapshot', () => <SnaphotDefault />);
