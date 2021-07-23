@@ -79,7 +79,7 @@ export const sampleReportWitchNotificationCategories = [
 			{
 				id: 'my_folders',
 				label: 'Created by Me',
-				notification: <Badge content="3" />,
+				notificationBadge: <Badge content="3" id="notification-badge"/>,
 			},
 			{ id: 'shared_folders', label: 'Shared with Me' },
 			{ id: 'all_folders', label: 'All Folders' },

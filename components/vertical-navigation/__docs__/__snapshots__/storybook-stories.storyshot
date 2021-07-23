@@ -577,7 +577,7 @@ exports[`DOM snapshots SLDSVerticalNavigation With notifications 1`] = `
               Created by Me
               <span
                 className="slds-badge slds-col_bump-left"
-                id="SIIzRafJLi17"
+                id="notification-badge"
               >
                 3
               </span>

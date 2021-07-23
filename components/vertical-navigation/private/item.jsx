@@ -56,10 +56,10 @@ const Item = (props) => (
 			) : (
 				props.item.label
 			)}
-			{props.item.notification ? (
-				React.cloneElement(props.item.notification, {
+			{props.item.notificationBadge ? (
+				React.cloneElement(props.item.notificationBadge, {
 					className: classNames(
-						props.item.notification.props.className,
+						props.item.notificationBadge.props.className,
 						'slds-col_bump-left'
 					),
 				})
