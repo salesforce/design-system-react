@@ -4,7 +4,6 @@ import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import VerticalNavigation from '~/components/vertical-navigation';
 import Icon from '~/components/icon';
-import Badge from '~/components/badge';
 
 const sampleReportWitchIconsCategories = [
 	{
