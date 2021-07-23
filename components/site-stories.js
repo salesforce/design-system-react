@@ -905,7 +905,7 @@ const documentationSiteLiveExamples = {
 		},
 		{
 			heading: 'Items with Notifications',
-			path: require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/notification.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/notifications.jsx'),
 		},
 	],
 	'visual-picker': [
