@@ -640,45 +640,68 @@ class DataTable extends React.Component {
 				[KEYS.RIGHT]: { callback: (evt) => this.handleKeyDownRight(evt) },
 				[KEYS.ENTER]: { callback: (evt) => this.handleKeyDownEnter(evt) },
 				[KEYS.ESCAPE]: { callback: (evt) => this.handleKeyDownEscape(evt) },
-				[KEYS.TAB]: { callback: (evt) => this.handleKeyTabPress(evt) },
+				[KEYS.TAB]:
+					this.state.mode === Mode.ACTIONABLE
+						? { callback: (evt) => this.handleKeyTabPress(evt) }
+						: null,
 			},
 		});
 	}
 
 	handleKeyDownUp() {
-		const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
-		const activeElement = this.getFirstInteractiveElement(
-			newRowIndex,
-			this.state.activeCell.columnIndex
-		);
-		if (newRowIndex !== this.state.activeCell.rowIndex) {
-			this.setState((prevState) => ({
-				activeCell: {
-					rowIndex: newRowIndex,
-					columnIndex: prevState.activeCell.columnIndex,
-				},
-				activeElement,
-			}));
+		if (
+			this.state.mode === Mode.NAVIGATION ||
+			this.state.activeCell.rowIndex > 0 ||
+			!this.props.resizable
+		) {
+			const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
+			const activeElement = this.getFirstInteractiveElement(
+				newRowIndex,
+				this.state.activeCell.columnIndex
+			);
+			if (newRowIndex !== this.state.activeCell.rowIndex) {
+				this.setState((prevState) => ({
+					activeCell: {
+						rowIndex: newRowIndex,
+						columnIndex: prevState.activeCell.columnIndex,
+					},
+					activeElement,
+				}));
+
+				if (
+					this.state.mode === Mode.ACTIONABLE &&
+					newRowIndex === 0 &&
+					!activeElement
+				) {
+					this.makeGripVisible(this.state.activeCell.columnIndex);
+				}
+			}
 		}
 	}
 
 	handleKeyDownDown() {
-		const newRowIndex = Math.min(
-			this.state.activeCell.rowIndex + 1,
-			this.props.items.length
-		);
-		const activeElement = this.getFirstInteractiveElement(
-			newRowIndex,
-			this.state.activeCell.columnIndex
-		);
-		if (newRowIndex !== this.state.activeCell.rowIndex) {
-			this.setState((prevState) => ({
-				activeCell: {
-					rowIndex: newRowIndex,
-					columnIndex: prevState.activeCell.columnIndex,
-				},
-				activeElement,
-			}));
+		if (
+			this.state.mode === Mode.NAVIGATION ||
+			this.state.activeCell.rowIndex > 0 ||
+			!this.props.resizable
+		) {
+			const newRowIndex = Math.min(
+				this.state.activeCell.rowIndex + 1,
+				this.props.items.length
+			);
+			const activeElement = this.getFirstInteractiveElement(
+				newRowIndex,
+				this.state.activeCell.columnIndex
+			);
+			if (newRowIndex !== this.state.activeCell.rowIndex) {
+				this.setState((prevState) => ({
+					activeCell: {
+						rowIndex: newRowIndex,
+						columnIndex: prevState.activeCell.columnIndex,
+					},
+					activeElement,
+				}));
+			}
 		}
 	}
 
@@ -707,7 +730,11 @@ class DataTable extends React.Component {
 	}
 
 	handleKeyDownLeft() {
-		if (this.state.mode === Mode.NAVIGATION) {
+		if (
+			this.state.mode === Mode.NAVIGATION ||
+			this.state.activeCell.rowIndex > 0 ||
+			!this.props.resizable
+		) {
 			const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
 			const activeElement = this.getFirstInteractiveElement(
 				this.state.activeCell.rowIndex,
@@ -728,7 +755,11 @@ class DataTable extends React.Component {
 	}
 
 	handleKeyDownRight() {
-		if (this.state.mode === Mode.NAVIGATION) {
+		if (
+			this.state.mode === Mode.NAVIGATION ||
+			this.state.activeCell.rowIndex > 0 ||
+			!this.props.resizable
+		) {
 			const newColumnIndex = Math.min(
 				this.state.activeCell.columnIndex + 1,
 				this.props.children.length - (this.props.selectRows ? 0 : 1)
@@ -814,11 +845,43 @@ class DataTable extends React.Component {
 		this.changeActiveCell(newRowIndex, newColumnIndex);
 	}
 
+	handleNextActionable(event) {
+		const { rowIndex, columnIndex } = this.state.activeCell;
+		const currentActiveElement = this.state.activeElement;
+		const rowActiveElements =
+			this.interactiveElements[rowIndex] &&
+			this.interactiveElements[rowIndex][columnIndex]
+				? this.interactiveElements[rowIndex][columnIndex]
+				: null;
+
+		if (rowActiveElements) {
+			if (currentActiveElement) {
+				const index = rowActiveElements.indexOf(currentActiveElement);
+
+				if (event.shiftKey) {
+					return index > 0 ? rowActiveElements[index - 1] : null;
+				} 
+					return index < rowActiveElements.length - 1
+						? rowActiveElements[index + 1]
+						: null;
+				
+			} return !event.shiftKey
+					? rowActiveElements[0]
+					: rowActiveElements[rowActiveElements.length - 1];
+		}
+		return null;
+	}
+
 	handleKeyTabPress(event) {
 		const { rowIndex, columnIndex } = this.state.activeCell;
 
 		if (this.state.mode === Mode.ACTIONABLE) {
-			if (rowIndex === 0) {
+			const nextActionable = this.handleNextActionable(event);
+
+			if (nextActionable) {
+				this.setState({ activeElement: nextActionable });
+				if (this.props.resizable) this.makeGripVisible(null);
+			} else if (rowIndex === 0) {
 				const headers = [].concat(
 					this.headerRefs.select,
 					this.headerRefs.column,
@@ -826,20 +889,15 @@ class DataTable extends React.Component {
 				);
 				let newIndex = 0;
 
-				if (!this.state.activeElement) {
-					if (!event.shiftKey)
-						newIndex = columnIndex + 1 < headers.length ? columnIndex + 1 : 0;
-					else
-						newIndex =
-							columnIndex - 1 >= 0 ? columnIndex - 1 : headers.length - 1;
-				} else {
-					newIndex = columnIndex;
-
-					this.setState({
-						mode: Mode.ACTIONABLE,
-						activeElement: null,
-					});
-				}
+				if (!event.shiftKey)
+					newIndex = columnIndex + 1 < headers.length ? columnIndex + 1 : 0;
+				else
+					newIndex =
+						columnIndex - 1 >= 0 ? columnIndex - 1 : headers.length - 1;
+				this.setState({
+					mode: Mode.ACTIONABLE,
+					activeElement: null,
+				});
 
 				// eslint-disable-next-line no-param-reassign
 				headers.forEach((header, index) => {
@@ -855,9 +913,11 @@ class DataTable extends React.Component {
 				if (this.props.resizable) this.makeGripVisible(newIndex);
 			} else {
 				this.moveNext(event, rowIndex, columnIndex);
+				this.setState({
+					mode: Mode.ACTIONABLE,
+					activeElement: null,
+				});
 			}
-		} else {
-			this.moveNext(event, rowIndex, columnIndex);
 		}
 	}
 
@@ -867,10 +927,13 @@ class DataTable extends React.Component {
 		}
 		const existingElements =
 			this.interactiveElements[rowIndex][columnIndex] || [];
-		this.interactiveElements[rowIndex][columnIndex] = [
-			...existingElements,
-			elementId,
-		];
+
+		if (!existingElements.includes(elementId)) {
+			this.interactiveElements[rowIndex][columnIndex] = [
+				...existingElements,
+				elementId,
+			];
+		}
 	}
 
 	// ### Render

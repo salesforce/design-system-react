@@ -141,6 +141,20 @@ class Example extends React.Component {
 					>
 						{columns}
 					</DataTable>
+
+					<h3 className="slds-text-heading_medium slds-m-vertical_medium">
+						Resizable columns
+					</h3>
+					<DataTable
+						items={this.state.items}
+						id="DataTableExample-column-resizable"
+						fixedLayout
+						fixedHeader
+						Resizable
+						keyboardNavigation
+					>
+						{columns}
+					</DataTable>
 				</div>
 			</IconSettings>
 		);

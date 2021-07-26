@@ -5503,6 +5503,18 @@
                 "returns": null
             },
             {
+                "name": "handleNextActionable",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleKeyTabPress",
                 "docblock": null,
                 "modifiers": [],

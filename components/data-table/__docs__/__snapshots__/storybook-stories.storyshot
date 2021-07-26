@@ -21576,6 +21576,956 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
         </tr>
       </tbody>
     </table>
+    <h3
+      className="slds-text-heading_medium slds-m-vertical_medium"
+    >
+      Resizable columns
+    </h3>
+    <div
+      className="slds-table_header-fixed_container"
+      onScroll={[Function]}
+      style={
+        Object {
+          "borderTop": "1px solid rgb(221, 219, 218)",
+          "height": "100%",
+        }
+      }
+    >
+      <div
+        className="slds-table_header-fixed_scroller"
+        style={
+          Object {
+            "height": "100%",
+            "overflow": "auto",
+          }
+        }
+      >
+        <table
+          className="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered"
+          id="DataTableExample-columnBordered"
+          onBlur={[Function]}
+          role="grid"
+        >
+          <thead
+            className=""
+          >
+            <tr
+              className="slds-line-height_reset"
+            >
+              <th
+                aria-label="Opportunity Name"
+                aria-sort="none"
+                className=""
+                id="opportunityName"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Opportunity Name"
+                  >
+                    Opportunity Name
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Opportunity Name"
+                    >
+                      Opportunity Name
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Account Name"
+                aria-sort="none"
+                className=""
+                id="accountName"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Account Name"
+                  >
+                    Account Name
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Account Name"
+                    >
+                      Account Name
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Amount"
+                aria-sort="none"
+                className=""
+                id="amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Amount"
+                  >
+                    Amount
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Amount"
+                    >
+                      Amount
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Contact"
+                aria-sort="none"
+                className=""
+                id="contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Contact"
+                  >
+                    Contact
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Contact"
+                    >
+                      Contact
+                    </span>
+                  </span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              className=""
+            >
+              <th
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+                tabIndex="0"
+              >
+                <div
+                  className="slds-truncate"
+                  title={
+                    Array [
+                      <InteractiveElementSLDSCheckbox
+                        id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
+                        labels={
+                          Object {
+                            "label": "Option",
+                          }
+                        }
+                      />,
+                      <InteractiveElementSLDSButton
+                        label="Open"
+                        onClick={[Function]}
+                      />,
+                      <div>
+                        <InteractiveElementundefined
+                          onClick={[Function]}
+                        >
+                          Click me
+                        </InteractiveElementundefined>
+                      </div>,
+                    ]
+                  }
+                >
+                  <div
+                    className="slds-form-element"
+                  >
+                    <div
+                      className="slds-form-element__control"
+                    >
+                      <span
+                        className="slds-checkbox"
+                      >
+                        <input
+                          id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          tabIndex="-1"
+                          type="checkbox"
+                        />
+                        <label
+                          className="slds-checkbox__label"
+                          htmlFor="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
+                        >
+                          <span
+                            className="slds-checkbox_faux"
+                          />
+                          <span
+                            className="slds-form-element__label"
+                          >
+                            Option
+                          </span>
+                        </label>
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    className="slds-button slds-button_neutral"
+                    disabled={false}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    tabIndex="-1"
+                    type="button"
+                  >
+                    Open
+                  </button>
+                  <div>
+                    <a
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      tabIndex="-1"
+                    >
+                      Click me
+                    </a>
+                  </div>
+                </div>
+              </th>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Cloudhub"
+                >
+                  Cloudhub
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$25k"
+                >
+                  $25k
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title={
+                    Array [
+                      <InteractiveElementSLDSCheckbox
+                        id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-contact-checkbox"
+                        labels={
+                          Object {
+                            "label": "Option",
+                          }
+                        }
+                      />,
+                      <InteractiveElementSLDSButton
+                        label="Open"
+                        onClick={[Function]}
+                      />,
+                      <div>
+                        <InteractiveElementundefined
+                          onClick={[Function]}
+                        >
+                          Click me
+                        </InteractiveElementundefined>
+                      </div>,
+                    ]
+                  }
+                >
+                  <div
+                    className="slds-form-element"
+                  >
+                    <div
+                      className="slds-form-element__control"
+                    >
+                      <span
+                        className="slds-checkbox"
+                      >
+                        <input
+                          id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-contact-checkbox"
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          tabIndex="-1"
+                          type="checkbox"
+                        />
+                        <label
+                          className="slds-checkbox__label"
+                          htmlFor="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-contact-checkbox"
+                        >
+                          <span
+                            className="slds-checkbox_faux"
+                          />
+                          <span
+                            className="slds-form-element__label"
+                          >
+                            Option
+                          </span>
+                        </label>
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    className="slds-button slds-button_neutral"
+                    disabled={false}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    tabIndex="-1"
+                    type="button"
+                  >
+                    Open
+                  </button>
+                  <div>
+                    <a
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      tabIndex="-1"
+                    >
+                      Click me
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <th
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title={
+                    Array [
+                      <InteractiveElementSLDSCheckbox
+                        id="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-opportunityName-checkbox"
+                        labels={
+                          Object {
+                            "label": "Option",
+                          }
+                        }
+                      />,
+                      <InteractiveElementSLDSButton
+                        label="Open"
+                        onClick={[Function]}
+                      />,
+                      <div>
+                        <InteractiveElementundefined
+                          onClick={[Function]}
+                        >
+                          Click me
+                        </InteractiveElementundefined>
+                      </div>,
+                    ]
+                  }
+                >
+                  <div
+                    className="slds-form-element"
+                  >
+                    <div
+                      className="slds-form-element__control"
+                    >
+                      <span
+                        className="slds-checkbox"
+                      >
+                        <input
+                          id="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-opportunityName-checkbox"
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          tabIndex="-1"
+                          type="checkbox"
+                        />
+                        <label
+                          className="slds-checkbox__label"
+                          htmlFor="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-opportunityName-checkbox"
+                        >
+                          <span
+                            className="slds-checkbox_faux"
+                          />
+                          <span
+                            className="slds-form-element__label"
+                          >
+                            Option
+                          </span>
+                        </label>
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    className="slds-button slds-button_neutral"
+                    disabled={false}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    tabIndex="-1"
+                    type="button"
+                  >
+                    Open
+                  </button>
+                  <div>
+                    <a
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      tabIndex="-1"
+                    >
+                      Click me
+                    </a>
+                  </div>
+                </div>
+              </th>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Cloudhub"
+                >
+                  Cloudhub
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$25k"
+                >
+                  $25k
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title={
+                    Array [
+                      <InteractiveElementSLDSCheckbox
+                        id="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-contact-checkbox"
+                        labels={
+                          Object {
+                            "label": "Option",
+                          }
+                        }
+                      />,
+                      <InteractiveElementSLDSButton
+                        label="Open"
+                        onClick={[Function]}
+                      />,
+                      <div>
+                        <InteractiveElementundefined
+                          onClick={[Function]}
+                        >
+                          Click me
+                        </InteractiveElementundefined>
+                      </div>,
+                    ]
+                  }
+                >
+                  <div
+                    className="slds-form-element"
+                  >
+                    <div
+                      className="slds-form-element__control"
+                    >
+                      <span
+                        className="slds-checkbox"
+                      >
+                        <input
+                          id="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-contact-checkbox"
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          tabIndex="-1"
+                          type="checkbox"
+                        />
+                        <label
+                          className="slds-checkbox__label"
+                          htmlFor="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-contact-checkbox"
+                        >
+                          <span
+                            className="slds-checkbox_faux"
+                          />
+                          <span
+                            className="slds-form-element__label"
+                          >
+                            Option
+                          </span>
+                        </label>
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    className="slds-button slds-button_neutral"
+                    disabled={false}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    tabIndex="-1"
+                    type="button"
+                  >
+                    Open
+                  </button>
+                  <div>
+                    <a
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      tabIndex="-1"
+                    >
+                      Click me
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <th
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title={
+                    Array [
+                      <InteractiveElementSLDSCheckbox
+                        id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-opportunityName-checkbox"
+                        labels={
+                          Object {
+                            "label": "Option",
+                          }
+                        }
+                      />,
+                      <InteractiveElementSLDSButton
+                        label="Open"
+                        onClick={[Function]}
+                      />,
+                      <div>
+                        <InteractiveElementundefined
+                          onClick={[Function]}
+                        >
+                          Click me
+                        </InteractiveElementundefined>
+                      </div>,
+                    ]
+                  }
+                >
+                  <div
+                    className="slds-form-element"
+                  >
+                    <div
+                      className="slds-form-element__control"
+                    >
+                      <span
+                        className="slds-checkbox"
+                      >
+                        <input
+                          id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-opportunityName-checkbox"
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          tabIndex="-1"
+                          type="checkbox"
+                        />
+                        <label
+                          className="slds-checkbox__label"
+                          htmlFor="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-opportunityName-checkbox"
+                        >
+                          <span
+                            className="slds-checkbox_faux"
+                          />
+                          <span
+                            className="slds-form-element__label"
+                          >
+                            Option
+                          </span>
+                        </label>
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    className="slds-button slds-button_neutral"
+                    disabled={false}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    tabIndex="-1"
+                    type="button"
+                  >
+                    Open
+                  </button>
+                  <div>
+                    <a
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      tabIndex="-1"
+                    >
+                      Click me
+                    </a>
+                  </div>
+                </div>
+              </th>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Cloudhub"
+                >
+                  Cloudhub
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$25k"
+                >
+                  $25k
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title={
+                    Array [
+                      <InteractiveElementSLDSCheckbox
+                        id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
+                        labels={
+                          Object {
+                            "label": "Option",
+                          }
+                        }
+                      />,
+                      <InteractiveElementSLDSButton
+                        label="Open"
+                        onClick={[Function]}
+                      />,
+                      <div>
+                        <InteractiveElementundefined
+                          onClick={[Function]}
+                        >
+                          Click me
+                        </InteractiveElementundefined>
+                      </div>,
+                    ]
+                  }
+                >
+                  <div
+                    className="slds-form-element"
+                  >
+                    <div
+                      className="slds-form-element__control"
+                    >
+                      <span
+                        className="slds-checkbox"
+                      >
+                        <input
+                          id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          tabIndex="-1"
+                          type="checkbox"
+                        />
+                        <label
+                          className="slds-checkbox__label"
+                          htmlFor="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
+                        >
+                          <span
+                            className="slds-checkbox_faux"
+                          />
+                          <span
+                            className="slds-form-element__label"
+                          >
+                            Option
+                          </span>
+                        </label>
+                      </span>
+                    </div>
+                  </div>
+                  <button
+                    className="slds-button slds-button_neutral"
+                    disabled={false}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    tabIndex="-1"
+                    type="button"
+                  >
+                    Open
+                  </button>
+                  <div>
+                    <a
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      tabIndex="-1"
+                    >
+                      Click me
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 `;
