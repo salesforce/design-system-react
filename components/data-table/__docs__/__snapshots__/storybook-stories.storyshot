@@ -21602,7 +21602,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
       >
         <table
           className="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered"
-          id="DataTableExample-columnBordered"
+          id="DataTableExample-column-resizable"
           onBlur={[Function]}
           role="grid"
         >
@@ -21908,7 +21908,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                   title={
                     Array [
                       <InteractiveElementSLDSCheckbox
-                        id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
+                        id="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
                         labels={
                           Object {
                             "label": "Option",
@@ -21939,7 +21939,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                         className="slds-checkbox"
                       >
                         <input
-                          id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
+                          id="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
                           onChange={[Function]}
                           onFocus={[Function]}
                           tabIndex="-1"
@@ -21947,7 +21947,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                         />
                         <label
                           className="slds-checkbox__label"
-                          htmlFor="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
+                          htmlFor="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
                         >
                           <span
                             className="slds-checkbox_faux"
@@ -22026,7 +22026,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                   title={
                     Array [
                       <InteractiveElementSLDSCheckbox
-                        id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-contact-checkbox"
+                        id="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-contact-checkbox"
                         labels={
                           Object {
                             "label": "Option",
@@ -22057,7 +22057,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                         className="slds-checkbox"
                       >
                         <input
-                          id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-contact-checkbox"
+                          id="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-contact-checkbox"
                           onChange={[Function]}
                           onFocus={[Function]}
                           tabIndex="-1"
@@ -22065,7 +22065,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                         />
                         <label
                           className="slds-checkbox__label"
-                          htmlFor="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-contact-checkbox"
+                          htmlFor="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-contact-checkbox"
                         >
                           <span
                             className="slds-checkbox_faux"
@@ -22118,7 +22118,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                   title={
                     Array [
                       <InteractiveElementSLDSCheckbox
-                        id="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-opportunityName-checkbox"
+                        id="DataTableExample-column-resizable-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-opportunityName-checkbox"
                         labels={
                           Object {
                             "label": "Option",
@@ -22149,7 +22149,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                         className="slds-checkbox"
                       >
                         <input
-                          id="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-opportunityName-checkbox"
+                          id="DataTableExample-column-resizable-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-opportunityName-checkbox"
                           onChange={[Function]}
                           onFocus={[Function]}
                           tabIndex="-1"
@@ -22157,7 +22157,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                         />
                         <label
                           className="slds-checkbox__label"
-                          htmlFor="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-opportunityName-checkbox"
+                          htmlFor="DataTableExample-column-resizable-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-opportunityName-checkbox"
                         >
                           <span
                             className="slds-checkbox_faux"
@@ -22236,7 +22236,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                   title={
                     Array [
                       <InteractiveElementSLDSCheckbox
-                        id="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-contact-checkbox"
+                        id="DataTableExample-column-resizable-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-contact-checkbox"
                         labels={
                           Object {
                             "label": "Option",
@@ -22267,7 +22267,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                         className="slds-checkbox"
                       >
                         <input
-                          id="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-contact-checkbox"
+                          id="DataTableExample-column-resizable-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-contact-checkbox"
                           onChange={[Function]}
                           onFocus={[Function]}
                           tabIndex="-1"
@@ -22275,7 +22275,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                         />
                         <label
                           className="slds-checkbox__label"
-                          htmlFor="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-contact-checkbox"
+                          htmlFor="DataTableExample-column-resizable-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-contact-checkbox"
                         >
                           <span
                             className="slds-checkbox_faux"
@@ -22328,7 +22328,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                   title={
                     Array [
                       <InteractiveElementSLDSCheckbox
-                        id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-opportunityName-checkbox"
+                        id="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-opportunityName-checkbox"
                         labels={
                           Object {
                             "label": "Option",
@@ -22359,7 +22359,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                         className="slds-checkbox"
                       >
                         <input
-                          id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-opportunityName-checkbox"
+                          id="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-opportunityName-checkbox"
                           onChange={[Function]}
                           onFocus={[Function]}
                           tabIndex="-1"
@@ -22367,7 +22367,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                         />
                         <label
                           className="slds-checkbox__label"
-                          htmlFor="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-opportunityName-checkbox"
+                          htmlFor="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-opportunityName-checkbox"
                         >
                           <span
                             className="slds-checkbox_faux"
@@ -22446,7 +22446,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                   title={
                     Array [
                       <InteractiveElementSLDSCheckbox
-                        id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
+                        id="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
                         labels={
                           Object {
                             "label": "Option",
@@ -22477,7 +22477,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                         className="slds-checkbox"
                       >
                         <input
-                          id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
+                          id="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
                           onChange={[Function]}
                           onFocus={[Function]}
                           tabIndex="-1"
@@ -22485,7 +22485,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                         />
                         <label
                           className="slds-checkbox__label"
-                          htmlFor="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
+                          htmlFor="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
                         >
                           <span
                             className="slds-checkbox_faux"
