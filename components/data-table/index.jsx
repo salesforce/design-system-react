@@ -860,14 +860,14 @@ class DataTable extends React.Component {
 
 				if (event.shiftKey) {
 					return index > 0 ? rowActiveElements[index - 1] : null;
-				} 
-					return index < rowActiveElements.length - 1
-						? rowActiveElements[index + 1]
-						: null;
-				
-			} return !event.shiftKey
-					? rowActiveElements[0]
-					: rowActiveElements[rowActiveElements.length - 1];
+				}
+				return index < rowActiveElements.length - 1
+					? rowActiveElements[index + 1]
+					: null;
+			}
+			return !event.shiftKey
+				? rowActiveElements[0]
+				: rowActiveElements[rowActiveElements.length - 1];
 		}
 		return null;
 	}
