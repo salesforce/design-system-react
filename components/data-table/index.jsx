@@ -335,7 +335,7 @@ class DataTable extends React.Component {
 	}
 
 	componentDidMount() {
-		if (this.props.fixedHeader) {
+		if (this.getFixedHeader()) {
 			this.toggleFixedHeaderListeners(true);
 			this.resizeFixedHeaders();
 		}
@@ -345,7 +345,7 @@ class DataTable extends React.Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (this.props.fixedHeader) {
+		if (this.getFixedHeader()) {
 			this.resizeFixedHeaders();
 			// If the first page of results isn't enough to allow the user to scroll it causes
 			// the user to get into a state where they cannot load the second page.
@@ -383,7 +383,7 @@ class DataTable extends React.Component {
 
 	onResize() {
 		const table = document.querySelector(`#${this.getId()}`);
-		const columns = this.props.fixedHeader
+		const columns = this.getFixedHeader()
 			? table.getElementsByClassName('slds-cell-fixed')
 			: table.getElementsByTagName('th');
 		const columnsWidths = Array.from(columns).map(({ id, style }, index) => {
@@ -399,6 +399,18 @@ class DataTable extends React.Component {
 	getId() {
 		return this.props.id || this.generatedId;
 	}
+
+  getFixedHeader() {
+    return this.props.fixedHeader || this.props.resizable;
+  }
+
+  getKeyboardNavigation() {
+    return this.props.keyboardNavigation || this.props.resizable;
+  }
+
+  getFixedLayout() {
+    return this.props.fixedLayout || this.props.resizable;
+  }
 
 	getFirstInteractiveElement(rowIndex, columnIndex) {
 		if (
@@ -984,7 +996,7 @@ class DataTable extends React.Component {
 			) {
 				const { dropdown } = child.props;
 				const dropdownPropOverrides = {};
-				if (this.props.fixedHeader) {
+				if (this.getFixedHeader()) {
 					dropdownPropOverrides.menuPosition = 'overflowBoundaryElement';
 				}
 				RowActions = React.cloneElement(child, {
@@ -1040,7 +1052,7 @@ class DataTable extends React.Component {
 			registerInteractiveElement: this.registerInteractiveElement,
 			allowKeyboardNavigation: this.state.allowKeyboardNavigation,
 			setAllowKeyboardNavigation: (allowKeyboardNavigation) => {
-				if (this.props.keyboardNavigation) {
+				if (this.getKeyboardNavigation()) {
 					this.setState({ allowKeyboardNavigation });
 				}
 			},
@@ -1054,12 +1066,12 @@ class DataTable extends React.Component {
 						className={classNames(
 							'slds-table',
 							{
-								'slds-table_fixed-layout': this.props.fixedLayout,
-								'slds-table_header-fixed': this.props.fixedHeader,
-								'slds-table_resizable-cols': this.props.fixedLayout,
+								'slds-table_fixed-layout': this.getFixedLayout(),
+								'slds-table_header-fixed': this.getFixedHeader(),
+								'slds-table_resizable-cols': this.getFixedLayout(),
 								'slds-table_bordered': !this.props.unborderedRow,
 								'slds-table_cell-buffer':
-									!this.props.fixedLayout && !this.props.unbufferedCell,
+									!this.getFixedLayout() && !this.props.unbufferedCell,
 								'slds-max-medium-table_stacked': this.props.stacked,
 								'slds-max-medium-table_stacked-horizontal': this.props
 									.stackedHorizontal,
@@ -1076,7 +1088,7 @@ class DataTable extends React.Component {
 								this.tableRef = node;
 							}
 						}}
-						role={this.props.fixedLayout ? 'grid' : null}
+						role={this.getFixedLayout() ? 'grid' : null}
 						onBlur={(event) => {
 							if (
 								this.tableRef &&
@@ -1095,8 +1107,8 @@ class DataTable extends React.Component {
 						<DataTableHead
 							assistiveText={assistiveText}
 							allSelected={allSelected}
-							fixedHeader={this.props.fixedHeader}
-							fixedLayout={this.props.fixedLayout}
+							fixedHeader={this.getFixedHeader()}
+							fixedLayout={this.getFixedLayout()}
 							headerRefs={(ref, index) => {
 								if (index === 'action' || index === 'select') {
 									if (ref) {
@@ -1141,7 +1153,7 @@ class DataTable extends React.Component {
 												canSelectRows={canSelectRows}
 												className={item.classNameRow}
 												columns={columns}
-												fixedLayout={this.props.fixedLayout}
+												fixedLayout={this.getFixedLayout()}
 												id={rowId}
 												index={index}
 												item={item}
@@ -1159,7 +1171,7 @@ class DataTable extends React.Component {
 						</tbody>
 					</table>
 				</TableContext.Provider>
-				{this.props.fixedHeader && this.props.hasMore && (
+				{this.getFixedHeader() && this.props.hasMore && (
 					<div className="slds-is-relative slds-p-around_large">
 						<Spinner
 							assistiveText={{ label: this.props.assistiveText.loadingMore }}
@@ -1172,7 +1184,7 @@ class DataTable extends React.Component {
 			</React.Fragment>
 		);
 
-		if (this.props.fixedHeader) {
+		if (this.getFixedHeader()) {
 			const border = `1px solid ${colorGray5}`;
 			const styles = {
 				borderTop: border,

@@ -150,7 +150,7 @@ class Example extends React.Component {
 						id="DataTableExample-column-resizable"
 						fixedLayout
 						fixedHeader
-						Resizable
+						resizable
 						keyboardNavigation
 					>
 						{columns}
