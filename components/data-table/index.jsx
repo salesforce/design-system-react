@@ -291,6 +291,21 @@ class DataTable extends React.Component {
 		 * A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`.
 		 */
 		unbufferedCell: PropTypes.bool,
+		/**
+		 * A variant which allows column dividers to be grabbed with the mouse. This feature needs
+		 * `@salesforce/design-system-react/assets/styles/table.css` to be loaded.
+		 */
+		resizable: PropTypes.bool,
+		/**
+		 * Object with properties to be used in case of resizable: true
+		 *
+		 * resizeMode: It is used to set how the resize method works. Those are the possible values: 'fit', 'flex' and 'overflow'
+		 * disable: It is used for disable the resize functionality, default is false
+		 * disabledColumns: Array of indexes for the columns to be disabled
+		 * widths: An array of column widths to set the initial width.
+		 * onResize: Callback function to be fired when the user has ended dragging a column
+		 */
+		resizerOptions: PropTypes.object,
 	};
 
 	static defaultProps = defaultProps;
@@ -305,6 +320,7 @@ class DataTable extends React.Component {
 		};
 		this.gripRefs = [];
 		this.scrollerRef = null;
+		this.fixedHeaderContainer = {};
 		this.state = {
 			// Currently selected cell
 			activeCell: {
@@ -339,7 +355,7 @@ class DataTable extends React.Component {
 			this.toggleFixedHeaderListeners(true);
 			this.resizeFixedHeaders();
 		}
-		if (this.props.resizable) {
+		if (this.isResizable()) {
 			this.enableResize();
 		}
 	}
@@ -366,7 +382,7 @@ class DataTable extends React.Component {
 			// eslint-disable-next-line react/no-did-update-set-state
 			this.setState({ tableHasFocus: true });
 		}
-		if (this.props.resizable) {
+		if (this.isResizable()) {
 			this.enableResize();
 		} else if (this.resizer) {
 			this.disableResize();
@@ -376,41 +392,44 @@ class DataTable extends React.Component {
 	componentWillUnmount() {
 		this.toggleFixedHeaderListeners(false);
 
-		if (this.props.resizable) {
+		if (this.isResizable()) {
 			this.disableResize();
 		}
 	}
 
 	onResize() {
-		const table = document.querySelector(`#${this.getId()}`);
-		const columns = this.getFixedHeader()
-			? table.getElementsByClassName('slds-cell-fixed')
-			: table.getElementsByTagName('th');
-		const columnsWidths = Array.from(columns).map(({ id, style }, index) => {
-			return {
-				id,
-				index,
-				width: parseInt(style.width, 10),
-			};
-		});
-		return columnsWidths;
+		const table = this.tableRef;
+		if (table) {
+			const columns = this.getFixedHeader()
+				? table.getElementsByClassName('slds-cell-fixed')
+				: table.getElementsByTagName('th');
+			const columnsWidths = Array.from(columns).map(({ id, style }, index) => {
+				return {
+					id,
+					index,
+					width: parseInt(style.width, 10),
+				};
+			});
+			return columnsWidths;
+		}
+		return [];
 	}
 
 	getId() {
 		return this.props.id || this.generatedId;
 	}
 
-  getFixedHeader() {
-    return this.props.fixedHeader || this.props.resizable;
-  }
+	getFixedHeader() {
+		return this.props.fixedHeader || this.props.resizable;
+	}
 
-  getKeyboardNavigation() {
-    return this.props.keyboardNavigation || this.props.resizable;
-  }
+	getKeyboardNavigation() {
+		return this.props.keyboardNavigation || this.props.resizable;
+	}
 
-  getFixedLayout() {
-    return this.props.fixedLayout || this.props.resizable;
-  }
+	getFixedLayout() {
+		return this.props.fixedLayout || this.props.resizable;
+	}
 
 	getFirstInteractiveElement(rowIndex, columnIndex) {
 		if (
@@ -568,17 +587,15 @@ class DataTable extends React.Component {
 		}
 	};
 
-	resizeGrips() {
-		const table = Array.from(
-			document.getElementsByClassName(`slds-table_header-fixed_container`)
-		).filter((t) => {
-			const id = this.getId();
-			const tableFilterd = t.querySelector(`#${id}`);
-			return !!tableFilterd;
-		});
+	isResizable() {
+		return this.props.fixedLayout && this.props.resizable;
+	}
 
-		if (table.length > 0) {
-			const grips = table[0].getElementsByClassName('grip-handle');
+	resizeGrips() {
+		const table = this.fixedHeaderContainer;
+
+		if (table) {
+			const grips = table.getElementsByClassName('grip-handle');
 
 			if (grips) {
 				this.gripRefs = grips;
@@ -592,8 +609,8 @@ class DataTable extends React.Component {
 
 	enableResize() {
 		if (canUseDOM) {
-			const remoteTable = document.querySelector(`#${this.getId()}`);
-			const { fixedHeader } = this.props;
+			const remoteTable = this.tableRef;
+			const fixedHeader = this.getFixedHeader();
 
 			if (!this.resizer) {
 				const options = {
@@ -623,6 +640,7 @@ class DataTable extends React.Component {
 					this.resizeGrips();
 					this.repositionResizers();
 				}
+				this.setState({}, () => this.state);
 			}
 		}
 	}
@@ -664,7 +682,7 @@ class DataTable extends React.Component {
 		if (
 			this.state.mode === Mode.NAVIGATION ||
 			this.state.activeCell.rowIndex > 0 ||
-			!this.props.resizable
+			!this.isResizable()
 		) {
 			const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
 			const activeElement = this.getFirstInteractiveElement(
@@ -695,7 +713,7 @@ class DataTable extends React.Component {
 		if (
 			this.state.mode === Mode.NAVIGATION ||
 			this.state.activeCell.rowIndex > 0 ||
-			!this.props.resizable
+			!this.isResizable()
 		) {
 			const newRowIndex = Math.min(
 				this.state.activeCell.rowIndex + 1,
@@ -722,7 +740,7 @@ class DataTable extends React.Component {
 			const { rowIndex, columnIndex } = this.state.activeCell;
 
 			if (rowIndex === 0) {
-				const table = document.querySelector(`#${this.getId()}`);
+				const table = this.tableRef;
 				const headers = table.getElementsByTagName('th');
 				headers[columnIndex].style.width = `${
 					parseInt(headers[columnIndex].style.width, 10) + factor
@@ -745,7 +763,7 @@ class DataTable extends React.Component {
 		if (
 			this.state.mode === Mode.NAVIGATION ||
 			this.state.activeCell.rowIndex > 0 ||
-			!this.props.resizable
+			!this.isResizable()
 		) {
 			const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
 			const activeElement = this.getFirstInteractiveElement(
@@ -770,7 +788,7 @@ class DataTable extends React.Component {
 		if (
 			this.state.mode === Mode.NAVIGATION ||
 			this.state.activeCell.rowIndex > 0 ||
-			!this.props.resizable
+			!this.isResizable()
 		) {
 			const newColumnIndex = Math.min(
 				this.state.activeCell.columnIndex + 1,
@@ -892,7 +910,7 @@ class DataTable extends React.Component {
 
 			if (nextActionable) {
 				this.setState({ activeElement: nextActionable });
-				if (this.props.resizable) this.makeGripVisible(null);
+				if (this.isResizable()) this.makeGripVisible(null);
 			} else if (rowIndex === 0) {
 				const headers = [].concat(
 					this.headerRefs.select,
@@ -922,7 +940,7 @@ class DataTable extends React.Component {
 					} else header.tabIndex = -1;
 				});
 
-				if (this.props.resizable) this.makeGripVisible(newIndex);
+				if (this.isResizable()) this.makeGripVisible(newIndex);
 			} else {
 				this.moveNext(event, rowIndex, columnIndex);
 				this.setState({
@@ -1202,6 +1220,9 @@ class DataTable extends React.Component {
 			component = (
 				<div
 					className="slds-table_header-fixed_container"
+					ref={(ref) => {
+						this.fixedHeaderContainer = ref;
+					}}
 					style={styles}
 					onScroll={(e) => {
 						const containerScrollLeft = e.target.scrollLeft;

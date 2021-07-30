@@ -61,3 +61,10 @@
 .slds-table th:focus .slds-cell-fixed, .slds-table th.slds-has-focus .slds-cell-fixed, .slds-table [role="gridcell"]:focus , .slds-table [role="gridcell"].slds-has-focus{
     box-shadow: #0070d2 0 0 0 1px inset;
 }
+
+th > div > .slds-truncate {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    height: 2rem;
+}

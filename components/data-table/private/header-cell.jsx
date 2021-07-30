@@ -240,7 +240,7 @@ class DataTableHeaderCell extends React.Component {
 							);
 							return (
 								<th
-									id={property}
+									id={`${this.props.id}-${property}-th`}
 									aria-label={labelType === 'string' ? label : undefined}
 									aria-sort={ariaSort}
 									className={classNames({

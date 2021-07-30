@@ -8,12 +8,13 @@ import IconSettings from '~/components/icon-settings';
 
 const CustomDataTableCell = ({ children, ...props }) => (
 	<DataTableCell {...props}>
-				<DataTableInteractiveLink
-          onClick={(event) => {
-            event.preventDefault();
-        }}>
-          {children}
-				</DataTableInteractiveLink>
+		<DataTableInteractiveLink
+			onClick={(event) => {
+				event.preventDefault();
+			}}
+		>
+			{children}
+		</DataTableInteractiveLink>
 	</DataTableCell>
 );
 CustomDataTableCell.displayName = CustomDataTableCell.displayName;
@@ -49,7 +50,7 @@ const columns = [
 class Example extends React.Component {
 	static displayName = 'DataTableExample';
 
-  state = {
+	state = {
 		sortColumn: 'opportunityName',
 		sortColumnDirection: {
 			opportunityName: 'asc',
@@ -186,11 +187,13 @@ class Example extends React.Component {
 						With keyboard navigation
 					</h3>
 					<IconSettings iconPath="/assets/icons">
-            <div style={{ height: '200px' }}>
+						<div style={{ height: '200px' }}>
 							<DataTable
 								items={this.state.items}
 								id="DataTableExample-4-resizable-cols"
 								resizable
+								keyboardNavigation
+								fixedLayout
 								resizerOptions={{
 									resizeMode: 'overflow',
 									onResize: (columnsResized) => {
@@ -212,8 +215,9 @@ class Example extends React.Component {
 							<DataTable
 								items={this.state.items}
 								id="DataTableExample-2-resizable-cols"
+								fixedLayout
 								resizable
-                resizerOptions={{
+								resizerOptions={{
 									resizeMode: 'overflow',
 									onResize: (columnsResized) => {
 										console.log(JSON.stringify(columnsResized));

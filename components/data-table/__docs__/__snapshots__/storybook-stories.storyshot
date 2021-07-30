@@ -32,6 +32,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             }
           >
             <div
+              aria-hidden={false}
               className="slds-th__action slds-th__action_form"
               style={null}
             >
@@ -81,7 +82,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             aria-label="Name"
             aria-sort="ascending"
             className="slds-is-sortable slds-is-sorted"
-            id="opportunityName"
+            id="DataTableExample-2-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -137,7 +138,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="DataTableExample-2-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -169,7 +170,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             aria-label="Close Date"
             aria-sort="none"
             className="slds-is-sortable slds-is-sorted_desc"
-            id="closeDate"
+            id="DataTableExample-2-closeDate-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -219,7 +220,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             aria-label="Stage"
             aria-sort="none"
             className=""
-            id="stage"
+            id="DataTableExample-2-stage-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -245,7 +246,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             aria-label="Confidence"
             aria-sort="none"
             className="slds-is-sortable"
-            id="confidence"
+            id="DataTableExample-2-confidence-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -289,7 +290,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="DataTableExample-2-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -315,7 +316,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="DataTableExample-2-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -1119,7 +1120,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 aria-label="Name"
                 aria-sort="ascending"
                 className="slds-is-sortable slds-is-sorted"
-                id="opportunityName"
+                id="DataTableExample-SingleRequiredSelect-opportunityName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -1243,7 +1244,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 aria-label="Account Name"
                 aria-sort="none"
                 className=""
-                id="accountName"
+                id="DataTableExample-SingleRequiredSelect-accountName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -1312,7 +1313,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 aria-label="Close Date"
                 aria-sort="none"
                 className=""
-                id="closeDate"
+                id="DataTableExample-SingleRequiredSelect-closeDate-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -1381,7 +1382,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 aria-label="Stage"
                 aria-sort="none"
                 className=""
-                id="stage"
+                id="DataTableExample-SingleRequiredSelect-stage-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -1450,7 +1451,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 aria-label="Confidence"
                 aria-sort="none"
                 className="slds-is-sortable"
-                id="confidence"
+                id="DataTableExample-SingleRequiredSelect-confidence-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -1562,7 +1563,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 aria-label="Amount"
                 aria-sort="none"
                 className=""
-                id="amount"
+                id="DataTableExample-SingleRequiredSelect-amount-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -1631,7 +1632,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 aria-label="Contact"
                 aria-sort="none"
                 className=""
-                id="contact"
+                id="DataTableExample-SingleRequiredSelect-contact-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -2475,7 +2476,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             aria-label="Name"
             aria-sort="ascending"
             className="slds-is-sortable slds-is-sorted"
-            id="opportunityName"
+            id="DataTableExample-SingleRequiredSelect-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -2531,7 +2532,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="DataTableExample-SingleRequiredSelect-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -2563,7 +2564,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             aria-label="Close Date"
             aria-sort="none"
             className=""
-            id="closeDate"
+            id="DataTableExample-SingleRequiredSelect-closeDate-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -2589,7 +2590,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             aria-label="Stage"
             aria-sort="none"
             className=""
-            id="stage"
+            id="DataTableExample-SingleRequiredSelect-stage-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -2615,7 +2616,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             aria-label="Confidence"
             aria-sort="none"
             className="slds-is-sortable"
-            id="confidence"
+            id="DataTableExample-SingleRequiredSelect-confidence-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -2659,7 +2660,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="DataTableExample-SingleRequiredSelect-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -2685,7 +2686,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="DataTableExample-SingleRequiredSelect-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -3439,6 +3440,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
             }
           >
             <div
+              aria-hidden={false}
               className="slds-th__action slds-th__action_form"
               style={null}
             >
@@ -3486,7 +3488,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
             aria-label="Name"
             aria-sort="none"
             className=""
-            id="opportunityName"
+            id="DataTableExample-2-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -3518,7 +3520,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="DataTableExample-2-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -3550,7 +3552,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
             aria-label="Close Date"
             aria-sort="none"
             className=""
-            id="closeDate"
+            id="DataTableExample-2-closeDate-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -3576,7 +3578,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
             aria-label="Stage"
             aria-sort="none"
             className=""
-            id="stage"
+            id="DataTableExample-2-stage-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -3602,7 +3604,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
             aria-label="Confidence"
             aria-sort="none"
             className=""
-            id="confidence"
+            id="DataTableExample-2-confidence-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -3628,7 +3630,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="DataTableExample-2-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -3654,7 +3656,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="DataTableExample-2-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -4637,7 +4639,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
             aria-label="Opportunity Name"
             aria-sort="none"
             className=""
-            id="opportunityName"
+            id="DataTableExample-1-default-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -4669,7 +4671,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="DataTableExample-1-default-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -4701,7 +4703,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
             aria-label="Close Date"
             aria-sort="none"
             className=""
-            id="closeDate"
+            id="DataTableExample-1-default-closeDate-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -4733,7 +4735,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
             aria-label="Stage"
             aria-sort="none"
             className=""
-            id="stage"
+            id="DataTableExample-1-default-stage-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -4765,7 +4767,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
             aria-label="Confidence"
             aria-sort="none"
             className=""
-            id="confidence"
+            id="DataTableExample-1-default-confidence-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -4797,7 +4799,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="DataTableExample-1-default-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -4829,7 +4831,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fixed Layout 1`] = `
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="DataTableExample-1-default-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5304,7 +5306,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Opportunity Name"
             aria-sort="none"
             className=""
-            id="opportunityName"
+            id="DataTableExample-1-default-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5321,7 +5323,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="DataTableExample-1-default-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5338,7 +5340,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Close Date"
             aria-sort="none"
             className=""
-            id="closeDate"
+            id="DataTableExample-1-default-closeDate-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5355,7 +5357,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Stage"
             aria-sort="none"
             className=""
-            id="stage"
+            id="DataTableExample-1-default-stage-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5372,7 +5374,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Confidence"
             aria-sort="none"
             className=""
-            id="confidence"
+            id="DataTableExample-1-default-confidence-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5389,7 +5391,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="DataTableExample-1-default-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5406,7 +5408,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout (Default) 1`] = `
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="DataTableExample-1-default-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5812,7 +5814,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
             aria-label="Opportunity Name"
             aria-sort="none"
             className=""
-            id="opportunityName"
+            id="DataTableExample-columnBordered-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5829,7 +5831,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="DataTableExample-columnBordered-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5846,7 +5848,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
             aria-label="Close Date"
             aria-sort="none"
             className=""
-            id="closeDate"
+            id="DataTableExample-columnBordered-closeDate-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5863,7 +5865,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
             aria-label="Stage"
             aria-sort="none"
             className=""
-            id="stage"
+            id="DataTableExample-columnBordered-stage-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5880,7 +5882,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
             aria-label="Confidence"
             aria-sort="none"
             className=""
-            id="confidence"
+            id="DataTableExample-columnBordered-confidence-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5897,7 +5899,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="DataTableExample-columnBordered-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -5914,7 +5916,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Column Bordered 1`] = 
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="DataTableExample-columnBordered-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6320,7 +6322,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Headless 1`] = `
             aria-label="Opportunity Name"
             aria-sort="none"
             className=""
-            id="opportunityName"
+            id="DataTableExample-headless-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6337,7 +6339,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Headless 1`] = `
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="DataTableExample-headless-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6354,7 +6356,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Headless 1`] = `
             aria-label="Close Date"
             aria-sort="none"
             className=""
-            id="closeDate"
+            id="DataTableExample-headless-closeDate-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6371,7 +6373,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Headless 1`] = `
             aria-label="Stage"
             aria-sort="none"
             className=""
-            id="stage"
+            id="DataTableExample-headless-stage-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6388,7 +6390,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Headless 1`] = `
             aria-label="Confidence"
             aria-sort="none"
             className=""
-            id="confidence"
+            id="DataTableExample-headless-confidence-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6405,7 +6407,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Headless 1`] = `
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="DataTableExample-headless-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6422,7 +6424,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Headless 1`] = `
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="DataTableExample-headless-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6828,7 +6830,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
             aria-label="Opportunity Name"
             aria-sort="none"
             className=""
-            id="opportunityName"
+            id="DataTableExample-noRowHover-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6845,7 +6847,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="DataTableExample-noRowHover-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6862,7 +6864,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
             aria-label="Close Date"
             aria-sort="none"
             className=""
-            id="closeDate"
+            id="DataTableExample-noRowHover-closeDate-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6879,7 +6881,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
             aria-label="Stage"
             aria-sort="none"
             className=""
-            id="stage"
+            id="DataTableExample-noRowHover-stage-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6896,7 +6898,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
             aria-label="Confidence"
             aria-sort="none"
             className=""
-            id="confidence"
+            id="DataTableExample-noRowHover-confidence-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6913,7 +6915,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="DataTableExample-noRowHover-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -6930,7 +6932,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - No Row Hover 1`] = `
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="DataTableExample-noRowHover-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7336,7 +7338,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
             aria-label="Opportunity Name"
             aria-sort="none"
             className=""
-            id="opportunityName"
+            id="DataTableExample-1-striped-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7353,7 +7355,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="DataTableExample-1-striped-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7370,7 +7372,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
             aria-label="Close Date"
             aria-sort="none"
             className=""
-            id="closeDate"
+            id="DataTableExample-1-striped-closeDate-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7387,7 +7389,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
             aria-label="Stage"
             aria-sort="none"
             className=""
-            id="stage"
+            id="DataTableExample-1-striped-stage-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7404,7 +7406,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
             aria-label="Confidence"
             aria-sort="none"
             className=""
-            id="confidence"
+            id="DataTableExample-1-striped-confidence-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7421,7 +7423,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="DataTableExample-1-striped-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7438,7 +7440,7 @@ exports[`DOM snapshots SLDSDataTable Basic Fluid Layout - Striped 1`] = `
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="DataTableExample-1-striped-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7844,7 +7846,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
             aria-label="Opportunity Name"
             aria-sort="none"
             className=""
-            id="opportunityName"
+            id="CustomClasses-Example-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7861,7 +7863,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="CustomClasses-Example-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7878,7 +7880,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
             aria-label="Close Date"
             aria-sort="none"
             className=""
-            id="closeDate"
+            id="CustomClasses-Example-closeDate-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7895,7 +7897,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
             aria-label="Stage"
             aria-sort="none"
             className=""
-            id="stage"
+            id="CustomClasses-Example-stage-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7912,7 +7914,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
             aria-label="Confidence"
             aria-sort="none"
             className=""
-            id="confidence"
+            id="CustomClasses-Example-confidence-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7929,7 +7931,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="CustomClasses-Example-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -7946,7 +7948,7 @@ exports[`DOM snapshots SLDSDataTable Custom Classes 1`] = `
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="CustomClasses-Example-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -8468,7 +8470,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 aria-label="Name"
                 aria-sort="ascending"
                 className="slds-is-sortable slds-is-sorted"
-                id="opportunityName"
+                id="DataTableExample-FixedHeaders-opportunityName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -8592,7 +8594,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 aria-label="Account Name"
                 aria-sort="none"
                 className=""
-                id="accountName"
+                id="DataTableExample-FixedHeaders-accountName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -8661,7 +8663,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 aria-label="Close Date"
                 aria-sort="none"
                 className=""
-                id="closeDate"
+                id="DataTableExample-FixedHeaders-closeDate-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -8730,7 +8732,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 aria-label="Stage"
                 aria-sort="none"
                 className=""
-                id="stage"
+                id="DataTableExample-FixedHeaders-stage-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -8799,7 +8801,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 aria-label="Confidence"
                 aria-sort="none"
                 className="slds-is-sortable"
-                id="confidence"
+                id="DataTableExample-FixedHeaders-confidence-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -8911,7 +8913,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 aria-label="Amount"
                 aria-sort="none"
                 className=""
-                id="amount"
+                id="DataTableExample-FixedHeaders-amount-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -8980,7 +8982,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 aria-label="Contact"
                 aria-sort="none"
                 className=""
-                id="contact"
+                id="DataTableExample-FixedHeaders-contact-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -11899,7 +11901,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Name"
                 aria-sort="ascending"
                 className="slds-is-sortable slds-is-sorted"
-                id="opportunityName"
+                id="DataTableExample-FixedHeaders-opportunityName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -12023,7 +12025,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Account Name"
                 aria-sort="none"
                 className=""
-                id="accountName"
+                id="DataTableExample-FixedHeaders-accountName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -12092,7 +12094,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Close Date"
                 aria-sort="none"
                 className=""
-                id="closeDate"
+                id="DataTableExample-FixedHeaders-closeDate-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -12161,7 +12163,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Stage"
                 aria-sort="none"
                 className=""
-                id="stage"
+                id="DataTableExample-FixedHeaders-stage-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -12230,7 +12232,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Confidence"
                 aria-sort="none"
                 className="slds-is-sortable"
-                id="confidence"
+                id="DataTableExample-FixedHeaders-confidence-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -12342,7 +12344,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Amount"
                 aria-sort="none"
                 className=""
-                id="amount"
+                id="DataTableExample-FixedHeaders-amount-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -12411,7 +12413,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 aria-label="Contact"
                 aria-sort="none"
                 className=""
-                id="contact"
+                id="DataTableExample-FixedHeaders-contact-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -15320,7 +15322,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 aria-label="Name"
                 aria-sort="ascending"
                 className="slds-is-sortable slds-is-sorted"
-                id="opportunityName"
+                id="DataTableExample-FixedHeaders-opportunityName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -15443,7 +15445,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 aria-label="Account Name"
                 aria-sort="none"
                 className=""
-                id="accountName"
+                id="DataTableExample-FixedHeaders-accountName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -15512,7 +15514,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 aria-label="Close Date"
                 aria-sort="none"
                 className=""
-                id="closeDate"
+                id="DataTableExample-FixedHeaders-closeDate-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -15581,7 +15583,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 aria-label="Stage"
                 aria-sort="none"
                 className=""
-                id="stage"
+                id="DataTableExample-FixedHeaders-stage-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -15650,7 +15652,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 aria-label="Confidence"
                 aria-sort="none"
                 className="slds-is-sortable"
-                id="confidence"
+                id="DataTableExample-FixedHeaders-confidence-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -15761,7 +15763,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 aria-label="Amount"
                 aria-sort="none"
                 className=""
-                id="amount"
+                id="DataTableExample-FixedHeaders-amount-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -15830,7 +15832,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 aria-label="Contact"
                 aria-sort="none"
                 className=""
-                id="contact"
+                id="DataTableExample-FixedHeaders-contact-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -18569,7 +18571,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Opportunity Name"
             aria-sort="none"
             className=""
-            id="opportunityName"
+            id="DataTableExample-1-default-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -18595,7 +18597,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="DataTableExample-1-default-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -18621,7 +18623,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="DataTableExample-1-default-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -18647,7 +18649,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="DataTableExample-1-default-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -19326,7 +19328,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Opportunity Name"
             aria-sort="none"
             className=""
-            id="opportunityName"
+            id="DataTableExample-1-striped-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -19352,7 +19354,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="DataTableExample-1-striped-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -19378,7 +19380,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="DataTableExample-1-striped-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -19404,7 +19406,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="DataTableExample-1-striped-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -20083,7 +20085,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Opportunity Name"
             aria-sort="none"
             className=""
-            id="opportunityName"
+            id="DataTableExample-noRowHover-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -20109,7 +20111,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="DataTableExample-noRowHover-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -20135,7 +20137,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="DataTableExample-noRowHover-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -20161,7 +20163,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="DataTableExample-noRowHover-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -20840,7 +20842,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Opportunity Name"
             aria-sort="none"
             className=""
-            id="opportunityName"
+            id="DataTableExample-columnBordered-opportunityName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -20866,7 +20868,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Account Name"
             aria-sort="none"
             className=""
-            id="accountName"
+            id="DataTableExample-columnBordered-accountName-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -20892,7 +20894,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Amount"
             aria-sort="none"
             className=""
-            id="amount"
+            id="DataTableExample-columnBordered-amount-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -20918,7 +20920,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             aria-label="Contact"
             aria-sort="none"
             className=""
-            id="contact"
+            id="DataTableExample-columnBordered-contact-th"
             onFocus={[Function]}
             onKeyDown={[Function]}
             scope="col"
@@ -21616,7 +21618,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 aria-label="Opportunity Name"
                 aria-sort="none"
                 className=""
-                id="opportunityName"
+                id="DataTableExample-column-resizable-opportunityName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -21685,7 +21687,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 aria-label="Account Name"
                 aria-sort="none"
                 className=""
-                id="accountName"
+                id="DataTableExample-column-resizable-accountName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -21754,7 +21756,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 aria-label="Amount"
                 aria-sort="none"
                 className=""
-                id="amount"
+                id="DataTableExample-column-resizable-amount-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -21823,7 +21825,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 aria-label="Contact"
                 aria-sort="none"
                 className=""
-                id="contact"
+                id="DataTableExample-column-resizable-contact-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23073,7 +23075,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Name"
                 aria-sort="ascending"
                 className="slds-is-sortable slds-is-sorted"
-                id="opportunityName"
+                id="DataTableExample-FixedHeaders-opportunityName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23196,7 +23198,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Account Name"
                 aria-sort="none"
                 className=""
-                id="accountName"
+                id="DataTableExample-FixedHeaders-accountName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23265,7 +23267,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Close Date"
                 aria-sort="none"
                 className=""
-                id="closeDate"
+                id="DataTableExample-FixedHeaders-closeDate-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23334,7 +23336,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Stage"
                 aria-sort="none"
                 className=""
-                id="stage"
+                id="DataTableExample-FixedHeaders-stage-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23403,7 +23405,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Confidence"
                 aria-sort="none"
                 className="slds-is-sortable"
-                id="confidence"
+                id="DataTableExample-FixedHeaders-confidence-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23514,7 +23516,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Amount"
                 aria-sort="none"
                 className=""
-                id="amount"
+                id="DataTableExample-FixedHeaders-amount-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23583,7 +23585,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Contact"
                 aria-sort="none"
                 className=""
-                id="contact"
+                id="DataTableExample-FixedHeaders-contact-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -26281,1978 +26283,12 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
   <h3
     className="slds-text-heading_medium slds-m-vertical_medium"
   >
-    Fully resizable
-  </h3>
-  <div
-    style={
-      Object {
-        "overflow": "auto",
-      }
-    }
-  >
-    <table
-      className="slds-table slds-table_bordered slds-table_cell-buffer"
-      id="DataTableExample-1-resizable-cols"
-      onBlur={[Function]}
-      role={null}
-    >
-      <thead
-        className=""
-      >
-        <tr
-          className="slds-line-height_reset"
-        >
-          <th
-            aria-label="Opportunity Name"
-            aria-sort="none"
-            className=""
-            id="opportunityName"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Opportunity Name"
-            >
-              Opportunity Name
-            </div>
-          </th>
-          <th
-            aria-label="Account Name"
-            aria-sort="none"
-            className=""
-            id="accountName"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Account Name"
-            >
-              Account Name
-            </div>
-          </th>
-          <th
-            aria-label="Close Date"
-            aria-sort="none"
-            className=""
-            id="closeDate"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Close Date"
-            >
-              Close Date
-            </div>
-          </th>
-          <th
-            aria-label="Stage"
-            aria-sort="none"
-            className=""
-            id="stage"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Stage"
-            >
-              Stage
-            </div>
-          </th>
-          <th
-            aria-label="Confidence"
-            aria-sort="none"
-            className=""
-            id="confidence"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Confidence"
-            >
-              Confidence
-            </div>
-          </th>
-          <th
-            aria-label="Amount"
-            aria-sort="none"
-            className=""
-            id="amount"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Amount"
-            >
-              Amount
-            </div>
-          </th>
-          <th
-            aria-label="Contact"
-            aria-sort="none"
-            className=""
-            id="contact"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Contact"
-            >
-              Contact
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          className=""
-        >
-          <td
-            className=""
-            data-label="Opportunity Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                Cloudhub
-              </a>
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Account Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              Cloudhub
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Close Date"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="4/14/2015"
-            >
-              4/14/2015
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Stage"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Prospecting"
-            >
-              Prospecting
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Confidence"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="20%"
-            >
-              20%
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Amount"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="$25k"
-            >
-              $25k
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Contact"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="jrogers@cloudhub.com"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                jrogers@cloudhub.com
-              </a>
-            </div>
-          </td>
-        </tr>
-        <tr
-          className=""
-        >
-          <td
-            className=""
-            data-label="Opportunity Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub + Anypoint Connectors"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                Cloudhub + Anypoint Connectors
-              </a>
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Account Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              Cloudhub
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Close Date"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="4/14/2015"
-            >
-              4/14/2015
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Stage"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Prospecting"
-            >
-              Prospecting
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Confidence"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="20%"
-            >
-              20%
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Amount"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="$25k"
-            >
-              $25k
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Contact"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="jrogers@cloudhub.com"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                jrogers@cloudhub.com
-              </a>
-            </div>
-          </td>
-        </tr>
-        <tr
-          className=""
-        >
-          <td
-            className=""
-            data-label="Opportunity Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                Cloudhub
-              </a>
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Account Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Cloudhub"
-            >
-              Cloudhub
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Close Date"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="4/14/2015"
-            >
-              4/14/2015
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Stage"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="Prospecting"
-            >
-              Prospecting
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Confidence"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="20%"
-            >
-              20%
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Amount"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="$25k"
-            >
-              $25k
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Contact"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role={null}
-            style={null}
-          >
-            <div
-              className=""
-              title="jrogers@cloudhub.com"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                jrogers@cloudhub.com
-              </a>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <h3
-    className="slds-text-heading_medium slds-m-vertical_medium"
-  >
-    Columns 0 and 3 fixed
-  </h3>
-  <div
-    style={
-      Object {
-        "overflow": "auto",
-      }
-    }
-  >
-    <table
-      className="slds-table slds-table_fixed-layout slds-table_resizable-cols slds-table_bordered"
-      id="DataTableExample-2-resizable-cols"
-      onBlur={[Function]}
-      role="grid"
-    >
-      <thead
-        className=""
-      >
-        <tr
-          className="slds-line-height_reset"
-        >
-          <th
-            aria-label="Opportunity Name"
-            aria-sort="none"
-            className=""
-            id="opportunityName"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <span
-              className="slds-p-horizontal_x-small slds-th__action"
-              style={
-                Object {
-                  "display": "flex",
-                }
-              }
-            >
-              <span
-                className="slds-truncate"
-                title="Opportunity Name"
-              >
-                Opportunity Name
-              </span>
-            </span>
-          </th>
-          <th
-            aria-label="Account Name"
-            aria-sort="none"
-            className=""
-            id="accountName"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <span
-              className="slds-p-horizontal_x-small slds-th__action"
-              style={
-                Object {
-                  "display": "flex",
-                }
-              }
-            >
-              <span
-                className="slds-truncate"
-                title="Account Name"
-              >
-                Account Name
-              </span>
-            </span>
-          </th>
-          <th
-            aria-label="Close Date"
-            aria-sort="none"
-            className=""
-            id="closeDate"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <span
-              className="slds-p-horizontal_x-small slds-th__action"
-              style={
-                Object {
-                  "display": "flex",
-                }
-              }
-            >
-              <span
-                className="slds-truncate"
-                title="Close Date"
-              >
-                Close Date
-              </span>
-            </span>
-          </th>
-          <th
-            aria-label="Stage"
-            aria-sort="none"
-            className=""
-            id="stage"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <span
-              className="slds-p-horizontal_x-small slds-th__action"
-              style={
-                Object {
-                  "display": "flex",
-                }
-              }
-            >
-              <span
-                className="slds-truncate"
-                title="Stage"
-              >
-                Stage
-              </span>
-            </span>
-          </th>
-          <th
-            aria-label="Confidence"
-            aria-sort="none"
-            className=""
-            id="confidence"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <span
-              className="slds-p-horizontal_x-small slds-th__action"
-              style={
-                Object {
-                  "display": "flex",
-                }
-              }
-            >
-              <span
-                className="slds-truncate"
-                title="Confidence"
-              >
-                Confidence
-              </span>
-            </span>
-          </th>
-          <th
-            aria-label="Amount"
-            aria-sort="none"
-            className=""
-            id="amount"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <span
-              className="slds-p-horizontal_x-small slds-th__action"
-              style={
-                Object {
-                  "display": "flex",
-                }
-              }
-            >
-              <span
-                className="slds-truncate"
-                title="Amount"
-              >
-                Amount
-              </span>
-            </span>
-          </th>
-          <th
-            aria-label="Contact"
-            aria-sort="none"
-            className=""
-            id="contact"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            scope="col"
-            style={null}
-          >
-            <span
-              className="slds-p-horizontal_x-small slds-th__action"
-              style={
-                Object {
-                  "display": "flex",
-                }
-              }
-            >
-              <span
-                className="slds-truncate"
-                title="Contact"
-              >
-                Contact
-              </span>
-            </span>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          className=""
-        >
-          <td
-            className=""
-            data-label="Opportunity Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Cloudhub"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                Cloudhub
-              </a>
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Account Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Cloudhub"
-            >
-              Cloudhub
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Close Date"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="4/14/2015"
-            >
-              4/14/2015
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Stage"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Prospecting"
-            >
-              Prospecting
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Confidence"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="20%"
-            >
-              20%
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Amount"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="$25k"
-            >
-              $25k
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Contact"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="jrogers@cloudhub.com"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                jrogers@cloudhub.com
-              </a>
-            </div>
-          </td>
-        </tr>
-        <tr
-          className=""
-        >
-          <td
-            className=""
-            data-label="Opportunity Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Cloudhub + Anypoint Connectors"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                Cloudhub + Anypoint Connectors
-              </a>
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Account Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Cloudhub"
-            >
-              Cloudhub
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Close Date"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="4/14/2015"
-            >
-              4/14/2015
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Stage"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Prospecting"
-            >
-              Prospecting
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Confidence"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="20%"
-            >
-              20%
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Amount"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="$25k"
-            >
-              $25k
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Contact"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="jrogers@cloudhub.com"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                jrogers@cloudhub.com
-              </a>
-            </div>
-          </td>
-        </tr>
-        <tr
-          className=""
-        >
-          <td
-            className=""
-            data-label="Opportunity Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Cloudhub"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                Cloudhub
-              </a>
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Account Name"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Cloudhub"
-            >
-              Cloudhub
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Close Date"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="4/14/2015"
-            >
-              4/14/2015
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Stage"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="Prospecting"
-            >
-              Prospecting
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Confidence"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="20%"
-            >
-              20%
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Amount"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="$25k"
-            >
-              $25k
-            </div>
-          </td>
-          <td
-            className=""
-            data-label="Contact"
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="gridcell"
-            style={null}
-          >
-            <div
-              className="slds-truncate"
-              title="jrogers@cloudhub.com"
-            >
-              <a
-                href="#"
-                onClick={[Function]}
-              >
-                jrogers@cloudhub.com
-              </a>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <h3
-    className="slds-text-heading_medium slds-m-vertical_medium"
-  >
-    With fixed header
-  </h3>
-  <div
-    style={
-      Object {
-        "overflow": "auto",
-      }
-    }
-  >
-    <div
-      className="slds-table_header-fixed_container"
-      onScroll={[Function]}
-      style={
-        Object {
-          "borderTop": "1px solid rgb(221, 219, 218)",
-          "height": "100%",
-        }
-      }
-    >
-      <div
-        className="slds-table_header-fixed_scroller"
-        style={
-          Object {
-            "height": "100%",
-            "overflow": "auto",
-          }
-        }
-      >
-        <table
-          className="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered"
-          id="DataTableExample-3-resizable-cols"
-          onBlur={[Function]}
-          role="grid"
-        >
-          <thead
-            className=""
-          >
-            <tr
-              className="slds-line-height_reset"
-            >
-              <th
-                aria-label="Opportunity Name"
-                aria-sort="none"
-                className=""
-                id="opportunityName"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                scope="col"
-                style={
-                  Object {
-                    "height": 0,
-                    "lineHeight": 0,
-                    "width": null,
-                  }
-                }
-              >
-                <span
-                  className="slds-p-horizontal_x-small slds-th__action"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "height": 0,
-                      "overflow": "hidden",
-                      "paddingBottom": 0,
-                      "paddingTop": 0,
-                      "visibility": "hidden",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-truncate"
-                    title="Opportunity Name"
-                  >
-                    Opportunity Name
-                  </span>
-                </span>
-                <div
-                  className="slds-cell-fixed"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "flexWrap": "nowrap",
-                      "lineHeight": "2rem",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-p-horizontal_x-small slds-th__action"
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "display": "flex",
-                        "flex": "1 1 auto",
-                        "lineHeight": 1.25,
-                        "width": "100%",
-                      }
-                    }
-                    tabIndex={null}
-                  >
-                    <span
-                      className="slds-truncate"
-                      title="Opportunity Name"
-                    >
-                      Opportunity Name
-                    </span>
-                  </span>
-                </div>
-              </th>
-              <th
-                aria-label="Account Name"
-                aria-sort="none"
-                className=""
-                id="accountName"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                scope="col"
-                style={
-                  Object {
-                    "height": 0,
-                    "lineHeight": 0,
-                    "width": null,
-                  }
-                }
-              >
-                <span
-                  className="slds-p-horizontal_x-small slds-th__action"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "height": 0,
-                      "overflow": "hidden",
-                      "paddingBottom": 0,
-                      "paddingTop": 0,
-                      "visibility": "hidden",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-truncate"
-                    title="Account Name"
-                  >
-                    Account Name
-                  </span>
-                </span>
-                <div
-                  className="slds-cell-fixed"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "flexWrap": "nowrap",
-                      "lineHeight": "2rem",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-p-horizontal_x-small slds-th__action"
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "display": "flex",
-                        "flex": "1 1 auto",
-                        "lineHeight": 1.25,
-                        "width": "100%",
-                      }
-                    }
-                    tabIndex={null}
-                  >
-                    <span
-                      className="slds-truncate"
-                      title="Account Name"
-                    >
-                      Account Name
-                    </span>
-                  </span>
-                </div>
-              </th>
-              <th
-                aria-label="Close Date"
-                aria-sort="none"
-                className=""
-                id="closeDate"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                scope="col"
-                style={
-                  Object {
-                    "height": 0,
-                    "lineHeight": 0,
-                    "width": null,
-                  }
-                }
-              >
-                <span
-                  className="slds-p-horizontal_x-small slds-th__action"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "height": 0,
-                      "overflow": "hidden",
-                      "paddingBottom": 0,
-                      "paddingTop": 0,
-                      "visibility": "hidden",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-truncate"
-                    title="Close Date"
-                  >
-                    Close Date
-                  </span>
-                </span>
-                <div
-                  className="slds-cell-fixed"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "flexWrap": "nowrap",
-                      "lineHeight": "2rem",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-p-horizontal_x-small slds-th__action"
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "display": "flex",
-                        "flex": "1 1 auto",
-                        "lineHeight": 1.25,
-                        "width": "100%",
-                      }
-                    }
-                    tabIndex={null}
-                  >
-                    <span
-                      className="slds-truncate"
-                      title="Close Date"
-                    >
-                      Close Date
-                    </span>
-                  </span>
-                </div>
-              </th>
-              <th
-                aria-label="Stage"
-                aria-sort="none"
-                className=""
-                id="stage"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                scope="col"
-                style={
-                  Object {
-                    "height": 0,
-                    "lineHeight": 0,
-                    "width": null,
-                  }
-                }
-              >
-                <span
-                  className="slds-p-horizontal_x-small slds-th__action"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "height": 0,
-                      "overflow": "hidden",
-                      "paddingBottom": 0,
-                      "paddingTop": 0,
-                      "visibility": "hidden",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-truncate"
-                    title="Stage"
-                  >
-                    Stage
-                  </span>
-                </span>
-                <div
-                  className="slds-cell-fixed"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "flexWrap": "nowrap",
-                      "lineHeight": "2rem",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-p-horizontal_x-small slds-th__action"
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "display": "flex",
-                        "flex": "1 1 auto",
-                        "lineHeight": 1.25,
-                        "width": "100%",
-                      }
-                    }
-                    tabIndex={null}
-                  >
-                    <span
-                      className="slds-truncate"
-                      title="Stage"
-                    >
-                      Stage
-                    </span>
-                  </span>
-                </div>
-              </th>
-              <th
-                aria-label="Confidence"
-                aria-sort="none"
-                className=""
-                id="confidence"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                scope="col"
-                style={
-                  Object {
-                    "height": 0,
-                    "lineHeight": 0,
-                    "width": null,
-                  }
-                }
-              >
-                <span
-                  className="slds-p-horizontal_x-small slds-th__action"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "height": 0,
-                      "overflow": "hidden",
-                      "paddingBottom": 0,
-                      "paddingTop": 0,
-                      "visibility": "hidden",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-truncate"
-                    title="Confidence"
-                  >
-                    Confidence
-                  </span>
-                </span>
-                <div
-                  className="slds-cell-fixed"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "flexWrap": "nowrap",
-                      "lineHeight": "2rem",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-p-horizontal_x-small slds-th__action"
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "display": "flex",
-                        "flex": "1 1 auto",
-                        "lineHeight": 1.25,
-                        "width": "100%",
-                      }
-                    }
-                    tabIndex={null}
-                  >
-                    <span
-                      className="slds-truncate"
-                      title="Confidence"
-                    >
-                      Confidence
-                    </span>
-                  </span>
-                </div>
-              </th>
-              <th
-                aria-label="Amount"
-                aria-sort="none"
-                className=""
-                id="amount"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                scope="col"
-                style={
-                  Object {
-                    "height": 0,
-                    "lineHeight": 0,
-                    "width": null,
-                  }
-                }
-              >
-                <span
-                  className="slds-p-horizontal_x-small slds-th__action"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "height": 0,
-                      "overflow": "hidden",
-                      "paddingBottom": 0,
-                      "paddingTop": 0,
-                      "visibility": "hidden",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-truncate"
-                    title="Amount"
-                  >
-                    Amount
-                  </span>
-                </span>
-                <div
-                  className="slds-cell-fixed"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "flexWrap": "nowrap",
-                      "lineHeight": "2rem",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-p-horizontal_x-small slds-th__action"
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "display": "flex",
-                        "flex": "1 1 auto",
-                        "lineHeight": 1.25,
-                        "width": "100%",
-                      }
-                    }
-                    tabIndex={null}
-                  >
-                    <span
-                      className="slds-truncate"
-                      title="Amount"
-                    >
-                      Amount
-                    </span>
-                  </span>
-                </div>
-              </th>
-              <th
-                aria-label="Contact"
-                aria-sort="none"
-                className=""
-                id="contact"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                scope="col"
-                style={
-                  Object {
-                    "height": 0,
-                    "lineHeight": 0,
-                    "width": null,
-                  }
-                }
-              >
-                <span
-                  className="slds-p-horizontal_x-small slds-th__action"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "height": 0,
-                      "overflow": "hidden",
-                      "paddingBottom": 0,
-                      "paddingTop": 0,
-                      "visibility": "hidden",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-truncate"
-                    title="Contact"
-                  >
-                    Contact
-                  </span>
-                </span>
-                <div
-                  className="slds-cell-fixed"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "flexWrap": "nowrap",
-                      "lineHeight": "2rem",
-                    }
-                  }
-                >
-                  <span
-                    className="slds-p-horizontal_x-small slds-th__action"
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "display": "flex",
-                        "flex": "1 1 auto",
-                        "lineHeight": 1.25,
-                        "width": "100%",
-                      }
-                    }
-                    tabIndex={null}
-                  >
-                    <span
-                      className="slds-truncate"
-                      title="Contact"
-                    >
-                      Contact
-                    </span>
-                  </span>
-                </div>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              className=""
-            >
-              <td
-                className=""
-                data-label="Opportunity Name"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="Cloudhub"
-                >
-                  <a
-                    href="#"
-                    onClick={[Function]}
-                  >
-                    Cloudhub
-                  </a>
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Account Name"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="Cloudhub"
-                >
-                  Cloudhub
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Close Date"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="4/14/2015"
-                >
-                  4/14/2015
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Stage"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="Prospecting"
-                >
-                  Prospecting
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Confidence"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="20%"
-                >
-                  20%
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Amount"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="$25k"
-                >
-                  $25k
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Contact"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="jrogers@cloudhub.com"
-                >
-                  <a
-                    href="#"
-                    onClick={[Function]}
-                  >
-                    jrogers@cloudhub.com
-                  </a>
-                </div>
-              </td>
-            </tr>
-            <tr
-              className=""
-            >
-              <td
-                className=""
-                data-label="Opportunity Name"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="Cloudhub + Anypoint Connectors"
-                >
-                  <a
-                    href="#"
-                    onClick={[Function]}
-                  >
-                    Cloudhub + Anypoint Connectors
-                  </a>
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Account Name"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="Cloudhub"
-                >
-                  Cloudhub
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Close Date"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="4/14/2015"
-                >
-                  4/14/2015
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Stage"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="Prospecting"
-                >
-                  Prospecting
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Confidence"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="20%"
-                >
-                  20%
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Amount"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="$25k"
-                >
-                  $25k
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Contact"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="jrogers@cloudhub.com"
-                >
-                  <a
-                    href="#"
-                    onClick={[Function]}
-                  >
-                    jrogers@cloudhub.com
-                  </a>
-                </div>
-              </td>
-            </tr>
-            <tr
-              className=""
-            >
-              <td
-                className=""
-                data-label="Opportunity Name"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="Cloudhub"
-                >
-                  <a
-                    href="#"
-                    onClick={[Function]}
-                  >
-                    Cloudhub
-                  </a>
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Account Name"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="Cloudhub"
-                >
-                  Cloudhub
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Close Date"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="4/14/2015"
-                >
-                  4/14/2015
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Stage"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="Prospecting"
-                >
-                  Prospecting
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Confidence"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="20%"
-                >
-                  20%
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Amount"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="$25k"
-                >
-                  $25k
-                </div>
-              </td>
-              <td
-                className=""
-                data-label="Contact"
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                role="gridcell"
-                style={null}
-              >
-                <div
-                  className="slds-truncate"
-                  title="jrogers@cloudhub.com"
-                >
-                  <a
-                    href="#"
-                    onClick={[Function]}
-                  >
-                    jrogers@cloudhub.com
-                  </a>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <h3
-    className="slds-text-heading_medium slds-m-vertical_medium"
-  >
     With keyboard navigation
   </h3>
   <div
     style={
       Object {
-        "overflow": "auto",
+        "height": "200px",
       }
     }
   >
@@ -28291,7 +26327,7 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                 aria-label="Opportunity Name"
                 aria-sort="none"
                 className=""
-                id="opportunityName"
+                id="DataTableExample-4-resizable-cols-opportunityName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -28360,7 +26396,7 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                 aria-label="Account Name"
                 aria-sort="none"
                 className=""
-                id="accountName"
+                id="DataTableExample-4-resizable-cols-accountName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -28429,7 +26465,7 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                 aria-label="Close Date"
                 aria-sort="none"
                 className=""
-                id="closeDate"
+                id="DataTableExample-4-resizable-cols-closeDate-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -28498,7 +26534,7 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                 aria-label="Stage"
                 aria-sort="none"
                 className=""
-                id="stage"
+                id="DataTableExample-4-resizable-cols-stage-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -28567,7 +26603,7 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                 aria-label="Confidence"
                 aria-sort="none"
                 className=""
-                id="confidence"
+                id="DataTableExample-4-resizable-cols-confidence-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -28636,7 +26672,7 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                 aria-label="Amount"
                 aria-sort="none"
                 className=""
-                id="amount"
+                id="DataTableExample-4-resizable-cols-amount-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -28705,7 +26741,7 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                 aria-label="Contact"
                 aria-sort="none"
                 className=""
-                id="contact"
+                id="DataTableExample-4-resizable-cols-contact-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -28787,14 +26823,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="Cloudhub"
+                  title="Acme - 1,200 Widgets"
                 >
-                  <a
-                    href="#"
-                    onClick={[Function]}
-                  >
-                    Cloudhub
-                  </a>
+                  Acme - 1,200 Widgets
                 </div>
               </td>
               <td
@@ -28807,9 +26838,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="Cloudhub"
+                  title="Acme"
                 >
-                  Cloudhub
+                  Acme
                 </div>
               </td>
               <td
@@ -28822,9 +26853,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="4/14/2015"
+                  title="4/10/15"
                 >
-                  4/14/2015
+                  4/10/15
                 </div>
               </td>
               <td
@@ -28837,9 +26868,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="Prospecting"
+                  title="Value Proposition"
                 >
-                  Prospecting
+                  Value Proposition
                 </div>
               </td>
               <td
@@ -28852,9 +26883,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="20%"
+                  title="70%"
                 >
-                  20%
+                  70%
                 </div>
               </td>
               <td
@@ -28867,9 +26898,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="$25k"
+                  title="$25,000,000"
                 >
-                  $25k
+                  $25,000,000
                 </div>
               </td>
               <td
@@ -28882,14 +26913,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="jrogers@cloudhub.com"
+                  title="jrogers@acme.com"
                 >
-                  <a
-                    href="#"
-                    onClick={[Function]}
-                  >
-                    jrogers@cloudhub.com
-                  </a>
+                  jrogers@acme.com
                 </div>
               </td>
             </tr>
@@ -28906,14 +26932,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="Cloudhub + Anypoint Connectors"
+                  title="Acme - 200 Widgets"
                 >
-                  <a
-                    href="#"
-                    onClick={[Function]}
-                  >
-                    Cloudhub + Anypoint Connectors
-                  </a>
+                  Acme - 200 Widgets
                 </div>
               </td>
               <td
@@ -28926,9 +26947,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="Cloudhub"
+                  title="Acme"
                 >
-                  Cloudhub
+                  Acme
                 </div>
               </td>
               <td
@@ -28941,9 +26962,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="4/14/2015"
+                  title="1/31/15"
                 >
-                  4/14/2015
+                  1/31/15
                 </div>
               </td>
               <td
@@ -28971,9 +26992,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="20%"
+                  title="30%"
                 >
-                  20%
+                  30%
                 </div>
               </td>
               <td
@@ -28986,9 +27007,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="$25k"
+                  title="$5,000,000"
                 >
-                  $25k
+                  $5,000,000
                 </div>
               </td>
               <td
@@ -29001,14 +27022,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="jrogers@cloudhub.com"
+                  title="bob@acme.com"
                 >
-                  <a
-                    href="#"
-                    onClick={[Function]}
-                  >
-                    jrogers@cloudhub.com
-                  </a>
+                  bob@acme.com
                 </div>
               </td>
             </tr>
@@ -29025,14 +27041,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="Cloudhub"
+                  title="salesforce.com - 1,000 Widgets"
                 >
-                  <a
-                    href="#"
-                    onClick={[Function]}
-                  >
-                    Cloudhub
-                  </a>
+                  salesforce.com - 1,000 Widgets
                 </div>
               </td>
               <td
@@ -29045,9 +27056,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="Cloudhub"
+                  title="salesforce.com"
                 >
-                  Cloudhub
+                  salesforce.com
                 </div>
               </td>
               <td
@@ -29060,9 +27071,227 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="4/14/2015"
+                  title="1/31/15 3:45PM"
                 >
-                  4/14/2015
+                  1/31/15 3:45PM
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Id. Decision Makers"
+                >
+                  Id. Decision Makers
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="60%"
+                >
+                  60%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$25,000"
+                >
+                  $25,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="nathan@salesforce.com"
+                >
+                  nathan@salesforce.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 800 Widgets"
+                >
+                  Acme - 800 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="6/11/18"
+                >
+                  6/11/18
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Value Proposition"
+                >
+                  Value Proposition
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="85%"
+                >
+                  85%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$970,000"
+                >
+                  $970,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="jrogers@acme.com"
+                >
+                  jrogers@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 744 Widgets"
+                >
+                  Acme - 744 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="4/15/17"
+                >
+                  4/15/17
                 </div>
               </td>
               <td
@@ -29090,9 +27319,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="20%"
+                  title="56%"
                 >
-                  20%
+                  56%
                 </div>
               </td>
               <td
@@ -29105,9 +27334,9 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="$25k"
+                  title="$3,110,000"
                 >
-                  $25k
+                  $3,110,000
                 </div>
               </td>
               <td
@@ -29120,14 +27349,2614 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
               >
                 <div
                   className="slds-truncate"
-                  title="jrogers@cloudhub.com"
+                  title="bob@acme.com"
                 >
-                  <a
-                    href="#"
-                    onClick={[Function]}
+                  bob@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com - 847 Widgets"
+                >
+                  salesforce.com - 847 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com"
+                >
+                  salesforce.com
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="5/23/18 1:02PM"
+                >
+                  5/23/18 1:02PM
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Id. Decision Makers"
+                >
+                  Id. Decision Makers
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="62%"
+                >
+                  62%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$18,000"
+                >
+                  $18,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="nathan@salesforce.com"
+                >
+                  nathan@salesforce.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 1,621 Widgets"
+                >
+                  Acme - 1,621 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="5/16/17"
+                >
+                  5/16/17
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Value Proposition"
+                >
+                  Value Proposition
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="70%"
+                >
+                  70%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$23,600,000"
+                >
+                  $23,600,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="jrogers@acme.com"
+                >
+                  jrogers@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 430 Widgets"
+                >
+                  Acme - 430 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="6/12/18"
+                >
+                  6/12/18
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Prospecting"
+                >
+                  Prospecting
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="42%"
+                >
+                  42%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$4,222,222"
+                >
+                  $4,222,222
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="bob@acme.com"
+                >
+                  bob@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com - 677 Widgets"
+                >
+                  salesforce.com - 677 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com"
+                >
+                  salesforce.com
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="7/21/17 10:11AM"
+                >
+                  7/21/17 10:11AM
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Id. Decision Makers"
+                >
+                  Id. Decision Makers
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="42%"
+                >
+                  42%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$24,200"
+                >
+                  $24,200
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="nathan@salesforce.com"
+                >
+                  nathan@salesforce.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 1,444 Widgets"
+                >
+                  Acme - 1,444 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="3/18/18"
+                >
+                  3/18/18
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Value Proposition"
+                >
+                  Value Proposition
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="66%"
+                >
+                  66%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$22,000,000"
+                >
+                  $22,000,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="jrogers@acme.com"
+                >
+                  jrogers@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 320 Widgets"
+                >
+                  Acme - 320 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="1/31/18"
+                >
+                  1/31/18
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Prospecting"
+                >
+                  Prospecting
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="36%"
+                >
+                  36%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$4,322,000"
+                >
+                  $4,322,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="bob@acme.com"
+                >
+                  bob@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com - 4,000 Widgets"
+                >
+                  salesforce.com - 4,000 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com"
+                >
+                  salesforce.com
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="2/21/17 8:33PM"
+                >
+                  2/21/17 8:33PM
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Id. Decision Makers"
+                >
+                  Id. Decision Makers
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="72%"
+                >
+                  72%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$15,000"
+                >
+                  $15,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="nathan@salesforce.com"
+                >
+                  nathan@salesforce.com
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <h3
+    className="slds-text-heading_medium slds-m-vertical_medium"
+  >
+    Resizeable: Columns 0 and 3 fixed
+  </h3>
+  <div
+    style={
+      Object {
+        "height": "200px",
+      }
+    }
+  >
+    <div
+      className="slds-table_header-fixed_container"
+      onScroll={[Function]}
+      style={
+        Object {
+          "borderTop": "1px solid rgb(221, 219, 218)",
+          "height": "100%",
+        }
+      }
+    >
+      <div
+        className="slds-table_header-fixed_scroller"
+        style={
+          Object {
+            "height": "100%",
+            "overflow": "auto",
+          }
+        }
+      >
+        <table
+          className="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered"
+          id="DataTableExample-2-resizable-cols"
+          onBlur={[Function]}
+          role="grid"
+        >
+          <thead
+            className=""
+          >
+            <tr
+              className="slds-line-height_reset"
+            >
+              <th
+                aria-label="Opportunity Name"
+                aria-sort="none"
+                className=""
+                id="DataTableExample-2-resizable-cols-opportunityName-th"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Opportunity Name"
                   >
-                    jrogers@cloudhub.com
-                  </a>
+                    Opportunity Name
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Opportunity Name"
+                    >
+                      Opportunity Name
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Account Name"
+                aria-sort="none"
+                className=""
+                id="DataTableExample-2-resizable-cols-accountName-th"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Account Name"
+                  >
+                    Account Name
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Account Name"
+                    >
+                      Account Name
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Close Date"
+                aria-sort="none"
+                className=""
+                id="DataTableExample-2-resizable-cols-closeDate-th"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Close Date"
+                  >
+                    Close Date
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Close Date"
+                    >
+                      Close Date
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Stage"
+                aria-sort="none"
+                className=""
+                id="DataTableExample-2-resizable-cols-stage-th"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Stage"
+                  >
+                    Stage
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Stage"
+                    >
+                      Stage
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Confidence"
+                aria-sort="none"
+                className=""
+                id="DataTableExample-2-resizable-cols-confidence-th"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Confidence"
+                  >
+                    Confidence
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Confidence"
+                    >
+                      Confidence
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Amount"
+                aria-sort="none"
+                className=""
+                id="DataTableExample-2-resizable-cols-amount-th"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Amount"
+                  >
+                    Amount
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Amount"
+                    >
+                      Amount
+                    </span>
+                  </span>
+                </div>
+              </th>
+              <th
+                aria-label="Contact"
+                aria-sort="none"
+                className=""
+                id="DataTableExample-2-resizable-cols-contact-th"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                scope="col"
+                style={
+                  Object {
+                    "height": 0,
+                    "lineHeight": 0,
+                    "width": null,
+                  }
+                }
+              >
+                <span
+                  className="slds-p-horizontal_x-small slds-th__action"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-truncate"
+                    title="Contact"
+                  >
+                    Contact
+                  </span>
+                </span>
+                <div
+                  className="slds-cell-fixed"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "flexWrap": "nowrap",
+                      "lineHeight": "2rem",
+                    }
+                  }
+                >
+                  <span
+                    className="slds-p-horizontal_x-small slds-th__action"
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flex": "1 1 auto",
+                        "lineHeight": 1.25,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={null}
+                  >
+                    <span
+                      className="slds-truncate"
+                      title="Contact"
+                    >
+                      Contact
+                    </span>
+                  </span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 1,200 Widgets"
+                >
+                  Acme - 1,200 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="4/10/15"
+                >
+                  4/10/15
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Value Proposition"
+                >
+                  Value Proposition
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="70%"
+                >
+                  70%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$25,000,000"
+                >
+                  $25,000,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="jrogers@acme.com"
+                >
+                  jrogers@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 200 Widgets"
+                >
+                  Acme - 200 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="1/31/15"
+                >
+                  1/31/15
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Prospecting"
+                >
+                  Prospecting
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="30%"
+                >
+                  30%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$5,000,000"
+                >
+                  $5,000,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="bob@acme.com"
+                >
+                  bob@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com - 1,000 Widgets"
+                >
+                  salesforce.com - 1,000 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com"
+                >
+                  salesforce.com
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="1/31/15 3:45PM"
+                >
+                  1/31/15 3:45PM
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Id. Decision Makers"
+                >
+                  Id. Decision Makers
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="60%"
+                >
+                  60%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$25,000"
+                >
+                  $25,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="nathan@salesforce.com"
+                >
+                  nathan@salesforce.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 800 Widgets"
+                >
+                  Acme - 800 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="6/11/18"
+                >
+                  6/11/18
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Value Proposition"
+                >
+                  Value Proposition
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="85%"
+                >
+                  85%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$970,000"
+                >
+                  $970,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="jrogers@acme.com"
+                >
+                  jrogers@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 744 Widgets"
+                >
+                  Acme - 744 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="4/15/17"
+                >
+                  4/15/17
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Prospecting"
+                >
+                  Prospecting
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="56%"
+                >
+                  56%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$3,110,000"
+                >
+                  $3,110,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="bob@acme.com"
+                >
+                  bob@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com - 847 Widgets"
+                >
+                  salesforce.com - 847 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com"
+                >
+                  salesforce.com
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="5/23/18 1:02PM"
+                >
+                  5/23/18 1:02PM
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Id. Decision Makers"
+                >
+                  Id. Decision Makers
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="62%"
+                >
+                  62%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$18,000"
+                >
+                  $18,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="nathan@salesforce.com"
+                >
+                  nathan@salesforce.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 1,621 Widgets"
+                >
+                  Acme - 1,621 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="5/16/17"
+                >
+                  5/16/17
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Value Proposition"
+                >
+                  Value Proposition
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="70%"
+                >
+                  70%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$23,600,000"
+                >
+                  $23,600,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="jrogers@acme.com"
+                >
+                  jrogers@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 430 Widgets"
+                >
+                  Acme - 430 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="6/12/18"
+                >
+                  6/12/18
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Prospecting"
+                >
+                  Prospecting
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="42%"
+                >
+                  42%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$4,222,222"
+                >
+                  $4,222,222
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="bob@acme.com"
+                >
+                  bob@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com - 677 Widgets"
+                >
+                  salesforce.com - 677 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com"
+                >
+                  salesforce.com
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="7/21/17 10:11AM"
+                >
+                  7/21/17 10:11AM
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Id. Decision Makers"
+                >
+                  Id. Decision Makers
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="42%"
+                >
+                  42%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$24,200"
+                >
+                  $24,200
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="nathan@salesforce.com"
+                >
+                  nathan@salesforce.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 1,444 Widgets"
+                >
+                  Acme - 1,444 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="3/18/18"
+                >
+                  3/18/18
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Value Proposition"
+                >
+                  Value Proposition
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="66%"
+                >
+                  66%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$22,000,000"
+                >
+                  $22,000,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="jrogers@acme.com"
+                >
+                  jrogers@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme - 320 Widgets"
+                >
+                  Acme - 320 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Acme"
+                >
+                  Acme
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="1/31/18"
+                >
+                  1/31/18
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Prospecting"
+                >
+                  Prospecting
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="36%"
+                >
+                  36%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$4,322,000"
+                >
+                  $4,322,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="bob@acme.com"
+                >
+                  bob@acme.com
+                </div>
+              </td>
+            </tr>
+            <tr
+              className=""
+            >
+              <td
+                className=""
+                data-label="Opportunity Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com - 4,000 Widgets"
+                >
+                  salesforce.com - 4,000 Widgets
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Account Name"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="salesforce.com"
+                >
+                  salesforce.com
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Close Date"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="2/21/17 8:33PM"
+                >
+                  2/21/17 8:33PM
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Stage"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="Id. Decision Makers"
+                >
+                  Id. Decision Makers
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Confidence"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="72%"
+                >
+                  72%
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Amount"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="$15,000"
+                >
+                  $15,000
+                </div>
+              </td>
+              <td
+                className=""
+                data-label="Contact"
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                role="gridcell"
+                style={null}
+              >
+                <div
+                  className="slds-truncate"
+                  title="nathan@salesforce.com"
+                >
+                  nathan@salesforce.com
                 </div>
               </td>
             </tr>
