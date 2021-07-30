@@ -17,7 +17,6 @@ const CustomDataTableCell = ({ children, ...props }) => (
 		</DataTableInteractiveLink>
 	</DataTableCell>
 );
-CustomDataTableCell.displayName = CustomDataTableCell.displayName;
 
 const columns = [
 	<DataTableColumn
