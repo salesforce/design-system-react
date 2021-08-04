@@ -903,6 +903,14 @@ const documentationSiteLiveExamples = {
 			heading: 'Default',
 			path: require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/default.jsx'),
 		},
+		{
+			heading: 'Items with Icons',
+			path: require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/icons.jsx'),
+		},
+		{
+			heading: 'Items with Notifications',
+			path: require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/notifications.jsx'),
+		},
 	],
 	'visual-picker': [
 		{

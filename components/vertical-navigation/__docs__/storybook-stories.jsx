@@ -6,6 +6,8 @@ import IconSettings from '../../icon-settings';
 import { VERTICAL_NAVIGATION } from '../../../utilities/constants';
 
 import Default from '../__examples__/default';
+import IconExample from '../__examples__/icons';
+import NotificationExample from '../__examples__/notifications';
 import SnaphotDefault from '../__examples__/snapshot-default';
 
 storiesOf(VERTICAL_NAVIGATION, module)
@@ -15,4 +17,6 @@ storiesOf(VERTICAL_NAVIGATION, module)
 		</div>
 	))
 	.add('Default', () => <Default action={action} />)
+	.add('With icons', () => <IconExample action={action} />)
+	.add('With notifications', () => <NotificationExample action={action} />)
 	.add('DOM Snapshot', () => <SnaphotDefault />);
