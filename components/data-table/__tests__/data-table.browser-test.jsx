@@ -747,6 +747,97 @@ describe('DataTable: ', function describeFunction() {
 		});
 	});
 
+	describe('Column resizing', function describeFunction2() {
+		beforeEach(
+			mountComponent(
+				<DataTable
+					{...defaultProps}
+					fixedLayout
+					keyboardNavigation
+					resizable
+					resizerOptions={{
+						resizeMode: 'overflow',
+						onResize: () => {},
+					}}
+				>
+					{[
+						...columns.map((columnProps) => (
+							<DataTableColumn {...columnProps} key={columnProps.property} />
+						)),
+						...[
+							<DataTableRowActions
+								key="actions"
+								options={[
+									{
+										id: 0,
+										label: 'Add to Group',
+										value: '1',
+									},
+									{
+										id: 1,
+										label: 'Publish',
+										value: '2',
+									},
+								]}
+								onAction={() => {}}
+								dropdown={<Dropdown length="5" />}
+							/>,
+						],
+					]}
+				</DataTable>
+			)
+		);
+
+		afterEach(unmountComponent);
+
+		it('Resize functionality should work with left key', function () {
+			const initial = this.dom.querySelectorAll('th')[0].style.width;
+
+			let cell = this.wrapper.find('td').first();
+			cell.simulate('focus');
+			expect(this.wrapper.find('td').first().prop('tabIndex')).to.equal('0');
+
+			cell.simulate('keyDown', keyObjects.UP);
+			cell = this.wrapper.find('th').at(0);
+			expect(this.wrapper.find('th').first().prop('tabIndex')).to.equal('0');
+
+			cell.simulate('keyDown', keyObjects.ENTER);
+			cell.simulate('keyDown', keyObjects.LEFT);
+			cell.simulate('keyDown', keyObjects.LEFT);
+			cell.simulate('keyDown', keyObjects.LEFT);
+			cell.simulate('keyDown', keyObjects.ESCAPE);
+
+			expect(`${parseInt(initial, 10) - 30}px`).to.equal(
+				this.dom.querySelectorAll('th')[0].style.width
+			);
+		});
+
+		it('Resize functionality should work with right key', function () {
+			const initial = this.dom.querySelectorAll('th')[0].style.width;
+
+			let cell = this.wrapper.find('td').first();
+			cell.simulate('focus');
+			expect(this.wrapper.find('td').first().prop('tabIndex')).to.equal('0');
+
+			cell.simulate('keyDown', keyObjects.UP);
+			cell = this.wrapper.find('th').at(0);
+			expect(this.wrapper.find('th').first().prop('tabIndex')).to.equal('0');
+
+			cell.simulate('keyDown', keyObjects.ENTER);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.ESCAPE);
+
+			expect(`${parseInt(initial, 10) + 60}px`).to.equal(
+				this.dom.querySelectorAll('th')[0].style.width
+			);
+		});
+	});
+
 	describe('w/ Infinite Scrolling', function describeFunction2() {
 		afterEach(removeTable);
 

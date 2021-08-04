@@ -5266,6 +5266,27 @@
                 "returns": null
             },
             {
+                "name": "getFixedHeader",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getKeyboardNavigation",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getFixedLayout",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getFirstInteractiveElement",
                 "docblock": null,
                 "modifiers": [],
@@ -5353,6 +5374,13 @@
                         "type": null
                     }
                 ],
+                "returns": null
+            },
+            {
+                "name": "isResizable",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
                 "returns": null
             },
             {
@@ -5837,18 +5865,26 @@
                 "description": "A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`."
             },
             "resizable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "A variant which allows column dividers to be grabbed with the mouse. This feature needs\n`@salesforce/design-system-react/assets/styles/table.css` to be loaded.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
-                },
-                "required": false
+                }
             },
             "resizerOptions": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Object with properties to be used in case of resizable: true\n\nresizeMode: It is used to set how the resize method works. Those are the possible values: 'fit', 'flex' and 'overflow'\ndisable: It is used for disable the resize functionality, default is false\ndisabledColumns: Array of indexes for the columns to be disabled\nwidths: An array of column widths to set the initial width.\nonResize: Callback function to be fired when the user has ended dragging a column",
                 "defaultValue": {
                     "value": "{\n\tresizeMode: 'flex',\n\tdraggingClass: 'slds-table-column-resizer',\n}",
                     "computed": false
-                },
-                "required": false
+                }
             }
         },
         "route": "data-tables",
