@@ -19,6 +19,7 @@ import assign from 'lodash.assign';
 import reject from 'lodash.reject';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import ColumnResizer from 'column-resizer';
 import checkProps from './check-props';
 import componentDoc from './component.json';
 
@@ -66,6 +67,11 @@ const defaultProps = {
 	selection: [],
 	hasMore: false,
 	loadMoreOffset: 20,
+	resizable: false,
+	resizerOptions: {
+		resizeMode: 'flex',
+		draggingClass: 'slds-table-column-resizer',
+	},
 };
 
 /**
@@ -285,6 +291,21 @@ class DataTable extends React.Component {
 		 * A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`.
 		 */
 		unbufferedCell: PropTypes.bool,
+		/**
+		 * A variant which allows column dividers to be grabbed with the mouse. This feature needs
+		 * `@salesforce/design-system-react/assets/styles/table.css` to be loaded.
+		 */
+		resizable: PropTypes.bool,
+		/**
+		 * Object with properties to be used in case of resizable: true
+		 *
+		 * resizeMode: It is used to set how the resize method works. Those are the possible values: 'fit', 'flex' and 'overflow'
+		 * disable: It is used for disable the resize functionality, default is false
+		 * disabledColumns: Array of indexes for the columns to be disabled
+		 * widths: An array of column widths to set the initial width.
+		 * onResize: Callback function to be fired when the user has ended dragging a column
+		 */
+		resizerOptions: PropTypes.object,
 	};
 
 	static defaultProps = defaultProps;
@@ -297,7 +318,9 @@ class DataTable extends React.Component {
 			column: [],
 			select: [],
 		};
+		this.gripRefs = [];
 		this.scrollerRef = null;
+		this.fixedHeaderContainer = {};
 		this.state = {
 			// Currently selected cell
 			activeCell: {
@@ -328,14 +351,17 @@ class DataTable extends React.Component {
 	}
 
 	componentDidMount() {
-		if (this.props.fixedHeader) {
+		if (this.getFixedHeader()) {
 			this.toggleFixedHeaderListeners(true);
 			this.resizeFixedHeaders();
+		}
+		if (this.isResizable()) {
+			this.enableResize();
 		}
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (this.props.fixedHeader) {
+		if (this.getFixedHeader()) {
 			this.resizeFixedHeaders();
 			// If the first page of results isn't enough to allow the user to scroll it causes
 			// the user to get into a state where they cannot load the second page.
@@ -356,14 +382,53 @@ class DataTable extends React.Component {
 			// eslint-disable-next-line react/no-did-update-set-state
 			this.setState({ tableHasFocus: true });
 		}
+		if (this.isResizable()) {
+			this.enableResize();
+		} else if (this.resizer) {
+			this.disableResize();
+		}
 	}
 
 	componentWillUnmount() {
 		this.toggleFixedHeaderListeners(false);
+
+		if (this.isResizable()) {
+			this.disableResize();
+		}
+	}
+
+	onResize() {
+		const table = this.tableRef;
+		if (table) {
+			const columns = this.getFixedHeader()
+				? table.getElementsByClassName('slds-cell-fixed')
+				: table.getElementsByTagName('th');
+			const columnsWidths = Array.from(columns).map(({ id, style }, index) => {
+				return {
+					id,
+					index,
+					width: parseInt(style.width, 10),
+				};
+			});
+			return columnsWidths;
+		}
+		return [];
 	}
 
 	getId() {
 		return this.props.id || this.generatedId;
+	}
+
+	getFixedHeader() {
+		return this.props.fixedHeader || this.props.resizable;
+	}
+
+	getKeyboardNavigation() {
+		return this.props.keyboardNavigation || this.props.resizable;
+	}
+
+	getFixedLayout() {
+		return this.props.fixedLayout || this.props.resizable;
 	}
 
 	getFirstInteractiveElement(rowIndex, columnIndex) {
@@ -427,6 +492,23 @@ class DataTable extends React.Component {
 			}
 
 			this.props.onRowChange(e, { selection });
+		}
+	};
+
+	repositionResizers = () => {
+		const headers = [].concat(
+			this.headerRefs.select,
+			this.headerRefs.column,
+			this.headerRefs.action
+		);
+
+		if (this.gripRefs) {
+			this.gripRefs.forEach((grip, index) => {
+				const header = headers[index].getBoundingClientRect();
+				const newPosition = header.left + header.width - 30;
+				// eslint-disable-next-line no-param-reassign
+				grip.style.left = `${newPosition}px`;
+			});
 		}
 	};
 
@@ -500,9 +582,73 @@ class DataTable extends React.Component {
 			if (canUseEventListeners && this.scrollerRef) {
 				this.scrollerRef[action]('scroll', this.resizeFixedHeaders);
 				this.scrollerRef[action]('scroll', this.loadMoreIfNeeded);
+				this.scrollerRef[action]('scroll', this.repositionResizers);
 			}
 		}
 	};
+
+	isResizable() {
+		return this.props.fixedLayout && this.props.resizable;
+	}
+
+	resizeGrips() {
+		const table = this.fixedHeaderContainer;
+
+		if (table) {
+			const grips = table.getElementsByClassName('grip-handle');
+
+			if (grips) {
+				this.gripRefs = grips;
+				this.gripRefs.forEach((grip) => {
+					// eslint-disable-next-line no-param-reassign
+					grip.style.height = `${parseInt(grip.style.height, 10) + 33}px`;
+				});
+			}
+		}
+	}
+
+	enableResize() {
+		if (canUseDOM) {
+			const remoteTable = this.tableRef;
+			const fixedHeader = this.getFixedHeader();
+
+			if (!this.resizer) {
+				const options = {
+					...defaultProps.resizerOptions,
+					...this.props.resizerOptions,
+				};
+
+				const externalFunction = this.props.resizerOptions.onResize;
+				options.onResize = (e) => {
+					if (fixedHeader) {
+						this.resizeFixedHeaders(e);
+						this.repositionResizers();
+					}
+
+					const response = this.onResize();
+
+					if (externalFunction) externalFunction(response);
+					this.resizeGrips();
+				};
+
+				if (remoteTable) {
+					this.resizer = new ColumnResizer(remoteTable, options);
+					remoteTable.classList.remove('grip-padding');
+
+					if (fixedHeader) this.resizeFixedHeaders();
+
+					this.resizeGrips();
+					this.repositionResizers();
+				}
+				this.setState({}, () => this.state);
+			}
+		}
+	}
+
+	disableResize() {
+		if (this.resizer) this.resizer.reset({ disable: true });
+		this.gripRefs = [];
+	}
 
 	changeActiveCell(rowIndex, columnIndex) {
 		this.setState({
@@ -524,81 +670,145 @@ class DataTable extends React.Component {
 				[KEYS.RIGHT]: { callback: (evt) => this.handleKeyDownRight(evt) },
 				[KEYS.ENTER]: { callback: (evt) => this.handleKeyDownEnter(evt) },
 				[KEYS.ESCAPE]: { callback: (evt) => this.handleKeyDownEscape(evt) },
+				[KEYS.TAB]:
+					this.state.mode === Mode.ACTIONABLE
+						? { callback: (evt) => this.handleKeyTabPress(evt) }
+						: null,
 			},
 		});
 	}
 
 	handleKeyDownUp() {
-		const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
-		const activeElement = this.getFirstInteractiveElement(
-			newRowIndex,
-			this.state.activeCell.columnIndex
-		);
-		if (newRowIndex !== this.state.activeCell.rowIndex) {
-			this.setState((prevState) => ({
-				activeCell: {
-					rowIndex: newRowIndex,
-					columnIndex: prevState.activeCell.columnIndex,
-				},
-				activeElement,
-			}));
+		if (
+			this.state.mode === Mode.NAVIGATION ||
+			this.state.activeCell.rowIndex > 0 ||
+			!this.isResizable()
+		) {
+			const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
+			const activeElement = this.getFirstInteractiveElement(
+				newRowIndex,
+				this.state.activeCell.columnIndex
+			);
+			if (newRowIndex !== this.state.activeCell.rowIndex) {
+				this.setState((prevState) => ({
+					activeCell: {
+						rowIndex: newRowIndex,
+						columnIndex: prevState.activeCell.columnIndex,
+					},
+					activeElement,
+				}));
+
+				if (
+					this.state.mode === Mode.ACTIONABLE &&
+					newRowIndex === 0 &&
+					!activeElement
+				) {
+					this.makeGripVisible(this.state.activeCell.columnIndex);
+				}
+			}
 		}
 	}
 
 	handleKeyDownDown() {
-		const newRowIndex = Math.min(
-			this.state.activeCell.rowIndex + 1,
-			this.props.items.length
-		);
-		const activeElement = this.getFirstInteractiveElement(
-			newRowIndex,
-			this.state.activeCell.columnIndex
-		);
-		if (newRowIndex !== this.state.activeCell.rowIndex) {
-			this.setState((prevState) => ({
-				activeCell: {
-					rowIndex: newRowIndex,
-					columnIndex: prevState.activeCell.columnIndex,
-				},
-				activeElement,
-			}));
+		if (
+			this.state.mode === Mode.NAVIGATION ||
+			this.state.activeCell.rowIndex > 0 ||
+			!this.isResizable()
+		) {
+			const newRowIndex = Math.min(
+				this.state.activeCell.rowIndex + 1,
+				this.props.items.length
+			);
+			const activeElement = this.getFirstInteractiveElement(
+				newRowIndex,
+				this.state.activeCell.columnIndex
+			);
+			if (newRowIndex !== this.state.activeCell.rowIndex) {
+				this.setState((prevState) => ({
+					activeCell: {
+						rowIndex: newRowIndex,
+						columnIndex: prevState.activeCell.columnIndex,
+					},
+					activeElement,
+				}));
+			}
 		}
 	}
 
+	displaceByArrowKey(factor) {
+		if (this.state.mode === Mode.ACTIONABLE) {
+			const { rowIndex, columnIndex } = this.state.activeCell;
+
+			if (rowIndex === 0) {
+				const table = this.tableRef;
+				const headers = table.getElementsByTagName('th');
+				headers[columnIndex].style.width = `${
+					parseInt(headers[columnIndex].style.width, 10) + factor
+				}px`;
+				this.resizeFixedHeaders();
+				this.repositionResizers();
+				this.resizeGrips();
+			}
+		}
+	}
+
+	makeGripVisible(newIndex) {
+		this.gripRefs.forEach((grip, index) => {
+			if (index === newIndex) grip.classList.add('grip-handle-active');
+			else grip.classList.remove('grip-handle-active');
+		});
+	}
+
 	handleKeyDownLeft() {
-		const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
-		const activeElement = this.getFirstInteractiveElement(
-			this.state.activeCell.rowIndex,
-			newColumnIndex
-		);
-		if (newColumnIndex !== this.state.activeCell.columnIndex) {
-			this.setState((prevState) => ({
-				activeCell: {
-					rowIndex: prevState.activeCell.rowIndex,
-					columnIndex: newColumnIndex,
-				},
-				activeElement,
-			}));
+		if (
+			this.state.mode === Mode.NAVIGATION ||
+			this.state.activeCell.rowIndex > 0 ||
+			!this.isResizable()
+		) {
+			const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
+			const activeElement = this.getFirstInteractiveElement(
+				this.state.activeCell.rowIndex,
+				newColumnIndex
+			);
+			if (newColumnIndex !== this.state.activeCell.columnIndex) {
+				this.setState((prevState) => ({
+					activeCell: {
+						rowIndex: prevState.activeCell.rowIndex,
+						columnIndex: newColumnIndex,
+					},
+					activeElement,
+				}));
+			}
+		} else {
+			this.displaceByArrowKey(-10);
 		}
 	}
 
 	handleKeyDownRight() {
-		const newColumnIndex = Math.min(
-			this.state.activeCell.columnIndex + 1,
-			this.props.children.length - (this.props.selectRows ? 0 : 1)
-		);
-		const activeElement = this.getFirstInteractiveElement(
-			this.state.activeCell.rowIndex,
-			newColumnIndex
-		);
-		if (newColumnIndex !== this.state.activeCell.columnIndex) {
-			this.setState((prevState) => ({
-				activeCell: {
-					rowIndex: prevState.activeCell.rowIndex,
-					columnIndex: newColumnIndex,
-				},
-				activeElement,
-			}));
+		if (
+			this.state.mode === Mode.NAVIGATION ||
+			this.state.activeCell.rowIndex > 0 ||
+			!this.isResizable()
+		) {
+			const newColumnIndex = Math.min(
+				this.state.activeCell.columnIndex + 1,
+				this.props.children.length - (this.props.selectRows ? 0 : 1)
+			);
+			const activeElement = this.getFirstInteractiveElement(
+				this.state.activeCell.rowIndex,
+				newColumnIndex
+			);
+			if (newColumnIndex !== this.state.activeCell.columnIndex) {
+				this.setState((prevState) => ({
+					activeCell: {
+						rowIndex: prevState.activeCell.rowIndex,
+						columnIndex: newColumnIndex,
+					},
+					activeElement,
+				}));
+			}
+		} else {
+			this.displaceByArrowKey(10);
 		}
 	}
 
@@ -616,6 +826,10 @@ class DataTable extends React.Component {
 				mode: Mode.ACTIONABLE,
 				activeElement,
 			});
+
+			if (rowIndex === 0 && !activeElement) {
+				this.makeGripVisible(columnIndex);
+			}
 		}
 	}
 
@@ -625,6 +839,115 @@ class DataTable extends React.Component {
 				mode: Mode.NAVIGATION,
 				activeElement: null,
 			});
+			this.makeGripVisible(null);
+		}
+	}
+
+	moveNext(event, rowIndex, columnIndex) {
+		const headers = [].concat(
+			this.headerRefs.select,
+			this.headerRefs.column,
+			this.headerRefs.action
+		);
+		let newRowIndex = 0;
+		let newColumnIndex = 0;
+
+		if (event.shiftKey) {
+			if (columnIndex - 1 >= 0) {
+				newColumnIndex = columnIndex - 1;
+				newRowIndex = rowIndex;
+			} else {
+				if (rowIndex > 0) newRowIndex = rowIndex - 1;
+				else newRowIndex = this.props.items.length;
+
+				newColumnIndex = headers.length - 1;
+			}
+		} else if (columnIndex + 1 < headers.length) {
+			newColumnIndex = columnIndex + 1;
+			newRowIndex = rowIndex;
+		} else {
+			if (rowIndex < this.props.items.length) newRowIndex = rowIndex + 1;
+			else newRowIndex = 0;
+
+			newColumnIndex = 0;
+		}
+
+		this.changeActiveCell(newRowIndex, newColumnIndex);
+	}
+
+	handleNextActionable(event) {
+		const { rowIndex, columnIndex } = this.state.activeCell;
+		const currentActiveElement = this.state.activeElement;
+		const rowActiveElements =
+			this.interactiveElements[rowIndex] &&
+			this.interactiveElements[rowIndex][columnIndex]
+				? this.interactiveElements[rowIndex][columnIndex]
+				: null;
+
+		if (rowActiveElements) {
+			if (currentActiveElement) {
+				const index = rowActiveElements.indexOf(currentActiveElement);
+
+				if (event.shiftKey) {
+					return index > 0 ? rowActiveElements[index - 1] : null;
+				}
+				return index < rowActiveElements.length - 1
+					? rowActiveElements[index + 1]
+					: null;
+			}
+			return !event.shiftKey
+				? rowActiveElements[0]
+				: rowActiveElements[rowActiveElements.length - 1];
+		}
+		return null;
+	}
+
+	handleKeyTabPress(event) {
+		const { rowIndex, columnIndex } = this.state.activeCell;
+
+		if (this.state.mode === Mode.ACTIONABLE) {
+			const nextActionable = this.handleNextActionable(event);
+
+			if (nextActionable) {
+				this.setState({ activeElement: nextActionable });
+				if (this.isResizable()) this.makeGripVisible(null);
+			} else if (rowIndex === 0) {
+				const headers = [].concat(
+					this.headerRefs.select,
+					this.headerRefs.column,
+					this.headerRefs.action
+				);
+				let newIndex = 0;
+
+				if (!event.shiftKey)
+					newIndex = columnIndex + 1 < headers.length ? columnIndex + 1 : 0;
+				else
+					newIndex =
+						columnIndex - 1 >= 0 ? columnIndex - 1 : headers.length - 1;
+				this.setState({
+					mode: Mode.ACTIONABLE,
+					activeElement: null,
+				});
+
+				// eslint-disable-next-line no-param-reassign
+				headers.forEach((header, index) => {
+					if (index === newIndex) {
+						// eslint-disable-next-line no-param-reassign
+						header.tabIndex = 0;
+						// eslint-disable-next-line no-param-reassign
+						header.focus();
+						// eslint-disable-next-line no-param-reassign
+					} else header.tabIndex = -1;
+				});
+
+				if (this.isResizable()) this.makeGripVisible(newIndex);
+			} else {
+				this.moveNext(event, rowIndex, columnIndex);
+				this.setState({
+					mode: Mode.ACTIONABLE,
+					activeElement: null,
+				});
+			}
 		}
 	}
 
@@ -634,10 +957,13 @@ class DataTable extends React.Component {
 		}
 		const existingElements =
 			this.interactiveElements[rowIndex][columnIndex] || [];
-		this.interactiveElements[rowIndex][columnIndex] = [
-			...existingElements,
-			elementId,
-		];
+
+		if (!existingElements.includes(elementId)) {
+			this.interactiveElements[rowIndex][columnIndex] = [
+				...existingElements,
+				elementId,
+			];
+		}
 	}
 
 	// ### Render
@@ -688,7 +1014,7 @@ class DataTable extends React.Component {
 			) {
 				const { dropdown } = child.props;
 				const dropdownPropOverrides = {};
-				if (this.props.fixedHeader) {
+				if (this.getFixedHeader()) {
 					dropdownPropOverrides.menuPosition = 'overflowBoundaryElement';
 				}
 				RowActions = React.cloneElement(child, {
@@ -744,7 +1070,7 @@ class DataTable extends React.Component {
 			registerInteractiveElement: this.registerInteractiveElement,
 			allowKeyboardNavigation: this.state.allowKeyboardNavigation,
 			setAllowKeyboardNavigation: (allowKeyboardNavigation) => {
-				if (this.props.keyboardNavigation) {
+				if (this.getKeyboardNavigation()) {
 					this.setState({ allowKeyboardNavigation });
 				}
 			},
@@ -758,12 +1084,12 @@ class DataTable extends React.Component {
 						className={classNames(
 							'slds-table',
 							{
-								'slds-table_fixed-layout': this.props.fixedLayout,
-								'slds-table_header-fixed': this.props.fixedHeader,
-								'slds-table_resizable-cols': this.props.fixedLayout,
+								'slds-table_fixed-layout': this.getFixedLayout(),
+								'slds-table_header-fixed': this.getFixedHeader(),
+								'slds-table_resizable-cols': this.getFixedLayout(),
 								'slds-table_bordered': !this.props.unborderedRow,
 								'slds-table_cell-buffer':
-									!this.props.fixedLayout && !this.props.unbufferedCell,
+									!this.getFixedLayout() && !this.props.unbufferedCell,
 								'slds-max-medium-table_stacked': this.props.stacked,
 								'slds-max-medium-table_stacked-horizontal': this.props
 									.stackedHorizontal,
@@ -780,7 +1106,7 @@ class DataTable extends React.Component {
 								this.tableRef = node;
 							}
 						}}
-						role={this.props.fixedLayout ? 'grid' : null}
+						role={this.getFixedLayout() ? 'grid' : null}
 						onBlur={(event) => {
 							if (
 								this.tableRef &&
@@ -791,6 +1117,7 @@ class DataTable extends React.Component {
 									mode: Mode.NAVIGATION,
 									activeElement: null,
 								});
+								this.makeGripVisible(null);
 							}
 						}}
 						style={this.props.style}
@@ -798,8 +1125,8 @@ class DataTable extends React.Component {
 						<DataTableHead
 							assistiveText={assistiveText}
 							allSelected={allSelected}
-							fixedHeader={this.props.fixedHeader}
-							fixedLayout={this.props.fixedLayout}
+							fixedHeader={this.getFixedHeader()}
+							fixedLayout={this.getFixedLayout()}
 							headerRefs={(ref, index) => {
 								if (index === 'action' || index === 'select') {
 									if (ref) {
@@ -844,7 +1171,7 @@ class DataTable extends React.Component {
 												canSelectRows={canSelectRows}
 												className={item.classNameRow}
 												columns={columns}
-												fixedLayout={this.props.fixedLayout}
+												fixedLayout={this.getFixedLayout()}
 												id={rowId}
 												index={index}
 												item={item}
@@ -862,7 +1189,7 @@ class DataTable extends React.Component {
 						</tbody>
 					</table>
 				</TableContext.Provider>
-				{this.props.fixedHeader && this.props.hasMore && (
+				{this.getFixedHeader() && this.props.hasMore && (
 					<div className="slds-is-relative slds-p-around_large">
 						<Spinner
 							assistiveText={{ label: this.props.assistiveText.loadingMore }}
@@ -875,7 +1202,7 @@ class DataTable extends React.Component {
 			</React.Fragment>
 		);
 
-		if (this.props.fixedHeader) {
+		if (this.getFixedHeader()) {
 			const border = `1px solid ${colorGray5}`;
 			const styles = {
 				borderTop: border,
@@ -893,6 +1220,9 @@ class DataTable extends React.Component {
 			component = (
 				<div
 					className="slds-table_header-fixed_container"
+					ref={(ref) => {
+						this.fixedHeaderContainer = ref;
+					}}
 					style={styles}
 					onScroll={(e) => {
 						const containerScrollLeft = e.target.scrollLeft;
