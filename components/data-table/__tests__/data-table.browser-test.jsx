@@ -704,6 +704,138 @@ describe('DataTable: ', function describeFunction() {
 				4
 			);
 		});
+
+		it('Renders a fixedHeader table with column resizing functionality as expected', function () {
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					fixedHeader
+					fixedLayout
+					resizable
+					id="DataTable-resizable-cols-Test"
+				>
+					<DataTableColumn
+						isSorted
+						label="Name"
+						primaryColumn
+						property="name"
+						sortable
+						sortDirection="asc"
+					/>
+					<DataTableColumn label="Count" property="count" />
+					<DataTableRowActions
+						options={[
+							{
+								id: 0,
+								label: 'Add to Group',
+								value: '1',
+							},
+							{
+								id: 1,
+								label: 'Publish',
+								value: '2',
+							},
+						]}
+						onAction={() => {}}
+						dropdown={<Dropdown length="5" />}
+					/>
+				</DataTable>
+			).call(this);
+
+			expect(this.dom.querySelectorAll('.grip-resizable').length).to.eql(5);
+			expect(this.dom.querySelectorAll('.grip-container').length).to.eql(1);
+		});
+	});
+
+	describe('Column resizing', function describeFunction2() {
+		beforeEach(
+			mountComponent(
+				<DataTable
+					{...defaultProps}
+					fixedLayout
+					keyboardNavigation
+					resizable
+					resizerOptions={{
+						resizeMode: 'overflow',
+						onResize: () => {},
+					}}
+				>
+					{[
+						...columns.map((columnProps) => (
+							<DataTableColumn {...columnProps} key={columnProps.property} />
+						)),
+						...[
+							<DataTableRowActions
+								key="actions"
+								options={[
+									{
+										id: 0,
+										label: 'Add to Group',
+										value: '1',
+									},
+									{
+										id: 1,
+										label: 'Publish',
+										value: '2',
+									},
+								]}
+								onAction={() => {}}
+								dropdown={<Dropdown length="5" />}
+							/>,
+						],
+					]}
+				</DataTable>
+			)
+		);
+
+		afterEach(unmountComponent);
+
+		it('Resize functionality should work with left key', function () {
+			const initial = this.dom.querySelectorAll('th')[0].style.width;
+
+			let cell = this.wrapper.find('td').first();
+			cell.simulate('focus');
+			expect(this.wrapper.find('td').first().prop('tabIndex')).to.equal('0');
+
+			cell.simulate('keyDown', keyObjects.UP);
+			cell = this.wrapper.find('th').at(0);
+			expect(this.wrapper.find('th').first().prop('tabIndex')).to.equal('0');
+
+			cell.simulate('keyDown', keyObjects.ENTER);
+			cell.simulate('keyDown', keyObjects.LEFT);
+			cell.simulate('keyDown', keyObjects.LEFT);
+			cell.simulate('keyDown', keyObjects.LEFT);
+			cell.simulate('keyDown', keyObjects.ESCAPE);
+
+			expect(`${parseInt(initial, 10) - 30}px`).to.equal(
+				this.dom.querySelectorAll('th')[0].style.width
+			);
+		});
+
+		it('Resize functionality should work with right key', function () {
+			const initial = this.dom.querySelectorAll('th')[0].style.width;
+
+			let cell = this.wrapper.find('td').first();
+			cell.simulate('focus');
+			expect(this.wrapper.find('td').first().prop('tabIndex')).to.equal('0');
+
+			cell.simulate('keyDown', keyObjects.UP);
+			cell = this.wrapper.find('th').at(0);
+			expect(this.wrapper.find('th').first().prop('tabIndex')).to.equal('0');
+
+			cell.simulate('keyDown', keyObjects.ENTER);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.RIGHT);
+			cell.simulate('keyDown', keyObjects.ESCAPE);
+
+			expect(`${parseInt(initial, 10) + 60}px`).to.equal(
+				this.dom.querySelectorAll('th')[0].style.width
+			);
+		});
 	});
 
 	describe('w/ Infinite Scrolling', function describeFunction2() {
