@@ -5875,7 +5875,7 @@
                     "computed": false
                 }
             },
-            "resizerOptions": {
+            "resizableOptions": {
                 "type": {
                     "name": "object"
                 },

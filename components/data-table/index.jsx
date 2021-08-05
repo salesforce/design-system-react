@@ -68,7 +68,7 @@ const defaultProps = {
 	hasMore: false,
 	loadMoreOffset: 20,
 	resizable: false,
-	resizerOptions: {
+	resizableOptions: {
 		resizeMode: 'flex',
 		draggingClass: 'slds-table-column-resizer',
 	},
@@ -300,12 +300,9 @@ class DataTable extends React.Component {
 		 * Object with properties to be used in case of resizable: true
 		 *
 		 * resizeMode: It is used to set how the resize method works. Those are the possible values: 'fit', 'flex' and 'overflow'
-		 * disable: It is used for disable the resize functionality, default is false
-		 * disabledColumns: Array of indexes for the columns to be disabled
-		 * widths: An array of column widths to set the initial width.
 		 * onResize: Callback function to be fired when the user has ended dragging a column
 		 */
-		resizerOptions: PropTypes.object,
+    resizableOptions: PropTypes.object,
 	};
 
 	static defaultProps = defaultProps;
@@ -336,6 +333,7 @@ class DataTable extends React.Component {
 			// Allows for keyboard navigation. This is useful for temporarily disabling keyboard navigation
 			// when another component requires its own focus behavior (e.g. menu dropdown).
 			allowKeyboardNavigation: props.keyboardNavigation,
+			// allowKeyboardNavigation: props.keyboardNavigation || props.resizable,
 		};
 		// Map of cells to interactive elements within that cell
 		this.interactiveElements = {};
@@ -614,11 +612,11 @@ class DataTable extends React.Component {
 
 			if (!this.resizer) {
 				const options = {
-					...defaultProps.resizerOptions,
-					...this.props.resizerOptions,
+					...defaultProps.resizableOptions,
+					...this.props.resizableOptions,
 				};
 
-				const externalFunction = this.props.resizerOptions.onResize;
+				const externalFunction = this.props.resizableOptions.onResize;
 				options.onResize = (e) => {
 					if (fixedHeader) {
 						this.resizeFixedHeaders(e);
@@ -735,7 +733,7 @@ class DataTable extends React.Component {
 		}
 	}
 
-	displaceByArrowKey(factor) {
+	displaceColumnByArrowKey(factor) {
 		if (this.state.mode === Mode.ACTIONABLE) {
 			const { rowIndex, columnIndex } = this.state.activeCell;
 
@@ -780,7 +778,7 @@ class DataTable extends React.Component {
 				}));
 			}
 		} else {
-			this.displaceByArrowKey(-10);
+			this.displaceColumnByArrowKey(-10);
 		}
 	}
 
@@ -808,7 +806,7 @@ class DataTable extends React.Component {
 				}));
 			}
 		} else {
-			this.displaceByArrowKey(10);
+			this.displaceColumnByArrowKey(10);
 		}
 	}
 

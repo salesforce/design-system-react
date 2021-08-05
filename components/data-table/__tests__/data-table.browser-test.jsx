@@ -755,7 +755,7 @@ describe('DataTable: ', function describeFunction() {
 					fixedLayout
 					keyboardNavigation
 					resizable
-					resizerOptions={{
+					resizableOptions={{
 						resizeMode: 'overflow',
 						onResize: () => {},
 					}}

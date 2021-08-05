@@ -29,6 +29,10 @@
 	],
 	"site-stories": [
 		{
+			"heading": "List view",
+			"path": "/__examples__/list-view.jsx"
+		},
+    {
 			"heading": "Basic",
 			"path": "/__examples__/basic-fluid.jsx"
 		},
@@ -63,10 +67,6 @@
 		{
 			"heading": "Advanced: Fixed Header",
 			"path": "/__examples__/fixed-header.jsx"
-		},
-		{
-			"heading": "Advanced: Joined with Page Header",
-			"path": "/__examples__/joined-with-page-header.jsx"
 		},
 		{
 			"heading": "Custom Classes",
