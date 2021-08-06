@@ -3,7 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
-import isPrototype from '../../utilities/warning/component-is-prototype';
+import isPropPrototype from '../../utilities/warning/prop-is-prototype';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 
@@ -12,7 +12,7 @@ let checkProps = function checkPropsFunction() {};
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
-		isPrototype(COMPONENT, props.resizable, 'resizable');
+		isPropPrototype(COMPONENT, props.resizable, 'resizable');
 		/* eslint-disable max-len */
 		// Deprecated and changed to another property
 		deprecatedProperty(

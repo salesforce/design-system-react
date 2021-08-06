@@ -276,6 +276,10 @@ const documentationSiteLiveExamples = {
 	],
 	'data-table': [
 		{
+			heading: 'List view',
+			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/list-view.jsx'),
+		},
+		{
 			heading: 'Basic',
 			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid.jsx'),
 		},
@@ -310,10 +314,6 @@ const documentationSiteLiveExamples = {
 		{
 			heading: 'Advanced: Fixed Header',
 			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/fixed-header.jsx'),
-		},
-		{
-			heading: 'Advanced: Joined with Page Header',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/joined-with-page-header.jsx'),
 		},
 		{
 			heading: 'Custom Classes',

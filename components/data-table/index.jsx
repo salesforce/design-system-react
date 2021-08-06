@@ -293,7 +293,7 @@ class DataTable extends React.Component {
 		unbufferedCell: PropTypes.bool,
 		/**
 		 * A variant which allows column dividers to be grabbed with the mouse. This feature needs
-		 * `@salesforce/design-system-react/assets/styles/table.css` to be loaded.
+		 * `@salesforce/design-system-react/assets/styles/table.css` to be loaded. This prop is in prototype` state. a) It may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required.
 		 */
 		resizable: PropTypes.bool,
 		/**
@@ -302,7 +302,7 @@ class DataTable extends React.Component {
 		 * resizeMode: It is used to set how the resize method works. Those are the possible values: 'fit', 'flex' and 'overflow'
 		 * onResize: Callback function to be fired when the user has ended dragging a column
 		 */
-		resizableOptions: PropTypes.object,
+    resizableOptions: PropTypes.object,
 	};
 
 	static defaultProps = defaultProps;

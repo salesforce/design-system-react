@@ -373,8 +373,8 @@ class Example extends React.Component {
 					<DataTable
 						fixedHeader
 						fixedLayout
-						resizable
-						keyboardNavigation
+            resizable
+            keyboardNavigation
 						items={this.state.items}
 						id="DataTableExample-FixedHeaders"
 						joined
