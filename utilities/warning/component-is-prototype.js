@@ -14,19 +14,18 @@ if (process.env.NODE_ENV !== 'production') {
 	isPrototype = function isPrototypeFunction(control, prop, propName, comment) {
 		const additionalComment = comment ? ` ${comment}` : '';
 		if (!hasWarned[control]) {
-      if (prop) {
-        lowPriorityWarning(
-          false,
-          `[Design System React] ${control}'s ${prop} property is a prototype. (a) It may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required. ${additionalComment}`
-        );        
-      }
-    else {
-      /* eslint-disable max-len */
-			lowPriorityWarning(
-				false,
-				`[Design System React] ${control} is a prototype. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS.${additionalComment}`
-			);
-    }
+			if (prop) {
+				lowPriorityWarning(
+					false,
+					`[Design System React] ${control}'s ${prop} property is a prototype. (a) It may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required. ${additionalComment}`
+				);
+			} else {
+				/* eslint-disable max-len */
+				lowPriorityWarning(
+					false,
+					`[Design System React] ${control} is a prototype. (a) Props may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required, since it is being added to SLDS.${additionalComment}`
+				);
+			}
 			/* eslint-enable max-len */
 			hasWarned[control] = true;
 		}

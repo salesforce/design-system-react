@@ -12,12 +12,8 @@ let checkProps = function checkPropsFunction() {};
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
-		isPrototype(
-			COMPONENT,
-			props.resizable,
-			'resizable',
-		);
-    /* eslint-disable max-len */
+		isPrototype(COMPONENT, props.resizable, 'resizable');
+		/* eslint-disable max-len */
 		// Deprecated and changed to another property
 		deprecatedProperty(
 			COMPONENT,

@@ -192,8 +192,8 @@ class Example extends React.Component {
 								items={this.state.items}
 								id="DataTableExample-4-resizable-cols"
 								resizable
-                keyboardNavigation
-                fixedLayout
+								keyboardNavigation
+								fixedLayout
 								resizableOptions={{
 									resizeMode: 'overflow',
 									onResize: (columnsResized) => {
@@ -217,7 +217,7 @@ class Example extends React.Component {
 								id="DataTableExample-2-resizable-cols"
 								fixedLayout
 								resizable
-                keyboardNavigation
+								keyboardNavigation
 								resizableOptions={{
 									resizeMode: 'overflow',
 									onResize: (columnsResized) => {
