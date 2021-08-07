@@ -302,7 +302,7 @@ class DataTable extends React.Component {
 		 * resizeMode: It is used to set how the resize method works. Those are the possible values: 'fit', 'flex' and 'overflow'
 		 * onResize: Callback function to be fired when the user has ended dragging a column
 		 */
-    resizableOptions: PropTypes.object,
+		resizableOptions: PropTypes.object,
 	};
 
 	static defaultProps = defaultProps;
