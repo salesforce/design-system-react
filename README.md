@@ -2,8 +2,8 @@
 
 ### Accessible, localization-friendly, presentational React components
 
-[![Build Status](https://travis-ci.com/salesforce/design-system-react.svg?branch=master)](https://travis-ci.com/salesforce/design-system-react) [![DeepScan grade](https://deepscan.io/api/teams/5738/projects/7558/branches/78938/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5738&pid=7558&bid=78938)
-[![Known Vulnerabilities](https://snyk.io/test/github/salesforce/design-system-react/badge.svg?targetFile=package.json)](https://snyk.io/test/github/salesforce/design-system-react?targetFile=package.json) [![Join the chat at https://gitter.im/salesforce/design-system-react](https://badges.gitter.im/salesforce/design-system-react.svg)](https://gitter.im/salesforce/design-system-react?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Monthly NPM downloads](https://img.shields.io/npm/dm/@salesforce/design-system-react.svg)](https://www.npmjs.com/package/@salesforce/design-system-react)
+[![Build Status](https://circleci.com/gh/salesforce/design-system-react.svg?style=svg)](https://circleci.com/gh/salesforce/design-system-react) [![DeepScan grade](https://deepscan.io/api/teams/5738/projects/7558/branches/78938/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5738&pid=7558&bid=78938)
+[![Known Vulnerabilities](https://snyk.io/test/github/salesforce/design-system-react/badge.svg?targetFile=package.json)](https://snyk.io/test/github/salesforce/design-system-react?targetFile=package.json) [![Monthly NPM downloads](https://img.shields.io/npm/dm/@salesforce/design-system-react.svg)](https://www.npmjs.com/package/@salesforce/design-system-react)
 
 ## Install
 

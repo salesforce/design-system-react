@@ -56,7 +56,7 @@ class StepVertical extends React.Component {
 	/**
 	 * stepIcon represents the icon used for each step.
 	 */
-	stepIcon = (renderIcon) => {
+	stepIcon = (renderIcon, status, props) => {
 		const data = {
 			isSelected: this.props.isSelected,
 			isError: this.props.isError,
@@ -87,6 +87,15 @@ class StepVertical extends React.Component {
 				onClick={handleClick}
 			>
 				{icon}
+				<span className="slds-assistive-text">
+					{this.props.step.assistiveText || (
+						<React.Fragment>
+							{`${this.props.assistiveText.step} ${this.props.index + 1}: `}
+							{this.props.step.label}
+							{status ? ` - ${status}` : ''}
+						</React.Fragment>
+					)}
+				</span>
 			</button>
 		) : (
 			<span
@@ -99,6 +108,15 @@ class StepVertical extends React.Component {
 				})}
 			>
 				{icon}
+				<span className="slds-assistive-text">
+					{this.props.step.assistiveText || (
+						<React.Fragment>
+							{`${props.assistiveText.step} ${props.index + 1}: `}
+							{props.step.label}
+							{status ? ` - ${status}` : ''}
+						</React.Fragment>
+					)}
+				</span>
 			</span>
 		);
 	};
@@ -143,6 +161,14 @@ class StepVertical extends React.Component {
 
 	render() {
 		const renderIcon = this.props.isCompleted || this.props.isError;
+		let status = '';
+		if (this.props.isError) {
+			status = this.props.assistiveText.errorStep;
+		} else if (this.props.isCompleted) {
+			status = this.props.assistiveText.completedStep;
+		} else if (this.props.isDisabled) {
+			status = this.props.assistiveText.disabledStep;
+		}
 
 		return (
 			<li
@@ -152,7 +178,7 @@ class StepVertical extends React.Component {
 					'slds-has-error': this.props.isError,
 				})}
 			>
-				{this.stepIcon(renderIcon)}
+				{this.stepIcon(renderIcon, status, this.props)}
 				{this.renderStepContent()}
 			</li>
 		);

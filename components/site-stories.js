@@ -292,6 +292,10 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-column-bordered.jsx'),
 		},
 		{
+			heading: 'Basic: Headless',
+			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-headless.jsx'),
+		},
+		{
 			heading: 'Fixed Layout',
 			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fixed-layout.jsx'),
 		},
@@ -318,6 +322,10 @@ const documentationSiteLiveExamples = {
 		{
 			heading: 'Infinite Scrolling',
 			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/infinite-scrolling.jsx'),
+		},
+		{
+			heading: 'Resizable Columns',
+			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/resizable-columns.jsx'),
 		},
 	],
 	'date-picker': [
@@ -894,6 +902,14 @@ const documentationSiteLiveExamples = {
 		{
 			heading: 'Default',
 			path: require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/default.jsx'),
+		},
+		{
+			heading: 'Items with Icons',
+			path: require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/icons.jsx'),
+		},
+		{
+			heading: 'Items with Notifications',
+			path: require('raw-loader!@salesforce/design-system-react/components/vertical-navigation/__examples__/notifications.jsx'),
 		},
 	],
 	'visual-picker': [

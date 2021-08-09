@@ -17,7 +17,7 @@ Please complete for every pull request
 
 ### REVIEWER checklist (do not remove)
 
-* [ ] TravisCI tests pass. This includes linting, Mocha, Jest, Storyshots, and `components/component-docs.json` tests.
+* [ ] CircleCI tests pass. This includes linting, Mocha, Jest, Storyshots, and `components/component-docs.json` tests.
 * [ ] Tests have been added for new props to prevent regressions in the future. See [readme](https://github.com/salesforce/design-system-react/blob/master/tests/README.md).
 * [ ] Review the appropriate Storybook stories. Open [http://localhost:9001/](http://localhost:9001/).
 * [ ] The Accessibility panel of each Storybook story has 0 violations (aXe). Open [http://localhost:9001/](http://localhost:9001/).

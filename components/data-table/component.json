@@ -45,6 +45,10 @@
 			"path": "/__examples__/basic-fluid-column-bordered.jsx"
 		},
 		{
+			"heading": "Basic: Headless",
+			"path": "/__examples__/basic-fluid-headless.jsx"
+		},
+		{
 			"heading": "Fixed Layout",
 			"path": "/__examples__/basic-fixed-layout.jsx"
 		},
@@ -71,6 +75,10 @@
 		{
 			"heading": "Infinite Scrolling",
 			"path": "/__examples__/infinite-scrolling.jsx"
+		},
+		{
+			"heading": "Resizable Columns",
+			"path": "/__examples__/resizable-columns.jsx"
 		}
 	],
 	"url-slug": "data-tables"

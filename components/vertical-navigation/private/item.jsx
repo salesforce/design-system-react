@@ -43,7 +43,29 @@ const Item = (props) => (
 				handleClick(event, props);
 			}}
 		>
-			{props.item.label}
+			{props.item.icon ? (
+				<React.Fragment>
+					{React.cloneElement(props.item.icon, {
+						className: classNames(
+							props.item.icon.props.className,
+							`slds-m-right_${props.item.icon.props.size || 'medium'}`
+						),
+					})}
+					{props.item.label}
+				</React.Fragment>
+			) : (
+				props.item.label
+			)}
+			{props.item.notificationBadge ? (
+				React.cloneElement(props.item.notificationBadge, {
+					className: classNames(
+						props.item.notificationBadge.props.className,
+						'slds-col_bump-left'
+					),
+				})
+			) : (
+				<React.Fragment />
+			)}
 		</a>
 	</li>
 );

@@ -14,12 +14,14 @@ import BasicFluid from '../__examples__/basic-fluid';
 import BasicFluidColumnBordered from '../__examples__/basic-fluid-column-bordered';
 import BasicFluidNoRowHover from '../__examples__/basic-fluid-no-row-hover';
 import BasicFluidStriped from '../__examples__/basic-fluid-striped';
+import BasicFluidHeadless from '../__examples__/basic-fluid-headless';
 import FixedHeader from '../__examples__/fixed-header';
 import InteractiveElements from '../__examples__/interactive-elements';
 import FixedHeaderHorizontalScroller from '../__examples__/fixed-header-horizontal-scrolling';
 import JoinedWithPageHeader from '../__examples__/joined-with-page-header';
 import CustomClasses from '../__examples__/custom-classes';
 import InfiniteScrolling from '../__examples__/infinite-scrolling';
+import ResizableColumns from '../__examples__/resizable-columns';
 
 storiesOf(DATA_TABLE, module)
 	.addDecorator((getStory) => (
@@ -33,6 +35,7 @@ storiesOf(DATA_TABLE, module)
 	.add('Basic Fluid Layout - Column Bordered', () => (
 		<BasicFluidColumnBordered />
 	))
+	.add('Basic Fluid Layout - Headless', () => <BasicFluidHeadless />)
 	.add('Basic Fixed Layout', () => <BasicFixedLayout />)
 	.add('Advanced (Fixed Layout)', () => <Advanced log={action} />)
 	.add('Advanced Single Select (Fixed Layout)', () => (
@@ -49,4 +52,5 @@ storiesOf(DATA_TABLE, module)
 	))
 	.add('Joined with Page Header', () => <JoinedWithPageHeader />)
 	.add('Custom Classes', () => <CustomClasses />)
-	.add('Infinite Scrolling', () => <InfiniteScrolling />);
+	.add('Infinite Scrolling', () => <InfiniteScrolling />)
+	.add('Resizable Columns', () => <ResizableColumns />);

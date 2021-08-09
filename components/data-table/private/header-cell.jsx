@@ -138,7 +138,14 @@ class DataTableHeaderCell extends React.Component {
 
 	// ### Render
 	render() {
-		const { fixedHeader, isSorted, label, sortable, width } = this.props;
+		const {
+			fixedHeader,
+			isSorted,
+			label,
+			sortable,
+			width,
+			property,
+		} = this.props;
 
 		const labelType = typeof label;
 		// This decides which arrow to render--which is current sort order if the column is sorted OR the future sort order if the arrow is clicked in the future.
@@ -233,6 +240,7 @@ class DataTableHeaderCell extends React.Component {
 							);
 							return (
 								<th
+									id={`${this.props.id}-${property}-th`}
 									aria-label={labelType === 'string' ? label : undefined}
 									aria-sort={ariaSort}
 									className={classNames({

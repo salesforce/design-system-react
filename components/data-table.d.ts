@@ -63,9 +63,17 @@ declare module '@salesforce/design-system-react/components/data-table' {
 		 */
 		fixedLayout?: boolean;
 		/**
+		 * When fixedHeader is true, specifies whether there's more data to be loaded and displays a spinner at the bottom of the table if so.
+		 */
+		hasMore?: boolean,
+		/**
 		 * A unique ID is needed in order to support keyboard navigation and ARIA support.
 		 */
 		id?: string;
+		/**
+		 * Removes the header from the data table
+		 */
+		isHeadless?: boolean,
 		/**
 		 * The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`.
 		 *

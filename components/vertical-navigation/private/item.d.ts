@@ -8,6 +8,8 @@ declare module '@salesforce/design-system-react/components/vertical-navigation/p
 			id: string /*.isRequired*/;
 			label: string /*.isRequired*/;
 			url?: string;
+			icon?: any;
+			notificationBadge?: any;
 		}>;
 		/**
 		 * Whether item is selected or not.

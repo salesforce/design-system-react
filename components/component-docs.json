@@ -5252,7 +5252,35 @@
         "description": "DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.\n\nNOTE: for horizontal scrolling with `fixedHeader`-enabled DataTables, see the `style` property description",
         "methods": [
             {
+                "name": "onResize",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getFixedHeader",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getKeyboardNavigation",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "getFixedLayout",
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
@@ -5311,6 +5339,13 @@
                 "returns": null
             },
             {
+                "name": "repositionResizers",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
                 "name": "resizeFixedHeaders",
                 "docblock": null,
                 "modifiers": [],
@@ -5339,6 +5374,34 @@
                         "type": null
                     }
                 ],
+                "returns": null
+            },
+            {
+                "name": "isResizable",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "resizeGrips",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "enableResize",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            },
+            {
+                "name": "disableResize",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
                 "returns": null
             },
             {
@@ -5396,6 +5459,30 @@
                 "returns": null
             },
             {
+                "name": "displaceByArrowKey",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "factor",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "makeGripVisible",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "newIndex",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
                 "name": "handleKeyDownLeft",
                 "docblock": null,
                 "modifiers": [],
@@ -5421,6 +5508,50 @@
                 "docblock": null,
                 "modifiers": [],
                 "params": [],
+                "returns": null
+            },
+            {
+                "name": "moveNext",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    },
+                    {
+                        "name": "rowIndex",
+                        "type": null
+                    },
+                    {
+                        "name": "columnIndex",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleNextActionable",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
+                "returns": null
+            },
+            {
+                "name": "handleKeyTabPress",
+                "docblock": null,
+                "modifiers": [],
+                "params": [
+                    {
+                        "name": "event",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
@@ -5581,6 +5712,13 @@
                 "required": true,
                 "description": "The collection of items to render in the table. This is an array of objects with each object having keys that correspond with the  `property` prop of each `DataTableColumn`.\n\nUse the key `classNameRow` to add a custom class to the item's `<tr>` element."
             },
+            "isHeadless": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Removes the header from the data table. Tested with snapshot testing"
+            },
             "joined": {
                 "type": {
                     "name": "bool"
@@ -5725,6 +5863,28 @@
                 },
                 "required": false,
                 "description": "A variant which removes horizontal padding. CSS class will be removed if `fixedLayout==true`."
+            },
+            "resizable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "A variant which allows column dividers to be grabbed with the mouse. This feature needs\n`@salesforce/design-system-react/assets/styles/table.css` to be loaded.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "resizerOptions": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Object with properties to be used in case of resizable: true\n\nresizeMode: It is used to set how the resize method works. Those are the possible values: 'fit', 'flex' and 'overflow'\ndisable: It is used for disable the resize functionality, default is false\ndisabledColumns: Array of indexes for the columns to be disabled\nwidths: An array of column widths to set the initial width.\nonResize: Callback function to be fired when the user has ended dragging a column",
+                "defaultValue": {
+                    "value": "{\n\tresizeMode: 'flex',\n\tdraggingClass: 'slds-table-column-resizer',\n}",
+                    "computed": false
+                }
             }
         },
         "route": "data-tables",
