@@ -5875,12 +5875,12 @@
                     "computed": false
                 }
             },
-            "resizerOptions": {
+            "resizableOptions": {
                 "type": {
                     "name": "object"
                 },
                 "required": false,
-                "description": "Object with properties to be used in case of resizable: true\n\nresizeMode: It is used to set how the resize method works. Those are the possible values: 'fit', 'flex' and 'overflow'\ndisable: It is used for disable the resize functionality, default is false\ndisabledColumns: Array of indexes for the columns to be disabled\nwidths: An array of column widths to set the initial width.\nonResize: Callback function to be fired when the user has ended dragging a column",
+                "description": "Object with properties to be used in case of resizable: true\n\nresizeMode: It is used to set how the resize method works. Those are the possible values: 'fit', 'flex' and 'overflow'\nonResize: Callback function to be fired when the user has ended dragging a column",
                 "defaultValue": {
                     "value": "{\n\tresizeMode: 'flex',\n\tdraggingClass: 'slds-table-column-resizer',\n}",
                     "computed": false

@@ -17,6 +17,7 @@ const CustomDataTableCell = ({ children, ...props }) => (
 		</DataTableInteractiveLink>
 	</DataTableCell>
 );
+CustomDataTableCell.displayName = DataTableCell.displayName;
 
 const columns = [
 	<DataTableColumn
@@ -193,7 +194,7 @@ class Example extends React.Component {
 								resizable
 								keyboardNavigation
 								fixedLayout
-								resizerOptions={{
+								resizableOptions={{
 									resizeMode: 'overflow',
 									onResize: (columnsResized) => {
 										console.log(JSON.stringify(columnsResized));
@@ -216,7 +217,8 @@ class Example extends React.Component {
 								id="DataTableExample-2-resizable-cols"
 								fixedLayout
 								resizable
-								resizerOptions={{
+								keyboardNavigation
+								resizableOptions={{
 									resizeMode: 'overflow',
 									onResize: (columnsResized) => {
 										console.log(JSON.stringify(columnsResized));

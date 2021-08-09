@@ -12,17 +12,17 @@ import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header';
 import PageHeaderControl from '~/components/page-header/control';
+import DataTableInteractiveLink from '~/components/data-table/interactive-link';
 
 const CustomDataTableCell = ({ children, ...props }) => (
-	<DataTableCell title={children} {...props}>
-		<a
-			href="#"
+	<DataTableCell {...props}>
+		<DataTableInteractiveLink
 			onClick={(event) => {
 				event.preventDefault();
 			}}
 		>
 			{children}
-		</a>
+		</DataTableInteractiveLink>
 	</DataTableCell>
 );
 CustomDataTableCell.displayName = DataTableCell.displayName;
@@ -107,7 +107,7 @@ const controls = () => (
 				assistiveText={{ icon: 'Edit List' }}
 				iconCategory="utility"
 				iconName="edit"
-				iconVariant="border"
+				iconVariant="border-filled"
 				variant="icon"
 			/>
 		</PageHeaderControl>
@@ -116,7 +116,7 @@ const controls = () => (
 				assistiveText={{ icon: 'Refresh' }}
 				iconCategory="utility"
 				iconName="refresh"
-				iconVariant="border"
+				iconVariant="border-filled"
 				variant="icon"
 			/>
 		</PageHeaderControl>
@@ -126,14 +126,14 @@ const controls = () => (
 					assistiveText={{ icon: 'Charts' }}
 					iconCategory="utility"
 					iconName="chart"
-					iconVariant="border"
+					iconVariant="border-filled"
 					variant="icon"
 				/>
 				<Button
 					assistiveText={{ icon: 'Filters' }}
 					iconCategory="utility"
 					iconName="filterList"
-					iconVariant="border"
+					iconVariant="border-filled"
 					variant="icon"
 				/>
 			</ButtonGroup>
@@ -371,16 +371,10 @@ class Example extends React.Component {
 						variant="object-home"
 					/>
 					<DataTable
-						assistiveText={{
-							actionsHeader: 'actions',
-							columnSort: 'sort this column',
-							columnSortedAscending: 'asc',
-							columnSortedDescending: 'desc',
-							selectAllRows: 'Select all rows',
-							selectRow: 'Select this row',
-						}}
 						fixedHeader
 						fixedLayout
+						resizable
+						keyboardNavigation
 						items={this.state.items}
 						id="DataTableExample-FixedHeaders"
 						joined
