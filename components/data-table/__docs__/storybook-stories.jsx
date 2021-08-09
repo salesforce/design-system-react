@@ -18,7 +18,7 @@ import BasicFluidHeadless from '../__examples__/basic-fluid-headless';
 import FixedHeader from '../__examples__/fixed-header';
 import InteractiveElements from '../__examples__/interactive-elements';
 import FixedHeaderHorizontalScroller from '../__examples__/fixed-header-horizontal-scrolling';
-import ListView from '../__examples__/list-view';
+import JoinedWithPageHeader from '../__examples__/joined-with-page-header';
 import CustomClasses from '../__examples__/custom-classes';
 import InfiniteScrolling from '../__examples__/infinite-scrolling';
 import ResizableColumns from '../__examples__/resizable-columns';
@@ -50,7 +50,7 @@ storiesOf(DATA_TABLE, module)
 	.add('Fixed Header Horizontal Scrolling', () => (
 		<FixedHeaderHorizontalScroller />
 	))
-	.add('List View', () => <ListView />)
+	.add('List View', () => <JoinedWithPageHeader />)
 	.add('Custom Classes', () => <CustomClasses />)
 	.add('Infinite Scrolling', () => <InfiniteScrolling />)
 	.add('Resizable Columns', () => <ResizableColumns />);
