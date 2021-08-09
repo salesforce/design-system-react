@@ -333,7 +333,6 @@ class DataTable extends React.Component {
 			// Allows for keyboard navigation. This is useful for temporarily disabling keyboard navigation
 			// when another component requires its own focus behavior (e.g. menu dropdown).
 			allowKeyboardNavigation: props.keyboardNavigation,
-			// allowKeyboardNavigation: props.keyboardNavigation || props.resizable,
 		};
 		// Map of cells to interactive elements within that cell
 		this.interactiveElements = {};
