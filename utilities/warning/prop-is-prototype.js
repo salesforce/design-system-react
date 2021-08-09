@@ -15,18 +15,18 @@ if (process.env.NODE_ENV !== 'production' && typeof window.it !== 'function') {
 
 	isPropPrototype = function isPropPrototypeFunction(
 		control,
-		prop,
+		propValue,
 		propName,
 		comment
 	) {
 		const additionalComment = comment ? ` ${comment}` : '';
-		if (!hasWarned[control]) {
+		if (!hasWarned[`${control}_${propName}`]) {
 			lowPriorityWarning(
-				false,
+				!propValue,
 				`[Design System React] ${control}'s ${propName} property is a prototype. (a) It may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required. ${additionalComment}`
 			);
 			/* eslint-enable max-len */
-			hasWarned[control] = true;
+			hasWarned[`${control}_${propName}`] = true;
 		}
 	};
 }
