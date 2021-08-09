@@ -50,7 +50,7 @@ storiesOf(DATA_TABLE, module)
 	.add('Fixed Header Horizontal Scrolling', () => (
 		<FixedHeaderHorizontalScroller />
 	))
-	.add('List View', () => <JoinedWithPageHeader />)
+	.add('Joined with Page Header', () => <JoinedWithPageHeader />)
 	.add('Custom Classes', () => <CustomClasses />)
 	.add('Infinite Scrolling', () => <InfiniteScrolling />)
 	.add('Resizable Columns', () => <ResizableColumns />);
