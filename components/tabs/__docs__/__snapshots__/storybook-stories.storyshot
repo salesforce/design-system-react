@@ -1,0 +1,2123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSTabs Base 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h2
+      className="slds-text-heading_large"
+    >
+      Base Tabs Demo
+    </h2>
+    <div
+      className="slds-tabs_default custom-class-is-custom"
+      data-tabs={true}
+      id="main-tabs-demo"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        className="slds-tabs_default__nav"
+        id="main-tabs-demo-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-is-active slds-tabs_default__item"
+          id="main-tabs-demo-slds-tabs_tab-0"
+          role="presentation"
+          title="Tab 1"
+        >
+          <a
+            aria-controls="main-tabs-demo-slds-tabs_panel-0"
+            aria-selected="true"
+            className="slds-is-active slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="0"
+          >
+            Tab 1
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="main-tabs-demo-slds-tabs_tab-1"
+          role="presentation"
+          title="Tab 2"
+        >
+          <a
+            aria-controls="main-tabs-demo-slds-tabs_panel-1"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 2
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="main-tabs-demo-slds-tabs_tab-2"
+          role="presentation"
+          title="Tab 3"
+        >
+          <a
+            aria-controls="main-tabs-demo-slds-tabs_panel-2"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 3
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="main-tabs-demo-slds-tabs_tab-0"
+        className="slds-show slds-tabs_default__content"
+        id="main-tabs-demo-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 1 contents!
+        </h2>
+        <p>
+          And they’re amazing.
+        </p>
+        <p>
+          It"s awesome.
+        </p>
+        <p>
+          You can use your 
+          <var>
+            TAB
+          </var>
+           and 
+          <var>
+            ARROW
+          </var>
+           keys to navigate around. Try it!
+        </p>
+        <p
+          className="slds-box slds-theme_info slds-m-top_large"
+        >
+          (You might have to hit shift+tab to put the focus onto the tab bar ;)
+        </p>
+      </div>
+      <div
+        aria-labelledby="main-tabs-demo-slds-tabs_tab-1"
+        className="slds-hide slds-tabs_default__content"
+        id="main-tabs-demo-slds-tabs_panel-1"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 2 contents!
+        </h2>
+        <p>
+          And they’re also amazing.
+        </p>
+      </div>
+      <div
+        aria-labelledby="main-tabs-demo-slds-tabs_tab-2"
+        className="slds-hide slds-tabs_default__content"
+        id="main-tabs-demo-slds-tabs_panel-2"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 3 contents!
+        </h2>
+        <p>
+          And they’re quite spectacular.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTabs Conditional 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h2
+      className="slds-text-heading_large"
+    >
+      Conditional Tabs Demo
+    </h2>
+    <div
+      className="slds-form-element"
+    >
+      <div
+        className="slds-form-element__control"
+      >
+        <span
+          className="slds-checkbox"
+        >
+          <input
+            checked={true}
+            id="tabs-checkbox-tab-a-1"
+            name="showA"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            className="slds-checkbox__label"
+            htmlFor="tabs-checkbox-tab-a-1"
+          >
+            <span
+              className="slds-checkbox_faux"
+            />
+            <span
+              className="slds-form-element__label"
+            >
+              Show tab A
+            </span>
+            <span
+              className="slds-assistive-text"
+            >
+              Show tab A
+            </span>
+          </label>
+        </span>
+      </div>
+    </div>
+    <div
+      className="slds-form-element"
+    >
+      <div
+        className="slds-form-element__control"
+      >
+        <span
+          className="slds-checkbox"
+        >
+          <input
+            checked={true}
+            id="tabs-checkbox-tab-b-1"
+            name="showB"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            className="slds-checkbox__label"
+            htmlFor="tabs-checkbox-tab-b-1"
+          >
+            <span
+              className="slds-checkbox_faux"
+            />
+            <span
+              className="slds-form-element__label"
+            >
+              Show tab B
+            </span>
+            <span
+              className="slds-assistive-text"
+            >
+              Show tab B
+            </span>
+          </label>
+        </span>
+      </div>
+    </div>
+    <div
+      className="slds-form-element"
+    >
+      <div
+        className="slds-form-element__control"
+      >
+        <span
+          className="slds-checkbox"
+        >
+          <input
+            checked={true}
+            id="tabs-checkbox-tab-c-1"
+            name="showC"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            className="slds-checkbox__label"
+            htmlFor="tabs-checkbox-tab-c-1"
+          >
+            <span
+              className="slds-checkbox_faux"
+            />
+            <span
+              className="slds-form-element__label"
+            >
+              Show tab C
+            </span>
+            <span
+              className="slds-assistive-text"
+            >
+              Show tab C
+            </span>
+          </label>
+        </span>
+      </div>
+    </div>
+    <div
+      className="slds-tabs_default slds-m-top_large conditional-yo"
+      data-tabs={true}
+      id="tabs-checkbox-tabs-1"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        className="slds-tabs_default__nav"
+        id="tabs-checkbox-tabs-1-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-is-active slds-tabs_default__item"
+          id="tabs-checkbox-tabs-1-slds-tabs_tab-0"
+          role="presentation"
+          title="Tab A"
+        >
+          <a
+            aria-controls="tabs-checkbox-tabs-1-slds-tabs_panel-0"
+            aria-disabled={false}
+            aria-selected="true"
+            className="slds-is-active slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="0"
+          >
+            Tab A
+          </a>
+        </li>
+        <li
+          className="slds-disabled slds-tabs_default__item"
+          id="tabs-checkbox-tabs-1-slds-tabs_tab-1"
+          role="presentation"
+          title="Tab B"
+        >
+          <a
+            aria-controls="tabs-checkbox-tabs-1-slds-tabs_panel-1"
+            aria-disabled={true}
+            aria-selected="false"
+            className="slds-disabled slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab B
+          </a>
+        </li>
+        <li
+          className="slds-disabled slds-tabs_default__item"
+          id="tabs-checkbox-tabs-1-slds-tabs_tab-2"
+          role="presentation"
+          title="Tab C"
+        >
+          <a
+            aria-controls="tabs-checkbox-tabs-1-slds-tabs_panel-2"
+            aria-disabled={true}
+            aria-selected="false"
+            className="slds-disabled slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab C
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="tabs-checkbox-tabs-1-slds-tabs_tab-0"
+        className="slds-show slds-tabs_default__content"
+        id="tabs-checkbox-tabs-1-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <p>
+          This is tab A.
+        </p>
+        <div>
+          <div
+            className="slds-form-element"
+          >
+            <div
+              className="slds-form-element__control"
+            >
+              <span
+                className="slds-checkbox"
+              >
+                <input
+                  checked={true}
+                  id="tabs-checkbox-pane-a-1"
+                  name="disableB"
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+                <label
+                  className="slds-checkbox__label"
+                  htmlFor="tabs-checkbox-pane-a-1"
+                >
+                  <span
+                    className="slds-checkbox_faux"
+                  />
+                  <span
+                    className="slds-form-element__label"
+                  >
+                    Disable tab B
+                  </span>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Disable tab B
+                  </span>
+                </label>
+              </span>
+            </div>
+          </div>
+          <div
+            className="slds-form-element"
+          >
+            <div
+              className="slds-form-element__control"
+            >
+              <span
+                className="slds-checkbox"
+              >
+                <input
+                  checked={true}
+                  id="tabs-checkbox-pane-a-2"
+                  name="disableC"
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+                <label
+                  className="slds-checkbox__label"
+                  htmlFor="tabs-checkbox-pane-a-2"
+                >
+                  <span
+                    className="slds-checkbox_faux"
+                  />
+                  <span
+                    className="slds-form-element__label"
+                  >
+                    Disable tab C
+                  </span>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Disable tab C
+                  </span>
+                </label>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-labelledby="tabs-checkbox-tabs-1-slds-tabs_tab-1"
+        className="slds-hide slds-tabs_default__content"
+        id="tabs-checkbox-tabs-1-slds-tabs_panel-1"
+        role="tabpanel"
+      >
+        <p>
+          This is tab B.
+        </p>
+      </div>
+      <div
+        aria-labelledby="tabs-checkbox-tabs-1-slds-tabs_tab-2"
+        className="slds-hide slds-tabs_default__content"
+        id="tabs-checkbox-tabs-1-slds-tabs_panel-2"
+        role="tabpanel"
+      >
+        <p>
+          This is tab C.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTabs Custom Tab Contents 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h2
+      className="slds-text-heading_large"
+    >
+      Custom Tab Contents Demo
+    </h2>
+    <div
+      className="slds-tabs_default"
+      data-tabs={true}
+      id="getCustomContentTabs"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        className="slds-tabs_default__nav"
+        id="getCustomContentTabs-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-is-active slds-tabs_default__item"
+          id="getCustomContentTabs-slds-tabs_tab-0"
+          role="presentation"
+          title={null}
+        >
+          <a
+            aria-controls="getCustomContentTabs-slds-tabs_panel-0"
+            aria-selected="true"
+            className="slds-is-active slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="0"
+          >
+            <div
+              aria-label="test accessibility!"
+            >
+              <span>
+                <svg
+                  aria-hidden="true"
+                  className="slds-icon slds-icon_x-small slds-icon-text-default"
+                  style={
+                    Object {
+                      "marginRight": ".5rem",
+                    }
+                  }
+                >
+                  <use
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#list"
+                  />
+                </svg>
+                
+              </span>
+              <span>
+                my tab
+              </span>
+            </div>
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="getCustomContentTabs-slds-tabs_tab-1"
+          role="presentation"
+          title={null}
+        >
+          <a
+            aria-controls="getCustomContentTabs-slds-tabs_panel-1"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            <span
+              style={
+                Object {
+                  "color": "red",
+                }
+              }
+            >
+              my other tab
+            </span>
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="getCustomContentTabs-slds-tabs_tab-0"
+        className="slds-show slds-tabs_default__content"
+        id="getCustomContentTabs-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my first custom content tab!
+        </h2>
+      </div>
+      <div
+        aria-labelledby="getCustomContentTabs-slds-tabs_tab-1"
+        className="slds-hide slds-tabs_default__content"
+        id="getCustomContentTabs-slds-tabs_panel-1"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my second custom content tab!
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTabs Nested 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h2
+      className="slds-text-heading_large"
+    >
+      Nested Tabs Demo
+    </h2>
+    <div
+      className="slds-tabs_default"
+      data-tabs={true}
+      id="nested-tabs-demo"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        className="slds-tabs_default__nav"
+        id="nested-tabs-demo-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-is-active slds-tabs_default__item"
+          id="nested-tabs-demo-slds-tabs_tab-0"
+          role="presentation"
+          title="Tab 1"
+        >
+          <a
+            aria-controls="nested-tabs-demo-slds-tabs_panel-0"
+            aria-selected="true"
+            className="slds-is-active slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="0"
+          >
+            Tab 1
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="nested-tabs-demo-slds-tabs_tab-1"
+          role="presentation"
+          title="Tab 2"
+        >
+          <a
+            aria-controls="nested-tabs-demo-slds-tabs_panel-1"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 2
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="nested-tabs-demo-slds-tabs_tab-2"
+          role="presentation"
+          title="Tab 3 (has children)"
+        >
+          <a
+            aria-controls="nested-tabs-demo-slds-tabs_panel-2"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 3 (has children)
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="nested-tabs-demo-slds-tabs_tab-0"
+        className="slds-show slds-tabs_default__content"
+        id="nested-tabs-demo-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 1 contents!
+        </h2>
+        <p>
+          And they’re amazing.
+        </p>
+      </div>
+      <div
+        aria-labelledby="nested-tabs-demo-slds-tabs_tab-1"
+        className="slds-hide slds-tabs_default__content"
+        id="nested-tabs-demo-slds-tabs_panel-1"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 2 contents!
+        </h2>
+        <p>
+          And they’re also amazing.
+        </p>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="unique-id-123"
+          >
+            Input Label
+          </label>
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              className="slds-input"
+              id="unique-id-123"
+              name="tab-input-example"
+              onChange={[Function]}
+              placeholder="You can tab onto this to focus it."
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        aria-labelledby="nested-tabs-demo-slds-tabs_tab-2"
+        className="slds-hide slds-tabs_default__content"
+        id="nested-tabs-demo-slds-tabs_panel-2"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 3 contents!
+        </h2>
+        <p>
+          And they’re tabceptionish.
+        </p>
+        <div
+          className="slds-box slds-m-vertical_large"
+        >
+          <div
+            className="slds-tabs_default"
+            data-tabs={true}
+            id="nested-second-layer"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+          >
+            <ul
+              className="slds-tabs_default__nav"
+              id="nested-second-layer-slds-tabs__nav"
+              role="tablist"
+            >
+              <li
+                className="slds-is-active slds-tabs_default__item"
+                id="nested-second-layer-slds-tabs_tab-0"
+                role="presentation"
+                title="Tab 1"
+              >
+                <a
+                  aria-controls="nested-second-layer-slds-tabs_panel-0"
+                  aria-selected="true"
+                  className="slds-is-active slds-tabs_default__link"
+                  href="#"
+                  onClick={[Function]}
+                  role="tab"
+                  tabIndex="0"
+                >
+                  Tab 1
+                </a>
+              </li>
+              <li
+                className="slds-tabs_default__item"
+                id="nested-second-layer-slds-tabs_tab-1"
+                role="presentation"
+                title="Tab 2"
+              >
+                <a
+                  aria-controls="nested-second-layer-slds-tabs_panel-1"
+                  aria-selected="false"
+                  className="slds-tabs_default__link"
+                  href="#"
+                  onClick={[Function]}
+                  role="tab"
+                  tabIndex="-1"
+                >
+                  Tab 2
+                </a>
+              </li>
+              <li
+                className="slds-tabs_default__item"
+                id="nested-second-layer-slds-tabs_tab-2"
+                role="presentation"
+                title="Tab 3 (Also has children!)"
+              >
+                <a
+                  aria-controls="nested-second-layer-slds-tabs_panel-2"
+                  aria-selected="false"
+                  className="slds-tabs_default__link"
+                  href="#"
+                  onClick={[Function]}
+                  role="tab"
+                  tabIndex="-1"
+                >
+                  Tab 3 (Also has children!)
+                </a>
+              </li>
+            </ul>
+            <div
+              aria-labelledby="nested-second-layer-slds-tabs_tab-0"
+              className="slds-show slds-tabs_default__content"
+              id="nested-second-layer-slds-tabs_panel-0"
+              role="tabpanel"
+            >
+              <h2
+                className="slds-text-heading_medium"
+              >
+                This is my tab 1 contents!
+              </h2>
+              <p>
+                And they’re amazing.
+              </p>
+            </div>
+            <div
+              aria-labelledby="nested-second-layer-slds-tabs_tab-1"
+              className="slds-hide slds-tabs_default__content"
+              id="nested-second-layer-slds-tabs_panel-1"
+              role="tabpanel"
+            >
+              <h2
+                className="slds-text-heading_medium"
+              >
+                This is my tab 2 contents!
+              </h2>
+              <p>
+                And they’re also amazing.
+              </p>
+            </div>
+            <div
+              aria-labelledby="nested-second-layer-slds-tabs_tab-2"
+              className="slds-hide slds-tabs_default__content"
+              id="nested-second-layer-slds-tabs_panel-2"
+              role="tabpanel"
+            >
+              <h2
+                className="slds-text-heading_medium"
+              >
+                This is my tab 3 contents!
+              </h2>
+              <p>
+                And they’re even 
+                <em>
+                  more
+                </em>
+                 tabceptionish.
+              </p>
+              <div
+                className="slds-box slds-m-vertical_large"
+              >
+                <div
+                  className="slds-tabs_default"
+                  data-tabs={true}
+                  id="nested-third-layer"
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                >
+                  <ul
+                    className="slds-tabs_default__nav"
+                    id="nested-third-layer-slds-tabs__nav"
+                    role="tablist"
+                  >
+                    <li
+                      className="slds-is-active slds-tabs_default__item"
+                      id="nested-third-layer-slds-tabs_tab-0"
+                      role="presentation"
+                      title="Tab 1 (no children!)"
+                    >
+                      <a
+                        aria-controls="nested-third-layer-slds-tabs_panel-0"
+                        aria-selected="true"
+                        className="slds-is-active slds-tabs_default__link"
+                        href="#"
+                        onClick={[Function]}
+                        role="tab"
+                        tabIndex="0"
+                      >
+                        Tab 1 (no children!)
+                      </a>
+                    </li>
+                  </ul>
+                  <div
+                    aria-labelledby="nested-third-layer-slds-tabs_tab-0"
+                    className="slds-show slds-tabs_default__content"
+                    id="nested-third-layer-slds-tabs_panel-0"
+                    role="tabpanel"
+                  >
+                    <h2
+                      className="slds-text-heading_medium"
+                    >
+                      This is my tab 1 contents!
+                    </h2>
+                    <p>
+                      And they’re amazing.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTabs Outside Control 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h2
+      className="slds-text-heading_large"
+    >
+      Outside Tabs Demo
+    </h2>
+    <p>
+      Here we have several buttons, which are used to pass a new
+       
+      <code>
+        selectedIndex
+      </code>
+       into the Tabs component.
+    </p>
+    <p
+      className="slds-m-bottom_large"
+    >
+      This shows that you can pass a new selected index property into the component from the outside and have it re-render.
+    </p>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="show-state"
+      onClick={[Function]}
+      type="button"
+    >
+      Show State
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="monday"
+      onClick={[Function]}
+      type="button"
+    >
+      Monday
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="tuesday"
+      onClick={[Function]}
+      type="button"
+    >
+      Tuesday
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="wednesday"
+      onClick={[Function]}
+      type="button"
+    >
+      Wednesday
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="thursday"
+      onClick={[Function]}
+      type="button"
+    >
+      Thursday
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="friday"
+      onClick={[Function]}
+      type="button"
+    >
+      Friday
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="none"
+      onClick={[Function]}
+      type="button"
+    >
+      None
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      id="previous"
+      onClick={[Function]}
+      type="button"
+    >
+      Previous
+    </button>
+    <div
+      className="slds-tabs_default slds-m-top_large controlled-yo"
+      data-tabs={true}
+      id="DemoTabsOutsideControlTabs"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        className="slds-tabs_default__nav"
+        id="DemoTabsOutsideControlTabs-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-is-active slds-tabs_default__item"
+          id="DemoTabsOutsideControlTabs-slds-tabs_tab-0"
+          role="presentation"
+          title="Monday"
+        >
+          <a
+            aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-0"
+            aria-selected="true"
+            className="slds-is-active slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="0"
+          >
+            Monday
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="DemoTabsOutsideControlTabs-slds-tabs_tab-1"
+          role="presentation"
+          title="Tuesday"
+        >
+          <a
+            aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-1"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tuesday
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="DemoTabsOutsideControlTabs-slds-tabs_tab-2"
+          role="presentation"
+          title="Wednesday"
+        >
+          <a
+            aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-2"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Wednesday
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="DemoTabsOutsideControlTabs-slds-tabs_tab-3"
+          role="presentation"
+          title="Thursday"
+        >
+          <a
+            aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-3"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Thursday
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="DemoTabsOutsideControlTabs-slds-tabs_tab-4"
+          role="presentation"
+          title="Friday"
+        >
+          <a
+            aria-controls="DemoTabsOutsideControlTabs-slds-tabs_panel-4"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Friday
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="DemoTabsOutsideControlTabs-slds-tabs_tab-0"
+        className="slds-show slds-tabs_default__content"
+        id="DemoTabsOutsideControlTabs-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <p>
+          This is Monday"s Pane.
+        </p>
+        <button
+          className="slds-button slds-button_neutral"
+          disabled={false}
+          id="tuesday-alt"
+          onClick={[Function]}
+          type="button"
+        >
+          Submit and go to next tab
+        </button>
+      </div>
+      <div
+        aria-labelledby="DemoTabsOutsideControlTabs-slds-tabs_tab-1"
+        className="slds-hide slds-tabs_default__content"
+        id="DemoTabsOutsideControlTabs-slds-tabs_panel-1"
+        role="tabpanel"
+      >
+        <p>
+          This is Tuesday"s Pane.
+        </p>
+      </div>
+      <div
+        aria-labelledby="DemoTabsOutsideControlTabs-slds-tabs_tab-2"
+        className="slds-hide slds-tabs_default__content"
+        id="DemoTabsOutsideControlTabs-slds-tabs_panel-2"
+        role="tabpanel"
+      >
+        <p>
+          This is Wednesday"s Pane.
+        </p>
+      </div>
+      <div
+        aria-labelledby="DemoTabsOutsideControlTabs-slds-tabs_tab-3"
+        className="slds-hide slds-tabs_default__content"
+        id="DemoTabsOutsideControlTabs-slds-tabs_panel-3"
+        role="tabpanel"
+      >
+        <p>
+          Thursday"s Pane has far to go.
+        </p>
+      </div>
+      <div
+        aria-labelledby="DemoTabsOutsideControlTabs-slds-tabs_tab-4"
+        className="slds-hide slds-tabs_default__content"
+        id="DemoTabsOutsideControlTabs-slds-tabs_panel-4"
+        role="tabpanel"
+      >
+        <p>
+          This is Friday"s Pane.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTabs Scoped 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h2
+      className="slds-text-heading_large"
+    >
+      Scoped Tabs Demo
+    </h2>
+    <div
+      className="slds-tabs_scoped"
+      data-tabs={true}
+      id="scoped-tabs-demo"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        className="slds-tabs_scoped__nav"
+        id="scoped-tabs-demo-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-is-active slds-tabs_scoped__item"
+          id="scoped-tabs-demo-slds-tabs_tab-0"
+          role="presentation"
+          title="Tab 1"
+        >
+          <a
+            aria-controls="scoped-tabs-demo-slds-tabs_panel-0"
+            aria-selected="true"
+            className="slds-is-active slds-tabs_scoped__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="0"
+          >
+            Tab 1
+          </a>
+        </li>
+        <li
+          className="slds-tabs_scoped__item"
+          id="scoped-tabs-demo-slds-tabs_tab-1"
+          role="presentation"
+          title="Tab 2"
+        >
+          <a
+            aria-controls="scoped-tabs-demo-slds-tabs_panel-1"
+            aria-selected="false"
+            className="slds-tabs_scoped__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 2
+          </a>
+        </li>
+        <li
+          className="slds-tabs_scoped__item"
+          id="scoped-tabs-demo-slds-tabs_tab-2"
+          role="presentation"
+          title="Tab 3"
+        >
+          <a
+            aria-controls="scoped-tabs-demo-slds-tabs_panel-2"
+            aria-selected="false"
+            className="slds-tabs_scoped__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 3
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="scoped-tabs-demo-slds-tabs_tab-0"
+        className="slds-show slds-tabs_scoped__content"
+        id="scoped-tabs-demo-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 1 contents!
+        </h2>
+        <p>
+          And they’re amazing.
+        </p>
+        <p>
+          It"s awesome.
+        </p>
+        <p>
+          You can use your 
+          <var>
+            TAB
+          </var>
+           and 
+          <var>
+            ARROW
+          </var>
+           keys to navigate around. Try it!
+        </p>
+        <p
+          className="slds-box slds-theme_info slds-m-top_large"
+        >
+          (You might have to hit shift+tab to put the focus onto the tab bar ;)
+        </p>
+      </div>
+      <div
+        aria-labelledby="scoped-tabs-demo-slds-tabs_tab-1"
+        className="slds-hide slds-tabs_scoped__content"
+        id="scoped-tabs-demo-slds-tabs_panel-1"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 2 contents!
+        </h2>
+        <p>
+          And they’re also amazing.
+        </p>
+      </div>
+      <div
+        aria-labelledby="scoped-tabs-demo-slds-tabs_tab-2"
+        className="slds-hide slds-tabs_scoped__content"
+        id="scoped-tabs-demo-slds-tabs_panel-2"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 3 contents!
+        </h2>
+        <p>
+          And they’re quite spectacular.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTabs Tab Intercept Panel Select 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-tabs_default"
+      data-tabs={true}
+      id="DemoTabsInterceptSelect"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        className="slds-tabs_default__nav"
+        id="DemoTabsInterceptSelect-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-is-active slds-tabs_default__item"
+          id="DemoTabsInterceptSelect-slds-tabs_tab-0"
+          role="presentation"
+          title="Panel with intercept"
+        >
+          <a
+            aria-controls="DemoTabsInterceptSelect-slds-tabs_panel-0"
+            aria-selected="true"
+            className="slds-is-active slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="0"
+          >
+            Panel with intercept
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="DemoTabsInterceptSelect-slds-tabs_tab-1"
+          role="presentation"
+          title="Unreachable panel"
+        >
+          <a
+            aria-controls="DemoTabsInterceptSelect-slds-tabs_panel-1"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Unreachable panel
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="DemoTabsInterceptSelect-slds-tabs_tab-0"
+        className="slds-show slds-tabs_default__content"
+        id="DemoTabsInterceptSelect-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <p>
+          Default Panel
+        </p>
+      </div>
+      <div
+        aria-labelledby="DemoTabsInterceptSelect-slds-tabs_tab-1"
+        className="slds-hide slds-tabs_default__content"
+        id="DemoTabsInterceptSelect-slds-tabs_panel-1"
+        role="tabpanel"
+      >
+        <p>
+          You should never see this message
+        </p>
+      </div>
+    </div>
+    <div
+      style={
+        Object {
+          "height": "20px",
+        }
+      }
+    />
+    <div
+      className="slds-tabs_default"
+      data-tabs={true}
+      id="DemoTabsInterceptSelect2"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        className="slds-tabs_default__nav"
+        id="DemoTabsInterceptSelect2-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-is-active slds-tabs_default__item"
+          id="DemoTabsInterceptSelect2-slds-tabs_tab-0"
+          role="presentation"
+          title="Panel still working as intended"
+        >
+          <a
+            aria-controls="DemoTabsInterceptSelect2-slds-tabs_panel-0"
+            aria-selected="true"
+            className="slds-is-active slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="0"
+          >
+            Panel still working as intended
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="DemoTabsInterceptSelect2-slds-tabs_tab-1"
+          role="presentation"
+          title="Destination panel"
+        >
+          <a
+            aria-controls="DemoTabsInterceptSelect2-slds-tabs_panel-1"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Destination panel
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="DemoTabsInterceptSelect2-slds-tabs_tab-0"
+        className="slds-show slds-tabs_default__content"
+        id="DemoTabsInterceptSelect2-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <p>
+          Default Panel
+        </p>
+      </div>
+      <div
+        aria-labelledby="DemoTabsInterceptSelect2-slds-tabs_tab-1"
+        className="slds-hide slds-tabs_default__content"
+        id="DemoTabsInterceptSelect2-slds-tabs_panel-1"
+        role="tabpanel"
+      >
+        <p>
+          You should be able to reach this panel
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTabs Unique Generated IDs 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h2
+      className="slds-text-heading_large"
+    >
+      Generated Unique IDs Demo
+    </h2>
+    <div
+      className="slds-tabs_default"
+      data-tabs={true}
+      id="tabs-demo-id-1"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        className="slds-tabs_default__nav"
+        id="tabs-demo-id-1-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-is-active slds-tabs_default__item"
+          id="tabs-demo-id-1-slds-tabs_tab-0"
+          role="presentation"
+          title="Only 1 Tab"
+        >
+          <a
+            aria-controls="tabs-demo-id-1-slds-tabs_panel-0"
+            aria-selected="true"
+            className="slds-is-active slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="0"
+          >
+            Only 1 Tab
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="tabs-demo-id-1-slds-tabs_tab-0"
+        className="slds-show slds-tabs_default__content"
+        id="tabs-demo-id-1-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          About this story
+        </h2>
+        <p>
+          There should be two instances of Tabs in this story, and each should have a unique (generated) ID.
+        </p>
+      </div>
+    </div>
+    <div
+      className="slds-tabs_default"
+      data-tabs={true}
+      id="tabs-demo-id-2"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        className="slds-tabs_default__nav"
+        id="tabs-demo-id-2-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-is-active slds-tabs_default__item"
+          id="tabs-demo-id-2-slds-tabs_tab-0"
+          role="presentation"
+          title="Only 1 Tab"
+        >
+          <a
+            aria-controls="tabs-demo-id-2-slds-tabs_panel-0"
+            aria-selected="true"
+            className="slds-is-active slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="0"
+          >
+            Only 1 Tab
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="tabs-demo-id-2-slds-tabs_tab-0"
+        className="slds-show slds-tabs_default__content"
+        id="tabs-demo-id-2-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          About this story
+        </h2>
+        <p>
+          There should be two instances of Tabs in this story, and each should have a unique (generated) ID.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTabs Vertical 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h2
+      className="slds-text-heading_large"
+    >
+      Scoped Tabs Demo
+    </h2>
+    <div
+      className="slds-vertical-tabs"
+      data-tabs={true}
+      id="scoped-tabs-demo"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        aria-orientation="vertical"
+        className="slds-vertical-tabs__nav"
+        id="scoped-tabs-demo-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-is-active slds-vertical-tabs__nav-item"
+          id="scoped-tabs-demo-slds-tabs_tab-0"
+          role="presentation"
+          title="Tab 1"
+        >
+          <a
+            aria-controls="scoped-tabs-demo-slds-tabs_panel-0"
+            aria-selected="true"
+            className="slds-is-active slds-vertical-tabs__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="0"
+          >
+            Tab 1
+          </a>
+        </li>
+        <li
+          className="slds-vertical-tabs__nav-item"
+          id="scoped-tabs-demo-slds-tabs_tab-1"
+          role="presentation"
+          title="Tab 2"
+        >
+          <a
+            aria-controls="scoped-tabs-demo-slds-tabs_panel-1"
+            aria-selected="false"
+            className="slds-vertical-tabs__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 2
+          </a>
+        </li>
+        <li
+          className="slds-disabled slds-vertical-tabs__nav-item"
+          id="scoped-tabs-demo-slds-tabs_tab-2"
+          role="presentation"
+          title="Tab 3 (disabled)"
+        >
+          <a
+            aria-controls="scoped-tabs-demo-slds-tabs_panel-2"
+            aria-disabled={true}
+            aria-selected="false"
+            className="slds-disabled slds-vertical-tabs__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 3 (disabled)
+          </a>
+        </li>
+        <li
+          className="slds-vertical-tabs__nav-item"
+          id="scoped-tabs-demo-slds-tabs_tab-3"
+          role="presentation"
+          title="Tab 4"
+        >
+          <a
+            aria-controls="scoped-tabs-demo-slds-tabs_panel-3"
+            aria-selected="false"
+            className="slds-vertical-tabs__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 4
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="scoped-tabs-demo-slds-tabs_tab-0"
+        className="slds-show slds-vertical-tabs__content"
+        id="scoped-tabs-demo-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 1 contents!
+        </h2>
+        <p>
+          And they’re amazing.
+        </p>
+        <p>
+          It"s awesome.
+        </p>
+        <p>
+          You can use your 
+          <var>
+            TAB
+          </var>
+           and 
+          <var>
+            ARROW
+          </var>
+           keys to navigate around. Try it!
+        </p>
+        <p
+          className="slds-box slds-theme_info slds-m-top_large"
+        >
+          (You might have to hit shift+tab to put the focus onto the tab bar ;)
+        </p>
+      </div>
+      <div
+        aria-labelledby="scoped-tabs-demo-slds-tabs_tab-1"
+        className="slds-hide slds-vertical-tabs__content"
+        id="scoped-tabs-demo-slds-tabs_panel-1"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 2 contents!
+        </h2>
+        <p>
+          And they’re also amazing.
+        </p>
+      </div>
+      <div
+        aria-labelledby="scoped-tabs-demo-slds-tabs_tab-2"
+        className="slds-hide slds-vertical-tabs__content"
+        id="scoped-tabs-demo-slds-tabs_panel-2"
+        role="tabpanel"
+      >
+        Disabled tab content.
+      </div>
+      <div
+        aria-labelledby="scoped-tabs-demo-slds-tabs_tab-3"
+        className="slds-hide slds-vertical-tabs__content"
+        id="scoped-tabs-demo-slds-tabs_panel-3"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 3 contents!
+        </h2>
+        <p>
+          And they’re quite spectacular.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTabs With disabled tab 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h2
+      className="slds-text-heading_large"
+    >
+      Disabled Tabs Demo
+    </h2>
+    <div
+      className="slds-tabs_default"
+      data-tabs={true}
+      id="disabled-tabs-demo"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        className="slds-tabs_default__nav"
+        id="disabled-tabs-demo-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-is-active slds-tabs_default__item"
+          id="disabled-tabs-demo-slds-tabs_tab-0"
+          role="presentation"
+          title="Tab 1"
+        >
+          <a
+            aria-controls="disabled-tabs-demo-slds-tabs_panel-0"
+            aria-selected="true"
+            className="slds-is-active slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="0"
+          >
+            Tab 1
+          </a>
+        </li>
+        <li
+          className="slds-disabled slds-tabs_default__item"
+          id="disabled-tabs-demo-slds-tabs_tab-1"
+          role="presentation"
+          title="Tab 2"
+        >
+          <a
+            aria-controls="disabled-tabs-demo-slds-tabs_panel-1"
+            aria-disabled={true}
+            aria-selected="false"
+            className="slds-disabled slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 2
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="disabled-tabs-demo-slds-tabs_tab-2"
+          role="presentation"
+          title="Tab 3"
+        >
+          <a
+            aria-controls="disabled-tabs-demo-slds-tabs_panel-2"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 3
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="disabled-tabs-demo-slds-tabs_tab-3"
+          role="presentation"
+          title="Tab 4"
+        >
+          <a
+            aria-controls="disabled-tabs-demo-slds-tabs_panel-3"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 4
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="disabled-tabs-demo-slds-tabs_tab-0"
+        className="slds-show slds-tabs_default__content"
+        id="disabled-tabs-demo-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 1 contents!
+        </h2>
+        <p>
+          And they’re amazing.
+        </p>
+        <p>
+          It’s awesome.
+        </p>
+        <p>
+          You can use your 
+          <var>
+            TAB
+          </var>
+           and 
+          <var>
+            ARROW
+          </var>
+           keys to navigate around. Try it!
+        </p>
+        <p
+          className="slds-box slds-theme_info slds-m-top_large"
+        >
+          (You might have to hit shift+tab to put the focus onto the tab bar ;)
+        </p>
+      </div>
+      <div
+        aria-labelledby="disabled-tabs-demo-slds-tabs_tab-1"
+        className="slds-hide slds-tabs_default__content"
+        id="disabled-tabs-demo-slds-tabs_panel-1"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 2 contents!
+        </h2>
+        <p>
+          And they’re also amazing.
+        </p>
+      </div>
+      <div
+        aria-labelledby="disabled-tabs-demo-slds-tabs_tab-2"
+        className="slds-hide slds-tabs_default__content"
+        id="disabled-tabs-demo-slds-tabs_panel-2"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 3 contents!
+        </h2>
+        <p>
+          And they’re quite spectacular.
+        </p>
+      </div>
+      <div
+        aria-labelledby="disabled-tabs-demo-slds-tabs_tab-3"
+        className="slds-hide slds-tabs_default__content"
+        id="disabled-tabs-demo-slds-tabs_panel-3"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 3 contents!
+        </h2>
+        <p>
+          Note that using your arrow keys you can loop 
+          <em>
+            around the tabs
+          </em>
+          ! 🎉
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTabs With error tab 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h2
+      className="slds-text-heading_large"
+    >
+      Error Tabs Demo
+    </h2>
+    <div
+      className="slds-tabs_default"
+      data-tabs={true}
+      id="disabled-tabs-demo"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+    >
+      <ul
+        className="slds-tabs_default__nav"
+        id="disabled-tabs-demo-slds-tabs__nav"
+        role="tablist"
+      >
+        <li
+          className="slds-is-active slds-tabs_default__item"
+          id="disabled-tabs-demo-slds-tabs_tab-0"
+          role="presentation"
+          title="Tab 1"
+        >
+          <a
+            aria-controls="disabled-tabs-demo-slds-tabs_panel-0"
+            aria-selected="true"
+            className="slds-is-active slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="0"
+          >
+            Tab 1
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="disabled-tabs-demo-slds-tabs_tab-1"
+          role="presentation"
+          title="Tab 2"
+        >
+          <a
+            aria-controls="disabled-tabs-demo-slds-tabs_panel-1"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 2
+            <span
+              className="slds-tabs__right-icon"
+            >
+              <span
+                className="slds-icon_container slds-icon-utility-error"
+                title="An error on this Panel needs to be addressed"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-icon slds-icon_x-small slds-icon-text-error"
+                >
+                  <use
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#error"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  An error on this Panel needs to be addressed
+                </span>
+              </span>
+            </span>
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="disabled-tabs-demo-slds-tabs_tab-2"
+          role="presentation"
+          title="Tab 3"
+        >
+          <a
+            aria-controls="disabled-tabs-demo-slds-tabs_panel-2"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 3
+          </a>
+        </li>
+        <li
+          className="slds-tabs_default__item"
+          id="disabled-tabs-demo-slds-tabs_tab-3"
+          role="presentation"
+          title="Tab 4"
+        >
+          <a
+            aria-controls="disabled-tabs-demo-slds-tabs_panel-3"
+            aria-selected="false"
+            className="slds-tabs_default__link"
+            href="#"
+            onClick={[Function]}
+            role="tab"
+            tabIndex="-1"
+          >
+            Tab 4
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-labelledby="disabled-tabs-demo-slds-tabs_tab-0"
+        className="slds-show slds-tabs_default__content"
+        id="disabled-tabs-demo-slds-tabs_panel-0"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 1 contents!
+        </h2>
+        <p>
+          And they’re amazing.
+        </p>
+        <p>
+          It’s awesome.
+        </p>
+        <p>
+          You can use your 
+          <var>
+            TAB
+          </var>
+           and 
+          <var>
+            ARROW
+          </var>
+           keys to navigate around. Try it!
+        </p>
+        <p
+          className="slds-box slds-theme_info slds-m-top_large"
+        >
+          (You might have to hit shift+tab to put the focus onto the tab bar ;)
+        </p>
+      </div>
+      <div
+        aria-labelledby="disabled-tabs-demo-slds-tabs_tab-1"
+        className="slds-hide slds-tabs_default__content"
+        id="disabled-tabs-demo-slds-tabs_panel-1"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 2 contents!
+        </h2>
+        <p>
+          Tab should have an error icon. Uh oh!
+        </p>
+      </div>
+      <div
+        aria-labelledby="disabled-tabs-demo-slds-tabs_tab-2"
+        className="slds-hide slds-tabs_default__content"
+        id="disabled-tabs-demo-slds-tabs_panel-2"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 3 contents!
+        </h2>
+        <p>
+          And they’re quite spectacular.
+        </p>
+      </div>
+      <div
+        aria-labelledby="disabled-tabs-demo-slds-tabs_tab-3"
+        className="slds-hide slds-tabs_default__content"
+        id="disabled-tabs-demo-slds-tabs_panel-3"
+        role="tabpanel"
+      >
+        <h2
+          className="slds-text-heading_medium"
+        >
+          This is my tab 3 contents!
+        </h2>
+        <p>
+          Note that using your arrow keys you can loop 
+          <em>
+            around the tabs
+          </em>
+          ! 🎉
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
