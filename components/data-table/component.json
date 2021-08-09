@@ -64,10 +64,10 @@
 			"heading": "Advanced: Fixed Header",
 			"path": "/__examples__/fixed-header.jsx"
 		},
-    {
+		{
       "heading": "Advanced: Joined with Page Header",
       "path": "/__examples__/joined-with-page-header.jsx"
-    },
+		},
 		{
 			"heading": "Custom Classes",
 			"path": "/__examples__/custom-classes.jsx"
