@@ -5459,7 +5459,7 @@
                 "returns": null
             },
             {
-                "name": "displaceColumnByArrowKey",
+                "name": "displaceByArrowKey",
                 "docblock": null,
                 "modifiers": [],
                 "params": [

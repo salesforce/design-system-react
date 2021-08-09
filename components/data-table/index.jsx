@@ -733,7 +733,7 @@ class DataTable extends React.Component {
 		}
 	}
 
-	displaceColumnByArrowKey(factor) {
+	displaceByArrowKey(factor) {
 		if (this.state.mode === Mode.ACTIONABLE) {
 			const { rowIndex, columnIndex } = this.state.activeCell;
 
@@ -778,7 +778,7 @@ class DataTable extends React.Component {
 				}));
 			}
 		} else {
-			this.displaceColumnByArrowKey(-10);
+			this.displaceByArrowKey(-10);
 		}
 	}
 
@@ -806,7 +806,7 @@ class DataTable extends React.Component {
 				}));
 			}
 		} else {
-			this.displaceColumnByArrowKey(10);
+			this.displaceByArrowKey(10);
 		}
 	}
 
