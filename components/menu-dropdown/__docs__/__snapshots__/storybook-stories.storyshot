@@ -410,7 +410,6 @@ exports[`DOM snapshots SLDSMenuDropdown Checkmark open menu 1`] = `
               role="presentation"
             >
               <a
-                aria-checked={false}
                 data-index={1}
                 href="#"
                 onClick={[Function]}
@@ -444,7 +443,6 @@ exports[`DOM snapshots SLDSMenuDropdown Checkmark open menu 1`] = `
               role="presentation"
             >
               <a
-                aria-checked={false}
                 data-index={2}
                 href="#"
                 onClick={[Function]}
@@ -589,7 +587,6 @@ exports[`DOM snapshots SLDSMenuDropdown Checkmark open menu 1`] = `
               role="presentation"
             >
               <a
-                aria-checked={false}
                 data-index={1}
                 href="#"
                 onClick={[Function]}
@@ -634,7 +631,6 @@ exports[`DOM snapshots SLDSMenuDropdown Checkmark open menu 1`] = `
               role="presentation"
             >
               <a
-                aria-checked={false}
                 data-index={2}
                 href="#"
                 onClick={[Function]}
