@@ -213,37 +213,96 @@ exports[`DOM snapshots SLDSMenuDropdown Checkmark 1`] = `
   className="slds-p-around_medium slds-text-align_center"
 >
   <div
-    className="slds-dropdown-trigger slds-dropdown-trigger_click"
-    id="checkmark"
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseEnter={null}
-    onMouseLeave={null}
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
   >
-    <button
-      aria-expanded={false}
-      aria-haspopup={true}
-      className="slds-button slds-button_icon-border-filled ignore-click-checkmark"
-      disabled={false}
-      onClick={[Function]}
-      tabIndex="0"
-      type="button"
+    <div
+      className="slds-col_padded"
     >
-      <svg
-        aria-hidden="true"
-        className="slds-button__icon"
-      >
-        <use
-          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
-        />
-      </svg>
-      <span
-        className="slds-assistive-text"
-      >
-        More Options
+      <span>
+        Checkmark 
       </span>
-    </button>
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click"
+        id="zcJdZJMSiWJ6"
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="slds-button slds-button_icon-border-filled ignore-click-zcJdZJMSiWJ6"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Checkmark
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        Checkmark with right icon 
+      </span>
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click"
+        id="jp2vk8DcXj4G"
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="slds-button slds-button_icon-more slds-button_icon-large ignore-click-jp2vk8DcXj4G"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#table"
+            />
+          </svg>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Checkmark with right icon
+          </span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 `;
