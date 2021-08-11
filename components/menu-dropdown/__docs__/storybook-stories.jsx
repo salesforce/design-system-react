@@ -437,9 +437,8 @@ storiesOf(MENU_DROPDOWN, module)
 			})}
 		</div>
 	))
-	.add('Checkmark', () =>
-      <CheckmarkMenuDropdown/>
-	)
+	.add('Checkmark', () => <CheckmarkMenuDropdown />)
+	.add('Checkmark open menu', () => <CheckmarkMenuDropdown isOpen />)
 	.add('Checkmark, right-to-left', () =>
 		makeRtl(
 			getDropdown({

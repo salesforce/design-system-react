@@ -106,12 +106,12 @@ class List extends React.Component {
 						<ListItem
 							{...option}
 							aria-disabled={option.disabled}
-              // show checkmark
-              checkmark={
+							// show checkmark
+							checkmark={
 								this.props.checkmark && (isSingleSelected || isMultipleSelected)
 							}
-              // show checkmark OR invisible placeholder icon
-              isCheckmarkVariant={this.props.checkmark}
+							// show checkmark OR invisible placeholder icon
+							isCheckmarkVariant={this.props.checkmark}
 							data={option}
 							id={id}
 							index={index}
