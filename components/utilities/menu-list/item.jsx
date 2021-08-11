@@ -181,7 +181,9 @@ class ListItem extends React.Component {
 				/* eslint-disable jsx-a11y/role-supports-aria-props */
 				let itemContents = (
 					<a
-						aria-checked={this.props.checkmark && this.props.isSelected ? true : undefined}
+						aria-checked={
+							this.props.checkmark && this.props.isSelected ? true : undefined
+						}
 						aria-disabled={this.props['aria-disabled']}
 						href={this.props.href}
 						data-index={this.props.index}
