@@ -48,6 +48,7 @@ class ListItem extends React.Component {
 		index: PropTypes.number.isRequired,
 		inverted: PropTypes.bool,
 		isSelected: PropTypes.bool,
+		isCheckmarkVariant: PropTypes.bool,
 		label: PropTypes.string,
 		labelRenderer: PropTypes.func,
 		leftIcon: PropTypes.shape({
@@ -96,7 +97,7 @@ class ListItem extends React.Component {
 		let iconProps = this.props[`${position}Icon`];
 
 		if (position === 'left') {
-			if (this.props.checkmark) {
+			if (this.props.isCheckmarkVariant) {
 				// eslint-disable-next-line fp/no-mutating-methods
 				classnames.push('slds-icon_selected');
 				iconProps = {
