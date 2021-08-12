@@ -22815,7 +22815,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               className="slds-page-header__control"
             >
               <button
-                className="slds-button slds-button_icon-border"
+                className="slds-button slds-button_icon-border-filled"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
@@ -22839,7 +22839,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               className="slds-page-header__control"
             >
               <button
-                className="slds-button slds-button_icon-border"
+                className="slds-button slds-button_icon-border-filled"
                 disabled={false}
                 onClick={[Function]}
                 type="button"
@@ -22868,7 +22868,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 role="group"
               >
                 <button
-                  className="slds-button slds-button_icon-border"
+                  className="slds-button slds-button_icon-border-filled"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
@@ -22888,7 +22888,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   </span>
                 </button>
                 <button
-                  className="slds-button slds-button_icon-border"
+                  className="slds-button slds-button_icon-border-filled"
                   disabled={false}
                   onClick={[Function]}
                   type="button"
@@ -22989,6 +22989,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                           checked={false}
                           id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixed-header"
                           onChange={[Function]}
+                          onFocus={[Function]}
+                          tabIndex="-1"
                           type="checkbox"
                         />
                         <label
@@ -23050,6 +23052,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                             id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
                             name="SelectAll"
                             onChange={[Function]}
+                            onFocus={[Function]}
+                            tabIndex="-1"
                             type="checkbox"
                           />
                           <label
@@ -23107,7 +23111,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <span
                     className="slds-assistive-text"
                   >
-                    sort this column
+                    Sort by: 
                      
                   </span>
                   <span
@@ -23131,7 +23135,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     aria-atomic="true"
                     className="slds-assistive-text"
                   >
-                    asc
+                    Sorted Ascending
                   </span>
                 </a>
                 <div
@@ -23149,6 +23153,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-th__action slds-text-link_reset"
                     href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
                     onKeyDown={[Function]}
                     role="button"
                     style={
@@ -23160,12 +23165,12 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         "width": "100%",
                       }
                     }
-                    tabIndex={0}
+                    tabIndex="-1"
                   >
                     <span
                       className="slds-assistive-text"
                     >
-                      sort this column
+                      Sort by: 
                        
                     </span>
                     <span
@@ -23189,7 +23194,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       aria-atomic="true"
                       className="slds-assistive-text"
                     >
-                      asc
+                      Sorted Ascending
                     </span>
                   </a>
                 </div>
@@ -23437,7 +23442,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <span
                     className="slds-assistive-text"
                   >
-                    sort this column
+                    Sort by: 
                      
                   </span>
                   <span
@@ -23473,6 +23478,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-th__action slds-text-link_reset"
                     href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
                     onKeyDown={[Function]}
                     role="button"
                     style={
@@ -23484,12 +23490,12 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         "width": "100%",
                       }
                     }
-                    tabIndex={0}
+                    tabIndex="-1"
                   >
                     <span
                       className="slds-assistive-text"
                     >
-                      sort this column
+                      Sort by: 
                        
                     </span>
                     <span
@@ -23678,7 +23684,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <span
                     className="slds-assistive-text"
                   >
-                    actions
+                    Actions
                   </span>
                 </div>
                 <div
@@ -23704,7 +23710,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      actions
+                      Actions
                     </span>
                   </div>
                 </div>
@@ -23742,6 +23748,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
                         name="SelectRow1"
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -23755,7 +23763,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          Select this row 1
+                          Select row 1
                         </span>
                       </label>
                     </span>
@@ -23769,14 +23777,17 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
+                tabIndex="0"
               >
                 <div
                   className="slds-truncate"
                   title="Acme - 1,200 Widgets"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 1,200 Widgets
                   </a>
@@ -23870,8 +23881,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     jrogers@acme.com
                   </a>
@@ -23905,7 +23918,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -23955,6 +23968,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
                         name="SelectRow2"
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -23968,7 +23983,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          Select this row 2
+                          Select row 2
                         </span>
                       </label>
                     </span>
@@ -23988,8 +24003,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 200 Widgets"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 200 Widgets
                   </a>
@@ -24083,8 +24100,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     bob@acme.com
                   </a>
@@ -24118,7 +24137,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -24168,6 +24187,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
                         name="SelectRow3"
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -24181,7 +24202,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          Select this row 3
+                          Select row 3
                         </span>
                       </label>
                     </span>
@@ -24201,8 +24222,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="salesforce.com - 1,000 Widgets"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     salesforce.com - 1,000 Widgets
                   </a>
@@ -24296,8 +24319,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     nathan@salesforce.com
                   </a>
@@ -24331,7 +24356,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -24381,6 +24406,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
                         name="SelectRow4"
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -24394,7 +24421,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          Select this row 4
+                          Select row 4
                         </span>
                       </label>
                     </span>
@@ -24414,8 +24441,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 800 Widgets"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 800 Widgets
                   </a>
@@ -24509,8 +24538,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     jrogers@acme.com
                   </a>
@@ -24544,7 +24575,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -24594,6 +24625,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
                         name="SelectRow5"
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -24607,7 +24640,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          Select this row 5
+                          Select row 5
                         </span>
                       </label>
                     </span>
@@ -24627,8 +24660,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 744 Widgets"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 744 Widgets
                   </a>
@@ -24722,8 +24757,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     bob@acme.com
                   </a>
@@ -24757,7 +24794,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -24807,6 +24844,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
                         name="SelectRow6"
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -24820,7 +24859,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          Select this row 6
+                          Select row 6
                         </span>
                       </label>
                     </span>
@@ -24840,8 +24879,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="salesforce.com - 847 Widgets"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     salesforce.com - 847 Widgets
                   </a>
@@ -24935,8 +24976,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     nathan@salesforce.com
                   </a>
@@ -24970,7 +25013,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -25020,6 +25063,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
                         name="SelectRow7"
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -25033,7 +25078,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          Select this row 7
+                          Select row 7
                         </span>
                       </label>
                     </span>
@@ -25053,8 +25098,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 1,621 Widgets"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 1,621 Widgets
                   </a>
@@ -25148,8 +25195,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     jrogers@acme.com
                   </a>
@@ -25183,7 +25232,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -25233,6 +25282,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
                         name="SelectRow8"
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -25246,7 +25297,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          Select this row 8
+                          Select row 8
                         </span>
                       </label>
                     </span>
@@ -25266,8 +25317,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 430 Widgets"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 430 Widgets
                   </a>
@@ -25361,8 +25414,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     bob@acme.com
                   </a>
@@ -25396,7 +25451,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -25446,6 +25501,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
                         name="SelectRow9"
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -25459,7 +25516,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          Select this row 9
+                          Select row 9
                         </span>
                       </label>
                     </span>
@@ -25479,8 +25536,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="salesforce.com - 677 Widgets"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     salesforce.com - 677 Widgets
                   </a>
@@ -25574,8 +25633,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     nathan@salesforce.com
                   </a>
@@ -25609,7 +25670,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -25659,6 +25720,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
                         name="SelectRow10"
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -25672,7 +25735,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          Select this row 10
+                          Select row 10
                         </span>
                       </label>
                     </span>
@@ -25692,8 +25755,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 1,444 Widgets"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 1,444 Widgets
                   </a>
@@ -25787,8 +25852,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="jrogers@acme.com"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     jrogers@acme.com
                   </a>
@@ -25822,7 +25889,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -25872,6 +25939,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
                         name="SelectRow11"
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -25885,7 +25954,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          Select this row 11
+                          Select row 11
                         </span>
                       </label>
                     </span>
@@ -25905,8 +25974,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="Acme - 320 Widgets"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     Acme - 320 Widgets
                   </a>
@@ -26000,8 +26071,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="bob@acme.com"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     bob@acme.com
                   </a>
@@ -26035,7 +26108,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -26085,6 +26158,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
                         name="SelectRow12"
                         onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
@@ -26098,7 +26173,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         <span
                           className="slds-assistive-text"
                         >
-                          Select this row 12
+                          Select row 12
                         </span>
                       </label>
                     </span>
@@ -26118,8 +26193,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="salesforce.com - 4,000 Widgets"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     salesforce.com - 4,000 Widgets
                   </a>
@@ -26213,8 +26290,10 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   title="nathan@salesforce.com"
                 >
                   <a
-                    href="#"
                     onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
                   >
                     nathan@salesforce.com
                   </a>
@@ -26248,7 +26327,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
-                    tabIndex="0"
+                    tabIndex="-1"
                     type="button"
                   >
                     <svg
@@ -26825,7 +26904,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 1,200 Widgets"
                 >
-                  Acme - 1,200 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 1,200 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -26915,7 +27001,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="jrogers@acme.com"
                 >
-                  jrogers@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    jrogers@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -26934,7 +27027,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 200 Widgets"
                 >
-                  Acme - 200 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 200 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -27024,7 +27124,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="bob@acme.com"
                 >
-                  bob@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    bob@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -27043,7 +27150,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="salesforce.com - 1,000 Widgets"
                 >
-                  salesforce.com - 1,000 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    salesforce.com - 1,000 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -27133,7 +27247,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="nathan@salesforce.com"
                 >
-                  nathan@salesforce.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    nathan@salesforce.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -27152,7 +27273,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 800 Widgets"
                 >
-                  Acme - 800 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 800 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -27242,7 +27370,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="jrogers@acme.com"
                 >
-                  jrogers@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    jrogers@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -27261,7 +27396,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 744 Widgets"
                 >
-                  Acme - 744 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 744 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -27351,7 +27493,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="bob@acme.com"
                 >
-                  bob@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    bob@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -27370,7 +27519,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="salesforce.com - 847 Widgets"
                 >
-                  salesforce.com - 847 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    salesforce.com - 847 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -27460,7 +27616,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="nathan@salesforce.com"
                 >
-                  nathan@salesforce.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    nathan@salesforce.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -27479,7 +27642,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 1,621 Widgets"
                 >
-                  Acme - 1,621 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 1,621 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -27569,7 +27739,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="jrogers@acme.com"
                 >
-                  jrogers@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    jrogers@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -27588,7 +27765,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 430 Widgets"
                 >
-                  Acme - 430 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 430 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -27678,7 +27862,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="bob@acme.com"
                 >
-                  bob@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    bob@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -27697,7 +27888,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="salesforce.com - 677 Widgets"
                 >
-                  salesforce.com - 677 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    salesforce.com - 677 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -27787,7 +27985,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="nathan@salesforce.com"
                 >
-                  nathan@salesforce.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    nathan@salesforce.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -27806,7 +28011,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 1,444 Widgets"
                 >
-                  Acme - 1,444 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 1,444 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -27896,7 +28108,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="jrogers@acme.com"
                 >
-                  jrogers@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    jrogers@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -27915,7 +28134,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 320 Widgets"
                 >
-                  Acme - 320 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 320 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -28005,7 +28231,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="bob@acme.com"
                 >
-                  bob@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    bob@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -28024,7 +28257,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="salesforce.com - 4,000 Widgets"
                 >
-                  salesforce.com - 4,000 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    salesforce.com - 4,000 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -28114,7 +28354,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="nathan@salesforce.com"
                 >
-                  nathan@salesforce.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    nathan@salesforce.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -28662,12 +28909,20 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                 onKeyDown={[Function]}
                 role="gridcell"
                 style={null}
+                tabIndex="0"
               >
                 <div
                   className="slds-truncate"
                   title="Acme - 1,200 Widgets"
                 >
-                  Acme - 1,200 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 1,200 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -28757,7 +29012,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="jrogers@acme.com"
                 >
-                  jrogers@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    jrogers@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -28776,7 +29038,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 200 Widgets"
                 >
-                  Acme - 200 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 200 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -28866,7 +29135,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="bob@acme.com"
                 >
-                  bob@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    bob@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -28885,7 +29161,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="salesforce.com - 1,000 Widgets"
                 >
-                  salesforce.com - 1,000 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    salesforce.com - 1,000 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -28975,7 +29258,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="nathan@salesforce.com"
                 >
-                  nathan@salesforce.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    nathan@salesforce.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -28994,7 +29284,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 800 Widgets"
                 >
-                  Acme - 800 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 800 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -29084,7 +29381,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="jrogers@acme.com"
                 >
-                  jrogers@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    jrogers@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -29103,7 +29407,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 744 Widgets"
                 >
-                  Acme - 744 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 744 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -29193,7 +29504,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="bob@acme.com"
                 >
-                  bob@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    bob@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -29212,7 +29530,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="salesforce.com - 847 Widgets"
                 >
-                  salesforce.com - 847 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    salesforce.com - 847 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -29302,7 +29627,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="nathan@salesforce.com"
                 >
-                  nathan@salesforce.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    nathan@salesforce.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -29321,7 +29653,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 1,621 Widgets"
                 >
-                  Acme - 1,621 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 1,621 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -29411,7 +29750,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="jrogers@acme.com"
                 >
-                  jrogers@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    jrogers@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -29430,7 +29776,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 430 Widgets"
                 >
-                  Acme - 430 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 430 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -29520,7 +29873,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="bob@acme.com"
                 >
-                  bob@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    bob@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -29539,7 +29899,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="salesforce.com - 677 Widgets"
                 >
-                  salesforce.com - 677 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    salesforce.com - 677 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -29629,7 +29996,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="nathan@salesforce.com"
                 >
-                  nathan@salesforce.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    nathan@salesforce.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -29648,7 +30022,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 1,444 Widgets"
                 >
-                  Acme - 1,444 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 1,444 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -29738,7 +30119,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="jrogers@acme.com"
                 >
-                  jrogers@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    jrogers@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -29757,7 +30145,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="Acme - 320 Widgets"
                 >
-                  Acme - 320 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    Acme - 320 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -29847,7 +30242,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="bob@acme.com"
                 >
-                  bob@acme.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    bob@acme.com
+                  </a>
                 </div>
               </td>
             </tr>
@@ -29866,7 +30268,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="salesforce.com - 4,000 Widgets"
                 >
-                  salesforce.com - 4,000 Widgets
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    salesforce.com - 4,000 Widgets
+                  </a>
                 </div>
               </td>
               <td
@@ -29956,7 +30365,14 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
                   className="slds-truncate"
                   title="nathan@salesforce.com"
                 >
-                  nathan@salesforce.com
+                  <a
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    tabIndex="-1"
+                  >
+                    nathan@salesforce.com
+                  </a>
                 </div>
               </td>
             </tr>

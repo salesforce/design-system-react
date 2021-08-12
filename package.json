@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.10.35",
+	"version": "0.10.36",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
@@ -1917,6 +1917,14 @@
 				{
 					"heading": "Default",
 					"path": "/__examples__/default.jsx"
+				},
+				{
+					"heading": "Items with Icons",
+					"path": "/__examples__/icons.jsx"
+				},
+				{
+					"heading": "Items with Notifications",
+					"path": "/__examples__/notifications.jsx"
 				}
 			],
 			"url-slug": "vertical-navigation"

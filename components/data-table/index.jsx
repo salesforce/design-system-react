@@ -68,7 +68,7 @@ const defaultProps = {
 	hasMore: false,
 	loadMoreOffset: 20,
 	resizable: false,
-	resizerOptions: {
+	resizableOptions: {
 		resizeMode: 'flex',
 		draggingClass: 'slds-table-column-resizer',
 	},
@@ -293,19 +293,17 @@ class DataTable extends React.Component {
 		unbufferedCell: PropTypes.bool,
 		/**
 		 * A variant which allows column dividers to be grabbed with the mouse. This feature needs
-		 * `@salesforce/design-system-react/assets/styles/table.css` to be loaded.
+		 * `@salesforce/design-system-react/assets/styles/table.css` to be loaded. This prop is in prototype` state. a) It may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required.
 		 */
 		resizable: PropTypes.bool,
 		/**
 		 * Object with properties to be used in case of resizable: true
 		 *
 		 * resizeMode: It is used to set how the resize method works. Those are the possible values: 'fit', 'flex' and 'overflow'
-		 * disable: It is used for disable the resize functionality, default is false
-		 * disabledColumns: Array of indexes for the columns to be disabled
-		 * widths: An array of column widths to set the initial width.
 		 * onResize: Callback function to be fired when the user has ended dragging a column
+		 * `@salesforce/design-system-react/assets/styles/table.css` to be loaded. This prop is in prototype` state. a) It may change within a minor release. (b) Web Content Accessibility Guidelines may not be met. (c) CSS imports may be required.
 		 */
-		resizerOptions: PropTypes.object,
+		resizableOptions: PropTypes.object,
 	};
 
 	static defaultProps = defaultProps;
@@ -614,11 +612,11 @@ class DataTable extends React.Component {
 
 			if (!this.resizer) {
 				const options = {
-					...defaultProps.resizerOptions,
-					...this.props.resizerOptions,
+					...defaultProps.resizableOptions,
+					...this.props.resizableOptions,
 				};
 
-				const externalFunction = this.props.resizerOptions.onResize;
+				const externalFunction = this.props.resizableOptions.onResize;
 				options.onResize = (e) => {
 					if (fixedHeader) {
 						this.resizeFixedHeaders(e);

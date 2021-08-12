@@ -28,7 +28,7 @@
 		}
 	],
 	"site-stories": [
-		{
+    {
 			"heading": "Basic",
 			"path": "/__examples__/basic-fluid.jsx"
 		},
@@ -65,8 +65,8 @@
 			"path": "/__examples__/fixed-header.jsx"
 		},
 		{
-			"heading": "Advanced: Joined with Page Header",
-			"path": "/__examples__/joined-with-page-header.jsx"
+      "heading": "Advanced: Joined with Page Header",
+      "path": "/__examples__/joined-with-page-header.jsx"
 		},
 		{
 			"heading": "Custom Classes",
