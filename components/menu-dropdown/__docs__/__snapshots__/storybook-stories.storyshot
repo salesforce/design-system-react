@@ -307,6 +307,105 @@ exports[`DOM snapshots SLDSMenuDropdown Checkmark 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSMenuDropdown Checkmark multiple 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        Checkmark 
+      </span>
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click"
+        id="checkmark-menu-dropdown"
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="slds-button slds-button_icon-border-filled ignore-click-checkmark-menu-dropdown"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Checkmark
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        Checkmark with right icon 
+      </span>
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click"
+        id="checkmark-menu-dropdown-right-icon"
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="slds-button slds-button_icon-more slds-button_icon-large ignore-click-checkmark-menu-dropdown-right-icon"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#table"
+            />
+          </svg>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Checkmark with right icon
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`DOM snapshots SLDSMenuDropdown Checkmark open menu 1`] = `
 <div
   className="slds-p-around_medium slds-text-align_center"

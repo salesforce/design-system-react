@@ -380,12 +380,18 @@ describe('SLDSMenuDropdown', function () {
 			firstNode.simulate('click');
 			const secondNode = openNodes.menu.find('.slds-dropdown__item a').at(2);
 			secondNode.simulate('click');
-      const thirdNode = openNodes.menu.find('.slds-dropdown__item a').at(3);
+			const thirdNode = openNodes.menu.find('.slds-dropdown__item a').at(3);
 			openNodes = getNodes({ wrapper: this.wrapper });
 			// item with checkmark has proper aria markup
-			expect(firstNode.getDOMNode().getAttribute('aria-checked')).to.equal('true');
-			expect(secondNode.getDOMNode().getAttribute('aria-checked')).to.equal('true');
-      expect(thirdNode.getDOMNode().getAttribute('aria-checked')).to.equal(null);
+			expect(firstNode.getDOMNode().getAttribute('aria-checked')).to.equal(
+				'true'
+			);
+			expect(secondNode.getDOMNode().getAttribute('aria-checked')).to.equal(
+				'true'
+			);
+			expect(thirdNode.getDOMNode().getAttribute('aria-checked')).to.equal(
+				null
+			);
 			expect(firstNode).attr('role', 'menuitemcheckbox');
 		});
 	});
