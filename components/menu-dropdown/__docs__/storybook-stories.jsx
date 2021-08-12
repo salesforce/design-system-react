@@ -437,9 +437,16 @@ storiesOf(MENU_DROPDOWN, module)
 			})}
 		</div>
 	))
-	.add('Checkmark', () => <CheckmarkMenuDropdown />)
-	.add('Checkmark open menu', () => <CheckmarkMenuDropdown isOpen />)
-	.add('Checkmark, right-to-left', () =>
+	.add('Checkmark', () =>
+      <CheckmarkMenuDropdown/>
+	)
+	.add('Checkmark open menu', () =>
+      <CheckmarkMenuDropdown isOpen />
+	)
+	.add('Checkmark multiple', () =>
+      <CheckmarkMenuDropdown multiple />
+	)
+  .add('Checkmark, right-to-left', () =>
 		makeRtl(
 			getDropdown({
 				assistiveText: { icon: 'More Options' },
