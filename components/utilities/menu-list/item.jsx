@@ -48,6 +48,7 @@ class ListItem extends React.Component {
 		index: PropTypes.number.isRequired,
 		inverted: PropTypes.bool,
 		isSelected: PropTypes.bool,
+		isCheckmarkVariant: PropTypes.bool,
 		label: PropTypes.string,
 		labelRenderer: PropTypes.func,
 		leftIcon: PropTypes.shape({
@@ -96,7 +97,7 @@ class ListItem extends React.Component {
 		let iconProps = this.props[`${position}Icon`];
 
 		if (position === 'left') {
-			if (this.props.checkmark) {
+			if (this.props.isCheckmarkVariant) {
 				// eslint-disable-next-line fp/no-mutating-methods
 				classnames.push('slds-icon_selected');
 				iconProps = {
@@ -180,7 +181,9 @@ class ListItem extends React.Component {
 				/* eslint-disable jsx-a11y/role-supports-aria-props */
 				let itemContents = (
 					<a
-						aria-checked={this.props.checkmark && this.props.isSelected}
+						aria-checked={
+							this.props.checkmark && this.props.isSelected ? true : undefined
+						}
 						aria-disabled={this.props['aria-disabled']}
 						href={this.props.href}
 						data-index={this.props.index}
