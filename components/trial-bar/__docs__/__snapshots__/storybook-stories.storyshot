@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSTrialBar Default 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-trial-header slds-grid"
+    >
+      <div
+        className="slds-grid"
+      >
+        <button
+          className="slds-button slds-button_inverse slds-m-right_small"
+          disabled={false}
+          onClick={[Function]}
+          style={
+            Object {
+              "border": 0,
+              "padding": 0,
+            }
+          }
+          type="button"
+        >
+          Take the salesforce tour
+        </button>
+        <div
+          className="slds-dropdown-trigger slds-dropdown-trigger_click slds-grid"
+          id="dropdown"
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+        >
+          <button
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="slds-button slds-button_inverse ignore-click-dropdown"
+            disabled={false}
+            onClick={[Function]}
+            style={
+              Object {
+                "border": 0,
+                "height": "100%",
+                "padding": 0,
+              }
+            }
+            tabIndex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon slds-button__icon_left"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#right"
+              />
+            </svg>
+            Choose your tour
+          </button>
+        </div>
+      </div>
+      <div
+        className="slds-grid slds-grid_vertical-align-center slds-col_bump-left"
+      >
+        <span
+          className="slds-box slds-box_xx-small slds-theme_default"
+        >
+          30
+        </span>
+        <span
+          className="slds-m-horizontal_x-small"
+        >
+          days
+           left in trial
+        </span>
+        <button
+          className="slds-button slds-button_success"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          Subscribe Now
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

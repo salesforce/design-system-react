@@ -1,0 +1,1965 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSTree Assistive Heading 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-tree_container"
+      id="example-tree"
+    >
+      <h4
+        className="slds-tree__group-header slds-assistive-text"
+        id="example-tree__heading"
+      >
+        Miscellaneous Foods
+      </h4>
+      <ul
+        aria-labelledby="example-tree__heading"
+        className="slds-tree"
+        onScroll={[Function]}
+        role="tree"
+      >
+        <li
+          aria-level={1}
+          aria-selected="false"
+          id="example-tree-1"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={0}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small slds-is-disabled"
+              disabled={true}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Grains"
+              >
+                Grains
+              </span>
+            </span>
+          </div>
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label="Fruits"
+          aria-level={1}
+          id="example-tree-2"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-2"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-2__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Fruits"
+              >
+                Fruits
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-2__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label="Nuts"
+          aria-level={1}
+          id="example-tree-3"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-3"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-3__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Nuts"
+              >
+                Nuts
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-3__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label={null}
+          aria-level={1}
+          id="example-tree-7"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-7"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-7__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Empty folder"
+              >
+                Empty folder
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-7__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTree Base 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-tree_container"
+      id="example-tree"
+    >
+      <h4
+        className="slds-tree__group-header"
+        id="example-tree__heading"
+      >
+        Miscellaneous Foods
+      </h4>
+      <ul
+        aria-labelledby="example-tree__heading"
+        className="slds-tree"
+        onScroll={[Function]}
+        role="tree"
+      >
+        <li
+          aria-level={1}
+          aria-selected="false"
+          id="example-tree-1"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={0}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small slds-is-disabled"
+              disabled={true}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Grains"
+              >
+                Grains
+              </span>
+            </span>
+          </div>
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label="Fruits"
+          aria-level={1}
+          id="example-tree-2"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-2"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-2__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Fruits"
+              >
+                Fruits
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-2__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label="Nuts"
+          aria-level={1}
+          id="example-tree-3"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-3"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-3__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Nuts"
+              >
+                Nuts
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-3__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label={null}
+          aria-level={1}
+          id="example-tree-7"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-7"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-7__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Empty folder"
+              >
+                Empty folder
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-7__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTree Base with stencil 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-tree_container"
+      id="example-tree"
+    >
+      <h4
+        className="slds-tree__group-header"
+        id="example-tree__heading"
+      >
+        Miscellaneous Foods
+      </h4>
+      <ul
+        aria-labelledby="example-tree__heading"
+        className="slds-tree"
+        onScroll={[Function]}
+        role="tree"
+      >
+        <li
+          aria-level={1}
+          aria-selected="false"
+          id="example-tree-1"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={0}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small slds-is-disabled"
+              disabled={true}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Grains"
+              >
+                Grains
+              </span>
+            </span>
+          </div>
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label="Fruits"
+          aria-level={1}
+          id="example-tree-2"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-2"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-2__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Fruits"
+              >
+                Fruits
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-2__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label="Nuts"
+          aria-level={1}
+          id="example-tree-3"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-3"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-3__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Nuts"
+              >
+                Nuts
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-3__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label={null}
+          aria-level={1}
+          id="example-tree-7"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-7"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-7__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Empty folder"
+              >
+                Empty folder
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-7__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTree Highlighted Search 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label slds-assistive-text"
+          htmlFor="example-search"
+        >
+          Search Tree
+        </label>
+        <div
+          className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+        >
+          <svg
+            aria-hidden={true}
+            className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+            />
+          </svg>
+          <input
+            className="slds-input"
+            id="example-search"
+            onChange={[Function]}
+            onKeyDown={null}
+            type="text"
+            value="fruit"
+          />
+        </div>
+      </div>
+      <br />
+    </div>
+    <div
+      className="slds-tree_container"
+      id="example-tree"
+    >
+      <h4
+        className="slds-tree__group-header"
+        id="example-tree__heading"
+      >
+        Miscellaneous Foods
+      </h4>
+      <ul
+        aria-labelledby="example-tree__heading"
+        className="slds-tree"
+        onScroll={[Function]}
+        role="tree"
+      >
+        <li
+          aria-level={1}
+          aria-selected="false"
+          id="example-tree-1"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={0}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small slds-is-disabled"
+              disabled={true}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+            >
+              <span>
+                <span
+                  className="slds-tree__item-label slds-truncate"
+                  title="Grains"
+                >
+                  <span>
+                    Grains
+                  </span>
+                </span>
+              </span>
+            </span>
+          </div>
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label="Fruits"
+          aria-level={1}
+          id="example-tree-2"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-2"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-2__label"
+            >
+              <span>
+                <span
+                  className="slds-tree__item-label slds-truncate"
+                  title="Fruits"
+                >
+                  <mark
+                    className={null}
+                    style={Object {}}
+                  >
+                    Fruit
+                  </mark>
+                  <span>
+                    s
+                  </span>
+                </span>
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-2__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label="Nuts"
+          aria-level={1}
+          id="example-tree-3"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-3"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-3__label"
+            >
+              <span>
+                <span
+                  className="slds-tree__item-label slds-truncate"
+                  title="Nuts"
+                >
+                  <span>
+                    Nuts
+                  </span>
+                </span>
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-3__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label={null}
+          aria-level={1}
+          id="example-tree-7"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-7"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-7__label"
+            >
+              <span>
+                <span
+                  className="slds-tree__item-label slds-truncate"
+                  title="Empty folder"
+                >
+                  <span>
+                    Empty folder
+                  </span>
+                </span>
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-7__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTree Initial Expanded/Selected 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-tree_container"
+      id="example-tree"
+    >
+      <h4
+        className="slds-tree__group-header"
+        id="example-tree__heading"
+      >
+        Miscellaneous Foods
+      </h4>
+      <ul
+        aria-labelledby="example-tree__heading"
+        className="slds-tree"
+        onScroll={[Function]}
+        role="tree"
+      >
+        <li
+          aria-level={1}
+          aria-selected="false"
+          id="example-tree-1"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small slds-is-disabled"
+              disabled={true}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Grains"
+              >
+                Grains
+              </span>
+            </span>
+          </div>
+        </li>
+        <li
+          aria-expanded="true"
+          aria-label="Fruits"
+          aria-level={1}
+          id="example-tree-2"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={0}
+        >
+          <div
+            className="slds-tree__item slds-is-selected"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-2"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-2__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Fruits"
+              >
+                Fruits
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-2__label"
+            className="slds-is-expanded"
+            role="group"
+          >
+            <li
+              aria-expanded="true"
+              aria-label="Ground Fruits"
+              aria-level={2}
+              id="example-tree-4"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="treeitem"
+              tabIndex={-1}
+            >
+              <div
+                className="slds-tree__item"
+                onClick={[Function]}
+              >
+                <button
+                  aria-controls="example-tree-4"
+                  aria-hidden={true}
+                  className="slds-button slds-button_icon slds-m-right_small"
+                  disabled={false}
+                  onClick={[Function]}
+                  tabIndex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-button__icon slds-button__icon_small"
+                  >
+                    <use
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Expand Tree Branch
+                  </span>
+                </button>
+                <span
+                  className="slds-size_1-of-1"
+                  id="example-tree-4__label"
+                >
+                  <span
+                    className="slds-tree__item-label slds-truncate"
+                    title="Ground Fruits"
+                  >
+                    Ground Fruits
+                  </span>
+                </span>
+              </div>
+              <ul
+                aria-labelledby="example-tree-4__label"
+                className="slds-is-expanded"
+                role="group"
+              >
+                <li
+                  aria-level={3}
+                  aria-selected="true"
+                  id="example-tree-12"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  role="treeitem"
+                  tabIndex={-1}
+                >
+                  <div
+                    className="slds-tree__item slds-is-selected"
+                    onClick={[Function]}
+                  >
+                    <button
+                      aria-hidden={true}
+                      className="slds-button slds-button_icon slds-m-right_small slds-is-disabled"
+                      disabled={true}
+                      onClick={[Function]}
+                      tabIndex="-1"
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-button__icon slds-button__icon_small"
+                      >
+                        <use
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                        />
+                      </svg>
+                    </button>
+                    <span
+                      className="slds-size_1-of-1"
+                    >
+                      <span
+                        className="slds-tree__item-label slds-truncate"
+                        title="Watermelon"
+                      >
+                        Watermelon
+                      </span>
+                    </span>
+                  </div>
+                </li>
+                <li
+                  aria-level={3}
+                  aria-selected="false"
+                  id="example-tree-13"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  role="treeitem"
+                  tabIndex={-1}
+                >
+                  <div
+                    className="slds-tree__item"
+                    onClick={[Function]}
+                  >
+                    <button
+                      aria-hidden={true}
+                      className="slds-button slds-button_icon slds-m-right_small slds-is-disabled"
+                      disabled={true}
+                      onClick={[Function]}
+                      tabIndex="-1"
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-button__icon slds-button__icon_small"
+                      >
+                        <use
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                        />
+                      </svg>
+                    </button>
+                    <span
+                      className="slds-size_1-of-1"
+                    >
+                      <span
+                        className="slds-tree__item-label slds-truncate"
+                        title="Canteloupe"
+                      >
+                        Canteloupe
+                      </span>
+                    </span>
+                  </div>
+                </li>
+                <li
+                  aria-level={3}
+                  aria-selected="false"
+                  id="example-tree-14"
+                  onBlur={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  role="treeitem"
+                  tabIndex={-1}
+                >
+                  <div
+                    className="slds-tree__item"
+                    onClick={[Function]}
+                  >
+                    <button
+                      aria-hidden={true}
+                      className="slds-button slds-button_icon slds-m-right_small slds-is-disabled"
+                      disabled={true}
+                      onClick={[Function]}
+                      tabIndex="-1"
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="slds-button__icon slds-button__icon_small"
+                      >
+                        <use
+                          href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                        />
+                      </svg>
+                    </button>
+                    <span
+                      className="slds-size_1-of-1"
+                    >
+                      <span
+                        className="slds-tree__item-label slds-truncate"
+                        title="Strawberries"
+                      >
+                        Strawberries
+                      </span>
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li
+              aria-expanded="false"
+              aria-label="Tree Fruits"
+              aria-level={2}
+              id="example-tree-5"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              role="treeitem"
+              tabIndex={-1}
+            >
+              <div
+                className="slds-tree__item slds-is-selected"
+                onClick={[Function]}
+              >
+                <button
+                  aria-controls="example-tree-5"
+                  aria-hidden={true}
+                  className="slds-button slds-button_icon slds-m-right_small"
+                  disabled={false}
+                  onClick={[Function]}
+                  tabIndex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="slds-button__icon slds-button__icon_small"
+                  >
+                    <use
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                    />
+                  </svg>
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Expand Tree Branch
+                  </span>
+                </button>
+                <span
+                  className="slds-size_1-of-1"
+                  id="example-tree-5__label"
+                >
+                  <span
+                    className="slds-tree__item-label slds-truncate"
+                    title="Tree Fruits"
+                  >
+                    Tree Fruits
+                  </span>
+                </span>
+              </div>
+              <ul
+                aria-labelledby="example-tree-5__label"
+                className="slds-is-collapsed"
+                role="group"
+              />
+            </li>
+          </ul>
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label="Nuts"
+          aria-level={1}
+          id="example-tree-3"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-3"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-3__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Nuts"
+              >
+                Nuts
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-3__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+        <li
+          aria-expanded="true"
+          aria-label={null}
+          aria-level={1}
+          id="example-tree-7"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-7"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-7__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Empty folder"
+              >
+                Empty folder
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-7__label"
+            className="slds-is-expanded"
+            role="group"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTree Multiple Selection 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-tree_container"
+      id="example-tree"
+    >
+      <h4
+        className="slds-tree__group-header"
+        id="example-tree__heading"
+      >
+        Miscellaneous Foods
+      </h4>
+      <ul
+        aria-labelledby="example-tree__heading"
+        className="slds-tree"
+        onScroll={[Function]}
+        role="tree"
+      >
+        <li
+          aria-level={1}
+          aria-selected="false"
+          id="example-tree-1"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={0}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small slds-is-disabled"
+              disabled={true}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Grains"
+              >
+                Grains
+              </span>
+            </span>
+          </div>
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label="Fruits"
+          aria-level={1}
+          id="example-tree-2"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-2"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-2__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Fruits"
+              >
+                Fruits
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-2__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label="Nuts"
+          aria-level={1}
+          id="example-tree-3"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-3"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-3__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Nuts"
+              >
+                Nuts
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-3__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label={null}
+          aria-level={1}
+          id="example-tree-7"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-7"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-7__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Empty folder"
+              >
+                Empty folder
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-7__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSTree No Branch Select 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div
+      className="slds-tree_container"
+      id="example-tree"
+    >
+      <h4
+        className="slds-tree__group-header"
+        id="example-tree__heading"
+      >
+        Miscellaneous Foods
+      </h4>
+      <ul
+        aria-labelledby="example-tree__heading"
+        className="slds-tree"
+        onScroll={[Function]}
+        role="tree"
+      >
+        <li
+          aria-level={1}
+          aria-selected="false"
+          id="example-tree-1"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={0}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small slds-is-disabled"
+              disabled={true}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Grains"
+              >
+                Grains
+              </span>
+            </span>
+          </div>
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label="Fruits"
+          aria-level={1}
+          id="example-tree-2"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-2"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-2__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Fruits"
+              >
+                Fruits
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-2__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label="Nuts"
+          aria-level={1}
+          id="example-tree-3"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-3"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-3__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Nuts"
+              >
+                Nuts
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-3__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+        <li
+          aria-expanded="false"
+          aria-label={null}
+          aria-level={1}
+          id="example-tree-7"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="treeitem"
+          tabIndex={-1}
+        >
+          <div
+            className="slds-tree__item"
+            onClick={[Function]}
+          >
+            <button
+              aria-controls="example-tree-7"
+              aria-hidden={true}
+              className="slds-button slds-button_icon slds-m-right_small"
+              disabled={false}
+              onClick={[Function]}
+              tabIndex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon slds-button__icon_small"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Expand Tree Branch
+              </span>
+            </button>
+            <span
+              className="slds-size_1-of-1"
+              id="example-tree-7__label"
+            >
+              <span
+                className="slds-tree__item-label slds-truncate"
+                title="Empty folder"
+              >
+                Empty folder
+              </span>
+            </span>
+          </div>
+          <ul
+            aria-labelledby="example-tree-7__label"
+            className="slds-is-collapsed"
+            role="group"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

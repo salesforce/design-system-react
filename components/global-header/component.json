@@ -1,0 +1,44 @@
+{
+	"component": "global-header",
+	"status": "prod",
+	"display-name": "Global Header",
+	"classKey": "GlobalHeader",
+	"SLDS-component-path": "/components/global-header#flavor-base",
+	"dependencies": [
+		{
+			"component": "favorites",
+			"classKey": "GlobalHeaderFavorites"
+		},
+		{
+			"component": "help",
+			"classKey": "GlobalHeaderHelp"
+		},
+		{
+			"component": "notifications",
+			"classKey": "GlobalHeaderNotifications"
+		},
+		{
+			"component": "profile",
+			"classKey": "GlobalHeaderProfile"
+		},
+		{
+			"component": "search",
+			"classKey": "GlobalHeaderSearch"
+		},
+		{
+			"component": "setup",
+			"classKey": "GlobalHeaderSetup"
+		},
+		{
+			"component": "task",
+			"classKey": "GlobalHeaderTask"
+		}
+	],
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		}
+	],
+	"url-slug": "global-headers"
+}
