@@ -6,7 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // ### ReactHighlighter
-import ReactHighlighter from 'react-highlighter';
+import ReactHighlighter from 'react-highlighter-ts';
 
 // ## Constants
 import { HIGHLIGHTER } from '../../../utilities/constants';
