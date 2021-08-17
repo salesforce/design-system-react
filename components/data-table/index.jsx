@@ -500,10 +500,13 @@ class DataTable extends React.Component {
 			this.headerRefs.action
 		);
 
+    const tableOffset = this.tableRef.getBoundingClientRect();
+
 		if (this.gripRefs) {
 			this.gripRefs.forEach((grip, index) => {
 				const header = headers[index].getBoundingClientRect();
-				const newPosition = header.left + header.width - 30;
+        const relativeOffset = header.left - tableOffset.left;
+				const newPosition = tableOffset.left + relativeOffset + header.width - 30;
 				// eslint-disable-next-line no-param-reassign
 				grip.style.left = `${newPosition}px`;
 			});
