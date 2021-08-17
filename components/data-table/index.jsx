@@ -69,7 +69,7 @@ const defaultProps = {
 	loadMoreOffset: 20,
 	resizable: false,
 	resizableOptions: {
-		resizeMode: 'flex',
+		resizeMode: 'fit',
 		draggingClass: 'slds-table-column-resizer',
 	},
 };
@@ -500,13 +500,14 @@ class DataTable extends React.Component {
 			this.headerRefs.action
 		);
 
-    const tableOffset = this.tableRef.getBoundingClientRect();
+		const tableOffset = this.tableRef.getBoundingClientRect();
 
 		if (this.gripRefs) {
 			this.gripRefs.forEach((grip, index) => {
 				const header = headers[index].getBoundingClientRect();
-        const relativeOffset = header.left - tableOffset.left;
-				const newPosition = tableOffset.left + relativeOffset + header.width - 30;
+				const relativeOffset = header.left - tableOffset.left;
+				const newPosition =
+					tableOffset.left + relativeOffset + header.width - 30;
 				// eslint-disable-next-line no-param-reassign
 				grip.style.left = `${newPosition}px`;
 			});
@@ -596,9 +597,9 @@ class DataTable extends React.Component {
 		const table = this.fixedHeaderContainer;
 
 		if (table) {
-			const grips = table.getElementsByClassName('grip-handle');
+			const grips = Array.from(table.getElementsByClassName('grip-handle'));
 
-			if (grips) {
+			if (grips.length) {
 				this.gripRefs = grips;
 				this.gripRefs.forEach((grip) => {
 					// eslint-disable-next-line no-param-reassign
@@ -1243,7 +1244,9 @@ class DataTable extends React.Component {
 						}}
 						style={{
 							height: '100%',
-							overflow: 'auto',
+							overflow: this.props.resizable ? undefined : 'auto',
+							overflowY: this.props.resizable ? 'auto' : undefined,
+							overflowX: this.props.resizable ? 'hidden' : undefined,
 						}}
 					>
 						{component}

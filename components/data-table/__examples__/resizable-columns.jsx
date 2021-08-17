@@ -195,7 +195,6 @@ class Example extends React.Component {
 								keyboardNavigation
 								fixedLayout
 								resizableOptions={{
-									resizeMode: 'overflow',
 									onResize: (columnsResized) => {
 										console.log(JSON.stringify(columnsResized));
 									},
@@ -219,7 +218,6 @@ class Example extends React.Component {
 								resizable
 								keyboardNavigation
 								resizableOptions={{
-									resizeMode: 'overflow',
 									onResize: (columnsResized) => {
 										console.log(JSON.stringify(columnsResized));
 									},

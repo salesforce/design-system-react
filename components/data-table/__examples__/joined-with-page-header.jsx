@@ -371,7 +371,6 @@ class Example extends React.Component {
 						variant="object-home"
 					/>
 					<DataTable
-						fixedHeader
 						fixedLayout
 						resizable
 						keyboardNavigation
