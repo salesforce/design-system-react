@@ -31,6 +31,10 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.37
+
+**Bugfixes**
+- 'Dropdown' - Align checkbox icon for selected and unselected options
 ## Release 0.10.36
 
 **Minor Features**

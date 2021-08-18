@@ -12,6 +12,7 @@ import { MENU_DROPDOWN } from '../../../utilities/constants';
 import Dropdown from '../../menu-dropdown';
 import { DropdownNubbinPositions } from '../../menu-dropdown/menu-dropdown';
 import DropdownWithTooltips from '../__examples__/with-tooltips';
+import CheckmarkMenuDropdown from '../__examples__/checkmark';
 import List from '../../utilities/menu-list';
 import Button from '../../button';
 import Trigger from '../../menu-dropdown/button-trigger';
@@ -436,22 +437,9 @@ storiesOf(MENU_DROPDOWN, module)
 			})}
 		</div>
 	))
-	.add('Checkmark', () =>
-		getDropdown({
-			assistiveText: { icon: 'More Options' },
-			buttonVariant: 'icon',
-			checkmark: true,
-			iconCategory: 'utility',
-			iconName: 'down',
-			iconVariant: 'border-filled',
-			id: 'checkmark',
-			onSelect: (...rest) => {
-				action('Selected')(...rest);
-			},
-			options,
-			value: 'C0',
-		})
-	)
+	.add('Checkmark', () => <CheckmarkMenuDropdown />)
+	.add('Checkmark open menu', () => <CheckmarkMenuDropdown isOpen />)
+	.add('Checkmark multiple', () => <CheckmarkMenuDropdown multiple />)
 	.add('Checkmark, right-to-left', () =>
 		makeRtl(
 			getDropdown({
