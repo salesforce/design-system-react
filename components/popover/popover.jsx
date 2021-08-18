@@ -131,7 +131,7 @@ class Popover extends React.Component {
 		 */
 		body: PropTypes.oneOfType([PropTypes.node, PropTypes.array]).isRequired,
 		/**
-		 * CSS classes to be added to the popover footer. That is the element with `.slds-popover__body` on it.
+		 * CSS classes to be added to the popover body. That is the element with `.slds-popover__body` on it.
 		 */
 		classNameBody: PropTypes.oneOfType([
 			PropTypes.array,
