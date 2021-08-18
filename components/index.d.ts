@@ -26,6 +26,8 @@ export { default as Breadcrumb } from './breadcrumb';
 export { default as SLDSBreadcrumb } from './breadcrumb';
 export { default as BuilderHeader } from './builder-header';
 export { default as SLDSBuilderHeader } from './builder-header';
+export { default as BuilderHeaderUtilities } from './builder-header/utilities';
+export { default as SLDSBuilderHeaderUtilities } from './builder-header/utilities';
 export { default as BuilderHeaderMisc } from './builder-header/misc';
 export { default as SLDSBuilderHeaderMisc } from './builder-header/misc';
 export { default as BuilderHeaderNav } from './builder-header/nav';
