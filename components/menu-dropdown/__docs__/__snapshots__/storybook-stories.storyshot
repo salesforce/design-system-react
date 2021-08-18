@@ -213,37 +213,563 @@ exports[`DOM snapshots SLDSMenuDropdown Checkmark 1`] = `
   className="slds-p-around_medium slds-text-align_center"
 >
   <div
-    className="slds-dropdown-trigger slds-dropdown-trigger_click"
-    id="checkmark"
-    onClick={[Function]}
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseEnter={null}
-    onMouseLeave={null}
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
   >
-    <button
-      aria-expanded={false}
-      aria-haspopup={true}
-      className="slds-button slds-button_icon-border-filled ignore-click-checkmark"
-      disabled={false}
-      onClick={[Function]}
-      tabIndex="0"
-      type="button"
+    <div
+      className="slds-col_padded"
     >
-      <svg
-        aria-hidden="true"
-        className="slds-button__icon"
-      >
-        <use
-          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
-        />
-      </svg>
-      <span
-        className="slds-assistive-text"
-      >
-        More Options
+      <span>
+        Checkmark 
       </span>
-    </button>
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click"
+        id="checkmark-menu-dropdown"
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="slds-button slds-button_icon-border-filled ignore-click-checkmark-menu-dropdown"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Checkmark
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        Checkmark with right icon 
+      </span>
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click"
+        id="checkmark-menu-dropdown-right-icon"
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="slds-button slds-button_icon-more slds-button_icon-large ignore-click-checkmark-menu-dropdown-right-icon"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#table"
+            />
+          </svg>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Checkmark with right icon
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Checkmark multiple 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        Checkmark 
+      </span>
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click"
+        id="checkmark-menu-dropdown"
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="slds-button slds-button_icon-border-filled ignore-click-checkmark-menu-dropdown"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Checkmark
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        Checkmark with right icon 
+      </span>
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click"
+        id="checkmark-menu-dropdown-right-icon"
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <button
+          aria-expanded={false}
+          aria-haspopup={true}
+          className="slds-button slds-button_icon-more slds-button_icon-large ignore-click-checkmark-menu-dropdown-right-icon"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#table"
+            />
+          </svg>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Checkmark with right icon
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSMenuDropdown Checkmark open menu 1`] = `
+<div
+  className="slds-p-around_medium slds-text-align_center"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        Checkmark 
+      </span>
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+        id="checkmark-menu-dropdown"
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <button
+          aria-expanded={true}
+          aria-haspopup={true}
+          className="slds-button slds-button_icon-border-filled ignore-click-checkmark-menu-dropdown"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="-1"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Checkmark
+          </span>
+        </button>
+        <div
+          className="absolute-positioned slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
+          onKeyDown={[Function]}
+          style={
+            Object {
+              "outline": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+            }
+          }
+        >
+          <ul
+            aria-labelledby="checkmark-menu-dropdown"
+            className="dropdown__list slds-dropdown_length-5"
+            role="menu"
+          >
+            <li
+              aria-selected={null}
+              className="slds-dropdown__item slds-is-selected"
+              id="checkmark-menu-dropdown-item-0"
+              onMouseDown={[Function]}
+              role="presentation"
+            >
+              <a
+                aria-checked={true}
+                data-index={0}
+                href="#"
+                onClick={[Function]}
+                role="menuitemcheckbox"
+                tabIndex="-1"
+              >
+                <span
+                  className="slds-truncate"
+                  title="Menu Item One"
+                >
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon-text-default slds-icon_selected slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                  Menu Item One
+                </span>
+              </a>
+            </li>
+            <li
+              aria-selected={null}
+              className="slds-dropdown__item"
+              id="checkmark-menu-dropdown-item-1"
+              onMouseDown={[Function]}
+              role="presentation"
+            >
+              <a
+                data-index={1}
+                href="#"
+                onClick={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                <span
+                  className="slds-truncate"
+                  title="Menu Item Two"
+                >
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon-text-default slds-icon_selected slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                  Menu Item Two
+                </span>
+              </a>
+            </li>
+            <li
+              aria-selected={null}
+              className="slds-dropdown__item"
+              id="checkmark-menu-dropdown-item-2"
+              onMouseDown={[Function]}
+              role="presentation"
+            >
+              <a
+                data-index={2}
+                href="#"
+                onClick={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                <span
+                  className="slds-truncate"
+                  title="Menu Item Three"
+                >
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon-text-default slds-icon_selected slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                  Menu Item Three
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        Checkmark with right icon 
+      </span>
+      <div
+        className="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+        id="checkmark-menu-dropdown-right-icon"
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={null}
+        onMouseLeave={null}
+      >
+        <button
+          aria-expanded={true}
+          aria-haspopup={true}
+          className="slds-button slds-button_icon-more slds-button_icon-large ignore-click-checkmark-menu-dropdown-right-icon"
+          disabled={false}
+          onClick={[Function]}
+          tabIndex="-1"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#table"
+            />
+          </svg>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Checkmark with right icon
+          </span>
+        </button>
+        <div
+          className="absolute-positioned slds-dropdown slds-dropdown_medium slds-text-align_left ignore-react-onclickoutside slds-dropdown_top slds-dropdown_left"
+          onKeyDown={[Function]}
+          style={
+            Object {
+              "outline": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+            }
+          }
+        >
+          <ul
+            aria-labelledby="checkmark-menu-dropdown-right-icon"
+            className="dropdown__list slds-dropdown_length-5"
+            role="menu"
+          >
+            <li
+              aria-selected={null}
+              className="slds-dropdown__item slds-is-selected"
+              id="checkmark-menu-dropdown-right-icon-item-0"
+              onMouseDown={[Function]}
+              role="presentation"
+            >
+              <a
+                aria-checked={true}
+                data-index={0}
+                href="#"
+                onClick={[Function]}
+                role="menuitemcheckbox"
+                tabIndex="-1"
+              >
+                <span
+                  className="slds-truncate"
+                  title="Table View"
+                >
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon-text-default slds-icon_selected slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                  Table View
+                </span>
+                <span>
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                  >
+                    <use
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#table"
+                    />
+                  </svg>
+                  
+                </span>
+              </a>
+            </li>
+            <li
+              aria-selected={null}
+              className="slds-dropdown__item"
+              id="checkmark-menu-dropdown-right-icon-item-1"
+              onMouseDown={[Function]}
+              role="presentation"
+            >
+              <a
+                data-index={1}
+                href="#"
+                onClick={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                <span
+                  className="slds-truncate"
+                  title="Kanban Board"
+                >
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon-text-default slds-icon_selected slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                  Kanban Board
+                </span>
+                <span>
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                  >
+                    <use
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#kanban"
+                    />
+                  </svg>
+                  
+                </span>
+              </a>
+            </li>
+            <li
+              aria-selected={null}
+              className="slds-dropdown__item"
+              id="checkmark-menu-dropdown-right-icon-item-2"
+              onMouseDown={[Function]}
+              role="presentation"
+            >
+              <a
+                data-index={2}
+                href="#"
+                onClick={[Function]}
+                role="menuitem"
+                tabIndex="-1"
+              >
+                <span
+                  className="slds-truncate"
+                  title="List View"
+                >
+                  <span>
+                    <svg
+                      aria-hidden="true"
+                      className="slds-icon-text-default slds-icon_selected slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#check"
+                      />
+                    </svg>
+                    
+                  </span>
+                  List View
+                </span>
+                <span>
+                  <svg
+                    aria-hidden="true"
+                    className="slds-icon-text-default slds-m-left_small slds-icon slds-icon_x-small slds-icon-text-default"
+                  >
+                    <use
+                      href="/assets/icons/utility-sprite/svg/symbols.svg#side_list"
+                    />
+                  </svg>
+                  
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

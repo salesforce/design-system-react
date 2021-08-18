@@ -3,8 +3,41 @@ import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import Dropdown from '~/components/menu-dropdown'; // `~` is replaced with design-system-react at runtime
 
+const options = [
+	{
+		label: 'Table View',
+		value: 'table',
+		rightIcon: {
+			category: 'utility',
+			name: 'table',
+		},
+	},
+	{
+		label: 'Kanban Board',
+		value: 'kanban',
+		rightIcon: {
+			category: 'utility',
+			name: 'kanban',
+		},
+	},
+	{
+		label: 'List View',
+		value: 'list',
+		rightIcon: {
+			category: 'utility',
+			name: 'side_list',
+		},
+	},
+];
 class Example extends React.Component {
 	static displayName = 'MediaObjectExample';
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			selectedOptionIndex: 0,
+		};
+	}
 
 	render() {
 		return (
@@ -17,6 +50,7 @@ class Example extends React.Component {
 							checkmark
 							iconCategory="utility"
 							iconName="down"
+							id="checkmark-menu-dropdown"
 							iconVariant="border-filled"
 							onSelect={(value) => {
 								console.log('selected: ', value);
@@ -27,6 +61,7 @@ class Example extends React.Component {
 								{ label: 'Menu Item Three', value: 'C0' },
 							]}
 							value="A0"
+							{...this.props}
 						/>
 					</div>
 					<div className="slds-col_padded">
@@ -35,40 +70,22 @@ class Example extends React.Component {
 							assistiveText={{ icon: 'Checkmark with right icon' }}
 							buttonVariant="icon"
 							checkmark
-							iconCategory="utility"
-							iconName="settings"
+							iconCategory={
+								options[this.state.selectedOptionIndex].rightIcon.category
+							}
+							iconName={options[this.state.selectedOptionIndex].rightIcon.name}
 							iconSize="large"
 							iconVariant="more"
-							onSelect={(value) => {
-								console.log('selected: ', value);
+							id="checkmark-menu-dropdown-right-icon"
+							onSelect={(option) => {
+								const selectedOptionIndex = options.findIndex(
+									(currenOption) => currenOption.value === option.value
+								);
+								this.setState({ selectedOptionIndex });
 							}}
-							options={[
-								{
-									label: 'Table View',
-									value: 'A0',
-									rightIcon: {
-										category: 'utility',
-										name: 'table',
-									},
-								},
-								{
-									label: 'Kanban Board',
-									value: 'A0',
-									rightIcon: {
-										category: 'utility',
-										name: 'kanban',
-									},
-								},
-								{
-									label: 'List View',
-									value: 'A0',
-									rightIcon: {
-										category: 'utility',
-										name: 'side_list',
-									},
-								},
-							]}
-							value="A0"
+							options={options}
+							value={options[this.state.selectedOptionIndex].value}
+							{...this.props}
 						/>
 					</div>
 				</div>
