@@ -500,14 +500,12 @@ class DataTable extends React.Component {
 			this.headerRefs.action
 		);
 
-		const tableOffset = this.tableRef.getBoundingClientRect();
-
-		if (this.gripRefs) {
+		if (this.gripRefs && this.tableRef) {
+			const tableOffset = this.tableRef.getBoundingClientRect();
 			this.gripRefs.forEach((grip, index) => {
 				const header = headers[index].getBoundingClientRect();
 				const relativeOffset = header.left - tableOffset.left;
-				const newPosition =
-					tableOffset.left + relativeOffset + header.width - 30;
+				const newPosition = relativeOffset + header.width;
 				// eslint-disable-next-line no-param-reassign
 				grip.style.left = `${newPosition}px`;
 			});
@@ -613,10 +611,17 @@ class DataTable extends React.Component {
 		if (canUseDOM) {
 			const remoteTable = this.tableRef;
 			const fixedHeader = this.getFixedHeader();
+			const disabledColumns = [];
+
+			if (this.props.selectRows) {
+				// eslint-disable-next-line fp/no-mutating-methods
+				disabledColumns.push(0);
+			}
 
 			if (!this.resizer) {
 				const options = {
 					...defaultProps.resizableOptions,
+					...{ disabledColumns },
 					...this.props.resizableOptions,
 				};
 
@@ -1219,6 +1224,17 @@ class DataTable extends React.Component {
 				styles.borderRadius = tableBorderRadius;
 			}
 
+			const fixedScrollerStyle = {
+				height: '100%',
+			};
+
+			if (this.props.resizable) {
+				fixedScrollerStyle.overflowY = 'auto';
+				fixedScrollerStyle.overflowX = 'hidden';
+			} else {
+				fixedScrollerStyle.overflow = 'auto';
+			}
+
 			component = (
 				<div
 					className="slds-table_header-fixed_container"
@@ -1242,12 +1258,7 @@ class DataTable extends React.Component {
 						ref={(ref) => {
 							this.scrollerRef = ref;
 						}}
-						style={{
-							height: '100%',
-							overflow: this.props.resizable ? undefined : 'auto',
-							overflowY: this.props.resizable ? 'auto' : undefined,
-							overflowX: this.props.resizable ? 'hidden' : undefined,
-						}}
+						style={fixedScrollerStyle}
 					>
 						{component}
 					</div>
