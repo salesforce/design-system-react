@@ -742,7 +742,7 @@ describe('DataTable: ', function describeFunction() {
 				</DataTable>
 			).call(this);
 
-      // actions column is not resizable
+			// actions column is not resizable
 			expect(this.dom.querySelectorAll('.grip-resizable').length).to.eql(4);
 			expect(this.dom.querySelectorAll('.grip-container').length).to.eql(1);
 		});
