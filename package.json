@@ -787,10 +787,6 @@
 					"path": "/__examples__/joined-with-page-header.jsx"
 				},
 				{
-					"heading": "Custom Classes",
-					"path": "/__examples__/custom-classes.jsx"
-				},
-				{
 					"heading": "Infinite Scrolling",
 					"path": "/__examples__/infinite-scrolling.jsx"
 				},

@@ -316,10 +316,6 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/joined-with-page-header.jsx'),
 		},
 		{
-			heading: 'Custom Classes',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/custom-classes.jsx'),
-		},
-		{
 			heading: 'Infinite Scrolling',
 			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/infinite-scrolling.jsx'),
 		},

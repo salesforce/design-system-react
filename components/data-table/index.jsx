@@ -69,7 +69,7 @@ const defaultProps = {
 	loadMoreOffset: 20,
 	resizable: false,
 	resizableOptions: {
-		resizeMode: 'flex',
+		resizeMode: 'fit',
 		draggingClass: 'slds-table-column-resizer',
 	},
 };
@@ -500,10 +500,12 @@ class DataTable extends React.Component {
 			this.headerRefs.action
 		);
 
-		if (this.gripRefs) {
+		if (this.gripRefs && this.tableRef) {
+			const tableOffset = this.tableRef.getBoundingClientRect();
 			this.gripRefs.forEach((grip, index) => {
 				const header = headers[index].getBoundingClientRect();
-				const newPosition = header.left + header.width - 30;
+				const relativeOffset = header.left - tableOffset.left;
+				const newPosition = relativeOffset + header.width;
 				// eslint-disable-next-line no-param-reassign
 				grip.style.left = `${newPosition}px`;
 			});
@@ -593,9 +595,9 @@ class DataTable extends React.Component {
 		const table = this.fixedHeaderContainer;
 
 		if (table) {
-			const grips = table.getElementsByClassName('grip-handle');
+			const grips = Array.from(table.getElementsByClassName('grip-handle'));
 
-			if (grips) {
+			if (grips.length) {
 				this.gripRefs = grips;
 				this.gripRefs.forEach((grip) => {
 					// eslint-disable-next-line no-param-reassign
@@ -609,10 +611,17 @@ class DataTable extends React.Component {
 		if (canUseDOM) {
 			const remoteTable = this.tableRef;
 			const fixedHeader = this.getFixedHeader();
+			const disabledColumns = [];
+
+			if (this.props.selectRows) {
+				// eslint-disable-next-line fp/no-mutating-methods
+				disabledColumns.push(0);
+			}
 
 			if (!this.resizer) {
 				const options = {
 					...defaultProps.resizableOptions,
+					...{ disabledColumns },
 					...this.props.resizableOptions,
 				};
 
@@ -1215,6 +1224,17 @@ class DataTable extends React.Component {
 				styles.borderRadius = tableBorderRadius;
 			}
 
+			const fixedScrollerStyle = {
+				height: '100%',
+			};
+
+			if (this.props.resizable) {
+				fixedScrollerStyle.overflowY = 'auto';
+				fixedScrollerStyle.overflowX = 'hidden';
+			} else {
+				fixedScrollerStyle.overflow = 'auto';
+			}
+
 			component = (
 				<div
 					className="slds-table_header-fixed_container"
@@ -1238,10 +1258,7 @@ class DataTable extends React.Component {
 						ref={(ref) => {
 							this.scrollerRef = ref;
 						}}
-						style={{
-							height: '100%',
-							overflow: 'auto',
-						}}
+						style={fixedScrollerStyle}
 					>
 						{component}
 					</div>

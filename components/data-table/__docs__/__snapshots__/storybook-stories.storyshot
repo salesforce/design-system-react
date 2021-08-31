@@ -21598,7 +21598,8 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
         style={
           Object {
             "height": "100%",
-            "overflow": "auto",
+            "overflowX": "hidden",
+            "overflowY": "auto",
           }
         }
       >
@@ -22932,14 +22933,15 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
         style={
           Object {
             "height": "100%",
-            "overflow": "auto",
+            "overflowX": "hidden",
+            "overflowY": "auto",
           }
         }
       >
         <table
           aria-multiselectable="true"
           className="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered"
-          id="DataTableExample-FixedHeaders"
+          id="DataTableExample-JoinedWithPageHeader"
           onBlur={[Function]}
           role="grid"
         >
@@ -22987,7 +22989,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       >
                         <input
                           checked={false}
-                          id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixed-header"
+                          id="DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-SelectAll-fixed-header"
                           onChange={[Function]}
                           onFocus={[Function]}
                           tabIndex="-1"
@@ -22995,7 +22997,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         />
                         <label
                           className="slds-checkbox__label"
-                          htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixed-header"
+                          htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-SelectAll-fixed-header"
                         >
                           <span
                             className="slds-checkbox_faux"
@@ -23034,7 +23036,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   >
                     <span
                       className="slds-assistive-text"
-                      id="DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                      id="DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                     >
                       Select all rows
                     </span>
@@ -23049,7 +23051,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         >
                           <input
                             checked={false}
-                            id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
+                            id="DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-SelectAll"
                             name="SelectAll"
                             onChange={[Function]}
                             onFocus={[Function]}
@@ -23058,7 +23060,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                           />
                           <label
                             className="slds-checkbox__label"
-                            htmlFor="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll"
+                            htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-SelectAll"
                           >
                             <span
                               className="slds-checkbox_faux"
@@ -23079,7 +23081,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Name"
                 aria-sort="ascending"
                 className="slds-is-sortable slds-is-sorted"
-                id="DataTableExample-FixedHeaders-opportunityName-th"
+                id="DataTableExample-JoinedWithPageHeader-opportunityName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23203,7 +23205,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Account Name"
                 aria-sort="none"
                 className=""
-                id="DataTableExample-FixedHeaders-accountName-th"
+                id="DataTableExample-JoinedWithPageHeader-accountName-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23272,7 +23274,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Close Date"
                 aria-sort="none"
                 className=""
-                id="DataTableExample-FixedHeaders-closeDate-th"
+                id="DataTableExample-JoinedWithPageHeader-closeDate-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23341,7 +23343,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Stage"
                 aria-sort="none"
                 className=""
-                id="DataTableExample-FixedHeaders-stage-th"
+                id="DataTableExample-JoinedWithPageHeader-stage-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23410,7 +23412,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Confidence"
                 aria-sort="none"
                 className="slds-is-sortable"
-                id="DataTableExample-FixedHeaders-confidence-th"
+                id="DataTableExample-JoinedWithPageHeader-confidence-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23522,7 +23524,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Amount"
                 aria-sort="none"
                 className=""
-                id="DataTableExample-FixedHeaders-amount-th"
+                id="DataTableExample-JoinedWithPageHeader-amount-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23591,7 +23593,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 aria-label="Contact"
                 aria-sort="none"
                 className=""
-                id="DataTableExample-FixedHeaders-contact-th"
+                id="DataTableExample-JoinedWithPageHeader-contact-th"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 scope="col"
@@ -23743,9 +23745,9 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
-                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                        aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-896a6a60-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-896a6a60-SelectRow"
                         name="SelectRow1"
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -23754,8 +23756,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       />
                       <label
                         className="slds-checkbox__label"
-                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow-label"
+                        htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-896a6a60-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-896a6a60-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -23905,7 +23907,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SLDSDataTableRowActions"
+                  id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-896a6a60-SLDSDataTableRowActions"
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
@@ -23915,7 +23917,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
-                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SLDSDataTableRowActions slds-button_icon-x-small"
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-896a6a60-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -23963,9 +23965,9 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
-                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                        aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-44da9dcd-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-44da9dcd-SelectRow"
                         name="SelectRow2"
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -23974,8 +23976,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       />
                       <label
                         className="slds-checkbox__label"
-                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow-label"
+                        htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-44da9dcd-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-44da9dcd-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -24124,7 +24126,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SLDSDataTableRowActions"
+                  id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-44da9dcd-SLDSDataTableRowActions"
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
@@ -24134,7 +24136,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
-                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SLDSDataTableRowActions slds-button_icon-x-small"
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-44da9dcd-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -24182,9 +24184,9 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
-                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                        aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-f988a721-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-f988a721-SelectRow"
                         name="SelectRow3"
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -24193,8 +24195,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       />
                       <label
                         className="slds-checkbox__label"
-                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow-label"
+                        htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-f988a721-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-f988a721-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -24343,7 +24345,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SLDSDataTableRowActions"
+                  id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-f988a721-SLDSDataTableRowActions"
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
@@ -24353,7 +24355,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
-                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SLDSDataTableRowActions slds-button_icon-x-small"
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-f988a721-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -24401,9 +24403,9 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
-                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                        aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d7679cdd-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d7679cdd-SelectRow"
                         name="SelectRow4"
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -24412,8 +24414,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       />
                       <label
                         className="slds-checkbox__label"
-                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow-label"
+                        htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d7679cdd-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d7679cdd-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -24562,7 +24564,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SLDSDataTableRowActions"
+                  id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d7679cdd-SLDSDataTableRowActions"
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
@@ -24572,7 +24574,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
-                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SLDSDataTableRowActions slds-button_icon-x-small"
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d7679cdd-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -24620,9 +24622,9 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
-                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                        aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-0085f7a0-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-0085f7a0-SelectRow"
                         name="SelectRow5"
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -24631,8 +24633,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       />
                       <label
                         className="slds-checkbox__label"
-                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow-label"
+                        htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-0085f7a0-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-0085f7a0-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -24781,7 +24783,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SLDSDataTableRowActions"
+                  id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-0085f7a0-SLDSDataTableRowActions"
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
@@ -24791,7 +24793,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
-                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SLDSDataTableRowActions slds-button_icon-x-small"
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-0085f7a0-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -24839,9 +24841,9 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
-                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                        aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-b7acc778-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-b7acc778-SelectRow"
                         name="SelectRow6"
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -24850,8 +24852,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       />
                       <label
                         className="slds-checkbox__label"
-                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow-label"
+                        htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-b7acc778-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-b7acc778-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -25000,7 +25002,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SLDSDataTableRowActions"
+                  id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-b7acc778-SLDSDataTableRowActions"
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
@@ -25010,7 +25012,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
-                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SLDSDataTableRowActions slds-button_icon-x-small"
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-b7acc778-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -25058,9 +25060,9 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
-                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                        aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-17991de5-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-17991de5-SelectRow"
                         name="SelectRow7"
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -25069,8 +25071,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       />
                       <label
                         className="slds-checkbox__label"
-                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow-label"
+                        htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-17991de5-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-17991de5-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -25219,7 +25221,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SLDSDataTableRowActions"
+                  id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-17991de5-SLDSDataTableRowActions"
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
@@ -25229,7 +25231,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
-                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SLDSDataTableRowActions slds-button_icon-x-small"
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-17991de5-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -25277,9 +25279,9 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
-                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                        aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-09b2cee9-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-09b2cee9-SelectRow"
                         name="SelectRow8"
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -25288,8 +25290,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       />
                       <label
                         className="slds-checkbox__label"
-                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow-label"
+                        htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-09b2cee9-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-09b2cee9-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -25438,7 +25440,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SLDSDataTableRowActions"
+                  id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-09b2cee9-SLDSDataTableRowActions"
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
@@ -25448,7 +25450,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
-                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SLDSDataTableRowActions slds-button_icon-x-small"
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-09b2cee9-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -25496,9 +25498,9 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
-                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                        aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d0035700-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d0035700-SelectRow"
                         name="SelectRow9"
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -25507,8 +25509,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       />
                       <label
                         className="slds-checkbox__label"
-                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow-label"
+                        htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d0035700-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d0035700-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -25657,7 +25659,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SLDSDataTableRowActions"
+                  id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d0035700-SLDSDataTableRowActions"
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
@@ -25667,7 +25669,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
-                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SLDSDataTableRowActions slds-button_icon-x-small"
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d0035700-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -25715,9 +25717,9 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
-                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                        aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-4a526f0c-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-4a526f0c-SelectRow"
                         name="SelectRow10"
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -25726,8 +25728,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       />
                       <label
                         className="slds-checkbox__label"
-                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow-label"
+                        htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-4a526f0c-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-4a526f0c-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -25876,7 +25878,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SLDSDataTableRowActions"
+                  id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-4a526f0c-SLDSDataTableRowActions"
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
@@ -25886,7 +25888,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
-                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SLDSDataTableRowActions slds-button_icon-x-small"
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-4a526f0c-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -25934,9 +25936,9 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
-                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                        aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-9a5dbdb2-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-9a5dbdb2-SelectRow"
                         name="SelectRow11"
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -25945,8 +25947,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       />
                       <label
                         className="slds-checkbox__label"
-                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow-label"
+                        htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-9a5dbdb2-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-9a5dbdb2-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -26095,7 +26097,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SLDSDataTableRowActions"
+                  id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-9a5dbdb2-SLDSDataTableRowActions"
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
@@ -26105,7 +26107,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
-                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SLDSDataTableRowActions slds-button_icon-x-small"
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-9a5dbdb2-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -26153,9 +26155,9 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       className="slds-checkbox"
                     >
                       <input
-                        aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
+                        aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-356dbb52-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-356dbb52-SelectRow"
                         name="SelectRow12"
                         onChange={[Function]}
                         onFocus={[Function]}
@@ -26164,8 +26166,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       />
                       <label
                         className="slds-checkbox__label"
-                        htmlFor="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
-                        id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow-label"
+                        htmlFor="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-356dbb52-SelectRow"
+                        id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-356dbb52-SelectRow-label"
                       >
                         <span
                           className="slds-checkbox_faux"
@@ -26314,7 +26316,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
               >
                 <div
                   className="slds-dropdown-trigger slds-dropdown-trigger_click"
-                  id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SLDSDataTableRowActions"
+                  id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-356dbb52-SLDSDataTableRowActions"
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
@@ -26324,7 +26326,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <button
                     aria-expanded={false}
                     aria-haspopup={true}
-                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SLDSDataTableRowActions slds-button_icon-x-small"
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-356dbb52-SLDSDataTableRowActions slds-button_icon-x-small"
                     disabled={false}
                     onClick={[Function]}
                     tabIndex="-1"
@@ -26386,7 +26388,8 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
         style={
           Object {
             "height": "100%",
-            "overflow": "auto",
+            "overflowX": "hidden",
+            "overflowY": "auto",
           }
         }
       >
@@ -28397,7 +28400,8 @@ exports[`DOM snapshots SLDSDataTable Resizable Columns 1`] = `
         style={
           Object {
             "height": "100%",
-            "overflow": "auto",
+            "overflowX": "hidden",
+            "overflowY": "auto",
           }
         }
       >

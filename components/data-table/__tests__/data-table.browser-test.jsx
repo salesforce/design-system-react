@@ -742,7 +742,8 @@ describe('DataTable: ', function describeFunction() {
 				</DataTable>
 			).call(this);
 
-			expect(this.dom.querySelectorAll('.grip-resizable').length).to.eql(5);
+			// actions column is not resizable
+			expect(this.dom.querySelectorAll('.grip-resizable').length).to.eql(4);
 			expect(this.dom.querySelectorAll('.grip-container').length).to.eql(1);
 		});
 	});

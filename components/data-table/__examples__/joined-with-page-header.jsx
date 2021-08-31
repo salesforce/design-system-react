@@ -371,12 +371,11 @@ class Example extends React.Component {
 						variant="object-home"
 					/>
 					<DataTable
-						fixedHeader
 						fixedLayout
 						resizable
 						keyboardNavigation
 						items={this.state.items}
-						id="DataTableExample-FixedHeaders"
+						id="DataTableExample-JoinedWithPageHeader"
 						joined
 						onRowChange={this.handleChanged}
 						onSort={this.handleSort}
