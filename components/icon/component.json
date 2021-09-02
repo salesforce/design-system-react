@@ -1,0 +1,26 @@
+{
+	"component": "icon",
+	"status": "prod",
+	"display-name": "Icons",
+	"classKey": "Icon",
+	"last-accessibility-review": {
+		"date-iso-8601": "2018/01/18",
+		"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+	},
+	"SLDS-component-path": "/components/icons",
+	"site-stories": [
+		{
+			"heading": "Category Options",
+			"path": "/__examples__/categories.jsx"
+		},
+		{
+			"heading": "Color Options",
+			"path": "/__examples__/colors.jsx"
+		},
+		{
+			"heading": "Size Options",
+			"path": "/__examples__/sizes.jsx"
+		}
+	],
+	"url-slug": "icons"
+}

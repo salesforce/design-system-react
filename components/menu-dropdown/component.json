@@ -1,0 +1,40 @@
+{
+	"component": "menu-dropdown",
+	"status": "prod",
+	"display-name": "Dropdown Menus",
+	"classKey": "MenuDropdown",
+	"last-accessibility-review": {
+		"date-iso-8601": "2018/01/18",
+		"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+	},
+	"SLDS-component-path": "/components/menus#flavor-dropdown",
+	"dependencies": [
+		{
+			"component": "button-trigger",
+			"classKey": "MenuDropdownButtonTrigger"
+		}
+	],
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "With Icon Label",
+			"path": "/__examples__/default-icon-label.jsx"
+		},
+		{
+			"heading": "With Subheadings",
+			"path": "/__examples__/sub-heading.jsx"
+		},
+		{
+			"heading": "Custom trigger",
+			"path": "/__examples__/custom-trigger.jsx"
+		},
+		{
+			"heading": "Checkmark Selection",
+			"path": "/__examples__/checkmark.jsx"
+		}
+	],
+	"url-slug": "menu-dropdowns"
+}
