@@ -16,11 +16,14 @@ class Example extends React.Component {
 	}
 
 	render() {
+		const openLabel = 'Toggle Alert';
+		const closeLabel = 'Close Alert';
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<div>
 					<Button
-						label="Toggle alert"
+						style={{ marginTop: 50 }}
+						label={!this.state.isOpen ? openLabel : closeLabel}
 						onClick={() => {
 							this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
 						}}
