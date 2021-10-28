@@ -58,16 +58,16 @@ declare module '@salesforce/design-system-react/components/combobox/combobox' {
 		 * _Tested with Mocha testing._
 		 */
 		events?: Partial<{
-			onBlur?: (v: any) => any;
-			onChange?: (v: any) => any;
-			onClose?: (v: any) => any;
-			onFocus?: (v: any) => any;
-			onOpen?: (v: any) => any;
-			onRequestClose?: (v: any) => any;
-			onRequestOpen?: (v: any) => any;
-			onRequestRemoveSelectedOption?: (v: any) => any;
-			onSelect?: (v: any) => any;
-			onSubmit?: (v: any) => any;
+			onBlur?: (event: React.SyntheticEvent) => any;
+			onChange?: (event: React.SyntheticEvent, v: any) => any;
+			onClose?: (event: React.SyntheticEvent, v: any) => any;
+			onFocus?: (event: React.SyntheticEvent, v: any) => any;
+			onOpen?: (event: React.SyntheticEvent, v: any) => any;
+			onRequestClose?: (event: React.SyntheticEvent, v: any) => any;
+			onRequestOpen?: (event: React.SyntheticEvent, v: any) => any;
+			onRequestRemoveSelectedOption?: (event: React.SyntheticEvent, v: any) => any;
+			onSelect?: (event: React.SyntheticEvent, v: any) => any;
+			onSubmit?: (event: React.SyntheticEvent, v: any) => any;
 		}>;
 		/**
 		 * Message to display when the input is in an error state. When this is present, also visually highlights the component as in error. _Tested with snapshot testing._
@@ -183,7 +183,7 @@ declare module '@salesforce/design-system-react/components/combobox/combobox' {
 			label?: string;
 			subTitle?: string;
 			type?: string;
-			disabled?: booleanean;
+			disabled?: boolean;
 			tooltipContent?: React.ReactNode;
 		}>[];
 		/**
