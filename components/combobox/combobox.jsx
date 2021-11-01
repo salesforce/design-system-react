@@ -1114,7 +1114,6 @@ class Combobox extends React.Component {
 					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
 					// used on menu's listbox
 					aria-owns={this.getIsOpen() ? `${this.getId()}-listbox` : undefined} // eslint-disable-line jsx-a11y/aria-proptypes
-					role="combobox"
 				>
 					<InnerInput
 						aria-autocomplete="list"
@@ -1255,7 +1254,6 @@ class Combobox extends React.Component {
 					role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 					aria-expanded={this.getIsOpen()}
 					aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
-					role="combobox"
 				>
 					<InnerInput
 						aria-autocomplete="list"
@@ -1357,7 +1355,6 @@ class Combobox extends React.Component {
 						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 						aria-expanded={this.getIsOpen()}
 						aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
-						role="combobox"
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
@@ -1526,7 +1523,6 @@ class Combobox extends React.Component {
 						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 						aria-expanded={this.getIsOpen()}
 						aria-haspopup="dialog" // eslint-disable-line jsx-a11y/aria-proptypes
-						role="combobox"
 					>
 						<Popover {...popoverProps}>
 							<InnerInput
@@ -1613,7 +1609,6 @@ class Combobox extends React.Component {
 						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 						aria-expanded={this.getIsOpen()}
 						aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
-						role="combobox"
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
@@ -1733,7 +1728,6 @@ class Combobox extends React.Component {
 						role="combobox" // eslint-disable-line jsx-a11y/role-supports-aria-props, jsx-a11y/role-has-required-aria-props
 						aria-expanded={this.getIsOpen()}
 						aria-haspopup="listbox" // eslint-disable-line jsx-a11y/aria-proptypes
-						role="combobox"
 					>
 						<InnerInput
 							defaultValue={props.defaultValue}
