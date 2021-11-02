@@ -31,10 +31,15 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.39
+
+**Bugfixes**
+- 'Combobox' - Recent changes to Combobox had causes compatibility issues with screen readers such as JAWS. This update reverts these markup changes.
 ## Release 0.10.38
 
 **Breaking change**
 - 'DataTable' - Protoype feature (resize columns) now defaults to 'fix' mode. This makes the default behavior of column resizing limited to the width of the table instead of overflow:hidden. Scrolling horizontally affects the table container vs column X-axis offset. Single columns get smaller and larger without pushing columns to the right and creating a horizontal scroll.
+
 ## Release 0.10.37
 
 **Bugfixes**
