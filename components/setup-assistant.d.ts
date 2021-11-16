@@ -20,7 +20,7 @@ declare module '@salesforce/design-system-react/components/setup-assistant' {
 		/**
 		 * Function to handle opening / closing of steps when the step is expandable. Passes event object and step `index`, `isOpen`, and `step` props as data.
 		 */
-		onStepToggleIsOpen?: (v: any) => any;
+		onStepToggleIsOpen?: (event: React.SyntheticEvent, v: any) => any;
 		/**
 		 * Accepts a progress bar component, which will only be visible if `isCard` is enabled
 		 */
