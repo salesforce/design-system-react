@@ -72,6 +72,7 @@ const DataTableCell = (props) => {
 				ref={ref}
 				data-label={props.label}
 				role={props.fixedLayout ? 'gridcell' : null}
+				scope="row"
 				tabIndex={tabIndex}
 				style={props.width ? { width: props.width } : null}
 				onFocus={handleFocus}

@@ -423,6 +423,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={
               Object {
                 "width": "10rem",
@@ -649,6 +650,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={
               Object {
                 "width": "10rem",
@@ -874,6 +876,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={
               Object {
                 "width": "10rem",
@@ -1814,6 +1817,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={
                   Object {
                     "width": "10rem",
@@ -2037,6 +2041,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={
                   Object {
                     "width": "10rem",
@@ -2259,6 +2264,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={
                   Object {
                     "width": "10rem",
@@ -2790,6 +2796,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={
               Object {
                 "width": "10rem",
@@ -3013,6 +3020,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={
               Object {
                 "width": "10rem",
@@ -3235,6 +3243,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={
               Object {
                 "width": "10rem",
@@ -3762,6 +3771,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={
               Object {
                 "width": "10rem",
@@ -3932,6 +3942,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={
               Object {
                 "width": "10rem",
@@ -4102,6 +4113,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={
               Object {
                 "width": "10rem",
@@ -4297,6 +4309,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={
               Object {
                 "width": "10rem",
@@ -4492,6 +4505,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={
               Object {
                 "width": "10rem",
@@ -9167,6 +9181,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
                 tabIndex="0"
               >
@@ -9385,6 +9400,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -9602,6 +9618,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -9819,6 +9836,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -10036,6 +10054,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -10253,6 +10272,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -10470,6 +10490,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -10687,6 +10708,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -10904,6 +10926,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -11121,6 +11144,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -11338,6 +11362,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -11555,6 +11580,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -12598,6 +12624,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
                 tabIndex="0"
               >
@@ -12816,6 +12843,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -13033,6 +13061,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -13250,6 +13279,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -13467,6 +13497,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -13684,6 +13715,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -13901,6 +13933,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -14118,6 +14151,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -14335,6 +14369,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -14552,6 +14587,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -14769,6 +14805,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -14986,6 +15023,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -16015,6 +16053,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -16228,6 +16267,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -16441,6 +16481,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -16654,6 +16695,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -16867,6 +16909,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -17080,6 +17123,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -17293,6 +17337,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -17506,6 +17551,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -17719,6 +17765,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -17932,6 +17979,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -18145,6 +18193,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -18358,6 +18407,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -18683,6 +18733,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={null}
             tabIndex="0"
           >
@@ -18894,6 +18945,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={null}
           >
             <div
@@ -19104,6 +19156,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={null}
           >
             <div
@@ -19440,6 +19493,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={null}
             tabIndex="0"
           >
@@ -19651,6 +19705,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={null}
           >
             <div
@@ -19861,6 +19916,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={null}
           >
             <div
@@ -20197,6 +20253,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={null}
             tabIndex="0"
           >
@@ -20408,6 +20465,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={null}
           >
             <div
@@ -20618,6 +20676,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={null}
           >
             <div
@@ -20954,6 +21013,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={null}
             tabIndex="0"
           >
@@ -21165,6 +21225,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={null}
           >
             <div
@@ -21375,6 +21436,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
             onFocus={[Function]}
             onKeyDown={[Function]}
             role="gridcell"
+            scope="row"
             style={null}
           >
             <div
@@ -21903,6 +21965,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
                 tabIndex="0"
               >
@@ -22114,6 +22177,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -22324,6 +22388,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -23778,6 +23843,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
                 tabIndex="0"
               >
@@ -23998,6 +24064,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -24217,6 +24284,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -24436,6 +24504,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -24655,6 +24724,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -24874,6 +24944,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -25093,6 +25164,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -25312,6 +25384,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -25531,6 +25604,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -25750,6 +25824,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -25969,6 +26044,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
@@ -26188,6 +26264,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="gridcell"
+                scope="row"
                 style={null}
               >
                 <div
