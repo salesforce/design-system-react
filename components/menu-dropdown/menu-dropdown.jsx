@@ -749,7 +749,8 @@ class MenuDropdown extends React.Component {
 				event.keyCode === KEYS.ENTER ||
 				event.keyCode === KEYS.SPACE ||
 				event.keyCode === KEYS.DOWN ||
-				event.keyCode === KEYS.UP
+				event.keyCode === KEYS.UP ||
+				event.keyCode === KEYS.ESCAPE
 			) {
 				EventUtil.trap(event);
 				const isOpen = this.getIsOpen();
