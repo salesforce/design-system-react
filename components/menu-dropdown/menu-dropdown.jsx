@@ -743,18 +743,17 @@ class MenuDropdown extends React.Component {
 
 	handleKeyDown = (event) => {
 		if (event.keyCode) {
-			if (
+			if (event.keyCode === KEYS.TAB) {
+				this.handleCancel();
+			} else if (
 				event.keyCode === KEYS.ENTER ||
 				event.keyCode === KEYS.SPACE ||
 				event.keyCode === KEYS.DOWN ||
-				event.keyCode === KEYS.UP
+				event.keyCode === KEYS.UP ||
+				event.keyCode === KEYS.ESCAPE
 			) {
 				EventUtil.trap(event);
-			}
-
-			if (event.keyCode !== KEYS.TAB) {
 				const isOpen = this.getIsOpen();
-
 				this.handleKeyboardNavigate({
 					event,
 					isOpen,
@@ -764,8 +763,6 @@ class MenuDropdown extends React.Component {
 					target: event.target,
 					toggleOpen: this.toggleOpen,
 				});
-			} else {
-				this.handleCancel();
 			}
 
 			if (this.props.onKeyDown) {
