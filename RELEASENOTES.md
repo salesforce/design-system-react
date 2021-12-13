@@ -31,6 +31,11 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.40
+
+**Bugfixes**
+- 'MenuDropdown' - Limit the set of keys that open the dropdown when pressed.
+
 ## Release 0.10.39
 
 **Bugfixes**
