@@ -1,0 +1,26 @@
+{
+	"component": "pill-container",
+	"status": "prod",
+	"display-name": "Pill Container",
+	"classKey": "PillContainer",
+	"SLDS-component-path": "/components/pill-container",
+	"site-stories": [
+		{
+			"heading": "Base",
+			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "With Icons",
+			"path": "/__examples__/icons.jsx"
+		},
+		{
+			"heading": "With Avatars",
+			"path": "/__examples__/avatars.jsx"
+		},
+		{
+			"heading": "Bare",
+			"path": "/__examples__/bare.jsx"
+		}
+	],
+	"url-slug": "pill-container"
+}
