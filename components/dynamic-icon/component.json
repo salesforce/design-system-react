@@ -1,0 +1,38 @@
+{
+	"component": "dynamic-icon",
+	"status": "prod",
+	"display-name": "Dynamic Icon",
+	"classKey": "DynamicIcon",
+	"SLDS-component-path": "/components/dynamic-icon",
+	"site-stories": [
+		{
+			"heading": "Ellie",
+			"path": "/__examples__/ellie.jsx"
+		},
+		{
+			"heading": "Eq",
+			"path": "/__examples__/eq.jsx"
+		},
+		{
+			"heading": "Score",
+			"path": "/__examples__/score.jsx"
+		},
+		{
+			"heading": "Strength",
+			"path": "/__examples__/strength.jsx"
+		},
+		{
+			"heading": "Trend",
+			"path": "/__examples__/trend.jsx"
+		},
+		{
+			"heading": "Typing",
+			"path": "/__examples__/typing.jsx"
+		},
+		{
+			"heading": "Waffle",
+			"path": "/__examples__/waffle.jsx"
+		}
+	],
+	"url-slug": "dynamic-icon"
+}
