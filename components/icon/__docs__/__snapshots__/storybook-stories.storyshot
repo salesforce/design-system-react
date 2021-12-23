@@ -340,6 +340,30 @@ exports[`DOM snapshots SLDSIcon Color: Light 1`] = `
 </div>
 `;
 
+exports[`DOM snapshots SLDSIcon Color: Success 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <span
+    title="description of icon"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-icon slds-icon-text-success"
+    >
+      <use
+        href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Description of icon
+    </span>
+  </span>
+</div>
+`;
+
 exports[`DOM snapshots SLDSIcon Color: Warning 1`] = `
 <div
   className="slds-p-around_medium"

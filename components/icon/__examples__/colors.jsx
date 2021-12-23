@@ -36,6 +36,14 @@ class Example extends React.Component {
 					</div>
 					<div className="slds-col_padded">
 						<Icon
+							assistiveText={{ label: 'Success' }}
+							category="utility"
+							colorVariant="success"
+							name="success"
+						/>
+					</div>
+					<div className="slds-col_padded">
+						<Icon
 							assistiveText={{ label: 'Warning' }}
 							category="utility"
 							colorVariant="warning"
