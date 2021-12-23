@@ -100,7 +100,7 @@
 		"lodash.reject": "^4.6.0",
 		"popper.js": "^1.10.8",
 		"prop-types": ">=15.7.2",
-		"react-contenteditable": "^3.3.5",
+		"react-contenteditable": "^3.3.6",
 		"react-highlighter": "^0.4.3",
 		"react-modal": "3.14.3",
 		"react-onclickoutside": "^6.10.0",
