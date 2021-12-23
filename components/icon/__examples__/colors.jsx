@@ -44,7 +44,7 @@ class Example extends React.Component {
 					</div>
 					<div className="slds-col_padded">
 						<Icon
-							assistiveText={{ lable: 'Warning' }}
+							assistiveText={{ label: 'Warning' }}
 							category="utility"
 							colorVariant="error"
 							name="warning"
