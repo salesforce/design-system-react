@@ -103,7 +103,7 @@
 		"react-contenteditable": "^3.3.5",
 		"react-highlighter": "^0.4.3",
 		"react-modal": "3.14.3",
-		"react-onclickoutside": "^6.10.0",
+		"react-onclickoutside": "^6.12.1",
 		"react-required-if": "^1.0.3",
 		"react-text-truncate": "^0.16.0",
 		"shortid": "^2.2.15",
