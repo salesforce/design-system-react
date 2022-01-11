@@ -92,6 +92,7 @@ const Icon = (props) => {
 						colorVariant === 'default' && category === 'utility'
 							? !inverse
 							: inverse,
+					'slds-icon-text-success': colorVariant === 'success',
 					'slds-icon-text-warning': colorVariant === 'warning',
 					'slds-icon-text-error': colorVariant === 'error',
 					'slds-icon-text-light': colorVariant === 'light',
@@ -163,6 +164,7 @@ Icon.propTypes = {
 		'error',
 		'light',
 		'warning',
+		'success',
 	]),
 	/**
 	 * A custom SVG object to use instead of the supplied SLDS icons, look in `design-system-react/icons` for examples and syntax.

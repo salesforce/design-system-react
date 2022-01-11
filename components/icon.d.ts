@@ -33,7 +33,7 @@ declare module '@salesforce/design-system-react/components/icon' {
 		/**
 		 * Icon color variants
 		 */
-		colorVariant?: 'base' | 'default' | 'error' | 'light' | 'warning';
+		colorVariant?: 'base' | 'default' | 'success' | 'error' | 'light' | 'warning';
 		/**
 		 * A custom SVG object to use instead of the supplied SLDS icons, look in `design-system-react/icons` for examples and syntax.
 		 */

@@ -12,6 +12,7 @@ import Custom from '../__examples__/custom';
 import ExternalPath from '../__examples__/external-path';
 import ColorBase from '../__examples__/color-base';
 import ColorDefault from '../__examples__/color-default';
+import ColorSuccess from '../__examples__/color-success';
 import ColorError from '../__examples__/color-error';
 import ColorWarning from '../__examples__/color-warning';
 import ColorLight from '../__examples__/color-light';
@@ -61,6 +62,7 @@ storiesOf(ICON, module)
 		</div>
 	))
 	.add('Color: Default', () => <ColorDefault />)
+	.add('Color: Success', () => <ColorSuccess />)
 	.add('Color: Error', () => <ColorError />)
 	.add('Color: Warning', () => <ColorWarning />)
 	.add('Color: Light', () => <ColorLight />)
