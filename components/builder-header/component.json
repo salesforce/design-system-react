@@ -1,0 +1,60 @@
+{
+	"component": "builder-header",
+	"status": "prod",
+	"display-name": "Builder Header",
+	"classKey": "BuilderHeader",
+	"SLDS-component-path": "/components/builder-header",
+	"dependencies": [
+		{
+			"component": "nav",
+			"classKey": "BuilderHeaderNav"
+		},
+		{
+			"component": "nav-dropdown",
+			"classKey": "BuilderHeaderNavDropdown"
+		},
+		{
+			"component": "nav-link",
+			"classKey": "BuilderHeaderNavLink"
+		},
+		{
+			"component": "toolbar",
+			"classKey": "BuilderHeaderToolbar"
+		},
+		{
+			"component": "utilities",
+			"classKey": "BuilderHeaderUtilities"
+		},
+		{
+			"component": "misc",
+			"classKey": "BuilderHeaderMisc"
+		}
+	],
+	"site-stories": [
+		{
+			"heading": "Base",
+			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "Base with Toolbar",
+			"path": "/__examples__/base-with-toolbar.jsx"
+		},
+		{
+			"heading": "Base with Utilities",
+			"path": "/__examples__/base-with-utilities.jsx"
+		},
+		{
+			"heading": "Successful Save",
+			"path": "/__examples__/successful-save.jsx"
+		},
+		{
+			"heading": "After Successful Save",
+			"path": "/__examples__/after-successful-save.jsx"
+		},
+		{
+			"heading": "Save Error",
+			"path": "/__examples__/failed-save.jsx"
+		}
+	],
+	"url-slug": "builder-header"
+}

@@ -1,0 +1,28 @@
+{
+	"component": "tabs",
+	"status": "prod",
+	"display-name": "Tabs",
+	"classKey": "Tabs",
+	"last-accessibility-review": {
+		"date-iso-8601": "2018/01/18",
+		"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+	},
+	"SLDS-component-path": "/components/tabs",
+	"dependencies": [
+		{
+			"component": "panel",
+			"classKey": "TabsPanel"
+		}
+	],
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "Scoped",
+			"path": "/__examples__/scoped.jsx"
+		}
+	],
+	"url-slug": "tabs"
+}

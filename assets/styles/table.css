@@ -1,0 +1,70 @@
+.slds-table-column-resizer{
+    border-left: 1px solid #0176d3;
+}
+
+.grip-handle:hover, .grip-handle-active{
+    border-left: 1px solid #0176d3;
+}
+
+.grip-handle:hover:before, .grip-handle-active:before{
+    background-color: #0176d3;
+    width: .25rem;
+    height: 100%;
+    content: " ";
+    position: absolute;
+    height: 33px;
+    right: -1.4px;
+}
+
+.grip-handle:active:before{
+    background-color: #0176d3;
+    width: .25rem;
+    height: 100%;
+    content: " ";
+    position: absolute;
+    height: 33px;
+    right: -1.4px; 
+}
+
+.grip-handle .grip-resizable  {
+    background-color: #0176d3;
+    width: 1px;
+    height: 100vh;
+    opacity: 0;
+}
+
+.slds-table_fixed-layout .grip-handle {
+    position: absolute;
+    z-index: 9;
+    background-color: #0176d3;
+    width: 1px;
+    height: 100vh;
+    opacity: 0;
+    top: -33px;
+    z-index: 9;
+}
+
+.slds-table_fixed-layout .grip-container {
+    position: absolute;
+}
+
+.slds-table_header-fixed_container .grip-handle {
+    position: absolute;
+    top: -33px;
+    z-index: 9;
+}
+
+.slds-table_header-fixed_container .grip-container {
+    position: absolute;
+}
+
+.slds-table th:focus .slds-cell-fixed, .slds-table th.slds-has-focus .slds-cell-fixed, .slds-table [role="gridcell"]:focus , .slds-table [role="gridcell"].slds-has-focus{
+    box-shadow: #0070d2 0 0 0 1px inset;
+}
+
+th > div > .slds-truncate {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    height: 2rem;
+}
