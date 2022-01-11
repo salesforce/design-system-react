@@ -1,0 +1,36 @@
+{
+	"component": "panel",
+	"status": "prod",
+	"display-name": "Panels",
+	"classKey": "Panel",
+	"SLDS-component-path": "/components/panels",
+	"dependencies": [
+		{
+			"component": "filtering/group",
+			"classKey": "PanelFilterGroup"
+		},
+		{
+			"component": "filtering/list-heading",
+			"classKey": "PanelFilterListHeading"
+		},
+		{
+			"component": "filtering/list",
+			"classKey": "PanelFilterList"
+		}
+	],
+	"site-stories": [
+		{
+			"heading": "Filtering",
+			"path": "/__examples__/filtering.jsx"
+		},
+		{
+			"heading": "Filtering: Locked",
+			"path": "/__examples__/filtering-locked.jsx"
+		},
+		{
+			"heading": "Filtering: Error",
+			"path": "/__examples__/filtering-error.jsx"
+		}
+	],
+	"url-slug": "panels"
+}

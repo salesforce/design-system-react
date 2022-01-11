@@ -1,0 +1,622 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSButton Aria attribute 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    aria-label="Base"
+    className="slds-button"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Base
+  </button>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Base 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    className="slds-button"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Base
+  </button>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Data attribute 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    className="slds-button"
+    data-some-property="Some value"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Base
+  </button>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Disabled 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    className="slds-button slds-button_neutral"
+    disabled={true}
+    onClick={[Function]}
+    type="button"
+  >
+    Disabled
+  </button>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Doc site Base Neutral 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-x-small-buttons_horizontal"
+  >
+    <button
+      className="slds-button"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Base
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Neutral
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon_left"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#download"
+        />
+      </svg>
+      Neutral Icon
+    </button>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Responsive
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Doc site Brand Disabled 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-x-small-buttons_horizontal"
+  >
+    <button
+      className="slds-button slds-button_brand"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Brand
+    </button>
+    <button
+      className="slds-button slds-button_brand"
+      disabled={true}
+      onClick={[Function]}
+      type="button"
+    >
+      Disabled
+    </button>
+    <button
+      className="slds-button slds-button_destructive"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Destructive
+    </button>
+    <button
+      className="slds-button slds-button_outline-brand"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Outline Brand
+    </button>
+    <div
+      className="-m-horizontal--small"
+      style={
+        Object {
+          "backgroundColor": "#16325c",
+          "display": "inline-block",
+          "marginLeft": "5px",
+          "padding": "10px",
+        }
+      }
+    >
+      <button
+        className="slds-button slds-button_inverse"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        Inverse
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Doc site Button Icons 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-x-small-buttons_horizontal"
+  >
+    <button
+      className="slds-button slds-button_icon slds-button_icon-bare slds-button_icon-small"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Icon Bare Small
+      </span>
+    </button>
+    <button
+      className="slds-button slds-button_icon-container slds-button_icon-small"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Icon Container Small
+      </span>
+    </button>
+    <div
+      className="-m-horizontal--small"
+      style={
+        Object {
+          "backgroundColor": "#4BC076",
+          "display": "inline-block",
+          "padding": "10px",
+        }
+      }
+    >
+      <button
+        className="slds-button slds-button_icon-border"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Icon Border medium
+        </span>
+      </button>
+      <button
+        className="slds-button slds-button_icon-border-filled"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Icon Border-filled medium
+        </span>
+      </button>
+    </div>
+    <button
+      className="slds-button slds-button_icon-more slds-button_icon-large"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon_x-small"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Icon More large
+      </span>
+    </button>
+    <div
+      className="-m-horizontal--small"
+      style={
+        Object {
+          "backgroundColor": "#16325c",
+          "display": "inline-block",
+          "padding": "10px",
+        }
+      }
+    >
+      <button
+        className="slds-button slds-button_icon-inverse"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_large"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Icon inverse
+        </span>
+      </button>
+    </div>
+    <div
+      className="-hint-parent -m-horizontal--small"
+      style={
+        Object {
+          "backgroundColor": "#FFB75D",
+          "display": "inline-block",
+          "padding": "10px 50px",
+        }
+      }
+    >
+      <button
+        className="slds-button slds-button_icon"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon slds-button__icon_large slds-button__icon_hint"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Icon hint large
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Dropdown Icon inverse 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-hint-parent"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+      }
+    }
+  >
+    <button
+      aria-haspopup={true}
+      className="slds-button slds-button_icon-inverse slds-button_icon-more"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon_x-small"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Dropdown Icon inverse
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Icon Container Small 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-hint-parent"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+      }
+    }
+  >
+    <button
+      className="slds-button slds-button_icon-border-inverse slds-button_icon-large"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#settings"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Icon border container small
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Icon large 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    className="slds-button slds-button_icon"
+    disabled={false}
+    onClick={[Function]}
+    title="chat"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon_large"
+    >
+      <use
+        href="/assets/icons/utility-sprite/svg/symbols.svg#answer"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Icon
+    </span>
+  </button>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Icon with external path 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    className="slds-button slds-button_icon"
+    disabled={false}
+    onClick={[Function]}
+    title="announcement"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon_large"
+    >
+      <use
+        href="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
+      />
+    </svg>
+    <span
+      className="slds-assistive-text"
+    >
+      Icon
+    </span>
+  </button>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Neutral 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    className="slds-button slds-button_neutral"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Neutral
+  </button>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Neutral Icon 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    className="slds-button slds-button_neutral"
+    disabled={false}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="slds-button__icon slds-button__icon_left"
+    >
+      <use
+        href="/assets/icons/utility-sprite/svg/symbols.svg#download"
+      />
+    </svg>
+    Neutral Icon
+  </button>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Neutral with id 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <button
+    className="slds-button slds-button_neutral"
+    disabled={false}
+    id="custom-id"
+    onClick={[Function]}
+    type="button"
+  >
+    Neutral
+  </button>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Outline brand button 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-hint-parent"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+      }
+    }
+  >
+    <button
+      className="slds-button slds-button_outline-brand"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Outline brand button
+    </button>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSButton Small Icon Hint inverse 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-hint-parent"
+    style={
+      Object {
+        "backgroundColor": "#16325c",
+      }
+    }
+  >
+    <button
+      className="slds-button slds-button_icon-border-inverse slds-button_icon-small"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        className="slds-button__icon slds-button__icon_inverse-hint"
+      >
+        <use
+          href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+        />
+      </svg>
+      <span
+        className="slds-assistive-text"
+      >
+        Hint
+      </span>
+    </button>
+  </div>
+</div>
+`;

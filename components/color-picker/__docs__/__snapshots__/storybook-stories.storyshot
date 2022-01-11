@@ -1,0 +1,2374 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSColorPicker Color Picker Disabled 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-color-picker"
+        id="color-picker-label-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={true}
+          id="slds-color-picker__summary-button-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Transparent Swatch
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            disabled={true}
+            id="color-picker-summary-input-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-color-picker"
+        id="color-picker-label-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Transparent Swatch
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+        <section
+          aria-describedby="slds-color-picker__selector-color-picker-dialog-body"
+          aria-labelledby="color-picker-label-color-picker"
+          className="absolute-positioned ignore-react-onclickoutside slds-popover slds-color-picker__selector test_class_name_menu"
+          id="slds-color-picker__selector-color-picker-popover"
+          onKeyDown={[Function]}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          role="dialog"
+          style={
+            Object {
+              "outline": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+            }
+          }
+          tabIndex="-1"
+        >
+          <div
+            className="slds-popover__body"
+            id="slds-color-picker__selector-color-picker-dialog-body"
+          >
+            <div
+              className="slds-tabs_default"
+              data-tabs={true}
+              id="color-picker-tabs-color-picker"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+            >
+              <ul
+                className="slds-tabs_default__nav"
+                id="color-picker-tabs-color-picker-slds-tabs__nav"
+                role="tablist"
+              >
+                <li
+                  className="slds-is-active slds-tabs_default__item"
+                  id="color-picker-tabs-color-picker-slds-tabs_tab-0"
+                  role="presentation"
+                  title="Default"
+                >
+                  <a
+                    aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-0"
+                    aria-selected="true"
+                    className="slds-is-active slds-tabs_default__link"
+                    href="#"
+                    onClick={[Function]}
+                    role="tab"
+                    tabIndex="0"
+                  >
+                    Default
+                  </a>
+                </li>
+                <li
+                  className="slds-tabs_default__item"
+                  id="color-picker-tabs-color-picker-slds-tabs_tab-1"
+                  role="presentation"
+                  title="Custom"
+                >
+                  <a
+                    aria-controls="color-picker-tabs-color-picker-slds-tabs_panel-1"
+                    aria-selected="false"
+                    className="slds-tabs_default__link"
+                    href="#"
+                    onClick={[Function]}
+                    role="tab"
+                    tabIndex="-1"
+                  >
+                    Custom
+                  </a>
+                </li>
+              </ul>
+              <div
+                aria-labelledby="color-picker-tabs-color-picker-slds-tabs_tab-0"
+                className="slds-show slds-tabs_default__content"
+                id="color-picker-tabs-color-picker-slds-tabs_panel-0"
+                role="tabpanel"
+              >
+                <ul
+                  className="slds-color-picker__swatches"
+                  onKeyDown={[Function]}
+                  role="listbox"
+                >
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#e3abec",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #e3abec
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#c2dbf7",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #c2dbf7
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#9fd6ff",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #9fd6ff
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#9de7da",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #9de7da
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#9df0c0",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #9df0c0
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#fff099",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #fff099
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#fed49a",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #fed49a
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#d073e0",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #d073e0
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#86baf3",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #86baf3
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#5ebbff",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #5ebbff
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#44d8be",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #44d8be
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#3be282",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #3be282
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#ffe654",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #ffe654
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#ffb758",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #ffb758
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#bd35bd",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #bd35bd
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#5779c1",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #5779c1
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#5679c0",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #5679c0
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#00aea9",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #00aea9
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#3cba4c",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #3cba4c
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#f5bc25",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #f5bc25
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#f99221",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #f99221
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#580d8c",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #580d8c
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#001970",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #001970
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#0a2399",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #0a2399
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#0b7477",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #0b7477
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#0b6b50",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #0b6b50
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#b67e11",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #b67e11
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={Object {}}
+                  >
+                    <a
+                      aria-selected={false}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={-1}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "#b85d0d",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          #b85d0d
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    className="slds-color-picker__swatch"
+                    role="presentation"
+                    style={
+                      Object {
+                        "border": "1px solid #141414",
+                        "borderRadius": "2px",
+                        "margin": "3px",
+                      }
+                    }
+                  >
+                    <a
+                      aria-selected={true}
+                      className="slds-color-picker__swatch-trigger"
+                      onClick={[Function]}
+                      role="option"
+                      style={Object {}}
+                      tabIndex={0}
+                    >
+                      <span
+                        className="slds-swatch"
+                        style={
+                          Object {
+                            "backgroundColor": "",
+                            "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                          }
+                        }
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Transparent Swatch
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div
+                aria-labelledby="color-picker-tabs-color-picker-slds-tabs_tab-1"
+                className="slds-hide slds-tabs_default__content"
+                id="color-picker-tabs-color-picker-slds-tabs_panel-1"
+                role="tabpanel"
+              >
+                <div
+                  className="slds-color-picker__custom"
+                >
+                  <div>
+                    <p
+                      className="slds-assistive-text"
+                      id="color-picker-instructions-color-picker"
+                    >
+                      Use arrow keys to select a saturation and brightness, on an x and y axis.
+                    </p>
+                    <div
+                      className="slds-color-picker__custom-range"
+                      onClick={[Function]}
+                      role="presentation"
+                      style={
+                        Object {
+                          "background": "hsl(0, 100%, 50%)",
+                        }
+                      }
+                    >
+                      <a
+                        aria-atomic="true"
+                        aria-describedby="color-picker-instructions-color-picker"
+                        aria-live="assertive"
+                        className="slds-color-picker__range-indicator"
+                        onKeyDown={[Function]}
+                        role="button"
+                        style={
+                          Object {
+                            "bottom": "0%",
+                            "left": "0%",
+                          }
+                        }
+                        tabIndex={0}
+                      >
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Saturation 0% Brightness: 0%
+                        </span>
+                      </a>
+                    </div>
+                    <div
+                      className="slds-color-picker__hue-and-preview"
+                    >
+                      <label
+                        className="slds-assistive-text"
+                        htmlFor="color-picker-input-range-color-picker"
+                      >
+                        Select Hue
+                      </label>
+                      <input
+                        className="slds-color-picker__hue-slider"
+                        id="color-picker-input-range-color-picker"
+                        max="360"
+                        min="0"
+                        onChange={[Function]}
+                        type="range"
+                        value={0}
+                      />
+                      <fieldset
+                        className="slds-form-element"
+                      >
+                        <legend
+                          className="slds-form-element__legend slds-form-element__label slds-assistive-text"
+                        >
+                          Toggle Transparency
+                        </legend>
+                        <div
+                          className="slds-form-element__control"
+                        >
+                          <div
+                            className="slds-radio_button-group"
+                            style={
+                              Object {
+                                "border": "none",
+                                "borderRadius": "unset",
+                              }
+                            }
+                          >
+                            <span
+                              className="slds-radio"
+                            >
+                              <input
+                                checked={false}
+                                id="color-picker-active-working-color-swatch-color-picker"
+                                name="color-picker-color-picker-swatch-toggle-button-group"
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onKeyPress={[Function]}
+                                type="radio"
+                                value="#000000"
+                              />
+                              <label
+                                className="slds-radio_button__label"
+                                htmlFor="color-picker-active-working-color-swatch-color-picker"
+                                style={
+                                  Object {
+                                    "border": "1px",
+                                  }
+                                }
+                              >
+                                <span>
+                                  <span
+                                    className="slds-swatch"
+                                    style={
+                                      Object {
+                                        "backgroundColor": "#000000",
+                                        "border": "1px solid #9e9e9e",
+                                        "marginRight": "2px",
+                                      }
+                                    }
+                                  >
+                                    <span
+                                      className="slds-assistive-text"
+                                    >
+                                      Working Color
+                                    </span>
+                                  </span>
+                                </span>
+                              </label>
+                            </span>
+                            <span
+                              className="slds-radio"
+                            >
+                              <input
+                                checked={true}
+                                id="color-picker-transparent-swatch-color-picker"
+                                name="color-picker-color-picker-swatch-toggle-button-group"
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onKeyPress={[Function]}
+                                type="radio"
+                                value=""
+                              />
+                              <label
+                                className="slds-radio_button__label"
+                                htmlFor="color-picker-transparent-swatch-color-picker"
+                                style={
+                                  Object {
+                                    "border": "1px",
+                                  }
+                                }
+                              >
+                                <span>
+                                  <span
+                                    className="slds-swatch"
+                                    style={
+                                      Object {
+                                        "backgroundColor": "",
+                                        "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                                        "border": "1px solid #9e9e9e",
+                                        "boxShadow": "rgb(117, 112, 112) 1px 1px 1px",
+                                        "marginRight": "2px",
+                                      }
+                                    }
+                                  >
+                                    <span
+                                      className="slds-assistive-text"
+                                    >
+                                      Transparent Swatch
+                                    </span>
+                                  </span>
+                                </span>
+                              </label>
+                            </span>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                  <div
+                    className="slds-color-picker__custom-inputs"
+                  >
+                    <div
+                      className="slds-form-element slds-color-picker__input-custom-hex"
+                    >
+                      <label
+                        className="slds-form-element__label"
+                        htmlFor="color-picker-input-hex-color-picker"
+                      >
+                        Hex
+                      </label>
+                      <div
+                        className="slds-form-element__control"
+                      >
+                        <input
+                          className="slds-input"
+                          id="color-picker-input-hex-color-picker"
+                          maxLength="7"
+                          onChange={[Function]}
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className="slds-form-element slds-color-picker__input-custom-r"
+                    >
+                      <label
+                        className="slds-form-element__label"
+                        htmlFor="color-picker-input-r-color-picker"
+                      >
+                        R
+                      </label>
+                      <div
+                        className="slds-form-element__control"
+                      >
+                        <input
+                          className="slds-input"
+                          id="color-picker-input-r-color-picker"
+                          maxLength="3"
+                          onChange={[Function]}
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className="slds-form-element slds-color-picker__input-custom-g"
+                    >
+                      <label
+                        className="slds-form-element__label"
+                        htmlFor="color-picker-input-g-color-picker"
+                      >
+                        G
+                      </label>
+                      <div
+                        className="slds-form-element__control"
+                      >
+                        <input
+                          className="slds-input"
+                          id="color-picker-input-g-color-picker"
+                          maxLength="3"
+                          onChange={[Function]}
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                    <div
+                      className="slds-form-element slds-color-picker__input-custom-b"
+                    >
+                      <label
+                        className="slds-form-element__label"
+                        htmlFor="color-picker-input-b-color-picker"
+                      >
+                        B
+                      </label>
+                      <div
+                        className="slds-form-element__control"
+                      >
+                        <input
+                          className="slds-input"
+                          id="color-picker-input-b-color-picker"
+                          maxLength="3"
+                          onChange={[Function]}
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer
+            className="slds-popover__footer"
+          >
+            <div
+              className="slds-color-picker__selector-footer"
+            >
+              <button
+                className="slds-button slds-button_neutral slds-color-picker__selector-cancel"
+                disabled={false}
+                id="color-picker-footer-cancel-color-picker"
+                onClick={[Function]}
+                type="button"
+              >
+                Cancel
+              </button>
+              <button
+                className="slds-button slds-button_brand slds-color-picker__selector-submit"
+                disabled={false}
+                id="color-picker-footer-submit-color-picker"
+                onClick={[Function]}
+                type="button"
+              >
+                Done
+              </button>
+            </div>
+          </footer>
+        </section>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="color-picker-summary-input-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Custom Only 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-custom-only-color-picker"
+        id="color-picker-label-custom-only-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-custom-only-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Transparent Swatch
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="color-picker-summary-input-custom-only-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Custom Tab Selected 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-Custom-tab-default-color-picker"
+        id="color-picker-label-Custom-tab-default-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-Custom-tab-default-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Transparent Swatch
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="color-picker-summary-input-Custom-tab-default-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Custom Validator 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-custom-validator-color-picker"
+        id="color-picker-label-custom-validator-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-custom-validator-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Transparent Swatch
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="color-picker-summary-input-custom-validator-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Default - Right to Left (RTL) 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    dir="rtl"
+  >
+    <div
+      className="slds-color-picker test_class_name"
+    >
+      <div
+        className="slds-color-picker__summary"
+      >
+        <label
+          className="slds-color-picker__summary-label"
+          htmlFor="color-picker-summary-input-default-color-picker"
+          id="color-picker-label-default-color-picker"
+        >
+          Choose Color
+        </label>
+        <div
+          style={
+            Object {
+              "display": "inline-block",
+            }
+          }
+        >
+          <button
+            aria-haspopup="dialog"
+            className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+            disabled={false}
+            id="slds-color-picker__summary-button-default-color-picker"
+            onClick={[Function]}
+            onFocus={null}
+            onMouseEnter={null}
+            onMouseLeave={null}
+            tabIndex="0"
+            type="button"
+          >
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "",
+                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Transparent Swatch
+              </span>
+            </span>
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          className="slds-form-element slds-color-picker__summary-input slds-align-top"
+        >
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              className="slds-input"
+              id="color-picker-summary-input-default-color-picker"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Default 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker test_class_name"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-default-color-picker"
+        id="color-picker-label-default-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-default-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Transparent Swatch
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="color-picker-summary-input-default-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Doc site Default 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-default-color-picker"
+        id="color-picker-label-default-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-default-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Transparent Swatch
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="color-picker-summary-input-default-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Hidden Input 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        id="color-picker-label-hidden-input-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-hidden-input-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Transparent Swatch
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Outer Input in Error State 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-outer-input-error-state-color-picker"
+        id="color-picker-label-outer-input-error-state-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-outer-input-error-state-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "#invalid",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              #invalid
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top slds-has-error"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="color-picker-summary-error-outer-input-error-state-color-picker"
+            className="slds-input"
+            id="color-picker-summary-input-outer-input-error-state-color-picker"
+            onChange={[Function]}
+            type="text"
+            value="#invalid"
+          />
+        </div>
+      </div>
+      <p
+        className="slds-form-error"
+        id="color-picker-summary-error-outer-input-error-state-color-picker"
+      >
+        Hex is invalid. Please correct this field.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Predefined Colors 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-predefined-color-picker"
+        id="color-picker-label-predefined-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-predefined-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "#000000",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              #000000
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="color-picker-summary-input-predefined-color-picker"
+            onChange={[Function]}
+            type="text"
+            value="#000000"
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Predefined Colors Only 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-predefined-only-color-picker"
+        id="color-picker-label-predefined-only-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-predefined-only-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "#000000",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              #000000
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="color-picker-summary-input-predefined-only-color-picker"
+            onChange={[Function]}
+            type="text"
+            value="#000000"
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Swatch Only 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-swatch-only-color-picker"
+        id="color-picker-label-swatch-only-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-swatch-only-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Transparent Swatch
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="color-picker-summary-input-swatch-only-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker Working Color Input in Error State 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label"
+        htmlFor="color-picker-summary-input-working-color-error-state-color-picker"
+        id="color-picker-label-working-color-error-state-color-picker"
+      >
+        Choose Color
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-working-color-error-state-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <span
+            className="slds-swatch"
+            style={
+              Object {
+                "backgroundColor": "",
+                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+              }
+            }
+          >
+            <span
+              className="slds-assistive-text"
+            >
+              Transparent Swatch
+            </span>
+          </span>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="color-picker-summary-input-working-color-error-state-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
