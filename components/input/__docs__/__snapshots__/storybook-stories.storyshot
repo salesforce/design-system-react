@@ -1,0 +1,2203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSInput Base 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section>
+    <ol>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          1. Base Input with visible label
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="base-id"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              className="slds-input"
+              id="base-id"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              type="text"
+            />
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          2. Base Input with hidden label (assistive text)
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label slds-assistive-text"
+            htmlFor="assistiveLabel-id"
+          >
+            My label
+          </label>
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              className="slds-input"
+              id="assistiveLabel-id"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              type="text"
+            />
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Base with Icons 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section>
+    <ol>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          1. Base Input with left icon
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="with-left-icon"
+          >
+            My label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+          >
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+            <input
+              className="slds-input"
+              id="with-left-icon"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              type="text"
+            />
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          2. Base Input with Clickable left icon
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="with-left-clickable-icon"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+          >
+            <button
+              className="slds-button slds-button_icon slds-input__icon slds-input__icon_left"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Search
+              </span>
+            </button>
+            <input
+              className="slds-input"
+              id="with-left-clickable-icon"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              type="text"
+            />
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          3. Base Input with right icon
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="with-right-icon"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+          >
+            <input
+              className="slds-input"
+              id="with-right-icon"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              type="text"
+            />
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_right"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          4. Base Input with Clickable right icon
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="with-right-clickable-icon"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+          >
+            <input
+              className="slds-input"
+              id="with-right-clickable-icon"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              type="text"
+            />
+            <button
+              className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                clear
+              </span>
+            </button>
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          5. Base Input with left and right icons
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="with-left-and-right-icons"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left-right"
+          >
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+            <input
+              className="slds-input"
+              id="with-left-and-right-icons"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              type="text"
+            />
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_right"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+              />
+            </svg>
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          6. Base Input with Clickable left and right icon
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="with-clickable-left-and-right-icon"
+          >
+            My label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left-right"
+          >
+            <button
+              className="slds-button slds-button_icon slds-input__icon slds-input__icon_left"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Search
+              </span>
+            </button>
+            <input
+              className="slds-input"
+              id="with-clickable-left-and-right-icon"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              type="text"
+            />
+            <button
+              className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                clear
+              </span>
+            </button>
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          7. Base Input with left and clickable right icon
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="with-left-and-clickable-right-icon"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left-right"
+          >
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+            <input
+              className="slds-input"
+              id="with-left-and-clickable-right-icon"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              type="text"
+            />
+            <button
+              className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                clear
+              </span>
+            </button>
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          8. Base Input with left, clickable right icon, and loading spinner
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="with-left-clickable-right-and-spinner"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left-right"
+          >
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+            <input
+              aria-describedby="loading-status-icon undefined"
+              className="slds-input"
+              id="with-left-clickable-right-and-spinner"
+              name="right-clickable-icon"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              type="text"
+            />
+            <div
+              className="slds-input__icon-group slds-input__icon-group_right"
+            >
+              <div
+                className="slds-spinner_container"
+              >
+                <div
+                  aria-hidden="false"
+                  className="slds-spinner slds-input__spinner slds-spinner_brand slds-spinner_x-small"
+                  id="loading-status-icon"
+                  role="status"
+                >
+                  <span
+                    className="slds-assistive-text"
+                  >
+                    Field data is loading
+                  </span>
+                  <div
+                    className="slds-spinner__dot-a"
+                  />
+                  <div
+                    className="slds-spinner__dot-b"
+                  />
+                </div>
+              </div>
+              <button
+                className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+                disabled={false}
+                onClick={[Function]}
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="slds-button__icon"
+                >
+                  <use
+                    href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                  />
+                </svg>
+                <span
+                  className="slds-assistive-text"
+                >
+                  clear
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Counter Input 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        1. Simple counter input
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-1"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            id="counter-input-1"
+            onChange={[Function]}
+            type="number"
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        2. Controlled counter input
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-2"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            id="counter-input-2"
+            onChange={[Function]}
+            type="number"
+            value={10}
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        3. Controlled counter input with min/max values and custom step size
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-3"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            id="counter-input-3"
+            max={30}
+            min={2}
+            onChange={[Function]}
+            step={2}
+            type="number"
+            value={10}
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        4. Counter input with floating step size
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-4"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            defaultValue={10}
+            id="counter-input-4"
+            onChange={[Function]}
+            step={0.1}
+            type="number"
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={false}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        5. Disabled counter input
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-5"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_decrement"
+            disabled={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#ban"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Decrement counter
+            </span>
+          </button>
+          <input
+            className="slds-input slds-input_counter"
+            disabled={true}
+            id="counter-input-5"
+            onChange={[Function]}
+            type="number"
+            value="10"
+          />
+          <button
+            className="slds-button slds-button_icon slds-button_icon-small slds-input__button_increment"
+            disabled={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#new"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Increment counter
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        6. Readonly counter input
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="counter-input-6"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input slds-text-align_left slds-input_counter slds-p-horizontal_none"
+            id="counter-input-6"
+            onChange={[Function]}
+            readOnly={true}
+            type="number"
+            value="10"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Counter Static Input 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      1. Static counter input
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <span
+        className="slds-form-element__label"
+      >
+        My Label
+      </span>
+      <div
+        className="slds-form-element__control slds-has-divider_bottom"
+      >
+        <span
+          className="slds-form-element__static slds-grid"
+        >
+          10
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Custom style and autocomplete 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section>
+    <ol>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          Input with custom style
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="custom-style"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              autoComplete="off"
+              className="slds-input"
+              id="custom-style"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              style={
+                Object {
+                  "background": "#efffff",
+                  "height": 30,
+                  "width": 130,
+                }
+              }
+              type="text"
+            />
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Disabled Input 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      Disabled Input
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="disabled-input"
+      >
+        My Label
+      </label>
+      <div
+        className="slds-form-element__control"
+      >
+        <input
+          className="slds-input"
+          disabled={true}
+          id="disabled-input"
+          name="disabled-input"
+          onChange={[Function]}
+          type="text"
+          value="Disabled value"
+        />
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Docs site Default 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        Base Input with visible label
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="base-id"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="base-id"
+            onChange={[Function]}
+            placeholder="My placeholder"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        Base Input with hidden label (assistive text)
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label slds-assistive-text"
+          htmlFor="assistiveLabel-id"
+        >
+          My label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="assistiveLabel-id"
+            onChange={[Function]}
+            placeholder="My placeholder"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        Base Input with Fixed Text
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="fixed-text-id"
+        >
+          Total amount
+        </label>
+        <div
+          className="slds-form-element__control slds-input-has-fixed-addon"
+        >
+          <span
+            className="slds-form-element__addon"
+          >
+            $
+          </span>
+          <input
+            className="slds-input"
+            id="fixed-text-id"
+            onChange={[Function]}
+            placeholder="Enter amount in USD"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Docs site Error 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element slds-has-error"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-4"
+        >
+          <abbr
+            className="slds-required"
+            title="required"
+          >
+            *
+          </abbr>
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            aria-describedby="error-4"
+            className="slds-input"
+            id="unique-id-4"
+            onChange={[Function]}
+            placeholder="Placeholder Text"
+            required={true}
+            type="text"
+          />
+        </div>
+        <div
+          className="slds-form-element__help"
+          id="error-4"
+        >
+          Error Message
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element slds-has-error"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-5"
+        >
+          <abbr
+            className="slds-required"
+            title="required"
+          >
+            *
+          </abbr>
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+        >
+          <button
+            className="slds-button slds-button_icon slds-input__icon slds-input__icon_left"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#error"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Search
+            </span>
+          </button>
+          <input
+            aria-describedby="error-5"
+            className="slds-input"
+            id="unique-id-5"
+            onChange={[Function]}
+            placeholder="Placeholder Text"
+            required={true}
+            type="text"
+          />
+        </div>
+        <div
+          className="slds-form-element__help"
+          id="error-5"
+        >
+          Error Message
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Docs site Icons 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      Input with Icons
+    </h1>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-1"
+        >
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+        >
+          <svg
+            aria-hidden={true}
+            className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+            />
+          </svg>
+          <input
+            className="slds-input"
+            id="unique-id-1"
+            onChange={[Function]}
+            placeholder="Static Icon on the left"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-2"
+        >
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left-right"
+        >
+          <button
+            className="slds-button slds-button_icon slds-input__icon slds-input__icon_left"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Search
+            </span>
+          </button>
+          <input
+            className="slds-input"
+            id="unique-id-2"
+            onChange={[Function]}
+            placeholder="Clickable Icons (Left and Right)"
+            type="text"
+          />
+          <button
+            className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Clear
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-3"
+        >
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+        >
+          <input
+            className="slds-input"
+            id="unique-id-3"
+            onChange={[Function]}
+            placeholder="Clickable Icon on the right"
+            type="text"
+          />
+          <button
+            className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Clear
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-4"
+        >
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+        >
+          <input
+            aria-describedby="loading-status-icon undefined"
+            className="slds-input"
+            id="unique-id-4"
+            onChange={[Function]}
+            placeholder="Loading Spinner Icon on the right"
+            type="text"
+          />
+          <div
+            className="slds-input__icon-group slds-input__icon-group_right"
+          >
+            <div
+              className="slds-spinner_container"
+            >
+              <div
+                aria-hidden="false"
+                className="slds-spinner slds-input__spinner slds-spinner_brand slds-spinner_x-small"
+                id="loading-status-icon"
+                role="status"
+              >
+                <span
+                  className="slds-assistive-text"
+                >
+                  Field data is loading
+                </span>
+                <div
+                  className="slds-spinner__dot-a"
+                />
+                <div
+                  className="slds-spinner__dot-b"
+                />
+              </div>
+            </div>
+            <button
+              className="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                className="slds-button__icon"
+              >
+                <use
+                  href="/assets/icons/utility-sprite/svg/symbols.svg#clear"
+                />
+              </svg>
+              <span
+                className="slds-assistive-text"
+              >
+                Clear
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Docs site InactiveInputs 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section
+    className="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center"
+  >
+    <div
+      className="slds-col_padded"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        Disabled Input
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="disabled-input-id"
+        >
+          My Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            disabled={true}
+            id="disabled-input-id"
+            onChange={[Function]}
+            type="text"
+            value="Disabled value"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <h1
+        className="slds-text-title_caps slds-p-vertical_medium"
+      >
+        ReadOnly Input
+      </h1>
+      <div
+        className="slds-form-element"
+      >
+        <label
+          className="slds-form-element__label"
+          htmlFor="unique-id-3"
+        >
+          Input Label
+        </label>
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="unique-id-3"
+            onChange={[Function]}
+            readOnly={true}
+            type="text"
+            value="Read Only Value"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      Field Level Help
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="field-level-help"
+      >
+        My Label
+      </label>
+      <div
+        className="slds-tooltip-trigger slds-form-element__icon"
+        style={
+          Object {
+            "display": "inline-block",
+            "lineHeight": "1",
+            "position": "static",
+          }
+        }
+      >
+        <button
+          aria-disabled={true}
+          className="slds-button slds-button_icon"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Help
+          </span>
+        </button>
+        <span />
+      </div>
+      <div
+        className="slds-form-element__control"
+      >
+        <input
+          className="slds-input"
+          id="field-level-help"
+          onChange={[Function]}
+          type="text"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      Field Level Help
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="field-level-help"
+      >
+        My Label
+      </label>
+      <div
+        className="slds-tooltip-trigger slds-form-element__icon"
+        style={
+          Object {
+            "display": "inline-block",
+            "lineHeight": "1",
+            "position": "static",
+          }
+        }
+      >
+        <button
+          aria-describedby="field-level-help-tooltip"
+          aria-disabled={true}
+          className="slds-button slds-button_icon"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#info"
+            />
+          </svg>
+          <span
+            className="slds-assistive-text"
+          >
+            Help
+          </span>
+        </button>
+        <div
+          className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
+          id="field-level-help-tooltip"
+          onKeyDown={[Function]}
+          role="tooltip"
+          style={
+            Object {
+              "outline": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+            }
+          }
+        >
+          <div
+            className="slds-popover__body"
+          >
+            Some helpful information
+          </div>
+        </div>
+      </div>
+      <div
+        className="slds-form-element__control"
+      >
+        <input
+          className="slds-input"
+          id="field-level-help"
+          onChange={[Function]}
+          type="text"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Fixed Text 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      Input with Fixed Text
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="fixed-text"
+      >
+        My Label
+      </label>
+      <div
+        className="slds-form-element__control slds-input-has-fixed-addon"
+      >
+        <span
+          className="slds-form-element__addon"
+        >
+          $
+        </span>
+        <input
+          className="slds-input"
+          id="fixed-text"
+          name="fixed-text"
+          onChange={[Function]}
+          placeholder="My placeholder"
+          type="text"
+        />
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Inline Help 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section>
+    <ol>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          1. Inline Help
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="inline-help"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              className="slds-input"
+              id="inline-help"
+              onChange={[Function]}
+              type="text"
+            />
+          </div>
+          <div
+            className="slds-form-element__help"
+          >
+            ex: (415) 111-2222
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          2. Inline Help With Left Icon
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="inline-help-with-left-icon"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+          >
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+            <input
+              className="slds-input"
+              id="inline-help-with-left-icon"
+              onChange={[Function]}
+              type="text"
+            />
+          </div>
+          <div
+            className="slds-form-element__help"
+          >
+            ex: (415) 111-2222
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          3. Inline Help With Right Icon
+        </h1>
+        <div
+          className="slds-form-element"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="inline-help-with-right-icon"
+          >
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+          >
+            <input
+              className="slds-input"
+              id="inline-help-with-right-icon"
+              onChange={[Function]}
+              type="text"
+            />
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_right"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#search"
+              />
+            </svg>
+          </div>
+          <div
+            className="slds-form-element__help"
+          >
+            ex: (415) 111-2222
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          4. Inline Help With Error Text
+        </h1>
+        <div
+          className="slds-form-element slds-has-error"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="inline-help-with-error"
+          >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              aria-describedby="inline-with-error-1"
+              className="slds-input"
+              id="inline-help-with-error"
+              name="inline-help-with-error"
+              onChange={[Function]}
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="slds-form-element__help"
+          >
+            ex: (415) 111-2222
+          </div>
+          <div
+            className="slds-form-element__help"
+            id="inline-with-error-1"
+          >
+            This field is required.
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          4. Inline Help With Error Text and Icon
+        </h1>
+        <div
+          className="slds-form-element slds-has-error"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="inline-help-with-error-and-icon"
+          >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+          >
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#error"
+              />
+            </svg>
+            <input
+              aria-describedby="inline-with-error-2"
+              className="slds-input"
+              id="inline-help-with-error-and-icon"
+              name="inline-help-with-error-and-icon"
+              onChange={[Function]}
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="slds-form-element__help"
+          >
+            ex: (415) 111-2222
+          </div>
+          <div
+            className="slds-form-element__help"
+            id="inline-with-error-2"
+          >
+            This field is required.
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Read Only 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      Read only Input
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <label
+        className="slds-form-element__label"
+        htmlFor="read-only"
+      >
+        My Label
+      </label>
+      <div
+        className="slds-form-element__control"
+      >
+        <input
+          className="slds-input"
+          id="read-only"
+          name="read-only"
+          onChange={[Function]}
+          readOnly={true}
+          type="text"
+          value="Read Only Value"
+        />
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Required Input in Error State 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section>
+    <ol>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          Required Input with Error Text
+        </h1>
+        <div
+          className="slds-form-element slds-has-error"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="required-input-error"
+          >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control"
+          >
+            <input
+              aria-describedby="error-1"
+              className="slds-input"
+              id="required-input-error"
+              name="required-input-error"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="slds-form-element__help"
+            id="error-1"
+          >
+            This field is required.
+          </div>
+        </div>
+      </li>
+      <li
+        className="slds-p-bottom_large"
+      >
+        <h1
+          className="slds-text-title_caps slds-p-vertical_medium"
+        >
+          Required Input with Error Text and Icon
+        </h1>
+        <div
+          className="slds-form-element slds-has-error"
+        >
+          <label
+            className="slds-form-element__label"
+            htmlFor="required-input-error-with-icon"
+          >
+            <abbr
+              className="slds-required"
+              title="required"
+            >
+              *
+            </abbr>
+            My Label
+          </label>
+          <div
+            className="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"
+          >
+            <svg
+              aria-hidden={true}
+              className="slds-input__icon slds-icon-text-default slds-input__icon_left"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#error"
+              />
+            </svg>
+            <input
+              aria-describedby="error-2"
+              className="slds-input"
+              id="required-input-error-with-icon"
+              name="required-input-error-with-icon"
+              onChange={[Function]}
+              placeholder="My placeholder"
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="slds-form-element__help"
+            id="error-2"
+          >
+            This field is required.
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
+</div>
+`;
+
+exports[`DOM snapshots SLDSInput Static Input 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <section>
+    <h1
+      className="slds-text-title_caps slds-p-vertical_medium"
+    >
+      Static Input
+    </h1>
+    <div
+      className="slds-form-element"
+    >
+      <span
+        className="slds-form-element__label"
+      >
+        My Label
+      </span>
+      <div
+        className="slds-form-element__control slds-has-divider_bottom"
+      >
+        <span
+          className="slds-form-element__static slds-grid slds-grid_align-spread"
+        >
+          Static value
+        </span>
+      </div>
+    </div>
+  </section>
+</div>
+`;
