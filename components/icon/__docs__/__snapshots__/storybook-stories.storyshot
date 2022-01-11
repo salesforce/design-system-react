@@ -574,6 +574,25 @@ exports[`DOM snapshots SLDSIcon Docs site Colors 1`] = `
       <span>
         <svg
           aria-hidden="true"
+          className="slds-icon slds-icon-text-success"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#success"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Success
+        </span>
+      </span>
+    </div>
+    <div
+      className="slds-col_padded"
+    >
+      <span>
+        <svg
+          aria-hidden="true"
           className="slds-icon slds-icon-text-warning"
         >
           <use
@@ -596,10 +615,14 @@ exports[`DOM snapshots SLDSIcon Docs site Colors 1`] = `
           className="slds-icon slds-icon-text-error"
         >
           <use
-            href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+            href="/assets/icons/utility-sprite/svg/symbols.svg#error"
           />
         </svg>
-        
+        <span
+          className="slds-assistive-text"
+        >
+          Warning
+        </span>
       </span>
     </div>
   </div>

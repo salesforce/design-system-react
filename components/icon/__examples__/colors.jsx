@@ -55,7 +55,7 @@ class Example extends React.Component {
 							assistiveText={{ label: 'Warning' }}
 							category="utility"
 							colorVariant="error"
-							name="warning"
+							name="error"
 						/>
 					</div>
 				</div>
