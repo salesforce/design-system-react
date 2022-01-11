@@ -9534,6 +9534,10 @@
                         {
                             "value": "'warning'",
                             "computed": false
+                        },
+                        {
+                            "value": "'success'",
+                            "computed": false
                         }
                     ]
                 },
