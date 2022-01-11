@@ -31,11 +31,14 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
-## Release 0.10.42
+## Release 0.10.43
 
 **Minor Features**
 - `Icon` - Add success color variant
 
+## Release 0.10.42
+
+No changes
 ## Release 0.10.41
 
 **Minor Features**
