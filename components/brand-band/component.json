@@ -10,10 +10,6 @@
 	"SLDS-component-path": "/components/brand-band",
 	"site-stories": [
 		{
-			"heading": "Lightning Blue",
-			"path": "/__examples__/lightning-blue-theme.jsx"
-		},
-		{
 			"heading": "Default",
 			"path": "/__examples__/default.jsx"
 		},
@@ -28,6 +24,14 @@
 		{
 			"heading": "No Image",
 			"path": "/__examples__/no-image.jsx"
+		},
+		{
+			"heading": "User Image",
+			"path": "/__examples__/user-image.jsx"
+		},
+		{
+			"heading": "Group Image",
+			"path": "/__examples__/group-image.jsx"
 		}
 	],
 	"url-slug": "brand-band"
