@@ -18,6 +18,7 @@ module.exports = {
 		'json',
 		'prefer-object-spread',
 		'@salesforce/slds-react',
+		'react-hooks',
 	],
 	env: {
 		browser: true,
@@ -194,6 +195,9 @@ module.exports = {
 		'fp/no-throw': 'error',
 		// 'fp/no-unused-expression': 'error',
 		'fp/no-valueof-field': 'error',
+
+		'react-hooks/rules-of-hooks': 'error',
+		'react-hooks/exhaustive-deps': 'error',
 
 		//
 		// THE FOLLOWING RULES NEED REVIEW IN THE FUTURE (and possibly removed)

@@ -16,8 +16,9 @@ import shortid from 'shortid';
 
 import classNames from 'classnames';
 import assign from 'lodash.assign';
+import isEqual from 'lodash.isequal';
+import memoize from 'memoize-one';
 import reject from 'lodash.reject';
-
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import ColumnResizer from 'column-resizer';
 import checkProps from './check-props';
@@ -73,6 +74,90 @@ const defaultProps = {
 		draggingClass: 'slds-table-column-resizer',
 	},
 };
+
+const getAssistiveText = memoize(
+	(
+		assistiveText,
+		actionsHeaderText,
+		columnSortText,
+		columnSortedAscendingText,
+		columnSortedDescendingText,
+		selectAllRowsText,
+		selectRowText
+	) => {
+		const result = {
+			...defaultProps.assistiveText,
+			...assistiveText,
+		};
+		if (actionsHeaderText) {
+			result.actionsHeader = actionsHeaderText;
+		}
+		if (selectAllRowsText) {
+			result.selectAllRows = selectAllRowsText;
+		}
+		if (columnSortedAscendingText) {
+			result.columnSortedAscending = columnSortedAscendingText;
+		}
+		if (columnSortedDescendingText) {
+			result.columnSortedDescending = columnSortedDescendingText;
+		}
+		if (columnSortText) {
+			result.columnSort = columnSortText;
+		}
+		if (selectRowText) {
+			result.selectRow = selectRowText;
+		}
+		return result;
+	},
+	isEqual
+);
+
+const getColumnsAndRowActions = memoize(
+	(children, id, fixedHeader, fixedLayout, search) => {
+		const columns = [];
+		let RowActions = null;
+
+		React.Children.forEach(children, (child) => {
+			if (child && child.type.displayName === DataTableColumn.displayName) {
+				const { children: columnChildren, ...columnProps } = child.props;
+				const props = { fixedLayout, search, id, ...columnProps };
+
+				let Cell;
+				if (
+					columnChildren &&
+					columnChildren.type.displayName === DATA_TABLE_CELL
+				) {
+					Cell = columnChildren.type;
+					assign(props, columnChildren.props);
+				} else {
+					Cell = DataTableCell;
+				}
+
+				// eslint-disable-next-line fp/no-mutating-methods
+				columns.push({
+					Cell,
+					props,
+				});
+			} else if (
+				child &&
+				child.type.displayName === DataTableRowActions.displayName
+			) {
+				const { dropdown } = child.props;
+				const dropdownPropOverrides = {};
+				if (fixedHeader) {
+					dropdownPropOverrides.menuPosition = 'overflowBoundaryElement';
+				}
+				RowActions = React.cloneElement(child, {
+					dropdown: dropdown
+						? React.cloneElement(dropdown, dropdownPropOverrides)
+						: null,
+				});
+			}
+		});
+		return { columns, RowActions };
+	},
+	isEqual
+);
 
 /**
  * DataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
@@ -366,9 +451,7 @@ class DataTable extends React.Component {
 			// Simulating a scroll here will ensure that enough rows are loaded to enable scrolling
 			this.loadMoreIfNeeded();
 		}
-		if (this.props.items !== prevProps.items) {
-			this.interactiveElements = {};
-		}
+
 		if (
 			this.state.allowKeyboardNavigation &&
 			!prevState.allowKeyboardNavigation
@@ -439,6 +522,23 @@ class DataTable extends React.Component {
 		}
 		return null;
 	}
+
+	getTableContext = memoize((state, isKeyboardNavigation) => ({
+		activeCell: state.activeCell,
+		activeElement: state.activeElement,
+		mode: state.mode,
+		tableHasFocus: state.tableHasFocus,
+		changeActiveCell: this.changeActiveCell,
+		changeActiveElement: this.changeActiveElement,
+		handleKeyDown: this.handleKeyDown,
+		registerInteractiveElement: this.registerInteractiveElement,
+		allowKeyboardNavigation: state.allowKeyboardNavigation,
+		setAllowKeyboardNavigation: (allowKeyboardNavigation) => {
+			if (isKeyboardNavigation) {
+				this.setState({ allowKeyboardNavigation });
+			}
+		},
+	}));
 
 	handleToggleAll = (e, { checked }) => {
 		// REMOVE AT NEXT BREAKING CHANGE
@@ -586,6 +686,13 @@ class DataTable extends React.Component {
 			}
 		}
 	};
+
+	// eslint-disable-next-line camelcase
+	UNSAFE_componentWillUpdate(nextProps) {
+		if (this.props.items !== nextProps.items) {
+			this.interactiveElements = {};
+		}
+	}
 
 	isResizable() {
 		return this.props.fixedLayout && this.props.resizable;
@@ -989,71 +1096,24 @@ class DataTable extends React.Component {
 		const allSelected = canSelectRows && numNonHeaderRows === numSelected;
 		const indeterminateSelected =
 			canSelectRows && numNonHeaderRows !== numSelected && numSelected !== 0;
-		const columns = [];
-		let RowActions = null;
 
-		React.Children.forEach(this.props.children, (child) => {
-			if (child && child.type.displayName === DataTableColumn.displayName) {
-				const { children, ...columnProps } = child.props;
+		const { columns, RowActions } = getColumnsAndRowActions(
+			this.props.children,
+			this.props.id,
+			this.getFixedHeader(),
+			this.props.fixedLayout,
+			this.props.search
+		);
 
-				const props = assign({}, this.props);
-				// eslint-disable-next-line fp/no-delete
-				delete props.children;
-				assign(props, columnProps);
-
-				let Cell;
-				if (children && children.type.displayName === DATA_TABLE_CELL) {
-					Cell = children.type;
-					assign(props, children.props);
-				} else {
-					Cell = DataTableCell;
-				}
-
-				// eslint-disable-next-line fp/no-mutating-methods
-				columns.push({
-					Cell,
-					props,
-					dataTableProps: this.props,
-				});
-			} else if (
-				child &&
-				child.type.displayName === DataTableRowActions.displayName
-			) {
-				const { dropdown } = child.props;
-				const dropdownPropOverrides = {};
-				if (this.getFixedHeader()) {
-					dropdownPropOverrides.menuPosition = 'overflowBoundaryElement';
-				}
-				RowActions = React.cloneElement(child, {
-					dropdown: dropdown
-						? React.cloneElement(dropdown, dropdownPropOverrides)
-						: null,
-				});
-			}
-		});
-
-		const assistiveText = {
-			...defaultProps.assistiveText,
-			...this.props.assistiveText,
-		};
-		if (this.props.assistiveTextForActionsHeader) {
-			assistiveText.actionsHeader = this.props.assistiveTextForActionsHeader;
-		}
-		if (this.props.assistiveTextForSelectAllRows) {
-			assistiveText.selectAllRows = this.props.assistiveTextForSelectAllRows;
-		}
-		if (this.props.assistiveTextForColumnSortedAscending) {
-			assistiveText.columnSortedAscending = this.props.assistiveTextForColumnSortedAscending;
-		}
-		if (this.props.assistiveTextForColumnSortedDescending) {
-			assistiveText.columnSortedDescending = this.props.assistiveTextForColumnSortedDescending;
-		}
-		if (this.props.assistiveTextForColumnSort) {
-			assistiveText.columnSort = this.props.assistiveTextForColumnSort;
-		}
-		if (this.props.assistiveTextForSelectRow) {
-			assistiveText.selectRow = this.props.assistiveTextForSelectRow;
-		}
+		const assistiveText = getAssistiveText(
+			this.props.assistiveText,
+			this.props.assistiveTextForActionsHeader,
+			this.props.assistiveTextForSelectAllRows,
+			this.props.assistiveTextForColumnSortedAscending,
+			this.props.assistiveTextForColumnSortedDescending,
+			this.props.assistiveTextForColumnSort,
+			this.props.assistiveTextForSelectRow
+		);
 
 		if (this.props.selectRows && this.props.selectRows !== 'radio') {
 			ariaProps['aria-multiselectable'] = 'true';
@@ -1066,26 +1126,11 @@ class DataTable extends React.Component {
 			select: canSelectRows ? this.headerRefs.select : [],
 		};
 
-		const tableContext = {
-			activeCell: this.state.activeCell,
-			activeElement: this.state.activeElement,
-			mode: this.state.mode,
-			tableHasFocus: this.state.tableHasFocus,
-			changeActiveCell: this.changeActiveCell,
-			changeActiveElement: this.changeActiveElement,
-			handleKeyDown: this.handleKeyDown,
-			registerInteractiveElement: this.registerInteractiveElement,
-			allowKeyboardNavigation: this.state.allowKeyboardNavigation,
-			setAllowKeyboardNavigation: (allowKeyboardNavigation) => {
-				if (this.getKeyboardNavigation()) {
-					this.setState({ allowKeyboardNavigation });
-				}
-			},
-		};
-
 		let component = (
 			<React.Fragment>
-				<TableContext.Provider value={tableContext}>
+				<TableContext.Provider
+					value={this.getTableContext(this.state, this.getKeyboardNavigation())}
+				>
 					<table
 						{...ariaProps}
 						className={classNames(

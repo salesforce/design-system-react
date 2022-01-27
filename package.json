@@ -98,6 +98,7 @@
 		"lodash.isfunction": "^3.0.9",
 		"lodash.memoize": "^4.1.2",
 		"lodash.reject": "^4.6.0",
+		"memoize-one": "^6.0.0",
 		"popper.js": "^1.10.8",
 		"prop-types": ">=15.7.2",
 		"react-contenteditable": "^3.3.5",
@@ -111,8 +112,8 @@
 	},
 	"peerDependencies": {
 		"@salesforce-ux/design-system": "^2.14.3",
-		"react": ">=16.3",
-		"react-dom": ">=16.3"
+		"react": ">=16.8",
+		"react-dom": ">=16.8"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.14.2",
@@ -172,6 +173,7 @@
 		"eslint-plugin-jsx-a11y": "^6.3.1",
 		"eslint-plugin-prefer-object-spread": "^1.2.1",
 		"eslint-plugin-react": "^7.23.2",
+		"eslint-plugin-react-hooks": "^4.3.0",
 		"express": "^4.17.1",
 		"file-loader": "^6.1.1",
 		"find-remove": "^3.1.0",

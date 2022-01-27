@@ -20,7 +20,7 @@ import EventUtil from '../../utilities/event';
 import InteractiveElement from './interactive-element';
 import CellContext from './private/cell-context';
 import TableContext from './private/table-context';
-import contextHelper from './private/context-helper';
+import useContextHelper from './private/context-helper';
 
 // ## Constants
 import { DATA_TABLE_ROW_ACTIONS } from '../../utilities/constants';
@@ -75,7 +75,7 @@ const defaultProps = {
 const DataTableRowActions = (props) => {
 	const tableContext = useContext(TableContext);
 	const cellContext = useContext(CellContext);
-	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = contextHelper(
+	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = useContextHelper(
 		tableContext,
 		cellContext,
 		props.fixedLayout
