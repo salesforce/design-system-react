@@ -39,7 +39,7 @@ module.exports = {
 		const getFixer = (node, getValue, getFixRange) => (fixer) => {
 			const nodeText = getValue(node);
 			const fixedText = nodeText.replace(SLDS_DEPRECATED_CSS_SYNTAX, '$1_$2');
-			const range = getFixRange(node);
+			const range = getFixRange(node.range);
 			return fixer.replaceTextRange(range, fixedText);
 		};
 
@@ -74,14 +74,14 @@ module.exports = {
 				checkNode(
 					node,
 					(stringNode) => stringNode.value,
-					({ start, end }) => [start + 1, end - 1]
+					([ start, end ]) => [start + 1, end - 1]
 				);
 			},
 			TemplateElement(node) {
 				checkNode(
 					node,
 					(quasi) => quasi.value.raw,
-					({ start, end }) => [start, end]
+					([ start, end ]) => node.tail ? [start + 1, end - 1] : [start + 1, end - 2]
 				);
 			},
 		};

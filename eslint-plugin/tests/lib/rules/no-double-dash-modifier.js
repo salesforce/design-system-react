@@ -132,6 +132,32 @@ ruleTester.run('no-double-dash-modifier', rule, {
 			],
 			parserOptions,
 		},
+		{
+			code: '<div className={`${otherclasses}slds-dropdown--${position}`}/>',
+			output: '<div className={`${otherclasses}slds-dropdown_${position}`}/>',
+			errors: [
+				{
+					message:
+						'SLDS modifier CSS classes should use a single ' +
+						'underscore instead of double-hyphen: ' +
+						'"slds-dropdown--".',
+				},
+			],
+			parserOptions,
+		},
+		{
+			code: '{[`${otherClases}slds-button__icon--large`]}',
+			output: '{[`${otherClases}slds-button__icon_large`]}',
+			errors: [
+				{
+					message:
+						'SLDS modifier CSS classes should use a single ' +
+						'underscore instead of double-hyphen: ' +
+						'"slds-button__icon--large".',
+				},
+			],
+			parserOptions,
+		},
 	],
 	/* eslint-enable no-template-curly-in-string */
 });
