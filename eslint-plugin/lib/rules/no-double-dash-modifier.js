@@ -74,14 +74,15 @@ module.exports = {
 				checkNode(
 					node,
 					(stringNode) => stringNode.value,
-					([ start, end ]) => [start + 1, end - 1]
+					([start, end]) => [start + 1, end - 1]
 				);
 			},
 			TemplateElement(node) {
 				checkNode(
 					node,
 					(quasi) => quasi.value.raw,
-					([ start, end ]) => node.tail ? [start + 1, end - 1] : [start + 1, end - 2]
+					([start, end]) =>
+						node.tail ? [start + 1, end - 1] : [start + 1, end - 2]
 				);
 			},
 		};
