@@ -21,6 +21,9 @@ import shortid from 'shortid';
 // A simple javascript utility for conditionally joining classNames together.
 import classNames from '../../utilities/class-names';
 
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+
 // ## Constants
 import { BRAND_BAND } from '../../utilities/constants';
 
@@ -30,6 +33,8 @@ import { BRAND_BAND } from '../../utilities/constants';
 class BrandBand extends React.Component {
 	constructor(props) {
 		super(props);
+
+		checkProps(BRAND_BAND, this.props);
 		this.generatedId = shortid.generate();
 	}
 
