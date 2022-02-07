@@ -3,13 +3,7 @@ import BrandBand from '~/components/brand-band'; // `~` is replaced with design-
 
 class Example extends React.Component {
 	render() {
-		return (
-			<BrandBand
-				id="brand-band-no-image"
-				image="none"
-				style={{ zIndex: 1, backgroundColor: '#eef4ff' }}
-			/>
-		);
+		return <BrandBand id="brand-band-user-group" image="group" />;
 	}
 }
 
