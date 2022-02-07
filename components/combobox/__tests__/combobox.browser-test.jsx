@@ -31,6 +31,8 @@ import IconSettings from '../../../components/icon-settings';
  */
 chai.use(chaiEnzyme());
 
+const callbacks = require('../../../utilities/key-callbacks');
+
 const accounts = [
 	{
 		id: '1',
@@ -479,6 +481,22 @@ describe('SLDSCombobox', function describeFunction() {
 
 			const { scrollTop: scrollTop2 } = nodes.menuListbox.instance();
 			expect(scrollTop2 === 4 || scrollTop2 === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
+		});
+
+		it('propagates keyboard events when menu is closed', function () {
+			const spiedCallbacks = sinon.spy(callbacks, 'default');
+			wrapper = mount(<DemoComponent variant="inline-listbox" />, {
+				attachTo: mountNode,
+			});
+			const nodes = getNodes({ wrapper });
+			// click in the input to open up menu
+			nodes.input.simulate('click', {});
+			// esc to close the menu and stop event propagation
+			nodes.input.simulate('keyDown', keyObjects.ESCAPE);
+			expect(spiedCallbacks.getCall(0).lastArg.stopPropagation).to.equal(true);
+			// esc to propagate the events further up
+			nodes.input.simulate('keyDown', keyObjects.ESCAPE);
+			expect(spiedCallbacks.getCall(1).lastArg.stopPropagation).to.equal(false);
 		});
 	});
 
