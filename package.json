@@ -128,7 +128,7 @@
 		"@babel/polyfill": "^7.12.1",
 		"@babel/preset-env": "^7.14.2",
 		"@babel/preset-react": "^7.12.7",
-		"@salesforce-ux/design-system": "^2.9.4",
+		"@salesforce-ux/design-system": "^2.14.3",
 		"@salesforce-ux/icons": "10.x",
 		"@salesforce/eslint-plugin-slds-react": "^0.0.1",
 		"@storybook/addon-a11y": "^6.2.0",
@@ -382,10 +382,6 @@
 			"SLDS-component-path": "/components/brand-band",
 			"site-stories": [
 				{
-					"heading": "Lightning Blue",
-					"path": "/__examples__/lightning-blue-theme.jsx"
-				},
-				{
 					"heading": "Default",
 					"path": "/__examples__/default.jsx"
 				},
@@ -400,6 +396,14 @@
 				{
 					"heading": "No Image",
 					"path": "/__examples__/no-image.jsx"
+				},
+				{
+					"heading": "User Image",
+					"path": "/__examples__/user-image.jsx"
+				},
+				{
+					"heading": "Group Image",
+					"path": "/__examples__/group-image.jsx"
 				}
 			],
 			"url-slug": "brand-band"

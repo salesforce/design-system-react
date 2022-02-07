@@ -5,10 +5,11 @@ import { storiesOf } from '@storybook/react';
 import { BRAND_BAND } from '../../../utilities/constants';
 import Default from '../__examples__/default';
 import Large from '../__examples__/large';
-import LightningBlueTheme from '../__examples__/lightning-blue-theme';
 import NoImage from '../__examples__/no-image';
 import Small from '../__examples__/small';
 import BackgroundCover from '../__examples__/background-cover';
+import UserImage from '../__examples__/user-image';
+import GroupImage from '../__examples__/group-image';
 
 storiesOf(BRAND_BAND, module)
 	.addDecorator((getStory) => (
@@ -29,5 +30,6 @@ storiesOf(BRAND_BAND, module)
 	.add('Small', () => <Small />)
 	.add('Large', () => <Large />)
 	.add('No Image', () => <NoImage />)
-	.add('Lightning Blue Theme', () => <LightningBlueTheme />)
+	.add('User Image', () => <UserImage />)
+	.add('Group Image', () => <GroupImage />)
 	.add('Image with background size cover', () => <BackgroundCover />);
