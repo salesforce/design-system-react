@@ -804,8 +804,11 @@ class Combobox extends React.Component {
 			};
 		}
 
+		// Propagate events when menu is closed
+		const stopPropagation = this.getIsOpen();
+
 		// Helper function that takes an object literal of callbacks that are triggered with a key event
-		mapKeyEventCallbacks(event, { callbacks });
+		mapKeyEventCallbacks(event, { callbacks, stopPropagation });
 	};
 
 	handleKeyDownDown = (event) => {
