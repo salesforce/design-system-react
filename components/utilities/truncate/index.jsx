@@ -5,7 +5,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import memoize from 'lodash.memoize';
+import memoize from 'memoize-one';
 
 const documentDefined = typeof document !== 'undefined';
 

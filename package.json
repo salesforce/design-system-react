@@ -96,7 +96,6 @@
 		"lodash.isdate": "^4.0.1",
 		"lodash.isequal": "^4.5.0",
 		"lodash.isfunction": "^3.0.9",
-		"lodash.memoize": "^4.1.2",
 		"lodash.reject": "^4.6.0",
 		"memoize-one": "^6.0.0",
 		"popper.js": "^1.10.8",
