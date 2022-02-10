@@ -78,10 +78,6 @@ const documentationSiteLiveExamples = {
 	],
 	'brand-band': [
 		{
-			heading: 'Lightning Blue',
-			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/lightning-blue-theme.jsx'),
-		},
-		{
 			heading: 'Default',
 			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/default.jsx'),
 		},
@@ -96,6 +92,14 @@ const documentationSiteLiveExamples = {
 		{
 			heading: 'No Image',
 			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/no-image.jsx'),
+		},
+		{
+			heading: 'User Image',
+			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/user-image.jsx'),
+		},
+		{
+			heading: 'Group Image',
+			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/group-image.jsx'),
 		},
 	],
 	breadcrumb: [
