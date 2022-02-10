@@ -31,6 +31,15 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.44
+
+**Bugfixes**
+- `Combobox` - `ESC` key event is trapped when menu is open to prevent bubble up.
+- `BrandBand` - SLDS style update. The props are breaking changes, but SLDS updated its markup, and therefore the current component was broken.
+
+**Maintenance**
+- ESLint - Ensure CSS class names plugin works with modern versions. Fix issues with string template scenarios.
+
 ## Release 0.10.43
 
 **Minor Features**
