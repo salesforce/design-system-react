@@ -10,7 +10,7 @@ import classNames from 'classnames';
 
 import CellContext from './private/cell-context';
 import TableContext from './private/table-context';
-import contextHelper from './private/context-helper';
+import useContextHelper from './private/context-helper';
 
 // ## Constants
 import { DATA_TABLE_CELL } from '../../utilities/constants';
@@ -21,7 +21,7 @@ import { DATA_TABLE_CELL } from '../../utilities/constants';
 const DataTableCell = (props) => {
 	const tableContext = useContext(TableContext);
 	const cellContext = useContext(CellContext);
-	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = contextHelper(
+	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = useContextHelper(
 		tableContext,
 		cellContext,
 		props.fixedLayout

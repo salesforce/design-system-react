@@ -46,7 +46,6 @@ describe('SLDSButton: ', () => {
 				style: { background: 'rgb(18, 49, 35)' },
 			});
 			[btn] = cmp.getElementsByClassName('slds-button');
-			console.log('!!!!!', cmp, btn);
 		});
 
 		it('renders correct label', () => {
