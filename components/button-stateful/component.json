@@ -1,0 +1,18 @@
+{
+	"component": "button-stateful",
+	"status": "prod",
+	"display-name": "Stateful Buttons",
+	"classKey": "ButtonStateful",
+	"SLDS-component-path": "/components/button/#flavor-stateful",
+	"site-stories": [
+		{
+			"heading": "Icon Only",
+			"path": "/__examples__/icon.jsx"
+		},
+		{
+			"heading": "Icon and Text",
+			"path": "/__examples__/icon-text.jsx"
+		}
+	],
+	"url-slug": "stateful-buttons"
+}
