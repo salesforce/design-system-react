@@ -1,0 +1,355 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSAlert Close alert 1`] = `
+<div
+  className="slds-p-around_medium slds-p-top_xx-large"
+>
+  <div>
+    <button
+      className="slds-button slds-button_neutral"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      Toggle alert
+    </button>
+    <div
+      className="slds-notify-container"
+    />
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSAlert Custom Class Names 1`] = `
+<div
+  className="slds-p-around_medium slds-p-top_xx-large"
+>
+  <div
+    className="slds-notify-container this-is-the-container"
+  >
+    <div
+      className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info this-is-the-alert"
+      role="alert"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        info
+      </span>
+      <span
+        className="slds-m-right_x-small"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_x-small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#user"
+          />
+        </svg>
+        
+      </span>
+      <h2>
+        Logged in as John Smith (johnsmith@acme.com).
+         
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          Log out
+        </a>
+      </h2>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSAlert Custom Styles 1`] = `
+<div
+  className="slds-p-around_medium slds-p-top_xx-large"
+>
+  <div
+    className="slds-notify-container this-is-the-container"
+  >
+    <div
+      className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info"
+      role="alert"
+      style={
+        Object {
+          "backgroundColor": "rgb(18, 49, 35)",
+        }
+      }
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        info
+      </span>
+      <span
+        className="slds-m-right_x-small"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_x-small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#user"
+          />
+        </svg>
+        
+      </span>
+      <h2>
+        Logged in as John Smith (johnsmith@acme.com).
+         
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          Log out
+        </a>
+      </h2>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSAlert Dismissable 1`] = `
+<div
+  className="slds-p-around_medium slds-p-top_xx-large"
+>
+  <div
+    className="slds-notify-container"
+  >
+    <div
+      className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info"
+      role="alert"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        info
+      </span>
+      <span
+        className="slds-m-right_x-small"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_x-small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#user"
+          />
+        </svg>
+        
+      </span>
+      <h2>
+        Logged in as John Smith (johnsmith@acme.com).
+         
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          Log out
+        </a>
+      </h2>
+      <button
+        className="slds-button slds-button_icon-inverse slds-notify__close"
+        disabled={false}
+        onClick={[Function]}
+        title="Close"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-button__icon"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+          />
+        </svg>
+        <span
+          className="slds-assistive-text"
+        >
+          Close
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSAlert Error 1`] = `
+<div
+  className="slds-p-around_medium slds-p-top_xx-large"
+>
+  <div
+    className="slds-notify-container"
+  >
+    <div
+      className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error"
+      role="alert"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        error
+      </span>
+      <span
+        className="slds-m-right_x-small"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_x-small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#error"
+          />
+        </svg>
+        
+      </span>
+      <h2>
+        Your browser is currently not supported. Your Salesforce may be degraded.
+         
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          More Information
+        </a>
+      </h2>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSAlert Info 1`] = `
+<div
+  className="slds-p-around_medium slds-p-top_xx-large"
+>
+  <div
+    className="slds-notify-container"
+  >
+    <div
+      className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info"
+      role="alert"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        info
+      </span>
+      <span
+        className="slds-m-right_x-small"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_x-small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#user"
+          />
+        </svg>
+        
+      </span>
+      <h2>
+        Logged in as John Smith (johnsmith@acme.com).
+         
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          Log out
+        </a>
+      </h2>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSAlert Offline 1`] = `
+<div
+  className="slds-p-around_medium slds-p-top_xx-large"
+>
+  <div
+    className="slds-notify-container"
+  >
+    <div
+      className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_offline"
+      role="alert"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        offline
+      </span>
+      <span
+        className="slds-m-right_x-small"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_x-small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#offline"
+          />
+        </svg>
+        
+      </span>
+      <h2>
+        You are in offline mode.
+         
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          More information
+        </a>
+      </h2>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSAlert Warning 1`] = `
+<div
+  className="slds-p-around_medium slds-p-top_xx-large"
+>
+  <div
+    className="slds-notify-container"
+  >
+    <div
+      className="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning"
+      role="alert"
+    >
+      <span
+        className="slds-assistive-text"
+      >
+        warning
+      </span>
+      <span
+        className="slds-m-right_x-small"
+      >
+        <svg
+          aria-hidden="true"
+          className="slds-icon slds-icon_x-small"
+        >
+          <use
+            href="/assets/icons/utility-sprite/svg/symbols.svg#warning"
+          />
+        </svg>
+        
+      </span>
+      <h2>
+        Your browser is outdated. Your Salesforce experience may be degraded.
+         
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          More Information
+        </a>
+      </h2>
+    </div>
+  </div>
+</div>
+`;
