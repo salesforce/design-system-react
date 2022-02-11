@@ -1,0 +1,26 @@
+{
+	"component": "progress-indicator",
+	"status": "prod",
+	"display-name": "Progress Indicators",
+	"classKey": "ProgressIndicator",
+	"SLDS-component-path": "/components/progress-indicator",
+	"last-accessibility-review": {
+		"date-iso-8601": "2018/07/25",
+		"commit-sha": "473c75bf424f69bf0ff66fde6b1e604c21d2835c"
+	},
+	"last-slds-markup-review": {
+		"date-iso-8601": "2018/07/25",
+		"commit-sha": "473c75bf424f69bf0ff66fde6b1e604c21d2835c"
+	},
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "Vertical",
+			"path": "/__examples__/vertical.jsx"
+		}
+	],
+	"url-slug": "progress-indicators"
+}
