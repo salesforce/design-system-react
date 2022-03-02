@@ -55,13 +55,19 @@ declare module '@salesforce/design-system-react/components/slider' {
 		 */
 		name?: string;
 		/**
-		 * This event fires whenever the user has modified the data of the control. This callback recieves the following parameters `event, { value: [string] }`.
+		 * This event fires whenever the user has modified the data of the control. This callback recieves the following parameters `event, { value: number }`.
 		 */
-		onChange?: (v: any) => any;
+		onChange?: (
+			event: React.ChangeEvent<HTMLInputElement>,
+			{ value: number }
+		) => void;
 		/**
-		 * This event fires when the value is committed. This callback recieves the following parameters `event, { value: [string] }`.
+		 * This event fires when the value is committed. This callback recieves the following parameters `event, { value: number }`.
 		 */
-		onInput?: (v: any) => any;
+		onInput?: (
+			event: React.ChangeEvent<HTMLInputElement>,
+			{ value: number }
+		) => void;
 		/**
 		 * Size of the slider.
 		 */
