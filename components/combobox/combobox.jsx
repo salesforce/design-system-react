@@ -257,7 +257,7 @@ const propTypes = {
 			label: PropTypes.string,
 			subTitle: PropTypes.string,
 			type: PropTypes.string,
-			disabled: PropTypes.boolean,
+			disabled: PropTypes.bool,
 			tooltipContent: PropTypes.node,
 		})
 	),
