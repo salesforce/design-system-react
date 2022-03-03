@@ -1,4 +1,4 @@
-declare module '@salesforce/design-system-react/components/popover/popover' {
+declare module '@salesforce/design-system-react/components/popover' {
 	import React from 'react';
 	type Props = {
 		/**

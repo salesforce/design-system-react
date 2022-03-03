@@ -1,4 +1,4 @@
-declare module '@salesforce/design-system-react/components/menu-dropdown/menu-dropdown' {
+declare module '@salesforce/design-system-react/components/menu-dropdown' {
 	import React from 'react';
 	type Props = {
 		/**
