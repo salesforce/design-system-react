@@ -1,4 +1,4 @@
-declare module '@salesforce/design-system-react/components/date-picker/date-picker' {
+declare module '@salesforce/design-system-react/components/date-picker' {
 	import React from 'react';
 	type Props = {
 		/**

@@ -1,4 +1,4 @@
-declare module '@salesforce/design-system-react/components/combobox/combobox' {
+declare module '@salesforce/design-system-react/components/combobox' {
 	import React from 'react';
 	type Props = {
 		/**
@@ -65,7 +65,10 @@ declare module '@salesforce/design-system-react/components/combobox/combobox' {
 			onOpen?: (event: React.SyntheticEvent, v: any) => any;
 			onRequestClose?: (event: React.SyntheticEvent, v: any) => any;
 			onRequestOpen?: (event: React.SyntheticEvent, v: any) => any;
-			onRequestRemoveSelectedOption?: (event: React.SyntheticEvent, v: any) => any;
+			onRequestRemoveSelectedOption?: (
+				event: React.SyntheticEvent,
+				v: any
+			) => any;
 			onSelect?: (event: React.SyntheticEvent, v: any) => any;
 			onSubmit?: (event: React.SyntheticEvent, v: any) => any;
 		}>;
