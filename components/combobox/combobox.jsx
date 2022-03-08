@@ -244,7 +244,7 @@ const propTypes = {
 	 * 	id: '2',
 	 * 	label: 'Salesforce.com, Inc.',
 	 * 	subTitle: 'Account • San Francisco',
-	 *  title: 'Salesforce',
+	 * 	title: 'Salesforce',
 	 * 	type: 'account',
 	 *  disabled: true,
 	 *  tooltipContent: "You don't have permission to select this item."

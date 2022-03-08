@@ -251,7 +251,7 @@ const SelectedListBox = (props) =>
 								icon={icon}
 								labels={{
 									label: option.label,
-									title: option.title || option.label,
+									title: option.title ?? option.label,
 									removeTitle: props.labels.removePillTitle,
 								}}
 								requestFocus={props.listboxHasFocus}
