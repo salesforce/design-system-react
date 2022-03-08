@@ -235,6 +235,7 @@ const propTypes = {
 	 * * `id`: A unique identifier string.
 	 * * `label`: A primary string of text for a menu item or group separator.
 	 * * `subTitle`: A secondary string of text added for clarity. (optional)
+	 * * `title`: A string of text shown as the title of the selected item (optional)
 	 * * `type`: 'separator' is the only type currently used
 	 * * `disabled`: Set to true to disable this menu item.
 	 * * `tooltipContent`: Content that is displayed in tooltip when item is disabled
@@ -243,6 +244,7 @@ const propTypes = {
 	 * 	id: '2',
 	 * 	label: 'Salesforce.com, Inc.',
 	 * 	subTitle: 'Account • San Francisco',
+	 *  title: 'Salesforce',
 	 * 	type: 'account',
 	 *  disabled: true,
 	 *  tooltipContent: "You don't have permission to select this item."
@@ -256,6 +258,7 @@ const propTypes = {
 			icon: PropTypes.node,
 			label: PropTypes.string,
 			subTitle: PropTypes.string,
+			title: PropTypes.string,
 			type: PropTypes.string,
 			disabled: PropTypes.boolean,
 			tooltipContent: PropTypes.node,
