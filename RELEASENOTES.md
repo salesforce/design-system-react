@@ -37,6 +37,7 @@ These are changes that have backwards-compatible solutions present and that comp
 - `Combobox` - allow user to show different title in the selection list when mouse hovers
 - `slider` - fixed event handler types
 - `Datatable` - restore prop propagation behaviour
+
 **Maintenance**
 - package.json: update license to be machine-parsable 
 
