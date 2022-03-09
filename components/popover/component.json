@@ -1,0 +1,54 @@
+{
+	"component": "popover",
+	"status": "prod",
+	"display-name": "Popovers",
+	"classKey": "Popover",
+	"last-accessibility-review": {
+		"date-iso-8601": "2018/01/18",
+		"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+	},
+	"SLDS-component-path": "/components/popovers",
+	"site-stories": [
+		{
+			"heading": "With Header",
+			"path": "/__examples__/header.jsx"
+		},
+		{
+			"heading": "With Alternative Header",
+			"path": "/__examples__/alternative-header.jsx"
+		},
+		{
+			"heading": "Controlled State with Footer",
+			"path": "/__examples__/controlled-with-footer.jsx"
+		},
+		{
+			"heading": "Custom Target",
+			"path": "/__examples__/custom-target.jsx"
+		},
+		{
+			"heading": "Error Theme",
+			"path": "/__examples__/error.jsx"
+		},
+		{
+			"heading": "Feature",
+			"path": "/__examples__/feature.jsx"
+		},
+		{
+			"heading": "Walkthrough",
+			"path": "/__examples__/walkthrough.jsx"
+		},
+		{
+			"heading": "Walkthrough Action",
+			"path": "/__examples__/walkthrough-action.jsx"
+		},
+		{
+			"heading": "Warning",
+			"path": "/__examples__/warning.jsx"
+		},
+		{
+			"heading": "Edit Dialog",
+			"path": "/__examples__/edit-dialog.jsx"
+		}
+	],
+	"url-slug": "popovers"
+}

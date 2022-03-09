@@ -1,0 +1,30 @@
+{
+	"component": "slider",
+	"status": "prod",
+	"display-name": "Slider",
+	"classKey": "Slider",
+	"SLDS-component-path": "/components/slider",
+	"site-stories": [
+		{
+			"heading": "Base",
+			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "Disabled",
+			"path": "/__examples__/disabled.jsx"
+		},
+		{
+			"heading": "Error",
+			"path": "/__examples__/error.jsx"
+		},
+		{
+			"heading": "Size Variants",
+			"path": "/__examples__/sizes.jsx"
+		},
+		{
+			"heading": "Vertical",
+			"path": "/__examples__/vertical.jsx"
+		}
+	],
+	"url-slug": "slider"
+}
