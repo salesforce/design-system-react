@@ -51,14 +51,14 @@ declare module '@salesforce/design-system-react/components/color-picker' {
 		 * _Tested with Mocha framework._
 		 */
 		events?: Partial<{
-			onChange?: (v: any) => any;
-			onClose?: (v: any) => any;
-			onOpen?: (v: any) => any;
-			onRequestClose?: (v: any) => any;
+			onChange?: (event: React.SyntheticEvent, v: any) => any;
+			onClose?: (event: React.SyntheticEvent, v: any) => any;
+			onOpen?: (event: React.SyntheticEvent, v: any) => any;
+			onRequestClose?: (event: React.SyntheticEvent, v: any) => any;
 			onRequestOpen?: (v: any) => any;
 			onValidateColor?: (v: any) => any;
 			onValidateWorkingColor?: (v: any) => any;
-			onWorkingColorChange?: (v: any) => any;
+			onWorkingColorChange?: (event: React.SyntheticEvent, v: any) => any;
 		}>;
 		/**
 		 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
