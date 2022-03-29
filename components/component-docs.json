@@ -4967,8 +4967,7 @@
                                 "required": false
                             },
                             "disabled": {
-                                "name": "custom",
-                                "raw": "PropTypes.boolean",
+                                "name": "bool",
                                 "required": false
                             },
                             "tooltipContent": {

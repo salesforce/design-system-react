@@ -260,7 +260,7 @@ const propTypes = {
 			subTitle: PropTypes.string,
 			title: PropTypes.string,
 			type: PropTypes.string,
-			disabled: PropTypes.boolean,
+			disabled: PropTypes.bool,
 			tooltipContent: PropTypes.node,
 		})
 	),
