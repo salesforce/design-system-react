@@ -81,7 +81,7 @@ declare module '@salesforce/design-system-react/components/input/private/inner-i
 		/**
 		 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
 		 */
-		inputRef?: (v: any) => any;
+		inputRef?: React.LegacyRef<HTMLInputElement>;
 		/**
 		 * Displays the value of the input statically. This follows the static input UX pattern.
 		 */
@@ -90,23 +90,23 @@ declare module '@salesforce/design-system-react/components/input/private/inner-i
 		 * This label appears above the input.
 		 */
 		label?: string;
-		onBlur?: (v: any) => any;
+		onBlur?: React.FocusEventHandler<HTMLInputElement>;
 		/**
 		 * This callback fires when the input changes. The synthetic React event will be the first parameter to the callback. You will probably want to reference `event.target.value` in your callback. No custom data object is provided.
 		 */
-		onChange?: (v: any) => any;
+		onChange?: React.ChangeEventHandler<HTMLInputElement>;
 		/**
 		 * This event fires when the input is clicked.
 		 */
-		onClick?: (v: any) => any;
-		onFocus?: (v: any) => any;
-		onInput?: (v: any) => any;
-		onInvalid?: (v: any) => any;
-		onKeyDown?: (v: any) => any;
-		onKeyPress?: (v: any) => any;
-		onKeyUp?: (v: any) => any;
-		onSelect?: (v: any) => any;
-		onSubmit?: (v: any) => any;
+		onClick?: React.MouseEventHandler<HTMLInputElement>;
+		onFocus?: React.FocusEventHandler<HTMLInputElement>;
+		onInput?: React.FormEventHandler<HTMLInputElement>;
+		onInvalid?: React.FormEventHandler<HTMLInputElement>;
+		onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
+		onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>;
+		onKeyUp?: React.KeyboardEventHandler<HTMLInputElement>;
+		onSelect?: React.ReactEventHandler<HTMLInputElement>;
+		onSubmit?: React.ReactEventHandler<HTMLInputElement>;
 		/**
 		 * Text that will appear in an empty input.
 		 */
