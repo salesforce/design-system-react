@@ -133,8 +133,11 @@ declare module '@salesforce/design-system-react/components/input' {
 		 * This callback fires when the input changes. Passes in `event, { value }`.
 		 */
 		onChange?: (
-			e: React.ChangeEvent<HTMLInputElement>,
-			value: { value: any }
+			e:
+				| React.ChangeEvent<HTMLInputElement>
+				| React.KeyboardEvent<HTMLButtonElement>
+				| React.MouseEvent<HTMLButtonElement>,
+			value: { value: string; number?: number }
 		) => any;
 		/**
 		 * This event fires when the input is clicked.
