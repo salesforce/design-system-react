@@ -71,6 +71,7 @@ class Portal extends Component {
 				: this.portalNode;
 
 			if (!this.props.portalMount) {
+				this.updatePortal();
 				this.setState({ portalContainer: this.portalNode });
 			}
 		}
