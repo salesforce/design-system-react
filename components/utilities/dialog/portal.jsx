@@ -126,6 +126,11 @@ class Portal extends Component {
 					this.updatePortal(); // update after subtree renders
 				},
 			});
+		} else if (this.state.isOpen === false) {
+			if (this.props.onOpen) {
+				this.props.onOpen(undefined, { portal: this.getChildren() });
+			}
+			this.setState({ isOpen: true });
 		}
 	}
 
@@ -168,6 +173,10 @@ Portal.propTypes = {
 	 */
 	onMount: PropTypes.func,
 	/*
+	 * Triggers when the portal is mounted.
+	 */
+	onOpen: PropTypes.func,
+	/*
 	 * Triggers when Portal re-renders its tree.
 	 */
 	onUpdate: PropTypes.func,
@@ -194,6 +203,7 @@ Portal.defaultProps = {
 	renderTag: 'span',
 	renderTo: null,
 	onMount: () => null,
+	onOpen: () => null,
 	onUpdate: () => null,
 	onUnmount: () => null,
 };
