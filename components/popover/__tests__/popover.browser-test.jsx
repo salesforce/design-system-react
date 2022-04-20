@@ -238,6 +238,34 @@ describe('SLDSPopover', function () {
 				const trigger = wrapper.find(defaultIds.trigger);
 				trigger.simulate('click');
 			});
+
+			it('stops event propagation after closing on ESC', function (done) {
+				const mockEvent = {
+					key: 'Esc',
+					keyCode: 27,
+					which: 27,
+					stopPropagation: sinon.spy(),
+				};
+				wrapper = mount(
+					<DemoComponent
+						onOpen={() => {
+							wrapper.update();
+							const popover = wrapper.find(`#${defaultIds.popover}`);
+							popover.simulate('keyDown', mockEvent);
+						}}
+						onKeyDown={() => {
+							setTimeout(() => {
+								expect(mockEvent.stopPropagation.callCount).to.equal(1);
+								done();
+							}, 0);
+						}}
+					/>,
+					{ attachTo: mountNode }
+				);
+
+				const trigger = wrapper.find(defaultIds.trigger);
+				trigger.simulate('click');
+			});
 		});
 	});
 

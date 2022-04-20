@@ -22,6 +22,7 @@ import ReactDOM from 'react-dom';
 
 // ### Event Helpers
 import KEYS from './key-code';
+import EventUtil from './event';
 
 /* eslint-disable react/no-find-dom-node */
 
@@ -33,6 +34,7 @@ const internalHandleClick = ({ trigger, eventTarget, handleClick }) => {
 };
 
 const KeyboardNavigableDialog = ({
+	event,
 	isOpen,
 	handleClick,
 	keyCode,
@@ -44,6 +46,7 @@ const KeyboardNavigableDialog = ({
 		case KEYS.ESCAPE:
 			if (isOpen) {
 				toggleOpen();
+				EventUtil.trapEvent(event);
 			}
 			break;
 		case KEYS.ENTER:
