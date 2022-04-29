@@ -431,6 +431,130 @@ describe('SLDSDatepicker', function describeFunction() {
 				input.simulate('change', { target: { value: '1/1/2020' } });
 				expect(wrapper.find('.slds-datepicker').length).to.equal(0);
 			});
+
+			it('typing partial date resets after pressing enter', function () {
+				const handleChangeSpy = sinon.spy();
+				wrapper = mount(
+					<DemoComponent menuPosition="relative" onChange={handleChangeSpy} />
+				);
+
+				// Calendar is closed
+				expect(wrapper.find('.slds-datepicker').length).to.equal(0);
+
+				// Click on input to open the calendar
+				const trigger = wrapper.find(triggerClassSelector);
+				trigger.simulate('click', {});
+				expect(wrapper.find('.slds-datepicker').length).to.equal(1);
+
+				// Changing input value closes the calendar
+				const input = wrapper.find('input#sample-datepicker');
+
+				input.simulate('change', { target: { value: '' } });
+				input.simulate('click', {});
+				input.simulate('keyDown', { key: '9', keyCode: 49, which: 49 });
+				input.simulate('keyDown', { key: '/', keyCode: 191, which: 191 });
+				input.simulate('change', { target: { value: '9/' } });
+				expect(input.instance().value).to.equal('9/');
+				input.simulate('keyDown', {
+					key: 'Enter',
+					keyCode: KEYS.ENTER,
+					which: KEYS.ENTER,
+				});
+				expect(input.instance().value).to.equal('1/6/2007');
+				expect(handleChangeSpy.calledOnce).to.equal(true);
+			});
+
+			it('typing partial date resets after pressing escape', function () {
+				const handleChangeSpy = sinon.spy();
+				wrapper = mount(
+					<DemoComponent menuPosition="relative" onChange={handleChangeSpy} />
+				);
+
+				// Calendar is closed
+				expect(wrapper.find('.slds-datepicker').length).to.equal(0);
+
+				// Click on input to open the calendar
+				const trigger = wrapper.find(triggerClassSelector);
+				trigger.simulate('click', {});
+				expect(wrapper.find('.slds-datepicker').length).to.equal(1);
+
+				// Changing input value closes the calendar
+				const input = wrapper.find('input#sample-datepicker');
+
+				input.simulate('change', { target: { value: '' } });
+				input.simulate('click', {});
+				input.simulate('keyDown', { key: '9', keyCode: 49, which: 49 });
+				input.simulate('keyDown', { key: '/', keyCode: 191, which: 191 });
+				input.simulate('change', { target: { value: '9/' } });
+				input.simulate('change', { target: { value: '9/' } });
+				expect(input.instance().value).to.equal('9/');
+				input.simulate('keyDown', {
+					key: 'Escape',
+					keyCode: KEYS.ESCAPE,
+					which: KEYS.ESCAPE,
+				});
+				expect(input.instance().value).to.equal('1/6/2007');
+				expect(handleChangeSpy.calledOnce).to.equal(false);
+			});
+
+			it('typing complete date resets after pressing escape', function () {
+				const handleChangeSpy = sinon.spy();
+				wrapper = mount(
+					<DemoComponent menuPosition="relative" onChange={handleChangeSpy} />
+				);
+
+				// Calendar is closed
+				expect(wrapper.find('.slds-datepicker').length).to.equal(0);
+
+				// Click on input to open the calendar
+				const trigger = wrapper.find(triggerClassSelector);
+				trigger.simulate('click', {});
+				expect(wrapper.find('.slds-datepicker').length).to.equal(1);
+
+				// Changing input value closes the calendar
+				const input = wrapper.find('input#sample-datepicker');
+
+				input.simulate('change', { target: { value: '' } });
+				input.simulate('click', {});
+				input.simulate('change', { target: { value: '12/31/2007' } });
+				expect(input.instance().value).to.equal('12/31/2007');
+				input.simulate('keyDown', {
+					key: 'Escape',
+					keyCode: KEYS.ESCAPE,
+					which: KEYS.ESCAPE,
+				});
+				expect(input.instance().value).to.equal('1/6/2007');
+				expect(handleChangeSpy.calledOnce).to.equal(false);
+			});
+
+			it('typing complete date saves after pressing enter', function () {
+				const handleChangeSpy = sinon.spy();
+				wrapper = mount(
+					<DemoComponent menuPosition="relative" onChange={handleChangeSpy} />
+				);
+
+				// Calendar is closed
+				expect(wrapper.find('.slds-datepicker').length).to.equal(0);
+
+				// Click on input to open the calendar
+				const trigger = wrapper.find(triggerClassSelector);
+				trigger.simulate('click', {});
+				expect(wrapper.find('.slds-datepicker').length).to.equal(1);
+
+				// Changing input value closes the calendar
+				const input = wrapper.find('input#sample-datepicker');
+
+				input.simulate('change', { target: { value: '' } });
+				input.simulate('click', {});
+				input.simulate('change', { target: { value: '12/31/2007' } });
+				expect(input.instance().value).to.equal('12/31/2007');
+				input.simulate('keyDown', {
+					key: 'Enter',
+					keyCode: KEYS.ENTER,
+					which: KEYS.ENTER,
+				});
+				expect(handleChangeSpy.calledOnce).to.equal(true);
+			});
 		});
 	});
 
