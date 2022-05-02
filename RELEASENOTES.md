@@ -31,6 +31,14 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.47
+
+**Bugfixes**
+- `Popover` - Prevent ESC key event from bubbling up to parent components such as `Modal`
+
+**Maintenance**
+- `ProgressIndicator` - TypeScript types update
+
 ## Release 0.10.46
 
 **Bugfixes**
