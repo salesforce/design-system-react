@@ -4,8 +4,7 @@
 	"description": "Salesforce Lightning Design System for React",
 	"license": "SEE LICENSE IN README.md",
 	"engines": {
-		"node": ">=14.x",
-		"npm": "6.x"
+		"node": ">=14.x"
 	},
 	"scripts": {
 		"build:docs": "npx babel-node ./scripts/build-docs.js",
