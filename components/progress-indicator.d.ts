@@ -1,5 +1,20 @@
 declare module '@salesforce/design-system-react/components/progress-indicator' {
 	import React from 'react';
+
+	type Step = {
+		id: string | number;
+		label: string | JSX.Element;
+		assistiveText?: string;
+	};
+
+	type StepState = {
+		isCompleted: boolean;
+		isDisabled: boolean;
+		isError: boolean;
+		isSelected: boolean;
+		step: Step;
+	};
+
 	type Props = {
 		/**
 		 * **Assistive text for accessibility**
@@ -23,16 +38,16 @@ declare module '@salesforce/design-system-react/components/progress-indicator' {
 		/**
 		 * Stores all completed steps. It is an array of step objects.
 		 */
-		completedSteps?: any[];
+		completedSteps?: Step[];
 		/**
 		 * Stores all disabled steps. It is an array of step objects. Steps are still clickable/focusable,
 		 * this only disables cursor change and removes onClick and onFocus event callbacks.
 		 */
-		disabledSteps?: any[];
+		disabledSteps?: Step[];
 		/**
 		 * Stores all error steps. It is an array of step objects and usually there is only one error step, the current step. If an error occurs a second error icon should be placed to the left of related confirmation buttons (e.g. Cancel, Save) and an Error Popover should appear indicating there are errors. These additional items are NOT part of this component. This note was included for visibility purposes. Please refer to [SLDS website](https://www.lightningdesignsystem.com/components/progress-indicator/) for full details **
 		 */
-		errorSteps?: any[];
+		errorSteps?: Step[];
 		/**
 		 * HTML id for component.
 		 */
@@ -48,7 +63,10 @@ declare module '@salesforce/design-system-react/components/progress-indicator' {
 		 *   <ProgressIndicator onStepClick={handleStepClick} />
 		 * ```
 		 */
-		onStepClick?: (v: any) => any;
+		onStepClick?: (
+			event: React.ChangeEvent<HTMLInputElement>,
+			data: StepState
+		) => void;
 		/**
 		 * Triggered when an individual step is focused. By default, it receives an event and returns step state and the step object clicked: `{ isCompleted, isDisabled, isError, isSelected, step }`. Users are able to pass a callback handleClick function in forms of: <function name>(event, data) where data is the callback result.
 		 * ```
@@ -56,11 +74,14 @@ declare module '@salesforce/design-system-react/components/progress-indicator' {
 		 *   <ProgressIndicator onStepFocus={handleStepFocus} />
 		 * ```
 		 */
-		onStepFocus?: (v: any) => any;
+		onStepFocus?: (
+			event: React.ChangeEvent<HTMLInputElement>,
+			data: StepState
+		) => void;
 		/**
 		 * Represents the currently selected or active step. It is a step object.
 		 */
-		selectedStep: Record<string, any> /*.isRequired*/;
+		selectedStep: Step /* .isRequired */;
 		/**
 		 * It is an array of step objects in the following form:
 		 * ```
@@ -71,11 +92,11 @@ declare module '@salesforce/design-system-react/components/progress-indicator' {
 		 *  }],
 		 *  ```
 		 */
-		steps: any[] /*.isRequired*/;
+		steps: Step[] /* .isRequired */;
 		/**
 		 * Stores all steps with opened tooltips. This property is mainly for development purposes. The tooltip should only show on hover for the user.
 		 */
-		tooltipIsOpenSteps?: any[];
+		tooltipIsOpenSteps?: Step[];
 		/**
 		 * Determines component style.
 		 */

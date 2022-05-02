@@ -43,7 +43,7 @@ exports[`DOM snapshots SLDSPillContainer Bare Pill Container 1`] = `
             >
               <span
                 className="slds-pill__label"
-                title="Pill Label 1"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 1
               </span>
@@ -89,7 +89,7 @@ exports[`DOM snapshots SLDSPillContainer Bare Pill Container 1`] = `
             >
               <span
                 className="slds-pill__label"
-                title="Pill Label 2"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 2
               </span>
@@ -169,7 +169,7 @@ exports[`DOM snapshots SLDSPillContainer Base Pill Container 1`] = `
             >
               <span
                 className="slds-pill__label"
-                title="Pill Label 1"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 1
               </span>
@@ -215,7 +215,7 @@ exports[`DOM snapshots SLDSPillContainer Base Pill Container 1`] = `
             >
               <span
                 className="slds-pill__label"
-                title="Pill Label 2"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 2
               </span>
@@ -311,7 +311,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Avatars 1`] = `
               </span>
               <span
                 className="slds-pill__label"
-                title="Pill Label 1"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 1
               </span>
@@ -373,7 +373,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Avatars 1`] = `
               </span>
               <span
                 className="slds-pill__label"
-                title="Pill Label 2"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 2
               </span>
@@ -471,7 +471,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
               </span>
               <span
                 className="slds-pill__label"
-                title="Pill Label 1"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 1
               </span>
@@ -535,7 +535,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
               </span>
               <span
                 className="slds-pill__label"
-                title="Pill Label 2"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 2
               </span>
@@ -598,7 +598,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
               </span>
               <span
                 className="slds-pill__label"
-                title="Pill Label 3"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 3
               </span>
@@ -662,7 +662,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
               </span>
               <span
                 className="slds-pill__label"
-                title="Pill Label 4"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 4
               </span>
@@ -726,7 +726,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
               </span>
               <span
                 className="slds-pill__label"
-                title="Pill Label 5"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 5
               </span>
@@ -790,7 +790,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
               </span>
               <span
                 className="slds-pill__label"
-                title="Pill Label 6"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 6
               </span>
@@ -854,7 +854,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
               </span>
               <span
                 className="slds-pill__label"
-                title="Pill Label 7"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 7
               </span>
@@ -918,7 +918,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
               </span>
               <span
                 className="slds-pill__label"
-                title="Pill Label 8"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 8
               </span>
@@ -982,7 +982,7 @@ exports[`DOM snapshots SLDSPillContainer Pill Container With Icons 1`] = `
               </span>
               <span
                 className="slds-pill__label"
-                title="Pill Label 9"
+                title="Full pill label verbiage mirrored here"
               >
                 Pill Label 9
               </span>

@@ -113,14 +113,17 @@ const getAssistiveText = memoize(
 );
 
 const getColumnsAndRowActions = memoize(
-	(children, id, fixedHeader, fixedLayout, search) => {
+	(children, id, fixedHeader, fixedLayout, items, search) => {
 		const columns = [];
 		let RowActions = null;
 
 		React.Children.forEach(children, (child) => {
 			if (child && child.type.displayName === DataTableColumn.displayName) {
 				const { children: columnChildren, ...columnProps } = child.props;
-				const props = { fixedLayout, search, id, ...columnProps };
+				const props = { fixedLayout, search, items, ...columnProps };
+				if (id) {
+					props.id = id;
+				}
 
 				let Cell;
 				if (
@@ -1102,6 +1105,7 @@ class DataTable extends React.Component {
 			this.props.id,
 			this.getFixedHeader(),
 			this.props.fixedLayout,
+			this.props.items,
 			this.props.search
 		);
 
