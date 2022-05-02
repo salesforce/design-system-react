@@ -23,7 +23,7 @@ commands:
 
       - run:
           name: Install all packages
-          command: 'npm install'
+          command: 'npm install --legacy-peer-deps'
 
 jobs:
   lint:
