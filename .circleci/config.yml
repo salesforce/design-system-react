@@ -40,6 +40,12 @@ jobs:
         - run:
             name: Run DOM snapshot tests
             command: 'npm run test:dom-snapshot'
+        - save_cache: # Caches dependencies with a cache key
+              # template for an environment variable,
+              # see circleci.com/docs/2.0/caching/
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - ~/circleci-demo-workflows
   docs:
       executor: dsr-executor
       steps:
