@@ -18,12 +18,13 @@ commands:
     description: Set up project
     steps:
       - checkout
-      - node/install-npm
-      - node/install-packages
+      - node/install-packages:
+          cache-path: ~/project/node_modules
+          override-ci-command: npm install --legacy-peer-deps
 
 jobs:
   lint:
-      executor: node/default
+      executor: dsr-executor
       steps:
         - install
         - run:
