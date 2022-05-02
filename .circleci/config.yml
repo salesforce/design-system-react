@@ -18,13 +18,8 @@ commands:
     description: Set up project
     steps:
       - checkout
+      - node/install-npm
       - node/install-packages
-
-      - run:
-          name: Install all packages
-          command: 'npm install':
-          cache-path: ~/project/node_modules
-          override-ci-command: npm install  --legacy-peer-deps
 
 jobs:
   lint:
