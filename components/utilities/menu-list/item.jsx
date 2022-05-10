@@ -42,6 +42,7 @@ class ListItem extends React.Component {
 		]),
 		checkmark: PropTypes.bool,
 		data: PropTypes.object,
+		disabled: PropTypes.bool,
 		divider: PropTypes.oneOf(['top', 'bottom']),
 		href: PropTypes.string,
 		id: PropTypes.string.isRequired,
@@ -136,7 +137,7 @@ class ListItem extends React.Component {
 			EventUtil.trapImmediate(event);
 		}
 
-		if (this.props.onSelect) {
+		if (this.props.onSelect && !this.props.disabled) {
 			this.props.onSelect(this.props.index);
 		}
 	};

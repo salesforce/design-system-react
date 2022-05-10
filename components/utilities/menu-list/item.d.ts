@@ -5,6 +5,7 @@ declare module '@salesforce/design-system-react/components/utilities/menu-list/i
 		className?: any[] | Record<string, any> | string;
 		checkmark?: boolean;
 		data?: Record<string, any>;
+		disabled?: boolean;
 		divider?: 'top' | 'bottom';
 		href?: string;
 		id: string /*.isRequired*/;
