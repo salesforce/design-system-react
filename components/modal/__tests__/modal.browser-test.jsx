@@ -234,6 +234,11 @@ describe('SLDSModal: ', function () {
 			modal = getModalNode(document.body);
 		});
 
+		it('adds the default h1 heading element', () => {
+			const header = modal.querySelector('.slds-modal__header h1');
+			expect(header).to.not.be.null;
+		});
+
 		it('adds the footer', () => {
 			const footer = modal.querySelector('.slds-modal__footer');
 			expect(footer.className).to.include('slds-theme_default');
