@@ -235,7 +235,7 @@ describe('SLDSModal: ', function () {
 		});
 
 		it('adds the default h1 heading element', () => {
-			const header = modal.querySelector('.slds-modal__header h1');
+			const header = modal.querySelector('section .slds-modal__header h1');
 			expect(header).to.not.be.null;
 		});
 
