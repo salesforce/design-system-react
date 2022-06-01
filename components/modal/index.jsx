@@ -449,7 +449,7 @@ class Modal extends React.Component {
 			headerContent = (
 				<div>
 					{this.props.toast}
-					<h2
+					<h1
 						className={classNames({
 							'slds-text-heading_small': this.isPrompt(),
 							'slds-text-heading_medium': !this.isPrompt(),
@@ -457,7 +457,7 @@ class Modal extends React.Component {
 						id={`${this.getId()}-heading`}
 					>
 						{this.props.heading ? this.props.heading : this.props.title}
-					</h2>
+					</h1>
 					{this.props.tagline ? (
 						<p className="slds-m-top_x-small">{this.props.tagline}</p>
 					) : null}
