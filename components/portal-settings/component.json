@@ -1,0 +1,7 @@
+{
+		"component": "portal-settings",
+		"status": "prod",
+		"display-name": "Portal Settings",
+		"classKey": "PortalSettings",
+		"url-slug": "portal-settings"
+}

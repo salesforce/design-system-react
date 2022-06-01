@@ -1,0 +1,44 @@
+{
+	"component": "welcome-mat",
+	"status": "prod",
+	"display-name": "Welcome Mat",
+	"classKey": "WelcomeMat",
+	"SLDS-component-path": "/components/welcome-mat",
+	"dependencies": [
+		{
+			"component": "info-badge",
+			"classKey": "WelcomeMatInfoBadge"
+		},
+		{
+			"component": "tile",
+			"classKey": "WelcomeMatTile"
+		}
+	],
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "With Steps Completed",
+			"path": "/__examples__/steps-complete.jsx"
+		},
+		{
+			"heading": "Info-Only",
+			"path": "/__examples__/info-only.jsx"
+		},
+		{
+			"heading": "Splash",
+			"path": "/__examples__/splash.jsx"
+		},
+		{
+			"heading": "Trailhead",
+			"path": "/__examples__/trailhead.jsx"
+		},
+		{
+			"heading": "Trailhead - Complete",
+			"path": "/__examples__/trailhead-complete.jsx"
+		}
+	],
+	"url-slug": "welcome-mat"
+}
