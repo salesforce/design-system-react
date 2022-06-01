@@ -1,0 +1,14 @@
+{
+	"component": "spinner",
+	"status": "prod",
+	"display-name": "Spinners",
+	"classKey": "Spinner",
+	"SLDS-component-path": "/components/spinner",
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		}
+	],
+	"url-slug": "spinners"
+}

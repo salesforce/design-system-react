@@ -1,0 +1,48 @@
+{
+	"component": "input",
+	"status": "prod",
+	"display-name": "Inputs",
+	"classKey": "Input",
+	"last-accessibility-review": {
+		"date-iso-8601": "2017/09/22",
+		"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+	},
+	"dependencies": [
+		{
+			"component": "search",
+			"classKey": "InputSearch"
+		}
+	],
+	"SLDS-component-path": "/components/input",
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "With Icons",
+			"path": "/__examples__/icons.jsx"
+		},
+		{
+			"heading": "Error State",
+			"path": "/__examples__/error.jsx"
+		},
+		{
+			"heading": "Disabled",
+			"path": "/__examples__/inactiveInputs.jsx"
+		},
+		{
+			"heading": "With Inline Help",
+			"path": "/__examples__/inline-help.jsx"
+		},
+		{
+			"heading": "With Field Level Help",
+			"path": "/__examples__/field-level-help.jsx"
+		},
+		{
+			"heading": "Counter",
+			"path": "/__examples__/counter-input.jsx"
+		}
+	],
+	"url-slug": "inputs"
+}

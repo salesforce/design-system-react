@@ -1,0 +1,81 @@
+{
+	"component": "data-table",
+	"status": "prod",
+	"display-name": "Data Tables",
+	"classKey": "DataTable",
+	"last-accessibility-review": {
+		"date-iso-8601": "2017/01/01",
+		"deprecated-accessibility": "true",
+		"commit-sha": "ad6b6c6523ee21cada11be5f7ea4d99abc530726"
+	},
+	"SLDS-component-path": "/components/data-tables",
+	"dependencies": [
+		{
+			"component": "cell",
+			"classKey": "DataTableCell"
+		},
+		{
+			"component": "column",
+			"classKey": "DataTableColumn"
+		},
+		{
+			"component": "highlight-cell",
+			"classKey": "DataTableHighlightCell"
+		},
+		{
+			"component": "row-actions",
+			"classKey": "DataTableRowActions"
+		}
+	],
+	"site-stories": [
+    {
+			"heading": "Basic",
+			"path": "/__examples__/basic-fluid.jsx"
+		},
+		{
+			"heading": "Basic: Fluid and Striped",
+			"path": "/__examples__/basic-fluid-striped.jsx"
+		},
+		{
+			"heading": "Basic: No row hover",
+			"path": "/__examples__/basic-fluid-no-row-hover.jsx"
+		},
+		{
+			"heading": "Basic: Columns bordered",
+			"path": "/__examples__/basic-fluid-column-bordered.jsx"
+		},
+		{
+			"heading": "Basic: Headless",
+			"path": "/__examples__/basic-fluid-headless.jsx"
+		},
+		{
+			"heading": "Fixed Layout",
+			"path": "/__examples__/basic-fixed-layout.jsx"
+		},
+		{
+			"heading": "Advanced",
+			"path": "/__examples__/advanced.jsx"
+		},
+		{
+			"heading": "Advanced: Single Selection",
+			"path": "/__examples__/advanced-single-select.jsx"
+		},
+		{
+			"heading": "Advanced: Fixed Header",
+			"path": "/__examples__/fixed-header.jsx"
+		},
+		{
+      "heading": "Advanced: Joined with Page Header",
+      "path": "/__examples__/joined-with-page-header.jsx"
+		},
+		{
+			"heading": "Infinite Scrolling",
+			"path": "/__examples__/infinite-scrolling.jsx"
+		},
+		{
+			"heading": "Resizable Columns",
+			"path": "/__examples__/resizable-columns.jsx"
+		}
+	],
+	"url-slug": "data-tables"
+}

@@ -1,0 +1,28 @@
+{
+	"component": "visual-picker",
+	"status": "prod",
+	"display-name": "Visual Pickers",
+	"classKey": "VisualPicker",
+	"SLDS-component-path": "/components/visual-picker",
+	"dependencies": [
+		{
+			"component": "link",
+			"classKey": "VisualPickerLink"
+		}
+	],
+	"site-stories": [
+		{
+			"heading": "Coverable",
+			"path": "/__examples__/coverable.jsx"
+		},
+		{
+			"heading": "Non-coverable",
+			"path": "/__examples__/non-coverable.jsx"
+		},
+		{
+			"heading": "Vertical",
+			"path": "/__examples__/vertical.jsx"
+		}
+	],
+	"url-slug": "visual-pickers"
+}
