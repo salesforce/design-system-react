@@ -207,6 +207,8 @@ class Modal extends React.Component {
 		if (props.ariaHideApp) {
 			checkAppElementIsSet();
 		}
+
+		this.selfRef = React.createRef();
 	}
 
 	componentDidMount() {
@@ -224,14 +226,14 @@ class Modal extends React.Component {
 				// and manager.jsx are removed. They appear to have
 				// been created in order to do modals in portals.
 				if (!this.isUnmounting) {
-					const el = ReactDOM.findDOMNode(this); // eslint-disable-line react/no-find-dom-node
+					// const el = ReactDOM.findDOMNode(this); // eslint-disable-line react/no-find-dom-node
 					if (
-						el &&
-						el.parentNode &&
-						el.parentNode.getAttribute('data-slds-modal')
+						this.selfRef &&
+						this.selfRef.parentNode &&
+						this.selfRef.parentNode.getAttribute('data-slds-modal')
 					) {
-						ReactDOM.unmountComponentAtNode(el);
-						document.body.removeChild(el);
+						ReactDOM.unmountComponentAtNode(this.selfRef);
+						document.body.removeChild(this.selfRef);
 					}
 				}
 			}
