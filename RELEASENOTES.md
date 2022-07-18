@@ -31,6 +31,11 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.48
+
+**Bugfixes**
+- `Modal` - Change default heading element from `h2` to `h1` in accordance with the [SLDS guideline](https://www.lightningdesignsystem.com/components/modals/#Expected-markup)
+
 ## Release 0.10.47
 
 **Bugfixes**
@@ -47,7 +52,7 @@ These are changes that have backwards-compatible solutions present and that comp
 - `Datatable` - restore prop propagation behaviour
 
 **Maintenance**
-- package.json: update license to be machine-parsable 
+- package.json: update license to be machine-parsable
 
 ## Release 0.10.45
 
