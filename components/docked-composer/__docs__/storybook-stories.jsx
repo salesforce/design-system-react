@@ -1,11 +1,8 @@
 import React from 'react';
-import moment from 'moment';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
 import { DOCKED_COMPOSER } from '../../../utilities/constants';
-
-import DockedComposer from '../../docked-composer';
 
 import Example from '../__examples__/base';
 
