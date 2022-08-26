@@ -6657,6 +6657,67 @@
         "SLDS-component-path": "/components/datepickers",
         "dependencies": []
     },
+    "docked-composer": {
+        "description": "The Docked Composer is a persistent utility bar that allows a user to continually use the app to complete tasks or gather information while expanding/collapsing a composer window. [component blueprint guidelines](https://www.lightningdesignsystem.com/components/docked-composer/).",
+        "displayName": "DockedComposer",
+        "methods": [
+            {
+                "name": "getId",
+                "docblock": null,
+                "modifiers": [],
+                "params": [],
+                "returns": null
+            }
+        ],
+        "props": {
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "HTML id for component.\n_Tested with snapshot testing._"
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Whether the docked composer is open or closed.\n_Tested with snapshot testing._"
+            },
+            "header": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text to display in the header.\n_Tested with snapshot testing._"
+            },
+            "events": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "onMinimize": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onExpand": {
+                            "name": "func",
+                            "required": false
+                        },
+                        "onClose": {
+                            "name": "func",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "Event Callbacks\n* `onMinimize`: Called when minimize button is clicked.\n* `onExpand`: Called when the expand button is clicked.\n* `onClose`: Called when the close button is clicked.\n_Tested with Mocha testing._"
+            }
+        },
+        "route": "docked-composers",
+        "display-name": "Docked Composers",
+        "SLDS-component-path": "/components/docked-composer",
+        "dependencies": []
+    },
     "dynamic-icon": {
         "description": "A set of delightful animated icons.",
         "methods": [
