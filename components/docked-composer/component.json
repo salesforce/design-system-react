@@ -5,8 +5,10 @@
 	"classKey": "DockedComposer",
 	"SLDS-component-path": "/components/docked-composer",
 	"site-stories": [
-	   "/__examples__/base.jsx"
-	],
-	"url-slug": "docked-composers"
+		{
+			"heading": "Default",
+	   "path": "/__examples__/base.jsx"
+	}
+	], "url-slug": "docked-composers"
  }
  

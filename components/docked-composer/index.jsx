@@ -48,11 +48,13 @@ class DockedComposer extends React.Component {
 	}
 
 	render() {
-		const thing = this.props.isOpen ? ' slds-is-open' : ' slds-is-closed';
+		const sectionClassName = this.props.isOpen
+			? 'slds-is-open'
+			: 'slds-is-closed';
 		return (
 			<div id={`${this.getId()}-container`} className="slds-docked_container">
 				<section
-					className={`slds-docked-composer slds-grid slds-grid_vertical${thing}`}
+					className={`slds-docked-composer slds-grid slds-grid_vertical ${sectionClassName}`}
 					role="dialog"
 					aria-labelledby="dialog-heading-id-1"
 					aria-describedby="dialog-content-id-1"

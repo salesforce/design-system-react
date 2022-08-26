@@ -334,6 +334,12 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/date-picker/__examples__/default.jsx'),
 		},
 	],
+	'docked-composer': [
+		{
+			heading: 'Default',
+			path: require('raw-loader!@salesforce/design-system-react/components/docked-composer/__examples__/base.jsx'),
+		},
+	],
 	'dynamic-icon': [
 		{
 			heading: 'Ellie',
