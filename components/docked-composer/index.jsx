@@ -21,6 +21,11 @@ const propTypes = {
 	 */
 	header: PropTypes.string,
 	/**
+	 * Body of the composer.
+	 * _Tested with snapshot testing._
+	 */
+	body: PropTypes.node,
+	/**
 	 * Event Callbacks
 	 * * `onMinimize`: Called when minimize button is clicked.
 	 * * `onExpand`: Called when the expand button is clicked.
