@@ -339,6 +339,10 @@ const documentationSiteLiveExamples = {
 			heading: 'Default',
 			path: require('raw-loader!@salesforce/design-system-react/components/docked-composer/__examples__/base.jsx'),
 		},
+		{
+			heading: 'Minimized',
+			path: require('raw-loader!@salesforce/design-system-react/components/docked-composer/__examples__/minimized.jsx'),
+		},
 	],
 	'dynamic-icon': [
 		{

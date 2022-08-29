@@ -6686,10 +6686,53 @@
             },
             "header": {
                 "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "node"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Text or node to display in the header.\n_Tested with snapshot testing._"
+            },
+            "body": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Body of the composer.\n_Tested with snapshot testing._"
+            },
+            "assistiveText": {
+                "type": {
+                    "name": "shape",
+                    "value": {
+                        "expandButton": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "minimizeButton": {
+                            "name": "string",
+                            "required": false
+                        },
+                        "closeButton": {
+                            "name": "string",
+                            "required": false
+                        }
+                    }
+                },
+                "required": false,
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `expandButton`: This is a visually hidden label for expand button shown when the composer is minimized.\n* `minimizeButton`: This is a visually hidden label for minimize button shown when the composer is expanded.\n* `closeButton`: This is a visually hidden label for close button.\n_Tested with snapshot testing._"
+            },
+            "classNameContainer": {
+                "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Text to display in the header.\n_Tested with snapshot testing._"
+                "description": "Additional class name added to the container with slds-docked_container class.\n_Tested with snapshot testing._"
             },
             "events": {
                 "type": {
