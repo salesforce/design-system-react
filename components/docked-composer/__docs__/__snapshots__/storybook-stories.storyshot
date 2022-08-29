@@ -61,28 +61,6 @@ exports[`DOM snapshots SLDSDockedComposer Default 1`] = `
           <button
             className="slds-button slds-button_icon slds-button_icon-bare"
             disabled={false}
-            id="docked-composer-expand-button"
-            onClick={[Function]}
-            title="Expand"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              className="slds-button__icon"
-            >
-              <use
-                href="/assets/icons/utility-sprite/svg/symbols.svg#expand_alt"
-              />
-            </svg>
-            <span
-              className="slds-assistive-text"
-            >
-              Expand
-            </span>
-          </button>
-          <button
-            className="slds-button slds-button_icon slds-button_icon-bare"
-            disabled={false}
             id="docked-composer-close-button"
             onClick={[Function]}
             title="Close"

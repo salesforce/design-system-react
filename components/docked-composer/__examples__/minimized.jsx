@@ -4,11 +4,11 @@ import React from 'react';
 import DockedComposer from '~/components/docked-composer';
 import Accordion from '~/components/accordion/__examples__/base';
 
-class Example extends React.Component {
-	static displayName = 'DockedComposerExample';
+class Minimized extends React.Component {
+	static displayName = 'DockedComposerMinimized';
 
 	state = {
-		isExpanded: true,
+		isExpanded: false,
 		isOpen: true,
 	};
 
@@ -29,6 +29,12 @@ class Example extends React.Component {
 			<DockedComposer
 				header="What's New this Release?"
 				body={<Accordion />}
+				classNameContainer="hello-world"
+				assistiveText={{
+					expandButton: 'ExPaNd',
+					minimizeButton: 'MiNiMiZe',
+					closeButton: 'ClOsE',
+				}}
 				id="docked-composer"
 				events={{
 					onMinimize: this.handleMinimize,
@@ -41,4 +47,4 @@ class Example extends React.Component {
 	}
 }
 
-export default Example;
+export default Minimized;

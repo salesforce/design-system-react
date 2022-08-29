@@ -16,15 +16,33 @@ const propTypes = {
 	 */
 	isOpen: PropTypes.bool,
 	/**
-	 * Text to display in the header.
+	 * Text or node to display in the header.
 	 * _Tested with snapshot testing._
 	 */
-	header: PropTypes.string,
+	header: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 	/**
 	 * Body of the composer.
 	 * _Tested with snapshot testing._
 	 */
 	body: PropTypes.node,
+	/**
+	 * **Assistive text for accessibility**
+	 * This object is merged with the default props object on every render.
+	 * * `expandButton`: This is a visually hidden label for expand button shown when the composer is minimized.
+	 * * `minimizeButton`: This is a visually hidden label for minimize button shown when the composer is expanded.
+	 * * `closeButton`: This is a visually hidden label for close button.
+	 * _Tested with snapshot testing._
+	 */
+	assistiveText: PropTypes.shape({
+		expandButton: PropTypes.string,
+		minimizeButton: PropTypes.string,
+		closeButton: PropTypes.string,
+	}),
+	/**
+	 * Additional class name added to the container with slds-docked_container class.
+	 * _Tested with snapshot testing._
+	 */
+	classNameContainer: PropTypes.string,
 	/**
 	 * Event Callbacks
 	 * * `onMinimize`: Called when minimize button is clicked.
@@ -57,7 +75,14 @@ class DockedComposer extends React.Component {
 			? 'slds-is-open'
 			: 'slds-is-closed';
 		return (
-			<div id={`${this.getId()}-container`} className="slds-docked_container">
+			<div
+				id={`${this.getId()}-container`}
+				className={`slds-docked_container${
+					this.props.classNameContainer
+						? ` ${this.props.classNameContainer}`
+						: ''
+				}`}
+			>
 				<section
 					className={`slds-docked-composer slds-grid slds-grid_vertical ${sectionClassName}`}
 					role="dialog"
@@ -80,30 +105,40 @@ class DockedComposer extends React.Component {
 							</div>
 						</div>
 						<div className="slds-col_bump-left slds-shrink-none">
-							<Button
-								id={`${this.getId()}-minimize-button`}
-								title="Minimize"
-								assistiveText={{ icon: 'Minimize' }}
-								onClick={this.props.events.onMinimize}
-								iconCategory="utility"
-								iconName="minimize_window"
-								iconVariant="bare"
-								variant="icon"
-							/>
-							<Button
-								id={`${this.getId()}-expand-button`}
-								title="Expand"
-								assistiveText={{ icon: 'Expand' }}
-								onClick={this.props.events.onExpand}
-								iconCategory="utility"
-								iconName="expand_alt"
-								iconVariant="bare"
-								variant="icon"
-							/>
+							{this.props.isOpen ? (
+								<Button
+									id={`${this.getId()}-minimize-button`}
+									title={this.props.assistiveText?.minimizeButton || 'Minimize'}
+									assistiveText={{
+										icon:
+											this.props.assistiveText?.minimizeButton || 'Minimize',
+									}}
+									onClick={this.props.events.onMinimize}
+									iconCategory="utility"
+									iconName="minimize_window"
+									iconVariant="bare"
+									variant="icon"
+								/>
+							) : (
+								<Button
+									id={`${this.getId()}-expand-button`}
+									title={this.props.assistiveText?.expandButton || 'Expand'}
+									assistiveText={{
+										icon: this.props.assistiveText?.expandButton || 'Expand',
+									}}
+									onClick={this.props.events.onExpand}
+									iconCategory="utility"
+									iconName="expand_alt"
+									iconVariant="bare"
+									variant="icon"
+								/>
+							)}
 							<Button
 								id={`${this.getId()}-close-button`}
-								title="Close"
-								assistiveText={{ icon: 'Close' }}
+								title={this.props.assistiveText?.closeButton || 'Close'}
+								assistiveText={{
+									icon: this.props.assistiveText?.closeButton || 'Close',
+								}}
 								onClick={this.props.events.onClose}
 								iconCategory="utility"
 								iconName="close"

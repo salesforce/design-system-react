@@ -8,6 +8,10 @@
 		{
 			"heading": "Default",
 			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "Minimized",
+			"path": "/__examples__/minimized.jsx"
 		}
 	], "url-slug": "docked-composers"
  }

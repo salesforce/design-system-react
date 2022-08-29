@@ -81,14 +81,6 @@ describe('SLDSDockedComposer', function describeFunction() {
 		expect(wrapper.find('#collapsed')).to.have.length(1);
 		expect(wrapper.find('#closed')).to.have.length(0);
 
-		// Clicking the minimize button again doesn't do anyting
-		wrapper
-			.find('button#docked-composer-demo-minimize-button')
-			.simulate('click');
-
-		expect(wrapper.find('#collapsed')).to.have.length(1);
-		expect(wrapper.find('#closed')).to.have.length(0);
-
 		// Click the expand button now
 		wrapper.find('button#docked-composer-demo-expand-button').simulate('click');
 
