@@ -65,8 +65,6 @@ describe('SLDSDockedComposer', function describeFunction() {
 	let wrapper;
 
 	it('onMinimize, onExpand, onClose callbacks', () => {
-		afterEach(() => wrapper.unmount());
-
 		wrapper = mount(<DemoComponent />);
 
 		// Composer should be initially open
