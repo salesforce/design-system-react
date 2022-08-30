@@ -84,6 +84,8 @@ export DatePicker from './date-picker';
 export SLDSDatePicker from './date-picker';
 export Datepicker from './date-picker';
 export SLDSDatepicker from './date-picker';
+export DockedComposer from './docked-composer';
+export SLDSDockedComposer from './docked-composer';
 export Dropdown from './menu-dropdown';
 export DropdownTrigger from './menu-dropdown/button-trigger';
 export SLDSDropdownTrigger from './menu-dropdown/button-trigger';
