@@ -1,23 +1,12 @@
-// Import your external dependencies
 import React from 'react';
 
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { mount } from 'enzyme';
 import IconSettings from '../../icon-settings';
-
-// Import your internal dependencies (for example):
 import DockedComposer from '../../docked-composer';
-/* Set Chai to use chaiEnzyme for enzyme compatible assertions:
- * https://github.com/producthunt/chai-enzyme
- */
-chai.use(chaiEnzyme());
 
-/* A re-usable demo component fixture outside of `describe` sections
- * can accept props within each test and be unmounted after each tests.
- * This wrapping component will be similar to your wrapping component
- * you will create in the React Storybook for manual testing.
- */
+chai.use(chaiEnzyme());
 class DemoComponent extends React.Component {
 	static displayName = 'DockedComposerDemoComponent';
 
@@ -46,9 +35,9 @@ class DemoComponent extends React.Component {
 					body={<div id="composer-body">Hello</div>}
 					id="docked-composer-demo"
 					events={{
-						onMinimize: this.handleMinimize,
-						onExpand: this.handleExpand,
-						onClose: this.handleClose,
+						onRequestMinimize: this.handleMinimize,
+						onRequestExpand: this.handleExpand,
+						onRequestClose: this.handleClose,
 					}}
 					isOpen={this.state.isOpen}
 				/>
@@ -64,7 +53,7 @@ class DemoComponent extends React.Component {
 describe('SLDSDockedComposer', function describeFunction() {
 	let wrapper;
 
-	it('onMinimize, onExpand, onClose callbacks', () => {
+	it('onRequestMinimize, onRequestExpand, onRequestClose callbacks', () => {
 		wrapper = mount(<DemoComponent />);
 
 		// Composer should be initially open

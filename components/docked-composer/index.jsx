@@ -45,16 +45,24 @@ const propTypes = {
 	classNameContainer: PropTypes.string,
 	/**
 	 * Event Callbacks
-	 * * `onMinimize`: Called when minimize button is clicked.
-	 * * `onExpand`: Called when the expand button is clicked.
-	 * * `onClose`: Called when the close button is clicked.
+	 * * `onRequestMinimize`: Called when minimize button is clicked.
+	 * * `onRequestExpand`: Called when the expand button is clicked.
+	 * * `onRequestClose`: Called when the close button is clicked.
 	 * _Tested with Mocha testing._
 	 */
 	events: PropTypes.shape({
-		onMinimize: PropTypes.func,
-		onExpand: PropTypes.func,
-		onClose: PropTypes.func,
+		onRequestMinimize: PropTypes.func,
+		onRequestExpand: PropTypes.func,
+		onRequestClose: PropTypes.func,
 	}),
+};
+
+const defaultProps = {
+	assistiveText: {
+		expandButton: 'Expand',
+		minimizeButton: 'Minimize',
+		closeButton: 'Close',
+	},
 };
 
 /**
@@ -86,8 +94,8 @@ class DockedComposer extends React.Component {
 				<section
 					className={`slds-docked-composer slds-grid slds-grid_vertical ${sectionClassName}`}
 					role="dialog"
-					aria-labelledby="dialog-heading-id-1"
-					aria-describedby="dialog-content-id-1"
+					aria-labelledby={`${this.getId()}-dialog-heading`}
+					aria-describedby={`${this.getId()}-body`}
 				>
 					<header
 						className="slds-docked-composer__header slds-grid slds-shrink-none"
@@ -97,7 +105,7 @@ class DockedComposer extends React.Component {
 							<div className="slds-media__body">
 								<h2
 									className="slds-truncate"
-									id="dialog-heading-id-1"
+									id={`${this.getId()}-dialog-heading`}
 									title={this.props.header}
 								>
 									{this.props.header}
@@ -108,12 +116,11 @@ class DockedComposer extends React.Component {
 							{this.props.isOpen ? (
 								<Button
 									id={`${this.getId()}-minimize-button`}
-									title={this.props.assistiveText?.minimizeButton || 'Minimize'}
+									title={this.props.assistiveText.minimizeButton}
 									assistiveText={{
-										icon:
-											this.props.assistiveText?.minimizeButton || 'Minimize',
+										icon: this.props.assistiveText.minimizeButton,
 									}}
-									onClick={this.props.events.onMinimize}
+									onClick={this.props.events.onRequestMinimize}
 									iconCategory="utility"
 									iconName="minimize_window"
 									iconVariant="bare"
@@ -122,11 +129,11 @@ class DockedComposer extends React.Component {
 							) : (
 								<Button
 									id={`${this.getId()}-expand-button`}
-									title={this.props.assistiveText?.expandButton || 'Expand'}
+									title={this.props.assistiveText.expandButton}
 									assistiveText={{
-										icon: this.props.assistiveText?.expandButton || 'Expand',
+										icon: this.props.assistiveText.expandButton,
 									}}
-									onClick={this.props.events.onExpand}
+									onClick={this.props.events.onRequestExpand}
 									iconCategory="utility"
 									iconName="expand_alt"
 									iconVariant="bare"
@@ -135,11 +142,11 @@ class DockedComposer extends React.Component {
 							)}
 							<Button
 								id={`${this.getId()}-close-button`}
-								title={this.props.assistiveText?.closeButton || 'Close'}
+								title={this.props.assistiveText.closeButton}
 								assistiveText={{
-									icon: this.props.assistiveText?.closeButton || 'Close',
+									icon: this.props.assistiveText.closeButton,
 								}}
-								onClick={this.props.events.onClose}
+								onClick={this.props.events.onRequestClose}
 								iconCategory="utility"
 								iconName="close"
 								iconVariant="bare"
@@ -162,5 +169,6 @@ class DockedComposer extends React.Component {
 }
 
 DockedComposer.propTypes = propTypes;
+DockedComposer.defaultProps = defaultProps;
 
 export default DockedComposer;

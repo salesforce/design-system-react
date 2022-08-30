@@ -9,8 +9,8 @@ exports[`DOM snapshots SLDSDockedComposer Default 1`] = `
     id="docked-composer-container"
   >
     <section
-      aria-describedby="dialog-content-id-1"
-      aria-labelledby="dialog-heading-id-1"
+      aria-describedby="docked-composer-body"
+      aria-labelledby="docked-composer-dialog-heading"
       className="slds-docked-composer slds-grid slds-grid_vertical slds-is-open"
       role="dialog"
     >
@@ -26,7 +26,7 @@ exports[`DOM snapshots SLDSDockedComposer Default 1`] = `
           >
             <h2
               className="slds-truncate"
-              id="dialog-heading-id-1"
+              id="docked-composer-dialog-heading"
               title="What's New this Release?"
             >
               What's New this Release?
@@ -349,8 +349,8 @@ exports[`DOM snapshots SLDSDockedComposer Minimized 1`] = `
     id="docked-composer-container"
   >
     <section
-      aria-describedby="dialog-content-id-1"
-      aria-labelledby="dialog-heading-id-1"
+      aria-describedby="docked-composer-body"
+      aria-labelledby="docked-composer-dialog-heading"
       className="slds-docked-composer slds-grid slds-grid_vertical slds-is-closed"
       role="dialog"
     >
@@ -366,7 +366,7 @@ exports[`DOM snapshots SLDSDockedComposer Minimized 1`] = `
           >
             <h2
               className="slds-truncate"
-              id="dialog-heading-id-1"
+              id="docked-composer-dialog-heading"
               title="What's New this Release?"
             >
               What's New this Release?

@@ -37,9 +37,9 @@ class Minimized extends React.Component {
 				}}
 				id="docked-composer"
 				events={{
-					onMinimize: this.handleMinimize,
-					onExpand: this.handleExpand,
-					onClose: this.handleClose,
+					onRequestMinimize: this.handleMinimize,
+					onRequestExpand: this.handleExpand,
+					onRequestClose: this.handleClose,
 				}}
 				isOpen={this.state.isExpanded}
 			/>

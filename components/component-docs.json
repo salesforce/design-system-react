@@ -6725,7 +6725,11 @@
                     }
                 },
                 "required": false,
-                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `expandButton`: This is a visually hidden label for expand button shown when the composer is minimized.\n* `minimizeButton`: This is a visually hidden label for minimize button shown when the composer is expanded.\n* `closeButton`: This is a visually hidden label for close button.\n_Tested with snapshot testing._"
+                "description": "**Assistive text for accessibility**\nThis object is merged with the default props object on every render.\n* `expandButton`: This is a visually hidden label for expand button shown when the composer is minimized.\n* `minimizeButton`: This is a visually hidden label for minimize button shown when the composer is expanded.\n* `closeButton`: This is a visually hidden label for close button.\n_Tested with snapshot testing._",
+                "defaultValue": {
+                    "value": "{\n\texpandButton: 'Expand',\n\tminimizeButton: 'Minimize',\n\tcloseButton: 'Close',\n}",
+                    "computed": false
+                }
             },
             "classNameContainer": {
                 "type": {
@@ -6738,22 +6742,22 @@
                 "type": {
                     "name": "shape",
                     "value": {
-                        "onMinimize": {
+                        "onRequestMinimize": {
                             "name": "func",
                             "required": false
                         },
-                        "onExpand": {
+                        "onRequestExpand": {
                             "name": "func",
                             "required": false
                         },
-                        "onClose": {
+                        "onRequestClose": {
                             "name": "func",
                             "required": false
                         }
                     }
                 },
                 "required": false,
-                "description": "Event Callbacks\n* `onMinimize`: Called when minimize button is clicked.\n* `onExpand`: Called when the expand button is clicked.\n* `onClose`: Called when the close button is clicked.\n_Tested with Mocha testing._"
+                "description": "Event Callbacks\n* `onRequestMinimize`: Called when minimize button is clicked.\n* `onRequestExpand`: Called when the expand button is clicked.\n* `onRequestClose`: Called when the close button is clicked.\n_Tested with Mocha testing._"
             }
         },
         "route": "docked-composers",
