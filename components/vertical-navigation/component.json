@@ -1,0 +1,22 @@
+{
+	"component": "vertical-navigation",
+	"status": "prod",
+	"display-name": "Vertical Navigation",
+	"classKey": "VerticalNavigation",
+	"SLDS-component-path": "/components/vertical-navigation",
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/default.jsx"
+		},
+		{
+			"heading": "Items with Icons",
+			"path": "/__examples__/icons.jsx"
+		},
+		{
+			"heading": "Items with Notifications",
+			"path": "/__examples__/notifications.jsx"
+		}
+	],
+	"url-slug": "vertical-navigation"
+}

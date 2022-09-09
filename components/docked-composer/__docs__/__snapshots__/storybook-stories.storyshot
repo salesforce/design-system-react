@@ -1,0 +1,428 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DOM snapshots SLDSDockedComposer Default 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-docked_container"
+    id="docked-composer-container"
+  >
+    <section
+      aria-describedby="docked-composer-body"
+      aria-labelledby="docked-composer-dialog-heading"
+      className="slds-docked-composer slds-grid slds-grid_vertical slds-is-open"
+      role="dialog"
+    >
+      <header
+        aria-live="assertive"
+        className="slds-docked-composer__header slds-grid slds-shrink-none"
+      >
+        <div
+          className="slds-media slds-media_center slds-no-space"
+        >
+          <div
+            className="slds-media__body"
+          >
+            <h2
+              className="slds-truncate"
+              id="docked-composer-dialog-heading"
+              title="What's New this Release?"
+            >
+              What's New this Release?
+            </h2>
+          </div>
+        </div>
+        <div
+          className="slds-col_bump-left slds-shrink-none"
+        >
+          <button
+            className="slds-button slds-button_icon slds-button_icon-bare"
+            disabled={false}
+            id="docked-composer-minimize-button"
+            onClick={[Function]}
+            title="Minimize"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#minimize_window"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Minimize
+            </span>
+          </button>
+          <button
+            className="slds-button slds-button_icon slds-button_icon-bare"
+            disabled={false}
+            id="docked-composer-close-button"
+            onClick={[Function]}
+            title="Close"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              Close
+            </span>
+          </button>
+        </div>
+      </header>
+      <div
+        className="slds-docked-composer__body"
+        id="docked-composer-body"
+      >
+        <ul
+          className="slds-accordion"
+          name="base-example-accordion"
+        >
+          <li
+            className="slds-accordion__list-item"
+          >
+            <section
+              className="slds-accordion__section"
+            >
+              <div
+                className="slds-accordion__summary"
+              >
+                <h3
+                  className="slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate"
+                >
+                  <button
+                    aria-controls="1-accordion-panel"
+                    aria-expanded={false}
+                    className="slds-button slds-button_reset slds-accordion__summary-action"
+                    disabled={false}
+                    id="1-accordion-button"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                      />
+                    </svg>
+                    <span
+                      className="slds-truncate"
+                      title="Accordion Summary"
+                    >
+                      Accordion Summary
+                    </span>
+                  </button>
+                </h3>
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="1"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-1 slds-shrink-none"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      More Options
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                aria-hidden={true}
+                className="slds-accordion__content"
+                id="1-accordion-panel"
+              >
+                Accordion details - A
+              </div>
+            </section>
+          </li>
+          <li
+            className="slds-accordion__list-item"
+          >
+            <section
+              className="slds-accordion__section"
+            >
+              <div
+                className="slds-accordion__summary"
+              >
+                <h3
+                  className="slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate"
+                >
+                  <button
+                    aria-controls="2-accordion-panel"
+                    aria-expanded={false}
+                    className="slds-button slds-button_reset slds-accordion__summary-action"
+                    disabled={false}
+                    id="2-accordion-button"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                      />
+                    </svg>
+                    <span
+                      className="slds-truncate"
+                      title="Accordion Summary"
+                    >
+                      Accordion Summary
+                    </span>
+                  </button>
+                </h3>
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="2"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-2 slds-shrink-none"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      More Options
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                aria-hidden={true}
+                className="slds-accordion__content"
+                id="2-accordion-panel"
+              >
+                Accordion details - B
+              </div>
+            </section>
+          </li>
+          <li
+            className="slds-accordion__list-item"
+          >
+            <section
+              className="slds-accordion__section"
+            >
+              <div
+                className="slds-accordion__summary"
+              >
+                <h3
+                  className="slds-text-heading_small slds-accordion__summary-heading slds-has-flexi-truncate"
+                >
+                  <button
+                    aria-controls="3-accordion-panel"
+                    aria-expanded={false}
+                    className="slds-button slds-button_reset slds-accordion__summary-action"
+                    disabled={false}
+                    id="3-accordion-button"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon slds-accordion__summary-action-icon slds-button__icon slds-button__icon_left"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#switch"
+                      />
+                    </svg>
+                    <span
+                      className="slds-truncate"
+                      title="Accordion Summary"
+                    >
+                      Accordion Summary
+                    </span>
+                  </button>
+                </h3>
+                <div
+                  className="slds-dropdown-trigger slds-dropdown-trigger_click"
+                  id="3"
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onMouseEnter={null}
+                  onMouseLeave={null}
+                >
+                  <button
+                    aria-expanded={false}
+                    aria-haspopup={true}
+                    className="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-3 slds-shrink-none"
+                    disabled={false}
+                    onClick={[Function]}
+                    tabIndex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="slds-button__icon"
+                    >
+                      <use
+                        href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+                      />
+                    </svg>
+                    <span
+                      className="slds-assistive-text"
+                    >
+                      More Options
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                aria-hidden={true}
+                className="slds-accordion__content"
+                id="3-accordion-panel"
+              >
+                Accordion details - C
+              </div>
+            </section>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSDockedComposer Minimized 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-docked_container hello-world"
+    id="docked-composer-container"
+  >
+    <section
+      aria-describedby="docked-composer-body"
+      aria-labelledby="docked-composer-dialog-heading"
+      className="slds-docked-composer slds-grid slds-grid_vertical slds-is-closed"
+      role="dialog"
+    >
+      <header
+        aria-live="assertive"
+        className="slds-docked-composer__header slds-grid slds-shrink-none"
+      >
+        <div
+          className="slds-media slds-media_center slds-no-space"
+        >
+          <div
+            className="slds-media__body"
+          >
+            <h2
+              className="slds-truncate"
+              id="docked-composer-dialog-heading"
+              title="What's New this Release?"
+            >
+              What's New this Release?
+            </h2>
+          </div>
+        </div>
+        <div
+          className="slds-col_bump-left slds-shrink-none"
+        >
+          <button
+            className="slds-button slds-button_icon slds-button_icon-bare"
+            disabled={false}
+            id="docked-composer-expand-button"
+            onClick={[Function]}
+            title="ExPaNd"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#expand_alt"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              ExPaNd
+            </span>
+          </button>
+          <button
+            className="slds-button slds-button_icon slds-button_icon-bare"
+            disabled={false}
+            id="docked-composer-close-button"
+            onClick={[Function]}
+            title="ClOsE"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              className="slds-button__icon"
+            >
+              <use
+                href="/assets/icons/utility-sprite/svg/symbols.svg#close"
+              />
+            </svg>
+            <span
+              className="slds-assistive-text"
+            >
+              ClOsE
+            </span>
+          </button>
+        </div>
+      </header>
+    </section>
+  </div>
+</div>
+`;
