@@ -1,0 +1,18 @@
+{
+	"component": "docked-composer",
+	"status": "prod",
+	"display-name": "Docked Composers",
+	"classKey": "DockedComposer",
+	"SLDS-component-path": "/components/docked-composer",
+	"site-stories": [
+		{
+			"heading": "Default",
+			"path": "/__examples__/base.jsx"
+		},
+		{
+			"heading": "Minimized",
+			"path": "/__examples__/minimized.jsx"
+		}
+	], "url-slug": "docked-composers"
+ }
+ 
