@@ -31,100 +31,129 @@ These are changes that have backwards-compatible solutions present and that comp
 
 ### Latest Release
 
+## Release 0.10.49
+
+**Major Features**
+
+- `DockedComposer`: Add component
+
 ## Release 0.10.48
 
 **Bugfixes**
+
 - `Modal` - Change default heading element from `h2` to `h1` in accordance with the [SLDS guideline](https://www.lightningdesignsystem.com/components/modals/#Expected-markup)
 
 ## Release 0.10.47
 
 **Bugfixes**
+
 - `Popover` - Prevent ESC key event from bubbling up to parent components such as `Modal`
 
 **Maintenance**
+
 - `ProgressIndicator` - TypeScript types update
 
 ## Release 0.10.46
 
 **Bugfixes**
+
 - `Combobox` - allow user to show different title in the selection list when mouse hovers
 - `slider` - fixed event handler types
 - `Datatable` - restore prop propagation behaviour
 
 **Maintenance**
+
 - package.json: update license to be machine-parsable
 
 ## Release 0.10.45
 
 **Performance**
+
 - `DataTable` - improves re-rendering performance in scenarios with many rows (in the hundreds/thousands).
 
 ## Release 0.10.44
 
 **Bugfixes**
+
 - `Combobox` - `ESC` key event is trapped when menu is open to prevent bubble up.
 - `BrandBand` - SLDS style update. The props are breaking changes, but SLDS updated its markup, and therefore the current component was broken.
 
 **Maintenance**
+
 - ESLint - Ensure CSS class names plugin works with modern versions. Fix issues with string template scenarios.
 
 ## Release 0.10.43
 
 **Minor Features**
+
 - `Icon` - Add success color variant
 
 ## Release 0.10.42
 
 No changes
+
 ## Release 0.10.41
 
 **Minor Features**
+
 - `Icons` - Updated to latest version 10.x
 
 ## Release 0.10.40
 
 **Bugfixes**
+
 - 'MenuDropdown' - Limit the set of keys that open the dropdown when pressed.
 
 ## Release 0.10.39
 
 **Bugfixes**
+
 - 'Combobox' - Recent changes to Combobox had causes compatibility issues with screen readers such as JAWS. This update reverts these markup changes.
+
 ## Release 0.10.38
 
 **Breaking change**
+
 - 'DataTable' - Protoype feature (resize columns) now defaults to 'fix' mode. This makes the default behavior of column resizing limited to the width of the table instead of overflow:hidden. Scrolling horizontally affects the table container vs column X-axis offset. Single columns get smaller and larger without pushing columns to the right and creating a horizontal scroll.
 
 ## Release 0.10.37
 
 **Bugfixes**
+
 - 'Dropdown' - Align checkbox icon for selected and unselected options
+
 ## Release 0.10.36
 
 **Minor Features**
+
 - `VerticalNavigation`: Add `Icon` and `notificationBadge`
 - `DataTable`: Support table column resizing. This is at prototype stage, is not fully accessible, and required external styling. See component prop table on project website for more details.
 - `DataTable`: Add Header-less Support
 
 **Bugfixes**
+
 - `ProgressIndicator`: Add missing labels for accesibility
 - `Modal`: Update dependency in order to remove race condition
 
 **Maintenance**
+
 - Remove Gitter link on readme
 - Move CI server to CircleCI
 
 ## Release 0.10.35
 
 **Minor Features**
+
 - `Combobox`: Add `inputRef` prop
 
 **Maintenance**
+
 - Update `react-modal` to 3.14.2
 
 ## Release 0.10.34
 
 **Maintenance**
+
 - Update documentation site examples
 
 ## Release 0.10.33
@@ -145,24 +174,24 @@ No changes
 
 **React 17 compatibility updates**
 
-* Remove legacy 16.x context API
-* Update package to React 17
-* Remove deprecated react lifecycle methods
-* Remove javascript:void(0) URLs
+- Remove legacy 16.x context API
+- Update package to React 17
+- Remove deprecated react lifecycle methods
+- Remove javascript:void(0) URLs
 
 **Bug fixes**
 
-* `Modal`: Update structure for accessibility
-* `DataTable`: Fix infinite scroll when items are shorter than table height
-* `Dropdown`: Update selected option state
-* Switch Typescript FC returntype to JSX.Element
-* `Icon`: Fix icon snapshot (after inline icon updates)
+- `Modal`: Update structure for accessibility
+- `DataTable`: Fix infinite scroll when items are shorter than table height
+- `Dropdown`: Update selected option state
+- Switch Typescript FC returntype to JSX.Element
+- `Icon`: Fix icon snapshot (after inline icon updates)
 
 **Maintenance**
 
-* `PageHeader`: Add note about info variant and record-home variant to prop description
-* Update @salesforce-ux/icons from 9.27.0 to 9.40.1
-* Update Storybook to 6.2.0
+- `PageHeader`: Add note about info variant and record-home variant to prop description
+- Update @salesforce-ux/icons from 9.27.0 to 9.40.1
+- Update Storybook to 6.2.0
 
 ## Release 0.10.31
 
@@ -191,6 +220,7 @@ No changes
 **Bugfixes**
 
 - `Combobox`: Update markup from ARIA 1.1 to ARIA 1.2 to better support assistive technology
+
 ## Release 0.10.27
 
 **Bugfixes**
@@ -229,7 +259,7 @@ No changes
 
 - Update Storybook to 6.1
 - Get accessibility tests running again
-- Add UNSAFE_ prefix for deprecated lifecycle hooks
+- Add UNSAFE\_ prefix for deprecated lifecycle hooks
 
 ## Release 0.10.23
 
