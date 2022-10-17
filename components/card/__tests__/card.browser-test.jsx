@@ -194,7 +194,7 @@ describe('Card: ', () => {
 
 		it('correctly destructures `aria-` props', function () {
 			const card = getCard(this.dom);
-			card.ariaLabel.should.equal(ariaLabel);
+			card.getAttribute(ariaLabel).should.equal(ariaLabel);
 		});
 
 		it('correctly destructures `data-` props', function () {
