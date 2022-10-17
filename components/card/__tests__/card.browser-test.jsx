@@ -118,6 +118,8 @@ describe('Card: ', () => {
 		name: 'default',
 		size: 'small',
 	});
+	const ariaLabel = 'aria-label';
+	const dataLabel = 'data-label';
 
 	const optionalProps = assign(requiredProps, {
 		bodyClassName: 'this-is-a-custom-body-class',
@@ -127,6 +129,8 @@ describe('Card: ', () => {
 		filter: renderFilter,
 		icon: renderIcon,
 		style: { background: 'rgb(18, 49, 35)' },
+		[ariaLabel]: ariaLabel,
+		[dataLabel]: dataLabel,
 	});
 
 	describe('Optional Structure', () => {
@@ -186,6 +190,16 @@ describe('Card: ', () => {
 				'#sampleHeaderActions'
 			)[0];
 			headerActionsChildren.should.not.be.undefined;
+		});
+
+		it('correctly destructures `aria-` props', function () {
+			const card = getCard(this.dom);
+			card.ariaLabel.should.equal(ariaLabel);
+		});
+
+		it('correctly destructures `data-` props', function () {
+			const card = getCard(this.dom);
+			card.dataset.label.should.equal(dataLabel);
 		});
 	});
 
