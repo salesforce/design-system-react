@@ -114,6 +114,8 @@ class DemoCard extends React.Component {
 					heading={heading}
 					icon={<Icon category="standard" name="document" size="small" />}
 					empty={isEmpty ? <CardEmpty heading="No Related Items" /> : null}
+					aria-label="SLDSCard Component"
+					data-description="Description of the Card component"
 				>
 					<DataTable id="SLDSDataTableExample-1" items={items}>
 						<DataTableColumn label="Opportunity Name" property="name" truncate>
