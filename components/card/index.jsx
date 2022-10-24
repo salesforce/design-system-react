@@ -23,6 +23,8 @@ import Footer from './private/footer';
 import Empty from './empty';
 
 import { CARD } from '../../utilities/constants';
+import getAriaProps from '../../utilities/get-aria-props';
+import getDataProps from '../../utilities/get-data-props';
 
 const idSuffixes = {
 	body: '__body',
@@ -32,9 +34,11 @@ const idSuffixes = {
 };
 
 /**
- * Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination.
+ * Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination. `aria-` and `data-` props can be provided and will be destructured on the root `article` element.
  */
 const Card = (props) => {
+	const ariaProps = getAriaProps(props);
+	const dataProps = getDataProps(props);
 	const bodyId = props.id ? props.id + idSuffixes.body : null;
 	const filterId = props.id ? props.id + idSuffixes.filter : null;
 	const headingId = props.id ? props.id + idSuffixes.heading : null;
@@ -51,6 +55,8 @@ const Card = (props) => {
 			id={props.id}
 			className={classnames('slds-card', props.className)}
 			style={props.style}
+			{...ariaProps}
+			{...dataProps}
 		>
 			{!props.hasNoHeader && (
 				<Header

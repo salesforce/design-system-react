@@ -2497,7 +2497,7 @@
         "dependencies": []
     },
     "card": {
-        "description": "Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination.",
+        "description": "Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination. `aria-` and `data-` props can be provided and will be destructured on the root `article` element.",
         "methods": [],
         "props": {
             "bodyClassName": {
