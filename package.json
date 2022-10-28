@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.10.48",
+	"version": "0.10.50-alpha.2",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "BSD-3-Clause",
 	"engines": {
@@ -10,6 +10,7 @@
 		"build:docs": "npx babel-node ./scripts/build-docs.js",
 		"build:design-tokens": "rm -r ./utilities/design-tokens/dist/* && cp -R ./node_modules/@salesforce-ux/design-system/design-tokens/dist/*.js ./utilities/design-tokens/dist/",
 		"dist": "scripts/dist.sh",
+		"build:npm-package": "npm run icons && npm run build:docs && npm run dist",
 		"heroku-prebuild": "./scripts/heroku-prebuild.sh",
 		"heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production; ./scripts/heroku-postbuild.sh",
 		"icons": "npx babel-node scripts/inline-icons.js",
@@ -19,6 +20,7 @@
 		"lint:fix": "cross-env NODE_ENV=test npx prettier --write \"**/*.{js,jsx}\" && npx prettylint \"*.json\" --fix && npx eslint --fix \"**/*.{js,jsx,json}\" --max-warnings=0",
 		"lint:style": "npx concurrently \"npx prettier --list-different \"**/*.{js,jsx}\"\" \"npx prettylint \"*.json\"\"",
 		"lint:quality": "npx eslint \"**/*.{jsx,js,json}\" --max-warnings=0",
+		"npm:patch": "npm --no-git-tag-version version patch",
 		"prepare-components": "node ./scripts/prepare-components.js",
 		"publish:origin": "npx babel-node scripts/publish-to-git.js",
 		"publish:edge": "npx babel-node scripts/publish-to-git.js --tag=edge",
