@@ -19,7 +19,12 @@ declare module '@salesforce/design-system-react/components/badge' {
 		/**
 		 * Color variant for the badge component
 		 */
-		color?: 'default' | 'inverse' | 'light';
+		color?: 'default' | 'inverse' | 'light' | 'success' | 'warning' | 'error';
+
+		/**
+		 * The badge icon. Expects an Icon component
+		 */
+		icon?: React.ReactElement;
 
 		/**
 		 * Icon alignment for the badge component
