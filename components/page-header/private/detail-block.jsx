@@ -85,7 +85,11 @@ class DetailBlock extends Component {
 		const labelClasses = classnames({ 'slds-truncate': truncate });
 
 		return (
-			<Tooltip align="top" title={content} triggerStyle={{ display: 'inline' }}>
+			<Tooltip
+				align="top"
+				content={content}
+				triggerStyle={{ display: 'inline' }}
+			>
 				<div className={labelClasses} tabIndex="0" title={content}>
 					{content}
 				</div>
