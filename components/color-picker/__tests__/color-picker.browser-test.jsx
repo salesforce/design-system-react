@@ -782,15 +782,15 @@ describe('SLDSColorPicker', function describeFunction() {
 			const button = wrapper.find(selectors.toggle).first();
 			expect(button.find('span').first().text()).contains(assistiveText);
 		});
-	});
 
-	it('Use label for screen reader if assistive text is not provided', () => {
-		const label = 'Pick a color';
-		wrapper = mount(<ColorPicker labels={{ label }} />, {
-			attachTo: mountNode,
+		it('Use label for screen reader if assistive text is not provided', () => {
+			const label = 'Pick a color';
+			wrapper = mount(<ColorPicker labels={{ label }} />, {
+				attachTo: mountNode,
+			});
+
+			const button = wrapper.find(selectors.toggle).first();
+			expect(button.find('span').first().text()).contains(label);
 		});
-
-		const button = wrapper.find(selectors.toggle).first();
-		expect(button.find('span').first().text()).contains(label);
 	});
 });
