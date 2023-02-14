@@ -36,21 +36,28 @@ exports[`DOM snapshots SLDSColorPicker Color Picker Disabled 1`] = `
           tabIndex="0"
           type="button"
         >
-          <span
-            className="slds-swatch"
-            style={
-              Object {
-                "backgroundColor": "",
-                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-              }
-            }
-          >
+          <div>
             <span
               className="slds-assistive-text"
             >
-              Transparent Swatch
+              Choose Color
             </span>
-          </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "",
+                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Transparent Swatch
+              </span>
+            </span>
+          </div>
           <svg
             aria-hidden="true"
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
@@ -119,21 +126,28 @@ exports[`DOM snapshots SLDSColorPicker ColorPicker Menu Open 1`] = `
           tabIndex="0"
           type="button"
         >
-          <span
-            className="slds-swatch"
-            style={
-              Object {
-                "backgroundColor": "",
-                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-              }
-            }
-          >
+          <div>
             <span
               className="slds-assistive-text"
             >
-              Transparent Swatch
+              Choose Color
             </span>
-          </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "",
+                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Transparent Swatch
+              </span>
+            </span>
+          </div>
           <svg
             aria-hidden="true"
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
@@ -1434,21 +1448,28 @@ exports[`DOM snapshots SLDSColorPicker Custom Only 1`] = `
           tabIndex="0"
           type="button"
         >
-          <span
-            className="slds-swatch"
-            style={
-              Object {
-                "backgroundColor": "",
-                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-              }
-            }
-          >
+          <div>
             <span
               className="slds-assistive-text"
             >
-              Transparent Swatch
+              Choose Color
             </span>
-          </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "",
+                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Transparent Swatch
+              </span>
+            </span>
+          </div>
           <svg
             aria-hidden="true"
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
@@ -1516,21 +1537,28 @@ exports[`DOM snapshots SLDSColorPicker Custom Tab Selected 1`] = `
           tabIndex="0"
           type="button"
         >
-          <span
-            className="slds-swatch"
-            style={
-              Object {
-                "backgroundColor": "",
-                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-              }
-            }
-          >
+          <div>
             <span
               className="slds-assistive-text"
             >
-              Transparent Swatch
+              Choose Color
             </span>
-          </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "",
+                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Transparent Swatch
+              </span>
+            </span>
+          </div>
           <svg
             aria-hidden="true"
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
@@ -1598,21 +1626,28 @@ exports[`DOM snapshots SLDSColorPicker Custom Validator 1`] = `
           tabIndex="0"
           type="button"
         >
-          <span
-            className="slds-swatch"
-            style={
-              Object {
-                "backgroundColor": "",
-                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-              }
-            }
-          >
+          <div>
             <span
               className="slds-assistive-text"
             >
-              Transparent Swatch
+              Choose Color
             </span>
-          </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "",
+                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Transparent Swatch
+              </span>
+            </span>
+          </div>
           <svg
             aria-hidden="true"
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
@@ -1683,21 +1718,28 @@ exports[`DOM snapshots SLDSColorPicker Default - Right to Left (RTL) 1`] = `
             tabIndex="0"
             type="button"
           >
-            <span
-              className="slds-swatch"
-              style={
-                Object {
-                  "backgroundColor": "",
-                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-                }
-              }
-            >
+            <div>
               <span
                 className="slds-assistive-text"
               >
-                Transparent Swatch
+                Choose Color
               </span>
-            </span>
+              <span
+                className="slds-swatch"
+                style={
+                  Object {
+                    "backgroundColor": "",
+                    "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                  }
+                }
+              >
+                <span
+                  className="slds-assistive-text"
+                >
+                  Transparent Swatch
+                </span>
+              </span>
+            </div>
             <svg
               aria-hidden="true"
               className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
@@ -1766,21 +1808,28 @@ exports[`DOM snapshots SLDSColorPicker Default 1`] = `
           tabIndex="0"
           type="button"
         >
-          <span
-            className="slds-swatch"
-            style={
-              Object {
-                "backgroundColor": "",
-                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-              }
-            }
-          >
+          <div>
             <span
               className="slds-assistive-text"
             >
-              Transparent Swatch
+              Choose Color
             </span>
-          </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "",
+                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Transparent Swatch
+              </span>
+            </span>
+          </div>
           <svg
             aria-hidden="true"
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
@@ -1848,21 +1897,28 @@ exports[`DOM snapshots SLDSColorPicker Doc site Default 1`] = `
           tabIndex="0"
           type="button"
         >
-          <span
-            className="slds-swatch"
-            style={
-              Object {
-                "backgroundColor": "",
-                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-              }
-            }
-          >
+          <div>
             <span
               className="slds-assistive-text"
             >
-              Transparent Swatch
+              Choose Color
             </span>
-          </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "",
+                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Transparent Swatch
+              </span>
+            </span>
+          </div>
           <svg
             aria-hidden="true"
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
@@ -1929,21 +1985,28 @@ exports[`DOM snapshots SLDSColorPicker Hidden Input 1`] = `
           tabIndex="0"
           type="button"
         >
-          <span
-            className="slds-swatch"
-            style={
-              Object {
-                "backgroundColor": "",
-                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-              }
-            }
-          >
+          <div>
             <span
               className="slds-assistive-text"
             >
-              Transparent Swatch
+              Choose Color
             </span>
-          </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "",
+                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Transparent Swatch
+              </span>
+            </span>
+          </div>
           <svg
             aria-hidden="true"
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
@@ -1953,6 +2016,95 @@ exports[`DOM snapshots SLDSColorPicker Hidden Input 1`] = `
             />
           </svg>
         </button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DOM snapshots SLDSColorPicker No label 1`] = `
+<div
+  className="slds-p-around_medium"
+>
+  <div
+    className="slds-color-picker test_class_name"
+  >
+    <div
+      className="slds-color-picker__summary"
+    >
+      <label
+        className="slds-color-picker__summary-label slds-assistive-text"
+        htmlFor="color-picker-summary-input-default-color-picker"
+        id="color-picker-label-default-color-picker"
+      >
+        I should be read
+      </label>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <button
+          aria-haspopup="dialog"
+          className="slds-button slds-button_icon-more slds-color-picker__summary-button"
+          disabled={false}
+          id="slds-color-picker__summary-button-default-color-picker"
+          onClick={[Function]}
+          onFocus={null}
+          onMouseEnter={null}
+          onMouseLeave={null}
+          tabIndex="0"
+          type="button"
+        >
+          <div>
+            <span
+              className="slds-assistive-text"
+            >
+              I should be read
+            </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "",
+                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Transparent Swatch
+              </span>
+            </span>
+          </div>
+          <svg
+            aria-hidden="true"
+            className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
+          >
+            <use
+              href="/assets/icons/utility-sprite/svg/symbols.svg#down"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="slds-form-element slds-color-picker__summary-input slds-align-top"
+      >
+        <div
+          className="slds-form-element__control"
+        >
+          <input
+            className="slds-input"
+            id="color-picker-summary-input-default-color-picker"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
       </div>
       
     </div>
@@ -1996,20 +2148,27 @@ exports[`DOM snapshots SLDSColorPicker Outer Input in Error State 1`] = `
           tabIndex="0"
           type="button"
         >
-          <span
-            className="slds-swatch"
-            style={
-              Object {
-                "backgroundColor": "#invalid",
-              }
-            }
-          >
+          <div>
             <span
               className="slds-assistive-text"
             >
-              #invalid
+              Choose Color
             </span>
-          </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "#invalid",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                #invalid
+              </span>
+            </span>
+          </div>
           <svg
             aria-hidden="true"
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
@@ -2083,20 +2242,27 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors 1`] = `
           tabIndex="0"
           type="button"
         >
-          <span
-            className="slds-swatch"
-            style={
-              Object {
-                "backgroundColor": "#000000",
-              }
-            }
-          >
+          <div>
             <span
               className="slds-assistive-text"
             >
-              #000000
+              Choose Color
             </span>
-          </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "#000000",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                #000000
+              </span>
+            </span>
+          </div>
           <svg
             aria-hidden="true"
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
@@ -2164,20 +2330,27 @@ exports[`DOM snapshots SLDSColorPicker Predefined Colors Only 1`] = `
           tabIndex="0"
           type="button"
         >
-          <span
-            className="slds-swatch"
-            style={
-              Object {
-                "backgroundColor": "#000000",
-              }
-            }
-          >
+          <div>
             <span
               className="slds-assistive-text"
             >
-              #000000
+              Choose Color
             </span>
-          </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "#000000",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                #000000
+              </span>
+            </span>
+          </div>
           <svg
             aria-hidden="true"
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
@@ -2245,21 +2418,28 @@ exports[`DOM snapshots SLDSColorPicker Swatch Only 1`] = `
           tabIndex="0"
           type="button"
         >
-          <span
-            className="slds-swatch"
-            style={
-              Object {
-                "backgroundColor": "",
-                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-              }
-            }
-          >
+          <div>
             <span
               className="slds-assistive-text"
             >
-              Transparent Swatch
+              Choose Color
             </span>
-          </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "",
+                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Transparent Swatch
+              </span>
+            </span>
+          </div>
           <svg
             aria-hidden="true"
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
@@ -2327,21 +2507,28 @@ exports[`DOM snapshots SLDSColorPicker Working Color Input in Error State 1`] = 
           tabIndex="0"
           type="button"
         >
-          <span
-            className="slds-swatch"
-            style={
-              Object {
-                "backgroundColor": "",
-                "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
-              }
-            }
-          >
+          <div>
             <span
               className="slds-assistive-text"
             >
-              Transparent Swatch
+              Choose Color
             </span>
-          </span>
+            <span
+              className="slds-swatch"
+              style={
+                Object {
+                  "backgroundColor": "",
+                  "backgroundImage": "linear-gradient(-45deg, white 47%, #870500 0, #870500 53%, white 0)",
+                }
+              }
+            >
+              <span
+                className="slds-assistive-text"
+              >
+                Transparent Swatch
+              </span>
+            </span>
+          </div>
           <svg
             aria-hidden="true"
             className="slds-button__icon slds-button__icon_x-small slds-m-left_xx-small"
