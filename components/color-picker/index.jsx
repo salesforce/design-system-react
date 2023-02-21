@@ -419,7 +419,16 @@ class ColorPicker extends React.Component {
 					iconPosition="right"
 					iconVariant="more"
 					id={`slds-color-picker__summary-button-${this.generatedId}`}
-					label={<Swatch color={this.state.currentColor} labels={labels} />}
+					label={
+						<div>
+							<span className="slds-assistive-text">
+								{this.props.assistiveText.label
+									? this.props.assistiveText.label
+									: labels.label}
+							</span>
+							<Swatch color={this.state.currentColor} labels={labels} />
+						</div>
+					}
 					onClick={this.handleSwatchButtonClick}
 					variant="icon"
 				/>

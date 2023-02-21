@@ -51,6 +51,14 @@ storiesOf(COLOR_PICKER, module)
 			/>
 		)
 	)
+	.add('No label', () => (
+		<ColorPicker
+			className="test_class_name"
+			events={{ onChange: handleChange }}
+			assistiveText={{ label: 'I should be read' }}
+			id="default-color-picker"
+		/>
+	))
 	.add('Custom Only', () => (
 		<ColorPicker
 			events={{ onChange: handleChange }}
