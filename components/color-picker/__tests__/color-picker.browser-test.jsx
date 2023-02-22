@@ -764,4 +764,33 @@ describe('SLDSColorPicker', function describeFunction() {
 			});
 		});
 	});
+
+	describe('Accessibility label for toggle button is configured correctly for screen reader', () => {
+		it('Use assistive text label if present', () => {
+			const label = 'Pick a color';
+			const assistiveText = 'Should be read';
+			wrapper = mount(
+				<ColorPicker
+					labels={{ label }}
+					assistiveText={{ label: assistiveText }}
+				/>,
+				{
+					attachTo: mountNode,
+				}
+			);
+
+			const button = wrapper.find(selectors.toggle).first();
+			expect(button.find('span').first().text()).contains(assistiveText);
+		});
+
+		it('Use label for screen reader if assistive text is not provided', () => {
+			const label = 'Pick a color';
+			wrapper = mount(<ColorPicker labels={{ label }} />, {
+				attachTo: mountNode,
+			});
+
+			const button = wrapper.find(selectors.toggle).first();
+			expect(button.find('span').first().text()).contains(label);
+		});
+	});
 });
