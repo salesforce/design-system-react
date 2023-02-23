@@ -6,7 +6,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Tooltip from '../../tooltip';
 
 const displayName = 'PageHeaderDetailRow';
 const propTypes = {
@@ -43,21 +42,6 @@ const defaultProps = {
 };
 
 class DetailBlock extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { showTooltip: false };
-	}
-
-	componentDidMount() {
-		this.renderFieldTruncation();
-	}
-
-	componentDidUpdate(prevProps) {
-		if (this.props.content !== prevProps.content) {
-			this.renderFieldTruncation();
-		}
-	}
-
 	renderContent() {
 		const { content, truncate } = this.props;
 
@@ -78,35 +62,6 @@ class DetailBlock extends Component {
 		}
 
 		return content;
-	}
-
-	renderContentWithTooltip() {
-		const { content, truncate } = this.props;
-		const labelClasses = classnames({ 'slds-truncate': truncate });
-
-		return (
-			<Tooltip
-				align="top"
-				content={content}
-				triggerStyle={{ display: 'inline' }}
-			>
-				<div className={labelClasses} tabIndex="0" title={content}>
-					{content}
-				</div>
-			</Tooltip>
-		);
-	}
-
-	renderFieldTruncation() {
-		const fieldContent = this.fieldContentRef;
-		const isTruncated =
-			fieldContent && fieldContent.scrollWidth > fieldContent.offsetWidth;
-
-		if (isTruncated) {
-			this.setState({ showTooltip: true });
-		} else {
-			this.setState({ showTooltip: false });
-		}
 	}
 
 	renderLabel() {
@@ -137,9 +92,7 @@ class DetailBlock extends Component {
 		return (
 			<li className={classes}>
 				{this.renderLabel()}
-				{this.state.showTooltip
-					? this.renderContentWithTooltip()
-					: this.renderContent()}
+				{this.renderContent()}
 			</li>
 		);
 	}
