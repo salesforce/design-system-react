@@ -1,6 +1,6 @@
 {
 	"name": "design-system-react",
-	"version": "0.10.52",
+	"version": "0.10.53",
 	"description": "Salesforce Lightning Design System for React",
 	"license": "BSD-3-Clause",
 	"engines": {
@@ -112,7 +112,7 @@
 		"warning": "^4.0.3"
 	},
 	"peerDependencies": {
-		"@salesforce-ux/design-system": "^2.19.x",
+		"@salesforce-ux/design-system": "^2.20.1",
 		"react": ">=16.8",
 		"react-dom": ">=16.8"
 	},
@@ -130,7 +130,7 @@
 		"@babel/polyfill": "^7.12.1",
 		"@babel/preset-env": "^7.14.2",
 		"@babel/preset-react": "^7.12.7",
-		"@salesforce-ux/design-system": "^2.14.3",
+		"@salesforce-ux/design-system": "^2.20.1",
 		"@salesforce-ux/icons": "10.x",
 		"@salesforce/eslint-plugin-slds-react": "^0.0.1",
 		"@storybook/addon-a11y": "^6.2.0",
