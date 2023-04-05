@@ -4098,7 +4098,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection Invalid 1`] = `
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-inline-single"
+      htmlFor="combobox-inline-single-invalid"
     >
       <abbr
         className="slds-required"
@@ -4127,11 +4127,11 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection Invalid 1`] = `
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-describedby="H1lt75iKxQi"
+              aria-describedby="combobox-inline-single-error"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
-              id="combobox-inline-single"
+              id="combobox-inline-single-invalid"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -4160,7 +4160,7 @@ exports[`DOM snapshots SLDSCombobox Inline Single Selection Invalid 1`] = `
       >
         <div
           className="slds-form-element__help"
-          id="H1lt75iKxQi"
+          id="combobox-inline-single-error"
         >
           This field is invalid
         </div>
@@ -7417,7 +7417,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection Invalid 1`]
   >
     <label
       className="slds-form-element__label"
-      htmlFor="combobox-inline-single"
+      htmlFor="combobox-inline-single-invalid"
     >
       <abbr
         className="slds-required"
@@ -7446,11 +7446,11 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection Invalid 1`]
             <input
               aria-activedescendant={null}
               aria-autocomplete="list"
-              aria-describedby="GvJv8wktE0V"
+              aria-describedby="combobox-inline-single-error"
               autoComplete="off"
               className="slds-input slds-combobox__input"
               disabled={false}
-              id="combobox-inline-single"
+              id="combobox-inline-single-invalid"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -7479,7 +7479,7 @@ exports[`DOM snapshots SLDSCombobox Snapshot Inline Single Selection Invalid 1`]
       >
         <div
           className="slds-form-element__help"
-          id="GvJv8wktE0V"
+          id="combobox-inline-single-error"
         >
           This field is invalid
         </div>

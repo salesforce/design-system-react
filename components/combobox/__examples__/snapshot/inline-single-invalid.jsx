@@ -78,7 +78,8 @@ class Example extends React.Component {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<Combobox
-					id="combobox-inline-single"
+					id="combobox-inline-single-invalid"
+					aria-describedby="combobox-inline-single-error"
 					events={{
 						onChange: (event, { value }) => {
 							if (this.props.action) {

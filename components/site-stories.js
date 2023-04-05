@@ -254,6 +254,10 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-single.jsx'),
 		},
 		{
+			heading: 'Inline single selection invalid',
+			path: require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-single-invalid.jsx'),
+		},
+		{
 			heading: 'Inline: Single Selection with Entity Selection',
 			path: require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/inline-single-entity-combobox.jsx'),
 		},
