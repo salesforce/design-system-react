@@ -20,6 +20,7 @@ import BaseWithInput from '../__examples__/base-with-input';
 import Dialog from '../__examples__/dialog.jsx';
 import InlineSingle from '../__examples__/inline-single';
 import InlineSinglePredefinedOnly from '../__examples__/inline-single-predefined-options-only';
+import InlineSingleInvalid from '../__examples__/inline-single-invalid';
 import InlineSingleWithCustomOpenState from '../__examples__/inline-single-with-custom-open-state';
 import InlineSingleEntityCombobox from '../__examples__/inline-single-entity-combobox';
 import InlineSingleSearchAddEntities from '../__examples__/inline-single-search-add-entities';
@@ -48,6 +49,7 @@ import SnapshotInlineMultipleOpenLoading from '../__examples__/snapshot/inline-m
 import SnapshotInlineMultipleSelection from '../__examples__/snapshot/inline-multiple-selection';
 import SnapshotInlineMultipleSelectionSelected from '../__examples__/snapshot/inline-multiple-selection-selected';
 import SnapshotInlineSingleEntityCombobox from '../__examples__/snapshot/inline-single-entity-combobox';
+import SnapshotInlineSingleInvalid from '../__examples__/snapshot/inline-single-invalid';
 import SnapshotInlineSingleSelection from '../__examples__/snapshot/inline-single-selection';
 import SnapshotInlineSingleSelectionSelected from '../__examples__/snapshot/inline-single-selection-selected';
 import SnapshotInlineSingleSearchAddEntitiesOpen from '../__examples__/snapshot/inline-single-search-add-entities-open';
@@ -88,6 +90,9 @@ storiesOf(COMBOBOX, module)
 	.add('Inline Single Selection', () => <InlineSingle action={action} />)
 	.add('Inline Single Selection Predefined Options Only', () => (
 		<InlineSinglePredefinedOnly action={action} />
+	))
+	.add('Inline Single Selection Invalid', () => (
+		<InlineSingleInvalid action={action} />
 	))
 	.add('Inline Single Selection With Custom Open State', () => (
 		<InlineSingleWithCustomOpenState action={action} />
@@ -161,6 +166,9 @@ storiesOf(COMBOBOX, module)
 		<SnapshotBaseOpenMenuInheritWidthOf action={action} />
 	))
 	.add('Snapshot Dialog Open', () => <SnapshotDialogOpen action={action} />)
+	.add('Snapshot Inline Single Selection Invalid', () => (
+		<SnapshotInlineSingleInvalid action={action} />
+	))
 	.add('Snapshot Inline Single Selection', () => (
 		<SnapshotInlineSingleSelection action={action} />
 	))
