@@ -1439,13 +1439,15 @@ class Combobox extends React.Component {
 						{this.getDialog({
 							menuRenderer: this.renderMenu({ assistiveText, labels }),
 						})}
-						{props.errorText && (
-							<div id={this.getErrorId()} className="slds-form-element__help">
-								{props.errorText}
-							</div>
-						)}
 					</div>
 				</div>
+				{props.errorText && (
+					<div className="slds-has-error">
+						<div id={this.getErrorId()} className="slds-form-element__help">
+							{props.errorText}
+						</div>
+					</div>
+				)}
 			</div>
 		);
 	};
