@@ -11812,7 +11812,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                           id="DataTableExample-FixedHeaders-SLDSDataTableHead-SelectAll-fixed-header"
                           onChange={[Function]}
                           onFocus={[Function]}
-                          tabIndex="-1"
+                          tabIndex={-1}
                           type="checkbox"
                         />
                         <label
@@ -11875,7 +11875,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                             name="SelectAll"
                             onChange={[Function]}
                             onFocus={[Function]}
-                            tabIndex="-1"
+                            tabIndex={-1}
                             type="checkbox"
                           />
                           <label
@@ -12571,7 +12571,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         name="SelectRow1"
                         onChange={[Function]}
                         onFocus={[Function]}
-                        tabIndex="-1"
+                        tabIndex={-1}
                         type="checkbox"
                       />
                       <label
@@ -12789,7 +12789,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         name="SelectRow2"
                         onChange={[Function]}
                         onFocus={[Function]}
-                        tabIndex="-1"
+                        tabIndex={-1}
                         type="checkbox"
                       />
                       <label
@@ -13006,7 +13006,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         name="SelectRow3"
                         onChange={[Function]}
                         onFocus={[Function]}
-                        tabIndex="-1"
+                        tabIndex={-1}
                         type="checkbox"
                       />
                       <label
@@ -13223,7 +13223,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         name="SelectRow4"
                         onChange={[Function]}
                         onFocus={[Function]}
-                        tabIndex="-1"
+                        tabIndex={-1}
                         type="checkbox"
                       />
                       <label
@@ -13440,7 +13440,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         name="SelectRow5"
                         onChange={[Function]}
                         onFocus={[Function]}
-                        tabIndex="-1"
+                        tabIndex={-1}
                         type="checkbox"
                       />
                       <label
@@ -13657,7 +13657,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         name="SelectRow6"
                         onChange={[Function]}
                         onFocus={[Function]}
-                        tabIndex="-1"
+                        tabIndex={-1}
                         type="checkbox"
                       />
                       <label
@@ -13874,7 +13874,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         name="SelectRow7"
                         onChange={[Function]}
                         onFocus={[Function]}
-                        tabIndex="-1"
+                        tabIndex={-1}
                         type="checkbox"
                       />
                       <label
@@ -14091,7 +14091,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         name="SelectRow8"
                         onChange={[Function]}
                         onFocus={[Function]}
-                        tabIndex="-1"
+                        tabIndex={-1}
                         type="checkbox"
                       />
                       <label
@@ -14308,7 +14308,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         name="SelectRow9"
                         onChange={[Function]}
                         onFocus={[Function]}
-                        tabIndex="-1"
+                        tabIndex={-1}
                         type="checkbox"
                       />
                       <label
@@ -14525,7 +14525,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         name="SelectRow10"
                         onChange={[Function]}
                         onFocus={[Function]}
-                        tabIndex="-1"
+                        tabIndex={-1}
                         type="checkbox"
                       />
                       <label
@@ -14742,7 +14742,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         name="SelectRow11"
                         onChange={[Function]}
                         onFocus={[Function]}
-                        tabIndex="-1"
+                        tabIndex={-1}
                         type="checkbox"
                       />
                       <label
@@ -14959,7 +14959,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         name="SelectRow12"
                         onChange={[Function]}
                         onFocus={[Function]}
-                        tabIndex="-1"
+                        tabIndex={-1}
                         type="checkbox"
                       />
                       <label
@@ -18725,7 +18725,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-1-default-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -19263,7 +19263,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-1-default-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -19482,7 +19482,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-1-striped-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -19600,7 +19600,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-1-striped-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-contact-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -19692,7 +19692,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-1-striped-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-opportunityName-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -19810,7 +19810,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-1-striped-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-contact-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -19902,7 +19902,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-1-striped-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-opportunityName-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -20020,7 +20020,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-1-striped-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -20239,7 +20239,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-noRowHover-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -20357,7 +20357,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-noRowHover-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-contact-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -20449,7 +20449,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-noRowHover-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-opportunityName-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -20567,7 +20567,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-noRowHover-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-contact-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -20659,7 +20659,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-noRowHover-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-opportunityName-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -20777,7 +20777,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-noRowHover-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -20996,7 +20996,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -21114,7 +21114,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-contact-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -21206,7 +21206,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-opportunityName-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -21324,7 +21324,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-columnBordered-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-contact-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -21416,7 +21416,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-opportunityName-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -21534,7 +21534,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                       id="DataTableExample-columnBordered-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
                       onChange={[Function]}
                       onFocus={[Function]}
-                      tabIndex="-1"
+                      tabIndex={-1}
                       type="checkbox"
                     />
                     <label
@@ -21945,7 +21945,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                           id="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-opportunityName-checkbox"
                           onChange={[Function]}
                           onFocus={[Function]}
-                          tabIndex="-1"
+                          tabIndex={-1}
                           type="checkbox"
                         />
                         <label
@@ -22063,7 +22063,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                           id="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV80-SLDSDataTableCell-contact-checkbox"
                           onChange={[Function]}
                           onFocus={[Function]}
-                          tabIndex="-1"
+                          tabIndex={-1}
                           type="checkbox"
                         />
                         <label
@@ -22155,7 +22155,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                           id="DataTableExample-column-resizable-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-opportunityName-checkbox"
                           onChange={[Function]}
                           onFocus={[Function]}
-                          tabIndex="-1"
+                          tabIndex={-1}
                           type="checkbox"
                         />
                         <label
@@ -22273,7 +22273,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                           id="DataTableExample-column-resizable-SLDSDataTableRow-5GJOOOPWU7-SLDSDataTableCell-contact-checkbox"
                           onChange={[Function]}
                           onFocus={[Function]}
-                          tabIndex="-1"
+                          tabIndex={-1}
                           type="checkbox"
                         />
                         <label
@@ -22365,7 +22365,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                           id="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-opportunityName-checkbox"
                           onChange={[Function]}
                           onFocus={[Function]}
-                          tabIndex="-1"
+                          tabIndex={-1}
                           type="checkbox"
                         />
                         <label
@@ -22483,7 +22483,7 @@ exports[`DOM snapshots SLDSDataTable Interactive Elements 1`] = `
                           id="DataTableExample-column-resizable-SLDSDataTableRow-8IKZHZZV81-SLDSDataTableCell-contact-checkbox"
                           onChange={[Function]}
                           onFocus={[Function]}
-                          tabIndex="-1"
+                          tabIndex={-1}
                           type="checkbox"
                         />
                         <label
