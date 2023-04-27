@@ -107,7 +107,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                 className="slds-assistive-text"
               >
                 sort this column
-
+                 
               </span>
               <span
                 className="slds-truncate"
@@ -124,7 +124,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                   />
                 </svg>
-
+                
               </span>
               <span
                 aria-atomic="true"
@@ -189,7 +189,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                 className="slds-assistive-text"
               >
                 sort this column
-
+                 
               </span>
               <span
                 className="slds-truncate"
@@ -206,7 +206,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"
                   />
                 </svg>
-
+                
               </span>
               <span
                 aria-atomic="true"
@@ -265,7 +265,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                 className="slds-assistive-text"
               >
                 sort this column
-
+                 
               </span>
               <span
                 className="slds-truncate"
@@ -282,7 +282,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                     href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                   />
                 </svg>
-
+                
               </span>
             </a>
           </th>
@@ -1153,7 +1153,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                     className="slds-assistive-text"
                   >
                     sort this column
-
+                     
                   </span>
                   <span
                     className="slds-truncate"
@@ -1170,7 +1170,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                         href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                       />
                     </svg>
-
+                    
                   </span>
                   <span
                     aria-atomic="true"
@@ -1212,7 +1212,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                       className="slds-assistive-text"
                     >
                       sort this column
-
+                       
                     </span>
                     <span
                       className="slds-truncate"
@@ -1229,7 +1229,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                           href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                         />
                       </svg>
-
+                      
                     </span>
                     <span
                       aria-atomic="true"
@@ -1484,7 +1484,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                     className="slds-assistive-text"
                   >
                     sort this column
-
+                     
                   </span>
                   <span
                     className="slds-truncate"
@@ -1501,7 +1501,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                         href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                       />
                     </svg>
-
+                    
                   </span>
                 </a>
                 <div
@@ -1537,7 +1537,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                       className="slds-assistive-text"
                     >
                       sort this column
-
+                       
                     </span>
                     <span
                       className="slds-truncate"
@@ -1554,7 +1554,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                           href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                         />
                       </svg>
-
+                      
                     </span>
                   </a>
                 </div>
@@ -2501,7 +2501,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                 className="slds-assistive-text"
               >
                 sort this column
-
+                 
               </span>
               <span
                 className="slds-truncate"
@@ -2518,7 +2518,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                     href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                   />
                 </svg>
-
+                
               </span>
               <span
                 aria-atomic="true"
@@ -2635,7 +2635,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                 className="slds-assistive-text"
               >
                 sort this column
-
+                 
               </span>
               <span
                 className="slds-truncate"
@@ -2652,7 +2652,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                     href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                   />
                 </svg>
-
+                
               </span>
             </a>
           </th>
@@ -8503,7 +8503,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-assistive-text"
                   >
                     sort this column
-
+                     
                   </span>
                   <span
                     className="slds-truncate"
@@ -8520,7 +8520,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                       />
                     </svg>
-
+                    
                   </span>
                   <span
                     aria-atomic="true"
@@ -8562,7 +8562,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-assistive-text"
                     >
                       sort this column
-
+                       
                     </span>
                     <span
                       className="slds-truncate"
@@ -8579,7 +8579,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                           href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                         />
                       </svg>
-
+                      
                     </span>
                     <span
                       aria-atomic="true"
@@ -8834,7 +8834,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                     className="slds-assistive-text"
                   >
                     sort this column
-
+                     
                   </span>
                   <span
                     className="slds-truncate"
@@ -8851,7 +8851,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                         href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                       />
                     </svg>
-
+                    
                   </span>
                 </a>
                 <div
@@ -8887,7 +8887,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       className="slds-assistive-text"
                     >
                       sort this column
-
+                       
                     </span>
                     <span
                       className="slds-truncate"
@@ -8904,7 +8904,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                           href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                         />
                       </svg>
-
+                      
                     </span>
                   </a>
                 </div>
@@ -11934,7 +11934,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                     className="slds-assistive-text"
                   >
                     sort this column
-
+                     
                   </span>
                   <span
                     className="slds-truncate"
@@ -11951,7 +11951,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                       />
                     </svg>
-
+                    
                   </span>
                   <span
                     aria-atomic="true"
@@ -11993,7 +11993,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-assistive-text"
                     >
                       sort this column
-
+                       
                     </span>
                     <span
                       className="slds-truncate"
@@ -12010,7 +12010,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                           href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                         />
                       </svg>
-
+                      
                     </span>
                     <span
                       aria-atomic="true"
@@ -12265,7 +12265,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                     className="slds-assistive-text"
                   >
                     sort this column
-
+                     
                   </span>
                   <span
                     className="slds-truncate"
@@ -12282,7 +12282,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                         href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                       />
                     </svg>
-
+                    
                   </span>
                 </a>
                 <div
@@ -12318,7 +12318,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       className="slds-assistive-text"
                     >
                       sort this column
-
+                       
                     </span>
                     <span
                       className="slds-truncate"
@@ -12335,7 +12335,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                           href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                         />
                       </svg>
-
+                      
                     </span>
                   </a>
                 </div>
@@ -15355,7 +15355,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                     className="slds-assistive-text"
                   >
                     sort this column
-
+                     
                   </span>
                   <span
                     className="slds-truncate"
@@ -15372,7 +15372,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                         href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                       />
                     </svg>
-
+                    
                   </span>
                   <span
                     aria-atomic="true"
@@ -15413,7 +15413,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       className="slds-assistive-text"
                     >
                       sort this column
-
+                       
                     </span>
                     <span
                       className="slds-truncate"
@@ -15430,7 +15430,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                           href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                         />
                       </svg>
-
+                      
                     </span>
                     <span
                       aria-atomic="true"
@@ -15685,7 +15685,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                     className="slds-assistive-text"
                   >
                     sort this column
-
+                     
                   </span>
                   <span
                     className="slds-truncate"
@@ -15702,7 +15702,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                         href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                       />
                     </svg>
-
+                    
                   </span>
                 </a>
                 <div
@@ -15737,7 +15737,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       className="slds-assistive-text"
                     >
                       sort this column
-
+                       
                     </span>
                     <span
                       className="slds-truncate"
@@ -15754,7 +15754,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                           href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                         />
                       </svg>
-
+                      
                     </span>
                   </a>
                 </div>
@@ -22578,7 +22578,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   User
                 </span>
               </span>
-
+               
             </div>
             <div
               className="slds-media__body"
@@ -23113,8 +23113,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <span
                     className="slds-assistive-text"
                   >
-                    Sort by:
-
+                    Sort by: 
+                     
                   </span>
                   <span
                     className="slds-truncate"
@@ -23131,7 +23131,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                       />
                     </svg>
-
+                    
                   </span>
                   <span
                     aria-atomic="true"
@@ -23172,8 +23172,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      Sort by:
-
+                      Sort by: 
+                       
                     </span>
                     <span
                       className="slds-truncate"
@@ -23190,7 +23190,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                           href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                         />
                       </svg>
-
+                      
                     </span>
                     <span
                       aria-atomic="true"
@@ -23444,8 +23444,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                   <span
                     className="slds-assistive-text"
                   >
-                    Sort by:
-
+                    Sort by: 
+                     
                   </span>
                   <span
                     className="slds-truncate"
@@ -23462,7 +23462,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                         href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                       />
                     </svg>
-
+                    
                   </span>
                 </a>
                 <div
@@ -23497,8 +23497,8 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                     <span
                       className="slds-assistive-text"
                     >
-                      Sort by:
-
+                      Sort by: 
+                       
                     </span>
                     <span
                       className="slds-truncate"
@@ -23515,7 +23515,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                           href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"
                         />
                       </svg>
-
+                      
                     </span>
                   </a>
                 </div>
