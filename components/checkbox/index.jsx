@@ -332,9 +332,11 @@ class Checkbox extends React.Component {
 						}}
 						role={props.role}
 						required={props.required}
-						tabIndex={!isNaN(Number(props.tabIndex))
-							? parseInt(props.tabIndex, 10)
-							: props.tabIndex}
+						tabIndex={
+							!isNaN(Number(props.tabIndex))
+								? parseInt(props.tabIndex, 10)
+								: props.tabIndex
+						}
 						type="checkbox"
 						{...ariaProps}
 						aria-describedby={this.getAriaDescribedBy()}
