@@ -1,5 +1,8 @@
 declare module '@salesforce/design-system-react/components/color-picker' {
 	import React from 'react';
+
+	type OnRequestCloseTriggerTypes = 'cancel' | 'clickOutside' | 'newPopover';
+
 	type Props = {
 		/**
 		 * **Assistive text for accessibility**
@@ -40,7 +43,7 @@ declare module '@salesforce/design-system-react/components/color-picker' {
 		/**
 		 * Event Callbacks
 		 * * `onChange`: This function is triggered when done is clicked. This function returns `{event, { color: [string] }}`, which is a hex representation of the color.
-		 * * `onClose`: This function is triggered when the menu is closed. This function returns `{event, { trigger, componentWillUnmount }}`. Trigger can have the values `cancel`, `clickOutside`, or `newPopover`.
+		 * * `onClose`: This function is triggered when the menu is closed. This function returns `{event, { componentWillUnmount }}`.
 		 * * `onOpen`: This function is triggered when the color-picker menu is mounted and added to the DOM. The parameters are `event, { portal: }`. `portal` can be used as a React tree root node.
 		 * * `onRequestClose`:  This function is triggered when the user clicks outside the menu or clicks the close button. You will want to define this if color-picker is to be a controlled component. Most of the time you will want to set `isOpen` to `false` when this is triggered unless you need to validate something.
 		 * 						This function returns `{event, {trigger: [string]}}` where `trigger` is either `cancel` or `clickOutside`.
@@ -51,14 +54,26 @@ declare module '@salesforce/design-system-react/components/color-picker' {
 		 * _Tested with Mocha framework._
 		 */
 		events?: Partial<{
-			onChange?: (v: any) => any;
-			onClose?: (v: any) => any;
-			onOpen?: (v: any) => any;
-			onRequestClose?: (v: any) => any;
-			onRequestOpen?: (v: any) => any;
-			onValidateColor?: (v: any) => any;
-			onValidateWorkingColor?: (v: any) => any;
-			onWorkingColorChange?: (v: any) => any;
+			onChange?: (
+				event: React.ChangeEvent<HTMLInputElement>,
+				{ color: string, isValid: boolean }
+			) => void;
+			onClose?: (
+				event: React.ChangeEvent<HTMLInputElement>,
+				{ componentWillUnmount: boolean }
+			) => void;
+			onOpen?: (v: undefined, { portal: HTMLElement }) => void;
+			onRequestClose?: (
+				event: React.ChangeEvent<HTMLInputElement> | undefined,
+				{ trigger: OnRequestCloseTriggerTypes }
+			) => void;
+			onRequestOpen?: () => void;
+			onValidateColor?: (color: string) => boolean;
+			onValidateWorkingColor?: (color: string) => boolean;
+			onWorkingColorChange?: (
+				event: React.ChangeEvent<HTMLInputElement>,
+				{ color: string }
+			) => void;
 		}>;
 		/**
 		 * By default, dialogs will flip their alignment (such as bottom to top) if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint. `hasStaticAlignment` disables this behavior and allows this component to extend beyond boundary elements. _Not tested._
