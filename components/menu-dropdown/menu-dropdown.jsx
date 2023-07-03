@@ -806,7 +806,10 @@ class MenuDropdown extends React.Component {
 
 	// This is a bit of an anti-pattern, but it has the upside of being a nice default. Component authors can always override to only set state and do their own focusing in their subcomponents.
 	handleKeyboardFocus = (focusedIndex) => {
-		if (this.state.focusedIndex !== focusedIndex) {
+		if (
+			this.state.focusedIndex !== focusedIndex &&
+			focusedIndex !== undefined
+		) {
 			this.setState({ focusedIndex });
 		}
 
