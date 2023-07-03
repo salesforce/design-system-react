@@ -180,7 +180,7 @@
 		"find-remove": "^3.1.0",
 		"fs-extra": "^10.0.0",
 		"glob": "^7.1.6",
-		"husky": "^4.3.0",
+		"husky": "^4.3.8",
 		"jest": "^24.9.0",
 		"jest-svg-transformer": "^1.0.0",
 		"js-beautify": "^1.13.13",
