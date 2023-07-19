@@ -25,7 +25,7 @@
     "name": "Stephen James",
     "email": "sjames@salesforce.com"
   },
-  "license": "SEE LICENSE IN README.md",
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/salesforce/design-system-react/issues"
   },

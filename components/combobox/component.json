@@ -38,6 +38,10 @@
 			"path": "/__examples__/inline-single.jsx"
 		},
 		{
+			"heading": "Inline single selection invalid",
+			"path": "/__examples__/inline-single-invalid.jsx"
+		},
+		{
 			"heading": "Inline: Single Selection with Entity Selection",
 			"path": "/__examples__/inline-single-entity-combobox.jsx"
 		},

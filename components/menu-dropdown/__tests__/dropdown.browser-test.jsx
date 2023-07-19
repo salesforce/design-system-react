@@ -394,6 +394,21 @@ describe('SLDSMenuDropdown', function () {
 			);
 			expect(firstNode).attr('role', 'menuitemcheckbox');
 		});
+
+		it('moves focus to next item after keyboard selection', function () {
+			const nodes = getNodes({ wrapper: this.wrapper });
+			nodes.trigger.simulate('click', {});
+			const openNodes = getNodes({ wrapper: this.wrapper });
+			openNodes.menu.simulate('keyDown', keyObjects.DOWN);
+			openNodes.menu.simulate('keyDown', keyObjects.ENTER);
+			openNodes.menu.simulate('keyDown', keyObjects.DOWN);
+			openNodes.menu.simulate('keyDown', keyObjects.ENTER);
+
+			const secondNode = openNodes.menu.find('.slds-dropdown__item a').at(1);
+			expect(secondNode.getDOMNode().getAttribute('aria-checked')).to.not.equal(
+				'true'
+			);
+		});
 	});
 
 	// Hover and hybrid hover UX patterns are not approved UX patterns due to accessibility concerns
