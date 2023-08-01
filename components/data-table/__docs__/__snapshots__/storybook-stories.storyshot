@@ -392,6 +392,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                   <input
                     aria-labelledby="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
                     checked={false}
+                    disabled={false}
                     id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow"
                     name="SelectRow1"
                     onChange={[Function]}
@@ -618,6 +619,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                   <input
                     aria-labelledby="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
                     checked={false}
+                    disabled={false}
                     id="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
                     name="SelectRow2"
                     onChange={[Function]}
@@ -843,6 +845,7 @@ exports[`DOM snapshots SLDSDataTable Advanced (Fixed Layout) 1`] = `
                   <input
                     aria-labelledby="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
                     checked={true}
+                    disabled={false}
                     id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV81-SelectRow"
                     name="SelectRow3"
                     onChange={[Function]}
@@ -1072,6 +1075,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
         }
       >
         <table
+          aria-multiselectable="true"
           className="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered"
           id="DataTableExample-SingleRequiredSelect"
           onBlur={[Function]}
@@ -1097,6 +1101,54 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 }
               >
                 <div
+                  aria-hidden={true}
+                  className="slds-th__action slds-th__action_form"
+                  style={
+                    Object {
+                      "display": "flex",
+                      "height": 0,
+                      "overflow": "hidden",
+                      "paddingBottom": 0,
+                      "paddingTop": 0,
+                      "visibility": "hidden",
+                    }
+                  }
+                >
+                  <div
+                    className="slds-form-element"
+                  >
+                    <div
+                      className="slds-form-element__control"
+                    >
+                      <span
+                        className="slds-checkbox"
+                      >
+                        <input
+                          checked={false}
+                          id="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-SelectAll-fixed-header"
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          tabIndex="-1"
+                          type="checkbox"
+                        />
+                        <label
+                          className="slds-checkbox__label"
+                          htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-SelectAll-fixed-header"
+                        >
+                          <span
+                            className="slds-checkbox_faux"
+                          />
+                          <span
+                            className="slds-assistive-text"
+                          >
+                            Select all rows
+                          </span>
+                        </label>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div
                   className="slds-cell-fixed"
                   style={
                     Object {
@@ -1108,11 +1160,56 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                   }
                 >
                   <div
-                    className="slds-truncate slds-assistive-text"
-                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
-                    title="Choose a row to select"
+                    className="slds-th__action slds-th__action_form"
+                    style={
+                      Object {
+                        "display": "flex",
+                        "justifyContent": "flex-end",
+                        "lineHeight": 1,
+                        "width": "100%",
+                      }
+                    }
                   >
-                    Choose a row to select
+                    <span
+                      className="slds-assistive-text"
+                      id="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+                    >
+                      Select all rows
+                    </span>
+                    <div
+                      className="slds-form-element"
+                    >
+                      <div
+                        className="slds-form-element__control"
+                      >
+                        <span
+                          className="slds-checkbox"
+                        >
+                          <input
+                            checked={false}
+                            id="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-SelectAll"
+                            name="SelectAll"
+                            onChange={[Function]}
+                            onFocus={[Function]}
+                            tabIndex="-1"
+                            type="checkbox"
+                          />
+                          <label
+                            className="slds-checkbox__label"
+                            htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-SelectAll"
+                          >
+                            <span
+                              className="slds-checkbox_faux"
+                            />
+                            <span
+                              className="slds-assistive-text"
+                            >
+                              Select all rows
+                            </span>
+                          </label>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </th>
@@ -1774,39 +1871,43 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                   }
                 }
               >
-                <span
-                  className="slds-radio slds-m-right_x-small"
+                <div
+                  className="slds-form-element"
                 >
-                  <input
-                    aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
-                    checked={false}
-                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
-                    name="DataTableExample-SingleRequiredSelect-SelectRow"
-                    onChange={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    tabIndex="-1"
-                    type="radio"
-                  />
-                  <label
-                    className="slds-radio__label"
-                    htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
-                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label"
+                  <div
+                    className="slds-form-element__control"
                   >
                     <span
-                      className="slds-radio_faux"
-                    />
-                    <span
-                      className="slds-form-element__label"
-                    />
-                    <span
-                      className="slds-assistive-text"
+                      className="slds-checkbox"
                     >
-                      Select this row 1
+                      <input
+                        aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+                        checked={false}
+                        disabled={true}
+                        id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                        name="SelectRow1"
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                        id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Select this row 1
+                        </span>
+                      </label>
                     </span>
-                  </label>
-                </span>
+                  </div>
+                </div>
               </td>
               <th
                 className=""
@@ -1997,39 +2098,43 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                   }
                 }
               >
-                <span
-                  className="slds-radio slds-m-right_x-small"
+                <div
+                  className="slds-form-element"
                 >
-                  <input
-                    aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
-                    checked={false}
-                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
-                    name="DataTableExample-SingleRequiredSelect-SelectRow"
-                    onChange={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    tabIndex="-1"
-                    type="radio"
-                  />
-                  <label
-                    className="slds-radio__label"
-                    htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
-                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label"
+                  <div
+                    className="slds-form-element__control"
                   >
                     <span
-                      className="slds-radio_faux"
-                    />
-                    <span
-                      className="slds-form-element__label"
-                    />
-                    <span
-                      className="slds-assistive-text"
+                      className="slds-checkbox"
                     >
-                      Select this row 2
+                      <input
+                        aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+                        checked={false}
+                        disabled={false}
+                        id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                        name="SelectRow2"
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                        id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Select this row 2
+                        </span>
+                      </label>
                     </span>
-                  </label>
-                </span>
+                  </div>
+                </div>
               </td>
               <th
                 className=""
@@ -2219,39 +2324,43 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                   }
                 }
               >
-                <span
-                  className="slds-radio slds-m-right_x-small"
+                <div
+                  className="slds-form-element"
                 >
-                  <input
-                    aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
-                    checked={false}
-                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
-                    name="DataTableExample-SingleRequiredSelect-SelectRow"
-                    onChange={[Function]}
-                    onClick={[Function]}
-                    onFocus={[Function]}
-                    onKeyPress={[Function]}
-                    tabIndex="-1"
-                    type="radio"
-                  />
-                  <label
-                    className="slds-radio__label"
-                    htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
-                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label"
+                  <div
+                    className="slds-form-element__control"
                   >
                     <span
-                      className="slds-radio_faux"
-                    />
-                    <span
-                      className="slds-form-element__label"
-                    />
-                    <span
-                      className="slds-assistive-text"
+                      className="slds-checkbox"
                     >
-                      Select this row 3
+                      <input
+                        aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+                        checked={false}
+                        disabled={false}
+                        id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
+                        name="SelectRow3"
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        tabIndex="-1"
+                        type="checkbox"
+                      />
+                      <label
+                        className="slds-checkbox__label"
+                        htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
+                        id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label"
+                      >
+                        <span
+                          className="slds-checkbox_faux"
+                        />
+                        <span
+                          className="slds-assistive-text"
+                        >
+                          Select this row 3
+                        </span>
+                      </label>
                     </span>
-                  </label>
-                </span>
+                  </div>
+                </div>
               </td>
               <th
                 className=""
@@ -2756,6 +2865,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               <input
                 aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
                 checked={false}
+                disabled={true}
                 id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
                 name="DataTableExample-SingleRequiredSelect-SelectRow"
                 onChange={[Function]}
@@ -2979,6 +3089,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               <input
                 aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
                 checked={false}
+                disabled={false}
                 id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
                 name="DataTableExample-SingleRequiredSelect-SelectRow"
                 onChange={[Function]}
@@ -3201,6 +3312,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
               <input
                 aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
                 checked={false}
+                disabled={false}
                 id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
                 name="DataTableExample-SingleRequiredSelect-SelectRow"
                 onChange={[Function]}
@@ -3733,6 +3845,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
                   <input
                     aria-labelledby="DataTableExample-2-SLDSDataTableRow-8IKSDFZV91-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
                     checked={false}
+                    disabled={false}
                     id="DataTableExample-2-SLDSDataTableRow-8IKSDFZV91-SelectRow"
                     name="SelectRow2"
                     onChange={[Function]}
@@ -3903,6 +4016,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
                   <input
                     aria-labelledby="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
                     checked={false}
+                    disabled={false}
                     id="DataTableExample-2-SLDSDataTableRow-8IKZHZZV80-SelectRow"
                     name="SelectRow3"
                     onChange={[Function]}
@@ -4073,6 +4187,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
                   <input
                     aria-labelledby="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
                     checked={false}
+                    disabled={false}
                     id="DataTableExample-2-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
                     name="SelectRow4"
                     onChange={[Function]}
@@ -4268,6 +4383,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
                   <input
                     aria-labelledby="DataTableExample-2-SLDSDataTableRow-8SDFDSZHZZV34-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
                     checked={false}
+                    disabled={false}
                     id="DataTableExample-2-SLDSDataTableRow-8SDFDSZHZZV34-SelectRow"
                     name="SelectRow6"
                     onChange={[Function]}
@@ -4463,6 +4579,7 @@ exports[`DOM snapshots SLDSDataTable Advanced with Header Row 1`] = `
                   <input
                     aria-labelledby="DataTableExample-2-SLDSDataTableRow-8IKZHWERWRV81-SelectRow-label DataTableExample-2-SLDSDataTableHead-column-group-header-row-select"
                     checked={false}
+                    disabled={false}
                     id="DataTableExample-2-SLDSDataTableRow-8IKZHWERWRV81-SelectRow"
                     name="SelectRow8"
                     onChange={[Function]}
@@ -9136,6 +9253,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
                         name="SelectRow1"
                         onChange={[Function]}
@@ -9354,6 +9472,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
                         name="SelectRow2"
                         onChange={[Function]}
@@ -9571,6 +9690,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
                         name="SelectRow3"
                         onChange={[Function]}
@@ -9788,6 +9908,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
                         name="SelectRow4"
                         onChange={[Function]}
@@ -10005,6 +10126,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
                         name="SelectRow5"
                         onChange={[Function]}
@@ -10222,6 +10344,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
                         name="SelectRow6"
                         onChange={[Function]}
@@ -10439,6 +10562,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
                         name="SelectRow7"
                         onChange={[Function]}
@@ -10656,6 +10780,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
                         name="SelectRow8"
                         onChange={[Function]}
@@ -10873,6 +10998,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
                         name="SelectRow9"
                         onChange={[Function]}
@@ -11090,6 +11216,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
                         name="SelectRow10"
                         onChange={[Function]}
@@ -11307,6 +11434,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
                         name="SelectRow11"
                         onChange={[Function]}
@@ -11524,6 +11652,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
                         name="SelectRow12"
                         onChange={[Function]}
@@ -12567,6 +12696,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
                         name="SelectRow1"
                         onChange={[Function]}
@@ -12785,6 +12915,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
                         name="SelectRow2"
                         onChange={[Function]}
@@ -13002,6 +13133,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
                         name="SelectRow3"
                         onChange={[Function]}
@@ -13219,6 +13351,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
                         name="SelectRow4"
                         onChange={[Function]}
@@ -13436,6 +13569,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
                         name="SelectRow5"
                         onChange={[Function]}
@@ -13653,6 +13787,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
                         name="SelectRow6"
                         onChange={[Function]}
@@ -13870,6 +14005,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
                         name="SelectRow7"
                         onChange={[Function]}
@@ -14087,6 +14223,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
                         name="SelectRow8"
                         onChange={[Function]}
@@ -14304,6 +14441,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
                         name="SelectRow9"
                         onChange={[Function]}
@@ -14521,6 +14659,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
                         name="SelectRow10"
                         onChange={[Function]}
@@ -14738,6 +14877,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
                         name="SelectRow11"
                         onChange={[Function]}
@@ -14955,6 +15095,7 @@ exports[`DOM snapshots SLDSDataTable Fixed Header Horizontal Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
                         name="SelectRow12"
                         onChange={[Function]}
@@ -15986,6 +16127,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
                         name="SelectRow1"
                         onChange={[Function]}
@@ -16199,6 +16341,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-44da9dcd-SelectRow"
                         name="SelectRow2"
                         onChange={[Function]}
@@ -16412,6 +16555,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-f988a721-SelectRow"
                         name="SelectRow3"
                         onChange={[Function]}
@@ -16625,6 +16769,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d7679cdd-SelectRow"
                         name="SelectRow4"
                         onChange={[Function]}
@@ -16838,6 +16983,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-0085f7a0-SelectRow"
                         name="SelectRow5"
                         onChange={[Function]}
@@ -17051,6 +17197,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-b7acc778-SelectRow"
                         name="SelectRow6"
                         onChange={[Function]}
@@ -17264,6 +17411,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-17991de5-SelectRow"
                         name="SelectRow7"
                         onChange={[Function]}
@@ -17477,6 +17625,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-09b2cee9-SelectRow"
                         name="SelectRow8"
                         onChange={[Function]}
@@ -17690,6 +17839,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-d0035700-SelectRow"
                         name="SelectRow9"
                         onChange={[Function]}
@@ -17903,6 +18053,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-4a526f0c-SelectRow"
                         name="SelectRow10"
                         onChange={[Function]}
@@ -18116,6 +18267,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-9a5dbdb2-SelectRow"
                         name="SelectRow11"
                         onChange={[Function]}
@@ -18329,6 +18481,7 @@ exports[`DOM snapshots SLDSDataTable Infinite Scrolling 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-356dbb52-SelectRow"
                         name="SelectRow12"
                         onChange={[Function]}
@@ -23747,6 +23900,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-896a6a60-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-896a6a60-SelectRow"
                         name="SelectRow1"
                         onChange={[Function]}
@@ -23967,6 +24121,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-44da9dcd-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-44da9dcd-SelectRow"
                         name="SelectRow2"
                         onChange={[Function]}
@@ -24186,6 +24341,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-f988a721-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-f988a721-SelectRow"
                         name="SelectRow3"
                         onChange={[Function]}
@@ -24405,6 +24561,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d7679cdd-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d7679cdd-SelectRow"
                         name="SelectRow4"
                         onChange={[Function]}
@@ -24624,6 +24781,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-0085f7a0-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-0085f7a0-SelectRow"
                         name="SelectRow5"
                         onChange={[Function]}
@@ -24843,6 +25001,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-b7acc778-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-b7acc778-SelectRow"
                         name="SelectRow6"
                         onChange={[Function]}
@@ -25062,6 +25221,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-17991de5-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-17991de5-SelectRow"
                         name="SelectRow7"
                         onChange={[Function]}
@@ -25281,6 +25441,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-09b2cee9-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-09b2cee9-SelectRow"
                         name="SelectRow8"
                         onChange={[Function]}
@@ -25500,6 +25661,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d0035700-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-d0035700-SelectRow"
                         name="SelectRow9"
                         onChange={[Function]}
@@ -25719,6 +25881,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-4a526f0c-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-4a526f0c-SelectRow"
                         name="SelectRow10"
                         onChange={[Function]}
@@ -25938,6 +26101,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-9a5dbdb2-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-9a5dbdb2-SelectRow"
                         name="SelectRow11"
                         onChange={[Function]}
@@ -26157,6 +26321,7 @@ exports[`DOM snapshots SLDSDataTable Joined with Page Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-356dbb52-SelectRow-label DataTableExample-JoinedWithPageHeader-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
+                        disabled={false}
                         id="DataTableExample-JoinedWithPageHeader-SLDSDataTableRow-356dbb52-SelectRow"
                         name="SelectRow12"
                         onChange={[Function]}
