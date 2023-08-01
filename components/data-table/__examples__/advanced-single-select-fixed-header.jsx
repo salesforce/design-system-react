@@ -15,6 +15,39 @@ const CustomDataTableCell = ({ children, ...props }) => (
 );
 CustomDataTableCell.displayName = DataTableCell.displayName;
 
+const items = [
+	{
+		id: '8IKZHZZV80',
+		opportunityName: 'Acme - 1,200 Widgets',
+		accountName: 'Acme',
+		closeDate: '4/10/15',
+		stage: 'Value Proposition',
+		confidence: '70%',
+		amount: '$25,000,000',
+		contact: 'jrogers@acme.com',
+	},
+	{
+		id: '5GJOOOPWU7',
+		opportunityName: 'Acme - 200 Widgets',
+		accountName: 'Acme',
+		closeDate: '1/31/15',
+		stage: 'Prospecting',
+		confidence: '30%',
+		amount: '$5,000,000',
+		contact: 'bob@acme.com',
+	},
+	{
+		id: '8IKZHZZV81',
+		opportunityName: 'salesforce.com - 1,000 Widgets',
+		accountName: 'salesforce.com',
+		closeDate: '1/31/15 3:45PM',
+		stage: 'Id. Decision Makers',
+		confidence: '60%',
+		amount: '$25,000',
+		contact: 'nathan@salesforce.com',
+	},
+];
+
 class Example extends React.Component {
 	static displayName = 'DataTableExample';
 
@@ -23,43 +56,16 @@ class Example extends React.Component {
 		sortColumnDirection: {
 			opportunityName: 'asc',
 		},
-		items: [
-			{
-				id: '8IKZHZZV80',
-				opportunityName: 'Acme - 1,200 Widgets',
-				accountName: 'Acme',
-				closeDate: '4/10/15',
-				stage: 'Value Proposition',
-				confidence: '70%',
-				amount: '$25,000,000',
-				contact: 'jrogers@acme.com',
-			},
-			{
-				id: '5GJOOOPWU7',
-				opportunityName: 'Acme - 200 Widgets',
-				accountName: 'Acme',
-				closeDate: '1/31/15',
-				stage: 'Prospecting',
-				confidence: '30%',
-				amount: '$5,000,000',
-				contact: 'bob@acme.com',
-			},
-			{
-				id: '8IKZHZZV81',
-				opportunityName: 'salesforce.com - 1,000 Widgets',
-				accountName: 'salesforce.com',
-				closeDate: '1/31/15 3:45PM',
-				stage: 'Id. Decision Makers',
-				confidence: '60%',
-				amount: '$25,000',
-				contact: 'nathan@salesforce.com',
-			},
-		],
+		items,
 		selection: [],
+		disabledSelection: [items[0]],
 	};
 
 	handleChanged = (event, data) => {
-		this.setState({ selection: data.selection });
+		const selections = data.selection.filter(
+			(s) => !this.state.disabledSelection.includes(s)
+		);
+		this.setState({ selection: selections });
 		console.log('event: ', event, ', data: ', data);
 	};
 
@@ -124,7 +130,8 @@ class Example extends React.Component {
 						onRowChange={this.handleChanged}
 						onSort={this.handleSort}
 						selection={this.state.selection}
-						selectRows="radio"
+						disabledSelection={this.state.disabledSelection}
+						selectRows="checkbox"
 					>
 						<DataTableColumn
 							isSorted={this.state.sortColumn === 'opportunityName'}

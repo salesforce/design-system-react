@@ -1096,7 +1096,11 @@ class DataTable extends React.Component {
 		const numRows = count(this.props.items);
 		const numSelected = count(this.props.selection);
 		const numNonHeaderRows = count(
-			this.props.items.filter((item) => item.type !== 'header-row')
+			this.props.items.filter(
+				(item) =>
+					item.type !== 'header-row' &&
+					!this.props.disabledSelection.includes(item)
+			)
 		);
 		const canSelectRows =
 			this.props.selectRows && numNonHeaderRows > 0
