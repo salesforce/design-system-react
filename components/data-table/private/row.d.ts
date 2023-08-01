@@ -24,6 +24,7 @@ declare module '@salesforce/design-system-react/components/data-table/private/ro
 		onToggle?: (v: any) => any;
 		rowActions?: React.ReactElement;
 		selection?: any[];
+		disabledSelection?: any[];
 		tableId?: string;
 	};
 	/**

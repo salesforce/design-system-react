@@ -66,6 +66,7 @@ const defaultProps = {
 		loadingMore: 'Loading more',
 	},
 	selection: [],
+	disabledSelection: [],
 	hasMore: false,
 	loadMoreOffset: 20,
 	resizable: false,
@@ -344,6 +345,11 @@ class DataTable extends React.Component {
 		 * An array of objects of selected rows. See `items` prop for shape of objects.
 		 */
 		selection: PropTypes.array,
+
+		/**
+		 * An array of objects of rows that selection is disabled. See `items` prop for shape of objects.
+		 */
+		disabledSelection: PropTypes.array,
 		/**
 		 * Specifies a row selection UX pattern.
 		 * * `checkbox`: Multiple row selection.
@@ -1234,6 +1240,7 @@ class DataTable extends React.Component {
 												key={rowId}
 												onToggle={this.handleRowToggle}
 												selection={this.props.selection}
+												disabledSelection={this.props.disabledSelection}
 												rowActions={RowActions}
 												tableId={this.getId()}
 												rowIndex={index + numHeaderRows}

@@ -248,6 +248,26 @@ describe('DataTable: ', function describeFunction() {
 			checkedBoxes.should.have.length(1);
 		});
 
+		it('can start with a row disabled', function () {
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					selection={[]}
+					disabledSelection={defaultSelection}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
+			const disabledRows = tbody.querySelectorAll(
+				'.slds-checkbox input:disabled'
+			);
+			disabledRows.should.have.length(1);
+		});
+
 		it('can deselect a row', function (done) {
 			this.onRowChange = (event, { selection }) => {
 				selection.should.have.length(0);
@@ -418,6 +438,25 @@ describe('DataTable: ', function describeFunction() {
 			const selectedRows = tbody.querySelectorAll('tr.slds-is-selected');
 			selectedRows.should.have.length(1);
 			const radios = tbody.querySelectorAll('.slds-radio input:checked');
+			radios.should.have.length(1);
+		});
+
+		it('can start with a row disabled', function () {
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					selection={[]}
+					disabledSelection={defaultSelection}
+					selectRows="radio"
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
+			const radios = tbody.querySelectorAll('.slds-radio input:disabled');
 			radios.should.have.length(1);
 		});
 

@@ -60,6 +60,7 @@ const propTypes = {
 	rowActions: PropTypes.element,
 	selection: PropTypes.array,
 	tableId: PropTypes.string,
+	disabledSelection: PropTypes.array,
 };
 
 /**
@@ -87,6 +88,9 @@ const DataTableRow = (props) => {
 	);
 
 	const isSelected = !!find(props.selection, item);
+	const isDisabled =
+		props.disabledSelection && !!find(props.disabledSelection, item);
+
 	const ariaProps = useMemo(() => {
 		const result = {};
 
@@ -140,6 +144,7 @@ const DataTableRow = (props) => {
 											labelId={`${props.id}-SelectRow-label`}
 											name={`${props.tableId}-SelectRow`}
 											onChange={handleToggle}
+											disabled={isDisabled}
 										/>
 									) : (
 										<InteractiveCheckbox
@@ -154,6 +159,7 @@ const DataTableRow = (props) => {
 											labelId={`${props.id}-SelectRow-label`}
 											name={`SelectRow${props.index + 1}`}
 											onChange={handleToggle}
+											disabled={isDisabled}
 										/>
 									)}
 								</CellContext.Provider>
@@ -211,6 +217,7 @@ const DataTableRow = (props) => {
 					handleToggle,
 					hasFocus,
 					isSelected,
+					isDisabled,
 					item,
 					tabIndex,
 					props.assistiveText.selectRow,
