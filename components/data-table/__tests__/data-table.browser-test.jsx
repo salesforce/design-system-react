@@ -1014,7 +1014,7 @@ describe('DataTable: ', function describeFunction() {
 				.find('td')
 				.first()
 				.find('input[type="checkbox"]');
-			expect(checkbox.prop('tabIndex')).to.equal('0');
+			expect(checkbox.prop('tabIndex')).to.equal(0);
 
 			// Press Escape
 			cell.simulate('keyDown', keyObjects.ESCAPE);
@@ -1023,7 +1023,7 @@ describe('DataTable: ', function describeFunction() {
 			expect(cell.prop('tabIndex')).to.equal('0');
 
 			checkbox = this.wrapper.find('td').first().find('input[type="checkbox"]');
-			expect(checkbox.prop('tabIndex')).to.equal('-1');
+			expect(checkbox.prop('tabIndex')).to.equal(-1);
 
 			// Navigate to Dropdown
 			cell.simulate('keyDown', keyObjects.RIGHT);
