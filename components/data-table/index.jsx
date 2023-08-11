@@ -1100,7 +1100,11 @@ class DataTable extends React.Component {
 		const ariaProps = {};
 		const numHeaderRows = 1;
 		const numRows = count(this.props.items);
-		const numSelected = count(this.props.selection);
+		const numSelected = count(
+			this.props.selection.filter(
+				(item) => !this.props.disabledSelection.includes(item)
+			)
+		);
 		const numNonHeaderRows = count(
 			this.props.items.filter(
 				(item) =>
