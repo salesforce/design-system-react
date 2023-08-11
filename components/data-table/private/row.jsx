@@ -100,6 +100,94 @@ const DataTableRow = (props) => {
 		return result;
 	}, [isSelected, props.canSelectRows]);
 
+	const radionSelection = useMemo(
+		() =>
+			isDisabled ? (
+				<Radio
+					assistiveText={{
+						label: `${props.assistiveText.selectRow} ${
+							Number(props.index) + 1
+						}`,
+					}}
+					aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSDataTableHead-column-group-header-row-select`}
+					checked={isSelected}
+					className="slds-m-right_x-small"
+					id={`${props.id}-SelectRow`}
+					labelId={`${props.id}-SelectRow-label`}
+					name={`${props.tableId}-SelectRow`}
+					disabled={isDisabled}
+				/>
+			) : (
+				<InteractiveRadio
+					assistiveText={{
+						label: `${props.assistiveText.selectRow} ${
+							Number(props.index) + 1
+						}`,
+					}}
+					aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSDataTableHead-column-group-header-row-select`}
+					checked={isSelected}
+					className="slds-m-right_x-small"
+					id={`${props.id}-SelectRow`}
+					labelId={`${props.id}-SelectRow-label`}
+					name={`${props.tableId}-SelectRow`}
+					onChange={handleToggle}
+					disabled={isDisabled}
+				/>
+			),
+		[
+			handleToggle,
+			isSelected,
+			isDisabled,
+			props.assistiveText.selectRow,
+			props.id,
+			props.index,
+			props.tableId,
+		]
+	);
+
+	const checkboxSelection = useMemo(
+		() =>
+			isDisabled ? (
+				<Checkbox
+					assistiveText={{
+						label: `${props.assistiveText.selectRow} ${
+							Number(props.index) + 1
+						}`,
+					}}
+					aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSDataTableHead-column-group-header-row-select`}
+					checked={isSelected}
+					id={`${props.id}-SelectRow`}
+					labelId={`${props.id}-SelectRow-label`}
+					name={`SelectRow${props.index + 1}`}
+					disabled={isDisabled}
+				/>
+			) : (
+				<InteractiveCheckbox
+					assistiveText={{
+						label: `${props.assistiveText.selectRow} ${
+							Number(props.index) + 1
+						}`,
+					}}
+					aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSDataTableHead-column-group-header-row-select`}
+					checked={isSelected}
+					id={`${props.id}-SelectRow`}
+					labelId={`${props.id}-SelectRow-label`}
+					name={`SelectRow${props.index + 1}`}
+					onChange={handleToggle}
+					disabled={isDisabled}
+				/>
+			),
+		[
+			handleToggle,
+			isSelected,
+			isDisabled,
+			props.assistiveText.selectRow,
+			props.id,
+			props.index,
+			props.tableId,
+		]
+	);
+
 	// i18n
 	return (
 		<tr
@@ -130,38 +218,9 @@ const DataTableRow = (props) => {
 								tabIndex={tabIndex}
 							>
 								<CellContext.Provider value={selectRowCellContext}>
-									{props.canSelectRows === 'radio' ? (
-										<InteractiveRadio
-											assistiveText={{
-												label: `${props.assistiveText.selectRow} ${
-													Number(props.index) + 1
-												}`,
-											}}
-											aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSDataTableHead-column-group-header-row-select`}
-											checked={isSelected}
-											className="slds-m-right_x-small"
-											id={`${props.id}-SelectRow`}
-											labelId={`${props.id}-SelectRow-label`}
-											name={`${props.tableId}-SelectRow`}
-											onChange={handleToggle}
-											disabled={isDisabled}
-										/>
-									) : (
-										<InteractiveCheckbox
-											assistiveText={{
-												label: `${props.assistiveText.selectRow} ${
-													Number(props.index) + 1
-												}`,
-											}}
-											aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSDataTableHead-column-group-header-row-select`}
-											checked={isSelected}
-											id={`${props.id}-SelectRow`}
-											labelId={`${props.id}-SelectRow-label`}
-											name={`SelectRow${props.index + 1}`}
-											onChange={handleToggle}
-											disabled={isDisabled}
-										/>
-									)}
+									{props.canSelectRows === 'radio'
+										? radionSelection
+										: checkboxSelection}
 								</CellContext.Provider>
 							</td>
 						) : null}
@@ -214,23 +273,19 @@ const DataTableRow = (props) => {
 				[
 					handleFocus,
 					handleKeyDown,
-					handleToggle,
 					hasFocus,
-					isSelected,
-					isDisabled,
 					item,
 					tabIndex,
-					props.assistiveText.selectRow,
 					props.canSelectRows,
 					props.columns,
 					props.fixedLayout,
 					props.id,
-					props.index,
 					props.rowActions,
 					props.rowIndex,
 					props.stacked,
-					props.tableId,
 					selectRowCellContext,
+					checkboxSelection,
+					radionSelection,
 				]
 			)}
 		</tr>

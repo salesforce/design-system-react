@@ -249,11 +249,14 @@ describe('DataTable: ', function describeFunction() {
 		});
 
 		it('can start with a row disabled', function () {
+			const onChangeHandler = sinon.spy();
+
 			renderTable(
 				<DataTable
 					{...defaultProps}
 					selection={[]}
 					disabledSelection={defaultSelection}
+					onRowChange={onChangeHandler}
 				>
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
@@ -266,6 +269,11 @@ describe('DataTable: ', function describeFunction() {
 				'.slds-checkbox input:disabled'
 			);
 			disabledRows.should.have.length(1);
+
+			const checkbox = disabledRows[0];
+			Simulate.change(checkbox, { target: { checked: true } });
+
+			expect(onChangeHandler.callCount).to.equal(0);
 		});
 
 		it('can deselect a row', function (done) {
@@ -442,11 +450,14 @@ describe('DataTable: ', function describeFunction() {
 		});
 
 		it('can start with a row disabled', function () {
+			const onChangeHandler = sinon.spy();
+
 			renderTable(
 				<DataTable
 					{...defaultProps}
 					selection={[]}
 					disabledSelection={defaultSelection}
+					onRowChange={onChangeHandler}
 					selectRows="radio"
 				>
 					{columns.map((columnProps) => (
@@ -458,6 +469,9 @@ describe('DataTable: ', function describeFunction() {
 			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
 			const radios = tbody.querySelectorAll('.slds-radio input:disabled');
 			radios.should.have.length(1);
+
+			Simulate.change(radios[0], { target: { checked: true } });
+			expect(onChangeHandler.callCount).to.equal(0);
 		});
 
 		it('can select a row', function (done) {

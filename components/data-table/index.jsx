@@ -554,14 +554,18 @@ class DataTable extends React.Component {
 		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
 			const selection = (checked ? [...this.props.items] : []).filter(
-				(item) => item.type !== 'header-row'
+				(item) =>
+					item.type !== 'header-row' &&
+					!this.props.disabledSelection.includes(item)
 			);
 			this.props.onChange(selection, e);
 		}
 
 		if (typeof this.props.onRowChange === 'function') {
 			const selection = (checked ? [...this.props.items] : []).filter(
-				(item) => item.type !== 'header-row'
+				(item) =>
+					item.type !== 'header-row' &&
+					!this.props.disabledSelection.includes(item)
 			);
 			this.props.onRowChange(e, { selection });
 		}

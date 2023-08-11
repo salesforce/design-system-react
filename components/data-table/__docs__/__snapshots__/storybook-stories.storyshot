@@ -1075,7 +1075,6 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
         }
       >
         <table
-          aria-multiselectable="true"
           className="slds-table slds-table_fixed-layout slds-table_header-fixed slds-table_resizable-cols slds-table_bordered"
           id="DataTableExample-SingleRequiredSelect"
           onBlur={[Function]}
@@ -1101,54 +1100,6 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                 }
               >
                 <div
-                  aria-hidden={true}
-                  className="slds-th__action slds-th__action_form"
-                  style={
-                    Object {
-                      "display": "flex",
-                      "height": 0,
-                      "overflow": "hidden",
-                      "paddingBottom": 0,
-                      "paddingTop": 0,
-                      "visibility": "hidden",
-                    }
-                  }
-                >
-                  <div
-                    className="slds-form-element"
-                  >
-                    <div
-                      className="slds-form-element__control"
-                    >
-                      <span
-                        className="slds-checkbox"
-                      >
-                        <input
-                          checked={false}
-                          id="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-SelectAll-fixed-header"
-                          onChange={[Function]}
-                          onFocus={[Function]}
-                          tabIndex="-1"
-                          type="checkbox"
-                        />
-                        <label
-                          className="slds-checkbox__label"
-                          htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-SelectAll-fixed-header"
-                        >
-                          <span
-                            className="slds-checkbox_faux"
-                          />
-                          <span
-                            className="slds-assistive-text"
-                          >
-                            Select all rows
-                          </span>
-                        </label>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div
                   className="slds-cell-fixed"
                   style={
                     Object {
@@ -1160,56 +1111,11 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                   }
                 >
                   <div
-                    className="slds-th__action slds-th__action_form"
-                    style={
-                      Object {
-                        "display": "flex",
-                        "justifyContent": "flex-end",
-                        "lineHeight": 1,
-                        "width": "100%",
-                      }
-                    }
+                    className="slds-truncate slds-assistive-text"
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+                    title="Choose a row to select"
                   >
-                    <span
-                      className="slds-assistive-text"
-                      id="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
-                    >
-                      Select all rows
-                    </span>
-                    <div
-                      className="slds-form-element"
-                    >
-                      <div
-                        className="slds-form-element__control"
-                      >
-                        <span
-                          className="slds-checkbox"
-                        >
-                          <input
-                            checked={false}
-                            id="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-SelectAll"
-                            name="SelectAll"
-                            onChange={[Function]}
-                            onFocus={[Function]}
-                            tabIndex="-1"
-                            type="checkbox"
-                          />
-                          <label
-                            className="slds-checkbox__label"
-                            htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableHead-SelectAll"
-                          >
-                            <span
-                              className="slds-checkbox_faux"
-                            />
-                            <span
-                              className="slds-assistive-text"
-                            >
-                              Select all rows
-                            </span>
-                          </label>
-                        </span>
-                      </div>
-                    </div>
+                    Choose a row to select
                   </div>
                 </div>
               </th>
@@ -1871,43 +1777,40 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                   }
                 }
               >
-                <div
-                  className="slds-form-element"
+                <span
+                  className="slds-radio slds-m-right_x-small"
                 >
-                  <div
-                    className="slds-form-element__control"
+                  <input
+                    aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+                    checked={false}
+                    disabled={false}
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                    name="DataTableExample-SingleRequiredSelect-SelectRow"
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="-1"
+                    type="radio"
+                  />
+                  <label
+                    className="slds-radio__label"
+                    htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label"
                   >
                     <span
-                      className="slds-checkbox"
+                      className="slds-radio_faux"
+                    />
+                    <span
+                      className="slds-form-element__label"
+                    />
+                    <span
+                      className="slds-assistive-text"
                     >
-                      <input
-                        aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
-                        checked={false}
-                        disabled={true}
-                        id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
-                        name="SelectRow1"
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        tabIndex="-1"
-                        type="checkbox"
-                      />
-                      <label
-                        className="slds-checkbox__label"
-                        htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow"
-                        id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV80-SelectRow-label"
-                      >
-                        <span
-                          className="slds-checkbox_faux"
-                        />
-                        <span
-                          className="slds-assistive-text"
-                        >
-                          Select this row 1
-                        </span>
-                      </label>
+                      Select this row 1
                     </span>
-                  </div>
-                </div>
+                  </label>
+                </span>
               </td>
               <th
                 className=""
@@ -2098,43 +2001,40 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                   }
                 }
               >
-                <div
-                  className="slds-form-element"
+                <span
+                  className="slds-radio slds-m-right_x-small"
                 >
-                  <div
-                    className="slds-form-element__control"
+                  <input
+                    aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+                    checked={false}
+                    disabled={false}
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                    name="DataTableExample-SingleRequiredSelect-SelectRow"
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="-1"
+                    type="radio"
+                  />
+                  <label
+                    className="slds-radio__label"
+                    htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label"
                   >
                     <span
-                      className="slds-checkbox"
+                      className="slds-radio_faux"
+                    />
+                    <span
+                      className="slds-form-element__label"
+                    />
+                    <span
+                      className="slds-assistive-text"
                     >
-                      <input
-                        aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
-                        checked={false}
-                        disabled={false}
-                        id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
-                        name="SelectRow2"
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        tabIndex="-1"
-                        type="checkbox"
-                      />
-                      <label
-                        className="slds-checkbox__label"
-                        htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow"
-                        id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-5GJOOOPWU7-SelectRow-label"
-                      >
-                        <span
-                          className="slds-checkbox_faux"
-                        />
-                        <span
-                          className="slds-assistive-text"
-                        >
-                          Select this row 2
-                        </span>
-                      </label>
+                      Select this row 2
                     </span>
-                  </div>
-                </div>
+                  </label>
+                </span>
               </td>
               <th
                 className=""
@@ -2324,43 +2224,40 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Header) 1`] =
                   }
                 }
               >
-                <div
-                  className="slds-form-element"
+                <span
+                  className="slds-radio slds-m-right_x-small"
                 >
-                  <div
-                    className="slds-form-element__control"
+                  <input
+                    aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
+                    checked={false}
+                    disabled={false}
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
+                    name="DataTableExample-SingleRequiredSelect-SelectRow"
+                    onChange={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="-1"
+                    type="radio"
+                  />
+                  <label
+                    className="slds-radio__label"
+                    htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
+                    id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label"
                   >
                     <span
-                      className="slds-checkbox"
+                      className="slds-radio_faux"
+                    />
+                    <span
+                      className="slds-form-element__label"
+                    />
+                    <span
+                      className="slds-assistive-text"
                     >
-                      <input
-                        aria-labelledby="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label DataTableExample-SingleRequiredSelect-SLDSDataTableHead-column-group-header-row-select"
-                        checked={false}
-                        disabled={false}
-                        id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
-                        name="SelectRow3"
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        tabIndex="-1"
-                        type="checkbox"
-                      />
-                      <label
-                        className="slds-checkbox__label"
-                        htmlFor="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow"
-                        id="DataTableExample-SingleRequiredSelect-SLDSDataTableRow-8IKZHZZV81-SelectRow-label"
-                      >
-                        <span
-                          className="slds-checkbox_faux"
-                        />
-                        <span
-                          className="slds-assistive-text"
-                        >
-                          Select this row 3
-                        </span>
-                      </label>
+                      Select this row 3
                     </span>
-                  </div>
-                </div>
+                  </label>
+                </span>
               </td>
               <th
                 className=""
@@ -2870,9 +2767,7 @@ exports[`DOM snapshots SLDSDataTable Advanced Single Select (Fixed Layout) 1`] =
                 name="DataTableExample-SingleRequiredSelect-SelectRow"
                 onChange={[Function]}
                 onClick={[Function]}
-                onFocus={[Function]}
                 onKeyPress={[Function]}
-                tabIndex="-1"
                 type="radio"
               />
               <label
@@ -9253,12 +9148,10 @@ exports[`DOM snapshots SLDSDataTable Fixed Header 1`] = `
                       <input
                         aria-labelledby="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow-label DataTableExample-FixedHeaders-SLDSDataTableHead-column-group-header-row-select"
                         checked={false}
-                        disabled={false}
+                        disabled={true}
                         id="DataTableExample-FixedHeaders-SLDSDataTableRow-896a6a60-SelectRow"
                         name="SelectRow1"
                         onChange={[Function]}
-                        onFocus={[Function]}
-                        tabIndex="-1"
                         type="checkbox"
                       />
                       <label
