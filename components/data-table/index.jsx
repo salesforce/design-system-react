@@ -550,23 +550,25 @@ class DataTable extends React.Component {
 	}));
 
 	handleToggleAll = (e, { checked }) => {
+		const selectedDisabledItems = this.props.selection.filter((item) =>
+			this.props.disabledSelection.includes(item)
+		);
+		const enabledItems = this.props.items.filter(
+			(item) => !this.props.disabledSelection.includes(item)
+		);
+
+		const selection = (checked
+			? [...enabledItems, ...selectedDisabledItems]
+			: [...selectedDisabledItems]
+		).filter((item) => item.type !== 'header-row');
+
 		// REMOVE AT NEXT BREAKING CHANGE
 		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
-			const selection = (checked ? [...this.props.items] : []).filter(
-				(item) =>
-					item.type !== 'header-row' &&
-					!this.props.disabledSelection.includes(item)
-			);
 			this.props.onChange(selection, e);
 		}
 
 		if (typeof this.props.onRowChange === 'function') {
-			const selection = (checked ? [...this.props.items] : []).filter(
-				(item) =>
-					item.type !== 'header-row' &&
-					!this.props.disabledSelection.includes(item)
-			);
 			this.props.onRowChange(e, { selection });
 		}
 	};
