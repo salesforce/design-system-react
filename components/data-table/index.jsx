@@ -66,6 +66,7 @@ const defaultProps = {
 		loadingMore: 'Loading more',
 	},
 	selection: [],
+	disabledSelection: [],
 	hasMore: false,
 	loadMoreOffset: 20,
 	resizable: false,
@@ -344,6 +345,11 @@ class DataTable extends React.Component {
 		 * An array of objects of selected rows. See `items` prop for shape of objects.
 		 */
 		selection: PropTypes.array,
+
+		/**
+		 * An array of objects of rows that selection is disabled. See `items` prop for shape of objects.
+		 */
+		disabledSelection: PropTypes.array,
 		/**
 		 * Specifies a row selection UX pattern.
 		 * * `checkbox`: Multiple row selection.
@@ -544,19 +550,25 @@ class DataTable extends React.Component {
 	}));
 
 	handleToggleAll = (e, { checked }) => {
+		const selectedDisabledItems = this.props.selection.filter((item) =>
+			this.props.disabledSelection.includes(item)
+		);
+		const enabledItems = this.props.items.filter(
+			(item) => !this.props.disabledSelection.includes(item)
+		);
+
+		const selection = (checked
+			? [...enabledItems, ...selectedDisabledItems]
+			: [...selectedDisabledItems]
+		).filter((item) => item.type !== 'header-row');
+
 		// REMOVE AT NEXT BREAKING CHANGE
 		// `onChange` is deprecated and replaced with `onRowChange`
 		if (typeof this.props.onChange === 'function') {
-			const selection = (checked ? [...this.props.items] : []).filter(
-				(item) => item.type !== 'header-row'
-			);
 			this.props.onChange(selection, e);
 		}
 
 		if (typeof this.props.onRowChange === 'function') {
-			const selection = (checked ? [...this.props.items] : []).filter(
-				(item) => item.type !== 'header-row'
-			);
 			this.props.onRowChange(e, { selection });
 		}
 	};
@@ -1088,9 +1100,17 @@ class DataTable extends React.Component {
 		const ariaProps = {};
 		const numHeaderRows = 1;
 		const numRows = count(this.props.items);
-		const numSelected = count(this.props.selection);
+		const numSelected = count(
+			this.props.selection.filter(
+				(item) => !this.props.disabledSelection.includes(item)
+			)
+		);
 		const numNonHeaderRows = count(
-			this.props.items.filter((item) => item.type !== 'header-row')
+			this.props.items.filter(
+				(item) =>
+					item.type !== 'header-row' &&
+					!this.props.disabledSelection.includes(item)
+			)
 		);
 		const canSelectRows =
 			this.props.selectRows && numNonHeaderRows > 0
@@ -1234,6 +1254,7 @@ class DataTable extends React.Component {
 												key={rowId}
 												onToggle={this.handleRowToggle}
 												selection={this.props.selection}
+												disabledSelection={this.props.disabledSelection}
 												rowActions={RowActions}
 												tableId={this.getId()}
 												rowIndex={index + numHeaderRows}

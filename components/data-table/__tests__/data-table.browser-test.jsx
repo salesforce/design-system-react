@@ -248,6 +248,34 @@ describe('DataTable: ', function describeFunction() {
 			checkedBoxes.should.have.length(1);
 		});
 
+		it('can start with a row disabled', function () {
+			const onChangeHandler = sinon.spy();
+
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					selection={[]}
+					disabledSelection={defaultSelection}
+					onRowChange={onChangeHandler}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
+			const disabledRows = tbody.querySelectorAll(
+				'.slds-checkbox input:disabled'
+			);
+			disabledRows.should.have.length(1);
+
+			const checkbox = disabledRows[0];
+			Simulate.change(checkbox, { target: { checked: true } });
+
+			expect(onChangeHandler.callCount).to.equal(0);
+		});
+
 		it('can deselect a row', function (done) {
 			this.onRowChange = (event, { selection }) => {
 				selection.should.have.length(0);
@@ -317,6 +345,31 @@ describe('DataTable: ', function describeFunction() {
 			Simulate.change(checkAll, { target: { checked: true } });
 		});
 
+		it('can select all rows excluding disabled rows', function (done) {
+			this.onRowChange = (event, { selection }) => {
+				selection.should.have.length(5);
+				done();
+			};
+
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					selection={[items[0]]}
+					disabledSelection={[items[0], items[1]]}
+					onRowChange={this.onRowChange}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const thead = getTable(this.dom).querySelectorAll('thead')[0];
+			const checkAll = thead.querySelectorAll('.slds-checkbox input')[0];
+
+			Simulate.change(checkAll, { target: { checked: true } });
+		});
+
 		it('can deselect all rows', function (done) {
 			this.onRowChange = (event, { selection }) => {
 				selection.should.have.length(0);
@@ -327,6 +380,31 @@ describe('DataTable: ', function describeFunction() {
 				<DataTable
 					{...defaultProps}
 					selection={items}
+					onRowChange={this.onRowChange}
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const thead = getTable(this.dom).querySelectorAll('thead')[0];
+			const checkAll = thead.querySelectorAll('.slds-checkbox input')[0];
+
+			Simulate.change(checkAll, { target: { checked: false } });
+		});
+
+		it('can deselect all rows excluding disabled rows', function (done) {
+			this.onRowChange = (event, { selection }) => {
+				selection.should.have.length(2);
+				done();
+			};
+
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					selection={items}
+					disabledSelection={[items[0], items[1]]}
 					onRowChange={this.onRowChange}
 				>
 					{columns.map((columnProps) => (
@@ -419,6 +497,31 @@ describe('DataTable: ', function describeFunction() {
 			selectedRows.should.have.length(1);
 			const radios = tbody.querySelectorAll('.slds-radio input:checked');
 			radios.should.have.length(1);
+		});
+
+		it('can start with a row disabled', function () {
+			const onChangeHandler = sinon.spy();
+
+			renderTable(
+				<DataTable
+					{...defaultProps}
+					selection={[]}
+					disabledSelection={defaultSelection}
+					onRowChange={onChangeHandler}
+					selectRows="radio"
+				>
+					{columns.map((columnProps) => (
+						<DataTableColumn {...columnProps} key={columnProps.property} />
+					))}
+				</DataTable>
+			).call(this);
+
+			const tbody = getTable(this.dom).querySelectorAll('tbody')[0];
+			const radios = tbody.querySelectorAll('.slds-radio input:disabled');
+			radios.should.have.length(1);
+
+			Simulate.change(radios[0], { target: { checked: true } });
+			expect(onChangeHandler.callCount).to.equal(0);
 		});
 
 		it('can select a row', function (done) {
