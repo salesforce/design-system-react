@@ -1,16 +1,19 @@
 /* eslint-disable no-console, react/prop-types */
 import React from 'react';
 
+import IconSettings from '~/components/icon-settings';
 import DockedComposer from '~/components/docked-composer';
-import Accordion from '~/components/accordion/__examples__/base';
 
-class Minimized extends React.Component {
+class Example extends React.Component {
 	static displayName = 'DockedComposerMinimized';
 
-	state = {
-		isExpanded: false,
-		isOpen: true,
-	};
+	constructor() {
+		super();
+		this.state = {
+			isExpanded: false,
+			isOpen: true,
+		};
+	}
 
 	handleMinimize = (event, data) => {
 		this.setState({ isExpanded: false });
@@ -26,25 +29,33 @@ class Minimized extends React.Component {
 
 	render() {
 		return this.state.isOpen ? (
-			<DockedComposer
-				header="What's New this Release?"
-				body={<Accordion />}
-				classNameContainer="hello-world"
-				assistiveText={{
-					expandButton: 'ExPaNd',
-					minimizeButton: 'MiNiMiZe',
-					closeButton: 'ClOsE',
-				}}
-				id="docked-composer"
-				events={{
-					onRequestMinimize: this.handleMinimize,
-					onRequestExpand: this.handleExpand,
-					onRequestClose: this.handleClose,
-				}}
-				isOpen={this.state.isExpanded}
-			/>
+			<IconSettings>
+				<div
+					style={{
+						height: '500px',
+						position: 'relative',
+					}}
+				>
+					<DockedComposer
+						header="What's New this Release?"
+						classNameContainer="hello-world"
+						assistiveText={{
+							expandButton: 'ExPaNd',
+							minimizeButton: 'MiNiMiZe',
+							closeButton: 'ClOsE',
+						}}
+						id="docked-composer"
+						events={{
+							onRequestMinimize: this.handleMinimize,
+							onRequestExpand: this.handleExpand,
+							onRequestClose: this.handleClose,
+						}}
+						isOpen={this.state.isExpanded}
+					/>
+				</div>
+			</IconSettings>
 		) : null;
 	}
 }
 
-export default Minimized;
+export default Example; // export is replaced with `ReactDOM.render(<Example />, mountNode);` at runtime
