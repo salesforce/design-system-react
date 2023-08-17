@@ -29,7 +29,7 @@ class Example extends React.Component {
 
 	render() {
 		return this.state.isOpen ? (
-			<IconSettings>
+			<IconSettings iconPath="/assets/icons">
 				<div
 					style={{
 						height: '500px',
