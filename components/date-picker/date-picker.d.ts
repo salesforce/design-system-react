@@ -140,7 +140,7 @@ declare module '@salesforce/design-system-react/components/date-picker/date-pick
 		/**
 		 * Sets date with a `Date` ECMAScript object. _Tested with snapshot testing._
 		 */
-		value?: Date;
+		value?: Date | null;
 	};
 	/**
 	 * A date picker is a non-text input form element. You can select a single date from a popup calendar. Please use an external library such as [MomentJS](https://github.com/moment/moment/) for date formatting and parsing and internationalization. You will want to use your date library within the `parser` and `formatter` callbacks.
