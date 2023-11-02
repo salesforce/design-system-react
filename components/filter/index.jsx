@@ -51,6 +51,7 @@ class Filter extends React.Component {
 			editFilter: PropTypes.string,
 			editFilterHeading: PropTypes.string,
 			removeFilter: PropTypes.string,
+			doneButton: PropTypes.string,
 		}),
 		/**
 		 * Contents of popover. That is the dropdowns and inputs that set the filter criteria.
@@ -147,7 +148,7 @@ class Filter extends React.Component {
 				<div className="slds-m-top_small slds-text-align_right">
 					<Button
 						className="slds-col_bump-left"
-						label="Done"
+						label={assistiveText.doneButton || "Done"}
 						onClick={this.handleChange}
 					/>
 				</div>
