@@ -19,10 +19,10 @@ import assign from 'lodash.assign';
 // ### classNames
 import classNames from 'classnames';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
+// ### nanoid
+// [npmjs.com/package/nanoid](https://www.npmjs.com/package/nanoid)
+// nanoid is a tiny, secure, URL-friendly, unique string ID generator.
+import { nanoid } from 'nanoid';
 
 import Button from '../button';
 import Popover from '../popover';
@@ -126,7 +126,7 @@ class Filter extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.generatedId = shortid.generate();
+		this.generatedId = nanoid();
 	}
 
 	getId = () => this.props.id || this.generatedId;

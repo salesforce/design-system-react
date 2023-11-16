@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import shortid from 'shortid';
+import { nanoid } from 'nanoid';
 import assign from 'lodash.assign';
 
 import checkProps from './check-props';
@@ -247,7 +247,7 @@ class ColorPicker extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.generatedId = props.id || shortid.generate();
+		this.generatedId = props.id || nanoid();
 		const workingColor = ColorUtils.getNewColor(
 			{
 				hex: props.valueWorking || props.value,

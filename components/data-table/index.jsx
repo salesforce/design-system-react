@@ -9,10 +9,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
+// ### nanoid
+// [npmjs.com/package/nanoid](https://www.npmjs.com/package/nanoid)
+// nanoid is a tiny, secure, URL-friendly, unique string ID generator.
+import { nanoid } from 'nanoid';
 
 import classNames from 'classnames';
 import assign from 'lodash.assign';
@@ -404,7 +404,7 @@ class DataTable extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.generatedId = shortid.generate();
+		this.generatedId = nanoid();
 		this.headerRefs = {
 			action: [],
 			column: [],

@@ -21,10 +21,10 @@ import PropTypes from 'prop-types';
 // joining classNames together."
 import classNames from 'classnames';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
+// ### nanoid
+// [npmjs.com/package/nanoid](https://www.npmjs.com/package/nanoid)
+// nanoid is a tiny, secure, URL-friendly, unique string ID generator.
+import { nanoid } from 'nanoid';
 
 // ## Children
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
@@ -214,9 +214,9 @@ class Textarea extends React.Component {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(TEXTAREA, props, componentDoc);
 
-		this.generatedId = shortid.generate();
+		this.generatedId = nanoid();
 		if (props.errorText) {
-			this.generatedErrorId = shortid.generate();
+			this.generatedErrorId = nanoid();
 		}
 	}
 

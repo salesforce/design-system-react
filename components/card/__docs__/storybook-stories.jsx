@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
+import { nanoid } from 'nanoid';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
@@ -69,7 +69,7 @@ class DemoCard extends React.Component {
 		this.setState({
 			items: [
 				// eslint-disable-next-line no-plusplus
-				{ id: currentId++, name: `New item #${shortid.generate()}` },
+				{ id: currentId++, name: `New item #${nanoid()}` },
 				...this.state.items,
 			],
 		});

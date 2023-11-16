@@ -15,7 +15,7 @@ import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 import isEqual from 'lodash.isequal';
 
-import shortid from 'shortid';
+import { nanoid } from 'nanoid';
 
 // ### Children
 import Dialog from '../utilities/dialog';
@@ -435,7 +435,7 @@ class MenuDropdown extends React.Component {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(MENU_DROPDOWN, props, componentDoc);
 
-		this.generatedId = shortid.generate();
+		this.generatedId = nanoid();
 
 		const currentSelectedIndices = this.getCurrentSelectedIndices(props);
 
@@ -913,7 +913,7 @@ class MenuDropdown extends React.Component {
 			} else if (child) {
 				const clonedCustomContent = React.cloneElement(child, {
 					onClick: this.handleClickCustomContent,
-					key: shortid.generate(),
+					key: nanoid(),
 				});
 				// eslint-disable-next-line fp/no-mutating-methods
 				customContentWithListPropInjection.push(clonedCustomContent);

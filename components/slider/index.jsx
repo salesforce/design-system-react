@@ -15,10 +15,10 @@ import isFunction from 'lodash.isfunction';
 // ### classNames
 import classNames from 'classnames';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
+// ### nanoid
+// [npmjs.com/package/nanoid](https://www.npmjs.com/package/nanoid)
+// nanoid is a tiny, secure, URL-friendly, unique string ID generator.
+import { nanoid } from 'nanoid';
 
 import { SLIDER } from '../../utilities/constants';
 
@@ -128,10 +128,10 @@ class Slider extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.generatedId = shortid.generate();
+		this.generatedId = nanoid();
 
 		if (this.props.errorText) {
-			this.generatedErrorId = shortid.generate();
+			this.generatedErrorId = nanoid();
 		}
 	}
 

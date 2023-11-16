@@ -14,10 +14,10 @@ import PropTypes from 'prop-types';
 // joining classNames together.'
 import classNames from 'classnames';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
+// ### nanoid
+// [npmjs.com/package/nanoid](https://www.npmjs.com/package/nanoid)
+// nanoid is a tiny, secure, URL-friendly, unique string ID generator.
+import { nanoid } from 'nanoid';
 import componentDoc from './component.json';
 import checkProps from './check-props';
 
@@ -64,7 +64,7 @@ class VerticalNavigation extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.generatedId = shortid.generate();
+		this.generatedId = nanoid();
 		checkProps(VERTICAL_NAVIGATION, props, componentDoc);
 	}
 

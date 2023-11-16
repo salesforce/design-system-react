@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
+import { nanoid } from 'nanoid';
 import SelectedListBox from './private/selected-listbox';
 
 import { PILL_CONTAINER } from '../../utilities/constants';
@@ -116,7 +116,7 @@ class PillContainer extends React.Component {
 		};
 
 		this.activeSelectedOptionRef = null;
-		this.generatedId = shortid.generate();
+		this.generatedId = nanoid();
 		this.preserveFocus = false;
 	}
 
