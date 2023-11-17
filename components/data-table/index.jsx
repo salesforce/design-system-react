@@ -1229,7 +1229,7 @@ class DataTable extends React.Component {
 										const rowId =
 											this.getId() && item.id
 												? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
-												: shortid.generate();
+												: nanoid();
 										return this.props.onRenderSubHeadingRow &&
 											item.type === 'header-row' ? (
 											this.props.onRenderSubHeadingRow({

@@ -1,6 +1,6 @@
 /* eslint-disable fp/no-rest-parameters */
 import React from 'react';
-import shortid from 'shortid';
+import { nanoid } from 'nanoid';
 import Mode from './private/mode';
 import CellContext from './private/cell-context';
 import TableContext from './private/table-context';
@@ -21,7 +21,7 @@ export default (WrappedElement) => {
 	class InteractiveElement extends React.Component {
 		constructor(props) {
 			super(props);
-			this.elementId = shortid.generate();
+			this.elementId = nanoid();
 		}
 
 		onFocus(tableContext, ...args) {
