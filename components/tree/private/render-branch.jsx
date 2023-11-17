@@ -279,6 +279,7 @@ const RenderBranch = (children, props) => {
 			role="treeitem"
 			aria-level={props.level}
 			aria-expanded={isExpanded ? 'true' : 'false'}
+			aria-selected={isSelected ? 'true' : 'false'}
 			aria-label={
 				props.node.nodes && props.node.nodes.length > 0 ? label : null
 			}

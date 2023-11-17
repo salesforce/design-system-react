@@ -428,6 +428,7 @@ describe('Tabs', () => {
 
 		before(
 			mountComponent(
+				// eslint-disable-next-line react/jsx-no-bind
 				<TabsDemoComponent id={id} onSelect={interceptTabSelect} />
 			)
 		);
