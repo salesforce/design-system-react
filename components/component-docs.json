@@ -5771,6 +5771,17 @@
                     "computed": false
                 }
             },
+            "disabledSelection": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "An array of objects of rows that selection is disabled. See `items` prop for shape of objects.",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
             "selectRows": {
                 "type": {
                     "name": "union",

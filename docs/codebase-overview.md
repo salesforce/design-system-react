@@ -255,7 +255,7 @@ Internal architecture should promote readability and easy maintainance.
 ```javascript
 import React from 'react';
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
+import { nanoid } from 'nanoid';
 import checkProps from './check-props';
 import { EXTERNAL_CONSTANT } from '../../utilities/constants';
 
@@ -281,7 +281,7 @@ class DemoComponent extends React.Component {
 		super(props);
 
 		// useful for unique DOM IDs
-		this.generatedId = this.props.id || shortid.generate();
+		this.generatedId = this.props.id || nanoid();
 
 		// initial state
 		this.state = {};

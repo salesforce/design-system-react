@@ -36,7 +36,7 @@ describe('SLDSModal: ', function () {
 
 	const defaultProps = {
 		align: 'top',
-		children: <div key>hello</div>,
+		children: <div key="id_1">hello</div>,
 	};
 
 	const renderModal = (modalInstance) => {

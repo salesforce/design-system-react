@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import shortid from 'shortid';
+import { nanoid } from 'nanoid';
 
 import { ACCORDION } from '../../utilities/constants';
 
@@ -49,7 +49,7 @@ class Accordion extends Component {
 		super(props);
 		this.state = { currButtonIndex: 0 };
 		this.summaryButtons = [];
-		this.generatedId = shortid.generate();
+		this.generatedId = nanoid();
 	}
 
 	componentDidUpdate(prevProps, prevState) {
