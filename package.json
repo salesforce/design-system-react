@@ -112,7 +112,7 @@
 		"warning": "^4.0.3"
 	},
 	"peerDependencies": {
-		"@salesforce-ux/design-system": "2.21.3-wcag",
+		"@salesforce-ux/design-system": "2.21.5-wcag",
 		"react": ">=16.8",
 		"react-dom": ">=16.8"
 	},
@@ -130,7 +130,7 @@
 		"@babel/polyfill": "^7.12.1",
 		"@babel/preset-env": "^7.14.2",
 		"@babel/preset-react": "^7.12.7",
-		"@salesforce-ux/design-system": "2.21.3-wcag",
+		"@salesforce-ux/design-system": "2.21.5-wcag",
 		"@salesforce-ux/icons": "10.x",
 		"@salesforce/eslint-plugin-slds-react": "^0.0.1",
 		"@storybook/addon-a11y": "^6.2.0",

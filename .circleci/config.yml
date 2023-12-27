@@ -20,7 +20,7 @@ commands:
       - checkout
       - node/install-packages:
           cache-path: ~/project/node_modules
-          override-ci-command: npm install --legacy-peer-deps
+          override-ci-command: npm ci --legacy-peer-deps
 
 jobs:
   lint:
