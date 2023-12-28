@@ -8,6 +8,7 @@
 	},
 	"setupFiles": [
 		"<rootDir>/.jest/register-context.js",
+		"<rootDir>/tests/console-message-overrides.js",
 		"<rootDir>/tests/mock-nanoid.js"
 	],
 	"testPathIgnorePatterns": [
