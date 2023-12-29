@@ -16,7 +16,7 @@ import isFunction from 'lodash.isfunction';
 
 import classNames from 'classnames';
 
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 
 import Button from '../button';
 import Dialog from '../utilities/dialog';

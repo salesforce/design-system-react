@@ -16,7 +16,7 @@ import classNames from 'classnames';
 // ### nanoid
 // [npmjs.com/package/nanoid](https://www.npmjs.com/package/nanoid)
 // nanoid is a tiny, secure, URL-friendly, unique string ID generator.
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 
 import Dialog from '../utilities/dialog';
 import CalendarWrapper from './private/calendar-wrapper';

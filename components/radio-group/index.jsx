@@ -9,7 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 import assign from 'lodash.assign';
 
 import { RADIO_GROUP } from '../../utilities/constants';

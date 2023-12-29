@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import isFunction from 'lodash.isfunction';
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';

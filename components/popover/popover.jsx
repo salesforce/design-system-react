@@ -23,7 +23,7 @@ import isFunction from 'lodash.isfunction';
 // ### nanoid
 // [npmjs.com/package/nanoid](https://www.npmjs.com/package/nanoid)
 // nanoid is a tiny, secure, URL-friendly, unique string ID generator.
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';

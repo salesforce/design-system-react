@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 import SelectedListBox from './private/selected-listbox';
 
 import { PILL_CONTAINER } from '../../utilities/constants';

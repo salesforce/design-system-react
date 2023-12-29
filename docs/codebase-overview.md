@@ -255,7 +255,7 @@ Internal architecture should promote readability and easy maintainance.
 ```javascript
 import React from 'react';
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 import checkProps from './check-props';
 import { EXTERNAL_CONSTANT } from '../../utilities/constants';
 

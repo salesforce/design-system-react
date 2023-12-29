@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';

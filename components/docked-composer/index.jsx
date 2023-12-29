@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 
 import Button from '../button';
 

@@ -15,7 +15,7 @@ import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 import isEqual from 'lodash.isequal';
 
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 
 // ### Children
 import Dialog from '../utilities/dialog';

@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 // ### nanoid
 // [npmjs.com/package/nanoid](https://www.npmjs.com/package/nanoid)
 // nanoid is a tiny, secure, URL-friendly, unique string ID generator.
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 
 import classNames from 'classnames';
 import assign from 'lodash.assign';

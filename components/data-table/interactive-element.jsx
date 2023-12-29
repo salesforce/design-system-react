@@ -1,6 +1,6 @@
 /* eslint-disable fp/no-rest-parameters */
 import React from 'react';
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 import Mode from './private/mode';
 import CellContext from './private/cell-context';
 import TableContext from './private/table-context';

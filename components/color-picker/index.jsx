@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 import assign from 'lodash.assign';
 
 import checkProps from './check-props';

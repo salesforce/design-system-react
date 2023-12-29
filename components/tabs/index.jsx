@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
 // [npmjs.com/package/nanoid](https://www.npmjs.com/package/nanoid)
 // nanoid is a tiny, secure, URL-friendly, unique string ID generator. It is used here to provide unique strings for the HTML
 // attribute `id` on the Tabs components. It is only used if the `id` prop is not provided on the man <Tabs /> component.
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 
 // ### classNames
 import classNames from 'classnames';

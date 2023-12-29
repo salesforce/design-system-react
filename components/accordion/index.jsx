@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid/non-secure';
 
 import { ACCORDION } from '../../utilities/constants';
 
