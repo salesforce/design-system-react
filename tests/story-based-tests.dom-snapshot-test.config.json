@@ -23,7 +23,7 @@
 		"^.+\\.svg$": "jest-svg-transformer"
 	},
 	"transformIgnorePatterns": [
-		"/node_modules/",
+		"/node_modules/(?!nanoid/.*)",
 		"/preset/",
 		"/.tmp-amd/",
 		"/.tmp-commonjs/",

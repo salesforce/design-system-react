@@ -4,7 +4,6 @@
 // # Tree Branch Component
 import React from 'react';
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
 
 // Child components
 import Item from './item';
@@ -58,7 +57,7 @@ const Branch = (props) => {
 					<Item
 						label={node.label}
 						htmlId={htmlId}
-						key={shortid.generate()}
+						key={node.id}
 						level={level + 1}
 						node={node}
 						flattenedNodes={props.flattenedNodes}
