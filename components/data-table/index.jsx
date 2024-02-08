@@ -505,6 +505,13 @@ class DataTable extends React.Component {
 		return [];
 	}
 
+	getSnapshotBeforeUpdate(prevProps) {
+		if (prevProps.items !== this.props.items) {
+			this.interactiveElements = {};
+		}
+		return null;
+	}
+
 	getId() {
 		return this.props.id || this.generatedId;
 	}
@@ -701,13 +708,6 @@ class DataTable extends React.Component {
 			}
 		}
 	};
-
-	// eslint-disable-next-line camelcase
-	UNSAFE_componentWillUpdate(nextProps) {
-		if (this.props.items !== nextProps.items) {
-			this.interactiveElements = {};
-		}
-	}
 
 	isResizable() {
 		return this.props.fixedLayout && this.props.resizable;
