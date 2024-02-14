@@ -20,11 +20,6 @@ import classNames from 'classnames';
 // ### isFunction
 import isFunction from 'lodash.isfunction';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 import componentDoc from './component.json';
@@ -41,6 +36,7 @@ import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 import { IconSettingsContext } from '../icon-settings';
 
 const documentDefined = typeof document !== 'undefined';
@@ -278,7 +274,7 @@ class Popover extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(POPOVER, props, componentDoc);
 	}

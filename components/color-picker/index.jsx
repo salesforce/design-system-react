@@ -3,7 +3,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import shortid from 'shortid';
 import assign from 'lodash.assign';
 
 import checkProps from './check-props';
@@ -21,6 +20,7 @@ import Popover from '../popover';
 import ColorUtils from '../../utilities/color';
 
 import { COLOR_PICKER } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 
 import componentDoc from './component.json';
 
@@ -247,7 +247,7 @@ class ColorPicker extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.generatedId = props.id || shortid.generate();
+		this.generatedId = props.id || generateId();
 		const workingColor = ColorUtils.getNewColor(
 			{
 				hex: props.valueWorking || props.value,

@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import isFunction from 'lodash.isfunction';
-import shortid from 'shortid';
 
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -20,6 +19,7 @@ import componentDoc from './component.json';
 import Modal from '../modal';
 
 import { APP_LAUNCHER } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 
 const defaultProps = {
 	assistiveText: {
@@ -127,7 +127,7 @@ class AppLauncher extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 		this.state = {
 			isOpen: false,
 		};

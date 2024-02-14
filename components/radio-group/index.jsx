@@ -9,10 +9,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import shortid from 'shortid';
 import assign from 'lodash.assign';
 
 import { RADIO_GROUP } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 
 const propTypes = {
 	/**
@@ -86,8 +86,8 @@ class RadioGroup extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.generatedName = shortid.generate();
-		this.generatedErrorId = shortid.generate();
+		this.generatedName = generateId();
+		this.generatedErrorId = generateId();
 	}
 
 	getErrorId() {

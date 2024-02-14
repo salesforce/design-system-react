@@ -9,11 +9,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 import classNames from 'classnames';
 import assign from 'lodash.assign';
 import isEqual from 'lodash.isequal';
@@ -42,6 +37,7 @@ import Mode from './private/mode';
 import Spinner from '../spinner';
 
 import KEYS from '../../utilities/key-code';
+import generateId from '../../utilities/generate-id';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 
 import {
@@ -404,7 +400,7 @@ class DataTable extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 		this.headerRefs = {
 			action: [],
 			column: [],
@@ -1229,7 +1225,7 @@ class DataTable extends React.Component {
 										const rowId =
 											this.getId() && item.id
 												? `${this.getId()}-${DATA_TABLE_ROW}-${item.id}`
-												: shortid.generate();
+												: generateId();
 										return this.props.onRenderSubHeadingRow &&
 											item.type === 'header-row' ? (
 											this.props.onRenderSubHeadingRow({

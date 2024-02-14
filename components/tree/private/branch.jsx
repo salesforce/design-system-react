@@ -4,7 +4,6 @@
 // # Tree Branch Component
 import React from 'react';
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
 
 // Child components
 import Item from './item';
@@ -12,6 +11,7 @@ import RenderInitialBranch from './render-initial-branch';
 import RenderBranch from './render-branch';
 
 import { TREE_BRANCH } from '../../../utilities/constants';
+import generateId from '../../../utilities/generate-id';
 
 /**
  * A Tree Item is a non-branching node in a hierarchical list.
@@ -58,7 +58,7 @@ const Branch = (props) => {
 					<Item
 						label={node.label}
 						htmlId={htmlId}
-						key={shortid.generate()}
+						key={generateId()}
 						level={level + 1}
 						node={node}
 						flattenedNodes={props.flattenedNodes}

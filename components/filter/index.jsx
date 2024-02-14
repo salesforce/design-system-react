@@ -19,16 +19,13 @@ import assign from 'lodash.assign';
 // ### classNames
 import classNames from 'classnames';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 import Button from '../button';
 import Popover from '../popover';
 
 // ## Constants
 import { FILTER } from '../../utilities/constants';
+
+import generateId from '../../utilities/generate-id';
 
 /**
  * A Filter is a popover with custom trigger. It can be used by [Panel Filtering](/components/panels/). Menus within a Filter Popover will need to not have "portal mounts" and be inline.
@@ -126,7 +123,7 @@ class Filter extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 	}
 
 	getId = () => this.props.id || this.generatedId;

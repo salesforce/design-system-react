@@ -1,7 +1,6 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import IconSettings from '../../icon-settings';
@@ -20,6 +19,8 @@ import MediaObject from '../../media-object';
 import InlineEdit from '../../forms/input/inline';
 
 import RelatedListWithTable from '../__examples__/related-list-with-table';
+
+import generateId from '../../../utilities/generate-id';
 
 const sampleItems = [
 	{ id: '0', name: 'Cloudhub' },
@@ -69,7 +70,7 @@ class DemoCard extends React.Component {
 		this.setState({
 			items: [
 				// eslint-disable-next-line no-plusplus
-				{ id: currentId++, name: `New item #${shortid.generate()}` },
+				{ id: currentId++, name: `New item #${generateId()}` },
 				...this.state.items,
 			],
 		});

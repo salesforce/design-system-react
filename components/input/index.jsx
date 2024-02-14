@@ -19,11 +19,6 @@ import PropTypes from 'prop-types';
 // joining classNames together."
 import classNames from 'classnames';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 import Button from '../button';
 
 // ## Children
@@ -35,6 +30,7 @@ import Label from '../utilities/label';
 import checkProps from './check-props';
 
 import { INPUT } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 import componentDoc from './component.json';
 import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
 
@@ -321,9 +317,9 @@ class Input extends React.Component {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(INPUT, props, componentDoc);
 
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 		if (props.errorText) {
-			this.generatedErrorId = shortid.generate();
+			this.generatedErrorId = generateId();
 		}
 	}
 

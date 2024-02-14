@@ -13,11 +13,6 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 
@@ -26,6 +21,7 @@ import checkAppElementIsSet from '../../utilities/warning/check-app-element-set'
 import Button from '../button';
 
 import { MODAL } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 import componentDoc from './component.json';
 
 const documentDefined = typeof document !== 'undefined';
@@ -202,7 +198,7 @@ class Modal extends React.Component {
 			this
 		);
 
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 		checkProps(MODAL, props, componentDoc);
 		if (props.ariaHideApp) {
 			checkAppElementIsSet();

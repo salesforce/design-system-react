@@ -13,13 +13,10 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 // ## Constants
 import { PANEL_FILTER_LIST } from '../../../utilities/constants';
+
+import generateId from '../../../utilities/generate-id';
 
 /**
  * A list of Filters. This is a higher order component for filters that decorates the filter to work within a Filtering Panel. It also adds support for a Filter error label.
@@ -38,8 +35,7 @@ class PanelFilterList extends React.Component {
 
 	constructor(props) {
 		super(props);
-
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 	}
 
 	render() {

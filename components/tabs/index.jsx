@@ -12,10 +12,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// ### shortid
-// `shortid` is a short, non-sequential, url-friendly, unique id generator. It is used here to provide unique strings for the HTML attribute `id` on the Tabs components. It is only used if the `id` prop is not provided on the man <Tabs /> component.
-import shortid from 'shortid';
-
 // ### classNames
 import classNames from 'classnames';
 
@@ -29,6 +25,7 @@ import TabPanel from './private/tab-panel';
 
 // ## Constants
 import { TABS } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 
 // ### Event Helpers
 import KEYS from '../../utilities/key-code';
@@ -139,7 +136,7 @@ class Tabs extends React.Component {
 		this.tabs = [];
 
 		// If no `id` is supplied in the props we generate one. An HTML ID is _required_ for several elements in a tabs component in order to leverage ARIA attributes for accessibility.
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 		this.flavor = this.getVariant();
 		this.state = {
 			selectedIndex: props.defaultSelectedIndex,

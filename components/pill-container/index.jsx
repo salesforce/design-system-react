@@ -6,10 +6,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
 import SelectedListBox from './private/selected-listbox';
 
 import { PILL_CONTAINER } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 
 const propTypes = {
 	/**
@@ -116,7 +116,7 @@ class PillContainer extends React.Component {
 		};
 
 		this.activeSelectedOptionRef = null;
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 		this.preserveFocus = false;
 	}
 
