@@ -9,7 +9,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
-import shortid from 'shortid';
 
 import Button from '../button';
 
@@ -18,6 +17,7 @@ import Button from '../button';
 // import EventUtil from '../../utilities/event';
 
 import { EXPANDABLE_SECTION } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 
 const propTypes = {
 	/**
@@ -74,7 +74,7 @@ const defaultProps = {
 class ExpandableSection extends React.Component {
 	constructor(props) {
 		super(props);
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 		this.state = {
 			isOpen: true,
 		};

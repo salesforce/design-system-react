@@ -7,12 +7,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import assign from 'lodash.assign';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 import { EXPRESSION_GROUP } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 
 import Combobox from '../combobox';
 import Button from '../button';
@@ -142,7 +138,7 @@ class ExpressionGroup extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 	}
 
 	componentDidMount() {

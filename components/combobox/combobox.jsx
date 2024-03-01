@@ -16,8 +16,6 @@ import isFunction from 'lodash.isfunction';
 
 import classNames from 'classnames';
 
-import shortid from 'shortid';
-
 import Button from '../button';
 import Dialog from '../utilities/dialog';
 import InnerInput from '../../components/input/private/inner-input';
@@ -37,6 +35,7 @@ import menuItemSelectScroll from '../../utilities/menu-item-select-scroll';
 import checkProps from './check-props';
 
 import { COMBOBOX } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 import componentDoc from './component.json';
 import { IconSettingsContext } from '../icon-settings';
 
@@ -446,8 +445,8 @@ class Combobox extends React.Component {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(COMBOBOX, props, componentDoc);
 
-		this.generatedId = shortid.generate();
-		this.generatedErrorId = shortid.generate();
+		this.generatedId = generateId();
+		this.generatedErrorId = generateId();
 		this.deselectId = `${this.getId()}-deselect`;
 	}
 

@@ -13,11 +13,6 @@ import assign from 'lodash.assign';
 // joining classNames together."
 import classNames from 'classnames';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 import Dialog from '../utilities/dialog';
 import CalendarWrapper from './private/calendar-wrapper';
 import InputIcon from '../icon/input-icon';
@@ -33,6 +28,7 @@ import KEYS from '../../utilities/key-code';
 import lowPriorityWarning from '../../utilities/warning/low-priority-warning';
 
 import { DATE_PICKER } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 import { IconSettingsContext } from '../icon-settings';
 
 const propTypes = {
@@ -273,7 +269,7 @@ class Datepicker extends React.Component {
 			inputValue: initDate || '',
 		};
 
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATE_PICKER, props, componentDoc);

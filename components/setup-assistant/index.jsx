@@ -7,15 +7,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 import componentDoc from './component.json';
+
+import generateId from '../../utilities/generate-id';
 
 import {
 	SETUP_ASSISTANT,
@@ -65,7 +62,7 @@ class SetupAssistant extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 	}
 
 	componentDidMount() {

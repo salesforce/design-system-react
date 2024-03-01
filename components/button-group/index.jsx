@@ -10,12 +10,8 @@ import classNames from 'classnames';
 
 import assign from 'lodash.assign';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 import { BUTTON_GROUP } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 
 const propTypes = {
 	/**
@@ -66,7 +62,7 @@ const defaultProps = { labels: {} };
 class ButtonGroup extends React.Component {
 	constructor(props) {
 		super(props);
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 	}
 
 	getId() {

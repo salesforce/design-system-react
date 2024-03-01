@@ -11,11 +11,6 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 // ### Event Helpers
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
@@ -28,6 +23,7 @@ import { CHECKBOX } from '../../utilities/constants';
 import Icon from '../icon';
 
 import getAriaProps from '../../utilities/get-aria-props';
+import generateId from '../../utilities/generate-id';
 
 const propTypes = {
 	/**
@@ -211,7 +207,7 @@ class Checkbox extends React.Component {
 		super(props);
 
 		checkProps(CHECKBOX, this.props, componentDoc);
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 	}
 
 	getId = () => this.props.id || this.generatedId;

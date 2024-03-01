@@ -3,11 +3,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
 import classNames from 'classnames';
 
 import KEYS from '../../utilities/key-code';
 import { RADIO } from '../../utilities/constants';
+import generateId from '../../utilities/generate-id';
 import getAriaProps from '../../utilities/get-aria-props';
 import getDataProps from '../../utilities/get-data-props';
 import Swatch from '../../components/color-picker/private/swatch';
@@ -153,7 +153,7 @@ class Radio extends React.Component {
 		super(props);
 		this.preventDuplicateChangeEvent = false;
 		checkProps(RADIO, this.props, componentDoc);
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 	}
 
 	getId() {

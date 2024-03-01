@@ -11,11 +11,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
 // A simple javascript utility for conditionally joining classNames together.
@@ -27,6 +22,8 @@ import checkProps from './check-props';
 // ## Constants
 import { BRAND_BAND } from '../../utilities/constants';
 
+import generateId from '../../utilities/generate-id';
+
 /**
  * The brand band provides theming capability that adds personality and improves information density and contrast.
  */
@@ -35,7 +32,7 @@ class BrandBand extends React.Component {
 		super(props);
 
 		checkProps(BRAND_BAND, this.props);
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 	}
 
 	getId() {

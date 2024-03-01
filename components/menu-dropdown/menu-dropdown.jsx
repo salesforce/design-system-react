@@ -15,8 +15,6 @@ import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 import isEqual from 'lodash.isequal';
 
-import shortid from 'shortid';
-
 // ### Children
 import Dialog from '../utilities/dialog';
 import List from '../utilities/menu-list';
@@ -32,8 +30,9 @@ import checkProps from './check-props';
 import componentDoc from './component.json';
 
 import EventUtil from '../../utilities/event';
-import KeyBuffer from '../../utilities/key-buffer';
+import generateId from '../../utilities/generate-id';
 import keyboardNavigate from '../../utilities/keyboard-navigate';
+import KeyBuffer from '../../utilities/key-buffer';
 import KEYS from '../../utilities/key-code';
 import {
 	MENU_DROPDOWN,
@@ -435,7 +434,7 @@ class MenuDropdown extends React.Component {
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(MENU_DROPDOWN, props, componentDoc);
 
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 
 		const currentSelectedIndices = this.getCurrentSelectedIndices(props);
 
@@ -913,7 +912,7 @@ class MenuDropdown extends React.Component {
 			} else if (child) {
 				const clonedCustomContent = React.cloneElement(child, {
 					onClick: this.handleClickCustomContent,
-					key: shortid.generate(),
+					key: generateId(),
 				});
 				// eslint-disable-next-line fp/no-mutating-methods
 				customContentWithListPropInjection.push(clonedCustomContent);

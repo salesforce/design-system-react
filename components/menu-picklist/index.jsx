@@ -25,11 +25,6 @@ import isFunction from 'lodash.isfunction';
 // joining classNames together."
 import classNames from 'classnames';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 // This component's `checkProps` which issues warnings to developers about properties
 // when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
@@ -42,8 +37,9 @@ import ListItemLabel from '../utilities/menu-list/item-label';
 import Pill from '../utilities/pill';
 
 import EventUtil from '../../utilities/event';
-import KeyBuffer from '../../utilities/key-buffer';
+import generateId from '../../utilities/generate-id';
 import keyboardNavigate from '../../utilities/keyboard-navigate';
+import KeyBuffer from '../../utilities/key-buffer';
 import KEYS from '../../utilities/key-code';
 import { MENU_PICKLIST } from '../../utilities/constants';
 import { IconSettingsContext } from '../icon-settings';
@@ -200,9 +196,9 @@ const MenuPicklist = createReactClass({
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(MENU_PICKLIST, this.props);
 
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 		if (this.props.errorText) {
-			this.generatedErrorId = shortid.generate();
+			this.generatedErrorId = generateId();
 		}
 
 		if (typeof window !== 'undefined') {

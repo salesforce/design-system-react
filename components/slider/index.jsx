@@ -15,14 +15,10 @@ import isFunction from 'lodash.isfunction';
 // ### classNames
 import classNames from 'classnames';
 
-// ### shortid
-// [npmjs.com/package/shortid](https://www.npmjs.com/package/shortid)
-// shortid is a short, non-sequential, url-friendly, unique id generator
-import shortid from 'shortid';
-
 import { SLIDER } from '../../utilities/constants';
 
 import getAriaProps from '../../utilities/get-aria-props';
+import generateId from '../../utilities/generate-id';
 
 const propTypes = {
 	/**
@@ -128,10 +124,10 @@ class Slider extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.generatedId = shortid.generate();
+		this.generatedId = generateId();
 
 		if (this.props.errorText) {
-			this.generatedErrorId = shortid.generate();
+			this.generatedErrorId = generateId();
 		}
 	}
 
