@@ -74,27 +74,36 @@ const getBreadcrumbDropdown = (overflowDropdownMenu, props) => {
 /**
  * Use breadcrumbs to note the path of a record and help the user to navigate back to the parent.Breadcrumb based on SLDS 2.1.0-dev
  */
-const Breadcrumb = (props) => {
-	checkProps(BREADCRUMB, props, componentDoc);
+const Breadcrumb = ({
+	assistiveText = defaultProps.assistiveText,
+	id,
+	overflowDropdownMenu,
+	styleContainer,
+	trail,
+}) => {
+	checkProps(
+		BREADCRUMB,
+		{ assistiveText, id, overflowDropdownMenu, styleContainer, trail },
+		componentDoc
+	);
 
-	const { overflowDropdownMenu, trail } = props;
-	const assistiveText =
-		typeof props.assistiveText === 'string'
-			? props.assistiveText
+	const assistiveTextLabel =
+		typeof assistiveText === 'string'
+			? assistiveText
 			: {
 					...defaultProps.assistiveText,
-					...props.assistiveText,
+					...assistiveText,
 			  }.label;
 
 	return (
 		<nav
 			role="navigation"
-			aria-label={assistiveText}
-			style={props.styleContainer}
+			aria-label={assistiveTextLabel}
+			style={styleContainer}
 		>
 			<ol className="slds-breadcrumb slds-list_horizontal">
 				{overflowDropdownMenu &&
-					getBreadcrumbDropdown(overflowDropdownMenu, props)}
+					getBreadcrumbDropdown(overflowDropdownMenu, { id })}
 				{trail.map((crumb, index) => (
 					/* eslint-disable react/no-array-index-key */
 					<li
@@ -111,6 +120,4 @@ const Breadcrumb = (props) => {
 
 Breadcrumb.displayName = BREADCRUMB;
 Breadcrumb.propTypes = propTypes;
-Breadcrumb.defaultProps = defaultProps;
-
 export default Breadcrumb;
