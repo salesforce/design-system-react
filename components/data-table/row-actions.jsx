@@ -63,22 +63,26 @@ const propTypes = {
 	dropdown: PropTypes.node,
 };
 
-const defaultProps = {
-	assistiveText: { icon: 'Actions' },
-	noHint: false,
-	options: [],
-};
-
 /**
  * RowActions provide a mechanism for defining a menu to display alongside each row in the DataTable.
  */
-const DataTableRowActions = (props) => {
+const DataTableRowActions = ({
+	assistiveText = { icon: 'Actions' },
+	noHint = false,
+	options = [],
+	className,
+	id,
+	item,
+	onAction,
+	dropdown,
+	fixedLayout,
+}) => {
 	const tableContext = useContext(TableContext);
 	const cellContext = useContext(CellContext);
 	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = useContextHelper(
 		tableContext,
 		cellContext,
-		props.fixedLayout
+		fixedLayout
 	);
 
 	const handleClick = (e) => {
@@ -86,11 +90,11 @@ const DataTableRowActions = (props) => {
 	};
 
 	const handleSelect = (selection) => {
-		if (isFunction(props.onAction)) {
-			props.onAction(props.item, selection);
+		if (isFunction(onAction)) {
+			onAction(item, selection);
 		}
-		if (props.dropdown && isFunction(props.dropdown.props.onSelect)) {
-			props.dropdown.props.onSelect(selection);
+		if (dropdown && isFunction(dropdown.props.onSelect)) {
+			dropdown.props.onSelect(selection);
 		}
 	};
 
@@ -103,14 +107,14 @@ const DataTableRowActions = (props) => {
 		iconName: 'down',
 		iconSize: 'small',
 		iconVariant: 'border-filled',
-		assistiveText: props.assistiveText,
-		className: props.className,
-		options: props.options,
-		hint: !props.noHint,
-		id: props.id,
+		assistiveText,
+		className,
+		options,
+		hint: !noHint,
+		id,
 	};
 
-	let dropdownProps = props.dropdown ? props.dropdown.props : {};
+	let dropdownProps = dropdown ? dropdown.props : {};
 	dropdownProps = {
 		...defaultDropdownProps,
 		...dropdownProps,
@@ -131,7 +135,7 @@ const DataTableRowActions = (props) => {
 					ref.focus();
 				}
 			}}
-			role={props.fixedLayout ? 'gridcell' : null}
+			role={fixedLayout ? 'gridcell' : null}
 			tabIndex={tabIndex}
 		>
 			{/* eslint-enable jsx-a11y/no-static-element-interactions */}
@@ -141,6 +145,5 @@ const DataTableRowActions = (props) => {
 };
 
 DataTableRowActions.propTypes = propTypes;
-DataTableRowActions.defaultProps = defaultProps;
 DataTableRowActions.displayName = DATA_TABLE_ROW_ACTIONS;
 export default DataTableRowActions;

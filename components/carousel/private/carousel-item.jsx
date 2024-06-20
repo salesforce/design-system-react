@@ -15,62 +15,94 @@ import { CAROUSEL_ITEM } from '../../../utilities/constants';
 /**
  * A carousel allows multiple pieces of featured content to occupy an allocated amount of space.
  */
-const CarouselItem = (props) => {
+const CarouselItem = ({
+	buttonLabel,
+	carouselId,
+	description,
+	heading,
+	href = '#',
+	id,
+	imageAssistiveText,
+	isInCurrentPanel,
+	itemWidth,
+	onFocus,
+	onRenderItem,
+	panelIndex,
+	src,
+	getPanelId,
+	className,
+	onClick,
+}) => {
 	function handleOnClick(event) {
-		if (props.href === '#') {
+		if (href === '#') {
 			event.preventDefault();
 		}
 
-		if (props.onClick) {
-			props.onClick(event);
+		if (onClick) {
+			onClick(event);
 		}
 	}
 
 	return (
 		<div
-			id={props.getPanelId({ carouselId: props.carouselId, itemId: props.id })}
+			id={getPanelId({ carouselId, itemId: id })}
 			className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
 			role="tabpanel"
 			aria-hidden="false"
-			aria-labelledby={`indicator-id-${props.carouselId}-${props.panelIndex}`}
+			aria-labelledby={`indicator-id-${carouselId}-${panelIndex}`}
 			style={{
 				margin: 0,
-				maxWidth: `${props.itemWidth}px`,
+				maxWidth: `${itemWidth}px`,
 				padding: '0 6px',
 			}}
 		>
-			{props.onRenderItem ? (
-				props.onRenderItem({ item: props })
+			{onRenderItem ? (
+				onRenderItem({
+					item: {
+						buttonLabel,
+						carouselId,
+						className,
+						description,
+						heading,
+						href,
+						id,
+						imageAssistiveText,
+						isInCurrentPanel,
+						itemWidth,
+						onFocus,
+						onRenderItem,
+						panelIndex,
+						src,
+						getPanelId,
+					},
+				})
 			) : (
 				<a
 					className="slds-carousel__panel-action slds-text-link_reset"
-					href={props.href}
+					href={href}
 					onClick={handleOnClick}
-					onFocus={props.onFocus}
+					onFocus={onFocus}
 					style={{
 						backgroundColor: 'white',
 						width: '100%',
 					}}
-					tabIndex={props.isInCurrentPanel ? '0' : '-1'}
+					tabIndex={isInCurrentPanel ? '0' : '-1'}
 				>
 					<div className="slds-carousel__image">
-						<img
-							src={props.src}
-							alt={props.imageAssistiveText || props.heading}
-						/>
+						<img src={src} alt={imageAssistiveText || heading} />
 					</div>
 					<div className="slds-carousel__content" style={{ height: 'auto' }}>
-						<h2 className="slds-carousel__content-title">{props.heading}</h2>
+						<h2 className="slds-carousel__content-title">{heading}</h2>
 						<div
 							className="slds-p-bottom_x-small slds-text-body_small"
 							style={{ minHeight: '40px' }}
 						>
-							{props.description}
+							{description}
 						</div>
-						{props.buttonLabel && (
+						{buttonLabel && (
 							<Button
-								label={props.buttonLabel}
-								tabIndex={props.isInCurrentPanel ? '0' : '-1'}
+								label={buttonLabel}
+								tabIndex={isInCurrentPanel ? '0' : '-1'}
 								variant="neutral"
 							/>
 						)}
@@ -141,10 +173,6 @@ CarouselItem.propTypes = {
 	 * Path of the image to be used
 	 */
 	src: PropTypes.string.isRequired,
-};
-
-CarouselItem.defaultProps = {
-	href: '#',
 };
 
 export default CarouselItem;
