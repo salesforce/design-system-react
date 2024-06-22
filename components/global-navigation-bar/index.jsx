@@ -85,8 +85,6 @@ GlobalNavigationBar.propTypes = {
 	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
-GlobalNavigationBar.defaultProps = {};
-
 GlobalNavigationBar.displayName = GLOBAL_NAVIGATION_BAR;
 
 export default GlobalNavigationBar;
