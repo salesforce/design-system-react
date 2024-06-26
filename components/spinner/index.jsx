@@ -79,25 +79,42 @@ const defaultProps = {
 /**
  * Spinners are CSS loading indicators that should be shown when retrieving data or performing slow computations. In some cases, the first time a parent component loads, a stencil is preferred to indicate network activity.
  */
-const Spinner = (props) => {
-	checkProps(SPINNER, props, componentDoc);
-	const {
-		containerClassName,
-		containerStyle,
-		id,
-		isDelayed,
-		isInline,
-		isInput,
-		hasContainer,
-		size,
-		variant,
-	} = props;
-	const assistiveText =
-		typeof props.assistiveText === 'string'
-			? props.assistiveText
+const Spinner = ({
+	containerClassName,
+	containerStyle,
+	id,
+	isDelayed = defaultProps.isDelayed,
+	isInline = defaultProps.isInline,
+	isInput = defaultProps.isInput,
+	hasContainer = defaultProps.hasContainer,
+	size = defaultProps.size,
+	variant = defaultProps.variant,
+	assistiveText = defaultProps.assistiveText,
+	...restProps
+}) => {
+	checkProps(
+		SPINNER,
+		{
+			containerClassName,
+			containerStyle,
+			id,
+			isDelayed,
+			isInline,
+			isInput,
+			hasContainer,
+			size,
+			variant,
+			...restProps,
+		},
+		componentDoc
+	);
+
+	const mergedAssistiveText =
+		typeof assistiveText === 'string'
+			? assistiveText
 			: {
 					...defaultProps.assistiveText,
-					...props.assistiveText,
+					...assistiveText,
 			  }.label;
 
 	const spinnerClassName = classNames('slds-spinner', {
@@ -111,8 +128,8 @@ const Spinner = (props) => {
 
 	const spinner = (
 		<div aria-hidden="false" className={spinnerClassName} id={id} role="status">
-			{assistiveText && (
-				<span className="slds-assistive-text">{assistiveText}</span>
+			{mergedAssistiveText && (
+				<span className="slds-assistive-text">{mergedAssistiveText}</span>
 			)}
 			<div className="slds-spinner__dot-a" />
 			<div className="slds-spinner__dot-b" />
@@ -133,6 +150,5 @@ const Spinner = (props) => {
 
 Spinner.displayName = SPINNER;
 Spinner.propTypes = propTypes;
-Spinner.defaultProps = defaultProps;
 
 export default Spinner;

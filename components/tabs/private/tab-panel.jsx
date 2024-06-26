@@ -21,11 +21,10 @@ import { TAB_PANEL } from '../../../utilities/constants';
 const TabPanel = ({
 	className,
 	children,
-	variant,
-	selected,
+	variant = 'default',
+	selected = false,
 	id,
 	tabId,
-	...attributes // eslint-disable-line no-unused-vars
 }) => (
 	<div
 		aria-labelledby={tabId}
@@ -99,11 +98,6 @@ TabPanel.propTypes = {
 	 * The HTML ID of the `<Tab />` that controls this panel.
 	 */
 	tabId: PropTypes.string,
-};
-
-TabPanel.defaultProps = {
-	variant: 'default',
-	selected: false,
 };
 
 export default TabPanel;

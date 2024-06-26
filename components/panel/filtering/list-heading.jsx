@@ -23,7 +23,11 @@ import { PANEL_FILTER_LIST_HEADING } from '../../../utilities/constants';
 /**
  * A filtering panel contextual filtering options.
  */
-const PanelFilterListHeading = ({ heading, isLocked, lockedHeading }) => (
+const PanelFilterListHeading = ({
+	heading = 'Matching all these filters',
+	isLocked,
+	lockedHeading = 'Locked filters',
+}) => (
 	<h3
 		className={classNames('slds-text-body_small', 'slds-m-vertical_x-small', {
 			'slds-grid': isLocked,
@@ -57,11 +61,6 @@ PanelFilterListHeading.propTypes = {
 	 * Heading for a group of filters that are locked
 	 */
 	lockedHeading: PropTypes.string,
-};
-
-PanelFilterListHeading.defaultProps = {
-	heading: 'Matching all these filters',
-	lockedHeading: 'Locked filters',
 };
 
 export default PanelFilterListHeading;

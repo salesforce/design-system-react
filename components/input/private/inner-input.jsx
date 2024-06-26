@@ -214,8 +214,16 @@ const defaultProps = {
 /*
  * This component was created to allow the DIV wrapped input to be used within other components such as combobox. This components API is not public.
  */
-const InnerInput = (props) => {
-	const ariaProps = getAriaProps(props);
+const InnerInput = ({
+	assistiveText = defaultProps.assistiveText,
+	type = defaultProps.type,
+	...props
+}) => {
+	const ariaProps = getAriaProps({
+		assistiveText,
+		type,
+		...props,
+	});
 	ariaProps['aria-describedby'] = props.hasSpinner
 		? `loading-status-icon ${props['aria-describedby']}`
 		: props['aria-describedby'];
@@ -225,9 +233,9 @@ const InnerInput = (props) => {
 		...containerProps
 	} = props.containerProps;
 
-	const assistiveText = {
+	const mergedAssistiveText = {
 		...defaultProps.assistiveText,
-		...props.assistiveText,
+		...assistiveText,
 	};
 
 	return (
@@ -287,7 +295,7 @@ const InnerInput = (props) => {
 					step={props.step}
 					style={props.style}
 					tabIndex={props.tabIndex}
-					type={props.type}
+					type={type}
 					{...ariaProps}
 					/* A form element should not have both value and defaultValue props. */
 					{...(props.value !== undefined
@@ -299,7 +307,7 @@ const InnerInput = (props) => {
 			{props.hasSpinner ? (
 				<div className="slds-input__icon-group slds-input__icon-group_right">
 					<Spinner
-						assistiveText={{ label: assistiveText.spinner }}
+						assistiveText={{ label: mergedAssistiveText.spinner }}
 						id="loading-status-icon"
 						isInput
 						size="x-small"
@@ -334,6 +342,5 @@ const InnerInput = (props) => {
 
 InnerInput.displayName = 'SLDSInnerInput';
 InnerInput.propTypes = propTypes;
-InnerInput.defaultProps = defaultProps;
 
 export default InnerInput;

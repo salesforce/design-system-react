@@ -34,22 +34,37 @@ const defaultProps = {
 /**
  * A filtering panel contextual filtering options.
  */
-const PanelFilterGroup = (props) => {
-	checkProps(PANEL_FILTER_GROUP, props);
-	const {
+const PanelFilterGroup = ({
+	children,
+	errorLabel,
+	footer,
+	header,
+	variant,
+	addFilterLabel = defaultProps.addFilterLabel,
+	onClickAdd,
+	onClickRemoveAll,
+	removeAllLabel = defaultProps.removeAllLabel,
+	cancelLabel = defaultProps.cancelLabel,
+	heading = defaultProps.heading,
+	modified,
+	onRequestCancel,
+	onRequestClose,
+	onRequestSave,
+	saveLabel = defaultProps.saveLabel,
+	assistiveText = defaultProps.assistiveText,
+	assistiveTextCloseFilterPanel,
+	...rest
+}) => {
+	checkProps(PANEL_FILTER_GROUP, {
 		children,
 		errorLabel,
 		footer,
 		header,
 		variant,
-
-		// footer
 		addFilterLabel,
 		onClickAdd,
 		onClickRemoveAll,
 		removeAllLabel,
-
-		// header
 		cancelLabel,
 		heading,
 		modified,
@@ -57,19 +72,23 @@ const PanelFilterGroup = (props) => {
 		onRequestClose,
 		onRequestSave,
 		saveLabel,
-	} = props;
-	const assistiveText = {
+		assistiveText,
+		assistiveTextCloseFilterPanel,
+		...rest,
+	});
+
+	const mergedAssistiveText = {
 		...defaultProps.assistiveText,
-		...props.assistiveText,
+		...assistiveText,
 	};
-	if (props.assistiveTextCloseFilterPanel) {
-		assistiveText.closeButton = props.assistiveTextCloseFilterPanel;
+	if (assistiveTextCloseFilterPanel) {
+		mergedAssistiveText.closeButton = assistiveTextCloseFilterPanel;
 	}
 	return (
 		<div className="slds-filters">
 			{variant === 'panel' ? (
 				<PanelHeader
-					assistiveText={assistiveText}
+					assistiveText={mergedAssistiveText}
 					cancelLabel={cancelLabel}
 					heading={heading}
 					modified={modified}
@@ -197,7 +216,5 @@ PanelFilterGroup.propTypes = {
 	 */
 	variant: PropTypes.oneOf(['panel']),
 };
-
-PanelFilterGroup.defaultProps = defaultProps;
 
 export default PanelFilterGroup;
