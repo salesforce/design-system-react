@@ -62,23 +62,29 @@ const defaultProps = {
 /**
  * Trial bar components are used to provide an interactive and educational prospect experience for setup.
  */
-const TrialBar = (props) => {
-	const labels = assign({}, defaultProps.labels, props.labels);
+const TrialBar = ({
+	labels = defaultProps.labels,
+	className,
+	style,
+	onRenderActions,
+	children,
+}) => {
+	const mergedLabels = assign({}, defaultProps.labels, labels);
 	return (
 		<div
-			className={classNames('slds-trial-header slds-grid', props.className)}
-			style={props.style}
+			className={classNames('slds-trial-header slds-grid', className)}
+			style={style}
 		>
-			<div className="slds-grid">{props.children}</div>
+			<div className="slds-grid">{children}</div>
 			<div className="slds-grid slds-grid_vertical-align-center slds-col_bump-left">
 				<span className="slds-box slds-box_xx-small slds-theme_default">
-					{labels.timeLeft}
+					{mergedLabels.timeLeft}
 				</span>
 				<span className="slds-m-horizontal_x-small">
-					{labels.timeLeftUnit}
-					{` ${labels.timeLeftUnitAfter}`}
+					{mergedLabels.timeLeftUnit}
+					{` ${mergedLabels.timeLeftUnitAfter}`}
 				</span>
-				{props.onRenderActions()}
+				{onRenderActions()}
 			</div>
 		</div>
 	);
@@ -86,6 +92,5 @@ const TrialBar = (props) => {
 
 TrialBar.displayName = TRIAL_BAR;
 TrialBar.propTypes = propTypes;
-TrialBar.defaultProps = defaultProps;
 
 export default TrialBar;
