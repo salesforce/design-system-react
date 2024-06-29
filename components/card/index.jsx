@@ -50,6 +50,7 @@ const Card = ({
 	icon,
 	id,
 	style,
+	...rest
 }) => {
 	const props = {
 		heading,
@@ -65,6 +66,7 @@ const Card = ({
 		icon,
 		id,
 		style,
+		...rest,
 	};
 	const ariaProps = getAriaProps(props);
 	const dataProps = getDataProps(props);
@@ -162,7 +164,7 @@ Card.propTypes = {
 	/**
 	 * The heading is the name of the related item group and should only contain inline elements.
 	 */
-	heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
+	heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * Actions to perform on selected items or actions that are not specific to one item such as adding an item. If no group actions are needed, then the number of selected items is often present.
 	 */

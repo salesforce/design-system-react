@@ -45,6 +45,7 @@ const Icon = ({
 	productTheme,
 	assistiveText = defaultProps.assistiveText,
 	style,
+	...rest
 }) => {
 	checkProps(
 		ICON,
@@ -63,11 +64,12 @@ const Icon = ({
 			productTheme,
 			assistiveText,
 			style,
+			...rest,
 		},
 		componentDoc
 	);
 
-	let styleOverride;
+	let styleOverride = style;
 	if (productTheme) {
 		styleOverride = {
 			backgroundColor: IconBackgrounds[productTheme],
@@ -157,7 +159,7 @@ Icon.propTypes = {
 		'doctype',
 		'standard',
 		'utility',
-	]).isRequired,
+	]),
 	/**
 	 * CSS classes that are applied to the SVG.
 	 */

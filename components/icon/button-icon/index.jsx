@@ -32,6 +32,7 @@ const ButtonIcon = ({
 	name,
 	path,
 	position,
+	...rest
 }) => {
 	checkProps(BUTTON_ICON, {
 		category,
@@ -43,6 +44,7 @@ const ButtonIcon = ({
 		name,
 		path,
 		position,
+		...rest,
 	});
 
 	return (

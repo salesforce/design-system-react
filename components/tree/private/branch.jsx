@@ -82,7 +82,7 @@ const Branch = ({
 						onSelect={props.onSelect}
 						onExpand={onExpand}
 						searchTerm={searchTerm}
-						treeIndex={treeIndex}
+						treeIndex={resolvedTreeIndex}
 						treeId={treeId}
 						parent={props.node}
 					/>

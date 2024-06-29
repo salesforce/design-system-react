@@ -40,6 +40,7 @@ const Illustration = ({
 	internalIllustration = true,
 	size = 'small',
 	style = {},
+	...rest
 }) => {
 	checkProps(
 		'Illustration',
@@ -53,6 +54,7 @@ const Illustration = ({
 			size,
 			style,
 			internalIllustration,
+			...rest,
 		},
 		componentDoc
 	);

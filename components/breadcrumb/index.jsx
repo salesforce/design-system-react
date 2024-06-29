@@ -80,10 +80,11 @@ const Breadcrumb = ({
 	overflowDropdownMenu,
 	styleContainer,
 	trail,
+	...rest
 }) => {
 	checkProps(
 		BREADCRUMB,
-		{ assistiveText, id, overflowDropdownMenu, styleContainer, trail },
+		{ assistiveText, id, overflowDropdownMenu, styleContainer, trail, ...rest },
 		componentDoc
 	);
 
