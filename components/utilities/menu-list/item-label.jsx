@@ -15,10 +15,10 @@ import { LIST_ITEM_LABEL } from '../../../utilities/constants';
 /**
  * Component description.
  */
-const ListItemLabel = (props) => (
-	<span className="slds-truncate" title={props.label}>
-		{props.icon}
-		{props.label}
+const ListItemLabel = ({ label = '', icon }) => (
+	<span className="slds-truncate" title={label}>
+		{icon}
+		{label}
 	</span>
 );
 
@@ -32,15 +32,6 @@ ListItemLabel.propTypes = {
 	isSelected: PropTypes.bool,
 	label: PropTypes.string,
 	value: PropTypes.any,
-};
-
-ListItemLabel.defaultProps = {
-	data: {},
-	index: 0,
-	inverted: false,
-	isSelected: false,
-	label: '',
-	value: null,
 };
 
 export default ListItemLabel;

@@ -26,10 +26,12 @@ const GlobalNavigationBarLink = (props) => {
 	const {
 		active,
 		activeBackgroundColor,
-		assistiveText,
+		assistiveText = {
+			activeDescriptor: 'Current page:',
+		},
 		className,
 		dividerPosition,
-		href,
+		href = '#',
 		id,
 		label,
 		onBlur,
@@ -175,13 +177,6 @@ GlobalNavigationBarLink.propTypes = {
 	 * Write "-1" if you don't want the user to tab to the button.
 	 */
 	tabIndex: PropTypes.string,
-};
-
-GlobalNavigationBarLink.defaultProps = {
-	assistiveText: {
-		activeDescriptor: 'Current page:',
-	},
-	href: '#',
 };
 
 export default GlobalNavigationBarLink;

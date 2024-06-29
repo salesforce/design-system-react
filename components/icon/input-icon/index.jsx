@@ -27,17 +27,15 @@ import { ICON_INPUT } from '../../../utilities/constants';
  * If not, the icon will be an instance of `design-system-react/components/utilities/utility-icon`.
  * Checkout out the appropriate component to see what props can be passed along via the `{...props}` rest operator
  */
-const InputIcon = (props) => {
-	const {
-		category,
-		iconPosition,
-		name,
-		path,
-		onClick,
-		variant,
-		...rest
-	} = props;
-
+const InputIcon = ({
+	category = 'utility',
+	variant = 'base',
+	iconPosition,
+	name,
+	path,
+	onClick,
+	...rest
+}) => {
 	// need to pass click event up on SVG
 
 	const variants = {
@@ -113,11 +111,6 @@ InputIcon.propTypes = {
 	 * Changes styles of the InputIcon.
 	 */
 	variant: PropTypes.oneOf(['base', 'combobox']),
-};
-
-InputIcon.defaultProps = {
-	category: 'utility',
-	variant: 'base',
 };
 
 export default InputIcon;

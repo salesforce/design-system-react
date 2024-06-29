@@ -37,16 +37,18 @@ const propTypes = {
 	variant: PropTypes.oneOf(['base', 'static']),
 };
 
-const defaultProps = {
-	variant: 'base',
-};
-
 /*
  * Form label. This returns null if there is no label text (hidden or shown)
  */
-const Label = (props) => {
-	const labelText =
-		props.label || (props.assistiveText && props.assistiveText.label); // One of these is required to pass accessibility tests
+const Label = ({
+	variant = 'base',
+	label,
+	assistiveText,
+	className,
+	htmlFor,
+	required,
+}) => {
+	const labelText = label || (assistiveText && assistiveText.label); // One of these is required to pass accessibility tests
 
 	const subRenders = {
 		base: (
@@ -54,13 +56,13 @@ const Label = (props) => {
 				className={classNames(
 					'slds-form-element__label',
 					{
-						'slds-assistive-text': props.assistiveText && !props.label,
+						'slds-assistive-text': assistiveText && !label,
 					},
-					props.className
+					className
 				)}
-				htmlFor={props.htmlFor}
+				htmlFor={htmlFor}
 			>
-				{props.required && (
+				{required && (
 					<abbr className="slds-required" title="required">
 						{'*'}
 					</abbr>
@@ -69,17 +71,16 @@ const Label = (props) => {
 			</label>
 		),
 		static: (
-			<span className={classNames('slds-form-element__label', props.className)}>
+			<span className={classNames('slds-form-element__label', className)}>
 				{labelText}
 			</span>
 		),
 	};
 
-	return labelText ? subRenders[props.variant] : null;
+	return labelText ? subRenders[variant] : null;
 };
 
 Label.displayName = 'Label';
 Label.propTypes = propTypes;
-Label.defaultProps = defaultProps;
 
 export default Label;

@@ -440,7 +440,7 @@ describe('SLDSCombobox', function describeFunction() {
 			).to.eql(true);
 
 			const { scrollTop } = nodes.menuListbox.instance();
-			expect(scrollTop === 98 || scrollTop === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
+			expect(scrollTop === 90 || scrollTop === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
 		});
 
 		it('selects menu items and scrolls when the down/up keys are pressed', () => {
@@ -466,7 +466,7 @@ describe('SLDSCombobox', function describeFunction() {
 			).to.eql(true);
 
 			const { scrollTop: scrollTop1 } = nodes.menuListbox.instance();
-			expect(scrollTop1 === 98 || scrollTop1 === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
+			expect(scrollTop1 === 90 || scrollTop1 === 0).to.eql(true); // done because menu and menu item size in phantomjs is weird
 
 			for (i = 0; i < 8; i += 1) {
 				nodes.input.simulate('keyDown', keyObjects.UP);

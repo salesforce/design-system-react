@@ -13,9 +13,7 @@ import { CARD_FILTER } from '../../utilities/constants';
 /**
  * A default filter or search input for Cards that contain items.
  */
-const Filter = (props) => {
-	const { id, placeholder, onChange, ...rest } = props;
-
+const Filter = ({ id, placeholder = 'Find in List', onChange, ...rest }) => {
 	return (
 		<Input
 			{...rest}
@@ -45,11 +43,7 @@ Filter.propTypes = {
 	/**
 	 * Text present in input until the user enters text. This text will also be used for a visually hidden label on the filter `input` element for accessibility.
 	 */
-	placeholder: PropTypes.string.isRequired,
-};
-
-Filter.defaultProps = {
-	placeholder: 'Find in List',
+	placeholder: PropTypes.string,
 };
 
 export default Filter;

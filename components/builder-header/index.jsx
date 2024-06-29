@@ -119,18 +119,29 @@ const defaultProps = {
 /**
  * Every builder needs a builder header, which contains basic navigation elements. It also shows the builder type and content name.
  */
-const BuilderHeader = (props) => {
-	const assistiveText = {
+const BuilderHeader = ({
+	assistiveText = defaultProps.assistiveText,
+	children,
+	className,
+	events = {},
+	iconCategory = defaultProps.iconCategory,
+	iconClassName,
+	iconName = defaultProps.iconName,
+	iconPath,
+	labels = defaultProps.labels,
+	style,
+}) => {
+	const mergedAssistiveText = {
 		...defaultProps.assistiveText,
-		...props.assistiveText,
+		...assistiveText,
 	};
-	const events = {
+	const mergedEvents = {
 		...{},
-		...props.events,
+		...events,
 	};
-	const labels = {
+	const mergedLabels = {
 		...defaultProps.labels,
-		...props.labels,
+		...labels,
 	};
 
 	let nav;
@@ -139,23 +150,23 @@ const BuilderHeader = (props) => {
 	let utilities = (
 		<BuilderHeaderUtilities>
 			<BuilderHeaderNavLink
-				assistiveText={{ icon: assistiveText.backIcon }}
+				assistiveText={{ icon: mergedAssistiveText.backIcon }}
 				iconCategory="utility"
 				iconName="back"
-				label={labels.back}
-				onClick={EventUtil.trappedHandler(events.onClickBack)}
+				label={mergedLabels.back}
+				onClick={EventUtil.trappedHandler(mergedEvents.onClickBack)}
 			/>
 			<BuilderHeaderNavLink
-				assistiveText={{ icon: assistiveText.helpIcon }}
+				assistiveText={{ icon: mergedAssistiveText.helpIcon }}
 				iconCategory="utility"
 				iconName="help"
-				label={labels.help}
-				onClick={EventUtil.trappedHandler(events.onClickHelp)}
+				label={mergedLabels.help}
+				onClick={EventUtil.trappedHandler(mergedEvents.onClickHelp)}
 			/>
 		</BuilderHeaderUtilities>
 	);
 	const misc = [];
-	React.Children.forEach(props.children, (child) => {
+	React.Children.forEach(children, (child) => {
 		if (child) {
 			switch (child.type.displayName) {
 				case BUILDER_HEADER_NAV:
@@ -176,40 +187,41 @@ const BuilderHeader = (props) => {
 		}
 	});
 
-	let iconCategory;
-	let iconName;
-	let iconPath;
-	if (props.iconPath) {
-		({ iconPath } = props);
+	let resolvedIconCategory;
+	let resolvedIconName;
+	let resolvedIconPath;
+	if (iconPath) {
+		resolvedIconPath = iconPath;
 	} else {
-		({ iconCategory, iconName } = props);
+		resolvedIconCategory = iconCategory;
+		resolvedIconName = iconName;
 	}
 
 	return (
 		<div style={{ position: 'relative', height: '100px' }}>
 			<div
-				className={classNames('slds-builder-header_container', props.className)}
-				style={props.style}
+				className={classNames('slds-builder-header_container', className)}
+				style={style}
 			>
 				<header className="slds-builder-header">
 					<div className="slds-builder-header__item">
 						<div className="slds-builder-header__item-label slds-media slds-media_center">
 							<div className="slds-media__figure">
 								<Icon
-									assistiveText={{ label: assistiveText.icon }}
-									category={iconCategory}
+									assistiveText={{ label: mergedAssistiveText.icon }}
+									category={resolvedIconCategory}
 									containerClassName={classNames(
 										'slds-icon_container',
 										'slds-icon-utility-builder',
 										'slds-current-color',
-										props.iconClassName
+										iconClassName
 									)}
-									name={iconName}
-									path={iconPath}
+									name={resolvedIconName}
+									path={resolvedIconPath}
 									size="x-small"
 								/>
 							</div>
-							<div className="slds-media__body">{labels.title}</div>
+							<div className="slds-media__body">{mergedLabels.title}</div>
 						</div>
 					</div>
 					{nav}
@@ -219,8 +231,8 @@ const BuilderHeader = (props) => {
 					) : (
 						<div className="slds-builder-header__item slds-has-flexi-truncate">
 							<h1 className="slds-builder-header__item-label">
-								<span className="slds-truncate" title={labels.pageType}>
-									{labels.pageType}
+								<span className="slds-truncate" title={mergedLabels.pageType}>
+									{mergedLabels.pageType}
 								</span>
 							</h1>
 						</div>
@@ -236,5 +248,4 @@ const BuilderHeader = (props) => {
 
 BuilderHeader.displayName = BUILDER_HEADER;
 BuilderHeader.propTypes = propTypes;
-BuilderHeader.defaultProps = defaultProps;
 export default BuilderHeader;

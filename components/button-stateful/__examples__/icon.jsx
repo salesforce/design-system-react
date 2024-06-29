@@ -23,7 +23,7 @@ class Example extends React.Component {
 				<ButtonStateful
 					assistiveText={{ icon: this.state.isActive ? 'liked' : 'not liked' }}
 					aria-pressed={this.state.isActive}
-					icon={<ButtonIcon name="like" />}
+					icon={<ButtonIcon name="like" size="medium" />}
 					onClick={this.handleOnClick}
 					variant="icon-filled"
 				/>

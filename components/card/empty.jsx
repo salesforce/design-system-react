@@ -11,13 +11,13 @@ import { CARD_EMPTY } from '../../utilities/constants';
 /**
  * A default empty state for Cards.
  */
-const CardEmpty = (props) => (
+const CardEmpty = ({ heading = 'No Related Items', children }) => (
 	<div className="slds-p-horizontal_small">
 		<div className="slds-text-align_center slds-m-bottom_x-large">
 			<h3 className="slds-text-heading_small slds-p-top_large slds-p-bottom_large">
-				{props.heading}
+				{heading}
 			</h3>
-			{props.children}
+			{children}
 		</div>
 	</div>
 );
@@ -36,10 +36,6 @@ CardEmpty.propTypes = {
 	 * Primary text for an Empty Card.
 	 */
 	heading: PropTypes.string,
-};
-
-CardEmpty.defaultProps = {
-	heading: 'No Related Items',
 };
 
 export default CardEmpty;

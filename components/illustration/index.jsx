@@ -30,19 +30,34 @@ import componentDoc from './component.json';
 /**
  * An illustration is an image and inline text that work in tandem to communicate a state in a more friendly way.
  */
-const Illustration = (props) => {
-	const {
-		className,
-		illustration,
-		heading,
-		messageBody,
-		name,
-		path,
-		size,
-		style,
-	} = props;
-
-	checkProps('Illustration', props, componentDoc);
+const Illustration = ({
+	className,
+	illustration,
+	heading,
+	messageBody,
+	name,
+	path,
+	internalIllustration = true,
+	size = 'small',
+	style = {},
+	...rest
+}) => {
+	checkProps(
+		'Illustration',
+		{
+			className,
+			illustration,
+			heading,
+			messageBody,
+			name,
+			path,
+			size,
+			style,
+			internalIllustration,
+			...rest,
+		},
+		componentDoc
+	);
 	const kababCaseName = name ? name.replace(/_| /g, '-').toLowerCase() : '';
 	const styles = { ...style };
 	let illustrationSvg;
@@ -121,7 +136,7 @@ Illustration.propTypes = {
 	/**
 	 * Indicates whether the illustration SVGs are from the design-system-react repo. If yes, set to true.
 	 */
-	internalIllustration: PropTypes.bool.isRequired,
+	internalIllustration: PropTypes.bool,
 	/**
 	 * A message body below the heading to further communicate the state of the component. _Tested with snapshot testing._ _Tested with Mocha testing._
 	 */
@@ -142,12 +157,6 @@ Illustration.propTypes = {
 	 * Custom styles to be passed to the illustration SVG. _Tested with Mocha testing._
 	 */
 	style: PropTypes.object,
-};
-
-Illustration.defaultProps = {
-	internalIllustration: true,
-	size: 'small',
-	style: {},
 };
 
 export default Illustration;

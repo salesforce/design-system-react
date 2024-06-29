@@ -116,62 +116,74 @@ const handleClickRemove = (event, { events, data }) => {
 	events.onRequestRemove(event, data);
 };
 
-const Pill = (props) => {
-	const assistiveText = assign(
+const Pill = ({
+	assistiveText = defaultProps.assistiveText,
+	labels = defaultProps.labels,
+	events = defaultProps.events,
+	avatar,
+	bare,
+	hasError,
+	tabIndex,
+	icon,
+	eventData,
+	requestFocus,
+	active,
+}) => {
+	const mergedAssistiveText = assign(
 		{},
 		defaultProps.assistiveText,
-		props.assistiveText
+		assistiveText
 	);
-	const labels = assign({}, defaultProps.labels, props.labels);
+	const mergedLabels = assign({}, defaultProps.labels, labels);
 
 	return (
 		<SLDSPill
-			avatar={props.avatar}
-			bare={props.bare}
-			hasError={props.hasError}
-			tabIndex={props.tabIndex || '0'}
-			icon={props.icon}
+			avatar={avatar}
+			bare={bare}
+			hasError={hasError}
+			tabIndex={tabIndex || '0'}
+			icon={icon}
 			variant="option"
-			labels={labels}
+			labels={mergedLabels}
 			assistiveText={{
-				remove: assistiveText.remove,
+				remove: mergedAssistiveText.remove,
 			}}
 			aria-selected="true"
-			onBlur={props.events.onBlur}
+			onBlur={events.onBlur}
 			onClick={
-				typeof props.events.onClick === 'function'
+				typeof events.onClick === 'function'
 					? (event) => {
-							if (props.events.onClick) {
-								props.events.onClick(event, {
-									...props.eventData,
+							if (events.onClick) {
+								events.onClick(event, {
+									...eventData,
 								});
 							}
 					  }
 					: null
 			}
 			onFocus={(event) => {
-				if (props.events.onFocus) {
-					props.events.onFocus(event, {
-						...props.eventData,
+				if (events.onFocus) {
+					events.onFocus(event, {
+						...eventData,
 					});
 				}
 			}}
 			onRemove={(event) => {
 				EventUtil.trap(event);
 				handleClickRemove(event, {
-					events: props.events,
-					data: props.eventData,
+					events,
+					data: eventData,
 				});
 			}}
 			onKeyDown={(event) => {
 				handleKeyDown(event, {
-					events: props.events,
-					data: props.eventData,
+					events,
+					data: eventData,
 				});
 			}}
 			ref={(component) => {
-				if (props.requestFocus && props.active) {
-					props.events.onRequestFocus(undefined, { ref: component });
+				if (requestFocus && active) {
+					events.onRequestFocus(undefined, { ref: component });
 				}
 			}}
 		/>
@@ -180,6 +192,5 @@ const Pill = (props) => {
 
 Pill.displayName = 'Pill';
 Pill.propTypes = propTypes;
-Pill.defaultProps = defaultProps;
 
 export default Pill;

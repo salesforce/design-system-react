@@ -22,8 +22,6 @@ const propTypes = {
 	}),
 };
 
-const defaultProps = {};
-
 const SplitViewListItemContent = ({ item }) => (
 	<div>
 		<div className="slds-grid slds-wrap">
@@ -56,6 +54,5 @@ const SplitViewListItemContent = ({ item }) => (
 
 SplitViewListItemContent.displayName = DISPLAY_NAME;
 SplitViewListItemContent.propTypes = propTypes;
-SplitViewListItemContent.defaultProps = defaultProps;
 
 export default SplitViewListItemContent;

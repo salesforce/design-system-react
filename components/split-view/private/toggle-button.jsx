@@ -36,8 +36,6 @@ const propsTypes = {
 	}),
 };
 
-const defaultProps = {};
-
 const SplitViewToggleButton = ({
 	isOpen,
 	assistiveText,
@@ -69,6 +67,5 @@ const SplitViewToggleButton = ({
 
 SplitViewToggleButton.displayName = DISPLAY_NAME;
 SplitViewToggleButton.propTypes = propsTypes;
-SplitViewToggleButton.defaultProps = defaultProps;
 
 export default SplitViewToggleButton;

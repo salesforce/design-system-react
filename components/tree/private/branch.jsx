@@ -16,19 +16,32 @@ import generateId from '../../../utilities/generate-id';
 /**
  * A Tree Item is a non-branching node in a hierarchical list.
  */
-const Branch = (props) => {
-	let treeIndex = '';
+const Branch = ({
+	level = 0,
+	label = '',
+	treeIndex = '',
+	selectedNodeIndexes = [],
+	...rest
+}) => {
+	let resolvedTreeIndex = '';
 	let children;
 
-	const { treeId, level, onExpand, searchTerm } = props;
+	const props = {
+		level,
+		label,
+		treeIndex,
+		selectedNodeIndexes,
+		...rest,
+	};
+	const { treeId, onExpand, searchTerm } = props;
 
 	if (Array.isArray(props.getNodes(props.node))) {
 		children = props.getNodes(props.node).map((node, index) => {
 			let child;
-			const htmlId = `${props.treeId}-${node.id}`;
-			treeIndex = `${index}`;
-			if (props.treeIndex) {
-				treeIndex = `${props.treeIndex}-${treeIndex}`;
+			const htmlId = `${treeId}-${node.id}`;
+			resolvedTreeIndex = `${index}`;
+			if (treeIndex) {
+				resolvedTreeIndex = `${treeIndex}-${resolvedTreeIndex}`;
 			}
 			if (node.type === 'branch') {
 				child = (
@@ -40,7 +53,7 @@ const Branch = (props) => {
 						level={level + 1}
 						node={node}
 						flattenedNodes={props.flattenedNodes}
-						selectedNodeIndexes={props.selectedNodeIndexes}
+						selectedNodeIndexes={selectedNodeIndexes}
 						focusedNodeIndex={props.focusedNodeIndex}
 						treeHasFocus={props.treeHasFocus}
 						onNodeBlur={props.onNodeBlur}
@@ -49,7 +62,7 @@ const Branch = (props) => {
 						onExpand={onExpand}
 						searchTerm={searchTerm}
 						treeId={treeId}
-						treeIndex={treeIndex}
+						treeIndex={resolvedTreeIndex}
 						parent={props.node}
 					/>
 				);
@@ -62,14 +75,14 @@ const Branch = (props) => {
 						level={level + 1}
 						node={node}
 						flattenedNodes={props.flattenedNodes}
-						selectedNodeIndexes={props.selectedNodeIndexes}
+						selectedNodeIndexes={selectedNodeIndexes}
 						focusedNodeIndex={props.focusedNodeIndex}
 						treeHasFocus={props.treeHasFocus}
 						onNodeBlur={props.onNodeBlur}
 						onSelect={props.onSelect}
 						onExpand={onExpand}
 						searchTerm={searchTerm}
-						treeIndex={treeIndex}
+						treeIndex={resolvedTreeIndex}
 						treeId={treeId}
 						parent={props.node}
 					/>
@@ -80,7 +93,7 @@ const Branch = (props) => {
 	}
 
 	const branch =
-		props.level === 0
+		level === 0
 			? RenderInitialBranch(children, props)
 			: RenderBranch(children, props);
 	return branch;
@@ -173,13 +186,6 @@ Branch.propTypes = {
 	 * This node's parent.
 	 */
 	parent: PropTypes.object,
-};
-
-Branch.defaultProps = {
-	level: 0,
-	label: '',
-	treeIndex: '',
-	selectedNodeIndexes: [],
 };
 
 export default Branch;

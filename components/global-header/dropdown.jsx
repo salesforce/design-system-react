@@ -27,10 +27,23 @@ import {
 /**
  * This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).
  */
-const GlobalHeaderDropdown = (props) => {
-	checkProps(GLOBAL_HEADER_DROPDOWN, props);
+const GlobalHeaderDropdown = ({
+	align = 'right',
+	buttonVariant = 'icon',
+	iconVariant = 'global-header',
+	nubbinPosition = 'top right',
+	globalAction,
+	...rest
+}) => {
+	checkProps(GLOBAL_HEADER_DROPDOWN, {
+		align,
+		buttonVariant,
+		iconVariant,
+		nubbinPosition,
+		globalAction,
+		...rest,
+	});
 
-	const { globalAction, iconVariant, ...rest } = props;
 	let iconVariantOverride;
 
 	if (globalAction) {
@@ -38,7 +51,12 @@ const GlobalHeaderDropdown = (props) => {
 	}
 
 	return (
-		<MenuDropdown nubbinPosition="top right" {...rest}>
+		<MenuDropdown
+			nubbinPosition="top right"
+			buttonVariant={buttonVariant}
+			align={align}
+			{...rest}
+		>
 			<GlobalHeaderTrigger
 				globalAction={globalAction}
 				iconSize={globalAction && 'small'}
@@ -117,14 +135,6 @@ GlobalHeaderDropdown.propTypes = {
 	 * An array of menu item.
 	 */
 	options: PropTypes.array.isRequired,
-};
-
-// ### Default Props
-GlobalHeaderDropdown.defaultProps = {
-	align: 'right',
-	buttonVariant: 'icon',
-	iconVariant: 'global-header',
-	nubbinPosition: 'top right',
 };
 
 export default GlobalHeaderDropdown;

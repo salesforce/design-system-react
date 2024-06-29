@@ -43,14 +43,18 @@ const defaultProps = {
 /**
  * The toolbar section of the header.
  */
-const BuilderHeaderToolbar = (props) => {
-	const assistiveText = {
+const BuilderHeaderToolbar = ({
+	assistiveText = defaultProps.assistiveText,
+	children,
+	onRenderActions,
+}) => {
+	const mergedAssistiveText = {
 		...defaultProps.assistiveText,
-		...props.assistiveText,
+		...assistiveText,
 	};
 	return (
 		<div className="slds-builder-toolbar" role="toolbar">
-			{React.Children.map(props.children, (child) => {
+			{React.Children.map(children, (child) => {
 				if (child.type.displayName === BUTTON_GROUP) {
 					return (
 						<div
@@ -65,9 +69,9 @@ const BuilderHeaderToolbar = (props) => {
 			})}
 			<div
 				className="slds-builder-toolbar__actions"
-				aria-label={assistiveText.actions}
+				aria-label={mergedAssistiveText.actions}
 			>
-				{props.onRenderActions && props.onRenderActions()}
+				{onRenderActions && onRenderActions()}
 			</div>
 		</div>
 	);
@@ -75,5 +79,4 @@ const BuilderHeaderToolbar = (props) => {
 
 BuilderHeaderToolbar.displayName = BUILDER_HEADER_TOOLBAR;
 BuilderHeaderToolbar.propTypes = propTypes;
-BuilderHeaderToolbar.defaultProps = defaultProps;
 export default BuilderHeaderToolbar;

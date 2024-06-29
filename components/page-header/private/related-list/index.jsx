@@ -44,7 +44,6 @@ const propTypes = {
 	 */
 	variant: PropTypes.string,
 };
-const defaultProps = {};
 
 const RelatedList = (props) => (
 	<React.Fragment>
@@ -80,6 +79,5 @@ const RelatedList = (props) => (
 
 RelatedList.displayName = displayName;
 RelatedList.propTypes = propTypes;
-RelatedList.defaultProps = defaultProps;
 
 export default RelatedList;

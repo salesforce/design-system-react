@@ -97,11 +97,6 @@ const propTypes = {
 	assistiveText: PropTypes.object,
 };
 
-const defaultProps = {
-	inputValue: '',
-	menuRef: () => {},
-};
-
 const setBold = (label, searchTerm) => {
 	if (!label || label.length === 0 || !searchTerm || searchTerm.length === 0) {
 		return label;
@@ -130,26 +125,46 @@ const renderLabel = (labelProp, searchTerm) => {
 	return labelProp(searchTerm);
 };
 
-const Menu = (props) => {
-	let maxWidth = props.inheritWidthOf === 'menu' ? 'inherit' : undefined;
-	maxWidth =
-		props.inheritWidthOf === 'menu' && props.maxWidth
-			? props.maxWidth
-			: maxWidth;
+const Menu = ({
+	activeOption,
+	activeOptionIndex,
+	classNameMenuSubHeader,
+	classNameMenu,
+	inheritWidthOf,
+	inputId,
+	itemVisibleLength,
+	labels,
+	onRenderMenuItem,
+	menuRef = () => {},
+	menuPosition,
+	maxWidth,
+	onSelect,
+	options,
+	selection,
+	hasMenuSpinner,
+	tooltipMenuItemDisabled,
+	variant,
+	isSelected,
+	assistiveText,
+	inputValue = '',
+}) => {
+	let menuMaxWidth = inheritWidthOf === 'menu' ? 'inherit' : undefined;
+	menuMaxWidth =
+		inheritWidthOf === 'menu' && maxWidth ? maxWidth : menuMaxWidth;
 
 	// .slds-dropdown sets the menu to absolute positioning, since it has a relative parent. Absolute positioning removes clientHeight and clientWidth which Popper.js needs to absolute position the menu's wrapping div. Absolute positioning an already absolute positioned element doesn't work. Setting the menu's position to relative allows PopperJS to work it's magic.
-	const menuOptions = props.options.map((optionData, index) => {
+	const menuOptions = options.map((optionData, index) => {
 		const active =
-			index === props.activeOptionIndex &&
-			props.activeOption &&
-			isEqual(optionData.id, props.activeOption.id);
+			index === activeOptionIndex &&
+			activeOption &&
+			isEqual(optionData.id, activeOption.id);
 		const selected =
-			props.isSelected({
-				selection: props.selection,
+			isSelected({
+				selection,
 				option: optionData,
 			}) &&
 			(optionData.type !== 'header' || optionData.type === 'footer');
-		const MenuItem = props.onRenderMenuItem;
+		const MenuItem = onRenderMenuItem;
 
 		if (optionData.type === 'separator') {
 			return optionData.label ? (
@@ -162,7 +177,7 @@ const Menu = (props) => {
 					<span
 						className={classNames(
 							'slds-listbox__option-header',
-							props.classNameMenuSubHeader
+							classNameMenuSubHeader
 						)}
 					>
 						{optionData.label}
@@ -188,11 +203,11 @@ const Menu = (props) => {
 							optionData.disabled
 								? null
 								: (event) => {
-										props.onSelect(event, { option: optionData });
+										onSelect(event, { option: optionData });
 								  }
 						}
 						aria-selected={active}
-						id={`${props.inputId}-listbox-option-${optionData.id}`}
+						id={`${inputId}-listbox-option-${optionData.id}`}
 						className={classNames(
 							'slds-media slds-listbox__option',
 							'slds-listbox__option_entity slds-listbox__option_term',
@@ -204,7 +219,7 @@ const Menu = (props) => {
 							{optionData.icon}
 						</span>
 						<span className="slds-media__body">
-							{renderLabel(optionData.label, props.inputValue)}
+							{renderLabel(optionData.label, inputValue)}
 						</span>
 					</div>
 				</li>
@@ -223,10 +238,10 @@ const Menu = (props) => {
 							optionData.disabled
 								? null
 								: (event) => {
-										props.onSelect(event, { option: optionData });
+										onSelect(event, { option: optionData });
 								  }
 						}
-						id={`${props.inputId}-listbox-option-${optionData.id}`}
+						id={`${inputId}-listbox-option-${optionData.id}`}
 						className={classNames(
 							'slds-media slds-listbox__option',
 							'slds-listbox__option_entity slds-listbox__option_term',
@@ -238,7 +253,7 @@ const Menu = (props) => {
 							{optionData.icon}
 						</span>
 						<span className="slds-media__body">
-							{renderLabel(optionData.label, props.inputValue)}
+							{renderLabel(optionData.label, inputValue)}
 						</span>
 					</div>
 				</li>
@@ -246,8 +261,8 @@ const Menu = (props) => {
 		}
 
 		const disabledProps = {};
-		const tooltipId = `${props.inputId}-listbox-option-help-${optionData.id}`;
-		if (optionData.disabled && props.tooltipMenuItemDisabled && active) {
+		const tooltipId = `${inputId}-listbox-option-help-${optionData.id}`;
+		if (optionData.disabled && tooltipMenuItemDisabled && active) {
 			disabledProps['aria-describedby'] = tooltipId;
 		}
 		if (optionData.disabled) {
@@ -260,7 +275,7 @@ const Menu = (props) => {
 				<span
 					aria-selected={active}
 					{...disabledProps}
-					id={`${props.inputId}-listbox-option-${optionData.id}`}
+					id={`${inputId}-listbox-option-${optionData.id}`}
 					key={`menu-subtitle-${optionData.id}`}
 					className={classNames(
 						'slds-media slds-listbox__option',
@@ -271,18 +286,18 @@ const Menu = (props) => {
 						optionData.disabled
 							? null
 							: (event) => {
-									props.onSelect(event, { option: optionData });
+									onSelect(event, { option: optionData });
 							  }
 					}
 					role="option"
 				>
 					{/* For backward compatibility,  */}
-					{optionData.icon && !props.onRenderMenuItem ? (
+					{optionData.icon && !onRenderMenuItem ? (
 						<span className="slds-media__figure">{optionData.icon}</span>
 					) : null}
-					{props.onRenderMenuItem ? (
+					{onRenderMenuItem ? (
 						<MenuItem
-							assistiveText={props.assistiveText}
+							assistiveText={assistiveText}
 							selected={selected}
 							option={optionData}
 						/>
@@ -296,7 +311,7 @@ const Menu = (props) => {
 								)}
 								title={optionData.label}
 							>
-								{setBold(optionData.label, props.inputValue)}
+								{setBold(optionData.label, inputValue)}
 							</span>
 							<span
 								className={classNames(
@@ -305,7 +320,7 @@ const Menu = (props) => {
 								)}
 								title={optionData.subTitle}
 							>
-								{setBold(optionData.subTitle, props.inputValue)}
+								{setBold(optionData.subTitle, inputValue)}
 							</span>
 						</span>
 					)}
@@ -315,7 +330,7 @@ const Menu = (props) => {
 				<span // eslint-disable-line jsx-a11y/no-static-element-interactions
 					aria-selected={active}
 					{...disabledProps}
-					id={`${props.inputId}-listbox-option-${optionData.id}`}
+					id={`${inputId}-listbox-option-${optionData.id}`}
 					key={`menu-checkbox-${optionData.id}`}
 					className={classNames(
 						'slds-media slds-listbox__option',
@@ -329,8 +344,8 @@ const Menu = (props) => {
 						optionData.disabled
 							? null
 							: (event) => {
-									props.onSelect(event, {
-										selection: props.selection,
+									onSelect(event, {
+										selection,
 										option: optionData,
 									});
 							  }
@@ -346,9 +361,9 @@ const Menu = (props) => {
 						/>
 					</span>
 					<span className="slds-media__body">
-						{props.onRenderMenuItem ? (
+						{onRenderMenuItem ? (
 							<MenuItem
-								assistiveText={props.assistiveText}
+								assistiveText={assistiveText}
 								selected={selected}
 								option={optionData}
 							/>
@@ -361,7 +376,7 @@ const Menu = (props) => {
 							>
 								{selected ? (
 									<span className="slds-assistive-text">
-										{props.assistiveText.optionSelectedInMenu}
+										{assistiveText.optionSelectedInMenu}
 									</span>
 								) : null}{' '}
 								{optionData.type === 'deselect' ? (
@@ -377,11 +392,11 @@ const Menu = (props) => {
 		};
 
 		let item;
-		if (optionData.disabled && props.tooltipMenuItemDisabled) {
+		if (optionData.disabled && tooltipMenuItemDisabled) {
 			const {
 				content,
 				...userDefinedTooltipProps
-			} = props.tooltipMenuItemDisabled.props;
+			} = tooltipMenuItemDisabled.props;
 			const tooltipProps = {
 				align: 'top',
 				content: optionData.tooltipContent || content, // either use specific content defined on option or content defined on tooltip component.
@@ -396,12 +411,12 @@ const Menu = (props) => {
 				tooltipProps.isOpen = true;
 			}
 			item = React.cloneElement(
-				props.tooltipMenuItemDisabled,
+				tooltipMenuItemDisabled,
 				tooltipProps,
-				menuItem[props.variant]
+				menuItem[variant]
 			);
 		} else {
-			item = menuItem[props.variant];
+			item = menuItem[variant];
 		}
 
 		return (
@@ -420,18 +435,18 @@ const Menu = (props) => {
 			className={classNames(
 				'slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid',
 				{
-					'slds-dropdown_length-with-icon-5': props.itemVisibleLength === 5,
-					'slds-dropdown_length-with-icon-7': props.itemVisibleLength === 7,
-					'slds-dropdown_length-with-icon-10': props.itemVisibleLength === 10,
+					'slds-dropdown_length-with-icon-5': itemVisibleLength === 5,
+					'slds-dropdown_length-with-icon-7': itemVisibleLength === 7,
+					'slds-dropdown_length-with-icon-10': itemVisibleLength === 10,
 				},
-				props.classNameMenu
+				classNameMenu
 			)}
-			ref={props.menuRef}
+			ref={menuRef}
 			role="presentation"
 			style={{
-				width: props.inheritWidthOf === 'menu' ? 'auto' : undefined,
-				maxWidth,
-				position: props.menuPosition !== 'relative' ? 'relative' : undefined,
+				width: inheritWidthOf === 'menu' ? 'auto' : undefined,
+				maxWidth: menuMaxWidth,
+				position: menuPosition !== 'relative' ? 'relative' : undefined,
 			}}
 		>
 			{menuOptions.length ? (
@@ -443,15 +458,15 @@ const Menu = (props) => {
 					aria-live="polite"
 				>
 					<span className="slds-m-left_x-large slds-p-vertical_medium">
-						{props.labels.noOptionsFound}
+						{labels.noOptionsFound}
 					</span>
 				</li>
 			)}
-			{props.hasMenuSpinner && (
+			{hasMenuSpinner && (
 				<li role="presentation" className="slds-listbox__item">
 					<div className="slds-align_absolute-center slds-p-top_medium">
 						<Spinner
-							assistiveText={{ label: props.assistiveText.loadingMenuItems }}
+							assistiveText={{ label: assistiveText.loadingMenuItems }}
 							hasContainer={false}
 							isInline
 							size="x-small"
@@ -465,6 +480,5 @@ const Menu = (props) => {
 
 Menu.displayName = 'Menu';
 Menu.propTypes = propTypes;
-Menu.defaultProps = defaultProps;
 
 export default Menu;

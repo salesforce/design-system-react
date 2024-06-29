@@ -36,50 +36,81 @@ const idSuffixes = {
 /**
  * Cards are used to apply a container around a related grouping of information. It has a header, a body, and an optional footer. It often contains a DataTable or Tile (coming soon). Actions associated with selected items or with all items are included within the header actions. Footer often contains pagination. `aria-` and `data-` props can be provided and will be destructured on the root `article` element.
  */
-const Card = (props) => {
+const Card = ({
+	heading = 'Related Items',
+	bodyClassName,
+	children,
+	className,
+	empty,
+	filter,
+	footer,
+	hasNoHeader,
+	header,
+	headerActions,
+	icon,
+	id,
+	style,
+	...rest
+}) => {
+	const props = {
+		heading,
+		bodyClassName,
+		children,
+		className,
+		empty,
+		filter,
+		footer,
+		hasNoHeader,
+		header,
+		headerActions,
+		icon,
+		id,
+		style,
+		...rest,
+	};
 	const ariaProps = getAriaProps(props);
 	const dataProps = getDataProps(props);
-	const bodyId = props.id ? props.id + idSuffixes.body : null;
-	const filterId = props.id ? props.id + idSuffixes.filter : null;
-	const headingId = props.id ? props.id + idSuffixes.heading : null;
-	const headerActionsId = props.id ? props.id + idSuffixes.headerActions : null;
+	const bodyId = id ? id + idSuffixes.body : null;
+	const filterId = id ? id + idSuffixes.filter : null;
+	const headingId = id ? id + idSuffixes.heading : null;
+	const headerActionsId = id ? id + idSuffixes.headerActions : null;
 
-	let { empty } = props;
-	if (empty === true) {
+	let resolvedEmpty = empty;
+	if (resolvedEmpty === true) {
 		// Can be overridden by passing in a node to the empty prop
-		empty = <Empty id={props.id} heading={props.heading} />;
+		resolvedEmpty = <Empty id={id} heading={heading} />;
 	}
 
 	return (
 		<article
-			id={props.id}
-			className={classnames('slds-card', props.className)}
-			style={props.style}
+			id={id}
+			className={classnames('slds-card', className)}
+			style={style}
 			{...ariaProps}
 			{...dataProps}
 		>
-			{!props.hasNoHeader && (
+			{!hasNoHeader && (
 				<Header
-					header={props.header}
+					header={header}
 					headingId={headingId}
-					icon={props.icon}
-					filter={props.filter}
+					icon={icon}
+					filter={filter}
 					filterId={filterId}
-					heading={props.heading}
-					headerActions={props.headerActions}
+					heading={heading}
+					headerActions={headerActions}
 					headerActionsId={headerActionsId}
 				/>
 			)}
-			{!empty ? (
-				<Body id={bodyId} className={props.bodyClassName}>
-					{props.children}
+			{!resolvedEmpty ? (
+				<Body id={bodyId} className={bodyClassName}>
+					{children}
 				</Body>
 			) : (
-				<Body id={bodyId} className={props.bodyClassName}>
-					{empty}
+				<Body id={bodyId} className={bodyClassName}>
+					{resolvedEmpty}
 				</Body>
 			)}
-			{props.footer ? <Footer>{props.footer}</Footer> : null}
+			{footer ? <Footer>{footer}</Footer> : null}
 		</article>
 	);
 };
@@ -87,10 +118,6 @@ const Card = (props) => {
 // ### Display Name
 // Always use the canonical component name as the React display name.
 Card.displayName = CARD;
-
-Card.defaultProps = {
-	heading: 'Related Items',
-};
 
 // ### Prop Types
 Card.propTypes = {
@@ -137,7 +164,7 @@ Card.propTypes = {
 	/**
 	 * The heading is the name of the related item group and should only contain inline elements.
 	 */
-	heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
+	heading: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	/**
 	 * Actions to perform on selected items or actions that are not specific to one item such as adding an item. If no group actions are needed, then the number of selected items is often present.
 	 */

@@ -36,10 +36,6 @@ const propTypes = {
 	size: PropTypes.oneOf(['medium', 'large']),
 };
 
-const defaultProps = {
-	fillPercentDecimal: 0,
-};
-
 /**
  * Generates the string for the D value of the SVG path
  * @param isLong {number} a binary flag if the arc should 'take the long path' (used for > 50% fill)
@@ -64,22 +60,26 @@ const calculateD = (fillPercent) => {
 /**
  * Displays the progress ring shape.
  */
-const ProgressRingShape = (props) => {
-	const progressStyles = { height: props.size === 'large' ? '2rem' : '1.5rem' };
+const ProgressRingShape = ({
+	fillPercentDecimal = 0,
+	size,
+	flowDirection,
+	id,
+	className,
+	children,
+}) => {
+	const progressStyles = { height: size === 'large' ? '2rem' : '1.5rem' };
 
-	if (props.flowDirection === 'fill') {
+	if (flowDirection === 'fill') {
 		progressStyles.transform = 'scaleX(1) rotate(-90deg)';
 	}
 
 	return (
-		<div
-			id={props.id}
-			className={classNames('slds-progress-ring', props.className)}
-		>
+		<div id={id} className={classNames('slds-progress-ring', className)}>
 			<div
 				aria-valuemin="0"
 				aria-valuemax="100"
-				aria-valuenow={props.fillPercentDecimal * 100}
+				aria-valuenow={fillPercentDecimal * 100}
 				className="slds-progress-ring__progress"
 				role="progressbar"
 				style={progressStyles}
@@ -87,17 +87,16 @@ const ProgressRingShape = (props) => {
 				<svg viewBox="-1 -1 2 2">
 					<path
 						className="slds-progress-ring__path"
-						d={calculateD(props.fillPercentDecimal)}
+						d={calculateD(fillPercentDecimal)}
 					/>
 				</svg>
 			</div>
-			<div className="slds-progress-ring__content">{props.children}</div>
+			<div className="slds-progress-ring__content">{children}</div>
 		</div>
 	);
 };
 
 ProgressRingShape.displayName = PROGRESS_RING_SHAPE;
 ProgressRingShape.propTypes = propTypes;
-ProgressRingShape.defaultProps = defaultProps;
 
 export default ProgressRingShape;

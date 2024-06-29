@@ -21,14 +21,21 @@ import { GLOBAL_NAVIGATION_BAR_BUTTON } from '../../utilities/constants';
 /**
  * A helper component that renders a Button as an item in the Global Navigation Bar. All props are passed onto `Button` except `active` and `dividerPosition`.
  */
-const GlobalNavigationButton = ({ active, dividerPosition, ...props }) => (
+const GlobalNavigationButton = ({
+	className = 'slds-context-bar__label-action slds-text-body_regular',
+	style = { lineHeight: 'inherit' },
+	variant = 'base',
+	active,
+	dividerPosition,
+	...props
+}) => (
 	<li
 		className={classNames('slds-context-bar__item', {
 			'slds-is-active': active,
 			[`slds-context-bar__item_divider-${dividerPosition}`]: dividerPosition,
 		})}
 	>
-		<Button {...props} />
+		<Button className={className} style={style} variant={variant} {...props} />
 	</li>
 );
 
@@ -44,16 +51,6 @@ GlobalNavigationButton.propTypes = {
 	 * Determines position of separating bar.
 	 */
 	dividerPosition: PropTypes.oneOf(['left', 'right']),
-};
-
-// ### Default Props
-GlobalNavigationButton.defaultProps = {
-	className: 'slds-context-bar__label-action slds-text-body_regular',
-	// This is a hack since buttons are not supported by Global Navigation
-	// Bar and have different `font-size` and `line-height` than links or
-	// dropdowns.
-	style: { lineHeight: 'inherit' },
-	variant: 'base',
 };
 
 export default GlobalNavigationButton;

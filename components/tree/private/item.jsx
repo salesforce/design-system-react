@@ -133,7 +133,12 @@ const getTabIndex = (props) => {
 /**
  * A Tree Item is a non-branching node in a hierarchical list.
  */
-const Item = (props) => {
+const Item = ({ selected = false, selectedNodeIndexes = [], ...rest }) => {
+	const props = {
+		selected,
+		selectedNodeIndexes,
+		...rest,
+	};
 	const isSelected = props.node.selected;
 	const isFocused = props.treeIndex === props.focusedNodeIndex;
 
@@ -254,11 +259,6 @@ Item.propTypes = {
 	 * This node's parent.
 	 */
 	parent: PropTypes.object,
-};
-
-Item.defaultProps = {
-	selected: false,
-	selectedNodeIndexes: [],
 };
 
 export default Item;

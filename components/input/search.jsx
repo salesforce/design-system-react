@@ -39,18 +39,29 @@ const defaultProps = {
 /**
  * A `Search` is an `Input` which renders the search icon by default. It can be cleared, too. All `Input` props not specified as props already may be used with this component and will override defaults.
  */
-const Search = ({ clearable, onClear, onSearch, placeholder, ...props }) => {
-	checkProps(SEARCH, props, componentDoc);
-	const assistiveText =
-		typeof props.assistiveText === 'string'
-			? props.assistiveText
+const Search = ({
+	clearable,
+	onClear,
+	onSearch,
+	placeholder,
+	assistiveText = defaultProps.assistiveText,
+	...props
+}) => {
+	checkProps(
+		SEARCH,
+		{ clearable, onClear, onSearch, placeholder, assistiveText, ...props },
+		componentDoc
+	);
+	const mergedAssistiveText =
+		typeof assistiveText === 'string'
+			? assistiveText
 			: {
 					...defaultProps.assistiveText,
-					...props.assistiveText,
+					...assistiveText,
 			  }.label;
 	return (
 		<Input
-			assistiveText={{ label: assistiveText }}
+			assistiveText={{ label: mergedAssistiveText }}
 			iconLeft={
 				<InputIcon
 					assistiveText={{ icon: 'Search' }}
@@ -104,7 +115,5 @@ Search.propTypes = {
 	 */
 	placeholder: PropTypes.string,
 };
-
-Search.defaultProps = defaultProps;
 
 export default Search;

@@ -30,33 +30,58 @@ const defaultProps = {
 /**
  * The Icon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href='/components/buttons/'>Button component</a> component with <code>variant='icon'</code>.
  */
-const Icon = (props) => {
-	checkProps(ICON, props, componentDoc);
-	const {
-		category,
-		className,
-		colorVariant,
-		containerClassName,
-		containerStyle,
-		icon,
-		inverse,
-		name,
-		path,
-		size,
-		title,
-		productTheme,
-	} = props;
+const Icon = ({
+	category = defaultProps.category,
+	className,
+	colorVariant = defaultProps.colorVariant,
+	containerClassName,
+	containerStyle,
+	icon,
+	inverse,
+	name,
+	path,
+	size = defaultProps.size,
+	title,
+	productTheme,
+	assistiveText = defaultProps.assistiveText,
+	style,
+	...rest
+}) => {
+	checkProps(
+		ICON,
+		{
+			category,
+			className,
+			colorVariant,
+			containerClassName,
+			containerStyle,
+			icon,
+			inverse,
+			name,
+			path,
+			size,
+			title,
+			productTheme,
+			assistiveText,
+			style,
+			...rest,
+		},
+		componentDoc
+	);
 
-	let { style } = props;
+	let styleOverride = style;
 	if (productTheme) {
-		style = { backgroundColor: IconBackgrounds[productTheme], ...style };
+		styleOverride = {
+			backgroundColor: IconBackgrounds[productTheme],
+			...style,
+		};
 	}
-	const assistiveText =
-		typeof props.assistiveText === 'string'
-			? props.assistiveText
+	const mergedAssistiveText =
+		typeof assistiveText === 'string'
+			? assistiveText
 			: {
 					...defaultProps.assistiveText,
-					...props.assistiveText,
+					...assistiveText,
 			  }.label;
 
 	const kababCaseName = name ? name.replace(/_/g, '-') : '';
@@ -100,10 +125,10 @@ const Icon = (props) => {
 				icon={icon}
 				name={name}
 				path={path}
-				style={style}
+				style={styleOverride}
 			/>
-			{assistiveText ? (
-				<span className="slds-assistive-text">{assistiveText}</span>
+			{mergedAssistiveText ? (
+				<span className="slds-assistive-text">{mergedAssistiveText}</span>
 			) : (
 				''
 			)}
@@ -134,7 +159,7 @@ Icon.propTypes = {
 		'doctype',
 		'standard',
 		'utility',
-	]).isRequired,
+	]),
 	/**
 	 * CSS classes that are applied to the SVG.
 	 */
@@ -208,7 +233,5 @@ Icon.propTypes = {
 	 */
 	title: PropTypes.string,
 };
-
-Icon.defaultProps = defaultProps;
 
 export default Icon;

@@ -63,21 +63,27 @@ const propTypes = {
 	errorId: PropTypes.string,
 };
 
-const defaultProps = { labels: {}, assistiveText: {} };
-
 /**
  * A styled select list that can have a single entry checked at any one time.
  * The RadioButtonGroup component wraps [Radio](/components/radios) components, which should be used as children.
  */
-const RadioButtonGroup = (props) => {
-	// Separate props we care about in order to pass others along passively to the dropdown component
-	const { variant, ...rest } = props;
-
-	return <RadioGroup variant="button-group" {...rest} />;
+const RadioButtonGroup = ({
+	labels = {},
+	assistiveText = {},
+	variant,
+	...rest
+}) => {
+	return (
+		<RadioGroup
+			variant="button-group"
+			labels={labels}
+			assistiveText={assistiveText}
+			{...rest}
+		/>
+	);
 };
 
 RadioButtonGroup.displayName = RADIO_BUTTON_GROUP;
 RadioButtonGroup.propTypes = propTypes;
-RadioButtonGroup.defaultProps = defaultProps;
 
 export default RadioButtonGroup;
