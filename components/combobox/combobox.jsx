@@ -1775,7 +1775,7 @@ class Combobox extends React.Component {
 							}}
 							placeholder={labels.placeholderReadOnly}
 							// based on WCAG Success Criteria: 4.1.2: Name, Role, Value - input element is interactive
-							//readOnly
+							// readOnly
 							required={props.required}
 							role="textbox"
 							value={inputValue}
