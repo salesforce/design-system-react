@@ -118,12 +118,6 @@ const propTypes = {
 	variant: PropTypes.oneOf(['base', 'inline-listbox', 'readonly']),
 };
 
-const defaultProps = {
-	listboxAriaOrientation: 'horizontal',
-	listboxRole: 'listbox',
-	renderAtSelectionLength: 1,
-};
-
 const getAvatar = (option) => {
 	const avatarObject = option.avatar;
 	let avatar = null;
@@ -166,40 +160,59 @@ const getIcon = (option) => {
 	return icon;
 };
 
-const SelectedListBox = (props) =>
-	props.selection.length >= props.renderAtSelectionLength ? (
+const SelectedListBox = ({
+	listboxAriaOrientation = 'horizontal',
+	listboxRole = 'listbox',
+	renderAtSelectionLength = 1,
+	selection,
+	isPillContainer,
+	className,
+	id,
+	selectedListboxRef,
+	style,
+	containerRole,
+	containerAriaOrientation,
+	isInline,
+	assistiveText,
+	activeOptionIndex,
+	listboxHasFocus,
+	isBare,
+	events,
+	labels,
+}) =>
+	selection.length >= renderAtSelectionLength ? (
 		<div // eslint-disable-line jsx-a11y/role-supports-aria-props
 			className={
 				classNames(
 					{
-						'slds-pill_container': props.isPillContainer,
+						'slds-pill_container': isPillContainer,
 					},
-					props.className
+					className
 				) || undefined
 			}
-			id={props.id}
+			id={id}
 			ref={(ref) => {
-				if (props.selectedListboxRef) {
-					props.selectedListboxRef(ref);
+				if (selectedListboxRef) {
+					selectedListboxRef(ref);
 				}
 			}}
-			style={props.style}
+			style={style}
 			// Remove role and aria-orientation after slds-has-inline-listbox is deprecated in Combobox
-			role={props.containerRole}
-			aria-orientation={props.containerAriaOrientation}
+			role={containerRole}
+			aria-orientation={containerAriaOrientation}
 		>
 			<ul
 				className={classNames('slds-listbox', {
-					'slds-listbox_inline': props.isInline,
-					'slds-listbox_horizontal': !props.isInline,
-					'slds-p-top_xxx-small': !props.isInline,
+					'slds-listbox_inline': isInline,
+					'slds-listbox_horizontal': !isInline,
+					'slds-p-top_xxx-small': !isInline,
 				})}
-				aria-label={props.assistiveText.selectedListboxLabel}
-				role={props.listboxRole}
-				aria-orientation={props.listboxAriaOrientation}
+				aria-label={assistiveText.selectedListboxLabel}
+				role={listboxRole}
+				aria-orientation={listboxAriaOrientation}
 			>
-				{props.selection.map((option, renderIndex) => {
-					const hasTabIndex = renderIndex === props.activeOptionIndex;
+				{selection.map((option, renderIndex) => {
+					const hasTabIndex = renderIndex === activeOptionIndex;
 					const icon = getIcon(option);
 					const avatar = !icon ? getAvatar(option) : null;
 
@@ -207,44 +220,43 @@ const SelectedListBox = (props) =>
 						<li
 							role="presentation"
 							className="slds-listbox__item"
-							key={`${props.id}-list-item-${option.id}`}
+							key={`${id}-list-item-${option.id}`}
 						>
 							<Pill
-								active={hasTabIndex && props.listboxHasFocus}
+								active={hasTabIndex && listboxHasFocus}
 								assistiveText={{
-									remove: props.assistiveText.removePill,
+									remove: assistiveText.removePill,
 								}}
 								avatar={avatar}
-								bare={option.bare || props.isBare}
+								bare={option.bare || isBare}
 								error={option.error}
 								events={{
-									onBlur: props.events.onBlurPill,
+									onBlur: events.onBlurPill,
 									onClick:
-										typeof props.events.onClickPill === 'function'
+										typeof events.onClickPill === 'function'
 											? (event, data) => {
-													props.events.onClickPill(event, {
+													events.onClickPill(event, {
 														...data,
 														index: renderIndex,
 													});
 											  }
 											: null,
 									onFocus: (event, data) => {
-										props.events.onPillFocus(event, {
+										events.onPillFocus(event, {
 											...data,
 											index: renderIndex,
 										});
 									},
-									onRequestFocusOnNextPill:
-										props.events.onRequestFocusOnNextPill,
+									onRequestFocusOnNextPill: events.onRequestFocusOnNextPill,
 									onRequestFocusOnPreviousPill:
-										props.events.onRequestFocusOnPreviousPill,
+										events.onRequestFocusOnPreviousPill,
 									onRequestRemove: (event, data) => {
-										props.events.onRequestRemove(event, {
+										events.onRequestRemove(event, {
 											...data,
 											index: renderIndex,
 										});
 									},
-									onRequestFocus: props.events.onRequestFocus,
+									onRequestFocus: events.onRequestFocus,
 								}}
 								eventData={{ option }}
 								hasError={option.error}
@@ -252,9 +264,9 @@ const SelectedListBox = (props) =>
 								labels={{
 									label: option.label,
 									title: option.title ?? option.label,
-									removeTitle: props.labels.removePillTitle,
+									removeTitle: labels.removePillTitle,
 								}}
-								requestFocus={props.listboxHasFocus}
+								requestFocus={listboxHasFocus}
 								tabIndex={hasTabIndex ? 0 : -1}
 							/>
 						</li>
@@ -266,6 +278,5 @@ const SelectedListBox = (props) =>
 
 SelectedListBox.displayName = 'SelectedListBox';
 SelectedListBox.propTypes = propTypes;
-SelectedListBox.defaultProps = defaultProps;
 
 export default SelectedListBox;

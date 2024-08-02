@@ -27,7 +27,7 @@ import { IconSettingsContext } from '../../icon-settings';
 const UtilityIcon = ({
 	name = '',
 	assistiveText, // eslint-disable-line no-unused-vars
-	category,
+	category = 'utility',
 	icon,
 	path,
 	direction,
@@ -105,10 +105,6 @@ UtilityIcon.propTypes = {
 	 * Path to the icon. This will override any global icon settings.
 	 */
 	path: PropTypes.string,
-};
-
-UtilityIcon.defaultProps = {
-	category: 'utility',
 };
 
 export default LanguageDirection(UtilityIcon);

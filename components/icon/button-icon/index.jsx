@@ -22,27 +22,48 @@ import { BUTTON_ICON } from '../../../utilities/constants';
 /**
  * This is a non-interactive wrapper component for `UtilityIcon` that specifies button icon classes for an icon inside a `button` tag. Use of this component by itself is not recommended, but should be used as part of other components to obtain the correct styling for icons within buttons. This component only partially implements [Button Icons](http://www.lightningdesignsystem.com/components/button-icons). It does not return a `button` HTML tag. It only returns an icon for use within a button. Assistive text must also be rendered by the parent.
  */
-const ButtonIcon = (props) => {
-	checkProps(BUTTON_ICON, props);
+const ButtonIcon = ({
+	category = 'utility',
+	size = 'medium',
+	hint,
+	icon,
+	className,
+	inverse,
+	name,
+	path,
+	position,
+	...rest
+}) => {
+	checkProps(BUTTON_ICON, {
+		category,
+		size,
+		hint,
+		icon,
+		className,
+		inverse,
+		name,
+		path,
+		position,
+		...rest,
+	});
 
 	return (
 		<SLDSUtilityIcon
 			aria-hidden="true"
-			category={props.category}
+			category={category}
 			className={classNames(
 				'slds-button__icon',
 				{
-					[`slds-button__icon_${props.size}`]:
-						props.size && props.size !== 'medium',
-					'slds-button__icon_inverse-hint': props.inverse && props.hint,
-					'slds-button__icon_hint': props.hint && !props.inverse,
-					[`slds-button__icon_${props.position}`]: props.position,
+					[`slds-button__icon_${size}`]: size && size !== 'medium',
+					'slds-button__icon_inverse-hint': inverse && hint,
+					'slds-button__icon_hint': hint && !inverse,
+					[`slds-button__icon_${position}`]: position,
 				},
-				props.className
+				className
 			)} // iconClassName has been deprecated
-			icon={props.icon}
-			name={props.name}
-			path={props.path}
+			icon={icon}
+			name={name}
+			path={path}
 		/>
 	);
 };
@@ -57,7 +78,7 @@ const propTypes = {
 		'doctype',
 		'standard',
 		'utility',
-	]).isRequired,
+	]),
 	/**
 	 * Associates an icon button with another element on the page by changes the color of the SVG. Please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#hint">Lightning Design System Buttons > Hint</a>.
 	 */
@@ -96,13 +117,7 @@ const propTypes = {
 	size: PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 };
 
-const defaultProps = {
-	category: 'utility',
-	size: 'medium',
-};
-
 ButtonIcon.displayName = BUTTON_ICON;
 ButtonIcon.propTypes = propTypes;
-ButtonIcon.defaultProps = defaultProps;
 
 export default ButtonIcon;

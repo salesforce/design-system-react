@@ -15,51 +15,51 @@ import isFunction from 'lodash.isfunction';
 
 import { VERTICAL_NAVIGATION_ITEM } from '../../../utilities/constants';
 
-const handleClick = (event, props) => {
-	if (!props.item.url) {
+const handleClick = (event, { item, onSelect }) => {
+	if (!item.url) {
 		event.preventDefault();
 	}
 
-	if (isFunction(props.onSelect)) {
-		props.onSelect(event, {
-			item: props.item,
+	if (isFunction(onSelect)) {
+		onSelect(event, {
+			item,
 		});
 	}
 };
 
-const Item = (props) => (
+const Item = ({ isSelected = false, item, categoryId, onSelect }) => (
 	<li
 		className={classNames('slds-nav-vertical__item', {
-			'slds-is-active': props.isSelected,
+			'slds-is-active': isSelected,
 		})}
 	>
 		<a
-			data-id={props.item.id}
-			href={props.item.url || '#'}
+			data-id={item.id}
+			href={item.url || '#'}
 			className="slds-nav-vertical__action"
-			aria-describedby={props.categoryId}
-			aria-current={props.isSelected ? true : undefined}
+			aria-describedby={categoryId}
+			aria-current={isSelected ? true : undefined}
 			onClick={(event) => {
-				handleClick(event, props);
+				handleClick(event, { item, onSelect });
 			}}
 		>
-			{props.item.icon ? (
+			{item.icon ? (
 				<React.Fragment>
-					{React.cloneElement(props.item.icon, {
+					{React.cloneElement(item.icon, {
 						className: classNames(
-							props.item.icon.props.className,
-							`slds-m-right_${props.item.icon.props.size || 'medium'}`
+							item.icon.className,
+							`slds-m-right_${item.icon.props.size || 'medium'}`
 						),
 					})}
-					{props.item.label}
+					{item.label}
 				</React.Fragment>
 			) : (
-				props.item.label
+				item.label
 			)}
-			{props.item.notificationBadge ? (
-				React.cloneElement(props.item.notificationBadge, {
+			{item.notificationBadge ? (
+				React.cloneElement(item.notificationBadge, {
 					className: classNames(
-						props.item.notificationBadge.props.className,
+						item.notificationBadge.props.className,
 						'slds-col_bump-left'
 					),
 				})
@@ -96,10 +96,6 @@ Item.propTypes = {
 	 * Function that will run whenever an item is selected.
 	 */
 	onSelect: PropTypes.func,
-};
-
-Item.defaultProps = {
-	isSelected: false,
 };
 
 export default Item;

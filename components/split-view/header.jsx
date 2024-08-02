@@ -9,7 +9,6 @@ import { SPLIT_VIEW_HEADER } from '../../utilities/constants';
 
 const propTypes = {};
 
-const defaultProps = {};
 /**
  * The Split View Header takes the same properties as the [PageHeader](https://react.lightningdesignsystem.com/components/page-headers/) component.
  */
@@ -25,6 +24,5 @@ const SplitViewHeader = ({ className, ...rest }) => (
 
 SplitViewHeader.displayName = SPLIT_VIEW_HEADER;
 SplitViewHeader.propTypes = propTypes;
-SplitViewHeader.defaultProps = defaultProps;
 
 export default SplitViewHeader;

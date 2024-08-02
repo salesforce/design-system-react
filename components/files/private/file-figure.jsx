@@ -15,39 +15,42 @@ import Spinner from '../../spinner';
 /**
  * A file can have a image, an icon or a loading animation as its thumbnail
  */
-const FileFigure = (props) => {
-	if (props.isLoading) {
+const FileFigure = ({
+	isLoading = false,
+	assistiveText,
+	image,
+	labels,
+	icon,
+}) => {
+	if (isLoading) {
 		return (
 			<React.Fragment>
-				<span className="slds-assistive-text">{props.assistiveText.link}</span>
+				<span className="slds-assistive-text">{assistiveText.link}</span>
 				<Spinner
 					size="medium"
 					variant="base"
-					assistiveText={{ label: props.assistiveText.loading }}
+					assistiveText={{ label: assistiveText.loading }}
 					containerStyle={{ zIndex: '1' }}
 				/>
 			</React.Fragment>
 		);
 	}
-	if (props.image) {
+	if (image) {
 		return (
 			<React.Fragment>
-				<span className="slds-assistive-text">{props.assistiveText.link}</span>
-				<img
-					alt={props.assistiveText.image || props.labels.title}
-					src={props.image}
-				/>
+				<span className="slds-assistive-text">{assistiveText.link}</span>
+				<img alt={assistiveText.image || labels.title} src={image} />
 			</React.Fragment>
 		);
 	}
 	return (
 		<React.Fragment>
-			<span className="slds-assistive-text">{props.assistiveText.link}</span>
+			<span className="slds-assistive-text">{assistiveText.link}</span>
 			<span
 				className="slds-file__icon slds-icon_container"
-				title={props.labels.title}
+				title={labels.title}
 			>
-				{React.cloneElement(props.icon, {
+				{React.cloneElement(icon, {
 					size: null,
 				})}
 			</span>
@@ -75,10 +78,6 @@ FileFigure.propTypes = {
 	labels: PropTypes.shape({
 		title: PropTypes.string.isRequired,
 	}),
-};
-
-FileFigure.defaultProps = {
-	isLoading: false,
 };
 
 export default FileFigure;

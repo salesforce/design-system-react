@@ -22,17 +22,28 @@ import { GLOBAL_NAVIGATION_BAR_DROPDOWN } from '../../utilities/constants';
 /**
  * This component is an implementation of `MenuDropdown` with a custom trigger. All the properties listed below are provided to the `MenuDropdown` component. Any additional properties are provided to the Custom Trigger (that is the `Button` or `li` tag).
  */
-const GlobalNavigationBarDropdown = (props) => {
-	checkProps(GLOBAL_NAVIGATION_BAR_DROPDOWN, props, componentDoc);
-
-	// Separate props we care about in order to pass others along passively to the dropdown component
-	const {
-		active,
-		activeBackgroundColor,
-		assistiveText,
-		dividerPosition,
-		...rest
-	} = props;
+const GlobalNavigationBarDropdown = ({
+	align = 'right',
+	length = null,
+	active,
+	activeBackgroundColor,
+	assistiveText,
+	dividerPosition,
+	...rest
+}) => {
+	checkProps(
+		GLOBAL_NAVIGATION_BAR_DROPDOWN,
+		{
+			align,
+			length,
+			active,
+			activeBackgroundColor,
+			assistiveText,
+			dividerPosition,
+			...rest,
+		},
+		componentDoc
+	);
 
 	return (
 		<MenuDropdown
@@ -40,7 +51,7 @@ const GlobalNavigationBarDropdown = (props) => {
 			hasStaticAlignment
 			// only need if using hybrid or hover
 			hoverCloseDelay={400}
-			length={props.length}
+			length={length}
 			menuPosition="relative"
 			{...rest}
 		>
@@ -117,12 +128,6 @@ GlobalNavigationBarDropdown.propTypes = {
 	 * An array of menu item.
 	 */
 	options: PropTypes.array.isRequired,
-};
-
-// ### Default Props
-GlobalNavigationBarDropdown.defaultProps = {
-	align: 'right',
-	length: null,
 };
 
 export default GlobalNavigationBarDropdown;
