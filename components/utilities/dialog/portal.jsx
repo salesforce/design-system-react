@@ -17,6 +17,7 @@ class Portal extends Component {
 		this.portalNode = null;
 		this.state = {
 			isOpen: false,
+			portalContainer: null,
 		};
 	}
 
@@ -68,12 +69,19 @@ class Portal extends Component {
 			this.portalNodeInstance = this.props.onMount
 				? this.props.onMount(undefined, { portal: this.portalNode })
 				: this.portalNode;
+
+			if (!this.props.portalMount) {
+				this.updatePortal();
+				this.setState({ portalContainer: this.portalNode });
+			}
 		}
 	}
 
 	unmountPortal() {
 		if (this.portalNode) {
-			ReactDOM.unmountComponentAtNode(this.portalNode);
+			if (this.portalMount) {
+				ReactDOM.unmountComponentAtNode(this.portalNode);
+			}
 			this.portalNode.parentNode.removeChild(this.portalNode);
 		}
 		this.portalNode = null;
@@ -119,28 +127,18 @@ class Portal extends Component {
 					this.updatePortal(); // update after subtree renders
 				},
 			});
-		} else {
-			// actual render
-			ReactDOM.unstable_renderSubtreeIntoContainer(
-				this,
-				this.getChildren(),
-				this.portalNode,
-				() => {
-					this.updatePortal(); // update after subtree renders
-
-					if (this.state.isOpen === false) {
-						if (this.props.onOpen) {
-							this.props.onOpen(undefined, { portal: this.getChildren() });
-						}
-						this.setState({ isOpen: true });
-					}
-				}
-			);
+		} else if (this.state.isOpen === false) {
+			if (this.props.onOpen) {
+				this.props.onOpen(undefined, { portal: this.getChildren() });
+			}
+			this.setState({ isOpen: true });
 		}
 	}
 
 	render() {
-		return null;
+		return !this.props.portalMount && this.state.portalContainer
+			? ReactDOM.createPortal(this.props.children, this.state.portalContainer)
+			: null;
 	}
 }
 
