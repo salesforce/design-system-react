@@ -7,6 +7,6 @@ declare module '@salesforce/design-system-react/components/page-header/control' 
 		className?: any[] | Record<string, any> | string;
 	};
 
-	function Component(props: Props): JSX.Element;
+	function Component(props: React.PropsWithChildren<Props>): JSX.Element;
 	export default Component;
 }
