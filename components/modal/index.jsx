@@ -431,7 +431,6 @@ class Modal extends React.Component {
 				iconCategory="utility"
 				iconName="close"
 				iconSize="large"
-				inverse
 				className="slds-button_icon slds-modal__close"
 				onClick={this.closeModal}
 				title={closeButtonAssistiveText}
