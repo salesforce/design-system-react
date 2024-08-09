@@ -157,6 +157,7 @@ class DatepickerCalendarWrapper extends React.Component {
 	handleLastFocusableNodeKeyDown = (event) => {
 		if (!event.shiftKey && event.keyCode === KEYS.TAB) {
 			EventUtil.trapEvent(event);
+			this.previousMonthRef.focus();
 		}
 	};
 
