@@ -198,7 +198,7 @@ class Pill extends React.Component {
 	};
 
 	renderIcon = () => {
-		const icon = this.props.icon || this.props.avatar;
+		const icon = this.props?.icon || this.props?.avatar;
 		if (icon) {
 			return <span className="slds-pill__icon_container">{icon}</span>;
 		}
