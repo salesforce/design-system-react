@@ -751,6 +751,17 @@ class Combobox extends React.Component {
 	};
 
 	handleInputSubmit = (event) => {
+		if (
+			this.state.activeOption === undefined &&
+			this.state.activeOptionIndex === -1
+		) {
+			if (this.state.isOpen === false) {
+				if (!event.shiftKey) {
+					this.openDialog();
+				}
+			} else this.handleRequestClose(event, {});
+		}
+
 		if (this.state.activeOption && this.state.activeOption.disabled) {
 			return;
 		}
