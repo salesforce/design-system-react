@@ -16,8 +16,8 @@ $ npm install @salesforce-ux/design-system @salesforce/design-system-react
 Welcome to this community-supported project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). This library has a peer dependency on `@salesforce-ux/design-system`, `react`, and `react-dom`. It is tested with React 16 and has a stable API despite its version number. Please [polyfill](https://github.com/salesforce/design-system-react/blob/master/docs/browser-compatibility.md) this library in order to meet your target environment needs.
 
 - [Usage](#usage)
-- [Getting started](https://react.lightningdesignsystem.com/getting-started/)
-- [Documentation and interactive examples](https://react.lightningdesignsystem.com)
+- [Getting started](https://design-system-react-site.herokuapp.com/getting-started/)
+- [Documentation and interactive examples](https://design-system-react-site.herokuapp.com)
 - [Contributing](CONTRIBUTING.md)
 - [Codebase overview](docs/codebase-overview.md)
 - [Create React App setup](docs/create-react-app.md)
@@ -41,7 +41,7 @@ Please view [Create React App Setup](docs/create-react-app.md) for more informat
 
 ### Advanced (Source code)
 
-Advanced usage requires that your babel presets are set up correctly. `create-react-app` and environments that do not transpile code within `node_modules` are not compatible with the component import below. All the examples on the [documentation site](https://react.lightningdesignsystem.com/) use this syntax. You can use the Babel preset, `@salesforce/babel-preset-design-system-react`, to get started. [This preset](https://npmjs.com/package/@salesforce/babel-preset-design-system-react) will keep Babel compatible with Design System React and allow ES6 module benefits such as tree-shaking. This library is not browser-ready and should be polyfilled to your target environment.
+Advanced usage requires that your babel presets are set up correctly. `create-react-app` and environments that do not transpile code within `node_modules` are not compatible with the component import below. All the examples on the [documentation site](https://design-system-react-site.herokuapp.com/) use this syntax. You can use the Babel preset, `@salesforce/babel-preset-design-system-react`, to get started. [This preset](https://npmjs.com/package/@salesforce/babel-preset-design-system-react) will keep Babel compatible with Design System React and allow ES6 module benefits such as tree-shaking. This library is not browser-ready and should be polyfilled to your target environment.
 
 ```
 import Button from '@salesforce/design-system-react/components/button';
