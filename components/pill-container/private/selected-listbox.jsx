@@ -140,7 +140,7 @@ const getAvatar = (option) => {
 };
 
 const getIcon = (option) => {
-	const iconObject = option.icon;
+	const iconObject = option?.icon || null;
 	let icon = null;
 
 	if (iconObject) {
