@@ -1785,7 +1785,6 @@ class Combobox extends React.Component {
 								}
 							}}
 							placeholder={labels.placeholderReadOnly}
-							readOnly
 							required={props.required}
 							role="textbox"
 							value={inputValue}

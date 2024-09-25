@@ -192,7 +192,6 @@ exports[`Datepicker
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       placeholder="Select an Option"
-                      readOnly={true}
                       required={false}
                       role="textbox"
                       type="text"
@@ -1056,7 +1055,6 @@ exports[`Datepicker
                         onFocus={[Function]}
                         onKeyDown={[Function]}
                         placeholder="Select an Option"
-                        readOnly={true}
                         required={false}
                         role="textbox"
                         type="text"
@@ -1919,7 +1917,6 @@ exports[`Datepicker
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       placeholder="Select an Option"
-                      readOnly={true}
                       required={false}
                       role="textbox"
                       type="text"
@@ -2779,7 +2776,6 @@ exports[`Datepicker Default DOM Snapshot 1`] = `
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       placeholder="Select an Option"
-                      readOnly={true}
                       required={false}
                       role="textbox"
                       type="text"
@@ -3486,7 +3482,7 @@ exports[`Datepicker Default HTML Snapshot 1`] = `
             <div class=\\"slds-form-element__control\\">
               <div class=\\"slds-combobox_container\\">
                 <div class=\\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-shrink-none\\" role=\\"combobox\\" aria-expanded=\\"false\\" aria-haspopup=\\"listbox\\">
-                  <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" autoComplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"sample-datepicker-year-picklist\\" placeholder=\\"Select an Option\\" readonly=\\"\\" role=\\"textbox\\" aria-autocomplete=\\"list\\" value=\\"2014\\" /><span class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\">
+                  <div class=\\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\\" role=\\"none\\"><input type=\\"text\\" autoComplete=\\"off\\" class=\\"slds-input slds-combobox__input\\" id=\\"sample-datepicker-year-picklist\\" placeholder=\\"Select an Option\\" role=\\"textbox\\" aria-autocomplete=\\"list\\" value=\\"2014\\" /><span class=\\"slds-icon_container slds-input__icon slds-input__icon_right\\"><svg aria-hidden=\\"true\\" class=\\"slds-icon slds-icon_x-small slds-icon-text-default\\">
                         <use href=\\"/assets/icons/utility-sprite/svg/symbols.svg#down\\"></use>
                       </svg></span></div>
                 </div>
@@ -3745,7 +3741,6 @@ exports[`ErrorPicker 1`] = `
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       placeholder="Select an Option"
-                      readOnly={true}
                       required={false}
                       role="textbox"
                       type="text"
