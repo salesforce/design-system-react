@@ -1403,7 +1403,11 @@
                     }
                 },
                 "required": false,
-                "description": "Event Callbacks\n* `onClickBack`: Called when the Back link is clicked.\n* `onClickHelp`: Called when the Help link is clicked.\n_Tested with Mocha testing._"
+                "description": "Event Callbacks\n* `onClickBack`: Called when the Back link is clicked.\n* `onClickHelp`: Called when the Help link is clicked.\n_Tested with Mocha testing._",
+                "defaultValue": {
+                    "value": "{}",
+                    "computed": false
+                }
             },
             "iconCategory": {
                 "type": {
@@ -9233,11 +9237,7 @@
                                 }
                             },
                             "required": false,
-                            "description": "**Assistive text for accessibility.**\n* `activeDescriptor`: The text that appears alongside a link that is currently active.",
-                            "defaultValue": {
-                                "value": "{\n\tactiveDescriptor: 'Current page:',\n}",
-                                "computed": false
-                            }
+                            "description": "**Assistive text for accessibility.**\n* `activeDescriptor`: The text that appears alongside a link that is currently active."
                         },
                         "className": {
                             "type": {
@@ -9279,11 +9279,7 @@
                                 "name": "string"
                             },
                             "required": false,
-                            "description": "The `href` attribute of the link. Please pass in bookmarkable URLs from your routing library. Use `GlobalNavigationBarButton` if a \"real URL\" is not desired. If the `onClick` callback is specified this URL will still be prevented from changing the browser's location.",
-                            "defaultValue": {
-                                "value": "'#'",
-                                "computed": false
-                            }
+                            "description": "The `href` attribute of the link. Please pass in bookmarkable URLs from your routing library. Use `GlobalNavigationBarButton` if a \"real URL\" is not desired. If the `onClick` callback is specified this URL will still be prevented from changing the browser's location."
                         },
                         "id": {
                             "type": {

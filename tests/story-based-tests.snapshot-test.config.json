@@ -3,8 +3,8 @@
 	"testRegex": "/(components|tests)/.*\\.snapshot-test\\.jsx?$",
 	"testEnvironment": "node",
 	"moduleNameMapper": {
-		"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-			"<rootDir>/tests/__mocks__/file-mock.js"
+		"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tests/__mocks__/file-mock.js",
+		".*/utilities/generate-id$": "<rootDir>/tests/__mocks__/nanoid-mock.js"
 	},
 	"setupFiles": [
 		"<rootDir>/.jest/register-context.js",
