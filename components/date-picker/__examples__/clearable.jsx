@@ -54,6 +54,7 @@ class Example extends React.Component {
 					value={this.state.value}
 				/>
 				<Button
+					assistiveText="Clear date"
 					iconCategory="utility"
 					iconName="clear"
 					style={{ marginLeft: '.5rem' }}
