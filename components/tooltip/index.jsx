@@ -410,15 +410,18 @@ class Tooltip extends React.Component {
 				const hoveredElement = document.getElementsByClassName(
 					'slds-popover_tooltip'
 				);
-				hoveredElement[0].addEventListener('mouseout', () => {
-					this.setState({
-						isOpen: false,
+				if (hoveredElement) {
+					hoveredElement[0].addEventListener('mouseout', () => {
+						this.setState({
+							isOpen: false,
+						});
 					});
-				});
-				if (!hoveredElement[0].matches(':hover')) {
-					this.setState({
-						isOpen: false,
-					});
+
+					if (!hoveredElement[0].matches(':hover')) {
+						this.setState({
+							isOpen: false,
+						});
+					}
 				}
 			} catch (e) {
 				// Do nothing. It was likely caused by running out of space or being in private mode.
