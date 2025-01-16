@@ -407,17 +407,15 @@ class Tooltip extends React.Component {
 		clearTimeout(this.tooltipTimeout);
 		this.tooltipTimeout = setTimeout(() => {
 			try {
-				const hoveredElement = document.getElementsByClassName(
-					'slds-popover_tooltip'
-				);
+				const hoveredElement = document.querySelector('.slds-popover_tooltip');
 				if (hoveredElement) {
-					hoveredElement[0].addEventListener('mouseout', () => {
+					hoveredElement.addEventListener('mouseout', () => {
 						this.setState({
 							isOpen: false,
 						});
 					});
 
-					if (!hoveredElement[0].matches(':hover')) {
+					if (!hoveredElement.matches(':hover')) {
 						this.setState({
 							isOpen: false,
 						});
