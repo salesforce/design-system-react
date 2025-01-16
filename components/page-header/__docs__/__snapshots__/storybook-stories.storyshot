@@ -1648,6 +1648,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
             </div>
             <div
               className="slds-tooltip-trigger"
+              onMouseLeave={[Function]}
               style={
                 Object {
                   "display": "inline",
@@ -1657,10 +1658,8 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
             >
               <p
                 className="slds-truncate"
-                onBlur={[Function]}
                 onFocus={[Function]}
                 onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
                 tabIndex="0"
               >
                 here is a super long description that will truncate and the rest of it will show in the tooltip.

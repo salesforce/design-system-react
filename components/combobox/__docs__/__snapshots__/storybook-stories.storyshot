@@ -880,6 +880,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
       </label>
       <div
         className="slds-tooltip-trigger slds-form-element__icon"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -892,11 +893,9 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
           aria-disabled={true}
           className="slds-button slds-button_icon"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           <svg
@@ -1671,6 +1670,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
               >
                 <div
                   className="slds-tooltip-trigger"
+                  onMouseLeave={[Function]}
                   style={
                     Object {
                       "display": "inline-block",
@@ -1685,11 +1685,9 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     aria-selected={false}
                     className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                     id="combobox-base-listbox-option-4"
-                    onBlur={[Function]}
                     onClick={null}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
                     role="option"
                     style={
                       Object {
@@ -1741,22 +1739,26 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     </span>
                   </span>
                   <div
-                    className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
-                    id="combobox-base-listbox-option-help-4"
-                    onKeyDown={[Function]}
-                    role="tooltip"
-                    style={
-                      Object {
-                        "outline": 0,
-                        "pointerEvents": "none",
-                        "position": "absolute",
-                      }
-                    }
+                    onMouseLeave={[Function]}
                   >
                     <div
-                      className="slds-popover__body"
+                      className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
+                      id="combobox-base-listbox-option-help-4"
+                      onKeyDown={[Function]}
+                      role="tooltip"
+                      style={
+                        Object {
+                          "outline": 0,
+                          "pointerEvents": "none",
+                          "position": "absolute",
+                        }
+                      }
                     >
-                      This account has been removed from the system.
+                      <div
+                        className="slds-popover__body"
+                      >
+                        This account has been removed from the system.
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1818,6 +1820,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
               >
                 <div
                   className="slds-tooltip-trigger"
+                  onMouseLeave={[Function]}
                   style={
                     Object {
                       "display": "inline-block",
@@ -1832,11 +1835,9 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     aria-selected={false}
                     className="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                     id="combobox-base-listbox-option-6"
-                    onBlur={[Function]}
                     onClick={null}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
                     role="option"
                     style={
                       Object {
@@ -1888,22 +1889,26 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     </span>
                   </span>
                   <div
-                    className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
-                    id="combobox-base-listbox-option-help-6"
-                    onKeyDown={[Function]}
-                    role="tooltip"
-                    style={
-                      Object {
-                        "outline": 0,
-                        "pointerEvents": "none",
-                        "position": "absolute",
-                      }
-                    }
+                    onMouseLeave={[Function]}
                   >
                     <div
-                      className="slds-popover__body"
+                      className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
+                      id="combobox-base-listbox-option-help-6"
+                      onKeyDown={[Function]}
+                      role="tooltip"
+                      style={
+                        Object {
+                          "outline": 0,
+                          "pointerEvents": "none",
+                          "position": "absolute",
+                        }
+                      }
                     >
-                      You don't have permission to access this account.
+                      <div
+                        className="slds-popover__body"
+                      >
+                        You don't have permission to access this account.
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -5360,6 +5360,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "inline-block",
@@ -5372,11 +5373,9 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
               aria-describedby="dropdown-with-tooltips-item-2-tooltip"
               data-index={2}
               href="#"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               role="menuitem"
               tabIndex="-1"
             >
@@ -5388,22 +5387,26 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
               </span>
             </a>
             <div
-              className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
-              id="dropdown-with-tooltips-item-2-tooltip"
-              onKeyDown={[Function]}
-              role="tooltip"
-              style={
-                Object {
-                  "outline": 0,
-                  "pointerEvents": "none",
-                  "position": "absolute",
-                }
-              }
+              onMouseLeave={[Function]}
             >
               <div
-                className="slds-popover__body"
+                className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
+                id="dropdown-with-tooltips-item-2-tooltip"
+                onKeyDown={[Function]}
+                role="tooltip"
+                style={
+                  Object {
+                    "outline": 0,
+                    "pointerEvents": "none",
+                    "position": "absolute",
+                  }
+                }
               >
-                Just a friendly tooltip
+                <div
+                  className="slds-popover__body"
+                >
+                  Just a friendly tooltip
+                </div>
               </div>
             </div>
           </div>
@@ -5444,6 +5447,7 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "inline-block",
@@ -5456,11 +5460,9 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
               aria-describedby="dropdown-with-tooltips-item-5-tooltip"
               data-index={5}
               href="#"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               role="menuitem"
               tabIndex="-1"
             >
@@ -5472,22 +5474,26 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
               </span>
             </a>
             <div
-              className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
-              id="dropdown-with-tooltips-item-5-tooltip"
-              onKeyDown={[Function]}
-              role="tooltip"
-              style={
-                Object {
-                  "outline": 0,
-                  "pointerEvents": "none",
-                  "position": "absolute",
-                }
-              }
+              onMouseLeave={[Function]}
             >
               <div
-                className="slds-popover__body"
+                className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
+                id="dropdown-with-tooltips-item-5-tooltip"
+                onKeyDown={[Function]}
+                role="tooltip"
+                style={
+                  Object {
+                    "outline": 0,
+                    "pointerEvents": "none",
+                    "position": "absolute",
+                  }
+                }
               >
-                Another friendly tooltip
+                <div
+                  className="slds-popover__body"
+                >
+                  Another friendly tooltip
+                </div>
               </div>
             </div>
           </div>
