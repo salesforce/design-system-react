@@ -410,7 +410,6 @@ class Tooltip extends React.Component {
 				const hoveredElement = document.getElementsByClassName(
 					'slds-popover_tooltip'
 				);
-				console.log(hoveredElement);
 				hoveredElement[0].addEventListener('mouseout', () => {
 					this.setState({
 						isOpen: false,
