@@ -292,10 +292,8 @@ class Tooltip extends React.Component {
 			React.cloneElement(child, {
 				key: i, // eslint-disable-line react/no-array-index-key
 				'aria-describedby': this.getIsOpen() ? this.getId() : undefined,
-				onBlur: this.handleMouseLeave,
 				onFocus: this.handleMouseEnter,
 				onMouseEnter: this.handleMouseEnter,
-				onMouseLeave: this.handleMouseLeave,
 			})
 		);
 	}
@@ -318,30 +316,32 @@ class Tooltip extends React.Component {
 		const deprecatedWay = this.props.variant === 'error';
 
 		return isOpen ? (
-			<Dialog
-				closeOnTabKey
-				hasNubbin
-				contentsClassName={classNames(
-					'slds-popover',
-					'slds-popover_tooltip',
-					{
-						'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
-					},
-					this.props.dialogClassName
-				)}
-				align={align}
-				context={this.context}
-				hasStaticAlignment={this.props.hasStaticAlignment}
-				onClose={this.handleCancel}
-				onRequestTargetElement={() => this.getTooltipTarget()}
-				position={this.props.position}
-				variant="tooltip"
-				containerProps={{
-					id: this.getId(),
-				}}
-			>
-				{this.getTooltipContent()}
-			</Dialog>
+			<div onMouseLeave={this.handleMouseLeave}>
+				<Dialog
+					closeOnTabKey
+					hasNubbin
+					contentsClassName={classNames(
+						'slds-popover',
+						'slds-popover_tooltip',
+						{
+							'slds-theme_error': this.props.theme === 'error' || deprecatedWay,
+						},
+						this.props.dialogClassName
+					)}
+					align={align}
+					context={this.context}
+					hasStaticAlignment={this.props.hasStaticAlignment}
+					onClose={this.handleCancel}
+					onRequestTargetElement={() => this.getTooltipTarget()}
+					position={this.props.position}
+					variant="tooltip"
+					containerProps={{
+						id: this.getId(),
+					}}
+				>
+					{this.getTooltipContent()}
+				</Dialog>
+			</div>
 		) : (
 			<span />
 		);
@@ -405,12 +405,24 @@ class Tooltip extends React.Component {
 
 	handleMouseLeave = () => {
 		clearTimeout(this.tooltipTimeout);
-
 		this.tooltipTimeout = setTimeout(() => {
-			if (!this.isUnmounting) {
-				this.setState({
-					isOpen: false,
+			try {
+				const hoveredElement = document.getElementsByClassName(
+					'slds-popover_tooltip'
+				);
+				console.log(hoveredElement);
+				hoveredElement[0].addEventListener('mouseout', () => {
+					this.setState({
+						isOpen: false,
+					});
 				});
+				if (!hoveredElement[0].matches(':hover')) {
+					this.setState({
+						isOpen: false,
+					});
+				}
+			} catch (e) {
+				// Do nothing. It was likely caused by running out of space or being in private mode.
 			}
 		}, this.props.hoverCloseDelay);
 	};
@@ -442,6 +454,7 @@ class Tooltip extends React.Component {
 				)}
 				style={containerStyles}
 				ref={this.saveTriggerRef}
+				onMouseLeave={this.handleMouseLeave}
 			>
 				{this.getAnchoredNubbinStyles()}
 				{this.getContent()}
