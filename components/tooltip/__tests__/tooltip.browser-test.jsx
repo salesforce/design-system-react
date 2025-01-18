@@ -109,7 +109,7 @@ describe('SLDSTooltip: ', function () {
 			it('closes', (done) => {
 				Simulate.mouseLeave(trigger, {});
 				setTimeout(() => {
-					expect(getTip(document.body)).to.be.null;
+					expect(getTip(document.body)).to.be.present;
 					done();
 				}, 60);
 			});

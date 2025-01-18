@@ -1608,6 +1608,7 @@ exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
       </label>
       <div
         className="slds-tooltip-trigger slds-form-element__icon"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1620,11 +1621,9 @@ exports[`DOM snapshots SLDSInput Field Level Help 1`] = `
           aria-disabled={true}
           className="slds-button slds-button_icon"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           <svg
@@ -1679,6 +1678,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
       </label>
       <div
         className="slds-tooltip-trigger slds-form-element__icon"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1692,11 +1692,9 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
           aria-disabled={true}
           className="slds-button slds-button_icon"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           <svg
@@ -1714,22 +1712,26 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
           </span>
         </button>
         <div
-          className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
-          id="field-level-help-tooltip"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
+            id="field-level-help-tooltip"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Some helpful information
+            <div
+              className="slds-popover__body"
+            >
+              Some helpful information
+            </div>
           </div>
         </div>
       </div>

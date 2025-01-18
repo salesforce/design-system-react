@@ -24,6 +24,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -34,11 +35,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
             <button
               aria-current="step"
               className="slds-button slds-progress__marker"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <span
@@ -55,6 +54,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -65,11 +65,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-progress__marker"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <span
@@ -88,6 +86,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -98,10 +97,8 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
             <a
               aria-disabled={true}
               className="slds-button slds-progress__marker slds-is-disabled"
-              onBlur={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               role="button"
               style={
                 Object {
@@ -128,6 +125,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -138,10 +136,8 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
             <a
               aria-disabled={true}
               className="slds-button slds-progress__marker slds-is-disabled"
-              onBlur={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               role="button"
               style={
                 Object {
@@ -166,6 +162,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -176,10 +173,8 @@ exports[`DOM snapshots SLDSProgressIndicator Base 1`] = `
             <a
               aria-disabled={true}
               className="slds-button slds-progress__marker slds-is-disabled"
-              onBlur={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               role="button"
               style={
                 Object {
@@ -250,6 +245,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "",
@@ -260,11 +256,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <svg
@@ -289,6 +283,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "",
@@ -299,11 +294,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <svg
@@ -330,6 +323,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -340,11 +334,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
             <button
               aria-current="step"
               className="slds-button slds-progress__marker"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <span
@@ -365,6 +357,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -375,10 +368,8 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
             <a
               aria-disabled={true}
               className="slds-button slds-progress__marker slds-is-disabled"
-              onBlur={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               role="button"
               style={
                 Object {
@@ -403,6 +394,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -413,10 +405,8 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Disabled Steps 1`] = `
             <a
               aria-disabled={true}
               className="slds-button slds-progress__marker slds-is-disabled"
-              onBlur={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               role="button"
               style={
                 Object {
@@ -487,6 +477,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "",
@@ -497,11 +488,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <svg
@@ -528,6 +517,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "",
@@ -538,11 +528,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <svg
@@ -569,6 +557,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "",
@@ -579,11 +568,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <svg
@@ -610,6 +597,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "",
@@ -620,11 +608,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <svg
@@ -651,6 +637,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -661,11 +648,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             <button
               aria-current="step"
               className="slds-button slds-progress__marker"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <span
@@ -684,6 +669,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -694,11 +680,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-progress__marker"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <span
@@ -717,6 +701,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -727,11 +712,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-progress__marker"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <span
@@ -750,6 +733,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -760,11 +744,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-progress__marker"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <span
@@ -783,6 +765,7 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -793,11 +776,9 @@ exports[`DOM snapshots SLDSProgressIndicator Base With Many Steps 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-progress__marker"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <span
@@ -862,6 +843,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "",
@@ -872,11 +854,9 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <svg
@@ -901,6 +881,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "",
@@ -911,11 +892,9 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <svg
@@ -942,6 +921,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "",
@@ -952,11 +932,9 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <svg
@@ -985,6 +963,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -995,11 +974,9 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
             <button
               aria-current="step"
               className="slds-button slds-progress__marker"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <span
@@ -1018,6 +995,7 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -1028,11 +1006,9 @@ exports[`DOM snapshots SLDSProgressIndicator Completed Progress 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-progress__marker"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <span
@@ -1392,6 +1368,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "",
@@ -1402,11 +1379,9 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
             <button
               aria-current={null}
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <svg
@@ -1431,6 +1406,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "",
@@ -1441,11 +1417,9 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
             <button
               aria-current="step"
               className="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon"
-              onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               type="button"
             >
               <svg
@@ -1472,6 +1446,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -1482,10 +1457,8 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
             <a
               aria-disabled={true}
               className="slds-button slds-progress__marker slds-is-disabled"
-              onBlur={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               role="button"
               style={
                 Object {
@@ -1512,6 +1485,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -1522,10 +1496,8 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
             <a
               aria-disabled={true}
               className="slds-button slds-progress__marker slds-is-disabled"
-              onBlur={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               role="button"
               style={
                 Object {
@@ -1550,6 +1522,7 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
         >
           <div
             className="slds-tooltip-trigger"
+            onMouseLeave={[Function]}
             style={
               Object {
                 "display": "flex",
@@ -1560,10 +1533,8 @@ exports[`DOM snapshots SLDSProgressIndicator Step Error 1`] = `
             <a
               aria-disabled={true}
               className="slds-button slds-progress__marker slds-is-disabled"
-              onBlur={[Function]}
               onFocus={[Function]}
               onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
               role="button"
               style={
                 Object {

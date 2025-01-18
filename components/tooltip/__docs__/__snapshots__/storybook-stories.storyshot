@@ -21,6 +21,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -32,32 +33,34 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           aria-describedby="myPopoverId"
           className="slds-button slds-button_neutral"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Trigger Tooltip
         </button>
         <div
-          className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -72,6 +75,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -83,32 +87,34 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           aria-describedby="myPopoverId"
           className="slds-button slds-button_neutral"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Trigger Tooltip
         </button>
         <div
-          className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -123,6 +129,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -134,32 +141,34 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           aria-describedby="myPopoverId"
           className="slds-button slds-button_neutral"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Trigger Tooltip
         </button>
         <div
-          className="absolute-positioned slds-nubbin_bottom-right slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_bottom-right slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -174,6 +183,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -185,32 +195,34 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           aria-describedby="myPopoverId"
           className="slds-button slds-button_neutral"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Trigger Tooltip
         </button>
         <div
-          className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -225,6 +237,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -236,32 +249,34 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           aria-describedby="myPopoverId"
           className="slds-button slds-button_neutral"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Trigger Tooltip
         </button>
         <div
-          className="absolute-positioned slds-nubbin_left-top slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_left-top slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -276,6 +291,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -287,32 +303,34 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           aria-describedby="myPopoverId"
           className="slds-button slds-button_neutral"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Trigger Tooltip
         </button>
         <div
-          className="absolute-positioned slds-nubbin_left-bottom slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_left-bottom slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -327,6 +345,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -338,32 +357,34 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           aria-describedby="myPopoverId"
           className="slds-button slds-button_neutral"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Trigger Tooltip
         </button>
         <div
-          className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -378,6 +399,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -389,32 +411,34 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           aria-describedby="myPopoverId"
           className="slds-button slds-button_neutral"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Trigger Tooltip
         </button>
         <div
-          className="absolute-positioned slds-nubbin_top-left slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_top-left slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -429,6 +453,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -440,32 +465,34 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           aria-describedby="myPopoverId"
           className="slds-button slds-button_neutral"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Trigger Tooltip
         </button>
         <div
-          className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -480,6 +507,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -491,32 +519,34 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           aria-describedby="myPopoverId"
           className="slds-button slds-button_neutral"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Trigger Tooltip
         </button>
         <div
-          className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -531,6 +561,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -542,32 +573,34 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           aria-describedby="myPopoverId"
           className="slds-button slds-button_neutral"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Trigger Tooltip
         </button>
         <div
-          className="absolute-positioned slds-nubbin_right-top slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_right-top slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -582,6 +615,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -593,32 +627,34 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           aria-describedby="myPopoverId"
           className="slds-button slds-button_neutral"
           disabled={false}
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Trigger Tooltip
         </button>
         <div
-          className="absolute-positioned slds-nubbin_right-bottom slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_right-bottom slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -648,6 +684,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -673,24 +710,28 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           </span>
         </span>
         <div
-          className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            <span>
-              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
-            </span>
+            <div
+              className="slds-popover__body"
+            >
+              <span>
+                Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -705,6 +746,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -730,24 +772,28 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           </span>
         </span>
         <div
-          className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            <span>
-              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
-            </span>
+            <div
+              className="slds-popover__body"
+            >
+              <span>
+                Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -762,6 +808,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -787,24 +834,28 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           </span>
         </span>
         <div
-          className="absolute-positioned slds-nubbin_bottom-right slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_bottom-right slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            <span>
-              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
-            </span>
+            <div
+              className="slds-popover__body"
+            >
+              <span>
+                Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -819,6 +870,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -844,24 +896,28 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           </span>
         </span>
         <div
-          className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            <span>
-              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
-            </span>
+            <div
+              className="slds-popover__body"
+            >
+              <span>
+                Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -876,6 +932,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -901,24 +958,28 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           </span>
         </span>
         <div
-          className="absolute-positioned slds-nubbin_left-top slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_left-top slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            <span>
-              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
-            </span>
+            <div
+              className="slds-popover__body"
+            >
+              <span>
+                Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -933,6 +994,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -958,24 +1020,28 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           </span>
         </span>
         <div
-          className="absolute-positioned slds-nubbin_left-bottom slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_left-bottom slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            <span>
-              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
-            </span>
+            <div
+              className="slds-popover__body"
+            >
+              <span>
+                Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -990,6 +1056,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1015,24 +1082,28 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           </span>
         </span>
         <div
-          className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            <span>
-              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
-            </span>
+            <div
+              className="slds-popover__body"
+            >
+              <span>
+                Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -1047,6 +1118,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1072,24 +1144,28 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           </span>
         </span>
         <div
-          className="absolute-positioned slds-nubbin_top-left slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_top-left slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            <span>
-              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
-            </span>
+            <div
+              className="slds-popover__body"
+            >
+              <span>
+                Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -1104,6 +1180,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1129,24 +1206,28 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           </span>
         </span>
         <div
-          className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            <span>
-              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
-            </span>
+            <div
+              className="slds-popover__body"
+            >
+              <span>
+                Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -1161,6 +1242,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1186,24 +1268,28 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           </span>
         </span>
         <div
-          className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            <span>
-              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
-            </span>
+            <div
+              className="slds-popover__body"
+            >
+              <span>
+                Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -1218,6 +1304,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1243,24 +1330,28 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           </span>
         </span>
         <div
-          className="absolute-positioned slds-nubbin_right-top slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_right-top slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            <span>
-              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
-            </span>
+            <div
+              className="slds-popover__body"
+            >
+              <span>
+                Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -1275,6 +1366,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1300,24 +1392,28 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           </span>
         </span>
         <div
-          className="absolute-positioned slds-nubbin_right-bottom slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_right-bottom slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            <span>
-              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
-            </span>
+            <div
+              className="slds-popover__body"
+            >
+              <span>
+                Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -1347,6 +1443,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1356,31 +1453,33 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       >
         <span
           aria-describedby="myPopoverId"
-          onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           tabIndex="0"
         >
           Trigger Tooltip
         </span>
         <div
-          className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -1395,6 +1494,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1404,31 +1504,33 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       >
         <span
           aria-describedby="myPopoverId"
-          onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           tabIndex="0"
         >
           Trigger Tooltip
         </span>
         <div
-          className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -1443,6 +1545,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1452,31 +1555,33 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       >
         <span
           aria-describedby="myPopoverId"
-          onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           tabIndex="0"
         >
           Trigger Tooltip
         </span>
         <div
-          className="absolute-positioned slds-nubbin_bottom-right slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_bottom-right slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -1491,6 +1596,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1500,31 +1606,33 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       >
         <span
           aria-describedby="myPopoverId"
-          onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           tabIndex="0"
         >
           Trigger Tooltip
         </span>
         <div
-          className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -1539,6 +1647,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1548,31 +1657,33 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       >
         <span
           aria-describedby="myPopoverId"
-          onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           tabIndex="0"
         >
           Trigger Tooltip
         </span>
         <div
-          className="absolute-positioned slds-nubbin_left-top slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_left-top slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -1587,6 +1698,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1596,31 +1708,33 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       >
         <span
           aria-describedby="myPopoverId"
-          onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           tabIndex="0"
         >
           Trigger Tooltip
         </span>
         <div
-          className="absolute-positioned slds-nubbin_left-bottom slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_left-bottom slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -1635,6 +1749,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1644,31 +1759,33 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       >
         <span
           aria-describedby="myPopoverId"
-          onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           tabIndex="0"
         >
           Trigger Tooltip
         </span>
         <div
-          className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -1683,6 +1800,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1692,31 +1810,33 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       >
         <span
           aria-describedby="myPopoverId"
-          onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           tabIndex="0"
         >
           Trigger Tooltip
         </span>
         <div
-          className="absolute-positioned slds-nubbin_top-left slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_top-left slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -1731,6 +1851,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1740,31 +1861,33 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       >
         <span
           aria-describedby="myPopoverId"
-          onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           tabIndex="0"
         >
           Trigger Tooltip
         </span>
         <div
-          className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -1779,6 +1902,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1788,31 +1912,33 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       >
         <span
           aria-describedby="myPopoverId"
-          onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           tabIndex="0"
         >
           Trigger Tooltip
         </span>
         <div
-          className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -1827,6 +1953,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1836,31 +1963,33 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       >
         <span
           aria-describedby="myPopoverId"
-          onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           tabIndex="0"
         >
           Trigger Tooltip
         </span>
         <div
-          className="absolute-positioned slds-nubbin_right-top slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_right-top slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -1875,6 +2004,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
     >
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -1884,31 +2014,33 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
       >
         <span
           aria-describedby="myPopoverId"
-          onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           tabIndex="0"
         >
           Trigger Tooltip
         </span>
         <div
-          className="absolute-positioned slds-nubbin_right-bottom slds-popover slds-popover_tooltip"
-          id="myPopoverId"
-          onKeyDown={[Function]}
-          role="tooltip"
-          style={
-            Object {
-              "outline": 0,
-              "pointerEvents": "none",
-              "position": "absolute",
-            }
-          }
+          onMouseLeave={[Function]}
         >
           <div
-            className="slds-popover__body"
+            className="absolute-positioned slds-nubbin_right-bottom slds-popover slds-popover_tooltip"
+            id="myPopoverId"
+            onKeyDown={[Function]}
+            role="tooltip"
+            style={
+              Object {
+                "outline": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+              }
+            }
           >
-            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            <div
+              className="slds-popover__body"
+            >
+              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+            </div>
           </div>
         </div>
       </div>
@@ -1929,6 +2061,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Base 1`] = `
 >
   <div
     className="slds-tooltip-trigger"
+    onMouseLeave={[Function]}
     style={
       Object {
         "display": "inline-block",
@@ -1940,11 +2073,9 @@ exports[`DOM snapshots SLDSPopoverTooltip Base 1`] = `
       aria-disabled={true}
       className="slds-button slds-button_icon"
       disabled={false}
-      onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       type="button"
     >
       <svg
@@ -1978,6 +2109,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button 1`] = `
 >
   <div
     className="slds-tooltip-trigger"
+    onMouseLeave={[Function]}
     style={
       Object {
         "display": "inline-block",
@@ -1989,11 +2121,9 @@ exports[`DOM snapshots SLDSPopoverTooltip Button 1`] = `
       className="slds-button slds-button_neutral"
       disabled={false}
       id="button"
-      onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       type="button"
     >
       Hover or focus to Open
@@ -2020,6 +2150,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
     <li>
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -2031,11 +2162,9 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
           className="slds-button slds-button_neutral"
           disabled={false}
           id="refresh-button"
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Refresh
@@ -2046,6 +2175,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
     <li>
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -2057,11 +2187,9 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
           className="slds-button slds-button_neutral"
           disabled={false}
           id="edit-button"
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
           type="button"
         >
           Edit
@@ -2072,6 +2200,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
     <li>
       <div
         className="slds-tooltip-trigger"
+        onMouseLeave={[Function]}
         style={
           Object {
             "display": "inline-block",
@@ -2082,7 +2211,6 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
         <div
           className="slds-dropdown-trigger slds-dropdown-trigger_click"
           id="options"
-          onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -2132,6 +2260,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Learn More 1`] = `
 >
   <div
     className="slds-tooltip-trigger"
+    onMouseLeave={[Function]}
     style={
       Object {
         "display": "inline-block",
@@ -2141,11 +2270,9 @@ exports[`DOM snapshots SLDSPopoverTooltip Learn More 1`] = `
   >
     <a
       href="#"
-      onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
     >
       <span>
         <svg
@@ -2180,6 +2307,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Open 1`] = `
 >
   <div
     className="slds-tooltip-trigger"
+    onMouseLeave={[Function]}
     style={
       Object {
         "display": "inline-block",
@@ -2191,32 +2319,34 @@ exports[`DOM snapshots SLDSPopoverTooltip Open 1`] = `
       aria-describedby="myPopoverId"
       className="slds-button slds-button_neutral"
       disabled={false}
-      onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       type="button"
     >
       Trigger Tooltip
     </button>
     <div
-      className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip dialog-classname"
-      id="myPopoverId"
-      onKeyDown={[Function]}
-      role="tooltip"
-      style={
-        Object {
-          "outline": 0,
-          "pointerEvents": "none",
-          "position": "absolute",
-        }
-      }
+      onMouseLeave={[Function]}
     >
       <div
-        className="slds-popover__body"
+        className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip dialog-classname"
+        id="myPopoverId"
+        onKeyDown={[Function]}
+        role="tooltip"
+        style={
+          Object {
+            "outline": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+          }
+        }
       >
-        Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+        <div
+          className="slds-popover__body"
+        >
+          Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+        </div>
       </div>
     </div>
   </div>
@@ -2236,6 +2366,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
   <div>
     <div
       className="slds-tooltip-trigger"
+      onMouseLeave={[Function]}
       style={
         Object {
           "display": "inline-block",
@@ -2279,11 +2410,9 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         aria-disabled={true}
         className="slds-button slds-button_icon"
         disabled={false}
-        onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
         onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         type="button"
       >
         <svg
@@ -2301,22 +2430,26 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         </span>
       </button>
       <div
-        className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
-        id="anchored-nubbin-top"
-        onKeyDown={[Function]}
-        role="tooltip"
-        style={
-          Object {
-            "outline": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-          }
-        }
+        onMouseLeave={[Function]}
       >
         <div
-          className="slds-popover__body"
+          className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
+          id="anchored-nubbin-top"
+          onKeyDown={[Function]}
+          role="tooltip"
+          style={
+            Object {
+              "outline": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+            }
+          }
         >
-          Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+          <div
+            className="slds-popover__body"
+          >
+            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+          </div>
         </div>
       </div>
     </div>
@@ -2330,6 +2463,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
   >
     <div
       className="slds-tooltip-trigger"
+      onMouseLeave={[Function]}
       style={
         Object {
           "display": "inline-block",
@@ -2373,11 +2507,9 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         aria-disabled={true}
         className="slds-button slds-button_icon"
         disabled={false}
-        onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
         onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         type="button"
       >
         <svg
@@ -2395,22 +2527,26 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         </span>
       </button>
       <div
-        className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
-        id="anchored-nubbin-right"
-        onKeyDown={[Function]}
-        role="tooltip"
-        style={
-          Object {
-            "outline": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-          }
-        }
+        onMouseLeave={[Function]}
       >
         <div
-          className="slds-popover__body"
+          className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
+          id="anchored-nubbin-right"
+          onKeyDown={[Function]}
+          role="tooltip"
+          style={
+            Object {
+              "outline": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+            }
+          }
         >
-          Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+          <div
+            className="slds-popover__body"
+          >
+            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+          </div>
         </div>
       </div>
     </div>
@@ -2424,6 +2560,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
   >
     <div
       className="slds-tooltip-trigger"
+      onMouseLeave={[Function]}
       style={
         Object {
           "display": "inline-block",
@@ -2467,11 +2604,9 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         aria-disabled={true}
         className="slds-button slds-button_icon"
         disabled={false}
-        onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
         onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         type="button"
       >
         <svg
@@ -2489,22 +2624,26 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         </span>
       </button>
       <div
-        className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
-        id="anchored-nubbin-left"
-        onKeyDown={[Function]}
-        role="tooltip"
-        style={
-          Object {
-            "outline": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-          }
-        }
+        onMouseLeave={[Function]}
       >
         <div
-          className="slds-popover__body"
+          className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
+          id="anchored-nubbin-left"
+          onKeyDown={[Function]}
+          role="tooltip"
+          style={
+            Object {
+              "outline": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+            }
+          }
         >
-          Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+          <div
+            className="slds-popover__body"
+          >
+            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+          </div>
         </div>
       </div>
     </div>
@@ -2518,6 +2657,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
   >
     <div
       className="slds-tooltip-trigger"
+      onMouseLeave={[Function]}
       style={
         Object {
           "display": "inline-block",
@@ -2561,11 +2701,9 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         aria-disabled={true}
         className="slds-button slds-button_icon"
         disabled={false}
-        onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
         onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
         type="button"
       >
         <svg
@@ -2583,22 +2721,26 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         </span>
       </button>
       <div
-        className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
-        id="anchored-nubbin-bottom"
-        onKeyDown={[Function]}
-        role="tooltip"
-        style={
-          Object {
-            "outline": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-          }
-        }
+        onMouseLeave={[Function]}
       >
         <div
-          className="slds-popover__body"
+          className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
+          id="anchored-nubbin-bottom"
+          onKeyDown={[Function]}
+          role="tooltip"
+          style={
+            Object {
+              "outline": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+            }
+          }
         >
-          Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+          <div
+            className="slds-popover__body"
+          >
+            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+          </div>
         </div>
       </div>
     </div>
@@ -2618,6 +2760,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Delay 1`] = `
 >
   <div
     className="slds-tooltip-trigger"
+    onMouseLeave={[Function]}
     style={
       Object {
         "display": "inline-block",
@@ -2629,11 +2772,9 @@ exports[`DOM snapshots SLDSPopoverTooltip With Delay 1`] = `
       aria-disabled={true}
       className="slds-button slds-button_icon"
       disabled={false}
-      onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
       type="button"
     >
       <svg

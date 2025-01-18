@@ -404,6 +404,7 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
           <div>
             <div
               className="slds-tooltip-trigger"
+              onMouseLeave={[Function]}
               style={
                 Object {
                   "display": "inline-block",
@@ -413,10 +414,8 @@ exports[`DOM snapshots SLDSBuilderHeader After Successful Save 1`] = `
             >
               <span
                 className="slds-color__text_gray-10 slds-align-middle slds-m-right_small"
-                onBlur={[Function]}
                 onFocus={[Function]}
                 onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
                 tabIndex={0}
               >
                 Saved 5 mins ago
@@ -948,6 +947,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
               >
                 <div
                   className="slds-tooltip-trigger"
+                  onMouseLeave={[Function]}
                   style={
                     Object {
                       "display": "inline-block",
@@ -958,11 +958,9 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
                   <button
                     className="slds-button slds-button_icon-inverse slds-button_reset"
                     disabled={false}
-                    onBlur={[Function]}
                     onClick={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
                     style={
                       Object {
                         "verticalAlign": "middle",
@@ -1029,6 +1027,7 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
               >
                 <div
                   className="slds-tooltip-trigger"
+                  onMouseLeave={[Function]}
                   style={
                     Object {
                       "display": "inline-block",
@@ -1039,11 +1038,9 @@ exports[`DOM snapshots SLDSBuilderHeader Base with Page Type Editable 1`] = `
                   <button
                     className="slds-button slds-button_icon-inverse slds-button_reset"
                     disabled={false}
-                    onBlur={[Function]}
                     onClick={[Function]}
                     onFocus={[Function]}
                     onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
                     style={
                       Object {
                         "verticalAlign": "middle",
@@ -2584,6 +2581,7 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
           <div>
             <div
               className="slds-tooltip-trigger"
+              onMouseLeave={[Function]}
               style={
                 Object {
                   "display": "inline-block",
@@ -2593,10 +2591,8 @@ exports[`DOM snapshots SLDSBuilderHeader Failed Save 1`] = `
             >
               <button
                 className="slds-button slds-color__text_gray-10 slds-align-middle slds-m-right_x-small"
-                onBlur={[Function]}
                 onFocus={[Function]}
                 onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
                 type="button"
               >
                 Saved 45 mins ago
