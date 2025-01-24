@@ -296,6 +296,7 @@ class Tooltip extends React.Component {
 				onFocus: this.handleMouseEnter,
 				onMouseEnter: this.handleMouseEnter,
 				onMouseLeave: this.handleMouseLeave,
+				onKeyDown: this.handleKeyDown,
 			})
 		);
 	}
@@ -349,7 +350,10 @@ class Tooltip extends React.Component {
 
 	getTooltipContent() {
 		return (
-			<div className="slds-popover__body">
+			<div
+				className="slds-popover__body"
+				aria-label={`'tooltip content: '${this.props.content}`}
+			>
 				{this.props.content}
 				{this.props.variant === 'learnMore' && this.props.onClickTrigger ? (
 					<div className="slds-m-top_x-small" aria-hidden="true">
@@ -408,6 +412,18 @@ class Tooltip extends React.Component {
 
 		this.tooltipTimeout = setTimeout(() => {
 			if (!this.isUnmounting) {
+				this.setState({
+					isOpen: false,
+				});
+			}
+		}, this.props.hoverCloseDelay);
+	};
+
+	handleKeyDown = (e) => {
+		clearTimeout(this.tooltipTimeout);
+
+		this.tooltipTimeout = setTimeout(() => {
+			if (!this.isUnmounting && e.key === 'Escape') {
 				this.setState({
 					isOpen: false,
 				});
