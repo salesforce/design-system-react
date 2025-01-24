@@ -35,6 +35,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -55,6 +56,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -86,6 +88,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -106,6 +109,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -137,6 +141,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -157,6 +162,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -188,6 +194,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -208,6 +215,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -239,6 +247,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -259,6 +268,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -290,6 +300,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -310,6 +321,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -341,6 +353,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -361,6 +374,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -392,6 +406,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -412,6 +427,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -443,6 +459,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -463,6 +480,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -494,6 +512,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -514,6 +533,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -545,6 +565,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -565,6 +586,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -596,6 +618,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -616,6 +639,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -686,6 +710,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: '[object Object]"
             className="slds-popover__body"
           >
             <span>
@@ -743,6 +768,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: '[object Object]"
             className="slds-popover__body"
           >
             <span>
@@ -800,6 +826,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: '[object Object]"
             className="slds-popover__body"
           >
             <span>
@@ -857,6 +884,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: '[object Object]"
             className="slds-popover__body"
           >
             <span>
@@ -914,6 +942,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: '[object Object]"
             className="slds-popover__body"
           >
             <span>
@@ -971,6 +1000,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: '[object Object]"
             className="slds-popover__body"
           >
             <span>
@@ -1028,6 +1058,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: '[object Object]"
             className="slds-popover__body"
           >
             <span>
@@ -1085,6 +1116,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: '[object Object]"
             className="slds-popover__body"
           >
             <span>
@@ -1142,6 +1174,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: '[object Object]"
             className="slds-popover__body"
           >
             <span>
@@ -1199,6 +1232,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: '[object Object]"
             className="slds-popover__body"
           >
             <span>
@@ -1256,6 +1290,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: '[object Object]"
             className="slds-popover__body"
           >
             <span>
@@ -1313,6 +1348,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: '[object Object]"
             className="slds-popover__body"
           >
             <span>
@@ -1358,6 +1394,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           aria-describedby="myPopoverId"
           onBlur={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           tabIndex="0"
@@ -1378,6 +1415,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -1406,6 +1444,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           aria-describedby="myPopoverId"
           onBlur={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           tabIndex="0"
@@ -1426,6 +1465,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -1454,6 +1494,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           aria-describedby="myPopoverId"
           onBlur={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           tabIndex="0"
@@ -1474,6 +1515,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -1502,6 +1544,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           aria-describedby="myPopoverId"
           onBlur={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           tabIndex="0"
@@ -1522,6 +1565,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -1550,6 +1594,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           aria-describedby="myPopoverId"
           onBlur={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           tabIndex="0"
@@ -1570,6 +1615,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -1598,6 +1644,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           aria-describedby="myPopoverId"
           onBlur={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           tabIndex="0"
@@ -1618,6 +1665,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -1646,6 +1694,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           aria-describedby="myPopoverId"
           onBlur={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           tabIndex="0"
@@ -1666,6 +1715,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -1694,6 +1744,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           aria-describedby="myPopoverId"
           onBlur={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           tabIndex="0"
@@ -1714,6 +1765,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -1742,6 +1794,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           aria-describedby="myPopoverId"
           onBlur={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           tabIndex="0"
@@ -1762,6 +1815,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -1790,6 +1844,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           aria-describedby="myPopoverId"
           onBlur={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           tabIndex="0"
@@ -1810,6 +1865,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -1838,6 +1894,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           aria-describedby="myPopoverId"
           onBlur={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           tabIndex="0"
@@ -1858,6 +1915,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -1886,6 +1944,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           aria-describedby="myPopoverId"
           onBlur={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           tabIndex="0"
@@ -1906,6 +1965,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           }
         >
           <div
+            aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
             className="slds-popover__body"
           >
             Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -1943,6 +2003,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Base 1`] = `
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       type="button"
@@ -1992,6 +2053,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button 1`] = `
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       type="button"
@@ -2034,6 +2096,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -2060,6 +2123,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Button Group 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -2144,6 +2208,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Learn More 1`] = `
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
@@ -2194,6 +2259,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Open 1`] = `
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       type="button"
@@ -2214,6 +2280,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Open 1`] = `
       }
     >
       <div
+        aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
         className="slds-popover__body"
       >
         Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -2282,6 +2349,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         type="button"
@@ -2314,6 +2382,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         }
       >
         <div
+          aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
           className="slds-popover__body"
         >
           Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -2376,6 +2445,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         type="button"
@@ -2408,6 +2478,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         }
       >
         <div
+          aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
           className="slds-popover__body"
         >
           Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -2470,6 +2541,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         type="button"
@@ -2502,6 +2574,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         }
       >
         <div
+          aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
           className="slds-popover__body"
         >
           Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -2564,6 +2637,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         type="button"
@@ -2596,6 +2670,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         }
       >
         <div
+          aria-label="'tooltip content: 'Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi."
           className="slds-popover__body"
         >
           Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
@@ -2632,6 +2707,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Delay 1`] = `
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
+      onKeyDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       type="button"

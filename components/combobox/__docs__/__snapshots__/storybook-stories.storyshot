@@ -895,6 +895,7 @@ exports[`DOM snapshots SLDSCombobox Base Inline Help 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
           type="button"
@@ -1688,6 +1689,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     onBlur={[Function]}
                     onClick={null}
                     onFocus={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                     role="option"
@@ -1754,6 +1756,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     }
                   >
                     <div
+                      aria-label="'tooltip content: 'This account has been removed from the system."
                       className="slds-popover__body"
                     >
                       This account has been removed from the system.
@@ -1835,6 +1838,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     onBlur={[Function]}
                     onClick={null}
                     onFocus={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                     role="option"
@@ -1901,6 +1905,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     }
                   >
                     <div
+                      aria-label="'tooltip content: 'You don't have permission to access this account."
                       className="slds-popover__body"
                     >
                       You don't have permission to access this account.

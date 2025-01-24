@@ -1659,6 +1659,7 @@ exports[`DOM snapshots SLDSPageHeader Record Home (truncates) 1`] = `
                 className="slds-truncate"
                 onBlur={[Function]}
                 onFocus={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
                 tabIndex="0"
