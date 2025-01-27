@@ -1729,7 +1729,6 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
           }
         >
           <div
-            aria-label="'tooltip content: 'Some helpful information"
             className="slds-popover__body"
           >
             Some helpful information

@@ -1756,7 +1756,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     }
                   >
                     <div
-                      aria-label="'tooltip content: 'This account has been removed from the system."
                       className="slds-popover__body"
                     >
                       This account has been removed from the system.
@@ -1905,7 +1904,6 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     }
                   >
                     <div
-                      aria-label="'tooltip content: 'You don't have permission to access this account."
                       className="slds-popover__body"
                     >
                       You don't have permission to access this account.

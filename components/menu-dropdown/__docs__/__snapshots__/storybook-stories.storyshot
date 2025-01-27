@@ -5402,7 +5402,6 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
               }
             >
               <div
-                aria-label="'tooltip content: 'Just a friendly tooltip"
                 className="slds-popover__body"
               >
                 Just a friendly tooltip
@@ -5488,7 +5487,6 @@ exports[`DOM snapshots SLDSMenuDropdown With tooltips (open) 1`] = `
               }
             >
               <div
-                aria-label="'tooltip content: 'Another friendly tooltip"
                 className="slds-popover__body"
               >
                 Another friendly tooltip

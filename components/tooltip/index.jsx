@@ -350,10 +350,7 @@ class Tooltip extends React.Component {
 
 	getTooltipContent() {
 		return (
-			<div
-				className="slds-popover__body"
-				aria-label={`'tooltip content: '${this.props.content}`}
-			>
+			<div className="slds-popover__body">
 				{this.props.content}
 				{this.props.variant === 'learnMore' && this.props.onClickTrigger ? (
 					<div className="slds-m-top_x-small" aria-hidden="true">
@@ -420,6 +417,8 @@ class Tooltip extends React.Component {
 	};
 
 	handleKeyDown = (e) => {
+		e.stopPropagation();
+
 		clearTimeout(this.tooltipTimeout);
 
 		this.tooltipTimeout = setTimeout(() => {
