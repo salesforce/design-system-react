@@ -335,6 +335,7 @@ class Tooltip extends React.Component {
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				onClose={this.handleCancel}
 				onRequestTargetElement={() => this.getTooltipTarget()}
+				onMouseLeave={this.handleCancel}
 				position={this.props.position}
 				variant="tooltip"
 				containerProps={{
@@ -404,11 +405,15 @@ class Tooltip extends React.Component {
 		}, this.props.hoverOpenDelay);
 	};
 
-	handleMouseLeave = () => {
+	handleMouseLeave = (e) => {
 		clearTimeout(this.tooltipTimeout);
 
+		const isHoveringTooltip =
+			e.relatedTarget?.classList.contains('slds-popover_tooltip') ||
+			e.relatedTarget?.classList.contains('slds-popover__body');
+
 		this.tooltipTimeout = setTimeout(() => {
-			if (!this.isUnmounting) {
+			if (!this.isUnmounting && !isHoveringTooltip) {
 				this.setState({
 					isOpen: false,
 				});
