@@ -46,6 +46,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -98,6 +99,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -150,6 +152,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           className="absolute-positioned slds-nubbin_bottom-right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -202,6 +205,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -254,6 +258,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           className="absolute-positioned slds-nubbin_left-top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -306,6 +311,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           className="absolute-positioned slds-nubbin_left-bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -358,6 +364,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -410,6 +417,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           className="absolute-positioned slds-nubbin_top-left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -462,6 +470,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -514,6 +523,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -566,6 +576,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           className="absolute-positioned slds-nubbin_right-top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -618,6 +629,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (Button) 1`] = `
           className="absolute-positioned slds-nubbin_right-bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -688,6 +700,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -745,6 +758,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -802,6 +816,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           className="absolute-positioned slds-nubbin_bottom-right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -859,6 +874,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -916,6 +932,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           className="absolute-positioned slds-nubbin_left-top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -973,6 +990,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           className="absolute-positioned slds-nubbin_left-bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1030,6 +1048,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1087,6 +1106,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           className="absolute-positioned slds-nubbin_top-left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1144,6 +1164,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1201,6 +1222,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1258,6 +1280,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           className="absolute-positioned slds-nubbin_right-top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1315,6 +1338,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (icon) 1`] = `
           className="absolute-positioned slds-nubbin_right-bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1381,6 +1405,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1430,6 +1455,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1479,6 +1505,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           className="absolute-positioned slds-nubbin_bottom-right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1528,6 +1555,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1577,6 +1605,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           className="absolute-positioned slds-nubbin_left-top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1626,6 +1655,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           className="absolute-positioned slds-nubbin_left-bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1675,6 +1705,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1724,6 +1755,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           className="absolute-positioned slds-nubbin_top-left slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1773,6 +1805,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1822,6 +1855,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1871,6 +1905,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           className="absolute-positioned slds-nubbin_right-top slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -1920,6 +1955,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Alignment (span) 1`] = `
           className="absolute-positioned slds-nubbin_right-bottom slds-popover slds-popover_tooltip"
           id="myPopoverId"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {
@@ -2234,6 +2270,7 @@ exports[`DOM snapshots SLDSPopoverTooltip Open 1`] = `
       className="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip dialog-classname"
       id="myPopoverId"
       onKeyDown={[Function]}
+      onMouseLeave={[Function]}
       role="tooltip"
       style={
         Object {
@@ -2335,6 +2372,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
         id="anchored-nubbin-top"
         onKeyDown={[Function]}
+        onMouseLeave={[Function]}
         role="tooltip"
         style={
           Object {
@@ -2430,6 +2468,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         className="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip"
         id="anchored-nubbin-right"
         onKeyDown={[Function]}
+        onMouseLeave={[Function]}
         role="tooltip"
         style={
           Object {
@@ -2525,6 +2564,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         className="absolute-positioned slds-nubbin_right slds-popover slds-popover_tooltip"
         id="anchored-nubbin-left"
         onKeyDown={[Function]}
+        onMouseLeave={[Function]}
         role="tooltip"
         style={
           Object {
@@ -2620,6 +2660,7 @@ exports[`DOM snapshots SLDSPopoverTooltip With Anchored Nubbin 1`] = `
         className="absolute-positioned slds-nubbin_top-right slds-popover slds-popover_tooltip"
         id="anchored-nubbin-bottom"
         onKeyDown={[Function]}
+        onMouseLeave={[Function]}
         role="tooltip"
         style={
           Object {

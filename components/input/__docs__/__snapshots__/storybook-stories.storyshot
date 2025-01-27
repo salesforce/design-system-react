@@ -1719,6 +1719,7 @@ exports[`DOM snapshots SLDSInput Field Level Help, Tooltip Open 1`] = `
           className="absolute-positioned slds-nubbin_bottom-left slds-popover slds-popover_tooltip"
           id="field-level-help-tooltip"
           onKeyDown={[Function]}
+          onMouseLeave={[Function]}
           role="tooltip"
           style={
             Object {

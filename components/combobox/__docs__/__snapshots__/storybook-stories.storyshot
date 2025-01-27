@@ -1746,6 +1746,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
                     id="combobox-base-listbox-option-help-4"
                     onKeyDown={[Function]}
+                    onMouseLeave={[Function]}
                     role="tooltip"
                     style={
                       Object {
@@ -1894,6 +1895,7 @@ exports[`DOM snapshots SLDSCombobox Base Menu Item Disabled With Tooltip Open 1`
                     className="absolute-positioned slds-nubbin_bottom slds-popover slds-popover_tooltip"
                     id="combobox-base-listbox-option-help-6"
                     onKeyDown={[Function]}
+                    onMouseLeave={[Function]}
                     role="tooltip"
                     style={
                       Object {

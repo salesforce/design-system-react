@@ -17575,7 +17575,12 @@
                 "name": "handleMouseLeave",
                 "docblock": null,
                 "modifiers": [],
-                "params": [],
+                "params": [
+                    {
+                        "name": "e",
+                        "type": null
+                    }
+                ],
                 "returns": null
             },
             {
