@@ -181,6 +181,7 @@ class Tooltip extends React.Component {
 
 	componentWillUnmount() {
 		this.isUnmounting = true;
+		clearTimeout(this.tooltipTimeout);
 	}
 
 	getAnchoredNubbinStyles() {
@@ -409,11 +410,11 @@ class Tooltip extends React.Component {
 		e.stopPropagation();
 		clearTimeout(this.tooltipTimeout);
 
-		const isHoveringTooltip =
-			e.relatedTarget?.classList.contains('slds-popover_tooltip') ||
-			e.relatedTarget?.classList.contains('slds-popover__body');
-
 		this.tooltipTimeout = setTimeout(() => {
+			const isHoveringTooltip =
+				e.relatedTarget?.classList?.contains('slds-popover_tooltip') ||
+				e.relatedTarget?.classList?.contains('slds-popover__body');
+
 			if (!this.isUnmounting && !isHoveringTooltip) {
 				this.setState({
 					isOpen: false,
@@ -424,7 +425,6 @@ class Tooltip extends React.Component {
 
 	handleKeyDown = (e) => {
 		e.stopPropagation();
-		clearTimeout(this.tooltipTimeout);
 
 		this.tooltipTimeout = setTimeout(() => {
 			if (!this.isUnmounting && e.key === 'Escape') {
