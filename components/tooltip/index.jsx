@@ -406,6 +406,7 @@ class Tooltip extends React.Component {
 	};
 
 	handleMouseLeave = (e) => {
+		e.stopPropagation();
 		clearTimeout(this.tooltipTimeout);
 
 		const isHoveringTooltip =
@@ -423,7 +424,6 @@ class Tooltip extends React.Component {
 
 	handleKeyDown = (e) => {
 		e.stopPropagation();
-
 		clearTimeout(this.tooltipTimeout);
 
 		this.tooltipTimeout = setTimeout(() => {
