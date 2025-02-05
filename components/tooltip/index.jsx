@@ -181,6 +181,7 @@ class Tooltip extends React.Component {
 
 	componentWillUnmount() {
 		this.isUnmounting = true;
+		clearTimeout(this.tooltipTimeout);
 	}
 
 	getAnchoredNubbinStyles() {
@@ -296,6 +297,7 @@ class Tooltip extends React.Component {
 				onFocus: this.handleMouseEnter,
 				onMouseEnter: this.handleMouseEnter,
 				onMouseLeave: this.handleMouseLeave,
+				onKeyDown: this.handleKeyDown,
 			})
 		);
 	}
@@ -334,6 +336,7 @@ class Tooltip extends React.Component {
 				hasStaticAlignment={this.props.hasStaticAlignment}
 				onClose={this.handleCancel}
 				onRequestTargetElement={() => this.getTooltipTarget()}
+				onMouseLeave={this.handleCancel}
 				position={this.props.position}
 				variant="tooltip"
 				containerProps={{
@@ -403,11 +406,28 @@ class Tooltip extends React.Component {
 		}, this.props.hoverOpenDelay);
 	};
 
-	handleMouseLeave = () => {
+	handleMouseLeave = (e) => {
+		e.stopPropagation();
 		clearTimeout(this.tooltipTimeout);
 
 		this.tooltipTimeout = setTimeout(() => {
-			if (!this.isUnmounting) {
+			const isHoveringTooltip =
+				e.relatedTarget?.classList?.contains('slds-popover_tooltip') ||
+				e.relatedTarget?.classList?.contains('slds-popover__body');
+
+			if (!this.isUnmounting && !isHoveringTooltip) {
+				this.setState({
+					isOpen: false,
+				});
+			}
+		}, this.props.hoverCloseDelay);
+	};
+
+	handleKeyDown = (e) => {
+		e.stopPropagation();
+
+		this.tooltipTimeout = setTimeout(() => {
+			if (!this.isUnmounting && e.key === 'Escape') {
 				this.setState({
 					isOpen: false,
 				});
