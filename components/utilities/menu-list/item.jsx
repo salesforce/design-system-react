@@ -149,6 +149,12 @@ class ListItem extends React.Component {
 	render() {
 		switch (this.props.type) {
 			case 'header': {
+				const additionalProps = {}
+				if (this.props.isAccessible) {
+					additionalProps.tabIndex = -1
+					additionalProps["aria-label"] = this.props.label
+				}
+				console.log("ADDITiONAL PROPS", additionalProps)
 				return (
 					<li
 						className={classNames(
@@ -162,6 +168,7 @@ class ListItem extends React.Component {
 						)}
 						onMouseDown={this.handleMouseDown}
 						role="separator"
+						{...additionalProps}
 					>
 						<span>{this.props.label}</span>
 					</li>
