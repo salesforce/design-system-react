@@ -154,7 +154,6 @@ class ListItem extends React.Component {
 					additionalProps.tabIndex = -1
 					additionalProps["aria-label"] = this.props.label
 				}
-				console.log("ADDITiONAL PROPS", additionalProps)
 				return (
 					<li
 						className={classNames(
