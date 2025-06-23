@@ -149,12 +149,6 @@ class ListItem extends React.Component {
 	render() {
 		switch (this.props.type) {
 			case 'header': {
-				const additionalProps = {}
-				if (this.props.isAccessible) {
-					additionalProps.tabIndex = -1
-					additionalProps["aria-label"] = this.props.label
-				}
-				console.log("ADDITiONAL PROPS", additionalProps)
 				return (
 					<li
 						className={classNames(
@@ -168,7 +162,6 @@ class ListItem extends React.Component {
 						)}
 						onMouseDown={this.handleMouseDown}
 						role="separator"
-						{...additionalProps}
 					>
 						<span>{this.props.label}</span>
 					</li>
@@ -199,6 +192,9 @@ class ListItem extends React.Component {
 						role={this.props.checkmark ? 'menuitemcheckbox' : 'menuitem'}
 						tabIndex="-1"
 					>
+						{this.props.groupedBy && (
+							<span className="slds-assistive-text">{`-${this.props.groupedBy}`}</span>
+						)}
 						{this.getLabel()}
 						{this.getIcon('right')}
 					</a>
