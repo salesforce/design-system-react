@@ -192,6 +192,9 @@ class ListItem extends React.Component {
 						role={this.props.checkmark ? 'menuitemcheckbox' : 'menuitem'}
 						tabIndex="-1"
 					>
+						{this.props.groupedBy && (
+							<span className="slds-assistive-text">{`-${this.props.groupedBy}`}</span>
+						)}
 						{this.getLabel()}
 						{this.getIcon('right')}
 					</a>
