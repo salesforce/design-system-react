@@ -13,6 +13,7 @@ import CustomInput from '../__examples__/custom-input';
 import SnaphotDefault from '../__examples__/snapshot-default';
 import WeekdayPicker from '../__examples__/weekday-picker';
 import ErrorPicker from '../__examples__/error-picker';
+import Clearable from '../__examples__/clearable';
 
 // eslint-disable-next-line camelcase
 import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
@@ -52,4 +53,5 @@ storiesOf(DATE_PICKER, module)
 	))
 	.add('DOM Snapshot', () => <SnaphotDefault />)
 	.add('Weekday picker', () => <WeekdayPicker />)
-	.add('Error', () => <ErrorPicker />);
+	.add('Error', () => <ErrorPicker />)
+	.add('Clearable', () => <Clearable action={action} />);
