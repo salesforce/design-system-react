@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 		componentIsDeprecated(
 			COMPONENT,
 			props,
-			'This was decided due to issues with shadow DOM preventing imported SVG files from detecting SLDS styles. Please visit https://www.lightningdesignsystem.com/components/illustration/ to copy the provided example code for use in your application.'
+			'This was decided due to issues with shadow DOM preventing imported SVG files from detecting SLDS styles. Please visit https://www.lightningdesignsystem.com/components/illustration/ to copy the provided example code for use in your application. For security reasons, DO NOT use the `path` prop with user-provided SVG files as it can lead to XSS vulnerability.'
 		);
 	};
 }
