@@ -28,22 +28,21 @@ import { ILLUSTRATION } from '../../utilities/constants';
 import componentDoc from './component.json';
 
 const sanitizePath = (path) => {
-	if (!path || typeof path !== 'string') {
-		return undefined;
-	}
-
-	// Remove control characters, null bytes, and normalize whitespace
+    if (!path || typeof path !== 'string') {
+        return undefined;
+    }
+    
+    // Remove control characters, null bytes, and normalize whitespace
 	// eslint-disable-next-line no-control-regex
-	const normalizedPath = path.replace(/[\x00-\x1f\x7f]/g, '').trim().toLowerCase();
+    const normalizedPath = path.replace(/[\x00-\x1f\x7f]/g, '').trim().toLowerCase();
 
-	// eslint-disable-next-line no-script-url
-	const dangerousProtocols = [
-		'javascript:',
-		'data:',
-		'vbscript:',
-		'file:',
-		'blob:',
-	];
+    const dangerousProtocols = [
+        'javascript:', // eslint-disable-line no-script-url
+        'data:',
+        'vbscript:',
+        'file:',
+        'blob:',
+    ];
 
 	const isDangerous = dangerousProtocols.some((protocol) =>
 		normalizedPath.startsWith(protocol)
@@ -51,13 +50,13 @@ const sanitizePath = (path) => {
 
 	if (isDangerous) {
 		// eslint-disable-next-line no-console
-		console.warn(
-			`Illustration: Blocked potentially unsafe path "${path}". Only http, https, relative paths, and fragment identifiers are allowed.`
-		);
-		return undefined;
-	}
+            console.warn(
+                `Illustration: Blocked potentially unsafe path "${path}". Only http, https, relative paths, and fragment identifiers are allowed.`
+            );
+            return undefined;
+    }
 
-	return path;
+    return path;
 };
 
 /**
