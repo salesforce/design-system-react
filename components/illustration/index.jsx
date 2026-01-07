@@ -52,7 +52,7 @@ const sanitizePath = (path) => {
 
 	if (isDangerous) {
 		// eslint-disable-next-line no-console
-		console.warn(
+		console.log(
 			`Illustration: Blocked potentially unsafe path "${path}". Only http, https, relative paths, and fragment identifiers are allowed.`
 		);
 		return undefined;
