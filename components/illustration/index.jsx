@@ -27,6 +27,40 @@ import Svg from '../utilities/utility-icon/svg';
 import { ILLUSTRATION } from '../../utilities/constants';
 import componentDoc from './component.json';
 
+const sanitizePath = (path) => {
+	if (!path || typeof path !== 'string') {
+		return undefined;
+	}
+
+	// Remove control characters, null bytes, and normalize whitespace
+	const normalizedPath = path
+		.replace(/[\x00-\x1f\x7f]/g, '') // eslint-disable-line no-control-regex
+		.trim()
+		.toLowerCase();
+
+	const dangerousProtocols = [
+		'javascript:', // eslint-disable-line no-script-url
+		'data:',
+		'vbscript:',
+		'file:',
+		'blob:',
+	];
+
+	const isDangerous = dangerousProtocols.some((protocol) =>
+		normalizedPath.startsWith(protocol)
+	);
+
+	if (isDangerous) {
+		// eslint-disable-next-line no-console
+		console.log(
+			`Illustration: Blocked potentially unsafe path "${path}". Only http, https, relative paths, and fragment identifiers are allowed.`
+		);
+		return undefined;
+	}
+
+	return path;
+};
+
 /**
  * An illustration is an image and inline text that work in tandem to communicate a state in a more friendly way.
  */
@@ -79,16 +113,19 @@ const Illustration = ({
 			/>
 		);
 	} else if (path) {
-		illustrationSvg = (
-			<svg
-				className="slds-illustration__svg"
-				aria-hidden="true"
-				name={kababCaseName}
-				style={styles}
-			>
-				<use xlinkHref={path} />
-			</svg>
-		);
+		const safePath = sanitizePath(path);
+		if (safePath) {
+			illustrationSvg = (
+				<svg
+					className="slds-illustration__svg"
+					aria-hidden="true"
+					name={kababCaseName}
+					style={styles}
+				>
+					<use xlinkHref={safePath} />
+				</svg>
+			);
+		}
 	}
 
 	return (

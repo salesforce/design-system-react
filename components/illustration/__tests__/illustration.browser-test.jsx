@@ -174,4 +174,26 @@ describe('SLDSIllustration: ', function describeFunction() {
 			);
 		});
 	});
+
+	describe('Do not render SVG. Path is unsafe', function describeFunction2() {
+		let svg;
+
+		beforeEach(
+			mountComponent(
+				<DemoIllustration
+					heading="Lorem ipsum dolor"
+					messageBody="Lorem ipsum dolor sit amet, consectetur"
+					name="No Access"
+					path="file://server/folder/data.xml"
+				/>
+			)
+		);
+
+		afterEach(unmountComponent);
+
+		it('does not render svg', function () {
+			svg = this.wrapper.find('svg');
+			expect(svg).not.to.be.present();
+		});
+	});
 });
