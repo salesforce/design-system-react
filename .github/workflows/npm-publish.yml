@@ -7,6 +7,10 @@ on:
   release:
     types: [created]
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
@@ -21,5 +25,3 @@ jobs:
       - run: npm run build:npm-package
       - name: Publish package on NPM 📦
         run: npm publish .tmp-npm --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
