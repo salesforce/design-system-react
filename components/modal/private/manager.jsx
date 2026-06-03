@@ -37,7 +37,7 @@ const customStyles = {
 class Manager extends React.Component {
 	static defaultProps = {
 		title: '',
-		isOpen: false,
+		isOpen: true,
 	};
 
 	state = {
