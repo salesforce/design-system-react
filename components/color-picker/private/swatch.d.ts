@@ -1,9 +1,7 @@
-declare module '@salesforce/design-system-react/components/color-picker/private/swatch' {
-	import React from 'react';
-	type Props = {
-		color: string /*.isRequired*/;
-	};
+import React from 'react';
+type Props = {
+	color: string /*.isRequired*/;
+};
 
-	function Component(props: Props): JSX.Element;
-	export default Component;
-}
+declare function Component(props: Props): React.JSX.Element;
+export default Component;
