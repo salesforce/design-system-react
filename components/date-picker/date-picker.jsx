@@ -275,6 +275,13 @@ class Datepicker extends React.Component {
 		checkProps(DATE_PICKER, props, componentDoc);
 	}
 
+	componentDidUpdate(prevProps) {
+		// clear controlled input when value is set to null
+		if (this.props.value === null && prevProps.value !== this.props.value) {
+			this.handleResetDate();
+		}
+	}
+
 	getDatePicker = ({ labels, assistiveText }) => {
 		let date;
 		// Use props if present. Otherwise, use state.
@@ -566,6 +573,14 @@ class Datepicker extends React.Component {
 				this.inputRef.focus();
 			}
 		}
+	};
+
+	handleResetDate = () => {
+		this.setState({
+			value: undefined,
+			formattedValue: '',
+			inputValue: '',
+		});
 	};
 
 	openDialogFromIcon = () => {

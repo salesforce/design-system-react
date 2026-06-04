@@ -494,4 +494,28 @@ describe('SLDSDatepicker', function describeFunction() {
 			trigger.simulate('click', {});
 		});
 	});
+
+	describe('Clearing controlled input', () => {
+		afterEach(() => wrapper.unmount());
+
+		it('clears input on null value', () => {
+			wrapper = mount(<DemoComponent value={new Date()} />);
+
+			const input = wrapper.find('input');
+			expect(input).not.to.have.value('');
+
+			wrapper.setProps({ value: null });
+			expect(input).to.have.value('');
+		});
+
+		it('does not clear input on non-null value', () => {
+			wrapper = mount(<DemoComponent value={new Date()} />);
+
+			const input = wrapper.find('input');
+			expect(input).not.to.have.value('');
+
+			wrapper.setProps({ value: undefined });
+			expect(input).not.to.have.value('');
+		});
+	});
 });
