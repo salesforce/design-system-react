@@ -116,7 +116,7 @@ declare module '@salesforce/design-system-react/components/input' {
 		/**
 		 * This callback exposes the input reference / DOM node to parent components. `<Parent inputRef={(inputComponent) => this.input = inputComponent} />
 		 */
-		inputRef?: (v: any) => any;
+		inputRef?: React.RefCallback<HTMLInputElement>;
 		/**
 		 * Displays the value of the input statically. This follows the static input UX pattern.
 		 */
@@ -128,50 +128,53 @@ declare module '@salesforce/design-system-react/components/input' {
 		/**
 		 * Triggered when focus is removed.
 		 */
-		onBlur?: (v: any) => any;
+		onBlur?: React.FocusEventHandler<HTMLInputElement>;
 		/**
 		 * This callback fires when the input changes. Passes in `event, { value }`.
 		 */
 		onChange?: (
-			e: React.KeyboardEvent<HTMLInputElement>,
-			value: { value: any }
+			e:
+				| React.ChangeEvent<HTMLInputElement>
+				| React.KeyboardEvent<HTMLButtonElement>
+				| React.MouseEvent<HTMLButtonElement>,
+			value: { value: string; number?: number }
 		) => any;
 		/**
 		 * This event fires when the input is clicked.
 		 */
-		onClick?: (v: any) => any;
+		onClick?: React.MouseEventHandler<HTMLInputElement>;
 		/**
 		 * Triggered when component is focused.
 		 */
-		onFocus?: (v: any) => any;
+		onFocus?: React.FocusEventHandler<HTMLInputElement>;
 		/**
 		 * Similar to `onchange`. Triggered when an element gets user input.
 		 */
-		onInput?: (v: any) => any;
+		onInput?: React.FormEventHandler<HTMLInputElement>;
 		/**
 		 * Triggered when a submittable `<input>` element is invalid.
 		 */
-		onInvalid?: (v: any) => any;
+		onInvalid?: React.FormEventHandler<HTMLInputElement>;
 		/**
 		 * Triggered when a key is pressed down
 		 */
-		onKeyDown?: (v: any) => any;
+		onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 		/**
 		 * Triggered when a key is pressed and released
 		 */
-		onKeyPress?: (v: any) => any;
+		onKeyPress?: React.KeyboardEventHandler<HTMLInputElement>;
 		/**
 		 * Triggered when a key is released
 		 */
-		onKeyUp?: (v: any) => any;
+		onKeyUp?: React.KeyboardEventHandler<HTMLInputElement>;
 		/**
 		 * Triggered after some text has been selected in an element.
 		 */
-		onSelect?: (v: any) => any;
+		onSelect?: React.ReactEventHandler<HTMLInputElement>;
 		/**
 		 * Fires when a form is submitted.
 		 */
-		onSubmit?: (v: any) => any;
+		onSubmit?: React.ReactEventHandler<HTMLInputElement>;
 		/**
 		 * Text that will appear in an empty input.
 		 */
