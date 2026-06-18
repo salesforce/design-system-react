@@ -103,11 +103,16 @@ const propTypes = {
 	 * Styles to be added to the top-level `ul` element. Useful for `overflow:hidden`.
 	 */
 	listStyle: PropTypes.object,
+	/**
+	 * Indicate whether a tree node is selectable
+	 */
+	 treeNodeSelectable: PropTypes.boolean,
 };
 
 const defaultProps = {
 	assistiveText: {},
 	getNodes: (node) => node.nodes,
+	treeNodeSelectable: true,
 };
 
 /* Flattens hierarchical tree structure into a flat array. The
@@ -189,6 +194,9 @@ class Tree extends React.Component {
 	}
 
 	handleSelect = ({ event, data, clearSelectedNodes, fromFocus }) => {
+		if (!this.props.treeNodeSelectable) {
+			return;
+		}
 		// When triggered by a key event, other nodes should be deselected.
 		if (clearSelectedNodes) {
 			// TODO: This bad design. This is state modfication. State should be changed via setState only.
