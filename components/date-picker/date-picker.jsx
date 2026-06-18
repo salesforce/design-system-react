@@ -256,23 +256,31 @@ const defaultProps = {
 class Datepicker extends React.Component {
 	constructor(props) {
 		super(props);
-		// Please remove `strValue` on the next breaking change.
-		const formattedValue = props.formattedValue || props.strValue; // eslint-disable-line react/prop-types
-		const dateString = props.formatter(props.value);
-		const initDate = props.value ? dateString : formattedValue;
-
 		this.state = {
 			isOpen: false,
 			isOpenFromIcon: false,
-			value: props.value,
-			formattedValue: initDate || '',
-			inputValue: initDate || '',
 		};
 
 		this.generatedId = generateId();
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		checkProps(DATE_PICKER, props, componentDoc);
+	}
+
+	static getDerivedStateFromProps(props, state) {
+		if (props.value !== state.value) {
+			const formattedValue = props.formattedValue || props.strValue; // eslint-disable-line react/prop-types
+			const dateString = props.formatter(props.value);
+			const initDate = props.value ? dateString : formattedValue;
+			return {
+				isOpen: false,
+				isOpenFromIcon: false,
+				value: props.value,
+				formattedValue: initDate || '',
+				inputValue: initDate || '',
+			};
+		}
+		return state;
 	}
 
 	getDatePicker = ({ labels, assistiveText }) => {
@@ -412,9 +420,7 @@ class Datepicker extends React.Component {
 				this.openDialog();
 			},
 			onKeyDown: this.handleKeyDown,
-			value: this.props.value
-				? this.props.formatter(this.props.value)
-				: this.state.inputValue,
+			value: this.state.inputValue,
 		};
 
 		// eslint-disable react/prop-types
@@ -508,16 +514,6 @@ class Datepicker extends React.Component {
 			formattedValue: event.target.value,
 			inputValue: event.target.value,
 		});
-
-		const date = this.props.parser(event.target.value);
-
-		if (this.props.onChange) {
-			this.props.onChange(event, {
-				date,
-				formattedDate: event.target.value,
-				timezoneOffset: date.getTimezoneOffset(),
-			});
-		}
 	};
 
 	handleKeyDown = (event) => {
@@ -531,9 +527,31 @@ class Datepicker extends React.Component {
 			this.setState({ isOpen: true });
 		}
 
-		if (event.keyCode === KEYS.ESCAPE || event.keyCode === KEYS.ENTER) {
+		if (event.keyCode === KEYS.ESCAPE) {
 			EventUtil.trapEvent(event);
-			this.setState({ isOpen: false });
+			this.setState(Datepicker.getDerivedStateFromProps(this.props, {}));
+		}
+
+		if (event.keyCode === KEYS.ENTER || event.keyCode === KEYS.TAB) {
+			const date = this.props.parser(event.target.value);
+			const formattedDate = this.props.formatter(date);
+			if (formattedDate !== 'Invalid date') {
+				this.setState({
+					value: date,
+					formattedValue: formattedDate,
+					inputValue: formattedDate,
+					isOpen: false,
+				});
+				if (this.props.onChange) {
+					this.props.onChange(event, {
+						date,
+						formattedDate,
+						timezoneOffset: date.getTimezoneOffset(),
+					});
+				}
+			} else {
+				this.setState(Datepicker.getDerivedStateFromProps(this.props, {}));
+			}
 		}
 
 		// Please remove `onKeyDown` on the next breaking change.
@@ -559,9 +577,10 @@ class Datepicker extends React.Component {
 			this.props.onRequestClose();
 		}
 
-		if (this.getIsOpen()) {
-			this.setState({ isOpen: false, isOpenFromIcon: false });
+		const wasOpen = this.getIsOpen();
+		this.setState(Datepicker.getDerivedStateFromProps(this.props, {}));
 
+		if (wasOpen) {
 			if (this.inputRef) {
 				this.inputRef.focus();
 			}
