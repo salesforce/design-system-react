@@ -380,7 +380,7 @@ class Button extends React.Component {
 
 	// This is present for backwards compatibility and should be removed at a future breaking change release. Please wrap a `Button` in a `PopoverTooltip` to achieve the same result. There will be an extra trigger `div` wrapping the `Button` though.
 	renderTooltip = () => (
-		<Tooltip content={this.props.tooltip}>{this.renderButton}</Tooltip>
+		<Tooltip content={this.props.tooltip}>{this.renderButton()}</Tooltip>
 	);
 
 	render() {

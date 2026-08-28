@@ -196,6 +196,23 @@ describe('SLDSButton: ', () => {
 		});
 	});
 
+	describe('Deprecated tooltip prop', () => {
+		let cmp;
+		let btn;
+
+		beforeEach(() => {
+			cmp = getButton({
+				label: 'Neutral',
+				tooltip: 'Some tooltip content',
+			});
+			[btn] = cmp.getElementsByClassName('slds-button');
+		});
+
+		it('renders the button inside the tooltip trigger without throwing', () => {
+			expect(btn.textContent).to.equal('Neutral');
+		});
+	});
+
 	describe('Button Clickable', () => {
 		let cmp;
 		let btn;
