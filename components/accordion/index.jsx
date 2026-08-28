@@ -73,9 +73,11 @@ class Accordion extends Component {
 			);
 		}
 
+		const childCount = React.Children.count(this.props.children);
+
 		if (e.key === 'ArrowDown') {
 			e.preventDefault();
-			if (buttonIndex < this.props.children.length - 1) {
+			if (buttonIndex < childCount - 1) {
 				this.setState({
 					currButtonIndex: buttonIndex + 1,
 				});
@@ -89,7 +91,7 @@ class Accordion extends Component {
 					currButtonIndex: buttonIndex - 1,
 				});
 			} else {
-				this.setState({ currButtonIndex: this.props.children.length - 1 });
+				this.setState({ currButtonIndex: childCount - 1 });
 			}
 		}
 	}
