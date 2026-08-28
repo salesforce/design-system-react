@@ -269,6 +269,23 @@ describe('Accordion', function describeFunction() {
 				lastAccordionButton.getDOMNode() === document.activeElement
 			).to.equal(true);
 		});
+
+		it('does not throw on arrow up with only one panel', () => {
+			wrapper = mount(<AccordionWithOnePanelExample />, {
+				attachTo: mountNode,
+			});
+			const accordionButtons = wrapper.find(
+				'button.slds-accordion__summary-action'
+			);
+
+			expect(() =>
+				accordionButtons.at(0).simulate('keyDown', {
+					key: 'ArrowUp',
+					keyCode: 38,
+					which: 38,
+				})
+			).to.not.throw();
+		});
 	});
 
 	describe('Open panel', () => {
