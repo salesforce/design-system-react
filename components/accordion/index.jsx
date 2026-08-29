@@ -55,7 +55,8 @@ class Accordion extends Component {
 	componentDidUpdate(prevProps, prevState) {
 		if (
 			this.state.currButtonIndex !== null &&
-			this.state.currButtonIndex !== prevState.currButtonIndex
+			this.state.currButtonIndex !== prevState.currButtonIndex &&
+			this.summaryButtons[this.state.currButtonIndex]
 		) {
 			this.summaryButtons[this.state.currButtonIndex].focus();
 		}
@@ -69,7 +70,7 @@ class Accordion extends Component {
 		let buttonIndex = this.state.currButtonIndex;
 		if (buttonIndex === null) {
 			buttonIndex = this.summaryButtons.findIndex(
-				(el) => el.id === e.target.id
+				(el) => el && el.id === e.target.id
 			);
 		}
 
@@ -94,11 +95,13 @@ class Accordion extends Component {
 		}
 	}
 
-	addSummaryButton(button) {
-		const btnInArr = this.summaryButtons.find((el) => button === el);
-		if (button !== null && btnInArr === undefined) {
+	addSummaryButton(index, button) {
+		if (button === null) {
+			// eslint-disable-next-line fp/no-delete
+			delete this.summaryButtons[index];
+		} else {
 			// eslint-disable-next-line fp/no-mutating-methods
-			this.summaryButtons.push(button);
+			this.summaryButtons[index] = button;
 		}
 	}
 
@@ -108,9 +111,9 @@ class Accordion extends Component {
 				name={this.props.id || this.generatedId}
 				className={classNames('slds-accordion', this.props.className)}
 			>
-				{React.Children.map(this.props.children, (child) =>
+				{React.Children.map(this.props.children, (child, index) =>
 					React.cloneElement(child, {
-						refs: { summaryButton: this.addSummaryButton.bind(this) },
+						refs: { summaryButton: this.addSummaryButton.bind(this, index) },
 						onClickSummary: this.onClickSummary.bind(this),
 						onKeyDownSummary: this.onKeyDownSummary.bind(this),
 					})
