@@ -269,6 +269,33 @@ describe('Accordion', function describeFunction() {
 				lastAccordionButton.getDOMNode() === document.activeElement
 			).to.equal(true);
 		});
+
+		it('focuses the correct remaining button after a panel is removed', () => {
+			wrapper = mount(<AccordionExample />, { attachTo: mountNode });
+			const exampleInstance = wrapper.find(AccordionExample).instance();
+
+			exampleInstance.setState((state) => ({
+				items: state.items.filter((item) => item.id !== '2'),
+			}));
+			wrapper.update();
+
+			const accordionButtons = wrapper.find(
+				'button.slds-accordion__summary-action'
+			);
+			expect(accordionButtons).to.have.lengthOf(2);
+
+			expect(() =>
+				accordionButtons.at(0).simulate('keyDown', {
+					key: 'ArrowDown',
+					keyCode: 40,
+					which: 40,
+				})
+			).to.not.throw();
+
+			expect(
+				accordionButtons.at(1).getDOMNode() === document.activeElement
+			).to.equal(true);
+		});
 	});
 
 	describe('Open panel', () => {
