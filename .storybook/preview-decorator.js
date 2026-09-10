@@ -30,7 +30,7 @@ function ensureLink(id) {
 
 /**
  * Swap the managed <link> to the selected theme's base CSS, and apply/remove the
- * optional sub-theme overlay (Glass layers on top of the Cosmos base). No flicker,
+ * optional sub-theme overlay (Pearl layers on top of the Cosmos base). No flicker,
  * no duplicate links.
  */
 function applyTheme(themeName) {

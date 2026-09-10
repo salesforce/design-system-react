@@ -32,7 +32,7 @@ const preview = {
         items: [
           { value: 'lightning-blue', title: 'Lightning Blue' },
           { value: 'cosmos', title: 'Cosmos (SLDS2)' },
-          { value: 'glass', title: 'Glass' },
+          { value: 'pearl', title: 'Pearl (Alpha)' },
         ],
         dynamicTitle: true,
       },
