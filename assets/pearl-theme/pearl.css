@@ -326,7 +326,7 @@
 * Design Decision: Hard-code background gradient to Cosmos.
 * Future custom themes will use --slds-r-color-brand-* tokens
 */
-body::before {
+body {
   content: '';
   position: fixed;
   width: 100%;
