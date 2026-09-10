@@ -1,0 +1,754 @@
+/* stylelint-disable color-function-alias-notation  */
+/* stylelint-disable sds-stylelint-plugin/design-token-global-pattern */
+
+:root {
+  /* Reference Color tokens */
+  --slds-r-color-brand-5: #0c0b22;
+  --slds-r-color-brand-10: #13162c;
+  --slds-r-color-brand-15: #1e2140;
+  --slds-r-color-brand-20: #272b50;
+  --slds-r-color-brand-30: #3a4073;
+  --slds-r-color-brand-35: #444b86;
+  --slds-r-color-brand-40: #4f5699;
+  --slds-r-color-brand-50: #656ebe;
+  --slds-r-color-brand-60: #8c8ecc;
+  --slds-r-color-brand-65: #9b9cd2;
+  --slds-r-color-brand-70: #aaaad8;
+  --slds-r-color-brand-80: #c8c6e5;
+  --slds-r-color-brand-85: #d6d5ea;
+  --slds-r-color-brand-90: #e5e4f1;
+  --slds-r-color-brand-95: #f3f3f7;
+
+  --slds-r-color-error-5: #0e0102;
+  --slds-r-color-error-10: #35030a;
+  --slds-r-color-error-15: #480911;
+  --slds-r-color-error-20: #5d0612;
+  --slds-r-color-error-30: #850819;
+  --slds-r-color-error-35: #9a0a1e;
+  --slds-r-color-error-40: #a83441;
+  --slds-r-color-error-45: #c23d4b;
+  --slds-r-color-error-50: #dc3250;
+  --slds-r-color-error-55: #d04555;
+  --slds-r-color-error-60: #da5565;
+  --slds-r-color-error-65: #f0506e;
+  --slds-r-color-error-70: #fe8a9a;
+  --slds-r-color-error-80: #fdb6c0;
+  --slds-r-color-error-85: #fec8cf;
+  --slds-r-color-error-90: #fddde1;
+  --slds-r-color-error-95: #fef0f2;
+
+  --slds-r-color-success-5: #010503;
+  --slds-r-color-success-10: #06140e;
+  --slds-r-color-success-15: #0b2318;
+  --slds-r-color-success-20: #103223;
+  --slds-r-color-success-30: #1a4f38;
+  --slds-r-color-success-35: #205d42;
+  --slds-r-color-success-40: #266b4d;
+  --slds-r-color-success-45: #2a7453;
+  --slds-r-color-success-50: #2e7d5b;
+  --slds-r-color-success-55: #38956b;
+  --slds-r-color-success-60: #42a87a;
+  --slds-r-color-success-65: #57b58b;
+  --slds-r-color-success-70: #73bb9b;
+  --slds-r-color-success-80: #a7cbbb;
+  --slds-r-color-success-85: #bed5cb;
+  --slds-r-color-success-90: #d5e1db;
+  --slds-r-color-success-95: #e9eeec;
+
+  --slds-r-color-neutral-0: #000;
+  --slds-r-color-neutral-5: #0e0e0e;
+  --slds-r-color-neutral-10: #1b1b1c;
+  --slds-r-color-neutral-15: #28282b;
+  --slds-r-color-neutral-20: #34353a;
+  --slds-r-color-neutral-30: #4c4e5a;
+  --slds-r-color-neutral-35: #575a6a;
+  --slds-r-color-neutral-40: #62667a;
+  --slds-r-color-neutral-45: #6c718c;
+  --slds-r-color-neutral-50: #797e9a;
+  --slds-r-color-neutral-55: #7c85b3;
+  --slds-r-color-neutral-60: #8e94ab;
+  --slds-r-color-neutral-65: #a5a8ba;
+  --slds-r-color-neutral-70: #b8bacd;
+  --slds-r-color-neutral-80: #cbcfe2;
+  --slds-r-color-neutral-85: #d9dbe8;
+  --slds-r-color-neutral-90: #e7e8ef;
+  --slds-r-color-neutral-95: #f3f4f7;
+  --slds-r-color-neutral-100: #fff;
+
+  --slds-r-color-warning-5: #020402;
+  --slds-r-color-warning-10: #261506;
+  --slds-r-color-warning-15: #362208;
+  --slds-r-color-warning-20: #502707;
+  --slds-r-color-warning-30: #723c07;
+  --slds-r-color-warning-35: #864c12;
+  --slds-r-color-warning-40: #91560f;
+  --slds-r-color-warning-45: #a16414;
+  --slds-r-color-warning-50: #b17318;
+  --slds-r-color-warning-55: #c4851c;
+  --slds-r-color-warning-60: #d5961f;
+  --slds-r-color-warning-65: #e7a724;
+  --slds-r-color-warning-70: #f2b728;
+  --slds-r-color-warning-80: #ffd026;
+  --slds-r-color-warning-85: #fedf6c;
+  --slds-r-color-warning-90: #fce8bb;
+  --slds-r-color-warning-95: #fbf3e0;
+
+  --slds-r-color-info-5: #000314;
+  --slds-r-color-info-10: #001642;
+  --slds-r-color-info-15: #001e5b;
+  --slds-r-color-info-20: #002775;
+  --slds-r-color-info-30: #022ac0;
+  --slds-r-color-info-35: #063ecc;
+  --slds-r-color-info-40: #0250d9;
+  --slds-r-color-info-45: #045deb;
+  --slds-r-color-info-50: #066afe;
+  --slds-r-color-info-55: #357efe;
+  --slds-r-color-info-60: #4992fe;
+  --slds-r-color-info-65: #5f9ffe;
+  --slds-r-color-info-70: #7cb1fe;
+  --slds-r-color-info-80: #a8cbff;
+  --slds-r-color-info-85: #c0d8ff;
+  --slds-r-color-info-90: #d6e6ff;
+  --slds-r-color-info-95: #edf4ff;
+
+  /* Global Blur tokens (new) */
+  --slds-g-blur-heavy: 40px;
+  --slds-g-blur-medium: 20px;
+  --slds-g-blur-light: 10px;
+
+  /* Global Color tokens */
+  --slds-g-color-border-1: light-dark(
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 40%),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 90%)
+  );
+
+  --slds-g-color-surface-container-1: light-dark(
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 55%),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 96%)
+  );
+
+  --slds-g-color-surface-container-2: light-dark(
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 30%),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 80%)
+  );
+
+  --slds-g-color-on-surface-3: light-dark(
+    var(--slds-r-color-brand-30),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 15%)
+  );
+
+  /* Global Shadow tokens */
+  --slds-g-shadow-1: 0 1px 3px
+    light-dark(
+      color-mix(in oklab, var(--slds-r-color-brand-10), transparent 94%),
+      color-mix(in oklab, var(--slds-r-color-neutral-0), transparent 80%)
+    );
+
+  /* Shared Color tokens */
+  --slds-s-backdrop-color-background: light-dark(
+    color-mix(in oklab, var(--slds-r-color-neutral-70), transparent 70%),
+    color-mix(in oklab, var(--slds-r-color-neutral-0), transparent 60%)
+  );
+
+  --slds-s-pageheader-row-color-background: transparent;
+  --slds-s-button-radius-border: var(--slds-g-radius-border-2);
+  --slds-s-container-radius-border: var(--slds-g-radius-border-3);
+  --slds-s-container-heading-var-font-size: var(--slds-g-font-scale-var-2);
+
+  --slds-s-container-color: light-dark(
+    var(--slds-r-color-brand-30),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 40%)
+  );
+
+  --slds-s-table-color: light-dark(
+    var(--slds-r-color-brand-10),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 5%)
+  );
+
+  --slds-s-table-header-color-background: light-dark(
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 40%),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 86%)
+  );
+
+  --slds-s-table-header-color-background-hover: light-dark(
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 40%),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 86%)
+  );
+
+  --slds-s-menu-item-color-background-active: light-dark(
+    color-mix(in oklab, var(--slds-r-color-brand-35), transparent 92%),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 90%)
+  );
+
+  --slds-s-input-shadow-focus: 0 0 0 1px
+    light-dark(
+      var(--slds-r-color-brand-35),
+      color-mix(in oklab, var(--slds-r-color-info-60), transparent 70%)
+    );
+
+  --slds-s-input-color-border: light-dark(
+    var(--slds-r-color-neutral-60),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 86%)
+  );
+
+  /* Component Color tokens */
+  --slds-c-card-shadow: var(--slds-g-shadow-1);
+
+  /* Badge */
+  --slds-c-badge-radius-border: var(--slds-g-radius-border-2);
+  --slds-c-badge-text-color: var(--slds-g-color-on-surface-3);
+
+  /* Button */
+  --slds-c-button-brand-color-background: light-dark(
+    var(--slds-r-color-brand-40),
+    var(--slds-r-color-brand-50)
+  );
+
+  --slds-c-button-brand-color-background-hover: light-dark(
+    var(--slds-r-color-brand-40),
+    var(--slds-r-color-brand-50)
+  );
+
+  --slds-c-button-brand-text-color-hover: var(--slds-g-color-on-accent-1);
+
+  --slds-c-button-brand-color-background-active: light-dark(
+    var(--slds-r-color-brand-40),
+    var(--slds-r-color-brand-50)
+  );
+
+  --slds-c-button-brand-text-color-active: var(--slds-g-color-on-accent-1);
+  --slds-c-button-inverse-color-background-hover: transparent;
+
+  --slds-c-button-neutral-color-background: light-dark(
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 40%),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 94%)
+  );
+
+  --slds-c-button-neutral-color-border: light-dark(
+    var(--slds-r-color-neutral-60),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 86%)
+  );
+
+  --slds-c-button-neutral-color-background-hover: light-dark(
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 20%),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 90%)
+  );
+
+  --slds-c-button-neutral-color-border-hover: light-dark(
+    var(--slds-r-color-neutral-55),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 75%)
+  );
+
+  --slds-c-button-inverse-text-color-hover: var(--slds-g-color-on-surface-inverse-1);
+
+  --slds-c-button-inverse-text-color-active: var(--slds-g-color-on-surface-inverse-1);
+
+  --slds-c-button-destructive-color-background: light-dark(
+    var(--slds-r-color-error-45),
+    var(--slds-r-color-error-55)
+  );
+
+  --slds-c-button-destructive-color-hover: var(--slds-g-color-on-accent-1);
+
+  --slds-c-button-destructive-color-background-hover: light-dark(
+    var(--slds-r-color-error-40),
+    var(--slds-r-color-error-60)
+  );
+
+  --slds-c-button-brand-color-border: light-dark(var(--slds-r-color-brand-35), var(--slds-r-color-brand-50));
+
+  --slds-c-button-brand-color-border-hover: light-dark(
+    var(--slds-r-color-brand-30),
+    var(--slds-r-color-brand-50)
+  );
+
+  --slds-c-button-destructive-color-border: light-dark(
+    var(--slds-r-color-error-45),
+    var(--slds-r-color-error-55)
+  );
+
+  --slds-c-button-destructive-color-border-hover: light-dark(
+    var(--slds-r-color-error-40),
+    var(--slds-r-color-error-60)
+  );
+
+  --slds-c-button-success-color-background: light-dark(
+    var(--slds-r-color-success-50),
+    var(--slds-r-color-success-55)
+  );
+
+  --slds-c-button-success-color-hover: var(--slds-g-color-on-accent-1);
+
+  --slds-c-button-success-color-background-hover: light-dark(
+    var(--slds-r-color-success-40),
+    var(--slds-r-color-success-60)
+  );
+
+  --slds-c-button-success-color-border: light-dark(
+    var(--slds-r-color-success-50),
+    var(--slds-r-color-success-55)
+  );
+
+  --slds-c-button-success-color-border-hover: light-dark(
+    var(--slds-r-color-success-40),
+    var(--slds-r-color-success-60)
+  );
+
+  /* Input */
+  --slds-c-input-color-background: light-dark(
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 50%),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 96%)
+  );
+
+  --slds-c-input-color-border: light-dark(
+    var(--slds-r-color-neutral-60),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 86%)
+  );
+
+  --slds-c-input-color-border-focus: light-dark(
+    var(--slds-r-color-brand-35, color-mix(in oklab, var(--slds-r-color-info-60), transparent 50%)) ;
+  );
+
+  /* Data Table */
+  --_slds-c-datatable-row-color-border-hover: var(--slds-g-color-border-1);
+}
+
+/* Design Decision: Hide all nubbins/pointers */
+[class*='slds-nubbin']::before,
+[class*='slds-nubbin']::after,
+.uiMenuList--default[class*='menu--nubbin-']::before,
+.uiMenuList--default[class*='menu--nubbin-']::after,
+.uiPanel > .pointer {
+  display: none;
+}
+
+/*
+* Design Decision: Hard-code background gradient to Cosmos.
+* Future custom themes will use --slds-r-color-brand-* tokens
+*/
+body::before {
+  content: '';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    150.6deg,
+    light-dark(#f1edf3, #201c26) 0%,
+    light-dark(#f1edf3, #201c26) 35.7%,
+    light-dark(#e4e7f2, #14151f) 71.4%
+  );
+}
+
+/****************
+  Global Container (non-structure only)
+****************/
+.slds-global-header,
+.slds-context-bar,
+.slds-page-header {
+  background: transparent;
+}
+
+/* Floating Frosted Background */
+.slds-context-bar::before {
+  content: '';
+  backdrop-filter: blur(var(--slds-g-blur-light));
+  background: var(--slds-g-color-surface-container-1);
+  position: fixed;
+  top: var(--slds-g-spacing-4);
+  inset-inline: var(--slds-g-spacing-4);
+  width: calc(100% - var(--slds-g-spacing-6));
+  height: 92px;
+  z-index: -10;
+  border-radius: var(--slds-g-radius-border-3);
+  border: 1px solid var(--slds-g-color-border-1);
+}
+
+.slds-context-bar__secondary .slds-grid {
+  gap: initial; /* Was inherit. Fits the more-item into the container */
+}
+
+.slds-global-header {
+  margin-top: 20px;
+  padding: 1rem 1.4rem;
+}
+
+.slds-brand-band::after,
+.slds-brand-band::before {
+  display: none;
+}
+
+/****************
+  Global Search
+****************/
+.slds-global-header__item.slds-global-header__item_search button {
+  border-radius: var(--slds-g-radius-border-pill);
+}
+
+/****************
+  SLDS2 + Aura Component Overrides
+****************/
+
+/* Badge */
+.slds-badge.slds-theme_success,
+.slds-badge.slds-theme--success {
+  color: light-dark(var(--slds-r-color-success-40), var(--slds-r-color-success-85));
+  background-color: light-dark(
+    color-mix(in oklab, var(--slds-r-color-success-65), transparent 75%),
+    color-mix(in oklab, var(--slds-r-color-success-80), transparent 85%) /* cosmos reference hook */
+  );
+}
+
+.slds-badge.slds-theme_info,
+.slds-badge.slds-theme--info {
+  color: light-dark(var(--slds-r-color-info-40), var(--slds-r-color-info-70));
+  background-color: color-mix(in oklab, var(--slds-r-color-info-55), transparent 85%);
+}
+
+.slds-badge.slds-theme_error,
+.slds-badge.slds-theme--error {
+  color: light-dark(var(--slds-r-color-error-40), var(--slds-r-color-error-70));
+  background-color: color-mix(in oklab, var(--slds-r-color-error-70), transparent 85%);
+}
+
+.slds-badge.slds-theme_warning,
+.slds-badge.slds-theme--warning {
+  color: light-dark(var(--slds-r-color-warning-40), var(--slds-r-color-warning-90));
+  background-color: color-mix(in oklab, var(--slds-r-color-warning-70), transparent 85%);
+}
+
+/* Button */
+.slds-button_neutral {
+  --slds-c-button-text-color: light-dark(var(--slds-r-color-brand-50), var(--slds-g-color-on-accent-1));
+}
+.slds-button_neutral:hover {
+  --slds-c-button-text-color: light-dark(var(--slds-r-color-brand-40), var(--slds-g-color-on-accent-1));
+}
+
+/* Card */
+.slds-card {
+  border: 1px solid var(--slds-g-color-border-1);
+}
+.slds-card_related-list-fix .slds-page-header {
+  background: transparent;
+}
+.slds-card .slds-card,
+.slds-card .slds-card-wrapper,
+.slds-card-wrapper .slds-card,
+.slds-card-wrapper .slds-card-wrapper,
+.slds-modal .slds-card,
+.slds-modal .slds-card-wrapper {
+  background: transparent;
+}
+
+/* Input */
+.slds-input:hover {
+  --slds-c-input-color-border: light-dark(
+    var(--slds-r-color-neutral-55),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 70%)
+  );
+  --slds-c-input-color-background: light-dark(
+    color-mix(in oklab, var(--slds-r-color-brand-35), transparent 92%),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 90%)
+  );
+}
+
+/* Panel */
+.slds-panel {
+  background: var(--slds-g-color-surface-container-1);
+  backdrop-filter: blur(var(--slds-g-blur-light));
+  border-radius: var(--slds-g-radius-border-3);
+  border: 1px solid var(--slds-g-color-border-1);
+}
+
+.slds-popover {
+  backdrop-filter: blur(var(--slds-g-blur-heavy));
+}
+
+/* @used: List Views - lst-list-view-picker
+   avoid double-transparency */
+.slds-popover .slds-dropdown {
+  background-color: var(--slds-g-color-brand-base-100);
+}
+
+/* Table */
+.slds-table {
+  background-color: transparent;
+}
+
+.slds-table_header-fixed_container {
+  background-color: transparent;
+  border-radius: var(--slds-g-radius-border-3);
+  border-color: var(--slds-g-color-border-1);
+}
+
+.slds-cell-fixed {
+  background-color: var(--slds-s-table-header-color-background);
+}
+
+.slds-table tbody td,
+.slds-table tbody th {
+  background-color: light-dark(
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 70%),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 96%)
+  );
+}
+
+.slds-table:not(.slds-no-row-hover) tbody tr:hover > td,
+.slds-table:not(.slds-no-row-hover) tbody tr:hover > th,
+.slds-table:not(.slds-no-row-hover) tbody tr:focus > td,
+.slds-table:not(.slds-no-row-hover) tbody tr:focus > th {
+  background-color: light-dark(
+    color-mix(in oklab, var(--slds-r-color-brand-35), transparent 94%),
+    color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 94%)
+  );
+}
+
+.slds-table_edit tbody tr:hover > .slds-cell-edit:hover,
+.slds-table--edit tbody tr:hover > .slds-cell-edit:hover {
+  background-color: transparent;
+}
+
+.slds-table_header-fixed_container > .slds-scrollable_y::before {
+  /* !imporant required to override LWC injected styles */
+  border-bottom-color: var(--slds-g-color-border-1) !important;
+}
+
+/* Badge Variants */
+.slds-badge_error {
+  --slds-c-badge-color-background: color-mix(in oklab, var(--slds-r-color-error-70), transparent 85%);
+  --slds-c-badge-text-color: light-dark(var(--slds-r-color-error-40), var(--slds-r-color-error-70));
+}
+
+.slds-badge_warning {
+  --slds-c-badge-color-background: color-mix(in oklab, var(--slds-r-color-warning-70), transparent 85%);
+  --slds-c-badge-text-color: light-dark(var(--slds-r-color-warning-40), var(--slds-r-color-warning-90));
+}
+
+.slds-badge_success {
+  --slds-c-badge-color-background: color-mix(in oklab, var(--slds-r-color-success-80), transparent 85%);
+  --slds-c-badge-text-color: light-dark(var(--slds-r-color-success-40), var(--slds-r-color-success-85));
+}
+
+.slds-badge_info {
+  --slds-c-badge-color-background: color-mix(in oklab, var(--slds-r-color-info-55), transparent 85%);
+  --slds-c-badge-text-color: light-dark(var(--slds-r-color-info-40), var(--slds-r-color-info-70));
+}
+
+/* Toast Variants */
+.slds-notify_toast.slds-theme_success,
+.slds-notify--toast.slds-theme--success {
+  background-color: light-dark(
+    color-mix(in oklab, var(--slds-r-color-success-65), transparent 55%),
+    color-mix(in oklab, var(--slds-r-color-success-65), transparent 60%)
+  );
+  color: light-dark(var(--slds-r-color-success-40), var(--slds-r-color-success-85));
+  border: 1px solid
+    light-dark(
+      color-mix(in oklab, var(--slds-r-color-success-70), transparent 50%),
+      color-mix(in oklab, var(--slds-r-color-success-70), transparent 55%)
+    );
+  box-shadow:
+    inset 0 1px 0 0
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 40%),
+        color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 70%)
+      ),
+    0 4px 16px -2px
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-neutral-0), transparent 90%),
+        color-mix(in oklab, var(--slds-r-color-neutral-0), transparent 70%)
+      ),
+    0 0 20px 0
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-success-65), transparent 92%),
+        color-mix(in oklab, var(--slds-r-color-success-65), transparent 90%)
+      ),
+    0 0 30px 0
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-success-60), transparent 85%),
+        color-mix(in oklab, var(--slds-r-color-success-60), transparent 75%)
+      );
+}
+
+.slds-notify_toast.slds-theme_info,
+.slds-notify--toast.slds-theme--info {
+  background-color: light-dark(
+    color-mix(in oklab, var(--slds-r-color-info-55), transparent 55%),
+    color-mix(in oklab, var(--slds-r-color-info-55), transparent 60%)
+  );
+  color: light-dark(var(--slds-r-color-info-40), var(--slds-r-color-info-85));
+  border: 1px solid
+    light-dark(
+      color-mix(in oklab, var(--slds-r-color-info-60), transparent 50%),
+      color-mix(in oklab, var(--slds-r-color-info-60), transparent 55%)
+    );
+  box-shadow:
+    inset 0 1px 0 0
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 40%),
+        color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 70%)
+      ),
+    0 4px 16px -2px
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-neutral-0), transparent 90%),
+        color-mix(in oklab, var(--slds-r-color-neutral-0), transparent 70%)
+      ),
+    0 0 20px 0
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-info-55), transparent 92%),
+        color-mix(in oklab, var(--slds-r-color-info-55), transparent 90%)
+      ),
+    0 0 30px 0
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-info-55), transparent 85%),
+        color-mix(in oklab, var(--slds-r-color-info-55), transparent 75%)
+      );
+}
+
+.slds-notify_toast.slds-theme_warning,
+.slds-notify--toast.slds-theme--warning {
+  background-color: light-dark(
+    color-mix(in oklab, var(--slds-r-color-warning-70), transparent 55%),
+    color-mix(in oklab, var(--slds-r-color-warning-70), transparent 65%)
+  );
+  color: light-dark(var(--slds-r-color-warning-40), var(--slds-r-color-warning-90));
+  border: 1px solid
+    light-dark(
+      color-mix(in oklab, var(--slds-r-color-warning-70), transparent 50%),
+      color-mix(in oklab, var(--slds-r-color-warning-70), transparent 55%)
+    );
+  box-shadow:
+    inset 0 1px 0 0
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 40%),
+        color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 70%)
+      ),
+    0 4px 16px -2px
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-neutral-0), transparent 90%),
+        color-mix(in oklab, var(--slds-r-color-neutral-0), transparent 70%)
+      ),
+    0 0 20px 0
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-warning-70), transparent 92%),
+        color-mix(in oklab, var(--slds-r-color-warning-70), transparent 90%)
+      ),
+    0 0 30px 0
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-warning-70), transparent 88%),
+        color-mix(in oklab, var(--slds-r-color-warning-70), transparent 80%)
+      );
+}
+
+.slds-notify_toast.slds-theme_error,
+.slds-notify--toast.slds-theme--error {
+  background-color: light-dark(
+    color-mix(in oklab, var(--slds-r-color-error-50), transparent 55%),
+    color-mix(in oklab, var(--slds-r-color-error-50), transparent 62%)
+  );
+  color: light-dark(var(--slds-r-color-error-40), var(--slds-r-color-error-85));
+  border: 1px solid
+    light-dark(
+      color-mix(in oklab, var(--slds-r-color-error-65), transparent 50%),
+      color-mix(in oklab, var(--slds-r-color-error-65), transparent 55%)
+    );
+  box-shadow:
+    inset 0 1px 0 0
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 40%),
+        color-mix(in oklab, var(--slds-r-color-neutral-100), transparent 70%)
+      ),
+    0 4px 16px -2px
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-neutral-0), transparent 90%),
+        color-mix(in oklab, var(--slds-r-color-neutral-0), transparent 70%)
+      ),
+    0 0 20px 0
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-error-50), transparent 92%),
+        color-mix(in oklab, var(--slds-r-color-error-50), transparent 90%)
+      ),
+    0 0 35px 0
+      light-dark(
+        color-mix(in oklab, var(--slds-r-color-error-50), transparent 85%),
+        color-mix(in oklab, var(--slds-r-color-error-50), transparent 75%)
+      );
+}
+
+/* Modal */
+.modal-glass {
+  opacity: 1 !important; /* Legacy code from ui:modal */
+}
+
+.slds-modal__header {
+  border: none;
+  box-shadow: none;
+  border-inline: 1px solid var(--slds-g-color-border-1);
+  border-top: 1px solid var(--slds-g-color-border-1);
+}
+
+.slds-modal__content {
+  box-shadow: none;
+  border-inline: 1px solid var(--slds-g-color-border-1);
+}
+
+.slds-modal__footer {
+  border: none;
+  box-shadow: none;
+  border-inline: 1px solid var(--slds-g-color-border-1);
+  border-bottom: 1px solid var(--slds-g-color-border-1);
+}
+
+/* Avoid double-transparency when not matching Blueprint */
+.slds-modal__content .slds-modal__content,
+.slds-modal__content .slds-modal__footer {
+  background: none;
+}
+
+.slds-modal__content_footless,
+.slds-modal__content--footless,
+.slds-modal__container > .slds-modal__content:last-child,
+.slds-modal__content_has-hidden-footer,
+.slds-modal__content--has-hidden-footer {
+  box-shadow: none;
+}
+
+.slds-backdrop {
+  backdrop-filter: blur(var(--slds-g-blur-medium));
+}
+
+.slds-backdrop_open {
+  opacity: 1;
+}
+
+/* Menu */
+.slds-dropdown,
+.uiInput--lookup.lookup__menu,
+.uiInput--lookup .lookup__menu {
+  backdrop-filter: blur(var(--slds-g-blur-heavy));
+  border: 1px solid var(--slds-g-color-border-1);
+  box-shadow: 0 8px 32px -4px
+    light-dark(
+      color-mix(in oklab, var(--slds-r-color-brand-10), transparent 85%),
+      color-mix(in oklab, var(--slds-r-color-neutral-0), transparent 50%)
+    );
+}
+
+.uiPanel,
+.uiMenuList {
+  backdrop-filter: blur(var(--slds-g-blur-heavy));
+}
+
+/* Progress Indicator */
+.slds-progress__item.slds-is-completed .slds-progress__marker,
+.slds-progress__item.slds-is-active .slds-progress__marker {
+  background-color: var(--slds-g-color-brand-base-100);
+}
+.slds-progress__item.slds-is-active .slds-progress__marker {
+  box-shadow: var(--slds-g-color-brand-base-100) 0 0 0 var(--slds-g-sizing-2);
+}
+.slds-progress__item.slds-has-error .slds-progress__marker,
+.slds-progress__item.slds-has-error .slds-progress__marker:hover,
+.slds-progress__item.slds-has-error .slds-progress__marker:focus {
+  background-color: var(--slds-g-color-brand-base-100);
+}
