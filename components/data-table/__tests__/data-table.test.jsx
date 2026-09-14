@@ -880,19 +880,11 @@ describe('DataTable', () => {
 	});
 
 	describe('Column resizing', () => {
-		// NOTE: Column resizing is driven by the `column-resizer` library, which reads
-		// real element widths via `getBoundingClientRect`/`offsetWidth` — all zero in
-		// jsdom — so a keyboard resize produces no observable width change here. The
-		// grip rendering IS covered below; the resize *behavior* needs a browser-mode
-		// runner. (These are the only two remaining data-table skips; the keyboard
-		// navigation/actionable-mode flows are now real, passing RTL tests above.)
-		it.skip('Resize functionality should work with left key (needs real layout — jsdom limitation)', () => {
-			// Requires column-resizer to measure real column widths, which jsdom reports as 0.
-		});
-
-		it.skip('Resize functionality should work with right key (needs real layout — jsdom limitation)', () => {
-			// Requires column-resizer to measure real column widths, which jsdom reports as 0.
-		});
+		// Keyboard column-resize *behavior* is covered in
+		// `data-table.browser.test.jsx` (Vitest `browser` project): the
+		// `column-resizer` library reads real element widths
+		// (getBoundingClientRect/offsetWidth), all zero in jsdom. Grip *rendering*
+		// is still asserted below in jsdom.
 
 		it('renders resize grips when resizable is enabled', () => {
 			const { container } = renderTable(

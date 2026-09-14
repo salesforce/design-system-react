@@ -295,15 +295,10 @@ describe('SLDSModal', () => {
 			expect(onRequestClose).toHaveBeenCalledTimes(1);
 		});
 
-		// NOTE: The following need real browser focus behavior. jsdom does not move
-		// focus on Tab (so focus-order and focus-trap assertions can't be made) and
-		// does not synthesize a click from Enter/Space on a focused <button>. These
-		// work in real browsers and are covered by manual / Storybook interaction
-		// testing. (Escape-to-close, above, is a keyboard path jsdom *can* test.)
-		it.skip('first tab focuses close button (needs real focus traversal — jsdom limitation)', () => {});
-
-		it.skip('enter on close button works (jsdom does not fire click from Enter on a button)', () => {});
-
-		it.skip('traps focus inside Modal (needs real focus traversal — jsdom limitation)', () => {});
+		// Real browser focus behavior (focus-on-open, Enter-activates-button,
+		// focus trap) is covered in `modal.browser.test.jsx` under the Vitest
+		// `browser` project — jsdom cannot move focus on Tab or synthesize a click
+		// from Enter on a focused <button>. (Escape-to-close, above, is a keyboard
+		// path jsdom *can* test.)
 	});
 });

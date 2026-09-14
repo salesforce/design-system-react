@@ -83,16 +83,16 @@ const config: StorybookConfig = {
 
   viteFinal: async (config) => {
     // Redirect `column-resizer` to a small interop shim (see
-    // ./shims/column-resizer.js). vite 8's Rolldown dependency optimizer no
+    // ../test/shims/column-resizer.js). vite 8's Rolldown dependency optimizer no
     // longer unwraps this UMD bundle's `{ __esModule: true, default: Ctor }`
     // export the way vite 5's esbuild optimizer did, so DataTable's default
     // import resolves to the wrapper object and `new ColumnResizer(...)` throws
     // "is not a constructor" in the dev server. The shim re-exports the actual
-    // constructor as its default. Scoped to Storybook only — the library build
-    // and vitest resolve the interop correctly on their own.
+    // constructor as its default. (The Vitest `browser` project applies the same
+    // alias in vitest.config.ts; the library build + jsdom tests are unaffected.)
     config.resolve = config.resolve || {};
     const shim = fileURLToPath(
-      new URL('./shims/column-resizer.js', import.meta.url)
+      new URL('../test/shims/column-resizer.js', import.meta.url)
     );
     // Use the array (regex) alias form with an anchored pattern so ONLY the bare
     // `column-resizer` specifier is rewritten. The object form does prefix

@@ -323,3 +323,7 @@ $RECYCLE.BIN/
 # Intellij IDE 
 .idea/*
 *.iml
+
+# Vitest browser-mode failure screenshots (regenerated on failing runs)
+**/__tests__/__screenshots__/
+.vitest-attachments/

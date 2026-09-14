@@ -10,7 +10,8 @@
     "components/**/*",
     "utilities/**/*",
     "types/**/*",
-    "vitest.setup.ts"
+    "vitest.setup.ts",
+    "vitest.setup.browser.ts"
   ],
   "exclude": ["node_modules", "dist", ".tmp-npm"]
 }

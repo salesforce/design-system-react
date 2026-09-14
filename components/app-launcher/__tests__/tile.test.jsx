@@ -1,4 +1,4 @@
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import IconSettings from '../../icon-settings';
 
@@ -92,21 +92,9 @@ describe('SLDS APP LAUNCHER TILE', () => {
 			expect(container.textContent).toContain('Support Cloud');
 		});
 
-		// NOTE: The description renders through the `Truncate` component, which measures
-		// text with the Canvas API + `getBoundingClientRect` — both no-ops in jsdom — so
-		// the description text never renders here. Covered by Storybook / real-browser.
-		it.skip('renders custom app description (needs layout/canvas — jsdom limitation)', () => {
-			const { container } = renderTile({
-				className: 'this-is-a-custom-class',
-				description: 'Fluffy support',
-				href: 'https://www.salesforce.com/',
-				onClick,
-				title: 'Support Cloud',
-			});
-
-			const body = container.querySelector('.slds-app-launcher__tile-body');
-			expect(body.textContent).toContain('Fluffy support');
-		});
+		// The description renders through `Truncate` (Canvas + getBoundingClientRect
+		// measurement, both no-ops in jsdom). Description rendering and its search
+		// highlight are covered in `tile.browser.test.jsx` (Vitest `browser` project).
 
 		it('has an href attribute', () => {
 			const { container } = renderTile({
@@ -194,105 +182,14 @@ describe('SLDS APP LAUNCHER TILE', () => {
 			expect(link.textContent).toContain('Support');
 		});
 
-		// NOTE: The description renders through the `Truncate` component, which measures
-		// text width with the Canvas API and `getBoundingClientRect` — both unavailable
-		// in jsdom, so the description text (and its search highlight) never render here.
-		// Covered by Storybook / real-browser testing instead.
-		it.skip('search string highlights description (needs layout/canvas — jsdom limitation)', () => {
-			const { container } = renderTile({
-				search: 'Fluffy',
-				description: 'Fluffy support',
-				title: 'Support Cloud',
-			});
-
-			const body = container.querySelector('.slds-app-launcher__tile-body');
-			expect(body.querySelector('mark')).toBeInTheDocument();
-		});
+		// Description rendering + search highlight run in `tile.browser.test.jsx`
+		// (real Canvas/layout measurement, unavailable in jsdom).
 	});
 
-	describe('App Launcher Tile (truncated)', () => {
-		const description =
-			'The key to call center and contact center management is more simple than you think with this amazing application!';
-
-		const moreLabel = 'MORE!';
-
-		beforeEach(() => {
-			// No-op for consistency
-		});
-
-		afterEach(() => {
-			// No-op for consistency
-		});
-
-		// NOTE: The "more" link only appears once `Truncate` decides the text overflows,
-		// which requires Canvas text measurement + real layout — both unavailable in jsdom.
-		// These three are covered by Storybook / real-browser testing.
-		it.skip('renders more link (needs layout/canvas — jsdom limitation)', () => {
-			const { container } = renderTile({
-				title: 'Call Center',
-				description,
-				isOpenTooltip: true,
-				moreLabel,
-			});
-
-			const moreButton = container.querySelector(
-				'.slds-app-launcher__tile-body button.slds-button_reset'
-			);
-			expect(moreButton).toBeInTheDocument();
-		});
-
-		it.skip('renders custom more link (needs layout/canvas — jsdom limitation)', () => {
-			const { container } = renderTile({
-				title: 'Call Center',
-				description,
-				isOpenTooltip: true,
-				moreLabel,
-			});
-
-			const moreButton = container.querySelector(
-				'.slds-app-launcher__tile-body button.slds-button_reset'
-			);
-			expect(moreButton.textContent).toContain(moreLabel);
-		});
-
-		it.skip('long descriptions use Tooltip activated by hover (needs layout/canvas — jsdom limitation)', async () => {
-			const { container } = renderTile({
-				title: 'Call Center',
-				description,
-				isOpenTooltip: true,
-				moreLabel,
-			});
-
-			const moreButton = container.querySelector(
-				'.slds-app-launcher__tile-body button.slds-button_reset'
-			);
-			fireEvent.mouseEnter(moreButton);
-
-			// NOTE: Tooltip uses portal mount, may require waitFor in jsdom
-			await waitFor(() => {
-				const tooltip = document.querySelector('.slds-popover_tooltip');
-				expect(tooltip).toBeInTheDocument();
-			}, { timeout: 1000 });
-
-			fireEvent.mouseLeave(moreButton);
-		});
-
-		// NOTE: The tooltip only mounts via the `Truncate` "more" affordance, which needs
-		// Canvas measurement + layout (jsdom limitation). The highlighter itself is now
-		// React-19 compatible; only the truncation trigger is untestable here.
-		it.skip('search string highlights tooltip content (needs layout/canvas — jsdom limitation)', () => {
-			const { container } = renderTile({
-				search: 'call',
-				description,
-				isOpenTooltip: true,
-				moreLabel,
-				title: 'Call Center',
-			});
-
-			const tooltip = document.querySelector('.slds-popover_tooltip');
-			expect(tooltip?.querySelector('mark')).toBeInTheDocument();
-		});
-	});
+	// The "truncated" tile cluster — "more" link, custom label, hover Tooltip,
+	// and tooltip search highlight — lives in `tile.browser.test.jsx`. All four
+	// depend on `Truncate` measuring real text overflow (Canvas +
+	// getBoundingClientRect), which jsdom cannot do.
 
 	describe('App Launcher Tile (text icon)', () => {
 		beforeEach(() => {
