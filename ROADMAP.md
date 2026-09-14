@@ -104,12 +104,38 @@ enhancement issues, not story fill-ins:
 
 ## Known Limitations
 
-1. **Node.js** — Requires Node.js >= 20.19.0 (or >= 22.12.0).
+1. **Node.js** — Requires Node.js >= 24.
 2. **React 19 only** — no backward compatibility with React 16/17/18.
-3. **Popper.js v1** — Dialog/Lookup positioning still uses the deprecated library (P1).
-4. **Published CSS** — the published package does not yet ship SLDS 2 CSS to consumers;
+3. **Published CSS** — the published package does not yet ship SLDS 2 CSS to consumers;
    Storybook wires it up locally from the npm package (P3).
-5. **Toolchain majors pending** — Vite/Vitest/ESLint are a major version behind (P4).
+
+### Runtime prop validation (intentional tradeoff)
+
+Converting components to TypeScript removed their `static propTypes`. TS types are
+erased at build time, so a **plain-JS/Babel consumer no longer gets React's
+dev-mode PropTypes console warnings** (wrong prop type / missing required prop) for
+converted components. This is a deliberate, conventional tradeoff for a TS
+migration (React itself deprecated PropTypes in v19; MUI, Chakra, etc. made the
+same move). We accepted it rather than dual-maintaining hand-written PropTypes
+alongside the types.
+
+What still protects consumers:
+
+- **Shipped `.d.ts` declarations.** The package now emits per-file declarations
+  mirroring the source tree (`dist/types/**`, wired through the `exports` map).
+  Modern editors (VS Code et al.) pick these up — for TS users directly, and for
+  **plain-JS users via Automatic Type Acquisition (ATA)** — giving rich
+  autocomplete and inline type/required-prop warnings at author time, with zero
+  runtime overhead. This covers most of what PropTypes did, earlier (in-editor)
+  and for both audiences.
+- **`checkProps` dev warnings survive.** The `check-props.js` dev-only system
+  (deprecation notices and one-of-required-property business rules) is still
+  invoked by converted components — a different, narrower check than PropTypes,
+  and unaffected by the migration.
+
+If runtime enforcement for JS consumers is later deemed necessary, generating
+PropTypes from the TS types at build (e.g. `babel-plugin-typescript-to-proptypes`)
+is the path — evaluated and deferred, not precluded.
 
 ## How to Help
 
