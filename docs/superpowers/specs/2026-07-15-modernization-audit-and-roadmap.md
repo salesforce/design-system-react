@@ -1,13 +1,49 @@
 # Design System React — Modernization Audit & Roadmap
 
-**Date:** 2026-07-15
-**Branch audited:** `feat/typescript-modernization`
+**Original audit date:** 2026-07-15
+**Status update:** 2026-09-14
+**Branch:** `feat/typescript-modernization`
 **Scope:** Full critical review of every artifact + all 71 components, plus SLDS 2 package research.
 **Method:** 21-agent parallel audit (7 systemic areas, 12 component batches, 1 SLDS research), key findings independently re-verified against the tree and the live npm registry.
 
 ---
 
-## 1. Verdict
+## 0. Status update (2026-09-14) — the audit below is largely RESOLVED
+
+> The audit in §1–§9 is a **2026-07-15 snapshot** of an early-stage branch
+> (~15–20% complete). It is preserved as the historical baseline. Since then the
+> prioritized roadmap (P0–P4) has been executed and the branch is now in a very
+> different state. Current reality, verified against the tree on 2026-09-14:
+
+| 2026-07-15 blocker / finding | Status now |
+|---|---|
+| No root `tsconfig.json`; type-check gate inert | ✅ Fixed — `tsconfig.json` exists; `tsc --noEmit` covers `components/**`, clean |
+| Enzyme on React 19 impossible; 1 collectable test | ✅ Fixed — Enzyme fully removed (0 refs); **1216 tests** across Vitest jsdom + a Playwright browser project + story HTML snapshots |
+| npm-publish pipeline dead (Node 14, `.tmp-npm`) | ✅ Fixed — real CI (`ci.yml`) + working publish; Node 24; ships Vite `dist/` |
+| Install needs `--legacy-peer-deps`; `react-onclickoutside` caps at 18 | ✅ Fixed — `react-onclickoutside` removed (0 imports); clean `npm install` |
+| CJS entry unusable (`ERR_REQUIRE_ESM`) | ✅ Fixed — real `.cjs` output; `exports` map with import/require/types |
+| `input` ships legacy `.jsx` class | ✅ Fixed — converted; only **2** non-test source `.jsx` remain (`lookup`, `utilities/dialog`) |
+| `popper.js` v1 underpins positioning | ✅ Fixed — migrated to `@floating-ui/dom` |
+| Dead deps (`create-react-class`, `react-text-truncate`, `react-required-if`, `lodash.isequal`) | ✅ Removed |
+| Barrel-only exports; no deep imports; no `sideEffects` | ✅ Fixed — `preserveModules` per-file build + `exports` map restores `components/*` deep imports; `sideEffects:false` |
+| dts scope wrong (types folder only) | ✅ Fixed — per-file `.d.ts` tree via `tsc` emitDeclarationOnly, wired through `exports` `types` conditions |
+| SLDS 2: vendored 952 KB `slds-plus.css`, Storybook-only | ✅ Swapped to `@salesforce-ux/design-system-2` npm package (Storybook loads from it); `slds-plus.css` now unreferenced |
+| Toolchain 1–2 majors behind (Vite 5, Vitest 1, ESLint 8, ts-eslint 7) | ✅ Upgraded — Vite 8, Vitest 4, ESLint 10 (flat config), typescript-eslint 8, TypeScript 7 (side-by-side w/ 6.0 API), Storybook 10.5 |
+| Node floor claim | Node **>= 24** |
+
+**Current test/quality gate:** `tsc --noEmit` clean · ESLint **0 errors** (256 warnings, the tracked gradual-migration backlog) · **1216 tests** green · library build + Storybook build succeed · deep-import package contract verified against a packed tarball (ESM/CJS/types).
+
+**Known remaining / deliberate tradeoffs (see `ROADMAP.md`):**
+- 2 source `.jsx` not yet converted (`lookup`, `utilities/dialog`).
+- `react-highlighter-ts` held (no React-19 release); wrapper casts around it.
+- Runtime PropTypes dropped by the TS conversion (intentional; mitigated by shipped `.d.ts` + editor ATA and the surviving `checkProps` dev warnings).
+- vitest 5 held at 4.x pending a build-environment registry cutoff.
+
+The remainder of this document is the original 2026-07-15 audit, unchanged.
+
+---
+
+## 1. Verdict *(2026-07-15 snapshot — see §0 for current status; most of this is now resolved)*
 
 **This branch is an early-stage, façade-deep modernization mislabeled as near-complete.** The *dev-time surface* (Vite / Vitest / TS / Storybook 10 config files) exists and looks modern, but the production build, the test suite, the type-check gate, and the publish pipeline are all non-functional or inert.
 
