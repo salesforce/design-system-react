@@ -1,43 +1,24 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import dts from 'vite-plugin-dts';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// Externalize React and any bare (node_modules) dependency — a component library
+// should not bundle its deps. Relative/aliased source is kept in the build.
+const external = (id: string) =>
+	/^react($|\/)/.test(id) ||
+	/^react-dom($|\/)/.test(id) ||
+	(!id.startsWith('.') &&
+		!id.startsWith('/') &&
+		!id.startsWith('~') &&
+		!id.startsWith('@components') &&
+		!id.startsWith('@utilities') &&
+		!id.startsWith('@types'));
+
 export default defineConfig({
-  plugins: [
-    react(),
-    dts({
-      // Emit declarations for the real published surface: the components barrel
-      // and its sidecar .d.ts / .tsx types, the utilities, and the shared types
-      // folder. Restricted to TS/TSX/d.ts so the 600+ untyped .jsx files are not
-      // churned (they contribute no types yet — see the modernization roadmap).
-      entryRoot: '.',
-      outDir: 'dist/types',
-      // Copy hand-written .d.ts (e.g. the components/index.d.ts barrel and the
-      // sidecar component declarations) into the output — the plugin only
-      // *generates* from .ts/.tsx and would otherwise drop these.
-      copyDtsFiles: true,
-      include: [
-        'components/**/*.ts',
-        'components/**/*.tsx',
-        'components/**/*.d.ts',
-        'utilities/**/*.ts',
-        'utilities/**/*.d.ts',
-        'types/**/*.ts',
-      ],
-      exclude: [
-        '**/*.test.*',
-        '**/*.spec.*',
-        '**/*.browser-test.*',
-        '**/__tests__/**',
-        '**/__examples__/**',
-        '**/__docs__/**',
-      ],
-    }),
-  ],
+  plugins: [react()],
   resolve: {
     // Force a single copy of React/ReactDOM. `react-highlighter-ts` declares
     // `react@^17` as a hard dependency (not a peer); a package.json `overrides`
@@ -57,29 +38,33 @@ export default defineConfig({
       transformMixedEsModules: true,
     },
     lib: {
+      // The barrel is the graph root; `preserveModules` (below) then emits every
+      // reachable source module as its own file, mirroring the components/ tree,
+      // so consumers can deep-import `@salesforce/design-system-react/components/
+      // accordion` (and `.../accordion/panel`, etc.) as they always could.
       entry: path.resolve(__dirname, 'components/index.js'),
-      name: 'DesignSystemReact',
-      // Emit ESM as .es.js and CommonJS as .cjs. Under "type": "module" a
-      // plain .js is treated as ESM, so the CJS build MUST use the .cjs
-      // extension or `require('design-system-react')` throws ERR_REQUIRE_ESM.
       formats: ['es', 'cjs'],
-      fileName: (format) =>
-        format === 'cjs'
-          ? 'design-system-react.cjs'
-          : `design-system-react.${format}.js`,
     },
     rollupOptions: {
-      // Externalize peer dependencies
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'jsxRuntime',
+      external,
+      output: [
+        {
+          format: 'es',
+          preserveModules: true,
+          preserveModulesRoot: '.',
+          dir: 'dist/es',
+          entryFileNames: '[name].js',
         },
-      },
+        {
+          format: 'cjs',
+          preserveModules: true,
+          preserveModulesRoot: '.',
+          dir: 'dist/cjs',
+          entryFileNames: '[name].cjs',
+          exports: 'named',
+        },
+      ],
     },
     sourcemap: true,
   },
 });
-

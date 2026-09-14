@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type SyntheticEvent } from 'react';
+import React, { type ReactElement, type SyntheticEvent } from 'react';
 
 import Week from './week';
 import DateUtil from '../../../utilities/date';
@@ -178,7 +178,7 @@ class DatepickerCalendar extends React.Component<CalendarProps, CalendarState> {
 			firstDayOfWeek = firstDayOfMonth;
 		}
 
-		const weeks = [];
+		const weeks: ReactElement[] = [];
 		let done = false;
 
 		let monthIndex = firstDayOfWeek.getMonth();

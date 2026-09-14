@@ -9,7 +9,9 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && npm run build:types && npm run build:shims",
+    "build:types": "tsc -p tsconfig.dts.json",
+    "build:shims": "node scripts/generate-entry-shims.mjs",
     "preview": "vite preview",
     "test": "vitest",
     "test:unit": "vitest --project unit",
@@ -56,8 +58,8 @@
   "bugs": {
     "url": "https://github.com/salesforce/design-system-react/issues"
   },
-  "main": "dist/design-system-react.cjs",
-  "module": "dist/design-system-react.es.js",
+  "main": "dist/cjs/components/index.cjs",
+  "module": "dist/es/components/index.js",
   "types": "dist/types/components/index.d.ts",
   "sideEffects": false,
   "files": [
@@ -69,10 +71,29 @@
   "exports": {
     ".": {
       "types": "./dist/types/components/index.d.ts",
-      "import": "./dist/design-system-react.es.js",
-      "require": "./dist/design-system-react.cjs",
-      "default": "./dist/design-system-react.es.js"
-    }
+      "import": "./dist/es/components/index.js",
+      "require": "./dist/cjs/components/index.cjs",
+      "default": "./dist/es/components/index.js"
+    },
+    "./components": {
+      "types": "./dist/types/components/index.d.ts",
+      "import": "./dist/es/components/index.js",
+      "require": "./dist/cjs/components/index.cjs",
+      "default": "./dist/es/components/index.js"
+    },
+    "./components/*": {
+      "types": "./dist/types/components/*.d.ts",
+      "import": "./dist/es/components/*.js",
+      "require": "./dist/cjs/components/*.cjs",
+      "default": "./dist/es/components/*.js"
+    },
+    "./utilities/*": {
+      "types": "./dist/types/utilities/*.d.ts",
+      "import": "./dist/es/utilities/*.js",
+      "require": "./dist/cjs/utilities/*.cjs",
+      "default": "./dist/es/utilities/*.js"
+    },
+    "./package.json": "./package.json"
   },
   "homepage": "https://react.lightningdesignsystem.com",
   "dependencies": {

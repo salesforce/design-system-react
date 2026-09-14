@@ -66,6 +66,8 @@ export default tseslint.config(
 			'**/*.config.mjs',
 			'.storybook/**',
 			'eslint-plugin/**',
+			// Build/release tooling (Node scripts), outside the type-aware program.
+			'scripts/**',
 			// Legacy Karma/chai/sinon browser tests, excluded from the Vitest run
 			// and not migrated. They reference globals (sinon) that no longer
 			// exist, so linting them only produces no-undef noise.

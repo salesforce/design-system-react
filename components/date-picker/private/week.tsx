@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import { type SyntheticEvent } from 'react';
+import { type ReactElement, type SyntheticEvent } from 'react';
 
 import Day from './day';
 
@@ -61,7 +61,7 @@ export interface WeekProps {
 }
 
 const DatepickerWeek = (props: WeekProps) => {
-	const days = [];
+	const days: ReactElement[] = [];
 	let date = props.firstDayOfWeek;
 
 	for (let i = 0; i < 7; i += 1) {

@@ -814,7 +814,7 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 	handleKeyDownEnter() {
 		if (this.state.mode === Mode.NAVIGATION) {
 			const { rowIndex, columnIndex } = this.state.activeCell;
-			let activeElement = null;
+			let activeElement: string | null = null;
 			if (
 				this.interactiveElements[rowIndex] &&
 				this.interactiveElements[rowIndex][columnIndex]
