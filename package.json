@@ -140,6 +140,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-storybook": "^10.5.10",
     "globals": "^17.11.0",
+    "js-beautify": "^1.15.4",
     "jsdom": "^30.0.0",
     "playwright": "^1.63.0",
     "prettier": "^3.2.5",
