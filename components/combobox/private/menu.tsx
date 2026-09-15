@@ -106,6 +106,22 @@ const renderLabel = (labelProp: string | ((searchTerm: string) => ReactNode) | u
 	return labelProp(searchTerm);
 };
 
+// Entity icons in a combobox listbox option render at "small" per SLDS. `Icon`
+// defaults to "medium", so an option icon passed without an explicit size shows
+// oversized in the menu (SLDS 2 no longer shrinks it via CSS the way SLDS 1
+// did). Clone the icon to enforce "small" unless the consumer set a size
+// themselves. Leaves non-<Icon> nodes untouched.
+const sizeOptionIcon = (icon: ReactNode): ReactNode => {
+	if (!React.isValidElement(icon)) {
+		return icon;
+	}
+	const iconProps = icon.props as { size?: unknown };
+	if (iconProps.size != null) {
+		return icon;
+	}
+	return React.cloneElement(icon, { size: 'small' } as Record<string, unknown>);
+};
+
 const Menu: React.FC<MenuProps> = ({
 	activeOption,
 	activeOptionIndex = -1,
@@ -196,7 +212,7 @@ const Menu: React.FC<MenuProps> = ({
 						role="option"
 					>
 						<span className="slds-media__figure slds-listbox__option-icon">
-							{optionData.icon}
+							{sizeOptionIcon(optionData.icon)}
 						</span>
 						<span className="slds-media__body">
 							{renderLabel(optionData.label, inputValue)}
@@ -231,7 +247,7 @@ const Menu: React.FC<MenuProps> = ({
 						role="option"
 					>
 						<span className="slds-media__figure slds-listbox__option-icon">
-							{optionData.icon}
+							{sizeOptionIcon(optionData.icon)}
 						</span>
 						<span className="slds-media__body">
 							{renderLabel(optionData.label, inputValue)}
@@ -279,7 +295,9 @@ const Menu: React.FC<MenuProps> = ({
 					role="option"
 				>
 					{optionData.icon && !MenuItem ? (
-						<span className="slds-media__figure">{optionData.icon}</span>
+						<span className="slds-media__figure">
+							{sizeOptionIcon(optionData.icon)}
+						</span>
 					) : null}
 					{MenuItem ? (
 						<MenuItem
