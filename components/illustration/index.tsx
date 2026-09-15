@@ -5,9 +5,10 @@ import React, { type ReactNode, type CSSProperties } from 'react';
 import classNames from '../../utilities/class-names';
 import Svg from '../utilities/utility-icon/svg';
 import { ILLUSTRATION } from '../../utilities/constants';
-// Development-only prop validation (commented out for TS migration)
-// import checkProps from './check-props';
-// import componentDoc from './component.json';
+// Development-only deprecation warning. Illustration is deprecated for security
+// reasons (imported SVGs bypass SLDS styles via shadow DOM, and a user-provided
+// `path` is an XSS vector). This must fire — do not drop it.
+import checkProps from './check-props';
 
 /**
  * Illustration size options
@@ -95,6 +96,20 @@ const Illustration = ({
 	style = {},
 	...rest
 }: IllustrationProps): React.ReactElement => {
+	// Dev-only deprecation warning (see check-props.js): Illustration is
+	// deprecated, and using `path` with user-provided SVGs is an XSS risk.
+	(checkProps as (component: string, props: unknown) => void)(ILLUSTRATION, {
+		className,
+		illustration,
+		heading,
+		messageBody,
+		name,
+		path,
+		internalIllustration,
+		size,
+		style,
+	});
+
 	const kebabCaseName = name ? name.replace(/_| /g, '-').toLowerCase() : '';
 	const styles: CSSProperties = { ...style };
 	let illustrationSvg: React.ReactNode = null;
@@ -150,4 +165,3 @@ const Illustration = ({
 Illustration.displayName = ILLUSTRATION;
 
 export default Illustration;
-
