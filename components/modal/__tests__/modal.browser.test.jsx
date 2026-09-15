@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import { userEvent } from 'vitest/browser';
 import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest';
 
@@ -59,10 +59,17 @@ describe('SLDSModal (browser)', () => {
 		renderModal({ onRequestClose });
 
 		const closeButton = getCloseButton();
-		closeButton.focus();
+		// `.focus()` triggers react-modal's focus-scope state update; wrap it so
+		// React can flush inside act() and no "not wrapped in act(...)" warning
+		// is emitted.
+		await act(async () => {
+			closeButton.focus();
+		});
 		expect(document.activeElement).toBe(closeButton);
 
-		await userEvent.keyboard('{Enter}');
+		await act(async () => {
+			await userEvent.keyboard('{Enter}');
+		});
 
 		expect(onRequestClose).toHaveBeenCalled();
 	});
@@ -78,9 +85,13 @@ describe('SLDSModal (browser)', () => {
 		const content = document.body.querySelector('.ReactModal__Content');
 
 		// Tab several times; focus must never escape the modal content subtree.
+		// Each Tab moves focus through react-modal's trap, a React state update —
+		// wrap so it flushes inside act().
 		for (let i = 0; i < 8; i += 1) {
 			// eslint-disable-next-line no-await-in-loop
-			await userEvent.keyboard('{Tab}');
+			await act(async () => {
+				await userEvent.keyboard('{Tab}');
+			});
 			expect(content.contains(document.activeElement)).toBe(true);
 		}
 	});

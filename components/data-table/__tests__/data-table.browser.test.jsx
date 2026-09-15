@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react';
+import { render, waitFor, act } from '@testing-library/react';
 import { userEvent } from 'vitest/browser';
 import { describe, it, expect } from 'vitest';
 
@@ -44,11 +44,15 @@ describe('DataTable column resizing (browser)', () => {
 
 	// Enter resize mode on the first header: focus a body cell, Up to the header
 	// row, Enter to grab the resize grip.
+	// Focus + keyboard navigation drive DataTable's activeCell/mode state and the
+	// column-resizer, so wrap them in act() to flush React updates cleanly.
 	const enterResizeMode = async (container) => {
 		const firstCell = container.querySelector('tbody td');
-		firstCell.focus();
-		await userEvent.keyboard('{ArrowUp}');
-		await userEvent.keyboard('{Enter}');
+		await act(async () => {
+			firstCell.focus();
+			await userEvent.keyboard('{ArrowUp}');
+			await userEvent.keyboard('{Enter}');
+		});
 	};
 
 	const firstHeaderWidth = (container) =>
@@ -67,8 +71,10 @@ describe('DataTable column resizing (browser)', () => {
 		const initial = firstHeaderWidth(container);
 		await enterResizeMode(container);
 
-		await userEvent.keyboard('{ArrowLeft}{ArrowLeft}{ArrowLeft}');
-		await userEvent.keyboard('{Escape}');
+		await act(async () => {
+			await userEvent.keyboard('{ArrowLeft}{ArrowLeft}{ArrowLeft}');
+			await userEvent.keyboard('{Escape}');
+		});
 
 		await waitFor(() => {
 			expect(firstHeaderWidth(container)).toBeLessThan(initial);
@@ -87,8 +93,10 @@ describe('DataTable column resizing (browser)', () => {
 		const initial = firstHeaderWidth(container);
 		await enterResizeMode(container);
 
-		await userEvent.keyboard('{ArrowRight}{ArrowRight}{ArrowRight}');
-		await userEvent.keyboard('{Escape}');
+		await act(async () => {
+			await userEvent.keyboard('{ArrowRight}{ArrowRight}{ArrowRight}');
+			await userEvent.keyboard('{Escape}');
+		});
 
 		await waitFor(() => {
 			expect(firstHeaderWidth(container)).toBeGreaterThan(initial);
