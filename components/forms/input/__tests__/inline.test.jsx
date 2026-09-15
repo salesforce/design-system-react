@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
 
 import IconSettings from '../../../icon-settings';
-import Input from '../index';
+import Input from '../../../input';
 
 describe('SLDSInput inline variant', () => {
 	const renderInput = (props = {}) => {
