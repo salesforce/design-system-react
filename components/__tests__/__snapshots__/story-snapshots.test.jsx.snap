@@ -10299,7 +10299,11 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
               </div>
             </div>
             <div class="slds-summary-detail__content" id="slds-snapshot-id-1-detail-content">
-              <div class="slds-setup-assistant__step-detail"></div>
+              <div class="slds-setup-assistant__step-detail">
+                <div class="slds-p-around_medium">
+                  <p>Step 1 content goes here...</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -10327,7 +10331,11 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
               </div>
             </div>
             <div class="slds-summary-detail__content" id="slds-snapshot-id-2-detail-content">
-              <div class="slds-setup-assistant__step-detail"></div>
+              <div class="slds-setup-assistant__step-detail">
+                <div class="slds-p-around_medium">
+                  <p>Step 2 content goes here...</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -10355,7 +10363,11 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
               </div>
             </div>
             <div class="slds-summary-detail__content" id="slds-snapshot-id-3-detail-content">
-              <div class="slds-setup-assistant__step-detail"></div>
+              <div class="slds-setup-assistant__step-detail">
+                <div class="slds-p-around_medium">
+                  <p>Step 3 content goes here...</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -10383,7 +10395,11 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
               </div>
             </div>
             <div class="slds-summary-detail__content" id="slds-snapshot-id-4-detail-content">
-              <div class="slds-setup-assistant__step-detail"></div>
+              <div class="slds-setup-assistant__step-detail">
+                <div class="slds-p-around_medium">
+                  <p>Step 4 content goes here...</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

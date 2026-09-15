@@ -103,42 +103,46 @@ export const Interactive = {
 					isComplete
 					isExpandable
 					isOpen={openStep === 0}
-				>
-					<div className="slds-p-around_medium">
-						<p>Step 1 content goes here...</p>
-					</div>
-				</SetupAssistantStep>
+					onRenderContent={() => (
+						<div className="slds-p-around_medium">
+							<p>Step 1 content goes here...</p>
+						</div>
+					)}
+				/>
 				<SetupAssistantStep
 					heading="Configure Settings"
 					description="Set up your organization settings"
 					isComplete
 					isExpandable
 					isOpen={openStep === 1}
-				>
-					<div className="slds-p-around_medium">
-						<p>Step 2 content goes here...</p>
-					</div>
-				</SetupAssistantStep>
+					onRenderContent={() => (
+						<div className="slds-p-around_medium">
+							<p>Step 2 content goes here...</p>
+						</div>
+					)}
+				/>
 				<SetupAssistantStep
 					heading="Import Data"
 					description="Import your existing data"
 					isExpandable
 					isOpen={openStep === 2}
-				>
-					<div className="slds-p-around_medium">
-						<p>Step 3 content goes here...</p>
-					</div>
-				</SetupAssistantStep>
+					onRenderContent={() => (
+						<div className="slds-p-around_medium">
+							<p>Step 3 content goes here...</p>
+						</div>
+					)}
+				/>
 				<SetupAssistantStep
 					heading="Setup Integrations"
 					description="Connect with other services"
 					isExpandable
 					isOpen={openStep === 3}
-				>
-					<div className="slds-p-around_medium">
-						<p>Step 4 content goes here...</p>
-					</div>
-				</SetupAssistantStep>
+					onRenderContent={() => (
+						<div className="slds-p-around_medium">
+							<p>Step 4 content goes here...</p>
+						</div>
+					)}
+				/>
 			</SetupAssistant>
 		);
 	},
