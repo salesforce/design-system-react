@@ -10274,7 +10274,7 @@ exports[`Story HTML snapshots > SetupAssistant > Default 1`] = `
 </div>"
 `;
 
-exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
+exports[`Story HTML snapshots > SetupAssistant > ExpandableSteps 1`] = `
 "<div class="slds-p-around_medium">
   <ol id="_R_0_" class="slds-setup-assistant">
     <li class="slds-setup-assistant__item" id="slds-snapshot-id-1">
@@ -10286,13 +10286,25 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
             <div class="slds-summary-detail__title">
               <div class="slds-setup-assistant__step-summary">
                 <div class="slds-media">
+                  <div class="slds-media__figure">
+                    <div class="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large">
+                      <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" class="slds-progress-ring__progress" role="progressbar" style="height:2rem;transform:scaleX(1) rotate(-90deg)"><svg viewBox="-1 -1 2 2">
+                          <path class="slds-progress-ring__path" d="M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0"></path>
+                        </svg></div>
+                      <div class="slds-progress-ring__content"><span title="Complete"><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
+                            <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                          </svg></span></div>
+                    </div>
+                  </div>
                   <div class="slds-media__body slds-m-top_x-small">
                     <div class="slds-media">
                       <div class="slds-setup-assistant__step-summary-content slds-media__body">
-                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-1-detail-content">Add Users</button></h3>
-                        <p>Add users to your organization</p>
+                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-1-detail-content">Add Users to Your Org</button></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                       </div>
-                      <div class="slds-media__figure slds-media__figure_reverse"></div>
+                      <div class="slds-media__figure slds-media__figure_reverse">
+                        <p class="slds-text-align_right slds-text-color_weak">4 mins</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -10300,8 +10312,41 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
             </div>
             <div class="slds-summary-detail__content" id="slds-snapshot-id-1-detail-content">
               <div class="slds-setup-assistant__step-detail">
-                <div class="slds-p-around_medium">
-                  <p>Step 1 content goes here...</p>
+                <div id="setup-assistant-step-1-progress" class="slds-progress slds-progress_vertical slds-progress_success">
+                  <ol class="slds-progress__list slds-progress__list-bordered">
+                    <li class="slds-progress__item slds-is-completed"><button class="slds-button slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success" type="button"><span><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+                          </svg></span><span class="slds-assistive-text">Step 1: Turn on Lightning for all users. - Completed</span></button>
+                      <div id="progress-indicator-vertical-label-substep-0" class="slds-progress__item_content slds-grid slds-grid_align-spread">
+                        <div class="slds-size_3-of-4">Turn on Lightning for all users.</div>
+                        <div class="slds-grid slds-grid_align-end slds-size_1-of-4">
+                          <div class="slds-media__figure slds-media__figure_reverse">
+                            <div class="slds-form-element"><label class="slds-checkbox_toggle slds-grid" for="substep-0-action"><input id="substep-0-action" type="checkbox" aria-describedby="substep-0-action-desc" checked="" /><span id="substep-0-action-desc" class="slds-checkbox_faux_container" aria-live="assertive"><span class="slds-checkbox_faux"></span><span class="slds-checkbox_on">Enabled</span><span class="slds-checkbox_off">Disabled</span></span></label></div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="slds-progress__item slds-is-completed"><button class="slds-button slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success" type="button"><span><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+                          </svg></span><span class="slds-assistive-text">Step 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. - Completed</span></button>
+                      <div id="progress-indicator-vertical-label-substep-1" class="slds-progress__item_content slds-grid slds-grid_align-spread">
+                        <div class="slds-size_3-of-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        <div class="slds-grid slds-grid_align-end slds-size_1-of-4">
+                          <div class="slds-media__figure slds-media__figure_reverse"><button class="slds-button_reset slds-text-link" id="substep-1-action" type="button">View in Trailhead</button></div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="slds-progress__item slds-is-completed"><button class="slds-button slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success" type="button"><span><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                            <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+                          </svg></span><span class="slds-assistive-text">Step 3: Lorem ipsum dolor sit amet, lorem ipsum dolor. - Completed</span></button>
+                      <div id="progress-indicator-vertical-label-substep-2" class="slds-progress__item_content slds-grid slds-grid_align-spread">
+                        <div class="slds-size_3-of-4">Lorem ipsum dolor sit amet, lorem ipsum dolor.</div>
+                        <div class="slds-grid slds-grid_align-end slds-size_1-of-4">
+                          <div class="slds-media__figure slds-media__figure_reverse"><button class="slds-button slds-button_outline-brand" id="substep-2-action" type="button">Add Users</button></div>
+                        </div>
+                      </div>
+                    </li>
+                  </ol>
                 </div>
               </div>
             </div>
@@ -10311,20 +10356,30 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
     </li>
     <li class="slds-setup-assistant__item" id="slds-snapshot-id-2">
       <article class="slds-setup-assistant__step">
-        <div class="slds-summary-detail"><button class="slds-button slds-button_icon slds-m-right_x-small slds-m-top_x-small" type="button" aria-controls="slds-snapshot-id-2-detail-content"><svg class="slds-button__icon slds-summary-detail__action-icon" aria-hidden="true">
+        <div class="slds-summary-detail slds-is-open"><button class="slds-button slds-button_icon slds-m-right_x-small slds-m-top_x-small" type="button" aria-controls="slds-snapshot-id-2-detail-content"><svg class="slds-button__icon slds-summary-detail__action-icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
             </svg><span class="slds-assistive-text">Expand Step</span></button>
           <div class="slds-container_fluid">
             <div class="slds-summary-detail__title">
               <div class="slds-setup-assistant__step-summary">
                 <div class="slds-media">
+                  <div class="slds-media__figure">
+                    <div class="slds-progress-ring slds-progress-ring_active-step slds-progress-ring_large">
+                      <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="33" class="slds-progress-ring__progress" role="progressbar" style="height:2rem;transform:scaleX(1) rotate(-90deg)"><svg viewBox="-1 -1 2 2">
+                          <path class="slds-progress-ring__path" d="M 1 0 A 1 1 0 0 1 -0.48175367410171543 0.8763066800438635 L 0 0"></path>
+                        </svg></div>
+                      <div class="slds-progress-ring__content">2</div>
+                    </div>
+                  </div>
                   <div class="slds-media__body slds-m-top_x-small">
                     <div class="slds-media">
                       <div class="slds-setup-assistant__step-summary-content slds-media__body">
-                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-2-detail-content">Configure Settings</button></h3>
-                        <p>Set up your organization settings</p>
+                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-2-detail-content">Create Profiles for Your Users</button></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                       </div>
-                      <div class="slds-media__figure slds-media__figure_reverse"></div>
+                      <div class="slds-media__figure slds-media__figure_reverse">
+                        <p class="slds-text-align_right slds-text-color_weak">10 mins</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -10332,8 +10387,43 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
             </div>
             <div class="slds-summary-detail__content" id="slds-snapshot-id-2-detail-content">
               <div class="slds-setup-assistant__step-detail">
-                <div class="slds-p-around_medium">
-                  <p>Step 2 content goes here...</p>
+                <div id="setup-assistant-step-2-progress" class="slds-progress slds-progress_vertical slds-progress_success">
+                  <ol class="slds-progress__list slds-progress__list-bordered">
+                    <li class="slds-progress__item slds-is-active"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 1: Turn on Lightning for all users.</span></button>
+                      <div id="progress-indicator-vertical-label-substep-0" class="slds-progress__item_content slds-grid slds-grid_align-spread">
+                        <div class="slds-size_3-of-4">Turn on Lightning for all users.</div>
+                        <div class="slds-grid slds-grid_align-end slds-size_1-of-4">
+                          <div class="slds-media__figure slds-media__figure_reverse">
+                            <div class="slds-form-element"><label class="slds-checkbox_toggle slds-grid" for="substep-0-action"><input id="substep-0-action" type="checkbox" aria-describedby="substep-0-action-desc" /><span id="substep-0-action-desc" class="slds-checkbox_faux_container" aria-live="assertive"><span class="slds-checkbox_faux"></span><span class="slds-checkbox_on">Enabled</span><span class="slds-checkbox_off">Disabled</span></span></label></div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="slds-progress__item"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></button>
+                      <div id="progress-indicator-vertical-label-substep-1" class="slds-progress__item_content slds-grid slds-grid_align-spread">
+                        <div class="slds-size_3-of-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        <div class="slds-grid slds-grid_align-end slds-size_1-of-4">
+                          <div class="slds-media__figure slds-media__figure_reverse"><button class="slds-button_reset slds-text-link" id="substep-1-action" type="button">View in Trailhead</button></div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="slds-progress__item"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 3: Lorem ipsum dolor sit amet, lorem ipsum dolor.</span></button>
+                      <div id="progress-indicator-vertical-label-substep-2" class="slds-progress__item_content slds-grid slds-grid_align-spread">
+                        <div class="slds-size_3-of-4">Lorem ipsum dolor sit amet, lorem ipsum dolor.</div>
+                        <div class="slds-grid slds-grid_align-end slds-size_1-of-4">
+                          <div class="slds-media__figure slds-media__figure_reverse"><button class="slds-button slds-button_outline-brand" id="substep-2-action" type="button">Add Users</button></div>
+                        </div>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+                <div class="slds-scoped-notification slds-media slds-media_center slds-scoped-notification_light" role="status">
+                  <div class="slds-media__figure"><span><svg class="slds-icon slds-icon_small slds-icon-text-default" aria-hidden="true">
+                        <use href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
+                      </svg><span class="slds-assistive-text">Info</span></span></div>
+                  <div class="slds-media__body">
+                    <p>It looks as if duplicates exist for this lead. <a href="#">View Duplicates.</a></p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -10350,13 +10440,23 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
             <div class="slds-summary-detail__title">
               <div class="slds-setup-assistant__step-summary">
                 <div class="slds-media">
+                  <div class="slds-media__figure">
+                    <div class="slds-progress-ring slds-progress-ring_large">
+                      <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" class="slds-progress-ring__progress" role="progressbar" style="height:2rem;transform:scaleX(1) rotate(-90deg)"><svg viewBox="-1 -1 2 2">
+                          <path class="slds-progress-ring__path" d="M 1 0 A 1 1 0 0 1 1 0 L 0 0"></path>
+                        </svg></div>
+                      <div class="slds-progress-ring__content">3</div>
+                    </div>
+                  </div>
                   <div class="slds-media__body slds-m-top_x-small">
                     <div class="slds-media">
                       <div class="slds-setup-assistant__step-summary-content slds-media__body">
-                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-3-detail-content">Import Data</button></h3>
-                        <p>Import your existing data</p>
+                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-3-detail-content">Learn How to Control Visibility</button></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                       </div>
-                      <div class="slds-media__figure slds-media__figure_reverse"></div>
+                      <div class="slds-media__figure slds-media__figure_reverse">
+                        <p class="slds-text-align_right slds-text-color_weak">15 mins</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -10364,40 +10464,35 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
             </div>
             <div class="slds-summary-detail__content" id="slds-snapshot-id-3-detail-content">
               <div class="slds-setup-assistant__step-detail">
-                <div class="slds-p-around_medium">
-                  <p>Step 3 content goes here...</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    </li>
-    <li class="slds-setup-assistant__item" id="slds-snapshot-id-4">
-      <article class="slds-setup-assistant__step">
-        <div class="slds-summary-detail"><button class="slds-button slds-button_icon slds-m-right_x-small slds-m-top_x-small" type="button" aria-controls="slds-snapshot-id-4-detail-content"><svg class="slds-button__icon slds-summary-detail__action-icon" aria-hidden="true">
-              <use href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
-            </svg><span class="slds-assistive-text">Expand Step</span></button>
-          <div class="slds-container_fluid">
-            <div class="slds-summary-detail__title">
-              <div class="slds-setup-assistant__step-summary">
-                <div class="slds-media">
-                  <div class="slds-media__body slds-m-top_x-small">
-                    <div class="slds-media">
-                      <div class="slds-setup-assistant__step-summary-content slds-media__body">
-                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-4-detail-content">Setup Integrations</button></h3>
-                        <p>Connect with other services</p>
+                <div id="setup-assistant-step-3-progress" class="slds-progress slds-progress_vertical slds-progress_success">
+                  <ol class="slds-progress__list slds-progress__list-bordered">
+                    <li class="slds-progress__item slds-is-active"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 1: Turn on Lightning for all users.</span></button>
+                      <div id="progress-indicator-vertical-label-substep-0" class="slds-progress__item_content slds-grid slds-grid_align-spread">
+                        <div class="slds-size_3-of-4">Turn on Lightning for all users.</div>
+                        <div class="slds-grid slds-grid_align-end slds-size_1-of-4">
+                          <div class="slds-media__figure slds-media__figure_reverse">
+                            <div class="slds-form-element"><label class="slds-checkbox_toggle slds-grid" for="substep-0-action"><input id="substep-0-action" type="checkbox" aria-describedby="substep-0-action-desc" /><span id="substep-0-action-desc" class="slds-checkbox_faux_container" aria-live="assertive"><span class="slds-checkbox_faux"></span><span class="slds-checkbox_on">Enabled</span><span class="slds-checkbox_off">Disabled</span></span></label></div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="slds-media__figure slds-media__figure_reverse"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slds-summary-detail__content" id="slds-snapshot-id-4-detail-content">
-              <div class="slds-setup-assistant__step-detail">
-                <div class="slds-p-around_medium">
-                  <p>Step 4 content goes here...</p>
+                    </li>
+                    <li class="slds-progress__item"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></button>
+                      <div id="progress-indicator-vertical-label-substep-1" class="slds-progress__item_content slds-grid slds-grid_align-spread">
+                        <div class="slds-size_3-of-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        <div class="slds-grid slds-grid_align-end slds-size_1-of-4">
+                          <div class="slds-media__figure slds-media__figure_reverse"><button class="slds-button_reset slds-text-link" id="substep-1-action" type="button">View in Trailhead</button></div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="slds-progress__item"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 3: Lorem ipsum dolor sit amet, lorem ipsum dolor.</span></button>
+                      <div id="progress-indicator-vertical-label-substep-2" class="slds-progress__item_content slds-grid slds-grid_align-spread">
+                        <div class="slds-size_3-of-4">Lorem ipsum dolor sit amet, lorem ipsum dolor.</div>
+                        <div class="slds-grid slds-grid_align-end slds-size_1-of-4">
+                          <div class="slds-media__figure slds-media__figure_reverse"><button class="slds-button slds-button_outline-brand" id="substep-2-action" type="button">Add Users</button></div>
+                        </div>
+                      </div>
+                    </li>
+                  </ol>
                 </div>
               </div>
             </div>
