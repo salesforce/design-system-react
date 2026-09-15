@@ -33,12 +33,6 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/alert/__examples__/dismissable.jsx'),
 		},
 	],
-	'app-launcher': [
-		{
-			heading: 'Default',
-			path: require('raw-loader!@salesforce/design-system-react/components/app-launcher/__examples__/default.jsx'),
-		},
-	],
 	avatar: [
 		{
 			heading: 'Base',
@@ -73,32 +67,6 @@ const documentationSiteLiveExamples = {
 		{
 			heading: 'With Icon',
 			path: require('raw-loader!@salesforce/design-system-react/components/badge/__examples__/with-icon.jsx'),
-		},
-	],
-	'brand-band': [
-		{
-			heading: 'Default',
-			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/default.jsx'),
-		},
-		{
-			heading: 'Small',
-			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/small.jsx'),
-		},
-		{
-			heading: 'large',
-			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/large.jsx'),
-		},
-		{
-			heading: 'No Image',
-			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/no-image.jsx'),
-		},
-		{
-			heading: 'User Image',
-			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/user-image.jsx'),
-		},
-		{
-			heading: 'Group Image',
-			path: require('raw-loader!@salesforce/design-system-react/components/brand-band/__examples__/group-image.jsx'),
 		},
 	],
 	breadcrumb: [
@@ -391,12 +359,6 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/expandable-section/__examples__/non-collapsible.jsx'),
 		},
 	],
-	expression: [
-		{
-			heading: 'Default',
-			path: require('raw-loader!@salesforce/design-system-react/components/expression/__examples__/resource-selected.jsx'),
-		},
-	],
 	files: [
 		{
 			heading: 'Default',
@@ -445,18 +407,6 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/filter/__examples__/locked.jsx'),
 		},
 	],
-	'global-header': [
-		{
-			heading: 'Default',
-			path: require('raw-loader!@salesforce/design-system-react/components/global-header/__examples__/default.jsx'),
-		},
-	],
-	'global-navigation-bar': [
-		{
-			heading: 'Default',
-			path: require('raw-loader!@salesforce/design-system-react/components/global-navigation-bar/__examples__/default.jsx'),
-		},
-	],
 	icon: [
 		{
 			heading: 'Category Options',
@@ -499,12 +449,6 @@ const documentationSiteLiveExamples = {
 		{
 			heading: 'Counter',
 			path: require('raw-loader!@salesforce/design-system-react/components/input/__examples__/counter-input.jsx'),
-		},
-	],
-	'location-map': [
-		{
-			heading: 'Multiple Locations',
-			path: require('raw-loader!@salesforce/design-system-react/components/location-map/__examples__/multiple-locations.jsx'),
 		},
 	],
 	'media-object': [
