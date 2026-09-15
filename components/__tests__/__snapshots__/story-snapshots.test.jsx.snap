@@ -2492,13 +2492,13 @@ exports[`Story HTML snapshots > Combobox > WithErrorState 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="error-state" placeholder="Search Accounts" required="" role="textbox" type="text" aria-autocomplete="list" aria-describedby="slds-snapshot-id-32" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="error-state" placeholder="Search Accounts" required="" role="textbox" type="text" aria-autocomplete="list" aria-describedby="slds-snapshot-id-2" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
         </div>
         <div class="slds-has-error">
-          <div id="slds-snapshot-id-32" class="slds-form-element__help">This field is required</div>
+          <div id="slds-snapshot-id-2" class="slds-form-element__help">This field is required</div>
         </div>
       </div>
     </div>
@@ -6868,8 +6868,8 @@ exports[`Story HTML snapshots > DatePicker > CustomYearRange 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-504">Date</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-504" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -6882,8 +6882,8 @@ exports[`Story HTML snapshots > DatePicker > Default 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-498">Date</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-498" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -6896,8 +6896,8 @@ exports[`Story HTML snapshots > DatePicker > Disabled 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-506">Date (Disabled)</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" disabled="" id="slds-snapshot-id-506" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date (Disabled)</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" disabled="" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -6910,8 +6910,8 @@ exports[`Story HTML snapshots > DatePicker > DisabledDates 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-503">Date (Weekends Disabled)</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-503" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date (Weekends Disabled)</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -6924,8 +6924,8 @@ exports[`Story HTML snapshots > DatePicker > Error 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-502">Date</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-502" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -6938,8 +6938,8 @@ exports[`Story HTML snapshots > DatePicker > ISOWeekdays 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-499">Date</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-499" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -6952,8 +6952,8 @@ exports[`Story HTML snapshots > DatePicker > InlineMenu 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-501">Date</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-501" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -6966,8 +6966,8 @@ exports[`Story HTML snapshots > DatePicker > Internationalized 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-508">Fecha</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-508" placeholder="Selecciona una fecha" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Fecha</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Selecciona una fecha" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Abrir calendario</span></button></div>
       </div>
@@ -6980,8 +6980,8 @@ exports[`Story HTML snapshots > DatePicker > PreselectedDate 1`] = `
 "<div class="slds-p-around_medium">
   <div>
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-507">Date (Preselected)</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-507" placeholder="Pick a Date" type="text" value="12/25/2024" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date (Preselected)</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="12/25/2024" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
       </div>
@@ -6995,8 +6995,8 @@ exports[`Story HTML snapshots > DatePicker > RightAligned 1`] = `
   <div style="display:flex;justify-content:flex-end">
     <div>
       <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-        <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-505">Date</label>
-          <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-505" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
+          <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
               </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
         </div>
@@ -7011,8 +7011,8 @@ exports[`Story HTML snapshots > DatePicker > RightToLeft 1`] = `
   <div dir="rtl">
     <div>
       <div class="slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside">
-        <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-500">Date</label>
-          <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-500" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
+        <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-1">Date</label>
+          <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-1" placeholder="Pick a Date" type="text" value="" /><button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" type="button" aria-haspopup="true" aria-expanded="false"><svg class="slds-button__icon" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#event"></use>
               </svg><span class="slds-assistive-text">Open Calendar</span></button></div>
         </div>
@@ -7376,17 +7376,17 @@ exports[`Story HTML snapshots > Expression > AllConditions 1`] = `
         </div>
       </div>
       <ul>
-        <li class="slds-expression__row" id="slds-snapshot-id-520">
+        <li class="slds-expression__row" id="slds-snapshot-id-4">
           <fieldset>
             <legend class="slds-expression__legend"><span></span><span class="slds-assistive-text">Condition</span></legend>
             <div class="slds-grid slds-gutters_xx-small">
               <div class="slds-col">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-520-resource-selector">Resource</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-4-resource-selector">Resource</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-520-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-4-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7397,11 +7397,11 @@ exports[`Story HTML snapshots > Expression > AllConditions 1`] = `
               </div>
               <div class="slds-col slds-grow-none">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-520-operator-selector">Operator</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-4-operator-selector">Operator</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-520-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-4-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7411,13 +7411,13 @@ exports[`Story HTML snapshots > Expression > AllConditions 1`] = `
                 </div>
               </div>
               <div class="slds-col">
-                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-520-input">Value</label>
-                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-520-input" type="text" value="" /></div>
+                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-4-input">Value</label>
+                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-4-input" type="text" value="" /></div>
                 </div>
               </div>
               <div class="slds-col slds-grow-none">
                 <div class="slds-form-element"><span class="slds-form-element__label"> </span>
-                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-520-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-4-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#delete"></use>
                       </svg><span class="slds-assistive-text">Delete Condition</span></button></div>
                 </div>
@@ -7425,17 +7425,17 @@ exports[`Story HTML snapshots > Expression > AllConditions 1`] = `
             </div>
           </fieldset>
         </li>
-        <li class="slds-expression__row" id="slds-snapshot-id-525">
+        <li class="slds-expression__row" id="slds-snapshot-id-9">
           <fieldset>
             <legend class="slds-expression__legend"><span></span><span class="slds-assistive-text">Condition</span></legend>
             <div class="slds-grid slds-gutters_xx-small">
               <div class="slds-col">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-525-resource-selector">Resource</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-9-resource-selector">Resource</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-525-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-9-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7446,11 +7446,11 @@ exports[`Story HTML snapshots > Expression > AllConditions 1`] = `
               </div>
               <div class="slds-col slds-grow-none">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-525-operator-selector">Operator</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-9-operator-selector">Operator</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-525-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-9-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7460,13 +7460,13 @@ exports[`Story HTML snapshots > Expression > AllConditions 1`] = `
                 </div>
               </div>
               <div class="slds-col">
-                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-525-input">Value</label>
-                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-525-input" type="text" value="" /></div>
+                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-9-input">Value</label>
+                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-9-input" type="text" value="" /></div>
                 </div>
               </div>
               <div class="slds-col slds-grow-none">
                 <div class="slds-form-element"><span class="slds-form-element__label"> </span>
-                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-525-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-9-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#delete"></use>
                       </svg><span class="slds-assistive-text">Delete Condition</span></button></div>
                 </div>
@@ -7506,17 +7506,17 @@ exports[`Story HTML snapshots > Expression > AnyCondition 1`] = `
         </div>
       </div>
       <ul>
-        <li class="slds-expression__row" id="slds-snapshot-id-533">
+        <li class="slds-expression__row" id="slds-snapshot-id-4">
           <fieldset>
             <legend class="slds-expression__legend"><span></span><span class="slds-assistive-text">Condition</span></legend>
             <div class="slds-grid slds-gutters_xx-small">
               <div class="slds-col">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-533-resource-selector">Resource</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-4-resource-selector">Resource</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-533-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-4-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7527,11 +7527,11 @@ exports[`Story HTML snapshots > Expression > AnyCondition 1`] = `
               </div>
               <div class="slds-col slds-grow-none">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-533-operator-selector">Operator</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-4-operator-selector">Operator</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-533-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-4-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7541,13 +7541,13 @@ exports[`Story HTML snapshots > Expression > AnyCondition 1`] = `
                 </div>
               </div>
               <div class="slds-col">
-                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-533-input">Value</label>
-                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-533-input" type="text" value="" /></div>
+                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-4-input">Value</label>
+                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-4-input" type="text" value="" /></div>
                 </div>
               </div>
               <div class="slds-col slds-grow-none">
                 <div class="slds-form-element"><span class="slds-form-element__label"> </span>
-                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-533-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-4-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#delete"></use>
                       </svg><span class="slds-assistive-text">Delete Condition</span></button></div>
                 </div>
@@ -7590,17 +7590,17 @@ exports[`Story HTML snapshots > Expression > CustomLogic 1`] = `
         <div class="slds-form-element__control"><input class="slds-input" id="_R_0_-group-custom-logic-input" type="text" value="1 AND 2 OR 3" /></div>
       </div>
       <ul>
-        <li class="slds-expression__row" id="slds-snapshot-id-541">
+        <li class="slds-expression__row" id="slds-snapshot-id-4">
           <fieldset>
             <legend class="slds-expression__legend"><span></span><span class="slds-assistive-text">Condition</span></legend>
             <div class="slds-grid slds-gutters_xx-small">
               <div class="slds-col">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-541-resource-selector">Resource</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-4-resource-selector">Resource</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-541-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-4-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7611,11 +7611,11 @@ exports[`Story HTML snapshots > Expression > CustomLogic 1`] = `
               </div>
               <div class="slds-col slds-grow-none">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-541-operator-selector">Operator</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-4-operator-selector">Operator</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-541-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-4-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7625,13 +7625,13 @@ exports[`Story HTML snapshots > Expression > CustomLogic 1`] = `
                 </div>
               </div>
               <div class="slds-col">
-                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-541-input">Value</label>
-                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-541-input" type="text" value="" /></div>
+                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-4-input">Value</label>
+                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-4-input" type="text" value="" /></div>
                 </div>
               </div>
               <div class="slds-col slds-grow-none">
                 <div class="slds-form-element"><span class="slds-form-element__label"> </span>
-                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-541-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-4-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#delete"></use>
                       </svg><span class="slds-assistive-text">Delete Condition</span></button></div>
                 </div>
@@ -7639,17 +7639,17 @@ exports[`Story HTML snapshots > Expression > CustomLogic 1`] = `
             </div>
           </fieldset>
         </li>
-        <li class="slds-expression__row" id="slds-snapshot-id-546">
+        <li class="slds-expression__row" id="slds-snapshot-id-9">
           <fieldset>
             <legend class="slds-expression__legend"><span></span><span class="slds-assistive-text">Condition</span></legend>
             <div class="slds-grid slds-gutters_xx-small">
               <div class="slds-col">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-546-resource-selector">Resource</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-9-resource-selector">Resource</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-546-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-9-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7660,11 +7660,11 @@ exports[`Story HTML snapshots > Expression > CustomLogic 1`] = `
               </div>
               <div class="slds-col slds-grow-none">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-546-operator-selector">Operator</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-9-operator-selector">Operator</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-546-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-9-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7674,13 +7674,13 @@ exports[`Story HTML snapshots > Expression > CustomLogic 1`] = `
                 </div>
               </div>
               <div class="slds-col">
-                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-546-input">Value</label>
-                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-546-input" type="text" value="" /></div>
+                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-9-input">Value</label>
+                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-9-input" type="text" value="" /></div>
                 </div>
               </div>
               <div class="slds-col slds-grow-none">
                 <div class="slds-form-element"><span class="slds-form-element__label"> </span>
-                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-546-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-9-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#delete"></use>
                       </svg><span class="slds-assistive-text">Delete Condition</span></button></div>
                 </div>
@@ -7688,17 +7688,17 @@ exports[`Story HTML snapshots > Expression > CustomLogic 1`] = `
             </div>
           </fieldset>
         </li>
-        <li class="slds-expression__row" id="slds-snapshot-id-551">
+        <li class="slds-expression__row" id="slds-snapshot-id-14">
           <fieldset>
             <legend class="slds-expression__legend"><span></span><span class="slds-assistive-text">Condition</span></legend>
             <div class="slds-grid slds-gutters_xx-small">
               <div class="slds-col">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-551-resource-selector">Resource</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-14-resource-selector">Resource</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-551-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-14-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7709,11 +7709,11 @@ exports[`Story HTML snapshots > Expression > CustomLogic 1`] = `
               </div>
               <div class="slds-col slds-grow-none">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-551-operator-selector">Operator</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-14-operator-selector">Operator</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-551-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-14-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7723,13 +7723,13 @@ exports[`Story HTML snapshots > Expression > CustomLogic 1`] = `
                 </div>
               </div>
               <div class="slds-col">
-                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-551-input">Value</label>
-                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-551-input" type="text" value="" /></div>
+                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-14-input">Value</label>
+                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-14-input" type="text" value="" /></div>
                 </div>
               </div>
               <div class="slds-col slds-grow-none">
                 <div class="slds-form-element"><span class="slds-form-element__label"> </span>
-                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-551-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-14-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#delete"></use>
                       </svg><span class="slds-assistive-text">Delete Condition</span></button></div>
                 </div>
@@ -7769,17 +7769,17 @@ exports[`Story HTML snapshots > Expression > Default 1`] = `
         </div>
       </div>
       <ul>
-        <li class="slds-expression__row" id="slds-snapshot-id-512">
+        <li class="slds-expression__row" id="slds-snapshot-id-4">
           <fieldset>
             <legend class="slds-expression__legend"><span></span><span class="slds-assistive-text">Condition</span></legend>
             <div class="slds-grid slds-gutters_xx-small">
               <div class="slds-col">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-512-resource-selector">Resource</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-4-resource-selector">Resource</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-512-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="slds-snapshot-id-4-resource-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7790,11 +7790,11 @@ exports[`Story HTML snapshots > Expression > Default 1`] = `
               </div>
               <div class="slds-col slds-grow-none">
                 <div>
-                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-512-operator-selector">Operator</label>
+                  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-4-operator-selector">Operator</label>
                     <div class="slds-form-element__control">
                       <div class="slds-combobox_container">
                         <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-512-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="slds-snapshot-id-4-operator-selector" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                               </svg></span></div>
                         </div>
@@ -7804,13 +7804,13 @@ exports[`Story HTML snapshots > Expression > Default 1`] = `
                 </div>
               </div>
               <div class="slds-col">
-                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-512-input">Value</label>
-                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-512-input" type="text" value="" /></div>
+                <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-4-input">Value</label>
+                  <div class="slds-form-element__control"><input class="slds-input" disabled="" id="slds-snapshot-id-4-input" type="text" value="" /></div>
                 </div>
               </div>
               <div class="slds-col slds-grow-none">
                 <div class="slds-form-element"><span class="slds-form-element__label"> </span>
-                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-512-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                  <div class="slds-form-element__control"><button class="slds-button slds-button_icon-border-filled" id="slds-snapshot-id-4-delete-button" title="Delete Condition" type="button"><svg class="slds-button__icon" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#delete"></use>
                       </svg><span class="slds-assistive-text">Delete Condition</span></button></div>
                 </div>
@@ -8725,190 +8725,6 @@ exports[`Story HTML snapshots > LocationMap > WithSelection 1`] = `
 </div>"
 `;
 
-exports[`Story HTML snapshots > Lookup > CustomEmptyMessageContent 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-p-top_x-large">
-    <div class="slds-notify-container">
-      <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert"><span class="slds-assistive-text">error</span><span class="slds-m-right_x-small"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-          </svg></span>
-        <h2><span><strong>Deprecated component.</strong> No fit and finish bug fixes will be accepted for this component.</span> </h2>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div><button class="slds-button slds-button_neutral" type="button">Clear Selected</button></div>
-    <div>
-      <div class="slds-form-element slds-lookup" data-select="single" data-scope="single">
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
-          <div class="slds-form-element slds-lookup__search-input">
-            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="undefinedLookup" role="combobox" type="text" aria-activedescendant="" aria-autocomplete="list" aria-expanded="false" value="" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-                <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
-              </svg></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Lookup > Disabled 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-p-top_x-large">
-    <div class="slds-notify-container">
-      <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert"><span class="slds-assistive-text">error</span><span class="slds-m-right_x-small"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-          </svg></span>
-        <h2><span><strong>Deprecated component.</strong> No fit and finish bug fixes will be accepted for this component.</span> </h2>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div><button class="slds-button slds-button_neutral" type="button">Clear Selected</button></div>
-    <div>
-      <div class="slds-form-element slds-lookup" data-select="single" data-scope="single">
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
-          <div class="slds-form-element slds-lookup__search-input">
-            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" disabled="" id="undefinedLookup" role="combobox" type="text" aria-activedescendant="" aria-autocomplete="list" aria-expanded="false" value="" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-                <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
-              </svg></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Lookup > DocsSiteDefault 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-p-top_x-large">
-    <div class="slds-notify-container">
-      <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert"><span class="slds-assistive-text">error</span><span class="slds-m-right_x-small"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-          </svg></span>
-        <h2><span><strong>Deprecated component.</strong> No fit and finish bug fixes will be accepted for this component.</span> </h2>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="slds-form-element slds-lookup" data-select="single" data-scope="single"><label class="slds-form-element__label" for="AccountLookup" style="width:100%">Account</label>
-      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
-        <div class="slds-form-element slds-lookup__search-input">
-          <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="AccountLookup" role="combobox" type="text" aria-activedescendant="" aria-autocomplete="list" aria-expanded="false" value="" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-              <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
-            </svg></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Lookup > DocsSiteFiles 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-p-top_x-large">
-    <div class="slds-notify-container">
-      <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert"><span class="slds-assistive-text">error</span><span class="slds-m-right_x-small"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-          </svg></span>
-        <h2><span><strong>Deprecated component.</strong> No fit and finish bug fixes will be accepted for this component.</span> </h2>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="slds-form-element slds-lookup" data-select="single" data-scope="single"><label class="slds-form-element__label" for="FilesLookup" style="width:100%">Files</label>
-      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
-        <div class="slds-form-element slds-lookup__search-input">
-          <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="FilesLookup" role="combobox" type="text" aria-activedescendant="" aria-autocomplete="list" aria-expanded="false" value="" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-              <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
-            </svg></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Lookup > DocsSiteWithSelection 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-p-top_x-large">
-    <div class="slds-notify-container">
-      <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert"><span class="slds-assistive-text">error</span><span class="slds-m-right_x-small"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-          </svg></span>
-        <h2><span><strong>Deprecated component.</strong> No fit and finish bug fixes will be accepted for this component.</span> </h2>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="slds-form-element slds-lookup slds-has-selection" data-select="single" data-scope="single"><span class="slds-form-element__label" style="width:100%">Account</span>
-      <div class="slds-form-element__control">
-        <div class="slds-pill__container"><a href="#" class="slds-pill"><span class="slds-icon_container slds-icon-standard-account"><svg class="slds-icon slds-pill__icon slds-icon" aria-hidden="true">
-                <use href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
-              </svg></span><span class="slds-pill__label">Tyrell Corp</span><button class="slds-button slds-button_icon slds-pill__remove slds-button_icon-bare" tabindex="-1" type="button"><svg class="slds-button__icon" aria-hidden="true">
-                <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-              </svg><span class="slds-assistive-text">Press delete to remove</span></button></a></div>
-      </div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Lookup > Standard 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-p-top_x-large">
-    <div class="slds-notify-container">
-      <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert"><span class="slds-assistive-text">error</span><span class="slds-m-right_x-small"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-          </svg></span>
-        <h2><span><strong>Deprecated component.</strong> No fit and finish bug fixes will be accepted for this component.</span> </h2>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div><button class="slds-button slds-button_neutral" type="button">Clear Selected</button></div>
-    <div>
-      <div class="slds-form-element slds-lookup" data-select="single" data-scope="single"><label class="slds-form-element__label" for="FilesLookup" style="width:100%">Files</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
-          <div class="slds-form-element slds-lookup__search-input">
-            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="FilesLookup" role="combobox" type="text" aria-activedescendant="" aria-autocomplete="list" aria-expanded="false" value="" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-                <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
-              </svg></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Lookup > StandardWithAccounts 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-p-top_x-large">
-    <div class="slds-notify-container">
-      <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert"><span class="slds-assistive-text">error</span><span class="slds-m-right_x-small"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-            <use href="/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
-          </svg></span>
-        <h2><span><strong>Deprecated component.</strong> No fit and finish bug fixes will be accepted for this component.</span> </h2>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div class="slds-form-element slds-lookup" data-select="single" data-scope="single"><label class="slds-form-element__label" for="AccountLookup" style="width:100%">Account</label>
-      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
-        <div class="slds-form-element slds-lookup__search-input">
-          <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="AccountLookup" role="combobox" type="text" aria-activedescendant="" aria-autocomplete="list" aria-expanded="false" value="" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-              <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
-            </svg></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>"
-`;
-
 exports[`Story HTML snapshots > MediaObject > Base 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-media">
@@ -9082,189 +8898,6 @@ exports[`Story HTML snapshots > MenuDropdown > WithNubbins 1`] = `
       <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="nubbin-bottom-right"><button class="slds-button slds-button_icon-container ignore-click-nubbin-bottom-right" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon" aria-hidden="true">
             <use href="/assets/icons/utility-sprite/svg/symbols.svg#settings"></use>
           </svg>bottom right</button></div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > MenuPicklist > DocsBase 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-grid slds-grid_pull-padded slds-grid_vertical-align-center">
-    <div class="slds-col_padded">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-599" style="width:100%">Contacts</label>
-        <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click"><button aria-describedby="" aria-expanded="false" aria-haspopup="true" class="slds-button slds-button_neutral slds-picklist__label" id="slds-snapshot-id-599" tabindex="0" type="button"><span class="slds-truncate">Select a contact</span><span><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
-                <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-              </svg></span></button></div>
-      </div>
-    </div>
-    <div class="slds-col_padded">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-600" style="width:100%">Option selected</label>
-        <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click"><button aria-describedby="" aria-expanded="false" aria-haspopup="true" class="slds-button slds-button_neutral slds-picklist__label" id="slds-snapshot-id-600" tabindex="0" type="button"><span class="slds-truncate">Option C</span><span><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
-                <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-              </svg></span></button></div>
-      </div>
-    </div>
-    <div class="slds-col_padded">
-      <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-601" style="width:100%">Disabled</label>
-        <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click"><button aria-describedby="" aria-expanded="false" aria-haspopup="true" class="slds-button slds-button_neutral slds-picklist__label" disabled="" id="slds-snapshot-id-601" tabindex="0" type="button"><span class="slds-truncate">Option C</span><span><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
-                <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-              </svg></span></button></div>
-      </div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > MenuPicklist > DocsSnapshotDefault 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-form-element"><label class="slds-form-element__label" for="sample-menu-picklist" style="width:100%">Contacts</label>
-    <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click"><button aria-describedby="" aria-expanded="false" aria-haspopup="true" class="slds-button slds-button_neutral slds-picklist__label" id="sample-menu-picklist" tabindex="0" type="button"><span class="slds-truncate">Option C</span><span><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
-            <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-          </svg></span></button></div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > MenuPicklist > DocsTooltipListItem 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-603" style="width:100%">Contacts</label>
-    <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click"><button aria-describedby="" aria-expanded="false" aria-haspopup="true" class="slds-button slds-button_neutral slds-picklist__label" id="slds-snapshot-id-603" tabindex="0" type="button"><span class="slds-truncate">Option C</span><span><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
-            <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-          </svg></span></button></div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > MenuPicklist > ErrorState 1`] = `
-"<div class="slds-p-around_medium">
-  <div>
-    <div class="slds-form-element slds-has-error"><label class="slds-form-element__label" for="slds-snapshot-id-596" style="width:100%"><span style="color:red">* </span>Contacts</label>
-      <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click"><button aria-describedby="slds-snapshot-id-597" aria-expanded="false" aria-haspopup="true" class="slds-button slds-button_neutral slds-picklist__label" id="slds-snapshot-id-596" tabindex="0" type="button"><span class="slds-truncate">Select a contact</span><span><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
-              <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-            </svg></span></button></div>
-      <div id="slds-snapshot-id-597" class="slds-form-element__help">This field is required</div>
-    </div><button type="button" style="padding:10px;margin:50px">test</button>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > MenuPicklist > Modal 1`] = `
-"<div class="slds-p-around_medium">
-  <div>
-    <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-594" style="width:100%">Contacts</label>
-      <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click"><button aria-describedby="" aria-expanded="false" aria-haspopup="true" class="slds-button slds-button_neutral slds-picklist__label" id="slds-snapshot-id-594" tabindex="0" type="button"><span class="slds-truncate">Select a contact</span><span><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
-              <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-            </svg></span></button></div>
-    </div><button type="button" style="padding:10px;margin:50px">test</button>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > MenuPicklist > Multiselect 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-598" style="width:100%">Contacts</label>
-    <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click"><button aria-describedby="" aria-expanded="false" aria-haspopup="true" class="slds-button slds-button_neutral slds-picklist__label" id="slds-snapshot-id-598" tabindex="0" type="button"><span class="slds-truncate">Select an Option</span><span><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
-            <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-          </svg></span></button></div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > MenuPicklist > NonModal 1`] = `
-"<div class="slds-p-around_medium">
-  <div>
-    <div class="slds-form-element"><label class="slds-form-element__label" for="slds-snapshot-id-595" style="width:100%">Contacts</label>
-      <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger_click"><button aria-describedby="" aria-expanded="false" aria-haspopup="true" class="slds-button slds-button_neutral slds-picklist__label" id="slds-snapshot-id-595" tabindex="0" type="button"><span class="slds-truncate">Select a contact</span><span><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
-              <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-            </svg></span></button></div>
-    </div><button type="button" style="padding:10px;margin:50px">test</button>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Notification > BaseAlert 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-notify-container" style="width:100%">
-    <div class="slds-notify slds-notify_alert slds-theme_success slds-theme_alert-texture" role="alertdialog" aria-labelledby="dialogTitle">
-      <div><span class="slds-assistive-text">success</span><button class="slds-button slds-button_icon-inverse slds-notify__close" type="button"><svg class="slds-button__icon" aria-hidden="true">
-            <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-          </svg><span class="slds-assistive-text">Dismiss Notification</span></button>
-        <h2 id="dialogTitle"><span><svg class="slds-m-right_x-small slds-icon slds-icon_small" aria-hidden="true">
-              <use href="/assets/icons/utility-sprite/svg/symbols.svg#notification"></use>
-            </svg></span>Your new contact <a href="#">Sara Smith</a> was successfully created.</h2>
-      </div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Notification > BaseToast 1`] = `
-"<div class="slds-p-around_medium">
-  <div class="slds-notify-container" style="width:auto;left:50%;transform:translateX(-50%)">
-    <div class="slds-notify slds-notify_toast slds-theme_error" role="alertdialog" aria-labelledby="dialogTitle">
-      <div><span class="slds-assistive-text">error</span><button class="slds-button slds-button_icon-inverse slds-notify__close" type="button"><svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-            <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-          </svg><span class="slds-assistive-text">Dismiss Notification</span></button>
-        <section class="notify__content slds-grid">
-          <div class="slds-col slds-align-middle">
-            <h2 id="dialogTitle" class="slds-text-heading_small">toast notification</h2>
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Notification > DocsSiteAlerts 1`] = `
-"<div class="slds-p-around_medium">
-  <div><button class="slds-button slds-button_neutral" type="button">Open base alert</button>
-    <div class="slds-notify-container" style="width:0px">
-      <div class="slds-notify slds-notify_alert slds-theme_alert-texture" role="alertdialog" aria-labelledby="dialogTitle" style="display:none">
-        <div></div>
-      </div>
-    </div><span></span><button class="slds-button slds-button_neutral" type="button">Open success alert</button>
-    <div class="slds-notify-container" style="width:0px">
-      <div class="slds-notify slds-notify_alert slds-theme_success slds-theme_alert-texture" role="alertdialog" aria-labelledby="dialogTitle" style="display:none">
-        <div></div>
-      </div>
-    </div><span></span><button class="slds-button slds-button_neutral" type="button">Open error alert</button>
-    <div class="slds-notify-container" style="width:0px">
-      <div class="slds-notify slds-notify_alert slds-theme_error slds-theme_alert-texture" role="alertdialog" aria-labelledby="dialogTitle" style="display:none">
-        <div></div>
-      </div>
-    </div><span></span><button class="slds-button slds-button_neutral" type="button">Open offline alert</button>
-    <div class="slds-notify-container" style="width:0px">
-      <div class="slds-notify slds-notify_alert slds-theme_offline slds-theme_alert-texture" role="alertdialog" aria-labelledby="dialogTitle" style="display:none">
-        <div></div>
-      </div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > Notification > DocsSiteToasts 1`] = `
-"<div class="slds-p-around_medium">
-  <div><button class="slds-button slds-button_neutral" type="button">Open base toast</button>
-    <div class="slds-notify-container" style="width:0px">
-      <div class="slds-notify slds-notify_toast" role="alertdialog" aria-labelledby="dialogTitle" style="display:none">
-        <div></div>
-      </div>
-    </div><span></span><button class="slds-button slds-button_neutral" type="button">Open success toast</button>
-    <div class="slds-notify-container" style="width:0px">
-      <div class="slds-notify slds-notify_toast slds-theme_success" role="alertdialog" aria-labelledby="dialogTitle" style="display:none">
-        <div></div>
-      </div>
-    </div><span></span><button class="slds-button slds-button_neutral" type="button">Open warning toast</button>
-    <div class="slds-notify-container" style="width:0px">
-      <div class="slds-notify slds-notify_toast slds-theme_warning" role="alertdialog" aria-labelledby="dialogTitle" style="display:none">
-        <div></div>
-      </div>
-    </div><span></span><button class="slds-button slds-button_neutral" type="button">Open error toast</button>
-    <div class="slds-notify-container" style="width:0px">
-      <div class="slds-notify slds-notify_toast slds-theme_error" role="alertdialog" aria-labelledby="dialogTitle" style="display:none">
-        <div></div>
-      </div>
     </div>
   </div>
 </div>"
@@ -10585,7 +10218,7 @@ exports[`Story HTML snapshots > Search > WithLabel 1`] = `
 exports[`Story HTML snapshots > SetupAssistant > Default 1`] = `
 "<div class="slds-p-around_medium">
   <ol id="_R_0_" class="slds-setup-assistant">
-    <li class="slds-setup-assistant__item" id="slds-snapshot-id-654">
+    <li class="slds-setup-assistant__item" id="slds-snapshot-id-1">
       <article class="slds-setup-assistant__step">
         <div class="slds-setup-assistant__step-summary">
           <div class="slds-media">
@@ -10598,7 +10231,7 @@ exports[`Story HTML snapshots > SetupAssistant > Default 1`] = `
         </div>
       </article>
     </li>
-    <li class="slds-setup-assistant__item" id="slds-snapshot-id-655">
+    <li class="slds-setup-assistant__item" id="slds-snapshot-id-2">
       <article class="slds-setup-assistant__step">
         <div class="slds-setup-assistant__step-summary">
           <div class="slds-media">
@@ -10611,7 +10244,7 @@ exports[`Story HTML snapshots > SetupAssistant > Default 1`] = `
         </div>
       </article>
     </li>
-    <li class="slds-setup-assistant__item" id="slds-snapshot-id-656">
+    <li class="slds-setup-assistant__item" id="slds-snapshot-id-3">
       <article class="slds-setup-assistant__step">
         <div class="slds-setup-assistant__step-summary">
           <div class="slds-media">
@@ -10624,7 +10257,7 @@ exports[`Story HTML snapshots > SetupAssistant > Default 1`] = `
         </div>
       </article>
     </li>
-    <li class="slds-setup-assistant__item" id="slds-snapshot-id-657">
+    <li class="slds-setup-assistant__item" id="slds-snapshot-id-4">
       <article class="slds-setup-assistant__step">
         <div class="slds-setup-assistant__step-summary">
           <div class="slds-media">
@@ -10644,9 +10277,9 @@ exports[`Story HTML snapshots > SetupAssistant > Default 1`] = `
 exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
 "<div class="slds-p-around_medium">
   <ol id="_R_0_" class="slds-setup-assistant">
-    <li class="slds-setup-assistant__item" id="slds-snapshot-id-662">
+    <li class="slds-setup-assistant__item" id="slds-snapshot-id-1">
       <article class="slds-setup-assistant__step">
-        <div class="slds-summary-detail"><button class="slds-button slds-button_icon slds-m-right_x-small slds-m-top_x-small" type="button" aria-controls="slds-snapshot-id-662-detail-content"><svg class="slds-button__icon slds-summary-detail__action-icon" aria-hidden="true">
+        <div class="slds-summary-detail"><button class="slds-button slds-button_icon slds-m-right_x-small slds-m-top_x-small" type="button" aria-controls="slds-snapshot-id-1-detail-content"><svg class="slds-button__icon slds-summary-detail__action-icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
             </svg><span class="slds-assistive-text">Expand Step</span></button>
           <div class="slds-container_fluid">
@@ -10656,7 +10289,7 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
                   <div class="slds-media__body slds-m-top_x-small">
                     <div class="slds-media">
                       <div class="slds-setup-assistant__step-summary-content slds-media__body">
-                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-662-detail-content">Add Users</button></h3>
+                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-1-detail-content">Add Users</button></h3>
                         <p>Add users to your organization</p>
                       </div>
                       <div class="slds-media__figure slds-media__figure_reverse"></div>
@@ -10665,16 +10298,16 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
                 </div>
               </div>
             </div>
-            <div class="slds-summary-detail__content" id="slds-snapshot-id-662-detail-content">
+            <div class="slds-summary-detail__content" id="slds-snapshot-id-1-detail-content">
               <div class="slds-setup-assistant__step-detail"></div>
             </div>
           </div>
         </div>
       </article>
     </li>
-    <li class="slds-setup-assistant__item" id="slds-snapshot-id-663">
+    <li class="slds-setup-assistant__item" id="slds-snapshot-id-2">
       <article class="slds-setup-assistant__step">
-        <div class="slds-summary-detail"><button class="slds-button slds-button_icon slds-m-right_x-small slds-m-top_x-small" type="button" aria-controls="slds-snapshot-id-663-detail-content"><svg class="slds-button__icon slds-summary-detail__action-icon" aria-hidden="true">
+        <div class="slds-summary-detail"><button class="slds-button slds-button_icon slds-m-right_x-small slds-m-top_x-small" type="button" aria-controls="slds-snapshot-id-2-detail-content"><svg class="slds-button__icon slds-summary-detail__action-icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
             </svg><span class="slds-assistive-text">Expand Step</span></button>
           <div class="slds-container_fluid">
@@ -10684,7 +10317,7 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
                   <div class="slds-media__body slds-m-top_x-small">
                     <div class="slds-media">
                       <div class="slds-setup-assistant__step-summary-content slds-media__body">
-                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-663-detail-content">Configure Settings</button></h3>
+                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-2-detail-content">Configure Settings</button></h3>
                         <p>Set up your organization settings</p>
                       </div>
                       <div class="slds-media__figure slds-media__figure_reverse"></div>
@@ -10693,16 +10326,16 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
                 </div>
               </div>
             </div>
-            <div class="slds-summary-detail__content" id="slds-snapshot-id-663-detail-content">
+            <div class="slds-summary-detail__content" id="slds-snapshot-id-2-detail-content">
               <div class="slds-setup-assistant__step-detail"></div>
             </div>
           </div>
         </div>
       </article>
     </li>
-    <li class="slds-setup-assistant__item" id="slds-snapshot-id-664">
+    <li class="slds-setup-assistant__item" id="slds-snapshot-id-3">
       <article class="slds-setup-assistant__step">
-        <div class="slds-summary-detail"><button class="slds-button slds-button_icon slds-m-right_x-small slds-m-top_x-small" type="button" aria-controls="slds-snapshot-id-664-detail-content"><svg class="slds-button__icon slds-summary-detail__action-icon" aria-hidden="true">
+        <div class="slds-summary-detail"><button class="slds-button slds-button_icon slds-m-right_x-small slds-m-top_x-small" type="button" aria-controls="slds-snapshot-id-3-detail-content"><svg class="slds-button__icon slds-summary-detail__action-icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
             </svg><span class="slds-assistive-text">Expand Step</span></button>
           <div class="slds-container_fluid">
@@ -10712,7 +10345,7 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
                   <div class="slds-media__body slds-m-top_x-small">
                     <div class="slds-media">
                       <div class="slds-setup-assistant__step-summary-content slds-media__body">
-                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-664-detail-content">Import Data</button></h3>
+                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-3-detail-content">Import Data</button></h3>
                         <p>Import your existing data</p>
                       </div>
                       <div class="slds-media__figure slds-media__figure_reverse"></div>
@@ -10721,16 +10354,16 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
                 </div>
               </div>
             </div>
-            <div class="slds-summary-detail__content" id="slds-snapshot-id-664-detail-content">
+            <div class="slds-summary-detail__content" id="slds-snapshot-id-3-detail-content">
               <div class="slds-setup-assistant__step-detail"></div>
             </div>
           </div>
         </div>
       </article>
     </li>
-    <li class="slds-setup-assistant__item" id="slds-snapshot-id-665">
+    <li class="slds-setup-assistant__item" id="slds-snapshot-id-4">
       <article class="slds-setup-assistant__step">
-        <div class="slds-summary-detail"><button class="slds-button slds-button_icon slds-m-right_x-small slds-m-top_x-small" type="button" aria-controls="slds-snapshot-id-665-detail-content"><svg class="slds-button__icon slds-summary-detail__action-icon" aria-hidden="true">
+        <div class="slds-summary-detail"><button class="slds-button slds-button_icon slds-m-right_x-small slds-m-top_x-small" type="button" aria-controls="slds-snapshot-id-4-detail-content"><svg class="slds-button__icon slds-summary-detail__action-icon" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
             </svg><span class="slds-assistive-text">Expand Step</span></button>
           <div class="slds-container_fluid">
@@ -10740,7 +10373,7 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
                   <div class="slds-media__body slds-m-top_x-small">
                     <div class="slds-media">
                       <div class="slds-setup-assistant__step-summary-content slds-media__body">
-                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-665-detail-content">Setup Integrations</button></h3>
+                        <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small"><button class="slds-button slds-button_reset" type="button" aria-controls="slds-snapshot-id-4-detail-content">Setup Integrations</button></h3>
                         <p>Connect with other services</p>
                       </div>
                       <div class="slds-media__figure slds-media__figure_reverse"></div>
@@ -10749,7 +10382,7 @@ exports[`Story HTML snapshots > SetupAssistant > Interactive 1`] = `
                 </div>
               </div>
             </div>
-            <div class="slds-summary-detail__content" id="slds-snapshot-id-665-detail-content">
+            <div class="slds-summary-detail__content" id="slds-snapshot-id-4-detail-content">
               <div class="slds-setup-assistant__step-detail"></div>
             </div>
           </div>
@@ -10772,7 +10405,7 @@ exports[`Story HTML snapshots > SetupAssistant > WithCard 1`] = `
       </div>
     </header>
     <ol id="_R_0_" class="slds-setup-assistant">
-      <li class="slds-setup-assistant__item" id="slds-snapshot-id-658">
+      <li class="slds-setup-assistant__item" id="slds-snapshot-id-1">
         <article class="slds-setup-assistant__step">
           <div class="slds-setup-assistant__step-summary">
             <div class="slds-media">
@@ -10785,7 +10418,7 @@ exports[`Story HTML snapshots > SetupAssistant > WithCard 1`] = `
           </div>
         </article>
       </li>
-      <li class="slds-setup-assistant__item" id="slds-snapshot-id-659">
+      <li class="slds-setup-assistant__item" id="slds-snapshot-id-2">
         <article class="slds-setup-assistant__step">
           <div class="slds-setup-assistant__step-summary">
             <div class="slds-media">
@@ -10798,7 +10431,7 @@ exports[`Story HTML snapshots > SetupAssistant > WithCard 1`] = `
           </div>
         </article>
       </li>
-      <li class="slds-setup-assistant__item" id="slds-snapshot-id-660">
+      <li class="slds-setup-assistant__item" id="slds-snapshot-id-3">
         <article class="slds-setup-assistant__step">
           <div class="slds-setup-assistant__step-summary">
             <div class="slds-media">
@@ -10811,7 +10444,7 @@ exports[`Story HTML snapshots > SetupAssistant > WithCard 1`] = `
           </div>
         </article>
       </li>
-      <li class="slds-setup-assistant__item" id="slds-snapshot-id-661">
+      <li class="slds-setup-assistant__item" id="slds-snapshot-id-4">
         <article class="slds-setup-assistant__step">
           <div class="slds-setup-assistant__step-summary">
             <div class="slds-media">
@@ -11519,102 +11152,6 @@ exports[`Story HTML snapshots > Textarea > WithValue 1`] = `
 </div>"
 `;
 
-exports[`Story HTML snapshots > TimePicker > Default 1`] = `
-"<div class="slds-p-around_medium">
-  <div>
-    <div class="slds-form-element ignore-click-slds-snapshot-id-666"><label class="slds-form-element__label" for="slds-snapshot-id-666">Time</label>
-      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-666" placeholder="Select a time" tabindex="0" type="text" aria-haspopup="true" value="" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#clock"></use>
-        </svg></div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > TimePicker > Disabled 1`] = `
-"<div class="slds-p-around_medium">
-  <div>
-    <div class="slds-form-element ignore-click-slds-snapshot-id-670"><label class="slds-form-element__label" for="slds-snapshot-id-670">Time (Disabled)</label>
-      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" disabled="" id="slds-snapshot-id-670" placeholder="Select a time" tabindex="0" type="text" aria-haspopup="true" value="" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#clock"></use>
-        </svg></div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > TimePicker > FifteenMinuteIntervals 1`] = `
-"<div class="slds-p-around_medium">
-  <div>
-    <div class="slds-form-element ignore-click-slds-snapshot-id-667"><label class="slds-form-element__label" for="slds-snapshot-id-667">Time (15 min intervals)</label>
-      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-667" placeholder="Select a time" tabindex="0" type="text" aria-haspopup="true" value="" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#clock"></use>
-        </svg></div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > TimePicker > OneHourIntervals 1`] = `
-"<div class="slds-p-around_medium">
-  <div>
-    <div class="slds-form-element ignore-click-slds-snapshot-id-668"><label class="slds-form-element__label" for="slds-snapshot-id-668">Time (1 hour intervals)</label>
-      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-668" placeholder="Select a time" tabindex="0" type="text" aria-haspopup="true" value="" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#clock"></use>
-        </svg></div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > TimePicker > PreselectedValue 1`] = `
-"<div class="slds-p-around_medium">
-  <div>
-    <div class="slds-form-element ignore-click-slds-snapshot-id-671"><label class="slds-form-element__label" for="slds-snapshot-id-671">Time (Preselected)</label>
-      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-671" tabindex="0" type="text" aria-haspopup="true" value="02:30 PM" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#clock"></use>
-        </svg></div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > TimePicker > RelativePosition 1`] = `
-"<div class="slds-p-around_medium">
-  <div>
-    <div class="slds-form-element ignore-click-slds-snapshot-id-673"><label class="slds-form-element__label" for="slds-snapshot-id-673">Time (Relative Position)</label>
-      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-673" placeholder="Select a time" tabindex="0" type="text" aria-haspopup="true" value="" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#clock"></use>
-        </svg></div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > TimePicker > Required 1`] = `
-"<div class="slds-p-around_medium">
-  <div>
-    <div class="slds-form-element ignore-click-slds-snapshot-id-669"><label class="slds-form-element__label" for="slds-snapshot-id-669"><abbr class="slds-required" title="required">*</abbr>Time (Required)</label>
-      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-669" placeholder="Select a time" required="" tabindex="0" type="text" aria-haspopup="true" value="" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#clock"></use>
-        </svg></div>
-    </div>
-  </div>
-</div>"
-`;
-
-exports[`Story HTML snapshots > TimePicker > TwentyFourHourFormat 1`] = `
-"<div class="slds-p-around_medium">
-  <div>
-    <div class="slds-form-element ignore-click-slds-snapshot-id-672"><label class="slds-form-element__label" for="slds-snapshot-id-672">Time (24-hour format)</label>
-      <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="slds-snapshot-id-672" placeholder="Select a time" tabindex="0" type="text" aria-haspopup="true" value="" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#clock"></use>
-        </svg></div>
-    </div>
-  </div>
-</div>"
-`;
-
 exports[`Story HTML snapshots > Toast > AllVariants 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-grid slds-grid_vertical slds-gutters">
@@ -11876,15 +11413,15 @@ exports[`Story HTML snapshots > Tooltip > AnchoredNubbin 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
   <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1">
     <style>
-      #slds-snapshot-id-694:after,
-      #slds-snapshot-id-694:before {
+      #slds-snapshot-id-1:after,
+      #slds-snapshot-id-1:before {
         display: none;
       }
     </style>
     <div style="height:0;position:relative;width:0;left:0px;top:0px">
       <div style="background-color:#16325c;content:&quot;&quot;;height:1rem;position:absolute;transform:rotate(45deg);width:1rem;left:-8px;top:3px"></div>
-    </div><button class="slds-button slds-button_neutral" type="button" aria-describedby="slds-snapshot-id-694">Anchored Nubbin</button>
-    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-694">
+    </div><button class="slds-button slds-button_neutral" type="button" aria-describedby="slds-snapshot-id-1">Anchored Nubbin</button>
+    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-1">
       <div class="slds-popover__body">Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.</div>
     </div>
   </div>
@@ -11916,8 +11453,8 @@ exports[`Story HTML snapshots > Tooltip > DefaultTrigger 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > ErrorTheme 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_destructive" type="button" aria-describedby="slds-snapshot-id-677">Error Theme</button>
-    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip slds-theme_error" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-677">
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_destructive" type="button" aria-describedby="slds-snapshot-id-1">Error Theme</button>
+    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip slds-theme_error" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-1">
       <div class="slds-popover__body slds-text-color_inverse">This is an error/warning tooltip</div>
     </div>
   </div>
@@ -11942,8 +11479,8 @@ exports[`Story HTML snapshots > Tooltip > InButtonGroup 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > InfoTheme 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="slds-snapshot-id-676">Info Theme</button>
-    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-676">
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_neutral" type="button" aria-describedby="slds-snapshot-id-1">Info Theme</button>
+    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-1">
       <div class="slds-popover__body">This is an informational tooltip</div>
     </div>
   </div>
@@ -11979,7 +11516,7 @@ exports[`Story HTML snapshots > Tooltip > WithIconTrigger 1`] = `
   <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><span class="slds-icon_container slds-icon-standard-case"><svg class="slds-icon slds-icon_small" aria-hidden="true">
         <use href="/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
       </svg><span class="slds-assistive-text">Case Icon</span></span>
-    <div class="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-691">
+    <div class="absolute-positioned slds-nubbin_left slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-1">
       <div class="slds-popover__body">This is a case record</div>
     </div>
   </div>
@@ -11988,8 +11525,8 @@ exports[`Story HTML snapshots > Tooltip > WithIconTrigger 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > WithSpanTrigger 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><span tabindex="0" style="text-decoration:underline;cursor:help" aria-describedby="slds-snapshot-id-692">Hover over this text</span>
-    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-692">
+  <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><span tabindex="0" style="text-decoration:underline;cursor:help" aria-describedby="slds-snapshot-id-1">Hover over this text</span>
+    <div class="absolute-positioned slds-nubbin_top slds-popover slds-popover_tooltip" style="outline:0;position:absolute;pointer-events:none" role="tooltip" id="slds-snapshot-id-1">
       <div class="slds-popover__body">You can use any focusable element as a trigger</div>
     </div>
   </div>

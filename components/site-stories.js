@@ -853,12 +853,6 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/textarea/__examples__/disabled.jsx'),
 		},
 	],
-	'time-picker': [
-		{
-			heading: 'Default',
-			path: require('raw-loader!@salesforce/design-system-react/components/time-picker/__examples__/default.jsx'),
-		},
-	],
 	toast: [
 		{
 			heading: 'Informational',

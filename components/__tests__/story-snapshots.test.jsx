@@ -9,21 +9,22 @@
  * This tests the rendered markup closely (the old Mocha tests leaned on these
  * snapshots for that) and gives a diffable record of every component's output.
  */
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { html as beautify } from 'js-beautify';
 import { composeStories } from '@storybook/react-vite';
 
 // Make generated ids deterministic. `utilities/generate-id` wraps `nanoid`, so
 // every component id is random per render — which would make these snapshots
-// flake on every run. Replace it with a stable, call-order-based counter. (All
-// 20 id-consuming components go through this single util.)
-vi.mock('../../utilities/generate-id', () => {
-	let counter = 0;
-	return {
-		default: () => `slds-snapshot-id-${(counter += 1)}`,
-	};
-});
+// flake on every run. Replace it with a counter that RESETS before each story
+// (see beforeEach), so each story's ids are stable and independent of how many
+// other stories rendered first — otherwise adding/removing a component shifts
+// every later story's ids and churns unrelated snapshots. (All 20 id-consuming
+// components go through this single util.)
+let idCounter = 0;
+vi.mock('../../utilities/generate-id', () => ({
+	default: () => `slds-snapshot-id-${(idCounter += 1)}`,
+}));
 
 // Eagerly import every story module (Vite glob, resolved at build time).
 const storyModules = import.meta.glob('../**/__docs__/*.stories.{jsx,tsx}', {
@@ -48,6 +49,12 @@ const isPortalError = (error) =>
 	);
 
 describe('Story HTML snapshots', () => {
+	// Reset the id counter before every story so each snapshot's ids depend only
+	// on that story's own render, not on how many stories ran before it.
+	beforeEach(() => {
+		idCounter = 0;
+	});
+
 	for (const [filePath, storyModule] of Object.entries(storyModules)) {
 		const composed = composeStories(storyModule);
 		const stories = Object.entries(composed);
