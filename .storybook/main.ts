@@ -2,57 +2,10 @@ import { fileURLToPath } from 'url';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
-	// Stories follow ComponentName.stories.jsx/tsx naming convention
-	// See: https://storybook.js.org/docs/writing-stories/naming-components-and-hierarchy
-	stories: [
-		'../components/accordion/__docs__/Accordion.stories.jsx',
-		'../components/alert/__docs__/Alert.stories.jsx',
-		'../components/avatar/__docs__/Avatar.stories.jsx',
-		'../components/badge/__docs__/Badge.stories.jsx',
-		'../components/breadcrumb/__docs__/Breadcrumb.stories.jsx',
-		'../components/builder-header/__docs__/BuilderHeader.stories.jsx',
-		'../components/button/__docs__/Button.stories.jsx',
-		'../components/button-group/__docs__/ButtonGroup.stories.jsx',
-		'../components/button-stateful/__docs__/ButtonStateful.stories.jsx',
-		'../components/card/__docs__/Card.stories.jsx',
-		'../components/carousel/__docs__/Carousel.stories.jsx',
-		'../components/checkbox/__docs__/Checkbox.stories.jsx',
-		'../components/color-picker/__docs__/ColorPicker.stories.tsx',
-		'../components/combobox/__docs__/Combobox.stories.tsx',
-		'../components/data-table/__docs__/DataTable.stories.tsx',
-		'../components/date-picker/__docs__/DatePicker.stories.tsx',
-		'../components/docked-composer/__docs__/DockedComposer.stories.jsx',
-		'../components/dynamic-icon/__docs__/DynamicIcon.stories.jsx',
-		'../components/expandable-section/__docs__/ExpandableSection.stories.jsx',
-		'../components/files/__docs__/Files.stories.jsx',
-		'../components/filter/__docs__/Filter.stories.tsx',
-		'../components/input/__docs__/Input.stories.tsx',
-		'../components/input/__docs__/Search.stories.tsx',
-		'../components/menu-dropdown/__docs__/MenuDropdown.stories.tsx',
-		'../components/modal/__docs__/Modal.stories.jsx',
-		'../components/page-header/__docs__/PageHeader.stories.jsx',
-		'../components/panel/__docs__/Panel.stories.jsx',
-		'../components/pill/__docs__/Pill.stories.jsx',
-		'../components/pill-container/__docs__/PillContainer.stories.jsx',
-		'../components/popover/__docs__/Popover.stories.jsx',
-		'../components/progress-bar/__docs__/ProgressBar.stories.jsx',
-		'../components/progress-indicator/__docs__/ProgressIndicator.stories.jsx',
-		'../components/progress-ring/__docs__/ProgressRing.stories.jsx',
-		'../components/radio/__docs__/Radio.stories.jsx',
-		'../components/radio-group/__docs__/RadioGroup.stories.jsx',
-		'../components/scoped-notification/__docs__/ScopedNotification.stories.jsx',
-		'../components/setup-assistant/__docs__/SetupAssistant.stories.jsx',
-		'../components/slider/__docs__/Slider.stories.jsx',
-		'../components/spinner/__docs__/Spinner.stories.jsx',
-		'../components/split-view/__docs__/SplitView.stories.jsx',
-		'../components/tabs/__docs__/Tabs.stories.jsx',
-		'../components/textarea/__docs__/Textarea.stories.jsx',
-		'../components/toast/__docs__/Toast.stories.jsx',
-		'../components/tooltip/__docs__/Tooltip.stories.jsx',
-		'../components/tree/__docs__/Tree.stories.tsx',
-		'../components/vertical-navigation/__docs__/VerticalNavigation.stories.jsx',
-		'../components/visual-picker/__docs__/VisualPicker.stories.jsx',
-	],
+	// Auto-discover every component story. Stories live at
+	// `components/**/__docs__/**/*.stories.{jsx,tsx}` by convention, so a new
+	// component's stories appear without editing this list.
+	stories: ['../components/**/__docs__/**/*.stories.@(jsx|tsx)'],
 
 	addons: [
 		'@storybook/addon-links',
