@@ -1,0 +1,32 @@
+---
+description: Guidelines for internal planning, analysis, and agent-generated files
+alwaysApply: true
+---
+
+# Internal Planning Files
+
+All internal work product files that shouldn't be committed to the public repository should be placed in the `.planning/` folder.
+
+## What Goes in `.planning/`
+
+- **Analysis documents**: SLDS2 comparisons, architecture reviews, gap analyses
+- **Planning docs**: Modernization plans, migration checklists, roadmaps
+- **Agent outputs**: AI-generated research, exploration summaries
+- **Temporary notes**: Work-in-progress documentation, scratch files
+- **Local references**: Documents with local file paths or machine-specific info
+
+## File Naming Conventions
+
+| Type | Pattern | Example |
+|------|---------|---------|
+| Analysis | `*_ANALYSIS.md` | `SLDS2_ANALYSIS.md` |
+| Plans | `*_PLAN.md` | `MODERNIZATION_PLAN.md` |
+| Research | `RESEARCH_*.md` | `RESEARCH_THEMING.md` |
+| Notes | `NOTES_*.md` | `NOTES_DATATABLE.md` |
+| Scratch | `SCRATCH_*.md` | `SCRATCH_IDEAS.md` |
+
+## Important
+
+- The `.planning/` folder is gitignored - files here will NOT be committed
+- If a document should be public (like a real README or CONTRIBUTING guide), put it in the project root
+- Review `.planning/` docs before converting any to public documentation

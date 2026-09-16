@@ -1,4 +1,3 @@
-import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import Button from '~/components/button';
 import ButtonGroup from '~/components/button-group';

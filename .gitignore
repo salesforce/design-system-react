@@ -1,11 +1,15 @@
 ### Project files ###
 
+# Internal planning and agent-generated docs (not for public)
+.planning/
+
 # Only used for release server authentication
 /.npmrc
 
 # React Storybook
 storybook/
 storybook-based-tests/
+storybook-static/
 
 # Publishing and dist build
 .tmp*
@@ -89,7 +93,6 @@ typings/
 # Visual Studio Code - https://code.visualstudio.com/
 .settings/
 .vscode/
-tsconfig.json
 jsconfig.json
 
 ### Emacs ###
@@ -320,3 +323,7 @@ $RECYCLE.BIN/
 # Intellij IDE 
 .idea/*
 *.iml
+
+# Vitest browser-mode failure screenshots (regenerated on failing runs)
+**/__tests__/__screenshots__/
+.vitest-attachments/

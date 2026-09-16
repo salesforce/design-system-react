@@ -2,175 +2,188 @@
 
 ### Accessible, localization-friendly, presentational React components
 
-[![Build Status](https://circleci.com/gh/salesforce/design-system-react.svg?style=svg)](https://circleci.com/gh/salesforce/design-system-react) [![DeepScan grade](https://deepscan.io/api/teams/5738/projects/7558/branches/78938/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5738&pid=7558&bid=78938)
-[![Known Vulnerabilities](https://snyk.io/test/github/salesforce/design-system-react/badge.svg?targetFile=package.json)](https://snyk.io/test/github/salesforce/design-system-react?targetFile=package.json) [![Monthly NPM downloads](https://img.shields.io/npm/dm/@salesforce/design-system-react.svg)](https://www.npmjs.com/package/@salesforce/design-system-react)
+> **🚧 Modernization in Progress** — This library is being updated to React 19, TypeScript, and modern tooling. Most components are ready, but some features are still being completed. See [ROADMAP.md](ROADMAP.md) for details.
+
+**Now with SLDS 2 and Dark Mode support!**
+
+## Highlights
+
+- **SLDS 2 Compatible** — Works with the latest Salesforce Lightning Design System
+- **Dark Mode** — Built-in dark mode support with `prefers-color-scheme` detection
+- **React 19** — Modern React with functional components and hooks
+- **TypeScript** — Full type definitions for improved developer experience
+- **Accessible** — WCAG 2.1 AA compliant with keyboard navigation and screen reader support
 
 ## Install
 
+```bash
+npm install @salesforce/design-system-react
 ```
-$ npm install @salesforce-ux/design-system @salesforce/design-system-react
-```
+
+> **Note:** SLDS 2 styles are currently bundled with this package. When the official SLDS 2 npm package is released, you'll install it separately.
+
+## Requirements
+
+- **Node.js**: >= 20.19.0 (or >= 22.12.0)
+- **React**: 19.x
 
 ## Getting Started
 
-Welcome to this community-supported project! :wave: This library is the [React](https://facebook.github.io/react/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/). This library has a peer dependency on `@salesforce-ux/design-system`, `react`, and `react-dom`. It is tested with React 16 and has a stable API despite its version number. Please [polyfill](https://github.com/salesforce/design-system-react/blob/master/docs/browser-compatibility.md) this library in order to meet your target environment needs.
+Welcome to this community-supported project! This library is the [React](https://react.dev/) implementation of the [Salesforce Lightning Design System](https://www.lightningdesignsystem.com/).
 
 - [Usage](#usage)
-- [Getting started](https://design-system-react-site.herokuapp.com/getting-started/)
-- [Documentation and interactive examples](https://design-system-react-site.herokuapp.com)
 - [Contributing](CONTRIBUTING.md)
 - [Codebase overview](docs/codebase-overview.md)
-- [Create React App setup](docs/create-react-app.md)
-- [Browser compatibility and polyfills](docs/browser-compatibility.md)
-- [Usage with Webpack](docs/webpack.md)
-- [Open Sourcing Design System React](https://engineering.salesforce.com/open-sourcing-design-system-react-9be45b8bb127) - Medium article
 
 ## Usage
 
-### Quick Setup (ES6 and CJS modules)
+### ES Modules (Recommended)
 
-For a no hassle setup and compatibility with Create React App, transpiled ES6 and CommonJS module versions have been included within the NPM package. If using this setup, please re-write the `import` statement in the documentation site examples. Use the following named `import` syntax to access the transpiled components from `/lib/index.js`:
+```tsx
+import { Button, IconSettings } from '@salesforce/design-system-react';
 
-```
-import { Button } from '@salesforce/design-system-react';
-
-<Button label="Hello Button" />
-```
-
-Please view [Create React App Setup](docs/create-react-app.md) for more information on using this library with Create React App.
-
-### Advanced (Source code)
-
-Advanced usage requires that your babel presets are set up correctly. `create-react-app` and environments that do not transpile code within `node_modules` are not compatible with the component import below. All the examples on the [documentation site](https://design-system-react-site.herokuapp.com/) use this syntax. You can use the Babel preset, `@salesforce/babel-preset-design-system-react`, to get started. [This preset](https://npmjs.com/package/@salesforce/babel-preset-design-system-react) will keep Babel compatible with Design System React and allow ES6 module benefits such as tree-shaking. This library is not browser-ready and should be polyfilled to your target environment.
-
-```
-import Button from '@salesforce/design-system-react/components/button';
-
-<Button label="Hello Button" />
-```
-
-#### Transpile with `.babelrc` settings
-
-```json
-{
-	"presets": ["@salesforce/babel-preset-design-system-react"]
+function App() {
+  return (
+    <IconSettings iconPath="/assets/icons">
+      <Button label="Hello Button" />
+    </IconSettings>
+  );
 }
 ```
 
-The current preset version is only compatible with Babel 6. Please see this [issue comment for Babel 7](https://github.com/salesforce/design-system-react/issues/1621#issuecomment-513590273).
+### Individual Component Imports
 
-### Styling
+For tree-shaking and smaller bundles:
 
-This library does not contain any Cascading Style Sheets (CSS). You will need to add `<link rel="stylesheet" type="text/css" href="/node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css" />` to your page and serve that file from a publicly available folder.
-
-#### Serve icons publicly
-
-Typically, scripts should be downloaded in the background without blocking the DOM. With React, this works best with [server side rendering](https://reactjs.org/docs/react-dom-server.html#rendertostaticmarkup). SLDS recommends placeholder stencils while scripts are initializing if the HTML cannot be served immediately. If you can serve the HTML, then icon SVGs should not be bundled and served like any other file. Set a path `context` for all child components with `<IconSettings>` at the top of your render tree:
-
+```tsx
+import Button from '@salesforce/design-system-react/components/button';
+import IconSettings from '@salesforce/design-system-react/components/icon-settings';
 ```
+
+## Styling
+
+Add the SLDS 2 stylesheet to your page from the official
+[`@salesforce-ux/design-system-2`](https://www.npmjs.com/package/@salesforce-ux/design-system-2)
+package. The bundled Lightning Blue theme is the SLDS 2 default (Cosmos is the alternate):
+
+```html
+<link
+  rel="stylesheet"
+  href="/node_modules/@salesforce-ux/design-system-2/dist/css/bundled/slds2.lightning-blue.css"
+/>
+```
+
+> **Note:** This replaces the previously bundled `slds-plus.css` stopgap. Styling now
+> comes from the published SLDS 2 npm package. Storybook is wired up the same way — see
+> `.storybook/preview-head.html`.
+
+<details>
+<summary>Using SLDS 1 instead?</summary>
+
+If you need SLDS 1 compatibility, use the original design system package:
+
+```html
+<link 
+  rel="stylesheet" 
+  href="/node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css" 
+/>
+```
+
+</details>
+
+### Dark Mode
+
+Dark mode is supported out of the box. Components automatically respond to SLDS dark mode styling when you apply the appropriate theme class:
+
+```html
+<!-- Light mode (default) -->
+<div class="slds-scope">...</div>
+
+<!-- Dark mode -->
+<div class="slds-scope slds-theme_dark">...</div>
+```
+
+Components also respect the user's system preference via `prefers-color-scheme` when configured with the SLDS theme tokens.
+
+### Icons
+
+Icons are loaded from external SVG sprite files. Set the path with `<IconSettings>`:
+
+```tsx
 import IconSettings from '@salesforce/design-system-react/components/icon-settings';
 
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <IconSettings iconPath="/assets/icons">
-    <MyApp />
-  </IconSettings>,
-  document.getElementById('app')
-)
-
-// `/assets/icons` will be prepended to `/standard-sprite/svg/symbols.svg#account` within the SVG path
-<svg aria-hidden="true" class="slds-icon">
-  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
-</svg>
+    <App />
+  </IconSettings>
+);
 ```
 
-```
-// ExpressJS example
+Serve the icons from your public folder:
+
+```javascript
+// Express.js example
 app.use('/assets/icons', express.static('node_modules/@salesforce-ux/design-system/assets/icons/'));
 ```
 
-#### Bundle icons
+## Development
 
-If you use a module bundler, like Webpack, you can let your module bundler manage SVG sprite file paths and send that path into `<IconSettings>`. This requires configuring your module bundler to manage your public assets.
+### Prerequisites
 
-```
-import IconSettings from '@salesforce/design-system-react/components/icon-settings';
-import standardSprite from '@salesforce-ux/design-system/assets/icons/standard-sprite/svg/symbols.svg';
-...
-...
+- Node.js >= 20.19.0
+- npm >= 10.x
 
-ReactDOM.render(
-  <IconSettings standardSprite={standardSprite}>
-    <MyApp />
-  </IconSettings>,
-  document.getElementById('app')
-)
-```
+### Setup
 
-### Icon Usage
-
-Prior to v0.7.0, SLDS icons were bundled with the JavaScript. The 400KB+ icons bundle from [SLDS](https://www.lightningdesignsystem.com/) is no longer included. You will need to download the SLDS CSS and icons separately.
-
-Bundled script files are provided _only_ for convenience. Do not use in production.
-
-- `design-system-react.min.js` (700KB+) - includes icons in the JavaScript
-- `design-system-react-components.min.js` (~400KB) - no icons.
-
-## Contributing to the code base
-
-#### Clone and develop locally with Storybook and in-browser tests
-
-```
+```bash
 git clone git@github.com:salesforce/design-system-react.git
 cd design-system-react
 npm install
-npm start
-open http://localhost:9001 http://localhost:8001
 ```
 
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) and [Test README](/tests/README.md) first. Then, create an issue to tell others you are working on a bug. If you would like to contribute a new component, create an issue with a list of proposed props to discuss with maintainers. Issues not addressed with pull requests may be closed eventually. Check out [who's contributing](https://github.com/salesforce/design-system-react/graphs/contributors) to the project.
+### Commands
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start Vite dev server |
+| `npm run storybook` | Start Storybook at http://localhost:6007 |
+| `npm run test` | Run tests with Vitest |
+| `npm run test:ui` | Run tests with Vitest UI |
+| `npm run lint` | Lint all files |
+| `npm run typecheck` | TypeScript type checking |
+| `npm run build` | Build the library |
+
+### Tech Stack
+
+- **Build**: [Vite](https://vitejs.dev/)
+- **Testing**: [Vitest](https://vitest.dev/) + [React Testing Library](https://testing-library.com/react)
+- **Documentation**: [Storybook 10](https://storybook.js.org/)
+- **Language**: TypeScript (progressive migration)
 
 ## Accessibility
 
-Audit conducted in November, 2019 on all current component examples not intended solely for testing by Salesforce Marketing Cloud (MC) Accessibility Specialist and project team.
+This library follows WCAG 2.1 guidelines and is tested for accessibility.
 
-- Methods: Automated testing with axe; Manual testing with keyboard, JAWS, and NVDA
-- Results: 100% accessibility
-
-Quarterly audits will be conducted beginning Feb 1, 2020 on any new or updated components by MC Accessibility Specialist.
-
-- Methods: Automated testing with axe; Manual testing with keyboard, JAWS, and NVDA
-- Goal: 100% accessibility
-
-Project team will conduct internal accessibility testing in development process for new and updated components.
-
-## Got feedback?
-
-If you have support questions, please post a question to [StackOverflow](https://stackoverflow.com/questions/tagged/design-system-react) and tag with `design-system-react`. If you find any bugs, create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues).
+- Automated testing with axe-core
+- Keyboard navigation support
+- Screen reader compatibility (JAWS, NVDA, VoiceOver)
+- ARIA attributes and roles
 
 ## Security
 
-Please report any security issue to [security@salesforce.com](mailto:security@salesforce.com) as soon as it is discovered. This library limits its runtime dependencies in order to reduce the total cost of ownership as much as can be, but all consumers should remain vigilant and have their security stakeholders review all third-party dependencies.
+Please report any security issues to [security@salesforce.com](mailto:security@salesforce.com).
 
-## Contributors
+## Contributing
 
-Thank you to all the contributors to this one of [many open source projects at Salesforce](https://opensource.salesforce.com/), but special thanks to the following:
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting pull requests.
 
-### Active Key Contributors
+## Got Feedback?
 
-- [@garygong](https://github.com/garygong) Gary Gong
-- [@kevinparkerson](https://github.com/kevinparkerson) Kevin Parkerson
-- [@interactivellama](https://github.com/interactivellama) Stephen James
+- **Questions**: Post on [StackOverflow](https://stackoverflow.com/questions/tagged/design-system-react) with the `design-system-react` tag
+- **Bugs**: Create a [GitHub Issue](https://github.com/salesforce/design-system-react/issues)
 
-### Former Key Contributors
+## License
 
-- [@davidlygagnon](https://github.com/davidlygagnon) David Ly-Gagnon
-- [@futuremint](https://github.com/futuremint) David Woodward
-- [@donnieberg](https://github.com/donnieberg) Donielle Berg
-- [@tweettypography](https://github.com/tweettypography) David Brainer
-- [@ivanbogdanov](https://github.com/ivanbogdanov) Ivan Bogdanov
-
-## Licenses
-
-- Source code is licensed under [BSD 3-Clause](https://git.io/sfdc-license)
-- All icons and images are licensed under [Creative Commons Attribution-NoDerivatives 4.0](https://github.com/salesforce/licenses/blob/master/LICENSE-icons-images.txt)
-- The Salesforce Sans font is licensed under our [font license](https://github.com/salesforce/licenses/blob/master/LICENSE-font.txt)
+- Source code: [BSD 3-Clause](https://git.io/sfdc-license)
+- Icons and images: [Creative Commons Attribution-NoDerivatives 4.0](https://github.com/salesforce/licenses/blob/master/LICENSE-icons-images.txt)
+- Salesforce Sans font: [Font License](https://github.com/salesforce/licenses/blob/master/LICENSE-font.txt)

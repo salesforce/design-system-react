@@ -15,7 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			{
 				'assistiveText.label': props.assistiveText && props.assistiveText.label,
-				label: props.labels.label,
+				label: props.labels && props.labels.label,
 			},
 			createDocUrl('assistiveText')
 		);

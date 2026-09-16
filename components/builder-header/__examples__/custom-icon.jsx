@@ -1,4 +1,3 @@
-import React from 'react';
 import IconSettings from '../../icon-settings';
 import BuilderHeader from '..';
 import BuilderHeaderNav from '../nav';

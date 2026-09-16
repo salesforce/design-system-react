@@ -3,7 +3,7 @@ import React from 'react';
 import IconSettings from '~/components/icon-settings';
 import Tree from '~/components/tree';
 import log from '~/utilities/log';
-import Search from '../../forms/input/search';
+import Search from '../../input/search';
 
 const sampleNodes = {
 	0: {
@@ -342,7 +342,7 @@ class Example extends React.Component {
 								...prevState.nodes[prevState.selectedNode.id],
 								selected: false,
 							},
-					  }
+						}
 					: {};
 				return {
 					...prevState,

@@ -4,8 +4,8 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import Popper from 'popper.js';
-import isEqual from 'lodash.isequal';
+import { computePosition, autoUpdate, flip, shift } from '@floating-ui/dom';
+import { dequal as isEqual } from 'dequal';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -213,8 +213,8 @@ class Dialog extends React.Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (this.popper) {
-			this.popper.scheduleUpdate();
+		if (this.floatingUpdate) {
+			this.floatingUpdate();
 		}
 		if (
 			this.state.triggerPopperJS === true &&
@@ -254,7 +254,7 @@ class Dialog extends React.Component {
 
 	getPopperStyles = () => {
 		const { popperData } = this.state;
-		if (!this.popper || !popperData) {
+		if (!this.floatingUpdate || !popperData) {
 			return {
 				position: 'absolute',
 				pointerEvents: 'none',
@@ -352,66 +352,93 @@ class Dialog extends React.Component {
 	};
 
 	/**
-	 * Popper API and helper functions
+	 * Positioning API and helper functions
+	 *
+	 * Uses `@floating-ui/dom` for positioning. Floating UI shares popper v1's
+	 * placement vocabulary (`bottom-start`, etc.) and its offset-parent
+	 * positioning model, so `mapPropToPopperPlacement` and the nubbin/offset math
+	 * in `dialog-helpers` carry over unchanged. `computeFloatingData` reshapes
+	 * Floating UI's output into the `popperData` object the rest of this
+	 * component and the helpers already consume (`offsets.popper`,
+	 * `offsets.reference`, `placement`, `flipped`, `style`).
 	 */
 
-	createPopper = () => {
-		const reference = this.props.onRequestTargetElement(); // eslint-disable-line react/no-find-dom-node
-		const popper = this.dialogContent;
-		const placement = mapPropToPopperPlacement(
+	computeFloatingData = (reference, floating) => {
+		const requestedPlacement = mapPropToPopperPlacement(
 			this.props.align,
 			this.props.direction
 		);
-		const eventsEnabled = true; // Lets popper listen to events (resize, scroll, etc.)
-		const modifiers = {
-			applyStyle: { enabled: false },
-			// moves dialog in order to not extend a boundary element such as a scrolling parent or a window/viewpoint.
-			preventOverflow: {
-				enabled: !this.props.hasStaticAlignment,
-				boundariesElement:
-					this.props.position === 'absolute' ? 'scrollParent' : 'viewport',
-			},
-			hide: { enabled: false },
-			// By default, dialogs will flip their alignment if they extend beyond a boundary element such as a scrolling parent or a window/viewpoint
-			flip: {
-				enabled: !this.props.hasStaticAlignment,
-			},
-			removeOnDestroy: true,
-			updateState: {
-				enabled: true,
-				order: 900,
-				fn: (popperData) => {
-					if (
-						(this.state.popperData &&
-							!isEqual(popperData.offsets, this.state.popperData.offsets)) ||
-						!this.state.popperData
-					) {
-						this.setState({ popperData });
-					}
-					return popperData;
+
+		// `strategy: 'absolute'` matches popper v1, which positioned relative to
+		// the offset parent. Floating UI returns `x`/`y` in that same coordinate
+		// space, so the downstream nubbin/offset math is unaffected.
+		return computePosition(reference, floating, {
+			placement: requestedPlacement,
+			strategy: 'absolute',
+			// Flip (invert placement) and shift (nudge to stay in view) replace
+			// popper v1's `flip` + `preventOverflow` modifiers. Both are disabled
+			// when `hasStaticAlignment` is set, matching the prior behavior.
+			middleware: this.props.hasStaticAlignment ? [] : [flip(), shift()],
+		}).then(({ x, y, placement }) => {
+			const referenceRect = reference.getBoundingClientRect();
+			return {
+				placement,
+				// Floating UI resolves flips into the final `placement`; a flip
+				// occurred whenever it differs from what we requested. The nubbin
+				// class helper keys off this.
+				flipped: placement !== requestedPlacement,
+				offsets: {
+					popper: { left: x, top: y, position: 'absolute' },
+					reference: {
+						width: referenceRect.width,
+						height: referenceRect.height,
+					},
 				},
-			},
-			// arrow property can also point to an element
-		};
+				style: {},
+			};
+		});
+	};
+
+	createPopper = () => {
+		const reference = this.props.onRequestTargetElement(); // eslint-disable-line react/no-find-dom-node
+		const floating = this.dialogContent;
+
 		if (!reference) {
 			console.error('Target node not found!', reference); // eslint-disable-line no-console
 		}
-		if (!popper) {
-			console.error('Popper node not found!', popper); // eslint-disable-line no-console
+		if (!floating) {
+			console.error('Popper node not found!', floating); // eslint-disable-line no-console
 		}
-		this.popper = new Popper(reference, popper, {
-			placement,
-			eventsEnabled,
-			modifiers,
-		});
+		if (!reference || !floating) {
+			return;
+		}
 
-		this.popper.scheduleUpdate();
+		const update = () => {
+			this.computeFloatingData(reference, floating).then((popperData) => {
+				if (
+					!this.state.popperData ||
+					!isEqual(popperData.offsets, this.state.popperData.offsets) ||
+					popperData.placement !== this.state.popperData.placement
+				) {
+					this.setState({ popperData });
+				}
+			});
+		};
+
+		// `autoUpdate` re-runs positioning on scroll, resize, and layout shifts —
+		// the equivalent of popper v1's `eventsEnabled`. It returns a cleanup
+		// function stored for teardown.
+		this.cleanupFloating = autoUpdate(reference, floating, update);
+		this.floatingUpdate = update;
+		update();
 	};
 
 	destroyPopper = () => {
-		if (this.popper) {
-			this.popper.destroy();
+		if (this.cleanupFloating) {
+			this.cleanupFloating();
+			this.cleanupFloating = null;
 		}
+		this.floatingUpdate = null;
 	};
 
 	render() {

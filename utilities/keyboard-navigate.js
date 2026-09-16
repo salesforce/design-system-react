@@ -1,9 +1,25 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
-import ReactDOM from 'react-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 
 import KEYS from './key-code';
+
+/**
+ * Resolve a component context's trigger to a DOM node. `componentContext.trigger`
+ * is already stored as a DOM element (via a callback ref) throughout the codebase,
+ * so we return it directly. This replaces `ReactDOM.findDOMNode`, which was removed
+ * in React 19.
+ */
+const resolveTriggerNode = (trigger) => {
+	if (!trigger) {
+		return null;
+	}
+	// A DOM node (has nodeType); return as-is.
+	if (typeof trigger === 'object' && trigger.nodeType) {
+		return trigger;
+	}
+	return trigger;
+};
 
 const keyboardNavigate = ({
 	componentContext,
@@ -29,8 +45,14 @@ const keyboardNavigate = ({
 		ch = null;
 	}
 
+	// Keys that open a closed menu. Per the WAI-ARIA menu-button pattern, Down
+	// and Up arrows open the menu (Down moving focus to the first item, Up to
+	// the last), in addition to Enter and Space.
 	const openMenuKeys =
-		keyCode === KEYS.ENTER || keyCode === KEYS.SPACE || keyCode === KEYS.UP;
+		keyCode === KEYS.ENTER ||
+		keyCode === KEYS.SPACE ||
+		keyCode === KEYS.UP ||
+		keyCode === KEYS.DOWN;
 
 	if (keyCode === KEYS.ESCAPE) {
 		if (isOpen) toggleOpen();
@@ -42,8 +64,7 @@ const keyboardNavigate = ({
 		if (
 			openMenuKeys &&
 			componentContext.trigger &&
-			// eslint-disable-next-line react/no-find-dom-node
-			ReactDOM.findDOMNode(componentContext.trigger) === target
+			resolveTriggerNode(componentContext.trigger) === target
 		) {
 			componentContext.handleClick(event);
 		}

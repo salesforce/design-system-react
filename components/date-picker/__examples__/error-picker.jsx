@@ -1,5 +1,4 @@
 /* eslint-disable no-console, react/prop-types */
-import React from 'react';
 
 import IconSettings from '~/components/icon-settings';
 import Datepicker from '~/components/date-picker';

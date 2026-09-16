@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import ProgressIndicator from '~/components/progress-indicator'; // `~` is replaced with design-system-react at runtime
 import Modal from '~/components/modal';

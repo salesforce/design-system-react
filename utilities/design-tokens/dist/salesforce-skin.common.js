@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	// Used as the background color for the active state on rows or items on list-like components.
 	colorBackgroundRowActive: 'rgb(236, 235, 234)',
 	// Brandable modal header
