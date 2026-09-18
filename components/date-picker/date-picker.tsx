@@ -31,6 +31,7 @@ import lowPriorityWarning from '../../utilities/warning/low-priority-warning';
 import { DATE_PICKER } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
 import { IconSettingsContext } from '../icon-settings';
+import { useClickOutside } from '../../utilities/hooks/use-click-outside';
 
 // ===== Types =====
 
@@ -232,6 +233,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 	const iconSettingsContext = useContext(IconSettingsContext);
 
 	// Refs
+	const triggerRef = useRef<HTMLDivElement | null>(null);
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const selectedDateCellRef = useRef<HTMLElement | null>(null);
 	const generatedId = useRef(generateId());
@@ -387,6 +389,18 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 	const handleClickOutside = useCallback(() => {
 		handleRequestClose();
 	}, [handleRequestClose]);
+
+	// Detect clicks outside the trigger/calendar and close the dialog. Anchored
+	// on the trigger element so this works whether the DatePicker is controlled
+	// (`onRequestClose` is invoked via `handleRequestClose`) or uncontrolled
+	// (internal open state is reset). The trigger carries the
+	// `ignore-react-onclickoutside` class and, in `overflowBoundaryElement`
+	// mode, so does the portaled calendar, so clicks within the calendar are
+	// treated as inside.
+	useClickOutside(triggerRef, handleClickOutside, {
+		enabled: getIsOpen(),
+		ignoreClass: 'ignore-react-onclickoutside',
+	});
 
 	// ===== Refs =====
 
@@ -596,6 +610,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 
 	return (
 		<div
+			ref={triggerRef}
 			className={classNames(
 				'slds-dropdown-trigger',
 				'slds-dropdown-trigger_click',

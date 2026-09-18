@@ -497,6 +497,46 @@ describe('SLDSDatepicker', () => {
 		});
 	});
 
+	describe('closes on outside click (uncontrolled)', () => {
+		it('closes the calendar when clicking outside, stays open when clicking inside', async () => {
+			const { container } = render(<DemoComponent menuPosition="relative" />);
+
+			// Calendar starts closed
+			expect(
+				container.querySelector('.slds-datepicker')
+			).not.toBeInTheDocument();
+
+			// Open the calendar by clicking the trigger
+			const trigger = container.querySelector(triggerClassSelector);
+			fireEvent.click(trigger);
+
+			await waitFor(() => {
+				expect(container.querySelector('.slds-datepicker')).toBeInTheDocument();
+			});
+
+			// Clicking inside the calendar should NOT close it
+			const dayInsideCalendar = container.querySelector(
+				'.datepicker__month [aria-disabled=false]'
+			);
+			expect(dayInsideCalendar).toBeInTheDocument();
+			fireEvent.mouseDown(dayInsideCalendar);
+			expect(container.querySelector('.slds-datepicker')).toBeInTheDocument();
+
+			// Clicking an element outside the calendar should close it
+			const outsideElement = document.createElement('button');
+			document.body.appendChild(outsideElement);
+			fireEvent.mouseDown(outsideElement);
+
+			await waitFor(() => {
+				expect(
+					container.querySelector('.slds-datepicker')
+				).not.toBeInTheDocument();
+			});
+
+			document.body.removeChild(outsideElement);
+		});
+	});
+
 	describe('Disabled', () => {
 		it('onOpen is not called when disabled', () => {
 			const triggerClicked = vi.fn();
