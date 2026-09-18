@@ -30,4 +30,3 @@ const DatepickerWithClickOutside = forwardRef<HTMLDivElement, DatePickerProps>(
 DatepickerWithClickOutside.displayName = 'DatepickerWithClickOutside';
 
 export default DatepickerWithClickOutside;
-
