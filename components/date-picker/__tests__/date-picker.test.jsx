@@ -54,11 +54,7 @@ class DemoComponent extends Component {
 	render() {
 		const component = (
 			<IconSettings iconPath="/assets/icons">
-				<Datepicker
-					formatter={formatDate}
-					parser={parseDate}
-					{...this.props}
-				/>
+				<Datepicker formatter={formatDate} parser={parseDate} {...this.props} />
 			</IconSettings>
 		);
 
@@ -114,7 +110,9 @@ describe('SLDSDatepicker', () => {
 			// Wait for calendar to open
 			await waitFor(() => {
 				expect(onOpen).toHaveBeenCalledTimes(1);
-				expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
+				expect(
+					container.querySelector('.datepicker__month')
+				).toBeInTheDocument();
 			});
 
 			// Click first enabled day
@@ -149,7 +147,9 @@ describe('SLDSDatepicker', () => {
 			// Wait for calendar to open
 			await waitFor(() => {
 				expect(onOpen).toHaveBeenCalledTimes(1);
-				expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
+				expect(
+					container.querySelector('.datepicker__month')
+				).toBeInTheDocument();
 			});
 
 			// Click first enabled day
@@ -191,7 +191,9 @@ describe('SLDSDatepicker', () => {
 				// Wait for calendar to open
 				await waitFor(() => {
 					expect(onOpen).toHaveBeenCalledTimes(1);
-					expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
+					expect(
+						container.querySelector('.datepicker__month')
+					).toBeInTheDocument();
 				});
 
 				// Press ESC
@@ -207,7 +209,9 @@ describe('SLDSDatepicker', () => {
 				// Verify calendar closed
 				await waitFor(() => {
 					expect(onClose).toHaveBeenCalled();
-					expect(container.querySelector('.datepicker__month')).not.toBeInTheDocument();
+					expect(
+						container.querySelector('.datepicker__month')
+					).not.toBeInTheDocument();
 				});
 			});
 
@@ -224,7 +228,9 @@ describe('SLDSDatepicker', () => {
 
 				// Wait for calendar to be visible
 				await waitFor(() => {
-					expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
+					expect(
+						container.querySelector('.datepicker__month')
+					).toBeInTheDocument();
 				});
 
 				const selectedDay = container.querySelector(
@@ -241,7 +247,9 @@ describe('SLDSDatepicker', () => {
 				await waitFor(() => {
 					expect(onCalendarFocus).toHaveBeenCalledTimes(1);
 					const callArgs = onCalendarFocus.mock.calls[0];
-					expect(callArgs[1].date.getTime()).toBe(new Date(2007, 0, 13).getTime());
+					expect(callArgs[1].date.getTime()).toBe(
+						new Date(2007, 0, 13).getTime()
+					);
 				});
 			});
 
@@ -257,7 +265,9 @@ describe('SLDSDatepicker', () => {
 				);
 
 				await waitFor(() => {
-					expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
+					expect(
+						container.querySelector('.datepicker__month')
+					).toBeInTheDocument();
 				});
 
 				const selectedDay = container.querySelector(
@@ -273,7 +283,9 @@ describe('SLDSDatepicker', () => {
 				await waitFor(() => {
 					expect(onCalendarFocus).toHaveBeenCalledTimes(1);
 					const callArgs = onCalendarFocus.mock.calls[0];
-					expect(callArgs[1].date.getTime()).toBe(new Date(2007, 0, 7).getTime());
+					expect(callArgs[1].date.getTime()).toBe(
+						new Date(2007, 0, 7).getTime()
+					);
 				});
 			});
 
@@ -290,7 +302,9 @@ describe('SLDSDatepicker', () => {
 				);
 
 				await waitFor(() => {
-					expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
+					expect(
+						container.querySelector('.datepicker__month')
+					).toBeInTheDocument();
 				});
 
 				const selectedDay = container.querySelector(
@@ -306,7 +320,9 @@ describe('SLDSDatepicker', () => {
 				await waitFor(() => {
 					expect(onCalendarFocus).toHaveBeenCalledTimes(1);
 					const callArgs = onCalendarFocus.mock.calls[0];
-					expect(callArgs[1].date.getTime()).toBe(new Date(2007, 0, 7).getTime());
+					expect(callArgs[1].date.getTime()).toBe(
+						new Date(2007, 0, 7).getTime()
+					);
 				});
 			});
 
@@ -322,7 +338,9 @@ describe('SLDSDatepicker', () => {
 				);
 
 				await waitFor(() => {
-					expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
+					expect(
+						container.querySelector('.datepicker__month')
+					).toBeInTheDocument();
 				});
 
 				const selectedDay = container.querySelector(
@@ -338,7 +356,9 @@ describe('SLDSDatepicker', () => {
 				await waitFor(() => {
 					expect(onCalendarFocus).toHaveBeenCalledTimes(1);
 					const callArgs = onCalendarFocus.mock.calls[0];
-					expect(callArgs[1].date.getTime()).toBe(new Date(2006, 11, 30).getTime());
+					expect(callArgs[1].date.getTime()).toBe(
+						new Date(2006, 11, 30).getTime()
+					);
 				});
 			});
 
@@ -354,7 +374,9 @@ describe('SLDSDatepicker', () => {
 				);
 
 				await waitFor(() => {
-					expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
+					expect(
+						container.querySelector('.datepicker__month')
+					).toBeInTheDocument();
 				});
 
 				const selectedDay = container.querySelector(
@@ -370,7 +392,9 @@ describe('SLDSDatepicker', () => {
 				await waitFor(() => {
 					expect(onCalendarFocus).toHaveBeenCalledTimes(1);
 					const callArgs = onCalendarFocus.mock.calls[0];
-					expect(callArgs[1].date.getTime()).toBe(new Date(2007, 0, 5).getTime());
+					expect(callArgs[1].date.getTime()).toBe(
+						new Date(2007, 0, 5).getTime()
+					);
 				});
 			});
 
@@ -387,7 +411,9 @@ describe('SLDSDatepicker', () => {
 				);
 
 				await waitFor(() => {
-					expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
+					expect(
+						container.querySelector('.datepicker__month')
+					).toBeInTheDocument();
 				});
 
 				const selectedDay = container.querySelector(
@@ -403,7 +429,9 @@ describe('SLDSDatepicker', () => {
 				await waitFor(() => {
 					expect(onCalendarFocus).toHaveBeenCalledTimes(1);
 					const callArgs = onCalendarFocus.mock.calls[0];
-					expect(callArgs[1].date.getTime()).toBe(new Date(2007, 0, 5).getTime());
+					expect(callArgs[1].date.getTime()).toBe(
+						new Date(2007, 0, 5).getTime()
+					);
 				});
 			});
 
@@ -419,7 +447,9 @@ describe('SLDSDatepicker', () => {
 				);
 
 				await waitFor(() => {
-					expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
+					expect(
+						container.querySelector('.datepicker__month')
+					).toBeInTheDocument();
 				});
 
 				const selectedDay = container.querySelector(
@@ -451,7 +481,9 @@ describe('SLDSDatepicker', () => {
 				);
 
 				await waitFor(() => {
-					expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
+					expect(
+						container.querySelector('.datepicker__month')
+					).toBeInTheDocument();
 				});
 
 				const selectedDay = container.querySelector(
@@ -476,14 +508,18 @@ describe('SLDSDatepicker', () => {
 				const { container } = render(<DemoComponent menuPosition="relative" />);
 
 				// Calendar is closed
-				expect(container.querySelector('.slds-datepicker')).not.toBeInTheDocument();
+				expect(
+					container.querySelector('.slds-datepicker')
+				).not.toBeInTheDocument();
 
 				// Click on input to open the calendar
 				const trigger = container.querySelector(triggerClassSelector);
 				fireEvent.click(trigger);
 
 				await waitFor(() => {
-					expect(container.querySelector('.slds-datepicker')).toBeInTheDocument();
+					expect(
+						container.querySelector('.slds-datepicker')
+					).toBeInTheDocument();
 				});
 
 				// Changing input value closes the calendar
@@ -491,9 +527,51 @@ describe('SLDSDatepicker', () => {
 				fireEvent.change(input, { target: { value: '1/1/2020' } });
 
 				await waitFor(() => {
-					expect(container.querySelector('.slds-datepicker')).not.toBeInTheDocument();
+					expect(
+						container.querySelector('.slds-datepicker')
+					).not.toBeInTheDocument();
 				});
 			});
+		});
+	});
+
+	describe('closes on outside click (uncontrolled)', () => {
+		it('closes the calendar when clicking outside, stays open when clicking inside', async () => {
+			const { container } = render(<DemoComponent menuPosition="relative" />);
+
+			// Calendar starts closed
+			expect(
+				container.querySelector('.slds-datepicker')
+			).not.toBeInTheDocument();
+
+			// Open the calendar by clicking the trigger
+			const trigger = container.querySelector(triggerClassSelector);
+			fireEvent.click(trigger);
+
+			await waitFor(() => {
+				expect(container.querySelector('.slds-datepicker')).toBeInTheDocument();
+			});
+
+			// Clicking inside the calendar should NOT close it
+			const dayInsideCalendar = container.querySelector(
+				'.datepicker__month [aria-disabled=false]'
+			);
+			expect(dayInsideCalendar).toBeInTheDocument();
+			fireEvent.mouseDown(dayInsideCalendar);
+			expect(container.querySelector('.slds-datepicker')).toBeInTheDocument();
+
+			// Clicking an element outside the calendar should close it
+			const outsideElement = document.createElement('button');
+			document.body.appendChild(outsideElement);
+			fireEvent.mouseDown(outsideElement);
+
+			await waitFor(() => {
+				expect(
+					container.querySelector('.slds-datepicker')
+				).not.toBeInTheDocument();
+			});
+
+			document.body.removeChild(outsideElement);
 		});
 	});
 
@@ -532,7 +610,9 @@ describe('SLDSDatepicker', () => {
 			);
 
 			await waitFor(() => {
-				expect(container.querySelector('.datepicker__month')).toBeInTheDocument();
+				expect(
+					container.querySelector('.datepicker__month')
+				).toBeInTheDocument();
 			});
 
 			const input = container.querySelector('input');

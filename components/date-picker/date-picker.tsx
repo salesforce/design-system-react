@@ -31,6 +31,7 @@ import lowPriorityWarning from '../../utilities/warning/low-priority-warning';
 import { DATE_PICKER } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
 import { IconSettingsContext } from '../icon-settings';
+import { useClickOutside } from '../../utilities/hooks/use-click-outside';
 
 // ===== Types =====
 
@@ -90,13 +91,19 @@ export interface DatePickerProps {
 	/** Menu position strategy */
 	menuPosition?: 'absolute' | 'overflowBoundaryElement' | 'relative';
 	/** Called when calendar focus changes */
-	onCalendarFocus?: (event: React.SyntheticEvent | null, data: { date?: Date; ref?: HTMLElement; direction?: string }) => void;
+	onCalendarFocus?: (
+		event: React.SyntheticEvent | null,
+		data: { date?: Date; ref?: HTMLElement; direction?: string }
+	) => void;
 	/** Called when date changes */
 	onChange?: (event: React.SyntheticEvent, data: DatePickerChangeData) => void;
 	/** Called when calendar closes */
 	onClose?: () => void;
 	/** Called when calendar opens */
-	onOpen?: (event: React.SyntheticEvent | undefined, data: { portal?: HTMLElement }) => void;
+	onOpen?: (
+		event: React.SyntheticEvent | undefined,
+		data: { portal?: HTMLElement }
+	) => void;
 	/** Called when calendar wants to close */
 	onRequestClose?: () => void;
 	/** Called when calendar wants to open */
@@ -232,6 +239,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 	const iconSettingsContext = useContext(IconSettingsContext);
 
 	// Refs
+	const triggerRef = useRef<HTMLDivElement | null>(null);
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const selectedDateCellRef = useRef<HTMLElement | null>(null);
 	const generatedId = useRef(generateId());
@@ -253,7 +261,11 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 	// Check props on mount (only in development)
 	useEffect(() => {
 		if (typeof checkProps === 'function') {
-			checkProps(DATE_PICKER, props as unknown as Record<string, unknown>, componentDoc);
+			checkProps(
+				DATE_PICKER,
+				props as unknown as Record<string, unknown>,
+				componentDoc
+			);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -265,16 +277,19 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		return !!(typeof isOpenProp === 'boolean' ? isOpenProp : isOpenState);
 	}, [isOpenProp, isOpenState]);
 
-	const parseDate = useCallback((dateString: string): Date => {
-		let parsedDate = parser(dateString);
-		if (
-			Object.prototype.toString.call(parsedDate) !== '[object Date]' ||
-			isNaN(parsedDate.getTime())
-		) {
-			parsedDate = new Date();
-		}
-		return parsedDate;
-	}, [parser]);
+	const parseDate = useCallback(
+		(dateString: string): Date => {
+			let parsedDate = parser(dateString);
+			if (
+				Object.prototype.toString.call(parsedDate) !== '[object Date]' ||
+				isNaN(parsedDate.getTime())
+			) {
+				parsedDate = new Date();
+			}
+			return parsedDate;
+		},
+		[parser]
+	);
 
 	// ===== Event Handlers =====
 
@@ -299,103 +314,136 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		}
 	}, [onClose]);
 
-	const handleOpen = useCallback((event: React.SyntheticEvent | undefined, data: { portal?: HTMLElement }) => {
-		if (onOpen) {
-			onOpen(event, data);
-		}
+	const handleOpen = useCallback(
+		(
+			event: React.SyntheticEvent | undefined,
+			data: { portal?: HTMLElement }
+		) => {
+			if (onOpen) {
+				onOpen(event, data);
+			}
 
-		if (selectedDateCellRef.current && isOpenFromIcon) {
-			selectedDateCellRef.current.focus();
-		}
-	}, [onOpen, isOpenFromIcon]);
+			if (selectedDateCellRef.current && isOpenFromIcon) {
+				selectedDateCellRef.current.focus();
+			}
+		},
+		[onOpen, isOpenFromIcon]
+	);
 
-	const openDialog = useCallback((fromIcon = false) => {
-		if (!fromIcon) {
-			setIsOpenFromIcon(false);
-		}
-		if (onRequestOpen) {
-			onRequestOpen();
-		} else {
-			setIsOpenState(true);
-		}
-	}, [onRequestOpen]);
+	const openDialog = useCallback(
+		(fromIcon = false) => {
+			if (!fromIcon) {
+				setIsOpenFromIcon(false);
+			}
+			if (onRequestOpen) {
+				onRequestOpen();
+			} else {
+				setIsOpenState(true);
+			}
+		},
+		[onRequestOpen]
+	);
 
 	const openDialogFromIcon = useCallback(() => {
 		setIsOpenFromIcon(true);
 		openDialog(true);
 	}, [openDialog]);
 
-	const handleCalendarChange = useCallback((event: React.SyntheticEvent, { date }: { date: Date }) => {
-		if (!value) {
-			setInternalValue(date);
-			setFormattedValue(formatter(date));
-			setInputValue(formatter(date));
-		}
+	const handleCalendarChange = useCallback(
+		(event: React.SyntheticEvent, { date }: { date: Date }) => {
+			if (!value) {
+				setInternalValue(date);
+				setFormattedValue(formatter(date));
+				setInputValue(formatter(date));
+			}
 
-		handleRequestClose();
+			handleRequestClose();
 
-		if (onChange) {
-			onChange(event, {
-				date,
-				formattedDate: formatter(date),
-				timezoneOffset: date.getTimezoneOffset(),
-			});
-		}
-	}, [value, formatter, handleRequestClose, onChange]);
+			if (onChange) {
+				onChange(event, {
+					date,
+					formattedDate: formatter(date),
+					timezoneOffset: date.getTimezoneOffset(),
+				});
+			}
+		},
+		[value, formatter, handleRequestClose, onChange]
+	);
 
-	const handleInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-		// Typing in the input closes the calendar when it's used as an uncontrolled component
-		if (typeof isOpenProp !== 'boolean' && isOpenState) {
-			setIsOpenState(false);
-		}
+	const handleInputChange = useCallback(
+		(event: ChangeEvent<HTMLInputElement>) => {
+			// Typing in the input closes the calendar when it's used as an uncontrolled component
+			if (typeof isOpenProp !== 'boolean' && isOpenState) {
+				setIsOpenState(false);
+			}
 
-		setFormattedValue(event.target.value);
-		setInputValue(event.target.value);
+			setFormattedValue(event.target.value);
+			setInputValue(event.target.value);
 
-		const date = parser(event.target.value);
+			const date = parser(event.target.value);
 
-		if (onChange) {
-			onChange(event, {
-				date,
-				formattedDate: event.target.value,
-				timezoneOffset: date.getTimezoneOffset(),
-			});
-		}
-	}, [isOpenProp, isOpenState, parser, onChange]);
+			if (onChange) {
+				onChange(event, {
+					date,
+					formattedDate: event.target.value,
+					timezoneOffset: date.getTimezoneOffset(),
+				});
+			}
+		},
+		[isOpenProp, isOpenState, parser, onChange]
+	);
 
-	const handleKeyDown = useCallback((event: KeyboardEvent<HTMLInputElement>) => {
-		// Don't open if user is selecting text
-		if (
-			event.keyCode &&
-			!event.shiftKey &&
-			(event.keyCode === KEYS.DOWN || event.keyCode === KEYS.UP)
-		) {
-			EventUtil.trapEvent(event);
-			setIsOpenState(true);
-		}
+	const handleKeyDown = useCallback(
+		(event: KeyboardEvent<HTMLInputElement>) => {
+			// Don't open if user is selecting text
+			if (
+				event.keyCode &&
+				!event.shiftKey &&
+				(event.keyCode === KEYS.DOWN || event.keyCode === KEYS.UP)
+			) {
+				EventUtil.trapEvent(event);
+				setIsOpenState(true);
+			}
 
-		if (event.keyCode === KEYS.ESCAPE || event.keyCode === KEYS.ENTER) {
-			EventUtil.trapEvent(event);
-			setIsOpenState(false);
-		}
+			if (event.keyCode === KEYS.ESCAPE || event.keyCode === KEYS.ENTER) {
+				EventUtil.trapEvent(event);
+				setIsOpenState(false);
+			}
 
-		if (onKeyDown) {
-			onKeyDown(event, {});
-		}
-	}, [onKeyDown]);
+			if (onKeyDown) {
+				onKeyDown(event, {});
+			}
+		},
+		[onKeyDown]
+	);
 
 	const handleClickOutside = useCallback(() => {
 		handleRequestClose();
 	}, [handleRequestClose]);
 
+	// Detect clicks outside the trigger/calendar and close the dialog. Anchored
+	// on the trigger element so this works whether the DatePicker is controlled
+	// (`onRequestClose` is invoked via `handleRequestClose`) or uncontrolled
+	// (internal open state is reset). The trigger carries the
+	// `ignore-react-onclickoutside` class and, in `overflowBoundaryElement`
+	// mode, so does the portaled calendar, so clicks within the calendar are
+	// treated as inside.
+	useClickOutside(triggerRef, handleClickOutside, {
+		enabled: getIsOpen(),
+		ignoreClass: 'ignore-react-onclickoutside',
+	});
+
 	// ===== Refs =====
 
-	const setInputRefCallback = useCallback((component: HTMLInputElement | null) => {
-		inputRef.current = component;
-		if (!inputRendered) {
-			setInputRendered(true);
-		}
-	}, [inputRendered]);
+	const setInputRefCallback = useCallback(
+		(component: HTMLInputElement | null) => {
+			inputRef.current = component;
+			if (!inputRendered) {
+				setInputRendered(true);
+			}
+		},
+		[inputRendered]
+	);
 
 	// ===== Render Helpers =====
 
@@ -406,7 +454,9 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 			const formattedDate = formatter(value);
 			date = formattedDate ? parseDate(formattedDate) : value;
 		} else {
-			date = formattedValue ? parseDate(formattedValue) : internalValue || new Date();
+			date = formattedValue
+				? parseDate(formattedValue)
+				: internalValue || new Date();
 		}
 
 		return (
@@ -465,7 +515,8 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 			contentsClassName: classNames(
 				'slds-datepicker slds-dropdown',
 				{
-					'slds-dropdown_right': menuPosition === 'relative' && align === 'right',
+					'slds-dropdown_right':
+						menuPosition === 'relative' && align === 'right',
 					'slds-dropdown_left': menuPosition === 'relative' && align === 'left',
 				},
 				className
@@ -482,9 +533,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 
 		return (
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			<Dialog {...(dialogProps as any)}>
-				{getDatePicker()}
-			</Dialog>
+			<Dialog {...(dialogProps as any)}>{getDatePicker()}</Dialog>
 		);
 	}, [
 		menuPosition,
@@ -596,6 +645,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 
 	return (
 		<div
+			ref={triggerRef}
 			className={classNames(
 				'slds-dropdown-trigger',
 				'slds-dropdown-trigger_click',
@@ -616,4 +666,3 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 Datepicker.displayName = DATE_PICKER;
 
 export default Datepicker;
-
