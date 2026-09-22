@@ -8,10 +8,13 @@ This document provides an overview of the library's organization, conventions, a
 - [Component Architecture](#component-architecture)
 - [Props Conventions](#props-conventions)
 - [TypeScript Patterns](#typescript-patterns)
+- [Compatibility & Support](#compatibility--support)
+- [Performance & Bundle Size](#performance--bundle-size)
 - [SLDS Alignment](#slds-alignment)
 - [Testing](#testing)
 - [Accessibility](#accessibility)
 - [Best Practices](#best-practices)
+- [Maintainability & Versioning](#maintainability--versioning)
 - [Contributing](#contributing)
 
 ---
@@ -210,6 +213,28 @@ Use non-optional (required) properties in your `types.ts` interface whenever a p
 
 Prefer accepting a pre-configured child component instance over adding new props that just alias an existing component's API — e.g. `<DataTableRowActions dropdown={<Dropdown options={...} />} />` rather than inventing `dropdownOptions` on the parent. The parent shallow-merges its own props into the passed component, with the caller's props taking precedence. This keeps each piece separately documented and avoids duplicate PropType/interface surface area, at the cost of being easier to misuse — use with caution, since overriding internal logic this way can break a component.
 
+### Illegal States Unrepresentable
+
+When a component has mutually exclusive forms (e.g. an input that's either `base`, `readonly`, or rendered inside a `popover`), model that as a discriminated union in `types.ts` rather than a set of independently optional booleans:
+
+```tsx
+type ComboboxVariantProps =
+	| { variant: 'base' }
+	| { variant: 'inline-listbox' }
+	| { variant: 'popover'; popoverProps: PopoverProps }
+	| { variant: 'readonly' };
+```
+
+Independently optional booleans (`isPopover?: boolean; isReadonly?: boolean; ...`) let invalid combinations compile even though they can't be rendered correctly. A discriminated union makes the illegal combination a type error instead of a runtime bug. This is the same problem the `variant`/`theme` conventions in [SLDS Alignment](#slds-alignment) exist to prevent — the union is how you enforce it in the type system rather than just in prose.
+
+### Named Props Over Positional Contracts
+
+Expose behavior-determining structure through named props, not through the order of `children` (e.g. `<Tabs><Tab /><Tab /></Tabs>` where position implies meaning). Positional contracts are strongly connascent — reordering children silently changes behavior, and you can't deprecate one "slot" independently of the others. Prefer named props (`primaryTab`, `items={[...]}`) or named slot props (`renderHeader`) so each piece of the contract can evolve on its own.
+
+### Decoupled Interactive Behavior
+
+Complex interactive logic — focus management, roving `tabindex`, keyboard navigation, ARIA state transitions — should be authored once as a shared hook in `utilities/hooks/` and consumed by every component that needs it, not reimplemented per component. This keeps behavior consistent across components that share a UX pattern (e.g. menu-like keyboard navigation in `Combobox`, `MenuDropdown`, and `RadioButtonGroup`) and means a fix or an a11y improvement only has to happen in one place.
+
 ### Deprecation Warnings
 
 When sunsetting or renaming a prop, keep the old prop working and emit a development-only console warning rather than removing it outright. This codebase's `utilities/warning/*` helpers (`deprecated-property`, `sunset-property`, `only-one-of-properties`, `if-one-then-both-required-property`, `has-children-without-display-name-of`) exist for exactly this — wire new deprecations through them (guarded by `process.env.NODE_ENV !== 'production'`) instead of inventing ad hoc warnings per component.
@@ -278,6 +303,26 @@ function DataTable<T extends { id: string }>({
 	// ...
 }
 ```
+
+---
+
+## Compatibility & Support
+
+### Server-Side Rendering Readiness
+
+Treat "no direct DOM/global access without an existence check" (see [State & Coupling Principles](#state--coupling-principles) and [DOM Node & Ref Conventions](#dom-node--ref-conventions)) as the thing that keeps SSR/RSC compatibility tractable: a component that never unconditionally touches `window`/`document` has no structural reason to require a client boundary except where it holds genuine interactivity. If this library is consumed inside an RSC-capable framework (e.g. Next.js App Router), that needs to be exercised by at least one integration test before being claimed as supported — an untested SSR claim fails the same way an untested React-version floor does.
+
+---
+
+## Performance & Bundle Size
+
+### Bundle Footprint
+
+`package.json` sets `"sideEffects": false`, which is the tree-shaking signal bundlers rely on to drop unused components — preserve it, and verify with a bundler analysis (not just by inspection) that importing one component doesn't pull in unrelated ones. Adding a top-level side effect anywhere in `components/` silently breaks this guarantee for the whole package, not just that component.
+
+### Runtime Dependency Budget
+
+The default is zero _new_ runtime dependencies beyond what's already in `dependencies` — the current lodash single-function packages, `classnames`, `react-modal`, `nanoid`, and similar are the existing budget, not a precedent for adding more of the same kind freely. Anything new (a headless interaction primitive, a date library, etc.) is a per-adoption exception that should come with its own bundle-size and transitive-risk note, not be added as a convenience. Check `package.json`'s dependency count as part of reviewing any PR that touches it, so an exception can't land unreviewed.
 
 ---
 
@@ -411,6 +456,18 @@ Implement standard keyboard patterns:
 - `Arrow keys` - Navigate menus
 - `Tab` - Move between focusable elements
 
+### Portal-Based Overflow Escape
+
+Components whose rendered output must escape an ancestor's `overflow: hidden` — menus, dialogs, tooltips, popovers — must render through a portal rather than ask consumers to work around clipping with a manual `overflow` CSS override. This is already established practice in this library: `Modal` renders through `react-modal`'s portal (`portalClassName` prop), `DatePicker` exposes a `portalMount` prop so the consumer controls the mount point, and `Tooltip`'s default positioning modes use a portal (its `relative` mode explicitly opts out). Follow this pattern for any new overlay component instead of introducing a new clipping workaround.
+
+### Composed-Component Focus Behavior
+
+When a component composes others (e.g. a component rendering `Icon` internally, or a `Combobox`/`MenuDropdown` composing list items), the composing component owns keyboard/focus coordination: a single tab stop for the whole composite, plus correct roving/active-descendant behavior for its internal items. Don't push focus-management workarounds onto the consumer to make a composed component behave like one accessible widget — this is the accessibility corollary of [one stateful component, many stateless sub-components](#state--coupling-principles).
+
+### Automated Accessibility Assertions
+
+Manual ARIA guidelines and keyboard-pattern review (above) catch source-shape problems, but they can't prove that rendered ARIA relationships (`aria-controls`, `aria-activedescendant`, roving `tabindex`) actually resolve correctly once the DOM is rendered — composition and portals can put the rendered DOM in a different tree than the source JSX. Rendered-DOM accessibility assertions (e.g. `axe`/`jest-axe`/`vitest-axe`) should run as part of a component's test suite in addition to manual review.
+
 ### Non-Accessible Contributions
 
 Contributions that don't yet follow an approved accessible UX pattern are permitted but discouraged, and should be labeled `"prototype"` status (see each component's `component.json`) rather than `"prod"` — file a follow-up issue to close the accessibility gap.
@@ -465,6 +522,29 @@ const buttonClass = classNames('slds-button', {
 	'slds-button_destructive': variant === 'destructive',
 });
 ```
+
+---
+
+## Maintainability & Versioning
+
+### Breaking-Change Taxonomy
+
+Publish this taxonomy alongside any SemVer policy so consumers know what a minor/patch release can and cannot change:
+
+- **Breaking:** prop rename, prop type narrowing, or prop removal.
+- **Breaking:** removing or renaming a styling hook (a `className*` target or documented SLDS class consumers style against).
+- **Breaking:** adding a default value to a prop that was previously required or had no default, if it changes rendered output for existing callers (see [Boolean Props & Defaults](#boolean-props--defaults)).
+- **Not breaking:** markup/DOM-structure changes, _provided_ any externally exposed `ref` continues to resolve to an equivalent element. This is also why [Ref Typing](#compatibility--support) matters — a ref typed to the wrong element makes "equivalent element" ambiguous.
+
+This is the concrete version of the general backward-compatibility policy already stated under [Deprecation Warnings](#deprecation-warnings) — that section covers the _process_ (console warnings, major-version bump); this taxonomy covers _what counts_.
+
+### Private-Component Enforcement
+
+The `private/` folder exemption (see [Component Folder Structure](#component-folder-structure)) is currently a naming convention, not a lint-enforced boundary — there's no rule today that fails a build if code outside a component imports from another component's `private/` path. Treat closing that gap (e.g. an ESLint `no-restricted-imports` rule scoped to `**/private/**`) as a maintainability requirement, not a nice-to-have: without it, the exemption can be silently violated and the "private" folder stops meaning what it claims to.
+
+### Development Diagnostics Scope
+
+The [Deprecation Warnings](#deprecation-warnings) pattern (`utilities/warning/*`, gated on `process.env.NODE_ENV !== 'production'`) shouldn't be limited to prop deprecation. The same mechanism should fire for: a prop combination that violates a runtime constraint the type system can't express (e.g. "provide at least one of X or Y"), a violation of an accessibility rule that can't be statically checked, and a consumer using a component still marked `"prototype"` status (see [Non-Accessible Contributions](#non-accessible-contributions)). In every case, the warning must be dev-only — never ship as console noise in a production build.
 
 ---
 
