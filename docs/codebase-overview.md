@@ -4,6 +4,7 @@ This document provides an overview of the library's organization, conventions, a
 
 ## Table of Contents
 
+- [Creating a New Component](#creating-a-new-component) — **start here if you're implementing one**
 - [Project Structure](#project-structure)
 - [Component Architecture](#component-architecture)
 - [Props Conventions](#props-conventions)
@@ -16,6 +17,191 @@ This document provides an overview of the library's organization, conventions, a
 - [Best Practices](#best-practices)
 - [Maintainability & Versioning](#maintainability--versioning)
 - [Contributing](#contributing)
+
+Everything after [Creating a New Component](#creating-a-new-component) is reference material: the _why_ and the edge cases behind each step. The walkthrough links to the relevant part of it as you go — you don't need to read it all up front.
+
+---
+
+## Creating a New Component
+
+Follow these steps in order. Each links to the reference section with the full rule and rationale — check it when a decision here is ambiguous, otherwise keep moving.
+
+### Before you start
+
+1. Confirm the component maps to an approved SLDS pattern — see [Only Propose SLDS-Approved Components](#only-propose-slds-approved-components). If it doesn't exist in SLDS, stop and raise that before writing code.
+2. Search `components/` for something with an overlapping shape (form element, overlay, composite list, etc.) and follow its conventions rather than inventing new ones — see [Do](#do).
+
+### 1. Scaffold the folder
+
+```
+components/[component-name]/          # kebab-case
+├── index.tsx                         # public export
+├── [component-name].tsx              # implementation
+├── types.ts                          # prop types
+├── private/                          # internal-only sub-components (if any)
+├── __docs__/
+│   └── [Component].stories.tsx
+└── __tests__/
+    └── [component-name].test.tsx
+```
+
+Full rationale: [Project Structure](#project-structure), [Component Folder Structure](#component-folder-structure).
+
+### 2. Write `types.ts` first
+
+Commit to the prop contract before implementing:
+
+- Extend the matching HTML attributes interface — [Extending HTML Attributes](#extending-html-attributes).
+- Every prop with no safe default is required, not optional — [Required Props](#required-props).
+- Mutually exclusive forms (e.g. `base`/`inline`/`popover`) are a discriminated union, never independent booleans — [Illegal States Unrepresentable](#illegal-states-unrepresentable).
+- Name props by convention — `is*`/`has*`/`can*` booleans, `on*`/`onRequest*` callbacks, `className*` class targets — [Naming Conventions](#naming-conventions).
+- Group all visible and assistive text into `labels`/`assistiveText` objects typed `ReactNode` — [Assistive Text and Labels](#assistive-text-and-labels).
+- Never default a boolean to `true`; adding a default to an existing prop later is a breaking change — [Boolean Props & Defaults](#boolean-props--defaults).
+
+### 3. Implement `[component-name].tsx`
+
+- Functional component, `forwardRef` typed to the **actual rendered root element** (`HTMLButtonElement`, not generic `HTMLElement`) — [Functional Components with Hooks](#functional-components-with-hooks).
+- `className` lands only on the node carrying `.slds-[component]`; every other node's class prop is suffixed (`classNameMenu`) — [DOM Node & Ref Conventions](#dom-node--ref-conventions).
+- No local state for anything the parent could hold as a prop, and never mirror a prop into `useState` — [State & Coupling Principles](#state--coupling-principles).
+- Use SLDS markup/classes, not bespoke CSS; follow the `variant`/`theme` split and don't render CSS-hidden elements — [Converting SLDS Markup to React](#converting-slds-markup-to-react).
+- Callbacks are `(event, data) => void`, existence-checked before calling, never used for return-value contracts — [Callback Details](#callback-details).
+- If this component composes others, it owns the single tab stop and roving/active-descendant focus — the consumer shouldn't have to — [Composed-Component Focus Behavior](#composed-component-focus-behavior).
+- If rendered content must escape an ancestor's `overflow: hidden` (menu, dialog, tooltip, popover), portal it — [Portal-Based Overflow Escape](#portal-based-overflow-escape).
+
+### 4. Add dev-time guardrails
+
+Wire any deprecated prop, unrepresentable-by-types constraint, or `"prototype"`-status warning through `utilities/warning/*`, dev-only — [Deprecation Warnings](#deprecation-warnings), [Development Diagnostics Scope](#development-diagnostics-scope).
+
+### 5. Write tests in `__tests__/`
+
+- Cover every prop, every callback (assert the data payload, not just that it fired), and all keyboard/mouse interactions — [What to Test](#what-to-test).
+- Target 90%+ coverage — [Coverage Expectations](#coverage-expectations).
+- Add rendered-DOM accessibility assertions alongside RTL tests if `axe`/`jest-axe`/`vitest-axe` is available in the repo — [Automated Accessibility Assertions](#automated-accessibility-assertions).
+
+### 6. Write the Storybook story
+
+`__docs__/[Component].stories.tsx` doubles as the documentation source. Prop descriptions belong as JSDoc comments in `types.ts` — [Write clear prop descriptions](#props-interface) — don't hand-duplicate them in the story.
+
+### 7. Export and verify
+
+- Add the export to `index.tsx`.
+- Confirm you haven't introduced a module-level side effect (`package.json`'s `"sideEffects": false` must stay accurate) — [Bundle Footprint](#bundle-footprint).
+- No new runtime dependency without a bundle-size/risk writeup — [Runtime Dependency Budget](#runtime-dependency-budget).
+
+### Reference implementation
+
+A single component showing the conventions above applied together:
+
+```tsx
+// components/rating/types.ts
+import type { HTMLAttributes, ReactNode } from 'react';
+
+export interface RatingProps extends Omit<
+	HTMLAttributes<HTMLDivElement>,
+	'onChange'
+> {
+	/** Current rating value. */
+	value: number;
+	/** Maximum number of stars. */
+	max: number;
+	/** Whether the rating can be changed by the user. */
+	isReadOnly?: boolean;
+	/** Visible and assistive text, grouped for i18n. */
+	labels?: {
+		heading?: ReactNode;
+	};
+	assistiveText?: {
+		star?: (data: { position: number }) => string;
+	};
+	/** Fires after the user commits a new value. */
+	onChange?: (
+		event: React.MouseEvent<HTMLButtonElement>,
+		data: { value: number }
+	) => void;
+	/** Additional class name for the star row (root carries `.slds-rating`). */
+	classNameStars?: string;
+}
+```
+
+```tsx
+// components/rating/rating.tsx
+import React, { forwardRef, useCallback } from 'react';
+import classNames from 'classnames';
+import type { RatingProps } from './types';
+
+const Rating = forwardRef<HTMLDivElement, RatingProps>(
+	(
+		{
+			value,
+			max,
+			isReadOnly = false,
+			labels,
+			assistiveText,
+			onChange,
+			className,
+			classNameStars,
+			...rest
+		},
+		ref
+	) => {
+		const handleStarClick = useCallback(
+			(event: React.MouseEvent<HTMLButtonElement>, position: number) => {
+				if (!isReadOnly) {
+					onChange?.(event, { value: position });
+				}
+			},
+			[isReadOnly, onChange]
+		);
+
+		return (
+			<div ref={ref} className={classNames('slds-rating', className)} {...rest}>
+				{labels?.heading && (
+					<span className="slds-rating__heading">{labels.heading}</span>
+				)}
+				<div className={classNames('slds-rating__stars', classNameStars)}>
+					{Array.from({ length: max }, (_, index) => {
+						const position = index + 1;
+						return (
+							<button
+								key={position}
+								type="button"
+								disabled={isReadOnly}
+								className={classNames('slds-rating__star', {
+									'slds-is-selected': position <= value,
+								})}
+								aria-label={assistiveText?.star?.({ position })}
+								onClick={(event) => handleStarClick(event, position)}
+							/>
+						);
+					})}
+				</div>
+			</div>
+		);
+	}
+);
+
+Rating.displayName = 'Rating';
+
+export default Rating;
+```
+
+Notice what this example does and why, tying back to the steps above: `value`/`max` are required (step 2), `isReadOnly` defaults to `false` not `true` (step 2), the ref is typed to `HTMLDivElement` because that's the actual root node (step 3), `className` lands on `.slds-rating` while the star row uses a suffixed `classNameStars` (step 3), text is passed via `labels`/`assistiveText` rather than hardcoded (step 2), and `onChange` is existence-checked and carries a data payload rather than relying on a return value (step 3).
+
+### Before opening a PR — checklist
+
+- [ ] Component maps to an approved SLDS pattern
+- [ ] `types.ts`: no unnecessary optional props; mutually exclusive forms are a discriminated union
+- [ ] `forwardRef` typed to the real root element, not a generic one
+- [ ] `className` on the `.slds-[component]` root only; other targets use suffixed `className*` props
+- [ ] No prop mirrored into state; no `useState(props.x)`
+- [ ] All visible/assistive text is a prop, grouped under `labels`/`assistiveText`
+- [ ] Callbacks are `(event, data) => void`, existence-checked, no return-value contract
+- [ ] Keyboard interaction and focus management implemented (and owned by the composing component if applicable)
+- [ ] Overlay content, if any, portals rather than relying on consumer `overflow` overrides
+- [ ] Tests cover every prop, callback, and interaction; ≥90% coverage
+- [ ] No new dependency added without a bundle-size/risk writeup
+- [ ] File(s) under 500 lines; split into `private/` sub-components if not
+- [ ] Docs status (`component.json`, Storybook) reflects reality (`prod` vs. `prototype`)
 
 ---
 
