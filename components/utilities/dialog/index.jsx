@@ -213,7 +213,19 @@ class Dialog extends React.Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (this.floatingUpdate) {
+		// Re-run positioning only when a prop that actually feeds the position
+		// calculation changes. `autoUpdate` (set up in `createPopper`) already
+		// re-runs on scroll/resize/layout shifts, so calling `floatingUpdate()`
+		// on *every* render — including the re-renders our own `setState`
+		// triggers — just recomputes the same position repeatedly. Under jsdom
+		// (where each recompute is pure overhead) this multiplied menu-open cost
+		// several-fold; in real browsers it was redundant work.
+		if (
+			this.floatingUpdate &&
+			(prevProps.align !== this.props.align ||
+				prevProps.direction !== this.props.direction ||
+				prevProps.hasStaticAlignment !== this.props.hasStaticAlignment)
+		) {
 			this.floatingUpdate();
 		}
 		if (
@@ -426,11 +438,13 @@ class Dialog extends React.Component {
 		};
 
 		// `autoUpdate` re-runs positioning on scroll, resize, and layout shifts —
-		// the equivalent of popper v1's `eventsEnabled`. It returns a cleanup
-		// function stored for teardown.
+		// the equivalent of popper v1's `eventsEnabled`. It also invokes `update`
+		// once synchronously to establish the initial position, so no separate
+		// `update()` call is needed here (a manual call would just recompute the
+		// same position a second time). It returns a cleanup function stored for
+		// teardown.
 		this.cleanupFloating = autoUpdate(reference, floating, update);
 		this.floatingUpdate = update;
-		update();
 	};
 
 	destroyPopper = () => {
