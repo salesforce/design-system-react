@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 
 import Accordion from '../../accordion';
@@ -163,7 +163,9 @@ describe('Accordion', () => {
 
 		it('renders `panelContentActions` component, if passed', () => {
 			const { container } = render(<AccordionExample />);
-			const panelContentActions = container.querySelector('div .slds-dropdown-trigger');
+			const panelContentActions = container.querySelector(
+				'div .slds-dropdown-trigger'
+			);
 			expect(panelContentActions).toBeInTheDocument();
 		});
 
@@ -213,12 +215,44 @@ describe('Accordion', () => {
 
 			// In real browser, last accordion button would be focused
 		});
+
+		it('focuses the correct remaining button after a panel is removed', () => {
+			let instance;
+			const { container } = render(
+				<AccordionExample
+					ref={(ref) => {
+						instance = ref;
+					}}
+				/>
+			);
+
+			act(() => {
+				instance.setState((state) => ({
+					items: state.items.filter((item) => item.id !== '2'),
+				}));
+			});
+
+			const accordionButtons = container.querySelectorAll(
+				'button.slds-accordion__summary-action'
+			);
+			expect(accordionButtons).toHaveLength(2);
+
+			fireEvent.keyDown(accordionButtons[0], {
+				key: 'ArrowDown',
+				keyCode: 40,
+				which: 40,
+			});
+
+			expect(document.activeElement).toBe(accordionButtons[1]);
+		});
 	});
 
 	describe('Open panel', () => {
 		it('triggers a change callback on panel select', () => {
 			const { container } = render(<AccordionExample />);
-			const firstButton = container.querySelector('button.slds-accordion__summary-action');
+			const firstButton = container.querySelector(
+				'button.slds-accordion__summary-action'
+			);
 
 			// Initially, aria-expanded should be false or undefined
 			expect(firstButton).toHaveAttribute('aria-expanded', 'false');
@@ -232,7 +266,9 @@ describe('Accordion', () => {
 
 		it('`aria-expanded` set to true on panel select', () => {
 			const { container } = render(<AccordionExample />);
-			const firstButton = container.querySelector('button.slds-accordion__summary-action');
+			const firstButton = container.querySelector(
+				'button.slds-accordion__summary-action'
+			);
 
 			fireEvent.click(firstButton);
 
