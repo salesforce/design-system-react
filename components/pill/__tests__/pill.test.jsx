@@ -292,6 +292,34 @@ describe('SLDSPill', () => {
 			const anchor = container.querySelector('.slds-pill__action');
 			expect(anchor).not.toBeInTheDocument();
 		});
+
+		// Regression: the pill must expose tabIndex and aria-selected on its root
+		// element so selected-listbox pills are focusable and support roving
+		// tabindex / arrow-key navigation (issue #3211).
+		it('applies tabIndex and aria-selected to the root element', () => {
+			const { container } = render(
+				<SLDSPill
+					labels={{ label: LABEL }}
+					variant="option"
+					tabIndex="0"
+					aria-selected="true"
+					onRemove={vi.fn()}
+				/>
+			);
+
+			const pill = container.querySelector('.slds-pill');
+			expect(pill).toHaveAttribute('tabindex', '0');
+			expect(pill).toHaveAttribute('aria-selected', 'true');
+		});
+
+		it('omits tabIndex when not provided', () => {
+			const { container } = render(
+				<SLDSPill labels={{ label: LABEL }} variant="option" onRemove={vi.fn()} />
+			);
+
+			const pill = container.querySelector('.slds-pill');
+			expect(pill).not.toHaveAttribute('tabindex');
+		});
 	});
 
 	describe('Linked Custom', () => {
