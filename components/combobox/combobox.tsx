@@ -991,6 +991,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				selectedListboxRef={setSelectedListboxRefCallback}
 				selection={selection as SelectedListBoxOption[]}
 				listboxHasFocus={listboxHasFocus}
+				multiselectable={multiple}
 			/>
 			{errorText && (
 				<div className="slds-has-error">
@@ -1034,6 +1035,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						selectedListboxRef={setSelectedListboxRefCallback}
 						selection={selection as SelectedListBoxOption[]}
 						listboxHasFocus={listboxHasFocus}
+						multiselectable={multiple}
 					/>
 				) : null}
 				<div
@@ -1381,6 +1383,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 					listboxHasFocus={listboxHasFocus}
 					variant={variant}
 					renderAtSelectionLength={2}
+					multiselectable={multiple}
 				/>
 				{errorText && (
 					<div className="slds-has-error">
