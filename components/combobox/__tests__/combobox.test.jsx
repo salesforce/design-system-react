@@ -259,6 +259,56 @@ describe('SLDSCombobox', () => {
 			expect(selectedListbox).not.toHaveAttribute('aria-multiselectable');
 		});
 
+		// Regression (issue #3211): when a controlled parent shrinks `selection`
+		// while the active pill is the last one, the roving-tabindex index must
+		// be clamped so a pill stays tabbable. Otherwise the active index points
+		// past the end of `selection`, no pill gets tabindex=0, and the selected-
+		// pill listbox becomes unreachable by keyboard.
+		it('clamps the roving tabindex so a pill stays reachable after the controlled selection shrinks', () => {
+			const props = { ...defaultProps, multiple: true, options: [], events: {} };
+			const { container, rerender } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Combobox
+						{...props}
+						value=""
+						selection={[
+							accountsWithIcon[0],
+							accountsWithIcon[1],
+							accountsWithIcon[2],
+						]}
+					/>
+				</IconSettings>
+			);
+
+			// Move the roving tabindex onto the LAST pill (as arrow/focus would).
+			let pills = getNodes(container).selectedListbox.querySelectorAll(
+				'[role="option"]'
+			);
+			expect(pills).toHaveLength(3);
+			fireEvent.focus(pills[2]);
+
+			// Controlled parent removes the last (active) pill out from under us.
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<Combobox
+						{...props}
+						value=""
+						selection={[accountsWithIcon[0], accountsWithIcon[1]]}
+					/>
+				</IconSettings>
+			);
+
+			pills = getNodes(container).selectedListbox.querySelectorAll(
+				'[role="option"]'
+			);
+			expect(pills).toHaveLength(2);
+			const tabbable = [...pills].filter(
+				(pill) => pill.getAttribute('tabindex') === '0'
+			);
+			expect(tabbable).toHaveLength(1);
+			expect(pills[1]).toHaveAttribute('tabindex', '0');
+		});
+
 		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', () => {
 			const { container } = render(
 				<DemoComponent

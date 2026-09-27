@@ -765,13 +765,31 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		}
 	}, [options, getOptions, activeOption]);
 
-	// Handle selection change - update active selected option
+	// Handle selection change - keep the active selected option and its roving
+	// tabindex in sync with `selection`. Besides seeding the initial active
+	// pill, this clamps the active index when `selection` shrinks. Without the
+	// clamp, a controlled parent removing a pill through any path other than
+	// the built-in remove handler could leave the active index pointing past
+	// the end of `selection`, so no pill receives tabindex=0 and the selected-
+	// pill listbox becomes unreachable by keyboard (WCAG 2.1.1 / 2.4.3).
 	useEffect(() => {
-		if (selection.length > 0 && !activeSelectedOption) {
-			setActiveSelectedOption(selection[0]);
-			setActiveSelectedOptionIndex(0);
+		if (selection.length === 0) {
+			if (activeSelectedOption !== undefined) {
+				setActiveSelectedOption(undefined);
+				setActiveSelectedOptionIndex(0);
+			}
+			return;
 		}
-	}, [selection, activeSelectedOption]);
+
+		if (!activeSelectedOption || !selection[activeSelectedOptionIndex]) {
+			const clampedIndex =
+				activeSelectedOptionIndex >= selection.length
+					? selection.length - 1
+					: activeSelectedOptionIndex;
+			setActiveSelectedOption(selection[clampedIndex]);
+			setActiveSelectedOptionIndex(clampedIndex);
+		}
+	}, [selection, activeSelectedOption, activeSelectedOptionIndex]);
 
 	// Cleanup on unmount
 	useEffect(() => {
