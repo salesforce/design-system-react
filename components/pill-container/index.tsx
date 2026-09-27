@@ -272,6 +272,7 @@ const PillContainer = ({
 			isPillContainer
 			labels={labels}
 			listboxHasFocus={listboxHasFocus}
+			multiselectable
 			renderAtSelectionLength={0}
 			selection={options}
 			style={style}
