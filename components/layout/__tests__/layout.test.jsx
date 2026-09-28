@@ -5,6 +5,10 @@ import { render } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import Layout from '../layout';
 import LayoutItem from '../layout-item';
+import {
+	Layout as LayoutFromIndex,
+	LayoutItem as LayoutItemFromIndex,
+} from '../index';
 
 describe('LayoutItem', () => {
 	it('renders a bare div with no layout class when no props are set', () => {
@@ -186,5 +190,16 @@ describe('Layout', () => {
 		expect(div).toHaveAttribute('id', 'grid-1');
 		expect(div).toHaveAttribute('data-test', 'y');
 		expect(div).toHaveAttribute('role', 'list');
+	});
+});
+
+describe('Layout package entry', () => {
+	it('exposes Layout and LayoutItem from the index', () => {
+		expect(LayoutFromIndex).toBeDefined();
+		expect(LayoutItemFromIndex).toBeDefined();
+	});
+
+	it('attaches LayoutItem as Layout.Item', () => {
+		expect(LayoutFromIndex.Item).toBe(LayoutItemFromIndex);
 	});
 });
