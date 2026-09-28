@@ -56,17 +56,23 @@ type Story = StoryObj<typeof Layout>;
 
 export const Default: Story = {
 	render: (args) => (
-		<Layout {...args}>
-			<LayoutItem flexibility="auto">
-				<Cell>1</Cell>
-			</LayoutItem>
-			<LayoutItem flexibility="auto">
-				<Cell>2</Cell>
-			</LayoutItem>
-			<LayoutItem flexibility="auto">
-				<Cell>3</Cell>
-			</LayoutItem>
-		</Layout>
+		<>
+			<Hint>
+				Three items with <code>flexibility=&quot;auto&quot;</code> each grow to
+				share the row equally.
+			</Hint>
+			<Layout {...args}>
+				<LayoutItem flexibility="auto">
+					<Cell>1</Cell>
+				</LayoutItem>
+				<LayoutItem flexibility="auto">
+					<Cell>2</Cell>
+				</LayoutItem>
+				<LayoutItem flexibility="auto">
+					<Cell>3</Cell>
+				</LayoutItem>
+			</Layout>
+		</>
 	),
 };
 
@@ -103,7 +109,8 @@ export const VerticalAlign: Story = {
 				One item is deliberately taller. The short items align to the{' '}
 				<code>verticalAlign</code> position within the row — switch the control
 				between <code>start</code>, <code>center</code>, and <code>end</code> to
-				see them move to the top, middle, and bottom.
+				see them move to the top, middle, and bottom; <code>stretch</code> makes
+				every item fill the full row height.
 			</Hint>
 			<Layout {...args}>
 				<LayoutItem>
@@ -123,13 +130,20 @@ export const VerticalAlign: Story = {
 export const MultipleRows: Story = {
 	args: { multipleRows: true },
 	render: (args) => (
-		<Layout {...args}>
-			{Array.from({ length: 8 }, (_, i) => (
-				<LayoutItem key={i} size={3}>
-					<Cell>{i + 1}</Cell>
-				</LayoutItem>
-			))}
-		</Layout>
+		<>
+			<Hint>
+				With <code>multipleRows</code>, items that exceed the row width wrap to
+				the next line. Eight quarter-width (<code>size=3</code>) items form two
+				rows of four; without it they would overflow a single row.
+			</Hint>
+			<Layout {...args}>
+				{Array.from({ length: 8 }, (_, i) => (
+					<LayoutItem key={i} size={3}>
+						<Cell>{i + 1}</Cell>
+					</LayoutItem>
+				))}
+			</Layout>
+		</>
 	),
 };
 
@@ -169,17 +183,23 @@ export const PullToBoundary: Story = {
 
 export const FixedSizes: Story = {
 	render: () => (
-		<Layout>
-			<LayoutItem size={6}>
-				<Cell>6</Cell>
-			</LayoutItem>
-			<LayoutItem size={3}>
-				<Cell>3</Cell>
-			</LayoutItem>
-			<LayoutItem size={3}>
-				<Cell>3</Cell>
-			</LayoutItem>
-		</Layout>
+		<>
+			<Hint>
+				<code>size</code> is a fraction of 12 columns. Here 6/12 (½) + 3/12 (¼)
+				+ 3/12 (¼) fills the row exactly.
+			</Hint>
+			<Layout>
+				<LayoutItem size={6}>
+					<Cell>6 / 12</Cell>
+				</LayoutItem>
+				<LayoutItem size={3}>
+					<Cell>3 / 12</Cell>
+				</LayoutItem>
+				<LayoutItem size={3}>
+					<Cell>3 / 12</Cell>
+				</LayoutItem>
+			</Layout>
+		</>
 	),
 };
 
@@ -213,18 +233,22 @@ export const Flexibility: Story = {
 		<>
 			<Hint>
 				<code>flexibility</code> controls how an item grows and shrinks to fill
-				the row. It accepts a single keyword or an array of them (last item
-				below combines <code>grow</code> and <code>no-shrink</code>).
+				the row. It accepts three forms: a single keyword, an array of keywords,
+				or — for Lightning Base Component parity — a comma-separated string. All
+				three are shown below.
 			</Hint>
 			<Layout>
 				<LayoutItem flexibility="auto">
-					<Cell>auto (grows)</Cell>
+					<Cell>&quot;auto&quot; (single, grows)</Cell>
 				</LayoutItem>
 				<LayoutItem flexibility="no-flex">
-					<Cell>no-flex</Cell>
+					<Cell>&quot;no-flex&quot; (single)</Cell>
 				</LayoutItem>
 				<LayoutItem flexibility={['grow', 'no-shrink']}>
-					<Cell>grow + no-shrink</Cell>
+					<Cell>[&quot;grow&quot;, &quot;no-shrink&quot;] (array)</Cell>
+				</LayoutItem>
+				<LayoutItem flexibility="auto, no-shrink">
+					<Cell>&quot;auto, no-shrink&quot; (string)</Cell>
 				</LayoutItem>
 			</Layout>
 		</>
@@ -327,6 +351,36 @@ export const Nested: Story = {
 	),
 };
 
+export const Toolbar: Story = {
+	name: 'Example: Toolbar',
+	render: () => (
+		<>
+			<Hint>
+				A realistic composition — the common toolbar / page-header pattern. The
+				title takes <code>flexibility=&quot;auto&quot;</code> so it absorbs the
+				free space and pushes the action buttons to the right;{' '}
+				<code>verticalAlign=&quot;center&quot;</code> keeps everything on one
+				baseline.
+			</Hint>
+			<Layout verticalAlign="center">
+				<LayoutItem flexibility="auto">
+					<h2 className="slds-text-heading_small">Recent Accounts</h2>
+				</LayoutItem>
+				<LayoutItem padding="horizontal-small">
+					<button type="button" className="slds-button slds-button_neutral">
+						New
+					</button>
+				</LayoutItem>
+				<LayoutItem>
+					<button type="button" className="slds-button slds-button_brand">
+						Import
+					</button>
+				</LayoutItem>
+			</Layout>
+		</>
+	),
+};
+
 export const Playground: Story = {
 	args: {
 		horizontalAlign: 'spread',
@@ -334,16 +388,24 @@ export const Playground: Story = {
 		multipleRows: true,
 	},
 	render: (args) => (
-		<Layout {...args}>
-			<LayoutItem size={4}>
-				<Cell>1</Cell>
-			</LayoutItem>
-			<LayoutItem size={4}>
-				<Cell>2</Cell>
-			</LayoutItem>
-			<LayoutItem size={4}>
-				<Cell>3</Cell>
-			</LayoutItem>
-		</Layout>
+		<>
+			<Hint>
+				Every container prop is wired to the Controls panel below. Combine{' '}
+				<code>horizontalAlign</code>, <code>verticalAlign</code>,{' '}
+				<code>pullToBoundary</code>, and <code>multipleRows</code> and watch the
+				three items respond.
+			</Hint>
+			<Layout {...args}>
+				<LayoutItem size={4}>
+					<Cell>1</Cell>
+				</LayoutItem>
+				<LayoutItem size={4}>
+					<Cell>2</Cell>
+				</LayoutItem>
+				<LayoutItem size={4}>
+					<Cell>3</Cell>
+				</LayoutItem>
+			</Layout>
+		</>
 	),
 };

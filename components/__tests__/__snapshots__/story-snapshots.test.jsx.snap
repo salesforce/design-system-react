@@ -8083,6 +8083,7 @@ exports[`Story HTML snapshots > Layout > AlignmentBump 1`] = `
 
 exports[`Story HTML snapshots > Layout > Default 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">Three items with <code>flexibility=&quot;auto&quot;</code> each grow to share the row equally.</p>
   <div class="slds-grid">
     <div class="slds-col">
       <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">1</div>
@@ -8099,15 +8100,16 @@ exports[`Story HTML snapshots > Layout > Default 1`] = `
 
 exports[`Story HTML snapshots > Layout > FixedSizes 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small"><code>size</code> is a fraction of 12 columns. Here 6/12 (½) + 3/12 (¼) + 3/12 (¼) fills the row exactly.</p>
   <div class="slds-grid">
     <div class="slds-size_6-of-12">
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">6</div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">6 / 12</div>
     </div>
     <div class="slds-size_3-of-12">
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">3</div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">3 / 12</div>
     </div>
     <div class="slds-size_3-of-12">
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">3</div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">3 / 12</div>
     </div>
   </div>
 </div>"
@@ -8115,16 +8117,19 @@ exports[`Story HTML snapshots > Layout > FixedSizes 1`] = `
 
 exports[`Story HTML snapshots > Layout > Flexibility 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
-  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small"><code>flexibility</code> controls how an item grows and shrinks to fill the row. It accepts a single keyword or an array of them (last item below combines <code>grow</code> and <code>no-shrink</code>).</p>
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small"><code>flexibility</code> controls how an item grows and shrinks to fill the row. It accepts three forms: a single keyword, an array of keywords, or — for Lightning Base Component parity — a comma-separated string. All three are shown below.</p>
   <div class="slds-grid">
     <div class="slds-col">
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">auto (grows)</div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">&quot;auto&quot; (single, grows)</div>
     </div>
     <div class="slds-no-flex">
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">no-flex</div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">&quot;no-flex&quot; (single)</div>
     </div>
     <div class="slds-grow slds-shrink-none">
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">grow + no-shrink</div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">[&quot;grow&quot;, &quot;no-shrink&quot;] (array)</div>
+    </div>
+    <div class="slds-col slds-shrink-none">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">&quot;auto, no-shrink&quot; (string)</div>
     </div>
   </div>
 </div>"
@@ -8149,6 +8154,7 @@ exports[`Story HTML snapshots > Layout > HorizontalAlign 1`] = `
 
 exports[`Story HTML snapshots > Layout > MultipleRows 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">With <code>multipleRows</code>, items that exceed the row width wrap to the next line. Eight quarter-width (<code>size=3</code>) items form two rows of four; without it they would overflow a single row.</p>
   <div class="slds-grid slds-wrap">
     <div class="slds-size_3-of-12">
       <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">1</div>
@@ -8224,6 +8230,7 @@ exports[`Story HTML snapshots > Layout > Padding 1`] = `
 
 exports[`Story HTML snapshots > Layout > Playground 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">Every container prop is wired to the Controls panel below. Combine <code>horizontalAlign</code>, <code>verticalAlign</code>, <code>pullToBoundary</code>, and <code>multipleRows</code> and watch the three items respond.</p>
   <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-wrap">
     <div class="slds-size_4-of-12">
       <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">1</div>
@@ -8284,9 +8291,22 @@ exports[`Story HTML snapshots > Layout > ResponsiveSizes 1`] = `
 </div>"
 `;
 
+exports[`Story HTML snapshots > Layout > Toolbar 1`] = `
+"<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">A realistic composition — the common toolbar / page-header pattern. The title takes <code>flexibility=&quot;auto&quot;</code> so it absorbs the free space and pushes the action buttons to the right; <code>verticalAlign=&quot;center&quot;</code> keeps everything on one baseline.</p>
+  <div class="slds-grid slds-grid_vertical-align-center">
+    <div class="slds-col">
+      <h2 class="slds-text-heading_small">Recent Accounts</h2>
+    </div>
+    <div class="slds-p-left_small slds-p-right_small"><button type="button" class="slds-button slds-button_neutral">New</button></div>
+    <div><button type="button" class="slds-button slds-button_brand">Import</button></div>
+  </div>
+</div>"
+`;
+
 exports[`Story HTML snapshots > Layout > VerticalAlign 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
-  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">One item is deliberately taller. The short items align to the <code>verticalAlign</code> position within the row — switch the control between <code>start</code>, <code>center</code>, and <code>end</code> to see them move to the top, middle, and bottom.</p>
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">One item is deliberately taller. The short items align to the <code>verticalAlign</code> position within the row — switch the control between <code>start</code>, <code>center</code>, and <code>end</code> to see them move to the top, middle, and bottom; <code>stretch</code> makes every item fill the full row height.</p>
   <div class="slds-grid slds-grid_vertical-align-center">
     <div>
       <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem;padding-top:3rem">tall item</div>
