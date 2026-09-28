@@ -276,21 +276,54 @@ export const Padding: Story = {
 
 export const Nested: Story = {
 	render: () => (
-		<Layout multipleRows>
-			<LayoutItem size={6}>
-				<Layout horizontalAlign="spread">
-					<LayoutItem>
-						<Cell>a</Cell>
-					</LayoutItem>
-					<LayoutItem>
-						<Cell>b</Cell>
-					</LayoutItem>
-				</Layout>
-			</LayoutItem>
-			<LayoutItem size={6}>
-				<Cell>right</Cell>
-			</LayoutItem>
-		</Layout>
+		<>
+			<Hint>
+				A <code>LayoutItem</code> can contain its own <code>Layout</code>. The
+				outer grid splits into two halves (<code>size=6</code> each, solid blue
+				outline). The left half holds a nested grid (dashed orange outline) that
+				spreads its own two cells to its edges — laid out independently of the
+				outer grid.
+			</Hint>
+			<Layout multipleRows>
+				<LayoutItem
+					size={6}
+					style={{ outline: '2px solid #1b96ff', outlineOffset: '-2px' }}
+				>
+					<div className="slds-p-around_x-small">
+						<p className="slds-text-title slds-m-bottom_xx-small">
+							outer left (½) — nested Layout inside
+						</p>
+						<div
+							className="slds-p-around_x-small"
+							style={{ outline: '2px dashed #ff9a3c', outlineOffset: '-2px' }}
+						>
+							<p className="slds-text-title slds-m-bottom_xx-small">
+								inner Layout · horizontalAlign=&quot;spread&quot;
+							</p>
+							<Layout horizontalAlign="spread">
+								<LayoutItem>
+									<Cell>a</Cell>
+								</LayoutItem>
+								<LayoutItem>
+									<Cell>b</Cell>
+								</LayoutItem>
+							</Layout>
+						</div>
+					</div>
+				</LayoutItem>
+				<LayoutItem
+					size={6}
+					style={{ outline: '2px solid #1b96ff', outlineOffset: '-2px' }}
+				>
+					<div className="slds-p-around_x-small">
+						<p className="slds-text-title slds-m-bottom_xx-small">
+							outer right (½)
+						</p>
+						<Cell>right</Cell>
+					</div>
+				</LayoutItem>
+			</Layout>
+		</>
 	),
 };
 

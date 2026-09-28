@@ -8180,19 +8180,29 @@ exports[`Story HTML snapshots > Layout > MultipleRows 1`] = `
 
 exports[`Story HTML snapshots > Layout > Nested 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">A <code>LayoutItem</code> can contain its own <code>Layout</code>. The outer grid splits into two halves (<code>size=6</code> each, solid blue outline). The left half holds a nested grid (dashed orange outline) that spreads its own two cells to its edges — laid out independently of the outer grid.</p>
   <div class="slds-grid slds-wrap">
-    <div class="slds-size_6-of-12">
-      <div class="slds-grid slds-grid_align-spread">
-        <div>
-          <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">a</div>
-        </div>
-        <div>
-          <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">b</div>
+    <div class="slds-size_6-of-12" style="outline:2px solid #1b96ff;outline-offset:-2px">
+      <div class="slds-p-around_x-small">
+        <p class="slds-text-title slds-m-bottom_xx-small">outer left (½) — nested Layout inside</p>
+        <div class="slds-p-around_x-small" style="outline:2px dashed #ff9a3c;outline-offset:-2px">
+          <p class="slds-text-title slds-m-bottom_xx-small">inner Layout · horizontalAlign=&quot;spread&quot;</p>
+          <div class="slds-grid slds-grid_align-spread">
+            <div>
+              <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">a</div>
+            </div>
+            <div>
+              <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">b</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="slds-size_6-of-12">
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">right</div>
+    <div class="slds-size_6-of-12" style="outline:2px solid #1b96ff;outline-offset:-2px">
+      <div class="slds-p-around_x-small">
+        <p class="slds-text-title slds-m-bottom_xx-small">outer right (½)</p>
+        <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">right</div>
+      </div>
     </div>
   </div>
 </div>"
