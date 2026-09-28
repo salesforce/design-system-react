@@ -54,7 +54,7 @@ class strings with a familiar, type-safe, documented primitive.
 Both components are functional, use `forwardRef` to their root `<div>`, set `displayName`,
 extend `HTMLAttributes<HTMLDivElement>` (so arbitrary `id` / `style` / `data-*` / `aria-*`
 pass through via `...rest`), and compose classes with `classnames`. `className` lands on the
-root `.slds-grid` / `.slds-col` node only.
+root `<div>` only (the `slds-grid` node for `Layout`; the single item `<div>` for `LayoutItem`).
 
 ### 4.1 `Layout` (container → `slds-grid`)
 
@@ -91,7 +91,12 @@ Prop → class mapping (root `<div className="slds-grid …">`):
 | `multipleRows` (true) | `slds-wrap` |
 | (any align/boundary unset) | *no class* |
 
-### 4.2 `LayoutItem` (child → `slds-col`)
+### 4.2 `LayoutItem` (child)
+
+> **No always-on base class (strict LBC parity).** Unlike the old DSR `Grid.Column`,
+> `LayoutItem` does **not** hardcode `slds-col`. Matching `lightning-layout-item` exactly,
+> `slds-col` is emitted **only** when `flexibility` includes `"auto"`. A bare `<LayoutItem>`
+> renders a `<div>` with no layout class. (Team-decision alternative logged in §5.)
 
 ```ts
 type Flexibility = 'auto' | 'shrink' | 'no-shrink' | 'grow' | 'no-grow' | 'no-flex';
@@ -118,25 +123,33 @@ interface LayoutItemProps extends HTMLAttributes<HTMLDivElement> {
 }
 ```
 
-Prop → class mapping (root `<div className="slds-col …">`):
+Prop → class mapping (classes appended to the root `<div>`; verified against LBC
+`modules/interop/layoutItem/styleUtils.ts`). Class order in the output string is:
+padding, then flexibility, then size, then bump.
 
-| Prop / value | Class appended |
+| Prop / value | Class(es) appended |
 |---|---|
 | `size={n}` | `slds-size_{n}-of-12` |
 | `smallDeviceSize={n}` | `slds-small-size_{n}-of-12` |
 | `mediumDeviceSize={n}` | `slds-medium-size_{n}-of-12` |
 | `largeDeviceSize={n}` | `slds-large-size_{n}-of-12` |
-| `flexibility="auto"` | fluid grow behavior — exact class confirmed at impl (see §10) |
-| `flexibility="shrink"` | `slds-shrink` |
-| `flexibility="no-shrink"` | `slds-shrink-none` |
+| `flexibility="auto"` | `slds-col` |
 | `flexibility="grow"` | `slds-grow` |
+| `flexibility="shrink"` | `slds-shrink` |
 | `flexibility="no-grow"` | `slds-grow-none` |
+| `flexibility="no-shrink"` | `slds-shrink-none` |
 | `flexibility="no-flex"` | `slds-no-flex` |
-| `padding="around-medium"` (etc.) | spacing class per token — `slds-p-*` vs `slds-col_padded*` confirmed at impl (see §10) |
+| `padding="horizontal-small"` | `slds-p-left_small` **and** `slds-p-right_small` |
+| `padding="horizontal-medium"` | `slds-p-left_medium` **and** `slds-p-right_medium` |
+| `padding="horizontal-large"` | `slds-p-left_large` **and** `slds-p-right_large` |
+| `padding="around-small"` | `slds-p-around_small` |
+| `padding="around-medium"` | `slds-p-around_medium` |
+| `padding="around-large"` | `slds-p-around_large` |
 | `alignmentBump="left"` | `slds-col_bump-left` |
 | `alignmentBump="top"` | `slds-col_bump-top` |
 | `alignmentBump="right"` | `slds-col_bump-right` |
 | `alignmentBump="bottom"` | `slds-col_bump-bottom` |
+| (all props unset) | *no class* — bare `<div>` |
 
 **Notes / decisions:**
 
@@ -144,15 +157,18 @@ Prop → class mapping (root `<div className="slds-col …">`):
    fractions are expressible (`size={6}` = 1/2, `size={4}` = 1/3, `size={3}` = 1/4, `size={9}` = 3/4).
    This matches LBC exactly. Non-12 denominators are out of scope (§3).
 2. **`flexibility` accepts a list.** LBC allows a comma-separated list (e.g. `"auto, no-shrink"`).
-   We accept a single token or an array (`flexibility={['grow', 'no-shrink']}`) and join the
-   resulting classes. `auto` maps to the fluid grow behavior; combinations are additive.
-3. **`padding` token → SLDS spacing class.** The 6 LBC tokens map to the SLDS spacing scale:
-   `around-{s,m,l}` → `slds-p-around_{small,medium,large}`; `horizontal-{s,m,l}` →
-   `slds-p-horizontal_{small,medium,large}`. (Implementation will confirm the exact class the
-   LBC component emits; the token set is fixed to LBC's 6.)
-4. **Dev-time guardrail.** If any device size is set without `size`, emit a `warning()` (LBC
-   documents that device sizes require `size`). Mirrors the repo's `check-props` convention.
-5. **`Layout.Item` alias.** Canonical usage is the two named exports; `Layout.Item = LayoutItem`
+   We accept a single token or an array (`flexibility={['grow', 'no-shrink']}`) and add each
+   token's class; combinations are additive. `auto` maps to `slds-col`.
+3. **`flexibility` conflict.** `auto` and `no-flex` together are contradictory. LBC throws;
+   we emit a dev-time `warning()` (non-throwing, per repo `check-props` convention) and still
+   render both classes.
+4. **`padding` emits two classes for `horizontal-*`.** `horizontal-{size}` →
+   `slds-p-left_{size}` + `slds-p-right_{size}`; `around-{size}` → `slds-p-around_{size}`.
+   `padding` is a single value (not a list). Confirmed against LBC source.
+5. **Dev-time guardrail: device size requires `size`.** If any of `smallDeviceSize` /
+   `mediumDeviceSize` / `largeDeviceSize` is set without `size`, emit a `warning()` (LBC throws
+   `SIZE_REQUIRED`; we warn, per repo convention). Sizes are constrained to 1–12 by the type.
+6. **`Layout.Item` alias.** Canonical usage is the two named exports; `Layout.Item = LayoutItem`
    is attached as a free convenience alias.
 
 ### 4.3 Usage example
@@ -207,9 +223,25 @@ Verified against both sources on 2026-09-27.
 2. **SLDS named absolute sizes / `slds-order_*` / raw `slds-gutters`:** not part of the LBC layout
    API; intentionally not exposed.
 
-**Bottom line:** v1 is a *superset-safe, de facto full match* of the LBC `lightning-layout` /
-`lightning-layout-item` prop surface. There is nothing in the LBC layout API that a consumer
-could set that our `Layout` / `LayoutItem` cannot express.
+### Deliberate parity decisions for team review
+
+These are places where we *could* diverge from LBC for ergonomics. v1 mirrors LBC; the team can
+decide to change these before release.
+
+1. **`LayoutItem` has no always-on `slds-col` base class (matches LBC).** `lightning-layout-item`
+   only adds `slds-col` when `flexibility` includes `"auto"`; a bare item renders a class-less
+   `<div>`. We mirror this exactly. **Alternative worth the team's consideration:** always emit
+   `slds-col` on `LayoutItem` (as the old DSR `Grid.Column` did), so a bare `<LayoutItem>` behaves
+   as a real grid column without requiring `flexibility="auto"`. This is more intuitive for React
+   consumers but diverges from LBC's default flex behavior (a no-flexibility item would then grow).
+   **Decision (2026-09-27): ship strict LBC parity; log this alternative for the experts to decide.**
+2. **`flexibility` conflict is a warning, not a throw.** LBC throws on `auto`+`no-flex`; we follow
+   the repo's non-throwing `check-props` convention and warn instead. Team could opt to throw.
+
+**Bottom line:** v1 is a *strict, de facto full match* of the LBC `lightning-layout` /
+`lightning-layout-item` prop surface and class output. There is nothing in the LBC layout API that
+a consumer could set that our `Layout` / `LayoutItem` cannot express, and the class strings match
+token-for-token. The only intentional behavioral choices are logged above for team review.
 
 ## 6. Existing `Grid` component — deprecation
 
@@ -268,13 +300,18 @@ Test cases:
   - custom `className` merged onto the root alongside `slds-grid`.
   - `...rest` passthrough: `id`, `style`, `data-*`, `aria-*` land on the root.
 - **LayoutItem**
-  - renders `<div className="slds-col">` with children.
+  - bare `<LayoutItem>` renders a `<div>` with **no** `slds-col` (or any layout) class — strict
+    LBC parity; children still render.
   - `size={n}` → `slds-size_{n}-of-12`; device sizes → `slds-{small,medium,large}-size_{n}-of-12`.
-  - each `flexibility` token → its class; array/list → all classes present.
-  - each `padding` token → its spacing class.
-  - each `alignmentBump` value → `slds-col_bump-*`.
-  - device size without `size` → dev warning emitted.
-  - `className` merge + `...rest` passthrough as above.
+  - `flexibility="auto"` → `slds-col`; `grow`→`slds-grow`, `shrink`→`slds-shrink`,
+    `no-grow`→`slds-grow-none`, `no-shrink`→`slds-shrink-none`, `no-flex`→`slds-no-flex`.
+  - `flexibility` as an array/list (e.g. `['auto','no-shrink']`) → all mapped classes present.
+  - `flexibility` with both `auto` and `no-flex` → dev warning emitted (both classes still render).
+  - `padding="around-medium"` → single `slds-p-around_medium`; `padding="horizontal-small"` →
+    **both** `slds-p-left_small` and `slds-p-right_small`.
+  - each `alignmentBump` value → `slds-col_bump-{left,top,right,bottom}`.
+  - device size without `size` (e.g. `mediumDeviceSize={4}` alone) → dev warning emitted.
+  - `className` merged onto the root; `...rest` passthrough of `id`/`style`/`data-*`/`aria-*`.
 
 Target ≥90% coverage (repo standard). Run: `npm run test:unit`.
 
@@ -304,11 +341,14 @@ Stories:
 
 ## 10. Risks & Open Questions
 
-- **`flexibility="auto"` exact class:** LBC's "auto" (fluid, absorbs extra space) maps to the SLDS
-  grow behavior; implementation will confirm the exact class(es) the LBC component emits and match
-  them. Low risk — additive utility classes.
-- **`padding` exact class:** confirm whether LBC emits `slds-p-*` spacing classes or `slds-col_padded*`
-  flavors for its `padding` tokens; match whichever LBC produces. Token set is fixed regardless.
+- **RESOLVED — `flexibility` and `padding` class output:** verified against LBC source
+  (`modules/interop/layoutItem/styleUtils.ts`, confirmed identical in the Aura
+  `layoutItemHelper.js`). `auto`→`slds-col`, `grow`→`slds-grow`, `shrink`→`slds-shrink`,
+  `no-grow`→`slds-grow-none`, `no-shrink`→`slds-shrink-none`, `no-flex`→`slds-no-flex`.
+  `padding` uses `slds-p-*` spacing classes (`horizontal-*` emits left+right; `around-*` emits one).
+  See §4.2 for the full verified tables.
+- **RESOLVED — no always-on base class:** `slds-col` is emitted only via `flexibility="auto"`
+  (see §4.2 and the §5 team-decision log).
 - **Branch/push:** per team memory, DSR PRs push to `origin` via the `showerbee` account (not a fork)
   so Chromatic runs. This branch (`worktree-feat-layout-primitive`) branches off `origin/master`;
   final branch name to be confirmed at PR time.
