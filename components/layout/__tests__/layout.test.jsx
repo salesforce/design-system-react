@@ -63,6 +63,18 @@ describe('LayoutItem', () => {
 		expect(container.firstChild).toHaveClass('slds-col', 'slds-shrink-none');
 	});
 
+	it('accepts an LBC comma-separated flexibility string', () => {
+		const { container } = render(<LayoutItem flexibility="auto, no-shrink" />);
+		expect(container.firstChild).toHaveClass('slds-col', 'slds-shrink-none');
+	});
+
+	it('trims whitespace around comma-separated flexibility tokens', () => {
+		const { container } = render(
+			<LayoutItem flexibility="  auto ,   no-shrink  " />
+		);
+		expect(container.firstChild).toHaveClass('slds-col', 'slds-shrink-none');
+	});
+
 	it('emits both slds-col and the size class when auto + size combine', () => {
 		const { container } = render(<LayoutItem flexibility="auto" size={4} />);
 		expect(container.firstChild).toHaveClass('slds-col', 'slds-size_4-of-12');
@@ -121,6 +133,14 @@ describe('LayoutItem dev warnings', () => {
 	it('warns when flexibility combines auto and no-flex', () => {
 		const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
 		render(<LayoutItem flexibility={['auto', 'no-flex']} />);
+		expect(spy).toHaveBeenCalled();
+		expect(spy.mock.calls[0][0]).toMatch(/auto.*no-flex|contradictory/);
+		spy.mockRestore();
+	});
+
+	it('warns on a conflicting comma-separated flexibility string', () => {
+		const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+		render(<LayoutItem flexibility="auto, no-flex" />);
 		expect(spy).toHaveBeenCalled();
 		expect(spy.mock.calls[0][0]).toMatch(/auto.*no-flex|contradictory/);
 		spy.mockRestore();

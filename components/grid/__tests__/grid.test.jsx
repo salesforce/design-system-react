@@ -6,6 +6,18 @@ import { describe, it, expect, vi } from 'vitest';
 import Grid from '../index';
 
 describe('Grid (deprecated)', () => {
+	// The deprecation warning is guarded to fire once per module lifetime, so
+	// this assertion must run before any other Grid render consumes the guard.
+	it('emits the deprecation warning only once across multiple renders', () => {
+		const spy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+		const { rerender } = render(<Grid>x</Grid>);
+		rerender(<Grid>y</Grid>);
+		render(<Grid>z</Grid>);
+		expect(spy).toHaveBeenCalledTimes(1);
+		expect(spy.mock.calls[0][0]).toMatch(/deprecated/i);
+		spy.mockRestore();
+	});
+
 	it('still renders slds-grid with a column', () => {
 		const { container } = render(
 			<Grid>
@@ -14,13 +26,5 @@ describe('Grid (deprecated)', () => {
 		);
 		expect(container.querySelector('.slds-grid')).toBeInTheDocument();
 		expect(container.querySelector('.slds-col')).toHaveTextContent('col');
-	});
-
-	it('emits a deprecation warning in development', () => {
-		const spy = vi.spyOn(console, 'warn').mockImplementation(() => {});
-		render(<Grid>x</Grid>);
-		expect(spy).toHaveBeenCalled();
-		expect(spy.mock.calls[0][0]).toMatch(/deprecated/i);
-		spy.mockRestore();
 	});
 });

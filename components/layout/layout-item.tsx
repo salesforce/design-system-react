@@ -5,6 +5,7 @@ import { forwardRef } from 'react';
 import classNames from 'classnames';
 import { LAYOUT_ITEM } from '../../utilities/constants';
 import checkProps from './check-props';
+import normalizeFlexibility from './normalize-flexibility';
 import type { Flexibility, LayoutItemPadding, LayoutItemProps } from './types';
 
 const FLEX_CLASS: Record<Flexibility, string> = {
@@ -23,13 +24,6 @@ const PADDING_CLASS: Record<LayoutItemPadding, string[]> = {
 	'around-small': ['slds-p-around_small'],
 	'around-medium': ['slds-p-around_medium'],
 	'around-large': ['slds-p-around_large'],
-};
-
-const toFlexibilityArray = (
-	flexibility?: Flexibility | Flexibility[]
-): Flexibility[] => {
-	if (flexibility == null) return [];
-	return Array.isArray(flexibility) ? flexibility : [flexibility];
 };
 
 /**
@@ -56,7 +50,9 @@ const LayoutItem = forwardRef<HTMLDivElement, LayoutItemProps>((props, ref) => {
 	const computed = classNames(
 		// order matches LBC: padding, flexibility, size, bump
 		padding ? PADDING_CLASS[padding] : undefined,
-		toFlexibilityArray(flexibility).map((token) => FLEX_CLASS[token]),
+		normalizeFlexibility(flexibility).map(
+			(token) => FLEX_CLASS[token as Flexibility]
+		),
 		size ? `slds-size_${size}-of-12` : undefined,
 		smallDeviceSize ? `slds-small-size_${smallDeviceSize}-of-12` : undefined,
 		mediumDeviceSize ? `slds-medium-size_${mediumDeviceSize}-of-12` : undefined,

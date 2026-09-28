@@ -3,17 +3,13 @@
 /* eslint-disable import/no-mutable-exports */
 
 import warning from 'warning';
+import normalizeFlexibility from './normalize-flexibility';
 
 let checkProps = function checkPropsFunction(_COMPONENT, _props) {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props) {
-		const flexibility =
-			props.flexibility == null
-				? []
-				: Array.isArray(props.flexibility)
-					? props.flexibility
-					: [props.flexibility];
+		const flexibility = normalizeFlexibility(props.flexibility);
 
 		warning(
 			!(flexibility.includes('auto') && flexibility.includes('no-flex')),

@@ -33,6 +33,10 @@ export interface GridProps {
 	children?: ReactNode;
 }
 
+// Guard so the deprecation notice logs once per module lifetime rather than on
+// every render, matching the repo's `deprecatedProperty` convention.
+let hasWarnedGridDeprecated = false;
+
 /**
  * @deprecated Use `Layout` and `LayoutItem` instead. `Grid` predates the
  * modern layout primitive and is retained only for backward compatibility.
@@ -48,10 +52,13 @@ class Grid extends Component<GridProps> {
 	}
 
 	render() {
-		lowPriorityWarning(
-			false,
-			'[Design System React] `Grid` is deprecated. Use `Layout` and `LayoutItem` instead.'
-		);
+		if (!hasWarnedGridDeprecated) {
+			hasWarnedGridDeprecated = true;
+			lowPriorityWarning(
+				false,
+				'[Design System React] `Grid` is deprecated. Use `Layout` and `LayoutItem` instead.'
+			);
+		}
 		return <div className={this.getClassName()}>{this.props.children}</div>;
 	}
 }

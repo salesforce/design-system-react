@@ -43,8 +43,11 @@ export interface LayoutItemProps extends HTMLAttributes<HTMLDivElement> {
 	mediumDeviceSize?: LayoutItemSize;
 	/** Width on large devices and up (requires `size`). 1–12. */
 	largeDeviceSize?: LayoutItemSize;
-	/** Fluidity: a single token or an array of tokens. `auto` => `slds-col`. */
-	flexibility?: Flexibility | Flexibility[];
+	/**
+	 * Fluidity: a single token, an array of tokens, or — for LBC parity — a
+	 * comma-separated string (e.g. `"auto, no-shrink"`). `auto` => `slds-col`.
+	 */
+	flexibility?: Flexibility | Flexibility[] | (string & {});
 	/** Padding on the item. */
 	padding?: LayoutItemPadding;
 	/** Bump alignment of adjacent items (the SLDS `_bump` utility). */
