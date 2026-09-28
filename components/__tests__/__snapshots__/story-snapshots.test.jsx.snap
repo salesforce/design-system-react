@@ -8067,6 +8067,205 @@ exports[`Story HTML snapshots > Input > WithSpinner 1`] = `
 </div>"
 `;
 
+exports[`Story HTML snapshots > Layout > AlignmentBump 1`] = `
+"<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <div class="slds-grid">
+    <div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">left</div>
+    </div>
+    <div class="slds-col_bump-left">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">bumped right</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Layout > Default 1`] = `
+"<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <div class="slds-grid">
+    <div class="slds-col">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">1</div>
+    </div>
+    <div class="slds-col">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">2</div>
+    </div>
+    <div class="slds-col">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">3</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Layout > FixedSizes 1`] = `
+"<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <div class="slds-grid">
+    <div class="slds-size_6-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">6</div>
+    </div>
+    <div class="slds-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">3</div>
+    </div>
+    <div class="slds-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">3</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Layout > Flexibility 1`] = `
+"<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <div class="slds-grid">
+    <div class="slds-col">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">auto (grows)</div>
+    </div>
+    <div class="slds-no-flex">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">no-flex</div>
+    </div>
+    <div class="slds-grow slds-shrink-none">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">grow + no-shrink</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Layout > HorizontalAlign 1`] = `
+"<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <div class="slds-grid slds-grid_align-spread">
+    <div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">1</div>
+    </div>
+    <div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">2</div>
+    </div>
+    <div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">3</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Layout > MultipleRows 1`] = `
+"<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <div class="slds-grid slds-wrap">
+    <div class="slds-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">1</div>
+    </div>
+    <div class="slds-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">2</div>
+    </div>
+    <div class="slds-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">3</div>
+    </div>
+    <div class="slds-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">4</div>
+    </div>
+    <div class="slds-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">5</div>
+    </div>
+    <div class="slds-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">6</div>
+    </div>
+    <div class="slds-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">7</div>
+    </div>
+    <div class="slds-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">8</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Layout > Nested 1`] = `
+"<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <div class="slds-grid slds-wrap">
+    <div class="slds-size_6-of-12">
+      <div class="slds-grid slds-grid_align-spread">
+        <div>
+          <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">a</div>
+        </div>
+        <div>
+          <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">b</div>
+        </div>
+      </div>
+    </div>
+    <div class="slds-size_6-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">right</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Layout > Padding 1`] = `
+"<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <div class="slds-grid">
+    <div class="slds-p-around_large">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">around-large</div>
+    </div>
+    <div class="slds-p-left_medium slds-p-right_medium">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">horizontal-medium</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Layout > Playground 1`] = `
+"<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-wrap">
+    <div class="slds-size_4-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">1</div>
+    </div>
+    <div class="slds-size_4-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">2</div>
+    </div>
+    <div class="slds-size_4-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">3</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Layout > PullToBoundary 1`] = `
+"<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <div class="slds-grid slds-grid_pull-padded-medium">
+    <div class="slds-p-around_medium">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">1</div>
+    </div>
+    <div class="slds-p-around_medium">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">2</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Layout > ResponsiveSizes 1`] = `
+"<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <div class="slds-grid slds-wrap">
+    <div class="slds-size_12-of-12 slds-small-size_6-of-12 slds-medium-size_4-of-12 slds-large-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">responsive A</div>
+    </div>
+    <div class="slds-size_12-of-12 slds-small-size_6-of-12 slds-medium-size_4-of-12 slds-large-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">responsive B</div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > Layout > VerticalAlign 1`] = `
+"<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <div class="slds-grid slds-grid_vertical-align-center" style="height:6rem">
+    <div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">tall</div>
+    </div>
+    <div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">1</div>
+    </div>
+    <div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">2</div>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`Story HTML snapshots > MediaObject > Base 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-media">
