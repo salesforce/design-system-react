@@ -145,6 +145,12 @@ export const BaseWithMenuSubheader: Story = {
 						setSelection(newSelection);
 						setInputValue('');
 					},
+					onRequestRemoveSelectedOption: (
+						_event,
+						{ selection: newSelection }
+					) => {
+						setSelection(newSelection);
+					},
 				}}
 			/>
 		);
@@ -178,6 +184,12 @@ export const WithMenuSeparator: Story = {
 					onSelect: (_event, { selection: newSelection }) => {
 						setSelection(newSelection);
 						setInputValue('');
+					},
+					onRequestRemoveSelectedOption: (
+						_event,
+						{ selection: newSelection }
+					) => {
+						setSelection(newSelection);
 					},
 				}}
 			/>
@@ -214,6 +226,12 @@ export const WithInlineHelpTooltip: Story = {
 					onSelect: (_event, { selection: newSelection }) => {
 						setSelection(newSelection);
 						setInputValue('');
+					},
+					onRequestRemoveSelectedOption: (
+						_event,
+						{ selection: newSelection }
+					) => {
+						setSelection(newSelection);
 					},
 				}}
 			/>
@@ -258,6 +276,12 @@ export const WithInheritedMenuWidth: Story = {
 						setSelection(newSelection);
 						setInputValue('');
 					},
+					onRequestRemoveSelectedOption: (
+						_event,
+						{ selection: newSelection }
+					) => {
+						setSelection(newSelection);
+					},
 				}}
 			/>
 		);
@@ -292,6 +316,12 @@ export const WithScrollableMenu: Story = {
 					onSelect: (_event, { selection: newSelection }) => {
 						setSelection(newSelection);
 						setInputValue('');
+					},
+					onRequestRemoveSelectedOption: (
+						_event,
+						{ selection: newSelection }
+					) => {
+						setSelection(newSelection);
 					},
 				}}
 			/>
@@ -329,6 +359,12 @@ export const WithCustomInputComponent: Story = {
 					onSelect: (_event, { selection: newSelection }) => {
 						setSelection(newSelection);
 						setInputValue('');
+					},
+					onRequestRemoveSelectedOption: (
+						_event,
+						{ selection: newSelection }
+					) => {
+						setSelection(newSelection);
 					},
 				}}
 			/>
@@ -890,6 +926,12 @@ export const WithErrorState: Story = {
 						setSelection(newSelection);
 						setInputValue('');
 					},
+					onRequestRemoveSelectedOption: (
+						_event,
+						{ selection: newSelection }
+					) => {
+						setSelection(newSelection);
+					},
 				}}
 			/>
 		);
@@ -918,6 +960,12 @@ export const WithLoadingSpinner: Story = {
 						setSelection(newSelection);
 						setInputValue('');
 					},
+					onRequestRemoveSelectedOption: (
+						_event,
+						{ selection: newSelection }
+					) => {
+						setSelection(newSelection);
+					},
 				}}
 			/>
 		);
@@ -942,6 +990,12 @@ export const WithMenuSpinner: Story = {
 					onSelect: (_event, { selection: newSelection }) => {
 						setSelection(newSelection);
 						setInputValue('');
+					},
+					onRequestRemoveSelectedOption: (
+						_event,
+						{ selection: newSelection }
+					) => {
+						setSelection(newSelection);
 					},
 				}}
 			/>
@@ -1202,6 +1256,12 @@ export const PredefinedOptionsOnly: Story = {
 					onSelect: (_event, { selection: newSelection }) => {
 						setSelection(newSelection);
 						setInputValue('');
+					},
+					onRequestRemoveSelectedOption: (
+						_event,
+						{ selection: newSelection }
+					) => {
+						setSelection(newSelection);
 					},
 				}}
 			/>
