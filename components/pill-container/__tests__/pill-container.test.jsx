@@ -119,6 +119,39 @@ describe('SLDSPillContainer', () => {
 			});
 		});
 
+		// Regression (issue #3211): the pill container is a listbox of selected
+		// options, so the owning listbox must be aria-multiselectable and each
+		// pill must be an aria-selected option with a roving tabindex.
+		it('exposes multi-selection semantics with a roving tabindex', () => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<PillContainer options={options} />
+				</IconSettings>
+			);
+
+			const listbox = container.querySelector('ul.slds-listbox');
+			expect(listbox).toHaveAttribute('role', 'listbox');
+			expect(listbox).toHaveAttribute('aria-multiselectable', 'true');
+
+			const pills = container.querySelectorAll('[role="option"]');
+			expect(pills).toHaveLength(7);
+			pills.forEach((pill) => {
+				expect(pill).toHaveAttribute('aria-selected', 'true');
+			});
+
+			// Roving tabindex: only the active pill (index 0) is in the tab order.
+			const tabbable = [...pills].filter(
+				(pill) => pill.getAttribute('tabindex') === '0'
+			);
+			expect(tabbable).toHaveLength(1);
+			expect(pills[0]).toHaveAttribute('tabindex', '0');
+			pills.forEach((pill, index) => {
+				if (index > 0) {
+					expect(pill).toHaveAttribute('tabindex', '-1');
+				}
+			});
+		});
+
 		it('Handles keyboard navigation properly', () => {
 			const requestRemoveData = [];
 

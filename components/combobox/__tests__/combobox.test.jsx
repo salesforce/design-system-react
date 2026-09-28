@@ -183,6 +183,132 @@ describe('SLDSCombobox', () => {
 			expect(nodes.combobox).toHaveAttribute('aria-expanded', 'true');
 		});
 
+		// Regression (issue #3211): selected pills must expose consistent
+		// multi-selection semantics — each pill is a selected option, the owning
+		// listbox is aria-multiselectable, and a roving tabindex keeps exactly one
+		// pill tabbable.
+		it('base multiple: owning listbox is aria-multiselectable, pills are aria-selected options with roving tabindex', () => {
+			const { container } = render(
+				<DemoComponent
+					multiple
+					initialSelection={[
+						accountsWithIcon[0],
+						accountsWithIcon[1],
+						accountsWithIcon[2],
+					]}
+				/>
+			);
+			const { selectedListbox } = getNodes(container);
+
+			expect(selectedListbox).toHaveAttribute('role', 'listbox');
+			expect(selectedListbox).toHaveAttribute('aria-multiselectable', 'true');
+
+			const pills = selectedListbox.querySelectorAll('[role="option"]');
+			expect(pills).toHaveLength(3);
+			pills.forEach((pill) => {
+				expect(pill).toHaveAttribute('aria-selected', 'true');
+			});
+
+			// Roving tabindex: only the active pill (index 0) is in the tab order.
+			const tabbable = [...pills].filter(
+				(pill) => pill.getAttribute('tabindex') === '0'
+			);
+			expect(tabbable).toHaveLength(1);
+			expect(pills[0]).toHaveAttribute('tabindex', '0');
+			expect(pills[1]).toHaveAttribute('tabindex', '-1');
+			expect(pills[2]).toHaveAttribute('tabindex', '-1');
+		});
+
+		it('inline-listbox multiple: container is the aria-multiselectable listbox and inner list is a group', () => {
+			const { container } = render(
+				<DemoComponent
+					variant="inline-listbox"
+					multiple
+					initialSelection={[
+						accountsWithIcon[0],
+						accountsWithIcon[1],
+						accountsWithIcon[2],
+					]}
+				/>
+			);
+			const listboxContainer = container.querySelector(
+				`#${defaultProps.id}-selected-listbox`
+			);
+
+			expect(listboxContainer).toHaveAttribute('role', 'listbox');
+			expect(listboxContainer).toHaveAttribute('aria-multiselectable', 'true');
+
+			const group = listboxContainer.querySelector('.slds-listbox');
+			expect(group).toHaveAttribute('role', 'group');
+			expect(group).not.toHaveAttribute('aria-multiselectable');
+
+			const pills = listboxContainer.querySelectorAll('[role="option"]');
+			expect(pills).toHaveLength(3);
+			pills.forEach((pill) => {
+				expect(pill).toHaveAttribute('aria-selected', 'true');
+			});
+		});
+
+		it('single selection does not mark the listbox aria-multiselectable', () => {
+			const { container } = render(
+				<DemoComponent initialSelection={[accountsWithIcon[0]]} />
+			);
+			const { selectedListbox } = getNodes(container);
+
+			expect(selectedListbox).toHaveAttribute('role', 'listbox');
+			expect(selectedListbox).not.toHaveAttribute('aria-multiselectable');
+		});
+
+		// Regression (issue #3211): when a controlled parent shrinks `selection`
+		// while the active pill is the last one, the roving-tabindex index must
+		// be clamped so a pill stays tabbable. Otherwise the active index points
+		// past the end of `selection`, no pill gets tabindex=0, and the selected-
+		// pill listbox becomes unreachable by keyboard.
+		it('clamps the roving tabindex so a pill stays reachable after the controlled selection shrinks', () => {
+			const props = { ...defaultProps, multiple: true, options: [], events: {} };
+			const { container, rerender } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Combobox
+						{...props}
+						value=""
+						selection={[
+							accountsWithIcon[0],
+							accountsWithIcon[1],
+							accountsWithIcon[2],
+						]}
+					/>
+				</IconSettings>
+			);
+
+			// Move the roving tabindex onto the LAST pill (as arrow/focus would).
+			let pills = getNodes(container).selectedListbox.querySelectorAll(
+				'[role="option"]'
+			);
+			expect(pills).toHaveLength(3);
+			fireEvent.focus(pills[2]);
+
+			// Controlled parent removes the last (active) pill out from under us.
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<Combobox
+						{...props}
+						value=""
+						selection={[accountsWithIcon[0], accountsWithIcon[1]]}
+					/>
+				</IconSettings>
+			);
+
+			pills = getNodes(container).selectedListbox.querySelectorAll(
+				'[role="option"]'
+			);
+			expect(pills).toHaveLength(2);
+			const tabbable = [...pills].filter(
+				(pill) => pill.getAttribute('tabindex') === '0'
+			);
+			expect(tabbable).toHaveLength(1);
+			expect(pills[1]).toHaveAttribute('tabindex', '0');
+		});
+
 		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', () => {
 			const { container } = render(
 				<DemoComponent
