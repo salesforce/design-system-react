@@ -41,7 +41,7 @@ class strings with a familiar, type-safe, documented primitive.
 
 - **Oddball SLDS fractions** (`slds-size_1-of-5`, `1-of-7`, etc.). LBC's 12-column model does
   not support them either; we intentionally match LBC and leave these to hand-written classes.
-  This is the *only* documented gap remaining after v1 (see §5).
+  This is the _only_ documented gap remaining after v1 (see §5).
 - **SLDS named absolute sizes** (`slds-size_xx-small … slds-size_full`) and `slds-order_*` —
   not part of the LBC layout-item API; out of scope for v1.
 - **Gutters** (`slds-gutters*`) as a distinct prop — LBC models spacing via `pullToBoundary`
@@ -60,36 +60,36 @@ root `<div>` only (the `slds-grid` node for `Layout`; the single item `<div>` fo
 
 ```ts
 interface LayoutProps extends HTMLAttributes<HTMLDivElement> {
-  /** Horizontal distribution of items. Default (unset) = start (flex-start). */
-  horizontalAlign?: 'center' | 'space' | 'spread' | 'end';
-  /** Vertical alignment of items. Default (unset) = default cross-axis behavior. */
-  verticalAlign?: 'start' | 'center' | 'end' | 'stretch';
-  /** Pull items to the layout boundaries (pairs with LayoutItem `padding`). */
-  pullToBoundary?: 'small' | 'medium' | 'large';
-  /** Wrap items to subsequent rows when they exceed the layout width. */
-  multipleRows?: boolean;
-  className?: string;
-  children?: ReactNode;
+	/** Horizontal distribution of items. Default (unset) = start (flex-start). */
+	horizontalAlign?: 'center' | 'space' | 'spread' | 'end';
+	/** Vertical alignment of items. Default (unset) = default cross-axis behavior. */
+	verticalAlign?: 'start' | 'center' | 'end' | 'stretch';
+	/** Pull items to the layout boundaries (pairs with LayoutItem `padding`). */
+	pullToBoundary?: 'small' | 'medium' | 'large';
+	/** Wrap items to subsequent rows when they exceed the layout width. */
+	multipleRows?: boolean;
+	className?: string;
+	children?: ReactNode;
 }
 ```
 
 Prop → class mapping (root `<div className="slds-grid …">`):
 
-| Prop / value | Class appended |
-|---|---|
-| `horizontalAlign="center"` | `slds-grid_align-center` |
-| `horizontalAlign="space"` | `slds-grid_align-space` |
-| `horizontalAlign="spread"` | `slds-grid_align-spread` |
-| `horizontalAlign="end"` | `slds-grid_align-end` |
-| `verticalAlign="start"` | `slds-grid_vertical-align-start` |
-| `verticalAlign="center"` | `slds-grid_vertical-align-center` |
-| `verticalAlign="end"` | `slds-grid_vertical-align-end` |
-| `verticalAlign="stretch"` | `slds-grid_vertical-stretch` |
-| `pullToBoundary="small"` | `slds-grid_pull-padded` |
-| `pullToBoundary="medium"` | `slds-grid_pull-padded-medium` |
-| `pullToBoundary="large"` | `slds-grid_pull-padded-large` |
-| `multipleRows` (true) | `slds-wrap` |
-| (any align/boundary unset) | *no class* |
+| Prop / value               | Class appended                    |
+| -------------------------- | --------------------------------- |
+| `horizontalAlign="center"` | `slds-grid_align-center`          |
+| `horizontalAlign="space"`  | `slds-grid_align-space`           |
+| `horizontalAlign="spread"` | `slds-grid_align-spread`          |
+| `horizontalAlign="end"`    | `slds-grid_align-end`             |
+| `verticalAlign="start"`    | `slds-grid_vertical-align-start`  |
+| `verticalAlign="center"`   | `slds-grid_vertical-align-center` |
+| `verticalAlign="end"`      | `slds-grid_vertical-align-end`    |
+| `verticalAlign="stretch"`  | `slds-grid_vertical-stretch`      |
+| `pullToBoundary="small"`   | `slds-grid_pull-padded`           |
+| `pullToBoundary="medium"`  | `slds-grid_pull-padded-medium`    |
+| `pullToBoundary="large"`   | `slds-grid_pull-padded-large`     |
+| `multipleRows` (true)      | `slds-wrap`                       |
+| (any align/boundary unset) | _no class_                        |
 
 ### 4.2 `LayoutItem` (child)
 
@@ -99,27 +99,32 @@ Prop → class mapping (root `<div className="slds-grid …">`):
 > renders a `<div>` with no layout class. (Team-decision alternative logged in §5.)
 
 ```ts
-type Flexibility = 'auto' | 'shrink' | 'no-shrink' | 'grow' | 'no-grow' | 'no-flex';
+type Flexibility =
+	'auto' | 'shrink' | 'no-shrink' | 'grow' | 'no-grow' | 'no-flex';
 
 interface LayoutItemProps extends HTMLAttributes<HTMLDivElement> {
-  /** Relative width in a 12-column grid, all device types. 1–12. */
-  size?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-  /** Width on small devices and up (requires `size`). 1–12. */
-  smallDeviceSize?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-  /** Width on medium devices and up (requires `size`). 1–12. */
-  mediumDeviceSize?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-  /** Width on large devices and up (requires `size`). 1–12. */
-  largeDeviceSize?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-  /** Fluidity. A single token or an array/comma-list combining tokens. */
-  flexibility?: Flexibility | Flexibility[];
-  /** Padding on the item. */
-  padding?:
-    | 'horizontal-small' | 'horizontal-medium' | 'horizontal-large'
-    | 'around-small' | 'around-medium' | 'around-large';
-  /** Bump alignment of adjacent items in a direction (the SLDS `_bump` utility). */
-  alignmentBump?: 'left' | 'top' | 'right' | 'bottom';
-  className?: string;
-  children?: ReactNode;
+	/** Relative width in a 12-column grid, all device types. 1–12. */
+	size?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+	/** Width on small devices and up (requires `size`). 1–12. */
+	smallDeviceSize?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+	/** Width on medium devices and up (requires `size`). 1–12. */
+	mediumDeviceSize?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+	/** Width on large devices and up (requires `size`). 1–12. */
+	largeDeviceSize?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+	/** Fluidity. A single token, an array of tokens, or an LBC comma-separated string. */
+	flexibility?: Flexibility | Flexibility[] | (string & {});
+	/** Padding on the item. */
+	padding?:
+		| 'horizontal-small'
+		| 'horizontal-medium'
+		| 'horizontal-large'
+		| 'around-small'
+		| 'around-medium'
+		| 'around-large';
+	/** Bump alignment of adjacent items in a direction (the SLDS `_bump` utility). */
+	alignmentBump?: 'left' | 'top' | 'right' | 'bottom';
+	className?: string;
+	children?: ReactNode;
 }
 ```
 
@@ -127,29 +132,29 @@ Prop → class mapping (classes appended to the root `<div>`; verified against L
 `modules/interop/layoutItem/styleUtils.ts`). Class order in the output string is:
 padding, then flexibility, then size, then bump.
 
-| Prop / value | Class(es) appended |
-|---|---|
-| `size={n}` | `slds-size_{n}-of-12` |
-| `smallDeviceSize={n}` | `slds-small-size_{n}-of-12` |
-| `mediumDeviceSize={n}` | `slds-medium-size_{n}-of-12` |
-| `largeDeviceSize={n}` | `slds-large-size_{n}-of-12` |
-| `flexibility="auto"` | `slds-col` |
-| `flexibility="grow"` | `slds-grow` |
-| `flexibility="shrink"` | `slds-shrink` |
-| `flexibility="no-grow"` | `slds-grow-none` |
-| `flexibility="no-shrink"` | `slds-shrink-none` |
-| `flexibility="no-flex"` | `slds-no-flex` |
-| `padding="horizontal-small"` | `slds-p-left_small` **and** `slds-p-right_small` |
+| Prop / value                  | Class(es) appended                                 |
+| ----------------------------- | -------------------------------------------------- |
+| `size={n}`                    | `slds-size_{n}-of-12`                              |
+| `smallDeviceSize={n}`         | `slds-small-size_{n}-of-12`                        |
+| `mediumDeviceSize={n}`        | `slds-medium-size_{n}-of-12`                       |
+| `largeDeviceSize={n}`         | `slds-large-size_{n}-of-12`                        |
+| `flexibility="auto"`          | `slds-col`                                         |
+| `flexibility="grow"`          | `slds-grow`                                        |
+| `flexibility="shrink"`        | `slds-shrink`                                      |
+| `flexibility="no-grow"`       | `slds-grow-none`                                   |
+| `flexibility="no-shrink"`     | `slds-shrink-none`                                 |
+| `flexibility="no-flex"`       | `slds-no-flex`                                     |
+| `padding="horizontal-small"`  | `slds-p-left_small` **and** `slds-p-right_small`   |
 | `padding="horizontal-medium"` | `slds-p-left_medium` **and** `slds-p-right_medium` |
-| `padding="horizontal-large"` | `slds-p-left_large` **and** `slds-p-right_large` |
-| `padding="around-small"` | `slds-p-around_small` |
-| `padding="around-medium"` | `slds-p-around_medium` |
-| `padding="around-large"` | `slds-p-around_large` |
-| `alignmentBump="left"` | `slds-col_bump-left` |
-| `alignmentBump="top"` | `slds-col_bump-top` |
-| `alignmentBump="right"` | `slds-col_bump-right` |
-| `alignmentBump="bottom"` | `slds-col_bump-bottom` |
-| (all props unset) | *no class* — bare `<div>` |
+| `padding="horizontal-large"`  | `slds-p-left_large` **and** `slds-p-right_large`   |
+| `padding="around-small"`      | `slds-p-around_small`                              |
+| `padding="around-medium"`     | `slds-p-around_medium`                             |
+| `padding="around-large"`      | `slds-p-around_large`                              |
+| `alignmentBump="left"`        | `slds-col_bump-left`                               |
+| `alignmentBump="top"`         | `slds-col_bump-top`                                |
+| `alignmentBump="right"`       | `slds-col_bump-right`                              |
+| `alignmentBump="bottom"`      | `slds-col_bump-bottom`                             |
+| (all props unset)             | _no class_ — bare `<div>`                          |
 
 **Notes / decisions:**
 
@@ -157,8 +162,12 @@ padding, then flexibility, then size, then bump.
    fractions are expressible (`size={6}` = 1/2, `size={4}` = 1/3, `size={3}` = 1/4, `size={9}` = 3/4).
    This matches LBC exactly. Non-12 denominators are out of scope (§3).
 2. **`flexibility` accepts a list.** LBC allows a comma-separated list (e.g. `"auto, no-shrink"`).
-   We accept a single token or an array (`flexibility={['grow', 'no-shrink']}`) and add each
-   token's class; combinations are additive. `auto` maps to `slds-col`.
+   We accept all three forms — a single token, an array (`flexibility={['grow', 'no-shrink']}`),
+   or the LBC comma-separated string (`flexibility="auto, no-shrink"`) — normalized by a shared
+   `normalizeFlexibility` helper (split on commas, trim) used by both rendering and conflict
+   validation. Each token's class is added; combinations are additive; unknown tokens are ignored
+   (matching LBC). The array is the type-safe, idiomatic-React form; the comma string exists for
+   LBC parity. `auto` maps to `slds-col`.
 3. **`flexibility` conflict.** `auto` and `no-flex` together are contradictory. LBC throws;
    we emit a dev-time `warning()` (non-throwing, per repo `check-props` convention) and still
    render both classes.
@@ -177,10 +186,12 @@ padding, then flexibility, then size, then bump.
 import { Layout, LayoutItem } from '@salesforce/design-system-react';
 
 <Layout horizontalAlign="spread" verticalAlign="center" multipleRows>
-  <LayoutItem size={6} mediumDeviceSize={4} padding="around-small">…</LayoutItem>
-  <LayoutItem flexibility="auto">…</LayoutItem>
-  <LayoutItem alignmentBump="left">…</LayoutItem>
-</Layout>
+	<LayoutItem size={6} mediumDeviceSize={4} padding="around-small">
+		…
+	</LayoutItem>
+	<LayoutItem flexibility="auto">…</LayoutItem>
+	<LayoutItem alignmentBump="left">…</LayoutItem>
+</Layout>;
 ```
 
 ## 5. LBC Parity Gap Analysis
@@ -191,30 +202,30 @@ import { Layout, LayoutItem } from '@salesforce/design-system-react';
 
 **Doc-source caveat for reviewers:** `lightning-layout-item` has **no standalone Component
 Library page** — its bundle URL silently redirects to `lightning-layout`, which shows only the
-4 *container* attributes. The authoritative item attribute table lives at
+4 _container_ attributes. The authoritative item attribute table lives at
 `developer.salesforce.com/docs/platform/lightning-component-reference/guide/lightning-layout-item.html`.
 Verified against both sources on 2026-09-27.
 
 ### `lightning-layout` (container) — 4 attributes
 
-| LBC attribute | Accepted values | v1 | Notes |
-|---|---|---|---|
-| `horizontalAlign` | center, space, spread, end | ✅ full | — |
-| `verticalAlign` | start, center, end, stretch | ✅ full | `end` folded in (0 current repo uses, but free) |
-| `pullToBoundary` | small, medium, large | ✅ full | pairs with item `padding` |
-| `multipleRows` | boolean | ✅ full | — |
+| LBC attribute     | Accepted values             | v1      | Notes                                           |
+| ----------------- | --------------------------- | ------- | ----------------------------------------------- |
+| `horizontalAlign` | center, space, spread, end  | ✅ full | —                                               |
+| `verticalAlign`   | start, center, end, stretch | ✅ full | `end` folded in (0 current repo uses, but free) |
+| `pullToBoundary`  | small, medium, large        | ✅ full | pairs with item `padding`                       |
+| `multipleRows`    | boolean                     | ✅ full | —                                               |
 
 ### `lightning-layout-item` — 7 attributes
 
-| LBC attribute | Accepted values | v1 | Notes |
-|---|---|---|---|
-| `size` | 1–12 | ✅ full | 12-column |
-| `smallDeviceSize` | 1–12 | ✅ full | requires `size` (dev warning) |
-| `mediumDeviceSize` | 1–12 | ✅ full | requires `size` |
-| `largeDeviceSize` | 1–12 | ✅ full | requires `size` |
-| `flexibility` | auto, shrink, no-shrink, grow, no-grow, no-flex (list) | ✅ full | single or array/comma-list |
-| `padding` | horizontal-/around- × small/medium/large | ✅ full | 6 tokens |
-| `alignmentBump` | left, top, right, bottom | ✅ full | the designer's `_bump` |
+| LBC attribute      | Accepted values                                        | v1      | Notes                                          |
+| ------------------ | ------------------------------------------------------ | ------- | ---------------------------------------------- |
+| `size`             | 1–12                                                   | ✅ full | 12-column                                      |
+| `smallDeviceSize`  | 1–12                                                   | ✅ full | requires `size` (dev warning)                  |
+| `mediumDeviceSize` | 1–12                                                   | ✅ full | requires `size`                                |
+| `largeDeviceSize`  | 1–12                                                   | ✅ full | requires `size`                                |
+| `flexibility`      | auto, shrink, no-shrink, grow, no-grow, no-flex (list) | ✅ full | single token, array, or comma-separated string |
+| `padding`          | horizontal-/around- × small/medium/large               | ✅ full | 6 tokens                                       |
+| `alignmentBump`    | left, top, right, bottom                               | ✅ full | the designer's `_bump`                         |
 
 ### Remaining documented gaps after v1
 
@@ -225,7 +236,7 @@ Verified against both sources on 2026-09-27.
 
 ### Deliberate parity decisions for team review
 
-These are places where we *could* diverge from LBC for ergonomics. v1 mirrors LBC; the team can
+These are places where we _could_ diverge from LBC for ergonomics. v1 mirrors LBC; the team can
 decide to change these before release.
 
 1. **`LayoutItem` has no always-on `slds-col` base class (matches LBC).** `lightning-layout-item`
@@ -238,10 +249,16 @@ decide to change these before release.
 2. **`flexibility` conflict is a warning, not a throw.** LBC throws on `auto`+`no-flex`; we follow
    the repo's non-throwing `check-props` convention and warn instead. Team could opt to throw.
 
-**Bottom line:** v1 is a *strict, de facto full match* of the LBC `lightning-layout` /
-`lightning-layout-item` prop surface and class output. There is nothing in the LBC layout API that
-a consumer could set that our `Layout` / `LayoutItem` cannot express, and the class strings match
-token-for-token. The only intentional behavioral choices are logged above for team review.
+**Bottom line:** v1 is a _de facto full match_ of the LBC `lightning-layout` /
+`lightning-layout-item` **prop surface and class output** — there is nothing in the LBC layout API
+that a consumer could set that our `Layout` / `LayoutItem` cannot express, and the class strings
+match token-for-token. Parity is at the API/output level, not a line-for-line port of LBC's
+runtime: LBC's internal input normalization and size validation are broader, and where LBC _throws_
+(the `auto`+`no-flex` conflict, a device size without `size`) we deliberately _warn_ per the repo's
+`check-props` convention. Those behavioral differences, plus the always-on-`slds-col` question, are
+the intentional choices logged above for team review. Rendering/geometry parity (breakpoint widths,
+wrapping, padding/boundary interaction under the SLDS CSS) is asserted at the class-string level
+here and still warrants a visual pass in Storybook against the shipped SLDS 2 stylesheet.
 
 ## 6. Existing `Grid` component — deprecation
 
@@ -275,7 +292,7 @@ components/layout/
 - **Exports** (`components/index.js`): add both plain and `SLDS`-prefixed, matching repo convention:
   `Layout` / `SLDSLayout`, `LayoutItem` / `SLDSLayoutItem`.
 - **`component.json`**: `{ "component": "layout", "status": "prod", "display-name": "Layout",
-  "classKey": "Layout", "url-slug": "layout", "SLDS-component-path": "/components/layout" }`.
+"classKey": "Layout", "url-slug": "layout", "SLDS-component-path": "/components/layout" }`.
 
 ## 8. Testing Plan
 
@@ -305,8 +322,10 @@ Test cases:
   - `size={n}` → `slds-size_{n}-of-12`; device sizes → `slds-{small,medium,large}-size_{n}-of-12`.
   - `flexibility="auto"` → `slds-col`; `grow`→`slds-grow`, `shrink`→`slds-shrink`,
     `no-grow`→`slds-grow-none`, `no-shrink`→`slds-shrink-none`, `no-flex`→`slds-no-flex`.
-  - `flexibility` as an array/list (e.g. `['auto','no-shrink']`) → all mapped classes present.
-  - `flexibility` with both `auto` and `no-flex` → dev warning emitted (both classes still render).
+  - `flexibility` as an array (e.g. `['auto','no-shrink']`) or comma-separated string
+    (e.g. `"auto, no-shrink"`, whitespace trimmed) → all mapped classes present.
+  - `flexibility` with both `auto` and `no-flex` (in any accepted form) → dev warning emitted
+    (both classes still render).
   - `padding="around-medium"` → single `slds-p-around_medium`; `padding="horizontal-small"` →
     **both** `slds-p-left_small` and `slds-p-right_small`.
   - each `alignmentBump` value → `slds-col_bump-{left,top,right,bottom}`.
