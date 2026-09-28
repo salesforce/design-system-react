@@ -8069,6 +8069,7 @@ exports[`Story HTML snapshots > Input > WithSpinner 1`] = `
 
 exports[`Story HTML snapshots > Layout > AlignmentBump 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small"><code>alignmentBump=&quot;left&quot;</code> adds an auto-margin on the item’s left, pushing it (and everything after it) to the far right edge.</p>
   <div class="slds-grid">
     <div>
       <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">left</div>
@@ -8114,6 +8115,7 @@ exports[`Story HTML snapshots > Layout > FixedSizes 1`] = `
 
 exports[`Story HTML snapshots > Layout > Flexibility 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small"><code>flexibility</code> controls how an item grows and shrinks to fill the row. It accepts a single keyword or an array of them (last item below combines <code>grow</code> and <code>no-shrink</code>).</p>
   <div class="slds-grid">
     <div class="slds-col">
       <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">auto (grows)</div>
@@ -8130,6 +8132,7 @@ exports[`Story HTML snapshots > Layout > Flexibility 1`] = `
 
 exports[`Story HTML snapshots > Layout > HorizontalAlign 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">Items don’t fill the row, so the leftover space is distributed by <code>horizontalAlign</code>. Switch the control between <code>center</code>, <code>space</code>, <code>spread</code>, and <code>end</code> to compare.</p>
   <div class="slds-grid slds-grid_align-spread">
     <div>
       <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">1</div>
@@ -8197,11 +8200,12 @@ exports[`Story HTML snapshots > Layout > Nested 1`] = `
 
 exports[`Story HTML snapshots > Layout > Padding 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">Padding is applied to the <code>LayoutItem</code> itself (tinted here to show the padded area). <code>around-*</code> pads all sides; <code>horizontal-*</code> pads only left and right.</p>
   <div class="slds-grid">
-    <div class="slds-p-around_large">
+    <div class="slds-p-around_large" style="background:#e5f0fb">
       <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">around-large</div>
     </div>
-    <div class="slds-p-left_medium slds-p-right_medium">
+    <div class="slds-p-left_medium slds-p-right_medium" style="background:#e5f0fb">
       <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">horizontal-medium</div>
     </div>
   </div>
@@ -8226,12 +8230,25 @@ exports[`Story HTML snapshots > Layout > Playground 1`] = `
 
 exports[`Story HTML snapshots > Layout > PullToBoundary 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
-  <div class="slds-grid slds-grid_pull-padded-medium">
-    <div class="slds-p-around_medium">
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">1</div>
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small"><code>pullToBoundary</code> applies a negative margin that cancels the items’ padding, so their content sits flush with the container edge. Compare the two rows: the first has no pull, the second pulls to the medium boundary.</p>
+  <div style="background:#f3f3f3">
+    <div class="slds-grid">
+      <div class="slds-p-around_medium">
+        <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">no pull</div>
+      </div>
+      <div class="slds-p-around_medium">
+        <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">no pull</div>
+      </div>
     </div>
-    <div class="slds-p-around_medium">
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">2</div>
+  </div>
+  <div style="background:#f3f3f3;margin-top:1rem">
+    <div class="slds-grid slds-grid_pull-padded-medium">
+      <div class="slds-p-around_medium">
+        <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">pulled</div>
+      </div>
+      <div class="slds-p-around_medium">
+        <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">pulled</div>
+      </div>
     </div>
   </div>
 </div>"
@@ -8239,12 +8256,19 @@ exports[`Story HTML snapshots > Layout > PullToBoundary 1`] = `
 
 exports[`Story HTML snapshots > Layout > ResponsiveSizes 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">Resize the preview (or your browser) to see these change. Each item is full width by default (<code>size=12</code>), then 1/2 on small, 1/3 on medium, and 1/4 on large viewports.</p>
   <div class="slds-grid slds-wrap">
     <div class="slds-size_12-of-12 slds-small-size_6-of-12 slds-medium-size_4-of-12 slds-large-size_3-of-12">
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">responsive A</div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">1</div>
     </div>
     <div class="slds-size_12-of-12 slds-small-size_6-of-12 slds-medium-size_4-of-12 slds-large-size_3-of-12">
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">responsive B</div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">2</div>
+    </div>
+    <div class="slds-size_12-of-12 slds-small-size_6-of-12 slds-medium-size_4-of-12 slds-large-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">3</div>
+    </div>
+    <div class="slds-size_12-of-12 slds-small-size_6-of-12 slds-medium-size_4-of-12 slds-large-size_3-of-12">
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">4</div>
     </div>
   </div>
 </div>"
@@ -8252,15 +8276,16 @@ exports[`Story HTML snapshots > Layout > ResponsiveSizes 1`] = `
 
 exports[`Story HTML snapshots > Layout > VerticalAlign 1`] = `
 "<div class="slds-p-around_medium" style="border:1px dashed #c9c9c9">
-  <div class="slds-grid slds-grid_vertical-align-center" style="height:6rem">
+  <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">One item is deliberately taller. The short items align to the <code>verticalAlign</code> position within the row — switch the control between <code>start</code>, <code>center</code>, and <code>end</code> to see them move to the top, middle, and bottom.</p>
+  <div class="slds-grid slds-grid_vertical-align-center">
     <div>
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">tall</div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem;padding-top:3rem">tall item</div>
     </div>
     <div>
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">1</div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">short</div>
     </div>
     <div>
-      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">2</div>
+      <div class="slds-box slds-box_x-small slds-theme_shade slds-text-align_center" style="min-width:3rem">short</div>
     </div>
   </div>
 </div>"
