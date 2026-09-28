@@ -2,7 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import LayoutItem from '../layout-item';
 
 describe('LayoutItem', () => {
@@ -94,5 +94,30 @@ describe('LayoutItem', () => {
 		expect(div).toHaveAttribute('id', 'item-1');
 		expect(div).toHaveAttribute('data-test', 'x');
 		expect(div).toHaveAttribute('role', 'listitem');
+	});
+});
+
+describe('LayoutItem dev warnings', () => {
+	it('warns when a device size is set without size', () => {
+		const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+		render(<LayoutItem mediumDeviceSize={4} />);
+		expect(spy).toHaveBeenCalled();
+		expect(spy.mock.calls[0][0]).toMatch(/requires `size`/);
+		spy.mockRestore();
+	});
+
+	it('does not warn when size accompanies a device size', () => {
+		const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+		render(<LayoutItem size={6} mediumDeviceSize={4} />);
+		expect(spy).not.toHaveBeenCalled();
+		spy.mockRestore();
+	});
+
+	it('warns when flexibility combines auto and no-flex', () => {
+		const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+		render(<LayoutItem flexibility={['auto', 'no-flex']} />);
+		expect(spy).toHaveBeenCalled();
+		expect(spy.mock.calls[0][0]).toMatch(/auto.*no-flex|contradictory/);
+		spy.mockRestore();
 	});
 });

@@ -4,6 +4,7 @@
 import { forwardRef } from 'react';
 import classNames from 'classnames';
 import { LAYOUT_ITEM } from '../../utilities/constants';
+import checkProps from './check-props';
 import type { Flexibility, LayoutItemPadding, LayoutItemProps } from './types';
 
 const FLEX_CLASS: Record<Flexibility, string> = {
@@ -49,6 +50,8 @@ const LayoutItem = forwardRef<HTMLDivElement, LayoutItemProps>((props, ref) => {
 		children,
 		...rest
 	} = props;
+
+	checkProps(LAYOUT_ITEM, props);
 
 	const computed = classNames(
 		// order matches LBC: padding, flexibility, size, bump
