@@ -4,7 +4,7 @@
 
 import warning from 'warning';
 
-let checkProps = function checkPropsFunction() {};
+let checkProps = function checkPropsFunction(_COMPONENT, _props) {};
 
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props) {
