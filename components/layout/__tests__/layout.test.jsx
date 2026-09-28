@@ -3,6 +3,7 @@
 
 import { render } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
+import Layout from '../layout';
 import LayoutItem from '../layout-item';
 
 describe('LayoutItem', () => {
@@ -119,5 +120,71 @@ describe('LayoutItem dev warnings', () => {
 		expect(spy).toHaveBeenCalled();
 		expect(spy.mock.calls[0][0]).toMatch(/auto.*no-flex|contradictory/);
 		spy.mockRestore();
+	});
+});
+
+describe('Layout', () => {
+	it('renders a slds-grid div with children', () => {
+		const { container } = render(<Layout>kids</Layout>);
+		expect(container.firstChild).toHaveClass('slds-grid');
+		expect(container.firstChild).toHaveTextContent('kids');
+	});
+
+	it('maps horizontalAlign to slds-grid_align-*', () => {
+		[
+			['center', 'slds-grid_align-center'],
+			['space', 'slds-grid_align-space'],
+			['spread', 'slds-grid_align-spread'],
+			['end', 'slds-grid_align-end'],
+		].forEach(([value, cls]) => {
+			const { container } = render(<Layout horizontalAlign={value} />);
+			expect(container.firstChild).toHaveClass('slds-grid', cls);
+		});
+	});
+
+	it('maps verticalAlign to the correct class', () => {
+		[
+			['start', 'slds-grid_vertical-align-start'],
+			['center', 'slds-grid_vertical-align-center'],
+			['end', 'slds-grid_vertical-align-end'],
+			['stretch', 'slds-grid_vertical-stretch'],
+		].forEach(([value, cls]) => {
+			const { container } = render(<Layout verticalAlign={value} />);
+			expect(container.firstChild).toHaveClass(cls);
+		});
+	});
+
+	it('maps pullToBoundary to slds-grid_pull-padded[-size]', () => {
+		[
+			['small', 'slds-grid_pull-padded'],
+			['medium', 'slds-grid_pull-padded-medium'],
+			['large', 'slds-grid_pull-padded-large'],
+		].forEach(([value, cls]) => {
+			const { container } = render(<Layout pullToBoundary={value} />);
+			expect(container.firstChild).toHaveClass(cls);
+		});
+	});
+
+	it('adds slds-wrap only when multipleRows is set', () => {
+		const wrapped = render(<Layout multipleRows />);
+		expect(wrapped.container.firstChild).toHaveClass('slds-wrap');
+		const plain = render(<Layout />);
+		expect(plain.container.firstChild).not.toHaveClass('slds-wrap');
+	});
+
+	it('adds no alignment classes when unset', () => {
+		const { container } = render(<Layout />);
+		expect(container.firstChild.className).toBe('slds-grid');
+	});
+
+	it('merges className and passes through arbitrary attributes', () => {
+		const { container } = render(
+			<Layout className="extra" id="grid-1" data-test="y" role="list" />
+		);
+		const div = container.firstChild;
+		expect(div).toHaveClass('slds-grid', 'extra');
+		expect(div).toHaveAttribute('id', 'grid-1');
+		expect(div).toHaveAttribute('data-test', 'y');
+		expect(div).toHaveAttribute('role', 'list');
 	});
 });
