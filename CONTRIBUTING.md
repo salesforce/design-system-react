@@ -16,20 +16,24 @@ Thank you for your interest in contributing! This guide will help you get starte
 1. **Fork this repository** (button in upper right)
 
 2. **Clone your fork locally**
+
    ```bash
    git clone git@github.com:[YOUR-USER]/design-system-react.git
    cd design-system-react
    ```
 
 3. **Install dependencies** (Node >= 20.19.0 required)
+
    ```bash
    npm install
    ```
 
 4. **Start Storybook**
+
    ```bash
    npm run storybook
    ```
+
    View components at http://localhost:6007
 
 5. **Read the [Codebase Overview](docs/codebase-overview.md)** to understand conventions and best practices.
@@ -38,16 +42,16 @@ Thank you for your interest in contributing! This guide will help you get starte
 
 ### Commands
 
-| Command | Description |
-|---------|-------------|
-| `npm run storybook` | Start Storybook dev server |
-| `npm run dev` | Start Vite dev server |
-| `npm test` | Run tests with Vitest |
-| `npm run test:ui` | Run tests with Vitest UI |
-| `npm run lint` | Lint all files |
-| `npm run lint:fix` | Fix lint issues and format with Prettier |
-| `npm run typecheck` | TypeScript type checking |
-| `npm run build` | Build the library |
+| Command             | Description                              |
+| ------------------- | ---------------------------------------- |
+| `npm run storybook` | Start Storybook dev server               |
+| `npm run dev`       | Start Vite dev server                    |
+| `npm test`          | Run tests with Vitest                    |
+| `npm run test:ui`   | Run tests with Vitest UI                 |
+| `npm run lint`      | Lint all files                           |
+| `npm run lint:fix`  | Fix lint issues and format with Prettier |
+| `npm run typecheck` | TypeScript type checking                 |
+| `npm run build`     | Build the library                        |
 
 ### Creating a Feature Branch
 
@@ -60,6 +64,7 @@ git checkout -b feature/my-feature-name
 ### 1. Propose the Component
 
 Create a GitHub issue with:
+
 - Component name and description
 - List of proposed props with types
 - Link to SLDS documentation
@@ -95,17 +100,17 @@ import type { Meta, StoryObj } from '@storybook/react';
 import MyComponent from '../';
 
 const meta: Meta<typeof MyComponent> = {
-  title: 'Components/MyComponent',
-  component: MyComponent,
+	title: 'Components/MyComponent',
+	component: MyComponent,
 };
 
 export default meta;
 type Story = StoryObj<typeof MyComponent>;
 
 export const Default: Story = {
-  args: {
-    // props
-  },
+	args: {
+		// props
+	},
 };
 ```
 
@@ -146,17 +151,17 @@ import { describe, it, expect, vi } from 'vitest';
 import MyComponent from '../';
 
 describe('MyComponent', () => {
-  it('renders correctly', () => {
-    render(<MyComponent label="Test" />);
-    expect(screen.getByText('Test')).toBeInTheDocument();
-  });
+	it('renders correctly', () => {
+		render(<MyComponent label="Test" />);
+		expect(screen.getByText('Test')).toBeInTheDocument();
+	});
 
-  it('calls onClick when clicked', async () => {
-    const onClick = vi.fn();
-    render(<MyComponent label="Click me" onClick={onClick} />);
-    await userEvent.click(screen.getByRole('button'));
-    expect(onClick).toHaveBeenCalled();
-  });
+	it('calls onClick when clicked', async () => {
+		const onClick = vi.fn();
+		render(<MyComponent label="Click me" onClick={onClick} />);
+		await userEvent.click(screen.getByRole('button'));
+		expect(onClick).toHaveBeenCalled();
+	});
 });
 ```
 
@@ -186,13 +191,13 @@ npm run lint:fix
 
 ### Naming Conventions
 
-| Type | Convention | Example |
-|------|------------|---------|
-| Component files | kebab-case | `my-component.tsx` |
-| Story files | PascalCase | `MyComponent.stories.tsx` |
-| Type files | lowercase | `types.ts` |
-| Components | PascalCase | `MyComponent` |
-| Props interfaces | PascalCase + Props | `MyComponentProps` |
+| Type             | Convention         | Example                   |
+| ---------------- | ------------------ | ------------------------- |
+| Component files  | kebab-case         | `my-component.tsx`        |
+| Story files      | PascalCase         | `MyComponent.stories.tsx` |
+| Type files       | lowercase          | `types.ts`                |
+| Components       | PascalCase         | `MyComponent`             |
+| Props interfaces | PascalCase + Props | `MyComponentProps`        |
 
 ## Pull Request Process
 
