@@ -54,6 +54,7 @@ Thank you for your interest in contributing! This guide will help you get starte
 | `npm run lint:fix`  | Fix lint issues and format with Prettier               |
 | `npm run typecheck` | TypeScript type checking                               |
 | `npm run build`     | Build the library                                      |
+| `npm run verify`    | Run everything CI runs (typecheck, test, build, lint)  |
 
 ### Creating a Feature Branch
 
@@ -207,6 +208,8 @@ npm run lint:fix
 ## Pull Request Process
 
 ### Before Submitting
+
+Run `npm run verify` to do steps 1–4 in one go. A pre-push hook also checks story snapshots.
 
 1. **Run linting**: `npm run lint`
 2. **Run type check**: `npm run typecheck`

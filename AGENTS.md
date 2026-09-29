@@ -6,15 +6,17 @@ Instructions for AI coding agents (and a quick-start for humans) working in this
 
 Never run bare `npm test` — it starts Vitest in watch mode and will not exit.
 
-| Command                | Purpose                                                                        |
-| ---------------------- | ------------------------------------------------------------------------------ |
-| `npm run typecheck`    | `tsc --noEmit`                                                                 |
-| `npm run lint`         | ESLint; must be 0 errors (warnings are the tracked migration backlog)          |
-| `npm test -- --run`    | All tests: jsdom `unit` project, real-browser `browser` project, and snapshots |
-| `npm test -- --run -u` | Same, and regenerate story HTML snapshots                                      |
-| `npm run build`        | Type-check, library build, `.d.ts`, entry shims                                |
+| Command                  | Purpose                                                                        |
+| ------------------------ | ------------------------------------------------------------------------------ |
+| `npm run typecheck`      | `tsc --noEmit`                                                                 |
+| `npm run lint`           | ESLint; must be 0 errors (warnings are the tracked migration backlog)          |
+| `npm test -- --run`      | All tests: jsdom `unit` project, real-browser `browser` project, and snapshots |
+| `npm test -- --run -u`   | Same, and regenerate story HTML snapshots                                      |
+| `npm run build`          | Type-check, library build, `.d.ts`, entry shims                                |
+| `npm run test:snapshots` | Story HTML snapshot suite only (~3s)                                           |
+| `npm run verify`         | Everything CI runs: typecheck, test, build, lint                               |
 
-CI runs typecheck, test, build, and lint. Run all four before requesting review.
+Run `npm run verify` before requesting review. A husky pre-push hook runs `test:snapshots` and blocks the push if snapshots are stale.
 
 ## Things that are easy to miss
 
