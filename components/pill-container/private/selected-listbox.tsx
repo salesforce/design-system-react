@@ -83,6 +83,12 @@ export interface SelectedListBoxProps {
 	isPillContainer?: boolean;
 	labels?: SelectedListBoxLabels;
 	listboxHasFocus?: boolean;
+	/**
+	 * When `true`, the owning listbox element is marked `aria-multiselectable`.
+	 * Required so that a listbox containing more than one `aria-selected` pill
+	 * exposes consistent selection semantics to assistive technology.
+	 */
+	multiselectable?: boolean;
 	renderAtSelectionLength?: number;
 	selectedListboxRef?: (ref: HTMLUListElement | null) => void;
 	selection?: SelectedListBoxOption[];
@@ -168,6 +174,7 @@ const SelectedListBox = ({
 	isBare,
 	events,
 	labels,
+	multiselectable,
 }: SelectedListBoxProps) =>
 	selection.length >= renderAtSelectionLength ? (
 		<div // eslint-disable-line jsx-a11y/role-supports-aria-props
@@ -190,6 +197,9 @@ const SelectedListBox = ({
 			style={style}
 			// Remove role and aria-orientation after slds-has-inline-listbox is deprecated in Combobox
 			role={containerRole}
+			aria-multiselectable={
+				multiselectable && containerRole === 'listbox' ? true : undefined
+			}
 			aria-orientation={
 				containerAriaOrientation as React.AriaAttributes['aria-orientation']
 			}
@@ -202,6 +212,9 @@ const SelectedListBox = ({
 				})}
 				aria-label={assistiveText?.selectedListboxLabel}
 				role={listboxRole}
+				aria-multiselectable={
+					multiselectable && listboxRole === 'listbox' ? true : undefined
+				}
 				aria-orientation={
 					listboxAriaOrientation as React.AriaAttributes['aria-orientation']
 				}

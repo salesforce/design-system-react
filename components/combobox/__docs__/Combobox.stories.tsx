@@ -89,12 +89,15 @@ const accountsWithIcons = accounts.map((account) => ({
 export const Base: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<typeof accountsWithIcons>(
+			accountsWithIcons.slice(0, 2)
+		);
 
 		return (
 			<Combobox
 				id="base-combobox"
 				labels={{ label: 'Search', placeholder: 'Search Salesforce' }}
+				multiple
 				options={accountsWithIcons.filter(
 					(account) =>
 						!inputValue ||
@@ -136,6 +139,7 @@ export const BaseWithMenuSubheader: Story = {
 			<Combobox
 				id="base-with-subheader"
 				labels={{ label: 'Search', placeholder: 'Search Salesforce' }}
+				multiple
 				options={optionsWithSeparator}
 				selection={selection}
 				value={inputValue}

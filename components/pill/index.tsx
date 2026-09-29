@@ -65,6 +65,10 @@ export interface PillProps {
 	onKeyDown?: (event: KeyboardEvent<HTMLSpanElement>) => void;
 	/** Remove callback */
 	onRemove?: () => void;
+	/** Tab order index. Applied to the root element so the pill can receive focus (e.g. roving tabindex for pill navigation). */
+	tabIndex?: number | string;
+	/** Marks the pill as selected. Used when the pill acts as a listbox `option`. */
+	'aria-selected'?: boolean | 'true' | 'false';
 	/** Pill variant */
 	variant?: PillVariant;
 }
@@ -100,6 +104,8 @@ const Pill = forwardRef<PillRef, PillProps>(({
 	onFocus,
 	onKeyDown,
 	onRemove,
+	tabIndex,
+	'aria-selected': ariaSelected,
 	variant = 'link',
 }, ref) => {
 	const rootRef = useRef<HTMLSpanElement | null>(null);
@@ -219,6 +225,14 @@ const Pill = forwardRef<PillRef, PillProps>(({
 		<span
 			ref={rootRef}
 			role={role}
+			aria-selected={ariaSelected}
+			tabIndex={
+				tabIndex === undefined
+					? undefined
+					: typeof tabIndex === 'string'
+					? Number(tabIndex)
+					: tabIndex
+			}
 			className={classNames(
 				'slds-pill',
 				{
