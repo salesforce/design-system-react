@@ -13,6 +13,8 @@ Thank you for your interest in contributing! This guide will help you get starte
 
 ## Setup
 
+> Maintainers with push access to `salesforce/design-system-react` should clone it directly and push branches there instead of forking, so Chromatic visual review runs on your PR.
+
 1. **Fork this repository** (button in upper right)
 
 2. **Clone your fork locally**
@@ -36,22 +38,22 @@ Thank you for your interest in contributing! This guide will help you get starte
 
    View components at http://localhost:6007
 
-5. **Read the [Codebase Overview](docs/codebase-overview.md)** to understand conventions and best practices.
+5. **Read the [Codebase Overview](docs/codebase-overview.md)** to understand conventions and best practices. If you work with an AI coding agent, it should read [AGENTS.md](AGENTS.md).
 
 ## Development Workflow
 
 ### Commands
 
-| Command             | Description                              |
-| ------------------- | ---------------------------------------- |
-| `npm run storybook` | Start Storybook dev server               |
-| `npm run dev`       | Start Vite dev server                    |
-| `npm test`          | Run tests with Vitest                    |
-| `npm run test:ui`   | Run tests with Vitest UI                 |
-| `npm run lint`      | Lint all files                           |
-| `npm run lint:fix`  | Fix lint issues and format with Prettier |
-| `npm run typecheck` | TypeScript type checking                 |
-| `npm run build`     | Build the library                        |
+| Command             | Description                                            |
+| ------------------- | ------------------------------------------------------ |
+| `npm run storybook` | Start Storybook dev server                             |
+| `npm run dev`       | Start Vite dev server                                  |
+| `npm test -- --run` | Run all tests once (bare `npm test` starts watch mode) |
+| `npm run test:ui`   | Run tests with Vitest UI                               |
+| `npm run lint`      | Lint all files                                         |
+| `npm run lint:fix`  | Fix lint issues and format with Prettier               |
+| `npm run typecheck` | TypeScript type checking                               |
+| `npm run build`     | Build the library                                      |
 
 ### Creating a Feature Branch
 
@@ -79,8 +81,10 @@ components/
     ├── types.ts            # TypeScript interfaces
     ├── private/            # Internal sub-components
     │   └── sub-component.tsx
-    └── __docs__/
-        └── MyComponent.stories.tsx  # Storybook stories
+    ├── __docs__/
+    │   └── MyComponent.stories.tsx  # Storybook stories (.jsx or .tsx)
+    └── __tests__/
+        └── my-component.test.tsx
 ```
 
 ### 3. Component Guidelines
@@ -114,15 +118,12 @@ export const Default: Story = {
 };
 ```
 
-### 5. Register the Component
+### 5. Update Story Snapshots
 
-Add the story path to `.storybook/main.ts`:
+Stories are picked up automatically from `components/**/__docs__/*.stories.{jsx,tsx}`, and every story is also rendered into an HTML snapshot (`components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`). After adding or changing stories, regenerate and commit the snapshots:
 
-```typescript
-stories: [
-  // ... existing stories
-  '../components/my-component/__docs__/*.stories.@(ts|tsx)',
-],
+```bash
+npm test -- --run -u
 ```
 
 ## Testing
@@ -130,14 +131,17 @@ stories: [
 ### Running Tests
 
 ```bash
-# Run all tests
-npm test
+# Run all tests once
+npm test -- --run
 
 # Run tests with UI
 npm run test:ui
 
-# Run tests for a specific component
-npm test -- components/button
+# Run tests for a specific component (does NOT include story snapshots)
+npm test -- --run components/button
+
+# Regenerate story HTML snapshots after intentional markup changes
+npm test -- --run -u
 ```
 
 ### Writing Tests
@@ -171,6 +175,7 @@ describe('MyComponent', () => {
 - Test user interactions (click, keyboard, focus)
 - Test accessibility (ARIA attributes)
 - Aim for 90%+ coverage
+- Story HTML snapshots updated and reviewed whenever stories or rendered markup change
 
 ## Code Style
 
@@ -191,13 +196,13 @@ npm run lint:fix
 
 ### Naming Conventions
 
-| Type             | Convention         | Example                   |
-| ---------------- | ------------------ | ------------------------- |
-| Component files  | kebab-case         | `my-component.tsx`        |
-| Story files      | PascalCase         | `MyComponent.stories.tsx` |
-| Type files       | lowercase          | `types.ts`                |
-| Components       | PascalCase         | `MyComponent`             |
-| Props interfaces | PascalCase + Props | `MyComponentProps`        |
+| Type             | Convention         | Example                            |
+| ---------------- | ------------------ | ---------------------------------- |
+| Component files  | kebab-case         | `my-component.tsx`                 |
+| Story files      | PascalCase         | `MyComponent.stories.jsx` / `.tsx` |
+| Type files       | lowercase          | `types.ts`                         |
+| Components       | PascalCase         | `MyComponent`                      |
+| Props interfaces | PascalCase + Props | `MyComponentProps`                 |
 
 ## Pull Request Process
 
@@ -205,8 +210,10 @@ npm run lint:fix
 
 1. **Run linting**: `npm run lint`
 2. **Run type check**: `npm run typecheck`
-3. **Run tests**: `npm test`
-4. **Test in Storybook**: `npm run storybook`
+3. **Run tests**: `npm test -- --run` (unfiltered, so story snapshots are checked)
+4. **Run build**: `npm run build`
+5. **Test in Storybook**: `npm run storybook`
+6. **Rebase on `master`** and resolve any conflicts
 
 ### PR Requirements
 
@@ -225,6 +232,8 @@ fix: Correct Modal focus trap
 docs: Update README examples
 chore: Update dependencies
 ```
+
+Keep lint/format-only changes in a separate `style:` commit from functional changes so the diff is easy to review.
 
 ### Review Process
 

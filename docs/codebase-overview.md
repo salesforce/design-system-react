@@ -199,6 +199,7 @@ Notice what this example does and why, tying back to the steps above: `value`/`m
 - [ ] Keyboard interaction and focus management implemented (and owned by the composing component if applicable)
 - [ ] Overlay content, if any, portals rather than relying on consumer `overflow` overrides
 - [ ] Tests cover every prop, callback, and interaction; ≥90% coverage
+- [ ] Story HTML snapshots regenerated (`npm test -- --run -u`) and the diff reviewed
 - [ ] No new dependency added without a bundle-size/risk writeup
 - [ ] File(s) under 500 lines; split into `private/` sub-components if not
 - [ ] Docs status (`component.json`, Storybook) reflects reality (`prod` vs. `prototype`)
@@ -597,10 +598,13 @@ Aim for 90%+ test coverage per component, checked via the coverage summary from 
 ### Running Tests
 
 ```bash
-npm test                    # Run all tests
+npm test -- --run           # Run all tests once (bare `npm test` is watch mode)
+npm test -- --run -u        # Also regenerate story HTML snapshots
 npm run test:ui             # Run with Vitest UI
 npm test -- --coverage      # Run with coverage
 ```
+
+Every Storybook story is also rendered into an HTML snapshot (`components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`), so stories are test fixtures as well as documentation. A run filtered to one component's folder does not include that suite — finish with an unfiltered run.
 
 ---
 
