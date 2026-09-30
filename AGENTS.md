@@ -4,6 +4,8 @@ Instructions for AI coding agents (and a quick-start for humans) working in this
 
 ## Commands
 
+Setup: Node >= 24 (`.nvmrc`), `npm install`, then `npx playwright install chromium` for the browser test project.
+
 Never run bare `npm test` — it starts Vitest in watch mode and will not exit.
 
 | Command                  | Purpose                                                                        |
@@ -20,8 +22,9 @@ Run `npm run test:ci` before requesting review. A husky pre-push hook runs `test
 
 ## Things that are easy to miss
 
-- **Stories are test fixtures, not just demos.** Every story in `components/**/__docs__/*.stories.{jsx,tsx}` is rendered into `components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`. If you add, remove, or change a story, or change a component's rendered markup, run `npm test -- --run -u`, review the snapshot diff, and commit it in the same PR.
+- **Stories are test fixtures, not just demos.** Every story in `components/**/__docs__/*.stories.{jsx,tsx}` (except portal-rendered ones, which need component tests instead) is rendered into `components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`. If you add, remove, or change a story, or change a component's rendered markup, run `npm test -- --run -u`, review the snapshot diff, and commit it in the same PR.
 - **A filtered test run does not run the snapshot suite.** `npm test -- --run components/combobox` skips `components/__tests__/story-snapshots.test.jsx`. Always finish with an unfiltered run.
+- **Local runs write new snapshots silently.** Outside CI, a plain `npm test -- --run` passes and writes snapshots for new stories without failing; CI then fails if they aren't committed. `test:ci` and `test:snapshots` pass `--update=none` to behave like CI. Check `git status` for `.snap` changes before pushing.
 - **Stories must use the component's real prop API.** Cross-check against `components/<name>/__examples__` and `types.ts`; stories written against an assumed API are a common source of "component looks broken" reports.
 - **jsdom vs. browser tests.** Tests that need a real browser (focus traversal, layout/measurement) go in `*.browser.test.jsx`; everything else is jsdom.
 - **Types are the contract.** Runtime PropTypes were removed in the TypeScript migration; the generated `.d.ts` files are what consumers get.
