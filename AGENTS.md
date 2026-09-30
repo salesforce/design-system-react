@@ -14,9 +14,9 @@ Never run bare `npm test` — it starts Vitest in watch mode and will not exit.
 | `npm test -- --run -u`   | Same, and regenerate story HTML snapshots                                      |
 | `npm run build`          | Type-check, library build, `.d.ts`, entry shims                                |
 | `npm run test:snapshots` | Story HTML snapshot suite only (~3s)                                           |
-| `npm run verify`         | Everything CI runs: typecheck, test, build, lint                               |
+| `npm run test:ci`        | Everything CI runs: typecheck, test, build, lint                               |
 
-Run `npm run verify` before requesting review. A husky pre-push hook runs `test:snapshots` and blocks the push if snapshots are stale.
+Run `npm run test:ci` before requesting review. A husky pre-push hook runs `test:snapshots` and blocks the push if snapshots are stale.
 
 ## Things that are easy to miss
 
