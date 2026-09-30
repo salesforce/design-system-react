@@ -19,7 +19,14 @@ import { BUTTON_STATEFUL } from '../../utilities/constants';
 /**
  * Button stateful variant types
  */
-export type ButtonStatefulVariant = 'base' | 'neutral' | 'brand' | 'destructive' | 'icon' | 'icon-filled' | 'inverse';
+export type ButtonStatefulVariant =
+	| 'base'
+	| 'neutral'
+	| 'brand'
+	| 'destructive'
+	| 'icon'
+	| 'icon-filled'
+	| 'inverse';
 
 /**
  * State configuration for stateful button
@@ -93,9 +100,18 @@ export interface ButtonStatefulProps {
 
 const defaultAssistiveText: ButtonStatefulAssistiveText = { icon: '' };
 
-const defaultStateOne: ButtonStatefulState = { iconName: 'add', label: 'Follow' };
-const defaultStateTwo: ButtonStatefulState = { iconName: 'check', label: 'Following' };
-const defaultStateThree: ButtonStatefulState = { iconName: 'close', label: 'Unfollow' };
+const defaultStateOne: ButtonStatefulState = {
+	iconName: 'add',
+	label: 'Follow',
+};
+const defaultStateTwo: ButtonStatefulState = {
+	iconName: 'check',
+	label: 'Following',
+};
+const defaultStateThree: ButtonStatefulState = {
+	iconName: 'close',
+	label: 'Unfollow',
+};
 
 /**
  * The ButtonStateful component is a variant of the Lightning Design System Button component.
@@ -128,7 +144,8 @@ const ButtonStateful = ({
 }: ButtonStatefulProps): React.ReactElement => {
 	const [internalActive, setInternalActive] = useState(false);
 
-	const isActive = typeof controlledActive === 'boolean' ? controlledActive : internalActive;
+	const isActive =
+		typeof controlledActive === 'boolean' ? controlledActive : internalActive;
 
 	const getClassName = useCallback(
 		(active: boolean) =>
@@ -146,8 +163,7 @@ const ButtonStateful = ({
 
 	const handleBlur = useCallback(
 		(e: FocusEvent<HTMLButtonElement> | MouseEvent<HTMLButtonElement>) => {
-			if (onBlur && 'relatedTarget' in e) onBlur(e as FocusEvent<HTMLButtonElement>);
-			e.currentTarget.blur();
+			if (onBlur) onBlur(e as FocusEvent<HTMLButtonElement>);
 		},
 		[onBlur]
 	);
@@ -200,10 +216,14 @@ const ButtonStateful = ({
 				type="button"
 			>
 				{icon ? (
-					React.cloneElement(icon as React.ReactElement<Record<string, unknown>>, {
-						...defaultIconProps,
-						...((icon as React.ReactElement<Record<string, unknown>>).props || {}),
-					})
+					React.cloneElement(
+						icon as React.ReactElement<Record<string, unknown>>,
+						{
+							...defaultIconProps,
+							...((icon as React.ReactElement<Record<string, unknown>>).props ||
+								{}),
+						}
+					)
 				) : (
 					<ButtonIcon
 						disabled={disabled}
@@ -219,7 +239,10 @@ const ButtonStateful = ({
 		);
 	}
 
-	const defaultIconPropsWithPosition = { ...defaultIconProps, position: 'left' as const };
+	const defaultIconPropsWithPosition = {
+		...defaultIconProps,
+		position: 'left' as const,
+	};
 
 	if (Object.keys(ariaProps).length === 0) {
 		ariaProps = { 'aria-live': 'assertive' as const };
@@ -244,11 +267,15 @@ const ButtonStateful = ({
 		>
 			<span className="slds-text-not-selected">
 				{stateOne.icon ? (
-					React.cloneElement(stateOne.icon as React.ReactElement<Record<string, unknown>>, {
-						...defaultIconPropsWithPosition,
-						...((stateOne.icon as React.ReactElement<Record<string, unknown>>).props || {}),
-						size: 'small',
-					})
+					React.cloneElement(
+						stateOne.icon as React.ReactElement<Record<string, unknown>>,
+						{
+							...defaultIconPropsWithPosition,
+							...((stateOne.icon as React.ReactElement<Record<string, unknown>>)
+								.props || {}),
+							size: 'small',
+						}
+					)
 				) : (
 					<ButtonIcon
 						disabled={disabled}
@@ -262,11 +289,15 @@ const ButtonStateful = ({
 			</span>
 			<span className="slds-text-selected">
 				{stateTwo.icon ? (
-					React.cloneElement(stateTwo.icon as React.ReactElement<Record<string, unknown>>, {
-						...defaultIconPropsWithPosition,
-						...((stateTwo.icon as React.ReactElement<Record<string, unknown>>).props || {}),
-						size: 'small',
-					})
+					React.cloneElement(
+						stateTwo.icon as React.ReactElement<Record<string, unknown>>,
+						{
+							...defaultIconPropsWithPosition,
+							...((stateTwo.icon as React.ReactElement<Record<string, unknown>>)
+								.props || {}),
+							size: 'small',
+						}
+					)
 				) : (
 					<ButtonIcon
 						disabled={disabled}
@@ -280,11 +311,16 @@ const ButtonStateful = ({
 			</span>
 			<span className="slds-text-selected-focus">
 				{stateThree.icon ? (
-					React.cloneElement(stateThree.icon as React.ReactElement<Record<string, unknown>>, {
-						...defaultIconPropsWithPosition,
-						...((stateThree.icon as React.ReactElement<Record<string, unknown>>).props || {}),
-						size: 'small',
-					})
+					React.cloneElement(
+						stateThree.icon as React.ReactElement<Record<string, unknown>>,
+						{
+							...defaultIconPropsWithPosition,
+							...((
+								stateThree.icon as React.ReactElement<Record<string, unknown>>
+							).props || {}),
+							size: 'small',
+						}
+					)
 				) : (
 					<ButtonIcon
 						disabled={disabled}
@@ -303,4 +339,3 @@ const ButtonStateful = ({
 ButtonStateful.displayName = BUTTON_STATEFUL;
 
 export default ButtonStateful;
-
