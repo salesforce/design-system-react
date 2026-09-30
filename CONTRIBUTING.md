@@ -24,10 +24,11 @@ Thank you for your interest in contributing! This guide will help you get starte
    cd design-system-react
    ```
 
-3. **Install dependencies** (Node >= 20.19.0 required)
+3. **Install dependencies** (Node >= 24 required; `nvm use` picks up `.nvmrc`)
 
    ```bash
    npm install
+   npx playwright install chromium  # browser for the Vitest `browser` project
    ```
 
 4. **Start Storybook**
@@ -44,17 +45,17 @@ Thank you for your interest in contributing! This guide will help you get starte
 
 ### Commands
 
-| Command             | Description                                            |
-| ------------------- | ------------------------------------------------------ |
-| `npm run storybook` | Start Storybook dev server                             |
-| `npm run dev`       | Start Vite dev server                                  |
-| `npm test -- --run` | Run all tests once (bare `npm test` starts watch mode) |
-| `npm run test:ui`   | Run tests with Vitest UI                               |
-| `npm run lint`      | Lint all files                                         |
-| `npm run lint:fix`  | Fix lint issues and format with Prettier               |
-| `npm run typecheck` | TypeScript type checking                               |
-| `npm run build`     | Build the library                                      |
-| `npm run test:ci`   | Run everything CI runs (typecheck, test, build, lint)  |
+| Command             | Description                                             |
+| ------------------- | ------------------------------------------------------- |
+| `npm run storybook` | Start Storybook dev server                              |
+| `npm run dev`       | Start Vite dev server                                   |
+| `npm test -- --run` | Run all tests once (bare `npm test` starts watch mode)  |
+| `npm run test:ui`   | Run tests with Vitest UI (needs `@vitest/ui` installed) |
+| `npm run lint`      | Lint all files                                          |
+| `npm run lint:fix`  | Fix lint issues and format with Prettier                |
+| `npm run typecheck` | TypeScript type checking                                |
+| `npm run build`     | Build the library                                       |
+| `npm run test:ci`   | Run everything CI runs (typecheck, test, build, lint)   |
 
 ### Creating a Feature Branch
 
@@ -94,7 +95,7 @@ components/
 - Use **TypeScript** for all new components
 - Add **forwardRef** for ref handling
 - Add **displayName** for debugging
-- Export from `components/index.ts`
+- Export from `components/index.js` (runtime) and `components/index.d.ts` (types)
 
 ### 4. Story Requirements
 
@@ -121,7 +122,7 @@ export const Default: Story = {
 
 ### 5. Update Story Snapshots
 
-Stories are picked up automatically from `components/**/__docs__/*.stories.{jsx,tsx}`, and every story is also rendered into an HTML snapshot (`components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`). After adding or changing stories, regenerate and commit the snapshots:
+Stories are picked up automatically from `components/**/__docs__/*.stories.{jsx,tsx}`, and each one (except portal-rendered stories, which can't be server-rendered) is also rendered into an HTML snapshot (`components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`). After adding or changing stories, regenerate and commit the snapshots:
 
 ```bash
 npm test -- --run -u

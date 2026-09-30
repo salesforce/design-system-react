@@ -574,8 +574,8 @@ describe('Button', () => {
 		);
 	});
 
-	it('is disabled when isDisabled is true', () => {
-		render(<Button label="Test" isDisabled />);
+	it('is disabled when disabled is true', () => {
+		render(<Button label="Test" disabled />);
 		expect(screen.getByRole('button')).toBeDisabled();
 	});
 });
@@ -593,7 +593,7 @@ A breaking change should always cause at least one test to fail — if it wouldn
 
 ### Coverage Expectations
 
-Aim for 90%+ test coverage per component, checked via the coverage summary from `npm test -- --coverage`. High coverage doesn't guarantee correct logic, but low coverage is a reliable signal of insufficient testing. Components should also be able to render without a DOM available — guard any `document`/`window` access accordingly.
+Aim for 90%+ test coverage per component, checked via the coverage summary from `npm run test:coverage`. High coverage doesn't guarantee correct logic, but low coverage is a reliable signal of insufficient testing. Components should also be able to render without a DOM available — guard any `document`/`window` access accordingly.
 
 ### Running Tests
 
@@ -601,10 +601,10 @@ Aim for 90%+ test coverage per component, checked via the coverage summary from 
 npm test -- --run           # Run all tests once (bare `npm test` is watch mode)
 npm test -- --run -u        # Also regenerate story HTML snapshots
 npm run test:ui             # Run with Vitest UI
-npm test -- --coverage      # Run with coverage
+npm run test:coverage       # Run once with coverage
 ```
 
-Every Storybook story is also rendered into an HTML snapshot (`components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`), so stories are test fixtures as well as documentation. A run filtered to one component's folder does not include that suite — finish with an unfiltered run.
+Every Storybook story (except portal-rendered ones, which can't be server-rendered) is also rendered into an HTML snapshot (`components/__tests__/__snapshots__/story-snapshots.test.jsx.snap`), so stories are test fixtures as well as documentation. A run filtered to one component's folder does not include that suite — finish with an unfiltered run.
 
 ---
 
