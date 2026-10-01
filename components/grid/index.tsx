@@ -3,7 +3,9 @@
 
 import { Component, type ReactNode } from 'react';
 import classNames from 'classnames';
+import lowPriorityWarning from '../../utilities/warning/low-priority-warning';
 
+/** @deprecated Use `LayoutItem` instead. */
 export interface GridColumnProps {
 	/** Additional class names applied to the column. */
 	className?: string;
@@ -21,6 +23,7 @@ class GridColumn extends Component<GridColumnProps> {
 	}
 }
 
+/** @deprecated Use `LayoutProps` (`Layout`) instead. */
 export interface GridProps {
 	/** Additional class names applied to the grid. */
 	className?: string;
@@ -30,6 +33,14 @@ export interface GridProps {
 	children?: ReactNode;
 }
 
+// Guard so the deprecation notice logs once per module lifetime rather than on
+// every render, matching the repo's `deprecatedProperty` convention.
+let hasWarnedGridDeprecated = false;
+
+/**
+ * @deprecated Use `Layout` and `LayoutItem` instead. `Grid` predates the
+ * modern layout primitive and is retained only for backward compatibility.
+ */
 class Grid extends Component<GridProps> {
 	static Column = GridColumn;
 
@@ -41,6 +52,13 @@ class Grid extends Component<GridProps> {
 	}
 
 	render() {
+		if (!hasWarnedGridDeprecated) {
+			hasWarnedGridDeprecated = true;
+			lowPriorityWarning(
+				false,
+				'[Design System React] `Grid` is deprecated. Use `Layout` and `LayoutItem` instead.'
+			);
+		}
 		return <div className={this.getClassName()}>{this.props.children}</div>;
 	}
 }
