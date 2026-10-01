@@ -1,0 +1,3 @@
+# Story HTML snapshots are the most commonly missed update. Fail fast here
+# (~3s) rather than in CI. Fix with `npm test -- --run -u`, review, commit.
+npm run --silent test:snapshots

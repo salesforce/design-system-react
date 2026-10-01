@@ -28,13 +28,7 @@ jobs:
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 
-      # Blocking gates — these pass today and must stay green.
-      - name: Typecheck
-        run: npm run typecheck
-      - name: Test
-        run: npm run test -- --run
-      - name: Build
-        run: npm run build
-
-      - name: Lint
-        run: npm run lint
+      # Blocking gates (typecheck, test, build, lint) — these pass today and
+      # must stay green. Same script contributors run locally.
+      - name: Typecheck, test, build, lint
+        run: npm run test:ci
