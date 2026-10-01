@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { render, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 
 import ButtonStateful from '../';
 import IconSettings from '../../icon-settings';
@@ -111,6 +111,38 @@ describe('Button Stateful', () => {
 
 			const button = getButton(container);
 			expect(button).toHaveAttribute('aria-live', 'assertive');
+		});
+	});
+
+	describe('Mouse leave does not steal keyboard focus', () => {
+		it('keeps the button focused when the mouse leaves', () => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<ButtonStateful {...requiredProps} />
+				</IconSettings>
+			);
+
+			const button = getButton(container);
+			button.focus();
+			expect(document.activeElement).toBe(button);
+
+			fireEvent.mouseLeave(button);
+
+			expect(document.activeElement).toBe(button);
+		});
+
+		it('still forwards onBlur when the mouse leaves', () => {
+			const onBlur = vi.fn();
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<ButtonStateful {...requiredProps} onBlur={onBlur} />
+				</IconSettings>
+			);
+
+			const button = getButton(container);
+			fireEvent.mouseLeave(button);
+
+			expect(onBlur).toHaveBeenCalledTimes(1);
 		});
 	});
 });
