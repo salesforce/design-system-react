@@ -239,6 +239,15 @@ const Carousel = ({
 			? controlledIsAutoplayOn
 			: internalIsAutoplayOn;
 
+	// The autoplay interval's callback lives for the entire duration autoplay
+	// is running, so it can't rely on values closed over when it was created.
+	// Keep a ref in sync on every render and read from it inside the interval
+	// so each tick sees the latest panel/count instead of a stale snapshot.
+	const latestRef = useRef({ currentPanel, nrOfPanels, isInfinite });
+	useEffect(() => {
+		latestRef.current = { currentPanel, nrOfPanels, isInfinite };
+	});
+
 	// Helper functions
 	const canGoToNext = useCallback(
 		() => currentPanel < nrOfPanels - 1,
@@ -264,7 +273,7 @@ const Carousel = ({
 		(event: CarouselPanelChangeEvent, panel: number, callback?: () => void) => {
 			if (onRequestPanelChange) {
 				onRequestPanelChange(event, {
-					currentPanel,
+					currentPanel: latestRef.current.currentPanel,
 					requestedPanel: panel,
 				});
 			} else {
@@ -275,7 +284,7 @@ const Carousel = ({
 				}
 			}
 		},
-		[currentPanel, onRequestPanelChange]
+		[onRequestPanelChange]
 	);
 
 	// Stop autoplay
@@ -303,14 +312,20 @@ const Carousel = ({
 	// Start autoplay. Panel changes and the final stop come from the timer, so they carry no event.
 	const startAutoplay = useCallback(() => {
 		autoplayIdRef.current = setInterval(() => {
-			if (currentPanel < nrOfPanels - 1) {
+			const {
+				currentPanel: latestCurrentPanel,
+				nrOfPanels: latestNrOfPanels,
+				isInfinite: latestIsInfinite,
+			} = latestRef.current;
+
+			if (latestCurrentPanel < latestNrOfPanels - 1) {
 				// Go to next panel
-				let next = currentPanel + 1;
-				if (next > nrOfPanels - 1) {
+				let next = latestCurrentPanel + 1;
+				if (next > latestNrOfPanels - 1) {
 					next = 0;
 				}
 				setCurrentPanel(undefined, next, changeTranslationAutomatically);
-			} else if (isInfinite) {
+			} else if (latestIsInfinite) {
 				// Loop back to start
 				setCurrentPanel(undefined, 0, changeTranslationAutomatically);
 			} else {
@@ -320,9 +335,6 @@ const Carousel = ({
 		}, autoplayInterval);
 	}, [
 		autoplayInterval,
-		currentPanel,
-		nrOfPanels,
-		isInfinite,
 		setCurrentPanel,
 		changeTranslationAutomatically,
 		stopAutoplay,
