@@ -44,7 +44,10 @@ const Accordion = ({
 
 	// Focus management
 	useEffect(() => {
-		if (currButtonIndex !== null && summaryButtonsRef.current[currButtonIndex]) {
+		if (
+			currButtonIndex !== null &&
+			summaryButtonsRef.current[currButtonIndex]
+		) {
 			summaryButtonsRef.current[currButtonIndex].focus();
 		}
 	}, [currButtonIndex]);
@@ -82,11 +85,16 @@ const Accordion = ({
 		[currButtonIndex, childCount]
 	);
 
-	const addSummaryButton = useCallback((button: HTMLButtonElement | null) => {
-		if (button !== null && !summaryButtonsRef.current.includes(button)) {
-			summaryButtonsRef.current.push(button);
-		}
-	}, []);
+	const addSummaryButton = useCallback(
+		(index: number, button: HTMLButtonElement | null) => {
+			if (button === null) {
+				delete summaryButtonsRef.current[index];
+			} else {
+				summaryButtonsRef.current[index] = button;
+			}
+		},
+		[]
+	);
 
 	return (
 		<ul
@@ -94,17 +102,25 @@ const Accordion = ({
 			name={id}
 			className={classNames('slds-accordion', className as string)}
 		>
-			{React.Children.map(children, (child) => {
+			{React.Children.map(children, (child, index) => {
 				if (React.isValidElement(child)) {
-					return React.cloneElement(child as ReactElement<{
-						refs?: { summaryButton: (button: HTMLButtonElement | null) => void };
-						onClickSummary?: () => void;
-						onKeyDownSummary?: (e: KeyboardEvent<HTMLButtonElement>) => void;
-					}>, {
-						refs: { summaryButton: addSummaryButton },
-						onClickSummary: handleClickSummary,
-						onKeyDownSummary: handleKeyDownSummary,
-					});
+					return React.cloneElement(
+						child as ReactElement<{
+							refs?: {
+								summaryButton: (button: HTMLButtonElement | null) => void;
+							};
+							onClickSummary?: () => void;
+							onKeyDownSummary?: (e: KeyboardEvent<HTMLButtonElement>) => void;
+						}>,
+						{
+							refs: {
+								summaryButton: (button: HTMLButtonElement | null) =>
+									addSummaryButton(index, button),
+							},
+							onClickSummary: handleClickSummary,
+							onKeyDownSummary: handleKeyDownSummary,
+						}
+					);
 				}
 				return child;
 			})}
@@ -115,18 +131,3 @@ const Accordion = ({
 Accordion.displayName = ACCORDION;
 
 export default Accordion;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
