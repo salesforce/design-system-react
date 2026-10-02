@@ -4,9 +4,9 @@ import Button from '../../button';
 import Card from '../../card';
 import CardEmpty from '../../card/empty';
 import CardFilter from '../../card/filter';
-import DataTable from '../../data-table';
-import DataTableColumn from '../../data-table/column';
-import DataTableHighlightCell from '../../data-table/highlight-cell';
+import SimpleDataTable from '../../simple-data-table';
+import SimpleDataTableColumn from '../../simple-data-table/column';
+import SimpleDataTableHighlightCell from '../../simple-data-table/highlight-cell';
 import Icon from '../../icon';
 import MediaObject from '../../media-object';
 
@@ -44,11 +44,15 @@ export const WithItems = {
 				headerActions={<Button label="New" />}
 				footer="Card Footer"
 			>
-				<DataTable id="SLDSDataTableExample-1" items={sampleItems}>
-					<DataTableColumn label="Opportunity Name" property="name" truncate>
-						<DataTableHighlightCell />
-					</DataTableColumn>
-				</DataTable>
+				<SimpleDataTable id="SLDSSimpleDataTableExample-1" items={sampleItems}>
+					<SimpleDataTableColumn
+						label="Opportunity Name"
+						property="name"
+						truncate
+					>
+						<SimpleDataTableHighlightCell />
+					</SimpleDataTableColumn>
+				</SimpleDataTable>
 			</Card>
 		</div>
 	),
@@ -87,7 +91,8 @@ export const InteractiveCard = {
 		}
 
 		const isEmpty = displayItems.length === 0;
-		const heading = items.length > 0 ? `Related Items (${items.length})` : 'Related Items';
+		const heading =
+			items.length > 0 ? `Related Items (${items.length})` : 'Related Items';
 
 		return (
 			<div className="slds-grid slds-grid_vertical">
@@ -110,11 +115,18 @@ export const InteractiveCard = {
 					icon={<Icon category="standard" name="document" size="small" />}
 					empty={isEmpty ? <CardEmpty heading="No Related Items" /> : null}
 				>
-					<DataTable id="SLDSDataTableExample-2" items={displayItems}>
-						<DataTableColumn label="Opportunity Name" property="name" truncate>
-							<DataTableHighlightCell search={filter} />
-						</DataTableColumn>
-					</DataTable>
+					<SimpleDataTable
+						id="SLDSSimpleDataTableExample-2"
+						items={displayItems}
+					>
+						<SimpleDataTableColumn
+							label="Opportunity Name"
+							property="name"
+							truncate
+						>
+							<SimpleDataTableHighlightCell search={filter} />
+						</SimpleDataTableColumn>
+					</SimpleDataTable>
 				</Card>
 			</div>
 		);
@@ -155,11 +167,15 @@ export const CustomHeader = {
 			}
 			footer="Card Footer"
 		>
-			<DataTable id="SLDSDataTableExample-3" items={sampleItems}>
-				<DataTableColumn label="Opportunity Name" property="name" truncate>
-					<DataTableHighlightCell />
-				</DataTableColumn>
-			</DataTable>
+			<SimpleDataTable id="SLDSSimpleDataTableExample-3" items={sampleItems}>
+				<SimpleDataTableColumn
+					label="Opportunity Name"
+					property="name"
+					truncate
+				>
+					<SimpleDataTableHighlightCell />
+				</SimpleDataTableColumn>
+			</SimpleDataTable>
 		</Card>
 	),
 };
@@ -171,15 +187,23 @@ export const CustomHeading = {
 	render: () => (
 		<Card
 			id="CustomHeadingCard"
-			heading={<span style={{ color: 'var(--slds-g-color-brand-base-50, #0070d2)' }}>Custom Styled Heading</span>}
+			heading={
+				<span style={{ color: 'var(--slds-g-color-brand-base-50, #0070d2)' }}>
+					Custom Styled Heading
+				</span>
+			}
 			icon={<Icon category="standard" name="document" size="small" />}
 			footer="Card Footer"
 		>
-			<DataTable id="SLDSDataTableExample-4" items={sampleItems}>
-				<DataTableColumn label="Opportunity Name" property="name" truncate>
-					<DataTableHighlightCell />
-				</DataTableColumn>
-			</DataTable>
+			<SimpleDataTable id="SLDSSimpleDataTableExample-4" items={sampleItems}>
+				<SimpleDataTableColumn
+					label="Opportunity Name"
+					property="name"
+					truncate
+				>
+					<SimpleDataTableHighlightCell />
+				</SimpleDataTableColumn>
+			</SimpleDataTable>
 		</Card>
 	),
 };
@@ -220,11 +244,15 @@ export const WithoutHeader = {
 			hasNoHeader
 			style={{ height: '200px' }}
 		>
-			<DataTable id="SLDSDataTableExample-5" items={sampleItems}>
-				<DataTableColumn label="Opportunity Name" property="name" truncate>
-					<DataTableHighlightCell />
-				</DataTableColumn>
-			</DataTable>
+			<SimpleDataTable id="SLDSSimpleDataTableExample-5" items={sampleItems}>
+				<SimpleDataTableColumn
+					label="Opportunity Name"
+					property="name"
+					truncate
+				>
+					<SimpleDataTableHighlightCell />
+				</SimpleDataTableColumn>
+			</SimpleDataTable>
 		</Card>
 	),
 };
