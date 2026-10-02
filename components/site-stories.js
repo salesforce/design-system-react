@@ -249,50 +249,50 @@ const documentationSiteLiveExamples = {
 			path: require('raw-loader!@salesforce/design-system-react/components/combobox/__examples__/required-input-error-state.jsx'),
 		},
 	],
-	'data-table': [
+	'simple-data-table': [
 		{
 			heading: 'Basic',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/basic-fluid.jsx'),
 		},
 		{
 			heading: 'Basic: Fluid and Striped',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-striped.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/basic-fluid-striped.jsx'),
 		},
 		{
 			heading: 'Basic: No row hover',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-no-row-hover.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/basic-fluid-no-row-hover.jsx'),
 		},
 		{
 			heading: 'Basic: Columns bordered',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-column-bordered.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/basic-fluid-column-bordered.jsx'),
 		},
 		{
 			heading: 'Basic: Headless',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fluid-headless.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/basic-fluid-headless.jsx'),
 		},
 		{
 			heading: 'Fixed Layout',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/basic-fixed-layout.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/basic-fixed-layout.jsx'),
 		},
 		{
 			heading: 'Advanced',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/advanced.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/advanced.jsx'),
 		},
 		{
 			heading: 'Advanced: Single Selection',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/advanced-single-select.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/advanced-single-select.jsx'),
 		},
 		{
 			heading: 'Advanced: Fixed Header',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/fixed-header.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/fixed-header.jsx'),
 		},
 		{
 			heading: 'Advanced: Joined with Page Header',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/joined-with-page-header.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/joined-with-page-header.jsx'),
 		},
 		{
 			heading: 'Infinite Scrolling',
-			path: require('raw-loader!@salesforce/design-system-react/components/data-table/__examples__/infinite-scrolling.jsx'),
+			path: require('raw-loader!@salesforce/design-system-react/components/simple-data-table/__examples__/infinite-scrolling.jsx'),
 		},
 	],
 	'date-picker': [

@@ -122,7 +122,7 @@ export const RelatedList = {
 	),
 };
 
-// Joined with DataTable
+// Joined with SimpleDataTable
 export const Joined = {
 	render: () => (
 		<PageHeader

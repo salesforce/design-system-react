@@ -20,6 +20,7 @@ All notable changes to this project will be documented in this file.
 - Components progressively migrated to TypeScript functional components
 - Stories migrated from `storiesOf` API to CSF format
 - Removed `react-onclickoutside` dependency (use `useClickOutside` hook)
+- **BREAKING**: `DataTable` is renamed to `SimpleDataTable`, with no aliases for the old names. The import path moves from `components/data-table` to `components/simple-data-table`; every subcomponent (`DataTableColumn` → `SimpleDataTableColumn`, `DataTableCell`, `DataTableHighlightCell`, `DataTableRowActions`, `DataTableInteractiveElement`, `DataTableInteractiveLink`), its `SLDS`-prefixed alias, and every exported `DataTable*` type gets the same prefix. The display names change from `SLDSDataTable*` to `SLDSSimpleDataTable*` and the `DATA_TABLE*` constants in `utilities/constants` to `SIMPLE_DATA_TABLE*`, so update any custom cell that copies a display name by hand.
 
 ### Removed
 

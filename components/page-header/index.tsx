@@ -47,7 +47,7 @@ export interface PageHeaderProps {
 	icon?: ReactElement;
 	/** Info text or element */
 	info?: ReactNode;
-	/** Whether joined with DataTable */
+	/** Whether joined with SimpleDataTable */
 	joined?: boolean;
 	/** Label text or element */
 	label?: ReactNode;
