@@ -165,8 +165,7 @@ const getColumnsAndRowActions = memoize(
 				let Cell;
 				const cellChild = columnChildren as ReactElement | undefined;
 				const cellChildType = cellChild?.type as
-					| { displayName?: string }
-					| undefined;
+					{ displayName?: string } | undefined;
 				if (cellChild && cellChildType?.displayName === DATA_TABLE_CELL) {
 					Cell = cellChild.type;
 					assign(props, cellChild.props);
@@ -264,9 +263,8 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 		this.changeActiveCell = this.changeActiveCell.bind(this);
 		this.changeActiveElement = this.changeActiveElement.bind(this);
 		this.handleKeyDown = this.handleKeyDown.bind(this);
-		this.registerInteractiveElement = this.registerInteractiveElement.bind(
-			this
-		);
+		this.registerInteractiveElement =
+			this.registerInteractiveElement.bind(this);
 
 		// `checkProps` issues warnings to developers about properties (similar to React's built in development tools)
 		(checkProps as (name: string, props: unknown, doc?: unknown) => void)(
@@ -402,9 +400,10 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 			(item) => !disabledSelection.includes(item)
 		);
 
-		const newSelection = (checked
-			? [...enabledItems, ...selectedDisabledItems]
-			: [...selectedDisabledItems]
+		const newSelection = (
+			checked
+				? [...enabledItems, ...selectedDisabledItems]
+				: [...selectedDisabledItems]
 		).filter((item) => item.type !== 'header-row');
 
 		// REMOVE AT NEXT BREAKING CHANGE
@@ -670,7 +669,7 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 						? {
 								callback: (evt: React.KeyboardEvent) =>
 									this.handleKeyTabPress(evt),
-						  }
+							}
 						: null,
 			},
 		});
@@ -1040,8 +1039,8 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 								'slds-table_cell-buffer':
 									!this.getFixedLayout() && !this.props.unbufferedCell,
 								'slds-max-medium-table_stacked': this.props.stacked,
-								'slds-max-medium-table_stacked-horizontal': this.props
-									.stackedHorizontal,
+								'slds-max-medium-table_stacked-horizontal':
+									this.props.stackedHorizontal,
 								'slds-table_striped': this.props.striped,
 								'slds-table_col-bordered': this.props.columnBordered,
 								'slds-no-row-hover': this.props.noRowHover,
@@ -1133,9 +1132,9 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 												rowIndex={index + numHeaderRows}
 											/>
 										);
-								  })
+									})
 								: // Someday this should be an element to render when the table is empty
-								  null}
+									null}
 						</tbody>
 					</table>
 				</TableContext.Provider>

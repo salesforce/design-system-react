@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
+
 - TypeScript support with strict mode
 - Vitest test framework with React Testing Library
 - Storybook 10 with CSF stories
@@ -12,6 +13,7 @@ All notable changes to this project will be documented in this file.
 - `useClickOutside` hook for click-outside detection
 
 ### Changed
+
 - **BREAKING**: Requires React 19.x and Node.js >= 20.19.0
 - **BREAKING**: Requires `@salesforce-ux/design-system` 2.25.x
 - Build system migrated from Webpack to Vite
@@ -20,6 +22,7 @@ All notable changes to this project will be documented in this file.
 - Removed `react-onclickoutside` dependency (use `useClickOutside` hook)
 
 ### Removed
+
 - Webpack configuration
 - Karma/Mocha/Chai test framework
 - Enzyme testing library
@@ -27,6 +30,7 @@ All notable changes to this project will be documented in this file.
 - IE11 support and polyfills
 
 ### Components Converted to TypeScript
+
 - Accordion, Alert, AppLauncher, Avatar
 - Badge, Breadcrumb, BrandBand, BuilderHeader, Button, ButtonGroup, ButtonStateful
 - Card, Carousel, Checkbox, ColorPicker, Combobox

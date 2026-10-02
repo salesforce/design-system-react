@@ -55,7 +55,9 @@ const DataTableCell: React.FC<DataTableCellProps> = (props) => {
 			className={classNames({
 				'slds-truncate': props.fixedLayout,
 			})}
-			title={props.title || (typeof childText === 'string' ? childText : undefined)}
+			title={
+				props.title || (typeof childText === 'string' ? childText : undefined)
+			}
 		>
 			{props.children}
 		</div>

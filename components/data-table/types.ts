@@ -276,7 +276,10 @@ export interface DataTableRowActionsProps {
 export interface DataTableHeadProps {
 	assistiveText?: DataTableAssistiveText;
 	allSelected?: boolean;
-	headerRefs?: (ref: HTMLElement | null, index: number | 'action' | 'select') => void;
+	headerRefs?: (
+		ref: HTMLElement | null,
+		index: number | 'action' | 'select'
+	) => void;
 	isHidden?: boolean;
 	indeterminateSelected?: boolean;
 	canSelectRows?: boolean | 'checkbox' | 'radio';
@@ -302,7 +305,11 @@ export interface DataTableRowProps {
 	id: string;
 	index?: number;
 	item: DataTableItem;
-	onToggle?: (item: DataTableItem, selected: boolean, event: SyntheticEvent) => void;
+	onToggle?: (
+		item: DataTableItem,
+		selected: boolean,
+		event: SyntheticEvent
+	) => void;
 	rowActions?: ReactNode;
 	selection?: DataTableItem[];
 	disabledSelection?: DataTableItem[];

@@ -156,9 +156,7 @@ describe('DataTable', () => {
 			const secondCount = getCell(container, 2, 2);
 			// NOTE: The cell component only adds title attribute when there's text content
 			// The number 54976 is rendered without title in the actual component
-			expect(secondCount.innerHTML).toBe(
-				'<div class="">54976</div>'
-			);
+			expect(secondCount.innerHTML).toBe('<div class="">54976</div>');
 		});
 
 		it('has checkboxes when selectRows is true or "checkbox"', () => {
@@ -440,10 +438,7 @@ describe('DataTable', () => {
 			const onRowChange = vi.fn();
 
 			const { container } = renderTable(
-				<DataTable
-					{...defaultPropsWithHeaderRows}
-					onRowChange={onRowChange}
-				>
+				<DataTable {...defaultPropsWithHeaderRows} onRowChange={onRowChange}>
 					{columns.map((columnProps) => (
 						<DataTableColumn {...columnProps} key={columnProps.property} />
 					))}
