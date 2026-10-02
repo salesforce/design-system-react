@@ -15,6 +15,9 @@ import React, {
 	type ForwardedRef,
 } from 'react';
 import classNames from 'classnames';
+// SPIKE: CSS Modules proof-of-concept, sourced from SLDS2's per-component
+// `button.css` + `buttonIcon.css`. See .planning/css-modules-spike.md.
+import styles from './button.module.css';
 // These imports use the old JSX files for now until they're converted
 import ButtonIcon from '../icon/button-icon/index.jsx';
 import Tooltip from '../tooltip/index.jsx';
@@ -111,7 +114,10 @@ export interface ButtonProps {
 	/** Blur event handler */
 	onBlur?: (event: FocusEvent<HTMLButtonElement>) => void;
 	/** Click event handler */
-	onClick?: (event: MouseEvent<HTMLButtonElement>, data?: { id?: string }) => void;
+	onClick?: (
+		event: MouseEvent<HTMLButtonElement>,
+		data?: { id?: string }
+	) => void;
 	/** Focus event handler */
 	onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
 	/** Key down event handler */
@@ -223,8 +229,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 					variant !== 'link') ||
 				iconVariant === 'bare';
 			const plainInverseBtn = inverse && !isIcon;
-			const plainInverseIcon =
-				inverse && isIcon && !iconMore && !iconBorder;
+			const plainInverseIcon = inverse && isIcon && !iconMore && !iconBorder;
 			const moreInverseIcon = inverse && iconMore;
 			const borderInverseIcon = inverse && iconBorder;
 
@@ -235,17 +240,21 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 			return classNames(
 				{
-					'slds-button': variant !== 'link',
-					[`slds-button_${variant}`]: showButtonVariant,
-					'slds-button_inverse': plainInverseBtn,
-					'slds-button_icon-inverse': plainInverseIcon || moreInverseIcon,
-					'slds-button_icon-border-inverse': borderInverseIcon,
-					[`slds-button_icon-${computedIconVariant}`]:
+					[styles['slds-button']]: variant !== 'link',
+					[styles[`slds-button_${variant}`]]: showButtonVariant,
+					[styles['slds-button_inverse']]: plainInverseBtn,
+					[styles['slds-button_icon-inverse']]:
+						plainInverseIcon || moreInverseIcon,
+					[styles['slds-button_icon-border-inverse']]: borderInverseIcon,
+					[styles[`slds-button_icon-${computedIconVariant}`]]:
 						computedIconVariant && !borderInverseIcon,
+					// Not part of button.css/buttonIcon.css — left as a global class.
 					'slds-global-header__button_icon': iconGlobalHeader,
-					[`slds-button_icon-${iconSize}`]:
+					[styles[`slds-button_icon-${iconSize}`]]:
 						iconVariant && iconSize !== 'medium',
-					'slds-button_reset': variant === 'link',
+					[styles['slds-button_reset']]: variant === 'link',
+					// slds-text-link lives in SLDS2's utilities/interactions.css, not
+					// button.css/buttonIcon.css — left as a global class.
 					'slds-text-link': variant === 'link',
 				},
 				className as string
@@ -259,8 +268,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		};
 
 		const renderIcon = (name?: string): React.ReactElement => {
-			const computedIconSize =
-				!iconSize || iconVariant ? undefined : iconSize;
+			const computedIconSize = !iconSize || iconVariant ? undefined : iconSize;
 			return (
 				<ButtonIcon
 					category={iconCategory || 'utility'}
@@ -288,7 +296,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 					: {
 							...defaultAssistiveText,
 							...(assistiveText as ButtonAssistiveText),
-					  }.icon;
+						}.icon;
 
 			return iconOnly && assistiveTextIcon ? (
 				<span className="slds-assistive-text">{assistiveTextIcon}</span>
@@ -328,7 +336,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 							buttonRef(node);
 						}
 					}}
-					tabIndex={typeof tabIndex === 'string' ? parseInt(tabIndex, 10) : tabIndex}
+					tabIndex={
+						typeof tabIndex === 'string' ? parseInt(tabIndex, 10) : tabIndex
+					}
 					title={title}
 					type={type}
 					style={style}

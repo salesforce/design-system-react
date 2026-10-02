@@ -1,0 +1,1257 @@
+/*
+ * Copyright (c) 2026, Salesforce, Inc.,
+ * All rights reserved.
+ * For full license text, see the LICENSE.txt file
+ */
+
+/* This neutralizes all the base styles making it look like a text link */
+.slds-button {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	padding-block-start: var(--slds-c-button-spacing-block-start);
+	padding-inline-end: var(--slds-c-button-spacing-inline-end);
+	padding-block-end: var(--slds-c-button-spacing-block-end);
+	padding-inline-start: var(--slds-c-button-spacing-inline-start);
+	background: none;
+	background-color: var(--slds-c-button-color-background);
+	background-clip: border-box;
+	border-color: var(--slds-c-button-color-border, transparent);
+	border-style: solid;
+	border-width: var(
+		--slds-c-button-sizing-border,
+		var(--slds-g-sizing-border-1)
+	);
+	border-radius: var(
+		--slds-c-button-radius-border,
+		var(--slds-s-button-radius-border, var(--slds-g-radius-border-2))
+	);
+	box-shadow: var(--slds-c-button-shadow, var(--slds-s-button-shadow));
+	line-height: 1.875rem;
+	text-decoration: none;
+	color: var(
+		--slds-c-button-text-color,
+		var(--slds-s-button-color, var(--slds-g-color-accent-2))
+	);
+	appearance: none;
+	white-space: normal;
+	user-select: none;
+	font-family: inherit;
+	font-weight: var(--slds-c-button-font-weight, var(--slds-g-font-weight-4));
+	vertical-align: middle;
+	/* Do not justify-content: center; the base button */
+
+	&:hover,
+	&:focus-visible,
+	&:active,
+	&:visited {
+		text-decoration: none;
+	}
+
+	&:hover {
+		--slds-c-button-color-border: var(
+			--slds-c-button-color-border-hover,
+			var(--slds-s-button-color-border-hover)
+		);
+
+		--slds-c-button-color-background: var(
+			--slds-c-button-color-background-hover,
+			revert
+		);
+
+		color: var(
+			--slds-c-button-text-color-hover,
+			var(--slds-s-button-color-hover, var(--slds-g-color-accent-3))
+		);
+		box-shadow: var(--slds-s-button-shadow-hover, revert);
+	}
+
+	/**
+   * @TODO: this breaks legacy SLDS's persistent focus styling behavior. I.e.,
+   * when a button is focused through something like a click, it should show
+   * its focus styles. This differs from Cosmos where focus styles are only
+   * triggered through focus-visible behaviors. We need to keep an eye on this
+   * since keeping SLDS's behavior deviates and we need to decide what is the
+   * "theming" behavior.
+   */
+	&:focus-visible {
+		box-shadow: var(
+			--slds-c-button-shadow-focus,
+			var(--slds-g-shadow-outline-focus-1)
+		);
+		outline: 0;
+		background-clip: padding-box;
+		color: var(
+			--slds-c-button-text-color-hover,
+			var(--slds-s-button-color-hover, var(--slds-g-color-accent-3))
+		);
+
+		--slds-c-button-color-border: transparent;
+	}
+
+	&:active {
+		color: var(--slds-c-button-text-color-active, var(--slds-g-color-accent-3));
+
+		--slds-c-button-color-background: var(
+			--slds-c-button-color-background-active,
+			revert
+		);
+		--slds-c-button-color-border: var(
+			--slds-c-button-color-border-active,
+			revert
+		);
+	}
+
+	&[disabled],
+	&:disabled {
+		background-color: transparent;
+		border-color: transparent;
+		color: var(--slds-g-color-disabled-1);
+		cursor: default;
+		pointer-events: none;
+
+		* {
+			pointer-events: none;
+		}
+	}
+
+	a {
+		--slds-c-button-text-color: currentColor;
+	}
+
+	&:hover,
+	&:focus-visible,
+	&:active,
+	&[disabled],
+	&:disabled {
+		.slds-button__icon {
+			fill: currentColor;
+			pointer-events: none;
+		}
+	}
+
+	& + .slds-button-group,
+	& + .slds-button-group-list {
+		margin-inline-start: var(--slds-g-spacing-1);
+	}
+
+	& + .slds-button {
+		margin-inline-start: var(--slds-g-spacing-1);
+	}
+
+	&:not([disabled]) {
+		transition:
+			transform 150ms ease-in-out,
+			box-shadow 150ms ease-in-out;
+	}
+}
+
+/* Creates the gray border with white background default style */
+.slds-button_neutral {
+	justify-content: center;
+	--slds-c-button-color-background: var(
+		--slds-c-button-neutral-color-background,
+		var(--slds-g-color-surface-container-1)
+	);
+	--slds-c-button-color-border: var(
+		--slds-c-button-neutral-color-border,
+		var(--slds-g-color-border-2)
+	);
+	--slds-c-button-spacing-block-start: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-block-end: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-inline-start: var(--slds-s-button-spacing-inline);
+	--slds-c-button-spacing-inline-end: var(--slds-s-button-spacing-inline);
+
+	&:hover {
+		box-shadow: var(--slds-s-button-bordered-shadow-hover);
+	}
+
+	&:hover,
+	&:focus-visible {
+		--slds-c-button-color-background-hover: var(
+			--slds-c-button-neutral-color-background-hover,
+			var(--slds-g-color-surface-container-2, revert)
+		);
+		--slds-c-button-color-border-hover: var(
+			--slds-c-button-neutral-color-border-hover,
+			var(--slds-g-color-border-2, revert)
+		);
+	}
+
+	&:active {
+		--slds-c-button-color-background-active: var(
+			--slds-c-button-neutral-color-background-active,
+			var(--slds-g-color-surface-container-2, revert)
+		);
+		--slds-c-button-color-border-active: var(
+			--slds-c-button-neutral-color-border-active,
+			var(--slds-g-color-border-2, revert)
+		);
+	}
+
+	&[disabled],
+	&:disabled {
+		background-color: var(--slds-g-color-disabled-container-1);
+		border-color: var(--slds-g-color-border-disabled-1);
+		color: var(--slds-g-color-on-disabled-1);
+	}
+}
+
+/**
+ * Creates the brand blue Salesforce style
+ */
+.slds-button_brand {
+	justify-content: center;
+	--slds-c-button-color-background: var(
+		--slds-c-button-color-background-hover,
+		var(
+			--slds-c-button-brand-color-background,
+			var(--slds-g-color-accent-container-1)
+		)
+	);
+	--slds-c-button-color-border: var(
+		--slds-c-button-brand-color-border,
+		var(--slds-g-color-border-accent-1)
+	);
+	--slds-c-button-text-color: var(
+		--slds-c-button-brand-text-color,
+		var(--slds-g-color-on-accent-1)
+	);
+	--slds-c-button-spacing-block-start: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-block-end: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-inline-start: var(--slds-s-button-spacing-inline);
+	--slds-c-button-spacing-inline-end: var(--slds-s-button-spacing-inline);
+
+	&:hover {
+		box-shadow: var(--slds-s-button-brand-shadow-hover);
+	}
+
+	&:hover,
+	&:focus-visible {
+		--slds-c-button-color-background-hover: var(
+			--slds-c-button-brand-color-background-hover,
+			var(--slds-g-color-accent-container-2)
+		);
+		--slds-c-button-color-border-hover: var(
+			--slds-c-button-brand-color-border-hover,
+			var(--slds-g-color-accent-container-2)
+		);
+		--slds-c-button-text-color-hover: var(
+			--slds-c-button-brand-text-color-hover,
+			var(--slds-g-color-on-accent-2)
+		);
+	}
+
+	&:active {
+		--slds-c-button-color-background-active: var(
+			--slds-c-button-brand-color-background-active,
+			var(--slds-g-color-accent-container-2)
+		);
+		--slds-c-button-color-border-active: transparent;
+		--slds-c-button-text-color-active: var(
+			--slds-c-button-brand-text-color-active,
+			var(--slds-g-color-on-accent-2)
+		);
+	}
+
+	&[disabled],
+	&:disabled {
+		background-color: var(--slds-g-color-disabled-container-2);
+		border-color: var(--slds-g-color-disabled-container-2);
+		color: var(--slds-g-color-on-disabled-2);
+	}
+}
+
+/* Creates the outlined button with the brand color */
+.slds-button_outline-brand {
+	justify-content: center;
+	--slds-c-button-color-background: var(--slds-g-color-surface-container-1);
+	--slds-c-button-color-border: var(--slds-g-color-border-accent-1);
+	--slds-c-button-spacing-block-start: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-block-end: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-inline-start: var(--slds-s-button-spacing-inline);
+	--slds-c-button-spacing-inline-end: var(--slds-s-button-spacing-inline);
+
+	&:hover {
+		box-shadow: var(--slds-s-button-brand-shadow-hover);
+	}
+
+	&:hover,
+	&:focus-visible {
+		--slds-c-button-color-background-hover: var(
+			--slds-g-color-surface-container-2
+		);
+		--slds-c-button-color-border-hover: var(--slds-g-color-border-accent-1);
+	}
+
+	&:active {
+		--slds-c-button-color-background-active: var(
+			--slds-g-color-surface-container-2
+		);
+		--slds-c-button-color-border-active: var(--slds-g-color-border-accent-1);
+	}
+
+	&[disabled],
+	&:disabled {
+		background-color: var(--slds-g-color-disabled-container-1);
+		border-color: var(--slds-g-color-border-disabled-1);
+	}
+}
+
+/* Creates the inverse style for dark backgrounds */
+.slds-button_inverse {
+	justify-content: center;
+	--slds-c-button-color-background: var(
+		--slds-c-button-inverse-color-background,
+		transparent
+	);
+	--slds-c-button-color-border: var(
+		--slds-c-button-inverse-color-border,
+		var(--slds-g-color-border-inverse-1)
+	);
+	--slds-c-button-text-color: var(
+		--slds-c-button-inverse-text-color,
+		var(--slds-g-color-on-surface-inverse-1)
+	);
+	--slds-c-button-spacing-block-start: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-block-end: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-inline-start: var(--slds-s-button-spacing-inline);
+	--slds-c-button-spacing-inline-end: var(--slds-s-button-spacing-inline);
+
+	&:hover {
+		--slds-c-button-color-background-hover: var(
+			--slds-c-button-inverse-color-background-hover,
+			var(--slds-g-color-surface-container-2)
+		);
+		--slds-c-button-color-border-hover: var(
+			--slds-c-button-inverse-color-border-hover,
+			var(--slds-g-color-border-inverse-1)
+		);
+
+		box-shadow: var(--slds-c-button-inverse-shadow-hover);
+	}
+
+	&:focus-visible {
+		--slds-c-button-inverse-shadow-hover: var(
+			--slds-g-shadow-inset-inverse-focus-1
+		);
+		--slds-c-button-color-border: var(
+			--slds-c-button-inverse-color-background-hover,
+			var(--slds-g-color-surface-container-2)
+		);
+	}
+
+	&:not(:hover):focus-visible {
+		--slds-c-button-shadow-focus: 0px 0px 0px 2px
+			var(--slds-g-color-neutral-base-95) inset;
+	}
+
+	&:active {
+		--slds-c-button-color-background-active: var(
+			--slds-c-button-inverse-color-background-active,
+			var(--slds-g-color-surface-container-2)
+		);
+		--slds-c-button-color-border-active: transparent;
+	}
+
+	&[disabled],
+	&:disabled {
+		background-color: transparent;
+		border-color: color-mix(
+			in oklab,
+			var(--slds-g-color-neutral-base-100),
+			transparent 50%
+		);
+	}
+}
+
+.slds-button_inverse,
+.slds-button_icon-inverse,
+.slds-button_icon-border-inverse {
+	&:link,
+	&:visited {
+		--slds-c-button-text-color: var(
+			--slds-c-button-inverse-text-color,
+			var(--slds-g-color-on-surface-inverse-1)
+		);
+	}
+
+	&:hover {
+		--slds-c-button-text-color-hover: var(
+			--slds-c-button-inverse-text-color-hover,
+			var(--slds-g-color-accent-3)
+		);
+	}
+	&:focus-visible {
+		--slds-c-button-text-color-hover: var(
+			--slds-c-button-inverse-text-color-hover,
+			var(--slds-g-color-on-surface-3)
+		);
+	}
+
+	&:not(:hover):focus-visible {
+		--slds-c-button-shadow-focus: 0px 0px 0px 2px
+			var(
+				--slds-c-button-inverse-text-color-hover,
+				var(--slds-g-color-neutral-base-95)
+			)
+			inset;
+		--slds-c-button-text-color-hover: var(
+			--slds-c-button-inverse-text-color-hover,
+			var(--slds-g-color-on-surface-inverse-1)
+		);
+
+		outline: none;
+	}
+
+	&:active {
+		--slds-c-button-text-color-active: var(
+			--slds-c-button-inverse-text-color-active,
+			var(--slds-g-color-accent-3)
+		);
+	}
+
+	&[disabled],
+	&:disabled {
+		color: color-mix(
+			in oklab,
+			var(--slds-g-color-neutral-base-100),
+			transparent 50%
+		);
+	}
+}
+
+/* Creates a red button style */
+.slds-button_destructive {
+	justify-content: center;
+	--slds-c-button-color-background: var(
+		--slds-c-button-color-background-hover,
+		var(--slds-c-button-destructive-color-background)
+	);
+	--slds-c-button-color-border: var(--slds-c-button-destructive-color-border);
+	--slds-c-button-text-color: var(--slds-c-button-destructive-color);
+	--slds-c-button-spacing-block-start: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-block-end: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-inline-start: var(--slds-s-button-spacing-inline);
+	--slds-c-button-spacing-inline-end: var(--slds-s-button-spacing-inline);
+
+	&:hover {
+		box-shadow: var(--slds-c-button-destructive-shadow-hover);
+	}
+
+	&:hover,
+	&:focus-visible {
+		--slds-c-button-color-background-hover: var(
+			--slds-c-button-destructive-color-background-hover
+		);
+		--slds-c-button-color-border-hover: var(
+			--slds-c-button-destructive-color-border-hover
+		);
+		--slds-c-button-text-color-hover: var(
+			--slds-c-button-destructive-color-hover
+		);
+	}
+
+	&:active {
+		--slds-c-button-color-background-active: var(
+			--slds-c-button-destructive-color-background-hover
+		);
+		--slds-c-button-color-border-active: var(
+			--slds-c-button-destructive-color-border-hover
+		);
+		--slds-c-button-text-color-active: var(
+			--slds-c-button-destructive-color-hover
+		);
+	}
+
+	&[disabled],
+	&:disabled {
+		background-color: var(--slds-g-color-disabled-container-2);
+		border-color: var(--slds-g-color-disabled-container-2);
+		color: var(--slds-g-color-on-disabled-2);
+	}
+}
+
+/* Creates a neutral button with red text */
+.slds-button_text-destructive {
+	justify-content: center;
+	--slds-c-button-color-background: var(--slds-g-color-surface-container-1);
+	--slds-c-button-color-border: var(--slds-g-color-border-error-1);
+	--slds-c-button-text-color: var(--slds-g-color-error-1);
+	--slds-c-button-spacing-block-start: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-block-end: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-inline-start: var(--slds-s-button-spacing-inline);
+	--slds-c-button-spacing-inline-end: var(--slds-s-button-spacing-inline);
+
+	&:hover {
+		box-shadow: var(--slds-c-button-destructive-shadow-hover);
+	}
+
+	&:hover,
+	&:focus-visible {
+		--slds-c-button-color-background-hover: var(
+			--slds-g-color-surface-container-2
+		);
+		--slds-c-button-color-border-hover: var(--slds-g-color-border-error-2);
+		--slds-c-button-text-color-hover: var(--slds-g-color-error-1);
+	}
+
+	&:active {
+		--slds-c-button-color-background-active: var(
+			--slds-g-color-surface-container-2
+		);
+		--slds-c-button-color-border-active: var(--slds-g-color-border-error-2);
+		--slds-c-button-text-color-active: var(--slds-g-color-error-1);
+	}
+
+	&[disabled],
+	&:disabled {
+		background-color: var(--slds-g-color-disabled-container-1);
+		border-color: var(--slds-g-color-border-disabled-1);
+		color: var(--slds-g-color-on-disabled-1);
+	}
+}
+
+/* Creates a green button style */
+.slds-button_success {
+	justify-content: center;
+	--slds-c-button-color-background: var(
+		--slds-c-button-color-background-hover,
+		var(--slds-c-button-success-color-background)
+	);
+	--slds-c-button-color-border: var(--slds-c-button-success-color-border);
+	--slds-c-button-text-color: var(--slds-c-button-success-color);
+	--slds-c-button-spacing-block-start: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-block-end: var(--slds-s-button-spacing-block);
+	--slds-c-button-spacing-inline-start: var(--slds-s-button-spacing-inline);
+	--slds-c-button-spacing-inline-end: var(--slds-s-button-spacing-inline);
+
+	&:hover {
+		box-shadow: var(--slds-c-button-success-shadow-hover);
+	}
+
+	&:hover,
+	&:focus-visible {
+		--slds-c-button-color-background-hover: var(
+			--slds-c-button-success-color-background-hover
+		);
+		--slds-c-button-color-border-hover: var(
+			--slds-c-button-success-color-border-hover
+		);
+		--slds-c-button-text-color-hover: var(--slds-c-button-success-color-hover);
+	}
+
+	&:active {
+		--slds-c-button-color-background-active: var(
+			--slds-c-button-success-color-background-hover
+		);
+		--slds-c-button-color-border-active: var(
+			--slds-c-button-success-color-border-hover
+		);
+		--slds-c-button-text-color-active: var(--slds-c-button-success-color-hover);
+	}
+
+	&[disabled],
+	&:disabled {
+		background-color: var(--slds-g-color-disabled-container-2);
+		border-color: var(--slds-g-color-disabled-container-2);
+		color: var(--slds-g-color-on-disabled-2);
+	}
+}
+
+.slds-button_neutral,
+.slds-button_outline-brand,
+.slds-button_text-destructive {
+	&:hover {
+		transform: var(--slds-s-button-bordered-transform-hover);
+		transition:
+			transform 150ms ease-in-out,
+			box-shadow 150ms ease-in-out;
+	}
+
+	&:active {
+		transform: none;
+		transition:
+			transform 150ms ease-in-out,
+			box-shadow 150ms ease-in-out;
+	}
+}
+
+.slds-button_brand,
+.slds-button_destructive,
+.slds-button_success,
+.slds-button_inverse {
+	&:not(:focus-visible):hover {
+		transform: var(--slds-s-button-brand-transform-hover);
+		transition:
+			transform 150ms ease-in-out,
+			box-shadow 150ms ease-in-out;
+	}
+
+	&:not(:focus-visible):active {
+		transform: none;
+		transition:
+			transform 150ms ease-in-out,
+			box-shadow 150ms ease-in-out;
+	}
+}
+
+.slds-button_neutral,
+.slds-button_brand,
+.slds-button_outline-brand,
+.slds-button_destructive,
+.slds-button_text-destructive,
+.slds-button_success {
+	&:focus-visible {
+		--slds-c-button-shadow-focus: var(--slds-g-shadow-insetinverse-focus-1);
+	}
+}
+
+.slds-button_neutral,
+.slds-button_brand,
+.slds-button_outline-brand,
+.slds-button_inverse,
+.slds-button_icon-border-inverse,
+.slds-button_destructive,
+.slds-button_text-destructive,
+.slds-button_success {
+	&:active {
+		box-shadow:
+			0 0 0 0 transparent,
+			var(--slds-s-button-shadow-active, revert);
+	}
+}
+
+.slds-button__icon,
+.slds-button__icon_stateful {
+	width: 0.875rem;
+	height: 0.875rem;
+	/* stylelint-disable */
+	fill: var(--slds-c-icon-color-foreground, currentColor);
+	/* stylelint-enable */
+	flex-shrink: 0;
+}
+
+/* Large size button icon svg */
+.slds-button__icon_large {
+	width: var(--slds-g-sizing-7);
+	height: var(--slds-g-sizing-7);
+}
+
+/* Small size button icon svg */
+.slds-button__icon_small {
+	width: var(--slds-g-sizing-4);
+	height: var(--slds-g-sizing-4);
+}
+
+/* X-Small size button icon svg */
+.slds-button__icon_x-small {
+	width: var(--slds-g-sizing-3);
+	height: var(--slds-g-sizing-3);
+}
+
+/* Position of icon when sitting to the left side of the text when inside a button */
+.slds-button__icon_left {
+	margin-inline-end: var(--slds-g-spacing-2);
+}
+
+/* Position of icon when sitting to the right side of the text when inside a button */
+.slds-button__icon_right {
+	margin-inline-start: var(--slds-g-spacing-2);
+}
+
+/* Resets attributes of .slds-button back to the browser default */
+.slds-button_reset {
+	font-size: inherit;
+	color: inherit;
+	line-height: inherit;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	text-align: inherit;
+
+	&:focus-visible {
+		--slds-c-button-shadow-focus: var(--slds-g-shadow-outset-focus-1);
+	}
+}
+
+/* Creates a button style for 100% width with centered text that maintains current styling */
+.slds-button_stretch {
+	justify-content: center;
+	width: 100%;
+}
+
+/* Creates a button style for full width that resets styling */
+.slds-button_full-width {
+	color: inherit;
+	line-height: inherit;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	text-align: inherit;
+	width: 100%;
+	display: inline-flex;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: space-between;
+
+	&:hover {
+		box-shadow: none;
+		transform: none;
+	}
+
+	&:focus-visible {
+		--slds-c-button-shadow: none;
+		--slds-c-button-shadow-focus: var(--slds-g-shadow-outset-focus-1);
+	}
+}
+/*
+ * Copyright (c) 2026, Salesforce, Inc.,
+ * All rights reserved.
+ * For full license text, see the LICENSE.txt file
+ */
+
+.slds-button_icon,
+.slds-button_icon-inverse,
+.slds-button_icon-container,
+.slds-button_icon-border,
+.slds-button_icon-border-filled,
+.slds-button_icon-border-inverse,
+.slds-button_icon-more,
+.slds-button_icon-error,
+.slds-button_icon-warning {
+	/**
+   * SLDS2 buttons have a possible shared button background color. Button icons
+   * are often integrated into an experience component and do not expect a background
+   * color on hover which may cause regressions if not prevented.
+   */
+	--slds-c-button-color-background-hover: none;
+
+	line-height: 1;
+	vertical-align: middle;
+	justify-content: center;
+	color: var(--slds-s-button-color, var(--slds-g-color-on-surface-1));
+	flex-shrink: 0;
+	padding: 0;
+}
+
+.slds-button_icon {
+	&:focus-visible {
+		--slds-c-button-shadow-focus: var(--slds-g-shadow-outline-focus-1);
+	}
+}
+
+.slds-button_icon-inverse,
+.slds-button_icon-container,
+.slds-button_icon-border,
+.slds-button_icon-border-filled,
+.slds-button_icon-border-inverse,
+.slds-button_icon-more,
+.slds-button_icon-error,
+.slds-button_icon-warning {
+	&:focus-visible {
+		--slds-c-button-shadow-focus: var(--slds-g-shadow-insetinverse-focus-1);
+	}
+}
+
+/**
+ * @summary Default width + height for button icon with containers
+ */
+.slds-button_icon-container,
+.slds-button_icon-border,
+.slds-button_icon-border-filled,
+.slds-button_icon-border-inverse,
+.slds-button_icon-brand,
+.slds-button_icon-more,
+.slds-button_icon-container-more {
+	width: var(--slds-g-sizing-9);
+	height: var(--slds-g-sizing-9);
+}
+
+/**
+ * @summary Transparent themed button icon - Button icon has a border with a transparent background
+ */
+.slds-button_icon-border-filled,
+.slds-button_icon-border {
+	line-height: 1;
+	vertical-align: middle;
+	color: var(--slds-s-button-color, var(--slds-g-color-on-surface-1));
+	border: var(--slds-g-sizing-border-1) solid var(--slds-g-color-border-2);
+	transition: border 0.15s linear;
+
+	&[disabled],
+	&:disabled {
+		border-color: var(--slds-g-color-border-disabled-1);
+		color: var(--slds-g-color-on-disabled-2);
+	}
+
+	&:focus-visible {
+		border-color: var(--slds-c-button-color-border);
+		transition: none;
+	}
+
+	&:hover {
+		box-shadow: var(--slds-s-button-bordered-shadow-hover);
+		transform: var(--slds-s-button-bordered-transform-hover);
+		transition:
+			transform 150ms ease-in-out,
+			box-shadow 150ms ease-in-out;
+	}
+
+	&:active {
+		transform: none;
+		box-shadow:
+			0 0 0 0
+				light-dark(
+					var(--slds-g-color-neutral-base-20),
+					var(--slds-g-color-neutral-base-30)
+				),
+			var(--slds-s-button-shadow-active, revert);
+		transition:
+			transform 150ms ease-in-out,
+			box-shadow 150ms ease-in-out;
+	}
+}
+
+/**
+ * @summary Button icon with border and transparent background, to be used on an inversed background
+ */
+.slds-button_icon-border-inverse {
+	background-color: transparent;
+	border-color: var(--slds-g-color-border-inverse-1);
+	color: var(--slds-g-color-on-surface-inverse-1);
+	transition:
+		transform 150ms ease-in-out,
+		box-shadow 150ms ease-in-out;
+
+	&:hover {
+		color: var(
+			--slds-c-button-inverse-text-color-hover,
+			var(--slds-g-color-accent-3)
+		);
+		background-color: var(
+			--slds-c-button-inverse-color-background-hover,
+			var(--slds-g-color-surface-container-2)
+		);
+		box-shadow: var(--slds-c-button-inverse-shadow-hover);
+		transform: var(--slds-s-button-bordered-transform-hover);
+	}
+
+	&:active {
+		color: var(
+			--slds-c-button-inverse-text-color-hover,
+			var(--slds-g-color-accent-3)
+		);
+		box-shadow:
+			0 0 0 transparent,
+			var(--slds-s-button-shadow-active, revert);
+		transform: none;
+	}
+
+	&[disabled],
+	&:disabled {
+		background-color: transparent;
+		border-color: color-mix(
+			in oklab,
+			var(--slds-g-color-neutral-base-100),
+			transparent 75%
+		);
+		color: color-mix(
+			in oklab,
+			var(--slds-g-color-on-surface-inverse-1),
+			transparent 75%
+		);
+	}
+}
+
+/**
+ * @summary Bare button icon - Button icon has a solid icon with no background and no border
+ */
+.slds-button_icon-bare {
+	&:focus-visible,
+	&:active {
+		--slds-c-button-shadow-focus: var(--slds-g-shadow-outline-focus-1);
+		--slds-c-button-sizing-border: var(--slds-g-sizing-border-1);
+	}
+
+	&.slds-button_icon-inverse:focus-visible {
+		--slds-c-button-shadow-focus: var(--slds-g-shadow-outset-focus-1);
+	}
+
+	&:focus-visible {
+		border-radius: var(--_slds-c-buttonicon-bare-radius-focus);
+	}
+}
+
+/**
+ * @summary Branded button icon - Button icon has a filled background with the brand color
+ */
+.slds-button_icon-brand {
+	background-color: var(--slds-g-color-accent-container-1);
+	border-color: var(--slds-g-color-border-accent-1);
+	color: var(--slds-g-color-on-accent-1);
+
+	&:visited,
+	&:active {
+		color: var(--slds-g-color-on-accent-1);
+	}
+
+	&:hover {
+		background-color: var(--slds-g-color-accent-container-2);
+		border-color: var(--slds-g-color-accent-container-2);
+		box-shadow: var(--slds-s-button-brand-shadow-hover);
+		color: var(--slds-g-color-on-accent-2);
+		transform: var(--slds-s-button-brand-transform-hover);
+		transition:
+			transform 150ms ease-in-out,
+			box-shadow 150ms ease-in-out;
+	}
+
+	&:focus-visible {
+		--slds-c-button-shadow-focus: var(--slds-g-shadow-insetinverse-focus-1);
+
+		border-color: var(--slds-c-button-color-border);
+	}
+
+	&:active {
+		background-color: var(--_slds-c-buttonicon-brand-color-background-active);
+		border-color: var(--slds-g-color-accent-container-3);
+		border-width: var(
+			--_slds-c-buttonicon-brand-sizing-border-active,
+			var(--slds-g-sizing-border-1)
+		);
+		transform: none;
+		box-shadow:
+			0 0 0 0
+				light-dark(
+					var(--slds-g-color-neutral-base-20),
+					var(--slds-g-color-neutral-base-30)
+				),
+			var(--slds-s-button-shadow-active, revert);
+		transition:
+			transform 150ms ease-in-out,
+			box-shadow 150ms ease-in-out;
+	}
+
+	&[disabled],
+	&:disabled {
+		background: var(--slds-g-color-disabled-container-2);
+		border-color: var(--slds-g-color-border-disabled-1);
+		color: var(--slds-g-color-on-disabled-2);
+	}
+}
+
+/**
+ * @summary Neutral themed button icon - Button icon has a border with a filled background
+ */
+.slds-button_icon-border-filled {
+	--slds-c-button-color-background: var(--slds-g-color-surface-container-1);
+
+	&:hover,
+	&:focus-visible {
+		--slds-c-button-color-background-hover: var(
+			--slds-g-color-surface-container-2
+		);
+	}
+
+	&[disabled],
+	&:disabled {
+		border-color: var(--slds-g-color-border-disabled-1);
+		background-color: var(--slds-g-color-disabled-container-1);
+	}
+}
+
+/**
+ * @summary Bare button icon with no border or background, to be used on an inversed background
+ */
+.slds-button_icon-inverse {
+	color: var(--slds-g-color-on-surface-inverse-1);
+
+	&:hover {
+		--slds-c-button-color-background-hover: transparent;
+
+		color: color-mix(
+			in oklab,
+			var(--slds-g-color-on-surface-inverse-1),
+			transparent 25%
+		);
+	}
+
+	&:focus-visible {
+		outline: none;
+		border: var(--slds-g-sizing-border-1) solid
+			var(--slds-g-color-border-inverse-1);
+		border-color: transparent;
+
+		--slds-c-button-shadow-focus: var(--slds-g-shadow-insetinverse-focus-1);
+	}
+
+	&:active {
+		color: color-mix(
+			in oklab,
+			var(--slds-g-color-on-surface-inverse-1),
+			transparent 50%
+		);
+	}
+
+	&[disabled],
+	&:disabled {
+		color: color-mix(
+			in oklab,
+			var(--slds-g-color-on-surface-inverse-1),
+			transparent 75%
+		);
+	}
+}
+
+/**
+ * @summary Error state - Typically used in conjunction with an error toolip
+ */
+.slds-button_icon-error {
+	color: var(--slds-g-color-error-1);
+
+	&:hover,
+	&:active,
+	&:focus-visible {
+		color: var(--slds-g-color-error-1);
+	}
+
+	&:focus-visible {
+		--slds-c-button-shadow-focus: var(--slds-g-shadow-outline-focus-1);
+	}
+}
+
+/**
+ * @summary Warning state - Typically used in conjunction with an warning tooltip
+ */
+.slds-button_icon-warning {
+	color: var(--slds-g-color-warning-1);
+
+	&:hover,
+	&:active,
+	&:focus-visible {
+		color: var(--slds-g-color-warning-1);
+	}
+
+	&:focus-visible {
+		--slds-c-button-shadow-focus: var(--slds-g-shadow-outline-focus-1);
+	}
+}
+
+/**
+ * @summary Apply the current color to the icon contained within
+ */
+.slds-button_icon-current-color {
+	color: currentColor;
+}
+
+/**
+ * @summary Changes a button icon container to be 48x48px
+ */
+.slds-button_icon-large {
+	width: var(--slds-g-sizing-10);
+	height: var(--slds-g-sizing-10);
+
+	.slds-button__icon {
+		width: var(--slds-g-sizing-7);
+		height: var(--slds-g-sizing-7);
+	}
+}
+
+/**
+ * @summary Changes a button icon container to be 24x24px
+ */
+.slds-button_icon-small {
+	width: var(--slds-g-sizing-7);
+	height: var(--slds-g-sizing-7);
+}
+
+/**
+ * @summary Changes a button icon container to be 20x20px
+ */
+.slds-button_icon-x-small {
+	width: var(--slds-g-sizing-6);
+	height: var(--slds-g-sizing-6);
+	line-height: 1;
+
+	.slds-button__icon {
+		width: var(--slds-g-sizing-4);
+		height: var(--slds-g-sizing-4);
+	}
+}
+
+/**
+ * @summary Changes a button icon container to be 16x16px
+ */
+.slds-button_icon-xx-small {
+	width: var(--slds-g-sizing-5);
+	height: var(--slds-g-sizing-5);
+	line-height: 1;
+
+	.slds-button__icon {
+		width: var(--slds-g-sizing-3);
+		height: var(--slds-g-sizing-3);
+	}
+}
+
+/**
+ * @summary Creates a button menu icon container that has borders and a filled background
+ */
+.slds-button_icon-more {
+	width: auto;
+	line-height: 1.875rem;
+	padding: 0 var(--slds-g-spacing-2);
+	background-color: var(--slds-g-color-surface-container-1);
+	border-color: var(--slds-g-color-border-2);
+	color: var(--slds-s-button-color, var(--slds-g-color-on-surface-1));
+
+	&:hover {
+		.slds-button__icon {
+			fill: var(--slds-s-button-color-hover, var(--slds-g-color-accent-2));
+		}
+	}
+
+	&:active .slds-button__icon {
+		fill: var(--slds-g-color-accent-3);
+	}
+
+	&[disabled],
+	&:disabled {
+		cursor: default;
+
+		.slds-button__icon {
+			fill: var(--slds-g-color-disabled-1);
+		}
+	}
+
+	&:focus-visible {
+		border-color: transparent;
+	}
+}
+
+/**
+ * @summary Creates a button menu icon container that has no borders
+ */
+.slds-button_icon-container-more {
+	width: auto;
+	line-height: 1.875rem;
+	padding-block: 0;
+	padding-inline: var(--slds-g-spacing-2);
+	vertical-align: middle;
+}
+
+/**
+ * @summary A parent class must be put on anything that contains a .slds-button__icon_hint so that the child reacts when the parent is hovered.
+ */
+.slds-button__icon_hint {
+	fill: var(--slds-s-button-color, var(--slds-g-color-on-surface-1));
+}
+
+/**
+ * @summary A parent class must be put on anything that contains a .slds-button__icon_inverse-hint so that the child reacts when the parent is hovered. This is for a dark background.
+ */
+.slds-button__icon_inverse-hint {
+	fill: color-mix(
+		in oklab,
+		var(--slds-g-color-on-surface-inverse-1),
+		transparent 50%
+	);
+}
+
+/* Handles hint on hover behavior of an inverse button icon, both bordered and non-bordered */
+.slds-hint-parent {
+	.slds-button_icon-border-inverse {
+		border-color: color-mix(
+			in oklab,
+			var(--slds-g-color-border-inverse-1),
+			transparent 50%
+		);
+
+		&:focus {
+			border-color: color-mix(
+				in oklab,
+				var(--slds-g-color-border-inverse-1),
+				transparent 25%
+			);
+		}
+	}
+
+	&:hover,
+	&:focus {
+		.slds-button_icon-border-inverse {
+			border-color: color-mix(
+				in oklab,
+				var(--slds-g-color-border-inverse-1),
+				transparent 25%
+			);
+		}
+
+		.slds-button__icon_hint {
+			fill: var(--slds-g-color-on-surface-2);
+		}
+
+		.slds-button__icon_inverse-hint {
+			fill: color-mix(
+				in oklab,
+				var(--slds-g-color-on-surface-inverse-1),
+				transparent 25%
+			);
+		}
+
+		.slds-button:disabled {
+			.slds-button__icon_hint {
+				fill: currentColor;
+			}
+		}
+	}
+}
+
+.slds-button_icon-container.slds-is-selected,
+.slds-button_icon-border.slds-is-selected,
+.slds-button_icon-border-filled.slds-is-selected,
+.slds-button_icon-border-inverse.slds-is-selected {
+	background-color: var(--slds-g-color-accent-container-1);
+	border-color: var(--slds-g-color-border-accent-1);
+	color: var(--slds-g-color-on-accent-1);
+
+	&:not([disabled]):hover {
+		box-shadow: var(--slds-s-button-brand-shadow-hover);
+		transform: var(--slds-s-button-brand-transform-hover);
+	}
+
+	&:not([disabled]):active {
+		box-shadow:
+			0 0 0 0 transparent,
+			var(--slds-s-button-shadow-active, revert);
+		transform: none;
+	}
+
+	&:hover,
+	&:focus {
+		background-color: var(--slds-g-color-accent-container-2);
+		border-color: var(--slds-g-color-accent-container-2);
+		color: var(--slds-g-color-on-accent-2);
+	}
+}
+
+.slds-button_icon-container.slds-is-selected[disabled],
+.slds-button_icon-container.slds-is-selected:disabled,
+.slds-button_icon-border.slds-is-selected[disabled],
+.slds-button_icon-border.slds-is-selected:disabled,
+.slds-button_icon-border-filled.slds-is-selected[disabled],
+.slds-button_icon-border-filled.slds-is-selected:disabled,
+.slds-button_icon-border-inverse.slds-is-selected[disabled],
+.slds-button_icon-border-inverse.slds-is-selected:disabled {
+	background: var(--slds-g-color-disabled-container-2);
+	border-color: var(--slds-g-color-border-disabled-1);
+	color: var(--slds-g-color-on-disabled-2);
+}
+
+/**
+ * Error state
+ */
+
+.slds-has-error .slds-button__icon {
+	fill: var(--slds-g-color-error-1);
+	color: var(--slds-g-color-error-1);
+}
