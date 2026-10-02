@@ -1,7 +1,13 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useCallback, useContext, useMemo, SyntheticEvent, ReactNode } from 'react';
+import React, {
+	useCallback,
+	useContext,
+	useMemo,
+	SyntheticEvent,
+	ReactNode,
+} from 'react';
 import classNames from 'classnames';
 import find from 'lodash.find';
 
@@ -19,10 +25,14 @@ import CellContext from './cell-context';
 import TableContext from './table-context';
 import useContextHelper from './context-helper';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const InteractiveCheckbox = InteractiveElement(Checkbox as any) as React.ComponentType<any>;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const InteractiveRadio = InteractiveElement(Radio as any) as React.ComponentType<any>;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const InteractiveCheckbox = InteractiveElement(
+	Checkbox as any
+) as React.ComponentType<any>;
+const InteractiveRadio = InteractiveElement(
+	Radio as any
+) as React.ComponentType<any>;
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 interface DataTableItem {
 	id: string;
@@ -54,7 +64,11 @@ export interface DataTableRowProps {
 	id: string;
 	index?: number;
 	item: DataTableItem;
-	onToggle?: (item: DataTableItem, selected: boolean, event: SyntheticEvent) => void;
+	onToggle?: (
+		item: DataTableItem,
+		selected: boolean,
+		event: SyntheticEvent
+	) => void;
 	rowActions?: ReactNode;
 	selection?: DataTableItem[];
 	disabledSelection?: DataTableItem[];
@@ -240,7 +254,9 @@ const DataTableRow: React.FC<DataTableRowProps> = (props) => {
 								>
 									<Cell
 										{...column.props}
-										className={column.props.truncate ? 'slds-truncate' : undefined}
+										className={
+											column.props.truncate ? 'slds-truncate' : undefined
+										}
 										fixedLayout={props.fixedLayout}
 										rowHeader={column.props.primaryColumn}
 										id={cellId}
@@ -258,7 +274,7 @@ const DataTableRow: React.FC<DataTableRowProps> = (props) => {
 							value={{
 								columnIndex: props.canSelectRows
 									? (props.columns?.length ?? 0) + 1
-									: props.columns?.length ?? 0,
+									: (props.columns?.length ?? 0),
 								rowIndex: props.rowIndex ?? 0,
 							}}
 						>
@@ -274,7 +290,7 @@ const DataTableRow: React.FC<DataTableRowProps> = (props) => {
 											item,
 											fixedLayout: props.fixedLayout,
 										}
-								  )
+									)
 								: null}
 						</CellContext.Provider>
 					</>

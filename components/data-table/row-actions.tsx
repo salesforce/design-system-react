@@ -16,8 +16,11 @@ import useContextHelper from './private/context-helper';
 
 import { DATA_TABLE_ROW_ACTIONS } from '../../utilities/constants';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const InteractiveDropdown = InteractiveElement(Dropdown as any) as React.ComponentType<any>;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const InteractiveDropdown = InteractiveElement(
+	Dropdown as any
+) as React.ComponentType<any>;
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 export interface DataTableRowActionsProps {
 	/** Description of the menu for screenreaders */
@@ -95,8 +98,8 @@ const DataTableRowActions: React.FC<DataTableRowActionsProps> = ({
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let dropdownProps: Record<string, any> = dropdown
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		? (dropdown as any).props
+		? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+			(dropdown as any).props
 		: {};
 	dropdownProps = {
 		...defaultDropdownProps,

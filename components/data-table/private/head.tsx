@@ -14,8 +14,11 @@ import useContextHelper from './context-helper';
 
 import { DATA_TABLE_HEAD } from '../../../utilities/constants';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const InteractiveCheckbox = InteractiveElement(Checkbox as any) as React.ComponentType<any>;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const InteractiveCheckbox = InteractiveElement(
+	Checkbox as any
+) as React.ComponentType<any>;
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 interface DataTableColumnConfig {
 	Cell: React.ComponentType<Record<string, unknown>>;
@@ -36,7 +39,10 @@ interface ActionsHeaderProps {
 	columnIndex: number;
 	fixedLayout?: boolean;
 	fixedHeader?: boolean;
-	headerRefs?: (ref: HTMLElement | null, index: 'action' | 'select' | number) => void;
+	headerRefs?: (
+		ref: HTMLElement | null,
+		index: 'action' | 'select' | number
+	) => void;
 }
 
 const ActionsHeader: React.FC<ActionsHeaderProps> = (props) => {
@@ -84,7 +90,7 @@ const ActionsHeader: React.FC<ActionsHeaderProps> = (props) => {
 							paddingBottom: 0,
 							paddingTop: 0,
 							visibility: 'hidden',
-					  }
+						}
 					: undefined
 			)}
 			{fixedHeader ? (
@@ -108,7 +114,10 @@ interface SelectHeaderProps {
 	canSelectRows?: boolean | 'checkbox' | 'radio';
 	fixedHeader?: boolean;
 	fixedLayout?: boolean;
-	headerRefs?: (ref: HTMLElement | null, index: 'action' | 'select' | number) => void;
+	headerRefs?: (
+		ref: HTMLElement | null,
+		index: 'action' | 'select' | number
+	) => void;
 	id?: string;
 	indeterminateSelected?: boolean;
 	onToggleAll?: (event: SyntheticEvent, data: { checked: boolean }) => void;
@@ -210,7 +219,7 @@ const SelectHeader: React.FC<SelectHeaderProps> = (props) => {
 								paddingBottom: 0,
 								paddingTop: 0,
 								visibility: 'hidden',
-						  }
+							}
 						: undefined,
 					fixedHeader
 				)}
@@ -232,7 +241,10 @@ const SelectHeader: React.FC<SelectHeaderProps> = (props) => {
 export interface DataTableHeadProps {
 	assistiveText?: AssistiveText;
 	allSelected?: boolean;
-	headerRefs?: (ref: HTMLElement | null, index: 'action' | 'select' | number) => void;
+	headerRefs?: (
+		ref: HTMLElement | null,
+		index: 'action' | 'select' | number
+	) => void;
 	isHidden?: boolean;
 	indeterminateSelected?: boolean;
 	canSelectRows?: boolean | 'checkbox' | 'radio';
@@ -260,7 +272,7 @@ const DataTableHead: React.FC<DataTableHeadProps> = (props) => {
 					columnIndex={
 						props.canSelectRows
 							? (props.columns?.length ?? 0) + 1
-							: props.columns?.length ?? 0
+							: (props.columns?.length ?? 0)
 					}
 					fixedLayout={props.fixedLayout}
 					fixedHeader={props.fixedHeader}

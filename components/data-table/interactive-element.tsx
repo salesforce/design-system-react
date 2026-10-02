@@ -20,8 +20,11 @@ import generateId from '../../utilities/generate-id';
  *  `requestFocus`: This wrapper overrides the `requestFocus` prop and provides its own value.
  *  `tabIndex`: This wrapper overrides the `tabIndex` prop and provides its own value.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function createInteractiveElement(WrappedElement: ComponentType<any>): any {
+export default function createInteractiveElement(
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	WrappedElement: ComponentType<any>
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+): any {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	class InteractiveElement extends Component<any> {
 		elementId: string;
@@ -42,8 +45,12 @@ export default function createInteractiveElement(WrappedElement: ComponentType<a
 			}
 		}
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		onRequestFocus(tableContext: TableContextValue, node: HTMLElement, ...args: any[]) {
+		onRequestFocus(
+			tableContext: TableContextValue,
+			node: HTMLElement,
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			...args: any[]
+		) {
 			if (tableContext.tableHasFocus) {
 				node.focus();
 				if (this.props.onRequestFocus) {
@@ -83,15 +90,14 @@ export default function createInteractiveElement(WrappedElement: ComponentType<a
 								const requestFocus =
 									tableContext.mode === Mode.ACTIONABLE &&
 									tableContext.activeElement === this.elementId;
-								const tabIndex =
-									tableContext.mode === Mode.ACTIONABLE ? 0 : -1;
+								const tabIndex = tableContext.mode === Mode.ACTIONABLE ? 0 : -1;
 								const keyboardNavProps = tableContext.allowKeyboardNavigation
 									? {
 											onFocus: onFocus.bind(this, tableContext),
 											onRequestFocus: onRequestFocus.bind(this, tableContext),
 											requestFocus,
 											tabIndex,
-									  }
+										}
 									: {};
 								return (
 									<WrappedElement

@@ -54,17 +54,17 @@ export const ObjectHome = {
 				<ButtonGroup>
 					<Button
 						assistiveText={{ icon: 'Chart' }}
-					iconCategory="utility"
-					iconName="chart"
+						iconCategory="utility"
+						iconName="chart"
 						iconVariant="border"
-					variant="icon"
-				/>
+						variant="icon"
+					/>
 					<Button
 						assistiveText={{ icon: 'Filter List' }}
-					iconCategory="utility"
-					iconName="filterList"
+						iconCategory="utility"
+						iconName="filterList"
 						iconVariant="border"
-					variant="icon"
+						variant="icon"
 					/>
 				</ButtonGroup>
 			)}

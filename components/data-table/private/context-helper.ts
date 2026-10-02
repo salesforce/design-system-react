@@ -24,7 +24,9 @@ export default function useTableContextHelper(
 		tableContext.activeCell.rowIndex === cellContext.rowIndex &&
 		tableContext.activeCell.columnIndex === cellContext.columnIndex;
 
-	const hasFocus = Boolean(fixedLayout && tableContext.tableHasFocus && isActive);
+	const hasFocus = Boolean(
+		fixedLayout && tableContext.tableHasFocus && isActive
+	);
 	const { changeActiveCell, handleKeyDown: handleTableKeyDown } = tableContext;
 
 	const handleFocus = useCallback(() => {

@@ -87,7 +87,8 @@ export const InteractiveCard = {
 		}
 
 		const isEmpty = displayItems.length === 0;
-		const heading = items.length > 0 ? `Related Items (${items.length})` : 'Related Items';
+		const heading =
+			items.length > 0 ? `Related Items (${items.length})` : 'Related Items';
 
 		return (
 			<div className="slds-grid slds-grid_vertical">
@@ -171,7 +172,11 @@ export const CustomHeading = {
 	render: () => (
 		<Card
 			id="CustomHeadingCard"
-			heading={<span style={{ color: 'var(--slds-g-color-brand-base-50, #0070d2)' }}>Custom Styled Heading</span>}
+			heading={
+				<span style={{ color: 'var(--slds-g-color-brand-base-50, #0070d2)' }}>
+					Custom Styled Heading
+				</span>
+			}
 			icon={<Icon category="standard" name="document" size="small" />}
 			footer="Card Footer"
 		>

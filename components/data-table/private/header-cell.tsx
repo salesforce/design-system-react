@@ -145,7 +145,8 @@ const DataTableHeaderCell: React.FC<DataTableHeaderCellProps> = (props) => {
 					role="button"
 				>
 					<span className="slds-assistive-text">
-						{props.assistiveTextForColumnSort || props.assistiveText?.columnSort}{' '}
+						{props.assistiveTextForColumnSort ||
+							props.assistiveText?.columnSort}{' '}
 					</span>
 					<span
 						className="slds-truncate"
@@ -163,9 +164,9 @@ const DataTableHeaderCell: React.FC<DataTableHeaderCellProps> = (props) => {
 						<span className="slds-assistive-text" aria-atomic="true">
 							{effectiveSortDirection === 'asc'
 								? props.assistiveTextForColumnSortedAscending ||
-								  props.assistiveText?.columnSortedAscending
+									props.assistiveText?.columnSortedAscending
 								: props.assistiveTextForColumnSortedDescending ||
-								  props.assistiveText?.columnSortedDescending}
+									props.assistiveText?.columnSortedDescending}
 						</span>
 					) : null}
 				</SortLink>
@@ -231,14 +232,16 @@ const DataTableHeaderCell: React.FC<DataTableHeaderCellProps> = (props) => {
 							height: fixedHeader ? 0 : undefined,
 							lineHeight: fixedHeader ? 0 : undefined,
 							width: width || undefined,
-					  }
+						}
 					: undefined
 			}
 			tabIndex={tabIndex}
 		>
 			{fixedHeader
 				? React.cloneElement(
-						getHeaderCellContent(true) as React.ReactElement<{ style?: React.CSSProperties }>,
+						getHeaderCellContent(true) as React.ReactElement<{
+							style?: React.CSSProperties;
+						}>,
 						{
 							style: {
 								display: 'flex',
@@ -249,7 +252,7 @@ const DataTableHeaderCell: React.FC<DataTableHeaderCellProps> = (props) => {
 								visibility: 'hidden' as const,
 							},
 						}
-				  )
+					)
 				: getHeaderCellContent()}
 			{fixedHeader ? (
 				<CellFixed>
