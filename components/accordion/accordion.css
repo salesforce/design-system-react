@@ -1,0 +1,244 @@
+/*
+ * Copyright (c) 2026, Salesforce, Inc.,
+ * All rights reserved.
+ * For full license text, see the LICENSE.txt file
+ */
+
+.slds-accordion {
+	position: relative;
+}
+
+/**
+ * List item for each accordion section
+ */
+.slds-accordion__list-item {
+	border-block-start-width: var(
+		--slds-c-accordion-section-sizing-border,
+		var(--slds-g-sizing-border-1)
+	);
+	border-block-start-style: solid;
+	border-block-start-color: var(
+		--slds-c-accordion-section-color-border,
+		var(--slds-g-color-border-1)
+	);
+	&:first-child {
+		border-top: 0;
+	}
+}
+
+/**
+ * Summary title for each expandable panel inside of an accordion
+ */
+.slds-accordion__summary {
+	display: flex;
+	margin-block-start: calc(
+		var(
+				--slds-c-accordion-section-spacing-block-start,
+				var(--slds-g-sizing-4)
+			) *
+			-1
+	);
+	margin-inline-end: calc(
+		var(--slds-c-accordion-section-spacing-inline-end, var(--slds-g-sizing-4)) *
+			-1
+	);
+	margin-block-end: calc(
+		var(--slds-c-accordion-section-spacing-block-end, var(--slds-g-sizing-4)) *
+			-1
+	);
+	margin-inline-start: calc(
+		var(
+				--slds-c-accordion-section-spacing-inline-start,
+				var(--slds-g-sizing-4)
+			) *
+			-1
+	);
+	padding-block-start: var(
+		--slds-c-accordion-section-spacing-block-start,
+		var(--slds-g-sizing-4)
+	);
+	padding-inline-end: var(
+		--slds-c-accordion-section-spacing-inline-end,
+		var(--slds-g-sizing-4)
+	);
+	padding-block-end: var(
+		--slds-c-accordion-section-spacing-block-end,
+		var(--slds-g-sizing-4)
+	);
+	padding-inline-start: var(
+		--slds-c-accordion-section-spacing-inline-start,
+		var(--slds-g-sizing-4)
+	);
+	background-color: var(
+		--slds-c-accordion-summary-color-background,
+		transparent
+	);
+}
+
+/**
+ * Summary title for each expandable panel inside of an accordion
+ */
+.slds-accordion__summary-heading {
+	display: flex;
+	flex-grow: 1;
+	min-width: 0;
+	color: var(
+		--slds-c-accordion-heading-color,
+		var(--slds-g-color-on-surface-3)
+	);
+	font-size: var(
+		--slds-c-accordion-heading-font-size,
+		var(--slds-s-container-heading-var-font-size, var(--slds-g-font-scale-2))
+	);
+	font-weight: var(
+		--slds-s-container-heading-font-weight,
+		var(--slds-g-font-weight-4)
+	);
+	line-height: var(--slds-g-font-lineheight-2);
+
+	.slds-button:focus-visible {
+		box-shadow: var(--slds-g-shadow-inset-focus-1);
+		border-radius: var(--slds-g-radius-border-3);
+		margin-inline-end: var(
+			--slds-c-accordion-section-spacing-inline-end,
+			revert
+		);
+	}
+}
+
+/**
+ * Actionable button inside of accordion summary that would toggle the visibility of each section
+ */
+.slds-accordion__summary-action {
+	display: inline-flex;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: flex-start;
+	min-width: 0;
+	margin-block-start: calc(
+		var(
+				--slds-c-accordion-section-spacing-block-start,
+				var(--slds-g-sizing-4)
+			) *
+			-1
+	);
+	margin-inline-end: calc(
+		var(--slds-c-accordion-section-spacing-inline-end, var(--slds-g-sizing-4)) *
+			-1
+	);
+	margin-block-end: calc(
+		var(--slds-c-accordion-section-spacing-block-end, var(--slds-g-sizing-4)) *
+			-1
+	);
+	margin-inline-start: calc(
+		var(
+				--slds-c-accordion-section-spacing-inline-start,
+				var(--slds-g-sizing-4)
+			) *
+			-1
+	);
+	padding-block-start: var(
+		--slds-c-accordion-section-spacing-block-start,
+		var(--slds-g-sizing-4)
+	);
+	padding-inline-end: var(
+		--slds-c-accordion-section-spacing-inline-end,
+		var(--slds-g-sizing-4)
+	);
+	padding-block-end: var(
+		--slds-c-accordion-section-spacing-block-end,
+		var(--slds-g-sizing-4)
+	);
+	padding-inline-start: var(
+		--slds-c-accordion-section-spacing-inline-start,
+		var(--slds-g-sizing-4)
+	);
+	font-weight: inherit;
+
+	&:hover,
+	&:focus {
+		color: var(--slds-g-color-accent-container-3);
+	}
+
+	&:active {
+		box-shadow: none;
+	}
+}
+
+/**
+ * Icon inside of actionable button within an accordion section
+ */
+.slds-accordion__summary-action-icon {
+	flex-shrink: 0;
+	transform: rotate(-90deg);
+
+	&:dir(rtl) {
+		transform: rotate(90deg);
+	}
+}
+
+/**
+ * Text of summary title for each expandable panel inside of an accordion
+ */
+.slds-accordion__summary-content {
+	@media (min-width: 64em) {
+		max-width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}
+
+/**
+ * Each expandable panel inside of an accordion
+ */
+.slds-accordion__section {
+	padding-block-start: var(
+		--slds-c-accordion-section-spacing-block-start,
+		var(--slds-g-sizing-4)
+	);
+	padding-inline-end: var(
+		--slds-c-accordion-section-spacing-inline-end,
+		var(--slds-g-sizing-4)
+	);
+	padding-block-end: var(
+		--slds-c-accordion-section-spacing-block-end,
+		var(--slds-g-sizing-4)
+	);
+	padding-inline-start: var(
+		--slds-c-accordion-section-spacing-inline-start,
+		var(--slds-g-sizing-4)
+	);
+}
+
+/**
+ * Each expandable panel inside of an accordion
+ */
+.slds-accordion__content {
+	overflow: hidden;
+	visibility: hidden;
+	opacity: 0;
+	height: 0;
+	color: var(--slds-g-color-on-surface-1);
+}
+
+/**
+ * Toggle visibility of accordion section
+ */
+.slds-is-open {
+	> .slds-accordion__summary {
+		margin-block-end: 0;
+
+		.slds-accordion__summary-action-icon {
+			transform: rotate(0deg);
+		}
+	}
+
+	> .slds-accordion__content {
+		overflow: visible;
+		visibility: visible;
+		opacity: 1;
+		height: auto;
+		color: var(--slds-g-color-on-surface-1);
+	}
+}
