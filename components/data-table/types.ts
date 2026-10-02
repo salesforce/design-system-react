@@ -71,7 +71,7 @@ export interface DataTableProps {
 	columnBordered?: boolean;
 	/** Enable fixed headers and scrolling */
 	fixedHeader?: boolean;
-	/** Use for advanced table (selectable, sortable, resizable rows) */
+	/** Use for advanced table (selectable, sortable rows) */
 	fixedLayout?: boolean;
 	/** When fixedHeader is true, shows spinner if more data loading */
 	hasMore?: boolean;
@@ -139,10 +139,6 @@ export interface DataTableProps {
 	unborderedRow?: boolean;
 	/** Removes horizontal padding */
 	unbufferedCell?: boolean;
-	/** Enables column resizing */
-	resizable?: boolean;
-	/** Options for resizable columns */
-	resizableOptions?: DataTableResizableOptions;
 	/** Search term for highlighting */
 	search?: string;
 	/** @deprecated Use assistiveText.actionsHeader */
@@ -157,19 +153,6 @@ export interface DataTableProps {
 	assistiveTextForColumnSort?: string;
 	/** @deprecated Use assistiveText.selectRow */
 	assistiveTextForSelectRow?: string;
-}
-
-export interface DataTableResizableOptions {
-	resizeMode?: 'fit' | 'flex' | 'overflow';
-	draggingClass?: string;
-	onResize?: (columnsWidths: DataTableColumnWidth[]) => void;
-	disabledColumns?: number[];
-}
-
-export interface DataTableColumnWidth {
-	id: string;
-	index: number;
-	width: number;
 }
 
 // ============================================================================

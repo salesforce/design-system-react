@@ -20,7 +20,6 @@ import FixedHeaderHorizontalScroller from '../__examples__/fixed-header-horizont
 import JoinedWithPageHeader from '../__examples__/joined-with-page-header';
 import CustomClasses from '../__examples__/custom-classes';
 import InfiniteScrolling from '../__examples__/infinite-scrolling';
-import ResizableColumns from '../__examples__/resizable-columns';
 
 const meta: Meta<typeof DataTable> = {
 	title: 'Components/DataTable',
@@ -117,9 +116,4 @@ export const CustomClassesStory: Story = {
 export const InfiniteScrollingStory: Story = {
 	name: 'Infinite Scrolling',
 	render: () => <InfiniteScrolling />,
-};
-
-export const ResizableColumnsStory: Story = {
-	name: 'Resizable Columns',
-	render: () => <ResizableColumns />,
 };

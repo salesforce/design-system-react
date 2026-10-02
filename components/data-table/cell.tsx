@@ -15,7 +15,7 @@ export interface DataTableCellProps {
 	children?: ReactNode;
 	/** Class names to be added to the cell */
 	className?: string | string[] | Record<string, boolean>;
-	/** Use this for advanced table (selectable, sortable, or resizable rows) */
+	/** Use this for advanced table (selectable or sortable rows) */
 	fixedLayout?: boolean;
 	/** The item from the items which represents this row */
 	item?: Record<string, unknown>;

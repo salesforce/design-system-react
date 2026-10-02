@@ -28,6 +28,7 @@ All notable changes to this project will be documented in this file.
 - Enzyme testing library
 - `create-react-class` dependency
 - IE11 support and polyfills
+- **BREAKING**: DataTable column resizing. The `resizable` and `resizableOptions` props, the `DataTableResizableOptions` and `DataTableColumnWidth` types, `assets/styles/table.css`, and the `column-resizer` dependency are removed. `resizable` also implied `fixedHeader`, `fixedLayout`, and `keyboardNavigation`; set those props explicitly to keep the same layout and behavior.
 
 ### Components Converted to TypeScript
 

@@ -14,7 +14,6 @@ import { dequal as isEqual } from 'dequal';
 import memoize from 'memoize-one';
 import reject from 'lodash.reject';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
-import ColumnResizer from 'column-resizer';
 import checkProps from './check-props';
 import componentDoc from './component.json';
 
@@ -90,11 +89,6 @@ const defaultProps = {
 	disabledSelection: [] as DataTableItem[],
 	hasMore: false,
 	loadMoreOffset: 20,
-	resizable: false,
-	resizableOptions: {
-		resizeMode: 'fit',
-		draggingClass: 'slds-table-column-resizer',
-	},
 };
 
 const getAssistiveText = memoize(
@@ -218,18 +212,12 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 		select: (HTMLElement | null)[];
 	};
 
-	gripRefs: HTMLElement[];
-
 	scrollerRef: HTMLElement | null;
-
-	fixedHeaderContainer: HTMLElement | null;
 
 	// Map of cells to interactive elements within that cell
 	interactiveElements: Record<number, Record<number, string[]>>;
 
 	tableRef?: HTMLTableElement | null;
-
-	resizer?: { reset: (options: { disable: boolean }) => void };
 
 	constructor(props: DataTableProps) {
 		super(props);
@@ -239,9 +227,7 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 			column: [],
 			select: [],
 		};
-		this.gripRefs = [];
 		this.scrollerRef = null;
-		this.fixedHeaderContainer = null;
 		this.state = {
 			// Currently selected cell
 			activeCell: {
@@ -275,17 +261,14 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 	}
 
 	componentDidMount() {
-		if (this.getFixedHeader()) {
+		if (this.props.fixedHeader) {
 			this.toggleFixedHeaderListeners(true);
 			this.resizeFixedHeaders();
-		}
-		if (this.isResizable()) {
-			this.enableResize();
 		}
 	}
 
 	componentDidUpdate(_prevProps: DataTableProps, prevState: DataTableState) {
-		if (this.getFixedHeader()) {
+		if (this.props.fixedHeader) {
 			this.resizeFixedHeaders();
 			// If the first page of results isn't enough to allow the user to scroll it causes
 			// the user to get into a state where they cannot load the second page.
@@ -304,54 +287,14 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 			// eslint-disable-next-line react/no-did-update-set-state
 			this.setState({ tableHasFocus: true });
 		}
-		if (this.isResizable()) {
-			this.enableResize();
-		} else if (this.resizer) {
-			this.disableResize();
-		}
 	}
 
 	componentWillUnmount() {
 		this.toggleFixedHeaderListeners(false);
-
-		if (this.isResizable()) {
-			this.disableResize();
-		}
-	}
-
-	onResize() {
-		const table = this.tableRef;
-		if (table) {
-			const columns = this.getFixedHeader()
-				? table.getElementsByClassName('slds-cell-fixed')
-				: table.getElementsByTagName('th');
-			const columnsWidths = Array.from(columns).map((col, index) => {
-				const { id, style } = col as HTMLElement;
-				return {
-					id,
-					index,
-					width: parseInt(style.width, 10),
-				};
-			});
-			return columnsWidths;
-		}
-		return [];
 	}
 
 	getId() {
 		return this.props.id || this.generatedId;
-	}
-
-	getFixedHeader() {
-		return this.props.fixedHeader || this.props.resizable;
-	}
-
-	getKeyboardNavigation() {
-		return this.props.keyboardNavigation || this.props.resizable;
-	}
-
-	getFixedLayout() {
-		return this.props.fixedLayout || this.props.resizable;
 	}
 
 	getFirstInteractiveElement(
@@ -456,27 +399,6 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 		}
 	};
 
-	repositionResizers = () => {
-		const headers = [
-			...this.headerRefs.select,
-			...this.headerRefs.column,
-			...this.headerRefs.action,
-		];
-
-		if (this.gripRefs && this.tableRef) {
-			const tableOffset = this.tableRef.getBoundingClientRect();
-			this.gripRefs.forEach((grip, index) => {
-				const headerEl = headers[index];
-				if (!headerEl) return;
-				const header = headerEl.getBoundingClientRect();
-				const relativeOffset = header.left - tableOffset.left;
-				const newPosition = relativeOffset + header.width;
-				// eslint-disable-next-line no-param-reassign
-				grip.style.left = `${newPosition}px`;
-			});
-		}
-	};
-
 	resizeFixedHeaders = (event?: Event) => {
 		const headerRefs = [
 			...this.headerRefs.select,
@@ -558,10 +480,6 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 					'scroll',
 					this.loadMoreIfNeeded as EventListener
 				);
-				this.scrollerRef[method](
-					'scroll',
-					this.repositionResizers as EventListener
-				);
 			}
 		}
 	};
@@ -571,77 +489,6 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 		if (this.props.items !== nextProps.items) {
 			this.interactiveElements = {};
 		}
-	}
-
-	isResizable() {
-		return this.props.fixedLayout && this.props.resizable;
-	}
-
-	resizeGrips() {
-		const table = this.fixedHeaderContainer;
-
-		if (table) {
-			const grips = Array.from(
-				table.getElementsByClassName('grip-handle')
-			) as HTMLElement[];
-
-			if (grips.length) {
-				this.gripRefs = grips;
-				this.gripRefs.forEach((grip) => {
-					// eslint-disable-next-line no-param-reassign
-					grip.style.height = `${parseInt(grip.style.height, 10) + 33}px`;
-				});
-			}
-		}
-	}
-
-	enableResize() {
-		if (canUseDOM) {
-			const remoteTable = this.tableRef;
-			const fixedHeader = this.getFixedHeader();
-			const disabledColumns: number[] = [];
-
-			if (this.props.selectRows) {
-				disabledColumns.push(0);
-			}
-
-			if (!this.resizer) {
-				const options: Record<string, unknown> = {
-					...defaultProps.resizableOptions,
-					...{ disabledColumns },
-					...this.props.resizableOptions,
-				};
-
-				const externalFunction = this.props.resizableOptions?.onResize;
-				options.onResize = (e: Event) => {
-					if (fixedHeader) {
-						this.resizeFixedHeaders(e);
-						this.repositionResizers();
-					}
-
-					const response = this.onResize();
-
-					if (externalFunction) externalFunction(response);
-					this.resizeGrips();
-				};
-
-				if (remoteTable) {
-					this.resizer = new ColumnResizer(remoteTable, options);
-					remoteTable.classList.remove('grip-padding');
-
-					if (fixedHeader) this.resizeFixedHeaders();
-
-					this.resizeGrips();
-					this.repositionResizers();
-				}
-				this.setState({}, () => this.state);
-			}
-		}
-	}
-
-	disableResize() {
-		if (this.resizer) this.resizer.reset({ disable: true });
-		this.gripRefs = [];
 	}
 
 	changeActiveCell(rowIndex: number, columnIndex: number) {
@@ -676,137 +523,77 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 	}
 
 	handleKeyDownUp() {
-		if (
-			this.state.mode === Mode.NAVIGATION ||
-			this.state.activeCell.rowIndex > 0 ||
-			!this.isResizable()
-		) {
-			const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
-			const activeElement = this.getFirstInteractiveElement(
-				newRowIndex,
-				this.state.activeCell.columnIndex
-			);
-			if (newRowIndex !== this.state.activeCell.rowIndex) {
-				this.setState((prevState) => ({
-					activeCell: {
-						rowIndex: newRowIndex,
-						columnIndex: prevState.activeCell.columnIndex,
-					},
-					activeElement,
-				}));
-
-				if (
-					this.state.mode === Mode.ACTIONABLE &&
-					newRowIndex === 0 &&
-					!activeElement
-				) {
-					this.makeGripVisible(this.state.activeCell.columnIndex);
-				}
-			}
+		const newRowIndex = Math.max(this.state.activeCell.rowIndex - 1, 0);
+		const activeElement = this.getFirstInteractiveElement(
+			newRowIndex,
+			this.state.activeCell.columnIndex
+		);
+		if (newRowIndex !== this.state.activeCell.rowIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: newRowIndex,
+					columnIndex: prevState.activeCell.columnIndex,
+				},
+				activeElement,
+			}));
 		}
 	}
 
 	handleKeyDownDown() {
-		if (
-			this.state.mode === Mode.NAVIGATION ||
-			this.state.activeCell.rowIndex > 0 ||
-			!this.isResizable()
-		) {
-			const newRowIndex = Math.min(
-				this.state.activeCell.rowIndex + 1,
-				this.props.items.length
-			);
-			const activeElement = this.getFirstInteractiveElement(
-				newRowIndex,
-				this.state.activeCell.columnIndex
-			);
-			if (newRowIndex !== this.state.activeCell.rowIndex) {
-				this.setState((prevState) => ({
-					activeCell: {
-						rowIndex: newRowIndex,
-						columnIndex: prevState.activeCell.columnIndex,
-					},
-					activeElement,
-				}));
-			}
+		const newRowIndex = Math.min(
+			this.state.activeCell.rowIndex + 1,
+			this.props.items.length
+		);
+		const activeElement = this.getFirstInteractiveElement(
+			newRowIndex,
+			this.state.activeCell.columnIndex
+		);
+		if (newRowIndex !== this.state.activeCell.rowIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: newRowIndex,
+					columnIndex: prevState.activeCell.columnIndex,
+				},
+				activeElement,
+			}));
 		}
-	}
-
-	displaceByArrowKey(factor: number) {
-		if (this.state.mode === Mode.ACTIONABLE) {
-			const { rowIndex, columnIndex } = this.state.activeCell;
-
-			if (rowIndex === 0 && this.tableRef) {
-				const table = this.tableRef;
-				const headers = table.getElementsByTagName('th');
-				headers[columnIndex].style.width = `${
-					parseInt(headers[columnIndex].style.width, 10) + factor
-				}px`;
-				this.resizeFixedHeaders();
-				this.repositionResizers();
-				this.resizeGrips();
-			}
-		}
-	}
-
-	makeGripVisible(newIndex: number | null) {
-		this.gripRefs.forEach((grip, index) => {
-			if (index === newIndex) grip.classList.add('grip-handle-active');
-			else grip.classList.remove('grip-handle-active');
-		});
 	}
 
 	handleKeyDownLeft() {
-		if (
-			this.state.mode === Mode.NAVIGATION ||
-			this.state.activeCell.rowIndex > 0 ||
-			!this.isResizable()
-		) {
-			const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
-			const activeElement = this.getFirstInteractiveElement(
-				this.state.activeCell.rowIndex,
-				newColumnIndex
-			);
-			if (newColumnIndex !== this.state.activeCell.columnIndex) {
-				this.setState((prevState) => ({
-					activeCell: {
-						rowIndex: prevState.activeCell.rowIndex,
-						columnIndex: newColumnIndex,
-					},
-					activeElement,
-				}));
-			}
-		} else {
-			this.displaceByArrowKey(-10);
+		const newColumnIndex = Math.max(this.state.activeCell.columnIndex - 1, 0);
+		const activeElement = this.getFirstInteractiveElement(
+			this.state.activeCell.rowIndex,
+			newColumnIndex
+		);
+		if (newColumnIndex !== this.state.activeCell.columnIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: prevState.activeCell.rowIndex,
+					columnIndex: newColumnIndex,
+				},
+				activeElement,
+			}));
 		}
 	}
 
 	handleKeyDownRight() {
-		if (
-			this.state.mode === Mode.NAVIGATION ||
-			this.state.activeCell.rowIndex > 0 ||
-			!this.isResizable()
-		) {
-			const newColumnIndex = Math.min(
-				this.state.activeCell.columnIndex + 1,
-				React.Children.count(this.props.children) -
-					(this.props.selectRows ? 0 : 1)
-			);
-			const activeElement = this.getFirstInteractiveElement(
-				this.state.activeCell.rowIndex,
-				newColumnIndex
-			);
-			if (newColumnIndex !== this.state.activeCell.columnIndex) {
-				this.setState((prevState) => ({
-					activeCell: {
-						rowIndex: prevState.activeCell.rowIndex,
-						columnIndex: newColumnIndex,
-					},
-					activeElement,
-				}));
-			}
-		} else {
-			this.displaceByArrowKey(10);
+		const newColumnIndex = Math.min(
+			this.state.activeCell.columnIndex + 1,
+			React.Children.count(this.props.children) -
+				(this.props.selectRows ? 0 : 1)
+		);
+		const activeElement = this.getFirstInteractiveElement(
+			this.state.activeCell.rowIndex,
+			newColumnIndex
+		);
+		if (newColumnIndex !== this.state.activeCell.columnIndex) {
+			this.setState((prevState) => ({
+				activeCell: {
+					rowIndex: prevState.activeCell.rowIndex,
+					columnIndex: newColumnIndex,
+				},
+				activeElement,
+			}));
 		}
 	}
 
@@ -824,10 +611,6 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 				mode: Mode.ACTIONABLE,
 				activeElement,
 			});
-
-			if (rowIndex === 0 && !activeElement) {
-				this.makeGripVisible(columnIndex);
-			}
 		}
 	}
 
@@ -837,7 +620,6 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 				mode: Mode.NAVIGATION,
 				activeElement: null,
 			});
-			this.makeGripVisible(null);
 		}
 	}
 
@@ -908,7 +690,6 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 
 			if (nextActionable) {
 				this.setState({ activeElement: nextActionable });
-				if (this.isResizable()) this.makeGripVisible(null);
 			} else if (rowIndex === 0) {
 				const headers = [
 					...this.headerRefs.select,
@@ -937,8 +718,6 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 						// eslint-disable-next-line no-param-reassign
 					} else header.tabIndex = -1;
 				});
-
-				if (this.isResizable()) this.makeGripVisible(newIndex);
 			} else {
 				this.moveNext(event, rowIndex, columnIndex);
 				this.setState({
@@ -995,7 +774,7 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 		const { columns, RowActions } = getColumnsAndRowActions(
 			this.props.children,
 			this.props.id,
-			this.getFixedHeader(),
+			this.props.fixedHeader,
 			this.props.fixedLayout,
 			this.props.items,
 			this.props.search
@@ -1025,19 +804,22 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 		let component = (
 			<React.Fragment>
 				<TableContext.Provider
-					value={this.getTableContext(this.state, this.getKeyboardNavigation())}
+					value={this.getTableContext(
+						this.state,
+						this.props.keyboardNavigation
+					)}
 				>
 					<table
 						{...ariaProps}
 						className={classNames(
 							'slds-table',
 							{
-								'slds-table_fixed-layout': this.getFixedLayout(),
-								'slds-table_header-fixed': this.getFixedHeader(),
-								'slds-table_resizable-cols': this.getFixedLayout(),
+								'slds-table_fixed-layout': this.props.fixedLayout,
+								'slds-table_header-fixed': this.props.fixedHeader,
+								'slds-table_resizable-cols': this.props.fixedLayout,
 								'slds-table_bordered': !this.props.unborderedRow,
 								'slds-table_cell-buffer':
-									!this.getFixedLayout() && !this.props.unbufferedCell,
+									!this.props.fixedLayout && !this.props.unbufferedCell,
 								'slds-max-medium-table_stacked': this.props.stacked,
 								'slds-max-medium-table_stacked-horizontal':
 									this.props.stackedHorizontal,
@@ -1054,7 +836,7 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 								this.tableRef = node;
 							}
 						}}
-						role={this.getFixedLayout() ? 'grid' : undefined}
+						role={this.props.fixedLayout ? 'grid' : undefined}
 						onBlur={(event) => {
 							if (
 								this.tableRef &&
@@ -1065,7 +847,6 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 									mode: Mode.NAVIGATION,
 									activeElement: null,
 								});
-								this.makeGripVisible(null);
 							}
 						}}
 						style={this.props.style}
@@ -1073,8 +854,8 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 						<DataTableHead
 							assistiveText={assistiveText}
 							allSelected={allSelected}
-							fixedHeader={this.getFixedHeader()}
-							fixedLayout={this.getFixedLayout()}
+							fixedHeader={this.props.fixedHeader}
+							fixedLayout={this.props.fixedLayout}
 							headerRefs={(ref, index) => {
 								if (index === 'action' || index === 'select') {
 									if (ref) {
@@ -1119,7 +900,7 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 												canSelectRows={canSelectRows}
 												className={item.classNameRow}
 												columns={columns}
-												fixedLayout={this.getFixedLayout()}
+												fixedLayout={this.props.fixedLayout}
 												id={rowId}
 												index={index}
 												item={item}
@@ -1138,7 +919,7 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 						</tbody>
 					</table>
 				</TableContext.Provider>
-				{this.getFixedHeader() && this.props.hasMore && (
+				{this.props.fixedHeader && this.props.hasMore && (
 					<div className="slds-is-relative slds-p-around_large">
 						<Spinner
 							assistiveText={{ label: this.props.assistiveText?.loadingMore }}
@@ -1151,7 +932,7 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 			</React.Fragment>
 		);
 
-		if (this.getFixedHeader()) {
+		if (this.props.fixedHeader) {
 			const border = `1px solid ${colorGray5}`;
 			const styles: React.CSSProperties = {
 				borderTop: border,
@@ -1168,21 +949,12 @@ class DataTable extends React.Component<DataTableProps, DataTableState> {
 
 			const fixedScrollerStyle: React.CSSProperties = {
 				height: '100%',
+				overflow: 'auto',
 			};
-
-			if (this.props.resizable) {
-				fixedScrollerStyle.overflowY = 'auto';
-				fixedScrollerStyle.overflowX = 'hidden';
-			} else {
-				fixedScrollerStyle.overflow = 'auto';
-			}
 
 			component = (
 				<div
 					className="slds-table_header-fixed_container"
-					ref={(ref) => {
-						this.fixedHeaderContainer = ref;
-					}}
 					style={styles}
 					onScroll={(e) => {
 						const containerScrollLeft = (e.target as HTMLElement).scrollLeft;
