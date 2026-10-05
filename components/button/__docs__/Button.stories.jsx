@@ -130,7 +130,8 @@ InverseButton.decorators = [inverseDecorator];
 InverseButton.parameters = {
 	docs: {
 		description: {
-			story: 'Inverse buttons are designed for dark backgrounds. Toggle dark mode or view on the dark background below.',
+			story:
+				'Inverse buttons are designed for dark backgrounds. Toggle dark mode or view on the dark background below.',
 		},
 	},
 };

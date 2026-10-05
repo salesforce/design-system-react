@@ -20,7 +20,10 @@ describe('SLDSButton', () => {
 
 	describe('Basic Button Props Render', () => {
 		it('renders correct label', () => {
-			renderButton({ id: 'custom-id', style: { background: 'rgb(18, 49, 35)' } });
+			renderButton({
+				id: 'custom-id',
+				style: { background: 'rgb(18, 49, 35)' },
+			});
 			const btn = screen.getByRole('button', { name: /Neutral/i });
 			expect(btn).toBeInTheDocument();
 			expect(btn).toHaveClass('slds-button_neutral');
@@ -55,10 +58,10 @@ describe('SLDSButton', () => {
 				iconPosition: 'right',
 				variant: 'neutral',
 			});
-			
+
 			const btn = screen.getByRole('button', { name: 'Neutral with Icon' });
 			expect(btn).toBeInTheDocument();
-			
+
 			// Check for icon existence and class
 			// Note: Icon implementation might render an <svg> or use <use>
 			const icon = container.querySelector('.slds-button__icon');
@@ -96,15 +99,16 @@ describe('SLDSButton', () => {
 				iconPath: '/assets/icons/utility-sprite/svg/symbols.svg#announcement',
 				title: 'announcement',
 			});
-            
-            const btn = screen.getByRole('button', { name: 'News' });
+
+			const btn = screen.getByRole('button', { name: 'News' });
 			expect(btn).toBeInTheDocument();
 		});
 	});
 
 	describe('External Path Icon Button renders', () => {
 		it('renders svg with use href', () => {
-			const iconPath = '/assets/icons/utility-sprite/svg/symbols.svg#announcement';
+			const iconPath =
+				'/assets/icons/utility-sprite/svg/symbols.svg#announcement';
 			const { container } = renderButton({
 				assistiveText: { icon: 'announcement' },
 				variant: 'icon',
@@ -123,10 +127,9 @@ describe('SLDSButton', () => {
 			const onClick = vi.fn();
 			renderButton({ onClick });
 			const btn = screen.getByRole('button');
-			
+
 			fireEvent.click(btn);
 			expect(onClick).toHaveBeenCalledTimes(1);
 		});
 	});
 });
-

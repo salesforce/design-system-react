@@ -111,7 +111,10 @@ export interface ButtonProps {
 	/** Blur event handler */
 	onBlur?: (event: FocusEvent<HTMLButtonElement>) => void;
 	/** Click event handler */
-	onClick?: (event: MouseEvent<HTMLButtonElement>, data?: { id?: string }) => void;
+	onClick?: (
+		event: MouseEvent<HTMLButtonElement>,
+		data?: { id?: string }
+	) => void;
 	/** Focus event handler */
 	onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
 	/** Key down event handler */
@@ -223,8 +226,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 					variant !== 'link') ||
 				iconVariant === 'bare';
 			const plainInverseBtn = inverse && !isIcon;
-			const plainInverseIcon =
-				inverse && isIcon && !iconMore && !iconBorder;
+			const plainInverseIcon = inverse && isIcon && !iconMore && !iconBorder;
 			const moreInverseIcon = inverse && iconMore;
 			const borderInverseIcon = inverse && iconBorder;
 
@@ -259,8 +261,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		};
 
 		const renderIcon = (name?: string): React.ReactElement => {
-			const computedIconSize =
-				!iconSize || iconVariant ? undefined : iconSize;
+			const computedIconSize = !iconSize || iconVariant ? undefined : iconSize;
 			return (
 				<ButtonIcon
 					category={iconCategory || 'utility'}
@@ -288,7 +289,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 					: {
 							...defaultAssistiveText,
 							...(assistiveText as ButtonAssistiveText),
-					  }.icon;
+						}.icon;
 
 			return iconOnly && assistiveTextIcon ? (
 				<span className="slds-assistive-text">{assistiveTextIcon}</span>
@@ -328,7 +329,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 							buttonRef(node);
 						}
 					}}
-					tabIndex={typeof tabIndex === 'string' ? parseInt(tabIndex, 10) : tabIndex}
+					tabIndex={
+						typeof tabIndex === 'string' ? parseInt(tabIndex, 10) : tabIndex
+					}
 					title={title}
 					type={type}
 					style={style}
