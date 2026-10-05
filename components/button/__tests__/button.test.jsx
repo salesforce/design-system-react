@@ -91,6 +91,27 @@ describe('SLDSButton', () => {
 		});
 	});
 
+	describe('xx-small Icon Button', () => {
+		it('sizes the button container, not the svg', () => {
+			const { container } = renderButton({
+				assistiveText: { icon: 'Close' },
+				variant: 'icon',
+				iconCategory: 'utility',
+				iconName: 'close',
+				iconSize: 'xx-small',
+				iconVariant: 'border-filled',
+			});
+
+			const btn = screen.getByRole('button', { name: 'Close' });
+			expect(btn).toHaveClass('slds-button_icon-xx-small');
+			expect(btn).toHaveClass('slds-button_icon-border-filled');
+
+			const svg = container.querySelector('svg');
+			expect(svg).toHaveClass('slds-button__icon');
+			expect(svg).not.toHaveClass('slds-button__icon_xx-small');
+		});
+	});
+
 	describe('(icon path) Icon Button renders assistive text', () => {
 		it('renders label from assistive text', () => {
 			renderButton({

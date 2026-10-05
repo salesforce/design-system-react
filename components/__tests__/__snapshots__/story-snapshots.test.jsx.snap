@@ -750,6 +750,12 @@ exports[`Story HTML snapshots > Button > IconOnly 1`] = `
     </svg><span class="slds-assistive-text">Settings</span></button></div>"
 `;
 
+exports[`Story HTML snapshots > Button > IconXXSmall 1`] = `
+"<div class="slds-p-around_medium"><button class="slds-button slds-button_icon-border-filled slds-button_icon-xx-small" title="Close" type="button"><svg class="slds-button__icon" aria-hidden="true">
+      <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+    </svg><span class="slds-assistive-text">Close</span></button></div>"
+`;
+
 exports[`Story HTML snapshots > Button > InverseButton 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-hint-parent slds-box" style="background-color:var(--slds-g-color-neutral-base-10, #181818);padding:1rem;border-radius:0.25rem"><button class="slds-button slds-button_inverse" type="button">Inverse</button></div>

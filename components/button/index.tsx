@@ -53,7 +53,8 @@ export type ButtonIconVariant =
 /**
  * Button icon size types
  */
-export type ButtonIconSize = 'x-small' | 'small' | 'medium' | 'large';
+export type ButtonIconSize =
+	'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
 
 /**
  * Button type attribute
@@ -98,7 +99,10 @@ export interface ButtonProps {
 	iconPath?: string;
 	/** Icon position */
 	iconPosition?: IconPosition;
-	/** Icon size */
+	/**
+	 * Icon size. With `iconVariant`, sizes the button container (`slds-button_icon-*`); otherwise sizes the SVG (`slds-button__icon_*`).
+	 * `xx-small` requires `iconVariant`, since SLDS only defines it for the button container (matches `lightning-button-icon`).
+	 */
 	iconSize?: ButtonIconSize;
 	/** Icon variant */
 	iconVariant?: ButtonIconVariant;
@@ -261,7 +265,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		};
 
 		const renderIcon = (name?: string): React.ReactElement => {
-			const computedIconSize = !iconSize || iconVariant ? undefined : iconSize;
+			// SLDS has no `slds-button__icon_xx-small`; xx-small only sizes the container.
+			const computedIconSize =
+				!iconSize || iconVariant || iconSize === 'xx-small'
+					? undefined
+					: iconSize;
 			return (
 				<ButtonIcon
 					category={iconCategory || 'utility'}

@@ -116,6 +116,17 @@ IconLarge.args = {
 	title: 'Chat',
 };
 
+export const IconXXSmall = Template.bind({});
+IconXXSmall.args = {
+	variant: 'icon',
+	assistiveText: { icon: 'Close' },
+	iconSize: 'xx-small',
+	iconVariant: 'border-filled',
+	iconCategory: 'utility',
+	iconName: 'close',
+	title: 'Close',
+};
+
 // ============================================
 // Inverse Buttons (for dark backgrounds)
 // ============================================
