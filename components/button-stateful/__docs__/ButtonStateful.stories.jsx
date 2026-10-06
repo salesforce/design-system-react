@@ -17,7 +17,14 @@ export default {
 	argTypes: {
 		variant: {
 			control: { type: 'select' },
-			options: ['base', 'neutral', 'brand', 'destructive', 'icon', 'icon-filled'],
+			options: [
+				'base',
+				'neutral',
+				'brand',
+				'destructive',
+				'icon',
+				'icon-filled',
+			],
 		},
 	},
 };
