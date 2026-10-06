@@ -26,7 +26,9 @@ export type ButtonStatefulVariant =
 	| 'destructive'
 	| 'icon'
 	| 'icon-filled'
-	| 'inverse';
+	| 'inverse'
+	| 'success'
+	| 'text';
 
 /**
  * State configuration for stateful button
@@ -94,7 +96,7 @@ export interface ButtonStatefulProps {
 	stateThree?: ButtonStatefulState;
 	/** Tab index */
 	tabIndex?: string;
-	/** Button variant */
+	/** Button variant. `text` renders a stateful button with no border or background. */
 	variant?: ButtonStatefulVariant;
 }
 
@@ -150,8 +152,13 @@ const ButtonStateful = ({
 	const getClassName = useCallback(
 		(active: boolean) =>
 			classNames(className, 'slds-button', 'slds-button_stateful', {
-				'slds-button_neutral': variant !== 'icon' && variant !== 'icon-filled',
+				'slds-button_neutral':
+					variant !== 'icon' &&
+					variant !== 'icon-filled' &&
+					variant !== 'success' &&
+					variant !== 'text',
 				'slds-button_inverse': variant === 'inverse',
+				'slds-button_success': variant === 'success',
 				'slds-not-selected': !active,
 				'slds-is-selected': active,
 				'slds-max-small-button_stretch': responsive,

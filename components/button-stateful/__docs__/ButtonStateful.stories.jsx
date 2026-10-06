@@ -22,6 +22,8 @@ export default {
 				'neutral',
 				'brand',
 				'destructive',
+				'success',
+				'text',
 				'icon',
 				'icon-filled',
 			],
@@ -58,6 +60,30 @@ export const Controlled = {
 			</div>
 		);
 	},
+};
+
+// Success variant
+export const SuccessVariant = {
+	render: () => (
+		<ButtonStateful
+			variant="success"
+			stateOne={{ iconName: 'add', label: 'Follow' }}
+			stateTwo={{ iconName: 'check', label: 'Following' }}
+			stateThree={{ iconName: 'close', label: 'Unfollow' }}
+		/>
+	),
+};
+
+// Text variant
+export const TextVariant = {
+	render: () => (
+		<ButtonStateful
+			variant="text"
+			stateOne={{ iconName: 'add', label: 'Follow' }}
+			stateTwo={{ iconName: 'check', label: 'Following' }}
+			stateThree={{ iconName: 'close', label: 'Unfollow' }}
+		/>
+	),
 };
 
 // Icon variant
