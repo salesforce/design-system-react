@@ -8,7 +8,8 @@ import { BADGE } from '../../utilities/constants';
 /**
  * Badge color variants
  */
-export type BadgeColor = 'default' | 'inverse' | 'light' | 'success' | 'warning' | 'error';
+export type BadgeColor =
+	'default' | 'inverse' | 'light' | 'info' | 'success' | 'warning' | 'error';
 
 /**
  * Badge icon alignment
@@ -70,6 +71,7 @@ const Badge = ({
 				{
 					'slds-badge_inverse': color === 'inverse',
 					'slds-badge_lightest': color === 'light',
+					'slds-theme_info': color === 'info',
 					'slds-theme_success': color === 'success',
 					'slds-theme_warning': color === 'warning',
 					'slds-theme_error': color === 'error',
@@ -95,18 +97,3 @@ const Badge = ({
 Badge.displayName = BADGE;
 
 export default Badge;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
