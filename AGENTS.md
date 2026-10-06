@@ -38,6 +38,10 @@ Run `npm run test:ci` before requesting review. A husky pre-push hook runs `test
 - **Rebase on `master` and resolve conflicts before requesting review.**
 - Fill in [docs/PULL_REQUEST_TEMPLATE.md](docs/PULL_REQUEST_TEMPLATE.md). For bug fixes, state the root cause, not just the symptom, and add a regression test.
 
+## Releasing
+
+Maintainers: `npm run release -- next` (or an explicit version such as `11.0.0-alpha.4`) bumps `package.json` on `chore/release-<version>` cut from `origin/master`, commits, pushes, and opens the PR (add `--dry-run` to preview). Once it merges, create the GitHub Release with `gh release create v<version> --target master --generate-notes` (add `--prerelease` for alpha/beta/rc), which triggers `.github/workflows/npm-publish.yml` to publish to npm. See `scripts/release.mjs` for details.
+
 ## Scratch files
 
 Agent-generated notes, plans, and analyses go in `.planning/` (gitignored). Don't commit them.
