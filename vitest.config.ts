@@ -22,23 +22,6 @@ const resolve = {
 	alias: aliasEntries,
 };
 
-// The `browser` project pre-bundles deps through vite 8's Rolldown optimizer,
-// which mis-resolves `column-resizer`'s UMD default export (see
-// test/shims/column-resizer.js). Alias the bare specifier to the shim using an
-// anchored regex so the shim's own `column-resizer/dist/...` import is NOT
-// rewritten. The jsdom project uses the SSR transform and doesn't need this.
-const columnResizerShim = path.resolve(
-	__dirname,
-	'./test/shims/column-resizer.js'
-);
-const browserResolve = {
-	dedupe: ['react', 'react-dom'],
-	alias: [
-		{ find: /^column-resizer$/, replacement: columnResizerShim },
-		...aliasEntries,
-	],
-};
-
 export default defineConfig({
 	plugins: [react()],
 	resolve,
@@ -61,8 +44,8 @@ export default defineConfig({
 		// Two projects:
 		//  - `unit`    : the fast jsdom suite (the vast majority of tests).
 		//  - `browser` : a small suite of `*.browser.test.*` files that need a real
-		//                browser — focus traversal, text-truncation measurement, and
-		//                real element widths — which jsdom cannot provide.
+		//                browser — focus traversal and text-truncation measurement
+		//                — which jsdom cannot provide.
 		projects: [
 			{
 				extends: true,
@@ -71,9 +54,7 @@ export default defineConfig({
 					globals: true,
 					environment: 'jsdom',
 					setupFiles: './vitest.setup.ts',
-					include: [
-						'components/**/__tests__/*.{test,spec}.{ts,tsx,js,jsx}',
-					],
+					include: ['components/**/__tests__/*.{test,spec}.{ts,tsx,js,jsx}'],
 					// Browser-only specs live alongside as `*.browser.test.*`; keep
 					// them out of the jsdom run.
 					exclude: [
@@ -85,7 +66,6 @@ export default defineConfig({
 			},
 			{
 				extends: true,
-				resolve: browserResolve,
 				// Pre-bundle the component runtime deps so the browser optimizer does
 				// not discover them mid-run and reload the page (which flakes tests).
 				optimizeDeps: {
@@ -101,7 +81,6 @@ export default defineConfig({
 						'prop-types',
 						'react-modal',
 						'warning',
-						'column-resizer',
 						'lodash.reject',
 						'memoize-one',
 					],
@@ -110,9 +89,7 @@ export default defineConfig({
 					name: 'browser',
 					globals: true,
 					setupFiles: './vitest.setup.browser.ts',
-					include: [
-						'components/**/__tests__/*.browser.test.{ts,tsx,js,jsx}',
-					],
+					include: ['components/**/__tests__/*.browser.test.{ts,tsx,js,jsx}'],
 					exclude: ['**/node_modules/**', '**/dist/**'],
 					browser: {
 						enabled: true,

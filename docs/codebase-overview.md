@@ -398,7 +398,7 @@ Use non-optional (required) properties in your `types.ts` interface whenever a p
 
 ### Component Composition Over Prop Drilling
 
-Prefer accepting a pre-configured child component instance over adding new props that just alias an existing component's API — e.g. `<DataTableRowActions dropdown={<Dropdown options={...} />} />` rather than inventing `dropdownOptions` on the parent. The parent shallow-merges its own props into the passed component, with the caller's props taking precedence. This keeps each piece separately documented and avoids duplicate PropType/interface surface area, at the cost of being easier to misuse — use with caution, since overriding internal logic this way can break a component.
+Prefer accepting a pre-configured child component instance over adding new props that just alias an existing component's API — e.g. `<SimpleDataTableRowActions dropdown={<Dropdown options={...} />} />` rather than inventing `dropdownOptions` on the parent. The parent shallow-merges its own props into the passed component, with the caller's props taking precedence. This keeps each piece separately documented and avoids duplicate PropType/interface surface area, at the cost of being easier to misuse — use with caution, since overriding internal logic this way can break a component.
 
 ### Illegal States Unrepresentable
 

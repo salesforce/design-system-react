@@ -18,7 +18,8 @@ import RelatedList from './private/related-list';
 /**
  * Page header variant types
  */
-export type PageHeaderVariant = 'base' | 'object-home' | 'record-home' | 'related-list';
+export type PageHeaderVariant =
+	'base' | 'object-home' | 'record-home' | 'related-list';
 
 /**
  * Detail block structure
@@ -46,7 +47,7 @@ export interface PageHeaderProps {
 	icon?: ReactElement;
 	/** Info text or element */
 	info?: ReactNode;
-	/** Whether joined with DataTable */
+	/** Whether joined with SimpleDataTable */
 	joined?: boolean;
 	/** Label text or element */
 	label?: ReactNode;
@@ -135,17 +136,3 @@ export default PageHeader;
 // NOTE: these are private components and are prone to breaking changes.
 // Do not use these in your app! These exports are for legacy use only.
 export { Info, Title, DetailRow, DetailBlock };
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -5,8 +5,8 @@ import Button from '~/components/button'; // `~` is replaced with design-system-
 import Card from '~/components/card';
 import CardEmpty from '~/components/card/empty';
 import CardFilter from '~/components/card/filter';
-import DataTable from '~/components/data-table';
-import DataTableColumn from '~/components/data-table/column';
+import SimpleDataTable from '~/components/simple-data-table';
+import SimpleDataTableColumn from '~/components/simple-data-table/column';
 import Icon from '~/components/icon';
 
 const sampleItems = [
@@ -69,13 +69,16 @@ class Example extends React.Component {
 							) : null
 						}
 					>
-						<DataTable items={this.state.items} id="DataTableExample-1">
-							<DataTableColumn
+						<SimpleDataTable
+							items={this.state.items}
+							id="SimpleDataTableExample-1"
+						>
+							<SimpleDataTableColumn
 								label="Opportunity Name"
 								property="name"
 								truncate
 							/>
-						</DataTable>
+						</SimpleDataTable>
 					</Card>
 				</div>
 			</IconSettings>
