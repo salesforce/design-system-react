@@ -113,4 +113,40 @@ describe('Button Stateful', () => {
 			expect(button).toHaveAttribute('aria-live', 'assertive');
 		});
 	});
+
+	describe('Variant classes', () => {
+		const renderVariant = (variant) =>
+			getButton(
+				render(
+					<IconSettings iconPath="/assets/icons">
+						<ButtonStateful variant={variant} />
+					</IconSettings>
+				).container
+			);
+
+		it('defaults to neutral', () => {
+			expect(renderVariant(undefined)).toHaveClass('slds-button_neutral');
+		});
+
+		it('applies success class without neutral', () => {
+			const button = renderVariant('success');
+			expect(button).toHaveClass(
+				'slds-button',
+				'slds-button_stateful',
+				'slds-button_success'
+			);
+			expect(button).not.toHaveClass('slds-button_neutral');
+			expect(button).toHaveAttribute('aria-live', 'assertive');
+		});
+
+		it('applies no variant modifier for text', () => {
+			const button = renderVariant('text');
+			expect(button).toHaveClass('slds-button', 'slds-button_stateful');
+			expect(button).not.toHaveClass('slds-button_neutral');
+			expect(button).toHaveAttribute('aria-live', 'assertive');
+			expect(button.querySelector('.slds-text-not-selected')).toHaveTextContent(
+				'Follow'
+			);
+		});
+	});
 });

@@ -917,6 +917,26 @@ exports[`Story HTML snapshots > ButtonStateful > IconVariant 1`] = `
     </svg><span class="slds-assistive-text">Like</span></button></div>"
 `;
 
+exports[`Story HTML snapshots > ButtonStateful > SuccessVariant 1`] = `
+"<div class="slds-p-around_medium"><button aria-live="assertive" class="slds-button slds-button_stateful slds-button_success slds-not-selected" type="button"><span class="slds-text-not-selected"><svg class="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful" aria-hidden="true">
+        <use href="/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
+      </svg>Follow</span><span class="slds-text-selected"><svg class="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful" aria-hidden="true">
+        <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+      </svg>Following</span><span class="slds-text-selected-focus"><svg class="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful" aria-hidden="true">
+        <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+      </svg>Unfollow</span></button></div>"
+`;
+
+exports[`Story HTML snapshots > ButtonStateful > TextVariant 1`] = `
+"<div class="slds-p-around_medium"><button aria-live="assertive" class="slds-button slds-button_stateful slds-not-selected" type="button"><span class="slds-text-not-selected"><svg class="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful" aria-hidden="true">
+        <use href="/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
+      </svg>Follow</span><span class="slds-text-selected"><svg class="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful" aria-hidden="true">
+        <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+      </svg>Following</span><span class="slds-text-selected-focus"><svg class="slds-button__icon slds-button__icon_small slds-button__icon_left slds-button__icon_stateful" aria-hidden="true">
+        <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+      </svg>Unfollow</span></button></div>"
+`;
+
 exports[`Story HTML snapshots > Card > CustomHeader 1`] = `
 "<div class="slds-p-around_medium">
   <article id="CustomHeaderCard" class="slds-card">
