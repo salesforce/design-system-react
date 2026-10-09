@@ -116,6 +116,17 @@ IconLarge.args = {
 	title: 'Chat',
 };
 
+export const IconXXSmall = Template.bind({});
+IconXXSmall.args = {
+	variant: 'icon',
+	assistiveText: { icon: 'Close' },
+	iconSize: 'xx-small',
+	iconVariant: 'border-filled',
+	iconCategory: 'utility',
+	iconName: 'close',
+	title: 'Close',
+};
+
 // ============================================
 // Inverse Buttons (for dark backgrounds)
 // ============================================
@@ -130,7 +141,8 @@ InverseButton.decorators = [inverseDecorator];
 InverseButton.parameters = {
 	docs: {
 		description: {
-			story: 'Inverse buttons are designed for dark backgrounds. Toggle dark mode or view on the dark background below.',
+			story:
+				'Inverse buttons are designed for dark backgrounds. Toggle dark mode or view on the dark background below.',
 		},
 	},
 };
