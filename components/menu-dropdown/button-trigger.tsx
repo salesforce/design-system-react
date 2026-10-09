@@ -124,7 +124,8 @@ const ButtonTrigger = forwardRef<HTMLDivElement, ButtonTriggerProps>(
 				if (
 					child &&
 					React.isValidElement(child) &&
-					(child.type as { displayName?: string })?.displayName === Button.displayName
+					(child.type as { displayName?: string })?.displayName ===
+						Button.displayName
 				) {
 					propsFromGrandchildButton = child.props as Record<string, unknown>;
 				}
