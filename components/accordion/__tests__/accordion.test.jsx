@@ -245,6 +245,63 @@ describe('Accordion', () => {
 
 			expect(document.activeElement).toBe(accordionButtons[1]);
 		});
+
+		it('resyncs the tracked index so ArrowUp still moves focus after an earlier panel is removed', () => {
+			let instance;
+			const { container } = render(
+				<AccordionExample
+					ref={(ref) => {
+						instance = ref;
+					}}
+				/>
+			);
+
+			const initialButtons = container.querySelectorAll(
+				'button.slds-accordion__summary-action'
+			);
+			// Navigate to the last button (index 2 of 3) the same way a keyboard
+			// user would, so the tracked index actually reaches 2 (a plain
+			// `.focus()` call would move the DOM focus without updating it).
+			initialButtons[0].focus();
+			fireEvent.keyDown(document.activeElement, {
+				key: 'ArrowDown',
+				keyCode: 40,
+				which: 40,
+			});
+			fireEvent.keyDown(document.activeElement, {
+				key: 'ArrowDown',
+				keyCode: 40,
+				which: 40,
+			});
+			expect(document.activeElement).toBe(
+				initialButtons[initialButtons.length - 1]
+			);
+
+			// Remove the first panel. The focused button is the same DOM node,
+			// just shifted one position earlier, but the tracked index was
+			// pointing at the old (now out-of-range) position.
+			act(() => {
+				instance.setState((state) => ({
+					items: state.items.filter((item) => item.id !== '1'),
+				}));
+			});
+
+			const remainingButtons = container.querySelectorAll(
+				'button.slds-accordion__summary-action'
+			);
+			expect(remainingButtons).toHaveLength(2);
+			expect(document.activeElement).toBe(remainingButtons[1]);
+
+			fireEvent.keyDown(document.activeElement, {
+				key: 'ArrowUp',
+				keyCode: 38,
+				which: 38,
+			});
+
+			// Without resyncing the tracked index, this would be a no-op and
+			// focus would stay on remainingButtons[1].
+			expect(document.activeElement).toBe(remainingButtons[0]);
+		});
 	});
 
 	describe('Open panel', () => {
