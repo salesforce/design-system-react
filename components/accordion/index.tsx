@@ -42,6 +42,20 @@ const Accordion = ({
 	const summaryButtonsRef = useRef<HTMLButtonElement[]>([]);
 	const childCount = React.Children.count(children);
 
+	// Resync the tracked index when the panel count shrinks (e.g. a panel is
+	// removed), adjusting state during render per
+	// https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes.
+	// Without this, currButtonIndex can keep pointing past the end of the
+	// new, shorter list, so the next arrow-key press reads a position that
+	// no longer corresponds to any rendered panel.
+	const [prevChildCount, setPrevChildCount] = useState(childCount);
+	if (childCount !== prevChildCount) {
+		setPrevChildCount(childCount);
+		if (currButtonIndex !== null && currButtonIndex > childCount - 1) {
+			setCurrButtonIndex(childCount > 0 ? childCount - 1 : null);
+		}
+	}
+
 	// Focus management
 	useEffect(() => {
 		if (
