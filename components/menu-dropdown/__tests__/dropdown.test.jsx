@@ -65,7 +65,10 @@ const renderDropdown = (props) => {
 describe('SLDSMenuDropdown', () => {
 	describe('Styling', () => {
 		it('has correct CSS classes and style', async () => {
-			const { container } = renderDropdown({ menuStyle: { height: '500px' }, width: 'small' });
+			const { container } = renderDropdown({
+				menuStyle: { height: '500px' },
+				width: 'small',
+			});
 
 			const trigger = container.querySelector('.slds-dropdown-trigger');
 			const button = trigger.querySelector('button');
@@ -97,6 +100,108 @@ describe('SLDSMenuDropdown', () => {
 		});
 	});
 
+	describe('Trigger variants and sizes', () => {
+		const iconProps = {
+			assistiveText: { icon: 'More Options' },
+			buttonVariant: 'icon',
+			iconCategory: 'utility',
+			iconName: 'down',
+			label: undefined,
+		};
+
+		it.each([
+			[
+				'bare-inverse',
+				[
+					'slds-button_icon',
+					'slds-button_icon-bare',
+					'slds-button_icon-inverse',
+				],
+				'slds-button_icon-bare-inverse',
+			],
+			[
+				'border-inverse',
+				['slds-button_icon-border-inverse'],
+				'slds-button_icon-border',
+			],
+		])(
+			'iconVariant="%s" renders inverse icon button classes',
+			(iconVariant, classes, absentClass) => {
+				const { container } = renderDropdown({ ...iconProps, iconVariant });
+				const button = container.querySelector('.slds-dropdown-trigger button');
+				expect(button).toHaveClass(...classes);
+				expect(button).not.toHaveClass(absentClass);
+			}
+		);
+
+		it('iconVariant="border-inverse" matches iconVariant="border" with buttonInverse', () => {
+			const { container: lwcStyle } = renderDropdown({
+				...iconProps,
+				iconVariant: 'border-inverse',
+			});
+			const { container: dsrStyle } = renderDropdown({
+				...iconProps,
+				iconVariant: 'border',
+				buttonInverse: true,
+			});
+			expect(lwcStyle.querySelector('button').className).toBe(
+				dsrStyle.querySelector('button').className
+			);
+		});
+
+		it('iconSize="xx-small" renders the xx-small icon button class', () => {
+			const { container } = renderDropdown({
+				...iconProps,
+				iconSize: 'xx-small',
+				iconVariant: 'border-filled',
+			});
+			const button = container.querySelector('.slds-dropdown-trigger button');
+			expect(button).toHaveClass('slds-button_icon-xx-small');
+			expect(button.querySelector('svg')).not.toHaveClass(
+				'slds-button__icon_xx-small'
+			);
+		});
+	});
+
+	describe('Alignment', () => {
+		it.each([
+			['auto', ['slds-dropdown_left'], ['slds-dropdown_bottom']],
+			['left', ['slds-dropdown_left'], ['slds-dropdown_bottom']],
+			['right', ['slds-dropdown_right'], ['slds-dropdown_bottom']],
+			[
+				'bottom-left',
+				['slds-dropdown_bottom', 'slds-dropdown_left'],
+				['slds-dropdown_right'],
+			],
+			[
+				'bottom-center',
+				['slds-dropdown_bottom'],
+				['slds-dropdown_left', 'slds-dropdown_right'],
+			],
+			[
+				'bottom-right',
+				['slds-dropdown_bottom', 'slds-dropdown_right'],
+				['slds-dropdown_left'],
+			],
+		])(
+			'align="%s" sets the menu position classes',
+			async (align, present, absent) => {
+				const { container } = renderDropdown({ align });
+				fireEvent.click(
+					container.querySelector('.slds-dropdown-trigger button')
+				);
+
+				await waitFor(() => {
+					const menu = container.querySelector('.slds-dropdown');
+					expect(menu).toHaveClass(...present);
+					absent.forEach((className) =>
+						expect(menu).not.toHaveClass(className)
+					);
+				});
+			}
+		);
+	});
+
 	describe('Custom Content Present', () => {
 		it('has content with custom ID is present', async () => {
 			const { container } = renderDropdown({
@@ -107,7 +212,7 @@ describe('SLDSMenuDropdown', () => {
 					<List
 						key="list"
 						options={[{ label: 'Custom Content Option' }, ...menuOptions]}
-					/>
+					/>,
 				],
 			});
 
@@ -117,7 +222,9 @@ describe('SLDSMenuDropdown', () => {
 			fireEvent.click(button);
 
 			await waitFor(() => {
-				const customContent = container.querySelector('#custom-dropdown-menu-content');
+				const customContent = container.querySelector(
+					'#custom-dropdown-menu-content'
+				);
 				expect(customContent).toBeInTheDocument();
 			});
 		});
@@ -131,7 +238,7 @@ describe('SLDSMenuDropdown', () => {
 					<List
 						key="list"
 						options={[{ label: 'Custom Content Option' }, ...menuOptions]}
-					/>
+					/>,
 				],
 			});
 
@@ -141,15 +248,21 @@ describe('SLDSMenuDropdown', () => {
 			fireEvent.click(button);
 
 			await waitFor(() => {
-				const customContent = container.querySelector('#custom-dropdown-menu-content');
+				const customContent = container.querySelector(
+					'#custom-dropdown-menu-content'
+				);
 				expect(customContent).toBeInTheDocument();
 			});
 
-			const customContentLink = container.querySelector('#custom-dropdown-menu-content-link');
+			const customContentLink = container.querySelector(
+				'#custom-dropdown-menu-content-link'
+			);
 			fireEvent.click(customContentLink);
 
 			await waitFor(() => {
-				const customContent = container.querySelector('#custom-dropdown-menu-content');
+				const customContent = container.querySelector(
+					'#custom-dropdown-menu-content'
+				);
 				expect(customContent).not.toBeInTheDocument();
 			});
 		});
@@ -163,7 +276,7 @@ describe('SLDSMenuDropdown', () => {
 					<List
 						key="list"
 						options={[{ label: 'Custom Content Option' }, ...menuOptions]}
-					/>
+					/>,
 				],
 			});
 
@@ -211,7 +324,9 @@ describe('SLDSMenuDropdown', () => {
 			fireEvent.click(trigger);
 
 			await waitFor(() => {
-				expect(container.querySelector('.slds-dropdown')).not.toBeInTheDocument();
+				expect(
+					container.querySelector('.slds-dropdown')
+				).not.toBeInTheDocument();
 			});
 		});
 
@@ -396,7 +511,9 @@ describe('SLDSMenuDropdown', () => {
 			fireEvent.keyDown(firstLink, keyObjects.ESCAPE);
 
 			await waitFor(() => {
-				expect(container.querySelector('.slds-dropdown')).not.toBeInTheDocument();
+				expect(
+					container.querySelector('.slds-dropdown')
+				).not.toBeInTheDocument();
 			});
 		});
 	});
@@ -512,9 +629,14 @@ describe('SLDSMenuDropdown', () => {
 			expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
 
 			// Wait for close delay
-			await waitFor(() => {
-				expect(container.querySelector('.slds-dropdown')).not.toBeInTheDocument();
-			}, { timeout: 100 });
+			await waitFor(
+				() => {
+					expect(
+						container.querySelector('.slds-dropdown')
+					).not.toBeInTheDocument();
+				},
+				{ timeout: 100 }
+			);
 		});
 
 		it("doesn't close on quick hover outside", async () => {
@@ -548,7 +670,10 @@ describe('SLDSMenuDropdown', () => {
 
 	describe('Hybrid-able', () => {
 		it('doesnt expand on hover', () => {
-			const { container } = renderDropdown({ openOn: 'hybrid', hoverCloseDelay: 1 });
+			const { container } = renderDropdown({
+				openOn: 'hybrid',
+				hoverCloseDelay: 1,
+			});
 
 			const btn = container.querySelector('.slds-dropdown-trigger');
 			expect(container.querySelector('.slds-dropdown')).not.toBeInTheDocument();
@@ -559,7 +684,10 @@ describe('SLDSMenuDropdown', () => {
 		});
 
 		it('opens on click, closes on mouseLeave', async () => {
-			const { container } = renderDropdown({ openOn: 'hybrid', hoverCloseDelay: 1 });
+			const { container } = renderDropdown({
+				openOn: 'hybrid',
+				hoverCloseDelay: 1,
+			});
 
 			const btn = container.querySelector('.slds-dropdown-trigger');
 
@@ -577,9 +705,14 @@ describe('SLDSMenuDropdown', () => {
 
 			expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
 
-			await waitFor(() => {
-				expect(container.querySelector('.slds-dropdown')).not.toBeInTheDocument();
-			}, { timeout: 100 });
+			await waitFor(
+				() => {
+					expect(
+						container.querySelector('.slds-dropdown')
+					).not.toBeInTheDocument();
+				},
+				{ timeout: 100 }
+			);
 		});
 	});
 
@@ -609,7 +742,9 @@ describe('SLDSMenuDropdown', () => {
 			fireEvent.keyDown(trigger, keyObjects.DOWN);
 
 			await waitFor(() => {
-				const tooltip = container.querySelector('#sample-dropdown-item-1-tooltip');
+				const tooltip = container.querySelector(
+					'#sample-dropdown-item-1-tooltip'
+				);
 				expect(tooltip).toBeInTheDocument();
 			});
 		});

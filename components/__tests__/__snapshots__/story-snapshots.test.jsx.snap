@@ -4079,6 +4079,34 @@ exports[`Story HTML snapshots > MediaObject > FigureVerticalCenter 1`] = `
 </div>"
 `;
 
+exports[`Story HTML snapshots > MenuDropdown > Alignments 1`] = `
+"<div class="slds-p-around_medium slds-text-align_center">
+  <div class="slds-grid slds-wrap">
+    <div class="slds-col slds-size_1-of-4 slds-grid slds-grid_align-center" style="align-items:flex-start;min-height:250px;padding:20px">
+      <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="align-auto"><button class="slds-button slds-button_neutral ignore-click-align-auto" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">auto</button></div>
+    </div>
+    <div class="slds-col slds-size_1-of-4 slds-grid slds-grid_align-center" style="align-items:flex-start;min-height:250px;padding:20px">
+      <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="align-left"><button class="slds-button slds-button_neutral ignore-click-align-left" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">left</button></div>
+    </div>
+    <div class="slds-col slds-size_1-of-4 slds-grid slds-grid_align-center" style="align-items:flex-start;min-height:250px;padding:20px">
+      <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="align-center"><button class="slds-button slds-button_neutral ignore-click-align-center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">center</button></div>
+    </div>
+    <div class="slds-col slds-size_1-of-4 slds-grid slds-grid_align-center" style="align-items:flex-start;min-height:250px;padding:20px">
+      <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="align-right"><button class="slds-button slds-button_neutral ignore-click-align-right" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">right</button></div>
+    </div>
+    <div class="slds-col slds-size_1-of-4 slds-grid slds-grid_align-center" style="align-items:flex-end;min-height:250px;padding:20px">
+      <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="align-bottom-left"><button class="slds-button slds-button_neutral ignore-click-align-bottom-left" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">bottom-left</button></div>
+    </div>
+    <div class="slds-col slds-size_1-of-4 slds-grid slds-grid_align-center" style="align-items:flex-end;min-height:250px;padding:20px">
+      <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="align-bottom-center"><button class="slds-button slds-button_neutral ignore-click-align-bottom-center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">bottom-center</button></div>
+    </div>
+    <div class="slds-col slds-size_1-of-4 slds-grid slds-grid_align-center" style="align-items:flex-end;min-height:250px;padding:20px">
+      <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="align-bottom-right"><button class="slds-button slds-button_neutral ignore-click-align-bottom-right" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">bottom-right</button></div>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`Story HTML snapshots > MenuDropdown > Base 1`] = `
 "<div class="slds-p-around_medium slds-text-align_center">
   <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="base-dropdown"><button class="slds-button slds-button_neutral ignore-click-base-dropdown" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">Dropdown Click</button></div>
@@ -4128,10 +4156,61 @@ exports[`Story HTML snapshots > MenuDropdown > IconButton 1`] = `
 </div>"
 `;
 
+exports[`Story HTML snapshots > MenuDropdown > IconSizes 1`] = `
+"<div class="slds-p-around_medium slds-text-align_center">
+  <div class="slds-grid slds-gutters slds-grid_vertical-align-center">
+    <div class="slds-col slds-grow-none">
+      <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="icon-size-xx-small"><button class="slds-button slds-button_icon-border-filled slds-button_icon-xx-small ignore-click-icon-size-xx-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon" aria-hidden="true">
+            <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+          </svg><span class="slds-assistive-text">More Options (xx-small)</span></button></div>
+    </div>
+    <div class="slds-col slds-grow-none">
+      <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="icon-size-x-small"><button class="slds-button slds-button_icon-border-filled slds-button_icon-x-small ignore-click-icon-size-x-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon" aria-hidden="true">
+            <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+          </svg><span class="slds-assistive-text">More Options (x-small)</span></button></div>
+    </div>
+    <div class="slds-col slds-grow-none">
+      <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="icon-size-small"><button class="slds-button slds-button_icon-border-filled slds-button_icon-small ignore-click-icon-size-small" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon" aria-hidden="true">
+            <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+          </svg><span class="slds-assistive-text">More Options (small)</span></button></div>
+    </div>
+    <div class="slds-col slds-grow-none">
+      <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="icon-size-medium"><button class="slds-button slds-button_icon-border-filled ignore-click-icon-size-medium" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon" aria-hidden="true">
+            <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+          </svg><span class="slds-assistive-text">More Options (medium)</span></button></div>
+    </div>
+    <div class="slds-col slds-grow-none">
+      <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="icon-size-large"><button class="slds-button slds-button_icon-border-filled slds-button_icon-large ignore-click-icon-size-large" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon" aria-hidden="true">
+            <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+          </svg><span class="slds-assistive-text">More Options (large)</span></button></div>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`Story HTML snapshots > MenuDropdown > Inverse 1`] = `
 "<div class="slds-p-around_medium slds-text-align_center">
   <div class="slds-p-around_medium" style="background-color:#16325c">
     <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="inverse-dropdown"><button class="slds-button slds-button_inverse ignore-click-inverse-dropdown" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">Inverse Dropdown</button></div>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > MenuDropdown > InverseIconVariants 1`] = `
+"<div class="slds-p-around_medium slds-text-align_center">
+  <div class="slds-p-around_medium" style="background-color:#16325c">
+    <div class="slds-grid slds-gutters">
+      <div class="slds-col slds-grow-none">
+        <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="icon-variant-bare-inverse"><button class="slds-button slds-button_icon slds-button_icon-inverse slds-button_icon-bare ignore-click-icon-variant-bare-inverse" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon" aria-hidden="true">
+              <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+            </svg><span class="slds-assistive-text">More Options (bare-inverse)</span></button></div>
+      </div>
+      <div class="slds-col slds-grow-none">
+        <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="icon-variant-border-inverse"><button class="slds-button slds-button_icon-border-inverse ignore-click-icon-variant-border-inverse" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon" aria-hidden="true">
+              <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+            </svg><span class="slds-assistive-text">More Options (border-inverse)</span></button></div>
+      </div>
+    </div>
   </div>
 </div>"
 `;

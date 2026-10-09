@@ -51,7 +51,7 @@ export interface ButtonTriggerProps {
 	/** Icon position passed from MenuDropdown */
 	iconPosition?: 'left' | 'right';
 	/** Icon size passed from MenuDropdown */
-	iconSize?: 'x-small' | 'small' | 'medium' | 'large';
+	iconSize?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
 	/** Icon variant passed from MenuDropdown */
 	iconVariant?: 'bare' | 'container' | 'border' | 'border-filled' | 'more';
 	/** Button variant passed from MenuDropdown */
@@ -124,7 +124,8 @@ const ButtonTrigger = forwardRef<HTMLDivElement, ButtonTriggerProps>(
 				if (
 					child &&
 					React.isValidElement(child) &&
-					(child.type as { displayName?: string })?.displayName === Button.displayName
+					(child.type as { displayName?: string })?.displayName ===
+						Button.displayName
 				) {
 					propsFromGrandchildButton = child.props as Record<string, unknown>;
 				}

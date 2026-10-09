@@ -84,9 +84,11 @@ const DropdownNubbinPositionsArray = [
 	'bottom right',
 ] as const;
 
-export type DropdownNubbinPosition = (typeof DropdownNubbinPositionsArray)[number];
+export type DropdownNubbinPosition =
+	(typeof DropdownNubbinPositionsArray)[number];
 
-export const DropdownNubbinPositions: readonly DropdownNubbinPosition[] = DropdownNubbinPositionsArray;
+export const DropdownNubbinPositions: readonly DropdownNubbinPosition[] =
+	DropdownNubbinPositionsArray;
 
 const noop = () => {};
 
@@ -111,8 +113,21 @@ export interface MenuDropdownOption {
 }
 
 export interface MenuDropdownProps {
-	/** Aligns the menu center, right, or left respective to the trigger */
-	align?: 'center' | 'left' | 'right';
+	/**
+	 * Aligns the menu respective to the trigger, matching `lightning-button-menu`'s `menu-alignment`.
+	 * `left`, `center`, and `right` open the menu below the trigger. `bottom-left`, `bottom-center`, and
+	 * `bottom-right` open it above the trigger. `auto` is left-aligned below the trigger and flips to stay
+	 * within boundary elements even when `hasStaticAlignment` is set (`menuPosition="relative"` menus never flip).
+	 * Ignored when `nubbinPosition` is set.
+	 */
+	align?:
+		| 'auto'
+		| 'center'
+		| 'left'
+		| 'right'
+		| 'bottom-left'
+		| 'bottom-center'
+		| 'bottom-right';
 	/** Text that is visually hidden but read aloud by screenreaders */
 	assistiveText?: Record<string, unknown>;
 	/** CSS classes to be added to triggering button */
@@ -143,16 +158,21 @@ export interface MenuDropdownProps {
 	iconName?: string;
 	/** Icon position relative to label */
 	iconPosition?: 'left' | 'right';
-	/** Icon variant */
+	/**
+	 * Icon variant. `bare-inverse` and `border-inverse` match `lightning-button-menu`'s variants and are
+	 * equivalent to `bare` or `border` with `buttonInverse`. Meant for icon buttons on dark backgrounds.
+	 */
 	iconVariant?:
 		| 'bare'
+		| 'bare-inverse'
 		| 'container'
 		| 'border'
 		| 'border-filled'
+		| 'border-inverse'
 		| 'small'
 		| 'more';
-	/** Determines the size of the icon */
-	iconSize?: 'x-small' | 'small' | 'medium' | 'large';
+	/** Determines the size of the icon. `xx-small` requires an `iconVariant`. */
+	iconSize?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
 	/** A unique ID for keyboard navigation and ARIA support */
 	id?: string;
 	/** Whether to inherit target width */
@@ -271,6 +291,21 @@ const DropdownToDialogNubbinMapping: Record<string, string> = {
 	'bottom right': 'top right',
 };
 
+// Menu alignment to Dialog alignment. `bottom-*` aligns the menu's bottom edge
+// to the trigger, so the Dialog is placed on top of it.
+const AlignToDialogAlignMapping: Record<
+	NonNullable<MenuDropdownProps['align']>,
+	string
+> = {
+	auto: 'bottom left',
+	left: 'bottom left',
+	center: 'bottom',
+	right: 'bottom right',
+	'bottom-left': 'top left',
+	'bottom-center': 'top',
+	'bottom-right': 'top right',
+};
+
 /**
  * The MenuDropdown component is a variant of the Lightning Design System Menu component.
  * This is a React 19 compatible functional component that replaces the deprecated
@@ -359,10 +394,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	const overlayRef = useRef<HTMLSpanElement | null>(null);
 
 	// Navigable items
-	const navigableItems = useMemo(
-		() => getNavigableItems(options),
-		[options]
-	);
+	const navigableItems = useMemo(() => getNavigableItems(options), [options]);
 
 	// Check props in development
 	useEffect(() => {
@@ -445,15 +477,12 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	}, []);
 
 	// Get menu item element
-	const getMenuItem = useCallback(
-		(index: number): HTMLLIElement | null => {
-			if (index !== undefined && listItemsRef.current) {
-				return listItemsRef.current[index] || null;
-			}
-			return null;
-		},
-		[]
-	);
+	const getMenuItem = useCallback((index: number): HTMLLIElement | null => {
+		if (index !== undefined && listItemsRef.current) {
+			return listItemsRef.current[index] || null;
+		}
+		return null;
+	}, []);
 
 	// Handle close
 	const handleCloseRef = useRef<() => void>(() => {});
@@ -639,10 +668,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	// Handle keyboard focus
 	const handleKeyboardFocus = useCallback(
 		(newFocusedIndex: number | undefined) => {
-			if (
-				focusedIndex !== newFocusedIndex &&
-				newFocusedIndex !== undefined
-			) {
+			if (focusedIndex !== newFocusedIndex && newFocusedIndex !== undefined) {
 				setFocusedIndex(newFocusedIndex);
 			}
 
@@ -736,17 +762,24 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 				onKeyDown?.(event);
 			}
 		},
-		[handleCancel, handleKeyboardNavigate, getIsOpen, handleSelect, toggleOpen, onKeyDown]
+		[
+			handleCancel,
+			handleKeyboardNavigate,
+			getIsOpen,
+			handleSelect,
+			toggleOpen,
+			onKeyDown,
+		]
 	);
 
 	// Handle click custom content
 	const handleClickCustomContent = useCallback(() => {
 		setFocus();
 		handleClose();
-		onSelect?.(
-			{} as MenuDropdownOption,
-			{ option: {} as MenuDropdownOption, optionIndex: -1 }
-		);
+		onSelect?.({} as MenuDropdownOption, {
+			option: {} as MenuDropdownOption,
+			optionIndex: -1,
+		});
 	}, [setFocus, handleClose, onSelect]);
 
 	// Save ref to trigger
@@ -883,7 +916,9 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 						(child.type as { displayName?: string })?.displayName === LIST
 					) {
 						customContentWithListPropInjection.push(
-							renderDefaultMenuContent((child as ReactElement).props as Record<string, unknown>)
+							renderDefaultMenuContent(
+								(child as ReactElement).props as Record<string, unknown>
+							)
 						);
 					} else if (child) {
 						const clonedCustomContent = React.cloneElement(
@@ -920,22 +955,31 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 				hasNubbin = true;
 				dialogAlign = DropdownToDialogNubbinMapping[nubbinPosition];
 			} else if (align) {
-				dialogAlign = align === 'center' ? 'bottom' : `bottom ${align}`;
+				dialogAlign = AlignToDialogAlignMapping[align];
 			}
 
-			const positions = DropdownToDialogNubbinMapping[dialogAlign]?.split(' ') || [];
+			const positions =
+				DropdownToDialogNubbinMapping[dialogAlign]?.split(' ') || [];
 			positionClassName = classNames(
 				positions.map((position) => `slds-dropdown_${position}`)
 			);
 
 			const menuStylesBase: React.CSSProperties = {};
-			if (align === 'center' && !hasNubbin) {
+			if ((align === 'center' || align === 'bottom-center') && !hasNubbin) {
 				menuStylesBase.transform = 'none';
 			}
 
 			return shouldShow ? (
 				<Dialog
-					align={dialogAlign as 'top' | 'top left' | 'top right' | 'bottom' | 'bottom left' | 'bottom right'}
+					align={
+						dialogAlign as
+							| 'top'
+							| 'top left'
+							| 'top right'
+							| 'bottom'
+							| 'bottom left'
+							| 'bottom right'
+					}
 					className={classNames(containerClassName)}
 					closeOnTabKey
 					contentsClassName={classNames(
@@ -951,7 +995,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 					)}
 					context={context}
 					hasNubbin={hasNubbin}
-					hasStaticAlignment={hasStaticAlignment}
+					hasStaticAlignment={align === 'auto' ? false : hasStaticAlignment}
 					inheritWidthOf={inheritTargetWidth ? 'target' : 'none'}
 					offset={offset}
 					onClose={handleClose}
@@ -1000,7 +1044,10 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			(child.type as { displayName?: string })?.displayName ===
 				MENU_DROPDOWN_TRIGGER
 		) {
-			CustomTriggerChildProps = (child as ReactElement).props as Record<string, unknown>;
+			CustomTriggerChildProps = (child as ReactElement).props as Record<
+				string,
+				unknown
+			>;
 			CurrentTrigger = (child as ReactElement).type as React.ElementType;
 		} else if (child) {
 			customContent.push(child);
@@ -1008,6 +1055,16 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	});
 
 	const outsideClickIgnoreClass = `ignore-click-${getId()}`;
+
+	// `bare-inverse` and `border-inverse` are the inverse forms of `bare` and `border`
+	const isInverseIconVariant =
+		iconVariant === 'bare-inverse' || iconVariant === 'border-inverse';
+	const triggerIconVariant =
+		iconVariant === 'bare-inverse'
+			? 'bare'
+			: iconVariant === 'border-inverse'
+				? 'border'
+				: iconVariant;
 
 	return (
 		<CurrentTrigger
@@ -1021,9 +1078,9 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			iconName={iconName}
 			iconPosition={iconPosition}
 			iconSize={iconSize}
-			iconVariant={iconVariant}
+			iconVariant={triggerIconVariant}
 			id={getId()}
-			inverse={buttonInverse}
+			inverse={buttonInverse || isInverseIconVariant}
 			isOpen={isOpen}
 			label={label}
 			menu={renderDialog(
@@ -1060,4 +1117,3 @@ MenuDropdown.displayName = MENU_DROPDOWN;
 
 export default MenuDropdown;
 export { ListItem, ListItemLabel };
-
