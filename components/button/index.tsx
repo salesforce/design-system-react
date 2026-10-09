@@ -53,7 +53,8 @@ export type ButtonIconVariant =
 /**
  * Button icon size types
  */
-export type ButtonIconSize = 'x-small' | 'small' | 'medium' | 'large';
+export type ButtonIconSize =
+	'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
 
 /**
  * Button type attribute
@@ -261,7 +262,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		};
 
 		const renderIcon = (name?: string): React.ReactElement => {
-			const computedIconSize = !iconSize || iconVariant ? undefined : iconSize;
+			// SLDS has no `xx-small` button icon (svg) size; it only sizes the
+			// button container, which requires an `iconVariant`.
+			const computedIconSize =
+				!iconSize || iconVariant || iconSize === 'xx-small'
+					? undefined
+					: iconSize;
 			return (
 				<ButtonIcon
 					category={iconCategory || 'utility'}

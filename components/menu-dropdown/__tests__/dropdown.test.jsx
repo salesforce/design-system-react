@@ -100,6 +100,108 @@ describe('SLDSMenuDropdown', () => {
 		});
 	});
 
+	describe('Trigger variants and sizes', () => {
+		const iconProps = {
+			assistiveText: { icon: 'More Options' },
+			buttonVariant: 'icon',
+			iconCategory: 'utility',
+			iconName: 'down',
+			label: undefined,
+		};
+
+		it.each([
+			[
+				'bare-inverse',
+				[
+					'slds-button_icon',
+					'slds-button_icon-bare',
+					'slds-button_icon-inverse',
+				],
+				'slds-button_icon-bare-inverse',
+			],
+			[
+				'border-inverse',
+				['slds-button_icon-border-inverse'],
+				'slds-button_icon-border',
+			],
+		])(
+			'iconVariant="%s" renders inverse icon button classes',
+			(iconVariant, classes, absentClass) => {
+				const { container } = renderDropdown({ ...iconProps, iconVariant });
+				const button = container.querySelector('.slds-dropdown-trigger button');
+				expect(button).toHaveClass(...classes);
+				expect(button).not.toHaveClass(absentClass);
+			}
+		);
+
+		it('iconVariant="border-inverse" matches iconVariant="border" with buttonInverse', () => {
+			const { container: lwcStyle } = renderDropdown({
+				...iconProps,
+				iconVariant: 'border-inverse',
+			});
+			const { container: dsrStyle } = renderDropdown({
+				...iconProps,
+				iconVariant: 'border',
+				buttonInverse: true,
+			});
+			expect(lwcStyle.querySelector('button').className).toBe(
+				dsrStyle.querySelector('button').className
+			);
+		});
+
+		it('iconSize="xx-small" renders the xx-small icon button class', () => {
+			const { container } = renderDropdown({
+				...iconProps,
+				iconSize: 'xx-small',
+				iconVariant: 'border-filled',
+			});
+			const button = container.querySelector('.slds-dropdown-trigger button');
+			expect(button).toHaveClass('slds-button_icon-xx-small');
+			expect(button.querySelector('svg')).not.toHaveClass(
+				'slds-button__icon_xx-small'
+			);
+		});
+	});
+
+	describe('Alignment', () => {
+		it.each([
+			['auto', ['slds-dropdown_left'], ['slds-dropdown_bottom']],
+			['left', ['slds-dropdown_left'], ['slds-dropdown_bottom']],
+			['right', ['slds-dropdown_right'], ['slds-dropdown_bottom']],
+			[
+				'bottom-left',
+				['slds-dropdown_bottom', 'slds-dropdown_left'],
+				['slds-dropdown_right'],
+			],
+			[
+				'bottom-center',
+				['slds-dropdown_bottom'],
+				['slds-dropdown_left', 'slds-dropdown_right'],
+			],
+			[
+				'bottom-right',
+				['slds-dropdown_bottom', 'slds-dropdown_right'],
+				['slds-dropdown_left'],
+			],
+		])(
+			'align="%s" sets the menu position classes',
+			async (align, present, absent) => {
+				const { container } = renderDropdown({ align });
+				fireEvent.click(
+					container.querySelector('.slds-dropdown-trigger button')
+				);
+
+				await waitFor(() => {
+					const menu = container.querySelector('.slds-dropdown');
+					expect(menu).toHaveClass(...present);
+					absent.forEach((className) =>
+						expect(menu).not.toHaveClass(className)
+					);
+				});
+			}
+		);
+	});
+
 	describe('Custom Content Present', () => {
 		it('has content with custom ID is present', async () => {
 			const { container } = renderDropdown({
