@@ -91,6 +91,8 @@ export const GLOBAL_NAVIGATION_BAR_REGION = 'SLDSGlobalNavigationBarRegion';
 export const GLOBAL_NAVIGATION_BAR_APP_LAUNCHER =
 	'SLDSGlobalNavigationBarAppLauncher';
 export const GRID = 'SLDSGrid';
+export const LAYOUT = 'SLDSLayout';
+export const LAYOUT_ITEM = 'SLDSLayoutItem';
 export const HIGHLIGHTER = 'SLDSHighlighter';
 export const ICON = 'SLDSIcon';
 export const ICON_SETTINGS = 'SLDSIconSettings';

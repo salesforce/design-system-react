@@ -1,0 +1,8 @@
+{
+	"component": "layout",
+	"status": "prod",
+	"display-name": "Layout",
+	"classKey": "Layout",
+	"url-slug": "layout",
+	"SLDS-component-path": "/components/layout"
+}
