@@ -5,6 +5,7 @@ import React, {
 	useState,
 	useRef,
 	useEffect,
+	useLayoutEffect,
 	useCallback,
 	useId,
 	type ReactNode,
@@ -42,19 +43,37 @@ const Accordion = ({
 	const summaryButtonsRef = useRef<HTMLButtonElement[]>([]);
 	const childCount = React.Children.count(children);
 
-	// Resync the tracked index when the panel count shrinks (e.g. a panel is
-	// removed), adjusting state during render per
-	// https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes.
-	// Without this, currButtonIndex can keep pointing past the end of the
-	// new, shorter list, so the next arrow-key press reads a position that
-	// no longer corresponds to any rendered panel.
-	const [prevChildCount, setPrevChildCount] = useState(childCount);
-	if (childCount !== prevChildCount) {
-		setPrevChildCount(childCount);
-		if (currButtonIndex !== null && currButtonIndex > childCount - 1) {
+	// Resync the tracked index whenever the panel count changes (e.g. a panel
+	// is removed). Removing a panel before the focused one shifts the focused
+	// button to an earlier index without moving DOM focus off of it, so
+	// currButtonIndex can end up in range but pointing at the wrong button.
+	// This has to run in a layout effect rather than during render: refs are
+	// only reattached to their new positions during the commit that follows
+	// this render, so summaryButtonsRef.current isn't resynced yet while the
+	// component function is running.
+	const prevChildCountRef = useRef(childCount);
+	useLayoutEffect(() => {
+		if (prevChildCountRef.current === childCount) {
+			return;
+		}
+		prevChildCountRef.current = childCount;
+
+		if (currButtonIndex === null) {
+			return;
+		}
+
+		const focusedIndex = summaryButtonsRef.current.findIndex(
+			(button) => button === document.activeElement
+		);
+
+		if (focusedIndex !== -1) {
+			if (focusedIndex !== currButtonIndex) {
+				setCurrButtonIndex(focusedIndex);
+			}
+		} else if (currButtonIndex > childCount - 1) {
 			setCurrButtonIndex(childCount > 0 ? childCount - 1 : null);
 		}
-	}
+	}, [childCount, currButtonIndex]);
 
 	// Focus management
 	useEffect(() => {
