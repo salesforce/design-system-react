@@ -302,6 +302,57 @@ describe('Accordion', () => {
 			// focus would stay on remainingButtons[1].
 			expect(document.activeElement).toBe(remainingButtons[0]);
 		});
+
+		it('resyncs the tracked index when an earlier panel is removed while focus is on a middle panel', () => {
+			let instance;
+			const { container } = render(
+				<AccordionExample
+					ref={(ref) => {
+						instance = ref;
+					}}
+				/>
+			);
+
+			const initialButtons = container.querySelectorAll(
+				'button.slds-accordion__summary-action'
+			);
+			// Navigate to the middle button (index 1 of 3) via the keyboard so
+			// the tracked index reaches 1.
+			initialButtons[0].focus();
+			fireEvent.keyDown(document.activeElement, {
+				key: 'ArrowDown',
+				keyCode: 40,
+				which: 40,
+			});
+			expect(document.activeElement).toBe(initialButtons[1]);
+
+			// Remove the first panel. The focused button is the same DOM node,
+			// now shifted to index 0, but the tracked index was still 1 and is
+			// not out of range, so a bounds-only clamp would leave it stuck on
+			// the wrong button.
+			act(() => {
+				instance.setState((state) => ({
+					items: state.items.filter((item) => item.id !== '1'),
+				}));
+			});
+
+			const remainingButtons = container.querySelectorAll(
+				'button.slds-accordion__summary-action'
+			);
+			expect(remainingButtons).toHaveLength(2);
+			expect(document.activeElement).toBe(remainingButtons[0]);
+
+			fireEvent.keyDown(document.activeElement, {
+				key: 'ArrowDown',
+				keyCode: 40,
+				which: 40,
+			});
+
+			// Without resyncing to the focused button's new index, the stale
+			// tracked index (1) would wrap to remainingButtons[0], the button
+			// that already has focus, instead of advancing to the next one.
+			expect(document.activeElement).toBe(remainingButtons[1]);
+		});
 	});
 
 	describe('Open panel', () => {
