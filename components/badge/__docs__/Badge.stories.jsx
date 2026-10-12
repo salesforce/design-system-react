@@ -17,7 +17,15 @@ export default {
 	argTypes: {
 		color: {
 			control: 'select',
-			options: ['default', 'inverse', 'light', 'success', 'warning', 'error'],
+			options: [
+				'default',
+				'inverse',
+				'light',
+				'info',
+				'success',
+				'warning',
+				'error',
+			],
 		},
 		iconAlignment: {
 			control: 'radio',
@@ -93,6 +101,16 @@ export const LightBadge = {
 };
 
 /**
+ * Info badge
+ */
+export const InfoBadge = {
+	args: {
+		content: 'Info',
+		color: 'info',
+	},
+};
+
+/**
  * Success badge
  */
 export const SuccessBadge = {
@@ -131,6 +149,7 @@ export const AllColorVariants = {
 			<Badge content="Default" />
 			<Badge content="Inverse" color="inverse" />
 			<Badge content="Light" color="light" />
+			<Badge content="Info" color="info" />
 			<Badge content="Success" color="success" />
 			<Badge content="Warning" color="warning" />
 			<Badge content="Error" color="error" />

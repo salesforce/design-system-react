@@ -315,13 +315,15 @@ exports[`Story HTML snapshots > Avatar > UserVsEntity 1`] = `
 
 exports[`Story HTML snapshots > Badge > AllColorVariants 1`] = `
 "<div class="slds-p-around_medium">
-  <div style="display:flex;gap:1rem;flex-wrap:wrap"><span id="_R_1_" class="slds-badge">Default</span><span id="_R_2_" class="slds-badge slds-badge_inverse">Inverse</span><span id="_R_3_" class="slds-badge slds-badge_lightest">Light</span><span id="_R_4_" class="slds-badge slds-theme_success">Success</span><span id="_R_5_" class="slds-badge slds-theme_warning">Warning</span><span id="_R_6_" class="slds-badge slds-theme_error">Error</span></div>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap"><span id="_R_1_" class="slds-badge">Default</span><span id="_R_2_" class="slds-badge slds-badge_inverse">Inverse</span><span id="_R_3_" class="slds-badge slds-badge_lightest">Light</span><span id="_R_4_" class="slds-badge slds-theme_info">Info</span><span id="_R_5_" class="slds-badge slds-theme_success">Success</span><span id="_R_6_" class="slds-badge slds-theme_warning">Warning</span><span id="_R_7_" class="slds-badge slds-theme_error">Error</span></div>
 </div>"
 `;
 
 exports[`Story HTML snapshots > Badge > Default 1`] = `"<div class="slds-p-around_medium"><span id="_R_0_" class="slds-badge">Badge Label</span></div>"`;
 
 exports[`Story HTML snapshots > Badge > ErrorBadge 1`] = `"<div class="slds-p-around_medium"><span id="_R_0_" class="slds-badge slds-theme_error">Error</span></div>"`;
+
+exports[`Story HTML snapshots > Badge > InfoBadge 1`] = `"<div class="slds-p-around_medium"><span id="_R_0_" class="slds-badge slds-theme_info">Info</span></div>"`;
 
 exports[`Story HTML snapshots > Badge > InverseBadge 1`] = `"<div class="slds-p-around_medium"><span id="_R_0_" class="slds-badge slds-badge_inverse">Inverse Badge</span></div>"`;
 
