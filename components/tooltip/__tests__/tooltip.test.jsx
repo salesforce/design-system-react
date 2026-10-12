@@ -285,6 +285,83 @@ describe('SLDSTooltip', () => {
 		});
 	});
 
+	describe('IconVariant prop', () => {
+		const renderDefaultTrigger = (props = {}) =>
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<Tooltip {...defaultProps} {...props} />
+				</IconSettings>
+			);
+
+		it('renders the default trigger with bare styling by default', () => {
+			renderDefaultTrigger();
+			const button = screen.getByRole('button', { name: 'Help' });
+			const svg = button.querySelector('svg');
+
+			expect(button).toHaveClass('slds-button', 'slds-button_icon');
+			expect(button).not.toHaveClass('slds-button_icon-inverse');
+			expect(svg).not.toHaveClass('slds-icon-text-warning');
+			expect(svg).not.toHaveClass('slds-icon-text-error');
+		});
+
+		it('applies inverse button classes to the default trigger', () => {
+			renderDefaultTrigger({ iconVariant: 'inverse' });
+			const button = screen.getByRole('button', { name: 'Help' });
+
+			expect(button).toHaveClass(
+				'slds-button',
+				'slds-button_icon',
+				'slds-button_icon-bare',
+				'slds-button_icon-inverse'
+			);
+		});
+
+		it.each(['warning', 'error'])(
+			'applies %s icon color to the default trigger',
+			(iconVariant) => {
+				renderDefaultTrigger({ iconVariant });
+				const button = screen.getByRole('button', { name: 'Help' });
+
+				expect(button).toHaveClass('slds-button', 'slds-button_icon');
+				expect(button.querySelector('svg')).toHaveClass(
+					'slds-button__icon',
+					`slds-icon-text-${iconVariant}`
+				);
+			}
+		);
+
+		it('applies inverse to the onClickTrigger link icon', () => {
+			renderDefaultTrigger({
+				iconVariant: 'inverse',
+				onClickTrigger: () => {},
+			});
+			const svg = screen.getByRole('link').querySelector('svg');
+
+			expect(svg).toHaveClass('slds-icon');
+			expect(svg).not.toHaveClass('slds-icon-text-default');
+		});
+
+		it('applies warning color to the onClickTrigger link icon', () => {
+			renderDefaultTrigger({
+				iconVariant: 'warning',
+				onClickTrigger: () => {},
+			});
+			const svg = screen.getByRole('link').querySelector('svg');
+
+			expect(svg).toHaveClass('slds-icon-text-warning');
+			expect(svg).not.toHaveClass('slds-icon-text-default');
+		});
+
+		it('does not change custom children', () => {
+			renderTooltip({ iconVariant: 'inverse' });
+			const trigger = screen.getByRole('button', {
+				name: 'Hover me for tooltip',
+			});
+
+			expect(trigger).not.toHaveClass('slds-button_icon-inverse');
+		});
+	});
+
 	describe('Keyboard navigation', () => {
 		it('shows tooltip on focus', async () => {
 			renderTooltip();

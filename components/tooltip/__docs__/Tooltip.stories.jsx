@@ -59,6 +59,11 @@ export default {
 			options: ['info', 'error'],
 			description: 'Theme of tooltip: info (blue) or error (red)',
 		},
+		iconVariant: {
+			control: 'select',
+			options: ['bare', 'error', 'inverse', 'warning'],
+			description: 'Styles the default info icon trigger (no children)',
+		},
 		variant: {
 			control: 'select',
 			options: ['base', 'learnMore', 'list-item'],
@@ -401,6 +406,42 @@ export const DefaultTrigger = {
 			description: {
 				story:
 					'When no children are provided, Tooltip renders a default info icon button as the trigger.',
+			},
+		},
+	},
+};
+
+// Icon variants on the default trigger (matches lightning-helptext icon-variant)
+export const IconVariants = {
+	render: () => (
+		<div className="slds-grid slds-gutters_small slds-grid_vertical-align-center">
+			{['bare', 'warning', 'error'].map((iconVariant) => (
+				<div key={iconVariant} className="slds-col slds-p-around_x-small">
+					<Tooltip
+						align="bottom"
+						content={`iconVariant="${iconVariant}"`}
+						iconVariant={iconVariant}
+						id={`tooltip-icon-variant-${iconVariant}`}
+					/>{' '}
+					{iconVariant}
+				</div>
+			))}
+			<div className="slds-col slds-theme_inverse slds-p-around_x-small">
+				<Tooltip
+					align="bottom"
+					content='iconVariant="inverse"'
+					iconVariant="inverse"
+					id="tooltip-icon-variant-inverse"
+				/>{' '}
+				inverse
+			</div>
+		</div>
+	),
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'The `iconVariant` prop styles the default info icon trigger, like `icon-variant` on `lightning-helptext`. Use `inverse` on dark backgrounds, and `warning` or `error` to draw attention to the help text.',
 			},
 		},
 	},

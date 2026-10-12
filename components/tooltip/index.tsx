@@ -52,6 +52,8 @@ export type TooltipPosition =
 
 export type TooltipTheme = 'info' | 'error';
 
+export type TooltipIconVariant = 'bare' | 'error' | 'inverse' | 'warning';
+
 export type TooltipVariant = 'base' | 'learnMore' | 'list-item';
 
 export interface TooltipAssistiveText {
@@ -99,6 +101,14 @@ export interface TooltipProps {
 	 * `hasStaticAlignment` disables this behavior.
 	 */
 	hasStaticAlignment?: boolean;
+	/**
+	 * Styles the default info icon trigger that renders when no children are passed. Matches `icon-variant` on `lightning-helptext`.
+	 * * `bare` - (default) Default icon color.
+	 * * `error` - Red icon, to call out an error.
+	 * * `inverse` - White icon, for dark backgrounds.
+	 * * `warning` - Yellow icon, to advise caution.
+	 */
+	iconVariant?: TooltipIconVariant;
 	/**
 	 * Delay on Tooltip closing in milliseconds. Defaults to 50
 	 */
@@ -181,6 +191,7 @@ const Tooltip = ({
 	hasStaticAlignment = false,
 	hoverCloseDelay = 50,
 	hoverOpenDelay = 0,
+	iconVariant = 'bare',
 	id: idProp,
 	labels: labelsProp,
 	isOpen: isOpenProp,
@@ -224,6 +235,7 @@ const Tooltip = ({
 				hasStaticAlignment,
 				hoverCloseDelay,
 				hoverOpenDelay,
+				iconVariant,
 				id: idProp,
 				labels,
 				isOpen: isOpenProp,
@@ -421,6 +433,11 @@ const Tooltip = ({
 	const getContent = () => {
 		let childrenToRender: ReactNode;
 		const noChildrenProvided = React.Children.count(children) === 0;
+		const isInverseIcon = iconVariant === 'inverse';
+		const iconColorVariant =
+			iconVariant === 'error' || iconVariant === 'warning'
+				? iconVariant
+				: undefined;
 
 		if (noChildrenProvided && onClickTrigger) {
 			childrenToRender = (
@@ -434,6 +451,8 @@ const Tooltip = ({
 				>
 					<Icon
 						category="utility"
+						colorVariant={iconColorVariant}
+						inverse={isInverseIcon}
 						name="info"
 						assistiveText={{
 							label: assistiveText.triggerLearnMoreIcon,
@@ -450,7 +469,13 @@ const Tooltip = ({
 						icon: assistiveText.triggerLearnMoreIcon,
 					}}
 					iconCategory="utility"
+					iconClassName={
+						iconColorVariant && `slds-icon-text-${iconColorVariant}`
+					}
 					iconName="info"
+					// `bare` keeps `slds-button_icon`, which Button drops for `inverse` alone
+					iconVariant={isInverseIcon ? 'bare' : undefined}
+					inverse={isInverseIcon}
 					variant="icon"
 				/>
 			);
