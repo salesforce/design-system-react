@@ -29,8 +29,7 @@ const shimBody = (kind, indexSpecifier) => {
 	if (kind === 'cjs') {
 		return `module.exports = require('${indexSpecifier}.cjs');\n`;
 	}
-	const spec =
-		kind === 'dts' ? indexSpecifier : `${indexSpecifier}.js`;
+	const spec = kind === 'dts' ? indexSpecifier : `${indexSpecifier}.js`;
 	return `export * from '${spec}';\nexport { default } from '${spec}';\n`;
 };
 
