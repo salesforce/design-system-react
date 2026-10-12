@@ -10495,6 +10495,33 @@ exports[`Story HTML snapshots > Tooltip > ErrorTheme 1`] = `
 </div>"
 `;
 
+exports[`Story HTML snapshots > Tooltip > IconVariants 1`] = `
+"<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
+  <div class="slds-grid slds-gutters_small slds-grid_vertical-align-center">
+    <div class="slds-col slds-p-around_x-small">
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon" aria-hidden="true">
+            <use href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
+          </svg><span class="slds-assistive-text">Help</span></button><span></span></div> bare
+    </div>
+    <div class="slds-col slds-p-around_x-small">
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon slds-icon-text-warning" aria-hidden="true">
+            <use href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
+          </svg><span class="slds-assistive-text">Help</span></button><span></span></div> warning
+    </div>
+    <div class="slds-col slds-p-around_x-small">
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon" type="button" aria-disabled="true"><svg class="slds-button__icon slds-icon-text-error" aria-hidden="true">
+            <use href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
+          </svg><span class="slds-assistive-text">Help</span></button><span></span></div> error
+    </div>
+    <div class="slds-col slds-theme_inverse slds-p-around_x-small">
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon slds-button_icon-inverse slds-button_icon-bare" type="button" aria-disabled="true"><svg class="slds-button__icon" aria-hidden="true">
+            <use href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
+          </svg><span class="slds-assistive-text">Help</span></button><span></span></div> inverse
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`Story HTML snapshots > Tooltip > InButtonGroup 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
   <div class="slds-button-group" id="_R_0_" role="group">
