@@ -47,7 +47,8 @@ export type TooltipAlign =
 	| 'left top'
 	| 'left bottom';
 
-export type TooltipPosition = 'absolute' | 'overflowBoundaryElement' | 'relative';
+export type TooltipPosition =
+	'absolute' | 'overflowBoundaryElement' | 'relative';
 
 export type TooltipTheme = 'info' | 'error';
 
@@ -211,27 +212,31 @@ const Tooltip = ({
 
 	// Check props in development
 	useEffect(() => {
-		checkProps(POPOVER_TOOLTIP, {
-			align,
-			assistiveText,
-			children,
-			content,
-			dialogClassName,
-			hasAnchoredNubbin,
-			hasStaticAlignment,
-			hoverCloseDelay,
-			hoverOpenDelay,
-			id: idProp,
-			labels,
-			isOpen: isOpenProp,
-			onRequestTargetElement,
-			onClickTrigger,
-			triggerClassName,
-			position,
-			triggerStyle,
-			theme,
-			variant,
-		}, componentDoc);
+		checkProps(
+			POPOVER_TOOLTIP,
+			{
+				align,
+				assistiveText,
+				children,
+				content,
+				dialogClassName,
+				hasAnchoredNubbin,
+				hasStaticAlignment,
+				hoverCloseDelay,
+				hoverOpenDelay,
+				id: idProp,
+				labels,
+				isOpen: isOpenProp,
+				onRequestTargetElement,
+				onClickTrigger,
+				triggerClassName,
+				position,
+				triggerStyle,
+				theme,
+				variant,
+			},
+			componentDoc
+		);
 	}, []);
 
 	// Cleanup on unmount
@@ -287,45 +292,56 @@ const Tooltip = ({
 		}, hoverOpenDelay);
 	}, [hoverOpenDelay]);
 
-	const handleMouseLeave = useCallback((e: MouseEvent<HTMLElement> | FocusEvent<HTMLElement>) => {
-		e.stopPropagation();
-		if (tooltipTimeoutRef.current) {
-			clearTimeout(tooltipTimeoutRef.current);
-		}
-
-		tooltipTimeoutRef.current = setTimeout(() => {
-			const relatedTarget = (e as MouseEvent<HTMLElement>).relatedTarget as HTMLElement | null;
-			const isHoveringTooltip =
-				relatedTarget?.classList?.contains('slds-popover_tooltip') ||
-				relatedTarget?.classList?.contains('slds-popover__body');
-
-			if (!isUnmountingRef.current && !isHoveringTooltip) {
-				setIsOpenState(false);
+	const handleMouseLeave = useCallback(
+		(e: MouseEvent<HTMLElement> | FocusEvent<HTMLElement>) => {
+			e.stopPropagation();
+			if (tooltipTimeoutRef.current) {
+				clearTimeout(tooltipTimeoutRef.current);
 			}
-		}, hoverCloseDelay);
-	}, [hoverCloseDelay]);
 
-	const handleKeyDown = useCallback((e: KeyboardEvent<HTMLElement>) => {
-		e.stopPropagation();
+			tooltipTimeoutRef.current = setTimeout(() => {
+				const relatedTarget = (e as MouseEvent<HTMLElement>)
+					.relatedTarget as HTMLElement | null;
+				const isHoveringTooltip =
+					relatedTarget?.classList?.contains('slds-popover_tooltip') ||
+					relatedTarget?.classList?.contains('slds-popover__body');
 
-		tooltipTimeoutRef.current = setTimeout(() => {
-			if (!isUnmountingRef.current && e.key === 'Escape') {
-				setIsOpenState(false);
-			}
-		}, hoverCloseDelay);
-	}, [hoverCloseDelay]);
+				if (!isUnmountingRef.current && !isHoveringTooltip) {
+					setIsOpenState(false);
+				}
+			}, hoverCloseDelay);
+		},
+		[hoverCloseDelay]
+	);
+
+	const handleKeyDown = useCallback(
+		(e: KeyboardEvent<HTMLElement>) => {
+			e.stopPropagation();
+
+			tooltipTimeoutRef.current = setTimeout(() => {
+				if (!isUnmountingRef.current && e.key === 'Escape') {
+					setIsOpenState(false);
+				}
+			}, hoverCloseDelay);
+		},
+		[hoverCloseDelay]
+	);
 
 	// Save trigger ref and trigger re-render once mounted
-	const saveTriggerRef = useCallback((component: HTMLDivElement | null) => {
-		if (component && triggerRef.current !== component) {
-			(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current = component;
-			// Dialog/Popper.js cannot place the popover until
-			// the trigger/target DOM node is mounted.
-			if (!triggerRendered) {
-				setTriggerRendered(true);
+	const saveTriggerRef = useCallback(
+		(component: HTMLDivElement | null) => {
+			if (component && triggerRef.current !== component) {
+				(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current =
+					component;
+				// Dialog/Popper.js cannot place the popover until
+				// the trigger/target DOM node is mounted.
+				if (!triggerRendered) {
+					setTriggerRendered(true);
+				}
 			}
-		}
-	}, [triggerRendered]);
+		},
+		[triggerRendered]
+	);
 
 	// Render helpers
 	const getAnchoredNubbinStyles = () => {
@@ -333,7 +349,8 @@ const Tooltip = ({
 			return null;
 		}
 
-		const alignment = align.split(' ')[0] as 'top' | 'bottom' | 'left' | 'right';
+		const alignment = align.split(' ')[0] as
+			'top' | 'bottom' | 'left' | 'right';
 		const nubbinContainerStyles: CSSProperties = {
 			height: '0',
 			position: 'relative',
@@ -348,8 +365,12 @@ const Tooltip = ({
 			width: '1rem',
 		};
 		const triggerDimensions = {
-			height: triggerRef.current ? triggerRef.current.getBoundingClientRect().height : 0,
-			width: triggerRef.current ? triggerRef.current.getBoundingClientRect().width : 0,
+			height: triggerRef.current
+				? triggerRef.current.getBoundingClientRect().height
+				: 0,
+			width: triggerRef.current
+				? triggerRef.current.getBoundingClientRect().width
+				: 0,
 		};
 
 		switch (alignment) {
@@ -405,7 +426,11 @@ const Tooltip = ({
 			childrenToRender = (
 				<a
 					href="#"
-					onClick={EventUtil.trappedHandler(onClickTrigger) as React.MouseEventHandler<HTMLAnchorElement>}
+					onClick={
+						EventUtil.trappedHandler(
+							onClickTrigger
+						) as React.MouseEventHandler<HTMLAnchorElement>
+					}
 				>
 					<Icon
 						category="utility"
@@ -438,23 +463,26 @@ const Tooltip = ({
 				return child;
 			}
 
-			return React.cloneElement(child as React.ReactElement<{
-				key?: React.Key;
-				'aria-describedby'?: string;
-				onBlur?: (e: FocusEvent<HTMLElement>) => void;
-				onFocus?: () => void;
-				onMouseEnter?: () => void;
-				onMouseLeave?: (e: MouseEvent<HTMLElement>) => void;
-				onKeyDown?: (e: KeyboardEvent<HTMLElement>) => void;
-			}>, {
-				key: i,
-				'aria-describedby': getIsOpen() ? getId() : undefined,
-				onBlur: handleMouseLeave,
-				onFocus: handleMouseEnter,
-				onMouseEnter: handleMouseEnter,
-				onMouseLeave: handleMouseLeave,
-				onKeyDown: handleKeyDown,
-			});
+			return React.cloneElement(
+				child as React.ReactElement<{
+					key?: React.Key;
+					'aria-describedby'?: string;
+					onBlur?: (e: FocusEvent<HTMLElement>) => void;
+					onFocus?: () => void;
+					onMouseEnter?: () => void;
+					onMouseLeave?: (e: MouseEvent<HTMLElement>) => void;
+					onKeyDown?: (e: KeyboardEvent<HTMLElement>) => void;
+				}>,
+				{
+					key: i,
+					'aria-describedby': getIsOpen() ? getId() : undefined,
+					onBlur: handleMouseLeave,
+					onFocus: handleMouseEnter,
+					onMouseEnter: handleMouseEnter,
+					onMouseLeave: handleMouseLeave,
+					onKeyDown: handleKeyDown,
+				}
+			);
 		});
 	};
 
@@ -462,9 +490,9 @@ const Tooltip = ({
 		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)
 		// Support deprecated 'error' variant value (now use theme='error')
 		const isErrorTheme = theme === 'error' || (variant as string) === 'error';
-		
+
 		return (
-			<div 
+			<div
 				className={classNames('slds-popover__body', {
 					// Ensure text contrast on error theme (red background needs white text)
 					'slds-text-color_inverse': isErrorTheme,
@@ -550,4 +578,3 @@ const Tooltip = ({
 Tooltip.displayName = POPOVER_TOOLTIP;
 
 export default Tooltip;
-

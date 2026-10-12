@@ -172,7 +172,8 @@ export const LearnMore = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'The Learn More variant displays an info icon as the trigger. When no children are provided and `onClickTrigger` is set, it renders as a clickable link.',
+				story:
+					'The Learn More variant displays an info icon as the trigger. When no children are provided and `onClickTrigger` is set, it renders as a clickable link.',
 			},
 		},
 	},
@@ -197,7 +198,14 @@ export const AllAlignments = {
 		];
 
 		return (
-			<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '60px', padding: '80px' }}>
+			<div
+				style={{
+					display: 'grid',
+					gridTemplateColumns: 'repeat(3, 1fr)',
+					gap: '60px',
+					padding: '80px',
+				}}
+			>
 				{alignments.map((alignment) => (
 					<div key={alignment} style={{ textAlign: 'center' }}>
 						<Tooltip
@@ -216,7 +224,8 @@ export const AllAlignments = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'Tooltips can be aligned in 12 different positions relative to the trigger element.',
+				story:
+					'Tooltips can be aligned in 12 different positions relative to the trigger element.',
 			},
 		},
 	},
@@ -251,7 +260,10 @@ export const WithSpanTrigger = {
 	},
 	render: (args) => (
 		<Tooltip {...args}>
-			<span tabIndex="0" style={{ textDecoration: 'underline', cursor: 'help' }}>
+			<span
+				tabIndex="0"
+				style={{ textDecoration: 'underline', cursor: 'help' }}
+			>
 				Hover over this text
 			</span>
 		</Tooltip>
@@ -274,7 +286,8 @@ export const WithDelay = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'You can configure open and close delays. This example has a 500ms open delay and 300ms close delay.',
+				story:
+					'You can configure open and close delays. This example has a 500ms open delay and 300ms close delay.',
 			},
 		},
 	},
@@ -297,7 +310,8 @@ export const AnchoredNubbin = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'The anchored nubbin variant attaches the arrow directly to the trigger element. Use `hasStaticAlignment: true` with this feature.',
+				story:
+					'The anchored nubbin variant attaches the arrow directly to the trigger element. Use `hasStaticAlignment: true` with this feature.',
 			},
 		},
 	},
@@ -339,7 +353,8 @@ export const InButtonGroup = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'Tooltips work well with icon buttons in a button group to provide context about each action.',
+				story:
+					'Tooltips work well with icon buttons in a button group to provide context about each action.',
 			},
 		},
 	},
@@ -358,11 +373,7 @@ export const Controlled = {
 						onClick={() => setIsOpen(!isOpen)}
 					/>
 				</div>
-				<Tooltip
-					content={tooltipContent}
-					isOpen={isOpen}
-					align="bottom"
-				>
+				<Tooltip content={tooltipContent} isOpen={isOpen} align="bottom">
 					<Button label="Controlled Tooltip" />
 				</Tooltip>
 			</div>
@@ -371,7 +382,8 @@ export const Controlled = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'Use the `isOpen` prop to control tooltip visibility programmatically. When set, hover/focus behavior is disabled.',
+				story:
+					'Use the `isOpen` prop to control tooltip visibility programmatically. When set, hover/focus behavior is disabled.',
 			},
 		},
 	},
@@ -387,7 +399,8 @@ export const DefaultTrigger = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'When no children are provided, Tooltip renders a default info icon button as the trigger.',
+				story:
+					'When no children are provided, Tooltip renders a default info icon button as the trigger.',
 			},
 		},
 	},
