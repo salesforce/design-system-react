@@ -12,7 +12,13 @@
  * `accordion/index.js` that simply re-exports the index. One star pattern then
  * resolves every historical import shape.
  */
-import { readdirSync, statSync, existsSync, writeFileSync } from 'fs';
+import {
+	readdirSync,
+	readFileSync,
+	statSync,
+	existsSync,
+	writeFileSync,
+} from 'fs';
 import { join, relative } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -25,12 +31,21 @@ const OUTPUTS = [
 	{ dir: 'dist/types', ext: 'd.ts', kind: 'dts' },
 ];
 
-const shimBody = (kind, indexSpecifier) => {
+// `export *` never forwards `default`, so it is re-exported explicitly — but only
+// when the index has one (e.g. `utilities/hooks` is named-exports only), since
+// re-exporting a missing `default` is a link error in ESM.
+const DEFAULT_EXPORT_RE =
+	/\bexport\s+default\b|\bas\s+default\b|\bexport\s*\{\s*default\b/;
+
+const shimBody = (kind, indexSpecifier, indexSource) => {
 	if (kind === 'cjs') {
 		return `module.exports = require('${indexSpecifier}.cjs');\n`;
 	}
 	const spec = kind === 'dts' ? indexSpecifier : `${indexSpecifier}.js`;
-	return `export * from '${spec}';\nexport { default } from '${spec}';\n`;
+	const body = `export * from '${spec}';\n`;
+	return DEFAULT_EXPORT_RE.test(indexSource)
+		? `${body}export { default } from '${spec}';\n`
+		: body;
 };
 
 let created = 0;
@@ -47,7 +62,10 @@ const walk = (outDir, ext, kind, absDir) => {
 			const shimPath = `${abs}.${ext}`;
 			if (!existsSync(shimPath)) {
 				const name = entry;
-				writeFileSync(shimPath, shimBody(kind, `./${name}/index`));
+				writeFileSync(
+					shimPath,
+					shimBody(kind, `./${name}/index`, readFileSync(indexFile, 'utf8'))
+				);
 				created += 1;
 			}
 		}
