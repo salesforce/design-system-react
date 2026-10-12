@@ -1,113 +1,108 @@
-# Modernization Roadmap
+# v11 Roadmap
 
-> **Status: Active modernization — the bulk of the migration is complete.**
->
-> This branch (`feat/typescript-modernization`) modernizes the library to React 19,
-> SLDS 2, and a modern toolchain (Vite / Vitest / TypeScript 5 strict / Storybook 10).
-> As of the **2026-08-11** audit, essentially every component ships as real `.tsx`
-> with a Storybook (CSF) story, the type-check gate is clean, lint is at **zero
-> errors** (blocking in CI), and 56 Vitest test files run in place of the old
-> Enzyme suites. Storybook now also auto-deploys to GitHub Pages on every push to
-> `master`. The remaining work is the popper.js → @floating-ui migration (which
-> blocks the last 3 source files — design in progress, see
-> `docs/superpowers/specs/`), test/story gap-fill, the SLDS 2 package swap
-> follow-through, and the major-version toolchain bumps.
+> **Status: alpha.** v11 (React 19, TypeScript, SLDS 2) is published under the
+> `alpha` npm tag; the latest release is `11.0.0-alpha.4`. The stable 0.10.x line
+> stays on the `latest` tag and the [`0.10.x` branch](https://github.com/salesforce/design-system-react/tree/0.10.x).
+> See [CHANGELOG.md](CHANGELOG.md) for what each alpha changed.
 
-## Status Snapshot (2026-08-11)
+## Status Snapshot (2026-10-11)
 
-| Area | State | Notes |
-|------|-------|-------|
-| Component sources | **~68 / 71 on `.tsx`** | Only `lookup/index`, `lookup/lookup`, and `utilities/dialog` remain `.jsx` — all blocked by popper.js |
-| TypeScript | **`tsc --noEmit` clean** | Root `tsconfig.json` present; `strict: true` |
-| Storybook | **10.5.5**, CSF stories | 68 components have stories; 3 do not (see below); auto-published to GitHub Pages from `master` |
-| Tests | **56 Vitest files**, 0 Enzyme | Migration off Enzyme complete; ~15 components still lack a test |
-| Lint | **0 errors / 199 warnings, blocking in CI** | Fixed `storybook-static/` build output leaking into the lint glob; warnings are pre-existing quality debt (unused vars, a11y) |
-| SLDS 2 CSS | **npm package** | Storybook loads `@salesforce-ux/design-system-2@2.264.0` bundled Lightning Blue; static `slds-plus.css` no longer referenced |
-| Positioning | **popper.js v1** | Still the deprecated Popper.js v1 — sole blocker for the last 3 `.jsx` (P1); Floating UI migration design in progress |
-| React / tooling | React 19.2.8, Vite 5.4, Vitest 1.6, ESLint 8.57 | Major upgrades (Vite 8, Vitest 4, ESLint 10) pending — P4 |
-| `react-onclickoutside` / `enzyme` | **removed** | Clean `npm install` no longer needs `--legacy-peer-deps` for these |
+| Area              | State                                     | Notes                                                                                                                        |
+| ----------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Component sources | **TypeScript**                            | `components/utilities/dialog/index.jsx` is the last `.jsx` source; the rest of the `.jsx` files are sample data              |
+| Positioning       | **`@floating-ui/dom`**                    | `popper.js` is gone from dependencies; `utilities/dialog-helpers.js` still adapts Floating UI output to the old popper shape |
+| TypeScript        | **`tsc --noEmit` clean**, `strict: true`  | `.d.ts` files are generated into `dist/types`                                                                                |
+| Storybook         | **10**, CSF stories                       | 3 component folders have no story: `forms`, `grid`, `menu-list`                                                              |
+| Tests             | **48 Vitest files**                       | jsdom `unit` project plus a Playwright `browser` project; story HTML snapshots cover every non-portal story                  |
+| Lint              | **0 errors / 223 warnings**               | Errors block CI; warnings are the tracked migration backlog                                                                  |
+| Toolchain         | Vite 8, Vitest 4, ESLint 10, Storybook 10 | Node.js 24 (`.nvmrc`)                                                                                                        |
+| SLDS 2 CSS        | **npm dependency**                        | `@salesforce-ux/design-system-2` installs with the package; consumers add the stylesheet themselves (see the README)         |
+| Publishing        | **GitHub Release → npm, `alpha` tag**     | `.github/workflows/npm-publish.yml`; alpha.3 and alpha.4 published from it                                                   |
 
 ## Prioritized Plan
 
-### P1 — Unblock the last sources: popper.js → @floating-ui
-The three remaining `.jsx` sources all depend, directly or transitively, on the
-Dialog positioning layer which still uses **popper.js v1** (deprecated, unmaintained).
+### P1 — Path to a stable v11
 
-- [ ] Migrate `components/utilities/dialog/index.jsx` off `popper.js` to `@floating-ui/dom`
-      (`computePosition` + `autoUpdate`), keeping the existing class and building a
-      `popperData`-shaped adapter so `utilities/dialog-helpers.js` (nubbin math) stays
-      untouched. Convert to `.tsx` in the same change. *(Design doc in progress —
-      see `docs/superpowers/specs/`.)*
-- [ ] Convert `components/lookup/lookup.jsx` → `.tsx` (depends on Dialog).
-- [ ] Convert `components/lookup/index.jsx` → `.tsx` (depends on lookup).
-- [ ] Remove `popper.js` from dependencies once no source imports it.
+- [ ] Fix the `components/<name>` entry points for `ColorPicker`, `Filter`, and `Tree`.
+      `scripts/generate-entry-shims.mjs` only emits a shim beside a built `index` file,
+      and these three have none in `dist/`, so the subpath import fails to resolve.
+- [ ] Loosen the `@salesforce-ux/design-system` peer dependency. It is pinned to
+      `2.25.0-alpha.2`, which npm 7+ auto-installs and which conflicts with any newer
+      version already in the consumer's tree. It is only needed for the icon sprites.
+- [ ] Write a 0.10.x → v11 migration guide (removed components, `DataTable` rename,
+      React 19, module format).
+- [ ] Publish hosted docs for v11. `react.lightningdesignsystem.com` redirects to
+      GitHub, and no Storybook is deployed for `master`.
+- [ ] Use one tag format for releases. `11.0.0-alpha.4` has no `v` prefix, unlike the
+      earlier `v11.0.0-alpha.*` tags.
+- [ ] At GA: change `publishConfig.tag` from `alpha` to `latest` and update the
+      README's version table.
 
 ### P2 — Close the story & test gaps
-**Components with no Storybook story** — add CSF stories:
-- [ ] `grid`
-- [ ] `navigation`
-- [ ] `popover-tooltip`
 
-**Components with no Vitest test** — add tests (template: `components/button/__tests__`):
-- [ ] `badge`, `brand-band`, `breadcrumb`, `checkbox`, `dynamic-icon`, `files`,
-      `icon-settings`, `panel`, `portal-settings`, `progress-bar`, `progress-ring`,
-      `radio`, `scoped-notification`, `trial-bar`
+**Component folders with no Storybook story:**
+
+- [ ] `forms`
+- [ ] `grid`
+- [ ] `menu-list`
+
+**Component folders with no Vitest test** (template: `components/button/__tests__`):
+
+- [ ] `badge`, `breadcrumb`, `checkbox`, `dynamic-icon`, `files`, `forms`, `grid`,
+      `icon-settings`, `menu-list`, `panel`, `portal-settings`, `progress-bar`,
+      `progress-ring`, `radio`, `scoped-notification`, `trial-bar`
 
 **Story/feature gaps vs. SLDS 2** — from the component-by-component comparison in
-[`docs/superpowers/specs/2026-08-07-slds2-vs-react-comparison.md`](docs/superpowers/specs/2026-08-07-slds2-vs-react-comparison.md)
-(48 matched pairs). Ordered by leverage; skip anything filed "Legacy Components" upstream.
+[`docs/superpowers/specs/2026-08-07-slds2-vs-react-comparison.md`](docs/superpowers/specs/2026-08-07-slds2-vs-react-comparison.md).
+Ordered by leverage; skip anything filed "Legacy Components" upstream.
 
 - [ ] **Token-theming ("Customization") story pattern.** SLDS 2 attaches a live
       styling-hook / design-token panel to ~20 components; React has none. Build a shared
       decorator + exemplar "Theming" stories for `button`, `card`, `input`, `avatar` first,
-      then extend. *(Highest-leverage, most on-theme for "components using SLDS 2".)*
-- [x] **Wire existing `__examples__` into stories (near-zero cost):**
-  - [x] `builder-header` — toolbar, utilities, successful/after-successful/failed-save stories added (`a594203e3`). `base-with-page-type-editable` intentionally deferred — depends on Popover/Dialog positioning, tied to P1.
-  - [x] `combobox` — custom-menu-item, disabled-options, and RTL stories added (`8a25a5d11`). Remaining 25+ example files still unwired (dialog-boundary variants, additional icon/subheader combos) — lower leverage, revisit after P1 unblocks Dialog.
+      then extend.
+- [x] **Wire existing `__examples__` into stories:**
+  - [x] `builder-header` — toolbar, utilities, successful/after-successful/failed-save stories.
+  - [x] `combobox` — Storybook coverage lost in the TypeScript rewrite restored ([#3221](https://github.com/salesforce/design-system-react/pull/3221)).
 - [ ] **Add missing high-value state stories:**
   - [ ] `docked-composer` — voice/telephony call-state suite (~10 states), popped-out, overflow menu, log-a-task.
   - [ ] `card` — Loading, Collapsed, NestedCards, DataTiles.
   - [ ] `checkbox` — fieldset group variants, read-only "view mode", help-text/tooltip.
-  - [ ] `expression` — error, disabled-inputs, nested groups, locked filters, formula.
   - [ ] `accordion` — ActionMenu, Nested, WrappedInCard, heading truncation.
   - [ ] `modal` — SizeFull; `tabs` — conditional tab, scoped-with-overflow.
   - [ ] `radio-group` — help-icon(+tooltip), disabled-checked, error-checked, label-placement.
 
 **Component feature gaps (capability missing, not just a story)** — file as
 enhancement issues, not story fill-ins:
+
 - [ ] `vertical-navigation` — badge / compact / icon / shaded / overflow / validation variants.
 - [ ] `visual-picker` — small size tier, disabled state, non-coverable content.
 - [ ] `date-picker` — date-**range** selection (SLDS 2 is a dual single/range picker; React is single-only).
-- [ ] `app-launcher` — drag-and-drop tile reordering.
 - [ ] `input` — native `type` variants (checkbox / toggle / range / color / file).
-- [ ] `global-header` — interactive search + notification panel *(blocked by `react-onclickoutside` / React 19 — ties to P1 dependency work).*
 
-### P3 — SLDS 2 delivery follow-through
-- [x] Storybook renders on the npm `@salesforce-ux/design-system-2` package (latest,
-      2.264.0) via `/slds2` static dir instead of the committed `slds-plus.css`.
-- [ ] Delete the vendored `assets/styles/slds-plus.css` once nothing references it
-      (README and the audit spec still mention it).
-- [ ] Decide what CSS, if any, the **published package** ships to consumers (peer
-      dependency on `@salesforce-ux/design-system-2` vs. documented consumer
-      responsibility vs. a re-exported entry stylesheet).
-- [ ] Offer a theme choice (Lightning Blue default; Cosmos alternate) and document it.
+### P3 — Cleanup
 
-### P4 — Toolchain major upgrades & publish
-- [ ] Vite 5 → 8, `@vitejs/plugin-react` 4 → 6, `vite-plugin-dts` 3 → 5
-- [ ] Vitest 1 → 4, `jsdom` 24 → 29
-- [ ] ESLint 8 → 10 (flat config), `@typescript-eslint/*` 7 → 8, `eslint-plugin-react-hooks` 4 → 7
-- [ ] `@babel/core` 7 → 8, `@types/node` 20 → 26, `nanoid` 5 → 6, `@testing-library/jest-dom` 6 → 7
-- [ ] Verify/repair the npm-publish pipeline (Node 20, Vite build, `files`/`prepack`, `sideEffects`)
-- [x] **GitHub Pages:** `.github/workflows/pages.yml` builds Storybook and deploys on
-      every push to `master`; Pages source set to "GitHub Actions" on the fork. Live at
-      https://showerbee.github.io/design-system-react/ once `master` picks up this branch.
+- [ ] Convert `components/utilities/dialog/index.jsx` to `.tsx`, and drop the
+      popper-shaped adapter in `utilities/dialog-helpers.js`.
+- [ ] Delete the vendored `assets/styles/slds-plus.css`; nothing outside planning docs
+      references it.
+- [ ] Work down the lint warning backlog.
+
+## Done since the 2026-08-11 snapshot
+
+- popper.js → `@floating-ui/dom` for all positioning
+- Toolchain majors: Vite 8, Vitest 4, ESLint 10 (flat config), Babel 8, jsdom 30
+- Publish pipeline repaired and switched to the `alpha` npm tag (Node 24)
+- Storybook theme toolbar for Lightning Blue / Cosmos and light / dark / system color schemes
+- Removed in v11: `AppLauncher`, `BrandBand`, `Expression`, `GlobalHeader`,
+  `GlobalNavigationBar`, `LocationMap`, `Lookup`, `Notification`, `Picklist`, `TimePicker`;
+  `DataTable` renamed to `SimpleDataTable`
 
 ## Known Limitations
 
 1. **Node.js** — Requires Node.js >= 24.
-2. **React 19 only** — no backward compatibility with React 16/17/18.
-3. **Published CSS** — the published package does not yet ship SLDS 2 CSS to consumers;
-   Storybook wires it up locally from the npm package (P3).
+2. **React 19 only** — no backward compatibility with React 16/17/18. Use 0.10.x for those.
+3. **No bundled CSS** — the package does not ship a stylesheet; consumers add one from
+   `@salesforce-ux/design-system-2`.
 
 ### Runtime prop validation (intentional tradeoff)
 
@@ -121,7 +116,7 @@ alongside the types.
 
 What still protects consumers:
 
-- **Shipped `.d.ts` declarations.** The package now emits per-file declarations
+- **Shipped `.d.ts` declarations.** The package emits per-file declarations
   mirroring the source tree (`dist/types/**`, wired through the `exports` map).
   Modern editors (VS Code et al.) pick these up — for TS users directly, and for
   **plain-JS users via Automatic Type Acquisition (ATA)** — giving rich
@@ -140,8 +135,9 @@ is the path — evaluated and deferred, not precluded.
 ## How to Help
 
 **Good first issues (P2 template-driven work):**
+
 - Add a Vitest + RTL test for a component that lacks one (template: `components/button/__tests__`)
-- Add a CSF story for `grid`, `navigation`, or `popover-tooltip`
+- Add a CSF story for `forms`, `grid`, or `menu-list`
 
 ## Timeline
 
