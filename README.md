@@ -20,7 +20,7 @@ v11 is not a drop-in upgrade from 0.10.x: some components were removed or rename
 
 ## Highlights
 
-- **SLDS 2** — Styled by the [SLDS 2](https://www.lightningdesignsystem.com/) npm package, with the Lightning Blue and Cosmos themes
+- **SLDS 2** — Styled by the [SLDS 2](https://www.lightningdesignsystem.com/) npm package, with the Cosmos (default) and Lightning Blue themes
 - **Dark mode** — Light, dark, and system color schemes from the SLDS 2 stylesheet
 - **React 19** — Function components and hooks
 - **TypeScript** — Type definitions ship with the package
@@ -90,26 +90,37 @@ import IconSettings from '@salesforce/design-system-react/components/icon-settin
 ## Styling
 
 The components render SLDS markup but don't ship CSS. Add an SLDS 2 stylesheet from
-[`@salesforce-ux/design-system-2`](https://www.npmjs.com/package/@salesforce-ux/design-system-2)
-to your page. Lightning Blue is the SLDS 2 default theme:
+[`@salesforce-ux/design-system-2`](https://www.npmjs.com/package/@salesforce-ux/design-system-2),
+which installs with this package. Cosmos is the default theme. If your bundler handles CSS
+imports (Vite, webpack, and so on), import it once at your app's entry point:
+
+```tsx
+import '@salesforce-ux/design-system-2/dist/css/bundled/slds2.cosmos.css';
+```
+
+Without a bundler, serve the package's `dist/css` folder from your app and link the stylesheet:
 
 ```html
-<link
-	rel="stylesheet"
-	href="/node_modules/@salesforce-ux/design-system-2/dist/css/bundled/slds2.lightning-blue.css"
-/>
+<link rel="stylesheet" href="/slds2/bundled/slds2.cosmos.css" />
 ```
+
+Here `/slds2` is wherever you serve `dist/css`, e.g.
+`app.use('/slds2', express.static('node_modules/@salesforce-ux/design-system-2/dist/css'))`.
+
+> **Note:** The stylesheet references a few images (avatar placeholders, Einstein
+> backgrounds) through `../../public/` URLs that `@salesforce-ux/design-system-2`
+> 2.264.x doesn't include. Vite warns and builds anyway; with webpack, set
+> `css-loader`'s `url` option to skip those paths. Components that don't use those
+> images are unaffected.
 
 The package's `dist/css/bundled/` folder has these stylesheets:
 
-| File                              | Theme                    |
-| --------------------------------- | ------------------------ |
-| `slds2.lightning-blue.css`        | Lightning Blue (default) |
-| `slds2.cosmos.css`                | Cosmos                   |
-| `slds2.scoped.lightning-blue.css` | Lightning Blue, scoped   |
-| `slds2.scoped.cosmos.css`         | Cosmos, scoped           |
-
-Storybook loads the stylesheet the same way; see `.storybook/preview-head.html`.
+| File                              | Theme                  |
+| --------------------------------- | ---------------------- |
+| `slds2.cosmos.css`                | Cosmos (default)       |
+| `slds2.lightning-blue.css`        | Lightning Blue         |
+| `slds2.scoped.cosmos.css`         | Cosmos, scoped         |
+| `slds2.scoped.lightning-blue.css` | Lightning Blue, scoped |
 
 ### Dark mode
 
