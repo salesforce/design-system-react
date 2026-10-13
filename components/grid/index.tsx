@@ -13,7 +13,7 @@ export interface GridColumnProps {
 
 class GridColumn extends Component<GridColumnProps> {
 	getClassName() {
-		return `${this.props.className} slds-col`;
+		return classNames(this.props.className, 'slds-col');
 	}
 
 	render() {
