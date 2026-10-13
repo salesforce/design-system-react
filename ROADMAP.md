@@ -26,9 +26,9 @@
 - [ ] Fix the `components/<name>` entry points for `ColorPicker`, `Filter`, and `Tree`.
       `scripts/generate-entry-shims.mjs` only emits a shim beside a built `index` file,
       and these three have none in `dist/`, so the subpath import fails to resolve.
-- [ ] Loosen the `@salesforce-ux/design-system` peer dependency. It is pinned to
-      `2.25.0-alpha.2`, which npm 7+ auto-installs and which conflicts with any newer
-      version already in the consumer's tree. It is only needed for the icon sprites.
+- [x] Loosen the `@salesforce-ux/design-system` peer dependency. It was pinned to
+      `2.25.0-alpha.2`, which conflicted with any newer version already in the
+      consumer's tree. It is now `^2.25.0-alpha.2`.
 - [ ] Write a 0.10.x → v11 migration guide (removed components, `DataTable` rename,
       React 19, module format).
 - [ ] Publish hosted docs for v11. `react.lightningdesignsystem.com` redirects to

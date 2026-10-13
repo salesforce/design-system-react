@@ -39,7 +39,7 @@ npm 7 and later also installs the peer dependencies: `react`, `react-dom`, and `
 ### Troubleshooting `ERESOLVE` errors
 
 - **`Found: react@18…`**: v11 requires React 19.2 or later. Upgrade React, or stay on 0.10.x.
-- **`Found: @salesforce-ux/design-system@…`**: v11 pins this peer dependency to `2.25.0-alpha.2`, so a project that already has a newer version fails to install. Until the pin is loosened, install with `--legacy-peer-deps`. That flag also skips automatic peer installs, so add React yourself:
+- **`Found: @salesforce-ux/design-system@…`**: 11.0.0-alpha.4 and earlier pin this peer dependency to exactly `2.25.0-alpha.2`, so a project that already has another version fails to install. Later releases accept any 2.x version from `2.25.0-alpha.2` on. On an affected version, install with `--legacy-peer-deps`. That flag also skips automatic peer installs, so add React yourself:
 
   ```bash
   npm install @salesforce/design-system-react@alpha react@^19.2.0 react-dom@^19.2.0 --legacy-peer-deps
