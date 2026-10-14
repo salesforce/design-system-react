@@ -76,7 +76,9 @@ const InteractiveExample = () => {
 				</button>
 				<button
 					className="slds-button slds-button_brand"
-					onClick={() => setCurrentStep(Math.min(steps.length - 1, currentStep + 1))}
+					onClick={() =>
+						setCurrentStep(Math.min(steps.length - 1, currentStep + 1))
+					}
 					disabled={currentStep === steps.length - 1}
 				>
 					Next

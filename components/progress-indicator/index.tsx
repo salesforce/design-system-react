@@ -23,7 +23,8 @@ export type ProgressIndicatorVariant = 'base' | 'modal' | 'setup-assistant';
 /**
  * Tooltip position
  */
-export type TooltipPosition = 'absolute' | 'overflowBoundaryElement' | 'relative';
+export type TooltipPosition =
+	'absolute' | 'overflowBoundaryElement' | 'relative';
 
 /**
  * Step object structure
@@ -83,7 +84,10 @@ export interface ProgressIndicatorProps {
 	/** Orientation (horizontal or vertical) */
 	orientation?: ProgressIndicatorOrientation;
 	/** Click handler for steps */
-	onStepClick?: (event: React.MouseEvent | React.KeyboardEvent, data: StepEventData) => void;
+	onStepClick?: (
+		event: React.MouseEvent | React.KeyboardEvent,
+		data: StepEventData
+	) => void;
 	/** Focus handler for steps */
 	onStepFocus?: (event: React.FocusEvent, data: StepEventData) => void;
 	/** Currently selected step */
@@ -118,24 +122,31 @@ const defaultAssistiveText: ProgressIndicatorAssistiveText = {
  */
 function checkSteps(steps?: ProgressStep[]): boolean {
 	if (!steps) return false;
-	return Array.isArray(steps) && steps.every((step) => step.label !== undefined);
+	return (
+		Array.isArray(steps) && steps.every((step) => step.label !== undefined)
+	);
 }
 
 /**
  * Check if an item exists in an array of items
  */
-function findStep(item: ProgressStep | undefined, items: ProgressStep | ProgressStep[] | undefined): boolean {
+function findStep(
+	item: ProgressStep | undefined,
+	items: ProgressStep | ProgressStep[] | undefined
+): boolean {
 	if (!item || !items) return false;
 
 	const itemsArray = !Array.isArray(items) ? [items] : items;
 
-	return Boolean(find(itemsArray, (arrayItem) => {
-		if (arrayItem === item) return true;
-		if (arrayItem.id !== undefined && item.id !== undefined) {
-			return arrayItem.id === item.id;
-		}
-		return JSON.stringify(arrayItem) === JSON.stringify(item);
-	}));
+	return Boolean(
+		find(itemsArray, (arrayItem) => {
+			if (arrayItem === item) return true;
+			if (arrayItem.id !== undefined && item.id !== undefined) {
+				return arrayItem.id === item.id;
+			}
+			return JSON.stringify(arrayItem) === JSON.stringify(item);
+		})
+	);
 }
 
 /**
@@ -176,21 +187,26 @@ const ProgressIndicator = ({
 	}, [allSteps, selectedStep]);
 
 	// Calculate progress value
-	const progressValue = currentStepIndex === 0
-		? '0'
-		: `${100 * (currentStepIndex / (allSteps.length - 1))}`;
+	const progressValue =
+		currentStepIndex === 0
+			? '0'
+			: `${100 * (currentStepIndex / (allSteps.length - 1))}`;
 
 	// Determine orientation
-	const orientation = variant === 'setup-assistant' ? 'vertical' : propOrientation;
+	const orientation =
+		variant === 'setup-assistant' ? 'vertical' : propOrientation;
 
 	// Determine tooltip position
-	const tooltipPosition = propTooltipPosition || (variant === 'modal' ? 'absolute' : 'overflowBoundaryElement');
+	const tooltipPosition =
+		propTooltipPosition ||
+		(variant === 'modal' ? 'absolute' : 'overflowBoundaryElement');
 
 	// Select step component based on orientation
 	const StepComponent = (
 		orientation === 'vertical' ? StepVertical : Step
 	) as React.ComponentType<
-		React.ComponentProps<typeof Step> & React.ComponentProps<typeof StepVertical>
+		React.ComponentProps<typeof Step> &
+			React.ComponentProps<typeof StepVertical>
 	>;
 
 	return (
@@ -227,18 +243,3 @@ const ProgressIndicator = ({
 ProgressIndicator.displayName = PROGRESS_INDICATOR;
 
 export default ProgressIndicator;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
