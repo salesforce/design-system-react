@@ -75,14 +75,32 @@ export interface ComboboxLabels {
 
 export interface ComboboxEvents {
 	onBlur?: (event: React.FocusEvent) => void;
-	onChange?: (event: React.ChangeEvent<HTMLInputElement>, data: { value: string }) => void;
-	onClose?: (event: React.SyntheticEvent | undefined, data: Record<string, unknown>) => void;
+	onChange?: (
+		event: React.ChangeEvent<HTMLInputElement>,
+		data: { value: string }
+	) => void;
+	onClose?: (
+		event: React.SyntheticEvent | undefined,
+		data: Record<string, unknown>
+	) => void;
 	onFocus?: (event: React.FocusEvent, data: Record<string, unknown>) => void;
-	onOpen?: (event: React.SyntheticEvent | undefined, data: Record<string, unknown>) => void;
-	onRequestClose?: (event: React.SyntheticEvent, data: Record<string, unknown>) => void;
+	onOpen?: (
+		event: React.SyntheticEvent | undefined,
+		data: Record<string, unknown>
+	) => void;
+	onRequestClose?: (
+		event: React.SyntheticEvent,
+		data: Record<string, unknown>
+	) => void;
 	onRequestOpen?: () => void;
-	onRequestRemoveSelectedOption?: (event: React.SyntheticEvent, data: { selection: ComboboxOption[] }) => void;
-	onSelect?: (event: React.SyntheticEvent, data: { selection: ComboboxOption[] }) => void;
+	onRequestRemoveSelectedOption?: (
+		event: React.SyntheticEvent,
+		data: { selection: ComboboxOption[] }
+	) => void;
+	onSelect?: (
+		event: React.SyntheticEvent,
+		data: { selection: ComboboxOption[] }
+	) => void;
 	onSubmit?: (event: React.KeyboardEvent, data: { value: string }) => void;
 }
 
@@ -148,9 +166,17 @@ export interface ComboboxProps {
 	/** Menu options */
 	options?: ComboboxOption[];
 	/** Options to add items */
-	optionsAddItem?: Array<{ id?: string; icon?: ReactNode; label?: string | ((searchTerm: string) => ReactNode) }>;
+	optionsAddItem?: Array<{
+		id?: string;
+		icon?: ReactNode;
+		label?: string | ((searchTerm: string) => ReactNode);
+	}>;
 	/** Options for search entity */
-	optionsSearchEntity?: Array<{ id?: string; icon?: ReactNode; label?: string | ((searchTerm: string) => ReactNode) }>;
+	optionsSearchEntity?: Array<{
+		id?: string;
+		icon?: ReactNode;
+		label?: string | ((searchTerm: string) => ReactNode);
+	}>;
 	/** Popover component for popover variant */
 	popover?: ReactElement;
 	/** Whether only predefined options are allowed */
@@ -274,19 +300,27 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	const deselectId = `${getId()}-deselect`;
 
 	// State
-	const [activeOption, setActiveOption] = useState<ComboboxOption | undefined>(undefined);
-	const [activeOptionIndex, setActiveOptionIndex] = useState(-1);
-	const [activeSelectedOption, setActiveSelectedOption] = useState<ComboboxOption | undefined>(
-		selection?.[0]
+	const [activeOption, setActiveOption] = useState<ComboboxOption | undefined>(
+		undefined
 	);
+	const [activeOptionIndex, setActiveOptionIndex] = useState(-1);
+	const [activeSelectedOption, setActiveSelectedOption] = useState<
+		ComboboxOption | undefined
+	>(selection?.[0]);
 	const [activeSelectedOptionIndex, setActiveSelectedOptionIndex] = useState(0);
 	const [listboxHasFocus, setListboxHasFocus] = useState(false);
-	const [isOpenState, setIsOpenState] = useState(typeof isOpenProp === 'boolean' ? isOpenProp : false);
+	const [isOpenState, setIsOpenState] = useState(
+		typeof isOpenProp === 'boolean' ? isOpenProp : false
+	);
 	const [inputRendered, setInputRendered] = useState(false);
 
 	// Check props on mount
 	useEffect(() => {
-		checkProps(COMBOBOX, props as unknown as Record<string, unknown>, componentDoc);
+		checkProps(
+			COMBOBOX,
+			props as unknown as Record<string, unknown>,
+			componentDoc
+		);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -330,100 +364,136 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			...(options && options.length > 0 ? options : []),
 			...(localOptionsAddItem.length > 0 ? localOptionsAddItem : []),
 		];
-	}, [deselectId, labels.deselectOption, optionsSearchEntity, optionsAddItem, hasDeselect, options]);
+	}, [
+		deselectId,
+		labels.deselectOption,
+		optionsSearchEntity,
+		optionsAddItem,
+		hasDeselect,
+		options,
+	]);
 
-	const isSelected = useCallback(({ selection: sel, option }: { selection: ComboboxOption[]; option: ComboboxOption }) => {
-		return !!find(sel, option);
-	}, []);
+	const isSelected = useCallback(
+		({
+			selection: sel,
+			option,
+		}: {
+			selection: ComboboxOption[];
+			option: ComboboxOption;
+		}) => {
+			return !!find(sel, option);
+		},
+		[]
+	);
 
 	// Get new active option index (for navigation)
-	const getNewActiveOptionIndex = useCallback(({
-		activeOptionIndex: currentIndex,
-		offset,
-		options: opts,
-	}: {
-		activeOptionIndex: number;
-		offset: number;
-		options: ComboboxOption[];
-	}) => {
-		const nextIndex = currentIndex + offset;
-		const skipIndex =
-			opts.length > nextIndex &&
-			nextIndex >= 0 &&
-			opts[nextIndex].type === 'separator';
-		const newIndex = skipIndex ? nextIndex + offset : nextIndex;
-		const hasNewIndex = opts.length > nextIndex && nextIndex >= 0;
-		return hasNewIndex ? newIndex : currentIndex;
-	}, []);
+	const getNewActiveOptionIndex = useCallback(
+		({
+			activeOptionIndex: currentIndex,
+			offset,
+			options: opts,
+		}: {
+			activeOptionIndex: number;
+			offset: number;
+			options: ComboboxOption[];
+		}) => {
+			const nextIndex = currentIndex + offset;
+			const skipIndex =
+				opts.length > nextIndex &&
+				nextIndex >= 0 &&
+				opts[nextIndex].type === 'separator';
+			const newIndex = skipIndex ? nextIndex + offset : nextIndex;
+			const hasNewIndex = opts.length > nextIndex && nextIndex >= 0;
+			return hasNewIndex ? newIndex : currentIndex;
+		},
+		[]
+	);
 
 	// ===== Event Handlers =====
 
-	const handleClose = useCallback((event?: React.SyntheticEvent, { trigger }: { trigger?: string } = {}) => {
-		const isOpen = getIsOpen();
+	const handleClose = useCallback(
+		(event?: React.SyntheticEvent, { trigger }: { trigger?: string } = {}) => {
+			const isOpen = getIsOpen();
 
-		if (isOpen) {
-			if (currentOpenDropdown && currentOpenDropdown.handleClose === handleClose) {
-				currentOpenDropdown = undefined;
-			}
+			if (isOpen) {
+				if (
+					currentOpenDropdown &&
+					currentOpenDropdown.handleClose === handleClose
+				) {
+					currentOpenDropdown = undefined;
+				}
 
-			setActiveOption(undefined);
-			setActiveOptionIndex(-1);
-			setIsOpenState(false);
+				setActiveOption(undefined);
+				setActiveOptionIndex(-1);
+				setIsOpenState(false);
 
-			if (variant === 'popover' && trigger === 'cancel') {
-				const popoverProps = popover?.props as { onClose?: (event: unknown, data: { trigger: string }) => void } | undefined;
-				if (popoverProps?.onClose) {
-					popoverProps.onClose(event, { trigger });
+				if (variant === 'popover' && trigger === 'cancel') {
+					const popoverProps = popover?.props as
+						| { onClose?: (event: unknown, data: { trigger: string }) => void }
+						| undefined;
+					if (popoverProps?.onClose) {
+						popoverProps.onClose(event, { trigger });
+					}
+				}
+
+				if (events.onClose) {
+					events.onClose(event, {});
 				}
 			}
+		},
+		[getIsOpen, variant, popover, events]
+	);
 
-			if (events.onClose) {
-				events.onClose(event, {});
-			}
-		}
-	}, [getIsOpen, variant, popover, events]);
+	const handleOpen = useCallback(
+		(event?: React.SyntheticEvent, data?: Record<string, unknown>) => {
+			const isOpen = getIsOpen();
 
-	const handleOpen = useCallback((event?: React.SyntheticEvent, data?: Record<string, unknown>) => {
-		const isOpen = getIsOpen();
+			if (!isOpen) {
+				if (
+					currentOpenDropdown &&
+					isFunction(currentOpenDropdown.handleClose)
+				) {
+					currentOpenDropdown.handleClose();
+				}
+			} else {
+				currentOpenDropdown = { handleClose };
 
-		if (!isOpen) {
-			if (currentOpenDropdown && isFunction(currentOpenDropdown.handleClose)) {
-				currentOpenDropdown.handleClose();
-			}
-		} else {
-			currentOpenDropdown = { handleClose };
+				setIsOpenState(true);
 
-			setIsOpenState(true);
+				if (events.onOpen) {
+					events.onOpen(event, data || {});
+				}
 
-			if (events.onOpen) {
-				events.onOpen(event, data || {});
-			}
+				if (variant === 'readonly') {
+					const opts = getOptions();
+					const idx = findIndex(opts, (item) => isEqual(item, selection[0]));
 
-			if (variant === 'readonly') {
-				const opts = getOptions();
-				const idx = findIndex(opts, (item) => isEqual(item, selection[0]));
+					setActiveOptionIndex(idx);
+					setActiveOption(selection[0]);
 
-				setActiveOptionIndex(idx);
-				setActiveOption(selection[0]);
-
-				if (menuRef.current !== null) {
-					menuItemSelectScroll({
-						container: menuRef.current,
-						focusedIndex: idx,
-					});
+					if (menuRef.current !== null) {
+						menuItemSelectScroll({
+							container: menuRef.current,
+							focusedIndex: idx,
+						});
+					}
 				}
 			}
-		}
-	}, [getIsOpen, handleClose, events, variant, getOptions, selection]);
+		},
+		[getIsOpen, handleClose, events, variant, getOptions, selection]
+	);
 
-	const handleRequestClose = useCallback((event: React.SyntheticEvent, data: Record<string, unknown>) => {
-		if (events.onRequestClose) {
-			events.onRequestClose(event, data);
-		}
-		if (getIsOpen()) {
-			handleClose(event, { trigger: 'cancel' });
-		}
-	}, [events, getIsOpen, handleClose]);
+	const handleRequestClose = useCallback(
+		(event: React.SyntheticEvent, data: Record<string, unknown>) => {
+			if (events.onRequestClose) {
+				events.onRequestClose(event, data);
+			}
+			if (getIsOpen()) {
+				handleClose(event, { trigger: 'cancel' });
+			}
+		},
+		[events, getIsOpen, handleClose]
+	);
 
 	const openDialog = useCallback(() => {
 		if (events.onRequestOpen) {
@@ -435,9 +505,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 
 	const requestOpenMenu = useCallback(() => {
 		const isInlineSingleSelectionAndIsNotSelected =
-			!multiple &&
-			selection.length === 0 &&
-			variant === 'inline-listbox';
+			!multiple && selection.length === 0 && variant === 'inline-listbox';
 
 		if (
 			isInlineSingleSelectionAndIsNotSelected ||
@@ -448,169 +516,223 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		}
 	}, [multiple, selection.length, variant, openDialog]);
 
-	const handleClickOutside = useCallback((event: MouseEvent | TouchEvent) => {
-		handleRequestClose(event as unknown as React.SyntheticEvent, {});
-	}, [handleRequestClose]);
+	const handleClickOutside = useCallback(
+		(event: MouseEvent | TouchEvent) => {
+			handleRequestClose(event as unknown as React.SyntheticEvent, {});
+		},
+		[handleRequestClose]
+	);
 
-	const handleSelect = useCallback((event: React.SyntheticEvent, { selection: sel, option }: { selection: ComboboxOption[]; option: ComboboxOption }) => {
-		let newSelection: ComboboxOption[];
-		const selected = isSelected({ selection: sel, option });
-		const singleSelectAndSelectedWasNotClicked = !multiple && !selected;
-		const multiSelectAndSelectedWasNotClicked = multiple && !selected;
-		const deselectWasClicked = option.id === deselectId;
+	const handleSelect = useCallback(
+		(
+			event: React.SyntheticEvent,
+			{
+				selection: sel,
+				option,
+			}: { selection: ComboboxOption[]; option: ComboboxOption }
+		) => {
+			let newSelection: ComboboxOption[];
+			const selected = isSelected({ selection: sel, option });
+			const singleSelectAndSelectedWasNotClicked = !multiple && !selected;
+			const multiSelectAndSelectedWasNotClicked = multiple && !selected;
+			const deselectWasClicked = option.id === deselectId;
 
-		if (deselectWasClicked) {
-			newSelection = [];
-		} else if (singleSelectAndSelectedWasNotClicked) {
-			newSelection = [option];
-		} else if (multiSelectAndSelectedWasNotClicked) {
-			newSelection = [...selection, option];
-		} else {
-			newSelection = reject(selection, option);
-		}
-
-		if (events.onSelect) {
-			events.onSelect(event, { selection: newSelection });
-		}
-
-		handleClose();
-	}, [isSelected, multiple, deselectId, selection, events, handleClose]);
-
-	const handleInputBlur = useCallback((event: React.FocusEvent) => {
-		setTimeout(() => {
-			const activeElement = documentDefined ? document.activeElement : null;
-			if (
-				activeElement &&
-				activeElement.tagName === 'DIV' &&
-				activeElement.id === `${getId()}-listbox`
-			) {
-				if (inputRef.current) {
-					inputRef.current.focus();
-				}
-			} else if (!popover) {
-				handleClose(event);
-			}
-		}, 200);
-
-		if (events.onBlur) {
-			events.onBlur(event);
-		}
-	}, [getId, popover, handleClose, events]);
-
-	const handleInputChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-		requestOpenMenu();
-		if (events.onChange) {
-			events.onChange(event, { value: event.target.value });
-		}
-	}, [requestOpenMenu, events]);
-
-	const handleInputFocus = useCallback((event: React.FocusEvent) => {
-		if (events.onFocus) {
-			events.onFocus(event, {});
-		}
-	}, [events]);
-
-	const handleInputSubmit = useCallback((event: React.KeyboardEvent) => {
-		if (activeOption === undefined && activeOptionIndex === -1) {
-			if (!isOpenState) {
-				if (!event.shiftKey) {
-					openDialog();
-				}
+			if (deselectWasClicked) {
+				newSelection = [];
+			} else if (singleSelectAndSelectedWasNotClicked) {
+				newSelection = [option];
+			} else if (multiSelectAndSelectedWasNotClicked) {
+				newSelection = [...selection, option];
 			} else {
-				handleRequestClose(event, {});
+				newSelection = reject(selection, option);
 			}
-		}
 
-		if (activeOption?.disabled) {
-			return;
-		}
+			if (events.onSelect) {
+				events.onSelect(event, { selection: newSelection });
+			}
 
-		if (
-			activeOption &&
-			(activeOption.type === 'header' || activeOption.type === 'footer')
-		) {
-			activeOption.onClick?.(event as unknown as React.MouseEvent);
-			return;
-		}
+			handleClose();
+		},
+		[isSelected, multiple, deselectId, selection, events, handleClose]
+	);
 
-		if (getIsActiveOption()) {
-			handleSelect(event, {
-				option: activeOption!,
-				selection,
-			});
-		} else if (
-			!predefinedOptionsOnly &&
-			(event.target as HTMLInputElement).value !== '' &&
-			events.onSubmit
-		) {
-			events.onSubmit(event, {
-				value: (event.target as HTMLInputElement).value,
-			});
-		}
-	}, [activeOption, activeOptionIndex, isOpenState, openDialog, handleRequestClose, getIsActiveOption, handleSelect, selection, predefinedOptionsOnly, events]);
+	const handleInputBlur = useCallback(
+		(event: React.FocusEvent) => {
+			setTimeout(() => {
+				const activeElement = documentDefined ? document.activeElement : null;
+				if (
+					activeElement &&
+					activeElement.tagName === 'DIV' &&
+					activeElement.id === `${getId()}-listbox`
+				) {
+					if (inputRef.current) {
+						inputRef.current.focus();
+					}
+				} else if (!popover) {
+					handleClose(event);
+				}
+			}, 200);
 
-	const handleNavigateListboxMenu = useCallback((event: React.KeyboardEvent, { direction }: { direction: 'next' | 'previous' }) => {
-		const offsets = { next: 1, previous: -1 };
-		const opts = getOptions();
-		const newIndex = getNewActiveOptionIndex({
+			if (events.onBlur) {
+				events.onBlur(event);
+			}
+		},
+		[getId, popover, handleClose, events]
+	);
+
+	const handleInputChange = useCallback(
+		(event: React.ChangeEvent<HTMLInputElement>) => {
+			requestOpenMenu();
+			if (events.onChange) {
+				events.onChange(event, { value: event.target.value });
+			}
+		},
+		[requestOpenMenu, events]
+	);
+
+	const handleInputFocus = useCallback(
+		(event: React.FocusEvent) => {
+			if (events.onFocus) {
+				events.onFocus(event, {});
+			}
+		},
+		[events]
+	);
+
+	const handleInputSubmit = useCallback(
+		(event: React.KeyboardEvent) => {
+			if (activeOption === undefined && activeOptionIndex === -1) {
+				if (!isOpenState) {
+					if (!event.shiftKey) {
+						openDialog();
+					}
+				} else {
+					handleRequestClose(event, {});
+				}
+			}
+
+			if (activeOption?.disabled) {
+				return;
+			}
+
+			if (
+				activeOption &&
+				(activeOption.type === 'header' || activeOption.type === 'footer')
+			) {
+				activeOption.onClick?.(event as unknown as React.MouseEvent);
+				return;
+			}
+
+			if (getIsActiveOption()) {
+				handleSelect(event, {
+					option: activeOption!,
+					selection,
+				});
+			} else if (
+				!predefinedOptionsOnly &&
+				(event.target as HTMLInputElement).value !== '' &&
+				events.onSubmit
+			) {
+				events.onSubmit(event, {
+					value: (event.target as HTMLInputElement).value,
+				});
+			}
+		},
+		[
+			activeOption,
 			activeOptionIndex,
-			offset: offsets[direction],
-			options: opts,
-		});
+			isOpenState,
+			openDialog,
+			handleRequestClose,
+			getIsActiveOption,
+			handleSelect,
+			selection,
+			predefinedOptionsOnly,
+			events,
+		]
+	);
 
-		if (getIsOpen() && menuRef.current) {
-			menuItemSelectScroll({
-				container: menuRef.current,
-				focusedIndex: newIndex,
-			});
-		}
-
-		setActiveOption(opts[newIndex]);
-		setActiveOptionIndex(newIndex);
-	}, [getOptions, getNewActiveOptionIndex, activeOptionIndex, getIsOpen]);
-
-	const handleNavigateSelectedListbox = useCallback((event: React.SyntheticEvent, { direction }: { direction: 'next' | 'previous' }) => {
-		const offsets = { next: 1, previous: -1 };
-		const isLastOptionAndRightIsPressed =
-			activeSelectedOptionIndex + 1 === selection.length && direction === 'next';
-		const isFirstOptionAndLeftIsPressed =
-			activeSelectedOptionIndex === 0 && direction === 'previous';
-
-		if (isLastOptionAndRightIsPressed) {
-			setActiveSelectedOption(selection[0]);
-			setActiveSelectedOptionIndex(0);
-			setListboxHasFocus(true);
-		} else if (isFirstOptionAndLeftIsPressed) {
-			setActiveSelectedOption(selection[selection.length - 1]);
-			setActiveSelectedOptionIndex(selection.length - 1);
-			setListboxHasFocus(true);
-		} else {
+	const handleNavigateListboxMenu = useCallback(
+		(
+			event: React.KeyboardEvent,
+			{ direction }: { direction: 'next' | 'previous' }
+		) => {
+			const offsets = { next: 1, previous: -1 };
+			const opts = getOptions();
 			const newIndex = getNewActiveOptionIndex({
-				activeOptionIndex: activeSelectedOptionIndex,
+				activeOptionIndex,
 				offset: offsets[direction],
-				options: selection,
+				options: opts,
 			});
-			setActiveSelectedOption(selection[newIndex]);
-			setActiveSelectedOptionIndex(newIndex);
-			setListboxHasFocus(true);
-		}
-	}, [activeSelectedOptionIndex, selection, getNewActiveOptionIndex]);
 
-	const handleKeyDownDown = useCallback((event: React.KeyboardEvent) => {
-		if (!event.shiftKey) {
-			openDialog();
-		}
+			if (getIsOpen() && menuRef.current) {
+				menuItemSelectScroll({
+					container: menuRef.current,
+					focusedIndex: newIndex,
+				});
+			}
 
-		if (variant !== 'popover') {
-			handleNavigateListboxMenu(event, { direction: 'next' });
-		}
-	}, [openDialog, variant, handleNavigateListboxMenu]);
+			setActiveOption(opts[newIndex]);
+			setActiveOptionIndex(newIndex);
+		},
+		[getOptions, getNewActiveOptionIndex, activeOptionIndex, getIsOpen]
+	);
 
-	const handleKeyDownUp = useCallback((event: React.KeyboardEvent) => {
-		if (!event.shiftKey && getIsOpen()) {
-			handleNavigateListboxMenu(event, { direction: 'previous' });
-		}
-	}, [getIsOpen, handleNavigateListboxMenu]);
+	const handleNavigateSelectedListbox = useCallback(
+		(
+			event: React.SyntheticEvent,
+			{ direction }: { direction: 'next' | 'previous' }
+		) => {
+			const offsets = { next: 1, previous: -1 };
+			const isLastOptionAndRightIsPressed =
+				activeSelectedOptionIndex + 1 === selection.length &&
+				direction === 'next';
+			const isFirstOptionAndLeftIsPressed =
+				activeSelectedOptionIndex === 0 && direction === 'previous';
+
+			if (isLastOptionAndRightIsPressed) {
+				setActiveSelectedOption(selection[0]);
+				setActiveSelectedOptionIndex(0);
+				setListboxHasFocus(true);
+			} else if (isFirstOptionAndLeftIsPressed) {
+				setActiveSelectedOption(selection[selection.length - 1]);
+				setActiveSelectedOptionIndex(selection.length - 1);
+				setListboxHasFocus(true);
+			} else {
+				const newIndex = getNewActiveOptionIndex({
+					activeOptionIndex: activeSelectedOptionIndex,
+					offset: offsets[direction],
+					options: selection,
+				});
+				setActiveSelectedOption(selection[newIndex]);
+				setActiveSelectedOptionIndex(newIndex);
+				setListboxHasFocus(true);
+			}
+		},
+		[activeSelectedOptionIndex, selection, getNewActiveOptionIndex]
+	);
+
+	const handleKeyDownDown = useCallback(
+		(event: React.KeyboardEvent) => {
+			if (!event.shiftKey) {
+				openDialog();
+			}
+
+			if (variant !== 'popover') {
+				handleNavigateListboxMenu(event, { direction: 'next' });
+			}
+		},
+		[openDialog, variant, handleNavigateListboxMenu]
+	);
+
+	const handleKeyDownUp = useCallback(
+		(event: React.KeyboardEvent) => {
+			if (!event.shiftKey && getIsOpen()) {
+				handleNavigateListboxMenu(event, { direction: 'previous' });
+			}
+		},
+		[getIsOpen, handleNavigateListboxMenu]
+	);
 
 	const handleKeyDownTab = useCallback(() => {
 		if (selectedListboxRef.current) {
@@ -618,119 +740,166 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		}
 	}, []);
 
-	const handleKeyDownOther = useCallback((event: React.KeyboardEvent) => {
-		const opts = getOptions();
-		const newActiveOptionIndex = keyLetterMenuItemSelect({
-			key: event.key,
-			keyBuffer: menuKeyBuffer.current,
-			keyCode: event.keyCode,
-			options: opts,
-		});
+	const handleKeyDownOther = useCallback(
+		(event: React.KeyboardEvent) => {
+			const opts = getOptions();
+			const newActiveOptionIndex = keyLetterMenuItemSelect({
+				key: event.key,
+				keyBuffer: menuKeyBuffer.current,
+				keyCode: event.keyCode,
+				options: opts,
+			});
 
-		if (newActiveOptionIndex !== undefined) {
-			if (getIsOpen() && menuRef.current) {
-				menuItemSelectScroll({
-					container: menuRef.current,
-					focusedIndex: newActiveOptionIndex,
-				});
+			if (newActiveOptionIndex !== undefined) {
+				if (getIsOpen() && menuRef.current) {
+					menuItemSelectScroll({
+						container: menuRef.current,
+						focusedIndex: newActiveOptionIndex,
+					});
+				}
+
+				setActiveOption(opts[newActiveOptionIndex]);
+				setActiveOptionIndex(newActiveOptionIndex);
 			}
+		},
+		[getOptions, getIsOpen]
+	);
 
-			setActiveOption(opts[newActiveOptionIndex]);
-			setActiveOptionIndex(newActiveOptionIndex);
-		}
-	}, [getOptions, getIsOpen]);
-
-	const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
-		const callbacks: Record<number | string, { callback: (e: React.KeyboardEvent) => void; stopPropagation?: boolean } | undefined> = {
-			[KEYS.DOWN]: { callback: handleKeyDownDown },
-			[KEYS.ENTER]: { callback: handleInputSubmit },
-			[KEYS.ESCAPE]: { callback: handleClose as (e: React.KeyboardEvent) => void },
-			[KEYS.UP]: { callback: handleKeyDownUp },
-		};
-
-		if (variant === 'readonly') {
-			if (selection.length > 2) {
-				callbacks[KEYS.TAB] = { callback: handleKeyDownTab };
-			} else {
-				callbacks[KEYS.TAB] = undefined;
-			}
-			callbacks.other = {
-				callback: handleKeyDownOther,
-				stopPropagation: false,
+	const handleKeyDown = useCallback(
+		(event: React.KeyboardEvent) => {
+			const callbacks: Record<
+				number | string,
+				| {
+						callback: (e: React.KeyboardEvent) => void;
+						stopPropagation?: boolean;
+				  }
+				| undefined
+			> = {
+				[KEYS.DOWN]: { callback: handleKeyDownDown },
+				[KEYS.ENTER]: { callback: handleInputSubmit },
+				[KEYS.ESCAPE]: {
+					callback: handleClose as (e: React.KeyboardEvent) => void,
+				},
+				[KEYS.UP]: { callback: handleKeyDownUp },
 			};
-		}
 
-		const stopPropagation = getIsOpen();
+			if (variant === 'readonly') {
+				if (selection.length > 2) {
+					callbacks[KEYS.TAB] = { callback: handleKeyDownTab };
+				} else {
+					callbacks[KEYS.TAB] = undefined;
+				}
+				callbacks.other = {
+					callback: handleKeyDownOther,
+					stopPropagation: false,
+				};
+			}
 
-		mapKeyEventCallbacks(event, { callbacks, stopPropagation });
-	}, [handleKeyDownDown, handleInputSubmit, handleClose, handleKeyDownUp, variant, selection.length, handleKeyDownTab, handleKeyDownOther, getIsOpen]);
+			const stopPropagation = getIsOpen();
+
+			mapKeyEventCallbacks(event, { callbacks, stopPropagation });
+		},
+		[
+			handleKeyDownDown,
+			handleInputSubmit,
+			handleClose,
+			handleKeyDownUp,
+			variant,
+			selection.length,
+			handleKeyDownTab,
+			handleKeyDownOther,
+			getIsOpen,
+		]
+	);
 
 	const handleBlurPill = useCallback(() => {
 		setListboxHasFocus(false);
 	}, []);
 
-	const handlePillFocus = useCallback((event: React.FocusEvent, { option, index }: { option: ComboboxOption; index: number }) => {
-		if (!listboxHasFocus) {
-			setActiveSelectedOption(option);
-			setActiveSelectedOptionIndex(index);
-			setListboxHasFocus(true);
-		}
-	}, [listboxHasFocus]);
+	const handlePillFocus = useCallback(
+		(
+			event: React.FocusEvent,
+			{ option, index }: { option: ComboboxOption; index: number }
+		) => {
+			if (!listboxHasFocus) {
+				setActiveSelectedOption(option);
+				setActiveSelectedOptionIndex(index);
+				setListboxHasFocus(true);
+			}
+		},
+		[listboxHasFocus]
+	);
 
-	const handleRemoveSelectedOption = useCallback((event: React.SyntheticEvent, { option, index }: { option: ComboboxOption; index?: number }) => {
-		event.preventDefault();
-		const onlyOnePillAndInputExists = selection.length === 1;
-		const isReadOnlyAndTwoPillsExists =
-			selection.length === 2 && variant === 'readonly' && multiple;
-		const lastPillWasRemoved = index !== undefined && index + 1 === selection.length;
+	const handleRemoveSelectedOption = useCallback(
+		(
+			event: React.SyntheticEvent,
+			{ option, index }: { option: ComboboxOption; index?: number }
+		) => {
+			event.preventDefault();
+			const onlyOnePillAndInputExists = selection.length === 1;
+			const isReadOnlyAndTwoPillsExists =
+				selection.length === 2 && variant === 'readonly' && multiple;
+			const lastPillWasRemoved =
+				index !== undefined && index + 1 === selection.length;
 
-		if (
-			(onlyOnePillAndInputExists || isReadOnlyAndTwoPillsExists) &&
-			inputRef.current
-		) {
-			inputRef.current.focus();
-		} else if (lastPillWasRemoved && index !== undefined) {
-			setActiveSelectedOption(selection[index - 1]);
-			setActiveSelectedOptionIndex(index - 1);
-			setListboxHasFocus(true);
-		} else if (index !== undefined) {
-			setActiveSelectedOption(selection[index + 1]);
-			setActiveSelectedOptionIndex(index);
-			setListboxHasFocus(true);
-		}
+			if (
+				(onlyOnePillAndInputExists || isReadOnlyAndTwoPillsExists) &&
+				inputRef.current
+			) {
+				inputRef.current.focus();
+			} else if (lastPillWasRemoved && index !== undefined) {
+				setActiveSelectedOption(selection[index - 1]);
+				setActiveSelectedOptionIndex(index - 1);
+				setListboxHasFocus(true);
+			} else if (index !== undefined) {
+				setActiveSelectedOption(selection[index + 1]);
+				setActiveSelectedOptionIndex(index);
+				setListboxHasFocus(true);
+			}
 
-		if (events.onRequestRemoveSelectedOption) {
-			events.onRequestRemoveSelectedOption(event, {
-				selection: reject(selection, option),
-			});
-		}
-	}, [selection, variant, multiple, events]);
+			if (events.onRequestRemoveSelectedOption) {
+				events.onRequestRemoveSelectedOption(event, {
+					selection: reject(selection, option),
+				});
+			}
+		},
+		[selection, variant, multiple, events]
+	);
 
-	const handleRequestFocusSelectedListbox = useCallback((event: React.SyntheticEvent, { ref }: { ref: HTMLElement | null }) => {
-		if (ref) {
-			activeSelectedOptionRef.current = ref;
-			activeSelectedOptionRef.current.focus();
-		}
-	}, []);
+	const handleRequestFocusSelectedListbox = useCallback(
+		(event: React.SyntheticEvent, { ref }: { ref: HTMLElement | null }) => {
+			if (ref) {
+				activeSelectedOptionRef.current = ref;
+				activeSelectedOptionRef.current.focus();
+			}
+		},
+		[]
+	);
 
 	// ===== Refs =====
 
-	const setInputRefCallback = useCallback((component: HTMLInputElement | null) => {
-		inputRef.current = component;
-		if (!inputRendered) {
-			setInputRendered(true);
-		}
-		if (inputRefCallback) {
-			inputRefCallback(component);
-		}
-	}, [inputRendered, inputRefCallback]);
+	const setInputRefCallback = useCallback(
+		(component: HTMLInputElement | null) => {
+			inputRef.current = component;
+			if (!inputRendered) {
+				setInputRendered(true);
+			}
+			if (inputRefCallback) {
+				inputRefCallback(component);
+			}
+		},
+		[inputRendered, inputRefCallback]
+	);
 
-	const setSelectedListboxRefCallback = useCallback((ref: HTMLUListElement | null) => {
-		selectedListboxRef.current = ref;
-		if (selectedListboxRefCallback) {
-			selectedListboxRefCallback(ref);
-		}
-	}, [selectedListboxRefCallback]);
+	const setSelectedListboxRefCallback = useCallback(
+		(ref: HTMLUListElement | null) => {
+			selectedListboxRef.current = ref;
+			if (selectedListboxRefCallback) {
+				selectedListboxRefCallback(ref);
+			}
+		},
+		[selectedListboxRefCallback]
+	);
 
 	const setMenuRefCallback = useCallback((ref: HTMLUListElement | null) => {
 		menuRef.current = ref;
@@ -794,7 +963,10 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	// Cleanup on unmount
 	useEffect(() => {
 		return () => {
-			if (currentOpenDropdown && currentOpenDropdown.handleClose === handleClose) {
+			if (
+				currentOpenDropdown &&
+				currentOpenDropdown.handleClose === handleClose
+			) {
 				currentOpenDropdown = undefined;
 			}
 		};
@@ -802,89 +974,118 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 
 	// ===== Render Helpers =====
 
-	const getCustomPopoverProps = useCallback((body: ReactNode) => {
-		const popoverBody = (
-			<div>
-				<div className="slds-assistive-text" id={`${getId()}-label`}>
-					{assistiveText.popoverLabel}
+	const getCustomPopoverProps = useCallback(
+		(body: ReactNode) => {
+			const popoverBody = (
+				<div>
+					<div className="slds-assistive-text" id={`${getId()}-label`}>
+						{assistiveText.popoverLabel}
+					</div>
+					{body}
 				</div>
-				{body}
-			</div>
-		);
-
-		const popoverFooter = (
-			<div>
-				<Button
-					label={labels.cancelButton}
-					onClick={(e: React.MouseEvent) => {
-						handleClose(e, { trigger: 'cancel' });
-					}}
-				/>
-				<Button
-					label={labels.doneButton}
-					variant="brand"
-					onClick={handleClose as unknown as (event: React.MouseEvent<HTMLButtonElement>) => void}
-				/>
-			</div>
-		);
-
-		const defaultPopoverProps: Record<string, unknown> = {
-			ariaLabelledby: `${getId()}-label`,
-			align: 'bottom',
-			body: popoverBody,
-			className: 'slds-popover_full-width',
-			footer: popoverFooter,
-			footerClassName: 'slds-popover__footer_form',
-			hasNoNubbin: true,
-			id: getId(),
-			isOpen: isOpenState,
-			hasNoTriggerStyles: true,
-			onOpen: handleOpen,
-			onClose: handleClose,
-			onRequestClose: handleClose,
-		};
-
-		const popoverPropsFromProp = popover?.props as Record<string, unknown> | undefined;
-		const popoverProps = assign(
-			defaultPopoverProps,
-			popoverPropsFromProp || {}
-		);
-		popoverProps.body = popoverBody;
-
-		delete popoverProps.children;
-		return popoverProps;
-	}, [getId, assistiveText.popoverLabel, labels.cancelButton, labels.doneButton, handleClose, isOpenState, handleOpen, popover]);
-
-	const getDialog = useCallback(({ menuRenderer }: { menuRenderer: ReactNode }) => {
-		const position = menuPosition;
-
-		if (!disabled && getIsOpen()) {
-			const dialogProps = {
-				align: 'bottom left' as const,
-				context: iconSettingsContext,
-				hasStaticAlignment,
-				inheritWidthOf,
-				onClose: handleClose,
-				onMouseDown: (event: React.MouseEvent) => {
-					event.preventDefault();
-				},
-				onOpen: handleOpen,
-				onRequestTargetElement: getTargetElement,
-				position,
-				containerProps: {
-					id: `${getId()}-listbox`,
-					role: 'listbox',
-				},
-			};
-			return (
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
-				<Dialog {...(dialogProps as any)}>
-					{menuRenderer}
-				</Dialog>
 			);
-		}
-		return null;
-	}, [menuPosition, disabled, getIsOpen, iconSettingsContext, hasStaticAlignment, inheritWidthOf, handleClose, handleOpen, getTargetElement, getId]);
+
+			const popoverFooter = (
+				<div>
+					<Button
+						label={labels.cancelButton}
+						onClick={(e: React.MouseEvent) => {
+							handleClose(e, { trigger: 'cancel' });
+						}}
+					/>
+					<Button
+						label={labels.doneButton}
+						variant="brand"
+						onClick={
+							handleClose as unknown as (
+								event: React.MouseEvent<HTMLButtonElement>
+							) => void
+						}
+					/>
+				</div>
+			);
+
+			const defaultPopoverProps: Record<string, unknown> = {
+				ariaLabelledby: `${getId()}-label`,
+				align: 'bottom',
+				body: popoverBody,
+				className: 'slds-popover_full-width',
+				footer: popoverFooter,
+				footerClassName: 'slds-popover__footer_form',
+				hasNoNubbin: true,
+				id: getId(),
+				isOpen: isOpenState,
+				hasNoTriggerStyles: true,
+				onOpen: handleOpen,
+				onClose: handleClose,
+				onRequestClose: handleClose,
+			};
+
+			const popoverPropsFromProp = popover?.props as
+				Record<string, unknown> | undefined;
+			const popoverProps = assign(
+				defaultPopoverProps,
+				popoverPropsFromProp || {}
+			);
+			popoverProps.body = popoverBody;
+
+			delete popoverProps.children;
+			return popoverProps;
+		},
+		[
+			getId,
+			assistiveText.popoverLabel,
+			labels.cancelButton,
+			labels.doneButton,
+			handleClose,
+			isOpenState,
+			handleOpen,
+			popover,
+		]
+	);
+
+	const getDialog = useCallback(
+		({ menuRenderer }: { menuRenderer: ReactNode }) => {
+			const position = menuPosition;
+
+			if (!disabled && getIsOpen()) {
+				const dialogProps = {
+					align: 'bottom left' as const,
+					context: iconSettingsContext,
+					hasStaticAlignment,
+					inheritWidthOf,
+					onClose: handleClose,
+					onMouseDown: (event: React.MouseEvent) => {
+						event.preventDefault();
+					},
+					onOpen: handleOpen,
+					onRequestTargetElement: getTargetElement,
+					position,
+					containerProps: {
+						id: `${getId()}-listbox`,
+						role: 'listbox',
+					},
+				};
+				return (
+					// eslint-disable-next-line @typescript-eslint/no-explicit-any
+					<Dialog {...(dialogProps as any)}>{menuRenderer}</Dialog>
+				);
+			}
+			return null;
+		},
+		[
+			menuPosition,
+			disabled,
+			getIsOpen,
+			iconSettingsContext,
+			hasStaticAlignment,
+			inheritWidthOf,
+			handleClose,
+			handleOpen,
+			getTargetElement,
+			getId,
+		]
+	);
 
 	const renderMenu = useCallback(() => {
 		const menuVariant: Record<string, 'icon-title-subtitle' | 'checkbox'> = {
@@ -913,14 +1114,42 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				menuRef={setMenuRefCallback}
 				maxWidth={menuMaxWidth}
 				options={getOptions()}
-				onSelect={handleSelect as (event: React.MouseEvent, data: { option: ComboboxOption; selection?: ComboboxOption[] }) => void}
+				onSelect={
+					handleSelect as (
+						event: React.MouseEvent,
+						data: { option: ComboboxOption; selection?: ComboboxOption[] }
+					) => void
+				}
 				onRenderMenuItem={onRenderMenuItem || menuItem}
 				selection={selection}
 				tooltipMenuItemDisabled={tooltipMenuItemDisabled}
 				variant={menuVariant[variant]}
 			/>
 		);
-	}, [variant, assistiveText, activeOption, activeOptionIndex, classNameMenu, classNameMenuSubHeader, inheritWidthOf, getId, value, isSelected, menuItemVisibleLength, labels.noOptionsFound, hasMenuSpinner, menuPosition, setMenuRefCallback, menuMaxWidth, getOptions, handleSelect, onRenderMenuItem, menuItem, selection, tooltipMenuItemDisabled]);
+	}, [
+		variant,
+		assistiveText,
+		activeOption,
+		activeOptionIndex,
+		classNameMenu,
+		classNameMenuSubHeader,
+		inheritWidthOf,
+		getId,
+		value,
+		isSelected,
+		menuItemVisibleLength,
+		labels.noOptionsFound,
+		hasMenuSpinner,
+		menuPosition,
+		setMenuRefCallback,
+		menuMaxWidth,
+		getOptions,
+		handleSelect,
+		onRenderMenuItem,
+		menuItem,
+		selection,
+		tooltipMenuItemDisabled,
+	]);
 
 	// User defined props from input
 	const userDefinedInputProps = input?.props || {};
@@ -995,14 +1224,36 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			<SelectedListBox
 				activeOption={activeSelectedOption as SelectedListBoxOption}
 				activeOptionIndex={activeSelectedOptionIndex}
-				assistiveText={assistiveText as unknown as { removePill?: string; selectedListboxLabel?: string; [key: string]: unknown }}
+				assistiveText={
+					assistiveText as unknown as {
+						removePill?: string;
+						selectedListboxLabel?: string;
+						[key: string]: unknown;
+					}
+				}
 				events={{
 					onBlurPill: handleBlurPill,
-					onPillFocus: handlePillFocus as (event: React.FocusEvent, data: { index: number; option: SelectedListBoxOption }) => void,
-					onRequestFocus: handleRequestFocusSelectedListbox as (event: unknown, data: { ref: HTMLElement | null }) => void,
-					onRequestFocusOnNextPill: handleNavigateSelectedListbox as (event: React.SyntheticEvent, data: { direction: 'next' | 'previous' }) => void,
-					onRequestFocusOnPreviousPill: handleNavigateSelectedListbox as (event: React.SyntheticEvent, data: { direction: 'next' | 'previous' }) => void,
-					onRequestRemove: handleRemoveSelectedOption as (event: React.MouseEvent | React.KeyboardEvent | React.SyntheticEvent, data: { index?: number; option: SelectedListBoxOption }) => void,
+					onPillFocus: handlePillFocus as (
+						event: React.FocusEvent,
+						data: { index: number; option: SelectedListBoxOption }
+					) => void,
+					onRequestFocus: handleRequestFocusSelectedListbox as (
+						event: unknown,
+						data: { ref: HTMLElement | null }
+					) => void,
+					onRequestFocusOnNextPill: handleNavigateSelectedListbox as (
+						event: React.SyntheticEvent,
+						data: { direction: 'next' | 'previous' }
+					) => void,
+					onRequestFocusOnPreviousPill: handleNavigateSelectedListbox as (
+						event: React.SyntheticEvent,
+						data: { direction: 'next' | 'previous' }
+					) => void,
+					onRequestRemove: handleRemoveSelectedOption as (
+						event:
+							React.MouseEvent | React.KeyboardEvent | React.SyntheticEvent,
+						data: { index?: number; option: SelectedListBoxOption }
+					) => void,
 				}}
 				id={`${getId()}-selected-listbox`}
 				labels={labels}
@@ -1035,18 +1286,40 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 					<SelectedListBox
 						activeOption={activeSelectedOption as SelectedListBoxOption}
 						activeOptionIndex={activeSelectedOptionIndex}
-						assistiveText={assistiveText as unknown as { removePill?: string; selectedListboxLabel?: string; [key: string]: unknown }}
+						assistiveText={
+							assistiveText as unknown as {
+								removePill?: string;
+								selectedListboxLabel?: string;
+								[key: string]: unknown;
+							}
+						}
 						containerRole="listbox"
 						containerAriaOrientation="horizontal"
 						listboxRole="group"
 						listboxAriaOrientation={null}
 						events={{
 							onBlurPill: handleBlurPill,
-							onPillFocus: handlePillFocus as (event: React.FocusEvent, data: { index: number; option: SelectedListBoxOption }) => void,
-							onRequestFocus: handleRequestFocusSelectedListbox as (event: unknown, data: { ref: HTMLElement | null }) => void,
-							onRequestFocusOnNextPill: handleNavigateSelectedListbox as (event: React.SyntheticEvent, data: { direction: 'next' | 'previous' }) => void,
-							onRequestFocusOnPreviousPill: handleNavigateSelectedListbox as (event: React.SyntheticEvent, data: { direction: 'next' | 'previous' }) => void,
-							onRequestRemove: handleRemoveSelectedOption as (event: React.MouseEvent | React.KeyboardEvent | React.SyntheticEvent, data: { index?: number; option: SelectedListBoxOption }) => void,
+							onPillFocus: handlePillFocus as (
+								event: React.FocusEvent,
+								data: { index: number; option: SelectedListBoxOption }
+							) => void,
+							onRequestFocus: handleRequestFocusSelectedListbox as (
+								event: unknown,
+								data: { ref: HTMLElement | null }
+							) => void,
+							onRequestFocusOnNextPill: handleNavigateSelectedListbox as (
+								event: React.SyntheticEvent,
+								data: { direction: 'next' | 'previous' }
+							) => void,
+							onRequestFocusOnPreviousPill: handleNavigateSelectedListbox as (
+								event: React.SyntheticEvent,
+								data: { direction: 'next' | 'previous' }
+							) => void,
+							onRequestRemove: handleRemoveSelectedOption as (
+								event:
+									React.MouseEvent | React.KeyboardEvent | React.SyntheticEvent,
+								data: { index?: number; option: SelectedListBoxOption }
+							) => void,
 						}}
 						id={`${getId()}-selected-listbox`}
 						labels={labels}
@@ -1131,13 +1404,12 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			selectedIcon && React.isValidElement(selectedIcon)
 				? React.cloneElement(selectedIcon, {
 						containerClassName: 'slds-combobox__input-entity-icon',
-				  } as Record<string, unknown>)
+					} as Record<string, unknown>)
 				: null;
 
-		const inputValue =
-			selection[0]?.label
-				? selection[0].label as string
-				: value;
+		const inputValue = selection[0]?.label
+			? (selection[0].label as string)
+			: value;
 
 		return (
 			<div className="slds-form-element__control">
@@ -1216,8 +1488,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							}}
 							placeholder={labels.placeholder}
 							readOnly={
-								!!(predefinedOptionsOnly && activeOption) ||
-								!!selection.length
+								!!(predefinedOptionsOnly && activeOption) || !!selection.length
 							}
 							required={required}
 							role="textbox"
@@ -1243,7 +1514,8 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	};
 
 	const renderPopover = () => {
-		const popoverPropsFromProp = popover?.props as { body?: ReactNode } | undefined;
+		const popoverPropsFromProp = popover?.props as
+			{ body?: ReactNode } | undefined;
 		const popoverProps = getCustomPopoverProps(popoverPropsFromProp?.body);
 
 		return (
@@ -1266,12 +1538,10 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						aria-haspopup="dialog"
 					>
 						{/* @ts-expect-error - popoverProps contains body from getCustomPopoverProps */}
-					<Popover {...popoverProps}>
+						<Popover {...popoverProps}>
 							<InnerInput
 								aria-autocomplete="none"
-								aria-controls={
-									getIsOpen() ? `${getId()}-popover` : undefined
-								}
+								aria-controls={getIsOpen() ? `${getId()}-popover` : undefined}
 								aria-describedby={getErrorId()}
 								autoComplete="off"
 								className="slds-combobox__input"
@@ -1320,7 +1590,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		const displayValue =
 			selection.length > 1
 				? labels.multipleOptionsSelected ||
-				  `${selection.length} options selected`
+					`${selection.length} options selected`
 				: (selection[0]?.label as string) || '';
 
 		return (
@@ -1385,14 +1655,36 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				<SelectedListBox
 					activeOption={activeSelectedOption as SelectedListBoxOption}
 					activeOptionIndex={activeSelectedOptionIndex}
-					assistiveText={assistiveText as unknown as { removePill?: string; selectedListboxLabel?: string; [key: string]: unknown }}
+					assistiveText={
+						assistiveText as unknown as {
+							removePill?: string;
+							selectedListboxLabel?: string;
+							[key: string]: unknown;
+						}
+					}
 					events={{
 						onBlurPill: handleBlurPill,
-						onPillFocus: handlePillFocus as (event: React.FocusEvent, data: { index: number; option: SelectedListBoxOption }) => void,
-						onRequestFocus: handleRequestFocusSelectedListbox as (event: unknown, data: { ref: HTMLElement | null }) => void,
-						onRequestFocusOnNextPill: handleNavigateSelectedListbox as (event: React.SyntheticEvent, data: { direction: 'next' | 'previous' }) => void,
-						onRequestFocusOnPreviousPill: handleNavigateSelectedListbox as (event: React.SyntheticEvent, data: { direction: 'next' | 'previous' }) => void,
-						onRequestRemove: handleRemoveSelectedOption as (event: React.MouseEvent | React.KeyboardEvent | React.SyntheticEvent, data: { index?: number; option: SelectedListBoxOption }) => void,
+						onPillFocus: handlePillFocus as (
+							event: React.FocusEvent,
+							data: { index: number; option: SelectedListBoxOption }
+						) => void,
+						onRequestFocus: handleRequestFocusSelectedListbox as (
+							event: unknown,
+							data: { ref: HTMLElement | null }
+						) => void,
+						onRequestFocusOnNextPill: handleNavigateSelectedListbox as (
+							event: React.SyntheticEvent,
+							data: { direction: 'next' | 'previous' }
+						) => void,
+						onRequestFocusOnPreviousPill: handleNavigateSelectedListbox as (
+							event: React.SyntheticEvent,
+							data: { direction: 'next' | 'previous' }
+						) => void,
+						onRequestRemove: handleRemoveSelectedOption as (
+							event:
+								React.MouseEvent | React.KeyboardEvent | React.SyntheticEvent,
+							data: { index?: number; option: SelectedListBoxOption }
+						) => void,
 					}}
 					id={`${getId()}-selected-listbox`}
 					labels={labels}
@@ -1522,12 +1814,15 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	const variantRenderer = subRenders[variant]?.[multipleOrSingle];
 
 	const mainCombobox = (
-		<div
-			className={classNames('slds-form-element', classNameContainer)}
-		>
+		<div className={classNames('slds-form-element', classNameContainer)}>
 			{entityCombobox ? null : (
 				<Label
-					assistiveText={assistiveText as unknown as { label?: string; [key: string]: unknown }}
+					assistiveText={
+						assistiveText as unknown as {
+							label?: string;
+							[key: string]: unknown;
+						}
+					}
 					htmlFor={getId()}
 					label={labels.label}
 					required={required}
@@ -1539,16 +1834,16 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 					fieldLevelHelpTooltip={fieldLevelHelpTooltip as any}
 				/>
 			) : null}
-			{variantRenderer
-				? variantRenderer()
-				: subRenders.base.multiple()}
+			{variantRenderer ? variantRenderer() : subRenders.base.multiple()}
 		</div>
 	);
 
 	return entityCombobox ? (
 		<div className="slds-form-element">
 			<Label
-				assistiveText={assistiveText as unknown as { label?: string; [key: string]: unknown }}
+				assistiveText={
+					assistiveText as unknown as { label?: string; [key: string]: unknown }
+				}
 				htmlFor={getId()}
 				label={labels.label}
 				required={required}
@@ -1573,4 +1868,3 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 Combobox.displayName = COMBOBOX;
 
 export default Combobox;
-
