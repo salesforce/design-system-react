@@ -114,6 +114,13 @@ class Example extends React.Component {
 								/>
 							),
 							label: 'New Entity',
+							onClick: (event, { option }) => {
+								if (this.props.action) {
+									this.props.action('optionsAddItem onClick')(event, option);
+								} else if (console) {
+									console.log('optionsAddItem onClick', event, option);
+								}
+							},
 						},
 					]}
 					events={{

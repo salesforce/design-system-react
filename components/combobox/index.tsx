@@ -8,6 +8,7 @@ import { useClickOutside } from '../../utilities/hooks/use-click-outside';
 
 export type {
 	ComboboxProps,
+	ComboboxActionItem,
 	ComboboxAssistiveText,
 	ComboboxLabels,
 	ComboboxEvents,

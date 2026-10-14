@@ -684,4 +684,130 @@ describe('SLDSCombobox', () => {
 			expect(tooltip).toBeInTheDocument();
 		});
 	});
+
+	// Regression: `optionsSearchEntity` (header) and `optionsAddItem` (footer)
+	// items behaved differently by input method. A mouse click ran them through
+	// option selection, so the action item itself was sent to `onSelect` as the
+	// new selection, while Enter called the item's `onClick` and left the menu
+	// open (or did nothing at all when no `onClick` was given).
+	describe('Action items (optionsSearchEntity / optionsAddItem)', () => {
+		const actionItem = {
+			id: 'action-item-id',
+			icon: (
+				<Icon
+					assistiveText={{ label: 'add' }}
+					category="utility"
+					size="x-small"
+					name="add"
+				/>
+			),
+			label: 'New Account',
+		};
+
+		const placements = [
+			{ prop: 'optionsSearchEntity', downPresses: 1 },
+			{ prop: 'optionsAddItem', downPresses: 2 },
+		];
+
+		const renderWithActionItem = ({ prop, item }) => {
+			const onSelect = vi.fn();
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Combobox
+						{...defaultProps}
+						multiple
+						events={{ onSelect }}
+						options={[accountsWithIcon[0]]}
+						selection={[]}
+						value=""
+						{...{ [prop]: [item] }}
+					/>
+				</IconSettings>
+			);
+			const { input } = getNodes(container);
+			fireEvent.click(input);
+			return { container, input, onSelect };
+		};
+
+		const activate = ({ container, input, method, downPresses }) => {
+			if (method === 'mouse') {
+				fireEvent.click(
+					container.querySelector(
+						`#${defaultProps.id}-listbox-option-${actionItem.id}`
+					)
+				);
+			} else {
+				for (let i = 0; i < downPresses; i += 1) {
+					fireEvent.keyDown(input, keyObjects.DOWN);
+				}
+				fireEvent.keyDown(input, keyObjects.ENTER);
+			}
+		};
+
+		describe.each(placements)('$prop', ({ prop, downPresses }) => {
+			it.each(['mouse', 'keyboard'])(
+				'%s: calls the item onClick, does not change the selection, and closes the menu',
+				(method) => {
+					const onClick = vi.fn();
+					const item = { ...actionItem, onClick };
+					const { container, input, onSelect } = renderWithActionItem({
+						prop,
+						item,
+					});
+					expect(getNodes(container).combobox).toHaveAttribute(
+						'aria-expanded',
+						'true'
+					);
+
+					activate({ container, input, method, downPresses });
+
+					expect(onClick).toHaveBeenCalledTimes(1);
+					expect(onClick.mock.calls[0][1].option.id).toBe(actionItem.id);
+					expect(onSelect).not.toHaveBeenCalled();
+					expect(getNodes(container).combobox).toHaveAttribute(
+						'aria-expanded',
+						'false'
+					);
+				}
+			);
+
+			it.each(['mouse', 'keyboard'])(
+				'%s: without an onClick, fires onSelect with the item and closes the menu',
+				(method) => {
+					const { container, input, onSelect } = renderWithActionItem({
+						prop,
+						item: actionItem,
+					});
+
+					activate({ container, input, method, downPresses });
+
+					expect(onSelect).toHaveBeenCalledTimes(1);
+					expect(onSelect.mock.calls[0][1].selection.map((o) => o.id)).toEqual([
+						actionItem.id,
+					]);
+					expect(getNodes(container).combobox).toHaveAttribute(
+						'aria-expanded',
+						'false'
+					);
+				}
+			);
+
+			it.each(['mouse', 'keyboard'])(
+				'%s: a disabled item does nothing',
+				(method) => {
+					const onClick = vi.fn();
+					const item = { ...actionItem, onClick, disabled: true };
+					const { container, input, onSelect } = renderWithActionItem({
+						prop,
+						item,
+					});
+
+					activate({ container, input, method, downPresses });
+
+					expect(onClick).not.toHaveBeenCalled();
+					expect(onSelect).not.toHaveBeenCalled();
+				}
+			);
+		});
+	});
 });

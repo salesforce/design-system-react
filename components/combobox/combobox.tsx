@@ -104,6 +104,24 @@ export interface ComboboxEvents {
 	onSubmit?: (event: React.KeyboardEvent, data: { value: string }) => void;
 }
 
+/**
+ * An action row in the menu: `optionsSearchEntity` items render above the
+ * options, `optionsAddItem` items below them. Mouse click and Enter behave the
+ * same: with `onClick`, it is called and the menu closes without changing the
+ * selection; without `onClick`, `events.onSelect` fires with the item as the
+ * selection, as for any other option.
+ */
+export interface ComboboxActionItem {
+	id?: string;
+	icon?: ReactNode;
+	label?: string | ((searchTerm: string) => ReactNode);
+	disabled?: boolean;
+	onClick?: (
+		event: React.MouseEvent | React.KeyboardEvent,
+		data: { option: ComboboxActionItem }
+	) => void;
+}
+
 export interface ComboboxProps {
 	/** Assistive text for accessibility */
 	assistiveText?: ComboboxAssistiveText;
@@ -165,18 +183,10 @@ export interface ComboboxProps {
 	}>;
 	/** Menu options */
 	options?: ComboboxOption[];
-	/** Options to add items */
-	optionsAddItem?: Array<{
-		id?: string;
-		icon?: ReactNode;
-		label?: string | ((searchTerm: string) => ReactNode);
-	}>;
-	/** Options for search entity */
-	optionsSearchEntity?: Array<{
-		id?: string;
-		icon?: ReactNode;
-		label?: string | ((searchTerm: string) => ReactNode);
-	}>;
+	/** Action items shown below the options, such as "New Account" */
+	optionsAddItem?: ComboboxActionItem[];
+	/** Action items shown above the options, such as "Search in Accounts" */
+	optionsSearchEntity?: ComboboxActionItem[];
 	/** Popover component for popover variant */
 	popover?: ReactElement;
 	/** Whether only predefined options are allowed */
@@ -350,12 +360,14 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			...entity,
 			type: 'header' as const,
 			id: entity.id || '',
+			onClick: entity.onClick as ComboboxOption['onClick'],
 		}));
 
 		const localOptionsAddItem = optionsAddItem.map((entity) => ({
 			...entity,
 			type: 'footer' as const,
 			id: entity.id || '',
+			onClick: entity.onClick as ComboboxOption['onClick'],
 		}));
 
 		return [
@@ -531,6 +543,18 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				option,
 			}: { selection: ComboboxOption[]; option: ComboboxOption }
 		) => {
+			const isActionItem = option.type === 'header' || option.type === 'footer';
+			// Action items carry the `ComboboxActionItem` signature, not the
+			// `ComboboxOption` one (see `getOptions`).
+			const onActionItemClick = option.onClick as ComboboxActionItem['onClick'];
+			if (isActionItem && onActionItemClick) {
+				onActionItemClick(event as React.MouseEvent | React.KeyboardEvent, {
+					option: option as ComboboxActionItem,
+				});
+				handleClose();
+				return;
+			}
+
 			let newSelection: ComboboxOption[];
 			const selected = isSelected({ selection: sel, option });
 			const singleSelectAndSelectedWasNotClicked = !multiple && !selected;
@@ -612,14 +636,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			}
 
 			if (activeOption?.disabled) {
-				return;
-			}
-
-			if (
-				activeOption &&
-				(activeOption.type === 'header' || activeOption.type === 'footer')
-			) {
-				activeOption.onClick?.(event as unknown as React.MouseEvent);
 				return;
 			}
 
