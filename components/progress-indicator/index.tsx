@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useId, useMemo } from 'react';
+import React, { useEffect, useId, useMemo } from 'react';
 import find from 'lodash.find';
 import { PROGRESS_INDICATOR } from '../../utilities/constants';
 
@@ -9,6 +9,10 @@ import { PROGRESS_INDICATOR } from '../../utilities/constants';
 import Step from './private/step';
 import Progress from './private/progress';
 import StepVertical from './private/step-vertical';
+import Path from './private/path';
+
+// This component's `checkProps` which issues warnings to developers about properties when in development mode
+import checkProps from './check-props';
 
 /**
  * Progress indicator orientation
@@ -16,9 +20,15 @@ import StepVertical from './private/step-vertical';
 export type ProgressIndicatorOrientation = 'horizontal' | 'vertical';
 
 /**
+ * Progress indicator type
+ */
+export type ProgressIndicatorType = 'base' | 'path';
+
+/**
  * Progress indicator variant
  */
-export type ProgressIndicatorVariant = 'base' | 'modal' | 'setup-assistant';
+export type ProgressIndicatorVariant =
+	'base' | 'modal' | 'setup-assistant' | 'shade';
 
 /**
  * Tooltip position
@@ -42,8 +52,12 @@ export interface ProgressStep {
  * Assistive text for ProgressIndicator
  */
 export interface ProgressIndicatorAssistiveText {
+	/** `type="path"` only: read before a completed stage's name. Defaults to `Stage Complete` */
+	completedStage?: string;
 	/** Label for completed steps */
 	completedStep?: string;
+	/** `type="path"` only: read before the current stage's name. Defaults to `Current Stage:` */
+	currentStage?: string;
 	/** Label for disabled steps */
 	disabledStep?: string;
 	/** Label for error steps */
@@ -52,6 +66,14 @@ export interface ProgressIndicatorAssistiveText {
 	percentage?: string;
 	/** Label prefix for steps */
 	step?: string;
+}
+
+/**
+ * Text labels for ProgressIndicator
+ */
+export interface ProgressIndicatorLabels {
+	/** `type="path"` only: text before the current stage's name, which shows when the path collapses on narrow screens. Defaults to `Stage:` */
+	stageNameBefore?: React.ReactNode;
 }
 
 /**
@@ -75,13 +97,15 @@ export interface ProgressIndicatorProps {
 	className?: string | string[] | Record<string, boolean>;
 	/** Array of completed step objects */
 	completedSteps?: ProgressStep[];
-	/** Array of disabled step objects */
+	/** Array of disabled step objects. `type="base"` only. */
 	disabledSteps?: ProgressStep[];
-	/** Array of error step objects */
+	/** Array of error step objects. `type="base"` only. */
 	errorSteps?: ProgressStep[];
 	/** HTML id attribute */
 	id?: string;
-	/** Orientation (horizontal or vertical) */
+	/** **Text labels for internationalization** */
+	labels?: ProgressIndicatorLabels;
+	/** Orientation (horizontal or vertical). `type="base"` only. */
 	orientation?: ProgressIndicatorOrientation;
 	/** Click handler for steps */
 	onStepClick?: (
@@ -94,11 +118,23 @@ export interface ProgressIndicatorProps {
 	selectedStep: ProgressStep;
 	/** Array of all steps */
 	steps: ProgressStep[];
-	/** Steps with open tooltips (for development) */
+	/** Steps with open tooltips (for development). `type="base"` only. */
 	tooltipIsOpenSteps?: ProgressStep[];
-	/** Tooltip position strategy */
+	/** Tooltip position strategy. `type="base"` only. */
 	tooltipPosition?: TooltipPosition;
-	/** Component variant */
+	/**
+	 * Visual pattern, like `type` on `lightning-progress-indicator`:
+	 * * `base` - (default) Step markers on a progress bar, with each step's label in a tooltip.
+	 * * `path` - SLDS Path, with each step's label shown in its stage. Use the arrow keys to move between stages. Completion comes from `completedSteps`; error, disabled, and tooltip props aren't supported.
+	 */
+	type?: ProgressIndicatorType;
+	/**
+	 * Component variant. `type="base"` only.
+	 * * `base` - (default) For white backgrounds.
+	 * * `shade` - For shaded backgrounds. Adds a light gray border to the step markers, like `variant="shade"` on `lightning-progress-indicator`.
+	 * * `modal` - The `shade` styling, with tooltips positioned for a modal footer.
+	 * * `setup-assistant` - Vertical steps with a bordered list, for Setup Assistant.
+	 */
 	variant?: ProgressIndicatorVariant;
 }
 
@@ -111,10 +147,16 @@ const defaultSteps: ProgressStep[] = [
 ];
 
 const defaultAssistiveText: ProgressIndicatorAssistiveText = {
+	completedStage: 'Stage Complete',
 	completedStep: 'Completed',
+	currentStage: 'Current Stage:',
 	disabledStep: 'Disabled',
 	errorStep: 'Error',
 	step: 'Step',
+};
+
+const defaultLabels: ProgressIndicatorLabels = {
+	stageNameBefore: 'Stage:',
 };
 
 /**
@@ -156,9 +198,10 @@ const ProgressIndicator = ({
 	assistiveText: propAssistiveText,
 	className,
 	completedSteps = [],
-	disabledSteps = [],
-	errorSteps = [],
+	disabledSteps: propDisabledSteps,
+	errorSteps: propErrorSteps,
 	id: propId,
+	labels: propLabels,
 	orientation: propOrientation = 'horizontal',
 	onStepClick = () => {},
 	onStepFocus = () => {},
@@ -166,6 +209,7 @@ const ProgressIndicator = ({
 	steps: propSteps,
 	tooltipIsOpenSteps,
 	tooltipPosition: propTooltipPosition,
+	type = 'base',
 	variant = 'base',
 }: ProgressIndicatorProps): React.ReactElement => {
 	const generatedId = useId();
@@ -173,6 +217,23 @@ const ProgressIndicator = ({
 
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
 	const allSteps = checkSteps(propSteps) ? propSteps : defaultSteps;
+
+	// Check props in development
+	useEffect(() => {
+		checkProps(PROGRESS_INDICATOR, {
+			disabledSteps: propDisabledSteps,
+			errorSteps: propErrorSteps,
+			orientation: propOrientation,
+			selectedStep,
+			steps: propSteps,
+			tooltipIsOpenSteps,
+			tooltipPosition: propTooltipPosition,
+			type,
+			variant,
+		});
+		// Only run on mount
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	// Find current step index
 	const currentStepIndex = useMemo(() => {
@@ -185,6 +246,28 @@ const ProgressIndicator = ({
 		}
 		return index;
 	}, [allSteps, selectedStep]);
+
+	if (type === 'path') {
+		return (
+			<Path
+				assistiveText={assistiveText}
+				className={className}
+				defaultActiveIndex={currentStepIndex}
+				id={id}
+				labels={{ ...defaultLabels, ...propLabels }}
+				onStepClick={onStepClick}
+				onStepFocus={onStepFocus}
+				steps={allSteps.map((step) => ({
+					isCompleted: findStep(step, completedSteps),
+					isSelected: findStep(step, selectedStep),
+					step,
+				}))}
+			/>
+		);
+	}
+
+	const disabledSteps = propDisabledSteps ?? [];
+	const errorSteps = propErrorSteps ?? [];
 
 	// Calculate progress value
 	const progressValue =

@@ -10,6 +10,14 @@ const steps = [
 	{ id: 4, label: 'Step 5: Complete' },
 ];
 
+const stages = [
+	{ id: 0, label: 'Contacted' },
+	{ id: 1, label: 'Open' },
+	{ id: 2, label: 'Unqualified' },
+	{ id: 3, label: 'Nurturing' },
+	{ id: 4, label: 'Closed' },
+];
+
 export default {
 	title: 'Components/ProgressIndicator',
 	component: ProgressIndicator,
@@ -27,9 +35,13 @@ export default {
 			control: { type: 'select' },
 			options: ['horizontal', 'vertical'],
 		},
+		type: {
+			control: { type: 'select' },
+			options: ['base', 'path'],
+		},
 		variant: {
 			control: { type: 'select' },
-			options: ['base', 'modal', 'setup-assistant'],
+			options: ['base', 'shade', 'modal', 'setup-assistant'],
 		},
 	},
 };
@@ -128,6 +140,20 @@ export const WithDisabledSteps = {
 	),
 };
 
+// Shade variant
+export const ShadeVariant = {
+	render: () => (
+		<div className="slds-theme_shade slds-p-around_medium">
+			<ProgressIndicator
+				steps={steps}
+				selectedStep={steps[2]}
+				completedSteps={[steps[0], steps[1]]}
+				variant="shade"
+			/>
+		</div>
+	),
+};
+
 // Modal variant
 export const ModalVariant = {
 	render: () => (
@@ -161,4 +187,42 @@ export const AllComplete = {
 			completedSteps={steps}
 		/>
 	),
+};
+
+// Path type
+export const Path = {
+	render: () => (
+		<ProgressIndicator
+			type="path"
+			steps={stages}
+			selectedStep={stages[2]}
+			completedSteps={[stages[0], stages[1]]}
+		/>
+	),
+};
+
+// Interactive path: click a stage, or Tab to the path and use the arrow keys
+const InteractivePathExample = () => {
+	const [currentStage, setCurrentStage] = useState(1);
+
+	const handleStepClick = (event, { step }) => {
+		const stageIndex = stages.findIndex((s) => s.id === step.id);
+		if (stageIndex !== -1) {
+			setCurrentStage(stageIndex);
+		}
+	};
+
+	return (
+		<ProgressIndicator
+			type="path"
+			steps={stages}
+			selectedStep={stages[currentStage]}
+			completedSteps={stages.slice(0, currentStage)}
+			onStepClick={handleStepClick}
+		/>
+	);
+};
+
+export const InteractivePath = {
+	render: () => <InteractivePathExample />,
 };
