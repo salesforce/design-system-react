@@ -686,10 +686,12 @@ describe('SLDSCombobox', () => {
 	});
 
 	// Regression: `optionsSearchEntity` (header) and `optionsAddItem` (footer)
-	// items behaved differently by input method. A mouse click ran them through
-	// option selection, so the action item itself was sent to `onSelect` as the
-	// new selection, while Enter called the item's `onClick` and left the menu
-	// open (or did nothing at all when no `onClick` was given).
+	// rows behaved differently by input method. A mouse click ran them through
+	// option selection, so the action row itself was sent to `onSelect` as the
+	// new selection, while Enter called the row's `onClick` and left the menu
+	// open (or did nothing at all when no `onClick` was given). Action rows are
+	// commands, so both inputs now call `events.onSelectActionItem` and never
+	// touch the selection.
 	describe('Action items (optionsSearchEntity / optionsAddItem)', () => {
 		const actionItem = {
 			id: 'action-item-id',
@@ -709,17 +711,17 @@ describe('SLDSCombobox', () => {
 			{ prop: 'optionsAddItem', downPresses: 2 },
 		];
 
-		const renderWithActionItem = ({ prop, item }) => {
+		const renderWithActionItem = ({ prop, item, events = {} }) => {
 			const onSelect = vi.fn();
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
 					<Combobox
 						{...defaultProps}
 						multiple
-						events={{ onSelect }}
+						events={{ onSelect, ...events }}
 						options={[accountsWithIcon[0]]}
 						selection={[]}
-						value=""
+						defaultValue="acme"
 						{...{ [prop]: [item] }}
 					/>
 				</IconSettings>
@@ -729,13 +731,14 @@ describe('SLDSCombobox', () => {
 			return { container, input, onSelect };
 		};
 
+		const getActionRow = (container) =>
+			container.querySelector(
+				`#${defaultProps.id}-listbox-option-${actionItem.id}`
+			);
+
 		const activate = ({ container, input, method, downPresses }) => {
 			if (method === 'mouse') {
-				fireEvent.click(
-					container.querySelector(
-						`#${defaultProps.id}-listbox-option-${actionItem.id}`
-					)
-				);
+				fireEvent.click(getActionRow(container));
 			} else {
 				for (let i = 0; i < downPresses; i += 1) {
 					fireEvent.keyDown(input, keyObjects.DOWN);
@@ -744,35 +747,125 @@ describe('SLDSCombobox', () => {
 			}
 		};
 
+		const isOpen = (container) =>
+			getNodes(container).combobox.getAttribute('aria-expanded') === 'true';
+
+		it('warns once per prop that item onClick is deprecated', async () => {
+			// `deprecated-property` dedupes in module state; load a fresh copy so
+			// this test doesn't depend on what other tests rendered first.
+			vi.resetModules();
+			const { default: checkProps } = await import('../check-props');
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			try {
+				const props = {
+					optionsSearchEntity: [{ ...actionItem, onClick: () => {} }],
+					optionsAddItem: [{ ...actionItem, onClick: () => {} }],
+				};
+				checkProps('Combobox', props, {});
+				checkProps('Combobox', props, {});
+
+				const countFor = (propName) =>
+					consoleError.mock.calls.filter(([message]) =>
+						String(message).includes(`${propName}[].onClick`)
+					).length;
+				expect(countFor('optionsSearchEntity')).toBe(1);
+				expect(countFor('optionsAddItem')).toBe(1);
+				expect(String(consoleError.mock.calls[0][0])).toContain(
+					'events.onSelectActionItem'
+				);
+			} finally {
+				consoleError.mockRestore();
+			}
+		});
+
+		it('keyboard: a header/footer row passed directly in options keeps its legacy onClick on Enter', () => {
+			const onClick = vi.fn();
+			const onSelectActionItem = vi.fn();
+			const onSelect = vi.fn();
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Combobox
+						{...defaultProps}
+						multiple
+						events={{ onSelect, onSelectActionItem }}
+						options={[
+							{ id: 'legacy-footer', label: 'New', type: 'footer', onClick },
+						]}
+						selection={[]}
+					/>
+				</IconSettings>
+			);
+			const { input } = getNodes(container);
+			fireEvent.click(input);
+			fireEvent.keyDown(input, keyObjects.DOWN);
+			fireEvent.keyDown(input, keyObjects.ENTER);
+
+			expect(onClick).toHaveBeenCalledTimes(1);
+			expect(onSelect).not.toHaveBeenCalled();
+			expect(onSelectActionItem).not.toHaveBeenCalled();
+		});
+
+		it.each(['mouse', 'keyboard'])(
+			'%s: an ordinary option with an `actionItem` key is still selected normally',
+			(method) => {
+				const option = { id: 'record', label: 'Record', actionItem: null };
+				const onSelectActionItem = vi.fn();
+				const onSelect = vi.fn();
+				const { container } = render(
+					<IconSettings iconPath="/assets/icons">
+						<Combobox
+							{...defaultProps}
+							multiple
+							events={{ onSelect, onSelectActionItem }}
+							options={[option]}
+							selection={[]}
+						/>
+					</IconSettings>
+				);
+				const { input } = getNodes(container);
+				fireEvent.click(input);
+				if (method === 'mouse') {
+					fireEvent.click(
+						container.querySelector(`#${defaultProps.id}-listbox-option-record`)
+					);
+				} else {
+					fireEvent.keyDown(input, keyObjects.DOWN);
+					fireEvent.keyDown(input, keyObjects.ENTER);
+				}
+
+				expect(onSelect).toHaveBeenCalledTimes(1);
+				expect(onSelect.mock.calls[0][1].selection).toEqual([option]);
+				expect(onSelectActionItem).not.toHaveBeenCalled();
+			}
+		);
+
 		describe.each(placements)('$prop', ({ prop, downPresses }) => {
 			it.each(['mouse', 'keyboard'])(
-				'%s: calls the item onClick, does not change the selection, and closes the menu',
+				'%s: calls events.onSelectActionItem with the item and input value, leaves the selection alone, and closes the menu',
 				(method) => {
-					const onClick = vi.fn();
-					const item = { ...actionItem, onClick };
+					const onSelectActionItem = vi.fn();
 					const { container, input, onSelect } = renderWithActionItem({
 						prop,
-						item,
+						item: actionItem,
+						events: { onSelectActionItem },
 					});
-					expect(getNodes(container).combobox).toHaveAttribute(
-						'aria-expanded',
-						'true'
-					);
+					expect(isOpen(container)).toBe(true);
 
 					activate({ container, input, method, downPresses });
 
-					expect(onClick).toHaveBeenCalledTimes(1);
-					expect(onClick.mock.calls[0][1].option.id).toBe(actionItem.id);
+					expect(onSelectActionItem).toHaveBeenCalledTimes(1);
+					const [, data] = onSelectActionItem.mock.calls[0];
+					expect(data.option).toBe(actionItem);
+					expect(data.value).toBe('acme');
 					expect(onSelect).not.toHaveBeenCalled();
-					expect(getNodes(container).combobox).toHaveAttribute(
-						'aria-expanded',
-						'false'
-					);
+					expect(isOpen(container)).toBe(false);
 				}
 			);
 
 			it.each(['mouse', 'keyboard'])(
-				'%s: without an onClick, fires onSelect with the item and closes the menu',
+				'%s: with no handler, does not fire onSelect and closes the menu',
 				(method) => {
 					const { container, input, onSelect } = renderWithActionItem({
 						prop,
@@ -781,30 +874,54 @@ describe('SLDSCombobox', () => {
 
 					activate({ container, input, method, downPresses });
 
-					expect(onSelect).toHaveBeenCalledTimes(1);
-					expect(onSelect.mock.calls[0][1].selection.map((o) => o.id)).toEqual([
-						actionItem.id,
-					]);
-					expect(getNodes(container).combobox).toHaveAttribute(
-						'aria-expanded',
-						'false'
-					);
+					expect(onSelect).not.toHaveBeenCalled();
+					expect(isOpen(container)).toBe(false);
 				}
 			);
 
 			it.each(['mouse', 'keyboard'])(
-				'%s: a disabled item does nothing',
+				'%s: calls a deprecated item onClick before events.onSelectActionItem',
 				(method) => {
-					const onClick = vi.fn();
-					const item = { ...actionItem, onClick, disabled: true };
+					const calls = [];
+					const onClick = vi.fn(() => calls.push('onClick'));
+					const onSelectActionItem = vi.fn(() =>
+						calls.push('onSelectActionItem')
+					);
+					const item = { ...actionItem, onClick };
 					const { container, input, onSelect } = renderWithActionItem({
 						prop,
 						item,
+						events: { onSelectActionItem },
 					});
 
 					activate({ container, input, method, downPresses });
 
+					expect(calls).toEqual(['onClick', 'onSelectActionItem']);
+					expect(onClick.mock.calls[0][1].option).toBe(item);
+					expect(onSelect).not.toHaveBeenCalled();
+				}
+			);
+
+			it.each(['mouse', 'keyboard'])(
+				'%s: a disabled item does nothing and is marked aria-disabled',
+				(method) => {
+					const onClick = vi.fn();
+					const onSelectActionItem = vi.fn();
+					const item = { ...actionItem, onClick, disabled: true };
+					const { container, input, onSelect } = renderWithActionItem({
+						prop,
+						item,
+						events: { onSelectActionItem },
+					});
+					expect(getActionRow(container)).toHaveAttribute(
+						'aria-disabled',
+						'true'
+					);
+
+					activate({ container, input, method, downPresses });
+
 					expect(onClick).not.toHaveBeenCalled();
+					expect(onSelectActionItem).not.toHaveBeenCalled();
 					expect(onSelect).not.toHaveBeenCalled();
 				}
 			);

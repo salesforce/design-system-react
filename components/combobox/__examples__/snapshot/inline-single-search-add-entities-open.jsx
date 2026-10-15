@@ -67,7 +67,6 @@ class Example extends React.Component {
 								/>
 							),
 							label: 'salesforce',
-							onClick: (event) => console.log('onClick', event),
 						},
 					]}
 					optionsAddItem={[
@@ -82,10 +81,11 @@ class Example extends React.Component {
 								/>
 							),
 							label: 'New Entity',
-							onClick: (event) => console.log('onClick', event),
 						},
 					]}
 					events={{
+						onSelectActionItem: (event, data) =>
+							console.log('onSelectActionItem', event, data),
 						onChange: (event, { value }) => {
 							console.log('onChange', event, value);
 							this.setState({ inputValue: value });

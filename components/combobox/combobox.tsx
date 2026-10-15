@@ -101,26 +101,58 @@ export interface ComboboxEvents {
 		event: React.SyntheticEvent,
 		data: { selection: ComboboxOption[] }
 	) => void;
+	/** Fires when an `optionsSearchEntity` or `optionsAddItem` row is chosen by
+	 * click or Enter. `value` is the current input text. */
+	onSelectActionItem?: (
+		event: React.MouseEvent | React.KeyboardEvent,
+		data: { option: ComboboxActionItem; value: string }
+	) => void;
 	onSubmit?: (event: React.KeyboardEvent, data: { value: string }) => void;
 }
 
 /**
  * An action row in the menu: `optionsSearchEntity` items render above the
- * options, `optionsAddItem` items below them. Mouse click and Enter behave the
- * same: with `onClick`, it is called and the menu closes without changing the
- * selection; without `onClick`, `events.onSelect` fires with the item as the
- * selection, as for any other option.
+ * options, `optionsAddItem` items below them. Choosing one (click or Enter)
+ * calls `events.onSelectActionItem` and closes the menu. Action rows are
+ * commands, not records, so they never fire `onSelect` or enter the selection.
  */
 export interface ComboboxActionItem {
 	id?: string;
 	icon?: ReactNode;
 	label?: string | ((searchTerm: string) => ReactNode);
 	disabled?: boolean;
+	/** @deprecated Use `events.onSelectActionItem`. If both are set, both are
+	 * called, this one first. */
 	onClick?: (
 		event: React.MouseEvent | React.KeyboardEvent,
 		data: { option: ComboboxActionItem }
 	) => void;
 }
+
+// A menu row built from a `ComboboxActionItem`. The original item is stored
+// under a module-private symbol, so consumer data in `options` (whose `type`
+// accepts any string and may carry arbitrary keys) can't impersonate one.
+const ACTION_ITEM = Symbol('actionItem');
+
+type ActionItemRow = ComboboxOption & {
+	type: 'header' | 'footer';
+	[ACTION_ITEM]: ComboboxActionItem;
+};
+
+const isActionItemRow = (option: ComboboxOption): option is ActionItemRow =>
+	ACTION_ITEM in option;
+
+const toActionItemRow = (
+	item: ComboboxActionItem,
+	type: ActionItemRow['type']
+): ActionItemRow => ({
+	id: item.id || '',
+	icon: item.icon,
+	label: item.label,
+	disabled: item.disabled,
+	type,
+	[ACTION_ITEM]: item,
+});
 
 export interface ComboboxProps {
 	/** Assistive text for accessibility */
@@ -356,19 +388,13 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			type: 'deselect',
 		};
 
-		const localOptionsSearchEntity = optionsSearchEntity.map((entity) => ({
-			...entity,
-			type: 'header' as const,
-			id: entity.id || '',
-			onClick: entity.onClick as ComboboxOption['onClick'],
-		}));
+		const localOptionsSearchEntity = optionsSearchEntity.map((item) =>
+			toActionItemRow(item, 'header')
+		);
 
-		const localOptionsAddItem = optionsAddItem.map((entity) => ({
-			...entity,
-			type: 'footer' as const,
-			id: entity.id || '',
-			onClick: entity.onClick as ComboboxOption['onClick'],
-		}));
+		const localOptionsAddItem = optionsAddItem.map((item) =>
+			toActionItemRow(item, 'footer')
+		);
 
 		return [
 			...(localOptionsSearchEntity.length > 0 ? localOptionsSearchEntity : []),
@@ -543,13 +569,13 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				option,
 			}: { selection: ComboboxOption[]; option: ComboboxOption }
 		) => {
-			const isActionItem = option.type === 'header' || option.type === 'footer';
-			// Action items carry the `ComboboxActionItem` signature, not the
-			// `ComboboxOption` one (see `getOptions`).
-			const onActionItemClick = option.onClick as ComboboxActionItem['onClick'];
-			if (isActionItem && onActionItemClick) {
-				onActionItemClick(event as React.MouseEvent | React.KeyboardEvent, {
-					option: option as ComboboxActionItem,
+			if (isActionItemRow(option)) {
+				const actionItem = option[ACTION_ITEM];
+				const actionEvent = event as React.MouseEvent | React.KeyboardEvent;
+				actionItem.onClick?.(actionEvent, { option: actionItem });
+				events.onSelectActionItem?.(actionEvent, {
+					option: actionItem,
+					value: inputRef.current?.value ?? '',
 				});
 				handleClose();
 				return;
@@ -636,6 +662,17 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			}
 
 			if (activeOption?.disabled) {
+				return;
+			}
+
+			// Legacy: `type: 'header' | 'footer'` rows passed directly in `options`
+			// keep their pre-v11 Enter behavior of calling `option.onClick`.
+			if (
+				activeOption &&
+				!isActionItemRow(activeOption) &&
+				(activeOption.type === 'header' || activeOption.type === 'footer')
+			) {
+				activeOption.onClick?.(event as unknown as React.MouseEvent);
 				return;
 			}
 

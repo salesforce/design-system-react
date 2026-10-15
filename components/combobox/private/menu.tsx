@@ -22,6 +22,9 @@ export interface ComboboxOption {
 	disabled?: boolean;
 	tooltipContent?: ReactNode;
 	value?: string;
+	/** @deprecated Only called on Enter, for `type: 'header' | 'footer'` rows
+	 * passed directly in `options`. Use `optionsSearchEntity`/`optionsAddItem`
+	 * with `events.onSelectActionItem` instead. */
 	onClick?: (event: React.MouseEvent) => void;
 }
 
@@ -223,6 +226,7 @@ const Menu: React.FC<MenuProps> = ({
 									}
 						}
 						aria-selected={active}
+						aria-disabled={optionData.disabled || undefined}
 						id={`${inputId}-listbox-option-${optionData.id}`}
 						className={classNames(
 							'slds-media slds-listbox__option',
@@ -251,6 +255,7 @@ const Menu: React.FC<MenuProps> = ({
 				>
 					<div
 						aria-selected={active}
+						aria-disabled={optionData.disabled || undefined}
 						onClick={
 							optionData.disabled
 								? undefined
