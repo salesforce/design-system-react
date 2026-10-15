@@ -67,7 +67,6 @@ export const EXPRESSION_CONDITION = 'SLDSExpressionCondition';
 export const EXPRESSION_FORMULA = 'SLDSExpressionFormula';
 export const FILTER = 'SLDSFilter';
 export const CHECKBOX = 'SLDSCheckbox';
-export const FORMS_INLINE_EDIT = 'SLDSInlineEdit';
 export const INPUT = 'SLDSInput';
 export const TEXTAREA = 'SLDSTextarea';
 export const SEARCH = 'SLDSSearch';

@@ -87,8 +87,6 @@ export { default as IconSettings } from './icon-settings';
 export { default as SLDSIconSettings } from './icon-settings';
 export { default as Illustration } from './illustration';
 export { default as SLDSIllustration } from './illustration';
-export { default as InlineEdit } from './forms/input/inline';
-export { default as SLDSInlineEdit } from './forms/input/inline';
 export { default as Input } from './input';
 export { default as SLDSInput } from './input';
 export { default as InputIcon } from './icon/input-icon';
@@ -103,8 +101,6 @@ export { default as MenuDropdownButtonTrigger } from './menu-dropdown/button-tri
 export { default as SLDSMenuDropdownButtonTrigger } from './menu-dropdown/button-trigger';
 export { default as Modal } from './modal';
 export { default as SLDSModal } from './modal';
-export { default as ModalTrigger } from './modal/trigger';
-export { default as SLDSModalTrigger } from './modal/trigger';
 export { default as MoreFiles } from './files/more-files';
 export { default as SLDSMoreFiles } from './files/more-files';
 export { default as Navigation } from './vertical-navigation';

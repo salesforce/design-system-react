@@ -29,7 +29,7 @@ export interface TextareaAssistiveText {
  */
 export interface TextareaProps {
 	/** Assistive text for accessibility */
-	assistiveText?: TextareaAssistiveText | string;
+	assistiveText?: TextareaAssistiveText;
 	/** aria-activedescendant for composite widgets */
 	'aria-activedescendant'?: string;
 	/** aria-autocomplete for suggestions */
@@ -151,9 +151,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
 		const ariaProps = getAriaProps(restProps);
 
-		// Handle assistiveText as string or object
-		const assistiveTextLabel =
-			typeof assistiveText === 'string' ? assistiveText : assistiveText?.label;
+		const assistiveTextLabel = assistiveText?.label;
 
 		const labelText = label || assistiveTextLabel;
 

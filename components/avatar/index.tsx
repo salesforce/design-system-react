@@ -29,7 +29,7 @@ export interface AvatarAssistiveText {
  */
 export interface AvatarProps {
 	/** Assistive text for accessibility */
-	assistiveText?: AvatarAssistiveText | string;
+	assistiveText?: AvatarAssistiveText;
 	/** Alt text for the image */
 	imgAlt?: string;
 	/** Source URL for the image */
@@ -94,13 +94,10 @@ const Avatar = ({
 	}, []);
 
 	// Merge assistive text
-	const iconAssistiveText =
-		typeof propAssistiveText === 'string'
-			? propAssistiveText
-			: {
-					...defaultAssistiveText,
-					...propAssistiveText,
-				}.icon;
+	const iconAssistiveText = {
+		...defaultAssistiveText,
+		...propAssistiveText,
+	}.icon;
 
 	// Render functions for different avatar states
 	const renderBaseAvatar = () => (

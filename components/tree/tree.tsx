@@ -108,11 +108,7 @@ const Tree: React.FC<TreeProps> = ({
 	searchTerm,
 	listStyle,
 }) => {
-	// Merge assistive text with defaults
-	const assistiveText =
-		typeof assistiveTextProp === 'string'
-			? assistiveTextProp
-			: assistiveTextProp?.label;
+	const assistiveText = assistiveTextProp?.label;
 
 	// Track if tree has focus
 	const treeHasFocusRef = useRef(false);

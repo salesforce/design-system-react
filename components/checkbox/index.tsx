@@ -70,14 +70,9 @@ export interface CheckboxProps {
 	/** aria-required for validation */
 	'aria-required'?: boolean;
 	/** Assistive text for accessibility */
-	assistiveText?: CheckboxAssistiveText | string;
+	assistiveText?: CheckboxAssistiveText;
 	/** Controlled checked state */
 	checked?: boolean;
-	/**
-	 * Preserves the legacy `onChange(event, { checked })` parameter order used
-	 * by the deprecated `components/forms/checkbox` alias. Not for new code.
-	 */
-	oldEventParameterOrder?: boolean;
 	/** Initial uncontrolled checked state */
 	defaultChecked?: boolean;
 	/** CSS class for container */
@@ -190,10 +185,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 	const getErrorId = () => (errorText ? `${getId()}-error-text` : undefined);
 
 	// Merge assistive text
-	const assistiveText: CheckboxAssistiveText =
-		typeof assistiveTextProp === 'string'
-			? { label: assistiveTextProp }
-			: { ...assistiveTextProp };
+	const assistiveText: CheckboxAssistiveText = { ...assistiveTextProp };
 
 	// Merge labels
 	const labels: CheckboxLabels = {
