@@ -15,12 +15,7 @@ const subStepsComplete = (step) => [
 		id: `step-${step}-substep0`,
 		label: 'Turn on Lightning for all users.',
 		onRenderSetupAssistantAction: (
-			<Checkbox
-				id={`step-${step}-substep0-action`}
-				checked
-				oldEventParameterOrder={false}
-				variant="toggle"
-			/>
+			<Checkbox id={`step-${step}-substep0-action`} checked variant="toggle" />
 		),
 	},
 	{
@@ -42,11 +37,7 @@ const subStepsIncomplete = (step) => [
 		id: `step-${step}-substep0`,
 		label: 'Turn on Lightning for all users.',
 		onRenderSetupAssistantAction: (
-			<Checkbox
-				id={`step-${step}-substep0-action`}
-				oldEventParameterOrder={false}
-				variant="toggle"
-			/>
+			<Checkbox id={`step-${step}-substep0-action`} variant="toggle" />
 		),
 	},
 	{
@@ -87,7 +78,6 @@ class Example extends React.Component {
 				onRenderSetupAssistantAction: (
 					<Checkbox
 						id="substep-0-action"
-						oldEventParameterOrder={false}
 						onChange={(event) => {
 							this.toggleSubStepCompletion(0, event.target.checked);
 						}}

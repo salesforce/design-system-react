@@ -16,12 +16,10 @@ import React, {
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
-import checkProps from './check-props';
 import checkAppElementIsSet from '../../utilities/warning/check-app-element-set';
 import Button from '../button';
 import { MODAL } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
-import componentDoc from './component.json';
 
 const documentDefined = typeof document !== 'undefined';
 const windowDefined = typeof window !== 'undefined';
@@ -88,14 +86,10 @@ export interface ModalProps {
 	size?: ModalSize;
 	/** Content underneath the heading in the modal header. */
 	tagline?: ReactNode;
-	/** Content underneath the title in the modal header. @deprecated Use heading instead */
-	title?: ReactNode;
 	/** Text heading at the top of a modal. */
 	heading?: ReactNode;
 	/** Allows adding additional notifications within the modal. */
 	toast?: ReactNode;
-	/** @deprecated Use assistiveText.closeButton instead */
-	closeButtonAssistiveText?: string;
 }
 
 const defaultAssistiveText: ModalAssistiveText = {
@@ -138,10 +132,8 @@ const Modal: React.FC<ModalProps> = ({
 	prompt,
 	size,
 	tagline,
-	title,
 	heading,
 	toast,
-	closeButtonAssistiveText,
 }) => {
 	// State
 	const [returnFocusTo, setReturnFocusTo] = useState<Element | null>(null);
@@ -164,41 +156,8 @@ const Modal: React.FC<ModalProps> = ({
 	// Is this a prompt modal?
 	const isPrompt = prompt !== undefined;
 
-	// Check props in development
+	// Warn in development if the app element isn't set
 	useEffect(() => {
-		checkProps(
-			MODAL,
-			{
-				align,
-				ariaHideApp,
-				assistiveText: assistiveTextProp,
-				children,
-				className,
-				containerClassName,
-				contentClassName,
-				contentStyle: contentStyleProp,
-				directional,
-				disableClose,
-				dismissOnClickOutside,
-				onRequestClose,
-				footer,
-				footerClassName,
-				header,
-				headerClassName,
-				id: idProp,
-				isOpen,
-				parentSelector,
-				portalClassName,
-				prompt,
-				size,
-				tagline,
-				title,
-				heading,
-				toast,
-				closeButtonAssistiveText,
-			},
-			componentDoc
-		);
 		if (ariaHideApp) {
 			checkAppElementIsSet();
 		}
@@ -273,7 +232,7 @@ const Modal: React.FC<ModalProps> = ({
 	// Calculate border radius based on header/footer presence
 	const getBorderRadius = useCallback((): CSSProperties => {
 		const borderRadiusValue = '.25rem';
-		const hasHeader = title || heading || header;
+		const hasHeader = heading || header;
 		const borderTopRadius = hasHeader
 			? {}
 			: {
@@ -290,7 +249,7 @@ const Modal: React.FC<ModalProps> = ({
 			...borderTopRadius,
 			...borderBottomRadius,
 		};
-	}, [title, heading, header, footer]);
+	}, [heading, header, footer]);
 
 	// Get ARIA attributes
 	const getAriaAttributes = useCallback(() => {
@@ -314,7 +273,7 @@ const Modal: React.FC<ModalProps> = ({
 
 		if (assistiveText.dialogLabelledBy) {
 			dialogLabelledBy = assistiveText.dialogLabelledBy;
-		} else if (heading || title) {
+		} else if (heading) {
 			dialogLabelledBy = `${modalId}-heading`;
 		}
 
@@ -323,14 +282,13 @@ const Modal: React.FC<ModalProps> = ({
 		}
 
 		return ariaAttributes;
-	}, [getId, assistiveText, heading, title]);
+	}, [getId, assistiveText, heading]);
 
 	// Render header
 	const renderHeader = () => {
 		let headerContent = header;
-		const headerEmpty = !headerContent && !(heading || title) && !tagline;
-		const closeButtonText =
-			closeButtonAssistiveText || assistiveText.closeButton;
+		const headerEmpty = !headerContent && !heading && !tagline;
+		const closeButtonText = assistiveText.closeButton;
 
 		const closeButton = (
 			<Button
@@ -345,7 +303,7 @@ const Modal: React.FC<ModalProps> = ({
 			/>
 		);
 
-		if ((!headerContent && (heading || title)) || tagline) {
+		if ((!headerContent && heading) || tagline) {
 			headerContent = (
 				<div>
 					{toast}
@@ -356,7 +314,7 @@ const Modal: React.FC<ModalProps> = ({
 						})}
 						id={`${getId()}-heading`}
 					>
-						{heading || title}
+						{heading}
 					</h1>
 					{tagline ? <p className="slds-m-top_x-small">{tagline}</p> : null}
 				</div>

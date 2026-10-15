@@ -3,7 +3,6 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable max-len */
 
-import deprecatedEventParameter from '../../utilities/warning/deprecated-event-parameter';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 import sunsetProperty from '../../utilities/warning/sunset-property';
@@ -19,18 +18,6 @@ if (process.env.NODE_ENV !== 'production') {
 			props.label,
 			'label',
 			`Use \`labels.label\` instead.${createDocUrl('labels')}`
-		);
-
-		deprecatedEventParameter(
-			COMPONENT,
-			{
-				oldEventParameterOrder: props.oldEventParameterOrder,
-				propAsString: 'onChange',
-				propAsValue: props.onChange,
-			},
-			`\`components/forms/checkbox\` is deprecated. \`components/checkbox\` should be used. When this path update is made \`onChange\` event parameters will change from \`onChange(value, event, { value }) to \`onChange(event, { value }). Please update your event parameters when you change paths.\` If you are using the CommonJS named import, \`Checkbox\` events will break at v1.0 and this warning will be present until then. Please review https://github.com/salesforce/design-system-react/releases when you upgrade. ${createDocUrl(
-				'onChange'
-			)}`
 		);
 
 		if (props.variant === 'toggle' && props.indeterminate === true) {

@@ -57,7 +57,7 @@ export interface ButtonStatefulProps {
 	/** Controlled active state */
 	active?: boolean;
 	/** Assistive text */
-	assistiveText?: ButtonStatefulAssistiveText | string;
+	assistiveText?: ButtonStatefulAssistiveText;
 	/** CSS classes */
 	className?: string;
 	/** Disabled state */
@@ -193,10 +193,8 @@ const ButtonStateful = ({
 		className: 'slds-button__icon_stateful',
 	};
 
-	const iconAssistiveText =
-		typeof propAssistiveText === 'string'
-			? propAssistiveText
-			: { ...defaultAssistiveText, ...propAssistiveText }.icon;
+	const iconAssistiveText = { ...defaultAssistiveText, ...propAssistiveText }
+		.icon;
 
 	// Accept aria-* props
 	let ariaProps = getAriaProps(rest);

@@ -3,7 +3,6 @@
 /* eslint-disable import/no-mutable-exports */
 
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
-import sunsetProperty from '../../utilities/warning/sunset-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
 let checkProps = function checkPropsFunction() {};
@@ -22,17 +21,6 @@ if (process.env.NODE_ENV !== 'production') {
 			createDocUrl()
 		);
 		/* eslint-enable max-len */
-
-		if (typeof props.assistiveText === 'string') {
-			sunsetProperty(
-				COMPONENT,
-				props.assistiveText,
-				'assistiveText',
-				`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.label\` instead. ${createDocUrl(
-					'assistiveText'
-				)}`
-			);
-		}
 	};
 }
 

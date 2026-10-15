@@ -27,7 +27,7 @@ export interface SearchProps extends Omit<
 	'assistiveText' | 'iconLeft' | 'iconRight'
 > {
 	/** Assistive text for accessibility */
-	assistiveText?: SearchAssistiveText | string;
+	assistiveText?: SearchAssistiveText;
 	/** Adds a clear button to the right of the input */
 	clearable?: boolean;
 	/** Handler for clear button click */
@@ -69,11 +69,9 @@ const Search = ({
 		componentDoc
 	);
 
-	// Handle both string and object forms of assistiveText
-	const mergedAssistiveText: InputAssistiveText =
-		typeof assistiveText === 'string'
-			? { label: assistiveText }
-			: { label: assistiveText?.label };
+	const mergedAssistiveText: InputAssistiveText = {
+		label: assistiveText?.label,
+	};
 
 	return (
 		<Input

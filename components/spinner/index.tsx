@@ -28,7 +28,7 @@ export interface SpinnerAssistiveText {
  */
 export interface SpinnerProps {
 	/** Assistive text for accessibility */
-	assistiveText?: SpinnerAssistiveText | string;
+	assistiveText?: SpinnerAssistiveText;
 	/** CSS classes for the container */
 	containerClassName?: string;
 	/** Custom styles for the container */
@@ -67,14 +67,10 @@ const Spinner = ({
 	size = 'medium',
 	variant = 'base',
 }: SpinnerProps): React.ReactElement => {
-	// Handle assistiveText as string or object
-	const mergedAssistiveText =
-		typeof assistiveText === 'string'
-			? assistiveText
-			: {
-					...defaultAssistiveText,
-					...assistiveText,
-				}.label;
+	const mergedAssistiveText = {
+		...defaultAssistiveText,
+		...assistiveText,
+	}.label;
 
 	const spinnerClassName = classNames('slds-spinner', {
 		'slds-spinner_inline': isInline,

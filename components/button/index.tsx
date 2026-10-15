@@ -78,7 +78,7 @@ export interface ButtonAssistiveText {
  */
 export interface ButtonProps {
 	/** Assistive text for accessibility */
-	assistiveText?: ButtonAssistiveText | string;
+	assistiveText?: ButtonAssistiveText;
 	/** Callback for DOM reference */
 	buttonRef?: (ref: HTMLButtonElement | null) => void;
 	/** Additional CSS classes */
@@ -291,13 +291,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 		const renderLabel = (): ReactNode => {
 			const iconOnly = iconName || iconPath;
-			const assistiveTextIcon =
-				typeof assistiveText === 'string'
-					? assistiveText
-					: {
-							...defaultAssistiveText,
-							...(assistiveText as ButtonAssistiveText),
-						}.icon;
+			const assistiveTextIcon = {
+				...defaultAssistiveText,
+				...assistiveText,
+			}.icon;
 
 			return iconOnly && assistiveTextIcon ? (
 				<span className="slds-assistive-text">{assistiveTextIcon}</span>

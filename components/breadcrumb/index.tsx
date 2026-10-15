@@ -22,7 +22,7 @@ export interface BreadcrumbAssistiveText {
  */
 export interface BreadcrumbProps {
 	/** Assistive text for accessibility */
-	assistiveText?: BreadcrumbAssistiveText | string;
+	assistiveText?: BreadcrumbAssistiveText;
 	/** Unique identifier for the breadcrumb */
 	id?: string;
 	/** Overflow dropdown menu for condensed breadcrumbs */
@@ -70,13 +70,10 @@ const Breadcrumb = ({
 	styleContainer,
 	trail,
 }: BreadcrumbProps): React.ReactElement => {
-	const assistiveTextLabel =
-		typeof propAssistiveText === 'string'
-			? propAssistiveText
-			: {
-					...defaultAssistiveText,
-					...propAssistiveText,
-				}.label;
+	const assistiveTextLabel = {
+		...defaultAssistiveText,
+		...propAssistiveText,
+	}.label;
 
 	return (
 		<nav
