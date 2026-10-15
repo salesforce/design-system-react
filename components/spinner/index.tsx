@@ -74,7 +74,7 @@ const Spinner = ({
 			: {
 					...defaultAssistiveText,
 					...assistiveText,
-			  }.label;
+				}.label;
 
 	const spinnerClassName = classNames('slds-spinner', {
 		'slds-spinner_inline': isInline,
@@ -112,18 +112,3 @@ const Spinner = ({
 Spinner.displayName = SPINNER;
 
 export default Spinner;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
