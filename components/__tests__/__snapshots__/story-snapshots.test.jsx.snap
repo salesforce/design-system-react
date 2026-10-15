@@ -4983,6 +4983,39 @@ exports[`Story HTML snapshots > ProgressIndicator > Interactive 1`] = `
 </div>"
 `;
 
+exports[`Story HTML snapshots > ProgressIndicator > InteractivePath 1`] = `
+"<div class="slds-p-around_medium">
+  <div id="_R_0_" class="slds-path">
+    <div class="slds-grid slds-path__track">
+      <div class="slds-grid slds-path__scroller-container">
+        <div class="slds-path__scroller">
+          <div class="slds-path__scroller_inner">
+            <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal" aria-labelledby="_R_0_-stage-name">
+              <li class="slds-path__item slds-is-complete" role="presentation"><a tabindex="-1" aria-selected="false" class="slds-path__link" href="#" id="_R_0_-path-0" role="option"><span class="slds-path__stage"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                    </svg><span class="slds-assistive-text">Stage Complete</span></span><span class="slds-path__title">Contacted</span></a></li>
+              <li class="slds-path__item slds-is-current slds-is-active" role="presentation"><a tabindex="0" aria-selected="true" class="slds-path__link" href="#" id="_R_0_-path-1" role="option"><span class="slds-path__stage"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                    </svg><span class="slds-assistive-text">Current Stage:</span></span><span class="slds-path__title">Open</span></a></li>
+              <li class="slds-path__item slds-is-incomplete" role="presentation"><a tabindex="-1" aria-selected="false" class="slds-path__link" href="#" id="_R_0_-path-2" role="option"><span class="slds-path__stage"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                    </svg></span><span class="slds-path__title">Unqualified</span></a></li>
+              <li class="slds-path__item slds-is-incomplete" role="presentation"><a tabindex="-1" aria-selected="false" class="slds-path__link" href="#" id="_R_0_-path-3" role="option"><span class="slds-path__stage"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                    </svg></span><span class="slds-path__title">Nurturing</span></a></li>
+              <li class="slds-path__item slds-is-incomplete" role="presentation"><a tabindex="-1" aria-selected="false" class="slds-path__link" href="#" id="_R_0_-path-4" role="option"><span class="slds-path__stage"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                    </svg></span><span class="slds-path__title">Closed</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slds-grid slds-path__action"><span id="_R_0_-stage-name" class="slds-path__stage-name">Stage: Open</span></div>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`Story HTML snapshots > ProgressIndicator > ModalVariant 1`] = `
 "<div class="slds-p-around_medium">
   <div id="_R_0_" class="slds-progress slds-progress_shade">
@@ -5012,6 +5045,39 @@ exports[`Story HTML snapshots > ProgressIndicator > ModalVariant 1`] = `
 </div>"
 `;
 
+exports[`Story HTML snapshots > ProgressIndicator > Path 1`] = `
+"<div class="slds-p-around_medium">
+  <div id="_R_0_" class="slds-path">
+    <div class="slds-grid slds-path__track">
+      <div class="slds-grid slds-path__scroller-container">
+        <div class="slds-path__scroller">
+          <div class="slds-path__scroller_inner">
+            <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal" aria-labelledby="_R_0_-stage-name">
+              <li class="slds-path__item slds-is-complete" role="presentation"><a tabindex="-1" aria-selected="false" class="slds-path__link" href="#" id="_R_0_-path-0" role="option"><span class="slds-path__stage"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                    </svg><span class="slds-assistive-text">Stage Complete</span></span><span class="slds-path__title">Contacted</span></a></li>
+              <li class="slds-path__item slds-is-complete" role="presentation"><a tabindex="-1" aria-selected="false" class="slds-path__link" href="#" id="_R_0_-path-1" role="option"><span class="slds-path__stage"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                    </svg><span class="slds-assistive-text">Stage Complete</span></span><span class="slds-path__title">Open</span></a></li>
+              <li class="slds-path__item slds-is-current slds-is-active" role="presentation"><a tabindex="0" aria-selected="true" class="slds-path__link" href="#" id="_R_0_-path-2" role="option"><span class="slds-path__stage"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                    </svg><span class="slds-assistive-text">Current Stage:</span></span><span class="slds-path__title">Unqualified</span></a></li>
+              <li class="slds-path__item slds-is-incomplete" role="presentation"><a tabindex="-1" aria-selected="false" class="slds-path__link" href="#" id="_R_0_-path-3" role="option"><span class="slds-path__stage"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                    </svg></span><span class="slds-path__title">Nurturing</span></a></li>
+              <li class="slds-path__item slds-is-incomplete" role="presentation"><a tabindex="-1" aria-selected="false" class="slds-path__link" href="#" id="_R_0_-path-4" role="option"><span class="slds-path__stage"><svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                    </svg></span><span class="slds-path__title">Closed</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slds-grid slds-path__action"><span id="_R_0_-stage-name" class="slds-path__stage-name">Stage: Unqualified</span></div>
+    </div>
+  </div>
+</div>"
+`;
+
 exports[`Story HTML snapshots > ProgressIndicator > SetupAssistantVariant 1`] = `
 "<div class="slds-p-around_medium">
   <div id="_R_0_" class="slds-progress slds-progress_vertical slds-progress_success">
@@ -5036,6 +5102,37 @@ exports[`Story HTML snapshots > ProgressIndicator > SetupAssistantVariant 1`] = 
         <div id="progress-indicator-vertical-label-4" class="slds-progress__item_content slds-grid slds-grid_align-spread">Step 5: Complete</div>
       </li>
     </ol>
+  </div>
+</div>"
+`;
+
+exports[`Story HTML snapshots > ProgressIndicator > ShadeVariant 1`] = `
+"<div class="slds-p-around_medium">
+  <div class="slds-theme_shade slds-p-around_medium">
+    <div id="_R_0_" class="slds-progress slds-progress_shade">
+      <ol class="slds-progress__list">
+        <li class="slds-progress__item slds-is-completed">
+          <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+              </svg><span class="slds-assistive-text">Step 1: Step 1: Introduction - Completed</span></button><span></span></div>
+        </li>
+        <li class="slds-progress__item slds-is-completed">
+          <div class="slds-tooltip-trigger" style="line-height:1"><button class="slds-button slds-button_icon slds-progress__marker slds-progress__marker_icon" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#success"></use>
+              </svg><span class="slds-assistive-text">Step 2: Step 2: Configuration - Completed</span></button><span></span></div>
+        </li>
+        <li class="slds-progress__item slds-is-active">
+          <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" aria-current="step" type="button"><span class="slds-assistive-text">Step 3: Step 3: Review</span></button><span></span></div>
+        </li>
+        <li class="slds-progress__item">
+          <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 4: Step 4: Confirmation</span></button><span></span></div>
+        </li>
+        <li class="slds-progress__item">
+          <div class="slds-tooltip-trigger" style="display:flex;line-height:1"><button class="slds-button slds-progress__marker" type="button"><span class="slds-assistive-text">Step 5: Step 5: Complete</span></button><span></span></div>
+        </li>
+      </ol>
+      <div class="slds-progress-bar slds-progress-bar_x-small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" role="progressbar"><span class="slds-progress-bar__value" style="width:50%"><span class="slds-assistive-text">Progress: 50%</span></span></div>
+    </div>
   </div>
 </div>"
 `;
