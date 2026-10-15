@@ -29,7 +29,8 @@ const windowDefined = typeof window !== 'undefined';
 // Types
 export type ModalAlign = 'top' | 'center';
 export type ModalSize = 'small' | 'medium' | 'large';
-export type ModalPrompt = 'success' | 'warning' | 'error' | 'wrench' | 'offline' | 'info';
+export type ModalPrompt =
+	'success' | 'warning' | 'error' | 'wrench' | 'offline' | 'info';
 
 export interface ModalAssistiveText {
 	/** This is a visually hidden label for the dialog. If not provided, `heading` is used. */
@@ -165,35 +166,39 @@ const Modal: React.FC<ModalProps> = ({
 
 	// Check props in development
 	useEffect(() => {
-		checkProps(MODAL, {
-			align,
-			ariaHideApp,
-			assistiveText: assistiveTextProp,
-			children,
-			className,
-			containerClassName,
-			contentClassName,
-			contentStyle: contentStyleProp,
-			directional,
-			disableClose,
-			dismissOnClickOutside,
-			onRequestClose,
-			footer,
-			footerClassName,
-			header,
-			headerClassName,
-			id: idProp,
-			isOpen,
-			parentSelector,
-			portalClassName,
-			prompt,
-			size,
-			tagline,
-			title,
-			heading,
-			toast,
-			closeButtonAssistiveText,
-		}, componentDoc);
+		checkProps(
+			MODAL,
+			{
+				align,
+				ariaHideApp,
+				assistiveText: assistiveTextProp,
+				children,
+				className,
+				containerClassName,
+				contentClassName,
+				contentStyle: contentStyleProp,
+				directional,
+				disableClose,
+				dismissOnClickOutside,
+				onRequestClose,
+				footer,
+				footerClassName,
+				header,
+				headerClassName,
+				id: idProp,
+				isOpen,
+				parentSelector,
+				portalClassName,
+				prompt,
+				size,
+				tagline,
+				title,
+				heading,
+				toast,
+				closeButtonAssistiveText,
+			},
+			componentDoc
+		);
 		if (ariaHideApp) {
 			checkAppElementIsSet();
 		}
@@ -226,7 +231,11 @@ const Modal: React.FC<ModalProps> = ({
 
 	// Dismiss modal handler
 	const dismissModal = useCallback(() => {
-		if (returnFocusTo && 'focus' in returnFocusTo && typeof returnFocusTo.focus === 'function') {
+		if (
+			returnFocusTo &&
+			'focus' in returnFocusTo &&
+			typeof returnFocusTo.focus === 'function'
+		) {
 			returnFocusTo.focus();
 		}
 		if (onRequestClose) {
@@ -270,13 +279,13 @@ const Modal: React.FC<ModalProps> = ({
 			: {
 					borderTopLeftRadius: borderRadiusValue,
 					borderTopRightRadius: borderRadiusValue,
-			  };
+				};
 		const borderBottomRadius = footer
 			? {}
 			: {
 					borderBottomLeftRadius: borderRadiusValue,
 					borderBottomRightRadius: borderRadiusValue,
-			  };
+				};
 		return {
 			...borderTopRadius,
 			...borderBottomRadius,
@@ -320,8 +329,9 @@ const Modal: React.FC<ModalProps> = ({
 	const renderHeader = () => {
 		let headerContent = header;
 		const headerEmpty = !headerContent && !(heading || title) && !tagline;
-		const closeButtonText = closeButtonAssistiveText || assistiveText.closeButton;
-		
+		const closeButtonText =
+			closeButtonAssistiveText || assistiveText.closeButton;
+
 		const closeButton = (
 			<Button
 				assistiveText={{ icon: closeButtonText }}
@@ -348,9 +358,7 @@ const Modal: React.FC<ModalProps> = ({
 					>
 						{heading || title}
 					</h1>
-					{tagline ? (
-						<p className="slds-m-top_x-small">{tagline}</p>
-					) : null}
+					{tagline ? <p className="slds-m-top_x-small">{tagline}</p> : null}
 				</div>
 			);
 		}
@@ -398,7 +406,8 @@ const Modal: React.FC<ModalProps> = ({
 
 	// Render modal content
 	const renderModal = () => {
-		const modalStyle = align === 'top' ? { justifyContent: 'flex-start' } : undefined;
+		const modalStyle =
+			align === 'top' ? { justifyContent: 'flex-start' } : undefined;
 		const borderRadius = getBorderRadius();
 		const contentStyle: CSSProperties = {
 			...borderRadius,
@@ -479,4 +488,3 @@ const Modal: React.FC<ModalProps> = ({
 Modal.displayName = MODAL;
 
 export default Modal;
-

@@ -1,7 +1,11 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type ReactElement, type CSSProperties } from 'react';
+import React, {
+	type ReactNode,
+	type ReactElement,
+	type CSSProperties,
+} from 'react';
 import { BREADCRUMB } from '../../utilities/constants';
 import Dropdown from '../menu-dropdown';
 
@@ -72,7 +76,7 @@ const Breadcrumb = ({
 			: {
 					...defaultAssistiveText,
 					...propAssistiveText,
-			  }.label;
+				}.label;
 
 	return (
 		<nav
@@ -84,10 +88,7 @@ const Breadcrumb = ({
 				{overflowDropdownMenu &&
 					getBreadcrumbDropdown(overflowDropdownMenu, { id })}
 				{trail.map((crumb, index) => (
-					<li
-						key={index}
-						className="slds-breadcrumb__item"
-					>
+					<li key={index} className="slds-breadcrumb__item">
 						{crumb}
 					</li>
 				))}
@@ -99,4 +100,3 @@ const Breadcrumb = ({
 Breadcrumb.displayName = BREADCRUMB;
 
 export default Breadcrumb;
-

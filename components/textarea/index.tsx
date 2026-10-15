@@ -153,9 +153,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
 		// Handle assistiveText as string or object
 		const assistiveTextLabel =
-			typeof assistiveText === 'string'
-				? assistiveText
-				: assistiveText?.label;
+			typeof assistiveText === 'string' ? assistiveText : assistiveText?.label;
 
 		const labelText = label || assistiveTextLabel;
 
@@ -210,7 +208,13 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 						wrap={wrap}
 						value={value}
 						defaultValue={defaultValue}
-						aria-describedby={errorText ? getErrorId() : (ariaProps as Record<string, unknown>)['aria-describedby'] as string | undefined}
+						aria-describedby={
+							errorText
+								? getErrorId()
+								: ((ariaProps as Record<string, unknown>)[
+										'aria-describedby'
+									] as string | undefined)
+						}
 						{...ariaProps}
 					/>
 				</div>
@@ -228,4 +232,3 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 Textarea.displayName = TEXTAREA;
 
 export default Textarea;
-
