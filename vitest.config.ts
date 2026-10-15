@@ -54,7 +54,10 @@ export default defineConfig({
 					globals: true,
 					environment: 'jsdom',
 					setupFiles: './vitest.setup.ts',
-					include: ['components/**/__tests__/*.{test,spec}.{ts,tsx,js,jsx}'],
+					include: [
+						'components/**/__tests__/*.{test,spec}.{ts,tsx,js,jsx}',
+						'utilities/**/__tests__/*.{test,spec}.{ts,tsx,js,jsx}',
+					],
 					// Browser-only specs live alongside as `*.browser.test.*`; keep
 					// them out of the jsdom run.
 					exclude: [
