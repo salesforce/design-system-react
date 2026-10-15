@@ -5,8 +5,8 @@ import React from 'react';
 import classNames from 'classnames';
 
 import UtilityIcon from '../../utilities/utility-icon';
-import { useRovingTabIndex } from '../../../utilities/hooks';
 import { PROGRESS_INDICATOR_PATH } from '../../../utilities/constants';
+import { useRovingTabIndex } from './use-roving-tab-index';
 import {
 	type ProgressIndicatorAssistiveText,
 	type ProgressIndicatorLabels,
@@ -30,15 +30,11 @@ export interface PathProps {
 	 */
 	className?: string | string[] | Record<string, boolean>;
 	/**
-	 * Index of the stage that holds the tab stop before the user moves it
-	 */
-	defaultActiveIndex: number;
-	/**
 	 * HTML id for component.
 	 */
 	id: string;
 	/**
-	 * Visible text before the current stage's name
+	 * Visible text around the current stage's name
 	 */
 	labels: ProgressIndicatorLabels;
 	/**
@@ -53,6 +49,10 @@ export interface PathProps {
 	 */
 	onStepFocus?: (event: React.FocusEvent, data: StepEventData) => void;
 	/**
+	 * Index of the selected stage, which holds the tab stop until the user moves it
+	 */
+	selectedIndex: number;
+	/**
 	 * Each stage and its status
 	 */
 	steps: PathStepState[];
@@ -65,16 +65,16 @@ export interface PathProps {
 const Path = ({
 	assistiveText,
 	className,
-	defaultActiveIndex,
 	id,
 	labels,
 	onStepClick,
 	onStepFocus,
+	selectedIndex,
 	steps,
 }: PathProps): React.ReactElement => {
 	const { activeIndex, getItemProps } = useRovingTabIndex<HTMLAnchorElement>({
 		count: steps.length,
-		defaultIndex: defaultActiveIndex,
+		selectedIndex,
 	});
 	const stageNameId = `${id}-stage-name`;
 	const currentStep = steps.find(({ isSelected }) => isSelected)?.step;
@@ -100,7 +100,6 @@ const Path = ({
 										isSelected,
 										step,
 									};
-									const itemProps = getItemProps(index);
 
 									let stageAssistiveText = step.assistiveText;
 									if (stageAssistiveText === undefined) {
@@ -125,18 +124,19 @@ const Path = ({
 											{/* SLDS and lightning-progress-indicator render each stage as an `a[role=option]` */}
 											{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
 											<a
-												{...itemProps}
+												{...getItemProps(index, {
+													onFocus: (event) => onStepFocus?.(event, data),
+												})}
+												// SLDS Path: `aria-selected` marks the stage the user has moved to, not the current stage
 												aria-selected={index === activeIndex}
 												className="slds-path__link"
 												href="#"
 												id={`${id}-path-${step.id}`}
 												onClick={(event) => {
 													event.preventDefault();
+													// Safari doesn't focus links on click; focus the stage so it takes the tab stop
+													event.currentTarget.focus();
 													onStepClick?.(event, data);
-												}}
-												onFocus={(event) => {
-													itemProps.onFocus();
-													onStepFocus?.(event, data);
 												}}
 												role="option"
 											>
@@ -162,9 +162,11 @@ const Path = ({
 						</div>
 					</div>
 				</div>
-				<div className="slds-grid">
+				<div className="slds-grid slds-path__action">
 					<span id={stageNameId} className="slds-path__stage-name">
-						{labels.stageNameBefore} {currentStep?.label}
+						{labels.stageNameBefore}
+						{currentStep?.label}
+						{labels.stageNameAfter}
 					</span>
 				</div>
 			</div>

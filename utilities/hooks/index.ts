@@ -5,9 +5,3 @@ export {
 	useClickOutside,
 	type UseClickOutsideOptions,
 } from './use-click-outside';
-export {
-	useRovingTabIndex,
-	type RovingTabIndexItemProps,
-	type UseRovingTabIndexOptions,
-	type UseRovingTabIndexResult,
-} from './use-roving-tab-index';

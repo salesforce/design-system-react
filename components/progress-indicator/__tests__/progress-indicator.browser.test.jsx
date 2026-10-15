@@ -1,11 +1,14 @@
-import { render, act } from '@testing-library/react';
-import { userEvent } from 'vitest/browser';
-import { describe, it, expect } from 'vitest';
+import { render, act, screen } from '@testing-library/react';
+import { page, userEvent } from 'vitest/browser';
+import { afterEach, describe, it, expect } from 'vitest';
 
 import '@salesforce-ux/design-system-2/dist/css/bundled/slds2.lightning-blue.css';
 
 import ProgressIndicator from '../';
 import IconSettings from '../../icon-settings';
+
+// Served by Vite from node_modules, so the sprite loads instead of 404ing
+const iconPath = '/node_modules/@salesforce-ux/design-system/assets/icons';
 
 const steps = [
 	{ id: 0, label: 'Contacted' },
@@ -21,7 +24,7 @@ const steps = [
 describe('SLDSProgressIndicator path (browser)', () => {
 	const renderPath = () =>
 		render(
-			<IconSettings iconPath="/assets/icons">
+			<IconSettings iconPath={iconPath}>
 				<button type="button">Before</button>
 				<ProgressIndicator
 					id="path-browser"
@@ -84,5 +87,65 @@ describe('SLDSProgressIndicator path (browser)', () => {
 		await run(() => userEvent.tab({ shift: true }));
 		expect(options[3]).toHaveFocus();
 		expect(before).not.toHaveFocus();
+	});
+
+	it('keeps aria-selected on the stage the user moved to after tabbing away', async () => {
+		renderPath();
+		const options = getOptions();
+		const after = document.querySelectorAll('button')[1];
+		const isSelected = () =>
+			options.map((option) => option.getAttribute('aria-selected'));
+
+		await run(() => options[2].focus());
+		await run(() => userEvent.keyboard('{ArrowRight}{ArrowRight}'));
+		await run(() => userEvent.tab());
+		expect(after).toHaveFocus();
+
+		// SLDS Path: `aria-selected` follows the stage the user moved to (as in
+		// lightning-progress-step), while the current stage stays on the step
+		// the app selected.
+		expect(isSelected()).toEqual(['false', 'false', 'false', 'false', 'true']);
+		expect(options[2].closest('li')).toHaveClass('slds-is-current');
+		expect(options[2]).toHaveAccessibleName('Current Stage: Unqualified');
+		expect(screen.getByRole('listbox')).toHaveAccessibleName(
+			'Stage: Unqualified'
+		);
+
+		await run(() => userEvent.tab({ shift: true }));
+		expect(options[4]).toHaveFocus();
+		expect(isSelected()[4]).toBe('true');
+	});
+
+	describe('stage name', () => {
+		afterEach(async () => {
+			await page.viewport(1280, 720);
+		});
+
+		it('shows below the stages, full width, on narrow screens', async () => {
+			await page.viewport(400, 600);
+			renderPath();
+			const nav = document.querySelector('.slds-path__nav');
+			const stageName = document.querySelector('.slds-path__stage-name');
+			const action = stageName.parentElement;
+
+			expect(action).toHaveClass('slds-path__action');
+			expect(stageName).toBeVisible();
+			expect(action.getBoundingClientRect().top).toBeGreaterThanOrEqual(
+				nav.getBoundingClientRect().bottom
+			);
+			expect(action.getBoundingClientRect().width).toBe(
+				document.querySelector('.slds-path__track').getBoundingClientRect()
+					.width
+			);
+		});
+
+		it('is hidden on wide screens', async () => {
+			await page.viewport(1280, 720);
+			renderPath();
+
+			expect(
+				document.querySelector('.slds-path__stage-name')
+			).not.toBeVisible();
+		});
 	});
 });

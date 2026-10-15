@@ -5010,7 +5010,7 @@ exports[`Story HTML snapshots > ProgressIndicator > InteractivePath 1`] = `
           </div>
         </div>
       </div>
-      <div class="slds-grid"><span id="_R_0_-stage-name" class="slds-path__stage-name">Stage: Open</span></div>
+      <div class="slds-grid slds-path__action"><span id="_R_0_-stage-name" class="slds-path__stage-name">Stage: Open</span></div>
     </div>
   </div>
 </div>"
@@ -5072,7 +5072,7 @@ exports[`Story HTML snapshots > ProgressIndicator > Path 1`] = `
           </div>
         </div>
       </div>
-      <div class="slds-grid"><span id="_R_0_-stage-name" class="slds-path__stage-name">Stage: Unqualified</span></div>
+      <div class="slds-grid slds-path__action"><span id="_R_0_-stage-name" class="slds-path__stage-name">Stage: Unqualified</span></div>
     </div>
   </div>
 </div>"

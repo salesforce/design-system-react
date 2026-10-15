@@ -421,7 +421,7 @@ describe('SLDSProgressIndicator', () => {
 			renderProgressIndicator({
 				...pathProps,
 				assistiveText: { completedStage: 'Done:', currentStage: 'Now:' },
-				labels: { stageNameBefore: 'Status:' },
+				labels: { stageNameBefore: 'Status: ', stageNameAfter: ' (current)' },
 			});
 
 			expect(getStageAssistiveText().slice(0, 3)).toEqual([
@@ -430,8 +430,35 @@ describe('SLDSProgressIndicator', () => {
 				'Now:',
 			]);
 			expect(screen.getByRole('listbox')).toHaveAccessibleName(
-				'Status: tooltip label #3'
+				'Status: tooltip label #3 (current)'
 			);
+		});
+
+		it('renders a stage that is both completed and selected as current', () => {
+			renderProgressIndicator({
+				...pathProps,
+				completedSteps: steps.slice(0, 3),
+			});
+
+			const current = getOptions()[2].closest('li');
+			expect(current).toHaveClass('slds-is-current');
+			expect(current).not.toHaveClass('slds-is-complete');
+			expect(getStageAssistiveText()[2]).toBe('Current Stage:');
+		});
+
+		it('falls back to the first stage when selectedStep is not in steps', () => {
+			renderProgressIndicator({
+				...pathProps,
+				selectedStep: { id: 99, label: 'Missing' },
+			});
+
+			expect(getOptions().map((option) => option.tabIndex)).toEqual([
+				0, -1, -1, -1, -1,
+			]);
+			expect(
+				document.querySelectorAll('.slds-path__item.slds-is-current')
+			).toHaveLength(0);
+			expect(screen.getByRole('listbox')).toHaveAccessibleName('Stage:');
 		});
 
 		it('moves focus and the active stage with the arrow keys', () => {
@@ -514,6 +541,18 @@ describe('SLDSProgressIndicator', () => {
 			});
 		});
 
+		it('moves the tab stop to a clicked stage', () => {
+			renderProgressIndicator(pathProps);
+
+			// jsdom, like Safari, doesn't focus a link on click
+			fireEvent.click(getOptions()[4]);
+
+			expect(getOptions()[4]).toHaveFocus();
+			expect(getOptions().map((option) => option.tabIndex)).toEqual([
+				-1, -1, -1, -1, 0,
+			]);
+		});
+
 		it('calls onStepFocus with the step data', () => {
 			const focusHandler = vi.fn();
 			renderProgressIndicator({ ...pathProps, onStepFocus: focusHandler });
@@ -527,29 +566,89 @@ describe('SLDSProgressIndicator', () => {
 			});
 		});
 
-		it('warns in development when given base-only props', () => {
-			const consoleError = vi
-				.spyOn(console, 'error')
-				.mockImplementation(() => {});
+		const spyOnConsoleError = () =>
+			vi.spyOn(console, 'error').mockImplementation(() => {});
+		const getMessages = (consoleError) =>
+			consoleError.mock.calls.map(([message]) => message);
+
+		it('warns in development when given base-only step props', () => {
+			const consoleError = spyOnConsoleError();
 			renderProgressIndicator({
 				...pathProps,
+				disabledSteps: [steps[3]],
 				errorSteps: [steps[2]],
-				variant: 'shade',
+				tooltipIsOpenSteps: [steps[1]],
 			});
 
-			const messages = consoleError.mock.calls.map(([message]) => message);
-			expect(messages).toEqual(
-				expect.arrayContaining([
-					expect.stringContaining('`errorSteps`'),
-					expect.stringContaining('`variant` of value `shade`'),
-				])
+			expect(getMessages(consoleError)).toEqual([
+				expect.stringContaining('`disabledSteps`'),
+				expect.stringContaining('`errorSteps`'),
+				expect.stringContaining('`tooltipIsOpenSteps`'),
+			]);
+		});
+
+		it.each(['modal', 'setup-assistant', 'shade'])(
+			'warns in development when given variant %s',
+			(variant) => {
+				const consoleError = spyOnConsoleError();
+				renderProgressIndicator({ ...pathProps, variant });
+
+				expect(getMessages(consoleError)).toEqual([
+					expect.stringContaining(`\`variant\` of value \`${variant}\``),
+				]);
+			}
+		);
+
+		it('does not warn for empty step arrays', () => {
+			const consoleError = spyOnConsoleError();
+			renderProgressIndicator({
+				...pathProps,
+				disabledSteps: [],
+				errorSteps: [],
+				tooltipIsOpenSteps: [],
+			});
+
+			expect(consoleError).not.toHaveBeenCalled();
+		});
+
+		it('warns when re-rendered into an incompatible combination', () => {
+			const consoleError = spyOnConsoleError();
+			const { rerender } = renderProgressIndicator({
+				...pathProps,
+				type: 'base',
+				variant: 'modal',
+			});
+			expect(consoleError).not.toHaveBeenCalled();
+
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<ProgressIndicator {...pathProps} variant="modal" />
+				</IconSettings>
 			);
+
+			expect(getMessages(consoleError)).toEqual([
+				expect.stringContaining('`variant` of value `modal`'),
+			]);
+		});
+
+		it('does not warn again when only the step array identity changes', () => {
+			const consoleError = spyOnConsoleError();
+			const { rerender } = renderProgressIndicator({
+				...pathProps,
+				errorSteps: [steps[2]],
+			});
+
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<ProgressIndicator {...pathProps} errorSteps={[steps[2]]} />
+				</IconSettings>
+			);
+
+			expect(consoleError).toHaveBeenCalledTimes(1);
 		});
 
 		it('does not warn for base values of variant and orientation', () => {
-			const consoleError = vi
-				.spyOn(console, 'error')
-				.mockImplementation(() => {});
+			const consoleError = spyOnConsoleError();
 			renderProgressIndicator({
 				...pathProps,
 				orientation: 'horizontal',

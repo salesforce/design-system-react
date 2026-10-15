@@ -72,8 +72,10 @@ export interface ProgressIndicatorAssistiveText {
  * Text labels for ProgressIndicator
  */
 export interface ProgressIndicatorLabels {
-	/** `type="path"` only: text before the current stage's name, which shows when the path collapses on narrow screens. Defaults to `Stage:` */
+	/** `type="path"` only: text before the current stage's name, which shows when the path collapses on narrow screens. Include any spacing between it and the name. Defaults to `Stage: ` */
 	stageNameBefore?: React.ReactNode;
+	/** `type="path"` only: text after the current stage's name. Include any spacing between it and the name. */
+	stageNameAfter?: React.ReactNode;
 }
 
 /**
@@ -156,7 +158,7 @@ const defaultAssistiveText: ProgressIndicatorAssistiveText = {
 };
 
 const defaultLabels: ProgressIndicatorLabels = {
-	stageNameBefore: 'Stage:',
+	stageNameBefore: 'Stage: ',
 };
 
 /**
@@ -218,22 +220,30 @@ const ProgressIndicator = ({
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
 	const allSteps = checkSteps(propSteps) ? propSteps : defaultSteps;
 
-	// Check props in development
+	// Check props in development. Pass whether each step array has items, not the array itself, so that
+	// an empty array doesn't count as passed and a new array on each render doesn't re-run the check.
+	const hasDisabledSteps = Boolean(propDisabledSteps?.length);
+	const hasErrorSteps = Boolean(propErrorSteps?.length);
+	const hasTooltipIsOpenSteps = Boolean(tooltipIsOpenSteps?.length);
 	useEffect(() => {
 		checkProps(PROGRESS_INDICATOR, {
-			disabledSteps: propDisabledSteps,
-			errorSteps: propErrorSteps,
+			disabledSteps: hasDisabledSteps,
+			errorSteps: hasErrorSteps,
 			orientation: propOrientation,
-			selectedStep,
-			steps: propSteps,
-			tooltipIsOpenSteps,
+			tooltipIsOpenSteps: hasTooltipIsOpenSteps,
 			tooltipPosition: propTooltipPosition,
 			type,
 			variant,
 		});
-		// Only run on mount
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [
+		hasDisabledSteps,
+		hasErrorSteps,
+		hasTooltipIsOpenSteps,
+		propOrientation,
+		propTooltipPosition,
+		type,
+		variant,
+	]);
 
 	// Find current step index
 	const currentStepIndex = useMemo(() => {
@@ -252,7 +262,7 @@ const ProgressIndicator = ({
 			<Path
 				assistiveText={assistiveText}
 				className={className}
-				defaultActiveIndex={currentStepIndex}
+				selectedIndex={currentStepIndex}
 				id={id}
 				labels={{ ...defaultLabels, ...propLabels }}
 				onStepClick={onStepClick}
