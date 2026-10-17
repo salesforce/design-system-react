@@ -36,9 +36,15 @@ describe('SLDSPopover', () => {
 		it('is open, has heading, body, close button', () => {
 			const { container } = renderPopover({ isOpen: true });
 
-			expect(container.querySelector(`#${defaultIds.heading}`)).toBeInTheDocument();
-			expect(container.querySelector(`#${defaultIds.body}`)).toBeInTheDocument();
-			expect(container.querySelector('.slds-popover__close')).toBeInTheDocument();
+			expect(
+				container.querySelector(`#${defaultIds.heading}`)
+			).toBeInTheDocument();
+			expect(
+				container.querySelector(`#${defaultIds.body}`)
+			).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-popover__close')
+			).toBeInTheDocument();
 		});
 	});
 
@@ -74,10 +80,26 @@ describe('SLDSPopover', () => {
 			expect(popover).toHaveClass(optionalProps.className);
 
 			const closeButton = container.querySelector('button.slds-popover__close');
-			expect(closeButton).toHaveTextContent(optionalProps.assistiveText.closeButton);
+			expect(closeButton).toHaveTextContent(
+				optionalProps.assistiveText.closeButton
+			);
 
 			expect(container.querySelector('#footer')).toBeInTheDocument();
 			expect(popover).toHaveStyle({ background: popoverBackgroundColor });
+		});
+
+		it('applies classNameFooter when footerWalkthroughActions is used', () => {
+			const { container } = renderPopover({
+				isOpen: true,
+				variant: 'walkthrough',
+				classNameFooter: 'custom-walkthrough-footer',
+				footerWalkthroughActions: <Button label="Next" />,
+				stepText: 'Step 1 of 2',
+			});
+
+			const footer = container.querySelector('.slds-popover__footer');
+			expect(footer).toBeInTheDocument();
+			expect(footer).toHaveClass('custom-walkthrough-footer');
 		});
 	});
 
@@ -100,18 +122,24 @@ describe('SLDSPopover', () => {
 
 				// Wait for popover to open
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).toBeInTheDocument();
 				});
 
 				expect(onOpen).toHaveBeenCalledTimes(1);
 				expect(triggerClicked).toHaveBeenCalledTimes(1);
 
-				const closeButton = container.querySelector('button.slds-popover__close');
+				const closeButton = container.querySelector(
+					'button.slds-popover__close'
+				);
 				fireEvent.click(closeButton);
 
 				// Wait for popover to close
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).not.toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).not.toBeInTheDocument();
 				});
 
 				expect(onClose).toHaveBeenCalledTimes(1);
@@ -131,7 +159,9 @@ describe('SLDSPopover', () => {
 
 				// Wait for popover to open
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).toBeInTheDocument();
 				});
 
 				expect(onOpen).toHaveBeenCalledTimes(1);
@@ -145,7 +175,9 @@ describe('SLDSPopover', () => {
 
 				// Wait for popover to close
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).not.toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).not.toBeInTheDocument();
 				});
 
 				expect(onClose).toHaveBeenCalledTimes(1);
@@ -165,7 +197,9 @@ describe('SLDSPopover', () => {
 
 				// Wait for popover to open
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).toBeInTheDocument();
 				});
 
 				const popover = container.querySelector(`#${defaultIds.popover}`);
@@ -178,7 +212,9 @@ describe('SLDSPopover', () => {
 				// NOTE: Cannot directly assert on stopPropagation calls from synthetic events,
 				// but we can verify the menu closes (observable behavior)
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).not.toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).not.toBeInTheDocument();
 				});
 			});
 		});
@@ -199,7 +235,9 @@ describe('SLDSPopover', () => {
 
 			// Wait for popover to open and check focus
 			await waitFor(() => {
-				expect(container.querySelector(`#${defaultIds.popover}`)).toBeInTheDocument();
+				expect(
+					container.querySelector(`#${defaultIds.popover}`)
+				).toBeInTheDocument();
 			});
 
 			// NOTE: In jsdom, focus management is limited. The popover should be in

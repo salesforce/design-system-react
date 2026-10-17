@@ -70,7 +70,8 @@ export type PopoverAlign =
 /**
  * Popover position options
  */
-export type PopoverPosition = 'absolute' | 'overflowBoundaryElement' | 'relative';
+export type PopoverPosition =
+	'absolute' | 'overflowBoundaryElement' | 'relative';
 
 /**
  * Popover variant options
@@ -286,7 +287,8 @@ const Popover = ({
 	// Handle dialog close (when unmounted)
 	const handleDialogClose = useCallback(
 		(
-			event?: React.MouseEvent | React.KeyboardEvent | MouseEvent | KeyboardEvent,
+			event?:
+				React.MouseEvent | React.KeyboardEvent | MouseEvent | KeyboardEvent,
 			data?: { componentWillUnmount?: boolean }
 		) => {
 			const componentWillUnmount = data?.componentWillUnmount || false;
@@ -304,10 +306,7 @@ const Popover = ({
 
 	// Handle close
 	const handleClose = useCallback(
-		(
-			event?: MouseEvent | KeyboardEvent,
-			data?: { trigger?: string }
-		) => {
+		(event?: MouseEvent | KeyboardEvent, data?: { trigger?: string }) => {
 			if (isOpen) {
 				if (onRequestClose) {
 					onRequestClose(event, data || {});
@@ -336,7 +335,8 @@ const Popover = ({
 			}
 
 			currentOpenPopover = {
-				handleClose: (event, data) => handleClose(event as MouseEvent | KeyboardEvent, data),
+				handleClose: (event, data) =>
+					handleClose(event as MouseEvent | KeyboardEvent, data),
 				getId: () => id,
 			};
 
@@ -470,7 +470,12 @@ const Popover = ({
 		(shouldShow: boolean) => {
 			if (typeof overlayProp === 'function' && documentDefined) {
 				overlayProp(shouldShow, overlay);
-			} else if (overlayProp && shouldShow && !overlayRef.current && documentDefined) {
+			} else if (
+				overlayProp &&
+				shouldShow &&
+				!overlayRef.current &&
+				documentDefined
+			) {
 				overlayRef.current = overlay;
 				document.querySelector('body')?.appendChild(overlay);
 			} else if (!shouldShow && overlayRef.current?.parentNode) {
@@ -482,16 +487,21 @@ const Popover = ({
 	);
 
 	// Container ref callback
-	const setContainerRef = useCallback((component: HTMLDivElement | null) => {
-		(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current = component;
-		if (component && !inputRendered) {
-			setInputRendered(true);
-		}
-	}, [inputRendered]);
+	const setContainerRef = useCallback(
+		(component: HTMLDivElement | null) => {
+			(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current =
+				component;
+			if (component && !inputRendered) {
+				setInputRendered(true);
+			}
+		},
+		[inputRendered]
+	);
 
 	// Dialog ref callback
 	const setMenuRef = useCallback((component: HTMLElement | null) => {
-		(dialogRef as React.MutableRefObject<HTMLElement | null>).current = component;
+		(dialogRef as React.MutableRefObject<HTMLElement | null>).current =
+			component;
 	}, []);
 
 	// Cleanup on unmount
@@ -515,13 +525,19 @@ const Popover = ({
 		const hasThemedHeader = variant === 'error' || variant === 'warning';
 		const hasDefinedHeader = heading || hasThemedHeader;
 
-		if (!hasDefinedHeader || variant === 'walkthrough-action' || variant === 'feature') {
+		if (
+			!hasDefinedHeader ||
+			variant === 'walkthrough-action' ||
+			variant === 'feature'
+		) {
 			return null;
 		}
 
 		const headerIcon = {
 			error: <Icon category="utility" name="error" size="x-small" inverse />,
-			warning: <Icon category="utility" name="warning" size="x-small" inverse />,
+			warning: (
+				<Icon category="utility" name="warning" size="x-small" inverse />
+			),
 		};
 
 		if (hasThemedHeader) {
@@ -585,7 +601,12 @@ const Popover = ({
 					<div className="slds-media">
 						<div className="slds-media__figure">
 							{variant === 'walkthrough-action' ? (
-								<Icon category="utility" name="touch_action" size="small" inverse />
+								<Icon
+									category="utility"
+									name="touch_action"
+									size="small"
+									inverse
+								/>
 							) : (
 								icon
 							)}
@@ -641,7 +662,13 @@ const Popover = ({
 			(footerWalkthroughActions || stepText)
 		) {
 			return (
-				<footer className="slds-popover__footer">
+				<footer
+					className={classNames(
+						'slds-popover__footer',
+						classNameFooter as string,
+						footerClassName as string
+					)}
+				>
 					<div className="slds-grid slds-grid_vertical-align-center">
 						{stepText && <span className="slds-text-title">{stepText}</span>}
 						{footerWalkthroughActions && (
@@ -746,15 +773,22 @@ const Popover = ({
 				onClick:
 					openOn === 'click' || openOn === 'hybrid'
 						? (event: MouseEvent) => {
-								handleClick(event, childProps.onClick as (e: MouseEvent) => void);
-						  }
+								handleClick(
+									event,
+									childProps.onClick as (e: MouseEvent) => void
+								);
+							}
 						: childProps.onClick,
 				onFocus: openOn === 'hover' ? handleFocus : undefined,
 				onMouseDown,
 				onMouseEnter:
-					openOn === 'hover' || openOn === 'hybrid' ? handleMouseEnter : undefined,
+					openOn === 'hover' || openOn === 'hybrid'
+						? handleMouseEnter
+						: undefined,
 				onMouseLeave:
-					openOn === 'hover' || openOn === 'hybrid' ? handleMouseLeave : undefined,
+					openOn === 'hover' || openOn === 'hybrid'
+						? handleMouseLeave
+						: undefined,
 				tabIndex: (childProps.tabIndex as number) || 0,
 			};
 			clonedTrigger = React.cloneElement(child, triggerProps);
@@ -783,4 +817,3 @@ const Popover = ({
 Popover.displayName = POPOVER;
 
 export default Popover;
-
