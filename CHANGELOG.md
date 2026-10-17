@@ -11,6 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `Button`: `xx-small` icon size ([#3228](https://github.com/salesforce/design-system-react/pull/3228))
 - `ButtonStateful`: `success` and `text` variants ([#3234](https://github.com/salesforce/design-system-react/pull/3234))
 
+### Fixed
+
+- `Popover`: apply `classNameFooter` (and deprecated `footerClassName`) when rendering walkthrough footers via `footerWalkthroughActions` / `stepText` ([#2744](https://github.com/salesforce/design-system-react/issues/2744))
+
 ## [11.0.0-alpha.4] - 2026-10-06
 
 ### Changed
