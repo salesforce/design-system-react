@@ -29,7 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- Releases publish under the `alpha` npm tag, so a plain `npm install @salesforce/design-system-react` keeps resolving to 0.10.x ([#3220](https://github.com/salesforce/design-system-react/pull/3220))
+- `alpha` is now the package's default publish tag (`publishConfig.tag`), so a plain `npm install @salesforce/design-system-react` keeps resolving to 0.10.x. Earlier alphas set the tag only in the publish workflow. ([#3220](https://github.com/salesforce/design-system-react/pull/3220))
 
 ### Removed
 
@@ -40,6 +40,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `GlobalHeader` (`GlobalHeaderButton`, `GlobalHeaderDropdown`, `GlobalHeaderFavorites`, `GlobalHeaderHelp`, `GlobalHeaderNotifications`, `GlobalHeaderProfile`, `GlobalHeaderSearch`, `GlobalHeaderSetup`, `GlobalHeaderTask`)
   - `GlobalNavigationBar` (`GlobalNavigationBarButton`, `GlobalNavigationBarDropdown`, `GlobalNavigationBarLabel`, `GlobalNavigationBarLink`, `GlobalNavigationBarRegion`)
   - `LocationMap`
+  - The `SLDS`-prefixed alias of each component above (`SLDSAppLauncher`, `SLDSBrandBand`, and so on)
 
 ### Fixed
 
@@ -62,7 +63,7 @@ First v11 release on npm: a rewrite for React 19, TypeScript, and SLDS 2.
 - **BREAKING**: Requires React and React DOM ^19.2.0 (previously >= 16.8)
 - **BREAKING**: Requires Node.js >= 24
 - **BREAKING**: The package ships ES modules and CommonJS from `dist/`, with a package `exports` map, instead of the `lib/` and `module/` folders. Imports outside the `exports` map no longer resolve. The `@salesforce/babel-preset-design-system-react` preset is no longer needed.
-- Components are rewritten as TypeScript function components, and the `.d.ts` files are generated from the source
+- Components are migrated to TypeScript, many of them rewritten as function components, and the `.d.ts` files are generated from the source
 - Popups are positioned with `@floating-ui/dom` instead of `popper.js`
 
 ### Removed
@@ -70,8 +71,9 @@ First v11 release on npm: a rewrite for React 19, TypeScript, and SLDS 2.
 - **BREAKING**: These components and their subcomponents:
   - `Lookup` (`LookupDefaultFooter`, `LookupDefaultHeader`, `LookupDefaultSectionDivider`)
   - `Notification`
-  - `Picklist`
+  - `Picklist` (and its `SLDSMenuPicklist` alias)
   - `TimePicker` (and its `Timepicker` alias)
+  - The `SLDS`-prefixed alias of each component above (`SLDSLookup`, `SLDSNotification`, and so on)
 - The `create-react-class`, `lodash.isequal`, `popper.js`, `react-onclickoutside`, `react-required-if`, and `react-text-truncate` dependencies
 - IE11 support and polyfills
 
