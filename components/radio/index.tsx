@@ -1,7 +1,15 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useRef, useId, useCallback, type ChangeEvent, type FocusEvent, type KeyboardEvent, type CSSProperties } from 'react';
+import React, {
+	useRef,
+	useId,
+	useCallback,
+	type ChangeEvent,
+	type FocusEvent,
+	type KeyboardEvent,
+	type CSSProperties,
+} from 'react';
 import classNames from 'classnames';
 import KEYS from '../../utilities/key-code';
 import { RADIO } from '../../utilities/constants';
@@ -73,7 +81,10 @@ export interface RadioProps {
 	/** Input name attribute */
 	name?: string;
 	/** Change handler */
-	onChange?: (event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>, data: { checked: boolean }) => void;
+	onChange?: (
+		event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
+		data: { checked: boolean }
+	) => void;
 	/** Focus handler */
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Request focus callback */
@@ -159,7 +170,10 @@ const Radio = ({
 	const dataProps = getDataProps(rest);
 
 	const handleChange = useCallback(
-		(event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>, preventDuplicate?: boolean) => {
+		(
+			event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
+			preventDuplicate?: boolean
+		) => {
 			if (!preventDuplicateRef.current) {
 				preventDuplicateRef.current = Boolean(preventDuplicate);
 				onChange?.(event, { checked: !checked });
@@ -260,7 +274,8 @@ const Radio = ({
 					'slds-radio': variant === 'base' || variant === 'swatch',
 					'slds-button slds-radio_button': variant === 'button-group',
 					'slds-visual-picker': variant === 'visual-picker',
-					'slds-visual-picker_vertical': variant === 'visual-picker' && vertical,
+					'slds-visual-picker_vertical':
+						variant === 'visual-picker' && vertical,
 				},
 				className as string
 			)}
@@ -305,18 +320,3 @@ const Radio = ({
 Radio.displayName = RADIO;
 
 export default Radio;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

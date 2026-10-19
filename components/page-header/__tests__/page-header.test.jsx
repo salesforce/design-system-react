@@ -90,7 +90,9 @@ describe('PageHeader', () => {
 				</IconSettings>
 			);
 
-			const svg = container.querySelector('.slds-media__figure .slds-icon-standard-user');
+			const svg = container.querySelector(
+				'.slds-media__figure .slds-icon-standard-user'
+			);
 			expect(svg).toBeInTheDocument();
 		});
 
@@ -137,12 +139,18 @@ describe('PageHeader', () => {
 				</IconSettings>
 			);
 
-			const detailBlocks = container.querySelectorAll('.slds-page-header__detail-block');
+			const detailBlocks = container.querySelectorAll(
+				'.slds-page-header__detail-block'
+			);
 			expect(detailBlocks.length).toBeGreaterThan(0);
 
 			const field1 = detailBlocks[0];
-			expect(field1.querySelector('.slds-text-title').textContent).toBe('Description');
-			expect(field1.querySelector('.slds-truncate:last-child').textContent).toBe(
+			expect(field1.querySelector('.slds-text-title').textContent).toBe(
+				'Description'
+			);
+			expect(
+				field1.querySelector('.slds-truncate:last-child').textContent
+			).toBe(
 				'Description that demonstrates truncation with content. Description that demonstrates truncation with content.'
 			);
 		});
@@ -156,9 +164,13 @@ describe('PageHeader', () => {
 				</IconSettings>
 			);
 
-			const detailBlocks = container.querySelectorAll('.slds-page-header__detail-block');
+			const detailBlocks = container.querySelectorAll(
+				'.slds-page-header__detail-block'
+			);
 			const field1 = detailBlocks[0];
-			const truncatedElement = field1.querySelector('.slds-truncate:last-child');
+			const truncatedElement = field1.querySelector(
+				'.slds-truncate:last-child'
+			);
 
 			expect(truncatedElement).toHaveClass('slds-truncate');
 		});

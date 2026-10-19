@@ -1,7 +1,13 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useState, useId, useCallback, type ReactNode, type MouseEvent } from 'react';
+import React, {
+	useState,
+	useId,
+	useCallback,
+	type ReactNode,
+	type MouseEvent,
+} from 'react';
 import classNames from 'classnames';
 import Button from '../button';
 import { EXPANDABLE_SECTION } from '../../utilities/constants';
@@ -31,7 +37,10 @@ export interface ExpandableSectionProps {
 	/** Whether section cannot be collapsed */
 	nonCollapsible?: boolean;
 	/** Toggle callback */
-	onToggleOpen?: (event: MouseEvent<HTMLButtonElement>, data: { isOpen: boolean }) => void;
+	onToggleOpen?: (
+		event: MouseEvent<HTMLButtonElement>,
+		data: { isOpen: boolean }
+	) => void;
 	/** Section title (required) */
 	title: string;
 }
@@ -58,18 +67,22 @@ const ExpandableSection = ({
 
 	const id = propId || generatedId;
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
-	
+
 	// Use controlled or internal state
-	const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
+	const isOpen =
+		controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
 	const contentId = `${id}-expanded-section-content`;
 
-	const handleToggle = useCallback((event: MouseEvent<HTMLButtonElement>) => {
-		if (onToggleOpen) {
-			onToggleOpen(event, { isOpen });
-		} else {
-			setInternalIsOpen((prev) => !prev);
-		}
-	}, [isOpen, onToggleOpen]);
+	const handleToggle = useCallback(
+		(event: MouseEvent<HTMLButtonElement>) => {
+			if (onToggleOpen) {
+				onToggleOpen(event, { isOpen });
+			} else {
+				setInternalIsOpen((prev) => !prev);
+			}
+		},
+		[isOpen, onToggleOpen]
+	);
 
 	const buttonAriaProps = {
 		'aria-controls': contentId,
@@ -131,18 +144,3 @@ const ExpandableSection = ({
 ExpandableSection.displayName = EXPANDABLE_SECTION;
 
 export default ExpandableSection;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

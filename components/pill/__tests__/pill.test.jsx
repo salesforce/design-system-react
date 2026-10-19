@@ -39,7 +39,9 @@ describe('SLDSPill', () => {
 			expect(pill).toHaveClass('slds-pill');
 			expect(pill).toHaveClass('slds-pill_link');
 			expect(pill).toHaveClass('extra-class');
-			expect(container.querySelector('.slds-pill[role="button"]')).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-pill[role="button"]')
+			).toBeInTheDocument();
 		});
 
 		it('renders label as a link', () => {
@@ -204,7 +206,9 @@ describe('SLDSPill', () => {
 			const pill = container.querySelector('.slds-pill');
 			expect(pill).toHaveClass('slds-pill');
 			expect(pill).toHaveClass('slds-pill_bare');
-			expect(container.querySelector('.slds-pill[role="button"]')).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-pill[role="button"]')
+			).toBeInTheDocument();
 		});
 	});
 
@@ -314,7 +318,11 @@ describe('SLDSPill', () => {
 
 		it('omits tabIndex when not provided', () => {
 			const { container } = render(
-				<SLDSPill labels={{ label: LABEL }} variant="option" onRemove={vi.fn()} />
+				<SLDSPill
+					labels={{ label: LABEL }}
+					variant="option"
+					onRemove={vi.fn()}
+				/>
 			);
 
 			const pill = container.querySelector('.slds-pill');

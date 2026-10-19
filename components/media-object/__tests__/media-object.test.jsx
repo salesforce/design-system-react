@@ -24,7 +24,9 @@ describe('MediaObject', () => {
 				</IconSettings>
 			);
 
-			const mediaContainer = container.querySelector(`.${COMPONENT_CSS_CLASSES.base}`);
+			const mediaContainer = container.querySelector(
+				`.${COMPONENT_CSS_CLASSES.base}`
+			);
 			expect(mediaContainer).toBeInTheDocument();
 			expect(mediaContainer).toHaveClass('this-is-a-container-test');
 
@@ -34,7 +36,9 @@ describe('MediaObject', () => {
 				'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda.'
 			);
 
-			const figure = container.querySelector(`.${COMPONENT_CSS_CLASSES.figure}`);
+			const figure = container.querySelector(
+				`.${COMPONENT_CSS_CLASSES.figure}`
+			);
 			expect(figure).toBeInTheDocument();
 			const icon = figure.querySelector('.slds-icon-standard-user');
 			expect(icon).toBeInTheDocument();
@@ -53,7 +57,9 @@ describe('MediaObject', () => {
 				</IconSettings>
 			);
 
-			const mediaContainer = container.querySelector(`.${COMPONENT_CSS_CLASSES.base}`);
+			const mediaContainer = container.querySelector(
+				`.${COMPONENT_CSS_CLASSES.base}`
+			);
 			expect(mediaContainer).toHaveClass('slds-media_center');
 		});
 
@@ -68,7 +74,9 @@ describe('MediaObject', () => {
 				</IconSettings>
 			);
 
-			const mediaContainer = container.querySelector(`.${COMPONENT_CSS_CLASSES.base}`);
+			const mediaContainer = container.querySelector(
+				`.${COMPONENT_CSS_CLASSES.base}`
+			);
 			expect(mediaContainer).toHaveClass('slds-has-flexi-truncate');
 		});
 	});
