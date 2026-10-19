@@ -3,7 +3,9 @@
 
 import React, { type CSSProperties } from 'react';
 import classNames from '../../utilities/class-names';
-import UtilityIcon, { type InlineIconData } from '../utilities/utility-icon/index';
+import UtilityIcon, {
+	type InlineIconData,
+} from '../utilities/utility-icon/index';
 import IconBackgrounds from '../../utilities/product-tokens/icon-backgrounds';
 import { ICON } from '../../utilities/constants';
 import type { IconCategory } from '../../types/common';
@@ -11,7 +13,8 @@ import type { IconCategory } from '../../types/common';
 /**
  * Icon color variant types
  */
-export type IconColorVariant = 'base' | 'default' | 'error' | 'light' | 'warning' | 'success';
+export type IconColorVariant =
+	'base' | 'default' | 'error' | 'light' | 'warning' | 'success';
 
 /**
  * Icon size types
@@ -65,7 +68,9 @@ export interface IconProps {
 	title?: string;
 }
 
-const defaultProps: Required<Pick<IconProps, 'assistiveText' | 'category' | 'colorVariant' | 'size'>> = {
+const defaultProps: Required<
+	Pick<IconProps, 'assistiveText' | 'category' | 'colorVariant' | 'size'>
+> = {
 	assistiveText: {},
 	category: 'standard',
 	colorVariant: 'default',
@@ -122,30 +127,28 @@ const Icon = ({
 	);
 
 	return (
-		<span
-			className={containerClasses}
-			style={containerStyle}
-			title={title}
-		>
+		<span className={containerClasses} style={containerStyle} title={title}>
 			<UtilityIcon
 				aria-hidden={true}
 				category={category}
-				className={classNames(className, 'slds-icon', {
-					'slds-icon_xx-small': size === 'xx-small',
-					'slds-icon_x-small': size === 'x-small',
-					'slds-icon_small': size === 'small',
-					// medium intentionally not present
-					'slds-icon_large': size === 'large',
-					// Color logic for utility vs other categories
-					'slds-icon-text-default':
-						colorVariant === 'default' && category === 'utility'
-							? !inverse
-							: inverse,
-					'slds-icon-text-success': colorVariant === 'success',
-					'slds-icon-text-warning': colorVariant === 'warning',
-					'slds-icon-text-error': colorVariant === 'error',
-					'slds-icon-text-light': colorVariant === 'light',
-				}) as string}
+				className={
+					classNames(className, 'slds-icon', {
+						'slds-icon_xx-small': size === 'xx-small',
+						'slds-icon_x-small': size === 'x-small',
+						'slds-icon_small': size === 'small',
+						// medium intentionally not present
+						'slds-icon_large': size === 'large',
+						// Color logic for utility vs other categories
+						'slds-icon-text-default':
+							colorVariant === 'default' && category === 'utility'
+								? !inverse
+								: inverse,
+						'slds-icon-text-success': colorVariant === 'success',
+						'slds-icon-text-warning': colorVariant === 'warning',
+						'slds-icon-text-error': colorVariant === 'error',
+						'slds-icon-text-light': colorVariant === 'light',
+					}) as string
+				}
 				icon={icon}
 				name={name}
 				path={path}
@@ -161,4 +164,3 @@ const Icon = ({
 Icon.displayName = ICON;
 
 export default Icon;
-

@@ -61,18 +61,3 @@ const MediaObject = ({
 MediaObject.displayName = MEDIA_OBJECT;
 
 export default MediaObject;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

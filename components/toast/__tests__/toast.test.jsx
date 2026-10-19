@@ -85,7 +85,9 @@ describe('SLDSToast', () => {
 			// Wait for the auto-dismiss to happen
 			await waitFor(
 				() => {
-					expect(container.querySelector('.slds-notify')).not.toBeInTheDocument();
+					expect(
+						container.querySelector('.slds-notify')
+					).not.toBeInTheDocument();
 				},
 				{ timeout: 50 }
 			);

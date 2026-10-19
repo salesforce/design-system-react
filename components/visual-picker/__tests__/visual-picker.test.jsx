@@ -209,7 +209,12 @@ VisualPickerExample.defaultProps = {
 describe('SLDS Visual Picker', () => {
 	it('radio switching works correctly', () => {
 		const { container } = render(
-			<VisualPickerExample label="Select any one" type="radio" checked="1" id="vp-test" />
+			<VisualPickerExample
+				label="Select any one"
+				type="radio"
+				checked="1"
+				id="vp-test"
+			/>
 		);
 
 		// Get the radio inputs

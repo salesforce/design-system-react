@@ -27,8 +27,7 @@ class DemoComponent extends Component {
 								dismissible
 								icon={<Icon category="utility" name="user" />}
 								labels={{
-									heading:
-										'Logged in as John Smith (johnsmith@acme.com).',
+									heading: 'Logged in as John Smith (johnsmith@acme.com).',
 									headingLink: 'Log out',
 								}}
 								onClickHeadingLink={this.props.onClickHeadingLink}
@@ -52,9 +51,7 @@ describe('SLDSAlert', () => {
 			const { container } = render(<DemoComponent />);
 			expect(container.querySelector('.slds-notify')).toBeInTheDocument();
 
-			const closeButton = container.querySelector(
-				'button.slds-notify__close'
-			);
+			const closeButton = container.querySelector('button.slds-notify__close');
 			fireEvent.click(closeButton);
 
 			expect(container.querySelector('.slds-notify')).not.toBeInTheDocument();

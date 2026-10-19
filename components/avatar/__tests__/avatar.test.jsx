@@ -149,7 +149,9 @@ describe('SLDSAvatar', () => {
 				</IconSettings>
 			);
 
-			const accountIcon = container.querySelector('.slds-icon-standard-account');
+			const accountIcon = container.querySelector(
+				'.slds-icon-standard-account'
+			);
 			expect(accountIcon).toBeInTheDocument();
 		});
 

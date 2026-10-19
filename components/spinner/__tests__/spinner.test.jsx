@@ -14,7 +14,10 @@ describe('Spinner', () => {
 
 		it('renders default classes when no props passed in', () => {
 			const { container } = render(<Spinner />);
-			expect(getSpinner(container)).toHaveClass('slds-spinner', 'slds-spinner_medium');
+			expect(getSpinner(container)).toHaveClass(
+				'slds-spinner',
+				'slds-spinner_medium'
+			);
 		});
 	});
 

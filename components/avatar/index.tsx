@@ -100,7 +100,7 @@ const Avatar = ({
 			: {
 					...defaultAssistiveText,
 					...propAssistiveText,
-			  }.icon;
+				}.icon;
 
 	// Render functions for different avatar states
 	const renderBaseAvatar = () => (
@@ -159,18 +159,3 @@ const Avatar = ({
 Avatar.displayName = AVATAR;
 
 export default Avatar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

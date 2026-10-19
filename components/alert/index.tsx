@@ -1,7 +1,14 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useState, useRef, useEffect, useCallback, type ReactNode, type CSSProperties } from 'react';
+import React, {
+	useState,
+	useRef,
+	useEffect,
+	useCallback,
+	type ReactNode,
+	type CSSProperties,
+} from 'react';
 import classNames from '../../utilities/class-names';
 import Button from '../button';
 import Icon from '../icon';
@@ -104,24 +111,34 @@ const Alert = ({
 		};
 	}, []);
 
-	const saveButtonRef = useCallback((component: HTMLButtonElement | null) => {
-		closeButtonRef.current = component;
-		if (isInitialRender && component) {
-			DOMElementFocus.storeActiveElement();
-			component.focus();
-			setIsInitialRender(false);
-		}
-	}, [isInitialRender]);
+	const saveButtonRef = useCallback(
+		(component: HTMLButtonElement | null) => {
+			closeButtonRef.current = component;
+			if (isInitialRender && component) {
+				DOMElementFocus.storeActiveElement();
+				component.focus();
+				setIsInitialRender(false);
+			}
+		},
+		[isInitialRender]
+	);
 
 	// Get the icon to display
 	const icon = propIcon || defaultIcons[variant];
 
 	const clonedIcon = React.isValidElement(icon)
-		? React.cloneElement(icon as React.ReactElement<{ containerClassName?: string; inverse?: boolean; size?: string }>, {
-				containerClassName: 'slds-m-right_x-small',
-				inverse: true,
-				size: 'x-small',
-		  })
+		? React.cloneElement(
+				icon as React.ReactElement<{
+					containerClassName?: string;
+					inverse?: boolean;
+					size?: string;
+				}>,
+				{
+					containerClassName: 'slds-m-right_x-small',
+					inverse: true,
+					size: 'x-small',
+				}
+			)
 		: icon;
 
 	return (
@@ -146,10 +163,7 @@ const Alert = ({
 			<h2>
 				{labels.heading}{' '}
 				{labels.headingLink && (
-					<a
-						onClick={EventUtil.trappedHandler(onClickHeadingLink)}
-						href="#"
-					>
+					<a onClick={EventUtil.trappedHandler(onClickHeadingLink)} href="#">
 						{labels.headingLink}
 					</a>
 				)}
@@ -175,18 +189,3 @@ const Alert = ({
 Alert.displayName = ALERT;
 
 export default Alert;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

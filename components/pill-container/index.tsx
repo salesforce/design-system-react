@@ -22,20 +22,24 @@ import { PILL_CONTAINER } from '../../utilities/constants';
  */
 export interface PillOption {
 	/** Avatar component or config */
-	avatar?: ReactNode | {
-		imgSrc?: string;
-		title?: string;
-		variant?: string;
-	};
+	avatar?:
+		| ReactNode
+		| {
+				imgSrc?: string;
+				title?: string;
+				variant?: string;
+		  };
 	/** Bare style */
 	bare?: boolean;
 	/** Error state */
 	error?: boolean;
 	/** Icon component or config */
-	icon?: ReactNode | {
-		category?: string;
-		name?: string;
-	};
+	icon?:
+		| ReactNode
+		| {
+				category?: string;
+				name?: string;
+		  };
 	/** Unique identifier */
 	id?: string;
 	/** Display label */
@@ -87,9 +91,15 @@ export interface PillContainerProps {
 	/** Array of pill options */
 	options?: PillOption[];
 	/** Pill click handler */
-	onClickPill?: (event: MouseEvent | KeyboardEvent, data: PillEventData) => void;
+	onClickPill?: (
+		event: MouseEvent | KeyboardEvent,
+		data: PillEventData
+	) => void;
 	/** Remove request handler */
-	onRequestRemovePill?: (event: MouseEvent | KeyboardEvent, data: PillEventData) => void;
+	onRequestRemovePill?: (
+		event: MouseEvent | KeyboardEvent,
+		data: PillEventData
+	) => void;
 	/** Custom styles */
 	style?: CSSProperties;
 	/** Container variant */
@@ -126,9 +136,9 @@ const PillContainer = ({
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
 	const labels = { ...defaultLabels, ...propLabels };
 
-	const [activeSelectedOption, setActiveSelectedOption] = useState<PillOption | undefined>(
-		options[0] || undefined
-	);
+	const [activeSelectedOption, setActiveSelectedOption] = useState<
+		PillOption | undefined
+	>(options[0] || undefined);
 	const [activeSelectedOptionIndex, setActiveSelectedOptionIndex] = useState(0);
 	const [listboxHasFocus, setListboxHasFocus] = useState(false);
 
@@ -137,7 +147,10 @@ const PillContainer = ({
 
 	// Reset active option when options change
 	useEffect(() => {
-		if ((options.length > 0 && !options[activeSelectedOptionIndex]) || preserveFocusRef.current) {
+		if (
+			(options.length > 0 && !options[activeSelectedOptionIndex]) ||
+			preserveFocusRef.current
+		) {
 			resetActiveSelectedOption();
 			preserveFocusRef.current = false;
 		}
@@ -162,7 +175,9 @@ const PillContainer = ({
 	const getNewActiveOptionIndex = useCallback(
 		(currentIndex: number, offset: number): number => {
 			const nextIndex = currentIndex + offset;
-			return options.length > nextIndex && nextIndex >= 0 ? nextIndex : currentIndex;
+			return options.length > nextIndex && nextIndex >= 0
+				? nextIndex
+				: currentIndex;
 		},
 		[options.length]
 	);
@@ -176,7 +191,10 @@ const PillContainer = ({
 	}, []);
 
 	const handleClickPill = useCallback(
-		(event: MouseEvent | KeyboardEvent, data: { index: number; option: PillOption }) => {
+		(
+			event: MouseEvent | KeyboardEvent,
+			data: { index: number; option: PillOption }
+		) => {
 			if (onClickPill) {
 				onClickPill(event, { index: data.index, option: data.option });
 			}
@@ -196,10 +214,14 @@ const PillContainer = ({
 	);
 
 	const handleNavigatePillContainer = useCallback(
-		(_event: React.SyntheticEvent | React.KeyboardEvent, { direction }: { direction: 'next' | 'previous' }) => {
+		(
+			_event: React.SyntheticEvent | React.KeyboardEvent,
+			{ direction }: { direction: 'next' | 'previous' }
+		) => {
 			const offsets = { next: 1, previous: -1 };
 			const isLastOptionAndRightIsPressed =
-				activeSelectedOptionIndex + 1 === options.length && direction === 'next';
+				activeSelectedOptionIndex + 1 === options.length &&
+				direction === 'next';
 			const isFirstOptionAndLeftIsPressed =
 				activeSelectedOptionIndex === 0 && direction === 'previous';
 
@@ -213,7 +235,10 @@ const PillContainer = ({
 				newIndex = options.length - 1;
 				newOption = options[options.length - 1];
 			} else {
-				newIndex = getNewActiveOptionIndex(activeSelectedOptionIndex, offsets[direction]);
+				newIndex = getNewActiveOptionIndex(
+					activeSelectedOptionIndex,
+					offsets[direction]
+				);
 				newOption = options[newIndex];
 			}
 
@@ -236,10 +261,16 @@ const PillContainer = ({
 	);
 
 	const handleRequestRemove = useCallback(
-		(event: MouseEvent | KeyboardEvent | React.SyntheticEvent, data: { index?: number; option: PillOption }) => {
+		(
+			event: MouseEvent | KeyboardEvent | React.SyntheticEvent,
+			data: { index?: number; option: PillOption }
+		) => {
 			if (onRequestRemovePill && data.index !== undefined) {
 				preserveFocusRef.current = true;
-				onRequestRemovePill(event as MouseEvent | KeyboardEvent, { index: data.index, option: data.option });
+				onRequestRemovePill(event as MouseEvent | KeyboardEvent, {
+					index: data.index,
+					option: data.option,
+				});
 			}
 		},
 		[onRequestRemovePill]
@@ -283,14 +314,3 @@ const PillContainer = ({
 PillContainer.displayName = PILL_CONTAINER;
 
 export default PillContainer;
-
-
-
-
-
-
-
-
-
-
-

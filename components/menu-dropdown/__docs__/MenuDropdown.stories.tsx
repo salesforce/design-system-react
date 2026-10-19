@@ -82,7 +82,8 @@ const meta: Meta<typeof MenuDropdown> = {
 		align: {
 			control: 'select',
 			options: ['center', 'left', 'right'],
-			description: 'Aligns the menu center, right, or left respective to the trigger',
+			description:
+				'Aligns the menu center, right, or left respective to the trigger',
 		},
 		buttonVariant: {
 			control: 'select',
@@ -357,7 +358,5 @@ export const Inverse: Story = {
 			</div>
 		),
 	],
-	render: (args) => (
-		<MenuDropdown {...args} buttonInverse />
-	),
+	render: (args) => <MenuDropdown {...args} buttonInverse />,
 };

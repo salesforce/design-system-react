@@ -110,7 +110,9 @@ export const CheckboxPicker = {
 					id="leads"
 					labels={{ heading: 'Leads', label: 'Track prospects' }}
 					checked={checked.leads}
-					onChange={() => setChecked((prev) => ({ ...prev, leads: !prev.leads }))}
+					onChange={() =>
+						setChecked((prev) => ({ ...prev, leads: !prev.leads }))
+					}
 					onRenderVisualPicker={() => priceTile('$70')}
 				/>
 			</VisualPicker>

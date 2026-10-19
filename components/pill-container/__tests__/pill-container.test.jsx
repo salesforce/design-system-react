@@ -82,7 +82,9 @@ describe('SLDSPillContainer', () => {
 				</IconSettings>
 			);
 
-			expect(container.querySelector('.slds-pill_container')).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-pill_container')
+			).toBeInTheDocument();
 			expect(container.querySelector('ul.slds-listbox')).toBeInTheDocument();
 
 			const pills = container.querySelectorAll('ul.slds-listbox .slds-pill');
@@ -105,11 +107,15 @@ describe('SLDSPillContainer', () => {
 				// Check for icons
 				if (idOfCurrentPill === 2 || idOfCurrentPill === 3) {
 					expect(
-						pill.querySelector('.slds-icon_container.slds-icon-standard-account')
+						pill.querySelector(
+							'.slds-icon_container.slds-icon-standard-account'
+						)
 					).toBeInTheDocument();
 				} else if (idOfCurrentPill === 4 || idOfCurrentPill === 5) {
 					expect(
-						pill.querySelector('.slds-avatar.slds-avatar_circle.slds-avatar_medium')
+						pill.querySelector(
+							'.slds-avatar.slds-avatar_circle.slds-avatar_medium'
+						)
 					).toBeInTheDocument();
 				} else if (idOfCurrentPill === 6) {
 					expect(pill.classList.contains('slds-pill_bare')).toBe(true);
@@ -190,7 +196,9 @@ describe('SLDSPillContainer', () => {
 			fireEvent.keyDown(pills[3], { key: 'Left', keyCode: 37, which: 37 });
 
 			// Verify container is still intact after keyboard interactions
-			expect(container.querySelector('.slds-pill_container')).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-pill_container')
+			).toBeInTheDocument();
 		});
 	});
 

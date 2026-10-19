@@ -24,7 +24,10 @@ export default {
 export const Default = {
 	render: () => (
 		<ExpandableSection title="Expandable Section">
-			<p>This is the content of the expandable section. It can contain any React content.</p>
+			<p>
+				This is the content of the expandable section. It can contain any React
+				content.
+			</p>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 		</ExpandableSection>
 	),

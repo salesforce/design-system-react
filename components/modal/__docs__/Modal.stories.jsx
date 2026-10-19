@@ -30,7 +30,15 @@ export default {
 		},
 		prompt: {
 			control: 'select',
-			options: [undefined, 'success', 'warning', 'error', 'wrench', 'offline', 'info'],
+			options: [
+				undefined,
+				'success',
+				'warning',
+				'error',
+				'wrench',
+				'offline',
+				'info',
+			],
 		},
 		align: {
 			control: 'radio',
@@ -88,7 +96,10 @@ const ModalWithTrigger = ({ buttonLabel, ...modalProps }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<>
-			<Button label={buttonLabel || 'Open Modal'} onClick={() => setIsOpen(true)} />
+			<Button
+				label={buttonLabel || 'Open Modal'}
+				onClick={() => setIsOpen(true)}
+			/>
 			<Modal
 				{...modalProps}
 				isOpen={isOpen}
@@ -206,13 +217,12 @@ export const NoHeader = {
 		>
 			<section className="slds-p-around_large">
 				<p>
-					This modal has no visible header, but includes an assistive text
-					label for screen readers.
+					This modal has no visible header, but includes an assistive text label
+					for screen readers.
 				</p>
 				<p className="slds-m-top_medium">
-					Sit nulla est ex deserunt exercitation anim occaecat. Nostrud
-					ullamco deserunt aute id consequat veniam incididunt duis in sint
-					irure nisi.
+					Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco
+					deserunt aute id consequat veniam incididunt duis in sint irure nisi.
 				</p>
 			</section>
 		</ModalWithTrigger>
@@ -365,7 +375,10 @@ export const CustomHeader = {
 			footer={<Button key="close" label="Close" variant="neutral" />}
 		>
 			<section className="slds-p-around_large">
-				<p>This modal has a completely custom header with a badge and custom layout.</p>
+				<p>
+					This modal has a completely custom header with a badge and custom
+					layout.
+				</p>
 			</section>
 		</ModalWithTrigger>
 	),
@@ -390,7 +403,8 @@ export const AlwaysOpen = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'This modal is always open for documentation purposes. In real usage, control the `isOpen` prop with state.',
+				story:
+					'This modal is always open for documentation purposes. In real usage, control the `isOpen` prop with state.',
 			},
 		},
 	},

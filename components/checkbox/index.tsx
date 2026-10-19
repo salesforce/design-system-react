@@ -21,7 +21,8 @@ import Icon from '../icon/index';
 /**
  * Checkbox variant types
  */
-export type CheckboxVariant = 'base' | 'toggle' | 'button-group' | 'visual-picker';
+export type CheckboxVariant =
+	'base' | 'toggle' | 'button-group' | 'visual-picker';
 
 /**
  * Checkbox size for visual picker
@@ -96,7 +97,10 @@ export interface CheckboxProps {
 	/** Blur event handler */
 	onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Change event handler */
-	onChange?: (event: ChangeEvent<HTMLInputElement>, data: CheckboxChangeData) => void;
+	onChange?: (
+		event: ChangeEvent<HTMLInputElement>,
+		data: CheckboxChangeData
+	) => void;
 	/** Focus event handler */
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Key down event handler */
@@ -449,4 +453,3 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 Checkbox.displayName = CHECKBOX;
 
 export default Checkbox;
-
