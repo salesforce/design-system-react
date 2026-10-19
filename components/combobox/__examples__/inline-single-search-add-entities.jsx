@@ -117,6 +117,13 @@ class Example extends React.Component {
 						},
 					]}
 					events={{
+						onSelectActionItem: (event, { option, value }) => {
+							if (this.props.action) {
+								this.props.action('onSelectActionItem')(event, option, value);
+							} else if (console) {
+								console.log('onSelectActionItem', event, option, value);
+							}
+						},
 						onChange: (event, { value }) => {
 							if (this.props.action) {
 								this.props.action('onChange')(event, value);
@@ -167,7 +174,7 @@ class Example extends React.Component {
 									inputValue: this.state.inputValue,
 									options: accountsWithIcon,
 									selection: this.state.selection,
-							  })
+								})
 					}
 					selection={this.state.selection}
 					value={
