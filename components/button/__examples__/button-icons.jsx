@@ -78,7 +78,7 @@ class Example extends React.Component {
 							iconCategory="utility"
 							iconName="settings"
 							iconSize="large"
-							inverse
+							isInverse
 							variant="icon"
 						/>
 					</div>
@@ -93,10 +93,10 @@ class Example extends React.Component {
 					>
 						<Button
 							assistiveText={{ icon: 'Icon hint large' }}
-							hint
 							iconCategory="utility"
 							iconName="settings"
 							iconSize="large"
+							isHint
 							variant="icon"
 						/>
 					</div>

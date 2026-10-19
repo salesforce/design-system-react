@@ -16,7 +16,7 @@ export default {
 	],
 	argTypes: {
 		isOpen: { control: 'boolean' },
-		nonCollapsible: { control: 'boolean' },
+		isNonCollapsible: { control: 'boolean' },
 	},
 };
 
@@ -53,7 +53,7 @@ export const InitiallyCollapsed = {
 // Non-collapsible
 export const NonCollapsible = {
 	render: () => (
-		<ExpandableSection title="Non-Collapsible Section" nonCollapsible>
+		<ExpandableSection title="Non-Collapsible Section" isNonCollapsible>
 			<p>This section cannot be collapsed. It&apos;s always visible.</p>
 		</ExpandableSection>
 	),

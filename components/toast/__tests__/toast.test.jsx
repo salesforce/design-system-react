@@ -23,7 +23,7 @@ class DemoComponent extends Component {
 					<ToastContainer>
 						{this.state.isOpen ? (
 							<Toast
-								dismissible
+								isDismissible
 								icon={<Icon category="utility" name="user" />}
 								labels={{
 									heading: 'Logged in as John Smith (johnsmith@acme.com).',
@@ -102,6 +102,27 @@ describe('SLDSToast', () => {
 
 			const toast = container.querySelector('.slds-notify');
 			expect(toast).toHaveStyle({ backgroundColor: 'rgb(18, 49, 35)' });
+		});
+	});
+
+	describe('isDismissible', () => {
+		it('does not render a close button by default', () => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Toast labels={{ heading: 'Not dismissible' }} variant="info" />
+				</IconSettings>
+			);
+			expect(container.querySelector('.slds-notify')).toBeInTheDocument();
+			expect(
+				container.querySelector('button.slds-notify__close')
+			).not.toBeInTheDocument();
+		});
+
+		it('renders a close button when isDismissible is set', () => {
+			const { container } = render(<DemoComponent />);
+			expect(
+				container.querySelector('button.slds-notify__close')
+			).toBeInTheDocument();
 		});
 	});
 });

@@ -128,12 +128,29 @@ const getAssistiveText = memoize(
 	isEqual
 );
 
+// Resolves each renamed boolean prop to its new name, falling back to the
+// deprecated alias. REMOVE the aliases at the next breaking change.
+const getBooleanProps = (props: SimpleDataTableProps) => ({
+	hasColumnBorders: props.hasColumnBorders ?? props.columnBordered,
+	hasFixedHeader: props.hasFixedHeader ?? props.fixedHeader,
+	hasFixedLayout: props.hasFixedLayout ?? props.fixedLayout,
+	isJoined: props.isJoined ?? props.joined,
+	hasKeyboardNavigation:
+		props.hasKeyboardNavigation ?? props.keyboardNavigation,
+	hasNoRowHover: props.hasNoRowHover ?? props.noRowHover,
+	isStacked: props.isStacked ?? props.stacked,
+	isStackedHorizontal: props.isStackedHorizontal ?? props.stackedHorizontal,
+	isStriped: props.isStriped ?? props.striped,
+	hasNoRowBorders: props.hasNoRowBorders ?? props.unborderedRow,
+	hasNoCellBuffer: props.hasNoCellBuffer ?? props.unbufferedCell,
+});
+
 const getColumnsAndRowActions = memoize(
 	(
 		children: ReactNode,
 		id: string | undefined,
-		fixedHeader: boolean | undefined,
-		fixedLayout: boolean | undefined,
+		hasFixedHeader: boolean | undefined,
+		hasFixedLayout: boolean | undefined,
 		items: SimpleDataTableItem[],
 		search: string | undefined
 	): {
@@ -153,7 +170,7 @@ const getColumnsAndRowActions = memoize(
 			) {
 				const { children: columnChildren, ...columnProps } = element.props;
 				const props: Record<string, unknown> = {
-					fixedLayout,
+					hasFixedLayout,
 					search,
 					items,
 					...columnProps,
@@ -176,6 +193,12 @@ const getColumnsAndRowActions = memoize(
 					Cell = SimpleDataTableCell;
 				}
 
+				// Resolve the renamed column booleans. The deprecated names stay in
+				// `props` (when passed) so the column's `checkProps` can warn about them.
+				props.isPrimaryColumn = props.isPrimaryColumn ?? props.primaryColumn;
+				props.isSortable = props.isSortable ?? props.sortable;
+				props.isTruncated = props.isTruncated ?? props.truncate;
+
 				columns.push({
 					Cell: Cell as React.ComponentType<SimpleDataTableCellProps>,
 					props: props as SimpleDataTableColumnProps,
@@ -186,7 +209,7 @@ const getColumnsAndRowActions = memoize(
 			) {
 				const { dropdown } = element.props;
 				const dropdownPropOverrides: { menuPosition?: string } = {};
-				if (fixedHeader) {
+				if (hasFixedHeader) {
 					dropdownPropOverrides.menuPosition = 'overflowBoundaryElement';
 				}
 				RowActions = React.cloneElement(element, {
@@ -204,7 +227,7 @@ const getColumnsAndRowActions = memoize(
 /**
  * SimpleDataTables support the display of structured data in rows and columns with an HTML table. To sort, filter or paginate the table, simply update the data passed in the items to the table and it will re-render itself appropriately. The table will throw a sort event as needed, and helper components for paging and filtering are coming soon.
  *
- * NOTE: for horizontal scrolling with `fixedHeader`-enabled SimpleDataTables, see the `style` property description
+ * NOTE: for horizontal scrolling with `hasFixedHeader`-enabled SimpleDataTables, see the `style` property description
  */
 class SimpleDataTable extends React.Component<
 	SimpleDataTableProps,
@@ -254,7 +277,7 @@ class SimpleDataTable extends React.Component<
 			tableHasFocus: false,
 			// Allows for keyboard navigation. This is useful for temporarily disabling keyboard navigation
 			// when another component requires its own focus behavior (e.g. menu dropdown).
-			allowKeyboardNavigation: props.keyboardNavigation,
+			allowKeyboardNavigation: getBooleanProps(props).hasKeyboardNavigation,
 		};
 		// Map of cells to interactive elements within that cell
 		this.interactiveElements = {};
@@ -273,7 +296,7 @@ class SimpleDataTable extends React.Component<
 	}
 
 	componentDidMount() {
-		if (this.props.fixedHeader) {
+		if (getBooleanProps(this.props).hasFixedHeader) {
 			this.toggleFixedHeaderListeners(true);
 			this.resizeFixedHeaders();
 		}
@@ -283,7 +306,7 @@ class SimpleDataTable extends React.Component<
 		_prevProps: SimpleDataTableProps,
 		prevState: SimpleDataTableState
 	) {
-		if (this.props.fixedHeader) {
+		if (getBooleanProps(this.props).hasFixedHeader) {
 			this.resizeFixedHeaders();
 			// If the first page of results isn't enough to allow the user to scroll it causes
 			// the user to get into a state where they cannot load the second page.
@@ -767,6 +790,19 @@ class SimpleDataTable extends React.Component<
 
 	// ### Render
 	render() {
+		const {
+			hasColumnBorders,
+			hasFixedHeader,
+			hasFixedLayout,
+			isJoined,
+			hasKeyboardNavigation,
+			hasNoRowHover,
+			isStacked,
+			isStackedHorizontal,
+			isStriped,
+			hasNoRowBorders,
+			hasNoCellBuffer,
+		} = getBooleanProps(this.props);
 		const ariaProps: { 'aria-multiselectable'?: 'true' } = {};
 		const numHeaderRows = 1;
 		const selection = this.props.selection ?? [];
@@ -792,8 +828,8 @@ class SimpleDataTable extends React.Component<
 		const { columns, RowActions } = getColumnsAndRowActions(
 			this.props.children,
 			this.props.id,
-			this.props.fixedHeader,
-			this.props.fixedLayout,
+			hasFixedHeader,
+			hasFixedLayout,
 			this.props.items,
 			this.props.search
 		);
@@ -822,28 +858,23 @@ class SimpleDataTable extends React.Component<
 		let component = (
 			<React.Fragment>
 				<TableContext.Provider
-					value={this.getTableContext(
-						this.state,
-						this.props.keyboardNavigation
-					)}
+					value={this.getTableContext(this.state, hasKeyboardNavigation)}
 				>
 					<table
 						{...ariaProps}
 						className={classNames(
 							'slds-table',
 							{
-								'slds-table_fixed-layout': this.props.fixedLayout,
-								'slds-table_header-fixed': this.props.fixedHeader,
-								'slds-table_resizable-cols': this.props.fixedLayout,
-								'slds-table_bordered': !this.props.unborderedRow,
-								'slds-table_cell-buffer':
-									!this.props.fixedLayout && !this.props.unbufferedCell,
-								'slds-max-medium-table_stacked': this.props.stacked,
-								'slds-max-medium-table_stacked-horizontal':
-									this.props.stackedHorizontal,
-								'slds-table_striped': this.props.striped,
-								'slds-table_col-bordered': this.props.columnBordered,
-								'slds-no-row-hover': this.props.noRowHover,
+								'slds-table_fixed-layout': hasFixedLayout,
+								'slds-table_header-fixed': hasFixedHeader,
+								'slds-table_resizable-cols': hasFixedLayout,
+								'slds-table_bordered': !hasNoRowBorders,
+								'slds-table_cell-buffer': !hasFixedLayout && !hasNoCellBuffer,
+								'slds-max-medium-table_stacked': isStacked,
+								'slds-max-medium-table_stacked-horizontal': isStackedHorizontal,
+								'slds-table_striped': isStriped,
+								'slds-table_col-bordered': hasColumnBorders,
+								'slds-no-row-hover': hasNoRowHover,
 								'slds-table_header-hidden': this.props.isHeadless,
 							},
 							this.props.className
@@ -854,7 +885,7 @@ class SimpleDataTable extends React.Component<
 								this.tableRef = node;
 							}
 						}}
-						role={this.props.fixedLayout ? 'grid' : undefined}
+						role={hasFixedLayout ? 'grid' : undefined}
 						onBlur={(event) => {
 							if (
 								this.tableRef &&
@@ -872,8 +903,8 @@ class SimpleDataTable extends React.Component<
 						<SimpleDataTableHead
 							assistiveText={assistiveText}
 							allSelected={allSelected}
-							fixedHeader={this.props.fixedHeader}
-							fixedLayout={this.props.fixedLayout}
+							hasFixedHeader={hasFixedHeader}
+							hasFixedLayout={hasFixedLayout}
 							headerRefs={(ref, index) => {
 								if (index === 'action' || index === 'select') {
 									if (ref) {
@@ -918,7 +949,7 @@ class SimpleDataTable extends React.Component<
 												canSelectRows={canSelectRows}
 												className={item.classNameRow}
 												columns={columns}
-												fixedLayout={this.props.fixedLayout}
+												hasFixedLayout={hasFixedLayout}
 												id={rowId}
 												index={index}
 												item={item}
@@ -937,11 +968,11 @@ class SimpleDataTable extends React.Component<
 						</tbody>
 					</table>
 				</TableContext.Provider>
-				{this.props.fixedHeader && this.props.hasMore && (
+				{hasFixedHeader && this.props.hasMore && (
 					<div className="slds-is-relative slds-p-around_large">
 						<Spinner
 							assistiveText={{ label: this.props.assistiveText?.loadingMore }}
-							hasContainer={false}
+							hasNoContainer
 							size="small"
 							variant="brand"
 						/>
@@ -950,14 +981,14 @@ class SimpleDataTable extends React.Component<
 			</React.Fragment>
 		);
 
-		if (this.props.fixedHeader) {
+		if (hasFixedHeader) {
 			const border = `1px solid ${colorGray5}`;
 			const styles: React.CSSProperties = {
 				borderTop: border,
 				height: '100%',
 			};
 
-			if (this.props.joined) {
+			if (isJoined) {
 				styles.borderBottom = border;
 				styles.borderLeft = border;
 				styles.borderRight = border;

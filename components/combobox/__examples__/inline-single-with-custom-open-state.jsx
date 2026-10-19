@@ -130,7 +130,7 @@ class Example extends React.Component {
 						options: accountsWithIcon,
 						selection: this.state.selection,
 					})}
-					predefinedOptionsOnly
+					hasPredefinedOptionsOnly
 					selection={this.state.selection}
 					isOpen={this.state.isOpen}
 					value={

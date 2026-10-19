@@ -20,7 +20,7 @@ class Example extends React.Component {
 				{this.state.isOpen ? (
 					<AlertContainer>
 						<Alert
-							dismissible
+							isDismissible
 							icon={<Icon category="utility" name="user" />}
 							labels={{
 								heading: 'Logged in as John Smith (johnsmith@acme.com).',

@@ -27,6 +27,8 @@ export interface ButtonIconProps {
 	/**
 	 * Associates an icon button with another element on the page by changes the color of the SVG. Please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#hint">Lightning Design System Buttons > Hint</a>.
 	 */
+	isHint?: boolean;
+	/** @deprecated Use `isHint` instead. */
 	hint?: boolean;
 	/**
 	 * An SVG object to use instead of name / category, look in `design-system-react/icons` for examples
@@ -37,8 +39,10 @@ export interface ButtonIconProps {
 	 */
 	className?: unknown[] | Record<string, unknown> | string;
 	/**
-	 * Setting `inverse` to true will switch the color of the icon: light to dark, dark to light.
+	 * Setting `isInverse` to true will switch the color of the icon: light to dark, dark to light.
 	 */
+	isInverse?: boolean;
+	/** @deprecated Use `isInverse` instead. */
 	inverse?: boolean;
 	/**
 	 * Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names.
@@ -69,11 +73,16 @@ const ButtonIcon = ({
 	icon,
 	className,
 	inverse,
+	isHint: isHintProp,
+	isInverse: isInverseProp,
 	name,
 	path,
 	position,
 	...rest
 }: ButtonIconProps): React.ReactElement => {
+	const isHint = isHintProp ?? hint;
+	const isInverse = isInverseProp ?? inverse;
+
 	(checkProps as (name: string, props: unknown, doc?: unknown) => void)(
 		BUTTON_ICON,
 		{
@@ -98,8 +107,8 @@ const ButtonIcon = ({
 				'slds-button__icon',
 				{
 					[`slds-button__icon_${size}`]: size && size !== 'medium',
-					'slds-button__icon_inverse-hint': inverse && hint,
-					'slds-button__icon_hint': hint && !inverse,
+					'slds-button__icon_inverse-hint': isInverse && isHint,
+					'slds-button__icon_hint': isHint && !isInverse,
 					[`slds-button__icon_${position}`]: position,
 				},
 				className as string

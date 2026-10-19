@@ -141,7 +141,7 @@ class Example extends React.Component {
 						options: accountsWithIcon,
 						selection: this.state.selection,
 					})}
-					predefinedOptionsOnly
+					hasPredefinedOptionsOnly
 					selection={this.state.selection}
 					value={
 						this.state.selection.length > 0

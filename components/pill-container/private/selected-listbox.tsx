@@ -27,7 +27,11 @@ export interface SelectedListBoxOption {
 	title?: string;
 	icon?: ReactNode | { category?: string; name?: string };
 	avatar?: ReactNode | { imgSrc?: string; title?: string; variant?: string };
+	isBare?: boolean;
+	/** @deprecated Use `isBare` instead. */
 	bare?: boolean;
+	hasError?: boolean;
+	/** @deprecated Use `hasError` instead. */
 	error?: boolean;
 	[key: string]: unknown;
 }
@@ -231,7 +235,7 @@ const SelectedListBox = ({
 									remove: assistiveText?.removePill,
 								}}
 								avatar={avatar as ReactElement}
-								bare={option.bare || isBare}
+								isBare={(option.isBare ?? option.bare) || isBare}
 								events={{
 									onBlur: events.onBlurPill,
 									onClick:
@@ -280,7 +284,7 @@ const SelectedListBox = ({
 										| undefined,
 								}}
 								eventData={{ option }}
-								hasError={option.error}
+								hasError={option.hasError ?? option.error}
 								icon={icon as ReactElement}
 								labels={{
 									label: option.label as string,

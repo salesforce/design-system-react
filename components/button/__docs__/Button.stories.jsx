@@ -135,7 +135,7 @@ export const InverseButton = Template.bind({});
 InverseButton.args = {
 	label: 'Inverse',
 	variant: 'neutral',
-	inverse: true,
+	isInverse: true,
 };
 InverseButton.decorators = [inverseDecorator];
 InverseButton.parameters = {
@@ -154,7 +154,7 @@ InverseIconButton.args = {
 	iconCategory: 'utility',
 	iconName: 'settings',
 	iconVariant: 'border',
-	inverse: true,
+	isInverse: true,
 };
 InverseIconButton.decorators = [inverseDecorator];
 
@@ -166,8 +166,8 @@ InverseIconWithHint.args = {
 	iconName: 'down',
 	iconVariant: 'border',
 	iconSize: 'small',
-	hint: true,
-	inverse: true,
+	isHint: true,
+	isInverse: true,
 };
 InverseIconWithHint.decorators = [inverseDecorator];
 

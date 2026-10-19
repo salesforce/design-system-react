@@ -127,7 +127,7 @@ export const Joined = {
 	render: () => (
 		<PageHeader
 			variant="object-home"
-			joined
+			isJoined
 			icon={<Icon category="standard" name="account" size="large" />}
 			title="Accounts"
 			info="12 items"

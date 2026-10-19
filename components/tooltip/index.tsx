@@ -507,7 +507,7 @@ const Tooltip = ({
 								label: assistiveText.tooltipTipLearnMoreIcon,
 							}}
 							category="utility"
-							inverse
+							isInverse
 							name="info"
 							size="x-small"
 						/>{' '}

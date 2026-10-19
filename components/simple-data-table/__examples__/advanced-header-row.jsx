@@ -126,7 +126,7 @@ class Example extends React.Component {
 							selectAllRows: 'Select all rows',
 							selectRow: 'Select this row',
 						}}
-						fixedLayout
+						hasFixedLayout
 						items={this.state.items}
 						id="SimpleDataTableExample-2"
 						onRowChange={this.handleChanged}
@@ -136,7 +136,7 @@ class Example extends React.Component {
 					>
 						<SimpleDataTableColumn
 							label="Name"
-							primaryColumn
+							isPrimaryColumn
 							property="opportunityName"
 							width="10rem"
 						/>

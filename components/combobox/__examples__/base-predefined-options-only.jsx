@@ -113,13 +113,13 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholder: 'Search Salesforce',
 					}}
-					multiple
+					isMultiple
 					options={comboboxFilterAndLimit({
 						inputValue: this.state.inputValue,
 						options: accountsWithIcon,
 						selection: this.state.selection,
 					})}
-					predefinedOptionsOnly
+					hasPredefinedOptionsOnly
 					selection={this.state.selection}
 					value={this.state.inputValue}
 				/>

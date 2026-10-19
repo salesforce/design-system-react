@@ -140,7 +140,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholder: 'Search Salesforce',
 					}}
-					multiple
+					isMultiple
 					options={
 						this.state.isLoadingMenuItems
 							? comboboxFilterAndLimit({

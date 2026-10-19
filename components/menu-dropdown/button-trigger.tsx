@@ -3,11 +3,25 @@
 
 // # Dropdown Trigger Component (Simple Button Flavor) --- SLDS for React
 
-import React, { forwardRef, type ReactElement, type ReactNode } from 'react';
+import React, {
+	forwardRef,
+	useEffect,
+	type ReactElement,
+	type ReactNode,
+} from 'react';
 import classnames from 'classnames';
 
 import Button from '../button';
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
+
+// `deprecated-property.js` ships no type declarations; this is the signature used here.
+const warnDeprecatedProperty = deprecatedProperty as (
+	control: string,
+	propValue: unknown,
+	oldProp: string,
+	newProp: string
+) => void;
 
 export interface ButtonTriggerProps {
 	/** Text that is visually hidden but read aloud by screenreaders */
@@ -57,8 +71,12 @@ export interface ButtonTriggerProps {
 	/** Button variant passed from MenuDropdown */
 	variant?: 'base' | 'neutral' | 'brand' | 'destructive' | 'icon';
 	/** Whether to show hint styling */
+	isHint?: boolean;
+	/** @deprecated Use `isHint` instead. */
 	hint?: boolean;
 	/** Whether the button is inverse */
+	isInverse?: boolean;
+	/** @deprecated Use `isInverse` instead. */
 	inverse?: boolean;
 	/** Button label */
 	label?: string | ReactNode;
@@ -85,6 +103,7 @@ const ButtonTrigger = forwardRef<HTMLDivElement, ButtonTriggerProps>(
 			children,
 			className,
 			disabled,
+			isHint: isHintProp,
 			hint,
 			iconCategory,
 			iconName,
@@ -92,6 +111,7 @@ const ButtonTrigger = forwardRef<HTMLDivElement, ButtonTriggerProps>(
 			iconSize,
 			iconVariant,
 			id,
+			isInverse: isInverseProp,
 			inverse,
 			isInline: _isInline,
 			isOpen,
@@ -113,6 +133,20 @@ const ButtonTrigger = forwardRef<HTMLDivElement, ButtonTriggerProps>(
 			variant,
 		} = props;
 
+		const isHint = isHintProp ?? hint;
+		const isInverse = isInverseProp ?? inverse;
+
+		useEffect(() => {
+			warnDeprecatedProperty(MENU_DROPDOWN_TRIGGER, hint, 'hint', 'isHint');
+			warnDeprecatedProperty(
+				MENU_DROPDOWN_TRIGGER,
+				inverse,
+				'inverse',
+				'isInverse'
+			);
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+		}, []);
+
 		const openOn = openOnProp === 'hover' ? 'click' : openOnProp;
 
 		// Trigger manipulation
@@ -131,6 +165,15 @@ const ButtonTrigger = forwardRef<HTMLDivElement, ButtonTriggerProps>(
 				}
 			});
 		}
+
+		// A Button child may still set the deprecated `hint`/`inverse` names. Resolve them
+		// here so the child's value keeps overriding the dropdown's, as it did before the rename.
+		const buttonIsHint = (propsFromGrandchildButton.isHint ??
+			propsFromGrandchildButton.hint ??
+			isHint) as boolean | undefined;
+		const buttonIsInverse = (propsFromGrandchildButton.isInverse ??
+			propsFromGrandchildButton.inverse ??
+			isInverse) as boolean | undefined;
 
 		// If Trigger has a Button child, then use the explicitly declared child's props
 		// layered on top of those passed down by dropdown's props to allow manual override
@@ -157,13 +200,13 @@ const ButtonTrigger = forwardRef<HTMLDivElement, ButtonTriggerProps>(
 					assistiveText={assistiveText}
 					className={className}
 					disabled={disabled}
-					hint={hint}
+					isHint={buttonIsHint}
 					iconCategory={iconCategory}
 					iconName={iconName}
 					iconPosition={iconPosition}
 					iconSize={iconSize}
 					iconVariant={iconVariant}
-					inverse={inverse}
+					isInverse={buttonIsInverse}
 					label={label}
 					style={style}
 					tabIndex={tabIndex}

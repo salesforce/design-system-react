@@ -88,7 +88,7 @@ export const WithError = {
 	render: () => {
 		const optionsWithError = [
 			{ id: '1', label: 'Valid Item' },
-			{ id: '2', label: 'Invalid Item', error: true },
+			{ id: '2', label: 'Invalid Item', hasError: true },
 			{ id: '3', label: 'Another Valid' },
 		];
 

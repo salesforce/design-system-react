@@ -168,7 +168,7 @@ describe('SLDSModal', () => {
 		it('non-dismissible modal has role=alertdialog', () => {
 			renderModal({
 				isOpen: true,
-				disableClose: true,
+				isNonDismissible: true,
 			});
 			const modal = getModalContainerNode();
 			expect(modal).toHaveAttribute('role', 'alertdialog');
@@ -271,12 +271,45 @@ describe('SLDSModal', () => {
 			];
 			renderModal({
 				isOpen: true,
-				directional: true,
+				isDirectional: true,
 				footer: feet,
 			});
 			const modal = getModalNode();
 			const footer = modal.querySelector('.slds-modal__footer_directional');
 			expect(footer).toHaveClass('slds-modal__footer');
+		});
+	});
+
+	describe('Deprecated props', () => {
+		it('still honors disableClose and directional, and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			renderModal({
+				isOpen: true,
+				disableClose: true,
+				directional: true,
+				footer: <div className="toes">Toes</div>,
+			});
+			const modal = getModalNode();
+			expect(getModalContainerNode()).toHaveAttribute('role', 'alertdialog');
+			expect(modal.querySelector('.slds-modal__close')).not.toBeInTheDocument();
+			expect(
+				modal.querySelector('.slds-modal__footer_directional')
+			).toBeInTheDocument();
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(
+				messages.some(
+					(m) =>
+						m.includes('`disableClose`') && m.includes('`isNonDismissible`')
+				)
+			).toBe(true);
+			expect(
+				messages.some(
+					(m) => m.includes('`directional`') && m.includes('`isDirectional`')
+				)
+			).toBe(true);
+			consoleError.mockRestore();
 		});
 	});
 

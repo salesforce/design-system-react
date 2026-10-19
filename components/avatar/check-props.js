@@ -4,6 +4,7 @@
 
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 
 let checkProps = function checkPropsFunction() {};
 
@@ -20,6 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
 				)}`
 			);
 		}
+		deprecatedProperty(COMPONENT, props.inverse, 'inverse', 'isInverse');
 	};
 }
 

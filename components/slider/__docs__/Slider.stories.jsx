@@ -19,7 +19,7 @@ export default {
 		max: { control: 'number' },
 		step: { control: 'number' },
 		disabled: { control: 'boolean' },
-		vertical: { control: 'boolean' },
+		isVertical: { control: 'boolean' },
 		size: {
 			control: { type: 'select' },
 			options: ['x-small', 'small', 'medium', 'large'],
@@ -76,7 +76,7 @@ export const WithError = {
 export const Vertical = {
 	render: () => (
 		<div style={{ height: '200px' }}>
-			<Slider label="Vertical Slider" value={50} vertical />
+			<Slider label="Vertical Slider" value={50} isVertical />
 		</div>
 	),
 };

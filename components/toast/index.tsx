@@ -61,6 +61,8 @@ export interface ToastProps {
 	duration?: number;
 	/** Custom icon (defaults to variant-specific icon) */
 	icon?: ReactNode;
+	/** Show close button */
+	isDismissible?: boolean;
 	/** Text labels */
 	labels?: ToastLabels;
 	/** Callback when heading link is clicked */
@@ -98,6 +100,7 @@ const Toast = ({
 	className,
 	duration,
 	icon: propIcon,
+	isDismissible = false,
 	labels: propLabels,
 	onClickHeadingLink,
 	onRequestClose,
@@ -154,12 +157,12 @@ const Toast = ({
 		? React.cloneElement(
 				icon as React.ReactElement<{
 					containerClassName?: string;
-					inverse?: boolean;
+					isInverse?: boolean;
 					size?: string;
 				}>,
 				{
 					containerClassName: 'slds-m-right_small slds-no-flex slds-align-top',
-					inverse: true,
+					isInverse: true,
 					size: 'small',
 				}
 			)
@@ -204,17 +207,19 @@ const Toast = ({
 				</h2>
 				{labels.details && <p>{labels.details}</p>}
 			</div>
-			<Button
-				assistiveText={{ icon: assistiveText.closeButton as string }}
-				className="slds-notify__close"
-				iconCategory="utility"
-				iconName="close"
-				iconSize="medium"
-				inverse
-				onClick={onRequestClose}
-				title={assistiveText.closeButton as string}
-				variant="icon"
-			/>
+			{isDismissible && (
+				<Button
+					assistiveText={{ icon: assistiveText.closeButton as string }}
+					className="slds-notify__close"
+					iconCategory="utility"
+					iconName="close"
+					iconSize="medium"
+					isInverse
+					onClick={onRequestClose}
+					title={assistiveText.closeButton as string}
+					variant="icon"
+				/>
+			)}
 		</div>
 	);
 };

@@ -122,7 +122,7 @@ class Example extends React.Component {
 						placeholder: 'Search Salesforce',
 					}}
 					menuPosition="relative"
-					multiple
+					isMultiple
 					options={filter({
 						inputValue: this.state.inputValue,
 						options: accountsWithIcon,

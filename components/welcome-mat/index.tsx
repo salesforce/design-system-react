@@ -44,8 +44,8 @@ export interface WelcomeMatProps {
 	id?: string;
 	/** Info badge for trailhead variant */
 	infoBadge?: ReactNode;
-	/** Whether modal is open */
-	isOpen?: boolean;
+	/** Whether modal is open. Required; there is no default. */
+	isOpen: boolean;
 	/** Text labels */
 	labels?: WelcomeMatLabels;
 	/** Close request handler */
@@ -69,7 +69,7 @@ const WelcomeMat = ({
 	doNotShowAgainCheckbox,
 	id: propId,
 	infoBadge,
-	isOpen = true,
+	isOpen,
 	labels: propLabels,
 	onRequestClose,
 	onRenderInfoActions,

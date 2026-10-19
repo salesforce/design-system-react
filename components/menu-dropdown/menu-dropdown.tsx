@@ -120,10 +120,14 @@ export interface MenuDropdownProps {
 	/** CSS classes to be added to triggering button */
 	buttonClassName?: string | string[] | Record<string, boolean>;
 	/** If true, button/icon is white. Meant for buttons on dark backgrounds */
+	isButtonInverse?: boolean;
+	/** @deprecated Use `isButtonInverse` instead. */
 	buttonInverse?: boolean;
 	/** Determines variant of the Button component that triggers dropdown */
 	buttonVariant?: 'base' | 'neutral' | 'brand' | 'destructive' | 'icon';
 	/** If true, renders checkmark icon on the selected Menu Item */
+	hasCheckmark?: boolean;
+	/** @deprecated Use `hasCheckmark` instead. */
 	checkmark?: boolean;
 	/** Custom content to render in the dropdown */
 	children?: ReactNode;
@@ -136,6 +140,8 @@ export interface MenuDropdownProps {
 	/** Prevents the dropdown from changing position based on the viewport */
 	hasStaticAlignment?: boolean;
 	/** Associates an icon button with another element on the page */
+	isHint?: boolean;
+	/** @deprecated Use `isHint` instead. */
 	hint?: boolean;
 	/** Delay on menu closing in milliseconds */
 	hoverCloseDelay?: number;
@@ -153,8 +159,12 @@ export interface MenuDropdownProps {
 	/** A unique ID for keyboard navigation and ARIA support */
 	id?: string;
 	/** Whether to inherit target width */
+	isTargetWidthInherited?: boolean;
+	/** @deprecated Use `isTargetWidthInherited` instead. */
 	inheritTargetWidth?: boolean;
 	/** Adds inverse class to the dropdown */
+	isInverse?: boolean;
+	/** @deprecated Use `isInverse` instead. */
 	inverse?: boolean;
 	/** @deprecated Use menuPosition="relative" instead */
 	isInline?: boolean;
@@ -171,6 +181,8 @@ export interface MenuDropdownProps {
 	/** Style applied to menu element */
 	menuStyle?: React.CSSProperties;
 	/** Whether this dropdown supports multi select */
+	isMultiple?: boolean;
+	/** @deprecated Use `isMultiple` instead. */
 	multiple?: boolean;
 	/** Positions dropdown menu with a nubbin */
 	nubbinPosition?: DropdownNubbinPosition;
@@ -280,14 +292,17 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		align = 'left',
 		assistiveText,
 		buttonClassName,
+		isButtonInverse: isButtonInverseProp,
 		buttonInverse,
 		buttonVariant,
+		hasCheckmark: hasCheckmarkProp,
 		checkmark,
 		children,
 		className,
 		containerClassName,
 		disabled,
 		hasStaticAlignment,
+		isHint: isHintProp,
 		hint,
 		hoverCloseDelay = 300,
 		iconCategory,
@@ -296,8 +311,10 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		iconSize,
 		iconVariant,
 		id,
+		isTargetWidthInherited: isTargetWidthInheritedProp,
 		inheritTargetWidth,
-		inverse = false,
+		isInverse: isInverseProp,
+		inverse,
 		isInline,
 		isOpen: isOpenProp,
 		label,
@@ -305,6 +322,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		listItemRenderer,
 		menuPosition: menuPositionProp = 'absolute',
 		menuStyle,
+		isMultiple: isMultipleProp,
 		multiple,
 		nubbinPosition,
 		offset,
@@ -331,6 +349,14 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		value,
 		width = 'medium',
 	} = props;
+
+	const isButtonInverse = isButtonInverseProp ?? buttonInverse;
+	const hasCheckmark = hasCheckmarkProp ?? checkmark;
+	const isHint = isHintProp ?? hint;
+	const isTargetWidthInherited =
+		isTargetWidthInheritedProp ?? inheritTargetWidth;
+	const isInverse = isInverseProp ?? inverse ?? false;
+	const isMultiple = isMultipleProp ?? multiple;
 
 	const context = useContext(IconSettingsContext);
 
@@ -390,7 +416,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 
 	// Update selected indices when value changes
 	useEffect(() => {
-		if (multiple) {
+		if (isMultiple) {
 			let values: (string | number)[] = [];
 			if (!Array.isArray(value)) {
 				if (value !== undefined) {
@@ -405,7 +431,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		} else {
 			setSelectedIndex(getIndexByValue(value as string | number, options));
 		}
-	}, [value, options, multiple, getIndexByValue]);
+	}, [value, options, isMultiple, getIndexByValue]);
 
 	// Menu position (for backwards compatibility)
 	const menuPosition = isInline ? 'relative' : menuPositionProp;
@@ -578,7 +604,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	// Handle select
 	const handleSelect = useCallback(
 		(index: number) => {
-			if (!multiple) {
+			if (!isMultiple) {
 				setSelectedIndex(index);
 				handleClose();
 				setFocus();
@@ -593,7 +619,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 				onSelect(option, { option, optionIndex: index });
 			}
 		},
-		[multiple, selectedIndices, handleClose, setFocus, onSelect, options]
+		[isMultiple, selectedIndices, handleClose, setFocus, onSelect, options]
 	);
 
 	// Focus menu item
@@ -830,7 +856,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		(customListProps?: Record<string, unknown>) => (
 			<List
 				key={`${getId()}-dropdown-list`}
-				checkmark={checkmark}
+				checkmark={hasCheckmark}
 				getListItemId={getListItemId}
 				itemRefs={saveRefToListItem}
 				itemRenderer={getListItemRenderer()}
@@ -838,8 +864,8 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 				onSelect={handleSelect}
 				options={options}
 				ref={saveRefToList}
-				selectedIndex={!multiple ? selectedIndex : undefined}
-				selectedIndices={multiple ? selectedIndices : undefined}
+				selectedIndex={!isMultiple ? selectedIndex : undefined}
+				selectedIndices={isMultiple ? selectedIndices : undefined}
 				tooltipMenuItem={tooltipMenuItem}
 				triggerId={getId()}
 				length={length}
@@ -848,7 +874,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		),
 		[
 			getId,
-			checkmark,
+			hasCheckmark,
 			getListItemId,
 			saveRefToListItem,
 			getListItemRenderer,
@@ -856,7 +882,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			handleSelect,
 			options,
 			saveRefToList,
-			multiple,
+			isMultiple,
 			selectedIndex,
 			selectedIndices,
 			tooltipMenuItem,
@@ -952,13 +978,13 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 						className,
 						positionClassName,
 						{
-							'slds-dropdown_inverse': inverse,
+							'slds-dropdown_inverse': isInverse,
 						}
 					)}
 					context={context}
 					hasNubbin={hasNubbin}
 					hasStaticAlignment={hasStaticAlignment}
-					inheritWidthOf={inheritTargetWidth ? 'target' : 'none'}
+					inheritWidthOf={isTargetWidthInherited ? 'target' : 'none'}
 					offset={offset}
 					onClose={handleClose}
 					onKeyDown={handleKeyDown}
@@ -979,10 +1005,10 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			align,
 			containerClassName,
 			className,
-			inverse,
+			isInverse,
 			context,
 			hasStaticAlignment,
-			inheritTargetWidth,
+			isTargetWidthInherited,
 			offset,
 			handleClose,
 			handleKeyDown,
@@ -1025,14 +1051,14 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			assistiveText={assistiveText}
 			className={classNames(outsideClickIgnoreClass, buttonClassName)}
 			disabled={disabled}
-			hint={hint}
+			isHint={isHint}
 			iconCategory={iconCategory}
 			iconName={iconName}
 			iconPosition={iconPosition}
 			iconSize={iconSize}
 			iconVariant={iconVariant}
 			id={getId()}
-			inverse={buttonInverse}
+			isInverse={isButtonInverse}
 			isOpen={isOpen}
 			label={label}
 			menu={renderDialog(

@@ -20,7 +20,7 @@ export default {
 			control: { type: 'select' },
 			options: ['link', 'option'],
 		},
-		bare: {
+		isBare: {
 			control: 'boolean',
 		},
 		hasError: {
@@ -95,7 +95,7 @@ export const BarePill = {
 			label: 'Bare Pill',
 			removeTitle: 'Remove',
 		},
-		bare: true,
+		isBare: true,
 		variant: 'option',
 		onRemove: () => console.log('Pill removed'),
 	},

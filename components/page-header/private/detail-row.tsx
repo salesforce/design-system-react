@@ -4,6 +4,7 @@
 import { Component, type ReactNode } from 'react';
 import classnames from 'classnames';
 import DetailBlock, { type PageHeaderDetailBlockProps } from './detail-block';
+import { type PageHeaderDetail } from '../index';
 
 const displayName = 'PageHeaderDetailRow';
 
@@ -16,7 +17,7 @@ export interface PageHeaderDetailRowProps {
 	/**
 	 * An array of detail blocks
 	 */
-	details?: PageHeaderDetailBlockProps[];
+	details?: (PageHeaderDetailBlockProps & Pick<PageHeaderDetail, 'truncate'>)[];
 }
 
 class DetailRow extends Component<PageHeaderDetailRowProps> {
@@ -37,7 +38,7 @@ class DetailRow extends Component<PageHeaderDetailRowProps> {
 						flavor={detail.flavor}
 						label={detail.label}
 						content={detail.content}
-						truncate={detail.truncate}
+						isTruncated={detail.isTruncated ?? detail.truncate}
 					/>
 				);
 			});

@@ -16,6 +16,7 @@ import React, {
 
 import SelectedListBox from './private/selected-listbox';
 import { PILL_CONTAINER } from '../../utilities/constants';
+import checkProps from './check-props';
 
 /**
  * Pill option structure
@@ -30,8 +31,12 @@ export interface PillOption {
 				variant?: string;
 		  };
 	/** Bare style */
+	isBare?: boolean;
+	/** @deprecated Use `isBare` instead. */
 	bare?: boolean;
 	/** Error state */
+	hasError?: boolean;
+	/** @deprecated Use `hasError` instead. */
 	error?: boolean;
 	/** Icon component or config */
 	icon?:
@@ -119,17 +124,27 @@ const defaultLabels: PillContainerLabels = {
  * A PillContainer is a container that holds one or more pills.
  * Use it for a list of pills in a container that resembles an input form field.
  */
-const PillContainer = ({
-	assistiveText: propAssistiveText,
-	className,
-	id: propId,
-	labels: propLabels,
-	options = [],
-	onClickPill,
-	onRequestRemovePill,
-	style,
-	variant,
-}: PillContainerProps): React.ReactElement | null => {
+const PillContainer = (
+	props: PillContainerProps
+): React.ReactElement | null => {
+	const {
+		assistiveText: propAssistiveText,
+		className,
+		id: propId,
+		labels: propLabels,
+		options = [],
+		onClickPill,
+		onRequestRemovePill,
+		style,
+		variant,
+	} = props;
+
+	// Warns (once) about deprecated `bare`/`error` option fields, including
+	// options added after mount.
+	useEffect(() => {
+		checkProps(PILL_CONTAINER, { options });
+	}, [options]);
+
 	const generatedId = useId();
 	const id = propId || generatedId;
 

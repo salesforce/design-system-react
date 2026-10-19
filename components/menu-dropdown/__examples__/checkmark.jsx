@@ -47,7 +47,7 @@ class Example extends React.Component {
 						<span>Checkmark </span>
 						<Dropdown
 							assistiveText={{ icon: 'Checkmark' }}
-							checkmark
+							hasCheckmark
 							iconCategory="utility"
 							iconName="down"
 							id="checkmark-menu-dropdown"
@@ -69,7 +69,7 @@ class Example extends React.Component {
 						<Dropdown
 							assistiveText={{ icon: 'Checkmark with right icon' }}
 							buttonVariant="icon"
-							checkmark
+							hasCheckmark
 							iconCategory={
 								options[this.state.selectedOptionIndex].rightIcon.category
 							}

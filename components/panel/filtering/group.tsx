@@ -77,6 +77,8 @@ export interface PanelFilterGroupProps {
 	/**
 	 * Shows confirmation heading. Please see `onRequestCancel` and `onRequestSave`.
 	 */
+	isModified?: boolean;
+	/** @deprecated Use `isModified` instead. */
 	modified?: boolean;
 	/**
 	 * Callback triggered when "Add Filter" is clicked. Recieves an `event`.
@@ -143,6 +145,7 @@ const PanelFilterGroup = ({
 	removeAllLabel = defaultProps.removeAllLabel,
 	cancelLabel = defaultProps.cancelLabel,
 	heading = defaultProps.heading,
+	isModified: isModifiedProp,
 	modified,
 	onRequestCancel,
 	onRequestClose,
@@ -166,6 +169,7 @@ const PanelFilterGroup = ({
 			removeAllLabel,
 			cancelLabel,
 			heading,
+			isModified: isModifiedProp,
 			modified,
 			onRequestCancel,
 			onRequestClose,
@@ -176,6 +180,8 @@ const PanelFilterGroup = ({
 			...rest,
 		}
 	);
+
+	const isModified = isModifiedProp ?? modified;
 
 	const mergedAssistiveText: PanelFilterGroupAssistiveText = {
 		...defaultProps.assistiveText,
@@ -191,7 +197,7 @@ const PanelFilterGroup = ({
 					assistiveText={mergedAssistiveText}
 					cancelLabel={cancelLabel}
 					heading={heading}
-					modified={modified}
+					isModified={isModified}
 					onRequestCancel={onRequestCancel}
 					onRequestClose={onRequestClose}
 					onRequestSave={onRequestSave}

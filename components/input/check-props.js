@@ -116,6 +116,15 @@ if (process.env.NODE_ENV !== 'production') {
 				);
 			}
 		}
+
+		if (COMPONENT === SEARCH) {
+			deprecatedProperty(
+				COMPONENT,
+				props.clearable,
+				'clearable',
+				'isClearable'
+			);
+		}
 	};
 }
 

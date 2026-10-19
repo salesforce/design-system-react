@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import ifOneThenBothRequiredProperty from '../../utilities/warning/if-one-then-both-required-property';
 import sunsetProperty from '../../utilities/warning/sunset-property';
@@ -34,6 +35,14 @@ if (process.env.NODE_ENV !== 'production') {
 				)}`
 			);
 		}
+		deprecatedProperty(COMPONENT, props.hint, 'hint', 'isHint');
+		deprecatedProperty(COMPONENT, props.inverse, 'inverse', 'isInverse');
+		deprecatedProperty(
+			COMPONENT,
+			props.responsive,
+			'responsive',
+			'isResponsive'
+		);
 	};
 }
 

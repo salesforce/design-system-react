@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import Avatar from '../../avatar';
 import Icon from '../../icon';
@@ -49,13 +49,13 @@ const options = [
 		title: 'Full pill label verbiage mirrored here',
 	},
 	{
-		bare: true,
+		isBare: true,
 		id: '6',
 		label: 'Pill Label 6',
 		title: 'Full pill label verbiage mirrored here',
 	},
 	{
-		error: true,
+		hasError: true,
 		id: '7',
 		label: 'Pill Label 7',
 		title: 'Full pill label verbiage mirrored here',
@@ -214,6 +214,33 @@ describe('SLDSPillContainer', () => {
 			pills.forEach((pill) => {
 				expect(pill.classList.contains('slds-pill_bare')).toBe(true);
 			});
+		});
+	});
+
+	describe('Deprecated option fields', () => {
+		it('still applies `bare` and `error` option fields and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = render(
+				<PillContainer
+					options={[
+						{ id: '1', label: 'Bare', bare: true },
+						{ id: '2', label: 'Error', error: true },
+					]}
+				/>
+			);
+
+			const pills = container.querySelectorAll('.slds-pill');
+			expect(pills[0]).toHaveClass('slds-pill_bare');
+			expect(pills[1]).toHaveClass('slds-has-error');
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('Use `options[].isBare` instead.')
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('Use `options[].hasError` instead.')
+			);
+			consoleError.mockRestore();
 		});
 	});
 });

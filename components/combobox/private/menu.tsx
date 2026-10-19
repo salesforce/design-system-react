@@ -72,6 +72,9 @@ export interface MenuProps {
 	/** Custom menu item renderer */
 	onRenderMenuItem?: React.ComponentType<{
 		assistiveText?: MenuAssistiveText;
+		/** Whether the option is selected */
+		isSelected: boolean;
+		/** @deprecated Use `isSelected` instead. */
 		selected: boolean;
 		option: ComboboxOption;
 	}>;
@@ -323,6 +326,7 @@ const Menu: React.FC<MenuProps> = ({
 					{MenuItem ? (
 						<MenuItem
 							assistiveText={assistiveText}
+							isSelected={selected}
 							selected={selected}
 							option={optionData}
 						/>
@@ -389,6 +393,7 @@ const Menu: React.FC<MenuProps> = ({
 						{MenuItem ? (
 							<MenuItem
 								assistiveText={assistiveText}
+								isSelected={selected}
 								selected={selected}
 								option={optionData}
 							/>
@@ -492,7 +497,7 @@ const Menu: React.FC<MenuProps> = ({
 					<div className="slds-align_absolute-center slds-p-top_medium">
 						<Spinner
 							assistiveText={{ label: assistiveText.loadingMenuItems }}
-							hasContainer={false}
+							hasNoContainer
 							isInline
 							size="x-small"
 						/>

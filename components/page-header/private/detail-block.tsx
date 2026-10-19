@@ -28,7 +28,7 @@ export interface PageHeaderDetailBlockProps {
 	/**
 	 * Sets whether the fields truncate
 	 */
-	truncate?: boolean;
+	isTruncated?: boolean;
 }
 
 class DetailBlock extends Component<PageHeaderDetailBlockProps> {
@@ -37,16 +37,16 @@ class DetailBlock extends Component<PageHeaderDetailBlockProps> {
 	static defaultProps: Partial<PageHeaderDetailBlockProps> = {
 		content: '',
 		label: '',
-		truncate: true,
+		isTruncated: true,
 	};
 
 	fieldContentRef: HTMLDivElement | null = null;
 
 	renderContent() {
-		const { content, truncate } = this.props;
+		const { content, isTruncated } = this.props;
 
 		if (typeof content === 'string') {
-			const labelClasses = classnames({ 'slds-truncate': truncate });
+			const labelClasses = classnames({ 'slds-truncate': isTruncated });
 
 			return (
 				<div
@@ -65,11 +65,11 @@ class DetailBlock extends Component<PageHeaderDetailBlockProps> {
 	}
 
 	renderLabel() {
-		const { label, truncate } = this.props;
+		const { label, isTruncated } = this.props;
 
 		if (typeof label === 'string') {
 			const labelClasses = classnames('slds-text-title', {
-				'slds-truncate': truncate,
+				'slds-truncate': isTruncated,
 			});
 
 			return (

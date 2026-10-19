@@ -26,6 +26,15 @@ import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
 import { IconSettingsContext } from '../icon-settings';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
+
+// `deprecated-property.js` ships no type declarations; this is the signature used here.
+const warnDeprecatedProperty = deprecatedProperty as (
+	control: string,
+	propValue: unknown,
+	oldProp: string,
+	newProp: string
+) => void;
 
 const documentDefined = typeof document !== 'undefined';
 
@@ -116,6 +125,8 @@ export interface PopoverProps {
 	/** CSS classes for contents wrapper */
 	contentsClassName?: string | string[] | Record<string, boolean>;
 	/** Disable the popover */
+	isDisabled?: boolean;
+	/** @deprecated Use `isDisabled` instead. */
 	disabled?: boolean;
 	/** Footer content */
 	footer?: ReactNode;
@@ -217,7 +228,8 @@ const Popover = ({
 	footerClassName,
 	className,
 	contentsClassName,
-	disabled = false,
+	isDisabled: isDisabledProp,
+	disabled,
 	footer,
 	footerStyle,
 	footerWalkthroughActions,
@@ -250,6 +262,13 @@ const Popover = ({
 	hoverCloseDelay = 300,
 	closeButtonAssistiveText,
 }: PopoverProps): ReactElement => {
+	const isDisabled = isDisabledProp ?? disabled ?? false;
+
+	useEffect(() => {
+		warnDeprecatedProperty(POPOVER, disabled, 'disabled', 'isDisabled');
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const generatedId = useId();
 	const id = propId || generatedId;
 	const context = useContext(IconSettingsContext);
@@ -272,7 +291,7 @@ const Popover = ({
 
 	// Derived state
 	const isOpen =
-		!disabled &&
+		!isDisabled &&
 		(controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen);
 
 	// Get target element for positioning
@@ -534,9 +553,9 @@ const Popover = ({
 		}
 
 		const headerIcon = {
-			error: <Icon category="utility" name="error" size="x-small" inverse />,
+			error: <Icon category="utility" name="error" size="x-small" isInverse />,
 			warning: (
-				<Icon category="utility" name="warning" size="x-small" inverse />
+				<Icon category="utility" name="warning" size="x-small" isInverse />
 			),
 		};
 
@@ -554,7 +573,7 @@ const Popover = ({
 							</h2>
 						}
 						figure={headerIcon[variant as 'error' | 'warning']}
-						verticalCenter
+						isVerticallyCentered
 					/>
 				</header>
 			);
@@ -605,7 +624,7 @@ const Popover = ({
 									category="utility"
 									name="touch_action"
 									size="small"
-									inverse
+									isInverse
 								/>
 							) : (
 								icon
@@ -744,7 +763,7 @@ const Popover = ({
 						)}
 						onClick={handleCancel}
 						variant="icon"
-						inverse={variant === 'error' || variant === 'warning'}
+						isInverse={variant === 'error' || variant === 'warning'}
 					/>
 				)}
 				{renderHeader()}

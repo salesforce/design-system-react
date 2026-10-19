@@ -146,7 +146,7 @@ export const DirectionalFooter = {
 			heading="Step 2 of 3"
 			tagline="Configure your settings"
 			buttonLabel="Open Directional Footer"
-			directional
+			isDirectional
 			footer={[
 				<Button key="back" label="Back" />,
 				<Button key="next" label="Next" variant="brand" />,
@@ -317,7 +317,7 @@ export const NotDismissible = {
 				<Modal
 					heading="Required Action"
 					isOpen={isOpen}
-					disableClose
+					isNonDismissible
 					onRequestClose={() => setIsOpen(false)}
 					footer={
 						<Button

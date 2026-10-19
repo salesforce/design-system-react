@@ -28,7 +28,7 @@ export interface PageHeaderTitleProps {
 	/**
 	 * Sets whether the title will truncate its content responsively.
 	 */
-	truncate?: boolean;
+	isTruncated?: boolean;
 }
 
 class Title extends Component<PageHeaderTitleProps> {
@@ -36,7 +36,7 @@ class Title extends Component<PageHeaderTitleProps> {
 
 	static defaultProps: Partial<PageHeaderTitleProps> = {
 		// align: 'middle',
-		truncate: true,
+		isTruncated: true,
 	};
 
 	render() {
@@ -46,7 +46,7 @@ class Title extends Component<PageHeaderTitleProps> {
 			'slds-page-header__title',
 			this.props.className,
 			{
-				'slds-truncate': this.props.truncate,
+				'slds-truncate': this.props.isTruncated,
 				[`slds-align-${this.props.align}`]: this.props.align,
 			}
 		);

@@ -98,7 +98,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<div style={{ overflow: 'auto' }}>
 					<SimpleDataTable
-						columnBordered
+						hasColumnBorders
 						items={this.state.items}
 						id="SimpleDataTableExample-columnBordered"
 					>

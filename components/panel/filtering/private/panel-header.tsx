@@ -36,7 +36,7 @@ export interface PanelFilterHeaderProps {
 	/**
 	 * Shows confirmation heading. Please see `onRequestCancel` and `onRequestSave`.
 	 */
-	modified?: boolean;
+	isModified?: boolean;
 	/**
 	 * When the panel's cancel button is clicked in order to reset filter panel to previous state.
 	 */
@@ -62,13 +62,13 @@ const PanelFilterHeader = ({
 	assistiveText = {},
 	cancelLabel,
 	heading,
-	modified,
+	isModified,
 	onRequestCancel,
 	onRequestClose,
 	onRequestSave,
 	saveLabel,
 }: PanelFilterHeaderProps): React.ReactElement =>
-	modified ? (
+	isModified ? (
 		<div className="slds-filters__header slds-grid slds-has-divider_bottom-space slds-grid_align-spread">
 			<Button label={cancelLabel} onClick={onRequestCancel} variant="neutral" />
 			<Button label={saveLabel} onClick={onRequestSave} variant="brand" />

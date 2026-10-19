@@ -33,6 +33,19 @@ if (process.env.NODE_ENV !== 'production') {
 			'menuItemVisibleLength',
 			createDocUrl('menuItemVisibleLength')
 		);
+		deprecatedProperty(COMPONENT, props.multiple, 'multiple', 'isMultiple');
+		deprecatedProperty(
+			COMPONENT,
+			props.predefinedOptionsOnly,
+			'predefinedOptionsOnly',
+			'hasPredefinedOptionsOnly'
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.singleInputDisabled,
+			'singleInputDisabled',
+			'isSingleInputDisabled'
+		);
 		/* eslint-enable max-len */
 
 		if (props.variant !== 'popover') {

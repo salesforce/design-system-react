@@ -11,7 +11,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<ExpandableSection
 					id="non-collapsible-expandable-section"
-					nonCollapsible
+					isNonCollapsible
 					title="Section Title"
 				>
 					<p>

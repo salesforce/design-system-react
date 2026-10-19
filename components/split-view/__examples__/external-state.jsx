@@ -105,7 +105,7 @@ const headerControls = () => (
 				id="header-right-refresh"
 				assistiveText={{ icon: 'Checkmark with right icon' }}
 				buttonVariant="icon"
-				checkmark
+				hasCheckmark
 				iconCategory="utility"
 				iconName="side_list"
 				iconSize="large"
@@ -168,7 +168,7 @@ const headerTitle = (
 						iconName="down"
 						iconPosition="right"
 						label="My Leads"
-						responsive
+						isResponsive
 						variant="base"
 					/>
 				</DropdownTrigger>

@@ -116,9 +116,9 @@ class Example extends React.Component {
 							selectAllRows: 'Select all rows',
 							selectRow: 'Select this row',
 						}}
-						fixedLayout
-						fixedHeader
-						keyboardNavigation
+						hasFixedLayout
+						hasFixedHeader
+						hasKeyboardNavigation
 						items={this.state.items}
 						id="SimpleDataTableExample-SingleRequiredSelect"
 						onRowChange={this.handleChanged}
@@ -129,9 +129,9 @@ class Example extends React.Component {
 						<SimpleDataTableColumn
 							isSorted={this.state.sortColumn === 'opportunityName'}
 							label="Name"
-							primaryColumn
+							isPrimaryColumn
 							property="opportunityName"
-							sortable
+							isSortable
 							sortDirection={this.state.sortColumnDirection.opportunityName}
 							width="10rem"
 						>
@@ -148,7 +148,7 @@ class Example extends React.Component {
 							isSorted={this.state.sortColumn === 'confidence'}
 							label="Confidence"
 							property="confidence"
-							sortable
+							isSortable
 							sortDirection={this.state.sortColumnDirection.confidence}
 						/>
 						<SimpleDataTableColumn label="Amount" property="amount" />

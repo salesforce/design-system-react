@@ -5,12 +5,14 @@ import React, {
 	useState,
 	useId,
 	useCallback,
+	useEffect,
 	type ReactNode,
 	type MouseEvent,
 } from 'react';
 import classNames from 'classnames';
 import Button from '../button';
 import { EXPANDABLE_SECTION } from '../../utilities/constants';
+import checkProps from './check-props';
 
 /**
  * Assistive text for ExpandableSection
@@ -35,6 +37,8 @@ export interface ExpandableSectionProps {
 	/** Controlled open state */
 	isOpen?: boolean;
 	/** Whether section cannot be collapsed */
+	isNonCollapsible?: boolean;
+	/** @deprecated Use `isNonCollapsible` instead. */
 	nonCollapsible?: boolean;
 	/** Toggle callback */
 	onToggleOpen?: (
@@ -52,16 +56,27 @@ const defaultAssistiveText: ExpandableSectionAssistiveText = {
 /**
  * Toggle visibility of section content with the Expandable Section
  */
-const ExpandableSection = ({
-	assistiveText: propAssistiveText,
-	children,
-	className,
-	id: propId,
-	isOpen: controlledIsOpen,
-	nonCollapsible = false,
-	onToggleOpen,
-	title,
-}: ExpandableSectionProps): React.ReactElement => {
+const ExpandableSection = (
+	props: ExpandableSectionProps
+): React.ReactElement => {
+	const {
+		assistiveText: propAssistiveText,
+		children,
+		className,
+		id: propId,
+		isNonCollapsible: isNonCollapsibleProp,
+		isOpen: controlledIsOpen,
+		nonCollapsible,
+		onToggleOpen,
+		title,
+	} = props;
+	const isNonCollapsible = isNonCollapsibleProp ?? nonCollapsible ?? false;
+
+	useEffect(() => {
+		checkProps(EXPANDABLE_SECTION, props);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const generatedId = useId();
 	const [internalIsOpen, setInternalIsOpen] = useState(true);
 
@@ -92,7 +107,7 @@ const ExpandableSection = ({
 	const titleNode = (
 		<span
 			className={classNames('slds-truncate', {
-				'slds-p-horizontal_small': nonCollapsible,
+				'slds-p-horizontal_small': isNonCollapsible,
 			})}
 			title={title}
 		>
@@ -110,10 +125,10 @@ const ExpandableSection = ({
 		>
 			<h3
 				className={classNames('slds-section__title', {
-					'slds-theme_shade': nonCollapsible,
+					'slds-theme_shade': isNonCollapsible,
 				})}
 			>
-				{!nonCollapsible ? (
+				{!isNonCollapsible ? (
 					<Button
 						assistiveText={{ icon: assistiveText.toggleSection }}
 						iconCategory="utility"

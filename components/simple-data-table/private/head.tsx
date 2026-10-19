@@ -37,8 +37,8 @@ interface AssistiveText {
 interface ActionsHeaderProps {
 	assistiveText?: string;
 	columnIndex: number;
-	fixedLayout?: boolean;
-	fixedHeader?: boolean;
+	hasFixedLayout?: boolean;
+	hasFixedHeader?: boolean;
 	headerRefs?: (
 		ref: HTMLElement | null,
 		index: 'action' | 'select' | number
@@ -51,9 +51,9 @@ const ActionsHeader: React.FC<ActionsHeaderProps> = (props) => {
 	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = useContextHelper(
 		tableContext,
 		cellContext,
-		props.fixedLayout
+		props.hasFixedLayout
 	);
-	const { fixedHeader } = props;
+	const { hasFixedHeader } = props;
 
 	const getContent = (style?: React.CSSProperties) => (
 		<div className="slds-th__action" style={style}>
@@ -74,8 +74,8 @@ const ActionsHeader: React.FC<ActionsHeaderProps> = (props) => {
 			}}
 			scope="col"
 			style={{
-				height: fixedHeader ? 0 : undefined,
-				lineHeight: fixedHeader ? 0 : undefined,
+				height: hasFixedHeader ? 0 : undefined,
+				lineHeight: hasFixedHeader ? 0 : undefined,
 				width: '3.25rem',
 			}}
 			onFocus={handleFocus}
@@ -83,7 +83,7 @@ const ActionsHeader: React.FC<ActionsHeaderProps> = (props) => {
 			tabIndex={tabIndex}
 		>
 			{getContent(
-				fixedHeader
+				hasFixedHeader
 					? {
 							height: 0,
 							overflow: 'hidden',
@@ -93,7 +93,7 @@ const ActionsHeader: React.FC<ActionsHeaderProps> = (props) => {
 						}
 					: undefined
 			)}
-			{fixedHeader ? (
+			{hasFixedHeader ? (
 				<CellFixed>
 					{getContent({
 						lineHeight: 1,
@@ -112,8 +112,8 @@ interface SelectHeaderProps {
 		selectRowGroup?: string;
 	};
 	canSelectRows?: boolean | 'checkbox' | 'radio';
-	fixedHeader?: boolean;
-	fixedLayout?: boolean;
+	hasFixedHeader?: boolean;
+	hasFixedLayout?: boolean;
 	headerRefs?: (
 		ref: HTMLElement | null,
 		index: 'action' | 'select' | number
@@ -129,9 +129,9 @@ const SelectHeader: React.FC<SelectHeaderProps> = (props) => {
 	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = useContextHelper(
 		tableContext,
 		cellContext,
-		props.fixedLayout
+		props.hasFixedLayout
 	);
-	const { fixedHeader, canSelectRows } = props;
+	const { hasFixedHeader, canSelectRows } = props;
 
 	const getContent = (
 		idSuffix: string,
@@ -200,8 +200,8 @@ const SelectHeader: React.FC<SelectHeaderProps> = (props) => {
 			}}
 			scope="col"
 			style={{
-				height: fixedHeader ? 0 : undefined,
-				lineHeight: fixedHeader ? 0 : undefined,
+				height: hasFixedHeader ? 0 : undefined,
+				lineHeight: hasFixedHeader ? 0 : undefined,
 				width: '3.25rem',
 			}}
 			onFocus={handleFocus}
@@ -211,7 +211,7 @@ const SelectHeader: React.FC<SelectHeaderProps> = (props) => {
 			<CellContext.Provider value={cellContext}>
 				{getContent(
 					'SelectAll-fixed-header',
-					fixedHeader
+					hasFixedHeader
 						? {
 								display: 'flex',
 								height: 0,
@@ -221,9 +221,9 @@ const SelectHeader: React.FC<SelectHeaderProps> = (props) => {
 								visibility: 'hidden',
 							}
 						: undefined,
-					fixedHeader
+					hasFixedHeader
 				)}
-				{fixedHeader ? (
+				{hasFixedHeader ? (
 					<CellFixed>
 						{getContent('SelectAll', {
 							display: 'flex',
@@ -249,8 +249,8 @@ export interface SimpleDataTableHeadProps {
 	indeterminateSelected?: boolean;
 	canSelectRows?: boolean | 'checkbox' | 'radio';
 	columns?: SimpleDataTableColumnConfig[];
-	fixedHeader?: boolean;
-	fixedLayout?: boolean;
+	hasFixedHeader?: boolean;
+	hasFixedLayout?: boolean;
 	id?: string;
 	onToggleAll?: (event: SyntheticEvent, data: { checked: boolean }) => void;
 	onSort?: (
@@ -274,8 +274,8 @@ const SimpleDataTableHead: React.FC<SimpleDataTableHeadProps> = (props) => {
 							? (props.columns?.length ?? 0) + 1
 							: (props.columns?.length ?? 0)
 					}
-					fixedLayout={props.fixedLayout}
-					fixedHeader={props.fixedHeader}
+					hasFixedLayout={props.hasFixedLayout}
+					hasFixedHeader={props.hasFixedHeader}
 					headerRefs={props.headerRefs}
 				/>
 			);
@@ -293,8 +293,8 @@ const SimpleDataTableHead: React.FC<SimpleDataTableHeadProps> = (props) => {
 						selectRowGroup: props.assistiveText?.selectRowGroup,
 					}}
 					canSelectRows={props.canSelectRows}
-					fixedHeader={props.fixedHeader}
-					fixedLayout={props.fixedLayout}
+					hasFixedHeader={props.hasFixedHeader}
+					hasFixedLayout={props.hasFixedLayout}
 					headerRefs={props.headerRefs}
 					id={props.id}
 					indeterminateSelected={props.indeterminateSelected}
@@ -331,8 +331,8 @@ const SimpleDataTableHead: React.FC<SimpleDataTableHeadProps> = (props) => {
 									props.headerRefs(ref, index);
 								}
 							}}
-							fixedHeader={props.fixedHeader}
-							fixedLayout={props.fixedLayout}
+							hasFixedHeader={props.hasFixedHeader}
+							hasFixedLayout={props.hasFixedLayout}
 							id={`${props.id}-${column.props.property}`}
 							onSort={props.onSort}
 							{...column.props}

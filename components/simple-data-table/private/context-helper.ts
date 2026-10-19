@@ -18,23 +18,23 @@ interface ContextHelperResult {
 export default function useTableContextHelper(
 	tableContext: TableContextValue,
 	cellContext: CellContextValue,
-	fixedLayout?: boolean
+	hasFixedLayout?: boolean
 ): ContextHelperResult {
 	const isActive =
 		tableContext.activeCell.rowIndex === cellContext.rowIndex &&
 		tableContext.activeCell.columnIndex === cellContext.columnIndex;
 
 	const hasFocus = Boolean(
-		fixedLayout && tableContext.tableHasFocus && isActive
+		hasFixedLayout && tableContext.tableHasFocus && isActive
 	);
 	const { changeActiveCell, handleKeyDown: handleTableKeyDown } = tableContext;
 
 	const handleFocus = useCallback(() => {
-		if (fixedLayout && tableContext.allowKeyboardNavigation) {
+		if (hasFixedLayout && tableContext.allowKeyboardNavigation) {
 			changeActiveCell(cellContext.rowIndex, cellContext.columnIndex);
 		}
 	}, [
-		fixedLayout,
+		hasFixedLayout,
 		tableContext.allowKeyboardNavigation,
 		changeActiveCell,
 		cellContext.rowIndex,
@@ -43,15 +43,15 @@ export default function useTableContextHelper(
 
 	const handleKeyDown = useCallback(
 		(event: React.KeyboardEvent) => {
-			if (fixedLayout && tableContext.allowKeyboardNavigation) {
+			if (hasFixedLayout && tableContext.allowKeyboardNavigation) {
 				handleTableKeyDown(event);
 			}
 		},
-		[fixedLayout, tableContext.allowKeyboardNavigation, handleTableKeyDown]
+		[hasFixedLayout, tableContext.allowKeyboardNavigation, handleTableKeyDown]
 	);
 
 	const tabIndex =
-		fixedLayout &&
+		hasFixedLayout &&
 		isActive &&
 		!tableContext.activeElement &&
 		tableContext.allowKeyboardNavigation

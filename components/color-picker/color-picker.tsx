@@ -51,6 +51,8 @@ export interface ColorPickerProps {
 	/** Disable flip behavior for popover alignment */
 	hasStaticAlignment?: boolean;
 	/** Hides the text input */
+	isInputHidden?: boolean;
+	/** @deprecated Use `isInputHidden` instead. */
 	hideInput?: boolean;
 	/** Controlled popover open state */
 	isOpen?: boolean;
@@ -157,7 +159,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	errorTextWorkingColor,
 	events = {},
 	hasStaticAlignment,
-	hideInput = false,
+	isInputHidden: isInputHiddenProp,
+	hideInput,
 	isOpen: isOpenProp,
 	labels: labelsProp,
 	menuPosition = 'absolute',
@@ -171,6 +174,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	onRequestClose,
 	onRequestOpen,
 }) => {
+	const isInputHidden = isInputHiddenProp ?? hideInput ?? false;
+
 	// Merge labels and assistive text with defaults
 	const labels = useMemo(
 		() => ({ ...defaultLabels, ...labelsProp }),
@@ -226,6 +231,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 				errorTextWorkingColor,
 				events,
 				hasStaticAlignment,
+				isInputHidden: isInputHiddenProp,
 				hideInput,
 				isOpen: isOpenProp,
 				labels: labelsProp,
@@ -458,7 +464,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 
 	// Render helpers
 	const renderInput = () => {
-		if (hideInput) return null;
+		if (isInputHidden) return null;
 
 		return (
 			<Input
@@ -565,7 +571,9 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 						assistiveText.label ? 'slds-assistive-text' : ''
 					)}
 					htmlFor={
-						!hideInput ? `color-picker-summary-input-${componentId}` : undefined
+						!isInputHidden
+							? `color-picker-summary-input-${componentId}`
+							: undefined
 					}
 					id={`color-picker-label-${componentId}`}
 				>
