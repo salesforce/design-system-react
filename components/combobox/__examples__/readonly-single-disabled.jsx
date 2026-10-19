@@ -85,7 +85,7 @@ class Example extends React.Component {
 						placeholder: 'Search Salesforce',
 					}}
 					options={accounts}
-					singleInputDisabled
+					isSingleInputDisabled
 					selection={this.state.selection}
 					value={this.state.inputValue}
 					variant="readonly"

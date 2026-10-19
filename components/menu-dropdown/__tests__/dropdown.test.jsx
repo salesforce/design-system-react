@@ -1,7 +1,9 @@
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import Dropdown from '../../menu-dropdown';
+import DropdownTrigger from '../button-trigger';
+import Button from '../../button';
 import IconSettings from '../../icon-settings';
 import Tooltip from '../../tooltip';
 import List from '../../utilities/menu-list';
@@ -86,7 +88,7 @@ describe('SLDSMenuDropdown', () => {
 
 	describe('Inverse', () => {
 		it('has correct CSS class for inverse', async () => {
-			const { container } = renderDropdown({ inverse: true });
+			const { container } = renderDropdown({ isInverse: true });
 
 			const trigger = container.querySelector('.slds-dropdown-trigger');
 			const button = trigger.querySelector('button');
@@ -142,7 +144,7 @@ describe('SLDSMenuDropdown', () => {
 			const { container: dsrStyle } = renderDropdown({
 				...iconProps,
 				iconVariant: 'border',
-				buttonInverse: true,
+				isButtonInverse: true,
 			});
 			expect(lwcStyle.querySelector('button').className).toBe(
 				dsrStyle.querySelector('button').className
@@ -390,7 +392,7 @@ describe('SLDSMenuDropdown', () => {
 			const { container } = renderDropdown({
 				assistiveText: { icon: 'more options' },
 				buttonVariant: 'icon',
-				checkmark: true,
+				hasCheckmark: true,
 				iconCategory: 'utility',
 				iconName: 'down',
 				iconVariant: 'border-filled',
@@ -481,7 +483,10 @@ describe('SLDSMenuDropdown', () => {
 
 	describe('multiple selection', () => {
 		it('selects multiple items and renders checkmarks', async () => {
-			const { container } = renderDropdown({ multiple: true, checkmark: true });
+			const { container } = renderDropdown({
+				isMultiple: true,
+				hasCheckmark: true,
+			});
 
 			const trigger = container.querySelector('.slds-dropdown-trigger');
 			fireEvent.click(trigger);
@@ -507,7 +512,10 @@ describe('SLDSMenuDropdown', () => {
 		});
 
 		it('moves focus to next item after keyboard selection', async () => {
-			const { container } = renderDropdown({ multiple: true, checkmark: true });
+			const { container } = renderDropdown({
+				isMultiple: true,
+				hasCheckmark: true,
+			});
 
 			const trigger = container.querySelector('.slds-dropdown-trigger');
 			fireEvent.click(trigger);
@@ -717,7 +725,7 @@ describe('SLDSMenuDropdown', () => {
 
 		it('calls onSelect for each toggle in multiple mode', async () => {
 			const onSelect = vi.fn();
-			const { container } = renderDropdown({ multiple: true, onSelect });
+			const { container } = renderDropdown({ isMultiple: true, onSelect });
 
 			const menu = await openMenu(container);
 			const links = menu.querySelectorAll('li a');
@@ -938,6 +946,125 @@ describe('SLDSMenuDropdown', () => {
 					'#sample-dropdown-item-1-tooltip'
 				);
 				expect(tooltip).toBeInTheDocument();
+			});
+		});
+	});
+
+	describe('deprecated boolean prop aliases', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		const openAndGetMarkup = async (container) => {
+			fireEvent.click(container.querySelector('.slds-dropdown-trigger button'));
+			await waitFor(() => {
+				expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
+			});
+			return container.innerHTML;
+		};
+
+		it('old names render the same as the new names and warn', async () => {
+			const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+			const shared = { buttonVariant: 'icon', iconVariant: 'border-filled' };
+
+			const { container: newContainer, unmount } = renderDropdown({
+				...shared,
+				hasCheckmark: true,
+				isButtonInverse: true,
+				isHint: true,
+				isInverse: true,
+				isMultiple: true,
+				isTargetWidthInherited: true,
+			});
+			const newMarkup = await openAndGetMarkup(newContainer);
+			unmount();
+			expect(errorSpy).not.toHaveBeenCalled();
+
+			const { container: oldContainer } = renderDropdown({
+				...shared,
+				buttonInverse: true,
+				checkmark: true,
+				hint: true,
+				inheritTargetWidth: true,
+				inverse: true,
+				multiple: true,
+			});
+			const oldMarkup = await openAndGetMarkup(oldContainer);
+
+			expect(oldMarkup).toBe(newMarkup);
+			expect(oldContainer.querySelector('.slds-dropdown')).toHaveClass(
+				'slds-dropdown_inverse'
+			);
+			expect(
+				oldContainer.querySelectorAll('.slds-dropdown__item a')[1]
+			).toHaveAttribute('aria-checked', 'true');
+
+			const messages = errorSpy.mock.calls.map((call) => call.join(' '));
+			[
+				['multiple', 'isMultiple'],
+				['checkmark', 'hasCheckmark'],
+				['hint', 'isHint'],
+				['inverse', 'isInverse'],
+				['buttonInverse', 'isButtonInverse'],
+				['inheritTargetWidth', 'isTargetWidthInherited'],
+			].forEach(([oldName, newName]) => {
+				expect(
+					messages.some(
+						(message) =>
+							message.includes(`\`${oldName}\``) &&
+							message.includes(`\`${newName}\``) &&
+							message.includes('version of SLDSMenuDropdown.')
+					)
+				).toBe(true);
+			});
+		});
+
+		it('DropdownTrigger old hint/inverse names render the same as the new names and warn', async () => {
+			const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+			const renderWithTrigger = (triggerProps) =>
+				render(
+					<IconSettings iconPath="/assets/icons">
+						<Dropdown {...defaultProps}>
+							<DropdownTrigger {...triggerProps}>
+								<Button
+									assistiveText={{ icon: 'More' }}
+									iconCategory="utility"
+									iconName="down"
+									iconVariant="border-filled"
+									variant="icon"
+								/>
+							</DropdownTrigger>
+						</Dropdown>
+					</IconSettings>
+				);
+
+			const { container: newContainer, unmount } = renderWithTrigger({
+				isHint: true,
+				isInverse: true,
+			});
+			const newMarkup = newContainer.innerHTML;
+			unmount();
+			expect(errorSpy).not.toHaveBeenCalled();
+
+			const { container: oldContainer } = renderWithTrigger({
+				hint: true,
+				inverse: true,
+			});
+			expect(oldContainer.innerHTML).toBe(newMarkup);
+
+			const messages = errorSpy.mock.calls.map((call) => call.join(' '));
+			[
+				['hint', 'isHint'],
+				['inverse', 'isInverse'],
+			].forEach(([oldName, newName]) => {
+				expect(
+					messages.some(
+						(message) =>
+							message.includes(`\`${oldName}\``) &&
+							message.includes(`\`${newName}\``) &&
+							message.includes('version of SLDSMenuDropdownTrigger.')
+					)
+				).toBe(true);
 			});
 		});
 	});

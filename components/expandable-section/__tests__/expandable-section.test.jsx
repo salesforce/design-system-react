@@ -179,7 +179,7 @@ describe('SLDSExpandableSection', () => {
 
 	describe('Expandable Section (non-collapsible)', () => {
 		it('does not render toggle if non-collapsible is true', () => {
-			const { container } = renderSection({ nonCollapsible: true });
+			const { container } = renderSection({ isNonCollapsible: true });
 
 			// When non-collapsible, there should be no button
 			expect(container.querySelector('.slds-button')).not.toBeInTheDocument();
@@ -193,6 +193,24 @@ describe('SLDSExpandableSection', () => {
 			expect(container.querySelector('.slds-section')).not.toHaveClass(
 				'slds-is-open'
 			);
+		});
+	});
+
+	describe('Deprecated props', () => {
+		it('still applies `nonCollapsible` and warns to use `isNonCollapsible`', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = renderSection({ nonCollapsible: true });
+
+			expect(container.querySelector('.slds-section__title')).toHaveClass(
+				'slds-theme_shade'
+			);
+			expect(container.querySelector('button')).not.toBeInTheDocument();
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('Use `isNonCollapsible` instead.')
+			);
+			consoleError.mockRestore();
 		});
 	});
 });

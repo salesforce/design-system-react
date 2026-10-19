@@ -153,4 +153,46 @@ describe('SLDSButton', () => {
 			expect(onClick).toHaveBeenCalledTimes(1);
 		});
 	});
+
+	describe('Deprecated boolean prop aliases', () => {
+		it('still applies `inverse`, `hint`, and `responsive`, and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const iconProps = {
+				assistiveText: { icon: 'Settings' },
+				iconCategory: 'utility',
+				iconName: 'settings',
+				variant: 'icon',
+			};
+			const { container: oldNames } = renderButton({
+				...iconProps,
+				hint: true,
+				inverse: true,
+				responsive: true,
+			});
+			const oldMarkup = oldNames.innerHTML;
+			const { container: newNames } = renderButton({
+				...iconProps,
+				isHint: true,
+				isInverse: true,
+				isResponsive: true,
+			});
+
+			expect(oldMarkup).toBe(newNames.innerHTML);
+			expect(oldNames.querySelector('button')).toHaveClass(
+				'slds-button_icon-inverse'
+			);
+			expect(oldNames.querySelector('svg')).toHaveClass(
+				'slds-button__icon_inverse-hint'
+			);
+			const messages = consoleError.mock.calls.map((call) => call[0]);
+			['isHint', 'isInverse', 'isResponsive'].forEach((newName) => {
+				expect(
+					messages.some((message) => message.includes(`\`${newName}\``))
+				).toBe(true);
+			});
+			consoleError.mockRestore();
+		});
+	});
 });

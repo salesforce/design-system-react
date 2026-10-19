@@ -11,6 +11,7 @@ class Example extends React.Component {
 				<ToastContainer className="this-is-the-container">
 					<Toast
 						className="this-is-the-alert"
+						isDismissible
 						labels={{
 							heading: '26 potential duplicate leads were found.',
 							headingLink: 'Select Leads to Merge',

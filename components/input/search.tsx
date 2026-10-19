@@ -29,6 +29,8 @@ export interface SearchProps extends Omit<
 	/** Assistive text for accessibility */
 	assistiveText?: SearchAssistiveText;
 	/** Adds a clear button to the right of the input */
+	isClearable?: boolean;
+	/** @deprecated Use `isClearable` instead. */
 	clearable?: boolean;
 	/** Handler for clear button click */
 	onClear?: (event: React.MouseEvent) => void;
@@ -57,7 +59,8 @@ const handleKeyDown = (
  */
 const Search = ({
 	assistiveText,
-	clearable = false,
+	isClearable: isClearableProp,
+	clearable,
 	onClear,
 	onSearch,
 	placeholder,
@@ -65,9 +68,19 @@ const Search = ({
 }: SearchProps) => {
 	checkProps(
 		SEARCH,
-		{ assistiveText, clearable, onClear, onSearch, placeholder, ...props },
+		{
+			assistiveText,
+			isClearable: isClearableProp,
+			clearable,
+			onClear,
+			onSearch,
+			placeholder,
+			...props,
+		},
 		componentDoc
 	);
+
+	const isClearable = isClearableProp ?? clearable ?? false;
 
 	const mergedAssistiveText: InputAssistiveText = {
 		label: assistiveText?.label,
@@ -85,7 +98,7 @@ const Search = ({
 				/>
 			}
 			iconRight={
-				clearable ? (
+				isClearable ? (
 					<InputIcon
 						assistiveText={{ icon: 'Clear' }}
 						category="utility"

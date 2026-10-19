@@ -27,7 +27,7 @@ class Example extends React.Component {
 						label="Neutral Icon"
 					/>
 
-					<Button label="Responsive" responsive />
+					<Button label="Responsive" isResponsive />
 				</div>
 			</IconSettings>
 		);

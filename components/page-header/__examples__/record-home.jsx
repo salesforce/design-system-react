@@ -54,7 +54,7 @@ class Example extends React.Component {
 				label: 'Field 1',
 				content:
 					'Description that demonstrates truncation with content. Description that demonstrates truncation with content.',
-				truncate: true,
+				isTruncated: true,
 			},
 			{ label: 'Field 2', content: 'Multiple Values' },
 			{
@@ -64,7 +64,7 @@ class Example extends React.Component {
 			{
 				label: 'Field 4',
 				content: 'Description (2-line truncation)',
-				truncate: true,
+				isTruncated: true,
 			},
 		];
 

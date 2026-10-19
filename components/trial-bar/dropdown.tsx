@@ -18,10 +18,10 @@ export interface TrialBarDropdownProps extends MenuDropdownProps {
 const TrialBarDropdown = (props: TrialBarDropdownProps) => {
 	const { label, ...rest } = props;
 	return (
-		<Dropdown {...rest} inverse>
+		<Dropdown {...rest} isInverse>
 			<DropdownTrigger triggerClassName="slds-grid">
 				<Button
-					inverse
+					isInverse
 					style={{ border: 0, height: '100%', padding: 0 }}
 					iconCategory="utility"
 					iconName="right"

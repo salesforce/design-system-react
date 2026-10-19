@@ -211,7 +211,7 @@ const Filter: React.FC<FilterProps> = ({
 			{!isPermanent && !isLocked && (
 				<Button
 					assistiveText={{ icon: assistiveText.removeFilter }}
-					hint
+					isHint
 					iconCategory="utility"
 					iconName="delete"
 					iconSize="small"

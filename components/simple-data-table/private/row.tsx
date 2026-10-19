@@ -43,8 +43,8 @@ interface SimpleDataTableColumnConfig {
 	Cell: React.ComponentType<Record<string, unknown>>;
 	props: {
 		property?: string;
-		truncate?: boolean;
-		primaryColumn?: boolean;
+		isTruncated?: boolean;
+		isPrimaryColumn?: boolean;
 		width?: string;
 		[key: string]: unknown;
 	};
@@ -60,7 +60,7 @@ export interface SimpleDataTableRowProps {
 	canSelectRows?: boolean | 'checkbox' | 'radio';
 	className?: string;
 	columns?: SimpleDataTableColumnConfig[];
-	fixedLayout?: boolean;
+	hasFixedLayout?: boolean;
 	id: string;
 	index?: number;
 	item: SimpleDataTableItem;
@@ -74,7 +74,7 @@ export interface SimpleDataTableRowProps {
 	disabledSelection?: SimpleDataTableItem[];
 	tableId?: string;
 	rowIndex?: number;
-	stacked?: boolean;
+	isStacked?: boolean;
 }
 
 /**
@@ -92,7 +92,7 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = useContextHelper(
 		tableContext,
 		selectRowCellContext,
-		props.fixedLayout
+		props.hasFixedLayout
 	);
 
 	const { item, onToggle } = props;
@@ -220,9 +220,9 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 					<>
 						{props.canSelectRows ? (
 							<td
-								role={props.fixedLayout ? 'gridcell' : undefined}
+								role={props.hasFixedLayout ? 'gridcell' : undefined}
 								className="slds-text-align_right"
-								data-label={props.stacked ? 'Select Row' : undefined}
+								data-label={props.isStacked ? 'Select Row' : undefined}
 								style={{ width: '3.25rem' }}
 								onFocus={handleFocus}
 								onKeyDown={handleKeyDown}
@@ -255,10 +255,13 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 									<Cell
 										{...column.props}
 										className={
-											column.props.truncate ? 'slds-truncate' : undefined
+											column.props.isTruncated ? 'slds-truncate' : undefined
 										}
-										fixedLayout={props.fixedLayout}
-										rowHeader={column.props.primaryColumn}
+										hasFixedLayout={props.hasFixedLayout}
+										isRowHeader={column.props.isPrimaryColumn}
+										// Deprecated aliases kept for custom cells that still read them
+										fixedLayout={props.hasFixedLayout}
+										rowHeader={column.props.isPrimaryColumn}
 										id={cellId}
 										item={item}
 										width={column.props.width}
@@ -283,12 +286,12 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 										props.rowActions as React.ReactElement<{
 											id?: string;
 											item?: SimpleDataTableItem;
-											fixedLayout?: boolean;
+											hasFixedLayout?: boolean;
 										}>,
 										{
 											id: `${props.id}-${SIMPLE_DATA_TABLE_ROW_ACTIONS}`,
 											item,
-											fixedLayout: props.fixedLayout,
+											hasFixedLayout: props.hasFixedLayout,
 										}
 									)
 								: null}
@@ -303,11 +306,11 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 					tabIndex,
 					props.canSelectRows,
 					props.columns,
-					props.fixedLayout,
+					props.hasFixedLayout,
 					props.id,
 					props.rowActions,
 					props.rowIndex,
-					props.stacked,
+					props.isStacked,
 					selectRowCellContext,
 					checkboxSelection,
 					radioSelection,

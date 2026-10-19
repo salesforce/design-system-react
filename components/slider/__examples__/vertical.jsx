@@ -6,7 +6,7 @@ class Example extends React.Component {
 	static displayName = 'SliderExample';
 
 	render() {
-		return <Slider id="vertical-id" label="Slider Label" vertical />;
+		return <Slider id="vertical-id" label="Slider Label" isVertical />;
 	}
 }
 

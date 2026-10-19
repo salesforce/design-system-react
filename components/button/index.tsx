@@ -22,6 +22,8 @@ import getAriaProps from '../../utilities/get-aria-props';
 import getDataProps from '../../utilities/get-data-props';
 import getFormProps from '../../utilities/get-form-props';
 import { BUTTON } from '../../utilities/constants';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 import type { IconCategory } from '../../types/common';
 
 /**
@@ -88,6 +90,8 @@ export interface ButtonProps {
 	/** Disabled state */
 	disabled?: boolean;
 	/** Hint styling for icon buttons */
+	isHint?: boolean;
+	/** @deprecated Use `isHint` instead. */
 	hint?: boolean;
 	/** Icon category */
 	iconCategory?: IconCategory;
@@ -109,6 +113,8 @@ export interface ButtonProps {
 	/** Unique identifier */
 	id?: string;
 	/** Inverse colors for dark backgrounds */
+	isInverse?: boolean;
+	/** @deprecated Use `isInverse` instead. */
 	inverse?: boolean;
 	/** Visible button label */
 	label?: ReactNode;
@@ -140,6 +146,8 @@ export interface ButtonProps {
 	/** Trigger onRequestFocus */
 	requestFocus?: boolean;
 	/** Responsive width on small screens */
+	isResponsive?: boolean;
+	/** @deprecated Use `isResponsive` instead. */
 	responsive?: boolean;
 	/** Custom inline styles */
 	style?: CSSProperties;
@@ -176,7 +184,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			children,
 			className,
 			disabled = false,
-			hint = false,
+			hint,
 			iconCategory,
 			iconClassName,
 			iconName,
@@ -186,6 +194,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			iconVariant,
 			id,
 			inverse,
+			isHint: isHintProp,
+			isInverse: isInverseProp,
 			label,
 			onBlur,
 			onClick,
@@ -208,7 +218,19 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			...restProps
 		} = props;
 
+		const isHint = isHintProp ?? hint ?? false;
+		const isInverse = isInverseProp ?? inverse;
+
 		const internalRef = useRef<HTMLButtonElement | null>(null);
+
+		useEffect(() => {
+			(checkProps as (name: string, props: unknown, doc?: unknown) => void)(
+				BUTTON,
+				props,
+				componentDoc
+			);
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+		}, []);
 
 		useEffect(() => {
 			if (requestFocus && onRequestFocus && internalRef.current) {
@@ -226,13 +248,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 			const showButtonVariant =
 				(variant !== 'base' &&
 					!iconVariant &&
-					!inverse &&
+					!isInverse &&
 					variant !== 'link') ||
 				iconVariant === 'bare';
-			const plainInverseBtn = inverse && !isIcon;
-			const plainInverseIcon = inverse && isIcon && !iconMore && !iconBorder;
-			const moreInverseIcon = inverse && iconMore;
-			const borderInverseIcon = inverse && iconBorder;
+			const plainInverseBtn = isInverse && !isIcon;
+			const plainInverseIcon = isInverse && isIcon && !iconMore && !iconBorder;
+			const moreInverseIcon = isInverse && iconMore;
+			const borderInverseIcon = isInverse && iconBorder;
 
 			// Reset to container style for the actual button CSS
 			if (iconVariant === 'global-header') {
@@ -279,8 +301,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 						},
 						iconClassName as string
 					)}
-					hint={hint}
-					inverse={inverse}
+					isHint={isHint}
+					isInverse={isInverse}
 					name={name}
 					path={iconPath}
 					position={iconPosition}

@@ -147,7 +147,7 @@ export const PredefinedColorsOnly: Story = {
 export const HiddenInput: Story = {
 	args: {
 		events: { onChange: handleChange },
-		hideInput: true,
+		isInputHidden: true,
 		id: 'hidden-input-color-picker',
 		labels: { label: 'Choose Color' },
 	},

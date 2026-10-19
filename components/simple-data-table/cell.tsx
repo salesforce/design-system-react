@@ -15,11 +15,15 @@ export interface SimpleDataTableCellProps {
 	children?: ReactNode;
 	/** Class names to be added to the cell */
 	className?: string | string[] | Record<string, boolean>;
-	/** Use this for advanced table (selectable or sortable rows) */
+	/** Use this for advanced table (selectable or sortable rows). Set by the table. */
+	hasFixedLayout?: boolean;
+	/** @deprecated Use `hasFixedLayout` instead. */
 	fixedLayout?: boolean;
 	/** The item from the items which represents this row */
 	item?: Record<string, unknown>;
 	/** The primary column for a row. This is almost always the first column. */
+	isPrimaryColumn?: boolean;
+	/** @deprecated Use `isPrimaryColumn` instead. */
 	primaryColumn?: boolean;
 	/** The property of this item to display */
 	property?: string;
@@ -31,6 +35,10 @@ export interface SimpleDataTableCellProps {
 	label?: string;
 	/** Header ID for accessibility */
 	headerId?: string;
+	/** Set by the table from the column's `isPrimaryColumn` */
+	isRowHeader?: boolean;
+	/** @deprecated Use `isRowHeader` instead. */
+	rowHeader?: boolean;
 }
 
 /**
@@ -38,12 +46,14 @@ export interface SimpleDataTableCellProps {
  * with the same `displayName` which takes the same props to provide custom rendering.
  */
 const SimpleDataTableCell: React.FC<SimpleDataTableCellProps> = (props) => {
+	const hasFixedLayout = props.hasFixedLayout ?? props.fixedLayout;
+	const isPrimaryColumn = props.isPrimaryColumn ?? props.primaryColumn;
 	const tableContext = useContext(TableContext);
 	const cellContext = useContext(CellContext);
 	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = useContextHelper(
 		tableContext,
 		cellContext,
-		props.fixedLayout
+		hasFixedLayout
 	);
 
 	const childText = React.isValidElement(props.children)
@@ -53,7 +63,7 @@ const SimpleDataTableCell: React.FC<SimpleDataTableCellProps> = (props) => {
 	const contents = (
 		<div
 			className={classNames({
-				'slds-truncate': props.fixedLayout,
+				'slds-truncate': hasFixedLayout,
 			})}
 			title={
 				props.title || (typeof childText === 'string' ? childText : undefined)
@@ -73,13 +83,13 @@ const SimpleDataTableCell: React.FC<SimpleDataTableCellProps> = (props) => {
 		}
 	};
 
-	if (props.primaryColumn) {
+	if (isPrimaryColumn) {
 		return (
 			<th
 				className={className}
 				ref={ref}
 				data-label={props.label}
-				role={props.fixedLayout ? 'gridcell' : undefined}
+				role={hasFixedLayout ? 'gridcell' : undefined}
 				tabIndex={tabIndex}
 				style={props.width ? { width: props.width } : undefined}
 				onFocus={handleFocus}
@@ -97,7 +107,7 @@ const SimpleDataTableCell: React.FC<SimpleDataTableCellProps> = (props) => {
 			onFocus={handleFocus}
 			onKeyDown={handleKeyDown}
 			ref={ref}
-			role={props.fixedLayout ? 'gridcell' : undefined}
+			role={hasFixedLayout ? 'gridcell' : undefined}
 			style={props.width ? { width: props.width } : undefined}
 			tabIndex={tabIndex}
 			headers={props.headerId}

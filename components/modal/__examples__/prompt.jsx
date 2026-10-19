@@ -21,7 +21,7 @@ class Example extends React.Component {
 				<div>
 					<Button label="Open Prompt Variant" onClick={this.toggleOpen} />
 					<Modal
-						disableClose
+						isNonDismissible
 						footer={[
 							<Button
 								key="promptBtn"

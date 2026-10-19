@@ -79,7 +79,7 @@ class Example extends React.Component {
 					}}
 					menuPosition="relative"
 					options={accounts}
-					singleInputDisabled
+					isSingleInputDisabled
 					selection={this.state.selection}
 					value={this.state.inputValue}
 					variant="readonly"

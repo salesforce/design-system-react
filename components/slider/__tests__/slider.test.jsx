@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import Slider from '../';
 
@@ -312,10 +312,27 @@ describe('SLDSSlider', () => {
 
 	describe('Vertical slider', () => {
 		it('slider has class "slds-slider_vertical"', () => {
-			const { container } = render(<Slider label="Slider Label" vertical />);
+			const { container } = render(<Slider label="Slider Label" isVertical />);
 
 			const sliderContainer = container.querySelector('.slds-slider');
 			expect(sliderContainer).toHaveClass('slds-slider_vertical');
+		});
+	});
+
+	describe('Deprecated prop aliases', () => {
+		it('still supports `vertical` and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = render(<Slider label="Slider Label" vertical />);
+
+			expect(container.querySelector('.slds-slider')).toHaveClass(
+				'slds-slider_vertical'
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`vertical` will be removed')
+			);
+			consoleError.mockRestore();
 		});
 	});
 });

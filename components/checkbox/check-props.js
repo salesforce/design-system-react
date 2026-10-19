@@ -3,6 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable max-len */
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 import sunsetProperty from '../../utilities/warning/sunset-property';
@@ -19,6 +20,8 @@ if (process.env.NODE_ENV !== 'production') {
 			'label',
 			`Use \`labels.label\` instead.${createDocUrl('labels')}`
 		);
+		deprecatedProperty(COMPONENT, props.coverable, 'coverable', 'isCoverable');
+		deprecatedProperty(COMPONENT, props.vertical, 'vertical', 'isVertical');
 
 		if (props.variant === 'toggle' && props.indeterminate === true) {
 			onlyOneOfProperties(

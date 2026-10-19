@@ -7,50 +7,58 @@
 import WelcomeMat from '../index';
 
 export const steps = (
-	<WelcomeMat>
+	<WelcomeMat isOpen>
 		<div />
 	</WelcomeMat>
 );
 
 export const trailhead = (
-	<WelcomeMat infoBadge={<span />} variant="trailhead-connected">
+	<WelcomeMat isOpen infoBadge={<span />} variant="trailhead-connected">
 		<div />
 	</WelcomeMat>
 );
 
 export const infoOnly = (
-	<WelcomeMat onRenderInfoActions={() => null} variant="info-only">
+	<WelcomeMat isOpen onRenderInfoActions={() => null} variant="info-only">
 		<div />
 	</WelcomeMat>
 );
 
 export const splash = (
 	<WelcomeMat
+		isOpen
 		doNotShowAgainCheckbox={<input type="checkbox" />}
 		variant="splash"
 	/>
 );
 
 // @ts-expect-error the steps variant needs tiles
-export const stepsWithoutTiles = <WelcomeMat />;
+export const stepsWithoutTiles = <WelcomeMat isOpen />;
 
 export const splashTiles = (
 	// @ts-expect-error the splash variant has no tiles
-	<WelcomeMat variant="splash">
+	<WelcomeMat isOpen variant="splash">
 		<div />
 	</WelcomeMat>
 );
 
 export const stepsBadge = (
 	// @ts-expect-error `infoBadge` only applies to trailhead-connected
-	<WelcomeMat infoBadge={<span />}>
+	<WelcomeMat isOpen infoBadge={<span />}>
 		<div />
 	</WelcomeMat>
 );
 
 export const stepsActions = (
 	// @ts-expect-error the steps variant shows progress, not actions
-	<WelcomeMat onRenderInfoActions={() => null}>
+	<WelcomeMat isOpen onRenderInfoActions={() => null}>
+		<div />
+	</WelcomeMat>
+);
+
+export const withoutIsOpen = (
+	// @ts-expect-error `isOpen` is required
+	<WelcomeMat>
 		<div />
 	</WelcomeMat>
 );

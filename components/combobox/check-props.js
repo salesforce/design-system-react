@@ -45,6 +45,19 @@ if (process.env.NODE_ENV !== 'production') {
 				`Until then, if both are set, both are called. ${createDocUrl('events')}`
 			);
 		});
+		deprecatedProperty(COMPONENT, props.multiple, 'multiple', 'isMultiple');
+		deprecatedProperty(
+			COMPONENT,
+			props.predefinedOptionsOnly,
+			'predefinedOptionsOnly',
+			'hasPredefinedOptionsOnly'
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.singleInputDisabled,
+			'singleInputDisabled',
+			'isSingleInputDisabled'
+		);
 		/* eslint-enable max-len */
 
 		// `type` is reserved for structural rows. Item options used it to

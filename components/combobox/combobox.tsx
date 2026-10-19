@@ -208,10 +208,15 @@ interface ComboboxBaseProps {
 	/** Menu position */
 	menuPosition?: 'absolute' | 'overflowBoundaryElement' | 'relative';
 	/** Whether multiple selection is allowed */
+	isMultiple?: boolean;
+	/** @deprecated Use `isMultiple` instead. */
 	multiple?: boolean;
 	/** Custom menu item renderer */
 	onRenderMenuItem?: React.ComponentType<{
 		assistiveText?: ComboboxAssistiveText;
+		/** Whether the option is selected */
+		isSelected: boolean;
+		/** @deprecated Use `isSelected` instead. */
 		selected: boolean;
 		/** Custom renderers only receive selectable rows */
 		option: ComboboxItemOption | ComboboxDeselectOption;
@@ -221,6 +226,8 @@ interface ComboboxBaseProps {
 	/** Action items shown above the options, such as "Search in Accounts" */
 	optionsSearchEntity?: ComboboxActionItem[];
 	/** Whether only predefined options are allowed */
+	hasPredefinedOptionsOnly?: boolean;
+	/** @deprecated Use `hasPredefinedOptionsOnly` instead. */
 	predefinedOptionsOnly?: boolean;
 	/** Whether field is required */
 	required?: boolean;
@@ -229,14 +236,19 @@ interface ComboboxBaseProps {
 	/** Callback to get selected listbox ref */
 	selectedListboxRef?: (ref: HTMLUListElement | null) => void;
 	/** Whether single input is disabled */
+	isSingleInputDisabled?: boolean;
+	/** @deprecated Use `isSingleInputDisabled` instead. */
 	singleInputDisabled?: boolean;
 	/** Tooltip for disabled menu items */
 	tooltipMenuItemDisabled?: ReactElement;
 	/** Input value (controlled) */
 	value?: string;
-	/** @deprecated Use menuItem instead */
+	/** @deprecated Use `onRenderMenuItem` instead. */
 	menuItem?: React.ComponentType<{
 		assistiveText?: ComboboxAssistiveText;
+		/** Whether the option is selected */
+		isSelected: boolean;
+		/** @deprecated Use `isSelected` instead. */
 		selected: boolean;
 		/** Custom renderers only receive selectable rows */
 		option: ComboboxItemOption | ComboboxDeselectOption;
@@ -326,22 +338,31 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		menuItemVisibleLength,
 		menuMaxWidth,
 		menuPosition = 'absolute',
+		isMultiple: isMultipleProp,
 		multiple,
 		onRenderMenuItem,
 		options = [],
 		optionsAddItem = [],
 		optionsSearchEntity = [],
 		popover,
+		hasPredefinedOptionsOnly: hasPredefinedOptionsOnlyProp,
 		predefinedOptionsOnly,
 		required = false,
 		selection = [],
 		selectedListboxRef: selectedListboxRefCallback,
-		singleInputDisabled = false,
+		isSingleInputDisabled: isSingleInputDisabledProp,
+		singleInputDisabled,
 		tooltipMenuItemDisabled,
 		value,
 		variant = 'base',
 		menuItem,
 	} = props;
+
+	const isMultiple = isMultipleProp ?? multiple;
+	const hasPredefinedOptionsOnly =
+		hasPredefinedOptionsOnlyProp ?? predefinedOptionsOnly;
+	const isSingleInputDisabled =
+		isSingleInputDisabledProp ?? singleInputDisabled ?? false;
 
 	// Merge with defaults
 	const assistiveText = assign({}, defaultAssistiveText, assistiveTextProp);
@@ -567,16 +588,16 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 
 	const requestOpenMenu = useCallback(() => {
 		const isInlineSingleSelectionAndIsNotSelected =
-			!multiple && selection.length === 0 && variant === 'inline-listbox';
+			!isMultiple && selection.length === 0 && variant === 'inline-listbox';
 
 		if (
 			isInlineSingleSelectionAndIsNotSelected ||
-			multiple ||
+			isMultiple ||
 			variant === 'readonly'
 		) {
 			openDialog();
 		}
-	}, [multiple, selection.length, variant, openDialog]);
+	}, [isMultiple, selection.length, variant, openDialog]);
 
 	const handleClickOutside = useCallback(
 		(event: MouseEvent | TouchEvent) => {
@@ -607,8 +628,8 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 
 			let newSelection: ComboboxOption[];
 			const selected = isSelected({ selection: sel, option });
-			const singleSelectAndSelectedWasNotClicked = !multiple && !selected;
-			const multiSelectAndSelectedWasNotClicked = multiple && !selected;
+			const singleSelectAndSelectedWasNotClicked = !isMultiple && !selected;
+			const multiSelectAndSelectedWasNotClicked = isMultiple && !selected;
 			const deselectWasClicked = option.id === deselectId;
 
 			if (deselectWasClicked) {
@@ -627,7 +648,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 
 			handleClose();
 		},
-		[isSelected, multiple, deselectId, selection, events, handleClose]
+		[isSelected, isMultiple, deselectId, selection, events, handleClose]
 	);
 
 	const handleInputBlur = useCallback(
@@ -706,7 +727,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 					selection,
 				});
 			} else if (
-				!predefinedOptionsOnly &&
+				!hasPredefinedOptionsOnly &&
 				(event.target as HTMLInputElement).value !== '' &&
 				events.onSubmit
 			) {
@@ -724,7 +745,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			getIsActiveOption,
 			handleSelect,
 			selection,
-			predefinedOptionsOnly,
+			hasPredefinedOptionsOnly,
 			events,
 		]
 	);
@@ -915,7 +936,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			event.preventDefault();
 			const onlyOnePillAndInputExists = selection.length === 1;
 			const isReadOnlyAndTwoPillsExists =
-				selection.length === 2 && variant === 'readonly' && multiple;
+				selection.length === 2 && variant === 'readonly' && isMultiple;
 			const lastPillWasRemoved =
 				index !== undefined && index + 1 === selection.length;
 
@@ -940,7 +961,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				});
 			}
 		},
-		[selection, variant, multiple, events]
+		[selection, variant, isMultiple, events]
 	);
 
 	const handleRequestFocusSelectedListbox = useCallback(
@@ -1285,11 +1306,11 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						onChange={handleInputChange}
 						placeholder={labels.placeholder}
 						defaultValue={defaultValue}
-						readOnly={!!(predefinedOptionsOnly && activeOption)}
+						readOnly={!!(hasPredefinedOptionsOnly && activeOption)}
 						required={required}
 						role="textbox"
 						value={
-							predefinedOptionsOnly
+							hasPredefinedOptionsOnly
 								? (activeOption?.label as string) || value
 								: value
 						}
@@ -1337,7 +1358,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				selectedListboxRef={setSelectedListboxRefCallback}
 				selection={selection as SelectedListBoxOption[]}
 				listboxHasFocus={listboxHasFocus}
-				multiselectable={multiple}
+				multiselectable={isMultiple}
 			/>
 			{errorText && (
 				<div className="slds-has-error">
@@ -1403,7 +1424,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						selectedListboxRef={setSelectedListboxRefCallback}
 						selection={selection as SelectedListBoxOption[]}
 						listboxHasFocus={listboxHasFocus}
-						multiselectable={multiple}
+						multiselectable={isMultiple}
 					/>
 				) : null}
 				<div
@@ -1454,11 +1475,11 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						onClick={() => openDialog()}
 						onChange={handleInputChange}
 						placeholder={labels.placeholder}
-						readOnly={!!(predefinedOptionsOnly && activeOption)}
+						readOnly={!!(hasPredefinedOptionsOnly && activeOption)}
 						required={required}
 						role="textbox"
 						value={
-							predefinedOptionsOnly
+							hasPredefinedOptionsOnly
 								? (activeOption?.label as string) || value
 								: value
 						}
@@ -1527,7 +1548,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
-							disabled={singleInputDisabled}
+							disabled={isSingleInputDisabled}
 							hasSpinner={hasInputSpinner}
 							iconRight={
 								selection.length ? (
@@ -1565,12 +1586,13 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							}}
 							placeholder={labels.placeholder}
 							readOnly={
-								!!(predefinedOptionsOnly && activeOption) || !!selection.length
+								!!(hasPredefinedOptionsOnly && activeOption) ||
+								!!selection.length
 							}
 							required={required}
 							role="textbox"
 							value={
-								predefinedOptionsOnly
+								hasPredefinedOptionsOnly
 									? (activeOption?.label as string) || value
 									: inputValue
 							}
@@ -1770,7 +1792,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 					listboxHasFocus={listboxHasFocus}
 					variant={variant}
 					renderAtSelectionLength={2}
-					multiselectable={multiple}
+					multiselectable={isMultiple}
 				/>
 				{errorText && (
 					<div className="slds-has-error">
@@ -1830,7 +1852,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								className: 'slds-combobox__form-element',
 								role: 'none',
 							}}
-							disabled={singleInputDisabled}
+							disabled={isSingleInputDisabled}
 							iconRight={
 								<InputIcon category="utility" name="down" variant="combobox" />
 							}
@@ -1887,7 +1909,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		},
 	};
 
-	const multipleOrSingle = multiple ? 'multiple' : 'single';
+	const multipleOrSingle = isMultiple ? 'multiple' : 'single';
 	const variantRenderer = subRenders[variant]?.[multipleOrSingle];
 
 	const mainCombobox = (

@@ -17,8 +17,8 @@ class Example extends React.Component {
 					<h1>Radio</h1>
 					<VisualPicker
 						label="Select any one"
-						coverable
-						vertical
+						isCoverable
+						isVertical
 						id="visual-picker-vertical-coverable-radio"
 					>
 						<Radio
@@ -66,8 +66,8 @@ class Example extends React.Component {
 					<h1>Checkbox</h1>
 					<VisualPicker
 						label="Add the following object(s)"
-						coverable
-						vertical
+						isCoverable
+						isVertical
 						id="visual-picker-vertical-coverable-checkbox"
 					>
 						<Checkbox

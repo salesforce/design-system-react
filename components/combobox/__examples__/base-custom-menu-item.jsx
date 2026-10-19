@@ -151,7 +151,7 @@ class Example extends React.Component {
 						placeholder: 'Search Salesforce',
 					}}
 					onRenderMenuItem={CustomMenuItem}
-					multiple
+					isMultiple
 					options={comboboxFilterAndLimit({
 						inputValue: this.state.inputValue,
 						options: accountsWithIcon,

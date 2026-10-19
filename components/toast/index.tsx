@@ -15,6 +15,8 @@ import Button from '../button';
 import Icon from '../icon';
 import { TOAST } from '../../utilities/constants';
 import DOMElementFocus from '../../utilities/dom-element-focus';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 /**
  * Toast variant types
@@ -74,6 +76,8 @@ export interface ToastProps {
 	duration?: number;
 	/** Custom icon (defaults to variant-specific icon) */
 	icon?: ReactNode;
+	/** Show close button. Defaults to `false`. */
+	isDismissible?: boolean;
 	/** Text labels */
 	labels?: ToastLabels;
 	/** Callback when heading link is clicked */
@@ -118,12 +122,24 @@ const Toast = ({
 	className,
 	duration,
 	icon: propIcon,
+	isDismissible: isDismissibleProp,
 	labels: propLabels,
 	onClickHeadingLink,
 	onRequestClose,
 	style,
 	variant = 'info',
 }: ToastProps): React.ReactElement => {
+	const isDismissible = isDismissibleProp ?? false;
+
+	useEffect(() => {
+		checkProps(
+			TOAST,
+			{ isDismissible: isDismissibleProp, onRequestClose },
+			componentDoc
+		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const [isInitialRender, setIsInitialRender] = useState(true);
 	const toastRef = useRef<HTMLDivElement | null>(null);
 	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -188,12 +204,12 @@ const Toast = ({
 		? React.cloneElement(
 				icon as React.ReactElement<{
 					containerClassName?: string;
-					inverse?: boolean;
+					isInverse?: boolean;
 					size?: string;
 				}>,
 				{
 					containerClassName: 'slds-m-right_small slds-no-flex slds-align-top',
-					inverse: true,
+					isInverse: true,
 					size: 'small',
 				}
 			)
@@ -238,17 +254,19 @@ const Toast = ({
 				</h2>
 				{labels.details && <p>{labels.details}</p>}
 			</div>
-			<Button
-				assistiveText={{ icon: assistiveText.closeButton as string }}
-				className="slds-notify__close"
-				iconCategory="utility"
-				iconName="close"
-				iconSize="medium"
-				inverse
-				onClick={handleCloseButtonClick}
-				title={assistiveText.closeButton as string}
-				variant="icon"
-			/>
+			{isDismissible && (
+				<Button
+					assistiveText={{ icon: assistiveText.closeButton as string }}
+					className="slds-notify__close"
+					iconCategory="utility"
+					iconName="close"
+					iconSize="medium"
+					isInverse
+					onClick={handleCloseButtonClick}
+					title={assistiveText.closeButton as string}
+					variant="icon"
+				/>
+			)}
 		</div>
 	);
 };

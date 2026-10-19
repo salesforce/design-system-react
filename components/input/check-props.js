@@ -8,7 +8,7 @@ import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
-import { INPUT } from '../../utilities/constants';
+import { INPUT, SEARCH } from '../../utilities/constants';
 
 let checkProps = function checkPropsFunction() {};
 
@@ -92,6 +92,15 @@ if (process.env.NODE_ENV !== 'production') {
 				});
 			}
 			*/
+		}
+
+		if (COMPONENT === SEARCH) {
+			deprecatedProperty(
+				COMPONENT,
+				props.clearable,
+				'clearable',
+				'isClearable'
+			);
 		}
 	};
 }

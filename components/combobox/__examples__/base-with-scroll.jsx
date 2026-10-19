@@ -143,7 +143,7 @@ class Example extends React.Component {
 						placeholder: 'Search Salesforce',
 					}}
 					menuItemVisibleLength={5}
-					multiple
+					isMultiple
 					options={comboboxFilterAndLimit({
 						inputValue: this.state.inputValue,
 						limit: 10,

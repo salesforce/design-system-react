@@ -84,7 +84,7 @@ class Example extends React.Component {
 						placeholder: 'Search Salesforce',
 					}}
 					menuPosition="relative"
-					multiple
+					isMultiple
 					options={accounts}
 					selection={this.state.selection}
 					value={this.state.inputValue}

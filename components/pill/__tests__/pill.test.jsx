@@ -199,7 +199,7 @@ describe('SLDSPill', () => {
 					labels={{
 						label: LABEL,
 					}}
-					bare
+					isBare
 				/>
 			);
 
@@ -393,6 +393,26 @@ describe('SLDSPill', () => {
 			expect(removeButton).toBeInTheDocument();
 			fireEvent.click(removeButton);
 			expect(onRemove).toHaveBeenCalledTimes(1);
+		});
+	});
+
+	describe('Deprecated props', () => {
+		it('still applies `bare` and warns to use `isBare`', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = render(<SLDSPill labels={{ label: LABEL }} bare />);
+
+			expect(container.querySelector('.slds-pill')).toHaveClass(
+				'slds-pill_bare'
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`bare` will be removed')
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('Use `isBare` instead.')
+			);
+			consoleError.mockRestore();
 		});
 	});
 });

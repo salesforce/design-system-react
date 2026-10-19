@@ -161,7 +161,7 @@ class Example extends React.Component {
 							<EditDialog
 								ariaLabelledby="Edit Name"
 								body={editDialogPopoverBody}
-								isModified={this.state.pageType !== this.state.prevPageType}
+								hasChanges={this.state.pageType !== this.state.prevPageType}
 								onCancel={this.handleRequestClose}
 								onClose={this.handleClose}
 								onRequestClose={this.handleRequestClose}
@@ -185,7 +185,7 @@ class Example extends React.Component {
 										className="slds-button_reset"
 										iconCategory="utility"
 										iconName="edit"
-										inverse
+										isInverse
 										onClick={this.handleOpen}
 										variant="icon"
 										style={{ verticalAlign: 'middle' }}
@@ -212,7 +212,7 @@ class Example extends React.Component {
 							<EditDialog
 								ariaLabelledby="Edit Name"
 								body={editDialogPopoverBody}
-								isModified={this.state.pageType !== this.state.prevPageType}
+								hasChanges={this.state.pageType !== this.state.prevPageType}
 								onCancel={this.handleRequestClose}
 								onClose={this.handleClose}
 								onRequestClose={this.handleRequestClose}
@@ -236,7 +236,7 @@ class Example extends React.Component {
 										className="slds-button_reset"
 										iconCategory="utility"
 										iconName="edit"
-										inverse
+										isInverse
 										onClick={this.handleOpen}
 										variant="icon"
 										style={{ verticalAlign: 'middle' }}

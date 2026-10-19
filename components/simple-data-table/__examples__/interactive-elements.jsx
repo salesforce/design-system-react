@@ -34,7 +34,7 @@ const columns = [
 		key="opportunity"
 		label="Opportunity Name"
 		property="opportunityName"
-		primaryColumn
+		isPrimaryColumn
 	>
 		<CustomSimpleDataTableCell />
 	</SimpleDataTableColumn>,
@@ -97,8 +97,8 @@ class Example extends React.Component {
 					<SimpleDataTable
 						items={this.state.items}
 						id="SimpleDataTableExample-1-default"
-						fixedLayout
-						keyboardNavigation
+						hasFixedLayout
+						hasKeyboardNavigation
 					>
 						{columns}
 					</SimpleDataTable>
@@ -109,9 +109,9 @@ class Example extends React.Component {
 					<SimpleDataTable
 						items={this.state.items}
 						id="SimpleDataTableExample-1-striped"
-						striped
-						fixedLayout
-						keyboardNavigation
+						isStriped
+						hasFixedLayout
+						hasKeyboardNavigation
 					>
 						{columns}
 					</SimpleDataTable>
@@ -122,9 +122,9 @@ class Example extends React.Component {
 					<SimpleDataTable
 						items={this.state.items}
 						id="SimpleDataTableExample-noRowHover"
-						noRowHover
-						fixedLayout
-						keyboardNavigation
+						hasNoRowHover
+						hasFixedLayout
+						hasKeyboardNavigation
 					>
 						{columns}
 					</SimpleDataTable>
@@ -133,11 +133,11 @@ class Example extends React.Component {
 						Column Bordered
 					</h3>
 					<SimpleDataTable
-						columnBordered
+						hasColumnBorders
 						items={this.state.items}
 						id="SimpleDataTableExample-columnBordered"
-						fixedLayout
-						keyboardNavigation
+						hasFixedLayout
+						hasKeyboardNavigation
 					>
 						{columns}
 					</SimpleDataTable>

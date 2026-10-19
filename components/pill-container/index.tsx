@@ -32,8 +32,12 @@ export interface PillOption {
 				variant?: string;
 		  };
 	/** Bare style */
+	isBare?: boolean;
+	/** @deprecated Use `isBare` instead. */
 	bare?: boolean;
 	/** Error state */
+	hasError?: boolean;
+	/** @deprecated Use `hasError` instead. */
 	error?: boolean;
 	/** Icon component or config */
 	icon?:
@@ -171,11 +175,14 @@ const PillContainer = ({
 			{
 				onClickPill: deprecatedOnClickPill,
 				onRequestRemovePill: deprecatedOnRequestRemovePill,
+				options,
 			},
 			componentDoc
 		);
+		// Re-run when options change so deprecated `bare`/`error` option
+		// fields on options added after mount still warn (once).
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []); // Only run on mount
+	}, [options]);
 
 	// `events.*` takes precedence over the deprecated flat props
 	const onClickPill = events?.onClickPill ?? deprecatedOnClickPill;

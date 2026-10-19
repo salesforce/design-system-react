@@ -23,7 +23,7 @@ class DemoComponent extends Component {
 					<ToastContainer>
 						{this.state.isOpen ? (
 							<Toast
-								dismissible
+								isDismissible
 								icon={<Icon category="utility" name="user" />}
 								labels={{
 									heading: 'Logged in as John Smith (johnsmith@acme.com).',
@@ -101,13 +101,20 @@ describe('SLDSToast', () => {
 
 		const renderToast = (props) => (
 			<IconSettings iconPath="/assets/icons">
-				<Toast labels={{ heading: 'Heading' }} variant="info" {...props} />
+				<Toast
+					isDismissible={false}
+					labels={{ heading: 'Heading' }}
+					variant="info"
+					{...props}
+				/>
 			</IconSettings>
 		);
 
 		it('passes the click event and trigger "close-button" when the close button is clicked', () => {
 			const onRequestClose = vi.fn();
-			const { container } = render(renderToast({ onRequestClose }));
+			const { container } = render(
+				renderToast({ isDismissible: true, onRequestClose })
+			);
 
 			fireEvent.click(container.querySelector('button.slds-notify__close'));
 
@@ -175,6 +182,105 @@ describe('SLDSToast', () => {
 
 			const toast = container.querySelector('.slds-notify');
 			expect(toast).toHaveStyle({ backgroundColor: 'rgb(18, 49, 35)' });
+		});
+	});
+
+	describe('isDismissible', () => {
+		it('does not render a close button by default', () => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Toast labels={{ heading: 'Not dismissible' }} variant="info" />
+				</IconSettings>
+			);
+			expect(container.querySelector('.slds-notify')).toBeInTheDocument();
+			expect(
+				container.querySelector('button.slds-notify__close')
+			).not.toBeInTheDocument();
+		});
+
+		it('renders a close button when isDismissible is set', () => {
+			const { container } = render(<DemoComponent />);
+			expect(
+				container.querySelector('button.slds-notify__close')
+			).toBeInTheDocument();
+		});
+
+		// The warning is emitted once per module lifetime, so this must be the
+		// first test in the file to render with `onRequestClose` and no
+		// `isDismissible`.
+		it('warns when onRequestClose is passed without isDismissible', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			try {
+				const { container } = render(
+					<IconSettings iconPath="/assets/icons">
+						<Toast
+							labels={{ heading: 'Upgraded' }}
+							onRequestClose={() => {}}
+							variant="info"
+						/>
+					</IconSettings>
+				);
+				expect(
+					container.querySelector('button.slds-notify__close')
+				).not.toBeInTheDocument();
+				expect(
+					consoleError.mock.calls.some(([message]) =>
+						String(message).includes(
+							'Toast no longer renders a close button by default'
+						)
+					)
+				).toBe(true);
+			} finally {
+				consoleError.mockRestore();
+			}
+		});
+
+		describe('close button warning conditions', () => {
+			// `check-props` dedupes in module state; load a fresh copy per test.
+			const loadCheckProps = async () => {
+				vi.resetModules();
+				return (await import('../check-props')).default;
+			};
+			const countWarnings = (consoleError) =>
+				consoleError.mock.calls.filter(([message]) =>
+					String(message).includes('no longer renders a close button')
+				).length;
+
+			afterEach(() => {
+				vi.restoreAllMocks();
+			});
+
+			it('warns once when onRequestClose is set and isDismissible is unset', async () => {
+				const checkProps = await loadCheckProps();
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				const props = { onRequestClose: () => {} };
+				checkProps('Toast', props, {});
+				checkProps('Toast', props, {});
+				expect(countWarnings(consoleError)).toBe(1);
+			});
+
+			it.each([
+				[
+					'isDismissible is true',
+					{ isDismissible: true, onRequestClose: () => {} },
+				],
+				[
+					'isDismissible is explicitly false',
+					{ isDismissible: false, onRequestClose: () => {} },
+				],
+				['onRequestClose is not passed', {}],
+			])('does not warn when %s', async (_label, props) => {
+				const checkProps = await loadCheckProps();
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				checkProps('Toast', props, {});
+				expect(countWarnings(consoleError)).toBe(0);
+			});
 		});
 	});
 });

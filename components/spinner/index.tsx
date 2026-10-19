@@ -1,9 +1,10 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type CSSProperties } from 'react';
+import React, { useEffect, type CSSProperties } from 'react';
 import classNames from 'classnames';
 import { SPINNER } from '../../utilities/constants';
+import checkProps from './check-props';
 
 /**
  * Spinner size options
@@ -33,7 +34,9 @@ export interface SpinnerProps {
 	containerClassName?: string;
 	/** Custom styles for the container */
 	containerStyle?: CSSProperties;
-	/** Render inside a container div */
+	/** Render the spinner without its `slds-spinner_container` wrapper div */
+	hasNoContainer?: boolean;
+	/** @deprecated Use `hasNoContainer` instead (with the opposite value). */
 	hasContainer?: boolean;
 	/** Unique identifier */
 	id?: string;
@@ -59,7 +62,8 @@ const Spinner = ({
 	assistiveText = defaultAssistiveText,
 	containerClassName,
 	containerStyle,
-	hasContainer = true,
+	hasNoContainer: hasNoContainerProp,
+	hasContainer,
 	id,
 	isDelayed = false,
 	isInline = false,
@@ -67,6 +71,14 @@ const Spinner = ({
 	size = 'medium',
 	variant = 'base',
 }: SpinnerProps): React.ReactElement => {
+	const hasNoContainer =
+		hasNoContainerProp ?? (hasContainer === undefined ? false : !hasContainer);
+
+	useEffect(() => {
+		checkProps(SPINNER, { hasContainer });
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const mergedAssistiveText = {
 		...defaultAssistiveText,
 		...assistiveText,
@@ -91,7 +103,7 @@ const Spinner = ({
 		</div>
 	);
 
-	if (hasContainer) {
+	if (!hasNoContainer) {
 		return (
 			<div
 				className={classNames(containerClassName, 'slds-spinner_container')}

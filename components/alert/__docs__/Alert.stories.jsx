@@ -19,7 +19,7 @@ export default {
 			control: 'select',
 			options: ['info', 'warning', 'error', 'offline'],
 		},
-		dismissible: {
+		isDismissible: {
 			control: 'boolean',
 		},
 	},
@@ -82,7 +82,7 @@ export const Offline = {
 export const Dismissible = {
 	args: {
 		variant: 'info',
-		dismissible: true,
+		isDismissible: true,
 		labels: {
 			heading: 'This alert can be dismissed.',
 		},
@@ -111,7 +111,7 @@ export const DismissibleInteractive = {
 		return (
 			<Alert
 				variant="warning"
-				dismissible
+				isDismissible
 				labels={{
 					heading:
 						'Click the X to dismiss this alert, then click the button to bring it back.',

@@ -28,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **BREAKING**: `Carousel` `onRequestAutoplayToggle` data `isAutoplayOn` is the requested state, not the current one. Replace `setIsAutoplayOn(!data.isAutoplayOn)` with `setIsAutoplayOn(data.isAutoplayOn)`. Timer-driven `onRequestAutoplayToggle` and `onRequestPanelChange` calls pass `undefined` as the event instead of `{}`, and `onRenderItem` is typed as `({ item }) => ReactElement`, the shape it is called with
 - **BREAKING**: `SetupAssistant` `onStepToggleIsOpen` and `SetupAssistantStep` `onToggleIsOpen` data `isOpen` is the requested state. Replace `expanded[data.index] = !data.isOpen` with `expanded[data.index] = data.isOpen`. `data.step` is typed as the step's props, which is what it has always been at runtime
 - **BREAKING**: `Popover` `onRequestClose` data always includes a `trigger` from `PopoverRequestCloseTrigger`. A trigger click while open reports `'triggerClick'` and a hover close reports `'mouseLeave'` (both passed `{}` before), and Escape passes the keydown event instead of `undefined`. `onOpen(undefined, { portal })` and `onClose(undefined, { componentWillUnmount })` have exported data types
+- **BREAKING**: `Toast` renders its close button only when the new `isDismissible` prop is set, matching `Alert`. Add `isDismissible` to keep the close button. In development, passing `onRequestClose` without `isDismissible` logs a warning; pass `isDismissible={false}` for a toast that should only close on `duration`.
+- **BREAKING**: `WelcomeMat` requires `isOpen`; it no longer defaults to `true`.
 - `DatePicker`: Down/Up in the closed input go through `onRequestOpen`, and Escape/Enter in the input go through `onRequestClose`, instead of setting internal state directly. Controlled pickers now open from the keyboard; uncontrolled pickers that pass `onRequestOpen` open from your handler, as they already did for clicks
 
 ### Deprecated
@@ -36,6 +38,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `Tree` `onScroll` data `percentage` (use `ratio`)
 - `SplitView` `events.onOpen` and `events.onClose` (use `events.onToggle`). They are called only when `onToggle` is absent
 - `PillContainer` flat `onClickPill` and `onRequestRemovePill` props (use `events.onClickPill` and `events.onRequestRemovePill`)
+- Boolean props renamed to `is*`/`has*`/`can*` names. The old names still work and warn in development; they will be removed in the next major version.
+  - `Alert`: `dismissible` → `isDismissible`
+  - `Avatar`, `Icon`: `inverse` → `isInverse`
+  - `Button`: `inverse`, `hint`, `responsive` → `isInverse`, `isHint`, `isResponsive`; `ButtonIcon`: `hint`, `inverse` → `isHint`, `isInverse`; `ButtonStateful`: `responsive` → `isResponsive`
+  - `Checkbox`: `coverable`, `vertical` → `isCoverable`, `isVertical`; `Radio`: the same plus `deselectable` → `canDeselect`; `VisualPicker`: `coverable`, `vertical` → `isCoverable`, `isVertical`
+  - `ColorPicker`: `hideInput` → `isInputHidden`
+  - `Combobox`: `multiple`, `predefinedOptionsOnly`, `singleInputDisabled` → `isMultiple`, `hasPredefinedOptionsOnly`, `isSingleInputDisabled`. A custom `onRenderMenuItem` component receives `isSelected` as well as the deprecated `selected`.
+  - `ExpandableSection`: `nonCollapsible` → `isNonCollapsible`
+  - `MediaObject`: `verticalCenter` → `isVerticallyCentered`
+  - `MenuDropdown`: `multiple`, `checkmark`, `hint`, `inverse`, `buttonInverse`, `inheritTargetWidth` → `isMultiple`, `hasCheckmark`, `isHint`, `isInverse`, `isButtonInverse`, `isTargetWidthInherited`
+  - `Modal`: `disableClose`, `directional` → `isNonDismissible`, `isDirectional`
+  - `PageHeader`: `joined` → `isJoined`; `details[].truncate` → `details[].isTruncated`
+  - `PanelFilterGroup`: `modified` → `isModified`
+  - `Pill`: `bare` → `isBare`; `PillContainer` options: `bare`, `error` → `isBare`, `hasError`
+  - `Popover`: `disabled` → `isDisabled`; `PopoverEditDialog`: `isModified` → `hasChanges`
+  - `Search`: `clearable` → `isClearable`
+  - `SimpleDataTable`: `columnBordered`, `fixedHeader`, `fixedLayout`, `joined`, `keyboardNavigation`, `noRowHover`, `stacked`, `stackedHorizontal`, `striped`, `unborderedRow`, `unbufferedCell` → `hasColumnBorders`, `hasFixedHeader`, `hasFixedLayout`, `isJoined`, `hasKeyboardNavigation`, `hasNoRowHover`, `isStacked`, `isStackedHorizontal`, `isStriped`, `hasNoRowBorders`, `hasNoCellBuffer`. Columns: `primaryColumn`, `sortable`, `truncate` → `isPrimaryColumn`, `isSortable`, `isTruncated`. Row actions: `noHint` → `hasNoHint`. Custom cells receive `isRowHeader` and `hasFixedLayout` as well as the deprecated `rowHeader` and `fixedLayout`.
+  - `Slider`: `vertical` → `isVertical`
+  - `Spinner`: `hasContainer` (default `true`) → `hasNoContainer` (default `false`)
 
 ### Fixed
 

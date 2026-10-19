@@ -10,6 +10,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<ToastContainer className="this-is-the-container">
 					<Toast
+						isDismissible
 						labels={{
 							heading: '26 potential duplicate leads were found.',
 							headingLink: 'Select Leads to Merge',

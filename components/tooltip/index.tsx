@@ -442,7 +442,7 @@ const Tooltip = ({
 					<Icon
 						category="utility"
 						colorVariant={iconColorVariant}
-						inverse={isInverseIcon}
+						isInverse={isInverseIcon}
 						name="info"
 						assistiveText={{
 							label: assistiveText.triggerLearnMoreIcon,
@@ -463,9 +463,9 @@ const Tooltip = ({
 						iconColorVariant && `slds-icon-text-${iconColorVariant}`
 					}
 					iconName="info"
-					// `bare` keeps `slds-button_icon`, which Button drops for `inverse` alone
+					// `bare` keeps `slds-button_icon`, which Button drops for `isInverse` alone
 					iconVariant={isInverseIcon ? 'bare' : undefined}
-					inverse={isInverseIcon}
+					isInverse={isInverseIcon}
 					variant="icon"
 				/>
 			);
@@ -520,7 +520,7 @@ const Tooltip = ({
 								label: assistiveText.tooltipTipLearnMoreIcon,
 							}}
 							category="utility"
-							inverse
+							isInverse
 							name="info"
 							size="x-small"
 						/>{' '}

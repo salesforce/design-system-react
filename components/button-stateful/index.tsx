@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
+	useEffect,
 	useState,
 	useCallback,
 	type ReactNode,
@@ -15,6 +16,7 @@ import isFunction from 'lodash.isfunction';
 import ButtonIcon from '../icon/button-icon';
 import getAriaProps from '../../utilities/get-aria-props';
 import { BUTTON_STATEFUL } from '../../utilities/constants';
+import checkProps from './check-props';
 
 /**
  * Button stateful variant types
@@ -87,6 +89,8 @@ export interface ButtonStatefulProps {
 	/** Mouse enter handler */
 	onMouseEnter?: (event: MouseEvent<HTMLButtonElement>) => void;
 	/** Scale to full width on small screens */
+	isResponsive?: boolean;
+	/** @deprecated Use `isResponsive` instead. */
 	responsive?: boolean;
 	/** Initial/unselected state */
 	stateOne?: ButtonStatefulState;
@@ -119,31 +123,43 @@ const defaultStateThree: ButtonStatefulState = {
  * The ButtonStateful component is a variant of the Lightning Design System Button component.
  * It is used for buttons that have a state of unselected or selected.
  */
-const ButtonStateful = ({
-	active: controlledActive,
-	assistiveText: propAssistiveText,
-	className,
-	disabled = false,
-	icon,
-	iconName,
-	iconSize = 'medium',
-	id,
-	onBlur,
-	onClick,
-	onFocus,
-	onKeyDown,
-	onKeyPress,
-	onKeyUp,
-	onMouseDown,
-	onMouseEnter,
-	responsive = false,
-	stateOne = defaultStateOne,
-	stateTwo = defaultStateTwo,
-	stateThree = defaultStateThree,
-	tabIndex,
-	variant,
-	...rest
-}: ButtonStatefulProps): React.ReactElement => {
+const ButtonStateful = (props: ButtonStatefulProps): React.ReactElement => {
+	const {
+		active: controlledActive,
+		assistiveText: propAssistiveText,
+		className,
+		disabled = false,
+		icon,
+		iconName,
+		iconSize = 'medium',
+		id,
+		isResponsive: isResponsiveProp,
+		onBlur,
+		onClick,
+		onFocus,
+		onKeyDown,
+		onKeyPress,
+		onKeyUp,
+		onMouseDown,
+		onMouseEnter,
+		responsive,
+		stateOne = defaultStateOne,
+		stateTwo = defaultStateTwo,
+		stateThree = defaultStateThree,
+		tabIndex,
+		variant,
+		...rest
+	} = props;
+	const isResponsive = isResponsiveProp ?? responsive ?? false;
+
+	useEffect(() => {
+		(checkProps as (name: string, props: unknown, doc?: unknown) => void)(
+			BUTTON_STATEFUL,
+			props
+		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const [internalActive, setInternalActive] = useState(false);
 
 	const isActive =
@@ -161,11 +177,11 @@ const ButtonStateful = ({
 				'slds-button_success': variant === 'success',
 				'slds-not-selected': !active,
 				'slds-is-selected': active,
-				'slds-max-small-button_stretch': responsive,
+				'slds-max-small-button_stretch': isResponsive,
 				'slds-button_icon-border': variant === 'icon',
 				'slds-button_icon-border-filled': variant === 'icon-filled',
 			}),
-		[className, variant, responsive]
+		[className, variant, isResponsive]
 	);
 
 	const handleBlur = useCallback(

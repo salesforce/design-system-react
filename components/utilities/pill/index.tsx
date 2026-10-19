@@ -55,7 +55,7 @@ export interface PillProps {
 	/**
 	 * Applies the bare style to the component.
 	 */
-	bare?: boolean;
+	isBare?: boolean;
 	/**
 	 * Pills are often used for selection of a type of entity such as days in a daypicker. This prop allows you to pass in data that will be passed back to the event handler.
 	 */
@@ -134,7 +134,7 @@ const Pill = ({
 	labels = defaultProps.labels,
 	events = defaultProps.events as PillEvents,
 	avatar,
-	bare,
+	isBare,
 	hasError,
 	tabIndex,
 	icon,
@@ -152,7 +152,7 @@ const Pill = ({
 	return (
 		<SLDSPill
 			avatar={avatar}
-			bare={bare}
+			isBare={isBare}
 			hasError={hasError}
 			tabIndex={tabIndex || '0'}
 			icon={icon}

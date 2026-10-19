@@ -25,6 +25,22 @@ if (process.env.NODE_ENV !== 'production') {
 			'events.onRequestRemovePill',
 			createDocUrl('events')
 		);
+
+		const options = Array.isArray(props.options) ? props.options : [];
+		const findDeprecated = (field) =>
+			options.find((option) => option && option[field] !== undefined)?.[field];
+		deprecatedProperty(
+			COMPONENT,
+			findDeprecated('bare'),
+			'options[].bare',
+			'options[].isBare'
+		);
+		deprecatedProperty(
+			COMPONENT,
+			findDeprecated('error'),
+			'options[].error',
+			'options[].hasError'
+		);
 	};
 }
 

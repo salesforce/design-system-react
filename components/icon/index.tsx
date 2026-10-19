@@ -1,13 +1,15 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type CSSProperties } from 'react';
+import React, { useEffect, type CSSProperties } from 'react';
 import classNames from '../../utilities/class-names';
 import UtilityIcon, {
 	type InlineIconData,
 } from '../utilities/utility-icon/index';
 import IconBackgrounds from '../../utilities/product-tokens/icon-backgrounds';
 import { ICON } from '../../utilities/constants';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 import type { IconCategory } from '../../types/common';
 
 /**
@@ -53,6 +55,8 @@ export interface IconProps {
 	/** Custom SVG icon data */
 	icon?: InlineIconData;
 	/** Invert colors for dark backgrounds */
+	isInverse?: boolean;
+	/** @deprecated Use `isInverse` instead. */
 	inverse?: boolean;
 	/** Name of the icon */
 	name?: string;
@@ -81,22 +85,35 @@ const defaultProps: Required<
  * The Icon component is the Lightning Design System Icon component and should be used for naked icons.
  * For icons that are buttons, use the Button component with `variant='icon'`.
  */
-const Icon = ({
-	category = defaultProps.category,
-	className,
-	colorVariant = defaultProps.colorVariant,
-	containerClassName,
-	containerStyle,
-	icon,
-	inverse,
-	name,
-	path,
-	size = defaultProps.size,
-	title,
-	productTheme,
-	assistiveText = defaultProps.assistiveText,
-	style,
-}: IconProps): React.ReactElement => {
+const Icon = (props: IconProps): React.ReactElement => {
+	const {
+		category = defaultProps.category,
+		className,
+		colorVariant = defaultProps.colorVariant,
+		containerClassName,
+		containerStyle,
+		icon,
+		inverse,
+		isInverse: isInverseProp,
+		name,
+		path,
+		size = defaultProps.size,
+		title,
+		productTheme,
+		assistiveText = defaultProps.assistiveText,
+		style,
+	} = props;
+	const isInverse = isInverseProp ?? inverse;
+
+	useEffect(() => {
+		(checkProps as (name: string, props: unknown, doc?: unknown) => void)(
+			ICON,
+			props,
+			componentDoc
+		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	let styleOverride = style;
 	if (productTheme && IconBackgrounds[productTheme]) {
 		styleOverride = {
@@ -141,8 +158,8 @@ const Icon = ({
 						// Color logic for utility vs other categories
 						'slds-icon-text-default':
 							colorVariant === 'default' && category === 'utility'
-								? !inverse
-								: inverse,
+								? !isInverse
+								: isInverse,
 						'slds-icon-text-success': colorVariant === 'success',
 						'slds-icon-text-warning': colorVariant === 'warning',
 						'slds-icon-text-error': colorVariant === 'error',

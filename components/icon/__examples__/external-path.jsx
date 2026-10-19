@@ -11,7 +11,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<Icon
 					assistiveText={{ label: 'We got news!' }}
-					inverse
+					isInverse
 					path="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
 					size="medium"
 				/>

@@ -101,7 +101,7 @@ export const Base: Story = {
 			<Combobox
 				id="base-combobox"
 				labels={{ label: 'Search', placeholder: 'Search Salesforce' }}
-				multiple
+				isMultiple
 				options={accountsWithIcons.filter(
 					(account) =>
 						!inputValue ||
@@ -143,7 +143,7 @@ export const BaseWithMenuSubheader: Story = {
 			<Combobox
 				id="base-with-subheader"
 				labels={{ label: 'Search', placeholder: 'Search Salesforce' }}
-				multiple
+				isMultiple
 				options={optionsWithSeparator}
 				selection={selection}
 				value={inputValue}
@@ -426,7 +426,7 @@ export const InlineMultiple: Story = {
 			<Combobox
 				id="inline-multiple"
 				labels={{ label: 'Accounts', placeholder: 'Search Accounts' }}
-				multiple
+				isMultiple
 				options={accountsWithIcons.filter(
 					(account) =>
 						!inputValue ||
@@ -533,7 +533,7 @@ export const SearchAndAddEntities: Story = {
 };
 
 // The open/closed state is fully controlled via `isOpen` +
-// `onRequestOpen`/`onRequestClose`, combined with `predefinedOptionsOnly`.
+// `onRequestOpen`/`onRequestClose`, combined with `hasPredefinedOptionsOnly`.
 export const ControlledOpenState: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
@@ -550,7 +550,7 @@ export const ControlledOpenState: Story = {
 						!inputValue ||
 						account.label.toLowerCase().includes(inputValue.toLowerCase())
 				)}
-				predefinedOptionsOnly
+				hasPredefinedOptionsOnly
 				selection={selection}
 				value={inputValue}
 				variant="inline-listbox"
@@ -591,7 +591,7 @@ export const InlineMultipleLoading: Story = {
 				id="inline-multiple-loading"
 				hasMenuSpinner={isLoading}
 				labels={{ label: 'Search', placeholder: 'Search Salesforce' }}
-				multiple
+				isMultiple
 				options={(isLoading
 					? accountsWithIcons.slice(0, 3)
 					: accountsWithIcons
@@ -687,7 +687,7 @@ export const ReadonlyMultiple: Story = {
 			<Combobox
 				id="readonly-multiple"
 				labels={{ label: 'Select Options' }}
-				multiple
+				isMultiple
 				options={picklistOptions}
 				selection={selection}
 				variant="readonly"
@@ -708,7 +708,7 @@ export const ReadonlyMultiple: Story = {
 };
 
 // Individual options can be disabled in the readonly (picklist) variant
-// too, independent of `singleInputDisabled` on the whole widget.
+// too, independent of `isSingleInputDisabled` on the whole widget.
 export const ReadonlyWithDisabledOption: Story = {
 	render: () => {
 		const optionsWithDisabled = picklistOptions.map((option, index) => ({
@@ -758,7 +758,7 @@ export const ReadonlyWithDeselect: Story = {
 	},
 };
 
-// Combines `multiple` and `hasDeselect` in the readonly variant, distinct
+// Combines `isMultiple` and `hasDeselect` in the readonly variant, distinct
 // from the single-select `ReadonlyWithDeselect` story above.
 export const ReadonlyMultipleWithDeselect: Story = {
 	render: () => {
@@ -772,7 +772,7 @@ export const ReadonlyMultipleWithDeselect: Story = {
 				id="readonly-multiple-deselect"
 				hasDeselect
 				labels={{ label: 'Select Options', deselectOption: 'None' }}
-				multiple
+				isMultiple
 				options={picklistOptions}
 				selection={selection}
 				variant="readonly"
@@ -828,7 +828,7 @@ export const ReadonlyDisabled: Story = {
 				labels={{ label: 'Select Option' }}
 				options={picklistOptions}
 				selection={selection}
-				singleInputDisabled
+				isSingleInputDisabled
 				variant="readonly"
 			/>
 		);
@@ -1055,7 +1055,7 @@ export const WithCustomMenuItem: Story = {
 			<Combobox
 				id="custom-menu-item"
 				labels={{ label: 'Search', placeholder: 'Search Salesforce' }}
-				multiple
+				isMultiple
 				onRenderMenuItem={EntityMenuItem}
 				options={accountsWithIcons.filter(
 					(account) =>
@@ -1097,7 +1097,7 @@ export const WithCustomMenuItemDisabledOption: Story = {
 			<Combobox
 				id="custom-menu-item-disabled"
 				labels={{ label: 'Search', placeholder: 'Search Salesforce' }}
-				multiple
+				isMultiple
 				onRenderMenuItem={EntityMenuItem}
 				options={optionsWithDisabled.filter(
 					(account) =>
@@ -1141,7 +1141,7 @@ export const WithDisabledOptions: Story = {
 			<Combobox
 				id="disabled-options"
 				labels={{ label: 'Search', placeholder: 'Search Salesforce' }}
-				multiple
+				isMultiple
 				options={optionsWithDisabled.filter(
 					(account) =>
 						!inputValue ||
@@ -1190,7 +1190,7 @@ export const WithDisabledOptionTooltip: Story = {
 			<Combobox
 				id="disabled-option-tooltip"
 				labels={{ label: 'Search', placeholder: 'Search Salesforce' }}
-				multiple
+				isMultiple
 				options={optionsWithDisabledTooltips.filter(
 					(account) =>
 						!inputValue ||
@@ -1262,7 +1262,7 @@ export const PredefinedOptionsOnly: Story = {
 						!inputValue ||
 						account.label.toLowerCase().includes(inputValue.toLowerCase())
 				)}
-				predefinedOptionsOnly
+				hasPredefinedOptionsOnly
 				selection={selection}
 				value={inputValue}
 				events={{

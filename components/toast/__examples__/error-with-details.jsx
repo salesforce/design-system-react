@@ -10,6 +10,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<ToastContainer>
 					<Toast
+						isDismissible
 						labels={{
 							heading:
 								"You've encountered some errors when trying to save edits to Samuel Smith.",

@@ -1,10 +1,11 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import classNames from '../../utilities/class-names';
 import { AVATAR } from '../../utilities/constants';
 import Icon from '../icon';
+import checkProps from './check-props';
 
 /**
  * Avatar size options
@@ -37,6 +38,8 @@ export interface AvatarProps {
 	/** Initials to display (overrides built initials from label) */
 	initials?: string;
 	/** Use dark text on light background for initials */
+	isInverse?: boolean;
+	/** @deprecated Use `isInverse` instead. */
 	inverse?: boolean;
 	/** Label used to build initials and as title for abbr element */
 	label?: string;
@@ -76,17 +79,29 @@ const buildInitials = (label: string): string => {
  * An image is the preferred format. If `imgSrc` is undefined and `label` or `initials`
  * is available, initials will be shown. Otherwise, a default icon is displayed.
  */
-const Avatar = ({
-	assistiveText: propAssistiveText,
-	imgAlt = '',
-	imgSrc,
-	initials,
-	inverse,
-	label,
-	size = 'medium',
-	title = 'user avatar',
-	variant = 'user',
-}: AvatarProps): React.ReactElement => {
+const Avatar = (props: AvatarProps): React.ReactElement => {
+	const {
+		assistiveText: propAssistiveText,
+		imgAlt = '',
+		imgSrc,
+		initials,
+		inverse,
+		isInverse: isInverseProp,
+		label,
+		size = 'medium',
+		title = 'user avatar',
+		variant = 'user',
+	} = props;
+	const isInverse = isInverseProp ?? inverse;
+
+	useEffect(() => {
+		(checkProps as (name: string, props: unknown, doc?: unknown) => void)(
+			AVATAR,
+			props
+		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const [imgLoadError, setImgLoadError] = useState(false);
 
 	const handleImageError = useCallback(() => {
@@ -115,7 +130,7 @@ const Avatar = ({
 	const renderInitialsAvatar = () => (
 		<abbr
 			className={classNames('slds-avatar__initials', {
-				'slds-avatar__initials_inverse': inverse,
+				'slds-avatar__initials_inverse': isInverse,
 				'slds-icon-standard-account': variant === 'entity',
 				'slds-icon-standard-user': variant === 'user',
 			})}

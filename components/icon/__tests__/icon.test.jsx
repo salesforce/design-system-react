@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import Icon from '../index';
 import IconSettings from '../../icon-settings';
@@ -346,7 +346,7 @@ describe('SLDSIcon', () => {
 				<IconSettings iconPath="/assets/icons">
 					<DemoIcon
 						assistiveText={{ label: 'New stuff!' }}
-						inverse
+						isInverse
 						path="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
 						size="medium"
 					/>
@@ -366,7 +366,7 @@ describe('SLDSIcon', () => {
 				<IconSettings iconPath="/assets/icons">
 					<DemoIcon
 						assistiveText={{ label: 'New stuff!' }}
-						inverse
+						isInverse
 						path="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
 						size="medium"
 					/>
@@ -376,6 +376,39 @@ describe('SLDSIcon', () => {
 			expect(container.querySelector('use')).toHaveAttribute(
 				'href',
 				'/assets/icons/utility-sprite/svg/symbols.svg#announcement'
+			);
+		});
+	});
+
+	describe('Deprecated boolean prop aliases', () => {
+		it('still applies `inverse`, and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Icon category="standard" inverse name="account" />
+				</IconSettings>
+			);
+
+			expect(container.querySelector('svg')).toHaveClass(
+				'slds-icon-text-default'
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`isInverse`')
+			);
+			consoleError.mockRestore();
+		});
+
+		it('applies `isInverse`', () => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Icon category="standard" isInverse name="account" />
+				</IconSettings>
+			);
+
+			expect(container.querySelector('svg')).toHaveClass(
+				'slds-icon-text-default'
 			);
 		});
 	});

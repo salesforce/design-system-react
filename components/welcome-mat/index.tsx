@@ -54,8 +54,8 @@ interface WelcomeMatBaseProps {
 	className?: string | string[] | Record<string, boolean>;
 	/** HTML id */
 	id?: string;
-	/** Whether modal is open */
-	isOpen?: boolean;
+	/** Whether modal is open. Required; there is no default. */
+	isOpen: boolean;
 	/** Text labels */
 	labels?: WelcomeMatLabels;
 	/**
@@ -133,7 +133,7 @@ const WelcomeMat = ({
 	doNotShowAgainCheckbox,
 	id: propId,
 	infoBadge,
-	isOpen = true,
+	isOpen,
 	labels: propLabels,
 	onRequestClose,
 	onRenderInfoActions,

@@ -28,6 +28,8 @@ export interface SimpleDataTableColumnProps {
 	/**
 	 * The primary column for a row. This is almost always the first column.
 	 */
+	isPrimaryColumn?: boolean;
+	/** @deprecated Use `isPrimaryColumn` instead. */
 	primaryColumn?: boolean;
 	/**
 	 * The property which corresponds to this column.
@@ -36,6 +38,8 @@ export interface SimpleDataTableColumnProps {
 	/**
 	 * Whether or not the column is sortable.
 	 */
+	isSortable?: boolean;
+	/** @deprecated Use `isSortable` instead. */
 	sortable?: boolean;
 	/**
 	 * The current sort direction. Required if `isSorted` is true.
@@ -48,6 +52,8 @@ export interface SimpleDataTableColumnProps {
 	/**
 	 * Adds truncate to cell node.
 	 */
+	isTruncated?: boolean;
+	/** @deprecated Use `isTruncated` instead. */
 	truncate?: boolean;
 	/**
 	 * Width of column. Required for advanced/fixed layout tables.

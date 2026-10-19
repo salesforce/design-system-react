@@ -14,7 +14,7 @@ class Example extends React.Component {
 					category="utility"
 					name="announcement"
 					title="description of icon when needed"
-					inverse
+					isInverse
 				/>
 			</IconSettings>
 		);

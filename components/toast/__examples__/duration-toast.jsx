@@ -21,6 +21,7 @@ class Example extends React.Component {
 						{this.state.isOpen ? (
 							<Toast
 								duration={15000}
+								isDismissible
 								labels={{
 									heading: '26 potential duplicate leads were found.',
 									headingLink: 'Select Leads to Merge',

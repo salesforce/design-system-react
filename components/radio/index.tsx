@@ -5,6 +5,7 @@ import React, {
 	useRef,
 	useId,
 	useCallback,
+	useEffect,
 	type ChangeEvent,
 	type FocusEvent,
 	type KeyboardEvent,
@@ -17,6 +18,8 @@ import getAriaProps from '../../utilities/get-aria-props';
 import getDataProps from '../../utilities/get-data-props';
 import Swatch from '../../components/color-picker/private/swatch';
 import Icon from '../icon';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 /**
  * Radio variant types
@@ -67,6 +70,8 @@ export interface RadioProps {
 	/** Default checked state (uncontrolled) */
 	defaultChecked?: boolean;
 	/** Whether radio can be deselected */
+	canDeselect?: boolean;
+	/** @deprecated Use `canDeselect` instead. */
 	deselectable?: boolean;
 	/** Whether radio is disabled */
 	disabled?: boolean;
@@ -98,8 +103,12 @@ export interface RadioProps {
 	/** Radio variant */
 	variant?: RadioVariant;
 	/** Visual picker: coverable when selected */
+	isCoverable?: boolean;
+	/** @deprecated Use `isCoverable` instead. */
 	coverable?: boolean;
 	/** Visual picker: vertical layout */
+	isVertical?: boolean;
+	/** @deprecated Use `isVertical` instead. */
 	vertical?: boolean;
 	/** Visual picker: render content */
 	onRenderVisualPicker?: () => React.ReactNode;
@@ -131,6 +140,7 @@ const Radio = ({
 	checked,
 	className,
 	defaultChecked,
+	canDeselect: canDeselectProp,
 	deselectable,
 	disabled,
 	id: propId,
@@ -145,7 +155,9 @@ const Radio = ({
 	tabIndex,
 	value,
 	variant = 'base',
-	coverable = false,
+	isCoverable: isCoverableProp,
+	coverable,
+	isVertical: isVerticalProp,
 	vertical,
 	onRenderVisualPicker,
 	onRenderVisualPickerSelected,
@@ -155,6 +167,19 @@ const Radio = ({
 	style,
 	...rest
 }: RadioProps): React.ReactElement => {
+	const canDeselect = canDeselectProp ?? deselectable;
+	const isCoverable = isCoverableProp ?? coverable ?? false;
+	const isVertical = isVerticalProp ?? vertical;
+
+	useEffect(() => {
+		checkProps(
+			RADIO,
+			{ label: deprecatedLabel, coverable, vertical, deselectable },
+			componentDoc
+		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const generatedId = useId();
 	const preventDuplicateRef = useRef(false);
 
@@ -218,7 +243,7 @@ const Radio = ({
 	} else if (variant === 'visual-picker') {
 		radioLabel = (
 			<label htmlFor={id}>
-				{coverable ? (
+				{isCoverable ? (
 					<div className="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
 						<span className="slds-is-selected">
 							{onRenderVisualPickerSelected?.()}
@@ -232,7 +257,7 @@ const Radio = ({
 						{onRenderVisualPicker?.()}
 					</span>
 				)}
-				{!vertical && (
+				{!isVertical && (
 					<span className="slds-visual-picker__body">
 						{labels.heading && (
 							<span className="slds-text-heading_small">{labels.heading}</span>
@@ -240,7 +265,7 @@ const Radio = ({
 						<span className="slds-text-title">{labels.label}</span>
 					</span>
 				)}
-				{!coverable && (
+				{!isCoverable && (
 					<span className="slds-icon_container slds-visual-picker__text-check">
 						<Icon
 							assistiveText={assistiveText}
@@ -275,7 +300,7 @@ const Radio = ({
 					'slds-button slds-radio_button': variant === 'button-group',
 					'slds-visual-picker': variant === 'visual-picker',
 					'slds-visual-picker_vertical':
-						variant === 'visual-picker' && vertical,
+						variant === 'visual-picker' && isVertical,
 				},
 				className as string
 			)}
@@ -289,16 +314,16 @@ const Radio = ({
 				onFocus={onFocus}
 				onChange={(event) => handleChange(event)}
 				onClick={(event) => {
-					if (checked && deselectable) {
+					if (checked && canDeselect) {
 						handleChange(event as unknown as ChangeEvent<HTMLInputElement>);
 					}
 				}}
 				onKeyPress={(event) => {
 					const { charCode } = event;
-					if (charCode === KEYS.SPACE && checked && deselectable) {
+					if (charCode === KEYS.SPACE && checked && canDeselect) {
 						handleChange(event, true);
 					} else if (
-						(charCode === KEYS.ENTER && checked && deselectable) ||
+						(charCode === KEYS.ENTER && checked && canDeselect) ||
 						!checked
 					) {
 						handleChange(event);

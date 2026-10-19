@@ -17,10 +17,12 @@ import React, {
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
+import checkProps from './check-props';
 import checkAppElementIsSet from '../../utilities/warning/check-app-element-set';
 import Button from '../button';
 import { MODAL } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
+import componentDoc from './component.json';
 
 const documentDefined = typeof document !== 'undefined';
 const windowDefined = typeof window !== 'undefined';
@@ -66,7 +68,11 @@ export type ModalRequestCloseEvent = MouseEvent | KeyboardEvent;
 export interface ModalProps {
 	/** Vertical alignment of Modal. */
 	align?: ModalAlign;
-	/** Boolean indicating if the appElement should be hidden. */
+	/**
+	 * Boolean indicating if the appElement should be hidden. Defaults to `true`.
+	 * This is a pass-through to `react-modal`'s `ariaHideApp` and keeps that library's name and
+	 * default, so it is an intentional exception to the rule that boolean props default to `false`.
+	 */
 	ariaHideApp?: boolean;
 	/** Assistive text for accessibility. */
 	assistiveText?: ModalAssistiveText;
@@ -81,15 +87,19 @@ export interface ModalProps {
 	/** Custom styles for the modal's body. */
 	contentStyle?: CSSProperties;
 	/** If true, modal footer buttons render left and right. */
+	isDirectional?: boolean;
+	/** @deprecated Use `isDirectional` instead. */
 	directional?: boolean;
 	/** If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key. */
+	isNonDismissible?: boolean;
+	/** @deprecated Use `isNonDismissible` instead. */
 	disableClose?: boolean;
-	/** If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to !disableClose. */
+	/** If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to !isNonDismissible. */
 	dismissOnClickOutside?: boolean;
 	/**
 	 * Callback to fire when the Modal requests to be dismissed. Receives the triggering
 	 * click or keydown event and `data.trigger`: `'close-button'`, `'escape'`, or `'click-outside'`.
-	 * Not called when `disableClose` (or `dismissOnClickOutside: false` for outside clicks) prevents it.
+	 * Not called when `isNonDismissible` (or `dismissOnClickOutside: false` for outside clicks) prevents it.
 	 */
 	onRequestClose?: (
 		event: ModalRequestCloseEvent,
@@ -152,7 +162,9 @@ const Modal: React.FC<ModalProps> = ({
 	containerClassName,
 	contentClassName,
 	contentStyle: contentStyleProp,
+	isDirectional: isDirectionalProp,
 	directional,
+	isNonDismissible: isNonDismissibleProp,
 	disableClose,
 	dismissOnClickOutside,
 	onRequestClose,
@@ -172,6 +184,9 @@ const Modal: React.FC<ModalProps> = ({
 	toast,
 	closeButtonAssistiveText,
 }) => {
+	const isDirectional = isDirectionalProp ?? directional ?? false;
+	const isNonDismissible = isNonDismissibleProp ?? disableClose ?? false;
+
 	// State
 	const [returnFocusTo, setReturnFocusTo] = useState<Element | null>(null);
 
@@ -193,8 +208,9 @@ const Modal: React.FC<ModalProps> = ({
 	// Is this a prompt modal?
 	const isPrompt = prompt !== undefined;
 
-	// Warn in development if the app element isn't set
+	// Check props and warn if the app element isn't set, in development
 	useEffect(() => {
+		checkProps(MODAL, { directional, disableClose }, componentDoc);
 		if (ariaHideApp) {
 			checkAppElementIsSet();
 		}
@@ -242,14 +258,14 @@ const Modal: React.FC<ModalProps> = ({
 		[returnFocusTo, onRequestClose]
 	);
 
-	// Close modal handler (respects disableClose)
+	// Close modal handler (respects isNonDismissible)
 	const closeModal = useCallback(
 		(event: ModalRequestCloseEvent, data: ModalRequestCloseData) => {
-			if (!disableClose) {
+			if (!isNonDismissible) {
 				dismissModal(event, data);
 			}
 		},
-		[disableClose, dismissModal]
+		[isNonDismissible, dismissModal]
 	);
 
 	// Close button click handler
@@ -273,17 +289,17 @@ const Modal: React.FC<ModalProps> = ({
 	// Dismiss on click outside handler
 	const dismissModalOnClickOutside = useCallback(
 		(event: MouseEvent<HTMLElement>) => {
-			// if dismissOnClickOutside is not set, default its value to !disableClose
+			// if dismissOnClickOutside is not set, default its value to !isNonDismissible
 			const shouldDismiss =
 				dismissOnClickOutside !== undefined
 					? dismissOnClickOutside
-					: !disableClose;
+					: !isNonDismissible;
 
 			if (shouldDismiss) {
 				dismissModal(event, { trigger: 'click-outside' });
 			}
 		},
-		[dismissOnClickOutside, disableClose, dismissModal]
+		[dismissOnClickOutside, isNonDismissible, dismissModal]
 	);
 
 	// Prevent click propagation inside modal
@@ -398,7 +414,7 @@ const Modal: React.FC<ModalProps> = ({
 				)}
 				onClick={handleModalClick}
 			>
-				{disableClose ? null : closeButton}
+				{isNonDismissible ? null : closeButton}
 				{headerContent}
 			</header>
 		);
@@ -412,7 +428,7 @@ const Modal: React.FC<ModalProps> = ({
 
 		const footerClasses = {
 			'slds-modal__footer': true,
-			'slds-modal__footer_directional': directional,
+			'slds-modal__footer_directional': isDirectional,
 			'slds-theme_default': isPrompt,
 		};
 
@@ -496,7 +512,7 @@ const Modal: React.FC<ModalProps> = ({
 			ariaHideApp={ariaHideApp}
 			isOpen={isOpen}
 			onRequestClose={handleReactModalRequestClose}
-			role={disableClose ? 'alertdialog' : 'dialog'}
+			role={isNonDismissible ? 'alertdialog' : 'dialog'}
 			style={customStyles}
 			parentSelector={parentSelector}
 			portalClassName={classNames('ReactModalPortal', portalClassName)}

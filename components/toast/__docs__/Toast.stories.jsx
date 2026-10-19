@@ -18,12 +18,16 @@ export default {
 			control: { type: 'select' },
 			options: ['info', 'success', 'warning', 'error'],
 		},
+		isDismissible: {
+			control: 'boolean',
+		},
 	},
 };
 
 // Default info toast
 export const Info = {
 	args: {
+		isDismissible: true,
 		variant: 'info',
 		labels: {
 			heading: 'Info Toast',
@@ -35,6 +39,7 @@ export const Info = {
 // Success toast
 export const Success = {
 	args: {
+		isDismissible: true,
 		variant: 'success',
 		labels: {
 			heading: 'Success Toast',
@@ -46,6 +51,7 @@ export const Success = {
 // Warning toast
 export const Warning = {
 	args: {
+		isDismissible: true,
 		variant: 'warning',
 		labels: {
 			heading: 'Warning Toast',
@@ -57,6 +63,7 @@ export const Warning = {
 // Error toast
 export const Error = {
 	args: {
+		isDismissible: true,
 		variant: 'error',
 		labels: {
 			heading: 'Error Toast',
@@ -68,6 +75,7 @@ export const Error = {
 // Toast with heading link
 export const WithHeadingLink = {
 	args: {
+		isDismissible: true,
 		variant: 'info',
 		labels: {
 			heading: 'Click the link:',
@@ -80,6 +88,7 @@ export const WithHeadingLink = {
 // Toast with details
 export const ErrorWithDetails = {
 	args: {
+		isDismissible: true,
 		variant: 'error',
 		labels: {
 			heading: 'Cannot Save Record',
@@ -91,6 +100,7 @@ export const ErrorWithDetails = {
 // Toast with close callback
 export const WithCloseCallback = {
 	args: {
+		isDismissible: true,
 		variant: 'success',
 		labels: {
 			heading: 'Closable Toast',
@@ -104,6 +114,7 @@ export const WithCloseCallback = {
 // Toast with auto-dismiss
 export const WithDuration = {
 	args: {
+		isDismissible: true,
 		variant: 'info',
 		labels: {
 			heading: 'Auto-dismiss Toast',
@@ -120,18 +131,22 @@ export const AllVariants = {
 	render: () => (
 		<div className="slds-grid slds-grid_vertical slds-gutters">
 			<Toast
+				isDismissible
 				variant="info"
 				labels={{ heading: 'Info', details: 'Information message' }}
 			/>
 			<Toast
+				isDismissible
 				variant="success"
 				labels={{ heading: 'Success', details: 'Success message' }}
 			/>
 			<Toast
+				isDismissible
 				variant="warning"
 				labels={{ heading: 'Warning', details: 'Warning message' }}
 			/>
 			<Toast
+				isDismissible
 				variant="error"
 				labels={{ heading: 'Error', details: 'Error message' }}
 			/>

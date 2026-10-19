@@ -338,7 +338,7 @@ class Example extends React.Component {
 							/>
 						}
 						info="10 items • sorted by name"
-						joined
+						isJoined
 						label="Leads"
 						onRenderControls={controls}
 						title={
@@ -360,7 +360,7 @@ class Example extends React.Component {
 											iconName="down"
 											iconPosition="right"
 											label="Dropdown"
-											responsive
+											isResponsive
 											variant="base"
 										/>
 									</DropdownTrigger>
@@ -371,12 +371,12 @@ class Example extends React.Component {
 						variant="object-home"
 					/>
 					<SimpleDataTable
-						fixedHeader
-						fixedLayout
-						keyboardNavigation
+						hasFixedHeader
+						hasFixedLayout
+						hasKeyboardNavigation
 						items={this.state.items}
 						id="SimpleDataTableExample-JoinedWithPageHeader"
-						joined
+						isJoined
 						onRowChange={this.handleChanged}
 						onSort={this.handleSort}
 						selection={this.state.selection}
@@ -385,9 +385,9 @@ class Example extends React.Component {
 						<SimpleDataTableColumn
 							isSorted={this.state.sortColumn === 'opportunityName'}
 							label="Name"
-							primaryColumn
+							isPrimaryColumn
 							property="opportunityName"
-							sortable
+							isSortable
 							sortDirection={this.state.sortColumnDirection.opportunityName}
 						>
 							<CustomSimpleDataTableCell />
@@ -402,7 +402,7 @@ class Example extends React.Component {
 							isSorted={this.state.sortColumn === 'confidence'}
 							label="Confidence"
 							property="confidence"
-							sortable
+							isSortable
 							sortDirection={this.state.sortColumnDirection.confidence}
 						/>
 						<SimpleDataTableColumn label="Amount" property="amount" />

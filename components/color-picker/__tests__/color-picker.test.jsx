@@ -890,4 +890,25 @@ describe('SLDSColorPicker', () => {
 			expect(span.textContent).toContain(label);
 		});
 	});
+
+	describe('Deprecated prop aliases', () => {
+		it('hides the summary input with `isInputHidden`', () => {
+			const { container } = render(<ColorPicker isInputHidden />);
+			expect(container.querySelector(selectors.summaryInput)).toBeNull();
+			expect(container.querySelector(selectors.toggle)).toBeInTheDocument();
+		});
+
+		it('still supports `hideInput` and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = render(<ColorPicker hideInput />);
+
+			expect(container.querySelector(selectors.summaryInput)).toBeNull();
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`hideInput` will be removed')
+			);
+			consoleError.mockRestore();
+		});
+	});
 });

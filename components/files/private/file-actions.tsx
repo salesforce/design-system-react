@@ -57,7 +57,7 @@ const FileActions = (props: FileActionsProps) => {
 							category="utility"
 							name="download"
 							size="xx-small"
-							inverse={props.hasNoVisibleTitle}
+							isInverse={props.hasNoVisibleTitle}
 						/>
 					</Button>
 				) : null}

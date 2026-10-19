@@ -98,7 +98,7 @@ class Example extends React.Component {
 							assistiveText={{
 								remove: 'Press delete or backspace to remove',
 							}}
-							bare
+							isBare
 							variant="option"
 							tabIndex="0"
 							aria-selected="true"

@@ -4,6 +4,7 @@
 import {
 	useRef,
 	useCallback,
+	useEffect,
 	useImperativeHandle,
 	forwardRef,
 	type ReactNode,
@@ -16,6 +17,7 @@ import { PILL } from '../../utilities/constants';
 import UtilityIcon from '../utilities/utility-icon';
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
+import checkProps from './check-props';
 
 /**
  * Pill variant types
@@ -51,6 +53,8 @@ export interface PillProps {
 	/** Avatar element to display */
 	avatar?: ReactNode;
 	/** Use bare styling */
+	isBare?: boolean;
+	/** @deprecated Use `isBare` instead. */
 	bare?: boolean;
 	/** Custom content (overrides label) */
 	children?: ReactNode;
@@ -98,181 +102,182 @@ const defaultAssistiveText: PillAssistiveText = {};
 /**
  * A pill displays a label that can contain links and can be removed from view.
  */
-const Pill = forwardRef<PillRef, PillProps>(
-	(
-		{
-			assistiveText: propAssistiveText,
-			avatar,
-			bare,
-			children,
-			className,
-			hasError,
-			href,
-			icon,
-			labels: propLabels,
-			onBlur,
-			onClick,
-			onFocus,
-			onKeyDown,
-			onRemove,
-			tabIndex,
-			'aria-selected': ariaSelected,
-			variant = 'link',
+const Pill = forwardRef<PillRef, PillProps>((props, ref) => {
+	const {
+		assistiveText: propAssistiveText,
+		avatar,
+		bare,
+		children,
+		className,
+		hasError,
+		href,
+		icon,
+		isBare: isBareProp,
+		labels: propLabels,
+		onBlur,
+		onClick,
+		onFocus,
+		onKeyDown,
+		onRemove,
+		tabIndex,
+		'aria-selected': ariaSelected,
+		variant = 'link',
+	} = props;
+	const isBare = isBareProp ?? bare;
+
+	useEffect(() => {
+		checkProps(PILL, props);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	const rootRef = useRef<HTMLSpanElement | null>(null);
+	const labels = { ...defaultLabels, ...propLabels };
+	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
+
+	// Expose focus/blur methods via ref
+	useImperativeHandle(ref, () => ({
+		blur: () => rootRef.current?.blur(),
+		focus: () => rootRef.current?.focus(),
+	}));
+
+	const getHref = useCallback(() => {
+		return typeof href === 'string' ? href : '#';
+	}, [href]);
+
+	const handleKeyDown = useCallback(
+		(event: KeyboardEvent<HTMLSpanElement>) => {
+			onKeyDown?.(event);
+			if (event.defaultPrevented) return;
+
+			switch (event.keyCode) {
+				case KEYS.ENTER:
+					if (onClick) {
+						EventUtil.trap(event);
+						onClick();
+					}
+					break;
+				case KEYS.BACKSPACE:
+				case KEYS.DELETE:
+					if (onRemove) {
+						EventUtil.trap(event);
+						onRemove();
+					}
+					break;
+				default:
+					break;
+			}
 		},
-		ref
-	) => {
-		const rootRef = useRef<HTMLSpanElement | null>(null);
-		const labels = { ...defaultLabels, ...propLabels };
-		const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
+		[onClick, onKeyDown, onRemove]
+	);
 
-		// Expose focus/blur methods via ref
-		useImperativeHandle(ref, () => ({
-			blur: () => rootRef.current?.blur(),
-			focus: () => rootRef.current?.focus(),
-		}));
-
-		const getHref = useCallback(() => {
-			return typeof href === 'string' ? href : '#';
-		}, [href]);
-
-		const handleKeyDown = useCallback(
-			(event: KeyboardEvent<HTMLSpanElement>) => {
-				onKeyDown?.(event);
-				if (event.defaultPrevented) return;
-
-				switch (event.keyCode) {
-					case KEYS.ENTER:
-						if (onClick) {
-							EventUtil.trap(event);
-							onClick();
-						}
-						break;
-					case KEYS.BACKSPACE:
-					case KEYS.DELETE:
-						if (onRemove) {
-							EventUtil.trap(event);
-							onRemove();
-						}
-						break;
-					default:
-						break;
-				}
-			},
-			[onClick, onKeyDown, onRemove]
-		);
-
-		const handleLinkClick = useCallback(
-			(event: MouseEvent<HTMLAnchorElement>) => {
-				if (getHref() === '#') {
-					event.preventDefault();
-				}
-				onClick?.(event);
-			},
-			[getHref, onClick]
-		);
-
-		// Render icon or avatar
-		const renderIcon = () => {
-			const iconElement = icon || avatar;
-			if (iconElement) {
-				return <span className="slds-pill__icon_container">{iconElement}</span>;
+	const handleLinkClick = useCallback(
+		(event: MouseEvent<HTMLAnchorElement>) => {
+			if (getHref() === '#') {
+				event.preventDefault();
 			}
-			return null;
-		};
+			onClick?.(event);
+		},
+		[getHref, onClick]
+	);
 
-		// Render label or children
-		const renderLabel = () => {
-			if (labels.label) {
-				if (variant === 'link') {
-					return (
-						<a
-							href={getHref()}
-							className="slds-pill__action"
-							title={labels.title || labels.label}
-							onClick={handleLinkClick}
-						>
-							<span className="slds-pill__label">{labels.label}</span>
-						</a>
-					);
-				}
-				return (
-					<span
-						className="slds-pill__label"
-						title={labels.title || labels.label}
-					>
-						{labels.label}
-					</span>
-				);
-			}
-			return children;
-		};
-
-		// Render remove icon
-		const renderRemoveIcon = () => {
-			if (onRemove) {
-				return (
-					<span
-						className="slds-icon_container slds-pill__remove"
-						title={labels.removeTitle}
-						role="button"
-						onClick={onRemove}
-					>
-						<UtilityIcon
-							style={{ cursor: 'pointer' }}
-							category="utility"
-							className="slds-icon slds-icon_x-small slds-icon-text-default"
-							name="close"
-						/>
-						<span className="slds-assistive-text">
-							{assistiveText.remove || labels.removeTitle}
-						</span>
-					</span>
-				);
-			}
-			return null;
-		};
-
-		// Determine role
-		let role: string | undefined;
-		if (variant === 'link') {
-			role = 'button';
-		} else if (variant === 'option') {
-			role = 'option';
+	// Render icon or avatar
+	const renderIcon = () => {
+		const iconElement = icon || avatar;
+		if (iconElement) {
+			return <span className="slds-pill__icon_container">{iconElement}</span>;
 		}
+		return null;
+	};
 
-		return (
-			<span
-				ref={rootRef}
-				role={role}
-				aria-selected={ariaSelected}
-				tabIndex={
-					tabIndex === undefined
-						? undefined
-						: typeof tabIndex === 'string'
-							? Number(tabIndex)
-							: tabIndex
-				}
-				className={classNames(
-					'slds-pill',
-					{
-						'slds-pill_link': variant === 'link',
-						'slds-has-error': hasError,
-						'slds-pill_bare': bare,
-					},
-					className as string
-				)}
-				onClick={!labels.label || variant !== 'link' ? onClick : undefined}
-				onKeyDown={onRemove ? handleKeyDown : undefined}
-				onBlur={onBlur}
-				onFocus={onFocus}
-			>
-				{renderIcon()}
-				{renderLabel()}
-				{renderRemoveIcon()}
-			</span>
-		);
+	// Render label or children
+	const renderLabel = () => {
+		if (labels.label) {
+			if (variant === 'link') {
+				return (
+					<a
+						href={getHref()}
+						className="slds-pill__action"
+						title={labels.title || labels.label}
+						onClick={handleLinkClick}
+					>
+						<span className="slds-pill__label">{labels.label}</span>
+					</a>
+				);
+			}
+			return (
+				<span className="slds-pill__label" title={labels.title || labels.label}>
+					{labels.label}
+				</span>
+			);
+		}
+		return children;
+	};
+
+	// Render remove icon
+	const renderRemoveIcon = () => {
+		if (onRemove) {
+			return (
+				<span
+					className="slds-icon_container slds-pill__remove"
+					title={labels.removeTitle}
+					role="button"
+					onClick={onRemove}
+				>
+					<UtilityIcon
+						style={{ cursor: 'pointer' }}
+						category="utility"
+						className="slds-icon slds-icon_x-small slds-icon-text-default"
+						name="close"
+					/>
+					<span className="slds-assistive-text">
+						{assistiveText.remove || labels.removeTitle}
+					</span>
+				</span>
+			);
+		}
+		return null;
+	};
+
+	// Determine role
+	let role: string | undefined;
+	if (variant === 'link') {
+		role = 'button';
+	} else if (variant === 'option') {
+		role = 'option';
 	}
-);
+
+	return (
+		<span
+			ref={rootRef}
+			role={role}
+			aria-selected={ariaSelected}
+			tabIndex={
+				tabIndex === undefined
+					? undefined
+					: typeof tabIndex === 'string'
+						? Number(tabIndex)
+						: tabIndex
+			}
+			className={classNames(
+				'slds-pill',
+				{
+					'slds-pill_link': variant === 'link',
+					'slds-has-error': hasError,
+					'slds-pill_bare': isBare,
+				},
+				className as string
+			)}
+			onClick={!labels.label || variant !== 'link' ? onClick : undefined}
+			onKeyDown={onRemove ? handleKeyDown : undefined}
+			onBlur={onBlur}
+			onFocus={onFocus}
+		>
+			{renderIcon()}
+			{renderLabel()}
+			{renderRemoveIcon()}
+		</span>
+	);
+});
 
 Pill.displayName = PILL;
 

@@ -4,12 +4,14 @@
 import React, {
 	useId,
 	useCallback,
+	useEffect,
 	type ChangeEvent,
 	type FormEvent,
 } from 'react';
 import classNames from 'classnames';
 import { SLIDER } from '../../utilities/constants';
 import getAriaProps from '../../utilities/get-aria-props';
+import checkProps from './check-props';
 
 /**
  * Slider size options
@@ -69,6 +71,8 @@ export interface SliderProps {
 	/** Controlled value */
 	value?: number;
 	/** Display vertically */
+	isVertical?: boolean;
+	/** @deprecated Use `isVertical` instead. */
 	vertical?: boolean;
 }
 
@@ -97,9 +101,17 @@ const Slider = ({
 	size,
 	step = 1,
 	value,
+	isVertical: isVerticalProp,
 	vertical,
 	...rest
 }: SliderProps): React.ReactElement => {
+	const isVertical = isVerticalProp ?? vertical;
+
+	useEffect(() => {
+		checkProps(SLIDER, { vertical });
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const generatedId = useId();
 	const generatedErrorId = useId();
 
@@ -163,7 +175,7 @@ const Slider = ({
 			<div className="slds-form-element__control">
 				<div
 					className={classNames('slds-slider', {
-						'slds-slider_vertical': vertical,
+						'slds-slider_vertical': isVertical,
 						'slds-size_x-small': size === 'x-small',
 						'slds-size_small': size === 'small',
 						'slds-size_medium': size === 'medium',

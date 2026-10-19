@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import MediaObject from '../';
 import Icon from '../../icon';
@@ -51,7 +51,7 @@ describe('MediaObject', () => {
 				<IconSettings iconPath="/assets/icons">
 					<MediaObject
 						figure={<Icon category="standard" name="user" size="medium" />}
-						verticalCenter
+						isVerticallyCentered
 						canTruncate
 					/>
 				</IconSettings>
@@ -68,7 +68,7 @@ describe('MediaObject', () => {
 				<IconSettings iconPath="/assets/icons">
 					<MediaObject
 						figure={<Icon category="standard" name="user" size="medium" />}
-						verticalCenter
+						isVerticallyCentered
 						canTruncate
 					/>
 				</IconSettings>
@@ -78,6 +78,23 @@ describe('MediaObject', () => {
 				`.${COMPONENT_CSS_CLASSES.base}`
 			);
 			expect(mediaContainer).toHaveClass('slds-has-flexi-truncate');
+		});
+	});
+
+	describe('Deprecated props', () => {
+		it('still applies `verticalCenter` and warns to use `isVerticallyCentered`', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = render(<MediaObject body="Body" verticalCenter />);
+
+			expect(
+				container.querySelector(`.${COMPONENT_CSS_CLASSES.base}`)
+			).toHaveClass('slds-media_center');
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('Use `isVerticallyCentered` instead.')
+			);
+			consoleError.mockRestore();
 		});
 	});
 });

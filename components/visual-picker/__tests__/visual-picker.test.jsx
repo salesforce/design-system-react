@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { render, fireEvent } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import IconSettings from '../../icon-settings';
 import Icon from '../../icon';
@@ -22,7 +22,7 @@ class VisualPickerExample extends React.Component {
 					label={this.props.label}
 					id={this.props.id}
 					size="medium"
-					coverable
+					isCoverable
 				>
 					{this.props.type === 'radio' ? (
 						<React.Fragment>
@@ -262,5 +262,46 @@ describe('SLDS Visual Picker', () => {
 		expect(cb1).not.toBeChecked();
 		expect(cb2).toBeChecked();
 		expect(cb3).toBeChecked();
+	});
+
+	it('still supports deprecated `coverable` and `vertical` and warns', () => {
+		const renderPicker = (pickerProps) =>
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<VisualPicker id="alias-picker" label="Alias" {...pickerProps}>
+						<Checkbox
+							id="alias-picker-checkbox"
+							labels={{ label: 'Option' }}
+							onRenderVisualPickerSelected={() => <span>selected</span>}
+							onRenderVisualPickerNotSelected={() => <span>not selected</span>}
+						/>
+					</VisualPicker>
+				</IconSettings>
+			);
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+
+		const { container: expected } = renderPicker({
+			isCoverable: true,
+			isVertical: true,
+		});
+		expect(consoleError).not.toHaveBeenCalled();
+
+		const { container: actual } = renderPicker({
+			coverable: true,
+			vertical: true,
+		});
+		expect(actual.innerHTML).toBe(expected.innerHTML);
+		expect(
+			actual.querySelector('.slds-visual-picker_vertical .slds-is-selected')
+		).toBeInTheDocument();
+		expect(consoleError).toHaveBeenCalledWith(
+			expect.stringContaining('`coverable` will be removed')
+		);
+		expect(consoleError).toHaveBeenCalledWith(
+			expect.stringContaining('`vertical` will be removed')
+		);
+		consoleError.mockRestore();
 	});
 });
