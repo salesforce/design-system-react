@@ -30,7 +30,8 @@
     "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build",
     "prepack": "npm run build",
-    "prepare": "husky"
+    "prepare": "husky",
+    "release-pr": "node scripts/release.mjs"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
