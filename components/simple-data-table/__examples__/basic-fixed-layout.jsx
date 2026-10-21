@@ -100,7 +100,7 @@ class Example extends React.Component {
 					<SimpleDataTable
 						items={this.state.items}
 						id="SimpleDataTableExample-1-default"
-						fixedLayout
+						hasFixedLayout
 					>
 						{columns}
 					</SimpleDataTable>

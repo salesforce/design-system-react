@@ -33,7 +33,7 @@ export const FigureVerticalCenter = {
 		<DemoMediaObject
 			body="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat minus molestias reprehenderit consequuntur sapiente. Modi veritatis totam accusantium numquam assumenda."
 			figure={<Icon category="standard" name="user" size="medium" />}
-			verticalCenter
+			isVerticallyCentered
 		/>
 	),
 };

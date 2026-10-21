@@ -48,7 +48,7 @@ export const WithItems = {
 					<SimpleDataTableColumn
 						label="Opportunity Name"
 						property="name"
-						truncate
+						isTruncated
 					>
 						<SimpleDataTableHighlightCell />
 					</SimpleDataTableColumn>
@@ -122,7 +122,7 @@ export const InteractiveCard = {
 						<SimpleDataTableColumn
 							label="Opportunity Name"
 							property="name"
-							truncate
+							isTruncated
 						>
 							<SimpleDataTableHighlightCell search={filter} />
 						</SimpleDataTableColumn>
@@ -171,7 +171,7 @@ export const CustomHeader = {
 				<SimpleDataTableColumn
 					label="Opportunity Name"
 					property="name"
-					truncate
+					isTruncated
 				>
 					<SimpleDataTableHighlightCell />
 				</SimpleDataTableColumn>
@@ -199,7 +199,7 @@ export const CustomHeading = {
 				<SimpleDataTableColumn
 					label="Opportunity Name"
 					property="name"
-					truncate
+					isTruncated
 				>
 					<SimpleDataTableHighlightCell />
 				</SimpleDataTableColumn>
@@ -248,7 +248,7 @@ export const WithoutHeader = {
 				<SimpleDataTableColumn
 					label="Opportunity Name"
 					property="name"
-					truncate
+					isTruncated
 				>
 					<SimpleDataTableHighlightCell />
 				</SimpleDataTableColumn>

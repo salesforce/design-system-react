@@ -68,7 +68,7 @@ export const UserInitialsInverse = {
 		label: 'Jane Doe',
 		variant: 'user',
 		size: 'medium',
-		inverse: true,
+		isInverse: true,
 	},
 };
 

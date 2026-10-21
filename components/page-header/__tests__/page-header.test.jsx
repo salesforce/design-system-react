@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import Icon from '../../icon';
 import IconSettings from '../../icon-settings';
@@ -18,7 +18,7 @@ const recordHomeActions = () => (
 				key="PageHeaderFollowButton"
 				disabled={false}
 				iconSize="medium"
-				responsive={false}
+				isResponsive={false}
 				stateOne={{ iconCategory: 'utility', iconName: 'add', label: 'Follow' }}
 				stateTwo={{
 					iconCategory: 'utility',
@@ -64,7 +64,7 @@ const recordHomeDetails = [
 		content:
 			'Description that demonstrates truncation with content. Description that demonstrates truncation with content.',
 		flavor: '1-of-4',
-		truncate: true,
+		isTruncated: true,
 	},
 	{ label: 'Last Modified', content: 'August 31, 2016 2:01PM PST' },
 	{ label: 'Status', content: 'Status of thing you wanna know' },
@@ -90,7 +90,9 @@ describe('PageHeader', () => {
 				</IconSettings>
 			);
 
-			const svg = container.querySelector('.slds-media__figure .slds-icon-standard-user');
+			const svg = container.querySelector(
+				'.slds-media__figure .slds-icon-standard-user'
+			);
 			expect(svg).toBeInTheDocument();
 		});
 
@@ -137,30 +139,98 @@ describe('PageHeader', () => {
 				</IconSettings>
 			);
 
-			const detailBlocks = container.querySelectorAll('.slds-page-header__detail-block');
+			const detailBlocks = container.querySelectorAll(
+				'.slds-page-header__detail-block'
+			);
 			expect(detailBlocks.length).toBeGreaterThan(0);
 
 			const field1 = detailBlocks[0];
-			expect(field1.querySelector('.slds-text-title').textContent).toBe('Description');
-			expect(field1.querySelector('.slds-truncate:last-child').textContent).toBe(
+			expect(field1.querySelector('.slds-text-title').textContent).toBe(
+				'Description'
+			);
+			expect(
+				field1.querySelector('.slds-truncate:last-child').textContent
+			).toBe(
 				'Description that demonstrates truncation with content. Description that demonstrates truncation with content.'
 			);
 		});
 	});
 
 	describe('Truncation works in all the ways Donielle can think of', () => {
-		it('field content truncates if this.props.truncate is true', () => {
+		it('field content truncates if the detail isTruncated is true', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
 					<PageHeader {...defaultPropsRecordHome} />
 				</IconSettings>
 			);
 
-			const detailBlocks = container.querySelectorAll('.slds-page-header__detail-block');
+			const detailBlocks = container.querySelectorAll(
+				'.slds-page-header__detail-block'
+			);
 			const field1 = detailBlocks[0];
-			const truncatedElement = field1.querySelector('.slds-truncate:last-child');
+			const truncatedElement = field1.querySelector(
+				'.slds-truncate:last-child'
+			);
 
 			expect(truncatedElement).toHaveClass('slds-truncate');
+		});
+	});
+	describe('Deprecated boolean prop aliases', () => {
+		it('honors joined and details[].truncate and warns about each one', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			consoleError.mockClear();
+			const deprecationMessages = () =>
+				consoleError.mock.calls
+					.map((args) => args.join(' '))
+					.filter((message) => message.includes('will be removed'));
+
+			const newRender = render(
+				<IconSettings iconPath="/assets/icons">
+					<PageHeader
+						{...defaultPropsRecordHome}
+						onRenderActions={undefined}
+						isJoined
+						details={[
+							{ label: 'Field', content: 'Not truncated', isTruncated: false },
+						]}
+					/>
+				</IconSettings>
+			);
+			const newMarkup = newRender.container.innerHTML;
+			expect(deprecationMessages()).toEqual([]);
+			newRender.unmount();
+
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<PageHeader
+						{...defaultPropsRecordHome}
+						onRenderActions={undefined}
+						joined
+						details={[
+							{ label: 'Field', content: 'Not truncated', truncate: false },
+						]}
+					/>
+				</IconSettings>
+			);
+			expect(container.innerHTML).toBe(newMarkup);
+			expect(container.querySelector('.slds-page-header')).toHaveClass(
+				'slds-page-header_joined'
+			);
+			expect(
+				container.querySelector(
+					'.slds-page-header__detail-block .slds-truncate'
+				)
+			).toBeNull();
+
+			const messages = deprecationMessages().join('\n');
+			expect(messages).toContain('`joined` will be removed');
+			expect(messages).toContain('Use `isJoined` instead.');
+			expect(messages).toContain('`details[].truncate` will be removed');
+			expect(messages).toContain('Use `details[].isTruncated` instead.');
+
+			consoleError.mockRestore();
 		});
 	});
 });

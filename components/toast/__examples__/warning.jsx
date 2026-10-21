@@ -9,6 +9,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<ToastContainer>
 					<Toast
+						isDismissible
 						labels={{
 							heading:
 								'Can’t share file “report-q3.pdf” with the selected users.',

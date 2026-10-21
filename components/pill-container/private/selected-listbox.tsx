@@ -27,7 +27,11 @@ export interface SelectedListBoxOption {
 	title?: string;
 	icon?: ReactNode | { category?: string; name?: string };
 	avatar?: ReactNode | { imgSrc?: string; title?: string; variant?: string };
+	isBare?: boolean;
+	/** @deprecated Use `isBare` instead. */
 	bare?: boolean;
+	hasError?: boolean;
+	/** @deprecated Use `hasError` instead. */
 	error?: boolean;
 	[key: string]: unknown;
 }
@@ -101,10 +105,7 @@ const getAvatar = (option: SelectedListBoxOption): ReactNode => {
 	let avatar: ReactNode = null;
 
 	if (avatarObject) {
-		if (
-			isReactComponent(avatarObject) ||
-			avatarObject instanceof HTMLElement
-		) {
+		if (isReactComponent(avatarObject) || avatarObject instanceof HTMLElement) {
 			avatar = avatarObject as ReactNode;
 		} else if ((avatarObject as { imgSrc?: string }).imgSrc) {
 			const avatarData = avatarObject as {
@@ -116,9 +117,7 @@ const getAvatar = (option: SelectedListBoxOption): ReactNode => {
 				<Avatar
 					imgSrc={avatarData.imgSrc}
 					title={avatarData.title || (option.label as string)}
-					variant={
-						(avatarData.variant as 'user' | 'entity') || 'user'
-					}
+					variant={(avatarData.variant as 'user' | 'entity') || 'user'}
 				/>
 			);
 		}
@@ -236,7 +235,7 @@ const SelectedListBox = ({
 									remove: assistiveText?.removePill,
 								}}
 								avatar={avatar as ReactElement}
-								bare={option.bare || isBare}
+								isBare={(option.isBare ?? option.bare) || isBare}
 								events={{
 									onBlur: events.onBlurPill,
 									onClick:
@@ -252,7 +251,7 @@ const SelectedListBox = ({
 															option: SelectedListBoxOption;
 														}
 													);
-											  }
+												}
 											: undefined,
 									onFocus: (event: React.FocusEvent, data?: unknown) => {
 										events.onPillFocus?.(event, {
@@ -264,12 +263,10 @@ const SelectedListBox = ({
 										});
 									},
 									onRequestFocusOnNextPill: events.onRequestFocusOnNextPill as
-										| ((event: unknown, data: unknown) => void)
-										| undefined,
+										((event: unknown, data: unknown) => void) | undefined,
 									onRequestFocusOnPreviousPill:
 										events.onRequestFocusOnPreviousPill as
-											| ((event: unknown, data: unknown) => void)
-											| undefined,
+											((event: unknown, data: unknown) => void) | undefined,
 									onRequestRemove: (event: unknown, data: unknown) => {
 										events.onRequestRemove?.(
 											event as unknown as MouseEvent,
@@ -287,7 +284,7 @@ const SelectedListBox = ({
 										| undefined,
 								}}
 								eventData={{ option }}
-								hasError={option.error}
+								hasError={option.hasError ?? option.error}
 								icon={icon as ReactElement}
 								labels={{
 									label: option.label as string,

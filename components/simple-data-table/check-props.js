@@ -68,11 +68,34 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.bordered,
 			'bordered',
-			`All SLDS SimpleDataTables have row borders by default now. If you do not want row borders, please use \`unborderedRow\`. ${createDocUrl(
-				'unborderedRow'
+			`All SLDS SimpleDataTables have row borders by default now. If you do not want row borders, please use \`hasNoRowBorders\`. ${createDocUrl(
+				'hasNoRowBorders'
 			)}`
 		);
 		/* eslint-enable max-len */
+
+		const renamedBooleans = [
+			['columnBordered', 'hasColumnBorders'],
+			['fixedHeader', 'hasFixedHeader'],
+			['fixedLayout', 'hasFixedLayout'],
+			['joined', 'isJoined'],
+			['keyboardNavigation', 'hasKeyboardNavigation'],
+			['noRowHover', 'hasNoRowHover'],
+			['stacked', 'isStacked'],
+			['stackedHorizontal', 'isStackedHorizontal'],
+			['striped', 'isStriped'],
+			['unborderedRow', 'hasNoRowBorders'],
+			['unbufferedCell', 'hasNoCellBuffer'],
+		];
+		renamedBooleans.forEach(([oldName, newName]) => {
+			deprecatedProperty(
+				COMPONENT,
+				props[oldName],
+				oldName,
+				newName,
+				createDocUrl(newName)
+			);
+		});
 
 		deprecatedProperty(
 			COMPONENT,

@@ -1,9 +1,15 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useId, type ReactNode, type ReactElement } from 'react';
+import React, {
+	useId,
+	useEffect,
+	type ReactNode,
+	type ReactElement,
+} from 'react';
 import classNames from 'classnames';
 import { VISUAL_PICKER } from '../../utilities/constants';
+import checkProps from './check-props';
 
 /**
  * Visual picker size options
@@ -15,11 +21,11 @@ export type VisualPickerSize = 'medium' | 'large';
  */
 export interface VisualPickerChildProps {
 	index?: string;
-	coverable?: boolean;
+	isCoverable?: boolean;
 	variant?: string;
 	name?: string;
 	size?: VisualPickerSize;
-	vertical?: boolean;
+	isVertical?: boolean;
 }
 
 /**
@@ -31,6 +37,8 @@ export interface VisualPickerProps {
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** Whether items are coverable on selection */
+	isCoverable?: boolean;
+	/** @deprecated Use `isCoverable` instead. */
 	coverable?: boolean;
 	/** HTML id */
 	id?: string;
@@ -41,6 +49,8 @@ export interface VisualPickerProps {
 	/** Size of the picker */
 	size?: VisualPickerSize;
 	/** Whether layout is vertical */
+	isVertical?: boolean;
+	/** @deprecated Use `isVertical` instead. */
 	vertical?: boolean;
 }
 
@@ -50,13 +60,23 @@ export interface VisualPickerProps {
 const VisualPicker = ({
 	children,
 	className,
+	isCoverable: isCoverableProp,
 	coverable,
 	id: propId,
 	label,
 	links = false,
 	size = 'medium',
-	vertical = false,
+	isVertical: isVerticalProp,
+	vertical,
 }: VisualPickerProps): React.ReactElement => {
+	const isCoverable = isCoverableProp ?? coverable;
+	const isVertical = isVerticalProp ?? vertical ?? false;
+
+	useEffect(() => {
+		checkProps(VISUAL_PICKER, { coverable, vertical });
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const generatedId = useId();
 	const id = propId || generatedId;
 
@@ -87,11 +107,11 @@ const VisualPicker = ({
 
 		return React.cloneElement(option as ReactElement<VisualPickerChildProps>, {
 			index: `${id}-${index}`,
-			coverable,
+			isCoverable,
 			variant: 'visual-picker',
 			name: `${id}_options`,
 			size,
-			vertical: !!vertical,
+			isVertical: !!isVertical,
 		});
 	};
 
@@ -100,8 +120,13 @@ const VisualPicker = ({
 	);
 
 	return (
-		<fieldset id={id} className={classNames('slds-form-element', className as string)}>
-			<legend className="slds-form-element__legend slds-form-element__label">{label}</legend>
+		<fieldset
+			id={id}
+			className={classNames('slds-form-element', className as string)}
+		>
+			<legend className="slds-form-element__legend slds-form-element__label">
+				{label}
+			</legend>
 			<div className="slds-form-element__control">{options}</div>
 		</fieldset>
 	);
@@ -110,17 +135,3 @@ const VisualPicker = ({
 VisualPicker.displayName = VISUAL_PICKER;
 
 export default VisualPicker;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

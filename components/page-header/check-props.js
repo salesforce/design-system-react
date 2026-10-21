@@ -102,6 +102,22 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
+			props.joined,
+			'joined',
+			'isJoined',
+			createDocUrl('isJoined')
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.details?.find((detail) => detail?.truncate !== undefined)?.truncate,
+			'details[].truncate',
+			'details[].isTruncated',
+			createDocUrl('details')
+		);
+
+		deprecatedProperty(
+			COMPONENT,
 			props.contentRight,
 			'contentRight',
 			'onRenderActions',

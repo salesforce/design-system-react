@@ -78,7 +78,7 @@ class DatepickerYearSelector extends React.Component<YearPicklistProps> {
 					id={`${this.props.id}-year-picklist`}
 					inheritWidthOf="target"
 					menuPosition="relative"
-					multiple={false}
+					isMultiple={false}
 					options={this.getOptions()}
 					labels={{
 						placeholder: 'Year',

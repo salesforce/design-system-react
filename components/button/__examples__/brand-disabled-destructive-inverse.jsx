@@ -34,7 +34,7 @@ class Example extends React.Component {
 						}}
 						className="-m-horizontal--small"
 					>
-						<Button inverse label="Inverse" variant="base" />
+						<Button isInverse label="Inverse" variant="base" />
 					</div>
 				</div>
 			</IconSettings>

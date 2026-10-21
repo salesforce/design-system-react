@@ -160,8 +160,12 @@ DemoComponent.defaultProps = defaultProps;
 const getNodes = (container) => ({
 	combobox: container.querySelector('.slds-combobox'),
 	input: container.querySelector('.slds-combobox input'),
-	menuListbox: container.querySelector('.slds-combobox .slds-listbox.slds-dropdown'),
-	removeSingleItem: container.querySelector('.slds-combobox button.slds-input__icon'),
+	menuListbox: container.querySelector(
+		'.slds-combobox .slds-listbox.slds-dropdown'
+	),
+	removeSingleItem: container.querySelector(
+		'.slds-combobox button.slds-input__icon'
+	),
 	selectedListbox: container.querySelector(
 		`#${defaultProps.id}-selected-listbox .slds-listbox`
 	),
@@ -171,7 +175,7 @@ const getNodes = (container) => ({
 describe('SLDSCombobox', () => {
 	describe('Assistive technology and keyboard interactions', () => {
 		it('has aria-haspopup, aria-expanded is false when closed, aria-expanded is true when open', () => {
-			const { container } = render(<DemoComponent multiple />);
+			const { container } = render(<DemoComponent isMultiple />);
 			let nodes = getNodes(container);
 			expect(nodes.combobox).toHaveAttribute('aria-haspopup', 'listbox');
 			expect(nodes.combobox).toHaveAttribute('role', 'combobox');
@@ -190,7 +194,7 @@ describe('SLDSCombobox', () => {
 		it('base multiple: owning listbox is aria-multiselectable, pills are aria-selected options with roving tabindex', () => {
 			const { container } = render(
 				<DemoComponent
-					multiple
+					isMultiple
 					initialSelection={[
 						accountsWithIcon[0],
 						accountsWithIcon[1],
@@ -223,7 +227,7 @@ describe('SLDSCombobox', () => {
 			const { container } = render(
 				<DemoComponent
 					variant="inline-listbox"
-					multiple
+					isMultiple
 					initialSelection={[
 						accountsWithIcon[0],
 						accountsWithIcon[1],
@@ -265,7 +269,12 @@ describe('SLDSCombobox', () => {
 		// past the end of `selection`, no pill gets tabindex=0, and the selected-
 		// pill listbox becomes unreachable by keyboard.
 		it('clamps the roving tabindex so a pill stays reachable after the controlled selection shrinks', () => {
-			const props = { ...defaultProps, multiple: true, options: [], events: {} };
+			const props = {
+				...defaultProps,
+				isMultiple: true,
+				options: [],
+				events: {},
+			};
 			const { container, rerender } = render(
 				<IconSettings iconPath="/assets/icons">
 					<Combobox
@@ -281,9 +290,8 @@ describe('SLDSCombobox', () => {
 			);
 
 			// Move the roving tabindex onto the LAST pill (as arrow/focus would).
-			let pills = getNodes(container).selectedListbox.querySelectorAll(
-				'[role="option"]'
-			);
+			let pills =
+				getNodes(container).selectedListbox.querySelectorAll('[role="option"]');
 			expect(pills).toHaveLength(3);
 			fireEvent.focus(pills[2]);
 
@@ -298,9 +306,8 @@ describe('SLDSCombobox', () => {
 				</IconSettings>
 			);
 
-			pills = getNodes(container).selectedListbox.querySelectorAll(
-				'[role="option"]'
-			);
+			pills =
+				getNodes(container).selectedListbox.querySelectorAll('[role="option"]');
 			expect(pills).toHaveLength(2);
 			const tabbable = [...pills].filter(
 				(pill) => pill.getAttribute('tabindex') === '0'
@@ -312,7 +319,7 @@ describe('SLDSCombobox', () => {
 		it('menu filters to second item, menu listbox menu item 2 aria-selected is true, input activedescendent has item 2 id, after pressing down arrow, enter selects item 2', () => {
 			const { container } = render(
 				<DemoComponent
-					multiple
+					isMultiple
 					isOpen
 					optionsSearchEntity={[
 						{
@@ -374,7 +381,9 @@ describe('SLDSCombobox', () => {
 			fireEvent.keyDown(nodes.input, keyObjects.DOWN);
 			fireEvent.keyDown(nodes.input, keyObjects.DOWN);
 			nodes = getNodes(container);
-			const selectedItem = container.querySelector('#combobox-unique-id-listbox-option-2');
+			const selectedItem = container.querySelector(
+				'#combobox-unique-id-listbox-option-2'
+			);
 			expect(selectedItem).toHaveAttribute('aria-selected', 'true');
 			expect(nodes.input).toHaveAttribute(
 				'aria-activedescendant',
@@ -384,7 +393,8 @@ describe('SLDSCombobox', () => {
 			fireEvent.keyDown(nodes.input, keyObjects.ENTER);
 			nodes = getNodes(container);
 			expect(nodes.input.value).toBe('');
-			const pillLabel = nodes.selectedListbox.querySelector('.slds-pill__label');
+			const pillLabel =
+				nodes.selectedListbox.querySelector('.slds-pill__label');
 			expect(pillLabel.textContent).toBe(accounts[1].label);
 		});
 
@@ -392,8 +402,10 @@ describe('SLDSCombobox', () => {
 			// NOTE: Comparing selection by id and label only, since icon is a React element
 			const compareSelection = (actual, expected) => {
 				if (actual.length !== expected.length) return false;
-				return actual.every((item, index) =>
-					item.id === expected[index].id && item.label === expected[index].label
+				return actual.every(
+					(item, index) =>
+						item.id === expected[index].id &&
+						item.label === expected[index].label
 				);
 			};
 
@@ -404,15 +416,8 @@ describe('SLDSCombobox', () => {
 					accounts[3],
 					accounts[4],
 				],
-				removeThirdInitialItem: [
-					accounts[1],
-					accounts[3],
-					accounts[4],
-				],
-				removesLastAndInitialFifthPill: [
-					accounts[1],
-					accounts[3],
-				],
+				removeThirdInitialItem: [accounts[1], accounts[3], accounts[4]],
+				removesLastAndInitialFifthPill: [accounts[1], accounts[3]],
 				removeInitalSecondAndFourthPill: [accounts[3]],
 				allPillsRemoved: [],
 			};
@@ -422,7 +427,9 @@ describe('SLDSCombobox', () => {
 
 			let counter = 0;
 			const componentDidUpdateSpy = vi.fn((prevState) => {
-				expect(compareSelection(prevState.selection, selectionIndexedStates[counter])).toBe(true);
+				expect(
+					compareSelection(prevState.selection, selectionIndexedStates[counter])
+				).toBe(true);
 				counter += 1;
 			});
 
@@ -436,7 +443,7 @@ describe('SLDSCombobox', () => {
 						accounts[3],
 						accounts[4],
 					]}
-					multiple
+					isMultiple
 				/>
 			);
 			let nodes = getNodes(container);
@@ -444,7 +451,8 @@ describe('SLDSCombobox', () => {
 			const getSelectedListboxPills = (index) =>
 				nodes.selectedListbox.children[index].children[0];
 			const getFocusedPillLabel = () => {
-				const pillLabel = document.activeElement.querySelector('.slds-pill__label');
+				const pillLabel =
+					document.activeElement.querySelector('.slds-pill__label');
 				return pillLabel ? pillLabel.innerText : null;
 			};
 
@@ -552,14 +560,18 @@ describe('SLDSCombobox', () => {
 				expect(menuListbox).toBeInTheDocument();
 			} else {
 				// If menu closed, verify it's not in document
-				expect(container.querySelector('.slds-combobox .slds-listbox.slds-dropdown')).not.toBeInTheDocument();
+				expect(
+					container.querySelector('.slds-combobox .slds-listbox.slds-dropdown')
+				).not.toBeInTheDocument();
 			}
 		});
 	});
 
 	describe('Variant-specific', () => {
 		it('Limit to pre-defined choices', () => {
-			const { container } = render(<DemoComponent multiple predefinedOptionsOnly />);
+			const { container } = render(
+				<DemoComponent isMultiple hasPredefinedOptionsOnly />
+			);
 			let nodes = getNodes(container);
 			fireEvent.focus(nodes.input);
 			fireEvent.keyDown(nodes.input, letterKeyObjects.A);
@@ -627,7 +639,9 @@ describe('SLDSCombobox', () => {
 			fireEvent.focus(nodes.input);
 			fireEvent.change(nodes.input, { target: { value: 'Random text' } });
 			nodes = getNodes(container);
-			const statusItem = nodes.menuListbox.querySelector('.slds-listbox__item.slds-listbox__status');
+			const statusItem = nodes.menuListbox.querySelector(
+				'.slds-listbox__item.slds-listbox__status'
+			);
 			expect(statusItem.textContent).toBe('No matches found.');
 		});
 	});
@@ -645,23 +659,126 @@ describe('SLDSCombobox', () => {
 	describe('Combobox with items disabled', () => {
 		it('Tooltip component shows when focused on menu item.', () => {
 			const { container } = render(
-				<DemoComponent multiple isOpen tooltipMenuItemDisabled={<Tooltip />} />
+				<DemoComponent
+					isMultiple
+					isOpen
+					tooltipMenuItemDisabled={<Tooltip />}
+				/>
 			);
 			let nodes = getNodes(container);
 			fireEvent.focus(nodes.input);
 			fireEvent.change(nodes.input, { target: { value: accounts[3].label } });
 			fireEvent.keyDown(nodes.input, keyObjects.DOWN);
 
-			const nodeInFocus = nodes.menuListbox.querySelector('.slds-tooltip-trigger');
-			const span = nodeInFocus.querySelector('#combobox-unique-id-listbox-option-4');
+			const nodeInFocus = nodes.menuListbox.querySelector(
+				'.slds-tooltip-trigger'
+			);
+			const span = nodeInFocus.querySelector(
+				'#combobox-unique-id-listbox-option-4'
+			);
 
 			// verify span is aria-selected and aria-disabled
 			expect(span).toHaveAttribute('aria-selected', 'true');
 			expect(span).toHaveAttribute('aria-disabled', 'true');
 
 			// verify tooltip is rendered
-			const tooltip = container.querySelector('#combobox-unique-id-listbox-option-help-4');
+			const tooltip = container.querySelector(
+				'#combobox-unique-id-listbox-option-help-4'
+			);
 			expect(tooltip).toBeInTheDocument();
+		});
+	});
+
+	describe('Deprecated prop aliases', () => {
+		it('still supports `multiple`, `predefinedOptionsOnly`, and `singleInputDisabled` and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			// `hasPredefinedOptionsOnly` unset: Enter on free text submits.
+			const onSubmitControl = vi.fn();
+			const { container: controlContainer, unmount } = render(
+				<Combobox
+					{...defaultProps}
+					events={{ onSubmit: onSubmitControl }}
+					options={accounts}
+					selection={[]}
+					value="Random text"
+				/>
+			);
+			fireEvent.keyDown(getNodes(controlContainer).input, keyObjects.ENTER);
+			expect(onSubmitControl).toHaveBeenCalledTimes(1);
+			unmount();
+
+			const onSubmit = vi.fn();
+			const { container } = render(
+				<Combobox
+					{...defaultProps}
+					events={{ onSubmit }}
+					multiple
+					predefinedOptionsOnly
+					options={accounts}
+					selection={[accounts[0], accounts[1]]}
+					value="Random text"
+				/>
+			);
+			const nodes = getNodes(container);
+			expect(nodes.selectedListbox).toHaveAttribute(
+				'aria-multiselectable',
+				'true'
+			);
+			fireEvent.keyDown(nodes.input, keyObjects.ENTER);
+			expect(onSubmit).not.toHaveBeenCalled();
+
+			const { container: readonlyContainer } = render(
+				<Combobox
+					{...defaultProps}
+					id="combobox-readonly-disabled"
+					options={accounts}
+					selection={[]}
+					singleInputDisabled
+					variant="readonly"
+				/>
+			);
+			expect(
+				readonlyContainer.querySelector('.slds-combobox input')
+			).toBeDisabled();
+
+			['multiple', 'predefinedOptionsOnly', 'singleInputDisabled'].forEach(
+				(oldName) => {
+					expect(consoleError).toHaveBeenCalledWith(
+						expect.stringContaining(`\`${oldName}\` will be removed`)
+					);
+				}
+			);
+			consoleError.mockRestore();
+		});
+
+		it('passes both `isSelected` and deprecated `selected` to `onRenderMenuItem`', () => {
+			const renderedProps = [];
+			const CustomMenuItem = (props) => {
+				renderedProps.push(props);
+				return <span>{props.option.label}</span>;
+			};
+			render(
+				<Combobox
+					{...defaultProps}
+					isOpen
+					onRenderMenuItem={CustomMenuItem}
+					options={accounts}
+					selection={[accounts[0]]}
+				/>
+			);
+			const selectedItem = renderedProps.find(
+				(props) => props.option.id === accounts[0].id
+			);
+			const unselectedItem = renderedProps.find(
+				(props) => props.option.id === accounts[1].id
+			);
+			expect(selectedItem.isSelected).toBe(true);
+			expect(selectedItem.selected).toBe(true);
+			expect(unselectedItem.isSelected).toBe(false);
+			expect(unselectedItem.selected).toBe(false);
 		});
 	});
 });

@@ -26,6 +26,15 @@ import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
 import { IconSettingsContext } from '../icon-settings';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
+
+// `deprecated-property.js` ships no type declarations; this is the signature used here.
+const warnDeprecatedProperty = deprecatedProperty as (
+	control: string,
+	propValue: unknown,
+	oldProp: string,
+	newProp: string
+) => void;
 
 const documentDefined = typeof document !== 'undefined';
 
@@ -70,7 +79,8 @@ export type PopoverAlign =
 /**
  * Popover position options
  */
-export type PopoverPosition = 'absolute' | 'overflowBoundaryElement' | 'relative';
+export type PopoverPosition =
+	'absolute' | 'overflowBoundaryElement' | 'relative';
 
 /**
  * Popover variant options
@@ -115,6 +125,8 @@ export interface PopoverProps {
 	/** CSS classes for contents wrapper */
 	contentsClassName?: string | string[] | Record<string, boolean>;
 	/** Disable the popover */
+	isDisabled?: boolean;
+	/** @deprecated Use `isDisabled` instead. */
 	disabled?: boolean;
 	/** Footer content */
 	footer?: ReactNode;
@@ -216,7 +228,8 @@ const Popover = ({
 	footerClassName,
 	className,
 	contentsClassName,
-	disabled = false,
+	isDisabled: isDisabledProp,
+	disabled,
 	footer,
 	footerStyle,
 	footerWalkthroughActions,
@@ -249,6 +262,13 @@ const Popover = ({
 	hoverCloseDelay = 300,
 	closeButtonAssistiveText,
 }: PopoverProps): ReactElement => {
+	const isDisabled = isDisabledProp ?? disabled ?? false;
+
+	useEffect(() => {
+		warnDeprecatedProperty(POPOVER, disabled, 'disabled', 'isDisabled');
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const generatedId = useId();
 	const id = propId || generatedId;
 	const context = useContext(IconSettingsContext);
@@ -271,7 +291,7 @@ const Popover = ({
 
 	// Derived state
 	const isOpen =
-		!disabled &&
+		!isDisabled &&
 		(controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen);
 
 	// Get target element for positioning
@@ -286,7 +306,8 @@ const Popover = ({
 	// Handle dialog close (when unmounted)
 	const handleDialogClose = useCallback(
 		(
-			event?: React.MouseEvent | React.KeyboardEvent | MouseEvent | KeyboardEvent,
+			event?:
+				React.MouseEvent | React.KeyboardEvent | MouseEvent | KeyboardEvent,
 			data?: { componentWillUnmount?: boolean }
 		) => {
 			const componentWillUnmount = data?.componentWillUnmount || false;
@@ -304,10 +325,7 @@ const Popover = ({
 
 	// Handle close
 	const handleClose = useCallback(
-		(
-			event?: MouseEvent | KeyboardEvent,
-			data?: { trigger?: string }
-		) => {
+		(event?: MouseEvent | KeyboardEvent, data?: { trigger?: string }) => {
 			if (isOpen) {
 				if (onRequestClose) {
 					onRequestClose(event, data || {});
@@ -336,7 +354,8 @@ const Popover = ({
 			}
 
 			currentOpenPopover = {
-				handleClose: (event, data) => handleClose(event as MouseEvent | KeyboardEvent, data),
+				handleClose: (event, data) =>
+					handleClose(event as MouseEvent | KeyboardEvent, data),
 				getId: () => id,
 			};
 
@@ -470,7 +489,12 @@ const Popover = ({
 		(shouldShow: boolean) => {
 			if (typeof overlayProp === 'function' && documentDefined) {
 				overlayProp(shouldShow, overlay);
-			} else if (overlayProp && shouldShow && !overlayRef.current && documentDefined) {
+			} else if (
+				overlayProp &&
+				shouldShow &&
+				!overlayRef.current &&
+				documentDefined
+			) {
 				overlayRef.current = overlay;
 				document.querySelector('body')?.appendChild(overlay);
 			} else if (!shouldShow && overlayRef.current?.parentNode) {
@@ -482,16 +506,21 @@ const Popover = ({
 	);
 
 	// Container ref callback
-	const setContainerRef = useCallback((component: HTMLDivElement | null) => {
-		(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current = component;
-		if (component && !inputRendered) {
-			setInputRendered(true);
-		}
-	}, [inputRendered]);
+	const setContainerRef = useCallback(
+		(component: HTMLDivElement | null) => {
+			(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current =
+				component;
+			if (component && !inputRendered) {
+				setInputRendered(true);
+			}
+		},
+		[inputRendered]
+	);
 
 	// Dialog ref callback
 	const setMenuRef = useCallback((component: HTMLElement | null) => {
-		(dialogRef as React.MutableRefObject<HTMLElement | null>).current = component;
+		(dialogRef as React.MutableRefObject<HTMLElement | null>).current =
+			component;
 	}, []);
 
 	// Cleanup on unmount
@@ -515,13 +544,19 @@ const Popover = ({
 		const hasThemedHeader = variant === 'error' || variant === 'warning';
 		const hasDefinedHeader = heading || hasThemedHeader;
 
-		if (!hasDefinedHeader || variant === 'walkthrough-action' || variant === 'feature') {
+		if (
+			!hasDefinedHeader ||
+			variant === 'walkthrough-action' ||
+			variant === 'feature'
+		) {
 			return null;
 		}
 
 		const headerIcon = {
-			error: <Icon category="utility" name="error" size="x-small" inverse />,
-			warning: <Icon category="utility" name="warning" size="x-small" inverse />,
+			error: <Icon category="utility" name="error" size="x-small" isInverse />,
+			warning: (
+				<Icon category="utility" name="warning" size="x-small" isInverse />
+			),
 		};
 
 		if (hasThemedHeader) {
@@ -538,7 +573,7 @@ const Popover = ({
 							</h2>
 						}
 						figure={headerIcon[variant as 'error' | 'warning']}
-						verticalCenter
+						isVerticallyCentered
 					/>
 				</header>
 			);
@@ -585,7 +620,12 @@ const Popover = ({
 					<div className="slds-media">
 						<div className="slds-media__figure">
 							{variant === 'walkthrough-action' ? (
-								<Icon category="utility" name="touch_action" size="small" inverse />
+								<Icon
+									category="utility"
+									name="touch_action"
+									size="small"
+									isInverse
+								/>
 							) : (
 								icon
 							)}
@@ -723,7 +763,7 @@ const Popover = ({
 						)}
 						onClick={handleCancel}
 						variant="icon"
-						inverse={variant === 'error' || variant === 'warning'}
+						isInverse={variant === 'error' || variant === 'warning'}
 					/>
 				)}
 				{renderHeader()}
@@ -746,15 +786,22 @@ const Popover = ({
 				onClick:
 					openOn === 'click' || openOn === 'hybrid'
 						? (event: MouseEvent) => {
-								handleClick(event, childProps.onClick as (e: MouseEvent) => void);
-						  }
+								handleClick(
+									event,
+									childProps.onClick as (e: MouseEvent) => void
+								);
+							}
 						: childProps.onClick,
 				onFocus: openOn === 'hover' ? handleFocus : undefined,
 				onMouseDown,
 				onMouseEnter:
-					openOn === 'hover' || openOn === 'hybrid' ? handleMouseEnter : undefined,
+					openOn === 'hover' || openOn === 'hybrid'
+						? handleMouseEnter
+						: undefined,
 				onMouseLeave:
-					openOn === 'hover' || openOn === 'hybrid' ? handleMouseLeave : undefined,
+					openOn === 'hover' || openOn === 'hybrid'
+						? handleMouseLeave
+						: undefined,
 				tabIndex: (childProps.tabIndex as number) || 0,
 			};
 			clonedTrigger = React.cloneElement(child, triggerProps);
@@ -783,4 +830,3 @@ const Popover = ({
 Popover.displayName = POPOVER;
 
 export default Popover;
-

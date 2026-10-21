@@ -1,7 +1,8 @@
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import Popover from '../';
+import EditDialog from '../edit-dialog';
 import Button from '../../button';
 import IconSettings from '../../icon-settings';
 
@@ -36,9 +37,15 @@ describe('SLDSPopover', () => {
 		it('is open, has heading, body, close button', () => {
 			const { container } = renderPopover({ isOpen: true });
 
-			expect(container.querySelector(`#${defaultIds.heading}`)).toBeInTheDocument();
-			expect(container.querySelector(`#${defaultIds.body}`)).toBeInTheDocument();
-			expect(container.querySelector('.slds-popover__close')).toBeInTheDocument();
+			expect(
+				container.querySelector(`#${defaultIds.heading}`)
+			).toBeInTheDocument();
+			expect(
+				container.querySelector(`#${defaultIds.body}`)
+			).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-popover__close')
+			).toBeInTheDocument();
 		});
 	});
 
@@ -74,7 +81,9 @@ describe('SLDSPopover', () => {
 			expect(popover).toHaveClass(optionalProps.className);
 
 			const closeButton = container.querySelector('button.slds-popover__close');
-			expect(closeButton).toHaveTextContent(optionalProps.assistiveText.closeButton);
+			expect(closeButton).toHaveTextContent(
+				optionalProps.assistiveText.closeButton
+			);
 
 			expect(container.querySelector('#footer')).toBeInTheDocument();
 			expect(popover).toHaveStyle({ background: popoverBackgroundColor });
@@ -100,18 +109,24 @@ describe('SLDSPopover', () => {
 
 				// Wait for popover to open
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).toBeInTheDocument();
 				});
 
 				expect(onOpen).toHaveBeenCalledTimes(1);
 				expect(triggerClicked).toHaveBeenCalledTimes(1);
 
-				const closeButton = container.querySelector('button.slds-popover__close');
+				const closeButton = container.querySelector(
+					'button.slds-popover__close'
+				);
 				fireEvent.click(closeButton);
 
 				// Wait for popover to close
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).not.toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).not.toBeInTheDocument();
 				});
 
 				expect(onClose).toHaveBeenCalledTimes(1);
@@ -131,7 +146,9 @@ describe('SLDSPopover', () => {
 
 				// Wait for popover to open
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).toBeInTheDocument();
 				});
 
 				expect(onOpen).toHaveBeenCalledTimes(1);
@@ -145,7 +162,9 @@ describe('SLDSPopover', () => {
 
 				// Wait for popover to close
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).not.toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).not.toBeInTheDocument();
 				});
 
 				expect(onClose).toHaveBeenCalledTimes(1);
@@ -165,7 +184,9 @@ describe('SLDSPopover', () => {
 
 				// Wait for popover to open
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).toBeInTheDocument();
 				});
 
 				const popover = container.querySelector(`#${defaultIds.popover}`);
@@ -178,7 +199,9 @@ describe('SLDSPopover', () => {
 				// NOTE: Cannot directly assert on stopPropagation calls from synthetic events,
 				// but we can verify the menu closes (observable behavior)
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).not.toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).not.toBeInTheDocument();
 				});
 			});
 		});
@@ -199,7 +222,9 @@ describe('SLDSPopover', () => {
 
 			// Wait for popover to open and check focus
 			await waitFor(() => {
-				expect(container.querySelector(`#${defaultIds.popover}`)).toBeInTheDocument();
+				expect(
+					container.querySelector(`#${defaultIds.popover}`)
+				).toBeInTheDocument();
 			});
 
 			// NOTE: In jsdom, focus management is limited. The popover should be in
@@ -214,7 +239,7 @@ describe('SLDSPopover', () => {
 			const popoverOpened = vi.fn();
 
 			const { container } = renderPopover({
-				disabled: true,
+				isDisabled: true,
 				onClick: triggerClicked,
 				onOpen: popoverOpened,
 			});
@@ -223,6 +248,101 @@ describe('SLDSPopover', () => {
 			fireEvent.click(trigger);
 
 			expect(popoverOpened).not.toHaveBeenCalled();
+		});
+	});
+
+	describe('deprecated boolean prop aliases', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		const warned = (spy, component, oldName, newName) =>
+			spy.mock.calls
+				.map((call) => call.join(' '))
+				.some(
+					(message) =>
+						message.includes(`\`${oldName}\``) &&
+						message.includes(`\`${newName}\``) &&
+						message.includes(`version of ${component}.`)
+				);
+
+		it('Popover `disabled` still disables and warns', () => {
+			const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+			const { container: newContainer, unmount } = renderPopover({
+				isDisabled: true,
+				isOpen: true,
+			});
+			expect(
+				newContainer.querySelector(`#${defaultIds.popover}`)
+			).not.toBeInTheDocument();
+			const newMarkup = newContainer.innerHTML;
+			unmount();
+			expect(errorSpy).not.toHaveBeenCalled();
+
+			const { container: oldContainer } = renderPopover({
+				disabled: true,
+				isOpen: true,
+			});
+			expect(oldContainer.innerHTML).toBe(newMarkup);
+			expect(warned(errorSpy, 'SLDSPopover', 'disabled', 'isDisabled')).toBe(
+				true
+			);
+		});
+
+		it('EditDialog `isModified` still enables Save and warns', () => {
+			const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+			const renderEditDialog = (props) =>
+				render(
+					<IconSettings iconPath="/assets/icons">
+						<EditDialog
+							body={<span>Edit body</span>}
+							heading="Edit"
+							id="sample-edit-dialog"
+							isOpen
+							{...props}
+						/>
+					</IconSettings>
+				);
+			const getSave = (container) =>
+				[...container.querySelectorAll('.slds-popover__footer button')].find(
+					(button) => button.textContent === 'Save'
+				);
+
+			const { container: newContainer, unmount } = renderEditDialog({
+				hasChanges: true,
+			});
+			expect(getSave(newContainer)).not.toBeDisabled();
+			const newMarkup = newContainer.innerHTML;
+			unmount();
+			expect(errorSpy).not.toHaveBeenCalled();
+
+			const { container: oldContainer } = renderEditDialog({
+				isModified: true,
+			});
+			expect(getSave(oldContainer)).not.toBeDisabled();
+			expect(oldContainer.innerHTML).toBe(newMarkup);
+			expect(
+				warned(errorSpy, 'SLDSPopoverEditDialog', 'isModified', 'hasChanges')
+			).toBe(true);
+		});
+
+		it('EditDialog `disabled` disables the Popover without a Popover warning', () => {
+			const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<EditDialog
+						body={<span>Edit body</span>}
+						disabled
+						heading="Edit"
+						id="sample-edit-dialog-disabled"
+						isOpen
+					/>
+				</IconSettings>
+			);
+			expect(container.querySelector('.slds-popover')).not.toBeInTheDocument();
+			expect(container.querySelector('button')).toBeDisabled();
+			expect(errorSpy).not.toHaveBeenCalled();
 		});
 	});
 });

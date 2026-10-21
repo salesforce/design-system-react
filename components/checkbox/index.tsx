@@ -17,11 +17,14 @@ import EventUtil from '../../utilities/event';
 import getAriaProps from '../../utilities/get-aria-props';
 import { CHECKBOX } from '../../utilities/constants';
 import Icon from '../icon/index';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 /**
  * Checkbox variant types
  */
-export type CheckboxVariant = 'base' | 'toggle' | 'button-group' | 'visual-picker';
+export type CheckboxVariant =
+	'base' | 'toggle' | 'button-group' | 'visual-picker';
 
 /**
  * Checkbox size for visual picker
@@ -96,7 +99,10 @@ export interface CheckboxProps {
 	/** Blur event handler */
 	onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Change event handler */
-	onChange?: (event: ChangeEvent<HTMLInputElement>, data: CheckboxChangeData) => void;
+	onChange?: (
+		event: ChangeEvent<HTMLInputElement>,
+		data: CheckboxChangeData
+	) => void;
 	/** Focus event handler */
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Key down event handler */
@@ -120,8 +126,12 @@ export interface CheckboxProps {
 	/** Checkbox variant */
 	variant?: CheckboxVariant;
 	/** Coverable visual picker */
+	isCoverable?: boolean;
+	/** @deprecated Use `isCoverable` instead. */
 	coverable?: boolean;
 	/** Vertical visual picker */
+	isVertical?: boolean;
+	/** @deprecated Use `isVertical` instead. */
 	vertical?: boolean;
 	/** Render function for visual picker */
 	onRenderVisualPicker?: () => ReactNode;
@@ -169,7 +179,9 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 		role,
 		tabIndex,
 		variant = 'base',
+		isCoverable: isCoverableProp,
 		coverable,
+		isVertical: isVerticalProp,
 		vertical,
 		onRenderVisualPicker,
 		onRenderVisualPickerSelected,
@@ -178,6 +190,17 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 		labelId,
 		...restProps
 	} = props;
+	const isCoverable = isCoverableProp ?? coverable;
+	const isVertical = isVerticalProp ?? vertical;
+
+	useEffect(() => {
+		checkProps(
+			CHECKBOX,
+			props as unknown as Record<string, unknown>,
+			componentDoc
+		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const generatedId = useId();
 	const internalRef = useRef<HTMLInputElement | null>(null);
@@ -343,7 +366,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 				className={classNames(
 					'slds-visual-picker',
 					`slds-visual-picker_${size}`,
-					vertical && 'slds-visual-picker_vertical'
+					isVertical && 'slds-visual-picker_vertical'
 				)}
 			>
 				<input
@@ -352,7 +375,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 					aria-describedby={getAriaDescribedBy()}
 				/>
 				<label className="slds-checkbox_button__label" htmlFor={getId()}>
-					{coverable ? (
+					{isCoverable ? (
 						<div className="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
 							<span className="slds-is-selected">
 								{onRenderVisualPickerSelected?.()}
@@ -366,7 +389,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 							{onRenderVisualPicker?.()}
 						</span>
 					)}
-					{!vertical && (
+					{!isVertical && (
 						<span className="slds-visual-picker__body">
 							{labels.heading && (
 								<span className="slds-text-heading_small">
@@ -381,7 +404,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 							)}
 						</span>
 					)}
-					{!coverable && (
+					{!isCoverable && (
 						<span className="slds-icon_container slds-visual-picker__text-check">
 							<Icon
 								assistiveText={assistiveText}
@@ -449,4 +472,3 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 Checkbox.displayName = CHECKBOX;
 
 export default Checkbox;
-

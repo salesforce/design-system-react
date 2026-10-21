@@ -1,7 +1,11 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type ReactElement, type CSSProperties } from 'react';
+import React, {
+	type ReactNode,
+	type ReactElement,
+	type CSSProperties,
+} from 'react';
 import { dequal as isEqual } from 'dequal';
 import classNames from 'classnames';
 
@@ -48,7 +52,10 @@ export interface MenuProps {
 	/** Input value for bolding matches */
 	inputValue?: string;
 	/** Function to check if option is selected */
-	isSelected: (params: { selection: ComboboxOption[]; option: ComboboxOption }) => boolean;
+	isSelected: (params: {
+		selection: ComboboxOption[];
+		option: ComboboxOption;
+	}) => boolean;
 	/** Determines the height of the menu */
 	itemVisibleLength?: 5 | 7 | 10 | null;
 	/** Text labels */
@@ -60,15 +67,22 @@ export interface MenuProps {
 	/** Menu position */
 	menuPosition?: 'absolute' | 'overflowBoundaryElement' | 'relative';
 	/** Ref for menu element */
-	menuRef?: React.RefCallback<HTMLUListElement> | React.RefObject<HTMLUListElement>;
+	menuRef?:
+		React.RefCallback<HTMLUListElement> | React.RefObject<HTMLUListElement>;
 	/** Custom menu item renderer */
 	onRenderMenuItem?: React.ComponentType<{
 		assistiveText?: MenuAssistiveText;
+		/** Whether the option is selected */
+		isSelected: boolean;
+		/** @deprecated Use `isSelected` instead. */
 		selected: boolean;
 		option: ComboboxOption;
 	}>;
 	/** Callback when option is selected */
-	onSelect: (event: React.MouseEvent, data: { option: ComboboxOption; selection?: ComboboxOption[] }) => void;
+	onSelect: (
+		event: React.MouseEvent,
+		data: { option: ComboboxOption; selection?: ComboboxOption[] }
+	) => void;
 	/** Menu options */
 	options: ComboboxOption[];
 	/** Selected options */
@@ -99,7 +113,10 @@ const setBold = (label: string | undefined, searchTerm: string): ReactNode => {
 	return label;
 };
 
-const renderLabel = (labelProp: string | ((searchTerm: string) => ReactNode) | undefined, searchTerm: string): ReactNode => {
+const renderLabel = (
+	labelProp: string | ((searchTerm: string) => ReactNode) | undefined,
+	searchTerm: string
+): ReactNode => {
 	if (labelProp == null || typeof labelProp === 'string') {
 		return labelProp;
 	}
@@ -145,8 +162,10 @@ const Menu: React.FC<MenuProps> = ({
 	tooltipMenuItemDisabled,
 	variant = 'icon-title-subtitle',
 }) => {
-	let menuMaxWidth: string | undefined = inheritWidthOf === 'menu' ? 'inherit' : undefined;
-	menuMaxWidth = inheritWidthOf === 'menu' && maxWidth ? maxWidth : menuMaxWidth;
+	let menuMaxWidth: string | undefined =
+		inheritWidthOf === 'menu' ? 'inherit' : undefined;
+	menuMaxWidth =
+		inheritWidthOf === 'menu' && maxWidth ? maxWidth : menuMaxWidth;
 
 	const menuOptions = options.map((optionData, index) => {
 		const active =
@@ -165,7 +184,9 @@ const Menu: React.FC<MenuProps> = ({
 			return optionData.label ? (
 				<li
 					className="slds-dropdown__header slds-truncate"
-					title={typeof optionData.label === 'string' ? optionData.label : undefined}
+					title={
+						typeof optionData.label === 'string' ? optionData.label : undefined
+					}
 					role="separator"
 					key={`menu-separator-${optionData.id}`}
 				>
@@ -175,7 +196,9 @@ const Menu: React.FC<MenuProps> = ({
 							classNameMenuSubHeader
 						)}
 					>
-						{typeof optionData.label === 'string' ? optionData.label : optionData.label?.(inputValue)}
+						{typeof optionData.label === 'string'
+							? optionData.label
+							: optionData.label?.(inputValue)}
 					</span>
 				</li>
 			) : (
@@ -200,7 +223,7 @@ const Menu: React.FC<MenuProps> = ({
 								? undefined
 								: (event) => {
 										onSelect(event, { option: optionData });
-								  }
+									}
 						}
 						aria-selected={active}
 						id={`${inputId}-listbox-option-${optionData.id}`}
@@ -236,7 +259,7 @@ const Menu: React.FC<MenuProps> = ({
 								? undefined
 								: (event) => {
 										onSelect(event, { option: optionData });
-								  }
+									}
 						}
 						id={`${inputId}-listbox-option-${optionData.id}`}
 						className={classNames(
@@ -271,7 +294,8 @@ const Menu: React.FC<MenuProps> = ({
 			disabledProps.style = { cursor: 'default' };
 		}
 
-		const labelString = typeof optionData.label === 'string' ? optionData.label : undefined;
+		const labelString =
+			typeof optionData.label === 'string' ? optionData.label : undefined;
 
 		const menuItem: Record<string, ReactNode> = {
 			'icon-title-subtitle': (
@@ -290,7 +314,7 @@ const Menu: React.FC<MenuProps> = ({
 							? undefined
 							: (event) => {
 									onSelect(event, { option: optionData });
-							  }
+								}
 					}
 					role="option"
 				>
@@ -302,6 +326,7 @@ const Menu: React.FC<MenuProps> = ({
 					{MenuItem ? (
 						<MenuItem
 							assistiveText={assistiveText}
+							isSelected={selected}
 							selected={selected}
 							option={optionData}
 						/>
@@ -352,7 +377,7 @@ const Menu: React.FC<MenuProps> = ({
 										selection,
 										option: optionData,
 									});
-							  }
+								}
 					}
 					role="option"
 				>
@@ -368,6 +393,7 @@ const Menu: React.FC<MenuProps> = ({
 						{MenuItem ? (
 							<MenuItem
 								assistiveText={assistiveText}
+								isSelected={selected}
 								selected={selected}
 								option={optionData}
 							/>
@@ -397,7 +423,10 @@ const Menu: React.FC<MenuProps> = ({
 
 		let item: ReactNode;
 		if (optionData.disabled && tooltipMenuItemDisabled) {
-			const tooltipPropsFromElement = tooltipMenuItemDisabled.props as { content?: ReactNode; [key: string]: unknown };
+			const tooltipPropsFromElement = tooltipMenuItemDisabled.props as {
+				content?: ReactNode;
+				[key: string]: unknown;
+			};
 			const { content, ...userDefinedTooltipProps } = tooltipPropsFromElement;
 			const tooltipProps: Record<string, unknown> = {
 				align: 'top',
@@ -468,7 +497,7 @@ const Menu: React.FC<MenuProps> = ({
 					<div className="slds-align_absolute-center slds-p-top_medium">
 						<Spinner
 							assistiveText={{ label: assistiveText.loadingMenuItems }}
-							hasContainer={false}
+							hasNoContainer
 							isInline
 							size="x-small"
 						/>
@@ -482,4 +511,3 @@ const Menu: React.FC<MenuProps> = ({
 Menu.displayName = 'Menu';
 
 export default Menu;
-

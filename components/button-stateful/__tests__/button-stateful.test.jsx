@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import ButtonStateful from '../';
 import IconSettings from '../../icon-settings';
@@ -146,6 +146,39 @@ describe('Button Stateful', () => {
 			expect(button).toHaveAttribute('aria-live', 'assertive');
 			expect(button.querySelector('.slds-text-not-selected')).toHaveTextContent(
 				'Follow'
+			);
+		});
+	});
+
+	describe('Deprecated boolean prop aliases', () => {
+		it('still applies `responsive`, and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<ButtonStateful responsive />
+				</IconSettings>
+			);
+
+			expect(container.querySelector('button')).toHaveClass(
+				'slds-max-small-button_stretch'
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`isResponsive`')
+			);
+			consoleError.mockRestore();
+		});
+
+		it('applies `isResponsive`', () => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<ButtonStateful isResponsive />
+				</IconSettings>
+			);
+
+			expect(container.querySelector('button')).toHaveClass(
+				'slds-max-small-button_stretch'
 			);
 		});
 	});

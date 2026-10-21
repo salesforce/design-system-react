@@ -21,13 +21,15 @@ class Example extends React.Component {
 		};
 	}
 
-	onChange = (inputName) => (event, { value }) => {
-		if (inputName === 'first-name') {
-			this.setState({ firstName: value });
-		} else {
-			this.setState({ lastName: value });
-		}
-	};
+	onChange =
+		(inputName) =>
+		(event, { value }) => {
+			if (inputName === 'first-name') {
+				this.setState({ firstName: value });
+			} else {
+				this.setState({ lastName: value });
+			}
+		};
 
 	handleClose = (event, data) => {
 		if (this.props.log) {
@@ -90,7 +92,7 @@ class Example extends React.Component {
 					<EditDialog
 						ariaLabelledby="edit-name"
 						body={editDialogPopoverBody}
-						isModified={
+						hasChanges={
 							this.state.firstName !== this.state.prevFirstName ||
 							this.state.lastName !== this.state.prevLastName
 						}

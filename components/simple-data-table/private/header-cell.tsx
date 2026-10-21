@@ -40,8 +40,8 @@ interface AssistiveText {
 export interface SimpleDataTableHeaderCellProps {
 	assistiveText?: AssistiveText;
 	cellRef?: (ref: HTMLElement | null) => void;
-	fixedHeader?: boolean;
-	fixedLayout?: boolean;
+	hasFixedHeader?: boolean;
+	hasFixedLayout?: boolean;
 	id: string;
 	isDefaultSortDescending?: boolean;
 	isSorted?: boolean;
@@ -51,7 +51,7 @@ export interface SimpleDataTableHeaderCellProps {
 		event: SyntheticEvent
 	) => void;
 	property?: string;
-	sortable?: boolean;
+	isSortable?: boolean;
 	sortDirection?: 'desc' | 'asc';
 	width?: string;
 	/** @deprecated */
@@ -77,7 +77,7 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = useContextHelper(
 		tableContext,
 		cellContext,
-		props.fixedLayout
+		props.hasFixedLayout
 	);
 
 	useEffect(() => {
@@ -125,7 +125,8 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 		}
 	};
 
-	const { fixedHeader, isSorted, label, sortable, width, property } = props;
+	const { hasFixedHeader, isSorted, label, isSortable, width, property } =
+		props;
 
 	const labelType = typeof label;
 	const effectiveSortDirection =
@@ -137,7 +138,7 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 	const ariaSort = isSorted ? expandedSortDirection : 'none';
 
 	const getFixedLayoutSubRenders = (isHidden?: boolean) => {
-		if (sortable) {
+		if (isSortable) {
 			const SortLink = isHidden ? Link : InteractiveLink;
 			return (
 				<SortLink
@@ -194,7 +195,7 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 	// callers below `cloneElement` this result to inject `style`, which React only
 	// applies to real elements — a Fragment silently drops it (and warns).
 	const getHeaderCellContent = (isHidden?: boolean): React.ReactElement =>
-		props.fixedLayout ? (
+		props.hasFixedLayout ? (
 			getFixedLayoutSubRenders(isHidden)
 		) : (
 			<div
@@ -211,7 +212,7 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 			aria-label={labelType === 'string' ? (label as string) : undefined}
 			aria-sort={ariaSort}
 			className={classNames({
-				'slds-is-sortable': sortable,
+				'slds-is-sortable': isSortable,
 				'slds-is-sorted': isSorted,
 				[`slds-is-sorted_${effectiveSortDirection}`]: effectiveSortDirection,
 				'slds-is-sorted_asc': isSorted && !effectiveSortDirection,
@@ -229,17 +230,17 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 			}}
 			scope="col"
 			style={
-				fixedHeader || width
+				hasFixedHeader || width
 					? {
-							height: fixedHeader ? 0 : undefined,
-							lineHeight: fixedHeader ? 0 : undefined,
+							height: hasFixedHeader ? 0 : undefined,
+							lineHeight: hasFixedHeader ? 0 : undefined,
 							width: width || undefined,
 						}
 					: undefined
 			}
 			tabIndex={tabIndex}
 		>
-			{fixedHeader
+			{hasFixedHeader
 				? React.cloneElement(
 						getHeaderCellContent(true) as React.ReactElement<{
 							style?: React.CSSProperties;
@@ -256,7 +257,7 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 						}
 					)
 				: getHeaderCellContent()}
-			{fixedHeader ? (
+			{hasFixedHeader ? (
 				<CellFixed>
 					{React.cloneElement(
 						getHeaderCellContent() as React.ReactElement<{
@@ -271,7 +272,7 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 								lineHeight: 1.25,
 								width: '100%',
 							},
-							tabIndex: sortable ? 0 : undefined,
+							tabIndex: isSortable ? 0 : undefined,
 						}
 					)}
 				</CellFixed>

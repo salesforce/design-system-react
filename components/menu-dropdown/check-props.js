@@ -48,6 +48,23 @@ if (process.env.NODE_ENV !== 'production') {
 			'menuPosition="relative"',
 			createDocUrl('menuPosition')
 		);
+
+		deprecatedProperty(COMPONENT, props.multiple, 'multiple', 'isMultiple');
+		deprecatedProperty(COMPONENT, props.checkmark, 'checkmark', 'hasCheckmark');
+		deprecatedProperty(COMPONENT, props.hint, 'hint', 'isHint');
+		deprecatedProperty(COMPONENT, props.inverse, 'inverse', 'isInverse');
+		deprecatedProperty(
+			COMPONENT,
+			props.buttonInverse,
+			'buttonInverse',
+			'isButtonInverse'
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.inheritTargetWidth,
+			'inheritTargetWidth',
+			'isTargetWidthInherited'
+		);
 	};
 }
 

@@ -22,15 +22,22 @@ export interface SearchAssistiveText extends InputAssistiveText {
 /**
  * Props for the Search component
  */
-export interface SearchProps extends Omit<InputProps, 'assistiveText' | 'iconLeft' | 'iconRight'> {
+export interface SearchProps extends Omit<
+	InputProps,
+	'assistiveText' | 'iconLeft' | 'iconRight'
+> {
 	/** Assistive text for accessibility */
 	assistiveText?: SearchAssistiveText | string;
 	/** Adds a clear button to the right of the input */
+	isClearable?: boolean;
+	/** @deprecated Use `isClearable` instead. */
 	clearable?: boolean;
 	/** Handler for clear button click */
 	onClear?: (event: React.MouseEvent) => void;
 	/** Handler for search (enter key or search icon click) */
-	onSearch?: (event: KeyboardEvent<HTMLInputElement> | React.MouseEvent) => void;
+	onSearch?: (
+		event: KeyboardEvent<HTMLInputElement> | React.MouseEvent
+	) => void;
 }
 
 const handleKeyDown = (
@@ -52,7 +59,8 @@ const handleKeyDown = (
  */
 const Search = ({
 	assistiveText,
-	clearable = false,
+	isClearable: isClearableProp,
+	clearable,
 	onClear,
 	onSearch,
 	placeholder,
@@ -60,9 +68,19 @@ const Search = ({
 }: SearchProps) => {
 	checkProps(
 		SEARCH,
-		{ assistiveText, clearable, onClear, onSearch, placeholder, ...props },
+		{
+			assistiveText,
+			isClearable: isClearableProp,
+			clearable,
+			onClear,
+			onSearch,
+			placeholder,
+			...props,
+		},
 		componentDoc
 	);
+
+	const isClearable = isClearableProp ?? clearable ?? false;
 
 	// Handle both string and object forms of assistiveText
 	const mergedAssistiveText: InputAssistiveText =
@@ -82,7 +100,7 @@ const Search = ({
 				/>
 			}
 			iconRight={
-				clearable ? (
+				isClearable ? (
 					<InputIcon
 						assistiveText={{ icon: 'Clear' }}
 						category="utility"
@@ -91,7 +109,12 @@ const Search = ({
 					/>
 				) : null
 			}
-			onKeyDown={onSearch ? (event) => handleKeyDown(event as KeyboardEvent<HTMLInputElement>, onSearch) : undefined}
+			onKeyDown={
+				onSearch
+					? (event) =>
+							handleKeyDown(event as KeyboardEvent<HTMLInputElement>, onSearch)
+					: undefined
+			}
 			placeholder={placeholder}
 			{...props}
 		/>

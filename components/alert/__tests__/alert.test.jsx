@@ -24,11 +24,10 @@ class DemoComponent extends Component {
 						{this.state.isOpen ? (
 							<Alert
 								style={this.props.style}
-								dismissible
+								isDismissible
 								icon={<Icon category="utility" name="user" />}
 								labels={{
-									heading:
-										'Logged in as John Smith (johnsmith@acme.com).',
+									heading: 'Logged in as John Smith (johnsmith@acme.com).',
 									headingLink: 'Log out',
 								}}
 								onClickHeadingLink={this.props.onClickHeadingLink}
@@ -52,9 +51,7 @@ describe('SLDSAlert', () => {
 			const { container } = render(<DemoComponent />);
 			expect(container.querySelector('.slds-notify')).toBeInTheDocument();
 
-			const closeButton = container.querySelector(
-				'button.slds-notify__close'
-			);
+			const closeButton = container.querySelector('button.slds-notify__close');
 			fireEvent.click(closeButton);
 
 			expect(container.querySelector('.slds-notify')).not.toBeInTheDocument();
@@ -82,6 +79,46 @@ describe('SLDSAlert', () => {
 			expect(container.querySelector('.slds-notify')).toHaveStyle({
 				backgroundColor: 'rgb(18, 49, 35)',
 			});
+		});
+	});
+
+	describe('Deprecated props', () => {
+		it('still honors dismissible, and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Alert
+						dismissible
+						labels={{ heading: 'Deprecated dismissible' }}
+						variant="info"
+					/>
+				</IconSettings>
+			);
+			expect(
+				container.querySelector('button.slds-notify__close')
+			).toBeInTheDocument();
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(
+				messages.some(
+					(m) => m.includes('`dismissible`') && m.includes('`isDismissible`')
+				)
+			).toBe(true);
+			consoleError.mockRestore();
+		});
+	});
+
+	describe('isDismissible', () => {
+		it('does not render a close button by default', () => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Alert labels={{ heading: 'Not dismissible' }} variant="info" />
+				</IconSettings>
+			);
+			expect(
+				container.querySelector('button.slds-notify__close')
+			).not.toBeInTheDocument();
 		});
 	});
 });

@@ -1,9 +1,10 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode } from 'react';
+import React, { useEffect, type ReactNode } from 'react';
 import classnames from 'classnames';
 import { MEDIA_OBJECT } from '../../utilities/constants';
+import checkProps from './check-props';
 
 /**
  * CSS classes for MediaObject parts (for external DOM queries)
@@ -27,6 +28,8 @@ export interface MediaObjectProps {
 	/** The figure (optional visualization, usually an icon or image) */
 	figure?: ReactNode;
 	/** Vertically center body with the middle of figure */
+	isVerticallyCentered?: boolean;
+	/** @deprecated Use `isVerticallyCentered` instead. */
 	verticalCenter?: boolean;
 }
 
@@ -34,19 +37,28 @@ export interface MediaObjectProps {
  * When you need text and a figure next to each other, use a media object.
  * This is a fundamental layout pattern used throughout SLDS.
  */
-const MediaObject = ({
-	body,
-	canTruncate,
-	className,
-	figure,
-	verticalCenter,
-}: MediaObjectProps): React.ReactElement => {
+const MediaObject = (props: MediaObjectProps): React.ReactElement => {
+	const {
+		body,
+		canTruncate,
+		className,
+		figure,
+		isVerticallyCentered: isVerticallyCenteredProp,
+		verticalCenter,
+	} = props;
+	const isVerticallyCentered = isVerticallyCenteredProp ?? verticalCenter;
+
+	useEffect(() => {
+		checkProps(MEDIA_OBJECT, props);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	return (
 		<div
 			className={classnames(
 				cssClasses.base,
 				{
-					'slds-media_center': verticalCenter,
+					'slds-media_center': isVerticallyCentered,
 					'slds-has-flexi-truncate': canTruncate,
 				},
 				className as string
@@ -61,18 +73,3 @@ const MediaObject = ({
 MediaObject.displayName = MEDIA_OBJECT;
 
 export default MediaObject;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

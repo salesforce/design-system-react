@@ -43,7 +43,7 @@ export default {
 			control: 'radio',
 			options: ['base', 'brand', 'inverse'],
 		},
-		hasContainer: {
+		hasNoContainer: {
 			control: 'boolean',
 		},
 		isDelayed: {
@@ -203,7 +203,7 @@ export const WithDelay = {
 export const InlineSpinner = {
 	args: {
 		isInline: true,
-		hasContainer: false,
+		hasNoContainer: true,
 	},
 	decorators: [inlineDecorator],
 };
@@ -213,7 +213,7 @@ export const InlineSpinner = {
  */
 export const NoContainer = {
 	args: {
-		hasContainer: false,
+		hasNoContainer: true,
 	},
 	decorators: [inlineDecorator],
 };
@@ -225,23 +225,23 @@ export const AllSizes = {
 	render: () => (
 		<div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
 			<div style={{ textAlign: 'center' }}>
-				<Spinner size="xx-small" hasContainer={false} />
+				<Spinner size="xx-small" hasNoContainer />
 				<div style={{ marginTop: '2rem', fontSize: '12px' }}>xx-small</div>
 			</div>
 			<div style={{ textAlign: 'center' }}>
-				<Spinner size="x-small" hasContainer={false} />
+				<Spinner size="x-small" hasNoContainer />
 				<div style={{ marginTop: '2rem', fontSize: '12px' }}>x-small</div>
 			</div>
 			<div style={{ textAlign: 'center' }}>
-				<Spinner size="small" hasContainer={false} />
+				<Spinner size="small" hasNoContainer />
 				<div style={{ marginTop: '2rem', fontSize: '12px' }}>small</div>
 			</div>
 			<div style={{ textAlign: 'center' }}>
-				<Spinner size="medium" hasContainer={false} />
+				<Spinner size="medium" hasNoContainer />
 				<div style={{ marginTop: '2rem', fontSize: '12px' }}>medium</div>
 			</div>
 			<div style={{ textAlign: 'center' }}>
-				<Spinner size="large" hasContainer={false} />
+				<Spinner size="large" hasNoContainer />
 				<div style={{ marginTop: '2rem', fontSize: '12px' }}>large</div>
 			</div>
 		</div>

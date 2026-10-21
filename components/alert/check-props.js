@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
@@ -11,6 +12,13 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 		/* eslint-disable max-len */
+		deprecatedProperty(
+			COMPONENT,
+			props.dismissible,
+			'dismissible',
+			'isDismissible',
+			createDocUrl('isDismissible')
+		);
 		sunsetProperty(
 			COMPONENT,
 			props.iconCategory,
@@ -46,7 +54,7 @@ if (process.env.NODE_ENV !== 'production') {
 		);
 		sunsetProperty(
 			COMPONENT,
-			props.isOpen,
+			props.onDismiss,
 			'onDismiss',
 			`Use \`onRequestClose\` instead. ${createDocUrl('onRequestClose')}`
 		);

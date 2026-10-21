@@ -1,12 +1,23 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import { useRef, useCallback, useImperativeHandle, forwardRef, type ReactNode, type KeyboardEvent, type MouseEvent, type FocusEvent } from 'react';
+import {
+	useRef,
+	useCallback,
+	useEffect,
+	useImperativeHandle,
+	forwardRef,
+	type ReactNode,
+	type KeyboardEvent,
+	type MouseEvent,
+	type FocusEvent,
+} from 'react';
 import classNames from 'classnames';
 import { PILL } from '../../utilities/constants';
 import UtilityIcon from '../utilities/utility-icon';
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
+import checkProps from './check-props';
 
 /**
  * Pill variant types
@@ -42,6 +53,8 @@ export interface PillProps {
 	/** Avatar element to display */
 	avatar?: ReactNode;
 	/** Use bare styling */
+	isBare?: boolean;
+	/** @deprecated Use `isBare` instead. */
 	bare?: boolean;
 	/** Custom content (overrides label) */
 	children?: ReactNode;
@@ -89,25 +102,34 @@ const defaultAssistiveText: PillAssistiveText = {};
 /**
  * A pill displays a label that can contain links and can be removed from view.
  */
-const Pill = forwardRef<PillRef, PillProps>(({
-	assistiveText: propAssistiveText,
-	avatar,
-	bare,
-	children,
-	className,
-	hasError,
-	href,
-	icon,
-	labels: propLabels,
-	onBlur,
-	onClick,
-	onFocus,
-	onKeyDown,
-	onRemove,
-	tabIndex,
-	'aria-selected': ariaSelected,
-	variant = 'link',
-}, ref) => {
+const Pill = forwardRef<PillRef, PillProps>((props, ref) => {
+	const {
+		assistiveText: propAssistiveText,
+		avatar,
+		bare,
+		children,
+		className,
+		hasError,
+		href,
+		icon,
+		isBare: isBareProp,
+		labels: propLabels,
+		onBlur,
+		onClick,
+		onFocus,
+		onKeyDown,
+		onRemove,
+		tabIndex,
+		'aria-selected': ariaSelected,
+		variant = 'link',
+	} = props;
+	const isBare = isBareProp ?? bare;
+
+	useEffect(() => {
+		checkProps(PILL, props);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const rootRef = useRef<HTMLSpanElement | null>(null);
 	const labels = { ...defaultLabels, ...propLabels };
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
@@ -122,35 +144,41 @@ const Pill = forwardRef<PillRef, PillProps>(({
 		return typeof href === 'string' ? href : '#';
 	}, [href]);
 
-	const handleKeyDown = useCallback((event: KeyboardEvent<HTMLSpanElement>) => {
-		onKeyDown?.(event);
-		if (event.defaultPrevented) return;
+	const handleKeyDown = useCallback(
+		(event: KeyboardEvent<HTMLSpanElement>) => {
+			onKeyDown?.(event);
+			if (event.defaultPrevented) return;
 
-		switch (event.keyCode) {
-			case KEYS.ENTER:
-				if (onClick) {
-					EventUtil.trap(event);
-					onClick();
-				}
-				break;
-			case KEYS.BACKSPACE:
-			case KEYS.DELETE:
-				if (onRemove) {
-					EventUtil.trap(event);
-					onRemove();
-				}
-				break;
-			default:
-				break;
-		}
-	}, [onClick, onKeyDown, onRemove]);
+			switch (event.keyCode) {
+				case KEYS.ENTER:
+					if (onClick) {
+						EventUtil.trap(event);
+						onClick();
+					}
+					break;
+				case KEYS.BACKSPACE:
+				case KEYS.DELETE:
+					if (onRemove) {
+						EventUtil.trap(event);
+						onRemove();
+					}
+					break;
+				default:
+					break;
+			}
+		},
+		[onClick, onKeyDown, onRemove]
+	);
 
-	const handleLinkClick = useCallback((event: MouseEvent<HTMLAnchorElement>) => {
-		if (getHref() === '#') {
-			event.preventDefault();
-		}
-		onClick?.(event);
-	}, [getHref, onClick]);
+	const handleLinkClick = useCallback(
+		(event: MouseEvent<HTMLAnchorElement>) => {
+			if (getHref() === '#') {
+				event.preventDefault();
+			}
+			onClick?.(event);
+		},
+		[getHref, onClick]
+	);
 
 	// Render icon or avatar
 	const renderIcon = () => {
@@ -177,10 +205,7 @@ const Pill = forwardRef<PillRef, PillProps>(({
 				);
 			}
 			return (
-				<span
-					className="slds-pill__label"
-					title={labels.title || labels.label}
-				>
+				<span className="slds-pill__label" title={labels.title || labels.label}>
 					{labels.label}
 				</span>
 			);
@@ -230,15 +255,15 @@ const Pill = forwardRef<PillRef, PillProps>(({
 				tabIndex === undefined
 					? undefined
 					: typeof tabIndex === 'string'
-					? Number(tabIndex)
-					: tabIndex
+						? Number(tabIndex)
+						: tabIndex
 			}
 			className={classNames(
 				'slds-pill',
 				{
 					'slds-pill_link': variant === 'link',
 					'slds-has-error': hasError,
-					'slds-pill_bare': bare,
+					'slds-pill_bare': isBare,
 				},
 				className as string
 			)}
@@ -257,18 +282,3 @@ const Pill = forwardRef<PillRef, PillProps>(({
 Pill.displayName = PILL;
 
 export default Pill;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

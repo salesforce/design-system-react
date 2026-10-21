@@ -76,7 +76,7 @@ class Example extends React.Component {
 							<SimpleDataTableColumn
 								label="Opportunity Name"
 								property="name"
-								truncate
+								isTruncated
 							/>
 						</SimpleDataTable>
 					</Card>

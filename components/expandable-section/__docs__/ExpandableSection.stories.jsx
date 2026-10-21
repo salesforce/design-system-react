@@ -16,7 +16,7 @@ export default {
 	],
 	argTypes: {
 		isOpen: { control: 'boolean' },
-		nonCollapsible: { control: 'boolean' },
+		isNonCollapsible: { control: 'boolean' },
 	},
 };
 
@@ -24,7 +24,10 @@ export default {
 export const Default = {
 	render: () => (
 		<ExpandableSection title="Expandable Section">
-			<p>This is the content of the expandable section. It can contain any React content.</p>
+			<p>
+				This is the content of the expandable section. It can contain any React
+				content.
+			</p>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 		</ExpandableSection>
 	),
@@ -50,7 +53,7 @@ export const InitiallyCollapsed = {
 // Non-collapsible
 export const NonCollapsible = {
 	render: () => (
-		<ExpandableSection title="Non-Collapsible Section" nonCollapsible>
+		<ExpandableSection title="Non-Collapsible Section" isNonCollapsible>
 			<p>This section cannot be collapsed. It&apos;s always visible.</p>
 		</ExpandableSection>
 	),

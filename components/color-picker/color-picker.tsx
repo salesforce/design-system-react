@@ -51,6 +51,8 @@ export interface ColorPickerProps {
 	/** Disable flip behavior for popover alignment */
 	hasStaticAlignment?: boolean;
 	/** Hides the text input */
+	isInputHidden?: boolean;
+	/** @deprecated Use `isInputHidden` instead. */
 	hideInput?: boolean;
 	/** Controlled popover open state */
 	isOpen?: boolean;
@@ -157,7 +159,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	errorTextWorkingColor,
 	events = {},
 	hasStaticAlignment,
-	hideInput = false,
+	isInputHidden: isInputHiddenProp,
+	hideInput,
 	isOpen: isOpenProp,
 	labels: labelsProp,
 	menuPosition = 'absolute',
@@ -171,6 +174,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	onRequestClose,
 	onRequestOpen,
 }) => {
+	const isInputHidden = isInputHiddenProp ?? hideInput ?? false;
+
 	// Merge labels and assistive text with defaults
 	const labels = useMemo(
 		() => ({ ...defaultLabels, ...labelsProp }),
@@ -204,9 +209,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	const [workingColor, setWorkingColor] = useState<WorkingColor>(
 		getInitialWorkingColor
 	);
-	const [previousWorkingColor, setPreviousWorkingColor] = useState<WorkingColor>(
-		getInitialWorkingColor
-	);
+	const [previousWorkingColor, setPreviousWorkingColor] =
+		useState<WorkingColor>(getInitialWorkingColor);
 	const [colorErrorMessage, setColorErrorMessage] = useState<string>(
 		errorTextProp || ''
 	);
@@ -215,26 +219,31 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	useEffect(() => {
 		// checkProps is a no-op in production
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		(checkProps as any)(COLOR_PICKER, {
-			assistiveText: assistiveTextProp,
-			className,
-			classNameMenu,
-			id: idProp,
-			disabled,
-			errorText: errorTextProp,
-			errorTextWorkingColor,
-			events,
-			hasStaticAlignment,
-			hideInput,
-			isOpen: isOpenProp,
-			labels: labelsProp,
-			menuPosition,
-			swatchColors,
-			defaultSelectedTab,
-			variant,
-			value: valueProp,
-			valueWorking: valueWorkingProp,
-		}, {});
+		(checkProps as any)(
+			COLOR_PICKER,
+			{
+				assistiveText: assistiveTextProp,
+				className,
+				classNameMenu,
+				id: idProp,
+				disabled,
+				errorText: errorTextProp,
+				errorTextWorkingColor,
+				events,
+				hasStaticAlignment,
+				isInputHidden: isInputHiddenProp,
+				hideInput,
+				isOpen: isOpenProp,
+				labels: labelsProp,
+				menuPosition,
+				swatchColors,
+				defaultSelectedTab,
+				variant,
+				value: valueProp,
+				valueWorking: valueWorkingProp,
+			},
+			{}
+		);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -266,7 +275,15 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	const updateWorkingColor = useCallback(
 		(
 			event: React.SyntheticEvent,
-			colorOptions: { hex?: string; red?: string | number; green?: string | number; blue?: string | number; hue?: number | string; saturation?: number; value?: number }
+			colorOptions: {
+				hex?: string;
+				red?: string | number;
+				green?: string | number;
+				blue?: string | number;
+				hue?: number | string;
+				saturation?: number;
+				value?: number;
+			}
 		) => {
 			const newColor = ColorUtils.getNewColor(
 				colorOptions,
@@ -351,22 +368,20 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 			if (events.onValidateColor) {
 				isValid = events.onValidateColor(newCurrentColor);
 			} else {
-				isValid = namedColorHex
-					? true
-					: ColorUtils.isValidHex(newCurrentColor);
+				isValid = namedColorHex ? true : ColorUtils.isValidHex(newCurrentColor);
 			}
 
-		setCurrentColor(newCurrentColor);
-		setWorkingColor(
-			ColorUtils.getNewColor(
-				{
-					hex: namedColorHex || newCurrentColor,
-					name: namedColorHex ? newCurrentColor.toLowerCase() : null,
-				} as { hex: string; name?: string | null },
-				events.onValidateWorkingColor
-			) as WorkingColor
-		);
-		setColorErrorMessage(isValid ? '' : labels.invalidColor || '');
+			setCurrentColor(newCurrentColor);
+			setWorkingColor(
+				ColorUtils.getNewColor(
+					{
+						hex: namedColorHex || newCurrentColor,
+						name: namedColorHex ? newCurrentColor.toLowerCase() : null,
+					} as { hex: string; name?: string | null },
+					events.onValidateWorkingColor
+				) as WorkingColor
+			);
+			setColorErrorMessage(isValid ? '' : labels.invalidColor || '');
 
 			if (events.onChange) {
 				events.onChange(event, {
@@ -449,7 +464,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 
 	// Render helpers
 	const renderInput = () => {
-		if (hideInput) return null;
+		if (isInputHidden) return null;
 
 		return (
 			<Input
@@ -477,7 +492,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 		if (variant !== 'base' && variant !== 'swatches') return null;
 
 		return (
-			<TabsPanel label={labels.swatchTab ?? ""}>
+			<TabsPanel label={labels.swatchTab ?? ''}>
 				<SwatchPicker
 					color={workingColor}
 					labels={labels}
@@ -492,7 +507,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 		if (variant !== 'base' && variant !== 'custom') return null;
 
 		return (
-			<TabsPanel label={labels.customTab ?? ""}>
+			<TabsPanel label={labels.customTab ?? ''}>
 				<CustomColor
 					assistiveText={assistiveText}
 					id={componentId}
@@ -556,7 +571,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 						assistiveText.label ? 'slds-assistive-text' : ''
 					)}
 					htmlFor={
-						!hideInput
+						!isInputHidden
 							? `color-picker-summary-input-${componentId}`
 							: undefined
 					}
@@ -568,19 +583,31 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 					ariaLabelledby={`color-picker-label-${componentId}`}
 					align="bottom left"
 					body={popoverBody}
-					className={classNames(
-						'slds-color-picker__selector',
-						classNameMenu
-					)}
+					className={classNames('slds-color-picker__selector', classNameMenu)}
 					footer={popoverFooter}
 					hasNoCloseButton
 					hasNoNubbin
 					hasStaticAlignment={hasStaticAlignment}
 					id={`slds-color-picker__selector-${componentId}`}
 					isOpen={isOpen}
-					onClose={onClose as unknown as ((event?: unknown, data?: { componentWillUnmount?: boolean }) => void) | undefined}
-					onOpen={onOpen as unknown as ((event?: unknown, data?: { portal?: HTMLElement }) => void) | undefined}
-					onRequestClose={handleOnRequestClose as unknown as ((event?: unknown, data?: { trigger?: string }) => void) | undefined}
+					onClose={
+						onClose as unknown as
+							| ((
+									event?: unknown,
+									data?: { componentWillUnmount?: boolean }
+							  ) => void)
+							| undefined
+					}
+					onOpen={
+						onOpen as unknown as
+							| ((event?: unknown, data?: { portal?: HTMLElement }) => void)
+							| undefined
+					}
+					onRequestClose={
+						handleOnRequestClose as unknown as
+							| ((event?: unknown, data?: { trigger?: string }) => void)
+							| undefined
+					}
 					position={menuPosition}
 				>
 					<Button
@@ -593,9 +620,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 						label={
 							<div>
 								<span className="slds-assistive-text">
-									{assistiveText.label
-										? assistiveText.label
-										: labels.label}
+									{assistiveText.label ? assistiveText.label : labels.label}
 								</span>
 								<Swatch color={currentColor} labels={labels} />
 							</div>
@@ -621,4 +646,3 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 ColorPicker.displayName = COLOR_PICKER;
 
 export default ColorPicker;
-

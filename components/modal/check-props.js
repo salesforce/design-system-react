@@ -29,8 +29,22 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.dismissible,
 			'dismissible',
+			'isNonDismissible',
+			createDocUrl('isNonDismissible')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.disableClose,
 			'disableClose',
-			createDocUrl('disableClose')
+			'isNonDismissible',
+			createDocUrl('isNonDismissible')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.directional,
+			'directional',
+			'isDirectional',
+			createDocUrl('isDirectional')
 		);
 	};
 }

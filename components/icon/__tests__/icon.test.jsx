@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import Icon from '../index';
 import IconSettings from '../../icon-settings';
@@ -28,7 +28,9 @@ describe('SLDSIcon', () => {
 				</IconSettings>
 			);
 
-			expect(container.querySelector('.slds-icon_container')).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-icon_container')
+			).toBeInTheDocument();
 		});
 
 		it('renders assistive text', () => {
@@ -44,7 +46,9 @@ describe('SLDSIcon', () => {
 				</IconSettings>
 			);
 
-			expect(container.querySelector('.slds-assistive-text').textContent).toBe('Log a Call');
+			expect(container.querySelector('.slds-assistive-text').textContent).toBe(
+				'Log a Call'
+			);
 		});
 
 		it('renders icon name class on svg', () => {
@@ -61,7 +65,9 @@ describe('SLDSIcon', () => {
 				</IconSettings>
 			);
 
-			expect(container.querySelector('.slds-icon-standard-log-a-call')).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-icon-standard-log-a-call')
+			).toBeInTheDocument();
 		});
 
 		it('renders custom background color', () => {
@@ -112,7 +118,9 @@ describe('SLDSIcon', () => {
 				</IconSettings>
 			);
 
-			expect(container.querySelector('.slds-icon_container')).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-icon_container')
+			).toBeInTheDocument();
 		});
 
 		it('renders assistive text', () => {
@@ -127,7 +135,9 @@ describe('SLDSIcon', () => {
 				</IconSettings>
 			);
 
-			expect(container.querySelector('.slds-assistive-text').textContent).toBe('Heart');
+			expect(container.querySelector('.slds-assistive-text').textContent).toBe(
+				'Heart'
+			);
 		});
 
 		it('renders icon name class on svg', () => {
@@ -143,7 +153,9 @@ describe('SLDSIcon', () => {
 				</IconSettings>
 			);
 
-			expect(container.querySelector('.slds-icon-custom-custom1')).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-icon-custom-custom1')
+			).toBeInTheDocument();
 		});
 
 		it('renders icon size class', () => {
@@ -178,7 +190,9 @@ describe('SLDSIcon', () => {
 				</IconSettings>
 			);
 
-			expect(container.querySelector('.slds-icon_container')).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-icon_container')
+			).toBeInTheDocument();
 		});
 
 		it('renders assistive text', () => {
@@ -195,7 +209,9 @@ describe('SLDSIcon', () => {
 				</IconSettings>
 			);
 
-			expect(container.querySelector('.slds-assistive-text').textContent).toBe('Announcements');
+			expect(container.querySelector('.slds-assistive-text').textContent).toBe(
+				'Announcements'
+			);
 		});
 
 		it('renders round container', () => {
@@ -212,7 +228,9 @@ describe('SLDSIcon', () => {
 				</IconSettings>
 			);
 
-			expect(container.querySelector('.slds-icon_container_circle')).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-icon_container_circle')
+			).toBeInTheDocument();
 		});
 
 		it('renders icon name class on svg', () => {
@@ -230,7 +248,9 @@ describe('SLDSIcon', () => {
 				</IconSettings>
 			);
 
-			expect(container.querySelector('.slds-icon-action-announcement')).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-icon-action-announcement')
+			).toBeInTheDocument();
 		});
 
 		it('renders icon size class', () => {
@@ -265,7 +285,9 @@ describe('SLDSIcon', () => {
 				</IconSettings>
 			);
 
-			expect(container.querySelector('[title="custom title"]')).toBeInTheDocument();
+			expect(
+				container.querySelector('[title="custom title"]')
+			).toBeInTheDocument();
 		});
 	});
 
@@ -278,7 +300,11 @@ describe('SLDSIcon', () => {
 			);
 
 			// Utility icons don't get the container class
-			expect(container.querySelector('span').classList.contains('slds-icon_container')).toBe(false);
+			expect(
+				container
+					.querySelector('span')
+					.classList.contains('slds-icon_container')
+			).toBe(false);
 		});
 
 		it('medium size does not render size class', () => {
@@ -290,7 +316,9 @@ describe('SLDSIcon', () => {
 			);
 
 			// Medium is default, so no size class is added
-			expect(container.querySelector('svg').classList.contains('slds-icon_medium')).toBe(false);
+			expect(
+				container.querySelector('svg').classList.contains('slds-icon_medium')
+			).toBe(false);
 		});
 
 		it('utility icons do not render name class on svg', () => {
@@ -306,7 +334,9 @@ describe('SLDSIcon', () => {
 			);
 
 			// Utility icons don't render the icon-category-name pattern
-			expect(container.querySelector('.slds-icon-utility-open-folder')).not.toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-icon-utility-open-folder')
+			).not.toBeInTheDocument();
 		});
 	});
 
@@ -316,7 +346,7 @@ describe('SLDSIcon', () => {
 				<IconSettings iconPath="/assets/icons">
 					<DemoIcon
 						assistiveText={{ label: 'New stuff!' }}
-						inverse
+						isInverse
 						path="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
 						size="medium"
 					/>
@@ -324,7 +354,11 @@ describe('SLDSIcon', () => {
 			);
 
 			// When using path, category-specific classes are not applied
-			expect(container.querySelector('span').classList.contains('slds-icon-standard-')).toBe(false);
+			expect(
+				container
+					.querySelector('span')
+					.classList.contains('slds-icon-standard-')
+			).toBe(false);
 		});
 
 		it('path prop is passed to svg', () => {
@@ -332,7 +366,7 @@ describe('SLDSIcon', () => {
 				<IconSettings iconPath="/assets/icons">
 					<DemoIcon
 						assistiveText={{ label: 'New stuff!' }}
-						inverse
+						isInverse
 						path="/assets/icons/utility-sprite/svg/symbols.svg#announcement"
 						size="medium"
 					/>
@@ -342,6 +376,39 @@ describe('SLDSIcon', () => {
 			expect(container.querySelector('use')).toHaveAttribute(
 				'href',
 				'/assets/icons/utility-sprite/svg/symbols.svg#announcement'
+			);
+		});
+	});
+
+	describe('Deprecated boolean prop aliases', () => {
+		it('still applies `inverse`, and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Icon category="standard" inverse name="account" />
+				</IconSettings>
+			);
+
+			expect(container.querySelector('svg')).toHaveClass(
+				'slds-icon-text-default'
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`isInverse`')
+			);
+			consoleError.mockRestore();
+		});
+
+		it('applies `isInverse`', () => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Icon category="standard" isInverse name="account" />
+				</IconSettings>
+			);
+
+			expect(container.querySelector('svg')).toHaveClass(
+				'slds-icon-text-default'
 			);
 		});
 	});

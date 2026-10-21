@@ -11,6 +11,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `Button`: `xx-small` icon size ([#3228](https://github.com/salesforce/design-system-react/pull/3228))
 - `ButtonStateful`: `success` and `text` variants ([#3234](https://github.com/salesforce/design-system-react/pull/3234))
 
+### Changed
+
+- **BREAKING**: `Toast` renders its close button only when the new `isDismissible` prop is set, matching `Alert`. Add `isDismissible` to keep the close button.
+- **BREAKING**: `WelcomeMat` requires `isOpen`; it no longer defaults to `true`.
+
+### Deprecated
+
+- Boolean props renamed to `is*`/`has*`/`can*` names. The old names still work and warn in development; they will be removed in the next major version.
+  - `Alert`: `dismissible` → `isDismissible`
+  - `Avatar`, `Icon`: `inverse` → `isInverse`
+  - `Button`: `inverse`, `hint`, `responsive` → `isInverse`, `isHint`, `isResponsive`; `ButtonIcon`: `hint`, `inverse` → `isHint`, `isInverse`; `ButtonStateful`: `responsive` → `isResponsive`
+  - `Checkbox`: `coverable`, `vertical` → `isCoverable`, `isVertical`; `Radio`: the same plus `deselectable` → `canDeselect`; `VisualPicker`: `coverable`, `vertical` → `isCoverable`, `isVertical`
+  - `ColorPicker`: `hideInput` → `isInputHidden`
+  - `Combobox`: `multiple`, `predefinedOptionsOnly`, `singleInputDisabled` → `isMultiple`, `hasPredefinedOptionsOnly`, `isSingleInputDisabled`. A custom `onRenderMenuItem` component receives `isSelected` as well as the deprecated `selected`.
+  - `ExpandableSection`: `nonCollapsible` → `isNonCollapsible`
+  - `MediaObject`: `verticalCenter` → `isVerticallyCentered`
+  - `MenuDropdown`: `multiple`, `checkmark`, `hint`, `inverse`, `buttonInverse`, `inheritTargetWidth` → `isMultiple`, `hasCheckmark`, `isHint`, `isInverse`, `isButtonInverse`, `isTargetWidthInherited`
+  - `Modal`: `disableClose`, `directional` → `isNonDismissible`, `isDirectional`
+  - `PageHeader`: `joined` → `isJoined`; `details[].truncate` → `details[].isTruncated`
+  - `PanelFilterGroup`: `modified` → `isModified`
+  - `Pill`: `bare` → `isBare`; `PillContainer` options: `bare`, `error` → `isBare`, `hasError`
+  - `Popover`: `disabled` → `isDisabled`; `PopoverEditDialog`: `isModified` → `hasChanges`
+  - `Search`: `clearable` → `isClearable`
+  - `SimpleDataTable`: `columnBordered`, `fixedHeader`, `fixedLayout`, `joined`, `keyboardNavigation`, `noRowHover`, `stacked`, `stackedHorizontal`, `striped`, `unborderedRow`, `unbufferedCell` → `hasColumnBorders`, `hasFixedHeader`, `hasFixedLayout`, `isJoined`, `hasKeyboardNavigation`, `hasNoRowHover`, `isStacked`, `isStackedHorizontal`, `isStriped`, `hasNoRowBorders`, `hasNoCellBuffer`. Columns: `primaryColumn`, `sortable`, `truncate` → `isPrimaryColumn`, `isSortable`, `isTruncated`. Row actions: `noHint` → `hasNoHint`. Custom cells receive `isRowHeader` and `hasFixedLayout` as well as the deprecated `rowHeader` and `fixedLayout`.
+  - `Slider`: `vertical` → `isVertical`
+  - `Spinner`: `hasContainer` (default `true`) → `hasNoContainer` (default `false`)
+
 ### Fixed
 
 - The `@salesforce-ux/design-system` peer dependency accepts `^2.25.0-alpha.2` instead of exactly `2.25.0-alpha.2`, so installing into a project that already has a newer version no longer fails with `ERESOLVE`

@@ -9,6 +9,7 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<ToastContainer>
 					<Toast
+						isDismissible
 						labels={{
 							heading: [
 								'Account ',

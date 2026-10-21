@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
@@ -18,6 +19,13 @@ if (process.env.NODE_ENV !== 'production') {
 				label: props.labels && props.labels.label,
 			},
 			createDocUrl('assistiveText')
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.hideInput,
+			'hideInput',
+			'isInputHidden'
 		);
 	};
 }

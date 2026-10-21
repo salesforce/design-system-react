@@ -22,7 +22,7 @@ const meta: Meta<typeof Search> = {
 		),
 	],
 	argTypes: {
-		clearable: {
+		isClearable: {
 			control: 'boolean',
 		},
 		disabled: {
@@ -56,7 +56,7 @@ export const Clearable: Story = {
 					assistiveText={{ label: 'Search' }}
 					value={value}
 					onChange={(event, data) => setValue(data.value)}
-					clearable={value.length > 0}
+					isClearable={value.length > 0}
 					onClear={() => setValue('')}
 					onSearch={action('search')}
 				/>
@@ -116,7 +116,7 @@ export const Controlled: Story = {
 						assistiveText={{ label: 'Search' }}
 						value={value}
 						onChange={(event, data) => setValue(data.value)}
-						clearable={value.length > 0}
+						isClearable={value.length > 0}
 						onClear={handleClear}
 						onSearch={handleSearch}
 					/>
@@ -135,7 +135,3 @@ export const Controlled: Story = {
 		return <ControlledExample />;
 	},
 };
-
-
-
-

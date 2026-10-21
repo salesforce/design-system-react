@@ -29,7 +29,8 @@ const windowDefined = typeof window !== 'undefined';
 // Types
 export type ModalAlign = 'top' | 'center';
 export type ModalSize = 'small' | 'medium' | 'large';
-export type ModalPrompt = 'success' | 'warning' | 'error' | 'wrench' | 'offline' | 'info';
+export type ModalPrompt =
+	'success' | 'warning' | 'error' | 'wrench' | 'offline' | 'info';
 
 export interface ModalAssistiveText {
 	/** This is a visually hidden label for the dialog. If not provided, `heading` is used. */
@@ -43,7 +44,11 @@ export interface ModalAssistiveText {
 export interface ModalProps {
 	/** Vertical alignment of Modal. */
 	align?: ModalAlign;
-	/** Boolean indicating if the appElement should be hidden. */
+	/**
+	 * Boolean indicating if the appElement should be hidden. Defaults to `true`.
+	 * This is a pass-through to `react-modal`'s `ariaHideApp` and keeps that library's name and
+	 * default, so it is an intentional exception to the rule that boolean props default to `false`.
+	 */
 	ariaHideApp?: boolean;
 	/** Assistive text for accessibility. */
 	assistiveText?: ModalAssistiveText;
@@ -58,10 +63,14 @@ export interface ModalProps {
 	/** Custom styles for the modal's body. */
 	contentStyle?: CSSProperties;
 	/** If true, modal footer buttons render left and right. */
+	isDirectional?: boolean;
+	/** @deprecated Use `isDirectional` instead. */
 	directional?: boolean;
 	/** If true, Modals cannot be dismissed by clicking on the close icon or pressing esc key. */
+	isNonDismissible?: boolean;
+	/** @deprecated Use `isNonDismissible` instead. */
 	disableClose?: boolean;
-	/** If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to !disableClose. */
+	/** If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to !isNonDismissible. */
 	dismissOnClickOutside?: boolean;
 	/** Callback to fire with Modal is dismissed */
 	onRequestClose?: () => void;
@@ -122,7 +131,9 @@ const Modal: React.FC<ModalProps> = ({
 	containerClassName,
 	contentClassName,
 	contentStyle: contentStyleProp,
+	isDirectional: isDirectionalProp,
 	directional,
+	isNonDismissible: isNonDismissibleProp,
 	disableClose,
 	dismissOnClickOutside,
 	onRequestClose,
@@ -142,6 +153,9 @@ const Modal: React.FC<ModalProps> = ({
 	toast,
 	closeButtonAssistiveText,
 }) => {
+	const isDirectional = isDirectionalProp ?? directional ?? false;
+	const isNonDismissible = isNonDismissibleProp ?? disableClose ?? false;
+
 	// State
 	const [returnFocusTo, setReturnFocusTo] = useState<Element | null>(null);
 
@@ -165,35 +179,39 @@ const Modal: React.FC<ModalProps> = ({
 
 	// Check props in development
 	useEffect(() => {
-		checkProps(MODAL, {
-			align,
-			ariaHideApp,
-			assistiveText: assistiveTextProp,
-			children,
-			className,
-			containerClassName,
-			contentClassName,
-			contentStyle: contentStyleProp,
-			directional,
-			disableClose,
-			dismissOnClickOutside,
-			onRequestClose,
-			footer,
-			footerClassName,
-			header,
-			headerClassName,
-			id: idProp,
-			isOpen,
-			parentSelector,
-			portalClassName,
-			prompt,
-			size,
-			tagline,
-			title,
-			heading,
-			toast,
-			closeButtonAssistiveText,
-		}, componentDoc);
+		checkProps(
+			MODAL,
+			{
+				align,
+				ariaHideApp,
+				assistiveText: assistiveTextProp,
+				children,
+				className,
+				containerClassName,
+				contentClassName,
+				contentStyle: contentStyleProp,
+				directional,
+				disableClose,
+				dismissOnClickOutside,
+				onRequestClose,
+				footer,
+				footerClassName,
+				header,
+				headerClassName,
+				id: idProp,
+				isOpen,
+				parentSelector,
+				portalClassName,
+				prompt,
+				size,
+				tagline,
+				title,
+				heading,
+				toast,
+				closeButtonAssistiveText,
+			},
+			componentDoc
+		);
 		if (ariaHideApp) {
 			checkAppElementIsSet();
 		}
@@ -226,7 +244,11 @@ const Modal: React.FC<ModalProps> = ({
 
 	// Dismiss modal handler
 	const dismissModal = useCallback(() => {
-		if (returnFocusTo && 'focus' in returnFocusTo && typeof returnFocusTo.focus === 'function') {
+		if (
+			returnFocusTo &&
+			'focus' in returnFocusTo &&
+			typeof returnFocusTo.focus === 'function'
+		) {
 			returnFocusTo.focus();
 		}
 		if (onRequestClose) {
@@ -234,25 +256,25 @@ const Modal: React.FC<ModalProps> = ({
 		}
 	}, [returnFocusTo, onRequestClose]);
 
-	// Close modal handler (respects disableClose)
+	// Close modal handler (respects isNonDismissible)
 	const closeModal = useCallback(() => {
-		if (!disableClose) {
+		if (!isNonDismissible) {
 			dismissModal();
 		}
-	}, [disableClose, dismissModal]);
+	}, [isNonDismissible, dismissModal]);
 
 	// Dismiss on click outside handler
 	const dismissModalOnClickOutside = useCallback(() => {
-		// if dismissOnClickOutside is not set, default its value to !disableClose
+		// if dismissOnClickOutside is not set, default its value to !isNonDismissible
 		const shouldDismiss =
 			dismissOnClickOutside !== undefined
 				? dismissOnClickOutside
-				: !disableClose;
+				: !isNonDismissible;
 
 		if (shouldDismiss) {
 			dismissModal();
 		}
-	}, [dismissOnClickOutside, disableClose, dismissModal]);
+	}, [dismissOnClickOutside, isNonDismissible, dismissModal]);
 
 	// Prevent click propagation inside modal
 	const handleModalClick = useCallback((event: MouseEvent) => {
@@ -270,13 +292,13 @@ const Modal: React.FC<ModalProps> = ({
 			: {
 					borderTopLeftRadius: borderRadiusValue,
 					borderTopRightRadius: borderRadiusValue,
-			  };
+				};
 		const borderBottomRadius = footer
 			? {}
 			: {
 					borderBottomLeftRadius: borderRadiusValue,
 					borderBottomRightRadius: borderRadiusValue,
-			  };
+				};
 		return {
 			...borderTopRadius,
 			...borderBottomRadius,
@@ -320,8 +342,9 @@ const Modal: React.FC<ModalProps> = ({
 	const renderHeader = () => {
 		let headerContent = header;
 		const headerEmpty = !headerContent && !(heading || title) && !tagline;
-		const closeButtonText = closeButtonAssistiveText || assistiveText.closeButton;
-		
+		const closeButtonText =
+			closeButtonAssistiveText || assistiveText.closeButton;
+
 		const closeButton = (
 			<Button
 				assistiveText={{ icon: closeButtonText }}
@@ -348,9 +371,7 @@ const Modal: React.FC<ModalProps> = ({
 					>
 						{heading || title}
 					</h1>
-					{tagline ? (
-						<p className="slds-m-top_x-small">{tagline}</p>
-					) : null}
+					{tagline ? <p className="slds-m-top_x-small">{tagline}</p> : null}
 				</div>
 			);
 		}
@@ -368,7 +389,7 @@ const Modal: React.FC<ModalProps> = ({
 				)}
 				onClick={handleModalClick}
 			>
-				{disableClose ? null : closeButton}
+				{isNonDismissible ? null : closeButton}
 				{headerContent}
 			</header>
 		);
@@ -382,7 +403,7 @@ const Modal: React.FC<ModalProps> = ({
 
 		const footerClasses = {
 			'slds-modal__footer': true,
-			'slds-modal__footer_directional': directional,
+			'slds-modal__footer_directional': isDirectional,
 			'slds-theme_default': isPrompt,
 		};
 
@@ -398,7 +419,8 @@ const Modal: React.FC<ModalProps> = ({
 
 	// Render modal content
 	const renderModal = () => {
-		const modalStyle = align === 'top' ? { justifyContent: 'flex-start' } : undefined;
+		const modalStyle =
+			align === 'top' ? { justifyContent: 'flex-start' } : undefined;
 		const borderRadius = getBorderRadius();
 		const contentStyle: CSSProperties = {
 			...borderRadius,
@@ -465,7 +487,7 @@ const Modal: React.FC<ModalProps> = ({
 			ariaHideApp={ariaHideApp}
 			isOpen={isOpen}
 			onRequestClose={closeModal}
-			role={disableClose ? 'alertdialog' : 'dialog'}
+			role={isNonDismissible ? 'alertdialog' : 'dialog'}
 			style={customStyles}
 			parentSelector={parentSelector}
 			portalClassName={classNames('ReactModalPortal', portalClassName)}
@@ -479,4 +501,3 @@ const Modal: React.FC<ModalProps> = ({
 Modal.displayName = MODAL;
 
 export default Modal;
-

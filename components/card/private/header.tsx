@@ -99,7 +99,7 @@ const CardHeader = (props: CardHeaderProps) => {
 		Header = React.cloneElement(customHeader, {
 			figure: props.icon,
 			body: heading,
-			verticalCenter: true,
+			isVerticallyCentered: true,
 			canTruncate: true,
 			...customHeader.props,
 		});
@@ -108,7 +108,7 @@ const CardHeader = (props: CardHeaderProps) => {
 			<MediaObject
 				figure={props.icon}
 				body={heading}
-				verticalCenter
+				isVerticallyCentered
 				canTruncate
 			/>
 		);

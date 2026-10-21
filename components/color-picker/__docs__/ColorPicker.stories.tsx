@@ -12,11 +12,15 @@ import Default from '../__examples__/default';
 
 const HEX_REGEX_6_DIGITS = /^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
 
-const handleChange = (event: React.SyntheticEvent, data: { color: string; isValid?: boolean }) => {
+const handleChange = (
+	event: React.SyntheticEvent,
+	data: { color: string; isValid?: boolean }
+) => {
 	action('onChange')(event, data);
 };
 
-const customOuterInputValidator = (hex: string) => !hex || HEX_REGEX_6_DIGITS.test(hex);
+const customOuterInputValidator = (hex: string) =>
+	!hex || HEX_REGEX_6_DIGITS.test(hex);
 
 const meta: Meta<typeof ColorPicker> = {
 	title: 'Components/ColorPicker',
@@ -143,7 +147,7 @@ export const PredefinedColorsOnly: Story = {
 export const HiddenInput: Story = {
 	args: {
 		events: { onChange: handleChange },
-		hideInput: true,
+		isInputHidden: true,
 		id: 'hidden-input-color-picker',
 		labels: { label: 'Choose Color' },
 	},
@@ -216,4 +220,3 @@ export const DocSiteDefault: Story = {
 	name: 'Doc site Default',
 	render: () => <Default />,
 };
-

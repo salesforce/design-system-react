@@ -1,10 +1,17 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useId, useCallback, type ChangeEvent, type FormEvent } from 'react';
+import React, {
+	useId,
+	useCallback,
+	useEffect,
+	type ChangeEvent,
+	type FormEvent,
+} from 'react';
 import classNames from 'classnames';
 import { SLIDER } from '../../utilities/constants';
 import getAriaProps from '../../utilities/get-aria-props';
+import checkProps from './check-props';
 
 /**
  * Slider size options
@@ -48,9 +55,15 @@ export interface SliderProps {
 	/** Form input name */
 	name?: string;
 	/** Called when value changes */
-	onChange?: (event: ChangeEvent<HTMLInputElement>, data: { value: number }) => void;
+	onChange?: (
+		event: ChangeEvent<HTMLInputElement>,
+		data: { value: number }
+	) => void;
 	/** Called on input event */
-	onInput?: (event: FormEvent<HTMLInputElement>, data: { value: number }) => void;
+	onInput?: (
+		event: FormEvent<HTMLInputElement>,
+		data: { value: number }
+	) => void;
 	/** Size of the slider */
 	size?: SliderSize;
 	/** Step increment (default: 1) */
@@ -58,6 +71,8 @@ export interface SliderProps {
 	/** Controlled value */
 	value?: number;
 	/** Display vertically */
+	isVertical?: boolean;
+	/** @deprecated Use `isVertical` instead. */
 	vertical?: boolean;
 }
 
@@ -86,9 +101,17 @@ const Slider = ({
 	size,
 	step = 1,
 	value,
+	isVertical: isVerticalProp,
 	vertical,
 	...rest
 }: SliderProps): React.ReactElement => {
+	const isVertical = isVerticalProp ?? vertical;
+
+	useEffect(() => {
+		checkProps(SLIDER, { vertical });
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const generatedId = useId();
 	const generatedErrorId = useId();
 
@@ -111,7 +134,9 @@ const Slider = ({
 
 	const handleInput = useCallback(
 		(event: FormEvent<HTMLInputElement>) => {
-			onInput?.(event, { value: Number((event.target as HTMLInputElement).value) });
+			onInput?.(event, {
+				value: Number((event.target as HTMLInputElement).value),
+			});
 		},
 		[onInput]
 	);
@@ -140,14 +165,17 @@ const Slider = ({
 						{min} - {max}
 					</span>
 					{disabled && (
-						<span className="slds-assistive-text"> {assistiveText.disabled}</span>
+						<span className="slds-assistive-text">
+							{' '}
+							{assistiveText.disabled}
+						</span>
 					)}
 				</span>
 			</label>
 			<div className="slds-form-element__control">
 				<div
 					className={classNames('slds-slider', {
-						'slds-slider_vertical': vertical,
+						'slds-slider_vertical': isVertical,
 						'slds-size_x-small': size === 'x-small',
 						'slds-size_small': size === 'small',
 						'slds-size_medium': size === 'medium',
@@ -166,9 +194,7 @@ const Slider = ({
 						onChange={handleChange}
 						onInput={handleInput}
 						{...ariaProps}
-						{...(value !== undefined
-							? { value }
-							: { defaultValue })}
+						{...(value !== undefined ? { value } : { defaultValue })}
 					/>
 					<span className="slds-slider__value" aria-hidden="true">
 						{displayValue}
@@ -187,4 +213,3 @@ const Slider = ({
 Slider.displayName = SLIDER;
 
 export default Slider;
-

@@ -14,6 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 			'assistiveTextCloseFilterPanel',
 			"assistiveText['closeButton']"
 		);
+		deprecatedProperty(COMPONENT, props.modified, 'modified', 'isModified');
 	};
 }
 

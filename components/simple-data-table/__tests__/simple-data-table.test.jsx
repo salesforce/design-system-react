@@ -8,6 +8,7 @@ import SimpleDataTableColumn from '../../simple-data-table/column';
 import SimpleDataTableRowActions from '../../simple-data-table/row-actions';
 import SimpleDataTableHighlightCell from '../../simple-data-table/highlight-cell';
 import IconSettings from '../../icon-settings';
+import { SIMPLE_DATA_TABLE_CELL } from '../../../utilities/constants';
 
 describe('SimpleDataTable', () => {
 	const items = [
@@ -71,12 +72,12 @@ describe('SimpleDataTable', () => {
 		{
 			label: 'Name',
 			property: 'name',
-			truncate: true,
+			isTruncated: true,
 		},
 		{
 			label: 'Count',
 			property: 'count',
-			sortable: true,
+			isSortable: true,
 		},
 	];
 
@@ -638,7 +639,7 @@ describe('SimpleDataTable', () => {
 			const onSort = vi.fn();
 
 			const { container } = renderTable(
-				<SimpleDataTable {...defaultProps} fixedLayout onSort={onSort}>
+				<SimpleDataTable {...defaultProps} hasFixedLayout onSort={onSort}>
 					{columns.map((columnProps) => (
 						<SimpleDataTableColumn
 							{...columnProps}
@@ -663,7 +664,7 @@ describe('SimpleDataTable', () => {
 			const onSort = vi.fn();
 
 			const { container } = renderTable(
-				<SimpleDataTable {...defaultProps} fixedLayout onSort={onSort}>
+				<SimpleDataTable {...defaultProps} hasFixedLayout onSort={onSort}>
 					{columns.map((columnProps) => (
 						<SimpleDataTableColumn
 							{...columnProps}
@@ -826,8 +827,8 @@ describe('SimpleDataTable', () => {
 			const { container } = renderTable(
 				<SimpleDataTable
 					{...defaultProps}
-					fixedHeader
-					fixedLayout
+					hasFixedHeader
+					hasFixedLayout
 					id="SimpleDataTable-FixedHeader-Test"
 					onFixedHeaderResize={onFixedHeaderResize}
 					onToggleFixedHeaderListeners={onToggleFixedHeaderListeners}
@@ -836,9 +837,9 @@ describe('SimpleDataTable', () => {
 					<SimpleDataTableColumn
 						isSorted
 						label="Name"
-						primaryColumn
+						isPrimaryColumn
 						property="name"
-						sortable
+						isSortable
 						sortDirection="asc"
 					/>
 					<SimpleDataTableColumn label="Count" property="count" />
@@ -909,7 +910,12 @@ describe('SimpleDataTable', () => {
 	describe('w/ Infinite Scrolling', () => {
 		it('renders a spinner as expected', () => {
 			const { container } = renderTable(
-				<SimpleDataTable {...defaultProps} fixedHeader fixedLayout hasMore>
+				<SimpleDataTable
+					{...defaultProps}
+					hasFixedHeader
+					hasFixedLayout
+					hasMore
+				>
 					{columns.map((columnProps) => (
 						<SimpleDataTableColumn
 							{...columnProps}
@@ -928,8 +934,8 @@ describe('SimpleDataTable', () => {
 			const { container } = renderTable(
 				<SimpleDataTable
 					{...defaultProps}
-					fixedHeader
-					fixedLayout
+					hasFixedHeader
+					hasFixedLayout
 					hasMore
 					onLoadMore={onLoadMore}
 				>
@@ -956,8 +962,8 @@ describe('SimpleDataTable', () => {
 			renderTable(
 				<SimpleDataTable
 					{...defaultProps}
-					fixedHeader
-					fixedLayout
+					hasFixedHeader
+					hasFixedLayout
 					hasMore
 					onLoadMore={onLoadMore}
 				>
@@ -982,8 +988,8 @@ describe('SimpleDataTable', () => {
 				<SimpleDataTable
 					{...defaultProps}
 					items={[]}
-					fixedHeader
-					fixedLayout
+					hasFixedHeader
+					hasFixedLayout
 					hasMore
 					onLoadMore={onLoadMore}
 				>
@@ -1005,8 +1011,8 @@ describe('SimpleDataTable', () => {
 					<SimpleDataTable
 						{...defaultProps}
 						items={[items[0]]}
-						fixedHeader
-						fixedLayout
+						hasFixedHeader
+						hasFixedLayout
 						hasMore
 						onLoadMore={onLoadMore}
 					>
@@ -1027,7 +1033,7 @@ describe('SimpleDataTable', () => {
 	describe('Keyboard Navigation', () => {
 		it('moves the active cell when using keyboard arrow keys', () => {
 			const { container } = renderTable(
-				<SimpleDataTable {...defaultProps} fixedLayout keyboardNavigation>
+				<SimpleDataTable {...defaultProps} hasFixedLayout hasKeyboardNavigation>
 					{columns.map((columnProps) => (
 						<SimpleDataTableColumn
 							{...columnProps}
@@ -1064,7 +1070,7 @@ describe('SimpleDataTable', () => {
 
 		it('enters actionable mode on enter and returns to navigation mode on escape', () => {
 			const { container } = renderTable(
-				<SimpleDataTable {...defaultProps} fixedLayout keyboardNavigation>
+				<SimpleDataTable {...defaultProps} hasFixedLayout hasKeyboardNavigation>
 					{[
 						...columns.map((columnProps) => (
 							<SimpleDataTableColumn
@@ -1111,7 +1117,7 @@ describe('SimpleDataTable', () => {
 
 		it('renders interactive cells with proper structure for keyboard navigation', () => {
 			const { container } = renderTable(
-				<SimpleDataTable {...defaultProps} fixedLayout keyboardNavigation>
+				<SimpleDataTable {...defaultProps} hasFixedLayout hasKeyboardNavigation>
 					{[
 						...columns.map((columnProps) => (
 							<SimpleDataTableColumn
@@ -1147,6 +1153,173 @@ describe('SimpleDataTable', () => {
 			// At least one cell should have tabIndex="0" (the initially focused cell)
 			const focusableCells = container.querySelectorAll('td[tabindex="0"]');
 			expect(focusableCells.length).toBeGreaterThan(0);
+		});
+	});
+	describe('Deprecated boolean prop aliases', () => {
+		const deprecationMessages = (spy) =>
+			spy.mock.calls
+				.map((args) => args.join(' '))
+				.filter((message) => message.includes('will be removed'));
+
+		const renderAliasTable = (useOldNames) => {
+			const tableProps = useOldNames
+				? {
+						columnBordered: true,
+						fixedHeader: true,
+						fixedLayout: true,
+						joined: true,
+						keyboardNavigation: true,
+						noRowHover: true,
+						stacked: true,
+						stackedHorizontal: true,
+						striped: true,
+						unborderedRow: true,
+					}
+				: {
+						hasColumnBorders: true,
+						hasFixedHeader: true,
+						hasFixedLayout: true,
+						isJoined: true,
+						hasKeyboardNavigation: true,
+						hasNoRowHover: true,
+						isStacked: true,
+						isStackedHorizontal: true,
+						isStriped: true,
+						hasNoRowBorders: true,
+					};
+			const nameColumn = useOldNames
+				? { primaryColumn: true, truncate: true }
+				: { isPrimaryColumn: true, isTruncated: true };
+			const countColumn = useOldNames
+				? { sortable: true }
+				: { isSortable: true };
+			const rowActions = useOldNames ? { noHint: true } : { hasNoHint: true };
+			return renderTable(
+				<SimpleDataTable {...defaultProps} {...tableProps}>
+					<SimpleDataTableColumn label="Name" property="name" {...nameColumn} />
+					<SimpleDataTableColumn
+						label="Count"
+						property="count"
+						{...countColumn}
+					/>
+					<SimpleDataTableRowActions
+						options={[{ id: 0, label: 'Publish', value: '1' }]}
+						{...rowActions}
+					/>
+				</SimpleDataTable>
+			);
+		};
+
+		it('renders the same markup for the deprecated names and warns about each one', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			consoleError.mockClear();
+
+			const newRender = renderAliasTable(false);
+			const newMarkup = newRender.container.innerHTML;
+			expect(deprecationMessages(consoleError)).toEqual([]);
+			newRender.unmount();
+
+			const { container } = renderAliasTable(true);
+			expect(container.innerHTML).toBe(newMarkup);
+
+			const table = getTable(container);
+			expect(table).toHaveClass(
+				'slds-table_col-bordered',
+				'slds-table_header-fixed',
+				'slds-table_fixed-layout',
+				'slds-no-row-hover',
+				'slds-max-medium-table_stacked',
+				'slds-max-medium-table_stacked-horizontal',
+				'slds-table_striped'
+			);
+			expect(table).not.toHaveClass('slds-table_bordered');
+			// `isJoined` adds the side/bottom borders to the fixed-header container
+			expect(
+				container.querySelector('.slds-table_header-fixed_container').style
+					.borderBottom
+			).not.toBe('');
+			expect(getRow(container, 1).querySelector('th')).toHaveClass(
+				'slds-truncate'
+			);
+			expect(container.querySelector('thead th.slds-is-sortable')).toBeTruthy();
+			expect(container.querySelector('[tabindex="0"]')).toBeTruthy();
+
+			const messages = deprecationMessages(consoleError).join('\n');
+			[
+				['columnBordered', 'hasColumnBorders'],
+				['fixedHeader', 'hasFixedHeader'],
+				['fixedLayout', 'hasFixedLayout'],
+				['joined', 'isJoined'],
+				['keyboardNavigation', 'hasKeyboardNavigation'],
+				['noRowHover', 'hasNoRowHover'],
+				['stacked', 'isStacked'],
+				['stackedHorizontal', 'isStackedHorizontal'],
+				['striped', 'isStriped'],
+				['unborderedRow', 'hasNoRowBorders'],
+				['primaryColumn', 'isPrimaryColumn'],
+				['sortable', 'isSortable'],
+				['truncate', 'isTruncated'],
+				['noHint', 'hasNoHint'],
+			].forEach(([oldName, newName]) => {
+				expect(messages).toContain(`\`${oldName}\` will be removed`);
+				expect(messages).toContain(`Use \`${newName}\` instead.`);
+			});
+
+			consoleError.mockRestore();
+		});
+
+		it('honors unbufferedCell as an alias of hasNoCellBuffer and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			consoleError.mockClear();
+
+			const newRender = renderTable(
+				<SimpleDataTable {...defaultProps} hasNoCellBuffer>
+					<SimpleDataTableColumn label="Name" property="name" />
+				</SimpleDataTable>
+			);
+			expect(getTable(newRender.container)).not.toHaveClass(
+				'slds-table_cell-buffer'
+			);
+			expect(deprecationMessages(consoleError)).toEqual([]);
+			newRender.unmount();
+
+			const { container } = renderTable(
+				<SimpleDataTable {...defaultProps} unbufferedCell>
+					<SimpleDataTableColumn label="Name" property="name" />
+				</SimpleDataTable>
+			);
+			expect(getTable(container)).not.toHaveClass('slds-table_cell-buffer');
+			expect(deprecationMessages(consoleError).join('\n')).toContain(
+				'`unbufferedCell` will be removed'
+			);
+
+			consoleError.mockRestore();
+		});
+
+		it('passes isRowHeader and the deprecated rowHeader to custom cells', () => {
+			const cellProps = [];
+			const CustomCell = (props) => {
+				cellProps.push(props);
+				return <td>{props.children}</td>;
+			};
+			CustomCell.displayName = SIMPLE_DATA_TABLE_CELL;
+
+			renderTable(
+				<SimpleDataTable {...defaultProps}>
+					<SimpleDataTableColumn label="Name" property="name" isPrimaryColumn>
+						<CustomCell />
+					</SimpleDataTableColumn>
+				</SimpleDataTable>
+			);
+
+			expect(cellProps.length).toBeGreaterThan(0);
+			expect(cellProps[0].isRowHeader).toBe(true);
+			expect(cellProps[0].rowHeader).toBe(true);
+			expect(cellProps[0].isPrimaryColumn).toBe(true);
 		});
 	});
 });

@@ -82,7 +82,8 @@ const meta: Meta<typeof MenuDropdown> = {
 		align: {
 			control: 'select',
 			options: ['center', 'left', 'right'],
-			description: 'Aligns the menu center, right, or left respective to the trigger',
+			description:
+				'Aligns the menu center, right, or left respective to the trigger',
 		},
 		buttonVariant: {
 			control: 'select',
@@ -158,7 +159,7 @@ export const WithCheckmark: Story = {
 				<MenuDropdown
 					assistiveText={{ icon: 'More Options' }}
 					buttonVariant="icon"
-					checkmark
+					hasCheckmark
 					iconCategory="utility"
 					iconName="down"
 					iconVariant="border-filled"
@@ -184,12 +185,12 @@ export const MultipleSelection: Story = {
 				<MenuDropdown
 					assistiveText={{ icon: 'More Options' }}
 					buttonVariant="icon"
-					checkmark
+					hasCheckmark
 					iconCategory="utility"
 					iconName="down"
 					iconVariant="border-filled"
 					id="multiple-dropdown"
-					multiple
+					isMultiple
 					onSelect={(option) => {
 						const val = option.value as string;
 						setValues((prev) =>
@@ -341,7 +342,7 @@ export const IconButton: Story = {
 export const Inverse: Story = {
 	args: {
 		id: 'inverse-dropdown',
-		inverse: true,
+		isInverse: true,
 		label: 'Inverse Dropdown',
 		options,
 	},
@@ -357,7 +358,5 @@ export const Inverse: Story = {
 			</div>
 		),
 	],
-	render: (args) => (
-		<MenuDropdown {...args} buttonInverse />
-	),
+	render: (args) => <MenuDropdown {...args} isButtonInverse />,
 };

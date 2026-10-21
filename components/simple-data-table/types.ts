@@ -68,12 +68,18 @@ export interface SimpleDataTableProps {
 	/** Class names to be added to the table */
 	className?: string | string[] | Record<string, boolean>;
 	/** A variant which adds border to the vertical columns */
+	hasColumnBorders?: boolean;
+	/** @deprecated Use `hasColumnBorders` instead. */
 	columnBordered?: boolean;
 	/** Enable fixed headers and scrolling */
+	hasFixedHeader?: boolean;
+	/** @deprecated Use `hasFixedHeader` instead. */
 	fixedHeader?: boolean;
 	/** Use for advanced table (selectable, sortable rows) */
+	hasFixedLayout?: boolean;
+	/** @deprecated Use `hasFixedLayout` instead. */
 	fixedLayout?: boolean;
-	/** When fixedHeader is true, shows spinner if more data loading */
+	/** When hasFixedHeader is true, shows spinner if more data loading */
 	hasMore?: boolean;
 	/** Render prop for subheadings */
 	onRenderSubHeadingRow?: (props: {
@@ -92,12 +98,18 @@ export interface SimpleDataTableProps {
 	/** Removes the header from the data table */
 	isHeadless?: boolean;
 	/** Makes SimpleDataTable joinable with PageHeader */
+	isJoined?: boolean;
+	/** @deprecated Use `isJoined` instead. */
 	joined?: boolean;
 	/** Determines when to trigger infinite loading */
 	loadMoreOffset?: number;
 	/** Enables keyboard navigation for advanced table */
+	hasKeyboardNavigation?: boolean;
+	/** @deprecated Use `hasKeyboardNavigation` instead. */
 	keyboardNavigation?: boolean;
 	/** A variant which removes hover style on rows */
+	hasNoRowHover?: boolean;
+	/** @deprecated Use `hasNoRowHover` instead. */
 	noRowHover?: boolean;
 	/** Callback for fixed header resize */
 	onFixedHeaderResize?: (
@@ -131,16 +143,26 @@ export interface SimpleDataTableProps {
 	/** Row selection UX pattern */
 	selectRows?: boolean | 'checkbox' | 'radio';
 	/** Stacked variant for smaller viewports */
+	isStacked?: boolean;
+	/** @deprecated Use `isStacked` instead. */
 	stacked?: boolean;
 	/** Stacked horizontal variant for smaller viewports */
+	isStackedHorizontal?: boolean;
+	/** @deprecated Use `isStackedHorizontal` instead. */
 	stackedHorizontal?: boolean;
 	/** Striped alternating rows variant */
+	isStriped?: boolean;
+	/** @deprecated Use `isStriped` instead. */
 	striped?: boolean;
 	/** Custom styles for the table */
 	style?: CSSProperties;
 	/** Removes horizontal borders */
+	hasNoRowBorders?: boolean;
+	/** @deprecated Use `hasNoRowBorders` instead. */
 	unborderedRow?: boolean;
 	/** Removes horizontal padding */
+	hasNoCellBuffer?: boolean;
+	/** @deprecated Use `hasNoCellBuffer` instead. */
 	unbufferedCell?: boolean;
 	/** Search term for highlighting */
 	search?: string;
@@ -172,16 +194,22 @@ export interface SimpleDataTableColumnProps {
 	/** The column label */
 	label?: string | ReactNode;
 	/** The primary column for a row */
+	isPrimaryColumn?: boolean;
+	/** @deprecated Use `isPrimaryColumn` instead. */
 	primaryColumn?: boolean;
 	/** The property which corresponds to this column */
 	property?: string;
 	/** Whether the column is sortable */
+	isSortable?: boolean;
+	/** @deprecated Use `isSortable` instead. */
 	sortable?: boolean;
 	/** Current sort direction */
 	sortDirection?: 'desc' | 'asc';
 	/** Title for truncation div */
 	title?: string;
 	/** Adds truncate to cell node */
+	isTruncated?: boolean;
+	/** @deprecated Use `isTruncated` instead. */
 	truncate?: boolean;
 	/** Width of column (use rems) */
 	width?: string;
@@ -189,8 +217,8 @@ export interface SimpleDataTableColumnProps {
 	items?: SimpleDataTableItem[];
 	/** Search term */
 	search?: string;
-	/** Fixed layout mode */
-	fixedLayout?: boolean;
+	/** Fixed layout mode (set by the table) */
+	hasFixedLayout?: boolean;
 	/** Table ID */
 	id?: string;
 	/** Additional props passed through to the cell */
@@ -206,11 +234,15 @@ export interface SimpleDataTableCellProps {
 	children?: ReactNode;
 	/** Class names to be added to the cell */
 	className?: string | string[] | Record<string, boolean>;
-	/** Fixed layout mode */
+	/** Fixed layout mode (set by the table) */
+	hasFixedLayout?: boolean;
+	/** @deprecated Use `hasFixedLayout` instead. */
 	fixedLayout?: boolean;
 	/** The item from items which represents this row */
 	item?: SimpleDataTableItem;
 	/** The primary column for a row */
+	isPrimaryColumn?: boolean;
+	/** @deprecated Use `isPrimaryColumn` instead. */
 	primaryColumn?: boolean;
 	/** The property of this item to display */
 	property?: string;
@@ -224,7 +256,9 @@ export interface SimpleDataTableCellProps {
 	headerId?: string;
 	/** All columns */
 	columns?: SimpleDataTableColumnConfig[];
-	/** Row header mode */
+	/** Row header mode (set by the table from the column's `isPrimaryColumn`) */
+	isRowHeader?: boolean;
+	/** @deprecated Use `isRowHeader` instead. */
 	rowHeader?: boolean;
 	/** Cell ID */
 	id?: string;
@@ -244,6 +278,8 @@ export interface SimpleDataTableRowActionsProps {
 	/** SimpleDataTable row item */
 	item?: SimpleDataTableItem;
 	/** Disable hint styling */
+	hasNoHint?: boolean;
+	/** @deprecated Use `hasNoHint` instead. */
 	noHint?: boolean;
 	/** Triggered when an item is selected */
 	onAction?: (item: SimpleDataTableItem, selection: unknown) => void;
@@ -251,7 +287,9 @@ export interface SimpleDataTableRowActionsProps {
 	options?: unknown[];
 	/** A Dropdown component to use */
 	dropdown?: ReactNode;
-	/** Fixed layout mode */
+	/** Fixed layout mode (set by the table) */
+	hasFixedLayout?: boolean;
+	/** @deprecated Use `hasFixedLayout` instead. */
 	fixedLayout?: boolean;
 }
 
@@ -270,8 +308,8 @@ export interface SimpleDataTableHeadProps {
 	indeterminateSelected?: boolean;
 	canSelectRows?: boolean | 'checkbox' | 'radio';
 	columns?: SimpleDataTableColumnConfig[];
-	fixedHeader?: boolean;
-	fixedLayout?: boolean;
+	hasFixedHeader?: boolean;
+	hasFixedLayout?: boolean;
 	id?: string;
 	onToggleAll?: (
 		event: SyntheticEvent,
@@ -290,7 +328,7 @@ export interface SimpleDataTableRowProps {
 	canSelectRows?: boolean | 'checkbox' | 'radio';
 	className?: string;
 	columns?: SimpleDataTableColumnConfig[];
-	fixedLayout?: boolean;
+	hasFixedLayout?: boolean;
 	id: string;
 	index?: number;
 	item: SimpleDataTableItem;
@@ -304,7 +342,7 @@ export interface SimpleDataTableRowProps {
 	disabledSelection?: SimpleDataTableItem[];
 	tableId?: string;
 	rowIndex?: number;
-	stacked?: boolean;
+	isStacked?: boolean;
 }
 
 // ============================================================================
@@ -314,15 +352,15 @@ export interface SimpleDataTableRowProps {
 export interface SimpleDataTableHeaderCellProps {
 	assistiveText?: SimpleDataTableAssistiveText;
 	cellRef?: (ref: HTMLElement | null) => void;
-	fixedHeader?: boolean;
-	fixedLayout?: boolean;
+	hasFixedHeader?: boolean;
+	hasFixedLayout?: boolean;
 	id: string;
 	isDefaultSortDescending?: boolean;
 	isSorted?: boolean;
 	label?: string | ReactNode;
 	onSort?: (data: SimpleDataTableSortData, event: SyntheticEvent) => void;
 	property?: string;
-	sortable?: boolean;
+	isSortable?: boolean;
 	sortDirection?: 'desc' | 'asc';
 	width?: string;
 	/** @deprecated */

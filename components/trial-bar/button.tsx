@@ -7,7 +7,7 @@ import { TRIAL_BAR_BUTTON } from '../../utilities/constants';
 const TrialBarButton = (props: ButtonProps) => (
 	<Button
 		{...props}
-		inverse
+		isInverse
 		style={{ border: 0, padding: 0 }}
 		className="slds-m-right_small"
 	/>

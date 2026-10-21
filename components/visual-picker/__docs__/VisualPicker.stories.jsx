@@ -22,8 +22,8 @@ export default {
 			control: { type: 'select' },
 			options: ['medium', 'large'],
 		},
-		vertical: { control: 'boolean' },
-		coverable: { control: 'boolean' },
+		isVertical: { control: 'boolean' },
+		isCoverable: { control: 'boolean' },
 	},
 };
 
@@ -110,7 +110,9 @@ export const CheckboxPicker = {
 					id="leads"
 					labels={{ heading: 'Leads', label: 'Track prospects' }}
 					checked={checked.leads}
-					onChange={() => setChecked((prev) => ({ ...prev, leads: !prev.leads }))}
+					onChange={() =>
+						setChecked((prev) => ({ ...prev, leads: !prev.leads }))
+					}
 					onRenderVisualPicker={() => priceTile('$70')}
 				/>
 			</VisualPicker>
@@ -157,7 +159,7 @@ export const VerticalLayout = {
 		const [selected, setSelected] = useState('option1');
 
 		return (
-			<VisualPicker id="vertical-picker" label="Select Plan" vertical>
+			<VisualPicker id="vertical-picker" label="Select Plan" isVertical>
 				<Radio
 					id="option1"
 					labels={{ heading: 'Starter', label: 'For small teams' }}
@@ -197,7 +199,7 @@ export const Coverable = {
 			<VisualPicker
 				id="coverable-picker"
 				label="Select with Cover Effect"
-				coverable
+				isCoverable
 			>
 				<Radio
 					id="option1"

@@ -27,9 +27,11 @@ class Example extends React.Component {
 		};
 	}
 
-	onChange = (inputName) => (event, { value }) => {
-		this.setState({ pageType: value });
-	};
+	onChange =
+		(inputName) =>
+		(event, { value }) => {
+			this.setState({ pageType: value });
+		};
 
 	handleClose = (event, data) => {
 		if (this.props.log) {
@@ -159,7 +161,7 @@ class Example extends React.Component {
 							<EditDialog
 								ariaLabelledby="Edit Name"
 								body={editDialogPopoverBody}
-								isModified={this.state.pageType !== this.state.prevPageType}
+								hasChanges={this.state.pageType !== this.state.prevPageType}
 								onCancel={this.handleRequestClose}
 								onClose={this.handleClose}
 								onRequestClose={this.handleRequestClose}
@@ -183,7 +185,7 @@ class Example extends React.Component {
 										className="slds-button_reset"
 										iconCategory="utility"
 										iconName="edit"
-										inverse
+										isInverse
 										onClick={this.handleOpen}
 										variant="icon"
 										style={{ verticalAlign: 'middle' }}
@@ -210,7 +212,7 @@ class Example extends React.Component {
 							<EditDialog
 								ariaLabelledby="Edit Name"
 								body={editDialogPopoverBody}
-								isModified={this.state.pageType !== this.state.prevPageType}
+								hasChanges={this.state.pageType !== this.state.prevPageType}
 								onCancel={this.handleRequestClose}
 								onClose={this.handleClose}
 								onRequestClose={this.handleRequestClose}
@@ -234,7 +236,7 @@ class Example extends React.Component {
 										className="slds-button_reset"
 										iconCategory="utility"
 										iconName="edit"
-										inverse
+										isInverse
 										onClick={this.handleOpen}
 										variant="icon"
 										style={{ verticalAlign: 'middle' }}

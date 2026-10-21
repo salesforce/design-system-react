@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import Avatar from '../';
 import IconSettings from '../../icon-settings';
@@ -149,7 +149,9 @@ describe('SLDSAvatar', () => {
 				</IconSettings>
 			);
 
-			const accountIcon = container.querySelector('.slds-icon-standard-account');
+			const accountIcon = container.querySelector(
+				'.slds-icon-standard-account'
+			);
 			expect(accountIcon).toBeInTheDocument();
 		});
 
@@ -162,6 +164,31 @@ describe('SLDSAvatar', () => {
 
 			const userIcon = container.querySelector('.slds-icon-standard-user');
 			expect(userIcon).toBeInTheDocument();
+		});
+	});
+
+	describe('Deprecated boolean prop aliases', () => {
+		it('still applies `inverse`, and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = render(<Avatar inverse label="Annie Wilson" />);
+
+			expect(container.querySelector('abbr')).toHaveClass(
+				'slds-avatar__initials_inverse'
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`isInverse`')
+			);
+			consoleError.mockRestore();
+		});
+
+		it('applies `isInverse`', () => {
+			const { container } = render(<Avatar isInverse label="Annie Wilson" />);
+
+			expect(container.querySelector('abbr')).toHaveClass(
+				'slds-avatar__initials_inverse'
+			);
 		});
 	});
 });

@@ -83,7 +83,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholder: 'Search Salesforce',
 					}}
-					multiple
+					isMultiple
 					options={accounts}
 					selection={this.state.selection}
 					value={this.state.inputValue}

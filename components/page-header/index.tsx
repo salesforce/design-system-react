@@ -1,9 +1,12 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type ReactElement } from 'react';
+import React, { useEffect, type ReactNode, type ReactElement } from 'react';
 import classnames from 'classnames';
 import { PAGE_HEADER } from '../../utilities/constants';
+// This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 // Private components - keep JSX for now
 import Info from './private/info';
@@ -29,7 +32,9 @@ export interface PageHeaderDetail {
 	label?: ReactNode;
 	/** Detail content */
 	content?: ReactNode;
-	/** Whether content is truncated */
+	/** Whether content is truncated. Defaults to truncating when omitted. */
+	isTruncated?: boolean;
+	/** @deprecated Use `isTruncated` instead. */
 	truncate?: boolean;
 	/** Flavor modifier */
 	flavor?: string;
@@ -48,6 +53,8 @@ export interface PageHeaderProps {
 	/** Info text or element */
 	info?: ReactNode;
 	/** Whether joined with SimpleDataTable */
+	isJoined?: boolean;
+	/** @deprecated Use `isJoined` instead. */
 	joined?: boolean;
 	/** Label text or element */
 	label?: ReactNode;
@@ -69,26 +76,37 @@ export interface PageHeaderProps {
  * The PageHeader component adds PageHeader with multiple variants:
  * base, object-home, record-home, and related-list.
  */
-const PageHeader = ({
-	className,
-	details,
-	icon,
-	info,
-	joined,
-	label,
-	nameSwitcherDropdown,
-	onRenderActions,
-	onRenderControls,
-	title,
-	trail,
-	variant = 'base',
-}: PageHeaderProps): React.ReactElement => {
+const PageHeader = (props: PageHeaderProps): React.ReactElement => {
+	const {
+		className,
+		details,
+		icon,
+		info,
+		isJoined: isJoinedProp,
+		joined,
+		label,
+		nameSwitcherDropdown,
+		onRenderActions,
+		onRenderControls,
+		title,
+		trail,
+		variant = 'base',
+	} = props;
+	const isJoined = isJoinedProp ?? joined;
+
+	// Check props on mount
+	useEffect(() => {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		(checkProps as any)(PAGE_HEADER, props, componentDoc);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const classes = classnames(
 		'slds-page-header',
 		{
 			'slds-page-header_record-home': variant === 'record-home',
 			'slds-page-header_related-list': variant === 'related-list',
-			'slds-page-header_joined': joined,
+			'slds-page-header_joined': isJoined,
 		},
 		className as string
 	);

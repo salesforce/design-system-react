@@ -71,7 +71,7 @@ const CustomMenuItem = (props) => (
 		</span>
 		<span className="slds-media__body">
 			<span className="slds-truncate" title={props.option.label}>
-				{props.selected ? (
+				{props.isSelected ? (
 					<span className="slds-assistive-text">
 						{props.assistiveText.optionSelectedInMenu}
 					</span>

@@ -8,9 +8,18 @@ import React, { type ReactNode } from 'react';
 import assign from 'lodash.assign';
 
 import { POPOVER_EDIT_DIALOG } from '../../utilities/constants';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 
 import Button from '../button';
 import Popover, { type PopoverProps } from './index';
+
+// `deprecated-property.js` ships no type declarations; this is the signature used here.
+const warnDeprecatedProperty = deprecatedProperty as (
+	control: string,
+	propValue: unknown,
+	oldProp: string,
+	newProp: string
+) => void;
 
 export interface EditDialogLabels {
 	/** text for Cancel button */
@@ -39,6 +48,8 @@ export interface EditDialogProps {
 	/**
 	 * Set to true when inputs within the popover are modified.
 	 */
+	hasChanges?: boolean;
+	/** @deprecated Use `hasChanges` instead. */
 	isModified?: boolean;
 	/**
 	 * **Text labels for internationalization**
@@ -87,6 +98,15 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 
 	state: EditDialogState = { isOpen: false };
 
+	componentDidMount() {
+		warnDeprecatedProperty(
+			POPOVER_EDIT_DIALOG,
+			this.props.isModified,
+			'isModified',
+			'hasChanges'
+		);
+	}
+
 	handleOpen = () => {
 		this.setState({ isOpen: true });
 	};
@@ -96,7 +116,15 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 	};
 
 	render() {
-		const { onCancel, onSave, ...restProps } = this.props;
+		const {
+			onCancel,
+			onSave,
+			disabled,
+			hasChanges: hasChangesProp,
+			isModified,
+			...restProps
+		} = this.props;
+		const hasChanges = hasChangesProp ?? isModified;
 
 		// trigger button will either be passed in children or defaults to an edit button.
 		const children = this.props.children ? (
@@ -105,7 +133,7 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 			<Button
 				assistiveText={{ icon: 'Edit: Status' }}
 				className="slds-button_reset"
-				disabled={this.props.disabled}
+				disabled={disabled}
 				iconCategory="utility"
 				iconClassName="slds-button__icon slds-button__icon_hint"
 				iconName="edit"
@@ -129,7 +157,7 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 					<div className="slds-text-align_right slds-text-align_right slds-p-bottom_x-small slds-p-right_xx-small">
 						<Button label={labels.cancel} onClick={onCancel} />
 						<Button
-							disabled={!this.props.isModified}
+							disabled={!hasChanges}
 							variant="brand"
 							label={labels.save}
 							onClick={onSave}
@@ -140,6 +168,7 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 				onClose={this.handleClose}
 				onRequestClose={this.handleClose}
 				onOpen={this.handleOpen}
+				isDisabled={disabled}
 				{...(restProps as unknown as PopoverProps)}
 			>
 				{children}

@@ -1,7 +1,14 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useState, useEffect, useRef, useCallback, type ReactNode, type CSSProperties } from 'react';
+import React, {
+	useState,
+	useEffect,
+	useRef,
+	useCallback,
+	type ReactNode,
+	type CSSProperties,
+} from 'react';
 import classNames from '../../utilities/class-names';
 import EventUtil from '../../utilities/event';
 import Button from '../button';
@@ -54,6 +61,8 @@ export interface ToastProps {
 	duration?: number;
 	/** Custom icon (defaults to variant-specific icon) */
 	icon?: ReactNode;
+	/** Show close button */
+	isDismissible?: boolean;
 	/** Text labels */
 	labels?: ToastLabels;
 	/** Callback when heading link is clicked */
@@ -91,6 +100,7 @@ const Toast = ({
 	className,
 	duration,
 	icon: propIcon,
+	isDismissible = false,
 	labels: propLabels,
 	onClickHeadingLink,
 	onRequestClose,
@@ -128,24 +138,34 @@ const Toast = ({
 	}, [duration, handleClose, clearTimeoutRef]);
 
 	// Handle initial focus
-	const saveToastRef = useCallback((element: HTMLDivElement | null) => {
-		toastRef.current = element;
-		if (isInitialRender && element) {
-			DOMElementFocus.storeActiveElement();
-			element.focus();
-			setIsInitialRender(false);
-		}
-	}, [isInitialRender]);
+	const saveToastRef = useCallback(
+		(element: HTMLDivElement | null) => {
+			toastRef.current = element;
+			if (isInitialRender && element) {
+				DOMElementFocus.storeActiveElement();
+				element.focus();
+				setIsInitialRender(false);
+			}
+		},
+		[isInitialRender]
+	);
 
 	// Get the icon to display
 	const icon = propIcon || defaultIcons[variant];
 
 	const clonedIcon = React.isValidElement(icon)
-		? React.cloneElement(icon as React.ReactElement<{ containerClassName?: string; inverse?: boolean; size?: string }>, {
-				containerClassName: 'slds-m-right_small slds-no-flex slds-align-top',
-				inverse: true,
-				size: 'small',
-		  })
+		? React.cloneElement(
+				icon as React.ReactElement<{
+					containerClassName?: string;
+					isInverse?: boolean;
+					size?: string;
+				}>,
+				{
+					containerClassName: 'slds-m-right_small slds-no-flex slds-align-top',
+					isInverse: true,
+					size: 'small',
+				}
+			)
 		: icon;
 
 	const assistiveTextVariant: Record<ToastVariant, string | undefined> = {
@@ -180,27 +200,26 @@ const Toast = ({
 				<h2 className="slds-text-heading_small">
 					{labels.heading}{' '}
 					{labels.headingLink && (
-						<a
-							onClick={EventUtil.trappedHandler(onClickHeadingLink)}
-							href="#"
-						>
+						<a onClick={EventUtil.trappedHandler(onClickHeadingLink)} href="#">
 							{labels.headingLink}
 						</a>
 					)}
 				</h2>
 				{labels.details && <p>{labels.details}</p>}
 			</div>
-			<Button
-				assistiveText={{ icon: assistiveText.closeButton as string }}
-				className="slds-notify__close"
-				iconCategory="utility"
-				iconName="close"
-				iconSize="medium"
-				inverse
-				onClick={onRequestClose}
-				title={assistiveText.closeButton as string}
-				variant="icon"
-			/>
+			{isDismissible && (
+				<Button
+					assistiveText={{ icon: assistiveText.closeButton as string }}
+					className="slds-notify__close"
+					iconCategory="utility"
+					iconName="close"
+					iconSize="medium"
+					isInverse
+					onClick={onRequestClose}
+					title={assistiveText.closeButton as string}
+					variant="icon"
+				/>
+			)}
 		</div>
 	);
 };
@@ -208,18 +227,3 @@ const Toast = ({
 Toast.displayName = TOAST;
 
 export default Toast;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
