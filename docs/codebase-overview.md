@@ -537,7 +537,7 @@ This library should include only components that have an approved pattern in [Sa
 
 ### Avoid Inline Styles and Non-SLDS Classes
 
-Prefer existing SLDS CSS over inline styles or bespoke classes. If SLDS is missing something you need, file a bug against the [SLDS repository](https://github.com/salesforce-ux/design-system) (or the internal bug system) rather than working around it locally — some rare or temporary exceptions are approved case by case. When inline styles are unavoidable, use the design tokens shipped in this library (see [`utilities/design-tokens`](https://github.com/salesforce/design-system-react/blob/master/utilities/design-tokens/README.md)) rather than hardcoded values.
+Prefer existing SLDS CSS over inline styles or bespoke classes. If SLDS is missing something you need, file a bug against the [SLDS repository](https://github.com/salesforce-ux/design-system) (or the internal bug system) rather than working around it locally — some rare or temporary exceptions are approved case by case. When inline styles are unavoidable, use SLDS 2 global styling hooks (`var(--slds-g-*)`) rather than hardcoded values, so the style follows the active theme and dark mode.
 
 ---
 

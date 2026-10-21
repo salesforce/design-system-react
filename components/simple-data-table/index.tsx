@@ -21,11 +21,6 @@ import {
 	canUseDOM,
 	canUseEventListeners,
 } from '../../utilities/execution-environment';
-import { colorGray5 } from '../../utilities/design-tokens/dist/palette-colors.common';
-import salesforceSkin from '../../utilities/design-tokens/dist/salesforce-skin.common';
-
-const { tableBorderRadius } = salesforceSkin;
-
 // ## Children
 import SimpleDataTableCell from './cell';
 import SimpleDataTableColumn from './column';
@@ -951,7 +946,7 @@ class SimpleDataTable extends React.Component<
 		);
 
 		if (this.props.fixedHeader) {
-			const border = `1px solid ${colorGray5}`;
+			const border = '1px solid var(--slds-g-color-border-1)';
 			const styles: React.CSSProperties = {
 				borderTop: border,
 				height: '100%',
@@ -962,7 +957,8 @@ class SimpleDataTable extends React.Component<
 				styles.borderLeft = border;
 				styles.borderRight = border;
 				styles.borderTop = 'none';
-				styles.borderRadius = tableBorderRadius;
+				styles.borderRadius =
+					'0 0 var(--slds-g-radius-border-2) var(--slds-g-radius-border-2)';
 			}
 
 			const fixedScrollerStyle: React.CSSProperties = {
