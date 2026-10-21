@@ -5,13 +5,14 @@ export type {
 	TreeNode,
 	FlattenedNode,
 	TreeAssistiveText,
+	TreeNodeSelectData,
+	TreeRequestToggleData,
 	TreeSelectData,
 	TreeExpandData,
 	TreeScrollData,
+	TreeNodeSelectHandler,
+	TreeRequestToggleHandler,
 	TreeSelectHandler,
 	TreeExpandHandler,
 	TreeScrollHandler,
 } from './types';
-
-
-

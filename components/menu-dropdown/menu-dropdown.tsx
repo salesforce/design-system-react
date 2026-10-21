@@ -73,7 +73,8 @@ if (documentDefined) {
 }
 
 // Global state for tracking open dropdown
-let currentOpenDropdown: { handleClose: () => void } | undefined;
+let currentOpenDropdown:
+	{ handleClose: (event?: MenuDropdownCloseEvent) => void } | undefined;
 
 const DropdownNubbinPositionsArray = [
 	'top left',
@@ -84,9 +85,11 @@ const DropdownNubbinPositionsArray = [
 	'bottom right',
 ] as const;
 
-export type DropdownNubbinPosition = (typeof DropdownNubbinPositionsArray)[number];
+export type DropdownNubbinPosition =
+	(typeof DropdownNubbinPositionsArray)[number];
 
-export const DropdownNubbinPositions: readonly DropdownNubbinPosition[] = DropdownNubbinPositionsArray;
+export const DropdownNubbinPositions: readonly DropdownNubbinPosition[] =
+	DropdownNubbinPositionsArray;
 
 const noop = () => {};
 
@@ -109,6 +112,41 @@ export interface MenuDropdownOption {
 	type?: 'header' | 'item' | 'divider';
 	value?: string | number;
 }
+
+/**
+ * Data passed as the second argument of `onSelect`.
+ */
+export interface MenuDropdownSelectData {
+	/** The selected item object from `options`. */
+	option: MenuDropdownOption;
+	/** Index of the selected item within `options`. */
+	optionIndex: number;
+}
+
+/**
+ * Data passed as the second argument of `onOpen`. Currently has no fields; it
+ * is an object so fields can be added without changing the callback shape.
+ */
+export type MenuDropdownOpenData = Record<string, never>;
+
+/**
+ * Data passed as the second argument of `onClose`. Currently has no fields; it
+ * is an object so fields can be added without changing the callback shape.
+ */
+export type MenuDropdownCloseData = Record<string, never>;
+
+/**
+ * Event passed to `onOpen`: the trigger click, hover (`mouseenter`) or keydown
+ * that opened the menu.
+ */
+export type MenuDropdownOpenEvent = MouseEvent | KeyboardEvent | undefined;
+
+/**
+ * Event passed to `onClose`: the React event that closed the menu, the native
+ * DOM `mousedown`/`touchstart` event for an outside click, or `undefined` when
+ * there is no event (hover-close timeout, unmount).
+ */
+export type MenuDropdownCloseEvent = React.SyntheticEvent | Event | undefined;
 
 export interface MenuDropdownProps {
 	/** Aligns the menu center, right, or left respective to the trigger */
@@ -145,12 +183,7 @@ export interface MenuDropdownProps {
 	iconPosition?: 'left' | 'right';
 	/** Icon variant */
 	iconVariant?:
-		| 'bare'
-		| 'container'
-		| 'border'
-		| 'border-filled'
-		| 'small'
-		| 'more';
+		'bare' | 'container' | 'border' | 'border-filled' | 'small' | 'more';
 	/** Determines the size of the icon */
 	iconSize?: 'x-small' | 'small' | 'medium' | 'large';
 	/** A unique ID for keyboard navigation and ARIA support */
@@ -183,8 +216,15 @@ export interface MenuDropdownProps {
 	onBlur?: (event: FocusEvent) => void;
 	/** Triggered when the trigger button is clicked */
 	onClick?: (event: MouseEvent) => void;
-	/** Triggered when the dropdown is closed */
-	onClose?: () => void;
+	/**
+	 * Triggered when the dropdown is closed. Receives the event that closed it
+	 * (see `MenuDropdownCloseEvent`; `undefined` for the hover-close timeout and
+	 * unmount) and a `MenuDropdownCloseData` object.
+	 */
+	onClose?: (
+		event: MenuDropdownCloseEvent,
+		data: MenuDropdownCloseData
+	) => void;
 	/** Called when the triggering button gains focus */
 	onFocus?: (event: FocusEvent) => void;
 	/** Called when a key is pressed */
@@ -195,12 +235,19 @@ export interface MenuDropdownProps {
 	onMouseEnter?: (event: MouseEvent) => void;
 	/** Called when mouse hover leaves the trigger button */
 	onMouseLeave?: (event: MouseEvent) => void;
-	/** Triggered when the dropdown is opened */
-	onOpen?: () => void;
-	/** Triggered when an item in the menu is clicked */
+	/**
+	 * Triggered when the dropdown is opened. Receives the click, `mouseenter` or
+	 * keydown event that opened it and a `MenuDropdownOpenData` object.
+	 */
+	onOpen?: (event: MenuDropdownOpenEvent, data: MenuDropdownOpenData) => void;
+	/**
+	 * Triggered when an item in the menu is selected by mouse or keyboard.
+	 * Receives the triggering event and `{ option, optionIndex }`. Clicking
+	 * custom (non-`List`) content does not call `onSelect`; use `onClose`.
+	 */
 	onSelect?: (
-		option: MenuDropdownOption,
-		data: { option: MenuDropdownOption; optionIndex: number }
+		event: MouseEvent | KeyboardEvent | undefined,
+		data: MenuDropdownSelectData
 	) => void;
 	/** Determines if mouse hover or click opens the dropdown menu */
 	openOn?: 'hover' | 'click' | 'hybrid';
@@ -359,10 +406,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	const overlayRef = useRef<HTMLSpanElement | null>(null);
 
 	// Navigable items
-	const navigableItems = useMemo(
-		() => getNavigableItems(options),
-		[options]
-	);
+	const navigableItems = useMemo(() => getNavigableItems(options), [options]);
 
 	// Check props in development
 	useEffect(() => {
@@ -445,44 +489,74 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	}, []);
 
 	// Get menu item element
-	const getMenuItem = useCallback(
-		(index: number): HTMLLIElement | null => {
-			if (index !== undefined && listItemsRef.current) {
-				return listItemsRef.current[index] || null;
-			}
-			return null;
-		},
-		[]
-	);
+	const getMenuItem = useCallback((index: number): HTMLLIElement | null => {
+		if (index !== undefined && listItemsRef.current) {
+			return listItemsRef.current[index] || null;
+		}
+		return null;
+	}, []);
 
 	// Handle close
-	const handleCloseRef = useRef<() => void>(() => {});
+	const handleCloseRef = useRef<(event?: MenuDropdownCloseEvent) => void>(
+		() => {}
+	);
 
-	const handleClose = useCallback(() => {
-		if (getIsOpen()) {
-			if (currentOpenDropdown?.handleClose === handleCloseRef.current) {
-				currentOpenDropdown = undefined;
+	// Whether `onClose` has already fired for the current open cycle. The Dialog
+	// calls its `onClose` again when it unmounts after a close (with a stale
+	// `isOpen`), which would otherwise report every close twice.
+	const closeNotifiedRef = useRef(false);
+
+	const handleClose = useCallback(
+		(event?: MenuDropdownCloseEvent) => {
+			if (getIsOpen()) {
+				if (currentOpenDropdown?.handleClose === handleCloseRef.current) {
+					currentOpenDropdown = undefined;
+				}
+				setIsOpenState(false);
+				isHoverRef.current = false;
+				closeNotifiedRef.current = true;
+				onClose?.(event, {});
 			}
-			setIsOpenState(false);
-			isHoverRef.current = false;
-			onClose?.();
-		}
-	}, [getIsOpen, onClose]);
+		},
+		[getIsOpen, onClose]
+	);
+
+	// Dialog `onClose` fires for the Tab key and on Dialog unmount. Tab is
+	// already handled by `handleKeyDown` (the Dialog forwards the keydown), so
+	// only the unmount call is used, and only when this open cycle's close has
+	// not been reported yet (e.g. MenuDropdown unmounting while open).
+	const handleDialogClose = useCallback(
+		(
+			event: MenuDropdownCloseEvent,
+			data?: { componentWillUnmount?: boolean }
+		) => {
+			if (data?.componentWillUnmount && !closeNotifiedRef.current) {
+				handleClose(event);
+			}
+		},
+		[handleClose]
+	);
 
 	// Update the ref so we can compare in cleanup
 	handleCloseRef.current = handleClose;
 
 	// Handle open
-	const handleOpen = useCallback(() => {
-		if (!getIsOpen()) {
-			if (currentOpenDropdown && isFunction(currentOpenDropdown.handleClose)) {
-				currentOpenDropdown.handleClose();
+	const handleOpen = useCallback(
+		(event?: MenuDropdownOpenEvent) => {
+			if (!getIsOpen()) {
+				if (
+					currentOpenDropdown &&
+					isFunction(currentOpenDropdown.handleClose)
+				) {
+					currentOpenDropdown.handleClose(event);
+				}
+				currentOpenDropdown = { handleClose };
+				setIsOpenState(true);
+				onOpen?.(event, {});
 			}
-			currentOpenDropdown = { handleClose };
-			setIsOpenState(true);
-			onOpen?.();
-		}
-	}, [getIsOpen, handleClose, onOpen]);
+		},
+		[getIsOpen, handleClose, onOpen]
+	);
 
 	// Handle click outside - called via document event listener
 	const handleClickOutside = useCallback(
@@ -505,7 +579,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 						return;
 					}
 				}
-				handleClose();
+				handleClose(event);
 			}
 		},
 		[getId, handleClose]
@@ -524,23 +598,26 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	}, [isOpen, handleClickOutside]);
 
 	// Toggle open
-	const toggleOpen = useCallback(() => {
-		setFocus();
-		if (getIsOpen()) {
-			handleClose();
-		} else {
-			handleOpen();
-		}
-	}, [getIsOpen, handleClose, handleOpen, setFocus]);
+	const toggleOpen = useCallback(
+		(event?: KeyboardEvent) => {
+			setFocus();
+			if (getIsOpen()) {
+				handleClose(event);
+			} else {
+				handleOpen(event);
+			}
+		},
+		[getIsOpen, handleClose, handleOpen, setFocus]
+	);
 
 	// Handle click
 	const handleClick = useCallback(
 		(event: MouseEvent) => {
 			if (!getIsOpen()) {
-				handleOpen();
+				handleOpen(event);
 				setFocus();
 			} else {
-				handleClose();
+				handleClose(event);
 			}
 			onClick?.(event);
 		},
@@ -560,7 +637,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		(event: MouseEvent) => {
 			isHoverRef.current = true;
 			if (!getIsOpen() && openOn === 'hover') {
-				handleOpen();
+				handleOpen(event);
 			} else {
 				if (closingTimeoutRef.current) {
 					clearTimeout(closingTimeoutRef.current);
@@ -585,11 +662,13 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	);
 
 	// Handle select
+	// `event` is the keydown from keyboard selection, or the click forwarded by
+	// the menu-list item.
 	const handleSelect = useCallback(
-		(index: number) => {
+		(index: number, event?: MouseEvent | KeyboardEvent) => {
 			if (!multiple) {
 				setSelectedIndex(index);
-				handleClose();
+				handleClose(event);
 				setFocus();
 			} else if (selectedIndices.indexOf(index) === -1) {
 				setSelectedIndices((prev) => [...prev, index]);
@@ -599,7 +678,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 
 			if (onSelect && options) {
 				const option = options[index];
-				onSelect(option, { option, optionIndex: index });
+				onSelect(event, { option, optionIndex: index });
 			}
 		},
 		[multiple, selectedIndices, handleClose, setFocus, onSelect, options]
@@ -639,10 +718,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	// Handle keyboard focus
 	const handleKeyboardFocus = useCallback(
 		(newFocusedIndex: number | undefined) => {
-			if (
-				focusedIndex !== newFocusedIndex &&
-				newFocusedIndex !== undefined
-			) {
+			if (focusedIndex !== newFocusedIndex && newFocusedIndex !== undefined) {
 				setFocusedIndex(newFocusedIndex);
 			}
 
@@ -705,17 +781,20 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	);
 
 	// Handle cancel
-	const handleCancel = useCallback(() => {
-		setFocus();
-		handleClose();
-	}, [setFocus, handleClose]);
+	const handleCancel = useCallback(
+		(event?: KeyboardEvent) => {
+			setFocus();
+			handleClose(event);
+		},
+		[setFocus, handleClose]
+	);
 
 	// Handle key down
 	const handleKeyDown = useCallback(
 		(event: KeyboardEvent) => {
 			if (event.keyCode) {
 				if (event.keyCode === KEYS.TAB) {
-					handleCancel();
+					handleCancel(event);
 				} else if (
 					event.keyCode === KEYS.ENTER ||
 					event.keyCode === KEYS.SPACE ||
@@ -728,26 +807,33 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 						event,
 						isOpen: getIsOpen(),
 						keyCode: event.keyCode,
-						onSelect: handleSelect,
+						onSelect: (index: number) => handleSelect(index, event),
 						target: event.target,
-						toggleOpen,
+						toggleOpen: () => toggleOpen(event),
 					});
 				}
 				onKeyDown?.(event);
 			}
 		},
-		[handleCancel, handleKeyboardNavigate, getIsOpen, handleSelect, toggleOpen, onKeyDown]
+		[
+			handleCancel,
+			handleKeyboardNavigate,
+			getIsOpen,
+			handleSelect,
+			toggleOpen,
+			onKeyDown,
+		]
 	);
 
-	// Handle click custom content
-	const handleClickCustomContent = useCallback(() => {
-		setFocus();
-		handleClose();
-		onSelect?.(
-			{} as MenuDropdownOption,
-			{ option: {} as MenuDropdownOption, optionIndex: -1 }
-		);
-	}, [setFocus, handleClose, onSelect]);
+	// Handle click custom content. This closes the menu but is not an option
+	// selection, so `onSelect` is not called (there is no option to report).
+	const handleClickCustomContent = useCallback(
+		(event?: React.SyntheticEvent) => {
+			setFocus();
+			handleClose(event);
+		},
+		[setFocus, handleClose]
+	);
 
 	// Save ref to trigger
 	const saveRefToTrigger = useCallback(
@@ -816,6 +902,13 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		renderOverlay(isOpen);
 	}, [isOpen, renderOverlay]);
 
+	// A new open cycle starts whenever the menu is shown.
+	useEffect(() => {
+		if (isOpen) {
+			closeNotifiedRef.current = false;
+		}
+	}, [isOpen]);
+
 	// Cleanup on unmount
 	useEffect(() => {
 		return () => {
@@ -883,11 +976,16 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 						(child.type as { displayName?: string })?.displayName === LIST
 					) {
 						customContentWithListPropInjection.push(
-							renderDefaultMenuContent((child as ReactElement).props as Record<string, unknown>)
+							renderDefaultMenuContent(
+								(child as ReactElement).props as Record<string, unknown>
+							)
 						);
 					} else if (child) {
 						const clonedCustomContent = React.cloneElement(
-							child as ReactElement<{ onClick?: () => void; key?: string }>,
+							child as ReactElement<{
+								onClick?: (event?: React.SyntheticEvent) => void;
+								key?: string;
+							}>,
 							{
 								onClick: handleClickCustomContent,
 								key: generateId(),
@@ -923,7 +1021,8 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 				dialogAlign = align === 'center' ? 'bottom' : `bottom ${align}`;
 			}
 
-			const positions = DropdownToDialogNubbinMapping[dialogAlign]?.split(' ') || [];
+			const positions =
+				DropdownToDialogNubbinMapping[dialogAlign]?.split(' ') || [];
 			positionClassName = classNames(
 				positions.map((position) => `slds-dropdown_${position}`)
 			);
@@ -935,7 +1034,15 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 
 			return shouldShow ? (
 				<Dialog
-					align={dialogAlign as 'top' | 'top left' | 'top right' | 'bottom' | 'bottom left' | 'bottom right'}
+					align={
+						dialogAlign as
+							| 'top'
+							| 'top left'
+							| 'top right'
+							| 'bottom'
+							| 'bottom left'
+							| 'bottom right'
+					}
 					className={classNames(containerClassName)}
 					closeOnTabKey
 					contentsClassName={classNames(
@@ -954,7 +1061,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 					hasStaticAlignment={hasStaticAlignment}
 					inheritWidthOf={inheritTargetWidth ? 'target' : 'none'}
 					offset={offset}
-					onClose={handleClose}
+					onClose={handleDialogClose}
 					onKeyDown={handleKeyDown}
 					outsideClickIgnoreClass={outsideClickIgnoreClass}
 					position={menuPosition}
@@ -978,7 +1085,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			hasStaticAlignment,
 			inheritTargetWidth,
 			offset,
-			handleClose,
+			handleDialogClose,
 			handleKeyDown,
 			menuPosition,
 			menuStyle,
@@ -1000,7 +1107,10 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			(child.type as { displayName?: string })?.displayName ===
 				MENU_DROPDOWN_TRIGGER
 		) {
-			CustomTriggerChildProps = (child as ReactElement).props as Record<string, unknown>;
+			CustomTriggerChildProps = (child as ReactElement).props as Record<
+				string,
+				unknown
+			>;
 			CurrentTrigger = (child as ReactElement).type as React.ElementType;
 		} else if (child) {
 			customContent.push(child);
@@ -1060,4 +1170,3 @@ MenuDropdown.displayName = MENU_DROPDOWN;
 
 export default MenuDropdown;
 export { ListItem, ListItemLabel };
-

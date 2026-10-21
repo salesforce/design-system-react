@@ -1,6 +1,6 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { render, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest';
 
 import IconSettings from '../../icon-settings';
 import SLDSButton from '../../button';
@@ -74,6 +74,51 @@ describe('SLDSWelcomeMat', () => {
 		}
 	});
 
+	describe('onRequestClose', () => {
+		const renderWelcomeMat = (onRequestClose) =>
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<SLDSWelcomeMat
+						isOpen
+						labels={labels}
+						id="welcome-mat-close-test"
+						onRequestClose={onRequestClose}
+					>
+						{tiles}
+					</SLDSWelcomeMat>
+				</IconSettings>
+			);
+
+		it('forwards the close button click event and trigger "close-button"', () => {
+			const onRequestClose = vi.fn();
+			renderWelcomeMat(onRequestClose);
+
+			fireEvent.click(document.body.querySelector('.slds-modal__close'));
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestClose.mock.calls[0];
+			expect(event).toEqual(expect.objectContaining({ type: 'click' }));
+			expect(data).toEqual({ trigger: 'close-button' });
+		});
+
+		it('forwards the Escape keydown event and trigger "escape"', () => {
+			const onRequestClose = vi.fn();
+			renderWelcomeMat(onRequestClose);
+
+			fireEvent.keyDown(document.body.querySelector('.slds-modal'), {
+				key: 'Escape',
+				keyCode: 27,
+			});
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestClose.mock.calls[0];
+			expect(event).toEqual(
+				expect.objectContaining({ type: 'keydown', key: 'Escape' })
+			);
+			expect(data).toEqual({ trigger: 'escape' });
+		});
+	});
+
 	describe('Steps Variant', () => {
 		it('renders welcome mat', () => {
 			render(
@@ -90,7 +135,8 @@ describe('SLDSWelcomeMat', () => {
 			);
 
 			// NOTE: WelcomeMat renders to a portal, so we need to query document.body
-			const welcomeMatContainer = document.body.querySelector('.slds-welcome-mat');
+			const welcomeMatContainer =
+				document.body.querySelector('.slds-welcome-mat');
 			expect(welcomeMatContainer).toBeInTheDocument();
 			expect(
 				welcomeMatContainer.querySelector('.slds-welcome-mat__content')
@@ -147,9 +193,12 @@ describe('SLDSWelcomeMat', () => {
 				</IconSettings>
 			);
 
-			const welcomeMatInfo = document.body.querySelector('.slds-welcome-mat__info');
+			const welcomeMatInfo = document.body.querySelector(
+				'.slds-welcome-mat__info'
+			);
 			expect(
-				welcomeMatInfo.querySelector('.slds-welcome-mat__info-title').textContent
+				welcomeMatInfo.querySelector('.slds-welcome-mat__info-title')
+					.textContent
 			).toBe(title);
 			expect(
 				welcomeMatInfo.querySelector('.slds-welcome-mat__info-description')
@@ -195,7 +244,8 @@ describe('SLDSWelcomeMat', () => {
 				</IconSettings>
 			);
 
-			const welcomeMatContainer = document.body.querySelector('.slds-welcome-mat');
+			const welcomeMatContainer =
+				document.body.querySelector('.slds-welcome-mat');
 			expect(welcomeMatContainer).toBeInTheDocument();
 			expect(
 				welcomeMatContainer.querySelector('.slds-welcome-mat__content')
@@ -245,7 +295,8 @@ describe('SLDSWelcomeMat', () => {
 				</IconSettings>
 			);
 
-			const welcomeMatContainer = document.body.querySelector('.slds-welcome-mat');
+			const welcomeMatContainer =
+				document.body.querySelector('.slds-welcome-mat');
 			expect(
 				welcomeMatContainer.querySelector('.slds-welcome-mat__info-actions')
 			).toBeInTheDocument();
@@ -254,7 +305,9 @@ describe('SLDSWelcomeMat', () => {
 					'.slds-welcome-mat__info-actions button'
 				)
 			).toBeInTheDocument();
-			expect(welcomeMatContainer.querySelector('.slds-checkbox')).toBeInTheDocument();
+			expect(
+				welcomeMatContainer.querySelector('.slds-checkbox')
+			).toBeInTheDocument();
 		});
 	});
 
@@ -289,7 +342,8 @@ describe('SLDSWelcomeMat', () => {
 				</IconSettings>
 			);
 
-			const welcomeMatContainer = document.body.querySelector('.slds-welcome-mat');
+			const welcomeMatContainer =
+				document.body.querySelector('.slds-welcome-mat');
 			expect(welcomeMatContainer).toBeInTheDocument();
 			expect(
 				welcomeMatContainer.querySelector('.slds-welcome-mat__content')
@@ -329,7 +383,8 @@ describe('SLDSWelcomeMat', () => {
 				</IconSettings>
 			);
 
-			const welcomeMatContainer = document.body.querySelector('.slds-welcome-mat');
+			const welcomeMatContainer =
+				document.body.querySelector('.slds-welcome-mat');
 			expect(
 				welcomeMatContainer.querySelector('.slds-welcome-mat__tiles')
 			).not.toBeInTheDocument();
@@ -365,7 +420,8 @@ describe('SLDSWelcomeMat', () => {
 				</IconSettings>
 			);
 
-			const welcomeMatContainer = document.body.querySelector('.slds-welcome-mat');
+			const welcomeMatContainer =
+				document.body.querySelector('.slds-welcome-mat');
 			expect(
 				welcomeMatContainer.querySelector('.slds-welcome-mat__info-actions')
 			).toBeInTheDocument();
@@ -374,7 +430,9 @@ describe('SLDSWelcomeMat', () => {
 					'.slds-welcome-mat__info-actions button'
 				)
 			).toBeInTheDocument();
-			expect(welcomeMatContainer.querySelector('.slds-checkbox')).toBeInTheDocument();
+			expect(
+				welcomeMatContainer.querySelector('.slds-checkbox')
+			).toBeInTheDocument();
 		});
 	});
 
@@ -414,7 +472,8 @@ describe('SLDSWelcomeMat', () => {
 				</IconSettings>
 			);
 
-			const welcomeMatContainer = document.body.querySelector('.slds-welcome-mat');
+			const welcomeMatContainer =
+				document.body.querySelector('.slds-welcome-mat');
 			expect(welcomeMatContainer).toBeInTheDocument();
 			expect(
 				welcomeMatContainer.querySelector('.slds-welcome-mat__content')
@@ -470,7 +529,9 @@ describe('SLDSWelcomeMat', () => {
 				</IconSettings>
 			);
 
-			const welcomeMatInfo = document.body.querySelector('.slds-welcome-mat__info');
+			const welcomeMatInfo = document.body.querySelector(
+				'.slds-welcome-mat__info'
+			);
 			expect(
 				welcomeMatInfo.querySelector('.slds-welcome-mat__info-badge')
 			).toBeInTheDocument();
@@ -516,9 +577,12 @@ describe('SLDSWelcomeMat', () => {
 				</IconSettings>
 			);
 
-			const welcomeMatInfo = document.body.querySelector('.slds-welcome-mat__info');
+			const welcomeMatInfo = document.body.querySelector(
+				'.slds-welcome-mat__info'
+			);
 			expect(
-				welcomeMatInfo.querySelector('.slds-welcome-mat__info-title').textContent
+				welcomeMatInfo.querySelector('.slds-welcome-mat__info-title')
+					.textContent
 			).toBe(title);
 			expect(
 				welcomeMatInfo.querySelector('.slds-welcome-mat__info-description')

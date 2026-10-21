@@ -7,6 +7,18 @@
 import MenuDropdown from './menu-dropdown';
 
 export default MenuDropdown;
-export type { MenuDropdownProps, MenuDropdownOption, DropdownNubbinPosition } from './menu-dropdown';
-export { DropdownNubbinPositions, ListItem, ListItemLabel } from './menu-dropdown';
-
+export type {
+	MenuDropdownProps,
+	MenuDropdownOption,
+	DropdownNubbinPosition,
+	MenuDropdownSelectData,
+	MenuDropdownOpenData,
+	MenuDropdownOpenEvent,
+	MenuDropdownCloseData,
+	MenuDropdownCloseEvent,
+} from './menu-dropdown';
+export {
+	DropdownNubbinPositions,
+	ListItem,
+	ListItemLabel,
+} from './menu-dropdown';

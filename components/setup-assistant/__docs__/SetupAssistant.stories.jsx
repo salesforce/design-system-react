@@ -138,7 +138,7 @@ export const ExpandableSteps = {
 		const [toggleChecked, setToggleChecked] = useState(false);
 
 		const handleToggle = (event, { index, isOpen }) => {
-			setOpenStep(isOpen ? null : index);
+			setOpenStep(isOpen ? index : null);
 		};
 
 		const subSteps = buildSubSteps({

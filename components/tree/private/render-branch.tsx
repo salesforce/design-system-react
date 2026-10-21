@@ -49,7 +49,10 @@ export interface RenderBranchProps {
 	getNodes?: (node: { nodes?: TreeNode[] }) => TreeNode[] | undefined;
 }
 
-const handleExpand = (event: React.SyntheticEvent, props: RenderBranchProps) => {
+const handleExpand = (
+	event: React.SyntheticEvent,
+	props: RenderBranchProps
+) => {
 	EventUtil.trap(event);
 	if (isFunction(props.onExpand)) {
 		props.onExpand({
@@ -101,7 +104,10 @@ const findPreviousNode = (flattenedNodes: FlattenedNode[], node: TreeNode) => {
 	return flattenedNodes[index];
 };
 
-const handleKeyDownDown = (event: React.KeyboardEvent, props: RenderBranchProps) => {
+const handleKeyDownDown = (
+	event: React.KeyboardEvent,
+	props: RenderBranchProps
+) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
 		const flattenedNode = findNextNode(props.flattenedNodes, props.node);
 		props.onSelect?.({
@@ -116,7 +122,10 @@ const handleKeyDownDown = (event: React.KeyboardEvent, props: RenderBranchProps)
 	}
 };
 
-const handleKeyDownUp = (event: React.KeyboardEvent, props: RenderBranchProps) => {
+const handleKeyDownUp = (
+	event: React.KeyboardEvent,
+	props: RenderBranchProps
+) => {
 	if (props.focusedNodeIndex === props.treeIndex) {
 		const flattenedNode = findPreviousNode(props.flattenedNodes, props.node);
 		props.onSelect?.({
@@ -131,7 +140,10 @@ const handleKeyDownUp = (event: React.KeyboardEvent, props: RenderBranchProps) =
 	}
 };
 
-const handleKeyDownRight = (event: React.KeyboardEvent, props: RenderBranchProps) => {
+const handleKeyDownRight = (
+	event: React.KeyboardEvent,
+	props: RenderBranchProps
+) => {
 	if (props.node.expanded) {
 		const childNodes = props.getNodes?.(props.node);
 		if (childNodes && childNodes.length > 0) {
@@ -142,14 +154,21 @@ const handleKeyDownRight = (event: React.KeyboardEvent, props: RenderBranchProps
 	}
 };
 
-const handleKeyDownLeft = (event: React.KeyboardEvent, props: RenderBranchProps) => {
+const handleKeyDownLeft = (
+	event: React.KeyboardEvent,
+	props: RenderBranchProps
+) => {
 	if (props.node.expanded) {
 		handleExpand(event, props);
 	} else {
-		const nodes = props.flattenedNodes.map((flattenedNode) => flattenedNode.node);
+		const nodes = props.flattenedNodes.map(
+			(flattenedNode) => flattenedNode.node
+		);
 		const parent = props.parent as TreeNode;
 		const index = findIndex(nodes, { id: parent?.id });
 		if (index !== -1) {
+			// `select: true` marks a move to the parent node, not an expand/collapse request.
+			// Tree routes it to `onSelect` (or to the deprecated `onExpandClick`).
 			props.onExpand({
 				event,
 				data: {
@@ -163,18 +182,34 @@ const handleKeyDownLeft = (event: React.KeyboardEvent, props: RenderBranchProps)
 	}
 };
 
-const handleKeyDownEnter = (event: React.KeyboardEvent, props: RenderBranchProps) => {
+const handleKeyDownEnter = (
+	event: React.KeyboardEvent,
+	props: RenderBranchProps
+) => {
 	handleSelect({ event, props });
 };
 
-const handleKeyDown = (event: React.KeyboardEvent, props: RenderBranchProps) => {
+const handleKeyDown = (
+	event: React.KeyboardEvent,
+	props: RenderBranchProps
+) => {
 	mapKeyEventCallbacks(event, {
 		callbacks: {
-			[KEYS.DOWN]: { callback: (evt: React.KeyboardEvent) => handleKeyDownDown(evt, props) },
-			[KEYS.UP]: { callback: (evt: React.KeyboardEvent) => handleKeyDownUp(evt, props) },
-			[KEYS.RIGHT]: { callback: (evt: React.KeyboardEvent) => handleKeyDownRight(evt, props) },
-			[KEYS.LEFT]: { callback: (evt: React.KeyboardEvent) => handleKeyDownLeft(evt, props) },
-			[KEYS.ENTER]: { callback: (evt: React.KeyboardEvent) => handleKeyDownEnter(evt, props) },
+			[KEYS.DOWN]: {
+				callback: (evt: React.KeyboardEvent) => handleKeyDownDown(evt, props),
+			},
+			[KEYS.UP]: {
+				callback: (evt: React.KeyboardEvent) => handleKeyDownUp(evt, props),
+			},
+			[KEYS.RIGHT]: {
+				callback: (evt: React.KeyboardEvent) => handleKeyDownRight(evt, props),
+			},
+			[KEYS.LEFT]: {
+				callback: (evt: React.KeyboardEvent) => handleKeyDownLeft(evt, props),
+			},
+			[KEYS.ENTER]: {
+				callback: (evt: React.KeyboardEvent) => handleKeyDownEnter(evt, props),
+			},
 		},
 	});
 };
@@ -199,7 +234,10 @@ const getTabIndex = (props: RenderBranchProps): number => {
 /**
  * Renders a branch node in the tree.
  */
-const RenderBranch = (children: ReactNode, props: RenderBranchProps): React.ReactElement => {
+const RenderBranch = (
+	children: ReactNode,
+	props: RenderBranchProps
+): React.ReactElement => {
 	const isExpanded = props.node.expanded;
 	const isSelected = props.node.selected;
 	const isFocused = props.treeIndex === props.focusedNodeIndex;
@@ -253,8 +291,9 @@ const RenderBranch = (children: ReactNode, props: RenderBranchProps): React.Reac
 	// aria-level and aria-expanded are valid for elements with role="treeitem"
 	const ariaProps = {
 		'aria-level': props.level,
-		'aria-expanded': isExpanded ? 'true' as const : 'false' as const,
-		'aria-label': props.node.nodes && props.node.nodes.length > 0 ? label : undefined,
+		'aria-expanded': isExpanded ? ('true' as const) : ('false' as const),
+		'aria-label':
+			props.node.nodes && props.node.nodes.length > 0 ? label : undefined,
 	};
 
 	return (
@@ -316,4 +355,3 @@ const RenderBranch = (children: ReactNode, props: RenderBranchProps): React.Reac
 RenderBranch.displayName = 'Branch';
 
 export default RenderBranch;
-

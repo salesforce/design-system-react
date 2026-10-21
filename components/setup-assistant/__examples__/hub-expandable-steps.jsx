@@ -189,7 +189,7 @@ class Example extends React.Component {
 						});
 
 						const { expandedSteps } = this.state;
-						expandedSteps[data.index] = !data.isOpen;
+						expandedSteps[data.index] = data.isOpen;
 						this.setState({ expandedSteps });
 					}}
 				>

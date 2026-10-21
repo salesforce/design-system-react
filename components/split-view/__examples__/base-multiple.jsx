@@ -111,8 +111,8 @@ const headerControls = () => (
 				iconSize="large"
 				iconVariant="more"
 				align="right"
-				onSelect={(value) => {
-					console.log('selected: ', value);
+				onSelect={(event, { option }) => {
+					console.log('selected: ', option);
 				}}
 				options={[
 					{ label: 'Display As', type: 'header' },

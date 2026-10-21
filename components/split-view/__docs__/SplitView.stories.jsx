@@ -5,7 +5,9 @@ import Card from '../../card';
 
 const sampleMasterContent = (
 	<div className="slds-p-around_medium">
-		<h2 className="slds-text-heading_small slds-m-bottom_small">Master Panel</h2>
+		<h2 className="slds-text-heading_small slds-m-bottom_small">
+			Master Panel
+		</h2>
 		<ul className="slds-list_dotted">
 			<li className="slds-m-bottom_x-small">Item 1</li>
 			<li className="slds-m-bottom_x-small">Item 2</li>
@@ -18,9 +20,12 @@ const sampleMasterContent = (
 
 const sampleDetailContent = (
 	<div className="slds-p-around_medium">
-		<h2 className="slds-text-heading_medium slds-m-bottom_medium">Detail Panel</h2>
+		<h2 className="slds-text-heading_medium slds-m-bottom_medium">
+			Detail Panel
+		</h2>
 		<p className="slds-m-bottom_medium">
-			This is the detail panel. Click the toggle button to show or hide the master panel.
+			This is the detail panel. Click the toggle button to show or hide the
+			master panel.
 		</p>
 		<Card heading="Sample Card" bodyClassName="slds-p-around_medium">
 			<p>Card content goes here.</p>
@@ -33,7 +38,10 @@ export default {
 	component: SplitView,
 	decorators: [
 		(Story) => (
-			<div className="slds-p-around_medium" style={{ height: '400px', border: '1px solid #d8dde6' }}>
+			<div
+				className="slds-p-around_medium"
+				style={{ height: '400px', border: '1px solid #d8dde6' }}
+			>
 				<IconSettings iconPath="/assets/icons">
 					<Story />
 				</IconSettings>
@@ -45,10 +53,7 @@ export default {
 // Default split view
 export const Default = {
 	render: () => (
-		<SplitView
-			master={sampleMasterContent}
-			detail={sampleDetailContent}
-		/>
+		<SplitView master={sampleMasterContent} detail={sampleDetailContent} />
 	),
 };
 
@@ -87,8 +92,7 @@ export const Controlled = {
 						detail={sampleDetailContent}
 						isOpen={isOpen}
 						events={{
-							onOpen: () => setIsOpen(true),
-							onClose: () => setIsOpen(false),
+							onToggle: (event, data) => setIsOpen(data.isOpen),
 						}}
 					/>
 				</div>
@@ -111,12 +115,8 @@ export const CustomWidth = {
 // With event handlers
 export const WithEventHandlers = {
 	render: () => {
-		const handleOpen = () => {
-			console.log('Split view opened');
-		};
-
-		const handleClose = () => {
-			console.log('Split view closed');
+		const handleToggle = (event, { isOpen }) => {
+			console.log(isOpen ? 'Split view opening' : 'Split view closing');
 		};
 
 		return (
@@ -124,8 +124,7 @@ export const WithEventHandlers = {
 				master={sampleMasterContent}
 				detail={sampleDetailContent}
 				events={{
-					onOpen: handleOpen,
-					onClose: handleClose,
+					onToggle: handleToggle,
 				}}
 			/>
 		);

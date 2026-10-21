@@ -13,21 +13,11 @@ export type {
 	PopoverPosition,
 	PopoverVariant,
 	PopoverAssistiveText,
+	PopoverRequestCloseTrigger,
+	PopoverRequestCloseData,
+	PopoverOpenData,
+	PopoverCloseData,
 } from './popover';
 
 export { PopoverNubbinPositions };
 export default Popover;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
