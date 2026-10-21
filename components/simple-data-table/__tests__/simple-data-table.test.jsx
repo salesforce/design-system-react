@@ -795,8 +795,11 @@ describe('SimpleDataTable', () => {
 			expect(action.value).toBe('1');
 
 			expect(onSelect).toHaveBeenCalledTimes(1);
-			const actionFromSelect = onSelect.mock.calls[0][0];
-			expect(actionFromSelect.value).toBe('1');
+			const [, selectData] = onSelect.mock.calls[0];
+			expect(selectData).toEqual({
+				option: { id: 0, label: 'Add to Group', value: '1' },
+				optionIndex: 0,
+			});
 		});
 	});
 

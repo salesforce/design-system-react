@@ -1,7 +1,11 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type CSSProperties, type SyntheticEvent } from 'react';
+import React, {
+	type ReactNode,
+	type CSSProperties,
+	type SyntheticEvent,
+} from 'react';
 import classNames from 'classnames';
 
 import assign from 'lodash.assign';
@@ -22,9 +26,15 @@ export interface StepAssistiveText {
 	expandStep?: string;
 }
 
+/**
+ * Data passed to `onToggleIsOpen`
+ */
 export interface StepToggleData {
+	/** Index of the step within the Setup Assistant (set by the parent `SetupAssistant`) */
 	index?: number;
+	/** Requested (next) open state: `true` to expand the step, `false` to collapse it */
 	isOpen: boolean;
+	/** Props of the step being toggled */
 	step: StepProps;
 }
 
@@ -81,7 +91,7 @@ export interface StepProps {
 	 */
 	onRenderFigure?: () => React.ReactElement | null;
 	/**
-	 * Function to handle requests to expand / collapse the step
+	 * Function to handle requests to expand / collapse the step. `data.isOpen` is the requested (next) state.
 	 */
 	onToggleIsOpen?: (event: SyntheticEvent, data: StepToggleData) => void;
 	/**
@@ -140,7 +150,7 @@ class Step extends React.Component<StepProps, StepState> {
 		if (this.props.onToggleIsOpen) {
 			this.props.onToggleIsOpen(event, {
 				index: this.props.index,
-				isOpen: this.getIsOpen(),
+				isOpen: !this.getIsOpen(),
 				step: this.props,
 			});
 		} else {

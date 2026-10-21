@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import Avatar from '../../avatar';
 import Icon from '../../icon';
@@ -72,17 +72,21 @@ describe('SLDSPillContainer', () => {
 				<IconSettings iconPath="/assets/icons">
 					<PillContainer
 						options={options}
-						onClickPill={(event, data) => {
-							clickData = data;
-						}}
-						onRequestRemovePill={(event, data) => {
-							requestRemoveData = data;
+						events={{
+							onClickPill: (event, data) => {
+								clickData = data;
+							},
+							onRequestRemovePill: (event, data) => {
+								requestRemoveData = data;
+							},
 						}}
 					/>
 				</IconSettings>
 			);
 
-			expect(container.querySelector('.slds-pill_container')).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-pill_container')
+			).toBeInTheDocument();
 			expect(container.querySelector('ul.slds-listbox')).toBeInTheDocument();
 
 			const pills = container.querySelectorAll('ul.slds-listbox .slds-pill');
@@ -105,11 +109,15 @@ describe('SLDSPillContainer', () => {
 				// Check for icons
 				if (idOfCurrentPill === 2 || idOfCurrentPill === 3) {
 					expect(
-						pill.querySelector('.slds-icon_container.slds-icon-standard-account')
+						pill.querySelector(
+							'.slds-icon_container.slds-icon-standard-account'
+						)
 					).toBeInTheDocument();
 				} else if (idOfCurrentPill === 4 || idOfCurrentPill === 5) {
 					expect(
-						pill.querySelector('.slds-avatar.slds-avatar_circle.slds-avatar_medium')
+						pill.querySelector(
+							'.slds-avatar.slds-avatar_circle.slds-avatar_medium'
+						)
 					).toBeInTheDocument();
 				} else if (idOfCurrentPill === 6) {
 					expect(pill.classList.contains('slds-pill_bare')).toBe(true);
@@ -159,8 +167,10 @@ describe('SLDSPillContainer', () => {
 				<IconSettings iconPath="/assets/icons">
 					<PillContainer
 						options={options}
-						onRequestRemovePill={(event, data) => {
-							requestRemoveData.push(data.option);
+						events={{
+							onRequestRemovePill: (event, data) => {
+								requestRemoveData.push(data.option);
+							},
 						}}
 					/>
 				</IconSettings>
@@ -190,7 +200,138 @@ describe('SLDSPillContainer', () => {
 			fireEvent.keyDown(pills[3], { key: 'Left', keyCode: 37, which: 37 });
 
 			// Verify container is still intact after keyboard interactions
-			expect(container.querySelector('.slds-pill_container')).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-pill_container')
+			).toBeInTheDocument();
+		});
+	});
+
+	describe('Callbacks', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		// The deprecation warning is emitted once per module lifetime, so this
+		// must be the first test in the file to pass the flat props.
+		it('calls the deprecated flat props with (event, { index, option }) and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const onClickPill = vi.fn();
+			const onRequestRemovePill = vi.fn();
+
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<PillContainer
+						options={options}
+						onClickPill={onClickPill}
+						onRequestRemovePill={onRequestRemovePill}
+					/>
+				</IconSettings>
+			);
+
+			const messages = consoleError.mock.calls.map((call) => call.join(' '));
+			expect(
+				messages.some(
+					(m) =>
+						m.includes('`onClickPill` will be removed') &&
+						m.includes('`events.onClickPill`')
+				)
+			).toBe(true);
+			expect(
+				messages.some(
+					(m) =>
+						m.includes('`onRequestRemovePill` will be removed') &&
+						m.includes('`events.onRequestRemovePill`')
+				)
+			).toBe(true);
+
+			const pills = container.querySelectorAll('.slds-pill');
+			fireEvent.click(pills[1]);
+			expect(onClickPill).toHaveBeenCalledTimes(1);
+			expect(onClickPill).toHaveBeenCalledWith(
+				expect.objectContaining({ type: 'click' }),
+				{ index: 1, option: options[1] }
+			);
+
+			fireEvent.click(pills[2].querySelector('.slds-pill__remove'));
+			expect(onRequestRemovePill).toHaveBeenCalledTimes(1);
+			expect(onRequestRemovePill).toHaveBeenCalledWith(
+				expect.objectContaining({ type: 'click' }),
+				{ index: 2, option: options[2] }
+			);
+		});
+
+		it('calls events.onClickPill and events.onRequestRemovePill with (event, { index, option })', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const onClickPill = vi.fn();
+			const onRequestRemovePill = vi.fn();
+
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<PillContainer
+						options={options}
+						events={{ onClickPill, onRequestRemovePill }}
+					/>
+				</IconSettings>
+			);
+
+			expect(
+				consoleError.mock.calls.some((call) =>
+					call.join(' ').includes('will be removed')
+				)
+			).toBe(false);
+
+			const pills = container.querySelectorAll('.slds-pill');
+			fireEvent.click(pills[0]);
+			expect(onClickPill).toHaveBeenCalledTimes(1);
+			expect(onClickPill).toHaveBeenCalledWith(
+				expect.objectContaining({ type: 'click' }),
+				{ index: 0, option: options[0] }
+			);
+
+			fireEvent.click(pills[3].querySelector('.slds-pill__remove'));
+			expect(onRequestRemovePill).toHaveBeenLastCalledWith(
+				expect.objectContaining({ type: 'click' }),
+				{ index: 3, option: options[3] }
+			);
+
+			fireEvent.keyDown(pills[4], { key: 'Delete', keyCode: 46, which: 46 });
+			expect(onRequestRemovePill).toHaveBeenLastCalledWith(
+				expect.objectContaining({ type: 'keydown' }),
+				{ index: 4, option: options[4] }
+			);
+			expect(onRequestRemovePill).toHaveBeenCalledTimes(2);
+		});
+
+		it('prefers events.* over the deprecated flat props when both are passed', () => {
+			vi.spyOn(console, 'error').mockImplementation(() => {});
+			const onClickPill = vi.fn();
+			const onRequestRemovePill = vi.fn();
+			const deprecatedOnClickPill = vi.fn();
+			const deprecatedOnRequestRemovePill = vi.fn();
+
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<PillContainer
+						options={options}
+						events={{ onClickPill, onRequestRemovePill }}
+						onClickPill={deprecatedOnClickPill}
+						onRequestRemovePill={deprecatedOnRequestRemovePill}
+					/>
+				</IconSettings>
+			);
+
+			const pills = container.querySelectorAll('.slds-pill');
+			fireEvent.click(pills[0]);
+			fireEvent.click(pills[0].querySelector('.slds-pill__remove'));
+
+			expect(onClickPill).toHaveBeenCalledTimes(1);
+			expect(onRequestRemovePill).toHaveBeenCalledTimes(1);
+			expect(deprecatedOnClickPill).not.toHaveBeenCalled();
+			expect(deprecatedOnRequestRemovePill).not.toHaveBeenCalled();
 		});
 	});
 

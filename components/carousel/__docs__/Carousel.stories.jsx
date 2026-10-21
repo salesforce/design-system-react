@@ -147,7 +147,9 @@ export const Controlled = {
 		return (
 			<div>
 				<div className="slds-m-bottom_medium">
-					<span className="slds-m-right_small">Current Panel: {currentPanel}</span>
+					<span className="slds-m-right_small">
+						Current Panel: {currentPanel}
+					</span>
 					<span>Autoplay: {isAutoplayOn ? 'On' : 'Off'}</span>
 				</div>
 				<Carousel
@@ -162,7 +164,7 @@ export const Controlled = {
 					}}
 					onRequestAutoplayToggle={(event, data) => {
 						console.log('Autoplay toggle requested:', data);
-						setIsAutoplayOn(!data.isAutoplayOn);
+						setIsAutoplayOn(data.isAutoplayOn);
 					}}
 					onItemClick={(event, data) => console.log('Item clicked:', data.item)}
 				/>

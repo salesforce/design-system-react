@@ -111,8 +111,8 @@ const headerControls = () => (
 				iconSize="large"
 				iconVariant="more"
 				align="right"
-				onSelect={(value) => {
-					console.log('selected: ', value);
+				onSelect={(event, { option }) => {
+					console.log('selected: ', option);
 				}}
 				options={[
 					{ label: 'Display As', type: 'header' },
@@ -192,12 +192,8 @@ class Example extends React.Component {
 		this.sortList = this.sortList.bind(this);
 	}
 
-	onSplitViewOpen() {
-		this.setState({ isOpen: true });
-	}
-
-	onSplitViewClose() {
-		this.setState({ isOpen: false });
+	onSplitViewToggle(event, { isOpen }) {
+		this.setState({ isOpen });
 	}
 
 	// For multiple elements you need to pass an array in order for the scrolling to in the SplitViewList to work.
@@ -337,8 +333,7 @@ class Example extends React.Component {
 					<div style={{ height: '80vh' }}>
 						<SplitView
 							events={{
-								onOpen: (e) => this.onSplitViewOpen(e),
-								onClose: (e) => this.onSplitViewClose(e),
+								onToggle: (event, data) => this.onSplitViewToggle(event, data),
 							}}
 							id="SplitViewBase-external-state"
 							isOpen={this.state.isOpen}

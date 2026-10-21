@@ -5,13 +5,15 @@ import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 
+import { TreeScrollData } from '../types';
+
 export interface RenderInitialBranchProps {
 	htmlId: string | number;
 	initalClassName?: string | string[] | Record<string, boolean>;
 	initialStyle?: React.CSSProperties;
 	onScroll?: (
 		event: React.UIEvent<HTMLUListElement>,
-		data: { percentage: number }
+		data: TreeScrollData
 	) => void;
 }
 
@@ -19,12 +21,16 @@ const handleScroll = (
 	event: React.UIEvent<HTMLUListElement>,
 	props: RenderInitialBranchProps
 ) => {
-	const target = event.target as HTMLUListElement;
-	const percentage =
-		(target.scrollTop / (target.scrollHeight - target.clientHeight)) * 100;
+	const target = event.currentTarget;
+	const maxScrollTop = target.scrollHeight - target.clientHeight;
+	// 0 when not scrollable, otherwise clamped to 0–1 (overscroll can exceed the range)
+	const ratio =
+		maxScrollTop > 0
+			? Math.min(Math.max(target.scrollTop / maxScrollTop, 0), 1)
+			: 0;
 
 	if (isFunction(props.onScroll)) {
-		props.onScroll(event, { percentage });
+		props.onScroll(event, { ratio, percentage: ratio * 100 });
 	}
 };
 
@@ -46,4 +52,3 @@ const RenderInitialBranch = (
 RenderInitialBranch.displayName = 'TreeInitialNode';
 
 export default RenderInitialBranch;
-

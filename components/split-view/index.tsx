@@ -1,10 +1,19 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useState, useId, useCallback, type ReactElement, type MouseEvent } from 'react';
+import React, {
+	useState,
+	useId,
+	useCallback,
+	useEffect,
+	type ReactElement,
+	type MouseEvent,
+} from 'react';
 import classNames from 'classnames';
 import ToggleButton, { TOGGLE_BUTTON_WIDTH } from './private/toggle-button';
 import { SPLIT_VIEW } from '../../utilities/constants';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 /**
  * Assistive text for SplitView
@@ -17,12 +26,34 @@ export interface SplitViewAssistiveText {
 }
 
 /**
+ * Data passed to `events.onToggle`
+ */
+export interface SplitViewToggleData {
+	/** The requested (next) open state: `true` when the toggle asks to open, `false` when it asks to close */
+	isOpen: boolean;
+}
+
+/**
  * Event handlers for SplitView
  */
 export interface SplitViewEvents {
-	/** Called when the split view closes */
+	/**
+	 * Called when the toggle button is clicked. `data.isOpen` is the requested (next) open state.
+	 * In controlled mode (`isOpen` passed), update `isOpen` from this callback.
+	 */
+	onToggle?: (
+		event: MouseEvent<HTMLButtonElement>,
+		data: SplitViewToggleData
+	) => void;
+	/**
+	 * Called when the split view closes. Only called when `events.onToggle` is not provided.
+	 * @deprecated use `events.onToggle`
+	 */
 	onClose?: (event: MouseEvent<HTMLButtonElement>) => void;
-	/** Called when the split view opens */
+	/**
+	 * Called when the split view opens. Only called when `events.onToggle` is not provided.
+	 * @deprecated use `events.onToggle`
+	 */
 	onOpen?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -36,7 +67,11 @@ export interface SplitViewProps {
 	className?: string | string[] | Record<string, boolean>;
 	/** Detail panel content (required) */
 	detail: ReactElement | ReactElement[];
-	/** Event handlers */
+	/**
+	 * **Event handlers**
+	 * * `onToggle`: Called with `(event, { isOpen })` when the toggle button is clicked; `isOpen` is the requested (next) state.
+	 * * `onOpen` / `onClose`: Deprecated, use `onToggle`.
+	 */
 	events?: SplitViewEvents;
 	/** HTML id */
 	id?: string;
@@ -70,12 +105,19 @@ const SplitView = ({
 	const id = propId || generatedId;
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
 
+	// Check props in development
+	useEffect(() => {
+		checkProps(SPLIT_VIEW, { events }, componentDoc);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []); // Only run on mount
+
 	// Support both controlled and uncontrolled modes
 	const [internalIsOpen, setInternalIsOpen] = useState(
 		typeof controlledIsOpen === 'boolean' ? controlledIsOpen : true
 	);
 
-	const isOpen = typeof controlledIsOpen === 'boolean' ? controlledIsOpen : internalIsOpen;
+	const isOpen =
+		typeof controlledIsOpen === 'boolean' ? controlledIsOpen : internalIsOpen;
 	const masterViewId = `master_view_${id}`;
 
 	const handleToggle = useCallback(
@@ -84,7 +126,9 @@ const SplitView = ({
 				setInternalIsOpen((prev) => !prev);
 			}
 
-			if (isOpen && events.onClose) {
+			if (events.onToggle) {
+				events.onToggle(event, { isOpen: !isOpen });
+			} else if (isOpen && events.onClose) {
 				events.onClose(event);
 			} else if (!isOpen && events.onOpen) {
 				events.onOpen(event);
@@ -137,17 +181,3 @@ const SplitView = ({
 SplitView.displayName = SPLIT_VIEW;
 
 export default SplitView;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

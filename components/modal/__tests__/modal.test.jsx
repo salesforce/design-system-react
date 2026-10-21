@@ -152,6 +152,68 @@ describe('SLDSModal', () => {
 			const closeBtn = modal.querySelector('.slds-modal__close');
 			fireEvent.click(closeBtn);
 			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestClose.mock.calls[0];
+			expect(event).toEqual(expect.objectContaining({ type: 'click' }));
+			expect(data).toEqual({ trigger: 'close-button' });
+		});
+
+		it('calls onRequestClose with trigger "click-outside" when clicking outside the container', () => {
+			const onRequestClose = vi.fn();
+			renderModal({
+				isOpen: true,
+				onRequestClose,
+			});
+			fireEvent.click(getModalNode());
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestClose.mock.calls[0];
+			expect(event).toEqual(expect.objectContaining({ type: 'click' }));
+			expect(data).toEqual({ trigger: 'click-outside' });
+		});
+
+		it('calls onRequestClose with trigger "click-outside" when react-modal reports an overlay click', () => {
+			const onRequestClose = vi.fn();
+			renderModal({
+				isOpen: true,
+				onRequestClose,
+			});
+			fireEvent.click(document.body.querySelector('.ReactModal__Overlay'));
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestClose.mock.calls[0];
+			expect(event).toEqual(expect.objectContaining({ type: 'click' }));
+			expect(data).toEqual({ trigger: 'click-outside' });
+		});
+
+		it('does not call onRequestClose for clicks inside the modal content', () => {
+			const onRequestClose = vi.fn();
+			renderModal({
+				isOpen: true,
+				onRequestClose,
+			});
+			fireEvent.click(getModalNode().querySelector('.slds-modal__content'));
+			expect(onRequestClose).not.toHaveBeenCalled();
+		});
+
+		it('does not call onRequestClose on outside click when dismissOnClickOutside is false', () => {
+			const onRequestClose = vi.fn();
+			renderModal({
+				isOpen: true,
+				dismissOnClickOutside: false,
+				onRequestClose,
+			});
+			fireEvent.click(getModalNode());
+			expect(onRequestClose).not.toHaveBeenCalled();
+		});
+
+		it('does not call onRequestClose on Escape or outside click when disableClose is set', () => {
+			const onRequestClose = vi.fn();
+			renderModal({
+				isOpen: true,
+				disableClose: true,
+				onRequestClose,
+			});
+			fireEvent.keyDown(getModalNode(), { key: 'Escape', keyCode: 27 });
+			fireEvent.click(getModalNode());
+			expect(onRequestClose).not.toHaveBeenCalled();
 		});
 	});
 
@@ -293,6 +355,11 @@ describe('SLDSModal', () => {
 			fireEvent.keyDown(modal, { key: 'Escape', keyCode: 27 });
 
 			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestClose.mock.calls[0];
+			expect(event).toEqual(
+				expect.objectContaining({ type: 'keydown', key: 'Escape' })
+			);
+			expect(data).toEqual({ trigger: 'escape' });
 		});
 
 		// Real browser focus behavior (focus-on-open, Enter-activates-button,

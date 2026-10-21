@@ -96,7 +96,8 @@ export const WithCloseCallback = {
 			heading: 'Closable Toast',
 			details: 'Click the X to trigger onRequestClose callback.',
 		},
-		onRequestClose: () => console.log('Toast close requested'),
+		onRequestClose: (event, { trigger }) =>
+			console.log('Toast close requested', trigger),
 	},
 };
 
@@ -109,7 +110,8 @@ export const WithDuration = {
 			details: 'This toast will disappear after 5 seconds.',
 		},
 		duration: 5000,
-		onRequestClose: () => console.log('Toast dismissed by duration'),
+		onRequestClose: (event, { trigger }) =>
+			console.log('Toast close requested', trigger),
 	},
 };
 

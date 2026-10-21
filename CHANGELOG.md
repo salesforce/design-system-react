@@ -10,11 +10,42 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - `Button`: `xx-small` icon size ([#3228](https://github.com/salesforce/design-system-react/pull/3228))
 - `ButtonStateful`: `success` and `text` variants ([#3234](https://github.com/salesforce/design-system-react/pull/3234))
+- `Tree`: `onSelect(event, { node, isSelected })` and `onRequestToggle(event, { node, isExpanded })`, both reporting the requested state. `onRequestToggle` fires only for real expand/collapse requests; Left arrow on an item or collapsed branch selects the parent through `onSelect` and leaves it expanded
+- `SplitView`: `events.onToggle(event, { isOpen })`, where `isOpen` is the requested state
+- `PillContainer`: `events` prop (`{ onClickPill, onRequestRemovePill }`), with the same `(event, { index, option })` signatures as the flat props
+- `Tree`: `onScroll` data includes `ratio` (0–1, `0` when the list cannot scroll)
+- Callbacks that took no arguments now receive `(event, data)`, so existing handlers keep working:
+  - `Toast` `onRequestClose(event, { trigger })`: `trigger` is `'close-button'`, or `'timeout'` with `event` `undefined`
+  - `Modal` and `WelcomeMat` `onRequestClose(event, { trigger })`: `'close-button' | 'escape' | 'click-outside'`
+  - `DatePicker` `onRequestOpen(event, { trigger })` (`'input-click' | 'icon-click' | 'keyboard'`), `onRequestClose(event, { trigger })` (`'date-select' | 'escape' | 'enter' | 'click-outside'`; the outside-click event is the native `mousedown`/`touchstart`), and `onClose(undefined, { componentWillUnmount })`
+  - `MenuDropdown` `onOpen(event, {})` and `onClose(event, {})`
+- Exported data types for these callbacks, such as `TabsSelectData`, `MenuDropdownSelectData`, `ToastRequestCloseData`, `ModalRequestCloseData`, `PopoverRequestCloseTrigger`, `TreeNodeSelectData` and `SplitViewToggleData`
+
+### Changed
+
+- **BREAKING**: `Tabs` `onSelect` is called as `onSelect(event, { selectedIndex, previousIndex })` instead of `onSelect(selectedIndex, lastIndex)`. Returning `false` no longer cancels the selection; to stop a tab change, pass `selectedIndex` and update it from `onSelect` only when the change should happen
+- **BREAKING**: `MenuDropdown` `onSelect` is called as `onSelect(event, { option, optionIndex })`; the first argument was the option. Change `(option) => …` to `(event, { option }) => …`; handlers that read the second argument need no change. Clicking custom (non-`List`) content no longer calls `onSelect` with an empty option; use `onClose` instead. `SimpleDataTableRowActions` `onAction` is unchanged
+- **BREAKING**: `Carousel` `onRequestAutoplayToggle` data `isAutoplayOn` is the requested state, not the current one. Replace `setIsAutoplayOn(!data.isAutoplayOn)` with `setIsAutoplayOn(data.isAutoplayOn)`. Timer-driven `onRequestAutoplayToggle` and `onRequestPanelChange` calls pass `undefined` as the event instead of `{}`, and `onRenderItem` is typed as `({ item }) => ReactElement`, the shape it is called with
+- **BREAKING**: `SetupAssistant` `onStepToggleIsOpen` and `SetupAssistantStep` `onToggleIsOpen` data `isOpen` is the requested state. Replace `expanded[data.index] = !data.isOpen` with `expanded[data.index] = data.isOpen`. `data.step` is typed as the step's props, which is what it has always been at runtime
+- **BREAKING**: `Popover` `onRequestClose` data always includes a `trigger` from `PopoverRequestCloseTrigger`. A trigger click while open reports `'triggerClick'` and a hover close reports `'mouseLeave'` (both passed `{}` before), and Escape passes the keydown event instead of `undefined`. `onOpen(undefined, { portal })` and `onClose(undefined, { componentWillUnmount })` have exported data types
+- `DatePicker`: Down/Up in the closed input go through `onRequestOpen`, and Escape/Enter in the input go through `onRequestClose`, instead of setting internal state directly. Controlled pickers now open from the keyboard; uncontrolled pickers that pass `onRequestOpen` open from your handler, as they already did for clicks
+
+### Deprecated
+
+- `Tree` `onClick` (use `onSelect`) and `onExpandClick` (use `onRequestToggle`). They keep their old payloads and behavior, log a one-time warning, and are ignored when the replacement is passed. Neither is required in the types any more
+- `Tree` `onScroll` data `percentage` (use `ratio`)
+- `SplitView` `events.onOpen` and `events.onClose` (use `events.onToggle`). They are called only when `onToggle` is absent
+- `PillContainer` flat `onClickPill` and `onRequestRemovePill` props (use `events.onClickPill` and `events.onRequestRemovePill`)
 
 ### Fixed
 
 - The `@salesforce-ux/design-system` peer dependency accepts `^2.25.0-alpha.2` instead of exactly `2.25.0-alpha.2`, so installing into a project that already has a newer version no longer fails with `ERESOLVE`
 - `SimpleDataTable`: with `fixedHeader`, the inline border and (with `joined`) border radius use the SLDS 2 hooks `--slds-g-color-border-1` and `--slds-g-radius-border-2` instead of hardcoded SLDS 1 values, so they follow the theme and dark mode
+- `Toast`: an inline `onRequestClose` no longer restarts the `duration` timer on every parent render, so the toast auto-dismisses
+- `Popover`: opening another popover closes the one already open (`onRequestClose` with `trigger: 'newPopover'` never fired)
+- `MenuDropdown`: `onClose` fires once per close instead of twice, and `onSelect` receives the click event for mouse selection
+- `DatePicker`: `onRequestClose` no longer fires when the calendar is already closed
+- `Tree`: `onScroll` no longer reports `NaN` or `Infinity` when the list cannot scroll
 
 ### Removed
 

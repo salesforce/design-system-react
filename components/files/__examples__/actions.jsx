@@ -31,8 +31,8 @@ class Example extends React.Component {
 								iconVariant="bare"
 								align="right"
 								menuStyle={{ minWidth: '50px', width: '125px' }}
-								onSelect={(value) => {
-									console.log('selected: ', value);
+								onSelect={(event, { option }) => {
+									console.log('selected: ', option);
 								}}
 								options={[
 									{ label: 'Menu Item One', value: 'A0' },
@@ -61,8 +61,8 @@ class Example extends React.Component {
 								iconVariant="bare"
 								align="right"
 								menuStyle={{ minWidth: '50px', width: '125px' }}
-								onSelect={(value) => {
-									console.log('selected: ', value);
+								onSelect={(event, { option }) => {
+									console.log('selected: ', option);
 								}}
 								options={[
 									{ label: 'Menu Item One', value: 'A0' },

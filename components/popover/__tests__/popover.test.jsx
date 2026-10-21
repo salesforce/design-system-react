@@ -1,4 +1,4 @@
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, waitFor, act } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
 import Popover from '../';
@@ -36,9 +36,15 @@ describe('SLDSPopover', () => {
 		it('is open, has heading, body, close button', () => {
 			const { container } = renderPopover({ isOpen: true });
 
-			expect(container.querySelector(`#${defaultIds.heading}`)).toBeInTheDocument();
-			expect(container.querySelector(`#${defaultIds.body}`)).toBeInTheDocument();
-			expect(container.querySelector('.slds-popover__close')).toBeInTheDocument();
+			expect(
+				container.querySelector(`#${defaultIds.heading}`)
+			).toBeInTheDocument();
+			expect(
+				container.querySelector(`#${defaultIds.body}`)
+			).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-popover__close')
+			).toBeInTheDocument();
 		});
 	});
 
@@ -74,7 +80,9 @@ describe('SLDSPopover', () => {
 			expect(popover).toHaveClass(optionalProps.className);
 
 			const closeButton = container.querySelector('button.slds-popover__close');
-			expect(closeButton).toHaveTextContent(optionalProps.assistiveText.closeButton);
+			expect(closeButton).toHaveTextContent(
+				optionalProps.assistiveText.closeButton
+			);
 
 			expect(container.querySelector('#footer')).toBeInTheDocument();
 			expect(popover).toHaveStyle({ background: popoverBackgroundColor });
@@ -100,18 +108,24 @@ describe('SLDSPopover', () => {
 
 				// Wait for popover to open
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).toBeInTheDocument();
 				});
 
 				expect(onOpen).toHaveBeenCalledTimes(1);
 				expect(triggerClicked).toHaveBeenCalledTimes(1);
 
-				const closeButton = container.querySelector('button.slds-popover__close');
+				const closeButton = container.querySelector(
+					'button.slds-popover__close'
+				);
 				fireEvent.click(closeButton);
 
 				// Wait for popover to close
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).not.toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).not.toBeInTheDocument();
 				});
 
 				expect(onClose).toHaveBeenCalledTimes(1);
@@ -131,7 +145,9 @@ describe('SLDSPopover', () => {
 
 				// Wait for popover to open
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).toBeInTheDocument();
 				});
 
 				expect(onOpen).toHaveBeenCalledTimes(1);
@@ -145,7 +161,9 @@ describe('SLDSPopover', () => {
 
 				// Wait for popover to close
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).not.toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).not.toBeInTheDocument();
 				});
 
 				expect(onClose).toHaveBeenCalledTimes(1);
@@ -165,7 +183,9 @@ describe('SLDSPopover', () => {
 
 				// Wait for popover to open
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).toBeInTheDocument();
 				});
 
 				const popover = container.querySelector(`#${defaultIds.popover}`);
@@ -178,8 +198,141 @@ describe('SLDSPopover', () => {
 				// NOTE: Cannot directly assert on stopPropagation calls from synthetic events,
 				// but we can verify the menu closes (observable behavior)
 				await waitFor(() => {
-					expect(container.querySelector(`#${defaultIds.popover}`)).not.toBeInTheDocument();
+					expect(
+						container.querySelector(`#${defaultIds.popover}`)
+					).not.toBeInTheDocument();
 				});
+			});
+		});
+	});
+
+	describe('Callback payloads', () => {
+		const openPopover = async (container) => {
+			fireEvent.click(container.querySelector(defaultIds.trigger));
+			await waitFor(() => {
+				expect(
+					container.querySelector(`#${defaultIds.popover}`)
+				).toBeInTheDocument();
+			});
+		};
+
+		it('calls onOpen with an undefined event and the dialog element', async () => {
+			const onOpen = vi.fn();
+			const { container } = renderPopover({ onOpen });
+
+			await openPopover(container);
+
+			expect(onOpen).toHaveBeenCalledTimes(1);
+			const [event, data] = onOpen.mock.calls[0];
+			expect(event).toBeUndefined();
+			expect(data.portal).toBeInstanceOf(HTMLElement);
+		});
+
+		it('calls onRequestClose with the click event and trigger "cancel" from the close button, then onClose', async () => {
+			const onRequestClose = vi.fn();
+			const onClose = vi.fn();
+			const { container } = renderPopover({ onRequestClose, onClose });
+
+			await openPopover(container);
+			fireEvent.click(container.querySelector('button.slds-popover__close'));
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestClose.mock.calls[0];
+			expect(event.type).toBe('click');
+			expect(data).toEqual({ trigger: 'cancel' });
+
+			await waitFor(() => {
+				expect(onClose).toHaveBeenCalledTimes(1);
+			});
+			expect(onClose).toHaveBeenCalledWith(undefined, {
+				componentWillUnmount: true,
+			});
+		});
+
+		it('calls onRequestClose with the keydown event and trigger "cancel" on Escape', async () => {
+			const onRequestClose = vi.fn();
+			const { container } = renderPopover({ onRequestClose });
+
+			await openPopover(container);
+			fireEvent.keyDown(container.querySelector(`#${defaultIds.popover}`), {
+				key: 'Escape',
+				keyCode: 27,
+				which: 27,
+			});
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestClose.mock.calls[0];
+			expect(event.type).toBe('keydown');
+			expect(data).toEqual({ trigger: 'cancel' });
+		});
+
+		it('calls onRequestClose with trigger "triggerClick" when the trigger is clicked while open', async () => {
+			const onRequestClose = vi.fn();
+			const { container } = renderPopover({ onRequestClose });
+
+			await openPopover(container);
+			fireEvent.click(container.querySelector(defaultIds.trigger));
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestClose.mock.calls[0];
+			expect(event.type).toBe('click');
+			expect(data).toEqual({ trigger: 'triggerClick' });
+		});
+
+		it('calls onRequestClose with an undefined event and trigger "newPopover" when another popover opens', async () => {
+			const onRequestClose = vi.fn();
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<div>
+						<Popover {...defaultProps} onRequestClose={onRequestClose}>
+							<Button label="Trigger Popover" />
+						</Popover>
+						<Popover {...defaultProps} id="other-popover">
+							<Button label="Other Trigger" />
+						</Popover>
+					</div>
+				</IconSettings>
+			);
+
+			await openPopover(container);
+			fireEvent.click(container.querySelector('button#other-popover'));
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			expect(onRequestClose).toHaveBeenCalledWith(undefined, {
+				trigger: 'newPopover',
+				id: defaultProps.id,
+			});
+		});
+
+		it('calls onRequestClose with an undefined event and trigger "mouseLeave" after a hover close', async () => {
+			const onRequestClose = vi.fn();
+			const { container } = renderPopover({
+				onRequestClose,
+				openOn: 'hover',
+				hoverCloseDelay: 10,
+			});
+
+			const trigger = container.querySelector(defaultIds.trigger);
+			fireEvent.mouseEnter(trigger);
+			await waitFor(() => {
+				expect(
+					container.querySelector(`#${defaultIds.popover}`)
+				).toBeInTheDocument();
+			});
+
+			vi.useFakeTimers();
+			try {
+				fireEvent.mouseLeave(trigger);
+				act(() => {
+					vi.advanceTimersByTime(10);
+				});
+			} finally {
+				vi.useRealTimers();
+			}
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			expect(onRequestClose).toHaveBeenCalledWith(undefined, {
+				trigger: 'mouseLeave',
 			});
 		});
 	});
@@ -199,7 +352,9 @@ describe('SLDSPopover', () => {
 
 			// Wait for popover to open and check focus
 			await waitFor(() => {
-				expect(container.querySelector(`#${defaultIds.popover}`)).toBeInTheDocument();
+				expect(
+					container.querySelector(`#${defaultIds.popover}`)
+				).toBeInTheDocument();
 			});
 
 			// NOTE: In jsdom, focus management is limited. The popover should be in

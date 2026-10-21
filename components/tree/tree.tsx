@@ -18,6 +18,8 @@ import {
 	TreeNode,
 	FlattenedNode,
 	TreeAssistiveText,
+	TreeNodeSelectData,
+	TreeRequestToggleData,
 	TreeSelectData,
 	TreeExpandData,
 	TreeScrollData,
@@ -38,11 +40,35 @@ export interface TreeProps {
 	id: string;
 	/** Array of tree nodes */
 	nodes: TreeNode[];
-	/** Callback when an item or branch is selected */
-	onClick: (event: React.SyntheticEvent, data: TreeSelectData) => void;
-	/** Callback when expand/collapse icon is clicked */
-	onExpandClick: (event: React.SyntheticEvent, data: TreeExpandData) => void;
-	/** Callback when the tree list scrolls */
+	/**
+	 * Called when an item or branch is selected or deselected: by click, by focus, or by keyboard
+	 * (Enter, Up/Down arrows, Right arrow into an expanded branch, Left arrow to the parent node).
+	 * `data.isSelected` is the requested selection state. Update `node.selected` in `nodes` to apply it.
+	 */
+	onSelect?: (event: React.SyntheticEvent, data: TreeNodeSelectData) => void;
+	/**
+	 * Called when an item or branch is selected.
+	 * @deprecated Use `onSelect`, which receives `{ node, isSelected }`. Ignored when `onSelect` is passed.
+	 */
+	onClick?: (event: React.SyntheticEvent, data: TreeSelectData) => void;
+	/**
+	 * Called when a branch is asked to expand or collapse: by clicking its toggle button, by Right
+	 * arrow on a collapsed branch, or by Left arrow on an expanded branch. `data.isExpanded` is the
+	 * requested expansion state. Update `node.expanded` in `nodes` to apply it.
+	 */
+	onRequestToggle?: (
+		event: React.SyntheticEvent,
+		data: TreeRequestToggleData
+	) => void;
+	/**
+	 * Called when a branch's expand/collapse button is clicked, or when the Left arrow is pressed
+	 * on a collapsed branch or item (with `data.select: true` and `data.node` set to the parent).
+	 * @deprecated Use `onRequestToggle`, which receives `{ node, isExpanded }`. With
+	 * `onRequestToggle`, Left arrow on a collapsed branch or item selects the parent via
+	 * `onSelect` instead. Ignored when `onRequestToggle` is passed.
+	 */
+	onExpandClick?: (event: React.SyntheticEvent, data: TreeExpandData) => void;
+	/** Callback when the tree list scrolls. `data.ratio` is the scroll position from `0` to `1`. */
 	onScroll?: (
 		event: React.UIEvent<HTMLUListElement>,
 		data: TreeScrollData
@@ -102,7 +128,9 @@ const Tree: React.FC<TreeProps> = ({
 	heading,
 	id,
 	nodes,
+	onSelect,
 	onClick,
+	onRequestToggle,
 	onExpandClick,
 	onScroll,
 	searchTerm,
@@ -156,7 +184,9 @@ const Tree: React.FC<TreeProps> = ({
 				heading,
 				id,
 				nodes,
+				onSelect,
 				onClick,
+				onRequestToggle,
 				onExpandClick,
 				onScroll,
 				searchTerm,
@@ -196,7 +226,11 @@ const Tree: React.FC<TreeProps> = ({
 
 			// Prevent firing twice on first click due to focus event
 			if (!fromFocus) {
-				onClick(event, data);
+				if (onSelect) {
+					onSelect(event, { node: data.node, isSelected: data.select });
+				} else if (onClick) {
+					onClick(event, data);
+				}
 			}
 
 			// Update selected and focused nodes
@@ -213,7 +247,7 @@ const Tree: React.FC<TreeProps> = ({
 			setFocusedNodeIndex(data.treeIndex);
 			setSelectedNodeIndexes(newSelectedNodeIndexes);
 		},
-		[flattenedNodes, onClick, selectedNodeIndexes]
+		[flattenedNodes, onSelect, onClick, selectedNodeIndexes]
 	);
 
 	// Handle node blur
@@ -230,14 +264,32 @@ const Tree: React.FC<TreeProps> = ({
 			event: React.SyntheticEvent;
 			data: TreeExpandData;
 		}) => {
-			treeHasFocusRef.current = true;
-			onExpandClick(event, data);
-
+			// `data.select` marks Left arrow on a collapsed branch or item: move to the parent node.
 			if (data.select) {
-				setFocusedNodeIndex(data.treeIndex);
+				if (!onRequestToggle && onExpandClick) {
+					// Deprecated behavior: report it to `onExpandClick` with the parent node
+					treeHasFocusRef.current = true;
+					onExpandClick(event, data);
+					setFocusedNodeIndex(data.treeIndex);
+				} else {
+					// Not an expand/collapse request: select the parent, like Up/Down arrows do
+					handleSelect({
+						event,
+						data: { node: data.node, select: true, treeIndex: data.treeIndex },
+						clearSelectedNodes: true,
+					});
+				}
+				return;
+			}
+
+			treeHasFocusRef.current = true;
+			if (onRequestToggle) {
+				onRequestToggle(event, { node: data.node, isExpanded: data.expand });
+			} else if (onExpandClick) {
+				onExpandClick(event, data);
 			}
 		},
-		[onExpandClick]
+		[handleSelect, onRequestToggle, onExpandClick]
 	);
 
 	// Determine heading text

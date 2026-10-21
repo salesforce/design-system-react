@@ -32,8 +32,8 @@ class Example extends React.Component {
 						iconName="settings"
 						iconVariant="more"
 						id="icon-dropdown-example-1"
-						onSelect={(item) => {
-							console.log(item.label, 'selected');
+						onSelect={(event, { option }) => {
+							console.log(option.label, 'selected');
 						}}
 						openOn="click"
 						options={[
@@ -70,8 +70,8 @@ class Example extends React.Component {
 						iconName="settings"
 						iconVariant="more"
 						id="icon-dropdown-example-2"
-						onSelect={(item) => {
-							console.log(item.label, 'selected');
+						onSelect={(event, { option }) => {
+							console.log(option.label, 'selected');
 						}}
 						openOn="click"
 						options={[

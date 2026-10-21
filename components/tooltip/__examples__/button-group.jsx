@@ -46,7 +46,7 @@ class Example extends React.Component {
 							iconCategory="utility"
 							iconName="down"
 							iconVariant="border-filled"
-							onSelect={(item) => console.log('selected', item)}
+							onSelect={(event, { option }) => console.log('selected', option)}
 							options={[
 								{ label: 'A Option', value: 'A0' },
 								{ label: 'B Option', value: 'B0' },
