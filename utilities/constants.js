@@ -121,6 +121,7 @@ export const POPOVER = 'SLDSPopover';
 export const POPOVER_EDIT_DIALOG = 'SLDSPopoverEditDialog';
 export const POPOVER_TOOLTIP = 'SLDSPopoverTooltip';
 export const PROGRESS_INDICATOR = 'SLDSProgressIndicator';
+export const PROGRESS_INDICATOR_PATH = 'SLDSProgressIndicatorPath';
 export const PROGRESS_INDICATOR_PROGRESS = 'SLDSProgressIndicatorProgress';
 export const PROGRESS_INDICATOR_STEP = 'SLDSProgressIndicatorStep';
 export const PROGRESS_INDICATOR_STEP_VERTICAL =
