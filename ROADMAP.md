@@ -12,7 +12,7 @@
 | Component sources | **TypeScript**                            | `components/utilities/dialog/index.jsx` is the last `.jsx` source; the rest of the `.jsx` files are sample data              |
 | Positioning       | **`@floating-ui/dom`**                    | `popper.js` is gone from dependencies; `utilities/dialog-helpers.js` still adapts Floating UI output to the old popper shape |
 | TypeScript        | **`tsc --noEmit` clean**, `strict: true`  | `.d.ts` files are generated into `dist/types`                                                                                |
-| Storybook         | **10**, CSF stories                       | 3 component folders have no story: `forms`, `grid`, `menu-list`                                                              |
+| Storybook         | **10**, CSF stories                       | 2 component folders have no story: `grid`, `menu-list`                                                                       |
 | Tests             | **48 Vitest files**                       | jsdom `unit` project plus a Playwright `browser` project; story HTML snapshots cover every non-portal story                  |
 | Lint              | **0 errors / 223 warnings**               | Errors block CI; warnings are the tracked migration backlog                                                                  |
 | Toolchain         | Vite 8, Vitest 4, ESLint 10, Storybook 10 | Node.js 24 (`.nvmrc`)                                                                                                        |
@@ -912,13 +912,12 @@ ascending, descending, selectAllRows, selectRow)` but the call passes `selectAll
 
 **Component folders with no Storybook story:**
 
-- [ ] `forms`
 - [ ] `grid`
 - [ ] `menu-list`
 
 **Component folders with no Vitest test** (template: `components/button/__tests__`):
 
-- [ ] `badge`, `breadcrumb`, `checkbox`, `dynamic-icon`, `files`, `forms`, `grid`,
+- [ ] `badge`, `breadcrumb`, `checkbox`, `dynamic-icon`, `files`, `grid`,
       `icon-settings`, `menu-list`, `panel`, `portal-settings`, `progress-bar`,
       `progress-ring`, `radio`, `scoped-notification`, `trial-bar`
 
@@ -1007,7 +1006,7 @@ is the path — evaluated and deferred, not precluded.
 **Good first issues (P2 template-driven work):**
 
 - Add a Vitest + RTL test for a component that lacks one (template: `components/button/__tests__`)
-- Add a CSF story for `forms`, `grid`, or `menu-list`
+- Add a CSF story for `grid` or `menu-list`
 
 ## Timeline
 

@@ -15,6 +15,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - The `@salesforce-ux/design-system` peer dependency accepts `^2.25.0-alpha.2` instead of exactly `2.25.0-alpha.2`, so installing into a project that already has a newer version no longer fails with `ERESOLVE`
 
+### Removed
+
+- **BREAKING**: Surface deprecated in 0.10.x, which already warned in development:
+  - `InlineEdit` (`components/forms/input/inline`) and its `SLDSInlineEdit` alias. The `inlineEditTrigger` prop on `Input` stays.
+  - `ModalTrigger` and its `SLDSModalTrigger` alias. Render `Modal` with `isOpen`; it already portals to `body`.
+  - `Modal` props `title` (use `heading`) and `closeButtonAssistiveText` (use `assistiveText.closeButton`).
+  - `Tooltip` prop `target` (use `onRequestTargetElement`) and the `variant` values `info` and `error` (use `theme`).
+  - String `assistiveText` on `Avatar`, `Breadcrumb`, `Button`, `ButtonStateful`, `Checkbox`, `Search`, `Spinner`, `Textarea`, and `Tree`. Pass an object, such as `assistiveText={{ label: 'Loading' }}`; see each component's `assistiveText` type for its keys.
+  - The `components/forms/checkbox` and `components/tabs/pane` aliases, which v11 never shipped as JavaScript, and the `Checkbox` prop `oldEventParameterOrder`, which v11 ignored. Import `components/checkbox` and `components/tabs/panel`.
+  - The `FORMS_INLINE_EDIT` constant in `utilities/constants`.
+
 ## [11.0.0-alpha.4] - 2026-10-06
 
 ### Changed

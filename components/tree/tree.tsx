@@ -43,7 +43,10 @@ export interface TreeProps {
 	/** Callback when expand/collapse icon is clicked */
 	onExpandClick: (event: React.SyntheticEvent, data: TreeExpandData) => void;
 	/** Callback when the tree list scrolls */
-	onScroll?: (event: React.UIEvent<HTMLUListElement>, data: TreeScrollData) => void;
+	onScroll?: (
+		event: React.UIEvent<HTMLUListElement>,
+		data: TreeScrollData
+	) => void;
 	/** Search term to highlight in node labels */
 	searchTerm?: string;
 	/** Styles for the top-level ul element */
@@ -105,11 +108,7 @@ const Tree: React.FC<TreeProps> = ({
 	searchTerm,
 	listStyle,
 }) => {
-	// Merge assistive text with defaults
-	const assistiveText =
-		typeof assistiveTextProp === 'string'
-			? assistiveTextProp
-			: assistiveTextProp?.label;
+	const assistiveText = assistiveTextProp?.label;
 
 	// Track if tree has focus
 	const treeHasFocusRef = useRef(false);
@@ -129,11 +128,13 @@ const Tree: React.FC<TreeProps> = ({
 	const [flattenedNodes, setFlattenedNodes] = useState<FlattenedNode[]>(
 		computeFlattenedNodes
 	);
-	const [selectedNodeIndexes, setSelectedNodeIndexes] = useState<string[]>(() => {
-		const flattened = computeFlattenedNodes();
-		const selectedNode = flattened.find((curNode) => curNode.node.selected);
-		return selectedNode ? [selectedNode.treeIndex] : [];
-	});
+	const [selectedNodeIndexes, setSelectedNodeIndexes] = useState<string[]>(
+		() => {
+			const flattened = computeFlattenedNodes();
+			const selectedNode = flattened.find((curNode) => curNode.node.selected);
+			return selectedNode ? [selectedNode.treeIndex] : [];
+		}
+	);
 	const [focusedNodeIndex, setFocusedNodeIndex] = useState<string | undefined>(
 		() => {
 			const flattened = computeFlattenedNodes();
@@ -145,20 +146,24 @@ const Tree: React.FC<TreeProps> = ({
 	// Check props on mount
 	useEffect(() => {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		(checkProps as any)(TREE, {
-			assistiveText: assistiveTextProp,
-			className,
-			listClassName,
-			getNodes,
-			heading,
-			id,
-			nodes,
-			onClick,
-			onExpandClick,
-			onScroll,
-			searchTerm,
-			listStyle,
-		}, {});
+		(checkProps as any)(
+			TREE,
+			{
+				assistiveText: assistiveTextProp,
+				className,
+				listClassName,
+				getNodes,
+				heading,
+				id,
+				nodes,
+				onClick,
+				onExpandClick,
+				onScroll,
+				searchTerm,
+				listStyle,
+			},
+			{}
+		);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -218,7 +223,13 @@ const Tree: React.FC<TreeProps> = ({
 
 	// Handle expand/collapse
 	const handleExpand = useCallback(
-		({ event, data }: { event: React.SyntheticEvent; data: TreeExpandData }) => {
+		({
+			event,
+			data,
+		}: {
+			event: React.SyntheticEvent;
+			data: TreeExpandData;
+		}) => {
 			treeHasFocusRef.current = true;
 			onExpandClick(event, data);
 
@@ -233,10 +244,7 @@ const Tree: React.FC<TreeProps> = ({
 	const headingText = assistiveText || heading;
 
 	return (
-		<div
-			id={id}
-			className={classNames('slds-tree_container', className)}
-		>
+		<div id={id} className={classNames('slds-tree_container', className)}>
 			<h4
 				className={classNames('slds-tree__group-header', {
 					'slds-assistive-text': !!assistiveText,
@@ -270,4 +278,3 @@ const Tree: React.FC<TreeProps> = ({
 Tree.displayName = TREE;
 
 export default Tree;
-

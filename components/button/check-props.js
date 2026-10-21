@@ -4,7 +4,6 @@
 
 import getComponentDocFn from '../../utilities/get-component-doc';
 import ifOneThenBothRequiredProperty from '../../utilities/warning/if-one-then-both-required-property';
-import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function checkPropsFunction() {};
 
@@ -23,17 +22,6 @@ if (process.env.NODE_ENV !== 'production') {
 			},
 			createDocUrl('iconCategory')
 		);
-
-		if (typeof props.assistiveText === 'string') {
-			sunsetProperty(
-				COMPONENT,
-				props.assistiveText,
-				'assistiveText',
-				`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.icon\` instead. ${createDocUrl(
-					'assistiveText'
-				)}`
-			);
-		}
 	};
 }
 

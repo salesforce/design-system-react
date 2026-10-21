@@ -22,15 +22,20 @@ export interface SearchAssistiveText extends InputAssistiveText {
 /**
  * Props for the Search component
  */
-export interface SearchProps extends Omit<InputProps, 'assistiveText' | 'iconLeft' | 'iconRight'> {
+export interface SearchProps extends Omit<
+	InputProps,
+	'assistiveText' | 'iconLeft' | 'iconRight'
+> {
 	/** Assistive text for accessibility */
-	assistiveText?: SearchAssistiveText | string;
+	assistiveText?: SearchAssistiveText;
 	/** Adds a clear button to the right of the input */
 	clearable?: boolean;
 	/** Handler for clear button click */
 	onClear?: (event: React.MouseEvent) => void;
 	/** Handler for search (enter key or search icon click) */
-	onSearch?: (event: KeyboardEvent<HTMLInputElement> | React.MouseEvent) => void;
+	onSearch?: (
+		event: KeyboardEvent<HTMLInputElement> | React.MouseEvent
+	) => void;
 }
 
 const handleKeyDown = (
@@ -64,11 +69,9 @@ const Search = ({
 		componentDoc
 	);
 
-	// Handle both string and object forms of assistiveText
-	const mergedAssistiveText: InputAssistiveText =
-		typeof assistiveText === 'string'
-			? { label: assistiveText }
-			: { label: assistiveText?.label };
+	const mergedAssistiveText: InputAssistiveText = {
+		label: assistiveText?.label,
+	};
 
 	return (
 		<Input
@@ -91,7 +94,12 @@ const Search = ({
 					/>
 				) : null
 			}
-			onKeyDown={onSearch ? (event) => handleKeyDown(event as KeyboardEvent<HTMLInputElement>, onSearch) : undefined}
+			onKeyDown={
+				onSearch
+					? (event) =>
+							handleKeyDown(event as KeyboardEvent<HTMLInputElement>, onSearch)
+					: undefined
+			}
 			placeholder={placeholder}
 			{...props}
 		/>
