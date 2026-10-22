@@ -55,7 +55,7 @@ export interface ListItemProps {
 	 * component instance instead of an element.
 	 */
 	nodeRef?: (node: HTMLLIElement | null) => void;
-	onSelect: (index: number) => void;
+	onSelect: (index: number, event: React.MouseEvent) => void;
 	rightIcon?: MenuListIconConfig;
 	tooltipContent?: ReactNode | string;
 	tooltipTemplate?: React.ReactElement;
@@ -139,7 +139,7 @@ class ListItem extends React.Component<ListItemProps> {
 		}
 
 		if (this.props.onSelect && !this.props.disabled) {
-			this.props.onSelect(this.props.index);
+			this.props.onSelect(this.props.index, event);
 		}
 	};
 
@@ -231,9 +231,7 @@ class ListItem extends React.Component<ListItemProps> {
 					<li
 						ref={this.props.nodeRef}
 						aria-selected={
-							this.props.checkmark === null
-								? this.props.isSelected
-								: undefined
+							this.props.checkmark === null ? this.props.isSelected : undefined
 						}
 						className={classNames(
 							'slds-dropdown__item',

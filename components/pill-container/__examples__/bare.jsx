@@ -52,8 +52,10 @@ class Example extends React.Component {
 						<PillContainer
 							id="bare-pill-container"
 							options={this.state.options}
-							onClickPill={this.onClickPill}
-							onRequestRemovePill={this.onRequestRemovePill}
+							events={{
+								onClickPill: this.onClickPill,
+								onRequestRemovePill: this.onRequestRemovePill,
+							}}
 							variant="bare"
 						/>
 					</div>

@@ -71,7 +71,11 @@ describe('SLDSModal (browser)', () => {
 			await userEvent.keyboard('{Enter}');
 		});
 
-		expect(onRequestClose).toHaveBeenCalled();
+		expect(onRequestClose).toHaveBeenCalledTimes(1);
+		expect(onRequestClose).toHaveBeenCalledWith(
+			expect.objectContaining({ type: 'click' }),
+			{ trigger: 'close-button' }
+		);
 	});
 
 	it('traps focus inside the modal when tabbing', async () => {

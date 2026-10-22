@@ -5,7 +5,7 @@ import React, { useContext, ReactNode } from 'react';
 import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 
-import Dropdown from '../menu-dropdown';
+import Dropdown, { type MenuDropdownProps } from '../menu-dropdown';
 
 import EventUtil from '../../utilities/event';
 
@@ -70,14 +70,17 @@ const SimpleDataTableRowActions: React.FC<SimpleDataTableRowActionsProps> = ({
 		EventUtil.trap(e);
 	};
 
-	const handleSelect = (selection: unknown) => {
+	const handleSelect: NonNullable<MenuDropdownProps['onSelect']> = (
+		event,
+		data
+	) => {
 		if (isFunction(onAction) && item) {
-			onAction(item, selection);
+			onAction(item, data.option);
 		}
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		if (dropdown && isFunction((dropdown as any).props?.onSelect)) {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			(dropdown as any).props.onSelect(selection);
+			(dropdown as any).props.onSelect(event, data);
 		}
 	};
 

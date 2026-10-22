@@ -171,6 +171,240 @@ describe('SLDSDatepicker', () => {
 		});
 	});
 
+	describe('onRequestOpen, onRequestClose, onClose payloads', () => {
+		const inputSelector = 'input#sample-datepicker';
+
+		it('onRequestOpen receives the event and trigger for input click, icon click, and arrow keys', () => {
+			const onRequestOpen = vi.fn();
+			const { container } = render(
+				<DemoComponent
+					isOpen={false}
+					menuPosition="relative"
+					onRequestOpen={onRequestOpen}
+				/>
+			);
+
+			fireEvent.click(container.querySelector(inputSelector));
+			fireEvent.click(container.querySelector(triggerClassSelector));
+			fireEvent.keyDown(container.querySelector(inputSelector), {
+				key: 'Down',
+				keyCode: KEYS.DOWN,
+				which: KEYS.DOWN,
+			});
+			fireEvent.keyDown(container.querySelector(inputSelector), {
+				key: 'Up',
+				keyCode: KEYS.UP,
+				which: KEYS.UP,
+			});
+
+			expect(onRequestOpen).toHaveBeenCalledTimes(4);
+			const calls = onRequestOpen.mock.calls;
+			expect(calls[0][0].type).toBe('click');
+			expect(calls[0][1]).toEqual({ trigger: 'input-click' });
+			expect(calls[1][0].type).toBe('click');
+			expect(calls[1][1]).toEqual({ trigger: 'icon-click' });
+			expect(calls[2][0].type).toBe('keydown');
+			expect(calls[2][1]).toEqual({ trigger: 'keyboard' });
+			expect(calls[3][0].type).toBe('keydown');
+			expect(calls[3][1]).toEqual({ trigger: 'keyboard' });
+
+			// Controlled: the parent did not set `isOpen`, so the calendar stays closed
+			expect(
+				container.querySelector('.datepicker__month')
+			).not.toBeInTheDocument();
+		});
+
+		it('arrow keys do not request open when the calendar is already open', () => {
+			const onRequestOpen = vi.fn();
+			const { container } = render(
+				<DemoComponent
+					isOpen
+					menuPosition="relative"
+					onRequestOpen={onRequestOpen}
+				/>
+			);
+
+			fireEvent.keyDown(container.querySelector(inputSelector), {
+				key: 'Down',
+				keyCode: KEYS.DOWN,
+				which: KEYS.DOWN,
+			});
+
+			expect(onRequestOpen).not.toHaveBeenCalled();
+		});
+
+		it('onRequestClose receives the event and trigger for Escape and Enter in the input', () => {
+			const onRequestClose = vi.fn();
+			const { container } = render(
+				<DemoComponent
+					isOpen
+					menuPosition="relative"
+					onRequestClose={onRequestClose}
+				/>
+			);
+
+			fireEvent.keyDown(container.querySelector(inputSelector), {
+				key: 'Escape',
+				keyCode: KEYS.ESCAPE,
+				which: KEYS.ESCAPE,
+			});
+			fireEvent.keyDown(container.querySelector(inputSelector), {
+				key: 'Enter',
+				keyCode: KEYS.ENTER,
+				which: KEYS.ENTER,
+			});
+
+			expect(onRequestClose).toHaveBeenCalledTimes(2);
+			const calls = onRequestClose.mock.calls;
+			expect(calls[0][0].type).toBe('keydown');
+			expect(calls[0][1]).toEqual({ trigger: 'escape' });
+			expect(calls[1][0].type).toBe('keydown');
+			expect(calls[1][1]).toEqual({ trigger: 'enter' });
+		});
+
+		it('onRequestClose receives trigger "escape" for Escape in the calendar', () => {
+			const onRequestClose = vi.fn();
+			const { container } = render(
+				<DemoComponent
+					isOpen
+					menuPosition="relative"
+					onRequestClose={onRequestClose}
+				/>
+			);
+
+			fireEvent.keyDown(
+				container.querySelector('.datepicker__month [aria-selected=true]'),
+				{ key: 'Escape', keyCode: KEYS.ESCAPE, which: KEYS.ESCAPE }
+			);
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			expect(onRequestClose.mock.calls[0][0].type).toBe('keydown');
+			expect(onRequestClose.mock.calls[0][1]).toEqual({ trigger: 'escape' });
+		});
+
+		it('onRequestClose receives trigger "date-select" when a date is clicked', () => {
+			const onRequestClose = vi.fn();
+			const { container } = render(
+				<DemoComponent
+					isOpen
+					menuPosition="relative"
+					onRequestClose={onRequestClose}
+				/>
+			);
+
+			fireEvent.click(
+				container.querySelector('.datepicker__month [aria-disabled=false]')
+			);
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			expect(onRequestClose.mock.calls[0][0].type).toBe('click');
+			expect(onRequestClose.mock.calls[0][1]).toEqual({
+				trigger: 'date-select',
+			});
+		});
+
+		it('onRequestClose receives the native event and trigger "click-outside" for outside clicks', () => {
+			const onRequestClose = vi.fn();
+			const { container } = render(
+				<DemoComponent
+					isOpen
+					menuPosition="relative"
+					onRequestClose={onRequestClose}
+				/>
+			);
+
+			// Clicks inside do not request a close
+			fireEvent.mouseDown(
+				container.querySelector('.datepicker__month [aria-disabled=false]')
+			);
+			expect(onRequestClose).not.toHaveBeenCalled();
+
+			const outsideElement = document.createElement('button');
+			document.body.appendChild(outsideElement);
+			fireEvent.mouseDown(outsideElement);
+			document.body.removeChild(outsideElement);
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestClose.mock.calls[0];
+			expect(event).toBeInstanceOf(MouseEvent);
+			expect(event.type).toBe('mousedown');
+			expect(data).toEqual({ trigger: 'click-outside' });
+		});
+
+		it('does not fire onRequestClose when the calendar is already closed', () => {
+			const onRequestClose = vi.fn();
+			const { container } = render(
+				<DemoComponent
+					isOpen={false}
+					menuPosition="relative"
+					onRequestClose={onRequestClose}
+				/>
+			);
+
+			fireEvent.keyDown(container.querySelector(inputSelector), {
+				key: 'Escape',
+				keyCode: KEYS.ESCAPE,
+				which: KEYS.ESCAPE,
+			});
+			fireEvent.keyDown(container.querySelector(inputSelector), {
+				key: 'Enter',
+				keyCode: KEYS.ENTER,
+				which: KEYS.ENTER,
+			});
+
+			expect(onRequestClose).not.toHaveBeenCalled();
+		});
+
+		it('uncontrolled: arrow key opens, Escape closes via onRequestClose, and a second Escape does not fire it again', async () => {
+			const onRequestClose = vi.fn();
+			const onClose = vi.fn();
+			const { container } = render(
+				<DemoComponent
+					menuPosition="relative"
+					onClose={onClose}
+					onRequestClose={onRequestClose}
+				/>
+			);
+			const input = container.querySelector(inputSelector);
+
+			fireEvent.keyDown(input, {
+				key: 'Down',
+				keyCode: KEYS.DOWN,
+				which: KEYS.DOWN,
+			});
+			await waitFor(() => {
+				expect(
+					container.querySelector('.datepicker__month')
+				).toBeInTheDocument();
+			});
+
+			fireEvent.keyDown(input, {
+				key: 'Escape',
+				keyCode: KEYS.ESCAPE,
+				which: KEYS.ESCAPE,
+			});
+			await waitFor(() => {
+				expect(
+					container.querySelector('.datepicker__month')
+				).not.toBeInTheDocument();
+			});
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			expect(onRequestClose.mock.calls[0][1]).toEqual({ trigger: 'escape' });
+
+			fireEvent.keyDown(input, {
+				key: 'Escape',
+				keyCode: KEYS.ESCAPE,
+				which: KEYS.ESCAPE,
+			});
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+
+			expect(onClose).toHaveBeenCalledTimes(1);
+			expect(onClose).toHaveBeenCalledWith(undefined, {
+				componentWillUnmount: true,
+			});
+		});
+	});
+
 	describe('keyboard interactions', () => {
 		describe('Esc when menu is open', () => {
 			it('opens on trigger click, closes on ESC', async () => {

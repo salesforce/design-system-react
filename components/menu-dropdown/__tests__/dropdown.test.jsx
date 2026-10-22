@@ -65,7 +65,10 @@ const renderDropdown = (props) => {
 describe('SLDSMenuDropdown', () => {
 	describe('Styling', () => {
 		it('has correct CSS classes and style', async () => {
-			const { container } = renderDropdown({ menuStyle: { height: '500px' }, width: 'small' });
+			const { container } = renderDropdown({
+				menuStyle: { height: '500px' },
+				width: 'small',
+			});
 
 			const trigger = container.querySelector('.slds-dropdown-trigger');
 			const button = trigger.querySelector('button');
@@ -107,7 +110,7 @@ describe('SLDSMenuDropdown', () => {
 					<List
 						key="list"
 						options={[{ label: 'Custom Content Option' }, ...menuOptions]}
-					/>
+					/>,
 				],
 			});
 
@@ -117,7 +120,9 @@ describe('SLDSMenuDropdown', () => {
 			fireEvent.click(button);
 
 			await waitFor(() => {
-				const customContent = container.querySelector('#custom-dropdown-menu-content');
+				const customContent = container.querySelector(
+					'#custom-dropdown-menu-content'
+				);
 				expect(customContent).toBeInTheDocument();
 			});
 		});
@@ -131,7 +136,7 @@ describe('SLDSMenuDropdown', () => {
 					<List
 						key="list"
 						options={[{ label: 'Custom Content Option' }, ...menuOptions]}
-					/>
+					/>,
 				],
 			});
 
@@ -141,15 +146,21 @@ describe('SLDSMenuDropdown', () => {
 			fireEvent.click(button);
 
 			await waitFor(() => {
-				const customContent = container.querySelector('#custom-dropdown-menu-content');
+				const customContent = container.querySelector(
+					'#custom-dropdown-menu-content'
+				);
 				expect(customContent).toBeInTheDocument();
 			});
 
-			const customContentLink = container.querySelector('#custom-dropdown-menu-content-link');
+			const customContentLink = container.querySelector(
+				'#custom-dropdown-menu-content-link'
+			);
 			fireEvent.click(customContentLink);
 
 			await waitFor(() => {
-				const customContent = container.querySelector('#custom-dropdown-menu-content');
+				const customContent = container.querySelector(
+					'#custom-dropdown-menu-content'
+				);
 				expect(customContent).not.toBeInTheDocument();
 			});
 		});
@@ -163,7 +174,7 @@ describe('SLDSMenuDropdown', () => {
 					<List
 						key="list"
 						options={[{ label: 'Custom Content Option' }, ...menuOptions]}
-					/>
+					/>,
 				],
 			});
 
@@ -211,7 +222,9 @@ describe('SLDSMenuDropdown', () => {
 			fireEvent.click(trigger);
 
 			await waitFor(() => {
-				expect(container.querySelector('.slds-dropdown')).not.toBeInTheDocument();
+				expect(
+					container.querySelector('.slds-dropdown')
+				).not.toBeInTheDocument();
 			});
 		});
 
@@ -230,8 +243,8 @@ describe('SLDSMenuDropdown', () => {
 		it('selects an item on click', async () => {
 			let selected;
 			const { container } = renderDropdown({
-				onSelect: (selectedOption) => {
-					selected = selectedOption;
+				onSelect: (event, { option }) => {
+					selected = option;
 				},
 			});
 
@@ -361,8 +374,8 @@ describe('SLDSMenuDropdown', () => {
 		it('selects an item with keyboard', async () => {
 			let selected;
 			const { container } = renderDropdown({
-				onSelect: (selectedOption) => {
-					selected = selectedOption;
+				onSelect: (event, { option }) => {
+					selected = option;
 				},
 			});
 
@@ -396,7 +409,9 @@ describe('SLDSMenuDropdown', () => {
 			fireEvent.keyDown(firstLink, keyObjects.ESCAPE);
 
 			await waitFor(() => {
-				expect(container.querySelector('.slds-dropdown')).not.toBeInTheDocument();
+				expect(
+					container.querySelector('.slds-dropdown')
+				).not.toBeInTheDocument();
 			});
 		});
 	});
@@ -512,9 +527,14 @@ describe('SLDSMenuDropdown', () => {
 			expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
 
 			// Wait for close delay
-			await waitFor(() => {
-				expect(container.querySelector('.slds-dropdown')).not.toBeInTheDocument();
-			}, { timeout: 100 });
+			await waitFor(
+				() => {
+					expect(
+						container.querySelector('.slds-dropdown')
+					).not.toBeInTheDocument();
+				},
+				{ timeout: 100 }
+			);
 		});
 
 		it("doesn't close on quick hover outside", async () => {
@@ -548,7 +568,10 @@ describe('SLDSMenuDropdown', () => {
 
 	describe('Hybrid-able', () => {
 		it('doesnt expand on hover', () => {
-			const { container } = renderDropdown({ openOn: 'hybrid', hoverCloseDelay: 1 });
+			const { container } = renderDropdown({
+				openOn: 'hybrid',
+				hoverCloseDelay: 1,
+			});
 
 			const btn = container.querySelector('.slds-dropdown-trigger');
 			expect(container.querySelector('.slds-dropdown')).not.toBeInTheDocument();
@@ -559,7 +582,10 @@ describe('SLDSMenuDropdown', () => {
 		});
 
 		it('opens on click, closes on mouseLeave', async () => {
-			const { container } = renderDropdown({ openOn: 'hybrid', hoverCloseDelay: 1 });
+			const { container } = renderDropdown({
+				openOn: 'hybrid',
+				hoverCloseDelay: 1,
+			});
 
 			const btn = container.querySelector('.slds-dropdown-trigger');
 
@@ -577,9 +603,245 @@ describe('SLDSMenuDropdown', () => {
 
 			expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
 
+			await waitFor(
+				() => {
+					expect(
+						container.querySelector('.slds-dropdown')
+					).not.toBeInTheDocument();
+				},
+				{ timeout: 100 }
+			);
+		});
+	});
+
+	describe('Callback payloads', () => {
+		const openMenu = async (container) => {
+			fireEvent.click(container.querySelector('.slds-dropdown-trigger'));
 			await waitFor(() => {
-				expect(container.querySelector('.slds-dropdown')).not.toBeInTheDocument();
-			}, { timeout: 100 });
+				expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
+			});
+			return container.querySelector('.slds-dropdown');
+		};
+
+		it('calls onSelect with (event, { option, optionIndex }) on click', async () => {
+			const onSelect = vi.fn();
+			const { container } = renderDropdown({ onSelect });
+
+			const menu = await openMenu(container);
+			fireEvent.click(menu.querySelectorAll('li a')[2]);
+
+			expect(onSelect).toHaveBeenCalledTimes(1);
+			const [event, data] = onSelect.mock.calls[0];
+			expect(data).toEqual({ option: menuOptions[2], optionIndex: 2 });
+			expect(event.type).toBe('click');
+		});
+
+		it('calls onSelect with the keydown event and { option, optionIndex } on keyboard selection', async () => {
+			const onSelect = vi.fn();
+			const { container } = renderDropdown({ onSelect });
+
+			const menu = await openMenu(container);
+			fireEvent.keyDown(menu, keyObjects.DOWN);
+			fireEvent.keyDown(menu, keyObjects.DOWN);
+			fireEvent.keyDown(menu, keyObjects.ENTER);
+
+			expect(onSelect).toHaveBeenCalledTimes(1);
+			const [event, data] = onSelect.mock.calls[0];
+			expect(event.type).toBe('keydown');
+			expect(event.key).toBe('Enter');
+			expect(data).toEqual({ option: menuOptions[1], optionIndex: 1 });
+		});
+
+		it('calls onSelect for each toggle in multiple mode', async () => {
+			const onSelect = vi.fn();
+			const { container } = renderDropdown({ multiple: true, onSelect });
+
+			const menu = await openMenu(container);
+			const links = menu.querySelectorAll('li a');
+			fireEvent.click(links[0]);
+			fireEvent.click(links[0]);
+
+			expect(onSelect).toHaveBeenCalledTimes(2);
+			expect(onSelect.mock.calls[0][1]).toEqual({
+				option: menuOptions[0],
+				optionIndex: 0,
+			});
+			expect(onSelect.mock.calls[1][1]).toEqual({
+				option: menuOptions[0],
+				optionIndex: 0,
+			});
+		});
+
+		it('does not call onSelect when custom content is clicked, but calls onClose with the click event', async () => {
+			const onSelect = vi.fn();
+			const onClose = vi.fn();
+			const { container } = renderDropdown({
+				onSelect,
+				onClose,
+				children: <DropdownCustomContent />,
+			});
+
+			await openMenu(container);
+			fireEvent.click(
+				container.querySelector('#custom-dropdown-menu-content-link')
+			);
+
+			await waitFor(() => {
+				expect(
+					container.querySelector('#custom-dropdown-menu-content')
+				).not.toBeInTheDocument();
+			});
+			expect(onSelect).not.toHaveBeenCalled();
+			expect(onClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onClose.mock.calls[0];
+			expect(event.type).toBe('click');
+			expect(data).toEqual({});
+		});
+
+		it('calls onOpen and onClose with the trigger click event and a data object', async () => {
+			const onOpen = vi.fn();
+			const onClose = vi.fn();
+			const { container } = renderDropdown({ onOpen, onClose });
+			const trigger = container.querySelector('.slds-dropdown-trigger');
+
+			await openMenu(container);
+			expect(onOpen).toHaveBeenCalledTimes(1);
+			expect(onOpen.mock.calls[0][0].type).toBe('click');
+			expect(onOpen.mock.calls[0][1]).toEqual({});
+
+			fireEvent.click(trigger);
+			await waitFor(() => {
+				expect(
+					container.querySelector('.slds-dropdown')
+				).not.toBeInTheDocument();
+			});
+			expect(onClose).toHaveBeenCalledTimes(1);
+			expect(onClose.mock.calls[0][0].type).toBe('click');
+			expect(onClose.mock.calls[0][1]).toEqual({});
+		});
+
+		it('calls onClose with the selecting event when an option is chosen by keyboard', async () => {
+			const onClose = vi.fn();
+			const { container } = renderDropdown({ onClose });
+
+			const menu = await openMenu(container);
+			fireEvent.keyDown(menu, keyObjects.DOWN);
+			fireEvent.keyDown(menu, keyObjects.ENTER);
+
+			expect(onClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onClose.mock.calls[0];
+			expect(event.type).toBe('keydown');
+			expect(event.key).toBe('Enter');
+			expect(data).toEqual({});
+		});
+
+		it('calls onClose with the keydown event on Escape', async () => {
+			const onClose = vi.fn();
+			const { container } = renderDropdown({ onClose });
+
+			const menu = await openMenu(container);
+			fireEvent.keyDown(
+				menu.querySelector('.slds-dropdown__item a'),
+				keyObjects.ESCAPE
+			);
+
+			expect(onClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onClose.mock.calls[0];
+			expect(event.type).toBe('keydown');
+			expect(event.key).toBe('Escape');
+			expect(data).toEqual({});
+		});
+
+		it('calls onOpen once with the keydown event when opened with Enter', async () => {
+			const onOpen = vi.fn();
+			const { container } = renderDropdown({ onOpen });
+
+			fireEvent.keyDown(container.querySelector('button'), keyObjects.ENTER);
+			await waitFor(() => {
+				expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
+			});
+
+			expect(onOpen).toHaveBeenCalledTimes(1);
+			const [event, data] = onOpen.mock.calls[0];
+			expect(event.type).toBe('keydown');
+			expect(event.key).toBe('Enter');
+			expect(data).toEqual({});
+		});
+
+		it('calls onClose once with the keydown event on Tab', async () => {
+			const onClose = vi.fn();
+			const { container } = renderDropdown({ onClose });
+
+			const menu = await openMenu(container);
+			fireEvent.keyDown(
+				menu.querySelector('.slds-dropdown__item a'),
+				keyObjects.TAB
+			);
+			await waitFor(() => {
+				expect(
+					container.querySelector('.slds-dropdown')
+				).not.toBeInTheDocument();
+			});
+
+			expect(onClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onClose.mock.calls[0];
+			expect(event.type).toBe('keydown');
+			expect(event.key).toBe('Tab');
+			expect(data).toEqual({});
+		});
+
+		it('calls onClose with undefined when unmounted while open', async () => {
+			const onClose = vi.fn();
+			const { container, unmount } = renderDropdown({ onClose });
+
+			await openMenu(container);
+			unmount();
+
+			expect(onClose).toHaveBeenCalledTimes(1);
+			expect(onClose).toHaveBeenCalledWith(undefined, {});
+		});
+
+		it('calls onClose with the native mousedown event on outside click', async () => {
+			const onClose = vi.fn();
+			const { container } = renderDropdown({ onClose });
+
+			await openMenu(container);
+			fireEvent.mouseDown(document.body);
+
+			expect(onClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onClose.mock.calls[0];
+			expect(event).toBeInstanceOf(Event);
+			expect(event.type).toBe('mousedown');
+			expect(data).toEqual({});
+		});
+
+		it('calls onOpen with the mouseenter event and onClose with undefined after the hover-close timeout', async () => {
+			const onOpen = vi.fn();
+			const onClose = vi.fn();
+			const { container } = renderDropdown({
+				openOn: 'hover',
+				hoverCloseDelay: 2,
+				onOpen,
+				onClose,
+			});
+			const btn = container.querySelector('.slds-dropdown-trigger');
+
+			fireEvent.mouseEnter(btn);
+			await waitFor(() => {
+				expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
+			});
+			expect(onOpen).toHaveBeenCalledTimes(1);
+			expect(onOpen.mock.calls[0][0].type).toBe('mouseenter');
+			expect(onOpen.mock.calls[0][1]).toEqual({});
+
+			fireEvent.mouseLeave(btn);
+			await waitFor(
+				() => {
+					expect(onClose).toHaveBeenCalledTimes(1);
+				},
+				{ timeout: 100 }
+			);
+			expect(onClose).toHaveBeenCalledWith(undefined, {});
 		});
 	});
 
@@ -609,7 +871,9 @@ describe('SLDSMenuDropdown', () => {
 			fireEvent.keyDown(trigger, keyObjects.DOWN);
 
 			await waitFor(() => {
-				const tooltip = container.querySelector('#sample-dropdown-item-1-tooltip');
+				const tooltip = container.querySelector(
+					'#sample-dropdown-item-1-tooltip'
+				);
 				expect(tooltip).toBeInTheDocument();
 			});
 		});

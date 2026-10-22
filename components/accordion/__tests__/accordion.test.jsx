@@ -43,7 +43,7 @@ class AccordionExample extends React.Component {
 				iconCategory="utility"
 				iconName="down"
 				iconVariant="border-filled"
-				onSelect={(option) => {
+				onSelect={(event, { option }) => {
 					if (option.label === 'delete') {
 						this.setState((state) => ({
 							...state,
@@ -163,7 +163,9 @@ describe('Accordion', () => {
 
 		it('renders `panelContentActions` component, if passed', () => {
 			const { container } = render(<AccordionExample />);
-			const panelContentActions = container.querySelector('div .slds-dropdown-trigger');
+			const panelContentActions = container.querySelector(
+				'div .slds-dropdown-trigger'
+			);
 			expect(panelContentActions).toBeInTheDocument();
 		});
 
@@ -218,7 +220,9 @@ describe('Accordion', () => {
 	describe('Open panel', () => {
 		it('triggers a change callback on panel select', () => {
 			const { container } = render(<AccordionExample />);
-			const firstButton = container.querySelector('button.slds-accordion__summary-action');
+			const firstButton = container.querySelector(
+				'button.slds-accordion__summary-action'
+			);
 
 			// Initially, aria-expanded should be false or undefined
 			expect(firstButton).toHaveAttribute('aria-expanded', 'false');
@@ -232,7 +236,9 @@ describe('Accordion', () => {
 
 		it('`aria-expanded` set to true on panel select', () => {
 			const { container } = render(<AccordionExample />);
-			const firstButton = container.querySelector('button.slds-accordion__summary-action');
+			const firstButton = container.querySelector(
+				'button.slds-accordion__summary-action'
+			);
 
 			fireEvent.click(firstButton);
 
