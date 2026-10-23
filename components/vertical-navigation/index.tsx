@@ -1,9 +1,16 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useId, useMemo, type MouseEvent } from 'react';
+import React, {
+	useId,
+	useMemo,
+	type MouseEvent,
+	type ReactElement,
+} from 'react';
 import classNames from 'classnames';
 import { VERTICAL_NAVIGATION } from '../../utilities/constants';
+import type { BadgeProps } from '../badge';
+import type { IconProps } from '../icon';
 import Item from './private/item';
 
 /**
@@ -16,8 +23,10 @@ export interface NavigationItem {
 	label: string;
 	/** URL for the link */
 	url: string;
-	/** Additional custom properties */
-	[key: string]: unknown;
+	/** `Icon` rendered before the label. Its `size` sets the right margin. */
+	icon?: ReactElement<IconProps>;
+	/** `Badge` rendered after the label, aligned right */
+	notificationBadge?: ReactElement<BadgeProps>;
 }
 
 /**
