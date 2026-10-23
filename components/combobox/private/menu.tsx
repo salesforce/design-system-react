@@ -12,18 +12,84 @@ import classNames from 'classnames';
 import Icon from '../../icon';
 import Spinner from '../../spinner';
 
-export interface ComboboxOption {
+type ComboboxOptionLabelRenderer = (searchTerm: string) => ReactNode;
+
+/**
+ * A selectable option. Group items under a `subheadings` entry from
+ * `comboboxAddSubheadings` with `category`.
+ */
+export interface ComboboxItemOption {
+	/** Structural rows set `type`; selectable items leave it unset. */
+	type?: undefined;
 	id: string;
-	label?: string | ((searchTerm: string) => ReactNode);
+	/** Matches the `id` of a subheading passed to `comboboxAddSubheadings` */
+	category?: string;
+	label?: string;
 	subTitle?: string;
 	title?: string;
-	type?: 'separator' | 'header' | 'footer' | 'deselect' | string;
 	icon?: ReactNode;
 	disabled?: boolean;
 	tooltipContent?: ReactNode;
 	value?: string;
-	onClick?: (event: React.MouseEvent) => void;
+	onClick?: never;
 }
+
+/** A non-interactive group label. Without a `label` it renders as a divider. */
+export interface ComboboxSeparatorOption {
+	type: 'separator';
+	id: string;
+	label?: string | ComboboxOptionLabelRenderer;
+	category?: never;
+	subTitle?: never;
+	title?: never;
+	icon?: never;
+	disabled?: never;
+	tooltipContent?: never;
+	value?: never;
+	onClick?: never;
+}
+
+interface ComboboxActionOptionFields {
+	id: string;
+	label?: string | ComboboxOptionLabelRenderer;
+	icon?: ReactNode;
+	disabled?: boolean;
+	onClick?: (event: React.MouseEvent) => void;
+	category?: never;
+	subTitle?: never;
+	title?: never;
+	tooltipContent?: never;
+	value?: never;
+}
+
+/**
+ * An action row above (`header`) or below (`footer`) the options. Usually
+ * created from `optionsSearchEntity` and `optionsAddItem`.
+ */
+export type ComboboxActionOption =
+	| (ComboboxActionOptionFields & { type: 'header' })
+	| (ComboboxActionOptionFields & { type: 'footer' });
+
+/** The "clear selection" row added by `hasDeselect`. */
+export interface ComboboxDeselectOption {
+	type: 'deselect';
+	id: string;
+	label?: string;
+	value?: string;
+	category?: never;
+	subTitle?: never;
+	title?: never;
+	icon?: never;
+	disabled?: never;
+	tooltipContent?: never;
+	onClick?: never;
+}
+
+export type ComboboxOption =
+	| ComboboxItemOption
+	| ComboboxSeparatorOption
+	| ComboboxActionOption
+	| ComboboxDeselectOption;
 
 export interface MenuAssistiveText {
 	loadingMenuItems?: string;
@@ -73,7 +139,7 @@ export interface MenuProps {
 	onRenderMenuItem?: React.ComponentType<{
 		assistiveText?: MenuAssistiveText;
 		selected: boolean;
-		option: ComboboxOption;
+		option: ComboboxItemOption | ComboboxDeselectOption;
 	}>;
 	/** Callback when option is selected */
 	onSelect: (

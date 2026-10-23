@@ -24,7 +24,11 @@ import Button from '../button';
 import Dialog from '../utilities/dialog';
 import InnerInput from '../input/private/inner-input';
 import InputIcon from '../icon/input-icon';
-import Menu, { type ComboboxOption } from './private/menu';
+import Menu, {
+	type ComboboxOption,
+	type ComboboxItemOption,
+	type ComboboxDeselectOption,
+} from './private/menu';
 import Label from '../forms/private/label';
 import Popover from '../popover';
 import SelectedListBox from '../pill-container/private/selected-listbox';
@@ -104,9 +108,7 @@ export interface ComboboxEvents {
 	onSubmit?: (event: React.KeyboardEvent, data: { value: string }) => void;
 }
 
-export interface ComboboxProps {
-	/** Assistive text for accessibility */
-	assistiveText?: ComboboxAssistiveText;
+interface ComboboxBaseProps {
 	/** aria-describedby attribute */
 	'aria-describedby'?: string;
 	/** CSS classes for combobox container */
@@ -161,10 +163,9 @@ export interface ComboboxProps {
 	onRenderMenuItem?: React.ComponentType<{
 		assistiveText?: ComboboxAssistiveText;
 		selected: boolean;
-		option: ComboboxOption;
+		/** Custom renderers only receive selectable rows */
+		option: ComboboxItemOption | ComboboxDeselectOption;
 	}>;
-	/** Menu options */
-	options?: ComboboxOption[];
 	/** Options to add items */
 	optionsAddItem?: Array<{
 		id?: string;
@@ -177,8 +178,6 @@ export interface ComboboxProps {
 		icon?: ReactNode;
 		label?: string | ((searchTerm: string) => ReactNode);
 	}>;
-	/** Popover component for popover variant */
-	popover?: ReactElement;
 	/** Whether only predefined options are allowed */
 	predefinedOptionsOnly?: boolean;
 	/** Whether field is required */
@@ -193,15 +192,40 @@ export interface ComboboxProps {
 	tooltipMenuItemDisabled?: ReactElement;
 	/** Input value (controlled) */
 	value?: string;
-	/** Combobox variant */
-	variant?: 'base' | 'inline-listbox' | 'popover' | 'readonly';
 	/** @deprecated Use menuItem instead */
 	menuItem?: React.ComponentType<{
 		assistiveText?: ComboboxAssistiveText;
 		selected: boolean;
-		option: ComboboxOption;
+		/** Custom renderers only receive selectable rows */
+		option: ComboboxItemOption | ComboboxDeselectOption;
 	}>;
 }
+
+/**
+ * `variant` decides where the menu content comes from: `options` for the
+ * listbox variants, or a custom `popover` dialog.
+ */
+export type ComboboxVariantProps =
+	| {
+			/** Listbox variants. Defaults to `base`. */
+			variant?: 'base' | 'inline-listbox' | 'readonly';
+			/** Assistive text for accessibility */
+			assistiveText?: ComboboxAssistiveText;
+			/** Menu options */
+			options: ComboboxOption[];
+			popover?: never;
+	  }
+	| {
+			/** Custom dialog content instead of a listbox */
+			variant: 'popover';
+			/** Assistive text for accessibility. `popoverLabel` labels the dialog. */
+			assistiveText: ComboboxAssistiveText & { popoverLabel: string };
+			options?: never;
+			/** Popover component rendered as the dialog */
+			popover: ReactElement;
+	  };
+
+export type ComboboxProps = ComboboxBaseProps & ComboboxVariantProps;
 
 // ===== Default Props =====
 

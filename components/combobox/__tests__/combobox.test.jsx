@@ -6,6 +6,7 @@ import Combobox from '../../../components/combobox';
 import Tooltip from '../../../components/tooltip';
 import Icon from '../../../components/icon';
 import filter from '../../../components/combobox/filter';
+import addSubheadings from '../../../components/combobox/add-subheadings';
 import Popover from '../../../components/popover';
 import { keyObjects } from '../../../utilities/key-code';
 import { keyObjects as letterKeyObjects } from '../../../utilities/letter-key-code';
@@ -16,45 +17,45 @@ const accounts = [
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '4',
 		label: 'Tyrell Corp',
 		subTitle: 'Account • San Francisco, CA',
-		type: 'account',
+		category: 'account',
 		disabled: true,
 	},
 	{
 		id: '5',
 		label: 'Paper St. Soap Company',
 		subTitle: 'Account • Beloit, WI',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '6',
 		label: 'Nakatomi Investments',
 		subTitle: 'Account • Chicago, IL',
-		type: 'account',
+		category: 'account',
 	},
-	{ id: '7', label: 'Acme Landscaping', type: 'account' },
+	{ id: '7', label: 'Acme Landscaping', category: 'account' },
 	{
 		id: '8',
 		label: 'Acme Construction',
 		subTitle: 'Account • Grand Marais, MN',
-		type: 'account',
+		category: 'account',
 	},
 ];
 
@@ -64,7 +65,7 @@ const accountsWithIcon = accounts.map((elem) => ({
 		<Icon
 			assistiveText={{ label: 'Account' }}
 			category="standard"
-			name={elem.type}
+			name={elem.category}
 		/>
 	),
 }));
@@ -682,6 +683,93 @@ describe('SLDSCombobox', () => {
 				'#combobox-unique-id-listbox-option-help-4'
 			);
 			expect(tooltip).toBeInTheDocument();
+		});
+	});
+
+	describe('Option categories', () => {
+		const subheadings = [
+			{ id: 'account', label: 'Accounts', type: 'separator' },
+			{ id: 'opportunity', label: 'Opportunities', type: 'separator' },
+		];
+
+		it('groups options under the subheading matching their category', () => {
+			const grouped = addSubheadings({
+				subheadings,
+				filteredOptions: [
+					{ id: '1', label: 'Big Deal', category: 'opportunity' },
+					{ id: '2', label: 'Acme', category: 'account' },
+				],
+			});
+			expect(grouped.map((option) => option.id)).toEqual([
+				'account',
+				'2',
+				'opportunity',
+				'1',
+			]);
+		});
+
+		it('still groups by a legacy non-structural `type` and warns once', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const legacyOptions = [{ id: '1', label: 'Acme', type: 'account' }];
+
+			expect(
+				addSubheadings({ subheadings, filteredOptions: legacyOptions }).map(
+					(option) => option.id
+				)
+			).toEqual(['account', '1', 'opportunity']);
+
+			render(
+				<Combobox
+					id="legacy-type"
+					labels={{ label: 'Search' }}
+					options={legacyOptions}
+					selection={[]}
+				/>
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`options[].type` will be removed')
+			);
+			consoleError.mockRestore();
+		});
+
+		it('does not warn for structural types or `category`', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			render(
+				<Combobox
+					id="structural-type"
+					labels={{ label: 'Search' }}
+					options={[
+						{ id: 'heading', label: 'Accounts', type: 'separator' },
+						{ id: '1', label: 'Acme', category: 'account' },
+					]}
+					selection={[]}
+				/>
+			);
+			expect(consoleError).not.toHaveBeenCalledWith(
+				expect.stringContaining('options[].type')
+			);
+			consoleError.mockRestore();
+		});
+
+		it('filter skips separators with a label render function', () => {
+			const options = [
+				{
+					id: 'heading',
+					label: (term) => `${term} in Accounts`,
+					type: 'separator',
+				},
+				{ id: '1', label: 'Acme' },
+				{ id: '2', label: 'Tyrell' },
+			];
+			expect(
+				filter({ inputValue: 'acme', options, selection: [] }).map(
+					(option) => option.id
+				)
+			).toEqual(['heading', '1']);
 		});
 	});
 });

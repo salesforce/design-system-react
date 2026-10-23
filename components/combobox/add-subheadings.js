@@ -2,7 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 /**
- * This is a UX pattern recommendation for auto-complete search results that can contain multiple subheadings within the results. It inserts a subheading object based on `option.type === subheading.id` directly before a found option object and only inserts the subheading at the first occurence of that type of option.
+ * This is a UX pattern recommendation for auto-complete search results that can contain multiple subheadings within the results. It inserts a subheading object based on `option.category === subheading.id` directly before a found option object and only inserts the subheading at the first occurence of that type of option.
  */
 
 const addSubheadings = ({ subheadings, filteredOptions }) => {
@@ -17,11 +17,13 @@ const addSubheadings = ({ subheadings, filteredOptions }) => {
 		}
 	});
 
-	// sort options into arrays using option type
-	// if option type and subheader ID are equal, add to array, if no option type, add to noSubHeaderType array
+	// sort options into arrays using option category
+	// if option category and subheader ID are equal, add to array, if no option category, add to noSubHeaderType array
 	filteredOptions.forEach((option) => {
-		if (sortedOptions[option.type]) {
-			sortedOptions[option.type].push(option);
+		// `type` held the category before v11; Combobox warns about it in development.
+		const category = option.category ?? option.type;
+		if (sortedOptions[category]) {
+			sortedOptions[category].push(option);
 		} else {
 			sortedOptions.noSubHeaderType.push(option);
 		}
