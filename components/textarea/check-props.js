@@ -4,6 +4,7 @@
 /* eslint-disable max-len */
 
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
+import sunsetProperty from '../../utilities/warning/sunset-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
 let checkProps = function checkPropsFunction() {};
@@ -20,6 +21,17 @@ if (process.env.NODE_ENV !== 'production') {
 			},
 			createDocUrl()
 		);
+
+		if (typeof props.maxLength === 'string') {
+			sunsetProperty(
+				COMPONENT,
+				props.maxLength,
+				'maxLength',
+				`\`maxLength\` as a string has been deprecated. Please pass a number instead. ${createDocUrl(
+					'maxLength'
+				)}`
+			);
+		}
 	};
 }
 
