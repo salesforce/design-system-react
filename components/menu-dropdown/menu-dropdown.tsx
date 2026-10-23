@@ -54,6 +54,7 @@ import {
 	LIST,
 } from '../../utilities/constants';
 import { IconSettingsContext } from '../icon-settings';
+import type { IconCategory } from '../../types/common';
 
 const documentDefined = typeof document !== 'undefined';
 
@@ -93,25 +94,59 @@ export const DropdownNubbinPositions: readonly DropdownNubbinPosition[] =
 
 const noop = () => {};
 
-export interface MenuDropdownOption {
+export interface MenuDropdownOptionIcon {
+	name: string;
+	category: IconCategory;
+}
+
+/** A selectable menu item. `type` may be omitted. */
+export interface MenuDropdownItemOption {
+	type?: 'item';
 	className?: string;
 	disabled?: boolean;
-	divider?: 'top' | 'bottom';
+	divider?: never;
 	href?: string;
 	id?: string;
 	label?: string;
-	leftIcon?: {
-		name: string;
-		category: string;
-	};
-	rightIcon?: {
-		name: string;
-		category: string;
-	};
+	leftIcon?: MenuDropdownOptionIcon;
+	rightIcon?: MenuDropdownOptionIcon;
 	tooltipContent?: string;
-	type?: 'header' | 'item' | 'divider';
 	value?: string | number;
 }
+
+/** A non-selectable group heading */
+export interface MenuDropdownHeaderOption {
+	type: 'header';
+	className?: string;
+	disabled?: never;
+	/** Adds a divider above or below the heading */
+	divider?: 'top' | 'bottom';
+	href?: never;
+	id?: string;
+	label?: string;
+	leftIcon?: never;
+	rightIcon?: never;
+	tooltipContent?: never;
+	value?: never;
+}
+
+/** A separator line between items */
+export interface MenuDropdownDividerOption {
+	type: 'divider';
+	className?: string;
+	disabled?: never;
+	divider?: never;
+	href?: never;
+	id?: string;
+	label?: never;
+	leftIcon?: never;
+	rightIcon?: never;
+	tooltipContent?: never;
+	value?: never;
+}
+
+export type MenuDropdownOption =
+	MenuDropdownItemOption | MenuDropdownHeaderOption | MenuDropdownDividerOption;
 
 /**
  * Data passed as the second argument of `onSelect`.
