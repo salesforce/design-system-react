@@ -30,31 +30,70 @@ export interface WelcomeMatLabels {
 	unitsCompletedAfter?: string;
 }
 
-/**
- * Props for the WelcomeMat component
- */
-export interface WelcomeMatProps {
-	/** WelcomeMatTile children */
-	children?: ReactNode;
+interface WelcomeMatBaseProps {
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
-	/** Do not show again checkbox element */
-	doNotShowAgainCheckbox?: ReactNode;
 	/** HTML id */
 	id?: string;
-	/** Info badge for trailhead variant */
-	infoBadge?: ReactNode;
 	/** Whether modal is open */
 	isOpen?: boolean;
 	/** Text labels */
 	labels?: WelcomeMatLabels;
 	/** Close request handler */
 	onRequestClose?: () => void;
-	/** Render function for info actions */
-	onRenderInfoActions?: () => ReactNode;
-	/** Component variant */
-	variant?: WelcomeMatVariant;
 }
+
+/**
+ * `variant` decides what the info panel shows. `steps` and
+ * `trailhead-connected` show progress through `WelcomeMatTile` children;
+ * `info-only` and `splash` show actions instead.
+ */
+export type WelcomeMatVariantProps =
+	| {
+			/** Tiles with a progress bar */
+			variant?: 'steps';
+			/** WelcomeMatTile children */
+			children: ReactNode;
+			doNotShowAgainCheckbox?: never;
+			infoBadge?: never;
+			onRenderInfoActions?: never;
+	  }
+	| {
+			/** Tiles with Trailhead progress and an info badge */
+			variant: 'trailhead-connected';
+			/** WelcomeMatTile children */
+			children: ReactNode;
+			doNotShowAgainCheckbox?: never;
+			/** WelcomeMatInfoBadge shown above the progress */
+			infoBadge?: ReactNode;
+			onRenderInfoActions?: never;
+	  }
+	| {
+			/** Tiles with actions instead of progress */
+			variant: 'info-only';
+			/** WelcomeMatTile children */
+			children: ReactNode;
+			/** Do not show again checkbox element */
+			doNotShowAgainCheckbox?: ReactNode;
+			infoBadge?: never;
+			/** Render function for info actions */
+			onRenderInfoActions?: () => ReactNode;
+	  }
+	| {
+			/** Info panel only, with actions and no tiles */
+			variant: 'splash';
+			children?: never;
+			/** Do not show again checkbox element */
+			doNotShowAgainCheckbox?: ReactNode;
+			infoBadge?: never;
+			/** Render function for info actions */
+			onRenderInfoActions?: () => ReactNode;
+	  };
+
+/**
+ * Props for the WelcomeMat component
+ */
+export type WelcomeMatProps = WelcomeMatBaseProps & WelcomeMatVariantProps;
 
 const defaultLabels: WelcomeMatLabels = {
 	unitsCompletedAfter: 'units completed',
