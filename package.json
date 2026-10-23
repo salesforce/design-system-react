@@ -24,7 +24,7 @@
     "test:coverage": "vitest run --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix && prettier --write \"**/*.{js,jsx,ts,tsx}\"",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.type-tests.json",
     "test:ci": "npm run typecheck && npm run test -- --run --update=none && npm run build && npm run lint",
     "start": "npm run dev",
     "storybook": "storybook dev -p 6007",
