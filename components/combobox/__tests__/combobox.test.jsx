@@ -160,8 +160,12 @@ DemoComponent.defaultProps = defaultProps;
 const getNodes = (container) => ({
 	combobox: container.querySelector('.slds-combobox'),
 	input: container.querySelector('.slds-combobox input'),
-	menuListbox: container.querySelector('.slds-combobox .slds-listbox.slds-dropdown'),
-	removeSingleItem: container.querySelector('.slds-combobox button.slds-input__icon'),
+	menuListbox: container.querySelector(
+		'.slds-combobox .slds-listbox.slds-dropdown'
+	),
+	removeSingleItem: container.querySelector(
+		'.slds-combobox button.slds-input__icon'
+	),
 	selectedListbox: container.querySelector(
 		`#${defaultProps.id}-selected-listbox .slds-listbox`
 	),
@@ -265,7 +269,12 @@ describe('SLDSCombobox', () => {
 		// past the end of `selection`, no pill gets tabindex=0, and the selected-
 		// pill listbox becomes unreachable by keyboard.
 		it('clamps the roving tabindex so a pill stays reachable after the controlled selection shrinks', () => {
-			const props = { ...defaultProps, multiple: true, options: [], events: {} };
+			const props = {
+				...defaultProps,
+				multiple: true,
+				options: [],
+				events: {},
+			};
 			const { container, rerender } = render(
 				<IconSettings iconPath="/assets/icons">
 					<Combobox
@@ -281,9 +290,8 @@ describe('SLDSCombobox', () => {
 			);
 
 			// Move the roving tabindex onto the LAST pill (as arrow/focus would).
-			let pills = getNodes(container).selectedListbox.querySelectorAll(
-				'[role="option"]'
-			);
+			let pills =
+				getNodes(container).selectedListbox.querySelectorAll('[role="option"]');
 			expect(pills).toHaveLength(3);
 			fireEvent.focus(pills[2]);
 
@@ -298,9 +306,8 @@ describe('SLDSCombobox', () => {
 				</IconSettings>
 			);
 
-			pills = getNodes(container).selectedListbox.querySelectorAll(
-				'[role="option"]'
-			);
+			pills =
+				getNodes(container).selectedListbox.querySelectorAll('[role="option"]');
 			expect(pills).toHaveLength(2);
 			const tabbable = [...pills].filter(
 				(pill) => pill.getAttribute('tabindex') === '0'
@@ -374,7 +381,9 @@ describe('SLDSCombobox', () => {
 			fireEvent.keyDown(nodes.input, keyObjects.DOWN);
 			fireEvent.keyDown(nodes.input, keyObjects.DOWN);
 			nodes = getNodes(container);
-			const selectedItem = container.querySelector('#combobox-unique-id-listbox-option-2');
+			const selectedItem = container.querySelector(
+				'#combobox-unique-id-listbox-option-2'
+			);
 			expect(selectedItem).toHaveAttribute('aria-selected', 'true');
 			expect(nodes.input).toHaveAttribute(
 				'aria-activedescendant',
@@ -384,7 +393,8 @@ describe('SLDSCombobox', () => {
 			fireEvent.keyDown(nodes.input, keyObjects.ENTER);
 			nodes = getNodes(container);
 			expect(nodes.input.value).toBe('');
-			const pillLabel = nodes.selectedListbox.querySelector('.slds-pill__label');
+			const pillLabel =
+				nodes.selectedListbox.querySelector('.slds-pill__label');
 			expect(pillLabel.textContent).toBe(accounts[1].label);
 		});
 
@@ -392,8 +402,10 @@ describe('SLDSCombobox', () => {
 			// NOTE: Comparing selection by id and label only, since icon is a React element
 			const compareSelection = (actual, expected) => {
 				if (actual.length !== expected.length) return false;
-				return actual.every((item, index) =>
-					item.id === expected[index].id && item.label === expected[index].label
+				return actual.every(
+					(item, index) =>
+						item.id === expected[index].id &&
+						item.label === expected[index].label
 				);
 			};
 
@@ -404,15 +416,8 @@ describe('SLDSCombobox', () => {
 					accounts[3],
 					accounts[4],
 				],
-				removeThirdInitialItem: [
-					accounts[1],
-					accounts[3],
-					accounts[4],
-				],
-				removesLastAndInitialFifthPill: [
-					accounts[1],
-					accounts[3],
-				],
+				removeThirdInitialItem: [accounts[1], accounts[3], accounts[4]],
+				removesLastAndInitialFifthPill: [accounts[1], accounts[3]],
 				removeInitalSecondAndFourthPill: [accounts[3]],
 				allPillsRemoved: [],
 			};
@@ -422,7 +427,9 @@ describe('SLDSCombobox', () => {
 
 			let counter = 0;
 			const componentDidUpdateSpy = vi.fn((prevState) => {
-				expect(compareSelection(prevState.selection, selectionIndexedStates[counter])).toBe(true);
+				expect(
+					compareSelection(prevState.selection, selectionIndexedStates[counter])
+				).toBe(true);
 				counter += 1;
 			});
 
@@ -444,7 +451,8 @@ describe('SLDSCombobox', () => {
 			const getSelectedListboxPills = (index) =>
 				nodes.selectedListbox.children[index].children[0];
 			const getFocusedPillLabel = () => {
-				const pillLabel = document.activeElement.querySelector('.slds-pill__label');
+				const pillLabel =
+					document.activeElement.querySelector('.slds-pill__label');
 				return pillLabel ? pillLabel.innerText : null;
 			};
 
@@ -552,14 +560,18 @@ describe('SLDSCombobox', () => {
 				expect(menuListbox).toBeInTheDocument();
 			} else {
 				// If menu closed, verify it's not in document
-				expect(container.querySelector('.slds-combobox .slds-listbox.slds-dropdown')).not.toBeInTheDocument();
+				expect(
+					container.querySelector('.slds-combobox .slds-listbox.slds-dropdown')
+				).not.toBeInTheDocument();
 			}
 		});
 	});
 
 	describe('Variant-specific', () => {
 		it('Limit to pre-defined choices', () => {
-			const { container } = render(<DemoComponent multiple predefinedOptionsOnly />);
+			const { container } = render(
+				<DemoComponent multiple predefinedOptionsOnly />
+			);
 			let nodes = getNodes(container);
 			fireEvent.focus(nodes.input);
 			fireEvent.keyDown(nodes.input, letterKeyObjects.A);
@@ -627,7 +639,9 @@ describe('SLDSCombobox', () => {
 			fireEvent.focus(nodes.input);
 			fireEvent.change(nodes.input, { target: { value: 'Random text' } });
 			nodes = getNodes(container);
-			const statusItem = nodes.menuListbox.querySelector('.slds-listbox__item.slds-listbox__status');
+			const statusItem = nodes.menuListbox.querySelector(
+				'.slds-listbox__item.slds-listbox__status'
+			);
 			expect(statusItem.textContent).toBe('No matches found.');
 		});
 	});
@@ -652,15 +666,21 @@ describe('SLDSCombobox', () => {
 			fireEvent.change(nodes.input, { target: { value: accounts[3].label } });
 			fireEvent.keyDown(nodes.input, keyObjects.DOWN);
 
-			const nodeInFocus = nodes.menuListbox.querySelector('.slds-tooltip-trigger');
-			const span = nodeInFocus.querySelector('#combobox-unique-id-listbox-option-4');
+			const nodeInFocus = nodes.menuListbox.querySelector(
+				'.slds-tooltip-trigger'
+			);
+			const span = nodeInFocus.querySelector(
+				'#combobox-unique-id-listbox-option-4'
+			);
 
 			// verify span is aria-selected and aria-disabled
 			expect(span).toHaveAttribute('aria-selected', 'true');
 			expect(span).toHaveAttribute('aria-disabled', 'true');
 
 			// verify tooltip is rendered
-			const tooltip = container.querySelector('#combobox-unique-id-listbox-option-help-4');
+			const tooltip = container.querySelector(
+				'#combobox-unique-id-listbox-option-help-4'
+			);
 			expect(tooltip).toBeInTheDocument();
 		});
 	});

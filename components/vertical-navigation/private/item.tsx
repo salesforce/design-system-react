@@ -52,7 +52,12 @@ const handleClick = (
 	}
 };
 
-const Item = ({ isSelected = false, item, categoryId, onSelect }: ItemProps) => (
+const Item = ({
+	isSelected = false,
+	item,
+	categoryId,
+	onSelect,
+}: ItemProps) => (
 	<li
 		className={classNames('slds-nav-vertical__item', {
 			'slds-is-active': isSelected,

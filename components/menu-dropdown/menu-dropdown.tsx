@@ -84,9 +84,11 @@ const DropdownNubbinPositionsArray = [
 	'bottom right',
 ] as const;
 
-export type DropdownNubbinPosition = (typeof DropdownNubbinPositionsArray)[number];
+export type DropdownNubbinPosition =
+	(typeof DropdownNubbinPositionsArray)[number];
 
-export const DropdownNubbinPositions: readonly DropdownNubbinPosition[] = DropdownNubbinPositionsArray;
+export const DropdownNubbinPositions: readonly DropdownNubbinPosition[] =
+	DropdownNubbinPositionsArray;
 
 const noop = () => {};
 
@@ -145,12 +147,7 @@ export interface MenuDropdownProps {
 	iconPosition?: 'left' | 'right';
 	/** Icon variant */
 	iconVariant?:
-		| 'bare'
-		| 'container'
-		| 'border'
-		| 'border-filled'
-		| 'small'
-		| 'more';
+		'bare' | 'container' | 'border' | 'border-filled' | 'small' | 'more';
 	/** Determines the size of the icon */
 	iconSize?: 'x-small' | 'small' | 'medium' | 'large';
 	/** A unique ID for keyboard navigation and ARIA support */
@@ -359,10 +356,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	const overlayRef = useRef<HTMLSpanElement | null>(null);
 
 	// Navigable items
-	const navigableItems = useMemo(
-		() => getNavigableItems(options),
-		[options]
-	);
+	const navigableItems = useMemo(() => getNavigableItems(options), [options]);
 
 	// Check props in development
 	useEffect(() => {
@@ -445,15 +439,12 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	}, []);
 
 	// Get menu item element
-	const getMenuItem = useCallback(
-		(index: number): HTMLLIElement | null => {
-			if (index !== undefined && listItemsRef.current) {
-				return listItemsRef.current[index] || null;
-			}
-			return null;
-		},
-		[]
-	);
+	const getMenuItem = useCallback((index: number): HTMLLIElement | null => {
+		if (index !== undefined && listItemsRef.current) {
+			return listItemsRef.current[index] || null;
+		}
+		return null;
+	}, []);
 
 	// Handle close
 	const handleCloseRef = useRef<() => void>(() => {});
@@ -639,10 +630,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	// Handle keyboard focus
 	const handleKeyboardFocus = useCallback(
 		(newFocusedIndex: number | undefined) => {
-			if (
-				focusedIndex !== newFocusedIndex &&
-				newFocusedIndex !== undefined
-			) {
+			if (focusedIndex !== newFocusedIndex && newFocusedIndex !== undefined) {
 				setFocusedIndex(newFocusedIndex);
 			}
 
@@ -736,17 +724,24 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 				onKeyDown?.(event);
 			}
 		},
-		[handleCancel, handleKeyboardNavigate, getIsOpen, handleSelect, toggleOpen, onKeyDown]
+		[
+			handleCancel,
+			handleKeyboardNavigate,
+			getIsOpen,
+			handleSelect,
+			toggleOpen,
+			onKeyDown,
+		]
 	);
 
 	// Handle click custom content
 	const handleClickCustomContent = useCallback(() => {
 		setFocus();
 		handleClose();
-		onSelect?.(
-			{} as MenuDropdownOption,
-			{ option: {} as MenuDropdownOption, optionIndex: -1 }
-		);
+		onSelect?.({} as MenuDropdownOption, {
+			option: {} as MenuDropdownOption,
+			optionIndex: -1,
+		});
 	}, [setFocus, handleClose, onSelect]);
 
 	// Save ref to trigger
@@ -883,7 +878,9 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 						(child.type as { displayName?: string })?.displayName === LIST
 					) {
 						customContentWithListPropInjection.push(
-							renderDefaultMenuContent((child as ReactElement).props as Record<string, unknown>)
+							renderDefaultMenuContent(
+								(child as ReactElement).props as Record<string, unknown>
+							)
 						);
 					} else if (child) {
 						const clonedCustomContent = React.cloneElement(
@@ -923,7 +920,8 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 				dialogAlign = align === 'center' ? 'bottom' : `bottom ${align}`;
 			}
 
-			const positions = DropdownToDialogNubbinMapping[dialogAlign]?.split(' ') || [];
+			const positions =
+				DropdownToDialogNubbinMapping[dialogAlign]?.split(' ') || [];
 			positionClassName = classNames(
 				positions.map((position) => `slds-dropdown_${position}`)
 			);
@@ -935,7 +933,15 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 
 			return shouldShow ? (
 				<Dialog
-					align={dialogAlign as 'top' | 'top left' | 'top right' | 'bottom' | 'bottom left' | 'bottom right'}
+					align={
+						dialogAlign as
+							| 'top'
+							| 'top left'
+							| 'top right'
+							| 'bottom'
+							| 'bottom left'
+							| 'bottom right'
+					}
 					className={classNames(containerClassName)}
 					closeOnTabKey
 					contentsClassName={classNames(
@@ -1000,7 +1006,10 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			(child.type as { displayName?: string })?.displayName ===
 				MENU_DROPDOWN_TRIGGER
 		) {
-			CustomTriggerChildProps = (child as ReactElement).props as Record<string, unknown>;
+			CustomTriggerChildProps = (child as ReactElement).props as Record<
+				string,
+				unknown
+			>;
 			CurrentTrigger = (child as ReactElement).type as React.ElementType;
 		} else if (child) {
 			customContent.push(child);
@@ -1060,4 +1069,3 @@ MenuDropdown.displayName = MENU_DROPDOWN;
 
 export default MenuDropdown;
 export { ListItem, ListItemLabel };
-

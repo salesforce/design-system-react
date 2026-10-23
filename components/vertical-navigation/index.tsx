@@ -50,7 +50,10 @@ export interface VerticalNavigationProps {
 	/** HTML id */
 	id?: string;
 	/** Selection callback */
-	onSelect?: (event: MouseEvent<HTMLAnchorElement>, data: NavigationSelectData) => void;
+	onSelect?: (
+		event: MouseEvent<HTMLAnchorElement>,
+		data: NavigationSelectData
+	) => void;
 	/** Currently selected item ID */
 	selectedId?: string;
 }
@@ -88,7 +91,10 @@ const VerticalNavigation = ({
 			{categories.map((category) => {
 				const categoryId = `${rootId}-${category.id}`;
 				return (
-					<div key={`${categoryId}-header`} className="slds-nav-vertical__section">
+					<div
+						key={`${categoryId}-header`}
+						className="slds-nav-vertical__section"
+					>
 						<h2 id={categoryId} className="slds-nav-vertical__title">
 							{category.label}
 						</h2>
@@ -113,18 +119,3 @@ const VerticalNavigation = ({
 VerticalNavigation.displayName = VERTICAL_NAVIGATION;
 
 export default VerticalNavigation;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -12,6 +12,3 @@ export type {
 	TreeExpandHandler,
 	TreeScrollHandler,
 } from './types';
-
-
-

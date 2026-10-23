@@ -64,6 +64,3 @@ export type TreeScrollHandler = (
 	event: React.UIEvent<HTMLUListElement>,
 	data: TreeScrollData
 ) => void;
-
-
-
