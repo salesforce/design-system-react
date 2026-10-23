@@ -6,6 +6,7 @@ import Combobox from '../../../components/combobox';
 import Tooltip from '../../../components/tooltip';
 import Icon from '../../../components/icon';
 import filter from '../../../components/combobox/filter';
+import addSubheadings from '../../../components/combobox/add-subheadings';
 import Popover from '../../../components/popover';
 import { keyObjects } from '../../../utilities/key-code';
 import { keyObjects as letterKeyObjects } from '../../../utilities/letter-key-code';
@@ -16,45 +17,45 @@ const accounts = [
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '4',
 		label: 'Tyrell Corp',
 		subTitle: 'Account • San Francisco, CA',
-		type: 'account',
+		category: 'account',
 		disabled: true,
 	},
 	{
 		id: '5',
 		label: 'Paper St. Soap Company',
 		subTitle: 'Account • Beloit, WI',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '6',
 		label: 'Nakatomi Investments',
 		subTitle: 'Account • Chicago, IL',
-		type: 'account',
+		category: 'account',
 	},
-	{ id: '7', label: 'Acme Landscaping', type: 'account' },
+	{ id: '7', label: 'Acme Landscaping', category: 'account' },
 	{
 		id: '8',
 		label: 'Acme Construction',
 		subTitle: 'Account • Grand Marais, MN',
-		type: 'account',
+		category: 'account',
 	},
 ];
 
@@ -64,7 +65,7 @@ const accountsWithIcon = accounts.map((elem) => ({
 		<Icon
 			assistiveText={{ label: 'Account' }}
 			category="standard"
-			name={elem.type}
+			name={elem.category}
 		/>
 	),
 }));
@@ -160,8 +161,12 @@ DemoComponent.defaultProps = defaultProps;
 const getNodes = (container) => ({
 	combobox: container.querySelector('.slds-combobox'),
 	input: container.querySelector('.slds-combobox input'),
-	menuListbox: container.querySelector('.slds-combobox .slds-listbox.slds-dropdown'),
-	removeSingleItem: container.querySelector('.slds-combobox button.slds-input__icon'),
+	menuListbox: container.querySelector(
+		'.slds-combobox .slds-listbox.slds-dropdown'
+	),
+	removeSingleItem: container.querySelector(
+		'.slds-combobox button.slds-input__icon'
+	),
 	selectedListbox: container.querySelector(
 		`#${defaultProps.id}-selected-listbox .slds-listbox`
 	),
@@ -265,7 +270,12 @@ describe('SLDSCombobox', () => {
 		// past the end of `selection`, no pill gets tabindex=0, and the selected-
 		// pill listbox becomes unreachable by keyboard.
 		it('clamps the roving tabindex so a pill stays reachable after the controlled selection shrinks', () => {
-			const props = { ...defaultProps, multiple: true, options: [], events: {} };
+			const props = {
+				...defaultProps,
+				multiple: true,
+				options: [],
+				events: {},
+			};
 			const { container, rerender } = render(
 				<IconSettings iconPath="/assets/icons">
 					<Combobox
@@ -281,9 +291,8 @@ describe('SLDSCombobox', () => {
 			);
 
 			// Move the roving tabindex onto the LAST pill (as arrow/focus would).
-			let pills = getNodes(container).selectedListbox.querySelectorAll(
-				'[role="option"]'
-			);
+			let pills =
+				getNodes(container).selectedListbox.querySelectorAll('[role="option"]');
 			expect(pills).toHaveLength(3);
 			fireEvent.focus(pills[2]);
 
@@ -298,9 +307,8 @@ describe('SLDSCombobox', () => {
 				</IconSettings>
 			);
 
-			pills = getNodes(container).selectedListbox.querySelectorAll(
-				'[role="option"]'
-			);
+			pills =
+				getNodes(container).selectedListbox.querySelectorAll('[role="option"]');
 			expect(pills).toHaveLength(2);
 			const tabbable = [...pills].filter(
 				(pill) => pill.getAttribute('tabindex') === '0'
@@ -374,7 +382,9 @@ describe('SLDSCombobox', () => {
 			fireEvent.keyDown(nodes.input, keyObjects.DOWN);
 			fireEvent.keyDown(nodes.input, keyObjects.DOWN);
 			nodes = getNodes(container);
-			const selectedItem = container.querySelector('#combobox-unique-id-listbox-option-2');
+			const selectedItem = container.querySelector(
+				'#combobox-unique-id-listbox-option-2'
+			);
 			expect(selectedItem).toHaveAttribute('aria-selected', 'true');
 			expect(nodes.input).toHaveAttribute(
 				'aria-activedescendant',
@@ -384,7 +394,8 @@ describe('SLDSCombobox', () => {
 			fireEvent.keyDown(nodes.input, keyObjects.ENTER);
 			nodes = getNodes(container);
 			expect(nodes.input.value).toBe('');
-			const pillLabel = nodes.selectedListbox.querySelector('.slds-pill__label');
+			const pillLabel =
+				nodes.selectedListbox.querySelector('.slds-pill__label');
 			expect(pillLabel.textContent).toBe(accounts[1].label);
 		});
 
@@ -392,8 +403,10 @@ describe('SLDSCombobox', () => {
 			// NOTE: Comparing selection by id and label only, since icon is a React element
 			const compareSelection = (actual, expected) => {
 				if (actual.length !== expected.length) return false;
-				return actual.every((item, index) =>
-					item.id === expected[index].id && item.label === expected[index].label
+				return actual.every(
+					(item, index) =>
+						item.id === expected[index].id &&
+						item.label === expected[index].label
 				);
 			};
 
@@ -404,15 +417,8 @@ describe('SLDSCombobox', () => {
 					accounts[3],
 					accounts[4],
 				],
-				removeThirdInitialItem: [
-					accounts[1],
-					accounts[3],
-					accounts[4],
-				],
-				removesLastAndInitialFifthPill: [
-					accounts[1],
-					accounts[3],
-				],
+				removeThirdInitialItem: [accounts[1], accounts[3], accounts[4]],
+				removesLastAndInitialFifthPill: [accounts[1], accounts[3]],
 				removeInitalSecondAndFourthPill: [accounts[3]],
 				allPillsRemoved: [],
 			};
@@ -422,7 +428,9 @@ describe('SLDSCombobox', () => {
 
 			let counter = 0;
 			const componentDidUpdateSpy = vi.fn((prevState) => {
-				expect(compareSelection(prevState.selection, selectionIndexedStates[counter])).toBe(true);
+				expect(
+					compareSelection(prevState.selection, selectionIndexedStates[counter])
+				).toBe(true);
 				counter += 1;
 			});
 
@@ -444,7 +452,8 @@ describe('SLDSCombobox', () => {
 			const getSelectedListboxPills = (index) =>
 				nodes.selectedListbox.children[index].children[0];
 			const getFocusedPillLabel = () => {
-				const pillLabel = document.activeElement.querySelector('.slds-pill__label');
+				const pillLabel =
+					document.activeElement.querySelector('.slds-pill__label');
 				return pillLabel ? pillLabel.innerText : null;
 			};
 
@@ -552,14 +561,18 @@ describe('SLDSCombobox', () => {
 				expect(menuListbox).toBeInTheDocument();
 			} else {
 				// If menu closed, verify it's not in document
-				expect(container.querySelector('.slds-combobox .slds-listbox.slds-dropdown')).not.toBeInTheDocument();
+				expect(
+					container.querySelector('.slds-combobox .slds-listbox.slds-dropdown')
+				).not.toBeInTheDocument();
 			}
 		});
 	});
 
 	describe('Variant-specific', () => {
 		it('Limit to pre-defined choices', () => {
-			const { container } = render(<DemoComponent multiple predefinedOptionsOnly />);
+			const { container } = render(
+				<DemoComponent multiple predefinedOptionsOnly />
+			);
 			let nodes = getNodes(container);
 			fireEvent.focus(nodes.input);
 			fireEvent.keyDown(nodes.input, letterKeyObjects.A);
@@ -627,7 +640,9 @@ describe('SLDSCombobox', () => {
 			fireEvent.focus(nodes.input);
 			fireEvent.change(nodes.input, { target: { value: 'Random text' } });
 			nodes = getNodes(container);
-			const statusItem = nodes.menuListbox.querySelector('.slds-listbox__item.slds-listbox__status');
+			const statusItem = nodes.menuListbox.querySelector(
+				'.slds-listbox__item.slds-listbox__status'
+			);
 			expect(statusItem.textContent).toBe('No matches found.');
 		});
 	});
@@ -652,16 +667,109 @@ describe('SLDSCombobox', () => {
 			fireEvent.change(nodes.input, { target: { value: accounts[3].label } });
 			fireEvent.keyDown(nodes.input, keyObjects.DOWN);
 
-			const nodeInFocus = nodes.menuListbox.querySelector('.slds-tooltip-trigger');
-			const span = nodeInFocus.querySelector('#combobox-unique-id-listbox-option-4');
+			const nodeInFocus = nodes.menuListbox.querySelector(
+				'.slds-tooltip-trigger'
+			);
+			const span = nodeInFocus.querySelector(
+				'#combobox-unique-id-listbox-option-4'
+			);
 
 			// verify span is aria-selected and aria-disabled
 			expect(span).toHaveAttribute('aria-selected', 'true');
 			expect(span).toHaveAttribute('aria-disabled', 'true');
 
 			// verify tooltip is rendered
-			const tooltip = container.querySelector('#combobox-unique-id-listbox-option-help-4');
+			const tooltip = container.querySelector(
+				'#combobox-unique-id-listbox-option-help-4'
+			);
 			expect(tooltip).toBeInTheDocument();
+		});
+	});
+
+	describe('Option categories', () => {
+		const subheadings = [
+			{ id: 'account', label: 'Accounts', type: 'separator' },
+			{ id: 'opportunity', label: 'Opportunities', type: 'separator' },
+		];
+
+		it('groups options under the subheading matching their category', () => {
+			const grouped = addSubheadings({
+				subheadings,
+				filteredOptions: [
+					{ id: '1', label: 'Big Deal', category: 'opportunity' },
+					{ id: '2', label: 'Acme', category: 'account' },
+				],
+			});
+			expect(grouped.map((option) => option.id)).toEqual([
+				'account',
+				'2',
+				'opportunity',
+				'1',
+			]);
+		});
+
+		it('still groups by a legacy non-structural `type` and warns once', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const legacyOptions = [{ id: '1', label: 'Acme', type: 'account' }];
+
+			expect(
+				addSubheadings({ subheadings, filteredOptions: legacyOptions }).map(
+					(option) => option.id
+				)
+			).toEqual(['account', '1', 'opportunity']);
+
+			render(
+				<Combobox
+					id="legacy-type"
+					labels={{ label: 'Search' }}
+					options={legacyOptions}
+					selection={[]}
+				/>
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`options[].type` will be removed')
+			);
+			consoleError.mockRestore();
+		});
+
+		it('does not warn for structural types or `category`', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			render(
+				<Combobox
+					id="structural-type"
+					labels={{ label: 'Search' }}
+					options={[
+						{ id: 'heading', label: 'Accounts', type: 'separator' },
+						{ id: '1', label: 'Acme', category: 'account' },
+					]}
+					selection={[]}
+				/>
+			);
+			expect(consoleError).not.toHaveBeenCalledWith(
+				expect.stringContaining('options[].type')
+			);
+			consoleError.mockRestore();
+		});
+
+		it('filter skips separators with a label render function', () => {
+			const options = [
+				{
+					id: 'heading',
+					label: (term) => `${term} in Accounts`,
+					type: 'separator',
+				},
+				{ id: '1', label: 'Acme' },
+				{ id: '2', label: 'Tyrell' },
+			];
+			expect(
+				filter({ inputValue: 'acme', options, selection: [] }).map(
+					(option) => option.id
+				)
+			).toEqual(['heading', '1']);
 		});
 	});
 });

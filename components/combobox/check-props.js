@@ -35,6 +35,20 @@ if (process.env.NODE_ENV !== 'production') {
 		);
 		/* eslint-enable max-len */
 
+		// `type` is reserved for structural rows. Item options used it to
+		// group under `comboboxAddSubheadings`, which now reads `category`.
+		const structuralTypes = ['separator', 'header', 'footer', 'deselect'];
+		const itemWithType = (props.options || []).find(
+			(option) => option?.type && !structuralTypes.includes(option.type)
+		);
+		deprecatedProperty(
+			COMPONENT,
+			itemWithType?.type,
+			'options[].type',
+			'options[].category',
+			`\`type\` only accepts ${structuralTypes.map((type) => `'${type}'`).join(', ')}. ${createDocUrl('options')}`
+		);
+
 		if (props.variant !== 'popover') {
 			oneOfRequiredProperty(
 				COMPONENT,

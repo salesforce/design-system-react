@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactElement } from 'react';
+import React from 'react';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -52,7 +52,12 @@ const handleClick = (
 	}
 };
 
-const Item = ({ isSelected = false, item, categoryId, onSelect }: ItemProps) => (
+const Item = ({
+	isSelected = false,
+	item,
+	categoryId,
+	onSelect,
+}: ItemProps) => (
 	<li
 		className={classNames('slds-nav-vertical__item', {
 			'slds-is-active': isSelected,
@@ -70,35 +75,24 @@ const Item = ({ isSelected = false, item, categoryId, onSelect }: ItemProps) => 
 		>
 			{item.icon ? (
 				<React.Fragment>
-					{React.cloneElement(
-						item.icon as ReactElement<{ className?: string; size?: string }>,
-						{
-							className: classNames(
-								(item.icon as ReactElement<{ className?: string }>).props
-									.className,
-								`slds-m-right_${
-									(item.icon as ReactElement<{ size?: string }>).props.size ||
-									'medium'
-								}`
-							),
-						}
-					)}
+					{React.cloneElement(item.icon, {
+						className: classNames(
+							item.icon.props.className,
+							`slds-m-right_${item.icon.props.size || 'medium'}`
+						),
+					})}
 					{item.label}
 				</React.Fragment>
 			) : (
 				item.label
 			)}
 			{item.notificationBadge ? (
-				React.cloneElement(
-					item.notificationBadge as ReactElement<{ className?: string }>,
-					{
-						className: classNames(
-							(item.notificationBadge as ReactElement<{ className?: string }>)
-								.props.className,
-							'slds-col_bump-left'
-						),
-					}
-				)
+				React.cloneElement(item.notificationBadge, {
+					className: classNames(
+						item.notificationBadge.props.className,
+						'slds-col_bump-left'
+					),
+				})
 			) : (
 				<React.Fragment />
 			)}

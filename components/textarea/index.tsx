@@ -15,6 +15,8 @@ import {
 import classNames from 'classnames';
 import getAriaProps from '../../utilities/get-aria-props';
 import { TEXTAREA } from '../../utilities/constants';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 /**
  * Assistive text for Textarea
@@ -65,7 +67,7 @@ export interface TextareaProps {
 	/** Label above textarea */
 	label?: string;
 	/** Maximum character count */
-	maxLength?: string;
+	maxLength?: number;
 	/** Form parameter name */
 	name?: string;
 	/** Blur event handler */
@@ -143,6 +145,8 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 			...restProps
 		} = props;
 
+		checkProps(TEXTAREA, { ...props }, componentDoc);
+
 		const generatedId = useId();
 		const generatedErrorId = useId();
 
@@ -153,9 +157,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
 		// Handle assistiveText as string or object
 		const assistiveTextLabel =
-			typeof assistiveText === 'string'
-				? assistiveText
-				: assistiveText?.label;
+			typeof assistiveText === 'string' ? assistiveText : assistiveText?.label;
 
 		const labelText = label || assistiveTextLabel;
 
@@ -190,7 +192,12 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 						autoFocus={autoFocus}
 						disabled={disabled}
 						id={getId()}
-						maxLength={maxLength ? parseInt(maxLength, 10) : undefined}
+						maxLength={
+							// Strings are still accepted at runtime for untyped callers; check-props warns.
+							typeof maxLength === 'string'
+								? parseInt(maxLength, 10)
+								: maxLength
+						}
 						name={name}
 						onBlur={onBlur}
 						onChange={onChange}
@@ -210,7 +217,13 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 						wrap={wrap}
 						value={value}
 						defaultValue={defaultValue}
-						aria-describedby={errorText ? getErrorId() : (ariaProps as Record<string, unknown>)['aria-describedby'] as string | undefined}
+						aria-describedby={
+							errorText
+								? getErrorId()
+								: ((ariaProps as Record<string, unknown>)[
+										'aria-describedby'
+									] as string | undefined)
+						}
 						{...ariaProps}
 					/>
 				</div>
@@ -228,4 +241,3 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 Textarea.displayName = TEXTAREA;
 
 export default Textarea;
-

@@ -10,25 +10,25 @@ const accounts = [
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '4',
 		label: 'Tyrell Corp',
 		subTitle: 'Account • San Francisco, CA',
-		type: 'account',
+		category: 'account',
 	},
 ];
 
@@ -39,7 +39,7 @@ const accountsWithIcon = accounts.map((elem) => ({
 			<Icon
 				assistiveText={{ label: 'Account' }}
 				category="standard"
-				name={elem.type}
+				name={elem.category}
 			/>
 		),
 	},
@@ -167,7 +167,7 @@ class Example extends React.Component {
 									inputValue: this.state.inputValue,
 									options: accountsWithIcon,
 									selection: this.state.selection,
-							  })
+								})
 					}
 					selection={this.state.selection}
 					value={

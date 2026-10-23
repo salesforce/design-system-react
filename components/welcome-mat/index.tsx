@@ -1,7 +1,12 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useId, useMemo, type ReactNode, type ReactElement } from 'react';
+import React, {
+	useId,
+	useMemo,
+	type ReactNode,
+	type ReactElement,
+} from 'react';
 import classNames from 'classnames';
 import Modal from '../modal';
 import ProgressBar from '../progress-bar';
@@ -10,7 +15,8 @@ import { WELCOME_MAT } from '../../utilities/constants';
 /**
  * Welcome mat variant types
  */
-export type WelcomeMatVariant = 'steps' | 'info-only' | 'splash' | 'trailhead-connected';
+export type WelcomeMatVariant =
+	'steps' | 'info-only' | 'splash' | 'trailhead-connected';
 
 /**
  * Labels for WelcomeMat
@@ -24,31 +30,70 @@ export interface WelcomeMatLabels {
 	unitsCompletedAfter?: string;
 }
 
-/**
- * Props for the WelcomeMat component
- */
-export interface WelcomeMatProps {
-	/** WelcomeMatTile children */
-	children?: ReactNode;
+interface WelcomeMatBaseProps {
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
-	/** Do not show again checkbox element */
-	doNotShowAgainCheckbox?: ReactNode;
 	/** HTML id */
 	id?: string;
-	/** Info badge for trailhead variant */
-	infoBadge?: ReactNode;
 	/** Whether modal is open */
 	isOpen?: boolean;
 	/** Text labels */
 	labels?: WelcomeMatLabels;
 	/** Close request handler */
 	onRequestClose?: () => void;
-	/** Render function for info actions */
-	onRenderInfoActions?: () => ReactNode;
-	/** Component variant */
-	variant?: WelcomeMatVariant;
 }
+
+/**
+ * `variant` decides what the info panel shows. `steps` and
+ * `trailhead-connected` show progress through `WelcomeMatTile` children;
+ * `info-only` and `splash` show actions instead.
+ */
+export type WelcomeMatVariantProps =
+	| {
+			/** Tiles with a progress bar */
+			variant?: 'steps';
+			/** WelcomeMatTile children */
+			children: ReactNode;
+			doNotShowAgainCheckbox?: never;
+			infoBadge?: never;
+			onRenderInfoActions?: never;
+	  }
+	| {
+			/** Tiles with Trailhead progress and an info badge */
+			variant: 'trailhead-connected';
+			/** WelcomeMatTile children */
+			children: ReactNode;
+			doNotShowAgainCheckbox?: never;
+			/** WelcomeMatInfoBadge shown above the progress */
+			infoBadge?: ReactNode;
+			onRenderInfoActions?: never;
+	  }
+	| {
+			/** Tiles with actions instead of progress */
+			variant: 'info-only';
+			/** WelcomeMatTile children */
+			children: ReactNode;
+			/** Do not show again checkbox element */
+			doNotShowAgainCheckbox?: ReactNode;
+			infoBadge?: never;
+			/** Render function for info actions */
+			onRenderInfoActions?: () => ReactNode;
+	  }
+	| {
+			/** Info panel only, with actions and no tiles */
+			variant: 'splash';
+			children?: never;
+			/** Do not show again checkbox element */
+			doNotShowAgainCheckbox?: ReactNode;
+			infoBadge?: never;
+			/** Render function for info actions */
+			onRenderInfoActions?: () => ReactNode;
+	  };
+
+/**
+ * Props for the WelcomeMat component
+ */
+export type WelcomeMatProps = WelcomeMatBaseProps & WelcomeMatVariantProps;
 
 const defaultLabels: WelcomeMatLabels = {
 	unitsCompletedAfter: 'units completed',
@@ -77,7 +122,9 @@ const WelcomeMat = ({
 	const { totalSteps, completedSteps, progress } = useMemo(() => {
 		const total = React.Children.count(children);
 		const completed = React.Children.toArray(children).filter(
-			(c) => React.isValidElement(c) && (c.props as { isComplete?: boolean }).isComplete
+			(c) =>
+				React.isValidElement(c) &&
+				(c.props as { isComplete?: boolean }).isComplete
 		).length;
 		return {
 			totalSteps: total,
@@ -88,7 +135,10 @@ const WelcomeMat = ({
 
 	const splash = (
 		<div
-			className={classNames('slds-welcome-mat__info-content', className as string)}
+			className={classNames(
+				'slds-welcome-mat__info-content',
+				className as string
+			)}
 			id={`${id}-content`}
 		>
 			<h2 className="slds-welcome-mat__info-title" id={`${id}-label`}>
@@ -105,38 +155,44 @@ const WelcomeMat = ({
 					)}
 				</div>
 			)}
-			{(variant === 'steps' || variant === 'trailhead-connected') && children && (
-				<div
-					className={classNames('slds-welcome-mat__info-progress', {
-						'slds-welcome-mat__info-progress_complete': completedSteps === totalSteps,
-					})}
-				>
-					{variant === 'trailhead-connected' &&
-						React.Children.map(infoBadge, (child) =>
-							React.isValidElement(child)
-								? React.cloneElement(child as ReactElement<{ isComplete?: boolean }>, {
-										isComplete: completedSteps === totalSteps || undefined,
-								  })
-								: child
-						)}
-					{(completedSteps !== totalSteps || variant !== 'trailhead-connected') && (
-						<>
-							{variant === 'trailhead-connected' ? (
-								<p>
-									{completedSteps}/{totalSteps} {labels.unitsCompletedAfter}
-								</p>
-							) : (
-								<p>
-									<strong>
-										{completedSteps}/{totalSteps} {labels.unitsCompletedAfter}
-									</strong>
-								</p>
+			{(variant === 'steps' || variant === 'trailhead-connected') &&
+				children && (
+					<div
+						className={classNames('slds-welcome-mat__info-progress', {
+							'slds-welcome-mat__info-progress_complete':
+								completedSteps === totalSteps,
+						})}
+					>
+						{variant === 'trailhead-connected' &&
+							React.Children.map(infoBadge, (child) =>
+								React.isValidElement(child)
+									? React.cloneElement(
+											child as ReactElement<{ isComplete?: boolean }>,
+											{
+												isComplete: completedSteps === totalSteps || undefined,
+											}
+										)
+									: child
 							)}
-							<ProgressBar value={progress} radius="circular" />
-						</>
-					)}
-				</div>
-			)}
+						{(completedSteps !== totalSteps ||
+							variant !== 'trailhead-connected') && (
+							<>
+								{variant === 'trailhead-connected' ? (
+									<p>
+										{completedSteps}/{totalSteps} {labels.unitsCompletedAfter}
+									</p>
+								) : (
+									<p>
+										<strong>
+											{completedSteps}/{totalSteps} {labels.unitsCompletedAfter}
+										</strong>
+									</p>
+								)}
+								<ProgressBar value={progress} radius="circular" />
+							</>
+						)}
+					</div>
+				)}
 		</div>
 	);
 
@@ -151,37 +207,44 @@ const WelcomeMat = ({
 			id={`${id}-modal`}
 		>
 			<div
-				className={classNames(
-					'slds-welcome-mat',
-					{
-						'slds-welcome-mat_info-only': variant === 'info-only',
-						'slds-welcome-mat_splash': !children,
-					}
-				)}
+				className={classNames('slds-welcome-mat', {
+					'slds-welcome-mat_info-only': variant === 'info-only',
+					'slds-welcome-mat_splash': !children,
+				})}
 				id={id}
 			>
 				<div className="slds-welcome-mat__content slds-grid">
 					{children ? (
 						<>
-							<div className="slds-welcome-mat__info slds-size_1-of-2">{splash}</div>
+							<div className="slds-welcome-mat__info slds-size_1-of-2">
+								{splash}
+							</div>
 							<div
 								className={classNames(
 									'slds-welcome-mat__tiles',
 									'slds-size_1-of-2',
-									{ 'slds-welcome-mat__tiles_info-only': variant === 'info-only' }
+									{
+										'slds-welcome-mat__tiles_info-only':
+											variant === 'info-only',
+									}
 								)}
 							>
 								{React.Children.map(children, (child) =>
 									React.isValidElement(child)
-										? React.cloneElement(child as ReactElement<{ variant?: WelcomeMatVariant }>, {
-												variant,
-										  })
+										? React.cloneElement(
+												child as ReactElement<{ variant?: WelcomeMatVariant }>,
+												{
+													variant,
+												}
+											)
 										: child
 								)}
 							</div>
 						</>
 					) : (
-						<div className="slds-welcome-mat__info slds-size_1-of-1">{splash}</div>
+						<div className="slds-welcome-mat__info slds-size_1-of-1">
+							{splash}
+						</div>
 					)}
 				</div>
 			</div>
@@ -192,18 +255,3 @@ const WelcomeMat = ({
 WelcomeMat.displayName = WELCOME_MAT;
 
 export default WelcomeMat;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

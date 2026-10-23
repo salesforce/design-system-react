@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import Textarea from '../';
 
@@ -158,6 +158,38 @@ describe('SLDS TEXTAREA', () => {
 			const error = container.querySelector('.slds-form-element__help');
 			expect(error).toBeInTheDocument();
 			expect(error.textContent).toBe('Error Message');
+		});
+	});
+
+	describe('maxLength', () => {
+		it('passes a numeric maxLength to the textarea', () => {
+			const { container } = render(
+				<Textarea {...defaultProps} label="Textarea Label" maxLength={100} />
+			);
+
+			expect(container.querySelector('textarea')).toHaveAttribute(
+				'maxlength',
+				'100'
+			);
+		});
+
+		it('still accepts a string maxLength from untyped callers and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			const { container } = render(
+				<Textarea {...defaultProps} label="Textarea Label" maxLength="50" />
+			);
+
+			expect(container.querySelector('textarea')).toHaveAttribute(
+				'maxlength',
+				'50'
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`maxLength` as a string has been deprecated')
+			);
+			consoleError.mockRestore();
 		});
 	});
 });

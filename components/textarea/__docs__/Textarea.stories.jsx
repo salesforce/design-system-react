@@ -79,7 +79,7 @@ WithMaxLength.args = {
 	label: 'Limited Characters',
 	name: 'maxlength-textarea',
 	placeholder: 'Max 100 characters',
-	maxLength: '100',
+	maxLength: 100,
 };
 
 export const AssistiveTextOnly = Template.bind({});
@@ -96,12 +96,16 @@ AssistiveTextOnly.args = {
 
 export const DocSiteDefault = () => <DefaultExample />;
 DocSiteDefault.parameters = {
-	docs: { description: { story: 'Default textarea example from documentation' } },
+	docs: {
+		description: { story: 'Default textarea example from documentation' },
+	},
 };
 
 export const DocSiteDisabled = () => <DisabledExample />;
 DocSiteDisabled.parameters = {
-	docs: { description: { story: 'Disabled textarea example from documentation' } },
+	docs: {
+		description: { story: 'Disabled textarea example from documentation' },
+	},
 };
 
 export const DocSiteError = () => <ErrorExample />;

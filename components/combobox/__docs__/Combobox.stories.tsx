@@ -4,7 +4,10 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import Combobox from '../index';
+import Combobox, {
+	type ComboboxItemOption,
+	type ComboboxOption,
+} from '../index';
 import Checkbox from '../../checkbox';
 import Icon from '../../icon';
 import IconSettings from '../../icon-settings';
@@ -44,31 +47,31 @@ const accounts = [
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '3',
 		label: 'Global Media',
 		subTitle: 'Account • New York',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '4',
 		label: 'United Partners',
 		subTitle: 'Account • Chicago',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '5',
 		label: 'Edge Communications',
 		subTitle: 'Account • Austin',
-		type: 'account',
+		category: 'account',
 	},
 ];
 
@@ -89,7 +92,7 @@ const accountsWithIcons = accounts.map((account) => ({
 export const Base: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>(
+		const [selection, setSelection] = useState<ComboboxOption[]>(
 			accountsWithIcons.slice(0, 2)
 		);
 
@@ -126,9 +129,9 @@ export const Base: Story = {
 export const BaseWithMenuSubheader: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
-		const optionsWithSeparator = [
+		const optionsWithSeparator: ComboboxOption[] = [
 			{ id: 'header', label: 'Recent Accounts', type: 'separator' },
 			...accountsWithIcons.slice(0, 3),
 			{ id: 'divider', type: 'separator' },
@@ -166,9 +169,9 @@ export const BaseWithMenuSubheader: Story = {
 export const WithMenuSeparator: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
-		const optionsWithSeparator = [
+		const optionsWithSeparator: ComboboxOption[] = [
 			...accountsWithIcons.slice(0, 2),
 			{ id: 'divider-1', type: 'separator' },
 			...accountsWithIcons.slice(2, 4),
@@ -205,7 +208,7 @@ export const WithMenuSeparator: Story = {
 export const WithInlineHelpTooltip: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -254,12 +257,12 @@ export const WithInheritedMenuWidth: Story = {
 				label:
 					'A very very very very very very very very very very very long title to show how menu width will behave',
 				subTitle: 'Account • San Francisco',
-				type: 'account',
+				category: 'account',
 			},
 			...accountsWithIcons.slice(1),
 		];
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof longLabelAccounts>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -301,7 +304,7 @@ export const WithScrollableMenu: Story = {
 			label: `Option ${index + 1}`,
 		}));
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof manyOptions>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -338,7 +341,7 @@ export const WithScrollableMenu: Story = {
 export const WithCustomInputComponent: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -381,7 +384,7 @@ export const WithCustomInputComponent: Story = {
 export const InlineSingle: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -416,7 +419,7 @@ export const InlineSingle: Story = {
 export const InlineMultiple: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -454,7 +457,7 @@ export const InlineMultiple: Story = {
 export const SearchAndAddEntities: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -531,7 +534,7 @@ export const SearchAndAddEntities: Story = {
 export const ControlledOpenState: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 		const [isOpen, setIsOpen] = useState(false);
 
 		return (
@@ -577,7 +580,7 @@ export const ControlledOpenState: Story = {
 export const InlineMultipleLoading: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 		const [isLoading, setIsLoading] = useState(false);
 
 		return (
@@ -631,7 +634,7 @@ const picklistOptions = [
 
 export const ReadonlySingle: Story = {
 	render: () => {
-		const [selection, setSelection] = useState<typeof picklistOptions>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -652,7 +655,9 @@ export const ReadonlySingle: Story = {
 
 export const ReadonlySingleWithSelection: Story = {
 	render: () => {
-		const [selection, setSelection] = useState([picklistOptions[1]]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([
+			picklistOptions[1],
+		]);
 
 		return (
 			<Combobox
@@ -673,7 +678,7 @@ export const ReadonlySingleWithSelection: Story = {
 
 export const ReadonlyMultiple: Story = {
 	render: () => {
-		const [selection, setSelection] = useState<typeof picklistOptions>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -707,7 +712,7 @@ export const ReadonlyWithDisabledOption: Story = {
 			...option,
 			disabled: index === 1 || index === 2,
 		}));
-		const [selection, setSelection] = useState<typeof optionsWithDisabled>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -728,7 +733,9 @@ export const ReadonlyWithDisabledOption: Story = {
 
 export const ReadonlyWithDeselect: Story = {
 	render: () => {
-		const [selection, setSelection] = useState([picklistOptions[0]]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([
+			picklistOptions[0],
+		]);
 
 		return (
 			<Combobox
@@ -752,7 +759,7 @@ export const ReadonlyWithDeselect: Story = {
 // from the single-select `ReadonlyWithDeselect` story above.
 export const ReadonlyMultipleWithDeselect: Story = {
 	render: () => {
-		const [selection, setSelection] = useState([
+		const [selection, setSelection] = useState<ComboboxOption[]>([
 			picklistOptions[0],
 			picklistOptions[1],
 		]);
@@ -786,7 +793,7 @@ export const ReadonlyMultipleWithDeselect: Story = {
 // the assistive "selected" text alongside the option label.
 export const ReadonlyWithCustomMenuItem: Story = {
 	render: () => {
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -808,7 +815,9 @@ export const ReadonlyWithCustomMenuItem: Story = {
 
 export const ReadonlyDisabled: Story = {
 	render: () => {
-		const [selection, setSelection] = useState([picklistOptions[1]]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([
+			picklistOptions[1],
+		]);
 
 		return (
 			<Combobox
@@ -912,7 +921,7 @@ export const PopoverVariant: Story = {
 export const WithErrorState: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -947,7 +956,7 @@ export const WithErrorState: Story = {
 export const WithLoadingSpinner: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -979,7 +988,7 @@ export const WithLoadingSpinner: Story = {
 export const WithMenuSpinner: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -1014,7 +1023,7 @@ export const WithMenuSpinner: Story = {
 const EntityMenuItem = ({
 	option,
 }: {
-	option: { label: string; subTitle?: string; disabled?: boolean };
+	option: Pick<ComboboxItemOption, 'label' | 'subTitle' | 'disabled'>;
 }) => (
 	<span>
 		<span
@@ -1037,7 +1046,7 @@ const EntityMenuItem = ({
 export const WithCustomMenuItem: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -1079,7 +1088,7 @@ export const WithCustomMenuItemDisabledOption: Story = {
 			disabled: index === 1 || index === 2,
 		}));
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof optionsWithDisabled>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -1123,7 +1132,7 @@ export const WithDisabledOptions: Story = {
 			disabled: index === 1 || index === 3,
 		}));
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof optionsWithDisabled>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -1172,9 +1181,7 @@ export const WithDisabledOptionTooltip: Story = {
 			})
 		);
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<
-			typeof optionsWithDisabledTooltips
-		>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
@@ -1213,7 +1220,7 @@ export const WithDisabledOptionTooltip: Story = {
 // so some visuals may look off — this exercises the component's RTL wiring.
 export const RightToLeft: Story = {
 	render: () => {
-		const [selection, setSelection] = useState<typeof picklistOptions>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<UNSAFE_DirectionSettings.Provider value="rtl">
@@ -1241,7 +1248,7 @@ export const RightToLeft: Story = {
 export const PredefinedOptionsOnly: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
-		const [selection, setSelection] = useState<typeof accountsWithIcons>([]);
+		const [selection, setSelection] = useState<ComboboxOption[]>([]);
 
 		return (
 			<Combobox
