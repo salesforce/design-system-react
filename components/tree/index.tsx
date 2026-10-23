@@ -3,6 +3,8 @@ export { default as Tree } from './tree';
 export type { TreeProps } from './tree';
 export type {
 	TreeNode,
+	TreeBranchNode,
+	TreeItemNode,
 	FlattenedNode,
 	TreeAssistiveText,
 	TreeSelectData,
