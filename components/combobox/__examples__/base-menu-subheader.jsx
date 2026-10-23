@@ -24,38 +24,43 @@ const accounts = [
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '4',
 		label: 'Vandelay Industries',
 		subTitle: 'Account • San Francisco, CA',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '6',
 		label: 'Nakatomi Investments',
 		subTitle: 'Opportunity • Chicago, IL',
-		type: 'opportunity',
+		category: 'opportunity',
 	},
-	{ id: '7', label: 'Acme Landscaping', subTitle: '\u00A0', type: 'account' },
+	{
+		id: '7',
+		label: 'Acme Landscaping',
+		subTitle: '\u00A0',
+		category: 'account',
+	},
 	{
 		id: '8',
 		label: 'Acme Construction',
 		subTitle: 'Opportunity • Grand Marais, MN',
-		type: 'opportunity',
+		category: 'opportunity',
 	},
 ];
 
@@ -66,7 +71,7 @@ const accountsWithIcon = accounts.map((elem) => ({
 			<Icon
 				assistiveText={{ label: 'Account' }}
 				category="standard"
-				name={elem.type}
+				name={elem.category}
 			/>
 		),
 	},

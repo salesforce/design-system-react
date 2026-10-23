@@ -14,7 +14,7 @@ const accounts = [
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 ];
 

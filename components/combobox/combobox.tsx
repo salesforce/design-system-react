@@ -24,7 +24,12 @@ import Button from '../button';
 import Dialog from '../utilities/dialog';
 import InnerInput from '../input/private/inner-input';
 import InputIcon from '../icon/input-icon';
-import Menu, { type ComboboxOption } from './private/menu';
+import Menu, {
+	type ComboboxOption,
+	type ComboboxItemOption,
+	type ComboboxActionOption,
+	type ComboboxDeselectOption,
+} from './private/menu';
 import Label from '../forms/private/label';
 import Popover from '../popover';
 import SelectedListBox from '../pill-container/private/selected-listbox';
@@ -130,12 +135,11 @@ export interface ComboboxActionItem {
 }
 
 // A menu row built from a `ComboboxActionItem`. The original item is stored
-// under a module-private symbol, so consumer data in `options` (whose `type`
-// accepts any string and may carry arbitrary keys) can't impersonate one.
+// under a module-private symbol, so consumer data in `options` (which may come
+// from untyped JS and carry arbitrary keys) can't impersonate one.
 const ACTION_ITEM = Symbol('actionItem');
 
-type ActionItemRow = ComboboxOption & {
-	type: 'header' | 'footer';
+type ActionItemRow = ComboboxActionOption & {
 	[ACTION_ITEM]: ComboboxActionItem;
 };
 
@@ -154,9 +158,7 @@ const toActionItemRow = (
 	[ACTION_ITEM]: item,
 });
 
-export interface ComboboxProps {
-	/** Assistive text for accessibility */
-	assistiveText?: ComboboxAssistiveText;
+interface ComboboxBaseProps {
 	/** aria-describedby attribute */
 	'aria-describedby'?: string;
 	/** CSS classes for combobox container */
@@ -211,16 +213,13 @@ export interface ComboboxProps {
 	onRenderMenuItem?: React.ComponentType<{
 		assistiveText?: ComboboxAssistiveText;
 		selected: boolean;
-		option: ComboboxOption;
+		/** Custom renderers only receive selectable rows */
+		option: ComboboxItemOption | ComboboxDeselectOption;
 	}>;
-	/** Menu options */
-	options?: ComboboxOption[];
 	/** Action items shown below the options, such as "New Account" */
 	optionsAddItem?: ComboboxActionItem[];
 	/** Action items shown above the options, such as "Search in Accounts" */
 	optionsSearchEntity?: ComboboxActionItem[];
-	/** Popover component for popover variant */
-	popover?: ReactElement;
 	/** Whether only predefined options are allowed */
 	predefinedOptionsOnly?: boolean;
 	/** Whether field is required */
@@ -235,15 +234,40 @@ export interface ComboboxProps {
 	tooltipMenuItemDisabled?: ReactElement;
 	/** Input value (controlled) */
 	value?: string;
-	/** Combobox variant */
-	variant?: 'base' | 'inline-listbox' | 'popover' | 'readonly';
 	/** @deprecated Use menuItem instead */
 	menuItem?: React.ComponentType<{
 		assistiveText?: ComboboxAssistiveText;
 		selected: boolean;
-		option: ComboboxOption;
+		/** Custom renderers only receive selectable rows */
+		option: ComboboxItemOption | ComboboxDeselectOption;
 	}>;
 }
+
+/**
+ * `variant` decides where the menu content comes from: `options` for the
+ * listbox variants, or a custom `popover` dialog.
+ */
+export type ComboboxVariantProps =
+	| {
+			/** Listbox variants. Defaults to `base`. */
+			variant?: 'base' | 'inline-listbox' | 'readonly';
+			/** Assistive text for accessibility */
+			assistiveText?: ComboboxAssistiveText;
+			/** Menu options */
+			options: ComboboxOption[];
+			popover?: never;
+	  }
+	| {
+			/** Custom dialog content instead of a listbox */
+			variant: 'popover';
+			/** Assistive text for accessibility. `popoverLabel` labels the dialog. */
+			assistiveText: ComboboxAssistiveText & { popoverLabel: string };
+			options?: never;
+			/** Popover component rendered as the dialog */
+			popover: ReactElement;
+	  };
+
+export type ComboboxProps = ComboboxBaseProps & ComboboxVariantProps;
 
 // ===== Default Props =====
 
