@@ -289,7 +289,9 @@ class SplitViewListbox extends React.Component<
 					: [item, ...selection];
 			} else if (event.shiftKey) {
 				const [begin, end] = [
-					this.props.options.indexOf(this.state.currentSelectedItem as SplitViewListboxItem),
+					this.props.options.indexOf(
+						this.state.currentSelectedItem as SplitViewListboxItem
+					),
 					this.props.options.indexOf(item),
 				].sort();
 
@@ -378,7 +380,7 @@ class SplitViewListbox extends React.Component<
 								: sort.ascending}
 						</span>
 					</span>
-			  )
+				)
 			: null;
 	}
 
