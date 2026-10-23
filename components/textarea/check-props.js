@@ -32,6 +32,17 @@ if (process.env.NODE_ENV !== 'production') {
 				)}`
 			);
 		}
+
+		if (typeof props.maxLength === 'string') {
+			sunsetProperty(
+				COMPONENT,
+				props.maxLength,
+				'maxLength',
+				`\`maxLength\` as a string has been deprecated. Please pass a number instead. ${createDocUrl(
+					'maxLength'
+				)}`
+			);
+		}
 	};
 }
 

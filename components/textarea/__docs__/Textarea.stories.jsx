@@ -79,7 +79,7 @@ WithMaxLength.args = {
 	label: 'Limited Characters',
 	name: 'maxlength-textarea',
 	placeholder: 'Max 100 characters',
-	maxLength: '100',
+	maxLength: 100,
 };
 
 export const AssistiveTextOnly = Template.bind({});
