@@ -31,7 +31,7 @@ import {
 	ColorPickerEvents,
 } from './types';
 
-export interface ColorPickerProps {
+interface ColorPickerBaseProps {
 	/** Assistive text for accessibility */
 	assistiveText?: ColorPickerAssistiveText;
 	/** CSS classes for the color-picker container */
@@ -58,12 +58,6 @@ export interface ColorPickerProps {
 	labels?: ColorPickerLabels;
 	/** Popover position strategy */
 	menuPosition?: 'absolute' | 'overflowBoundaryElement' | 'relative';
-	/** Array of hex color values for swatch options */
-	swatchColors?: string[];
-	/** Which tab is visible when dialog opens (base variant only) */
-	defaultSelectedTab?: 'swatches' | 'custom';
-	/** Which tabs are present */
-	variant?: 'base' | 'swatches' | 'custom';
 	/** Current color in hexadecimal string */
 	value?: string;
 	/** Current working color in hexadecimal string */
@@ -86,6 +80,35 @@ export interface ColorPickerProps {
 	/** Callback when popover requests to open */
 	onRequestOpen?: () => void;
 }
+
+/**
+ * `variant` sets which tabs are present. `swatchColors` needs the swatch tab
+ * and `defaultSelectedTab` only applies when both tabs are present.
+ */
+export type ColorPickerVariantProps =
+	| {
+			/** Both the swatch and custom tabs */
+			variant?: 'base';
+			/** Array of hex color values for swatch options */
+			swatchColors?: string[];
+			/** Which tab is visible when dialog opens */
+			defaultSelectedTab?: 'swatches' | 'custom';
+	  }
+	| {
+			/** Only the swatch tab */
+			variant: 'swatches';
+			/** Array of hex color values for swatch options */
+			swatchColors?: string[];
+			defaultSelectedTab?: never;
+	  }
+	| {
+			/** Only the custom tab */
+			variant: 'custom';
+			swatchColors?: never;
+			defaultSelectedTab?: never;
+	  };
+
+export type ColorPickerProps = ColorPickerBaseProps & ColorPickerVariantProps;
 
 const defaultLabels: ColorPickerLabels = {
 	blueAbbreviated: 'B',
