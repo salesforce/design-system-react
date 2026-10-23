@@ -11,12 +11,16 @@
  * of limiting the re-render to only the node that changed.
  */
 
-import { TreeNode } from '../types';
+import { TreeBranchNode, TreeItemNode } from '../types';
 
-type TreeHashMap = Record<string | number, TreeNode & { nodes?: number[] }>;
+// Branches store child ids; `getNodes` resolves them to nodes.
+type TreeHashMapNode =
+	(Omit<TreeBranchNode, 'nodes'> & { nodes?: number[] }) | TreeItemNode;
+
+type TreeHashMap = Record<string | number, TreeHashMapNode>;
 
 // Base tree structure - food categories
-const base: TreeHashMap = {
+const base = {
 	0: {
 		id: 0,
 		nodes: [1, 2, 3, 7],
@@ -196,7 +200,7 @@ const base: TreeHashMap = {
 		type: 'item',
 		id: 33,
 	},
-};
+} satisfies TreeHashMap;
 
 // Initial state with some nodes expanded and selected
 const initialExpandedSelected: TreeHashMap = {
@@ -235,7 +239,7 @@ const generateLargeDataset = (): TreeHashMap => {
 	];
 
 	// Add new category branches to root
-	const rootNodes = [...(result[0].nodes || [])];
+	const rootNodes = [...base[0].nodes];
 
 	categories.forEach((category, catIndex) => {
 		const branchId = nextId++;
@@ -287,7 +291,7 @@ const generateLargeDataset = (): TreeHashMap => {
 		rootNodes.push(branchId);
 	}
 
-	result[0] = { ...result[0], nodes: rootNodes };
+	result[0] = { ...base[0], nodes: rootNodes };
 
 	return result;
 };

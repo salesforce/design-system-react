@@ -4,24 +4,37 @@
 
 import { ReactNode } from 'react';
 
-export interface TreeNode {
+interface TreeNodeBase {
 	/** Unique identifier for the node */
 	id: string | number;
 	/** Display text or content for the node */
 	label: ReactNode | string;
-	/** Node type - use 'branch' for expandable folders */
-	type: 'branch' | 'item' | string;
-	/** Whether the branch is expanded (for branch type only) */
-	expanded?: boolean;
 	/** Whether the node is currently selected */
 	selected?: boolean;
-	/** Child nodes (for branch type only) */
-	nodes?: TreeNode[];
 	/** Assistive text for screen readers (useful when label is not a string) */
 	assistiveText?: string;
-	/** Whether the node is in a loading state */
-	loading?: boolean;
 }
+
+/** An expandable folder node that can contain child nodes */
+export interface TreeBranchNode extends TreeNodeBase {
+	type: 'branch';
+	/** Whether the branch is expanded */
+	expanded?: boolean;
+	/** Whether the branch is loading its child nodes */
+	loading?: boolean;
+	/** Child nodes */
+	nodes?: TreeNode[];
+}
+
+/** A leaf node. Items cannot be expanded or contain child nodes. */
+export interface TreeItemNode extends TreeNodeBase {
+	type: 'item';
+	expanded?: never;
+	loading?: never;
+	nodes?: never;
+}
+
+export type TreeNode = TreeBranchNode | TreeItemNode;
 
 export interface FlattenedNode {
 	node: TreeNode;
