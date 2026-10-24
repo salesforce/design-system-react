@@ -239,4 +239,39 @@ describe('Accordion', () => {
 			expect(firstButton).toHaveAttribute('aria-expanded', 'true');
 		});
 	});
+
+	describe('Summary title', () => {
+		const renderPanel = (props) =>
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<Accordion>
+						<Panel
+							expanded={false}
+							id="panel"
+							onTogglePanel={() => {}}
+							{...props}
+						/>
+					</Accordion>
+				</IconSettings>
+			).container.querySelector('.slds-accordion__summary-action .slds-truncate');
+
+		it('uses a string summary as the title', () => {
+			expect(renderPanel({ summary: 'Summary' })).toHaveAttribute(
+				'title',
+				'Summary'
+			);
+		});
+
+		it('omits the title for a JSX summary', () => {
+			expect(
+				renderPanel({ summary: <strong>Summary</strong> })
+			).not.toHaveAttribute('title');
+		});
+
+		it('prefers the title prop over a JSX summary', () => {
+			expect(
+				renderPanel({ summary: <strong>Summary</strong>, title: 'Full' })
+			).toHaveAttribute('title', 'Full');
+		});
+	});
 });
