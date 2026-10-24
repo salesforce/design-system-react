@@ -170,9 +170,11 @@ const ButtonStateful = ({
 
 	const handleBlur = useCallback(
 		(e: FocusEvent<HTMLButtonElement> | MouseEvent<HTMLButtonElement>) => {
-			if (onBlur && 'relatedTarget' in e)
-				onBlur(e as FocusEvent<HTMLButtonElement>);
-			e.currentTarget.blur();
+			if (onBlur) onBlur(e as FocusEvent<HTMLButtonElement>);
+			// SLDS shows `slds-text-selected-focus` on `.slds-is-selected:focus`, so
+			// drop focus left behind by a mouse click. Keyboard focus is
+			// `:focus-visible` and stays put.
+			if (!e.currentTarget.matches(':focus-visible')) e.currentTarget.blur();
 		},
 		[onBlur]
 	);
