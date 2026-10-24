@@ -98,7 +98,12 @@ const AccordionPanel = ({
 						}}
 						variant="base"
 					>
-						<span className="slds-truncate" title={title || (summary as string)}>
+						<span
+							className="slds-truncate"
+							title={
+								title || (typeof summary === 'string' ? summary : undefined)
+							}
+						>
 							{summary}
 						</span>
 					</Button>
