@@ -6,6 +6,7 @@ import Alert from '../';
 import AlertContainer from '../container';
 import Icon from '../../icon';
 import IconSettings from '../../icon-settings';
+import DOMElementFocus from '../../../utilities/dom-element-focus';
 
 class DemoComponent extends Component {
 	constructor(props) {
@@ -82,6 +83,55 @@ describe('SLDSAlert', () => {
 			expect(container.querySelector('.slds-notify')).toHaveStyle({
 				backgroundColor: 'rgb(18, 49, 35)',
 			});
+		});
+	});
+
+	describe('Focus restore on unmount', () => {
+		const addButton = () => {
+			const button = document.createElement('button');
+			document.body.appendChild(button);
+			return button;
+		};
+
+		it('does not take focus stored by another component when not dismissible', () => {
+			const opener = addButton();
+			const current = addButton();
+			// Simulate another component (e.g. an open Popover) storing its opener.
+			opener.focus();
+			DOMElementFocus.storeActiveElement();
+			current.focus();
+
+			const { unmount } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Alert labels={{ heading: 'Heading' }} variant="info" />
+				</IconSettings>
+			);
+			unmount();
+
+			expect(document.activeElement).toBe(current);
+
+			// Clear the shared stored element so it does not leak into other tests.
+			DOMElementFocus.returnFocusToStoredElement();
+			opener.remove();
+			current.remove();
+		});
+
+		it('returns focus to the previously focused element when dismissible', () => {
+			const opener = addButton();
+			opener.focus();
+
+			const { container, unmount } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Alert dismissible labels={{ heading: 'Heading' }} variant="info" />
+				</IconSettings>
+			);
+			expect(document.activeElement).toBe(
+				container.querySelector('.slds-notify__close')
+			);
+			unmount();
+
+			expect(document.activeElement).toBe(opener);
+			opener.remove();
 		});
 	});
 });
