@@ -120,7 +120,7 @@
     "warning": "^4.0.3"
   },
   "peerDependencies": {
-    "@salesforce-ux/design-system": "2.25.0-alpha.2",
+    "@salesforce-ux/design-system": "^2.25.0-alpha.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

@@ -302,6 +302,7 @@ export default MyComponent;
 
 ### State & Coupling Principles
 
+- **Data is controlled; ephemeral UI state may be uncontrolled.** Anything that is app state (values, `checked`, dates, and any selection that drives other parts of the UI, such as the selected tab, row, or list item) is a required controlled prop with an `onChange` — no `default*` twin, no internal copy. Ephemeral UI state (`isOpen`, current carousel panel, hover/focus) may live inside the component (selection that is only a visual state of a menu, such as `aria-selected` on a highlighted option, also qualifies), with an optional controlled prop and optional `default*` prop. Rule of thumb: if the value would reasonably be stored in app (Redux) state, it is controlled. Decide controlled-vs-uncontrolled by whether the value prop is `!== undefined`, never by whether a callback was passed.
 - **Limit component state.** If the parent application's state can handle it via a prop, don't introduce local state. New components should start out controlled and only add internal (uncontrolled) state if a real use case requires it.
 - **One stateful component, many stateless sub-components.** Prefer a single top-level component that owns state, with child components driven purely by props (e.g. a `Tree` holds state, a `TreeNode` does not; frequently reused primitives like badges, pills, and icons generally shouldn't have state).
 - **Group related form elements together.** Variants of the same underlying element (e.g. checkbox styles) belong in one component rather than duplicated across components, so fixes in one visual variant carry over to the others.
@@ -326,6 +327,8 @@ export default MyComponent;
 | `onRequest*`          | Pre-state-change callbacks | `onRequestClose`, `onRequestOpen` |
 | `*Ref`                | Ref callbacks              | `inputRef`, `buttonRef`           |
 | `className*`          | Additional class names     | `className`, `classNameContainer` |
+
+**Exception:** props that pass straight through to a DOM element keep their HTML attribute name and take no `is*`/`has*` prefix (`disabled`, `checked`, `required`, `readOnly`, `hidden`). The prefix applies to library-defined booleans such as `isDismissible` or `isInverse`.
 
 ### Callback Conventions
 
@@ -417,6 +420,8 @@ Independently optional booleans (`isPopover?: boolean; isReadonly?: boolean; ...
 ### Named Props Over Positional Contracts
 
 Expose behavior-determining structure through named props, not through the order of `children` (e.g. `<Tabs><Tab /><Tab /></Tabs>` where position implies meaning). Positional contracts are strongly connascent — reordering children silently changes behavior, and you can't deprecate one "slot" independently of the others. Prefer named props (`primaryTab`, `items={[...]}`) or named slot props (`renderHeader`) so each piece of the contract can evolve on its own.
+
+**Exception — library-component children.** A parent may read or `cloneElement` props on its children when every accepted child is an existing library component with typed props (e.g. `Tabs` → `TabsPanel`, `RadioGroup` → `Radio`, `Accordion` → `AccordionPanel`). Type the accepted children (`ReactElement<XProps>` or exported subcomponents), keep injected props out of the child's public type, and match by component reference rather than `displayName`. When the parent merges a child element's props with its own, the consumer's props win when present. Slots that accept arbitrary consumer elements (a popover or tooltip trigger, a custom menu trigger) are not covered; use a named prop, render prop, or slot instead.
 
 ### Decoupled Interactive Behavior
 
@@ -532,7 +537,7 @@ This library should include only components that have an approved pattern in [Sa
 
 ### Avoid Inline Styles and Non-SLDS Classes
 
-Prefer existing SLDS CSS over inline styles or bespoke classes. If SLDS is missing something you need, file a bug against the [SLDS repository](https://github.com/salesforce-ux/design-system) (or the internal bug system) rather than working around it locally — some rare or temporary exceptions are approved case by case. When inline styles are unavoidable, use the design tokens shipped in this library (see [`utilities/design-tokens`](https://github.com/salesforce/design-system-react/blob/master/utilities/design-tokens/README.md)) rather than hardcoded values.
+Prefer existing SLDS CSS over inline styles or bespoke classes. If SLDS is missing something you need, file a bug against the [SLDS repository](https://github.com/salesforce-ux/design-system) (or the internal bug system) rather than working around it locally — some rare or temporary exceptions are approved case by case. When inline styles are unavoidable, use SLDS 2 global styling hooks (`var(--slds-g-*)`) rather than hardcoded values, so the style follows the active theme and dark mode.
 
 ---
 
