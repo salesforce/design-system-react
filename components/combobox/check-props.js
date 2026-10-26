@@ -33,6 +33,18 @@ if (process.env.NODE_ENV !== 'production') {
 			'menuItemVisibleLength',
 			createDocUrl('menuItemVisibleLength')
 		);
+		['optionsSearchEntity', 'optionsAddItem'].forEach((propName) => {
+			const itemWithOnClick = (props[propName] || []).find(
+				(item) => item && item.onClick
+			);
+			deprecatedProperty(
+				COMPONENT,
+				itemWithOnClick && itemWithOnClick.onClick,
+				`${propName}[].onClick`,
+				'events.onSelectActionItem',
+				`Until then, if both are set, both are called. ${createDocUrl('events')}`
+			);
+		});
 		/* eslint-enable max-len */
 
 		if (props.variant !== 'popover') {

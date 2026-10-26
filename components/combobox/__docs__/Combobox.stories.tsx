@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 
 import Combobox from '../index';
 import Checkbox from '../../checkbox';
@@ -451,6 +452,7 @@ export const InlineMultiple: Story = {
 
 // Adds `optionsSearchEntity` (search-elsewhere shortcuts) and
 // `optionsAddItem` (create-new-entity shortcut) footer rows to the menu.
+// Choosing one fires `events.onSelectActionItem`, not `onSelect`.
 export const SearchAndAddEntities: Story = {
 	render: () => {
 		const [inputValue, setInputValue] = useState('');
@@ -514,6 +516,7 @@ export const SearchAndAddEntities: Story = {
 						setSelection(newSelection);
 						setInputValue('');
 					},
+					onSelectActionItem: action('onSelectActionItem'),
 					onRequestRemoveSelectedOption: (
 						_event,
 						{ selection: newSelection }
