@@ -7,17 +7,17 @@
 
 ## Status Snapshot (2026-10-11)
 
-| Area              | State                                     | Notes                                                                                                                        |
-| ----------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Component sources | **TypeScript**                            | `components/utilities/dialog/index.jsx` is the last `.jsx` source; the rest of the `.jsx` files are sample data              |
-| Positioning       | **`@floating-ui/dom`**                    | `popper.js` is gone from dependencies; `utilities/dialog-helpers.js` still adapts Floating UI output to the old popper shape |
-| TypeScript        | **`tsc --noEmit` clean**, `strict: true`  | `.d.ts` files are generated into `dist/types`                                                                                |
-| Storybook         | **10**, CSF stories                       | 3 component folders have no story: `forms`, `grid`, `menu-list`                                                              |
-| Tests             | **48 Vitest files**                       | jsdom `unit` project plus a Playwright `browser` project; story HTML snapshots cover every non-portal story                  |
-| Lint              | **0 errors / 223 warnings**               | Errors block CI; warnings are the tracked migration backlog                                                                  |
-| Toolchain         | Vite 8, Vitest 4, ESLint 10, Storybook 10 | Node.js 24 (`.nvmrc`)                                                                                                        |
-| SLDS 2 CSS        | **npm dependency**                        | `@salesforce-ux/design-system-2` installs with the package; consumers add the stylesheet themselves (see the README)         |
-| Publishing        | **GitHub Release → npm, `alpha` tag**     | `.github/workflows/npm-publish.yml`; alpha.3 and alpha.4 published from it                                                   |
+| Area              | State                                     | Notes                                                                                                                                     |
+| ----------------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Component sources | **TypeScript**                            | `components/utilities/dialog/index.jsx` is the last `.jsx` source; the rest of the `.jsx` files are sample data                           |
+| Positioning       | **`@floating-ui/dom`**                    | `popper.js` is gone; `computeFloatingData` in `utilities/dialog` still reshapes Floating UI output into the old popper shape              |
+| TypeScript        | **`tsc --noEmit` clean**, `strict: true`  | `.d.ts` files are generated into `dist/types`                                                                                             |
+| Storybook         | **10**, CSF stories                       | 2 component folders have no story: `grid`, `menu-list`                                                                                    |
+| Tests             | **48 Vitest files**                       | jsdom `unit` project plus a Playwright `browser` project; story HTML snapshots cover non-portal stories in a top-level `__docs__/` folder |
+| Lint              | **0 errors / 223 warnings**               | Errors block CI; warnings are the tracked migration backlog                                                                               |
+| Toolchain         | Vite 8, Vitest 4, ESLint 10, Storybook 10 | Node.js 24 (`.nvmrc`)                                                                                                                     |
+| SLDS 2 CSS        | **npm dependency**                        | `@salesforce-ux/design-system-2` installs with the package; consumers add the stylesheet themselves (see the README)                      |
+| Publishing        | **GitHub Release → npm, `alpha` tag**     | `.github/workflows/npm-publish.yml`; alpha.3 and alpha.4 published from it                                                                |
 
 ## Prioritized Plan
 
@@ -32,7 +32,8 @@
 - [ ] Write a 0.10.x → v11 migration guide (removed components, `DataTable` rename,
       React 19, module format).
 - [ ] Publish hosted docs for v11. `react.lightningdesignsystem.com` redirects to
-      GitHub, and no Storybook is deployed for `master`.
+      GitHub, and there is no public v11 documentation site (Chromatic builds Storybook
+      on push, but only for review).
 - [ ] Use one tag format for releases. `11.0.0-alpha.4` has no `v` prefix, unlike the
       earlier `v11.0.0-alpha.*` tags.
 - [ ] At GA: change `publishConfig.tag` from `alpha` to `latest` and update the
@@ -912,15 +913,20 @@ ascending, descending, selectAllRows, selectRow)` but the call passes `selectAll
 
 **Component folders with no Storybook story:**
 
-- [ ] `forms`
 - [ ] `grid`
 - [ ] `menu-list`
 
 **Component folders with no Vitest test** (template: `components/button/__tests__`):
 
-- [ ] `badge`, `breadcrumb`, `checkbox`, `dynamic-icon`, `files`, `forms`, `grid`,
-      `icon-settings`, `menu-list`, `panel`, `portal-settings`, `progress-bar`,
-      `progress-ring`, `radio`, `scoped-notification`, `trial-bar`
+- [ ] `badge`, `breadcrumb`, `checkbox`, `dynamic-icon`, `files`, `grid`, `icon-settings`,
+      `menu-list`, `panel`, `portal-settings`, `progress-bar`, `progress-ring`, `radio`,
+      `scoped-notification`, `trial-bar`
+
+**Stories missing from the HTML snapshot suite:** the snapshot test only globs
+`__docs__/*.stories.*`, so these nested stories are rendered by Storybook but not snapshotted:
+
+- [ ] `components/forms/input/__docs__/inline/InlineInput.stories.jsx`
+- [ ] `components/input/__docs__/search/SearchInput.stories.jsx`
 
 **Story/feature gaps vs. SLDS 2** — from the component-by-component comparison in
 [`docs/superpowers/specs/2026-08-07-slds2-vs-react-comparison.md`](docs/superpowers/specs/2026-08-07-slds2-vs-react-comparison.md).
@@ -945,14 +951,14 @@ Ordered by leverage; skip anything filed "Legacy Components" upstream.
 enhancement issues, not story fill-ins:
 
 - [ ] `vertical-navigation` — badge / compact / icon / shaded / overflow / validation variants.
-- [ ] `visual-picker` — small size tier, disabled state, non-coverable content.
+- [ ] `visual-picker` — small size tier, disabled state.
 - [ ] `date-picker` — date-**range** selection (SLDS 2 is a dual single/range picker; React is single-only).
 - [ ] `input` — native `type` variants (checkbox / toggle / range / color / file).
 
 ### P3 — Cleanup
 
 - [ ] Convert `components/utilities/dialog/index.jsx` to `.tsx`, and drop the
-      popper-shaped adapter in `utilities/dialog-helpers.js`.
+      popper-shaped adapter (`computeFloatingData`, consumed by `utilities/dialog-helpers.js`).
 - [ ] Delete the vendored `assets/styles/slds-plus.css`; nothing outside planning docs
       references it.
 - [ ] Work down the lint warning backlog.
@@ -1007,7 +1013,7 @@ is the path — evaluated and deferred, not precluded.
 **Good first issues (P2 template-driven work):**
 
 - Add a Vitest + RTL test for a component that lacks one (template: `components/button/__tests__`)
-- Add a CSF story for `forms`, `grid`, or `menu-list`
+- Add a CSF story for `grid` or `menu-list`
 
 ## Timeline
 
