@@ -12,9 +12,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build && npm run build:types && npm run build:shims",
+    "build": "tsc --noEmit && vite build && npm run build:types && npm run build:shims && npm run test:exports",
     "build:types": "tsc -p tsconfig.dts.json",
     "build:shims": "node scripts/generate-entry-shims.mjs",
+    "test:exports": "node scripts/check-package-exports.mjs",
     "preview": "vite preview",
     "test": "vitest",
     "test:unit": "vitest --project unit",
