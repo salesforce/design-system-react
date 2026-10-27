@@ -123,6 +123,8 @@ const handleKeyDownLeft = (event: React.KeyboardEvent, props: ItemProps) => {
 	const parent = props.parent as TreeNode;
 	const index = findIndex(nodes, { id: parent?.id });
 	if (index !== -1) {
+		// `select: true` marks a move to the parent node, not an expand/collapse request.
+		// Tree routes it to `onSelect` (or to the deprecated `onExpandClick`).
 		props.onExpand({
 			event,
 			data: {
@@ -142,10 +144,18 @@ const handleKeyDownEnter = (event: React.KeyboardEvent, props: ItemProps) => {
 const handleKeyDown = (event: React.KeyboardEvent, props: ItemProps) => {
 	mapKeyEventCallbacks(event, {
 		callbacks: {
-			[KEYS.DOWN]: { callback: (evt: React.KeyboardEvent) => handleKeyDownDown(evt, props) },
-			[KEYS.UP]: { callback: (evt: React.KeyboardEvent) => handleKeyDownUp(evt, props) },
-			[KEYS.LEFT]: { callback: (evt: React.KeyboardEvent) => handleKeyDownLeft(evt, props) },
-			[KEYS.ENTER]: { callback: (evt: React.KeyboardEvent) => handleKeyDownEnter(evt, props) },
+			[KEYS.DOWN]: {
+				callback: (evt: React.KeyboardEvent) => handleKeyDownDown(evt, props),
+			},
+			[KEYS.UP]: {
+				callback: (evt: React.KeyboardEvent) => handleKeyDownUp(evt, props),
+			},
+			[KEYS.LEFT]: {
+				callback: (evt: React.KeyboardEvent) => handleKeyDownLeft(evt, props),
+			},
+			[KEYS.ENTER]: {
+				callback: (evt: React.KeyboardEvent) => handleKeyDownEnter(evt, props),
+			},
 		},
 	});
 };
@@ -222,4 +232,3 @@ const Item: React.FC<ItemProps> = (props) => {
 Item.displayName = TREE_ITEM;
 
 export default Item;
-

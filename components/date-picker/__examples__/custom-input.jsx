@@ -20,10 +20,20 @@ class Example extends React.Component {
 				}}
 				input={<Input placeholder="With custom Input" />}
 				isOpen={this.state.isOpen}
-				onRequestClose={() => {
+				onRequestClose={(event, data) => {
+					if (this.props.action) {
+						this.props.action('onRequestClose')(event, data);
+					} else if (console) {
+						console.log('onRequestClose', event, data);
+					}
 					this.setState({ isOpen: false });
 				}}
-				onRequestOpen={() => {
+				onRequestOpen={(event, data) => {
+					if (this.props.action) {
+						this.props.action('onRequestOpen')(event, data);
+					} else if (console) {
+						console.log('onRequestOpen', event, data);
+					}
 					this.setState({ isOpen: true });
 				}}
 				onChange={(event, data) => {

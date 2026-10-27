@@ -45,7 +45,7 @@ if (documentDefined) {
 let currentOpenPopover: {
 	handleClose: (
 		event: MouseEvent | KeyboardEvent | undefined,
-		data: { trigger: string; id: string }
+		data: PopoverRequestCloseData
 	) => void;
 	getId: () => string;
 } | null = null;
@@ -70,7 +70,8 @@ export type PopoverAlign =
 /**
  * Popover position options
  */
-export type PopoverPosition = 'absolute' | 'overflowBoundaryElement' | 'relative';
+export type PopoverPosition =
+	'absolute' | 'overflowBoundaryElement' | 'relative';
 
 /**
  * Popover variant options
@@ -88,6 +89,43 @@ export type PopoverVariant =
  */
 export interface PopoverAssistiveText {
 	closeButton?: string;
+}
+
+/**
+ * What caused `onRequestClose` to fire:
+ * * `cancel`: the close button was clicked or Escape was pressed
+ * * `clickOutside`: a click landed outside the popover
+ * * `mouseLeave`: the mouse left the trigger/popover (`openOn` `hover`/`hybrid`) and `hoverCloseDelay` elapsed
+ * * `newPopover`: another Popover opened (only one can be open at a time)
+ * * `triggerClick`: the trigger was clicked while the popover was open
+ */
+export type PopoverRequestCloseTrigger =
+	'cancel' | 'clickOutside' | 'mouseLeave' | 'newPopover' | 'triggerClick';
+
+/**
+ * Data passed to `onRequestClose`
+ */
+export interface PopoverRequestCloseData {
+	/** What caused the close request */
+	trigger: PopoverRequestCloseTrigger;
+	/** HTML id of the popover being closed. Only present when `trigger` is `newPopover`. */
+	id?: string;
+}
+
+/**
+ * Data passed to `onOpen`
+ */
+export interface PopoverOpenData {
+	/** The rendered popover dialog element */
+	portal?: HTMLElement;
+}
+
+/**
+ * Data passed to `onClose`
+ */
+export interface PopoverCloseData {
+	/** `true` when the popover dialog is closing because it is being unmounted */
+	componentWillUnmount: boolean;
 }
 
 /**
@@ -142,11 +180,8 @@ export interface PopoverProps {
 	offset?: string;
 	/** Click handler */
 	onClick?: (event: MouseEvent) => void;
-	/** Close callback */
-	onClose?: (
-		event: MouseEvent | KeyboardEvent | undefined,
-		data: { componentWillUnmount?: boolean }
-	) => void;
+	/** Called after the popover dialog has closed (unmounted). There is no triggering event, so `event` is `undefined`. */
+	onClose?: (event: undefined, data: PopoverCloseData) => void;
 	/** Focus handler */
 	onFocus?: (event: FocusEvent) => void;
 	/** Key down handler */
@@ -157,12 +192,15 @@ export interface PopoverProps {
 	onMouseEnter?: (event: MouseEvent) => void;
 	/** Mouse leave handler */
 	onMouseLeave?: (event: MouseEvent) => void;
-	/** Open callback */
-	onOpen?: (event?: unknown, data?: { portal?: HTMLElement }) => void;
-	/** Close request callback */
+	/** Called after the popover dialog has opened and rendered. There is no triggering event, so `event` is `undefined`. */
+	onOpen?: (event: undefined, data: PopoverOpenData) => void;
+	/**
+	 * Called when the popover requests to close. `data.trigger` says why. `event` is the triggering
+	 * click or key event, or `undefined` when there is none (`mouseLeave` timer, `newPopover`).
+	 */
 	onRequestClose?: (
 		event: MouseEvent | KeyboardEvent | undefined,
-		data: { trigger?: string }
+		data: PopoverRequestCloseData
 	) => void;
 	/** Custom target element getter */
 	onRequestTargetElement?: () => HTMLElement | null;
@@ -286,7 +324,7 @@ const Popover = ({
 	// Handle dialog close (when unmounted)
 	const handleDialogClose = useCallback(
 		(
-			event?: React.MouseEvent | React.KeyboardEvent | MouseEvent | KeyboardEvent,
+			_event?: React.SyntheticEvent,
 			data?: { componentWillUnmount?: boolean }
 		) => {
 			const componentWillUnmount = data?.componentWillUnmount || false;
@@ -296,21 +334,31 @@ const Popover = ({
 			}
 
 			if (onClose) {
-				onClose(event, { componentWillUnmount });
+				onClose(undefined, { componentWillUnmount });
 			}
 		},
 		[id, onClose]
 	);
 
+	// Handle dialog open (after it has rendered)
+	const handleDialogOpen = useCallback(
+		(_event?: unknown, data?: { portal?: HTMLElement }) => {
+			if (onOpen) {
+				onOpen(undefined, { portal: data?.portal });
+			}
+		},
+		[onOpen]
+	);
+
 	// Handle close
 	const handleClose = useCallback(
 		(
-			event?: MouseEvent | KeyboardEvent,
-			data?: { trigger?: string }
+			event: MouseEvent | KeyboardEvent | undefined,
+			data: PopoverRequestCloseData
 		) => {
 			if (isOpen) {
 				if (onRequestClose) {
-					onRequestClose(event, data || {});
+					onRequestClose(event, data);
 				}
 
 				if (currentOpenPopover?.getId() === id) {
@@ -324,6 +372,13 @@ const Popover = ({
 		[isOpen, id, onRequestClose]
 	);
 
+	// Latest `handleClose`, so the "close the other open popover" path does not call a stale
+	// closure from when this popover opened (whose `isOpen` was still `false`).
+	const handleCloseRef = useRef(handleClose);
+	useEffect(() => {
+		handleCloseRef.current = handleClose;
+	}, [handleClose]);
+
 	// Handle open
 	const handleOpen = useCallback(() => {
 		if (!isOpen) {
@@ -336,13 +391,13 @@ const Popover = ({
 			}
 
 			currentOpenPopover = {
-				handleClose: (event, data) => handleClose(event as MouseEvent | KeyboardEvent, data),
+				handleClose: (event, data) => handleCloseRef.current(event, data),
 				getId: () => id,
 			};
 
 			setInternalIsOpen(true);
 		}
-	}, [isOpen, id, handleClose]);
+	}, [isOpen, id]);
 
 	// Handle cancel (close button or escape)
 	const handleCancel = useCallback(
@@ -385,7 +440,7 @@ const Popover = ({
 		(event: MouseEvent) => {
 			if (isOpen) {
 				isClosingRef.current = setTimeout(() => {
-					handleClose();
+					handleClose(undefined, { trigger: 'mouseLeave' });
 				}, hoverCloseDelay);
 			}
 
@@ -402,7 +457,7 @@ const Popover = ({
 			if (!isOpen) {
 				handleOpen();
 			} else {
-				handleClose(event);
+				handleClose(event, { trigger: 'triggerClick' });
 			}
 
 			if (onClick) {
@@ -453,7 +508,8 @@ const Popover = ({
 						handleClick: (e: MouseEvent) => handleClick(e),
 						keyCode: event.keyCode,
 						eventTarget: event.target,
-						toggleOpen: toggleOpenFromKeyboard,
+						// keyboardNavigableDialog calls `toggleOpen()` without the event; pass it through
+						toggleOpen: () => toggleOpenFromKeyboard(event),
 						trigger: triggerRef.current,
 					});
 				}
@@ -470,7 +526,12 @@ const Popover = ({
 		(shouldShow: boolean) => {
 			if (typeof overlayProp === 'function' && documentDefined) {
 				overlayProp(shouldShow, overlay);
-			} else if (overlayProp && shouldShow && !overlayRef.current && documentDefined) {
+			} else if (
+				overlayProp &&
+				shouldShow &&
+				!overlayRef.current &&
+				documentDefined
+			) {
 				overlayRef.current = overlay;
 				document.querySelector('body')?.appendChild(overlay);
 			} else if (!shouldShow && overlayRef.current?.parentNode) {
@@ -482,16 +543,21 @@ const Popover = ({
 	);
 
 	// Container ref callback
-	const setContainerRef = useCallback((component: HTMLDivElement | null) => {
-		(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current = component;
-		if (component && !inputRendered) {
-			setInputRendered(true);
-		}
-	}, [inputRendered]);
+	const setContainerRef = useCallback(
+		(component: HTMLDivElement | null) => {
+			(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current =
+				component;
+			if (component && !inputRendered) {
+				setInputRendered(true);
+			}
+		},
+		[inputRendered]
+	);
 
 	// Dialog ref callback
 	const setMenuRef = useCallback((component: HTMLElement | null) => {
-		(dialogRef as React.MutableRefObject<HTMLElement | null>).current = component;
+		(dialogRef as React.MutableRefObject<HTMLElement | null>).current =
+			component;
 	}, []);
 
 	// Cleanup on unmount
@@ -515,13 +581,19 @@ const Popover = ({
 		const hasThemedHeader = variant === 'error' || variant === 'warning';
 		const hasDefinedHeader = heading || hasThemedHeader;
 
-		if (!hasDefinedHeader || variant === 'walkthrough-action' || variant === 'feature') {
+		if (
+			!hasDefinedHeader ||
+			variant === 'walkthrough-action' ||
+			variant === 'feature'
+		) {
 			return null;
 		}
 
 		const headerIcon = {
 			error: <Icon category="utility" name="error" size="x-small" inverse />,
-			warning: <Icon category="utility" name="warning" size="x-small" inverse />,
+			warning: (
+				<Icon category="utility" name="warning" size="x-small" inverse />
+			),
 		};
 
 		if (hasThemedHeader) {
@@ -585,7 +657,12 @@ const Popover = ({
 					<div className="slds-media">
 						<div className="slds-media__figure">
 							{variant === 'walkthrough-action' ? (
-								<Icon category="utility" name="touch_action" size="small" inverse />
+								<Icon
+									category="utility"
+									name="touch_action"
+									size="small"
+									inverse
+								/>
 							) : (
 								icon
 							)}
@@ -689,9 +766,8 @@ const Popover = ({
 				context={context}
 				hasStaticAlignment={hasStaticAlignment}
 				offset={offset}
-				onCancel={handleClose}
 				onClose={handleDialogClose}
-				onOpen={onOpen}
+				onOpen={handleDialogOpen}
 				onKeyDown={handleKeyDown}
 				onMouseEnter={openOn === 'hover' ? handleMouseEnter : undefined}
 				onMouseLeave={openOn === 'hover' ? handleMouseLeave : undefined}
@@ -746,15 +822,22 @@ const Popover = ({
 				onClick:
 					openOn === 'click' || openOn === 'hybrid'
 						? (event: MouseEvent) => {
-								handleClick(event, childProps.onClick as (e: MouseEvent) => void);
-						  }
+								handleClick(
+									event,
+									childProps.onClick as (e: MouseEvent) => void
+								);
+							}
 						: childProps.onClick,
 				onFocus: openOn === 'hover' ? handleFocus : undefined,
 				onMouseDown,
 				onMouseEnter:
-					openOn === 'hover' || openOn === 'hybrid' ? handleMouseEnter : undefined,
+					openOn === 'hover' || openOn === 'hybrid'
+						? handleMouseEnter
+						: undefined,
 				onMouseLeave:
-					openOn === 'hover' || openOn === 'hybrid' ? handleMouseLeave : undefined,
+					openOn === 'hover' || openOn === 'hybrid'
+						? handleMouseLeave
+						: undefined,
 				tabIndex: (childProps.tabIndex as number) || 0,
 			};
 			clonedTrigger = React.cloneElement(child, triggerProps);
@@ -783,4 +866,3 @@ const Popover = ({
 Popover.displayName = POPOVER;
 
 export default Popover;
-

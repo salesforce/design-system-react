@@ -51,7 +51,7 @@ export interface MenuListProps {
 	/**
 	 * Triggered when a list item is selected (via mouse or keyboard).
 	 */
-	onSelect?: (index: number) => void;
+	onSelect?: (index: number, event?: React.MouseEvent) => void;
 	/**
 	 * An array of items to render in the list.
 	 */

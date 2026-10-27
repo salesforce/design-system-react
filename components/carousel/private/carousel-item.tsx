@@ -15,7 +15,7 @@ import {
 import Button from '../../button';
 
 import { CAROUSEL_ITEM } from '../../../utilities/constants';
-import { type CarouselItemData } from '../index';
+import { type CarouselRenderItemData } from '../index';
 
 export interface CarouselItemProps {
 	/**
@@ -71,9 +71,9 @@ export interface CarouselItemProps {
 	 */
 	onFocus?: (event: FocusEvent) => void;
 	/**
-	 * Accepts a custom carousel item rendering function
+	 * Accepts a custom carousel item rendering function. Called with `{ item }`.
 	 */
-	onRenderItem?: (item: CarouselItemData) => ReactElement;
+	onRenderItem?: (data: CarouselRenderItemData) => ReactElement;
 	/**
 	 * Index of the panel this item belongs to, to be used when associating it to an indicator
 	 */
@@ -117,7 +117,10 @@ const CarouselItem = ({
 
 	return (
 		<div
-			id={getPanelId?.({ carouselId, itemId: id } as { carouselId: string; itemId: string })}
+			id={getPanelId?.({ carouselId, itemId: id } as {
+				carouselId: string;
+				itemId: string;
+			})}
 			className="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal"
 			role="tabpanel"
 			aria-hidden="false"
@@ -129,9 +132,6 @@ const CarouselItem = ({
 			}}
 		>
 			{onRenderItem ? (
-				// NOTE: the original JS invoked `onRenderItem({ item: {...} })` even
-				// though the declared type is `(item: CarouselItemData) => ReactElement`.
-				// Behavior preserved verbatim; the argument shape is cast through.
 				onRenderItem({
 					item: {
 						buttonLabel,
@@ -150,7 +150,7 @@ const CarouselItem = ({
 						src,
 						getPanelId,
 					},
-				} as unknown as CarouselItemData)
+				})
 			) : (
 				<a
 					className="slds-carousel__panel-action slds-text-link_reset"

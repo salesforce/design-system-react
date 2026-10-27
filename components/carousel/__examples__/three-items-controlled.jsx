@@ -117,7 +117,7 @@ class Example extends React.Component {
 								eventName: 'On Request Autoplay Toggle',
 								data,
 							});
-							this.setState({ isAutoplayOn: !data.isAutoplayOn });
+							this.setState({ isAutoplayOn: data.isAutoplayOn });
 						}}
 						onRequestPanelChange={(event, data) => {
 							log({

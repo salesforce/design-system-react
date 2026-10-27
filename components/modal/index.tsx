@@ -12,6 +12,7 @@ import React, {
 	CSSProperties,
 	ReactNode,
 	MouseEvent,
+	KeyboardEvent,
 } from 'react';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
@@ -39,6 +40,29 @@ export interface ModalAssistiveText {
 	closeButton?: string;
 }
 
+/**
+ * What caused a Modal close request:
+ * - `'close-button'`: the header close button was clicked
+ * - `'escape'`: the Escape key was pressed
+ * - `'click-outside'`: a click landed outside the modal container (on the backdrop area)
+ */
+export type ModalRequestCloseTrigger =
+	'close-button' | 'escape' | 'click-outside';
+
+/**
+ * Data passed to `onRequestClose`
+ */
+export interface ModalRequestCloseData {
+	/** What caused the close request */
+	trigger: ModalRequestCloseTrigger;
+}
+
+/**
+ * Event passed to `onRequestClose`: the click (close button / outside click) or
+ * keydown (Escape) that caused the request
+ */
+export type ModalRequestCloseEvent = MouseEvent | KeyboardEvent;
+
 export interface ModalProps {
 	/** Vertical alignment of Modal. */
 	align?: ModalAlign;
@@ -62,8 +86,15 @@ export interface ModalProps {
 	disableClose?: boolean;
 	/** If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to !disableClose. */
 	dismissOnClickOutside?: boolean;
-	/** Callback to fire with Modal is dismissed */
-	onRequestClose?: () => void;
+	/**
+	 * Callback to fire when the Modal requests to be dismissed. Receives the triggering
+	 * click or keydown event and `data.trigger`: `'close-button'`, `'escape'`, or `'click-outside'`.
+	 * Not called when `disableClose` (or `dismissOnClickOutside: false` for outside clicks) prevents it.
+	 */
+	onRequestClose?: (
+		event: ModalRequestCloseEvent,
+		data: ModalRequestCloseData
+	) => void;
 	/** Modal footer content, typically buttons. */
 	footer?: ReactNode | ReactNode[];
 	/** Custom CSS classes for the footer. */
@@ -86,10 +117,14 @@ export interface ModalProps {
 	size?: ModalSize;
 	/** Content underneath the heading in the modal header. */
 	tagline?: ReactNode;
+	/** Content underneath the title in the modal header. @deprecated Use heading instead */
+	title?: ReactNode;
 	/** Text heading at the top of a modal. */
 	heading?: ReactNode;
 	/** Allows adding additional notifications within the modal. */
 	toast?: ReactNode;
+	/** @deprecated Use assistiveText.closeButton instead */
+	closeButtonAssistiveText?: string;
 }
 
 const defaultAssistiveText: ModalAssistiveText = {
@@ -132,8 +167,10 @@ const Modal: React.FC<ModalProps> = ({
 	prompt,
 	size,
 	tagline,
+	title,
 	heading,
 	toast,
+	closeButtonAssistiveText,
 }) => {
 	// State
 	const [returnFocusTo, setReturnFocusTo] = useState<Element | null>(null);
@@ -189,38 +226,65 @@ const Modal: React.FC<ModalProps> = ({
 	}, [isOpen]);
 
 	// Dismiss modal handler
-	const dismissModal = useCallback(() => {
-		if (
-			returnFocusTo &&
-			'focus' in returnFocusTo &&
-			typeof returnFocusTo.focus === 'function'
-		) {
-			returnFocusTo.focus();
-		}
-		if (onRequestClose) {
-			onRequestClose();
-		}
-	}, [returnFocusTo, onRequestClose]);
+	const dismissModal = useCallback(
+		(event: ModalRequestCloseEvent, data: ModalRequestCloseData) => {
+			if (
+				returnFocusTo &&
+				'focus' in returnFocusTo &&
+				typeof returnFocusTo.focus === 'function'
+			) {
+				returnFocusTo.focus();
+			}
+			if (onRequestClose) {
+				onRequestClose(event, data);
+			}
+		},
+		[returnFocusTo, onRequestClose]
+	);
 
 	// Close modal handler (respects disableClose)
-	const closeModal = useCallback(() => {
-		if (!disableClose) {
-			dismissModal();
-		}
-	}, [disableClose, dismissModal]);
+	const closeModal = useCallback(
+		(event: ModalRequestCloseEvent, data: ModalRequestCloseData) => {
+			if (!disableClose) {
+				dismissModal(event, data);
+			}
+		},
+		[disableClose, dismissModal]
+	);
+
+	// Close button click handler
+	const handleCloseButtonClick = useCallback(
+		(event: MouseEvent<HTMLButtonElement>) => {
+			closeModal(event, { trigger: 'close-button' });
+		},
+		[closeModal]
+	);
+
+	// react-modal's own close request: Escape keydown, or a click directly on its overlay
+	const handleReactModalRequestClose = useCallback(
+		(event: ModalRequestCloseEvent) => {
+			closeModal(event, {
+				trigger: event.type === 'keydown' ? 'escape' : 'click-outside',
+			});
+		},
+		[closeModal]
+	);
 
 	// Dismiss on click outside handler
-	const dismissModalOnClickOutside = useCallback(() => {
-		// if dismissOnClickOutside is not set, default its value to !disableClose
-		const shouldDismiss =
-			dismissOnClickOutside !== undefined
-				? dismissOnClickOutside
-				: !disableClose;
+	const dismissModalOnClickOutside = useCallback(
+		(event: MouseEvent<HTMLElement>) => {
+			// if dismissOnClickOutside is not set, default its value to !disableClose
+			const shouldDismiss =
+				dismissOnClickOutside !== undefined
+					? dismissOnClickOutside
+					: !disableClose;
 
-		if (shouldDismiss) {
-			dismissModal();
-		}
-	}, [dismissOnClickOutside, disableClose, dismissModal]);
+			if (shouldDismiss) {
+				dismissModal(event, { trigger: 'click-outside' });
+			}
+		},
+		[dismissOnClickOutside, disableClose, dismissModal]
+	);
 
 	// Prevent click propagation inside modal
 	const handleModalClick = useCallback((event: MouseEvent) => {
@@ -297,7 +361,7 @@ const Modal: React.FC<ModalProps> = ({
 				iconName="close"
 				iconSize="large"
 				className="slds-button_icon slds-modal__close"
-				onClick={closeModal}
+				onClick={handleCloseButtonClick}
 				title={closeButtonText}
 				variant="icon"
 			/>
@@ -431,7 +495,7 @@ const Modal: React.FC<ModalProps> = ({
 			aria={ariaAttributes}
 			ariaHideApp={ariaHideApp}
 			isOpen={isOpen}
-			onRequestClose={closeModal}
+			onRequestClose={handleReactModalRequestClose}
 			role={disableClose ? 'alertdialog' : 'dialog'}
 			style={customStyles}
 			parentSelector={parentSelector}

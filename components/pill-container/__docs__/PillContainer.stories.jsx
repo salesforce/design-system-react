@@ -31,9 +31,7 @@ export default {
 
 // Default pill container
 export const Default = {
-	render: () => (
-		<PillContainer options={initialOptions} />
-	),
+	render: () => <PillContainer options={initialOptions} />,
 };
 
 // Interactive example with removal
@@ -44,11 +42,13 @@ export const Interactive = {
 		return (
 			<PillContainer
 				options={options}
-				onRequestRemovePill={(event, { index }) => {
-					setOptions((prev) => prev.filter((_, i) => i !== index));
-				}}
-				onClickPill={(event, { option }) => {
-					console.log('Clicked:', option.label);
+				events={{
+					onClickPill: (event, { option }) => {
+						console.log('Clicked:', option.label);
+					},
+					onRequestRemovePill: (event, { index }) => {
+						setOptions((prev) => prev.filter((_, i) => i !== index));
+					},
 				}}
 			/>
 		);
@@ -57,12 +57,7 @@ export const Interactive = {
 
 // Bare variant
 export const BareVariant = {
-	render: () => (
-		<PillContainer
-			options={initialOptions}
-			variant="bare"
-		/>
-	),
+	render: () => <PillContainer options={initialOptions} variant="bare" />,
 };
 
 // With icons
@@ -107,7 +102,9 @@ export const WithError = {
 export const Empty = {
 	render: () => (
 		<div>
-			<p className="slds-m-bottom_small">When options is empty, the component returns null:</p>
+			<p className="slds-m-bottom_small">
+				When options is empty, the component returns null:
+			</p>
 			<PillContainer options={[]} />
 			<p className="slds-text-color_weak">(Nothing rendered above)</p>
 		</div>
