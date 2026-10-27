@@ -1,7 +1,11 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type ReactElement, type CSSProperties } from 'react';
+import React, {
+	type ReactNode,
+	type ReactElement,
+	type CSSProperties,
+} from 'react';
 import { BREADCRUMB } from '../../utilities/constants';
 import Dropdown from '../menu-dropdown';
 
@@ -18,7 +22,7 @@ export interface BreadcrumbAssistiveText {
  */
 export interface BreadcrumbProps {
 	/** Assistive text for accessibility */
-	assistiveText?: BreadcrumbAssistiveText | string;
+	assistiveText?: BreadcrumbAssistiveText;
 	/** Unique identifier for the breadcrumb */
 	id?: string;
 	/** Overflow dropdown menu for condensed breadcrumbs */
@@ -66,13 +70,10 @@ const Breadcrumb = ({
 	styleContainer,
 	trail,
 }: BreadcrumbProps): React.ReactElement => {
-	const assistiveTextLabel =
-		typeof propAssistiveText === 'string'
-			? propAssistiveText
-			: {
-					...defaultAssistiveText,
-					...propAssistiveText,
-			  }.label;
+	const assistiveTextLabel = {
+		...defaultAssistiveText,
+		...propAssistiveText,
+	}.label;
 
 	return (
 		<nav
@@ -84,10 +85,7 @@ const Breadcrumb = ({
 				{overflowDropdownMenu &&
 					getBreadcrumbDropdown(overflowDropdownMenu, { id })}
 				{trail.map((crumb, index) => (
-					<li
-						key={index}
-						className="slds-breadcrumb__item"
-					>
+					<li key={index} className="slds-breadcrumb__item">
 						{crumb}
 					</li>
 				))}
@@ -99,4 +97,3 @@ const Breadcrumb = ({
 Breadcrumb.displayName = BREADCRUMB;
 
 export default Breadcrumb;
-

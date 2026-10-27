@@ -925,7 +925,6 @@ ascending, descending, selectAllRows, selectRow)` but the call passes `selectAll
 **Stories missing from the HTML snapshot suite:** the snapshot test only globs
 `__docs__/*.stories.*`, so these nested stories are rendered by Storybook but not snapshotted:
 
-- [ ] `components/forms/input/__docs__/inline/InlineInput.stories.jsx`
 - [ ] `components/input/__docs__/search/SearchInput.stories.jsx`
 
 **Story/feature gaps vs. SLDS 2** — from the component-by-component comparison in

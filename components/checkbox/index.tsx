@@ -21,7 +21,8 @@ import Icon from '../icon/index';
 /**
  * Checkbox variant types
  */
-export type CheckboxVariant = 'base' | 'toggle' | 'button-group' | 'visual-picker';
+export type CheckboxVariant =
+	'base' | 'toggle' | 'button-group' | 'visual-picker';
 
 /**
  * Checkbox size for visual picker
@@ -69,14 +70,9 @@ export interface CheckboxProps {
 	/** aria-required for validation */
 	'aria-required'?: boolean;
 	/** Assistive text for accessibility */
-	assistiveText?: CheckboxAssistiveText | string;
+	assistiveText?: CheckboxAssistiveText;
 	/** Controlled checked state */
 	checked?: boolean;
-	/**
-	 * Preserves the legacy `onChange(event, { checked })` parameter order used
-	 * by the deprecated `components/forms/checkbox` alias. Not for new code.
-	 */
-	oldEventParameterOrder?: boolean;
 	/** Initial uncontrolled checked state */
 	defaultChecked?: boolean;
 	/** CSS class for container */
@@ -96,7 +92,10 @@ export interface CheckboxProps {
 	/** Blur event handler */
 	onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Change event handler */
-	onChange?: (event: ChangeEvent<HTMLInputElement>, data: CheckboxChangeData) => void;
+	onChange?: (
+		event: ChangeEvent<HTMLInputElement>,
+		data: CheckboxChangeData
+	) => void;
 	/** Focus event handler */
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Key down event handler */
@@ -186,10 +185,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 	const getErrorId = () => (errorText ? `${getId()}-error-text` : undefined);
 
 	// Merge assistive text
-	const assistiveText: CheckboxAssistiveText =
-		typeof assistiveTextProp === 'string'
-			? { label: assistiveTextProp }
-			: { ...assistiveTextProp };
+	const assistiveText: CheckboxAssistiveText = { ...assistiveTextProp };
 
 	// Merge labels
 	const labels: CheckboxLabels = {
@@ -449,4 +445,3 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 Checkbox.displayName = CHECKBOX;
 
 export default Checkbox;
-

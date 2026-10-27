@@ -157,10 +157,6 @@ export interface TooltipProps {
 	 */
 	theme?: TooltipTheme;
 	/**
-	 * @deprecated Use onRequestTargetElement instead
-	 */
-	target?: HTMLElement | null;
-	/**
 	 * Determines the type of the tooltip.
 	 */
 	variant?: TooltipVariant;
@@ -201,7 +197,6 @@ const Tooltip = ({
 	position = 'absolute',
 	triggerStyle,
 	theme = 'info',
-	target: deprecatedTarget,
 	variant = 'base',
 }: TooltipProps): React.ReactElement => {
 	// Merge assistive text and labels with defaults
@@ -275,13 +270,8 @@ const Tooltip = ({
 			return onRequestTargetElement();
 		}
 
-		// for backwards compatibility
-		if (deprecatedTarget) {
-			return deprecatedTarget;
-		}
-
 		return triggerRef.current;
-	}, [onRequestTargetElement, deprecatedTarget]);
+	}, [onRequestTargetElement]);
 
 	// Event handlers
 	const handleCancel = useCallback(() => {
@@ -512,9 +502,7 @@ const Tooltip = ({
 	};
 
 	const getTooltipContent = () => {
-		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)
-		// Support deprecated 'error' variant value (now use theme='error')
-		const isErrorTheme = theme === 'error' || (variant as string) === 'error';
+		const isErrorTheme = theme === 'error';
 
 		return (
 			<div
@@ -546,10 +534,6 @@ const Tooltip = ({
 	const getTooltip = () => {
 		const isOpen = getIsOpen();
 
-		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)
-		// Support deprecated 'error' variant value (now use theme='error')
-		const deprecatedWay = (variant as string) === 'error';
-
 		return isOpen ? (
 			<Dialog
 				closeOnTabKey
@@ -558,7 +542,7 @@ const Tooltip = ({
 					'slds-popover',
 					'slds-popover_tooltip',
 					{
-						'slds-theme_error': theme === 'error' || deprecatedWay,
+						'slds-theme_error': theme === 'error',
 					},
 					dialogClassName
 				)}
