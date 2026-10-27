@@ -17,6 +17,10 @@ export interface TabsPanelProps {
 	 */
 	children: ReactNode;
 	/**
+	 * Disables the `<Tab />` associated with this panel so it cannot be selected.
+	 */
+	disabled?: boolean;
+	/**
 	 * Show an icon on the `<Tab />` next to the title that can be used to communicate when a tab contains a validation error that needs attention
 	 */
 	hasError?: boolean;
