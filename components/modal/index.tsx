@@ -17,12 +17,10 @@ import React, {
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
-import checkProps from './check-props';
 import checkAppElementIsSet from '../../utilities/warning/check-app-element-set';
 import Button from '../button';
 import { MODAL } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
-import componentDoc from './component.json';
 
 const documentDefined = typeof document !== 'undefined';
 const windowDefined = typeof window !== 'undefined';
