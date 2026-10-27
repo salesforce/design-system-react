@@ -91,6 +91,28 @@ describe('SLDSSplitView - Listbox', () => {
 		});
 	});
 
+	describe('List item content', () => {
+		it('titles each text span with its own text', () => {
+			const { getAllByText } = renderListbox({
+				options: listOptions,
+				events: {
+					onSelect: vi.fn(),
+				},
+			});
+
+			const bottomLeft = getAllByText(listOptions[0].bottomLeftText)[0];
+			const bottomRight = getAllByText(listOptions[0].bottomRightText)[0];
+			expect(bottomLeft).toHaveAttribute(
+				'title',
+				listOptions[0].bottomLeftText
+			);
+			expect(bottomRight).toHaveAttribute(
+				'title',
+				listOptions[0].bottomRightText
+			);
+		});
+	});
+
 	describe('When a list item is selected', () => {
 		describe('and single select only', () => {
 			it('should focus the item that is clicked', () => {

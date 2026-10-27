@@ -45,7 +45,7 @@ const SplitViewListItemContent = ({
 			</span>
 			<span
 				className="slds-truncate slds-col_bump-left"
-				title={item.bottomLeftText}
+				title={item.bottomRightText}
 			>
 				{item.bottomRightText}
 			</span>
