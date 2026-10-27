@@ -796,10 +796,10 @@ class SimpleDataTable extends React.Component<
 		const assistiveText = getAssistiveText(
 			this.props.assistiveText,
 			this.props.assistiveTextForActionsHeader,
-			this.props.assistiveTextForSelectAllRows,
+			this.props.assistiveTextForColumnSort,
 			this.props.assistiveTextForColumnSortedAscending,
 			this.props.assistiveTextForColumnSortedDescending,
-			this.props.assistiveTextForColumnSort,
+			this.props.assistiveTextForSelectAllRows,
 			this.props.assistiveTextForSelectRow
 		);
 

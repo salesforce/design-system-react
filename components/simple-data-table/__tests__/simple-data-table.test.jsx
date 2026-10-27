@@ -246,6 +246,37 @@ describe('SimpleDataTable', () => {
 		});
 	});
 
+	describe('Assistive text', () => {
+		it('maps the deprecated assistiveTextFor* props to their own keys', () => {
+			const { container } = renderTable(
+				<SimpleDataTable
+					{...defaultProps}
+					assistiveTextForSelectAllRows="Custom select all"
+					assistiveTextForColumnSort="Custom sort by:"
+					fixedLayout
+					onSort={() => {}}
+				>
+					{columns.map((columnProps) => (
+						<SimpleDataTableColumn
+							{...columnProps}
+							key={columnProps.property}
+						/>
+					))}
+				</SimpleDataTable>
+			);
+
+			const thead = getTable(container).querySelector('thead');
+			expect(
+				thead.querySelector('[id$="-column-group-header-row-select"]')
+					.textContent
+			).toBe('Custom select all');
+			expect(
+				thead.querySelector('th.slds-is-sortable a .slds-assistive-text')
+					.textContent
+			).toBe('Custom sort by: ');
+		});
+	});
+
 	describe('Selectable - Checkbox', () => {
 		const defaultSelection = [
 			{
