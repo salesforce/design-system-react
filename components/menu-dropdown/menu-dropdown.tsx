@@ -181,11 +181,21 @@ export interface MenuDropdownProps {
 	iconName?: string;
 	/** Icon position relative to label */
 	iconPosition?: 'left' | 'right';
-	/** Icon variant */
+	/**
+	 * Icon variant. `bare-inverse` and `border-inverse` match `lightning-button-menu`'s variants and are
+	 * equivalent to `bare` or `border` with `buttonInverse`. Meant for icon buttons on dark backgrounds.
+	 */
 	iconVariant?:
-		'bare' | 'container' | 'border' | 'border-filled' | 'small' | 'more';
-	/** Determines the size of the icon */
-	iconSize?: 'x-small' | 'small' | 'medium' | 'large';
+		| 'bare'
+		| 'bare-inverse'
+		| 'container'
+		| 'border'
+		| 'border-filled'
+		| 'border-inverse'
+		| 'small'
+		| 'more';
+	/** Determines the size of the icon. `xx-small` requires an `iconVariant`. */
+	iconSize?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large';
 	/** A unique ID for keyboard navigation and ARIA support */
 	id?: string;
 	/** Whether to inherit target width */
@@ -1119,6 +1129,16 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 
 	const outsideClickIgnoreClass = `ignore-click-${getId()}`;
 
+	// `bare-inverse` and `border-inverse` are the inverse forms of `bare` and `border`
+	const isInverseIconVariant =
+		iconVariant === 'bare-inverse' || iconVariant === 'border-inverse';
+	const triggerIconVariant =
+		iconVariant === 'bare-inverse'
+			? 'bare'
+			: iconVariant === 'border-inverse'
+				? 'border'
+				: iconVariant;
+
 	return (
 		<CurrentTrigger
 			ref={saveRefToTriggerContainer}
@@ -1131,9 +1151,9 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			iconName={iconName}
 			iconPosition={iconPosition}
 			iconSize={iconSize}
-			iconVariant={iconVariant}
+			iconVariant={triggerIconVariant}
 			id={getId()}
-			inverse={buttonInverse}
+			inverse={buttonInverse || isInverseIconVariant}
 			isOpen={isOpen}
 			label={label}
 			menu={renderDialog(
