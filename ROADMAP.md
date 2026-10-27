@@ -90,9 +90,9 @@ moves to `latest`.
 8. **Typing the contract.** Discriminated unions (tree nodes, welcome-mat variants, combobox,
    menu-dropdown and color-picker variants/options), no index signatures
    (vertical-navigation, split-view), textarea `maxLength` as a number.
-9. **Fix now (bugs, not breaking).** simple-data-table `getAssistiveText` argument order,
-   grid `"undefined slds-col"`, split-view `bottomRightText` title, vertical-navigation
-   `aria-current`, tabs `disabled` type, toast timer re-arm.
+9. **Fix now (bugs, not breaking).** Done: simple-data-table `getAssistiveText` argument
+   order, grid `"undefined slds-col"` (#3239), split-view `bottomRightText` title,
+   vertical-navigation `aria-current`, tabs `disabled` type, toast timer re-arm (#3251).
 
 _Reviewed: accordion, alert, avatar, badge, breadcrumb, builder-header, button, button-group, button-stateful, card, carousel, checkbox, color-picker, combobox, date-picker, docked-composer, dynamic-icon, expandable-section, files, filter, forms, grid, icon, icon-settings, illustration, input, media-object, menu-dropdown, menu-list, modal, page-header, panel, pill, pill-container, popover, portal-settings, progress-bar, progress-indicator, progress-ring, radio, radio-button-group, radio-group, scoped-notification, setup-assistant, simple-data-table, slider, spinner, split-view, tabs, textarea, toast, tooltip, tree, trial-bar, vertical-navigation, visual-picker, welcome-mat._
 
@@ -579,7 +579,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       declares `(event: MouseEvent) => void`) → `(event | null, { trigger: 'timeout' | 'close-button' })`.
       Auto-dismiss: the timer effect depends on `handleClose`, which depends on `onRequestClose`,
       so an inline callback re-arms the timer on every parent render and may never dismiss;
-      cleanup also returns focus. Decide `duration` 0 semantics and rename (`autoCloseDelay`?).
+      cleanup also returns focus (re-arm fixed in #3251). Decide `duration` 0 semantics and rename (`autoCloseDelay`?).
       `icon` is `cloneElement`ed (`index.tsx:144`, same pattern in `alert`) → decide both
       together. `variant` is required in the type but defaulted to `'info'`. `assistiveText.closeButton`
       is `ReactNode` cast to string. `labels.headingLink` + top-level `onClickHeadingLink` split.
@@ -634,7 +634,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `NavigationItem` has an index signature (`:20`) with undeclared `icon`/`notificationBadge` →
       declare them; `item.tsx:73,92` `cloneElement`s className into `icon`/`notificationBadge` and
       reads `icon.props.size` → accept a name/props or render-prop; items without `url` render
-      `href="#"` → button; `aria-current={true}` (`item.tsx:66`) should be `"page"` (fix now);
+      `href="#"` → button; `aria-current={true}` (`item.tsx:66`) should be `"page"` (fixed);
       `<nav>` has no `aria-label` → `assistiveText.label`; `className` cast `as string`;
       `displayName`; `lodash.isfunction`.
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Still required: type the accepted children (`ReactElement<XProps>` or exported subcomponents), keep injected props out of the public child type, and match by component reference instead of `displayName`.
@@ -670,7 +670,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
 - [ ] `tabs` children — `Tabs` reads `label`/`disabled`/`hasError`/`assistiveText` off
       `Children.toArray` results (`index.tsx:111,243-246`) so wrapped panels and fragments lose
       props; `private/tab-panel.tsx:76` reaches into `children.props.children`. `TabsPanelProps`
-      lacks `disabled` (typed only on the internal `TabChildProps`) — add it now; `label` is
+      lacks `disabled` (typed only on the internal `TabChildProps`) — added; `label` is
       `string | ReactElement` on the panel but `ReactNode` internally; decide a `tabs` data array or
       context registration. `assistiveText.withErrorIcon` → final key name (`errorIcon`). Delete the
       `tabs/pane.ts` alias ("Remove at next breaking release"; only `TabsPanel` is exported).
@@ -783,7 +783,7 @@ From the same review; none of these change existing props.
       `@ts-expect-error` on the `Popover` spread; `forwardRef`/`...rest`.
 - [ ] `forms/private/label` — `title="required"` hardcoded (needs `assistiveText.required`).
 - [ ] `grid` — `GridColumn.getClassName` yields `"undefined slds-col"` without `className`
-      (bug, fix now); class components; add `forwardRef`/`...rest`, a story and tests.
+      (fixed in #3239); class components; add `forwardRef`/`...rest`, a story and tests.
 - [ ] `icon-settings` — memoize the context value (rebuilt every render); add tests.
 - [ ] `icon`, `icon/button-icon`, `icon/input-icon` — `forwardRef`/`...rest`; `checkProps`
       runs every render in `button-icon`; inline `productTheme` background.
@@ -855,7 +855,7 @@ From the same review; none of these change existing props.
 - [ ] `simple-data-table` — **bug:** `getAssistiveText` takes `(…, actionsHeader, columnSort,
 ascending, descending, selectAllRows, selectRow)` but the call passes `selectAllRows`
       third and `columnSort` sixth (`index.tsx:801`), so the deprecated `assistiveTextFor*`
-      props land in the wrong slots (fix now). Also: `keyboardNavigation` and the initial
+      props land in the wrong slots (fixed). Also: `keyboardNavigation` and the initial
       `activeCell` are seeded from props in the constructor and go stale; `rowId` falls back to
       `generateId()` on every render without `item.id`; `UNSAFE_componentWillUpdate` resets
       `interactiveElements` (not concurrent-safe); direct `style`/`tabIndex`/`focus()` DOM
@@ -886,7 +886,7 @@ ascending, descending, selectAllRows, selectRow)` but the call passes `selectAll
 - [ ] `vertical-navigation` — `check-props.js` is dead and warns on a nonexistent `variant`;
       `isDisabled`/`isUnread` item flags; `forwardRef`.
 - [ ] `split-view` — `list-item-content.tsx:48` sets `title={item.bottomLeftText}` on the
-      `bottomRightText` span (bug, fix now); `aria-sort` is set to a localized string (must be
+      `bottomRightText` span (fixed); `aria-sort` is set to a localized string (must be
       `ascending|descending|other`; move the text to the assistive span); shift-range `.sort()`
       is lexicographic (`listbox.tsx:294`, wrong for indices >= 10 — numeric sort); `focusItem`
       assumes `listItemComponents[index]` exists; `selectAll` compares `options === selection` by
