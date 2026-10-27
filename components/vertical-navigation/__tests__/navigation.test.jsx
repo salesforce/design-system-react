@@ -19,7 +19,9 @@ describe('SLDSVerticalNavigation', () => {
 			const structure = { reports: 5, folders: 3 };
 			Object.entries(structure).forEach(([categoryId, itemCount]) => {
 				// Find category header
-				const header = container.querySelector(`#sample-navigation-${categoryId}`);
+				const header = container.querySelector(
+					`#sample-navigation-${categoryId}`
+				);
 				expect(header).toBeInTheDocument();
 				expect(header.tagName).toBe('H2');
 
@@ -40,12 +42,16 @@ describe('SLDSVerticalNavigation', () => {
 			expect(nav).toHaveClass('slds-nav-vertical', 'sample-navigation');
 
 			// Should have sections for each category
-			const sections = container.querySelectorAll('.slds-nav-vertical__section');
+			const sections = container.querySelectorAll(
+				'.slds-nav-vertical__section'
+			);
 			expect(sections).toHaveLength(2); // reports and folders
 
 			// Each section should have a title and list
 			sections.forEach((section) => {
-				expect(section.querySelector('h2.slds-nav-vertical__title')).toBeInTheDocument();
+				expect(
+					section.querySelector('h2.slds-nav-vertical__title')
+				).toBeInTheDocument();
 				expect(section.querySelector('ul')).toBeInTheDocument();
 			});
 		});
@@ -146,7 +152,9 @@ describe('SLDSVerticalNavigation', () => {
 			expect(myFoldersLink).toHaveAttribute('href', 'http://www.google.com');
 
 			// Items without url should have href="#"
-			const recentReportsLink = container.querySelector('a[data-id="recent_reports"]');
+			const recentReportsLink = container.querySelector(
+				'a[data-id="recent_reports"]'
+			);
 			expect(recentReportsLink).toHaveAttribute('href', '#');
 		});
 	});
@@ -223,10 +231,7 @@ describe('SLDSVerticalNavigation', () => {
 
 		it('works without className', () => {
 			const { container } = render(
-				<VerticalNavigation
-					{...defaultProps}
-					className={undefined}
-				/>
+				<VerticalNavigation {...defaultProps} className={undefined} />
 			);
 
 			const nav = container.querySelector('nav');
@@ -245,15 +250,17 @@ describe('SLDSVerticalNavigation', () => {
 			expect(nav).toBeInTheDocument();
 
 			// Category IDs should be based on the nav id
-			expect(container.querySelector('#custom-nav-id-reports')).toBeInTheDocument();
-			expect(container.querySelector('#custom-nav-id-folders')).toBeInTheDocument();
+			expect(
+				container.querySelector('#custom-nav-id-reports')
+			).toBeInTheDocument();
+			expect(
+				container.querySelector('#custom-nav-id-folders')
+			).toBeInTheDocument();
 		});
 
 		it('generates id when not provided', () => {
 			const { container } = render(
-				<VerticalNavigation
-					categories={sampleReportCategories}
-				/>
+				<VerticalNavigation categories={sampleReportCategories} />
 			);
 
 			const nav = container.querySelector('nav');
@@ -270,7 +277,9 @@ describe('SLDSVerticalNavigation', () => {
 
 			const nav = container.querySelector('nav#empty-nav');
 			expect(nav).toBeInTheDocument();
-			expect(nav.querySelector('.slds-nav-vertical__section')).not.toBeInTheDocument();
+			expect(
+				nav.querySelector('.slds-nav-vertical__section')
+			).not.toBeInTheDocument();
 		});
 
 		it('handles category with empty items', () => {
