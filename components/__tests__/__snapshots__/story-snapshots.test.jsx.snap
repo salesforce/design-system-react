@@ -3168,7 +3168,7 @@ exports[`Story HTML snapshots > DynamicIcon > Trend 1`] = `
 
 exports[`Story HTML snapshots > DynamicIcon > Typing 1`] = `"<div class="slds-p-around_medium"><span title="User is typing" class="slds-icon-typing slds-is-animated"><span class="slds-icon-typing__dot"></span><span class="slds-icon-typing__dot"></span><span class="slds-icon-typing__dot"></span><span class="slds-assistive-text">User is typing</span></span></div>"`;
 
-exports[`Story HTML snapshots > DynamicIcon > Waffle 1`] = `"<div class="slds-p-around_medium"><button title="Open App Launcher" class="slds-button slds-icon-waffle_container slds-is-animated"><span class="slds-icon-waffle"><span class="slds-r1"></span><span class="slds-r2"></span><span class="slds-r3"></span><span class="slds-r4"></span><span class="slds-r5"></span><span class="slds-r6"></span><span class="slds-r7"></span><span class="slds-r8"></span><span class="slds-r9"></span></span><span class="slds-assistive-text">Open App Launcher</span></button></div>"`;
+exports[`Story HTML snapshots > DynamicIcon > Waffle 1`] = `"<div class="slds-p-around_medium"><button title="Open App Launcher" type="button" class="slds-button slds-icon-waffle_container slds-is-animated"><span class="slds-icon-waffle"><span class="slds-r1"></span><span class="slds-r2"></span><span class="slds-r3"></span><span class="slds-r4"></span><span class="slds-r5"></span><span class="slds-r6"></span><span class="slds-r7"></span><span class="slds-r8"></span><span class="slds-r9"></span></span><span class="slds-assistive-text">Open App Launcher</span></button></div>"`;
 
 exports[`Story HTML snapshots > ExpandableSection > Controlled 1`] = `
 "<div class="slds-p-around_medium" style="max-width:600px">

@@ -8,7 +8,8 @@ import { DYNAMIC_ICON } from '../../utilities/constants';
 /**
  * Dynamic icon variant types
  */
-export type DynamicIconVariant = 'ellie' | 'eq' | 'score' | 'strength' | 'trend' | 'typing' | 'waffle';
+export type DynamicIconVariant =
+	'ellie' | 'eq' | 'score' | 'strength' | 'trend' | 'typing' | 'waffle';
 
 /**
  * Score polarity options
@@ -18,7 +19,8 @@ export type ScorePolarity = 'positive' | 'negative';
 /**
  * Strength level options
  */
-export type StrengthLevel = '-3' | '-2' | '-1' | '0' | '1' | '2' | '3' | -3 | -2 | -1 | 0 | 1 | 2 | 3;
+export type StrengthLevel =
+	'-3' | '-2' | '-1' | '0' | '1' | '2' | '3' | -3 | -2 | -1 | 0 | 1 | 2 | 3;
 
 /**
  * Trend direction options
@@ -73,7 +75,8 @@ const DynamicIcon = ({
 }: DynamicIconProps): React.ReactElement => {
 	const getIconChildren = (): ReactNode[] => {
 		const children: ReactNode[] = [];
-		let defaultAssistiveText = title || `${variant.charAt(0).toUpperCase()}${variant.slice(1)}`;
+		let defaultAssistiveText =
+			title || `${variant.charAt(0).toUpperCase()}${variant.slice(1)}`;
 
 		if (variant === 'ellie') {
 			children.push(
@@ -97,10 +100,20 @@ const DynamicIcon = ({
 			);
 		} else if (variant === 'score') {
 			children.push(
-				<svg key="score-pos" viewBox="0 0 5 5" className="slds-icon-score__positive" aria-hidden="true">
+				<svg
+					key="score-pos"
+					viewBox="0 0 5 5"
+					className="slds-icon-score__positive"
+					aria-hidden="true"
+				>
 					<circle cx="50%" cy="50%" r="1.875" />
 				</svg>,
-				<svg key="score-neg" viewBox="0 0 5 5" className="slds-icon-score__negative" aria-hidden="true">
+				<svg
+					key="score-neg"
+					viewBox="0 0 5 5"
+					className="slds-icon-score__negative"
+					aria-hidden="true"
+				>
 					<circle cx="50%" cy="50%" r="1.875" />
 				</svg>
 			);
@@ -115,7 +128,10 @@ const DynamicIcon = ({
 		} else if (variant === 'trend') {
 			children.push(
 				<svg key="trend-svg" viewBox="0 0 16 16" aria-hidden="true">
-					<path className="slds-icon-trend__arrow" d="M.75 8H11M8 4.5L11.5 8 8 11.5" />
+					<path
+						className="slds-icon-trend__arrow"
+						d="M.75 8H11M8 4.5L11.5 8 8 11.5"
+					/>
 					<circle
 						className="slds-icon-trend__circle"
 						cy="8"
@@ -179,6 +195,7 @@ const DynamicIcon = ({
 	if (variant === 'waffle') {
 		classes.unshift('slds-button', 'slds-icon-waffle_container');
 		element = 'button';
+		iconProps.type = 'button';
 	} else {
 		classes.unshift(`slds-icon-${variant}`);
 
@@ -187,7 +204,8 @@ const DynamicIcon = ({
 		} else if (variant === 'score') {
 			iconProps['data-slds-state'] = scorePolarity || 'positive';
 		} else if (variant === 'strength') {
-			iconProps['data-slds-strength'] = strengthLevel !== undefined ? `${strengthLevel}` : '0';
+			iconProps['data-slds-strength'] =
+				strengthLevel !== undefined ? `${strengthLevel}` : '0';
 		} else if (variant === 'trend') {
 			iconProps['data-slds-trend'] = trendDirection || 'neutral';
 		}
@@ -201,4 +219,3 @@ const DynamicIcon = ({
 DynamicIcon.displayName = DYNAMIC_ICON;
 
 export default DynamicIcon;
-
