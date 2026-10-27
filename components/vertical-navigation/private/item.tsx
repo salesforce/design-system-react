@@ -68,7 +68,7 @@ const Item = ({
 			href={item.url || '#'}
 			className="slds-nav-vertical__action"
 			aria-describedby={categoryId}
-			aria-current={isSelected ? true : undefined}
+			aria-current={isSelected ? 'page' : undefined}
 			onClick={(event) => {
 				handleClick(event, { item, onSelect });
 			}}

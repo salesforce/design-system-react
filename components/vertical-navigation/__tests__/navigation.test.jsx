@@ -62,7 +62,7 @@ describe('SLDSVerticalNavigation', () => {
 			);
 
 			const selectedLink = container.querySelector('a[data-id="my_folders"]');
-			expect(selectedLink).toHaveAttribute('aria-current', 'true');
+			expect(selectedLink).toHaveAttribute('aria-current', 'page');
 
 			// Other links should not have aria-current
 			const otherLink = container.querySelector('a[data-id="recent_reports"]');
