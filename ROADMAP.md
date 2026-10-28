@@ -87,6 +87,16 @@ moves to `latest`.
    (tree heading, trial-bar time), `errorText` becomes `labels.error` + `hasError` (slider,
    textarea), duplicate `label`/`assistiveText.label`, `onRender*` props renamed to slot or
    render names.
+   **Done** (old names still work and warn through `check-props.js`): split-view
+   `assistiveText.closeToggle`/`openToggle`; tree `labels.heading`/`assistiveText.heading`;
+   trial-bar `labels.timeLeftAfter` and `actions`; slider and textarea `labels.label`,
+   `labels.error` + `hasError`; slots for zero-argument `onRender*` props: page-header
+   `actions`/`controls`, builder-header toolbar `actions`, welcome-mat `infoActions`, info-badge
+   `completeActions`, setup-assistant step `action`/`content`/`figure`, progress-indicator
+   `steps[].setupAssistantAction`, checkbox/radio `visualPickerFigure*`. Render props that take
+   arguments (carousel `onRenderItem`, combobox `onRenderMenuItem`, simple-data-table
+   `onRenderSubHeadingRow`) keep the `onRender` prefix. Still open: the tree heading XOR as a
+   union type (theme 8), and `errorText` on input, checkbox and combobox.
 8. **Typing the contract.** Discriminated unions (tree nodes, welcome-mat variants, combobox,
    menu-dropdown and color-picker variants/options), no index signatures
    (vertical-navigation, split-view), textarea `maxLength` as a number.
