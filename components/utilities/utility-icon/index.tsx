@@ -120,9 +120,15 @@ const UtilityIcon = ({
 	}
 
 	if (inlineData) {
-		const { className, style, ...otherRest } = rest;
+		const { className, style, 'aria-hidden': ariaHidden } = rest;
 		return (
-			<Svg data={inlineData} name={name} className={className} style={style} />
+			<Svg
+				aria-hidden={ariaHidden}
+				data={inlineData}
+				name={name}
+				className={className}
+				style={style}
+			/>
 		);
 	}
 

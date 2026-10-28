@@ -379,4 +379,19 @@ describe('SLDSIcon', () => {
 			);
 		});
 	});
+
+	describe('Icon with inline SVG data renders', () => {
+		it('hides the svg from assistive technology', () => {
+			const { container } = render(
+				<DemoIcon
+					icon={{ viewBox: '0 0 52 52', path: { d: 'M0 0h52v52H0z' } }}
+				/>
+			);
+
+			expect(container.querySelector('svg')).toHaveAttribute(
+				'aria-hidden',
+				'true'
+			);
+		});
+	});
 });
