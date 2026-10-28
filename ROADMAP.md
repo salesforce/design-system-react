@@ -93,10 +93,13 @@ moves to `latest`.
    `labels.error` + `hasError`; slots for zero-argument `onRender*` props: page-header
    `actions`/`controls`, builder-header toolbar `actions`, welcome-mat `infoActions`, info-badge
    `completeActions`, setup-assistant step `action`/`content`/`figure`, progress-indicator
-   `steps[].setupAssistantAction`, checkbox/radio `visualPickerFigure*`. Render props that take
-   arguments (carousel `onRenderItem`, combobox `onRenderMenuItem`, simple-data-table
-   `onRenderSubHeadingRow`) keep the `onRender` prefix. Still open: the tree heading XOR as a
-   union type (theme 8), and `errorText` on input, checkbox and combobox.
+   `steps[].setupAssistantAction`, checkbox/radio `visualPickerFigure*`; render props that take
+   data are `render<Part>(data)` functions instead of `onRender*` props or component types:
+   carousel `renderItem`, combobox `renderMenuItem` (replaces `onRenderMenuItem` and `menuItem`),
+   simple-data-table `renderSubHeadingRow`, menu-dropdown `renderMenuItem` (replaces
+   `listItemRenderer`), split-view listbox `renderListItem` (replaces `listItem`). Still open:
+   the tree heading XOR as a union type (theme 8), and `errorText` on input, checkbox and
+   combobox.
 8. **Typing the contract.** Discriminated unions (tree nodes, welcome-mat variants, combobox,
    menu-dropdown and color-picker variants/options), no index signatures
    (vertical-navigation, split-view), textarea `maxLength` as a number.
@@ -208,8 +211,8 @@ Callbacks stay grouped in an `events` object where components already use one
 popoverLabel` are runtime-warned only; `options` is "required unless popover" only at
       runtime); `value` + `defaultValue` feed one input and flip controlled/uncontrolled (resolved by dropping `defaultValue`).
 - [ ] `combobox` — `multiple` → `isMultiple`, `predefinedOptionsOnly` →
-      `hasPredefinedOptionsOnly`, `singleInputDisabled` (drop or rename), `selected` →
-      `isSelected` on the `onRenderMenuItem` component. `disabled` keeps its name but
+      `hasPredefinedOptionsOnly`, `singleInputDisabled` (drop or rename). (`selected` →
+      `isSelected` on custom menu items: done, `renderMenuItem` receives `isSelected`.) `disabled` keeps its name but
       currently does not reach the input at all (only suppresses the dialog).
 - [ ] `combobox` — type `popover`, `input` and `tooltipMenuItemDisabled` as the library components
       (today all three are bare `ReactElement`): `ReactElement<Partial<PopoverProps>>`,
@@ -497,7 +500,7 @@ complete`) and `THEME_OPTIONS` is a second public surface; `icon` is only honore
       a parent group. `deselectable`/`coverable`/`vertical`/`requestFocus` need `is*`/`can*`
       names; `tabIndex: string` is `parseInt`ed (→ `number`); `refs: { input }` and
       `requestFocus`/`onRequestFocus` are a non-native ref/focus API (decide `forwardRef` to the
-      input); `onRender*` props are named like callbacks.
+      input). (`onRender*` props named like callbacks: done, now `visualPickerFigure*` slots.)
 - [ ] `radio-group` (seen from `radio`) — `RadioGroup` injects `name`, `onChange`,
       `aria-describedby`, `disabled` with `Children.map` + `cloneElement`
       (`radio-group/index.tsx:98`): the `Radio` props are part of that contract; decide the
@@ -811,7 +814,7 @@ From the same review; none of these change existing props.
       global; `event.keyCode` (`:716`); hover timeouts can leak; `hover` silently becomes
       `click` in `ButtonTrigger`; the `querySelector('button')` fallback in
       `saveRefToTriggerContainer`; `checkProps` runs every render; type `List` (`any`) and the
-      `@ts-ignore` imports; widen option `value`; `onRenderItem` alias for `listItemRenderer`.
+      `@ts-ignore` imports; widen option `value`. (`listItemRenderer` → `renderMenuItem`: done.)
 - [ ] `menu-list` — convert `List`/`ListItem` to function components; `ListItem` has
       `href: '#'` default and an inline `<style>` block in `List`.
 - [ ] `modal` — `returnFocusTo` is captured at mount, not when it opens, so a modal mounted

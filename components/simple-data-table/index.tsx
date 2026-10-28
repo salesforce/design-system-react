@@ -896,18 +896,30 @@ class SimpleDataTable extends React.Component<
 											this.getId() && item.id
 												? `${this.getId()}-${SIMPLE_DATA_TABLE_ROW}-${item.id}`
 												: generateId();
-										return this.props.onRenderSubHeadingRow &&
-											item.type === 'header-row' ? (
-											this.props.onRenderSubHeadingRow({
+										if (item.type === 'header-row') {
+											const subHeadingRowData = {
 												assistiveText,
 												classNameRow: item.classNameRow,
 												columns,
-												key: rowId,
 												id: rowId,
 												tableId: this.getId(),
 												item,
-											})
-										) : (
+											};
+											if (this.props.renderSubHeadingRow) {
+												return (
+													<React.Fragment key={rowId}>
+														{this.props.renderSubHeadingRow(subHeadingRowData)}
+													</React.Fragment>
+												);
+											}
+											if (this.props.onRenderSubHeadingRow) {
+												return this.props.onRenderSubHeadingRow({
+													...subHeadingRowData,
+													key: rowId,
+												});
+											}
+										}
+										return (
 											<SimpleDataTableRow
 												assistiveText={assistiveText}
 												canSelectRows={canSelectRows}

@@ -6,7 +6,11 @@
 // ## Dependencies
 
 // ### React
-import React, { type ComponentType, type ReactElement } from 'react';
+import React, {
+	type ComponentType,
+	type ReactElement,
+	type ReactNode,
+} from 'react';
 
 // ### classNames
 import classNames from 'classnames';
@@ -44,6 +48,10 @@ export interface MenuListProps {
 	 * If provided, this function will be used to render the contents of each menu item.
 	 */
 	itemRenderer?: ComponentType<ListItemLabelProps>;
+	/**
+	 * If provided, called to render the contents of each menu item. Takes precedence over `itemRenderer`.
+	 */
+	renderItemLabel?: (props: ListItemLabelProps) => ReactNode;
 	/**
 	 * Sets the height of the list based on the numeber of items.
 	 */
@@ -126,6 +134,7 @@ class List extends React.Component<MenuListProps> {
 							isSelected={isSingleSelected || isMultipleSelected}
 							key={`${id}-${option.value}`}
 							labelRenderer={this.props.itemRenderer}
+							renderLabel={this.props.renderItemLabel}
 							onSelect={this.props.onSelect ?? (() => {})}
 							nodeRef={(listItem) => this.props.itemRefs?.(listItem, index)}
 							tooltipTemplate={this.props.tooltipMenuItem}

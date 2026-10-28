@@ -29,6 +29,7 @@ import Menu, {
 	type ComboboxItemOption,
 	type ComboboxActionOption,
 	type ComboboxDeselectOption,
+	type MenuRenderMenuItemData,
 } from './private/menu';
 import Label from '../forms/private/label';
 import Popover from '../popover';
@@ -158,6 +159,24 @@ const toActionItemRow = (
 	[ACTION_ITEM]: item,
 });
 
+/**
+ * Argument passed to `renderMenuItem`
+ */
+export interface ComboboxRenderMenuItemData extends MenuRenderMenuItemData {
+	/** The combobox's assistive text */
+	assistiveText: ComboboxAssistiveText;
+}
+
+/**
+ * Component accepted by the deprecated `onRenderMenuItem` and `menuItem` props
+ */
+type ComboboxLegacyMenuItem = React.ComponentType<{
+	assistiveText?: ComboboxAssistiveText;
+	selected: boolean;
+	/** Custom renderers only receive selectable rows */
+	option: ComboboxItemOption | ComboboxDeselectOption;
+}>;
+
 interface ComboboxBaseProps {
 	/** aria-describedby attribute */
 	'aria-describedby'?: string;
@@ -209,13 +228,11 @@ interface ComboboxBaseProps {
 	menuPosition?: 'absolute' | 'overflowBoundaryElement' | 'relative';
 	/** Whether multiple selection is allowed */
 	multiple?: boolean;
-	/** Custom menu item renderer */
-	onRenderMenuItem?: React.ComponentType<{
-		assistiveText?: ComboboxAssistiveText;
-		selected: boolean;
-		/** Custom renderers only receive selectable rows */
-		option: ComboboxItemOption | ComboboxDeselectOption;
-	}>;
+	/**
+	 * @deprecated Use `renderMenuItem`, which is called as a function with
+	 * `{ assistiveText, isSelected, option }`.
+	 */
+	onRenderMenuItem?: ComboboxLegacyMenuItem;
 	/** Action items shown below the options, such as "New Account" */
 	optionsAddItem?: ComboboxActionItem[];
 	/** Action items shown above the options, such as "Search in Accounts" */
@@ -234,13 +251,13 @@ interface ComboboxBaseProps {
 	tooltipMenuItemDisabled?: ReactElement;
 	/** Input value (controlled) */
 	value?: string;
-	/** @deprecated Use menuItem instead */
-	menuItem?: React.ComponentType<{
-		assistiveText?: ComboboxAssistiveText;
-		selected: boolean;
-		/** Custom renderers only receive selectable rows */
-		option: ComboboxItemOption | ComboboxDeselectOption;
-	}>;
+	/**
+	 * Renders each option's content in place of the default label and icon.
+	 * Receives `{ assistiveText, isSelected, option }`.
+	 */
+	renderMenuItem?: (data: ComboboxRenderMenuItemData) => ReactNode;
+	/** @deprecated Use `renderMenuItem` instead. */
+	menuItem?: ComboboxLegacyMenuItem;
 }
 
 /**
@@ -340,6 +357,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		tooltipMenuItemDisabled,
 		value,
 		variant = 'base',
+		renderMenuItem: renderMenuItemProp,
 		menuItem,
 	} = props;
 
@@ -1164,6 +1182,21 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		]
 	);
 
+	// `onRenderMenuItem` and `menuItem` are deprecated: they take a component instead of a function
+	const LegacyMenuItem = onRenderMenuItem || menuItem;
+	let renderMenuItem: ((data: MenuRenderMenuItemData) => ReactNode) | undefined;
+	if (renderMenuItemProp) {
+		renderMenuItem = (data) => renderMenuItemProp({ ...data, assistiveText });
+	} else if (LegacyMenuItem) {
+		renderMenuItem = ({ isSelected, option }) => (
+			<LegacyMenuItem
+				assistiveText={assistiveText}
+				selected={isSelected}
+				option={option}
+			/>
+		);
+	}
+
 	const renderMenu = useCallback(() => {
 		const menuVariant: Record<string, 'icon-title-subtitle' | 'checkbox'> = {
 			base: 'icon-title-subtitle',
@@ -1197,7 +1230,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						data: { option: ComboboxOption; selection?: ComboboxOption[] }
 					) => void
 				}
-				onRenderMenuItem={onRenderMenuItem || menuItem}
+				renderMenuItem={renderMenuItem}
 				selection={selection}
 				tooltipMenuItemDisabled={tooltipMenuItemDisabled}
 				variant={menuVariant[variant]}
@@ -1222,8 +1255,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		menuMaxWidth,
 		getOptions,
 		handleSelect,
-		onRenderMenuItem,
-		menuItem,
+		renderMenuItem,
 		selection,
 		tooltipMenuItemDisabled,
 	]);

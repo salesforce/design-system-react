@@ -65,17 +65,16 @@ const accountsWithIcon = accounts.map((elem) => ({
 	},
 }));
 
-const CustomMenuItem = (props) => (
+const renderMenuItem = ({ option }) => (
 	<span>
 		<span className="slds-listbox__option-text slds-listbox__option-text_entity">
-			{props.option.label}
+			{option.label}
 		</span>
 		<span className="slds-listbox__option-meta slds-listbox__option-meta_entity">
-			{props.option.subTitle || '\u00A0'}
+			{option.subTitle || '\u00A0'}
 		</span>
 	</span>
 );
-CustomMenuItem.displayName = 'CustomMenuItem';
 
 class Example extends React.Component {
 	constructor(props) {
@@ -150,7 +149,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholder: 'Search Salesforce',
 					}}
-					onRenderMenuItem={CustomMenuItem}
+					renderMenuItem={renderMenuItem}
 					multiple
 					options={comboboxFilterAndLimit({
 						inputValue: this.state.inputValue,

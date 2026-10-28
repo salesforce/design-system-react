@@ -15,6 +15,7 @@ export type {
 	MenuDropdownDividerOption,
 	MenuDropdownOptionIcon,
 	DropdownNubbinPosition,
+	MenuDropdownRenderMenuItemData,
 	MenuDropdownSelectData,
 	MenuDropdownOpenData,
 	MenuDropdownOpenEvent,

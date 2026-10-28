@@ -28,7 +28,9 @@ import Dialog from '../utilities/dialog';
 // @ts-ignore - Legacy JS module
 import BaseList from '../utilities/menu-list';
 import ListItem from '../utilities/menu-list/item';
-import ListItemLabel from '../utilities/menu-list/item-label';
+import ListItemLabel, {
+	type ListItemLabelProps,
+} from '../utilities/menu-list/item-label';
 
 // The menu-list `List` accepts additional legacy consumer props (`onCancel`) and
 // is passed a callback `ref` typed against the DOM element by historical callers.
@@ -159,6 +161,20 @@ export interface MenuDropdownSelectData {
 }
 
 /**
+ * Data passed to `renderMenuItem`.
+ */
+export interface MenuDropdownRenderMenuItemData {
+	/** The item's left icon, or the checkmark when `checkmark` is set. Render it to keep the default layout. */
+	icon: ReactNode;
+	/** Whether the item is selected (`value`). */
+	isSelected: boolean;
+	/** The item object from `options`. */
+	option: MenuDropdownOption;
+	/** Index of the item within `options`. */
+	optionIndex: number;
+}
+
+/**
  * Data passed as the second argument of `onOpen`. Currently has no fields; it
  * is an object so fields can be added without changing the callback shape.
  */
@@ -243,7 +259,9 @@ export interface MenuDropdownProps {
 	isOpen?: boolean;
 	/** Text within the trigger button */
 	label?: string | ReactNode;
-	/** Custom element that overrides the default Menu Item component */
+	/**
+	 * @deprecated Use `renderMenuItem` instead, which is called as a function with `{ icon, isSelected, option, optionIndex }`.
+	 */
 	listItemRenderer?: (props: Record<string, unknown>) => ReactElement;
 	/** Menu list length */
 	length?: null | '5' | '7' | '10' | 5 | 7 | 10;
@@ -300,6 +318,10 @@ export interface MenuDropdownProps {
 	options?: MenuDropdownOption[];
 	/** If true, adds a transparent overlay when menu is open */
 	overlay?: boolean | ((isOpen: boolean, overlayEl: HTMLSpanElement) => void);
+	/**
+	 * Renders the contents of each menu item in place of the default label. Receives `{ icon, isSelected, option, optionIndex }`; render `icon` to keep the left icon or checkmark.
+	 */
+	renderMenuItem?: (data: MenuDropdownRenderMenuItemData) => ReactNode;
 	/** An object of CSS styles for the triggering button */
 	style?: React.CSSProperties;
 	/** Write "-1" if you don't want the user to tab to the button */
@@ -398,6 +420,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		label,
 		length = '5',
 		listItemRenderer,
+		renderMenuItem,
 		menuPosition: menuPositionProp = 'absolute',
 		menuStyle,
 		multiple,
@@ -520,6 +543,20 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	const getListItemRenderer = useCallback(() => {
 		return listItemRenderer ? listItemRenderer : ListItemLabel;
 	}, [listItemRenderer]);
+
+	const renderItemLabel = useMemo(
+		() =>
+			renderMenuItem
+				? ({ data, icon, index, isSelected }: ListItemLabelProps) =>
+						renderMenuItem({
+							icon,
+							isSelected: Boolean(isSelected),
+							option: data as MenuDropdownOption,
+							optionIndex: index ?? 0,
+						})
+				: undefined,
+		[renderMenuItem]
+	);
 
 	// Focus trigger
 	const setFocus = useCallback(() => {
@@ -977,6 +1014,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 				getListItemId={getListItemId}
 				itemRefs={saveRefToListItem}
 				itemRenderer={getListItemRenderer()}
+				renderItemLabel={renderItemLabel}
 				onCancel={handleCancel}
 				onSelect={handleSelect}
 				options={options}
@@ -995,6 +1033,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			getListItemId,
 			saveRefToListItem,
 			getListItemRenderer,
+			renderItemLabel,
 			handleCancel,
 			handleSelect,
 			options,

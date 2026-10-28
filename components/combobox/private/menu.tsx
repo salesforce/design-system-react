@@ -99,6 +99,16 @@ export interface MenuAssistiveText {
 	optionSelectedInMenu?: string;
 }
 
+/**
+ * Argument passed to the menu's `renderMenuItem`
+ */
+export interface MenuRenderMenuItemData {
+	/** Whether the option is selected */
+	isSelected: boolean;
+	/** The option to render. Custom renderers only receive selectable rows */
+	option: ComboboxItemOption | ComboboxDeselectOption;
+}
+
 export interface MenuLabels {
 	noOptionsFound: ReactNode | string;
 }
@@ -138,12 +148,8 @@ export interface MenuProps {
 	/** Ref for menu element */
 	menuRef?:
 		React.RefCallback<HTMLUListElement> | React.RefObject<HTMLUListElement>;
-	/** Custom menu item renderer */
-	onRenderMenuItem?: React.ComponentType<{
-		assistiveText?: MenuAssistiveText;
-		selected: boolean;
-		option: ComboboxItemOption | ComboboxDeselectOption;
-	}>;
+	/** Renders an option's content in place of the default label and icon */
+	renderMenuItem?: (data: MenuRenderMenuItemData) => ReactNode;
 	/** Callback when option is selected */
 	onSelect: (
 		event: React.MouseEvent,
@@ -221,7 +227,7 @@ const Menu: React.FC<MenuProps> = ({
 	maxWidth,
 	menuPosition,
 	menuRef,
-	onRenderMenuItem: MenuItem,
+	renderMenuItem,
 	onSelect,
 	options,
 	selection,
@@ -386,17 +392,13 @@ const Menu: React.FC<MenuProps> = ({
 					}
 					role="option"
 				>
-					{optionData.icon && !MenuItem ? (
+					{optionData.icon && !renderMenuItem ? (
 						<span className="slds-media__figure">
 							{sizeOptionIcon(optionData.icon)}
 						</span>
 					) : null}
-					{MenuItem ? (
-						<MenuItem
-							assistiveText={assistiveText}
-							selected={selected}
-							option={optionData}
-						/>
+					{renderMenuItem ? (
+						renderMenuItem({ isSelected: selected, option: optionData })
 					) : (
 						<span className="slds-media__body">
 							<span
@@ -457,12 +459,8 @@ const Menu: React.FC<MenuProps> = ({
 						/>
 					</span>
 					<span className="slds-media__body">
-						{MenuItem ? (
-							<MenuItem
-								assistiveText={assistiveText}
-								selected={selected}
-								option={optionData}
-							/>
+						{renderMenuItem ? (
+							renderMenuItem({ isSelected: selected, option: optionData })
 						) : (
 							<span
 								className={classNames('slds-truncate', {

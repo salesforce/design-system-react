@@ -23,8 +23,15 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.menuItem,
 			'menuItem',
+			'renderMenuItem',
+			createDocUrl('renderMenuItem')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.onRenderMenuItem,
 			'onRenderMenuItem',
-			createDocUrl('onRenderItem')
+			'renderMenuItem',
+			`\`renderMenuItem\` is a function called with \`{ assistiveText, isSelected, option }\`, not a component. ${createDocUrl('renderMenuItem')}`
 		);
 		deprecatedProperty(
 			COMPONENT,

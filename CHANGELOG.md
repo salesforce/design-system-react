@@ -36,6 +36,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `Tree` `onScroll` data `percentage` (use `ratio`)
 - `SplitView` `events.onOpen` and `events.onClose` (use `events.onToggle`). They are called only when `onToggle` is absent
 - `PillContainer` flat `onClickPill` and `onRequestRemovePill` props (use `events.onClickPill` and `events.onRequestRemovePill`)
+- Props renamed to follow the v11 naming rules. The old names keep working, log a one-time warning, and are ignored when the new name is passed:
+  - `SplitView` `assistiveText.toggleButtonOpen` and `toggleButtonClose`, which were inverted (use `closeToggle` and `openToggle`)
+  - `Tree` `heading` and `assistiveText.label` (use `labels.heading` and `assistiveText.heading`)
+  - `TrialBar` `labels.timeLeftUnit` and `labels.timeLeftUnitAfter` (use `labels.timeLeftAfter`)
+  - `Slider` and `Textarea` `label` and `errorText` (use `labels.label`, and `labels.error` with `hasError`)
+- Zero-argument `onRender*` functions, replaced by `ReactNode` slots: `PageHeader` `onRenderActions`/`onRenderControls` (use `actions`/`controls`), `BuilderHeaderToolbar` and `TrialBar` `onRenderActions` (use `actions`), `WelcomeMat` `onRenderInfoActions` (use `infoActions`), `WelcomeMatInfoBadge` `onCompleteRenderActions` (use `completeActions`), `SetupAssistantStep` `onRenderAction`/`onRenderContent`/`onRenderFigure` (use `action`/`content`/`figure`), `ProgressIndicator` `steps[].onRenderSetupAssistantAction` (use `steps[].setupAssistantAction`), and `Checkbox`/`Radio` `onRenderVisualPicker*` (use `visualPickerFigure*`)
+- Render props that take data, replaced by `render<Part>(data) => ReactNode` functions. They are called with one data object rather than mounted as components, so pass a component as `(data) => <MyItem {...data} />`:
+  - `Carousel` `onRenderItem` (use `renderItem({ item })`)
+  - `Combobox` `onRenderMenuItem` and `menuItem`, which took a component (use `renderMenuItem({ assistiveText, isSelected, option })`; `selected` is now `isSelected`)
+  - `SimpleDataTable` `onRenderSubHeadingRow` (use `renderSubHeadingRow`, which gets the same data without `key`; the table sets the row's key)
+  - `MenuDropdown` `listItemRenderer`, which took a component (use `renderMenuItem({ icon, isSelected, option, optionIndex })`)
+  - `SplitViewListbox` `listItem`, which took a component (use `renderListItem({ isFocused, isSelected, isUnread, item })`)
 
 ### Fixed
 

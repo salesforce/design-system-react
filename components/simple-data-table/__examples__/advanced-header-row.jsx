@@ -2,12 +2,11 @@ import React from 'react';
 
 import SimpleDataTable from '~/components/simple-data-table'; // `~` is replaced with design-system-react at runtime
 import SimpleDataTableColumn from '~/components/simple-data-table/column';
-import SimpleDataTableCell from '~/components/simple-data-table/cell';
 import IconSettings from '~/components/icon-settings';
 
-const CustomHeaderRow = ({ columns, item }) => (
+const renderHeaderRow = ({ columns, item }) => (
 	// +1 colSpan due to selection.
-	<tr key={item.id}>
+	<tr>
 		<th
 			style={{ backgroundColor: '#fff', padding: '0.5rem 1.25rem' }}
 			id={item.id}
@@ -20,7 +19,6 @@ const CustomHeaderRow = ({ columns, item }) => (
 		</th>
 	</tr>
 );
-CustomHeaderRow.displayName = SimpleDataTableCell.displayName;
 
 class Example extends React.Component {
 	static displayName = 'SimpleDataTableExample';
@@ -132,7 +130,7 @@ class Example extends React.Component {
 						onRowChange={this.handleChanged}
 						selection={this.state.selection}
 						selectRows="checkbox"
-						onRenderSubHeadingRow={CustomHeaderRow}
+						renderSubHeadingRow={renderHeaderRow}
 					>
 						<SimpleDataTableColumn
 							label="Name"

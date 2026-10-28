@@ -500,7 +500,35 @@ describe('SLDS Carousel', () => {
 			expect(callArgs[1].item.id).toBe(1);
 		});
 
-		it('calls onRenderItem with an { item } object', () => {
+		it('calls renderItem with an { item } object', () => {
+			const renderItem = vi.fn(({ item }) => (
+				<span className="custom-item">{item.heading}</span>
+			));
+			const { container } = renderCarousel({
+				itemsPerPanel: 1,
+				renderItem,
+			});
+
+			expect(container.querySelectorAll('.custom-item')).toHaveLength(
+				items.length
+			);
+			const [data] = renderItem.mock.calls[0];
+			expect(data.item).toEqual(
+				expect.objectContaining({
+					carouselId: defaultCarouselProps.id,
+					heading: items[0].heading,
+					id: items[0].id,
+					isInCurrentPanel: true,
+					panelIndex: 0,
+					src: items[0].src,
+				})
+			);
+		});
+
+		it('still calls the deprecated onRenderItem and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
 			const onRenderItem = vi.fn(({ item }) => (
 				<span className="custom-item">{item.heading}</span>
 			));
@@ -512,17 +540,31 @@ describe('SLDS Carousel', () => {
 			expect(container.querySelectorAll('.custom-item')).toHaveLength(
 				items.length
 			);
-			const [data] = onRenderItem.mock.calls[0];
-			expect(data.item).toEqual(
-				expect.objectContaining({
-					carouselId: defaultCarouselProps.id,
-					heading: items[0].heading,
-					id: items[0].id,
-					isInCurrentPanel: true,
-					panelIndex: 0,
-					src: items[0].src,
-				})
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(
+				messages.some(
+					(m) => m.includes('`onRenderItem`') && m.includes('`renderItem`')
+				)
+			).toBe(true);
+			consoleError.mockRestore();
+		});
+
+		it('prefers renderItem over onRenderItem', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const onRenderItem = vi.fn(() => <span className="old-item" />);
+			const { container } = renderCarousel({
+				itemsPerPanel: 1,
+				onRenderItem,
+				renderItem: () => <span className="new-item" />,
+			});
+
+			expect(container.querySelectorAll('.new-item')).toHaveLength(
+				items.length
 			);
+			expect(onRenderItem).not.toHaveBeenCalled();
+			consoleError.mockRestore();
 		});
 	});
 

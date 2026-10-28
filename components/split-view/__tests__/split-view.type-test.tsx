@@ -23,10 +23,22 @@ const LeadItem = ({ item }: { item: Lead }) => <span>{item.company}</span>;
 export const listbox = (
 	<SplitViewListbox
 		events={{ onSelect: (_event, { item }) => item?.company }}
-		listItem={LeadItem}
 		options={leads}
+		renderListItem={({ item }) => <span>{item.company}</span>}
 		selection={[leads[0]]}
 	/>
+);
+
+export const mismatchedRenderItem = (
+	<SplitViewListbox
+		options={leads}
+		// @ts-expect-error the item type flows from `options` into `renderListItem`
+		renderListItem={({ item }) => <span>{item.ranking}</span>}
+	/>
+);
+
+export const deprecatedListItem = (
+	<SplitViewListbox listItem={LeadItem} options={leads} />
 );
 
 export const mismatchedItem = (

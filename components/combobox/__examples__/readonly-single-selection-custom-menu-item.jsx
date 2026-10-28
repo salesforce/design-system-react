@@ -64,24 +64,23 @@ const accountsWithIcon = accounts.map((elem) => ({
 	},
 }));
 
-const CustomMenuItem = (props) => (
+const renderMenuItem = ({ assistiveText, isSelected, option }) => (
 	<span className="slds-media">
 		<span className="slds-m-left_x-small slds-m-right_x-small">
-			{props.option.icon}
+			{option.icon}
 		</span>
 		<span className="slds-media__body">
-			<span className="slds-truncate" title={props.option.label}>
-				{props.selected ? (
+			<span className="slds-truncate" title={option.label}>
+				{isSelected ? (
 					<span className="slds-assistive-text">
-						{props.assistiveText.optionSelectedInMenu}
+						{assistiveText.optionSelectedInMenu}
 					</span>
 				) : null}{' '}
-				{props.option.label}
+				{option.label}
 			</span>
 		</span>
 	</span>
 );
-CustomMenuItem.displayName = 'CustomMenuItem';
 
 class Example extends React.Component {
 	constructor(props) {
@@ -118,7 +117,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholderReadOnly: 'Select company',
 					}}
-					onRenderMenuItem={CustomMenuItem}
+					renderMenuItem={renderMenuItem}
 					options={accountsWithIcon}
 					selection={this.state.selection}
 					value={this.state.inputValue}

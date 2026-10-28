@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Button from '~/components/button';
 import Dropdown from '~/components/menu-dropdown';
@@ -154,27 +153,18 @@ const headerTitle = (
  * Custom list item
  * @param props
  */
-const CustomListItem = (props) => (
+const renderListItem = ({ item }) => (
 	<div>
 		<Icon
 			category="action"
-			name={props.item.status === 'Contacted' ? 'check' : 'call'}
+			name={item.status === 'Contacted' ? 'check' : 'call'}
 			size="x-small"
 		/>
 		<span className="slds-text-heading_small slds-m-left_medium">
-			{props.item.name}
+			{item.name}
 		</span>
 	</div>
 );
-
-CustomListItem.propsTypes = {
-	item: PropTypes.shape({
-		status: PropTypes.string,
-		name: PropTypes.string,
-	}),
-};
-
-CustomListItem.displayName = 'CustomListItem';
 
 class Example extends React.Component {
 	constructor(props) {
@@ -242,7 +232,7 @@ class Example extends React.Component {
 				}}
 				selection={this.state.selected}
 				unread={this.state.unread}
-				listItem={CustomListItem}
+				renderListItem={renderListItem}
 			/>,
 		];
 	}

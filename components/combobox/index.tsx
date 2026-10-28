@@ -12,6 +12,7 @@ export type {
 	ComboboxAssistiveText,
 	ComboboxLabels,
 	ComboboxEvents,
+	ComboboxRenderMenuItemData,
 } from './combobox';
 export type {
 	ComboboxOption,
