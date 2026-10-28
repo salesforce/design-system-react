@@ -262,7 +262,7 @@ export interface MenuDropdownProps {
 	/**
 	 * @deprecated Use `renderMenuItem` instead, which is called as a function with `{ icon, isSelected, option, optionIndex }`.
 	 */
-	listItemRenderer?: (props: Record<string, unknown>) => ReactElement;
+	listItemRenderer?: (props: Record<string, unknown>) => ReactNode;
 	/** Menu list length */
 	length?: null | '5' | '7' | '10' | 5 | 7 | 10;
 	/** Position strategy for the menu */

@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **BREAKING**: `SetupAssistant` `onStepToggleIsOpen` and `SetupAssistantStep` `onToggleIsOpen` data `isOpen` is the requested state. Replace `expanded[data.index] = !data.isOpen` with `expanded[data.index] = data.isOpen`. `data.step` is typed as the step's props, which is what it has always been at runtime
 - **BREAKING**: `Popover` `onRequestClose` data always includes a `trigger` from `PopoverRequestCloseTrigger`. A trigger click while open reports `'triggerClick'` and a hover close reports `'mouseLeave'` (both passed `{}` before), and Escape passes the keydown event instead of `undefined`. `onOpen(undefined, { portal })` and `onClose(undefined, { componentWillUnmount })` have exported data types
 - `DatePicker`: Down/Up in the closed input go through `onRequestOpen`, and Escape/Enter in the input go through `onRequestClose`, instead of setting internal state directly. Controlled pickers now open from the keyboard; uncontrolled pickers that pass `onRequestOpen` open from your handler, as they already did for clicks
+- Content props that are only rendered are typed `ReactNode` instead of `ReactElement`, so strings, fragments, arrays and `null` type-check: `SplitView` `master`/`detail`, `PageHeader` `trail`, `TabsPanel` `label`, `SetupAssistantStep` `figure` (an `Icon` is still resized to `small`), and the return type of the deprecated `Carousel` `onRenderItem`, `SetupAssistantStep` `onRenderFigure` and `MenuDropdown` `listItemRenderer`
 
 ### Deprecated
 

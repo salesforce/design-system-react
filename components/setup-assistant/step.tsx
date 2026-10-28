@@ -89,13 +89,13 @@ export interface StepProps {
 	/**
 	 * Content within the media figure. Expects an Icon or ProgressRing component. An Icon is rendered at size `small`.
 	 */
-	figure?: React.ReactElement | null;
+	figure?: ReactNode;
 	/** @deprecated Use `action` instead. */
 	onRenderAction?: () => ReactNode;
 	/** @deprecated Use `content` instead. */
 	onRenderContent?: () => ReactNode;
 	/** @deprecated Use `figure` instead. */
-	onRenderFigure?: () => React.ReactElement | null;
+	onRenderFigure?: () => ReactNode;
 	/**
 	 * Function to handle requests to expand / collapse the step. `data.isOpen` is the requested (next) state.
 	 */
@@ -220,8 +220,7 @@ class Step extends React.Component<StepProps, StepState> {
 				this.props.figure ?? this.props.onRenderFigure?.() ?? null;
 
 			if (
-				renderedFigure &&
-				renderedFigure.type &&
+				React.isValidElement(renderedFigure) &&
 				(renderedFigure.type as { displayName?: string }).displayName === ICON
 			) {
 				const figureProps = renderedFigure.props as {

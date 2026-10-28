@@ -6,7 +6,7 @@ import React, {
 	useId,
 	useCallback,
 	useEffect,
-	type ReactElement,
+	type ReactNode,
 	type MouseEvent,
 } from 'react';
 import classNames from 'classnames';
@@ -70,7 +70,7 @@ export interface SplitViewProps {
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** Detail panel content (required) */
-	detail: ReactElement | ReactElement[];
+	detail: ReactNode;
 	/**
 	 * **Event handlers**
 	 * * `onToggle`: Called with `(event, { isOpen })` when the toggle button is clicked; `isOpen` is the requested (next) state.
@@ -82,7 +82,7 @@ export interface SplitViewProps {
 	/** Whether the split view is open */
 	isOpen?: boolean;
 	/** Master panel content (required) */
-	master: ReactElement | ReactElement[];
+	master: ReactNode;
 	/** Width of the master section */
 	masterWidth?: string;
 }

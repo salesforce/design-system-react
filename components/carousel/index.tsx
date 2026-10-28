@@ -145,7 +145,7 @@ export interface CarouselProps {
 	/** Number of items per panel */
 	itemsPerPanel?: number;
 	/** @deprecated Use `renderItem` instead. */
-	onRenderItem?: (data: CarouselRenderItemData) => ReactElement;
+	onRenderItem?: (data: CarouselRenderItemData) => ReactNode;
 	/**
 	 * Called when autoplay toggle is requested. `data.isAutoplayOn` is the requested (next) state.
 	 * `event` is `undefined` when autoplay stops itself at the last panel.

@@ -73,7 +73,7 @@ export interface PageHeaderProps {
 	/** Title text or element */
 	title?: ReactNode;
 	/** Breadcrumb trail */
-	trail?: ReactElement[];
+	trail?: ReactNode[];
 	/** Page header variant */
 	variant?: PageHeaderVariant;
 }

@@ -39,7 +39,7 @@ export interface PageHeaderVariantProps {
 	/** Dropdown for the object-home name switcher */
 	nameSwitcherDropdown?: ReactNode;
 	/** An array of react elements, presumably anchor <a> elements. */
-	trail?: ReactElement[];
+	trail?: ReactNode[];
 	/** The component variant */
 	variant?: PageHeaderVariant;
 	/** Content for the actions column */
