@@ -10,7 +10,10 @@ import SLDS_ICONS_DOCTYPE from '../../../icons/doctype';
 import SLDS_ICONS_STANDARD from '../../../icons/standard';
 import { DIRECTIONS } from '../UNSAFE_direction';
 import LanguageDirection from '../UNSAFE_direction/private/language-direction';
-import { IconSettingsContext, type IconSettingsContextValue } from '../../icon-settings/index';
+import {
+	IconSettingsContext,
+	type IconSettingsContextValue,
+} from '../../icon-settings/index';
 import type { IconCategory } from '../../../types/common';
 
 /**
@@ -33,7 +36,10 @@ type IconBundle = Record<string, InlineIconData> & { viewBox?: string };
 /**
  * Props for UtilityIcon component
  */
-export interface UtilityIconProps extends Omit<SVGProps<SVGSVGElement>, 'name'> {
+export interface UtilityIconProps extends Omit<
+	SVGProps<SVGSVGElement>,
+	'name'
+> {
 	/** Assistive text for accessibility (not used directly, passed through) */
 	assistiveText?: Record<string, string>;
 	/** Icon category */
@@ -102,7 +108,9 @@ const UtilityIcon = ({
 		modifiedPath = context.onRequestIconPath({ category, name });
 	} else if (context[`${category}Sprite` as keyof IconSettingsContextValue]) {
 		// Use category sprite file from IconSettings if present
-		const sprite = context[`${category}Sprite` as keyof IconSettingsContextValue] as string;
+		const sprite = context[
+			`${category}Sprite` as keyof IconSettingsContextValue
+		] as string;
 		modifiedPath = `${sprite}#${name}`;
 	} else if (context.iconPath) {
 		// Otherwise, use external URLs for icons
@@ -113,12 +121,19 @@ const UtilityIcon = ({
 
 	if (inlineData) {
 		const { className, style, ...otherRest } = rest;
-		return <Svg data={inlineData} name={name} className={className} style={style} />;
+		return (
+			<Svg data={inlineData} name={name} className={className} style={style} />
+		);
 	}
 
 	const { className: svgClassName, style: svgStyle, ...svgRest } = rest;
 	return (
-		<svg key={`${name}_${category}`} className={svgClassName} style={svgStyle} {...svgRest}>
+		<svg
+			key={`${name}_${category}`}
+			className={svgClassName}
+			style={svgStyle}
+			{...svgRest}
+		>
 			<use href={modifiedPath} />
 		</svg>
 	);
@@ -127,4 +142,3 @@ const UtilityIcon = ({
 UtilityIcon.displayName = 'UtilityIcon';
 
 export default LanguageDirection(UtilityIcon);
-
