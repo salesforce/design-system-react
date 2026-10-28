@@ -17,13 +17,13 @@ describe('SLDSBuilderHeader', () => {
 		it('triggers when Back link is clicked', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<BuilderHeader
-						events={{ onClickBack, onClickHelp }}
-					/>
+					<BuilderHeader events={{ onClickBack, onClickHelp }} />
 				</IconSettings>
 			);
 
-			const links = container.querySelectorAll('.slds-builder-header__item-action');
+			const links = container.querySelectorAll(
+				'.slds-builder-header__item-action'
+			);
 			expect(links.length).toBeGreaterThanOrEqual(2);
 
 			// First link should be Back
@@ -34,13 +34,13 @@ describe('SLDSBuilderHeader', () => {
 		it('triggers when Help link is clicked', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
-					<BuilderHeader
-						events={{ onClickBack, onClickHelp }}
-					/>
+					<BuilderHeader events={{ onClickBack, onClickHelp }} />
 				</IconSettings>
 			);
 
-			const links = container.querySelectorAll('.slds-builder-header__item-action');
+			const links = container.querySelectorAll(
+				'.slds-builder-header__item-action'
+			);
 			expect(links.length).toBeGreaterThanOrEqual(2);
 
 			// Second link should be Help

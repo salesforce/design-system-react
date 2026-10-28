@@ -6,28 +6,36 @@ import Slider from '../';
 describe('SLDSSlider', () => {
 	describe('Standard Slider with Label', () => {
 		it('has type of "range"', () => {
-			const { container } = render(<Slider label="Slider Label" id="custom-id" />);
+			const { container } = render(
+				<Slider label="Slider Label" id="custom-id" />
+			);
 
 			const slider = container.querySelector('input');
 			expect(slider).toHaveAttribute('type', 'range');
 		});
 
 		it('is wrapped in div with class "slds-form-element"', () => {
-			const { container } = render(<Slider label="Slider Label" id="custom-id" />);
+			const { container } = render(
+				<Slider label="Slider Label" id="custom-id" />
+			);
 
 			const wrapper = container.querySelector('.slds-form-element');
 			expect(wrapper).toHaveClass('slds-form-element');
 		});
 
 		it('renders label', () => {
-			const { container } = render(<Slider label="Slider Label" id="custom-id" />);
+			const { container } = render(
+				<Slider label="Slider Label" id="custom-id" />
+			);
 
 			const labelText = container.querySelector('.slds-slider-label__label');
 			expect(labelText.textContent).toBe('Slider Label');
 		});
 
 		it('renders slider element with class "slds-slider"', () => {
-			const { container } = render(<Slider label="Slider Label" id="custom-id" />);
+			const { container } = render(
+				<Slider label="Slider Label" id="custom-id" />
+			);
 
 			const slider = container.querySelector('input');
 			// NOTE: The input element has class slds-slider__range, not slds-slider
@@ -35,21 +43,27 @@ describe('SLDSSlider', () => {
 		});
 
 		it('has an id', () => {
-			const { container } = render(<Slider label="Slider Label" id="custom-id" />);
+			const { container } = render(
+				<Slider label="Slider Label" id="custom-id" />
+			);
 
 			const slider = container.querySelector('input');
 			expect(slider).toHaveAttribute('id');
 		});
 
 		it('can pass custom id', () => {
-			const { container } = render(<Slider label="Slider Label" id="custom-id" />);
+			const { container } = render(
+				<Slider label="Slider Label" id="custom-id" />
+			);
 
 			const slider = container.querySelector('input');
 			expect(slider).toHaveAttribute('id', 'custom-id');
 		});
 
 		it('has associated label for tag pointing to id of slider', () => {
-			const { container } = render(<Slider label="Slider Label" id="custom-id" />);
+			const { container } = render(
+				<Slider label="Slider Label" id="custom-id" />
+			);
 
 			const label = container.querySelector('.slds-form-element__label');
 			const slider = container.querySelector('input');
@@ -267,11 +281,7 @@ describe('SLDSSlider', () => {
 	describe('Required slider in Error State', () => {
 		it('slider wrapper has class "slds-has-error"', () => {
 			const { container } = render(
-				<Slider
-					label="Slider Label"
-					required
-					errorText="Error Message"
-				/>
+				<Slider label="Slider Label" required errorText="Error Message" />
 			);
 
 			const wrapper = container.querySelector('.slds-form-element');
@@ -280,11 +290,7 @@ describe('SLDSSlider', () => {
 
 		it('renders error message', () => {
 			const { container } = render(
-				<Slider
-					label="Slider Label"
-					required
-					errorText="Error Message"
-				/>
+				<Slider label="Slider Label" required errorText="Error Message" />
 			);
 
 			const error = container.querySelector('.slds-form-element__help');
@@ -293,11 +299,7 @@ describe('SLDSSlider', () => {
 
 		it('has associated aria-describedby pointing to id of error message', () => {
 			const { container } = render(
-				<Slider
-					label="Slider Label"
-					required
-					errorText="Error Message"
-				/>
+				<Slider label="Slider Label" required errorText="Error Message" />
 			);
 
 			const slider = container.querySelector('input');

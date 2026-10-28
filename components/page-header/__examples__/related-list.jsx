@@ -113,8 +113,12 @@ class Example extends React.Component {
 		);
 
 		const trail = [
-			<a key="accounts" href="#accounts">Accounts</a>,
-			<a key="company-one" href="#company-one">Company One</a>,
+			<a key="accounts" href="#accounts">
+				Accounts
+			</a>,
+			<a key="company-one" href="#company-one">
+				Company One
+			</a>,
 		];
 
 		return (

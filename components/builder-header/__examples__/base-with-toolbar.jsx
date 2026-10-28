@@ -1,4 +1,3 @@
-
 import IconSettings from '../../icon-settings';
 import Button from '../../button';
 import ButtonGroup from '../../button-group';

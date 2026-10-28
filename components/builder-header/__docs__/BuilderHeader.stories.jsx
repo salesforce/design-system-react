@@ -156,7 +156,12 @@ const SaveActions = () => (
 
 const builderProps = {
 	assistiveText: { backIcon: 'Back', helpIcon: 'Help', icon: 'Builder' },
-	labels: { back: 'Back', help: 'Help', pageType: 'Page Type', title: 'App Name' },
+	labels: {
+		back: 'Back',
+		help: 'Help',
+		pageType: 'Page Type',
+		title: 'App Name',
+	},
 	style: { position: 'relative' },
 };
 

@@ -96,9 +96,7 @@ class InfoBadge extends React.Component<WelcomeMatInfoBadgeProps> {
 					/>
 				</div>
 				{this.props.children}
-				{this.props.isComplete
-					? this.props.onCompleteRenderActions?.()
-					: null}
+				{this.props.isComplete ? this.props.onCompleteRenderActions?.() : null}
 			</div>
 		);
 	}

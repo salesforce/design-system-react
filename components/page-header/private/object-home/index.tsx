@@ -40,9 +40,12 @@ const ObjectHome = (props: PageHeaderVariantProps) => {
 			);
 		}
 
-		icon = React.cloneElement(props.icon as ReactElement, {
-			className: iconClasses,
-		} as { className: string });
+		icon = React.cloneElement(
+			props.icon as ReactElement,
+			{
+				className: iconClasses,
+			} as { className: string }
+		);
 	}
 
 	return (

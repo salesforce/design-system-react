@@ -91,4 +91,3 @@ export const LargeDataset: Story = {
 export const HighlightedSearch: Story = {
 	render: () => <DefaultExample action={action} searchable />,
 };
-

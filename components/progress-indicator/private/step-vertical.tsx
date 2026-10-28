@@ -81,7 +81,11 @@ class StepVertical extends React.Component<StepVerticalProps> {
 	/**
 	 * stepIcon represents the icon used for each step.
 	 */
-	stepIcon = (renderIcon: boolean, status: string, props: StepVerticalProps) => {
+	stepIcon = (
+		renderIcon: boolean,
+		status: string,
+		props: StepVerticalProps
+	) => {
 		const data: StepEventData = {
 			isSelected: !!this.props.isSelected,
 			isError: !!this.props.isError,

@@ -73,18 +73,3 @@ const TrialBar = ({
 TrialBar.displayName = TRIAL_BAR;
 
 export default TrialBar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
