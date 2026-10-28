@@ -156,4 +156,70 @@ describe('SplitView', () => {
 			expect(onClose).not.toHaveBeenCalled();
 		});
 	});
+
+	describe('assistiveText', () => {
+		it('labels the toggle with closeToggle while open and openToggle while closed', () => {
+			const { container } = renderSplitView({
+				assistiveText: { closeToggle: 'Hide list', openToggle: 'Show list' },
+			});
+
+			const toggle = getToggleButton(container);
+			expect(toggle).toHaveAttribute('aria-expanded', 'true');
+			expect(toggle).toHaveAttribute('title', 'Hide list');
+
+			fireEvent.click(toggle);
+
+			expect(toggle).toHaveAttribute('aria-expanded', 'false');
+			expect(toggle).toHaveAttribute('title', 'Show list');
+		});
+
+		it('uses English defaults', () => {
+			const { container } = renderSplitView();
+
+			const toggle = getToggleButton(container);
+			expect(toggle).toHaveAttribute('title', 'Close split view');
+			fireEvent.click(toggle);
+			expect(toggle).toHaveAttribute('title', 'Open split view');
+		});
+
+		it('maps the deprecated inverted keys to the new keys and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			const { container } = renderSplitView({
+				assistiveText: {
+					toggleButtonOpen: 'Hide list',
+					toggleButtonClose: 'Show list',
+				},
+			});
+
+			const toggle = getToggleButton(container);
+			expect(toggle).toHaveAttribute('title', 'Hide list');
+			fireEvent.click(toggle);
+			expect(toggle).toHaveAttribute('title', 'Show list');
+
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(
+				messages.some((m) => m.includes('assistiveText.toggleButtonOpen'))
+			).toBe(true);
+			expect(
+				messages.some((m) => m.includes('assistiveText.toggleButtonClose'))
+			).toBe(true);
+		});
+
+		it('prefers the new keys over the deprecated ones', () => {
+			vi.spyOn(console, 'error').mockImplementation(() => {});
+
+			const { container } = renderSplitView({
+				assistiveText: {
+					closeToggle: 'New close',
+					toggleButtonOpen: 'Old close',
+				},
+			});
+
+			const toggle = getToggleButton(container);
+			expect(toggle).toHaveAttribute('title', 'New close');
+		});
+	});
 });

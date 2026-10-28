@@ -3,6 +3,7 @@
 
 import {
 	useId,
+	useEffect,
 	forwardRef,
 	type ChangeEvent,
 	type FocusEvent,
@@ -27,10 +28,23 @@ export interface TextareaAssistiveText {
 }
 
 /**
+ * Labels for Textarea
+ */
+export interface TextareaLabels {
+	/** Error message shown below the textarea while `hasError` is true */
+	error?: ReactNode;
+	/** Visible label above the textarea */
+	label?: ReactNode;
+}
+
+/**
  * Props for the Textarea component
  */
 export interface TextareaProps {
-	/** Assistive text for accessibility */
+	/**
+	 * **Assistive text for accessibility**
+	 * * `label`: Visually hidden label. Use instead of `labels.label`.
+	 */
 	assistiveText?: TextareaAssistiveText;
 	/** aria-activedescendant for composite widgets */
 	'aria-activedescendant'?: string;
@@ -60,12 +74,20 @@ export interface TextareaProps {
 	classNameContainer?: string | string[] | Record<string, boolean>;
 	/** Disable the textarea */
 	disabled?: boolean;
-	/** Error message (shows error state) */
+	/** @deprecated Use `labels.error` and `hasError` instead. */
 	errorText?: string;
+	/** Puts the textarea in an error state and shows `labels.error` */
+	hasError?: boolean;
 	/** Unique ID */
 	id?: string;
-	/** Label above textarea */
+	/** @deprecated Use `labels.label` instead. */
 	label?: string;
+	/**
+	 * **Text labels for internationalization**
+	 * * `error`: Error message shown below the textarea while `hasError` is true
+	 * * `label`: Visible label. Use `assistiveText.label` for a visually hidden label.
+	 */
+	labels?: TextareaLabels;
 	/** Maximum character count */
 	maxLength?: number;
 	/** Form parameter name */
@@ -121,8 +143,10 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 			classNameContainer,
 			disabled,
 			errorText,
+			hasError: hasErrorProp,
 			id: propId,
-			label,
+			label: labelProp,
+			labels,
 			maxLength,
 			name,
 			onBlur,
@@ -157,14 +181,28 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
 		const assistiveTextLabel = assistiveText?.label;
 
+		// `label` is deprecated
+		const label = labels?.label ?? labelProp;
 		const labelText = label || assistiveTextLabel;
+
+		// `errorText` is deprecated: it sets both the error state and the message
+		const hasError = hasErrorProp ?? !!errorText;
+		const errorMessage = hasError ? (labels?.error ?? errorText) : undefined;
+
+		useEffect(() => {
+			checkProps(
+				TEXTAREA,
+				{ assistiveText, errorText, label: labelProp, labels },
+				componentDoc
+			);
+		}, [assistiveText, errorText, labelProp, labels]);
 
 		return (
 			<div
 				className={classNames(
 					'slds-form-element',
 					{
-						'slds-has-error': errorText,
+						'slds-has-error': hasError,
 					},
 					classNameContainer as string
 				)}
@@ -216,7 +254,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 						value={value}
 						defaultValue={defaultValue}
 						aria-describedby={
-							errorText
+							errorMessage
 								? getErrorId()
 								: ((ariaProps as Record<string, unknown>)[
 										'aria-describedby'
@@ -225,9 +263,9 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 						{...ariaProps}
 					/>
 				</div>
-				{errorText && (
+				{errorMessage && (
 					<div id={getErrorId()} className="slds-form-element__help">
-						{errorText}
+						{errorMessage}
 					</div>
 				)}
 				{children}

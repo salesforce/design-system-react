@@ -56,7 +56,7 @@ class Example extends React.Component {
 							title="Home"
 						/>
 					}
-					onRenderActions={actions}
+					actions={actions()}
 					title="Home"
 					trail={[
 						<a key="setup" href="#setup">

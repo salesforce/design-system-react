@@ -63,7 +63,7 @@ export const AssistiveHeading: Story = {
 		<DefaultExample
 			action={action}
 			noHeading
-			assistiveText={{ label: 'Miscellaneous Foods' }}
+			assistiveText={{ heading: 'Miscellaneous Foods' }}
 		/>
 	),
 };

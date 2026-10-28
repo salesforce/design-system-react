@@ -1,9 +1,10 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useEffect, useId, useMemo } from 'react';
+import React, { useEffect, useId, useMemo, type ReactNode } from 'react';
 import find from 'lodash.find';
 import { PROGRESS_INDICATOR } from '../../utilities/constants';
+import componentDoc from './component.json';
 
 // Child components
 import Step from './private/step';
@@ -46,6 +47,12 @@ export interface ProgressStep {
 	label: string;
 	/** Optional assistive text override */
 	assistiveText?: string;
+	/** Action shown next to the step label. Only used by the `setup-assistant` variant. */
+	setupAssistantAction?: ReactNode;
+	/** Estimated time shown next to the step label. Only used by the `setup-assistant` variant. */
+	setupAssistantEstimatedTime?: ReactNode;
+	/** @deprecated Use `setupAssistantAction` instead. */
+	onRenderSetupAssistantAction?: ReactNode;
 }
 
 /**
@@ -225,19 +232,28 @@ const ProgressIndicator = ({
 	const hasDisabledSteps = Boolean(propDisabledSteps?.length);
 	const hasErrorSteps = Boolean(propErrorSteps?.length);
 	const hasTooltipIsOpenSteps = Boolean(tooltipIsOpenSteps?.length);
+	const hasDeprecatedSetupAssistantAction = Boolean(
+		propSteps?.some((step) => step?.onRenderSetupAssistantAction !== undefined)
+	);
 	useEffect(() => {
-		checkProps(PROGRESS_INDICATOR, {
-			disabledSteps: hasDisabledSteps,
-			errorSteps: hasErrorSteps,
-			orientation: propOrientation,
-			tooltipIsOpenSteps: hasTooltipIsOpenSteps,
-			tooltipPosition: propTooltipPosition,
-			type,
-			variant,
-		});
+		checkProps(
+			PROGRESS_INDICATOR,
+			{
+				disabledSteps: hasDisabledSteps,
+				errorSteps: hasErrorSteps,
+				hasDeprecatedSetupAssistantAction,
+				orientation: propOrientation,
+				tooltipIsOpenSteps: hasTooltipIsOpenSteps,
+				tooltipPosition: propTooltipPosition,
+				type,
+				variant,
+			},
+			componentDoc
+		);
 	}, [
 		hasDisabledSteps,
 		hasErrorSteps,
+		hasDeprecatedSetupAssistantAction,
 		hasTooltipIsOpenSteps,
 		propOrientation,
 		propTooltipPosition,

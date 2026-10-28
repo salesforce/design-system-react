@@ -42,8 +42,15 @@ export interface FlattenedNode {
 }
 
 export interface TreeAssistiveText {
-	/** For users of assistive technology, if set the heading will be hidden */
+	/** Heading for users of assistive technology. Use instead of `labels.heading` to hide the heading visually. */
+	heading?: string;
+	/** @deprecated Use `assistiveText.heading` instead. */
 	label?: string;
+}
+
+export interface TreeLabels {
+	/** Visible tree heading that describes its contents */
+	heading?: ReactNode;
 }
 
 /**

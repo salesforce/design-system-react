@@ -8,6 +8,8 @@ import Icon from '../icon';
 
 import { WELCOME_MAT_BADGE } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 const displayName = WELCOME_MAT_BADGE;
 
@@ -24,6 +26,10 @@ export interface WelcomeMatInfoBadgeProps {
 	 */
 	children?: ReactNode;
 	/**
+	 * Actions shown when the trail is complete (`isComplete` is true)
+	 */
+	completeActions?: ReactNode;
+	/**
 	 * CSS class names to be added to the container element. `array`, `object`, or `string` are accepted.
 	 */
 	className?: unknown[] | Record<string, unknown> | string;
@@ -39,9 +45,7 @@ export interface WelcomeMatInfoBadgeProps {
 	 * Whether the trail is completed
 	 */
 	isComplete?: boolean;
-	/**
-	 * Actions to be rendered on completion of the trail
-	 */
+	/** @deprecated Use `completeActions` instead. */
 	onCompleteRenderActions?: () => ReactNode;
 }
 
@@ -63,6 +67,14 @@ class InfoBadge extends React.Component<WelcomeMatInfoBadgeProps> {
 		super(props);
 
 		this.generatedId = generateId();
+	}
+
+	componentDidMount() {
+		checkProps(WELCOME_MAT_BADGE, this.props, componentDoc);
+	}
+
+	componentDidUpdate() {
+		checkProps(WELCOME_MAT_BADGE, this.props, componentDoc);
 	}
 
 	/**
@@ -96,7 +108,10 @@ class InfoBadge extends React.Component<WelcomeMatInfoBadgeProps> {
 					/>
 				</div>
 				{this.props.children}
-				{this.props.isComplete ? this.props.onCompleteRenderActions?.() : null}
+				{this.props.isComplete
+					? (this.props.completeActions ??
+						this.props.onCompleteRenderActions?.())
+					: null}
 			</div>
 		);
 	}

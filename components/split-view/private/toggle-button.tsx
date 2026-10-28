@@ -16,10 +16,12 @@ export interface ToggleButtonProps {
 	ariaControls: string;
 	/**
 	 * **Assistive text for accessibility**
-	 * * `toggleButtonOpen`: The button used to open the split view.
-	 * * `toggleButtonClose`: The button used to close the split view.
+	 * * `closeToggle`: Text while the split view is open (the button closes it).
+	 * * `openToggle`: Text while the split view is closed (the button opens it).
 	 */
-	assistiveText?: SplitViewAssistiveText;
+	assistiveText: Required<
+		Pick<SplitViewAssistiveText, 'closeToggle' | 'openToggle'>
+	>;
 	/**
 	 * **Event Callbacks**
 	 * * `onClick`: Called when the button is clicked.
@@ -35,13 +37,13 @@ export interface ToggleButtonProps {
 
 const SplitViewToggleButton = ({
 	isOpen,
-	assistiveText = {},
+	assistiveText,
 	ariaControls,
 	events,
 }: ToggleButtonProps) => {
 	const toggleAssistiveText = isOpen
-		? assistiveText.toggleButtonOpen
-		: assistiveText.toggleButtonClose;
+		? assistiveText.closeToggle
+		: assistiveText.openToggle;
 
 	return (
 		<Button

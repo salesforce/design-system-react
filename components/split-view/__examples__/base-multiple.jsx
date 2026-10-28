@@ -213,8 +213,8 @@ class Example extends React.Component {
 		return [
 			<SplitViewHeader
 				key="1"
-				onRenderActions={headerActions}
-				onRenderControls={headerControls}
+				actions={headerActions()}
+				controls={headerControls()}
 				icon={
 					<Icon
 						assistiveText={{ label: 'User' }}

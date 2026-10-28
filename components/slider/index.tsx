@@ -4,12 +4,16 @@
 import React, {
 	useId,
 	useCallback,
+	useEffect,
 	type ChangeEvent,
 	type FormEvent,
+	type ReactNode,
 } from 'react';
 import classNames from 'classnames';
 import { SLIDER } from '../../utilities/constants';
 import getAriaProps from '../../utilities/get-aria-props';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 /**
  * Slider size options
@@ -27,12 +31,26 @@ export interface SliderAssistiveText {
 }
 
 /**
+ * Labels for Slider
+ */
+export interface SliderLabels {
+	/** Error message shown below the slider while `hasError` is true */
+	error?: ReactNode;
+	/** Visible label */
+	label?: ReactNode;
+}
+
+/**
  * Props for the Slider component
  */
 export interface SliderProps {
 	/** ARIA describedby attribute */
 	'aria-describedby'?: string;
-	/** Assistive text for accessibility */
+	/**
+	 * **Assistive text for accessibility**
+	 * * `disabled`: Read after the range while the slider is disabled
+	 * * `label`: Visually hidden label. Use instead of `labels.label`.
+	 */
 	assistiveText?: SliderAssistiveText;
 	/** CSS classes for the container */
 	classNameContainer?: string | string[] | Record<string, boolean>;
@@ -40,12 +58,20 @@ export interface SliderProps {
 	defaultValue?: number;
 	/** Whether the slider is disabled */
 	disabled?: boolean;
-	/** Error message text */
+	/** @deprecated Use `labels.error` and `hasError` instead. */
 	errorText?: string;
+	/** Puts the slider in an error state and shows `labels.error` */
+	hasError?: boolean;
 	/** HTML id attribute */
 	id?: string;
-	/** Label text */
+	/** @deprecated Use `labels.label` instead. */
 	label?: string;
+	/**
+	 * **Text labels for internationalization**
+	 * * `error`: Error message shown below the slider while `hasError` is true
+	 * * `label`: Visible label. Use `assistiveText.label` for a visually hidden label.
+	 */
+	labels?: SliderLabels;
 	/** Maximum value (default: 100) */
 	max?: number;
 	/** Minimum value (default: 0) */
@@ -87,8 +113,10 @@ const Slider = ({
 	defaultValue,
 	disabled,
 	errorText,
+	hasError: hasErrorProp,
 	id: propId,
-	label,
+	label: labelProp,
+	labels,
 	max = 100,
 	min = 0,
 	name,
@@ -104,9 +132,23 @@ const Slider = ({
 	const generatedErrorId = useId();
 
 	const id = propId || generatedId;
-	const errorId = ariaDescribedBy || (errorText ? generatedErrorId : undefined);
+	// `errorText` is deprecated: it sets both the error state and the message
+	const hasError = hasErrorProp ?? !!errorText;
+	const errorMessage = hasError ? (labels?.error ?? errorText) : undefined;
+	const errorId =
+		ariaDescribedBy || (errorMessage ? generatedErrorId : undefined);
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
+	// `label` is deprecated
+	const label = labels?.label ?? labelProp;
 	const labelText = label || assistiveText.label;
+
+	useEffect(() => {
+		checkProps(
+			SLIDER,
+			{ assistiveText: propAssistiveText, errorText, label: labelProp, labels },
+			componentDoc
+		);
+	}, [propAssistiveText, errorText, labelProp, labels]);
 
 	const ariaProps = getAriaProps(rest) as Record<string, unknown>;
 	if (errorId) {
@@ -135,7 +177,7 @@ const Slider = ({
 		<div
 			className={classNames(
 				'slds-form-element',
-				{ 'slds-has-error': errorText },
+				{ 'slds-has-error': hasError },
 				classNameContainer as string
 			)}
 		>
@@ -188,9 +230,9 @@ const Slider = ({
 						{displayValue}
 					</span>
 				</div>
-				{errorText && (
+				{errorMessage && (
 					<div id={errorId} className="slds-form-element__help">
-						{errorText}
+						{errorMessage}
 					</div>
 				)}
 			</div>

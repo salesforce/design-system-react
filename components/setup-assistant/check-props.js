@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import hasChildrenWithoutDisplayNameof from '../../utilities/warning/has-children-without-display-name-of';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import renderFunctionReturnContentsLackDisplayName from '../../utilities/warning/render-function-return-contents-lack-display-name';
@@ -28,13 +29,44 @@ if (process.env.NODE_ENV !== 'production') {
 			);
 		}
 
-		if (COMPONENT === SETUP_ASSISTANT_STEP && props.onRenderFigure) {
-			renderFunctionReturnContentsLackDisplayName(
+		if (COMPONENT === SETUP_ASSISTANT_STEP) {
+			deprecatedProperty(
 				COMPONENT,
-				'onRenderFigure',
-				props.onRenderFigure(),
-				[ICON, PROGRESS_INDICATOR]
+				props.onRenderAction,
+				'onRenderAction',
+				'action',
+				createDocUrl('action')
 			);
+			deprecatedProperty(
+				COMPONENT,
+				props.onRenderContent,
+				'onRenderContent',
+				'content',
+				createDocUrl('content')
+			);
+			deprecatedProperty(
+				COMPONENT,
+				props.onRenderFigure,
+				'onRenderFigure',
+				'figure',
+				createDocUrl('figure')
+			);
+
+			const figurePropName =
+				props.figure !== undefined ? 'figure' : 'onRenderFigure';
+			const figure =
+				props.figure !== undefined
+					? props.figure
+					: props.onRenderFigure && props.onRenderFigure();
+
+			if (figure) {
+				renderFunctionReturnContentsLackDisplayName(
+					COMPONENT,
+					figurePropName,
+					figure,
+					[ICON, PROGRESS_INDICATOR]
+				);
+			}
 		}
 	};
 }

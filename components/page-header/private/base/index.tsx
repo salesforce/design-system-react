@@ -65,7 +65,7 @@ const Base = (props: PageHeaderVariantProps) => {
 			<Controls
 				className="slds-align-middle"
 				navRight={props.navRight}
-				onRenderControls={props.onRenderControls}
+				controls={props.controls}
 				type="controls"
 			/>
 		</div>

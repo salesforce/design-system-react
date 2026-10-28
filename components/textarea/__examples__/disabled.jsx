@@ -12,7 +12,7 @@ class Example extends React.Component {
 				<Textarea
 					name="disabled"
 					id="text-area-disabled"
-					label="Textarea Label"
+					labels={{ label: 'Textarea Label' }}
 					disabled
 					placeholder="Placeholder Text"
 				/>

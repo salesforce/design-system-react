@@ -64,7 +64,7 @@ const RecordHome = (props: PageHeaderVariantProps) => {
 				</div>
 				<Controls
 					contentRight={props.contentRight}
-					onRenderActions={props.onRenderActions}
+					actions={props.actions}
 					type="actions"
 				/>
 			</div>

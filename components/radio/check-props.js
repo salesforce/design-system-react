@@ -3,6 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable max-len */
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 
@@ -17,6 +18,42 @@ if (process.env.NODE_ENV !== 'production') {
 			props.label,
 			'label',
 			`Use \`labels.label\` instead.${createDocUrl('labels')}`
+		);
+	};
+}
+
+// Deprecated visual-picker render props. Exported separately so the component
+// can run these checks without enabling the pre-existing `checkProps` warnings.
+export let checkDeprecatedProps = function checkDeprecatedPropsFunction() {};
+
+if (process.env.NODE_ENV !== 'production') {
+	checkDeprecatedProps = function checkDeprecatedPropsFunction(
+		COMPONENT,
+		props,
+		jsonDoc
+	) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.onRenderVisualPicker,
+			'onRenderVisualPicker',
+			'visualPickerFigure',
+			createDocUrl('visualPickerFigure')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.onRenderVisualPickerSelected,
+			'onRenderVisualPickerSelected',
+			'visualPickerFigureSelected',
+			createDocUrl('visualPickerFigureSelected')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.onRenderVisualPickerNotSelected,
+			'onRenderVisualPickerNotSelected',
+			'visualPickerFigureNotSelected',
+			createDocUrl('visualPickerFigureNotSelected')
 		);
 	};
 }

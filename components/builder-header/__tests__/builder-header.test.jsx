@@ -1,7 +1,8 @@
 import { render, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 import BuilderHeader from '../';
+import BuilderHeaderToolbar from '../toolbar';
 import IconSettings from '../../icon-settings';
 
 describe('SLDSBuilderHeader', () => {
@@ -46,6 +47,41 @@ describe('SLDSBuilderHeader', () => {
 			// Second link should be Help
 			fireEvent.click(links[1]);
 			expect(onClickHelp).toHaveBeenCalledTimes(1);
+		});
+	});
+
+	describe('Toolbar actions', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		it('renders the actions slot', () => {
+			const { container, getByRole } = render(
+				<BuilderHeaderToolbar actions={<button type="button">Save</button>} />
+			);
+
+			expect(
+				container.querySelector('.slds-builder-toolbar__actions')
+			).toContainElement(getByRole('button', { name: 'Save' }));
+		});
+
+		it('still renders the deprecated onRenderActions and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			const { container, getByRole } = render(
+				<BuilderHeaderToolbar
+					onRenderActions={() => <button type="button">Save</button>}
+				/>
+			);
+
+			expect(
+				container.querySelector('.slds-builder-toolbar__actions')
+			).toContainElement(getByRole('button', { name: 'Save' }));
+
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(messages.some((m) => m.includes('onRenderActions'))).toBe(true);
 		});
 	});
 });

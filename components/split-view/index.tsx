@@ -19,9 +19,13 @@ import componentDoc from './component.json';
  * Assistive text for SplitView
  */
 export interface SplitViewAssistiveText {
-	/** Text for open state toggle button */
+	/** Text for the toggle button while the split view is open (the button closes it) */
+	closeToggle?: string;
+	/** Text for the toggle button while the split view is closed (the button opens it) */
+	openToggle?: string;
+	/** @deprecated Use `closeToggle` instead. Despite its name, this is the text shown while open. */
 	toggleButtonOpen?: string;
-	/** Text for closed state toggle button */
+	/** @deprecated Use `openToggle` instead. Despite its name, this is the text shown while closed. */
 	toggleButtonClose?: string;
 }
 
@@ -83,9 +87,9 @@ export interface SplitViewProps {
 	masterWidth?: string;
 }
 
-const defaultAssistiveText: SplitViewAssistiveText = {
-	toggleButtonOpen: 'Close split view',
-	toggleButtonClose: 'Open split view',
+const defaultAssistiveText = {
+	closeToggle: 'Close split view',
+	openToggle: 'Open split view',
 };
 
 /**
@@ -103,11 +107,24 @@ const SplitView = ({
 }: SplitViewProps): React.ReactElement => {
 	const generatedId = useId();
 	const id = propId || generatedId;
-	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
+	const assistiveText = {
+		closeToggle:
+			propAssistiveText?.closeToggle ??
+			propAssistiveText?.toggleButtonOpen ??
+			defaultAssistiveText.closeToggle,
+		openToggle:
+			propAssistiveText?.openToggle ??
+			propAssistiveText?.toggleButtonClose ??
+			defaultAssistiveText.openToggle,
+	};
 
 	// Check props in development
 	useEffect(() => {
-		checkProps(SPLIT_VIEW, { events }, componentDoc);
+		checkProps(
+			SPLIT_VIEW,
+			{ assistiveText: propAssistiveText, events },
+			componentDoc
+		);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []); // Only run on mount
 

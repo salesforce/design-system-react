@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import Icon from '../../icon';
 import IconSettings from '../../icon-settings';
@@ -11,7 +11,7 @@ import SLDSButtonGroup from '../../button-group';
 import SLDSButton from '../../button';
 import SLDSMenuDropdown from '../../menu-dropdown';
 
-const recordHomeActions = () => (
+const recordHomeActions = (
 	<React.Fragment>
 		<PageHeaderControl>
 			<SLDSButtonStateful
@@ -78,7 +78,7 @@ describe('PageHeader', () => {
 		label: 'Record Type',
 		title: 'Record Title',
 		variant: 'record-home',
-		onRenderActions: recordHomeActions,
+		actions: recordHomeActions,
 		details: recordHomeDetails,
 	};
 
@@ -118,7 +118,7 @@ describe('PageHeader', () => {
 			expect(container.textContent).toContain('Record Title');
 		});
 
-		it('renders onRenderActions prop', () => {
+		it('renders actions prop', () => {
 			const { container } = render(
 				<IconSettings iconPath="/assets/icons">
 					<PageHeader {...defaultPropsRecordHome} />
@@ -173,6 +173,126 @@ describe('PageHeader', () => {
 			);
 
 			expect(truncatedElement).toHaveClass('slds-truncate');
+		});
+	});
+
+	describe('actions and controls slots', () => {
+		const objectHomeProps = {
+			title: 'Opportunities',
+			info: '10 items',
+			variant: 'object-home',
+		};
+
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		it('renders actions and controls nodes in their columns', () => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<PageHeader
+						{...objectHomeProps}
+						actions={
+							<PageHeaderControl>
+								<SLDSButton label="New Action" />
+							</PageHeaderControl>
+						}
+						controls={
+							<PageHeaderControl>
+								<SLDSButton label="New Control" />
+							</PageHeaderControl>
+						}
+					/>
+				</IconSettings>
+			);
+
+			expect(
+				container.querySelector('.slds-page-header__col-actions').textContent
+			).toBe('New Action');
+			expect(
+				container.querySelector('.slds-page-header__col-controls').textContent
+			).toBe('New Control');
+		});
+
+		it('still renders deprecated onRenderActions and onRenderControls, with a warning', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container, rerender } = render(
+				<IconSettings iconPath="/assets/icons">
+					<PageHeader
+						{...objectHomeProps}
+						onRenderActions={() => (
+							<PageHeaderControl>
+								<SLDSButton label="Old Action" />
+							</PageHeaderControl>
+						)}
+						onRenderControls={() => (
+							<PageHeaderControl>
+								<SLDSButton label="Old Control" />
+							</PageHeaderControl>
+						)}
+					/>
+				</IconSettings>
+			);
+
+			expect(
+				container.querySelector('.slds-page-header__col-actions').textContent
+			).toBe('Old Action');
+			expect(
+				container.querySelector('.slds-page-header__col-controls').textContent
+			).toBe('Old Control');
+
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(
+				messages.some(
+					(message) =>
+						message.includes('onRenderActions') && message.includes('`actions`')
+				)
+			).toBe(true);
+			expect(
+				messages.some(
+					(message) =>
+						message.includes('onRenderControls') &&
+						message.includes('`controls`')
+				)
+			).toBe(true);
+
+			// The new slots win when both are passed.
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<PageHeader
+						{...objectHomeProps}
+						actions={
+							<PageHeaderControl>
+								<SLDSButton label="New Action" />
+							</PageHeaderControl>
+						}
+						controls={
+							<PageHeaderControl>
+								<SLDSButton label="New Control" />
+							</PageHeaderControl>
+						}
+						onRenderActions={() => (
+							<PageHeaderControl>
+								<SLDSButton label="Old Action" />
+							</PageHeaderControl>
+						)}
+						onRenderControls={() => (
+							<PageHeaderControl>
+								<SLDSButton label="Old Control" />
+							</PageHeaderControl>
+						)}
+					/>
+				</IconSettings>
+			);
+
+			expect(
+				container.querySelector('.slds-page-header__col-actions').textContent
+			).toBe('New Action');
+			expect(
+				container.querySelector('.slds-page-header__col-controls').textContent
+			).toBe('New Control');
 		});
 	});
 });

@@ -125,8 +125,8 @@ class Example extends React.Component {
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
 					info="10 items • sorted by name"
-					onRenderActions={actions}
-					onRenderControls={controls}
+					actions={actions()}
+					controls={controls()}
 					title="Contacts (will truncate)"
 					trail={trail}
 					truncate

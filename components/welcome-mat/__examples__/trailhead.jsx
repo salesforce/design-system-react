@@ -34,7 +34,7 @@ class Example extends React.Component {
 								<WelcomeMatInfoBadge
 									image="/assets/images/welcome-mat/trailhead_badge@2x.png"
 									id="welcome-mat-info-badge"
-									onCompleteRenderActions={() => (
+									completeActions={
 										<React.Fragment>
 											<p>Cha-ching! You earned the badge.</p>
 											<Button
@@ -45,7 +45,7 @@ class Example extends React.Component {
 												label="View on your Trailblazer Profile"
 											/>
 										</React.Fragment>
-									)}
+									}
 								>
 									<p>
 										<strong>Lightning Explorer</strong>

@@ -77,10 +77,10 @@ const ObjectHome = (props: PageHeaderVariantProps) => {
 				<Controls
 					className={classnames({
 						'slds-align-middle slds-p-bottom_none':
-							!props.onRenderControls && !props.navRight,
+							!props.controls && !props.navRight,
 					})}
 					contentRight={props.contentRight}
-					onRenderActions={props.onRenderActions}
+					actions={props.actions}
 					type="actions"
 				/>
 			</div>
@@ -92,11 +92,11 @@ const ObjectHome = (props: PageHeaderVariantProps) => {
 					className={classnames({
 						// NOTE: the original JS referenced a misspelled `comntentRight`
 						// which was always undefined, so this condition has only ever
-						// depended on `onRenderActions`. Behavior preserved verbatim.
-						'slds-align-middle': !props.onRenderActions,
+						// depended on `actions`. Behavior preserved verbatim.
+						'slds-align-middle': !props.actions,
 					})}
 					navRight={props.navRight}
-					onRenderControls={props.onRenderControls}
+					controls={props.controls}
 					type="controls"
 				/>
 			</div>

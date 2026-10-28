@@ -19,13 +19,13 @@ export interface PageHeaderControlsProps {
 	 */
 	type?: 'actions' | 'controls';
 	/**
-	 * Render prop for the actions column.
+	 * Content for the actions column.
 	 */
-	onRenderActions?: () => ReactNode;
+	actions?: ReactNode;
 	/**
-	 * Render prop for the controls column.
+	 * Content for the controls column.
 	 */
-	onRenderControls?: () => ReactNode;
+	controls?: ReactNode;
 	/**
 	 * Legacy content for the right/actions column.
 	 */
@@ -46,14 +46,14 @@ class Controls extends Component<PageHeaderControlsProps> {
 		let vettedControls: ReactNode;
 
 		if (this.props.type === 'actions') {
-			if (this.props.onRenderActions) {
-				controls = this.props.onRenderActions();
+			if (this.props.actions) {
+				controls = this.props.actions;
 			} else if (this.props.contentRight) {
 				controls = this.props.contentRight;
 				isUsingLegacyProp = true;
 			}
-		} else if (this.props.onRenderControls) {
-			controls = this.props.onRenderControls();
+		} else if (this.props.controls) {
+			controls = this.props.controls;
 		} else if (this.props.navRight) {
 			controls = this.props.navRight;
 			isUsingLegacyProp = true;

@@ -329,7 +329,7 @@ class Example extends React.Component {
 			>
 				<IconSettings iconPath="/assets/icons">
 					<PageHeader
-						onRenderActions={actions}
+						actions={actions()}
 						icon={
 							<Icon
 								assistiveText={{ label: 'User' }}
@@ -340,7 +340,7 @@ class Example extends React.Component {
 						info="10 items • sorted by name"
 						joined
 						label="Leads"
-						onRenderControls={controls}
+						controls={controls()}
 						title={
 							<h1 className="slds-page-header__title slds-p-right_x-small">
 								<Dropdown

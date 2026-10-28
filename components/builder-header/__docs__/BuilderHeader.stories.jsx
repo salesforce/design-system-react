@@ -178,11 +178,11 @@ export const WithToolbar = {
 			<BuilderNav />
 			<BuilderHeaderToolbar
 				assistiveText={{ actions: 'Document Actions' }}
-				onRenderActions={() => (
+				actions={
 					<div>
 						<SaveActions />
 					</div>
-				)}
+				}
 			>
 				<ToolbarButtonGroups />
 			</BuilderHeaderToolbar>
@@ -243,7 +243,7 @@ export const SuccessfulSave = {
 			<BuilderNav />
 			<BuilderHeaderToolbar
 				assistiveText={{ actions: 'Document Actions' }}
-				onRenderActions={() => (
+				actions={
 					<div>
 						<Icon
 							category="utility"
@@ -257,7 +257,7 @@ export const SuccessfulSave = {
 						</span>
 						<SaveActions />
 					</div>
-				)}
+				}
 			>
 				<ToolbarButtonGroups />
 			</BuilderHeaderToolbar>
@@ -272,7 +272,7 @@ export const AfterSuccessfulSave = {
 			<BuilderNav />
 			<BuilderHeaderToolbar
 				assistiveText={{ actions: 'Document Actions' }}
-				onRenderActions={() => (
+				actions={
 					<div>
 						<Tooltip
 							id="status-tooltip"
@@ -288,7 +288,7 @@ export const AfterSuccessfulSave = {
 						</Tooltip>
 						<SaveActions />
 					</div>
-				)}
+				}
 			>
 				<ToolbarButtonGroups />
 			</BuilderHeaderToolbar>
@@ -303,7 +303,7 @@ export const FailedSave = {
 			<BuilderNav />
 			<BuilderHeaderToolbar
 				assistiveText={{ actions: 'Document Actions' }}
-				onRenderActions={() => (
+				actions={
 					<div>
 						<Tooltip
 							id="status-tooltip"
@@ -329,7 +329,7 @@ export const FailedSave = {
 						/>
 						<SaveActions />
 					</div>
-				)}
+				}
 			>
 				<ToolbarButtonGroups />
 			</BuilderHeaderToolbar>

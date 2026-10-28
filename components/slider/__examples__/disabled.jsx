@@ -6,7 +6,9 @@ class Example extends React.Component {
 	static displayName = 'SliderExample';
 
 	render() {
-		return <Slider id="disabled-id" label="Slider Label" disabled />;
+		return (
+			<Slider id="disabled-id" labels={{ label: 'Slider Label' }} disabled />
+		);
 	}
 }
 

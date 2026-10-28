@@ -104,23 +104,41 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.contentRight,
 			'contentRight',
-			'onRenderActions',
-			createDocUrl('onRenderActions')
+			'actions',
+			createDocUrl('actions')
 		);
 
 		deprecatedProperty(
 			COMPONENT,
 			props.navRight,
 			'navRight',
-			'onRenderControls',
-			createDocUrl('onRenderControls')
+			'controls',
+			createDocUrl('controls')
 		);
 
-		if (props.onRenderActions) {
+		deprecatedProperty(
+			COMPONENT,
+			props.onRenderActions,
+			'onRenderActions',
+			'actions',
+			createDocUrl('actions')
+		);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.onRenderControls,
+			'onRenderControls',
+			'controls',
+			createDocUrl('controls')
+		);
+
+		// `actions` and `controls` are the resolved slot contents (the deprecated
+		// `onRender*` thunks are already called by the component).
+		if (props.actions) {
 			renderFunctionReturnContentsLackDisplayName(
 				COMPONENT,
-				'onRenderActions',
-				props.onRenderActions(),
+				'actions',
+				props.actions,
 				[PAGE_HEADER_CONTROL],
 				true
 			);
@@ -134,11 +152,11 @@ if (process.env.NODE_ENV !== 'production') {
 			);
 		}
 
-		if (props.onRenderControls) {
+		if (props.controls) {
 			renderFunctionReturnContentsLackDisplayName(
 				COMPONENT,
-				'onRenderControls',
-				props.onRenderControls(),
+				'controls',
+				props.controls,
 				[PAGE_HEADER_CONTROL],
 				true
 			);

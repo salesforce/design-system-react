@@ -1,9 +1,11 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type ReactElement } from 'react';
+import React, { useEffect, type ReactNode, type ReactElement } from 'react';
 import classnames from 'classnames';
 import { PAGE_HEADER } from '../../utilities/constants';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 // Private components - keep JSX for now
 import Info from './private/info';
@@ -39,8 +41,19 @@ export interface PageHeaderDetail {
  * Props for the PageHeader component
  */
 export interface PageHeaderProps {
+	/**
+	 * Actions shown in the upper right. Pass a `PageHeaderControl`, or a fragment
+	 * whose children are all `PageHeaderControl` elements.
+	 */
+	actions?: ReactNode;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
+	/**
+	 * Controls shown in the lower right (upper right for the `base` variant).
+	 * Pass a `PageHeaderControl`, or a fragment whose children are all
+	 * `PageHeaderControl` elements.
+	 */
+	controls?: ReactNode;
 	/** Detail blocks for record-home variant */
 	details?: PageHeaderDetail[];
 	/** Icon element */
@@ -53,9 +66,9 @@ export interface PageHeaderProps {
 	label?: ReactNode;
 	/** Name switcher dropdown for object-home variant */
 	nameSwitcherDropdown?: ReactNode;
-	/** Render function for action controls (upper right) */
+	/** @deprecated Use `actions` instead. */
 	onRenderActions?: () => ReactNode;
-	/** Render function for controls (lower right) */
+	/** @deprecated Use `controls` instead. */
 	onRenderControls?: () => ReactNode;
 	/** Title text or element */
 	title?: ReactNode;
@@ -70,7 +83,9 @@ export interface PageHeaderProps {
  * base, object-home, record-home, and related-list.
  */
 const PageHeader = ({
+	actions: actionsProp,
 	className,
+	controls: controlsProp,
 	details,
 	icon,
 	info,
@@ -83,6 +98,17 @@ const PageHeader = ({
 	trail,
 	variant = 'base',
 }: PageHeaderProps): React.ReactElement => {
+	const actions = actionsProp ?? onRenderActions?.();
+	const controls = controlsProp ?? onRenderControls?.();
+
+	useEffect(() => {
+		checkProps(
+			PAGE_HEADER,
+			{ actions, controls, onRenderActions, onRenderControls, variant },
+			componentDoc
+		);
+	}, [actions, controls, onRenderActions, onRenderControls, variant]);
+
 	const classes = classnames(
 		'slds-page-header',
 		{
@@ -94,13 +120,13 @@ const PageHeader = ({
 	);
 
 	const variantProps = {
+		actions,
+		controls,
 		details,
 		icon,
 		info,
 		label,
 		nameSwitcherDropdown,
-		onRenderActions,
-		onRenderControls,
 		title,
 		trail,
 		variant,

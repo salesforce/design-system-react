@@ -389,7 +389,9 @@ class Example extends React.Component {
 						assistiveText={this.props.assistiveText}
 						className={this.props.className}
 						getNodes={this.props.getNodes || this.getNodes}
-						heading={!this.props.noHeading && this.props.heading}
+						labels={
+							this.props.noHeading ? undefined : { heading: this.props.heading }
+						}
 						id={this.props.id}
 						listStyle={this.props.listStyle}
 						listClassName={this.props.listClassName}
