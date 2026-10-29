@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import MenuDropdown from '../index';
+import MenuDropdown, { type MenuDropdownOption } from '../index';
 import ButtonTrigger from '../button-trigger';
 import IconSettings from '../../icon-settings';
 import Button from '../../button';
@@ -21,12 +21,12 @@ const DropdownNubbinPositions = [
 	'bottom right',
 ] as const;
 
-const options = [
+const options: MenuDropdownOption[] = [
 	{
 		className: 'custom-li-class',
-		divider: 'bottom' as const,
+		divider: 'bottom',
 		label: 'A Header',
-		type: 'header' as const,
+		type: 'header',
 	},
 	{ disabled: true, label: 'An option that is Super Super Long', value: 'A0' },
 	{ label: 'Custom Class', className: 'custom-item-class', value: 'classssss' },
@@ -42,11 +42,11 @@ const options = [
 			name: 'settings',
 			category: 'utility',
 		},
-		type: 'item' as const,
+		type: 'item',
 		value: 'B0',
 	},
 	{
-		type: 'divider' as const,
+		type: 'divider',
 	},
 	{ label: 'C Option', value: 'C0' },
 	{ label: 'D Option', value: 'D0' },

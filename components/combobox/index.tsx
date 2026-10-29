@@ -13,7 +13,13 @@ export type {
 	ComboboxLabels,
 	ComboboxEvents,
 } from './combobox';
-export type { ComboboxOption } from './private/menu';
+export type {
+	ComboboxOption,
+	ComboboxItemOption,
+	ComboboxSeparatorOption,
+	ComboboxActionOption,
+	ComboboxDeselectOption,
+} from './private/menu';
 
 /**
  * Combobox wrapper that handles click outside detection

@@ -10,6 +10,10 @@ export default MenuDropdown;
 export type {
 	MenuDropdownProps,
 	MenuDropdownOption,
+	MenuDropdownItemOption,
+	MenuDropdownHeaderOption,
+	MenuDropdownDividerOption,
+	MenuDropdownOptionIcon,
 	DropdownNubbinPosition,
 	MenuDropdownSelectData,
 	MenuDropdownOpenData,
