@@ -60,6 +60,22 @@ export interface SimpleDataTableToggleAllData {
 // SimpleDataTable Main Props
 // ============================================================================
 
+/**
+ * Data passed to `renderSubHeadingRow`
+ */
+export interface SimpleDataTableRenderSubHeadingRowData {
+	assistiveText: SimpleDataTableAssistiveText;
+	/** The item's `classNameRow` */
+	classNameRow?: string;
+	columns: SimpleDataTableColumnConfig[];
+	/** The row's HTML id */
+	id: string;
+	/** The `header-row` item */
+	item: SimpleDataTableItem;
+	/** The table's HTML id */
+	tableId: string;
+}
+
 export interface SimpleDataTableProps {
 	/** Assistive text for accessibility */
 	assistiveText?: SimpleDataTableAssistiveText;
@@ -75,16 +91,16 @@ export interface SimpleDataTableProps {
 	fixedLayout?: boolean;
 	/** When fixedHeader is true, shows spinner if more data loading */
 	hasMore?: boolean;
-	/** Render prop for subheadings */
-	onRenderSubHeadingRow?: (props: {
-		assistiveText: SimpleDataTableAssistiveText;
-		classNameRow?: string;
-		columns: SimpleDataTableColumnConfig[];
-		key: string;
-		id: string;
-		tableId: string;
-		item: SimpleDataTableItem;
-	}) => ReactNode;
+	/** @deprecated Use `renderSubHeadingRow` instead. Also receives `key`, which `renderSubHeadingRow` doesn't need. */
+	onRenderSubHeadingRow?: (
+		data: SimpleDataTableRenderSubHeadingRowData & { key: string }
+	) => ReactNode;
+	/**
+	 * Renders the row for each item with `type: 'header-row'`, in place of a data row. Use it for subheadings that describe the next section of the table. Receives `{ assistiveText, classNameRow, columns, id, item, tableId }` and returns a `<tr>`; the table sets the row's `key`.
+	 */
+	renderSubHeadingRow?: (
+		data: SimpleDataTableRenderSubHeadingRowData
+	) => ReactNode;
 	/** Unique ID for keyboard navigation and ARIA support */
 	id?: string;
 	/** The collection of items to render */

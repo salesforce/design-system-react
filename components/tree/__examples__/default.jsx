@@ -269,7 +269,7 @@ class Example extends React.Component {
 		node.nodes ? node.nodes.map((id) => this.state.nodes[id]) : [];
 
 	// By default Tree can have multiple selected nodes and folders/branches can be selected. To disable either of these, you can use the following logic. However, `props` are immutable. The node passed in shouldn't be modified. Object and arrays are reference variables.
-	handleExpandClick = (event, data) => {
+	handleRequestToggle = (event, data) => {
 		log({
 			action: this.props.action,
 			customLog: this.props.log,
@@ -277,7 +277,6 @@ class Example extends React.Component {
 			eventName: 'Expand Branch',
 			data,
 		});
-		const selected = data.select ? true : data.node.selected;
 		this.setState((prevState) => ({
 			...prevState,
 			nodes: {
@@ -285,15 +284,14 @@ class Example extends React.Component {
 				...{
 					[data.node.id]: {
 						...data.node,
-						expanded: data.expand,
-						selected,
+						expanded: data.isExpanded,
 					},
 				},
 			},
 		}));
 	};
 
-	handleClick = (event, data) => {
+	handleSelect = (event, data) => {
 		log({
 			action: this.props.action,
 			customLog: this.props.log,
@@ -312,7 +310,7 @@ class Example extends React.Component {
 					nodes: {
 						...prevState.nodes,
 						...{
-							[data.node.id]: { ...data.node, selected: data.select },
+							[data.node.id]: { ...data.node, selected: data.isSelected },
 						},
 					},
 				}));
@@ -349,7 +347,7 @@ class Example extends React.Component {
 					nodes: {
 						...prevState.nodes,
 						...{
-							[data.node.id]: { ...data.node, selected: data.select },
+							[data.node.id]: { ...data.node, selected: data.isSelected },
 							...selectedNode,
 						},
 					},
@@ -391,13 +389,17 @@ class Example extends React.Component {
 						assistiveText={this.props.assistiveText}
 						className={this.props.className}
 						getNodes={this.props.getNodes || this.getNodes}
-						heading={!this.props.noHeading && this.props.heading}
+						labels={
+							this.props.noHeading ? undefined : { heading: this.props.heading }
+						}
 						id={this.props.id}
 						listStyle={this.props.listStyle}
 						listClassName={this.props.listClassName}
 						nodes={this.state.nodes['0'].nodes}
-						onExpandClick={this.props.onExpandClick || this.handleExpandClick}
-						onClick={this.props.onClick || this.handleClick}
+						onRequestToggle={
+							this.props.onRequestToggle || this.handleRequestToggle
+						}
+						onSelect={this.props.onSelect || this.handleSelect}
 						onScroll={this.props.onScroll || this.handleScroll}
 						searchTerm={this.props.searchTerm || this.state.searchTerm}
 					/>

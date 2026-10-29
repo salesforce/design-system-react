@@ -3,7 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable max-len */
 
-import deprecatedEventParameter from '../../utilities/warning/deprecated-event-parameter';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 import sunsetProperty from '../../utilities/warning/sunset-property';
@@ -21,18 +21,6 @@ if (process.env.NODE_ENV !== 'production') {
 			`Use \`labels.label\` instead.${createDocUrl('labels')}`
 		);
 
-		deprecatedEventParameter(
-			COMPONENT,
-			{
-				oldEventParameterOrder: props.oldEventParameterOrder,
-				propAsString: 'onChange',
-				propAsValue: props.onChange,
-			},
-			`\`components/forms/checkbox\` is deprecated. \`components/checkbox\` should be used. When this path update is made \`onChange\` event parameters will change from \`onChange(value, event, { value }) to \`onChange(event, { value }). Please update your event parameters when you change paths.\` If you are using the CommonJS named import, \`Checkbox\` events will break at v1.0 and this warning will be present until then. Please review https://github.com/salesforce/design-system-react/releases when you upgrade. ${createDocUrl(
-				'onChange'
-			)}`
-		);
-
 		if (props.variant === 'toggle' && props.indeterminate === true) {
 			onlyOneOfProperties(
 				COMPONENT,
@@ -45,6 +33,42 @@ if (process.env.NODE_ENV !== 'production') {
 				)}`
 			);
 		}
+	};
+}
+
+// Deprecated visual-picker render props. Exported separately so the component
+// can run these checks without enabling the pre-existing `checkProps` warnings.
+export let checkDeprecatedProps = function checkDeprecatedPropsFunction() {};
+
+if (process.env.NODE_ENV !== 'production') {
+	checkDeprecatedProps = function checkDeprecatedPropsFunction(
+		COMPONENT,
+		props,
+		jsonDoc
+	) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		deprecatedProperty(
+			COMPONENT,
+			props.onRenderVisualPicker,
+			'onRenderVisualPicker',
+			'visualPickerFigure',
+			createDocUrl('visualPickerFigure')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.onRenderVisualPickerSelected,
+			'onRenderVisualPickerSelected',
+			'visualPickerFigureSelected',
+			createDocUrl('visualPickerFigureSelected')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.onRenderVisualPickerNotSelected,
+			'onRenderVisualPickerNotSelected',
+			'visualPickerFigureNotSelected',
+			createDocUrl('visualPickerFigureNotSelected')
+		);
 	};
 }
 

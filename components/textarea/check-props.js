@@ -3,6 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable max-len */
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
@@ -16,22 +17,37 @@ if (process.env.NODE_ENV !== 'production') {
 		onlyOneOfProperties(
 			COMPONENT,
 			{
-				assistiveText: props.assistiveText,
-				label: props.label,
+				'labels.label': props.labels?.label ?? props.label,
+				'assistiveText.label': props.assistiveText?.label,
 			},
 			createDocUrl()
 		);
 
-		if (typeof props.assistiveText === 'string') {
+		if (typeof props.maxLength === 'string') {
 			sunsetProperty(
 				COMPONENT,
-				props.assistiveText,
-				'assistiveText',
-				`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.label\` instead. ${createDocUrl(
-					'assistiveText'
+				props.maxLength,
+				'maxLength',
+				`\`maxLength\` as a string has been deprecated. Please pass a number instead. ${createDocUrl(
+					'maxLength'
 				)}`
 			);
 		}
+
+		deprecatedProperty(
+			COMPONENT,
+			props.errorText,
+			'errorText',
+			'labels.error` and `hasError',
+			createDocUrl('labels')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.label,
+			'label',
+			'labels.label',
+			createDocUrl('labels')
+		);
 	};
 }
 

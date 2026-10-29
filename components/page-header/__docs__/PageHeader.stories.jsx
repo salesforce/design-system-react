@@ -44,13 +44,13 @@ export const ObjectHome = {
 			icon={<Icon category="standard" name="opportunity" size="large" />}
 			title="Opportunities"
 			info="10 items • Updated 13 minutes ago"
-			onRenderActions={() => (
+			actions={
 				<ButtonGroup>
 					<Button label="New" variant="neutral" />
 					<Button label="Import" variant="neutral" />
 				</ButtonGroup>
-			)}
-			onRenderControls={() => (
+			}
+			controls={
 				<ButtonGroup>
 					<Button
 						assistiveText={{ icon: 'Chart' }}
@@ -67,7 +67,7 @@ export const ObjectHome = {
 						variant="icon"
 					/>
 				</ButtonGroup>
-			)}
+			}
 		/>
 	),
 };
@@ -85,13 +85,13 @@ export const RecordHome = {
 				{ label: 'Amount', content: '$25,000.00' },
 				{ label: 'Close Date', content: '11/30/2016' },
 			]}
-			onRenderActions={() => (
+			actions={
 				<ButtonGroup>
 					<Button label="Follow" variant="neutral" />
 					<Button label="Edit" variant="neutral" />
 					<Button label="Delete" variant="neutral" />
 				</ButtonGroup>
-			)}
+			}
 		/>
 	),
 };
@@ -113,11 +113,11 @@ export const RelatedList = {
 				</a>,
 			]}
 			info="10 items • Sorted by Name"
-			onRenderActions={() => (
+			actions={
 				<ButtonGroup>
 					<Button label="Add Contact" variant="neutral" />
 				</ButtonGroup>
-			)}
+			}
 		/>
 	),
 };

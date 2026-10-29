@@ -9,8 +9,11 @@ class Example extends React.Component {
 		return (
 			<Slider
 				id="error-id"
-				label="Slider Label"
-				errorText="There is a problem with this field"
+				hasError
+				labels={{
+					label: 'Slider Label',
+					error: 'There is a problem with this field',
+				}}
 				aria-describedby="slider-error-message"
 			/>
 		);

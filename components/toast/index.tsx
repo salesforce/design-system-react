@@ -1,7 +1,14 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useState, useEffect, useRef, useCallback, type ReactNode, type CSSProperties } from 'react';
+import React, {
+	useState,
+	useEffect,
+	useRef,
+	useCallback,
+	type ReactNode,
+	type CSSProperties,
+} from 'react';
 import classNames from '../../utilities/class-names';
 import EventUtil from '../../utilities/event';
 import Button from '../button';
@@ -43,6 +50,19 @@ export interface ToastLabels {
 }
 
 /**
+ * What caused a Toast close request
+ */
+export type ToastRequestCloseTrigger = 'timeout' | 'close-button';
+
+/**
+ * Data passed to `onRequestClose`
+ */
+export interface ToastRequestCloseData {
+	/** What caused the request: the close button was clicked, or `duration` elapsed */
+	trigger: ToastRequestCloseTrigger;
+}
+
+/**
  * Props for the Toast component
  */
 export interface ToastProps {
@@ -58,8 +78,15 @@ export interface ToastProps {
 	labels?: ToastLabels;
 	/** Callback when heading link is clicked */
 	onClickHeadingLink?: (event: React.MouseEvent) => void;
-	/** Callback when close button is clicked or duration expires */
-	onRequestClose?: () => void;
+	/**
+	 * Callback when close button is clicked or duration expires. `event` is the close
+	 * button click, or `undefined` when the `duration` timer fires. `data.trigger` is
+	 * `'close-button'` or `'timeout'`.
+	 */
+	onRequestClose?: (
+		event: React.MouseEvent<HTMLButtonElement> | undefined,
+		data: ToastRequestCloseData
+	) => void;
 	/** Custom styles */
 	style?: CSSProperties;
 	/** Toast type/severity */
@@ -111,41 +138,65 @@ const Toast = ({
 		}
 	}, []);
 
-	const handleClose = useCallback(() => {
+	// Keep the latest callback in a ref so a new (e.g. inline) `onRequestClose`
+	// on each parent render does not restart the auto-dismiss timer.
+	const onRequestCloseRef = useRef(onRequestClose);
+	useEffect(() => {
+		onRequestCloseRef.current = onRequestClose;
+	}, [onRequestClose]);
+
+	const handleTimeout = useCallback(() => {
 		clearTimeoutRef();
-		onRequestClose?.();
-	}, [clearTimeoutRef, onRequestClose]);
+		onRequestCloseRef.current?.(undefined, { trigger: 'timeout' });
+	}, [clearTimeoutRef]);
+
+	const handleCloseButtonClick = useCallback(
+		(event: React.MouseEvent<HTMLButtonElement>) => {
+			onRequestClose?.(event, { trigger: 'close-button' });
+		},
+		[onRequestClose]
+	);
 
 	// Set up auto-dismiss timer
 	useEffect(() => {
 		if (duration) {
-			timeoutRef.current = setTimeout(handleClose, duration);
+			timeoutRef.current = setTimeout(handleTimeout, duration);
 		}
 		return () => {
 			clearTimeoutRef();
 			DOMElementFocus.returnFocusToStoredElement();
 		};
-	}, [duration, handleClose, clearTimeoutRef]);
+	}, [duration, handleTimeout, clearTimeoutRef]);
 
 	// Handle initial focus
-	const saveToastRef = useCallback((element: HTMLDivElement | null) => {
-		toastRef.current = element;
-		if (isInitialRender && element) {
-			DOMElementFocus.storeActiveElement();
-			element.focus();
-			setIsInitialRender(false);
-		}
-	}, [isInitialRender]);
+	const saveToastRef = useCallback(
+		(element: HTMLDivElement | null) => {
+			toastRef.current = element;
+			if (isInitialRender && element) {
+				DOMElementFocus.storeActiveElement();
+				element.focus();
+				setIsInitialRender(false);
+			}
+		},
+		[isInitialRender]
+	);
 
 	// Get the icon to display
 	const icon = propIcon || defaultIcons[variant];
 
 	const clonedIcon = React.isValidElement(icon)
-		? React.cloneElement(icon as React.ReactElement<{ containerClassName?: string; inverse?: boolean; size?: string }>, {
-				containerClassName: 'slds-m-right_small slds-no-flex slds-align-top',
-				inverse: true,
-				size: 'small',
-		  })
+		? React.cloneElement(
+				icon as React.ReactElement<{
+					containerClassName?: string;
+					inverse?: boolean;
+					size?: string;
+				}>,
+				{
+					containerClassName: 'slds-m-right_small slds-no-flex slds-align-top',
+					inverse: true,
+					size: 'small',
+				}
+			)
 		: icon;
 
 	const assistiveTextVariant: Record<ToastVariant, string | undefined> = {
@@ -180,10 +231,7 @@ const Toast = ({
 				<h2 className="slds-text-heading_small">
 					{labels.heading}{' '}
 					{labels.headingLink && (
-						<a
-							onClick={EventUtil.trappedHandler(onClickHeadingLink)}
-							href="#"
-						>
+						<a onClick={EventUtil.trappedHandler(onClickHeadingLink)} href="#">
 							{labels.headingLink}
 						</a>
 					)}
@@ -197,7 +245,7 @@ const Toast = ({
 				iconName="close"
 				iconSize="medium"
 				inverse
-				onClick={onRequestClose}
+				onClick={handleCloseButtonClick}
 				title={assistiveText.closeButton as string}
 				variant="icon"
 			/>
@@ -208,18 +256,3 @@ const Toast = ({
 Toast.displayName = TOAST;
 
 export default Toast;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

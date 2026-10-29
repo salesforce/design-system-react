@@ -1,19 +1,23 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type CSSProperties } from 'react';
+import React, { useEffect, type ReactNode, type CSSProperties } from 'react';
 import classNames from 'classnames';
 import { TRIAL_BAR } from '../../utilities/constants';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 /**
  * Labels for TrialBar
  */
 export interface TrialBarLabels {
-	/** Amount of time left */
-	timeLeft?: string;
-	/** Unit of time */
+	/** Amount of time left, rendered in a box (e.g. `30`) */
+	timeLeft?: ReactNode;
+	/** Complete text after the amount, including any unit (e.g. `days left in trial`) */
+	timeLeftAfter?: ReactNode;
+	/** @deprecated Include the unit in `timeLeftAfter` instead. */
 	timeLeftUnit?: string;
-	/** Text after time unit */
+	/** @deprecated Use `timeLeftAfter` instead. */
 	timeLeftUnitAfter?: string;
 }
 
@@ -21,20 +25,36 @@ export interface TrialBarLabels {
  * Props for the TrialBar component
  */
 export interface TrialBarProps {
+	/** Actions shown after the time left, such as a subscribe button */
+	actions?: ReactNode;
 	/** TrialBarButton or TrialBarDropdown children */
 	children?: ReactNode;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
-	/** Text labels */
+	/**
+	 * **Text labels for internationalization**
+	 * * `timeLeft`: Amount of time left, rendered in a box
+	 * * `timeLeftAfter`: Complete text after the amount, including any unit. Defaults to `left in trial`.
+	 */
 	labels?: TrialBarLabels;
-	/** Render function for actions section */
+	/** @deprecated Use `actions` instead. */
 	onRenderActions?: () => ReactNode;
 	/** Custom styles */
 	style?: CSSProperties;
 }
 
-const defaultLabels: TrialBarLabels = {
-	timeLeftUnitAfter: 'left in trial',
+const defaultTimeLeftAfter = 'left in trial';
+
+// Joins the deprecated `timeLeftUnit` and `timeLeftUnitAfter` the way they were rendered before
+const getLegacyTimeLeftAfter = ({
+	timeLeftUnit,
+	timeLeftUnitAfter,
+}: TrialBarLabels) => {
+	if (timeLeftUnit === undefined && timeLeftUnitAfter === undefined)
+		return undefined;
+	return [timeLeftUnit, timeLeftUnitAfter ?? defaultTimeLeftAfter]
+		.filter(Boolean)
+		.join(' ');
 };
 
 /**
@@ -42,13 +62,26 @@ const defaultLabels: TrialBarLabels = {
  * prospect experience for setup.
  */
 const TrialBar = ({
+	actions,
 	children,
 	className,
 	labels: propLabels,
 	onRenderActions,
 	style,
 }: TrialBarProps): React.ReactElement => {
-	const labels = { ...defaultLabels, ...propLabels };
+	const labels = propLabels ?? {};
+	const timeLeftAfter =
+		labels.timeLeftAfter ??
+		getLegacyTimeLeftAfter(labels) ??
+		defaultTimeLeftAfter;
+
+	useEffect(() => {
+		checkProps(
+			TRIAL_BAR,
+			{ labels: propLabels, onRenderActions },
+			componentDoc
+		);
+	}, [propLabels, onRenderActions]);
 
 	return (
 		<div
@@ -60,11 +93,8 @@ const TrialBar = ({
 				<span className="slds-box slds-box_xx-small slds-theme_default">
 					{labels.timeLeft}
 				</span>
-				<span className="slds-m-horizontal_x-small">
-					{labels.timeLeftUnit}
-					{labels.timeLeftUnitAfter && ` ${labels.timeLeftUnitAfter}`}
-				</span>
-				{onRenderActions?.()}
+				<span className="slds-m-horizontal_x-small">{timeLeftAfter}</span>
+				{actions ?? onRenderActions?.()}
 			</div>
 		</div>
 	);
@@ -73,18 +103,3 @@ const TrialBar = ({
 TrialBar.displayName = TRIAL_BAR;
 
 export default TrialBar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

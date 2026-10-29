@@ -6,8 +6,21 @@ import LanguageDirection from '../utilities/UNSAFE_direction/private/language-di
 import Combobox, { type ComboboxProps } from './combobox';
 import { useClickOutside } from '../../utilities/hooks/use-click-outside';
 
-export type { ComboboxProps, ComboboxAssistiveText, ComboboxLabels, ComboboxEvents } from './combobox';
-export type { ComboboxOption } from './private/menu';
+export type {
+	ComboboxProps,
+	ComboboxActionItem,
+	ComboboxAssistiveText,
+	ComboboxLabels,
+	ComboboxEvents,
+	ComboboxRenderMenuItemData,
+} from './combobox';
+export type {
+	ComboboxOption,
+	ComboboxItemOption,
+	ComboboxSeparatorOption,
+	ComboboxActionOption,
+	ComboboxDeselectOption,
+} from './private/menu';
 
 /**
  * Combobox wrapper that handles click outside detection
@@ -16,7 +29,9 @@ export type { ComboboxOption } from './private/menu';
 const ComboboxWithClickOutside = forwardRef<HTMLDivElement, ComboboxProps>(
 	(props, ref: ForwardedRef<HTMLDivElement>) => {
 		const containerRef = useRef<HTMLDivElement>(null);
-		const comboboxRef = useRef<{ handleClickOutside?: (event: MouseEvent | TouchEvent) => void }>(null);
+		const comboboxRef = useRef<{
+			handleClickOutside?: (event: MouseEvent | TouchEvent) => void;
+		}>(null);
 
 		// Use our custom hook to detect clicks outside
 		useClickOutside(
@@ -45,5 +60,6 @@ const ComboboxWithClickOutside = forwardRef<HTMLDivElement, ComboboxProps>(
 ComboboxWithClickOutside.displayName = 'ComboboxWithClickOutside';
 
 // Wrap with LanguageDirection for RTL support
-export default LanguageDirection(ComboboxWithClickOutside) as unknown as React.FC<ComboboxProps>;
-
+export default LanguageDirection(
+	ComboboxWithClickOutside
+) as unknown as React.FC<ComboboxProps>;

@@ -12,16 +12,15 @@ import React, {
 	CSSProperties,
 	ReactNode,
 	MouseEvent,
+	KeyboardEvent,
 } from 'react';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
 
-import checkProps from './check-props';
 import checkAppElementIsSet from '../../utilities/warning/check-app-element-set';
 import Button from '../button';
 import { MODAL } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
-import componentDoc from './component.json';
 
 const documentDefined = typeof document !== 'undefined';
 const windowDefined = typeof window !== 'undefined';
@@ -29,7 +28,8 @@ const windowDefined = typeof window !== 'undefined';
 // Types
 export type ModalAlign = 'top' | 'center';
 export type ModalSize = 'small' | 'medium' | 'large';
-export type ModalPrompt = 'success' | 'warning' | 'error' | 'wrench' | 'offline' | 'info';
+export type ModalPrompt =
+	'success' | 'warning' | 'error' | 'wrench' | 'offline' | 'info';
 
 export interface ModalAssistiveText {
 	/** This is a visually hidden label for the dialog. If not provided, `heading` is used. */
@@ -39,6 +39,29 @@ export interface ModalAssistiveText {
 	/** This is a visually hidden label for the close button. */
 	closeButton?: string;
 }
+
+/**
+ * What caused a Modal close request:
+ * - `'close-button'`: the header close button was clicked
+ * - `'escape'`: the Escape key was pressed
+ * - `'click-outside'`: a click landed outside the modal container (on the backdrop area)
+ */
+export type ModalRequestCloseTrigger =
+	'close-button' | 'escape' | 'click-outside';
+
+/**
+ * Data passed to `onRequestClose`
+ */
+export interface ModalRequestCloseData {
+	/** What caused the close request */
+	trigger: ModalRequestCloseTrigger;
+}
+
+/**
+ * Event passed to `onRequestClose`: the click (close button / outside click) or
+ * keydown (Escape) that caused the request
+ */
+export type ModalRequestCloseEvent = MouseEvent | KeyboardEvent;
 
 export interface ModalProps {
 	/** Vertical alignment of Modal. */
@@ -63,8 +86,15 @@ export interface ModalProps {
 	disableClose?: boolean;
 	/** If true, Modals can be dismissed by clicking outside of modal. If unspecified, defaults to !disableClose. */
 	dismissOnClickOutside?: boolean;
-	/** Callback to fire with Modal is dismissed */
-	onRequestClose?: () => void;
+	/**
+	 * Callback to fire when the Modal requests to be dismissed. Receives the triggering
+	 * click or keydown event and `data.trigger`: `'close-button'`, `'escape'`, or `'click-outside'`.
+	 * Not called when `disableClose` (or `dismissOnClickOutside: false` for outside clicks) prevents it.
+	 */
+	onRequestClose?: (
+		event: ModalRequestCloseEvent,
+		data: ModalRequestCloseData
+	) => void;
 	/** Modal footer content, typically buttons. */
 	footer?: ReactNode | ReactNode[];
 	/** Custom CSS classes for the footer. */
@@ -163,37 +193,8 @@ const Modal: React.FC<ModalProps> = ({
 	// Is this a prompt modal?
 	const isPrompt = prompt !== undefined;
 
-	// Check props in development
+	// Warn in development if the app element isn't set
 	useEffect(() => {
-		checkProps(MODAL, {
-			align,
-			ariaHideApp,
-			assistiveText: assistiveTextProp,
-			children,
-			className,
-			containerClassName,
-			contentClassName,
-			contentStyle: contentStyleProp,
-			directional,
-			disableClose,
-			dismissOnClickOutside,
-			onRequestClose,
-			footer,
-			footerClassName,
-			header,
-			headerClassName,
-			id: idProp,
-			isOpen,
-			parentSelector,
-			portalClassName,
-			prompt,
-			size,
-			tagline,
-			title,
-			heading,
-			toast,
-			closeButtonAssistiveText,
-		}, componentDoc);
 		if (ariaHideApp) {
 			checkAppElementIsSet();
 		}
@@ -225,34 +226,65 @@ const Modal: React.FC<ModalProps> = ({
 	}, [isOpen]);
 
 	// Dismiss modal handler
-	const dismissModal = useCallback(() => {
-		if (returnFocusTo && 'focus' in returnFocusTo && typeof returnFocusTo.focus === 'function') {
-			returnFocusTo.focus();
-		}
-		if (onRequestClose) {
-			onRequestClose();
-		}
-	}, [returnFocusTo, onRequestClose]);
+	const dismissModal = useCallback(
+		(event: ModalRequestCloseEvent, data: ModalRequestCloseData) => {
+			if (
+				returnFocusTo &&
+				'focus' in returnFocusTo &&
+				typeof returnFocusTo.focus === 'function'
+			) {
+				returnFocusTo.focus();
+			}
+			if (onRequestClose) {
+				onRequestClose(event, data);
+			}
+		},
+		[returnFocusTo, onRequestClose]
+	);
 
 	// Close modal handler (respects disableClose)
-	const closeModal = useCallback(() => {
-		if (!disableClose) {
-			dismissModal();
-		}
-	}, [disableClose, dismissModal]);
+	const closeModal = useCallback(
+		(event: ModalRequestCloseEvent, data: ModalRequestCloseData) => {
+			if (!disableClose) {
+				dismissModal(event, data);
+			}
+		},
+		[disableClose, dismissModal]
+	);
+
+	// Close button click handler
+	const handleCloseButtonClick = useCallback(
+		(event: MouseEvent<HTMLButtonElement>) => {
+			closeModal(event, { trigger: 'close-button' });
+		},
+		[closeModal]
+	);
+
+	// react-modal's own close request: Escape keydown, or a click directly on its overlay
+	const handleReactModalRequestClose = useCallback(
+		(event: ModalRequestCloseEvent) => {
+			closeModal(event, {
+				trigger: event.type === 'keydown' ? 'escape' : 'click-outside',
+			});
+		},
+		[closeModal]
+	);
 
 	// Dismiss on click outside handler
-	const dismissModalOnClickOutside = useCallback(() => {
-		// if dismissOnClickOutside is not set, default its value to !disableClose
-		const shouldDismiss =
-			dismissOnClickOutside !== undefined
-				? dismissOnClickOutside
-				: !disableClose;
+	const dismissModalOnClickOutside = useCallback(
+		(event: MouseEvent<HTMLElement>) => {
+			// if dismissOnClickOutside is not set, default its value to !disableClose
+			const shouldDismiss =
+				dismissOnClickOutside !== undefined
+					? dismissOnClickOutside
+					: !disableClose;
 
-		if (shouldDismiss) {
-			dismissModal();
-		}
-	}, [dismissOnClickOutside, disableClose, dismissModal]);
+			if (shouldDismiss) {
+				dismissModal(event, { trigger: 'click-outside' });
+			}
+		},
+		[dismissOnClickOutside, disableClose, dismissModal]
+	);
 
 	// Prevent click propagation inside modal
 	const handleModalClick = useCallback((event: MouseEvent) => {
@@ -264,24 +296,24 @@ const Modal: React.FC<ModalProps> = ({
 	// Calculate border radius based on header/footer presence
 	const getBorderRadius = useCallback((): CSSProperties => {
 		const borderRadiusValue = '.25rem';
-		const hasHeader = title || heading || header;
+		const hasHeader = heading || header;
 		const borderTopRadius = hasHeader
 			? {}
 			: {
 					borderTopLeftRadius: borderRadiusValue,
 					borderTopRightRadius: borderRadiusValue,
-			  };
+				};
 		const borderBottomRadius = footer
 			? {}
 			: {
 					borderBottomLeftRadius: borderRadiusValue,
 					borderBottomRightRadius: borderRadiusValue,
-			  };
+				};
 		return {
 			...borderTopRadius,
 			...borderBottomRadius,
 		};
-	}, [title, heading, header, footer]);
+	}, [heading, header, footer]);
 
 	// Get ARIA attributes
 	const getAriaAttributes = useCallback(() => {
@@ -305,7 +337,7 @@ const Modal: React.FC<ModalProps> = ({
 
 		if (assistiveText.dialogLabelledBy) {
 			dialogLabelledBy = assistiveText.dialogLabelledBy;
-		} else if (heading || title) {
+		} else if (heading) {
 			dialogLabelledBy = `${modalId}-heading`;
 		}
 
@@ -314,14 +346,14 @@ const Modal: React.FC<ModalProps> = ({
 		}
 
 		return ariaAttributes;
-	}, [getId, assistiveText, heading, title]);
+	}, [getId, assistiveText, heading]);
 
 	// Render header
 	const renderHeader = () => {
 		let headerContent = header;
-		const headerEmpty = !headerContent && !(heading || title) && !tagline;
-		const closeButtonText = closeButtonAssistiveText || assistiveText.closeButton;
-		
+		const headerEmpty = !headerContent && !heading && !tagline;
+		const closeButtonText = assistiveText.closeButton;
+
 		const closeButton = (
 			<Button
 				assistiveText={{ icon: closeButtonText }}
@@ -329,13 +361,13 @@ const Modal: React.FC<ModalProps> = ({
 				iconName="close"
 				iconSize="large"
 				className="slds-button_icon slds-modal__close"
-				onClick={closeModal}
+				onClick={handleCloseButtonClick}
 				title={closeButtonText}
 				variant="icon"
 			/>
 		);
 
-		if ((!headerContent && (heading || title)) || tagline) {
+		if ((!headerContent && heading) || tagline) {
 			headerContent = (
 				<div>
 					{toast}
@@ -346,11 +378,9 @@ const Modal: React.FC<ModalProps> = ({
 						})}
 						id={`${getId()}-heading`}
 					>
-						{heading || title}
+						{heading}
 					</h1>
-					{tagline ? (
-						<p className="slds-m-top_x-small">{tagline}</p>
-					) : null}
+					{tagline ? <p className="slds-m-top_x-small">{tagline}</p> : null}
 				</div>
 			);
 		}
@@ -398,7 +428,8 @@ const Modal: React.FC<ModalProps> = ({
 
 	// Render modal content
 	const renderModal = () => {
-		const modalStyle = align === 'top' ? { justifyContent: 'flex-start' } : undefined;
+		const modalStyle =
+			align === 'top' ? { justifyContent: 'flex-start' } : undefined;
 		const borderRadius = getBorderRadius();
 		const contentStyle: CSSProperties = {
 			...borderRadius,
@@ -464,7 +495,7 @@ const Modal: React.FC<ModalProps> = ({
 			aria={ariaAttributes}
 			ariaHideApp={ariaHideApp}
 			isOpen={isOpen}
-			onRequestClose={closeModal}
+			onRequestClose={handleReactModalRequestClose}
 			role={disableClose ? 'alertdialog' : 'dialog'}
 			style={customStyles}
 			parentSelector={parentSelector}
@@ -479,4 +510,3 @@ const Modal: React.FC<ModalProps> = ({
 Modal.displayName = MODAL;
 
 export default Modal;
-

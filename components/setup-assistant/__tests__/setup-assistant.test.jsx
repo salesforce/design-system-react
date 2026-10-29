@@ -1,6 +1,7 @@
 import { render, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 
+import Icon from '../../icon';
 import IconSettings from '../../icon-settings';
 import SetupAssistant from '../';
 import SetupAssistantStep from '../step';
@@ -21,8 +22,12 @@ describe('SLDS Setup Assistant', () => {
 				</IconSettings>
 			);
 
-			expect(container.querySelector('#setup-assistant-event-test-1')).toBeInTheDocument();
-			expect(container.querySelector('.slds-setup-assistant')).toBeInTheDocument();
+			expect(
+				container.querySelector('#setup-assistant-event-test-1')
+			).toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-setup-assistant')
+			).toBeInTheDocument();
 		});
 
 		it('handles onStepToggleIsOpen correctly', () => {
@@ -60,11 +65,50 @@ describe('SLDS Setup Assistant', () => {
 			const call = onStepToggleIsOpen.mock.calls[0];
 			const [event, data] = call;
 
-			expect(event).toBeTruthy();
-			expect(typeof data).toBe('object');
+			expect(event.type).toBe('click');
+			expect(data.index).toBe(0);
+			// Step is open, so the requested state is closed
+			expect(data.isOpen).toBe(false);
+			expect(data.step).toEqual(
+				expect.objectContaining({
+					id: 'setup-assistant-event-test-1-step-1',
+					index: 0,
+					isOpen: true,
+				})
+			);
+		});
+
+		it('reports the requested open state when a closed step is toggled', () => {
+			const onStepToggleIsOpen = vi.fn();
+
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<SetupAssistant
+						id="setup-assistant-event-test-2"
+						onStepToggleIsOpen={onStepToggleIsOpen}
+					>
+						<SetupAssistantStep
+							heading="Setup Assistant Step Heading"
+							id="setup-assistant-event-test-2-step-1"
+							isExpandable
+							isOpen={false}
+						/>
+					</SetupAssistant>
+				</IconSettings>
+			);
+
+			fireEvent.click(
+				container.querySelector(
+					'#setup-assistant-event-test-2-step-1 .slds-summary-detail > button'
+				)
+			);
+
+			expect(onStepToggleIsOpen).toHaveBeenCalledTimes(1);
+			const [event, data] = onStepToggleIsOpen.mock.calls[0];
+			expect(event.type).toBe('click');
 			expect(data.index).toBe(0);
 			expect(data.isOpen).toBe(true);
-			expect(typeof data.step).toBe('object');
+			expect(data.step.id).toBe('setup-assistant-event-test-2-step-1');
 		});
 
 		it('handles onToggleIsOpen correctly', () => {
@@ -100,11 +144,92 @@ describe('SLDS Setup Assistant', () => {
 			const call = onToggleIsOpen.mock.calls[0];
 			const [event, data] = call;
 
-			expect(event).toBeTruthy();
-			expect(typeof data).toBe('object');
+			expect(event.type).toBe('click');
 			expect(data.index).toBe(1);
-			expect(data.isOpen).toBe(true);
-			expect(typeof data.step).toBe('object');
+			// Step is open, so the requested state is closed
+			expect(data.isOpen).toBe(false);
+			expect(data.step).toEqual(
+				expect.objectContaining({
+					id: 'setup-assistant-event-test-1-step-2',
+					index: 1,
+				})
+			);
+		});
+	});
+
+	describe('Setup Assistant Step slots', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		const renderStep = (props) =>
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<SetupAssistant id="setup-assistant-slots">
+						<SetupAssistantStep
+							estimatedTime="4 mins"
+							heading="Step Heading"
+							id="setup-assistant-slots-step-1"
+							isExpandable
+							isOpen
+							{...props}
+						/>
+					</SetupAssistant>
+				</IconSettings>
+			);
+
+		const getIcon = (container) =>
+			container.querySelector(
+				'.slds-setup-assistant__step-summary .slds-media__figure .slds-icon'
+			);
+
+		it('renders the action, content and figure slots', () => {
+			const { container, getByRole, getByText } = renderStep({
+				action: <button type="button">Add Users</button>,
+				content: <p>Step content</p>,
+				figure: <Icon category="standard" name="user" size="large" />,
+			});
+
+			expect(getByRole('button', { name: 'Add Users' })).toBeInTheDocument();
+			expect(container.querySelector('.slds-text-color_weak')).toHaveClass(
+				'slds-p-top_medium'
+			);
+			expect(
+				container.querySelector('.slds-setup-assistant__step-detail')
+			).toContainElement(getByText('Step content'));
+			expect(getIcon(container)).toHaveClass('slds-icon_small');
+			expect(getIcon(container)).not.toHaveClass('slds-icon_large');
+			expect(
+				container.querySelector('.slds-progress-ring')
+			).not.toBeInTheDocument();
+		});
+
+		it('still renders the deprecated onRenderAction, onRenderContent and onRenderFigure and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			const { container, getByRole, getByText } = renderStep({
+				onRenderAction: () => <button type="button">Add Users</button>,
+				onRenderContent: () => <p>Step content</p>,
+				onRenderFigure: () => (
+					<Icon category="standard" name="user" size="large" />
+				),
+			});
+
+			expect(getByRole('button', { name: 'Add Users' })).toBeInTheDocument();
+			expect(container.querySelector('.slds-text-color_weak')).toHaveClass(
+				'slds-p-top_medium'
+			);
+			expect(
+				container.querySelector('.slds-setup-assistant__step-detail')
+			).toContainElement(getByText('Step content'));
+			expect(getIcon(container)).toHaveClass('slds-icon_small');
+
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(messages.some((m) => m.includes('`onRenderAction`'))).toBe(true);
+			expect(messages.some((m) => m.includes('`onRenderContent`'))).toBe(true);
+			expect(messages.some((m) => m.includes('`onRenderFigure`'))).toBe(true);
 		});
 	});
 });

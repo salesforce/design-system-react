@@ -11,38 +11,43 @@ const accounts = [
 		label:
 			'A very very very very very very very very very very very long title to show how menu width will behave',
 		subTitle: 'Account • San Francisco ',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '4',
 		label: 'Opportunities',
 		subTitle: 'Opportunity • San Francisco, CA',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '5',
 		label: 'Nakatomi Investments',
 		subTitle: 'Opportunity • Chicago, IL',
-		type: 'opportunity',
+		category: 'opportunity',
 	},
-	{ id: '6', label: 'Acme Landscaping', subTitle: '\u00A0', type: 'account' },
+	{
+		id: '6',
+		label: 'Acme Landscaping',
+		subTitle: '\u00A0',
+		category: 'account',
+	},
 	{
 		id: '7',
 		label: 'Acme Construction',
 		subTitle: 'Opportunity • Grand Marais, MN',
-		type: 'opportunity',
+		category: 'opportunity',
 	},
 ];
 
@@ -53,7 +58,7 @@ const accountsWithIcon = accounts.map((elem) => ({
 			<Icon
 				assistiveText={{ label: 'Account' }}
 				category="standard"
-				name={elem.type}
+				name={elem.category}
 			/>
 		),
 	},

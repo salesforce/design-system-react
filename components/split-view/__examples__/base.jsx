@@ -111,8 +111,8 @@ const headerControls = () => (
 				iconSize="large"
 				iconVariant="more"
 				align="right"
-				onSelect={(value) => {
-					console.log('selected: ', value);
+				onSelect={(event, { option }) => {
+					console.log('selected: ', option);
 				}}
 				options={[
 					{ label: 'Display As', type: 'header' },
@@ -214,8 +214,8 @@ class Example extends React.Component {
 		return [
 			<SplitViewHeader
 				key="1"
-				onRenderActions={headerActions}
-				onRenderControls={headerControls}
+				actions={headerActions()}
+				controls={headerControls()}
 				icon={
 					<Icon
 						assistiveText={{ label: 'User' }}
@@ -315,11 +315,8 @@ class Example extends React.Component {
 				<div style={{ height: '90vh' }}>
 					<SplitView
 						events={{
-							onClose: () => {
-								this.setState({ isOpen: false });
-							},
-							onOpen: () => {
-								this.setState({ isOpen: true });
+							onToggle: (event, { isOpen }) => {
+								this.setState({ isOpen });
 							},
 						}}
 						id="base-example"

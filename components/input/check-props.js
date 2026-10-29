@@ -4,12 +4,11 @@
 /* eslint-disable max-len */
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
-import sunsetProperty from '../../utilities/warning/sunset-property';
 // import oneOfRequiredProperty from '../../../utilities/warning/one-of-required-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
-import { INPUT, SEARCH } from '../../utilities/constants';
+import { INPUT } from '../../utilities/constants';
 
 let checkProps = function checkPropsFunction() {};
 
@@ -64,17 +63,6 @@ if (process.env.NODE_ENV !== 'production') {
 				iconDeprecatedMessage
 			);
 
-			if (typeof props.assistiveText === 'string') {
-				sunsetProperty(
-					COMPONENT,
-					props.assistiveText,
-					'assistiveText',
-					`AssistiveText as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use either assistiveText.label or assistiveText.spinner. ${createDocUrl(
-						'assistiveText'
-					)}`
-				);
-			}
-
 			onlyOneOfProperties(
 				COMPONENT,
 				{
@@ -104,17 +92,6 @@ if (process.env.NODE_ENV !== 'production') {
 				});
 			}
 			*/
-		} else if (COMPONENT === SEARCH) {
-			if (typeof props.assistiveText === 'string') {
-				sunsetProperty(
-					COMPONENT,
-					props.assistiveText,
-					'assistiveText',
-					`\`assistiveText\` as a string has been deprecated and is now an object to allow for multiple uses in the component. Please use \`assistiveText.label\` instead. ${createDocUrl(
-						'assistiveText'
-					)}`
-				);
-			}
 		}
 	};
 }

@@ -9,6 +9,11 @@ export type {
 	DatePickerAssistiveText,
 	DatePickerLabels,
 	DatePickerChangeData,
+	DatePickerCloseData,
+	DatePickerRequestCloseData,
+	DatePickerRequestCloseTrigger,
+	DatePickerRequestOpenData,
+	DatePickerRequestOpenTrigger,
 } from './date-picker';
 
 /**

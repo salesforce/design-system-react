@@ -50,7 +50,7 @@ export const RadioPicker = {
 					}}
 					checked={selected === 'option1'}
 					onChange={() => setSelected('option1')}
-					onRenderVisualPicker={() => priceTile('$30')}
+					visualPickerFigure={priceTile('$30')}
 				/>
 				<Radio
 					id="option2"
@@ -60,7 +60,7 @@ export const RadioPicker = {
 					}}
 					checked={selected === 'option2'}
 					onChange={() => setSelected('option2')}
-					onRenderVisualPicker={() => priceTile('$150')}
+					visualPickerFigure={priceTile('$150')}
 				/>
 				<Radio
 					id="option3"
@@ -70,7 +70,7 @@ export const RadioPicker = {
 					}}
 					checked={selected === 'option3'}
 					onChange={() => setSelected('option3')}
-					onRenderVisualPicker={() => priceTile('$300')}
+					visualPickerFigure={priceTile('$300')}
 				/>
 			</VisualPicker>
 		);
@@ -95,7 +95,7 @@ export const CheckboxPicker = {
 					onChange={() =>
 						setChecked((prev) => ({ ...prev, accounts: !prev.accounts }))
 					}
-					onRenderVisualPicker={() => priceTile('$30')}
+					visualPickerFigure={priceTile('$30')}
 				/>
 				<Checkbox
 					id="contacts"
@@ -104,14 +104,16 @@ export const CheckboxPicker = {
 					onChange={() =>
 						setChecked((prev) => ({ ...prev, contacts: !prev.contacts }))
 					}
-					onRenderVisualPicker={() => priceTile('$50')}
+					visualPickerFigure={priceTile('$50')}
 				/>
 				<Checkbox
 					id="leads"
 					labels={{ heading: 'Leads', label: 'Track prospects' }}
 					checked={checked.leads}
-					onChange={() => setChecked((prev) => ({ ...prev, leads: !prev.leads }))}
-					onRenderVisualPicker={() => priceTile('$70')}
+					onChange={() =>
+						setChecked((prev) => ({ ...prev, leads: !prev.leads }))
+					}
+					visualPickerFigure={priceTile('$70')}
 				/>
 			</VisualPicker>
 		);
@@ -130,21 +132,21 @@ export const LargeSize = {
 					labels={{ heading: 'Starter', label: 'For small teams' }}
 					checked={selected === 'option1'}
 					onChange={() => setSelected('option1')}
-					onRenderVisualPicker={() => priceTile('$30')}
+					visualPickerFigure={priceTile('$30')}
 				/>
 				<Radio
 					id="option2"
 					labels={{ heading: 'Growth', label: 'For growing teams' }}
 					checked={selected === 'option2'}
 					onChange={() => setSelected('option2')}
-					onRenderVisualPicker={() => priceTile('$150')}
+					visualPickerFigure={priceTile('$150')}
 				/>
 				<Radio
 					id="option3"
 					labels={{ heading: 'Enterprise', label: 'For large orgs' }}
 					checked={selected === 'option3'}
 					onChange={() => setSelected('option3')}
-					onRenderVisualPicker={() => priceTile('$300')}
+					visualPickerFigure={priceTile('$300')}
 				/>
 			</VisualPicker>
 		);
@@ -163,21 +165,21 @@ export const VerticalLayout = {
 					labels={{ heading: 'Starter', label: 'For small teams' }}
 					checked={selected === 'option1'}
 					onChange={() => setSelected('option1')}
-					onRenderVisualPicker={() => priceTile('$30')}
+					visualPickerFigure={priceTile('$30')}
 				/>
 				<Radio
 					id="option2"
 					labels={{ heading: 'Professional', label: 'For growing teams' }}
 					checked={selected === 'option2'}
 					onChange={() => setSelected('option2')}
-					onRenderVisualPicker={() => priceTile('$150')}
+					visualPickerFigure={priceTile('$150')}
 				/>
 				<Radio
 					id="option3"
 					labels={{ heading: 'Enterprise', label: 'For large orgs' }}
 					checked={selected === 'option3'}
 					onChange={() => setSelected('option3')}
-					onRenderVisualPicker={() => priceTile('$300')}
+					visualPickerFigure={priceTile('$300')}
 				/>
 			</VisualPicker>
 		);
@@ -185,7 +187,7 @@ export const VerticalLayout = {
 };
 
 // Coverable — icons cover the tile, swapped for a check when selected.
-const coverableSelected = () => (
+const coverableSelected = (
 	<Icon category="utility" name="check" colorVariant="base" size="large" />
 );
 
@@ -204,20 +206,20 @@ export const Coverable = {
 					labels={{ label: 'Connected App' }}
 					checked={selected === 'option1'}
 					onChange={() => setSelected('option1')}
-					onRenderVisualPickerSelected={coverableSelected}
-					onRenderVisualPickerNotSelected={() => (
+					visualPickerFigureSelected={coverableSelected}
+					visualPickerFigureNotSelected={
 						<Icon category="utility" name="connected_apps" size="large" />
-					)}
+					}
 				/>
 				<Radio
 					id="option2"
 					labels={{ label: 'Custom App' }}
 					checked={selected === 'option2'}
 					onChange={() => setSelected('option2')}
-					onRenderVisualPickerSelected={coverableSelected}
-					onRenderVisualPickerNotSelected={() => (
+					visualPickerFigureSelected={coverableSelected}
+					visualPickerFigureNotSelected={
 						<Icon category="utility" name="custom_apps" size="large" />
-					)}
+					}
 				/>
 			</VisualPicker>
 		);

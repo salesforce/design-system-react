@@ -4,19 +4,23 @@
 /**
  * Sample tree data in normalized hashmap format.
  * This replaces the previous normalizr-based implementation.
- * 
+ *
  * Hashmaps or hash tables more easily allow immutability because only one hash
- * entry needs to be overwritten by changes. This prevents anti-patterns like 
- * `_.deepClone` or `forceUpdate` renders which update the whole tree instead 
+ * entry needs to be overwritten by changes. This prevents anti-patterns like
+ * `_.deepClone` or `forceUpdate` renders which update the whole tree instead
  * of limiting the re-render to only the node that changed.
  */
 
-import { TreeNode } from '../types';
+import { TreeBranchNode, TreeItemNode } from '../types';
 
-type TreeHashMap = Record<string | number, TreeNode & { nodes?: number[] }>;
+// Branches store child ids; `getNodes` resolves them to nodes.
+type TreeHashMapNode =
+	(Omit<TreeBranchNode, 'nodes'> & { nodes?: number[] }) | TreeItemNode;
+
+type TreeHashMap = Record<string | number, TreeHashMapNode>;
 
 // Base tree structure - food categories
-const base: TreeHashMap = {
+const base = {
 	0: {
 		id: 0,
 		nodes: [1, 2, 3, 7],
@@ -196,7 +200,7 @@ const base: TreeHashMap = {
 		type: 'item',
 		id: 33,
 	},
-};
+} satisfies TreeHashMap;
 
 // Initial state with some nodes expanded and selected
 const initialExpandedSelected: TreeHashMap = {
@@ -210,22 +214,37 @@ const initialExpandedSelected: TreeHashMap = {
 const generateLargeDataset = (): TreeHashMap => {
 	const result: TreeHashMap = { ...base };
 	let nextId = 100;
-	
+
 	// Add many more items under existing branches
 	const categories = ['Vegetables', 'Herbs', 'Spices', 'Dairy', 'Meats'];
 	const items = [
-		'Carrot', 'Potato', 'Onion', 'Garlic', 'Basil', 'Oregano', 
-		'Thyme', 'Pepper', 'Salt', 'Cumin', 'Milk', 'Cheese',
-		'Yogurt', 'Butter', 'Chicken', 'Beef', 'Pork', 'Fish'
+		'Carrot',
+		'Potato',
+		'Onion',
+		'Garlic',
+		'Basil',
+		'Oregano',
+		'Thyme',
+		'Pepper',
+		'Salt',
+		'Cumin',
+		'Milk',
+		'Cheese',
+		'Yogurt',
+		'Butter',
+		'Chicken',
+		'Beef',
+		'Pork',
+		'Fish',
 	];
-	
+
 	// Add new category branches to root
-	const rootNodes = [...(result[0].nodes || [])];
-	
+	const rootNodes = [...base[0].nodes];
+
 	categories.forEach((category, catIndex) => {
 		const branchId = nextId++;
 		const itemIds: number[] = [];
-		
+
 		// Add 10 items per category
 		for (let i = 0; i < 10; i++) {
 			const itemId = nextId++;
@@ -236,22 +255,22 @@ const generateLargeDataset = (): TreeHashMap => {
 				type: 'item',
 			};
 		}
-		
+
 		result[branchId] = {
 			id: branchId,
 			label: category,
 			type: 'branch',
 			nodes: itemIds,
 		};
-		
+
 		rootNodes.push(branchId);
 	});
-	
+
 	// Add sub-branches with more items
 	for (let i = 0; i < 5; i++) {
 		const branchId = nextId++;
 		const itemIds: number[] = [];
-		
+
 		for (let j = 0; j < 8; j++) {
 			const itemId = nextId++;
 			itemIds.push(itemId);
@@ -261,19 +280,19 @@ const generateLargeDataset = (): TreeHashMap => {
 				type: 'item',
 			};
 		}
-		
+
 		result[branchId] = {
 			id: branchId,
 			label: `Category ${i + 1}`,
 			type: 'branch',
 			nodes: itemIds,
 		};
-		
+
 		rootNodes.push(branchId);
 	}
-	
-	result[0] = { ...result[0], nodes: rootNodes };
-	
+
+	result[0] = { ...base[0], nodes: rootNodes };
+
 	return result;
 };
 
@@ -286,6 +305,3 @@ const hashmap = {
 };
 
 export default hashmap;
-
-
-

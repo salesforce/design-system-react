@@ -3,16 +3,15 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import PageHeader from '../page-header';
+import PageHeader, { type PageHeaderProps } from '../page-header';
 
 import { SPLIT_VIEW_HEADER } from '../../utilities/constants';
 
-export interface SplitViewHeaderProps {
+export interface SplitViewHeaderProps extends PageHeaderProps {
 	/**
 	 * CSS classes to be added to the wrapping `PageHeader`.
 	 */
-	className?: unknown[] | Record<string, unknown> | string;
-	[key: string]: unknown;
+	className?: PageHeaderProps['className'];
 }
 
 /**
@@ -25,9 +24,9 @@ const SplitViewHeader = ({
 	<PageHeader
 		className={classNames(
 			'slds-split-view__header slds-has-bottom-magnet',
-			className as string
+			className
 		)}
-		{...(rest as React.ComponentProps<typeof PageHeader>)}
+		{...rest}
 	/>
 );
 

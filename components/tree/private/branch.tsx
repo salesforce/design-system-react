@@ -9,7 +9,7 @@ import RenderBranch from './render-branch';
 
 import { TREE_BRANCH } from '../../../utilities/constants';
 import generateId from '../../../utilities/generate-id';
-import { TreeNode, FlattenedNode } from '../types';
+import { TreeNode, FlattenedNode, TreeScrollData } from '../types';
 
 export interface BranchProps {
 	getNodes?: (node: { nodes?: TreeNode[] }) => TreeNode[] | undefined;
@@ -42,7 +42,7 @@ export interface BranchProps {
 	}) => void;
 	onScroll?: (
 		event: React.UIEvent<HTMLUListElement>,
-		data: { percentage: number }
+		data: TreeScrollData
 	) => void;
 	searchTerm?: string;
 	treeId: string;
@@ -156,6 +156,3 @@ const Branch: React.FC<BranchProps> = ({
 Branch.displayName = TREE_BRANCH;
 
 export default Branch;
-
-
-

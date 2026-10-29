@@ -3,7 +3,12 @@
 
 /* eslint-disable class-methods-use-this */
 
-import React, { Component, type ComponentType, type Ref } from 'react';
+import React, {
+	Component,
+	type ComponentType,
+	type ReactNode,
+	type Ref,
+} from 'react';
 import classNames from 'classnames';
 
 export const DISPLAY_NAME = 'SLDSSplitViewListItemWithContent';
@@ -64,6 +69,15 @@ export interface ListItemWithContentProps {
 	 * Reference to the list item component
 	 */
 	listItemRef?: Ref<HTMLAnchorElement>;
+	/**
+	 * Called to render the item content. Takes precedence over the wrapped component.
+	 */
+	renderContent?: (data: {
+		isFocused: boolean;
+		isSelected: boolean;
+		isUnread: boolean;
+		item: unknown;
+	}) => ReactNode;
 }
 
 const defaultProps: Partial<ListItemWithContentProps> = {
@@ -133,7 +147,16 @@ const listItemWithContent = (
 						onClick={this.onClick}
 					>
 						{this.unread()}
-						<ListItemContent {...this.props} />
+						{this.props.renderContent ? (
+							this.props.renderContent({
+								isFocused: this.props.isFocused,
+								isSelected: this.props.isSelected,
+								isUnread: Boolean(this.props.isUnread),
+								item: this.props.item,
+							})
+						) : (
+							<ListItemContent {...this.props} />
+						)}
 					</a>
 				</li>
 			);

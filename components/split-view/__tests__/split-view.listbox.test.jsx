@@ -91,6 +91,28 @@ describe('SLDSSplitView - Listbox', () => {
 		});
 	});
 
+	describe('List item content', () => {
+		it('titles each text span with its own text', () => {
+			const { getAllByText } = renderListbox({
+				options: listOptions,
+				events: {
+					onSelect: vi.fn(),
+				},
+			});
+
+			const bottomLeft = getAllByText(listOptions[0].bottomLeftText)[0];
+			const bottomRight = getAllByText(listOptions[0].bottomRightText)[0];
+			expect(bottomLeft).toHaveAttribute(
+				'title',
+				listOptions[0].bottomLeftText
+			);
+			expect(bottomRight).toHaveAttribute(
+				'title',
+				listOptions[0].bottomRightText
+			);
+		});
+	});
+
 	describe('When a list item is selected', () => {
 		describe('and single select only', () => {
 			it('should focus the item that is clicked', () => {
@@ -283,6 +305,89 @@ describe('SLDSSplitView - Listbox', () => {
 					expectItemSelected(container, []);
 				});
 			});
+		});
+	});
+
+	describe('renderListItem', () => {
+		it('is called with { isFocused, isSelected, isUnread, item } and renders inside each option', () => {
+			const renderListItem = vi.fn(({ item }) => (
+				<span className="custom-item">{item.label}</span>
+			));
+			const { container } = renderListbox({
+				options: listOptions,
+				selection: [listOptions[1]],
+				unread: [listOptions[2]],
+				events: { onSelect: vi.fn() },
+				renderListItem,
+			});
+
+			const anchors = container.querySelectorAll('li > a');
+			expect(anchors).toHaveLength(listOptions.length);
+			expect(anchors[0].querySelector('.custom-item')).toHaveTextContent(
+				listOptions[0].label
+			);
+			// The unread indicator still wraps the custom content
+			expect(
+				anchors[2].querySelector('.slds-indicator_unread')
+			).toBeInTheDocument();
+			expect(renderListItem).toHaveBeenCalledWith({
+				isFocused: true,
+				isSelected: true,
+				isUnread: false,
+				item: listOptions[1],
+			});
+			expect(renderListItem).toHaveBeenCalledWith({
+				isFocused: false,
+				isSelected: false,
+				isUnread: true,
+				item: listOptions[2],
+			});
+		});
+
+		it('still renders the deprecated listItem component and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const LegacyItem = ({ item }) => (
+				<span className="legacy-item">{item.label}</span>
+			);
+			const { container } = renderListbox({
+				options: listOptions,
+				events: { onSelect: vi.fn() },
+				listItem: LegacyItem,
+			});
+
+			expect(container.querySelectorAll('.legacy-item')).toHaveLength(
+				listOptions.length
+			);
+			expect(
+				consoleError.mock.calls.some((args) => {
+					const message = args.join(' ');
+					return (
+						message.includes('`listItem`') &&
+						message.includes('`renderListItem`')
+					);
+				})
+			).toBe(true);
+			consoleError.mockRestore();
+		});
+
+		it('prefers renderListItem over listItem', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = renderListbox({
+				options: listOptions,
+				events: { onSelect: vi.fn() },
+				listItem: () => <span className="legacy-item" />,
+				renderListItem: () => <span className="custom-item" />,
+			});
+
+			expect(container.querySelectorAll('.custom-item')).toHaveLength(
+				listOptions.length
+			);
+			expect(container.querySelectorAll('.legacy-item')).toHaveLength(0);
+			consoleError.mockRestore();
 		});
 	});
 });

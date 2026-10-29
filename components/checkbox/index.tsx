@@ -17,11 +17,14 @@ import EventUtil from '../../utilities/event';
 import getAriaProps from '../../utilities/get-aria-props';
 import { CHECKBOX } from '../../utilities/constants';
 import Icon from '../icon/index';
+import { checkDeprecatedProps } from './check-props';
+import componentDoc from './component.json';
 
 /**
  * Checkbox variant types
  */
-export type CheckboxVariant = 'base' | 'toggle' | 'button-group' | 'visual-picker';
+export type CheckboxVariant =
+	'base' | 'toggle' | 'button-group' | 'visual-picker';
 
 /**
  * Checkbox size for visual picker
@@ -69,14 +72,9 @@ export interface CheckboxProps {
 	/** aria-required for validation */
 	'aria-required'?: boolean;
 	/** Assistive text for accessibility */
-	assistiveText?: CheckboxAssistiveText | string;
+	assistiveText?: CheckboxAssistiveText;
 	/** Controlled checked state */
 	checked?: boolean;
-	/**
-	 * Preserves the legacy `onChange(event, { checked })` parameter order used
-	 * by the deprecated `components/forms/checkbox` alias. Not for new code.
-	 */
-	oldEventParameterOrder?: boolean;
 	/** Initial uncontrolled checked state */
 	defaultChecked?: boolean;
 	/** CSS class for container */
@@ -96,7 +94,10 @@ export interface CheckboxProps {
 	/** Blur event handler */
 	onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Change event handler */
-	onChange?: (event: ChangeEvent<HTMLInputElement>, data: CheckboxChangeData) => void;
+	onChange?: (
+		event: ChangeEvent<HTMLInputElement>,
+		data: CheckboxChangeData
+	) => void;
 	/** Focus event handler */
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Key down event handler */
@@ -123,11 +124,17 @@ export interface CheckboxProps {
 	coverable?: boolean;
 	/** Vertical visual picker */
 	vertical?: boolean;
-	/** Render function for visual picker */
+	/** Visual picker figure content, rendered inside `.slds-visual-picker__figure` when not `coverable` */
+	visualPickerFigure?: ReactNode;
+	/** Coverable visual picker figure content shown when selected */
+	visualPickerFigureSelected?: ReactNode;
+	/** Coverable visual picker figure content shown when not selected */
+	visualPickerFigureNotSelected?: ReactNode;
+	/** @deprecated Use `visualPickerFigure` instead. */
 	onRenderVisualPicker?: () => ReactNode;
-	/** Render function for selected visual picker */
+	/** @deprecated Use `visualPickerFigureSelected` instead. */
 	onRenderVisualPickerSelected?: () => ReactNode;
-	/** Render function for not selected visual picker */
+	/** @deprecated Use `visualPickerFigureNotSelected` instead. */
 	onRenderVisualPickerNotSelected?: () => ReactNode;
 	/** Size for visual picker */
 	size?: CheckboxSize;
@@ -171,6 +178,9 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 		variant = 'base',
 		coverable,
 		vertical,
+		visualPickerFigure,
+		visualPickerFigureSelected,
+		visualPickerFigureNotSelected,
 		onRenderVisualPicker,
 		onRenderVisualPickerSelected,
 		onRenderVisualPickerNotSelected,
@@ -186,16 +196,29 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 	const getErrorId = () => (errorText ? `${getId()}-error-text` : undefined);
 
 	// Merge assistive text
-	const assistiveText: CheckboxAssistiveText =
-		typeof assistiveTextProp === 'string'
-			? { label: assistiveTextProp }
-			: { ...assistiveTextProp };
+	const assistiveText: CheckboxAssistiveText = { ...assistiveTextProp };
 
 	// Merge labels
 	const labels: CheckboxLabels = {
 		...defaultLabels,
 		...labelsProp,
 	};
+
+	useEffect(() => {
+		checkDeprecatedProps(
+			CHECKBOX,
+			{
+				onRenderVisualPicker,
+				onRenderVisualPickerSelected,
+				onRenderVisualPickerNotSelected,
+			},
+			componentDoc
+		);
+	}, [
+		onRenderVisualPicker,
+		onRenderVisualPickerSelected,
+		onRenderVisualPickerNotSelected,
+	]);
 
 	// Handle indeterminate state
 	useEffect(() => {
@@ -355,15 +378,16 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 					{coverable ? (
 						<div className="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
 							<span className="slds-is-selected">
-								{onRenderVisualPickerSelected?.()}
+								{visualPickerFigureSelected ?? onRenderVisualPickerSelected?.()}
 							</span>
 							<span className="slds-is-not-selected">
-								{onRenderVisualPickerNotSelected?.()}
+								{visualPickerFigureNotSelected ??
+									onRenderVisualPickerNotSelected?.()}
 							</span>
 						</div>
 					) : (
 						<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
-							{onRenderVisualPicker?.()}
+							{visualPickerFigure ?? onRenderVisualPicker?.()}
 						</span>
 					)}
 					{!vertical && (
@@ -449,4 +473,3 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 Checkbox.displayName = CHECKBOX;
 
 export default Checkbox;
-

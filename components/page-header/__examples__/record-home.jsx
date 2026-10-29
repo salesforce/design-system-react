@@ -80,7 +80,7 @@ class Example extends React.Component {
 						/>
 					}
 					label="Record Type"
-					onRenderActions={actions}
+					actions={actions()}
 					title="Record Title"
 					variant="record-home"
 				/>

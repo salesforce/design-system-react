@@ -52,8 +52,8 @@ class Example extends React.Component {
 							iconName="down"
 							id="checkmark-menu-dropdown"
 							iconVariant="border-filled"
-							onSelect={(value) => {
-								console.log('selected: ', value);
+							onSelect={(event, { option }) => {
+								console.log('selected: ', option);
 							}}
 							options={[
 								{ label: 'Menu Item One', value: 'A0' },
@@ -77,11 +77,8 @@ class Example extends React.Component {
 							iconSize="large"
 							iconVariant="more"
 							id="checkmark-menu-dropdown-right-icon"
-							onSelect={(option) => {
-								const selectedOptionIndex = options.findIndex(
-									(currenOption) => currenOption.value === option.value
-								);
-								this.setState({ selectedOptionIndex });
+							onSelect={(event, { optionIndex }) => {
+								this.setState({ selectedOptionIndex: optionIndex });
 							}}
 							options={options}
 							value={options[this.state.selectedOptionIndex].value}

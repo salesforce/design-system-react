@@ -1,6 +1,6 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
-import React, { type ReactNode } from 'react';
+import React from 'react';
 
 // ### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -22,13 +22,10 @@ import {
 const displayName = PROGRESS_INDICATOR_STEP_VERTICAL;
 
 /**
- * Setup-assistant steps carry extra optional fields consumed only by the
- * vertical layout.
+ * Setup-assistant steps carry extra optional fields (`setupAssistantAction`,
+ * `setupAssistantEstimatedTime`) consumed only by the vertical layout.
  */
-export interface VerticalProgressStep extends ProgressStep {
-	onRenderSetupAssistantAction?: ReactNode;
-	setupAssistantEstimatedTime?: ReactNode;
-}
+export type VerticalProgressStep = ProgressStep;
 
 export interface StepVerticalProps {
 	/**
@@ -81,7 +78,11 @@ class StepVertical extends React.Component<StepVerticalProps> {
 	/**
 	 * stepIcon represents the icon used for each step.
 	 */
-	stepIcon = (renderIcon: boolean, status: string, props: StepVerticalProps) => {
+	stepIcon = (
+		renderIcon: boolean,
+		status: string,
+		props: StepVerticalProps
+	) => {
 		const data: StepEventData = {
 			isSelected: !!this.props.isSelected,
 			isError: !!this.props.isError,
@@ -149,10 +150,11 @@ class StepVertical extends React.Component<StepVerticalProps> {
 	};
 
 	renderStepContent = () => {
-		if (
-			this.props.step.onRenderSetupAssistantAction ||
-			this.props.step.setupAssistantEstimatedTime
-		) {
+		const setupAssistantAction =
+			this.props.step.setupAssistantAction ??
+			this.props.step.onRenderSetupAssistantAction;
+
+		if (setupAssistantAction || this.props.step.setupAssistantEstimatedTime) {
 			return (
 				<div
 					id={`progress-indicator-vertical-label-${
@@ -163,7 +165,7 @@ class StepVertical extends React.Component<StepVerticalProps> {
 					<div className="slds-size_3-of-4">{this.props.step.label}</div>
 					<div className="slds-grid slds-grid_align-end slds-size_1-of-4">
 						<div className="slds-media__figure slds-media__figure_reverse">
-							{this.props.step.onRenderSetupAssistantAction}
+							{setupAssistantAction}
 							{this.props.step.setupAssistantEstimatedTime && (
 								<p className="slds-text-align_right slds-text-color_weak slds-p-top_medium">
 									{this.props.step.setupAssistantEstimatedTime}

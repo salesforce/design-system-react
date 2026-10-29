@@ -9,13 +9,17 @@ export interface TabsPanelProps {
 	/**
 	 * The string or element that is handed off to the `<Tab />` component, ends up being the title and the label for the tab associated with its tab panel.
 	 */
-	label: string | React.ReactElement;
+	label: ReactNode;
 	/**
 	 * The `children` are the actual tab panels to be rendered. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabPanels` function.
 	 *
 	 * Note that the `<TabsPanel />` component inserts a `div` element around the children, because React requires exactly one "parent" element returned. The `<TabPanel />` component simply dips down into `children` to get the children of this wrapping `div` so that it does not get rendered in the DOM.
 	 */
 	children: ReactNode;
+	/**
+	 * Disables the `<Tab />` associated with this panel so it cannot be selected.
+	 */
+	disabled?: boolean;
 	/**
 	 * Show an icon on the `<Tab />` next to the title that can be used to communicate when a tab contains a validation error that needs attention
 	 */

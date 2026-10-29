@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { render, fireEvent, waitFor, act } from '@testing-library/react';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import Toast from '../';
 import ToastContainer from '../container';
@@ -85,10 +85,85 @@ describe('SLDSToast', () => {
 			// Wait for the auto-dismiss to happen
 			await waitFor(
 				() => {
-					expect(container.querySelector('.slds-notify')).not.toBeInTheDocument();
+					expect(
+						container.querySelector('.slds-notify')
+					).not.toBeInTheDocument();
 				},
 				{ timeout: 50 }
 			);
+		});
+	});
+
+	describe('onRequestClose payload', () => {
+		afterEach(() => {
+			vi.useRealTimers();
+		});
+
+		const renderToast = (props) => (
+			<IconSettings iconPath="/assets/icons">
+				<Toast labels={{ heading: 'Heading' }} variant="info" {...props} />
+			</IconSettings>
+		);
+
+		it('passes the click event and trigger "close-button" when the close button is clicked', () => {
+			const onRequestClose = vi.fn();
+			const { container } = render(renderToast({ onRequestClose }));
+
+			fireEvent.click(container.querySelector('button.slds-notify__close'));
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestClose.mock.calls[0];
+			expect(event).toEqual(expect.objectContaining({ type: 'click' }));
+			expect(data).toEqual({ trigger: 'close-button' });
+		});
+
+		it('passes an undefined event and trigger "timeout" when duration elapses', () => {
+			vi.useFakeTimers();
+			const onRequestClose = vi.fn();
+			render(renderToast({ duration: 1000, onRequestClose }));
+
+			act(() => {
+				vi.advanceTimersByTime(999);
+			});
+			expect(onRequestClose).not.toHaveBeenCalled();
+
+			act(() => {
+				vi.advanceTimersByTime(1);
+			});
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			expect(onRequestClose).toHaveBeenCalledWith(undefined, {
+				trigger: 'timeout',
+			});
+		});
+
+		// Regression: an inline `onRequestClose` (new function each render) used to
+		// restart the auto-dismiss timer on every parent render.
+		it('does not restart the timer when re-rendered with a new inline callback', () => {
+			vi.useFakeTimers();
+			const firstCallback = vi.fn();
+			const secondCallback = vi.fn();
+			const { rerender } = render(
+				renderToast({ duration: 1000, onRequestClose: firstCallback })
+			);
+
+			act(() => {
+				vi.advanceTimersByTime(600);
+			});
+			rerender(
+				renderToast({
+					duration: 1000,
+					onRequestClose: (...args) => secondCallback(...args),
+				})
+			);
+			act(() => {
+				vi.advanceTimersByTime(400);
+			});
+
+			expect(firstCallback).not.toHaveBeenCalled();
+			expect(secondCallback).toHaveBeenCalledTimes(1);
+			expect(secondCallback).toHaveBeenCalledWith(undefined, {
+				trigger: 'timeout',
+			});
 		});
 	});
 

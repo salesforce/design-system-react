@@ -1,29 +1,112 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type ReactElement, type CSSProperties } from 'react';
+import React, {
+	type ReactNode,
+	type ReactElement,
+	type CSSProperties,
+} from 'react';
 import { dequal as isEqual } from 'dequal';
 import classNames from 'classnames';
 
 import Icon from '../../icon';
 import Spinner from '../../spinner';
 
-export interface ComboboxOption {
+type ComboboxOptionLabelRenderer = (searchTerm: string) => ReactNode;
+
+/**
+ * A selectable option. Group items under a `subheadings` entry from
+ * `comboboxAddSubheadings` with `category`.
+ */
+export interface ComboboxItemOption {
+	/** Structural rows set `type`; selectable items leave it unset. */
+	type?: undefined;
 	id: string;
-	label?: string | ((searchTerm: string) => ReactNode);
+	/** Matches the `id` of a subheading passed to `comboboxAddSubheadings` */
+	category?: string;
+	label?: string;
 	subTitle?: string;
 	title?: string;
-	type?: 'separator' | 'header' | 'footer' | 'deselect' | string;
 	icon?: ReactNode;
 	disabled?: boolean;
 	tooltipContent?: ReactNode;
 	value?: string;
-	onClick?: (event: React.MouseEvent) => void;
+	onClick?: never;
 }
+
+/** A non-interactive group label. Without a `label` it renders as a divider. */
+export interface ComboboxSeparatorOption {
+	type: 'separator';
+	id: string;
+	label?: string | ComboboxOptionLabelRenderer;
+	category?: never;
+	subTitle?: never;
+	title?: never;
+	icon?: never;
+	disabled?: never;
+	tooltipContent?: never;
+	value?: never;
+	onClick?: never;
+}
+
+interface ComboboxActionOptionFields {
+	id: string;
+	label?: string | ComboboxOptionLabelRenderer;
+	icon?: ReactNode;
+	disabled?: boolean;
+	/** @deprecated Only called on Enter, for `type: 'header' | 'footer'` rows
+	 * passed directly in `options`. Use `optionsSearchEntity`/`optionsAddItem`
+	 * with `events.onSelectActionItem` instead. */
+	onClick?: (event: React.MouseEvent) => void;
+	category?: never;
+	subTitle?: never;
+	title?: never;
+	tooltipContent?: never;
+	value?: never;
+}
+
+/**
+ * An action row above (`header`) or below (`footer`) the options. Usually
+ * created from `optionsSearchEntity` and `optionsAddItem`.
+ */
+export type ComboboxActionOption =
+	| (ComboboxActionOptionFields & { type: 'header' })
+	| (ComboboxActionOptionFields & { type: 'footer' });
+
+/** The "clear selection" row added by `hasDeselect`. */
+export interface ComboboxDeselectOption {
+	type: 'deselect';
+	id: string;
+	label?: string;
+	value?: string;
+	category?: never;
+	subTitle?: never;
+	title?: never;
+	icon?: never;
+	disabled?: never;
+	tooltipContent?: never;
+	onClick?: never;
+}
+
+export type ComboboxOption =
+	| ComboboxItemOption
+	| ComboboxSeparatorOption
+	| ComboboxActionOption
+	| ComboboxDeselectOption;
 
 export interface MenuAssistiveText {
 	loadingMenuItems?: string;
 	optionSelectedInMenu?: string;
+}
+
+/**
+ * Argument passed to the menu's `renderMenuItem`
+ */
+export interface MenuRenderMenuItemData {
+	/** Whether the option is selected */
+	isSelected: boolean;
+	/** The option to render. Custom renderers only receive selectable rows */
+	option: ComboboxItemOption | ComboboxDeselectOption;
 }
 
 export interface MenuLabels {
@@ -48,7 +131,10 @@ export interface MenuProps {
 	/** Input value for bolding matches */
 	inputValue?: string;
 	/** Function to check if option is selected */
-	isSelected: (params: { selection: ComboboxOption[]; option: ComboboxOption }) => boolean;
+	isSelected: (params: {
+		selection: ComboboxOption[];
+		option: ComboboxOption;
+	}) => boolean;
 	/** Determines the height of the menu */
 	itemVisibleLength?: 5 | 7 | 10 | null;
 	/** Text labels */
@@ -60,15 +146,15 @@ export interface MenuProps {
 	/** Menu position */
 	menuPosition?: 'absolute' | 'overflowBoundaryElement' | 'relative';
 	/** Ref for menu element */
-	menuRef?: React.RefCallback<HTMLUListElement> | React.RefObject<HTMLUListElement>;
-	/** Custom menu item renderer */
-	onRenderMenuItem?: React.ComponentType<{
-		assistiveText?: MenuAssistiveText;
-		selected: boolean;
-		option: ComboboxOption;
-	}>;
+	menuRef?:
+		React.RefCallback<HTMLUListElement> | React.RefObject<HTMLUListElement>;
+	/** Renders an option's content in place of the default label and icon */
+	renderMenuItem?: (data: MenuRenderMenuItemData) => ReactNode;
 	/** Callback when option is selected */
-	onSelect: (event: React.MouseEvent, data: { option: ComboboxOption; selection?: ComboboxOption[] }) => void;
+	onSelect: (
+		event: React.MouseEvent,
+		data: { option: ComboboxOption; selection?: ComboboxOption[] }
+	) => void;
 	/** Menu options */
 	options: ComboboxOption[];
 	/** Selected options */
@@ -99,7 +185,10 @@ const setBold = (label: string | undefined, searchTerm: string): ReactNode => {
 	return label;
 };
 
-const renderLabel = (labelProp: string | ((searchTerm: string) => ReactNode) | undefined, searchTerm: string): ReactNode => {
+const renderLabel = (
+	labelProp: string | ((searchTerm: string) => ReactNode) | undefined,
+	searchTerm: string
+): ReactNode => {
 	if (labelProp == null || typeof labelProp === 'string') {
 		return labelProp;
 	}
@@ -138,15 +227,17 @@ const Menu: React.FC<MenuProps> = ({
 	maxWidth,
 	menuPosition,
 	menuRef,
-	onRenderMenuItem: MenuItem,
+	renderMenuItem,
 	onSelect,
 	options,
 	selection,
 	tooltipMenuItemDisabled,
 	variant = 'icon-title-subtitle',
 }) => {
-	let menuMaxWidth: string | undefined = inheritWidthOf === 'menu' ? 'inherit' : undefined;
-	menuMaxWidth = inheritWidthOf === 'menu' && maxWidth ? maxWidth : menuMaxWidth;
+	let menuMaxWidth: string | undefined =
+		inheritWidthOf === 'menu' ? 'inherit' : undefined;
+	menuMaxWidth =
+		inheritWidthOf === 'menu' && maxWidth ? maxWidth : menuMaxWidth;
 
 	const menuOptions = options.map((optionData, index) => {
 		const active =
@@ -165,7 +256,9 @@ const Menu: React.FC<MenuProps> = ({
 			return optionData.label ? (
 				<li
 					className="slds-dropdown__header slds-truncate"
-					title={typeof optionData.label === 'string' ? optionData.label : undefined}
+					title={
+						typeof optionData.label === 'string' ? optionData.label : undefined
+					}
 					role="separator"
 					key={`menu-separator-${optionData.id}`}
 				>
@@ -175,7 +268,9 @@ const Menu: React.FC<MenuProps> = ({
 							classNameMenuSubHeader
 						)}
 					>
-						{typeof optionData.label === 'string' ? optionData.label : optionData.label?.(inputValue)}
+						{typeof optionData.label === 'string'
+							? optionData.label
+							: optionData.label?.(inputValue)}
 					</span>
 				</li>
 			) : (
@@ -200,9 +295,10 @@ const Menu: React.FC<MenuProps> = ({
 								? undefined
 								: (event) => {
 										onSelect(event, { option: optionData });
-								  }
+									}
 						}
 						aria-selected={active}
+						aria-disabled={optionData.disabled || undefined}
 						id={`${inputId}-listbox-option-${optionData.id}`}
 						className={classNames(
 							'slds-media slds-listbox__option',
@@ -231,12 +327,13 @@ const Menu: React.FC<MenuProps> = ({
 				>
 					<div
 						aria-selected={active}
+						aria-disabled={optionData.disabled || undefined}
 						onClick={
 							optionData.disabled
 								? undefined
 								: (event) => {
 										onSelect(event, { option: optionData });
-								  }
+									}
 						}
 						id={`${inputId}-listbox-option-${optionData.id}`}
 						className={classNames(
@@ -271,7 +368,8 @@ const Menu: React.FC<MenuProps> = ({
 			disabledProps.style = { cursor: 'default' };
 		}
 
-		const labelString = typeof optionData.label === 'string' ? optionData.label : undefined;
+		const labelString =
+			typeof optionData.label === 'string' ? optionData.label : undefined;
 
 		const menuItem: Record<string, ReactNode> = {
 			'icon-title-subtitle': (
@@ -290,21 +388,17 @@ const Menu: React.FC<MenuProps> = ({
 							? undefined
 							: (event) => {
 									onSelect(event, { option: optionData });
-							  }
+								}
 					}
 					role="option"
 				>
-					{optionData.icon && !MenuItem ? (
+					{optionData.icon && !renderMenuItem ? (
 						<span className="slds-media__figure">
 							{sizeOptionIcon(optionData.icon)}
 						</span>
 					) : null}
-					{MenuItem ? (
-						<MenuItem
-							assistiveText={assistiveText}
-							selected={selected}
-							option={optionData}
-						/>
+					{renderMenuItem ? (
+						renderMenuItem({ isSelected: selected, option: optionData })
 					) : (
 						<span className="slds-media__body">
 							<span
@@ -352,7 +446,7 @@ const Menu: React.FC<MenuProps> = ({
 										selection,
 										option: optionData,
 									});
-							  }
+								}
 					}
 					role="option"
 				>
@@ -365,12 +459,8 @@ const Menu: React.FC<MenuProps> = ({
 						/>
 					</span>
 					<span className="slds-media__body">
-						{MenuItem ? (
-							<MenuItem
-								assistiveText={assistiveText}
-								selected={selected}
-								option={optionData}
-							/>
+						{renderMenuItem ? (
+							renderMenuItem({ isSelected: selected, option: optionData })
 						) : (
 							<span
 								className={classNames('slds-truncate', {
@@ -397,7 +487,10 @@ const Menu: React.FC<MenuProps> = ({
 
 		let item: ReactNode;
 		if (optionData.disabled && tooltipMenuItemDisabled) {
-			const tooltipPropsFromElement = tooltipMenuItemDisabled.props as { content?: ReactNode; [key: string]: unknown };
+			const tooltipPropsFromElement = tooltipMenuItemDisabled.props as {
+				content?: ReactNode;
+				[key: string]: unknown;
+			};
 			const { content, ...userDefinedTooltipProps } = tooltipPropsFromElement;
 			const tooltipProps: Record<string, unknown> = {
 				align: 'top',
@@ -482,4 +575,3 @@ const Menu: React.FC<MenuProps> = ({
 Menu.displayName = 'Menu';
 
 export default Menu;
-

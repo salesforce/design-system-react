@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import Textarea from '../';
 
@@ -11,7 +11,11 @@ describe('SLDS TEXTAREA', () => {
 	describe('Standard Textarea with Label', () => {
 		it('is wrapped in div with class "slds-form-element"', () => {
 			const { container } = render(
-				<Textarea {...defaultProps} label="Textarea Label" id="custom-id" />
+				<Textarea
+					{...defaultProps}
+					labels={{ label: 'Textarea Label' }}
+					id="custom-id"
+				/>
 			);
 
 			const wrapper = container.querySelector('.slds-form-element');
@@ -21,7 +25,11 @@ describe('SLDS TEXTAREA', () => {
 
 		it('renders label', () => {
 			const { container } = render(
-				<Textarea {...defaultProps} label="Textarea Label" id="custom-id" />
+				<Textarea
+					{...defaultProps}
+					labels={{ label: 'Textarea Label' }}
+					id="custom-id"
+				/>
 			);
 
 			const label = container.querySelector('.slds-form-element__label');
@@ -31,7 +39,11 @@ describe('SLDS TEXTAREA', () => {
 
 		it('renders textarea element with class "slds-textarea"', () => {
 			const { container } = render(
-				<Textarea {...defaultProps} label="Textarea Label" id="custom-id" />
+				<Textarea
+					{...defaultProps}
+					labels={{ label: 'Textarea Label' }}
+					id="custom-id"
+				/>
 			);
 
 			const textarea = container.querySelector('textarea');
@@ -41,7 +53,7 @@ describe('SLDS TEXTAREA', () => {
 
 		it('has an id', () => {
 			const { container } = render(
-				<Textarea {...defaultProps} label="Textarea Label" />
+				<Textarea {...defaultProps} labels={{ label: 'Textarea Label' }} />
 			);
 
 			const textarea = container.querySelector('textarea');
@@ -50,7 +62,11 @@ describe('SLDS TEXTAREA', () => {
 
 		it('can pass custom id', () => {
 			const { container } = render(
-				<Textarea {...defaultProps} label="Textarea Label" id="custom-id" />
+				<Textarea
+					{...defaultProps}
+					labels={{ label: 'Textarea Label' }}
+					id="custom-id"
+				/>
 			);
 
 			const textarea = container.querySelector('textarea');
@@ -59,7 +75,11 @@ describe('SLDS TEXTAREA', () => {
 
 		it('renders placeholder text', () => {
 			const { container } = render(
-				<Textarea {...defaultProps} label="Textarea Label" id="custom-id" />
+				<Textarea
+					{...defaultProps}
+					labels={{ label: 'Textarea Label' }}
+					id="custom-id"
+				/>
 			);
 
 			const textarea = container.querySelector('textarea');
@@ -98,8 +118,8 @@ describe('SLDS TEXTAREA', () => {
 		it('each textarea has unique generated id', () => {
 			const { container } = render(
 				<div>
-					<Textarea {...defaultProps} label="Textarea One" />
-					<Textarea {...defaultProps} label="Textarea Two" />
+					<Textarea {...defaultProps} labels={{ label: 'Textarea One' }} />
+					<Textarea {...defaultProps} labels={{ label: 'Textarea Two' }} />
 				</div>
 			);
 
@@ -120,9 +140,9 @@ describe('SLDS TEXTAREA', () => {
 			const { container } = render(
 				<Textarea
 					{...defaultProps}
-					label="Textarea Label"
+					hasError
+					labels={{ label: 'Textarea Label', error: 'Error Message' }}
 					required={true}
-					errorText="Error Message"
 				/>
 			);
 
@@ -135,9 +155,9 @@ describe('SLDS TEXTAREA', () => {
 			const { container } = render(
 				<Textarea
 					{...defaultProps}
-					label="Textarea Label"
+					hasError
+					labels={{ label: 'Textarea Label', error: 'Error Message' }}
 					required={true}
-					errorText="Error Message"
 				/>
 			);
 
@@ -149,15 +169,119 @@ describe('SLDS TEXTAREA', () => {
 			const { container } = render(
 				<Textarea
 					{...defaultProps}
-					label="Textarea Label"
+					hasError
+					labels={{ label: 'Textarea Label', error: 'Error Message' }}
 					required={true}
-					errorText="Error Message"
 				/>
 			);
 
 			const error = container.querySelector('.slds-form-element__help');
 			expect(error).toBeInTheDocument();
 			expect(error.textContent).toBe('Error Message');
+		});
+	});
+
+	describe('maxLength', () => {
+		it('passes a numeric maxLength to the textarea', () => {
+			const { container } = render(
+				<Textarea
+					{...defaultProps}
+					labels={{ label: 'Textarea Label' }}
+					maxLength={100}
+				/>
+			);
+
+			expect(container.querySelector('textarea')).toHaveAttribute(
+				'maxlength',
+				'100'
+			);
+		});
+
+		it('still accepts a string maxLength from untyped callers and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			const { container } = render(
+				<Textarea
+					{...defaultProps}
+					labels={{ label: 'Textarea Label' }}
+					maxLength="50"
+				/>
+			);
+
+			expect(container.querySelector('textarea')).toHaveAttribute(
+				'maxlength',
+				'50'
+			);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`maxLength` as a string has been deprecated')
+			);
+			consoleError.mockRestore();
+		});
+	});
+
+	describe('Error labels', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		it('does not show labels.error until hasError is true', () => {
+			const { container, rerender } = render(
+				<Textarea
+					labels={{ label: 'Textarea Label', error: 'Error Message' }}
+				/>
+			);
+
+			expect(container.querySelector('.slds-form-element')).not.toHaveClass(
+				'slds-has-error'
+			);
+			expect(container.querySelector('.slds-form-element__help')).toBeNull();
+
+			rerender(
+				<Textarea
+					hasError
+					labels={{ label: 'Textarea Label', error: 'Error Message' }}
+				/>
+			);
+
+			const error = container.querySelector('.slds-form-element__help');
+			expect(container.querySelector('.slds-form-element')).toHaveClass(
+				'slds-has-error'
+			);
+			expect(error).toHaveTextContent('Error Message');
+			expect(container.querySelector('textarea')).toHaveAttribute(
+				'aria-describedby',
+				error.id
+			);
+		});
+
+		it('still accepts the deprecated label and errorText props and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			const { container } = render(
+				<Textarea label="Old Label" errorText="Old Error" />
+			);
+
+			expect(
+				container.querySelector('.slds-form-element__label')
+			).toHaveTextContent('Old Label');
+			expect(container.querySelector('.slds-form-element')).toHaveClass(
+				'slds-has-error'
+			);
+			expect(
+				container.querySelector('.slds-form-element__help')
+			).toHaveTextContent('Old Error');
+
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(messages.some((m) => m.includes('`errorText`'))).toBe(true);
+			expect(
+				messages.some(
+					(m) => m.includes('`label`') && m.includes('labels.label')
+				)
+			).toBe(true);
 		});
 	});
 });

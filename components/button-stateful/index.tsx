@@ -57,7 +57,7 @@ export interface ButtonStatefulProps {
 	/** Controlled active state */
 	active?: boolean;
 	/** Assistive text */
-	assistiveText?: ButtonStatefulAssistiveText | string;
+	assistiveText?: ButtonStatefulAssistiveText;
 	/** CSS classes */
 	className?: string;
 	/** Disabled state */
@@ -170,9 +170,11 @@ const ButtonStateful = ({
 
 	const handleBlur = useCallback(
 		(e: FocusEvent<HTMLButtonElement> | MouseEvent<HTMLButtonElement>) => {
-			if (onBlur && 'relatedTarget' in e)
-				onBlur(e as FocusEvent<HTMLButtonElement>);
-			e.currentTarget.blur();
+			if (onBlur) onBlur(e as FocusEvent<HTMLButtonElement>);
+			// SLDS shows `slds-text-selected-focus` on `.slds-is-selected:focus`, so
+			// drop focus left behind by a mouse click. Keyboard focus is
+			// `:focus-visible` and stays put.
+			if (!e.currentTarget.matches(':focus-visible')) e.currentTarget.blur();
 		},
 		[onBlur]
 	);
@@ -193,10 +195,8 @@ const ButtonStateful = ({
 		className: 'slds-button__icon_stateful',
 	};
 
-	const iconAssistiveText =
-		typeof propAssistiveText === 'string'
-			? propAssistiveText
-			: { ...defaultAssistiveText, ...propAssistiveText }.icon;
+	const iconAssistiveText = { ...defaultAssistiveText, ...propAssistiveText }
+		.icon;
 
 	// Accept aria-* props
 	let ariaProps = getAriaProps(rest);

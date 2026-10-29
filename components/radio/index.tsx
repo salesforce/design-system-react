@@ -1,7 +1,16 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useRef, useId, useCallback, type ChangeEvent, type FocusEvent, type KeyboardEvent, type CSSProperties } from 'react';
+import React, {
+	useRef,
+	useId,
+	useCallback,
+	useEffect,
+	type ChangeEvent,
+	type FocusEvent,
+	type KeyboardEvent,
+	type CSSProperties,
+} from 'react';
 import classNames from 'classnames';
 import KEYS from '../../utilities/key-code';
 import { RADIO } from '../../utilities/constants';
@@ -9,6 +18,8 @@ import getAriaProps from '../../utilities/get-aria-props';
 import getDataProps from '../../utilities/get-data-props';
 import Swatch from '../../components/color-picker/private/swatch';
 import Icon from '../icon';
+import { checkDeprecatedProps } from './check-props';
+import componentDoc from './component.json';
 
 /**
  * Radio variant types
@@ -73,7 +84,10 @@ export interface RadioProps {
 	/** Input name attribute */
 	name?: string;
 	/** Change handler */
-	onChange?: (event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>, data: { checked: boolean }) => void;
+	onChange?: (
+		event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
+		data: { checked: boolean }
+	) => void;
 	/** Focus handler */
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Request focus callback */
@@ -90,11 +104,17 @@ export interface RadioProps {
 	coverable?: boolean;
 	/** Visual picker: vertical layout */
 	vertical?: boolean;
-	/** Visual picker: render content */
+	/** Visual picker: figure content, rendered inside `.slds-visual-picker__figure` when not `coverable` */
+	visualPickerFigure?: React.ReactNode;
+	/** Visual picker: coverable figure content shown when selected */
+	visualPickerFigureSelected?: React.ReactNode;
+	/** Visual picker: coverable figure content shown when not selected */
+	visualPickerFigureNotSelected?: React.ReactNode;
+	/** @deprecated Use `visualPickerFigure` instead. */
 	onRenderVisualPicker?: () => React.ReactNode;
-	/** Visual picker: render selected state */
+	/** @deprecated Use `visualPickerFigureSelected` instead. */
 	onRenderVisualPickerSelected?: () => React.ReactNode;
-	/** Visual picker: render not selected state */
+	/** @deprecated Use `visualPickerFigureNotSelected` instead. */
 	onRenderVisualPickerNotSelected?: () => React.ReactNode;
 	/** Visual picker: description text */
 	description?: string;
@@ -136,6 +156,9 @@ const Radio = ({
 	variant = 'base',
 	coverable = false,
 	vertical,
+	visualPickerFigure,
+	visualPickerFigureSelected,
+	visualPickerFigureNotSelected,
 	onRenderVisualPicker,
 	onRenderVisualPickerSelected,
 	onRenderVisualPickerNotSelected,
@@ -155,11 +178,30 @@ const Radio = ({
 		...propLabels,
 	};
 
+	useEffect(() => {
+		checkDeprecatedProps(
+			RADIO,
+			{
+				onRenderVisualPicker,
+				onRenderVisualPickerSelected,
+				onRenderVisualPickerNotSelected,
+			},
+			componentDoc
+		);
+	}, [
+		onRenderVisualPicker,
+		onRenderVisualPickerSelected,
+		onRenderVisualPickerNotSelected,
+	]);
+
 	const ariaProps = getAriaProps(rest);
 	const dataProps = getDataProps(rest);
 
 	const handleChange = useCallback(
-		(event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>, preventDuplicate?: boolean) => {
+		(
+			event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
+			preventDuplicate?: boolean
+		) => {
 			if (!preventDuplicateRef.current) {
 				preventDuplicateRef.current = Boolean(preventDuplicate);
 				onChange?.(event, { checked: !checked });
@@ -207,15 +249,16 @@ const Radio = ({
 				{coverable ? (
 					<div className="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
 						<span className="slds-is-selected">
-							{onRenderVisualPickerSelected?.()}
+							{visualPickerFigureSelected ?? onRenderVisualPickerSelected?.()}
 						</span>
 						<span className="slds-is-not-selected">
-							{onRenderVisualPickerNotSelected?.()}
+							{visualPickerFigureNotSelected ??
+								onRenderVisualPickerNotSelected?.()}
 						</span>
 					</div>
 				) : (
 					<span className="slds-visual-picker__figure slds-visual-picker__text slds-align_absolute-center">
-						{onRenderVisualPicker?.()}
+						{visualPickerFigure ?? onRenderVisualPicker?.()}
 					</span>
 				)}
 				{!vertical && (
@@ -260,7 +303,8 @@ const Radio = ({
 					'slds-radio': variant === 'base' || variant === 'swatch',
 					'slds-button slds-radio_button': variant === 'button-group',
 					'slds-visual-picker': variant === 'visual-picker',
-					'slds-visual-picker_vertical': variant === 'visual-picker' && vertical,
+					'slds-visual-picker_vertical':
+						variant === 'visual-picker' && vertical,
 				},
 				className as string
 			)}
@@ -305,18 +349,3 @@ const Radio = ({
 Radio.displayName = RADIO;
 
 export default Radio;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

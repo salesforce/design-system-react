@@ -1,5 +1,5 @@
-import { render, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { render, fireEvent, act } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 import IconSettings from '../../icon-settings';
 import Carousel from '../index';
@@ -408,7 +408,7 @@ describe('SLDS Carousel', () => {
 	});
 
 	describe('Carousel events', () => {
-		it('calls onRequestAutoplayToggle correctly', () => {
+		it('calls onRequestAutoplayToggle with the requested (off) state when autoplay is on', () => {
 			const onRequestAutoplayToggle = vi.fn();
 			const { container } = renderCarousel({
 				itemsPerPanel: 1,
@@ -421,10 +421,45 @@ describe('SLDS Carousel', () => {
 			fireEvent.click(autoplayButton);
 
 			expect(onRequestAutoplayToggle).toHaveBeenCalledTimes(1);
-			const callArgs = onRequestAutoplayToggle.mock.calls[0];
-			expect(callArgs[0]).toBeTruthy(); // event object
-			expect(callArgs[1]).toBeTruthy(); // data object
-			expect(callArgs[1].isAutoplayOn).toBe(true);
+			const [event, data] = onRequestAutoplayToggle.mock.calls[0];
+			expect(event.type).toBe('click');
+			expect(data).toEqual({ isAutoplayOn: false });
+		});
+
+		it('calls onRequestAutoplayToggle with the requested (on) state when autoplay is off', () => {
+			const onRequestAutoplayToggle = vi.fn();
+			const { container } = renderCarousel({
+				isAutoplayOn: false,
+				itemsPerPanel: 1,
+				onRequestAutoplayToggle,
+			});
+
+			const autoplayButton = container.querySelector(
+				'.slds-carousel__autoplay button'
+			);
+			fireEvent.click(autoplayButton);
+
+			expect(onRequestAutoplayToggle).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestAutoplayToggle.mock.calls[0];
+			expect(event.type).toBe('click');
+			expect(data).toEqual({ isAutoplayOn: true });
+		});
+
+		it('calls onRequestAutoplayToggle with the focus event and requested off state when an item is focused', () => {
+			const onRequestAutoplayToggle = vi.fn();
+			const { container } = renderCarousel({
+				itemsPerPanel: 1,
+				onRequestAutoplayToggle,
+			});
+
+			fireEvent.focus(
+				container.querySelector(`#content-id-${defaultCarouselProps.id}-1 a`)
+			);
+
+			expect(onRequestAutoplayToggle).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestAutoplayToggle.mock.calls[0];
+			expect(event.type).toBe('focus');
+			expect(data).toEqual({ isAutoplayOn: false });
 		});
 
 		it('calls onRequestPanelChange correctly', () => {
@@ -463,6 +498,121 @@ describe('SLDS Carousel', () => {
 			expect(callArgs[1]).toBeTruthy(); // data object
 			expect(callArgs[1].item).toBeTruthy();
 			expect(callArgs[1].item.id).toBe(1);
+		});
+
+		it('calls renderItem with an { item } object', () => {
+			const renderItem = vi.fn(({ item }) => (
+				<span className="custom-item">{item.heading}</span>
+			));
+			const { container } = renderCarousel({
+				itemsPerPanel: 1,
+				renderItem,
+			});
+
+			expect(container.querySelectorAll('.custom-item')).toHaveLength(
+				items.length
+			);
+			const [data] = renderItem.mock.calls[0];
+			expect(data.item).toEqual(
+				expect.objectContaining({
+					carouselId: defaultCarouselProps.id,
+					heading: items[0].heading,
+					id: items[0].id,
+					isInCurrentPanel: true,
+					panelIndex: 0,
+					src: items[0].src,
+				})
+			);
+		});
+
+		it('still calls the deprecated onRenderItem and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const onRenderItem = vi.fn(({ item }) => (
+				<span className="custom-item">{item.heading}</span>
+			));
+			const { container } = renderCarousel({
+				itemsPerPanel: 1,
+				onRenderItem,
+			});
+
+			expect(container.querySelectorAll('.custom-item')).toHaveLength(
+				items.length
+			);
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(
+				messages.some(
+					(m) => m.includes('`onRenderItem`') && m.includes('`renderItem`')
+				)
+			).toBe(true);
+			consoleError.mockRestore();
+		});
+
+		it('prefers renderItem over onRenderItem', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const onRenderItem = vi.fn(() => <span className="old-item" />);
+			const { container } = renderCarousel({
+				itemsPerPanel: 1,
+				onRenderItem,
+				renderItem: () => <span className="new-item" />,
+			});
+
+			expect(container.querySelectorAll('.new-item')).toHaveLength(
+				items.length
+			);
+			expect(onRenderItem).not.toHaveBeenCalled();
+			consoleError.mockRestore();
+		});
+	});
+
+	describe('Carousel autoplay timer events', () => {
+		beforeEach(() => {
+			vi.useFakeTimers();
+		});
+
+		afterEach(() => {
+			vi.useRealTimers();
+		});
+
+		it('calls onRequestPanelChange with an undefined event when autoplay advances', () => {
+			const onRequestPanelChange = vi.fn();
+			renderCarousel({
+				itemsPerPanel: 1,
+				onRequestPanelChange,
+			});
+
+			act(() => {
+				vi.advanceTimersByTime(4000);
+			});
+
+			expect(onRequestPanelChange).toHaveBeenCalledTimes(1);
+			expect(onRequestPanelChange).toHaveBeenCalledWith(undefined, {
+				currentPanel: 0,
+				requestedPanel: 1,
+			});
+		});
+
+		it('calls onRequestAutoplayToggle with an undefined event and requested off state when autoplay reaches the end', () => {
+			const onRequestAutoplayToggle = vi.fn();
+			renderCarousel({
+				currentPanel: items.length - 1,
+				isInfinite: false,
+				itemsPerPanel: 1,
+				onRequestAutoplayToggle,
+				onRequestPanelChange: () => {},
+			});
+
+			act(() => {
+				vi.advanceTimersByTime(4000);
+			});
+
+			expect(onRequestAutoplayToggle).toHaveBeenCalledTimes(1);
+			expect(onRequestAutoplayToggle).toHaveBeenCalledWith(undefined, {
+				isAutoplayOn: false,
+			});
 		});
 	});
 });

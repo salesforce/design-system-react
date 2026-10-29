@@ -11,33 +11,33 @@ const accounts = [
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 		disabled: true,
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
-		type: 'account',
+		category: 'account',
 		disabled: true,
 	},
 	{
 		id: '4',
 		label: 'Tyrell Corp',
 		subTitle: 'Account • San Francisco, CA',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '5',
 		label: 'Paper St. Soap Company',
 		subTitle: 'Account • Beloit, WI',
-		type: 'account',
+		category: 'account',
 	},
 ];
 
@@ -49,14 +49,14 @@ const accountsWithIcon = accounts.map((elem) => ({
 				assistiveText={{ label: 'Account' }}
 				category="standard"
 				size="x-small"
-				name={elem.type}
+				name={elem.category}
 			/>
 		),
 	},
 }));
 
-const CustomMenuItem = (props) => {
-	const disabledRule = { 'slds-disabled-text': props.option.disabled };
+const renderMenuItem = ({ option }) => {
+	const disabledRule = { 'slds-disabled-text': option.disabled };
 
 	return (
 		<span>
@@ -67,7 +67,7 @@ const CustomMenuItem = (props) => {
 					disabledRule
 				)}
 			>
-				{props.option.label}
+				{option.label}
 			</span>
 			<span
 				className={classNames(
@@ -76,13 +76,11 @@ const CustomMenuItem = (props) => {
 					disabledRule
 				)}
 			>
-				{props.option.subTitle || '\u00A0'}
+				{option.subTitle || '\u00A0'}
 			</span>
 		</span>
 	);
 };
-
-CustomMenuItem.displayName = 'CustomMenuItem';
 
 class Example extends React.Component {
 	constructor(props) {
@@ -157,7 +155,7 @@ class Example extends React.Component {
 						label: 'Search',
 						placeholder: 'Search Salesforce',
 					}}
-					onRenderMenuItem={CustomMenuItem}
+					renderMenuItem={renderMenuItem}
 					multiple
 					options={comboboxFilterAndLimit({
 						inputValue: this.state.inputValue,

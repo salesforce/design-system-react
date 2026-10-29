@@ -10,19 +10,19 @@ const accounts = [
 		id: '1',
 		label: 'Acme',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '2',
 		label: 'Salesforce.com, Inc.',
 		subTitle: 'Account • San Francisco',
-		type: 'account',
+		category: 'account',
 	},
 	{
 		id: '3',
 		label: "Paddy's Pub",
 		subTitle: 'Account • Boston, MA',
-		type: 'account',
+		category: 'account',
 	},
 ];
 
@@ -33,7 +33,7 @@ const accountsWithIcon = accounts.map((elem) => ({
 			<Icon
 				assistiveText={{ label: 'Account' }}
 				category="standard"
-				name={elem.type}
+				name={elem.category}
 			/>
 		),
 	},
@@ -67,7 +67,6 @@ class Example extends React.Component {
 								/>
 							),
 							label: 'salesforce',
-							onClick: (event) => console.log('onClick', event),
 						},
 					]}
 					optionsAddItem={[
@@ -82,10 +81,11 @@ class Example extends React.Component {
 								/>
 							),
 							label: 'New Entity',
-							onClick: (event) => console.log('onClick', event),
 						},
 					]}
 					events={{
+						onSelectActionItem: (event, data) =>
+							console.log('onSelectActionItem', event, data),
 						onChange: (event, { value }) => {
 							console.log('onChange', event, value);
 							this.setState({ inputValue: value });

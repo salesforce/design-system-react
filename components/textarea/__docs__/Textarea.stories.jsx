@@ -32,7 +32,7 @@ const Template = (args) => <Textarea {...args} />;
 export const Standard = Template.bind({});
 Standard.args = {
 	id: 'textarea-standard',
-	label: 'Textarea Label',
+	labels: { label: 'Textarea Label' },
 	name: 'standard-textarea',
 	placeholder: 'Placeholder Text',
 };
@@ -40,7 +40,7 @@ Standard.args = {
 export const WithValue = Template.bind({});
 WithValue.args = {
 	id: 'textarea-with-value',
-	label: 'Textarea with Value',
+	labels: { label: 'Textarea with Value' },
 	name: 'textarea-value',
 	value: 'This is some preset content in the textarea.',
 };
@@ -48,7 +48,7 @@ WithValue.args = {
 export const Disabled = Template.bind({});
 Disabled.args = {
 	id: 'textarea-disabled',
-	label: 'Disabled Textarea',
+	labels: { label: 'Disabled Textarea' },
 	name: 'disabled-textarea',
 	placeholder: 'This textarea is disabled',
 	disabled: true,
@@ -57,7 +57,7 @@ Disabled.args = {
 export const Required = Template.bind({});
 Required.args = {
 	id: 'textarea-required',
-	label: 'Required Textarea',
+	labels: { label: 'Required Textarea' },
 	name: 'required-textarea',
 	placeholder: 'This field is required',
 	required: true,
@@ -66,20 +66,23 @@ Required.args = {
 export const WithError = Template.bind({});
 WithError.args = {
 	id: 'textarea-error',
-	label: 'Textarea with Error',
+	hasError: true,
+	labels: {
+		label: 'Textarea with Error',
+		error: 'This field is required and cannot be empty.',
+	},
 	name: 'error-textarea',
 	placeholder: 'Please fix this error',
 	required: true,
-	errorText: 'This field is required and cannot be empty.',
 };
 
 export const WithMaxLength = Template.bind({});
 WithMaxLength.args = {
 	id: 'textarea-maxlength',
-	label: 'Limited Characters',
+	labels: { label: 'Limited Characters' },
 	name: 'maxlength-textarea',
 	placeholder: 'Max 100 characters',
-	maxLength: '100',
+	maxLength: 100,
 };
 
 export const AssistiveTextOnly = Template.bind({});
@@ -96,12 +99,16 @@ AssistiveTextOnly.args = {
 
 export const DocSiteDefault = () => <DefaultExample />;
 DocSiteDefault.parameters = {
-	docs: { description: { story: 'Default textarea example from documentation' } },
+	docs: {
+		description: { story: 'Default textarea example from documentation' },
+	},
 };
 
 export const DocSiteDisabled = () => <DisabledExample />;
 DocSiteDisabled.parameters = {
-	docs: { description: { story: 'Disabled textarea example from documentation' } },
+	docs: {
+		description: { story: 'Disabled textarea example from documentation' },
+	},
 };
 
 export const DocSiteError = () => <ErrorExample />;

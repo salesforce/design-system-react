@@ -21,11 +21,6 @@ import {
 	canUseDOM,
 	canUseEventListeners,
 } from '../../utilities/execution-environment';
-import { colorGray5 } from '../../utilities/design-tokens/dist/palette-colors.common';
-import salesforceSkin from '../../utilities/design-tokens/dist/salesforce-skin.common';
-
-const { tableBorderRadius } = salesforceSkin;
-
 // ## Children
 import SimpleDataTableCell from './cell';
 import SimpleDataTableColumn from './column';
@@ -801,10 +796,10 @@ class SimpleDataTable extends React.Component<
 		const assistiveText = getAssistiveText(
 			this.props.assistiveText,
 			this.props.assistiveTextForActionsHeader,
-			this.props.assistiveTextForSelectAllRows,
+			this.props.assistiveTextForColumnSort,
 			this.props.assistiveTextForColumnSortedAscending,
 			this.props.assistiveTextForColumnSortedDescending,
-			this.props.assistiveTextForColumnSort,
+			this.props.assistiveTextForSelectAllRows,
 			this.props.assistiveTextForSelectRow
 		);
 
@@ -901,18 +896,30 @@ class SimpleDataTable extends React.Component<
 											this.getId() && item.id
 												? `${this.getId()}-${SIMPLE_DATA_TABLE_ROW}-${item.id}`
 												: generateId();
-										return this.props.onRenderSubHeadingRow &&
-											item.type === 'header-row' ? (
-											this.props.onRenderSubHeadingRow({
+										if (item.type === 'header-row') {
+											const subHeadingRowData = {
 												assistiveText,
 												classNameRow: item.classNameRow,
 												columns,
-												key: rowId,
 												id: rowId,
 												tableId: this.getId(),
 												item,
-											})
-										) : (
+											};
+											if (this.props.renderSubHeadingRow) {
+												return (
+													<React.Fragment key={rowId}>
+														{this.props.renderSubHeadingRow(subHeadingRowData)}
+													</React.Fragment>
+												);
+											}
+											if (this.props.onRenderSubHeadingRow) {
+												return this.props.onRenderSubHeadingRow({
+													...subHeadingRowData,
+													key: rowId,
+												});
+											}
+										}
+										return (
 											<SimpleDataTableRow
 												assistiveText={assistiveText}
 												canSelectRows={canSelectRows}
@@ -951,7 +958,7 @@ class SimpleDataTable extends React.Component<
 		);
 
 		if (this.props.fixedHeader) {
-			const border = `1px solid ${colorGray5}`;
+			const border = '1px solid var(--slds-g-color-border-1)';
 			const styles: React.CSSProperties = {
 				borderTop: border,
 				height: '100%',
@@ -962,7 +969,8 @@ class SimpleDataTable extends React.Component<
 				styles.borderLeft = border;
 				styles.borderRight = border;
 				styles.borderTop = 'none';
-				styles.borderRadius = tableBorderRadius;
+				styles.borderRadius =
+					'0 0 var(--slds-g-radius-border-2) var(--slds-g-radius-border-2)';
 			}
 
 			const fixedScrollerStyle: React.CSSProperties = {

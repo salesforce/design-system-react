@@ -39,9 +39,12 @@ const Base = (props: PageHeaderVariantProps) => {
 			);
 		}
 
-		icon = React.cloneElement(props.icon as ReactElement, {
-			className: iconClasses,
-		} as { className: string });
+		icon = React.cloneElement(
+			props.icon as ReactElement,
+			{
+				className: iconClasses,
+			} as { className: string }
+		);
 	}
 
 	return (
@@ -62,7 +65,7 @@ const Base = (props: PageHeaderVariantProps) => {
 			<Controls
 				className="slds-align-middle"
 				navRight={props.navRight}
-				onRenderControls={props.onRenderControls}
+				controls={props.controls}
 				type="controls"
 			/>
 		</div>

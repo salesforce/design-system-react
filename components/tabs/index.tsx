@@ -11,7 +11,6 @@ import React, {
 	type KeyboardEvent,
 } from 'react';
 import classNames from 'classnames';
-import isFunction from 'lodash.isfunction';
 
 // Child components
 import TabsList from './private/tabs-list';
@@ -42,6 +41,16 @@ export interface TabChildProps {
 }
 
 /**
+ * Data passed to the Tabs `onSelect` callback
+ */
+export interface TabsSelectData {
+	/** Index of the tab being selected */
+	selectedIndex: number;
+	/** Index of the tab that was selected before this selection */
+	previousIndex: number;
+}
+
+/**
  * Props for the Tabs component
  */
 export interface TabsProps {
@@ -53,8 +62,15 @@ export interface TabsProps {
 	defaultSelectedIndex?: number;
 	/** HTML id */
 	id?: string;
-	/** Selection callback - return false to prevent selection */
-	onSelect?: (selectedIndex: number, lastIndex: number) => boolean | void;
+	/**
+	 * Called when a tab is selected by click or keyboard. Receives the triggering event and
+	 * `{ selectedIndex, previousIndex }`. When `selectedIndex` is not passed, the selection always
+	 * changes; when it is passed (controlled), update it from this callback to change tabs.
+	 */
+	onSelect?: (
+		event: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>,
+		data: TabsSelectData
+	) => void;
 	/** Currently selected tab index (controlled) */
 	selectedIndex?: number;
 	/** Tab style variant */
@@ -103,12 +119,17 @@ const Tabs = ({
 	const generatedId = useId();
 	const id = propId || generatedId;
 
-	const [internalSelectedIndex, setInternalSelectedIndex] = useState(defaultSelectedIndex);
+	const [internalSelectedIndex, setInternalSelectedIndex] =
+		useState(defaultSelectedIndex);
 	const [focus, setFocus] = useState(false);
-	const tabsRef = useRef<Array<{ tab: React.ReactElement<TabChildProps>; node: HTMLElement | null }>>([]);
+	const tabsRef = useRef<
+		Array<{ tab: React.ReactElement<TabChildProps>; node: HTMLElement | null }>
+	>([]);
 	const tabsNodeRef = useRef<HTMLDivElement>(null);
 
-	const childArray = React.Children.toArray(children) as React.ReactElement<TabChildProps>[];
+	const childArray = React.Children.toArray(
+		children
+	) as React.ReactElement<TabChildProps>[];
 	const tabsCount = childArray.length;
 
 	// Use controlled or internal state
@@ -116,55 +137,65 @@ const Tabs = ({
 		? controlledSelectedIndex!
 		: internalSelectedIndex;
 
-	const getNextTab = useCallback((index: number): number => {
-		// Look for non-disabled tab from index to the last tab
-		for (let i = index + 1; i < tabsCount; i++) {
-			const tab = tabsRef.current[i];
-			if (tab && !isTabDisabled(tab.tab)) {
-				return i;
+	const getNextTab = useCallback(
+		(index: number): number => {
+			// Look for non-disabled tab from index to the last tab
+			for (let i = index + 1; i < tabsCount; i++) {
+				const tab = tabsRef.current[i];
+				if (tab && !isTabDisabled(tab.tab)) {
+					return i;
+				}
 			}
-		}
-		// Continue from first tab
-		for (let i = 0; i < index; i++) {
-			const tab = tabsRef.current[i];
-			if (tab && !isTabDisabled(tab.tab)) {
-				return i;
+			// Continue from first tab
+			for (let i = 0; i < index; i++) {
+				const tab = tabsRef.current[i];
+				if (tab && !isTabDisabled(tab.tab)) {
+					return i;
+				}
 			}
-		}
-		return index;
-	}, [tabsCount]);
+			return index;
+		},
+		[tabsCount]
+	);
 
-	const getPrevTab = useCallback((index: number): number => {
-		// Look for non-disabled tab backwards
-		for (let i = index - 1; i >= 0; i--) {
-			const tab = tabsRef.current[i];
-			if (tab && !isTabDisabled(tab.tab)) {
-				return i;
+	const getPrevTab = useCallback(
+		(index: number): number => {
+			// Look for non-disabled tab backwards
+			for (let i = index - 1; i >= 0; i--) {
+				const tab = tabsRef.current[i];
+				if (tab && !isTabDisabled(tab.tab)) {
+					return i;
+				}
 			}
-		}
-		// Continue from last tab
-		for (let i = tabsCount - 1; i > index; i--) {
-			const tab = tabsRef.current[i];
-			if (tab && !isTabDisabled(tab.tab)) {
-				return i;
+			// Continue from last tab
+			for (let i = tabsCount - 1; i > index; i--) {
+				const tab = tabsRef.current[i];
+				if (tab && !isTabDisabled(tab.tab)) {
+					return i;
+				}
 			}
-		}
-		return index;
-	}, [tabsCount]);
+			return index;
+		},
+		[tabsCount]
+	);
 
-	const setSelected = useCallback((index: number, shouldFocus?: boolean) => {
-		if (index < 0 || index >= tabsCount) return;
+	const setSelected = useCallback(
+		(
+			event: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>,
+			index: number,
+			shouldFocus?: boolean
+		) => {
+			if (index < 0 || index >= tabsCount) return;
 
-		let shouldContinue: boolean | void = true;
-		if (isFunction(onSelect)) {
-			shouldContinue = onSelect(index, selectedIndex);
-		}
+			onSelect?.(event, { selectedIndex: index, previousIndex: selectedIndex });
 
-		if (shouldContinue !== false && index !== internalSelectedIndex) {
-			setInternalSelectedIndex(index);
-			setFocus(shouldFocus === true);
-		}
-	}, [tabsCount, onSelect, selectedIndex, internalSelectedIndex]);
+			if (index !== internalSelectedIndex) {
+				setInternalSelectedIndex(index);
+				setFocus(shouldFocus === true);
+			}
+		},
+		[tabsCount, onSelect, selectedIndex, internalSelectedIndex]
+	);
 
 	const isTabFromContainer = useCallback((node: HTMLElement): boolean => {
 		if (!isTabNode(node)) return false;
@@ -178,46 +209,55 @@ const Tabs = ({
 		return false;
 	}, []);
 
-	const handleClick = useCallback((e: MouseEvent<HTMLDivElement>) => {
-		let node = e.target as HTMLElement;
-		do {
-			if (isTabFromContainer(node)) {
-				if (isTabNodeDisabled(node)) return;
+	const handleClick = useCallback(
+		(e: MouseEvent<HTMLDivElement>) => {
+			let node = e.target as HTMLElement;
+			do {
+				if (isTabFromContainer(node)) {
+					if (isTabNodeDisabled(node)) return;
 
-				let parentNode = node.parentNode as HTMLElement;
-				if (parentNode?.nodeName === 'LI') {
-					node = parentNode;
-					parentNode = node.parentNode as HTMLElement;
+					let parentNode = node.parentNode as HTMLElement;
+					if (parentNode?.nodeName === 'LI') {
+						node = parentNode;
+						parentNode = node.parentNode as HTMLElement;
+					}
+
+					const index = Array.from(parentNode.children).indexOf(node);
+					setSelected(e, index);
+					return;
+				}
+				node = node.parentNode as HTMLElement;
+			} while (node !== null);
+		},
+		[isTabFromContainer, setSelected]
+	);
+
+	const handleKeyDown = useCallback(
+		(event: KeyboardEvent<HTMLDivElement>) => {
+			if (isTabFromContainer(event.target as HTMLElement)) {
+				let index = selectedIndex;
+				let preventDefault = false;
+
+				if (event.keyCode === KEYS.LEFT || event.keyCode === KEYS.UP) {
+					index = getPrevTab(index);
+					preventDefault = true;
+				} else if (
+					event.keyCode === KEYS.RIGHT ||
+					event.keyCode === KEYS.DOWN
+				) {
+					index = getNextTab(index);
+					preventDefault = true;
 				}
 
-				const index = Array.from(parentNode.children).indexOf(node);
-				setSelected(index);
-				return;
+				if (preventDefault) {
+					EventUtil.trap(event);
+				}
+
+				setSelected(event, index, true);
 			}
-			node = node.parentNode as HTMLElement;
-		} while (node !== null);
-	}, [isTabFromContainer, setSelected]);
-
-	const handleKeyDown = useCallback((event: KeyboardEvent<HTMLDivElement>) => {
-		if (isTabFromContainer(event.target as HTMLElement)) {
-			let index = selectedIndex;
-			let preventDefault = false;
-
-			if (event.keyCode === KEYS.LEFT || event.keyCode === KEYS.UP) {
-				index = getPrevTab(index);
-				preventDefault = true;
-			} else if (event.keyCode === KEYS.RIGHT || event.keyCode === KEYS.DOWN) {
-				index = getNextTab(index);
-				preventDefault = true;
-			}
-
-			if (preventDefault) {
-				EventUtil.trap(event);
-			}
-
-			setSelected(index, true);
-		}
-	}, [isTabFromContainer, selectedIndex, getPrevTab, getNextTab, setSelected]);
+		},
+		[isTabFromContainer, selectedIndex, getPrevTab, getNextTab, setSelected]
+	);
 
 	const renderTabsList = () => (
 		<TabsList id={id} variant={variant}>
@@ -296,4 +336,3 @@ const Tabs = ({
 Tabs.displayName = TABS;
 
 export default Tabs;
-

@@ -47,9 +47,12 @@ export type TooltipAlign =
 	| 'left top'
 	| 'left bottom';
 
-export type TooltipPosition = 'absolute' | 'overflowBoundaryElement' | 'relative';
+export type TooltipPosition =
+	'absolute' | 'overflowBoundaryElement' | 'relative';
 
 export type TooltipTheme = 'info' | 'error';
+
+export type TooltipIconVariant = 'bare' | 'error' | 'inverse' | 'warning';
 
 export type TooltipVariant = 'base' | 'learnMore' | 'list-item';
 
@@ -99,6 +102,14 @@ export interface TooltipProps {
 	 */
 	hasStaticAlignment?: boolean;
 	/**
+	 * Styles the default info icon trigger that renders when no children are passed. Matches `icon-variant` on `lightning-helptext`.
+	 * * `bare` - (default) Default icon color.
+	 * * `error` - Red icon, to call out an error.
+	 * * `inverse` - White icon, for dark backgrounds.
+	 * * `warning` - Yellow icon, to advise caution.
+	 */
+	iconVariant?: TooltipIconVariant;
+	/**
 	 * Delay on Tooltip closing in milliseconds. Defaults to 50
 	 */
 	hoverCloseDelay?: number;
@@ -146,10 +157,6 @@ export interface TooltipProps {
 	 */
 	theme?: TooltipTheme;
 	/**
-	 * @deprecated Use onRequestTargetElement instead
-	 */
-	target?: HTMLElement | null;
-	/**
 	 * Determines the type of the tooltip.
 	 */
 	variant?: TooltipVariant;
@@ -180,6 +187,7 @@ const Tooltip = ({
 	hasStaticAlignment = false,
 	hoverCloseDelay = 50,
 	hoverOpenDelay = 0,
+	iconVariant = 'bare',
 	id: idProp,
 	labels: labelsProp,
 	isOpen: isOpenProp,
@@ -189,7 +197,6 @@ const Tooltip = ({
 	position = 'absolute',
 	triggerStyle,
 	theme = 'info',
-	target: deprecatedTarget,
 	variant = 'base',
 }: TooltipProps): React.ReactElement => {
 	// Merge assistive text and labels with defaults
@@ -211,27 +218,32 @@ const Tooltip = ({
 
 	// Check props in development
 	useEffect(() => {
-		checkProps(POPOVER_TOOLTIP, {
-			align,
-			assistiveText,
-			children,
-			content,
-			dialogClassName,
-			hasAnchoredNubbin,
-			hasStaticAlignment,
-			hoverCloseDelay,
-			hoverOpenDelay,
-			id: idProp,
-			labels,
-			isOpen: isOpenProp,
-			onRequestTargetElement,
-			onClickTrigger,
-			triggerClassName,
-			position,
-			triggerStyle,
-			theme,
-			variant,
-		}, componentDoc);
+		checkProps(
+			POPOVER_TOOLTIP,
+			{
+				align,
+				assistiveText,
+				children,
+				content,
+				dialogClassName,
+				hasAnchoredNubbin,
+				hasStaticAlignment,
+				hoverCloseDelay,
+				hoverOpenDelay,
+				iconVariant,
+				id: idProp,
+				labels,
+				isOpen: isOpenProp,
+				onRequestTargetElement,
+				onClickTrigger,
+				triggerClassName,
+				position,
+				triggerStyle,
+				theme,
+				variant,
+			},
+			componentDoc
+		);
 	}, []);
 
 	// Cleanup on unmount
@@ -258,13 +270,8 @@ const Tooltip = ({
 			return onRequestTargetElement();
 		}
 
-		// for backwards compatibility
-		if (deprecatedTarget) {
-			return deprecatedTarget;
-		}
-
 		return triggerRef.current;
-	}, [onRequestTargetElement, deprecatedTarget]);
+	}, [onRequestTargetElement]);
 
 	// Event handlers
 	const handleCancel = useCallback(() => {
@@ -287,45 +294,56 @@ const Tooltip = ({
 		}, hoverOpenDelay);
 	}, [hoverOpenDelay]);
 
-	const handleMouseLeave = useCallback((e: MouseEvent<HTMLElement> | FocusEvent<HTMLElement>) => {
-		e.stopPropagation();
-		if (tooltipTimeoutRef.current) {
-			clearTimeout(tooltipTimeoutRef.current);
-		}
-
-		tooltipTimeoutRef.current = setTimeout(() => {
-			const relatedTarget = (e as MouseEvent<HTMLElement>).relatedTarget as HTMLElement | null;
-			const isHoveringTooltip =
-				relatedTarget?.classList?.contains('slds-popover_tooltip') ||
-				relatedTarget?.classList?.contains('slds-popover__body');
-
-			if (!isUnmountingRef.current && !isHoveringTooltip) {
-				setIsOpenState(false);
+	const handleMouseLeave = useCallback(
+		(e: MouseEvent<HTMLElement> | FocusEvent<HTMLElement>) => {
+			e.stopPropagation();
+			if (tooltipTimeoutRef.current) {
+				clearTimeout(tooltipTimeoutRef.current);
 			}
-		}, hoverCloseDelay);
-	}, [hoverCloseDelay]);
 
-	const handleKeyDown = useCallback((e: KeyboardEvent<HTMLElement>) => {
-		e.stopPropagation();
+			tooltipTimeoutRef.current = setTimeout(() => {
+				const relatedTarget = (e as MouseEvent<HTMLElement>)
+					.relatedTarget as HTMLElement | null;
+				const isHoveringTooltip =
+					relatedTarget?.classList?.contains('slds-popover_tooltip') ||
+					relatedTarget?.classList?.contains('slds-popover__body');
 
-		tooltipTimeoutRef.current = setTimeout(() => {
-			if (!isUnmountingRef.current && e.key === 'Escape') {
-				setIsOpenState(false);
-			}
-		}, hoverCloseDelay);
-	}, [hoverCloseDelay]);
+				if (!isUnmountingRef.current && !isHoveringTooltip) {
+					setIsOpenState(false);
+				}
+			}, hoverCloseDelay);
+		},
+		[hoverCloseDelay]
+	);
+
+	const handleKeyDown = useCallback(
+		(e: KeyboardEvent<HTMLElement>) => {
+			e.stopPropagation();
+
+			tooltipTimeoutRef.current = setTimeout(() => {
+				if (!isUnmountingRef.current && e.key === 'Escape') {
+					setIsOpenState(false);
+				}
+			}, hoverCloseDelay);
+		},
+		[hoverCloseDelay]
+	);
 
 	// Save trigger ref and trigger re-render once mounted
-	const saveTriggerRef = useCallback((component: HTMLDivElement | null) => {
-		if (component && triggerRef.current !== component) {
-			(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current = component;
-			// Dialog/Popper.js cannot place the popover until
-			// the trigger/target DOM node is mounted.
-			if (!triggerRendered) {
-				setTriggerRendered(true);
+	const saveTriggerRef = useCallback(
+		(component: HTMLDivElement | null) => {
+			if (component && triggerRef.current !== component) {
+				(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current =
+					component;
+				// Dialog/Popper.js cannot place the popover until
+				// the trigger/target DOM node is mounted.
+				if (!triggerRendered) {
+					setTriggerRendered(true);
+				}
 			}
-		}
-	}, [triggerRendered]);
+		},
+		[triggerRendered]
+	);
 
 	// Render helpers
 	const getAnchoredNubbinStyles = () => {
@@ -333,7 +351,8 @@ const Tooltip = ({
 			return null;
 		}
 
-		const alignment = align.split(' ')[0] as 'top' | 'bottom' | 'left' | 'right';
+		const alignment = align.split(' ')[0] as
+			'top' | 'bottom' | 'left' | 'right';
 		const nubbinContainerStyles: CSSProperties = {
 			height: '0',
 			position: 'relative',
@@ -348,8 +367,12 @@ const Tooltip = ({
 			width: '1rem',
 		};
 		const triggerDimensions = {
-			height: triggerRef.current ? triggerRef.current.getBoundingClientRect().height : 0,
-			width: triggerRef.current ? triggerRef.current.getBoundingClientRect().width : 0,
+			height: triggerRef.current
+				? triggerRef.current.getBoundingClientRect().height
+				: 0,
+			width: triggerRef.current
+				? triggerRef.current.getBoundingClientRect().width
+				: 0,
 		};
 
 		switch (alignment) {
@@ -400,15 +423,26 @@ const Tooltip = ({
 	const getContent = () => {
 		let childrenToRender: ReactNode;
 		const noChildrenProvided = React.Children.count(children) === 0;
+		const isInverseIcon = iconVariant === 'inverse';
+		const iconColorVariant =
+			iconVariant === 'error' || iconVariant === 'warning'
+				? iconVariant
+				: undefined;
 
 		if (noChildrenProvided && onClickTrigger) {
 			childrenToRender = (
 				<a
 					href="#"
-					onClick={EventUtil.trappedHandler(onClickTrigger) as React.MouseEventHandler<HTMLAnchorElement>}
+					onClick={
+						EventUtil.trappedHandler(
+							onClickTrigger
+						) as React.MouseEventHandler<HTMLAnchorElement>
+					}
 				>
 					<Icon
 						category="utility"
+						colorVariant={iconColorVariant}
+						inverse={isInverseIcon}
 						name="info"
 						assistiveText={{
 							label: assistiveText.triggerLearnMoreIcon,
@@ -425,7 +459,13 @@ const Tooltip = ({
 						icon: assistiveText.triggerLearnMoreIcon,
 					}}
 					iconCategory="utility"
+					iconClassName={
+						iconColorVariant && `slds-icon-text-${iconColorVariant}`
+					}
 					iconName="info"
+					// `bare` keeps `slds-button_icon`, which Button drops for `inverse` alone
+					iconVariant={isInverseIcon ? 'bare' : undefined}
+					inverse={isInverseIcon}
 					variant="icon"
 				/>
 			);
@@ -438,33 +478,34 @@ const Tooltip = ({
 				return child;
 			}
 
-			return React.cloneElement(child as React.ReactElement<{
-				key?: React.Key;
-				'aria-describedby'?: string;
-				onBlur?: (e: FocusEvent<HTMLElement>) => void;
-				onFocus?: () => void;
-				onMouseEnter?: () => void;
-				onMouseLeave?: (e: MouseEvent<HTMLElement>) => void;
-				onKeyDown?: (e: KeyboardEvent<HTMLElement>) => void;
-			}>, {
-				key: i,
-				'aria-describedby': getIsOpen() ? getId() : undefined,
-				onBlur: handleMouseLeave,
-				onFocus: handleMouseEnter,
-				onMouseEnter: handleMouseEnter,
-				onMouseLeave: handleMouseLeave,
-				onKeyDown: handleKeyDown,
-			});
+			return React.cloneElement(
+				child as React.ReactElement<{
+					key?: React.Key;
+					'aria-describedby'?: string;
+					onBlur?: (e: FocusEvent<HTMLElement>) => void;
+					onFocus?: () => void;
+					onMouseEnter?: () => void;
+					onMouseLeave?: (e: MouseEvent<HTMLElement>) => void;
+					onKeyDown?: (e: KeyboardEvent<HTMLElement>) => void;
+				}>,
+				{
+					key: i,
+					'aria-describedby': getIsOpen() ? getId() : undefined,
+					onBlur: handleMouseLeave,
+					onFocus: handleMouseEnter,
+					onMouseEnter: handleMouseEnter,
+					onMouseLeave: handleMouseLeave,
+					onKeyDown: handleKeyDown,
+				}
+			);
 		});
 	};
 
 	const getTooltipContent = () => {
-		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)
-		// Support deprecated 'error' variant value (now use theme='error')
-		const isErrorTheme = theme === 'error' || (variant as string) === 'error';
-		
+		const isErrorTheme = theme === 'error';
+
 		return (
-			<div 
+			<div
 				className={classNames('slds-popover__body', {
 					// Ensure text contrast on error theme (red background needs white text)
 					'slds-text-color_inverse': isErrorTheme,
@@ -493,10 +534,6 @@ const Tooltip = ({
 	const getTooltip = () => {
 		const isOpen = getIsOpen();
 
-		// REMOVE AT NEXT BREAKING CHANGE (v1.0 or v0.9)
-		// Support deprecated 'error' variant value (now use theme='error')
-		const deprecatedWay = (variant as string) === 'error';
-
 		return isOpen ? (
 			<Dialog
 				closeOnTabKey
@@ -505,7 +542,7 @@ const Tooltip = ({
 					'slds-popover',
 					'slds-popover_tooltip',
 					{
-						'slds-theme_error': theme === 'error' || deprecatedWay,
+						'slds-theme_error': theme === 'error',
 					},
 					dialogClassName
 				)}
@@ -550,4 +587,3 @@ const Tooltip = ({
 Tooltip.displayName = POPOVER_TOOLTIP;
 
 export default Tooltip;
-

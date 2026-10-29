@@ -30,7 +30,7 @@ export default {
 // Default slider
 export const Default = {
 	args: {
-		label: 'Slider Label',
+		labels: { label: 'Slider Label' },
 		value: 50,
 	},
 };
@@ -38,7 +38,7 @@ export const Default = {
 // Slider with custom range
 export const CustomRange = {
 	args: {
-		label: 'Custom Range',
+		labels: { label: 'Custom Range' },
 		value: 25,
 		min: 0,
 		max: 50,
@@ -48,7 +48,7 @@ export const CustomRange = {
 // Slider with step
 export const WithStep = {
 	args: {
-		label: 'Step of 10',
+		labels: { label: 'Step of 10' },
 		value: 30,
 		step: 10,
 	},
@@ -57,7 +57,7 @@ export const WithStep = {
 // Disabled slider
 export const Disabled = {
 	args: {
-		label: 'Disabled Slider',
+		labels: { label: 'Disabled Slider' },
 		value: 60,
 		disabled: true,
 	},
@@ -66,9 +66,12 @@ export const Disabled = {
 // Slider with error
 export const WithError = {
 	args: {
-		label: 'Slider with Error',
+		hasError: true,
+		labels: {
+			label: 'Slider with Error',
+			error: 'Value exceeds the recommended limit.',
+		},
 		value: 80,
-		errorText: 'Value exceeds the recommended limit.',
 	},
 };
 
@@ -76,7 +79,7 @@ export const WithError = {
 export const Vertical = {
 	render: () => (
 		<div style={{ height: '200px' }}>
-			<Slider label="Vertical Slider" value={50} vertical />
+			<Slider labels={{ label: 'Vertical Slider' }} value={50} vertical />
 		</div>
 	),
 };
@@ -85,10 +88,10 @@ export const Vertical = {
 export const Sizes = {
 	render: () => (
 		<div className="slds-grid slds-grid_vertical slds-gutters">
-			<Slider label="X-Small" value={50} size="x-small" />
-			<Slider label="Small" value={50} size="small" />
-			<Slider label="Medium" value={50} size="medium" />
-			<Slider label="Large" value={50} size="large" />
+			<Slider labels={{ label: 'X-Small' }} value={50} size="x-small" />
+			<Slider labels={{ label: 'Small' }} value={50} size="small" />
+			<Slider labels={{ label: 'Medium' }} value={50} size="medium" />
+			<Slider labels={{ label: 'Large' }} value={50} size="large" />
 		</div>
 	),
 };

@@ -20,6 +20,10 @@
 		{
 			"heading": "Vertical",
 			"path": "/__examples__/vertical.jsx"
+		},
+		{
+			"heading": "Path",
+			"path": "/__examples__/path.jsx"
 		}
 	],
 	"url-slug": "progress-indicators"

@@ -43,6 +43,13 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
+			props.listItemRenderer,
+			'listItemRenderer',
+			'renderMenuItem',
+			`\`renderMenuItem\` is a function called with \`{ icon, isSelected, option, optionIndex }\`, not a component. ${createDocUrl('renderMenuItem')}`
+		);
+		deprecatedProperty(
+			COMPONENT,
 			props.isInline,
 			'isInline',
 			'menuPosition="relative"',

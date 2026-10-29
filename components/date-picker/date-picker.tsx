@@ -57,6 +57,46 @@ export interface DatePickerChangeData {
 	timezoneOffset: number;
 }
 
+/**
+ * What caused the DatePicker to request opening its calendar.
+ * - `input-click`: the input (or deprecated `children` input) was clicked
+ * - `icon-click`: the calendar icon button was clicked
+ * - `keyboard`: Down or Up arrow was pressed in the input
+ */
+export type DatePickerRequestOpenTrigger =
+	'input-click' | 'icon-click' | 'keyboard';
+
+/** Data passed to `onRequestOpen` */
+export interface DatePickerRequestOpenData {
+	/** What caused the open request */
+	trigger: DatePickerRequestOpenTrigger;
+}
+
+/**
+ * What caused the DatePicker to request closing its calendar.
+ * - `date-select`: a date was selected in the calendar (click, Space, or Enter)
+ * - `escape`: Escape was pressed in the input or in the calendar
+ * - `enter`: Enter was pressed in the input
+ * - `click-outside`: a mousedown/touchstart happened outside the DatePicker
+ */
+export type DatePickerRequestCloseTrigger =
+	'date-select' | 'escape' | 'enter' | 'click-outside';
+
+/** Data passed to `onRequestClose` */
+export interface DatePickerRequestCloseData {
+	/** What caused the close request */
+	trigger: DatePickerRequestCloseTrigger;
+}
+
+/** Data passed to `onClose` */
+export interface DatePickerCloseData {
+	/**
+	 * `true` when the close was reported by the calendar dialog unmounting. The calendar
+	 * dialog is unmounted whenever the DatePicker closes, so this is currently always `true`.
+	 */
+	componentWillUnmount: boolean;
+}
+
 export interface DatePickerProps {
 	/** Assistive text for accessibility */
 	assistiveText?: DatePickerAssistiveText;
@@ -97,17 +137,39 @@ export interface DatePickerProps {
 	) => void;
 	/** Called when date changes */
 	onChange?: (event: React.SyntheticEvent, data: DatePickerChangeData) => void;
-	/** Called when calendar closes */
-	onClose?: () => void;
+	/**
+	 * Called after the calendar has closed. `event` is `undefined` because the close
+	 * is reported when the calendar dialog unmounts, not by a user event.
+	 */
+	onClose?: (
+		event: React.SyntheticEvent | undefined,
+		data: DatePickerCloseData
+	) => void;
 	/** Called when calendar opens */
 	onOpen?: (
 		event: React.SyntheticEvent | undefined,
 		data: { portal?: HTMLElement }
 	) => void;
-	/** Called when calendar wants to close */
-	onRequestClose?: () => void;
-	/** Called when calendar wants to open */
-	onRequestOpen?: () => void;
+	/**
+	 * Called when the calendar requests to close. Only fires while the calendar is open.
+	 * `event` is the triggering React event; for `trigger: 'click-outside'` it is the
+	 * native `mousedown`/`touchstart` event from the document listener. It is typed as
+	 * possibly `undefined` because the internal calendar's close request has an optional event.
+	 * In uncontrolled mode the calendar also closes itself; in controlled mode (`isOpen`)
+	 * set `isOpen` to `false` here.
+	 */
+	onRequestClose?: (
+		event: React.SyntheticEvent | MouseEvent | TouchEvent | undefined,
+		data: DatePickerRequestCloseData
+	) => void;
+	/**
+	 * Called when the calendar requests to open. If provided, the calendar does not open
+	 * itself: set `isOpen` to `true` here. Not fired by the arrow keys while already open.
+	 */
+	onRequestOpen?: (
+		event: React.MouseEvent | KeyboardEvent,
+		data: DatePickerRequestOpenData
+	) => void;
 	/** Date parsing function */
 	parser?: (str: string) => Date;
 	/** Portal mount function */
@@ -293,26 +355,48 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 
 	// ===== Event Handlers =====
 
-	const handleRequestClose = useCallback(() => {
-		if (onRequestClose) {
-			onRequestClose();
-		}
+	const handleRequestClose = useCallback(
+		(
+			event: React.SyntheticEvent | MouseEvent | TouchEvent | undefined,
+			data: DatePickerRequestCloseData
+		) => {
+			// Only request a close while open, so `onRequestClose` never fires when
+			// the calendar is already closed (e.g. Escape in a closed input).
+			if (!getIsOpen()) {
+				return;
+			}
 
-		if (getIsOpen()) {
+			onRequestClose?.(event, data);
+
 			setIsOpenState(false);
 			setIsOpenFromIcon(false);
 
 			if (inputRef.current) {
 				inputRef.current.focus();
 			}
-		}
-	}, [onRequestClose, getIsOpen]);
+		},
+		[onRequestClose, getIsOpen]
+	);
 
-	const handleClose = useCallback(() => {
-		if (onClose) {
-			onClose();
-		}
-	}, [onClose]);
+	const handleCalendarRequestClose = useCallback(
+		(event?: React.SyntheticEvent) => {
+			// The calendar's only close request is Escape (see `CalendarWrapper#handleKeyDown`)
+			handleRequestClose(event, { trigger: 'escape' });
+		},
+		[handleRequestClose]
+	);
+
+	const handleClose = useCallback(
+		(
+			event: React.SyntheticEvent | undefined,
+			data?: { componentWillUnmount?: boolean }
+		) => {
+			onClose?.(event, {
+				componentWillUnmount: !!data?.componentWillUnmount,
+			});
+		},
+		[onClose]
+	);
 
 	const handleOpen = useCallback(
 		(
@@ -331,12 +415,16 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 	);
 
 	const openDialog = useCallback(
-		(fromIcon = false) => {
+		(
+			event: React.MouseEvent | KeyboardEvent,
+			data: DatePickerRequestOpenData,
+			fromIcon = false
+		) => {
 			if (!fromIcon) {
 				setIsOpenFromIcon(false);
 			}
 			if (onRequestOpen) {
-				onRequestOpen();
+				onRequestOpen(event, data);
 			} else {
 				setIsOpenState(true);
 			}
@@ -344,10 +432,13 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		[onRequestOpen]
 	);
 
-	const openDialogFromIcon = useCallback(() => {
-		setIsOpenFromIcon(true);
-		openDialog(true);
-	}, [openDialog]);
+	const openDialogFromIcon = useCallback(
+		(event: React.MouseEvent) => {
+			setIsOpenFromIcon(true);
+			openDialog(event, { trigger: 'icon-click' }, true);
+		},
+		[openDialog]
+	);
 
 	const handleCalendarChange = useCallback(
 		(event: React.SyntheticEvent, { date }: { date: Date }) => {
@@ -357,7 +448,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 				setInputValue(formatter(date));
 			}
 
-			handleRequestClose();
+			handleRequestClose(event, { trigger: 'date-select' });
 
 			if (onChange) {
 				onChange(event, {
@@ -402,24 +493,33 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 				(event.keyCode === KEYS.DOWN || event.keyCode === KEYS.UP)
 			) {
 				EventUtil.trapEvent(event);
-				setIsOpenState(true);
+				// Go through the same request path as clicking, so a controlled
+				// DatePicker hears about keyboard opens via `onRequestOpen`
+				if (!getIsOpen()) {
+					openDialog(event, { trigger: 'keyboard' });
+				}
 			}
 
 			if (event.keyCode === KEYS.ESCAPE || event.keyCode === KEYS.ENTER) {
 				EventUtil.trapEvent(event);
-				setIsOpenState(false);
+				handleRequestClose(event, {
+					trigger: event.keyCode === KEYS.ESCAPE ? 'escape' : 'enter',
+				});
 			}
 
 			if (onKeyDown) {
 				onKeyDown(event, {});
 			}
 		},
-		[onKeyDown]
+		[getIsOpen, openDialog, handleRequestClose, onKeyDown]
 	);
 
-	const handleClickOutside = useCallback(() => {
-		handleRequestClose();
-	}, [handleRequestClose]);
+	const handleClickOutside = useCallback(
+		(event: MouseEvent | TouchEvent) => {
+			handleRequestClose(event, { trigger: 'click-outside' });
+		},
+		[handleRequestClose]
+	);
 
 	// Detect clicks outside the trigger/calendar and close the dialog. Anchored
 	// on the trigger element so this works whether the DatePicker is controlled
@@ -471,7 +571,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 				monthLabels={labels.months}
 				onCalendarFocus={onCalendarFocus}
 				dateDisabled={dateDisabled}
-				onRequestClose={handleRequestClose}
+				onRequestClose={handleCalendarRequestClose}
 				onSelectDate={handleCalendarChange}
 				relativeYearFrom={relativeYearFrom}
 				relativeYearTo={relativeYearTo}
@@ -496,7 +596,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		isIsoWeekday,
 		onCalendarFocus,
 		dateDisabled,
-		handleRequestClose,
+		handleCalendarRequestClose,
 		handleCalendarChange,
 		relativeYearFrom,
 		relativeYearTo,
@@ -560,8 +660,8 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 					aria-expanded={getIsOpen()}
 					category="utility"
 					name="event"
-					onClick={() => {
-						openDialogFromIcon();
+					onClick={(event: React.MouseEvent) => {
+						openDialogFromIcon(event);
 					}}
 					type="button"
 				/>
@@ -571,8 +671,8 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 			},
 			id: getId(),
 			onChange: handleInputChange,
-			onClick: () => {
-				openDialog();
+			onClick: (event: React.MouseEvent<HTMLInputElement>) => {
+				openDialog(event, { trigger: 'input-click' });
 			},
 			onKeyDown: handleKeyDown,
 			value: value ? formatter(value) : inputValue,
@@ -590,8 +690,8 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		const childrenProps = (children?.props || {}) as Record<string, unknown>;
 		const childrenPropInputProps = {
 			...childrenProps,
-			onClick: () => {
-				openDialog();
+			onClick: (event: React.MouseEvent<HTMLInputElement>) => {
+				openDialog(event, { trigger: 'input-click' });
 				if (typeof childrenProps.onClick === 'function') {
 					childrenProps.onClick();
 				}

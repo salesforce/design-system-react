@@ -93,14 +93,19 @@ const Alert = ({
 }: AlertProps): React.ReactElement => {
 	const [isInitialRender, setIsInitialRender] = useState(true);
 	const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+	const hasStoredFocusRef = useRef(false);
 
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
 	const labels = { ...defaultLabels, ...propLabels };
 
-	// Store focus on mount, restore on unmount
+	// Restore focus on unmount, but only if this Alert stored it. The stored
+	// element is shared with other components (Popover, Toast), so restoring
+	// unconditionally would take focus they stored.
 	useEffect(() => {
 		return () => {
-			DOMElementFocus.returnFocusToStoredElement();
+			if (hasStoredFocusRef.current) {
+				DOMElementFocus.returnFocusToStoredElement();
+			}
 		};
 	}, []);
 
@@ -108,6 +113,7 @@ const Alert = ({
 		closeButtonRef.current = component;
 		if (isInitialRender && component) {
 			DOMElementFocus.storeActiveElement();
+			hasStoredFocusRef.current = true;
 			component.focus();
 			setIsInitialRender(false);
 		}

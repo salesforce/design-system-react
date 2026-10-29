@@ -9,8 +9,12 @@ class Example extends React.Component {
 
 	render() {
 		const trail = [
-			<a key="entity" href="#entity">Parent Entity</a>,
-			<a key="record" href="#record">Parent Record Name</a>,
+			<a key="entity" href="#entity">
+				Parent Entity
+			</a>,
+			<a key="record" href="#record">
+				Parent Record Name
+			</a>,
 		];
 
 		return (
@@ -24,8 +28,8 @@ class Example extends React.Component {
 							iconCategory="utility"
 							iconName="down"
 							iconVariant="border-filled"
-							onSelect={(value) => {
-								console.log('selected: ', value);
+							onSelect={(event, { option }) => {
+								console.log('selected: ', option);
 							}}
 							options={[
 								{ label: 'Menu Item One', value: 'A0' },
