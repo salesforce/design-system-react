@@ -941,4 +941,86 @@ describe('SLDSMenuDropdown', () => {
 			});
 		});
 	});
+
+	describe('renderMenuItem', () => {
+		const openMenu = async (container) => {
+			fireEvent.click(container.querySelector('.slds-dropdown-trigger'));
+			await waitFor(() => {
+				expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
+			});
+			return container.querySelector('.slds-dropdown');
+		};
+
+		it('is called with { icon, isSelected, option, optionIndex } for each item', async () => {
+			const renderMenuItem = vi.fn(({ icon, option }) => (
+				<span className="custom-item">
+					{icon}
+					{option.label}
+				</span>
+			));
+			const { container } = renderDropdown({ checkmark: true, renderMenuItem });
+
+			const menu = await openMenu(container);
+			const items = menu.querySelectorAll('.custom-item');
+			expect(items).toHaveLength(menuOptions.length);
+			expect(items[1]).toHaveTextContent(menuOptions[1].label);
+			// The checkmark icon is passed through as `icon`
+			expect(items[1].querySelector('svg')).toBeInTheDocument();
+			expect(renderMenuItem).toHaveBeenCalledWith({
+				icon: expect.anything(),
+				isSelected: true,
+				option: menuOptions[1],
+				optionIndex: 1,
+			});
+			expect(renderMenuItem).toHaveBeenCalledWith(
+				expect.objectContaining({
+					isSelected: false,
+					option: menuOptions[2],
+					optionIndex: 2,
+				})
+			);
+		});
+
+		it('still renders the deprecated listItemRenderer component and warns', async () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const LegacyItem = ({ label }) => (
+				<span className="legacy-item">{label}</span>
+			);
+			const { container } = renderDropdown({ listItemRenderer: LegacyItem });
+
+			const menu = await openMenu(container);
+			expect(menu.querySelectorAll('.legacy-item')).toHaveLength(
+				menuOptions.length
+			);
+			expect(
+				consoleError.mock.calls.some((args) => {
+					const message = args.join(' ');
+					return (
+						message.includes('`listItemRenderer`') &&
+						message.includes('`renderMenuItem`')
+					);
+				})
+			).toBe(true);
+			consoleError.mockRestore();
+		});
+
+		it('prefers renderMenuItem over listItemRenderer', async () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = renderDropdown({
+				listItemRenderer: () => <span className="legacy-item" />,
+				renderMenuItem: () => <span className="custom-item" />,
+			});
+
+			const menu = await openMenu(container);
+			expect(menu.querySelectorAll('.custom-item')).toHaveLength(
+				menuOptions.length
+			);
+			expect(menu.querySelectorAll('.legacy-item')).toHaveLength(0);
+			consoleError.mockRestore();
+		});
+	});
 });

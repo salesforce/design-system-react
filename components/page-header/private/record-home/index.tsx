@@ -39,9 +39,12 @@ const RecordHome = (props: PageHeaderVariantProps) => {
 			);
 		}
 
-		icon = React.cloneElement(props.icon as ReactElement, {
-			className: iconClasses,
-		} as { className: string });
+		icon = React.cloneElement(
+			props.icon as ReactElement,
+			{
+				className: iconClasses,
+			} as { className: string }
+		);
 	}
 
 	return (
@@ -61,7 +64,7 @@ const RecordHome = (props: PageHeaderVariantProps) => {
 				</div>
 				<Controls
 					contentRight={props.contentRight}
-					onRenderActions={props.onRenderActions}
+					actions={props.actions}
 					type="actions"
 				/>
 			</div>

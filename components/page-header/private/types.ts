@@ -9,7 +9,7 @@ import { type PageHeaderDetail, type PageHeaderVariant } from '../index';
  * Props shared by the private page-header variant components (base,
  * object-home, record-home, related-list). Individual variants read a subset.
  * Includes the legacy `icon*` and `contentRight`/`navRight` compatibility
- * props that predate `onRenderActions`/`onRenderControls`.
+ * props that predate `actions`/`controls`.
  *
  * The `details`/`trail`/`variant` field types mirror the public
  * `PageHeaderProps` so the parent `PageHeader` can assign each variant to a
@@ -39,13 +39,13 @@ export interface PageHeaderVariantProps {
 	/** Dropdown for the object-home name switcher */
 	nameSwitcherDropdown?: ReactNode;
 	/** An array of react elements, presumably anchor <a> elements. */
-	trail?: ReactElement[];
+	trail?: ReactNode[];
 	/** The component variant */
 	variant?: PageHeaderVariant;
-	/** Render prop for the actions column */
-	onRenderActions?: () => ReactNode;
-	/** Render prop for the controls column */
-	onRenderControls?: () => ReactNode;
+	/** Content for the actions column */
+	actions?: ReactNode;
+	/** Content for the controls column */
+	controls?: ReactNode;
 	/** Legacy content for the actions column */
 	contentRight?: ReactNode;
 	/** Legacy content for the controls column */

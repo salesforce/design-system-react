@@ -79,17 +79,23 @@ export interface StepProps {
 	 */
 	isOpen?: boolean;
 	/**
-	 * Function that is called to render a step's available action(s). Typically returns a Button, Button of variant "link," or Checkbox of variant "toggle"
+	 * A step's available action(s). Typically a Button, Button of variant "link," or Checkbox of variant "toggle"
 	 */
+	action?: ReactNode;
+	/**
+	 * Step content shown when an expandable step is open. Typically a ProgressIndicator and/or ScopedNotification component
+	 */
+	content?: ReactNode;
+	/**
+	 * Content within the media figure. Expects an Icon or ProgressRing component. An Icon is rendered at size `small`.
+	 */
+	figure?: ReactNode;
+	/** @deprecated Use `action` instead. */
 	onRenderAction?: () => ReactNode;
-	/**
-	 * Function that is called to render step content. Typically returns a ProgressIndicator and/or ScopedNotification component
-	 */
+	/** @deprecated Use `content` instead. */
 	onRenderContent?: () => ReactNode;
-	/**
-	 * Function that is called to render content within the media figure. Expects to be returned an Icon or ProgressRing component
-	 */
-	onRenderFigure?: () => React.ReactElement | null;
+	/** @deprecated Use `figure` instead. */
+	onRenderFigure?: () => ReactNode;
 	/**
 	 * Function to handle requests to expand / collapse the step. `data.isOpen` is the requested (next) state.
 	 */
@@ -129,11 +135,7 @@ class Step extends React.Component<StepProps, StepState> {
 		this.state = {
 			isOpen: props.isOpen || false,
 		};
-		(checkProps as (name: string, props: unknown, doc?: unknown) => void)(
-			SETUP_ASSISTANT_STEP,
-			this.props,
-			componentDoc
-		);
+		checkProps(SETUP_ASSISTANT_STEP, { ...this.props }, componentDoc);
 	}
 
 	getId() {
@@ -178,14 +180,16 @@ class Step extends React.Component<StepProps, StepState> {
 					<p>{this.props.description}</p>
 				</div>
 				<div className="slds-media__figure slds-media__figure_reverse">
-					{this.props.onRenderAction ? this.props.onRenderAction() : null}
+					{this.props.action ?? this.props.onRenderAction?.() ?? null}
 					{this.props.estimatedTime ? (
 						<p
 							className={classNames(
 								'slds-text-align_right',
 								'slds-text-color_weak',
 								{
-									'slds-p-top_medium': this.props.onRenderAction !== undefined,
+									'slds-p-top_medium':
+										this.props.action !== undefined ||
+										this.props.onRenderAction !== undefined,
 								}
 							)}
 						>
@@ -211,12 +215,12 @@ class Step extends React.Component<StepProps, StepState> {
 			progressRingTheme = 'complete';
 		}
 
-		if (this.props.onRenderFigure) {
-			const renderedFigure = this.props.onRenderFigure();
+		if (this.props.figure !== undefined || this.props.onRenderFigure) {
+			const renderedFigure =
+				this.props.figure ?? this.props.onRenderFigure?.() ?? null;
 
 			if (
-				renderedFigure &&
-				renderedFigure.type &&
+				React.isValidElement(renderedFigure) &&
 				(renderedFigure.type as { displayName?: string }).displayName === ICON
 			) {
 				const figureProps = renderedFigure.props as {
@@ -314,9 +318,9 @@ class Step extends React.Component<StepProps, StepState> {
 									id={`${this.getId()}-detail-content`}
 								>
 									<div className="slds-setup-assistant__step-detail">
-										{this.props.onRenderContent
-											? this.props.onRenderContent()
-											: null}
+										{this.props.content ??
+											this.props.onRenderContent?.() ??
+											null}
 									</div>
 								</div>
 							</div>

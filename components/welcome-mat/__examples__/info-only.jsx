@@ -41,7 +41,7 @@ class Example extends React.Component {
 									}}
 								/>
 							}
-							onRenderInfoActions={() => (
+							infoActions={
 								<Button
 									type="button"
 									variant="brand"
@@ -49,7 +49,7 @@ class Example extends React.Component {
 									label="Learn More"
 									id="welcome-mat-button"
 								/>
-							)}
+							}
 							isOpen={this.state.isOpen}
 							onRequestClose={this.toggleOpen}
 							variant="info-only"

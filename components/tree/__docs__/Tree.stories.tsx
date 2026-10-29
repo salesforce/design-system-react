@@ -63,7 +63,7 @@ export const AssistiveHeading: Story = {
 		<DefaultExample
 			action={action}
 			noHeading
-			assistiveText={{ label: 'Miscellaneous Foods' }}
+			assistiveText={{ heading: 'Miscellaneous Foods' }}
 		/>
 	),
 };
@@ -91,4 +91,3 @@ export const LargeDataset: Story = {
 export const HighlightedSearch: Story = {
 	render: () => <DefaultExample action={action} searchable />,
 };
-

@@ -792,7 +792,7 @@ export const ReadonlyMultipleWithDeselect: Story = {
 	},
 };
 
-// A custom `onRenderMenuItem` renderer in the readonly variant, showing
+// A custom `renderMenuItem` renderer in the readonly variant, showing
 // the assistive "selected" text alongside the option label.
 export const ReadonlyWithCustomMenuItem: Story = {
 	render: () => {
@@ -802,7 +802,7 @@ export const ReadonlyWithCustomMenuItem: Story = {
 			<Combobox
 				id="readonly-custom-menu-item"
 				labels={{ label: 'Search', placeholderReadOnly: 'Select company' }}
-				onRenderMenuItem={EntityMenuItem}
+				renderMenuItem={renderEntityMenuItem}
 				options={accountsWithIcons}
 				selection={selection}
 				variant="readonly"
@@ -1022,8 +1022,8 @@ export const WithMenuSpinner: Story = {
 // ===== Custom Menu Item Rendering =====
 
 // A custom renderer for each option, showing a two-line entity layout
-// (label + meta) via `onRenderMenuItem`.
-const EntityMenuItem = ({
+// (label + meta) via `renderMenuItem`.
+const renderEntityMenuItem = ({
 	option,
 }: {
 	option: Pick<ComboboxItemOption, 'label' | 'subTitle' | 'disabled'>;
@@ -1056,7 +1056,7 @@ export const WithCustomMenuItem: Story = {
 				id="custom-menu-item"
 				labels={{ label: 'Search', placeholder: 'Search Salesforce' }}
 				multiple
-				onRenderMenuItem={EntityMenuItem}
+				renderMenuItem={renderEntityMenuItem}
 				options={accountsWithIcons.filter(
 					(account) =>
 						!inputValue ||
@@ -1083,7 +1083,7 @@ export const WithCustomMenuItem: Story = {
 };
 
 // A custom menu item renderer combined with a disabled option — confirms
-// `disabled` styling/behavior still applies when `onRenderMenuItem` is set.
+// `disabled` styling/behavior still applies when `renderMenuItem` is set.
 export const WithCustomMenuItemDisabledOption: Story = {
 	render: () => {
 		const optionsWithDisabled = accountsWithIcons.map((account, index) => ({
@@ -1098,7 +1098,7 @@ export const WithCustomMenuItemDisabledOption: Story = {
 				id="custom-menu-item-disabled"
 				labels={{ label: 'Search', placeholder: 'Search Salesforce' }}
 				multiple
-				onRenderMenuItem={EntityMenuItem}
+				renderMenuItem={renderEntityMenuItem}
 				options={optionsWithDisabled.filter(
 					(account) =>
 						!inputValue ||

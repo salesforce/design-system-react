@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import Combobox from '../../../components/combobox';
 import Tooltip from '../../../components/tooltip';
@@ -1013,6 +1013,99 @@ describe('SLDSCombobox', () => {
 					(option) => option.id
 				)
 			).toEqual(['heading', '1']);
+		});
+	});
+
+	describe('renderMenuItem', () => {
+		const options = accounts.slice(0, 2);
+		const renderCombobox = (props) =>
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<Combobox
+						id="render-menu-item"
+						isOpen
+						labels={{ label: 'Search' }}
+						options={options}
+						selection={[options[0]]}
+						variant="readonly"
+						{...props}
+					/>
+				</IconSettings>
+			);
+
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		it('is called with { assistiveText, isSelected, option } for each option', () => {
+			const renderMenuItem = vi.fn(({ option }) => (
+				<span className="custom-item">{option.label}</span>
+			));
+			const { container } = renderCombobox({ renderMenuItem });
+
+			expect(container.querySelectorAll('.custom-item')).toHaveLength(2);
+			expect(renderMenuItem).toHaveBeenCalledWith({
+				assistiveText: expect.objectContaining({
+					optionSelectedInMenu: expect.any(String),
+				}),
+				isSelected: true,
+				option: options[0],
+			});
+			expect(renderMenuItem).toHaveBeenCalledWith(
+				expect.objectContaining({ isSelected: false, option: options[1] })
+			);
+		});
+
+		it('still renders the deprecated onRenderMenuItem and menuItem components and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const LegacyItem = ({ option, selected }) => (
+				<span className="legacy-item" data-selected={selected}>
+					{option.label}
+				</span>
+			);
+
+			const { container, unmount } = renderCombobox({
+				onRenderMenuItem: LegacyItem,
+			});
+			const legacyItems = container.querySelectorAll('.legacy-item');
+			expect(legacyItems).toHaveLength(2);
+			expect(legacyItems[0]).toHaveAttribute('data-selected', 'true');
+			expect(legacyItems[1]).toHaveAttribute('data-selected', 'false');
+			unmount();
+
+			const { container: menuItemContainer } = renderCombobox({
+				menuItem: LegacyItem,
+			});
+			expect(menuItemContainer.querySelectorAll('.legacy-item')).toHaveLength(
+				2
+			);
+
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(
+				messages.some(
+					(m) =>
+						m.includes('`onRenderMenuItem`') && m.includes('`renderMenuItem`')
+				)
+			).toBe(true);
+			expect(
+				messages.some(
+					(m) => m.includes('`menuItem`') && m.includes('`renderMenuItem`')
+				)
+			).toBe(true);
+		});
+
+		it('prefers renderMenuItem over the deprecated props', () => {
+			vi.spyOn(console, 'error').mockImplementation(() => {});
+			const LegacyItem = () => <span className="legacy-item" />;
+			const { container } = renderCombobox({
+				onRenderMenuItem: LegacyItem,
+				renderMenuItem: () => <span className="custom-item" />,
+			});
+
+			expect(container.querySelectorAll('.custom-item')).toHaveLength(2);
+			expect(container.querySelectorAll('.legacy-item')).toHaveLength(0);
 		});
 	});
 });

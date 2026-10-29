@@ -14,6 +14,8 @@ import SplitViewListItemContent, {
 	type SplitViewListItem,
 } from './private/list-item-content';
 import listItemWithContent from './private/list-item-with-content';
+import checkProps from './listbox-check-props';
+import componentDoc from './component.json';
 
 export const SORT_OPTIONS = Object.freeze({
 	UP: 'up',
@@ -62,11 +64,27 @@ export interface SplitViewListboxLabels {
 
 /**
  * Fields read by the default list item. Items with other fields are typed by
- * the `SplitViewListbox` type parameter, which flows to `listItem` and `onSelect`.
+ * the `SplitViewListbox` type parameter, which flows to `renderListItem`, `listItem` and `onSelect`.
  */
 export type SplitViewListboxItem = SplitViewListItem & {
 	id?: string | number;
 };
+
+/**
+ * Data passed to `renderListItem`
+ */
+export interface SplitViewListboxRenderListItemData<
+	T extends SplitViewListboxItem = SplitViewListboxItem,
+> {
+	/** Whether the item has keyboard focus (is the list's tab stop) */
+	isFocused: boolean;
+	/** Whether the item is in `selection` */
+	isSelected: boolean;
+	/** Whether the item is in `unread` */
+	isUnread: boolean;
+	/** The item from `options` */
+	item: T;
+}
 
 export interface SplitViewListboxProps<
 	T extends SplitViewListboxItem = SplitViewListboxItem,
@@ -123,10 +141,13 @@ export interface SplitViewListboxProps<
 	 */
 	unread?: T[];
 	/**
-	 * Custom list item template for the list item content. The select and unread functionality wraps the custom list item.
-	 * This should be a React component that accepts props.
+	 * @deprecated Use `renderListItem` instead, which is called as a function with `{ isFocused, isSelected, isUnread, item }`.
 	 */
 	listItem?: React.ComponentType<{ item: T }>;
+	/**
+	 * Renders the content of each list item in place of the default label and text. The listbox still renders the option, its selection and the unread indicator around it. Receives `{ isFocused, isSelected, isUnread, item }`.
+	 */
+	renderListItem?: (data: SplitViewListboxRenderListItemData<T>) => ReactNode;
 }
 
 interface SplitViewListboxState<T extends SplitViewListboxItem> {
@@ -178,6 +199,8 @@ class SplitViewListbox<
 				item: null,
 			},
 		};
+
+		checkProps(SPLIT_VIEW_LISTBOX, props, componentDoc);
 
 		// Generates the list item template
 		this.ListItemWithContent = listItemWithContent(
@@ -396,6 +419,7 @@ class SplitViewListbox<
 
 	listItems(): ReactNode {
 		const { ListItemWithContent } = this;
+		const { renderListItem } = this.props;
 
 		return this.props.options.map((item, index) => (
 			<ListItemWithContent
@@ -419,6 +443,11 @@ class SplitViewListbox<
 						}),
 				}}
 				multiple={this.props.multiple}
+				renderContent={
+					renderListItem
+						? (data) => renderListItem({ ...data, item })
+						: undefined
+				}
 			/>
 		));
 	}

@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
+	useEffect,
 	useId,
 	useMemo,
 	type ReactNode,
@@ -15,6 +16,8 @@ import Modal, {
 } from '../modal';
 import ProgressBar from '../progress-bar';
 import { WELCOME_MAT } from '../../utilities/constants';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 /**
  * Welcome mat variant types
@@ -81,6 +84,7 @@ export type WelcomeMatVariantProps =
 			children: ReactNode;
 			doNotShowAgainCheckbox?: never;
 			infoBadge?: never;
+			infoActions?: never;
 			onRenderInfoActions?: never;
 	  }
 	| {
@@ -91,6 +95,7 @@ export type WelcomeMatVariantProps =
 			doNotShowAgainCheckbox?: never;
 			/** WelcomeMatInfoBadge shown above the progress */
 			infoBadge?: ReactNode;
+			infoActions?: never;
 			onRenderInfoActions?: never;
 	  }
 	| {
@@ -101,7 +106,9 @@ export type WelcomeMatVariantProps =
 			/** Do not show again checkbox element */
 			doNotShowAgainCheckbox?: ReactNode;
 			infoBadge?: never;
-			/** Render function for info actions */
+			/** Actions shown below the description */
+			infoActions?: ReactNode;
+			/** @deprecated Use `infoActions` instead. */
 			onRenderInfoActions?: () => ReactNode;
 	  }
 	| {
@@ -111,7 +118,9 @@ export type WelcomeMatVariantProps =
 			/** Do not show again checkbox element */
 			doNotShowAgainCheckbox?: ReactNode;
 			infoBadge?: never;
-			/** Render function for info actions */
+			/** Actions shown below the description */
+			infoActions?: ReactNode;
+			/** @deprecated Use `infoActions` instead. */
 			onRenderInfoActions?: () => ReactNode;
 	  };
 
@@ -132,6 +141,7 @@ const WelcomeMat = ({
 	className,
 	doNotShowAgainCheckbox,
 	id: propId,
+	infoActions,
 	infoBadge,
 	isOpen = true,
 	labels: propLabels,
@@ -142,6 +152,10 @@ const WelcomeMat = ({
 	const generatedId = useId();
 	const id = propId || generatedId;
 	const labels = { ...defaultLabels, ...propLabels };
+
+	useEffect(() => {
+		checkProps(WELCOME_MAT, { onRenderInfoActions }, componentDoc);
+	}, [onRenderInfoActions]);
 
 	// Calculate progress from children
 	const { totalSteps, completedSteps, progress } = useMemo(() => {
@@ -174,7 +188,7 @@ const WelcomeMat = ({
 			</div>
 			{(variant === 'info-only' || variant === 'splash') && (
 				<div className="slds-welcome-mat__info-actions">
-					{onRenderInfoActions?.()}
+					{infoActions ?? onRenderInfoActions?.()}
 					{doNotShowAgainCheckbox && (
 						<div className="slds-m-top_large">{doNotShowAgainCheckbox}</div>
 					)}

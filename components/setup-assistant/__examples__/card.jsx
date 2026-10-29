@@ -13,7 +13,7 @@ const subSteps = (step) => [
 	{
 		id: `step-${step}-substep0`,
 		label: 'Turn on Lightning for all users.',
-		onRenderSetupAssistantAction: (
+		setupAssistantAction: (
 			<Checkbox id={`step-${step}-substep0-action`} checked variant="toggle" />
 		),
 	},
@@ -21,7 +21,7 @@ const subSteps = (step) => [
 		id: `step-${step}-substep1`,
 		label:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-		onRenderSetupAssistantAction: (
+		setupAssistantAction: (
 			<Button
 				id={`step-${step}-substep1-action`}
 				label="View in Trailhead"
@@ -32,7 +32,7 @@ const subSteps = (step) => [
 	{
 		id: `step-${step}-substep2`,
 		label: 'Lorem ipsum dolor sit amet, lorem ipsum dolor.',
-		onRenderSetupAssistantAction: (
+		setupAssistantAction: (
 			<Button
 				id={`step-${step}-substep2-action`}
 				label="Add Users"
@@ -46,7 +46,7 @@ const subStepsComplete = (step) => [
 	{
 		id: `step-${step}-substep0`,
 		label: 'Turn on Lightning for all users.',
-		onRenderSetupAssistantAction: (
+		setupAssistantAction: (
 			<Checkbox id={`step-${step}-substep0-action`} checked variant="toggle" />
 		),
 	},
@@ -54,7 +54,7 @@ const subStepsComplete = (step) => [
 		id: `step-${step}-substep1`,
 		label:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-		onRenderSetupAssistantAction: (
+		setupAssistantAction: (
 			<Button
 				id={`step-${step}-substep1-action`}
 				label="View in Trailhead"
@@ -68,7 +68,7 @@ const subStepsIncomplete = (step) => [
 	{
 		id: `step-${step}-substep0`,
 		label: 'Turn on Lightning for all users.',
-		onRenderSetupAssistantAction: (
+		setupAssistantAction: (
 			<Checkbox id={`step-${step}-substep0-action`} variant="toggle" />
 		),
 	},
@@ -76,7 +76,7 @@ const subStepsIncomplete = (step) => [
 		id: `step-${step}-substep1`,
 		label:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-		onRenderSetupAssistantAction: (
+		setupAssistantAction: (
 			<Button
 				id={`step-${step}-substep1-action`}
 				label="View in Trailhead"
@@ -115,7 +115,7 @@ class Example extends React.Component {
 						heading="Add Users to Your Org"
 						id="card-step-1"
 						isExpandable
-						onRenderContent={() => (
+						content={
 							<ProgressIndicator
 								completedSteps={subStepsComplete('complete')}
 								id="card-step-1-progress-indicator"
@@ -123,7 +123,7 @@ class Example extends React.Component {
 								steps={subStepsComplete('complete')}
 								variant="setup-assistant"
 							/>
-						)}
+						}
 						progress={100}
 					/>
 					<SetupAssistantStep
@@ -132,7 +132,7 @@ class Example extends React.Component {
 						heading="Create Profiles for Your Users"
 						id="card-step-2"
 						isExpandable
-						onRenderContent={() => (
+						content={
 							<React.Fragment>
 								<ProgressIndicator
 									completedSteps={[subSteps('2')[0]]}
@@ -152,7 +152,7 @@ class Example extends React.Component {
 									</p>
 								</ScopedNotification>
 							</React.Fragment>
-						)}
+						}
 						progress={33}
 					/>
 					<SetupAssistantStep
@@ -161,7 +161,7 @@ class Example extends React.Component {
 						heading="Learn How to Use Profiles to control Visibility"
 						id="card-step-3"
 						isExpandable
-						onRenderContent={() => (
+						content={
 							<ProgressIndicator
 								completedSteps={subStepsComplete('complete2')}
 								id="card-step-3-progress-indicator"
@@ -169,7 +169,7 @@ class Example extends React.Component {
 								steps={subStepsComplete('complete2')}
 								variant="setup-assistant"
 							/>
-						)}
+						}
 						progress={100}
 					/>
 					<SetupAssistantStep
@@ -178,7 +178,7 @@ class Example extends React.Component {
 						heading="Turn on tracking for profiles"
 						id="card-step-4"
 						isExpandable
-						onRenderContent={() => (
+						content={
 							<ProgressIndicator
 								id="card-step-4-progress-indicator"
 								orientation="vertical"
@@ -186,7 +186,7 @@ class Example extends React.Component {
 								selectedStep={subStepsIncomplete('incomplete1')[0]}
 								variant="setup-assistant"
 							/>
-						)}
+						}
 						progress={0}
 					/>
 					<SetupAssistantStep
@@ -195,7 +195,7 @@ class Example extends React.Component {
 						heading="Setup Einstein Visibility for Admins"
 						id="card-step-5"
 						isExpandable
-						onRenderContent={() => (
+						content={
 							<ProgressIndicator
 								id="card-step-5-progress-indicator"
 								orientation="vertical"
@@ -203,7 +203,7 @@ class Example extends React.Component {
 								selectedStep={subStepsIncomplete('incomplete2')[0]}
 								variant="setup-assistant"
 							/>
-						)}
+						}
 						progress={0}
 					/>
 				</SetupAssistant>

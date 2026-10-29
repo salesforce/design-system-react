@@ -11,6 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props = {}, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 		const events = props.events || {};
+		const assistiveText = props.assistiveText || {};
 
 		deprecatedProperty(
 			COMPONENT,
@@ -25,6 +26,20 @@ if (process.env.NODE_ENV !== 'production') {
 			'events.onClose',
 			'events.onToggle',
 			createDocUrl('events')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			assistiveText.toggleButtonOpen,
+			'assistiveText.toggleButtonOpen',
+			'assistiveText.closeToggle',
+			`The old key was the text shown while open. ${createDocUrl('assistiveText')}`
+		);
+		deprecatedProperty(
+			COMPONENT,
+			assistiveText.toggleButtonClose,
+			'assistiveText.toggleButtonClose',
+			'assistiveText.openToggle',
+			`The old key was the text shown while closed. ${createDocUrl('assistiveText')}`
 		);
 	};
 }

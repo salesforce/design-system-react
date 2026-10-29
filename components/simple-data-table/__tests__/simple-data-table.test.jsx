@@ -1152,4 +1152,83 @@ describe('SimpleDataTable', () => {
 			expect(focusableCells.length).toBeGreaterThan(0);
 		});
 	});
+
+	describe('renderSubHeadingRow', () => {
+		const renderWithHeaderRows = (props) =>
+			renderTable(
+				<SimpleDataTable {...defaultPropsWithHeaderRows} {...props}>
+					{columns.map((columnProps) => (
+						<SimpleDataTableColumn
+							{...columnProps}
+							key={columnProps.property}
+						/>
+					))}
+				</SimpleDataTable>
+			);
+
+		it('renders each header-row item with the data it receives', () => {
+			const renderSubHeadingRow = vi.fn(({ columns: rowColumns, id, item }) => (
+				<tr className="custom-heading-row" id={id}>
+					<th colSpan={rowColumns.length + 1}>{item.name}</th>
+				</tr>
+			));
+			const { container } = renderWithHeaderRows({ renderSubHeadingRow });
+
+			const headingRows = container.querySelectorAll('.custom-heading-row');
+			expect(headingRows).toHaveLength(2);
+			expect(headingRows[0]).toHaveTextContent('Address');
+			expect(headingRows[1]).toHaveTextContent('Company');
+			expect(renderSubHeadingRow).toHaveBeenCalledWith({
+				assistiveText: expect.any(Object),
+				classNameRow: undefined,
+				columns: expect.any(Array),
+				id: expect.stringContaining('K6R34GW73J'),
+				item: itemsWithHeaderRows[0],
+				tableId: expect.any(String),
+			});
+		});
+
+		it('still calls the deprecated onRenderSubHeadingRow with key, and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const onRenderSubHeadingRow = vi.fn(({ key, item }) => (
+				<tr className="legacy-heading-row" key={key}>
+					<th>{item.name}</th>
+				</tr>
+			));
+			const { container } = renderWithHeaderRows({ onRenderSubHeadingRow });
+
+			expect(container.querySelectorAll('.legacy-heading-row')).toHaveLength(2);
+			expect(onRenderSubHeadingRow).toHaveBeenCalledWith(
+				expect.objectContaining({
+					key: expect.stringContaining('K6R34GW73J'),
+				})
+			);
+			expect(
+				consoleError.mock.calls.some((args) => {
+					const message = args.join(' ');
+					return (
+						message.includes('`onRenderSubHeadingRow`') &&
+						message.includes('`renderSubHeadingRow`')
+					);
+				})
+			).toBe(true);
+			consoleError.mockRestore();
+		});
+
+		it('prefers renderSubHeadingRow over onRenderSubHeadingRow', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = renderWithHeaderRows({
+				onRenderSubHeadingRow: () => <tr className="legacy-heading-row" />,
+				renderSubHeadingRow: () => <tr className="custom-heading-row" />,
+			});
+
+			expect(container.querySelectorAll('.custom-heading-row')).toHaveLength(2);
+			expect(container.querySelectorAll('.legacy-heading-row')).toHaveLength(0);
+			consoleError.mockRestore();
+		});
+	});
 });

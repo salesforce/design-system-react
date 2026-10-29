@@ -9,7 +9,7 @@ class Example extends React.Component {
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
-				<Textarea id="unique-id-1" label="Textarea Label" />
+				<Textarea id="unique-id-1" labels={{ label: 'Textarea Label' }} />
 			</IconSettings>
 		);
 	}

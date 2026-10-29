@@ -154,8 +154,8 @@ class Example extends React.Component {
 							]}
 						/>
 					}
-					onRenderActions={actions}
-					onRenderControls={controls}
+					actions={actions()}
+					controls={controls()}
 					title="Recently Viewed"
 					truncate
 					variant="object-home"

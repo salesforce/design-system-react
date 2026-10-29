@@ -3,6 +3,7 @@
 /* eslint-disable import/no-mutable-exports */
 /* eslint-disable max-len */
 
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
@@ -16,8 +17,8 @@ if (process.env.NODE_ENV !== 'production') {
 		onlyOneOfProperties(
 			COMPONENT,
 			{
-				assistiveText: props.assistiveText,
-				label: props.label,
+				'labels.label': props.labels?.label ?? props.label,
+				'assistiveText.label': props.assistiveText?.label,
 			},
 			createDocUrl()
 		);
@@ -32,6 +33,21 @@ if (process.env.NODE_ENV !== 'production') {
 				)}`
 			);
 		}
+
+		deprecatedProperty(
+			COMPONENT,
+			props.errorText,
+			'errorText',
+			'labels.error` and `hasError',
+			createDocUrl('labels')
+		);
+		deprecatedProperty(
+			COMPONENT,
+			props.label,
+			'label',
+			'labels.label',
+			createDocUrl('labels')
+		);
 	};
 }
 

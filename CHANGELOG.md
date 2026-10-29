@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **BREAKING**: `SetupAssistant` `onStepToggleIsOpen` and `SetupAssistantStep` `onToggleIsOpen` data `isOpen` is the requested state. Replace `expanded[data.index] = !data.isOpen` with `expanded[data.index] = data.isOpen`. `data.step` is typed as the step's props, which is what it has always been at runtime
 - **BREAKING**: `Popover` `onRequestClose` data always includes a `trigger` from `PopoverRequestCloseTrigger`. A trigger click while open reports `'triggerClick'` and a hover close reports `'mouseLeave'` (both passed `{}` before), and Escape passes the keydown event instead of `undefined`. `onOpen(undefined, { portal })` and `onClose(undefined, { componentWillUnmount })` have exported data types
 - `DatePicker`: Down/Up in the closed input go through `onRequestOpen`, and Escape/Enter in the input go through `onRequestClose`, instead of setting internal state directly. Controlled pickers now open from the keyboard; uncontrolled pickers that pass `onRequestOpen` open from your handler, as they already did for clicks
+- Content props that are only rendered are typed `ReactNode` instead of `ReactElement`, so strings, fragments, arrays and `null` type-check: `SplitView` `master`/`detail`, `PageHeader` `trail`, `TabsPanel` `label`, `SetupAssistantStep` `figure` (an `Icon` is still resized to `small`), and the return type of the deprecated `Carousel` `onRenderItem`, `SetupAssistantStep` `onRenderFigure` and `MenuDropdown` `listItemRenderer`
 
 ### Deprecated
 
@@ -36,6 +37,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `Tree` `onScroll` data `percentage` (use `ratio`)
 - `SplitView` `events.onOpen` and `events.onClose` (use `events.onToggle`). They are called only when `onToggle` is absent
 - `PillContainer` flat `onClickPill` and `onRequestRemovePill` props (use `events.onClickPill` and `events.onRequestRemovePill`)
+- Props renamed to follow the v11 naming rules. The old names keep working, log a one-time warning, and are ignored when the new name is passed:
+  - `SplitView` `assistiveText.toggleButtonOpen` and `toggleButtonClose`, which were inverted (use `closeToggle` and `openToggle`)
+  - `Tree` `heading` and `assistiveText.label` (use `labels.heading` and `assistiveText.heading`)
+  - `TrialBar` `labels.timeLeftUnit` and `labels.timeLeftUnitAfter` (use `labels.timeLeftAfter`)
+  - `Slider` and `Textarea` `label` and `errorText` (use `labels.label`, and `labels.error` with `hasError`)
+- Zero-argument `onRender*` functions, replaced by `ReactNode` slots: `PageHeader` `onRenderActions`/`onRenderControls` (use `actions`/`controls`), `BuilderHeaderToolbar` and `TrialBar` `onRenderActions` (use `actions`), `WelcomeMat` `onRenderInfoActions` (use `infoActions`), `WelcomeMatInfoBadge` `onCompleteRenderActions` (use `completeActions`), `SetupAssistantStep` `onRenderAction`/`onRenderContent`/`onRenderFigure` (use `action`/`content`/`figure`), `ProgressIndicator` `steps[].onRenderSetupAssistantAction` (use `steps[].setupAssistantAction`), and `Checkbox`/`Radio` `onRenderVisualPicker*` (use `visualPickerFigure*`)
+- Render props that take data, replaced by `render<Part>(data) => ReactNode` functions. They are called with one data object rather than mounted as components, so pass a component as `(data) => <MyItem {...data} />`:
+  - `Carousel` `onRenderItem` (use `renderItem({ item })`)
+  - `Combobox` `onRenderMenuItem` and `menuItem`, which took a component (use `renderMenuItem({ assistiveText, isSelected, option })`; `selected` is now `isSelected`)
+  - `SimpleDataTable` `onRenderSubHeadingRow` (use `renderSubHeadingRow`, which gets the same data without `key`; the table sets the row's key)
+  - `MenuDropdown` `listItemRenderer`, which took a component (use `renderMenuItem({ icon, isSelected, option, optionIndex })`)
+  - `SplitViewListbox` `listItem`, which took a component (use `renderListItem({ isFocused, isSelected, isUnread, item })`)
 
 ### Fixed
 

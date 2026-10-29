@@ -76,6 +76,13 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
+			props.onRenderSubHeadingRow,
+			'onRenderSubHeadingRow',
+			'renderSubHeadingRow',
+			createDocUrl('renderSubHeadingRow')
+		);
+		deprecatedProperty(
+			COMPONENT,
 			props.assistiveTextForActionsHeader,
 			'assistiveTextForActionsHeader',
 			"assistiveText['actionsHeader']",

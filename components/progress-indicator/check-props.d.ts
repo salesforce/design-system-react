@@ -12,12 +12,19 @@ export interface CheckedProps extends Pick<
 > {
 	disabledSteps: boolean;
 	errorSteps: boolean;
+	/** Whether any step passes the deprecated `onRenderSetupAssistantAction` */
+	hasDeprecatedSetupAssistantAction: boolean;
 	tooltipIsOpenSteps: boolean;
 }
 
 /**
- * Development-only prop checker that warns about props that `type="path"` ignores.
+ * Development-only prop checker that warns about props that `type="path"` ignores
+ * and about deprecated step fields.
  */
-declare function checkProps(componentName: string, props: CheckedProps): void;
+declare function checkProps(
+	componentName: string,
+	props: CheckedProps,
+	jsonDoc?: Record<string, unknown>
+): void;
 
 export default checkProps;

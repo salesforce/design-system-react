@@ -103,7 +103,7 @@ const buildSubSteps = ({ toggleChecked, onToggle }) => [
 	{
 		id: 'substep-0',
 		label: 'Turn on Lightning for all users.',
-		onRenderSetupAssistantAction: (
+		setupAssistantAction: (
 			<Checkbox
 				id="substep-0-action"
 				checked={toggleChecked}
@@ -119,14 +119,14 @@ const buildSubSteps = ({ toggleChecked, onToggle }) => [
 		id: 'substep-1',
 		label:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-		onRenderSetupAssistantAction: (
+		setupAssistantAction: (
 			<Button id="substep-1-action" label="View in Trailhead" variant="link" />
 		),
 	},
 	{
 		id: 'substep-2',
 		label: 'Lorem ipsum dolor sit amet, lorem ipsum dolor.',
-		onRenderSetupAssistantAction: (
+		setupAssistantAction: (
 			<Button id="substep-2-action" label="Add Users" variant="outline-brand" />
 		),
 	},
@@ -155,7 +155,7 @@ export const ExpandableSteps = {
 					progress={100}
 					isExpandable
 					isOpen={openStep === 0}
-					onRenderContent={() => (
+					content={
 						<ProgressIndicator
 							id="setup-assistant-step-1-progress"
 							variant="setup-assistant"
@@ -163,7 +163,7 @@ export const ExpandableSteps = {
 							steps={buildSubSteps({ toggleChecked: true })}
 							completedSteps={buildSubSteps({ toggleChecked: true })}
 						/>
-					)}
+					}
 				/>
 				<SetupAssistantStep
 					heading="Create Profiles for Your Users"
@@ -173,7 +173,7 @@ export const ExpandableSteps = {
 					stepNumber={2}
 					isExpandable
 					isOpen={openStep === 1}
-					onRenderContent={() => (
+					content={
 						<>
 							<ProgressIndicator
 								id="setup-assistant-step-2-progress"
@@ -192,7 +192,7 @@ export const ExpandableSteps = {
 								</p>
 							</ScopedNotification>
 						</>
-					)}
+					}
 				/>
 				<SetupAssistantStep
 					heading="Learn How to Control Visibility"
@@ -201,7 +201,7 @@ export const ExpandableSteps = {
 					progress={0}
 					isExpandable
 					isOpen={openStep === 2}
-					onRenderContent={() => (
+					content={
 						<ProgressIndicator
 							id="setup-assistant-step-3-progress"
 							variant="setup-assistant"
@@ -209,7 +209,7 @@ export const ExpandableSteps = {
 							steps={buildSubSteps({ toggleChecked: false })}
 							selectedStep={buildSubSteps({ toggleChecked: false })[0]}
 						/>
-					)}
+					}
 				/>
 			</SetupAssistant>
 		);

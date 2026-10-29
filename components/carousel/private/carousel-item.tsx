@@ -5,12 +5,7 @@
 
 // Implements the [CarouselItem design pattern](https://www.lightningdesignsystem.com/components/carousel/) in React.
 
-import {
-	type FocusEvent,
-	type MouseEvent,
-	type ReactElement,
-	type ReactNode,
-} from 'react';
+import { type FocusEvent, type MouseEvent, type ReactNode } from 'react';
 
 import Button from '../../button';
 
@@ -71,9 +66,9 @@ export interface CarouselItemProps {
 	 */
 	onFocus?: (event: FocusEvent) => void;
 	/**
-	 * Accepts a custom carousel item rendering function. Called with `{ item }`.
+	 * Renders the item's content in place of the default image, heading and description. Called with `{ item }`.
 	 */
-	onRenderItem?: (data: CarouselRenderItemData) => ReactElement;
+	renderItem?: (data: CarouselRenderItemData) => ReactNode;
 	/**
 	 * Index of the panel this item belongs to, to be used when associating it to an indicator
 	 */
@@ -98,7 +93,7 @@ const CarouselItem = ({
 	isInCurrentPanel,
 	itemWidth,
 	onFocus,
-	onRenderItem,
+	renderItem,
 	panelIndex,
 	src,
 	getPanelId,
@@ -131,8 +126,8 @@ const CarouselItem = ({
 				padding: '0 6px',
 			}}
 		>
-			{onRenderItem ? (
-				onRenderItem({
+			{renderItem ? (
+				renderItem({
 					item: {
 						buttonLabel,
 						carouselId,
@@ -145,7 +140,6 @@ const CarouselItem = ({
 						isInCurrentPanel,
 						itemWidth,
 						onFocus,
-						onRenderItem,
 						panelIndex,
 						src,
 						getPanelId,

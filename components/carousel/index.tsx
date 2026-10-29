@@ -12,6 +12,7 @@ import {
 	type MouseEvent,
 	type FocusEvent,
 	type ReactElement,
+	type ReactNode,
 } from 'react';
 import classNames from '../../utilities/class-names';
 import { CAROUSEL } from '../../utilities/constants';
@@ -24,6 +25,8 @@ import CarouselIndicators from './private/carousel-indicators';
 import PreviousNextCarouselNavigator from './private/previous-next-carousel-navigator';
 import CarouselItem, { type CarouselItemProps } from './private/carousel-item';
 import AutoplayButton from './private/auto-play-button';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
@@ -92,12 +95,15 @@ export type CarouselAutoplayToggleEvent =
 	MouseEvent | KeyboardEvent | FocusEvent | undefined;
 
 /**
- * Item passed to `onRenderItem`: the item's fields plus the layout values the Carousel computed for it
+ * Item passed to `renderItem`: the item's fields plus the layout values the Carousel computed for it
  */
-export type CarouselRenderItem = Omit<CarouselItemProps, 'onClick'>;
+export type CarouselRenderItem = Omit<
+	CarouselItemProps,
+	'onClick' | 'renderItem'
+>;
 
 /**
- * Argument passed to `onRenderItem`
+ * Argument passed to `renderItem`
  */
 export interface CarouselRenderItemData {
 	/** The item to render */
@@ -138,8 +144,8 @@ export interface CarouselProps {
 	items: CarouselItemData[];
 	/** Number of items per panel */
 	itemsPerPanel?: number;
-	/** Custom item renderer. Receives `{ item }` and returns the item's content. */
-	onRenderItem?: (data: CarouselRenderItemData) => ReactElement;
+	/** @deprecated Use `renderItem` instead. */
+	onRenderItem?: (data: CarouselRenderItemData) => ReactNode;
 	/**
 	 * Called when autoplay toggle is requested. `data.isAutoplayOn` is the requested (next) state.
 	 * `event` is `undefined` when autoplay stops itself at the last panel.
@@ -157,6 +163,8 @@ export interface CarouselProps {
 	) => void;
 	/** Called when an item is clicked */
 	onItemClick?: (event: MouseEvent, data: CarouselItemClickData) => void;
+	/** Renders the content of each item in place of the default image, heading and description. Receives `{ item }`. */
+	renderItem?: (data: CarouselRenderItemData) => ReactNode;
 }
 
 const defaultAssistiveText: CarouselAssistiveText = {
@@ -184,9 +192,18 @@ const Carousel = ({
 	onRequestAutoplayToggle,
 	onRequestPanelChange,
 	onItemClick,
+	renderItem: renderItemProp,
 }: CarouselProps): ReactElement => {
 	const generatedId = useId();
 	const id = propId || generatedId;
+	// `onRenderItem` is deprecated
+	const renderItem = renderItemProp ?? onRenderItem;
+
+	// Check props in development
+	useEffect(() => {
+		checkProps(CAROUSEL, { onRenderItem }, componentDoc);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []); // Only run on mount
 
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
 
@@ -534,7 +551,7 @@ const Carousel = ({
 											stopAutoplay(event);
 										}
 									}}
-									onRenderItem={onRenderItem}
+									renderItem={renderItem}
 									{...item}
 									isInCurrentPanel={
 										index >= currentPanel * itemsPerPanel &&

@@ -7,6 +7,7 @@ export type {
 	TreeItemNode,
 	FlattenedNode,
 	TreeAssistiveText,
+	TreeLabels,
 	TreeNodeSelectData,
 	TreeRequestToggleData,
 	TreeSelectData,

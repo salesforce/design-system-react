@@ -1,6 +1,14 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest';
+import {
+	describe,
+	it,
+	expect,
+	vi,
+	beforeAll,
+	afterAll,
+	afterEach,
+} from 'vitest';
 
 import IconSettings from '../../icon-settings';
 import SLDSButton from '../../button';
@@ -230,14 +238,14 @@ describe('SLDSWelcomeMat', () => {
 								}}
 							/>
 						}
-						onRenderInfoActions={() => (
+						infoActions={
 							<SLDSButton
 								type="button"
 								variant="brand"
 								title="Learn More"
 								label="Learn More"
 							/>
-						)}
+						}
 					>
 						{tiles}
 					</SLDSWelcomeMat>
@@ -281,14 +289,14 @@ describe('SLDSWelcomeMat', () => {
 								}}
 							/>
 						}
-						onRenderInfoActions={() => (
+						infoActions={
 							<SLDSButton
 								type="button"
 								variant="brand"
 								title="Learn More"
 								label="Learn More"
 							/>
-						)}
+						}
 					>
 						{tiles}
 					</SLDSWelcomeMat>
@@ -330,14 +338,14 @@ describe('SLDSWelcomeMat', () => {
 								}}
 							/>
 						}
-						onRenderInfoActions={() => (
+						infoActions={
 							<SLDSButton
 								type="button"
 								variant="brand"
 								title="Learn More"
 								label="Learn More"
 							/>
-						)}
+						}
 					/>
 				</IconSettings>
 			);
@@ -371,14 +379,14 @@ describe('SLDSWelcomeMat', () => {
 								}}
 							/>
 						}
-						onRenderInfoActions={() => (
+						infoActions={
 							<SLDSButton
 								type="button"
 								variant="brand"
 								title="Learn More"
 								label="Learn More"
 							/>
-						)}
+						}
 					/>
 				</IconSettings>
 			);
@@ -408,14 +416,14 @@ describe('SLDSWelcomeMat', () => {
 								}}
 							/>
 						}
-						onRenderInfoActions={() => (
+						infoActions={
 							<SLDSButton
 								type="button"
 								variant="brand"
 								title="Learn More"
 								label="Learn More"
 							/>
-						)}
+						}
 					/>
 				</IconSettings>
 			);
@@ -448,7 +456,7 @@ describe('SLDSWelcomeMat', () => {
 						infoBadge={
 							<WelcomeMatInfoBadge
 								image="/assets/images/welcome-mat/trailhead_badge@2x.png"
-								onCompleteRenderActions={() => (
+								completeActions={
 									<React.Fragment>
 										<p>Cha-ching! You earned the badge.</p>
 										<SLDSButton
@@ -459,7 +467,7 @@ describe('SLDSWelcomeMat', () => {
 											label="View on your Trailblazer Profile"
 										/>
 									</React.Fragment>
-								)}
+								}
 							>
 								<p>
 									<strong>Lightning Explorer</strong>
@@ -505,7 +513,7 @@ describe('SLDSWelcomeMat', () => {
 						infoBadge={
 							<WelcomeMatInfoBadge
 								image="/assets/images/welcome-mat/trailhead_badge@2x.png"
-								onCompleteRenderActions={() => (
+								completeActions={
 									<React.Fragment>
 										<p>Cha-ching! You earned the badge.</p>
 										<SLDSButton
@@ -516,7 +524,7 @@ describe('SLDSWelcomeMat', () => {
 											label="View on your Trailblazer Profile"
 										/>
 									</React.Fragment>
-								)}
+								}
 							>
 								<p>
 									<strong>Lightning Explorer</strong>
@@ -553,7 +561,7 @@ describe('SLDSWelcomeMat', () => {
 						infoBadge={
 							<WelcomeMatInfoBadge
 								image="/assets/images/welcome-mat/trailhead_badge@2x.png"
-								onCompleteRenderActions={() => (
+								completeActions={
 									<React.Fragment>
 										<p>Cha-ching! You earned the badge.</p>
 										<SLDSButton
@@ -564,7 +572,7 @@ describe('SLDSWelcomeMat', () => {
 											label="View on your Trailblazer Profile"
 										/>
 									</React.Fragment>
-								)}
+								}
 							>
 								<p>
 									<strong>Lightning Explorer</strong>
@@ -588,6 +596,95 @@ describe('SLDSWelcomeMat', () => {
 				welcomeMatInfo.querySelector('.slds-welcome-mat__info-description')
 					.textContent
 			).toBe(description);
+		});
+	});
+
+	describe('Action slots', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		it('renders the infoActions slot', () => {
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<SLDSWelcomeMat
+						isOpen
+						variant="splash"
+						labels={labels}
+						id="welcome-mat-test"
+						infoActions={<button type="button">Learn More</button>}
+					/>
+				</IconSettings>
+			);
+
+			const infoActions = document.body.querySelector(
+				'.slds-welcome-mat__info-actions'
+			);
+			expect(infoActions.querySelector('button').textContent).toBe(
+				'Learn More'
+			);
+		});
+
+		it('renders the completeActions slot only when complete', () => {
+			const { container, rerender } = render(
+				<IconSettings iconPath="/assets/icons">
+					<WelcomeMatInfoBadge completeActions={<p>Cha-ching!</p>} />
+				</IconSettings>
+			);
+
+			expect(container).not.toHaveTextContent('Cha-ching!');
+
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<WelcomeMatInfoBadge isComplete completeActions={<p>Cha-ching!</p>} />
+				</IconSettings>
+			);
+
+			expect(container).toHaveTextContent('Cha-ching!');
+		});
+
+		it('still renders the deprecated onRenderInfoActions and onCompleteRenderActions and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<SLDSWelcomeMat
+						isOpen
+						variant="splash"
+						labels={labels}
+						id="welcome-mat-test"
+						onRenderInfoActions={() => (
+							<button type="button">Learn More</button>
+						)}
+					/>
+				</IconSettings>
+			);
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<WelcomeMatInfoBadge
+						isComplete
+						onCompleteRenderActions={() => <p>Cha-ching!</p>}
+					/>
+				</IconSettings>
+			);
+
+			const infoActions = document.body.querySelector(
+				'.slds-welcome-mat__info-actions'
+			);
+			expect(infoActions.querySelector('button').textContent).toBe(
+				'Learn More'
+			);
+			expect(container).toHaveTextContent('Cha-ching!');
+
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(messages.some((m) => m.includes('onRenderInfoActions'))).toBe(
+				true
+			);
+			expect(messages.some((m) => m.includes('onCompleteRenderActions'))).toBe(
+				true
+			);
 		});
 	});
 });

@@ -46,6 +46,8 @@ export interface ListItemProps {
 	isCheckmarkVariant?: boolean;
 	label?: string;
 	labelRenderer?: ComponentType<ListItemLabelProps>;
+	/** Called to render the label. Takes precedence over `labelRenderer`. */
+	renderLabel?: (props: ListItemLabelProps) => ReactNode;
 	leftIcon?: MenuListIconConfig;
 	/**
 	 * Callback ref that receives the root `<li>` DOM node (or `null` on
@@ -80,19 +82,21 @@ class ListItem extends React.Component<ListItemProps> {
 	};
 
 	getLabel = () => {
+		const labelProps: ListItemLabelProps = {
+			checkmark: this.props.checkmark,
+			data: this.props.data,
+			icon: this.getIcon('left'),
+			index: this.props.index,
+			inverted: this.props.inverted,
+			isSelected: this.props.isSelected,
+			label: this.props.label,
+			value: this.props.value,
+		};
+		if (this.props.renderLabel) {
+			return this.props.renderLabel(labelProps);
+		}
 		const Label = this.props.labelRenderer ?? ListItemLabelRenderer;
-		return (
-			<Label
-				checkmark={this.props.checkmark}
-				data={this.props.data}
-				icon={this.getIcon('left')}
-				index={this.props.index}
-				inverted={this.props.inverted}
-				isSelected={this.props.isSelected}
-				label={this.props.label}
-				value={this.props.value}
-			/>
-		);
+		return <Label {...labelProps} />;
 	};
 
 	getIcon = (position: 'left' | 'right') => {

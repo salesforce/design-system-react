@@ -12,10 +12,10 @@ class Example extends React.Component {
 				<Textarea
 					aria-describedby="error-1"
 					id="text-area-error"
+					hasError
+					labels={{ label: 'Textarea Label', error: 'This field is required' }}
 					name="required-textarea-error"
-					label="Textarea Label"
 					required
-					errorText="This field is required"
 					placeholder="Placeholder Text"
 				/>
 			</IconSettings>

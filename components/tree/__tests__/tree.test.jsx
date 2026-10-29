@@ -44,7 +44,7 @@ const createNodes = () => [
 const renderTree = (props = {}) => {
 	const nodes = props.nodes || createNodes();
 	const utils = render(
-		<Tree heading="Foods" id="tree" nodes={nodes} {...props} />
+		<Tree labels={{ heading: 'Foods' }} id="tree" nodes={nodes} {...props} />
 	);
 	const getNode = (nodeId) => utils.container.querySelector(`#tree-${nodeId}`);
 	const getItem = (nodeId) => getNode(nodeId).querySelector('.slds-tree__item');
@@ -126,7 +126,7 @@ describe('Tree', () => {
 			const { container } = render(
 				<DefaultExample
 					className="this-is-a-container-test"
-					heading="Foods"
+					labels={{ heading: 'Foods' }}
 					id={id}
 					listClassName="this-is-an-unordered-list-test"
 					listStyle={{ height: '500px' }}
@@ -150,7 +150,11 @@ describe('Tree', () => {
 	describe('Assistive Technology', () => {
 		it('has heading via assistiveText', () => {
 			const { container } = render(
-				<DefaultExample log={() => {}} assistiveText={{ label: 'Foods' }} />
+				<DefaultExample
+					log={() => {}}
+					noHeading
+					assistiveText={{ heading: 'Foods' }}
+				/>
 			);
 
 			const heading = container.querySelector(
@@ -453,7 +457,7 @@ describe('Tree', () => {
 
 			render(
 				<FreshTree
-					heading="Foods"
+					labels={{ heading: 'Foods' }}
 					id="fresh-tree"
 					nodes={createNodes()}
 					onSelect={() => {}}
@@ -464,7 +468,7 @@ describe('Tree', () => {
 
 			render(
 				<FreshTree
-					heading="Foods"
+					labels={{ heading: 'Foods' }}
 					id="fresh-tree-2"
 					nodes={createNodes()}
 					onClick={() => {}}
@@ -610,7 +614,7 @@ describe('Tree', () => {
 
 			const { container } = render(
 				<DefaultExample
-					heading="Foods"
+					labels={{ heading: 'Foods' }}
 					listStyle={{
 						height: '300px',
 						overflowY: 'auto',
@@ -690,6 +694,67 @@ describe('Tree', () => {
 				ratio: 0,
 				percentage: 0,
 			});
+		});
+	});
+
+	describe('Heading labels', () => {
+		const nodes = [{ id: 1, label: 'Fruits', type: 'item' }];
+		const renderTree = (props) =>
+			render(
+				<Tree
+					id="heading-tree"
+					nodes={nodes}
+					onClick={() => {}}
+					onExpandClick={() => {}}
+					{...props}
+				/>
+			);
+		const getHeading = (container) =>
+			container.querySelector('#heading-tree__heading');
+
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		it('renders a visible heading from labels.heading', () => {
+			const { container } = renderTree({ labels: { heading: 'Foods' } });
+
+			expect(getHeading(container)).toHaveTextContent('Foods');
+			expect(getHeading(container)).not.toHaveClass('slds-assistive-text');
+		});
+
+		it('renders a visually hidden heading from assistiveText.heading', () => {
+			const { container } = renderTree({ assistiveText: { heading: 'Foods' } });
+
+			expect(getHeading(container)).toHaveTextContent('Foods');
+			expect(getHeading(container)).toHaveClass('slds-assistive-text');
+		});
+
+		it('still accepts the deprecated heading and assistiveText.label props and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			const { container, unmount } = renderTree({ heading: 'Old visible' });
+			expect(getHeading(container)).toHaveTextContent('Old visible');
+			expect(getHeading(container)).not.toHaveClass('slds-assistive-text');
+			unmount();
+
+			const { container: hidden } = renderTree({
+				assistiveText: { label: 'Old hidden' },
+			});
+			expect(getHeading(hidden)).toHaveTextContent('Old hidden');
+			expect(getHeading(hidden)).toHaveClass('slds-assistive-text');
+
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(
+				messages.some(
+					(m) => m.includes('`heading`') && m.includes('labels.heading')
+				)
+			).toBe(true);
+			expect(messages.some((m) => m.includes('assistiveText.label'))).toBe(
+				true
+			);
 		});
 	});
 });

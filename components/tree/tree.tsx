@@ -13,11 +13,13 @@ import checkProps from './check-props';
 
 // Constants
 import { TREE } from '../../utilities/constants';
+import componentDoc from './component.json';
 
 import {
 	TreeNode,
 	FlattenedNode,
 	TreeAssistiveText,
+	TreeLabels,
 	TreeNodeSelectData,
 	TreeRequestToggleData,
 	TreeSelectData,
@@ -26,7 +28,10 @@ import {
 } from './types';
 
 export interface TreeProps {
-	/** Assistive text for accessibility */
+	/**
+	 * **Assistive text for accessibility**
+	 * * `heading`: Visually hidden tree heading. Set this or `labels.heading`.
+	 */
 	assistiveText?: TreeAssistiveText;
 	/** Class names for the container element */
 	className?: string | string[] | Record<string, boolean>;
@@ -34,10 +39,15 @@ export interface TreeProps {
 	listClassName?: string | string[] | Record<string, boolean>;
 	/** Function to get child nodes from a parent node */
 	getNodes?: (node: { nodes?: TreeNode[] }) => TreeNode[] | undefined;
-	/** Tree heading that describes its contents */
-	heading?: ReactNode | string;
+	/** @deprecated Use `labels.heading` instead. */
+	heading?: ReactNode;
 	/** HTML id of the tree container (required) */
 	id: string;
+	/**
+	 * **Text labels for internationalization**
+	 * * `heading`: Visible tree heading that describes its contents. Set this or `assistiveText.heading`.
+	 */
+	labels?: TreeLabels;
 	/** Array of tree nodes */
 	nodes: TreeNode[];
 	/**
@@ -125,8 +135,9 @@ const Tree: React.FC<TreeProps> = ({
 	className,
 	listClassName,
 	getNodes = defaultGetNodes,
-	heading,
+	heading: headingProp,
 	id,
+	labels,
 	nodes,
 	onSelect,
 	onClick,
@@ -136,7 +147,11 @@ const Tree: React.FC<TreeProps> = ({
 	searchTerm,
 	listStyle,
 }) => {
-	const assistiveText = assistiveTextProp?.label;
+	// `assistiveText.label` is deprecated
+	const assistiveHeading =
+		assistiveTextProp?.heading ?? assistiveTextProp?.label;
+	// `heading` is deprecated
+	const visibleHeading = labels?.heading ?? headingProp;
 
 	// Track if tree has focus
 	const treeHasFocusRef = useRef(false);
@@ -173,16 +188,16 @@ const Tree: React.FC<TreeProps> = ({
 
 	// Check props on mount
 	useEffect(() => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		(checkProps as any)(
+		checkProps(
 			TREE,
 			{
 				assistiveText: assistiveTextProp,
 				className,
 				listClassName,
 				getNodes,
-				heading,
+				heading: headingProp,
 				id,
+				labels,
 				nodes,
 				onSelect,
 				onClick,
@@ -192,7 +207,7 @@ const Tree: React.FC<TreeProps> = ({
 				searchTerm,
 				listStyle,
 			},
-			{}
+			componentDoc
 		);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
@@ -293,13 +308,13 @@ const Tree: React.FC<TreeProps> = ({
 	);
 
 	// Determine heading text
-	const headingText = assistiveText || heading;
+	const headingText = assistiveHeading || visibleHeading;
 
 	return (
 		<div id={id} className={classNames('slds-tree_container', className)}>
 			<h4
 				className={classNames('slds-tree__group-header', {
-					'slds-assistive-text': !!assistiveText,
+					'slds-assistive-text': !!assistiveHeading,
 				})}
 				id={`${id}__heading`}
 			>

@@ -34,7 +34,7 @@ class VisualPickerExample extends React.Component {
 								value="1"
 								checked={this.state.checked === '1'}
 								onChange={() => this.setState({ checked: '1' })}
-								onRenderVisualPickerSelected={() => (
+								visualPickerFigureSelected={
 									<Icon
 										assistiveText={{ label: 'selected-icon' }}
 										category="utility"
@@ -42,15 +42,15 @@ class VisualPickerExample extends React.Component {
 										colorVariant="base"
 										size="large"
 									/>
-								)}
-								onRenderVisualPickerNotSelected={() => (
+								}
+								visualPickerFigureNotSelected={
 									<Icon
 										assistiveText={{ label: 'connected_apps-icon' }}
 										category="utility"
 										name="connected_apps"
 										size="large"
 									/>
-								)}
+								}
 							/>
 							<Radio
 								labels={{
@@ -60,7 +60,7 @@ class VisualPickerExample extends React.Component {
 								value="2"
 								checked={this.state.checked === '2'}
 								onChange={() => this.setState({ checked: '2' })}
-								onRenderVisualPickerSelected={() => (
+								visualPickerFigureSelected={
 									<Icon
 										assistiveText={{ label: 'selected-icon' }}
 										category="utility"
@@ -68,15 +68,15 @@ class VisualPickerExample extends React.Component {
 										colorVariant="base"
 										size="large"
 									/>
-								)}
-								onRenderVisualPickerNotSelected={() => (
+								}
+								visualPickerFigureNotSelected={
 									<Icon
 										assistiveText={{ label: 'custom_apps-icon' }}
 										category="utility"
 										name="custom_apps"
 										size="large"
 									/>
-								)}
+								}
 							/>
 						</React.Fragment>
 					) : (
@@ -97,7 +97,7 @@ class VisualPickerExample extends React.Component {
 									else this.setState({ checked: [...this.state.checked, '1'] });
 								}}
 								id="visual-picker-coverable-checkbox-1"
-								onRenderVisualPickerSelected={() => (
+								visualPickerFigureSelected={
 									<Icon
 										assistiveText={this.props.assistiveText}
 										category="utility"
@@ -105,15 +105,15 @@ class VisualPickerExample extends React.Component {
 										colorVariant="base"
 										size="large"
 									/>
-								)}
-								onRenderVisualPickerNotSelected={() => (
+								}
+								visualPickerFigureNotSelected={
 									<Icon
 										assistiveText={this.props.assistiveText}
 										category="standard"
 										name="account"
 										size="large"
 									/>
-								)}
+								}
 							/>
 							<Checkbox
 								labels={{
@@ -131,7 +131,7 @@ class VisualPickerExample extends React.Component {
 									else this.setState({ checked: [...this.state.checked, '2'] });
 								}}
 								id="visual-picker-coverable-checkbox-2"
-								onRenderVisualPickerSelected={() => (
+								visualPickerFigureSelected={
 									<Icon
 										assistiveText={this.props.assistiveText}
 										category="utility"
@@ -139,15 +139,15 @@ class VisualPickerExample extends React.Component {
 										colorVariant="base"
 										size="large"
 									/>
-								)}
-								onRenderVisualPickerNotSelected={() => (
+								}
+								visualPickerFigureNotSelected={
 									<Icon
 										assistiveText={this.props.assistiveText}
 										category="standard"
 										name="lead"
 										size="large"
 									/>
-								)}
+								}
 							/>
 							<Checkbox
 								labels={{
@@ -167,7 +167,7 @@ class VisualPickerExample extends React.Component {
 									}
 								}}
 								id="visual-picker-coverable-checkbox-3"
-								onRenderVisualPickerSelected={() => (
+								visualPickerFigureSelected={
 									<Icon
 										assistiveText={this.props.assistiveText}
 										category="utility"
@@ -175,15 +175,15 @@ class VisualPickerExample extends React.Component {
 										colorVariant="base"
 										size="large"
 									/>
-								)}
-								onRenderVisualPickerNotSelected={() => (
+								}
+								visualPickerFigureNotSelected={
 									<Icon
 										assistiveText={this.props.assistiveText}
 										category="standard"
 										name="orders"
 										size="large"
 									/>
-								)}
+								}
 							/>
 						</React.Fragment>
 					)}
@@ -209,7 +209,12 @@ VisualPickerExample.defaultProps = {
 describe('SLDS Visual Picker', () => {
 	it('radio switching works correctly', () => {
 		const { container } = render(
-			<VisualPickerExample label="Select any one" type="radio" checked="1" id="vp-test" />
+			<VisualPickerExample
+				label="Select any one"
+				type="radio"
+				checked="1"
+				id="vp-test"
+			/>
 		);
 
 		// Get the radio inputs

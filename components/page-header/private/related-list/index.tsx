@@ -28,7 +28,7 @@ const RelatedList = (props: PageHeaderVariantProps) => (
 			</div>
 			<Controls
 				contentRight={props.contentRight}
-				onRenderActions={props.onRenderActions}
+				actions={props.actions}
 				type="actions"
 			/>
 		</div>
@@ -38,7 +38,7 @@ const RelatedList = (props: PageHeaderVariantProps) => (
 			</div>
 			<Controls
 				navRight={props.navRight}
-				onRenderControls={props.onRenderControls}
+				controls={props.controls}
 				type="controls"
 			/>
 		</div>

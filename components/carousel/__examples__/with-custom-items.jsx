@@ -143,7 +143,7 @@ class Example extends React.Component {
 							id="carousel-with-custom-items-example"
 							items={items}
 							itemsPerPanel={3}
-							onRenderItem={this.renderCustomItem}
+							renderItem={this.renderCustomItem}
 						/>
 					</div>
 				</IconSettings>

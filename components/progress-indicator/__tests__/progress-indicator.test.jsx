@@ -658,4 +658,59 @@ describe('SLDSProgressIndicator', () => {
 			expect(consoleError).not.toHaveBeenCalled();
 		});
 	});
+
+	describe('Setup assistant step action', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		const getContent = (container) =>
+			container.querySelector('#progress-indicator-vertical-label-0');
+
+		it('renders steps[].setupAssistantAction', () => {
+			const setupSteps = [
+				{
+					id: 0,
+					label: 'label #1',
+					setupAssistantAction: <button type="button">Brand</button>,
+				},
+			];
+			const { container, getByRole } = renderProgressIndicator({
+				steps: setupSteps,
+				selectedStep: setupSteps[0],
+				variant: 'setup-assistant',
+			});
+
+			expect(getContent(container)).toContainElement(
+				getByRole('button', { name: 'Brand' })
+			);
+		});
+
+		it('still renders the deprecated steps[].onRenderSetupAssistantAction and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const setupSteps = [
+				{
+					id: 0,
+					label: 'label #1',
+					onRenderSetupAssistantAction: <button type="button">Brand</button>,
+				},
+			];
+			const { container, getByRole } = renderProgressIndicator({
+				steps: setupSteps,
+				selectedStep: setupSteps[0],
+				variant: 'setup-assistant',
+			});
+
+			expect(getContent(container)).toContainElement(
+				getByRole('button', { name: 'Brand' })
+			);
+
+			const messages = consoleError.mock.calls.map((args) => args.join(' '));
+			expect(
+				messages.some((m) => m.includes('steps[].onRenderSetupAssistantAction'))
+			).toBe(true);
+		});
+	});
 });

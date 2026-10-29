@@ -113,16 +113,20 @@ class Example extends React.Component {
 		);
 
 		const trail = [
-			<a key="accounts" href="#accounts">Accounts</a>,
-			<a key="company-one" href="#company-one">Company One</a>,
+			<a key="accounts" href="#accounts">
+				Accounts
+			</a>,
+			<a key="company-one" href="#company-one">
+				Company One
+			</a>,
 		];
 
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<PageHeader
 					info="10 items • sorted by name"
-					onRenderActions={actions}
-					onRenderControls={controls}
+					actions={actions()}
+					controls={controls()}
 					title="Contacts (will truncate)"
 					trail={trail}
 					truncate

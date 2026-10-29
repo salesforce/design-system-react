@@ -1,9 +1,11 @@
-import React, { type ReactNode } from 'react';
+import React, { useEffect, type ReactNode } from 'react';
 
 import {
 	BUILDER_HEADER_TOOLBAR,
 	BUTTON_GROUP,
 } from '../../utilities/constants';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 export interface BuilderHeaderToolbarAssistiveText {
 	/** Used for the aria-label for the actions section of the toolbar. */
@@ -11,6 +13,10 @@ export interface BuilderHeaderToolbarAssistiveText {
 }
 
 export interface BuilderHeaderToolbarProps {
+	/**
+	 * Content rendered in the actions section of the toolbar, such as save or undo buttons.
+	 */
+	actions?: ReactNode;
 	/**
 	 * **Assistive text for accessibility**
 	 * This object is merged with the default props object on every render.
@@ -30,9 +36,7 @@ export interface BuilderHeaderToolbarProps {
 	 * ```
 	 */
 	children?: ReactNode;
-	/**
-	 * Renders the actions section of the header.
-	 */
+	/** @deprecated Use `actions` instead. */
 	onRenderActions?: () => ReactNode;
 }
 
@@ -44,10 +48,15 @@ const defaultAssistiveText: BuilderHeaderToolbarAssistiveText = {
  * The toolbar section of the header.
  */
 const BuilderHeaderToolbar = ({
+	actions,
 	assistiveText = defaultAssistiveText,
 	children,
 	onRenderActions,
 }: BuilderHeaderToolbarProps): React.ReactElement => {
+	useEffect(() => {
+		checkProps(BUILDER_HEADER_TOOLBAR, { onRenderActions }, componentDoc);
+	}, [onRenderActions]);
+
 	const mergedAssistiveText = {
 		...defaultAssistiveText,
 		...assistiveText,
@@ -74,7 +83,7 @@ const BuilderHeaderToolbar = ({
 				className="slds-builder-toolbar__actions"
 				aria-label={mergedAssistiveText.actions}
 			>
-				{onRenderActions && onRenderActions()}
+				{actions ?? onRenderActions?.()}
 			</div>
 		</div>
 	);

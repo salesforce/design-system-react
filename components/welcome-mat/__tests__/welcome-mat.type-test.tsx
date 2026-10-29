@@ -19,6 +19,12 @@ export const trailhead = (
 );
 
 export const infoOnly = (
+	<WelcomeMat infoActions={<button type="button" />} variant="info-only">
+		<div />
+	</WelcomeMat>
+);
+
+export const deprecatedInfoActions = (
 	<WelcomeMat onRenderInfoActions={() => null} variant="info-only">
 		<div />
 	</WelcomeMat>
@@ -50,7 +56,7 @@ export const stepsBadge = (
 
 export const stepsActions = (
 	// @ts-expect-error the steps variant shows progress, not actions
-	<WelcomeMat onRenderInfoActions={() => null}>
+	<WelcomeMat infoActions={<button type="button" />}>
 		<div />
 	</WelcomeMat>
 );

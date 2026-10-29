@@ -48,7 +48,7 @@ const Example = (props) => (
 				assistiveText={{
 					actions: 'Document Actions',
 				}}
-				onRenderActions={() => (
+				actions={
 					<div>
 						<Tooltip
 							id="status-tooltip"
@@ -99,7 +99,7 @@ const Example = (props) => (
 						<Button label="Save As" />
 						<Button label="Save" variant="brand" />
 					</div>
-				)}
+				}
 			>
 				<ButtonGroup label="Canvas Actions" id="button-group-canvas-actions">
 					<Button
