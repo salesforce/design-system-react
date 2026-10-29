@@ -89,6 +89,22 @@ const meta: Meta<typeof MenuDropdown> = {
 			control: 'select',
 			options: ['base', 'neutral', 'brand', 'destructive', 'icon'],
 		},
+		iconSize: {
+			control: 'select',
+			options: ['xx-small', 'x-small', 'small', 'medium', 'large'],
+		},
+		iconVariant: {
+			control: 'select',
+			options: [
+				'bare',
+				'bare-inverse',
+				'container',
+				'border',
+				'border-filled',
+				'border-inverse',
+				'more',
+			],
+		},
 		openOn: {
 			control: 'select',
 			options: ['click', 'hover', 'hybrid'],
@@ -265,6 +281,63 @@ export const WithNubbins: Story = {
 					</MenuDropdown>
 				</div>
 			))}
+		</div>
+	),
+};
+
+// Inverse icon variants, for icon buttons on dark backgrounds
+export const InverseIconVariants: Story = {
+	decorators: [
+		(Story) => (
+			<div
+				className="slds-p-around_medium"
+				style={{ backgroundColor: '#16325c' }}
+			>
+				<IconSettings iconPath="/assets/icons">
+					<Story />
+				</IconSettings>
+			</div>
+		),
+	],
+	render: () => (
+		<div className="slds-grid slds-gutters">
+			{(['bare-inverse', 'border-inverse'] as const).map((iconVariant) => (
+				<div className="slds-col slds-grow-none" key={iconVariant}>
+					<MenuDropdown
+						assistiveText={{ icon: `More Options (${iconVariant})` }}
+						buttonVariant="icon"
+						iconCategory="utility"
+						iconName="down"
+						iconVariant={iconVariant}
+						id={`icon-variant-${iconVariant}`}
+						options={options}
+					/>
+				</div>
+			))}
+		</div>
+	),
+};
+
+// Icon sizes. `xx-small` sizes the button container, so it needs an `iconVariant`.
+export const IconSizes: Story = {
+	render: () => (
+		<div className="slds-grid slds-gutters slds-grid_vertical-align-center">
+			{(['xx-small', 'x-small', 'small', 'medium', 'large'] as const).map(
+				(iconSize) => (
+					<div className="slds-col slds-grow-none" key={iconSize}>
+						<MenuDropdown
+							assistiveText={{ icon: `More Options (${iconSize})` }}
+							buttonVariant="icon"
+							iconCategory="utility"
+							iconName="down"
+							iconSize={iconSize}
+							iconVariant="border-filled"
+							id={`icon-size-${iconSize}`}
+							options={options}
+						/>
+					</div>
+				)
+			)}
 		</div>
 	),
 };
