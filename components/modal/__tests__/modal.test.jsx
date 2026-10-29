@@ -1,5 +1,14 @@
+import { createRef } from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest';
+import {
+	describe,
+	it,
+	expect,
+	vi,
+	beforeAll,
+	afterAll,
+	afterEach,
+} from 'vitest';
 
 import Modal from '../';
 import IconSettings from '../../icon-settings';
@@ -43,13 +52,13 @@ describe('SLDSModal', () => {
 		document.body.querySelector('[role="alertdialog"]');
 
 	describe('Styling', () => {
-		it('has correct containerClassName, contentClassName, contentStyle, and portalClassName', () => {
+		it('has correct classNameContainer, classNameContent, styleContent, and classNamePortal', () => {
 			renderModal({
-				containerClassName: 'container-class-name-test',
-				contentClassName: 'content-class-name-test',
-				contentStyle: { height: '500px' },
+				classNameContainer: 'container-class-name-test',
+				classNameContent: 'content-class-name-test',
+				styleContent: { height: '500px' },
 				isOpen: true,
-				portalClassName: 'portal-class-name-test',
+				classNamePortal: 'portal-class-name-test',
 			});
 
 			const modalContainer = getModalNode().querySelector(
@@ -67,6 +76,82 @@ describe('SLDSModal', () => {
 				'.portal-class-name-test'
 			);
 			expect(modalPortal).toBeInTheDocument();
+		});
+	});
+
+	describe('Deprecated class and style props', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		it('still apply, merged with the new props, and warn', async () => {
+			// Fresh modules so the once-per-session warning state is reset
+			vi.resetModules();
+			const { default: FreshModal } = await import('../');
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			render(
+				<FreshModal
+					ariaHideApp={false}
+					classNameContent="new-content"
+					containerClassName="old-container"
+					contentClassName="old-content"
+					contentStyle={{ height: '200px', width: '50px' }}
+					footer={<button type="button">OK</button>}
+					footerClassName="old-footer"
+					heading="Heading"
+					headerClassName="old-header"
+					isOpen
+					portalClassName="old-portal"
+					styleContent={{ height: '300px' }}
+				>
+					hello
+				</FreshModal>
+			);
+
+			const modal = getModalNode();
+			expect(modal.querySelector('.slds-modal__container')).toHaveClass(
+				'old-container'
+			);
+			const content = modal.querySelector('.slds-modal__content');
+			expect(content).toHaveClass('old-content', 'new-content');
+			expect(content).toHaveStyle({ height: '300px', width: '50px' });
+			expect(modal.querySelector('.slds-modal__header')).toHaveClass(
+				'old-header'
+			);
+			expect(modal.querySelector('.slds-modal__footer')).toHaveClass(
+				'old-footer'
+			);
+			expect(document.body.querySelector('.old-portal')).toBeInTheDocument();
+
+			const messages = consoleError.mock.calls.map((call) => call.join(' '));
+			[
+				['containerClassName', 'classNameContainer'],
+				['contentClassName', 'classNameContent'],
+				['contentStyle', 'styleContent'],
+				['footerClassName', 'classNameFooter'],
+				['headerClassName', 'classNameHeader'],
+				['portalClassName', 'classNamePortal'],
+			].forEach(([oldProp, newProp]) => {
+				expect(
+					messages.some(
+						(m) =>
+							m.includes(`\`${oldProp}\` will be removed`) &&
+							m.includes(`Use \`${newProp}\` instead.`)
+					)
+				).toBe(true);
+			});
+		});
+	});
+
+	describe('ref', () => {
+		it('forwards ref to the root section.slds-modal element', () => {
+			const ref = createRef();
+			renderModal({ isOpen: true, ref });
+			expect(ref.current).toBe(getModalNode());
+			expect(ref.current.tagName).toBe('SECTION');
 		});
 	});
 
@@ -124,7 +209,7 @@ describe('SLDSModal', () => {
 		it('adds custom classname from modal container prop', () => {
 			renderModal({
 				isOpen: true,
-				containerClassName: 'my-custom-class',
+				classNameContainer: 'my-custom-class',
 			});
 			const modal = getModalNode();
 			expect(modal.firstChild).toHaveClass('my-custom-class');
@@ -251,7 +336,7 @@ describe('SLDSModal', () => {
 		it('adds the custom header class', () => {
 			renderModal({
 				header: <div id="art-vandelay">Art vandelay</div>,
-				headerClassName: 'art-vandelay',
+				classNameHeader: 'art-vandelay',
 				isOpen: true,
 			});
 			const modal = getModalNode();

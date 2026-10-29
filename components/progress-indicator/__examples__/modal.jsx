@@ -67,7 +67,7 @@ class Example extends React.Component {
 					onRequestClose: action('modal closed'),
 					footer: modalFooter(),
 					size: 'large',
-					footerClassName: 'slds-grid slds-grid_align-spread',
+					classNameFooter: 'slds-grid slds-grid_align-spread',
 				})}
 			</div>
 		);

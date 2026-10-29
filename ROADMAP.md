@@ -80,9 +80,9 @@ moves to `latest`.
    `predefinedOptionsOnly`; split-view `multiple` pending the native-attribute rule);
    booleans defaulting to true (spinner `hasContainer`, welcome-mat `isOpen`); shared
    `isDismissible` for toast and alert.
-6. **`className` and root.** `className` lands on the real root (slider, tree, welcome-mat,
-   popover, spinner, modal, vertical-navigation); other parts use `className*`; `forwardRef`
-   targets the root.
+6. **`className` and root.** Done for slider, tree, welcome-mat, popover, spinner, modal and
+   vertical-navigation: `className`, `style` and the forwarded `ref` land on the outermost
+   rendered element; other parts use `className*`/`style*`, and the old names warn once.
 7. **Labels, `assistiveText` and naming.** Inverted split-view toggle keys, split labels
    (tree heading, trial-bar time), `errorText` becomes `labels.error` + `hasError` (slider,
    textarea), duplicate `label`/`assistiveText.label`, `onRender*` props renamed to slot or
@@ -396,8 +396,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `assistiveText.closeButton`); `disableClose` → `isDismissible` (inverted, matching
       `alert`), `directional` → `isDirectional`; `ariaHideApp` defaults to `true`: rename
       to a non-negative `is*` that defaults to `false`, or document it as a `react-modal`
-      pass-through exception; `containerClassName`/`contentClassName`/`footerClassName`/
-      `headerClassName`/`portalClassName` → `className*`; `onRequestClose: () => void` →
+      pass-through exception; `onRequestClose: () => void` →
       `(event, data)`; `dismissOnClickOutside` has a derived default (`!disableClose`).
 - [ ] Remove the deprecated `modal/trigger` (`ModalTrigger.open`, also `SLDSModalTrigger`) in
       11.0: it creates a root it can never unmount or close and only wraps `Modal`.
@@ -456,9 +455,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       body siblings, and `check-props.js` validates it by `displayName` list. Add a `trigger`
       prop (or render-prop) now, since it changes the meaning of `children`.
       **Child-contract rule:** this slot accepts arbitrary consumer elements, so the contract is NOT covered by the library-components exception; the finding stands.
-- [ ] `popover` — naming: `className` lands on the dialog, not the root (root takes
-      `triggerClassName`); `className` and `contentsClassName` hit the same node;
-      `ariaLabelledby` → `aria-labelledby`/`labels`; `disabled` → `isDisabled` (it only
+- [ ] `popover` — naming: `ariaLabelledby` → `aria-labelledby`/`labels`; `disabled` → `isDisabled` (it only
       forces closed, not a DOM pass-through); `hasNoCloseButton`/`hasNoNubbin`/
       `hasNoTriggerStyles` negatives (decide: a positive form would default to `true`);
       `overlay: boolean | function` (the function receives a shared DOM element); remove
@@ -578,10 +575,9 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
 - [ ] `slider` — `value` + `defaultValue` twin (`index.tsx:34-35,119,169-171`) and
       `displayValue = value ?? defaultValue ?? 0` goes stale when uncontrolled. Require `value` +
       `onChange(event, { value })`, drop `defaultValue`. Also: `vertical` → `isVertical`;
-      `classNameContainer` sits on the root (should be `className`); `errorText` → `labels.error` + `hasError`; `label` duplicates `assistiveText.label`; `onInput` duplicates `onChange`.
+      `errorText` → `labels.error` + `hasError`; `label` duplicates `assistiveText.label`; `onInput` duplicates `onChange`.
 - [ ] `spinner` — `assistiveText: object | string` (string form deprecated; `check-props` is
-      unwired, so no warning fires) → object only; `containerClassName`/`containerStyle` →
-      `className*`; `hasContainer = true` defaults a boolean to true (rename to a non-true default, e.g. `hasNoContainer`, or a `variant`); `isInline`/`isInput`
+      unwired, so no warning fires) → object only; `hasContainer = true` defaults a boolean to true (rename to a non-true default, e.g. `hasNoContainer`, or a `variant`); `isInline`/`isInput`
       look mutually exclusive → a single `placement` union.
 - [ ] `textarea` — `value` + `defaultValue` passthrough → required `value` + `onChange`;
       `onChange(event)` has no `data` arg; `maxLength: string` parsed to a number → `number`;
@@ -633,9 +629,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `{ type: 'branch'; nodes } | { type: 'item' }`; `assistiveText` is typed `{ label }` but also
       accepts a string, `label` is really the heading, `heading`/`assistiveText` are an XOR enforced
       only at runtime → `labels.heading` + `assistiveText.heading` union; hard-coded `<h4>`; `id` is
-      required (generate one; derived ids are markup contracts); `className` is on the
-      `slds-tree_container` wrapper while `slds-tree` is the inner `ul`; `listClassName`/`listStyle`
-      → `className*`; no `forwardRef` (`React.FC` + `displayName`); internal `FlattenedNode` is exported.
+      required (generate one; derived ids are markup contracts); internal `FlattenedNode` is exported.
 - [ ] `trial-bar` — `onRenderActions: () => ReactNode` → `renderActions` or `actions` slot;
       `labels.timeLeft`/`timeLeftUnit`/`timeLeftUnitAfter` are concatenated with the English
       default "left in trial" → one formatter or a single `labels.timeLeft` node;
@@ -648,8 +642,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       declare them; `item.tsx:73,92` `cloneElement`s className into `icon`/`notificationBadge` and
       reads `icon.props.size` → accept a name/props or render-prop; items without `url` render
       `href="#"` → button; `aria-current={true}` (`item.tsx:66`) should be `"page"` (fixed);
-      `<nav>` has no `aria-label` → `assistiveText.label`; `className` cast `as string`;
-      `displayName`; `lodash.isfunction`.
+      `<nav>` has no `aria-label` → `assistiveText.label`; `displayName`; `lodash.isfunction`.
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Still required: type the accepted children (`ReactElement<XProps>` or exported subcomponents), keep injected props out of the public child type, and match by component reference instead of `displayName`.
 
 - [ ] `split-view` — `isOpen` is hybrid (mode by `typeof === 'boolean'`, uncontrolled start
@@ -719,8 +712,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `steps` data array; `variant: 'splash'` vs `'info-only'` render the same actions branch while
       `slds-welcome-mat_splash` is keyed off "no children" instead of `variant` → define the
       variant matrix as a discriminated union (`steps`/`trailhead-connected` take tiles and
-      progress; `info-only`/`splash` take actions); `className` lands on the inner info content,
-      not the root; `labels.unitsCompletedAfter` splits a sentence (render `x/y` + label as one
+      progress; `info-only`/`splash` take actions); `labels.unitsCompletedAfter` splits a sentence (render `x/y` + label as one
       formatter); `labels.title`/`description` are strings (→ `ReactNode`).
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Still required: type the accepted children (`ReactElement<XProps>` or exported subcomponents), keep injected props out of the public child type, and match by component reference instead of `displayName`.
 - [ ] `welcome-mat` tile/info-badge — both are classes with `displayName` and `generateId()`;
@@ -836,7 +828,7 @@ From the same review; none of these change existing props.
       rest props.
 - [ ] `pill-container` — `forwardRef`; the effect at `:139` uses `resetActiveSelectedOption`
       before it is declared with missing deps; optional controlled active index; Home/End.
-- [ ] `popover` — `forwardRef`; clear the `hoverCloseDelay` timer on unmount; hover/hybrid
+- [ ] `popover` — clear the `hoverCloseDelay` timer on unmount; hover/hybrid
       modes ignore `disabled` and are mouse-first for keyboard users; `aria-describedby` is
       set with no body and `aria-haspopup` on a disabled popover; module-level
       `currentOpenPopover`/shared `overlay` leak across React roots.
@@ -875,9 +867,9 @@ ascending, descending, selectAllRows, selectRow)` but the call passes `selectAll
       writes; `role="grid"` only with `fixedLayout` while grid-style arrow navigation runs
       whenever `keyboardNavigation` is on; the loading spinner has no `aria-live`; hardcoded
       `Actions` title/`data-label`; convert to a function component with `forwardRef`.
-- [ ] `slider` — add `forwardRef`; type the full `aria-*` set (only `aria-describedby` today) and
+- [ ] `slider` — type the full `aria-*` set (only `aria-describedby` today) and
       stop duplicating the consumer's describedby id on the error div; no `check-props`.
-- [ ] `spinner` — drop redundant `aria-hidden="false"`; add `forwardRef`.
+- [ ] `spinner` — drop redundant `aria-hidden="false"`.
 - [ ] `textarea` — simplify the describedby/error logic; wire or delete `check-props.js`.
 - [ ] `toast` — `check-props.js` is dead and copy-pasted from alert (message says "alert", tests
       `props.isOpen`); `role="status"` + `tabIndex={0}` + focus-on-mount is a questionable pairing;
@@ -897,7 +889,7 @@ ascending, descending, selectAllRows, selectRow)` but the call passes `selectAll
 - [ ] `trial-bar` — no landmark/`aria-label`; no `forwardRef`/attribute pass-through; inconsistent
       `classnames` import.
 - [ ] `vertical-navigation` — `check-props.js` is dead and warns on a nonexistent `variant`;
-      `isDisabled`/`isUnread` item flags; `forwardRef`.
+      `isDisabled`/`isUnread` item flags.
 - [ ] `split-view` — `list-item-content.tsx:48` sets `title={item.bottomLeftText}` on the
       `bottomRightText` span (fixed); `aria-sort` is set to a localized string (must be
       `ascending|descending|other`; move the text to the assistive span); shift-range `.sort()`
@@ -919,7 +911,7 @@ ascending, descending, selectAllRows, selectRow)` but the call passes `selectAll
 - [ ] `welcome-mat` — Tile uses `<a>` for non-navigating tiles (button when no `href`); completed
       state is announced only by the icon text, not on the link; progress `ProgressBar` has no
       label; `trailhead-connected` hides the progress text on completion without an announcement;
-      no `forwardRef`; `WelcomeMatInfoBadge`/`Tile` class → function components; focus and return-focus rely on `Modal` (see `modal` P1 note on focus captured at mount).
+      `WelcomeMatInfoBadge`/`Tile` class → function components; focus and return-focus rely on `Modal` (see `modal` P1 note on focus captured at mount).
 - [ ] Tests for `badge` and `breadcrumb` (already listed under the P2 test gaps below).
 
 ### P2 — Close the story & test gaps

@@ -52,6 +52,13 @@ if (process.env.NODE_ENV !== 'production') {
 			'onRequestToggle',
 			'`onRequestToggle` receives `(event, { node, isExpanded })`, where `isExpanded` is the requested expansion state. Left arrow on a collapsed branch or item selects the parent through `onSelect` instead.'
 		);
+		deprecatedProperty(
+			COMPONENT,
+			props.listClassName,
+			'listClassName',
+			'classNameList'
+		);
+		deprecatedProperty(COMPONENT, props.listStyle, 'listStyle', 'styleList');
 		/* eslint-enable max-len */
 	};
 }

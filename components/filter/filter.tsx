@@ -153,7 +153,7 @@ const Filter: React.FC<FilterProps> = ({
 		onClose: handleClose,
 		onRequestClose: handleClose,
 		position: 'overflowBoundaryElement' as const,
-		triggerClassName: 'slds-grow',
+		className: 'slds-grow',
 		// Merge with custom popover props if provided
 		...(popover?.props || {}),
 		// Remove children from merged props
