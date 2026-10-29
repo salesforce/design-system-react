@@ -87,6 +87,20 @@ describe('SLDSPopover', () => {
 			expect(container.querySelector('#footer')).toBeInTheDocument();
 			expect(popover).toHaveStyle({ background: popoverBackgroundColor });
 		});
+
+		it('applies classNameFooter when footerWalkthroughActions is used', () => {
+			const { container } = renderPopover({
+				isOpen: true,
+				variant: 'walkthrough',
+				classNameFooter: 'custom-walkthrough-footer',
+				footerWalkthroughActions: <Button label="Next" />,
+				stepText: 'Step 1 of 2',
+			});
+
+			const footer = container.querySelector('.slds-popover__footer');
+			expect(footer).toBeInTheDocument();
+			expect(footer).toHaveClass('custom-walkthrough-footer');
+		});
 	});
 
 	describe('Mouse and keyboard interactions', () => {

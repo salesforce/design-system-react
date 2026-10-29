@@ -718,7 +718,13 @@ const Popover = ({
 			(footerWalkthroughActions || stepText)
 		) {
 			return (
-				<footer className="slds-popover__footer">
+				<footer
+					className={classNames(
+						'slds-popover__footer',
+						classNameFooter as string,
+						footerClassName as string
+					)}
+				>
 					<div className="slds-grid slds-grid_vertical-align-center">
 						{stepText && <span className="slds-text-title">{stepText}</span>}
 						{footerWalkthroughActions && (

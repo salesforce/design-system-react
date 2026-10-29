@@ -53,6 +53,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Fixed
 
 - The `@salesforce-ux/design-system` peer dependency accepts `^2.25.0-alpha.2` instead of exactly `2.25.0-alpha.2`, so installing into a project that already has a newer version no longer fails with `ERESOLVE`
+- `Popover`: apply `classNameFooter` (and deprecated `footerClassName`) when rendering walkthrough footers via `footerWalkthroughActions` / `stepText` ([#2744](https://github.com/salesforce/design-system-react/issues/2744))
 - `SimpleDataTable`: with `fixedHeader`, the inline border and (with `joined`) border radius use the SLDS 2 hooks `--slds-g-color-border-1` and `--slds-g-radius-border-2` instead of hardcoded SLDS 1 values, so they follow the theme and dark mode
 - `Toast`: an inline `onRequestClose` no longer restarts the `duration` timer on every parent render, so the toast auto-dismisses
 - `Popover`: opening another popover closes the one already open (`onRequestClose` with `trigger: 'newPopover'` never fired)
