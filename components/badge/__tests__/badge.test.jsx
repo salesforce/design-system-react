@@ -73,4 +73,44 @@ describe('SLDSBadge', () => {
 			expect(badge).toHaveClass('custom-class');
 		});
 	});
+
+	describe('Custom styles', () => {
+		const renderWithStyles = (props) =>
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<Badge content="Styled" {...props} />
+				</IconSettings>
+			);
+
+		const icon = <Icon category="utility" name="moneybag" size="xx-small" />;
+
+		it('applies `style` to the badge when there is no icon', () => {
+			const { container } = renderWithStyles({
+				style: { color: 'rgb(255, 0, 0)' },
+			});
+			expect(getBadge(container)).toHaveStyle({ color: 'rgb(255, 0, 0)' });
+		});
+
+		it('applies `style` to the badge, not the icon container', () => {
+			const { container } = renderWithStyles({
+				icon,
+				style: { color: 'rgb(255, 0, 0)' },
+			});
+			expect(getBadge(container)).toHaveStyle({ color: 'rgb(255, 0, 0)' });
+			expect(container.querySelector('.slds-badge__icon')).not.toHaveAttribute(
+				'style'
+			);
+		});
+
+		it('applies `styleIcon` to the icon container', () => {
+			const { container } = renderWithStyles({
+				icon,
+				styleIcon: { color: 'rgb(0, 0, 255)' },
+			});
+			expect(container.querySelector('.slds-badge__icon')).toHaveStyle({
+				color: 'rgb(0, 0, 255)',
+			});
+			expect(getBadge(container)).not.toHaveAttribute('style');
+		});
+	});
 });

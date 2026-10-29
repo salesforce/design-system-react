@@ -32,8 +32,10 @@ export interface BadgeProps {
 	iconAlignment?: BadgeIconAlignment;
 	/** Unique identifier */
 	id?: string;
-	/** Custom styles */
+	/** Custom styles for the badge */
 	style?: CSSProperties;
+	/** Custom styles for the icon container. Only applies when `icon` is set */
+	styleIcon?: CSSProperties;
 }
 
 /**
@@ -47,6 +49,7 @@ const Badge = ({
 	iconAlignment = 'left',
 	id: propId,
 	style,
+	styleIcon,
 }: BadgeProps): React.ReactElement => {
 	const generatedId = useId();
 	const id = propId || generatedId;
@@ -57,7 +60,7 @@ const Badge = ({
 				'slds-badge__icon',
 				`slds-badge__icon_${iconAlignment}`
 			)}
-			style={style}
+			style={styleIcon}
 		>
 			{icon}
 		</span>
@@ -78,6 +81,7 @@ const Badge = ({
 				},
 				className as string
 			)}
+			style={style}
 		>
 			{iconAlignment === 'left' ? (
 				<>
