@@ -11254,7 +11254,7 @@ exports[`Story HTML snapshots > VerticalNavigation > Default 1`] = `
     <div class="slds-nav-vertical__section">
       <h2 id="_R_0_-reports" class="slds-nav-vertical__title">Reports</h2>
       <ul>
-        <li class="slds-nav-vertical__item slds-is-active"><a data-id="recent" href="#recent" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports" aria-current="true">Recent</a></li>
+        <li class="slds-nav-vertical__item slds-is-active"><a data-id="recent" href="#recent" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports" aria-current="page">Recent</a></li>
         <li class="slds-nav-vertical__item"><a data-id="created-by-me" href="#created" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports">Created by Me</a></li>
         <li class="slds-nav-vertical__item"><a data-id="private" href="#private" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports">Private Reports</a></li>
         <li class="slds-nav-vertical__item"><a data-id="public" href="#public" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports">Public Reports</a></li>
@@ -11279,7 +11279,7 @@ exports[`Story HTML snapshots > VerticalNavigation > Interactive 1`] = `
     <div class="slds-nav-vertical__section">
       <h2 id="_R_0_-reports" class="slds-nav-vertical__title">Reports</h2>
       <ul>
-        <li class="slds-nav-vertical__item slds-is-active"><a data-id="recent" href="#recent" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports" aria-current="true">Recent</a></li>
+        <li class="slds-nav-vertical__item slds-is-active"><a data-id="recent" href="#recent" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports" aria-current="page">Recent</a></li>
         <li class="slds-nav-vertical__item"><a data-id="created-by-me" href="#created" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports">Created by Me</a></li>
         <li class="slds-nav-vertical__item"><a data-id="private" href="#private" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports">Private Reports</a></li>
         <li class="slds-nav-vertical__item"><a data-id="public" href="#public" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports">Public Reports</a></li>
@@ -11304,7 +11304,7 @@ exports[`Story HTML snapshots > VerticalNavigation > MultipleCategories 1`] = `
     <div class="slds-nav-vertical__section">
       <h2 id="_R_0_-reports" class="slds-nav-vertical__title">Reports</h2>
       <ul>
-        <li class="slds-nav-vertical__item slds-is-active"><a data-id="recent" href="#recent" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports" aria-current="true">Recent</a></li>
+        <li class="slds-nav-vertical__item slds-is-active"><a data-id="recent" href="#recent" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports" aria-current="page">Recent</a></li>
         <li class="slds-nav-vertical__item"><a data-id="created-by-me" href="#created" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports">Created by Me</a></li>
         <li class="slds-nav-vertical__item"><a data-id="private" href="#private" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports">Private Reports</a></li>
         <li class="slds-nav-vertical__item"><a data-id="public" href="#public" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports">Public Reports</a></li>
@@ -11336,7 +11336,7 @@ exports[`Story HTML snapshots > VerticalNavigation > SingleCategory 1`] = `
     <div class="slds-nav-vertical__section">
       <h2 id="_R_0_-reports" class="slds-nav-vertical__title">Reports</h2>
       <ul>
-        <li class="slds-nav-vertical__item slds-is-active"><a data-id="recent" href="#recent" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports" aria-current="true">Recent</a></li>
+        <li class="slds-nav-vertical__item slds-is-active"><a data-id="recent" href="#recent" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports" aria-current="page">Recent</a></li>
         <li class="slds-nav-vertical__item"><a data-id="created-by-me" href="#created" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports">Created by Me</a></li>
         <li class="slds-nav-vertical__item"><a data-id="private" href="#private" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports">Private Reports</a></li>
         <li class="slds-nav-vertical__item"><a data-id="public" href="#public" class="slds-nav-vertical__action" aria-describedby="_R_0_-reports">Public Reports</a></li>
