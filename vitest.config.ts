@@ -69,6 +69,16 @@ export default defineConfig({
 			},
 			{
 				extends: true,
+				// Node-only tests for repo tooling in `scripts/` (they spawn git).
+				test: {
+					name: 'scripts',
+					environment: 'node',
+					include: ['scripts/__tests__/*.test.mjs'],
+					testTimeout: 30000,
+				},
+			},
+			{
+				extends: true,
 				// Pre-bundle the component runtime deps so the browser optimizer does
 				// not discover them mid-run and reload the page (which flakes tests).
 				optimizeDeps: {
