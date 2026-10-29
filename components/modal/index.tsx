@@ -117,14 +117,10 @@ export interface ModalProps {
 	size?: ModalSize;
 	/** Content underneath the heading in the modal header. */
 	tagline?: ReactNode;
-	/** Content underneath the title in the modal header. @deprecated Use heading instead */
-	title?: ReactNode;
 	/** Text heading at the top of a modal. */
 	heading?: ReactNode;
 	/** Allows adding additional notifications within the modal. */
 	toast?: ReactNode;
-	/** @deprecated Use assistiveText.closeButton instead */
-	closeButtonAssistiveText?: string;
 }
 
 const defaultAssistiveText: ModalAssistiveText = {
@@ -167,10 +163,8 @@ const Modal: React.FC<ModalProps> = ({
 	prompt,
 	size,
 	tagline,
-	title,
 	heading,
 	toast,
-	closeButtonAssistiveText,
 }) => {
 	// State
 	const [returnFocusTo, setReturnFocusTo] = useState<Element | null>(null);
