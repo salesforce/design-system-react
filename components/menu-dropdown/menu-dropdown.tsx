@@ -583,6 +583,14 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		() => {}
 	);
 
+	// Stable entry stored in `currentOpenDropdown`. It always calls the latest
+	// `handleClose`, so another dropdown can still close this one after
+	// re-renders have replaced the callback.
+	const openDropdownEntryRef = useRef({
+		handleClose: (event?: MenuDropdownCloseEvent) =>
+			handleCloseRef.current(event),
+	});
+
 	// Whether `onClose` has already fired for the current open cycle. The Dialog
 	// calls its `onClose` again when it unmounts after a close (with a stale
 	// `isOpen`), which would otherwise report every close twice.
@@ -591,7 +599,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	const handleClose = useCallback(
 		(event?: MenuDropdownCloseEvent) => {
 			if (getIsOpen()) {
-				if (currentOpenDropdown?.handleClose === handleCloseRef.current) {
+				if (currentOpenDropdown === openDropdownEntryRef.current) {
 					currentOpenDropdown = undefined;
 				}
 				setIsOpenState(false);
@@ -619,7 +627,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		[handleClose]
 	);
 
-	// Update the ref so we can compare in cleanup
+	// Keep the ref current so `openDropdownEntryRef` calls the latest handler
 	handleCloseRef.current = handleClose;
 
 	// Handle open
@@ -632,7 +640,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 				) {
 					currentOpenDropdown.handleClose(event);
 				}
-				currentOpenDropdown = { handleClose };
+				currentOpenDropdown = openDropdownEntryRef.current;
 				setIsOpenState(true);
 				onOpen?.(event, {});
 			}
@@ -995,7 +1003,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	useEffect(() => {
 		return () => {
 			isUnmountingRef.current = true;
-			if (currentOpenDropdown?.handleClose === handleCloseRef.current) {
+			if (currentOpenDropdown === openDropdownEntryRef.current) {
 				currentOpenDropdown = undefined;
 			}
 			renderOverlay(false);
