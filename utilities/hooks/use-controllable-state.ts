@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 
 /**
  * State for ephemeral UI (`isOpen`, a carousel's current panel) that may be
@@ -30,8 +30,12 @@ export function useControllableState<T>(
 ): [value: T, setValue: (next: T) => void, isControlled: boolean] {
 	const [internalValue, setInternalValue] = useState<T>(defaultValue);
 	const isControlled = value !== undefined;
+	// Read by the stable setter. Synced after commit, before any event handler
+	// can run, so the setter never sees a stale mode.
 	const isControlledRef = useRef(isControlled);
-	isControlledRef.current = isControlled;
+	useLayoutEffect(() => {
+		isControlledRef.current = isControlled;
+	}, [isControlled]);
 
 	const setValue = useCallback((next: T) => {
 		if (!isControlledRef.current) {
