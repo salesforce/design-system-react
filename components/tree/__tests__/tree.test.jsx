@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 
@@ -10,7 +11,16 @@ const COMPONENT_CSS_CLASSES = {
 	base: 'slds-tree',
 };
 
-// Fresh node objects per test: Tree mutates `node.selected` when keyboard navigation clears selection.
+// Deeply frozen, so any write to the consumer's nodes throws (test files run in strict mode).
+const deepFreeze = (value) => {
+	if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+		Object.values(value).forEach(deepFreeze);
+		Object.freeze(value);
+	}
+	return value;
+};
+
+// `renderTree` expands 'fruits' through `defaultExpandedIds`.
 //   0   item   "Grains"   (id 'grains')
 //   1   branch "Fruits"   (id 'fruits', expanded)
 //   1-0   item   "Apple"  (id 'apple')
@@ -22,7 +32,6 @@ const createNodes = () => [
 		id: 'fruits',
 		label: 'Fruits',
 		type: 'branch',
-		expanded: true,
 		nodes: [
 			{ id: 'apple', label: 'Apple', type: 'item' },
 			{
@@ -42,9 +51,16 @@ const createNodes = () => [
 ];
 
 const renderTree = (props = {}) => {
-	const nodes = props.nodes || createNodes();
+	const nodes = props.nodes || deepFreeze(createNodes());
 	const utils = render(
-		<Tree labels={{ heading: 'Foods' }} id="tree" nodes={nodes} {...props} />
+		<Tree
+			labels={{ heading: 'Foods' }}
+			id="tree"
+			nodes={nodes}
+			selectedIds={[]}
+			defaultExpandedIds={['fruits']}
+			{...props}
+		/>
 	);
 	const getNode = (nodeId) => utils.container.querySelector(`#tree-${nodeId}`);
 	const getItem = (nodeId) => getNode(nodeId).querySelector('.slds-tree__item');
@@ -173,7 +189,12 @@ describe('Tree', () => {
 			const { container } = render(
 				<DefaultExample
 					log={() => {}}
-					nodes={sampleNodesDynamicHashMap.initialExpandedSelected}
+					initialExpandedIds={
+						sampleNodesDynamicHashMap.initialExpandedSelected.expandedIds
+					}
+					initialSelectedIds={
+						sampleNodesDynamicHashMap.initialExpandedSelected.selectedIds
+					}
 				/>
 			);
 
@@ -190,7 +211,12 @@ describe('Tree', () => {
 			const { container } = render(
 				<DefaultExample
 					log={() => {}}
-					nodes={sampleNodesDynamicHashMap.initialExpandedSelected}
+					initialExpandedIds={
+						sampleNodesDynamicHashMap.initialExpandedSelected.expandedIds
+					}
+					initialSelectedIds={
+						sampleNodesDynamicHashMap.initialExpandedSelected.selectedIds
+					}
 				/>
 			);
 
@@ -222,6 +248,7 @@ describe('Tree', () => {
 			expect(onSelect).toHaveBeenCalledWith(eventOfType('click'), {
 				node: expect.objectContaining({ id: 2 }),
 				isSelected: true,
+				selectedIds: [2],
 			});
 			expect(onRequestToggle).not.toHaveBeenCalled();
 
@@ -233,6 +260,7 @@ describe('Tree', () => {
 			expect(onRequestToggle).toHaveBeenCalledWith(eventOfType('click'), {
 				node: expect.objectContaining({ id: 2 }),
 				isExpanded: true,
+				expandedIds: [2],
 			});
 			// The toggle button click does not also select the branch
 			expect(onSelect).toHaveBeenCalledTimes(1);
@@ -255,6 +283,7 @@ describe('Tree', () => {
 			expect(onSelect).toHaveBeenCalledWith(eventOfType('click'), {
 				node: expect.objectContaining({ id: 1 }),
 				isSelected: true,
+				selectedIds: [1],
 			});
 		});
 	});
@@ -262,22 +291,25 @@ describe('Tree', () => {
 	describe('onSelect payloads', () => {
 		it('reports the requested selection state on click', () => {
 			const onSelect = vi.fn();
-			const nodes = createNodes();
-			nodes[0].selected = true;
-			const { getItem } = renderTree({ nodes, onSelect });
+			const { getItem, nodes } = renderTree({
+				selectedIds: ['grains'],
+				onSelect,
+			});
 
 			// Already selected: requests deselection
 			fireEvent.click(getItem('grains'));
 			expect(onSelect).toHaveBeenLastCalledWith(eventOfType('click'), {
 				node: nodes[0],
 				isSelected: false,
+				selectedIds: [],
 			});
 
-			// Not selected: requests selection
+			// Not selected: requests selection, added to the current selection
 			fireEvent.click(getItem('nuts'));
 			expect(onSelect).toHaveBeenLastCalledWith(eventOfType('click'), {
 				node: nodes[2],
 				isSelected: true,
+				selectedIds: ['grains', 'nuts'],
 			});
 			expect(onSelect).toHaveBeenCalledTimes(2);
 		});
@@ -291,6 +323,7 @@ describe('Tree', () => {
 			expect(onSelect).toHaveBeenCalledWith(eventOfType('focus'), {
 				node: nodes[0],
 				isSelected: true,
+				selectedIds: ['grains'],
 			});
 		});
 
@@ -302,6 +335,7 @@ describe('Tree', () => {
 			expect(onSelect).toHaveBeenCalledWith(eventOfType('keydown'), {
 				node: nodes[2],
 				isSelected: true,
+				selectedIds: ['nuts'],
 			});
 		});
 
@@ -320,12 +354,14 @@ describe('Tree', () => {
 			expect(onSelect).toHaveBeenLastCalledWith(eventOfType('keydown'), {
 				node: nodes[1],
 				isSelected: true,
+				selectedIds: ['fruits'],
 			});
 
 			fireEvent.keyDown(getNode('fruits'), keyObjects.UP);
 			expect(onSelect).toHaveBeenLastCalledWith(eventOfType('keydown'), {
 				node: nodes[0],
 				isSelected: true,
+				selectedIds: ['grains'],
 			});
 			expect(onSelect).toHaveBeenCalledTimes(2);
 			expect(onRequestToggle).not.toHaveBeenCalled();
@@ -347,6 +383,7 @@ describe('Tree', () => {
 			expect(onSelect).toHaveBeenCalledWith(eventOfType('keydown'), {
 				node: nodes[1].nodes[0],
 				isSelected: true,
+				selectedIds: ['apple'],
 			});
 			expect(onRequestToggle).not.toHaveBeenCalled();
 		});
@@ -361,6 +398,7 @@ describe('Tree', () => {
 			expect(onSelect).toHaveBeenCalledWith(eventOfType('keydown'), {
 				node: nodes[1],
 				isSelected: true,
+				selectedIds: ['fruits'],
 			});
 			expect(onRequestToggle).not.toHaveBeenCalled();
 		});
@@ -375,6 +413,7 @@ describe('Tree', () => {
 			expect(onSelect).toHaveBeenCalledWith(eventOfType('keydown'), {
 				node: nodes[1],
 				isSelected: true,
+				selectedIds: ['fruits'],
 			});
 			expect(onRequestToggle).not.toHaveBeenCalled();
 		});
@@ -401,6 +440,7 @@ describe('Tree', () => {
 			expect(onRequestToggle).toHaveBeenLastCalledWith(eventOfType('click'), {
 				node: nodes[2],
 				isExpanded: true,
+				expandedIds: ['fruits', 'nuts'],
 			});
 
 			// Expanded: requests collapse
@@ -408,6 +448,7 @@ describe('Tree', () => {
 			expect(onRequestToggle).toHaveBeenLastCalledWith(eventOfType('click'), {
 				node: nodes[1],
 				isExpanded: false,
+				expandedIds: ['nuts'],
 			});
 			expect(onRequestToggle).toHaveBeenCalledTimes(2);
 			expect(onSelect).not.toHaveBeenCalled();
@@ -423,6 +464,7 @@ describe('Tree', () => {
 			expect(onRequestToggle).toHaveBeenCalledWith(eventOfType('keydown'), {
 				node: nodes[2],
 				isExpanded: true,
+				expandedIds: ['fruits', 'nuts'],
 			});
 			expect(onSelect).not.toHaveBeenCalled();
 		});
@@ -437,6 +479,7 @@ describe('Tree', () => {
 			expect(onRequestToggle).toHaveBeenCalledWith(eventOfType('keydown'), {
 				node: nodes[1],
 				isExpanded: false,
+				expandedIds: [],
 			});
 			expect(onSelect).not.toHaveBeenCalled();
 		});
@@ -460,6 +503,7 @@ describe('Tree', () => {
 					labels={{ heading: 'Foods' }}
 					id="fresh-tree"
 					nodes={createNodes()}
+					selectedIds={[]}
 					onSelect={() => {}}
 					onRequestToggle={() => {}}
 				/>
@@ -594,6 +638,364 @@ describe('Tree', () => {
 				fireEvent.click(getToggle('nuts'));
 				fireEvent.keyDown(getNode('apple'), keyObjects.LEFT);
 			}).not.toThrow();
+		});
+	});
+
+	describe('Control model', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		const isSelected = (getItem, nodeId) =>
+			getItem(nodeId).classList.contains('slds-is-selected');
+		const isExpanded = (getNode, nodeId) =>
+			getNode(nodeId).getAttribute('aria-expanded') === 'true';
+
+		describe('selection (controlled through selectedIds)', () => {
+			it('renders the selection from selectedIds', () => {
+				const { getItem, getNode } = renderTree({
+					selectedIds: ['grains', 'apple'],
+				});
+
+				expect(isSelected(getItem, 'grains')).toBe(true);
+				expect(isSelected(getItem, 'apple')).toBe(true);
+				expect(getNode('apple')).toHaveAttribute('aria-selected', 'true');
+				expect(isSelected(getItem, 'fruits')).toBe(false);
+				expect(isSelected(getItem, 'nuts')).toBe(false);
+			});
+
+			it('does not change the rendered selection until the parent updates selectedIds', () => {
+				const onSelect = vi.fn();
+				const { getItem, getNode, rerender, nodes } = renderTree({
+					selectedIds: ['grains'],
+					onSelect,
+				});
+
+				fireEvent.click(getItem('nuts'));
+				fireEvent.keyDown(getNode('nuts'), keyObjects.UP);
+				expect(onSelect).toHaveBeenCalledTimes(2);
+				expect(isSelected(getItem, 'grains')).toBe(true);
+				expect(isSelected(getItem, 'nuts')).toBe(false);
+				expect(isSelected(getItem, 'citrus')).toBe(false);
+
+				rerender(
+					<Tree
+						labels={{ heading: 'Foods' }}
+						id="tree"
+						nodes={nodes}
+						selectedIds={['nuts']}
+						defaultExpandedIds={['fruits']}
+						onSelect={onSelect}
+					/>
+				);
+				expect(isSelected(getItem, 'grains')).toBe(false);
+				expect(isSelected(getItem, 'nuts')).toBe(true);
+			});
+
+			it('works as multiple selection when the parent passes data.selectedIds back', () => {
+				const Controlled = () => {
+					const [selectedIds, setSelectedIds] = React.useState([]);
+					return (
+						<Tree
+							labels={{ heading: 'Foods' }}
+							id="tree"
+							nodes={createNodes()}
+							selectedIds={selectedIds}
+							defaultExpandedIds={['fruits']}
+							onSelect={(event, data) => setSelectedIds(data.selectedIds)}
+						/>
+					);
+				};
+				const { container } = render(<Controlled />);
+				const getItem = (nodeId) =>
+					container.querySelector(`#tree-${nodeId} > .slds-tree__item`);
+				const selected = () =>
+					['grains', 'fruits', 'apple', 'citrus', 'nuts'].filter((nodeId) =>
+						isSelected(getItem, nodeId)
+					);
+
+				fireEvent.click(getItem('grains'));
+				fireEvent.click(getItem('apple'));
+				expect(selected()).toEqual(['grains', 'apple']);
+
+				// Click toggles the node out of the selection
+				fireEvent.click(getItem('grains'));
+				expect(selected()).toEqual(['apple']);
+
+				// Keyboard navigation moves the selection to one node
+				fireEvent.keyDown(
+					container.querySelector('#tree-grains'),
+					keyObjects.DOWN
+				);
+				expect(selected()).toEqual(['fruits']);
+			});
+
+			it('makes the first visible selected node the tab stop', () => {
+				const { getNode } = renderTree({ selectedIds: ['apple'] });
+
+				expect(getNode('apple')).toHaveAttribute('tabindex', '0');
+				expect(getNode('grains')).toHaveAttribute('tabindex', '-1');
+			});
+
+			it('makes the first node the tab stop when nothing is selected', () => {
+				const { getNode } = renderTree();
+
+				expect(getNode('grains')).toHaveAttribute('tabindex', '0');
+				expect(getNode('fruits')).toHaveAttribute('tabindex', '-1');
+			});
+
+			it('never writes to the nodes', () => {
+				// `renderTree` deep-freezes the nodes, so a write would throw
+				const onSelect = vi.fn();
+				const { getItem, getNode, getToggle } = renderTree({
+					selectedIds: ['grains'],
+					onSelect,
+				});
+
+				expect(() => {
+					fireEvent.click(getItem('apple'));
+					fireEvent.keyDown(getNode('apple'), keyObjects.DOWN);
+					fireEvent.keyDown(getNode('citrus'), keyObjects.LEFT);
+					fireEvent.click(getToggle('nuts'));
+					fireEvent.keyDown(getNode('fruits'), keyObjects.LEFT);
+				}).not.toThrow();
+				expect(onSelect).toHaveBeenCalled();
+			});
+		});
+
+		describe('expansion (ephemeral)', () => {
+			it('expands and collapses on its own without a callback', () => {
+				const { getNode, getToggle } = renderTree({
+					defaultExpandedIds: undefined,
+				});
+				expect(isExpanded(getNode, 'fruits')).toBe(false);
+
+				fireEvent.click(getToggle('fruits'));
+				expect(isExpanded(getNode, 'fruits')).toBe(true);
+				expect(getNode('apple')).toBeInTheDocument();
+
+				fireEvent.keyDown(getNode('fruits'), keyObjects.LEFT);
+				expect(isExpanded(getNode, 'fruits')).toBe(false);
+				expect(getNode('apple')).toBeNull();
+			});
+
+			it('expands on its own and reports the requested state with a callback', () => {
+				const onRequestToggle = vi.fn();
+				const { getNode, getToggle, nodes } = renderTree({ onRequestToggle });
+
+				fireEvent.click(getToggle('nuts'));
+				expect(onRequestToggle).toHaveBeenLastCalledWith(eventOfType('click'), {
+					node: nodes[2],
+					isExpanded: true,
+					expandedIds: ['fruits', 'nuts'],
+				});
+				expect(isExpanded(getNode, 'nuts')).toBe(true);
+				expect(isExpanded(getNode, 'fruits')).toBe(true);
+			});
+
+			it('seeds the expanded branches from defaultExpandedIds', () => {
+				const { getNode } = renderTree({
+					defaultExpandedIds: ['fruits', 'citrus'],
+				});
+
+				expect(isExpanded(getNode, 'fruits')).toBe(true);
+				expect(isExpanded(getNode, 'citrus')).toBe(true);
+				expect(getNode('lemon')).toBeInTheDocument();
+				expect(isExpanded(getNode, 'nuts')).toBe(false);
+			});
+
+			it('honors controlled expandedIds and only reports the request', () => {
+				const onRequestToggle = vi.fn();
+				const { getNode, getToggle, rerender, nodes } = renderTree({
+					expandedIds: ['nuts'],
+					onRequestToggle,
+				});
+				// `expandedIds` wins over `defaultExpandedIds`
+				expect(isExpanded(getNode, 'nuts')).toBe(true);
+				expect(isExpanded(getNode, 'fruits')).toBe(false);
+
+				fireEvent.click(getToggle('fruits'));
+				expect(onRequestToggle).toHaveBeenLastCalledWith(eventOfType('click'), {
+					node: nodes[1],
+					isExpanded: true,
+					expandedIds: ['nuts', 'fruits'],
+				});
+				expect(isExpanded(getNode, 'fruits')).toBe(false);
+
+				fireEvent.keyDown(getNode('nuts'), keyObjects.LEFT);
+				expect(onRequestToggle).toHaveBeenLastCalledWith(
+					eventOfType('keydown'),
+					{ node: nodes[2], isExpanded: false, expandedIds: [] }
+				);
+				expect(isExpanded(getNode, 'nuts')).toBe(true);
+
+				rerender(
+					<Tree
+						labels={{ heading: 'Foods' }}
+						id="tree"
+						nodes={nodes}
+						selectedIds={[]}
+						expandedIds={['fruits']}
+						onRequestToggle={onRequestToggle}
+					/>
+				);
+				expect(isExpanded(getNode, 'fruits')).toBe(true);
+				expect(isExpanded(getNode, 'nuts')).toBe(false);
+			});
+
+			it('ignores node.expanded when expandedIds or defaultExpandedIds is passed', () => {
+				const nodes = createNodes();
+				nodes[2].expanded = true;
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				const { getNode } = renderTree({ nodes });
+
+				expect(isExpanded(getNode, 'nuts')).toBe(false);
+				expect(
+					consoleError.mock.calls.some((args) =>
+						args.join(' ').includes('`node.expanded`')
+					)
+				).toBe(false);
+			});
+		});
+
+		describe('deprecated node.selected / node.expanded', () => {
+			// Fresh modules so the once-per-session warning state is reset
+			const importFreshTree = async () => {
+				vi.resetModules();
+				const { default: FreshTree } = await import('../index');
+				return FreshTree;
+			};
+
+			it('reads node.selected and node.expanded when the new props are absent, and warns once', async () => {
+				const FreshTree = await importFreshTree();
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				const nodes = deepFreeze(
+					createNodes().map((node) =>
+						node.id === 'fruits'
+							? { ...node, expanded: true }
+							: node.id === 'grains'
+								? { ...node, selected: true }
+								: node
+					)
+				);
+
+				const { container, rerender } = render(
+					<FreshTree labels={{ heading: 'Foods' }} id="legacy" nodes={nodes} />
+				);
+				rerender(
+					<FreshTree labels={{ heading: 'Foods' }} id="legacy" nodes={nodes} />
+				);
+
+				expect(
+					container.querySelector('#legacy-grains > .slds-tree__item')
+				).toHaveClass('slds-is-selected');
+				expect(container.querySelector('#legacy-fruits')).toHaveAttribute(
+					'aria-expanded',
+					'true'
+				);
+
+				const messages = consoleError.mock.calls.map((args) => args.join(' '));
+				expect(
+					messages.filter(
+						(m) =>
+							m.includes('`node.selected` will be removed') &&
+							m.includes('Use `selectedIds` instead.')
+					)
+				).toHaveLength(1);
+				expect(
+					messages.filter(
+						(m) =>
+							m.includes('`node.expanded` will be removed') &&
+							m.includes('Use `expandedIds` instead.')
+					)
+				).toHaveLength(1);
+			});
+
+			it('keeps working for consumers that update their nodes in onClick and onExpandClick', () => {
+				vi.spyOn(console, 'error').mockImplementation(() => {});
+				const LegacyConsumer = () => {
+					const [nodes, setNodes] = React.useState(() =>
+						deepFreeze(createNodes())
+					);
+					const update = (nodeId, fields) =>
+						setNodes((prev) => {
+							const visit = (list) =>
+								list.map((node) => ({
+									...node,
+									...(node.id === nodeId ? fields : {}),
+									...(node.nodes ? { nodes: visit(node.nodes) } : {}),
+								}));
+							return deepFreeze(visit(prev));
+						});
+					return (
+						<Tree
+							labels={{ heading: 'Foods' }}
+							id="legacy"
+							nodes={nodes}
+							onClick={(event, data) =>
+								update(data.node.id, { selected: data.select })
+							}
+							onExpandClick={(event, data) =>
+								update(data.node.id, { expanded: data.expand })
+							}
+						/>
+					);
+				};
+				const { container } = render(<LegacyConsumer />);
+				const getNode = (nodeId) =>
+					container.querySelector(`#legacy-${nodeId}`);
+
+				fireEvent.click(getNode('fruits').querySelector('.slds-button'));
+				expect(getNode('fruits')).toHaveAttribute('aria-expanded', 'true');
+
+				fireEvent.click(getNode('apple').querySelector('.slds-tree__item'));
+				expect(getNode('apple')).toHaveAttribute('aria-selected', 'true');
+
+				fireEvent.click(getNode('fruits').querySelector('.slds-button'));
+				expect(getNode('fruits')).toHaveAttribute('aria-expanded', 'false');
+				expect(getNode('apple')).toBeNull();
+			});
+
+			it('reports selectedIds and expandedIds computed from the node fields', () => {
+				vi.spyOn(console, 'error').mockImplementation(() => {});
+				const onSelect = vi.fn();
+				const onRequestToggle = vi.fn();
+				const nodes = createNodes();
+				nodes[0].selected = true;
+				nodes[1].expanded = true;
+				// Hidden under the collapsed 'nuts' branch, still part of the selection
+				nodes[2].nodes[0].selected = true;
+				deepFreeze(nodes);
+				const { container } = render(
+					<Tree
+						labels={{ heading: 'Foods' }}
+						id="legacy"
+						nodes={nodes}
+						onSelect={onSelect}
+						onRequestToggle={onRequestToggle}
+					/>
+				);
+
+				fireEvent.click(
+					container.querySelector('#legacy-apple > .slds-tree__item')
+				);
+				expect(onSelect).toHaveBeenLastCalledWith(eventOfType('click'), {
+					node: nodes[1].nodes[0],
+					isSelected: true,
+					selectedIds: ['grains', 'almond', 'apple'],
+				});
+
+				fireEvent.click(container.querySelector('#legacy-nuts .slds-button'));
+				expect(onRequestToggle).toHaveBeenLastCalledWith(eventOfType('click'), {
+					node: nodes[2],
+					isExpanded: true,
+					expandedIds: ['fruits', 'nuts'],
+				});
+			});
 		});
 	});
 

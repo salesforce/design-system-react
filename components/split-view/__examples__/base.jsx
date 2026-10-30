@@ -184,8 +184,8 @@ class Example extends React.Component {
 		this.state = {
 			isOpen: typeof props.isOpen === 'boolean' ? props.isOpen : true,
 			options: listOptions,
-			selected: [listOptions[listOptions.length - 2]],
-			unread: [listOptions[0], listOptions[2]],
+			selected: [listOptions[listOptions.length - 2].id],
+			unread: [listOptions[0].id, listOptions[2].id],
 			sortDirection: SORT_OPTIONS.DOWN,
 		};
 
@@ -237,10 +237,10 @@ class Example extends React.Component {
 				options={this.state.options}
 				events={{
 					onSort: this.sortList,
-					onSelect: (event, { selectedItems, item }) => {
+					onSelect: (event, { selection, item }) => {
 						this.setState({
-							unread: this.state.unread.filter((i) => i !== item),
-							selected: selectedItems,
+							unread: this.state.unread.filter((id) => id !== item.id),
+							selected: selection,
 						});
 					},
 				}}
@@ -250,9 +250,15 @@ class Example extends React.Component {
 		];
 	}
 
+	selectedOptions() {
+		return this.state.options.filter((option) =>
+			this.state.selected.includes(option.id)
+		);
+	}
+
 	detailView() {
 		return this.state.selected.length ? (
-			this.state.selected.map((item) => (
+			this.selectedOptions().map((item) => (
 				<dl
 					key={item.id}
 					className="slds-box slds-m-left_medium slds-m-bottom_medium slds-list_horizontal slds-wrap"

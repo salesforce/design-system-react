@@ -63,7 +63,7 @@ export const InitiallyClosed = {
 		<SplitView
 			master={sampleMasterContent}
 			detail={sampleDetailContent}
-			isOpen={false}
+			defaultIsOpen={false}
 		/>
 	),
 };
