@@ -6,7 +6,32 @@
 
 import Textarea from '../index';
 
-export const numeric = <Textarea maxLength={100} />;
+const noop = () => {};
 
-// @ts-expect-error `maxLength` is a number
-export const stringLength = <Textarea maxLength="100" />;
+export const numeric = <Textarea maxLength={100} onChange={noop} value="" />;
+
+export const stringLength = (
+	// @ts-expect-error `maxLength` is a number
+	<Textarea maxLength="100" onChange={noop} value="" />
+);
+
+export const changeData = (
+	<Textarea
+		onChange={(event, data) => {
+			const text: string = data.value;
+			return [event.target, text];
+		}}
+		value=""
+	/>
+);
+
+// @ts-expect-error `value` is required
+export const missingValue = <Textarea onChange={noop} />;
+
+// @ts-expect-error `onChange` is required
+export const missingOnChange = <Textarea value="" />;
+
+export const removedDefaultValue = (
+	// @ts-expect-error `defaultValue` was removed in v11
+	<Textarea defaultValue="x" onChange={noop} value="" />
+);
