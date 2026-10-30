@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
@@ -98,43 +98,52 @@ const headerActions = () => (
 	</PageHeaderControl>
 );
 
+// MenuDropdown selection is controlled, so the view switcher keeps its own state.
+const DisplayAsDropdown = () => {
+	const [value, setValue] = useState('B0');
+	return (
+		<Dropdown
+			id="header-right-refresh"
+			assistiveText={{ icon: 'Checkmark with right icon' }}
+			buttonVariant="icon"
+			checkmark
+			iconCategory="utility"
+			iconName="side_list"
+			iconSize="large"
+			iconVariant="more"
+			align="right"
+			onSelect={(event, data) => {
+				console.log('selected: ', data.option);
+				setValue(data.value);
+			}}
+			options={[
+				{ label: 'Display As', type: 'header' },
+				{
+					label: 'Table View',
+					value: 'A0',
+					rightIcon: {
+						category: 'utility',
+						name: 'table',
+					},
+				},
+				{
+					label: 'List View',
+					value: 'B0',
+					rightIcon: {
+						category: 'utility',
+						name: 'side_list',
+					},
+				},
+			]}
+			value={value}
+		/>
+	);
+};
+
 const headerControls = () => (
 	<React.Fragment>
 		<PageHeaderControl>
-			<Dropdown
-				id="header-right-refresh"
-				assistiveText={{ icon: 'Checkmark with right icon' }}
-				buttonVariant="icon"
-				checkmark
-				iconCategory="utility"
-				iconName="side_list"
-				iconSize="large"
-				iconVariant="more"
-				align="right"
-				onSelect={(event, { option }) => {
-					console.log('selected: ', option);
-				}}
-				options={[
-					{ label: 'Display As', type: 'header' },
-					{
-						label: 'Table View',
-						value: 'A0',
-						rightIcon: {
-							category: 'utility',
-							name: 'table',
-						},
-					},
-					{
-						label: 'List View',
-						value: 'B0',
-						rightIcon: {
-							category: 'utility',
-							name: 'side_list',
-						},
-					},
-				]}
-				value="B0"
-			/>
+			<DisplayAsDropdown />
 		</PageHeaderControl>
 		<PageHeaderControl>
 			<Button
