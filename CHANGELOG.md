@@ -60,6 +60,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `MenuDropdown`: `onClose` fires once per close instead of twice, and `onSelect` receives the click event for mouse selection
 - `DatePicker`: `onRequestClose` no longer fires when the calendar is already closed
 - `Tree`: `onScroll` no longer reports `NaN` or `Infinity` when the list cannot scroll
+- `Carousel`: autoplay advances through every panel instead of stalling after the first tick, and the slides follow the panel on previous/next, indicator and arrow key navigation instead of lagging a click behind (or staying put) while the indicators move
 
 ### Removed
 

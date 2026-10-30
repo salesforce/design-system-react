@@ -239,6 +239,15 @@ const Carousel = ({
 			? controlledIsAutoplayOn
 			: internalIsAutoplayOn;
 
+	// The autoplay interval's callback lives for the entire duration autoplay
+	// is running, so it can't rely on values closed over when it was created.
+	// Keep a ref in sync on every render and read from it inside the interval
+	// so each tick sees the latest panel/count instead of a stale snapshot.
+	const latestRef = useRef({ currentPanel, nrOfPanels, isInfinite });
+	useEffect(() => {
+		latestRef.current = { currentPanel, nrOfPanels, isInfinite };
+	});
+
 	// Helper functions
 	const canGoToNext = useCallback(
 		() => currentPanel < nrOfPanels - 1,
@@ -259,23 +268,21 @@ const Carousel = ({
 		setTranslateX(-(width * currentPanel));
 	}, [stageWidth, currentPanel]);
 
-	// Set current panel (internal or via callback)
+	// Set current panel (internal or via callback). The translation follows from the currentPanel
+	// effect below; a callback scheduled here would run with the panel from the render that
+	// scheduled it, not the new one.
 	const setCurrentPanel = useCallback(
-		(event: CarouselPanelChangeEvent, panel: number, callback?: () => void) => {
+		(event: CarouselPanelChangeEvent, panel: number) => {
 			if (onRequestPanelChange) {
 				onRequestPanelChange(event, {
-					currentPanel,
+					currentPanel: latestRef.current.currentPanel,
 					requestedPanel: panel,
 				});
 			} else {
 				setInternalCurrentPanel(panel);
-				// Use setTimeout to ensure state is updated before callback
-				if (callback) {
-					setTimeout(callback, 0);
-				}
 			}
 		},
-		[currentPanel, onRequestPanelChange]
+		[onRequestPanelChange]
 	);
 
 	// Stop autoplay
@@ -303,30 +310,28 @@ const Carousel = ({
 	// Start autoplay. Panel changes and the final stop come from the timer, so they carry no event.
 	const startAutoplay = useCallback(() => {
 		autoplayIdRef.current = setInterval(() => {
-			if (currentPanel < nrOfPanels - 1) {
+			const {
+				currentPanel: latestCurrentPanel,
+				nrOfPanels: latestNrOfPanels,
+				isInfinite: latestIsInfinite,
+			} = latestRef.current;
+
+			if (latestCurrentPanel < latestNrOfPanels - 1) {
 				// Go to next panel
-				let next = currentPanel + 1;
-				if (next > nrOfPanels - 1) {
+				let next = latestCurrentPanel + 1;
+				if (next > latestNrOfPanels - 1) {
 					next = 0;
 				}
-				setCurrentPanel(undefined, next, changeTranslationAutomatically);
-			} else if (isInfinite) {
+				setCurrentPanel(undefined, next);
+			} else if (latestIsInfinite) {
 				// Loop back to start
-				setCurrentPanel(undefined, 0, changeTranslationAutomatically);
+				setCurrentPanel(undefined, 0);
 			} else {
 				// Stop at end
 				stopAutoplay(undefined);
 			}
 		}, autoplayInterval);
-	}, [
-		autoplayInterval,
-		currentPanel,
-		nrOfPanels,
-		isInfinite,
-		setCurrentPanel,
-		changeTranslationAutomatically,
-		stopAutoplay,
-	]);
+	}, [autoplayInterval, setCurrentPanel, stopAutoplay]);
 
 	// Panel navigation handlers
 	const onNextPanelHandler = useCallback(
@@ -335,9 +340,9 @@ const Carousel = ({
 			if (next > nrOfPanels - 1) {
 				next = 0;
 			}
-			setCurrentPanel(event, next, changeTranslationAutomatically);
+			setCurrentPanel(event, next);
 		},
-		[currentPanel, nrOfPanels, setCurrentPanel, changeTranslationAutomatically]
+		[currentPanel, nrOfPanels, setCurrentPanel]
 	);
 
 	const onPreviousPanelHandler = useCallback(
@@ -346,9 +351,9 @@ const Carousel = ({
 			if (prev < 0) {
 				prev = nrOfPanels - 1;
 			}
-			setCurrentPanel(event, prev, changeTranslationAutomatically);
+			setCurrentPanel(event, prev);
 		},
-		[currentPanel, nrOfPanels, setCurrentPanel, changeTranslationAutomatically]
+		[currentPanel, nrOfPanels, setCurrentPanel]
 	);
 
 	// Indicator handlers
@@ -358,18 +363,13 @@ const Carousel = ({
 
 	const onIndicatorClickHandler = useCallback(
 		(event: MouseEvent, panel: number) => {
-			setCurrentPanel(event, panel, changeTranslationAutomatically);
+			setCurrentPanel(event, panel);
 			setIndicatorsHaveFocus(true);
 			if (isAutoplayOn) {
 				stopAutoplay(event);
 			}
 		},
-		[
-			setCurrentPanel,
-			changeTranslationAutomatically,
-			isAutoplayOn,
-			stopAutoplay,
-		]
+		[setCurrentPanel, isAutoplayOn, stopAutoplay]
 	);
 
 	const onIndicatorFocus = useCallback(
