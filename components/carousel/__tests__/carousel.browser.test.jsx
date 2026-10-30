@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { userEvent } from 'vitest/browser';
 import { describe, it, expect } from 'vitest';
 
 import IconSettings from '../../icon-settings';
@@ -162,3 +163,91 @@ describe('SLDS Carousel autoplay translation (browser)', () => {
 		});
 	});
 });
+
+// Manual navigation shares the translation with autoplay: the strip must land on the
+// requested panel after each click, not lag a click behind.
+describe.each([
+	{ label: 'one item per panel', itemCount: 4, itemsPerPanel: 1 },
+	{ label: 'three items per panel', itemCount: 12, itemsPerPanel: 3 },
+])(
+	'SLDS Carousel manual navigation translation (browser), $label',
+	({ itemCount, itemsPerPanel }) => {
+		const renderNavigationCarousel = () => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<div style={{ width: `${WRAPPER_WIDTH}px` }}>
+						<Carousel
+							id="test-carousel"
+							hasPreviousNextPanelNavigation
+							items={makeItems(itemCount)}
+							itemsPerPanel={itemsPerPanel}
+						/>
+					</div>
+				</IconSettings>
+			);
+			const [previousButton, nextButton] = container.querySelectorAll(
+				'.slds-is-absolute button'
+			);
+			return {
+				container,
+				previousButton,
+				nextButton,
+				stageWidth: container.querySelector('.slds-carousel__stage')
+					.offsetWidth,
+			};
+		};
+
+		it('moves to the next panel on each next button click', async () => {
+			const { container, nextButton, stageWidth } = renderNavigationCarousel();
+
+			for (let panel = 1; panel <= 3; panel += 1) {
+				// eslint-disable-next-line no-await-in-loop
+				await userEvent.click(nextButton);
+				// eslint-disable-next-line no-await-in-loop
+				await expect
+					.poll(() => getTranslateX(container))
+					.toBe(-panel * stageWidth);
+			}
+		});
+
+		it('moves back on each previous button click', async () => {
+			const { container, previousButton, nextButton, stageWidth } =
+				renderNavigationCarousel();
+
+			await userEvent.click(nextButton);
+			await userEvent.click(nextButton);
+			await expect.poll(() => getTranslateX(container)).toBe(-2 * stageWidth);
+
+			await userEvent.click(previousButton);
+			await expect.poll(() => getTranslateX(container)).toBe(-stageWidth);
+
+			await userEvent.click(previousButton);
+			await expect.poll(() => getTranslateX(container)).toBe(0);
+		});
+
+		it('moves to the panel of the indicator that was clicked', async () => {
+			const { container, stageWidth } = renderNavigationCarousel();
+
+			await userEvent.click(
+				container.querySelector('#indicator-id-test-carousel-2')
+			);
+			await expect.poll(() => getTranslateX(container)).toBe(-2 * stageWidth);
+
+			await userEvent.click(
+				container.querySelector('#indicator-id-test-carousel-1')
+			);
+			await expect.poll(() => getTranslateX(container)).toBe(-stageWidth);
+		});
+
+		it('moves to the next panel on the right arrow key', async () => {
+			const { container, nextButton, stageWidth } = renderNavigationCarousel();
+
+			nextButton.focus();
+			await userEvent.keyboard('{ArrowRight}');
+			await expect.poll(() => getTranslateX(container)).toBe(-stageWidth);
+
+			await userEvent.keyboard('{ArrowRight}');
+			await expect.poll(() => getTranslateX(container)).toBe(-2 * stageWidth);
+		});
+	}
+);
