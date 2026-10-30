@@ -38,7 +38,10 @@ export interface SimpleDataTableColumnProps {
 	 */
 	sortable?: boolean;
 	/**
-	 * The current sort direction. Required if `isSorted` is true.
+	 * The current sort direction. Required if `isSorted` is true. Controlled:
+	 * the column renders only this value, and clicking it calls the table's
+	 * `onSort` with the requested next direction (the opposite of this one, or
+	 * the default when unset) without changing what is rendered.
 	 */
 	sortDirection?: 'desc' | 'asc';
 	/**

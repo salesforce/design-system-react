@@ -9,6 +9,7 @@ import { ReactNode, CSSProperties, SyntheticEvent } from 'react';
 // ============================================================================
 
 export interface SimpleDataTableItem {
+	/** Unique, stable identifier. Selection and disabled selection are matched by `id`, so fresh item objects (e.g. from a store) still match. */
 	id: string;
 	classNameRow?: string;
 	type?: 'header-row' | string;
@@ -49,6 +50,7 @@ export interface SimpleDataTableSortData {
 }
 
 export interface SimpleDataTableRowChangeData {
+	/** The requested next selection. The table does not apply it; update `selection` to accept it. */
 	selection: SimpleDataTableItem[];
 }
 
@@ -76,7 +78,30 @@ export interface SimpleDataTableRenderSubHeadingRowData {
 	tableId: string;
 }
 
-export interface SimpleDataTableProps {
+/**
+ * Selection props when rows are selectable. Selection is data: `selection` is
+ * required and the table renders exactly what it says. Clicking a row or the
+ * select-all checkbox calls `onRowChange` with the requested next selection;
+ * nothing changes until the parent passes a new `selection`.
+ */
+export interface SimpleDataTableSelectableProps {
+	/** Row selection UX pattern */
+	selectRows: true | 'checkbox' | 'radio';
+	/** The selected rows. Matched to `items` by `id`. Required when `selectRows` is set; pass `[]` for no selection. */
+	selection: SimpleDataTableItem[];
+}
+
+/**
+ * Selection props when rows are not selectable.
+ */
+export interface SimpleDataTableNonSelectableProps {
+	/** Row selection UX pattern */
+	selectRows?: false;
+	/** The selected rows. Matched to `items` by `id`. Only rendered when `selectRows` is set. */
+	selection?: SimpleDataTableItem[];
+}
+
+export interface SimpleDataTableBaseProps {
 	/** Assistive text for accessibility */
 	assistiveText?: SimpleDataTableAssistiveText;
 	/** Column and row action children */
@@ -122,12 +147,14 @@ export interface SimpleDataTableProps {
 	) => void;
 	/** Callback when infinite loading loads more data */
 	onLoadMore?: () => void;
-	/** Callback when selection of rows changes */
+	/**
+	 * Called when the user selects or deselects a row, or toggles all rows. `data.selection` is the requested next selection; the table keeps rendering the `selection` prop until the parent updates it.
+	 */
 	onRowChange?: (
 		event: SyntheticEvent,
 		data: SimpleDataTableRowChangeData
 	) => void;
-	/** @deprecated Use onRowChange instead */
+	/** @deprecated Use `onRowChange(event, { selection })` instead. */
 	onChange?: (selection: SimpleDataTableItem[], event: SyntheticEvent) => void;
 	/** Callback when the table should be sorted */
 	onSort?: (data: SimpleDataTableSortData, event: SyntheticEvent) => void;
@@ -140,12 +167,8 @@ export interface SimpleDataTableProps {
 			scrollerRef: HTMLElement | null;
 		}
 	) => void;
-	/** An array of selected rows */
-	selection?: SimpleDataTableItem[];
-	/** An array of rows where selection is disabled */
+	/** Rows whose selection can't be changed. Matched to `items` by `id`. */
 	disabledSelection?: SimpleDataTableItem[];
-	/** Row selection UX pattern */
-	selectRows?: boolean | 'checkbox' | 'radio';
 	/** Stacked variant for smaller viewports */
 	stacked?: boolean;
 	/** Stacked horizontal variant for smaller viewports */
@@ -174,6 +197,9 @@ export interface SimpleDataTableProps {
 	assistiveTextForSelectRow?: string;
 }
 
+export type SimpleDataTableProps = SimpleDataTableBaseProps &
+	(SimpleDataTableSelectableProps | SimpleDataTableNonSelectableProps);
+
 // ============================================================================
 // SimpleDataTableColumn Props
 // ============================================================================
@@ -183,7 +209,7 @@ export interface SimpleDataTableColumnProps {
 	children?: ReactNode;
 	/** Sort descending first on click */
 	isDefaultSortDescending?: boolean;
-	/** Selects this column as currently sorted */
+	/** Selects this column as currently sorted. Controlled: update it in the table's `onSort`. */
 	isSorted?: boolean;
 	/** The column label */
 	label?: string | ReactNode;
@@ -193,7 +219,7 @@ export interface SimpleDataTableColumnProps {
 	property?: string;
 	/** Whether the column is sortable */
 	sortable?: boolean;
-	/** Current sort direction */
+	/** Current sort direction. Controlled: the column renders this value only, and `onSort` reports the requested next direction (the opposite of this one, or the default when unset). */
 	sortDirection?: 'desc' | 'asc';
 	/** Title for truncation div */
 	title?: string;
@@ -316,8 +342,10 @@ export interface SimpleDataTableRowProps {
 		event: SyntheticEvent
 	) => void;
 	rowActions?: ReactNode;
-	selection?: SimpleDataTableItem[];
-	disabledSelection?: SimpleDataTableItem[];
+	/** Whether the row's item is in the table's `selection` */
+	isSelected?: boolean;
+	/** Whether the row's item is in the table's `disabledSelection` */
+	isDisabled?: boolean;
 	tableId?: string;
 	rowIndex?: number;
 	stacked?: boolean;
