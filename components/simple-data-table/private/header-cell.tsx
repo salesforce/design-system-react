@@ -4,8 +4,6 @@
 import React, {
 	useContext,
 	useEffect,
-	useRef,
-	useState,
 	SyntheticEvent,
 	ReactNode,
 } from 'react';
@@ -68,10 +66,6 @@ export interface SimpleDataTableHeaderCellProps {
 const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 	props
 ) => {
-	const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(
-		null
-	);
-	const prevIsSorted = useRef<boolean | null>(null);
 	const tableContext = useContext(TableContext);
 	const cellContext = useContext(CellContext);
 	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = useContextHelper(
@@ -86,17 +80,13 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	useEffect(() => {
-		if (prevIsSorted.current === true && props.isSorted === false) {
-			setSortDirection(null);
-		}
-		prevIsSorted.current = props.isSorted ?? null;
-	}, [props.isSorted]);
-
 	const handleSort = (e: SyntheticEvent) => {
 		e.preventDefault();
 
-		const oldSortDirection = props.sortDirection || sortDirection;
+		// Sort is data: the next direction is derived from the `sortDirection`
+		// prop only. The column keeps no copy, so a parent that ignores `onSort`
+		// keeps the rendered state and gets the same request on the next click.
+		const oldSortDirection = props.sortDirection || null;
 		const newSortDirection = (function sortDirectionFunction(
 			direction: 'asc' | 'desc' | null,
 			isDefaultSortDescending?: boolean
@@ -118,8 +108,6 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 			sortDirection: newSortDirection,
 		};
 
-		setSortDirection(newSortDirection);
-
 		if (isFunction(props.onSort)) {
 			props.onSort(data, e);
 		}
@@ -130,7 +118,6 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 	const labelType = typeof label;
 	const effectiveSortDirection =
 		props.sortDirection ||
-		sortDirection ||
 		(props.isDefaultSortDescending ? 'desc' : undefined);
 	const expandedSortDirection =
 		effectiveSortDirection === 'desc' ? 'descending' : 'ascending';

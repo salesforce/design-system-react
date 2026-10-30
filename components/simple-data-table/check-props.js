@@ -18,7 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
 			props.onChange,
 			'onChange',
 			'onRowChange',
-			'The callback parameters have been changed. `onRowChange` passes in `[event, { selection }` in order to align with other components.'
+			'The callback parameters have been changed: `onRowChange(event, { selection })` reports the requested selection in the same `(event, data)` shape as other components.'
 		);
 		deprecatedProperty(
 			COMPONENT,
@@ -39,15 +39,15 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.onSelect,
 			'onSelect',
-			'onChange',
-			createDocUrl('onChange')
+			'onRowChange',
+			createDocUrl('onRowChange')
 		);
 		deprecatedProperty(
 			COMPONENT,
 			props.onDeselect,
 			'onDeselect',
-			'onChange',
-			createDocUrl('onChange')
+			'onRowChange',
+			createDocUrl('onRowChange')
 		);
 		sunsetProperty(
 			COMPONENT,
