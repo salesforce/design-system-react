@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, fireEvent, waitFor, act } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
@@ -348,6 +349,135 @@ describe('SLDSPopover', () => {
 			expect(onRequestClose).toHaveBeenCalledWith(undefined, {
 				trigger: 'mouseLeave',
 			});
+		});
+	});
+
+	describe('Controlled and uncontrolled open state', () => {
+		const popoverIn = (container) =>
+			container.querySelector(`#${defaultIds.popover}`);
+
+		it('stays closed when controlled `isOpen={false}` and the trigger is clicked, but requests open', () => {
+			const onRequestOpen = vi.fn();
+			const { container } = renderPopover({ isOpen: false, onRequestOpen });
+
+			fireEvent.click(container.querySelector(defaultIds.trigger));
+
+			expect(onRequestOpen).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestOpen.mock.calls[0];
+			expect(event.type).toBe('click');
+			expect(data).toEqual({ trigger: 'triggerClick' });
+			expect(popoverIn(container)).not.toBeInTheDocument();
+		});
+
+		it('stays open when controlled `isOpen` and the close button is clicked, but requests close', () => {
+			const onRequestClose = vi.fn();
+			const { container } = renderPopover({ isOpen: true, onRequestClose });
+
+			fireEvent.click(container.querySelector('button.slds-popover__close'));
+
+			expect(onRequestClose).toHaveBeenCalledWith(expect.anything(), {
+				trigger: 'cancel',
+			});
+			expect(popoverIn(container)).toBeInTheDocument();
+		});
+
+		it('does not reopen when a rejected close request is followed by the parent closing and reopening', () => {
+			const { container, rerender } = renderPopover({ isOpen: true });
+			fireEvent.click(container.querySelector('button.slds-popover__close'));
+			expect(popoverIn(container)).toBeInTheDocument();
+
+			const renderWith = (isOpen) =>
+				rerender(
+					<IconSettings iconPath="/assets/icons">
+						<div>
+							<Popover {...defaultProps} isOpen={isOpen}>
+								<Button label="Trigger Popover" />
+							</Popover>
+						</div>
+					</IconSettings>
+				);
+			renderWith(false);
+			expect(popoverIn(container)).not.toBeInTheDocument();
+			renderWith(true);
+			expect(popoverIn(container)).toBeInTheDocument();
+		});
+
+		it('opens a controlled popover when the parent updates `isOpen` from `onRequestOpen`', async () => {
+			const ControlledPopover = () => {
+				const [isOpen, setIsOpen] = React.useState(false);
+				return (
+					<Popover
+						{...defaultProps}
+						isOpen={isOpen}
+						onRequestOpen={() => setIsOpen(true)}
+						onRequestClose={() => setIsOpen(false)}
+					>
+						<Button label="Trigger Popover" />
+					</Popover>
+				);
+			};
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<ControlledPopover />
+				</IconSettings>
+			);
+
+			fireEvent.click(container.querySelector(defaultIds.trigger));
+			await waitFor(() => {
+				expect(popoverIn(container)).toBeInTheDocument();
+			});
+			fireEvent.click(container.querySelector(defaultIds.trigger));
+			expect(popoverIn(container)).not.toBeInTheDocument();
+		});
+
+		it('opens and closes when uncontrolled, calling `onRequestOpen` and `onRequestClose`', () => {
+			const onRequestOpen = vi.fn();
+			const onRequestClose = vi.fn();
+			const { container } = renderPopover({ onRequestOpen, onRequestClose });
+
+			fireEvent.click(container.querySelector(defaultIds.trigger));
+			expect(popoverIn(container)).toBeInTheDocument();
+			expect(onRequestOpen).toHaveBeenCalledTimes(1);
+
+			fireEvent.click(container.querySelector(defaultIds.trigger));
+			expect(popoverIn(container)).not.toBeInTheDocument();
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+		});
+
+		it('starts open when uncontrolled with `defaultIsOpen`', () => {
+			const { container } = renderPopover({ defaultIsOpen: true });
+			expect(popoverIn(container)).toBeInTheDocument();
+
+			fireEvent.click(container.querySelector('button.slds-popover__close'));
+			expect(popoverIn(container)).not.toBeInTheDocument();
+		});
+
+		it('requests open with trigger "mouseEnter" and "focus" when `openOn` is `hover`', () => {
+			const onRequestOpen = vi.fn();
+			const { container } = renderPopover({
+				isOpen: false,
+				openOn: 'hover',
+				onRequestOpen,
+			});
+			const trigger = container.querySelector(defaultIds.trigger);
+
+			fireEvent.mouseEnter(trigger);
+			fireEvent.focus(trigger);
+
+			expect(onRequestOpen.mock.calls.map(([, data]) => data)).toEqual([
+				{ trigger: 'mouseEnter' },
+				{ trigger: 'focus' },
+			]);
+			expect(popoverIn(container)).not.toBeInTheDocument();
+		});
+
+		it('does not request open when disabled', () => {
+			const onRequestOpen = vi.fn();
+			const { container } = renderPopover({ disabled: true, onRequestOpen });
+
+			fireEvent.click(container.querySelector(defaultIds.trigger));
+
+			expect(onRequestOpen).not.toHaveBeenCalled();
 		});
 	});
 

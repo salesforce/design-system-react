@@ -1,10 +1,22 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useState, useId, useCallback, type ReactNode, type MouseEvent } from 'react';
+import React, {
+	useId,
+	useCallback,
+	type ReactNode,
+	type MouseEvent,
+} from 'react';
 import classNames from 'classnames';
 import Button from '../button';
 import { EXPANDABLE_SECTION } from '../../utilities/constants';
+import { useControllableState } from '../../utilities/hooks';
+
+/**
+ * Open state of an uncontrolled section when `defaultIsOpen` is not set: sections start open.
+ * This is a documented exception to the "booleans must not default to `true`" rule.
+ */
+const DEFAULT_IS_OPEN = true;
 
 /**
  * Assistive text for ExpandableSection
@@ -26,12 +38,27 @@ export interface ExpandableSectionProps {
 	className?: string | string[] | Record<string, boolean>;
 	/** Unique identifier */
 	id?: string;
-	/** Controlled open state */
+	/**
+	 * Open state when the section is controlled. When set, the section only expands and collapses when
+	 * this prop changes: update it from `onToggleOpen`. Leave it `undefined` for an uncontrolled section
+	 * (see `defaultIsOpen`).
+	 */
 	isOpen?: boolean;
+	/**
+	 * Initial open state of an uncontrolled section (`isOpen` is `undefined`). Defaults to `true`
+	 * (sections start open); an exception to the boolean-default rule.
+	 */
+	defaultIsOpen?: boolean;
 	/** Whether section cannot be collapsed */
 	nonCollapsible?: boolean;
-	/** Toggle callback */
-	onToggleOpen?: (event: MouseEvent<HTMLButtonElement>, data: { isOpen: boolean }) => void;
+	/**
+	 * Called when the toggle button is clicked, controlled or not. `data.isOpen` is the requested
+	 * (next) open state.
+	 */
+	onToggleOpen?: (
+		event: MouseEvent<HTMLButtonElement>,
+		data: { isOpen: boolean }
+	) => void;
 	/** Section title (required) */
 	title: string;
 }
@@ -49,27 +76,30 @@ const ExpandableSection = ({
 	className,
 	id: propId,
 	isOpen: controlledIsOpen,
+	defaultIsOpen = DEFAULT_IS_OPEN,
 	nonCollapsible = false,
 	onToggleOpen,
 	title,
 }: ExpandableSectionProps): React.ReactElement => {
 	const generatedId = useId();
-	const [internalIsOpen, setInternalIsOpen] = useState(true);
+	const [isOpen, setIsOpen] = useControllableState(
+		controlledIsOpen,
+		defaultIsOpen
+	);
 
 	const id = propId || generatedId;
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
-	
-	// Use controlled or internal state
-	const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
+
 	const contentId = `${id}-expanded-section-content`;
 
-	const handleToggle = useCallback((event: MouseEvent<HTMLButtonElement>) => {
-		if (onToggleOpen) {
-			onToggleOpen(event, { isOpen });
-		} else {
-			setInternalIsOpen((prev) => !prev);
-		}
-	}, [isOpen, onToggleOpen]);
+	const handleToggle = useCallback(
+		(event: MouseEvent<HTMLButtonElement>) => {
+			const nextIsOpen = !isOpen;
+			setIsOpen(nextIsOpen);
+			onToggleOpen?.(event, { isOpen: nextIsOpen });
+		},
+		[isOpen, onToggleOpen, setIsOpen]
+	);
 
 	const buttonAriaProps = {
 		'aria-controls': contentId,
@@ -131,18 +161,3 @@ const ExpandableSection = ({
 ExpandableSection.displayName = EXPANDABLE_SECTION;
 
 export default ExpandableSection;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

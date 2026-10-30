@@ -57,8 +57,9 @@ class Example extends React.Component {
 						id="popover-controlled-with-footer"
 						onClose={this.handleClose}
 						onRequestClose={this.handleRequestClose}
+						onRequestOpen={this.handleOpen}
 					>
-						<Button label="Trigger Popover" onClick={this.handleOpen} />
+						<Button label="Trigger Popover" />
 					</Popover>
 				</div>
 			</IconSettings>

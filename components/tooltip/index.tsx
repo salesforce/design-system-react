@@ -18,6 +18,7 @@ import React, {
 import classNames from 'classnames';
 
 import EventUtil from '../../utilities/event';
+import { useControllableState } from '../../utilities/hooks';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
 
@@ -68,6 +69,39 @@ export interface TooltipLabels {
 	learnMoreAfter?: string;
 	/** This label appears in the tooltip before the info icon. */
 	learnMoreBefore?: string;
+}
+
+/**
+ * What caused `onRequestOpen` to fire:
+ * * `focus`: the trigger received focus
+ * * `mouseEnter`: the mouse entered the trigger
+ */
+export type TooltipRequestOpenTrigger = 'focus' | 'mouseEnter';
+
+/**
+ * Data passed to `onRequestOpen`
+ */
+export interface TooltipRequestOpenData {
+	/** What caused the open request */
+	trigger: TooltipRequestOpenTrigger;
+}
+
+/**
+ * What caused `onRequestClose` to fire:
+ * * `blur`: focus left the trigger (including Tab from the tooltip)
+ * * `cancel`: Escape was pressed on the trigger
+ * * `clickOutside`: a click landed outside the tooltip
+ * * `mouseLeave`: the mouse left the trigger or the tooltip
+ */
+export type TooltipRequestCloseTrigger =
+	'blur' | 'cancel' | 'clickOutside' | 'mouseLeave';
+
+/**
+ * Data passed to `onRequestClose`
+ */
+export interface TooltipRequestCloseData {
+	/** What caused the close request */
+	trigger: TooltipRequestCloseTrigger;
 }
 
 export interface TooltipProps {
@@ -126,9 +160,37 @@ export interface TooltipProps {
 	 */
 	labels?: TooltipLabels;
 	/**
-	 * Forces tooltip to be open. A value of `false` will disable any interaction with the tooltip.
+	 * Open state when the tooltip is controlled. When set, the tooltip only opens and closes when this
+	 * prop changes: `isOpen={false}` keeps it closed and `isOpen={true}` keeps it open, whatever the
+	 * user does. Handle `onRequestOpen`/`onRequestClose` to update it. Leave it `undefined` for an
+	 * uncontrolled tooltip that opens on hover and focus (see `defaultIsOpen`).
 	 */
 	isOpen?: boolean;
+	/**
+	 * Initial open state of an uncontrolled tooltip (`isOpen` is `undefined`). Defaults to `false`.
+	 */
+	defaultIsOpen?: boolean;
+	/**
+	 * Called when the tooltip requests to open (hover after `hoverOpenDelay`, or focus), controlled or
+	 * not. `data.trigger` says why. A controlled tooltip opens only if the parent sets `isOpen` to `true`.
+	 */
+	onRequestOpen?: (
+		event: MouseEvent<HTMLElement> | FocusEvent<HTMLElement>,
+		data: TooltipRequestOpenData
+	) => void;
+	/**
+	 * Called when the tooltip requests to close (mouse leave, blur, Escape, click outside), controlled
+	 * or not. `data.trigger` says why. `event` is `undefined` for `clickOutside`. A controlled tooltip
+	 * closes only if the parent sets `isOpen` to `false`.
+	 */
+	onRequestClose?: (
+		event:
+			| MouseEvent<HTMLElement>
+			| FocusEvent<HTMLElement>
+			| KeyboardEvent<HTMLElement>
+			| undefined,
+		data: TooltipRequestCloseData
+	) => void;
 	/**
 	 * Callback that returns an element or React `ref` to align the Tooltip with.
 	 */
@@ -191,6 +253,9 @@ const Tooltip = ({
 	id: idProp,
 	labels: labelsProp,
 	isOpen: isOpenProp,
+	defaultIsOpen = false,
+	onRequestOpen,
+	onRequestClose,
 	onRequestTargetElement,
 	onClickTrigger,
 	triggerClassName,
@@ -207,7 +272,7 @@ const Tooltip = ({
 	const iconSettings = useContext(IconSettingsContext);
 
 	// State
-	const [isOpenState, setIsOpenState] = useState(false);
+	const [isOpen, setIsOpen] = useControllableState(isOpenProp, defaultIsOpen);
 	const [triggerRendered, setTriggerRendered] = useState(false);
 
 	// Refs
@@ -215,6 +280,11 @@ const Tooltip = ({
 	const tooltipTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const generatedIdRef = useRef(generateId());
 	const isUnmountingRef = useRef(false);
+	// Latest open state, read by the hover/blur/Escape timers
+	const isOpenRef = useRef(isOpen);
+	useEffect(() => {
+		isOpenRef.current = isOpen;
+	}, [isOpen]);
 
 	// Check props in development
 	useEffect(() => {
@@ -261,9 +331,7 @@ const Tooltip = ({
 		return idProp || generatedIdRef.current;
 	}, [idProp]);
 
-	const getIsOpen = useCallback(() => {
-		return isOpenProp === undefined ? isOpenState : isOpenProp;
-	}, [isOpenProp, isOpenState]);
+	const getIsOpen = useCallback(() => isOpen, [isOpen]);
 
 	const getTooltipTarget = useCallback(() => {
 		if (onRequestTargetElement) {
@@ -274,32 +342,98 @@ const Tooltip = ({
 	}, [onRequestTargetElement]);
 
 	// Event handlers
-	const handleCancel = useCallback(() => {
+	const clearTooltipTimeout = () => {
 		if (tooltipTimeoutRef.current) {
 			clearTimeout(tooltipTimeoutRef.current);
 		}
+	};
 
-		setIsOpenState(false);
-	}, []);
-
-	const handleMouseEnter = useCallback(() => {
-		if (tooltipTimeoutRef.current) {
-			clearTimeout(tooltipTimeoutRef.current);
-		}
-
-		tooltipTimeoutRef.current = setTimeout(() => {
-			if (!isUnmountingRef.current) {
-				setIsOpenState(true);
+	const requestOpen = useCallback(
+		(
+			event: MouseEvent<HTMLElement> | FocusEvent<HTMLElement>,
+			trigger: TooltipRequestOpenTrigger
+		) => {
+			if (isUnmountingRef.current || isOpenRef.current) {
+				return;
 			}
-		}, hoverOpenDelay);
-	}, [hoverOpenDelay]);
+			onRequestOpen?.(event, { trigger });
+			setIsOpen(true);
+		},
+		[onRequestOpen, setIsOpen]
+	);
 
-	const handleMouseLeave = useCallback(
-		(e: MouseEvent<HTMLElement> | FocusEvent<HTMLElement>) => {
+	const requestClose = useCallback(
+		(
+			event:
+				| MouseEvent<HTMLElement>
+				| FocusEvent<HTMLElement>
+				| KeyboardEvent<HTMLElement>
+				| undefined,
+			trigger: TooltipRequestCloseTrigger
+		) => {
+			if (isUnmountingRef.current || !isOpenRef.current) {
+				return;
+			}
+			onRequestClose?.(event, { trigger });
+			setIsOpen(false);
+		},
+		[onRequestClose, setIsOpen]
+	);
+
+	// Called by the Dialog on click outside, Tab and unmount
+	const handleDialogClose = useCallback(
+		(
+			event?: KeyboardEvent<HTMLElement>,
+			data?: { componentWillUnmount?: boolean }
+		) => {
+			clearTooltipTimeout();
+			// The dialog unmounts because the tooltip already closed: nothing to request
+			if (data?.componentWillUnmount) {
+				return;
+			}
+			requestClose(event, event ? 'blur' : 'clickOutside');
+		},
+		[requestClose]
+	);
+
+	const handleDialogMouseLeave = useCallback(
+		(event: MouseEvent) => {
+			clearTooltipTimeout();
+			requestClose(event as MouseEvent<HTMLElement>, 'mouseLeave');
+		},
+		[requestClose]
+	);
+
+	const scheduleOpen = useCallback(
+		(
+			event: MouseEvent<HTMLElement> | FocusEvent<HTMLElement>,
+			trigger: TooltipRequestOpenTrigger
+		) => {
+			clearTooltipTimeout();
+			tooltipTimeoutRef.current = setTimeout(() => {
+				requestOpen(event, trigger);
+			}, hoverOpenDelay);
+		},
+		[hoverOpenDelay, requestOpen]
+	);
+
+	const handleMouseEnter = useCallback(
+		(event: MouseEvent<HTMLElement>) => scheduleOpen(event, 'mouseEnter'),
+		[scheduleOpen]
+	);
+
+	const handleFocus = useCallback(
+		(event: FocusEvent<HTMLElement>) => scheduleOpen(event, 'focus'),
+		[scheduleOpen]
+	);
+
+	const scheduleClose = useCallback(
+		(
+			e: MouseEvent<HTMLElement> | FocusEvent<HTMLElement>,
+			trigger: TooltipRequestCloseTrigger
+		) => {
 			e.stopPropagation();
-			if (tooltipTimeoutRef.current) {
-				clearTimeout(tooltipTimeoutRef.current);
-			}
+			clearTooltipTimeout();
 
 			tooltipTimeoutRef.current = setTimeout(() => {
 				const relatedTarget = (e as MouseEvent<HTMLElement>)
@@ -308,12 +442,22 @@ const Tooltip = ({
 					relatedTarget?.classList?.contains('slds-popover_tooltip') ||
 					relatedTarget?.classList?.contains('slds-popover__body');
 
-				if (!isUnmountingRef.current && !isHoveringTooltip) {
-					setIsOpenState(false);
+				if (!isHoveringTooltip) {
+					requestClose(e, trigger);
 				}
 			}, hoverCloseDelay);
 		},
-		[hoverCloseDelay]
+		[hoverCloseDelay, requestClose]
+	);
+
+	const handleMouseLeave = useCallback(
+		(e: MouseEvent<HTMLElement>) => scheduleClose(e, 'mouseLeave'),
+		[scheduleClose]
+	);
+
+	const handleBlur = useCallback(
+		(e: FocusEvent<HTMLElement>) => scheduleClose(e, 'blur'),
+		[scheduleClose]
 	);
 
 	const handleKeyDown = useCallback(
@@ -321,12 +465,12 @@ const Tooltip = ({
 			e.stopPropagation();
 
 			tooltipTimeoutRef.current = setTimeout(() => {
-				if (!isUnmountingRef.current && e.key === 'Escape') {
-					setIsOpenState(false);
+				if (e.key === 'Escape') {
+					requestClose(e, 'cancel');
 				}
 			}, hoverCloseDelay);
 		},
-		[hoverCloseDelay]
+		[hoverCloseDelay, requestClose]
 	);
 
 	// Save trigger ref and trigger re-render once mounted
@@ -483,16 +627,16 @@ const Tooltip = ({
 					key?: React.Key;
 					'aria-describedby'?: string;
 					onBlur?: (e: FocusEvent<HTMLElement>) => void;
-					onFocus?: () => void;
-					onMouseEnter?: () => void;
+					onFocus?: (e: FocusEvent<HTMLElement>) => void;
+					onMouseEnter?: (e: MouseEvent<HTMLElement>) => void;
 					onMouseLeave?: (e: MouseEvent<HTMLElement>) => void;
 					onKeyDown?: (e: KeyboardEvent<HTMLElement>) => void;
 				}>,
 				{
 					key: i,
 					'aria-describedby': getIsOpen() ? getId() : undefined,
-					onBlur: handleMouseLeave,
-					onFocus: handleMouseEnter,
+					onBlur: handleBlur,
+					onFocus: handleFocus,
 					onMouseEnter: handleMouseEnter,
 					onMouseLeave: handleMouseLeave,
 					onKeyDown: handleKeyDown,
@@ -532,9 +676,7 @@ const Tooltip = ({
 	};
 
 	const getTooltip = () => {
-		const isOpen = getIsOpen();
-
-		return isOpen ? (
+		return getIsOpen() ? (
 			<Dialog
 				closeOnTabKey
 				hasNubbin
@@ -549,9 +691,9 @@ const Tooltip = ({
 				align={align}
 				context={iconSettings}
 				hasStaticAlignment={hasStaticAlignment}
-				onClose={handleCancel}
+				onClose={handleDialogClose}
 				onRequestTargetElement={getTooltipTarget}
-				onMouseLeave={handleCancel}
+				onMouseLeave={handleDialogMouseLeave}
 				position={position}
 				variant="tooltip"
 				containerProps={{
