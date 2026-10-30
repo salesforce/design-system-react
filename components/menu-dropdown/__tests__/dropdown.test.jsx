@@ -992,11 +992,11 @@ describe('SLDSMenuDropdown', () => {
 			const onSelect = vi.fn();
 			const { container } = renderDropdown({ checkmark: true, onSelect });
 
-			let menu = await openMenu(container);
+			const menu = await openMenu(container);
 			fireEvent.click(menu.querySelectorAll('li a')[2]);
 			expect(onSelect.mock.calls[0][1].value).toBe('C0');
 
-			menu = await openMenu(container);
+			await openMenu(container);
 			expect(checkedLabels(container)).toEqual(['B Option Super Super Long']);
 		});
 
@@ -1023,10 +1023,10 @@ describe('SLDSMenuDropdown', () => {
 				<StatefulDropdown checkmark initialValue="B0" />
 			);
 
-			let menu = await openMenu(container);
+			const menu = await openMenu(container);
 			fireEvent.click(menu.querySelectorAll('li a')[2]);
 
-			menu = await openMenu(container);
+			await openMenu(container);
 			expect(checkedLabels(container)).toEqual(['C Option']);
 		});
 
@@ -1038,12 +1038,12 @@ describe('SLDSMenuDropdown', () => {
 				value: undefined,
 			});
 
-			let menu = await openMenu(container);
+			const menu = await openMenu(container);
 			expect(checkedLabels(container)).toEqual([]);
 			fireEvent.click(menu.querySelectorAll('li a')[0]);
 			expect(onSelect.mock.calls[0][1].value).toBe('A0');
 
-			menu = await openMenu(container);
+			await openMenu(container);
 			expect(checkedLabels(container)).toEqual([]);
 		});
 
