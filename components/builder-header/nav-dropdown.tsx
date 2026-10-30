@@ -7,8 +7,10 @@ import type { IconCategory } from '../../types/common';
 
 import { BUILDER_HEADER_NAV_DROPDOWN } from '../../utilities/constants';
 
-export interface BuilderHeaderNavDropdownProps
-	extends Omit<MenuDropdownProps, 'assistiveText'> {
+export interface BuilderHeaderNavDropdownProps extends Omit<
+	MenuDropdownProps,
+	'assistiveText'
+> {
 	/**
 	 * Assistive text for accessibility. `icon` labels the leading icon.
 	 */

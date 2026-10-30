@@ -62,9 +62,12 @@ const ButtonGroup = ({
 	if (childCount > 1 && !variant) {
 		processedChildren = React.Children.map(children, (child, index) => {
 			if (index === childCount - 1 && React.isValidElement(child)) {
-				return React.cloneElement(child as ReactElement<{ triggerClassName?: string }>, {
-					triggerClassName: 'slds-button_last',
-				});
+				return React.cloneElement(
+					child as ReactElement<{ triggerClassName?: string }>,
+					{
+						triggerClassName: 'slds-button_last',
+					}
+				);
 			}
 			return child;
 		});
@@ -89,7 +92,10 @@ const ButtonGroup = ({
 
 		component = (
 			<div
-				className={classNames('slds-checkbox_button-group', className as string)}
+				className={classNames(
+					'slds-checkbox_button-group',
+					className as string
+				)}
 				id={id}
 			>
 				{checkboxChildren}
@@ -154,18 +160,3 @@ const ButtonGroup = ({
 ButtonGroup.displayName = BUTTON_GROUP;
 
 export default ButtonGroup;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

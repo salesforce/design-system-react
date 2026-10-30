@@ -44,9 +44,7 @@ class PanelFilterList extends Component<PanelFilterListProps> {
 
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const childProps = child.props as any;
-			const id = childProps.id
-				? childProps.id
-				: `${this.generatedId}-${index}`;
+			const id = childProps.id ? childProps.id : `${this.generatedId}-${index}`;
 
 			let clonedChild;
 

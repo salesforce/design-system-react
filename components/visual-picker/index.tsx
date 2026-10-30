@@ -100,8 +100,13 @@ const VisualPicker = ({
 	);
 
 	return (
-		<fieldset id={id} className={classNames('slds-form-element', className as string)}>
-			<legend className="slds-form-element__legend slds-form-element__label">{label}</legend>
+		<fieldset
+			id={id}
+			className={classNames('slds-form-element', className as string)}
+		>
+			<legend className="slds-form-element__legend slds-form-element__label">
+				{label}
+			</legend>
 			<div className="slds-form-element__control">{options}</div>
 		</fieldset>
 	);
@@ -110,17 +115,3 @@ const VisualPicker = ({
 VisualPicker.displayName = VISUAL_PICKER;
 
 export default VisualPicker;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

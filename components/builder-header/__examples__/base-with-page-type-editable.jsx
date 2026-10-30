@@ -27,9 +27,11 @@ class Example extends React.Component {
 		};
 	}
 
-	onChange = (inputName) => (event, { value }) => {
-		this.setState({ pageType: value });
-	};
+	onChange =
+		(inputName) =>
+		(event, { value }) => {
+			this.setState({ pageType: value });
+		};
 
 	handleClose = (event, data) => {
 		if (this.props.log) {

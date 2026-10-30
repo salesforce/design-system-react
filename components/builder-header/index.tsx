@@ -1,7 +1,12 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type ReactElement, type CSSProperties, type MouseEvent } from 'react';
+import React, {
+	type ReactNode,
+	type ReactElement,
+	type CSSProperties,
+	type MouseEvent,
+} from 'react';
 import classNames from 'classnames';
 import EventUtil from '../../utilities/event';
 import BuilderHeaderUtilities from './utilities';
@@ -156,13 +161,17 @@ const BuilderHeader = ({
 	});
 
 	const resolvedIconPath = iconPath || undefined;
-	const resolvedIconCategory = (iconPath ? undefined : iconCategory) as IconCategory | undefined;
+	const resolvedIconCategory = (iconPath ? undefined : iconCategory) as
+		IconCategory | undefined;
 	const resolvedIconName = iconPath ? undefined : iconName;
 
 	return (
 		<div style={{ position: 'relative', height: '100px' }}>
 			<div
-				className={classNames('slds-builder-header_container', className as string)}
+				className={classNames(
+					'slds-builder-header_container',
+					className as string
+				)}
 				style={style}
 			>
 				<header className="slds-builder-header">
@@ -211,4 +220,3 @@ const BuilderHeader = ({
 BuilderHeader.displayName = BUILDER_HEADER;
 
 export default BuilderHeader;
-

@@ -9,10 +9,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 // Child component
-import Tooltip, {
-	type TooltipAlign,
-	type TooltipTheme,
-} from '../../tooltip';
+import Tooltip, { type TooltipAlign, type TooltipTheme } from '../../tooltip';
 import { PROGRESS_INDICATOR_STEP } from '../../../utilities/constants';
 import ButtonIcon from '../../icon/button-icon';
 import {
@@ -118,7 +115,8 @@ class Step extends React.Component<StepProps> {
 			/>
 		) : null;
 
-		const handleClick = (event: React.MouseEvent) => props.onClick?.(event, data);
+		const handleClick = (event: React.MouseEvent) =>
+			props.onClick?.(event, data);
 		const handleFocus = (event: React.FocusEvent) =>
 			props.onFocus?.(event, data);
 

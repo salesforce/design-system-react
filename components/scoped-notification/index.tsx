@@ -110,4 +110,3 @@ const ScopedNotification = ({
 ScopedNotification.displayName = SCOPED_NOTIFICATION;
 
 export default ScopedNotification;
-

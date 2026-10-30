@@ -5,7 +5,11 @@
 // pattern](https://www.lightningdesignsystem.com/components/accordion/) in
 // React. Based on SLDS v2.3.2
 
-import React, { type ReactNode, type KeyboardEvent, type MouseEvent } from 'react';
+import React, {
+	type ReactNode,
+	type KeyboardEvent,
+	type MouseEvent,
+} from 'react';
 import classNames from 'classnames';
 
 import Button from '../button';
