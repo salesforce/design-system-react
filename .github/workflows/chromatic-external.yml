@@ -1,0 +1,65 @@
+name: 'Chromatic (external contributors)'
+
+# Fork PRs get no secrets from the `push` Chromatic workflow, so a user who can
+# edit labels runs Chromatic for them by adding the `run-chromatic` label to the PR.
+#
+# SECURITY: `pull_request_target` runs with repository secrets, and this
+# workflow installs and builds code from the fork. That is only safe because:
+#   1. GitHub only lets users with triage access or higher add labels, so only
+#      trusted users can trigger the job (do not let automation apply it),
+#   2. the checkout is pinned to the commit SHA that was current when the label
+#      was added, and
+#   3. the label is removed on every push to the PR (see
+#      chromatic-external-remove-label.yml), so new commits need a new review
+#      and label.
+# Do not add triggers or steps that run fork code without these guards.
+
+on:
+  pull_request_target:
+    types: [labeled]
+
+permissions: {}
+
+jobs:
+  chromatic:
+    name: Chromatic
+    # Same-repo branches are already covered by the `push` workflow.
+    if: >-
+      github.event.label.name == 'run-chromatic' &&
+      github.event.pull_request.head.repo.full_name != github.repository
+    # A new push or label supersedes an in-flight run for the same PR; the group
+    # is shared with chromatic-external-remove-label.yml so a push cancels a run.
+    # Set per job so unrelated labels (job skipped by `if`) don't cancel a run.
+    concurrency:
+      group: chromatic-external-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout PR commit
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0 # Required for Git history & baseline comparison
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@v18
+        env:
+          # `pull_request_target` reports the base branch; tell Chromatic about the fork's commit.
+          CHROMATIC_SHA: ${{ github.event.pull_request.head.sha }}
+          CHROMATIC_BRANCH: ${{ github.event.pull_request.head.label }}
+          CHROMATIC_SLUG: ${{ github.event.pull_request.head.repo.full_name }}
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true
