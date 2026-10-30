@@ -75,7 +75,7 @@ export const Controlled = {
 					heading="Controlled Popover"
 					id="controlled-popover"
 					isOpen={isOpen}
-					onClick={() => setIsOpen(!isOpen)}
+					onRequestOpen={() => setIsOpen(true)}
 					onRequestClose={() => setIsOpen(false)}
 				>
 					<Button label={isOpen ? 'Click to close' : 'Click to open'} />

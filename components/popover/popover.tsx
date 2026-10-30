@@ -22,6 +22,7 @@ import Button from '../button';
 import MediaObject from '../media-object';
 import Icon from '../icon';
 import Dialog from '../utilities/dialog';
+import { useControllableState } from '../../utilities/hooks';
 import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
@@ -113,6 +114,22 @@ export interface PopoverRequestCloseData {
 }
 
 /**
+ * What caused `onRequestOpen` to fire:
+ * * `focus`: the trigger received focus (`openOn` `hover`)
+ * * `mouseEnter`: the mouse entered the trigger (`openOn` `hover`)
+ * * `triggerClick`: the trigger was clicked while the popover was closed
+ */
+export type PopoverRequestOpenTrigger = 'focus' | 'mouseEnter' | 'triggerClick';
+
+/**
+ * Data passed to `onRequestOpen`
+ */
+export interface PopoverRequestOpenData {
+	/** What caused the open request */
+	trigger: PopoverRequestOpenTrigger;
+}
+
+/**
  * Data passed to `onOpen`
  */
 export interface PopoverOpenData {
@@ -174,8 +191,14 @@ export interface PopoverProps {
 	icon?: ReactNode;
 	/** HTML id */
 	id?: string;
-	/** Controlled open state */
+	/**
+	 * Open state when the popover is controlled. When `isOpen` is set, the popover only opens and closes
+	 * when this prop changes: handle `onRequestOpen` and `onRequestClose` to update it. Leave it
+	 * `undefined` for an uncontrolled popover (see `defaultIsOpen`).
+	 */
 	isOpen?: boolean;
+	/** Initial open state of an uncontrolled popover (`isOpen` is `undefined`). Defaults to `false`. */
+	defaultIsOpen?: boolean;
 	/** Offset from target */
 	offset?: string;
 	/** Click handler */
@@ -195,8 +218,18 @@ export interface PopoverProps {
 	/** Called after the popover dialog has opened and rendered. There is no triggering event, so `event` is `undefined`. */
 	onOpen?: (event: undefined, data: PopoverOpenData) => void;
 	/**
-	 * Called when the popover requests to close. `data.trigger` says why. `event` is the triggering
-	 * click or key event, or `undefined` when there is none (`mouseLeave` timer, `newPopover`).
+	 * Called when the popover requests to open (trigger click, or hover/focus with `openOn` `hover`),
+	 * controlled or not. `data.trigger` says why. A controlled popover opens only if the parent sets
+	 * `isOpen` to `true`.
+	 */
+	onRequestOpen?: (
+		event: MouseEvent | FocusEvent,
+		data: PopoverRequestOpenData
+	) => void;
+	/**
+	 * Called when the popover requests to close, controlled or not. `data.trigger` says why. `event` is
+	 * the triggering click or key event, or `undefined` when there is none (`mouseLeave` timer,
+	 * `newPopover`). A controlled popover closes only if the parent sets `isOpen` to `false`.
 	 */
 	onRequestClose?: (
 		event: MouseEvent | KeyboardEvent | undefined,
@@ -266,6 +299,7 @@ const Popover = ({
 	icon,
 	id: propId,
 	isOpen: controlledIsOpen,
+	defaultIsOpen = false,
 	offset,
 	onClick,
 	onClose,
@@ -275,6 +309,7 @@ const Popover = ({
 	onMouseEnter,
 	onMouseLeave,
 	onOpen,
+	onRequestOpen,
 	onRequestClose,
 	onRequestTargetElement,
 	openOn = 'click',
@@ -296,7 +331,10 @@ const Popover = ({
 		closeButtonAssistiveText || assistiveText.closeButton;
 
 	// State
-	const [internalIsOpen, setInternalIsOpen] = useState(false);
+	const [currentIsOpen, setIsOpen] = useControllableState(
+		controlledIsOpen,
+		defaultIsOpen
+	);
 	const [inputRendered, setInputRendered] = useState(false);
 
 	// Refs
@@ -308,9 +346,7 @@ const Popover = ({
 	const isUnmountingRef = useRef(false);
 
 	// Derived state
-	const isOpen =
-		!disabled &&
-		(controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen);
+	const isOpen = !disabled && currentIsOpen;
 
 	// Get target element for positioning
 	const getTargetElement = useCallback(() => {
@@ -365,11 +401,11 @@ const Popover = ({
 					currentOpenPopover = null;
 				}
 
-				setInternalIsOpen(false);
+				setIsOpen(false);
 				isHoverRef.current = false;
 			}
 		},
-		[isOpen, id, onRequestClose]
+		[isOpen, id, onRequestClose, setIsOpen]
 	);
 
 	// Latest `handleClose`, so the "close the other open popover" path does not call a stale
@@ -380,24 +416,29 @@ const Popover = ({
 	}, [handleClose]);
 
 	// Handle open
-	const handleOpen = useCallback(() => {
-		if (!isOpen) {
-			// Close any other open popover
-			if (currentOpenPopover && currentOpenPopover.getId() !== id) {
-				currentOpenPopover.handleClose(undefined, {
-					trigger: 'newPopover',
-					id: currentOpenPopover.getId(),
-				});
+	const handleOpen = useCallback(
+		(event: MouseEvent | FocusEvent, trigger: PopoverRequestOpenTrigger) => {
+			if (!isOpen && !disabled) {
+				onRequestOpen?.(event, { trigger });
+
+				// Close any other open popover
+				if (currentOpenPopover && currentOpenPopover.getId() !== id) {
+					currentOpenPopover.handleClose(undefined, {
+						trigger: 'newPopover',
+						id: currentOpenPopover.getId(),
+					});
+				}
+
+				currentOpenPopover = {
+					handleClose: (event, data) => handleCloseRef.current(event, data),
+					getId: () => id,
+				};
+
+				setIsOpen(true);
 			}
-
-			currentOpenPopover = {
-				handleClose: (event, data) => handleCloseRef.current(event, data),
-				getId: () => id,
-			};
-
-			setInternalIsOpen(true);
-		}
-	}, [isOpen, id]);
+		},
+		[isOpen, disabled, id, onRequestOpen, setIsOpen]
+	);
 
 	// Handle cancel (close button or escape)
 	const handleCancel = useCallback(
@@ -421,7 +462,7 @@ const Popover = ({
 			isHoverRef.current = true;
 
 			if (!isOpen && openOn === 'hover') {
-				handleOpen();
+				handleOpen(event, 'mouseEnter');
 			} else {
 				if (isClosingRef.current) {
 					clearTimeout(isClosingRef.current);
@@ -455,7 +496,7 @@ const Popover = ({
 	const handleClick = useCallback(
 		(event: MouseEvent, triggerOnClickCallback?: (e: MouseEvent) => void) => {
 			if (!isOpen) {
-				handleOpen();
+				handleOpen(event, 'triggerClick');
 			} else {
 				handleClose(event, { trigger: 'triggerClick' });
 			}
@@ -475,7 +516,7 @@ const Popover = ({
 	const handleFocus = useCallback(
 		(event: FocusEvent) => {
 			if (!isOpen) {
-				handleOpen();
+				handleOpen(event, 'focus');
 			}
 
 			if (onFocus) {
@@ -486,15 +527,14 @@ const Popover = ({
 	);
 
 	// Toggle from keyboard
+	// `handleKeyDown` is only attached to the open dialog, so this only ever closes it (Escape).
 	const toggleOpenFromKeyboard = useCallback(
 		(event: KeyboardEvent) => {
 			if (isOpen) {
 				handleCancel(event);
-			} else {
-				handleOpen();
 			}
 		},
-		[isOpen, handleCancel, handleOpen]
+		[isOpen, handleCancel]
 	);
 
 	// Handle key down
