@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
+	forwardRef,
 	useEffect,
 	useId,
 	useMemo,
@@ -53,7 +54,7 @@ export type WelcomeMatRequestCloseData = ModalRequestCloseData;
 export type WelcomeMatRequestCloseEvent = ModalRequestCloseEvent;
 
 interface WelcomeMatBaseProps {
-	/** CSS classes */
+	/** CSS classes for the root `.slds-welcome-mat` div */
 	className?: string | string[] | Record<string, boolean>;
 	/** HTML id */
 	id?: string;
@@ -136,160 +137,168 @@ const defaultLabels: WelcomeMatLabels = {
 /**
  * A Welcome Mat provides a series of unordered items a user can click to learn about a thematic topic.
  */
-const WelcomeMat = ({
-	children,
-	className,
-	doNotShowAgainCheckbox,
-	id: propId,
-	infoActions,
-	infoBadge,
-	isOpen = true,
-	labels: propLabels,
-	onRequestClose,
-	onRenderInfoActions,
-	variant = 'steps',
-}: WelcomeMatProps): React.ReactElement => {
-	const generatedId = useId();
-	const id = propId || generatedId;
-	const labels = { ...defaultLabels, ...propLabels };
+const WelcomeMat = forwardRef<HTMLDivElement, WelcomeMatProps>(
+	(
+		{
+			children,
+			className,
+			doNotShowAgainCheckbox,
+			id: propId,
+			infoActions,
+			infoBadge,
+			isOpen = true,
+			labels: propLabels,
+			onRequestClose,
+			onRenderInfoActions,
+			variant = 'steps',
+		},
+		ref
+	) => {
+		const generatedId = useId();
+		const id = propId || generatedId;
+		const labels = { ...defaultLabels, ...propLabels };
 
-	useEffect(() => {
-		checkProps(WELCOME_MAT, { onRenderInfoActions }, componentDoc);
-	}, [onRenderInfoActions]);
+		useEffect(() => {
+			checkProps(WELCOME_MAT, { onRenderInfoActions }, componentDoc);
+		}, [onRenderInfoActions]);
 
-	// Calculate progress from children
-	const { totalSteps, completedSteps, progress } = useMemo(() => {
-		const total = React.Children.count(children);
-		const completed = React.Children.toArray(children).filter(
-			(c) =>
-				React.isValidElement(c) &&
-				(c.props as { isComplete?: boolean }).isComplete
-		).length;
-		return {
-			totalSteps: total,
-			completedSteps: completed,
-			progress: total > 0 ? (completed / total) * 100 : 0,
-		};
-	}, [children]);
+		// Calculate progress from children
+		const { totalSteps, completedSteps, progress } = useMemo(() => {
+			const total = React.Children.count(children);
+			const completed = React.Children.toArray(children).filter(
+				(c) =>
+					React.isValidElement(c) &&
+					(c.props as { isComplete?: boolean }).isComplete
+			).length;
+			return {
+				totalSteps: total,
+				completedSteps: completed,
+				progress: total > 0 ? (completed / total) * 100 : 0,
+			};
+		}, [children]);
 
-	const splash = (
-		<div
-			className={classNames(
-				'slds-welcome-mat__info-content',
-				className as string
-			)}
-			id={`${id}-content`}
-		>
-			<h2 className="slds-welcome-mat__info-title" id={`${id}-label`}>
-				{labels.title}
-			</h2>
-			<div className="slds-welcome-mat__info-description slds-text-longform">
-				<p>{labels.description}</p>
-			</div>
-			{(variant === 'info-only' || variant === 'splash') && (
-				<div className="slds-welcome-mat__info-actions">
-					{infoActions ?? onRenderInfoActions?.()}
-					{doNotShowAgainCheckbox && (
-						<div className="slds-m-top_large">{doNotShowAgainCheckbox}</div>
-					)}
+		const splash = (
+			<div className="slds-welcome-mat__info-content" id={`${id}-content`}>
+				<h2 className="slds-welcome-mat__info-title" id={`${id}-label`}>
+					{labels.title}
+				</h2>
+				<div className="slds-welcome-mat__info-description slds-text-longform">
+					<p>{labels.description}</p>
 				</div>
-			)}
-			{(variant === 'steps' || variant === 'trailhead-connected') &&
-				children && (
-					<div
-						className={classNames('slds-welcome-mat__info-progress', {
-							'slds-welcome-mat__info-progress_complete':
-								completedSteps === totalSteps,
-						})}
-					>
-						{variant === 'trailhead-connected' &&
-							React.Children.map(infoBadge, (child) =>
-								React.isValidElement(child)
-									? React.cloneElement(
-											child as ReactElement<{ isComplete?: boolean }>,
-											{
-												isComplete: completedSteps === totalSteps || undefined,
-											}
-										)
-									: child
-							)}
-						{(completedSteps !== totalSteps ||
-							variant !== 'trailhead-connected') && (
-							<>
-								{variant === 'trailhead-connected' ? (
-									<p>
-										{completedSteps}/{totalSteps} {labels.unitsCompletedAfter}
-									</p>
-								) : (
-									<p>
-										<strong>
-											{completedSteps}/{totalSteps} {labels.unitsCompletedAfter}
-										</strong>
-									</p>
-								)}
-								<ProgressBar value={progress} radius="circular" />
-							</>
+				{(variant === 'info-only' || variant === 'splash') && (
+					<div className="slds-welcome-mat__info-actions">
+						{infoActions ?? onRenderInfoActions?.()}
+						{doNotShowAgainCheckbox && (
+							<div className="slds-m-top_large">{doNotShowAgainCheckbox}</div>
 						)}
 					</div>
 				)}
-		</div>
-	);
-
-	return (
-		<Modal
-			assistiveText={{
-				dialogLabelledBy: `${id}-label`,
-			}}
-			isOpen={isOpen}
-			onRequestClose={onRequestClose}
-			size="small"
-			id={`${id}-modal`}
-		>
-			<div
-				className={classNames('slds-welcome-mat', {
-					'slds-welcome-mat_info-only': variant === 'info-only',
-					'slds-welcome-mat_splash': !children,
-				})}
-				id={id}
-			>
-				<div className="slds-welcome-mat__content slds-grid">
-					{children ? (
-						<>
-							<div className="slds-welcome-mat__info slds-size_1-of-2">
-								{splash}
-							</div>
-							<div
-								className={classNames(
-									'slds-welcome-mat__tiles',
-									'slds-size_1-of-2',
-									{
-										'slds-welcome-mat__tiles_info-only':
-											variant === 'info-only',
-									}
-								)}
-							>
-								{React.Children.map(children, (child) =>
+				{(variant === 'steps' || variant === 'trailhead-connected') &&
+					children && (
+						<div
+							className={classNames('slds-welcome-mat__info-progress', {
+								'slds-welcome-mat__info-progress_complete':
+									completedSteps === totalSteps,
+							})}
+						>
+							{variant === 'trailhead-connected' &&
+								React.Children.map(infoBadge, (child) =>
 									React.isValidElement(child)
 										? React.cloneElement(
-												child as ReactElement<{ variant?: WelcomeMatVariant }>,
+												child as ReactElement<{ isComplete?: boolean }>,
 												{
-													variant,
+													isComplete:
+														completedSteps === totalSteps || undefined,
 												}
 											)
 										: child
 								)}
-							</div>
-						</>
-					) : (
-						<div className="slds-welcome-mat__info slds-size_1-of-1">
-							{splash}
+							{(completedSteps !== totalSteps ||
+								variant !== 'trailhead-connected') && (
+								<>
+									{variant === 'trailhead-connected' ? (
+										<p>
+											{completedSteps}/{totalSteps} {labels.unitsCompletedAfter}
+										</p>
+									) : (
+										<p>
+											<strong>
+												{completedSteps}/{totalSteps}{' '}
+												{labels.unitsCompletedAfter}
+											</strong>
+										</p>
+									)}
+									<ProgressBar value={progress} radius="circular" />
+								</>
+							)}
 						</div>
 					)}
-				</div>
 			</div>
-		</Modal>
-	);
-};
+		);
+
+		return (
+			<Modal
+				assistiveText={{
+					dialogLabelledBy: `${id}-label`,
+				}}
+				isOpen={isOpen}
+				onRequestClose={onRequestClose}
+				size="small"
+				id={`${id}-modal`}
+			>
+				<div
+					className={classNames(
+						'slds-welcome-mat',
+						{
+							'slds-welcome-mat_info-only': variant === 'info-only',
+							'slds-welcome-mat_splash': !children,
+						},
+						className
+					)}
+					id={id}
+					ref={ref}
+				>
+					<div className="slds-welcome-mat__content slds-grid">
+						{children ? (
+							<>
+								<div className="slds-welcome-mat__info slds-size_1-of-2">
+									{splash}
+								</div>
+								<div
+									className={classNames(
+										'slds-welcome-mat__tiles',
+										'slds-size_1-of-2',
+										{
+											'slds-welcome-mat__tiles_info-only':
+												variant === 'info-only',
+										}
+									)}
+								>
+									{React.Children.map(children, (child) =>
+										React.isValidElement(child)
+											? React.cloneElement(
+													child as ReactElement<{
+														variant?: WelcomeMatVariant;
+													}>,
+													{
+														variant,
+													}
+												)
+											: child
+									)}
+								</div>
+							</>
+						) : (
+							<div className="slds-welcome-mat__info slds-size_1-of-1">
+								{splash}
+							</div>
+						)}
+					</div>
+				</div>
+			</Modal>
+		);
+	}
+);
 
 WelcomeMat.displayName = WELCOME_MAT;
 

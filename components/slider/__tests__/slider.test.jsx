@@ -1,3 +1,4 @@
+import { createRef } from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 
@@ -411,6 +412,57 @@ describe('SLDSSlider', () => {
 			expect(
 				messages.some(
 					(m) => m.includes('`label`') && m.includes('labels.label')
+				)
+			).toBe(true);
+		});
+	});
+
+	describe('className and ref', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		it('puts className and ref on the root .slds-form-element', () => {
+			const ref = createRef();
+			const { container } = render(
+				<Slider
+					className="root-class"
+					labels={{ label: 'Slider Label' }}
+					ref={ref}
+				/>
+			);
+			const root = container.firstChild;
+			expect(root).toHaveClass('slds-form-element', 'root-class');
+			expect(ref.current).toBe(root);
+		});
+
+		it('still applies deprecated classNameContainer, and warns', async () => {
+			// Fresh modules so the once-per-session warning state is reset
+			vi.resetModules();
+			const { default: FreshSlider } = await import('../');
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			const { container } = render(
+				<FreshSlider
+					className="new-class"
+					classNameContainer="old-class"
+					labels={{ label: 'Slider Label' }}
+				/>
+			);
+			expect(container.firstChild).toHaveClass(
+				'slds-form-element',
+				'old-class',
+				'new-class'
+			);
+
+			const messages = consoleError.mock.calls.map((call) => call.join(' '));
+			expect(
+				messages.some(
+					(m) =>
+						m.includes('`classNameContainer` will be removed') &&
+						m.includes('Use `className` instead.')
 				)
 			).toBe(true);
 		});

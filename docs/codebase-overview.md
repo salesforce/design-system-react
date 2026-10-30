@@ -61,7 +61,7 @@ Commit to the prop contract before implementing:
 ### 3. Implement `[component-name].tsx`
 
 - Functional component, `forwardRef` typed to the **actual rendered root element** (`HTMLButtonElement`, not generic `HTMLElement`) — [Functional Components with Hooks](#functional-components-with-hooks).
-- `className` lands only on the node carrying `.slds-[component]`; every other node's class prop is suffixed (`classNameMenu`) — [DOM Node & Ref Conventions](#dom-node--ref-conventions).
+- `className`, `style`, and the forwarded `ref` land on the outermost element the component renders; every other node's class prop is suffixed (`classNameMenu`, `styleMenu`) — [DOM Node & Ref Conventions](#dom-node--ref-conventions).
 - No local state for anything the parent could hold as a prop, and never mirror a prop into `useState` — [State & Coupling Principles](#state--coupling-principles).
 - Use SLDS markup/classes, not bespoke CSS; follow the `variant`/`theme` split and don't render CSS-hidden elements — [Converting SLDS Markup to React](#converting-slds-markup-to-react).
 - Callbacks are `(event, data) => void`, existence-checked before calling, never used for return-value contracts — [Callback Details](#callback-details).
@@ -192,7 +192,7 @@ Notice what this example does and why, tying back to the steps above: `value`/`m
 - [ ] Component maps to an approved SLDS pattern
 - [ ] `types.ts`: no unnecessary optional props; mutually exclusive forms are a discriminated union
 - [ ] `forwardRef` typed to the real root element, not a generic one
-- [ ] `className` on the `.slds-[component]` root only; other targets use suffixed `className*` props
+- [ ] `className`, `style`, and `ref` on the outermost rendered element; other targets use suffixed `className*`/`style*` props
 - [ ] No prop mirrored into state; no `useState(props.x)`
 - [ ] All visible/assistive text is a prop, grouped under `labels`/`assistiveText`
 - [ ] Callbacks are `(event, data) => void`, existence-checked, no return-value contract
@@ -386,7 +386,8 @@ Use non-optional (required) properties in your `types.ts` interface whenever a p
 
 ### DOM Node & Ref Conventions
 
-- The `className` prop should land on a single, consistent node: the one carrying the root `.slds-[COMPONENT]` class — never on a wrapping container or a child of it. Any other node's classes should use a suffixed prop, e.g. `classNameMenu`, `classNameContainer`.
+- `className`, `style`, and the forwarded `ref` all land on the same node: the outermost element the component renders. For most components that's the node carrying `.slds-[COMPONENT]`. Where the component adds a wrapper around it (Popover's trigger wrapper, Spinner's `.slds-spinner_container`), the wrapper is the root and the SLDS node gets a suffixed prop (`classNameDialog`, `classNameSpinner`). For portal-rendered components, the root is the outermost element the component renders inside the portal (Modal's `section.slds-modal`), and the portal node gets `classNamePortal`.
+- Every other node's classes and inline styles use a suffixed prop named for the part: `classNameMenu`, `classNameContainer`, `styleFooter`. Never prefix (`menuClassName`, `footerStyle`).
 - Limit `ref` usage to tasks like measuring or focusing a DOM node — not as a general escape hatch.
 - No global `window`/`document` access without checking for existence first; their presence isn't guaranteed (e.g. SSR).
 - Don't attach listeners directly to `window` inside a component. If a component needs to respond to viewport changes, let the consuming application listen and drive it via props.

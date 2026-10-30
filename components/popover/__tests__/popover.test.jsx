@@ -1,5 +1,6 @@
+import { createRef } from 'react';
 import { render, fireEvent, waitFor, act } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import Popover from '../';
 import Button from '../../button';
@@ -60,24 +61,36 @@ describe('SLDSPopover', () => {
 
 	describe('Optional props', () => {
 		const popoverBackgroundColor = 'rgb(255, 80, 121)';
-		const containerBackgroundColor = 'rgb(255, 127, 80)';
+		const rootBackgroundColor = 'rgb(255, 127, 80)';
 
 		const optionalProps = {
-			className: 'sample-classname',
 			assistiveText: {
 				closeButton: 'Shut it now!',
 			},
-			containerClassName: 'sample-container-classname',
-			containerStyle: { background: containerBackgroundColor },
+			className: 'sample-root-classname',
+			classNameDialog: 'sample-dialog-classname',
 			footer: <p id="footer">Footer</p>,
-			style: { background: popoverBackgroundColor },
+			style: { background: rootBackgroundColor },
+			styleDialog: { background: popoverBackgroundColor },
 		};
 
-		it('has correct className, assistiveText, style, and footer', () => {
+		it('has correct className, classNameDialog, assistiveText, style, styleDialog, and footer', () => {
 			const { container } = renderPopover({ ...optionalProps, isOpen: true });
 
+			const root = container.querySelector(defaultIds.trigger).parentElement;
+			expect(root).toHaveClass(optionalProps.className);
+			expect(root).toHaveStyle({
+				background: rootBackgroundColor,
+				display: 'inline-block',
+			});
+
 			const popover = container.querySelector(`#${defaultIds.popover}`);
-			expect(popover).toHaveClass(optionalProps.className);
+			expect(popover).toHaveClass(
+				'slds-popover',
+				optionalProps.classNameDialog
+			);
+			expect(popover).not.toHaveClass(optionalProps.className);
+			expect(popover).toHaveStyle({ background: popoverBackgroundColor });
 
 			const closeButton = container.querySelector('button.slds-popover__close');
 			expect(closeButton).toHaveTextContent(
@@ -85,14 +98,90 @@ describe('SLDSPopover', () => {
 			);
 
 			expect(container.querySelector('#footer')).toBeInTheDocument();
-			expect(popover).toHaveStyle({ background: popoverBackgroundColor });
 		});
 
-		it('applies classNameFooter when footerWalkthroughActions is used', () => {
+		it('forwards ref to the root element that wraps the trigger', () => {
+			const ref = createRef();
+			const { container } = renderPopover({ ref });
+			expect(ref.current).toBe(
+				container.querySelector(defaultIds.trigger).parentElement
+			);
+		});
+
+		it('forwards a callback ref to the root element', () => {
+			const ref = vi.fn();
+			const { container } = renderPopover({ ref });
+			expect(ref).toHaveBeenCalledWith(
+				container.querySelector(defaultIds.trigger).parentElement
+			);
+		});
+	});
+
+	describe('Deprecated class and style props', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		it('still apply, merged with the new props, and warn', async () => {
+			// Fresh modules so the once-per-session warning state is reset
+			vi.resetModules();
+			const { default: FreshPopover } = await import('../');
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			const { container } = render(
+				<FreshPopover
+					{...defaultProps}
+					className="new-root"
+					classNameDialog="new-dialog"
+					classNameFooter="new-footer"
+					contentsClassName="old-dialog"
+					footer={<p>Footer</p>}
+					footerClassName="old-footer"
+					footerStyle={{ marginTop: '0px', color: 'red' }}
+					isOpen
+					styleFooter={{ marginTop: '4px' }}
+					triggerClassName="old-root"
+				>
+					<button type="button">Trigger</button>
+				</FreshPopover>
+			);
+
+			const root = container.querySelector(defaultIds.trigger).parentElement;
+			expect(root).toHaveClass('old-root', 'new-root');
+			expect(container.querySelector(`#${defaultIds.popover}`)).toHaveClass(
+				'old-dialog',
+				'new-dialog'
+			);
+			const footer = container.querySelector('.slds-popover__footer');
+			expect(footer).toHaveClass('old-footer', 'new-footer');
+			expect(footer.style.marginTop).toBe('4px');
+			expect(footer.style.color).toBe('red');
+
+			const messages = consoleError.mock.calls.map((call) => call.join(' '));
+			[
+				['contentsClassName', 'classNameDialog'],
+				['footerClassName', 'classNameFooter'],
+				['footerStyle', 'styleFooter'],
+				['triggerClassName', 'className'],
+			].forEach(([oldProp, newProp]) => {
+				expect(
+					messages.some(
+						(m) =>
+							m.includes(`\`${oldProp}\` will be removed`) &&
+							m.includes(`Use \`${newProp}\` instead.`)
+					)
+				).toBe(true);
+			});
+		});
+
+		it('applies classNameFooter and styleFooter when footerWalkthroughActions is used', () => {
 			const { container } = renderPopover({
 				isOpen: true,
 				variant: 'walkthrough',
 				classNameFooter: 'custom-walkthrough-footer',
+				styleFooter: { color: 'red' },
 				footerWalkthroughActions: <Button label="Next" />,
 				stepText: 'Step 1 of 2',
 			});
@@ -100,6 +189,7 @@ describe('SLDSPopover', () => {
 			const footer = container.querySelector('.slds-popover__footer');
 			expect(footer).toBeInTheDocument();
 			expect(footer).toHaveClass('custom-walkthrough-footer');
+			expect(footer.style.color).toBe('red');
 		});
 	});
 

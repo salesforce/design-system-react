@@ -62,12 +62,12 @@ class Example extends React.Component {
 			<div style={{ height: '640px' }}>
 				{getModal({
 					isOpen: true,
-					title: 'Modal Header',
+					heading: 'Modal Header',
 					children: modalContent,
 					onRequestClose: action('modal closed'),
 					footer: modalFooter(),
 					size: 'large',
-					footerClassNames: 'slds-grid slds-grid_align-spread',
+					classNameFooter: 'slds-grid slds-grid_align-spread',
 				})}
 			</div>
 		);
