@@ -310,6 +310,8 @@ const Carousel = ({
 	);
 
 	// Start autoplay. Panel changes and the final stop come from the timer, so they carry no event.
+	// No translation callback is passed: the interval outlives the render that created it, so a
+	// callback would use a stale panel. The currentPanel effect keeps the translation in sync.
 	const startAutoplay = useCallback(() => {
 		autoplayIdRef.current = setInterval(() => {
 			const {
@@ -324,21 +326,16 @@ const Carousel = ({
 				if (next > latestNrOfPanels - 1) {
 					next = 0;
 				}
-				setCurrentPanel(undefined, next, changeTranslationAutomatically);
+				setCurrentPanel(undefined, next);
 			} else if (latestIsInfinite) {
 				// Loop back to start
-				setCurrentPanel(undefined, 0, changeTranslationAutomatically);
+				setCurrentPanel(undefined, 0);
 			} else {
 				// Stop at end
 				stopAutoplay(undefined);
 			}
 		}, autoplayInterval);
-	}, [
-		autoplayInterval,
-		setCurrentPanel,
-		changeTranslationAutomatically,
-		stopAutoplay,
-	]);
+	}, [autoplayInterval, setCurrentPanel, stopAutoplay]);
 
 	// Panel navigation handlers
 	const onNextPanelHandler = useCallback(
