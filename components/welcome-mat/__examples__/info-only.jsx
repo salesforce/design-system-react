@@ -11,6 +11,7 @@ class Example extends React.Component {
 
 	state = {
 		isOpen: this.props.isOpen || false,
+		doNotShowAgain: false,
 	};
 
 	toggleOpen = () => {
@@ -32,6 +33,10 @@ class Example extends React.Component {
 							}}
 							doNotShowAgainCheckbox={
 								<Checkbox
+									checked={this.state.doNotShowAgain}
+									onChange={(event, data) =>
+										this.setState({ doNotShowAgain: data.checked })
+									}
 									id="welcome-mat-checkbox"
 									assistiveText={{
 										label: `Don't show this again`,

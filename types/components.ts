@@ -182,8 +182,6 @@ export interface CheckboxProps
   assistiveText?: Pick<AssistiveText, 'label'>;
   /** Whether the checkbox is checked */
   checked?: boolean;
-  /** Default checked state for uncontrolled component */
-  defaultChecked?: boolean;
   /** Error text to display */
   errorText?: string;
   /** Whether the checkbox is indeterminate */
