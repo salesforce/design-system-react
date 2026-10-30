@@ -4,7 +4,7 @@
 // Type-level regression tests, checked by `npm run typecheck`. Each
 // `@ts-expect-error` fails the build if the line below it stops erroring.
 
-import type { NavigationItem } from '../index';
+import VerticalNavigation, { type NavigationItem } from '../index';
 import Badge from '../../badge';
 import Icon from '../../icon';
 
@@ -23,3 +23,11 @@ export const unknownKey: NavigationItem = {
 	// @ts-expect-error items have no index signature
 	count: 3,
 };
+
+// Selection is controlled: `selectedId` and `onSelect` are required.
+// @ts-expect-error `selectedId` and `onSelect` are required
+export const missingSelection = <VerticalNavigation categories={[]} />;
+
+export const noSelection = (
+	<VerticalNavigation categories={[]} onSelect={() => {}} selectedId={null} />
+);

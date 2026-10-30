@@ -28,7 +28,7 @@ class Example extends React.Component {
 							eventName: 'Toggle expandable section!',
 							data,
 						});
-						this.setState({ isOpen: !this.state.isOpen });
+						this.setState({ isOpen: data.isOpen });
 					}}
 					title="Section Title"
 				>

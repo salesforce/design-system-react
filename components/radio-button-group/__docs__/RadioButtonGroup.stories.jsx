@@ -10,16 +10,16 @@ class RadioButtonGroupExample extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			checked: 'Tue',
+			value: 'Tue',
 		};
 		this.onChange = this.onChange.bind(this);
 	}
 
-	onChange(event) {
+	onChange(event, data) {
 		this.setState({
-			checked: event.target.value,
+			value: data.value,
 		});
-		action('onChange')(event);
+		action('onChange')(event, data);
 	}
 
 	render() {
@@ -37,6 +37,7 @@ class RadioButtonGroupExample extends React.Component {
 					}
 					labels={this.props.labels}
 					name="radio-button-group-name"
+					value={this.state.value}
 					onChange={this.onChange}
 					disabled={this.props.disabled}
 					required={this.props.required}
@@ -47,7 +48,6 @@ class RadioButtonGroupExample extends React.Component {
 							id={day}
 							labels={{ label: day }}
 							value={day}
-							checked={this.state.checked === day}
 							variant="button-group"
 						/>
 					))}

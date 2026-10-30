@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
@@ -830,6 +831,7 @@ describe('SimpleDataTable', () => {
 			expect(selectData).toEqual({
 				option: { id: 0, label: 'Add to Group', value: '1' },
 				optionIndex: 0,
+				value: '1',
 			});
 		});
 	});
@@ -1260,6 +1262,337 @@ describe('SimpleDataTable', () => {
 			expect(container.querySelectorAll('.custom-heading-row')).toHaveLength(2);
 			expect(container.querySelectorAll('.legacy-heading-row')).toHaveLength(0);
 			consoleError.mockRestore();
+		});
+	});
+
+	describe('Controlled selection', () => {
+		const renderColumns = () =>
+			columns.map((columnProps) => (
+				<SimpleDataTableColumn {...columnProps} key={columnProps.property} />
+			));
+
+		const getRowInput = (container, row) =>
+			getRow(container, row).querySelector('input');
+
+		const getSelectAll = (container) =>
+			getTable(container).querySelector('thead .slds-checkbox input');
+
+		it('renders the selection prop only: clicking a row does not change it until the parent does', async () => {
+			const onRowChange = vi.fn();
+			const { container } = renderTable(
+				<SimpleDataTable
+					{...defaultProps}
+					selection={[]}
+					onRowChange={onRowChange}
+				>
+					{renderColumns()}
+				</SimpleDataTable>
+			);
+
+			const user = userEvent.setup();
+			await user.click(getRowInput(container, 2));
+
+			expect(onRowChange).toHaveBeenCalledTimes(1);
+			expect(onRowChange.mock.calls[0][1].selection).toEqual([items[1]]);
+			expect(getRowInput(container, 2)).not.toBeChecked();
+			expect(getRow(container, 2)).not.toHaveClass('slds-is-selected');
+			expect(getRow(container, 2)).toHaveAttribute('aria-selected', 'false');
+		});
+
+		it('keeps a rejected deselection and select-all rendered as the prop says', async () => {
+			const onRowChange = vi.fn();
+			const { container } = renderTable(
+				<SimpleDataTable
+					{...defaultProps}
+					selection={[items[0]]}
+					onRowChange={onRowChange}
+				>
+					{renderColumns()}
+				</SimpleDataTable>
+			);
+
+			const user = userEvent.setup();
+			await user.click(getRowInput(container, 1));
+			expect(onRowChange.mock.calls[0][1].selection).toEqual([]);
+			expect(getRowInput(container, 1)).toBeChecked();
+
+			await user.click(getSelectAll(container));
+			expect(onRowChange.mock.calls[1][1].selection).toHaveLength(items.length);
+			expect(getSelectAll(container)).not.toBeChecked();
+			expect(
+				getTable(container).querySelectorAll('tbody input:checked')
+			).toHaveLength(1);
+		});
+
+		it('follows the parent when it applies the requested selection', async () => {
+			const Wrapper = () => {
+				const [selection, setSelection] = useState([]);
+				return (
+					<SimpleDataTable
+						{...defaultProps}
+						selection={selection}
+						onRowChange={(event, data) => setSelection(data.selection)}
+					>
+						{renderColumns()}
+					</SimpleDataTable>
+				);
+			};
+			const { container } = renderTable(<Wrapper />);
+
+			const user = userEvent.setup();
+			await user.click(getRowInput(container, 2));
+			expect(getRowInput(container, 2)).toBeChecked();
+			expect(getRow(container, 2)).toHaveClass('slds-is-selected');
+
+			await user.click(getRowInput(container, 2));
+			expect(getRowInput(container, 2)).not.toBeChecked();
+
+			await user.click(getSelectAll(container));
+			expect(
+				getTable(container).querySelectorAll('tbody input:checked')
+			).toHaveLength(items.length);
+			expect(getSelectAll(container)).toBeChecked();
+		});
+
+		it('matches selection to items by id, so fresh item objects still match', async () => {
+			const onRowChange = vi.fn();
+			const freshSelection = [{ ...items[0] }, { ...items[2] }];
+			const { container } = renderTable(
+				<SimpleDataTable
+					{...defaultProps}
+					selection={freshSelection}
+					onRowChange={onRowChange}
+				>
+					{renderColumns()}
+				</SimpleDataTable>
+			);
+
+			expect(getRowInput(container, 1)).toBeChecked();
+			expect(getRowInput(container, 2)).not.toBeChecked();
+			expect(getRowInput(container, 3)).toBeChecked();
+			expect(getSelectAll(container).indeterminate).toBe(true);
+
+			const user = userEvent.setup();
+			await user.click(getRowInput(container, 1));
+			expect(
+				onRowChange.mock.calls[0][1].selection.map((item) => item.id)
+			).toEqual([items[2].id]);
+		});
+
+		it('checks select-all when every row is selected with fresh objects', () => {
+			const { container } = renderTable(
+				<SimpleDataTable
+					{...defaultProps}
+					selection={items.map((item) => ({ ...item }))}
+				>
+					{renderColumns()}
+				</SimpleDataTable>
+			);
+
+			expect(getSelectAll(container)).toBeChecked();
+			expect(getSelectAll(container).indeterminate).toBe(false);
+		});
+
+		it('ignores selected items that are not rows when computing select-all', () => {
+			const { container } = renderTable(
+				<SimpleDataTable
+					{...defaultProps}
+					items={items.slice(0, 2)}
+					selection={[items[0], items[4]]}
+				>
+					{renderColumns()}
+				</SimpleDataTable>
+			);
+
+			expect(getSelectAll(container)).not.toBeChecked();
+			expect(getSelectAll(container).indeterminate).toBe(true);
+		});
+
+		it('matches disabledSelection by id and keeps disabled rows out of select-all', async () => {
+			const onRowChange = vi.fn();
+			const { container } = renderTable(
+				<SimpleDataTable
+					{...defaultProps}
+					selection={[{ ...items[0] }]}
+					disabledSelection={[{ ...items[0] }, { ...items[1] }]}
+					onRowChange={onRowChange}
+				>
+					{renderColumns()}
+				</SimpleDataTable>
+			);
+
+			expect(getRowInput(container, 1)).toBeDisabled();
+			expect(getRowInput(container, 1)).toBeChecked();
+			expect(getRowInput(container, 2)).toBeDisabled();
+
+			fireEvent.click(getRowInput(container, 2));
+			fireEvent.change(getRowInput(container, 2), {
+				target: { checked: true },
+			});
+			expect(onRowChange).not.toHaveBeenCalled();
+
+			const user = userEvent.setup();
+			await user.click(getSelectAll(container));
+			const ids = onRowChange.mock.calls[0][1].selection.map((item) => item.id);
+			expect(ids).toHaveLength(items.length - 1);
+			expect(ids).toContain(items[0].id);
+			expect(ids).not.toContain(items[1].id);
+		});
+
+		it('renders radio rows from the selection prop only', async () => {
+			const onRowChange = vi.fn();
+			const { container } = renderTable(
+				<SimpleDataTable
+					{...defaultProps}
+					selectRows="radio"
+					selection={[{ ...items[0] }]}
+					onRowChange={onRowChange}
+				>
+					{renderColumns()}
+				</SimpleDataTable>
+			);
+
+			expect(getRowInput(container, 1)).toBeChecked();
+
+			const user = userEvent.setup();
+			await user.click(getRowInput(container, 2));
+			expect(onRowChange.mock.calls[0][1].selection).toEqual([items[1]]);
+			expect(getRowInput(container, 1)).toBeChecked();
+			expect(getRowInput(container, 2)).not.toBeChecked();
+		});
+
+		it('still calls the deprecated onChange(selection, event), and warns', async () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const onChange = vi.fn();
+			const onRowChange = vi.fn();
+			const { container } = renderTable(
+				<SimpleDataTable
+					{...defaultProps}
+					selection={[]}
+					onChange={onChange}
+					onRowChange={onRowChange}
+				>
+					{renderColumns()}
+				</SimpleDataTable>
+			);
+
+			const user = userEvent.setup();
+			await user.click(getRowInput(container, 3));
+
+			expect(onChange).toHaveBeenCalledTimes(1);
+			expect(onChange.mock.calls[0][0]).toEqual([items[2]]);
+			expect(onChange.mock.calls[0][1]).toHaveProperty('target');
+			expect(onRowChange).toHaveBeenCalledTimes(1);
+			expect(onRowChange.mock.calls[0][1].selection).toEqual([items[2]]);
+			expect(
+				consoleError.mock.calls.some((args) => {
+					const message = args.join(' ');
+					return (
+						message.includes('`onChange`') && message.includes('`onRowChange`')
+					);
+				})
+			).toBe(true);
+			consoleError.mockRestore();
+		});
+	});
+
+	describe('Controlled sort', () => {
+		const renderSortable = (columnProps, onSort) =>
+			renderTable(
+				<SimpleDataTable
+					{...defaultProps}
+					selection={[]}
+					fixedLayout
+					onSort={onSort}
+				>
+					<SimpleDataTableColumn label="Name" property="name" />
+					<SimpleDataTableColumn
+						label="Count"
+						property="count"
+						sortable
+						{...columnProps}
+					/>
+				</SimpleDataTable>
+			);
+
+		const getSortHeader = (container) =>
+			getTable(container).querySelector('thead th[id$="-count-th"]');
+
+		it('renders sortDirection from props only and requests the opposite on every click', () => {
+			const onSort = vi.fn();
+			const { container } = renderSortable(
+				{ isSorted: true, sortDirection: 'asc' },
+				onSort
+			);
+			const header = getSortHeader(container);
+
+			fireEvent.click(header.querySelector('a'));
+			fireEvent.click(header.querySelector('a'));
+
+			expect(onSort.mock.calls.map(([data]) => data.sortDirection)).toEqual([
+				'desc',
+				'desc',
+			]);
+			expect(getSortHeader(container)).toHaveAttribute(
+				'aria-sort',
+				'ascending'
+			);
+			expect(getSortHeader(container)).toHaveClass('slds-is-sorted_asc');
+			expect(getSortHeader(container)).not.toHaveClass('slds-is-sorted_desc');
+		});
+
+		it('keeps no internal direction when sortDirection is not passed', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const onSort = vi.fn();
+			const { container } = renderSortable({ isSorted: true }, onSort);
+
+			fireEvent.click(getSortHeader(container).querySelector('a'));
+			fireEvent.click(getSortHeader(container).querySelector('a'));
+
+			expect(onSort.mock.calls.map(([data]) => data.sortDirection)).toEqual([
+				'asc',
+				'asc',
+			]);
+			expect(getSortHeader(container)).not.toHaveClass('slds-is-sorted_desc');
+			consoleError.mockRestore();
+		});
+
+		it('follows the parent when it applies the requested direction', () => {
+			const Wrapper = () => {
+				const [sortDirection, setSortDirection] = useState('asc');
+				return (
+					<SimpleDataTable
+						{...defaultProps}
+						selection={[]}
+						fixedLayout
+						onSort={(data) => setSortDirection(data.sortDirection)}
+					>
+						<SimpleDataTableColumn
+							isSorted
+							label="Count"
+							property="count"
+							sortable
+							sortDirection={sortDirection}
+						/>
+					</SimpleDataTable>
+				);
+			};
+			const { container } = renderTable(<Wrapper />);
+
+			fireEvent.click(getSortHeader(container).querySelector('a'));
+			expect(getSortHeader(container)).toHaveAttribute(
+				'aria-sort',
+				'descending'
+			);
+			fireEvent.click(getSortHeader(container).querySelector('a'));
+			expect(getSortHeader(container)).toHaveAttribute(
+				'aria-sort',
+				'ascending'
+			);
 		});
 	});
 });

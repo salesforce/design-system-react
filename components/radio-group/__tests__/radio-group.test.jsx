@@ -1,59 +1,58 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import RadioGroup from '../';
 import Radio from '../radio';
 
-class RadioGroupExample extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { checked: 'Radio Label One' };
-	}
+const values = ['Radio Label One', 'Radio Label Two'];
 
-	render() {
-		const values = ['Radio Label One', 'Radio Label Two'];
-		return (
-			<RadioGroup
-				labels={this.props.labels}
-				onChange={(event) => this.setState({ checked: event.target.value })}
-				disabled={this.props.disabled}
-				required={this.props.required}
-			>
-				{values.map((value) => (
-					<Radio
-						key={value}
-						labels={{ label: value }}
-						value={value}
-						checked={this.state.checked === value}
-						variant="base"
-					/>
-				))}
-			</RadioGroup>
-		);
-	}
-}
-
-RadioGroupExample.defaultProps = {
-	labels: { label: 'Radio Group Label' },
+const RadioGroupExample = ({
+	labels = { label: 'Radio Group Label' },
+	initialValue = 'Radio Label One',
+	onChange,
+	...rest
+}) => {
+	const [value, setValue] = useState(initialValue);
+	return (
+		<RadioGroup
+			labels={labels}
+			value={value}
+			onChange={(event, data) => {
+				onChange?.(event, data);
+				setValue(data.value);
+			}}
+			{...rest}
+		>
+			{values.map((radioValue) => (
+				<Radio
+					key={radioValue}
+					labels={{ label: radioValue }}
+					value={radioValue}
+					variant="base"
+				/>
+			))}
+		</RadioGroup>
+	);
 };
 
+const getRadio = (container, value) =>
+	container.querySelector(`input[value="${value}"]`);
+
 describe('RadioGroup', () => {
+	afterEach(() => {
+		vi.restoreAllMocks();
+	});
+
 	it('renders a radio group', () => {
 		const { container } = render(<RadioGroupExample />);
 
 		const radios = container.querySelectorAll('input[type="radio"]');
 		expect(radios).toHaveLength(2);
 
-		// Check that the first radio is checked
-		const radio1 = container.querySelector('input[value="Radio Label One"]');
-		expect(radio1).toBeChecked();
+		expect(getRadio(container, 'Radio Label One')).toBeChecked();
+		expect(getRadio(container, 'Radio Label Two')).not.toBeChecked();
 
-		// Check that the second radio is not checked
-		const radio2 = container.querySelector('input[value="Radio Label Two"]');
-		expect(radio2).not.toBeChecked();
-
-		// Check for the legend
 		const legend = container.querySelector('legend');
 		expect(legend).toBeInTheDocument();
 		expect(legend.textContent).toBe('Radio Group Label');
@@ -76,22 +75,105 @@ describe('RadioGroup', () => {
 		expect(abbr.textContent).toContain('Required');
 	});
 
-	it('triggers a change callback', () => {
-		const { container } = render(<RadioGroupExample />);
+	it('selects the radio the parent stores from onChange', () => {
+		const onChange = vi.fn();
+		const { container } = render(<RadioGroupExample onChange={onChange} />);
 
-		// Initially Radio Label Two is not checked
-		let radio2 = container.querySelector('input[value="Radio Label Two"]');
-		expect(radio2).not.toBeChecked();
+		fireEvent.click(getRadio(container, 'Radio Label Two'));
 
-		// Click Radio Label Two
-		fireEvent.click(radio2);
+		expect(onChange).toHaveBeenCalledTimes(1);
+		expect(onChange.mock.calls[0][0].target).toBe(
+			getRadio(container, 'Radio Label Two')
+		);
+		expect(onChange.mock.calls[0][1]).toEqual({
+			value: 'Radio Label Two',
+			checked: true,
+		});
+		expect(getRadio(container, 'Radio Label Two')).toBeChecked();
+		expect(getRadio(container, 'Radio Label One')).not.toBeChecked();
+	});
 
-		// After click, Radio Label Two should be checked
-		radio2 = container.querySelector('input[value="Radio Label Two"]');
-		expect(radio2).toBeChecked();
+	it('honors value: selection does not change unless the parent updates it', () => {
+		const onChange = vi.fn();
+		const { container, rerender } = render(
+			<RadioGroup value="a" onChange={onChange}>
+				<Radio labels={{ label: 'A' }} value="a" />
+				<Radio labels={{ label: 'B' }} value="b" />
+			</RadioGroup>
+		);
 
-		// Radio Label One should no longer be checked
-		const radio1 = container.querySelector('input[value="Radio Label One"]');
-		expect(radio1).not.toBeChecked();
+		fireEvent.click(getRadio(container, 'b'));
+		expect(onChange.mock.calls[0][1]).toEqual({ value: 'b', checked: true });
+		expect(getRadio(container, 'a')).toBeChecked();
+		expect(getRadio(container, 'b')).not.toBeChecked();
+
+		rerender(
+			<RadioGroup value="b" onChange={onChange}>
+				<Radio labels={{ label: 'A' }} value="a" />
+				<Radio labels={{ label: 'B' }} value="b" />
+			</RadioGroup>
+		);
+		expect(getRadio(container, 'a')).not.toBeChecked();
+		expect(getRadio(container, 'b')).toBeChecked();
+	});
+
+	it('renders no selection for value null and ignores checked on children', () => {
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const { container } = render(
+			<RadioGroup value={null} onChange={() => {}}>
+				<Radio labels={{ label: 'A' }} value="a" checked />
+				<Radio labels={{ label: 'B' }} value="b" />
+			</RadioGroup>
+		);
+
+		expect(getRadio(container, 'a')).not.toBeChecked();
+		expect(getRadio(container, 'b')).not.toBeChecked();
+		const messages = consoleError.mock.calls.map((args) => args.join(' '));
+		expect(messages.some((m) => m.includes('SLDSRadioGroup'))).toBe(false);
+	});
+
+	it('reports value null when a deselectable radio is deselected', () => {
+		const onChange = vi.fn();
+		const { container } = render(
+			<RadioGroup value="a" onChange={onChange}>
+				<Radio labels={{ label: 'A' }} value="a" deselectable />
+				<Radio labels={{ label: 'B' }} value="b" deselectable />
+			</RadioGroup>
+		);
+
+		fireEvent.click(getRadio(container, 'a'));
+		expect(onChange).toHaveBeenCalledTimes(1);
+		expect(onChange.mock.calls[0][1]).toEqual({ value: null, checked: false });
+		expect(getRadio(container, 'a')).toBeChecked();
+	});
+
+	it('still supports checked on each Radio without a group value, and warns', () => {
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+
+		const LegacyExample = () => {
+			const [checked, setChecked] = useState('a');
+			return (
+				<RadioGroup onChange={(event) => setChecked(event.target.value)}>
+					<Radio labels={{ label: 'A' }} value="a" checked={checked === 'a'} />
+					<Radio labels={{ label: 'B' }} value="b" checked={checked === 'b'} />
+				</RadioGroup>
+			);
+		};
+		const { container } = render(<LegacyExample />);
+
+		expect(getRadio(container, 'a')).toBeChecked();
+		fireEvent.click(getRadio(container, 'b'));
+		expect(getRadio(container, 'b')).toBeChecked();
+		expect(getRadio(container, 'a')).not.toBeChecked();
+
+		const messages = consoleError.mock.calls.map((args) => args.join(' '));
+		const warnings = messages.filter(
+			(m) => m.includes('SLDSRadioGroup') && m.includes('`value`')
+		);
+		expect(warnings).toHaveLength(1);
 	});
 });

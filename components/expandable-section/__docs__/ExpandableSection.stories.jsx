@@ -24,7 +24,10 @@ export default {
 export const Default = {
 	render: () => (
 		<ExpandableSection title="Expandable Section">
-			<p>This is the content of the expandable section. It can contain any React content.</p>
+			<p>
+				This is the content of the expandable section. It can contain any React
+				content.
+			</p>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 		</ExpandableSection>
 	),
@@ -32,19 +35,11 @@ export const Default = {
 
 // Initially collapsed
 export const InitiallyCollapsed = {
-	render: () => {
-		const [isOpen, setIsOpen] = useState(false);
-
-		return (
-			<ExpandableSection
-				title="Initially Collapsed"
-				isOpen={isOpen}
-				onToggleOpen={(e, { isOpen: currentOpen }) => setIsOpen(!currentOpen)}
-			>
-				<p>This section starts collapsed. Click to expand.</p>
-			</ExpandableSection>
-		);
-	},
+	render: () => (
+		<ExpandableSection title="Initially Collapsed" defaultIsOpen={false}>
+			<p>This section starts collapsed. Click to expand.</p>
+		</ExpandableSection>
+	),
 };
 
 // Non-collapsible
@@ -72,7 +67,7 @@ export const Controlled = {
 				<ExpandableSection
 					title="Controlled Section"
 					isOpen={isOpen}
-					onToggleOpen={(e, { isOpen: currentOpen }) => setIsOpen(!currentOpen)}
+					onToggleOpen={(e, { isOpen: nextIsOpen }) => setIsOpen(nextIsOpen)}
 				>
 					<p>This section is controlled by external state.</p>
 				</ExpandableSection>

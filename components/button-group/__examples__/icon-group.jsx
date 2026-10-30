@@ -8,11 +8,25 @@ import IconSettings from '~/components/icon-settings';
 class Example extends React.Component {
 	static displayName = 'ButtonGroupExample';
 
+	state = {
+		isActive: {},
+		'icon-dropdown-example-1': 'A0',
+		'icon-dropdown-example-2': 'A0',
+	};
+
+	handleClick = (id) => (event, data) => {
+		this.setState((previous) => ({
+			isActive: { ...previous.isActive, [id]: data.isActive },
+		}));
+	};
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<ButtonGroup id="button-group-icon-group-1">
 					<ButtonStateful
+						isActive={!!this.state.isActive.chart1}
+						onClick={this.handleClick('chart1')}
 						assistiveText={{ icon: 'Show Chart' }}
 						buttonVariant="icon"
 						iconName="chart"
@@ -20,6 +34,8 @@ class Example extends React.Component {
 						variant="icon"
 					/>
 					<ButtonStateful
+						isActive={!!this.state.isActive.filter1}
+						onClick={this.handleClick('filter1')}
 						assistiveText={{ icon: 'Filter List' }}
 						iconName="filterList"
 						iconVariant="border"
@@ -32,15 +48,16 @@ class Example extends React.Component {
 						iconName="settings"
 						iconVariant="more"
 						id="icon-dropdown-example-1"
-						onSelect={(event, { option }) => {
+						onSelect={(event, { option, value }) => {
 							console.log(option.label, 'selected');
+							this.setState({ 'icon-dropdown-example-1': value });
 						}}
 						openOn="click"
 						options={[
 							{ label: 'Bring left panel to front', value: 'A0' },
 							{ label: 'Bring right panel to front', value: 'B0' },
 						]}
-						value="A0"
+						value={this.state['icon-dropdown-example-1']}
 						variant="icon"
 					/>
 				</ButtonGroup>
@@ -51,6 +68,8 @@ class Example extends React.Component {
 					labels={{ label: 'Actions' }}
 				>
 					<ButtonStateful
+						isActive={!!this.state.isActive.chart2}
+						onClick={this.handleClick('chart2')}
 						assistiveText={{ icon: 'Show Chart' }}
 						buttonVariant="icon"
 						iconName="chart"
@@ -58,6 +77,8 @@ class Example extends React.Component {
 						variant="icon"
 					/>
 					<ButtonStateful
+						isActive={!!this.state.isActive.filter2}
+						onClick={this.handleClick('filter2')}
 						assistiveText={{ icon: 'Filter List' }}
 						iconName="filterList"
 						iconVariant="border"
@@ -70,15 +91,16 @@ class Example extends React.Component {
 						iconName="settings"
 						iconVariant="more"
 						id="icon-dropdown-example-2"
-						onSelect={(event, { option }) => {
+						onSelect={(event, { option, value }) => {
 							console.log(option.label, 'selected');
+							this.setState({ 'icon-dropdown-example-2': value });
 						}}
 						openOn="click"
 						options={[
 							{ label: 'Bring left panel to front', value: 'A0' },
 							{ label: 'Bring right panel to front', value: 'B0' },
 						]}
-						value="A0"
+						value={this.state['icon-dropdown-example-2']}
 						variant="icon"
 					/>
 				</ButtonGroup>

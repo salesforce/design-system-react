@@ -2,7 +2,6 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
-	useState,
 	useId,
 	useCallback,
 	useEffect,
@@ -13,6 +12,7 @@ import classNames from 'classnames';
 import ToggleButton, { TOGGLE_BUTTON_WIDTH } from './private/toggle-button';
 import { SPLIT_VIEW } from '../../utilities/constants';
 import checkProps from './check-props';
+import { useControllableState } from '../../utilities/hooks';
 import componentDoc from './component.json';
 
 /**
@@ -43,7 +43,7 @@ export interface SplitViewToggleData {
 export interface SplitViewEvents {
 	/**
 	 * Called when the toggle button is clicked. `data.isOpen` is the requested (next) open state.
-	 * In controlled mode (`isOpen` passed), update `isOpen` from this callback.
+	 * Called whether or not `isOpen` is controlled; when `isOpen` is passed, update it from this callback.
 	 */
 	onToggle?: (
 		event: MouseEvent<HTMLButtonElement>,
@@ -79,8 +79,17 @@ export interface SplitViewProps {
 	events?: SplitViewEvents;
 	/** HTML id */
 	id?: string;
-	/** Whether the split view is open */
+	/**
+	 * Whether the split view is open. Pass it to control the open state and update it from
+	 * `events.onToggle`. Leave it `undefined` to let the split view manage the open state itself,
+	 * starting from `defaultIsOpen`.
+	 */
 	isOpen?: boolean;
+	/**
+	 * Whether the split view starts open when `isOpen` is not passed.
+	 * Defaults to `true` (the split view starts open); an exception to the boolean-default rule.
+	 */
+	defaultIsOpen?: boolean;
 	/** Master panel content (required) */
 	master: ReactNode;
 	/** Width of the master section */
@@ -101,7 +110,8 @@ const SplitView = ({
 	detail,
 	events = {},
 	id: propId,
-	isOpen: controlledIsOpen,
+	isOpen: isOpenProp,
+	defaultIsOpen = true,
 	master,
 	masterWidth = '20rem',
 }: SplitViewProps): React.ReactElement => {
@@ -128,20 +138,14 @@ const SplitView = ({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []); // Only run on mount
 
-	// Support both controlled and uncontrolled modes
-	const [internalIsOpen, setInternalIsOpen] = useState(
-		typeof controlledIsOpen === 'boolean' ? controlledIsOpen : true
-	);
-
-	const isOpen =
-		typeof controlledIsOpen === 'boolean' ? controlledIsOpen : internalIsOpen;
+	// Open state is ephemeral UI state: controlled when `isOpen` is passed
+	const [isOpen, setIsOpen] = useControllableState(isOpenProp, defaultIsOpen);
 	const masterViewId = `master_view_${id}`;
 
 	const handleToggle = useCallback(
 		(event: MouseEvent<HTMLButtonElement>) => {
-			if (typeof controlledIsOpen !== 'boolean') {
-				setInternalIsOpen((prev) => !prev);
-			}
+			// No-op when `isOpen` is controlled
+			setIsOpen(!isOpen);
 
 			if (events.onToggle) {
 				events.onToggle(event, { isOpen: !isOpen });
@@ -151,7 +155,7 @@ const SplitView = ({
 				events.onOpen(event);
 			}
 		},
-		[controlledIsOpen, isOpen, events]
+		[setIsOpen, isOpen, events]
 	);
 
 	return (

@@ -31,7 +31,10 @@ import lowPriorityWarning from '../../utilities/warning/low-priority-warning';
 import { DATE_PICKER } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
 import { IconSettingsContext } from '../icon-settings';
-import { useClickOutside } from '../../utilities/hooks/use-click-outside';
+import {
+	useClickOutside,
+	useControllableState,
+} from '../../utilities/hooks';
 
 // ===== Types =====
 
@@ -52,8 +55,14 @@ export interface DatePickerLabels {
 }
 
 export interface DatePickerChangeData {
-	date: Date;
+	/**
+	 * The requested date: the selected calendar date, or the result of `parser` for typed text.
+	 * `null` when the input is cleared.
+	 */
+	date: Date | null;
+	/** The formatted date, or the typed text */
 	formattedDate: string;
+	/** `date.getTimezoneOffset()`, or the current offset when `date` is `null` */
 	timezoneOffset: number;
 }
 
@@ -78,9 +87,10 @@ export interface DatePickerRequestOpenData {
  * - `escape`: Escape was pressed in the input or in the calendar
  * - `enter`: Enter was pressed in the input
  * - `click-outside`: a mousedown/touchstart happened outside the DatePicker
+ * - `input-change`: the user typed in the input
  */
 export type DatePickerRequestCloseTrigger =
-	'date-select' | 'escape' | 'enter' | 'click-outside';
+	'date-select' | 'escape' | 'enter' | 'click-outside' | 'input-change';
 
 /** Data passed to `onRequestClose` */
 export interface DatePickerRequestCloseData {
@@ -110,10 +120,8 @@ export interface DatePickerProps {
 	disabled?: boolean;
 	/** Function to determine if a date should be disabled */
 	dateDisabled?: (date: Date) => boolean;
-	/** Date formatting function */
+	/** Date formatting function. Called with `null` when there is no date. */
 	formatter?: (date: Date | null | undefined) => string;
-	/** Initial formatted value (deprecated) */
-	formattedValue?: string;
 	/** Whether to show error state */
 	hasError?: boolean;
 	/** Prevent dropdown position flipping */
@@ -122,7 +130,15 @@ export interface DatePickerProps {
 	id?: string;
 	/** Custom input component */
 	input?: ReactElement;
-	/** Whether dropdown is open (controlled) */
+	/**
+	 * Initial open state of the calendar when `isOpen` is not set (uncontrolled). Defaults to `false`.
+	 */
+	defaultIsOpen?: boolean;
+	/**
+	 * Whether the calendar is open. When set, the calendar is controlled: it never opens or closes
+	 * itself, so update it from `onRequestOpen` and `onRequestClose`. When `undefined`, the calendar
+	 * manages its own open state (see `defaultIsOpen`).
+	 */
 	isOpen?: boolean;
 	/** Make Monday first day of week */
 	isIsoWeekday?: boolean;
@@ -135,7 +151,11 @@ export interface DatePickerProps {
 		event: React.SyntheticEvent | null,
 		data: { date?: Date; ref?: HTMLElement; direction?: string }
 	) => void;
-	/** Called when date changes */
+	/**
+	 * Called when the user selects a date in the calendar or types in the input. `value` is
+	 * controlled: set it to `data.date` here (or keep the old value to reject the change).
+	 * Clearing the input reports `date: null`.
+	 */
 	onChange?: (event: React.SyntheticEvent, data: DatePickerChangeData) => void;
 	/**
 	 * Called after the calendar has closed. `event` is `undefined` because the close
@@ -155,16 +175,17 @@ export interface DatePickerProps {
 	 * `event` is the triggering React event; for `trigger: 'click-outside'` it is the
 	 * native `mousedown`/`touchstart` event from the document listener. It is typed as
 	 * possibly `undefined` because the internal calendar's close request has an optional event.
-	 * In uncontrolled mode the calendar also closes itself; in controlled mode (`isOpen`)
-	 * set `isOpen` to `false` here.
+	 * When `isOpen` is `undefined` the calendar also closes itself; when `isOpen` is set,
+	 * set it to `false` here.
 	 */
 	onRequestClose?: (
 		event: React.SyntheticEvent | MouseEvent | TouchEvent | undefined,
 		data: DatePickerRequestCloseData
 	) => void;
 	/**
-	 * Called when the calendar requests to open. If provided, the calendar does not open
-	 * itself: set `isOpen` to `true` here. Not fired by the arrow keys while already open.
+	 * Called when the calendar requests to open (input click, icon click, or Down/Up arrow).
+	 * When `isOpen` is `undefined` the calendar also opens itself; when `isOpen` is set, set it
+	 * to `true` here. Not fired by the arrow keys while already open.
 	 */
 	onRequestOpen?: (
 		event: React.MouseEvent | KeyboardEvent,
@@ -180,8 +201,12 @@ export interface DatePickerProps {
 	relativeYearTo?: number;
 	/** CSS classes for trigger wrapper */
 	triggerClassName?: string | string[] | Record<string, boolean>;
-	/** Selected date value */
-	value?: Date;
+	/**
+	 * Selected date, or `null` for no date. Required and controlled: the input and calendar
+	 * always reflect it, and the input's typed text is reset from it whenever it changes.
+	 * Update it from `onChange`. (`undefined` is treated as `null` and warns in development.)
+	 */
+	value: Date | null;
 	/** @deprecated Use labels.label */
 	label?: string;
 	/** @deprecated Use labels.placeholder */
@@ -251,6 +276,16 @@ const defaultParser = (str: string): Date => {
 	return new Date(str);
 };
 
+const isDate = (date: unknown): date is Date =>
+	Object.prototype.toString.call(date) === '[object Date]';
+
+/**
+ * Stable identity of a `value`, so a parent passing `new Date(...)` on every render does not
+ * re-sync the typed text. Invalid dates share one key.
+ */
+const getDateKey = (date: Date | null): string =>
+	date ? String(date.getTime()) : 'null';
+
 // ===== Component =====
 
 const Datepicker: React.FC<DatePickerProps> = (props) => {
@@ -261,8 +296,8 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		children,
 		disabled,
 		dateDisabled = () => false,
+		defaultIsOpen = false,
 		formatter = defaultFormatter,
-		formattedValue: formattedValueProp,
 		hasError,
 		hasStaticAlignment,
 		id: idProp,
@@ -282,7 +317,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		relativeYearFrom = -10,
 		relativeYearTo = 10,
 		triggerClassName,
-		value,
+		value: valueProp,
 		// Deprecated props
 		label,
 		placeholder,
@@ -306,19 +341,34 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 	const selectedDateCellRef = useRef<HTMLElement | null>(null);
 	const generatedId = useRef(generateId());
 
+	// `value` is controlled data; `undefined` (warned in `checkProps`) means no date
+	const value = valueProp ?? null;
+	const valueKey = getDateKey(value);
+
 	// State
-	const [isOpenState, setIsOpenState] = useState(false);
+	// The calendar's open state is ephemeral UI: controlled when `isOpen` is set
+	const [isOpen, setIsOpen] = useControllableState(isOpenProp, defaultIsOpen);
 	const [isOpenFromIcon, setIsOpenFromIcon] = useState(false);
-	const [internalValue, setInternalValue] = useState<Date | undefined>(value);
-	const [formattedValue, setFormattedValue] = useState(() => {
-		const dateString = formatter(value);
-		return value ? dateString : formattedValueProp || '';
-	});
-	const [inputValue, setInputValue] = useState(() => {
-		const dateString = formatter(value);
-		return value ? dateString : formattedValueProp || '';
-	});
+	// The input's text is a buffer so it can hold partial input. `valueKey` is the `value` it was
+	// last synced from, and `typedKey` the date reported for the typed text.
+	const [inputBuffer, setInputBuffer] = useState<{
+		text: string;
+		valueKey: string;
+		typedKey: string | null;
+	}>(() => ({ text: formatter(value), valueKey, typedKey: null }));
 	const [inputRendered, setInputRendered] = useState(false);
+
+	// Re-sync the typed text whenever `value` changes, unless the change is the parent accepting
+	// the date that was just typed (so the user's text is not reformatted mid-typing)
+	if (inputBuffer.valueKey !== valueKey) {
+		setInputBuffer({
+			text:
+				inputBuffer.typedKey === valueKey ? inputBuffer.text : formatter(value),
+			valueKey,
+			typedKey: null,
+		});
+	}
+	const inputValue = inputBuffer.text;
 
 	// Check props on mount (only in development)
 	useEffect(() => {
@@ -335,17 +385,12 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 	// Derived state
 	const getId = useCallback(() => idProp || generatedId.current, [idProp]);
 
-	const getIsOpen = useCallback(() => {
-		return !!(typeof isOpenProp === 'boolean' ? isOpenProp : isOpenState);
-	}, [isOpenProp, isOpenState]);
+	const getIsOpen = useCallback(() => !!isOpen, [isOpen]);
 
 	const parseDate = useCallback(
 		(dateString: string): Date => {
 			let parsedDate = parser(dateString);
-			if (
-				Object.prototype.toString.call(parsedDate) !== '[object Date]' ||
-				isNaN(parsedDate.getTime())
-			) {
+			if (!isDate(parsedDate) || isNaN(parsedDate.getTime())) {
 				parsedDate = new Date();
 			}
 			return parsedDate;
@@ -368,14 +413,15 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 
 			onRequestClose?.(event, data);
 
-			setIsOpenState(false);
+			// No-op when `isOpen` is controlled: the parent decides
+			setIsOpen(false);
 			setIsOpenFromIcon(false);
 
 			if (inputRef.current) {
 				inputRef.current.focus();
 			}
 		},
-		[onRequestClose, getIsOpen]
+		[onRequestClose, getIsOpen, setIsOpen]
 	);
 
 	const handleCalendarRequestClose = useCallback(
@@ -423,13 +469,12 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 			if (!fromIcon) {
 				setIsOpenFromIcon(false);
 			}
-			if (onRequestOpen) {
-				onRequestOpen(event, data);
-			} else {
-				setIsOpenState(true);
-			}
+
+			// No-op when `isOpen` is controlled: the parent decides
+			setIsOpen(true);
+			onRequestOpen?.(event, data);
 		},
-		[onRequestOpen]
+		[onRequestOpen, setIsOpen]
 	);
 
 	const openDialogFromIcon = useCallback(
@@ -442,12 +487,6 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 
 	const handleCalendarChange = useCallback(
 		(event: React.SyntheticEvent, { date }: { date: Date }) => {
-			if (!value) {
-				setInternalValue(date);
-				setFormattedValue(formatter(date));
-				setInputValue(formatter(date));
-			}
-
 			handleRequestClose(event, { trigger: 'date-select' });
 
 			if (onChange) {
@@ -458,30 +497,35 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 				});
 			}
 		},
-		[value, formatter, handleRequestClose, onChange]
+		[formatter, handleRequestClose, onChange]
 	);
 
 	const handleInputChange = useCallback(
 		(event: ChangeEvent<HTMLInputElement>) => {
-			// Typing in the input closes the calendar when it's used as an uncontrolled component
-			if (typeof isOpenProp !== 'boolean' && isOpenState) {
-				setIsOpenState(false);
-			}
+			const text = event.target.value;
+			// Clearing the input requests no date. `parser` is typed to return a `Date`, but guard
+			// against parsers that return `null` for partial input.
+			const parsedDate = text === '' ? null : parser(text);
+			const date = isDate(parsedDate) ? parsedDate : null;
 
-			setFormattedValue(event.target.value);
-			setInputValue(event.target.value);
+			setInputBuffer((buffer) => ({
+				...buffer,
+				text,
+				typedKey: getDateKey(date),
+			}));
 
-			const date = parser(event.target.value);
+			// Typing closes the calendar, through the same request path as the keyboard and mouse
+			handleRequestClose(event, { trigger: 'input-change' });
 
 			if (onChange) {
 				onChange(event, {
 					date,
-					formattedDate: event.target.value,
-					timezoneOffset: date.getTimezoneOffset(),
+					formattedDate: text,
+					timezoneOffset: (date ?? new Date()).getTimezoneOffset(),
 				});
 			}
 		},
-		[isOpenProp, isOpenState, parser, onChange]
+		[handleRequestClose, parser, onChange]
 	);
 
 	const handleKeyDown = useCallback(
@@ -549,14 +593,11 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 
 	const getDatePicker = useCallback(() => {
 		let date: Date;
-		// Use props if present. Otherwise, use state.
 		if (value) {
 			const formattedDate = formatter(value);
 			date = formattedDate ? parseDate(formattedDate) : value;
 		} else {
-			date = formattedValue
-				? parseDate(formattedValue)
-				: internalValue || new Date();
+			date = new Date();
 		}
 
 		return (
@@ -587,8 +628,6 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		value,
 		formatter,
 		parseDate,
-		formattedValue,
-		internalValue,
 		labels,
 		assistiveText,
 		isOpenFromIcon,
@@ -675,7 +714,7 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 				openDialog(event, { trigger: 'input-click' });
 			},
 			onKeyDown: handleKeyDown,
-			value: value ? formatter(value) : inputValue,
+			value: inputValue,
 		};
 
 		const topLevelDeprecatedComponentProps = {
@@ -716,8 +755,6 @@ const Datepicker: React.FC<DatePickerProps> = (props) => {
 		handleInputChange,
 		openDialog,
 		handleKeyDown,
-		value,
-		formatter,
 		inputValue,
 		disabled,
 		label,

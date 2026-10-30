@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { action } from 'storybook/actions';
 import IconSettings from '../../icon-settings';
 
-import ColorPicker from '../index';
+import ColorPicker, { type ColorPickerProps } from '../index';
 
 // eslint-disable-next-line camelcase
 import UNSAFE_DirectionSettings from '../../utilities/UNSAFE_direction';
@@ -18,9 +18,41 @@ const handleChange = (event: React.SyntheticEvent, data: { color: string; isVali
 
 const customOuterInputValidator = (hex: string) => !hex || HEX_REGEX_6_DIGITS.test(hex);
 
+// `value` (and `valueWorking`, when a story sets it) are controlled, so stories keep them in state
+const StatefulColorPicker = (props: ColorPickerProps) => {
+	const [value, setValue] = useState(props.value ?? '');
+	const [valueWorking, setValueWorking] = useState(props.valueWorking);
+	const { events = {} } = props;
+
+	return (
+		<ColorPicker
+			{...props}
+			events={{
+				...events,
+				onChange: (event, data) => {
+					setValue(data.color);
+					events.onChange?.(event, data);
+				},
+				onWorkingColorChange: (event, data) => {
+					if (valueWorking !== undefined) {
+						setValueWorking(data.color.hex);
+					}
+					events.onWorkingColorChange?.(event, data);
+				},
+			}}
+			value={value}
+			valueWorking={valueWorking}
+		/>
+	);
+};
+
 const meta: Meta<typeof ColorPicker> = {
 	title: 'Components/ColorPicker',
 	component: ColorPicker,
+	args: {
+		value: '',
+	},
+	render: (args) => <StatefulColorPicker {...args} />,
 	decorators: [
 		(Story) => (
 			<div className="slds-p-around_medium">
@@ -60,11 +92,12 @@ export const RightToLeft: Story = {
 		// eslint-disable-next-line
 		<UNSAFE_DirectionSettings.Provider value="rtl">
 			<div dir="rtl">
-				<ColorPicker
+				<StatefulColorPicker
 					className="test_class_name"
 					events={{ onChange: handleChange }}
 					labels={{ label: 'Choose Color' }}
 					id="default-color-picker"
+					value=""
 				/>
 			</div>
 		</UNSAFE_DirectionSettings.Provider>
@@ -207,7 +240,7 @@ export const MenuOpen: Story = {
 	args: {
 		id: 'color-picker',
 		classNameMenu: 'test_class_name_menu',
-		isOpen: true,
+		defaultIsOpen: true,
 		labels: { label: 'Choose Color' },
 	},
 };

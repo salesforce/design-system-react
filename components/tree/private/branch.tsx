@@ -48,7 +48,12 @@ export interface BranchProps {
 	treeId: string;
 	treeIndex?: string;
 	flattenedNodes: FlattenedNode[];
-	selectedNodeIndexes: string[];
+	/** Whether a node is selected (from `selectedIds`, or the deprecated `node.selected`) */
+	isNodeSelected: (node: TreeNode) => boolean;
+	/** Whether a branch is expanded (from expansion state, or the deprecated `node.expanded`) */
+	isNodeExpanded: (node: TreeNode) => boolean;
+	/** Tree index of the node that is the tree's tab stop */
+	tabStopIndex?: string;
 	focusedNodeIndex?: string;
 	onNodeBlur?: () => void;
 	treeHasFocus?: boolean;
@@ -65,7 +70,6 @@ const Branch: React.FC<BranchProps> = ({
 	level = 0,
 	label = '',
 	treeIndex = '',
-	selectedNodeIndexes = [],
 	getNodes = defaultGetNodes,
 	...rest
 }) => {
@@ -73,7 +77,6 @@ const Branch: React.FC<BranchProps> = ({
 		level,
 		label,
 		treeIndex,
-		selectedNodeIndexes,
 		getNodes,
 		...rest,
 	};
@@ -102,7 +105,9 @@ const Branch: React.FC<BranchProps> = ({
 						level={level + 1}
 						node={childNode}
 						flattenedNodes={props.flattenedNodes}
-						selectedNodeIndexes={selectedNodeIndexes}
+						isNodeSelected={props.isNodeSelected}
+						isNodeExpanded={props.isNodeExpanded}
+						tabStopIndex={props.tabStopIndex}
 						focusedNodeIndex={props.focusedNodeIndex}
 						treeHasFocus={props.treeHasFocus}
 						onNodeBlur={props.onNodeBlur}
@@ -124,7 +129,9 @@ const Branch: React.FC<BranchProps> = ({
 						level={level + 1}
 						node={childNode}
 						flattenedNodes={props.flattenedNodes}
-						selectedNodeIndexes={selectedNodeIndexes}
+						isNodeSelected={props.isNodeSelected}
+						isNodeExpanded={props.isNodeExpanded}
+						tabStopIndex={props.tabStopIndex}
 						focusedNodeIndex={props.focusedNodeIndex}
 						treeHasFocus={props.treeHasFocus}
 						onNodeBlur={props.onNodeBlur}

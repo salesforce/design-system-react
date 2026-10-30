@@ -4,6 +4,7 @@
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
+import sunsetProperty from '../../utilities/warning/sunset-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
 let checkProps = function checkPropsFunction() {};
@@ -11,6 +12,13 @@ let checkProps = function checkPropsFunction() {};
 if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		sunsetProperty(
+			COMPONENT,
+			props.defaultValue !== undefined,
+			'defaultValue',
+			'Slider is controlled: pass `value` and update it in `onChange`.'
+		);
 
 		deprecatedProperty(
 			COMPONENT,

@@ -30,6 +30,7 @@ import componentDoc from './component.json';
 
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
+import { useControllableState } from '../../utilities/hooks';
 
 /**
  * Carousel item data structure
@@ -128,16 +129,34 @@ export interface CarouselProps {
 	autoplayInterval?: number;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
-	/** Controlled current panel index */
+	/**
+	 * Current panel index when the panel is controlled. When set, the carousel only changes panel when
+	 * this prop changes: update it from `onRequestPanelChange`. Leave it `undefined` for an uncontrolled
+	 * carousel (see `defaultCurrentPanel`).
+	 */
 	currentPanel?: number;
-	/** Show autoplay button */
+	/** Initial panel index of an uncontrolled carousel (`currentPanel` is `undefined`). Defaults to `0`. */
+	defaultCurrentPanel?: number;
+	/**
+	 * Enables autoplay and shows the autoplay (play / pause) button. Whether autoplay is running comes
+	 * from `isAutoplayOn` / `defaultIsAutoplayOn`; when neither is set, autoplay starts on mount.
+	 */
 	hasAutoplay?: boolean;
 	/** Show previous/next navigation buttons */
 	hasPreviousNextPanelNavigation?: boolean;
 	/** HTML id */
 	id?: string;
-	/** Controlled autoplay state */
+	/**
+	 * Autoplay state when it is controlled (only has an effect with `hasAutoplay`). When set, autoplay
+	 * only starts and stops when this prop changes: update it from `onRequestAutoplayToggle`. Leave it
+	 * `undefined` for uncontrolled autoplay (see `defaultIsAutoplayOn`).
+	 */
 	isAutoplayOn?: boolean;
+	/**
+	 * Initial autoplay state when uncontrolled (`isAutoplayOn` is `undefined`; only has an effect with
+	 * `hasAutoplay`). When not set, it follows `hasAutoplay`, so autoplay starts on mount.
+	 */
+	defaultIsAutoplayOn?: boolean;
 	/** Enable infinite loop navigation */
 	isInfinite?: boolean;
 	/** Array of carousel items */
@@ -147,15 +166,16 @@ export interface CarouselProps {
 	/** @deprecated Use `renderItem` instead. */
 	onRenderItem?: (data: CarouselRenderItemData) => ReactNode;
 	/**
-	 * Called when autoplay toggle is requested. `data.isAutoplayOn` is the requested (next) state.
-	 * `event` is `undefined` when autoplay stops itself at the last panel.
+	 * Called when autoplay toggle is requested, controlled or not. `data.isAutoplayOn` is the requested
+	 * (next) state. `event` is `undefined` when autoplay stops itself at the last panel.
 	 */
 	onRequestAutoplayToggle?: (
 		event: CarouselAutoplayToggleEvent,
 		data: CarouselAutoplayData
 	) => void;
 	/**
-	 * Called when panel change is requested. `event` is `undefined` when autoplay advanced the panel.
+	 * Called when panel change is requested, controlled or not. `data.requestedPanel` is the requested
+	 * (next) panel. `event` is `undefined` when autoplay advanced the panel.
 	 */
 	onRequestPanelChange?: (
 		event: CarouselPanelChangeEvent,
@@ -181,10 +201,12 @@ const Carousel = ({
 	autoplayInterval = 4000,
 	className,
 	currentPanel: controlledCurrentPanel,
+	defaultCurrentPanel = 0,
 	hasAutoplay = false,
 	hasPreviousNextPanelNavigation = false,
 	id: propId,
 	isAutoplayOn: controlledIsAutoplayOn,
+	defaultIsAutoplayOn,
 	isInfinite = false,
 	items,
 	itemsPerPanel = 1,
@@ -213,31 +235,25 @@ const Carousel = ({
 		[items.length, itemsPerPanel]
 	);
 
-	// Internal state (for uncontrolled mode)
-	const [internalCurrentPanel, setInternalCurrentPanel] = useState(
-		controlledCurrentPanel ?? 0
+	// Panel and autoplay state: controlled when the value prop is set, otherwise internal
+	const [currentPanel, setCurrentPanelState] = useControllableState(
+		controlledCurrentPanel,
+		defaultCurrentPanel
 	);
-	const [internalIsAutoplayOn, setInternalIsAutoplayOn] = useState(
-		controlledIsAutoplayOn ?? hasAutoplay
+	// Back-compat: with neither `isAutoplayOn` nor `defaultIsAutoplayOn`, `hasAutoplay` starts autoplay
+	const [isAutoplayOn, setIsAutoplayOn] = useControllableState(
+		controlledIsAutoplayOn,
+		defaultIsAutoplayOn ?? hasAutoplay
 	);
+	// Autoplay only runs when the feature (and its pause button) is enabled
+	const isAutoplayRunning = hasAutoplay && isAutoplayOn;
 	const [indicatorsHaveFocus, setIndicatorsHaveFocus] = useState(false);
 	const [stageWidth, setStageWidth] = useState(0);
 	const [translateX, setTranslateX] = useState(-1000000);
 
 	// Refs
 	const stageRef = useRef<HTMLDivElement>(null);
-	const autoplayIdRef = useRef<ReturnType<typeof setInterval> | null>(null);
 	const initialStageWidthRef = useRef<number>(0);
-
-	// Derived state - use controlled values if provided
-	const currentPanel =
-		controlledCurrentPanel !== undefined
-			? controlledCurrentPanel
-			: internalCurrentPanel;
-	const isAutoplayOn =
-		controlledIsAutoplayOn !== undefined
-			? controlledIsAutoplayOn
-			: internalIsAutoplayOn;
 
 	// Helper functions
 	const canGoToNext = useCallback(
@@ -259,74 +275,51 @@ const Carousel = ({
 		setTranslateX(-(width * currentPanel));
 	}, [stageWidth, currentPanel]);
 
-	// Set current panel (internal or via callback)
+	// Request a panel change: updates internal state when uncontrolled, always reports the request
 	const setCurrentPanel = useCallback(
-		(event: CarouselPanelChangeEvent, panel: number, callback?: () => void) => {
-			if (onRequestPanelChange) {
-				onRequestPanelChange(event, {
-					currentPanel,
-					requestedPanel: panel,
-				});
-			} else {
-				setInternalCurrentPanel(panel);
-				// Use setTimeout to ensure state is updated before callback
-				if (callback) {
-					setTimeout(callback, 0);
-				}
-			}
+		(event: CarouselPanelChangeEvent, panel: number) => {
+			setCurrentPanelState(panel);
+			onRequestPanelChange?.(event, {
+				currentPanel,
+				requestedPanel: panel,
+			});
 		},
-		[currentPanel, onRequestPanelChange]
+		[currentPanel, onRequestPanelChange, setCurrentPanelState]
 	);
 
-	// Stop autoplay
+	// Request an autoplay change: updates internal state when uncontrolled, always reports the request
+	const requestAutoplay = useCallback(
+		(event: CarouselAutoplayToggleEvent, nextIsAutoplayOn: boolean) => {
+			setIsAutoplayOn(nextIsAutoplayOn);
+			onRequestAutoplayToggle?.(event, { isAutoplayOn: nextIsAutoplayOn });
+		},
+		[onRequestAutoplayToggle, setIsAutoplayOn]
+	);
+
 	const stopAutoplay = useCallback(
-		(
-			event: CarouselAutoplayToggleEvent,
-			ignoreCallbacksAndStateUpdates = false
-		) => {
-			if (autoplayIdRef.current) {
-				clearInterval(autoplayIdRef.current);
-				autoplayIdRef.current = null;
-			}
-
-			if (!ignoreCallbacksAndStateUpdates) {
-				if (onRequestAutoplayToggle) {
-					onRequestAutoplayToggle(event, { isAutoplayOn: false });
-				} else {
-					setInternalIsAutoplayOn(false);
-				}
-			}
+		(event: CarouselAutoplayToggleEvent) => {
+			requestAutoplay(event, false);
 		},
-		[onRequestAutoplayToggle]
+		[requestAutoplay]
 	);
 
-	// Start autoplay. Panel changes and the final stop come from the timer, so they carry no event.
-	const startAutoplay = useCallback(() => {
-		autoplayIdRef.current = setInterval(() => {
-			if (currentPanel < nrOfPanels - 1) {
-				// Go to next panel
-				let next = currentPanel + 1;
-				if (next > nrOfPanels - 1) {
-					next = 0;
-				}
-				setCurrentPanel(undefined, next, changeTranslationAutomatically);
-			} else if (isInfinite) {
-				// Loop back to start
-				setCurrentPanel(undefined, 0, changeTranslationAutomatically);
-			} else {
-				// Stop at end
-				stopAutoplay(undefined);
-			}
-		}, autoplayInterval);
-	}, [
-		autoplayInterval,
-		currentPanel,
-		nrOfPanels,
-		isInfinite,
-		setCurrentPanel,
-		changeTranslationAutomatically,
-		stopAutoplay,
-	]);
+	// One autoplay step. Panel changes and the final stop come from the timer, so they carry no event.
+	const autoplayStep = () => {
+		if (currentPanel < nrOfPanels - 1) {
+			setCurrentPanel(undefined, currentPanel + 1);
+		} else if (isInfinite) {
+			// Loop back to start
+			setCurrentPanel(undefined, 0);
+		} else {
+			// Stop at end
+			stopAutoplay(undefined);
+		}
+	};
+	// Latest step, so the interval never acts on a stale panel
+	const autoplayStepRef = useRef(autoplayStep);
+	useEffect(() => {
+		autoplayStepRef.current = autoplayStep;
+	});
 
 	// Panel navigation handlers
 	const onNextPanelHandler = useCallback(
@@ -335,9 +328,9 @@ const Carousel = ({
 			if (next > nrOfPanels - 1) {
 				next = 0;
 			}
-			setCurrentPanel(event, next, changeTranslationAutomatically);
+			setCurrentPanel(event, next);
 		},
-		[currentPanel, nrOfPanels, setCurrentPanel, changeTranslationAutomatically]
+		[currentPanel, nrOfPanels, setCurrentPanel]
 	);
 
 	const onPreviousPanelHandler = useCallback(
@@ -346,9 +339,9 @@ const Carousel = ({
 			if (prev < 0) {
 				prev = nrOfPanels - 1;
 			}
-			setCurrentPanel(event, prev, changeTranslationAutomatically);
+			setCurrentPanel(event, prev);
 		},
-		[currentPanel, nrOfPanels, setCurrentPanel, changeTranslationAutomatically]
+		[currentPanel, nrOfPanels, setCurrentPanel]
 	);
 
 	// Indicator handlers
@@ -358,45 +351,31 @@ const Carousel = ({
 
 	const onIndicatorClickHandler = useCallback(
 		(event: MouseEvent, panel: number) => {
-			setCurrentPanel(event, panel, changeTranslationAutomatically);
+			setCurrentPanel(event, panel);
 			setIndicatorsHaveFocus(true);
-			if (isAutoplayOn) {
+			if (isAutoplayRunning) {
 				stopAutoplay(event);
 			}
 		},
-		[
-			setCurrentPanel,
-			changeTranslationAutomatically,
-			isAutoplayOn,
-			stopAutoplay,
-		]
+		[setCurrentPanel, isAutoplayRunning, stopAutoplay]
 	);
 
 	const onIndicatorFocus = useCallback(
 		(event: FocusEvent) => {
 			setIndicatorsHaveFocus(true);
-			if (isAutoplayOn) {
+			if (isAutoplayRunning) {
 				stopAutoplay(event);
 			}
 		},
-		[isAutoplayOn, stopAutoplay]
+		[isAutoplayRunning, stopAutoplay]
 	);
 
 	// Autoplay button handler
 	const onAutoplayBtnClick = useCallback(
 		(event: MouseEvent) => {
-			if (onRequestAutoplayToggle) {
-				onRequestAutoplayToggle(event, { isAutoplayOn: !isAutoplayOn });
-			} else {
-				setInternalIsAutoplayOn(!isAutoplayOn);
-				if (isAutoplayOn) {
-					stopAutoplay(event);
-				} else {
-					startAutoplay();
-				}
-			}
+			requestAutoplay(event, !isAutoplayOn);
 		},
-		[isAutoplayOn, onRequestAutoplayToggle, stopAutoplay, startAutoplay]
+		[isAutoplayOn, requestAutoplay]
 	);
 
 	// Keyboard handler
@@ -407,7 +386,7 @@ const Carousel = ({
 					if (isInfinite || canGoToPrevious()) {
 						onPreviousPanelHandler(event);
 						setIndicatorsHaveFocus(true);
-						if (isAutoplayOn) {
+						if (isAutoplayRunning) {
 							stopAutoplay(event);
 						}
 					}
@@ -416,7 +395,7 @@ const Carousel = ({
 					if (isInfinite || canGoToNext()) {
 						onNextPanelHandler(event);
 						setIndicatorsHaveFocus(true);
-						if (isAutoplayOn) {
+						if (isAutoplayRunning) {
 							stopAutoplay(event);
 						}
 					}
@@ -434,7 +413,7 @@ const Carousel = ({
 			canGoToNext,
 			onPreviousPanelHandler,
 			onNextPanelHandler,
-			isAutoplayOn,
+			isAutoplayRunning,
 			stopAutoplay,
 		]
 	);
@@ -461,10 +440,6 @@ const Carousel = ({
 			if (canUseEventListeners) {
 				window.removeEventListener('resize', setDimensions, false);
 			}
-			// Clean up autoplay on unmount
-			if (autoplayIdRef.current) {
-				clearInterval(autoplayIdRef.current);
-			}
 		};
 	}, [setDimensions]);
 
@@ -473,25 +448,16 @@ const Carousel = ({
 		changeTranslationAutomatically();
 	}, [changeTranslationAutomatically]);
 
-	// Effect: Handle autoplay state changes (controlled mode)
+	// Effect: run the autoplay timer while autoplay is on (controlled or not); cleared on stop and unmount
 	useEffect(() => {
-		if (controlledIsAutoplayOn !== undefined) {
-			if (controlledIsAutoplayOn && !autoplayIdRef.current) {
-				startAutoplay();
-			} else if (!controlledIsAutoplayOn && autoplayIdRef.current) {
-				stopAutoplay(undefined, true);
-			}
+		if (!isAutoplayRunning) {
+			return undefined;
 		}
-	}, [controlledIsAutoplayOn, startAutoplay, stopAutoplay]);
-
-	// Effect: Start autoplay on mount if enabled
-	useEffect(() => {
-		if (isAutoplayOn && !autoplayIdRef.current) {
-			startAutoplay();
-		}
-		// Only run on mount
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+		const autoplayId = setInterval(() => {
+			autoplayStepRef.current();
+		}, autoplayInterval);
+		return () => clearInterval(autoplayId);
+	}, [isAutoplayRunning, autoplayInterval]);
 
 	// Computed values
 	const isPreviousBtnDisabled = !(isInfinite || canGoToPrevious());
@@ -523,7 +489,7 @@ const Carousel = ({
 							iconName="chevronleft"
 							isDisabled={isPreviousBtnDisabled}
 							onClick={(event: MouseEvent) => {
-								if (isAutoplayOn) {
+								if (isAutoplayRunning) {
 									stopAutoplay(event);
 								}
 								onPreviousPanelHandler(event);
@@ -547,7 +513,7 @@ const Carousel = ({
 										onItemClick?.(event, { item });
 									}}
 									onFocus={(event: FocusEvent) => {
-										if (isAutoplayOn) {
+										if (isAutoplayRunning) {
 											stopAutoplay(event);
 										}
 									}}
@@ -569,7 +535,7 @@ const Carousel = ({
 							iconName="chevronright"
 							isDisabled={isNextBtnDisabled}
 							onClick={(event: MouseEvent) => {
-								if (isAutoplayOn) {
+								if (isAutoplayRunning) {
 									stopAutoplay(event);
 								}
 								onNextPanelHandler(event);

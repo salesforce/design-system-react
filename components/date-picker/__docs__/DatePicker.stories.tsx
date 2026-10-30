@@ -56,7 +56,7 @@ type Story = StoryObj<typeof DatePicker>;
 
 // Default story with controlled component
 const DefaultComponent = () => {
-	const [value, setValue] = useState<Date | undefined>(undefined);
+	const [value, setValue] = useState<Date | null>(null);
 
 	return (
 		<DatePicker
@@ -83,7 +83,7 @@ export const Default: Story = {
 
 // ISO Weekdays - Monday first
 const ISOWeekdaysComponent = () => {
-	const [value, setValue] = useState<Date | undefined>(undefined);
+	const [value, setValue] = useState<Date | null>(null);
 
 	return (
 		<DatePicker
@@ -109,7 +109,7 @@ export const ISOWeekdays: Story = {
 
 // Right to Left
 const RTLComponent = () => {
-	const [value, setValue] = useState<Date | undefined>(undefined);
+	const [value, setValue] = useState<Date | null>(null);
 
 	return (
 		<UNSAFE_DirectionSettings.Provider value="rtl">
@@ -138,14 +138,21 @@ export const RightToLeft: Story = {
 
 // Inline menu (relative position)
 const InlineMenuComponent = () => {
+	const [value, setValue] = useState<Date | null>(null);
+
 	return (
 		<DatePicker
 			labels={{
 				label: 'Date',
 			}}
 			menuPosition="relative"
+			onChange={(event, data) => {
+				console.log('onChange', data);
+				setValue(data.date);
+			}}
 			formatter={formatDate}
 			parser={parseDate}
+			value={value}
 		/>
 	);
 };
@@ -156,7 +163,7 @@ export const InlineMenu: Story = {
 
 // Error state
 const ErrorComponent = () => {
-	const [value, setValue] = useState<Date | undefined>(undefined);
+	const [value, setValue] = useState<Date | null>(null);
 
 	return (
 		<DatePicker
@@ -182,7 +189,7 @@ export const Error: Story = {
 
 // Disabled dates
 const DisabledDatesComponent = () => {
-	const [value, setValue] = useState<Date | undefined>(undefined);
+	const [value, setValue] = useState<Date | null>(null);
 
 	// Disable weekends
 	const dateDisabled = (date: Date) => {
@@ -214,7 +221,7 @@ export const DisabledDates: Story = {
 
 // Custom year range
 const CustomYearRangeComponent = () => {
-	const [value, setValue] = useState<Date | undefined>(undefined);
+	const [value, setValue] = useState<Date | null>(null);
 
 	return (
 		<DatePicker
@@ -241,7 +248,7 @@ export const CustomYearRange: Story = {
 
 // Right aligned
 const RightAlignedComponent = () => {
-	const [value, setValue] = useState<Date | undefined>(undefined);
+	const [value, setValue] = useState<Date | null>(null);
 
 	return (
 		<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -276,6 +283,7 @@ const DisabledComponent = () => {
 			disabled
 			formatter={formatDate}
 			parser={parseDate}
+			value={null}
 		/>
 	);
 };
@@ -286,7 +294,7 @@ export const Disabled: Story = {
 
 // Preselected Date
 const PreselectedComponent = () => {
-	const [value, setValue] = useState<Date>(new Date(2024, 11, 25)); // December 25, 2024
+	const [value, setValue] = useState<Date | null>(new Date(2024, 11, 25)); // December 25, 2024
 
 	return (
 		<DatePicker
@@ -310,7 +318,7 @@ export const PreselectedDate: Story = {
 
 // Custom Internationalization
 const InternationalizedComponent = () => {
-	const [value, setValue] = useState<Date | undefined>(undefined);
+	const [value, setValue] = useState<Date | null>(null);
 
 	return (
 		<DatePicker

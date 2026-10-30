@@ -75,6 +75,14 @@ describe('SLDS Carousel', () => {
 		items,
 	};
 
+	const getActivePanel = (container) =>
+		[...container.querySelectorAll('.slds-carousel__indicator-action')].findIndex(
+			(indicator) => indicator.getAttribute('aria-selected') === 'true'
+		);
+
+	const getAutoplayButton = (container) =>
+		container.querySelector('.slds-carousel__autoplay button');
+
 	const renderCarousel = (props) => {
 		return render(
 			<IconSettings iconPath="/assets/icons">
@@ -613,6 +621,185 @@ describe('SLDS Carousel', () => {
 			expect(onRequestAutoplayToggle).toHaveBeenCalledWith(undefined, {
 				isAutoplayOn: false,
 			});
+		});
+
+		it('keeps advancing across autoplay ticks', () => {
+			const onRequestPanelChange = vi.fn();
+			const { container } = renderCarousel({
+				itemsPerPanel: 1,
+				onRequestPanelChange,
+			});
+
+			act(() => {
+				vi.advanceTimersByTime(4000);
+			});
+			act(() => {
+				vi.advanceTimersByTime(4000);
+			});
+			act(() => {
+				vi.advanceTimersByTime(4000);
+			});
+
+			expect(onRequestPanelChange.mock.calls.map(([, data]) => data)).toEqual([
+				{ currentPanel: 0, requestedPanel: 1 },
+				{ currentPanel: 1, requestedPanel: 2 },
+				{ currentPanel: 2, requestedPanel: 3 },
+			]);
+			expect(getActivePanel(container)).toBe(3);
+		});
+
+		it('does not autoplay when defaultIsAutoplayOn is false', () => {
+			const onRequestPanelChange = vi.fn();
+			const { container } = renderCarousel({
+				defaultIsAutoplayOn: false,
+				itemsPerPanel: 1,
+				onRequestPanelChange,
+			});
+
+			expect(getAutoplayButton(container).innerHTML).toContain('#play');
+			act(() => {
+				vi.advanceTimersByTime(8000);
+			});
+			expect(onRequestPanelChange).not.toHaveBeenCalled();
+			expect(getActivePanel(container)).toBe(0);
+		});
+
+		it('does not autoplay when isAutoplayOn is set without hasAutoplay', () => {
+			const onRequestPanelChange = vi.fn();
+			const { container } = renderCarousel({
+				hasAutoplay: false,
+				isAutoplayOn: true,
+				itemsPerPanel: 1,
+				onRequestPanelChange,
+			});
+
+			expect(getAutoplayButton(container)).toBeNull();
+			act(() => {
+				vi.advanceTimersByTime(8000);
+			});
+			expect(onRequestPanelChange).not.toHaveBeenCalled();
+		});
+
+		it('does not advance a controlled currentPanel the parent ignores', () => {
+			const onRequestPanelChange = vi.fn();
+			const { container } = renderCarousel({
+				currentPanel: 0,
+				itemsPerPanel: 1,
+				onRequestPanelChange,
+			});
+
+			act(() => {
+				vi.advanceTimersByTime(4000);
+			});
+			act(() => {
+				vi.advanceTimersByTime(4000);
+			});
+
+			expect(onRequestPanelChange).toHaveBeenCalledTimes(2);
+			expect(onRequestPanelChange).toHaveBeenLastCalledWith(undefined, {
+				currentPanel: 0,
+				requestedPanel: 1,
+			});
+			expect(getActivePanel(container)).toBe(0);
+		});
+	});
+
+	describe('Controlled and uncontrolled state', () => {
+		const nextButton = (container) =>
+			container.querySelectorAll(
+				'.slds-is-absolute button.slds-button_icon-border-filled'
+			)[1];
+
+		it('moves an uncontrolled carousel that has onRequestPanelChange', () => {
+			const onRequestPanelChange = vi.fn();
+			const { container } = renderCarousel({
+				hasAutoplay: false,
+				itemsPerPanel: 1,
+				onRequestPanelChange,
+			});
+
+			fireEvent.click(nextButton(container));
+			fireEvent.click(nextButton(container));
+
+			expect(getActivePanel(container)).toBe(2);
+			expect(onRequestPanelChange).toHaveBeenLastCalledWith(
+				expect.objectContaining({ type: 'click' }),
+				{ currentPanel: 1, requestedPanel: 2 }
+			);
+		});
+
+		it('starts on defaultCurrentPanel', () => {
+			const { container } = renderCarousel({
+				defaultCurrentPanel: 2,
+				hasAutoplay: false,
+				itemsPerPanel: 1,
+			});
+
+			expect(getActivePanel(container)).toBe(2);
+			fireEvent.click(nextButton(container));
+			expect(getActivePanel(container)).toBe(3);
+		});
+
+		it('honors a controlled currentPanel', () => {
+			const onRequestPanelChange = vi.fn();
+			const { container, rerender } = renderCarousel({
+				currentPanel: 1,
+				hasAutoplay: false,
+				itemsPerPanel: 1,
+				onRequestPanelChange,
+			});
+
+			fireEvent.click(nextButton(container));
+			expect(onRequestPanelChange).toHaveBeenCalledWith(
+				expect.objectContaining({ type: 'click' }),
+				{ currentPanel: 1, requestedPanel: 2 }
+			);
+			expect(getActivePanel(container)).toBe(1);
+
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<Carousel
+						{...defaultCarouselProps}
+						currentPanel={4}
+						hasAutoplay={false}
+						itemsPerPanel={1}
+						onRequestPanelChange={onRequestPanelChange}
+					/>
+				</IconSettings>
+			);
+			expect(getActivePanel(container)).toBe(4);
+		});
+
+		it('honors a controlled isAutoplayOn', () => {
+			const onRequestAutoplayToggle = vi.fn();
+			const { container } = renderCarousel({
+				isAutoplayOn: true,
+				itemsPerPanel: 1,
+				onRequestAutoplayToggle,
+			});
+
+			fireEvent.click(getAutoplayButton(container));
+			expect(onRequestAutoplayToggle).toHaveBeenCalledWith(
+				expect.objectContaining({ type: 'click' }),
+				{ isAutoplayOn: false }
+			);
+			expect(getAutoplayButton(container).innerHTML).toContain('#pause');
+		});
+
+		it('toggles an uncontrolled autoplay that has onRequestAutoplayToggle', () => {
+			const onRequestAutoplayToggle = vi.fn();
+			const { container } = renderCarousel({
+				itemsPerPanel: 1,
+				onRequestAutoplayToggle,
+			});
+
+			fireEvent.click(getAutoplayButton(container));
+			expect(getAutoplayButton(container).innerHTML).toContain('#play');
+			fireEvent.click(getAutoplayButton(container));
+			expect(getAutoplayButton(container).innerHTML).toContain('#pause');
+			expect(
+				onRequestAutoplayToggle.mock.calls.map(([, data]) => data)
+			).toEqual([{ isAutoplayOn: false }, { isAutoplayOn: true }]);
 		});
 	});
 });

@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import IconSettings from '~/components/icon-settings';
 import ProgressIndicator from '~/components/progress-indicator'; // `~` is replaced with design-system-react at runtime
 import Button from '~/components/button';
 import Checkbox from '~/components/checkbox';
+
+// Checkbox is controlled, so the toggle action keeps its own state.
+const ToggleAction = () => {
+	const [checked, setChecked] = useState(false);
+	return (
+		<Checkbox
+			checked={checked}
+			id="checkbox-toggle-example--error"
+			onChange={(event, data) => setChecked(data.checked)}
+			variant="toggle"
+		/>
+	);
+};
 
 const steps = [
 	{
@@ -32,9 +45,7 @@ const steps = [
 	{
 		id: 3,
 		label: 'label #4',
-		setupAssistantAction: (
-			<Checkbox id="checkbox-toggle-example--error" variant="toggle" />
-		),
+		setupAssistantAction: <ToggleAction />,
 	},
 	{
 		id: 4,

@@ -95,6 +95,47 @@ describe('SplitView', () => {
 		});
 	});
 
+	describe('open state', () => {
+		it('starts open by default', () => {
+			const { container } = renderSplitView();
+			expect(getContainer(container)).toHaveClass('slds-is-open');
+		});
+
+		it('starts from defaultIsOpen and toggles itself without a callback', () => {
+			const { container } = renderSplitView({ defaultIsOpen: false });
+			expect(getContainer(container)).toHaveClass('slds-is-closed');
+
+			fireEvent.click(getToggleButton(container));
+			expect(getContainer(container)).toHaveClass('slds-is-open');
+		});
+
+		it('starts from defaultIsOpen and reports the requested state', () => {
+			const onToggle = vi.fn();
+			const { container } = renderSplitView({
+				defaultIsOpen: false,
+				events: { onToggle },
+			});
+
+			fireEvent.click(getToggleButton(container));
+			expect(onToggle).toHaveBeenCalledWith(
+				expect.objectContaining({ type: 'click' }),
+				{ isOpen: true }
+			);
+			expect(getContainer(container)).toHaveClass('slds-is-open');
+		});
+
+		it('ignores defaultIsOpen and does not toggle itself when isOpen is passed', () => {
+			const { container } = renderSplitView({
+				defaultIsOpen: true,
+				isOpen: false,
+			});
+			expect(getContainer(container)).toHaveClass('slds-is-closed');
+
+			fireEvent.click(getToggleButton(container));
+			expect(getContainer(container)).toHaveClass('slds-is-closed');
+		});
+	});
+
 	describe('deprecated events.onOpen / events.onClose', () => {
 		// The deprecation warning is emitted once per module lifetime, so this
 		// must be the first test in the file to pass the deprecated keys.

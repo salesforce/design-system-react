@@ -54,8 +54,6 @@ export interface SliderProps {
 	assistiveText?: SliderAssistiveText;
 	/** CSS classes for the container */
 	classNameContainer?: string | string[] | Record<string, boolean>;
-	/** Initial value for uncontrolled usage */
-	defaultValue?: number;
 	/** Whether the slider is disabled */
 	disabled?: boolean;
 	/** @deprecated Use `labels.error` and `hasError` instead. */
@@ -78,7 +76,10 @@ export interface SliderProps {
 	min?: number;
 	/** Form input name */
 	name?: string;
-	/** Called when value changes */
+	/**
+	 * Called when the value changes. Slider is controlled: update `value` from
+	 * `data.value`, or the thumb won't move.
+	 */
 	onChange?: (
 		event: ChangeEvent<HTMLInputElement>,
 		data: { value: number }
@@ -92,10 +93,18 @@ export interface SliderProps {
 	size?: SliderSize;
 	/** Step increment (default: 1) */
 	step?: number;
-	/** Controlled value */
-	value?: number;
+	/** The current value. Required: Slider is controlled. */
+	value: number;
 	/** Display vertically */
 	vertical?: boolean;
+}
+
+/**
+ * Props removed in v11. They are ignored at runtime and warn in development.
+ */
+interface SliderRemovedProps {
+	/** @removed Slider is controlled: pass `value` and update it in `onChange`. */
+	defaultValue?: unknown;
 }
 
 const defaultAssistiveText: SliderAssistiveText = {
@@ -106,28 +115,30 @@ const defaultAssistiveText: SliderAssistiveText = {
  * The ability to style sliders with CSS varies across browsers.
  * Using this component ensures sliders look the same everywhere.
  */
-const Slider = ({
-	'aria-describedby': ariaDescribedBy,
-	assistiveText: propAssistiveText,
-	classNameContainer,
-	defaultValue,
-	disabled,
-	errorText,
-	hasError: hasErrorProp,
-	id: propId,
-	label: labelProp,
-	labels,
-	max = 100,
-	min = 0,
-	name,
-	onChange,
-	onInput,
-	size,
-	step = 1,
-	value,
-	vertical,
-	...rest
-}: SliderProps): React.ReactElement => {
+const Slider = (props: SliderProps): React.ReactElement => {
+	const {
+		'aria-describedby': ariaDescribedBy,
+		assistiveText: propAssistiveText,
+		classNameContainer,
+		defaultValue,
+		disabled,
+		errorText,
+		hasError: hasErrorProp,
+		id: propId,
+		label: labelProp,
+		labels,
+		max = 100,
+		min = 0,
+		name,
+		onChange,
+		onInput,
+		size,
+		step = 1,
+		value,
+		vertical,
+		...rest
+	} = props as SliderProps & SliderRemovedProps;
+
 	const generatedId = useId();
 	const generatedErrorId = useId();
 
@@ -145,10 +156,16 @@ const Slider = ({
 	useEffect(() => {
 		checkProps(
 			SLIDER,
-			{ assistiveText: propAssistiveText, errorText, label: labelProp, labels },
+			{
+				assistiveText: propAssistiveText,
+				defaultValue,
+				errorText,
+				label: labelProp,
+				labels,
+			},
 			componentDoc
 		);
-	}, [propAssistiveText, errorText, labelProp, labels]);
+	}, [propAssistiveText, defaultValue, errorText, labelProp, labels]);
 
 	const ariaProps = getAriaProps(rest) as Record<string, unknown>;
 	if (errorId) {
@@ -170,8 +187,6 @@ const Slider = ({
 		},
 		[onInput]
 	);
-
-	const displayValue = value ?? defaultValue ?? 0;
 
 	return (
 		<div
@@ -224,10 +239,10 @@ const Slider = ({
 						onChange={handleChange}
 						onInput={handleInput}
 						{...ariaProps}
-						{...(value !== undefined ? { value } : { defaultValue })}
+						value={value}
 					/>
 					<span className="slds-slider__value" aria-hidden="true">
-						{displayValue}
+						{value}
 					</span>
 				</div>
 				{errorMessage && (

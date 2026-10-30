@@ -51,6 +51,7 @@ describe('SLDSSplitView - Listbox header', () => {
 
 	const props = {
 		options: listOptions,
+		selection: [],
 		labels: {
 			header: 'test header',
 		},

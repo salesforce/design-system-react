@@ -11,7 +11,7 @@ class Example extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			value: undefined,
+			value: null,
 		};
 	}
 

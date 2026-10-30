@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import IconSettings from '../../icon-settings';
-import Radio from '../../radio';
+import Radio from '../radio';
 import RadioGroup from '../';
 
 export default {
@@ -32,30 +32,24 @@ const InteractiveExample = ({ variant = 'base', ...props }) => {
 	return (
 		<RadioGroup
 			labels={{ label: 'Select an option' }}
-			onChange={(e) => {
-				if (e.target && e.target.value) {
-					setSelected(e.target.value);
-				}
-			}}
+			value={selected}
+			onChange={(event, data) => setSelected(data.value)}
 			variant={variant}
 			{...props}
 		>
 			<Radio
 				labels={{ label: 'Option 1' }}
 				value="option1"
-				checked={selected === 'option1'}
 				variant={variant === 'button-group' ? 'button-group' : 'base'}
 			/>
 			<Radio
 				labels={{ label: 'Option 2' }}
 				value="option2"
-				checked={selected === 'option2'}
 				variant={variant === 'button-group' ? 'button-group' : 'base'}
 			/>
 			<Radio
 				labels={{ label: 'Option 3' }}
 				value="option3"
-				checked={selected === 'option3'}
 				variant={variant === 'button-group' ? 'button-group' : 'base'}
 			/>
 		</RadioGroup>
@@ -85,7 +79,7 @@ export const Disabled = {
 // With error
 export const WithError = {
 	render: () => {
-		const [selected, setSelected] = useState('');
+		const [selected, setSelected] = useState(null);
 
 		return (
 			<RadioGroup
@@ -93,22 +87,11 @@ export const WithError = {
 					label: 'Select an option',
 					error: 'This field is required',
 				}}
-				onChange={(e) => {
-					if (e.target && e.target.value) {
-						setSelected(e.target.value);
-					}
-				}}
+				value={selected}
+				onChange={(event, data) => setSelected(data.value)}
 			>
-				<Radio
-					labels={{ label: 'Option 1' }}
-					value="option1"
-					checked={selected === 'option1'}
-				/>
-				<Radio
-					labels={{ label: 'Option 2' }}
-					value="option2"
-					checked={selected === 'option2'}
-				/>
+				<Radio labels={{ label: 'Option 1' }} value="option1" />
+				<Radio labels={{ label: 'Option 2' }} value="option2" />
 			</RadioGroup>
 		);
 	},

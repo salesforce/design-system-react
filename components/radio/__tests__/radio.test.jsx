@@ -1,4 +1,5 @@
-import { render } from '@testing-library/react';
+import { useState } from 'react';
+import { render, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import Radio from '../index';
@@ -119,5 +120,110 @@ describe('Radio visual picker figure', () => {
 		);
 
 		expect(getFigure(container).textContent).toBe('new');
+	});
+});
+
+describe('Radio control model', () => {
+	afterEach(() => {
+		vi.restoreAllMocks();
+	});
+
+	const getInput = (container) => container.querySelector('input');
+
+	it('honors checked: selecting does not check it unless the parent updates the prop', () => {
+		const onChange = vi.fn();
+		const { container } = render(
+			<Radio
+				id="radio-controlled"
+				labels={{ label: 'Option' }}
+				value="a"
+				checked={false}
+				onChange={onChange}
+			/>
+		);
+
+		const input = getInput(container);
+		fireEvent.click(input);
+		expect(input.checked).toBe(false);
+		expect(onChange).toHaveBeenCalledTimes(1);
+		expect(onChange.mock.calls[0][0].target).toBe(input);
+		expect(onChange.mock.calls[0][1]).toEqual({ checked: true });
+	});
+
+	it('checks when the parent stores the requested value', () => {
+		const Wrapper = () => {
+			const [checked, setChecked] = useState(false);
+			return (
+				<Radio
+					id="radio-wrapper"
+					labels={{ label: 'Option' }}
+					checked={checked}
+					onChange={(event, data) => setChecked(data.checked)}
+				/>
+			);
+		};
+		const { container } = render(<Wrapper />);
+		const input = getInput(container);
+
+		fireEvent.click(input);
+		expect(input.checked).toBe(true);
+	});
+
+	it('requests checked: false when a checked deselectable radio is clicked', () => {
+		const onChange = vi.fn();
+		const { container } = render(
+			<Radio
+				id="radio-deselectable"
+				labels={{ label: 'Option' }}
+				checked
+				deselectable
+				onChange={onChange}
+			/>
+		);
+
+		const input = getInput(container);
+		fireEvent.click(input);
+		expect(onChange).toHaveBeenCalledTimes(1);
+		expect(onChange.mock.calls[0][1]).toEqual({ checked: false });
+		expect(input.checked).toBe(true);
+	});
+
+	it('does not warn about switching between controlled and uncontrolled', () => {
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const { rerender } = render(<Radio id="radio-flip" />);
+		rerender(<Radio id="radio-flip" checked onChange={() => {}} />);
+		rerender(<Radio id="radio-flip" checked={undefined} />);
+
+		const messages = consoleError.mock.calls.map((args) => args.join(' '));
+		expect(messages.some((m) => /uncontrolled|controlled/i.test(m))).toBe(
+			false
+		);
+	});
+
+	it('ignores the removed defaultChecked prop and warns', () => {
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const { container } = render(
+			<Radio
+				id="radio-default"
+				checked={false}
+				onChange={() => {}}
+				defaultChecked
+			/>
+		);
+
+		const input = getInput(container);
+		expect(input.checked).toBe(false);
+		expect(input.defaultChecked).toBe(false);
+
+		const messages = consoleError.mock.calls.map((args) => args.join(' '));
+		expect(
+			messages.some(
+				(m) => m.includes('`defaultChecked`') && m.includes('`checked`')
+			)
+		).toBe(true);
 	});
 });

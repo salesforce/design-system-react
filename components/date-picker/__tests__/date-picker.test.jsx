@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, useState } from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
@@ -872,6 +872,291 @@ describe('SLDSDatepicker', () => {
 			// onChange should have been called
 			await waitFor(() => {
 				expect(handleChangeSpy).toHaveBeenCalledTimes(1);
+			});
+		});
+	});
+
+	describe('Control model', () => {
+		const inputSelector = 'input#sample-datepicker';
+		const calendarSelector = '.datepicker__month';
+
+		// A parent that accepts every `onChange`
+		const StatefulDatepicker = ({ initialValue = null, ...props }) => {
+			const [value, setValue] = useState(initialValue);
+			return (
+				<DemoComponent
+					onChange={(event, data) => setValue(data.date)}
+					{...props}
+					value={value}
+				/>
+			);
+		};
+
+		describe('value', () => {
+			it('a parent that rejects a calendar selection keeps the old value', () => {
+				const onChange = vi.fn();
+				const { container } = render(
+					<DemoComponent
+						defaultIsOpen
+						menuPosition="relative"
+						onChange={onChange}
+					/>
+				);
+
+				fireEvent.click(
+					container.querySelector(`${calendarSelector} [aria-disabled=false]`)
+				);
+
+				expect(onChange).toHaveBeenCalledTimes(1);
+				expect(onChange.mock.calls[0][1].date.getTime()).toBe(
+					new Date(2007, 0, 1).getTime()
+				);
+				expect(container.querySelector(inputSelector)).toHaveValue('1/6/2007');
+			});
+
+			it('a parent that accepts a calendar selection shows the new date', () => {
+				const { container } = render(
+					<StatefulDatepicker
+						defaultIsOpen
+						initialValue={new Date(2007, 0, 6)}
+						menuPosition="relative"
+					/>
+				);
+
+				fireEvent.click(
+					container.querySelector(`${calendarSelector} [aria-disabled=false]`)
+				);
+
+				expect(container.querySelector(inputSelector)).toHaveValue('1/1/2007');
+			});
+
+			it('re-syncs the input text when value changes, including to null', () => {
+				const { container, rerender } = render(<DemoComponent />);
+				const input = container.querySelector(inputSelector);
+				expect(input).toHaveValue('1/6/2007');
+
+				// Partial text is kept while value does not change
+				fireEvent.change(input, { target: { value: '2/1' } });
+				expect(input).toHaveValue('2/1');
+
+				rerender(<DemoComponent value={new Date(2010, 4, 5)} />);
+				expect(input).toHaveValue('5/5/2010');
+
+				rerender(<DemoComponent value={null} />);
+				expect(input).toHaveValue('');
+			});
+
+			it('does not reformat typed text when the parent accepts the typed date', () => {
+				const { container } = render(<StatefulDatepicker />);
+				const input = container.querySelector(inputSelector);
+
+				fireEvent.change(input, { target: { value: '03/04/2021' } });
+
+				expect(input).toHaveValue('03/04/2021');
+			});
+
+			it('does not reset typed text when the parent passes an equal new Date every render', () => {
+				const Parent = () => {
+					const [, setCount] = useState(0);
+					return (
+						<DemoComponent
+							onChange={() => setCount((count) => count + 1)}
+							value={new Date(2007, 0, 6)}
+						/>
+					);
+				};
+				const { container } = render(<Parent />);
+				const input = container.querySelector(inputSelector);
+
+				fireEvent.change(input, { target: { value: '1/6/20' } });
+
+				expect(input).toHaveValue('1/6/20');
+			});
+
+			it('clearing the input reports a null date', () => {
+				const onChange = vi.fn();
+				const { container } = render(
+					<StatefulDatepicker
+						initialValue={new Date(2007, 0, 6)}
+						onChange={onChange}
+					/>
+				);
+				const input = container.querySelector(inputSelector);
+
+				fireEvent.change(input, { target: { value: '' } });
+
+				expect(onChange).toHaveBeenCalledWith(
+					expect.anything(),
+					expect.objectContaining({ date: null, formattedDate: '' })
+				);
+				expect(input).toHaveValue('');
+			});
+
+			it('value={null} renders an empty input', () => {
+				const { container } = render(<DemoComponent value={null} />);
+				expect(container.querySelector(inputSelector)).toHaveValue('');
+			});
+
+			it('treats value={undefined} as null and warns', () => {
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				// Not `DemoComponent`: its `defaultProps` would fill in `value`
+				const { container } = render(
+					<Datepicker
+						formatter={formatDate}
+						id="sample-datepicker"
+						parser={parseDate}
+					/>
+				);
+
+				expect(container.querySelector(inputSelector)).toHaveValue('');
+				expect(consoleError).toHaveBeenCalledWith(
+					expect.stringContaining('`value` is required by SLDSDatePicker')
+				);
+				consoleError.mockRestore();
+			});
+
+			it('ignores and warns about the removed formattedValue prop', () => {
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				const { container } = render(
+					<DemoComponent formattedValue="1/1/1999" value={null} />
+				);
+
+				const input = container.querySelector(inputSelector);
+				expect(input).toHaveValue('');
+				expect(input).not.toHaveAttribute('formattedValue');
+				expect(container.innerHTML).not.toContain('1/1/1999');
+				expect(consoleError).toHaveBeenCalledWith(
+					expect.stringContaining('`formattedValue` has reached End-of-Life')
+				);
+				consoleError.mockRestore();
+			});
+		});
+
+		describe('isOpen', () => {
+			it('controlled isOpen stays open on Escape, Enter, typing and date select, and requests close', () => {
+				const onRequestClose = vi.fn();
+				const { container } = render(
+					<DemoComponent
+						isOpen
+						menuPosition="relative"
+						onRequestClose={onRequestClose}
+					/>
+				);
+				const input = container.querySelector(inputSelector);
+
+				fireEvent.keyDown(input, { keyCode: KEYS.ESCAPE, which: KEYS.ESCAPE });
+				fireEvent.keyDown(input, { keyCode: KEYS.ENTER, which: KEYS.ENTER });
+				fireEvent.change(input, { target: { value: '1/2/2007' } });
+				fireEvent.click(
+					container.querySelector(`${calendarSelector} [aria-disabled=false]`)
+				);
+
+				expect(container.querySelector(calendarSelector)).toBeInTheDocument();
+				expect(onRequestClose.mock.calls.map((call) => call[1])).toEqual([
+					{ trigger: 'escape' },
+					{ trigger: 'enter' },
+					{ trigger: 'input-change' },
+					{ trigger: 'date-select' },
+				]);
+			});
+
+			it('controlled isOpen={false} does not open on click or arrow key', () => {
+				const { container } = render(
+					<DemoComponent isOpen={false} menuPosition="relative" />
+				);
+
+				fireEvent.click(container.querySelector(inputSelector));
+				fireEvent.click(container.querySelector(triggerClassSelector));
+				fireEvent.keyDown(container.querySelector(inputSelector), {
+					keyCode: KEYS.DOWN,
+					which: KEYS.DOWN,
+				});
+
+				expect(
+					container.querySelector(calendarSelector)
+				).not.toBeInTheDocument();
+			});
+
+			it('controlled isOpen opens and closes when the parent updates it', () => {
+				const Parent = () => {
+					const [isOpen, setIsOpen] = useState(false);
+					return (
+						<DemoComponent
+							isOpen={isOpen}
+							menuPosition="relative"
+							onRequestClose={() => setIsOpen(false)}
+							onRequestOpen={() => setIsOpen(true)}
+						/>
+					);
+				};
+				const { container } = render(<Parent />);
+				const input = container.querySelector(inputSelector);
+
+				fireEvent.keyDown(input, { keyCode: KEYS.DOWN, which: KEYS.DOWN });
+				expect(container.querySelector(calendarSelector)).toBeInTheDocument();
+
+				fireEvent.keyDown(input, { keyCode: KEYS.ESCAPE, which: KEYS.ESCAPE });
+				expect(
+					container.querySelector(calendarSelector)
+				).not.toBeInTheDocument();
+			});
+
+			it('uncontrolled with onRequestOpen still opens itself and reports the request', () => {
+				const onRequestOpen = vi.fn();
+				const { container } = render(
+					<DemoComponent
+						menuPosition="relative"
+						onRequestOpen={onRequestOpen}
+					/>
+				);
+
+				fireEvent.click(container.querySelector(inputSelector));
+
+				expect(onRequestOpen).toHaveBeenCalledWith(expect.anything(), {
+					trigger: 'input-click',
+				});
+				expect(container.querySelector(calendarSelector)).toBeInTheDocument();
+			});
+
+			it('uncontrolled typing closes the calendar through onRequestClose', () => {
+				const onRequestClose = vi.fn();
+				const { container } = render(
+					<DemoComponent
+						defaultIsOpen
+						menuPosition="relative"
+						onRequestClose={onRequestClose}
+					/>
+				);
+
+				fireEvent.change(container.querySelector(inputSelector), {
+					target: { value: '1/2/2007' },
+				});
+
+				expect(onRequestClose).toHaveBeenCalledWith(expect.anything(), {
+					trigger: 'input-change',
+				});
+				expect(
+					container.querySelector(calendarSelector)
+				).not.toBeInTheDocument();
+			});
+
+			it('defaultIsOpen seeds the uncontrolled open state', () => {
+				const { container } = render(
+					<DemoComponent defaultIsOpen menuPosition="relative" />
+				);
+				expect(container.querySelector(calendarSelector)).toBeInTheDocument();
+
+				fireEvent.keyDown(container.querySelector(inputSelector), {
+					keyCode: KEYS.ESCAPE,
+					which: KEYS.ESCAPE,
+				});
+				expect(
+					container.querySelector(calendarSelector)
+				).not.toBeInTheDocument();
 			});
 		});
 	});

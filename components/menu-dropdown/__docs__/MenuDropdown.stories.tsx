@@ -4,7 +4,10 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import MenuDropdown, { type MenuDropdownOption } from '../index';
+import MenuDropdown, {
+	type MenuDropdownOption,
+	type MenuDropdownValue,
+} from '../index';
 import ButtonTrigger from '../button-trigger';
 import IconSettings from '../../icon-settings';
 import Button from '../../button';
@@ -170,7 +173,7 @@ export const HoverTrigger: Story = {
 export const WithCheckmark: Story = {
 	render: () => {
 		const CheckmarkDropdown = () => {
-			const [value, setValue] = useState<string | undefined>('C0');
+			const [value, setValue] = useState<MenuDropdownValue | undefined>('C0');
 			return (
 				<MenuDropdown
 					assistiveText={{ icon: 'More Options' }}
@@ -180,8 +183,8 @@ export const WithCheckmark: Story = {
 					iconName="down"
 					iconVariant="border-filled"
 					id="checkmark-dropdown"
-					onSelect={(event, { option }) => {
-						setValue(option.value as string);
+					onSelect={(event, data) => {
+						setValue(data.value);
 					}}
 					options={options}
 					value={value}
@@ -196,7 +199,10 @@ export const WithCheckmark: Story = {
 export const MultipleSelection: Story = {
 	render: () => {
 		const MultipleDropdown = () => {
-			const [values, setValues] = useState<string[]>(['C0', 'D0']);
+			const [values, setValues] = useState<MenuDropdownValue | undefined>([
+				'C0',
+				'D0',
+			]);
 			return (
 				<MenuDropdown
 					assistiveText={{ icon: 'More Options' }}
@@ -207,13 +213,8 @@ export const MultipleSelection: Story = {
 					iconVariant="border-filled"
 					id="multiple-dropdown"
 					multiple
-					onSelect={(event, { option }) => {
-						const val = option.value as string;
-						setValues((prev) =>
-							prev.includes(val)
-								? prev.filter((v) => v !== val)
-								: [...prev, val]
-						);
+					onSelect={(event, data) => {
+						setValues(data.value);
 					}}
 					options={options}
 					value={values}
@@ -365,7 +366,7 @@ export const RightToLeft: Story = {
 export const Controlled: Story = {
 	render: () => {
 		const ControlledDropdown = () => {
-			const [isOpen, setIsOpen] = useState<boolean | undefined>(undefined);
+			const [isOpen, setIsOpen] = useState(false);
 
 			return (
 				<div className="slds-grid">
@@ -375,6 +376,8 @@ export const Controlled: Story = {
 							id="controlled-dropdown"
 							isOpen={isOpen}
 							label="Controlled Dropdown"
+							onRequestClose={() => setIsOpen(false)}
+							onRequestOpen={() => setIsOpen(true)}
 							options={options}
 						/>
 					</div>
@@ -384,12 +387,7 @@ export const Controlled: Story = {
 							onClick={() => setIsOpen(true)}
 							className="slds-m-right_small"
 						/>
-						<Button
-							label="Force Close"
-							onClick={() => setIsOpen(false)}
-							className="slds-m-right_small"
-						/>
-						<Button label="Reset" onClick={() => setIsOpen(undefined)} />
+						<Button label="Force Close" onClick={() => setIsOpen(false)} />
 					</div>
 				</div>
 			);

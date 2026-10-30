@@ -18,12 +18,29 @@ const categories = [
 		id: 'folders',
 		label: 'Folders',
 		items: [
-			{ id: 'created-by-me-folders', label: 'Created by Me', url: '#my-folders' },
+			{
+				id: 'created-by-me-folders',
+				label: 'Created by Me',
+				url: '#my-folders',
+			},
 			{ id: 'shared', label: 'Shared with Me', url: '#shared' },
 			{ id: 'all-folders', label: 'All Folders', url: '#all-folders' },
 		],
 	},
 ];
+
+// VerticalNavigation is controlled: keep `selectedId` in state and update it in `onSelect`.
+// eslint-disable-next-line react/prop-types
+const ControlledNavigation = ({ initialSelectedId, ...props }) => {
+	const [selectedId, setSelectedId] = useState(initialSelectedId);
+	return (
+		<VerticalNavigation
+			{...props}
+			onSelect={(event, { item }) => setSelectedId(item.id)}
+			selectedId={selectedId}
+		/>
+	);
+};
 
 export default {
 	title: 'Components/VerticalNavigation',
@@ -42,7 +59,7 @@ export default {
 // Default navigation
 export const Default = {
 	render: () => (
-		<VerticalNavigation categories={categories} selectedId="recent" />
+		<ControlledNavigation categories={categories} initialSelectedId="recent" />
 	),
 };
 
@@ -67,9 +84,9 @@ export const Interactive = {
 // Single category
 export const SingleCategory = {
 	render: () => (
-		<VerticalNavigation
+		<ControlledNavigation
 			categories={[categories[0]]}
-			selectedId="recent"
+			initialSelectedId="recent"
 		/>
 	),
 };
@@ -83,16 +100,24 @@ export const MultipleCategories = {
 				id: 'dashboards',
 				label: 'Dashboards',
 				items: [
-					{ id: 'my-dashboards', label: 'My Dashboards', url: '#my-dashboards' },
-					{ id: 'shared-dashboards', label: 'Shared Dashboards', url: '#shared-dashboards' },
+					{
+						id: 'my-dashboards',
+						label: 'My Dashboards',
+						url: '#my-dashboards',
+					},
+					{
+						id: 'shared-dashboards',
+						label: 'Shared Dashboards',
+						url: '#shared-dashboards',
+					},
 				],
 			},
 		];
 
 		return (
-			<VerticalNavigation
+			<ControlledNavigation
 				categories={extendedCategories}
-				selectedId="recent"
+				initialSelectedId="recent"
 			/>
 		);
 	},

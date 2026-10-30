@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
@@ -58,6 +59,51 @@ const renderDropdown = (props) => {
 	return render(
 		<IconSettings iconPath="/assets/icons">
 			<Dropdown {...defaultProps} {...props} />
+		</IconSettings>
+	);
+};
+
+// A parent that owns `value` and applies the value requested by `onSelect`
+const StatefulDropdown = ({ initialValue, onSelect, ...props }) => {
+	const [value, setValue] = useState(initialValue);
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<Dropdown
+				{...defaultProps}
+				{...props}
+				onSelect={(event, data) => {
+					setValue(data.value);
+					onSelect?.(event, data);
+				}}
+				value={value}
+			/>
+		</IconSettings>
+	);
+};
+
+// A parent that owns `isOpen` and applies onRequestOpen/onRequestClose
+const ControlledOpenDropdown = ({
+	initialIsOpen = false,
+	onRequestOpen,
+	onRequestClose,
+	...props
+}) => {
+	const [isOpen, setIsOpen] = useState(initialIsOpen);
+	return (
+		<IconSettings iconPath="/assets/icons">
+			<Dropdown
+				{...defaultProps}
+				{...props}
+				isOpen={isOpen}
+				onRequestClose={(event, data) => {
+					setIsOpen(false);
+					onRequestClose?.(event, data);
+				}}
+				onRequestOpen={(event, data) => {
+					setIsOpen(true);
+					onRequestOpen?.(event, data);
+				}}
+			/>
 		</IconSettings>
 	);
 };
@@ -481,7 +527,9 @@ describe('SLDSMenuDropdown', () => {
 
 	describe('multiple selection', () => {
 		it('selects multiple items and renders checkmarks', async () => {
-			const { container } = renderDropdown({ multiple: true, checkmark: true });
+			const { container } = render(
+				<StatefulDropdown checkmark initialValue={[]} multiple />
+			);
 
 			const trigger = container.querySelector('.slds-dropdown-trigger');
 			fireEvent.click(trigger);
@@ -507,7 +555,9 @@ describe('SLDSMenuDropdown', () => {
 		});
 
 		it('moves focus to next item after keyboard selection', async () => {
-			const { container } = renderDropdown({ multiple: true, checkmark: true });
+			const { container } = render(
+				<StatefulDropdown checkmark initialValue={['B0']} multiple />
+			);
 
 			const trigger = container.querySelector('.slds-dropdown-trigger');
 			fireEvent.click(trigger);
@@ -686,7 +736,7 @@ describe('SLDSMenuDropdown', () => {
 			return container.querySelector('.slds-dropdown');
 		};
 
-		it('calls onSelect with (event, { option, optionIndex }) on click', async () => {
+		it('calls onSelect with (event, { option, optionIndex, value }) on click', async () => {
 			const onSelect = vi.fn();
 			const { container } = renderDropdown({ onSelect });
 
@@ -695,11 +745,15 @@ describe('SLDSMenuDropdown', () => {
 
 			expect(onSelect).toHaveBeenCalledTimes(1);
 			const [event, data] = onSelect.mock.calls[0];
-			expect(data).toEqual({ option: menuOptions[2], optionIndex: 2 });
+			expect(data).toEqual({
+				option: menuOptions[2],
+				optionIndex: 2,
+				value: 'C0',
+			});
 			expect(event.type).toBe('click');
 		});
 
-		it('calls onSelect with the keydown event and { option, optionIndex } on keyboard selection', async () => {
+		it('calls onSelect with the keydown event and { option, optionIndex, value } on keyboard selection', async () => {
 			const onSelect = vi.fn();
 			const { container } = renderDropdown({ onSelect });
 
@@ -712,12 +766,18 @@ describe('SLDSMenuDropdown', () => {
 			const [event, data] = onSelect.mock.calls[0];
 			expect(event.type).toBe('keydown');
 			expect(event.key).toBe('Enter');
-			expect(data).toEqual({ option: menuOptions[1], optionIndex: 1 });
+			expect(data).toEqual({
+				option: menuOptions[1],
+				optionIndex: 1,
+				value: 'B0',
+			});
 		});
 
-		it('calls onSelect for each toggle in multiple mode', async () => {
+		it('calls onSelect for each toggle in multiple mode with the next value', async () => {
 			const onSelect = vi.fn();
-			const { container } = renderDropdown({ multiple: true, onSelect });
+			const { container } = render(
+				<StatefulDropdown initialValue={['B0']} multiple onSelect={onSelect} />
+			);
 
 			const menu = await openMenu(container);
 			const links = menu.querySelectorAll('li a');
@@ -728,10 +788,12 @@ describe('SLDSMenuDropdown', () => {
 			expect(onSelect.mock.calls[0][1]).toEqual({
 				option: menuOptions[0],
 				optionIndex: 0,
+				value: ['B0', 'A0'],
 			});
 			expect(onSelect.mock.calls[1][1]).toEqual({
 				option: menuOptions[0],
 				optionIndex: 0,
+				value: ['B0'],
 			});
 		});
 
@@ -905,6 +967,290 @@ describe('SLDSMenuDropdown', () => {
 				{ timeout: 100 }
 			);
 			expect(onClose).toHaveBeenCalledWith(undefined, {});
+		});
+	});
+
+	describe('Controlled selection (`value`)', () => {
+		const openMenu = async (container) => {
+			fireEvent.click(container.querySelector('.slds-dropdown-trigger'));
+			await waitFor(() => {
+				expect(container.querySelector('.slds-dropdown')).toBeInTheDocument();
+			});
+			return container.querySelector('.slds-dropdown');
+		};
+		const checkedLabels = (container) =>
+			[
+				...container.querySelectorAll('.slds-dropdown a[aria-checked="true"]'),
+			].map((link) => link.textContent);
+
+		it('renders the selection from `value` on the first render', () => {
+			const { container } = renderDropdown({ checkmark: true, isOpen: true });
+			expect(checkedLabels(container)).toEqual(['B Option Super Super Long']);
+		});
+
+		it('does not change the selection on click unless the parent updates `value`', async () => {
+			const onSelect = vi.fn();
+			const { container } = renderDropdown({ checkmark: true, onSelect });
+
+			const menu = await openMenu(container);
+			fireEvent.click(menu.querySelectorAll('li a')[2]);
+			expect(onSelect.mock.calls[0][1].value).toBe('C0');
+
+			await openMenu(container);
+			expect(checkedLabels(container)).toEqual(['B Option Super Super Long']);
+		});
+
+		it('does not toggle a multiple selection unless the parent updates `value`', async () => {
+			const onSelect = vi.fn();
+			const { container } = renderDropdown({
+				checkmark: true,
+				multiple: true,
+				onSelect,
+				value: ['B0'],
+			});
+
+			const menu = await openMenu(container);
+			fireEvent.click(menu.querySelectorAll('li a')[0]);
+			fireEvent.click(menu.querySelectorAll('li a')[1]);
+
+			expect(onSelect.mock.calls[0][1].value).toEqual(['B0', 'A0']);
+			expect(onSelect.mock.calls[1][1].value).toEqual([]);
+			expect(checkedLabels(container)).toEqual(['B Option Super Super Long']);
+		});
+
+		it('shows the value the parent passes back', async () => {
+			const { container } = render(
+				<StatefulDropdown checkmark initialValue="B0" />
+			);
+
+			const menu = await openMenu(container);
+			fireEvent.click(menu.querySelectorAll('li a')[2]);
+
+			await openMenu(container);
+			expect(checkedLabels(container)).toEqual(['C Option']);
+		});
+
+		it('has no selection state without `value`', async () => {
+			const onSelect = vi.fn();
+			const { container } = renderDropdown({
+				checkmark: true,
+				onSelect,
+				value: undefined,
+			});
+
+			const menu = await openMenu(container);
+			expect(checkedLabels(container)).toEqual([]);
+			fireEvent.click(menu.querySelectorAll('li a')[0]);
+			expect(onSelect.mock.calls[0][1].value).toBe('A0');
+
+			await openMenu(container);
+			expect(checkedLabels(container)).toEqual([]);
+		});
+
+		it('keeps values that are not in `options` in the multiple value it reports', async () => {
+			const onSelect = vi.fn();
+			const { container } = renderDropdown({
+				multiple: true,
+				onSelect,
+				value: ['B0', 'not-an-option'],
+			});
+
+			const menu = await openMenu(container);
+			fireEvent.click(menu.querySelectorAll('li a')[1]);
+			expect(onSelect.mock.calls[0][1].value).toEqual(['not-an-option']);
+		});
+	});
+
+	describe('Open state (`isOpen`, `defaultIsOpen`)', () => {
+		const trigger = (container) => container.querySelector('button');
+		const menuOf = (container) => container.querySelector('.slds-dropdown');
+
+		it('stays open when controlled `isOpen` is true and only requests a close', async () => {
+			const onClose = vi.fn();
+			const onRequestClose = vi.fn();
+			const { container } = renderDropdown({
+				isOpen: true,
+				onClose,
+				onRequestClose,
+			});
+			expect(menuOf(container)).toBeInTheDocument();
+
+			fireEvent.click(trigger(container));
+			fireEvent.keyDown(
+				menuOf(container).querySelector('.slds-dropdown__item a'),
+				keyObjects.ESCAPE
+			);
+			fireEvent.mouseDown(document.body);
+			fireEvent.click(menuOf(container).querySelectorAll('li a')[0]);
+
+			expect(onRequestClose).toHaveBeenCalledTimes(4);
+			expect(onRequestClose.mock.calls[0][0].type).toBe('click');
+			expect(onRequestClose.mock.calls[0][1]).toEqual({});
+			expect(onRequestClose.mock.calls[1][0].key).toBe('Escape');
+			expect(onRequestClose.mock.calls[2][0]).toBeInstanceOf(Event);
+			expect(onRequestClose.mock.calls[3][0].type).toBe('click');
+			expect(onClose).not.toHaveBeenCalled();
+			expect(menuOf(container)).toBeInTheDocument();
+			expect(trigger(container)).toHaveAttribute('aria-expanded', 'true');
+		});
+
+		it('stays closed when controlled `isOpen` is false and only requests an open', async () => {
+			const onOpen = vi.fn();
+			const onRequestOpen = vi.fn();
+			const { container } = renderDropdown({
+				isOpen: false,
+				onOpen,
+				onRequestOpen,
+			});
+
+			fireEvent.click(trigger(container));
+			fireEvent.keyDown(trigger(container), keyObjects.ENTER);
+
+			expect(onRequestOpen).toHaveBeenCalledTimes(2);
+			expect(onRequestOpen.mock.calls[0][0].type).toBe('click');
+			expect(onRequestOpen.mock.calls[0][1]).toEqual({});
+			expect(onRequestOpen.mock.calls[1][0].key).toBe('Enter');
+			expect(onOpen).not.toHaveBeenCalled();
+			expect(menuOf(container)).not.toBeInTheDocument();
+			expect(trigger(container)).toHaveAttribute('aria-expanded', 'false');
+		});
+
+		it('opens and closes when the parent applies the requests, reporting the request events to onOpen/onClose', async () => {
+			const onOpen = vi.fn();
+			const onClose = vi.fn();
+			const { container } = render(
+				<ControlledOpenDropdown onClose={onClose} onOpen={onOpen} />
+			);
+
+			fireEvent.click(trigger(container));
+			await waitFor(() => {
+				expect(menuOf(container)).toBeInTheDocument();
+			});
+			expect(onOpen).toHaveBeenCalledTimes(1);
+			expect(onOpen.mock.calls[0][0].type).toBe('click');
+
+			fireEvent.keyDown(
+				menuOf(container).querySelector('.slds-dropdown__item a'),
+				keyObjects.ESCAPE
+			);
+			await waitFor(() => {
+				expect(menuOf(container)).not.toBeInTheDocument();
+			});
+			expect(onClose).toHaveBeenCalledTimes(1);
+			expect(onClose.mock.calls[0][0].key).toBe('Escape');
+			expect(onClose.mock.calls[0][1]).toEqual({});
+		});
+
+		it('calls onOpen/onClose with undefined when the parent changes `isOpen` on its own', async () => {
+			const onOpen = vi.fn();
+			const onClose = vi.fn();
+			const { container, rerender } = renderDropdown({
+				isOpen: false,
+				onClose,
+				onOpen,
+			});
+			const renderWith = (isOpen) =>
+				rerender(
+					<IconSettings iconPath="/assets/icons">
+						<Dropdown
+							{...defaultProps}
+							isOpen={isOpen}
+							onClose={onClose}
+							onOpen={onOpen}
+						/>
+					</IconSettings>
+				);
+
+			renderWith(true);
+			await waitFor(() => {
+				expect(menuOf(container)).toBeInTheDocument();
+			});
+			expect(onOpen).toHaveBeenCalledTimes(1);
+			expect(onOpen).toHaveBeenCalledWith(undefined, {});
+
+			renderWith(false);
+			expect(menuOf(container)).not.toBeInTheDocument();
+			expect(onClose).toHaveBeenCalledTimes(1);
+			expect(onClose).toHaveBeenCalledWith(undefined, {});
+		});
+
+		it('does not call onOpen when rendered open', async () => {
+			const onOpen = vi.fn();
+			const { container } = renderDropdown({ isOpen: true, onOpen });
+			await waitFor(() => {
+				expect(menuOf(container)).toBeInTheDocument();
+			});
+			expect(onOpen).not.toHaveBeenCalled();
+		});
+
+		it('`defaultIsOpen` seeds the uncontrolled open state', async () => {
+			const onClose = vi.fn();
+			const onRequestClose = vi.fn();
+			const { container } = renderDropdown({
+				defaultIsOpen: true,
+				onClose,
+				onRequestClose,
+			});
+			expect(menuOf(container)).toBeInTheDocument();
+
+			fireEvent.click(trigger(container));
+			await waitFor(() => {
+				expect(menuOf(container)).not.toBeInTheDocument();
+			});
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			expect(onClose).toHaveBeenCalledTimes(1);
+			expect(onClose.mock.calls[0][0].type).toBe('click');
+		});
+
+		it('calls onRequestOpen/onRequestClose and onOpen/onClose when uncontrolled', async () => {
+			const calls = [];
+			const { container } = renderDropdown({
+				onClose: () => calls.push('close'),
+				onOpen: () => calls.push('open'),
+				onRequestClose: () => calls.push('requestClose'),
+				onRequestOpen: () => calls.push('requestOpen'),
+			});
+
+			fireEvent.click(trigger(container));
+			await waitFor(() => {
+				expect(menuOf(container)).toBeInTheDocument();
+			});
+			fireEvent.click(trigger(container));
+			await waitFor(() => {
+				expect(menuOf(container)).not.toBeInTheDocument();
+			});
+
+			expect(calls).toEqual(['requestOpen', 'open', 'requestClose', 'close']);
+		});
+
+		it('`defaultIsOpen` is ignored when `isOpen` is set', () => {
+			const { container } = renderDropdown({
+				defaultIsOpen: true,
+				isOpen: false,
+			});
+			expect(menuOf(container)).not.toBeInTheDocument();
+		});
+
+		it('asks the previously open menu to close when another opens', async () => {
+			const onRequestCloseFirst = vi.fn();
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Dropdown
+						{...defaultProps}
+						id="first"
+						isOpen
+						onRequestClose={onRequestCloseFirst}
+					/>
+					<Dropdown {...defaultProps} id="second" />
+				</IconSettings>
+			);
+
+			fireEvent.click(container.querySelector('#second'));
+			await waitFor(() => {
+				expect(container.querySelectorAll('.slds-dropdown')).toHaveLength(2);
+			});
+			expect(onRequestCloseFirst).toHaveBeenCalledTimes(1);
+			expect(onRequestCloseFirst.mock.calls[0][0].type).toBe('click');
 		});
 	});
 
