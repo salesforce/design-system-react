@@ -8,11 +8,21 @@ import IconSettings from '~/components/icon-settings';
 class Example extends React.Component {
 	static displayName = 'ButtonGroupExample';
 
+	state = { isActive: {} };
+
+	handleClick = (id) => (event, data) => {
+		this.setState((previous) => ({
+			isActive: { ...previous.isActive, [id]: data.isActive },
+		}));
+	};
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
 				<ButtonGroup id="button-group-icon-group-1">
 					<ButtonStateful
+						isActive={!!this.state.isActive.chart1}
+						onClick={this.handleClick('chart1')}
 						assistiveText={{ icon: 'Show Chart' }}
 						buttonVariant="icon"
 						iconName="chart"
@@ -20,6 +30,8 @@ class Example extends React.Component {
 						variant="icon"
 					/>
 					<ButtonStateful
+						isActive={!!this.state.isActive.filter1}
+						onClick={this.handleClick('filter1')}
 						assistiveText={{ icon: 'Filter List' }}
 						iconName="filterList"
 						iconVariant="border"
@@ -51,6 +63,8 @@ class Example extends React.Component {
 					labels={{ label: 'Actions' }}
 				>
 					<ButtonStateful
+						isActive={!!this.state.isActive.chart2}
+						onClick={this.handleClick('chart2')}
 						assistiveText={{ icon: 'Show Chart' }}
 						buttonVariant="icon"
 						iconName="chart"
@@ -58,6 +72,8 @@ class Example extends React.Component {
 						variant="icon"
 					/>
 					<ButtonStateful
+						isActive={!!this.state.isActive.filter2}
+						onClick={this.handleClick('filter2')}
 						assistiveText={{ icon: 'Filter List' }}
 						iconName="filterList"
 						iconVariant="border"
