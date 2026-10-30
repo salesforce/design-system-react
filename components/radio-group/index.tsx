@@ -4,13 +4,13 @@
 import React, {
 	useId,
 	useMemo,
-	type ReactNode,
-	type ReactElement,
 	type CSSProperties,
 	type ChangeEvent,
 } from 'react';
 import classNames from 'classnames';
 import { RADIO_GROUP } from '../../utilities/constants';
+import type { ChildrenOf } from '../../types/common';
+import type { RadioProps } from '../radio';
 
 /**
  * Radio group variant types
@@ -43,8 +43,8 @@ export interface RadioGroupLabels {
 export interface RadioGroupProps {
 	/** Assistive text for accessibility */
 	assistiveText?: RadioGroupAssistiveText;
-	/** Radio components as children */
-	children: ReactNode;
+	/** `Radio` elements. The group passes each one `name`, `onChange`, `aria-describedby` and `disabled`; a `Radio`'s own `name` wins, and its `onChange` runs before the group's. */
+	children: ChildrenOf<RadioProps>;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** Disable all radio inputs */
@@ -101,25 +101,22 @@ const RadioGroup = ({
 	const hasError = Boolean(labels.error);
 	const errorId = hasError ? propErrorId || generatedErrorId : undefined;
 
-	// Clone children with group props
+	// Clone children with group props. The child's own props win, and handlers
+	// and ids are combined rather than replaced.
 	const enhancedChildren = useMemo(() => {
 		return React.Children.map(children, (child) => {
-			if (React.isValidElement(child)) {
-				return React.cloneElement(
-					child as ReactElement<{
-						name?: string;
-						onChange?: typeof onChange;
-						'aria-describedby'?: string;
-						disabled?: boolean;
-					}>,
-					{
-						name,
-						onChange,
-						'aria-describedby': errorId,
-						disabled:
-							disabled || (child.props as { disabled?: boolean }).disabled,
-					}
-				);
+			if (React.isValidElement<RadioProps>(child)) {
+				const childProps = child.props;
+				return React.cloneElement(child, {
+					name: childProps.name ?? name,
+					onChange: (event, data) => {
+						childProps.onChange?.(event, data);
+						onChange?.(event as ChangeEvent<HTMLInputElement>, data);
+					},
+					'aria-describedby':
+						classNames(childProps['aria-describedby'], errorId) || undefined,
+					disabled: disabled || childProps.disabled,
+				});
 			}
 			return child;
 		});

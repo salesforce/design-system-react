@@ -3,7 +3,7 @@
 
 import React, { type ReactNode, type ReactElement } from 'react';
 import classNames from 'classnames';
-import Icon from '../icon';
+import Icon, { type IconProps } from '../icon';
 import { SCOPED_NOTIFICATION } from '../../utilities/constants';
 
 /**
@@ -29,8 +29,8 @@ export interface ScopedNotificationProps {
 	className?: string | string[] | Record<string, boolean>;
 	/** Content to display in the notification */
 	children?: ReactNode;
-	/** Custom icon (accepts Icon component) */
-	icon?: ReactElement;
+	/** Custom `Icon`. Its own `assistiveText` wins over `assistiveText.icon`. */
+	icon?: ReactElement<IconProps>;
 	/** Icon name when using default icon */
 	iconName?: string;
 	/** Theme for the notification */
@@ -54,24 +54,15 @@ const ScopedNotification = ({
 
 	if (propIcon) {
 		// Clone the provided icon with merged assistive text
-		let iconAssistiveText: { label?: string } = {};
-		const iconProps = propIcon.props as Record<string, unknown>;
-
-		if (assistiveText?.icon) {
-			iconAssistiveText.label = assistiveText.icon;
-		}
-
-		if (iconProps.assistiveText) {
-			iconAssistiveText = {
-				...iconAssistiveText,
-				...(iconProps.assistiveText as { label?: string }),
-			};
-		}
-
+		const { assistiveText: iconAssistiveText } = propIcon.props;
 		icon = React.cloneElement(propIcon, {
-			...iconProps,
-			assistiveText: iconAssistiveText,
-		} as Record<string, unknown>);
+			assistiveText: {
+				label: assistiveText?.icon,
+				...(typeof iconAssistiveText === 'string'
+					? { label: iconAssistiveText }
+					: iconAssistiveText),
+			},
+		});
 	} else {
 		// Use default icon
 		icon = (

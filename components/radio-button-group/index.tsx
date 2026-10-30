@@ -1,13 +1,11 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, {
-	type ReactNode,
-	type CSSProperties,
-	type ChangeEvent,
-} from 'react';
+import React, { type CSSProperties, type ChangeEvent } from 'react';
 import RadioGroup from '../radio-group';
 import { RADIO_BUTTON_GROUP } from '../../utilities/constants';
+import type { ChildrenOf } from '../../types/common';
+import type { RadioProps } from '../radio';
 
 /**
  * Assistive text for RadioButtonGroup
@@ -35,8 +33,8 @@ export interface RadioButtonGroupLabels {
 export interface RadioButtonGroupProps {
 	/** Assistive text for accessibility */
 	assistiveText?: RadioButtonGroupAssistiveText;
-	/** Radio components as children */
-	children: ReactNode;
+	/** `Radio` elements; see `RadioGroup` `children` */
+	children: ChildrenOf<RadioProps>;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** Disable all radio inputs */

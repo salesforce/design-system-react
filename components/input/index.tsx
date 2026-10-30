@@ -23,6 +23,7 @@ import InnerInput from './private/inner-input';
 import Label from '../utilities/label/index';
 import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
 import type { TooltipProps } from '../tooltip/index';
+import type { InputIconProps } from '../icon/input-icon';
 
 import checkProps from './check-props';
 import { INPUT } from '../../utilities/constants';
@@ -126,10 +127,10 @@ export interface InputProps {
 	fixedTextRight?: ReactNode;
 	/** Shows loading spinner inside input */
 	hasSpinner?: boolean;
-	/** Left-aligned icon (InputIcon instance) */
-	iconLeft?: ReactNode;
-	/** Right-aligned icon (InputIcon instance) */
-	iconRight?: ReactNode;
+	/** Left-aligned `InputIcon`. Its `iconPosition` defaults to `left`. */
+	iconLeft?: ReactElement<InputIconProps> | null;
+	/** Right-aligned `InputIcon`. Its `iconPosition` defaults to `right`. */
+	iconRight?: ReactElement<InputIconProps> | null;
 	/** HTML id attribute */
 	id?: string;
 	/** Help text below the input */
@@ -560,26 +561,20 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 		let iconRight: ReactNode = null;
 
 		if (propIconLeft) {
-			iconLeft = React.isValidElement(propIconLeft)
-				? React.cloneElement(
-						propIconLeft as React.ReactElement<{ iconPosition?: string }>,
-						{
-							iconPosition: 'left',
-						}
-					)
+			iconLeft = React.isValidElement<InputIconProps>(propIconLeft)
+				? React.cloneElement(propIconLeft, {
+						iconPosition: propIconLeft.props.iconPosition ?? 'left',
+					})
 				: propIconLeft;
 		} else if (variant === COUNTER && !isStatic && !readOnly) {
 			iconLeft = getCounterButtonIcon(DECREMENT);
 		}
 
 		if (propIconRight) {
-			iconRight = React.isValidElement(propIconRight)
-				? React.cloneElement(
-						propIconRight as React.ReactElement<{ iconPosition?: string }>,
-						{
-							iconPosition: 'right',
-						}
-					)
+			iconRight = React.isValidElement<InputIconProps>(propIconRight)
+				? React.cloneElement(propIconRight, {
+						iconPosition: propIconRight.props.iconPosition ?? 'right',
+					})
 				: propIconRight;
 		} else if (variant === COUNTER && !isStatic && !readOnly) {
 			iconRight = getCounterButtonIcon(INCREMENT);

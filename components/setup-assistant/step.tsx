@@ -4,7 +4,7 @@
 import React, {
 	type ReactNode,
 	type CSSProperties,
-	type SyntheticEvent,
+	type MouseEvent,
 } from 'react';
 import classNames from 'classnames';
 
@@ -18,7 +18,10 @@ import componentDoc from './component.json';
 import Button from '../button';
 import ProgressRing from '../progress-ring';
 
-import { ICON, SETUP_ASSISTANT_STEP } from '../../utilities/constants';
+import Icon, { type IconProps } from '../icon';
+
+import { SETUP_ASSISTANT_STEP } from '../../utilities/constants';
+import isElementOfType from '../../utilities/is-element-of-type';
 import generateId from '../../utilities/generate-id';
 
 export interface StepAssistiveText {
@@ -67,10 +70,6 @@ export interface StepProps {
 	 */
 	id?: string;
 	/**
-	 * Index of the step within the step array
-	 */
-	index?: number;
-	/**
 	 * Dictates whether the step can be expanded / collapsed
 	 */
 	isExpandable?: boolean;
@@ -99,7 +98,7 @@ export interface StepProps {
 	/**
 	 * Function to handle requests to expand / collapse the step. `data.isOpen` is the requested (next) state.
 	 */
-	onToggleIsOpen?: (event: SyntheticEvent, data: StepToggleData) => void;
+	onToggleIsOpen?: (event: MouseEvent, data: StepToggleData) => void;
 	/**
 	 * Percentage of step completed. No progress indicator will be shown for the step unless this is provided
 	 */
@@ -108,6 +107,12 @@ export interface StepProps {
 	 * Display number for the step. Only appears if progress indicator is enabled. Determined automatically by parent if not provided.
 	 */
 	stepNumber?: number;
+}
+
+/** Props the parent `SetupAssistant` injects. They aren't part of the public props. */
+export interface StepInjectedProps {
+	/** Index of the step within the Setup Assistant */
+	index?: number;
 }
 
 interface StepState {
@@ -122,14 +127,14 @@ const defaultProps: Partial<StepProps> = {
  * Setup Assistant Step component is used to specify individual items within the Setup Assistant
  * filled with learning and task links along with a recommended sequence that may have progress tracking
  */
-class Step extends React.Component<StepProps, StepState> {
+class Step extends React.Component<StepProps & StepInjectedProps, StepState> {
 	static displayName = SETUP_ASSISTANT_STEP;
 
 	static defaultProps = defaultProps;
 
 	generatedId: string;
 
-	constructor(props: StepProps) {
+	constructor(props: StepProps & StepInjectedProps) {
 		super(props);
 		this.generatedId = generateId();
 		this.state = {
@@ -148,7 +153,7 @@ class Step extends React.Component<StepProps, StepState> {
 			: this.state.isOpen;
 	}
 
-	toggleIsOpen = (event: SyntheticEvent) => {
+	toggleIsOpen = (event: MouseEvent) => {
 		if (this.props.onToggleIsOpen) {
 			this.props.onToggleIsOpen(event, {
 				index: this.props.index,
@@ -219,13 +224,8 @@ class Step extends React.Component<StepProps, StepState> {
 			const renderedFigure =
 				this.props.figure ?? this.props.onRenderFigure?.() ?? null;
 
-			if (
-				React.isValidElement(renderedFigure) &&
-				(renderedFigure.type as { displayName?: string }).displayName === ICON
-			) {
-				const figureProps = renderedFigure.props as {
-					containerStyle?: CSSProperties;
-				};
+			if (isElementOfType<IconProps>(renderedFigure, Icon)) {
+				const figureProps = renderedFigure.props;
 				let containerStyle: CSSProperties = {
 					position: 'relative',
 					top: this.props.isExpandable ? '5px' : '-3px',
@@ -334,4 +334,4 @@ class Step extends React.Component<StepProps, StepState> {
 	}
 }
 
-export default Step;
+export default Step as React.ComponentType<StepProps>;

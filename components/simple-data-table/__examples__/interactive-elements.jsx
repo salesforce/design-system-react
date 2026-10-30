@@ -27,7 +27,6 @@ const CustomSimpleDataTableCell = ({ id, children, ...props }) => {
 	);
 	return cell;
 };
-CustomSimpleDataTableCell.displayName = SimpleDataTableCell.displayName;
 
 const columns = [
 	<SimpleDataTableColumn
