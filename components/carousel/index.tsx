@@ -268,9 +268,11 @@ const Carousel = ({
 		setTranslateX(-(width * currentPanel));
 	}, [stageWidth, currentPanel]);
 
-	// Set current panel (internal or via callback)
+	// Set current panel (internal or via callback). The translation follows from the currentPanel
+	// effect below; a callback scheduled here would run with the panel from the render that
+	// scheduled it, not the new one.
 	const setCurrentPanel = useCallback(
-		(event: CarouselPanelChangeEvent, panel: number, callback?: () => void) => {
+		(event: CarouselPanelChangeEvent, panel: number) => {
 			if (onRequestPanelChange) {
 				onRequestPanelChange(event, {
 					currentPanel: latestRef.current.currentPanel,
@@ -278,10 +280,6 @@ const Carousel = ({
 				});
 			} else {
 				setInternalCurrentPanel(panel);
-				// Use setTimeout to ensure state is updated before callback
-				if (callback) {
-					setTimeout(callback, 0);
-				}
 			}
 		},
 		[onRequestPanelChange]
@@ -310,8 +308,6 @@ const Carousel = ({
 	);
 
 	// Start autoplay. Panel changes and the final stop come from the timer, so they carry no event.
-	// No translation callback is passed: the interval outlives the render that created it, so a
-	// callback would use a stale panel. The currentPanel effect keeps the translation in sync.
 	const startAutoplay = useCallback(() => {
 		autoplayIdRef.current = setInterval(() => {
 			const {
@@ -344,9 +340,9 @@ const Carousel = ({
 			if (next > nrOfPanels - 1) {
 				next = 0;
 			}
-			setCurrentPanel(event, next, changeTranslationAutomatically);
+			setCurrentPanel(event, next);
 		},
-		[currentPanel, nrOfPanels, setCurrentPanel, changeTranslationAutomatically]
+		[currentPanel, nrOfPanels, setCurrentPanel]
 	);
 
 	const onPreviousPanelHandler = useCallback(
@@ -355,9 +351,9 @@ const Carousel = ({
 			if (prev < 0) {
 				prev = nrOfPanels - 1;
 			}
-			setCurrentPanel(event, prev, changeTranslationAutomatically);
+			setCurrentPanel(event, prev);
 		},
-		[currentPanel, nrOfPanels, setCurrentPanel, changeTranslationAutomatically]
+		[currentPanel, nrOfPanels, setCurrentPanel]
 	);
 
 	// Indicator handlers
@@ -367,18 +363,13 @@ const Carousel = ({
 
 	const onIndicatorClickHandler = useCallback(
 		(event: MouseEvent, panel: number) => {
-			setCurrentPanel(event, panel, changeTranslationAutomatically);
+			setCurrentPanel(event, panel);
 			setIndicatorsHaveFocus(true);
 			if (isAutoplayOn) {
 				stopAutoplay(event);
 			}
 		},
-		[
-			setCurrentPanel,
-			changeTranslationAutomatically,
-			isAutoplayOn,
-			stopAutoplay,
-		]
+		[setCurrentPanel, isAutoplayOn, stopAutoplay]
 	);
 
 	const onIndicatorFocus = useCallback(
