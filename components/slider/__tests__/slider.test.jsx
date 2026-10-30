@@ -214,6 +214,81 @@ describe('SLDSSlider', () => {
 		});
 	});
 
+	describe('Controlled value', () => {
+		it('reports `{ value }` and only moves when the parent updates `value`', () => {
+			const onChange = vi.fn();
+			const { container, rerender } = render(
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					onChange={onChange}
+					value={10}
+				/>
+			);
+			const input = container.querySelector('input');
+			const display = container.querySelector('.slds-slider__value');
+
+			fireEvent.change(input, { target: { value: '40' } });
+			expect(onChange).toHaveBeenCalledTimes(1);
+			expect(onChange.mock.calls[0][1]).toEqual({ value: 40 });
+			expect(input.value).toBe('10');
+			expect(display.textContent).toBe('10');
+
+			rerender(
+				<Slider
+					labels={{ label: 'Slider Label' }}
+					onChange={onChange}
+					value={40}
+				/>
+			);
+			expect(input.value).toBe('40');
+			expect(display.textContent).toBe('40');
+		});
+	});
+
+	describe('Removed props', () => {
+		it('ignores `defaultValue` and warns once', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			try {
+				const { container, rerender } = render(
+					<Slider
+						defaultValue={70}
+						labels={{ label: 'Slider Label' }}
+						value={20}
+					/>
+				);
+				rerender(
+					<Slider
+						defaultValue={70}
+						labels={{ label: 'Slider Label' }}
+						value={20}
+					/>
+				);
+
+				expect(container.querySelector('input').value).toBe('20');
+				expect(container.querySelector('.slds-slider__value').textContent).toBe(
+					'20'
+				);
+				const sunsetCalls = consoleError.mock.calls.filter((args) =>
+					args.join(' ').includes('defaultValue')
+				);
+				expect(sunsetCalls).toHaveLength(1);
+			} finally {
+				consoleError.mockRestore();
+			}
+		});
+
+		it('takes the display value only from `value`', () => {
+			const { container } = render(
+				<Slider defaultValue={70} labels={{ label: 'Slider Label' }} />
+			);
+			expect(container.querySelector('.slds-slider__value').textContent).toBe(
+				''
+			);
+		});
+	});
+
 	describe('Slider with Assistive Text Label', () => {
 		it('renders label (assitive)', () => {
 			const { container } = render(

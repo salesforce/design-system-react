@@ -5,6 +5,12 @@ import Slider from '~/components/slider';
 class Example extends React.Component {
 	static displayName = 'SliderExample';
 
+	state = { value: 0 };
+
+	handleChange = (event, data) => {
+		this.setState({ value: data.value });
+	};
+
 	render() {
 		return (
 			<Slider
@@ -15,6 +21,8 @@ class Example extends React.Component {
 					error: 'There is a problem with this field',
 				}}
 				aria-describedby="slider-error-message"
+				onChange={this.handleChange}
+				value={this.state.value}
 			/>
 		);
 	}
