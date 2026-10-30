@@ -7,8 +7,10 @@ class Example extends React.Component {
 		super(props);
 
 		this.state = {
+			counter1value: '',
 			counter2value: 10,
 			counter3value: 10,
+			counter4value: 10.0,
 		};
 	}
 
@@ -20,7 +22,15 @@ class Example extends React.Component {
 						<h1 className="slds-text-title_caps slds-p-vertical_medium">
 							1. Simple counter input
 						</h1>
-						<Input id="counter-input-1" label="My Label" variant="counter" />
+						<Input
+							id="counter-input-1"
+							label="My Label"
+							onChange={(event, data) => {
+								this.setState({ counter1value: data.value });
+							}}
+							value={this.state.counter1value}
+							variant="counter"
+						/>
 					</div>
 					<div>
 						<h1 className="slds-text-title_caps slds-p-vertical_medium">
@@ -59,10 +69,13 @@ class Example extends React.Component {
 							4. Counter input with floating step size
 						</h1>
 						<Input
-							defaultValue={10.0}
 							id="counter-input-4"
 							label="My Label"
+							onChange={(event, data) => {
+								this.setState({ counter4value: data.value });
+							}}
 							step={0.1}
+							value={this.state.counter4value}
 							variant="counter"
 						/>
 					</div>

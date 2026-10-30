@@ -424,5 +424,78 @@ describe('SLDSInput', () => {
 			expect(onChangeData.number).toBe(0.9);
 			expect(onChangeData.value).toBe('0.9');
 		});
+
+		it('does not write the DOM; the input only changes when the parent updates `value`', () => {
+			const onChange = vi.fn();
+			const { container, rerender } = renderInput({
+				onChange,
+				value: 5,
+				variant: 'counter',
+			});
+			const input = container.querySelector('input');
+			const increment = container.querySelector(
+				'.slds-input__button_increment'
+			);
+
+			fireEvent.mouseDown(increment);
+			fireEvent.mouseUp(increment);
+			expect(onChange).toHaveBeenCalledTimes(1);
+			expect(onChange.mock.calls[0][1]).toEqual({ number: 6, value: '6' });
+			expect(input.value).toBe('5');
+
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<Input
+						{...defaultProps}
+						onChange={onChange}
+						value={6}
+						variant="counter"
+					/>
+				</IconSettings>
+			);
+			expect(input.value).toBe('6');
+
+			// The next step is computed from the new prop value.
+			fireEvent.mouseDown(increment);
+			fireEvent.mouseUp(increment);
+			expect(onChange.mock.calls[1][1]).toEqual({ number: 7, value: '7' });
+		});
+
+		it('steps from 0 when `value` is not set, without writing the DOM', () => {
+			const onChange = vi.fn();
+			const { container } = renderInput({ onChange, variant: 'counter' });
+			const input = container.querySelector('input');
+			input.value = '42'; // a stray DOM value must not be read
+			const decrement = container.querySelector(
+				'.slds-input__button_decrement'
+			);
+
+			fireEvent.mouseDown(decrement);
+			fireEvent.mouseUp(decrement);
+			expect(onChange.mock.calls[0][1]).toEqual({ number: -1, value: '-1' });
+			expect(input.value).toBe('42');
+		});
+	});
+
+	describe('Removed props', () => {
+		it('warns once for `defaultValue` and does not pass it to the input', async () => {
+			vi.resetModules();
+			const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+			try {
+				const { default: checkProps } = await import('../check-props');
+				const { INPUT } = await import('../../../utilities/constants');
+				checkProps(INPUT, { defaultValue: 'x' });
+				checkProps(INPUT, { defaultValue: 'x' });
+				const sunsetCalls = errorSpy.mock.calls.filter((call) =>
+					String(call[0]).includes('defaultValue')
+				);
+				expect(sunsetCalls).toHaveLength(1);
+			} finally {
+				errorSpy.mockRestore();
+			}
+
+			const { container } = renderInput({ defaultValue: 'stale' });
+			expect(container.querySelector('input').value).toBe('');
+		});
 	});
 });

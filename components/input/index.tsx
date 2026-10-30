@@ -5,6 +5,7 @@ import React, {
 	useId,
 	useRef,
 	useCallback,
+	useEffect,
 	forwardRef,
 	type ReactNode,
 	type ReactElement,
@@ -112,8 +113,6 @@ export interface InputProps {
 	children?: ReactNode;
 	/** CSS classes for the outer container */
 	className?: string | string[] | Record<string, boolean>;
-	/** Initial value for uncontrolled usage */
-	defaultValue?: string | number;
 	/** Disables the input */
 	disabled?: boolean;
 	/** Error message (highlights input as error) */
@@ -154,7 +153,11 @@ export interface InputProps {
 	name?: string;
 	/** Blur event handler */
 	onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
-	/** Change event handler */
+	/**
+	 * Called with the requested value when the user types or, for the counter
+	 * variant, presses the increment/decrement buttons. Input is controlled: set
+	 * `value` from `data.value` (or `data.number`) to accept the change.
+	 */
 	onChange?: (
 		event: ChangeEvent<HTMLInputElement> | MouseEvent | KeyboardEvent,
 		data: InputChangeData
@@ -195,10 +198,22 @@ export interface InputProps {
 	styleInput?: CSSProperties;
 	/** Input type */
 	type?: InputType;
-	/** Controlled value */
+	/**
+	 * The input's value. Input is controlled: update `value` in `onChange`.
+	 * The counter variant steps from this value. (`defaultValue` was removed
+	 * in v11.)
+	 */
 	value?: string | number;
 	/** Input variant */
 	variant?: InputVariant;
+}
+
+/**
+ * Props removed from the public API. Still destructured so they never reach
+ * the DOM, and reported by `checkProps`.
+ */
+interface InputRemovedProps {
+	defaultValue?: unknown;
 }
 
 const defaultAssistiveText: InputAssistiveText = {
@@ -269,7 +284,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 			type = 'text',
 			value,
 			variant = 'base',
-		},
+		}: InputProps & InputRemovedProps,
 		ref
 	) => {
 		const generatedId = useId();
@@ -283,7 +298,6 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 				.filter((v): v is string => Boolean(v))
 				.join(' ') || undefined;
 
-		const inputElementRef = useRef<HTMLInputElement | null>(null);
 		const steppingRef = useRef({
 			currentDelay: 500,
 			initialDelay: 500,
@@ -291,6 +305,12 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 			timeout: null as ReturnType<typeof setTimeout> | null,
 		});
 		const lastStepEventRef = useRef<MouseEvent | KeyboardEvent | null>(null);
+		// Latest `value`, so a held-down counter button steps from the value the
+		// parent rendered after the previous step rather than a stale closure.
+		const valueRef = useRef(value);
+		useEffect(() => {
+			valueRef.current = value;
+		}, [value]);
 
 		const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
 
@@ -357,15 +377,12 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 			componentDoc
 		);
 
-		const getValueAsNumber = useCallback((): number => {
-			if (value !== undefined) {
-				return Number(value);
-			}
-			if (inputElementRef.current) {
-				return Number(inputElementRef.current.value);
-			}
-			return 0;
-		}, [value]);
+		// The counter steps from the `value` prop only; it never reads or writes
+		// the DOM value.
+		const toNumber = (currentValue: string | number | undefined): number =>
+			currentValue === undefined || currentValue === ''
+				? 0
+				: Number(currentValue);
 
 		const stopStepping = useCallback(() => {
 			if (steppingRef.current.timeout) {
@@ -390,7 +407,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 				const stepEvent = event ?? lastStepEventRef.current ?? undefined;
 
 				const stepSize = step !== undefined ? Number(step) : 1;
-				let currentValue = getValueAsNumber();
+				let currentValue = toNumber(valueRef.current);
 				let valueChanged = false;
 
 				if (
@@ -441,10 +458,6 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 				}
 
 				if (valueChanged) {
-					if (value === undefined && inputElementRef.current) {
-						// Uncontrolled mode
-						inputElementRef.current.value = String(currentValue);
-					}
 					if (onChange && stepEvent) {
 						onChange(stepEvent, {
 							number: currentValue,
@@ -469,25 +482,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 					}, steppingRef.current.currentDelay);
 				}
 			},
-			[
-				getValueAsNumber,
-				maxValue,
-				minValue,
-				onChange,
-				step,
-				stopStepping,
-				value,
-			]
-		);
-
-		const setInputRef = useCallback(
-			(element: HTMLInputElement | null) => {
-				inputElementRef.current = element;
-				if (propInputRef) {
-					propInputRef(element);
-				}
-			},
-			[propInputRef]
+			[maxValue, minValue, onChange, step, stopStepping]
 		);
 
 		const handleChange = useCallback(
@@ -510,7 +505,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 		const getCounterButtonIcon = (
 			direction: typeof INCREMENT | typeof DECREMENT
 		) => {
-			const currentValue = getValueAsNumber();
+			const currentValue = toNumber(value);
 			let isDisabled = false;
 
 			if (
@@ -586,7 +581,6 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 		}
 
 		const hasRenderedLabel = label || assistiveText?.label;
-		const inputRefToUse = variant === COUNTER ? setInputRef : propInputRef;
 
 		return (
 			<div
@@ -633,7 +627,6 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 					containerProps={{
 						className: 'slds-form-element__control',
 					}}
-					defaultValue={defaultValue}
 					disabled={disabled}
 					fixedTextLeft={fixedTextLeft}
 					fixedTextRight={fixedTextRight}
@@ -660,7 +653,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 					onSelect={onSelect}
 					onSubmit={onSubmit}
 					placeholder={placeholder}
-					inputRef={inputRefToUse}
+					inputRef={propInputRef}
 					readOnly={readOnly}
 					required={required}
 					role={role}

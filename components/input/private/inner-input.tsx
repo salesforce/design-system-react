@@ -90,8 +90,6 @@ export interface InnerInputProps {
 	containerClassName?: string | string[] | Record<string, boolean>;
 	/** Props for the container div */
 	containerProps?: InnerInputContainerProps;
-	/** Initial value for uncontrolled usage */
-	defaultValue?: string | number;
 	/** Disables the input */
 	disabled?: boolean;
 	/** Fixed text/node on the left */
@@ -162,7 +160,7 @@ export interface InnerInputProps {
 	tabIndex?: string | number;
 	/** Input type */
 	type?: InnerInputType;
-	/** Controlled value */
+	/** The input's value. Controlled: the parent updates it in `onChange`. */
 	value?: string | number;
 	/** Input variant */
 	variant?: InnerInputVariant;
@@ -204,7 +202,6 @@ const InnerInput = ({
 	className,
 	containerClassName,
 	containerProps = {},
-	defaultValue,
 	disabled,
 	fixedTextLeft,
 	fixedTextRight,
@@ -327,7 +324,7 @@ const InnerInput = ({
 					tabIndex={tabIndex !== undefined ? Number(tabIndex) : undefined}
 					type={type}
 					{...ariaProps}
-					{...(value !== undefined ? { value } : { defaultValue })}
+					value={value}
 				/>
 			)}
 
