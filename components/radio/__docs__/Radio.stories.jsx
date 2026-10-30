@@ -2,9 +2,40 @@ import { useState } from 'react';
 import IconSettings from '../../icon-settings';
 import Radio from '../';
 
+/**
+ * Radio is controlled: keep `checked` in state and update it from `onChange`
+ * so the story responds to clicks. The `checked` arg seeds (and re-syncs) it.
+ */
+const ControlledRadio = ({
+	checked: checkedArg = false,
+	onChange,
+	...args
+}) => {
+	const [checked, setChecked] = useState(checkedArg);
+	const [previousArg, setPreviousArg] = useState(checkedArg);
+
+	// Re-sync when the `checked` arg changes (Storybook controls).
+	if (checkedArg !== previousArg) {
+		setPreviousArg(checkedArg);
+		setChecked(checkedArg);
+	}
+
+	return (
+		<Radio
+			{...args}
+			checked={checked}
+			onChange={(event, data) => {
+				setChecked(data.checked);
+				onChange?.(event, data);
+			}}
+		/>
+	);
+};
+
 export default {
 	title: 'Components/Radio',
 	component: Radio,
+	render: (args) => <ControlledRadio {...args} />,
 	decorators: [
 		(Story) => (
 			<div className="slds-p-around_medium">
@@ -87,7 +118,6 @@ export const Checked = {
 		labels: { label: 'Checked Option' },
 		name: 'checked-radio',
 		checked: true,
-		onChange: () => {},
 	},
 };
 

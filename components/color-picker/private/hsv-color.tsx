@@ -181,6 +181,7 @@ const HsvColor: React.FC<HsvColorProps> = ({
 					assistiveText={{ label: 'Toggle Transparency' }}
 					style={style}
 					onChange={handleSwatchChange}
+					value={isTransparent() ? '' : workingColor.hex}
 				>
 					<Radio
 						checked={!isTransparent()}

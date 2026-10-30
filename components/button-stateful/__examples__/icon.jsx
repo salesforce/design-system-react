@@ -24,6 +24,7 @@ class Example extends React.Component {
 					assistiveText={{ icon: this.state.isActive ? 'liked' : 'not liked' }}
 					aria-pressed={this.state.isActive}
 					icon={<ButtonIcon name="like" size="medium" />}
+					isActive={this.state.isActive}
 					onClick={this.handleOnClick}
 					variant="icon-filled"
 				/>

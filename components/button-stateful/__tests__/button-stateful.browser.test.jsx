@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { render, act } from '@testing-library/react';
 import { userEvent } from 'vitest/browser';
 import { describe, it, expect } from 'vitest';
@@ -9,11 +10,21 @@ import IconSettings from '../../icon-settings';
 // (mouse vs. keyboard focus) and the SLDS stylesheet that shows
 // `slds-text-selected-focus` on `.slds-is-selected:focus`, neither of which
 // jsdom provides.
+const StatefulButton = () => {
+	const [isActive, setIsActive] = useState(false);
+	return (
+		<ButtonStateful
+			isActive={isActive}
+			onClick={(event, data) => setIsActive(data.isActive)}
+		/>
+	);
+};
+
 describe('ButtonStateful mouseleave (browser)', () => {
 	const renderButton = () => {
 		const { container } = render(
 			<IconSettings iconPath="/assets/icons">
-				<ButtonStateful />
+				<StatefulButton />
 			</IconSettings>
 		);
 		return container.querySelector('.slds-button');
@@ -22,7 +33,7 @@ describe('ButtonStateful mouseleave (browser)', () => {
 	it('blurs after a mouse click so "Unfollow" does not stay shown', async () => {
 		const button = renderButton();
 
-		// Toggling `active` is a React state update; wrap it so it flushes inside act().
+		// Toggling `isActive` is a React state update; wrap it so it flushes inside act().
 		await act(async () => {
 			await userEvent.click(button);
 		});

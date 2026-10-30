@@ -1,8 +1,12 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type CSSProperties, type ChangeEvent } from 'react';
-import RadioGroup from '../radio-group';
+import React, {
+	type ReactNode,
+	type CSSProperties,
+	type ChangeEvent,
+} from 'react';
+import RadioGroup, { type RadioGroupChangeData } from '../radio-group';
 import { RADIO_BUTTON_GROUP } from '../../utilities/constants';
 
 /**
@@ -31,7 +35,11 @@ export interface RadioButtonGroupLabels {
 export interface RadioButtonGroupProps {
 	/** Assistive text for accessibility */
 	assistiveText?: RadioButtonGroupAssistiveText;
-	/** Radio components as children */
+	/**
+	 * `Radio` components (from `radio-button-group/radio`) as children. The
+	 * group injects `name`, `onChange`, `aria-describedby`, `disabled` and,
+	 * when `value` is set, `checked`.
+	 */
 	children: ReactNode;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
@@ -43,12 +51,25 @@ export interface RadioButtonGroupProps {
 	labels?: RadioButtonGroupLabels;
 	/** Name attribute for all radios */
 	name?: string;
-	/** Change handler */
-	onChange?: (event: ChangeEvent<HTMLInputElement>, data: { checked: boolean }) => void;
+	/**
+	 * Called when the user selects a radio, with the requested selection in
+	 * `data.value`. The rendered selection only changes when `value` is updated.
+	 */
+	onChange?: (
+		event: ChangeEvent<HTMLInputElement>,
+		data: RadioGroupChangeData
+	) => void;
 	/** Whether the field is required */
 	required?: boolean;
 	/** Custom styles */
 	style?: CSSProperties;
+	/**
+	 * The `value` of the selected radio, or `null` for no selection. The group
+	 * is controlled: each child radio is checked when its `value` equals this.
+	 * Leaving it `undefined` falls back to each `Radio`'s own `checked`
+	 * (deprecated).
+	 */
+	value: string | null;
 }
 
 /**
@@ -74,18 +95,3 @@ const RadioButtonGroup = ({
 RadioButtonGroup.displayName = RADIO_BUTTON_GROUP;
 
 export default RadioButtonGroup;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
