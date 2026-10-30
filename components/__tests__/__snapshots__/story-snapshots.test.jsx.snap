@@ -1448,45 +1448,87 @@ exports[`Story HTML snapshots > Carousel > ThreeItemsPerPanel 1`] = `
         <div class="slds-carousel__stage slds-show">
           <div class="slds-carousel__panels slds-is-relative" style="transform:translateX(-1000000px)">
             <div id="content-id-_R_0_-1" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-0" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="0">
-                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-01.jpg" alt="Visit App Exchange" /></div>
+                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-01.jpg" alt="Visit App Exchange (1)" /></div>
                 <div class="slds-carousel__content" style="height:auto">
-                  <h2 class="slds-carousel__content-title">Visit App Exchange</h2>
+                  <h2 class="slds-carousel__content-title">Visit App Exchange (1)</h2>
                   <div class="slds-p-bottom_x-small slds-text-body_small" style="min-height:40px">Discover more apps and solutions for your business.</div><button class="slds-button slds-button_neutral" tabindex="0" type="button">Learn More</button>
                 </div>
               </a></div>
             <div id="content-id-_R_0_-2" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-0" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="0">
-                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-02.jpg" alt="Click to Customize" /></div>
+                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-02.jpg" alt="Click to Customize (2)" /></div>
                 <div class="slds-carousel__content" style="height:auto">
-                  <h2 class="slds-carousel__content-title">Click to Customize</h2>
+                  <h2 class="slds-carousel__content-title">Click to Customize (2)</h2>
                   <div class="slds-p-bottom_x-small slds-text-body_small" style="min-height:40px">Customize your Salesforce experience to fit your needs.</div><button class="slds-button slds-button_neutral" tabindex="0" type="button">Customize</button>
                 </div>
               </a></div>
             <div id="content-id-_R_0_-3" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-0" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="0">
-                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-03.jpg" alt="Download Salesforce Today" /></div>
+                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-03.jpg" alt="Download Salesforce Today (3)" /></div>
                 <div class="slds-carousel__content" style="height:auto">
-                  <h2 class="slds-carousel__content-title">Download Salesforce Today</h2>
+                  <h2 class="slds-carousel__content-title">Download Salesforce Today (3)</h2>
                   <div class="slds-p-bottom_x-small slds-text-body_small" style="min-height:40px">Get the Salesforce mobile app and work from anywhere.</div><button class="slds-button slds-button_neutral" tabindex="0" type="button">Download</button>
                 </div>
               </a></div>
             <div id="content-id-_R_0_-4" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-1" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="-1">
-                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-02.jpg" alt="Explore Lightning" /></div>
+                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-02.jpg" alt="Explore Lightning (4)" /></div>
                 <div class="slds-carousel__content" style="height:auto">
-                  <h2 class="slds-carousel__content-title">Explore Lightning</h2>
+                  <h2 class="slds-carousel__content-title">Explore Lightning (4)</h2>
                   <div class="slds-p-bottom_x-small slds-text-body_small" style="min-height:40px">Experience the new Lightning interface.</div><button class="slds-button slds-button_neutral" tabindex="-1" type="button">Explore</button>
                 </div>
               </a></div>
-            <div id="content-id-_R_0_-1" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-1" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="-1">
-                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-01.jpg" alt="Visit App Exchange" /></div>
+            <div id="content-id-_R_0_-5" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-1" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="-1">
+                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-01.jpg" alt="Visit App Exchange (5)" /></div>
                 <div class="slds-carousel__content" style="height:auto">
-                  <h2 class="slds-carousel__content-title">Visit App Exchange</h2>
+                  <h2 class="slds-carousel__content-title">Visit App Exchange (5)</h2>
                   <div class="slds-p-bottom_x-small slds-text-body_small" style="min-height:40px">Discover more apps and solutions for your business.</div><button class="slds-button slds-button_neutral" tabindex="-1" type="button">Learn More</button>
                 </div>
               </a></div>
-            <div id="content-id-_R_0_-2" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-1" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="-1">
-                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-02.jpg" alt="Click to Customize" /></div>
+            <div id="content-id-_R_0_-6" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-1" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="-1">
+                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-02.jpg" alt="Click to Customize (6)" /></div>
                 <div class="slds-carousel__content" style="height:auto">
-                  <h2 class="slds-carousel__content-title">Click to Customize</h2>
+                  <h2 class="slds-carousel__content-title">Click to Customize (6)</h2>
                   <div class="slds-p-bottom_x-small slds-text-body_small" style="min-height:40px">Customize your Salesforce experience to fit your needs.</div><button class="slds-button slds-button_neutral" tabindex="-1" type="button">Customize</button>
+                </div>
+              </a></div>
+            <div id="content-id-_R_0_-7" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-2" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="-1">
+                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-03.jpg" alt="Download Salesforce Today (7)" /></div>
+                <div class="slds-carousel__content" style="height:auto">
+                  <h2 class="slds-carousel__content-title">Download Salesforce Today (7)</h2>
+                  <div class="slds-p-bottom_x-small slds-text-body_small" style="min-height:40px">Get the Salesforce mobile app and work from anywhere.</div><button class="slds-button slds-button_neutral" tabindex="-1" type="button">Download</button>
+                </div>
+              </a></div>
+            <div id="content-id-_R_0_-8" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-2" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="-1">
+                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-02.jpg" alt="Explore Lightning (8)" /></div>
+                <div class="slds-carousel__content" style="height:auto">
+                  <h2 class="slds-carousel__content-title">Explore Lightning (8)</h2>
+                  <div class="slds-p-bottom_x-small slds-text-body_small" style="min-height:40px">Experience the new Lightning interface.</div><button class="slds-button slds-button_neutral" tabindex="-1" type="button">Explore</button>
+                </div>
+              </a></div>
+            <div id="content-id-_R_0_-9" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-2" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="-1">
+                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-01.jpg" alt="Visit App Exchange (9)" /></div>
+                <div class="slds-carousel__content" style="height:auto">
+                  <h2 class="slds-carousel__content-title">Visit App Exchange (9)</h2>
+                  <div class="slds-p-bottom_x-small slds-text-body_small" style="min-height:40px">Discover more apps and solutions for your business.</div><button class="slds-button slds-button_neutral" tabindex="-1" type="button">Learn More</button>
+                </div>
+              </a></div>
+            <div id="content-id-_R_0_-10" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-3" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="-1">
+                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-02.jpg" alt="Click to Customize (10)" /></div>
+                <div class="slds-carousel__content" style="height:auto">
+                  <h2 class="slds-carousel__content-title">Click to Customize (10)</h2>
+                  <div class="slds-p-bottom_x-small slds-text-body_small" style="min-height:40px">Customize your Salesforce experience to fit your needs.</div><button class="slds-button slds-button_neutral" tabindex="-1" type="button">Customize</button>
+                </div>
+              </a></div>
+            <div id="content-id-_R_0_-11" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-3" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="-1">
+                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-03.jpg" alt="Download Salesforce Today (11)" /></div>
+                <div class="slds-carousel__content" style="height:auto">
+                  <h2 class="slds-carousel__content-title">Download Salesforce Today (11)</h2>
+                  <div class="slds-p-bottom_x-small slds-text-body_small" style="min-height:40px">Get the Salesforce mobile app and work from anywhere.</div><button class="slds-button slds-button_neutral" tabindex="-1" type="button">Download</button>
+                </div>
+              </a></div>
+            <div id="content-id-_R_0_-12" class="slds-carousel__panel slds-m-horizontal_xx-small slds-list_horizontal" role="tabpanel" aria-hidden="false" aria-labelledby="indicator-id-_R_0_-3" style="margin:0;max-width:0px;padding:0 6px"><a class="slds-carousel__panel-action slds-text-link_reset" href="#" style="background-color:white;width:100%" tabindex="-1">
+                <div class="slds-carousel__image"><img src="/assets/images/carousel/carousel-02.jpg" alt="Explore Lightning (12)" /></div>
+                <div class="slds-carousel__content" style="height:auto">
+                  <h2 class="slds-carousel__content-title">Explore Lightning (12)</h2>
+                  <div class="slds-p-bottom_x-small slds-text-body_small" style="min-height:40px">Experience the new Lightning interface.</div><button class="slds-button slds-button_neutral" tabindex="-1" type="button">Explore</button>
                 </div>
               </a></div>
           </div>
@@ -1496,8 +1538,10 @@ exports[`Story HTML snapshots > Carousel > ThreeItemsPerPanel 1`] = `
             </svg><span class="slds-assistive-text">Next Panel</span></button></div>
       </div>
       <ul class="slds-carousel__indicators slds-col slds-text-align_center" role="tablist">
-        <li class="slds-carousel__indicator slds-m-horizontal_xx-small" role="presentation" style="margin:0;padding:0 5px"><a id="indicator-id-_R_0_-0" class="slds-carousel__indicator-action slds-is-active" role="tab" tabindex="0" aria-selected="true" aria-controls="content-id-_R_0_-1" title="Visit App Exchange, Click to Customize, Download Salesforce Today"><span class="slds-assistive-text">Visit App Exchange, Click to Customize, Download Salesforce Today</span></a></li>
-        <li class="slds-carousel__indicator slds-m-horizontal_xx-small" role="presentation" style="margin:0;padding:0 5px"><a id="indicator-id-_R_0_-1" class="slds-carousel__indicator-action" role="tab" tabindex="-1" aria-selected="false" aria-controls="content-id-_R_0_-2" title="Explore Lightning, Visit App Exchange, Click to Customize"><span class="slds-assistive-text">Explore Lightning, Visit App Exchange, Click to Customize</span></a></li>
+        <li class="slds-carousel__indicator slds-m-horizontal_xx-small" role="presentation" style="margin:0;padding:0 5px"><a id="indicator-id-_R_0_-0" class="slds-carousel__indicator-action slds-is-active" role="tab" tabindex="0" aria-selected="true" aria-controls="content-id-_R_0_-1" title="Visit App Exchange (1), Click to Customize (2), Download Salesforce Today (3)"><span class="slds-assistive-text">Visit App Exchange (1), Click to Customize (2), Download Salesforce Today (3)</span></a></li>
+        <li class="slds-carousel__indicator slds-m-horizontal_xx-small" role="presentation" style="margin:0;padding:0 5px"><a id="indicator-id-_R_0_-1" class="slds-carousel__indicator-action" role="tab" tabindex="-1" aria-selected="false" aria-controls="content-id-_R_0_-2" title="Explore Lightning (4), Visit App Exchange (5), Click to Customize (6)"><span class="slds-assistive-text">Explore Lightning (4), Visit App Exchange (5), Click to Customize (6)</span></a></li>
+        <li class="slds-carousel__indicator slds-m-horizontal_xx-small" role="presentation" style="margin:0;padding:0 5px"><a id="indicator-id-_R_0_-2" class="slds-carousel__indicator-action" role="tab" tabindex="-1" aria-selected="false" aria-controls="content-id-_R_0_-3" title="Download Salesforce Today (7), Explore Lightning (8), Visit App Exchange (9)"><span class="slds-assistive-text">Download Salesforce Today (7), Explore Lightning (8), Visit App Exchange (9)</span></a></li>
+        <li class="slds-carousel__indicator slds-m-horizontal_xx-small" role="presentation" style="margin:0;padding:0 5px"><a id="indicator-id-_R_0_-3" class="slds-carousel__indicator-action" role="tab" tabindex="-1" aria-selected="false" aria-controls="content-id-_R_0_-4" title="Click to Customize (10), Download Salesforce Today (11), Explore Lightning (12)"><span class="slds-assistive-text">Click to Customize (10), Download Salesforce Today (11), Explore Lightning (12)</span></a></li>
       </ul>
     </div>
   </div>

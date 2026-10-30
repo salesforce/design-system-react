@@ -127,11 +127,18 @@ export const InfiniteLoop = {
 	),
 };
 
+// Twelve items so three per panel makes four panels, with a unique id for each
+const twelveItems = Array.from({ length: 12 }, (_, index) => ({
+	...sampleItems[index % sampleItems.length],
+	id: `${index + 1}`,
+	heading: `${sampleItems[index % sampleItems.length].heading} (${index + 1})`,
+}));
+
 // Three items per panel
 export const ThreeItemsPerPanel = {
 	render: () => (
 		<Carousel
-			items={[...sampleItems, ...sampleItems.slice(0, 2)]}
+			items={twelveItems}
 			itemsPerPanel={3}
 			hasPreviousNextPanelNavigation
 			onItemClick={(event, data) => console.log('Item clicked:', data.item)}
