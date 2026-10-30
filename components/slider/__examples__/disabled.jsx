@@ -5,9 +5,21 @@ import Slider from '~/components/slider';
 class Example extends React.Component {
 	static displayName = 'SliderExample';
 
+	state = { value: 0 };
+
+	handleChange = (event, data) => {
+		this.setState({ value: data.value });
+	};
+
 	render() {
 		return (
-			<Slider id="disabled-id" labels={{ label: 'Slider Label' }} disabled />
+			<Slider
+				id="disabled-id"
+				labels={{ label: 'Slider Label' }}
+				disabled
+				onChange={this.handleChange}
+				value={this.state.value}
+			/>
 		);
 	}
 }

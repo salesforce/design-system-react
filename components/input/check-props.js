@@ -6,6 +6,7 @@
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 // import oneOfRequiredProperty from '../../../utilities/warning/one-of-required-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
+import sunsetProperty from '../../utilities/warning/sunset-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
 import { INPUT } from '../../utilities/constants';
@@ -17,6 +18,13 @@ if (process.env.NODE_ENV !== 'production') {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 
 		if (COMPONENT === INPUT) {
+			sunsetProperty(
+				COMPONENT,
+				props.defaultValue !== undefined,
+				'defaultValue',
+				'Input is controlled: pass `value` and update it in `onChange`.'
+			);
+
 			const iconDeprecatedMessage = `Please use \`iconLeft\` and \`iconRight\` to pass in a customized <Icon> component. ${createDocUrl()}`;
 
 			// Deprecated and changed to another property

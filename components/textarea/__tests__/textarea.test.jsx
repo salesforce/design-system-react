@@ -1,12 +1,66 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import Textarea from '../';
 
 describe('SLDS TEXTAREA', () => {
 	const defaultProps = {
+		onChange: () => {},
 		placeholder: 'Placeholder Text',
+		value: '',
 	};
+
+	describe('Controlled value', () => {
+		it('calls onChange with `{ value }` and only shows the `value` prop', () => {
+			const onChange = vi.fn();
+			const { container, rerender } = render(
+				<Textarea
+					labels={{ label: 'Textarea Label' }}
+					onChange={onChange}
+					value="before"
+				/>
+			);
+			const textarea = container.querySelector('textarea');
+
+			fireEvent.change(textarea, { target: { value: 'after' } });
+			expect(onChange).toHaveBeenCalledTimes(1);
+			expect(onChange.mock.calls[0][0].target).toBe(textarea);
+			expect(onChange.mock.calls[0][1]).toEqual({ value: 'after' });
+			// The parent didn't update `value`, so the text is unchanged.
+			expect(textarea.value).toBe('before');
+
+			rerender(
+				<Textarea
+					labels={{ label: 'Textarea Label' }}
+					onChange={onChange}
+					value="after"
+				/>
+			);
+			expect(textarea.value).toBe('after');
+		});
+	});
+
+	describe('Removed props', () => {
+		it('ignores `defaultValue` and warns once', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			try {
+				const { container, rerender } = render(
+					<Textarea {...defaultProps} defaultValue="stale" />
+				);
+				rerender(<Textarea {...defaultProps} defaultValue="stale" />);
+
+				expect(container.querySelector('textarea').value).toBe('');
+				const sunsetCalls = consoleError.mock.calls.filter((args) =>
+					args.join(' ').includes('defaultValue')
+				);
+				expect(sunsetCalls).toHaveLength(1);
+			} finally {
+				consoleError.mockRestore();
+			}
+		});
+	});
 
 	describe('Standard Textarea with Label', () => {
 		it('is wrapped in div with class "slds-form-element"', () => {

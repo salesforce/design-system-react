@@ -38,6 +38,22 @@ export interface TextareaLabels {
 }
 
 /**
+ * Data passed to `onChange`
+ */
+export interface TextareaChangeData {
+	/** The new text */
+	value: string;
+}
+
+/**
+ * Props removed in v11. They are ignored at runtime and warn in development.
+ */
+interface TextareaRemovedProps {
+	/** @removed Textarea is controlled: pass `value` and update it in `onChange`. */
+	defaultValue?: unknown;
+}
+
+/**
  * Props for the Textarea component
  */
 export interface TextareaProps {
@@ -94,8 +110,14 @@ export interface TextareaProps {
 	name?: string;
 	/** Blur event handler */
 	onBlur?: (event: FocusEvent<HTMLTextAreaElement>) => void;
-	/** Change event handler */
-	onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+	/**
+	 * Called when the text changes. Textarea is controlled: update `value` from
+	 * `data.value`, or the text won't change.
+	 */
+	onChange: (
+		event: ChangeEvent<HTMLTextAreaElement>,
+		data: TextareaChangeData
+	) => void;
 	/** Click event handler */
 	onClick?: (event: MouseEvent<HTMLTextAreaElement>) => void;
 	/** Focus event handler */
@@ -120,10 +142,8 @@ export interface TextareaProps {
 	required?: boolean;
 	/** ARIA role */
 	role?: string;
-	/** Controlled value */
-	value?: string;
-	/** Initial uncontrolled value */
-	defaultValue?: string;
+	/** The text in the textarea. Required: Textarea is controlled. */
+	value: string;
 	/** Text wrapping mode */
 	wrap?: 'soft' | 'hard';
 	/** Custom styles */
@@ -164,10 +184,11 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 			required,
 			role,
 			value,
-			defaultValue,
+			// Removed in v11: destructured so it doesn't reach the DOM. check-props warns.
+			defaultValue: _defaultValue,
 			wrap,
 			...restProps
-		} = props;
+		} = props as TextareaProps & TextareaRemovedProps;
 
 		checkProps(TEXTAREA, { ...props }, componentDoc);
 
@@ -236,7 +257,9 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 						}
 						name={name}
 						onBlur={onBlur}
-						onChange={onChange}
+						onChange={(event) => {
+							onChange?.(event, { value: event.target.value });
+						}}
 						onClick={onClick}
 						onFocus={onFocus}
 						onInput={onInput}
@@ -252,7 +275,6 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 						required={required}
 						wrap={wrap}
 						value={value}
-						defaultValue={defaultValue}
 						aria-describedby={
 							errorMessage
 								? getErrorId()
