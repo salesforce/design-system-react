@@ -171,6 +171,16 @@ export type RequireAtLeastOne<T, Keys extends keyof T = keyof T> = Pick<
 	}[Keys];
 
 /**
+ * `children` that must be elements of library components with props `P`
+ * (e.g. `ChildrenOf<TabsPanelProps>`), possibly in arrays or
+ * skipped with `false`/`null`. The parent matches its children by component
+ * reference, so `P` documents the contract; TypeScript can't check which
+ * component a JSX element came from.
+ */
+export type ChildrenOf<P> =
+	React.ReactElement<P> | false | null | undefined | ChildrenOf<P>[];
+
+/**
  * Utility type for polymorphic components
  */
 export type PolymorphicRef<C extends React.ElementType> =
