@@ -62,6 +62,19 @@ moves to `latest`.
    Ephemeral and allowed to stay uncontrolled (mode by `value !== undefined`, plus
    `defaultIsOpen`): `isOpen` on popover, tooltip, expandable-section, date-picker,
    setup-assistant and split-view; carousel `currentPanel`/autoplay; tree expansion.
+   **Done** (removed `default*` props are ignored and warn through `check-props.js`; renamed
+   props still work and warn): checkbox, radio, input, combobox, slider and textarea are
+   controlled only, and tabs select by `value` (with `value` on `TabsPanel`). Selection is
+   controlled in menu-dropdown (`value`), radio-group and radio-button-group (group `value`),
+   simple-data-table (matched by `id`), split-view listbox (ids), tree (`selectedIds`, nodes
+   never mutated), vertical-navigation, color-picker, date-picker and button-stateful
+   (`isActive`). Ephemeral state uses `useControllableState` (`utilities/hooks`):
+   `defaultIsOpen` on popover, tooltip, expandable-section, date-picker, setup-assistant step,
+   split-view, color-picker, combobox and menu-dropdown; carousel `defaultCurrentPanel`/
+   `defaultIsAutoplayOn`; tree `expandedIds`/`defaultExpandedIds`. Exceptions:
+   expandable-section and split-view `defaultIsOpen` default to `true` (maintainer decision),
+   and carousel `hasAutoplay` still starts autoplay when no autoplay state is passed
+   (back-compat). The other findings in the mixed checklist items below are still open.
 3. **Child and slot contracts.** Allowed when every accepted child is an existing library
    component with typed props (accordion, setup-assistant, radio-group, simple-data-table,
    tabs, visual-picker, welcome-mat, panel, button-group, builder-header, files, icon/badge
@@ -130,7 +143,7 @@ _Reviewed: accordion, alert, avatar, badge, breadcrumb, builder-header, button, 
       span, not the root.
 - [ ] `avatar` — move the `title` default (`'user avatar'`) out of the prop default and into
       `assistiveText`/`labels`.
-- [ ] `button-stateful` — remove the uncontrolled path (it is data): `active` → `isActive` (required,
+- [x] `button-stateful` — remove the uncontrolled path (it is data): `active` → `isActive` (required,
       controlled), and `onClick` carries the next value. Today it falls back to internal
       `useState` when `active` is not a boolean.
 - [ ] `button-stateful` — replace `stateOne`/`stateTwo`/`stateThree` (positional names) with
@@ -180,11 +193,12 @@ Callbacks stay grouped in an `events` object where components already use one
       `onRequestPanelChange`/`onRequestAutoplayToggle` is _absent_, so a callback without a
       value freezes the carousel). Add `defaultCurrentPanel`/`defaultIsAutoplayOn`, and stop
       `hasAutoplay` doubling as "start playing".
+      **Control model done (theme 2).** Exception: with `hasAutoplay` and neither `isAutoplayOn` nor `defaultIsAutoplayOn`, autoplay still starts (back-compat); decide whether to require `defaultIsAutoplayOn`.
 - [ ] `carousel` — `onRequestAutoplayToggle` reports the _current_ `isAutoplayOn`, not the
       requested one; `event` may be `{}` or a stale event; `onRenderItem` is typed
       `(item)` but called with `{ item, ... }`; `CarouselItemData.id` is `string` but
       examples pass numbers; `itemsPerPanel` is unvalidated.
-- [ ] `color-picker` — `value` is data: make it fully controlled (required, no seeding into
+- [x] `color-picker` — `value` is data: make it fully controlled (required, no seeding into
       `useState`, no uncontrolled typing when `onChange` is missing; a parent that rejects a
       change must be able to revert). The in-popover working color is a draft: keep it
       internal and treat `valueWorking` as controlled-if-provided, not seeded.
@@ -207,6 +221,7 @@ Callbacks stay grouped in an `events` object where components already use one
       it can never open), add `defaultIsOpen`. `onRequestClose` fires and the component closes
       anyway; `onClose` fires after an internal change even when `isOpen` is controlled;
       `onSelect` is really a request (`selection` is controlled).
+      **Control model done (theme 2).** Still open: a referentially stable `events` object and typed callback `data`.
 - [ ] `combobox` — enforce `variant` as a discriminated union (`popover`/`assistiveText.
 popoverLabel` are runtime-warned only; `options` is "required unless popover" only at
       runtime); `value` + `defaultValue` feed one input and flip controlled/uncontrolled (resolved by dropping `defaultValue`).
@@ -231,7 +246,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
 - [ ] `combobox` — callback `data` is `Record<string, unknown>` and always `{}`; `onRequestOpen`
       has no `(event, data)`; `className` lands on the inner `.slds-combobox` and the root is
       `classNameContainer`; decide the `ref` target (forwarded but unused).
-- [ ] `date-picker` — `value` is data: fully controlled, typed `Date | null` (null = empty;
+- [x] `date-picker` — `value` is data: fully controlled, typed `Date | null` (null = empty;
       today `value={undefined}` flips to uncontrolled with stale text and a date cannot be
       cleared). Remove `formattedValue` and the seeded `internalValue`. The typed-text
       buffer stays internal (it must hold partial input) but re-syncs from `value`. `isOpen`
@@ -251,7 +266,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `assistiveTextOpenCalendar`, `formattedValue`: remove at GA or keep permanently.
 - [ ] `date-picker` — range selection: do not widen `date`/`value` to `Date | [Date, Date]`;
       plan a separate `DateRangePicker` (or `mode="range"` with distinct props).
-- [ ] `checkbox` — `checked` is data: controlled only. Remove `defaultChecked` (the
+- [x] `checkbox` — `checked` is data: controlled only. Remove `defaultChecked` (the
       `onChange` data computes `!checked` from the prop, which is wrong without it). Keep
       `indeterminate` controlled and clear it from the DOM when it goes back to `undefined`.
 - [ ] `checkbox` — remove dead `oldEventParameterOrder` (never read; the `forms/checkbox` alias, removed
@@ -264,12 +279,13 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `tabIndex` `string` → `number`; `assistiveText: string | object` → object only; decide
       where `className` lands and whether unknown props spread to the `<input>`.
 
-- [ ] `expandable-section` — `isOpen` is ephemeral, so uncontrolled is fine, but the mode is
+- [x] `expandable-section` — `isOpen` is ephemeral, so uncontrolled is fine, but the mode is
       keyed off `onToggleOpen` being present: with a callback and no `isOpen` the section is
       stuck open. Key it off `isOpen !== undefined`, always call `onToggleOpen`, and add a
       `defaultIsOpen` (note it must not be a boolean that defaults to `true`; today the
       internal default is open). `onToggleOpen` reports the _current_ `isOpen`, not the
       requested one.
+      **Done;** `defaultIsOpen` defaults to `true` as a documented exception (maintainer decision).
 - [ ] `expandable-section` — rename `nonCollapsible` → `isNonCollapsible`; decide `title`
       now (it is the visible heading, so it will collide with the HTML `title` attribute if
       the component ever extends `HTMLAttributes`; consider `labels.title`/`heading`, typed
@@ -332,7 +348,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       boolean to `true` and looks unused; `illustration`/`path`/`name` precedence is
       implicit: either remove in 11.0 or freeze as-is.
 
-- [ ] `input` — `defaultValue` is a data twin of `value` (`index.tsx:116`); the counter variant
+- [x] `input` — `defaultValue` is a data twin of `value` (`index.tsx:116`); the counter variant
       also mutates and reads the DOM value in uncontrolled mode. Remove `defaultValue` and the
       DOM-reading paths. `combobox` passes `defaultValue` through `InnerInput`, so fix both
       together (see the `combobox` control item).
@@ -357,12 +373,12 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
 - [ ] `media-object` — `verticalCenter` → `isVerticallyCentered`; decide `body` prop vs
       `children` (consistent with the `badge` `content` decision); `canTruncate` already
       follows the `can*` rule.
-- [ ] `menu-dropdown` — `isOpen` is half-controlled: the mode is `typeof isOpenProp ===
+- [x] `menu-dropdown` — `isOpen` is half-controlled: the mode is `typeof isOpenProp ===
 'boolean'` (`menu-dropdown.tsx:374`), the internal state and `onOpen`/`onClose` still
       run when controlled, and there is no `defaultIsOpen`. Use `isOpen !== undefined`, add
       `defaultIsOpen`, and add `onRequestOpen`/`onRequestClose` so a parent can veto; give
       `onOpen`/`onClose` `(event, data)`.
-- [ ] `menu-dropdown` — selection is data and must be controlled: `value` is copied into
+- [x] `menu-dropdown` — selection is data and must be controlled: `value` is copied into
       `selectedIndex`/`selectedIndices` state (`:347`, `:412`, `:591`) and multi mode toggles
       locally even when `value` is set. Make `value` the only source (array when multiple) and
       have `onSelect` report the next value.
@@ -445,7 +461,7 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       align
       `assistiveText.listboxLabel` with the internal `selectedListboxLabel`; the consumer
       `id` is suffixed (`-listbox-of-pill-options`) and never reaches an element.
-- [ ] `popover` — `isOpen` mode is correctly keyed off `!== undefined`, but `handleOpen`/
+- [x] `popover` — `isOpen` mode is correctly keyed off `!== undefined`, but `handleOpen`/
       `handleClose` still write the internal copy when controlled (`popover.tsx:320`, `:343`),
       there is no `defaultIsOpen`, and no `onRequestOpen` (`onOpen` fires from the Dialog
       mount, so a controlled consumer cannot request opening). Decide `onOpen`/`onClose`/
@@ -493,6 +509,7 @@ complete`) and `THEME_OPTIONS` is a second public surface; `icon` is only honore
 - [ ] `radio` — `defaultChecked` is a data twin of `checked` (`radio/index.tsx:60`); make
       `checked` + `onChange` required and drop it. `onChange` data is `{ checked: !checked }`,
       which reports `true` every time when uncontrolled. Remove the deprecated `label`.
+      **Control model done (theme 2).** Still open: remove the deprecated `label`.
 - [ ] `radio` — `variant` (`base | button-group | swatch | visual-picker`) as a discriminated
       union: `coverable`, `vertical`, `size`, `onRenderVisualPicker*` and swatch `style` are
       visual-picker/swatch only; `description` is declared and never rendered; `size` has no
@@ -514,6 +531,7 @@ complete`) and `THEME_OPTIONS` is a second public surface; `icon` is only honore
       `onChange(event, { value })`. `RadioGroup` `cloneElement`s `name`, `onChange`,
       `aria-describedby`, `disabled` into its children (`radio-group/index.tsx:98`),
       overwriting the child's own handlers and breaking for fragments/wrapped children.
+      **Control model done (theme 2).** Required group `value: string | null` with `onChange(event, { value, checked })` and `RadioGroupItemProps` children; the children contract was kept instead of an `options` prop.
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Still required: type the accepted children (`ReactElement<XProps>` or exported subcomponents), keep injected props out of the public child type, and match by component reference instead of `displayName`.
 - [ ] `radio-group` — `labels.error` is a string with a separate `errorId` and no invalid flag
       (add `hasError`, derive the id); `assistiveText.label` replaces `labels.label` in the
@@ -533,7 +551,7 @@ complete`) and `THEME_OPTIONS` is a second public surface; `icon` is only honore
       remove the injected props from the public `Step` type; `onRenderAction`/`onRenderContent`/
       `onRenderFigure` are nodes, not callbacks (→ `action`/`content`/`figure`).
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Still required: type the accepted children (`ReactElement<XProps>` or exported subcomponents), keep injected props out of the public child type, and match by component reference instead of `displayName`.
-- [ ] `setup-assistant` — step `isOpen` mode is keyed off callback presence: `toggleIsOpen`
+- [x] `setup-assistant` — step `isOpen` mode is keyed off callback presence: `toggleIsOpen`
       calls `onToggleIsOpen` if provided, else sets state, while `getIsOpen` uses
       `isOpen !== undefined` (`step.tsx:133-148`), so `onToggleIsOpen` without `isOpen` never
       toggles. `isOpen` is ephemeral: choose by `isOpen !== undefined`, add `defaultIsOpen`.
@@ -555,6 +573,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       today (deprecated `onChange(selection, event)` and `onRowChange`); settle the name before
       the deprecated one goes. `selectRows: boolean | 'checkbox' | 'radio'` →
       `selectionMode: 'none' | 'checkbox' | 'radio'`.
+      **Control model done (theme 2).** `selection` is required when `selectRows` is set (a union type) and matched by `id`; `onRowChange(event, { selection })` is the name, and the deprecated `onChange` still warns. Still open: `selectRows` → `selectionMode`.
 - [ ] `simple-data-table` — sort state is split across columns (`isSorted`, `sortDirection`,
       `isDefaultSortDescending`) so two columns can both be sorted, and `header-cell` keeps an
       internal `sortDirection` copy that drifts from the prop. Use a table-level
@@ -579,6 +598,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `displayValue = value ?? defaultValue ?? 0` goes stale when uncontrolled. Require `value` +
       `onChange(event, { value })`, drop `defaultValue`. Also: `vertical` → `isVertical`;
       `classNameContainer` sits on the root (should be `className`); `errorText` → `labels.error` + `hasError`; `label` duplicates `assistiveText.label`; `onInput` duplicates `onChange`.
+      **Control model done (theme 2).** Still open: `isVertical`, `className` on the root, and `onInput`.
 - [ ] `spinner` — `assistiveText: object | string` (string form deprecated; `check-props` is
       unwired, so no warning fires) → object only; `containerClassName`/`containerStyle` →
       `className*`; `hasContainer = true` defaults a boolean to true (rename to a non-true default, e.g. `hasNoContainer`, or a `variant`); `isInline`/`isInput`
@@ -588,6 +608,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `assistiveText` object|string and `label` duplicate each other; `errorText` → `labels.error` + `hasError`; hand-typed aria props (`aria-autocomplete: string`, `aria-haspopup: boolean`)
       → extend `TextareaHTMLAttributes`; `onSubmit` on a textarea never fires; `children` render
       after the control.
+      **Control model done (theme 2).** Still open: `maxLength` as a number, the aria prop types, `onSubmit` and `children`.
 - [ ] `toast` — `onRequestClose: () => void` has no event/data (timer path has no event; `alert`
       declares `(event: MouseEvent) => void`) → `(event | null, { trigger: 'timeout' | 'close-button' })`.
       Auto-dismiss: the timer effect depends on `handleClose`, which depends on `onRequestClose`,
@@ -614,12 +635,16 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       combobox menu (cloneElement of a user Tooltip), `FieldLevelHelpTooltip` (reads `.props` from a
       Tooltip element), progress-indicator step, button.
       **Child-contract rule:** this slot accepts arbitrary consumer elements, so the contract is NOT covered by the library-components exception; the finding stands.
+      **Control model done (theme 2).** `defaultIsOpen`, `onRequestOpen` and `onRequestClose` are added. Still open: `isDisabled`, the dead props and the trigger contract.
 - [ ] `tree` — selection and expansion live on mutated node objects: `TreeNode.expanded`/
       `selected`/`loading` (`types.ts:15-23`), `handleSelect` writes `node.selected = false` on the
       consumer's data (`tree.tsx:184-190`), and the tree keeps its own selection/focus copy seeded
       once from `node.selected`. Recommended: required `selectedId` + `onSelect`, `expandedIds`
       (+ optional `defaultExpandedIds`), immutable nodes, and rename node fields `isExpanded`/
       `isSelected`/`isLoading`.
+      **Control model done (theme 2).** `selectedIds` (an array, because the tree supports multi-select) and `expandedIds`/`defaultExpandedIds`; nodes are never mutated, and `node.selected`/`node.expanded` are read-only deprecated fallbacks. Still open: the node field renames.
+- [ ] `tree` — leaf items are keyed with `key={generateId()}` (`private/branch.tsx:128`), a new key on
+      every render, so every leaf remounts whenever the tree renders. Key by `node.id`.
 - [ ] `tree` callbacks — `onClick` is really selection and also fires from Enter/arrows/focus
       with `{ node, select, treeIndex }` (`select` derives from the mutated field; `treeIndex` is a
       positional string) → `onSelect(event, { node, isSelected })`. `onExpandClick` also fires for
@@ -650,6 +675,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `href="#"` → button; `aria-current={true}` (`item.tsx:66`) should be `"page"` (fixed);
       `<nav>` has no `aria-label` → `assistiveText.label`; `className` cast `as string`;
       `displayName`; `lodash.isfunction`.
+      **Control model done (theme 2).** Still open: the `NavigationItem` index signature, the `icon`/`notificationBadge` contract, `href="#"` items, the `<nav>` label, the `className` cast, `displayName` and `lodash.isfunction`.
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Still required: type the accepted children (`ReactElement<XProps>` or exported subcomponents), keep injected props out of the public child type, and match by component reference instead of `displayName`.
 
 - [ ] `split-view` — `isOpen` is hybrid (mode by `typeof === 'boolean'`, uncontrolled start
@@ -660,6 +686,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `openToggle`) before GA. Closed state unmounts `master` (`index.tsx:124`), losing listbox
       focus/state — decide whether that is the contract. `master`/`detail` typed
       `ReactElement | ReactElement[]` → `ReactNode`.
+      **Control model done (theme 2).** Still open: whether the closed state unmounting `master` is the contract.
 - [ ] `split-view` listbox — `selection` matches by object identity (`includes(item)`, also
       `unread`) and is optional with an internal `currentSelectedItem` copy feeding range/select-all
       logic → required `selection` of ids (`item.id`) + required `onSelect` (selection drives the detail pane, so it is controlled); `events.onSelect` is
@@ -670,7 +697,8 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       signature; `listItem` is wrapped once by an HOC created in the constructor (later changes
       ignored) and receives internal props. `SplitViewHeaderProps` has an index signature and loses
       PageHeader types → `Omit<PageHeaderProps, …>`; narrow the wide `className` types.
-- [ ] `tabs` — selection is half-controlled: `selectedIndex` + `defaultSelectedIndex`, mode chosen
+      **Control model done (theme 2).** Still open: `isMultiple`, `sortDirection` values, `isSortable` and the index signatures.
+- [x] `tabs` — selection is half-controlled: `selectedIndex` + `defaultSelectedIndex`, mode chosen
       by `Number.isInteger` (`index.tsx:115`), internal state written even when controlled, and the
       `index !== internalSelectedIndex` guard compares the stale copy, so controlled `onSelect` can
       fire or be skipped wrongly. Index is identity (ids derive from it; reorder/removal changes
