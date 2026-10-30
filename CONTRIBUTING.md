@@ -14,6 +14,8 @@ Thank you for your interest in contributing! This guide will help you get starte
 ## Setup
 
 > Maintainers with push access to `salesforce/design-system-react` should clone it directly and push branches there instead of forking, so Chromatic visual review runs on your PR.
+>
+> Chromatic does not run automatically for PRs from forks. A maintainer who can edit labels (triage access or higher) can run it after reviewing the changes by adding the `run-chromatic` label. The label is removed whenever new commits are pushed, so it must be re-applied for each update.
 
 1. **Fork this repository** (button in upper right)
 
