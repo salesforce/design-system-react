@@ -1,9 +1,24 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useId, useMemo, type ReactNode, type ReactElement, type CSSProperties, type ChangeEvent } from 'react';
+import React, {
+	useEffect,
+	useId,
+	useMemo,
+	type ReactNode,
+	type ReactElement,
+	type CSSProperties,
+	type ChangeEvent,
+} from 'react';
 import classNames from 'classnames';
 import { RADIO_GROUP } from '../../utilities/constants';
+import type {
+	RadioChangeData,
+	RadioChangeHandler,
+	RadioGroupItemProps,
+} from '../radio/index';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 /**
  * Radio group variant types
@@ -31,12 +46,32 @@ export interface RadioGroupLabels {
 }
 
 /**
+ * Change event data for RadioGroup
+ */
+export interface RadioGroupChangeData {
+	/**
+	 * The requested selection: the `value` of the radio the user selected, or
+	 * `null` when a `deselectable` radio is deselected.
+	 */
+	value: string | null;
+	/**
+	 * Requested checked state of the radio that changed.
+	 * @deprecated Read `value` instead.
+	 */
+	checked: boolean;
+}
+
+/**
  * Props for the RadioGroup component
  */
 export interface RadioGroupProps {
 	/** Assistive text for accessibility */
 	assistiveText?: RadioGroupAssistiveText;
-	/** Radio components as children */
+	/**
+	 * `Radio` components (from `radio-group/radio`) as children. The group
+	 * injects `name`, `onChange`, `aria-describedby`, `disabled` and, when
+	 * `value` is set, `checked`.
+	 */
 	children: ReactNode;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
@@ -48,12 +83,25 @@ export interface RadioGroupProps {
 	labels?: RadioGroupLabels;
 	/** Name attribute for all radios */
 	name?: string;
-	/** Change handler */
-	onChange?: (event: ChangeEvent<HTMLInputElement>, data: { checked: boolean }) => void;
+	/**
+	 * Called when the user selects a radio, with the requested selection in
+	 * `data.value`. The rendered selection only changes when `value` is updated.
+	 */
+	onChange?: (
+		event: ChangeEvent<HTMLInputElement>,
+		data: RadioGroupChangeData
+	) => void;
 	/** Whether the field is required */
 	required?: boolean;
 	/** Custom styles for button-group variant */
 	style?: CSSProperties;
+	/**
+	 * The `value` of the selected radio, or `null` for no selection. The group
+	 * is controlled: each child radio is checked when its `value` equals this.
+	 * Leaving it `undefined` falls back to each `Radio`'s own `checked`
+	 * (deprecated).
+	 */
+	value: string | null;
 	/** Group variant */
 	variant?: RadioGroupVariant;
 }
@@ -79,6 +127,7 @@ const RadioGroup = ({
 	onChange,
 	required,
 	style,
+	value,
 	variant = 'base',
 }: RadioGroupProps): React.ReactElement => {
 	const generatedName = useId();
@@ -89,27 +138,44 @@ const RadioGroup = ({
 
 	const name = propName || generatedName;
 	const hasError = Boolean(labels.error);
-	const errorId = hasError ? (propErrorId || generatedErrorId) : undefined;
+	const errorId = hasError ? propErrorId || generatedErrorId : undefined;
 
-	// Clone children with group props
+	const isControlled = value !== undefined;
+
+	useEffect(() => {
+		checkProps(RADIO_GROUP, { value }, componentDoc);
+	}, [value]);
+
+	// Clone children with group props. With a group `value`, each radio's
+	// `checked` is derived from it; without one (deprecated), the radio keeps
+	// the `checked` it was given.
 	const enhancedChildren = useMemo(() => {
 		return React.Children.map(children, (child) => {
 			if (React.isValidElement(child)) {
-				return React.cloneElement(child as ReactElement<{
-					name?: string;
-					onChange?: typeof onChange;
-					'aria-describedby'?: string;
-					disabled?: boolean;
-				}>, {
+				const childProps = child.props as RadioGroupItemProps;
+				const childValue = childProps.value ?? null;
+				const handleChange: RadioChangeHandler = (
+					event,
+					data: RadioChangeData
+				) => {
+					onChange?.(event as ChangeEvent<HTMLInputElement>, {
+						checked: data.checked,
+						value: data.checked ? childValue : null,
+					});
+				};
+				return React.cloneElement(child as ReactElement<RadioGroupItemProps>, {
 					name,
-					onChange,
+					onChange: handleChange,
 					'aria-describedby': errorId,
-					disabled: disabled || (child.props as { disabled?: boolean }).disabled,
+					disabled: disabled || childProps.disabled,
+					...(isControlled
+						? { checked: childValue !== null && childValue === value }
+						: {}),
 				});
 			}
 			return child;
 		});
-	}, [children, name, onChange, errorId, disabled]);
+	}, [children, name, onChange, errorId, disabled, isControlled, value]);
 
 	return (
 		<fieldset
@@ -132,7 +198,12 @@ const RadioGroup = ({
 				)}
 				{assistiveText.label || labels.label}
 			</legend>
-			<div className={classNames('slds-form-element__control', className as string)}>
+			<div
+				className={classNames(
+					'slds-form-element__control',
+					className as string
+				)}
+			>
 				{variant === 'button-group' ? (
 					<div style={style} className="slds-radio_button-group">
 						{enhancedChildren}
@@ -154,18 +225,3 @@ const RadioGroup = ({
 RadioGroup.displayName = RADIO_GROUP;
 
 export default RadioGroup;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

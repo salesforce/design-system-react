@@ -133,6 +133,7 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 					id={`${props.id}-SelectRow`}
 					labelId={`${props.id}-SelectRow-label`}
 					name={`${props.tableId}-SelectRow`}
+					onChange={handleToggle}
 					disabled={isDisabled}
 				/>
 			) : (

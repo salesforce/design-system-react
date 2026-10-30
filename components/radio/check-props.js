@@ -22,8 +22,9 @@ if (process.env.NODE_ENV !== 'production') {
 	};
 }
 
-// Deprecated visual-picker render props. Exported separately so the component
-// can run these checks without enabling the pre-existing `checkProps` warnings.
+// v11 control-model removals and deprecated visual-picker render props.
+// Exported separately so the component can run these checks without enabling
+// the pre-existing `checkProps` warnings.
 export let checkDeprecatedProps = function checkDeprecatedPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
@@ -33,6 +34,13 @@ if (process.env.NODE_ENV !== 'production') {
 		jsonDoc
 	) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		sunsetProperty(
+			COMPONENT,
+			props.defaultChecked,
+			'defaultChecked',
+			'Radio is controlled: pass `checked` and update it in `onChange`, or pass `value` to the RadioGroup/RadioButtonGroup.'
+		);
 
 		deprecatedProperty(
 			COMPONENT,

@@ -7,7 +7,7 @@ import Radio from '~/components/radio-button-group/radio'; // `~` is replaced wi
 class Example extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { checked: 'Tue' };
+		this.state = { value: 'Tue' };
 	}
 
 	render() {
@@ -21,7 +21,8 @@ class Example extends React.Component {
 				<div>
 					<RadioButtonGroup
 						labels={labels}
-						onChange={(event) => this.setState({ checked: event.target.value })}
+						value={this.state.value}
+						onChange={(event, data) => this.setState({ value: data.value })}
 						disabled={this.props.disabled}
 						required={this.props.required}
 						name={this.props.name}
@@ -33,7 +34,6 @@ class Example extends React.Component {
 								id={day}
 								labels={{ label: day }}
 								value={day}
-								checked={this.state.checked === day}
 								variant="button-group"
 							/>
 						))}
