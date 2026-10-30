@@ -25,13 +25,14 @@
     "test:coverage": "vitest run --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix && prettier --write \"**/*.{js,jsx,ts,tsx}\"",
-    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.type-tests.json",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.type-tests.json && tsc --noEmit -p tsconfig.scripts.json",
     "test:ci": "npm run typecheck && npm run test -- --run --update=none && npm run build && npm run lint",
     "start": "npm run dev",
     "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build",
     "prepack": "npm run build",
-    "prepare": "husky"
+    "prepare": "husky",
+    "release-pr": "tsx scripts/release.ts"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -175,6 +176,7 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "storybook": "^10.2.1",
+    "tsx": "^4.23.15",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
     "typescript-eslint": "^8.68.0",
     "vite": "^8.2.2",

@@ -1,0 +1,8 @@
+{
+	// Repo tooling in `scripts/` (run with `tsx`). The build config only covers
+	// `components/`, `utilities/` and `types/`; `npm run typecheck` runs this too.
+	"extends": "./tsconfig.json",
+	"compilerOptions": { "lib": ["ES2022"], "types": ["node"] },
+	"include": ["scripts/**/*.ts"],
+	"exclude": ["node_modules", "dist", ".tmp-npm"]
+}
