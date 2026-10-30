@@ -1,7 +1,11 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type ReactNode, type CSSProperties, type ChangeEvent } from 'react';
+import React, {
+	type ReactNode,
+	type CSSProperties,
+	type ChangeEvent,
+} from 'react';
 import RadioGroup from '../radio-group';
 import { RADIO_BUTTON_GROUP } from '../../utilities/constants';
 
@@ -44,7 +48,10 @@ export interface RadioButtonGroupProps {
 	/** Name attribute for all radios */
 	name?: string;
 	/** Change handler */
-	onChange?: (event: ChangeEvent<HTMLInputElement>, data: { checked: boolean }) => void;
+	onChange?: (
+		event: ChangeEvent<HTMLInputElement>,
+		data: { checked: boolean }
+	) => void;
 	/** Whether the field is required */
 	required?: boolean;
 	/** Custom styles */
@@ -74,18 +81,3 @@ const RadioButtonGroup = ({
 RadioButtonGroup.displayName = RADIO_BUTTON_GROUP;
 
 export default RadioButtonGroup;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

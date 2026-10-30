@@ -14,10 +14,7 @@ import generateId from '../../utilities/generate-id';
 const displayName = WELCOME_MAT_TILE;
 
 export type WelcomeMatTileVariant =
-	| 'steps'
-	| 'info-only'
-	| 'splash'
-	| 'trailhead-connected';
+	'steps' | 'info-only' | 'splash' | 'trailhead-connected';
 
 export interface WelcomeMatTileProps {
 	/**

@@ -24,9 +24,7 @@ export interface BuilderHeaderNavProps {
 /**
  * The navigation section of the header.
  */
-const BuilderHeaderNav = (
-	props: BuilderHeaderNavProps
-): React.ReactElement => (
+const BuilderHeaderNav = (props: BuilderHeaderNavProps): React.ReactElement => (
 	<nav className="slds-builder-header__item slds-builder-header__nav">
 		<ul className="slds-builder-header__nav-list">
 			{React.Children.map(props.children, (child) => {

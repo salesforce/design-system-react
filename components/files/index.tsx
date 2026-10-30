@@ -65,7 +65,10 @@ const Files = ({
 
 	return (
 		<ul
-			className={classNames('slds-grid slds-grid_pull-padded', className as string)}
+			className={classNames(
+				'slds-grid slds-grid_pull-padded',
+				className as string
+			)}
 			id={id}
 		>
 			{files}
@@ -76,17 +79,3 @@ const Files = ({
 Files.displayName = FILES;
 
 export default Files;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

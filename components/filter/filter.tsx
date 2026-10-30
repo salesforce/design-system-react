@@ -228,4 +228,3 @@ const Filter: React.FC<FilterProps> = ({
 Filter.displayName = FILTER;
 
 export default Filter;
-
