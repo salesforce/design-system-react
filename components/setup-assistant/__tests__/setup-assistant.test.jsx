@@ -157,6 +157,95 @@ describe('SLDS Setup Assistant', () => {
 		});
 	});
 
+	describe('Setup Assistant Step open state', () => {
+		const renderSteps = (assistantProps = {}, stepProps = {}) =>
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<SetupAssistant id="setup-assistant-open" {...assistantProps}>
+						<SetupAssistantStep
+							heading="Step Heading"
+							id="setup-assistant-open-step-1"
+							isExpandable
+							{...stepProps}
+						/>
+					</SetupAssistant>
+				</IconSettings>
+			);
+		const toggle = (container) =>
+			fireEvent.click(
+				container.querySelector(
+					'#setup-assistant-open-step-1 .slds-summary-detail > button'
+				)
+			);
+		const detail = (container) =>
+			container.querySelector(
+				'#setup-assistant-open-step-1 .slds-summary-detail'
+			);
+
+		it('toggles an uncontrolled step without a callback', () => {
+			const { container } = renderSteps();
+			expect(detail(container)).not.toHaveClass('slds-is-open');
+
+			toggle(container);
+			expect(detail(container)).toHaveClass('slds-is-open');
+
+			toggle(container);
+			expect(detail(container)).not.toHaveClass('slds-is-open');
+		});
+
+		it('toggles an uncontrolled step with `onStepToggleIsOpen`, reporting the requested state', () => {
+			const onStepToggleIsOpen = vi.fn();
+			const { container } = renderSteps({ onStepToggleIsOpen });
+
+			toggle(container);
+
+			expect(detail(container)).toHaveClass('slds-is-open');
+			expect(onStepToggleIsOpen).toHaveBeenCalledTimes(1);
+			expect(onStepToggleIsOpen.mock.calls[0][1]).toEqual(
+				expect.objectContaining({ index: 0, isOpen: true })
+			);
+		});
+
+		it('toggles an uncontrolled step with its own `onToggleIsOpen`', () => {
+			const onToggleIsOpen = vi.fn();
+			const { container } = renderSteps({}, { onToggleIsOpen });
+
+			toggle(container);
+
+			expect(detail(container)).toHaveClass('slds-is-open');
+			expect(onToggleIsOpen.mock.calls[0][1].isOpen).toBe(true);
+		});
+
+		it('starts open with `defaultIsOpen`', () => {
+			const { container } = renderSteps({}, { defaultIsOpen: true });
+			expect(detail(container)).toHaveClass('slds-is-open');
+
+			toggle(container);
+			expect(detail(container)).not.toHaveClass('slds-is-open');
+		});
+
+		it('honors controlled `isOpen` until the parent updates it', () => {
+			const onStepToggleIsOpen = vi.fn();
+			const { container } = renderSteps(
+				{ onStepToggleIsOpen },
+				{ isOpen: false }
+			);
+
+			toggle(container);
+
+			expect(detail(container)).not.toHaveClass('slds-is-open');
+			expect(onStepToggleIsOpen.mock.calls[0][1].isOpen).toBe(true);
+		});
+
+		it('honors controlled `isOpen` without a callback', () => {
+			const { container } = renderSteps({}, { isOpen: true });
+
+			toggle(container);
+
+			expect(detail(container)).toHaveClass('slds-is-open');
+		});
+	});
+
 	describe('Setup Assistant Step slots', () => {
 		afterEach(() => {
 			vi.restoreAllMocks();
