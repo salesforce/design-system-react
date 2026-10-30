@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Button from '~/components/button';
 import Checkbox from '~/components/checkbox';
 import IconSettings from '~/components/icon-settings';
 import SetupAssistant from '~/components/setup-assistant';
 import SetupAssistantStep from '~/components/setup-assistant/step';
+
+// Checkbox is controlled, so the toggle action keeps its own state.
+const ToggleAction = ({ id, initialChecked = false }) => {
+	const [checked, setChecked] = useState(initialChecked);
+	return (
+		<Checkbox
+			checked={checked}
+			id={id}
+			onChange={(event, data) => setChecked(data.checked)}
+			variant="toggle"
+		/>
+	);
+};
 
 class Example extends React.Component {
 	static displayName = 'SetupAssistantBaseExample';
@@ -55,7 +68,7 @@ class Example extends React.Component {
 						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 						heading="Turn on tracking for profiles"
 						id="base-step-4"
-						action={<Checkbox id="base-step-4-action" variant="toggle" />}
+						action={<ToggleAction id="base-step-4-action" />}
 					/>
 					<SetupAssistantStep
 						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
