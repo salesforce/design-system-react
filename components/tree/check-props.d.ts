@@ -4,4 +4,9 @@ declare const checkProps: (
 	jsonDoc?: Record<string, unknown>
 ) => void;
 
+export declare const checkLegacyNodeFields: (
+	componentName: string,
+	fields: { hasExpandedField: boolean }
+) => void;
+
 export default checkProps;
