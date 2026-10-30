@@ -1530,6 +1530,7 @@ describe('SimpleDataTable', () => {
 				'desc',
 			]);
 			expect(getSortHeader(container)).toHaveAttribute('aria-sort', 'ascending');
+			expect(getSortHeader(container)).toHaveClass('slds-is-sorted_asc');
 			expect(getSortHeader(container)).not.toHaveClass('slds-is-sorted_desc');
 		});
 

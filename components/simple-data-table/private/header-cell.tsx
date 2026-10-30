@@ -200,8 +200,13 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 			className={classNames({
 				'slds-is-sortable': sortable,
 				'slds-is-sorted': isSorted,
-				[`slds-is-sorted_${effectiveSortDirection}`]: effectiveSortDirection,
-				'slds-is-sorted_asc': isSorted && !effectiveSortDirection,
+				// One key per class: a computed `slds-is-sorted_${direction}` key
+				// followed by a literal `slds-is-sorted_asc` key overwrote it, so
+				// ascending columns never got `slds-is-sorted_asc`.
+				'slds-is-sorted_asc':
+					effectiveSortDirection === 'asc' ||
+					(isSorted && !effectiveSortDirection),
+				'slds-is-sorted_desc': effectiveSortDirection === 'desc',
 				'slds-has-focus': hasFocus,
 			})}
 			onFocus={handleFocus}
