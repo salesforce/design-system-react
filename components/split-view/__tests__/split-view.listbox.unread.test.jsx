@@ -50,7 +50,8 @@ describe('SLDSSplitView - Listbox unread', () => {
 
 	const props = {
 		options: listOptions,
-		unread: [listOptions[1], listOptions[3]],
+		selection: [],
+		unread: [listOptions[1].id, listOptions[3].id],
 		labels: {
 			header: 'test header',
 		},
