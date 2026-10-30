@@ -16,6 +16,8 @@ class Example extends React.Component {
 				<VerticalNavigation
 					id="sample-navigation"
 					categories={sampleReportCategories}
+					onSelect={() => {}}
+					selectedId="recent_reports"
 					{...this.props}
 				/>
 			</IconSettings>

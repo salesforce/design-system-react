@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import VerticalNavigation from '../index';
 import { sampleReportCategories } from '../../../utilities/sample-data/vertical-navigation';
@@ -9,6 +10,8 @@ const defaultProps = {
 	id: 'sample-navigation',
 	className: 'sample-navigation',
 	categories: sampleReportCategories,
+	onSelect: () => {},
+	selectedId: 'recent_reports',
 };
 
 describe('SLDSVerticalNavigation', () => {
@@ -87,16 +90,71 @@ describe('SLDSVerticalNavigation', () => {
 			expect(link).toBeInTheDocument();
 		});
 
-		it('defaults to first item when no selectedId provided', () => {
-			const { container } = render(<VerticalNavigation {...defaultProps} />);
+		it('selects no item when selectedId is null', () => {
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} selectedId={null} />
+			);
 
-			// First item should be selected by default
-			const firstItem = container.querySelector('li.slds-is-active');
-			expect(firstItem).toBeInTheDocument();
+			expect(container.querySelector('li.slds-is-active')).toBeNull();
+			expect(container.querySelector('[aria-current]')).toBeNull();
+		});
 
-			// Should be the first item from the first category
-			const link = firstItem.querySelector('a[data-id="recent_reports"]');
-			expect(link).toBeInTheDocument();
+		describe('when selectedId is missing', () => {
+			afterEach(() => {
+				vi.restoreAllMocks();
+			});
+
+			it('no longer defaults to the first item, and warns', () => {
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				const { container } = render(
+					<VerticalNavigation {...defaultProps} selectedId={undefined} />
+				);
+
+				expect(container.querySelector('li.slds-is-active')).toBeNull();
+				expect(consoleError).toHaveBeenCalledWith(
+					expect.stringContaining('`selectedId` is required')
+				);
+			});
+		});
+
+		it('honors the controlled selectedId: clicking does not change the selection', async () => {
+			const onSelect = vi.fn((event) => event.preventDefault());
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} onSelect={onSelect} />
+			);
+
+			await userEvent.click(container.querySelector('a[data-id="my_folders"]'));
+
+			expect(onSelect).toHaveBeenCalledTimes(1);
+			expect(onSelect.mock.calls[0][1].item.id).toBe('my_folders');
+			expect(
+				container.querySelector('li.slds-is-active a').getAttribute('data-id')
+			).toBe('recent_reports');
+		});
+
+		it('changes the selection when the parent updates selectedId from onSelect', async () => {
+			const Controlled = () => {
+				const [selectedId, setSelectedId] = useState('recent_reports');
+				return (
+					<VerticalNavigation
+						{...defaultProps}
+						onSelect={(event, { item }) => {
+							event.preventDefault();
+							setSelectedId(item.id);
+						}}
+						selectedId={selectedId}
+					/>
+				);
+			};
+			const { container } = render(<Controlled />);
+
+			await userEvent.click(container.querySelector('a[data-id="my_folders"]'));
+
+			expect(
+				container.querySelector('li.slds-is-active a').getAttribute('data-id')
+			).toBe('my_folders');
 		});
 
 		it('marks only one item as selected', () => {
@@ -260,7 +318,11 @@ describe('SLDSVerticalNavigation', () => {
 
 		it('generates id when not provided', () => {
 			const { container } = render(
-				<VerticalNavigation categories={sampleReportCategories} />
+				<VerticalNavigation
+					categories={sampleReportCategories}
+					onSelect={() => {}}
+					selectedId={null}
+				/>
 			);
 
 			const nav = container.querySelector('nav');
@@ -272,7 +334,12 @@ describe('SLDSVerticalNavigation', () => {
 	describe('Empty categories', () => {
 		it('handles empty categories array', () => {
 			const { container } = render(
-				<VerticalNavigation id="empty-nav" categories={[]} />
+				<VerticalNavigation
+					id="empty-nav"
+					categories={[]}
+					onSelect={() => {}}
+					selectedId={null}
+				/>
 			);
 
 			const nav = container.querySelector('nav#empty-nav');
@@ -292,7 +359,12 @@ describe('SLDSVerticalNavigation', () => {
 			];
 
 			render(
-				<VerticalNavigation id="nav-empty-items" categories={emptyCategory} />
+				<VerticalNavigation
+					id="nav-empty-items"
+					categories={emptyCategory}
+					onSelect={() => {}}
+					selectedId={null}
+				/>
 			);
 
 			expect(screen.getByText('Empty Category')).toBeInTheDocument();
