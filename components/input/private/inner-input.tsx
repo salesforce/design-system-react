@@ -262,12 +262,14 @@ const InnerInput = ({
 
 	// Add spinner to aria-describedby if present
 	if (hasSpinner && ariaProps['aria-describedby']) {
-		ariaProps['aria-describedby'] = `${loadingStatusIconId} ${ariaProps['aria-describedby']}`;
+		ariaProps['aria-describedby'] =
+			`${loadingStatusIconId} ${ariaProps['aria-describedby']}`;
 	} else if (hasSpinner) {
 		ariaProps['aria-describedby'] = loadingStatusIconId;
 	}
 
-	const { className: containerPropsClassName, ...restContainerProps } = containerProps;
+	const { className: containerPropsClassName, ...restContainerProps } =
+		containerProps;
 
 	return (
 		<div
@@ -275,7 +277,8 @@ const InnerInput = ({
 				'slds-input-has-icon': variant !== COUNTER && (iconLeft || iconRight),
 				'slds-input-has-icon_left': iconLeft && !iconRight,
 				'slds-input-has-icon_right': !iconLeft && iconRight,
-				'slds-input-has-icon_left-right': variant !== COUNTER && iconLeft && iconRight,
+				'slds-input-has-icon_left-right':
+					variant !== COUNTER && iconLeft && iconRight,
 				'slds-input-has-fixed-addon': fixedTextLeft || fixedTextRight,
 				'slds-has-divider_bottom': isStatic,
 			})}
@@ -324,9 +327,7 @@ const InnerInput = ({
 					tabIndex={tabIndex !== undefined ? Number(tabIndex) : undefined}
 					type={type}
 					{...ariaProps}
-					{...(value !== undefined
-						? { value }
-						: { defaultValue })}
+					{...(value !== undefined ? { value } : { defaultValue })}
 				/>
 			)}
 
@@ -354,7 +355,9 @@ const InnerInput = ({
 					className={classNames('slds-form-element__static', 'slds-grid', {
 						'slds-grid_align-spread': variant !== COUNTER,
 					})}
-					onClick={onClick as unknown as (event: MouseEvent<HTMLSpanElement>) => void}
+					onClick={
+						onClick as unknown as (event: MouseEvent<HTMLSpanElement>) => void
+					}
 				>
 					{value}
 					{inlineEditTrigger}
