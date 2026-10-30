@@ -4125,7 +4125,7 @@ exports[`Story HTML snapshots > MenuDropdown > Controlled 1`] = `
     <div class="slds-col slds-m-right_medium">
       <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="controlled-dropdown"><button class="slds-button slds-button_neutral ignore-click-controlled-dropdown" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">Controlled Dropdown</button></div>
     </div>
-    <div class="slds-col"><button class="slds-button slds-button_neutral slds-m-right_small" type="button">Force Open</button><button class="slds-button slds-button_neutral slds-m-right_small" type="button">Force Close</button><button class="slds-button slds-button_neutral" type="button">Reset</button></div>
+    <div class="slds-col"><button class="slds-button slds-button_neutral slds-m-right_small" type="button">Force Open</button><button class="slds-button slds-button_neutral" type="button">Force Close</button></div>
   </div>
 </div>"
 `;
@@ -6072,7 +6072,7 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedFixedLayout 1`] = `
               </div>
             </div>
           </th>
-          <th id="SimpleDataTableExample-2-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted" scope="col" style="width:10rem"><a href="#" class="slds-th__action slds-text-link_reset" role="button" tabindex="-1"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+          <th id="SimpleDataTableExample-2-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted slds-is-sorted_asc" scope="col" style="width:10rem"><a href="#" class="slds-th__action slds-text-link_reset" role="button" tabindex="-1"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                   <use href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"></use>
                 </svg></span><span class="slds-assistive-text" aria-atomic="true">asc</span></a></th>
           <th id="SimpleDataTableExample-2-accountName-th" aria-label="Account Name" aria-sort="none" class="" scope="col" style="width:8rem"><span class="slds-p-horizontal_x-small slds-th__action" style="display:flex"><span class="slds-truncate" title="Account Name">Account Name</span></span></th>
@@ -6209,7 +6209,7 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedSingleSelectFixedHeade
                   <div class="slds-truncate slds-assistive-text" id="SimpleDataTableExample-SingleRequiredSelect-SLDSSimpleDataTableHead-column-group-header-row-select" title="Choose a row to select">Choose a row to select</div>
                 </div>
               </th>
-              <th id="SimpleDataTableExample-SingleRequiredSelect-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted" scope="col" style="height:0;line-height:0;width:10rem"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="display:flex;height:0;overflow:hidden;padding-bottom:0;padding-top:0;visibility:hidden"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+              <th id="SimpleDataTableExample-SingleRequiredSelect-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted slds-is-sorted_asc" scope="col" style="height:0;line-height:0;width:10rem"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="display:flex;height:0;overflow:hidden;padding-bottom:0;padding-top:0;visibility:hidden"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"></use>
                     </svg></span><span class="slds-assistive-text" aria-atomic="true">asc</span></a>
                 <div class="slds-cell-fixed" style="display:flex;flex-direction:row;flex-wrap:nowrap;line-height:2rem"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="align-items:center;display:flex;flex:1 1 auto;line-height:1.25;width:100%" tabindex="-1"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
@@ -6351,7 +6351,7 @@ exports[`Story HTML snapshots > SimpleDataTable > AdvancedSingleSelectFixedLayou
           <th class="slds-text-align_right" scope="col" style="width:3.25rem">
             <div class="slds-truncate slds-assistive-text" id="SimpleDataTableExample-SingleRequiredSelect-SLDSSimpleDataTableHead-column-group-header-row-select" title="Choose a row to select">Choose a row to select</div>
           </th>
-          <th id="SimpleDataTableExample-SingleRequiredSelect-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted" scope="col" style="width:10rem"><a href="#" class="slds-th__action slds-text-link_reset" role="button" tabindex="-1"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+          <th id="SimpleDataTableExample-SingleRequiredSelect-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted slds-is-sorted_asc" scope="col" style="width:10rem"><a href="#" class="slds-th__action slds-text-link_reset" role="button" tabindex="-1"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                   <use href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"></use>
                 </svg></span><span class="slds-assistive-text" aria-atomic="true">asc</span></a></th>
           <th id="SimpleDataTableExample-SingleRequiredSelect-accountName-th" aria-label="Account Name" aria-sort="none" class="" scope="col" style="width:8rem"><span class="slds-p-horizontal_x-small slds-th__action" style="display:flex"><span class="slds-truncate" title="Account Name">Account Name</span></span></th>
@@ -7388,7 +7388,7 @@ exports[`Story HTML snapshots > SimpleDataTable > FixedHeaderHorizontalScrolling
                   </div>
                 </div>
               </th>
-              <th id="SimpleDataTableExample-FixedHeaders-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted" scope="col" style="height:0;line-height:0"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="display:flex;height:0;overflow:hidden;padding-bottom:0;padding-top:0;visibility:hidden"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+              <th id="SimpleDataTableExample-FixedHeaders-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted slds-is-sorted_asc" scope="col" style="height:0;line-height:0"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="display:flex;height:0;overflow:hidden;padding-bottom:0;padding-top:0;visibility:hidden"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"></use>
                     </svg></span><span class="slds-assistive-text" aria-atomic="true">asc</span></a>
                 <div class="slds-cell-fixed" style="display:flex;flex-direction:row;flex-wrap:nowrap;line-height:2rem"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="align-items:center;display:flex;flex:1 1 auto;line-height:1.25;width:100%" tabindex="-1"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
@@ -7852,7 +7852,7 @@ exports[`Story HTML snapshots > SimpleDataTable > FixedHeaderStory 1`] = `
                   </div>
                 </div>
               </th>
-              <th id="SimpleDataTableExample-FixedHeaders-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted" scope="col" style="height:0;line-height:0"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="display:flex;height:0;overflow:hidden;padding-bottom:0;padding-top:0;visibility:hidden"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+              <th id="SimpleDataTableExample-FixedHeaders-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted slds-is-sorted_asc" scope="col" style="height:0;line-height:0"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="display:flex;height:0;overflow:hidden;padding-bottom:0;padding-top:0;visibility:hidden"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"></use>
                     </svg></span><span class="slds-assistive-text" aria-atomic="true">asc</span></a>
                 <div class="slds-cell-fixed" style="display:flex;flex-direction:row;flex-wrap:nowrap;line-height:2rem"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="align-items:center;display:flex;flex:1 1 auto;line-height:1.25;width:100%" tabindex="-1"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
@@ -8316,7 +8316,7 @@ exports[`Story HTML snapshots > SimpleDataTable > InfiniteScrollingStory 1`] = `
                   </div>
                 </div>
               </th>
-              <th id="SimpleDataTableExample-FixedHeaders-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted" scope="col" style="height:0;line-height:0"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="display:flex;height:0;overflow:hidden;padding-bottom:0;padding-top:0;visibility:hidden"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+              <th id="SimpleDataTableExample-FixedHeaders-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted slds-is-sorted_asc" scope="col" style="height:0;line-height:0"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="display:flex;height:0;overflow:hidden;padding-bottom:0;padding-top:0;visibility:hidden"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"></use>
                     </svg></span><span class="slds-assistive-text" aria-atomic="true">asc</span></a>
                 <div class="slds-cell-fixed" style="display:flex;flex-direction:row;flex-wrap:nowrap;line-height:2rem"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="align-items:center;display:flex;flex:1 1 auto;line-height:1.25;width:100%" tabindex="0"><span class="slds-assistive-text">sort this column </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
@@ -9204,7 +9204,7 @@ exports[`Story HTML snapshots > SimpleDataTable > JoinedWithPageHeaderStory 1`] 
                   </div>
                 </div>
               </th>
-              <th id="SimpleDataTableExample-JoinedWithPageHeader-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted" scope="col" style="height:0;line-height:0"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="display:flex;height:0;overflow:hidden;padding-bottom:0;padding-top:0;visibility:hidden"><span class="slds-assistive-text">Sort by: </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+              <th id="SimpleDataTableExample-JoinedWithPageHeader-opportunityName-th" aria-label="Name" aria-sort="ascending" class="slds-is-sortable slds-is-sorted slds-is-sorted_asc" scope="col" style="height:0;line-height:0"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="display:flex;height:0;overflow:hidden;padding-bottom:0;padding-top:0;visibility:hidden"><span class="slds-assistive-text">Sort by: </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#arrowup"></use>
                     </svg></span><span class="slds-assistive-text" aria-atomic="true">Sorted Ascending</span></a>
                 <div class="slds-cell-fixed" style="display:flex;flex-direction:row;flex-wrap:nowrap;line-height:2rem"><a href="#" class="slds-th__action slds-text-link_reset" role="button" style="align-items:center;display:flex;flex:1 1 auto;line-height:1.25;width:100%" tabindex="-1"><span class="slds-assistive-text">Sort by: </span><span class="slds-truncate" title="Name">Name</span><span><svg class="slds-is-sortable__icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
@@ -10164,19 +10164,19 @@ exports[`Story HTML snapshots > Tabs > Default 1`] = `
 </div>"
 `;
 
-exports[`Story HTML snapshots > Tabs > DefaultSelectedIndex 1`] = `
+exports[`Story HTML snapshots > Tabs > InitialValue 1`] = `
 "<div class="slds-p-around_medium" style="max-width:800px">
   <div id="_R_0_" class="slds-tabs_default" data-tabs="true">
     <ul id="_R_0_-slds-tabs__nav" class="slds-tabs_default__nav" role="tablist">
       <li class="slds-tabs_default__item" role="presentation" id="_R_0_-slds-tabs_tab-0" title="First"><a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-controls="_R_0_-slds-tabs_panel-0" aria-selected="false">First</a></li>
-      <li class="slds-is-active slds-tabs_default__item" role="presentation" id="_R_0_-slds-tabs_tab-1" title="Second (Default)"><a class="slds-is-active slds-tabs_default__link" href="#" role="tab" tabindex="0" aria-controls="_R_0_-slds-tabs_panel-1" aria-selected="true">Second (Default)</a></li>
+      <li class="slds-is-active slds-tabs_default__item" role="presentation" id="_R_0_-slds-tabs_tab-1" title="Second (Initial)"><a class="slds-is-active slds-tabs_default__link" href="#" role="tab" tabindex="0" aria-controls="_R_0_-slds-tabs_panel-1" aria-selected="true">Second (Initial)</a></li>
       <li class="slds-tabs_default__item" role="presentation" id="_R_0_-slds-tabs_tab-2" title="Third"><a class="slds-tabs_default__link" href="#" role="tab" tabindex="-1" aria-controls="_R_0_-slds-tabs_panel-2" aria-selected="false">Third</a></li>
     </ul>
     <div aria-labelledby="_R_0_-slds-tabs_tab-0" class="slds-hide slds-tabs_default__content" id="_R_0_-slds-tabs_panel-0" role="tabpanel">
       <p>First tab content.</p>
     </div>
     <div aria-labelledby="_R_0_-slds-tabs_tab-1" class="slds-show slds-tabs_default__content" id="_R_0_-slds-tabs_panel-1" role="tabpanel">
-      <p>This tab is selected by default.</p>
+      <p>This tab is selected initially.</p>
     </div>
     <div aria-labelledby="_R_0_-slds-tabs_tab-2" class="slds-hide slds-tabs_default__content" id="_R_0_-slds-tabs_panel-2" role="tabpanel">
       <p>Third tab content.</p>
