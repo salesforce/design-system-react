@@ -5,6 +5,7 @@
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
+import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function checkPropsFunction() {};
 
@@ -12,6 +13,12 @@ if (process.env.NODE_ENV !== 'production') {
 	checkProps = function checkPropsFunction(COMPONENT, props, jsonDoc) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
 		/* eslint-disable max-len */
+		sunsetProperty(
+			COMPONENT,
+			props.defaultValue !== undefined,
+			'defaultValue',
+			'Combobox is controlled: pass `value` and update it in `events.onChange`.'
+		);
 		deprecatedProperty(
 			COMPONENT,
 			props.isInline,

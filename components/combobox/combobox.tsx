@@ -16,7 +16,6 @@ import find from 'lodash.find';
 import reject from 'lodash.reject';
 import { dequal as isEqual } from 'dequal';
 import findIndex from 'lodash.findindex';
-import isFunction from 'lodash.isfunction';
 
 import classNames from 'classnames';
 
@@ -49,6 +48,7 @@ import type { SelectedListBoxOption } from '../pill-container/private/selected-l
 import generateId from '../../utilities/generate-id';
 import componentDoc from './component.json';
 import { IconSettingsContext } from '../icon-settings';
+import { useControllableState } from '../../utilities/hooks';
 
 let currentOpenDropdown: { handleClose: () => void } | undefined;
 const documentDefined = typeof document !== 'undefined';
@@ -85,24 +85,47 @@ export interface ComboboxEvents {
 		event: React.ChangeEvent<HTMLInputElement>,
 		data: { value: string }
 	) => void;
+	/**
+	 * Fires after the menu has closed (uncontrolled), or when a controlled
+	 * `isOpen` changes to `false`. `event` is the event of the close request,
+	 * when there was one.
+	 */
 	onClose?: (
 		event: React.SyntheticEvent | undefined,
 		data: Record<string, unknown>
 	) => void;
 	onFocus?: (event: React.FocusEvent, data: Record<string, unknown>) => void;
+	/** Fires after the menu has opened and rendered, controlled or not. */
 	onOpen?: (
 		event: React.SyntheticEvent | undefined,
 		data: Record<string, unknown>
 	) => void;
+	/**
+	 * Fires when the user asks to close the menu (Escape, blur, selecting an
+	 * option, the popover buttons). With a controlled `isOpen`, set it to
+	 * `false` to close.
+	 */
 	onRequestClose?: (
 		event: React.SyntheticEvent,
 		data: Record<string, unknown>
 	) => void;
-	onRequestOpen?: () => void;
+	/**
+	 * Fires when the user asks to open the menu (typing, clicking the input,
+	 * Down, Enter) while it is closed. With a controlled `isOpen`, set it to
+	 * `true` to open.
+	 */
+	onRequestOpen?: (
+		event: React.SyntheticEvent | undefined,
+		data: Record<string, unknown>
+	) => void;
 	onRequestRemoveSelectedOption?: (
 		event: React.SyntheticEvent,
 		data: { selection: ComboboxOption[] }
 	) => void;
+	/**
+	 * Fires with the requested selection when an option is chosen. `selection`
+	 * is controlled, so update it to accept the change.
+	 */
 	onSelect?: (
 		event: React.SyntheticEvent,
 		data: { selection: ComboboxOption[] }
@@ -188,8 +211,11 @@ interface ComboboxBaseProps {
 	classNameMenu?: string | string[] | Record<string, boolean>;
 	/** CSS classes for menu sub header */
 	classNameMenuSubHeader?: string | string[] | Record<string, boolean>;
-	/** Default input value for uncontrolled usage */
-	defaultValue?: string;
+	/**
+	 * Initial open state when `isOpen` is not set. Ignored when `isOpen` is
+	 * set.
+	 */
+	defaultIsOpen?: boolean;
 	/** Whether component is disabled */
 	disabled?: boolean;
 	/** Entity combobox for grouped comboboxes */
@@ -216,7 +242,12 @@ interface ComboboxBaseProps {
 	input?: ReactElement;
 	/** Callback to get input ref */
 	inputRef?: (ref: HTMLInputElement | null) => void;
-	/** Whether the dropdown is open (controlled) */
+	/**
+	 * Whether the menu is open. Leave unset to let the combobox open and close
+	 * itself (start state from `defaultIsOpen`). When set, the combobox only
+	 * reports open and close requests through `events.onRequestOpen` and
+	 * `events.onRequestClose`; update `isOpen` to act on them.
+	 */
 	isOpen?: boolean;
 	/** Text labels */
 	labels?: ComboboxLabels;
@@ -241,7 +272,11 @@ interface ComboboxBaseProps {
 	predefinedOptionsOnly?: boolean;
 	/** Whether field is required */
 	required?: boolean;
-	/** Selected options */
+	/**
+	 * Selected options. Controlled: `events.onSelect` and
+	 * `events.onRequestRemoveSelectedOption` report the requested selection;
+	 * update `selection` to accept it.
+	 */
 	selection: ComboboxOption[];
 	/** Callback to get selected listbox ref */
 	selectedListboxRef?: (ref: HTMLUListElement | null) => void;
@@ -249,7 +284,10 @@ interface ComboboxBaseProps {
 	singleInputDisabled?: boolean;
 	/** Tooltip for disabled menu items */
 	tooltipMenuItemDisabled?: ReactElement;
-	/** Input value (controlled) */
+	/**
+	 * Text in the input. Controlled: update it from `events.onChange`.
+	 * (`defaultValue` was removed in v11.)
+	 */
 	value?: string;
 	/**
 	 * Renders each option's content in place of the default label and icon.
@@ -324,7 +362,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		classNameContainer,
 		classNameMenu,
 		classNameMenuSubHeader,
-		defaultValue,
+		defaultIsOpen,
 		disabled,
 		entityCombobox,
 		errorText,
@@ -393,9 +431,29 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	>(selection?.[0]);
 	const [activeSelectedOptionIndex, setActiveSelectedOptionIndex] = useState(0);
 	const [listboxHasFocus, setListboxHasFocus] = useState(false);
-	const [isOpenState, setIsOpenState] = useState(
-		typeof isOpenProp === 'boolean' ? isOpenProp : false
+	// `isOpen` is ephemeral UI state: controlled when the prop is set,
+	// otherwise internal and seeded by `defaultIsOpen`.
+	const [isOpen, setIsOpen, isOpenControlled] = useControllableState(
+		isOpenProp,
+		defaultIsOpen ?? false
 	);
+	// Latest `isOpen` for close requests made from timers and for swallowing a
+	// duplicate request within one event.
+	const isOpenRef = useRef(isOpen);
+	useEffect(() => {
+		isOpenRef.current = isOpen;
+	}, [isOpen]);
+	// Event of the latest close request, reported by `events.onClose`.
+	const closeEventRef = useRef<React.SyntheticEvent | undefined>(undefined);
+	// Reset the highlighted option whenever the menu closes, however it closed.
+	const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
+	if (prevIsOpen !== isOpen) {
+		setPrevIsOpen(isOpen);
+		if (!isOpen) {
+			setActiveOption(undefined);
+			setActiveOptionIndex(-1);
+		}
+	}
 	const [inputRendered, setInputRendered] = useState(false);
 
 	// Check props on mount
@@ -409,9 +467,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	}, []);
 
 	// Derived state
-	const getIsOpen = useCallback(() => {
-		return !!(typeof isOpenProp === 'boolean' ? isOpenProp : isOpenState);
-	}, [isOpenProp, isOpenState]);
+	const getIsOpen = useCallback(() => !!isOpen, [isOpen]);
 
 	const getIsActiveOption = useCallback(() => {
 		return activeOption && activeOptionIndex !== -1;
@@ -491,21 +547,19 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 
 	// ===== Event Handlers =====
 
-	const handleClose = useCallback(
+	// Every internal close path (Escape, blur, selecting an option, the popover
+	// buttons, a click outside) goes through `requestClose`. It reports the
+	// request through `events.onRequestClose` and closes only when `isOpen` is
+	// uncontrolled; a controlled `isOpen` closes when the parent updates it.
+	const requestClose = useCallback(
 		(event?: React.SyntheticEvent, { trigger }: { trigger?: string } = {}) => {
-			const isOpen = getIsOpen();
-
-			if (isOpen) {
-				if (
-					currentOpenDropdown &&
-					currentOpenDropdown.handleClose === handleClose
-				) {
-					currentOpenDropdown = undefined;
+			if (isOpenRef.current) {
+				if (!isOpenControlled) {
+					// Swallow a second request in the same event (for example
+					// Escape handled by both the input and the popover).
+					isOpenRef.current = false;
 				}
-
-				setActiveOption(undefined);
-				setActiveOptionIndex(-1);
-				setIsOpenState(false);
+				closeEventRef.current = event;
 
 				if (variant === 'popover' && trigger === 'cancel') {
 					const popoverProps = popover?.props as
@@ -516,91 +570,82 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 					}
 				}
 
-				if (events.onClose) {
-					events.onClose(event, {});
+				if (events.onRequestClose) {
+					events.onRequestClose(event as React.SyntheticEvent, {});
 				}
+
+				setIsOpen(false);
 			}
 		},
-		[getIsOpen, variant, popover, events]
+		[isOpenControlled, variant, popover, events, setIsOpen]
 	);
 
+	// Called by the menu `Dialog` (or `Popover`) once it has rendered, so
+	// `events.onOpen` fires on a real open whether `isOpen` is controlled or not.
 	const handleOpen = useCallback(
 		(event?: React.SyntheticEvent, data?: Record<string, unknown>) => {
-			const isOpen = getIsOpen();
+			currentOpenDropdown = { handleClose: requestClose };
 
+			if (events.onOpen) {
+				events.onOpen(event, data || {});
+			}
+
+			if (variant === 'readonly') {
+				const opts = getOptions();
+				const idx = findIndex(opts, (item) => isEqual(item, selection[0]));
+
+				setActiveOptionIndex(idx);
+				setActiveOption(selection[0]);
+
+				if (menuRef.current !== null) {
+					menuItemSelectScroll({
+						container: menuRef.current,
+						focusedIndex: idx,
+					});
+				}
+			}
+		},
+		[requestClose, events, variant, getOptions, selection]
+	);
+
+	// Every internal open path (typing, clicking the input, Down, Enter) goes
+	// through `requestOpen`. It reports the request through
+	// `events.onRequestOpen` and opens only when `isOpen` is uncontrolled.
+	const requestOpen = useCallback(
+		(event?: React.SyntheticEvent) => {
 			if (!isOpen) {
-				if (
-					currentOpenDropdown &&
-					isFunction(currentOpenDropdown.handleClose)
-				) {
-					currentOpenDropdown.handleClose();
+				if (events.onRequestOpen) {
+					events.onRequestOpen(event, {});
 				}
-			} else {
-				currentOpenDropdown = { handleClose };
-
-				setIsOpenState(true);
-
-				if (events.onOpen) {
-					events.onOpen(event, data || {});
-				}
-
-				if (variant === 'readonly') {
-					const opts = getOptions();
-					const idx = findIndex(opts, (item) => isEqual(item, selection[0]));
-
-					setActiveOptionIndex(idx);
-					setActiveOption(selection[0]);
-
-					if (menuRef.current !== null) {
-						menuItemSelectScroll({
-							container: menuRef.current,
-							focusedIndex: idx,
-						});
-					}
-				}
+				setIsOpen(true);
 			}
 		},
-		[getIsOpen, handleClose, events, variant, getOptions, selection]
+		[isOpen, events, setIsOpen]
 	);
 
-	const handleRequestClose = useCallback(
-		(event: React.SyntheticEvent, data: Record<string, unknown>) => {
-			if (events.onRequestClose) {
-				events.onRequestClose(event, data);
-			}
-			if (getIsOpen()) {
-				handleClose(event, { trigger: 'cancel' });
+	const requestOpenMenu = useCallback(
+		(event?: React.SyntheticEvent) => {
+			const isInlineSingleSelectionAndIsNotSelected =
+				!multiple && selection.length === 0 && variant === 'inline-listbox';
+
+			if (
+				isInlineSingleSelectionAndIsNotSelected ||
+				multiple ||
+				variant === 'readonly'
+			) {
+				requestOpen(event);
 			}
 		},
-		[events, getIsOpen, handleClose]
+		[multiple, selection.length, variant, requestOpen]
 	);
-
-	const openDialog = useCallback(() => {
-		if (events.onRequestOpen) {
-			events.onRequestOpen();
-		} else {
-			setIsOpenState(true);
-		}
-	}, [events]);
-
-	const requestOpenMenu = useCallback(() => {
-		const isInlineSingleSelectionAndIsNotSelected =
-			!multiple && selection.length === 0 && variant === 'inline-listbox';
-
-		if (
-			isInlineSingleSelectionAndIsNotSelected ||
-			multiple ||
-			variant === 'readonly'
-		) {
-			openDialog();
-		}
-	}, [multiple, selection.length, variant, openDialog]);
 
 	const handleClickOutside = useCallback(
 		(event: MouseEvent | TouchEvent) => {
-			handleRequestClose(event as unknown as React.SyntheticEvent, {});
+			requestClose(event as unknown as React.SyntheticEvent, {
+				trigger: 'cancel',
+			});
 		},
-		[handleRequestClose]
+		[requestClose]
 	);
 
 	const handleSelect = useCallback(
@@ -617,9 +662,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				actionItem.onClick?.(actionEvent, { option: actionItem });
 				events.onSelectActionItem?.(actionEvent, {
 					option: actionItem,
-					value: inputRef.current?.value ?? '',
+					value: value ?? '',
 				});
-				handleClose();
+				requestClose(event);
 				return;
 			}
 
@@ -643,9 +688,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				events.onSelect(event, { selection: newSelection });
 			}
 
-			handleClose();
+			requestClose(event);
 		},
-		[isSelected, multiple, deselectId, selection, events, handleClose]
+		[isSelected, multiple, deselectId, selection, events, requestClose, value]
 	);
 
 	const handleInputBlur = useCallback(
@@ -661,7 +706,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						inputRef.current.focus();
 					}
 				} else if (!popover) {
-					handleClose(event);
+					requestClose(event);
 				}
 			}, 200);
 
@@ -669,12 +714,12 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				events.onBlur(event);
 			}
 		},
-		[getId, popover, handleClose, events]
+		[getId, popover, requestClose, events]
 	);
 
 	const handleInputChange = useCallback(
 		(event: React.ChangeEvent<HTMLInputElement>) => {
-			requestOpenMenu();
+			requestOpenMenu(event);
 			if (events.onChange) {
 				events.onChange(event, { value: event.target.value });
 			}
@@ -694,12 +739,12 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	const handleInputSubmit = useCallback(
 		(event: React.KeyboardEvent) => {
 			if (activeOption === undefined && activeOptionIndex === -1) {
-				if (!isOpenState) {
+				if (!isOpen) {
 					if (!event.shiftKey) {
-						openDialog();
+						requestOpen(event);
 					}
 				} else {
-					handleRequestClose(event, {});
+					requestClose(event, { trigger: 'cancel' });
 				}
 			}
 
@@ -736,9 +781,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		[
 			activeOption,
 			activeOptionIndex,
-			isOpenState,
-			openDialog,
-			handleRequestClose,
+			isOpen,
+			requestOpen,
+			requestClose,
 			getIsActiveOption,
 			handleSelect,
 			selection,
@@ -810,14 +855,14 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 	const handleKeyDownDown = useCallback(
 		(event: React.KeyboardEvent) => {
 			if (!event.shiftKey) {
-				openDialog();
+				requestOpen(event);
 			}
 
 			if (variant !== 'popover') {
 				handleNavigateListboxMenu(event, { direction: 'next' });
 			}
 		},
-		[openDialog, variant, handleNavigateListboxMenu]
+		[requestOpen, variant, handleNavigateListboxMenu]
 	);
 
 	const handleKeyDownUp = useCallback(
@@ -873,7 +918,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				[KEYS.DOWN]: { callback: handleKeyDownDown },
 				[KEYS.ENTER]: { callback: handleInputSubmit },
 				[KEYS.ESCAPE]: {
-					callback: handleClose as (e: React.KeyboardEvent) => void,
+					callback: requestClose as (e: React.KeyboardEvent) => void,
 				},
 				[KEYS.UP]: { callback: handleKeyDownUp },
 			};
@@ -897,7 +942,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		[
 			handleKeyDownDown,
 			handleInputSubmit,
-			handleClose,
+			requestClose,
 			handleKeyDownUp,
 			variant,
 			selection.length,
@@ -1004,16 +1049,27 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 
 	// ===== Effects =====
 
-	// Sync controlled isOpen prop
+	// `events.onClose` fires when the menu really closes: after an
+	// uncontrolled close, or when the parent sets a controlled `isOpen` to
+	// `false`. It does not fire for a close request a controlled parent ignores.
+	const wasOpenRef = useRef(isOpen);
 	useEffect(() => {
-		if (typeof isOpenProp === 'boolean') {
-			setIsOpenState(isOpenProp);
-			if (!isOpenProp) {
-				setActiveOption(undefined);
-				setActiveOptionIndex(-1);
+		if (wasOpenRef.current !== isOpen) {
+			wasOpenRef.current = isOpen;
+			if (!isOpen) {
+				if (
+					currentOpenDropdown &&
+					currentOpenDropdown.handleClose === requestClose
+				) {
+					currentOpenDropdown = undefined;
+				}
+				if (events.onClose) {
+					events.onClose(closeEventRef.current, {});
+				}
 			}
 		}
-	}, [isOpenProp]);
+		closeEventRef.current = undefined;
+	});
 
 	// Handle options change - maintain active highlight
 	useEffect(() => {
@@ -1060,12 +1116,12 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		return () => {
 			if (
 				currentOpenDropdown &&
-				currentOpenDropdown.handleClose === handleClose
+				currentOpenDropdown.handleClose === requestClose
 			) {
 				currentOpenDropdown = undefined;
 			}
 		};
-	}, [handleClose]);
+	}, [requestClose]);
 
 	// ===== Render Helpers =====
 
@@ -1085,17 +1141,15 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 					<Button
 						label={labels.cancelButton}
 						onClick={(e: React.MouseEvent) => {
-							handleClose(e, { trigger: 'cancel' });
+							requestClose(e, { trigger: 'cancel' });
 						}}
 					/>
 					<Button
 						label={labels.doneButton}
 						variant="brand"
-						onClick={
-							handleClose as unknown as (
-								event: React.MouseEvent<HTMLButtonElement>
-							) => void
-						}
+						onClick={(e: React.MouseEvent) => {
+							requestClose(e);
+						}}
 					/>
 				</div>
 			);
@@ -1109,11 +1163,17 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 				footerClassName: 'slds-popover__footer_form',
 				hasNoNubbin: true,
 				id: getId(),
-				isOpen: isOpenState,
+				isOpen,
 				hasNoTriggerStyles: true,
 				onOpen: handleOpen,
-				onClose: handleClose,
-				onRequestClose: handleClose,
+				// The combobox owns the popover's open state; `events.onClose` is
+				// fired by the combobox itself when `isOpen` turns `false`.
+				onRequestClose: (
+					event: React.SyntheticEvent,
+					data?: { trigger?: string }
+				) => {
+					requestClose(event, { trigger: data?.trigger });
+				},
 			};
 
 			const popoverPropsFromProp = popover?.props as
@@ -1132,8 +1192,8 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			assistiveText.popoverLabel,
 			labels.cancelButton,
 			labels.doneButton,
-			handleClose,
-			isOpenState,
+			requestClose,
+			isOpen,
 			handleOpen,
 			popover,
 		]
@@ -1149,7 +1209,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 					context: iconSettingsContext,
 					hasStaticAlignment,
 					inheritWidthOf,
-					onClose: handleClose,
 					onMouseDown: (event: React.MouseEvent) => {
 						event.preventDefault();
 					},
@@ -1175,7 +1234,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			iconSettingsContext,
 			hasStaticAlignment,
 			inheritWidthOf,
-			handleClose,
 			handleOpen,
 			getTargetElement,
 			getId,
@@ -1313,10 +1371,9 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						onBlur={handleInputBlur}
 						onKeyDown={handleKeyDown}
 						inputRef={setInputRefCallback}
-						onClick={() => openDialog()}
+						onClick={(event: React.MouseEvent) => requestOpen(event)}
 						onChange={handleInputChange}
 						placeholder={labels.placeholder}
-						defaultValue={defaultValue}
 						readOnly={!!(predefinedOptionsOnly && activeOption)}
 						required={required}
 						role="textbox"
@@ -1463,7 +1520,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								: undefined
 						}
 						aria-describedby={getErrorId()}
-						defaultValue={defaultValue}
 						autoComplete="off"
 						className="slds-combobox__input"
 						containerProps={{
@@ -1483,7 +1539,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						onBlur={handleInputBlur}
 						onKeyDown={handleKeyDown}
 						inputRef={setInputRefCallback}
-						onClick={() => openDialog()}
+						onClick={(event: React.MouseEvent) => requestOpen(event)}
 						onChange={handleInputChange}
 						placeholder={labels.placeholder}
 						readOnly={!!(predefinedOptionsOnly && activeOption)}
@@ -1544,7 +1600,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						aria-haspopup="listbox"
 					>
 						<InnerInput
-							defaultValue={defaultValue}
 							aria-autocomplete="list"
 							aria-controls={getIsOpen() ? `${getId()}-listbox` : undefined}
 							aria-activedescendant={
@@ -1589,7 +1644,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onBlur={handleInputBlur}
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
-							onClick={() => requestOpenMenu()}
+							onClick={(event: React.MouseEvent) => requestOpenMenu(event)}
 							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
 								if (!selection.length) {
 									handleInputChange(event);
@@ -1670,7 +1725,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 								onBlur={handleInputBlur}
 								onKeyDown={handleKeyDown}
 								inputRef={setInputRefCallback}
-								onClick={() => openDialog()}
+								onClick={(event: React.MouseEvent) => requestOpen(event)}
 								onChange={handleInputChange}
 								placeholder={labels.placeholder}
 								readOnly
@@ -1722,7 +1777,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						aria-haspopup="listbox"
 					>
 						<InnerInput
-							defaultValue={defaultValue}
 							aria-autocomplete="list"
 							aria-controls={getIsOpen() ? `${getId()}-listbox` : undefined}
 							aria-activedescendant={
@@ -1745,7 +1799,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onBlur={handleInputBlur}
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
-							onClick={() => requestOpenMenu()}
+							onClick={(event: React.MouseEvent) => requestOpenMenu(event)}
 							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
 								if (!selection.length) {
 									handleInputChange(event);
@@ -1847,7 +1901,6 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						aria-haspopup="listbox"
 					>
 						<InnerInput
-							defaultValue={defaultValue}
 							aria-autocomplete="list"
 							aria-controls={getIsOpen() ? `${getId()}-listbox` : undefined}
 							aria-activedescendant={
@@ -1871,7 +1924,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onBlur={handleInputBlur}
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
-							onClick={() => requestOpenMenu()}
+							onClick={(event: React.MouseEvent) => requestOpenMenu(event)}
 							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
 								if (!selection.length) {
 									handleInputChange(event);
