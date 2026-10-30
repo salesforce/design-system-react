@@ -195,4 +195,67 @@ describe('SLDSExpandableSection', () => {
 			);
 		});
 	});
+
+	describe('Controlled and uncontrolled open state', () => {
+		const toggle = (container) =>
+			fireEvent.click(container.querySelector('h3 button.slds-button'));
+		const section = (container) => container.querySelector('.slds-section');
+
+		it('starts open and toggles when uncontrolled without a callback', () => {
+			const { container } = renderSection({});
+			expect(section(container)).toHaveClass('slds-is-open');
+
+			toggle(container);
+			expect(section(container)).not.toHaveClass('slds-is-open');
+		});
+
+		it('toggles when uncontrolled with a callback, reporting the requested state', () => {
+			const onToggleOpen = vi.fn();
+			const { container } = renderSection({ onToggleOpen });
+
+			toggle(container);
+			expect(section(container)).not.toHaveClass('slds-is-open');
+			expect(onToggleOpen).toHaveBeenLastCalledWith(expect.anything(), {
+				isOpen: false,
+			});
+
+			toggle(container);
+			expect(section(container)).toHaveClass('slds-is-open');
+			expect(onToggleOpen).toHaveBeenLastCalledWith(expect.anything(), {
+				isOpen: true,
+			});
+		});
+
+		it('starts closed with `defaultIsOpen={false}`', () => {
+			const { container } = renderSection({ defaultIsOpen: false });
+			expect(section(container)).not.toHaveClass('slds-is-open');
+			expect(container.querySelector('.slds-section__content')).toHaveAttribute(
+				'aria-hidden',
+				'true'
+			);
+
+			toggle(container);
+			expect(section(container)).toHaveClass('slds-is-open');
+		});
+
+		it('honors controlled `isOpen` and reports the requested state', () => {
+			const onToggleOpen = vi.fn();
+			const { container } = renderSection({ isOpen: false, onToggleOpen });
+
+			toggle(container);
+
+			expect(section(container)).not.toHaveClass('slds-is-open');
+			expect(onToggleOpen).toHaveBeenCalledWith(expect.anything(), {
+				isOpen: true,
+			});
+		});
+
+		it('honors controlled `isOpen` without a callback', () => {
+			const { container } = renderSection({ isOpen: true });
+
+			toggle(container);
+
+			expect(section(container)).toHaveClass('slds-is-open');
+		});
+	});
 });

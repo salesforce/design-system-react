@@ -35,19 +35,11 @@ export const Default = {
 
 // Initially collapsed
 export const InitiallyCollapsed = {
-	render: () => {
-		const [isOpen, setIsOpen] = useState(false);
-
-		return (
-			<ExpandableSection
-				title="Initially Collapsed"
-				isOpen={isOpen}
-				onToggleOpen={(e, { isOpen: currentOpen }) => setIsOpen(!currentOpen)}
-			>
-				<p>This section starts collapsed. Click to expand.</p>
-			</ExpandableSection>
-		);
-	},
+	render: () => (
+		<ExpandableSection title="Initially Collapsed" defaultIsOpen={false}>
+			<p>This section starts collapsed. Click to expand.</p>
+		</ExpandableSection>
+	),
 };
 
 // Non-collapsible
@@ -75,7 +67,7 @@ export const Controlled = {
 				<ExpandableSection
 					title="Controlled Section"
 					isOpen={isOpen}
-					onToggleOpen={(e, { isOpen: currentOpen }) => setIsOpen(!currentOpen)}
+					onToggleOpen={(e, { isOpen: nextIsOpen }) => setIsOpen(nextIsOpen)}
 				>
 					<p>This section is controlled by external state.</p>
 				</ExpandableSection>
