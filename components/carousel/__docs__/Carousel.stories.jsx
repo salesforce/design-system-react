@@ -95,6 +95,7 @@ export const WithAutoplay = {
 		<Carousel
 			items={sampleItems}
 			hasAutoplay
+			isInfinite
 			autoplayInterval={3000}
 			onItemClick={(event, data) => console.log('Item clicked:', data.item)}
 		/>
