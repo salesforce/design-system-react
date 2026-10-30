@@ -669,7 +669,7 @@ exports[`Story HTML snapshots > BuilderHeader > WithUtilities 1`] = `
                     <use href="/assets/icons/utility-sprite/svg/symbols.svg#back"></use>
                   </svg></span></span><span class="slds-media__body"><span class="slds-truncate" title="Back">Back</span></span></a></div>
           <div class="slds-builder-header__utilities-item">
-            <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="utilities-dropdown"><button class="slds-button slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+            <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="utilities-dropdown"><button class="slds-button ignore-click-utilities-dropdown slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#help"></use>
                     </svg><span class="slds-assistive-text">Dropdown</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Help">Help</span><span class="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                       <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
@@ -9126,7 +9126,7 @@ exports[`Story HTML snapshots > SimpleDataTable > JoinedWithPageHeaderStory 1`] 
                 <div class="slds-page-header__name-title">
                   <h1><span>Leads</span><span class="slds-page-header__title slds-truncate">
                       <h1 class="slds-page-header__title slds-p-right_x-small">
-                        <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="page-header-dropdown-object-home-header"><button class="slds-button slds-button_reset slds-type-focus" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">Dropdown<svg class="slds-button__icon slds-button__icon_right" aria-hidden="true">
+                        <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="page-header-dropdown-object-home-header"><button class="slds-button ignore-click-page-header-dropdown-object-home-header slds-button_reset slds-type-focus" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true">Dropdown<svg class="slds-button__icon slds-button__icon_right" aria-hidden="true">
                               <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                             </svg></button></div>
                       </h1>

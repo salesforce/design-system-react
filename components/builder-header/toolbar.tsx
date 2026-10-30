@@ -1,9 +1,9 @@
 import React, { useEffect, type ReactNode } from 'react';
 
-import {
-	BUILDER_HEADER_TOOLBAR,
-	BUTTON_GROUP,
-} from '../../utilities/constants';
+import { BUILDER_HEADER_TOOLBAR } from '../../utilities/constants';
+import isElementOfType from '../../utilities/is-element-of-type';
+import type { ChildrenOf } from '../../types/common';
+import ButtonGroup, { type ButtonGroupProps } from '../button-group';
 import checkProps from './check-props';
 import componentDoc from './component.json';
 
@@ -34,8 +34,9 @@ export interface BuilderHeaderToolbarProps {
 	 *   </BuilderHeaderToolbar>
 	 * </BuilderHeader>
 	 * ```
+	 * Other children are ignored.
 	 */
-	children?: ReactNode;
+	children?: ChildrenOf<ButtonGroupProps>;
 	/** @deprecated Use `actions` instead. */
 	onRenderActions?: () => ReactNode;
 }
@@ -64,13 +65,12 @@ const BuilderHeaderToolbar = ({
 	return (
 		<div className="slds-builder-toolbar" role="toolbar">
 			{React.Children.map(children, (child) => {
-				if (
-					React.isValidElement(child) &&
-					(child.type as { displayName?: string }).displayName === BUTTON_GROUP
-				) {
+				if (isElementOfType<ButtonGroupProps>(child, ButtonGroup)) {
 					return (
 						<div
 							className="slds-builder-toolbar__item-group"
+							// `label` isn't a ButtonGroup prop (ButtonGroup ignores it);
+							// the toolbar reads it as the group's accessible name
 							aria-label={(child.props as { label?: string }).label}
 						>
 							{child}

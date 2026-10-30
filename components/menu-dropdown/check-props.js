@@ -2,10 +2,14 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 /* eslint-disable import/no-mutable-exports */
 
+import React from 'react';
+
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import childrenAsTrigger from '../../utilities/warning/children-as-trigger';
 import getComponentDocFn from '../../utilities/get-component-doc';
+import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
 
 let checkProps = function checkPropsFunction() {};
 
@@ -48,6 +52,15 @@ if (process.env.NODE_ENV !== 'production') {
 			'renderMenuItem',
 			`\`renderMenuItem\` is a function called with \`{ icon, isSelected, option, optionIndex }\`, not a component. ${createDocUrl('renderMenuItem')}`
 		);
+		childrenAsTrigger(
+			COMPONENT,
+			props.trigger === undefined &&
+				React.Children.toArray(props.children).some(
+					(child) => child?.type?.displayName === MENU_DROPDOWN_TRIGGER
+				),
+			createDocUrl('trigger')
+		);
+
 		deprecatedProperty(
 			COMPONENT,
 			props.isInline,

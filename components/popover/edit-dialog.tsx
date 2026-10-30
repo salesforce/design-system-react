@@ -4,13 +4,15 @@
 // # Edit Dialog Popver Component
 
 // ### React
-import React, { type ReactNode } from 'react';
+import React, { type ReactElement, type ReactNode } from 'react';
 import assign from 'lodash.assign';
 
 import { POPOVER_EDIT_DIALOG } from '../../utilities/constants';
 
 import Button from '../button';
-import Popover, { type PopoverProps } from './index';
+import Popover, { type PopoverProps, type PopoverTriggerProps } from './index';
+import type { TriggerRender } from '../../utilities/merge-props';
+import childrenAsTrigger from '../../utilities/warning/children-as-trigger';
 
 export interface EditDialogLabels {
 	/** text for Cancel button */
@@ -21,9 +23,15 @@ export interface EditDialogLabels {
 
 export interface EditDialogProps {
 	/**
-	 * The trigger element. Defaults to an edit button when not provided.
+	 * @deprecated Use `trigger`.
 	 */
 	children?: ReactNode;
+	/**
+	 * The element that opens the dialog. Defaults to an edit button. An element is merged with
+	 * Popover's trigger props (its handlers run first; its other props win); a function receives
+	 * `PopoverTriggerProps` and returns the trigger.
+	 */
+	trigger?: TriggerRender<PopoverTriggerProps>;
 	/**
 	 * Disables the edit dialog and prevents clicking it.
 	 */
@@ -87,6 +95,13 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 
 	state: EditDialogState = { isOpen: false };
 
+	componentDidMount() {
+		childrenAsTrigger(
+			POPOVER_EDIT_DIALOG,
+			this.props.trigger === undefined && this.props.children !== undefined
+		);
+	}
+
 	handleOpen = () => {
 		this.setState({ isOpen: true });
 	};
@@ -96,12 +111,9 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 	};
 
 	render() {
-		const { onCancel, onSave, ...restProps } = this.props;
+		const { children, onCancel, onSave, trigger, ...restProps } = this.props;
 
-		// trigger button will either be passed in children or defaults to an edit button.
-		const children = this.props.children ? (
-			this.props.children
-		) : (
+		const defaultTrigger = (
 			<Button
 				assistiveText={{ icon: 'Edit: Status' }}
 				className="slds-button_reset"
@@ -141,9 +153,8 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 				onRequestClose={this.handleClose}
 				onOpen={this.handleOpen}
 				{...(restProps as unknown as PopoverProps)}
-			>
-				{children}
-			</Popover>
+				trigger={trigger ?? (children as ReactElement) ?? defaultTrigger}
+			/>
 		);
 	}
 }

@@ -14,9 +14,8 @@ class Example extends React.Component {
 					id="tooltip"
 					align="right"
 					content="Tooltip with right alignment"
-				>
-					<Button id="button" label="Hover or focus to Open" />
-				</Tooltip>
+					trigger={<Button id="button" label="Hover or focus to Open" />}
+				/>
 			</IconSettings>
 		);
 	}

@@ -10,6 +10,7 @@ import React, { type ReactElement } from 'react';
 import { FILES_FIGURE } from '../../../utilities/constants';
 
 import Spinner from '../../spinner';
+import type { IconProps, IconSize } from '../../icon';
 
 export interface FileFigureAssistiveText {
 	image?: string;
@@ -22,7 +23,7 @@ export interface FileFigureProps {
 	/**
 	 *  Icon for the file, shown when there is no image and it is not loading.
 	 */
-	icon?: ReactElement<{ size?: string | null }>;
+	icon?: ReactElement<IconProps>;
 	/**
 	 *  Image/Figure for the file
 	 */
@@ -78,9 +79,13 @@ const FileFigure = ({
 				title={labels.title}
 			>
 				{icon
-					? React.cloneElement(icon, {
-							size: null,
-						})
+					? // The container sizes the icon, so drop the icon's own size class
+						React.cloneElement(
+							icon as ReactElement<
+								Omit<IconProps, 'size'> & { size?: IconSize | null }
+							>,
+							{ size: null }
+						)
 					: null}
 			</span>
 		</React.Fragment>

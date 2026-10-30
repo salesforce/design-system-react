@@ -23,6 +23,7 @@ import InnerInput from './private/inner-input';
 import Label from '../utilities/label/index';
 import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
 import type { TooltipProps } from '../tooltip/index';
+import type { InputIconProps } from '../icon/input-icon';
 
 import checkProps from './check-props';
 import { INPUT } from '../../utilities/constants';
@@ -126,10 +127,10 @@ export interface InputProps {
 	fixedTextRight?: ReactNode;
 	/** Shows loading spinner inside input */
 	hasSpinner?: boolean;
-	/** Left-aligned icon (InputIcon instance) */
-	iconLeft?: ReactNode;
-	/** Right-aligned icon (InputIcon instance) */
-	iconRight?: ReactNode;
+	/** Left-aligned `InputIcon`. Its `iconPosition` defaults to `left`. */
+	iconLeft?: ReactElement<InputIconProps> | null;
+	/** Right-aligned `InputIcon`. Its `iconPosition` defaults to `right`. */
+	iconRight?: ReactElement<InputIconProps> | null;
 	/** HTML id attribute */
 	id?: string;
 	/** Help text below the input */
@@ -155,7 +156,10 @@ export interface InputProps {
 	/** Blur event handler */
 	onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Change event handler */
-	onChange?: (event: ChangeEvent<HTMLInputElement> | MouseEvent | KeyboardEvent, data: InputChangeData) => void;
+	onChange?: (
+		event: ChangeEvent<HTMLInputElement> | MouseEvent | KeyboardEvent,
+		data: InputChangeData
+	) => void;
 	/** Click event handler */
 	onClick?: (event: MouseEvent<HTMLInputElement>) => void;
 	/** Focus event handler */
@@ -276,8 +280,9 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 		const errorId = errorText ? generatedErrorId : undefined;
 		const inlineHelpId = inlineHelpText ? generatedInlineHelpId : undefined;
 		const describedby =
-			[ariaDescribedby, inlineHelpId, errorId].filter((v): v is string => Boolean(v)).join(' ') ||
-			undefined;
+			[ariaDescribedby, inlineHelpId, errorId]
+				.filter((v): v is string => Boolean(v))
+				.join(' ') || undefined;
 
 		const inputElementRef = useRef<HTMLInputElement | null>(null);
 		const steppingRef = useRef({
@@ -291,63 +296,67 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 		const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
 
 		// Check props in development
-		checkProps(INPUT, {
-			'aria-activedescendant': ariaActivedescendant,
-			'aria-autocomplete': ariaAutocomplete,
-			'aria-controls': ariaControls,
-			'aria-describedby': ariaDescribedby,
-			'aria-expanded': ariaExpanded,
-			'aria-haspopup': ariaHaspopup,
-			'aria-labelledby': ariaLabelledby,
-			'aria-owns': ariaOwns,
-			'aria-required': ariaRequired,
-			assistiveText,
-			autoComplete,
-			children,
-			className,
-			defaultValue,
-			disabled,
-			errorText,
-			fieldLevelHelpTooltip,
-			fixedTextLeft,
-			fixedTextRight,
-			hasSpinner,
-			iconLeft: propIconLeft,
-			iconRight: propIconRight,
-			id,
-			inlineHelpText,
-			inlineEditTrigger,
-			inputRef: propInputRef,
-			isStatic,
-			label,
-			maxLength,
-			maxValue,
-			minLength,
-			minValue,
-			name,
-			onBlur,
-			onChange,
-			onClick,
-			onFocus,
-			onInput,
-			onInvalid,
-			onKeyDown,
-			onKeyPress,
-			onKeyUp,
-			onSelect,
-			onSubmit,
-			placeholder,
-			readOnly,
-			required,
-			role,
-			step,
-			tabIndex,
-			styleContainer,
-			styleInput,
-			type,
-			value,
-			variant,
-		}, componentDoc);
+		checkProps(
+			INPUT,
+			{
+				'aria-activedescendant': ariaActivedescendant,
+				'aria-autocomplete': ariaAutocomplete,
+				'aria-controls': ariaControls,
+				'aria-describedby': ariaDescribedby,
+				'aria-expanded': ariaExpanded,
+				'aria-haspopup': ariaHaspopup,
+				'aria-labelledby': ariaLabelledby,
+				'aria-owns': ariaOwns,
+				'aria-required': ariaRequired,
+				assistiveText,
+				autoComplete,
+				children,
+				className,
+				defaultValue,
+				disabled,
+				errorText,
+				fieldLevelHelpTooltip,
+				fixedTextLeft,
+				fixedTextRight,
+				hasSpinner,
+				iconLeft: propIconLeft,
+				iconRight: propIconRight,
+				id,
+				inlineHelpText,
+				inlineEditTrigger,
+				inputRef: propInputRef,
+				isStatic,
+				label,
+				maxLength,
+				maxValue,
+				minLength,
+				minValue,
+				name,
+				onBlur,
+				onChange,
+				onClick,
+				onFocus,
+				onInput,
+				onInvalid,
+				onKeyDown,
+				onKeyPress,
+				onKeyUp,
+				onSelect,
+				onSubmit,
+				placeholder,
+				readOnly,
+				required,
+				role,
+				step,
+				tabIndex,
+				styleContainer,
+				styleInput,
+				type,
+				value,
+				variant,
+			},
+			componentDoc
+		);
 
 		const getValueAsNumber = useCallback((): number => {
 			if (value !== undefined) {
@@ -368,7 +377,10 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 		}, []);
 
 		const performStep = useCallback(
-			(direction: typeof INCREMENT | typeof DECREMENT, event?: MouseEvent | KeyboardEvent) => {
+			(
+				direction: typeof INCREMENT | typeof DECREMENT,
+				event?: MouseEvent | KeyboardEvent
+			) => {
 				if (steppingRef.current.timeout) {
 					clearTimeout(steppingRef.current.timeout);
 				}
@@ -382,15 +394,25 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 				let currentValue = getValueAsNumber();
 				let valueChanged = false;
 
-				if (direction === DECREMENT && maxValue !== undefined && currentValue > maxValue) {
+				if (
+					direction === DECREMENT &&
+					maxValue !== undefined &&
+					currentValue > maxValue
+				) {
 					currentValue = Number(maxValue);
 					valueChanged = true;
-				} else if (direction === INCREMENT && minValue !== undefined && currentValue < minValue) {
+				} else if (
+					direction === INCREMENT &&
+					minValue !== undefined &&
+					currentValue < minValue
+				) {
 					currentValue = Number(minValue);
 					valueChanged = true;
 				} else {
 					const decimalPlaces =
-						String(stepSize).search(/\./) >= 0 ? String(stepSize).split('.')[1].length : 0;
+						String(stepSize).search(/\./) >= 0
+							? String(stepSize).split('.')[1].length
+							: 0;
 					let minOverflow = 0;
 
 					if (minValue !== undefined) {
@@ -403,7 +425,10 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 								? currentValue - minOverflow
 								: currentValue + (stepSize - minOverflow);
 					} else {
-						currentValue = direction === DECREMENT ? currentValue - stepSize : currentValue + stepSize;
+						currentValue =
+							direction === DECREMENT
+								? currentValue - stepSize
+								: currentValue + stepSize;
 					}
 
 					currentValue = Number(currentValue.toFixed(decimalPlaces));
@@ -430,8 +455,12 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 				}
 
 				if (
-					(direction === INCREMENT && maxValue !== undefined && currentValue >= maxValue) ||
-					(direction === DECREMENT && minValue !== undefined && currentValue <= minValue)
+					(direction === INCREMENT &&
+						maxValue !== undefined &&
+						currentValue >= maxValue) ||
+					(direction === DECREMENT &&
+						minValue !== undefined &&
+						currentValue <= minValue)
 				) {
 					stopStepping();
 				} else {
@@ -441,7 +470,15 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 					}, steppingRef.current.currentDelay);
 				}
 			},
-			[getValueAsNumber, maxValue, minValue, onChange, step, stopStepping, value]
+			[
+				getValueAsNumber,
+				maxValue,
+				minValue,
+				onChange,
+				step,
+				stopStepping,
+				value,
+			]
 		);
 
 		const setInputRef = useCallback(
@@ -471,14 +508,20 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 			[onChange, variant]
 		);
 
-		const getCounterButtonIcon = (direction: typeof INCREMENT | typeof DECREMENT) => {
+		const getCounterButtonIcon = (
+			direction: typeof INCREMENT | typeof DECREMENT
+		) => {
 			const currentValue = getValueAsNumber();
 			let isDisabled = false;
 
 			if (
 				disabled ||
-				(direction === INCREMENT && maxValue !== undefined && currentValue >= maxValue) ||
-				(direction === DECREMENT && minValue !== undefined && currentValue <= minValue)
+				(direction === INCREMENT &&
+					maxValue !== undefined &&
+					currentValue >= maxValue) ||
+				(direction === DECREMENT &&
+					minValue !== undefined &&
+					currentValue <= minValue)
 			) {
 				isDisabled = true;
 			}
@@ -486,7 +529,9 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 			return (
 				<Button
 					assistiveText={{
-						icon: assistiveText[direction.toLowerCase() as 'decrement' | 'increment'],
+						icon: assistiveText[
+							direction.toLowerCase() as 'decrement' | 'increment'
+						],
 					}}
 					className={classNames(
 						'slds-button_icon-small',
@@ -516,20 +561,20 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 		let iconRight: ReactNode = null;
 
 		if (propIconLeft) {
-			iconLeft = React.isValidElement(propIconLeft)
-				? React.cloneElement(propIconLeft as React.ReactElement<{ iconPosition?: string }>, {
-						iconPosition: 'left',
-				  })
+			iconLeft = React.isValidElement<InputIconProps>(propIconLeft)
+				? React.cloneElement(propIconLeft, {
+						iconPosition: propIconLeft.props.iconPosition ?? 'left',
+					})
 				: propIconLeft;
 		} else if (variant === COUNTER && !isStatic && !readOnly) {
 			iconLeft = getCounterButtonIcon(DECREMENT);
 		}
 
 		if (propIconRight) {
-			iconRight = React.isValidElement(propIconRight)
-				? React.cloneElement(propIconRight as React.ReactElement<{ iconPosition?: string }>, {
-						iconPosition: 'right',
-				  })
+			iconRight = React.isValidElement<InputIconProps>(propIconRight)
+				? React.cloneElement(propIconRight, {
+						iconPosition: propIconRight.props.iconPosition ?? 'right',
+					})
 				: propIconRight;
 		} else if (variant === COUNTER && !isStatic && !readOnly) {
 			iconRight = getCounterButtonIcon(INCREMENT);

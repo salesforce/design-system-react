@@ -78,9 +78,8 @@ class Example extends React.Component {
 						ariaLabelledby="ALTERNATIVE-HEADING"
 						body={panelContent}
 						id="popover-alternative-header"
-					>
-						<Button label="Trigger Popover" />
-					</Popover>
+						trigger={<Button label="Trigger Popover" />}
+					/>
 				</div>
 			</IconSettings>
 		);

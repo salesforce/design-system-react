@@ -8,19 +8,19 @@ import React, {
 	useLayoutEffect,
 	useCallback,
 	useId,
-	type ReactNode,
-	type ReactElement,
 	type KeyboardEvent,
 } from 'react';
 import classNames from 'classnames';
 import { ACCORDION } from '../../utilities/constants';
+import type { ChildrenOf } from '../../types/common';
+import type { AccordionPanelProps, AccordionPanelInjectedProps } from './panel';
 
 /**
  * Props for the Accordion component
  */
 export interface AccordionProps {
-	/** Accordion panel children */
-	children: ReactNode;
+	/** `AccordionPanel` elements */
+	children: ChildrenOf<AccordionPanelProps>;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** HTML id */
@@ -136,24 +136,17 @@ const Accordion = ({
 			className={classNames('slds-accordion', className as string)}
 		>
 			{React.Children.map(children, (child, index) => {
-				if (React.isValidElement(child)) {
-					return React.cloneElement(
-						child as ReactElement<{
-							refs?: {
-								summaryButton: (button: HTMLButtonElement | null) => void;
-							};
-							onClickSummary?: () => void;
-							onKeyDownSummary?: (e: KeyboardEvent<HTMLButtonElement>) => void;
-						}>,
-						{
-							refs: {
-								summaryButton: (button: HTMLButtonElement | null) =>
-									addSummaryButton(index, button),
-							},
-							onClickSummary: handleClickSummary,
-							onKeyDownSummary: handleKeyDownSummary,
-						}
-					);
+				if (React.isValidElement<AccordionPanelProps>(child)) {
+					return React.cloneElement<
+						AccordionPanelProps & AccordionPanelInjectedProps
+					>(child, {
+						refs: {
+							summaryButton: (button: HTMLButtonElement | null) =>
+								addSummaryButton(index, button),
+						},
+						onClickSummary: handleClickSummary,
+						onKeyDownSummary: handleKeyDownSummary,
+					});
 				}
 				return child;
 			})}

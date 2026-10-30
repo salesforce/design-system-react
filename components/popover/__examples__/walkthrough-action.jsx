@@ -18,9 +18,8 @@ class Example extends React.Component {
 					stepText="Step 3 of 4"
 					variant="walkthrough-action"
 					{...this.props}
-				>
-					<Button label="Trigger Popover" />
-				</Popover>
+					trigger={<Button label="Trigger Popover" />}
+				/>
 			</IconSettings>
 		);
 	}

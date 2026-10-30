@@ -223,9 +223,10 @@ class ListItem extends React.Component<ListItemProps> {
 						},
 					};
 					itemContents = React.cloneElement(
-						this.props.tooltipTemplate,
-						tooltipProps,
-						itemContents
+						this.props.tooltipTemplate as React.ReactElement<
+							Record<string, unknown>
+						>,
+						{ ...tooltipProps, trigger: itemContents }
 					);
 				}
 

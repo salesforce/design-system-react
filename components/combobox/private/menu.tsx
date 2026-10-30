@@ -11,6 +11,7 @@ import classNames from 'classnames';
 
 import Icon from '../../icon';
 import Spinner from '../../spinner';
+import type { TooltipProps } from '../../tooltip';
 
 type ComboboxOptionLabelRenderer = (searchTerm: string) => ReactNode;
 
@@ -160,7 +161,7 @@ export interface MenuProps {
 	/** Selected options */
 	selection: ComboboxOption[];
 	/** Tooltip for disabled menu items */
-	tooltipMenuItemDisabled?: ReactElement;
+	tooltipMenuItemDisabled?: ReactElement<Partial<TooltipProps>>;
 	/** Menu variant */
 	variant?: 'icon-title-subtitle' | 'checkbox';
 }
@@ -501,14 +502,11 @@ const Menu: React.FC<MenuProps> = ({
 				triggerStyle: { width: '100%' },
 				...userDefinedTooltipProps,
 			};
-			if (active) {
+			if (active && tooltipProps.isOpen === undefined) {
 				tooltipProps.isOpen = true;
 			}
-			item = React.cloneElement(
-				tooltipMenuItemDisabled,
-				tooltipProps,
-				menuItem[variant]
-			);
+			tooltipProps.trigger = menuItem[variant];
+			item = React.cloneElement(tooltipMenuItemDisabled, tooltipProps);
 		} else {
 			item = menuItem[variant];
 		}

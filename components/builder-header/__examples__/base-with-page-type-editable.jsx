@@ -27,9 +27,11 @@ class Example extends React.Component {
 		};
 	}
 
-	onChange = (inputName) => (event, { value }) => {
-		this.setState({ pageType: value });
-	};
+	onChange =
+		(inputName) =>
+		(event, { value }) => {
+			this.setState({ pageType: value });
+		};
 
 	handleClose = (event, data) => {
 		if (this.props.log) {
@@ -172,25 +174,27 @@ class Example extends React.Component {
 								isOpen={this.state.isOpen}
 								style={{ color: 'initial' }}
 								labels={{ save: 'Done' }}
-							>
-								<Tooltip
-									id="page-type-tooltip"
-									align="bottom"
-									content="Edit Page Type"
-								>
-									<Button
-										assistiveText={{ icon: 'Edit: Status' }}
-										className="slds-button_reset"
-										iconCategory="utility"
-										iconName="edit"
-										inverse
-										onClick={this.handleOpen}
-										variant="icon"
-										style={{ verticalAlign: 'middle' }}
-										onMouseEnter={this.handleEnter}
+								trigger={
+									<Tooltip
+										id="page-type-tooltip"
+										align="bottom"
+										content="Edit Page Type"
+										trigger={
+											<Button
+												assistiveText={{ icon: 'Edit: Status' }}
+												className="slds-button_reset"
+												iconCategory="utility"
+												iconName="edit"
+												inverse
+												onClick={this.handleOpen}
+												variant="icon"
+												style={{ verticalAlign: 'middle' }}
+												onMouseEnter={this.handleEnter}
+											/>
+										}
 									/>
-								</Tooltip>
-							</EditDialog>
+								}
+							/>
 						</div>
 					</BuilderHeaderMisc>
 					<BuilderHeaderMisc>
@@ -223,25 +227,27 @@ class Example extends React.Component {
 								isOpen={this.state.isOpen}
 								style={{ color: 'initial' }}
 								labels={{ save: 'Done' }}
-							>
-								<Tooltip
-									id="page-type-tooltip"
-									align="bottom"
-									content="Edit Page Type"
-								>
-									<Button
-										assistiveText={{ icon: 'Edit: Status' }}
-										className="slds-button_reset"
-										iconCategory="utility"
-										iconName="edit"
-										inverse
-										onClick={this.handleOpen}
-										variant="icon"
-										style={{ verticalAlign: 'middle' }}
-										onMouseEnter={this.handleEnter}
+								trigger={
+									<Tooltip
+										id="page-type-tooltip"
+										align="bottom"
+										content="Edit Page Type"
+										trigger={
+											<Button
+												assistiveText={{ icon: 'Edit: Status' }}
+												className="slds-button_reset"
+												iconCategory="utility"
+												iconName="edit"
+												inverse
+												onClick={this.handleOpen}
+												variant="icon"
+												style={{ verticalAlign: 'middle' }}
+												onMouseEnter={this.handleEnter}
+											/>
+										}
 									/>
-								</Tooltip>
-							</EditDialog>
+								}
+							/>
 						</div>
 					</BuilderHeaderMisc>
 				</BuilderHeader>

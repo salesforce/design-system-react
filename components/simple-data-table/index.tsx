@@ -35,9 +35,10 @@ import KEYS from '../../utilities/key-code';
 import generateId from '../../utilities/generate-id';
 import mapKeyEventCallbacks from '../../utilities/key-callbacks';
 
+import isElementOfType from '../../utilities/is-element-of-type';
+
 import {
 	SIMPLE_DATA_TABLE,
-	SIMPLE_DATA_TABLE_CELL,
 	SIMPLE_DATA_TABLE_HEAD,
 	SIMPLE_DATA_TABLE_ROW,
 } from '../../utilities/constants';
@@ -49,6 +50,7 @@ import type {
 	SimpleDataTableColumnProps,
 	SimpleDataTableCellProps,
 	SimpleDataTableAssistiveText,
+	SimpleDataTableRowActionsProps,
 } from './types';
 
 // The main SimpleDataTable component's state.
@@ -139,14 +141,13 @@ const getColumnsAndRowActions = memoize(
 		let RowActions: ReactElement | null = null;
 
 		React.Children.forEach(children, (child) => {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			const element = child as ReactElement<any> | null;
-			const elementType = element?.type as { displayName?: string } | undefined;
 			if (
-				element &&
-				elementType?.displayName === SimpleDataTableColumn.displayName
+				isElementOfType<SimpleDataTableColumnProps>(
+					child,
+					SimpleDataTableColumn
+				)
 			) {
-				const { children: columnChildren, ...columnProps } = element.props;
+				const { children: columnChildren, ...columnProps } = child.props;
 				const props: Record<string, unknown> = {
 					fixedLayout,
 					search,
@@ -157,16 +158,12 @@ const getColumnsAndRowActions = memoize(
 					props.id = id;
 				}
 
+				// Any element child is the column's cell renderer, so custom cells
+				// don't need to copy `SimpleDataTableCell`'s `displayName`.
 				let Cell;
-				const cellChild = columnChildren as ReactElement | undefined;
-				const cellChildType = cellChild?.type as
-					{ displayName?: string } | undefined;
-				if (
-					cellChild &&
-					cellChildType?.displayName === SIMPLE_DATA_TABLE_CELL
-				) {
-					Cell = cellChild.type;
-					assign(props, cellChild.props);
+				if (React.isValidElement(columnChildren)) {
+					Cell = columnChildren.type;
+					assign(props, columnChildren.props);
 				} else {
 					Cell = SimpleDataTableCell;
 				}
@@ -176,18 +173,21 @@ const getColumnsAndRowActions = memoize(
 					props: props as SimpleDataTableColumnProps,
 				});
 			} else if (
-				element &&
-				elementType?.displayName === SimpleDataTableRowActions.displayName
+				isElementOfType<SimpleDataTableRowActionsProps>(
+					child,
+					SimpleDataTableRowActions
+				)
 			) {
-				const { dropdown } = element.props;
-				const dropdownPropOverrides: { menuPosition?: string } = {};
-				if (fixedHeader) {
-					dropdownPropOverrides.menuPosition = 'overflowBoundaryElement';
-				}
-				RowActions = React.cloneElement(element, {
-					dropdown: dropdown
-						? React.cloneElement(dropdown, dropdownPropOverrides)
-						: null,
+				const { dropdown } = child.props;
+				// A fixed header scrolls the body, so the menu needs to escape it,
+				// unless the dropdown sets its own `menuPosition`.
+				RowActions = React.cloneElement(child, {
+					dropdown:
+						dropdown && fixedHeader && dropdown.props.menuPosition === undefined
+							? React.cloneElement(dropdown, {
+									menuPosition: 'overflowBoundaryElement',
+								})
+							: dropdown,
 				});
 			}
 		});
@@ -589,11 +589,24 @@ class SimpleDataTable extends React.Component<
 		}
 	}
 
+	// Columns plus the row actions cell. Counts parsed children, so
+	// conditional (`false`/`null`) children don't count as columns.
+	getCellCount() {
+		const { columns, RowActions } = getColumnsAndRowActions(
+			this.props.children,
+			this.props.id,
+			this.props.fixedHeader,
+			this.props.fixedLayout,
+			this.props.items,
+			this.props.search
+		);
+		return columns.length + (RowActions ? 1 : 0);
+	}
+
 	handleKeyDownRight() {
 		const newColumnIndex = Math.min(
 			this.state.activeCell.columnIndex + 1,
-			React.Children.count(this.props.children) -
-				(this.props.selectRows ? 0 : 1)
+			this.getCellCount() - (this.props.selectRows ? 0 : 1)
 		);
 		const activeElement = this.getFirstInteractiveElement(
 			this.state.activeCell.rowIndex,

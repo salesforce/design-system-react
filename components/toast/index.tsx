@@ -6,13 +6,14 @@ import React, {
 	useEffect,
 	useRef,
 	useCallback,
+	type ReactElement,
 	type ReactNode,
 	type CSSProperties,
 } from 'react';
 import classNames from '../../utilities/class-names';
 import EventUtil from '../../utilities/event';
 import Button from '../button';
-import Icon from '../icon';
+import Icon, { type IconProps } from '../icon';
 import { TOAST } from '../../utilities/constants';
 import DOMElementFocus from '../../utilities/dom-element-focus';
 
@@ -72,8 +73,11 @@ export interface ToastProps {
 	className?: string | string[] | Record<string, boolean>;
 	/** Auto-dismiss duration in milliseconds */
 	duration?: number;
-	/** Custom icon (defaults to variant-specific icon) */
-	icon?: ReactNode;
+	/**
+	 * `Icon` shown before the message (defaults to variant-specific icon). Its `size` and
+	 * `inverse` default to 'small' and `true`; its `containerClassName` is added to the spacing classes.
+	 */
+	icon?: ReactElement<IconProps>;
 	/** Text labels */
 	labels?: ToastLabels;
 	/** Callback when heading link is clicked */
@@ -184,19 +188,15 @@ const Toast = ({
 	// Get the icon to display
 	const icon = propIcon || defaultIcons[variant];
 
-	const clonedIcon = React.isValidElement(icon)
-		? React.cloneElement(
-				icon as React.ReactElement<{
-					containerClassName?: string;
-					inverse?: boolean;
-					size?: string;
-				}>,
-				{
-					containerClassName: 'slds-m-right_small slds-no-flex slds-align-top',
-					inverse: true,
-					size: 'small',
-				}
-			)
+	const clonedIcon = React.isValidElement<IconProps>(icon)
+		? React.cloneElement(icon, {
+				containerClassName: classNames(
+					'slds-m-right_small slds-no-flex slds-align-top',
+					icon.props.containerClassName
+				),
+				inverse: icon.props.inverse ?? true,
+				size: icon.props.size ?? 'small',
+			})
 		: icon;
 
 	const assistiveTextVariant: Record<ToastVariant, string | undefined> = {

@@ -1,33 +1,31 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useId, type ReactNode, type ReactElement } from 'react';
+import React, { useId } from 'react';
 import classNames from 'classnames';
 import { FILES } from '../../utilities/constants';
+import type { FileProps } from './file';
+import type { ChildrenOf } from '../../types/common';
 
 /**
  * Crop ratio options for file preview
  */
 export type FilesCropRatio = '16-by-9' | '4-by-3' | '1-by-1';
 
-/**
- * Props for child File components
- */
-export interface FileChildProps {
-	crop?: FilesCropRatio;
-}
+/** @deprecated Use `FileProps` from `files/file`. */
+export type FileChildProps = Pick<FileProps, 'crop'>;
 
 /**
  * Props for the Files component
  */
 export interface FilesProps {
-	/** File components as children */
-	children?: ReactNode;
+	/** `File` elements */
+	children?: ChildrenOf<FileProps>;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** Column class names for each file */
 	columnClassName?: string;
-	/** Crop ratio for file previews */
+	/** Crop ratio for files that don't set their own `crop`. Defaults to `4-by-3`. */
 	crop?: FilesCropRatio;
 	/** HTML id */
 	id?: string;
@@ -47,8 +45,7 @@ const Files = ({
 	const id = propId || generatedId;
 
 	const files = React.Children.map(children, (option) => {
-		if (!React.isValidElement(option)) return null;
-		const childProps = (option.props as FileChildProps) || {};
+		if (!React.isValidElement<FileProps>(option)) return null;
 		return (
 			<li
 				className={classNames(
@@ -56,8 +53,8 @@ const Files = ({
 					columnClassName
 				)}
 			>
-				{React.cloneElement(option as ReactElement<FileChildProps>, {
-					crop: childProps.crop || crop,
+				{React.cloneElement(option, {
+					crop: option.props.crop ?? crop,
 				})}
 			</li>
 		);
@@ -65,7 +62,10 @@ const Files = ({
 
 	return (
 		<ul
-			className={classNames('slds-grid slds-grid_pull-padded', className as string)}
+			className={classNames(
+				'slds-grid slds-grid_pull-padded',
+				className as string
+			)}
 			id={id}
 		>
 			{files}
@@ -76,17 +76,3 @@ const Files = ({
 Files.displayName = FILES;
 
 export default Files;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

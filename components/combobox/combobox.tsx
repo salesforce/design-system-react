@@ -32,7 +32,12 @@ import Menu, {
 	type MenuRenderMenuItemData,
 } from './private/menu';
 import Label from '../forms/private/label';
-import Popover from '../popover';
+import Popover, {
+	type PopoverProps,
+	type PopoverTriggerProps,
+} from '../popover';
+import type { InputProps } from '../input';
+import type { TooltipProps } from '../tooltip';
 import SelectedListBox from '../pill-container/private/selected-listbox';
 
 import FieldLevelHelpTooltip from '../tooltip/private/field-level-help-tooltip';
@@ -212,8 +217,12 @@ interface ComboboxBaseProps {
 	id?: string;
 	/** Sets dialog width inheritance */
 	inheritWidthOf?: 'target' | 'menu' | 'none';
-	/** Custom input component */
-	input?: ReactElement;
+	/**
+	 * An `Input` element whose props are passed to the combobox's input. They win over the
+	 * combobox's own, except `onChange`, which is called with `(event, { value })` alongside
+	 * the combobox's handler.
+	 */
+	input?: ReactElement<Partial<InputProps>>;
 	/** Callback to get input ref */
 	inputRef?: (ref: HTMLInputElement | null) => void;
 	/** Whether the dropdown is open (controlled) */
@@ -247,8 +256,11 @@ interface ComboboxBaseProps {
 	selectedListboxRef?: (ref: HTMLUListElement | null) => void;
 	/** Whether single input is disabled */
 	singleInputDisabled?: boolean;
-	/** Tooltip for disabled menu items */
-	tooltipMenuItemDisabled?: ReactElement;
+	/**
+	 * A `Tooltip` element shown on disabled menu items. Its props win over the combobox's
+	 * defaults; an option's `tooltipContent` wins over its `content`.
+	 */
+	tooltipMenuItemDisabled?: ReactElement<Partial<TooltipProps>>;
 	/** Input value (controlled) */
 	value?: string;
 	/**
@@ -280,8 +292,12 @@ export type ComboboxVariantProps =
 			/** Assistive text for accessibility. `popoverLabel` labels the dialog. */
 			assistiveText: ComboboxAssistiveText & { popoverLabel: string };
 			options?: never;
-			/** Popover component rendered as the dialog */
-			popover: ReactElement;
+			/**
+			 * A `Popover` element rendered as the dialog. Its props win over the combobox's
+			 * defaults, except `body`, which the combobox wraps, and `children` and `trigger`,
+			 * which the combobox replaces with its input.
+			 */
+			popover: ReactElement<Partial<PopoverProps>>;
 	  };
 
 export type ComboboxProps = ComboboxBaseProps & ComboboxVariantProps;
@@ -1125,6 +1141,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 			popoverProps.body = popoverBody;
 
 			delete popoverProps.children;
+			delete popoverProps.trigger;
 			return popoverProps;
 		},
 		[
@@ -1260,8 +1277,16 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 		tooltipMenuItemDisabled,
 	]);
 
-	// User defined props from input
-	const userDefinedInputProps = input?.props || {};
+	// The `input` element's props are spread last so they win, except `onChange`: `Input`'s
+	// is `(event, data)` and InnerInput's is native, so call it alongside the combobox's own.
+	const { onChange: inputOnChange, ...userDefinedInputProps } = (input?.props ??
+		{}) as Partial<InputProps> & Record<string, unknown>;
+	const withInputOnChange =
+		(handler: (event: React.ChangeEvent<HTMLInputElement>) => void) =>
+		(event: React.ChangeEvent<HTMLInputElement>) => {
+			inputOnChange?.(event, { value: event.target.value });
+			handler(event);
+		};
 
 	// ===== Sub-renders =====
 
@@ -1314,7 +1339,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						onKeyDown={handleKeyDown}
 						inputRef={setInputRefCallback}
 						onClick={() => openDialog()}
-						onChange={handleInputChange}
+						onChange={withInputOnChange(handleInputChange)}
 						placeholder={labels.placeholder}
 						defaultValue={defaultValue}
 						readOnly={!!(predefinedOptionsOnly && activeOption)}
@@ -1484,7 +1509,7 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						onKeyDown={handleKeyDown}
 						inputRef={setInputRefCallback}
 						onClick={() => openDialog()}
-						onChange={handleInputChange}
+						onChange={withInputOnChange(handleInputChange)}
 						placeholder={labels.placeholder}
 						readOnly={!!(predefinedOptionsOnly && activeOption)}
 						required={required}
@@ -1590,11 +1615,11 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
 							onClick={() => requestOpenMenu()}
-							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+							onChange={withInputOnChange((event) => {
 								if (!selection.length) {
 									handleInputChange(event);
 								}
-							}}
+							})}
 							placeholder={labels.placeholder}
 							readOnly={
 								!!(predefinedOptionsOnly && activeOption) || !!selection.length
@@ -1647,38 +1672,46 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 						aria-haspopup="dialog"
 					>
 						{/* @ts-expect-error - popoverProps contains body from getCustomPopoverProps */}
-						<Popover {...popoverProps}>
-							<InnerInput
-								aria-autocomplete="none"
-								aria-controls={getIsOpen() ? `${getId()}-popover` : undefined}
-								aria-describedby={getErrorId()}
-								autoComplete="off"
-								className="slds-combobox__input"
-								containerProps={{
-									className: 'slds-combobox__form-element',
-									role: 'none',
-								}}
-								iconRight={
-									<InputIcon
-										category="utility"
-										name="down"
-										variant="combobox"
-									/>
-								}
-								id={getId()}
-								onFocus={handleInputFocus}
-								onBlur={handleInputBlur}
-								onKeyDown={handleKeyDown}
-								inputRef={setInputRefCallback}
-								onClick={() => openDialog()}
-								onChange={handleInputChange}
-								placeholder={labels.placeholder}
-								readOnly
-								required={required}
-								role="textbox"
-								value={value}
-							/>
-						</Popover>
+						<Popover
+							{...popoverProps}
+							trigger={(triggerProps: PopoverTriggerProps) => (
+								<InnerInput
+									{...triggerProps}
+									aria-autocomplete="none"
+									aria-controls={getIsOpen() ? `${getId()}-popover` : undefined}
+									aria-describedby={getErrorId()}
+									autoComplete="off"
+									className="slds-combobox__input"
+									containerProps={{
+										className: 'slds-combobox__form-element',
+										role: 'none',
+									}}
+									iconRight={
+										<InputIcon
+											category="utility"
+											name="down"
+											variant="combobox"
+										/>
+									}
+									id={getId()}
+									onFocus={handleInputFocus}
+									onBlur={handleInputBlur}
+									onKeyDown={handleKeyDown}
+									inputRef={setInputRefCallback}
+									onClick={(event: React.MouseEvent<HTMLInputElement>) => {
+										// Popover toggles first, so clicking an open combobox keeps it open
+										triggerProps.onClick?.(event);
+										openDialog();
+									}}
+									onChange={withInputOnChange(handleInputChange)}
+									placeholder={labels.placeholder}
+									readOnly
+									required={required}
+									role="textbox"
+									value={value}
+								/>
+							)}
+						/>
 					</div>
 				</div>
 				{errorText && (
@@ -1746,11 +1779,11 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
 							onClick={() => requestOpenMenu()}
-							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+							onChange={withInputOnChange((event) => {
 								if (!selection.length) {
 									handleInputChange(event);
 								}
-							}}
+							})}
 							placeholder={labels.placeholderReadOnly}
 							readOnly
 							required={required}
@@ -1872,11 +1905,11 @@ const Combobox: React.FC<ComboboxProps> = (props) => {
 							onKeyDown={handleKeyDown}
 							inputRef={setInputRefCallback}
 							onClick={() => requestOpenMenu()}
-							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+							onChange={withInputOnChange((event) => {
 								if (!selection.length) {
 									handleInputChange(event);
 								}
-							}}
+							})}
 							placeholder={labels.placeholderReadOnly}
 							readOnly
 							required={required}

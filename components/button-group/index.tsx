@@ -4,6 +4,10 @@
 import React, { useId, type ReactNode, type ReactElement } from 'react';
 import classNames from 'classnames';
 import { BUTTON_GROUP } from '../../utilities/constants';
+import type { ButtonProps } from '../button';
+import type { CheckboxProps } from '../checkbox';
+import type { MenuDropdownProps } from '../menu-dropdown';
+import type { ChildrenOf } from '../../types/common';
 
 /**
  * Button group variant types
@@ -24,8 +28,12 @@ export interface ButtonGroupLabels {
  * Props for the ButtonGroup component
  */
 export interface ButtonGroupProps {
-	/** Button components to render */
-	children: ReactNode;
+	/**
+	 * `Button`, `MenuDropdown` or, for the `checkbox` variant, `Checkbox` elements. The last
+	 * child gets `slds-button_last` added to its `triggerClassName`. Checkbox children default
+	 * to `variant="button-group"` and are described by `labels.error`.
+	 */
+	children: ChildrenOf<ButtonProps | MenuDropdownProps | CheckboxProps>;
 	/** CSS classes for the button group */
 	className?: string | string[] | Record<string, boolean>;
 	/** CSS classes for the fieldset container */
@@ -55,16 +63,29 @@ const ButtonGroup = ({
 	const id = propId || generatedId;
 	const labels = { ...defaultLabels, ...propLabels };
 
-	const childCount = React.Children.count(children);
-	let processedChildren = children;
+	const childArray = React.Children.toArray(children);
+	let lastElementIndex = -1;
+	childArray.forEach((child, index) => {
+		if (React.isValidElement(child)) lastElementIndex = index;
+	});
+	let processedChildren: ReactNode = children;
 
 	// Add slds-button_last class to the last button (for non-checkbox, non-list variants)
-	if (childCount > 1 && !variant) {
-		processedChildren = React.Children.map(children, (child, index) => {
-			if (index === childCount - 1 && React.isValidElement(child)) {
-				return React.cloneElement(child as ReactElement<{ triggerClassName?: string }>, {
-					triggerClassName: 'slds-button_last',
-				});
+	if (childArray.length > 1 && !variant) {
+		processedChildren = childArray.map((child, index) => {
+			if (index === lastElementIndex && React.isValidElement(child)) {
+				const { triggerClassName } = child.props as {
+					triggerClassName?: MenuDropdownProps['triggerClassName'];
+				};
+				return React.cloneElement(
+					child as ReactElement<{ triggerClassName?: string }>,
+					{
+						triggerClassName: classNames(
+							triggerClassName as string,
+							'slds-button_last'
+						),
+					}
+				);
 			}
 			return child;
 		});
@@ -74,22 +95,24 @@ const ButtonGroup = ({
 
 	if (variant === 'checkbox') {
 		// Checkbox button group
+		const errorId = labels.error ? `button-group-error-${id}` : undefined;
 		const checkboxChildren = React.Children.map(children, (child) => {
-			if (React.isValidElement(child)) {
-				const cloneProps: { variant?: string; 'aria-describedby'?: string } = {
-					variant: 'button-group',
-				};
-				if (labels.error) {
-					cloneProps['aria-describedby'] = `button-group-error-${id}`;
-				}
-				return React.cloneElement(child as ReactElement, cloneProps);
+			if (React.isValidElement<CheckboxProps>(child)) {
+				return React.cloneElement(child, {
+					variant: child.props.variant ?? 'button-group',
+					'aria-describedby':
+						classNames(child.props['aria-describedby'], errorId) || undefined,
+				});
 			}
 			return child;
 		});
 
 		component = (
 			<div
-				className={classNames('slds-checkbox_button-group', className as string)}
+				className={classNames(
+					'slds-checkbox_button-group',
+					className as string
+				)}
 				id={id}
 			>
 				{checkboxChildren}
@@ -154,18 +177,3 @@ const ButtonGroup = ({
 ButtonGroup.displayName = BUTTON_GROUP;
 
 export default ButtonGroup;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

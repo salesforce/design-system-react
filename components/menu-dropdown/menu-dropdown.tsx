@@ -53,10 +53,14 @@ import KEYS from '../../utilities/key-code';
 import {
 	MENU_DROPDOWN,
 	MENU_DROPDOWN_TRIGGER,
-	LIST,
 } from '../../utilities/constants';
 import { IconSettingsContext } from '../icon-settings';
 import type { IconCategory } from '../../types/common';
+import isElementOfType from '../../utilities/is-element-of-type';
+import type { TriggerRender } from '../../utilities/merge-props';
+import type { MenuDropdownTriggerProps } from './button-trigger';
+
+export type { MenuDropdownTriggerProps };
 
 const documentDefined = typeof document !== 'undefined';
 
@@ -212,7 +216,11 @@ export interface MenuDropdownProps {
 	buttonVariant?: 'base' | 'neutral' | 'brand' | 'destructive' | 'icon';
 	/** If true, renders checkmark icon on the selected Menu Item */
 	checkmark?: boolean;
-	/** Custom content to render in the dropdown */
+	/**
+	 * Custom content to render in the dropdown. A `List` child is rendered as the menu of `options`
+	 * with its props. A `DropdownTrigger` child (or a custom trigger with its `displayName`) is used
+	 * as the trigger; this is deprecated, use `trigger`.
+	 */
 	children?: ReactNode;
 	/** CSS classes to be added to dropdown menu */
 	className?: string | string[] | Record<string, boolean>;
@@ -328,6 +336,15 @@ export interface MenuDropdownProps {
 	tabIndex?: string;
 	/** Tooltip for the trigger button */
 	tooltip?: ReactNode;
+	/**
+	 * The element that opens the menu, rendered inside the trigger `div` (which handles clicks,
+	 * focus, keys and hover). A `Button` element takes the button props of MenuDropdown (`label`,
+	 * `iconName`, `buttonVariant`, …) as defaults that its own props override. Any other element is
+	 * merged with `MenuDropdownTriggerProps`: its handlers run before MenuDropdown's and its other
+	 * props win. A function receives `MenuDropdownTriggerProps` and returns the trigger, for full
+	 * control. It must render a focusable element and pass it `ref`.
+	 */
+	trigger?: TriggerRender<MenuDropdownTriggerProps>;
 	/** Tooltip component template for menu items */
 	tooltipMenuItem?: ReactNode;
 	/** CSS classes to be added to wrapping trigger div */
@@ -445,6 +462,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		tabIndex,
 		tooltip,
 		tooltipMenuItem,
+		trigger,
 		triggerClassName,
 		value,
 		width = 'medium',
@@ -1052,30 +1070,24 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 			const customContentWithListPropInjection: ReactNode[] = [];
 
 			if (customContent) {
-				React.Children.forEach(customContent, (child) => {
-					if (
-						child &&
-						typeof child === 'object' &&
-						'type' in child &&
-						(child.type as { displayName?: string })?.displayName === LIST
-					) {
+				React.Children.forEach(customContent, (child, index) => {
+					if (isElementOfType<Record<string, unknown>>(child, BaseList)) {
 						customContentWithListPropInjection.push(
-							renderDefaultMenuContent(
-								(child as ReactElement).props as Record<string, unknown>
-							)
+							renderDefaultMenuContent(child.props)
 						);
-					} else if (child) {
+					} else if (React.isValidElement(child)) {
 						const clonedCustomContent = React.cloneElement(
 							child as ReactElement<{
 								onClick?: (event?: React.SyntheticEvent) => void;
-								key?: string;
 							}>,
 							{
 								onClick: handleClickCustomContent,
-								key: generateId(),
+								key: child.key ?? String(index),
 							}
 						);
 						customContentWithListPropInjection.push(clonedCustomContent);
+					} else if (child) {
+						customContentWithListPropInjection.push(child);
 					}
 				});
 			}
@@ -1201,6 +1213,12 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		}
 	});
 
+	// `trigger` replaces a trigger passed as a child
+	if (trigger !== undefined) {
+		CurrentTrigger = DefaultTrigger;
+		CustomTriggerChildProps = {};
+	}
+
 	const outsideClickIgnoreClass = `ignore-click-${getId()}`;
 
 	// `bare-inverse` and `border-inverse` are the inverse forms of `bare` and `border`
@@ -1216,6 +1234,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	return (
 		<CurrentTrigger
 			ref={saveRefToTriggerContainer}
+			{...(trigger === undefined ? {} : { trigger })}
 			aria-haspopup
 			assistiveText={assistiveText}
 			className={classNames(outsideClickIgnoreClass, buttonClassName)}

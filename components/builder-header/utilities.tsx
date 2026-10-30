@@ -1,10 +1,14 @@
-import React, { type ReactNode } from 'react';
+import React from 'react';
 
-import {
-	BUILDER_HEADER_UTILITIES,
-	BUILDER_HEADER_NAV_DROPDOWN,
-	BUILDER_HEADER_NAV_LINK,
-} from '../../utilities/constants';
+import { BUILDER_HEADER_UTILITIES } from '../../utilities/constants';
+import isElementOfType from '../../utilities/is-element-of-type';
+import type { ChildrenOf } from '../../types/common';
+import BuilderHeaderNavDropdown, {
+	type BuilderHeaderNavDropdownProps,
+} from './nav-dropdown';
+import BuilderHeaderNavLink, {
+	type BuilderHeaderNavLinkProps,
+} from './nav-link';
 
 export interface BuilderHeaderUtilitiesProps {
 	/**
@@ -17,8 +21,11 @@ export interface BuilderHeaderUtilitiesProps {
 	 *   </BuilderHeaderUtilities>
 	 * </BuilderHeader>
 	 * ```
+	 * Other children are ignored.
 	 */
-	children?: ReactNode;
+	children?: ChildrenOf<
+		BuilderHeaderNavLinkProps | BuilderHeaderNavDropdownProps
+	>;
 }
 
 /**
@@ -30,11 +37,7 @@ const BuilderHeaderUtilities = (
 	<div className="slds-builder-header__item slds-builder-header__utilities">
 		{React.Children.map(props.children, (child) => {
 			if (
-				React.isValidElement(child) &&
-				((child.type as { displayName?: string }).displayName ===
-					BUILDER_HEADER_NAV_LINK ||
-					(child.type as { displayName?: string }).displayName ===
-						BUILDER_HEADER_NAV_DROPDOWN)
+				isElementOfType(child, BuilderHeaderNavLink, BuilderHeaderNavDropdown)
 			) {
 				return (
 					<div className="slds-builder-header__utilities-item">{child}</div>

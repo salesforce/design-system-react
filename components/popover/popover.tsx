@@ -25,6 +25,8 @@ import Dialog from '../utilities/dialog';
 import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
+import { renderTrigger, type TriggerRender } from '../../utilities/merge-props';
+import childrenAsTrigger from '../../utilities/warning/children-as-trigger';
 import { IconSettingsContext } from '../icon-settings';
 
 const documentDefined = typeof document !== 'undefined';
@@ -129,6 +131,21 @@ export interface PopoverCloseData {
 }
 
 /**
+ * Props Popover gives its trigger. A `trigger` element has them merged into its own
+ * props; a `trigger` function receives them to spread onto the element it returns.
+ */
+export interface PopoverTriggerProps {
+	'aria-haspopup': 'dialog';
+	id: string;
+	onClick?: (event: MouseEvent) => void;
+	onFocus?: (event: FocusEvent) => void;
+	onMouseDown?: (event: MouseEvent) => void;
+	onMouseEnter?: (event: MouseEvent) => void;
+	onMouseLeave?: (event: MouseEvent) => void;
+	tabIndex: number;
+}
+
+/**
  * Props for the Popover component
  */
 export interface PopoverProps {
@@ -138,8 +155,18 @@ export interface PopoverProps {
 	assistiveText?: PopoverAssistiveText;
 	/** HTML id of heading for aria-labelledby */
 	ariaLabelledby?: string;
-	/** Trigger element (first child) and optional other children */
-	children: ReactNode;
+	/**
+	 * Content rendered after the trigger, inside the trigger container. Without `trigger`,
+	 * the first child is the trigger (deprecated).
+	 */
+	children?: ReactNode;
+	/**
+	 * The focusable element that opens the popover, such as a `Button`. Pass an element to
+	 * have Popover merge its trigger props into the element's: event handlers run the
+	 * element's first, then Popover's, and the element's other props win. Or pass a function
+	 * that receives the trigger props (`PopoverTriggerProps`) and returns the trigger.
+	 */
+	trigger?: TriggerRender<PopoverTriggerProps>;
 	/** Popover body content */
 	body: ReactNode;
 	/** CSS classes for body */
@@ -282,6 +309,7 @@ const Popover = ({
 	position = 'absolute',
 	stepText,
 	style,
+	trigger,
 	triggerClassName,
 	variant = 'base',
 	hoverCloseDelay = 300,
@@ -453,7 +481,7 @@ const Popover = ({
 
 	// Handle click
 	const handleClick = useCallback(
-		(event: MouseEvent, triggerOnClickCallback?: (e: MouseEvent) => void) => {
+		(event: MouseEvent) => {
 			if (!isOpen) {
 				handleOpen();
 			} else {
@@ -462,10 +490,6 @@ const Popover = ({
 
 			if (onClick) {
 				onClick(event);
-			}
-
-			if (triggerOnClickCallback) {
-				triggerOnClickCallback(event);
 			}
 		},
 		[isOpen, handleOpen, handleClose, onClick]
@@ -815,42 +839,38 @@ const Popover = ({
 		);
 	};
 
-	// Clone trigger element
-	const otherChildren: ReactNode[] = [];
-	let clonedTrigger: ReactNode = null;
+	// Without `trigger`, the first child is the trigger (deprecated)
+	const childArray = React.Children.toArray(children);
+	const legacyTrigger =
+		trigger === undefined && React.isValidElement(childArray[0])
+			? childArray[0]
+			: undefined;
+	const otherChildren = legacyTrigger ? childArray.slice(1) : childArray;
 
-	React.Children.forEach(children, (child, index) => {
-		if (index === 0 && React.isValidElement(child)) {
-			const childProps = child.props as Record<string, unknown>;
-			const triggerProps: Record<string, unknown> = {
-				'aria-haspopup': 'dialog',
-				id,
-				onClick:
-					openOn === 'click' || openOn === 'hybrid'
-						? (event: MouseEvent) => {
-								handleClick(
-									event,
-									childProps.onClick as (e: MouseEvent) => void
-								);
-							}
-						: childProps.onClick,
-				onFocus: openOn === 'hover' ? handleFocus : undefined,
-				onMouseDown,
-				onMouseEnter:
-					openOn === 'hover' || openOn === 'hybrid'
-						? handleMouseEnter
-						: undefined,
-				onMouseLeave:
-					openOn === 'hover' || openOn === 'hybrid'
-						? handleMouseLeave
-						: undefined,
-				tabIndex: (childProps.tabIndex as number) || 0,
-			};
-			clonedTrigger = React.cloneElement(child, triggerProps);
-		} else if (child) {
-			otherChildren.push(child);
-		}
-	});
+	const usesChildrenAsTrigger = legacyTrigger !== undefined;
+	useEffect(() => {
+		childrenAsTrigger(POPOVER, usesChildrenAsTrigger);
+	}, [usesChildrenAsTrigger]);
+
+	const triggerProps: PopoverTriggerProps = {
+		'aria-haspopup': 'dialog',
+		id,
+		onClick:
+			openOn === 'click' || openOn === 'hybrid' ? handleClick : undefined,
+		onFocus: openOn === 'hover' ? handleFocus : undefined,
+		onMouseDown,
+		onMouseEnter:
+			openOn === 'hover' || openOn === 'hybrid' ? handleMouseEnter : undefined,
+		onMouseLeave:
+			openOn === 'hover' || openOn === 'hybrid' ? handleMouseLeave : undefined,
+		tabIndex: 0,
+	};
+	const triggerToRender = trigger ?? legacyTrigger;
+	const renderedTrigger = triggerToRender
+		? // The handlers read refs only when events fire, not during render
+			// eslint-disable-next-line react-hooks/refs
+			renderTrigger(triggerToRender, triggerProps)
+		: null;
 
 	const containerStyles: CSSProperties = {
 		display: hasNoTriggerStyles ? undefined : 'inline-block',
@@ -862,7 +882,7 @@ const Popover = ({
 			style={containerStyles}
 			ref={setContainerRef}
 		>
-			{clonedTrigger}
+			{renderedTrigger}
 			{otherChildren.length > 0 ? otherChildren : null}
 			{renderDialog()}
 		</div>

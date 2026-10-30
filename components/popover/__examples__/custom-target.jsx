@@ -23,9 +23,8 @@ class Example extends React.Component {
 						id="popover-custom-target"
 						onRequestTargetElement={() => this.customTarget}
 						{...this.props}
-					>
-						<Button label="Trigger Popover" />
-					</Popover>
+						trigger={<Button label="Trigger Popover" />}
+					/>
 					<div
 						ref={(component) => {
 							this.customTarget = component;

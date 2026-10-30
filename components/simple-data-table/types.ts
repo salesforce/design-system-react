@@ -2,7 +2,9 @@
  * Type definitions for SimpleDataTable component and subcomponents
  */
 
-import { ReactNode, CSSProperties, SyntheticEvent } from 'react';
+import { ReactElement, ReactNode, CSSProperties, SyntheticEvent } from 'react';
+import type { MenuDropdownProps } from '../menu-dropdown';
+import type { ChildrenOf } from '../../types/common';
 
 // ============================================================================
 // Core Types
@@ -79,8 +81,10 @@ export interface SimpleDataTableRenderSubHeadingRowData {
 export interface SimpleDataTableProps {
 	/** Assistive text for accessibility */
 	assistiveText?: SimpleDataTableAssistiveText;
-	/** Column and row action children */
-	children?: ReactNode;
+	/** `SimpleDataTableColumn` elements, and optionally one `SimpleDataTableRowActions`. Other children are ignored. */
+	children?: ChildrenOf<
+		SimpleDataTableColumnProps | SimpleDataTableRowActionsProps
+	>;
 	/** Class names to be added to the table */
 	className?: string | string[] | Record<string, boolean>;
 	/** A variant which adds border to the vertical columns */
@@ -179,8 +183,8 @@ export interface SimpleDataTableProps {
 // ============================================================================
 
 export interface SimpleDataTableColumnProps {
-	/** Custom cell renderer */
-	children?: ReactNode;
+	/** An element that renders this column's cells in place of `SimpleDataTableCell` */
+	children?: ReactElement;
 	/** Sort descending first on click */
 	isDefaultSortDescending?: boolean;
 	/** Selects this column as currently sorted */
@@ -255,20 +259,14 @@ export interface SimpleDataTableRowActionsProps {
 	assistiveText?: { icon?: string };
 	/** Class names to be added to the actions menu */
 	className?: string;
-	/** HTML ID for the actions menu */
-	id?: string;
-	/** SimpleDataTable row item */
-	item?: SimpleDataTableItem;
 	/** Disable hint styling */
 	noHint?: boolean;
 	/** Triggered when an item is selected */
 	onAction?: (item: SimpleDataTableItem, selection: unknown) => void;
 	/** Dropdown options */
 	options?: unknown[];
-	/** A Dropdown component to use */
-	dropdown?: ReactNode;
-	/** Fixed layout mode */
-	fixedLayout?: boolean;
+	/** A `MenuDropdown` element. Its props override the defaults; its `onSelect` runs after `onAction`. */
+	dropdown?: ReactElement<Partial<MenuDropdownProps>>;
 }
 
 // ============================================================================

@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `DatePicker` `onRequestOpen(event, { trigger })` (`'input-click' | 'icon-click' | 'keyboard'`), `onRequestClose(event, { trigger })` (`'date-select' | 'escape' | 'enter' | 'click-outside'`; the outside-click event is the native `mousedown`/`touchstart`), and `onClose(undefined, { componentWillUnmount })`
   - `MenuDropdown` `onOpen(event, {})` and `onClose(event, {})`
 - Exported data types for these callbacks, such as `TabsSelectData`, `MenuDropdownSelectData`, `ToastRequestCloseData`, `ModalRequestCloseData`, `PopoverRequestCloseTrigger`, `TreeNodeSelectData` and `SplitViewToggleData`
+- `trigger` prop on `Popover`, `Tooltip`, `MenuDropdown` and `PopoverEditDialog`. Pass an element, which the component merges its trigger props into, or a function that receives them (`PopoverTriggerProps`, `TooltipTriggerProps`, `MenuDropdownTriggerProps`) for full control. With an element, your props win, event handlers are composed (yours runs first), and `className`, `aria-describedby` and `aria-labelledby` are joined. For `MenuDropdown`, a `Button` element takes the dropdown's button props as defaults
+- `Filter` `errorLabel` is declared in the types. `PanelFilterList` already read it
 
 ### Changed
 
@@ -30,6 +32,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **BREAKING**: `Popover` `onRequestClose` data always includes a `trigger` from `PopoverRequestCloseTrigger`. A trigger click while open reports `'triggerClick'` and a hover close reports `'mouseLeave'` (both passed `{}` before), and Escape passes the keydown event instead of `undefined`. `onOpen(undefined, { portal })` and `onClose(undefined, { componentWillUnmount })` have exported data types
 - `DatePicker`: Down/Up in the closed input go through `onRequestOpen`, and Escape/Enter in the input go through `onRequestClose`, instead of setting internal state directly. Controlled pickers now open from the keyboard; uncontrolled pickers that pass `onRequestOpen` open from your handler, as they already did for clicks
 - Content props that are only rendered are typed `ReactNode` instead of `ReactElement`, so strings, fragments, arrays and `null` type-check: `SplitView` `master`/`detail`, `PageHeader` `trail`, `TabsPanel` `label`, `SetupAssistantStep` `figure` (an `Icon` is still resized to `small`), and the return type of the deprecated `Carousel` `onRenderItem`, `SetupAssistantStep` `onRenderFigure` and `MenuDropdown` `listItemRenderer`
+- **BREAKING**: Children and slots that take library components are typed with those components' props, for example `Tabs` children as `TabsPanel` elements, `Combobox` `input` as `ReactElement<Partial<InputProps>>`, and `Alert`/`Toast` `icon` as `ReactElement<IconProps>`. The props a parent injects into its children (`index`, `onToggleIsOpen`, `isError`, …) are no longer in the public child types
+- **BREAKING**: `BuilderHeader`, `MenuDropdown`, `PageHeader` controls, `SetupAssistant` and `SimpleDataTable` match their children by component, not by `displayName`. A wrapper component that copies a library component's `displayName` is no longer treated as that component; render the library component inside it instead
+- **BREAKING**: Trigger props are merged rather than overwritten, including for the deprecated `children` trigger. The consumer's own `onClick`, `onFocus`, `onMouseDown`, `onMouseEnter` and `onMouseLeave` now run, and run before the component's (the `Popover` trigger's `onClick` used to run after the popover opened). The trigger's own `id`, `tabIndex` and `aria-*` win over `Popover`'s and `Tooltip`'s, and its `className` is joined with `MenuDropdown`'s (which keeps the dropdown's `ignore-click-*` class on a `Button` trigger)
+- **BREAKING**: `Combobox` `popover`, `input` and `tooltipMenuItemDisabled` props win over the combobox's defaults. `input`'s `onChange` is called with `(event, { value })` alongside the combobox's handler, and `popover`'s `trigger`/`children` are replaced with the combobox input
+- `TrialBarDropdown` passes its `children` to the menu as custom content instead of dropping them
 
 ### Deprecated
 
@@ -37,6 +44,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `Tree` `onScroll` data `percentage` (use `ratio`)
 - `SplitView` `events.onOpen` and `events.onClose` (use `events.onToggle`). They are called only when `onToggle` is absent
 - `PillContainer` flat `onClickPill` and `onRequestRemovePill` props (use `events.onClickPill` and `events.onRequestRemovePill`)
+- Passing a trigger as `children` (use `trigger`). `Popover`, `Tooltip` and `PopoverEditDialog` `children`, and a `DropdownTrigger` child of `MenuDropdown`, keep working and log a one-time warning
+- `TabChildProps` (use `TabsPanelProps`) and `FileChildProps` (use `FileProps`)
 - Props renamed to follow the v11 naming rules. The old names keep working, log a one-time warning, and are ignored when the new name is passed:
   - `SplitView` `assistiveText.toggleButtonOpen` and `toggleButtonClose`, which were inverted (use `closeToggle` and `openToggle`)
   - `Tree` `heading` and `assistiveText.label` (use `labels.heading` and `assistiveText.heading`)
@@ -60,6 +69,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `MenuDropdown`: `onClose` fires once per close instead of twice, and `onSelect` receives the click event for mouse selection
 - `DatePicker`: `onRequestClose` no longer fires when the calendar is already closed
 - `Tree`: `onScroll` no longer reports `NaN` or `Infinity` when the list cannot scroll
+- `PanelFilterList`: a filter with `errorLabel` and no `id` gets the id its error message uses, so its `aria-describedby` points at the message
+- `ButtonGroup`: the last-child class goes on the last rendered child when some children are conditional (`null` or `false`)
+- `ScopedNotification`: a string `assistiveText` on the `icon` element is used as the icon label instead of being lost
+- `SimpleDataTable`: custom cells without a `displayName` render, conditional columns don't break keyboard navigation, and a `RowActions` `menuPosition` passed by the consumer is kept in a `fixedHeader` table
+- `RadioGroup`: a `Radio`'s own `name` and `onChange` are kept instead of overwritten; `VisualPicker` keeps a child's `name`
+- `MenuDropdown`: custom (non-`List`) content no longer remounts on every render
+- `Tooltip`: the trigger keeps its own event handlers and `aria-describedby`, and passing several children no longer throws
 
 ### Removed
 

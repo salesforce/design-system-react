@@ -35,7 +35,14 @@ export default {
 		},
 		variant: {
 			control: { type: 'select' },
-			options: ['base', 'error', 'warning', 'feature', 'walkthrough', 'walkthrough-action'],
+			options: [
+				'base',
+				'error',
+				'warning',
+				'feature',
+				'walkthrough',
+				'walkthrough-action',
+			],
 		},
 	},
 };
@@ -47,9 +54,8 @@ export const Default = {
 			body="This is a default popover with some helpful information."
 			heading="Popover Title"
 			id="default-popover"
-		>
-			<Button label="Click to open" />
-		</Popover>
+			trigger={<Button label="Click to open" />}
+		/>
 	),
 };
 
@@ -70,9 +76,10 @@ export const Controlled = {
 					isOpen={isOpen}
 					onClick={() => setIsOpen(!isOpen)}
 					onRequestClose={() => setIsOpen(false)}
-				>
-					<Button label={isOpen ? 'Click to close' : 'Click to open'} />
-				</Popover>
+					trigger={
+						<Button label={isOpen ? 'Click to close' : 'Click to open'} />
+					}
+				/>
 			</div>
 		);
 	},
@@ -88,9 +95,8 @@ export const Alignments = {
 					heading="Top"
 					align="top"
 					id="top-popover"
-				>
-					<Button label="Top" />
-				</Popover>
+					trigger={<Button label="Top" />}
+				/>
 			</div>
 			<div className="slds-p-around_medium">
 				<Popover
@@ -98,9 +104,8 @@ export const Alignments = {
 					heading="Bottom"
 					align="bottom"
 					id="bottom-popover"
-				>
-					<Button label="Bottom" />
-				</Popover>
+					trigger={<Button label="Bottom" />}
+				/>
 			</div>
 			<div className="slds-p-around_medium">
 				<Popover
@@ -108,9 +113,8 @@ export const Alignments = {
 					heading="Left"
 					align="left"
 					id="left-popover"
-				>
-					<Button label="Left" />
-				</Popover>
+					trigger={<Button label="Left" />}
+				/>
 			</div>
 			<div className="slds-p-around_medium">
 				<Popover
@@ -118,9 +122,8 @@ export const Alignments = {
 					heading="Right"
 					align="right"
 					id="right-popover"
-				>
-					<Button label="Right" />
-				</Popover>
+					trigger={<Button label="Right" />}
+				/>
 			</div>
 		</div>
 	),
@@ -134,9 +137,8 @@ export const ErrorVariant = {
 			heading="Error"
 			variant="error"
 			id="error-popover"
-		>
-			<Button label="Show Error" variant="destructive" />
-		</Popover>
+			trigger={<Button label="Show Error" variant="destructive" />}
+		/>
 	),
 };
 
@@ -148,9 +150,8 @@ export const WarningVariant = {
 			heading="Warning"
 			variant="warning"
 			id="warning-popover"
-		>
-			<Button label="Show Warning" />
-		</Popover>
+			trigger={<Button label="Show Warning" />}
+		/>
 	),
 };
 
@@ -163,9 +164,8 @@ export const FeatureVariant = {
 			variant="feature"
 			icon={<span className="slds-icon_container">✨</span>}
 			id="feature-popover"
-		>
-			<Button label="Learn More" variant="brand" />
-		</Popover>
+			trigger={<Button label="Learn More" variant="brand" />}
+		/>
 	),
 };
 
@@ -180,13 +180,16 @@ export const WalkthroughVariant = {
 			footerWalkthroughActions={
 				<>
 					<Button label="Skip" variant="neutral" />
-					<Button label="Next" variant="brand" className="slds-m-left_x-small" />
+					<Button
+						label="Next"
+						variant="brand"
+						className="slds-m-left_x-small"
+					/>
 				</>
 			}
 			id="walkthrough-popover"
-		>
-			<Button label="Start Tour" variant="brand" />
-		</Popover>
+			trigger={<Button label="Start Tour" variant="brand" />}
+		/>
 	),
 };
 
@@ -199,9 +202,8 @@ export const WalkthroughActionVariant = {
 			variant="walkthrough-action"
 			stepText="Step 2 of 3"
 			id="walkthrough-action-popover"
-		>
-			<Button label="Show Action" variant="brand" />
-		</Popover>
+			trigger={<Button label="Show Action" variant="brand" />}
+		/>
 	),
 };
 
@@ -214,13 +216,16 @@ export const WithFooter = {
 			footer={
 				<div className="slds-grid slds-grid_align-end">
 					<Button label="Cancel" variant="neutral" />
-					<Button label="Save" variant="brand" className="slds-m-left_x-small" />
+					<Button
+						label="Save"
+						variant="brand"
+						className="slds-m-left_x-small"
+					/>
 				</div>
 			}
 			id="footer-popover"
-		>
-			<Button label="Open" />
-		</Popover>
+			trigger={<Button label="Open" />}
+		/>
 	),
 };
 
@@ -232,9 +237,8 @@ export const NoNubbin = {
 			heading="No Nubbin"
 			hasNoNubbin
 			id="no-nubbin-popover"
-		>
-			<Button label="Open" />
-		</Popover>
+			trigger={<Button label="Open" />}
+		/>
 	),
 };
 
@@ -246,8 +250,7 @@ export const NoCloseButton = {
 			heading="No Close Button"
 			hasNoCloseButton
 			id="no-close-popover"
-		>
-			<Button label="Open" />
-		</Popover>
+			trigger={<Button label="Open" />}
+		/>
 	),
 };

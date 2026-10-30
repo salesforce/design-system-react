@@ -1,16 +1,16 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import { SIMPLE_DATA_TABLE_COLUMN } from '../../utilities/constants';
 
 export interface SimpleDataTableColumnProps {
 	/**
-	 * Use a _higher-order component_ to customize a data table cell that will
-	 * override the default cell rendering. `CustomSimpleDataTableCell` must have the
-	 * same `displayName` as `SimpleDataTableCell` or it will be ignored.
+	 * An element that renders this column's cells in place of `SimpleDataTableCell`,
+	 * such as `<CustomCell />`. Its component receives `SimpleDataTableCellProps`
+	 * (merged with the element's own props) for each row.
 	 */
-	children?: ReactNode;
+	children?: ReactElement;
 	/**
 	 * Some columns should sort descending first (e.g., "date last viewed").
 	 * If sortable and the parent has not defined sort order, ascending is default.

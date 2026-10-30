@@ -2,7 +2,6 @@ import React from 'react';
 
 import Button from '~/components/button';
 import Dropdown from '~/components/menu-dropdown';
-import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 import PageHeaderControl from '~/components/page-header/control';
@@ -132,8 +131,7 @@ const headerTitle = (
 					{ type: 'divider' },
 					{ label: 'Menu Item Four', value: 'D0' },
 				]}
-			>
-				<DropdownTrigger>
+				trigger={
 					<Button
 						className="slds-button_reset slds-type-focus"
 						iconCategory="utility"
@@ -143,8 +141,8 @@ const headerTitle = (
 						responsive
 						variant="base"
 					/>
-				</DropdownTrigger>
-			</Dropdown>
+				}
+			/>
 		</h1>
 	</div>
 );

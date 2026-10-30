@@ -29,7 +29,7 @@ export default {
 	parameters: {
 		docs: {
 			description: {
-				component: `The Tooltip component displays contextual information on hover or focus. It wraps a trigger element (button, link, or any focusable element) and shows a small popover with additional information.
+				component: `The Tooltip component displays contextual information on hover or focus. Pass the element that triggers it (a button, link, or any focusable element) as \`trigger\`, and it shows a small popover with additional information.
 
 **Accessibility**: The trigger element must be focusable (have tabIndex or be naturally focusable like buttons/anchors) so keyboard users can access the tooltip.`,
 			},
@@ -62,7 +62,7 @@ export default {
 		iconVariant: {
 			control: 'select',
 			options: ['bare', 'error', 'inverse', 'warning'],
-			description: 'Styles the default info icon trigger (no children)',
+			description: 'Styles the default info icon trigger (no `trigger`)',
 		},
 		variant: {
 			control: 'select',
@@ -106,11 +106,7 @@ export const Default = {
 		content: tooltipContent,
 		align: 'top',
 	},
-	render: (args) => (
-		<Tooltip {...args}>
-			<Button label="Hover Me" />
-		</Tooltip>
-	),
+	render: (args) => <Tooltip {...args} trigger={<Button label="Hover Me" />} />,
 };
 
 // Open state (for visual testing)
@@ -123,9 +119,7 @@ export const Open = {
 		dialogClassName: 'dialog-classname',
 	},
 	render: (args) => (
-		<Tooltip {...args}>
-			<Button label="Trigger Tooltip" />
-		</Tooltip>
+		<Tooltip {...args} trigger={<Button label="Trigger Tooltip" />} />
 	),
 };
 
@@ -138,9 +132,7 @@ export const InfoTheme = {
 		align: 'bottom',
 	},
 	render: (args) => (
-		<Tooltip {...args}>
-			<Button label="Info Theme" />
-		</Tooltip>
+		<Tooltip {...args} trigger={<Button label="Info Theme" />} />
 	),
 };
 
@@ -152,9 +144,10 @@ export const ErrorTheme = {
 		align: 'bottom',
 	},
 	render: (args) => (
-		<Tooltip {...args}>
-			<Button label="Error Theme" variant="destructive" />
-		</Tooltip>
+		<Tooltip
+			{...args}
+			trigger={<Button label="Error Theme" variant="destructive" />}
+		/>
 	),
 };
 
@@ -178,7 +171,7 @@ export const LearnMore = {
 		docs: {
 			description: {
 				story:
-					'The Learn More variant displays an info icon as the trigger. When no children are provided and `onClickTrigger` is set, it renders as a clickable link.',
+					'The Learn More variant displays an info icon as the trigger. When no `trigger` is provided and `onClickTrigger` is set, it renders as a clickable link.',
 			},
 		},
 	},
@@ -218,9 +211,8 @@ export const AllAlignments = {
 							align={alignment}
 							isOpen
 							id={`tooltip-${alignment.replace(' ', '-')}`}
-						>
-							<Button label={alignment} />
-						</Tooltip>
+							trigger={<Button label={alignment} />}
+						/>
 					</div>
 				))}
 			</div>
@@ -244,15 +236,18 @@ export const WithIconTrigger = {
 		isOpen: true,
 	},
 	render: (args) => (
-		<Tooltip {...args}>
-			<Icon
-				assistiveText={{ label: 'Case Icon' }}
-				category="standard"
-				name="case"
-				size="small"
-				tabIndex="0"
-			/>
-		</Tooltip>
+		<Tooltip
+			{...args}
+			trigger={
+				<Icon
+					assistiveText={{ label: 'Case Icon' }}
+					category="standard"
+					name="case"
+					size="small"
+					tabIndex="0"
+				/>
+			}
+		/>
 	),
 };
 
@@ -264,14 +259,17 @@ export const WithSpanTrigger = {
 		isOpen: true,
 	},
 	render: (args) => (
-		<Tooltip {...args}>
-			<span
-				tabIndex="0"
-				style={{ textDecoration: 'underline', cursor: 'help' }}
-			>
-				Hover over this text
-			</span>
-		</Tooltip>
+		<Tooltip
+			{...args}
+			trigger={
+				<span
+					tabIndex="0"
+					style={{ textDecoration: 'underline', cursor: 'help' }}
+				>
+					Hover over this text
+				</span>
+			}
+		/>
 	),
 };
 
@@ -284,9 +282,7 @@ export const WithDelay = {
 		align: 'bottom',
 	},
 	render: (args) => (
-		<Tooltip {...args}>
-			<Button label="Hover (500ms delay)" />
-		</Tooltip>
+		<Tooltip {...args} trigger={<Button label="Hover (500ms delay)" />} />
 	),
 	parameters: {
 		docs: {
@@ -308,9 +304,7 @@ export const AnchoredNubbin = {
 		isOpen: true,
 	},
 	render: (args) => (
-		<Tooltip {...args}>
-			<Button label="Anchored Nubbin" />
-		</Tooltip>
+		<Tooltip {...args} trigger={<Button label="Anchored Nubbin" />} />
 	),
 	parameters: {
 		docs: {
@@ -326,33 +320,45 @@ export const AnchoredNubbin = {
 export const InButtonGroup = {
 	render: () => (
 		<ButtonGroup>
-			<Tooltip content="Edit this record" align="bottom">
-				<Button
-					assistiveText={{ icon: 'Edit' }}
-					iconCategory="utility"
-					iconName="edit"
-					iconVariant="border"
-					variant="icon"
-				/>
-			</Tooltip>
-			<Tooltip content="Delete this record" align="bottom">
-				<Button
-					assistiveText={{ icon: 'Delete' }}
-					iconCategory="utility"
-					iconName="delete"
-					iconVariant="border"
-					variant="icon"
-				/>
-			</Tooltip>
-			<Tooltip content="Refresh data" align="bottom">
-				<Button
-					assistiveText={{ icon: 'Refresh' }}
-					iconCategory="utility"
-					iconName="refresh"
-					iconVariant="border"
-					variant="icon"
-				/>
-			</Tooltip>
+			<Tooltip
+				content="Edit this record"
+				align="bottom"
+				trigger={
+					<Button
+						assistiveText={{ icon: 'Edit' }}
+						iconCategory="utility"
+						iconName="edit"
+						iconVariant="border"
+						variant="icon"
+					/>
+				}
+			/>
+			<Tooltip
+				content="Delete this record"
+				align="bottom"
+				trigger={
+					<Button
+						assistiveText={{ icon: 'Delete' }}
+						iconCategory="utility"
+						iconName="delete"
+						iconVariant="border"
+						variant="icon"
+					/>
+				}
+			/>
+			<Tooltip
+				content="Refresh data"
+				align="bottom"
+				trigger={
+					<Button
+						assistiveText={{ icon: 'Refresh' }}
+						iconCategory="utility"
+						iconName="refresh"
+						iconVariant="border"
+						variant="icon"
+					/>
+				}
+			/>
 		</ButtonGroup>
 	),
 	parameters: {
@@ -378,9 +384,12 @@ export const Controlled = {
 						onClick={() => setIsOpen(!isOpen)}
 					/>
 				</div>
-				<Tooltip content={tooltipContent} isOpen={isOpen} align="bottom">
-					<Button label="Controlled Tooltip" />
-				</Tooltip>
+				<Tooltip
+					content={tooltipContent}
+					isOpen={isOpen}
+					align="bottom"
+					trigger={<Button label="Controlled Tooltip" />}
+				/>
 			</div>
 		);
 	},
@@ -394,7 +403,7 @@ export const Controlled = {
 	},
 };
 
-// Default trigger (no children)
+// Default trigger (no `trigger`)
 export const DefaultTrigger = {
 	args: {
 		content: 'Helpful information about this feature',
@@ -405,7 +414,7 @@ export const DefaultTrigger = {
 		docs: {
 			description: {
 				story:
-					'When no children are provided, Tooltip renders a default info icon button as the trigger.',
+					'When no `trigger` is provided, Tooltip renders a default info icon button as the trigger.',
 			},
 		},
 	},

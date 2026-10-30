@@ -15,6 +15,9 @@ import Modal, {
 	type ModalRequestCloseTrigger,
 } from '../modal';
 import ProgressBar from '../progress-bar';
+import type { WelcomeMatTileInjectedProps, WelcomeMatTileProps } from './tile';
+import type { WelcomeMatInfoBadgeProps } from './info-badge';
+import type { ChildrenOf } from '../../types/common';
 import { WELCOME_MAT } from '../../utilities/constants';
 import checkProps from './check-props';
 import componentDoc from './component.json';
@@ -80,8 +83,8 @@ export type WelcomeMatVariantProps =
 	| {
 			/** Tiles with a progress bar */
 			variant?: 'steps';
-			/** WelcomeMatTile children */
-			children: ReactNode;
+			/** `WelcomeMatTile` elements. Progress counts the tiles and their `isComplete`. */
+			children: ChildrenOf<WelcomeMatTileProps>;
 			doNotShowAgainCheckbox?: never;
 			infoBadge?: never;
 			infoActions?: never;
@@ -90,19 +93,19 @@ export type WelcomeMatVariantProps =
 	| {
 			/** Tiles with Trailhead progress and an info badge */
 			variant: 'trailhead-connected';
-			/** WelcomeMatTile children */
-			children: ReactNode;
+			/** `WelcomeMatTile` elements. Progress counts the tiles and their `isComplete`. */
+			children: ChildrenOf<WelcomeMatTileProps>;
 			doNotShowAgainCheckbox?: never;
-			/** WelcomeMatInfoBadge shown above the progress */
-			infoBadge?: ReactNode;
+			/** `WelcomeMatInfoBadge` shown above the progress. The WelcomeMat sets its `isComplete` from the tiles. */
+			infoBadge?: ReactElement<WelcomeMatInfoBadgeProps>;
 			infoActions?: never;
 			onRenderInfoActions?: never;
 	  }
 	| {
 			/** Tiles with actions instead of progress */
 			variant: 'info-only';
-			/** WelcomeMatTile children */
-			children: ReactNode;
+			/** `WelcomeMatTile` elements. Progress counts the tiles and their `isComplete`. */
+			children: ChildrenOf<WelcomeMatTileProps>;
 			/** Do not show again checkbox element */
 			doNotShowAgainCheckbox?: ReactNode;
 			infoBadge?: never;
@@ -159,12 +162,11 @@ const WelcomeMat = ({
 
 	// Calculate progress from children
 	const { totalSteps, completedSteps, progress } = useMemo(() => {
-		const total = React.Children.count(children);
-		const completed = React.Children.toArray(children).filter(
-			(c) =>
-				React.isValidElement(c) &&
-				(c.props as { isComplete?: boolean }).isComplete
-		).length;
+		const tiles = React.Children.toArray(children).filter((c) =>
+			React.isValidElement<WelcomeMatTileProps>(c)
+		) as ReactElement<WelcomeMatTileProps>[];
+		const total = tiles.length;
+		const completed = tiles.filter((tile) => tile.props.isComplete).length;
 		return {
 			totalSteps: total,
 			completedSteps: completed,
@@ -203,16 +205,10 @@ const WelcomeMat = ({
 						})}
 					>
 						{variant === 'trailhead-connected' &&
-							React.Children.map(infoBadge, (child) =>
-								React.isValidElement(child)
-									? React.cloneElement(
-											child as ReactElement<{ isComplete?: boolean }>,
-											{
-												isComplete: completedSteps === totalSteps || undefined,
-											}
-										)
-									: child
-							)}
+							React.isValidElement<WelcomeMatInfoBadgeProps>(infoBadge) &&
+							React.cloneElement(infoBadge, {
+								isComplete: completedSteps === totalSteps || undefined,
+							})}
 						{(completedSteps !== totalSteps ||
 							variant !== 'trailhead-connected') && (
 							<>
@@ -270,12 +266,9 @@ const WelcomeMat = ({
 							>
 								{React.Children.map(children, (child) =>
 									React.isValidElement(child)
-										? React.cloneElement(
-												child as ReactElement<{ variant?: WelcomeMatVariant }>,
-												{
-													variant,
-												}
-											)
+										? React.cloneElement<
+												WelcomeMatTileProps & WelcomeMatTileInjectedProps
+											>(child as ReactElement<WelcomeMatTileProps>, { variant })
 										: child
 								)}
 							</div>

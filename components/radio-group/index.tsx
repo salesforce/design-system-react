@@ -1,9 +1,16 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useId, useMemo, type ReactNode, type ReactElement, type CSSProperties, type ChangeEvent } from 'react';
+import React, {
+	useId,
+	useMemo,
+	type CSSProperties,
+	type ChangeEvent,
+} from 'react';
 import classNames from 'classnames';
 import { RADIO_GROUP } from '../../utilities/constants';
+import type { ChildrenOf } from '../../types/common';
+import type { RadioProps } from '../radio';
 
 /**
  * Radio group variant types
@@ -36,8 +43,8 @@ export interface RadioGroupLabels {
 export interface RadioGroupProps {
 	/** Assistive text for accessibility */
 	assistiveText?: RadioGroupAssistiveText;
-	/** Radio components as children */
-	children: ReactNode;
+	/** `Radio` elements. The group passes each one `name`, `onChange`, `aria-describedby` and `disabled`; a `Radio`'s own `name` wins, and its `onChange` runs before the group's. */
+	children: ChildrenOf<RadioProps>;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** Disable all radio inputs */
@@ -49,7 +56,10 @@ export interface RadioGroupProps {
 	/** Name attribute for all radios */
 	name?: string;
 	/** Change handler */
-	onChange?: (event: ChangeEvent<HTMLInputElement>, data: { checked: boolean }) => void;
+	onChange?: (
+		event: ChangeEvent<HTMLInputElement>,
+		data: { checked: boolean }
+	) => void;
 	/** Whether the field is required */
 	required?: boolean;
 	/** Custom styles for button-group variant */
@@ -89,22 +99,23 @@ const RadioGroup = ({
 
 	const name = propName || generatedName;
 	const hasError = Boolean(labels.error);
-	const errorId = hasError ? (propErrorId || generatedErrorId) : undefined;
+	const errorId = hasError ? propErrorId || generatedErrorId : undefined;
 
-	// Clone children with group props
+	// Clone children with group props. The child's own props win, and handlers
+	// and ids are combined rather than replaced.
 	const enhancedChildren = useMemo(() => {
 		return React.Children.map(children, (child) => {
-			if (React.isValidElement(child)) {
-				return React.cloneElement(child as ReactElement<{
-					name?: string;
-					onChange?: typeof onChange;
-					'aria-describedby'?: string;
-					disabled?: boolean;
-				}>, {
-					name,
-					onChange,
-					'aria-describedby': errorId,
-					disabled: disabled || (child.props as { disabled?: boolean }).disabled,
+			if (React.isValidElement<RadioProps>(child)) {
+				const childProps = child.props;
+				return React.cloneElement(child, {
+					name: childProps.name ?? name,
+					onChange: (event, data) => {
+						childProps.onChange?.(event, data);
+						onChange?.(event as ChangeEvent<HTMLInputElement>, data);
+					},
+					'aria-describedby':
+						classNames(childProps['aria-describedby'], errorId) || undefined,
+					disabled: disabled || childProps.disabled,
 				});
 			}
 			return child;
@@ -132,7 +143,12 @@ const RadioGroup = ({
 				)}
 				{assistiveText.label || labels.label}
 			</legend>
-			<div className={classNames('slds-form-element__control', className as string)}>
+			<div
+				className={classNames(
+					'slds-form-element__control',
+					className as string
+				)}
+			>
 				{variant === 'button-group' ? (
 					<div style={style} className="slds-radio_button-group">
 						{enhancedChildren}
@@ -154,18 +170,3 @@ const RadioGroup = ({
 RadioGroup.displayName = RADIO_GROUP;
 
 export default RadioGroup;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
