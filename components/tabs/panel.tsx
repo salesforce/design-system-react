@@ -11,6 +11,10 @@ export interface TabsPanelProps {
 	 */
 	label: ReactNode;
 	/**
+	 * Identifies this panel for the `value` prop of `<Tabs />` and the `value`/`previousValue` reported by its `onSelect`. When omitted, the panel is identified by its index as a string (`'0'`, `'1'`, ...). Rendered `id`s are always index-based.
+	 */
+	value?: string;
+	/**
 	 * The `children` are the actual tab panels to be rendered. They get created by [tabs/index.jsx](./index.jsx) in the `renderTabPanels` function.
 	 *
 	 * Note that the `<TabsPanel />` component inserts a `div` element around the children, because React requires exactly one "parent" element returned. The `<TabPanel />` component simply dips down into `children` to get the children of this wrapping `div` so that it does not get rendered in the DOM.
@@ -42,7 +46,7 @@ export interface TabsPanelProps {
  * The `children` of the Panel will be fed to the `<TabPanel />` component, while its `label` is handled in `<Tab />`, via `<TabsList />`.
  *
  * ```
- * <TabsPanel label="Tab 1">
+ * <TabsPanel label="Tab 1" value="tab-1">
  * 	<div>
  * 		<h2 className="slds-text-heading_medium">This is my tab 1 contents!</h2>
  * 		<p>They show when you click the first tab.</p>

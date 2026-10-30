@@ -831,6 +831,7 @@ describe('SimpleDataTable', () => {
 			expect(selectData).toEqual({
 				option: { id: 0, label: 'Add to Group', value: '1' },
 				optionIndex: 0,
+				value: '1',
 			});
 		});
 	});
@@ -1500,7 +1501,12 @@ describe('SimpleDataTable', () => {
 	describe('Controlled sort', () => {
 		const renderSortable = (columnProps, onSort) =>
 			renderTable(
-				<SimpleDataTable {...defaultProps} selection={[]} fixedLayout onSort={onSort}>
+				<SimpleDataTable
+					{...defaultProps}
+					selection={[]}
+					fixedLayout
+					onSort={onSort}
+				>
 					<SimpleDataTableColumn label="Name" property="name" />
 					<SimpleDataTableColumn
 						label="Count"
@@ -1529,7 +1535,10 @@ describe('SimpleDataTable', () => {
 				'desc',
 				'desc',
 			]);
-			expect(getSortHeader(container)).toHaveAttribute('aria-sort', 'ascending');
+			expect(getSortHeader(container)).toHaveAttribute(
+				'aria-sort',
+				'ascending'
+			);
 			expect(getSortHeader(container)).toHaveClass('slds-is-sorted_asc');
 			expect(getSortHeader(container)).not.toHaveClass('slds-is-sorted_desc');
 		});
@@ -1580,7 +1589,10 @@ describe('SimpleDataTable', () => {
 				'descending'
 			);
 			fireEvent.click(getSortHeader(container).querySelector('a'));
-			expect(getSortHeader(container)).toHaveAttribute('aria-sort', 'ascending');
+			expect(getSortHeader(container)).toHaveAttribute(
+				'aria-sort',
+				'ascending'
+			);
 		});
 	});
 });

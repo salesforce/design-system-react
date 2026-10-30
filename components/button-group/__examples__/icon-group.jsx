@@ -8,7 +8,11 @@ import IconSettings from '~/components/icon-settings';
 class Example extends React.Component {
 	static displayName = 'ButtonGroupExample';
 
-	state = { isActive: {} };
+	state = {
+		isActive: {},
+		'icon-dropdown-example-1': 'A0',
+		'icon-dropdown-example-2': 'A0',
+	};
 
 	handleClick = (id) => (event, data) => {
 		this.setState((previous) => ({
@@ -44,15 +48,16 @@ class Example extends React.Component {
 						iconName="settings"
 						iconVariant="more"
 						id="icon-dropdown-example-1"
-						onSelect={(event, { option }) => {
+						onSelect={(event, { option, value }) => {
 							console.log(option.label, 'selected');
+							this.setState({ 'icon-dropdown-example-1': value });
 						}}
 						openOn="click"
 						options={[
 							{ label: 'Bring left panel to front', value: 'A0' },
 							{ label: 'Bring right panel to front', value: 'B0' },
 						]}
-						value="A0"
+						value={this.state['icon-dropdown-example-1']}
 						variant="icon"
 					/>
 				</ButtonGroup>
@@ -86,15 +91,16 @@ class Example extends React.Component {
 						iconName="settings"
 						iconVariant="more"
 						id="icon-dropdown-example-2"
-						onSelect={(event, { option }) => {
+						onSelect={(event, { option, value }) => {
 							console.log(option.label, 'selected');
+							this.setState({ 'icon-dropdown-example-2': value });
 						}}
 						openOn="click"
 						options={[
 							{ label: 'Bring left panel to front', value: 'A0' },
 							{ label: 'Bring right panel to front', value: 'B0' },
 						]}
-						value="A0"
+						value={this.state['icon-dropdown-example-2']}
 						variant="icon"
 					/>
 				</ButtonGroup>

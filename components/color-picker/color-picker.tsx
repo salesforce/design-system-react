@@ -16,8 +16,8 @@ import SwatchPicker from './private/swatch-picker';
 
 import Button from '../button';
 import Input, { type InputChangeData } from '../input';
-import Tabs from '../tabs';
 import TabsPanel from '../tabs/panel';
+import ColorPickerTabs from './private/color-picker-tabs';
 import Popover from '../popover';
 
 import ColorUtils from '../../utilities/color';
@@ -570,13 +570,13 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	};
 
 	const popoverBody = (
-		<Tabs
+		<ColorPickerTabs
 			id={`color-picker-tabs-${componentId}`}
-			defaultSelectedIndex={defaultSelectedTab === 'custom' ? 1 : 0}
+			defaultValue={defaultSelectedTab === 'custom' ? '1' : '0'}
 		>
 			{renderDefaultTab()}
 			{renderCustomTab()}
-		</Tabs>
+		</ColorPickerTabs>
 	);
 
 	const popoverFooter = (

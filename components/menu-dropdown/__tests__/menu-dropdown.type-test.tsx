@@ -4,7 +4,10 @@
 // Type-level regression tests, checked by `npm run typecheck`. Each
 // `@ts-expect-error` fails the build if the line below it stops erroring.
 
-import type { MenuDropdownOption } from '../index';
+import MenuDropdown, {
+	type MenuDropdownOption,
+	type MenuDropdownValue,
+} from '../index';
 
 export const options: MenuDropdownOption[] = [
 	{ label: 'Display As', type: 'header', divider: 'bottom' },
@@ -41,3 +44,27 @@ export const iconCategory: MenuDropdownOption = {
 	// @ts-expect-error icon categories are checked
 	leftIcon: { category: 'nope', name: 'table' },
 };
+
+// `onSelect` reports the requested next value; the request callbacks take
+// (event, data)
+export const controlled = (
+	<MenuDropdown
+		defaultIsOpen
+		onRequestClose={(event, data) => [event, data]}
+		onRequestOpen={(event, data) => [event, data]}
+		onSelect={(event, { value }) => {
+			const next: MenuDropdownValue | undefined = value;
+			return next;
+		}}
+		options={options}
+		value="table"
+	/>
+);
+
+export const requestData = (
+	<MenuDropdown
+		// @ts-expect-error request data has no fields
+		onRequestOpen={(event, data: { isOpen: boolean }) => [event, data]}
+		options={options}
+	/>
+);
