@@ -624,26 +624,26 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 							| undefined
 					}
 					position={menuPosition}
-				>
-					<Button
-						className="slds-color-picker__summary-button"
-						disabled={disabled}
-						iconClassName="slds-m-left_xx-small"
-						iconPosition="right"
-						iconVariant="more"
-						id={`slds-color-picker__summary-button-${componentId}`}
-						label={
-							<div>
-								<span className="slds-assistive-text">
-									{assistiveText.label ? assistiveText.label : labels.label}
-								</span>
-								<Swatch color={currentColor} labels={labels} />
-							</div>
-						}
-						onClick={handleSwatchButtonClick}
-						variant="icon"
-					/>
-				</Popover>
+					trigger={
+						<Button
+							className="slds-color-picker__summary-button"
+							disabled={disabled}
+							iconClassName="slds-m-left_xx-small"
+							iconPosition="right"
+							iconVariant="more"
+							label={
+								<div>
+									<span className="slds-assistive-text">
+										{assistiveText.label ? assistiveText.label : labels.label}
+									</span>
+									<Swatch color={currentColor} labels={labels} />
+								</div>
+							}
+							onClick={handleSwatchButtonClick}
+							variant="icon"
+						/>
+					}
+				/>
 				{renderInput()}
 				{!isOpen && colorErrorMessage && (
 					<p

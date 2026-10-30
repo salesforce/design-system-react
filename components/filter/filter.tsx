@@ -25,6 +25,11 @@ export interface FilterProps {
 	children?: React.ReactNode;
 	/** Custom CSS classes for slds-filters__item node */
 	className?: string | string[] | Record<string, boolean>;
+	/**
+	 * Error message for a Filter inside a `PanelFilterList`. The list shows it below the
+	 * filter and sets `isError`. A standalone Filter doesn't render it.
+	 */
+	errorLabel?: string;
 	/** Applies error state styling */
 	isError?: boolean;
 	/** Unique ID for keyboard navigation and ARIA support */
@@ -186,17 +191,19 @@ const Filter: React.FC<FilterProps> = ({
 			)}
 		>
 			{!isLocked && (children || popover) ? (
-				// @ts-expect-error - Popover props are complex with overrides
-				<Popover {...popoverProps} silenceDeprecatedPropertyWarning>
-					<button
-						className="slds-button_reset slds-grow slds-has-blur-focus"
-						onClick={handleFilterClick}
-						aria-describedby={isError ? `${id}-error` : undefined}
-						type="button"
-					>
-						{triggerContent}
-					</button>
-				</Popover>
+				<Popover
+					{...popoverProps}
+					trigger={
+						<button
+							className="slds-button_reset slds-grow slds-has-blur-focus"
+							onClick={handleFilterClick}
+							aria-describedby={isError ? `${id}-error` : undefined}
+							type="button"
+						>
+							{triggerContent}
+						</button>
+					}
+				/>
 			) : (
 				<button
 					aria-describedby={isError ? `${id}-error` : undefined}

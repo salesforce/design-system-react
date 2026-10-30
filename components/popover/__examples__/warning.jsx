@@ -38,9 +38,8 @@ class Example extends React.Component {
 					id="popover-error"
 					variant="warning"
 					{...this.props}
-				>
-					<Button label="Trigger Popover" />
-				</Popover>
+					trigger={<Button label="Trigger Popover" />}
+				/>
 			</IconSettings>
 		);
 	}

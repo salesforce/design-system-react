@@ -15,9 +15,8 @@ class Example extends React.Component {
 						body="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 						heading="Header Title"
 						id="popover-heading"
-					>
-						<Button label="Trigger Popover" />
-					</Popover>
+						trigger={<Button label="Trigger Popover" />}
+					/>
 				</div>
 			</IconSettings>
 		);

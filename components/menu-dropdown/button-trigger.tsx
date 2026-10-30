@@ -6,14 +6,41 @@
 import React, { forwardRef, type ReactElement, type ReactNode } from 'react';
 import classnames from 'classnames';
 
-import Button from '../button';
+import Button, { type ButtonProps } from '../button';
 import { MENU_DROPDOWN_TRIGGER } from '../../utilities/constants';
+import isElementOfType from '../../utilities/is-element-of-type';
+import mergeProps, {
+	renderTrigger,
+	type TriggerRender,
+} from '../../utilities/merge-props';
+
+/**
+ * Props MenuDropdown passes to a `trigger` that isn't a `Button`. The trigger `div` handles
+ * clicks, focus, keys and hover, so the trigger only needs to be focusable and take `ref`.
+ */
+export interface MenuDropdownTriggerProps {
+	'aria-expanded'?: boolean;
+	'aria-haspopup': true;
+	/** Includes the class MenuDropdown uses to ignore clicks on the trigger when closing */
+	className?: string;
+	disabled?: boolean;
+	ref: (element: HTMLElement | null) => void;
+	tabIndex?: number;
+}
+
+/**
+ * Props MenuDropdown passes to its default trigger that aren't part of the public type.
+ */
+export interface ButtonTriggerInjectedProps {
+	/** MenuDropdown's `trigger` */
+	trigger?: TriggerRender<MenuDropdownTriggerProps>;
+}
 
 export interface ButtonTriggerProps {
 	/** Text that is visually hidden but read aloud by screenreaders */
 	assistiveText?: Record<string, unknown>;
-	/** Child elements (typically a Button) */
-	children?: ReactElement;
+	/** A `Button` element whose props override the ones MenuDropdown passes */
+	children?: ReactElement<ButtonProps>;
 	/** CSS classes to be added to triggering button */
 	className?: string | string[] | Record<string, boolean>;
 	/** A unique ID for accessibility support */
@@ -74,112 +101,136 @@ export interface ButtonTriggerProps {
 
 /**
  * The Dropdown Button Trigger renders the default trigger button for the dropdown menu.
- * If this component has children, it does not render itself to the DOM.
- * Instead, it renders its child element, `Button`, and all that child's properties.
- * This component may be used as a template to create custom triggers that do not use `Button`.
+ * If this component has a `Button` child, the child's props override the ones MenuDropdown passes.
+ * Passing this component (or a custom trigger with its `displayName`) as a child of MenuDropdown
+ * is deprecated: pass the `Button` or other element as MenuDropdown's `trigger` instead.
  */
-const ButtonTrigger = forwardRef<HTMLDivElement, ButtonTriggerProps>(
-	(props, ref) => {
-		const {
-			assistiveText,
-			children,
-			className,
+const ButtonTrigger = forwardRef<
+	HTMLDivElement,
+	ButtonTriggerProps & ButtonTriggerInjectedProps
+>((props, ref) => {
+	const {
+		assistiveText,
+		children,
+		className,
+		disabled,
+		hint,
+		iconCategory,
+		iconName,
+		iconPosition,
+		iconSize,
+		iconVariant,
+		id,
+		inverse,
+		isInline: _isInline,
+		isOpen,
+		label,
+		onBlur,
+		menu,
+		onClick,
+		onFocus,
+		onKeyDown,
+		onMouseDown,
+		onMouseEnter,
+		onMouseLeave,
+		openOn: openOnProp,
+		style,
+		tabIndex,
+		tooltip,
+		trigger,
+		triggerRef,
+		triggerClassName,
+		variant,
+	} = props;
+
+	const openOn = openOnProp === 'hover' ? 'click' : openOnProp;
+
+	// The `trigger` element, or (deprecated) the Button child of this component
+	const buttonElement: ReactNode =
+		trigger === undefined
+			? React.Children.toArray(children).find((child) =>
+					isElementOfType<ButtonProps>(child, Button)
+				)
+			: (trigger as ReactNode);
+
+	const buttonDefaults: Record<string, unknown> = {
+		assistiveText,
+		className,
+		disabled,
+		hint,
+		iconCategory,
+		iconName,
+		iconPosition,
+		iconSize,
+		iconVariant,
+		inverse,
+		label,
+		style,
+		tabIndex,
+		tooltip,
+		variant,
+		'aria-expanded': isOpen,
+		'aria-haspopup': true,
+	};
+
+	let renderedTrigger: ReactNode;
+	if (trigger !== undefined && !isElementOfType(trigger as ReactNode, Button)) {
+		renderedTrigger = renderTrigger(trigger, {
+			'aria-expanded': isOpen,
+			'aria-haspopup': true,
+			className: classnames(className as string) || undefined,
 			disabled,
-			hint,
-			iconCategory,
-			iconName,
-			iconPosition,
-			iconSize,
-			iconVariant,
-			id,
-			inverse,
-			isInline: _isInline,
-			isOpen,
-			label,
-			onBlur,
-			menu,
-			onClick,
-			onFocus,
-			onKeyDown,
-			onMouseDown,
-			onMouseEnter,
-			onMouseLeave,
-			openOn: openOnProp,
-			style,
-			tabIndex,
-			tooltip,
-			triggerRef,
-			triggerClassName,
-			variant,
-		} = props;
-
-		const openOn = openOnProp === 'hover' ? 'click' : openOnProp;
-
-		// Trigger manipulation
-		let propsFromGrandchildButton: Record<string, unknown> = {};
-
-		// If there are children, extract props from the Button child
-		if (React.Children.count(children) !== 0) {
-			React.Children.forEach(children, (child) => {
-				if (
-					child &&
-					React.isValidElement(child) &&
-					(child.type as { displayName?: string })?.displayName ===
-						Button.displayName
-				) {
-					propsFromGrandchildButton = child.props as Record<string, unknown>;
+			ref: triggerRef as (element: HTMLElement | null) => void,
+			tabIndex: tabIndex === undefined ? undefined : Number(tabIndex),
+		});
+	} else {
+		// The Button's own props override MenuDropdown's
+		const buttonProps = isElementOfType<ButtonProps>(buttonElement, Button)
+			? (buttonElement.props as Record<string, unknown>)
+			: {};
+		const consumerButtonRef = buttonProps.buttonRef as ButtonProps['buttonRef'];
+		renderedTrigger = (
+			<Button
+				{...(mergeProps(buttonDefaults, buttonProps) as ButtonProps)}
+				buttonRef={
+					consumerButtonRef
+						? (element: HTMLButtonElement | null) => {
+								consumerButtonRef(element);
+								triggerRef?.(element);
+							}
+						: triggerRef
 				}
-			});
-		}
-
-		// If Trigger has a Button child, then use the explicitly declared child's props
-		// layered on top of those passed down by dropdown's props to allow manual override
-		return (
-			<div
-				ref={ref}
-				className={classnames(
-					`slds-dropdown-trigger slds-dropdown-trigger_${openOn}`,
-					{
-						'slds-is-open': isOpen,
-					},
-					triggerClassName as string | string[] | Record<string, boolean>
-				)}
-				id={id}
-				onBlur={onBlur}
-				onClick={onClick}
-				onKeyDown={onKeyDown}
-				onFocus={onFocus}
-				onMouseDown={onMouseDown}
-				onMouseEnter={onMouseEnter}
-				onMouseLeave={onMouseLeave}
-			>
-				<Button
-					assistiveText={assistiveText}
-					className={className}
-					disabled={disabled}
-					hint={hint}
-					iconCategory={iconCategory}
-					iconName={iconName}
-					iconPosition={iconPosition}
-					iconSize={iconSize}
-					iconVariant={iconVariant}
-					inverse={inverse}
-					label={label}
-					style={style}
-					tabIndex={tabIndex}
-					tooltip={tooltip}
-					variant={variant}
-					aria-expanded={isOpen}
-					aria-haspopup
-					{...propsFromGrandchildButton}
-					buttonRef={triggerRef}
-				/>
-				{menu}
-			</div>
+			/>
 		);
 	}
-);
+
+	return (
+		<div
+			ref={ref}
+			className={classnames(
+				`slds-dropdown-trigger slds-dropdown-trigger_${openOn}`,
+				{
+					'slds-is-open': isOpen,
+				},
+				triggerClassName as string | string[] | Record<string, boolean>
+			)}
+			id={id}
+			onBlur={onBlur}
+			onClick={onClick}
+			onKeyDown={onKeyDown}
+			onFocus={onFocus}
+			onMouseDown={onMouseDown}
+			onMouseEnter={onMouseEnter}
+			onMouseLeave={onMouseLeave}
+		>
+			{renderedTrigger}
+			{menu}
+		</div>
+	);
+});
 
 ButtonTrigger.displayName = MENU_DROPDOWN_TRIGGER;
 
-export default ButtonTrigger;
+export default ButtonTrigger as React.ForwardRefExoticComponent<
+	ButtonTriggerProps & React.RefAttributes<HTMLDivElement>
+>;

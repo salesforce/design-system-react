@@ -44,9 +44,8 @@ class Example extends React.Component {
 					}
 					variant="feature"
 					{...this.props}
-				>
-					<Button label="Trigger Popover" />
-				</Popover>
+					trigger={<Button label="Trigger Popover" />}
+				/>
 			</IconSettings>
 		);
 	}

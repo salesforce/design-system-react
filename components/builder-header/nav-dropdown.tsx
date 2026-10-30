@@ -1,7 +1,6 @@
 import Button from '../button';
 import Icon from '../icon';
 import Dropdown from '../menu-dropdown';
-import DropdownTrigger from '../menu-dropdown/button-trigger';
 import { type MenuDropdownProps } from '../menu-dropdown/menu-dropdown';
 import type { IconCategory } from '../../types/common';
 
@@ -36,8 +35,9 @@ const BuilderHeaderNavDropdown = (props: BuilderHeaderNavDropdownProps) => {
 	// Separate props we care about in order to pass others along passively to the dropdown component
 	const { iconCategory, iconName, label, assistiveText, ...rest } = props;
 	return (
-		<Dropdown {...rest}>
-			<DropdownTrigger>
+		<Dropdown
+			{...rest}
+			trigger={
 				<Button
 					className="slds-builder-header__item-action slds-media slds-media_center"
 					variant="base"
@@ -65,8 +65,8 @@ const BuilderHeaderNavDropdown = (props: BuilderHeaderNavDropdownProps) => {
 						/>
 					</span>
 				</Button>
-			</DropdownTrigger>
-		</Dropdown>
+			}
+		/>
 	);
 };
 

@@ -17,6 +17,7 @@ export type {
 	PopoverRequestCloseData,
 	PopoverOpenData,
 	PopoverCloseData,
+	PopoverTriggerProps,
 } from './popover';
 
 export { PopoverNubbinPositions };
