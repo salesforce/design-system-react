@@ -1,4 +1,5 @@
-import { render, fireEvent } from '@testing-library/react';
+import { useState } from 'react';
+import { render, fireEvent, act } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
 import Input from '../';
@@ -423,6 +424,68 @@ describe('SLDSInput', () => {
 			fireEvent.mouseUp(decrement);
 			expect(onChangeData.number).toBe(0.9);
 			expect(onChangeData.value).toBe('0.9');
+		});
+
+		it('keeps counting while a button is held in controlled mode', () => {
+			vi.useFakeTimers();
+			try {
+				const values = [];
+				const ControlledCounter = () => {
+					const [value, setValue] = useState('0');
+					return (
+						<Input
+							label="Counter"
+							onChange={(event, data) => {
+								values.push(data.value);
+								setValue(data.value);
+							}}
+							value={value}
+							variant="counter"
+						/>
+					);
+				};
+				const { container } = render(
+					<IconSettings iconPath="/assets/icons">
+						<ControlledCounter />
+					</IconSettings>
+				);
+
+				const increment = container.querySelector(
+					'.slds-input__button_increment'
+				);
+
+				fireEvent.mouseDown(increment);
+				// First repeat after 500ms, then one every 75ms. Advance one step
+				// per `act` so the parent re-renders with the new value in between.
+				[500, 75, 75].forEach((delay) => {
+					act(() => {
+						vi.advanceTimersByTime(delay);
+					});
+				});
+				fireEvent.mouseUp(increment);
+
+				expect(values).toEqual(['1', '2', '3', '4']);
+			} finally {
+				vi.useRealTimers();
+			}
+		});
+
+		it('disables the increment button at maxValue in uncontrolled mode', () => {
+			const { container } = renderInput({
+				defaultValue: '0',
+				maxValue: 1,
+				variant: 'counter',
+			});
+
+			const increment = container.querySelector(
+				'.slds-input__button_increment'
+			);
+
+			fireEvent.mouseDown(increment);
+			fireEvent.mouseUp(increment);
+
+			expect(container.querySelector('input')).toHaveValue(1);
+			expect(increment).toBeDisabled();
 		});
 	});
 });

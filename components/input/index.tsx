@@ -4,6 +4,7 @@
 import React, {
 	useId,
 	useRef,
+	useReducer,
 	useCallback,
 	forwardRef,
 	type ReactNode,
@@ -291,6 +292,17 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 			timeout: null as ReturnType<typeof setTimeout> | null,
 		});
 		const lastStepEventRef = useRef<MouseEvent | KeyboardEvent | null>(null);
+		// Latest `performStep`, so the repeat timer of a held counter button
+		// reads current props (such as a controlled `value`) on every step.
+		const performStepRef = useRef<
+			(
+				direction: typeof INCREMENT | typeof DECREMENT,
+				event?: MouseEvent | KeyboardEvent
+			) => void
+		>(() => {});
+		// Re-renders after an uncontrolled step, so the counter buttons' disabled
+		// state reflects the value written directly to the input element.
+		const [, forceRender] = useReducer((count: number) => count + 1, 0);
 
 		const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
 
@@ -444,6 +456,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 					if (value === undefined && inputElementRef.current) {
 						// Uncontrolled mode
 						inputElementRef.current.value = String(currentValue);
+						forceRender();
 					}
 					if (onChange && stepEvent) {
 						onChange(stepEvent, {
@@ -465,7 +478,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 				} else {
 					steppingRef.current.timeout = setTimeout(() => {
 						steppingRef.current.currentDelay = steppingRef.current.speedDelay;
-						performStep(direction);
+						performStepRef.current(direction);
 					}, steppingRef.current.currentDelay);
 				}
 			},
@@ -479,6 +492,7 @@ const Input = forwardRef<HTMLDivElement, InputProps>(
 				value,
 			]
 		);
+		performStepRef.current = performStep;
 
 		const setInputRef = useCallback(
 			(element: HTMLInputElement | null) => {
