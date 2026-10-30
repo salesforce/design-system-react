@@ -5,3 +5,4 @@ export {
 	useClickOutside,
 	type UseClickOutsideOptions,
 } from './use-click-outside';
+export { useControllableState } from './use-controllable-state';
