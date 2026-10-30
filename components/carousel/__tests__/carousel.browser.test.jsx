@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { userEvent } from 'vitest/browser';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 
 import IconSettings from '../../icon-settings';
 import Carousel from '../index';
@@ -14,6 +14,19 @@ const makeItems = (length) =>
 		src: '/assets/images/carousel/carousel-01.jpg',
 		href: 'https://www.salesforce.com',
 	}));
+
+// These tests let real timers and React's real scheduler run, because wrapping the
+// waits in `act()` queues the interval tick and the translation effect into one flush
+// and hides the ordering bug they exist to catch. Tell React this file is not an act
+// environment so the resulting state updates don't log "not wrapped in act" warnings.
+let previousActEnvironment;
+beforeAll(() => {
+	previousActEnvironment = globalThis.IS_REACT_ACT_ENVIRONMENT;
+	globalThis.IS_REACT_ACT_ENVIRONMENT = false;
+});
+afterAll(() => {
+	globalThis.IS_REACT_ACT_ENVIRONMENT = previousActEnvironment;
+});
 
 const AUTOPLAY_INTERVAL = 100;
 const WRAPPER_WIDTH = 400;
