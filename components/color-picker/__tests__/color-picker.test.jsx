@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
@@ -27,12 +28,30 @@ const selectors = {
 	toggle: '.slds-color-picker__summary-button',
 };
 
+// `value` is controlled: a parent that accepts every `onChange`
+const StatefulColorPicker = ({ initialValue = '', events = {}, ...props }) => {
+	const [value, setValue] = useState(initialValue);
+	return (
+		<ColorPicker
+			{...props}
+			events={{
+				...events,
+				onChange: (event, data) => {
+					setValue(data.color);
+					events.onChange?.(event, data);
+				},
+			}}
+			value={value}
+		/>
+	);
+};
+
 describe('SLDSColorPicker', () => {
 	describe('Summary input', () => {
 		it('fires onChange with value and isValid set to true when valid', () => {
 			const onChange = vi.fn();
 			const { container } = render(
-				<ColorPicker
+				<ColorPicker value=""
 					events={{
 						onChange: onChange,
 					}}
@@ -58,7 +77,7 @@ describe('SLDSColorPicker', () => {
 		it('fires onChange with named value and isValid set to true when valid', () => {
 			const onChange = vi.fn();
 			const { container } = render(
-				<ColorPicker
+				<ColorPicker value=""
 					events={{
 						onChange: onChange,
 					}}
@@ -84,7 +103,7 @@ describe('SLDSColorPicker', () => {
 		it('fires onChange with value and isValid set to false when invalid', () => {
 			const onChange = vi.fn();
 			const { container } = render(
-				<ColorPicker
+				<ColorPicker value=""
 					events={{
 						onChange: onChange,
 					}}
@@ -110,7 +129,7 @@ describe('SLDSColorPicker', () => {
 		it('fires onValidateColor when input changes', () => {
 			const customValidator = vi.fn();
 			const { container } = render(
-				<ColorPicker
+				<ColorPicker value=""
 					events={{
 						onValidateColor: customValidator,
 					}}
@@ -141,7 +160,7 @@ describe('SLDSColorPicker', () => {
 			const onOpenSpy = vi.fn();
 
 			const { container } = render(
-				<ColorPicker onRequestOpen={onRequestOpenSpy} onOpen={onOpenSpy} />
+				<ColorPicker value="" onRequestOpen={onRequestOpenSpy} onOpen={onOpenSpy} />
 			);
 
 			const button = container.querySelector(selectors.toggle);
@@ -156,7 +175,9 @@ describe('SLDSColorPicker', () => {
 
 		it('closes popover when clicked and popover is open', async () => {
 			const onCloseSpy = vi.fn();
-			const { container } = render(<ColorPicker isOpen onClose={onCloseSpy} />);
+			const { container } = render(
+				<ColorPicker value="" defaultIsOpen onClose={onCloseSpy} />
+			);
 
 			const button = container.querySelector(selectors.toggle);
 			await userEvent.click(button);
@@ -315,7 +336,11 @@ describe('SLDSColorPicker', () => {
 		describe('Submit button', () => {
 			it('sets the input color', () => {
 				const { container } = render(
-					<ColorPicker isOpen value="#000000" swatchColors={['#ff0000']} />
+					<StatefulColorPicker
+						defaultIsOpen
+						initialValue="#000000"
+						swatchColors={['#ff0000']}
+					/>
 				);
 
 				const swatch = container.querySelector(selectors.swatch);
@@ -394,7 +419,7 @@ describe('SLDSColorPicker', () => {
 					it('change causes color hue to update', () => {
 						const onWorkingColorChange = vi.fn();
 						const { container } = render(
-							<ColorPicker
+							<ColorPicker value=""
 								isOpen
 								events={{
 									onWorkingColorChange: onWorkingColorChange,
@@ -626,7 +651,7 @@ describe('SLDSColorPicker', () => {
 				it('invalid value sets error message', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker
+						<ColorPicker value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -655,7 +680,7 @@ describe('SLDSColorPicker', () => {
 				it('valid value updates color', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker
+						<ColorPicker value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -687,7 +712,7 @@ describe('SLDSColorPicker', () => {
 					};
 
 					const { container } = render(
-						<ColorPicker
+						<ColorPicker value=""
 							isOpen
 							events={{ onValidateWorkingColor: customColorValidator }}
 						/>
@@ -706,7 +731,7 @@ describe('SLDSColorPicker', () => {
 
 				it('valueWorking is set in custom tab inner input', () => {
 					const { container } = render(
-						<ColorPicker isOpen valueWorking="#00ff00" />
+						<ColorPicker value="" isOpen valueWorking="#00ff00" />
 					);
 
 					const hexInput = container.querySelector(selectors.customHex);
@@ -719,7 +744,7 @@ describe('SLDSColorPicker', () => {
 				it('non-number causes error message', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker
+						<ColorPicker value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -748,7 +773,7 @@ describe('SLDSColorPicker', () => {
 				it('non-integer number causes error message', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker
+						<ColorPicker value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -777,7 +802,7 @@ describe('SLDSColorPicker', () => {
 				it('number greater than 255 causes error message', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker
+						<ColorPicker value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -806,7 +831,7 @@ describe('SLDSColorPicker', () => {
 				it('negative number causes error message', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker
+						<ColorPicker value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -835,7 +860,7 @@ describe('SLDSColorPicker', () => {
 				it('valid number updates color', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker
+						<ColorPicker value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -870,7 +895,7 @@ describe('SLDSColorPicker', () => {
 			const label = 'Pick a color';
 			const assistiveText = 'Should be read';
 			const { container } = render(
-				<ColorPicker
+				<ColorPicker value=""
 					labels={{ label }}
 					assistiveText={{ label: assistiveText }}
 				/>
@@ -883,11 +908,318 @@ describe('SLDSColorPicker', () => {
 
 		it('Use label for screen reader if assistive text is not provided', () => {
 			const label = 'Pick a color';
-			const { container } = render(<ColorPicker labels={{ label }} />);
+			const { container } = render(<ColorPicker value="" labels={{ label }} />);
 
 			const button = container.querySelector(selectors.toggle);
 			const span = button.querySelector('span');
 			expect(span.textContent).toContain(label);
+		});
+	});
+
+	describe('Control model', () => {
+		it('summary input renders the controlled value and reports typed text without changing', () => {
+			const onChange = vi.fn();
+			const { container } = render(
+				<ColorPicker events={{ onChange }} value="#000000" />
+			);
+
+			const input = container.querySelector(selectors.summaryInput);
+			fireEvent.change(input, { target: { value: '#ff0000' } });
+
+			expect(onChange).toHaveBeenCalledWith(
+				expect.anything(),
+				expect.objectContaining({ color: '#ff0000', isValid: true })
+			);
+			// The parent did not update `value`, so the input keeps showing it
+			expect(input.value).toBe('#000000');
+		});
+
+		it('summary input does not type uncontrolled when events.onChange is missing', () => {
+			const { container } = render(<ColorPicker value="#000000" />);
+
+			const input = container.querySelector(selectors.summaryInput);
+			fireEvent.change(input, { target: { value: '#ff0000' } });
+
+			expect(input.value).toBe('#000000');
+		});
+
+		it('summary input follows value when the parent updates it', () => {
+			const { container } = render(<StatefulColorPicker />);
+
+			const input = container.querySelector(selectors.summaryInput);
+			fireEvent.change(input, { target: { value: '#ff0000' } });
+
+			expect(input.value).toBe('#ff0000');
+		});
+
+		it('a parent that rejects Done keeps the old value', () => {
+			const onChange = vi.fn();
+			const { container } = render(
+				<ColorPicker
+					defaultIsOpen
+					events={{ onChange }}
+					swatchColors={['#ff0000']}
+					value="#000000"
+				/>
+			);
+
+			fireEvent.click(container.querySelector(selectors.swatch));
+			fireEvent.click(container.querySelector(selectors.submit));
+
+			expect(onChange).toHaveBeenCalledWith(
+				expect.anything(),
+				expect.objectContaining({ color: '#ff0000', isValid: true })
+			);
+			expect(container.querySelector(selectors.summaryInput).value).toBe(
+				'#000000'
+			);
+		});
+
+		it('derives the error message from value instead of seeding it', () => {
+			const { container, rerender } = render(<ColorPicker value="#000000" />);
+			expect(container.querySelector('.slds-form-error')).not.toBeInTheDocument();
+
+			rerender(<ColorPicker value="not-a-color" />);
+			expect(container.querySelector('.slds-form-error')).toHaveTextContent(
+				'The color entered is invalid'
+			);
+
+			rerender(<ColorPicker value="#00ff00" />);
+			expect(container.querySelector('.slds-form-error')).not.toBeInTheDocument();
+
+			rerender(<ColorPicker errorText="Custom error" value="#00ff00" />);
+			expect(container.querySelector('.slds-form-error')).toHaveTextContent(
+				'Custom error'
+			);
+		});
+
+		it('warns when value is omitted and renders no color', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = render(<ColorPicker />);
+
+			expect(container.querySelector(selectors.summaryInput).value).toBe('');
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`value` is required by SLDSColorPicker')
+			);
+			consoleError.mockRestore();
+		});
+
+		describe('isOpen', () => {
+			it('controlled isOpen={false} does not open on click, but requests open', () => {
+				const onRequestOpen = vi.fn();
+				const { container } = render(
+					<ColorPicker
+						isOpen={false}
+						onRequestOpen={onRequestOpen}
+						value="#000000"
+					/>
+				);
+
+				fireEvent.click(container.querySelector(selectors.toggle));
+
+				expect(onRequestOpen).toHaveBeenCalledTimes(1);
+				expect(
+					container.querySelector(selectors.popover)
+				).not.toBeInTheDocument();
+			});
+
+			it('controlled isOpen stays open on Cancel, Done and trigger click, and requests close', () => {
+				const onRequestClose = vi.fn();
+				const onRequestOpen = vi.fn();
+				const { container } = render(
+					<ColorPicker
+						isOpen
+						onRequestClose={onRequestClose}
+						onRequestOpen={onRequestOpen}
+						value="#000000"
+					/>
+				);
+
+				fireEvent.click(container.querySelector(selectors.cancel));
+				fireEvent.click(container.querySelector(selectors.submit));
+				fireEvent.click(container.querySelector(selectors.toggle));
+
+				expect(container.querySelector(selectors.popover)).toBeInTheDocument();
+				expect(onRequestClose.mock.calls.map((call) => call[1])).toEqual([
+					{ trigger: 'cancel' },
+					{ trigger: 'submit' },
+					{ trigger: 'triggerClick' },
+				]);
+				// A click while open is a close request, not an open request
+				expect(onRequestOpen).not.toHaveBeenCalled();
+			});
+
+			it('controlled isOpen opens and closes when the parent updates it', () => {
+				const ControlledOpen = () => {
+					const [isOpen, setIsOpen] = useState(false);
+					return (
+						<ColorPicker
+							isOpen={isOpen}
+							onRequestClose={() => setIsOpen(false)}
+							onRequestOpen={() => setIsOpen(true)}
+							value="#000000"
+						/>
+					);
+				};
+				const { container } = render(<ControlledOpen />);
+
+				fireEvent.click(container.querySelector(selectors.toggle));
+				expect(container.querySelector(selectors.popover)).toBeInTheDocument();
+
+				fireEvent.click(container.querySelector(selectors.cancel));
+				expect(
+					container.querySelector(selectors.popover)
+				).not.toBeInTheDocument();
+			});
+
+			it('uncontrolled opens and closes itself without callbacks', () => {
+				const { container } = render(<ColorPicker value="#000000" />);
+
+				fireEvent.click(container.querySelector(selectors.toggle));
+				expect(container.querySelector(selectors.popover)).toBeInTheDocument();
+
+				fireEvent.click(container.querySelector(selectors.cancel));
+				expect(
+					container.querySelector(selectors.popover)
+				).not.toBeInTheDocument();
+
+				fireEvent.click(container.querySelector(selectors.toggle));
+				fireEvent.click(container.querySelector(selectors.submit));
+				expect(
+					container.querySelector(selectors.popover)
+				).not.toBeInTheDocument();
+			});
+
+			it('uncontrolled with callbacks still opens and closes itself', () => {
+				const onRequestOpen = vi.fn();
+				const onRequestClose = vi.fn();
+				const { container } = render(
+					<ColorPicker
+						onRequestClose={onRequestClose}
+						onRequestOpen={onRequestOpen}
+						value="#000000"
+					/>
+				);
+
+				fireEvent.click(container.querySelector(selectors.toggle));
+				expect(container.querySelector(selectors.popover)).toBeInTheDocument();
+				expect(onRequestOpen).toHaveBeenCalledTimes(1);
+
+				fireEvent.click(container.querySelector(selectors.toggle));
+				expect(
+					container.querySelector(selectors.popover)
+				).not.toBeInTheDocument();
+				expect(onRequestClose).toHaveBeenCalledWith(
+					expect.anything(),
+					expect.objectContaining({ trigger: 'triggerClick' })
+				);
+			});
+
+			it('defaultIsOpen seeds the uncontrolled open state', () => {
+				const { container } = render(
+					<ColorPicker defaultIsOpen value="#000000" />
+				);
+				expect(container.querySelector(selectors.popover)).toBeInTheDocument();
+
+				fireEvent.click(container.querySelector(selectors.cancel));
+				expect(
+					container.querySelector(selectors.popover)
+				).not.toBeInTheDocument();
+			});
+		});
+
+		describe('working color', () => {
+			it('re-syncs the draft from value when the popover opens', () => {
+				const { container, rerender } = render(
+					<ColorPicker
+						swatchColors={['#ff0000']}
+						value="#000000"
+						variant="custom"
+					/>
+				);
+				const customHexValue = () =>
+					container.querySelector(`${selectors.customHex} input`).value;
+
+				fireEvent.click(container.querySelector(selectors.toggle));
+				expect(customHexValue()).toBe('#000000');
+
+				fireEvent.change(
+					container.querySelector(`${selectors.customHex} input`),
+					{ target: { value: '#00ff00' } }
+				);
+				expect(customHexValue()).toBe('#00ff00');
+
+				// Cancel discards the draft
+				fireEvent.click(container.querySelector(selectors.cancel));
+				fireEvent.click(container.querySelector(selectors.toggle));
+				expect(customHexValue()).toBe('#000000');
+
+				// A new value is picked up the next time the popover opens
+				fireEvent.click(container.querySelector(selectors.cancel));
+				rerender(
+					<ColorPicker
+						swatchColors={['#ff0000']}
+						value="#0000ff"
+						variant="custom"
+					/>
+				);
+				fireEvent.click(container.querySelector(selectors.toggle));
+				expect(customHexValue()).toBe('#0000ff');
+			});
+
+			it('controlled valueWorking is honored when the parent rejects a change', () => {
+				const onWorkingColorChange = vi.fn();
+				const { container } = render(
+					<ColorPicker
+						events={{ onWorkingColorChange }}
+						isOpen
+						value="#000000"
+						valueWorking="#00ff00"
+						variant="custom"
+					/>
+				);
+				const hexInput = container.querySelector(`${selectors.customHex} input`);
+
+				fireEvent.change(hexInput, { target: { value: '#ff0000' } });
+
+				expect(onWorkingColorChange).toHaveBeenCalledWith(
+					expect.anything(),
+					expect.objectContaining({
+						color: expect.objectContaining({ hex: '#ff0000' }),
+					})
+				);
+				expect(hexInput.value).toBe('#00ff00');
+			});
+
+			it('controlled valueWorking follows the parent', () => {
+				const ControlledWorking = () => {
+					const [valueWorking, setValueWorking] = useState('#00ff00');
+					return (
+						<ColorPicker
+							events={{
+								onWorkingColorChange: (event, data) =>
+									setValueWorking(data.color.hex),
+							}}
+							isOpen
+							value="#000000"
+							valueWorking={valueWorking}
+							variant="custom"
+						/>
+					);
+				};
+				const { container } = render(<ControlledWorking />);
+				const hexInput = container.querySelector(`${selectors.customHex} input`);
+				const redInput = container.querySelector(`${selectors.customRed} input`);
+
+				fireEvent.change(hexInput, { target: { value: '#ff0000' } });
+				expect(hexInput.value).toBe('#ff0000');
+
+				// Partial (invalid) RGB input keeps the hex, so the draft is kept
+				fireEvent.change(redInput, { target: { value: 'abc' } });
+				expect(redInput.value).toBe('abc');
+			});
 		});
 	});
 });

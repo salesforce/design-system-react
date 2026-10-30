@@ -7,6 +7,10 @@ import Datepicker from '~/components/date-picker';
 class Example extends React.Component {
 	static displayName = 'DatepickerExample';
 
+	state = {
+		value: null,
+	};
+
 	render() {
 		return (
 			<Datepicker
@@ -15,6 +19,7 @@ class Example extends React.Component {
 				}}
 				isIsoWeekday
 				onChange={(event, data) => {
+					this.setState({ value: data.date });
 					if (this.props.action) {
 						const dataAsArray = Object.keys(data).map((key) => data[key]);
 						this.props.action('onChange')(event, data, ...dataAsArray);
@@ -28,6 +33,7 @@ class Example extends React.Component {
 				parser={(dateString) => {
 					return moment(dateString, 'MM-DD-YYYY').toDate();
 				}}
+				value={this.state.value}
 			/>
 		);
 	}

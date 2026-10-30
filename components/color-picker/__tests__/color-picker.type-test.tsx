@@ -7,21 +7,35 @@
 import ColorPicker from '../index';
 
 export const base = (
-	<ColorPicker defaultSelectedTab="custom" swatchColors={['#000000']} />
+	<ColorPicker
+		defaultSelectedTab="custom"
+		swatchColors={['#000000']}
+		value=""
+	/>
 );
 
 export const swatches = (
-	<ColorPicker swatchColors={['#000000']} variant="swatches" />
+	<ColorPicker swatchColors={['#000000']} value="" variant="swatches" />
 );
 
-export const custom = <ColorPicker variant="custom" />;
+export const custom = <ColorPicker value="" variant="custom" />;
 
 export const swatchesTab = (
 	// @ts-expect-error the swatches variant has no tabs
-	<ColorPicker defaultSelectedTab="custom" variant="swatches" />
+	<ColorPicker defaultSelectedTab="custom" value="" variant="swatches" />
 );
 
 export const customSwatches = (
 	// @ts-expect-error the custom variant has no swatches
-	<ColorPicker swatchColors={['#000000']} variant="custom" />
+	<ColorPicker swatchColors={['#000000']} value="" variant="custom" />
 );
+
+// `value` is controlled data, so it is required
+// @ts-expect-error `value` is required
+export const missingValue = <ColorPicker />;
+
+export const controlledOpen = (
+	<ColorPicker isOpen={false} onRequestOpen={() => {}} value="#ffffff" />
+);
+
+export const uncontrolledOpen = <ColorPicker defaultIsOpen value="#ffffff" />;
