@@ -830,6 +830,7 @@ describe('SimpleDataTable', () => {
 			expect(selectData).toEqual({
 				option: { id: 0, label: 'Add to Group', value: '1' },
 				optionIndex: 0,
+				value: '1',
 			});
 		});
 	});

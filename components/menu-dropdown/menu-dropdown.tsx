@@ -55,6 +55,7 @@ import {
 	MENU_DROPDOWN_TRIGGER,
 	LIST,
 } from '../../utilities/constants';
+import { useControllableState } from '../../utilities/hooks/use-controllable-state';
 import { IconSettingsContext } from '../icon-settings';
 import type { IconCategory } from '../../types/common';
 
@@ -150,6 +151,9 @@ export interface MenuDropdownDividerOption {
 export type MenuDropdownOption =
 	MenuDropdownItemOption | MenuDropdownHeaderOption | MenuDropdownDividerOption;
 
+/** The `value` of a MenuDropdown: one option value, or an array when `multiple`. */
+export type MenuDropdownValue = number | string | (number | string)[];
+
 /**
  * Data passed as the second argument of `onSelect`.
  */
@@ -158,6 +162,13 @@ export interface MenuDropdownSelectData {
 	option: MenuDropdownOption;
 	/** Index of the selected item within `options`. */
 	optionIndex: number;
+	/**
+	 * The requested next `value`. Without `multiple` this is the selected
+	 * option's `value`. With `multiple` it is the current `value` array with the
+	 * option's `value` added or removed (unchanged if the option has no `value`).
+	 * Pass it back as `value` to update the selection.
+	 */
+	value: MenuDropdownValue | undefined;
 }
 
 /**
@@ -187,15 +198,33 @@ export type MenuDropdownOpenData = Record<string, never>;
 export type MenuDropdownCloseData = Record<string, never>;
 
 /**
- * Event passed to `onOpen`: the trigger click, hover (`mouseenter`) or keydown
- * that opened the menu.
+ * Data passed as the second argument of `onRequestOpen`. Currently has no
+ * fields; it is an object so fields can be added without changing the
+ * callback shape.
+ */
+export type MenuDropdownRequestOpenData = Record<string, never>;
+
+/**
+ * Data passed as the second argument of `onRequestClose`. Currently has no
+ * fields; it is an object so fields can be added without changing the
+ * callback shape.
+ */
+export type MenuDropdownRequestCloseData = Record<string, never>;
+
+/**
+ * Event passed to `onOpen` and `onRequestOpen`: the trigger click, hover
+ * (`mouseenter`) or keydown that opened (or asked to open) the menu.
+ * `undefined` when there is no event (e.g. `onOpen` after a controlled
+ * `isOpen` change the component did not request).
  */
 export type MenuDropdownOpenEvent = MouseEvent | KeyboardEvent | undefined;
 
 /**
- * Event passed to `onClose`: the React event that closed the menu, the native
- * DOM `mousedown`/`touchstart` event for an outside click, or `undefined` when
- * there is no event (hover-close timeout, unmount).
+ * Event passed to `onClose` and `onRequestClose`: the React event that closed
+ * (or asked to close) the menu, the native DOM `mousedown`/`touchstart` event
+ * for an outside click, or `undefined` when there is no event (hover-close
+ * timeout, unmount, another menu opening, or a controlled `isOpen` change the
+ * component did not request).
  */
 export type MenuDropdownCloseEvent = React.SyntheticEvent | Event | undefined;
 
@@ -214,6 +243,11 @@ export interface MenuDropdownProps {
 	checkmark?: boolean;
 	/** Custom content to render in the dropdown */
 	children?: ReactNode;
+	/**
+	 * Initial open state when `isOpen` is not set (uncontrolled). Ignored when
+	 * `isOpen` is set.
+	 */
+	defaultIsOpen?: boolean;
 	/** CSS classes to be added to dropdown menu */
 	className?: string | string[] | Record<string, boolean>;
 	/** Class names added to the Dialog component */
@@ -255,7 +289,13 @@ export interface MenuDropdownProps {
 	inverse?: boolean;
 	/** @deprecated Use menuPosition="relative" instead */
 	isInline?: boolean;
-	/** Forces the dropdown to be open or closed */
+	/**
+	 * Whether the menu is open. Setting it (`true` or `false`) makes the open
+	 * state controlled: clicks, keys, hover, outside clicks and selection call
+	 * `onRequestOpen`/`onRequestClose` but never open or close the menu
+	 * themselves, so update `isOpen` from those callbacks. Leave it `undefined`
+	 * to let the menu manage its own open state (see `defaultIsOpen`).
+	 */
 	isOpen?: boolean;
 	/** Text within the trigger button */
 	label?: string | ReactNode;
@@ -280,9 +320,11 @@ export interface MenuDropdownProps {
 	/** Triggered when the trigger button is clicked */
 	onClick?: (event: MouseEvent) => void;
 	/**
-	 * Triggered when the dropdown is closed. Receives the event that closed it
-	 * (see `MenuDropdownCloseEvent`; `undefined` for the hover-close timeout and
-	 * unmount) and a `MenuDropdownCloseData` object.
+	 * Triggered after the menu closes, in both modes. Receives the event that
+	 * closed it (see `MenuDropdownCloseEvent`) and a `MenuDropdownCloseData`
+	 * object. With a controlled `isOpen` it fires when the parent sets
+	 * `isOpen={false}`, with the event of the matching `onRequestClose` if
+	 * there was one. To close a controlled menu, use `onRequestClose`.
 	 */
 	onClose?: (
 		event: MenuDropdownCloseEvent,
@@ -299,14 +341,39 @@ export interface MenuDropdownProps {
 	/** Called when mouse hover leaves the trigger button */
 	onMouseLeave?: (event: MouseEvent) => void;
 	/**
-	 * Triggered when the dropdown is opened. Receives the click, `mouseenter` or
-	 * keydown event that opened it and a `MenuDropdownOpenData` object.
+	 * Triggered after the menu opens, in both modes. Receives the click,
+	 * `mouseenter` or keydown event that opened it and a
+	 * `MenuDropdownOpenData` object. With a controlled `isOpen` it fires when
+	 * the parent sets `isOpen={true}`, with the event of the matching
+	 * `onRequestOpen` if there was one. To open a controlled menu, use
+	 * `onRequestOpen`.
 	 */
 	onOpen?: (event: MenuDropdownOpenEvent, data: MenuDropdownOpenData) => void;
 	/**
+	 * Called when the user asks to close the menu (trigger click, Escape, Tab,
+	 * outside click, hover leave, selecting an item, or another menu opening),
+	 * whether `isOpen` is controlled or not. With a controlled `isOpen`, set it
+	 * to `false` here to close the menu.
+	 */
+	onRequestClose?: (
+		event: MenuDropdownCloseEvent,
+		data: MenuDropdownRequestCloseData
+	) => void;
+	/**
+	 * Called when the user asks to open the menu (trigger click, hover, or
+	 * keyboard), whether `isOpen` is controlled or not. With a controlled
+	 * `isOpen`, set it to `true` here to open the menu.
+	 */
+	onRequestOpen?: (
+		event: MenuDropdownOpenEvent,
+		data: MenuDropdownRequestOpenData
+	) => void;
+	/**
 	 * Triggered when an item in the menu is selected by mouse or keyboard.
-	 * Receives the triggering event and `{ option, optionIndex }`. Clicking
-	 * custom (non-`List`) content does not call `onSelect`; use `onClose`.
+	 * Receives the triggering event and `{ option, optionIndex, value }`, where
+	 * `value` is the requested next `value`. The selection shown in the menu
+	 * comes only from the `value` prop, so update it here. Clicking custom
+	 * (non-`List`) content does not call `onSelect`; use `onClose`.
 	 */
 	onSelect?: (
 		event: MouseEvent | KeyboardEvent | undefined,
@@ -332,8 +399,14 @@ export interface MenuDropdownProps {
 	tooltipMenuItem?: ReactNode;
 	/** CSS classes to be added to wrapping trigger div */
 	triggerClassName?: string | string[] | Record<string, boolean>;
-	/** Current selected menu item */
-	value?: number | string | (number | string)[];
+	/**
+	 * The selected option `value` (an array of values when `multiple`). This
+	 * is the only source of the selection shown with `checkmark` or
+	 * `multiple`: selecting an item does not change it, so update it from
+	 * `onSelect` (`data.value`). Leave it `undefined` for a menu without
+	 * selection state.
+	 */
+	value?: MenuDropdownValue;
 	/** Width of the menu dropdown */
 	width?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'bottom' | 'large';
 	/** Internal: Used for requesting focus */
@@ -403,6 +476,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		children,
 		className,
 		containerClassName,
+		defaultIsOpen,
 		disabled,
 		hasStaticAlignment,
 		hint,
@@ -435,6 +509,8 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		onMouseEnter,
 		onMouseLeave,
 		onOpen,
+		onRequestClose,
+		onRequestOpen,
 		onSelect,
 		openOn = 'click',
 		options,
@@ -456,11 +532,14 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	const generatedId = useMemo(() => generateId(), []);
 	const getId = useCallback(() => id || generatedId, [id, generatedId]);
 
-	// State
-	const [isOpenState, setIsOpenState] = useState(false);
+	// State. The open state is ephemeral: controlled when `isOpen` is set,
+	// otherwise internal (seeded by `defaultIsOpen`). The selection is data and
+	// always comes from `value`.
+	const [isOpenValue, setIsOpenValue, isOpenControlled] = useControllableState(
+		isOpenProp,
+		defaultIsOpen ?? false
+	);
 	const [focusedIndex, setFocusedIndex] = useState(-1);
-	const [selectedIndex, setSelectedIndex] = useState(-1);
-	const [selectedIndices, setSelectedIndices] = useState<number[]>([]);
 	const [triggerRendered, setTriggerRendered] = useState(false);
 
 	// Refs
@@ -481,49 +560,59 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		checkProps(MENU_DROPDOWN, props, componentDoc);
 	}, [props]);
 
-	// Calculate isOpen
-	const getIsOpen = useCallback((): boolean => {
-		return !!(typeof isOpenProp === 'boolean' ? isOpenProp : isOpenState);
-	}, [isOpenProp, isOpenState]);
+	// Whether the menu is logically open (controlled `isOpen` or internal state)
+	const getIsOpen = useCallback((): boolean => !!isOpenValue, [isOpenValue]);
 
 	const isOpen = !disabled && getIsOpen() && triggerRendered;
 
 	// Helper to get index by value
 	const getIndexByValue = useCallback(
 		(val: string | number | undefined, opts?: MenuDropdownOption[]): number => {
-			let foundIndex = -1;
-			if (opts && opts.length) {
-				opts.some((element, index) => {
-					if (element && element.value === val) {
-						foundIndex = index;
-						return true;
-					}
-					return false;
-				});
+			if (val === undefined || !opts) {
+				return -1;
 			}
-			return foundIndex;
+			return opts.findIndex((element) => element && element.value === val);
 		},
 		[]
 	);
 
-	// Update selected indices when value changes
-	useEffect(() => {
-		if (multiple) {
-			let values: (string | number)[] = [];
-			if (!Array.isArray(value)) {
-				if (value !== undefined) {
-					values = [value];
-				}
-			} else {
-				values = value;
-			}
-			values = values.filter((v) => getIndexByValue(v, options) !== -1);
-			const currentIndices = values.map((v) => getIndexByValue(v, options));
-			setSelectedIndices(currentIndices);
-		} else {
-			setSelectedIndex(getIndexByValue(value as string | number, options));
+	// The selected values, derived from `value` on every render
+	const selectedValues = useMemo((): (string | number)[] => {
+		if (Array.isArray(value)) {
+			return value;
 		}
-	}, [value, options, multiple, getIndexByValue]);
+		return value !== undefined ? [value] : [];
+	}, [value]);
+
+	const selectedIndex =
+		!multiple && !Array.isArray(value) ? getIndexByValue(value, options) : -1;
+
+	const selectedIndices = useMemo(
+		() =>
+			multiple
+				? selectedValues
+						.map((v) => getIndexByValue(v, options))
+						.filter((index) => index !== -1)
+				: [],
+		[multiple, selectedValues, getIndexByValue, options]
+	);
+
+	// The `value` that selecting `option` requests, reported by `onSelect`
+	const getNextValue = useCallback(
+		(option: MenuDropdownOption | undefined): MenuDropdownValue | undefined => {
+			const optionValue = option?.value;
+			if (!multiple) {
+				return optionValue;
+			}
+			if (optionValue === undefined) {
+				return [...selectedValues];
+			}
+			return selectedValues.includes(optionValue)
+				? selectedValues.filter((v) => v !== optionValue)
+				: [...selectedValues, optionValue];
+		},
+		[multiple, selectedValues]
+	);
 
 	// Menu position (for backwards compatibility)
 	const menuPosition = isInline ? 'relative' : menuPositionProp;
@@ -583,62 +672,147 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		() => {}
 	);
 
-	// Whether `onClose` has already fired for the current open cycle. The Dialog
-	// calls its `onClose` again when it unmounts after a close (with a stale
-	// `isOpen`), which would otherwise report every close twice.
-	const closeNotifiedRef = useRef(false);
+	// The open state `onOpen`/`onClose` last reported. It starts at the initial
+	// state, so a menu that renders open does not report an open on mount.
+	const notifiedOpenRef = useRef(Boolean(isOpenValue) && !disabled);
+	// With a controlled `isOpen`, the event of the last open/close request, so
+	// `onOpen`/`onClose` can report it once the parent applies the request.
+	const pendingRequestRef = useRef<{
+		isOpen: boolean;
+		event: MenuDropdownCloseEvent;
+	} | null>(null);
+	// The event that last opened the menu, passed on when it closes another menu
+	const openEventRef = useRef<MenuDropdownOpenEvent>(undefined);
+	const onOpenRef = useRef(onOpen);
+	const onCloseRef = useRef(onClose);
+	useEffect(() => {
+		onOpenRef.current = onOpen;
+		onCloseRef.current = onClose;
+	}, [onOpen, onClose]);
 
+	// Calls `onOpen`/`onClose` when the menu has actually opened or closed and
+	// that has not been reported yet. Uses refs only: the Dialog calls it from
+	// its unmount with a stale callback.
+	const notifyOpenChange = useCallback(
+		(nextIsOpen: boolean, event?: MenuDropdownCloseEvent) => {
+			if (notifiedOpenRef.current === nextIsOpen) {
+				return;
+			}
+			const pending = pendingRequestRef.current;
+			const reportedEvent =
+				event ??
+				(pending && pending.isOpen === nextIsOpen ? pending.event : undefined);
+			pendingRequestRef.current = null;
+			notifiedOpenRef.current = nextIsOpen;
+			if (nextIsOpen) {
+				openEventRef.current = reportedEvent as MenuDropdownOpenEvent;
+				onOpenRef.current?.(reportedEvent as MenuDropdownOpenEvent, {});
+			} else {
+				onCloseRef.current?.(reportedEvent, {});
+			}
+		},
+		[]
+	);
+
+	// Requests a close. With a controlled `isOpen` only `onRequestClose` runs;
+	// the menu closes (and `onClose` fires) when the parent sets `isOpen={false}`.
 	const handleClose = useCallback(
 		(event?: MenuDropdownCloseEvent) => {
 			if (getIsOpen()) {
-				if (currentOpenDropdown?.handleClose === handleCloseRef.current) {
-					currentOpenDropdown = undefined;
-				}
-				setIsOpenState(false);
 				isHoverRef.current = false;
-				closeNotifiedRef.current = true;
-				onClose?.(event, {});
+				if (isOpenControlled) {
+					pendingRequestRef.current = { isOpen: false, event };
+				}
+				onRequestClose?.(event, {});
+				if (!isOpenControlled) {
+					setIsOpenValue(false);
+					notifyOpenChange(false, event);
+				}
 			}
 		},
-		[getIsOpen, onClose]
+		[
+			getIsOpen,
+			isOpenControlled,
+			onRequestClose,
+			setIsOpenValue,
+			notifyOpenChange,
+		]
 	);
 
 	// Dialog `onClose` fires for the Tab key and on Dialog unmount. Tab is
 	// already handled by `handleKeyDown` (the Dialog forwards the keydown), so
-	// only the unmount call is used, and only when this open cycle's close has
-	// not been reported yet (e.g. MenuDropdown unmounting while open).
+	// only the unmount call is used: the menu has disappeared (closed, disabled,
+	// or MenuDropdown unmounting while open), so report the close if it has not
+	// been reported yet.
 	const handleDialogClose = useCallback(
 		(
 			event: MenuDropdownCloseEvent,
 			data?: { componentWillUnmount?: boolean }
 		) => {
-			if (data?.componentWillUnmount && !closeNotifiedRef.current) {
-				handleClose(event);
+			if (data?.componentWillUnmount && notifiedOpenRef.current) {
+				isHoverRef.current = false;
+				setIsOpenValue(false);
+				notifyOpenChange(false, event);
 			}
 		},
-		[handleClose]
+		[setIsOpenValue, notifyOpenChange]
 	);
 
-	// Update the ref so we can compare in cleanup
+	// Update the ref so the open-dropdown registration always calls the latest
 	handleCloseRef.current = handleClose;
 
-	// Handle open
+	// Requests an open. With a controlled `isOpen` only `onRequestOpen` runs; the
+	// menu opens (and `onOpen` fires) when the parent sets `isOpen={true}`.
 	const handleOpen = useCallback(
 		(event?: MenuDropdownOpenEvent) => {
 			if (!getIsOpen()) {
-				if (
-					currentOpenDropdown &&
-					isFunction(currentOpenDropdown.handleClose)
-				) {
-					currentOpenDropdown.handleClose(event);
+				if (isOpenControlled) {
+					pendingRequestRef.current = { isOpen: true, event };
 				}
-				currentOpenDropdown = { handleClose };
-				setIsOpenState(true);
-				onOpen?.(event, {});
+				onRequestOpen?.(event, {});
+				if (!isOpenControlled) {
+					setIsOpenValue(true);
+					notifyOpenChange(true, event);
+				}
 			}
 		},
-		[getIsOpen, handleClose, onOpen]
+		[
+			getIsOpen,
+			isOpenControlled,
+			onRequestOpen,
+			setIsOpenValue,
+			notifyOpenChange,
+		]
 	);
+
+	// Report an open that did not come from an uncontrolled request: a
+	// controlled `isOpen` change, or the menu showing again after `disabled`
+	// is cleared. Closes are reported by the Dialog unmount.
+	useEffect(() => {
+		if (isOpen) {
+			notifyOpenChange(true);
+		}
+	}, [isOpen, notifyOpenChange]);
+
+	// Only one MenuDropdown is open at a time: when this one shows, ask the
+	// previously open one to close. The registration delegates to the latest
+	// `handleClose` so it never acts on a stale open state.
+	const openDropdownRef = useRef({
+		handleClose: (event?: MenuDropdownCloseEvent) =>
+			handleCloseRef.current(event),
+	});
+
+	useEffect(() => {
+		const self = openDropdownRef.current;
+		if (isOpen) {
+			if (currentOpenDropdown && currentOpenDropdown !== self) {
+				currentOpenDropdown.handleClose(openEventRef.current);
+			}
+			currentOpenDropdown = self;
+		} else if (currentOpenDropdown === self) {
+			currentOpenDropdown = undefined;
+		}
+	}, [isOpen]);
 
 	// Handle click outside - called via document event listener
 	const handleClickOutside = useCallback(
@@ -746,24 +920,25 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 	// Handle select
 	// `event` is the keydown from keyboard selection, or the click forwarded by
 	// the menu-list item.
+	// Selection is not stored: `onSelect` reports the requested `value` and the
+	// parent passes it back. Without `multiple`, selecting also requests a close.
 	const handleSelect = useCallback(
 		(index: number, event?: MouseEvent | KeyboardEvent) => {
 			if (!multiple) {
-				setSelectedIndex(index);
 				handleClose(event);
 				setFocus();
-			} else if (selectedIndices.indexOf(index) === -1) {
-				setSelectedIndices((prev) => [...prev, index]);
-			} else {
-				setSelectedIndices((prev) => prev.filter((i) => i !== index));
 			}
 
 			if (onSelect && options) {
 				const option = options[index];
-				onSelect(event, { option, optionIndex: index });
+				onSelect(event, {
+					option,
+					optionIndex: index,
+					value: getNextValue(option),
+				});
 			}
 		},
-		[multiple, selectedIndices, handleClose, setFocus, onSelect, options]
+		[multiple, handleClose, setFocus, onSelect, options, getNextValue]
 	);
 
 	// Focus menu item
@@ -984,18 +1159,12 @@ const MenuDropdown: React.FC<MenuDropdownProps> & {
 		renderOverlay(isOpen);
 	}, [isOpen, renderOverlay]);
 
-	// A new open cycle starts whenever the menu is shown.
-	useEffect(() => {
-		if (isOpen) {
-			closeNotifiedRef.current = false;
-		}
-	}, [isOpen]);
-
 	// Cleanup on unmount
 	useEffect(() => {
+		const openDropdown = openDropdownRef.current;
 		return () => {
 			isUnmountingRef.current = true;
-			if (currentOpenDropdown?.handleClose === handleCloseRef.current) {
+			if (currentOpenDropdown === openDropdown) {
 				currentOpenDropdown = undefined;
 			}
 			renderOverlay(false);
