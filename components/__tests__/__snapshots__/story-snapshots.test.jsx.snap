@@ -10795,24 +10795,24 @@ exports[`Story HTML snapshots > Tree > AssistiveHeading 1`] = `
       <h4 class="slds-tree__group-header slds-assistive-text" id="example-tree__heading">Miscellaneous Foods</h4>
       <ul aria-labelledby="example-tree__heading" class="slds-tree" role="tree">
         <li id="example-tree-1" role="treeitem" aria-level="1" aria-selected="false" tabindex="0">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled slds-hidden" disabled="" tabindex="-1" type="button" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg></button><span class="slds-size_1-of-1"><span class="slds-tree__item-label slds-truncate" title="Grains">Grains</span></span></div>
         </li>
         <li id="example-tree-2" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Fruits" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-2" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-2__label"><span class="slds-tree__item-label slds-truncate" title="Fruits">Fruits</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-2__label"></ul>
         </li>
         <li id="example-tree-3" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Nuts" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-3" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-3__label"><span class="slds-tree__item-label slds-truncate" title="Nuts">Nuts</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-3__label"></ul>
         </li>
         <li id="example-tree-7" role="treeitem" aria-level="1" aria-expanded="false" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-7" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-7__label"><span class="slds-tree__item-label slds-truncate" title="Empty folder">Empty folder</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-7__label"></ul>
@@ -10830,24 +10830,24 @@ exports[`Story HTML snapshots > Tree > Base 1`] = `
       <h4 class="slds-tree__group-header" id="example-tree__heading">Miscellaneous Foods</h4>
       <ul aria-labelledby="example-tree__heading" class="slds-tree" role="tree">
         <li id="example-tree-1" role="treeitem" aria-level="1" aria-selected="false" tabindex="0">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled slds-hidden" disabled="" tabindex="-1" type="button" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg></button><span class="slds-size_1-of-1"><span class="slds-tree__item-label slds-truncate" title="Grains">Grains</span></span></div>
         </li>
         <li id="example-tree-2" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Fruits" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-2" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-2__label"><span class="slds-tree__item-label slds-truncate" title="Fruits">Fruits</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-2__label"></ul>
         </li>
         <li id="example-tree-3" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Nuts" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-3" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-3__label"><span class="slds-tree__item-label slds-truncate" title="Nuts">Nuts</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-3__label"></ul>
         </li>
         <li id="example-tree-7" role="treeitem" aria-level="1" aria-expanded="false" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-7" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-7__label"><span class="slds-tree__item-label slds-truncate" title="Empty folder">Empty folder</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-7__label"></ul>
@@ -10865,24 +10865,24 @@ exports[`Story HTML snapshots > Tree > BaseWithStencil 1`] = `
       <h4 class="slds-tree__group-header" id="example-tree__heading">Miscellaneous Foods</h4>
       <ul aria-labelledby="example-tree__heading" class="slds-tree" role="tree">
         <li id="example-tree-1" role="treeitem" aria-level="1" aria-selected="false" tabindex="0">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled slds-hidden" disabled="" tabindex="-1" type="button" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg></button><span class="slds-size_1-of-1"><span class="slds-tree__item-label slds-truncate" title="Grains">Grains</span></span></div>
         </li>
         <li id="example-tree-2" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Fruits" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-2" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-2__label"><span class="slds-tree__item-label slds-truncate" title="Fruits">Fruits</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-2__label"></ul>
         </li>
         <li id="example-tree-3" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Nuts" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-3" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-3__label"><span class="slds-tree__item-label slds-truncate" title="Nuts">Nuts</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-3__label"></ul>
         </li>
         <li id="example-tree-7" role="treeitem" aria-level="1" aria-expanded="false" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-7" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-7__label"><span class="slds-tree__item-label slds-truncate" title="Empty folder">Empty folder</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-7__label"></ul>
@@ -10907,24 +10907,24 @@ exports[`Story HTML snapshots > Tree > HighlightedSearch 1`] = `
       <h4 class="slds-tree__group-header" id="example-tree__heading">Miscellaneous Foods</h4>
       <ul aria-labelledby="example-tree__heading" class="slds-tree" role="tree">
         <li id="example-tree-1" role="treeitem" aria-level="1" aria-selected="false" tabindex="0">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled slds-hidden" disabled="" tabindex="-1" type="button" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg></button><span class="slds-size_1-of-1"><span><span class="slds-tree__item-label slds-truncate" title="Grains"><span>Grains</span></span></span></span></div>
         </li>
         <li id="example-tree-2" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Fruits" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-2" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-2__label"><span><span class="slds-tree__item-label slds-truncate" title="Fruits"><mark class="">Fruit</mark><span>s</span></span></span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-2__label"></ul>
         </li>
         <li id="example-tree-3" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Nuts" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-3" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-3__label"><span><span class="slds-tree__item-label slds-truncate" title="Nuts"><span>Nuts</span></span></span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-3__label"></ul>
         </li>
         <li id="example-tree-7" role="treeitem" aria-level="1" aria-expanded="false" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-7" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-7__label"><span><span class="slds-tree__item-label slds-truncate" title="Empty folder"><span>Empty folder</span></span></span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-7__label"></ul>
@@ -10942,56 +10942,56 @@ exports[`Story HTML snapshots > Tree > InitialExpandedSelected 1`] = `
       <h4 class="slds-tree__group-header" id="example-tree__heading">Miscellaneous Foods</h4>
       <ul aria-labelledby="example-tree__heading" class="slds-tree" role="tree">
         <li id="example-tree-1" role="treeitem" aria-level="1" aria-selected="false" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled slds-hidden" disabled="" tabindex="-1" type="button" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg></button><span class="slds-size_1-of-1"><span class="slds-tree__item-label slds-truncate" title="Grains">Grains</span></span></div>
         </li>
         <li id="example-tree-2" role="treeitem" aria-level="1" aria-expanded="true" aria-label="Fruits" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-2" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-2__label"><span class="slds-tree__item-label slds-truncate" title="Fruits">Fruits</span></span></div>
           <ul class="slds-is-expanded" role="group" aria-labelledby="example-tree-2__label">
             <li id="example-tree-4" role="treeitem" aria-level="2" aria-expanded="false" aria-label="Ground Fruits" tabindex="-1">
-              <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+              <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-4" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                     <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
                   </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-4__label"><span class="slds-tree__item-label slds-truncate" title="Ground Fruits">Ground Fruits</span></span></div>
               <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-4__label"></ul>
             </li>
             <li id="example-tree-5" role="treeitem" aria-level="2" aria-expanded="true" aria-label="Tree Fruits" tabindex="-1">
-              <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+              <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-5" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                     <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
                   </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-5__label"><span class="slds-tree__item-label slds-truncate" title="Tree Fruits">Tree Fruits</span></span></div>
               <ul class="slds-is-expanded" role="group" aria-labelledby="example-tree-5__label">
                 <li id="example-tree-15" role="treeitem" aria-level="3" aria-selected="true" tabindex="0">
-                  <div class="slds-tree__item slds-is-selected"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                  <div class="slds-tree__item slds-is-selected"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled slds-hidden" disabled="" tabindex="-1" type="button" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
                       </svg></button><span class="slds-size_1-of-1"><span class="slds-tree__item-label slds-truncate" title="Peaches">Peaches</span></span></div>
                 </li>
                 <li id="example-tree-16" role="treeitem" aria-level="3" aria-selected="false" tabindex="-1">
-                  <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                  <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled slds-hidden" disabled="" tabindex="-1" type="button" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
                       </svg></button><span class="slds-size_1-of-1"><span class="slds-tree__item-label slds-truncate" title="Pears">Pears</span></span></div>
                 </li>
                 <li id="example-tree-17" role="treeitem" aria-level="3" aria-expanded="false" aria-label="Citrus" tabindex="-1">
-                  <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                  <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-17" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
                       </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-17__label"><span class="slds-tree__item-label slds-truncate" title="Citrus">Citrus</span></span></div>
                   <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-17__label"></ul>
                 </li>
                 <li id="example-tree-18" role="treeitem" aria-level="3" aria-expanded="false" aria-label="Apples" tabindex="-1">
-                  <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                  <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-18" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
                       </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-18__label"><span class="slds-tree__item-label slds-truncate" title="Apples">Apples</span></span></div>
                   <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-18__label"></ul>
                 </li>
                 <li id="example-tree-19" role="treeitem" aria-level="3" aria-expanded="false" aria-label="Cherries" tabindex="-1">
-                  <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                  <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-19" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
                       </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-19__label"><span class="slds-tree__item-label slds-truncate" title="Cherries">Cherries</span></span></div>
                   <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-19__label"></ul>
                 </li>
                 <li id="example-tree-6" role="treeitem" aria-level="3" aria-selected="false" tabindex="-1">
-                  <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                  <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled slds-hidden" disabled="" tabindex="-1" type="button" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                         <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
                       </svg></button><span class="slds-size_1-of-1"><span class="slds-tree__item-label slds-truncate" title="Raspberries">Raspberries</span></span></div>
                 </li>
@@ -11000,13 +11000,13 @@ exports[`Story HTML snapshots > Tree > InitialExpandedSelected 1`] = `
           </ul>
         </li>
         <li id="example-tree-3" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Nuts" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-3" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-3__label"><span class="slds-tree__item-label slds-truncate" title="Nuts">Nuts</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-3__label"></ul>
         </li>
         <li id="example-tree-7" role="treeitem" aria-level="1" aria-expanded="false" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-7" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-7__label"><span class="slds-tree__item-label slds-truncate" title="Empty folder">Empty folder</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-7__label"></ul>
@@ -11024,84 +11024,84 @@ exports[`Story HTML snapshots > Tree > LargeDataset 1`] = `
       <h4 class="slds-tree__group-header" id="example-tree__heading">Miscellaneous Foods</h4>
       <ul aria-labelledby="example-tree__heading" class="slds-tree" role="tree">
         <li id="example-tree-1" role="treeitem" aria-level="1" aria-selected="false" tabindex="0">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled slds-hidden" disabled="" tabindex="-1" type="button" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg></button><span class="slds-size_1-of-1"><span class="slds-tree__item-label slds-truncate" title="Grains">Grains</span></span></div>
         </li>
         <li id="example-tree-2" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Fruits" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-2" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-2__label"><span class="slds-tree__item-label slds-truncate" title="Fruits">Fruits</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-2__label"></ul>
         </li>
         <li id="example-tree-3" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Nuts" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-3" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-3__label"><span class="slds-tree__item-label slds-truncate" title="Nuts">Nuts</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-3__label"></ul>
         </li>
         <li id="example-tree-7" role="treeitem" aria-level="1" aria-expanded="false" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-7" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-7__label"><span class="slds-tree__item-label slds-truncate" title="Empty folder">Empty folder</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-7__label"></ul>
         </li>
         <li id="example-tree-100" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Vegetables" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-100" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-100__label"><span class="slds-tree__item-label slds-truncate" title="Vegetables">Vegetables</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-100__label"></ul>
         </li>
         <li id="example-tree-111" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Herbs" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-111" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-111__label"><span class="slds-tree__item-label slds-truncate" title="Herbs">Herbs</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-111__label"></ul>
         </li>
         <li id="example-tree-122" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Spices" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-122" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-122__label"><span class="slds-tree__item-label slds-truncate" title="Spices">Spices</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-122__label"></ul>
         </li>
         <li id="example-tree-133" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Dairy" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-133" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-133__label"><span class="slds-tree__item-label slds-truncate" title="Dairy">Dairy</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-133__label"></ul>
         </li>
         <li id="example-tree-144" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Meats" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-144" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-144__label"><span class="slds-tree__item-label slds-truncate" title="Meats">Meats</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-144__label"></ul>
         </li>
         <li id="example-tree-155" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Category 1" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-155" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-155__label"><span class="slds-tree__item-label slds-truncate" title="Category 1">Category 1</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-155__label"></ul>
         </li>
         <li id="example-tree-164" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Category 2" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-164" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-164__label"><span class="slds-tree__item-label slds-truncate" title="Category 2">Category 2</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-164__label"></ul>
         </li>
         <li id="example-tree-173" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Category 3" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-173" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-173__label"><span class="slds-tree__item-label slds-truncate" title="Category 3">Category 3</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-173__label"></ul>
         </li>
         <li id="example-tree-182" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Category 4" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-182" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-182__label"><span class="slds-tree__item-label slds-truncate" title="Category 4">Category 4</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-182__label"></ul>
         </li>
         <li id="example-tree-191" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Category 5" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-191" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-191__label"><span class="slds-tree__item-label slds-truncate" title="Category 5">Category 5</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-191__label"></ul>
@@ -11119,24 +11119,24 @@ exports[`Story HTML snapshots > Tree > MultipleSelection 1`] = `
       <h4 class="slds-tree__group-header" id="example-tree__heading">Miscellaneous Foods</h4>
       <ul aria-labelledby="example-tree__heading" class="slds-tree" role="tree">
         <li id="example-tree-1" role="treeitem" aria-level="1" aria-selected="false" tabindex="0">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled slds-hidden" disabled="" tabindex="-1" type="button" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg></button><span class="slds-size_1-of-1"><span class="slds-tree__item-label slds-truncate" title="Grains">Grains</span></span></div>
         </li>
         <li id="example-tree-2" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Fruits" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-2" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-2__label"><span class="slds-tree__item-label slds-truncate" title="Fruits">Fruits</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-2__label"></ul>
         </li>
         <li id="example-tree-3" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Nuts" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-3" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-3__label"><span class="slds-tree__item-label slds-truncate" title="Nuts">Nuts</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-3__label"></ul>
         </li>
         <li id="example-tree-7" role="treeitem" aria-level="1" aria-expanded="false" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-7" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-7__label"><span class="slds-tree__item-label slds-truncate" title="Empty folder">Empty folder</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-7__label"></ul>
@@ -11154,24 +11154,24 @@ exports[`Story HTML snapshots > Tree > NoBranchSelect 1`] = `
       <h4 class="slds-tree__group-header" id="example-tree__heading">Miscellaneous Foods</h4>
       <ul aria-labelledby="example-tree__heading" class="slds-tree" role="tree">
         <li id="example-tree-1" role="treeitem" aria-level="1" aria-selected="false" tabindex="0">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled slds-hidden" disabled="" tabindex="-1" type="button" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg></button><span class="slds-size_1-of-1"><span class="slds-tree__item-label slds-truncate" title="Grains">Grains</span></span></div>
         </li>
         <li id="example-tree-2" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Fruits" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-2" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-2__label"><span class="slds-tree__item-label slds-truncate" title="Fruits">Fruits</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-2__label"></ul>
         </li>
         <li id="example-tree-3" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Nuts" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-3" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-3__label"><span class="slds-tree__item-label slds-truncate" title="Nuts">Nuts</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-3__label"></ul>
         </li>
         <li id="example-tree-7" role="treeitem" aria-level="1" aria-expanded="false" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-7" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-7__label"><span class="slds-tree__item-label slds-truncate" title="Empty folder">Empty folder</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-7__label"></ul>
@@ -11189,84 +11189,84 @@ exports[`Story HTML snapshots > Tree > OverflowHidden 1`] = `
       <h4 class="slds-tree__group-header" id="example-tree__heading">Miscellaneous Foods</h4>
       <ul aria-labelledby="example-tree__heading" class="slds-tree" role="tree" style="height:300px;overflow-y:auto">
         <li id="example-tree-1" role="treeitem" aria-level="1" aria-selected="false" tabindex="0">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled" disabled="" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small slds-is-disabled slds-hidden" disabled="" tabindex="-1" type="button" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg></button><span class="slds-size_1-of-1"><span class="slds-tree__item-label slds-truncate" title="Grains">Grains</span></span></div>
         </li>
         <li id="example-tree-2" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Fruits" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-2" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-2__label"><span class="slds-tree__item-label slds-truncate" title="Fruits">Fruits</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-2__label"></ul>
         </li>
         <li id="example-tree-3" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Nuts" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-3" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-3__label"><span class="slds-tree__item-label slds-truncate" title="Nuts">Nuts</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-3__label"></ul>
         </li>
         <li id="example-tree-7" role="treeitem" aria-level="1" aria-expanded="false" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-7" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-7__label"><span class="slds-tree__item-label slds-truncate" title="Empty folder">Empty folder</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-7__label"></ul>
         </li>
         <li id="example-tree-100" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Vegetables" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-100" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-100__label"><span class="slds-tree__item-label slds-truncate" title="Vegetables">Vegetables</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-100__label"></ul>
         </li>
         <li id="example-tree-111" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Herbs" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-111" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-111__label"><span class="slds-tree__item-label slds-truncate" title="Herbs">Herbs</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-111__label"></ul>
         </li>
         <li id="example-tree-122" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Spices" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-122" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-122__label"><span class="slds-tree__item-label slds-truncate" title="Spices">Spices</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-122__label"></ul>
         </li>
         <li id="example-tree-133" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Dairy" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-133" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-133__label"><span class="slds-tree__item-label slds-truncate" title="Dairy">Dairy</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-133__label"></ul>
         </li>
         <li id="example-tree-144" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Meats" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-144" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-144__label"><span class="slds-tree__item-label slds-truncate" title="Meats">Meats</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-144__label"></ul>
         </li>
         <li id="example-tree-155" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Category 1" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-155" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-155__label"><span class="slds-tree__item-label slds-truncate" title="Category 1">Category 1</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-155__label"></ul>
         </li>
         <li id="example-tree-164" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Category 2" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-164" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-164__label"><span class="slds-tree__item-label slds-truncate" title="Category 2">Category 2</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-164__label"></ul>
         </li>
         <li id="example-tree-173" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Category 3" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-173" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-173__label"><span class="slds-tree__item-label slds-truncate" title="Category 3">Category 3</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-173__label"></ul>
         </li>
         <li id="example-tree-182" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Category 4" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-182" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-182__label"><span class="slds-tree__item-label slds-truncate" title="Category 4">Category 4</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-182__label"></ul>
         </li>
         <li id="example-tree-191" role="treeitem" aria-level="1" aria-expanded="false" aria-label="Category 5" tabindex="-1">
-          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+          <div class="slds-tree__item"><button class="slds-button slds-button_icon slds-m-right_small" tabindex="-1" type="button" aria-controls="example-tree-191" aria-hidden="true"><svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
               </svg><span class="slds-assistive-text">Expand Tree Branch</span></button><span class="slds-size_1-of-1" id="example-tree-191__label"><span class="slds-tree__item-label slds-truncate" title="Category 5">Category 5</span></span></div>
           <ul class="slds-is-collapsed" role="group" aria-labelledby="example-tree-191__label"></ul>

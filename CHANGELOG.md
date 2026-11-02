@@ -76,6 +76,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `DatePicker`: `onRequestClose` no longer fires when the calendar is already closed
 - `Tree`: `onScroll` no longer reports `NaN` or `Infinity` when the list cannot scroll
 - `Carousel`: autoplay advances through every panel instead of stalling after the first tick, and the slides follow the panel on previous/next, indicator and arrow key navigation instead of lagging a click behind (or staying put) while the indicators move
+- Visual regressions under SLDS 2, where the markup relied on SLDS 1-only CSS or the rewrite changed it:
+  - `Tree`: leaf items no longer show a chevron, and branch chevrons rotate when expanded under SLDS 1 again (`aria-controls` and `aria-hidden` are restored on the toggle)
 
 ### Removed
 
