@@ -434,7 +434,7 @@ const Modal = forwardRef<HTMLElement, ModalProps>(
 					)}
 					onClick={handleModalClick}
 				>
-					{disableClose ? null : closeButton}
+					{disableClose || isPrompt ? null : closeButton}
 					{headerContent}
 				</header>
 			);

@@ -393,6 +393,18 @@ describe('SLDSModal', () => {
 			expect(header).toHaveClass('slds-theme_warning');
 		});
 
+		it('does not render a close button', () => {
+			// SLDS 1 hid it with `.slds-modal_prompt .slds-modal__close`; SLDS 2 does not.
+			renderModal({
+				isOpen: true,
+				prompt: 'warning',
+				heading: 'are you sure?',
+				footer: <div className="toes">Toes</div>,
+			});
+			const modal = getModalNode();
+			expect(modal.querySelector('.slds-modal__close')).not.toBeInTheDocument();
+		});
+
 		it('adds the footer html content', () => {
 			renderModal({
 				isOpen: true,
