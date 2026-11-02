@@ -13,6 +13,19 @@ import componentDoc from './component.json';
 
 const displayName = WELCOME_MAT_BADGE;
 
+// SLDS 2 only sizes and positions the complete check inside a tile, so the
+// badge's check needs the geometry SLDS 1 applied to every welcome mat check.
+// Visibility still comes from `.slds-welcome-mat__info-progress_complete`.
+const completeCheckStyle: React.CSSProperties = {
+	position: 'absolute',
+	height: '1.25rem',
+	width: '1.25rem',
+	padding: '0.25rem',
+	borderRadius: '1.25rem',
+	lineHeight: 0,
+	background: 'var(--slds-g-color-success-1, #3ba755)',
+};
+
 export interface WelcomeMatInfoBadgeProps {
 	/**
 	 *  **Assistive text for accessibility.**
@@ -105,6 +118,8 @@ class InfoBadge extends React.Component<WelcomeMatInfoBadgeProps> {
 						category="action"
 						name="check"
 						assistiveText={{ label: this.getCompletedText() }}
+						containerStyle={completeCheckStyle}
+						size="xx-small"
 					/>
 				</div>
 				{this.props.children}

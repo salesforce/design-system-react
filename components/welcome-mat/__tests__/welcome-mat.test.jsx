@@ -714,3 +714,24 @@ describe('SLDSWelcomeMat', () => {
 		});
 	});
 });
+
+describe('WelcomeMatInfoBadge', () => {
+	it('sizes and positions the complete check on the badge', () => {
+		// SLDS 2 only sizes and positions the welcome mat check inside a tile.
+		const { container } = render(
+			<IconSettings iconPath="/assets/icons">
+				<WelcomeMatInfoBadge image="/assets/images/welcome-mat/trailhead_badge@2x.png" />
+			</IconSettings>
+		);
+
+		const check = container.querySelector(
+			'.slds-welcome-mat__info-badge-container .slds-icon_container'
+		);
+		expect(check.style).toMatchObject({
+			position: 'absolute',
+			height: '1.25rem',
+			width: '1.25rem',
+		});
+		expect(check.querySelector('svg')).toHaveClass('slds-icon_xx-small');
+	});
+});
