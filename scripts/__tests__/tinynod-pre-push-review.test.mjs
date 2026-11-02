@@ -1,5 +1,5 @@
 /*
- * Tests for scripts/tinynod-pre-push-review.mjs, the optional advisory TinyNod
+ * Tests for scripts/tinynod-pre-push-review.ts, the optional advisory TinyNod
  * review in the husky pre-push hook.
  *
  * End-to-end cases run the real script in a throwaway repo with a stub
@@ -26,10 +26,14 @@ import {
 	isEnabled,
 	selectTarget,
 	versionOk,
-} from '../tinynod-pre-push-review.mjs';
+} from '../tinynod-pre-push-review.ts';
 
 const SCRIPT = fileURLToPath(
-	new URL('../tinynod-pre-push-review.mjs', import.meta.url)
+	new URL('../tinynod-pre-push-review.ts', import.meta.url)
+);
+// The throwaway repo has no node_modules, so run the script with this repo's tsx.
+const TSX = fileURLToPath(
+	new URL('../../node_modules/.bin/tsx', import.meta.url)
 );
 const ZERO = '0'.repeat(40);
 
@@ -59,7 +63,7 @@ const commit = (file, content) => {
 };
 
 const runHook = (stdin, extraEnv = {}) =>
-	spawnSync(process.execPath, [SCRIPT], {
+	spawnSync(TSX, [SCRIPT], {
 		cwd: work,
 		encoding: 'utf8',
 		input: stdin,

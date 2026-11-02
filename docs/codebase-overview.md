@@ -242,7 +242,7 @@ Components not in a `private` folder are considered public API and fall within t
 
 ### Other Top-Level Directories
 
-- `scripts/` - Build and release tooling
+- `scripts/` - Build and release tooling. New scripts are TypeScript (`.ts`, run with `tsx`, type-checked by `tsconfig.scripts.json`); older `.mjs`/`.js` ones are converted when substantially changed
 - `styles/` - Supplemental styles; use sparingly, prefer SLDS classes (see [SLDS Alignment](#slds-alignment))
 - `utilities/` - Shared, non-component helpers (DOM/event helpers, ID generation, dev-only prop warnings — see [Deprecation Warnings](#deprecation-warnings))
 

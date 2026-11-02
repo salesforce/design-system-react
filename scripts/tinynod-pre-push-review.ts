@@ -3,6 +3,9 @@
  * pre-push hook for authorized Salesforce developers who opt in. See
  * docs/tinynod-local-review.md.
  *
+ * Usage (from .husky/pre-push, with git's ref tuples on stdin):
+ *   tsx scripts/tinynod-pre-push-review.ts
+ *
  * Off by default. It never blocks a push: every path exits 0, and the result is
  * read from TinyNod's JSON output, not its exit code. CI never runs it.
  *
@@ -19,14 +22,60 @@ const FINDINGS_SHOWN = 10;
 const ZERO_OID = /^0+$/;
 const BASE_BRANCH = 'origin/master';
 
-const log = (message) => console.log(`pre-push: tinynod review ${message}`);
+export interface RefTuple {
+	localRef: string;
+	localOid: string;
+	remoteRef: string;
+	remoteOid: string;
+}
 
-const git = (args) => {
+export interface TargetChecks {
+	head: string | null;
+	isAncestor: (ancestor: string, descendant: string) => boolean;
+	mergeBase: (a: string, b: string) => string | null;
+}
+
+export type Target = { oid: string; base: string } | { skip: string };
+
+/** One TinyNod comment; field names vary between TinyNod versions. */
+export interface Finding {
+	severity?: string;
+	filePath?: string;
+	file?: string;
+	path?: string;
+	lineNumber?: number;
+	line?: number;
+	comment?: string;
+	title?: string;
+	message?: string;
+}
+
+export interface Verdict {
+	status: 'clean' | 'findings' | 'partial' | 'no_changes' | 'warning';
+	message: string;
+	findings?: Finding[];
+}
+
+interface ReviewPayload {
+	error?: unknown;
+	status?: string;
+	noChanges?: boolean;
+	failed?: unknown;
+	partial?: boolean;
+	summary?: unknown;
+	comments?: unknown;
+	findings?: unknown;
+}
+
+const log = (message: string) =>
+	console.log(`pre-push: tinynod review ${message}`);
+
+const git = (args: string[]): string | null => {
 	const r = spawnSync('git', args, { encoding: 'utf8' });
 	return r.status === 0 ? r.stdout.trim() : null;
 };
 
-const parseFlag = (value) => {
+const parseFlag = (value: string | null | undefined): boolean | null => {
 	const v = String(value ?? '')
 		.trim()
 		.toLowerCase();
@@ -36,14 +85,17 @@ const parseFlag = (value) => {
 };
 
 // TINYNOD_SKIP_HOOK > DSR_TINYNOD_REVIEW > git config dsr.tinynod.enabled.
-export function isEnabled(env, configValue) {
+export function isEnabled(
+	env: NodeJS.ProcessEnv,
+	configValue: string | null
+): boolean {
 	if (parseFlag(env.TINYNOD_SKIP_HOOK)) return false;
 	if (env.DSR_TINYNOD_REVIEW !== undefined)
 		return parseFlag(env.DSR_TINYNOD_REVIEW) === true;
 	return parseFlag(configValue) === true;
 }
 
-export function parseTuples(stdin) {
+export function parseTuples(stdin: string): RefTuple[] {
 	return stdin
 		.split('\n')
 		.map((line) => line.trim().split(/\s+/))
@@ -56,7 +108,7 @@ export function parseTuples(stdin) {
 		}));
 }
 
-const isProtected = (ref) =>
+const isProtected = (ref: string) =>
 	ref === 'refs/heads/master' || ref.startsWith('refs/tags/');
 
 /*
@@ -65,7 +117,10 @@ const isProtected = (ref) =>
  * otherwise (new branch, force-push) everything since the merge-base with
  * origin/master.
  */
-export function selectTarget(tuples, { head, isAncestor, mergeBase }) {
+export function selectTarget(
+	tuples: RefTuple[],
+	{ head, isAncestor, mergeBase }: TargetChecks
+): Target {
 	const pushed = tuples.filter((t) => !ZERO_OID.test(t.localOid));
 	if (!pushed.length) return { skip: 'nothing to review' };
 	if (pushed.some((t) => isProtected(t.remoteRef)))
@@ -83,7 +138,7 @@ export function selectTarget(tuples, { head, isAncestor, mergeBase }) {
 		: { skip: `no merge-base with ${BASE_BRANCH} (run git fetch origin)` };
 }
 
-export function versionOk(text) {
+export function versionOk(text: string | null | undefined): boolean {
 	const match = String(text ?? '').match(/(\d+)\.(\d+)\.(\d+)/);
 	if (!match) return false;
 	const version = match.slice(1).map(Number);
@@ -95,12 +150,12 @@ export function versionOk(text) {
 
 // Whole output first, then from the first line that starts a JSON object, so
 // a log line before the result does not hide it.
-function parseJson(stdout) {
-	const attempt = (text) => {
+function parseJson(stdout: string): ReviewPayload | null {
+	const attempt = (text: string): ReviewPayload | null => {
 		try {
-			const parsed = JSON.parse(text);
+			const parsed: unknown = JSON.parse(text);
 			return parsed && typeof parsed === 'object' && !Array.isArray(parsed)
-				? parsed
+				? (parsed as ReviewPayload)
 				: null;
 		} catch {
 			return null;
@@ -116,7 +171,17 @@ function parseJson(stdout) {
  * Classify a finished review. A skipped, failed or timed-out review is a
  * `warning`, never `clean`.
  */
-export function classify({ stdout = '', stderr = '', error, timedOut }) {
+export function classify({
+	stdout = '',
+	stderr = '',
+	error,
+	timedOut,
+}: {
+	stdout?: string;
+	stderr?: string;
+	error?: Error;
+	timedOut?: boolean;
+}): Verdict {
 	if (timedOut)
 		return {
 			status: 'warning',
@@ -144,8 +209,8 @@ export function classify({ stdout = '', stderr = '', error, timedOut }) {
 	if (typeof payload.failed !== 'boolean')
 		return { status: 'warning', message: 'unrecognized result shape' };
 	// TinyNod reports findings as `comments`.
-	const findings =
-		[payload.comments, payload.findings].find(Array.isArray) ?? [];
+	const findings = ([payload.comments, payload.findings].find(Array.isArray) ??
+		[]) as Finding[];
 	const count = `${findings.length} finding${findings.length === 1 ? '' : 's'}`;
 	if (
 		payload.partial === true ||
@@ -166,7 +231,7 @@ export function classify({ stdout = '', stderr = '', error, timedOut }) {
 	return { status: 'clean', message: 'no findings' };
 }
 
-export function describeFinding(finding) {
+export function describeFinding(finding: Finding): string {
 	const place = [
 		finding.filePath ?? finding.file ?? finding.path,
 		finding.lineNumber ?? finding.line,
@@ -179,7 +244,10 @@ export function describeFinding(finding) {
 	return `  [${finding.severity ?? 'unknown'}] ${place ? `${place} ` : ''}${text}`.trimEnd();
 }
 
-function main() {
+function main(): void {
+	// Exit early, silently, unless opted in via `git config dsr.tinynod.enabled`
+	// (or the env overrides in isEnabled), so contributors who haven't opted in
+	// see no output and `tinynod` is never called.
 	if (!isEnabled(process.env, git(['config', '--get', 'dsr.tinynod.enabled'])))
 		return;
 
@@ -187,7 +255,7 @@ function main() {
 		encoding: 'utf8',
 		timeout: 10_000,
 	});
-	if (version.error?.code === 'ENOENT') {
+	if ((version.error as NodeJS.ErrnoException | undefined)?.code === 'ENOENT') {
 		log('skipped: tinynod not found on PATH');
 		return;
 	}
@@ -204,7 +272,7 @@ function main() {
 			spawnSync('git', ['merge-base', '--is-ancestor', a, b]).status === 0,
 		mergeBase: (a, b) => git(['merge-base', a, b]),
 	});
-	if (target.skip) {
+	if ('skip' in target) {
 		log(`skipped: ${target.skip}`);
 		return;
 	}
@@ -230,7 +298,8 @@ function main() {
 		stdout: result.stdout ?? '',
 		stderr: result.stderr ?? '',
 		error: result.error,
-		timedOut: result.error?.code === 'ETIMEDOUT',
+		timedOut:
+			(result.error as NodeJS.ErrnoException | undefined)?.code === 'ETIMEDOUT',
 	});
 	log(`(advisory) ${verdict.status}: ${verdict.message}`);
 	const findings = verdict.findings ?? [];
@@ -246,7 +315,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
 	try {
 		main();
 	} catch (error) {
-		log(`unavailable: ${error.message}`);
+		log(`unavailable: ${(error as Error).message}`);
 	}
 	process.exitCode = 0;
 }
