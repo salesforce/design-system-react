@@ -20,6 +20,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `DatePicker` `onRequestOpen(event, { trigger })` (`'input-click' | 'icon-click' | 'keyboard'`), `onRequestClose(event, { trigger })` (`'date-select' | 'escape' | 'enter' | 'click-outside'`; the outside-click event is the native `mousedown`/`touchstart`), and `onClose(undefined, { componentWillUnmount })`
   - `MenuDropdown` `onOpen(event, {})` and `onClose(event, {})`
 - Exported data types for these callbacks, such as `TabsSelectData`, `MenuDropdownSelectData`, `ToastRequestCloseData`, `ModalRequestCloseData`, `PopoverRequestCloseTrigger`, `TreeNodeSelectData` and `SplitViewToggleData`
+- `Slider`, `Spinner`, `Tree`, `Modal`, `Popover`, `WelcomeMat` and `VerticalNavigation` forward `ref` to their root element: the outermost element each one renders, which is also where `className` goes. For `Modal` that is `section.slds-modal`, for `Popover` the trigger wrapper `div`, and for `Spinner` the `.slds-spinner_container` (or `.slds-spinner` with `hasContainer={false}`)
+- Suffixed class and style props for inner nodes, following the `className*` convention:
+  - `Slider` `className` on the root `.slds-form-element`
+  - `Spinner` `className` and `style` on the root, and `classNameSpinner` on `.slds-spinner`
+  - `Tree` `classNameList` and `styleList` on the top-level `ul.slds-tree`
+  - `Modal` `classNameContainer`, `classNameContent`, `classNameFooter`, `classNameHeader`, `classNamePortal` and `styleContent`
+  - `Popover` `classNameDialog` and `styleDialog` on the `.slds-popover` dialog, and `styleFooter` (applied to walkthrough footers too, like `classNameFooter`)
 
 ### Changed
 
@@ -30,6 +37,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - **BREAKING**: `Popover` `onRequestClose` data always includes a `trigger` from `PopoverRequestCloseTrigger`. A trigger click while open reports `'triggerClick'` and a hover close reports `'mouseLeave'` (both passed `{}` before), and Escape passes the keydown event instead of `undefined`. `onOpen(undefined, { portal })` and `onClose(undefined, { componentWillUnmount })` have exported data types
 - `DatePicker`: Down/Up in the closed input go through `onRequestOpen`, and Escape/Enter in the input go through `onRequestClose`, instead of setting internal state directly. Controlled pickers now open from the keyboard; uncontrolled pickers that pass `onRequestOpen` open from your handler, as they already did for clicks
 - Content props that are only rendered are typed `ReactNode` instead of `ReactElement`, so strings, fragments, arrays and `null` type-check: `SplitView` `master`/`detail`, `PageHeader` `trail`, `TabsPanel` `label`, `SetupAssistantStep` `figure` (an `Icon` is still resized to `small`), and the return type of the deprecated `Carousel` `onRenderItem`, `SetupAssistantStep` `onRenderFigure` and `MenuDropdown` `listItemRenderer`
+- **BREAKING**: `Popover` `className` and `style` apply to the root trigger wrapper `div` instead of the `.slds-popover` dialog. Move dialog classes and styles to `classNameDialog` and `styleDialog`
+- **BREAKING**: `WelcomeMat` `className` applies to the root `.slds-welcome-mat` element instead of the inner `.slds-welcome-mat__info-content`
 
 ### Deprecated
 
@@ -49,6 +58,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `SimpleDataTable` `onRenderSubHeadingRow` (use `renderSubHeadingRow`, which gets the same data without `key`; the table sets the row's key)
   - `MenuDropdown` `listItemRenderer`, which took a component (use `renderMenuItem({ icon, isSelected, option, optionIndex })`)
   - `SplitViewListbox` `listItem`, which took a component (use `renderListItem({ isFocused, isSelected, isUnread, item })`)
+- Class and style props named for the old convention. Each one still works (merged with its replacement), logs a one-time warning in development, and will be removed in the next major version:
+  - `Slider` `classNameContainer` (use `className`)
+  - `Spinner` `containerClassName` and `containerStyle` (use `className` and `style`)
+  - `Tree` `listClassName` and `listStyle` (use `classNameList` and `styleList`)
+  - `Modal` `containerClassName`, `contentClassName`, `contentStyle`, `footerClassName`, `headerClassName` and `portalClassName` (use `classNameContainer`, `classNameContent`, `styleContent`, `classNameFooter`, `classNameHeader` and `classNamePortal`)
+  - `Popover` `contentsClassName` (use `classNameDialog`), `triggerClassName` (use `className`), `footerClassName` (use `classNameFooter`) and `footerStyle` (use `styleFooter`)
 
 ### Fixed
 

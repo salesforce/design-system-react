@@ -1,3 +1,4 @@
+import { createRef } from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 
@@ -128,8 +129,8 @@ describe('Tree', () => {
 					className="this-is-a-container-test"
 					labels={{ heading: 'Foods' }}
 					id={id}
-					listClassName="this-is-an-unordered-list-test"
-					listStyle={{ height: '500px' }}
+					classNameList="this-is-an-unordered-list-test"
+					styleList={{ height: '500px' }}
 					log={() => {}}
 				/>
 			);
@@ -144,6 +145,66 @@ describe('Tree', () => {
 
 			const heading = container.querySelector(`#${id}__heading`);
 			expect(heading).toBeInTheDocument();
+		});
+
+		it('forwards ref to the root .slds-tree_container element', () => {
+			const ref = createRef();
+			const { container } = render(
+				<Tree
+					labels={{ heading: 'Foods' }}
+					id="ref-tree"
+					nodes={createNodes()}
+					ref={ref}
+				/>
+			);
+			expect(ref.current).toBe(container.querySelector('.slds-tree_container'));
+		});
+	});
+
+	describe('Deprecated listClassName and listStyle', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		it('still apply to the list, merged with the new props, and warn', async () => {
+			// Fresh modules so the once-per-session warning state is reset
+			vi.resetModules();
+			const { default: FreshTree } = await import('../index');
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+
+			const { container } = render(
+				<FreshTree
+					classNameList="new-list-class"
+					labels={{ heading: 'Foods' }}
+					id="deprecated-list-tree"
+					listClassName="old-list-class"
+					listStyle={{ height: '200px', width: '50px' }}
+					nodes={createNodes()}
+					styleList={{ height: '300px' }}
+				/>
+			);
+
+			const list = container.querySelector(`.${COMPONENT_CSS_CLASSES.base}`);
+			expect(list).toHaveClass('old-list-class', 'new-list-class');
+			expect(list).toHaveStyle({ height: '300px', width: '50px' });
+
+			const messages = consoleError.mock.calls.map((call) => call.join(' '));
+			expect(
+				messages.some(
+					(m) =>
+						m.includes('`listClassName` will be removed') &&
+						m.includes('Use `classNameList` instead.')
+				)
+			).toBe(true);
+			expect(
+				messages.some(
+					(m) =>
+						m.includes('`listStyle` will be removed') &&
+						m.includes('Use `styleList` instead.')
+				)
+			).toBe(true);
 		});
 	});
 
@@ -615,7 +676,7 @@ describe('Tree', () => {
 			const { container } = render(
 				<DefaultExample
 					labels={{ heading: 'Foods' }}
-					listStyle={{
+					styleList={{
 						height: '300px',
 						overflowY: 'auto',
 					}}

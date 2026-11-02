@@ -393,8 +393,8 @@ class Example extends React.Component {
 							this.props.noHeading ? undefined : { heading: this.props.heading }
 						}
 						id={this.props.id}
-						listStyle={this.props.listStyle}
-						listClassName={this.props.listClassName}
+						styleList={this.props.styleList}
+						classNameList={this.props.classNameList}
 						nodes={this.state.nodes['0'].nodes}
 						onRequestToggle={
 							this.props.onRequestToggle || this.handleRequestToggle

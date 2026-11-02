@@ -14,6 +14,13 @@ if (process.env.NODE_ENV !== 'production') {
 
 		deprecatedProperty(
 			COMPONENT,
+			props.classNameContainer,
+			'classNameContainer',
+			'className',
+			createDocUrl('className')
+		);
+		deprecatedProperty(
+			COMPONENT,
 			props.errorText,
 			'errorText',
 			'labels.error` and `hasError',

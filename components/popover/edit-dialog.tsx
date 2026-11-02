@@ -136,7 +136,7 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 						/>
 					</div>
 				}
-				footerStyle={{ borderTop: '0px' }}
+				styleFooter={{ borderTop: '0px' }}
 				onClose={this.handleClose}
 				onRequestClose={this.handleClose}
 				onOpen={this.handleOpen}

@@ -3,6 +3,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
+	forwardRef,
 	useState,
 	useEffect,
 	useRef,
@@ -10,7 +11,6 @@ import React, {
 	useId,
 	useContext,
 	type ReactNode,
-	type ReactElement,
 	type MouseEvent,
 	type KeyboardEvent,
 	type FocusEvent,
@@ -26,6 +26,9 @@ import keyboardNavigableDialog from '../../utilities/keyboard-navigable-dialog';
 import KEYS from '../../utilities/key-code';
 import { POPOVER } from '../../utilities/constants';
 import { IconSettingsContext } from '../icon-settings';
+import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import getComponentDocFn from '../../utilities/get-component-doc';
+import componentDoc from './component.json';
 
 const documentDefined = typeof document !== 'undefined';
 
@@ -142,21 +145,26 @@ export interface PopoverProps {
 	children: ReactNode;
 	/** Popover body content */
 	body: ReactNode;
-	/** CSS classes for body */
+	/** CSS classes for the `.slds-popover__body` element */
 	classNameBody?: string | string[] | Record<string, boolean>;
-	/** CSS classes for footer */
+	/** CSS classes for the `.slds-popover__footer` element */
 	classNameFooter?: string | string[] | Record<string, boolean>;
-	/** @deprecated Use classNameFooter */
+	/** @deprecated Use `classNameFooter`. */
 	footerClassName?: string | string[] | Record<string, boolean>;
-	/** CSS classes for popover container */
+	/**
+	 * CSS classes for the root element: the `div` that wraps the trigger. To style the
+	 * `.slds-popover` dialog (for example `slds-popover_large`), use `classNameDialog`.
+	 */
 	className?: string | string[] | Record<string, boolean>;
-	/** CSS classes for contents wrapper */
+	/** CSS classes for the `.slds-popover` dialog element */
+	classNameDialog?: string | string[] | Record<string, boolean>;
+	/** @deprecated Use `classNameDialog`, which lands on the same element. */
 	contentsClassName?: string | string[] | Record<string, boolean>;
 	/** Disable the popover */
 	disabled?: boolean;
 	/** Footer content */
 	footer?: ReactNode;
-	/** Footer styles */
+	/** @deprecated Use `styleFooter`. */
 	footerStyle?: CSSProperties;
 	/** Walkthrough footer actions */
 	footerWalkthroughActions?: ReactNode | ReactNode[];
@@ -212,9 +220,13 @@ export interface PopoverProps {
 	position?: PopoverPosition;
 	/** Walkthrough step text */
 	stepText?: string;
-	/** Custom styles */
+	/** Styles for the root element: the `div` that wraps the trigger. To style the dialog, use `styleDialog`. */
 	style?: CSSProperties;
-	/** CSS classes for trigger wrapper */
+	/** Styles for the `.slds-popover` dialog element */
+	styleDialog?: CSSProperties;
+	/** Styles for the `.slds-popover__footer` element */
+	styleFooter?: CSSProperties;
+	/** @deprecated Use `className`, which lands on the same element. */
 	triggerClassName?: string | string[] | Record<string, boolean>;
 	/** Popover variant */
 	variant?: PopoverVariant;
@@ -243,401 +255,493 @@ const defaultAssistiveText: PopoverAssistiveText = {
  * trigger such as a Button. It traps focus from the page and must be exited if focus
  * needs to be outside the Popover.
  */
-const Popover = ({
-	align = 'right',
-	assistiveText: propAssistiveText,
-	ariaLabelledby,
-	children,
-	body,
-	classNameBody,
-	classNameFooter,
-	footerClassName,
-	className,
-	contentsClassName,
-	disabled = false,
-	footer,
-	footerStyle,
-	footerWalkthroughActions,
-	hasNoCloseButton = false,
-	hasNoNubbin = false,
-	hasStaticAlignment = false,
-	hasNoTriggerStyles = false,
-	heading,
-	icon,
-	id: propId,
-	isOpen: controlledIsOpen,
-	offset,
-	onClick,
-	onClose,
-	onFocus,
-	onKeyDown,
-	onMouseDown,
-	onMouseEnter,
-	onMouseLeave,
-	onOpen,
-	onRequestClose,
-	onRequestTargetElement,
-	openOn = 'click',
-	overlay: overlayProp,
-	position = 'absolute',
-	stepText,
-	style,
-	triggerClassName,
-	variant = 'base',
-	hoverCloseDelay = 300,
-	closeButtonAssistiveText,
-}: PopoverProps): ReactElement => {
-	const generatedId = useId();
-	const id = propId || generatedId;
-	const context = useContext(IconSettingsContext);
-
-	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
-	const finalCloseButtonAssistiveText =
-		closeButtonAssistiveText || assistiveText.closeButton;
-
-	// State
-	const [internalIsOpen, setInternalIsOpen] = useState(false);
-	const [inputRendered, setInputRendered] = useState(false);
-
-	// Refs
-	const triggerRef = useRef<HTMLDivElement>(null);
-	const dialogRef = useRef<HTMLElement>(null);
-	const isHoverRef = useRef(false);
-	const isClosingRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-	const overlayRef = useRef<HTMLSpanElement | null>(null);
-	const isUnmountingRef = useRef(false);
-
-	// Derived state
-	const isOpen =
-		!disabled &&
-		(controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen);
-
-	// Get target element for positioning
-	const getTargetElement = useCallback(() => {
-		if (onRequestTargetElement) {
-			const target = onRequestTargetElement();
-			if (target) return target;
-		}
-		return triggerRef.current;
-	}, [onRequestTargetElement]);
-
-	// Handle dialog close (when unmounted)
-	const handleDialogClose = useCallback(
-		(
-			_event?: React.SyntheticEvent,
-			data?: { componentWillUnmount?: boolean }
-		) => {
-			const componentWillUnmount = data?.componentWillUnmount || false;
-
-			if (currentOpenPopover?.getId() === id) {
-				currentOpenPopover = null;
-			}
-
-			if (onClose) {
-				onClose(undefined, { componentWillUnmount });
-			}
+const Popover = forwardRef<HTMLDivElement, PopoverProps>(
+	(
+		{
+			align = 'right',
+			assistiveText: propAssistiveText,
+			ariaLabelledby,
+			children,
+			body,
+			classNameBody,
+			classNameFooter,
+			footerClassName,
+			className,
+			classNameDialog,
+			contentsClassName,
+			disabled = false,
+			footer,
+			footerStyle,
+			footerWalkthroughActions,
+			hasNoCloseButton = false,
+			hasNoNubbin = false,
+			hasStaticAlignment = false,
+			hasNoTriggerStyles = false,
+			heading,
+			icon,
+			id: propId,
+			isOpen: controlledIsOpen,
+			offset,
+			onClick,
+			onClose,
+			onFocus,
+			onKeyDown,
+			onMouseDown,
+			onMouseEnter,
+			onMouseLeave,
+			onOpen,
+			onRequestClose,
+			onRequestTargetElement,
+			openOn = 'click',
+			overlay: overlayProp,
+			position = 'absolute',
+			stepText,
+			style,
+			styleDialog,
+			styleFooter,
+			triggerClassName,
+			variant = 'base',
+			hoverCloseDelay = 300,
+			closeButtonAssistiveText,
 		},
-		[id, onClose]
-	);
-
-	// Handle dialog open (after it has rendered)
-	const handleDialogOpen = useCallback(
-		(_event?: unknown, data?: { portal?: HTMLElement }) => {
-			if (onOpen) {
-				onOpen(undefined, { portal: data?.portal });
+		ref
+	) => {
+		// `check-props.js` is not wired up (its trigger and heading checks predate v11), so the
+		// renamed props are checked here.
+		useEffect(() => {
+			if (process.env.NODE_ENV !== 'production') {
+				const createDocUrl = getComponentDocFn(componentDoc);
+				const renamedProps: [string, unknown, string][] = [
+					['contentsClassName', contentsClassName, 'classNameDialog'],
+					['footerClassName', footerClassName, 'classNameFooter'],
+					['footerStyle', footerStyle, 'styleFooter'],
+					['triggerClassName', triggerClassName, 'className'],
+				];
+				renamedProps.forEach(([oldProp, value, newProp]) => {
+					deprecatedProperty(
+						POPOVER,
+						value,
+						oldProp,
+						newProp,
+						createDocUrl(newProp)
+					);
+				});
 			}
-		},
-		[onOpen]
-	);
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+		}, []); // Only run on mount
 
-	// Handle close
-	const handleClose = useCallback(
-		(
-			event: MouseEvent | KeyboardEvent | undefined,
-			data: PopoverRequestCloseData
-		) => {
-			if (isOpen) {
-				if (onRequestClose) {
-					onRequestClose(event, data);
-				}
+		const generatedId = useId();
+		const id = propId || generatedId;
+		const context = useContext(IconSettingsContext);
+
+		const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
+		const finalCloseButtonAssistiveText =
+			closeButtonAssistiveText || assistiveText.closeButton;
+
+		// State
+		const [internalIsOpen, setInternalIsOpen] = useState(false);
+		const [inputRendered, setInputRendered] = useState(false);
+
+		// Refs
+		const triggerRef = useRef<HTMLDivElement>(null);
+		const dialogRef = useRef<HTMLElement>(null);
+		const isHoverRef = useRef(false);
+		const isClosingRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+		const overlayRef = useRef<HTMLSpanElement | null>(null);
+		const isUnmountingRef = useRef(false);
+
+		// Derived state
+		const isOpen =
+			!disabled &&
+			(controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen);
+
+		// Get target element for positioning
+		const getTargetElement = useCallback(() => {
+			if (onRequestTargetElement) {
+				const target = onRequestTargetElement();
+				if (target) return target;
+			}
+			return triggerRef.current;
+		}, [onRequestTargetElement]);
+
+		// Handle dialog close (when unmounted)
+		const handleDialogClose = useCallback(
+			(
+				_event?: React.SyntheticEvent,
+				data?: { componentWillUnmount?: boolean }
+			) => {
+				const componentWillUnmount = data?.componentWillUnmount || false;
 
 				if (currentOpenPopover?.getId() === id) {
 					currentOpenPopover = null;
 				}
 
-				setInternalIsOpen(false);
-				isHoverRef.current = false;
-			}
-		},
-		[isOpen, id, onRequestClose]
-	);
-
-	// Latest `handleClose`, so the "close the other open popover" path does not call a stale
-	// closure from when this popover opened (whose `isOpen` was still `false`).
-	const handleCloseRef = useRef(handleClose);
-	useEffect(() => {
-		handleCloseRef.current = handleClose;
-	}, [handleClose]);
-
-	// Handle open
-	const handleOpen = useCallback(() => {
-		if (!isOpen) {
-			// Close any other open popover
-			if (currentOpenPopover && currentOpenPopover.getId() !== id) {
-				currentOpenPopover.handleClose(undefined, {
-					trigger: 'newPopover',
-					id: currentOpenPopover.getId(),
-				});
-			}
-
-			currentOpenPopover = {
-				handleClose: (event, data) => handleCloseRef.current(event, data),
-				getId: () => id,
-			};
-
-			setInternalIsOpen(true);
-		}
-	}, [isOpen, id]);
-
-	// Handle cancel (close button or escape)
-	const handleCancel = useCallback(
-		(event: MouseEvent | KeyboardEvent) => {
-			handleClose(event, { trigger: 'cancel' });
-		},
-		[handleClose]
-	);
-
-	// Handle click outside
-	const handleClickOutside = useCallback(
-		(event: MouseEvent) => {
-			handleClose(event, { trigger: 'clickOutside' });
-		},
-		[handleClose]
-	);
-
-	// Handle mouse enter
-	const handleMouseEnter = useCallback(
-		(event: MouseEvent) => {
-			isHoverRef.current = true;
-
-			if (!isOpen && openOn === 'hover') {
-				handleOpen();
-			} else {
-				if (isClosingRef.current) {
-					clearTimeout(isClosingRef.current);
+				if (onClose) {
+					onClose(undefined, { componentWillUnmount });
 				}
-			}
+			},
+			[id, onClose]
+		);
 
-			if (onMouseEnter) {
-				onMouseEnter(event);
-			}
-		},
-		[isOpen, openOn, handleOpen, onMouseEnter]
-	);
+		// Handle dialog open (after it has rendered)
+		const handleDialogOpen = useCallback(
+			(_event?: unknown, data?: { portal?: HTMLElement }) => {
+				if (onOpen) {
+					onOpen(undefined, { portal: data?.portal });
+				}
+			},
+			[onOpen]
+		);
 
-	// Handle mouse leave
-	const handleMouseLeave = useCallback(
-		(event: MouseEvent) => {
-			if (isOpen) {
-				isClosingRef.current = setTimeout(() => {
-					handleClose(undefined, { trigger: 'mouseLeave' });
-				}, hoverCloseDelay);
-			}
+		// Handle close
+		const handleClose = useCallback(
+			(
+				event: MouseEvent | KeyboardEvent | undefined,
+				data: PopoverRequestCloseData
+			) => {
+				if (isOpen) {
+					if (onRequestClose) {
+						onRequestClose(event, data);
+					}
 
-			if (onMouseLeave) {
-				onMouseLeave(event);
-			}
-		},
-		[isOpen, hoverCloseDelay, handleClose, onMouseLeave]
-	);
+					if (currentOpenPopover?.getId() === id) {
+						currentOpenPopover = null;
+					}
 
-	// Handle click
-	const handleClick = useCallback(
-		(event: MouseEvent, triggerOnClickCallback?: (e: MouseEvent) => void) => {
+					setInternalIsOpen(false);
+					isHoverRef.current = false;
+				}
+			},
+			[isOpen, id, onRequestClose]
+		);
+
+		// Latest `handleClose`, so the "close the other open popover" path does not call a stale
+		// closure from when this popover opened (whose `isOpen` was still `false`).
+		const handleCloseRef = useRef(handleClose);
+		useEffect(() => {
+			handleCloseRef.current = handleClose;
+		}, [handleClose]);
+
+		// Handle open
+		const handleOpen = useCallback(() => {
 			if (!isOpen) {
-				handleOpen();
-			} else {
-				handleClose(event, { trigger: 'triggerClick' });
-			}
-
-			if (onClick) {
-				onClick(event);
-			}
-
-			if (triggerOnClickCallback) {
-				triggerOnClickCallback(event);
-			}
-		},
-		[isOpen, handleOpen, handleClose, onClick]
-	);
-
-	// Handle focus
-	const handleFocus = useCallback(
-		(event: FocusEvent) => {
-			if (!isOpen) {
-				handleOpen();
-			}
-
-			if (onFocus) {
-				onFocus(event);
-			}
-		},
-		[isOpen, handleOpen, onFocus]
-	);
-
-	// Toggle from keyboard
-	const toggleOpenFromKeyboard = useCallback(
-		(event: KeyboardEvent) => {
-			if (isOpen) {
-				handleCancel(event);
-			} else {
-				handleOpen();
-			}
-		},
-		[isOpen, handleCancel, handleOpen]
-	);
-
-	// Handle key down
-	const handleKeyDown = useCallback(
-		(event: KeyboardEvent) => {
-			if (event.keyCode) {
-				if (event.keyCode !== KEYS.TAB) {
-					keyboardNavigableDialog({
-						event,
-						isOpen,
-						handleClick: (e: MouseEvent) => handleClick(e),
-						keyCode: event.keyCode,
-						eventTarget: event.target,
-						// keyboardNavigableDialog calls `toggleOpen()` without the event; pass it through
-						toggleOpen: () => toggleOpenFromKeyboard(event),
-						trigger: triggerRef.current,
+				// Close any other open popover
+				if (currentOpenPopover && currentOpenPopover.getId() !== id) {
+					currentOpenPopover.handleClose(undefined, {
+						trigger: 'newPopover',
+						id: currentOpenPopover.getId(),
 					});
 				}
-				if (onKeyDown) {
-					onKeyDown(event);
+
+				currentOpenPopover = {
+					handleClose: (event, data) => handleCloseRef.current(event, data),
+					getId: () => id,
+				};
+
+				setInternalIsOpen(true);
+			}
+		}, [isOpen, id]);
+
+		// Handle cancel (close button or escape)
+		const handleCancel = useCallback(
+			(event: MouseEvent | KeyboardEvent) => {
+				handleClose(event, { trigger: 'cancel' });
+			},
+			[handleClose]
+		);
+
+		// Handle click outside
+		const handleClickOutside = useCallback(
+			(event: MouseEvent) => {
+				handleClose(event, { trigger: 'clickOutside' });
+			},
+			[handleClose]
+		);
+
+		// Handle mouse enter
+		const handleMouseEnter = useCallback(
+			(event: MouseEvent) => {
+				isHoverRef.current = true;
+
+				if (!isOpen && openOn === 'hover') {
+					handleOpen();
+				} else {
+					if (isClosingRef.current) {
+						clearTimeout(isClosingRef.current);
+					}
 				}
-			}
-		},
-		[isOpen, handleClick, toggleOpenFromKeyboard, onKeyDown]
-	);
 
-	// Render overlay for click-outside detection
-	const renderOverlay = useCallback(
-		(shouldShow: boolean) => {
-			if (typeof overlayProp === 'function' && documentDefined) {
-				overlayProp(shouldShow, overlay);
-			} else if (
-				overlayProp &&
-				shouldShow &&
-				!overlayRef.current &&
-				documentDefined
-			) {
-				overlayRef.current = overlay;
-				document.querySelector('body')?.appendChild(overlay);
-			} else if (!shouldShow && overlayRef.current?.parentNode) {
-				overlayRef.current.parentNode.removeChild(overlayRef.current);
-				overlayRef.current = null;
-			}
-		},
-		[overlayProp]
-	);
+				if (onMouseEnter) {
+					onMouseEnter(event);
+				}
+			},
+			[isOpen, openOn, handleOpen, onMouseEnter]
+		);
 
-	// Container ref callback
-	const setContainerRef = useCallback(
-		(component: HTMLDivElement | null) => {
-			(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current =
+		// Handle mouse leave
+		const handleMouseLeave = useCallback(
+			(event: MouseEvent) => {
+				if (isOpen) {
+					isClosingRef.current = setTimeout(() => {
+						handleClose(undefined, { trigger: 'mouseLeave' });
+					}, hoverCloseDelay);
+				}
+
+				if (onMouseLeave) {
+					onMouseLeave(event);
+				}
+			},
+			[isOpen, hoverCloseDelay, handleClose, onMouseLeave]
+		);
+
+		// Handle click
+		const handleClick = useCallback(
+			(event: MouseEvent, triggerOnClickCallback?: (e: MouseEvent) => void) => {
+				if (!isOpen) {
+					handleOpen();
+				} else {
+					handleClose(event, { trigger: 'triggerClick' });
+				}
+
+				if (onClick) {
+					onClick(event);
+				}
+
+				if (triggerOnClickCallback) {
+					triggerOnClickCallback(event);
+				}
+			},
+			[isOpen, handleOpen, handleClose, onClick]
+		);
+
+		// Handle focus
+		const handleFocus = useCallback(
+			(event: FocusEvent) => {
+				if (!isOpen) {
+					handleOpen();
+				}
+
+				if (onFocus) {
+					onFocus(event);
+				}
+			},
+			[isOpen, handleOpen, onFocus]
+		);
+
+		// Toggle from keyboard
+		const toggleOpenFromKeyboard = useCallback(
+			(event: KeyboardEvent) => {
+				if (isOpen) {
+					handleCancel(event);
+				} else {
+					handleOpen();
+				}
+			},
+			[isOpen, handleCancel, handleOpen]
+		);
+
+		// Handle key down
+		const handleKeyDown = useCallback(
+			(event: KeyboardEvent) => {
+				if (event.keyCode) {
+					if (event.keyCode !== KEYS.TAB) {
+						keyboardNavigableDialog({
+							event,
+							isOpen,
+							handleClick: (e: MouseEvent) => handleClick(e),
+							keyCode: event.keyCode,
+							eventTarget: event.target,
+							// keyboardNavigableDialog calls `toggleOpen()` without the event; pass it through
+							toggleOpen: () => toggleOpenFromKeyboard(event),
+							trigger: triggerRef.current,
+						});
+					}
+					if (onKeyDown) {
+						onKeyDown(event);
+					}
+				}
+			},
+			[isOpen, handleClick, toggleOpenFromKeyboard, onKeyDown]
+		);
+
+		// Render overlay for click-outside detection
+		const renderOverlay = useCallback(
+			(shouldShow: boolean) => {
+				if (typeof overlayProp === 'function' && documentDefined) {
+					overlayProp(shouldShow, overlay);
+				} else if (
+					overlayProp &&
+					shouldShow &&
+					!overlayRef.current &&
+					documentDefined
+				) {
+					overlayRef.current = overlay;
+					document.querySelector('body')?.appendChild(overlay);
+				} else if (!shouldShow && overlayRef.current?.parentNode) {
+					overlayRef.current.parentNode.removeChild(overlayRef.current);
+					overlayRef.current = null;
+				}
+			},
+			[overlayProp]
+		);
+
+		// Container ref callback
+		const setContainerRef = useCallback(
+			(component: HTMLDivElement | null) => {
+				(triggerRef as React.MutableRefObject<HTMLDivElement | null>).current =
+					component;
+				if (typeof ref === 'function') {
+					ref(component);
+				} else if (ref) {
+					ref.current = component;
+				}
+				if (component && !inputRendered) {
+					setInputRendered(true);
+				}
+			},
+			[inputRendered, ref]
+		);
+
+		// Dialog ref callback
+		const setMenuRef = useCallback((component: HTMLElement | null) => {
+			(dialogRef as React.MutableRefObject<HTMLElement | null>).current =
 				component;
-			if (component && !inputRendered) {
-				setInputRendered(true);
+		}, []);
+
+		// Cleanup on unmount
+		useEffect(() => {
+			return () => {
+				isUnmountingRef.current = true;
+				if (currentOpenPopover?.getId() === id) {
+					currentOpenPopover = null;
+				}
+				renderOverlay(false);
+			};
+		}, [id, renderOverlay]);
+
+		// Update overlay when isOpen changes
+		useEffect(() => {
+			renderOverlay(isOpen);
+		}, [isOpen, renderOverlay]);
+
+		// Render header
+		const renderHeader = () => {
+			const hasThemedHeader = variant === 'error' || variant === 'warning';
+			const hasDefinedHeader = heading || hasThemedHeader;
+
+			if (
+				!hasDefinedHeader ||
+				variant === 'walkthrough-action' ||
+				variant === 'feature'
+			) {
+				return null;
 			}
-		},
-		[inputRendered]
-	);
 
-	// Dialog ref callback
-	const setMenuRef = useCallback((component: HTMLElement | null) => {
-		(dialogRef as React.MutableRefObject<HTMLElement | null>).current =
-			component;
-	}, []);
+			const headerIcon = {
+				error: <Icon category="utility" name="error" size="x-small" inverse />,
+				warning: (
+					<Icon category="utility" name="warning" size="x-small" inverse />
+				),
+			};
 
-	// Cleanup on unmount
-	useEffect(() => {
-		return () => {
-			isUnmountingRef.current = true;
-			if (currentOpenPopover?.getId() === id) {
-				currentOpenPopover = null;
+			if (hasThemedHeader) {
+				return (
+					<header className="slds-popover__header">
+						<MediaObject
+							body={
+								<h2
+									id={ariaLabelledby || `${id}-dialog-heading`}
+									className="slds-truncate slds-text-heading_medium"
+									title={typeof heading === 'string' ? heading : undefined}
+								>
+									{heading}
+								</h2>
+							}
+							figure={headerIcon[variant as 'error' | 'warning']}
+							verticalCenter
+						/>
+					</header>
+				);
 			}
-			renderOverlay(false);
-		};
-	}, [id, renderOverlay]);
 
-	// Update overlay when isOpen changes
-	useEffect(() => {
-		renderOverlay(isOpen);
-	}, [isOpen, renderOverlay]);
-
-	// Render header
-	const renderHeader = () => {
-		const hasThemedHeader = variant === 'error' || variant === 'warning';
-		const hasDefinedHeader = heading || hasThemedHeader;
-
-		if (
-			!hasDefinedHeader ||
-			variant === 'walkthrough-action' ||
-			variant === 'feature'
-		) {
-			return null;
-		}
-
-		const headerIcon = {
-			error: <Icon category="utility" name="error" size="x-small" inverse />,
-			warning: (
-				<Icon category="utility" name="warning" size="x-small" inverse />
-			),
-		};
-
-		if (hasThemedHeader) {
 			return (
-				<header className="slds-popover__header">
-					<MediaObject
-						body={
-							<h2
-								id={ariaLabelledby || `${id}-dialog-heading`}
-								className="slds-truncate slds-text-heading_medium"
-								title={typeof heading === 'string' ? heading : undefined}
-							>
-								{heading}
-							</h2>
-						}
-						figure={headerIcon[variant as 'error' | 'warning']}
-						verticalCenter
-					/>
-				</header>
-			);
-		}
-
-		return (
-			<header
-				className={classNames('slds-popover__header', {
-					'slds-p-vertical_medium': variant === 'walkthrough',
-				})}
-			>
-				<h2
-					id={ariaLabelledby || `${id}-dialog-heading`}
-					className={classNames({
-						'slds-text-heading_small': variant !== 'walkthrough',
-						'slds-text-heading_medium': variant === 'walkthrough',
+				<header
+					className={classNames('slds-popover__header', {
+						'slds-p-vertical_medium': variant === 'walkthrough',
 					})}
 				>
-					{heading}
-				</h2>
-			</header>
-		);
-	};
+					<h2
+						id={ariaLabelledby || `${id}-dialog-heading`}
+						className={classNames({
+							'slds-text-heading_small': variant !== 'walkthrough',
+							'slds-text-heading_medium': variant === 'walkthrough',
+						})}
+					>
+						{heading}
+					</h2>
+				</header>
+			);
+		};
 
-	// Render body
-	const renderBody = () => {
-		if (variant === 'error' || variant === 'warning') {
+		// Render body
+		const renderBody = () => {
+			if (variant === 'error' || variant === 'warning') {
+				return (
+					<div
+						id={`${id}-dialog-body`}
+						className={classNames(
+							'slds-popover__body',
+							classNameBody as string
+						)}
+					>
+						{body}
+					</div>
+				);
+			}
+
+			if (variant === 'walkthrough-action' || variant === 'feature') {
+				return (
+					<div
+						className={classNames(
+							'slds-popover__body',
+							classNameBody as string
+						)}
+						id={`${id}-dialog-body`}
+					>
+						<div className="slds-media">
+							<div className="slds-media__figure">
+								{variant === 'walkthrough-action' ? (
+									<Icon
+										category="utility"
+										name="touch_action"
+										size="small"
+										inverse
+									/>
+								) : (
+									icon
+								)}
+							</div>
+							<div className="slds-media__body">
+								{heading && (
+									<h2
+										id={ariaLabelledby || `${id}-dialog-heading`}
+										className="slds-text-heading_small"
+									>
+										{heading}
+									</h2>
+								)}
+								{body}
+								{stepText && (
+									<p className="slds-m-top_medium slds-text-title">
+										{stepText}
+									</p>
+								)}
+							</div>
+						</div>
+					</div>
+				);
+			}
+
 			return (
 				<div
 					id={`${id}-dialog-body`}
@@ -646,228 +750,181 @@ const Popover = ({
 					{body}
 				</div>
 			);
-		}
+		};
 
-		if (variant === 'walkthrough-action' || variant === 'feature') {
-			return (
-				<div
-					className={classNames('slds-popover__body', classNameBody as string)}
-					id={`${id}-dialog-body`}
-				>
-					<div className="slds-media">
-						<div className="slds-media__figure">
-							{variant === 'walkthrough-action' ? (
-								<Icon
-									category="utility"
-									name="touch_action"
-									size="small"
-									inverse
-								/>
-							) : (
-								icon
-							)}
-						</div>
-						<div className="slds-media__body">
-							{heading && (
-								<h2
-									id={ariaLabelledby || `${id}-dialog-heading`}
-									className="slds-text-heading_small"
-								>
-									{heading}
-								</h2>
-							)}
-							{body}
-							{stepText && (
-								<p className="slds-m-top_medium slds-text-title">{stepText}</p>
-							)}
-						</div>
-					</div>
-				</div>
+		// Render footer
+		const renderFooter = () => {
+			const footerClassNames = classNames(
+				'slds-popover__footer',
+				footerClassName,
+				classNameFooter
 			);
-		}
+			const footerStyles =
+				footerStyle || styleFooter
+					? { ...footerStyle, ...styleFooter }
+					: undefined;
+
+			if (footer) {
+				return (
+					<footer className={footerClassNames} style={footerStyles}>
+						{footer}
+					</footer>
+				);
+			}
+
+			if (
+				variant !== 'walkthrough-action' &&
+				(footerWalkthroughActions || stepText)
+			) {
+				return (
+					<footer className={footerClassNames} style={footerStyles}>
+						<div className="slds-grid slds-grid_vertical-align-center">
+							{stepText && <span className="slds-text-title">{stepText}</span>}
+							{footerWalkthroughActions && (
+								<div
+									className="slds-col_bump-left"
+									style={{ display: 'inline-block' }}
+								>
+									{footerWalkthroughActions}
+								</div>
+							)}
+						</div>
+					</footer>
+				);
+			}
+
+			return null;
+		};
+
+		// Render dialog
+		const renderDialog = () => {
+			if (!isOpen) return null;
+
+			const outsideClickIgnoreClass = `ignore-click-${id}`;
+
+			return (
+				<Dialog
+					hasNubbin={!hasNoNubbin}
+					align={align}
+					contentsClassName={classNames(
+						contentsClassName,
+						'ignore-react-onclickoutside',
+						'slds-popover',
+						{ 'slds-popover_error': variant === 'error' },
+						{
+							'slds-popover_walkthrough':
+								variant === 'walkthrough' ||
+								variant === 'walkthrough-action' ||
+								variant === 'feature',
+						},
+						{
+							'slds-popover_walkthrough-alt': variant === 'walkthrough-action',
+						},
+						{ 'slds-popover_feature': variant === 'feature' },
+						{ 'slds-popover_warning': variant === 'warning' },
+						classNameDialog
+					)}
+					context={context}
+					hasStaticAlignment={hasStaticAlignment}
+					offset={offset}
+					onClose={handleDialogClose}
+					onOpen={handleDialogOpen}
+					onKeyDown={handleKeyDown}
+					onMouseEnter={openOn === 'hover' ? handleMouseEnter : undefined}
+					onMouseLeave={openOn === 'hover' ? handleMouseLeave : undefined}
+					outsideClickIgnoreClass={outsideClickIgnoreClass}
+					onRequestTargetElement={getTargetElement}
+					position={position}
+					style={styleDialog}
+					variant="popover"
+					ref={setMenuRef}
+					containerProps={{
+						id: `${id}-popover`,
+						'aria-labelledby': ariaLabelledby || `${id}-dialog-heading`,
+						'aria-describedby': `${id}-dialog-body`,
+					}}
+				>
+					{!hasNoCloseButton && (
+						<Button
+							assistiveText={{ icon: finalCloseButtonAssistiveText }}
+							iconCategory="utility"
+							iconName="close"
+							className={classNames(
+								'slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon',
+								{
+									'slds-button_icon-inverse':
+										variant === 'walkthrough' ||
+										variant === 'walkthrough-action' ||
+										variant === 'feature',
+								}
+							)}
+							onClick={handleCancel}
+							variant="icon"
+							inverse={variant === 'error' || variant === 'warning'}
+						/>
+					)}
+					{renderHeader()}
+					{renderBody()}
+					{renderFooter()}
+				</Dialog>
+			);
+		};
+
+		// Clone trigger element
+		const otherChildren: ReactNode[] = [];
+		let clonedTrigger: ReactNode = null;
+
+		React.Children.forEach(children, (child, index) => {
+			if (index === 0 && React.isValidElement(child)) {
+				const childProps = child.props as Record<string, unknown>;
+				const triggerProps: Record<string, unknown> = {
+					'aria-haspopup': 'dialog',
+					id,
+					onClick:
+						openOn === 'click' || openOn === 'hybrid'
+							? (event: MouseEvent) => {
+									handleClick(
+										event,
+										childProps.onClick as (e: MouseEvent) => void
+									);
+								}
+							: childProps.onClick,
+					onFocus: openOn === 'hover' ? handleFocus : undefined,
+					onMouseDown,
+					onMouseEnter:
+						openOn === 'hover' || openOn === 'hybrid'
+							? handleMouseEnter
+							: undefined,
+					onMouseLeave:
+						openOn === 'hover' || openOn === 'hybrid'
+							? handleMouseLeave
+							: undefined,
+					tabIndex: (childProps.tabIndex as number) || 0,
+				};
+				clonedTrigger = React.cloneElement(child, triggerProps);
+			} else if (child) {
+				otherChildren.push(child);
+			}
+		});
+
+		const containerStyles: CSSProperties = {
+			display: hasNoTriggerStyles ? undefined : 'inline-block',
+			...style,
+		};
 
 		return (
 			<div
-				id={`${id}-dialog-body`}
-				className={classNames('slds-popover__body', classNameBody as string)}
+				className={classNames(triggerClassName, className) || undefined}
+				style={containerStyles}
+				ref={setContainerRef}
 			>
-				{body}
+				{clonedTrigger}
+				{otherChildren.length > 0 ? otherChildren : null}
+				{renderDialog()}
 			</div>
 		);
-	};
-
-	// Render footer
-	const renderFooter = () => {
-		if (footer) {
-			return (
-				<footer
-					className={classNames(
-						'slds-popover__footer',
-						classNameFooter as string,
-						footerClassName as string
-					)}
-					style={footerStyle}
-				>
-					{footer}
-				</footer>
-			);
-		}
-
-		if (
-			variant !== 'walkthrough-action' &&
-			(footerWalkthroughActions || stepText)
-		) {
-			return (
-				<footer
-					className={classNames(
-						'slds-popover__footer',
-						classNameFooter as string,
-						footerClassName as string
-					)}
-				>
-					<div className="slds-grid slds-grid_vertical-align-center">
-						{stepText && <span className="slds-text-title">{stepText}</span>}
-						{footerWalkthroughActions && (
-							<div
-								className="slds-col_bump-left"
-								style={{ display: 'inline-block' }}
-							>
-								{footerWalkthroughActions}
-							</div>
-						)}
-					</div>
-				</footer>
-			);
-		}
-
-		return null;
-	};
-
-	// Render dialog
-	const renderDialog = () => {
-		if (!isOpen) return null;
-
-		const outsideClickIgnoreClass = `ignore-click-${id}`;
-
-		return (
-			<Dialog
-				hasNubbin={!hasNoNubbin}
-				align={align}
-				contentsClassName={classNames(
-					contentsClassName as string,
-					'ignore-react-onclickoutside',
-					'slds-popover',
-					{ 'slds-popover_error': variant === 'error' },
-					{
-						'slds-popover_walkthrough':
-							variant === 'walkthrough' ||
-							variant === 'walkthrough-action' ||
-							variant === 'feature',
-					},
-					{ 'slds-popover_walkthrough-alt': variant === 'walkthrough-action' },
-					{ 'slds-popover_feature': variant === 'feature' },
-					{ 'slds-popover_warning': variant === 'warning' },
-					className as string
-				)}
-				context={context}
-				hasStaticAlignment={hasStaticAlignment}
-				offset={offset}
-				onClose={handleDialogClose}
-				onOpen={handleDialogOpen}
-				onKeyDown={handleKeyDown}
-				onMouseEnter={openOn === 'hover' ? handleMouseEnter : undefined}
-				onMouseLeave={openOn === 'hover' ? handleMouseLeave : undefined}
-				outsideClickIgnoreClass={outsideClickIgnoreClass}
-				onRequestTargetElement={getTargetElement}
-				position={position}
-				style={style}
-				variant="popover"
-				ref={setMenuRef}
-				containerProps={{
-					id: `${id}-popover`,
-					'aria-labelledby': ariaLabelledby || `${id}-dialog-heading`,
-					'aria-describedby': `${id}-dialog-body`,
-				}}
-			>
-				{!hasNoCloseButton && (
-					<Button
-						assistiveText={{ icon: finalCloseButtonAssistiveText }}
-						iconCategory="utility"
-						iconName="close"
-						className={classNames(
-							'slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon',
-							{
-								'slds-button_icon-inverse':
-									variant === 'walkthrough' ||
-									variant === 'walkthrough-action' ||
-									variant === 'feature',
-							}
-						)}
-						onClick={handleCancel}
-						variant="icon"
-						inverse={variant === 'error' || variant === 'warning'}
-					/>
-				)}
-				{renderHeader()}
-				{renderBody()}
-				{renderFooter()}
-			</Dialog>
-		);
-	};
-
-	// Clone trigger element
-	const otherChildren: ReactNode[] = [];
-	let clonedTrigger: ReactNode = null;
-
-	React.Children.forEach(children, (child, index) => {
-		if (index === 0 && React.isValidElement(child)) {
-			const childProps = child.props as Record<string, unknown>;
-			const triggerProps: Record<string, unknown> = {
-				'aria-haspopup': 'dialog',
-				id,
-				onClick:
-					openOn === 'click' || openOn === 'hybrid'
-						? (event: MouseEvent) => {
-								handleClick(
-									event,
-									childProps.onClick as (e: MouseEvent) => void
-								);
-							}
-						: childProps.onClick,
-				onFocus: openOn === 'hover' ? handleFocus : undefined,
-				onMouseDown,
-				onMouseEnter:
-					openOn === 'hover' || openOn === 'hybrid'
-						? handleMouseEnter
-						: undefined,
-				onMouseLeave:
-					openOn === 'hover' || openOn === 'hybrid'
-						? handleMouseLeave
-						: undefined,
-				tabIndex: (childProps.tabIndex as number) || 0,
-			};
-			clonedTrigger = React.cloneElement(child, triggerProps);
-		} else if (child) {
-			otherChildren.push(child);
-		}
-	});
-
-	const containerStyles: CSSProperties = {
-		display: hasNoTriggerStyles ? undefined : 'inline-block',
-	};
-
-	return (
-		<div
-			className={triggerClassName as string}
-			style={containerStyles}
-			ref={setContainerRef}
-		>
-			{clonedTrigger}
-			{otherChildren.length > 0 ? otherChildren : null}
-			{renderDialog()}
-		</div>
-	);
-};
+	}
+);
 
 Popover.displayName = POPOVER;
 

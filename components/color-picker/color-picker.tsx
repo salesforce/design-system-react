@@ -598,7 +598,10 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 					ariaLabelledby={`color-picker-label-${componentId}`}
 					align="bottom left"
 					body={popoverBody}
-					className={classNames('slds-color-picker__selector', classNameMenu)}
+					classNameDialog={classNames(
+						'slds-color-picker__selector',
+						classNameMenu
+					)}
 					footer={popoverFooter}
 					hasNoCloseButton
 					hasNoNubbin

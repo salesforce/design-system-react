@@ -72,7 +72,7 @@ export const OverflowHidden: Story = {
 	render: () => (
 		<DefaultExample
 			action={action}
-			listStyle={{
+			styleList={{
 				height: '300px',
 				overflowY: 'auto',
 			}}

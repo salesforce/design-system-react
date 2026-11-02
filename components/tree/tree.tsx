@@ -1,7 +1,13 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, {
+	forwardRef,
+	useState,
+	useCallback,
+	useEffect,
+	useRef,
+} from 'react';
 import classNames from 'classnames';
 // Using native Array.find instead of lodash for better TypeScript support
 
@@ -33,9 +39,11 @@ export interface TreeProps {
 	 * * `heading`: Visually hidden tree heading. Set this or `labels.heading`.
 	 */
 	assistiveText?: TreeAssistiveText;
-	/** Class names for the container element */
+	/** Class names for the root `.slds-tree_container` div */
 	className?: string | string[] | Record<string, boolean>;
-	/** Class names for the top-level ul element */
+	/** Class names for the top-level `ul.slds-tree` element */
+	classNameList?: string | string[] | Record<string, boolean>;
+	/** @deprecated Use `classNameList`. */
 	listClassName?: string | string[] | Record<string, boolean>;
 	/** Function to get child nodes from a parent node */
 	getNodes?: (node: { nodes?: TreeNode[] }) => TreeNode[] | undefined;
@@ -85,7 +93,9 @@ export interface TreeProps {
 	) => void;
 	/** Search term to highlight in node labels */
 	searchTerm?: string;
-	/** Styles for the top-level ul element */
+	/** Styles for the top-level `ul.slds-tree` element */
+	styleList?: React.CSSProperties;
+	/** @deprecated Use `styleList`. */
 	listStyle?: React.CSSProperties;
 }
 
@@ -130,217 +140,236 @@ const defaultGetNodes = (node: { nodes?: TreeNode[] }) => node.nodes;
  * A branch can be expanded or collapsed.
  * This is a controlled component, since visual state is present in the nodes data.
  */
-const Tree: React.FC<TreeProps> = ({
-	assistiveText: assistiveTextProp,
-	className,
-	listClassName,
-	getNodes = defaultGetNodes,
-	heading: headingProp,
-	id,
-	labels,
-	nodes,
-	onSelect,
-	onClick,
-	onRequestToggle,
-	onExpandClick,
-	onScroll,
-	searchTerm,
-	listStyle,
-}) => {
-	// `assistiveText.label` is deprecated
-	const assistiveHeading =
-		assistiveTextProp?.heading ?? assistiveTextProp?.label;
-	// `heading` is deprecated
-	const visibleHeading = labels?.heading ?? headingProp;
+const Tree = forwardRef<HTMLDivElement, TreeProps>(
+	(
+		{
+			assistiveText: assistiveTextProp,
+			className,
+			classNameList,
+			listClassName,
+			getNodes = defaultGetNodes,
+			heading: headingProp,
+			id,
+			labels,
+			nodes,
+			onSelect,
+			onClick,
+			onRequestToggle,
+			onExpandClick,
+			onScroll,
+			searchTerm,
+			styleList,
+			listStyle,
+		},
+		ref
+	) => {
+		// `assistiveText.label` is deprecated
+		const assistiveHeading =
+			assistiveTextProp?.heading ?? assistiveTextProp?.label;
+		// `heading` is deprecated
+		const visibleHeading = labels?.heading ?? headingProp;
 
-	// Track if tree has focus
-	const treeHasFocusRef = useRef(false);
+		// Track if tree has focus
+		const treeHasFocusRef = useRef(false);
 
-	// Compute flattened nodes
-	const computeFlattenedNodes = useCallback(() => {
-		return flattenTree(
-			{
-				nodes: getNodes({ nodes }),
-				expanded: true,
-			},
-			getNodes
-		).slice(1);
-	}, [getNodes, nodes]);
+		// Compute flattened nodes
+		const computeFlattenedNodes = useCallback(() => {
+			return flattenTree(
+				{
+					nodes: getNodes({ nodes }),
+					expanded: true,
+				},
+				getNodes
+			).slice(1);
+		}, [getNodes, nodes]);
 
-	// Initialize state
-	const [flattenedNodes, setFlattenedNodes] = useState<FlattenedNode[]>(
-		computeFlattenedNodes
-	);
-	const [selectedNodeIndexes, setSelectedNodeIndexes] = useState<string[]>(
-		() => {
-			const flattened = computeFlattenedNodes();
-			const selectedNode = flattened.find((curNode) => curNode.node.selected);
-			return selectedNode ? [selectedNode.treeIndex] : [];
-		}
-	);
-	const [focusedNodeIndex, setFocusedNodeIndex] = useState<string | undefined>(
-		() => {
+		// Initialize state
+		const [flattenedNodes, setFlattenedNodes] = useState<FlattenedNode[]>(
+			computeFlattenedNodes
+		);
+		const [selectedNodeIndexes, setSelectedNodeIndexes] = useState<string[]>(
+			() => {
+				const flattened = computeFlattenedNodes();
+				const selectedNode = flattened.find((curNode) => curNode.node.selected);
+				return selectedNode ? [selectedNode.treeIndex] : [];
+			}
+		);
+		const [focusedNodeIndex, setFocusedNodeIndex] = useState<
+			string | undefined
+		>(() => {
 			const flattened = computeFlattenedNodes();
 			const selectedNode = flattened.find((curNode) => curNode.node.selected);
 			return selectedNode?.treeIndex;
-		}
-	);
+		});
 
-	// Check props on mount
-	useEffect(() => {
-		checkProps(
-			TREE,
-			{
-				assistiveText: assistiveTextProp,
-				className,
-				listClassName,
-				getNodes,
-				heading: headingProp,
-				id,
-				labels,
-				nodes,
-				onSelect,
-				onClick,
-				onRequestToggle,
-				onExpandClick,
-				onScroll,
-				searchTerm,
-				listStyle,
-			},
-			componentDoc
-		);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+		// Check props on mount
+		useEffect(() => {
+			checkProps(
+				TREE,
+				{
+					assistiveText: assistiveTextProp,
+					className,
+					classNameList,
+					listClassName,
+					getNodes,
+					heading: headingProp,
+					id,
+					labels,
+					nodes,
+					onSelect,
+					onClick,
+					onRequestToggle,
+					onExpandClick,
+					onScroll,
+					searchTerm,
+					styleList,
+					listStyle,
+				},
+				componentDoc
+			);
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+		}, []);
 
-	// Update flattened nodes when nodes prop changes
-	useEffect(() => {
-		setFlattenedNodes(computeFlattenedNodes());
-	}, [computeFlattenedNodes, nodes]);
+		// Update flattened nodes when nodes prop changes
+		useEffect(() => {
+			setFlattenedNodes(computeFlattenedNodes());
+		}, [computeFlattenedNodes, nodes]);
 
-	// Handle node selection
-	const handleSelect = useCallback(
-		({
-			event,
-			data,
-			clearSelectedNodes,
-			fromFocus,
-		}: {
-			event: React.SyntheticEvent;
-			data: TreeSelectData;
-			clearSelectedNodes?: boolean;
-			fromFocus?: boolean;
-		}) => {
-			// When triggered by a key event, other nodes should be deselected
-			if (clearSelectedNodes) {
-				flattenedNodes.forEach((flattenedNode) => {
-					if (flattenedNode.node.selected) {
-						flattenedNode.node.selected = false;
-					}
-				});
-			}
-
-			// Prevent firing twice on first click due to focus event
-			if (!fromFocus) {
-				if (onSelect) {
-					onSelect(event, { node: data.node, isSelected: data.select });
-				} else if (onClick) {
-					onClick(event, data);
-				}
-			}
-
-			// Update selected and focused nodes
-			let newSelectedNodeIndexes: string[];
-			if (data.select) {
-				newSelectedNodeIndexes = [...selectedNodeIndexes, data.treeIndex];
-			} else {
-				newSelectedNodeIndexes = selectedNodeIndexes.filter(
-					(treeIndex) => treeIndex !== data.treeIndex
-				);
-			}
-
-			treeHasFocusRef.current = true;
-			setFocusedNodeIndex(data.treeIndex);
-			setSelectedNodeIndexes(newSelectedNodeIndexes);
-		},
-		[flattenedNodes, onSelect, onClick, selectedNodeIndexes]
-	);
-
-	// Handle node blur
-	const handleNodeBlur = useCallback(() => {
-		treeHasFocusRef.current = false;
-	}, []);
-
-	// Handle expand/collapse
-	const handleExpand = useCallback(
-		({
-			event,
-			data,
-		}: {
-			event: React.SyntheticEvent;
-			data: TreeExpandData;
-		}) => {
-			// `data.select` marks Left arrow on a collapsed branch or item: move to the parent node.
-			if (data.select) {
-				if (!onRequestToggle && onExpandClick) {
-					// Deprecated behavior: report it to `onExpandClick` with the parent node
-					treeHasFocusRef.current = true;
-					onExpandClick(event, data);
-					setFocusedNodeIndex(data.treeIndex);
-				} else {
-					// Not an expand/collapse request: select the parent, like Up/Down arrows do
-					handleSelect({
-						event,
-						data: { node: data.node, select: true, treeIndex: data.treeIndex },
-						clearSelectedNodes: true,
+		// Handle node selection
+		const handleSelect = useCallback(
+			({
+				event,
+				data,
+				clearSelectedNodes,
+				fromFocus,
+			}: {
+				event: React.SyntheticEvent;
+				data: TreeSelectData;
+				clearSelectedNodes?: boolean;
+				fromFocus?: boolean;
+			}) => {
+				// When triggered by a key event, other nodes should be deselected
+				if (clearSelectedNodes) {
+					flattenedNodes.forEach((flattenedNode) => {
+						if (flattenedNode.node.selected) {
+							flattenedNode.node.selected = false;
+						}
 					});
 				}
-				return;
-			}
 
-			treeHasFocusRef.current = true;
-			if (onRequestToggle) {
-				onRequestToggle(event, { node: data.node, isExpanded: data.expand });
-			} else if (onExpandClick) {
-				onExpandClick(event, data);
-			}
-		},
-		[handleSelect, onRequestToggle, onExpandClick]
-	);
+				// Prevent firing twice on first click due to focus event
+				if (!fromFocus) {
+					if (onSelect) {
+						onSelect(event, { node: data.node, isSelected: data.select });
+					} else if (onClick) {
+						onClick(event, data);
+					}
+				}
 
-	// Determine heading text
-	const headingText = assistiveHeading || visibleHeading;
+				// Update selected and focused nodes
+				let newSelectedNodeIndexes: string[];
+				if (data.select) {
+					newSelectedNodeIndexes = [...selectedNodeIndexes, data.treeIndex];
+				} else {
+					newSelectedNodeIndexes = selectedNodeIndexes.filter(
+						(treeIndex) => treeIndex !== data.treeIndex
+					);
+				}
 
-	return (
-		<div id={id} className={classNames('slds-tree_container', className)}>
-			<h4
-				className={classNames('slds-tree__group-header', {
-					'slds-assistive-text': !!assistiveHeading,
-				})}
-				id={`${id}__heading`}
+				treeHasFocusRef.current = true;
+				setFocusedNodeIndex(data.treeIndex);
+				setSelectedNodeIndexes(newSelectedNodeIndexes);
+			},
+			[flattenedNodes, onSelect, onClick, selectedNodeIndexes]
+		);
+
+		// Handle node blur
+		const handleNodeBlur = useCallback(() => {
+			treeHasFocusRef.current = false;
+		}, []);
+
+		// Handle expand/collapse
+		const handleExpand = useCallback(
+			({
+				event,
+				data,
+			}: {
+				event: React.SyntheticEvent;
+				data: TreeExpandData;
+			}) => {
+				// `data.select` marks Left arrow on a collapsed branch or item: move to the parent node.
+				if (data.select) {
+					if (!onRequestToggle && onExpandClick) {
+						// Deprecated behavior: report it to `onExpandClick` with the parent node
+						treeHasFocusRef.current = true;
+						onExpandClick(event, data);
+						setFocusedNodeIndex(data.treeIndex);
+					} else {
+						// Not an expand/collapse request: select the parent, like Up/Down arrows do
+						handleSelect({
+							event,
+							data: {
+								node: data.node,
+								select: true,
+								treeIndex: data.treeIndex,
+							},
+							clearSelectedNodes: true,
+						});
+					}
+					return;
+				}
+
+				treeHasFocusRef.current = true;
+				if (onRequestToggle) {
+					onRequestToggle(event, { node: data.node, isExpanded: data.expand });
+				} else if (onExpandClick) {
+					onExpandClick(event, data);
+				}
+			},
+			[handleSelect, onRequestToggle, onExpandClick]
+		);
+
+		// Determine heading text
+		const headingText = assistiveHeading || visibleHeading;
+
+		return (
+			<div
+				id={id}
+				className={classNames('slds-tree_container', className)}
+				ref={ref}
 			>
-				{headingText}
-			</h4>
-			<Branch
-				getNodes={getNodes}
-				initalClassName={listClassName}
-				htmlId={id}
-				initialStyle={listStyle}
-				level={0}
-				node={{ nodes }}
-				flattenedNodes={flattenedNodes}
-				selectedNodeIndexes={selectedNodeIndexes}
-				focusedNodeIndex={focusedNodeIndex}
-				treeHasFocus={treeHasFocusRef.current}
-				onNodeBlur={handleNodeBlur}
-				onSelect={handleSelect}
-				onExpand={handleExpand}
-				onScroll={onScroll}
-				searchTerm={searchTerm}
-				treeId={id}
-			/>
-		</div>
-	);
-};
+				<h4
+					className={classNames('slds-tree__group-header', {
+						'slds-assistive-text': !!assistiveHeading,
+					})}
+					id={`${id}__heading`}
+				>
+					{headingText}
+				</h4>
+				<Branch
+					getNodes={getNodes}
+					initalClassName={classNames(listClassName, classNameList)}
+					htmlId={id}
+					initialStyle={
+						listStyle || styleList ? { ...listStyle, ...styleList } : undefined
+					}
+					level={0}
+					node={{ nodes }}
+					flattenedNodes={flattenedNodes}
+					selectedNodeIndexes={selectedNodeIndexes}
+					focusedNodeIndex={focusedNodeIndex}
+					treeHasFocus={treeHasFocusRef.current}
+					onNodeBlur={handleNodeBlur}
+					onSelect={handleSelect}
+					onExpand={handleExpand}
+					onScroll={onScroll}
+					searchTerm={searchTerm}
+					treeId={id}
+				/>
+			</div>
+		);
+	}
+);
 
 Tree.displayName = TREE;
 

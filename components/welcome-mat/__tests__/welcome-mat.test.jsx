@@ -127,6 +127,32 @@ describe('SLDSWelcomeMat', () => {
 		});
 	});
 
+	describe('className and ref', () => {
+		it('puts className and ref on the root .slds-welcome-mat element', () => {
+			const ref = React.createRef();
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<SLDSWelcomeMat
+						className="root-class"
+						id="welcome-mat-ref-test"
+						isOpen
+						labels={labels}
+						ref={ref}
+					>
+						{tiles}
+					</SLDSWelcomeMat>
+				</IconSettings>
+			);
+
+			const root = document.body.querySelector('.slds-welcome-mat');
+			expect(root).toHaveClass('root-class');
+			expect(ref.current).toBe(root);
+			expect(
+				document.body.querySelector('.slds-welcome-mat__info-content')
+			).not.toHaveClass('root-class');
+		});
+	});
+
 	describe('Steps Variant', () => {
 		it('renders welcome mat', () => {
 			render(
