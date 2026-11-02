@@ -64,11 +64,19 @@ const InputIcon = ({
 	onClick,
 	...rest
 }: InputIconProps): React.ReactElement => {
-	// need to pass click event up on SVG
+	// SLDS 1 let clicks pass through a decorative icon to the input with
+	// `.slds-input-has-icon .slds-input__icon:not(button)`; SLDS 2 dropped it.
+	const passThroughStyle = {
+		pointerEvents: 'none' as const,
+		...(rest.style as React.CSSProperties | undefined),
+	};
 
 	const variants: Record<'combobox' | 'base', React.ReactElement> = {
 		combobox: (
-			<span className="slds-icon_container slds-input__icon slds-input__icon_right">
+			<span
+				className="slds-icon_container slds-input__icon slds-input__icon_right"
+				style={{ pointerEvents: 'none' }}
+			>
 				<UtilityIcon
 					aria-hidden
 					category={category as IconCategory}
@@ -91,6 +99,7 @@ const InputIcon = ({
 				name={name}
 				path={path}
 				{...rest}
+				style={passThroughStyle}
 			/>
 		),
 	};

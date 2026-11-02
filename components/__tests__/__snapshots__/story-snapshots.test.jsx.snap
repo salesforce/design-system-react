@@ -1073,7 +1073,7 @@ exports[`Story HTML snapshots > Card > InteractiveCard 1`] = `
         </div>
         <div class="slds-input-has-icon slds-input-has-icon_left slds-size_1-of-3">
           <div class="slds-form-element"><label class="slds-form-element__label slds-assistive-text" for="InteractiveCard__filter-input">Find in List</label>
-            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"><svg class="slds-input__icon slds-icon-text-default slds-input__icon_left" aria-hidden="true">
+            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"><svg class="slds-input__icon slds-icon-text-default slds-input__icon_left" style="pointer-events:none" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg><input class="slds-input" id="InteractiveCard__filter-input" placeholder="Find in List" type="text" /></div>
           </div>
@@ -2257,7 +2257,7 @@ exports[`Story HTML snapshots > Combobox > Base 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="base-combobox" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="base-combobox" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2289,7 +2289,7 @@ exports[`Story HTML snapshots > Combobox > BaseWithMenuSubheader 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="base-with-subheader" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="base-with-subheader" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2307,7 +2307,7 @@ exports[`Story HTML snapshots > Combobox > ControlledOpenState 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="controlled-open-state" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="controlled-open-state" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2325,7 +2325,7 @@ exports[`Story HTML snapshots > Combobox > InlineMultiple 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="inline-multiple" placeholder="Search Accounts" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="inline-multiple" placeholder="Search Accounts" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2343,7 +2343,7 @@ exports[`Story HTML snapshots > Combobox > InlineMultipleLoading 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="inline-multiple-loading" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="inline-multiple-loading" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2361,7 +2361,7 @@ exports[`Story HTML snapshots > Combobox > InlineSingle 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="inline-single" placeholder="Search Accounts" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="inline-single" placeholder="Search Accounts" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2380,7 +2380,7 @@ exports[`Story HTML snapshots > Combobox > PopoverVariant 1`] = `
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="dialog">
             <div>
-              <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="combobox-popover" placeholder="Select an option" readOnly="" role="textbox" tabindex="0" type="text" aria-autocomplete="none" aria-haspopup="dialog" value="Select an option" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+              <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="combobox-popover" placeholder="Select an option" readOnly="" role="textbox" tabindex="0" type="text" aria-autocomplete="none" aria-haspopup="dialog" value="Select an option" /><span class="slds-icon_container slds-input__icon slds-input__icon_right" style="pointer-events:none"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                     <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                   </svg></span></div>
             </div>
@@ -2399,7 +2399,7 @@ exports[`Story HTML snapshots > Combobox > PredefinedOptionsOnly 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="predefined-only" placeholder="Search Accounts" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="predefined-only" placeholder="Search Accounts" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2417,7 +2417,7 @@ exports[`Story HTML snapshots > Combobox > ReadonlyDisabled 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="readonly-disabled" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="Option Two" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" disabled="" id="readonly-disabled" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="Option Two" /><span class="slds-icon_container slds-input__icon slds-input__icon_right" style="pointer-events:none"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                   <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                 </svg></span></div>
           </div>
@@ -2435,7 +2435,7 @@ exports[`Story HTML snapshots > Combobox > ReadonlyMultiple 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-multiple" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-multiple" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right" style="pointer-events:none"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                   <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                 </svg></span></div>
           </div>
@@ -2453,7 +2453,7 @@ exports[`Story HTML snapshots > Combobox > ReadonlyMultipleWithDeselect 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-multiple-deselect" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="2 options selected" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-multiple-deselect" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="2 options selected" /><span class="slds-icon_container slds-input__icon slds-input__icon_right" style="pointer-events:none"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                   <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                 </svg></span></div>
           </div>
@@ -2481,7 +2481,7 @@ exports[`Story HTML snapshots > Combobox > ReadonlySingle 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-single" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-single" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right" style="pointer-events:none"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                   <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                 </svg></span></div>
           </div>
@@ -2499,7 +2499,7 @@ exports[`Story HTML snapshots > Combobox > ReadonlySingleWithSelection 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-single-selected" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="Option Two" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-single-selected" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="Option Two" /><span class="slds-icon_container slds-input__icon slds-input__icon_right" style="pointer-events:none"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                   <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                 </svg></span></div>
           </div>
@@ -2517,7 +2517,7 @@ exports[`Story HTML snapshots > Combobox > ReadonlyWithCustomMenuItem 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-custom-menu-item" placeholder="Select company" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-custom-menu-item" placeholder="Select company" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right" style="pointer-events:none"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                   <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                 </svg></span></div>
           </div>
@@ -2535,7 +2535,7 @@ exports[`Story HTML snapshots > Combobox > ReadonlyWithDeselect 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-deselect" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="Option One" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-deselect" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="Option One" /><span class="slds-icon_container slds-input__icon slds-input__icon_right" style="pointer-events:none"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                   <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                 </svg></span></div>
           </div>
@@ -2553,7 +2553,7 @@ exports[`Story HTML snapshots > Combobox > ReadonlyWithDisabledOption 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-disabled-option" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="readonly-disabled-option" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right" style="pointer-events:none"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                   <use href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
                 </svg></span></div>
           </div>
@@ -2572,7 +2572,7 @@ exports[`Story HTML snapshots > Combobox > RightToLeft 1`] = `
         <div class="slds-form-element__control">
           <div class="slds-combobox_container">
             <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-              <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="rtl-combobox" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+              <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="rtl-combobox" placeholder="Select an Option" readOnly="" role="textbox" type="text" aria-autocomplete="list" value="" /><span class="slds-icon_container slds-input__icon slds-input__icon_right" style="pointer-events:none"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
                     <use href="/assets/icons/utility-sprite/svg/symbols-rtl.svg#down"></use>
                   </svg></span></div>
             </div>
@@ -2591,7 +2591,7 @@ exports[`Story HTML snapshots > Combobox > SearchAndAddEntities 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="search-add-entities" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="search-add-entities" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2609,7 +2609,7 @@ exports[`Story HTML snapshots > Combobox > WithCustomInputComponent 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="custom-input" placeholder="My overridden placeholder" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="custom-input" placeholder="My overridden placeholder" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2627,7 +2627,7 @@ exports[`Story HTML snapshots > Combobox > WithCustomMenuItem 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="custom-menu-item" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="custom-menu-item" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2645,7 +2645,7 @@ exports[`Story HTML snapshots > Combobox > WithCustomMenuItemDisabledOption 1`] 
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="custom-menu-item-disabled" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="custom-menu-item-disabled" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2663,7 +2663,7 @@ exports[`Story HTML snapshots > Combobox > WithDisabledOptionTooltip 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="disabled-option-tooltip" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="disabled-option-tooltip" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2681,7 +2681,7 @@ exports[`Story HTML snapshots > Combobox > WithDisabledOptions 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="disabled-options" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="disabled-options" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2699,7 +2699,7 @@ exports[`Story HTML snapshots > Combobox > WithErrorState 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside slds-has-error" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="error-state" placeholder="Search Accounts" required="" role="textbox" type="text" aria-autocomplete="list" aria-describedby="slds-snapshot-id-2" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="error-state" placeholder="Search Accounts" required="" role="textbox" type="text" aria-autocomplete="list" aria-describedby="slds-snapshot-id-2" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2720,7 +2720,7 @@ exports[`Story HTML snapshots > Combobox > WithInheritedMenuWidth 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="inherit-menu-width" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="inherit-menu-width" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2741,7 +2741,7 @@ exports[`Story HTML snapshots > Combobox > WithInlineHelpTooltip 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="inline-help-tooltip" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="inline-help-tooltip" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2766,7 +2766,7 @@ exports[`Story HTML snapshots > Combobox > WithLoadingSpinner 1`] = `
                     <div class="slds-spinner__dot-a"></div>
                     <div class="slds-spinner__dot-b"></div>
                   </div>
-                </div><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true">
+                </div><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true">
                   <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
                 </svg>
               </div>
@@ -2786,7 +2786,7 @@ exports[`Story HTML snapshots > Combobox > WithMenuSeparator 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="base-with-separator" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="base-with-separator" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2804,7 +2804,7 @@ exports[`Story HTML snapshots > Combobox > WithMenuSpinner 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="menu-loading" placeholder="Search Accounts" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="menu-loading" placeholder="Search Accounts" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -2822,7 +2822,7 @@ exports[`Story HTML snapshots > Combobox > WithScrollableMenu 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="scrollable-menu" placeholder="Search Options" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="scrollable-menu" placeholder="Search Options" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -4071,7 +4071,7 @@ exports[`Story HTML snapshots > Input > WithClickableIcons 1`] = `
 exports[`Story HTML snapshots > Input > WithLeftIcon 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label" for="left-icon-input">Search</label>
-    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"><svg class="slds-input__icon slds-icon-text-default slds-input__icon_left" aria-hidden="true">
+    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"><svg class="slds-input__icon slds-icon-text-default slds-input__icon_left" style="pointer-events:none" aria-hidden="true">
         <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
       </svg><input class="slds-input" id="left-icon-input" placeholder="Search..." type="text" /></div>
   </div>
@@ -4081,7 +4081,7 @@ exports[`Story HTML snapshots > Input > WithLeftIcon 1`] = `
 exports[`Story HTML snapshots > Input > WithRightIcon 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label" for="right-icon-input">Input with Icon</label>
-    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="right-icon-input" placeholder="Enter text..." type="text" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" aria-hidden="true">
+    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"><input class="slds-input" id="right-icon-input" placeholder="Enter text..." type="text" /><svg class="slds-input__icon slds-icon-text-default slds-input__icon_right" style="pointer-events:none" aria-hidden="true">
         <use href="/assets/icons/utility-sprite/svg/symbols.svg#clear"></use>
       </svg></div>
   </div>
@@ -4091,7 +4091,7 @@ exports[`Story HTML snapshots > Input > WithRightIcon 1`] = `
 exports[`Story HTML snapshots > Input > WithSpinner 1`] = `
 "<div class="slds-p-around_medium">
   <div class="slds-form-element"><label class="slds-form-element__label" for="spinner-input">Loading Input</label>
-    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"><svg class="slds-input__icon slds-icon-text-default slds-input__icon_left" aria-hidden="true">
+    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"><svg class="slds-input__icon slds-icon-text-default slds-input__icon_left" style="pointer-events:none" aria-hidden="true">
         <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
       </svg><input class="slds-input" id="spinner-input" placeholder="Loading..." type="text" aria-describedby="spinner-input-loading-status-icon" />
       <div class="slds-input__icon-group slds-input__icon-group_right">
@@ -4826,7 +4826,7 @@ exports[`Story HTML snapshots > PortalSettings > DefaultNotUsed 1`] = `
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
           <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="combobox-base" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="combobox-base" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
               </svg></div>
           </div>
@@ -4860,7 +4860,7 @@ exports[`Story HTML snapshots > PortalSettings > OverrideStory 1`] = `
         <div class="slds-form-element__control">
           <div class="slds-combobox_container">
             <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click ignore-react-onclickoutside" role="combobox" aria-expanded="false" aria-haspopup="listbox">
-              <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="combobox-base" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" aria-hidden="true" title="">
+              <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"><input autoComplete="off" class="slds-input slds-combobox__input" id="combobox-base" placeholder="Search Salesforce" role="textbox" type="text" aria-autocomplete="list" value="" /><svg class="slds-input__icon slds-icon-text-default" style="pointer-events:none" aria-hidden="true" title="">
                   <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
                 </svg></div>
             </div>
@@ -5728,7 +5728,7 @@ exports[`Story HTML snapshots > Search > Controlled 1`] = `
 exports[`Story HTML snapshots > Search > Disabled 1`] = `
 "<div class="slds-p-around_medium" style="max-width:400px">
   <div class="slds-form-element"><label class="slds-form-element__label slds-assistive-text" for="disabled-search">Search</label>
-    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"><svg class="slds-input__icon slds-icon-text-default slds-input__icon_left" aria-hidden="true">
+    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"><svg class="slds-input__icon slds-icon-text-default slds-input__icon_left" style="pointer-events:none" aria-hidden="true">
         <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
       </svg><input class="slds-input" disabled="" id="disabled-search" placeholder="Search disabled" type="text" /></div>
   </div>
@@ -10898,7 +10898,7 @@ exports[`Story HTML snapshots > Tree > HighlightedSearch 1`] = `
   <div>
     <div>
       <div class="slds-form-element"><label class="slds-form-element__label slds-assistive-text" for="example-search">Search Tree</label>
-        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"><svg class="slds-input__icon slds-icon-text-default slds-input__icon_left" aria-hidden="true">
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left"><svg class="slds-input__icon slds-icon-text-default slds-input__icon_left" style="pointer-events:none" aria-hidden="true">
             <use href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
           </svg><input class="slds-input" id="example-search" type="text" value="fruit" /></div>
       </div><br />
