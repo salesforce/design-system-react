@@ -528,6 +528,35 @@ describe('SLDSMenuDropdown', () => {
 		});
 	});
 
+	describe('Only one open dropdown', () => {
+		it('closes the open dropdown when another one opens', () => {
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Dropdown {...defaultProps} id="first-dropdown" />
+					<Dropdown
+						{...defaultProps}
+						id="second-dropdown"
+						openOn="hover"
+						hoverCloseDelay={2}
+					/>
+				</IconSettings>
+			);
+
+			const first = container.querySelector('#first-dropdown');
+			const second = container.querySelector('#second-dropdown');
+
+			fireEvent.click(first.querySelector('button'));
+			expect(first).toHaveClass('slds-is-open');
+
+			// Hovering does not fire mousedown, so the first dropdown's outside
+			// click handler cannot close it. Only the open dropdown tracking can.
+			fireEvent.mouseEnter(second);
+
+			expect(second).toHaveClass('slds-is-open');
+			expect(first).not.toHaveClass('slds-is-open');
+		});
+	});
+
 	describe('Hoverable', () => {
 		it('gives the button correct aria properties', () => {
 			const { container } = renderDropdown({
