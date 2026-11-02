@@ -325,8 +325,8 @@ export const AnchoredNubbin = {
 // In Button Group
 export const InButtonGroup = {
 	render: () => (
-		<ButtonGroup>
-			<Tooltip content="Edit this record" align="bottom">
+		<ButtonGroup variant="list">
+			<Tooltip content="Edit this record" align="bottom" variant="list-item">
 				<Button
 					assistiveText={{ icon: 'Edit' }}
 					iconCategory="utility"
@@ -335,7 +335,7 @@ export const InButtonGroup = {
 					variant="icon"
 				/>
 			</Tooltip>
-			<Tooltip content="Delete this record" align="bottom">
+			<Tooltip content="Delete this record" align="bottom" variant="list-item">
 				<Button
 					assistiveText={{ icon: 'Delete' }}
 					iconCategory="utility"
@@ -344,7 +344,7 @@ export const InButtonGroup = {
 					variant="icon"
 				/>
 			</Tooltip>
-			<Tooltip content="Refresh data" align="bottom">
+			<Tooltip content="Refresh data" align="bottom" variant="list-item">
 				<Button
 					assistiveText={{ icon: 'Refresh' }}
 					iconCategory="utility"

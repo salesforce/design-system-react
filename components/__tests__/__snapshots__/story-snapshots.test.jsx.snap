@@ -415,6 +415,20 @@ exports[`Story HTML snapshots > BuilderHeader > AfterSuccessfulSave 1`] = `
             <div class="slds-media__body">App Name</div>
           </div>
         </div>
+        <nav class="slds-builder-header__item slds-builder-header__nav">
+          <ul class="slds-builder-header__nav-list">
+            <li class="slds-builder-header__nav-item"><a class="slds-builder-header__item-action slds-media slds-media_center" href="#"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-settings slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#settings"></use>
+                    </svg><span class="slds-assistive-text">Link</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Link">Link</span></span></a></li>
+            <li class="slds-builder-header__nav-item">
+              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use href="/assets/icons/utility-sprite/svg/symbols.svg#page"></use>
+                      </svg><span class="slds-assistive-text">Dropdown</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Dropdown">Dropdown</span><span class="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+                      </svg></span></span></button></div>
+            </li>
+          </ul>
+        </nav>
         <div class="slds-builder-header__item slds-has-flexi-truncate">
           <h1 class="slds-builder-header__item-label"><span class="slds-truncate" title="Page Type">Page Type</span></h1>
         </div>
@@ -428,6 +442,22 @@ exports[`Story HTML snapshots > BuilderHeader > AfterSuccessfulSave 1`] = `
         </div>
       </header>
       <div class="slds-builder-toolbar" role="toolbar">
+        <div class="slds-builder-toolbar__item-group" aria-label="Canvas Actions">
+          <div class="slds-button-group" id="button-group-canvas-actions" role="group"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#undo"></use>
+              </svg><span class="slds-assistive-text">Undo</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#redo"></use>
+              </svg><span class="slds-assistive-text">Redo</span></button></div>
+        </div>
+        <div class="slds-builder-toolbar__item-group" aria-label="Edit Actions">
+          <div class="slds-button-group" id="button-group-edit-actions" role="group"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#cut"></use>
+              </svg><span class="slds-assistive-text">Cut</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#copy"></use>
+              </svg><span class="slds-assistive-text">Copy</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#paste"></use>
+              </svg><span class="slds-assistive-text">Paste</span></button></div>
+        </div>
         <div class="slds-builder-toolbar__actions" aria-label="Document Actions">
           <div>
             <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><span class="slds-color__text_gray-10 slds-align-middle slds-m-right_small" tabindex="0">Saved 5 mins ago</span><span></span></div><button class="slds-button slds-button_neutral" type="button"><svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
@@ -544,6 +574,20 @@ exports[`Story HTML snapshots > BuilderHeader > FailedSave 1`] = `
             <div class="slds-media__body">App Name</div>
           </div>
         </div>
+        <nav class="slds-builder-header__item slds-builder-header__nav">
+          <ul class="slds-builder-header__nav-list">
+            <li class="slds-builder-header__nav-item"><a class="slds-builder-header__item-action slds-media slds-media_center" href="#"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-settings slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#settings"></use>
+                    </svg><span class="slds-assistive-text">Link</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Link">Link</span></span></a></li>
+            <li class="slds-builder-header__nav-item">
+              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use href="/assets/icons/utility-sprite/svg/symbols.svg#page"></use>
+                      </svg><span class="slds-assistive-text">Dropdown</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Dropdown">Dropdown</span><span class="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+                      </svg></span></span></button></div>
+            </li>
+          </ul>
+        </nav>
         <div class="slds-builder-header__item slds-has-flexi-truncate">
           <h1 class="slds-builder-header__item-label"><span class="slds-truncate" title="Page Type">Page Type</span></h1>
         </div>
@@ -557,6 +601,22 @@ exports[`Story HTML snapshots > BuilderHeader > FailedSave 1`] = `
         </div>
       </header>
       <div class="slds-builder-toolbar" role="toolbar">
+        <div class="slds-builder-toolbar__item-group" aria-label="Canvas Actions">
+          <div class="slds-button-group" id="button-group-canvas-actions" role="group"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#undo"></use>
+              </svg><span class="slds-assistive-text">Undo</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#redo"></use>
+              </svg><span class="slds-assistive-text">Redo</span></button></div>
+        </div>
+        <div class="slds-builder-toolbar__item-group" aria-label="Edit Actions">
+          <div class="slds-button-group" id="button-group-edit-actions" role="group"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#cut"></use>
+              </svg><span class="slds-assistive-text">Cut</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#copy"></use>
+              </svg><span class="slds-assistive-text">Copy</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#paste"></use>
+              </svg><span class="slds-assistive-text">Paste</span></button></div>
+        </div>
         <div class="slds-builder-toolbar__actions" aria-label="Document Actions">
           <div>
             <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button type="button" class="slds-button slds-color__text_gray-10 slds-align-middle slds-m-right_x-small">Saved 45 mins ago</button><span></span></div><button class="slds-button slds-button_icon-container" type="button"><svg class="slds-button__icon slds-icon-text-error" aria-hidden="true">
@@ -585,6 +645,20 @@ exports[`Story HTML snapshots > BuilderHeader > SuccessfulSave 1`] = `
             <div class="slds-media__body">App Name</div>
           </div>
         </div>
+        <nav class="slds-builder-header__item slds-builder-header__nav">
+          <ul class="slds-builder-header__nav-list">
+            <li class="slds-builder-header__nav-item"><a class="slds-builder-header__item-action slds-media slds-media_center" href="#"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-settings slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#settings"></use>
+                    </svg><span class="slds-assistive-text">Link</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Link">Link</span></span></a></li>
+            <li class="slds-builder-header__nav-item">
+              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use href="/assets/icons/utility-sprite/svg/symbols.svg#page"></use>
+                      </svg><span class="slds-assistive-text">Dropdown</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Dropdown">Dropdown</span><span class="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+                      </svg></span></span></button></div>
+            </li>
+          </ul>
+        </nav>
         <div class="slds-builder-header__item slds-has-flexi-truncate">
           <h1 class="slds-builder-header__item-label"><span class="slds-truncate" title="Page Type">Page Type</span></h1>
         </div>
@@ -598,6 +672,22 @@ exports[`Story HTML snapshots > BuilderHeader > SuccessfulSave 1`] = `
         </div>
       </header>
       <div class="slds-builder-toolbar" role="toolbar">
+        <div class="slds-builder-toolbar__item-group" aria-label="Canvas Actions">
+          <div class="slds-button-group" id="button-group-canvas-actions" role="group"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#undo"></use>
+              </svg><span class="slds-assistive-text">Undo</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#redo"></use>
+              </svg><span class="slds-assistive-text">Redo</span></button></div>
+        </div>
+        <div class="slds-builder-toolbar__item-group" aria-label="Edit Actions">
+          <div class="slds-button-group" id="button-group-edit-actions" role="group"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#cut"></use>
+              </svg><span class="slds-assistive-text">Cut</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#copy"></use>
+              </svg><span class="slds-assistive-text">Copy</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#paste"></use>
+              </svg><span class="slds-assistive-text">Paste</span></button></div>
+        </div>
         <div class="slds-builder-toolbar__actions" aria-label="Document Actions">
           <div><span><svg class="slds-m-right_x-small slds-icon slds-icon_x-small slds-icon-text-default" style="fill:#4BCA81" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
@@ -624,6 +714,20 @@ exports[`Story HTML snapshots > BuilderHeader > WithToolbar 1`] = `
             <div class="slds-media__body">App Name</div>
           </div>
         </div>
+        <nav class="slds-builder-header__item slds-builder-header__nav">
+          <ul class="slds-builder-header__nav-list">
+            <li class="slds-builder-header__nav-item"><a class="slds-builder-header__item-action slds-media slds-media_center" href="#"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-settings slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#settings"></use>
+                    </svg><span class="slds-assistive-text">Link</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Link">Link</span></span></a></li>
+            <li class="slds-builder-header__nav-item">
+              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use href="/assets/icons/utility-sprite/svg/symbols.svg#page"></use>
+                      </svg><span class="slds-assistive-text">Dropdown</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Dropdown">Dropdown</span><span class="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+                      </svg></span></span></button></div>
+            </li>
+          </ul>
+        </nav>
         <div class="slds-builder-header__item slds-has-flexi-truncate">
           <h1 class="slds-builder-header__item-label"><span class="slds-truncate" title="Page Type">Page Type</span></h1>
         </div>
@@ -637,6 +741,22 @@ exports[`Story HTML snapshots > BuilderHeader > WithToolbar 1`] = `
         </div>
       </header>
       <div class="slds-builder-toolbar" role="toolbar">
+        <div class="slds-builder-toolbar__item-group" aria-label="Canvas Actions">
+          <div class="slds-button-group" id="button-group-canvas-actions" role="group"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#undo"></use>
+              </svg><span class="slds-assistive-text">Undo</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#redo"></use>
+              </svg><span class="slds-assistive-text">Redo</span></button></div>
+        </div>
+        <div class="slds-builder-toolbar__item-group" aria-label="Edit Actions">
+          <div class="slds-button-group" id="button-group-edit-actions" role="group"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#cut"></use>
+              </svg><span class="slds-assistive-text">Cut</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#copy"></use>
+              </svg><span class="slds-assistive-text">Copy</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#paste"></use>
+              </svg><span class="slds-assistive-text">Paste</span></button></div>
+        </div>
         <div class="slds-builder-toolbar__actions" aria-label="Document Actions">
           <div><button class="slds-button slds-button_neutral" type="button"><svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
                 <use href="/assets/icons/utility-sprite/svg/symbols.svg#right"></use>
@@ -661,6 +781,20 @@ exports[`Story HTML snapshots > BuilderHeader > WithUtilities 1`] = `
             <div class="slds-media__body">App Name</div>
           </div>
         </div>
+        <nav class="slds-builder-header__item slds-builder-header__nav">
+          <ul class="slds-builder-header__nav-list">
+            <li class="slds-builder-header__nav-item"><a class="slds-builder-header__item-action slds-media slds-media_center" href="#"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-settings slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#settings"></use>
+                    </svg><span class="slds-assistive-text">Link</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Link">Link</span></span></a></li>
+            <li class="slds-builder-header__nav-item">
+              <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="dropdown"><button class="slds-button slds-builder-header__item-action slds-media slds-media_center" tabindex="0" type="button" aria-expanded="false" aria-haspopup="true"><span class="slds-media__figure"><span class="slds-icon_container slds-icon-utility-page slds-current-color"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use href="/assets/icons/utility-sprite/svg/symbols.svg#page"></use>
+                      </svg><span class="slds-assistive-text">Dropdown</span></span></span><span class="slds-media__body"><span class="slds-truncate" title="Dropdown">Dropdown</span><span class="slds-icon_container slds-icon-utility-chevrondown slds-current-color slds-m-left_small"><svg class="slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                        <use href="/assets/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+                      </svg></span></span></button></div>
+            </li>
+          </ul>
+        </nav>
         <div class="slds-builder-header__item slds-has-flexi-truncate">
           <h1 class="slds-builder-header__item-label"><span class="slds-truncate" title="Page Type">Page Type</span></h1>
         </div>
@@ -1728,7 +1862,16 @@ exports[`Story HTML snapshots > Checkbox > Base 1`] = `
 </div>"
 `;
 
-exports[`Story HTML snapshots > Checkbox > ButtonGroup 1`] = `"<div class="slds-p-around_medium"><span class="slds-button slds-checkbox_button"><input id="checkbox-button-group" type="checkbox" name="checkbox-button-group" /><label class="slds-checkbox_button__label" for="checkbox-button-group"><span class="slds-checkbox_faux">Option A</span></label></span></div>"`;
+exports[`Story HTML snapshots > Checkbox > ButtonGroup 1`] = `
+"<div class="slds-p-around_medium">
+  <fieldset class="slds-form-element">
+    <legend class="slds-form-element__legend slds-form-element__label">Scheduled Day(s)</legend>
+    <div class="slds-form-element__control">
+      <div class="slds-checkbox_button-group" id="button-group-checkbox"><span class="slds-button slds-checkbox_button"><input id="ButtonGroupExampleMon" type="checkbox" /><label class="slds-checkbox_button__label" for="ButtonGroupExampleMon"><span class="slds-checkbox_faux">Mon</span></label></span><span class="slds-button slds-checkbox_button"><input id="ButtonGroupExampleTue" type="checkbox" /><label class="slds-checkbox_button__label" for="ButtonGroupExampleTue"><span class="slds-checkbox_faux">Tue</span></label></span><span class="slds-button slds-checkbox_button"><input id="ButtonGroupExampleWed" type="checkbox" /><label class="slds-checkbox_button__label" for="ButtonGroupExampleWed"><span class="slds-checkbox_faux">Wed</span></label></span><span class="slds-button slds-checkbox_button"><input id="ButtonGroupExampleThu" type="checkbox" /><label class="slds-checkbox_button__label" for="ButtonGroupExampleThu"><span class="slds-checkbox_faux">Thu</span></label></span><span class="slds-button slds-checkbox_button"><input id="ButtonGroupExampleFri" type="checkbox" /><label class="slds-checkbox_button__label" for="ButtonGroupExampleFri"><span class="slds-checkbox_faux">Fri</span></label></span></div>
+    </div>
+  </fieldset>
+</div>"
+`;
 
 exports[`Story HTML snapshots > Checkbox > Checked 1`] = `
 "<div class="slds-p-around_medium">
@@ -4407,7 +4550,11 @@ exports[`Story HTML snapshots > PageHeader > ObjectHome 1`] = `
         </div>
       </div>
       <div class="slds-page-header__col-actions">
-        <div class="slds-page-header__controls"></div>
+        <div class="slds-page-header__controls">
+          <div class="slds-page-header__control">
+            <div class="slds-button-group" id="_R_9_" role="group"><button class="slds-button slds-button_neutral" type="button">New</button><button class="slds-button slds-button_neutral" type="button">Import</button></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="slds-page-header__row">
@@ -4415,7 +4562,15 @@ exports[`Story HTML snapshots > PageHeader > ObjectHome 1`] = `
         <p class="slds-page-header__meta-text">10 items • Updated 13 minutes ago</p>
       </div>
       <div class="slds-page-header__col-controls">
-        <div class="slds-page-header__controls"></div>
+        <div class="slds-page-header__controls">
+          <div class="slds-page-header__control">
+            <div class="slds-button-group" id="_R_a_" role="group"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                  <use href="/assets/icons/utility-sprite/svg/symbols.svg#chart"></use>
+                </svg><span class="slds-assistive-text">Chart</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                  <use href="/assets/icons/utility-sprite/svg/symbols.svg#filterList"></use>
+                </svg><span class="slds-assistive-text">Filter List</span></button></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -4441,7 +4596,11 @@ exports[`Story HTML snapshots > PageHeader > RecordHome 1`] = `
         </div>
       </div>
       <div class="slds-page-header__col-actions">
-        <div class="slds-page-header__controls"></div>
+        <div class="slds-page-header__controls">
+          <div class="slds-page-header__control">
+            <div class="slds-button-group" id="_R_9_" role="group"><button class="slds-button slds-button_neutral" type="button">Follow</button><button class="slds-button slds-button_neutral" type="button">Edit</button><button class="slds-button slds-button_neutral" type="button">Delete</button></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="slds-page-header__row slds-page-header__row_gutters">
@@ -4488,7 +4647,11 @@ exports[`Story HTML snapshots > PageHeader > RelatedList 1`] = `
         </div>
       </div>
       <div class="slds-page-header__col-actions">
-        <div class="slds-page-header__controls"></div>
+        <div class="slds-page-header__controls">
+          <div class="slds-page-header__control">
+            <div class="slds-button-group" id="_R_9_" role="group"><button class="slds-button slds-button_neutral" type="button">Add Contact</button></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="slds-page-header__row">
@@ -5752,11 +5915,25 @@ exports[`Story HTML snapshots > SetupAssistant > Default 1`] = `
       <article class="slds-setup-assistant__step">
         <div class="slds-setup-assistant__step-summary">
           <div class="slds-media">
-            <div class="slds-setup-assistant__step-summary-content slds-media__body">
-              <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Add Users</h3>
-              <p>Add users to your organization</p>
+            <div class="slds-media__figure">
+              <div class="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large">
+                <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" class="slds-progress-ring__progress" role="progressbar" style="height:2rem;transform:scaleX(1) rotate(-90deg)"><svg viewBox="-1 -1 2 2">
+                    <path class="slds-progress-ring__path" d="M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0"></path>
+                  </svg></div>
+                <div class="slds-progress-ring__content"><span title="Complete"><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                    </svg></span></div>
+              </div>
             </div>
-            <div class="slds-media__figure slds-media__figure_reverse"></div>
+            <div class="slds-media__body slds-m-top_x-small">
+              <div class="slds-media">
+                <div class="slds-setup-assistant__step-summary-content slds-media__body">
+                  <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Add Users</h3>
+                  <p>Add users to your organization</p>
+                </div>
+                <div class="slds-media__figure slds-media__figure_reverse"></div>
+              </div>
+            </div>
           </div>
         </div>
       </article>
@@ -5765,11 +5942,25 @@ exports[`Story HTML snapshots > SetupAssistant > Default 1`] = `
       <article class="slds-setup-assistant__step">
         <div class="slds-setup-assistant__step-summary">
           <div class="slds-media">
-            <div class="slds-setup-assistant__step-summary-content slds-media__body">
-              <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Configure Settings</h3>
-              <p>Set up your organization settings</p>
+            <div class="slds-media__figure">
+              <div class="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large">
+                <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" class="slds-progress-ring__progress" role="progressbar" style="height:2rem;transform:scaleX(1) rotate(-90deg)"><svg viewBox="-1 -1 2 2">
+                    <path class="slds-progress-ring__path" d="M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0"></path>
+                  </svg></div>
+                <div class="slds-progress-ring__content"><span title="Complete"><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
+                      <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                    </svg></span></div>
+              </div>
             </div>
-            <div class="slds-media__figure slds-media__figure_reverse"></div>
+            <div class="slds-media__body slds-m-top_x-small">
+              <div class="slds-media">
+                <div class="slds-setup-assistant__step-summary-content slds-media__body">
+                  <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Configure Settings</h3>
+                  <p>Set up your organization settings</p>
+                </div>
+                <div class="slds-media__figure slds-media__figure_reverse"></div>
+              </div>
+            </div>
           </div>
         </div>
       </article>
@@ -5778,11 +5969,23 @@ exports[`Story HTML snapshots > SetupAssistant > Default 1`] = `
       <article class="slds-setup-assistant__step">
         <div class="slds-setup-assistant__step-summary">
           <div class="slds-media">
-            <div class="slds-setup-assistant__step-summary-content slds-media__body">
-              <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Import Data</h3>
-              <p>Import your existing data</p>
+            <div class="slds-media__figure">
+              <div class="slds-progress-ring slds-progress-ring_large">
+                <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" class="slds-progress-ring__progress" role="progressbar" style="height:2rem;transform:scaleX(1) rotate(-90deg)"><svg viewBox="-1 -1 2 2">
+                    <path class="slds-progress-ring__path" d="M 1 0 A 1 1 0 0 1 1 0 L 0 0"></path>
+                  </svg></div>
+                <div class="slds-progress-ring__content">3</div>
+              </div>
             </div>
-            <div class="slds-media__figure slds-media__figure_reverse"></div>
+            <div class="slds-media__body slds-m-top_x-small">
+              <div class="slds-media">
+                <div class="slds-setup-assistant__step-summary-content slds-media__body">
+                  <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Import Data</h3>
+                  <p>Import your existing data</p>
+                </div>
+                <div class="slds-media__figure slds-media__figure_reverse"></div>
+              </div>
+            </div>
           </div>
         </div>
       </article>
@@ -5791,11 +5994,23 @@ exports[`Story HTML snapshots > SetupAssistant > Default 1`] = `
       <article class="slds-setup-assistant__step">
         <div class="slds-setup-assistant__step-summary">
           <div class="slds-media">
-            <div class="slds-setup-assistant__step-summary-content slds-media__body">
-              <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Setup Integrations</h3>
-              <p>Connect with other services</p>
+            <div class="slds-media__figure">
+              <div class="slds-progress-ring slds-progress-ring_large">
+                <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" class="slds-progress-ring__progress" role="progressbar" style="height:2rem;transform:scaleX(1) rotate(-90deg)"><svg viewBox="-1 -1 2 2">
+                    <path class="slds-progress-ring__path" d="M 1 0 A 1 1 0 0 1 1 0 L 0 0"></path>
+                  </svg></div>
+                <div class="slds-progress-ring__content">4</div>
+              </div>
             </div>
-            <div class="slds-media__figure slds-media__figure_reverse"></div>
+            <div class="slds-media__body slds-m-top_x-small">
+              <div class="slds-media">
+                <div class="slds-setup-assistant__step-summary-content slds-media__body">
+                  <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Setup Integrations</h3>
+                  <p>Connect with other services</p>
+                </div>
+                <div class="slds-media__figure slds-media__figure_reverse"></div>
+              </div>
+            </div>
           </div>
         </div>
       </article>
@@ -6050,11 +6265,25 @@ exports[`Story HTML snapshots > SetupAssistant > WithCard 1`] = `
         <article class="slds-setup-assistant__step">
           <div class="slds-setup-assistant__step-summary">
             <div class="slds-media">
-              <div class="slds-setup-assistant__step-summary-content slds-media__body">
-                <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Add Users</h3>
-                <p>Add users to your organization</p>
+              <div class="slds-media__figure">
+                <div class="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large">
+                  <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" class="slds-progress-ring__progress" role="progressbar" style="height:2rem;transform:scaleX(1) rotate(-90deg)"><svg viewBox="-1 -1 2 2">
+                      <path class="slds-progress-ring__path" d="M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0"></path>
+                    </svg></div>
+                  <div class="slds-progress-ring__content"><span title="Complete"><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
+                        <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                      </svg></span></div>
+                </div>
               </div>
-              <div class="slds-media__figure slds-media__figure_reverse"></div>
+              <div class="slds-media__body slds-m-top_x-small">
+                <div class="slds-media">
+                  <div class="slds-setup-assistant__step-summary-content slds-media__body">
+                    <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Add Users</h3>
+                    <p>Add users to your organization</p>
+                  </div>
+                  <div class="slds-media__figure slds-media__figure_reverse"></div>
+                </div>
+              </div>
             </div>
           </div>
         </article>
@@ -6063,11 +6292,25 @@ exports[`Story HTML snapshots > SetupAssistant > WithCard 1`] = `
         <article class="slds-setup-assistant__step">
           <div class="slds-setup-assistant__step-summary">
             <div class="slds-media">
-              <div class="slds-setup-assistant__step-summary-content slds-media__body">
-                <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Configure Settings</h3>
-                <p>Set up your organization settings</p>
+              <div class="slds-media__figure">
+                <div class="slds-progress-ring slds-progress-ring_complete slds-progress-ring_large">
+                  <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" class="slds-progress-ring__progress" role="progressbar" style="height:2rem;transform:scaleX(1) rotate(-90deg)"><svg viewBox="-1 -1 2 2">
+                      <path class="slds-progress-ring__path" d="M 1 0 A 1 1 0 1 1 1 -2.4492935982947064e-16 L 0 0"></path>
+                    </svg></div>
+                  <div class="slds-progress-ring__content"><span title="Complete"><svg class="slds-icon slds-icon-text-default" aria-hidden="true">
+                        <use href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+                      </svg></span></div>
+                </div>
               </div>
-              <div class="slds-media__figure slds-media__figure_reverse"></div>
+              <div class="slds-media__body slds-m-top_x-small">
+                <div class="slds-media">
+                  <div class="slds-setup-assistant__step-summary-content slds-media__body">
+                    <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Configure Settings</h3>
+                    <p>Set up your organization settings</p>
+                  </div>
+                  <div class="slds-media__figure slds-media__figure_reverse"></div>
+                </div>
+              </div>
             </div>
           </div>
         </article>
@@ -6076,11 +6319,23 @@ exports[`Story HTML snapshots > SetupAssistant > WithCard 1`] = `
         <article class="slds-setup-assistant__step">
           <div class="slds-setup-assistant__step-summary">
             <div class="slds-media">
-              <div class="slds-setup-assistant__step-summary-content slds-media__body">
-                <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Import Data</h3>
-                <p>Import your existing data</p>
+              <div class="slds-media__figure">
+                <div class="slds-progress-ring slds-progress-ring_large">
+                  <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" class="slds-progress-ring__progress" role="progressbar" style="height:2rem;transform:scaleX(1) rotate(-90deg)"><svg viewBox="-1 -1 2 2">
+                      <path class="slds-progress-ring__path" d="M 1 0 A 1 1 0 0 1 1 0 L 0 0"></path>
+                    </svg></div>
+                  <div class="slds-progress-ring__content">3</div>
+                </div>
               </div>
-              <div class="slds-media__figure slds-media__figure_reverse"></div>
+              <div class="slds-media__body slds-m-top_x-small">
+                <div class="slds-media">
+                  <div class="slds-setup-assistant__step-summary-content slds-media__body">
+                    <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Import Data</h3>
+                    <p>Import your existing data</p>
+                  </div>
+                  <div class="slds-media__figure slds-media__figure_reverse"></div>
+                </div>
+              </div>
             </div>
           </div>
         </article>
@@ -6089,11 +6344,23 @@ exports[`Story HTML snapshots > SetupAssistant > WithCard 1`] = `
         <article class="slds-setup-assistant__step">
           <div class="slds-setup-assistant__step-summary">
             <div class="slds-media">
-              <div class="slds-setup-assistant__step-summary-content slds-media__body">
-                <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Setup Integrations</h3>
-                <p>Connect with other services</p>
+              <div class="slds-media__figure">
+                <div class="slds-progress-ring slds-progress-ring_large">
+                  <div aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" class="slds-progress-ring__progress" role="progressbar" style="height:2rem;transform:scaleX(1) rotate(-90deg)"><svg viewBox="-1 -1 2 2">
+                      <path class="slds-progress-ring__path" d="M 1 0 A 1 1 0 0 1 1 0 L 0 0"></path>
+                    </svg></div>
+                  <div class="slds-progress-ring__content">4</div>
+                </div>
               </div>
-              <div class="slds-media__figure slds-media__figure_reverse"></div>
+              <div class="slds-media__body slds-m-top_x-small">
+                <div class="slds-media">
+                  <div class="slds-setup-assistant__step-summary-content slds-media__body">
+                    <h3 class="slds-setup-assistant__step-summary-title slds-text-heading_small">Setup Integrations</h3>
+                    <p>Connect with other services</p>
+                  </div>
+                  <div class="slds-media__figure slds-media__figure_reverse"></div>
+                </div>
+              </div>
             </div>
           </div>
         </article>
@@ -9784,35 +10051,35 @@ exports[`Story HTML snapshots > Spinner > AllSizes 1`] = `
 "<div class="slds-p-around_medium">
   <div style="display:flex;gap:2rem;align-items:center">
     <div style="text-align:center">
-      <div aria-hidden="false" class="slds-spinner slds-spinner_xx-small" role="status"><span class="slds-assistive-text">Loading...</span>
+      <div aria-hidden="false" class="slds-spinner slds-spinner_inline slds-spinner_xx-small" role="status"><span class="slds-assistive-text">Loading...</span>
         <div class="slds-spinner__dot-a"></div>
         <div class="slds-spinner__dot-b"></div>
       </div>
       <div style="margin-top:2rem;font-size:12px">xx-small</div>
     </div>
     <div style="text-align:center">
-      <div aria-hidden="false" class="slds-spinner slds-spinner_x-small" role="status"><span class="slds-assistive-text">Loading...</span>
+      <div aria-hidden="false" class="slds-spinner slds-spinner_inline slds-spinner_x-small" role="status"><span class="slds-assistive-text">Loading...</span>
         <div class="slds-spinner__dot-a"></div>
         <div class="slds-spinner__dot-b"></div>
       </div>
       <div style="margin-top:2rem;font-size:12px">x-small</div>
     </div>
     <div style="text-align:center">
-      <div aria-hidden="false" class="slds-spinner slds-spinner_small" role="status"><span class="slds-assistive-text">Loading...</span>
+      <div aria-hidden="false" class="slds-spinner slds-spinner_inline slds-spinner_small" role="status"><span class="slds-assistive-text">Loading...</span>
         <div class="slds-spinner__dot-a"></div>
         <div class="slds-spinner__dot-b"></div>
       </div>
       <div style="margin-top:2rem;font-size:12px">small</div>
     </div>
     <div style="text-align:center">
-      <div aria-hidden="false" class="slds-spinner slds-spinner_medium" role="status"><span class="slds-assistive-text">Loading...</span>
+      <div aria-hidden="false" class="slds-spinner slds-spinner_inline slds-spinner_medium" role="status"><span class="slds-assistive-text">Loading...</span>
         <div class="slds-spinner__dot-a"></div>
         <div class="slds-spinner__dot-b"></div>
       </div>
       <div style="margin-top:2rem;font-size:12px">medium</div>
     </div>
     <div style="text-align:center">
-      <div aria-hidden="false" class="slds-spinner slds-spinner_large" role="status"><span class="slds-assistive-text">Loading...</span>
+      <div aria-hidden="false" class="slds-spinner slds-spinner_inline slds-spinner_large" role="status"><span class="slds-assistive-text">Loading...</span>
         <div class="slds-spinner__dot-a"></div>
         <div class="slds-spinner__dot-b"></div>
       </div>
@@ -10718,17 +10985,23 @@ exports[`Story HTML snapshots > Tooltip > IconVariants 1`] = `
 
 exports[`Story HTML snapshots > Tooltip > InButtonGroup 1`] = `
 "<div class="slds-p-around_medium slds-m-horizontal_x-large" style="margin:150px auto;width:500px">
-  <div class="slds-button-group" id="_R_0_" role="group">
-    <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#edit"></use>
-        </svg><span class="slds-assistive-text">Edit</span></button><span></span></div>
-    <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#delete"></use>
-        </svg><span class="slds-assistive-text">Delete</span></button><span></span></div>
-    <div class="slds-tooltip-trigger slds-button_last" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
-          <use href="/assets/icons/utility-sprite/svg/symbols.svg#refresh"></use>
-        </svg><span class="slds-assistive-text">Refresh</span></button><span></span></div>
-  </div>
+  <ul class="slds-button-group-list" id="_R_0_">
+    <li>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+            <use href="/assets/icons/utility-sprite/svg/symbols.svg#edit"></use>
+          </svg><span class="slds-assistive-text">Edit</span></button><span></span></div>
+    </li>
+    <li>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+            <use href="/assets/icons/utility-sprite/svg/symbols.svg#delete"></use>
+          </svg><span class="slds-assistive-text">Delete</span></button><span></span></div>
+    </li>
+    <li>
+      <div class="slds-tooltip-trigger" style="display:inline-block;line-height:1"><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+            <use href="/assets/icons/utility-sprite/svg/symbols.svg#refresh"></use>
+          </svg><span class="slds-assistive-text">Refresh</span></button><span></span></div>
+    </li>
+  </ul>
 </div>"
 `;
 

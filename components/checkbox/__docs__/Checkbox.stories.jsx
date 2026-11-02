@@ -6,6 +6,7 @@ import Button from '../../button';
 import DefaultExample from '../__examples__/default';
 import ErrorExample from '../__examples__/error';
 import ToggleExample from '../__examples__/toggle';
+import ButtonGroupCheckboxExample from '../../button-group/__examples__/checkbox';
 
 /**
  * Interactive example showing indeterminate state
@@ -230,13 +231,9 @@ ToggleCustomLabels.args = {
 // Button Group Variant
 // ============================================
 
-export const ButtonGroup = Template.bind({});
-ButtonGroup.args = {
-	id: 'checkbox-button-group',
-	labels: { label: 'Option A' },
-	name: 'checkbox-button-group',
-	variant: 'button-group',
-};
+// The `button-group` variant only renders correctly inside a
+// `ButtonGroup variant="checkbox"`, which supplies the group wrapper.
+export const ButtonGroup = () => <ButtonGroupCheckboxExample />;
 
 // ============================================
 // Doc Site Examples
