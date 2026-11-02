@@ -243,7 +243,7 @@ const Toast = ({
 				className="slds-notify__close"
 				iconCategory="utility"
 				iconName="close"
-				iconSize="medium"
+				iconSize="large"
 				inverse
 				onClick={handleCloseButtonClick}
 				title={assistiveText.closeButton as string}

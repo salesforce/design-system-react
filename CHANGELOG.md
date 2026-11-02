@@ -80,6 +80,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `Tree`: leaf items no longer show a chevron, and branch chevrons rotate when expanded under SLDS 1 again (`aria-controls` and `aria-hidden` are restored on the toggle)
   - `Avatar`: the fallback icon is sized to the avatar instead of a fixed default size
   - `Modal`: `prompt` modals no longer render a close button
+  - `ToastContainer` and `AlertContainer` use `slds-notify_container`, so they are fixed to the top of the viewport again
+  - `Toast`: the close icon is large again
 
 ### Removed
 
