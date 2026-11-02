@@ -9,7 +9,7 @@ import React, { type SyntheticEvent } from 'react';
 // joining classNames together."
 import classNames from 'classnames';
 
-import Calendar, { type CalendarProps } from './calendar';
+import Calendar from './calendar';
 import CalendarNavigation from './navigation';
 
 import EventUtil from '../../../utilities/event';
@@ -29,7 +29,7 @@ export interface CalendarWrapperProps {
 	/** CSS classes for datepicker */
 	className?: unknown[] | Record<string, unknown> | string;
 	/** Function to determine if a date should be disabled */
-	dateDisabled?: (date: Date) => boolean;
+	dateDisabled?: (data: { date: Date }) => boolean;
 	/** HTML id for component */
 	id?: string;
 	/** Makes Monday the first day of the week */
@@ -193,9 +193,7 @@ class DatepickerCalendarWrapper extends React.Component<
 				/>
 				<Calendar
 					abbreviatedWeekDayLabels={this.props.abbreviatedWeekDayLabels}
-					dateDisabled={
-						this.props.dateDisabled as CalendarProps['dateDisabled']
-					}
+					dateDisabled={this.props.dateDisabled}
 					id={this.props.id as string}
 					initialDateForCalendarRender={this.state.initialDateForCalendarRender}
 					isIsoWeekday={this.props.isIsoWeekday}
