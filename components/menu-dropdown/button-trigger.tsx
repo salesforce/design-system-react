@@ -127,7 +127,13 @@ const ButtonTrigger = forwardRef<HTMLDivElement, ButtonTriggerProps>(
 					(child.type as { displayName?: string })?.displayName ===
 						Button.displayName
 				) {
-					propsFromGrandchildButton = child.props as Record<string, unknown>;
+					const childProps = child.props as Record<string, unknown>;
+					// A labelled child Button keeps its label. Otherwise the
+					// Dropdown's `assistiveText.icon` makes Button render icon-only.
+					propsFromGrandchildButton =
+						childProps.label && childProps.assistiveText === undefined
+							? { assistiveText: { icon: '' }, ...childProps }
+							: childProps;
 				}
 			});
 		}

@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
 
 import TrialBar from '../index';
+import TrialBarDropdown from '../dropdown';
 
 const getTimeLeft = (container) => container.querySelector('.slds-box');
 const getTimeLeftAfter = (container) =>
@@ -70,5 +71,24 @@ describe('TrialBar', () => {
 		);
 
 		expect(getTimeLeftAfter(container).textContent).toBe('days left in trial');
+	});
+});
+
+describe('TrialBarDropdown', () => {
+	it('shows the trigger label even when the dropdown has icon assistive text', () => {
+		const { container } = render(
+			<TrialBar>
+				<TrialBarDropdown
+					assistiveText={{ icon: 'Dropdown' }}
+					id="dropdown"
+					label="Choose your tour"
+					options={[{ label: 'Conquer Your Cases', value: 'item1' }]}
+				/>
+			</TrialBar>
+		);
+
+		const trigger = container.querySelector('.slds-dropdown-trigger button');
+		expect(trigger).toHaveTextContent('Choose your tour');
+		expect(trigger.querySelector('.slds-assistive-text')).toBeNull();
 	});
 });

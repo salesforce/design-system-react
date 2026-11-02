@@ -11284,7 +11284,7 @@ exports[`Story HTML snapshots > TrialBar > DefaultStory 1`] = `
       <div class="slds-grid"><button class="slds-button slds-button_inverse slds-m-right_small" type="button" style="border:0;padding:0">Take the salesforce tour</button>
         <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-grid" id="dropdown"><button class="slds-button slds-button_inverse ignore-click-dropdown" tabindex="0" type="button" style="border:0;height:100%;padding:0" aria-expanded="false" aria-haspopup="true"><svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
               <use href="/assets/icons/utility-sprite/svg/symbols.svg#right"></use>
-            </svg><span class="slds-assistive-text">Dropdown</span></button></div>
+            </svg>Choose your tour</button></div>
       </div>
       <div class="slds-grid slds-grid_vertical-align-center slds-col_bump-left"><span class="slds-box slds-box_xx-small slds-theme_default">30</span><span class="slds-m-horizontal_x-small">days left in trial</span><button class="slds-button slds-button_success" type="button">Subscribe Now</button></div>
     </div>
