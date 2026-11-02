@@ -83,6 +83,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `ToastContainer` and `AlertContainer` use `slds-notify_container`, so they are fixed to the top of the viewport again
   - `Toast`: the close icon is large again
   - `InputIcon`: clicks on a decorative (non-button) icon reach the input
+  - `Checkbox`: the `visual-picker` variant no longer draws a border and background around the whole picker
 
 ### Removed
 
