@@ -1,4 +1,5 @@
-import { render, fireEvent } from '@testing-library/react';
+import { useState } from 'react';
+import { render, fireEvent, act } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
 import Input from '../';
@@ -21,7 +22,10 @@ describe('SLDSInput', () => {
 
 	describe('Standard Input with Label', () => {
 		it('renders label and input with correct classes and attributes', () => {
-			const { container } = renderInput({ label: 'Input Label', id: 'custom-id' });
+			const { container } = renderInput({
+				label: 'Input Label',
+				id: 'custom-id',
+			});
 
 			const wrapper = container.querySelector('.slds-form-element');
 			expect(wrapper).toBeInTheDocument();
@@ -51,7 +55,9 @@ describe('SLDSInput', () => {
 
 	describe('Input without Assistive Text Label', () => {
 		it('renders assistive text label with correct class', () => {
-			const { container } = renderInput({ assistiveText: { label: 'Assistive Label' } });
+			const { container } = renderInput({
+				assistiveText: { label: 'Assistive Label' },
+			});
 
 			const label = container.querySelector('.slds-form-element__label');
 			expect(label).toBeInTheDocument();
@@ -65,7 +71,10 @@ describe('SLDSInput', () => {
 
 	describe('Read Only Input', () => {
 		it('renders readonly input with correct attributes', () => {
-			const { container } = renderInput({ label: 'Input Label', readOnly: true });
+			const { container } = renderInput({
+				label: 'Input Label',
+				readOnly: true,
+			});
 
 			const label = container.querySelector('label');
 			expect(label).toHaveClass('slds-form-element__label');
@@ -77,7 +86,10 @@ describe('SLDSInput', () => {
 
 	describe('Static Input', () => {
 		it('renders static input as span elements', () => {
-			const { container } = renderInput({ label: 'Input Label', isStatic: true });
+			const { container } = renderInput({
+				label: 'Input Label',
+				isStatic: true,
+			});
 
 			const spans = container.querySelectorAll('span');
 			const label = spans[0];
@@ -90,7 +102,10 @@ describe('SLDSInput', () => {
 
 	describe('Disabled Input', () => {
 		it('renders disabled input with correct attribute', () => {
-			const { container } = renderInput({ label: 'Input Label', disabled: true });
+			const { container } = renderInput({
+				label: 'Input Label',
+				disabled: true,
+			});
 
 			const input = container.querySelector('input');
 			expect(input).toHaveAttribute('disabled');
@@ -101,12 +116,20 @@ describe('SLDSInput', () => {
 		it('each input has unique generated id', () => {
 			const { container: container1 } = render(
 				<IconSettings iconPath="/assets/icons">
-					<Input className="input-one" label="Input One" placeholder="Placeholder Text" />
+					<Input
+						className="input-one"
+						label="Input One"
+						placeholder="Placeholder Text"
+					/>
 				</IconSettings>
 			);
 			const { container: container2 } = render(
 				<IconSettings iconPath="/assets/icons">
-					<Input className="input-two" label="Input Two" placeholder="Placeholder Text" />
+					<Input
+						className="input-two"
+						label="Input Two"
+						placeholder="Placeholder Text"
+					/>
 				</IconSettings>
 			);
 
@@ -156,11 +179,15 @@ describe('SLDSInput', () => {
 				),
 			});
 
-			const elementControl = container.querySelector('.slds-form-element__control');
+			const elementControl = container.querySelector(
+				'.slds-form-element__control'
+			);
 			expect(elementControl).toHaveClass('slds-input-has-icon');
 
 			const iconAssistiveText = container.querySelector('.slds-assistive-text');
-			expect(iconAssistiveText.textContent).toBe('Passed assistive text to icon');
+			expect(iconAssistiveText.textContent).toBe(
+				'Passed assistive text to icon'
+			);
 
 			// Icon button should render before input
 			const html = elementControl.innerHTML;
@@ -186,7 +213,9 @@ describe('SLDSInput', () => {
 				),
 			});
 
-			const elementControl = container.querySelector('.slds-form-element__control');
+			const elementControl = container.querySelector(
+				'.slds-form-element__control'
+			);
 			expect(elementControl).toHaveClass('slds-input-has-icon');
 
 			// Icon button should render after input
@@ -205,7 +234,9 @@ describe('SLDSInput', () => {
 				iconRight: <Icon name="search" category="utility" />,
 			});
 
-			const elementControl = container.querySelector('.slds-form-element__control');
+			const elementControl = container.querySelector(
+				'.slds-form-element__control'
+			);
 			const button = elementControl.querySelector('button');
 			expect(button).not.toBeInTheDocument();
 		});
@@ -275,7 +306,9 @@ describe('SLDSInput', () => {
 				label: 'Input Label',
 			});
 
-			const fixedTextLeft = container.querySelector('.slds-form-element__addon');
+			const fixedTextLeft = container.querySelector(
+				'.slds-form-element__addon'
+			);
 			expect(fixedTextLeft).toBeInTheDocument();
 			expect(fixedTextLeft.textContent).toBe('$');
 		});
@@ -292,8 +325,12 @@ describe('SLDSInput', () => {
 				variant: 'counter',
 			});
 
-			const decrement = container.querySelector('.slds-input__button_decrement');
-			const increment = container.querySelector('.slds-input__button_increment');
+			const decrement = container.querySelector(
+				'.slds-input__button_decrement'
+			);
+			const increment = container.querySelector(
+				'.slds-input__button_increment'
+			);
 
 			// Test increment with mouse
 			onChangeData = {};
@@ -335,8 +372,12 @@ describe('SLDSInput', () => {
 				variant: 'counter',
 			});
 
-			const decrement = container.querySelector('.slds-input__button_decrement');
-			const increment = container.querySelector('.slds-input__button_increment');
+			const decrement = container.querySelector(
+				'.slds-input__button_decrement'
+			);
+			const increment = container.querySelector(
+				'.slds-input__button_increment'
+			);
 
 			// Try to increment beyond max
 			changeOccurred = false;
@@ -364,8 +405,12 @@ describe('SLDSInput', () => {
 				variant: 'counter',
 			});
 
-			const decrement = container.querySelector('.slds-input__button_decrement');
-			const increment = container.querySelector('.slds-input__button_increment');
+			const decrement = container.querySelector(
+				'.slds-input__button_decrement'
+			);
+			const increment = container.querySelector(
+				'.slds-input__button_increment'
+			);
 
 			// Test increment with custom step
 			onChangeData = {};
@@ -379,6 +424,68 @@ describe('SLDSInput', () => {
 			fireEvent.mouseUp(decrement);
 			expect(onChangeData.number).toBe(0.9);
 			expect(onChangeData.value).toBe('0.9');
+		});
+
+		it('keeps counting while a button is held in controlled mode', () => {
+			vi.useFakeTimers();
+			try {
+				const values = [];
+				const ControlledCounter = () => {
+					const [value, setValue] = useState('0');
+					return (
+						<Input
+							label="Counter"
+							onChange={(event, data) => {
+								values.push(data.value);
+								setValue(data.value);
+							}}
+							value={value}
+							variant="counter"
+						/>
+					);
+				};
+				const { container } = render(
+					<IconSettings iconPath="/assets/icons">
+						<ControlledCounter />
+					</IconSettings>
+				);
+
+				const increment = container.querySelector(
+					'.slds-input__button_increment'
+				);
+
+				fireEvent.mouseDown(increment);
+				// First repeat after 500ms, then one every 75ms. Advance one step
+				// per `act` so the parent re-renders with the new value in between.
+				[500, 75, 75].forEach((delay) => {
+					act(() => {
+						vi.advanceTimersByTime(delay);
+					});
+				});
+				fireEvent.mouseUp(increment);
+
+				expect(values).toEqual(['1', '2', '3', '4']);
+			} finally {
+				vi.useRealTimers();
+			}
+		});
+
+		it('disables the increment button at maxValue in uncontrolled mode', () => {
+			const { container } = renderInput({
+				defaultValue: '0',
+				maxValue: 1,
+				variant: 'counter',
+			});
+
+			const increment = container.querySelector(
+				'.slds-input__button_increment'
+			);
+
+			fireEvent.mouseDown(increment);
+			fireEvent.mouseUp(increment);
+
+			expect(container.querySelector('input')).toHaveValue(1);
+			expect(increment).toBeDisabled();
 		});
 	});
 });
