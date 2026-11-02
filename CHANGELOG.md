@@ -86,6 +86,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `Checkbox`: the `visual-picker` variant no longer draws a border and background around the whole picker
   - `WelcomeMatInfoBadge`: the complete check is a small circle on the badge's edge instead of a large one below it
   - `TrialBarDropdown`, and any `MenuDropdown` whose trigger `Button` child has a `label`: the label shows even when the dropdown has `assistiveText.icon`
+- `Accordion`: no longer moves focus to the first panel on mount
 
 ### Removed
 
