@@ -137,10 +137,12 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 					>
 						{label}
 					</span>
+					{/* Always the down arrow: SLDS turns it up with `slds-is-sorted_asc`
+					    on the `th`, so swapping the glyph as well would flip it twice. */}
 					<Icon
 						className="slds-is-sortable__icon"
 						category="utility"
-						name={effectiveSortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
+						name="arrowdown"
 						size="x-small"
 					/>
 					{effectiveSortDirection ? (
