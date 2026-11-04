@@ -74,12 +74,9 @@ describe('SLDSToast', () => {
 			expect(onClickHeadingLink).toHaveBeenCalledTimes(1);
 		});
 
-		it('renders a large close icon in a fixed notify container', () => {
+		it('renders in a fixed notify container', () => {
 			const { container } = render(<DemoComponent />);
 
-			expect(
-				container.querySelector('.slds-notify__close .slds-button__icon')
-			).toHaveClass('slds-button__icon_large');
 			// SLDS 2 dropped the hyphenated `.slds-notify-container` selector.
 			expect(container.querySelector('.slds-notify_container')).not.toBeNull();
 		});

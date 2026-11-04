@@ -81,7 +81,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `Avatar`: the fallback icon is sized to the avatar instead of a fixed default size
   - `Modal`: `prompt` modals no longer render a close button
   - `ToastContainer` and `AlertContainer` use `slds-notify_container`, so they are fixed to the top of the viewport again
-  - `Toast`: the close icon is large again
   - `InputIcon`: clicks on a decorative (non-button) icon reach the input
   - `Checkbox`: the `visual-picker` variant no longer draws a border and background around the whole picker
   - `WelcomeMatInfoBadge`: the complete check is a small circle on the badge's edge instead of a large one below it
