@@ -51,7 +51,8 @@ describe('SLDSColorPicker', () => {
 		it('fires onChange with value and isValid set to true when valid', () => {
 			const onChange = vi.fn();
 			const { container } = render(
-				<ColorPicker value=""
+				<ColorPicker
+					value=""
 					events={{
 						onChange: onChange,
 					}}
@@ -77,7 +78,8 @@ describe('SLDSColorPicker', () => {
 		it('fires onChange with named value and isValid set to true when valid', () => {
 			const onChange = vi.fn();
 			const { container } = render(
-				<ColorPicker value=""
+				<ColorPicker
+					value=""
 					events={{
 						onChange: onChange,
 					}}
@@ -103,7 +105,8 @@ describe('SLDSColorPicker', () => {
 		it('fires onChange with value and isValid set to false when invalid', () => {
 			const onChange = vi.fn();
 			const { container } = render(
-				<ColorPicker value=""
+				<ColorPicker
+					value=""
 					events={{
 						onChange: onChange,
 					}}
@@ -129,7 +132,8 @@ describe('SLDSColorPicker', () => {
 		it('fires onValidateColor when input changes', () => {
 			const customValidator = vi.fn();
 			const { container } = render(
-				<ColorPicker value=""
+				<ColorPicker
+					value=""
 					events={{
 						onValidateColor: customValidator,
 					}}
@@ -160,7 +164,11 @@ describe('SLDSColorPicker', () => {
 			const onOpenSpy = vi.fn();
 
 			const { container } = render(
-				<ColorPicker value="" onRequestOpen={onRequestOpenSpy} onOpen={onOpenSpy} />
+				<ColorPicker
+					value=""
+					onRequestOpen={onRequestOpenSpy}
+					onOpen={onOpenSpy}
+				/>
 			);
 
 			const button = container.querySelector(selectors.toggle);
@@ -419,7 +427,8 @@ describe('SLDSColorPicker', () => {
 					it('change causes color hue to update', () => {
 						const onWorkingColorChange = vi.fn();
 						const { container } = render(
-							<ColorPicker value=""
+							<ColorPicker
+								value=""
 								isOpen
 								events={{
 									onWorkingColorChange: onWorkingColorChange,
@@ -651,7 +660,8 @@ describe('SLDSColorPicker', () => {
 				it('invalid value sets error message', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker value=""
+						<ColorPicker
+							value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -680,7 +690,8 @@ describe('SLDSColorPicker', () => {
 				it('valid value updates color', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker value=""
+						<ColorPicker
+							value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -712,7 +723,8 @@ describe('SLDSColorPicker', () => {
 					};
 
 					const { container } = render(
-						<ColorPicker value=""
+						<ColorPicker
+							value=""
 							isOpen
 							events={{ onValidateWorkingColor: customColorValidator }}
 						/>
@@ -744,7 +756,8 @@ describe('SLDSColorPicker', () => {
 				it('non-number causes error message', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker value=""
+						<ColorPicker
+							value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -773,7 +786,8 @@ describe('SLDSColorPicker', () => {
 				it('non-integer number causes error message', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker value=""
+						<ColorPicker
+							value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -802,7 +816,8 @@ describe('SLDSColorPicker', () => {
 				it('number greater than 255 causes error message', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker value=""
+						<ColorPicker
+							value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -831,7 +846,8 @@ describe('SLDSColorPicker', () => {
 				it('negative number causes error message', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker value=""
+						<ColorPicker
+							value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -860,7 +876,8 @@ describe('SLDSColorPicker', () => {
 				it('valid number updates color', () => {
 					const onWorkingColorChange = vi.fn();
 					const { container } = render(
-						<ColorPicker value=""
+						<ColorPicker
+							value=""
 							isOpen
 							events={{
 								onWorkingColorChange: onWorkingColorChange,
@@ -895,7 +912,8 @@ describe('SLDSColorPicker', () => {
 			const label = 'Pick a color';
 			const assistiveText = 'Should be read';
 			const { container } = render(
-				<ColorPicker value=""
+				<ColorPicker
+					value=""
 					labels={{ label }}
 					assistiveText={{ label: assistiveText }}
 				/>
@@ -977,7 +995,9 @@ describe('SLDSColorPicker', () => {
 
 		it('derives the error message from value instead of seeding it', () => {
 			const { container, rerender } = render(<ColorPicker value="#000000" />);
-			expect(container.querySelector('.slds-form-error')).not.toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-form-error')
+			).not.toBeInTheDocument();
 
 			rerender(<ColorPicker value="not-a-color" />);
 			expect(container.querySelector('.slds-form-error')).toHaveTextContent(
@@ -985,7 +1005,9 @@ describe('SLDSColorPicker', () => {
 			);
 
 			rerender(<ColorPicker value="#00ff00" />);
-			expect(container.querySelector('.slds-form-error')).not.toBeInTheDocument();
+			expect(
+				container.querySelector('.slds-form-error')
+			).not.toBeInTheDocument();
 
 			rerender(<ColorPicker errorText="Custom error" value="#00ff00" />);
 			expect(container.querySelector('.slds-form-error')).toHaveTextContent(
@@ -1180,7 +1202,9 @@ describe('SLDSColorPicker', () => {
 						variant="custom"
 					/>
 				);
-				const hexInput = container.querySelector(`${selectors.customHex} input`);
+				const hexInput = container.querySelector(
+					`${selectors.customHex} input`
+				);
 
 				fireEvent.change(hexInput, { target: { value: '#ff0000' } });
 
@@ -1210,8 +1234,12 @@ describe('SLDSColorPicker', () => {
 					);
 				};
 				const { container } = render(<ControlledWorking />);
-				const hexInput = container.querySelector(`${selectors.customHex} input`);
-				const redInput = container.querySelector(`${selectors.customRed} input`);
+				const hexInput = container.querySelector(
+					`${selectors.customHex} input`
+				);
+				const redInput = container.querySelector(
+					`${selectors.customRed} input`
+				);
 
 				fireEvent.change(hexInput, { target: { value: '#ff0000' } });
 				expect(hexInput.value).toBe('#ff0000');

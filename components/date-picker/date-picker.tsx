@@ -31,10 +31,7 @@ import lowPriorityWarning from '../../utilities/warning/low-priority-warning';
 import { DATE_PICKER } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
 import { IconSettingsContext } from '../icon-settings';
-import {
-	useClickOutside,
-	useControllableState,
-} from '../../utilities/hooks';
+import { useClickOutside, useControllableState } from '../../utilities/hooks';
 
 // ===== Types =====
 

@@ -114,9 +114,7 @@ describe('Button Stateful', () => {
 				.spyOn(console, 'error')
 				.mockImplementation(() => {});
 			const onClick = vi.fn();
-			const { container } = render(
-				<ButtonStateful active onClick={onClick} />
-			);
+			const { container } = render(<ButtonStateful active onClick={onClick} />);
 
 			const button = getButton(container);
 			expect(button).toHaveClass('slds-is-selected');
@@ -125,17 +123,13 @@ describe('Button Stateful', () => {
 
 			const messages = consoleError.mock.calls.map((args) => args.join(' '));
 			expect(
-				messages.some(
-					(m) => m.includes('`active`') && m.includes('`isActive`')
-				)
+				messages.some((m) => m.includes('`active`') && m.includes('`isActive`'))
 			).toBe(true);
 		});
 
 		it('prefers isActive over the deprecated active prop', () => {
 			vi.spyOn(console, 'error').mockImplementation(() => {});
-			const { container } = render(
-				<ButtonStateful isActive={false} active />
-			);
+			const { container } = render(<ButtonStateful isActive={false} active />);
 
 			expect(getButton(container)).toHaveClass('slds-not-selected');
 		});

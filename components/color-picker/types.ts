@@ -102,6 +102,3 @@ export interface ColorPickerEvents {
 		data: { color: WorkingColor }
 	) => void;
 }
-
-
-
