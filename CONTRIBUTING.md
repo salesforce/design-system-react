@@ -14,6 +14,8 @@ Thank you for your interest in contributing! This guide will help you get starte
 ## Setup
 
 > Maintainers with push access to `salesforce/design-system-react` should clone it directly and push branches there instead of forking, so Chromatic visual review runs on your PR.
+>
+> Chromatic does not run automatically for PRs from forks. A maintainer who can edit labels (triage access or higher) can run it after reviewing the changes by adding the `run-chromatic` label. The label is removed whenever new commits are pushed, so it must be re-applied for each update.
 
 1. **Fork this repository** (button in upper right)
 
@@ -218,6 +220,19 @@ Run `npm run test:ci` to do steps 1–4 in one go. A pre-push hook also checks s
 4. **Run build**: `npm run build`
 5. **Test in Storybook**: `npm run storybook`
 6. **Rebase on `master`** and resolve any conflicts
+
+### Optional: Local TinyNod Review (Salesforce Employees)
+
+Salesforce employees can opt in to an advisory AI review that runs during `git push`, after the snapshot check. It never blocks a push, is off by default, and CI never runs it. It sends the outgoing diff to Salesforce's internal AI gateway, so read the data policy in the guide first.
+
+1. Install TinyNod 2.5.0+ from the CodeNod homepage, <https://git.soma.salesforce.com/cc-oms/pr-reviewer> ("tinynod (standalone CLI)").
+2. Store a gateway key and a full model id. With DevBar / AI Suite:
+   `tinynod config set ai.apiKey "$('/Applications/devbar.app/Contents/MacOS/devbar' auth claude)"`
+   then `tinynod config set ai.model claude-opus-5-5`. Without DevBar / AI Suite: `tinynod config init`.
+3. Opt in: `git config --local dsr.tinynod.enabled true` (opt out: set `false`; skip once: `TINYNOD_SKIP_HOOK=1 git push`).
+4. Push, read the one-line result, and fix findings (or ask your coding agent to; there is a prompt in the guide).
+
+Setup, troubleshooting, result statuses and the data policy: [docs/tinynod-local-review.md](docs/tinynod-local-review.md).
 
 ### PR Requirements
 

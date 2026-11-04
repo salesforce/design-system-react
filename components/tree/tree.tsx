@@ -2,6 +2,7 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
+	forwardRef,
 	useState,
 	useCallback,
 	useEffect,
@@ -41,9 +42,11 @@ export interface TreeProps {
 	 * * `heading`: Visually hidden tree heading. Set this or `labels.heading`.
 	 */
 	assistiveText?: TreeAssistiveText;
-	/** Class names for the container element */
+	/** Class names for the root `.slds-tree_container` div */
 	className?: string | string[] | Record<string, boolean>;
-	/** Class names for the top-level ul element */
+	/** Class names for the top-level `ul.slds-tree` element */
+	classNameList?: string | string[] | Record<string, boolean>;
+	/** @deprecated Use `classNameList`. */
 	listClassName?: string | string[] | Record<string, boolean>;
 	/** Function to get child nodes from a parent node */
 	getNodes?: (node: { nodes?: TreeNode[] }) => TreeNode[] | undefined;
@@ -118,7 +121,9 @@ export interface TreeProps {
 	) => void;
 	/** Search term to highlight in node labels */
 	searchTerm?: string;
-	/** Styles for the top-level ul element */
+	/** Styles for the top-level `ul.slds-tree` element */
+	styleList?: React.CSSProperties;
+	/** @deprecated Use `styleList`. */
 	listStyle?: React.CSSProperties;
 }
 
@@ -196,283 +201,304 @@ const defaultGetNodes = (node: { nodes?: TreeNode[] }) => node.nodes;
  * Selection is controlled through `selectedIds`. Expansion is controlled through `expandedIds`, or
  * managed by the tree (starting from `defaultExpandedIds`) when `expandedIds` is not passed.
  */
-const Tree: React.FC<TreeProps> = ({
-	assistiveText: assistiveTextProp,
-	className,
-	listClassName,
-	getNodes = defaultGetNodes,
-	heading: headingProp,
-	id,
-	labels,
-	nodes,
-	selectedIds,
-	expandedIds,
-	defaultExpandedIds,
-	onSelect,
-	onClick,
-	onRequestToggle,
-	onExpandClick,
-	onScroll,
-	searchTerm,
-	listStyle,
-}) => {
-	// `assistiveText.label` is deprecated
-	const assistiveHeading =
-		assistiveTextProp?.heading ?? assistiveTextProp?.label;
-	// `heading` is deprecated
-	const visibleHeading = labels?.heading ?? headingProp;
-
-	// Without `selectedIds`, selection is read from the deprecated `node.selected` fields
-	const isLegacySelection = selectedIds === undefined;
-	// Without `expandedIds` and `defaultExpandedIds`, the deprecated `node.expanded` fields win
-	const isLegacyExpansion =
-		expandedIds === undefined && defaultExpandedIds === undefined;
-
-	// Expansion is ephemeral UI state: controlled when `expandedIds` is passed
-	const [currentExpandedIds, setExpandedIds] = useControllableState(
-		expandedIds,
-		defaultExpandedIds ?? EMPTY_IDS
-	);
-
-	const selectedIdSet = useMemo(
-		() => new Set<TreeNodeId>(selectedIds ?? EMPTY_IDS),
-		[selectedIds]
-	);
-	const expandedIdSet = useMemo(
-		() => new Set<TreeNodeId>(currentExpandedIds),
-		[currentExpandedIds]
-	);
-
-	const isNodeSelected = useCallback(
-		(node: TreeNode) =>
-			isLegacySelection ? !!node.selected : selectedIdSet.has(node.id),
-		[isLegacySelection, selectedIdSet]
-	);
-
-	const isNodeExpanded = useCallback(
-		(node: TreeNode) =>
-			isLegacyExpansion && node.expanded !== undefined
-				? !!node.expanded
-				: expandedIdSet.has(node.id),
-		[isLegacyExpansion, expandedIdSet]
-	);
-
-	// Track if tree has focus
-	const treeHasFocusRef = useRef(false);
-
-	// Visible nodes in display order
-	const flattenedNodes = useMemo(
-		() =>
-			flattenTree(
-				{ nodes: getNodes({ nodes }) },
-				getNodes,
-				isNodeExpanded
-			).slice(1),
-		[getNodes, nodes, isNodeExpanded]
-	);
-
-	// Roving focus is ephemeral and internal. Until a node has been focused, the first visible
-	// selected node is the tab stop.
-	const [focusedNodeIndex, setFocusedNodeIndex] = useState<string | undefined>(
-		undefined
-	);
-	const effectiveFocusedNodeIndex =
-		focusedNodeIndex ??
-		flattenedNodes.find((flattenedNode) => isNodeSelected(flattenedNode.node))
-			?.treeIndex;
-	const tabStopIndex =
-		effectiveFocusedNodeIndex ?? flattenedNodes[0]?.treeIndex;
-
-	// Check props on mount
-	useEffect(() => {
-		checkProps(
-			TREE,
-			{
-				assistiveText: assistiveTextProp,
-				className,
-				listClassName,
-				getNodes,
-				heading: headingProp,
-				id,
-				labels,
-				nodes,
-				selectedIds,
-				expandedIds,
-				defaultExpandedIds,
-				onSelect,
-				onClick,
-				onRequestToggle,
-				onExpandClick,
-				onScroll,
-				searchTerm,
-				listStyle,
-			},
-			componentDoc
-		);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
-	// Warn about the deprecated `node.expanded` fallback whenever visible nodes use it
-	useEffect(() => {
-		if (process.env.NODE_ENV !== 'production' && isLegacyExpansion) {
-			checkLegacyNodeFields(TREE, {
-				hasExpandedField: flattenedNodes.some(
-					(flattenedNode) => flattenedNode.node.expanded !== undefined
-				),
-			});
-		}
-	}, [isLegacyExpansion, flattenedNodes]);
-
-	const getSelectedIds = useCallback(
-		() =>
-			isLegacySelection
-				? collectNodeIds(nodes, getNodes, (node) => !!node.selected)
-				: (selectedIds as TreeNodeId[]),
-		[isLegacySelection, nodes, getNodes, selectedIds]
-	);
-
-	const getExpandedIds = useCallback(
-		() =>
-			isLegacyExpansion
-				? collectNodeIds(
-						nodes,
-						getNodes,
-						(node) => node.type === 'branch' && isNodeExpanded(node)
-					)
-				: currentExpandedIds,
-		[isLegacyExpansion, nodes, getNodes, isNodeExpanded, currentExpandedIds]
-	);
-
-	// Handle node selection. Never writes to `nodes`: it reports the requested selection.
-	const handleSelect = useCallback(
-		({
-			event,
-			data,
-			clearSelectedNodes,
-			fromFocus,
-		}: {
-			event: React.SyntheticEvent;
-			data: TreeSelectData;
-			clearSelectedNodes?: boolean;
-			fromFocus?: boolean;
-		}) => {
-			// Prevent firing twice on first click due to focus event
-			if (!fromFocus) {
-				if (onSelect) {
-					// Keyboard navigation moves the selection to the node; click and Enter toggle it
-					const others = clearSelectedNodes
-						? []
-						: getSelectedIds().filter((nodeId) => nodeId !== data.node.id);
-					onSelect(event, {
-						node: data.node,
-						isSelected: data.select,
-						selectedIds: data.select ? [...others, data.node.id] : others,
-					});
-				} else if (onClick) {
-					onClick(event, data);
-				}
-			}
-
-			treeHasFocusRef.current = true;
-			setFocusedNodeIndex(data.treeIndex);
-		},
-		[getSelectedIds, onSelect, onClick]
-	);
-
-	// Handle node blur
-	const handleNodeBlur = useCallback(() => {
-		treeHasFocusRef.current = false;
-	}, []);
-
-	// Handle expand/collapse
-	const handleExpand = useCallback(
-		({
-			event,
-			data,
-		}: {
-			event: React.SyntheticEvent;
-			data: TreeExpandData;
-		}) => {
-			// `data.select` marks Left arrow on a collapsed branch or item: move to the parent node.
-			if (data.select) {
-				if (!onRequestToggle && onExpandClick) {
-					// Deprecated behavior: report it to `onExpandClick` with the parent node
-					treeHasFocusRef.current = true;
-					onExpandClick(event, data);
-					setFocusedNodeIndex(data.treeIndex);
-				} else {
-					// Not an expand/collapse request: select the parent, like Up/Down arrows do
-					handleSelect({
-						event,
-						data: { node: data.node, select: true, treeIndex: data.treeIndex },
-						clearSelectedNodes: true,
-					});
-				}
-				return;
-			}
-
-			treeHasFocusRef.current = true;
-			const others = getExpandedIds().filter(
-				(nodeId) => nodeId !== data.node.id
-			);
-			const nextExpandedIds = data.expand ? [...others, data.node.id] : others;
-			// No-op when `expandedIds` is controlled
-			setExpandedIds(nextExpandedIds);
-			if (onRequestToggle) {
-				onRequestToggle(event, {
-					node: data.node,
-					isExpanded: data.expand,
-					expandedIds: nextExpandedIds,
-				});
-			} else if (onExpandClick) {
-				onExpandClick(event, data);
-			}
-		},
-		[
-			handleSelect,
-			getExpandedIds,
-			setExpandedIds,
+const Tree = forwardRef<HTMLDivElement, TreeProps>(
+	(
+		{
+			assistiveText: assistiveTextProp,
+			className,
+			classNameList,
+			listClassName,
+			getNodes = defaultGetNodes,
+			heading: headingProp,
+			id,
+			labels,
+			nodes,
+			selectedIds,
+			expandedIds,
+			defaultExpandedIds,
+			onSelect,
+			onClick,
 			onRequestToggle,
 			onExpandClick,
-		]
-	);
+			onScroll,
+			searchTerm,
+			styleList,
+			listStyle,
+		},
+		ref
+	) => {
+		// `assistiveText.label` is deprecated
+		const assistiveHeading =
+			assistiveTextProp?.heading ?? assistiveTextProp?.label;
+		// `heading` is deprecated
+		const visibleHeading = labels?.heading ?? headingProp;
 
-	// Determine heading text
-	const headingText = assistiveHeading || visibleHeading;
+		// Without `selectedIds`, selection is read from the deprecated `node.selected` fields
+		const isLegacySelection = selectedIds === undefined;
+		// Without `expandedIds` and `defaultExpandedIds`, the deprecated `node.expanded` fields win
+		const isLegacyExpansion =
+			expandedIds === undefined && defaultExpandedIds === undefined;
 
-	return (
-		<div id={id} className={classNames('slds-tree_container', className)}>
-			<h4
-				className={classNames('slds-tree__group-header', {
-					'slds-assistive-text': !!assistiveHeading,
-				})}
-				id={`${id}__heading`}
+		// Expansion is ephemeral UI state: controlled when `expandedIds` is passed
+		const [currentExpandedIds, setExpandedIds] = useControllableState(
+			expandedIds,
+			defaultExpandedIds ?? EMPTY_IDS
+		);
+
+		const selectedIdSet = useMemo(
+			() => new Set<TreeNodeId>(selectedIds ?? EMPTY_IDS),
+			[selectedIds]
+		);
+		const expandedIdSet = useMemo(
+			() => new Set<TreeNodeId>(currentExpandedIds),
+			[currentExpandedIds]
+		);
+
+		const isNodeSelected = useCallback(
+			(node: TreeNode) =>
+				isLegacySelection ? !!node.selected : selectedIdSet.has(node.id),
+			[isLegacySelection, selectedIdSet]
+		);
+
+		const isNodeExpanded = useCallback(
+			(node: TreeNode) =>
+				isLegacyExpansion && node.expanded !== undefined
+					? !!node.expanded
+					: expandedIdSet.has(node.id),
+			[isLegacyExpansion, expandedIdSet]
+		);
+
+		// Track if tree has focus
+		const treeHasFocusRef = useRef(false);
+
+		// Visible nodes in display order
+		const flattenedNodes = useMemo(
+			() =>
+				flattenTree(
+					{ nodes: getNodes({ nodes }) },
+					getNodes,
+					isNodeExpanded
+				).slice(1),
+			[getNodes, nodes, isNodeExpanded]
+		);
+
+		// Roving focus is ephemeral and internal. Until a node has been focused, the first visible
+		// selected node is the tab stop.
+		const [focusedNodeIndex, setFocusedNodeIndex] = useState<
+			string | undefined
+		>(undefined);
+		const effectiveFocusedNodeIndex =
+			focusedNodeIndex ??
+			flattenedNodes.find((flattenedNode) => isNodeSelected(flattenedNode.node))
+				?.treeIndex;
+		const tabStopIndex =
+			effectiveFocusedNodeIndex ?? flattenedNodes[0]?.treeIndex;
+
+		// Check props on mount
+		useEffect(() => {
+			checkProps(
+				TREE,
+				{
+					assistiveText: assistiveTextProp,
+					className,
+					classNameList,
+					listClassName,
+					getNodes,
+					heading: headingProp,
+					id,
+					labels,
+					nodes,
+					selectedIds,
+					expandedIds,
+					defaultExpandedIds,
+					onSelect,
+					onClick,
+					onRequestToggle,
+					onExpandClick,
+					onScroll,
+					searchTerm,
+					styleList,
+					listStyle,
+				},
+				componentDoc
+			);
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+		}, []);
+
+		// Warn about the deprecated `node.expanded` fallback whenever visible nodes use it
+		useEffect(() => {
+			if (process.env.NODE_ENV !== 'production' && isLegacyExpansion) {
+				checkLegacyNodeFields(TREE, {
+					hasExpandedField: flattenedNodes.some(
+						(flattenedNode) => flattenedNode.node.expanded !== undefined
+					),
+				});
+			}
+		}, [isLegacyExpansion, flattenedNodes]);
+
+		const getSelectedIds = useCallback(
+			() =>
+				isLegacySelection
+					? collectNodeIds(nodes, getNodes, (node) => !!node.selected)
+					: (selectedIds as TreeNodeId[]),
+			[isLegacySelection, nodes, getNodes, selectedIds]
+		);
+
+		const getExpandedIds = useCallback(
+			() =>
+				isLegacyExpansion
+					? collectNodeIds(
+							nodes,
+							getNodes,
+							(node) => node.type === 'branch' && isNodeExpanded(node)
+						)
+					: currentExpandedIds,
+			[isLegacyExpansion, nodes, getNodes, isNodeExpanded, currentExpandedIds]
+		);
+
+		// Handle node selection. Never writes to `nodes`: it reports the requested selection.
+		const handleSelect = useCallback(
+			({
+				event,
+				data,
+				clearSelectedNodes,
+				fromFocus,
+			}: {
+				event: React.SyntheticEvent;
+				data: TreeSelectData;
+				clearSelectedNodes?: boolean;
+				fromFocus?: boolean;
+			}) => {
+				// Prevent firing twice on first click due to focus event
+				if (!fromFocus) {
+					if (onSelect) {
+						// Keyboard navigation moves the selection to the node; click and Enter toggle it
+						const others = clearSelectedNodes
+							? []
+							: getSelectedIds().filter((nodeId) => nodeId !== data.node.id);
+						onSelect(event, {
+							node: data.node,
+							isSelected: data.select,
+							selectedIds: data.select ? [...others, data.node.id] : others,
+						});
+					} else if (onClick) {
+						onClick(event, data);
+					}
+				}
+
+				treeHasFocusRef.current = true;
+				setFocusedNodeIndex(data.treeIndex);
+			},
+			[getSelectedIds, onSelect, onClick]
+		);
+
+		// Handle node blur
+		const handleNodeBlur = useCallback(() => {
+			treeHasFocusRef.current = false;
+		}, []);
+
+		// Handle expand/collapse
+		const handleExpand = useCallback(
+			({
+				event,
+				data,
+			}: {
+				event: React.SyntheticEvent;
+				data: TreeExpandData;
+			}) => {
+				// `data.select` marks Left arrow on a collapsed branch or item: move to the parent node.
+				if (data.select) {
+					if (!onRequestToggle && onExpandClick) {
+						// Deprecated behavior: report it to `onExpandClick` with the parent node
+						treeHasFocusRef.current = true;
+						onExpandClick(event, data);
+						setFocusedNodeIndex(data.treeIndex);
+					} else {
+						// Not an expand/collapse request: select the parent, like Up/Down arrows do
+						handleSelect({
+							event,
+							data: {
+								node: data.node,
+								select: true,
+								treeIndex: data.treeIndex,
+							},
+							clearSelectedNodes: true,
+						});
+					}
+					return;
+				}
+
+				treeHasFocusRef.current = true;
+				const others = getExpandedIds().filter(
+					(nodeId) => nodeId !== data.node.id
+				);
+				const nextExpandedIds = data.expand
+					? [...others, data.node.id]
+					: others;
+				// No-op when `expandedIds` is controlled
+				setExpandedIds(nextExpandedIds);
+				if (onRequestToggle) {
+					onRequestToggle(event, {
+						node: data.node,
+						isExpanded: data.expand,
+						expandedIds: nextExpandedIds,
+					});
+				} else if (onExpandClick) {
+					onExpandClick(event, data);
+				}
+			},
+			[
+				handleSelect,
+				getExpandedIds,
+				setExpandedIds,
+				onRequestToggle,
+				onExpandClick,
+			]
+		);
+
+		// Determine heading text
+		const headingText = assistiveHeading || visibleHeading;
+
+		return (
+			<div
+				id={id}
+				className={classNames('slds-tree_container', className)}
+				ref={ref}
 			>
-				{headingText}
-			</h4>
-			<Branch
-				getNodes={getNodes}
-				initalClassName={listClassName}
-				htmlId={id}
-				initialStyle={listStyle}
-				level={0}
-				node={{ nodes }}
-				flattenedNodes={flattenedNodes}
-				isNodeSelected={isNodeSelected}
-				isNodeExpanded={isNodeExpanded}
-				tabStopIndex={tabStopIndex}
-				focusedNodeIndex={effectiveFocusedNodeIndex}
-				treeHasFocus={treeHasFocusRef.current}
-				onNodeBlur={handleNodeBlur}
-				onSelect={handleSelect}
-				onExpand={handleExpand}
-				onScroll={onScroll}
-				searchTerm={searchTerm}
-				treeId={id}
-			/>
-		</div>
-	);
-};
+				<h4
+					className={classNames('slds-tree__group-header', {
+						'slds-assistive-text': !!assistiveHeading,
+					})}
+					id={`${id}__heading`}
+				>
+					{headingText}
+				</h4>
+				<Branch
+					getNodes={getNodes}
+					initalClassName={classNames(listClassName, classNameList)}
+					htmlId={id}
+					initialStyle={
+						listStyle || styleList ? { ...listStyle, ...styleList } : undefined
+					}
+					level={0}
+					node={{ nodes }}
+					flattenedNodes={flattenedNodes}
+					isNodeSelected={isNodeSelected}
+					isNodeExpanded={isNodeExpanded}
+					tabStopIndex={tabStopIndex}
+					focusedNodeIndex={effectiveFocusedNodeIndex}
+					treeHasFocus={treeHasFocusRef.current}
+					onNodeBlur={handleNodeBlur}
+					onSelect={handleSelect}
+					onExpand={handleExpand}
+					onScroll={onScroll}
+					searchTerm={searchTerm}
+					treeId={id}
+				/>
+			</div>
+		);
+	}
+);
 
 Tree.displayName = TREE;
 

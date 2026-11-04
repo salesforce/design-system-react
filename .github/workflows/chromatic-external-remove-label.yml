@@ -1,0 +1,33 @@
+name: 'Chromatic (external contributors): remove label'
+
+# Companion to chromatic-external.yml. Removes the `run-chromatic` label on
+# every push to a PR so new commits must be reviewed and re-labeled before
+# Chromatic runs with repository secrets. This workflow never checks out or
+# runs PR code.
+
+on:
+  pull_request_target:
+    types: [synchronize]
+
+permissions: {}
+
+jobs:
+  remove-label:
+    name: Remove run-chromatic label
+    if: contains(github.event.pull_request.labels.*.name, 'run-chromatic')
+    # Shared with chromatic-external.yml so a push cancels an in-flight run.
+    concurrency:
+      group: chromatic-external-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Remove run-chromatic label
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          gh api --method DELETE "repos/${REPO}/issues/${PR_NUMBER}/labels/run-chromatic" \
+            || echo "Label already removed"

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { createRef, useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, afterEach } from 'vitest';
@@ -369,6 +369,19 @@ describe('SLDSVerticalNavigation', () => {
 
 			expect(screen.getByText('Empty Category')).toBeInTheDocument();
 			// Should render the category but no items
+		});
+	});
+
+	describe('className and ref', () => {
+		it('puts className and ref on the root nav.slds-nav-vertical element', () => {
+			const ref = createRef();
+			const { container } = render(
+				<VerticalNavigation {...defaultProps} ref={ref} />
+			);
+			const root = container.firstChild;
+			expect(root.tagName).toBe('NAV');
+			expect(root).toHaveClass('slds-nav-vertical', 'sample-navigation');
+			expect(ref.current).toBe(root);
 		});
 	});
 });

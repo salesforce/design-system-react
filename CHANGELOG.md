@@ -37,6 +37,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `Textarea` `onChange(event, { value })`, with the `TextareaChangeData` type
 - `RadioGroupItemProps`, the props type for a `Radio` inside `RadioGroup` or `RadioButtonGroup`, which doesn't need `checked` or `onChange`
 - `useControllableState` hook in `utilities/hooks/use-controllable-state`, for state that is controlled when its prop is not `undefined`
+- `Slider`, `Spinner`, `Tree`, `Modal`, `Popover`, `WelcomeMat` and `VerticalNavigation` forward `ref` to their root element: the outermost element each one renders, which is also where `className` goes. For `Modal` that is `section.slds-modal`, for `Popover` the trigger wrapper `div`, and for `Spinner` the `.slds-spinner_container` (or `.slds-spinner` with `hasContainer={false}`)
+- Suffixed class and style props for inner nodes, following the `className*` convention:
+  - `Slider` `className` on the root `.slds-form-element`
+  - `Spinner` `className` and `style` on the root, and `classNameSpinner` on `.slds-spinner`
+  - `Tree` `classNameList` and `styleList` on the top-level `ul.slds-tree`
+  - `Modal` `classNameContainer`, `classNameContent`, `classNameFooter`, `classNameHeader`, `classNamePortal` and `styleContent`
+  - `Popover` `classNameDialog` and `styleDialog` on the `.slds-popover` dialog, and `styleFooter` (applied to walkthrough footers too, like `classNameFooter`)
 
 ### Changed
 
@@ -72,6 +79,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `ColorPicker`: `isOpen` is honored (it only set the initial state before). The swatch button no longer calls `onRequestOpen` when it closes the popover, and Done calls `onRequestClose` with `'submit'`
 - `DatePicker`: Down/Up in the closed input go through `onRequestOpen`, and Escape/Enter in the input go through `onRequestClose`, instead of setting internal state directly, so controlled pickers now open from the keyboard
 - Content props that are only rendered are typed `ReactNode` instead of `ReactElement`, so strings, fragments, arrays and `null` type-check: `SplitView` `master`/`detail`, `PageHeader` `trail`, `TabsPanel` `label`, `SetupAssistantStep` `figure` (an `Icon` is still resized to `small`), and the return type of the deprecated `Carousel` `onRenderItem`, `SetupAssistantStep` `onRenderFigure` and `MenuDropdown` `listItemRenderer`
+- **BREAKING**: `Popover` `className` and `style` apply to the root trigger wrapper `div` instead of the `.slds-popover` dialog. Move dialog classes and styles to `classNameDialog` and `styleDialog`
+- **BREAKING**: `WelcomeMat` `className` applies to the root `.slds-welcome-mat` element instead of the inner `.slds-welcome-mat__info-content`
 
 ### Deprecated
 
@@ -97,6 +106,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `SimpleDataTable` `onRenderSubHeadingRow` (use `renderSubHeadingRow`, which gets the same data without `key`; the table sets the row's key)
   - `MenuDropdown` `listItemRenderer`, which took a component (use `renderMenuItem({ icon, isSelected, option, optionIndex })`)
   - `SplitViewListbox` `listItem`, which took a component (use `renderListItem({ isFocused, isSelected, isUnread, item })`)
+- Class and style props named for the old convention. Each one still works (merged with its replacement), logs a one-time warning in development, and will be removed in the next major version:
+  - `Slider` `classNameContainer` (use `className`)
+  - `Spinner` `containerClassName` and `containerStyle` (use `className` and `style`)
+  - `Tree` `listClassName` and `listStyle` (use `classNameList` and `styleList`)
+  - `Modal` `containerClassName`, `contentClassName`, `contentStyle`, `footerClassName`, `headerClassName` and `portalClassName` (use `classNameContainer`, `classNameContent`, `styleContent`, `classNameFooter`, `classNameHeader` and `classNamePortal`)
+  - `Popover` `contentsClassName` (use `classNameDialog`), `triggerClassName` (use `className`), `footerClassName` (use `classNameFooter`) and `footerStyle` (use `styleFooter`)
 
 ### Fixed
 
@@ -111,7 +126,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `SimpleDataTable`: ascending sorted columns have the `slds-is-sorted_asc` class
 - `SimpleDataTable`: in development, re-rendering the table with unchanged column children no longer overflows the stack, so a stateful parent can update `selection`
 - `SimpleDataTable`: the select-all checkbox counts only selected items that are in `items`
-- `Carousel`: autoplay advances through the panels instead of requesting the same next panel on every tick
+- `Carousel`: autoplay advances through every panel instead of stalling after the first tick, and the slides follow the panel on previous/next, indicator and arrow key navigation instead of lagging a click behind (or staying put) while the indicators move
 - `Combobox`: passing only `events.onRequestOpen` no longer leaves the menu unable to open
 - `Popover`: a controlled popover no longer writes internal state, which took over if `isOpen` went back to `undefined`
 - `SplitViewListbox`: a Shift-click range orders rows numerically and starts at the first selected item when nothing was clicked yet, and Ctrl+A deselects whenever every option is selected

@@ -152,7 +152,7 @@ export const BrandLarge = {
 	args: {
 		size: 'large',
 		variant: 'brand',
-		containerClassName: 'my-custom-classname',
+		className: 'my-custom-classname',
 	},
 };
 

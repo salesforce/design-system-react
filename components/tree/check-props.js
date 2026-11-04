@@ -61,6 +61,13 @@ if (process.env.NODE_ENV !== 'production') {
 			'selectedIds',
 			'`selectedIds` is not set, so Tree reads selection from the deprecated `selected` field of each node. Tree never writes to `nodes`; pass `selectedIds` and update it from `data.selectedIds` in `onSelect`.'
 		);
+		deprecatedProperty(
+			COMPONENT,
+			props.listClassName,
+			'listClassName',
+			'classNameList'
+		);
+		deprecatedProperty(COMPONENT, props.listStyle, 'listStyle', 'styleList');
 		/* eslint-enable max-len */
 	};
 }

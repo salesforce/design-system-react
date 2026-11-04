@@ -1,7 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, {
+import {
+	forwardRef,
 	useId,
 	useCallback,
 	useEffect,
@@ -52,7 +53,9 @@ export interface SliderProps {
 	 * * `label`: Visually hidden label. Use instead of `labels.label`.
 	 */
 	assistiveText?: SliderAssistiveText;
-	/** CSS classes for the container */
+	/** CSS classes for the root `.slds-form-element` div */
+	className?: string | string[] | Record<string, boolean>;
+	/** @deprecated Use `className`, which lands on the same element. */
 	classNameContainer?: string | string[] | Record<string, boolean>;
 	/** Whether the slider is disabled */
 	disabled?: boolean;
@@ -115,10 +118,11 @@ const defaultAssistiveText: SliderAssistiveText = {
  * The ability to style sliders with CSS varies across browsers.
  * Using this component ensures sliders look the same everywhere.
  */
-const Slider = (props: SliderProps): React.ReactElement => {
+const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
 	const {
 		'aria-describedby': ariaDescribedBy,
 		assistiveText: propAssistiveText,
+		className,
 		classNameContainer,
 		defaultValue,
 		disabled,
@@ -158,6 +162,7 @@ const Slider = (props: SliderProps): React.ReactElement => {
 			SLIDER,
 			{
 				assistiveText: propAssistiveText,
+				classNameContainer,
 				defaultValue,
 				errorText,
 				label: labelProp,
@@ -165,7 +170,14 @@ const Slider = (props: SliderProps): React.ReactElement => {
 			},
 			componentDoc
 		);
-	}, [propAssistiveText, defaultValue, errorText, labelProp, labels]);
+	}, [
+		propAssistiveText,
+		classNameContainer,
+		defaultValue,
+		errorText,
+		labelProp,
+		labels,
+	]);
 
 	const ariaProps = getAriaProps(rest) as Record<string, unknown>;
 	if (errorId) {
@@ -193,8 +205,10 @@ const Slider = (props: SliderProps): React.ReactElement => {
 			className={classNames(
 				'slds-form-element',
 				{ 'slds-has-error': hasError },
-				classNameContainer as string
+				classNameContainer,
+				className
 			)}
+			ref={ref}
 		>
 			<label
 				className={classNames('slds-form-element__label', {
@@ -253,7 +267,7 @@ const Slider = (props: SliderProps): React.ReactElement => {
 			</div>
 		</div>
 	);
-};
+});
 
 Slider.displayName = SLIDER;
 

@@ -76,7 +76,9 @@ describe('SLDS Carousel', () => {
 	};
 
 	const getActivePanel = (container) =>
-		[...container.querySelectorAll('.slds-carousel__indicator-action')].findIndex(
+		[
+			...container.querySelectorAll('.slds-carousel__indicator-action'),
+		].findIndex(
 			(indicator) => indicator.getAttribute('aria-selected') === 'true'
 		);
 
@@ -121,6 +123,43 @@ describe('SLDS Carousel', () => {
 			// Click to start autoplay
 			fireEvent.click(autoplayButton);
 			expect(autoplayButton.innerHTML).toContain('#pause');
+		});
+
+		it('advances through every panel during autoplay instead of stalling after one tick', () => {
+			vi.useFakeTimers();
+			try {
+				const { container: autoplayContainer } = renderCarousel({
+					itemsPerPanel: 1,
+					autoplayInterval: 100,
+				});
+
+				const getActiveIndex = () => {
+					for (let i = 0; i < items.length; i += 1) {
+						const indicator = autoplayContainer.querySelector(
+							`#indicator-id-${defaultCarouselProps.id}-${i}`
+						);
+						if (indicator && indicator.getAttribute('tabindex') === '0') {
+							return i;
+						}
+					}
+					return -1;
+				};
+
+				const seen = [getActiveIndex()];
+				for (let i = 0; i < items.length; i += 1) {
+					act(() => {
+						vi.advanceTimersByTime(100);
+					});
+					seen.push(getActiveIndex());
+				}
+
+				// Advances through every panel in order, then loops back to the
+				// start (isInfinite: true), instead of getting stuck after the
+				// first tick.
+				expect(seen).toEqual([0, 1, 2, 3, 4, 5, 6, 0]);
+			} finally {
+				vi.useRealTimers();
+			}
 		});
 
 		it('handles previous button presses correctly', () => {
