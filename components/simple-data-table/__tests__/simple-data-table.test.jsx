@@ -1594,5 +1594,46 @@ describe('SimpleDataTable', () => {
 				'ascending'
 			);
 		});
+
+		it('points the arrow up when ascending and down when descending', () => {
+			// The direction SLDS draws: the icon glyph, turned 180deg by
+			// `slds-is-sorted_asc`.
+			const getArrowDirection = (header) => {
+				const href = header
+					.querySelector('.slds-is-sortable__icon use')
+					.getAttribute('href');
+				const glyph = href.endsWith('#arrowup') ? 'up' : 'down';
+				if (!header.classList.contains('slds-is-sorted_asc')) {
+					return glyph;
+				}
+				return glyph === 'up' ? 'down' : 'up';
+			};
+			const Wrapper = () => {
+				const [sortDirection, setSortDirection] = useState('asc');
+				return (
+					<SimpleDataTable
+						{...defaultProps}
+						selection={[]}
+						fixedLayout
+						onSort={(data) => setSortDirection(data.sortDirection)}
+					>
+						<SimpleDataTableColumn
+							isSorted
+							label="Count"
+							property="count"
+							sortable
+							sortDirection={sortDirection}
+						/>
+					</SimpleDataTable>
+				);
+			};
+			const { container } = renderTable(<Wrapper />);
+
+			expect(getArrowDirection(getSortHeader(container))).toBe('up');
+			fireEvent.click(getSortHeader(container).querySelector('a'));
+			expect(getArrowDirection(getSortHeader(container))).toBe('down');
+			fireEvent.click(getSortHeader(container).querySelector('a'));
+			expect(getArrowDirection(getSortHeader(container))).toBe('up');
+		});
 	});
 });

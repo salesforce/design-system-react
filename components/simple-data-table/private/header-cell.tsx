@@ -1,12 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, {
-	useContext,
-	useEffect,
-	SyntheticEvent,
-	ReactNode,
-} from 'react';
+import React, { useContext, useEffect, SyntheticEvent, ReactNode } from 'react';
 import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 
@@ -117,8 +112,7 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 
 	const labelType = typeof label;
 	const effectiveSortDirection =
-		props.sortDirection ||
-		(props.isDefaultSortDescending ? 'desc' : undefined);
+		props.sortDirection || (props.isDefaultSortDescending ? 'desc' : undefined);
 	const expandedSortDirection =
 		effectiveSortDirection === 'desc' ? 'descending' : 'ascending';
 	const ariaSort = isSorted ? expandedSortDirection : 'none';
@@ -143,10 +137,12 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 					>
 						{label}
 					</span>
+					{/* Always the down arrow: SLDS turns it up with `slds-is-sorted_asc`
+					    on the `th`, so swapping the glyph as well would flip it twice. */}
 					<Icon
 						className="slds-is-sortable__icon"
 						category="utility"
-						name={effectiveSortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
+						name="arrowdown"
 						size="x-small"
 					/>
 					{effectiveSortDirection ? (
