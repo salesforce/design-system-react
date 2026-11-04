@@ -69,12 +69,17 @@ export interface ColorPickerLabels {
 	submitButton?: string;
 }
 
+export type ColorPickerChangeHandler = (
+	event: React.SyntheticEvent,
+	data: { color: string; isValid?: boolean }
+) => void;
+
 export interface ColorPickerEvents {
-	/** Triggered when done is clicked. Returns hex representation of the color */
-	onChange?: (
-		event: React.SyntheticEvent,
-		data: { color: string; isValid?: boolean }
-	) => void;
+	/**
+	 * Triggered when the user types in the input and when Done is clicked. Returns the hex
+	 * representation of the color. Required unless `disabled` is set.
+	 */
+	onChange?: ColorPickerChangeHandler;
 	/** Triggered when the menu is closed */
 	onClose?: (
 		event: React.SyntheticEvent,

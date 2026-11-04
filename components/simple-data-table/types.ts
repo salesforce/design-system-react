@@ -78,6 +78,11 @@ export interface SimpleDataTableRenderSubHeadingRowData {
 	tableId: string;
 }
 
+export type SimpleDataTableRowChangeHandler = (
+	event: SyntheticEvent,
+	data: SimpleDataTableRowChangeData
+) => void;
+
 /**
  * Selection props when rows are selectable. Selection is data: `selection` is
  * required and the table renders exactly what it says. Clicking a row or the
@@ -89,6 +94,10 @@ export interface SimpleDataTableSelectableProps {
 	selectRows: true | 'checkbox' | 'radio';
 	/** The selected rows. Matched to `items` by `id`. Required when `selectRows` is set; pass `[]` for no selection. */
 	selection: SimpleDataTableItem[];
+	/**
+	 * Called when the user selects or deselects a row, or toggles all rows. `data.selection` is the requested next selection; the table keeps rendering the `selection` prop until the parent updates it. Required when `selectRows` is set.
+	 */
+	onRowChange: SimpleDataTableRowChangeHandler;
 }
 
 /**
@@ -99,6 +108,8 @@ export interface SimpleDataTableNonSelectableProps {
 	selectRows?: false;
 	/** The selected rows. Matched to `items` by `id`. Only rendered when `selectRows` is set. */
 	selection?: SimpleDataTableItem[];
+	/** Called when the selection changes. Only fires when `selectRows` is set. */
+	onRowChange?: SimpleDataTableRowChangeHandler;
 }
 
 export interface SimpleDataTableBaseProps {
@@ -147,13 +158,6 @@ export interface SimpleDataTableBaseProps {
 	) => void;
 	/** Callback when infinite loading loads more data */
 	onLoadMore?: () => void;
-	/**
-	 * Called when the user selects or deselects a row, or toggles all rows. `data.selection` is the requested next selection; the table keeps rendering the `selection` prop until the parent updates it.
-	 */
-	onRowChange?: (
-		event: SyntheticEvent,
-		data: SimpleDataTableRowChangeData
-	) => void;
 	/** @deprecated Use `onRowChange(event, { selection })` instead. */
 	onChange?: (selection: SimpleDataTableItem[], event: SyntheticEvent) => void;
 	/** Callback when the table should be sorted */

@@ -17,7 +17,7 @@ import EventUtil from '../../utilities/event';
 import getAriaProps from '../../utilities/get-aria-props';
 import { CHECKBOX } from '../../utilities/constants';
 import Icon from '../icon/index';
-import { checkDeprecatedProps } from './check-props';
+import { checkDeprecatedProps, checkRequiredProps } from './check-props';
 import componentDoc from './component.json';
 
 /**
@@ -58,9 +58,32 @@ export interface CheckboxChangeData {
 }
 
 /**
- * Props for the Checkbox component
+ * Called when the user toggles the checkbox, with the requested next state in
+ * `data`. The rendered state only changes when `checked`/`indeterminate` are
+ * updated.
  */
-export interface CheckboxProps {
+export type CheckboxChangeHandler = (
+	event: ChangeEvent<HTMLInputElement>,
+	data: CheckboxChangeData
+) => void;
+
+/**
+ * Checkbox is controlled, so `onChange` is required unless the checkbox is
+ * `disabled` or `readOnly`: without it, clicking the checkbox does nothing.
+ */
+export type CheckboxChangeProps =
+	| {
+			/**
+			 * Called when the user toggles the checkbox, with the requested next state
+			 * in `data`. The rendered state only changes when `checked`/`indeterminate`
+			 * are updated. Required unless `disabled` or `readOnly` is set.
+			 */
+			onChange: CheckboxChangeHandler;
+	  }
+	| { disabled: true; onChange?: CheckboxChangeHandler }
+	| { readOnly: true; onChange?: CheckboxChangeHandler };
+
+interface CheckboxBaseProps {
 	/** aria-controls for related regions */
 	'aria-controls'?: string;
 	/** aria-describedby for descriptions */
@@ -99,15 +122,6 @@ export interface CheckboxProps {
 	name?: string;
 	/** Blur event handler */
 	onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
-	/**
-	 * Called when the user toggles the checkbox, with the requested next state
-	 * in `data`. The rendered state only changes when `checked`/`indeterminate`
-	 * are updated.
-	 */
-	onChange?: (
-		event: ChangeEvent<HTMLInputElement>,
-		data: CheckboxChangeData
-	) => void;
 	/** Focus event handler */
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Key down event handler */
@@ -151,6 +165,11 @@ export interface CheckboxProps {
 	/** Label ID for label element */
 	labelId?: string;
 }
+
+/**
+ * Props for the Checkbox component
+ */
+export type CheckboxProps = CheckboxBaseProps & CheckboxChangeProps;
 
 const defaultLabels: CheckboxLabels = {
 	toggleDisabled: 'Disabled',
@@ -233,6 +252,14 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 		onRenderVisualPickerSelected,
 		onRenderVisualPickerNotSelected,
 	]);
+
+	useEffect(() => {
+		checkRequiredProps(
+			CHECKBOX,
+			{ disabled, onChange, readOnly },
+			componentDoc
+		);
+	});
 
 	// `indeterminate` only exists as a DOM property. Apply it whenever the prop
 	// changes, including clearing it when the prop goes back to false/undefined.

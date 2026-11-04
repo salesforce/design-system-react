@@ -4,6 +4,7 @@
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
+import requiredProperty from '../../utilities/warning/required-property';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
@@ -18,6 +19,15 @@ if (process.env.NODE_ENV !== 'production') {
 			props.defaultValue !== undefined,
 			'defaultValue',
 			'Slider is controlled: pass `value` and update it in `onChange`.'
+		);
+
+		requiredProperty(
+			COMPONENT,
+			props.onChange !== undefined || !!props.disabled,
+			'onChange',
+			`Slider is controlled: without \`onChange\`, the thumb won't move. Update \`value\` from \`data.value\` in \`onChange\`, or set \`disabled\`. ${createDocUrl(
+				'onChange'
+			)}`
 		);
 
 		deprecatedProperty(

@@ -65,9 +65,15 @@ export const uncontrolledExpansion = (
 		labels={{ heading: 'Foods' }}
 		nodes={[item, branch]}
 		selectedIds={[]}
+		onSelect={() => {}}
 		defaultExpandedIds={[2]}
 	/>
 );
 
-// @ts-expect-error selection is controlled data: `selectedIds` is required
-export const noSelection = <Tree id="tree" nodes={[item]} />;
+export const noSelection = (
+	// @ts-expect-error selection is controlled data: `selectedIds` is required
+	<Tree id="tree" nodes={[item]} onSelect={() => {}} />
+);
+
+// @ts-expect-error `onSelect` is required: without it, selecting a node does nothing
+export const noOnSelect = <Tree id="tree" nodes={[item]} selectedIds={[]} />;

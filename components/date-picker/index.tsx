@@ -9,6 +9,8 @@ export type {
 	DatePickerAssistiveText,
 	DatePickerLabels,
 	DatePickerChangeData,
+	DatePickerChangeHandler,
+	DatePickerChangeProps,
 	DatePickerCloseData,
 	DatePickerRequestCloseData,
 	DatePickerRequestCloseTrigger,

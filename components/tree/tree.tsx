@@ -88,9 +88,10 @@ export interface TreeProps {
 	 * Called when an item or branch is selected or deselected: by click, by focus, or by keyboard
 	 * (Enter, Up/Down arrows, Right arrow into an expanded branch, Left arrow to the parent node).
 	 * `data.isSelected` is the requested selection state of `data.node` and `data.selectedIds` the
-	 * requested selection. Update `selectedIds` to apply it.
+	 * requested selection. Update `selectedIds` to apply it. Required: without it, selecting a
+	 * node does nothing.
 	 */
-	onSelect?: (event: React.SyntheticEvent, data: TreeNodeSelectData) => void;
+	onSelect: (event: React.SyntheticEvent, data: TreeNodeSelectData) => void;
 	/**
 	 * Called when an item or branch is selected.
 	 * @deprecated Use `onSelect`, which receives `{ node, isSelected }`. Ignored when `onSelect` is passed.

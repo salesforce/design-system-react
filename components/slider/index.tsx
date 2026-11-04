@@ -41,10 +41,27 @@ export interface SliderLabels {
 	label?: ReactNode;
 }
 
+export type SliderChangeHandler = (
+	event: ChangeEvent<HTMLInputElement>,
+	data: { value: number }
+) => void;
+
 /**
- * Props for the Slider component
+ * `onChange` is required unless the slider is `disabled`: Slider is
+ * controlled, so without it the thumb won't move.
  */
-export interface SliderProps {
+export type SliderChangeProps =
+	| {
+			/**
+			 * Called when the value changes. Slider is controlled: update `value`
+			 * from `data.value`, or the thumb won't move. Required unless `disabled`
+			 * is set.
+			 */
+			onChange: SliderChangeHandler;
+	  }
+	| { disabled: true; onChange?: SliderChangeHandler };
+
+interface SliderBaseProps {
 	/** ARIA describedby attribute */
 	'aria-describedby'?: string;
 	/**
@@ -79,14 +96,6 @@ export interface SliderProps {
 	min?: number;
 	/** Form input name */
 	name?: string;
-	/**
-	 * Called when the value changes. Slider is controlled: update `value` from
-	 * `data.value`, or the thumb won't move.
-	 */
-	onChange?: (
-		event: ChangeEvent<HTMLInputElement>,
-		data: { value: number }
-	) => void;
 	/** Called on input event */
 	onInput?: (
 		event: FormEvent<HTMLInputElement>,
@@ -101,6 +110,11 @@ export interface SliderProps {
 	/** Display vertically */
 	vertical?: boolean;
 }
+
+/**
+ * Props for the Slider component
+ */
+export type SliderProps = SliderBaseProps & SliderChangeProps;
 
 /**
  * Props removed in v11. They are ignored at runtime and warn in development.
@@ -164,9 +178,11 @@ const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
 				assistiveText: propAssistiveText,
 				classNameContainer,
 				defaultValue,
+				disabled,
 				errorText,
 				label: labelProp,
 				labels,
+				onChange,
 			},
 			componentDoc
 		);
@@ -174,9 +190,11 @@ const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
 		propAssistiveText,
 		classNameContainer,
 		defaultValue,
+		disabled,
 		errorText,
 		labelProp,
 		labels,
+		onChange,
 	]);
 
 	const ariaProps = getAriaProps(rest) as Record<string, unknown>;

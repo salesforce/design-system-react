@@ -29,6 +29,7 @@ import {
 	WorkingColor,
 	ColorPickerAssistiveText,
 	ColorPickerLabels,
+	ColorPickerChangeHandler,
 	ColorPickerEvents,
 } from './types';
 
@@ -51,8 +52,6 @@ interface ColorPickerBaseProps {
 	errorText?: string;
 	/** Error message for the custom tab working color input */
 	errorTextWorkingColor?: string;
-	/** Event callbacks */
-	events?: ColorPickerEvents;
 	/** Disable flip behavior for popover alignment */
 	hasStaticAlignment?: boolean;
 	/** Hides the text input */
@@ -137,7 +136,20 @@ export type ColorPickerVariantProps =
 			defaultSelectedTab?: never;
 	  };
 
-export type ColorPickerProps = ColorPickerBaseProps & ColorPickerVariantProps;
+/**
+ * `events.onChange` is required unless the color picker is `disabled`:
+ * ColorPicker is controlled, so without it choosing a color does nothing.
+ */
+export type ColorPickerEventsProps =
+	| {
+			/** Event callbacks. `events.onChange` is required unless `disabled` is set. */
+			events: ColorPickerEvents & { onChange: ColorPickerChangeHandler };
+	  }
+	| { disabled: true; events?: ColorPickerEvents };
+
+export type ColorPickerProps = ColorPickerBaseProps &
+	ColorPickerVariantProps &
+	ColorPickerEventsProps;
 
 const defaultLabels: ColorPickerLabels = {
 	blueAbbreviated: 'B',

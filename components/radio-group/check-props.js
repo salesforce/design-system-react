@@ -4,6 +4,7 @@
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
+import requiredProperty from '../../utilities/warning/required-property';
 
 let checkProps = function checkPropsFunction() {};
 
@@ -20,6 +21,17 @@ if (process.env.NODE_ENV !== 'production') {
 			undefined,
 			`Pass \`value\` to RadioGroup or RadioButtonGroup instead of \`checked\` on each Radio, and read \`data.value\` in \`onChange\`. ${createDocUrl(
 				'value'
+			)}`
+		);
+
+		// React's own "`checked` without `onChange`" warning never fires,
+		// because the group always attaches its own change handler.
+		requiredProperty(
+			COMPONENT,
+			props.onChange !== undefined || !!props.disabled,
+			'onChange',
+			`RadioGroup and RadioButtonGroup are controlled: without \`onChange\`, selecting a radio does nothing. Update \`value\` from \`data.value\` in \`onChange\`, or set \`disabled\`. ${createDocUrl(
+				'onChange'
 			)}`
 		);
 	};

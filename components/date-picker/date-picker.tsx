@@ -104,7 +104,27 @@ export interface DatePickerCloseData {
 	componentWillUnmount: boolean;
 }
 
-export interface DatePickerProps {
+export type DatePickerChangeHandler = (
+	event: React.SyntheticEvent,
+	data: DatePickerChangeData
+) => void;
+
+/**
+ * `onChange` is required unless the date picker is `disabled`: DatePicker is
+ * controlled, so without it picking a date does nothing.
+ */
+export type DatePickerChangeProps =
+	| {
+			/**
+			 * Called when the user selects a date in the calendar or types in the input. `value` is
+			 * controlled: set it to `data.date` here (or keep the old value to reject the change).
+			 * Clearing the input reports `date: null`. Required unless `disabled` is set.
+			 */
+			onChange: DatePickerChangeHandler;
+	  }
+	| { disabled: true; onChange?: DatePickerChangeHandler };
+
+interface DatePickerBaseProps {
 	/** Assistive text for accessibility */
 	assistiveText?: DatePickerAssistiveText;
 	/** Alignment of dropdown */
@@ -148,12 +168,6 @@ export interface DatePickerProps {
 		event: React.SyntheticEvent | null,
 		data: { date?: Date; ref?: HTMLElement; direction?: string }
 	) => void;
-	/**
-	 * Called when the user selects a date in the calendar or types in the input. `value` is
-	 * controlled: set it to `data.date` here (or keep the old value to reject the change).
-	 * Clearing the input reports `date: null`.
-	 */
-	onChange?: (event: React.SyntheticEvent, data: DatePickerChangeData) => void;
 	/**
 	 * Called after the calendar has closed. `event` is `undefined` because the close
 	 * is reported when the calendar dialog unmounts, not by a user event.
@@ -219,6 +233,8 @@ export interface DatePickerProps {
 	/** Keydown handler */
 	onKeyDown?: (event: KeyboardEvent, data: Record<string, unknown>) => void;
 }
+
+export type DatePickerProps = DatePickerBaseProps & DatePickerChangeProps;
 
 // ===== Default Props =====
 

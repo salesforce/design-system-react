@@ -1161,3 +1161,26 @@ describe('SLDSDatepicker', () => {
 		});
 	});
 });
+
+describe('DatePicker: required `onChange`', () => {
+	it('warns once when `onChange` is missing, and not when exempt', async () => {
+		// Fresh modules so the once-per-session warning state is reset
+		vi.resetModules();
+		const { default: FreshDatepicker } = await import('../index');
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const requiredWarnings = () =>
+			consoleError.mock.calls
+				.map((call) => call.join(' '))
+				.filter((m) => m.includes('`onChange` is required by'));
+
+		// `disabled` doesn't need `onChange`
+		render(<FreshDatepicker disabled value={null} />);
+		expect(requiredWarnings()).toHaveLength(0);
+		render(<FreshDatepicker value={null} />);
+		expect(requiredWarnings()).toHaveLength(1);
+
+		consoleError.mockRestore();
+	});
+});

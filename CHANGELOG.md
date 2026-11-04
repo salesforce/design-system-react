@@ -68,6 +68,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `SplitViewListbox`: `selection` and `events.onSelect` are required, `selection` and `unread` are lists of item ids, and items need an `id`
   - `DatePicker`: `value: Date | null` is required (`undefined` is treated as `null` and warns), and `onChange` `data.date` can be `null`. The typed text re-syncs whenever `value` changes
   - `ColorPicker`: `value` is required, and typing and Done report through `events.onChange` without changing the color. The working color re-syncs from `value`, a controlled `valueWorking` wins over edits, and `errorText` falls back to validating the current `value`
+- **BREAKING**: Controlled data components require the callback that reports changes, since without it the control can't change. TypeScript requires it unless the control is `disabled` (or `readOnly` for `Checkbox`), and a missing callback warns once in development. Pass the callback, or set `disabled` if the control should never change:
+  - `Checkbox`, `RadioGroup`, `RadioButtonGroup`, `Slider` and `DatePicker`: `onChange`
+  - `ButtonStateful`: `onClick`
+  - `ColorPicker`: `events.onChange`
+  - `SimpleDataTable`: `onRowChange` when `selectRows` is set. The deprecated `onChange` still satisfies it at runtime
+  - `Tree`: `onSelect`. The deprecated `onClick` still satisfies it at runtime
+  - The props types of these components are now type aliases, so they can no longer be extended with `interface … extends`
 - **BREAKING**: Ephemeral UI state is controlled when its prop is not `undefined`, whether or not a callback is passed. A controlled value is always honored, and callbacks always report the requested state:
   - `ExpandableSection`: `onToggleOpen` `data.isOpen` is the requested state, so replace `setIsOpen(!data.isOpen)` with `setIsOpen(data.isOpen)`. A section without `isOpen` now toggles itself when `onToggleOpen` is passed; before, the callback froze it. This change can't be detected at runtime, so there is no warning
   - `SetupAssistantStep`: a step without `isOpen` toggles itself when `onToggleIsOpen` or `SetupAssistant` `onStepToggleIsOpen` is passed, and its state is no longer seeded from `isOpen`

@@ -59,10 +59,27 @@ export interface ButtonStatefulClickData {
 	isActive: boolean;
 }
 
+export type ButtonStatefulClickHandler = (
+	event: MouseEvent<HTMLButtonElement>,
+	data: ButtonStatefulClickData
+) => void;
+
 /**
- * Props for the ButtonStateful component
+ * `onClick` is required unless the button is `disabled`: ButtonStateful is
+ * controlled, so without it clicking does nothing.
  */
-export interface ButtonStatefulProps {
+export type ButtonStatefulClickProps =
+	| {
+			/**
+			 * Called on click with the requested next state in `data.isActive`. The
+			 * rendered state only changes when `isActive` is updated. Required
+			 * unless `disabled` is set.
+			 */
+			onClick: ButtonStatefulClickHandler;
+	  }
+	| { disabled: true; onClick?: ButtonStatefulClickHandler };
+
+interface ButtonStatefulBaseProps {
 	/**
 	 * Whether the button is in its selected state. ButtonStateful is
 	 * controlled: update this prop from `onClick`, which reports the requested
@@ -87,14 +104,6 @@ export interface ButtonStatefulProps {
 	id?: string;
 	/** Blur handler */
 	onBlur?: (event: FocusEvent<HTMLButtonElement>) => void;
-	/**
-	 * Called on click with the requested next state in `data.isActive`. The
-	 * rendered state only changes when `isActive` is updated.
-	 */
-	onClick?: (
-		event: MouseEvent<HTMLButtonElement>,
-		data: ButtonStatefulClickData
-	) => void;
 	/** Focus handler */
 	onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
 	/** Key down handler */
@@ -120,6 +129,12 @@ export interface ButtonStatefulProps {
 	/** Button variant. `text` renders a stateful button with no border or background. */
 	variant?: ButtonStatefulVariant;
 }
+
+/**
+ * Props for the ButtonStateful component
+ */
+export type ButtonStatefulProps = ButtonStatefulBaseProps &
+	ButtonStatefulClickProps;
 
 const defaultAssistiveText: ButtonStatefulAssistiveText = { icon: '' };
 
@@ -167,8 +182,8 @@ const ButtonStateful = ({
 	...rest
 }: ButtonStatefulProps): React.ReactElement => {
 	useEffect(() => {
-		checkProps(BUTTON_STATEFUL, { active }, componentDoc);
-	}, [active]);
+		checkProps(BUTTON_STATEFUL, { active, disabled, onClick }, componentDoc);
+	});
 
 	// `active` is the deprecated name; `isActive` wins when both are passed.
 	const isActive = !!(isActiveProp ?? active);

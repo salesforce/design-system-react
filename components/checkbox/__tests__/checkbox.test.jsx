@@ -268,3 +268,28 @@ describe('Checkbox control model', () => {
 		).toBe(true);
 	});
 });
+
+describe('Checkbox: required `onChange`', () => {
+	it('warns once when `onChange` is missing, and not when exempt', async () => {
+		// Fresh modules so the once-per-session warning state is reset
+		vi.resetModules();
+		const { default: FreshCheckbox } = await import('../index');
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const requiredWarnings = () =>
+			consoleError.mock.calls
+				.map((call) => call.join(' '))
+				.filter((m) => m.includes('`onChange` is required by'));
+
+		// `disabled` and `readOnly` don't need `onChange`
+		render(<FreshCheckbox checked disabled labels={{ label: 'A' }} />);
+		expect(requiredWarnings()).toHaveLength(0);
+		render(<FreshCheckbox checked readOnly labels={{ label: 'B' }} />);
+		expect(requiredWarnings()).toHaveLength(0);
+		render(<FreshCheckbox checked labels={{ label: 'C' }} />);
+		expect(requiredWarnings()).toHaveLength(1);
+
+		consoleError.mockRestore();
+	});
+});

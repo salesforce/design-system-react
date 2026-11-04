@@ -177,3 +177,34 @@ describe('RadioGroup', () => {
 		expect(warnings).toHaveLength(1);
 	});
 });
+
+describe('RadioGroup: required `onChange`', () => {
+	it('warns once when `onChange` is missing, and not when exempt', async () => {
+		// Fresh modules so the once-per-session warning state is reset
+		vi.resetModules();
+		const { default: FreshRadioGroup } = await import('../');
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const requiredWarnings = () =>
+			consoleError.mock.calls
+				.map((call) => call.join(' '))
+				.filter((m) => m.includes('`onChange` is required by'));
+
+		// `disabled` doesn't need `onChange`
+		render(
+			<FreshRadioGroup disabled labels={{ label: 'A' }} value={null}>
+				{null}
+			</FreshRadioGroup>
+		);
+		expect(requiredWarnings()).toHaveLength(0);
+		render(
+			<FreshRadioGroup labels={{ label: 'B' }} value={null}>
+				{null}
+			</FreshRadioGroup>
+		);
+		expect(requiredWarnings()).toHaveLength(1);
+
+		consoleError.mockRestore();
+	});
+});

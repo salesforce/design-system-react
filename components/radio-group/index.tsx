@@ -62,9 +62,30 @@ export interface RadioGroupChangeData {
 }
 
 /**
- * Props for the RadioGroup component
+ * Called when the user selects a radio, with the requested selection in
+ * `data.value`. The rendered selection only changes when `value` is updated.
  */
-export interface RadioGroupProps {
+export type RadioGroupChangeHandler = (
+	event: ChangeEvent<HTMLInputElement>,
+	data: RadioGroupChangeData
+) => void;
+
+/**
+ * The group is controlled, so `onChange` is required unless the group is
+ * `disabled`: without it, selecting a radio does nothing.
+ */
+export type RadioGroupChangeProps =
+	| {
+			/**
+			 * Called when the user selects a radio, with the requested selection in
+			 * `data.value`. The rendered selection only changes when `value` is
+			 * updated. Required unless `disabled` is set.
+			 */
+			onChange: RadioGroupChangeHandler;
+	  }
+	| { disabled: true; onChange?: RadioGroupChangeHandler };
+
+interface RadioGroupBaseProps {
 	/** Assistive text for accessibility */
 	assistiveText?: RadioGroupAssistiveText;
 	/**
@@ -83,14 +104,6 @@ export interface RadioGroupProps {
 	labels?: RadioGroupLabels;
 	/** Name attribute for all radios */
 	name?: string;
-	/**
-	 * Called when the user selects a radio, with the requested selection in
-	 * `data.value`. The rendered selection only changes when `value` is updated.
-	 */
-	onChange?: (
-		event: ChangeEvent<HTMLInputElement>,
-		data: RadioGroupChangeData
-	) => void;
 	/** Whether the field is required */
 	required?: boolean;
 	/** Custom styles for button-group variant */
@@ -105,6 +118,11 @@ export interface RadioGroupProps {
 	/** Group variant */
 	variant?: RadioGroupVariant;
 }
+
+/**
+ * Props for the RadioGroup component
+ */
+export type RadioGroupProps = RadioGroupBaseProps & RadioGroupChangeProps;
 
 const defaultAssistiveText: RadioGroupAssistiveText = {
 	required: 'Required',
@@ -143,8 +161,8 @@ const RadioGroup = ({
 	const isControlled = value !== undefined;
 
 	useEffect(() => {
-		checkProps(RADIO_GROUP, { value }, componentDoc);
-	}, [value]);
+		checkProps(RADIO_GROUP, { disabled, onChange, value }, componentDoc);
+	});
 
 	// Clone children with group props. With a group `value`, each radio's
 	// `checked` is derived from it; without one (deprecated), the radio keeps

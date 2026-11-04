@@ -230,3 +230,26 @@ describe('Button Stateful', () => {
 		});
 	});
 });
+
+describe('ButtonStateful: required `onClick`', () => {
+	it('warns once when `onClick` is missing, and not when exempt', async () => {
+		// Fresh modules so the once-per-session warning state is reset
+		vi.resetModules();
+		const { default: FreshButtonStateful } = await import('../');
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const requiredWarnings = () =>
+			consoleError.mock.calls
+				.map((call) => call.join(' '))
+				.filter((m) => m.includes('`onClick` is required by'));
+
+		// `disabled` doesn't need `onClick`
+		render(<FreshButtonStateful disabled isActive={false} />);
+		expect(requiredWarnings()).toHaveLength(0);
+		render(<FreshButtonStateful isActive={false} />);
+		expect(requiredWarnings()).toHaveLength(1);
+
+		consoleError.mockRestore();
+	});
+});

@@ -1220,3 +1220,42 @@ describe('Tree', () => {
 		});
 	});
 });
+
+describe('Tree: required `onSelect`', () => {
+	it('warns once when `onSelect` is missing, and not when exempt', async () => {
+		// Fresh modules so the once-per-session warning state is reset
+		vi.resetModules();
+		const { default: FreshTree } = await import('../index');
+		const nodes = [{ id: 1, label: 'Grains', type: 'item' }];
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const requiredWarnings = () =>
+			consoleError.mock.calls
+				.map((call) => call.join(' '))
+				.filter((m) => m.includes('`onSelect` is required by'));
+
+		// The deprecated `onClick` still fires, so it counts
+		render(
+			<FreshTree
+				id="a"
+				labels={{ heading: 'Foods' }}
+				nodes={nodes}
+				onClick={() => {}}
+				selectedIds={[]}
+			/>
+		);
+		expect(requiredWarnings()).toHaveLength(0);
+		render(
+			<FreshTree
+				id="b"
+				labels={{ heading: 'Foods' }}
+				nodes={nodes}
+				selectedIds={[]}
+			/>
+		);
+		expect(requiredWarnings()).toHaveLength(1);
+
+		consoleError.mockRestore();
+	});
+});

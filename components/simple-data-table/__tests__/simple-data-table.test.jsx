@@ -1637,3 +1637,45 @@ describe('SimpleDataTable', () => {
 		});
 	});
 });
+
+describe('SimpleDataTable: required `onRowChange`', () => {
+	it('warns once when `onRowChange` is missing, and not when exempt', async () => {
+		// Fresh modules so the once-per-session warning state is reset
+		vi.resetModules();
+		const { default: FreshSimpleDataTable } = await import('../index');
+		const items = [{ id: '1' }];
+		const consoleError = vi
+			.spyOn(console, 'error')
+			.mockImplementation(() => {});
+		const requiredWarnings = () =>
+			consoleError.mock.calls
+				.map((call) => call.join(' '))
+				.filter((m) => m.includes('`onRowChange` is required by'));
+
+		// Without `selectRows` there is nothing to select
+		render(<FreshSimpleDataTable id="a" items={items} />);
+		expect(requiredWarnings()).toHaveLength(0);
+		// The deprecated `onChange` still fires, so it counts
+		render(
+			<FreshSimpleDataTable
+				id="b"
+				items={items}
+				onChange={() => {}}
+				selectRows="checkbox"
+				selection={[]}
+			/>
+		);
+		expect(requiredWarnings()).toHaveLength(0);
+		render(
+			<FreshSimpleDataTable
+				id="c"
+				items={items}
+				selectRows="checkbox"
+				selection={[]}
+			/>
+		);
+		expect(requiredWarnings()).toHaveLength(1);
+
+		consoleError.mockRestore();
+	});
+});

@@ -5,6 +5,7 @@
 import warning from 'warning';
 
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
+import requiredProperty from '../../utilities/warning/required-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
 let checkProps = function checkPropsFunction() {};
@@ -31,6 +32,15 @@ if (process.env.NODE_ENV !== 'production') {
 			);
 			hasWarnedMissingValue = props.value === undefined;
 		}
+
+		requiredProperty(
+			COMPONENT,
+			props.events?.onChange !== undefined || !!props.disabled,
+			'events.onChange',
+			`ColorPicker is controlled: without \`events.onChange\`, choosing a color does nothing. Update \`value\` from \`data.color\` in \`events.onChange\`, or set \`disabled\`. ${createDocUrl(
+				'events'
+			)}`
+		);
 	};
 }
 

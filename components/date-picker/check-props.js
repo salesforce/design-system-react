@@ -6,6 +6,7 @@
 import warning from 'warning';
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
+import requiredProperty from '../../utilities/warning/required-property';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
@@ -24,6 +25,15 @@ if (process.env.NODE_ENV !== 'production') {
 			);
 			hasWarnedMissingValue = props.value === undefined;
 		}
+
+		requiredProperty(
+			COMPONENT,
+			props.onChange !== undefined || !!props.disabled,
+			'onChange',
+			`DatePicker is controlled: without \`onChange\`, picking a date does nothing. Update \`value\` from \`data.date\` in \`onChange\`, or set \`disabled\`. ${createDocUrl(
+				'onChange'
+			)}`
+		);
 
 		sunsetProperty(
 			COMPONENT,

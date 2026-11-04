@@ -5,6 +5,7 @@
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
+import requiredProperty from '../../utilities/warning/required-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
 let checkProps = function checkPropsFunction() {};
@@ -44,6 +45,15 @@ if (process.env.NODE_ENV !== 'production') {
 			'onClick',
 			'onSelect',
 			'`onSelect` receives `(event, { node, isSelected })`, where `isSelected` is the requested selection state.'
+		);
+		// The deprecated `onClick` still fires, so it satisfies the requirement at runtime.
+		requiredProperty(
+			COMPONENT,
+			props.onSelect !== undefined || props.onClick !== undefined,
+			'onSelect',
+			`Tree selection is controlled: without \`onSelect\`, selecting a node does nothing. Update \`selectedIds\` from \`data.selectedIds\` in \`onSelect\`. ${createDocUrl(
+				'onSelect'
+			)}`
 		);
 		deprecatedProperty(
 			COMPONENT,

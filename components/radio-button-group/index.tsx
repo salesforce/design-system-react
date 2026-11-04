@@ -1,12 +1,8 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, {
-	type ReactNode,
-	type CSSProperties,
-	type ChangeEvent,
-} from 'react';
-import RadioGroup, { type RadioGroupChangeData } from '../radio-group';
+import React, { type ReactNode, type CSSProperties } from 'react';
+import RadioGroup, { type RadioGroupChangeProps } from '../radio-group';
 import { RADIO_BUTTON_GROUP } from '../../utilities/constants';
 
 /**
@@ -29,10 +25,7 @@ export interface RadioButtonGroupLabels {
 	label?: string;
 }
 
-/**
- * Props for the RadioButtonGroup component
- */
-export interface RadioButtonGroupProps {
+interface RadioButtonGroupBaseProps {
 	/** Assistive text for accessibility */
 	assistiveText?: RadioButtonGroupAssistiveText;
 	/**
@@ -51,14 +44,6 @@ export interface RadioButtonGroupProps {
 	labels?: RadioButtonGroupLabels;
 	/** Name attribute for all radios */
 	name?: string;
-	/**
-	 * Called when the user selects a radio, with the requested selection in
-	 * `data.value`. The rendered selection only changes when `value` is updated.
-	 */
-	onChange?: (
-		event: ChangeEvent<HTMLInputElement>,
-		data: RadioGroupChangeData
-	) => void;
 	/** Whether the field is required */
 	required?: boolean;
 	/** Custom styles */
@@ -71,6 +56,13 @@ export interface RadioButtonGroupProps {
 	 */
 	value: string | null;
 }
+
+/**
+ * Props for the RadioButtonGroup component. The group is controlled, so
+ * `onChange` is required unless the group is `disabled`.
+ */
+export type RadioButtonGroupProps = RadioButtonGroupBaseProps &
+	RadioGroupChangeProps;
 
 /**
  * A styled select list that can have a single entry checked at any one time.

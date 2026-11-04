@@ -19,5 +19,15 @@ export const controlled = (
 // @ts-expect-error `value` is required: Slider is controlled
 export const missingValue = <Slider onChange={() => {}} />;
 
-// @ts-expect-error `defaultValue` was removed in v11
-export const removedDefaultValue = <Slider defaultValue={50} value={50} />;
+export const removedDefaultValue = (
+	// @ts-expect-error `defaultValue` was removed in v11
+	<Slider defaultValue={50} onChange={() => {}} value={50} />
+);
+
+// @ts-expect-error `onChange` is required unless `disabled` is set
+export const missingOnChange = <Slider value={50} />;
+
+// @ts-expect-error `disabled` must be `true`, not just any boolean
+export const maybeDisabled = <Slider disabled={false} value={50} />;
+
+export const disabledWithoutOnChange = <Slider disabled value={50} />;
