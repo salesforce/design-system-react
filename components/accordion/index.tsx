@@ -75,8 +75,14 @@ const Accordion = ({
 		}
 	}, [childCount, currButtonIndex]);
 
-	// Focus management
+	// Focus management. Only move focus when the index changes, never on
+	// mount, so rendering an Accordion doesn't steal focus from the page.
+	const prevButtonIndexRef = useRef(currButtonIndex);
 	useEffect(() => {
+		if (prevButtonIndexRef.current === currButtonIndex) {
+			return;
+		}
+		prevButtonIndexRef.current = currButtonIndex;
 		if (
 			currButtonIndex !== null &&
 			summaryButtonsRef.current[currButtonIndex]

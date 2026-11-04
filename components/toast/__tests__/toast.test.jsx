@@ -73,6 +73,13 @@ describe('SLDSToast', () => {
 
 			expect(onClickHeadingLink).toHaveBeenCalledTimes(1);
 		});
+
+		it('renders in a fixed notify container', () => {
+			const { container } = render(<DemoComponent />);
+
+			// SLDS 2 dropped the hyphenated `.slds-notify-container` selector.
+			expect(container.querySelector('.slds-notify_container')).not.toBeNull();
+		});
 	});
 
 	describe('Toast with duration auto-closes itself', () => {

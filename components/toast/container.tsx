@@ -9,7 +9,7 @@ import { TOAST_CONTAINER } from '../../utilities/constants';
 
 export interface ToastContainerProps {
 	/**
-	 * CSS classes to be added to tag with `.slds-notify-container`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
+	 * CSS classes to be added to tag with `.slds-notify_container`. Uses `classNames` [API](https://github.com/JedWatson/classnames).
 	 */
 	className?: unknown[] | Record<string, unknown> | string;
 	/**
@@ -29,7 +29,7 @@ class ToastContainer extends React.Component<ToastContainerProps> {
 		return (
 			<div
 				className={classNames(
-					'slds-notify-container',
+					'slds-notify_container',
 					this.props.className as string
 				)}
 			>

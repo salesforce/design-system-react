@@ -207,13 +207,16 @@ const Item: React.FC<ItemProps> = (props) => {
 				onClick={(event) => handleSelect({ event, props })}
 			>
 				<Button
+					aria-hidden
 					tabIndex={-1}
 					assistiveText={{ icon: '' }}
 					iconCategory="utility"
 					iconName="chevronright"
 					iconSize="small"
 					variant="icon"
-					className="slds-m-right_small slds-is-disabled"
+					// `slds-hidden` keeps the chevron's space so leaf labels align with
+					// branch labels; SLDS 2 no longer hides `.slds-is-disabled` here.
+					className="slds-m-right_small slds-is-disabled slds-hidden"
 					disabled
 				/>
 				<span className="slds-size_1-of-1">

@@ -108,8 +108,8 @@ export interface DatePickerProps {
 	children?: ReactElement;
 	/** Whether component is disabled */
 	disabled?: boolean;
-	/** Function to determine if a date should be disabled */
-	dateDisabled?: (date: Date) => boolean;
+	/** Function to determine if a date should be disabled. Receives `{ date }`. */
+	dateDisabled?: (data: { date: Date }) => boolean;
 	/** Date formatting function */
 	formatter?: (date: Date | null | undefined) => string;
 	/** Initial formatted value (deprecated) */

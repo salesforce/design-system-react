@@ -147,6 +147,25 @@ describe('Tree', () => {
 			expect(heading).toBeInTheDocument();
 		});
 
+		it('hides the placeholder chevron on items but not on branches', () => {
+			// SLDS 2 has no rule hiding `.slds-is-disabled` in a tree item, so the
+			// item's placeholder chevron needs `slds-hidden` to stay invisible.
+			const { getToggle } = renderTree();
+			expect(getToggle('grains')).toHaveClass('slds-hidden');
+			expect(getToggle('apple')).toHaveClass('slds-hidden');
+			expect(getToggle('fruits')).not.toHaveClass('slds-hidden');
+		});
+
+		it('marks branch chevrons with aria-controls so SLDS 1 rotates them', () => {
+			const { getNode, getToggle } = renderTree();
+			expect(getToggle('fruits')).toHaveAttribute(
+				'aria-controls',
+				getNode('fruits').id
+			);
+			expect(getToggle('fruits')).toHaveAttribute('aria-hidden', 'true');
+			expect(getToggle('grains')).toHaveAttribute('aria-hidden', 'true');
+		});
+
 		it('forwards ref to the root .slds-tree_container element', () => {
 			const ref = createRef();
 			const { container } = render(

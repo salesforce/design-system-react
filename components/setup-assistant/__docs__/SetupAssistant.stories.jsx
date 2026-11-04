@@ -29,20 +29,22 @@ export const Default = {
 			<SetupAssistantStep
 				heading="Add Users"
 				description="Add users to your organization"
-				isComplete
+				progress={100}
 			/>
 			<SetupAssistantStep
 				heading="Configure Settings"
 				description="Set up your organization settings"
-				isComplete
+				progress={100}
 			/>
 			<SetupAssistantStep
 				heading="Import Data"
 				description="Import your existing data"
+				progress={0}
 			/>
 			<SetupAssistantStep
 				heading="Setup Integrations"
 				description="Connect with other services"
+				progress={0}
 			/>
 		</SetupAssistant>
 	),
@@ -72,20 +74,22 @@ export const WithCard = {
 				<SetupAssistantStep
 					heading="Add Users"
 					description="Add users to your organization"
-					isComplete
+					progress={100}
 				/>
 				<SetupAssistantStep
 					heading="Configure Settings"
 					description="Set up your organization settings"
-					isComplete
+					progress={100}
 				/>
 				<SetupAssistantStep
 					heading="Import Data"
 					description="Import your existing data"
+					progress={0}
 				/>
 				<SetupAssistantStep
 					heading="Setup Integrations"
 					description="Connect with other services"
+					progress={0}
 				/>
 			</SetupAssistant>
 		);

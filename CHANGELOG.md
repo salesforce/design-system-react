@@ -76,6 +76,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `DatePicker`: `onRequestClose` no longer fires when the calendar is already closed
 - `Tree`: `onScroll` no longer reports `NaN` or `Infinity` when the list cannot scroll
 - `Carousel`: autoplay advances through every panel instead of stalling after the first tick, and the slides follow the panel on previous/next, indicator and arrow key navigation instead of lagging a click behind (or staying put) while the indicators move
+- Visual regressions under SLDS 2, where the markup relied on SLDS 1-only CSS or the rewrite changed it:
+  - `Tree`: leaf items no longer show a chevron, and branch chevrons rotate when expanded under SLDS 1 again (`aria-controls` and `aria-hidden` are restored on the toggle)
+  - `Avatar`: the fallback icon is sized to the avatar instead of a fixed default size
+  - `Modal`: `prompt` modals no longer render a close button
+  - `ToastContainer` and `AlertContainer` use `slds-notify_container`, so they are fixed to the top of the viewport again
+  - `InputIcon`: clicks on a decorative (non-button) icon reach the input
+  - `Checkbox`: the `visual-picker` variant no longer draws a border and background around the whole picker
+  - `WelcomeMatInfoBadge`: the complete check is a small circle on the badge's edge instead of a large one below it
+  - `TrialBarDropdown`, and any `MenuDropdown` whose trigger `Button` child has a `label`: the label shows even when the dropdown has `assistiveText.icon`
+- `Accordion`: no longer moves focus to the first panel on mount
+- `DatePicker`: `dateDisabled` is typed as `({ date }) => boolean`, which is how it is called
 
 ### Removed
 

@@ -177,6 +177,15 @@ describe('Accordion', () => {
 	});
 
 	describe('Interactions keyboard', () => {
+		it('does not move focus on mount', () => {
+			const { container } = render(<AccordionExample />);
+			const accordionButtons = container.querySelectorAll(
+				'button.slds-accordion__summary-action'
+			);
+			expect(document.activeElement).not.toBe(accordionButtons[0]);
+			expect(document.activeElement).toBe(document.body);
+		});
+
 		it('focuses the next accordion button on arrow down', () => {
 			const { container } = render(<AccordionExample />);
 			const accordionButtons = container.querySelectorAll(
