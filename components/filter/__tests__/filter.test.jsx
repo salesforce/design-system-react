@@ -52,7 +52,9 @@ describe('SLDSFilter', () => {
 			// NOTE: The popover is open, so we should be able to find the custom class
 			// The custom class is applied to the popover wrapper
 			await waitFor(() => {
-				expect(container.querySelector('.custom-filter-popover')).toBeInTheDocument();
+				expect(
+					container.querySelector('.custom-filter-popover')
+				).toBeInTheDocument();
 			});
 		});
 	});
@@ -73,7 +75,9 @@ describe('SLDSFilter', () => {
 				</IconSettings>
 			);
 
-			const filterButton = container.querySelector('.slds-filters__item .slds-button_reset');
+			const filterButton = container.querySelector(
+				'.slds-filters__item .slds-button_reset'
+			);
 			fireEvent.click(filterButton);
 
 			// Clicking opens a Popover, which mounts through the Portal

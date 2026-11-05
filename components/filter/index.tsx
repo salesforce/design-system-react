@@ -7,6 +7,3 @@ export type {
 	FilterChangeHandler,
 	FilterRemoveHandler,
 } from './types';
-
-
-

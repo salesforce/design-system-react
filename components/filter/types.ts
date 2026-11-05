@@ -24,6 +24,3 @@ export type FilterRemoveHandler = (
 	event: React.MouseEvent<HTMLButtonElement>,
 	data: FilterChangeData
 ) => void;
-
-
-
