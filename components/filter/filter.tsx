@@ -13,6 +13,7 @@ import generateId from '../../utilities/generate-id';
 import {
 	FilterAssistiveText,
 	FilterChangeHandler,
+	FilterClickHandler,
 	FilterRemoveHandler,
 } from './types';
 
@@ -39,8 +40,8 @@ export interface FilterProps {
 	onChange?: FilterChangeHandler;
 	/** Callback when "Remove Filter" button is clicked */
 	onRemove?: FilterRemoveHandler;
-	/** Callback when Filter is clicked */
-	onClick?: () => void;
+	/** Called when the filter is clicked to open its popover. `data.id` is the filter's `id`. */
+	onClick?: FilterClickHandler;
 	/** Custom Popover component with overridable props */
 	popover?: React.ReactElement;
 	/** The filter predicate (e.g., "is PURPLE") */
@@ -97,10 +98,13 @@ const Filter: React.FC<FilterProps> = ({
 	);
 
 	// Handle filter click
-	const handleFilterClick = useCallback(() => {
-		setPopoverIsOpen(true);
-		onClick?.();
-	}, [onClick]);
+	const handleFilterClick = useCallback(
+		(event: React.MouseEvent<HTMLButtonElement>) => {
+			setPopoverIsOpen(true);
+			onClick?.(event, { id });
+		},
+		[onClick, id]
+	);
 
 	// Handle popover close
 	const handleClose = useCallback(() => {

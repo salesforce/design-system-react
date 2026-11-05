@@ -87,5 +87,33 @@ describe('SLDSFilter', () => {
 				expect(onClick).toHaveBeenCalledTimes(1);
 			});
 		});
+
+		it('passes the click event and the filter id to onClick', async () => {
+			const onClick = vi.fn();
+
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Filter
+						id="show-me"
+						property="Show Me"
+						predicate="All Opportunities"
+						onClick={onClick}
+					>
+						<div>Filter content</div>
+					</Filter>
+				</IconSettings>
+			);
+
+			fireEvent.click(
+				container.querySelector('.slds-filters__item .slds-button_reset')
+			);
+
+			await waitFor(() => {
+				expect(onClick).toHaveBeenCalledTimes(1);
+			});
+			const [event, data] = onClick.mock.calls[0];
+			expect(event).toEqual(expect.objectContaining({ type: 'click' }));
+			expect(data).toEqual({ id: 'show-me' });
+		});
 	});
 });

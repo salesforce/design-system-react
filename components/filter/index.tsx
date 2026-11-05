@@ -5,5 +5,6 @@ export type {
 	FilterAssistiveText,
 	FilterChangeData,
 	FilterChangeHandler,
+	FilterClickHandler,
 	FilterRemoveHandler,
 } from './types';
