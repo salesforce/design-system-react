@@ -17,7 +17,7 @@ import EventUtil from '../../utilities/event';
 import getAriaProps from '../../utilities/get-aria-props';
 import { CHECKBOX } from '../../utilities/constants';
 import Icon from '../icon/index';
-import { checkDeprecatedProps } from './check-props';
+import { checkDeprecatedProps, checkRequiredProps } from './check-props';
 import componentDoc from './component.json';
 
 /**
@@ -58,9 +58,32 @@ export interface CheckboxChangeData {
 }
 
 /**
- * Props for the Checkbox component
+ * Called when the user toggles the checkbox, with the requested next state in
+ * `data`. The rendered state only changes when `checked`/`indeterminate` are
+ * updated.
  */
-export interface CheckboxProps {
+export type CheckboxChangeHandler = (
+	event: ChangeEvent<HTMLInputElement>,
+	data: CheckboxChangeData
+) => void;
+
+/**
+ * Checkbox is controlled, so `onChange` is required unless the checkbox is
+ * `disabled` or `readOnly`: without it, clicking the checkbox does nothing.
+ */
+export type CheckboxChangeProps =
+	| {
+			/**
+			 * Called when the user toggles the checkbox, with the requested next state
+			 * in `data`. The rendered state only changes when `checked`/`indeterminate`
+			 * are updated. Required unless `disabled` or `readOnly` is set.
+			 */
+			onChange: CheckboxChangeHandler;
+	  }
+	| { disabled: true; onChange?: CheckboxChangeHandler }
+	| { readOnly: true; onChange?: CheckboxChangeHandler };
+
+interface CheckboxBaseProps {
 	/** aria-controls for related regions */
 	'aria-controls'?: string;
 	/** aria-describedby for descriptions */
@@ -73,10 +96,11 @@ export interface CheckboxProps {
 	'aria-required'?: boolean;
 	/** Assistive text for accessibility */
 	assistiveText?: CheckboxAssistiveText;
-	/** Controlled checked state */
-	checked?: boolean;
-	/** Initial uncontrolled checked state */
-	defaultChecked?: boolean;
+	/**
+	 * Whether the checkbox is checked. Checkbox is controlled: update this prop
+	 * from `onChange`, which reports the requested value in `data.checked`.
+	 */
+	checked: boolean;
 	/** CSS class for container */
 	className?: string | string[] | Record<string, boolean>;
 	/** Disable the checkbox */
@@ -85,7 +109,12 @@ export interface CheckboxProps {
 	errorText?: string;
 	/** Unique ID */
 	id?: string;
-	/** Indeterminate state (partial selection) */
+	/**
+	 * Indeterminate state (partial selection). Controlled: it is applied to the
+	 * DOM node on every change and cleared when this prop is `false` or
+	 * `undefined`. Clicking an indeterminate checkbox reports
+	 * `{ checked: true, indeterminate: false }`.
+	 */
 	indeterminate?: boolean;
 	/** Text labels */
 	labels?: CheckboxLabels;
@@ -93,11 +122,6 @@ export interface CheckboxProps {
 	name?: string;
 	/** Blur event handler */
 	onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
-	/** Change event handler */
-	onChange?: (
-		event: ChangeEvent<HTMLInputElement>,
-		data: CheckboxChangeData
-	) => void;
 	/** Focus event handler */
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Key down event handler */
@@ -142,6 +166,11 @@ export interface CheckboxProps {
 	labelId?: string;
 }
 
+/**
+ * Props for the Checkbox component
+ */
+export type CheckboxProps = CheckboxBaseProps & CheckboxChangeProps;
+
 const defaultLabels: CheckboxLabels = {
 	toggleDisabled: 'Disabled',
 	toggleEnabled: 'Enabled',
@@ -155,6 +184,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 	const {
 		assistiveText: assistiveTextProp,
 		checked,
+		// Removed in v11 (Checkbox is controlled). Destructured so it never
+		// reaches the DOM; `checkDeprecatedProps` warns about it.
 		defaultChecked,
 		className,
 		disabled,
@@ -187,7 +218,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 		size = 'medium',
 		labelId,
 		...restProps
-	} = props;
+	} = props as CheckboxProps & { defaultChecked?: boolean };
 
 	const generatedId = useId();
 	const internalRef = useRef<HTMLInputElement | null>(null);
@@ -208,6 +239,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 		checkDeprecatedProps(
 			CHECKBOX,
 			{
+				defaultChecked,
 				onRenderVisualPicker,
 				onRenderVisualPickerSelected,
 				onRenderVisualPickerNotSelected,
@@ -215,15 +247,25 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 			componentDoc
 		);
 	}, [
+		defaultChecked,
 		onRenderVisualPicker,
 		onRenderVisualPickerSelected,
 		onRenderVisualPickerNotSelected,
 	]);
 
-	// Handle indeterminate state
 	useEffect(() => {
-		if (internalRef.current && indeterminate !== undefined) {
-			internalRef.current.indeterminate = indeterminate;
+		checkRequiredProps(
+			CHECKBOX,
+			{ disabled, onChange, readOnly },
+			componentDoc
+		);
+	});
+
+	// `indeterminate` only exists as a DOM property. Apply it whenever the prop
+	// changes, including clearing it when the prop goes back to false/undefined.
+	useEffect(() => {
+		if (internalRef.current) {
+			internalRef.current.indeterminate = !!indeterminate;
 		}
 	}, [indeterminate]);
 
@@ -243,11 +285,15 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 	};
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-		if (onChange) {
-			onChange(event, {
-				checked: indeterminate ? true : !checked,
-				indeterminate: false,
-			});
+		onChange?.(event, {
+			checked: indeterminate ? true : !checked,
+			indeterminate: false,
+		});
+		// A click clears the DOM `indeterminate` flag natively. React restores a
+		// controlled `checked` but not this property, so put the prop value back;
+		// if the parent accepts the change, the effect above applies the new one.
+		if (internalRef.current) {
+			internalRef.current.indeterminate = !!indeterminate;
 		}
 	};
 
@@ -264,7 +310,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 	// Common input props
 	const inputProps = {
 		disabled,
-		...(checked !== undefined ? { checked } : { defaultChecked }),
+		checked: !!checked,
 		id: getId(),
 		name,
 		onBlur,

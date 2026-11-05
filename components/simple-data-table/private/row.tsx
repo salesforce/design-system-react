@@ -9,7 +9,6 @@ import React, {
 	ReactNode,
 } from 'react';
 import classNames from 'classnames';
-import find from 'lodash.find';
 
 import Checkbox from '../../checkbox';
 import Radio from '../../radio';
@@ -70,8 +69,10 @@ export interface SimpleDataTableRowProps {
 		event: SyntheticEvent
 	) => void;
 	rowActions?: ReactNode;
-	selection?: SimpleDataTableItem[];
-	disabledSelection?: SimpleDataTableItem[];
+	/** Whether the row's item is in the table's `selection` (matched by `id`) */
+	isSelected?: boolean;
+	/** Whether the row's item is in the table's `disabledSelection` (matched by `id`) */
+	isDisabled?: boolean;
 	tableId?: string;
 	rowIndex?: number;
 	stacked?: boolean;
@@ -95,19 +96,21 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 		props.fixedLayout
 	);
 
+	// Selection is controlled: the checkbox or radio always renders the table's
+	// `selection` prop (`checked` is always passed, never `defaultChecked`).
+	const isSelected = !!props.isSelected;
+	const isDisabled = !!props.isDisabled;
+
 	const { item, onToggle } = props;
 	const handleToggle = useCallback(
 		(_e: SyntheticEvent, { checked }: { checked: boolean }) => {
-			if (onToggle) {
+			// A disabled row never requests a selection change.
+			if (onToggle && !isDisabled) {
 				onToggle(item, checked, _e);
 			}
 		},
-		[item, onToggle]
+		[isDisabled, item, onToggle]
 	);
-
-	const isSelected = !!find(props.selection, item);
-	const isDisabled =
-		props.disabledSelection && !!find(props.disabledSelection, item);
 
 	const ariaProps = useMemo(() => {
 		const result: { 'aria-selected'?: 'true' | 'false' } = {};
@@ -118,93 +121,64 @@ const SimpleDataTableRow: React.FC<SimpleDataTableRowProps> = (props) => {
 		return result;
 	}, [isSelected, props.canSelectRows]);
 
-	const radioSelection = useMemo(
-		() =>
-			isDisabled ? (
-				<Radio
-					assistiveText={{
-						label: `${props.assistiveText?.selectRow} ${
-							Number(props.index) + 1
-						}`,
-					}}
-					aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSSimpleDataTableHead-column-group-header-row-select`}
-					checked={isSelected}
-					className="slds-m-right_x-small"
-					id={`${props.id}-SelectRow`}
-					labelId={`${props.id}-SelectRow-label`}
-					name={`${props.tableId}-SelectRow`}
-					disabled={isDisabled}
-				/>
-			) : (
-				<InteractiveRadio
-					assistiveText={{
-						label: `${props.assistiveText?.selectRow} ${
-							Number(props.index) + 1
-						}`,
-					}}
-					aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSSimpleDataTableHead-column-group-header-row-select`}
-					checked={isSelected}
-					className="slds-m-right_x-small"
-					id={`${props.id}-SelectRow`}
-					labelId={`${props.id}-SelectRow-label`}
-					name={`${props.tableId}-SelectRow`}
-					onChange={handleToggle}
-					disabled={isDisabled}
-				/>
-			),
-		[
-			handleToggle,
-			isSelected,
-			isDisabled,
-			props.assistiveText?.selectRow,
-			props.id,
-			props.index,
-			props.tableId,
-		]
-	);
+	const radioSelection = useMemo(() => {
+		// Disabled rows are not registered for keyboard navigation.
+		const RadioComponent = isDisabled ? Radio : InteractiveRadio;
+		return (
+			<RadioComponent
+				assistiveText={{
+					label: `${props.assistiveText?.selectRow} ${
+						Number(props.index) + 1
+					}`,
+				}}
+				aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSSimpleDataTableHead-column-group-header-row-select`}
+				checked={isSelected}
+				className="slds-m-right_x-small"
+				id={`${props.id}-SelectRow`}
+				labelId={`${props.id}-SelectRow-label`}
+				name={`${props.tableId}-SelectRow`}
+				onChange={handleToggle}
+				disabled={isDisabled}
+			/>
+		);
+	}, [
+		handleToggle,
+		isSelected,
+		isDisabled,
+		props.assistiveText?.selectRow,
+		props.id,
+		props.index,
+		props.tableId,
+	]);
 
-	const checkboxSelection = useMemo(
-		() =>
-			isDisabled ? (
-				<Checkbox
-					assistiveText={{
-						label: `${props.assistiveText?.selectRow} ${
-							Number(props.index) + 1
-						}`,
-					}}
-					aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSSimpleDataTableHead-column-group-header-row-select`}
-					checked={isSelected}
-					id={`${props.id}-SelectRow`}
-					labelId={`${props.id}-SelectRow-label`}
-					name={`SelectRow${(props.index ?? 0) + 1}`}
-					disabled={isDisabled}
-				/>
-			) : (
-				<InteractiveCheckbox
-					assistiveText={{
-						label: `${props.assistiveText?.selectRow} ${
-							Number(props.index) + 1
-						}`,
-					}}
-					aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSSimpleDataTableHead-column-group-header-row-select`}
-					checked={isSelected}
-					id={`${props.id}-SelectRow`}
-					labelId={`${props.id}-SelectRow-label`}
-					name={`SelectRow${(props.index ?? 0) + 1}`}
-					onChange={handleToggle}
-					disabled={isDisabled}
-				/>
-			),
-		[
-			handleToggle,
-			isSelected,
-			isDisabled,
-			props.assistiveText?.selectRow,
-			props.id,
-			props.index,
-			props.tableId,
-		]
-	);
+	const checkboxSelection = useMemo(() => {
+		// Disabled rows are not registered for keyboard navigation.
+		const CheckboxComponent = isDisabled ? Checkbox : InteractiveCheckbox;
+		return (
+			<CheckboxComponent
+				assistiveText={{
+					label: `${props.assistiveText?.selectRow} ${
+						Number(props.index) + 1
+					}`,
+				}}
+				aria-labelledby={`${props.id}-SelectRow-label ${props.tableId}-SLDSSimpleDataTableHead-column-group-header-row-select`}
+				checked={isSelected}
+				id={`${props.id}-SelectRow`}
+				labelId={`${props.id}-SelectRow-label`}
+				name={`SelectRow${(props.index ?? 0) + 1}`}
+				onChange={handleToggle}
+				disabled={isDisabled}
+			/>
+		);
+	}, [
+		handleToggle,
+		isSelected,
+		isDisabled,
+		props.assistiveText?.selectRow,
+		props.id,
+		props.index,
+		props.tableId,
+	]);
 
 	return (
 		<tr

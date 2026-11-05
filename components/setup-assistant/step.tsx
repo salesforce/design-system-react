@@ -75,9 +75,15 @@ export interface StepProps {
 	 */
 	isExpandable?: boolean;
 	/**
-	 * If `isExpandable` is true, this prop can be used to control the expanded state. If not provided state will be used instead
+	 * Expanded state of an `isExpandable` step when it is controlled. When set, the step only expands and
+	 * collapses when this prop changes: update it from `onToggleIsOpen` (or the parent's
+	 * `onStepToggleIsOpen`). Leave it `undefined` for an uncontrolled step (see `defaultIsOpen`).
 	 */
 	isOpen?: boolean;
+	/**
+	 * Initial expanded state of an uncontrolled `isExpandable` step (`isOpen` is `undefined`). Defaults to `false`.
+	 */
+	defaultIsOpen?: boolean;
 	/**
 	 * A step's available action(s). Typically a Button, Button of variant "link," or Checkbox of variant "toggle"
 	 */
@@ -97,7 +103,9 @@ export interface StepProps {
 	/** @deprecated Use `figure` instead. */
 	onRenderFigure?: () => ReactNode;
 	/**
-	 * Function to handle requests to expand / collapse the step. `data.isOpen` is the requested (next) state.
+	 * Called when the step requests to expand / collapse, controlled or not. `data.isOpen` is the
+	 * requested (next) state. Set by the parent `SetupAssistant` from `onStepToggleIsOpen` unless the
+	 * step passes its own.
 	 */
 	onToggleIsOpen?: (event: SyntheticEvent, data: StepToggleData) => void;
 	/**
@@ -133,7 +141,7 @@ class Step extends React.Component<StepProps, StepState> {
 		super(props);
 		this.generatedId = generateId();
 		this.state = {
-			isOpen: props.isOpen || false,
+			isOpen: props.defaultIsOpen ?? false,
 		};
 		checkProps(SETUP_ASSISTANT_STEP, { ...this.props }, componentDoc);
 	}
@@ -148,16 +156,19 @@ class Step extends React.Component<StepProps, StepState> {
 			: this.state.isOpen;
 	}
 
+	// Controlled when `isOpen` is set: the step reports the requested state and waits for the prop.
 	toggleIsOpen = (event: SyntheticEvent) => {
-		if (this.props.onToggleIsOpen) {
-			this.props.onToggleIsOpen(event, {
-				index: this.props.index,
-				isOpen: !this.getIsOpen(),
-				step: this.props,
-			});
-		} else {
-			this.setState({ isOpen: !this.getIsOpen() });
+		const isOpen = !this.getIsOpen();
+
+		if (this.props.isOpen === undefined) {
+			this.setState({ isOpen });
 		}
+
+		this.props.onToggleIsOpen?.(event, {
+			index: this.props.index,
+			isOpen,
+			step: this.props,
+		});
 	};
 
 	renderMediaContent() {

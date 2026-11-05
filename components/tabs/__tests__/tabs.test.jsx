@@ -1,6 +1,6 @@
-import React from 'react';
+import { useState } from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import classNames from 'classnames';
 
 import Tabs from '../';
@@ -16,43 +16,42 @@ const COMPONENT_CSS_CLASSES = {
 	testClass: 'this-is-a-css-class-name',
 };
 
-class TabsDemoComponent extends React.Component {
-	render() {
-		const { className, id, ...attributes } = this.props;
+// Tabs is controlled, so the demo keeps the selected `value` in state.
+const TabsDemoComponent = ({ className, id, ...attributes }) => {
+	const [value, setValue] = useState('0');
 
-		// Delete all known props, so they don't get added to DOM
-		delete attributes.selectedIndex;
-		delete attributes.onSelect;
-		delete attributes.children;
-		delete attributes.id;
-
-		return (
-			<div
-				className={classNames(
-					'slds-m-top_large',
-					`${COMPONENT_CSS_CLASSES.wrapper}`
-				)}
+	return (
+		<div
+			className={classNames(
+				'slds-m-top_large',
+				`${COMPONENT_CSS_CLASSES.wrapper}`
+			)}
+		>
+			<Tabs
+				className={classNames(className)}
+				id={id}
+				{...attributes}
+				onSelect={(event, data) => setValue(data.value)}
+				value={value}
 			>
-				<Tabs className={classNames(className)} id={id} {...attributes}>
-					<Panel label="Tab A">
-						<p>This is tab A</p>
-					</Panel>
-					<Panel label="Tab B" disabled>
-						<p>This is tab B.</p>
-						<p>It is disabled.</p>
-					</Panel>
-					<Panel label="Tab C" hasError>
-						<p>This is tab C</p>
-						<p>It has an error icon next to the tab label.</p>
-					</Panel>
-					<Panel label="Tab D">
-						<p>This is tab D</p>
-					</Panel>
-				</Tabs>
-			</div>
-		);
-	}
-}
+				<Panel label="Tab A">
+					<p>This is tab A</p>
+				</Panel>
+				<Panel label="Tab B" disabled>
+					<p>This is tab B.</p>
+					<p>It is disabled.</p>
+				</Panel>
+				<Panel label="Tab C" hasError>
+					<p>This is tab C</p>
+					<p>It has an error icon next to the tab label.</p>
+				</Panel>
+				<Panel label="Tab D">
+					<p>This is tab D</p>
+				</Panel>
+			</Tabs>
+		</div>
+	);
+};
 
 TabsDemoComponent.displayName = 'TabsDemoComponent';
 
@@ -481,14 +480,14 @@ describe('Tabs', () => {
 
 		const renderTabs = (props) =>
 			render(
-				<Tabs id={id} {...props}>
-					<Panel label="Tab A">
+				<Tabs id={id} value="a" {...props}>
+					<Panel label="Tab A" value="a">
 						<p>This is tab A</p>
 					</Panel>
-					<Panel label="Tab B" disabled>
+					<Panel label="Tab B" value="b" disabled>
 						<p>This is tab B</p>
 					</Panel>
-					<Panel label="Tab C">
+					<Panel label="Tab C" value="c">
 						<p>This is tab C</p>
 					</Panel>
 				</Tabs>
@@ -499,7 +498,7 @@ describe('Tabs', () => {
 		const getPanel = (container, index) =>
 			container.querySelector(`div#${id}-slds-tabs_panel-${index}`);
 
-		it('is called with the click event and { selectedIndex, previousIndex }', () => {
+		it('is called with the click event and { value, previousValue, selectedIndex, previousIndex }', () => {
 			const onSelect = vi.fn();
 			const { container } = renderTabs({ onSelect });
 
@@ -508,12 +507,17 @@ describe('Tabs', () => {
 			expect(onSelect).toHaveBeenCalledTimes(1);
 			const [event, data] = onSelect.mock.calls[0];
 			expect(event.type).toBe('click');
-			expect(data).toEqual({ selectedIndex: 2, previousIndex: 0 });
+			expect(data).toEqual({
+				value: 'c',
+				previousValue: 'a',
+				selectedIndex: 2,
+				previousIndex: 0,
+			});
 		});
 
-		it('is called with the keydown event and { selectedIndex, previousIndex } on arrow keys', () => {
+		it('is called with the keydown event on arrow keys, skipping disabled tabs', () => {
 			const onSelect = vi.fn();
-			const { container } = renderTabs({ onSelect });
+			const { container, rerender } = renderTabs({ onSelect });
 			const items = getItems(container);
 
 			fireEvent.keyDown(items[0], {
@@ -526,14 +530,38 @@ describe('Tabs', () => {
 			let [event, data] = onSelect.mock.calls[0];
 			expect(event.type).toBe('keydown');
 			// Skips disabled Tab B
-			expect(data).toEqual({ selectedIndex: 2, previousIndex: 0 });
+			expect(data).toEqual({
+				value: 'c',
+				previousValue: 'a',
+				selectedIndex: 2,
+				previousIndex: 0,
+			});
+
+			rerender(
+				<Tabs id={id} value="c" onSelect={onSelect}>
+					<Panel label="Tab A" value="a">
+						<p>This is tab A</p>
+					</Panel>
+					<Panel label="Tab B" value="b" disabled>
+						<p>This is tab B</p>
+					</Panel>
+					<Panel label="Tab C" value="c">
+						<p>This is tab C</p>
+					</Panel>
+				</Tabs>
+			);
 
 			fireEvent.keyDown(items[2], { key: 'ArrowLeft', keyCode: 37, which: 37 });
 
 			expect(onSelect).toHaveBeenCalledTimes(2);
 			[event, data] = onSelect.mock.calls[1];
 			expect(event.type).toBe('keydown');
-			expect(data).toEqual({ selectedIndex: 0, previousIndex: 2 });
+			expect(data).toEqual({
+				value: 'a',
+				previousValue: 'c',
+				selectedIndex: 0,
+				previousIndex: 2,
+			});
 		});
 
 		it('is not called when a disabled tab is clicked', () => {
@@ -545,43 +573,50 @@ describe('Tabs', () => {
 			expect(onSelect).not.toHaveBeenCalled();
 		});
 
-		it('ignores the return value: uncontrolled selection changes even when onSelect returns false', () => {
-			const onSelect = vi.fn(() => false);
+		it('is not called for the already selected tab or for non-arrow keys', () => {
+			const onSelect = vi.fn();
 			const { container } = renderTabs({ onSelect });
+			const items = getItems(container);
 
-			fireEvent.click(getItems(container)[2]);
+			fireEvent.click(items[0]);
+			fireEvent.keyDown(items[0], { key: 'Tab', keyCode: 9, which: 9 });
 
-			expect(onSelect).toHaveBeenCalledTimes(1);
+			expect(onSelect).not.toHaveBeenCalled();
+		});
+
+		it('honors the controlled value: clicking and arrow keys do not change the selection', () => {
+			const onSelect = vi.fn();
+			const { container } = renderTabs({ onSelect });
+			const items = getItems(container);
+
+			fireEvent.click(items[2]);
+			fireEvent.keyDown(items[0], {
+				key: 'ArrowRight',
+				keyCode: 39,
+				which: 39,
+			});
+
+			expect(onSelect).toHaveBeenCalledTimes(2);
+			expect(getPanel(container, 0)).toHaveClass('slds-show');
+			expect(getPanel(container, 2)).toHaveClass('slds-hide');
+			expect(items[0].querySelector('a')).toHaveAttribute(
+				'aria-selected',
+				'true'
+			);
+		});
+
+		it('renders whatever value the parent passes', () => {
+			const onSelect = vi.fn();
+			const { container } = renderTabs({ onSelect, value: 'c' });
+
 			expect(getPanel(container, 0)).toHaveClass('slds-hide');
 			expect(getPanel(container, 2)).toHaveClass('slds-show');
 		});
 
-		it('leaves the selection to the parent when selectedIndex is controlled', () => {
+		it('matches panels without a value by their index as a string', () => {
 			const onSelect = vi.fn();
-			const { container, rerender } = render(
-				<Tabs id={id} selectedIndex={0} onSelect={onSelect}>
-					<Panel label="Tab A">
-						<p>This is tab A</p>
-					</Panel>
-					<Panel label="Tab B">
-						<p>This is tab B</p>
-					</Panel>
-				</Tabs>
-			);
-
-			fireEvent.click(getItems(container)[1]);
-
-			expect(onSelect).toHaveBeenCalledTimes(1);
-			expect(onSelect.mock.calls[0][1]).toEqual({
-				selectedIndex: 1,
-				previousIndex: 0,
-			});
-			// Parent has not updated selectedIndex, so the selection stays
-			expect(getPanel(container, 0)).toHaveClass('slds-show');
-			expect(getPanel(container, 1)).toHaveClass('slds-hide');
-
-			rerender(
-				<Tabs id={id} selectedIndex={1} onSelect={onSelect}>
+			const { container } = render(
+				<Tabs id={id} value="1" onSelect={onSelect}>
 					<Panel label="Tab A">
 						<p>This is tab A</p>
 					</Panel>
@@ -592,14 +627,131 @@ describe('Tabs', () => {
 			);
 
 			expect(getPanel(container, 1)).toHaveClass('slds-show');
+			// Rendered ids stay index-based
+			expect(getItems(container)[1]).toHaveAttribute(
+				'id',
+				`${id}-slds-tabs_tab-1`
+			);
 
 			fireEvent.click(getItems(container)[0]);
 
-			expect(onSelect).toHaveBeenCalledTimes(2);
-			expect(onSelect.mock.calls[1][1]).toEqual({
+			expect(onSelect.mock.calls[0][1]).toEqual({
+				value: '0',
+				previousValue: '1',
 				selectedIndex: 0,
 				previousIndex: 1,
 			});
+		});
+
+		it('selects no tab when no panel matches value', () => {
+			const { container } = renderTabs({ onSelect: vi.fn(), value: 'nope' });
+
+			expect(
+				container.querySelectorAll(
+					`.${COMPONENT_CSS_CLASSES.item}.slds-is-active`
+				)
+			).toHaveLength(0);
+		});
+	});
+
+	describe('Deprecated and removed props', () => {
+		afterEach(() => {
+			vi.restoreAllMocks();
+		});
+
+		const id = 'this-is-an-id-for-testing--deprecated';
+		const getPanel = (container, index) =>
+			container.querySelector(`div#${id}-slds-tabs_panel-${index}`);
+		const getItems = (container) =>
+			container.querySelectorAll(`.${COMPONENT_CSS_CLASSES.item}`);
+
+		const renderIndexTabs = (props) =>
+			render(
+				<Tabs id={id} {...props}>
+					<Panel label="Tab A">
+						<p>This is tab A</p>
+					</Panel>
+					<Panel label="Tab B" value="b">
+						<p>This is tab B</p>
+					</Panel>
+				</Tabs>
+			);
+
+		it('still accepts the deprecated selectedIndex as a controlled prop and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const onSelect = vi.fn();
+			const { container, rerender } = renderIndexTabs({
+				selectedIndex: 0,
+				onSelect,
+			});
+
+			expect(getPanel(container, 0)).toHaveClass('slds-show');
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('`selectedIndex` will be removed')
+			);
+
+			fireEvent.click(getItems(container)[1]);
+
+			expect(onSelect.mock.calls[0][1]).toEqual({
+				value: 'b',
+				previousValue: '0',
+				selectedIndex: 1,
+				previousIndex: 0,
+			});
+			// The parent has not updated selectedIndex, so the selection stays
+			expect(getPanel(container, 0)).toHaveClass('slds-show');
+			expect(getPanel(container, 1)).toHaveClass('slds-hide');
+
+			rerender(
+				<Tabs id={id} selectedIndex={1} onSelect={onSelect}>
+					<Panel label="Tab A">
+						<p>This is tab A</p>
+					</Panel>
+					<Panel label="Tab B" value="b">
+						<p>This is tab B</p>
+					</Panel>
+				</Tabs>
+			);
+
+			expect(getPanel(container, 1)).toHaveClass('slds-show');
+		});
+
+		it('ignores the removed defaultSelectedIndex and warns', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = renderIndexTabs({
+				defaultSelectedIndex: 1,
+				onSelect: vi.fn(),
+				value: '0',
+			});
+
+			expect(getPanel(container, 0)).toHaveClass('slds-show');
+			expect(getPanel(container, 1)).toHaveClass('slds-hide');
+			expect(container.querySelector('[defaultselectedindex]')).toBeNull();
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining(
+					'`defaultSelectedIndex` has reached End-of-Life'
+				)
+			);
+		});
+
+		it('warns when neither value nor selectedIndex is passed, and selects no tab', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			const { container } = renderIndexTabs({ onSelect: vi.fn() });
+
+			expect(
+				container.querySelectorAll(
+					`.${COMPONENT_CSS_CLASSES.item}.slds-is-active`
+				)
+			).toHaveLength(0);
+			expect(consoleError).toHaveBeenCalledWith(
+				expect.stringContaining('Tabs is controlled')
+			);
 		});
 	});
 });

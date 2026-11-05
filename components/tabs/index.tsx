@@ -5,6 +5,7 @@ import React, {
 	useState,
 	useRef,
 	useCallback,
+	useEffect,
 	useId,
 	type ReactNode,
 	type MouseEvent,
@@ -21,6 +22,9 @@ import { TABS } from '../../utilities/constants';
 import KEYS from '../../utilities/key-code';
 import EventUtil from '../../utilities/event';
 
+import checkProps from './check-props';
+import componentDoc from './component.json';
+
 /**
  * Tabs variant types
  */
@@ -31,6 +35,7 @@ export type TabsVariant = 'default' | 'scoped' | 'vertical';
  */
 export interface TabChildProps {
 	label: ReactNode;
+	value?: string;
 	disabled?: boolean;
 	hasError?: boolean;
 	assistiveText?: {
@@ -44,38 +49,81 @@ export interface TabChildProps {
  * Data passed to the Tabs `onSelect` callback
  */
 export interface TabsSelectData {
+	/**
+	 * `value` of the tab being selected: the panel's `value`, or its index as a
+	 * string (`'0'`, `'1'`, ...) when the panel has no `value`.
+	 */
+	value: string;
+	/**
+	 * `value` of the tab that was selected before this selection, or `undefined`
+	 * when no tab was selected.
+	 */
+	previousValue: string | undefined;
 	/** Index of the tab being selected */
 	selectedIndex: number;
-	/** Index of the tab that was selected before this selection */
+	/** Index of the tab that was selected before this selection, or `-1` when no tab was selected */
 	previousIndex: number;
+}
+
+/**
+ * Props shared by both ways of controlling the selected tab
+ */
+interface TabsBaseProps {
+	/** TabsPanel children */
+	children: ReactNode;
+	/** CSS classes */
+	className?: string | string[] | Record<string, boolean>;
+	/** HTML id */
+	id?: string;
+	/**
+	 * Called when a tab is requested by click or arrow key. Receives the triggering event and
+	 * `{ value, previousValue, selectedIndex, previousIndex }`. Tabs is controlled: update `value`
+	 * from this callback to change tabs. It is not called for a disabled tab or for the tab that is
+	 * already selected.
+	 */
+	onSelect: (
+		event: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>,
+		data: TabsSelectData
+	) => void;
+	/** Tab style variant */
+	variant?: TabsVariant;
+}
+
+/**
+ * Select the tab by the `value` of its `TabsPanel`.
+ */
+interface TabsValueProps {
+	/**
+	 * `value` of the selected `TabsPanel` (required, controlled). A panel without a `value` is
+	 * matched by its index as a string (`'0'`, `'1'`, ...). When no panel matches, no tab is selected.
+	 */
+	value: string;
+	selectedIndex?: never;
+}
+
+/**
+ * Select the tab by index (deprecated).
+ */
+interface TabsSelectedIndexProps {
+	value?: undefined;
+	/**
+	 * @deprecated Use `value` instead (set `value` on each `TabsPanel`, or use the index as a
+	 * string). Index of the selected tab, controlled. Used only when `value` is not passed.
+	 */
+	selectedIndex: number;
 }
 
 /**
  * Props for the Tabs component
  */
-export interface TabsProps {
-	/** TabsPanel children */
-	children: ReactNode;
-	/** CSS classes */
-	className?: string | string[] | Record<string, boolean>;
-	/** Default selected tab index */
-	defaultSelectedIndex?: number;
-	/** HTML id */
-	id?: string;
-	/**
-	 * Called when a tab is selected by click or keyboard. Receives the triggering event and
-	 * `{ selectedIndex, previousIndex }`. When `selectedIndex` is not passed, the selection always
-	 * changes; when it is passed (controlled), update it from this callback to change tabs.
-	 */
-	onSelect?: (
-		event: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>,
-		data: TabsSelectData
-	) => void;
-	/** Currently selected tab index (controlled) */
-	selectedIndex?: number;
-	/** Tab style variant */
-	variant?: TabsVariant;
-}
+export type TabsProps = TabsBaseProps &
+	(TabsValueProps | TabsSelectedIndexProps);
+
+// The value a panel is matched by: its `value`, or its index as a string.
+const getPanelValue = (
+	child: React.ReactElement<TabChildProps>,
+	index: number
+): string => child.props.value ?? String(index);
 
 // Determine if a node from event.target is a Tab element
 function isTabNode(node: HTMLElement): boolean {
@@ -107,20 +155,32 @@ function isTabDisabled(tab: React.ReactElement<TabChildProps>): boolean {
 /**
  * Tabs keeps related content in a single container that is shown and hidden through navigation.
  */
-const Tabs = ({
-	children,
-	className,
-	defaultSelectedIndex = 0,
-	id: propId,
-	onSelect,
-	selectedIndex: controlledSelectedIndex,
-	variant = 'default',
-}: TabsProps): React.ReactElement => {
+const Tabs = (props: TabsProps): React.ReactElement => {
+	const {
+		children,
+		className,
+		id: propId,
+		onSelect,
+		selectedIndex: selectedIndexProp,
+		value,
+		variant = 'default',
+	} = props;
 	const generatedId = useId();
 	const id = propId || generatedId;
 
-	const [internalSelectedIndex, setInternalSelectedIndex] =
-		useState(defaultSelectedIndex);
+	useEffect(() => {
+		checkProps(
+			TABS,
+			{
+				defaultSelectedIndex: (props as { defaultSelectedIndex?: number })
+					.defaultSelectedIndex,
+				selectedIndex: selectedIndexProp,
+				value,
+			},
+			componentDoc
+		);
+	});
+
 	const [focus, setFocus] = useState(false);
 	const tabsRef = useRef<
 		Array<{ tab: React.ReactElement<TabChildProps>; node: HTMLElement | null }>
@@ -132,10 +192,16 @@ const Tabs = ({
 	) as React.ReactElement<TabChildProps>[];
 	const tabsCount = childArray.length;
 
-	// Use controlled or internal state
-	const selectedIndex = Number.isInteger(controlledSelectedIndex)
-		? controlledSelectedIndex!
-		: internalSelectedIndex;
+	// Selection is controlled: derived from `value`, or from the deprecated
+	// `selectedIndex` when `value` is not passed. There is no internal copy.
+	const selectedIndex =
+		value !== undefined
+			? childArray.findIndex(
+					(child, index) => getPanelValue(child, index) === value
+				)
+			: Number.isInteger(selectedIndexProp)
+				? (selectedIndexProp as number)
+				: -1;
 
 	const getNextTab = useCallback(
 		(index: number): number => {
@@ -185,16 +251,22 @@ const Tabs = ({
 			index: number,
 			shouldFocus?: boolean
 		) => {
-			if (index < 0 || index >= tabsCount) return;
+			if (index < 0 || index >= tabsCount || index === selectedIndex) return;
 
-			onSelect?.(event, { selectedIndex: index, previousIndex: selectedIndex });
-
-			if (index !== internalSelectedIndex) {
-				setInternalSelectedIndex(index);
-				setFocus(shouldFocus === true);
-			}
+			const previous =
+				selectedIndex >= 0 ? childArray[selectedIndex] : undefined;
+			onSelect?.(event, {
+				value: getPanelValue(childArray[index], index),
+				previousValue: previous
+					? getPanelValue(previous, selectedIndex)
+					: undefined,
+				selectedIndex: index,
+				previousIndex: selectedIndex,
+			});
+			// Focus follows the selection once the parent updates `value`.
+			setFocus(shouldFocus === true);
 		},
-		[tabsCount, onSelect, selectedIndex, internalSelectedIndex]
+		[tabsCount, onSelect, selectedIndex, childArray]
 	);
 
 	const isTabFromContainer = useCallback((node: HTMLElement): boolean => {

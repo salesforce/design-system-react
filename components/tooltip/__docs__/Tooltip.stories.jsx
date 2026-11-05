@@ -84,7 +84,8 @@ export default {
 		},
 		isOpen: {
 			control: 'boolean',
-			description: 'Forces tooltip to be open',
+			description:
+				'Controlled open state. When set, the tooltip only opens and closes when this prop changes',
 		},
 		hasAnchoredNubbin: {
 			control: 'boolean',
@@ -378,7 +379,13 @@ export const Controlled = {
 						onClick={() => setIsOpen(!isOpen)}
 					/>
 				</div>
-				<Tooltip content={tooltipContent} isOpen={isOpen} align="bottom">
+				<Tooltip
+					content={tooltipContent}
+					isOpen={isOpen}
+					align="bottom"
+					onRequestOpen={() => setIsOpen(true)}
+					onRequestClose={() => setIsOpen(false)}
+				>
 					<Button label="Controlled Tooltip" />
 				</Tooltip>
 			</div>
@@ -388,7 +395,7 @@ export const Controlled = {
 		docs: {
 			description: {
 				story:
-					'Use the `isOpen` prop to control tooltip visibility programmatically. When set, hover/focus behavior is disabled.',
+					'Use the `isOpen` prop to control tooltip visibility programmatically. When set, the tooltip only follows the prop: handle `onRequestOpen`/`onRequestClose` to also open and close it on hover, focus and Escape.',
 			},
 		},
 	},

@@ -6,7 +6,7 @@ import Radio from '~/components/radio-group/radio'; // `~` is replaced with desi
 class Example extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = { value: null };
 	}
 
 	render() {
@@ -19,7 +19,8 @@ class Example extends React.Component {
 			<div>
 				<RadioGroup
 					labels={labels}
-					onChange={(event) => this.setState({ checked: event.target.value })}
+					value={this.state.value}
+					onChange={(event, data) => this.setState({ value: data.value })}
 					disabled={this.props.disabled}
 					required={this.props.required}
 					name={this.props.name}
@@ -31,7 +32,6 @@ class Example extends React.Component {
 							id={value}
 							labels={{ label: value }}
 							value={value}
-							checked={this.state.checked === value}
 							variant="base"
 						/>
 					))}

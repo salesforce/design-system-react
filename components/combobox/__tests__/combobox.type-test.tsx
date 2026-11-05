@@ -85,3 +85,24 @@ export const basePopover = (
 	// @ts-expect-error `popover` only applies to the popover variant
 	<Combobox options={options} popover={dialog} selection={[]} />
 );
+
+export const uncontrolledOpen = (
+	<Combobox defaultIsOpen options={options} selection={[]} />
+);
+
+export const controlledOpen = (
+	<Combobox
+		events={{
+			onRequestClose: () => {},
+			onRequestOpen: (event) => event?.preventDefault(),
+		}}
+		isOpen={false}
+		options={options}
+		selection={[]}
+	/>
+);
+
+export const removedDefaultValue = (
+	// @ts-expect-error `defaultValue` was removed in v11: pass `value`
+	<Combobox defaultValue="x" options={options} selection={[]} />
+);

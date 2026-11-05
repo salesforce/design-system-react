@@ -172,7 +172,7 @@ const SelectHeader: React.FC<SelectHeaderProps> = (props) => {
 						assistiveText={{
 							label: props.assistiveText?.selectAllRows,
 						}}
-						checked={props.allSelected}
+						checked={!!props.allSelected}
 						indeterminate={props.indeterminateSelected}
 						id={`${props.id}-${idSuffix}`}
 						name={!ariaHidden ? 'SelectAll' : undefined}

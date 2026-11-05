@@ -6,6 +6,7 @@
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
+import requiredProperty from '../../utilities/warning/required-property';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function checkPropsFunction() {};
@@ -36,8 +37,9 @@ if (process.env.NODE_ENV !== 'production') {
 	};
 }
 
-// Deprecated visual-picker render props. Exported separately so the component
-// can run these checks without enabling the pre-existing `checkProps` warnings.
+// v11 control-model removals and deprecated visual-picker render props.
+// Exported separately so the component can run these checks without enabling
+// the pre-existing `checkProps` warnings.
 export let checkDeprecatedProps = function checkDeprecatedPropsFunction() {};
 
 if (process.env.NODE_ENV !== 'production') {
@@ -47,6 +49,13 @@ if (process.env.NODE_ENV !== 'production') {
 		jsonDoc
 	) {
 		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		sunsetProperty(
+			COMPONENT,
+			props.defaultChecked,
+			'defaultChecked',
+			'Checkbox is controlled: pass `checked` and update it in `onChange`.'
+		);
 
 		deprecatedProperty(
 			COMPONENT,
@@ -68,6 +77,27 @@ if (process.env.NODE_ENV !== 'production') {
 			'onRenderVisualPickerNotSelected',
 			'visualPickerFigureNotSelected',
 			createDocUrl('visualPickerFigureNotSelected')
+		);
+	};
+}
+
+// Controlled-state checks. React's own "`checked` without `onChange`" warning
+// never fires, because Checkbox always attaches its own change handler.
+export let checkRequiredProps = function checkRequiredPropsFunction() {};
+
+if (process.env.NODE_ENV !== 'production') {
+	checkRequiredProps = function checkRequiredPropsFunction(
+		COMPONENT,
+		props,
+		jsonDoc
+	) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		requiredProperty(
+			COMPONENT,
+			props.onChange !== undefined || !!props.disabled || !!props.readOnly,
+			'onChange',
+			`Checkbox is controlled: without \`onChange\`, clicking it does nothing. Update \`checked\` from \`data.checked\` in \`onChange\`, or set \`disabled\` or \`readOnly\`. ${createDocUrl('onChange')}`
 		);
 	};
 }

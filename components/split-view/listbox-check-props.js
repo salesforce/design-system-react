@@ -21,4 +21,39 @@ if (process.env.NODE_ENV !== 'production') {
 	};
 }
 
+// `selection` and `unread` of item objects. Exported separately because it runs on every update:
+// consumers usually pass `[]` first and the first item object only after a click.
+export let checkSelectionProps = function checkSelectionPropsFunction() {};
+
+if (process.env.NODE_ENV !== 'production') {
+	const hasItemObjects = (entries) =>
+		Array.isArray(entries) &&
+		entries.some((entry) => entry !== null && typeof entry === 'object');
+
+	checkSelectionProps = function checkSelectionPropsFunction(
+		COMPONENT,
+		props,
+		jsonDoc
+	) {
+		const createDocUrl = getComponentDocFn(jsonDoc);
+
+		/* eslint-disable max-len */
+		deprecatedProperty(
+			COMPONENT,
+			hasItemObjects(props.selection) ? true : undefined,
+			'selection={[item]}',
+			'selection={[item.id]}',
+			`\`selection\` is a list of item ids. Item objects are still matched by \`id\`, or by identity when an item has no \`id\`. \`events.onSelect\` reports the requested ids as \`data.selection\`. ${createDocUrl('selection')}`
+		);
+		deprecatedProperty(
+			COMPONENT,
+			hasItemObjects(props.unread) ? true : undefined,
+			'unread={[item]}',
+			'unread={[item.id]}',
+			`\`unread\` is a list of item ids. Item objects are still matched by \`id\`, or by identity when an item has no \`id\`. ${createDocUrl('unread')}`
+		);
+		/* eslint-enable max-len */
+	};
+}
+
 export default checkProps;

@@ -1,9 +1,27 @@
+import { useState } from 'react';
 import IconSettings from '../../icon-settings';
 import Slider from '../';
+
+// Slider is controlled: keep `value` in state, seeded from the story args.
+const StatefulSlider = ({ onChange, value: initialValue, ...args }) => {
+	const [value, setValue] = useState(initialValue);
+	return (
+		<Slider
+			{...args}
+			onChange={(event, data) => {
+				onChange?.(event, data);
+				setValue(data.value);
+			}}
+			value={value}
+		/>
+	);
+};
 
 export default {
 	title: 'Components/Slider',
 	component: Slider,
+	// Remount when the `value` control changes so the new value seeds the state.
+	render: (args) => <StatefulSlider key={args.value} {...args} />,
 	decorators: [
 		(Story) => (
 			<div className="slds-p-around_medium" style={{ maxWidth: '400px' }}>
@@ -79,7 +97,11 @@ export const WithError = {
 export const Vertical = {
 	render: () => (
 		<div style={{ height: '200px' }}>
-			<Slider labels={{ label: 'Vertical Slider' }} value={50} vertical />
+			<StatefulSlider
+				labels={{ label: 'Vertical Slider' }}
+				value={50}
+				vertical
+			/>
 		</div>
 	),
 };
@@ -88,10 +110,10 @@ export const Vertical = {
 export const Sizes = {
 	render: () => (
 		<div className="slds-grid slds-grid_vertical slds-gutters">
-			<Slider labels={{ label: 'X-Small' }} value={50} size="x-small" />
-			<Slider labels={{ label: 'Small' }} value={50} size="small" />
-			<Slider labels={{ label: 'Medium' }} value={50} size="medium" />
-			<Slider labels={{ label: 'Large' }} value={50} size="large" />
+			<StatefulSlider labels={{ label: 'X-Small' }} value={50} size="x-small" />
+			<StatefulSlider labels={{ label: 'Small' }} value={50} size="small" />
+			<StatefulSlider labels={{ label: 'Medium' }} value={50} size="medium" />
+			<StatefulSlider labels={{ label: 'Large' }} value={50} size="large" />
 		</div>
 	),
 };

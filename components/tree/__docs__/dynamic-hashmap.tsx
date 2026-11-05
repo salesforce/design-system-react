@@ -202,12 +202,11 @@ const base = {
 	},
 } satisfies TreeHashMap;
 
-// Initial state with some nodes expanded and selected
-const initialExpandedSelected: TreeHashMap = {
-	...base,
-	2: { ...base[2], expanded: true },
-	5: { ...base[5], expanded: true },
-	15: { ...base[15], selected: true },
+// Initial state with some nodes expanded and selected. Tree reads these from its
+// `expandedIds` and `selectedIds` props, not from the nodes.
+const initialExpandedSelected = {
+	expandedIds: [2, 5],
+	selectedIds: [15],
 };
 
 // Generate a larger dataset for performance testing

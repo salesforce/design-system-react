@@ -4,6 +4,21 @@ import { Radio, Checkbox } from '~/components';
 import IconSettings from '~/components/icon-settings';
 
 class Example extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = { radio: null, checkboxes: {} };
+	}
+
+	handleRadioChange = (id) => () => {
+		this.setState({ radio: id });
+	};
+
+	handleCheckboxChange = (id) => (event, data) => {
+		this.setState((previous) => ({
+			checkboxes: { ...previous.checkboxes, [id]: data.checked },
+		}));
+	};
+
 	render() {
 		return (
 			<IconSettings iconPath="/assets/icons">
@@ -22,6 +37,13 @@ class Example extends React.Component {
 						<Radio
 							value="30"
 							id="visual-picker-vertical-non-coverable-radio-1"
+							checked={
+								this.state.radio ===
+								'visual-picker-vertical-non-coverable-radio-1'
+							}
+							onChange={this.handleRadioChange(
+								'visual-picker-vertical-non-coverable-radio-1'
+							)}
 							visualPickerFigure={
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
@@ -37,6 +59,13 @@ class Example extends React.Component {
 						<Radio
 							value="150"
 							id="visual-picker-vertical-non-coverable-radio-2"
+							checked={
+								this.state.radio ===
+								'visual-picker-vertical-non-coverable-radio-2'
+							}
+							onChange={this.handleRadioChange(
+								'visual-picker-vertical-non-coverable-radio-2'
+							)}
 							visualPickerFigure={
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
@@ -53,6 +82,13 @@ class Example extends React.Component {
 							disabled
 							value="300"
 							id="visual-picker-vertical-non-coverable-radio-3"
+							checked={
+								this.state.radio ===
+								'visual-picker-vertical-non-coverable-radio-3'
+							}
+							onChange={this.handleRadioChange(
+								'visual-picker-vertical-non-coverable-radio-3'
+							)}
 							visualPickerFigure={
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
@@ -76,6 +112,14 @@ class Example extends React.Component {
 						<Checkbox
 							value="30"
 							id="visual-picker-vertical-non-coverable-checkbox-1"
+							checked={
+								!!this.state.checkboxes[
+									'visual-picker-vertical-non-coverable-checkbox-1'
+								]
+							}
+							onChange={this.handleCheckboxChange(
+								'visual-picker-vertical-non-coverable-checkbox-1'
+							)}
 							visualPickerFigure={
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
@@ -91,6 +135,14 @@ class Example extends React.Component {
 						<Checkbox
 							value="150"
 							id="visual-picker-vertical-non-coverable-checkbox-2"
+							checked={
+								!!this.state.checkboxes[
+									'visual-picker-vertical-non-coverable-checkbox-2'
+								]
+							}
+							onChange={this.handleCheckboxChange(
+								'visual-picker-vertical-non-coverable-checkbox-2'
+							)}
 							visualPickerFigure={
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">
@@ -107,6 +159,14 @@ class Example extends React.Component {
 							disabled
 							value="300"
 							id="visual-picker-vertical-non-coverable-checkbox-3"
+							checked={
+								!!this.state.checkboxes[
+									'visual-picker-vertical-non-coverable-checkbox-3'
+								]
+							}
+							onChange={this.handleCheckboxChange(
+								'visual-picker-vertical-non-coverable-checkbox-3'
+							)}
 							visualPickerFigure={
 								<span>
 									<span className="slds-text-heading_medium slds-m-bottom_x-small">

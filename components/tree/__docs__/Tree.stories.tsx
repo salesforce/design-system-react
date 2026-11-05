@@ -19,7 +19,7 @@ const meta: Meta<typeof Tree> = {
 		docs: {
 			description: {
 				component:
-					'A tree is a visualization of a structure hierarchy. A branch can be expanded or collapsed. This is a controlled component.',
+					'A tree is a visualization of a structure hierarchy. A branch can be expanded or collapsed. Selection is controlled through `selectedIds`; expansion is controlled through `expandedIds` or managed by the tree from `defaultExpandedIds`.',
 			},
 		},
 	},
@@ -45,7 +45,13 @@ export const InitialExpandedSelected: Story = {
 	render: () => (
 		<DefaultExample
 			action={action}
-			nodes={sampleNodesDynamicHashMap.initialExpandedSelected}
+			nodes={sampleNodesDynamicHashMap.base}
+			initialExpandedIds={
+				sampleNodesDynamicHashMap.initialExpandedSelected.expandedIds
+			}
+			initialSelectedIds={
+				sampleNodesDynamicHashMap.initialExpandedSelected.selectedIds
+			}
 		/>
 	),
 };

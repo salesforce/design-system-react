@@ -90,8 +90,6 @@ export interface InnerInputProps {
 	containerClassName?: string | string[] | Record<string, boolean>;
 	/** Props for the container div */
 	containerProps?: InnerInputContainerProps;
-	/** Initial value for uncontrolled usage */
-	defaultValue?: string | number;
 	/** Disables the input */
 	disabled?: boolean;
 	/** Fixed text/node on the left */
@@ -162,7 +160,7 @@ export interface InnerInputProps {
 	tabIndex?: string | number;
 	/** Input type */
 	type?: InnerInputType;
-	/** Controlled value */
+	/** The input's value. Controlled: the parent updates it in `onChange`. */
 	value?: string | number;
 	/** Input variant */
 	variant?: InnerInputVariant;
@@ -204,7 +202,6 @@ const InnerInput = ({
 	className,
 	containerClassName,
 	containerProps = {},
-	defaultValue,
 	disabled,
 	fixedTextLeft,
 	fixedTextRight,
@@ -262,12 +259,14 @@ const InnerInput = ({
 
 	// Add spinner to aria-describedby if present
 	if (hasSpinner && ariaProps['aria-describedby']) {
-		ariaProps['aria-describedby'] = `${loadingStatusIconId} ${ariaProps['aria-describedby']}`;
+		ariaProps['aria-describedby'] =
+			`${loadingStatusIconId} ${ariaProps['aria-describedby']}`;
 	} else if (hasSpinner) {
 		ariaProps['aria-describedby'] = loadingStatusIconId;
 	}
 
-	const { className: containerPropsClassName, ...restContainerProps } = containerProps;
+	const { className: containerPropsClassName, ...restContainerProps } =
+		containerProps;
 
 	return (
 		<div
@@ -275,7 +274,8 @@ const InnerInput = ({
 				'slds-input-has-icon': variant !== COUNTER && (iconLeft || iconRight),
 				'slds-input-has-icon_left': iconLeft && !iconRight,
 				'slds-input-has-icon_right': !iconLeft && iconRight,
-				'slds-input-has-icon_left-right': variant !== COUNTER && iconLeft && iconRight,
+				'slds-input-has-icon_left-right':
+					variant !== COUNTER && iconLeft && iconRight,
 				'slds-input-has-fixed-addon': fixedTextLeft || fixedTextRight,
 				'slds-has-divider_bottom': isStatic,
 			})}
@@ -324,9 +324,7 @@ const InnerInput = ({
 					tabIndex={tabIndex !== undefined ? Number(tabIndex) : undefined}
 					type={type}
 					{...ariaProps}
-					{...(value !== undefined
-						? { value }
-						: { defaultValue })}
+					value={value}
 				/>
 			)}
 
@@ -354,7 +352,9 @@ const InnerInput = ({
 					className={classNames('slds-form-element__static', 'slds-grid', {
 						'slds-grid_align-spread': variant !== COUNTER,
 					})}
-					onClick={onClick as unknown as (event: MouseEvent<HTMLSpanElement>) => void}
+					onClick={
+						onClick as unknown as (event: MouseEvent<HTMLSpanElement>) => void
+					}
 				>
 					{value}
 					{inlineEditTrigger}

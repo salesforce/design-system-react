@@ -1,14 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, {
-	useContext,
-	useEffect,
-	useRef,
-	useState,
-	SyntheticEvent,
-	ReactNode,
-} from 'react';
+import React, { useContext, useEffect, SyntheticEvent, ReactNode } from 'react';
 import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 
@@ -68,10 +61,6 @@ export interface SimpleDataTableHeaderCellProps {
 const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 	props
 ) => {
-	const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | null>(
-		null
-	);
-	const prevIsSorted = useRef<boolean | null>(null);
 	const tableContext = useContext(TableContext);
 	const cellContext = useContext(CellContext);
 	const { tabIndex, hasFocus, handleFocus, handleKeyDown } = useContextHelper(
@@ -86,17 +75,13 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	useEffect(() => {
-		if (prevIsSorted.current === true && props.isSorted === false) {
-			setSortDirection(null);
-		}
-		prevIsSorted.current = props.isSorted ?? null;
-	}, [props.isSorted]);
-
 	const handleSort = (e: SyntheticEvent) => {
 		e.preventDefault();
 
-		const oldSortDirection = props.sortDirection || sortDirection;
+		// Sort is data: the next direction is derived from the `sortDirection`
+		// prop only. The column keeps no copy, so a parent that ignores `onSort`
+		// keeps the rendered state and gets the same request on the next click.
+		const oldSortDirection = props.sortDirection || null;
 		const newSortDirection = (function sortDirectionFunction(
 			direction: 'asc' | 'desc' | null,
 			isDefaultSortDescending?: boolean
@@ -118,8 +103,6 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 			sortDirection: newSortDirection,
 		};
 
-		setSortDirection(newSortDirection);
-
 		if (isFunction(props.onSort)) {
 			props.onSort(data, e);
 		}
@@ -129,9 +112,7 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 
 	const labelType = typeof label;
 	const effectiveSortDirection =
-		props.sortDirection ||
-		sortDirection ||
-		(props.isDefaultSortDescending ? 'desc' : undefined);
+		props.sortDirection || (props.isDefaultSortDescending ? 'desc' : undefined);
 	const expandedSortDirection =
 		effectiveSortDirection === 'desc' ? 'descending' : 'ascending';
 	const ariaSort = isSorted ? expandedSortDirection : 'none';
@@ -156,10 +137,12 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 					>
 						{label}
 					</span>
+					{/* Always the down arrow: SLDS turns it up with `slds-is-sorted_asc`
+					    on the `th`, so swapping the glyph as well would flip it twice. */}
 					<Icon
 						className="slds-is-sortable__icon"
 						category="utility"
-						name={effectiveSortDirection === 'desc' ? 'arrowdown' : 'arrowup'}
+						name="arrowdown"
 						size="x-small"
 					/>
 					{effectiveSortDirection ? (
@@ -213,8 +196,13 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 			className={classNames({
 				'slds-is-sortable': sortable,
 				'slds-is-sorted': isSorted,
-				[`slds-is-sorted_${effectiveSortDirection}`]: effectiveSortDirection,
-				'slds-is-sorted_asc': isSorted && !effectiveSortDirection,
+				// One key per class: a computed `slds-is-sorted_${direction}` key
+				// followed by a literal `slds-is-sorted_asc` key overwrote it, so
+				// ascending columns never got `slds-is-sorted_asc`.
+				'slds-is-sorted_asc':
+					effectiveSortDirection === 'asc' ||
+					(isSorted && !effectiveSortDirection),
+				'slds-is-sorted_desc': effectiveSortDirection === 'desc',
 				'slds-has-focus': hasFocus,
 			})}
 			onFocus={handleFocus}

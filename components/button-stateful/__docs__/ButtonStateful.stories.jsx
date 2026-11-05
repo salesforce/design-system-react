@@ -31,10 +31,22 @@ export default {
 	},
 };
 
+// ButtonStateful is controlled, so each story keeps `isActive` in state.
+const StatefulButton = (props) => {
+	const [isActive, setIsActive] = useState(false);
+	return (
+		<ButtonStateful
+			isActive={isActive}
+			onClick={(event, data) => setIsActive(data.isActive)}
+			{...props}
+		/>
+	);
+};
+
 // Default stateful button
 export const Default = {
 	render: () => (
-		<ButtonStateful
+		<StatefulButton
 			stateOne={{ iconName: 'add', label: 'Follow' }}
 			stateTwo={{ iconName: 'check', label: 'Following' }}
 			stateThree={{ iconName: 'close', label: 'Unfollow' }}
@@ -45,14 +57,14 @@ export const Default = {
 // Controlled example
 export const Controlled = {
 	render: () => {
-		const [active, setActive] = useState(false);
+		const [isActive, setIsActive] = useState(false);
 
 		return (
 			<div>
-				<p className="slds-m-bottom_small">Active: {active ? 'Yes' : 'No'}</p>
+				<p className="slds-m-bottom_small">Active: {isActive ? 'Yes' : 'No'}</p>
 				<ButtonStateful
-					active={active}
-					onClick={() => setActive(!active)}
+					isActive={isActive}
+					onClick={(event, data) => setIsActive(data.isActive)}
 					stateOne={{ iconName: 'add', label: 'Follow' }}
 					stateTwo={{ iconName: 'check', label: 'Following' }}
 					stateThree={{ iconName: 'close', label: 'Unfollow' }}
@@ -65,7 +77,7 @@ export const Controlled = {
 // Success variant
 export const SuccessVariant = {
 	render: () => (
-		<ButtonStateful
+		<StatefulButton
 			variant="success"
 			stateOne={{ iconName: 'add', label: 'Follow' }}
 			stateTwo={{ iconName: 'check', label: 'Following' }}
@@ -77,7 +89,7 @@ export const SuccessVariant = {
 // Text variant
 export const TextVariant = {
 	render: () => (
-		<ButtonStateful
+		<StatefulButton
 			variant="text"
 			stateOne={{ iconName: 'add', label: 'Follow' }}
 			stateTwo={{ iconName: 'check', label: 'Following' }}
@@ -89,7 +101,7 @@ export const TextVariant = {
 // Icon variant
 export const IconVariant = {
 	render: () => (
-		<ButtonStateful
+		<StatefulButton
 			variant="icon"
 			iconName="like"
 			assistiveText={{ icon: 'Like' }}
@@ -100,7 +112,7 @@ export const IconVariant = {
 // Icon filled variant
 export const IconFilledVariant = {
 	render: () => (
-		<ButtonStateful
+		<StatefulButton
 			variant="icon-filled"
 			iconName="like"
 			assistiveText={{ icon: 'Like' }}
@@ -111,7 +123,7 @@ export const IconFilledVariant = {
 // Custom states
 export const CustomStates = {
 	render: () => (
-		<ButtonStateful
+		<StatefulButton
 			stateOne={{ iconName: 'like', label: 'Like' }}
 			stateTwo={{ iconName: 'check', label: 'Liked' }}
 			stateThree={{ iconName: 'close', label: 'Unlike' }}
@@ -122,7 +134,7 @@ export const CustomStates = {
 // Disabled
 export const Disabled = {
 	render: () => (
-		<ButtonStateful
+		<StatefulButton
 			disabled
 			stateOne={{ iconName: 'add', label: 'Follow' }}
 			stateTwo={{ iconName: 'check', label: 'Following' }}

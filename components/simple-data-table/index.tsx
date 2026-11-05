@@ -12,7 +12,6 @@ import classNames from 'classnames';
 import assign from 'lodash.assign';
 import { dequal as isEqual } from 'dequal';
 import memoize from 'memoize-one';
-import reject from 'lodash.reject';
 // This component's `checkProps` which issues warnings to developers about properties when in development mode (similar to React's built in development tools)
 import checkProps from './check-props';
 import componentDoc from './component.json';
@@ -80,10 +79,26 @@ const defaultProps = {
 		selectRowGroup: 'Choose a row to select',
 		loadingMore: 'Loading more',
 	},
-	selection: [] as SimpleDataTableItem[],
-	disabledSelection: [] as SimpleDataTableItem[],
 	hasMore: false,
 	loadMoreOffset: 20,
+};
+
+const EMPTY_ITEMS: SimpleDataTableItem[] = [];
+
+const hasId = (item: SimpleDataTableItem) =>
+	item.id !== undefined && item.id !== null;
+
+/**
+ * Returns a predicate that tells whether an item is in `list`. Items are
+ * matched by `id`, so a parent can pass fresh item objects (e.g. from a store)
+ * in `selection` or `disabledSelection` and they still match the rows in
+ * `items`. Items without an `id` fall back to reference identity.
+ */
+const createItemMatcher = (list: SimpleDataTableItem[]) => {
+	const references = new Set(list);
+	const ids = new Set(list.filter(hasId).map((entry) => entry.id));
+	return (item: SimpleDataTableItem): boolean =>
+		references.has(item) || (hasId(item) && ids.has(item.id));
 };
 
 const getAssistiveText = memoize(
@@ -122,6 +137,48 @@ const getAssistiveText = memoize(
 	},
 	isEqual
 );
+
+const isPlainObject = (value: unknown): value is Record<string, unknown> => {
+	if (value === null || typeof value !== 'object') {
+		return false;
+	}
+	const prototype = Object.getPrototypeOf(value);
+	return prototype === Object.prototype || prototype === null;
+};
+
+/**
+ * Deep equality for the column/row-action memo. React elements are compared
+ * by `type`, `key` and `props` only: their dev-mode `_owner` is the owning
+ * fiber, which is circular, so a generic deep compare (e.g. `dequal`)
+ * overflows the stack as soon as a parent re-renders the table with
+ * unchanged children. Anything else that isn't an array or plain object is
+ * compared by reference (a miss only recomputes the columns).
+ */
+const isEqualIgnoringOwner = (a: unknown, b: unknown): boolean => {
+	let result = false;
+	if (a === b) {
+		result = true;
+	} else if (React.isValidElement(a) && React.isValidElement(b)) {
+		result =
+			a.type === b.type &&
+			a.key === b.key &&
+			isEqualIgnoringOwner(a.props, b.props);
+	} else if (Array.isArray(a) && Array.isArray(b)) {
+		result =
+			a.length === b.length &&
+			a.every((value, index) => isEqualIgnoringOwner(value, b[index]));
+	} else if (isPlainObject(a) && isPlainObject(b)) {
+		const keys = Object.keys(a);
+		result =
+			keys.length === Object.keys(b).length &&
+			keys.every(
+				(key) =>
+					Object.prototype.hasOwnProperty.call(b, key) &&
+					isEqualIgnoringOwner(a[key], b[key])
+			);
+	}
+	return result;
+};
 
 const getColumnsAndRowActions = memoize(
 	(
@@ -193,7 +250,7 @@ const getColumnsAndRowActions = memoize(
 		});
 		return { columns, RowActions };
 	},
-	isEqual
+	isEqualIgnoringOwner
 );
 
 /**
@@ -343,34 +400,49 @@ class SimpleDataTable extends React.Component<
 		})
 	);
 
+	// Memoized per list so the `id` lookups are only rebuilt when the
+	// `selection` or `disabledSelection` prop changes.
+	getSelectionMatcher = memoize(createItemMatcher);
+
+	getDisabledSelectionMatcher = memoize(createItemMatcher);
+
+	// Selection is controlled: the table never stores it. Both handlers report
+	// the requested next selection, computed from the `selection` prop, and
+	// leave rendering to the parent's next `selection`.
+	requestSelection = (
+		event: React.SyntheticEvent,
+		selection: SimpleDataTableItem[]
+	) => {
+		// `onChange(selection, event)` is deprecated in favor of
+		// `onRowChange(event, { selection })`. It still fires (and warns once).
+		if (typeof this.props.onChange === 'function') {
+			this.props.onChange(selection, event);
+		}
+
+		if (typeof this.props.onRowChange === 'function') {
+			this.props.onRowChange(event, { selection });
+		}
+	};
+
 	handleToggleAll = (
 		e: React.SyntheticEvent,
 		{ checked }: { checked: boolean }
 	) => {
-		const selection = this.props.selection ?? [];
-		const disabledSelection = this.props.disabledSelection ?? [];
-		const selectedDisabledItems = selection.filter((item) =>
-			disabledSelection.includes(item)
+		const selection = this.props.selection ?? EMPTY_ITEMS;
+		const isDisabled = this.getDisabledSelectionMatcher(
+			this.props.disabledSelection ?? EMPTY_ITEMS
 		);
-		const enabledItems = this.props.items.filter(
-			(item) => !disabledSelection.includes(item)
-		);
+		// Selected rows whose selection is disabled keep their state.
+		const selectedDisabledItems = selection.filter(isDisabled);
+		const enabledItems = this.props.items.filter((item) => !isDisabled(item));
 
 		const newSelection = (
 			checked
 				? [...enabledItems, ...selectedDisabledItems]
-				: [...selectedDisabledItems]
+				: selectedDisabledItems
 		).filter((item) => item.type !== 'header-row');
 
-		// REMOVE AT NEXT BREAKING CHANGE
-		// `onChange` is deprecated and replaced with `onRowChange`
-		if (typeof this.props.onChange === 'function') {
-			this.props.onChange(newSelection, e);
-		}
-
-		if (typeof this.props.onRowChange === 'function') {
-			this.props.onRowChange(e, { selection: newSelection });
-		}
+		this.requestSelection(e, newSelection);
 	};
 
 	handleRowToggle = (
@@ -378,38 +450,18 @@ class SimpleDataTable extends React.Component<
 		selected: boolean,
 		e: React.SyntheticEvent
 	) => {
-		// REMOVE AT NEXT BREAKING CHANGE
-		// `onChange` is deprecated and replaced with `onRowChange`
-		if (typeof this.props.onChange === 'function') {
-			let selection;
+		const selection = this.props.selection ?? EMPTY_ITEMS;
+		let newSelection: SimpleDataTableItem[];
 
-			if (selected) {
-				selection =
-					this.props.selectRows === 'radio'
-						? [item]
-						: [...(this.props.selection ?? []), item];
-			} else {
-				selection = reject(this.props.selection ?? [], item);
-			}
-
-			this.props.onChange(selection, e);
+		if (selected) {
+			newSelection =
+				this.props.selectRows === 'radio' ? [item] : [...selection, item];
+		} else {
+			const isToggledItem = createItemMatcher([item]);
+			newSelection = selection.filter((entry) => !isToggledItem(entry));
 		}
-		// DEPRECATED CODE ENDS HERE
 
-		if (typeof this.props.onRowChange === 'function') {
-			let selection;
-
-			if (selected) {
-				selection =
-					this.props.selectRows === 'radio'
-						? [item]
-						: [...(this.props.selection ?? []), item];
-			} else {
-				selection = reject(this.props.selection ?? [], item);
-			}
-
-			this.props.onRowChange(e, { selection });
-		}
+		this.requestSelection(e, newSelection);
 	};
 
 	resizeFixedHeaders = (event?: Event) => {
@@ -764,18 +816,19 @@ class SimpleDataTable extends React.Component<
 	render() {
 		const ariaProps: { 'aria-multiselectable'?: 'true' } = {};
 		const numHeaderRows = 1;
-		const selection = this.props.selection ?? [];
-		const disabledSelection = this.props.disabledSelection ?? [];
+		const isItemSelected = this.getSelectionMatcher(
+			this.props.selection ?? EMPTY_ITEMS
+		);
+		const isItemDisabled = this.getDisabledSelectionMatcher(
+			this.props.disabledSelection ?? EMPTY_ITEMS
+		);
 		const numRows = count(this.props.items);
-		const numSelected = count(
-			selection.filter((item) => !disabledSelection.includes(item))
+		// Rows the select-all checkbox controls, and how many of them are selected
+		const selectableItems = this.props.items.filter(
+			(item) => item.type !== 'header-row' && !isItemDisabled(item)
 		);
-		const numNonHeaderRows = count(
-			this.props.items.filter(
-				(item) =>
-					item.type !== 'header-row' && !disabledSelection.includes(item)
-			)
-		);
+		const numNonHeaderRows = selectableItems.length;
+		const numSelected = selectableItems.filter(isItemSelected).length;
 		const canSelectRows =
 			this.props.selectRows && numNonHeaderRows > 0
 				? this.props.selectRows
@@ -931,8 +984,8 @@ class SimpleDataTable extends React.Component<
 												item={item}
 												key={rowId}
 												onToggle={this.handleRowToggle}
-												selection={this.props.selection}
-												disabledSelection={this.props.disabledSelection}
+												isSelected={isItemSelected(item)}
+												isDisabled={isItemDisabled(item)}
 												rowActions={RowActions}
 												tableId={this.getId()}
 												rowIndex={index + numHeaderRows}

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import IconSettings from '../../icon-settings';
 import Textarea from '../../textarea';
 import DefaultExample from '../__examples__/default';
@@ -23,7 +24,22 @@ export default {
 	},
 };
 
-const Template = (args) => <Textarea {...args} />;
+// Textarea is controlled: keep `value` in state, seeded from the story args.
+const StatefulTextarea = ({ onChange, value: initialValue = '', ...args }) => {
+	const [value, setValue] = useState(initialValue);
+	return (
+		<Textarea
+			{...args}
+			onChange={(event, data) => {
+				onChange?.(event, data);
+				setValue(data.value);
+			}}
+			value={value}
+		/>
+	);
+};
+
+const Template = (args) => <StatefulTextarea {...args} />;
 
 // ============================================
 // Basic Textarea Variants

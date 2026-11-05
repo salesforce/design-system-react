@@ -3,13 +3,15 @@
 
 import {
 	forwardRef,
+	useEffect,
 	useId,
-	useMemo,
 	type MouseEvent,
 	type ReactElement,
 } from 'react';
 import classNames from 'classnames';
 import { VERTICAL_NAVIGATION } from '../../utilities/constants';
+import { checkRequiredProps } from './check-props';
+import componentDoc from './component.json';
 import type { BadgeProps } from '../badge';
 import type { IconProps } from '../icon';
 import Item from './private/item';
@@ -59,13 +61,18 @@ export interface VerticalNavigationProps {
 	className?: string | string[] | Record<string, boolean>;
 	/** HTML id */
 	id?: string;
-	/** Selection callback */
-	onSelect?: (
+	/**
+	 * Called when an item is clicked, with the click event and `{ item }`. The navigation is
+	 * controlled: update `selectedId` from this callback to change the selected item.
+	 */
+	onSelect: (
 		event: MouseEvent<HTMLAnchorElement>,
 		data: NavigationSelectData
 	) => void;
-	/** Currently selected item ID */
-	selectedId?: string;
+	/**
+	 * `id` of the selected item (required, controlled). Pass `null` when no item is selected.
+	 */
+	selectedId: string | null;
 }
 
 /**
@@ -73,23 +80,15 @@ export interface VerticalNavigationProps {
  * to another page or parts of the page the user is in.
  */
 const VerticalNavigation = forwardRef<HTMLElement, VerticalNavigationProps>(
-	(
-		{ categories, className, id: propId, onSelect, selectedId: propSelectedId },
-		ref
-	) => {
+	({ categories, className, id: propId, onSelect, selectedId }, ref) => {
 		const generatedId = useId();
 		const rootId = propId || generatedId;
 
-		// Determine selected ID (default to first item if not specified)
-		const selectedId = useMemo(() => {
-			if (propSelectedId) {
-				return propSelectedId;
-			}
-			if (categories.length > 0 && categories[0].items?.length > 0) {
-				return categories[0].items[0].id;
-			}
-			return undefined;
-		}, [propSelectedId, categories]);
+		// Selection is controlled. Before v11 a missing `selectedId` selected the
+		// first item, so warn in development when it is omitted.
+		useEffect(() => {
+			checkRequiredProps(VERTICAL_NAVIGATION, { selectedId }, componentDoc);
+		});
 
 		return (
 			<nav
@@ -112,7 +111,7 @@ const VerticalNavigation = forwardRef<HTMLElement, VerticalNavigationProps>(
 									<Item
 										key={item.id}
 										item={item}
-										isSelected={item.id === selectedId}
+										isSelected={selectedId != null && item.id === selectedId}
 										categoryId={categoryId}
 										onSelect={onSelect}
 									/>

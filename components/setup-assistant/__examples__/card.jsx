@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Button from '~/components/button';
 import Checkbox from '~/components/checkbox';
@@ -9,12 +9,25 @@ import SetupAssistantStep from '~/components/setup-assistant/step';
 import ProgressBar from '~/components/progress-bar';
 import ProgressIndicator from '~/components/progress-indicator';
 
+// Checkbox is controlled, so the toggle action keeps its own state.
+const ToggleAction = ({ id, initialChecked = false }) => {
+	const [checked, setChecked] = useState(initialChecked);
+	return (
+		<Checkbox
+			checked={checked}
+			id={id}
+			onChange={(event, data) => setChecked(data.checked)}
+			variant="toggle"
+		/>
+	);
+};
+
 const subSteps = (step) => [
 	{
 		id: `step-${step}-substep0`,
 		label: 'Turn on Lightning for all users.',
 		setupAssistantAction: (
-			<Checkbox id={`step-${step}-substep0-action`} checked variant="toggle" />
+			<ToggleAction id={`step-${step}-substep0-action`} initialChecked />
 		),
 	},
 	{
@@ -47,7 +60,7 @@ const subStepsComplete = (step) => [
 		id: `step-${step}-substep0`,
 		label: 'Turn on Lightning for all users.',
 		setupAssistantAction: (
-			<Checkbox id={`step-${step}-substep0-action`} checked variant="toggle" />
+			<ToggleAction id={`step-${step}-substep0-action`} initialChecked />
 		),
 	},
 	{
@@ -68,9 +81,7 @@ const subStepsIncomplete = (step) => [
 	{
 		id: `step-${step}-substep0`,
 		label: 'Turn on Lightning for all users.',
-		setupAssistantAction: (
-			<Checkbox id={`step-${step}-substep0-action`} variant="toggle" />
-		),
+		setupAssistantAction: <ToggleAction id={`step-${step}-substep0-action`} />,
 	},
 	{
 		id: `step-${step}-substep1`,

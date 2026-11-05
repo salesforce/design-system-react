@@ -4,6 +4,7 @@
 
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
+import requiredProperty from '../../utilities/warning/required-property';
 import sunsetProperty from '../../utilities/warning/sunset-property';
 
 let checkProps = function checkPropsFunction() {};
@@ -18,7 +19,19 @@ if (process.env.NODE_ENV !== 'production') {
 			props.onChange,
 			'onChange',
 			'onRowChange',
-			'The callback parameters have been changed. `onRowChange` passes in `[event, { selection }` in order to align with other components.'
+			'The callback parameters have been changed: `onRowChange(event, { selection })` reports the requested selection in the same `(event, data)` shape as other components.'
+		);
+		// The deprecated `onChange` still fires, so it satisfies the requirement
+		// at runtime (and warns above).
+		requiredProperty(
+			COMPONENT,
+			!props.selectRows ||
+				props.onRowChange !== undefined ||
+				props.onChange !== undefined,
+			'onRowChange',
+			`Row selection is controlled: without \`onRowChange\`, clicking a row's checkbox does nothing. Update \`selection\` from \`data.selection\` in \`onRowChange\`, or remove \`selectRows\`. ${createDocUrl(
+				'onRowChange'
+			)}`
 		);
 		deprecatedProperty(
 			COMPONENT,
@@ -39,15 +52,15 @@ if (process.env.NODE_ENV !== 'production') {
 			COMPONENT,
 			props.onSelect,
 			'onSelect',
-			'onChange',
-			createDocUrl('onChange')
+			'onRowChange',
+			createDocUrl('onRowChange')
 		);
 		deprecatedProperty(
 			COMPONENT,
 			props.onDeselect,
 			'onDeselect',
-			'onChange',
-			createDocUrl('onChange')
+			'onRowChange',
+			createDocUrl('onRowChange')
 		);
 		sunsetProperty(
 			COMPONENT,

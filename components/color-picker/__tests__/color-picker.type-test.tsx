@@ -6,22 +6,71 @@
 
 import ColorPicker from '../index';
 
+const events = { onChange: () => {} };
+
 export const base = (
-	<ColorPicker defaultSelectedTab="custom" swatchColors={['#000000']} />
+	<ColorPicker
+		defaultSelectedTab="custom"
+		events={events}
+		swatchColors={['#000000']}
+		value=""
+	/>
 );
 
 export const swatches = (
-	<ColorPicker swatchColors={['#000000']} variant="swatches" />
+	<ColorPicker
+		events={events}
+		swatchColors={['#000000']}
+		value=""
+		variant="swatches"
+	/>
 );
 
-export const custom = <ColorPicker variant="custom" />;
+export const custom = <ColorPicker events={events} value="" variant="custom" />;
 
 export const swatchesTab = (
 	// @ts-expect-error the swatches variant has no tabs
-	<ColorPicker defaultSelectedTab="custom" variant="swatches" />
+	<ColorPicker
+		defaultSelectedTab="custom"
+		events={events}
+		value=""
+		variant="swatches"
+	/>
 );
 
 export const customSwatches = (
 	// @ts-expect-error the custom variant has no swatches
-	<ColorPicker swatchColors={['#000000']} variant="custom" />
+	<ColorPicker
+		events={events}
+		swatchColors={['#000000']}
+		value=""
+		variant="custom"
+	/>
 );
+
+// `value` is controlled data, so it is required
+// @ts-expect-error `value` is required
+export const missingValue = <ColorPicker events={events} />;
+
+export const controlledOpen = (
+	<ColorPicker
+		events={events}
+		isOpen={false}
+		onRequestOpen={() => {}}
+		value="#ffffff"
+	/>
+);
+
+export const uncontrolledOpen = (
+	<ColorPicker defaultIsOpen events={events} value="#ffffff" />
+);
+
+// `events.onChange` is required unless `disabled` is set: without it, choosing
+// a color does nothing
+// @ts-expect-error `events.onChange` is required
+export const missingOnChange = <ColorPicker value="" />;
+
+// @ts-expect-error `events.onChange` is required, not just `events`
+export const missingEventsOnChange = <ColorPicker events={{}} value="" />;
+
+export const disabledWithoutOnChange = <ColorPicker disabled value="" />;

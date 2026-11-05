@@ -41,7 +41,9 @@ export interface RenderBranchProps {
 	searchTerm?: string;
 	treeIndex: string;
 	flattenedNodes: FlattenedNode[];
-	selectedNodeIndexes: string[];
+	isNodeSelected: (node: TreeNode) => boolean;
+	isNodeExpanded: (node: TreeNode) => boolean;
+	tabStopIndex?: string;
 	focusedNodeIndex?: string;
 	onNodeBlur?: () => void;
 	treeHasFocus?: boolean;
@@ -59,7 +61,7 @@ const handleExpand = (
 			event,
 			data: {
 				node: props.node,
-				expand: !props.node.expanded,
+				expand: !props.isNodeExpanded(props.node),
 				treeIndex: props.treeIndex,
 			},
 		});
@@ -81,7 +83,7 @@ const handleSelect = ({
 			event,
 			data: {
 				node: props.node,
-				select: !props.node.selected,
+				select: !props.isNodeSelected(props.node),
 				treeIndex: props.treeIndex,
 			},
 			fromFocus,
@@ -144,7 +146,7 @@ const handleKeyDownRight = (
 	event: React.KeyboardEvent,
 	props: RenderBranchProps
 ) => {
-	if (props.node.expanded) {
+	if (props.isNodeExpanded(props.node)) {
 		const childNodes = props.getNodes?.(props.node);
 		if (childNodes && childNodes.length > 0) {
 			handleKeyDownDown(event, props);
@@ -158,7 +160,7 @@ const handleKeyDownLeft = (
 	event: React.KeyboardEvent,
 	props: RenderBranchProps
 ) => {
-	if (props.node.expanded) {
+	if (props.isNodeExpanded(props.node)) {
 		handleExpand(event, props);
 	} else {
 		const nodes = props.flattenedNodes.map(
@@ -174,7 +176,7 @@ const handleKeyDownLeft = (
 				data: {
 					node: parent,
 					select: true,
-					expand: !parent.expanded,
+					expand: !props.isNodeExpanded(parent),
 					treeIndex: props.flattenedNodes[index].treeIndex,
 				},
 			});
@@ -224,12 +226,8 @@ const handleFocus = (event: React.FocusEvent, props: RenderBranchProps) => {
 	}
 };
 
-const getTabIndex = (props: RenderBranchProps): number => {
-	const initialFocus =
-		props.selectedNodeIndexes.length === 0 &&
-		props.treeIndex === props.flattenedNodes[0]?.treeIndex;
-	return props.treeIndex === props.focusedNodeIndex || initialFocus ? 0 : -1;
-};
+const getTabIndex = (props: RenderBranchProps): number =>
+	props.treeIndex === props.tabStopIndex ? 0 : -1;
 
 /**
  * Renders a branch node in the tree.
@@ -238,8 +236,8 @@ const RenderBranch = (
 	children: ReactNode,
 	props: RenderBranchProps
 ): React.ReactElement => {
-	const isExpanded = props.node.expanded;
-	const isSelected = props.node.selected;
+	const isExpanded = props.isNodeExpanded(props.node);
+	const isSelected = props.isNodeSelected(props.node);
 	const isFocused = props.treeIndex === props.focusedNodeIndex;
 	const isLoading = props.node.loading;
 

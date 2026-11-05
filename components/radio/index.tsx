@@ -54,6 +54,25 @@ export interface RadioRefs {
 }
 
 /**
+ * Change event data for Radio
+ */
+export interface RadioChangeData {
+	/**
+	 * The requested checked state: `true` when the user selects the radio,
+	 * `false` when a `deselectable` radio that is checked is clicked again.
+	 */
+	checked: boolean;
+}
+
+/**
+ * Change handler for Radio
+ */
+export type RadioChangeHandler = (
+	event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
+	data: RadioChangeData
+) => void;
+
+/**
  * Props for the Radio component
  */
 export interface RadioProps {
@@ -63,12 +82,14 @@ export interface RadioProps {
 	'aria-describedby'?: string;
 	/** ARIA labelledby attribute */
 	'aria-labelledby'?: string;
-	/** Whether radio is checked (controlled) */
-	checked?: boolean;
+	/**
+	 * Whether the radio is checked. Radio is controlled: update this prop from
+	 * `onChange`. Inside a `RadioGroup`/`RadioButtonGroup`, pass `value` to the
+	 * group instead and the group derives `checked` for each radio.
+	 */
+	checked: boolean;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
-	/** Default checked state (uncontrolled) */
-	defaultChecked?: boolean;
 	/** Whether radio can be deselected */
 	deselectable?: boolean;
 	/** Whether radio is disabled */
@@ -83,11 +104,11 @@ export interface RadioProps {
 	label?: string;
 	/** Input name attribute */
 	name?: string;
-	/** Change handler */
-	onChange?: (
-		event: ChangeEvent<HTMLInputElement> | KeyboardEvent<HTMLInputElement>,
-		data: { checked: boolean }
-	) => void;
+	/**
+	 * Called with the requested checked state in `data.checked`. The rendered
+	 * state only changes when `checked` is updated.
+	 */
+	onChange: RadioChangeHandler;
 	/** Focus handler */
 	onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
 	/** Request focus callback */
@@ -126,6 +147,24 @@ export interface RadioProps {
 	style?: CSSProperties;
 }
 
+/**
+ * Props for a `Radio` rendered as a child of `RadioGroup` or
+ * `RadioButtonGroup`. The group injects `checked` (derived from its `value`)
+ * and `onChange`, so neither is required here.
+ */
+export interface RadioGroupItemProps extends Omit<
+	RadioProps,
+	'checked' | 'onChange'
+> {
+	/**
+	 * @deprecated Pass `value` to the `RadioGroup`/`RadioButtonGroup` instead.
+	 * Only used when the group has no `value`.
+	 */
+	checked?: boolean;
+	/** Ignored inside a group: the group's `onChange` is called instead. */
+	onChange?: RadioChangeHandler;
+}
+
 const defaultAssistiveText: RadioAssistiveText = {};
 const defaultLabels: RadioLabels = {};
 
@@ -139,6 +178,8 @@ const Radio = ({
 	'aria-labelledby': ariaLabelledBy,
 	checked,
 	className,
+	// Removed in v11 (Radio is controlled). Destructured so it never reaches
+	// the DOM; `checkDeprecatedProps` warns about it.
 	defaultChecked,
 	deselectable,
 	disabled,
@@ -166,7 +207,7 @@ const Radio = ({
 	refs,
 	style,
 	...rest
-}: RadioProps): React.ReactElement => {
+}: RadioProps & { defaultChecked?: boolean }): React.ReactElement => {
 	const generatedId = useId();
 	const preventDuplicateRef = useRef(false);
 
@@ -182,6 +223,7 @@ const Radio = ({
 		checkDeprecatedProps(
 			RADIO,
 			{
+				defaultChecked,
 				onRenderVisualPicker,
 				onRenderVisualPickerSelected,
 				onRenderVisualPickerNotSelected,
@@ -189,6 +231,7 @@ const Radio = ({
 			componentDoc
 		);
 	}, [
+		defaultChecked,
 		onRenderVisualPicker,
 		onRenderVisualPickerSelected,
 		onRenderVisualPickerNotSelected,
@@ -314,7 +357,7 @@ const Radio = ({
 				id={id}
 				name={name}
 				value={value}
-				{...(checked !== undefined ? { checked } : { defaultChecked })}
+				checked={!!checked}
 				onFocus={onFocus}
 				onChange={(event) => handleChange(event)}
 				onClick={(event) => {

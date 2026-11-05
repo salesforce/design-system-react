@@ -1,6 +1,7 @@
+import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect, afterEach } from 'vitest';
+import { describe, it, expect, afterEach, vi } from 'vitest';
 
 import Tooltip from '../index';
 import Button from '../../button';
@@ -431,6 +432,119 @@ describe('SLDSTooltip', () => {
 				},
 				{ timeout: 200 }
 			);
+		});
+	});
+
+	describe('Controlled and uncontrolled open state', () => {
+		const tooltipEl = () => document.querySelector('.slds-popover_tooltip');
+		const getTrigger = () =>
+			screen.getByRole('button', { name: 'Hover me for tooltip' });
+		const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+		it('stays closed when controlled `isOpen={false}` but requests open on hover and focus', async () => {
+			const onRequestOpen = vi.fn();
+			renderTooltip({ isOpen: false, onRequestOpen });
+
+			fireEvent.mouseEnter(getTrigger());
+			await waitFor(() => expect(onRequestOpen).toHaveBeenCalledTimes(1));
+			fireEvent.focus(getTrigger());
+			await waitFor(() => expect(onRequestOpen).toHaveBeenCalledTimes(2));
+
+			expect(onRequestOpen.mock.calls[0][0].type).toBe('mouseenter');
+			expect(onRequestOpen.mock.calls.map(([, data]) => data)).toEqual([
+				{ trigger: 'mouseEnter' },
+				{ trigger: 'focus' },
+			]);
+			expect(tooltipEl()).not.toBeInTheDocument();
+		});
+
+		it('stays open when controlled `isOpen` but requests close on mouse leave, blur and Escape', async () => {
+			const onRequestClose = vi.fn();
+			renderTooltip({ isOpen: true, onRequestClose, hoverCloseDelay: 0 });
+
+			fireEvent.mouseLeave(getTrigger());
+			await waitFor(() => expect(onRequestClose).toHaveBeenCalledTimes(1));
+			fireEvent.blur(getTrigger());
+			await waitFor(() => expect(onRequestClose).toHaveBeenCalledTimes(2));
+			fireEvent.keyDown(getTrigger(), { key: 'Escape' });
+			await waitFor(() => expect(onRequestClose).toHaveBeenCalledTimes(3));
+
+			expect(onRequestClose.mock.calls.map(([, data]) => data)).toEqual([
+				{ trigger: 'mouseLeave' },
+				{ trigger: 'blur' },
+				{ trigger: 'cancel' },
+			]);
+			expect(tooltipEl()).toBeInTheDocument();
+		});
+
+		it('opens a controlled tooltip when the parent updates `isOpen` from the callbacks', async () => {
+			const ControlledTooltip = () => {
+				const [isOpen, setIsOpen] = React.useState(false);
+				return (
+					<Tooltip
+						{...defaultProps}
+						hoverCloseDelay={0}
+						isOpen={isOpen}
+						onRequestOpen={() => setIsOpen(true)}
+						onRequestClose={() => setIsOpen(false)}
+					>
+						<Button label="Hover me for tooltip" />
+					</Tooltip>
+				);
+			};
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<ControlledTooltip />
+				</IconSettings>
+			);
+
+			fireEvent.mouseEnter(getTrigger());
+			await waitFor(() => expect(tooltipEl()).toBeInTheDocument());
+			fireEvent.mouseLeave(getTrigger());
+			await waitFor(() => expect(tooltipEl()).not.toBeInTheDocument());
+		});
+
+		it('opens and closes when uncontrolled, calling `onRequestOpen` and `onRequestClose` once each', async () => {
+			const onRequestOpen = vi.fn();
+			const onRequestClose = vi.fn();
+			renderTooltip({ onRequestOpen, onRequestClose, hoverCloseDelay: 0 });
+
+			fireEvent.mouseEnter(getTrigger());
+			await waitFor(() => expect(tooltipEl()).toBeInTheDocument());
+			fireEvent.mouseLeave(getTrigger());
+			await waitFor(() => expect(tooltipEl()).not.toBeInTheDocument());
+			await wait(20);
+
+			expect(onRequestOpen).toHaveBeenCalledTimes(1);
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+		});
+
+		it('starts open when uncontrolled with `defaultIsOpen`, and closes on Escape', async () => {
+			renderTooltip({ defaultIsOpen: true, hoverCloseDelay: 0 });
+			expect(tooltipEl()).toBeInTheDocument();
+
+			fireEvent.keyDown(getTrigger(), { key: 'Escape' });
+			await waitFor(() => expect(tooltipEl()).not.toBeInTheDocument());
+		});
+
+		it('does not request close when the controlled parent closes it', async () => {
+			const onRequestClose = vi.fn();
+			const { rerender } = renderTooltip({ isOpen: true, onRequestClose });
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<Tooltip
+						{...defaultProps}
+						isOpen={false}
+						onRequestClose={onRequestClose}
+					>
+						<Button label="Hover me for tooltip" />
+					</Tooltip>
+				</IconSettings>
+			);
+			await wait(20);
+
+			expect(tooltipEl()).not.toBeInTheDocument();
+			expect(onRequestClose).not.toHaveBeenCalled();
 		});
 	});
 

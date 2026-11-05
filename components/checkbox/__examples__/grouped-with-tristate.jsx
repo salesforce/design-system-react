@@ -61,7 +61,7 @@ class Example extends React.Component {
 						assistiveText={{
 							label: 'All Condiments',
 						}}
-						checked={allCondimentsStatus === true || undefined}
+						checked={allCondimentsStatus === true}
 						id="checkbox-example-all-condiments"
 						indeterminate={allCondimentsStatus === 'mixed'}
 						labels={{

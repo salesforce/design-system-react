@@ -41,10 +41,27 @@ export interface SliderLabels {
 	label?: ReactNode;
 }
 
+export type SliderChangeHandler = (
+	event: ChangeEvent<HTMLInputElement>,
+	data: { value: number }
+) => void;
+
 /**
- * Props for the Slider component
+ * `onChange` is required unless the slider is `disabled`: Slider is
+ * controlled, so without it the thumb won't move.
  */
-export interface SliderProps {
+export type SliderChangeProps =
+	| {
+			/**
+			 * Called when the value changes. Slider is controlled: update `value`
+			 * from `data.value`, or the thumb won't move. Required unless `disabled`
+			 * is set.
+			 */
+			onChange: SliderChangeHandler;
+	  }
+	| { disabled: true; onChange?: SliderChangeHandler };
+
+interface SliderBaseProps {
 	/** ARIA describedby attribute */
 	'aria-describedby'?: string;
 	/**
@@ -57,8 +74,6 @@ export interface SliderProps {
 	className?: string | string[] | Record<string, boolean>;
 	/** @deprecated Use `className`, which lands on the same element. */
 	classNameContainer?: string | string[] | Record<string, boolean>;
-	/** Initial value for uncontrolled usage */
-	defaultValue?: number;
 	/** Whether the slider is disabled */
 	disabled?: boolean;
 	/** @deprecated Use `labels.error` and `hasError` instead. */
@@ -81,11 +96,6 @@ export interface SliderProps {
 	min?: number;
 	/** Form input name */
 	name?: string;
-	/** Called when value changes */
-	onChange?: (
-		event: ChangeEvent<HTMLInputElement>,
-		data: { value: number }
-	) => void;
 	/** Called on input event */
 	onInput?: (
 		event: FormEvent<HTMLInputElement>,
@@ -95,10 +105,23 @@ export interface SliderProps {
 	size?: SliderSize;
 	/** Step increment (default: 1) */
 	step?: number;
-	/** Controlled value */
-	value?: number;
+	/** The current value. Required: Slider is controlled. */
+	value: number;
 	/** Display vertically */
 	vertical?: boolean;
+}
+
+/**
+ * Props for the Slider component
+ */
+export type SliderProps = SliderBaseProps & SliderChangeProps;
+
+/**
+ * Props removed in v11. They are ignored at runtime and warn in development.
+ */
+interface SliderRemovedProps {
+	/** @removed Slider is controlled: pass `value` and update it in `onChange`. */
+	defaultValue?: unknown;
 }
 
 const defaultAssistiveText: SliderAssistiveText = {
@@ -109,153 +132,160 @@ const defaultAssistiveText: SliderAssistiveText = {
  * The ability to style sliders with CSS varies across browsers.
  * Using this component ensures sliders look the same everywhere.
  */
-const Slider = forwardRef<HTMLDivElement, SliderProps>(
-	(
-		{
-			'aria-describedby': ariaDescribedBy,
-			assistiveText: propAssistiveText,
-			className,
-			classNameContainer,
-			defaultValue,
-			disabled,
-			errorText,
-			hasError: hasErrorProp,
-			id: propId,
-			label: labelProp,
-			labels,
-			max = 100,
-			min = 0,
-			name,
-			onChange,
-			onInput,
-			size,
-			step = 1,
-			value,
-			vertical,
-			...rest
-		},
-		ref
-	) => {
-		const generatedId = useId();
-		const generatedErrorId = useId();
+const Slider = forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
+	const {
+		'aria-describedby': ariaDescribedBy,
+		assistiveText: propAssistiveText,
+		className,
+		classNameContainer,
+		defaultValue,
+		disabled,
+		errorText,
+		hasError: hasErrorProp,
+		id: propId,
+		label: labelProp,
+		labels,
+		max = 100,
+		min = 0,
+		name,
+		onChange,
+		onInput,
+		size,
+		step = 1,
+		value,
+		vertical,
+		...rest
+	} = props as SliderProps & SliderRemovedProps;
 
-		const id = propId || generatedId;
-		// `errorText` is deprecated: it sets both the error state and the message
-		const hasError = hasErrorProp ?? !!errorText;
-		const errorMessage = hasError ? (labels?.error ?? errorText) : undefined;
-		const errorId =
-			ariaDescribedBy || (errorMessage ? generatedErrorId : undefined);
-		const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
-		// `label` is deprecated
-		const label = labels?.label ?? labelProp;
-		const labelText = label || assistiveText.label;
+	const generatedId = useId();
+	const generatedErrorId = useId();
 
-		useEffect(() => {
-			checkProps(
-				SLIDER,
-				{
-					assistiveText: propAssistiveText,
-					classNameContainer,
-					errorText,
-					label: labelProp,
-					labels,
-				},
-				componentDoc
-			);
-		}, [propAssistiveText, classNameContainer, errorText, labelProp, labels]);
+	const id = propId || generatedId;
+	// `errorText` is deprecated: it sets both the error state and the message
+	const hasError = hasErrorProp ?? !!errorText;
+	const errorMessage = hasError ? (labels?.error ?? errorText) : undefined;
+	const errorId =
+		ariaDescribedBy || (errorMessage ? generatedErrorId : undefined);
+	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
+	// `label` is deprecated
+	const label = labels?.label ?? labelProp;
+	const labelText = label || assistiveText.label;
 
-		const ariaProps = getAriaProps(rest) as Record<string, unknown>;
-		if (errorId) {
-			ariaProps['aria-describedby'] = errorId;
-		}
-
-		const handleChange = useCallback(
-			(event: ChangeEvent<HTMLInputElement>) => {
-				onChange?.(event, { value: Number(event.target.value) });
+	useEffect(() => {
+		checkProps(
+			SLIDER,
+			{
+				assistiveText: propAssistiveText,
+				classNameContainer,
+				defaultValue,
+				disabled,
+				errorText,
+				label: labelProp,
+				labels,
+				onChange,
 			},
-			[onChange]
+			componentDoc
 		);
+	}, [
+		propAssistiveText,
+		classNameContainer,
+		defaultValue,
+		disabled,
+		errorText,
+		labelProp,
+		labels,
+		onChange,
+	]);
 
-		const handleInput = useCallback(
-			(event: FormEvent<HTMLInputElement>) => {
-				onInput?.(event, {
-					value: Number((event.target as HTMLInputElement).value),
-				});
-			},
-			[onInput]
-		);
-
-		const displayValue = value ?? defaultValue ?? 0;
-
-		return (
-			<div
-				className={classNames(
-					'slds-form-element',
-					{ 'slds-has-error': hasError },
-					classNameContainer,
-					className
-				)}
-				ref={ref}
-			>
-				<label
-					className={classNames('slds-form-element__label', {
-						'slds-assistive-text': assistiveText.label && !label,
-					})}
-					htmlFor={id}
-				>
-					<span className="slds-slider-label">
-						{labelText && (
-							<span className="slds-slider-label__label">{labelText}</span>
-						)}
-						<span className="slds-slider-label__range">
-							{min} - {max}
-						</span>
-						{disabled && (
-							<span className="slds-assistive-text">
-								{' '}
-								{assistiveText.disabled}
-							</span>
-						)}
-					</span>
-				</label>
-				<div className="slds-form-element__control">
-					<div
-						className={classNames('slds-slider', {
-							'slds-slider_vertical': vertical,
-							'slds-size_x-small': size === 'x-small',
-							'slds-size_small': size === 'small',
-							'slds-size_medium': size === 'medium',
-							'slds-size_large': size === 'large',
-						})}
-					>
-						<input
-							type="range"
-							id={id}
-							name={name}
-							className="slds-slider__range"
-							min={min}
-							max={max}
-							step={step}
-							disabled={disabled}
-							onChange={handleChange}
-							onInput={handleInput}
-							{...ariaProps}
-							{...(value !== undefined ? { value } : { defaultValue })}
-						/>
-						<span className="slds-slider__value" aria-hidden="true">
-							{displayValue}
-						</span>
-					</div>
-					{errorMessage && (
-						<div id={errorId} className="slds-form-element__help">
-							{errorMessage}
-						</div>
-					)}
-				</div>
-			</div>
-		);
+	const ariaProps = getAriaProps(rest) as Record<string, unknown>;
+	if (errorId) {
+		ariaProps['aria-describedby'] = errorId;
 	}
-);
+
+	const handleChange = useCallback(
+		(event: ChangeEvent<HTMLInputElement>) => {
+			onChange?.(event, { value: Number(event.target.value) });
+		},
+		[onChange]
+	);
+
+	const handleInput = useCallback(
+		(event: FormEvent<HTMLInputElement>) => {
+			onInput?.(event, {
+				value: Number((event.target as HTMLInputElement).value),
+			});
+		},
+		[onInput]
+	);
+
+	return (
+		<div
+			className={classNames(
+				'slds-form-element',
+				{ 'slds-has-error': hasError },
+				classNameContainer,
+				className
+			)}
+			ref={ref}
+		>
+			<label
+				className={classNames('slds-form-element__label', {
+					'slds-assistive-text': assistiveText.label && !label,
+				})}
+				htmlFor={id}
+			>
+				<span className="slds-slider-label">
+					{labelText && (
+						<span className="slds-slider-label__label">{labelText}</span>
+					)}
+					<span className="slds-slider-label__range">
+						{min} - {max}
+					</span>
+					{disabled && (
+						<span className="slds-assistive-text">
+							{' '}
+							{assistiveText.disabled}
+						</span>
+					)}
+				</span>
+			</label>
+			<div className="slds-form-element__control">
+				<div
+					className={classNames('slds-slider', {
+						'slds-slider_vertical': vertical,
+						'slds-size_x-small': size === 'x-small',
+						'slds-size_small': size === 'small',
+						'slds-size_medium': size === 'medium',
+						'slds-size_large': size === 'large',
+					})}
+				>
+					<input
+						type="range"
+						id={id}
+						name={name}
+						className="slds-slider__range"
+						min={min}
+						max={max}
+						step={step}
+						disabled={disabled}
+						onChange={handleChange}
+						onInput={handleInput}
+						{...ariaProps}
+						value={value}
+					/>
+					<span className="slds-slider__value" aria-hidden="true">
+						{value}
+					</span>
+				</div>
+				{errorMessage && (
+					<div id={errorId} className="slds-form-element__help">
+						{errorMessage}
+					</div>
+				)}
+			</div>
+		</div>
+	);
+});
 
 Slider.displayName = SLIDER;
 

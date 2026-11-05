@@ -7,4 +7,10 @@ declare const checkProps: (
 	jsonDoc?: Record<string, unknown>
 ) => void;
 
+export declare const checkSelectionProps: (
+	componentName: string,
+	props: { selection?: unknown; unread?: unknown },
+	jsonDoc?: Record<string, unknown>
+) => void;
+
 export default checkProps;

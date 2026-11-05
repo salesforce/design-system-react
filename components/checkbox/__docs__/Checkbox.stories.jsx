@@ -93,7 +93,37 @@ export default {
 	},
 };
 
-const Template = (args) => <Checkbox {...args} />;
+/**
+ * Checkbox is controlled: keep `checked` in state and update it from
+ * `onChange` so the story toggles. The `checked` arg seeds (and re-syncs) it.
+ */
+const ControlledCheckbox = ({
+	checked: checkedArg = false,
+	onChange,
+	...args
+}) => {
+	const [checked, setChecked] = useState(checkedArg);
+	const [previousArg, setPreviousArg] = useState(checkedArg);
+
+	// Re-sync when the `checked` arg changes (Storybook controls).
+	if (checkedArg !== previousArg) {
+		setPreviousArg(checkedArg);
+		setChecked(checkedArg);
+	}
+
+	return (
+		<Checkbox
+			{...args}
+			checked={checked}
+			onChange={(event, data) => {
+				setChecked(data.checked);
+				onChange?.(event, data);
+			}}
+		/>
+	);
+};
+
+const Template = (args) => <ControlledCheckbox {...args} />;
 
 // ============================================
 // Base Checkbox Variants
@@ -153,7 +183,8 @@ export const Indeterminate = {
 	parameters: {
 		docs: {
 			description: {
-				story: 'Indeterminate state is set programmatically and cannot be set by user interaction.',
+				story:
+					'Indeterminate state is set programmatically and cannot be set by user interaction.',
 			},
 		},
 	},
@@ -162,7 +193,9 @@ export const Indeterminate = {
 export const WithAssistiveText = Template.bind({});
 WithAssistiveText.args = {
 	id: 'checkbox-assistive',
-	assistiveText: { label: 'This text is read by screen readers but not visible' },
+	assistiveText: {
+		label: 'This text is read by screen readers but not visible',
+	},
 	labels: { label: 'Checkbox with Assistive Text' },
 	name: 'checkbox-assistive',
 };
@@ -241,7 +274,9 @@ export const ButtonGroup = () => <ButtonGroupCheckboxExample />;
 
 export const DocSiteDefault = () => <DefaultExample />;
 DocSiteDefault.parameters = {
-	docs: { description: { story: 'Default checkbox examples from documentation' } },
+	docs: {
+		description: { story: 'Default checkbox examples from documentation' },
+	},
 };
 
 export const DocSiteError = () => <ErrorExample />;

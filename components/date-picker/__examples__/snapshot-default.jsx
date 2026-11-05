@@ -20,6 +20,9 @@ class Example extends React.Component {
 					isOpen
 					menuPosition="relative"
 					value={new Date(2014, 6, 23)}
+					onChange={(event, data) => {
+						console.log('onChange', data);
+					}}
 					formatter={(date) => {
 						return date ? moment(date).format('M/D/YYYY') : '';
 					}}

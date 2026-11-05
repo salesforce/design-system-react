@@ -15,6 +15,8 @@ export type {
 	PopoverAssistiveText,
 	PopoverRequestCloseTrigger,
 	PopoverRequestCloseData,
+	PopoverRequestOpenTrigger,
+	PopoverRequestOpenData,
 	PopoverOpenData,
 	PopoverCloseData,
 } from './popover';

@@ -722,7 +722,7 @@ describe('SLDSCombobox', () => {
 						events={{ onSelect, ...events }}
 						options={[accountsWithIcon[0]]}
 						selection={[]}
-						defaultValue="acme"
+						value="acme"
 						{...{ [prop]: [item] }}
 					/>
 				</IconSettings>
@@ -1106,6 +1106,180 @@ describe('SLDSCombobox', () => {
 
 			expect(container.querySelectorAll('.custom-item')).toHaveLength(2);
 			expect(container.querySelectorAll('.legacy-item')).toHaveLength(0);
+		});
+	});
+	describe('Open state (v11 control model)', () => {
+		const renderCombobox = (props = {}) =>
+			render(
+				<IconSettings iconPath="/assets/icons">
+					<Combobox
+						id={defaultProps.id}
+						labels={defaultProps.labels}
+						menuPosition="relative"
+						options={accountsWithIcon}
+						selection={[]}
+						value=""
+						{...props}
+					/>
+				</IconSettings>
+			);
+
+		const isOpen = (container) =>
+			getNodes(container).combobox.getAttribute('aria-expanded') === 'true';
+
+		it('uncontrolled: opens on click and closes on Escape without callbacks', () => {
+			const { container } = renderCombobox();
+			const { input } = getNodes(container);
+			expect(isOpen(container)).toBe(false);
+			fireEvent.click(input);
+			expect(isOpen(container)).toBe(true);
+			fireEvent.keyDown(input, keyObjects.ESCAPE);
+			expect(isOpen(container)).toBe(false);
+		});
+
+		it('uncontrolled: still opens when only events.onRequestOpen is supplied', () => {
+			const onRequestOpen = vi.fn();
+			const onOpen = vi.fn();
+			const { container } = renderCombobox({
+				events: { onRequestOpen, onOpen },
+			});
+			fireEvent.click(getNodes(container).input);
+			expect(onRequestOpen).toHaveBeenCalledTimes(1);
+			expect(isOpen(container)).toBe(true);
+			expect(onOpen).toHaveBeenCalledTimes(1);
+		});
+
+		it('uncontrolled: reports close requests and fires onClose once on the real close', () => {
+			const onRequestClose = vi.fn();
+			const onClose = vi.fn();
+			const { container } = renderCombobox({
+				defaultIsOpen: true,
+				events: { onRequestClose, onClose },
+			});
+			expect(isOpen(container)).toBe(true);
+			fireEvent.keyDown(getNodes(container).input, keyObjects.ESCAPE);
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			expect(onClose).toHaveBeenCalledTimes(1);
+			expect(isOpen(container)).toBe(false);
+		});
+
+		it('defaultIsOpen seeds the uncontrolled open state', () => {
+			const { container } = renderCombobox({ defaultIsOpen: true });
+			expect(isOpen(container)).toBe(true);
+			expect(
+				container.querySelector(`#${defaultProps.id}-listbox`)
+			).toBeInTheDocument();
+		});
+
+		it('controlled isOpen={false}: requests open but stays closed until the parent opens it', () => {
+			const onRequestOpen = vi.fn();
+			const onOpen = vi.fn();
+			const { container, rerender } = renderCombobox({
+				isOpen: false,
+				events: { onRequestOpen, onOpen },
+			});
+			fireEvent.click(getNodes(container).input);
+			expect(onRequestOpen).toHaveBeenCalledTimes(1);
+			expect(onRequestOpen.mock.calls[0][0]).toBeDefined();
+			expect(isOpen(container)).toBe(false);
+			expect(onOpen).not.toHaveBeenCalled();
+
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<Combobox
+						id={defaultProps.id}
+						labels={defaultProps.labels}
+						menuPosition="relative"
+						options={accountsWithIcon}
+						selection={[]}
+						value=""
+						isOpen
+						events={{ onRequestOpen, onOpen }}
+					/>
+				</IconSettings>
+			);
+			expect(isOpen(container)).toBe(true);
+			expect(onOpen).toHaveBeenCalledTimes(1);
+		});
+
+		it('controlled isOpen: close requests do not close, and onClose fires only when the parent closes it', () => {
+			const onRequestClose = vi.fn();
+			const onClose = vi.fn();
+			const onSelect = vi.fn();
+			const events = { onRequestClose, onClose, onSelect };
+			const { container, rerender } = renderCombobox({ isOpen: true, events });
+			const { input } = getNodes(container);
+
+			fireEvent.keyDown(input, keyObjects.ESCAPE);
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			expect(isOpen(container)).toBe(true);
+
+			fireEvent.click(
+				container.querySelector(`#${defaultProps.id}-listbox-option-1`)
+			);
+			expect(onSelect).toHaveBeenCalledTimes(1);
+			expect(onSelect.mock.calls[0][1].selection).toEqual([
+				accountsWithIcon[0],
+			]);
+			expect(onRequestClose).toHaveBeenCalledTimes(2);
+			expect(isOpen(container)).toBe(true);
+			expect(onClose).not.toHaveBeenCalled();
+
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<Combobox
+						id={defaultProps.id}
+						labels={defaultProps.labels}
+						menuPosition="relative"
+						options={accountsWithIcon}
+						selection={[]}
+						value=""
+						isOpen={false}
+						events={events}
+					/>
+				</IconSettings>
+			);
+			expect(isOpen(container)).toBe(false);
+			expect(onClose).toHaveBeenCalledTimes(1);
+		});
+
+		it('controlled isOpen ignores defaultIsOpen', () => {
+			const { container } = renderCombobox({
+				isOpen: false,
+				defaultIsOpen: true,
+			});
+			expect(isOpen(container)).toBe(false);
+		});
+	});
+
+	describe('Removed props', () => {
+		it('defaultValue warns once and does not reach the input', async () => {
+			vi.resetModules();
+			const { default: checkProps } = await import('../check-props');
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			checkProps('SLDSCombobox', { defaultValue: 'acme', selection: [] }, {});
+			checkProps('SLDSCombobox', { defaultValue: 'acme', selection: [] }, {});
+			const warnings = consoleError.mock.calls.filter(([message]) =>
+				String(message).includes('`defaultValue`')
+			);
+			expect(warnings).toHaveLength(1);
+			consoleError.mockRestore();
+
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Combobox
+						{...defaultProps}
+						options={accountsWithIcon}
+						selection={[]}
+						defaultValue="acme"
+					/>
+				</IconSettings>
+			);
+			const { input } = getNodes(container);
+			expect(input.value).toBe('');
+			expect(input).not.toHaveAttribute('defaultValue');
 		});
 	});
 });

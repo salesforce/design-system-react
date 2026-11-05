@@ -2,19 +2,20 @@
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
 import React, {
-	useState,
 	useCallback,
+	useEffect,
 	type ReactNode,
 	type MouseEvent,
 	type FocusEvent,
 	type KeyboardEvent,
 } from 'react';
 import classNames from 'classnames';
-import isFunction from 'lodash.isfunction';
 
 import ButtonIcon from '../icon/button-icon';
 import getAriaProps from '../../utilities/get-aria-props';
 import { BUTTON_STATEFUL } from '../../utilities/constants';
+import checkProps from './check-props';
+import componentDoc from './component.json';
 
 /**
  * Button stateful variant types
@@ -51,10 +52,41 @@ export interface ButtonStatefulAssistiveText {
 }
 
 /**
- * Props for the ButtonStateful component
+ * Click event data for ButtonStateful
  */
-export interface ButtonStatefulProps {
-	/** Controlled active state */
+export interface ButtonStatefulClickData {
+	/** The requested next state: the inverse of the current `isActive`. */
+	isActive: boolean;
+}
+
+export type ButtonStatefulClickHandler = (
+	event: MouseEvent<HTMLButtonElement>,
+	data: ButtonStatefulClickData
+) => void;
+
+/**
+ * `onClick` is required unless the button is `disabled`: ButtonStateful is
+ * controlled, so without it clicking does nothing.
+ */
+export type ButtonStatefulClickProps =
+	| {
+			/**
+			 * Called on click with the requested next state in `data.isActive`. The
+			 * rendered state only changes when `isActive` is updated. Required
+			 * unless `disabled` is set.
+			 */
+			onClick: ButtonStatefulClickHandler;
+	  }
+	| { disabled: true; onClick?: ButtonStatefulClickHandler };
+
+interface ButtonStatefulBaseProps {
+	/**
+	 * Whether the button is in its selected state. ButtonStateful is
+	 * controlled: update this prop from `onClick`, which reports the requested
+	 * next value in `data.isActive`.
+	 */
+	isActive: boolean;
+	/** @deprecated Use `isActive` instead. */
 	active?: boolean;
 	/** Assistive text */
 	assistiveText?: ButtonStatefulAssistiveText;
@@ -72,8 +104,6 @@ export interface ButtonStatefulProps {
 	id?: string;
 	/** Blur handler */
 	onBlur?: (event: FocusEvent<HTMLButtonElement>) => void;
-	/** Click handler */
-	onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 	/** Focus handler */
 	onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
 	/** Key down handler */
@@ -100,6 +130,12 @@ export interface ButtonStatefulProps {
 	variant?: ButtonStatefulVariant;
 }
 
+/**
+ * Props for the ButtonStateful component
+ */
+export type ButtonStatefulProps = ButtonStatefulBaseProps &
+	ButtonStatefulClickProps;
+
 const defaultAssistiveText: ButtonStatefulAssistiveText = { icon: '' };
 
 const defaultStateOne: ButtonStatefulState = {
@@ -120,7 +156,8 @@ const defaultStateThree: ButtonStatefulState = {
  * It is used for buttons that have a state of unselected or selected.
  */
 const ButtonStateful = ({
-	active: controlledActive,
+	isActive: isActiveProp,
+	active,
 	assistiveText: propAssistiveText,
 	className,
 	disabled = false,
@@ -144,10 +181,12 @@ const ButtonStateful = ({
 	variant,
 	...rest
 }: ButtonStatefulProps): React.ReactElement => {
-	const [internalActive, setInternalActive] = useState(false);
+	useEffect(() => {
+		checkProps(BUTTON_STATEFUL, { active, disabled, onClick }, componentDoc);
+	});
 
-	const isActive =
-		typeof controlledActive === 'boolean' ? controlledActive : internalActive;
+	// `active` is the deprecated name; `isActive` wins when both are passed.
+	const isActive = !!(isActiveProp ?? active);
 
 	const getClassName = useCallback(
 		(active: boolean) =>
@@ -181,12 +220,9 @@ const ButtonStateful = ({
 
 	const handleClick = useCallback(
 		(e: MouseEvent<HTMLButtonElement>) => {
-			if (isFunction(onClick)) onClick(e);
-			if (typeof controlledActive !== 'boolean') {
-				setInternalActive((prev) => !prev);
-			}
+			onClick?.(e, { isActive: !isActive });
 		},
-		[onClick, controlledActive]
+		[onClick, isActive]
 	);
 
 	const defaultIconProps = {

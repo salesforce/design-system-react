@@ -23,6 +23,13 @@ if (process.env.NODE_ENV !== 'production') {
 			createDocUrl()
 		);
 
+		sunsetProperty(
+			COMPONENT,
+			props.defaultValue !== undefined,
+			'defaultValue',
+			'Textarea is controlled: pass `value` and update it in `onChange`.'
+		);
+
 		if (typeof props.maxLength === 'string') {
 			sunsetProperty(
 				COMPONENT,

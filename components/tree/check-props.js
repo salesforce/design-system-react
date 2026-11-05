@@ -5,6 +5,7 @@
 import deprecatedProperty from '../../utilities/warning/deprecated-property';
 import oneOfRequiredProperty from '../../utilities/warning/one-of-required-property';
 import onlyOneOfProperties from '../../utilities/warning/only-one-of-properties';
+import requiredProperty from '../../utilities/warning/required-property';
 import getComponentDocFn from '../../utilities/get-component-doc';
 
 let checkProps = function checkPropsFunction() {};
@@ -45,12 +46,30 @@ if (process.env.NODE_ENV !== 'production') {
 			'onSelect',
 			'`onSelect` receives `(event, { node, isSelected })`, where `isSelected` is the requested selection state.'
 		);
+		// The deprecated `onClick` still fires, so it satisfies the requirement at runtime.
+		requiredProperty(
+			COMPONENT,
+			props.onSelect !== undefined || props.onClick !== undefined,
+			'onSelect',
+			`Tree selection is controlled: without \`onSelect\`, selecting a node does nothing. Update \`selectedIds\` from \`data.selectedIds\` in \`onSelect\`. ${createDocUrl(
+				'onSelect'
+			)}`
+		);
 		deprecatedProperty(
 			COMPONENT,
 			props.onExpandClick,
 			'onExpandClick',
 			'onRequestToggle',
 			'`onRequestToggle` receives `(event, { node, isExpanded })`, where `isExpanded` is the requested expansion state. Left arrow on a collapsed branch or item selects the parent through `onSelect` instead.'
+		);
+
+		// Selection is controlled data: without `selectedIds`, Tree falls back to `node.selected`
+		deprecatedProperty(
+			COMPONENT,
+			props.selectedIds === undefined ? true : undefined,
+			'node.selected',
+			'selectedIds',
+			'`selectedIds` is not set, so Tree reads selection from the deprecated `selected` field of each node. Tree never writes to `nodes`; pass `selectedIds` and update it from `data.selectedIds` in `onSelect`.'
 		);
 		deprecatedProperty(
 			COMPONENT,
@@ -59,6 +78,27 @@ if (process.env.NODE_ENV !== 'production') {
 			'classNameList'
 		);
 		deprecatedProperty(COMPONENT, props.listStyle, 'listStyle', 'styleList');
+		/* eslint-enable max-len */
+	};
+}
+
+// The deprecated `node.expanded` fallback. Called whenever the visible nodes change, because
+// consumers usually add the field later, in their expand handler.
+export let checkLegacyNodeFields = function checkLegacyNodeFieldsFunction() {};
+
+if (process.env.NODE_ENV !== 'production') {
+	checkLegacyNodeFields = function checkLegacyNodeFieldsFunction(
+		COMPONENT,
+		{ hasExpandedField }
+	) {
+		/* eslint-disable max-len */
+		deprecatedProperty(
+			COMPONENT,
+			hasExpandedField ? true : undefined,
+			'node.expanded',
+			'expandedIds',
+			'Tree reads the deprecated `expanded` field of each node only when neither `expandedIds` nor `defaultExpandedIds` is passed, and never writes to `nodes`. Pass `expandedIds` and update it from `data.expandedIds` in `onRequestToggle`, or pass `defaultExpandedIds` and let Tree manage expansion.'
+		);
 		/* eslint-enable max-len */
 	};
 }

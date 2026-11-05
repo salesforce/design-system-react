@@ -21,6 +21,9 @@ export type {
 	MenuDropdownOpenEvent,
 	MenuDropdownCloseData,
 	MenuDropdownCloseEvent,
+	MenuDropdownRequestOpenData,
+	MenuDropdownRequestCloseData,
+	MenuDropdownValue,
 } from './menu-dropdown';
 export {
 	DropdownNubbinPositions,

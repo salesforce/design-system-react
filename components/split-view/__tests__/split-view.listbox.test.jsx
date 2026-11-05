@@ -40,7 +40,7 @@ describe('SLDSSplitView - Listbox', () => {
 	const renderListbox = (props) => {
 		return render(
 			<IconSettings iconPath="/assets/icons">
-				<SplitViewListbox {...props} />
+				<SplitViewListbox selection={[]} {...props} />
 			</IconSettings>
 		);
 	};
@@ -70,7 +70,7 @@ describe('SLDSSplitView - Listbox', () => {
 		it('should focus the first selected item', () => {
 			const { container } = renderListbox({
 				options: listOptions,
-				selection: [listOptions[1]],
+				selection: [listOptions[1].id],
 				events: {
 					onSelect: vi.fn(),
 				},
@@ -136,16 +136,16 @@ describe('SLDSSplitView - Listbox', () => {
 					options: listOptions,
 					selection: currentSelection,
 					events: {
-						onSelect: (event, { selectedItems }) => {
-							currentSelection = selectedItems;
+						onSelect: (event, { selection }) => {
+							currentSelection = selection;
 							rerender(
 								<IconSettings iconPath="/assets/icons">
 									<SplitViewListbox
 										options={listOptions}
 										selection={currentSelection}
 										events={{
-											onSelect: (event, { selectedItems }) => {
-												currentSelection = selectedItems;
+											onSelect: (event, { selection }) => {
+												currentSelection = selection;
 											},
 										}}
 									/>
@@ -167,22 +167,22 @@ describe('SLDSSplitView - Listbox', () => {
 				let rerender;
 
 				beforeEach(() => {
-					currentSelection = [listOptions[1]];
+					currentSelection = [listOptions[1].id];
 
 					const rendered = renderListbox({
 						options: listOptions,
 						selection: currentSelection,
 						events: {
-							onSelect: (event, { selectedItems }) => {
-								currentSelection = selectedItems;
+							onSelect: (event, { selection }) => {
+								currentSelection = selection;
 								rerender(
 									<IconSettings iconPath="/assets/icons">
 										<SplitViewListbox
 											options={listOptions}
 											selection={currentSelection}
 											events={{
-												onSelect: (event, { selectedItems }) => {
-													currentSelection = selectedItems;
+												onSelect: (event, { selection }) => {
+													currentSelection = selection;
 												},
 											}}
 										/>
@@ -253,8 +253,8 @@ describe('SLDSSplitView - Listbox', () => {
 							options={listOptions}
 							selection={selection}
 							events={{
-								onSelect: (event, { selectedItems }) => {
-									setSelection(selectedItems);
+								onSelect: (event, { selection: nextSelection }) => {
+									setSelection(nextSelection);
 								},
 							}}
 						/>
@@ -315,8 +315,8 @@ describe('SLDSSplitView - Listbox', () => {
 			));
 			const { container } = renderListbox({
 				options: listOptions,
-				selection: [listOptions[1]],
-				unread: [listOptions[2]],
+				selection: [listOptions[1].id],
+				unread: [listOptions[2].id],
 				events: { onSelect: vi.fn() },
 				renderListItem,
 			});
@@ -388,6 +388,234 @@ describe('SLDSSplitView - Listbox', () => {
 			);
 			expect(container.querySelectorAll('.legacy-item')).toHaveLength(0);
 			consoleError.mockRestore();
+		});
+	});
+
+	describe('Control model', () => {
+		const getAnchors = (container) => container.querySelectorAll('li > a');
+
+		it('reports the requested selection as ids and does not change it until the parent does', () => {
+			const onSelect = vi.fn();
+			const { container, rerender } = renderListbox({
+				options: listOptions,
+				selection: [listOptions[1].id],
+				events: { onSelect },
+			});
+
+			fireEvent.click(getAnchors(container)[2]);
+
+			expect(onSelect).toHaveBeenCalledTimes(1);
+			expect(onSelect).toHaveBeenCalledWith(
+				expect.objectContaining({ type: 'click' }),
+				{
+					selection: ['option3'],
+					selectedItems: [listOptions[2]],
+					item: listOptions[2],
+				}
+			);
+			// Controlled: still renders the passed selection
+			expectItemSelected(container, 1);
+
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<SplitViewListbox
+						options={listOptions}
+						selection={['option3']}
+						events={{ onSelect }}
+					/>
+				</IconSettings>
+			);
+			expectItemSelected(container, 2);
+		});
+
+		it('reports meta-click toggles as ids', () => {
+			const onSelect = vi.fn();
+			const { container } = renderListbox({
+				multiple: true,
+				options: listOptions,
+				selection: ['option2', 'option4'],
+				events: { onSelect },
+			});
+
+			fireEvent.click(getAnchors(container)[3], { metaKey: true });
+			expect(onSelect.mock.lastCall[1].selection).toEqual(['option2']);
+
+			fireEvent.click(getAnchors(container)[0], { metaKey: true });
+			expect(onSelect.mock.lastCall[1].selection).toEqual([
+				'option1',
+				'option2',
+				'option4',
+			]);
+		});
+
+		it('starts a shift-click range at the first selected item when nothing was clicked yet', () => {
+			const onSelect = vi.fn();
+			const { container } = renderListbox({
+				multiple: true,
+				options: listOptions,
+				selection: ['option2'],
+				events: { onSelect },
+			});
+
+			fireEvent.click(getAnchors(container)[3], { shiftKey: true });
+
+			expect(onSelect.mock.lastCall[1].selection).toEqual([
+				'option2',
+				'option3',
+				'option4',
+			]);
+		});
+
+		it('orders shift-click range indexes numerically', () => {
+			const manyOptions = Array.from({ length: 12 }, (_, index) => ({
+				id: `item${index}`,
+				label: `Item ${index}`,
+			}));
+			const onSelect = vi.fn();
+			const { container } = renderListbox({
+				multiple: true,
+				options: manyOptions,
+				events: { onSelect },
+			});
+
+			const anchors = getAnchors(container);
+			fireEvent.click(anchors[9]);
+			fireEvent.click(anchors[11], { shiftKey: true });
+
+			expect(onSelect.mock.lastCall[1].selection).toEqual([
+				'item9',
+				'item10',
+				'item11',
+			]);
+		});
+
+		it('deselects all on ctrl+a when every option is selected', () => {
+			const onSelect = vi.fn();
+			const { container } = renderListbox({
+				multiple: true,
+				options: listOptions,
+				// Not the `options` array itself
+				selection: listOptions.map((item) => item.id),
+				events: { onSelect },
+			});
+
+			fireEvent.keyDown(container.querySelector('ul'), {
+				key: 'a',
+				ctrlKey: true,
+			});
+
+			expect(onSelect).toHaveBeenCalledWith(
+				expect.objectContaining({ type: 'keydown' }),
+				{ selection: [], selectedItems: [], item: null }
+			);
+		});
+
+		it('does not warn when selection and unread are ids', () => {
+			const consoleError = vi
+				.spyOn(console, 'error')
+				.mockImplementation(() => {});
+			renderListbox({
+				options: listOptions,
+				selection: ['option2'],
+				unread: ['option3'],
+				events: { onSelect: vi.fn() },
+			});
+
+			expect(
+				consoleError.mock.calls.some((args) =>
+					args.join(' ').includes('will be removed')
+				)
+			).toBe(false);
+			consoleError.mockRestore();
+		});
+
+		describe('deprecated item objects in selection and unread', () => {
+			// Warnings are emitted once per module lifetime, so use a fresh module
+			const importFreshListbox = async () => {
+				vi.resetModules();
+				const { default: FreshListbox } = await import('../listbox');
+				return FreshListbox;
+			};
+
+			it('matches objects by id and warns once', async () => {
+				const FreshListbox = await importFreshListbox();
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				const onSelect = vi.fn();
+				// Copies: matched by id, not identity
+				const { container, rerender } = render(
+					<FreshListbox
+						options={listOptions}
+						selection={[{ ...listOptions[1] }]}
+						unread={[{ ...listOptions[2] }]}
+						events={{ onSelect }}
+					/>
+				);
+
+				expectItemSelected(container, 1);
+				const listItems = container.querySelectorAll('li');
+				expect(listItems[2].className).toContain('slds-is-unread');
+				expect(listItems[1].className).not.toContain('slds-is-unread');
+
+				fireEvent.click(getAnchors(container)[3]);
+				expect(onSelect.mock.lastCall[1]).toEqual({
+					selection: ['option4'],
+					selectedItems: [listOptions[3]],
+					item: listOptions[3],
+				});
+
+				rerender(
+					<FreshListbox
+						options={listOptions}
+						selection={[listOptions[3]]}
+						unread={[listOptions[2]]}
+						events={{ onSelect }}
+					/>
+				);
+				expectItemSelected(container, 3);
+
+				const messages = consoleError.mock.calls.map((args) => args.join(' '));
+				expect(
+					messages.filter((m) => m.includes('`selection={[item]}`'))
+				).toHaveLength(1);
+				expect(
+					messages.filter((m) => m.includes('`unread={[item]}`'))
+				).toHaveLength(1);
+				consoleError.mockRestore();
+			});
+
+			it('matches objects by identity when items have no id', async () => {
+				const FreshListbox = await importFreshListbox();
+				const consoleError = vi
+					.spyOn(console, 'error')
+					.mockImplementation(() => {});
+				const optionsWithoutIds = listOptions.map(
+					({ id: _id, ...item }) => item
+				);
+				const onSelect = vi.fn();
+				const { container } = render(
+					<FreshListbox
+						multiple
+						options={optionsWithoutIds}
+						selection={[optionsWithoutIds[1]]}
+						unread={[optionsWithoutIds[0]]}
+						events={{ onSelect }}
+					/>
+				);
+
+				expectItemSelected(container, 1);
+				expect(container.querySelectorAll('li')[0].className).toContain(
+					'slds-is-unread'
+				);
+
+				fireEvent.click(getAnchors(container)[3], { metaKey: true });
+				expect(onSelect.mock.lastCall[1].selectedItems).toEqual([
+					optionsWithoutIds[3],
+					optionsWithoutIds[1],
+				]);
+				consoleError.mockRestore();
+			});
 		});
 	});
 });

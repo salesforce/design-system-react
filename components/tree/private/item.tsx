@@ -43,7 +43,9 @@ export interface ItemProps {
 	treeId?: string;
 	treeIndex: string;
 	flattenedNodes: FlattenedNode[];
-	selectedNodeIndexes: string[];
+	isNodeSelected: (node: TreeNode) => boolean;
+	isNodeExpanded: (node: TreeNode) => boolean;
+	tabStopIndex?: string;
 	focusedNodeIndex?: string;
 	onNodeBlur?: () => void;
 	treeHasFocus?: boolean;
@@ -65,7 +67,7 @@ const handleSelect = ({
 			event,
 			data: {
 				node: props.node,
-				select: !props.node.selected,
+				select: !props.isNodeSelected(props.node),
 				treeIndex: props.treeIndex,
 			},
 			fromFocus,
@@ -130,7 +132,7 @@ const handleKeyDownLeft = (event: React.KeyboardEvent, props: ItemProps) => {
 			data: {
 				node: parent,
 				select: true,
-				expand: !parent.expanded,
+				expand: !props.isNodeExpanded(parent),
 				treeIndex: props.flattenedNodes[index].treeIndex,
 			},
 		});
@@ -170,18 +172,14 @@ const handleFocus = (event: React.FocusEvent, props: ItemProps) => {
 	}
 };
 
-const getTabIndex = (props: ItemProps): number => {
-	const initialFocus =
-		props.selectedNodeIndexes.length === 0 &&
-		props.treeIndex === props.flattenedNodes[0]?.treeIndex;
-	return props.treeIndex === props.focusedNodeIndex || initialFocus ? 0 : -1;
-};
+const getTabIndex = (props: ItemProps): number =>
+	props.treeIndex === props.tabStopIndex ? 0 : -1;
 
 /**
  * A Tree Item is a non-branching node in a hierarchical list.
  */
 const Item: React.FC<ItemProps> = (props) => {
-	const isSelected = props.node.selected;
+	const isSelected = props.isNodeSelected(props.node);
 	const isFocused = props.treeIndex === props.focusedNodeIndex;
 
 	return (

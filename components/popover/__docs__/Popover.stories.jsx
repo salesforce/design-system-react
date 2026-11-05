@@ -35,7 +35,14 @@ export default {
 		},
 		variant: {
 			control: { type: 'select' },
-			options: ['base', 'error', 'warning', 'feature', 'walkthrough', 'walkthrough-action'],
+			options: [
+				'base',
+				'error',
+				'warning',
+				'feature',
+				'walkthrough',
+				'walkthrough-action',
+			],
 		},
 	},
 };
@@ -68,7 +75,7 @@ export const Controlled = {
 					heading="Controlled Popover"
 					id="controlled-popover"
 					isOpen={isOpen}
-					onClick={() => setIsOpen(!isOpen)}
+					onRequestOpen={() => setIsOpen(true)}
 					onRequestClose={() => setIsOpen(false)}
 				>
 					<Button label={isOpen ? 'Click to close' : 'Click to open'} />
@@ -180,7 +187,11 @@ export const WalkthroughVariant = {
 			footerWalkthroughActions={
 				<>
 					<Button label="Skip" variant="neutral" />
-					<Button label="Next" variant="brand" className="slds-m-left_x-small" />
+					<Button
+						label="Next"
+						variant="brand"
+						className="slds-m-left_x-small"
+					/>
 				</>
 			}
 			id="walkthrough-popover"
@@ -214,7 +225,11 @@ export const WithFooter = {
 			footer={
 				<div className="slds-grid slds-grid_align-end">
 					<Button label="Cancel" variant="neutral" />
-					<Button label="Save" variant="brand" className="slds-m-left_x-small" />
+					<Button
+						label="Save"
+						variant="brand"
+						className="slds-m-left_x-small"
+					/>
 				</div>
 			}
 			id="footer-popover"
