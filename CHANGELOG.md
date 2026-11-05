@@ -44,6 +44,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `Tree` `classNameList` and `styleList` on the top-level `ul.slds-tree`
   - `Modal` `classNameContainer`, `classNameContent`, `classNameFooter`, `classNameHeader`, `classNamePortal` and `styleContent`
   - `Popover` `classNameDialog` and `styleDialog` on the `.slds-popover` dialog, and `styleFooter` (applied to walkthrough footers too, like `classNameFooter`)
+- `trigger` prop on `Tooltip` and `MenuDropdown`. Pass an element, which the component merges its trigger props into, or a function that receives them (`TooltipTriggerProps`, `MenuDropdownTriggerProps`) for full control. With an element, your props win, event handlers are composed (yours runs first), and `className`, `aria-describedby` and `aria-labelledby` are joined. For `MenuDropdown`, a `Button` element takes the dropdown's button props as defaults
+- `Filter` `errorLabel` is declared in the types. `PanelFilterList` already read it
+- `Popover` `openOn="none"`: the first child is only an anchor the popover points at, such as a walkthrough step's target, and the parent opens and closes it through `isOpen`. Popover adds no `id`, `aria-haspopup`, `tabIndex` or handlers to it
 
 ### Changed
 
@@ -88,6 +91,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Content props that are only rendered are typed `ReactNode` instead of `ReactElement`, so strings, fragments, arrays and `null` type-check: `SplitView` `master`/`detail`, `PageHeader` `trail`, `TabsPanel` `label`, `SetupAssistantStep` `figure` (an `Icon` is still resized to `small`), and the return type of the deprecated `Carousel` `onRenderItem`, `SetupAssistantStep` `onRenderFigure` and `MenuDropdown` `listItemRenderer`
 - **BREAKING**: `Popover` `className` and `style` apply to the root trigger wrapper `div` instead of the `.slds-popover` dialog. Move dialog classes and styles to `classNameDialog` and `styleDialog`
 - **BREAKING**: `WelcomeMat` `className` applies to the root `.slds-welcome-mat` element instead of the inner `.slds-welcome-mat__info-content`
+- **BREAKING**: Children and slots that take library components are typed with those components' props, for example `Tabs` children as `TabsPanel` elements, `Combobox` `input` as `ReactElement<Partial<InputProps>>`, and `Alert`/`Toast` `icon` as `ReactElement<IconProps>`. The props a parent injects into its children (`index`, `onToggleIsOpen`, `isError`, …) are no longer in the public child types
+- **BREAKING**: `BuilderHeader`, `MenuDropdown`, `PageHeader` controls, `SetupAssistant` and `SimpleDataTable` match their children by component, not by `displayName`. A wrapper component that copies a library component's `displayName` is no longer treated as that component; render the library component inside it instead
+- **BREAKING**: `Tooltip` and `MenuDropdown` merge their trigger props into the trigger instead of overwriting them, including for the deprecated `children` trigger. The trigger's own `onBlur`, `onFocus`, `onKeyDown` and `onMouseEnter`/`onMouseLeave` now run, before the component's; its `aria-describedby` is joined with `Tooltip`'s; and its `className` is joined with `MenuDropdown`'s (which keeps the dropdown's `ignore-click-*` class on a `Button` trigger). `Popover` still takes the element it attaches to as `children`, which need not be a button
+- **BREAKING**: `Combobox` `popover`, `input` and `tooltipMenuItemDisabled` props win over the combobox's defaults. `input`'s `onChange` is called with `(event, { value })` alongside the combobox's handler, and `popover`'s `children` are replaced with the combobox input
+- `TrialBarDropdown` passes its `children` to the menu as custom content instead of dropping them
 
 ### Deprecated
 
@@ -119,6 +127,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `Tree` `listClassName` and `listStyle` (use `classNameList` and `styleList`)
   - `Modal` `containerClassName`, `contentClassName`, `contentStyle`, `footerClassName`, `headerClassName` and `portalClassName` (use `classNameContainer`, `classNameContent`, `styleContent`, `classNameFooter`, `classNameHeader` and `classNamePortal`)
   - `Popover` `contentsClassName` (use `classNameDialog`), `triggerClassName` (use `className`), `footerClassName` (use `classNameFooter`) and `footerStyle` (use `styleFooter`)
+- Passing a trigger as `children` to `Tooltip`, or a `DropdownTrigger` child to `MenuDropdown` (use `trigger`). Both keep working and log a one-time warning
+- `TabChildProps` (use `TabsPanelProps`) and `FileChildProps` (use `FileProps`)
 
 ### Fixed
 
@@ -149,6 +159,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `TrialBarDropdown`, and any `MenuDropdown` whose trigger `Button` child has a `label`: the label shows even when the dropdown has `assistiveText.icon`
 - `Accordion`: no longer moves focus to the first panel on mount
 - `DatePicker`: `dateDisabled` is typed as `({ date }) => boolean`, which is how it is called
+- `PanelFilterList`: a filter with `errorLabel` and no `id` gets the id its error message uses, so its `aria-describedby` points at the message
+- `ButtonGroup`: the last-child class goes on the last rendered child when some children are conditional (`null` or `false`)
+- `ScopedNotification`: a string `assistiveText` on the `icon` element is used as the icon label instead of being lost
+- `SimpleDataTable`: custom cells without a `displayName` render, conditional columns don't break keyboard navigation, and a `RowActions` `menuPosition` passed by the consumer is kept in a `fixedHeader` table
+- `RadioGroup`: a `Radio`'s own `name` is kept, and its `aria-describedby` is joined with the group's error id instead of replaced; `VisualPicker` keeps a child's `name`
+- `MenuDropdown`: custom (non-`List`) content no longer remounts on every render
+- `Tooltip`: the trigger keeps its own event handlers and `aria-describedby`, and passing several children no longer throws
 
 ### Removed
 
