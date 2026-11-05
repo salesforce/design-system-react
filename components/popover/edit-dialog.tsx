@@ -19,6 +19,14 @@ export interface EditDialogLabels {
 	save?: ReactNode;
 }
 
+/**
+ * Data passed to `onCancel` and `onSave`
+ */
+export interface EditDialogActionData {
+	/** The `isModified` prop when the button was clicked */
+	isModified: boolean;
+}
+
 export interface EditDialogProps {
 	/**
 	 * The trigger element. Defaults to an edit button when not provided.
@@ -50,13 +58,14 @@ export interface EditDialogProps {
 	 */
 	labels?: EditDialogLabels;
 	/**
-	 * This function is passed onto the cancel `Button`. Triggered when the trigger button is clicked.
+	 * Called when the Cancel button is clicked. `data.isModified` says whether there are changes to
+	 * discard.
 	 */
-	onCancel?: (event: React.MouseEvent) => void;
+	onCancel?: (event: React.MouseEvent, data: EditDialogActionData) => void;
 	/**
-	 * This function is passed onto the save `Button`. Triggered when the trigger button is clicked.
+	 * Called when the Save button is clicked. The button is disabled unless `isModified` is true.
 	 */
-	onSave?: (event: React.MouseEvent) => void;
+	onSave?: (event: React.MouseEvent, data: EditDialogActionData) => void;
 	/**
 	 * Popover of type `~/components/popover`. This popover will be cloned and additional props appended, if passed in.
 	 */
@@ -95,8 +104,17 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 		this.setState({ isOpen: false });
 	};
 
+	handleCancel = (event: React.MouseEvent) => {
+		this.props.onCancel?.(event, { isModified: !!this.props.isModified });
+	};
+
+	handleSave = (event: React.MouseEvent) => {
+		this.props.onSave?.(event, { isModified: !!this.props.isModified });
+	};
+
 	render() {
-		const { onCancel, onSave, ...restProps } = this.props;
+		// Kept out of the spread: the footer buttons call them through handleCancel/handleSave
+		const { onCancel: _onCancel, onSave: _onSave, ...restProps } = this.props;
 
 		// trigger button will either be passed in children or defaults to an edit button.
 		const children = this.props.children ? (
@@ -127,12 +145,12 @@ class EditDialog extends React.Component<EditDialogProps, EditDialogState> {
 				classNameBody={['slds-p-bottom_xx-small']}
 				footer={
 					<div className="slds-text-align_right slds-text-align_right slds-p-bottom_x-small slds-p-right_xx-small">
-						<Button label={labels.cancel} onClick={onCancel} />
+						<Button label={labels.cancel} onClick={this.handleCancel} />
 						<Button
 							disabled={!this.props.isModified}
 							variant="brand"
 							label={labels.save}
-							onClick={onSave}
+							onClick={this.handleSave}
 						/>
 					</div>
 				}

@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `MenuDropdown` `onOpen(event, {})` and `onClose(event, {})`
   - `ColorPicker` `onRequestOpen(event, { trigger: 'triggerClick' })`, with the `ColorPickerRequestOpenData` type
   - `Filter` `onClick(event, { id })`, with the `FilterClickHandler` type (it used to get no arguments)
+  - `EditDialog` (`popover/edit-dialog`) `onCancel(event, { isModified })` and `onSave(event, { isModified })`, with the `EditDialogActionData` type
   - `Pill` `onClick(event, { trigger })` (`'click'` or `'enter'`; Enter used to pass no event) and `onRemove(event, { trigger })` (`'remove-button'`, `'backspace'` or `'delete'`; it used to get no arguments), with the `PillClickData` and `PillRemoveData` types
   - `Search` (`input/search`) `onSearch(event, { value })` and `onClear(event, { value })`, with the `SearchData` and `SearchClearData` types
   - `DockedComposer` `events.onRequestMinimize(event, { isOpen: false })`, `events.onRequestExpand(event, { isOpen: true })` and `events.onRequestClose(event, { trigger: 'close-button' })`, with the `DockedComposerRequestToggleData` and `DockedComposerRequestCloseData` types
