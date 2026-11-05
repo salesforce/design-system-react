@@ -1,7 +1,12 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useId, type ReactNode, type MouseEvent } from 'react';
+import React, {
+	useCallback,
+	useId,
+	type ReactNode,
+	type MouseEvent,
+} from 'react';
 import Button from '../button';
 
 /**
@@ -17,15 +22,40 @@ export interface DockedComposerAssistiveText {
 }
 
 /**
+ * Data passed to `onRequestMinimize` and `onRequestExpand`
+ */
+export interface DockedComposerRequestToggleData {
+	/** The requested open state: `false` for minimize, `true` for expand */
+	isOpen: boolean;
+}
+
+/**
+ * Data passed to `onRequestClose`
+ */
+export interface DockedComposerRequestCloseData {
+	/** What caused the request. Only the close button can request a close. */
+	trigger: 'close-button';
+}
+
+/**
  * Event handlers for DockedComposer
  */
 export interface DockedComposerEvents {
-	/** Called when minimize is requested */
-	onRequestMinimize?: (event: MouseEvent<HTMLButtonElement>) => void;
-	/** Called when expand is requested */
-	onRequestExpand?: (event: MouseEvent<HTMLButtonElement>) => void;
-	/** Called when close is requested */
-	onRequestClose?: (event: MouseEvent<HTMLButtonElement>) => void;
+	/** Called when the minimize button is clicked. `data.isOpen` is `false`. */
+	onRequestMinimize?: (
+		event: MouseEvent<HTMLButtonElement>,
+		data: DockedComposerRequestToggleData
+	) => void;
+	/** Called when the expand button is clicked. `data.isOpen` is `true`. */
+	onRequestExpand?: (
+		event: MouseEvent<HTMLButtonElement>,
+		data: DockedComposerRequestToggleData
+	) => void;
+	/** Called when the close button is clicked. `data.trigger` is `'close-button'`. */
+	onRequestClose?: (
+		event: MouseEvent<HTMLButtonElement>,
+		data: DockedComposerRequestCloseData
+	) => void;
 }
 
 /**
@@ -71,6 +101,26 @@ const DockedComposer = ({
 	const id = propId || generatedId;
 	const assistiveText = { ...defaultAssistiveText, ...propAssistiveText };
 
+	const { onRequestMinimize, onRequestExpand, onRequestClose } = events;
+	const handleMinimize = useCallback(
+		(event: MouseEvent<HTMLButtonElement>) => {
+			onRequestMinimize?.(event, { isOpen: false });
+		},
+		[onRequestMinimize]
+	);
+	const handleExpand = useCallback(
+		(event: MouseEvent<HTMLButtonElement>) => {
+			onRequestExpand?.(event, { isOpen: true });
+		},
+		[onRequestExpand]
+	);
+	const handleClose = useCallback(
+		(event: MouseEvent<HTMLButtonElement>) => {
+			onRequestClose?.(event, { trigger: 'close-button' });
+		},
+		[onRequestClose]
+	);
+
 	const sectionClassName = isOpen ? 'slds-is-open' : 'slds-is-closed';
 
 	return (
@@ -105,7 +155,7 @@ const DockedComposer = ({
 								id={`${id}-minimize-button`}
 								title={assistiveText.minimizeButton}
 								assistiveText={{ icon: assistiveText.minimizeButton }}
-								onClick={events.onRequestMinimize}
+								onClick={handleMinimize}
 								iconCategory="utility"
 								iconName="minimize_window"
 								iconVariant="bare"
@@ -116,7 +166,7 @@ const DockedComposer = ({
 								id={`${id}-expand-button`}
 								title={assistiveText.expandButton}
 								assistiveText={{ icon: assistiveText.expandButton }}
-								onClick={events.onRequestExpand}
+								onClick={handleExpand}
 								iconCategory="utility"
 								iconName="expand_alt"
 								iconVariant="bare"
@@ -127,7 +177,7 @@ const DockedComposer = ({
 							id={`${id}-close-button`}
 							title={assistiveText.closeButton}
 							assistiveText={{ icon: assistiveText.closeButton }}
-							onClick={events.onRequestClose}
+							onClick={handleClose}
 							iconCategory="utility"
 							iconName="close"
 							iconVariant="bare"

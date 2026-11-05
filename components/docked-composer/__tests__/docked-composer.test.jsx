@@ -84,6 +84,39 @@ describe('SLDSDockedComposer', () => {
 		}
 	});
 
+	it('passes the click event and the requested state to each request callback', async () => {
+		const events = {
+			onRequestMinimize: vi.fn(),
+			onRequestExpand: vi.fn(),
+			onRequestClose: vi.fn(),
+		};
+		const { container, rerender } = render(
+			<IconSettings iconPath="/assets/icons">
+				<DockedComposer header="Header" events={events} isOpen />
+			</IconSettings>
+		);
+
+		await userEvent.click(container.querySelector('button[title="Minimize"]'));
+		let [event, data] = events.onRequestMinimize.mock.calls[0];
+		expect(event).toEqual(expect.objectContaining({ type: 'click' }));
+		expect(data).toEqual({ isOpen: false });
+
+		await userEvent.click(container.querySelector('button[title="Close"]'));
+		[event, data] = events.onRequestClose.mock.calls[0];
+		expect(event).toEqual(expect.objectContaining({ type: 'click' }));
+		expect(data).toEqual({ trigger: 'close-button' });
+
+		rerender(
+			<IconSettings iconPath="/assets/icons">
+				<DockedComposer header="Header" events={events} isOpen={false} />
+			</IconSettings>
+		);
+		await userEvent.click(container.querySelector('button[title="Expand"]'));
+		[event, data] = events.onRequestExpand.mock.calls[0];
+		expect(event).toEqual(expect.objectContaining({ type: 'click' }));
+		expect(data).toEqual({ isOpen: true });
+	});
+
 	it('renders isOpen state correctly', () => {
 		const { container } = render(
 			<IconSettings iconPath="/assets/icons">
