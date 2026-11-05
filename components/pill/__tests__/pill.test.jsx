@@ -154,6 +154,57 @@ describe('SLDSPill', () => {
 		});
 	});
 
+	describe('Callback data', () => {
+		it('passes the event and the trigger to onClick', () => {
+			const onClick = vi.fn();
+			const { container } = render(
+				<SLDSPill
+					labels={{ label: LABEL }}
+					onClick={onClick}
+					onRemove={vi.fn()}
+				/>
+			);
+
+			fireEvent.click(container.querySelector('.slds-pill__action'));
+			expect(onClick.mock.calls[0][0]).toEqual(
+				expect.objectContaining({ type: 'click' })
+			);
+			expect(onClick.mock.calls[0][1]).toEqual({ trigger: 'click' });
+
+			fireEvent.keyDown(container.querySelector('.slds-pill'), {
+				key: 'Enter',
+				keyCode: 13,
+			});
+			expect(onClick.mock.calls[1][0]).toEqual(
+				expect.objectContaining({ type: 'keydown' })
+			);
+			expect(onClick.mock.calls[1][1]).toEqual({ trigger: 'enter' });
+		});
+
+		it('passes the event and the trigger to onRemove', () => {
+			const onRemove = vi.fn();
+			const { container } = render(
+				<SLDSPill labels={{ label: LABEL }} onRemove={onRemove} />
+			);
+			const pill = container.querySelector('.slds-pill');
+
+			fireEvent.click(container.querySelector('.slds-pill__remove'));
+			fireEvent.keyDown(pill, { key: 'Backspace', keyCode: 8 });
+			fireEvent.keyDown(pill, { key: 'Delete', keyCode: 46 });
+
+			expect(onRemove.mock.calls.map(([event]) => event.type)).toEqual([
+				'click',
+				'keydown',
+				'keydown',
+			]);
+			expect(onRemove.mock.calls.map(([, data]) => data)).toEqual([
+				{ trigger: 'remove-button' },
+				{ trigger: 'backspace' },
+				{ trigger: 'delete' },
+			]);
+		});
+	});
+
 	describe('Linked With Href', () => {
 		it('uses href', () => {
 			const HREF = 'https://www.salesforce.com';

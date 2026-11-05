@@ -43,6 +43,22 @@ export interface PillLabels {
 }
 
 /**
+ * Data passed to `onClick`
+ */
+export interface PillClickData {
+	/** What caused the click: a mouse click, or Enter while the pill has focus */
+	trigger: 'click' | 'enter';
+}
+
+/**
+ * Data passed to `onRemove`
+ */
+export interface PillRemoveData {
+	/** What caused the removal: the remove icon, or Backspace / Delete while the pill has focus */
+	trigger: 'remove-button' | 'backspace' | 'delete';
+}
+
+/**
  * Props for the Pill component
  */
 export interface PillProps {
@@ -66,14 +82,28 @@ export interface PillProps {
 	labels?: PillLabels;
 	/** Blur callback */
 	onBlur?: (event: FocusEvent<HTMLSpanElement>) => void;
-	/** Click callback */
-	onClick?: (event?: MouseEvent<HTMLSpanElement | HTMLAnchorElement>) => void;
+	/**
+	 * Called when the pill is clicked, or when Enter is pressed while it has focus and `onRemove` is
+	 * set. `data.trigger` is `'click'` or `'enter'`.
+	 */
+	onClick?: (
+		event:
+			| MouseEvent<HTMLSpanElement | HTMLAnchorElement>
+			| KeyboardEvent<HTMLSpanElement>,
+		data: PillClickData
+	) => void;
 	/** Focus callback */
 	onFocus?: (event: FocusEvent<HTMLSpanElement>) => void;
 	/** Keydown callback */
 	onKeyDown?: (event: KeyboardEvent<HTMLSpanElement>) => void;
-	/** Remove callback */
-	onRemove?: () => void;
+	/**
+	 * Called when the remove icon is clicked, or when Backspace or Delete is pressed while the pill
+	 * has focus. Setting it renders the remove icon. `data.trigger` says which.
+	 */
+	onRemove?: (
+		event: MouseEvent<HTMLSpanElement> | KeyboardEvent<HTMLSpanElement>,
+		data: PillRemoveData
+	) => void;
 	/** Tab order index. Applied to the root element so the pill can receive focus (e.g. roving tabindex for pill navigation). */
 	tabIndex?: number | string;
 	/** Marks the pill as selected. Used when the pill acts as a listbox `option`. */
@@ -144,14 +174,16 @@ const Pill = forwardRef<PillRef, PillProps>(
 					case KEYS.ENTER:
 						if (onClick) {
 							EventUtil.trap(event);
-							onClick();
+							onClick(event, { trigger: 'enter' });
 						}
 						break;
 					case KEYS.BACKSPACE:
 					case KEYS.DELETE:
 						if (onRemove) {
 							EventUtil.trap(event);
-							onRemove();
+							onRemove(event, {
+								trigger: event.keyCode === KEYS.DELETE ? 'delete' : 'backspace',
+							});
 						}
 						break;
 					default:
@@ -166,9 +198,23 @@ const Pill = forwardRef<PillRef, PillProps>(
 				if (getHref() === '#') {
 					event.preventDefault();
 				}
-				onClick?.(event);
+				onClick?.(event, { trigger: 'click' });
 			},
 			[getHref, onClick]
+		);
+
+		const handleClick = useCallback(
+			(event: MouseEvent<HTMLSpanElement>) => {
+				onClick?.(event, { trigger: 'click' });
+			},
+			[onClick]
+		);
+
+		const handleRemoveClick = useCallback(
+			(event: MouseEvent<HTMLSpanElement>) => {
+				onRemove?.(event, { trigger: 'remove-button' });
+			},
+			[onRemove]
 		);
 
 		// Render icon or avatar
@@ -215,7 +261,7 @@ const Pill = forwardRef<PillRef, PillProps>(
 						className="slds-icon_container slds-pill__remove"
 						title={labels.removeTitle}
 						role="button"
-						onClick={onRemove}
+						onClick={handleRemoveClick}
 					>
 						<UtilityIcon
 							style={{ cursor: 'pointer' }}
@@ -261,7 +307,11 @@ const Pill = forwardRef<PillRef, PillProps>(
 					},
 					className as string
 				)}
-				onClick={!labels.label || variant !== 'link' ? onClick : undefined}
+				onClick={
+					onClick && (!labels.label || variant !== 'link')
+						? handleClick
+						: undefined
+				}
 				onKeyDown={onRemove ? handleKeyDown : undefined}
 				onBlur={onBlur}
 				onFocus={onFocus}
