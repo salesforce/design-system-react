@@ -167,6 +167,42 @@ describe('SLDSSplitView - Listbox header', () => {
 				expect(props.events.onSort).toHaveBeenCalled();
 			});
 
+			it('passes the click event and the requested direction to onSort', () => {
+				const onSort = vi.fn();
+				const renderWith = (sortDirection) =>
+					rerender(
+						<IconSettings iconPath="/assets/icons">
+							<SplitViewListbox
+								{...props}
+								sortDirection={sortDirection}
+								events={{ ...props.events, onSort }}
+							/>
+						</IconSettings>
+					);
+				const clickHeader = () =>
+					fireEvent.click(
+						container.querySelector('a.slds-split-view__list-header')
+					);
+
+				renderWith(SORT_OPTIONS.DOWN);
+				clickHeader();
+				renderWith(SORT_OPTIONS.UP);
+				clickHeader();
+				renderWith(undefined);
+				clickHeader();
+
+				expect(onSort.mock.calls.map(([event]) => event.type)).toEqual([
+					'click',
+					'click',
+					'click',
+				]);
+				expect(onSort.mock.calls.map(([, data]) => data)).toEqual([
+					{ sortDirection: SORT_OPTIONS.UP },
+					{ sortDirection: SORT_OPTIONS.DOWN },
+					{ sortDirection: SORT_OPTIONS.DOWN },
+				]);
+			});
+
 			it('should not be clickable when onSort not specified', () => {
 				rerender(
 					<IconSettings iconPath="/assets/icons">

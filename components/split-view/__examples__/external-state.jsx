@@ -312,12 +312,7 @@ class Example extends React.Component {
 		);
 	}
 
-	sortList() {
-		const sortDirection =
-			this.state.sortDirection === SORT_OPTIONS.DOWN
-				? SORT_OPTIONS.UP
-				: SORT_OPTIONS.DOWN;
-
+	sortList(event, { sortDirection }) {
 		this.setState({
 			options: this.state.options.sort((a, b) =>
 				sortDirection === SORT_OPTIONS.DOWN

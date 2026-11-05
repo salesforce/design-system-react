@@ -45,6 +45,14 @@ export interface SplitViewListboxSelectData<
 	item: T | null;
 }
 
+/**
+ * Data passed to `events.onSort`
+ */
+export interface SplitViewListboxSortData {
+	/** The requested direction: the opposite of `sortDirection`, or `'down'` when it is unset */
+	sortDirection: 'up' | 'down';
+}
+
 export interface SplitViewListboxEvents<
 	T extends SplitViewListboxItem = SplitViewListboxItem,
 > {
@@ -57,9 +65,10 @@ export interface SplitViewListboxEvents<
 		data: SplitViewListboxSelectData<T>
 	) => void;
 	/**
-	 * Called when the list is sorted.
+	 * Called when the sortable list header is clicked. `data.sortDirection` is the requested
+	 * direction; update `sortDirection` (and sort `options`) to apply it.
 	 */
-	onSort?: (event: SyntheticEvent) => void;
+	onSort?: (event: SyntheticEvent, data: SplitViewListboxSortData) => void;
 }
 
 export interface SplitViewListboxLabels {
@@ -114,7 +123,7 @@ export interface SplitViewListboxProps<
 	/**
 	 * Event Callbacks
 	 * * `onSelect` (required): Called with `(event, { selection, selectedItems, item })` when the selection is asked to change. `selection` is the requested selection as item ids.
-	 * * `onSort`: Called when the list is sorted.
+	 * * `onSort`: Called with `(event, { sortDirection })` when the sortable header is clicked. `sortDirection` is the requested direction.
 	 */
 	events: SplitViewListboxEvents<T>;
 	/**
@@ -423,6 +432,16 @@ class SplitViewListbox<
 		) : null;
 	}
 
+	handleSortClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+		eventUtil.trap(event);
+		this.props.events.onSort?.(event, {
+			sortDirection:
+				this.props.sortDirection === SORT_OPTIONS.DOWN
+					? SORT_OPTIONS.UP
+					: SORT_OPTIONS.DOWN,
+		});
+	};
+
 	headerWrapper(children: ReactNode): ReactNode {
 		return this.props.events?.onSort ? (
 			<a
@@ -431,7 +450,7 @@ class SplitViewListbox<
 				href="#"
 				role="button"
 				className="slds-split-view__list-header slds-grid slds-text-link_reset"
-				onClick={eventUtil.trappedHandler(this.props.events.onSort)}
+				onClick={this.handleSortClick}
 			>
 				{children}
 			</a>
