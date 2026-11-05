@@ -406,7 +406,9 @@ describe('Accordion', () => {
 						/>
 					</Accordion>
 				</IconSettings>
-			).container.querySelector('.slds-accordion__summary-action .slds-truncate');
+			).container.querySelector(
+				'.slds-accordion__summary-action .slds-truncate'
+			);
 
 		it('uses a string summary as the title', () => {
 			expect(renderPanel({ summary: 'Summary' })).toHaveAttribute(
