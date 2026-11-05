@@ -9,7 +9,7 @@
 // ## Dependencies
 
 // ### React
-import React, { type ReactNode, type MouseEvent } from 'react';
+import React, { useCallback, type ReactNode, type MouseEvent } from 'react';
 
 import checkProps from './check-props';
 
@@ -23,6 +23,20 @@ export interface PanelFilterGroupAssistiveText {
 	/** Localized description of the close button for the panel for screen readers */
 	closeButton?: string;
 }
+
+/**
+ * Data passed to the panel's button callbacks
+ */
+export interface PanelFilterGroupActionData {
+	/** Which button was clicked */
+	action: 'add' | 'remove-all' | 'cancel' | 'close' | 'save';
+}
+
+/** Signature of the panel's button callbacks */
+export type PanelFilterGroupActionHandler = (
+	event: MouseEvent,
+	data: PanelFilterGroupActionData
+) => void;
 
 export interface PanelFilterGroupProps {
 	/**
@@ -79,25 +93,28 @@ export interface PanelFilterGroupProps {
 	 */
 	modified?: boolean;
 	/**
-	 * Callback triggered when "Add Filter" is clicked. Recieves an `event`.
+	 * Called when "Add Filter" is clicked, with `data.action` `'add'`.
 	 */
-	onClickAdd?: (event: MouseEvent) => void;
+	onClickAdd?: PanelFilterGroupActionHandler;
 	/**
-	 * Callback triggered when "Remove All" is clicked. Recieves an `event`.
+	 * Called when "Remove All" is clicked, with `data.action` `'remove-all'`.
 	 */
-	onClickRemoveAll?: (event: MouseEvent) => void;
+	onClickRemoveAll?: PanelFilterGroupActionHandler;
 	/**
-	 * When the panel's cancel button is clicked in order to reset filter panel to previous state.
+	 * Called when the panel's cancel button is clicked, to reset the filter panel to its previous
+	 * state. `data.action` is `'cancel'`.
 	 */
-	onRequestCancel?: (event: MouseEvent) => void;
+	onRequestCancel?: PanelFilterGroupActionHandler;
 	/**
-	 * When the panel's close button is clicked. Please place Panel within another element to control position and visibility.
+	 * Called when the panel's close button is clicked. Place Panel within another element to control
+	 * position and visibility. `data.action` is `'close'`.
 	 */
-	onRequestClose?: (event: MouseEvent) => void;
+	onRequestClose?: PanelFilterGroupActionHandler;
 	/**
-	 * When the panel's save button is clicked in order to confirm filter panel state.
+	 * Called when the panel's save button is clicked, to confirm the filter panel state.
+	 * `data.action` is `'save'`.
 	 */
-	onRequestSave?: (event: MouseEvent) => void;
+	onRequestSave?: PanelFilterGroupActionHandler;
 	/**
 	 * Localized description of the "Remove All" button in the footer
 	 */
@@ -177,6 +194,27 @@ const PanelFilterGroup = ({
 		}
 	);
 
+	const handleClickAdd = useCallback(
+		(event: MouseEvent) => onClickAdd?.(event, { action: 'add' }),
+		[onClickAdd]
+	);
+	const handleClickRemoveAll = useCallback(
+		(event: MouseEvent) => onClickRemoveAll?.(event, { action: 'remove-all' }),
+		[onClickRemoveAll]
+	);
+	const handleRequestCancel = useCallback(
+		(event: MouseEvent) => onRequestCancel?.(event, { action: 'cancel' }),
+		[onRequestCancel]
+	);
+	const handleRequestClose = useCallback(
+		(event: MouseEvent) => onRequestClose?.(event, { action: 'close' }),
+		[onRequestClose]
+	);
+	const handleRequestSave = useCallback(
+		(event: MouseEvent) => onRequestSave?.(event, { action: 'save' }),
+		[onRequestSave]
+	);
+
 	const mergedAssistiveText: PanelFilterGroupAssistiveText = {
 		...defaultProps.assistiveText,
 		...assistiveText,
@@ -192,9 +230,9 @@ const PanelFilterGroup = ({
 					cancelLabel={cancelLabel}
 					heading={heading}
 					modified={modified}
-					onRequestCancel={onRequestCancel}
-					onRequestClose={onRequestClose}
-					onRequestSave={onRequestSave}
+					onRequestCancel={handleRequestCancel}
+					onRequestClose={handleRequestClose}
+					onRequestSave={handleRequestSave}
 					saveLabel={saveLabel}
 				/>
 			) : (
@@ -214,8 +252,8 @@ const PanelFilterGroup = ({
 			{variant === 'panel' ? (
 				<PanelFilteringFooter
 					addFilterLabel={addFilterLabel}
-					onClickAdd={onClickAdd as (event: MouseEvent) => void}
-					onClickRemoveAll={onClickRemoveAll as (event: MouseEvent) => void}
+					onClickAdd={handleClickAdd}
+					onClickRemoveAll={handleClickRemoveAll}
 					removeAllLabel={removeAllLabel}
 				/>
 			) : (
