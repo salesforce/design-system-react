@@ -56,6 +56,8 @@ moves to `latest`.
    `ModalTrigger`; `assistiveText: string | object` becomes object-only (avatar, breadcrumb,
    spinner, textarea, tree); `tooltip` dead/legacy props (`openByDefault`, `isInline`,
    `target`, `info`/`error` variants).
+   **Done in #3248** (11.0.0-alpha.6): all of the above. Still open: `icon`'s string
+   `assistiveText`, and the deprecated props on popover, menu-dropdown and input listed below.
 2. **Uncontrolled data and selection.** Rule of thumb: if it would reasonably live in
    Redux/app state, it is controlled. Remove `default*` twins and internal copies from
    checkbox, radio, input, combobox, slider, textarea and tabs. Selection is controlled in
@@ -154,7 +156,8 @@ _Reviewed: accordion, alert, avatar, badge, breadcrumb, builder-header, button, 
       (currently it is, from `currButtonIndex` starting at `0`).
 - [ ] `breadcrumb` — decide `trail: ReactNode[]` (positional, index keys) vs `items` with ids;
       replace `styleContainer` with `className` on the root `nav`.
-- [ ] `avatar`, `breadcrumb` — drop the `assistiveText: string | object` union (object only).
+- [x] `avatar`, `breadcrumb` — drop the `assistiveText: string | object` union (object only).
+      Done in #3248.
 - [ ] `badge` — decide `content` prop vs `children`; `style` currently lands on the icon
       span, not the root.
 - [ ] `avatar` — move the `title` default (`'user avatar'`) out of the prop default and into
@@ -282,13 +285,12 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
 - [x] `checkbox` — `checked` is data: controlled only. Remove `defaultChecked` (the
       `onChange` data computes `!checked` from the prop, which is wrong without it). Keep
       `indeterminate` controlled and clear it from the DOM when it goes back to `undefined`.
-- [ ] `checkbox` — remove dead `oldEventParameterOrder` (never read; the `forms/checkbox` alias, removed
-      in this release, is the only caller) and the Enter/Space `handleKeyDown` that fakes a `ChangeEvent`; wire or
-      remove `readOnly` (destructured, never applied).
+- [ ] `checkbox` — remove the Enter/Space `handleKeyDown` that fakes a `ChangeEvent`; wire or
+      remove `readOnly` (destructured, never applied). (`oldEventParameterOrder`: removed in #3248.)
 - [ ] `checkbox` — `variant` (`base | toggle | button-group | visual-picker`) as a discriminated
       union (`indeterminate` with `toggle`, and `errorText`/`className`/`required`/`tabIndex`
       on `button-group`/`visual-picker`, compile but are dropped); `requestFocus`/`onRequestFocus` → delete (use `ref`);
-      `tabIndex` `string` → `number`; `assistiveText: string | object` → object only; decide
+      `tabIndex` `string` → `number`; decide
       where `className` lands and whether unknown props spread to the `<input>`.
 
 - [x] `expandable-section` — `isOpen` is ephemeral, so uncontrolled is fine, but the mode is
@@ -330,19 +332,19 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       `aria-describedby` at `${id}-error`, which nothing renders. `"Done"` and the
       `predicate = 'New Filter'` default are English outside `labels`.
 
-- [ ] Remove the deprecated `forms/input/inline` (`InlineEdit`, also exported as
+- [x] Remove the deprecated `forms/input/inline` (`InlineEdit`, also exported as
       `SLDSInlineEdit`) in 11.0. It already warns and points to a read-only `Input` swapped
       with a base `Input`, or a `Popover` with an icon `Button` trigger. Delete the component,
       `inline-check-props.js`, its stories/examples/tests and snapshots, the `index.js` and
       `index.d.ts` exports, and the `lodash.isfunction` dependency if nothing else uses it.
       Breaking: `refactor(forms)!:` with a `BREAKING CHANGE:` footer and a migration note.
-      No prop redesign is planned for it.
-- [ ] Remove the deprecated `components/forms/checkbox` alias in 11.0 (it is only reachable by
+      No prop redesign is planned for it. Done in #3248.
+- [x] Remove the deprecated `components/forms/checkbox` alias in 11.0 (it is only reachable by
       deep import and wraps `checkbox` with the old `onChange(value, event, { value })`
       parameter order). Delete `forms/checkbox` and the warning branch in
       `checkbox/check-props.js`, then drop `oldEventParameterOrder` from `checkbox` (see the
       `checkbox` item above). Breaking for deep importers: needs a migration note pointing at
-      `components/checkbox` and the `onChange(event, { value })` signature.
+      `components/checkbox` and the `onChange(event, { value })` signature. Done in #3248.
 - [ ] `icon` — `assistiveText: object | string` union (pick the object);
       `category: string` should be a union.
 - [ ] `icon/button-icon` — `size` union lacks `xx-small` while `button`'s `iconSize` accepts it; drop the index signature.
@@ -373,8 +375,8 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       types (`string | number` today) and the ref target (`forwardRef` points at the wrapper
       div; `inputRef` is callback-only).
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
-- [ ] `input` — remove the sunset API from the contract: `assistiveText.fieldLevelHelpButton`,
-      the string form of `search`'s `assistiveText`, and the dead `check-props.js` checks for
+- [ ] `input` — remove the sunset API from the contract: `assistiveText.fieldLevelHelpButton`
+      and the dead `check-props.js` checks for
       `iconCategory`/`iconName`/`iconPosition`/`iconAssistiveText`/`onIconClick`.
 - [ ] `input/search` — `onClear`/`onSearch` take `(event)` only,
       move to `(event, data)`; make it a `forwardRef`.
@@ -413,10 +415,9 @@ popoverLabel` are runtime-warned only; `options` is "required unless popover" on
       (`item.tsx:221`), has index-based `onSelect(index)`, `checkmark?: boolean` (a
       tri-state with `null`), and `selectedIndex`/`selectedIndices` (indexes, not values):
       decide before exposing it.
-- [ ] `modal` — remove deprecated `title` (use `heading`) and `closeButtonAssistiveText` (use
-      `assistiveText.closeButton`); `onRequestClose: () => void` → `(event, data)`; `dismissOnClickOutside` has a derived default (`!disableClose`).
-- [ ] Remove the deprecated `modal/trigger` (`ModalTrigger.open`, also `SLDSModalTrigger`) in
-      11.0: it creates a root it can never unmount or close and only wraps `Modal`.
+- [ ] `modal` — `onRequestClose: () => void` → `(event, data)`; `dismissOnClickOutside` has a derived default (`!disableClose`). (Deprecated `title`/`closeButtonAssistiveText`: removed in #3248.)
+- [x] Remove the deprecated `modal/trigger` (`ModalTrigger.open`, also `SLDSModalTrigger`) in
+      11.0: it creates a root it can never unmount or close and only wraps `Modal`. Done in #3248.
 
 - [ ] `page-header` — props are one flat bag, not a union on `variant`: `details` is
       record-home only, `nameSwitcherDropdown`/`trail` object-home only, `label`/`info` only
@@ -592,7 +593,7 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       `errorText` → `labels.error` + `hasError`; `label` duplicates `assistiveText.label`; `onInput` duplicates `onChange`.
       **Control model done (theme 2).** Still open: `isVertical` and `onInput`.
 - [ ] `spinner` — `assistiveText: object | string` (string form deprecated; `check-props` is
-      unwired, so no warning fires) → object only; `isInline`/`isInput`
+- [ ] `spinner` — `isInline`/`isInput`
       look mutually exclusive → a single `placement` union.
 - [ ] `textarea` — `value` + `defaultValue` passthrough → required `value` + `onChange`;
       `onChange(event)` has no `data` arg; `maxLength: string` parsed to a number → `number`;
@@ -615,9 +616,8 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
 - [ ] `tooltip` — `isOpen` mode is keyed correctly (`isOpenProp === undefined`) but there is no
       `defaultIsOpen`, `onRequestOpen`/`onRequestClose` or `events`. `isOpen={false}` is documented
       as "disables interaction", which conflicts with the controlled-false rule (combobox
-      `private/menu.tsx:411` relies on it) → add `isDisabled`. Dead/legacy: `openByDefault` (warned,
-      not typed), `isInline`, deprecated-but-live `target`, `variant` still accepts `info`/`error`;
-      `learnMore` content only renders when `onClickTrigger` is set. The trigger is passed as
+      `private/menu.tsx:411` relies on it) → add `isDisabled`. (Dead/legacy `openByDefault`,
+      `isInline`, `target` and the `info`/`error` variants: removed in #3248.) `learnMore` content only renders when `onClickTrigger` is set. The trigger is passed as
       `children` and `cloneElement`ed through `Children.map` (`index.tsx:441`), overwriting the
       child's handlers/`aria-describedby`, forcing `key`, with no ref → `trigger` render prop or
       `asChild`-style slot; `content` defaults to `<span>Tooltip</span>`. `triggerClassName`/
@@ -699,8 +699,8 @@ SimpleDataTableColumn.displayName` (cells and `RowActions` likewise), the row ac
       props; `private/tab-panel.tsx:76` reaches into `children.props.children`. `TabsPanelProps`
       lacks `disabled` (typed only on the internal `TabChildProps`) — added; `label` is
       `string | ReactElement` on the panel but `ReactNode` internally; decide a `tabs` data array or
-      context registration. `assistiveText.withErrorIcon` → final key name (`errorIcon`). Delete the
-      `tabs/pane.ts` alias ("Remove at next breaking release"; only `TabsPanel` is exported).
+      context registration. `assistiveText.withErrorIcon` → final key name (`errorIcon`). (`tabs/pane.ts`
+      alias: removed in #3248.)
       `className` is `string | string[] | Record` cast `as string`; no `forwardRef` (target root
       `div`).
       **Re-scoped by the child-contract rule:** children here are library components, so the `cloneElement`/child-props contract is allowed. Keep the other findings. Child contract done (theme 3): children are typed, injected props are internal, and no child is matched by `displayName`.
