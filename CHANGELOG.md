@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `DatePicker` `onRequestOpen(event, { trigger })` (`'input-click' | 'icon-click' | 'keyboard'`), `onRequestClose(event, { trigger })` (`'date-select' | 'escape' | 'enter' | 'click-outside'`; the outside-click event is the native `mousedown`/`touchstart`), and `onClose(undefined, { componentWillUnmount })`
   - `MenuDropdown` `onOpen(event, {})` and `onClose(event, {})`
   - `ColorPicker` `onRequestOpen(event, { trigger: 'triggerClick' })`, with the `ColorPickerRequestOpenData` type
+  - `Search` (`input/search`) `onSearch(event, { value })` and `onClear(event, { value })`, with the `SearchData` and `SearchClearData` types
   - `DockedComposer` `events.onRequestMinimize(event, { isOpen: false })`, `events.onRequestExpand(event, { isOpen: true })` and `events.onRequestClose(event, { trigger: 'close-button' })`, with the `DockedComposerRequestToggleData` and `DockedComposerRequestCloseData` types
   - `Alert` `onRequestClose(event, { trigger: 'close-button' })`, matching `Toast`, with the `AlertRequestCloseData` type
 - Exported data types for these callbacks, such as `TabsSelectData`, `MenuDropdownSelectData`, `ToastRequestCloseData`, `ModalRequestCloseData`, `PopoverRequestCloseTrigger`, `TreeNodeSelectData` and `SplitViewToggleData`

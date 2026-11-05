@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { type KeyboardEvent } from 'react';
+import React, { useCallback, useRef, type KeyboardEvent } from 'react';
 
 import Input, { type InputProps, type InputAssistiveText } from './index';
 import InputIcon from '../icon/input-icon/index';
@@ -20,6 +20,22 @@ export interface SearchAssistiveText extends InputAssistiveText {
 }
 
 /**
+ * Data passed to `onSearch`
+ */
+export interface SearchData {
+	/** The input's value when the search was requested */
+	value: string;
+}
+
+/**
+ * Data passed to `onClear`
+ */
+export interface SearchClearData {
+	/** The input's value when the clear button was clicked, before the consumer clears it */
+	value: string;
+}
+
+/**
  * Props for the Search component
  */
 export interface SearchProps extends Omit<
@@ -30,23 +46,17 @@ export interface SearchProps extends Omit<
 	assistiveText?: SearchAssistiveText;
 	/** Adds a clear button to the right of the input */
 	clearable?: boolean;
-	/** Handler for clear button click */
-	onClear?: (event: React.MouseEvent) => void;
-	/** Handler for search (enter key or search icon click) */
+	/** Called when the clear button is clicked. `data.value` is the input's current value. */
+	onClear?: (event: React.MouseEvent, data: SearchClearData) => void;
+	/**
+	 * Called when Enter is pressed in the input or the search icon is clicked. `data.value` is the
+	 * input's current value.
+	 */
 	onSearch?: (
-		event: KeyboardEvent<HTMLInputElement> | React.MouseEvent
+		event: KeyboardEvent<HTMLInputElement> | React.MouseEvent,
+		data: SearchData
 	) => void;
 }
-
-const handleKeyDown = (
-	event: KeyboardEvent<HTMLInputElement>,
-	onSearch?: (event: KeyboardEvent<HTMLInputElement> | React.MouseEvent) => void
-) => {
-	if (event.keyCode === KEYS.ENTER && onSearch) {
-		EventUtil.trapImmediate(event);
-		onSearch(event);
-	}
-};
 
 /**
  * A `Search` is an `Input` which renders the search icon by default.
@@ -61,13 +71,46 @@ const Search = ({
 	onClear,
 	onSearch,
 	placeholder,
+	inputRef,
 	...props
 }: SearchProps) => {
 	checkProps(
 		SEARCH,
-		{ assistiveText, clearable, onClear, onSearch, placeholder, ...props },
+		{
+			assistiveText,
+			clearable,
+			onClear,
+			onSearch,
+			placeholder,
+			inputRef,
+			...props,
+		},
 		componentDoc
 	);
+
+	// Read the value from the element so `data.value` is right whether or not `value` is controlled
+	const inputElementRef = useRef<HTMLInputElement | null>(null);
+	const handleInputRef = useCallback(
+		(element: HTMLInputElement | null) => {
+			inputElementRef.current = element;
+			inputRef?.(element);
+		},
+		[inputRef]
+	);
+	const getValue = () => inputElementRef.current?.value ?? '';
+
+	const handleSearchClick = (event: React.MouseEvent) => {
+		onSearch?.(event, { value: getValue() });
+	};
+	const handleClearClick = (event: React.MouseEvent) => {
+		onClear?.(event, { value: getValue() });
+	};
+	const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+		if (event.keyCode === KEYS.ENTER && onSearch) {
+			EventUtil.trapImmediate(event);
+			onSearch(event, { value: getValue() });
+		}
+	};
 
 	const mergedAssistiveText: InputAssistiveText = {
 		label: assistiveText?.label,
@@ -81,7 +124,7 @@ const Search = ({
 					assistiveText={{ icon: 'Search' }}
 					category="utility"
 					name="search"
-					onClick={onSearch}
+					onClick={onSearch ? handleSearchClick : undefined}
 				/>
 			}
 			iconRight={
@@ -90,17 +133,17 @@ const Search = ({
 						assistiveText={{ icon: 'Clear' }}
 						category="utility"
 						name="clear"
-						onClick={onClear}
+						onClick={onClear ? handleClearClick : undefined}
 					/>
 				) : null
 			}
 			onKeyDown={
 				onSearch
-					? (event) =>
-							handleKeyDown(event as KeyboardEvent<HTMLInputElement>, onSearch)
+					? (event) => handleKeyDown(event as KeyboardEvent<HTMLInputElement>)
 					: undefined
 			}
 			placeholder={placeholder}
+			inputRef={handleInputRef}
 			{...props}
 		/>
 	);
