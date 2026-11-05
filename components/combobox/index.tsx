@@ -13,6 +13,13 @@ export type {
 	ComboboxLabels,
 	ComboboxEvents,
 	ComboboxRenderMenuItemData,
+	ComboboxRequestOpenTrigger,
+	ComboboxRequestCloseTrigger,
+	ComboboxRequestOpenData,
+	ComboboxRequestCloseData,
+	ComboboxOpenData,
+	ComboboxCloseData,
+	ComboboxFocusData,
 } from './combobox';
 export type {
 	ComboboxOption,

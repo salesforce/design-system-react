@@ -1163,6 +1163,42 @@ describe('SLDSCombobox', () => {
 			expect(isOpen(container)).toBe(false);
 		});
 
+		it('passes a trigger to onRequestOpen, onRequestClose and onClose', () => {
+			const onRequestOpen = vi.fn();
+			const onRequestClose = vi.fn();
+			const onClose = vi.fn();
+			const { container } = renderCombobox({
+				events: { onRequestOpen, onRequestClose, onClose },
+			});
+			const { input } = getNodes(container);
+
+			fireEvent.click(input);
+			fireEvent.keyDown(input, keyObjects.ESCAPE);
+			fireEvent.keyDown(input, keyObjects.DOWN);
+
+			expect(onRequestOpen.mock.calls.map(([, data]) => data)).toEqual([
+				{ trigger: 'click' },
+				{ trigger: 'down' },
+			]);
+			expect(onRequestClose.mock.calls[0][0]).toEqual(
+				expect.objectContaining({ type: 'keydown' })
+			);
+			expect(onRequestClose.mock.calls[0][1]).toEqual({ trigger: 'escape' });
+			expect(onClose.mock.calls[0][1]).toEqual({ trigger: 'escape' });
+		});
+
+		it('passes the input value to onFocus', () => {
+			const onFocus = vi.fn();
+			const { container } = renderCombobox({
+				value: 'Acme',
+				events: { onFocus },
+			});
+
+			fireEvent.focus(getNodes(container).input);
+
+			expect(onFocus.mock.calls[0][1]).toEqual({ value: 'Acme' });
+		});
+
 		it('defaultIsOpen seeds the uncontrolled open state', () => {
 			const { container } = renderCombobox({ defaultIsOpen: true });
 			expect(isOpen(container)).toBe(true);
