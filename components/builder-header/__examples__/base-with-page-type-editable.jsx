@@ -179,19 +179,20 @@ class Example extends React.Component {
 									id="page-type-tooltip"
 									align="bottom"
 									content="Edit Page Type"
-								>
-									<Button
-										assistiveText={{ icon: 'Edit: Status' }}
-										className="slds-button_reset"
-										iconCategory="utility"
-										iconName="edit"
-										inverse
-										onClick={this.handleOpen}
-										variant="icon"
-										style={{ verticalAlign: 'middle' }}
-										onMouseEnter={this.handleEnter}
-									/>
-								</Tooltip>
+									trigger={
+										<Button
+											assistiveText={{ icon: 'Edit: Status' }}
+											className="slds-button_reset"
+											iconCategory="utility"
+											iconName="edit"
+											inverse
+											onClick={this.handleOpen}
+											variant="icon"
+											style={{ verticalAlign: 'middle' }}
+											onMouseEnter={this.handleEnter}
+										/>
+									}
+								/>
 							</EditDialog>
 						</div>
 					</BuilderHeaderMisc>
@@ -230,19 +231,20 @@ class Example extends React.Component {
 									id="page-type-tooltip"
 									align="bottom"
 									content="Edit Page Type"
-								>
-									<Button
-										assistiveText={{ icon: 'Edit: Status' }}
-										className="slds-button_reset"
-										iconCategory="utility"
-										iconName="edit"
-										inverse
-										onClick={this.handleOpen}
-										variant="icon"
-										style={{ verticalAlign: 'middle' }}
-										onMouseEnter={this.handleEnter}
-									/>
-								</Tooltip>
+									trigger={
+										<Button
+											assistiveText={{ icon: 'Edit: Status' }}
+											className="slds-button_reset"
+											iconCategory="utility"
+											iconName="edit"
+											inverse
+											onClick={this.handleOpen}
+											variant="icon"
+											style={{ verticalAlign: 'middle' }}
+											onMouseEnter={this.handleEnter}
+										/>
+									}
+								/>
 							</EditDialog>
 						</div>
 					</BuilderHeaderMisc>

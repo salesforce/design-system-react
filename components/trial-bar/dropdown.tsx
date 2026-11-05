@@ -1,5 +1,6 @@
+import classNames from 'classnames';
+
 import Dropdown from '../menu-dropdown';
-import DropdownTrigger from '../menu-dropdown/button-trigger';
 import { type MenuDropdownProps } from '../menu-dropdown/menu-dropdown';
 import Button from '../button';
 
@@ -16,10 +17,13 @@ export interface TrialBarDropdownProps extends MenuDropdownProps {
  *  A [Dropdown](/components/menu-dropdowns/) within the Trial Bar.
  */
 const TrialBarDropdown = (props: TrialBarDropdownProps) => {
-	const { label, ...rest } = props;
+	const { label, triggerClassName, ...rest } = props;
 	return (
-		<Dropdown {...rest} inverse>
-			<DropdownTrigger triggerClassName="slds-grid">
+		<Dropdown
+			{...rest}
+			inverse
+			triggerClassName={classNames('slds-grid', triggerClassName)}
+			trigger={
 				<Button
 					inverse
 					style={{ border: 0, height: '100%', padding: 0 }}
@@ -28,8 +32,8 @@ const TrialBarDropdown = (props: TrialBarDropdownProps) => {
 					iconPosition="left"
 					label={label}
 				/>
-			</DropdownTrigger>
-		</Dropdown>
+			}
+		/>
 	);
 };
 

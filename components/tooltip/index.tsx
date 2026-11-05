@@ -21,6 +21,7 @@ import EventUtil from '../../utilities/event';
 import { useControllableState } from '../../utilities/hooks';
 import { POPOVER_TOOLTIP } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
+import { renderTrigger, type TriggerRender } from '../../utilities/merge-props';
 
 import Dialog from '../utilities/dialog';
 import Icon from '../icon';
@@ -104,6 +105,20 @@ export interface TooltipRequestCloseData {
 	trigger: TooltipRequestCloseTrigger;
 }
 
+/**
+ * Props Tooltip gives its trigger. A `trigger` element has them merged into its own
+ * props; a `trigger` function receives them to spread onto the element it returns.
+ */
+export interface TooltipTriggerProps {
+	/** The tooltip's id while it's open */
+	'aria-describedby'?: string;
+	onBlur: (event: FocusEvent<HTMLElement>) => void;
+	onFocus: (event: FocusEvent<HTMLElement>) => void;
+	onKeyDown: (event: KeyboardEvent<HTMLElement>) => void;
+	onMouseEnter: (event: MouseEvent<HTMLElement>) => void;
+	onMouseLeave: (event: MouseEvent<HTMLElement>) => void;
+}
+
 export interface TooltipProps {
 	/**
 	 * Alignment of the Tooltip relative to the element that triggers it.
@@ -115,7 +130,7 @@ export interface TooltipProps {
 	 */
 	assistiveText?: TooltipAssistiveText;
 	/**
-	 * Pass the one element that triggers the Tooltip as a child. It must be an element with `tabIndex` or an element that already has a `tabIndex` set such as an anchor or a button.
+	 * @deprecated Use `trigger`. Each child element is used as a trigger.
 	 */
 	children?: ReactNode;
 	/**
@@ -219,9 +234,26 @@ export interface TooltipProps {
 	 */
 	theme?: TooltipTheme;
 	/**
+	 * The element that shows the Tooltip on hover and focus. It must be focusable, such as a
+	 * `Button`, an anchor, or an element with `tabIndex`. Pass an element to have Tooltip merge
+	 * its trigger props into the element's: event handlers run the element's first, then
+	 * Tooltip's, `aria-describedby` is joined, and the element's other props win. Or pass a
+	 * function that receives the trigger props (`TooltipTriggerProps`) and returns the trigger.
+	 * Without a trigger, Tooltip renders an info icon button.
+	 */
+	trigger?: TriggerRender<TooltipTriggerProps>;
+	/**
 	 * Determines the type of the tooltip.
 	 */
 	variant?: TooltipVariant;
+}
+
+/**
+ * Props library components set on a Tooltip. Not part of the public API.
+ */
+export interface TooltipInjectedProps {
+	/** Skips the warning for a trigger that isn't tabbable, for triggers focused another way */
+	silenceTriggerTabbableWarning?: boolean;
 }
 
 const defaultAssistiveText: TooltipAssistiveText = {
@@ -262,8 +294,10 @@ const Tooltip = ({
 	position = 'absolute',
 	triggerStyle,
 	theme = 'info',
+	trigger,
 	variant = 'base',
-}: TooltipProps): React.ReactElement => {
+	silenceTriggerTabbableWarning,
+}: TooltipProps & TooltipInjectedProps): React.ReactElement => {
 	// Merge assistive text and labels with defaults
 	const assistiveText = { ...defaultAssistiveText, ...assistiveTextProp };
 	const labels = { ...defaultLabels, ...labelsProp };
@@ -310,7 +344,9 @@ const Tooltip = ({
 				position,
 				triggerStyle,
 				theme,
+				trigger,
 				variant,
+				silenceTriggerTabbableWarning,
 			},
 			componentDoc
 		);
@@ -565,16 +601,34 @@ const Tooltip = ({
 	};
 
 	const getContent = () => {
-		let childrenToRender: ReactNode;
-		const noChildrenProvided = React.Children.count(children) === 0;
 		const isInverseIcon = iconVariant === 'inverse';
 		const iconColorVariant =
 			iconVariant === 'error' || iconVariant === 'warning'
 				? iconVariant
 				: undefined;
 
-		if (noChildrenProvided && onClickTrigger) {
-			childrenToRender = (
+		const triggerProps: TooltipTriggerProps = {
+			'aria-describedby': getIsOpen() ? getId() : undefined,
+			onBlur: handleBlur,
+			onFocus: handleFocus,
+			onKeyDown: handleKeyDown,
+			onMouseEnter: handleMouseEnter,
+			onMouseLeave: handleMouseLeave,
+		};
+
+		if (trigger !== undefined) {
+			return renderTrigger(trigger, triggerProps);
+		}
+
+		// Deprecated: each child element is a trigger
+		if (React.Children.count(children) !== 0) {
+			return React.Children.map(children, (child) =>
+				React.isValidElement(child) ? renderTrigger(child, triggerProps) : child
+			);
+		}
+
+		if (onClickTrigger) {
+			return renderTrigger(
 				<a
 					href="#"
 					onClick={
@@ -593,56 +647,27 @@ const Tooltip = ({
 						}}
 						size="x-small"
 					/>
-				</a>
+				</a>,
+				triggerProps
 			);
-		} else if (noChildrenProvided) {
-			childrenToRender = (
-				<Button
-					aria-disabled
-					assistiveText={{
-						icon: assistiveText.triggerLearnMoreIcon,
-					}}
-					iconCategory="utility"
-					iconClassName={
-						iconColorVariant && `slds-icon-text-${iconColorVariant}`
-					}
-					iconName="info"
-					// `bare` keeps `slds-button_icon`, which Button drops for `inverse` alone
-					iconVariant={isInverseIcon ? 'bare' : undefined}
-					inverse={isInverseIcon}
-					variant="icon"
-				/>
-			);
-		} else {
-			childrenToRender = children;
 		}
 
-		return React.Children.map(childrenToRender, (child, i) => {
-			if (!React.isValidElement(child)) {
-				return child;
-			}
-
-			return React.cloneElement(
-				child as React.ReactElement<{
-					key?: React.Key;
-					'aria-describedby'?: string;
-					onBlur?: (e: FocusEvent<HTMLElement>) => void;
-					onFocus?: (e: FocusEvent<HTMLElement>) => void;
-					onMouseEnter?: (e: MouseEvent<HTMLElement>) => void;
-					onMouseLeave?: (e: MouseEvent<HTMLElement>) => void;
-					onKeyDown?: (e: KeyboardEvent<HTMLElement>) => void;
-				}>,
-				{
-					key: i,
-					'aria-describedby': getIsOpen() ? getId() : undefined,
-					onBlur: handleBlur,
-					onFocus: handleFocus,
-					onMouseEnter: handleMouseEnter,
-					onMouseLeave: handleMouseLeave,
-					onKeyDown: handleKeyDown,
-				}
-			);
-		});
+		return renderTrigger(
+			<Button
+				aria-disabled
+				assistiveText={{
+					icon: assistiveText.triggerLearnMoreIcon,
+				}}
+				iconCategory="utility"
+				iconClassName={iconColorVariant && `slds-icon-text-${iconColorVariant}`}
+				iconName="info"
+				// `bare` keeps `slds-button_icon`, which Button drops for `inverse` alone
+				iconVariant={isInverseIcon ? 'bare' : undefined}
+				inverse={isInverseIcon}
+				variant="icon"
+			/>,
+			triggerProps
+		);
 	};
 
 	const getTooltipContent = () => {
@@ -728,4 +753,4 @@ const Tooltip = ({
 
 Tooltip.displayName = POPOVER_TOOLTIP;
 
-export default Tooltip;
+export default Tooltip as React.FC<TooltipProps>;

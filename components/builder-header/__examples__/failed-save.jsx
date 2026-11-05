@@ -54,14 +54,15 @@ const Example = (props) => (
 							id="status-tooltip"
 							align="bottom"
 							content="Last modified on June 1, 2018 by SysAdmin"
-						>
-							<button
-								type="button"
-								className="slds-button slds-color__text_gray-10 slds-align-middle slds-m-right_x-small"
-							>
-								Saved 45 mins ago
-							</button>
-						</Tooltip>
+							trigger={
+								<button
+									type="button"
+									className="slds-button slds-color__text_gray-10 slds-align-middle slds-m-right_x-small"
+								>
+									Saved 45 mins ago
+								</button>
+							}
+						/>
 						<Popover
 							align="top left"
 							body={

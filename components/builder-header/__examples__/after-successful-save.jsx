@@ -53,14 +53,15 @@ const Example = (props) => (
 							id="status-tooltip"
 							align="bottom"
 							content="Last modified on June 1, 2018 by SysAdmin"
-						>
-							<span
-								className="slds-color__text_gray-10 slds-align-middle slds-m-right_small"
-								tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
-							>
-								Saved 5 mins ago
-							</span>
-						</Tooltip>
+							trigger={
+								<span
+									className="slds-color__text_gray-10 slds-align-middle slds-m-right_small"
+									tabIndex={0} // eslint-disable-line jsx-a11y/no-noninteractive-tabindex
+								>
+									Saved 5 mins ago
+								</span>
+							}
+						/>
 						<Button
 							iconCategory="utility"
 							iconName="right"

@@ -7,7 +7,6 @@ import SimpleDataTableColumn from '~/components/simple-data-table/column';
 import SimpleDataTableCell from '~/components/simple-data-table/cell';
 import SimpleDataTableRowActions from '~/components/simple-data-table/row-actions';
 import Dropdown from '~/components/menu-dropdown';
-import DropdownTrigger from '~/components/menu-dropdown/button-trigger';
 import Icon from '~/components/icon';
 import IconSettings from '~/components/icon-settings';
 import PageHeader from '~/components/page-header';
@@ -25,7 +24,6 @@ const CustomSimpleDataTableCell = ({ children, ...props }) => (
 		</SimpleDataTableInteractiveLink>
 	</SimpleDataTableCell>
 );
-CustomSimpleDataTableCell.displayName = SimpleDataTableCell.displayName;
 
 const actions = () => (
 	<PageHeaderControl>
@@ -64,16 +62,15 @@ const controls = () => (
 					{ type: 'divider' },
 					{ label: 'Menu Item Four', value: 'D0' },
 				]}
-			>
-				<DropdownTrigger>
+				trigger={
 					<Button
 						assistiveText={{ icon: 'List View Controls' }}
 						iconCategory="utility"
 						iconName="settings"
 						iconVariant="more"
 					/>
-				</DropdownTrigger>
-			</Dropdown>
+				}
+			/>
 		</PageHeaderControl>
 		<PageHeaderControl>
 			<Dropdown
@@ -90,8 +87,7 @@ const controls = () => (
 					{ type: 'divider' },
 					{ label: 'Menu Item Four', value: 'D0' },
 				]}
-			>
-				<DropdownTrigger>
+				trigger={
 					<Button
 						assistiveText={{ icon: 'Change view' }}
 						iconCategory="utility"
@@ -99,8 +95,8 @@ const controls = () => (
 						iconVariant="more"
 						variant="icon"
 					/>
-				</DropdownTrigger>
-			</Dropdown>
+				}
+			/>
 		</PageHeaderControl>
 		<PageHeaderControl>
 			<Button
@@ -352,8 +348,7 @@ class Example extends React.Component {
 										{ type: 'divider' },
 										{ label: 'Menu Item Four', value: 'D0' },
 									]}
-								>
-									<DropdownTrigger>
+									trigger={
 										<Button
 											className="slds-button_reset slds-type-focus"
 											iconCategory="utility"
@@ -363,8 +358,8 @@ class Example extends React.Component {
 											responsive
 											variant="base"
 										/>
-									</DropdownTrigger>
-								</Dropdown>
+									}
+								/>
 							</h1>
 						}
 						truncate
