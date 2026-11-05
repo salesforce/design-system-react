@@ -16,6 +16,16 @@ import Button from '../button';
 
 import { ACCORDION_PANEL } from '../../utilities/constants';
 
+/**
+ * Data passed to `onTogglePanel`
+ */
+export interface AccordionPanelToggleData {
+	/** The panel's `id` */
+	id: number | string;
+	/** The requested expansion state: the opposite of `expanded` */
+	isExpanded: boolean;
+}
+
 export interface AccordionPanelProps {
 	/**
 	 * The panel content for the Accordion component. Accordion panels should be added as <AccordionPanel />. Event handler for the accordion panels should be added to `<AccordionPanel />`. Optional `panelContentActions` component may be passed as prop. _Tested with Mocha framework and snapshot testing._
@@ -34,17 +44,18 @@ export interface AccordionPanelProps {
 	 */
 	panelContentActions?: ReactNode;
 	/**
-	 * Callback that will run whenever the panel summary is clicked.
+	 * Set by `Accordion` to track focus; any value passed here is replaced.
 	 */
-	onClickSummary?: () => void;
+	onClickSummary?: (event: MouseEvent) => void;
 	/**
 	 * Callback that will run whenever there is a keydown on the panel button. Function doesn't change the state of the component.
 	 */
 	onKeyDownSummary?: (event: KeyboardEvent) => void;
 	/**
-	 * Callback that will run whenever a panel is toggled. Function should handle state to toggle `expanded` prop. _Tested with Mocha framework._
+	 * Called when the panel summary is clicked. `data.isExpanded` is the requested state; update
+	 * `expanded` to apply it.
 	 */
-	onTogglePanel: (event: MouseEvent) => void;
+	onTogglePanel: (event: MouseEvent, data: AccordionPanelToggleData) => void;
 	/**
 	 * Ref callback that will pass in panel's `input` tag
 	 */
@@ -94,11 +105,9 @@ const AccordionPanel = ({
 						iconName="switch"
 						id={`${id}-accordion-button`}
 						onKeyDown={onKeyDownSummary}
-						onClick={(e: MouseEvent) => {
-							if (onClickSummary) {
-								onClickSummary();
-							}
-							onTogglePanel(e);
+						onClick={(event: MouseEvent) => {
+							onClickSummary?.(event);
+							onTogglePanel(event, { id, isExpanded: !expanded });
 						}}
 						variant="base"
 					>

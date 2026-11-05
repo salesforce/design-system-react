@@ -148,7 +148,7 @@ const Accordion = ({
 							refs?: {
 								summaryButton: (button: HTMLButtonElement | null) => void;
 							};
-							onClickSummary?: () => void;
+							onClickSummary?: (event: React.MouseEvent) => void;
 							onKeyDownSummary?: (e: KeyboardEvent<HTMLButtonElement>) => void;
 						}>,
 						{

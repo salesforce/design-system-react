@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 
 import Accordion from '../../accordion';
 import IconSettings from '../../icon-settings';
@@ -390,6 +390,50 @@ describe('Accordion', () => {
 			fireEvent.click(firstButton);
 
 			expect(firstButton).toHaveAttribute('aria-expanded', 'true');
+		});
+	});
+
+	describe('onTogglePanel', () => {
+		it('passes the click event, the panel id and the requested state', () => {
+			const onTogglePanel = vi.fn();
+			const { container, rerender } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Accordion>
+						<Panel
+							expanded={false}
+							id="panel"
+							summary="Summary"
+							onTogglePanel={onTogglePanel}
+						/>
+					</Accordion>
+				</IconSettings>
+			);
+			const summaryButton = () =>
+				container.querySelector('.slds-accordion__summary-action');
+
+			fireEvent.click(summaryButton());
+			rerender(
+				<IconSettings iconPath="/assets/icons">
+					<Accordion>
+						<Panel
+							expanded
+							id="panel"
+							summary="Summary"
+							onTogglePanel={onTogglePanel}
+						/>
+					</Accordion>
+				</IconSettings>
+			);
+			fireEvent.click(summaryButton());
+
+			expect(onTogglePanel.mock.calls.map(([event]) => event.type)).toEqual([
+				'click',
+				'click',
+			]);
+			expect(onTogglePanel.mock.calls.map(([, data]) => data)).toEqual([
+				{ id: 'panel', isExpanded: true },
+				{ id: 'panel', isExpanded: false },
+			]);
 		});
 	});
 

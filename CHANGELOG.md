@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `EditDialog` (`popover/edit-dialog`) `onCancel(event, { isModified })` and `onSave(event, { isModified })`, with the `EditDialogActionData` type
   - `Pill` `onClick(event, { trigger })` (`'click'` or `'enter'`; Enter used to pass no event) and `onRemove(event, { trigger })` (`'remove-button'`, `'backspace'` or `'delete'`; it used to get no arguments), with the `PillClickData` and `PillRemoveData` types
   - `Search` (`input/search`) `onSearch(event, { value })` and `onClear(event, { value })`, with the `SearchData` and `SearchClearData` types
+  - `AccordionPanel` `onTogglePanel(event, { id, isExpanded })`, where `isExpanded` is the requested state, with the `AccordionPanelToggleData` type
   - `DockedComposer` `events.onRequestMinimize(event, { isOpen: false })`, `events.onRequestExpand(event, { isOpen: true })` and `events.onRequestClose(event, { trigger: 'close-button' })`, with the `DockedComposerRequestToggleData` and `DockedComposerRequestCloseData` types
   - `Alert` `onRequestClose(event, { trigger: 'close-button' })`, matching `Toast`, with the `AlertRequestCloseData` type
 - Exported data types for these callbacks, such as `TabsSelectData`, `MenuDropdownSelectData`, `ToastRequestCloseData`, `ModalRequestCloseData`, `PopoverRequestCloseTrigger`, `TreeNodeSelectData` and `SplitViewToggleData`
