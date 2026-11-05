@@ -2,9 +2,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 import IconSettings from '../../icon-settings';
-import SplitViewListbox, {
-	SORT_OPTIONS,
-} from '../listbox';
+import SplitViewListbox, { SORT_OPTIONS } from '../listbox';
 
 const listOptions = [
 	{
@@ -162,7 +160,9 @@ describe('SLDSSplitView - Listbox header', () => {
 			});
 
 			it('should call onSort when the header is clicked', () => {
-				const header = container.querySelector('a.slds-split-view__list-header');
+				const header = container.querySelector(
+					'a.slds-split-view__list-header'
+				);
 				fireEvent.click(header);
 				expect(props.events.onSort).toHaveBeenCalled();
 			});
@@ -170,10 +170,7 @@ describe('SLDSSplitView - Listbox header', () => {
 			it('should not be clickable when onSort not specified', () => {
 				rerender(
 					<IconSettings iconPath="/assets/icons">
-						<SplitViewListbox
-							{...props}
-							events={{ onSelect: vi.fn() }}
-						/>
+						<SplitViewListbox {...props} events={{ onSelect: vi.fn() }} />
 					</IconSettings>
 				);
 				expect(
