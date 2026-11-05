@@ -72,7 +72,7 @@ const SimpleDataTableRowActions: React.FC<
 		data
 	) => {
 		if (isFunction(onAction) && item) {
-			onAction(item, data.option);
+			onAction(event as React.SyntheticEvent, { item, option: data.option });
 		}
 		dropdown?.props.onSelect?.(event, data);
 	};

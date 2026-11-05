@@ -24,3 +24,20 @@ export const missingOnRowChange = (
 
 // Without `selectRows` there is no selection to change
 export const notSelectable = <SimpleDataTable items={items} />;
+
+export const sortHandler = (
+	<SimpleDataTable
+		items={items}
+		onSort={(event, data) =>
+			`${event.type} ${data.property} ${data.sortDirection}`
+		}
+	/>
+);
+
+export const legacySortHandler = (
+	<SimpleDataTable
+		items={items}
+		// @ts-expect-error `onSort` is `(event, data)`; the data no longer comes first
+		onSort={(data: { property: string }) => data.property}
+	/>
+);

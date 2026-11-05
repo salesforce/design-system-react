@@ -51,6 +51,18 @@ export interface SimpleDataTableSortData {
 	sortDirection: 'asc' | 'desc';
 }
 
+export interface SimpleDataTableLoadMoreData {
+	/** What found the scroller near its end: a scroll, a resize, or a re-render */
+	trigger: 'scroll' | 'resize' | 'update';
+}
+
+export interface SimpleDataTableRowActionData {
+	/** The row's item */
+	item: SimpleDataTableItem;
+	/** The selected menu option */
+	option: unknown;
+}
+
 export interface SimpleDataTableRowChangeData {
 	/** The requested next selection. The table does not apply it; update `selection` to accept it. */
 	selection: SimpleDataTableItem[];
@@ -160,13 +172,24 @@ export interface SimpleDataTableBaseProps {
 	 * scroller or table resizes. Still called until GA.
 	 */
 	onFixedHeaderResize?: (
-		event: Event | null,
+		event: Event | undefined,
 		data: { headerRefs: HTMLElement[]; scrollerRef: HTMLElement | null }
 	) => void;
-	/** Callback when infinite loading loads more data */
-	onLoadMore?: () => void;
-	/** Callback when the table should be sorted */
-	onSort?: (data: SimpleDataTableSortData, event: SyntheticEvent) => void;
+	/**
+	 * Called when `hasMore` is set and the scroller is within `loadMoreOffset` of its end.
+	 * `event` is the scroll or window resize event, or `undefined` after a re-render or a
+	 * `ResizeObserver` resize; `data.trigger` says which.
+	 */
+	onLoadMore?: (
+		event: Event | undefined,
+		data: SimpleDataTableLoadMoreData
+	) => void;
+	/**
+	 * Called when a sortable column header is clicked. `data.property` is the column and
+	 * `data.sortDirection` the requested direction; update the columns' `isSorted` and
+	 * `sortDirection` to apply it.
+	 */
+	onSort?: (event: SyntheticEvent, data: SimpleDataTableSortData) => void;
 	/**
 	 * @deprecated The table watches its own size with a `ResizeObserver`, so
 	 * there is no `window` listener to replace. Still called until GA.
@@ -283,8 +306,11 @@ export interface SimpleDataTableRowActionsProps {
 	className?: string;
 	/** Disable hint styling */
 	noHint?: boolean;
-	/** Triggered when an item is selected */
-	onAction?: (item: SimpleDataTableItem, selection: unknown) => void;
+	/** Called when a menu option is selected, with the row's `item` and the `option` */
+	onAction?: (
+		event: SyntheticEvent,
+		data: SimpleDataTableRowActionData
+	) => void;
 	/** Dropdown options */
 	options?: unknown[];
 	/** A `MenuDropdown` element. Its props override the defaults; its `onSelect` runs after `onAction`. */
@@ -313,7 +339,7 @@ export interface SimpleDataTableHeadProps {
 		event: SyntheticEvent,
 		data: SimpleDataTableToggleAllData
 	) => void;
-	onSort?: (data: SimpleDataTableSortData, event: SyntheticEvent) => void;
+	onSort?: (event: SyntheticEvent, data: SimpleDataTableSortData) => void;
 	showRowActions?: boolean;
 }
 
@@ -358,7 +384,7 @@ export interface SimpleDataTableHeaderCellProps {
 	isDefaultSortDescending?: boolean;
 	isSorted?: boolean;
 	label?: string | ReactNode;
-	onSort?: (data: SimpleDataTableSortData, event: SyntheticEvent) => void;
+	onSort?: (event: SyntheticEvent, data: SimpleDataTableSortData) => void;
 	property?: string;
 	sortable?: boolean;
 	sortDirection?: 'desc' | 'asc';

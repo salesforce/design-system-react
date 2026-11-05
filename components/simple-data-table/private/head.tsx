@@ -254,8 +254,8 @@ export interface SimpleDataTableHeadProps {
 	id?: string;
 	onToggleAll?: (event: SyntheticEvent, data: { checked: boolean }) => void;
 	onSort?: (
-		data: { property: string; sortDirection: 'asc' | 'desc' },
-		event: SyntheticEvent
+		event: SyntheticEvent,
+		data: { property: string; sortDirection: 'asc' | 'desc' }
 	) => void;
 	showRowActions?: boolean;
 }
