@@ -132,10 +132,19 @@ const Tabs = ({
 	) as React.ReactElement<TabChildProps>[];
 	const tabsCount = childArray.length;
 
-	// Use controlled or internal state
-	const selectedIndex = Number.isInteger(controlledSelectedIndex)
-		? controlledSelectedIndex!
+	const isControlled = Number.isInteger(controlledSelectedIndex);
+
+	// Use controlled or internal state. For uncontrolled tabs, clamp into the
+	// current child range so removing the selected tab still shows a panel
+	// (https://github.com/salesforce/design-system-react/issues/2798). Controlled
+	// mode leaves an out-of-range index to the parent.
+	const rawSelectedIndex = isControlled
+		? (controlledSelectedIndex as number)
 		: internalSelectedIndex;
+	const selectedIndex =
+		!isControlled && tabsCount > 0
+			? Math.min(Math.max(rawSelectedIndex, 0), tabsCount - 1)
+			: rawSelectedIndex;
 
 	const getNextTab = useCallback(
 		(index: number): number => {

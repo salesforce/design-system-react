@@ -602,4 +602,65 @@ describe('Tabs', () => {
 			});
 		});
 	});
+
+	describe('Children removed while a later tab is selected', () => {
+		const id = 'tabs-children-removed';
+		const getItems = (container) =>
+			container.querySelectorAll(`.${COMPONENT_CSS_CLASSES.item}`);
+		const getPanel = (container, index) =>
+			container.querySelector(`div#${id}-slds-tabs_panel-${index}`);
+
+		it('clamps uncontrolled selection to the last remaining tab', () => {
+			const { container, rerender } = render(
+				<Tabs id={id} defaultSelectedIndex={1}>
+					<Panel label="Tab A">
+						<p>This is tab A</p>
+					</Panel>
+					<Panel label="Tab B">
+						<p>This is tab B</p>
+					</Panel>
+				</Tabs>
+			);
+
+			expect(getPanel(container, 1)).toHaveClass('slds-show');
+
+			rerender(
+				<Tabs id={id} defaultSelectedIndex={1}>
+					<Panel label="Tab A">
+						<p>This is tab A</p>
+					</Panel>
+				</Tabs>
+			);
+
+			expect(getItems(container)).toHaveLength(1);
+			expect(getPanel(container, 0)).toHaveClass('slds-show');
+		});
+
+		it('does not clamp a controlled selectedIndex that is out of range', () => {
+			const { container, rerender } = render(
+				<Tabs id={id} selectedIndex={1}>
+					<Panel label="Tab A">
+						<p>This is tab A</p>
+					</Panel>
+					<Panel label="Tab B">
+						<p>This is tab B</p>
+					</Panel>
+				</Tabs>
+			);
+
+			expect(getPanel(container, 1)).toHaveClass('slds-show');
+
+			rerender(
+				<Tabs id={id} selectedIndex={1}>
+					<Panel label="Tab A">
+						<p>This is tab A</p>
+					</Panel>
+				</Tabs>
+			);
+
+			// Parent still owns selectedIndex=1; no panel matches, so none is shown.
+			expect(getItems(container)).toHaveLength(1);
+			expect(getPanel(container, 0)).toHaveClass('slds-hide');
+		});
+	});
 });
