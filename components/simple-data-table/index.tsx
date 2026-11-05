@@ -50,6 +50,7 @@ import type {
 	SimpleDataTableCellProps,
 	SimpleDataTableAssistiveText,
 	SimpleDataTableRowActionsProps,
+	SimpleDataTableLoadMoreData,
 } from './types';
 
 // The main SimpleDataTable component's state.
@@ -315,7 +316,7 @@ class SimpleDataTable extends React.Component<
 			// If the first page of results isn't enough to allow the user to scroll it causes
 			// the user to get into a state where they cannot load the second page.
 			// Simulating a scroll here will ensure that enough rows are loaded to enable scrolling
-			this.loadMoreIfNeeded();
+			this.loadMoreIfNeeded(undefined);
 		}
 
 		if (
@@ -443,7 +444,7 @@ class SimpleDataTable extends React.Component<
 		];
 
 		if (this.props.onFixedHeaderResize) {
-			this.props.onFixedHeaderResize(event ?? null, {
+			this.props.onFixedHeaderResize(event, {
 				headerRefs: headerRefs.filter(Boolean) as HTMLElement[],
 				scrollerRef: this.scrollerRef,
 			});
@@ -479,14 +480,21 @@ class SimpleDataTable extends React.Component<
 		}
 	};
 
-	loadMoreIfNeeded = () => {
+	loadMoreIfNeeded = (
+		event: Event | undefined,
+		fallbackTrigger: SimpleDataTableLoadMoreData['trigger'] = 'update'
+	) => {
 		if (this.props.hasMore && this.props.onLoadMore && this.scrollerRef) {
 			const { scrollTop, offsetHeight, scrollHeight } = this.scrollerRef;
 			if (
 				scrollTop + offsetHeight >
 				scrollHeight - (this.props.loadMoreOffset ?? 0)
 			) {
-				this.props.onLoadMore();
+				let trigger = fallbackTrigger;
+				if (event?.type === 'scroll' || event?.type === 'resize') {
+					trigger = event.type;
+				}
+				this.props.onLoadMore(event, { trigger });
 			}
 		}
 	};
@@ -511,7 +519,7 @@ class SimpleDataTable extends React.Component<
 				if (attach) {
 					this.resizeObserver = new ResizeObserver(() => {
 						this.resizeFixedHeaders();
-						this.loadMoreIfNeeded();
+						this.loadMoreIfNeeded(undefined, 'resize');
 					});
 					if (this.scrollerRef) {
 						this.resizeObserver.observe(this.scrollerRef);

@@ -155,13 +155,13 @@ class Example extends React.Component {
 		console.log(event, data);
 	};
 
-	handleRowAction = (item, action) => {
-		console.log(item, action);
+	handleRowAction = (event, { item, option }) => {
+		console.log(item, option);
 	};
 
-	handleSort = (sortColumn, ...rest) => {
+	handleSort = (event, sortColumn) => {
 		if (this.props.log) {
-			this.props.log('sort')(sortColumn, ...rest);
+			this.props.log('sort')(event, sortColumn);
 		}
 
 		const sortProperty = sortColumn.property;
