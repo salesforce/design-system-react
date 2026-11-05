@@ -40,8 +40,8 @@ export interface SimpleDataTableHeaderCellProps {
 	isSorted?: boolean;
 	label?: string | ReactNode;
 	onSort?: (
-		data: { property: string; sortDirection: 'asc' | 'desc' },
-		event: SyntheticEvent
+		event: SyntheticEvent,
+		data: { property: string; sortDirection: 'asc' | 'desc' }
 	) => void;
 	property?: string;
 	sortable?: boolean;
@@ -104,7 +104,7 @@ const SimpleDataTableHeaderCell: React.FC<SimpleDataTableHeaderCellProps> = (
 		};
 
 		if (isFunction(props.onSort)) {
-			props.onSort(data, e);
+			props.onSort(e, data);
 		}
 	};
 

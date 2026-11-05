@@ -48,6 +48,7 @@ import type {
 	SimpleDataTableColumnProps,
 	SimpleDataTableCellProps,
 	SimpleDataTableAssistiveText,
+	SimpleDataTableLoadMoreData,
 } from './types';
 
 // The main SimpleDataTable component's state.
@@ -340,7 +341,7 @@ class SimpleDataTable extends React.Component<
 			// If the first page of results isn't enough to allow the user to scroll it causes
 			// the user to get into a state where they cannot load the second page.
 			// Simulating a scroll here will ensure that enough rows are loaded to enable scrolling
-			this.loadMoreIfNeeded();
+			this.loadMoreIfNeeded(undefined);
 		}
 
 		if (
@@ -508,14 +509,18 @@ class SimpleDataTable extends React.Component<
 		}
 	};
 
-	loadMoreIfNeeded = () => {
+	loadMoreIfNeeded = (event: Event | undefined) => {
 		if (this.props.hasMore && this.props.onLoadMore && this.scrollerRef) {
 			const { scrollTop, offsetHeight, scrollHeight } = this.scrollerRef;
 			if (
 				scrollTop + offsetHeight >
 				scrollHeight - (this.props.loadMoreOffset ?? 0)
 			) {
-				this.props.onLoadMore();
+				let trigger: SimpleDataTableLoadMoreData['trigger'] = 'update';
+				if (event?.type === 'scroll' || event?.type === 'resize') {
+					trigger = event.type;
+				}
+				this.props.onLoadMore(event, { trigger });
 			}
 		}
 	};

@@ -33,8 +33,11 @@ export interface SimpleDataTableRowActionsProps {
 	item?: Record<string, unknown>;
 	/** Disable hint styling which changes the color of the dropdown svg on hover */
 	noHint?: boolean;
-	/** Triggered when an item is selected */
-	onAction?: (item: Record<string, unknown>, selection: unknown) => void;
+	/** Called when a menu option is selected, with the row's `item` and the `option` */
+	onAction?: (
+		event: React.SyntheticEvent,
+		data: { item: Record<string, unknown>; option: unknown }
+	) => void;
 	/** Dropdown options. See Dropdown. */
 	options?: unknown[];
 	/** A Dropdown component. Props from this will be merged and override defaults. */
@@ -75,7 +78,7 @@ const SimpleDataTableRowActions: React.FC<SimpleDataTableRowActionsProps> = ({
 		data
 	) => {
 		if (isFunction(onAction) && item) {
-			onAction(item, data.option);
+			onAction(event as React.SyntheticEvent, { item, option: data.option });
 		}
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		if (dropdown && isFunction((dropdown as any).props?.onSelect)) {

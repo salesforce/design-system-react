@@ -686,7 +686,8 @@ describe('SimpleDataTable', () => {
 			fireEvent.click(sortButton, {});
 
 			expect(onSort).toHaveBeenCalledTimes(1);
-			const data = onSort.mock.calls[0][0];
+			const [event, data] = onSort.mock.calls[0];
+			expect(event).toEqual(expect.objectContaining({ type: 'click' }));
 			expect(data.property).toBe('count');
 			expect(data.sortDirection).toBe('asc');
 		});
@@ -712,7 +713,8 @@ describe('SimpleDataTable', () => {
 			fireEvent.click(sortButton, {});
 
 			expect(onSort).toHaveBeenCalledTimes(1);
-			const data = onSort.mock.calls[0][0];
+			const [event, data] = onSort.mock.calls[0];
+			expect(event).toEqual(expect.objectContaining({ type: 'click' }));
 			expect(data.property).toBe('count');
 			expect(data.sortDirection).toBe('desc');
 		});
@@ -822,9 +824,10 @@ describe('SimpleDataTable', () => {
 			fireEvent.click(firstAction.querySelector('a'), {});
 
 			expect(onAction).toHaveBeenCalledTimes(1);
-			const [item, action] = onAction.mock.calls[0];
+			const [actionEvent, { item, option }] = onAction.mock.calls[0];
+			expect(actionEvent).toEqual(expect.objectContaining({ type: 'click' }));
 			expect(item.id).toBe('8IKZHZZV80');
-			expect(action.value).toBe('1');
+			expect(option.value).toBe('1');
 
 			expect(onSelect).toHaveBeenCalledTimes(1);
 			const [, selectData] = onSelect.mock.calls[0];
@@ -981,9 +984,12 @@ describe('SimpleDataTable', () => {
 			const scroller = container.querySelector(
 				'.slds-table_header-fixed_scroller'
 			);
-			scroller.dispatchEvent(new Event('scroll'));
+			const scrollEvent = new Event('scroll');
+			scroller.dispatchEvent(scrollEvent);
 
-			expect(onLoadMore).toHaveBeenCalled();
+			expect(onLoadMore).toHaveBeenCalledWith(scrollEvent, {
+				trigger: 'scroll',
+			});
 		});
 
 		it('onLoadMore callback is called when window is resized', () => {
@@ -1006,9 +1012,12 @@ describe('SimpleDataTable', () => {
 				</SimpleDataTable>
 			);
 
-			window.dispatchEvent(new Event('resize'));
+			const resizeEvent = new Event('resize');
+			window.dispatchEvent(resizeEvent);
 
-			expect(onLoadMore).toHaveBeenCalled();
+			expect(onLoadMore).toHaveBeenCalledWith(resizeEvent, {
+				trigger: 'resize',
+			});
 		});
 
 		it('onLoadMore callback is called when the component is updated', () => {
@@ -1056,7 +1065,7 @@ describe('SimpleDataTable', () => {
 				</IconSettings>
 			);
 
-			expect(onLoadMore).toHaveBeenCalled();
+			expect(onLoadMore).toHaveBeenCalledWith(undefined, { trigger: 'update' });
 		});
 	});
 
@@ -1531,7 +1540,7 @@ describe('SimpleDataTable', () => {
 			fireEvent.click(header.querySelector('a'));
 			fireEvent.click(header.querySelector('a'));
 
-			expect(onSort.mock.calls.map(([data]) => data.sortDirection)).toEqual([
+			expect(onSort.mock.calls.map(([, data]) => data.sortDirection)).toEqual([
 				'desc',
 				'desc',
 			]);
@@ -1553,7 +1562,7 @@ describe('SimpleDataTable', () => {
 			fireEvent.click(getSortHeader(container).querySelector('a'));
 			fireEvent.click(getSortHeader(container).querySelector('a'));
 
-			expect(onSort.mock.calls.map(([data]) => data.sortDirection)).toEqual([
+			expect(onSort.mock.calls.map(([, data]) => data.sortDirection)).toEqual([
 				'asc',
 				'asc',
 			]);
@@ -1569,7 +1578,7 @@ describe('SimpleDataTable', () => {
 						{...defaultProps}
 						selection={[]}
 						fixedLayout
-						onSort={(data) => setSortDirection(data.sortDirection)}
+						onSort={(event, data) => setSortDirection(data.sortDirection)}
 					>
 						<SimpleDataTableColumn
 							isSorted
@@ -1615,7 +1624,7 @@ describe('SimpleDataTable', () => {
 						{...defaultProps}
 						selection={[]}
 						fixedLayout
-						onSort={(data) => setSortDirection(data.sortDirection)}
+						onSort={(event, data) => setSortDirection(data.sortDirection)}
 					>
 						<SimpleDataTableColumn
 							isSorted
