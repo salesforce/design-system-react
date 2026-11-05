@@ -4964,6 +4964,45 @@ exports[`Story HTML snapshots > Popover > WalkthroughActionVariant 1`] = `
 </div>"
 `;
 
+exports[`Story HTML snapshots > Popover > WalkthroughOnAnchor 1`] = `
+"<div class="slds-p-around_large" style="min-height:300px">
+  <article class="slds-card">
+    <div class="slds-card__header slds-grid">
+      <div class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__body">
+          <h2 class="slds-text-heading_small slds-truncate" title="Accounts">Accounts</h2>
+        </div>
+      </div>
+      <div class="slds-no-flex">
+        <div style="display:inline-block">
+          <div class="slds-button-group" id="_R_1t_" role="group"><button class="slds-button slds-button_neutral" type="button">New</button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#filterList"></use>
+              </svg><span class="slds-assistive-text">Filter</span></button><button class="slds-button slds-button_icon-border" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#refresh"></use>
+              </svg><span class="slds-assistive-text">Refresh</span></button></div>
+          <section class="absolute-positioned slds-nubbin_top-right ignore-react-onclickoutside slds-popover slds-popover_walkthrough" style="outline:0;position:absolute;pointer-events:none" role="dialog" tabindex="-1" id="walkthrough-anchor-popover-popover" aria-labelledby="walkthrough-anchor-popover-dialog-heading" aria-describedby="walkthrough-anchor-popover-dialog-body"><button class="slds-button slds-button_icon slds-button slds-button_icon-small slds-float_right slds-popover__close slds-button_icon slds-button_icon-inverse" type="button"><svg class="slds-button__icon" aria-hidden="true">
+                <use href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+              </svg><span class="slds-assistive-text">Close dialog</span></button>
+            <header class="slds-popover__header slds-p-vertical_medium">
+              <h2 id="walkthrough-anchor-popover-dialog-heading" class="slds-text-heading_medium">The card toolbar</h2>
+            </header>
+            <div id="walkthrough-anchor-popover-dialog-body" class="slds-popover__body">Use the toolbar to create, filter and refresh the records in this card.</div>
+            <footer class="slds-popover__footer">
+              <div class="slds-grid slds-grid_vertical-align-center"><span class="slds-text-title">Step 2 of 4</span>
+                <div class="slds-col_bump-left" style="display:inline-block"><button class="slds-button slds-button_brand" type="button">Next</button></div>
+              </div>
+            </footer>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="slds-card__body">
+      <p class="slds-p-horizontal_medium">Account records</p>
+    </div>
+  </article>
+</div>"
+`;
+
 exports[`Story HTML snapshots > Popover > WalkthroughVariant 1`] = `
 "<div class="slds-p-around_large" style="min-height:300px">
   <div style="display:inline-block"><button class="slds-button slds-button_brand" id="walkthrough-popover" tabindex="0" type="button" aria-haspopup="dialog">Start Tour</button></div>

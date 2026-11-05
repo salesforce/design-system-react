@@ -2,6 +2,8 @@ import { useState } from 'react';
 import IconSettings from '../../icon-settings';
 import Popover from '../';
 import Button from '../../button';
+import ButtonGroup from '../../button-group';
+import Card from '../../card';
 
 export default {
 	title: 'Components/Popover',
@@ -199,6 +201,67 @@ export const WalkthroughVariant = {
 			<Button label="Start Tour" variant="brand" />
 		</Popover>
 	),
+};
+
+// A walkthrough step that points at part of the page instead of a button that opens it
+export const WalkthroughOnAnchor = {
+	render: () => {
+		const [isOpen, setIsOpen] = useState(true);
+
+		return (
+			<Card
+				heading="Accounts"
+				headerActions={
+					<Popover
+						align="bottom right"
+						body="Use the toolbar to create, filter and refresh the records in this card."
+						footerWalkthroughActions={
+							<Button
+								label="Next"
+								onClick={() => setIsOpen(false)}
+								variant="brand"
+							/>
+						}
+						heading="The card toolbar"
+						id="walkthrough-anchor-popover"
+						isOpen={isOpen}
+						onRequestClose={() => setIsOpen(false)}
+						openOn="none"
+						stepText="Step 2 of 4"
+						variant="walkthrough"
+					>
+						<ButtonGroup label="Card toolbar">
+							<Button label="New" />
+							<Button
+								assistiveText={{ icon: 'Filter' }}
+								iconCategory="utility"
+								iconName="filterList"
+								iconVariant="border"
+								variant="icon"
+							/>
+							<Button
+								assistiveText={{ icon: 'Refresh' }}
+								iconCategory="utility"
+								iconName="refresh"
+								iconVariant="border"
+								variant="icon"
+							/>
+						</ButtonGroup>
+					</Popover>
+				}
+			>
+				<p className="slds-p-horizontal_medium">Account records</p>
+			</Card>
+		);
+	},
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'With `openOn="none"` the first child is only an anchor: Popover points at it without adding `aria-haspopup`, `tabIndex`, an `id` or handlers, and the parent opens and closes it through `isOpen`.',
+			},
+		},
+	},
 };
 
 // Walkthrough action variant
