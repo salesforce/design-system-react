@@ -58,6 +58,26 @@ describe('SLDSAlert', () => {
 			expect(container.querySelector('.slds-notify')).not.toBeInTheDocument();
 		});
 
+		it('passes the click event and trigger "close-button" to onRequestClose', () => {
+			const onRequestClose = vi.fn();
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Alert
+						dismissible
+						labels={{ heading: 'Logged in as John Smith' }}
+						onRequestClose={onRequestClose}
+					/>
+				</IconSettings>
+			);
+
+			fireEvent.click(container.querySelector('button.slds-notify__close'));
+
+			expect(onRequestClose).toHaveBeenCalledTimes(1);
+			const [event, data] = onRequestClose.mock.calls[0];
+			expect(event).toEqual(expect.objectContaining({ type: 'click' }));
+			expect(data).toEqual({ trigger: 'close-button' });
+		});
+
 		it('calls onClickHeadingLink handler when link clicked', () => {
 			const onClickHeadingLink = vi.fn();
 			const { container } = render(

@@ -40,6 +40,19 @@ export interface AlertLabels {
 }
 
 /**
+ * What caused an Alert close request
+ */
+export type AlertRequestCloseTrigger = 'close-button';
+
+/**
+ * Data passed to `onRequestClose`
+ */
+export interface AlertRequestCloseData {
+	/** What caused the request. Only the close button can request a close. */
+	trigger: AlertRequestCloseTrigger;
+}
+
+/**
  * Props for the Alert component
  */
 export interface AlertProps {
@@ -55,8 +68,11 @@ export interface AlertProps {
 	labels?: AlertLabels;
 	/** Callback when heading link is clicked */
 	onClickHeadingLink?: (event: React.MouseEvent) => void;
-	/** Callback when close button is clicked */
-	onRequestClose?: (event: React.MouseEvent) => void;
+	/** Callback when close button is clicked. `data.trigger` is `'close-button'`. */
+	onRequestClose?: (
+		event: React.MouseEvent<HTMLButtonElement>,
+		data: AlertRequestCloseData
+	) => void;
 	/** Custom styles */
 	style?: CSSProperties;
 	/** Alert type/severity */
@@ -129,6 +145,13 @@ const Alert = ({
 		[isInitialRender]
 	);
 
+	const handleCloseButtonClick = useCallback(
+		(event: React.MouseEvent<HTMLButtonElement>) => {
+			onRequestClose?.(event, { trigger: 'close-button' });
+		},
+		[onRequestClose]
+	);
+
 	// Get the icon to display
 	const icon = propIcon || defaultIcons[variant];
 
@@ -183,7 +206,7 @@ const Alert = ({
 					iconName="close"
 					iconSize="medium"
 					inverse
-					onClick={onRequestClose}
+					onClick={handleCloseButtonClick}
 					title={assistiveText.closeButton as string}
 					variant="icon"
 				/>
