@@ -907,9 +907,7 @@ export const PopoverVariant: Story = {
 								setSelection(checked);
 							}
 						}}
-					>
-						{null}
-					</Popover>
+					/>
 				}
 				selection={selection}
 				value={getInputString(selection)}
