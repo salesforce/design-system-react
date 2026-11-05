@@ -192,7 +192,7 @@ const DisabledDatesComponent = () => {
 	const [value, setValue] = useState<Date | null>(null);
 
 	// Disable weekends
-	const dateDisabled = (date: Date) => {
+	const dateDisabled = ({ date }: { date: Date }) => {
 		const day = date.getDay();
 		return day === 0 || day === 6;
 	};

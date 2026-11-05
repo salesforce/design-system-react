@@ -26,6 +26,23 @@ describe('SLDSAvatar', () => {
 			expect(avatar).toBeInTheDocument();
 		});
 
+		it('sizes the fallback icon to the avatar', () => {
+			// SLDS 2 dropped `.slds-avatar_<size> .slds-icon`, so the icon needs its own size class.
+			const { container } = render(
+				<IconSettings iconPath="/assets/icons">
+					<Avatar size="large" />
+					<Avatar size="x-small" />
+				</IconSettings>
+			);
+
+			expect(
+				container.querySelector('.slds-avatar_large svg.slds-icon')
+			).toHaveClass('slds-icon_large');
+			expect(
+				container.querySelector('.slds-avatar_x-small svg.slds-icon')
+			).toHaveClass('slds-icon_x-small');
+		});
+
 		describe('variant is a user', () => {
 			it('displays as a circle', () => {
 				const { container } = render(

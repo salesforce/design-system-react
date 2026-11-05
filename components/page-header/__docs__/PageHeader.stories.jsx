@@ -3,6 +3,7 @@ import PageHeader from '../';
 import Icon from '../../icon';
 import Button from '../../button';
 import ButtonGroup from '../../button-group';
+import PageHeaderControl from '../control';
 
 export default {
 	title: 'Components/PageHeader',
@@ -45,28 +46,32 @@ export const ObjectHome = {
 			title="Opportunities"
 			info="10 items • Updated 13 minutes ago"
 			actions={
-				<ButtonGroup>
-					<Button label="New" variant="neutral" />
-					<Button label="Import" variant="neutral" />
-				</ButtonGroup>
+				<PageHeaderControl>
+					<ButtonGroup>
+						<Button label="New" variant="neutral" />
+						<Button label="Import" variant="neutral" />
+					</ButtonGroup>
+				</PageHeaderControl>
 			}
 			controls={
-				<ButtonGroup>
-					<Button
-						assistiveText={{ icon: 'Chart' }}
-						iconCategory="utility"
-						iconName="chart"
-						iconVariant="border"
-						variant="icon"
-					/>
-					<Button
-						assistiveText={{ icon: 'Filter List' }}
-						iconCategory="utility"
-						iconName="filterList"
-						iconVariant="border"
-						variant="icon"
-					/>
-				</ButtonGroup>
+				<PageHeaderControl>
+					<ButtonGroup>
+						<Button
+							assistiveText={{ icon: 'Chart' }}
+							iconCategory="utility"
+							iconName="chart"
+							iconVariant="border"
+							variant="icon"
+						/>
+						<Button
+							assistiveText={{ icon: 'Filter List' }}
+							iconCategory="utility"
+							iconName="filterList"
+							iconVariant="border"
+							variant="icon"
+						/>
+					</ButtonGroup>
+				</PageHeaderControl>
 			}
 		/>
 	),
@@ -86,11 +91,13 @@ export const RecordHome = {
 				{ label: 'Close Date', content: '11/30/2016' },
 			]}
 			actions={
-				<ButtonGroup>
-					<Button label="Follow" variant="neutral" />
-					<Button label="Edit" variant="neutral" />
-					<Button label="Delete" variant="neutral" />
-				</ButtonGroup>
+				<PageHeaderControl>
+					<ButtonGroup>
+						<Button label="Follow" variant="neutral" />
+						<Button label="Edit" variant="neutral" />
+						<Button label="Delete" variant="neutral" />
+					</ButtonGroup>
+				</PageHeaderControl>
 			}
 		/>
 	),
@@ -114,9 +121,11 @@ export const RelatedList = {
 			]}
 			info="10 items • Sorted by Name"
 			actions={
-				<ButtonGroup>
-					<Button label="Add Contact" variant="neutral" />
-				</ButtonGroup>
+				<PageHeaderControl>
+					<ButtonGroup>
+						<Button label="Add Contact" variant="neutral" />
+					</ButtonGroup>
+				</PageHeaderControl>
 			}
 		/>
 	),

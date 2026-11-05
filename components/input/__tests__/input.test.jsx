@@ -240,6 +240,16 @@ describe('SLDSInput', () => {
 			const button = elementControl.querySelector('button');
 			expect(button).not.toBeInTheDocument();
 		});
+
+		it('lets clicks pass through a decorative InputIcon to the input', () => {
+			// SLDS 2 dropped `.slds-input__icon:not(button) { pointer-events: none }`.
+			const { container } = renderInput({
+				iconLeft: <InputIcon name="search" category="utility" />,
+			});
+
+			const icon = container.querySelector('svg.slds-input__icon');
+			expect(icon.style.pointerEvents).toBe('none');
+		});
 	});
 
 	describe('Input with Loading Spinner Icon', () => {

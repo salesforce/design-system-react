@@ -72,11 +72,12 @@ export const CustomIcon = {
 	),
 };
 
-// Shared nav used by the toolbar-bearing stories below.
-const BuilderNav = () => (
+// Shared nav used by the toolbar-bearing stories below. BuilderHeader picks
+// its children by displayName, so this must be an element, not a component.
+const builderNav = (
 	<BuilderHeaderNav>
 		<BuilderHeaderNavLink
-			assistiveText={{ label: 'Link' }}
+			assistiveText={{ icon: 'Link' }}
 			iconCategory="utility"
 			iconName="settings"
 			label="Link"
@@ -95,50 +96,53 @@ const BuilderNav = () => (
 	</BuilderHeaderNav>
 );
 
-// Shared canvas/edit button groups rendered inside the toolbar.
-const ToolbarButtonGroups = () => (
-	<>
-		<ButtonGroup label="Canvas Actions" id="button-group-canvas-actions">
-			<Button
-				assistiveText={{ icon: 'Undo' }}
-				iconCategory="utility"
-				iconName="undo"
-				iconVariant="border"
-				variant="icon"
-			/>
-			<Button
-				assistiveText={{ icon: 'Redo' }}
-				iconCategory="utility"
-				iconName="redo"
-				iconVariant="border"
-				variant="icon"
-			/>
-		</ButtonGroup>
-		<ButtonGroup label="Edit Actions" id="button-group-edit-actions">
-			<Button
-				assistiveText={{ icon: 'Cut' }}
-				iconCategory="utility"
-				iconName="cut"
-				iconVariant="border"
-				variant="icon"
-			/>
-			<Button
-				assistiveText={{ icon: 'Copy' }}
-				iconCategory="utility"
-				iconName="copy"
-				iconVariant="border"
-				variant="icon"
-			/>
-			<Button
-				assistiveText={{ icon: 'Paste' }}
-				iconCategory="utility"
-				iconName="paste"
-				iconVariant="border"
-				variant="icon"
-			/>
-		</ButtonGroup>
-	</>
-);
+// Shared canvas/edit button groups rendered inside the toolbar. The toolbar
+// only keeps direct ButtonGroup children, so this is an array, not a fragment.
+const toolbarButtonGroups = [
+	<ButtonGroup
+		key="canvas"
+		label="Canvas Actions"
+		id="button-group-canvas-actions"
+	>
+		<Button
+			assistiveText={{ icon: 'Undo' }}
+			iconCategory="utility"
+			iconName="undo"
+			iconVariant="border"
+			variant="icon"
+		/>
+		<Button
+			assistiveText={{ icon: 'Redo' }}
+			iconCategory="utility"
+			iconName="redo"
+			iconVariant="border"
+			variant="icon"
+		/>
+	</ButtonGroup>,
+	<ButtonGroup key="edit" label="Edit Actions" id="button-group-edit-actions">
+		<Button
+			assistiveText={{ icon: 'Cut' }}
+			iconCategory="utility"
+			iconName="cut"
+			iconVariant="border"
+			variant="icon"
+		/>
+		<Button
+			assistiveText={{ icon: 'Copy' }}
+			iconCategory="utility"
+			iconName="copy"
+			iconVariant="border"
+			variant="icon"
+		/>
+		<Button
+			assistiveText={{ icon: 'Paste' }}
+			iconCategory="utility"
+			iconName="paste"
+			iconVariant="border"
+			variant="icon"
+		/>
+	</ButtonGroup>,
+];
 
 // Save/Run/Save As action cluster shared by the save-state stories.
 const SaveActions = () => (
@@ -175,7 +179,7 @@ export const WithToolbar = {
 				onClickHelp: () => console.log('onClickHelp'),
 			}}
 		>
-			<BuilderNav />
+			{builderNav}
 			<BuilderHeaderToolbar
 				assistiveText={{ actions: 'Document Actions' }}
 				actions={
@@ -184,7 +188,7 @@ export const WithToolbar = {
 					</div>
 				}
 			>
-				<ToolbarButtonGroups />
+				{toolbarButtonGroups}
 			</BuilderHeaderToolbar>
 		</BuilderHeader>
 	),
@@ -200,7 +204,7 @@ export const WithUtilities = {
 				onClickHelp: () => console.log('onClickHelp'),
 			}}
 		>
-			<BuilderNav />
+			{builderNav}
 			<BuilderHeaderUtilities>
 				<BuilderHeaderNavLink
 					assistiveText={{ label: 'Back' }}
@@ -240,7 +244,7 @@ export const WithUtilities = {
 export const SuccessfulSave = {
 	render: () => (
 		<BuilderHeader {...builderProps}>
-			<BuilderNav />
+			{builderNav}
 			<BuilderHeaderToolbar
 				assistiveText={{ actions: 'Document Actions' }}
 				actions={
@@ -259,7 +263,7 @@ export const SuccessfulSave = {
 					</div>
 				}
 			>
-				<ToolbarButtonGroups />
+				{toolbarButtonGroups}
 			</BuilderHeaderToolbar>
 		</BuilderHeader>
 	),
@@ -269,7 +273,7 @@ export const SuccessfulSave = {
 export const AfterSuccessfulSave = {
 	render: () => (
 		<BuilderHeader {...builderProps}>
-			<BuilderNav />
+			{builderNav}
 			<BuilderHeaderToolbar
 				assistiveText={{ actions: 'Document Actions' }}
 				actions={
@@ -290,7 +294,7 @@ export const AfterSuccessfulSave = {
 					</div>
 				}
 			>
-				<ToolbarButtonGroups />
+				{toolbarButtonGroups}
 			</BuilderHeaderToolbar>
 		</BuilderHeader>
 	),
@@ -300,7 +304,7 @@ export const AfterSuccessfulSave = {
 export const FailedSave = {
 	render: () => (
 		<BuilderHeader {...builderProps}>
-			<BuilderNav />
+			{builderNav}
 			<BuilderHeaderToolbar
 				assistiveText={{ actions: 'Document Actions' }}
 				actions={
@@ -331,7 +335,7 @@ export const FailedSave = {
 					</div>
 				}
 			>
-				<ToolbarButtonGroups />
+				{toolbarButtonGroups}
 			</BuilderHeaderToolbar>
 		</BuilderHeader>
 	),

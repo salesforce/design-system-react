@@ -135,8 +135,8 @@ interface DatePickerBaseProps {
 	children?: ReactElement;
 	/** Whether component is disabled */
 	disabled?: boolean;
-	/** Function to determine if a date should be disabled */
-	dateDisabled?: (date: Date) => boolean;
+	/** Function to determine if a date should be disabled. Receives `{ date }`. */
+	dateDisabled?: (data: { date: Date }) => boolean;
 	/** Date formatting function. Called with `null` when there is no date. */
 	formatter?: (date: Date | null | undefined) => string;
 	/** Whether to show error state */

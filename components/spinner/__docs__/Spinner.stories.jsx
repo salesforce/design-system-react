@@ -225,23 +225,23 @@ export const AllSizes = {
 	render: () => (
 		<div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
 			<div style={{ textAlign: 'center' }}>
-				<Spinner size="xx-small" hasContainer={false} />
+				<Spinner size="xx-small" hasContainer={false} isInline />
 				<div style={{ marginTop: '2rem', fontSize: '12px' }}>xx-small</div>
 			</div>
 			<div style={{ textAlign: 'center' }}>
-				<Spinner size="x-small" hasContainer={false} />
+				<Spinner size="x-small" hasContainer={false} isInline />
 				<div style={{ marginTop: '2rem', fontSize: '12px' }}>x-small</div>
 			</div>
 			<div style={{ textAlign: 'center' }}>
-				<Spinner size="small" hasContainer={false} />
+				<Spinner size="small" hasContainer={false} isInline />
 				<div style={{ marginTop: '2rem', fontSize: '12px' }}>small</div>
 			</div>
 			<div style={{ textAlign: 'center' }}>
-				<Spinner size="medium" hasContainer={false} />
+				<Spinner size="medium" hasContainer={false} isInline />
 				<div style={{ marginTop: '2rem', fontSize: '12px' }}>medium</div>
 			</div>
 			<div style={{ textAlign: 'center' }}>
-				<Spinner size="large" hasContainer={false} />
+				<Spinner size="large" hasContainer={false} isInline />
 				<div style={{ marginTop: '2rem', fontSize: '12px' }}>large</div>
 			</div>
 		</div>

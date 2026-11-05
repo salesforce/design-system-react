@@ -109,6 +109,8 @@ const Avatar = ({
 			assistiveText={{ label: iconAssistiveText }}
 			category="standard"
 			name={variant === 'entity' ? 'account' : 'user'}
+			// SLDS 2 dropped the `.slds-avatar_<size> .slds-icon` sizing rules.
+			size={size}
 		/>
 	);
 

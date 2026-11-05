@@ -27,6 +27,23 @@ describe('Checkbox visual picker figure', () => {
 		expect(figure.querySelector('.figure-content')).toHaveTextContent('$30');
 	});
 
+	it('does not put the button-group label class on the visual picker label', () => {
+		// SLDS 2 styles `.slds-checkbox_button__label` on its own, which draws
+		// a border and background around the whole picker.
+		const { container } = render(
+			<Checkbox
+				id="vp-label"
+				variant="visual-picker"
+				labels={{ label: 'Option' }}
+				visualPickerFigure="$30"
+			/>
+		);
+
+		expect(
+			container.querySelector('.slds-visual-picker > label')
+		).not.toHaveClass('slds-checkbox_button__label');
+	});
+
 	it('renders visualPickerFigureSelected and visualPickerFigureNotSelected into the coverable figure', () => {
 		const { container } = render(
 			<Checkbox

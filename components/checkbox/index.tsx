@@ -420,7 +420,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 					ref={setRef}
 					aria-describedby={getAriaDescribedBy()}
 				/>
-				<label className="slds-checkbox_button__label" htmlFor={getId()}>
+				<label htmlFor={getId()}>
 					{coverable ? (
 						<div className="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
 							<span className="slds-is-selected">

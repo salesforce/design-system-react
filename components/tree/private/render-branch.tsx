@@ -317,6 +317,9 @@ const RenderBranch = (
 				onClick={(event) => handleSelect({ event, props })}
 			>
 				<Button
+					// SLDS 1 only rotates the chevron when `aria-controls` is set.
+					aria-controls={String(props.htmlId)}
+					aria-hidden
 					assistiveText={{ icon: 'Expand Tree Branch' }}
 					iconCategory="utility"
 					iconName="chevronright"

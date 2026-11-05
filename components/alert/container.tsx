@@ -27,7 +27,7 @@ class AlertContainer extends React.Component<AlertContainerProps> {
 	render() {
 		return (
 			<div
-				className={classNames('slds-notify-container', this.props.className)}
+				className={classNames('slds-notify_container', this.props.className)}
 			>
 				{this.props.children}
 			</div>
