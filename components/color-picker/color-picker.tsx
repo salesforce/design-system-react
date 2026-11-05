@@ -31,6 +31,7 @@ import {
 	ColorPickerLabels,
 	ColorPickerChangeHandler,
 	ColorPickerEvents,
+	ColorPickerRequestOpenData,
 } from './types';
 
 interface ColorPickerBaseProps {
@@ -103,10 +104,13 @@ interface ColorPickerBaseProps {
 		data: { trigger: string }
 	) => void;
 	/**
-	 * Called when the swatch button is clicked while the popover is closed. When `isOpen` is
-	 * controlled, set it to `true` here.
+	 * Called when the swatch button is clicked while the popover is closed, with the click event
+	 * and `data.trigger` (`'triggerClick'`). When `isOpen` is controlled, set it to `true` here.
 	 */
-	onRequestOpen?: () => void;
+	onRequestOpen?: (
+		event: React.MouseEvent<HTMLButtonElement>,
+		data: ColorPickerRequestOpenData
+	) => void;
 }
 
 /**
@@ -497,15 +501,18 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
 	);
 
 	// While open, Popover has already requested a close (`triggerClick`) for this click
-	const handleSwatchButtonClick = useCallback(() => {
-		if (!isOpen) {
-			setIsOpen(true);
+	const handleSwatchButtonClick = useCallback(
+		(event: React.MouseEvent<HTMLButtonElement>) => {
+			if (!isOpen) {
+				setIsOpen(true);
 
-			if (onRequestOpen) {
-				onRequestOpen();
+				if (onRequestOpen) {
+					onRequestOpen(event, { trigger: 'triggerClick' });
+				}
 			}
-		}
-	}, [isOpen, setIsOpen, onRequestOpen]);
+		},
+		[isOpen, setIsOpen, onRequestOpen]
+	);
 
 	const handleSwatchSelect = useCallback(
 		(event: React.MouseEvent | React.KeyboardEvent, data: { hex: string }) => {

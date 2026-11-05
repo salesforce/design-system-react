@@ -1047,6 +1047,23 @@ describe('SLDSColorPicker', () => {
 				).not.toBeInTheDocument();
 			});
 
+			it('passes the click event and trigger "triggerClick" to onRequestOpen', () => {
+				const onRequestOpen = vi.fn();
+				const { container } = render(
+					<ColorPicker
+						isOpen={false}
+						onRequestOpen={onRequestOpen}
+						value="#000000"
+					/>
+				);
+
+				fireEvent.click(container.querySelector(selectors.toggle));
+
+				const [event, data] = onRequestOpen.mock.calls[0];
+				expect(event).toEqual(expect.objectContaining({ type: 'click' }));
+				expect(data).toEqual({ trigger: 'triggerClick' });
+			});
+
 			it('controlled isOpen stays open on Cancel, Done and trigger click, and requests close', () => {
 				const onRequestClose = vi.fn();
 				const onRequestOpen = vi.fn();

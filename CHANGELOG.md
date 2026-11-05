@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `Modal` and `WelcomeMat` `onRequestClose(event, { trigger })`: `'close-button' | 'escape' | 'click-outside'`
   - `DatePicker` `onRequestOpen(event, { trigger })` (`'input-click' | 'icon-click' | 'keyboard'`), `onRequestClose(event, { trigger })` (`'date-select' | 'escape' | 'enter' | 'click-outside'`; the outside-click event is the native `mousedown`/`touchstart`), and `onClose(undefined, { componentWillUnmount })`
   - `MenuDropdown` `onOpen(event, {})` and `onClose(event, {})`
+  - `ColorPicker` `onRequestOpen(event, { trigger: 'triggerClick' })`, with the `ColorPickerRequestOpenData` type
   - `Alert` `onRequestClose(event, { trigger: 'close-button' })`, matching `Toast`, with the `AlertRequestCloseData` type
 - Exported data types for these callbacks, such as `TabsSelectData`, `MenuDropdownSelectData`, `ToastRequestCloseData`, `ModalRequestCloseData`, `PopoverRequestCloseTrigger`, `TreeNodeSelectData` and `SplitViewToggleData`
 - Uncontrolled starting state for ephemeral UI state. A component is controlled when the value prop (`isOpen`, `currentPanel`, `isAutoplayOn`, `expandedIds`) is not `undefined`, and manages its own state otherwise:

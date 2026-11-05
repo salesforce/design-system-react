@@ -11,6 +11,7 @@ export type {
 	ColorPickerLabels,
 	ColorPickerChangeHandler,
 	ColorPickerEvents,
+	ColorPickerRequestOpenData,
 	HSV,
 	RGB,
 	ColorErrors,

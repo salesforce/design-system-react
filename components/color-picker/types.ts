@@ -74,6 +74,14 @@ export type ColorPickerChangeHandler = (
 	data: { color: string; isValid?: boolean }
 ) => void;
 
+/**
+ * Data passed to `onRequestOpen`
+ */
+export interface ColorPickerRequestOpenData {
+	/** What caused the request. The swatch button is the only way to open the popover. */
+	trigger: 'triggerClick';
+}
+
 export interface ColorPickerEvents {
 	/**
 	 * Triggered when the user types in the input and when Done is clicked. Returns the hex
@@ -96,7 +104,10 @@ export interface ColorPickerEvents {
 		data: { trigger: string }
 	) => void;
 	/** Function called when the color-picker menu would like to show */
-	onRequestOpen?: () => void;
+	onRequestOpen?: (
+		event: React.MouseEvent<HTMLButtonElement>,
+		data: ColorPickerRequestOpenData
+	) => void;
 	/** Function that overwrites default color validator for outer input */
 	onValidateColor?: (hex: string) => boolean;
 	/** Function that overwrites default color validator for custom tab inner input */
