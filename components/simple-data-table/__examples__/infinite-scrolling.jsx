@@ -142,7 +142,6 @@ const CustomSimpleDataTableCell = ({ children, ...props }) => (
 		</a>
 	</SimpleDataTableCell>
 );
-CustomSimpleDataTableCell.displayName = SimpleDataTableCell.displayName;
 
 class Example extends React.Component {
 	page = 0;

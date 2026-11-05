@@ -13,7 +13,6 @@ const CustomSimpleDataTableCell = ({ children, ...props }) => (
 		<SimpleDataTableInteractiveLink>{children}</SimpleDataTableInteractiveLink>
 	</SimpleDataTableCell>
 );
-CustomSimpleDataTableCell.displayName = SimpleDataTableCell.displayName;
 
 const items = [
 	{

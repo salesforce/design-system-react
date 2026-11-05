@@ -1,18 +1,15 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, {
-	useId,
-	type ReactNode,
-	type ReactElement,
-	type MouseEvent,
-} from 'react';
+import React, { useId, type ReactNode, type MouseEvent } from 'react';
 import classNames from 'classnames';
-import {
-	SETUP_ASSISTANT,
-	SETUP_ASSISTANT_STEP,
-} from '../../utilities/constants';
-import type { StepProps } from './step';
+import { SETUP_ASSISTANT } from '../../utilities/constants';
+import isElementOfType from '../../utilities/is-element-of-type';
+import type { ChildrenOf } from '../../types/common';
+import SetupAssistantStep, {
+	type StepProps,
+	type StepInjectedProps,
+} from './step';
 
 /**
  * Event data for step toggle
@@ -27,20 +24,11 @@ export interface StepToggleEventData {
 }
 
 /**
- * Props for child steps
- */
-export interface SetupAssistantStepChildProps {
-	index?: number;
-	onToggleIsOpen?: (event: MouseEvent, data: StepToggleEventData) => void;
-	stepNumber?: number;
-}
-
-/**
  * Props for the SetupAssistant component
  */
 export interface SetupAssistantProps {
-	/** SetupAssistantStep components */
-	children?: ReactNode;
+	/** `SetupAssistantStep` elements. Other children are ignored. */
+	children?: ChildrenOf<StepProps>;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** HTML id */
@@ -74,23 +62,17 @@ const SetupAssistant = ({
 			className={classNames('slds-setup-assistant', className as string)}
 		>
 			{React.Children.map(children, (child, i) => {
-				if (!React.isValidElement(child)) return null;
-				if (
-					(child.type as { displayName?: string }).displayName !==
-					SETUP_ASSISTANT_STEP
-				) {
+				if (!isElementOfType<StepProps>(child, SetupAssistantStep)) {
 					return null;
 				}
-				const childProps = child.props as SetupAssistantStepChildProps;
-				return React.cloneElement(
-					child as ReactElement<SetupAssistantStepChildProps>,
-					{
-						index: i,
-						onToggleIsOpen: onStepToggleIsOpen,
-						stepNumber: i + 1,
-						...childProps,
-					}
-				);
+				// The step's own `onToggleIsOpen` and `stepNumber` win
+				return React.cloneElement<StepProps & StepInjectedProps>(child, {
+					index: i,
+					// `data.index` is always set for steps inside a SetupAssistant
+					onToggleIsOpen: onStepToggleIsOpen as StepProps['onToggleIsOpen'],
+					stepNumber: i + 1,
+					...child.props,
+				});
 			})}
 		</ol>
 	);

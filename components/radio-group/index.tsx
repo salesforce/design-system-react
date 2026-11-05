@@ -5,7 +5,6 @@ import React, {
 	useEffect,
 	useId,
 	useMemo,
-	type ReactNode,
 	type ReactElement,
 	type CSSProperties,
 	type ChangeEvent,
@@ -19,6 +18,7 @@ import type {
 } from '../radio/index';
 import checkProps from './check-props';
 import componentDoc from './component.json';
+import type { ChildrenOf } from '../../types/common';
 
 /**
  * Radio group variant types
@@ -89,11 +89,12 @@ interface RadioGroupBaseProps {
 	/** Assistive text for accessibility */
 	assistiveText?: RadioGroupAssistiveText;
 	/**
-	 * `Radio` components (from `radio-group/radio`) as children. The group
-	 * injects `name`, `onChange`, `aria-describedby`, `disabled` and, when
-	 * `value` is set, `checked`.
+	 * `Radio` elements (from `radio-group/radio`). The group passes each one
+	 * `name`, `onChange`, `aria-describedby`, `disabled` and, when `value` is
+	 * set, `checked`. A `Radio`'s own `name` wins, and its `aria-describedby`
+	 * is joined with the group's error id.
 	 */
-	children: ReactNode;
+	children: ChildrenOf<RadioGroupItemProps>;
 	/** CSS classes */
 	className?: string | string[] | Record<string, boolean>;
 	/** Disable all radio inputs */
@@ -169,8 +170,8 @@ const RadioGroup = ({
 	// the `checked` it was given.
 	const enhancedChildren = useMemo(() => {
 		return React.Children.map(children, (child) => {
-			if (React.isValidElement(child)) {
-				const childProps = child.props as RadioGroupItemProps;
+			if (React.isValidElement<RadioGroupItemProps>(child)) {
+				const childProps = child.props;
 				const childValue = childProps.value ?? null;
 				const handleChange: RadioChangeHandler = (
 					event,
@@ -182,9 +183,10 @@ const RadioGroup = ({
 					});
 				};
 				return React.cloneElement(child as ReactElement<RadioGroupItemProps>, {
-					name,
+					name: childProps.name ?? name,
 					onChange: handleChange,
-					'aria-describedby': errorId,
+					'aria-describedby':
+						classNames(childProps['aria-describedby'], errorId) || undefined,
 					disabled: disabled || childProps.disabled,
 					...(isControlled
 						? { checked: childValue !== null && childValue === value }

@@ -1,7 +1,7 @@
 /* Copyright (c) 2015-present, salesforce.com, inc. All rights reserved */
 /* Licensed under BSD 3-Clause - see LICENSE.txt or git.io/sfdc-license */
 
-import React, { useContext, ReactNode } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import isFunction from 'lodash.isfunction';
 
@@ -15,6 +15,10 @@ import TableContext from './private/table-context';
 import useContextHelper from './private/context-helper';
 
 import { SIMPLE_DATA_TABLE_ROW_ACTIONS } from '../../utilities/constants';
+import type {
+	SimpleDataTableItem,
+	SimpleDataTableRowActionsProps,
+} from './types';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const InteractiveDropdown = InteractiveElement(
@@ -22,23 +26,14 @@ const InteractiveDropdown = InteractiveElement(
 ) as React.ComponentType<any>;
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
-export interface SimpleDataTableRowActionsProps {
-	/** Description of the menu for screenreaders */
-	assistiveText?: { icon?: string };
-	/** Class names to be added to the actions menu */
-	className?: string;
-	/** HTML ID to be added to the actions menu */
+export type { SimpleDataTableRowActionsProps };
+
+/** Props the table row injects. They aren't part of the public props. */
+interface RowActionsInjectedProps {
+	/** HTML ID for the actions menu, unique per row */
 	id?: string;
-	/** SimpleDataTable row item */
-	item?: Record<string, unknown>;
-	/** Disable hint styling which changes the color of the dropdown svg on hover */
-	noHint?: boolean;
-	/** Triggered when an item is selected */
-	onAction?: (item: Record<string, unknown>, selection: unknown) => void;
-	/** Dropdown options. See Dropdown. */
-	options?: unknown[];
-	/** A Dropdown component. Props from this will be merged and override defaults. */
-	dropdown?: ReactNode;
+	/** The row's item */
+	item?: SimpleDataTableItem;
 	/** Fixed layout mode */
 	fixedLayout?: boolean;
 }
@@ -47,7 +42,9 @@ export interface SimpleDataTableRowActionsProps {
  * RowActions provide a mechanism for defining a menu to display alongside
  * each row in the SimpleDataTable.
  */
-const SimpleDataTableRowActions: React.FC<SimpleDataTableRowActionsProps> = ({
+const SimpleDataTableRowActions: React.FC<
+	SimpleDataTableRowActionsProps & RowActionsInjectedProps
+> = ({
 	assistiveText = { icon: 'Actions' },
 	noHint = false,
 	options = [],
@@ -77,11 +74,7 @@ const SimpleDataTableRowActions: React.FC<SimpleDataTableRowActionsProps> = ({
 		if (isFunction(onAction) && item) {
 			onAction(item, data.option);
 		}
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		if (dropdown && isFunction((dropdown as any).props?.onSelect)) {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			(dropdown as any).props.onSelect(event, data);
-		}
+		dropdown?.props.onSelect?.(event, data);
 	};
 
 	const defaultDropdownProps = {
@@ -99,14 +92,9 @@ const SimpleDataTableRowActions: React.FC<SimpleDataTableRowActionsProps> = ({
 		id,
 	};
 
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	let dropdownProps: Record<string, any> = dropdown
-		? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-			(dropdown as any).props
-		: {};
-	dropdownProps = {
+	const dropdownProps = {
 		...defaultDropdownProps,
-		...dropdownProps,
+		...dropdown?.props,
 		onSelect: handleSelect,
 	};
 
@@ -133,4 +121,4 @@ const SimpleDataTableRowActions: React.FC<SimpleDataTableRowActionsProps> = ({
 
 SimpleDataTableRowActions.displayName = SIMPLE_DATA_TABLE_ROW_ACTIONS;
 
-export default SimpleDataTableRowActions;
+export default SimpleDataTableRowActions as React.FC<SimpleDataTableRowActionsProps>;

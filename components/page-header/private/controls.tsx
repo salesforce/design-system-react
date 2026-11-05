@@ -4,8 +4,8 @@
 import React, { Component, type ReactNode } from 'react';
 import classnames from 'classnames';
 
-// ## Constants
-import { PAGE_HEADER_CONTROL } from '../../../utilities/constants';
+import PageHeaderControl from '../control';
+import isElementOfType from '../../../utilities/is-element-of-type';
 
 const displayName = 'PageHeaderControls';
 
@@ -61,26 +61,15 @@ class Controls extends Component<PageHeaderControlsProps> {
 
 		if (controls) {
 			const controlsElement = controls as React.ReactElement & {
-				type?: { displayName?: string };
 				props?: { children?: ReactNode };
 			};
-			if (
-				controlsElement.type &&
-				controlsElement.type.displayName === PAGE_HEADER_CONTROL
-			) {
+			if (isElementOfType(controls, PageHeaderControl)) {
 				vettedControls = controls;
 			} else if (controlsElement.props && controlsElement.props.children) {
 				const collected: ReactNode[] = [];
 
 				React.Children.forEach(controlsElement.props.children, (child) => {
-					const childElement = child as React.ReactElement & {
-						type?: { displayName?: string };
-					};
-					if (
-						childElement &&
-						childElement.type &&
-						childElement.type.displayName === PAGE_HEADER_CONTROL
-					) {
+					if (isElementOfType(child, PageHeaderControl)) {
 						collected.push(child);
 					}
 				});

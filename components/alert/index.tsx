@@ -6,12 +6,13 @@ import React, {
 	useRef,
 	useEffect,
 	useCallback,
+	type ReactElement,
 	type ReactNode,
 	type CSSProperties,
 } from 'react';
 import classNames from '../../utilities/class-names';
 import Button from '../button';
-import Icon from '../icon';
+import Icon, { type IconProps } from '../icon';
 import { ALERT } from '../../utilities/constants';
 import DOMElementFocus from '../../utilities/dom-element-focus';
 import EventUtil from '../../utilities/event';
@@ -49,8 +50,11 @@ export interface AlertProps {
 	className?: string | string[] | Record<string, boolean>;
 	/** Show close button */
 	dismissible?: boolean;
-	/** Custom icon (defaults to variant-specific icon) */
-	icon?: ReactNode;
+	/**
+	 * `Icon` shown before the message (defaults to variant-specific icon). Its `size` and
+	 * `inverse` default to 'x-small' and `true`; its `containerClassName` is added to the spacing classes.
+	 */
+	icon?: ReactElement<IconProps>;
 	/** Text labels */
 	labels?: AlertLabels;
 	/** Callback when heading link is clicked */
@@ -132,19 +136,15 @@ const Alert = ({
 	// Get the icon to display
 	const icon = propIcon || defaultIcons[variant];
 
-	const clonedIcon = React.isValidElement(icon)
-		? React.cloneElement(
-				icon as React.ReactElement<{
-					containerClassName?: string;
-					inverse?: boolean;
-					size?: string;
-				}>,
-				{
-					containerClassName: 'slds-m-right_x-small',
-					inverse: true,
-					size: 'x-small',
-				}
-			)
+	const clonedIcon = React.isValidElement<IconProps>(icon)
+		? React.cloneElement(icon, {
+				containerClassName: classNames(
+					'slds-m-right_x-small',
+					icon.props.containerClassName
+				),
+				inverse: icon.props.inverse ?? true,
+				size: icon.props.size ?? 'x-small',
+			})
 		: icon;
 
 	return (

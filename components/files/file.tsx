@@ -9,6 +9,8 @@ import classNames from 'classnames';
 import { FILES_FILE } from '../../utilities/constants';
 import generateId from '../../utilities/generate-id';
 
+import type { IconProps } from '../icon';
+import type { MenuDropdownProps } from '../menu-dropdown';
 import FileFigure from './private/file-figure';
 import FileActions from './private/file-actions';
 
@@ -37,13 +39,13 @@ export interface FileProps {
 	 */
 	className?: unknown[] | Record<string, unknown> | string;
 	/**
-	 * Controls different cropping aspect ratios for the component
+	 * Controls different cropping aspect ratios for the component. Inside `Files`, defaults to its `crop`; otherwise `16-by-9`.
 	 */
 	crop?: '16-by-9' | '4-by-3' | '1-by-1';
 	/**
-	 * Icon to be shown in top left corner of File component. Accepts an Icon component
+	 * `Icon` shown in the top left corner of the file. Its `containerClassName` is added to the file's own classes.
 	 */
-	externalIcon?: ReactElement<{ containerClassName?: string }>;
+	externalIcon?: ReactElement<IconProps>;
 	/**
 	 *  Controls whether the file's title should be visible
 	 */
@@ -53,9 +55,9 @@ export interface FileProps {
 	 */
 	href?: string;
 	/**
-	 * Icon associated with the file. Accepts an Icon component
+	 * `Icon` associated with the file. The file renders it in the preview and the title, and sets its `size` in each.
 	 */
-	icon?: ReactElement<{ size?: string | null }>;
+	icon?: ReactElement<IconProps>;
 	/**
 	 * HTML id for component.
 	 */
@@ -76,9 +78,10 @@ export interface FileProps {
 		title?: string;
 	};
 	/**
-	 * Dropdown for more actions button; doesn't show more actions button if empty
+	 * `MenuDropdown` for the more actions button; doesn't show more actions button if empty.
+	 * The file styles it as an icon button; props you set on it win.
 	 */
-	moreActionsDropdown?: ReactElement<Record<string, unknown>>;
+	moreActionsDropdown?: ReactElement<Partial<MenuDropdownProps>>;
 	/**
 	 * Action to be done on clicking download button; doesn't show download button if empty
 	 */
@@ -96,7 +99,6 @@ const defaultProps: Partial<FileProps> = {
 		loading: 'loading',
 		moreActions: 'more actions',
 	},
-	crop: '16-by-9',
 	href: '#',
 	isLoading: false,
 	hasNoVisibleTitle: false,
@@ -169,7 +171,7 @@ class File extends React.Component<FileProps> {
 						href={this.props.href}
 						className={classNames(
 							'slds-file__crop',
-							this.props.crop ? `slds-file__crop_${this.props.crop}` : null
+							`slds-file__crop_${this.props.crop ?? '16-by-9'}`
 						)}
 						onClick={this.handleOnClickImage}
 					>
@@ -206,7 +208,10 @@ class File extends React.Component<FileProps> {
 				{this.props.externalIcon ? (
 					<div className="slds-file__external-icon">
 						{React.cloneElement(this.props.externalIcon, {
-							containerClassName: 'slds-file__icon slds-icon_container',
+							containerClassName: classNames(
+								'slds-file__icon slds-icon_container',
+								this.props.externalIcon.props.containerClassName
+							),
 						})}
 					</div>
 				) : null}

@@ -34,23 +34,9 @@ export interface AccordionPanelProps {
 	 */
 	panelContentActions?: ReactNode;
 	/**
-	 * Callback that will run whenever the panel summary is clicked.
-	 */
-	onClickSummary?: () => void;
-	/**
-	 * Callback that will run whenever there is a keydown on the panel button. Function doesn't change the state of the component.
-	 */
-	onKeyDownSummary?: (event: KeyboardEvent) => void;
-	/**
 	 * Callback that will run whenever a panel is toggled. Function should handle state to toggle `expanded` prop. _Tested with Mocha framework._
 	 */
 	onTogglePanel: (event: MouseEvent) => void;
-	/**
-	 * Ref callback that will pass in panel's `input` tag
-	 */
-	refs?: {
-		summaryButton?: (component: HTMLElement | null) => void;
-	};
 	/**
 	 * Summary in the span element in the header of this panel. The summary is truncated and so the title element should contain the full text so that it is accessible on hover. _Tested with snapshot testing._
 	 */
@@ -59,6 +45,15 @@ export interface AccordionPanelProps {
 	 * HTML title attribute. _Tested with snapshot testing._
 	 */
 	title?: string;
+}
+
+/** Props the parent `Accordion` injects for keyboard navigation. They aren't part of the public props. */
+export interface AccordionPanelInjectedProps {
+	onClickSummary?: () => void;
+	onKeyDownSummary?: (event: KeyboardEvent<HTMLButtonElement>) => void;
+	refs?: {
+		summaryButton?: (button: HTMLButtonElement | null) => void;
+	};
 }
 
 /**
@@ -75,7 +70,7 @@ const AccordionPanel = ({
 	onKeyDownSummary,
 	onTogglePanel,
 	refs = {},
-}: AccordionPanelProps): React.ReactElement => (
+}: AccordionPanelProps & AccordionPanelInjectedProps): React.ReactElement => (
 	<li className="slds-accordion__list-item">
 		<section
 			className={classNames('slds-accordion__section', {
@@ -127,4 +122,6 @@ const AccordionPanel = ({
 
 AccordionPanel.displayName = ACCORDION_PANEL;
 
-export default AccordionPanel;
+export default AccordionPanel as (
+	props: AccordionPanelProps
+) => React.ReactElement;
